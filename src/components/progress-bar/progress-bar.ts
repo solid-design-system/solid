@@ -4,13 +4,13 @@ import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { LocalizeController } from '../../utilities/localize';
 import { styleMap } from 'lit/directives/style-map.js';
-import ShoelaceElement from '../../internal/shoelace-element';
+import SolidElement from '../../internal/solid-element';
 import styles from './progress-bar.styles';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Progress bars are used to show the status of an ongoing operation.
- * @documentation https://shoelace.style/components/progress-bar
+ * @documentation https://solid.union-investment.com/[storybook-link]/progress-bar
  * @status stable
  * @since 2.0
  *
@@ -25,8 +25,8 @@ import type { CSSResultGroup } from 'lit';
  * @cssproperty --indicator-color - The color of the indicator.
  * @cssproperty --label-color - The color of the label.
  */
-@customElement('sl-progress-bar')
-export default class SlProgressBar extends ShoelaceElement {
+@customElement('sd-progress-bar')
+export default class SdProgressBar extends SolidElement {
   static styles: CSSResultGroup = styles;
   private readonly localize = new LocalizeController(this);
 
@@ -44,10 +44,10 @@ export default class SlProgressBar extends ShoelaceElement {
       <div
         part="base"
         class=${classMap({
-          'progress-bar': true,
-          'progress-bar--indeterminate': this.indeterminate,
-          'progress-bar--rtl': this.localize.dir() === 'rtl'
-        })}
+      'progress-bar': true,
+      'progress-bar--indeterminate': this.indeterminate,
+      'progress-bar--rtl': this.localize.dir() === 'rtl'
+    })}
         role="progressbar"
         title=${ifDefined(this.title)}
         aria-label=${this.label.length > 0 ? this.label : this.localize.term('progress')}
@@ -65,6 +65,6 @@ export default class SlProgressBar extends ShoelaceElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-progress-bar': SlProgressBar;
+    'sd-progress-bar': SdProgressBar;
   }
 }

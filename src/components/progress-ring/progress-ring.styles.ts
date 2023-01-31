@@ -7,9 +7,9 @@ export default css`
   :host {
     --size: 128px;
     --track-width: 4px;
-    --track-color: var(--sl-color-neutral-200);
+    --track-color: var(--sd-color-neutral-200);
     --indicator-width: var(--track-width);
-    --indicator-color: var(--sl-color-primary-600);
+    --indicator-color: var(--sd-color-primary-600);
     --indicator-transition-duration: 0.35s;
 
     display: inline-flex;

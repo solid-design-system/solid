@@ -7,42 +7,42 @@ import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { live } from 'lit/directives/live.js';
 import { watch } from '../../internal/watch';
-import ShoelaceElement from '../../internal/shoelace-element';
+import SolidElement from '../../internal/solid-element';
 import styles from './checkbox.styles';
 import type { CSSResultGroup } from 'lit';
-import type { ShoelaceFormControl } from '../../internal/shoelace-element';
+import type { SolidFormControl } from '../../internal/solid-element';
 
 /**
  * @summary Checkboxes allow the user to toggle an option on or off.
- * @documentation https://shoelace.style/components/checkbox
+ * @documentation https://solid.union-investment.com/[storybook-link]/checkbox
  * @status stable
  * @since 2.0
  *
- * @dependency sl-icon
+ * @dependency sd-icon
  *
  * @slot - The checkbox's label.
  *
- * @event sl-blur - Emitted when the checkbox loses focus.
- * @event sl-change - Emitted when the checked state changes.
- * @event sl-focus - Emitted when the checkbox gains focus.
- * @event sl-input - Emitted when the checkbox receives input.
+ * @event sd-blur - Emitted when the checkbox loses focus.
+ * @event sd-change - Emitted when the checked state changes.
+ * @event sd-focus - Emitted when the checkbox gains focus.
+ * @event sd-input - Emitted when the checkbox receives input.
  *
  * @csspart base - The component's base wrapper.
  * @csspart control - The square container that wraps the checkbox's checked state.
  * @csspart control--checked - Matches the control part when the checkbox is checked.
  * @csspart control--indeterminate - Matches the control part when the checkbox is indeterminate.
- * @csspart checked-icon - The checked icon, an `<sl-icon>` element.
- * @csspart indeterminate-icon - The indeterminate icon, an `<sl-icon>` element.
+ * @csspart checked-icon - The checked icon, an `<sd-icon>` element.
+ * @csspart indeterminate-icon - The indeterminate icon, an `<sd-icon>` element.
  * @csspart label - The container that wraps the checkbox's label.
  */
-@customElement('sl-checkbox')
-export default class SlCheckbox extends ShoelaceElement implements ShoelaceFormControl {
+@customElement('sd-checkbox')
+export default class SdCheckbox extends SolidElement implements SolidFormControl {
   static styles: CSSResultGroup = styles;
 
   private readonly formControlController = new FormControlController(this, {
-    value: (control: SlCheckbox) => (control.checked ? control.value || 'on' : undefined),
-    defaultValue: (control: SlCheckbox) => control.defaultChecked,
-    setValue: (control: SlCheckbox, checked: boolean) => (control.checked = checked)
+    value: (control: SdCheckbox) => (control.checked ? control.value || 'on' : undefined),
+    defaultValue: (control: SdCheckbox) => control.defaultChecked,
+    setValue: (control: SdCheckbox, checked: boolean) => (control.checked = checked)
   });
 
   @query('input[type="checkbox"]') input: HTMLInputElement;
@@ -92,21 +92,21 @@ export default class SlCheckbox extends ShoelaceElement implements ShoelaceFormC
   private handleClick() {
     this.checked = !this.checked;
     this.indeterminate = false;
-    this.emit('sl-change');
+    this.emit('sd-change');
   }
 
   private handleBlur() {
     this.hasFocus = false;
-    this.emit('sl-blur');
+    this.emit('sd-blur');
   }
 
   private handleInput() {
-    this.emit('sl-input');
+    this.emit('sd-input');
   }
 
   private handleFocus() {
     this.hasFocus = true;
-    this.emit('sl-focus');
+    this.emit('sd-focus');
   }
 
   @watch('disabled', { waitUntilFirstUpdate: true })
@@ -161,15 +161,15 @@ export default class SlCheckbox extends ShoelaceElement implements ShoelaceFormC
       <label
         part="base"
         class=${classMap({
-          checkbox: true,
-          'checkbox--checked': this.checked,
-          'checkbox--disabled': this.disabled,
-          'checkbox--focused': this.hasFocus,
-          'checkbox--indeterminate': this.indeterminate,
-          'checkbox--small': this.size === 'small',
-          'checkbox--medium': this.size === 'medium',
-          'checkbox--large': this.size === 'large'
-        })}
+      checkbox: true,
+      'checkbox--checked': this.checked,
+      'checkbox--disabled': this.disabled,
+      'checkbox--focused': this.hasFocus,
+      'checkbox--indeterminate': this.indeterminate,
+      'checkbox--small': this.size === 'small',
+      'checkbox--medium': this.size === 'medium',
+      'checkbox--large': this.size === 'large'
+    })}
       >
         <input
           class="checkbox__input"
@@ -193,20 +193,20 @@ export default class SlCheckbox extends ShoelaceElement implements ShoelaceFormC
           class="checkbox__control"
         >
           ${this.checked
-            ? html`
-                <sl-icon part="checked-icon" class="checkbox__checked-icon" library="system" name="check"></sl-icon>
+        ? html`
+                <sd-icon part="checked-icon" class="checkbox__checked-icon" library="system" name="check"></sd-icon>
               `
-            : ''}
+        : ''}
           ${!this.checked && this.indeterminate
-            ? html`
-                <sl-icon
+        ? html`
+                <sd-icon
                   part="indeterminate-icon"
                   class="checkbox__indeterminate-icon"
                   library="system"
                   name="indeterminate"
-                ></sl-icon>
+                ></sd-icon>
               `
-            : ''}
+        : ''}
         </span>
 
         <slot part="label" class="checkbox__label"></slot>
@@ -217,6 +217,6 @@ export default class SlCheckbox extends ShoelaceElement implements ShoelaceFormC
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-checkbox': SlCheckbox;
+    'sd-checkbox': SdCheckbox;
   }
 }

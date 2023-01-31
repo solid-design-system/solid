@@ -3,16 +3,16 @@ import { expect, fixture, html, oneEvent } from '@open-wc/testing';
 import { sendKeys } from '@web/test-runner-commands';
 import { serialize } from '../../utilities/form';
 import sinon from 'sinon';
-import type SlRange from './range';
+import type SdRange from './range';
 
-describe('<sl-range>', () => {
+describe('<sd-range>', () => {
   it('should pass accessibility tests', async () => {
-    const el = await fixture<SlRange>(html` <sl-range label="Name"></sl-range> `);
+    const el = await fixture<SdRange>(html` <sd-range label="Name"></sd-range> `);
     await expect(el).to.be.accessible();
   });
 
   it('default properties', async () => {
-    const el = await fixture<SlRange>(html` <sl-range></sl-range> `);
+    const el = await fixture<SdRange>(html` <sd-range></sd-range> `);
 
     expect(el.name).to.equal('');
     expect(el.value).to.equal(0);
@@ -29,27 +29,27 @@ describe('<sl-range>', () => {
   });
 
   it('should have title if title attribute is set', async () => {
-    const el = await fixture<SlRange>(html` <sl-range title="Test"></sl-range> `);
+    const el = await fixture<SdRange>(html` <sd-range title="Test"></sd-range> `);
     const input = el.shadowRoot!.querySelector('input')!;
 
     expect(input.title).to.equal('Test');
   });
 
   it('should be disabled with the disabled attribute', async () => {
-    const el = await fixture<SlRange>(html` <sl-range disabled></sl-range> `);
+    const el = await fixture<SdRange>(html` <sd-range disabled></sd-range> `);
     const input = el.shadowRoot!.querySelector<HTMLInputElement>('[part~="input"]')!;
 
     expect(input.disabled).to.be.true;
   });
 
   describe('when the value changes', () => {
-    it('should emit sl-change and sl-input when the value changes from clicking the slider', async () => {
-      const el = await fixture<SlRange>(html` <sl-range value="0"></sl-range> `);
+    it('should emit sd-change and sd-input when the value changes from clicking the slider', async () => {
+      const el = await fixture<SdRange>(html` <sd-range value="0"></sd-range> `);
       const changeHandler = sinon.spy();
       const inputHandler = sinon.spy();
 
-      el.addEventListener('sl-change', changeHandler);
-      el.addEventListener('sl-input', inputHandler);
+      el.addEventListener('sd-change', changeHandler);
+      el.addEventListener('sd-input', inputHandler);
       await clickOnElement(el, 'right');
       await el.updateComplete;
 
@@ -58,13 +58,13 @@ describe('<sl-range>', () => {
       expect(inputHandler).to.have.been.calledOnce;
     });
 
-    it('should emit sl-change and sl-input and decrease the value when pressing left arrow', async () => {
-      const el = await fixture<SlRange>(html` <sl-range value="50"></sl-range> `);
+    it('should emit sd-change and sd-input and decrease the value when pressing left arrow', async () => {
+      const el = await fixture<SdRange>(html` <sd-range value="50"></sd-range> `);
       const changeHandler = sinon.spy();
       const inputHandler = sinon.spy();
 
-      el.addEventListener('sl-change', changeHandler);
-      el.addEventListener('sl-input', inputHandler);
+      el.addEventListener('sd-change', changeHandler);
+      el.addEventListener('sd-input', inputHandler);
       el.focus();
       await sendKeys({ press: 'ArrowLeft' });
       await el.updateComplete;
@@ -74,13 +74,13 @@ describe('<sl-range>', () => {
       expect(inputHandler).to.have.been.calledOnce;
     });
 
-    it('should emit sl-change and sl-input and decrease the value when pressing right arrow', async () => {
-      const el = await fixture<SlRange>(html` <sl-range value="50"></sl-range> `);
+    it('should emit sd-change and sd-input and decrease the value when pressing right arrow', async () => {
+      const el = await fixture<SdRange>(html` <sd-range value="50"></sd-range> `);
       const changeHandler = sinon.spy();
       const inputHandler = sinon.spy();
 
-      el.addEventListener('sl-change', changeHandler);
-      el.addEventListener('sl-input', inputHandler);
+      el.addEventListener('sd-change', changeHandler);
+      el.addEventListener('sd-input', inputHandler);
       el.focus();
       await sendKeys({ press: 'ArrowRight' });
       await el.updateComplete;
@@ -90,30 +90,30 @@ describe('<sl-range>', () => {
       expect(inputHandler).to.have.been.calledOnce;
     });
 
-    it('should not emit sl-change or sl-input when changing the value programmatically', async () => {
-      const el = await fixture<SlRange>(html` <sl-range value="0"></sl-range> `);
+    it('should not emit sd-change or sd-input when changing the value programmatically', async () => {
+      const el = await fixture<SdRange>(html` <sd-range value="0"></sd-range> `);
 
-      el.addEventListener('sl-change', () => expect.fail('sl-change should not be emitted'));
-      el.addEventListener('sl-input', () => expect.fail('sl-input should not be emitted'));
+      el.addEventListener('sd-change', () => expect.fail('sd-change should not be emitted'));
+      el.addEventListener('sd-input', () => expect.fail('sd-input should not be emitted'));
       el.value = 50;
 
       await el.updateComplete;
     });
 
-    it('should not emit sl-change or sl-input when stepUp() is called programmatically', async () => {
-      const el = await fixture<SlRange>(html` <sl-range step="2" value="2"></sl-range> `);
+    it('should not emit sd-change or sd-input when stepUp() is called programmatically', async () => {
+      const el = await fixture<SdRange>(html` <sd-range step="2" value="2"></sd-range> `);
 
-      el.addEventListener('sl-change', () => expect.fail('sl-change should not be emitted'));
-      el.addEventListener('sl-input', () => expect.fail('sl-input should not be emitted'));
+      el.addEventListener('sd-change', () => expect.fail('sd-change should not be emitted'));
+      el.addEventListener('sd-input', () => expect.fail('sd-input should not be emitted'));
       el.stepUp();
       await el.updateComplete;
     });
 
-    it('should not emit sl-change or sl-input when stepDown() is called programmatically', async () => {
-      const el = await fixture<SlRange>(html` <sl-range step="2" value="2"></sl-range> `);
+    it('should not emit sd-change or sd-input when stepDown() is called programmatically', async () => {
+      const el = await fixture<SdRange>(html` <sd-range step="2" value="2"></sd-range> `);
 
-      el.addEventListener('sl-change', () => expect.fail('sl-change should not be emitted'));
-      el.addEventListener('sl-input', () => expect.fail('sl-input should not be emitted'));
+      el.addEventListener('sd-change', () => expect.fail('sd-change should not be emitted'));
+      el.addEventListener('sd-input', () => expect.fail('sd-input should not be emitted'));
       el.stepDown();
       await el.updateComplete;
     });
@@ -121,7 +121,7 @@ describe('<sl-range>', () => {
 
   describe('step', () => {
     it('should increment by step when stepUp() is called', async () => {
-      const el = await fixture<SlRange>(html` <sl-range step="2" value="2"></sl-range> `);
+      const el = await fixture<SdRange>(html` <sd-range step="2" value="2"></sd-range> `);
 
       el.stepUp();
       await el.updateComplete;
@@ -129,7 +129,7 @@ describe('<sl-range>', () => {
     });
 
     it('should decrement by step when stepDown() is called', async () => {
-      const el = await fixture<SlRange>(html` <sl-range step="2" value="2"></sl-range> `);
+      const el = await fixture<SdRange>(html` <sd-range step="2" value="2"></sd-range> `);
 
       el.stepDown();
       await el.updateComplete;
@@ -139,19 +139,19 @@ describe('<sl-range>', () => {
 
   describe('when submitting a form', () => {
     it('should serialize its name and value with FormData', async () => {
-      const form = await fixture<HTMLFormElement>(html` <form><sl-range name="a" value="1"></sl-range></form> `);
+      const form = await fixture<HTMLFormElement>(html` <form><sd-range name="a" value="1"></sd-range></form> `);
       const formData = new FormData(form);
       expect(formData.get('a')).to.equal('1');
     });
 
     it('should serialize its name and value with JSON', async () => {
-      const form = await fixture<HTMLFormElement>(html` <form><sl-range name="a" value="1"></sl-range></form> `);
+      const form = await fixture<HTMLFormElement>(html` <form><sd-range name="a" value="1"></sd-range></form> `);
       const json = serialize(form);
       expect(json.a).to.equal('1');
     });
 
     it('should be invalid when setCustomValidity() is called with a non-empty value', async () => {
-      const range = await fixture<HTMLFormElement>(html` <sl-range></sl-range> `);
+      const range = await fixture<HTMLFormElement>(html` <sd-range></sd-range> `);
 
       range.setCustomValidity('Invalid selection');
       await range.updateComplete;
@@ -173,9 +173,9 @@ describe('<sl-range>', () => {
       const el = await fixture<HTMLFormElement>(html`
         <div>
           <form id="f">
-            <sl-button type="submit">Submit</sl-button>
+            <sd-button type="submit">Submit</sd-button>
           </form>
-          <sl-range form="f" name="a" value="50"></sl-range>
+          <sd-range form="f" name="a" value="50"></sd-range>
         </div>
       `);
       const form = el.querySelector('form')!;
@@ -189,12 +189,12 @@ describe('<sl-range>', () => {
     it('should reset the element to its initial value', async () => {
       const form = await fixture<HTMLFormElement>(html`
         <form>
-          <sl-range name="a" value="99"></sl-range>
-          <sl-button type="reset">Reset</sl-button>
+          <sd-range name="a" value="99"></sd-range>
+          <sd-button type="reset">Reset</sd-button>
         </form>
       `);
-      const button = form.querySelector('sl-button')!;
-      const input = form.querySelector('sl-range')!;
+      const button = form.querySelector('sd-button')!;
+      const input = form.querySelector('sd-range')!;
       input.value = 80;
 
       await input.updateComplete;

@@ -1,14 +1,14 @@
 import { expect, fixture, html, waitUntil } from '@open-wc/testing';
 import sinon from 'sinon';
-import type SlButton from './button';
+import type SdButton from './button';
 
 const variants = ['default', 'primary', 'success', 'neutral', 'warning', 'danger'];
 
-describe('<sl-button>', () => {
+describe('<sd-button>', () => {
   describe('accessibility tests', () => {
     variants.forEach(variant => {
       it(`should be accessible when variant is "${variant}"`, async () => {
-        const el = await fixture<SlButton>(html` <sl-button variant="${variant}"> Button Label </sl-button> `);
+        const el = await fixture<SdButton>(html` <sd-button variant="${variant}"> Button Label </sd-button> `);
         await expect(el).to.be.accessible();
       });
     });
@@ -16,12 +16,12 @@ describe('<sl-button>', () => {
 
   describe('when provided no parameters', () => {
     it('passes accessibility test', async () => {
-      const el = await fixture<SlButton>(html` <sl-button>Button Label</sl-button> `);
+      const el = await fixture<SdButton>(html` <sd-button>Button Label</sd-button> `);
       await expect(el).to.be.accessible();
     });
 
     it('default values are set correctly', async () => {
-      const el = await fixture<SlButton>(html` <sl-button>Button Label</sl-button> `);
+      const el = await fixture<SdButton>(html` <sd-button>Button Label</sd-button> `);
 
       expect(el.title).to.equal('');
       expect(el.variant).to.equal('default');
@@ -35,40 +35,40 @@ describe('<sl-button>', () => {
     });
 
     it('should render as a <button>', async () => {
-      const el = await fixture<SlButton>(html` <sl-button>Button Label</sl-button> `);
+      const el = await fixture<SdButton>(html` <sd-button>Button Label</sd-button> `);
       expect(el.shadowRoot!.querySelector('button')).to.exist;
       expect(el.shadowRoot!.querySelector('a')).not.to.exist;
     });
 
     it('should not have a spinner present', async () => {
-      const el = await fixture<SlButton>(html` <sl-button>Button Label</sl-button> `);
-      expect(el.shadowRoot!.querySelector('sl-spinner')).not.to.exist;
+      const el = await fixture<SdButton>(html` <sd-button>Button Label</sd-button> `);
+      expect(el.shadowRoot!.querySelector('sd-spinner')).not.to.exist;
     });
 
     it('should not have a caret present', async () => {
-      const el = await fixture<SlButton>(html` <sl-button>Button Label</sl-button> `);
+      const el = await fixture<SdButton>(html` <sd-button>Button Label</sd-button> `);
       expect(el.shadowRoot?.querySelector('[part~="caret"]')).not.to.exist;
     });
   });
 
   describe('when disabled', () => {
     it('passes accessibility test', async () => {
-      const el = await fixture<SlButton>(html` <sl-button disabled>Button Label</sl-button> `);
+      const el = await fixture<SdButton>(html` <sd-button disabled>Button Label</sd-button> `);
       await expect(el).to.be.accessible();
     });
 
     it('should disable the native <button> when rendering a <button>', async () => {
-      const el = await fixture<SlButton>(html` <sl-button disabled>Button Label</sl-button> `);
+      const el = await fixture<SdButton>(html` <sd-button disabled>Button Label</sd-button> `);
       expect(el.shadowRoot!.querySelector('button[disabled]')).to.exist;
     });
 
     it('should not disable the native <a> when rendering an <a>', async () => {
-      const el = await fixture<SlButton>(html` <sl-button href="some/path" disabled>Button Label</sl-button> `);
+      const el = await fixture<SdButton>(html` <sd-button href="some/path" disabled>Button Label</sd-button> `);
       expect(el.shadowRoot!.querySelector('a[disabled]')).not.to.exist;
     });
 
     it('should not bubble up clicks', async () => {
-      const button = await fixture<SlButton>(html` <sl-button disabled>Button Label</sl-button> `);
+      const button = await fixture<SdButton>(html` <sd-button disabled>Button Label</sd-button> `);
       const handleClick = sinon.spy();
       button.addEventListener('click', handleClick);
       button.click();
@@ -78,7 +78,7 @@ describe('<sl-button>', () => {
       button.shadowRoot!.querySelector('button')!.click();
       expect(handleClick).not.to.have.been.called;
 
-      const buttonLink = await fixture<SlButton>(html` <sl-button href="some/path" disabled>Button Label</sl-button> `);
+      const buttonLink = await fixture<SdButton>(html` <sd-button href="some/path" disabled>Button Label</sd-button> `);
       buttonLink.addEventListener('click', handleClick);
       buttonLink.click();
 
@@ -90,7 +90,7 @@ describe('<sl-button>', () => {
   });
 
   it('should have title if title attribute is set', async () => {
-    const el = await fixture<SlButton>(html` <sl-button title="Test"></sl-button> `);
+    const el = await fixture<SdButton>(html` <sd-button title="Test"></sd-button> `);
     const button = el.shadowRoot!.querySelector<HTMLButtonElement>('[part~="base"]')!;
 
     expect(button.title).to.equal('Test');
@@ -98,21 +98,21 @@ describe('<sl-button>', () => {
 
   describe('when loading', () => {
     it('should have a spinner present', async () => {
-      const el = await fixture<SlButton>(html` <sl-button loading>Button Label</sl-button> `);
-      expect(el.shadowRoot!.querySelector('sl-spinner')).to.exist;
+      const el = await fixture<SdButton>(html` <sd-button loading>Button Label</sd-button> `);
+      expect(el.shadowRoot!.querySelector('sd-spinner')).to.exist;
     });
   });
 
   describe('when caret', () => {
     it('should have a caret present', async () => {
-      const el = await fixture<SlButton>(html` <sl-button caret>Button Label</sl-button> `);
+      const el = await fixture<SdButton>(html` <sd-button caret>Button Label</sd-button> `);
       expect(el.shadowRoot!.querySelector('[part~="caret"]')).to.exist;
     });
   });
 
   describe('when href is present', () => {
     it('should render as an <a>', async () => {
-      const el = await fixture<SlButton>(html` <sl-button href="some/path">Button Label</sl-button> `);
+      const el = await fixture<SdButton>(html` <sd-button href="some/path">Button Label</sd-button> `);
       expect(el.shadowRoot!.querySelector('a')).to.exist;
       expect(el.shadowRoot!.querySelector('button')).not.to.exist;
     });
@@ -122,10 +122,10 @@ describe('<sl-button>', () => {
     it('should submit when the button is inside the form', async () => {
       const form = await fixture<HTMLFormElement>(html`
         <form action="" method="post">
-          <sl-button type="submit">Submit</sl-button>
+          <sd-button type="submit">Submit</sd-button>
         </form>
       `);
-      const button = form.querySelector<SlButton>('sl-button')!;
+      const button = form.querySelector<SdButton>('sd-button')!;
       const handleSubmit = sinon.spy((event: SubmitEvent) => event.preventDefault());
 
       form.addEventListener('submit', handleSubmit);
@@ -138,11 +138,11 @@ describe('<sl-button>', () => {
       const el = await fixture(html`
         <div>
           <form id="a" action="" method="post"></form>
-          <sl-button type="submit" form="a">Submit</sl-button>
+          <sd-button type="submit" form="a">Submit</sd-button>
         </div>
       `);
       const form = el.querySelector<HTMLFormElement>('form')!;
-      const button = el.querySelector<SlButton>('sl-button')!;
+      const button = el.querySelector<SdButton>('sd-button')!;
       const handleSubmit = sinon.spy((event: SubmitEvent) => event.preventDefault());
 
       form.addEventListener('submit', handleSubmit);
@@ -154,12 +154,12 @@ describe('<sl-button>', () => {
     it('should override form attributes when formaction, formmethod, formnovalidate, and formtarget are used inside a form', async () => {
       const form = await fixture(html`
         <form id="a" action="foo" method="post" target="_self">
-          <sl-button type="submit" form="a" formaction="bar" formmethod="get" formtarget="_blank" formnovalidate>
+          <sd-button type="submit" form="a" formaction="bar" formmethod="get" formtarget="_blank" formnovalidate>
             Submit
-          </sl-button>
+          </sd-button>
         </form>
       `);
-      const button = form.querySelector<SlButton>('sl-button')!;
+      const button = form.querySelector<SdButton>('sd-button')!;
       const handleSubmit = sinon.spy((event: SubmitEvent) => {
         submitter = event.submitter as HTMLButtonElement;
         event.preventDefault();
@@ -180,13 +180,13 @@ describe('<sl-button>', () => {
       const el = await fixture(html`
         <div>
           <form id="a" action="foo" method="post" target="_self"></form>
-          <sl-button type="submit" form="a" formaction="bar" formmethod="get" formtarget="_blank" formnovalidate>
+          <sd-button type="submit" form="a" formaction="bar" formmethod="get" formtarget="_blank" formnovalidate>
             Submit
-          </sl-button>
+          </sd-button>
         </div>
       `);
       const form = el.querySelector<HTMLFormElement>('form')!;
-      const button = el.querySelector<SlButton>('sl-button')!;
+      const button = el.querySelector<SdButton>('sd-button')!;
       const handleSubmit = sinon.spy((event: SubmitEvent) => {
         submitter = event.submitter as HTMLButtonElement;
         event.preventDefault();
@@ -205,13 +205,13 @@ describe('<sl-button>', () => {
   });
 
   describe('when using methods', () => {
-    it('should emit sl-focus and sl-blur when the button is focused and blurred', async () => {
-      const el = await fixture<SlButton>(html` <sl-button>Button</sl-button> `);
+    it('should emit sd-focus and sd-blur when the button is focused and blurred', async () => {
+      const el = await fixture<SdButton>(html` <sd-button>Button</sd-button> `);
       const focusHandler = sinon.spy();
       const blurHandler = sinon.spy();
 
-      el.addEventListener('sl-focus', focusHandler);
-      el.addEventListener('sl-blur', blurHandler);
+      el.addEventListener('sd-focus', focusHandler);
+      el.addEventListener('sd-blur', blurHandler);
 
       el.focus();
       await waitUntil(() => focusHandler.calledOnce);
@@ -224,7 +224,7 @@ describe('<sl-button>', () => {
     });
 
     it('should emit a click event when calling click()', async () => {
-      const el = await fixture<SlButton>(html` <sl-button></sl-button> `);
+      const el = await fixture<SdButton>(html` <sd-button></sd-button> `);
       const clickHandler = sinon.spy();
 
       el.addEventListener('click', clickHandler);

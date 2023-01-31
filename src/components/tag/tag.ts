@@ -3,29 +3,29 @@ import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property } from 'lit/decorators.js';
 import { html } from 'lit';
 import { LocalizeController } from '../../utilities/localize';
-import ShoelaceElement from '../../internal/shoelace-element';
+import SolidElement from '../../internal/solid-element';
 import styles from './tag.styles';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Tags are used as labels to organize things or to indicate a selection.
- * @documentation https://shoelace.style/components/tag
+ * @documentation https://solid.union-investment.com/[storybook-link]/tag
  * @status stable
  * @since 2.0
  *
- * @dependency sl-icon-button
+ * @dependency sd-icon-button
  *
  * @slot - The tag's content.
  *
- * @event sl-remove - Emitted when the remove button is activated.
+ * @event sd-remove - Emitted when the remove button is activated.
  *
  * @csspart base - The component's base wrapper.
  * @csspart content - The tag's content.
- * @csspart remove-button - The tag's remove button, an `<sl-icon-button>`.
+ * @csspart remove-button - The tag's remove button, an `<sd-icon-button>`.
  * @csspart remove-button__base - The remove button's exported `base` part.
  */
-@customElement('sl-tag')
-export default class SlTag extends ShoelaceElement {
+@customElement('sd-tag')
+export default class SdTag extends SolidElement {
   static styles: CSSResultGroup = styles;
   private readonly localize = new LocalizeController(this);
 
@@ -42,7 +42,7 @@ export default class SlTag extends ShoelaceElement {
   @property({ type: Boolean }) removable = false;
 
   private handleRemoveClick() {
-    this.emit('sl-remove');
+    this.emit('sd-remove');
   }
 
   render() {
@@ -50,31 +50,31 @@ export default class SlTag extends ShoelaceElement {
       <span
         part="base"
         class=${classMap({
-          tag: true,
+      tag: true,
 
-          // Types
-          'tag--primary': this.variant === 'primary',
-          'tag--success': this.variant === 'success',
-          'tag--neutral': this.variant === 'neutral',
-          'tag--warning': this.variant === 'warning',
-          'tag--danger': this.variant === 'danger',
-          'tag--text': this.variant === 'text',
+      // Types
+      'tag--primary': this.variant === 'primary',
+      'tag--success': this.variant === 'success',
+      'tag--neutral': this.variant === 'neutral',
+      'tag--warning': this.variant === 'warning',
+      'tag--danger': this.variant === 'danger',
+      'tag--text': this.variant === 'text',
 
-          // Sizes
-          'tag--small': this.size === 'small',
-          'tag--medium': this.size === 'medium',
-          'tag--large': this.size === 'large',
+      // Sizes
+      'tag--small': this.size === 'small',
+      'tag--medium': this.size === 'medium',
+      'tag--large': this.size === 'large',
 
-          // Modifiers
-          'tag--pill': this.pill,
-          'tag--removable': this.removable
-        })}
+      // Modifiers
+      'tag--pill': this.pill,
+      'tag--removable': this.removable
+    })}
       >
         <slot part="content" class="tag__content"></slot>
 
         ${this.removable
-          ? html`
-              <sl-icon-button
+        ? html`
+              <sd-icon-button
                 part="remove-button"
                 exportparts="base:remove-button__base"
                 name="x-lg"
@@ -83,9 +83,9 @@ export default class SlTag extends ShoelaceElement {
                 class="tag__remove"
                 @click=${this.handleRemoveClick}
                 tabindex="-1"
-              ></sl-icon-button>
+              ></sd-icon-button>
             `
-          : ''}
+        : ''}
       </span>
     `;
   }
@@ -93,6 +93,6 @@ export default class SlTag extends ShoelaceElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-tag': SlTag;
+    'sd-tag': SdTag;
   }
 }

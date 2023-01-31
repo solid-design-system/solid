@@ -1,15 +1,15 @@
 import { customElement, property } from 'lit/decorators.js';
 import { LocalizeController } from '../../utilities/localize';
-import ShoelaceElement from '../../internal/shoelace-element';
+import SolidElement from '../../internal/solid-element';
 
 /**
  * @summary Formats a number as a human readable bytes value.
- * @documentation https://shoelace.style/components/format-bytes
+ * @documentation https://solid.union-investment.com/[storybook-link]/format-bytes
  * @status stable
  * @since 2.0
  */
-@customElement('sl-format-bytes')
-export default class SlFormatBytes extends ShoelaceElement {
+@customElement('sd-format-bytes')
+export default class SdFormatBytes extends SolidElement {
   private readonly localize = new LocalizeController(this);
 
   /** The number to format in bytes. */
@@ -43,6 +43,6 @@ export default class SlFormatBytes extends ShoelaceElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-format-bytes': SlFormatBytes;
+    'sd-format-bytes': SdFormatBytes;
   }
 }

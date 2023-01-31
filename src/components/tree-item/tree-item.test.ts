@@ -1,19 +1,19 @@
 import { expect, fixture, html, oneEvent, waitUntil } from '@open-wc/testing';
 import sinon from 'sinon';
-import type SlTreeItem from './tree-item';
+import type SdTreeItem from './tree-item';
 
-describe('<sl-tree-item>', () => {
-  let leafItem: SlTreeItem;
-  let parentItem: SlTreeItem;
+describe('<sd-tree-item>', () => {
+  let leafItem: SdTreeItem;
+  let parentItem: SdTreeItem;
 
   beforeEach(async () => {
-    leafItem = await fixture(html` <sl-tree-item>Node 1</sl-tree-item> `);
+    leafItem = await fixture(html` <sd-tree-item>Node 1</sd-tree-item> `);
     parentItem = await fixture(html`
-      <sl-tree-item>
+      <sd-tree-item>
         Parent Node
-        <sl-tree-item>Node 1</sl-tree-item>
-        <sl-tree-item>Node 1</sl-tree-item>
-      </sl-tree-item>
+        <sd-tree-item>Node 1</sd-tree-item>
+        <sd-tree-item>Node 1</sd-tree-item>
+      </sd-tree-item>
     `);
   });
 
@@ -49,13 +49,13 @@ describe('<sl-tree-item>', () => {
 
   describe('when the user clicks the expand button', () => {
     describe('and the item is collapsed', () => {
-      it('should emit sl-expand and sl-after-expand events', async () => {
+      it('should emit sd-expand and sd-after-expand events', async () => {
         // Arrange
         const expandSpy = sinon.spy();
         const afterExpandSpy = sinon.spy();
 
-        parentItem.addEventListener('sl-expand', expandSpy);
-        parentItem.addEventListener('sl-after-expand', afterExpandSpy);
+        parentItem.addEventListener('sd-expand', expandSpy);
+        parentItem.addEventListener('sd-after-expand', afterExpandSpy);
 
         // Act
         parentItem.expanded = true;
@@ -69,16 +69,16 @@ describe('<sl-tree-item>', () => {
     });
 
     describe('and the item is expanded', () => {
-      it('should emit sl-collapse and sl-after-collapse events', async () => {
+      it('should emit sd-collapse and sd-after-collapse events', async () => {
         // Arrange
         const collapseSpy = sinon.spy();
         const afterCollapseSpy = sinon.spy();
 
-        parentItem.addEventListener('sl-collapse', collapseSpy);
-        parentItem.addEventListener('sl-after-collapse', afterCollapseSpy);
+        parentItem.addEventListener('sd-collapse', collapseSpy);
+        parentItem.addEventListener('sd-after-collapse', afterCollapseSpy);
 
         parentItem.expanded = true;
-        await oneEvent(parentItem, 'sl-after-expand');
+        await oneEvent(parentItem, 'sd-after-expand');
 
         // Act
         parentItem.expanded = false;
@@ -160,11 +160,11 @@ describe('<sl-tree-item>', () => {
   });
 
   describe('when the item is lazy', () => {
-    it('should emit sl-lazy-change when the lazy attribute is added and removed', async () => {
+    it('should emit sd-lazy-change when the lazy attribute is added and removed', async () => {
       // Arrange
       const lazyChangeSpy = sinon.spy();
 
-      parentItem.addEventListener('sl-lazy-change', lazyChangeSpy);
+      parentItem.addEventListener('sd-lazy-change', lazyChangeSpy);
       parentItem.lazy = true;
 
       // Act

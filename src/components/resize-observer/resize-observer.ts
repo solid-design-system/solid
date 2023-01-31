@@ -1,22 +1,22 @@
 import { customElement, property } from 'lit/decorators.js';
 import { html } from 'lit';
 import { watch } from '../../internal/watch';
-import ShoelaceElement from '../../internal/shoelace-element';
+import SolidElement from '../../internal/solid-element';
 import styles from './resize-observer.styles';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary The Resize Observer component offers a thin, declarative interface to the [`ResizeObserver API`](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver).
- * @documentation https://shoelace.style/components/resize-observer
+ * @documentation https://solid.union-investment.com/[storybook-link]/resize-observer
  * @status stable
  * @since 2.0
  *
  * @slot - One or more elements to watch for resizing.
  *
- * @event {{ entries: ResizeObserverEntry[] }} sl-resize - Emitted when the element is resized.
+ * @event {{ entries: ResizeObserverEntry[] }} sd-resize - Emitted when the element is resized.
  */
-@customElement('sl-resize-observer')
-export default class SlResizeObserver extends ShoelaceElement {
+@customElement('sd-resize-observer')
+export default class SdResizeObserver extends SolidElement {
   static styles: CSSResultGroup = styles;
 
   private resizeObserver: ResizeObserver;
@@ -28,7 +28,7 @@ export default class SlResizeObserver extends ShoelaceElement {
   connectedCallback() {
     super.connectedCallback();
     this.resizeObserver = new ResizeObserver((entries: ResizeObserverEntry[]) => {
-      this.emit('sl-resize', { detail: { entries } });
+      this.emit('sd-resize', { detail: { entries } });
     });
 
     if (!this.disabled) {
@@ -85,6 +85,6 @@ export default class SlResizeObserver extends ShoelaceElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-resize-observer': SlResizeObserver;
+    'sd-resize-observer': SdResizeObserver;
   }
 }

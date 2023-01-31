@@ -1,24 +1,24 @@
 import { aTimeout, expect, fixture, html, waitUntil } from '@open-wc/testing';
 import sinon from 'sinon';
-import type SlMenuItem from './menu-item';
+import type SdMenuItem from './menu-item';
 
-describe('<sl-menu-item>', () => {
+describe('<sd-menu-item>', () => {
   it('should pass accessibility tests', async () => {
-    const el = await fixture<SlMenuItem>(html`
-      <sl-menu>
-        <sl-menu-item>Item 1</sl-menu-item>
-        <sl-menu-item>Item 2</sl-menu-item>
-        <sl-menu-item>Item 3</sl-menu-item>
-        <sl-divider></sl-divider>
-        <sl-menu-item type="checkbox" checked>Checked</sl-menu-item>
-        <sl-menu-item type="checkbox">Unchecked</sl-menu-item>
-      </sl-menu>
+    const el = await fixture<SdMenuItem>(html`
+      <sd-menu>
+        <sd-menu-item>Item 1</sd-menu-item>
+        <sd-menu-item>Item 2</sd-menu-item>
+        <sd-menu-item>Item 3</sd-menu-item>
+        <sd-divider></sd-divider>
+        <sd-menu-item type="checkbox" checked>Checked</sd-menu-item>
+        <sd-menu-item type="checkbox">Unchecked</sd-menu-item>
+      </sd-menu>
     `);
     await expect(el).to.be.accessible();
   });
 
   it('should have the correct default properties', async () => {
-    const el = await fixture<SlMenuItem>(html` <sl-menu-item>Test</sl-menu-item> `);
+    const el = await fixture<SdMenuItem>(html` <sd-menu-item>Test</sd-menu-item> `);
 
     expect(el.value).to.equal('');
     expect(el.disabled).to.be.false;
@@ -26,7 +26,7 @@ describe('<sl-menu-item>', () => {
   });
 
   it('should render the correct aria attributes when disabled', async () => {
-    const el = await fixture<SlMenuItem>(html` <sl-menu-item>Test</sl-menu-item> `);
+    const el = await fixture<SdMenuItem>(html` <sd-menu-item>Test</sd-menu-item> `);
 
     el.disabled = true;
     await aTimeout(100);
@@ -34,12 +34,12 @@ describe('<sl-menu-item>', () => {
   });
 
   it('should return a text label when calling getTextLabel()', async () => {
-    const el = await fixture<SlMenuItem>(html` <sl-menu-item>Test</sl-menu-item> `);
+    const el = await fixture<SdMenuItem>(html` <sd-menu-item>Test</sd-menu-item> `);
     expect(el.getTextLabel()).to.equal('Test');
   });
 
   it('should emit the slotchange event when the label changes', async () => {
-    const el = await fixture<SlMenuItem>(html` <sl-menu-item>Text</sl-menu-item> `);
+    const el = await fixture<SdMenuItem>(html` <sd-menu-item>Text</sd-menu-item> `);
     const slotChangeHandler = sinon.spy();
 
     el.addEventListener('slotchange', slotChangeHandler);
@@ -50,14 +50,14 @@ describe('<sl-menu-item>', () => {
   });
 
   it('should render a hidden menu item when the inert attribute is used', async () => {
-    const menu = await fixture<SlMenuItem>(html`
-      <sl-menu>
-        <sl-menu-item inert>Item 1</sl-menu-item>
-        <sl-menu-item>Item 2</sl-menu-item>
-        <sl-menu-item>Item 3</sl-menu-item>
-      </sl-menu>
+    const menu = await fixture<SdMenuItem>(html`
+      <sd-menu>
+        <sd-menu-item inert>Item 1</sd-menu-item>
+        <sd-menu-item>Item 2</sd-menu-item>
+        <sd-menu-item>Item 3</sd-menu-item>
+      </sd-menu>
     `);
-    const item1 = menu.querySelector('sl-menu-item')!;
+    const item1 = menu.querySelector('sd-menu-item')!;
 
     expect(getComputedStyle(item1).display).to.equal('none');
   });

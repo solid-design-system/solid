@@ -1,8 +1,8 @@
 import { expect, fixture, html } from '@open-wc/testing';
 
-describe('<sl-split-panel>', () => {
+describe('<sd-split-panel>', () => {
   it('should render a component', async () => {
-    const el = await fixture(html` <sl-split-panel></sl-split-panel> `);
+    const el = await fixture(html` <sd-split-panel></sd-split-panel> `);
 
     expect(el).to.exist;
   });

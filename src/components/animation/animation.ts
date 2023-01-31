@@ -2,25 +2,25 @@ import { animations } from './animations';
 import { customElement, property, queryAsync } from 'lit/decorators.js';
 import { html } from 'lit';
 import { watch } from '../../internal/watch';
-import ShoelaceElement from '../../internal/shoelace-element';
+import SolidElement from '../../internal/solid-element';
 import styles from './animation.styles';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Animate elements declaratively with nearly 100 baked-in presets, or roll your own with custom keyframes. Powered by the [Web Animations API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API).
- * @documentation https://shoelace.style/components/animation
+ * @documentation https://solid.union-investment.com/[storybook-link]/animation
  * @status stable
  * @since 2.0
  *
- * @event sl-cancel - Emitted when the animation is canceled.
- * @event sl-finish - Emitted when the animation finishes.
- * @event sl-start - Emitted when the animation starts or restarts.
+ * @event sd-cancel - Emitted when the animation is canceled.
+ * @event sd-finish - Emitted when the animation finishes.
+ * @event sd-start - Emitted when the animation starts or restarts.
  *
  * @slot - The element to animate. Avoid slotting in more than one element, as subsequent ones will be ignored. To
- *  animate multiple elements, either wrap them in a single container or use multiple `<sl-animation>` elements.
+ *  animate multiple elements, either wrap them in a single container or use multiple `<sd-animation>` elements.
  */
-@customElement('sl-animation')
-export default class SlAnimation extends ShoelaceElement {
+@customElement('sd-animation')
+export default class SdAnimation extends SolidElement {
   static styles: CSSResultGroup = styles;
 
   private animation?: Animation;
@@ -50,7 +50,7 @@ export default class SlAnimation extends ShoelaceElement {
   @property({ type: Number }) duration = 1000;
 
   /**
-   * The easing function to use for the animation. This can be a Shoelace easing function or a custom easing function
+   * The easing function to use for the animation. This can be a Solid easing function or a custom easing function
    * such as `cubic-bezier(0, 1, .76, 1.14)`.
    */
   @property() easing = 'linear';
@@ -103,13 +103,13 @@ export default class SlAnimation extends ShoelaceElement {
   private handleAnimationFinish() {
     this.play = false;
     this.hasStarted = false;
-    this.emit('sl-finish');
+    this.emit('sd-finish');
   }
 
   private handleAnimationCancel() {
     this.play = false;
     this.hasStarted = false;
-    this.emit('sl-cancel');
+    this.emit('sd-cancel');
   }
 
   private handleSlotChange() {
@@ -144,7 +144,7 @@ export default class SlAnimation extends ShoelaceElement {
 
     if (this.play) {
       this.hasStarted = true;
-      this.emit('sl-start');
+      this.emit('sd-start');
     } else {
       this.animation.pause();
     }
@@ -186,7 +186,7 @@ export default class SlAnimation extends ShoelaceElement {
     if (this.animation) {
       if (this.play && !this.hasStarted) {
         this.hasStarted = true;
-        this.emit('sl-start');
+        this.emit('sd-start');
       }
 
       if (this.play) {
@@ -224,6 +224,6 @@ export default class SlAnimation extends ShoelaceElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-animation': SlAnimation;
+    'sd-animation': SdAnimation;
   }
 }

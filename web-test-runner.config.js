@@ -29,7 +29,7 @@ export default {
       <head></head>
       <body>
         <link rel="stylesheet" href="dist/themes/light.css">
-        <script type="module" src="dist/shoelace.js"></script>
+        <script type="module" src="dist/solid.js"></script>
         <script type="module" src="${testFramework}"></script>
       </body>
     </html>

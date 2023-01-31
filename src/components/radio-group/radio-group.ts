@@ -5,27 +5,27 @@ import { FormControlController } from '../../internal/form';
 import { HasSlotController } from '../../internal/slot';
 import { html } from 'lit';
 import { watch } from '../../internal/watch';
-import ShoelaceElement from '../../internal/shoelace-element';
+import SolidElement from '../../internal/solid-element';
 import styles from './radio-group.styles';
 import type { CSSResultGroup } from 'lit';
-import type { ShoelaceFormControl } from '../../internal/shoelace-element';
-import type SlRadio from '../radio/radio';
-import type SlRadioButton from '../radio-button/radio-button';
+import type { SolidFormControl } from '../../internal/solid-element';
+import type SdRadio from '../radio/radio';
+import type SdRadioButton from '../radio-button/radio-button';
 
 /**
  * @summary Radio groups are used to group multiple [radios](/components/radio) or [radio buttons](/components/radio-button) so they function as a single form control.
- * @documentation https://shoelace.style/components/radio-group
+ * @documentation https://solid.union-investment.com/[storybook-link]/radio-group
  * @status stable
  * @since 2.0
  *
- * @dependency sl-button-group
+ * @dependency sd-button-group
  *
- * @slot - The default slot where `<sl-radio>` or `<sl-radio-button>` elements are placed.
+ * @slot - The default slot where `<sd-radio>` or `<sd-radio-button>` elements are placed.
  * @slot label - The radio group's label. Required for proper accessibility. Alternatively, you can use the `label`
  *  attribute.
  *
- * @event sl-change - Emitted when the radio group's selected value changes.
- * @event sl-input - Emitted when the radio group receives user input.
+ * @event sd-change - Emitted when the radio group's selected value changes.
+ * @event sd-input - Emitted when the radio group receives user input.
  *
  * @csspart form-control - The form control that wraps the label, input, and help text.
  * @csspart form-control-label - The label's wrapper.
@@ -34,8 +34,8 @@ import type SlRadioButton from '../radio-button/radio-button';
  * @csspart button-group - The button group that wraps radio buttons.
  * @csspart button-group__base - The button group's `base` part.
  */
-@customElement('sl-radio-group')
-export default class SlRadioGroup extends ShoelaceElement implements ShoelaceFormControl {
+@customElement('sd-radio-group')
+export default class SdRadioGroup extends SolidElement implements SolidFormControl {
   static styles: CSSResultGroup = styles;
 
   protected readonly formControlController = new FormControlController(this);
@@ -85,11 +85,11 @@ export default class SlRadioGroup extends ShoelaceElement implements ShoelaceFor
   }
 
   private getAllRadios() {
-    return [...this.querySelectorAll<SlRadio | SlRadioButton>('sl-radio, sl-radio-button')];
+    return [...this.querySelectorAll<SdRadio | SdRadioButton>('sd-radio, sd-radio-button')];
   }
 
   private handleRadioClick(event: MouseEvent) {
-    const target = (event.target as HTMLElement).closest<SlRadio | SlRadioButton>('sl-radio, sl-radio-button')!;
+    const target = (event.target as HTMLElement).closest<SdRadio | SdRadioButton>('sd-radio, sd-radio-button')!;
     const radios = this.getAllRadios();
     const oldValue = this.value;
 
@@ -101,8 +101,8 @@ export default class SlRadioGroup extends ShoelaceElement implements ShoelaceFor
     radios.forEach(radio => (radio.checked = radio === target));
 
     if (this.value !== oldValue) {
-      this.emit('sl-change');
-      this.emit('sl-input');
+      this.emit('sd-change');
+      this.emit('sd-input');
     }
   }
 
@@ -144,8 +144,8 @@ export default class SlRadioGroup extends ShoelaceElement implements ShoelaceFor
     }
 
     if (this.value !== oldValue) {
-      this.emit('sl-change');
-      this.emit('sl-input');
+      this.emit('sd-change');
+      this.emit('sd-input');
     }
 
     event.preventDefault();
@@ -167,7 +167,7 @@ export default class SlRadioGroup extends ShoelaceElement implements ShoelaceFor
 
     radios.forEach(radio => (radio.checked = radio.value === this.value));
 
-    this.hasButtonGroup = radios.some(radio => radio.tagName.toLowerCase() === 'sl-radio-button');
+    this.hasButtonGroup = radios.some(radio => radio.tagName.toLowerCase() === 'sd-radio-button');
 
     if (!radios.some(radio => radio.checked)) {
       if (this.hasButtonGroup) {
@@ -179,7 +179,7 @@ export default class SlRadioGroup extends ShoelaceElement implements ShoelaceFor
     }
 
     if (this.hasButtonGroup) {
-      const buttonGroup = this.shadowRoot?.querySelector('sl-button-group');
+      const buttonGroup = this.shadowRoot?.querySelector('sd-button-group');
 
       if (buttonGroup) {
         buttonGroup.disableRole = true;
@@ -258,12 +258,12 @@ export default class SlRadioGroup extends ShoelaceElement implements ShoelaceFor
       <fieldset
         part="form-control"
         class=${classMap({
-          'form-control': true,
-          'form-control--medium': true,
-          'form-control--radio-group': true,
-          'form-control--has-label': hasLabel,
-          'form-control--has-help-text': hasHelpText
-        })}
+      'form-control': true,
+      'form-control--medium': true,
+      'form-control--radio-group': true,
+      'form-control--has-label': hasLabel,
+      'form-control--has-help-text': hasHelpText
+    })}
         role="radiogroup"
         aria-labelledby="label"
         aria-describedby="help-text"
@@ -294,12 +294,12 @@ export default class SlRadioGroup extends ShoelaceElement implements ShoelaceFor
           </div>
 
           ${this.hasButtonGroup
-            ? html`
-                <sl-button-group part="button-group" exportparts="base:button-group__base">
+        ? html`
+                <sd-button-group part="button-group" exportparts="base:button-group__base">
                   ${defaultSlot}
-                </sl-button-group>
+                </sd-button-group>
               `
-            : defaultSlot}
+        : defaultSlot}
         </div>
 
         <slot
@@ -319,6 +319,6 @@ export default class SlRadioGroup extends ShoelaceElement implements ShoelaceFor
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-radio-group': SlRadioGroup;
+    'sd-radio-group': SdRadioGroup;
   }
 }

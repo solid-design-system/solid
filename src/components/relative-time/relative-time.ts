@@ -1,7 +1,7 @@
 import { customElement, property, state } from 'lit/decorators.js';
 import { html } from 'lit';
 import { LocalizeController } from '../../utilities/localize';
-import ShoelaceElement from '../../internal/shoelace-element';
+import SolidElement from '../../internal/solid-element';
 
 interface UnitConfig {
   max: number;
@@ -20,12 +20,12 @@ const availableUnits: UnitConfig[] = [
 
 /**
  * @summary Outputs a localized time phrase relative to the current date and time.
- * @documentation https://shoelace.style/components/relative-time
+ * @documentation https://solid.union-investment.com/[storybook-link]/relative-time
  * @status stable
  * @since 2.0
  */
-@customElement('sl-relative-time')
-export default class SlRelativeTime extends ShoelaceElement {
+@customElement('sd-relative-time')
+export default class SdRelativeTime extends SolidElement {
   private readonly localize = new LocalizeController(this);
   private updateTimeout: number;
 
@@ -123,6 +123,6 @@ function getTimeUntilNextUnit(unit: 'second' | 'minute' | 'hour' | 'day') {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-relative-time': SlRelativeTime;
+    'sd-relative-time': SdRelativeTime;
   }
 }

@@ -1,7 +1,7 @@
 import { LitElement } from 'lit';
 import { property } from 'lit/decorators.js';
 
-export default class ShoelaceElement extends LitElement {
+export default class SolidElement extends LitElement {
   // Make localization attributes reactive
   @property() dir: string;
   @property() lang: string;
@@ -22,7 +22,7 @@ export default class ShoelaceElement extends LitElement {
   }
 }
 
-export interface ShoelaceFormControl extends ShoelaceElement {
+export interface SolidFormControl extends SolidElement {
   // Standard form attributes
   name: string;
   value: unknown;

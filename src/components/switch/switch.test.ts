@@ -1,16 +1,16 @@
 import { aTimeout, expect, fixture, html, oneEvent, waitUntil } from '@open-wc/testing';
 import { sendKeys } from '@web/test-runner-commands';
 import sinon from 'sinon';
-import type SlSwitch from './switch';
+import type SdSwitch from './switch';
 
-describe('<sl-switch>', () => {
+describe('<sd-switch>', () => {
   it('should pass accessibility tests', async () => {
-    const el = await fixture<SlSwitch>(html` <sl-switch>Switch</sl-switch> `);
+    const el = await fixture<SdSwitch>(html` <sd-switch>Switch</sd-switch> `);
     await expect(el).to.be.accessible();
   });
 
   it('default properties', async () => {
-    const el = await fixture<SlSwitch>(html` <sl-switch></sl-switch> `);
+    const el = await fixture<SdSwitch>(html` <sd-switch></sd-switch> `);
 
     expect(el.name).to.equal('');
     expect(el.value).to.be.undefined;
@@ -22,32 +22,32 @@ describe('<sl-switch>', () => {
   });
 
   it('should have title if title attribute is set', async () => {
-    const el = await fixture<SlSwitch>(html` <sl-switch title="Test"></sl-switch> `);
+    const el = await fixture<SdSwitch>(html` <sd-switch title="Test"></sd-switch> `);
     const input = el.shadowRoot!.querySelector('input')!;
 
     expect(input.title).to.equal('Test');
   });
 
   it('should be disabled with the disabled attribute', async () => {
-    const el = await fixture<SlSwitch>(html` <sl-switch disabled></sl-switch> `);
+    const el = await fixture<SdSwitch>(html` <sd-switch disabled></sd-switch> `);
     const input = el.shadowRoot!.querySelector<HTMLInputElement>('input')!;
 
     expect(input.disabled).to.be.true;
   });
 
   it('should be valid by default', async () => {
-    const el = await fixture<SlSwitch>(html` <sl-switch></sl-switch> `);
+    const el = await fixture<SdSwitch>(html` <sd-switch></sd-switch> `);
 
     expect(el.checkValidity()).to.be.true;
   });
 
-  it('should emit sl-change and sl-input when clicked', async () => {
-    const el = await fixture<SlSwitch>(html` <sl-switch></sl-switch> `);
+  it('should emit sd-change and sd-input when clicked', async () => {
+    const el = await fixture<SdSwitch>(html` <sd-switch></sd-switch> `);
     const changeHandler = sinon.spy();
     const inputHandler = sinon.spy();
 
-    el.addEventListener('sl-change', changeHandler);
-    el.addEventListener('sl-input', inputHandler);
+    el.addEventListener('sd-change', changeHandler);
+    el.addEventListener('sd-input', inputHandler);
     el.click();
     await el.updateComplete;
 
@@ -56,13 +56,13 @@ describe('<sl-switch>', () => {
     expect(el.checked).to.be.true;
   });
 
-  it('should emit sl-change when toggled with spacebar', async () => {
-    const el = await fixture<SlSwitch>(html` <sl-switch></sl-switch> `);
+  it('should emit sd-change when toggled with spacebar', async () => {
+    const el = await fixture<SdSwitch>(html` <sd-switch></sd-switch> `);
     const changeHandler = sinon.spy();
     const inputHandler = sinon.spy();
 
-    el.addEventListener('sl-change', changeHandler);
-    el.addEventListener('sl-input', inputHandler);
+    el.addEventListener('sd-change', changeHandler);
+    el.addEventListener('sd-input', inputHandler);
     el.focus();
     await sendKeys({ press: ' ' });
 
@@ -71,13 +71,13 @@ describe('<sl-switch>', () => {
     expect(el.checked).to.be.true;
   });
 
-  it('should emit sl-change and sl-input when toggled with the right arrow', async () => {
-    const el = await fixture<SlSwitch>(html` <sl-switch></sl-switch> `);
+  it('should emit sd-change and sd-input when toggled with the right arrow', async () => {
+    const el = await fixture<SdSwitch>(html` <sd-switch></sd-switch> `);
     const changeHandler = sinon.spy();
     const inputHandler = sinon.spy();
 
-    el.addEventListener('sl-change', changeHandler);
-    el.addEventListener('sl-input', inputHandler);
+    el.addEventListener('sd-change', changeHandler);
+    el.addEventListener('sd-input', inputHandler);
     el.focus();
     await sendKeys({ press: 'ArrowRight' });
     await el.updateComplete;
@@ -87,13 +87,13 @@ describe('<sl-switch>', () => {
     expect(el.checked).to.be.true;
   });
 
-  it('should emit sl-change and sl-input when toggled with the left arrow', async () => {
-    const el = await fixture<SlSwitch>(html` <sl-switch checked></sl-switch> `);
+  it('should emit sd-change and sd-input when toggled with the left arrow', async () => {
+    const el = await fixture<SdSwitch>(html` <sd-switch checked></sd-switch> `);
     const changeHandler = sinon.spy();
     const inputHandler = sinon.spy();
 
-    el.addEventListener('sl-change', changeHandler);
-    el.addEventListener('sl-input', inputHandler);
+    el.addEventListener('sd-change', changeHandler);
+    el.addEventListener('sd-input', inputHandler);
     el.focus();
     await sendKeys({ press: 'ArrowLeft' });
     await el.updateComplete;
@@ -103,10 +103,10 @@ describe('<sl-switch>', () => {
     expect(el.checked).to.be.false;
   });
 
-  it('should not emit sl-change or sl-input when checked is set by JavaScript', async () => {
-    const el = await fixture<SlSwitch>(html` <sl-switch></sl-switch> `);
-    el.addEventListener('sl-change', () => expect.fail('sl-change incorrectly emitted'));
-    el.addEventListener('sl-input', () => expect.fail('sl-change incorrectly emitted'));
+  it('should not emit sd-change or sd-input when checked is set by JavaScript', async () => {
+    const el = await fixture<SdSwitch>(html` <sd-switch></sd-switch> `);
+    el.addEventListener('sd-change', () => expect.fail('sd-change incorrectly emitted'));
+    el.addEventListener('sd-input', () => expect.fail('sd-change incorrectly emitted'));
     el.checked = true;
     await el.updateComplete;
     el.checked = false;
@@ -117,11 +117,11 @@ describe('<sl-switch>', () => {
     it('should submit the correct value when a value is provided', async () => {
       const form = await fixture<HTMLFormElement>(html`
         <form>
-          <sl-switch name="a" value="1" checked></sl-switch>
-          <sl-button type="submit">Submit</sl-button>
+          <sd-switch name="a" value="1" checked></sd-switch>
+          <sd-button type="submit">Submit</sd-button>
         </form>
       `);
-      const button = form.querySelector('sl-button')!;
+      const button = form.querySelector('sd-button')!;
       const submitHandler = sinon.spy((event: SubmitEvent) => {
         formData = new FormData(form);
         event.preventDefault();
@@ -139,11 +139,11 @@ describe('<sl-switch>', () => {
     it('should submit "on" when no value is provided', async () => {
       const form = await fixture<HTMLFormElement>(html`
         <form>
-          <sl-switch name="a" checked></sl-switch>
-          <sl-button type="submit">Submit</sl-button>
+          <sd-switch name="a" checked></sd-switch>
+          <sd-button type="submit">Submit</sd-button>
         </form>
       `);
-      const button = form.querySelector('sl-button')!;
+      const button = form.querySelector('sd-button')!;
       const submitHandler = sinon.spy((event: SubmitEvent) => {
         formData = new FormData(form);
         event.preventDefault();
@@ -161,12 +161,12 @@ describe('<sl-switch>', () => {
     it('should show a constraint validation error when setCustomValidity() is called', async () => {
       const form = await fixture<HTMLFormElement>(html`
         <form>
-          <sl-switch name="a" value="1" checked></sl-switch>
-          <sl-button type="submit">Submit</sl-button>
+          <sd-switch name="a" value="1" checked></sd-switch>
+          <sd-button type="submit">Submit</sd-button>
         </form>
       `);
-      const button = form.querySelector('sl-button')!;
-      const slSwitch = form.querySelector('sl-switch')!;
+      const button = form.querySelector('sd-button')!;
+      const slSwitch = form.querySelector('sd-switch')!;
       const submitHandler = sinon.spy((event: SubmitEvent) => event.preventDefault());
 
       // Submitting the form after setting custom validity should not trigger the handler
@@ -179,12 +179,12 @@ describe('<sl-switch>', () => {
     });
 
     it('should be invalid when required and unchecked', async () => {
-      const slSwitch = await fixture<HTMLFormElement>(html` <sl-switch required></sl-switch> `);
+      const slSwitch = await fixture<HTMLFormElement>(html` <sd-switch required></sd-switch> `);
       expect(slSwitch.checkValidity()).to.be.false;
     });
 
     it('should be valid when required and checked', async () => {
-      const slSwitch = await fixture<HTMLFormElement>(html` <sl-switch required checked></sl-switch> `);
+      const slSwitch = await fixture<HTMLFormElement>(html` <sd-switch required checked></sd-switch> `);
       expect(slSwitch.checkValidity()).to.be.true;
     });
 
@@ -192,9 +192,9 @@ describe('<sl-switch>', () => {
       const el = await fixture<HTMLFormElement>(html`
         <div>
           <form id="f">
-            <sl-button type="submit">Submit</sl-button>
+            <sd-button type="submit">Submit</sd-button>
           </form>
-          <sl-switch form="f" name="a" value="1" checked></sl-switch>
+          <sd-switch form="f" name="a" value="1" checked></sd-switch>
         </div>
       `);
       const form = el.querySelector('form')!;
@@ -208,12 +208,12 @@ describe('<sl-switch>', () => {
     it('should reset the element to its initial value', async () => {
       const form = await fixture<HTMLFormElement>(html`
         <form>
-          <sl-switch name="a" value="1" checked></sl-switch>
-          <sl-button type="reset">Reset</sl-button>
+          <sd-switch name="a" value="1" checked></sd-switch>
+          <sd-button type="reset">Reset</sd-button>
         </form>
       `);
-      const button = form.querySelector('sl-button')!;
-      const switchEl = form.querySelector('sl-switch')!;
+      const button = form.querySelector('sd-button')!;
+      const switchEl = form.querySelector('sd-switch')!;
       switchEl.checked = false;
 
       await switchEl.updateComplete;

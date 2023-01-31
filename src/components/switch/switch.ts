@@ -6,23 +6,23 @@ import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { live } from 'lit/directives/live.js';
 import { watch } from '../../internal/watch';
-import ShoelaceElement from '../../internal/shoelace-element';
+import SolidElement from '../../internal/solid-element';
 import styles from './switch.styles';
 import type { CSSResultGroup } from 'lit';
-import type { ShoelaceFormControl } from '../../internal/shoelace-element';
+import type { SolidFormControl } from '../../internal/solid-element';
 
 /**
  * @summary Switches allow the user to toggle an option on or off.
- * @documentation https://shoelace.style/components/switch
+ * @documentation https://solid.union-investment.com/[storybook-link]/switch
  * @status stable
  * @since 2.0
  *
  * @slot - The switch's label.
  *
- * @event sl-blur - Emitted when the control loses focus.
- * @event sl-change - Emitted when the control's checked state changes.
- * @event sl-input - Emitted when the control receives input.
- * @event sl-focus - Emitted when the control gains focus.
+ * @event sd-blur - Emitted when the control loses focus.
+ * @event sd-change - Emitted when the control's checked state changes.
+ * @event sd-input - Emitted when the control receives input.
+ * @event sd-focus - Emitted when the control gains focus.
  *
  * @csspart base - The component's base wrapper.
  * @csspart control - The control that houses the switch's thumb.
@@ -33,14 +33,14 @@ import type { ShoelaceFormControl } from '../../internal/shoelace-element';
  * @cssproperty --height - The height of the switch.
  * @cssproperty --thumb-size - The size of the thumb.
  */
-@customElement('sl-switch')
-export default class SlSwitch extends ShoelaceElement implements ShoelaceFormControl {
+@customElement('sd-switch')
+export default class SdSwitch extends SolidElement implements SolidFormControl {
   static styles: CSSResultGroup = styles;
 
   private readonly formControlController = new FormControlController(this, {
-    value: (control: SlSwitch) => (control.checked ? control.value || 'on' : undefined),
-    defaultValue: (control: SlSwitch) => control.defaultChecked,
-    setValue: (control: SlSwitch, checked: boolean) => (control.checked = checked)
+    value: (control: SdSwitch) => (control.checked ? control.value || 'on' : undefined),
+    defaultValue: (control: SdSwitch) => control.defaultChecked,
+    setValue: (control: SdSwitch, checked: boolean) => (control.checked = checked)
   });
 
   @query('input[type="checkbox"]') input: HTMLInputElement;
@@ -82,36 +82,36 @@ export default class SlSwitch extends ShoelaceElement implements ShoelaceFormCon
 
   private handleBlur() {
     this.hasFocus = false;
-    this.emit('sl-blur');
+    this.emit('sd-blur');
   }
 
   private handleInput() {
-    this.emit('sl-input');
+    this.emit('sd-input');
   }
 
   private handleClick() {
     this.checked = !this.checked;
-    this.emit('sl-change');
+    this.emit('sd-change');
   }
 
   private handleFocus() {
     this.hasFocus = true;
-    this.emit('sl-focus');
+    this.emit('sd-focus');
   }
 
   private handleKeyDown(event: KeyboardEvent) {
     if (event.key === 'ArrowLeft') {
       event.preventDefault();
       this.checked = false;
-      this.emit('sl-change');
-      this.emit('sl-input');
+      this.emit('sd-change');
+      this.emit('sd-input');
     }
 
     if (event.key === 'ArrowRight') {
       event.preventDefault();
       this.checked = true;
-      this.emit('sl-change');
-      this.emit('sl-input');
+      this.emit('sd-change');
+      this.emit('sd-input');
     }
   }
 
@@ -163,14 +163,14 @@ export default class SlSwitch extends ShoelaceElement implements ShoelaceFormCon
       <label
         part="base"
         class=${classMap({
-          switch: true,
-          'switch--checked': this.checked,
-          'switch--disabled': this.disabled,
-          'switch--focused': this.hasFocus,
-          'switch--small': this.size === 'small',
-          'switch--medium': this.size === 'medium',
-          'switch--large': this.size === 'large'
-        })}
+      switch: true,
+      'switch--checked': this.checked,
+      'switch--disabled': this.disabled,
+      'switch--focused': this.hasFocus,
+      'switch--small': this.size === 'small',
+      'switch--medium': this.size === 'medium',
+      'switch--large': this.size === 'large'
+    })}
       >
         <input
           class="switch__input"
@@ -202,6 +202,6 @@ export default class SlSwitch extends ShoelaceElement implements ShoelaceFormCon
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-switch': SlSwitch;
+    'sd-switch': SdSwitch;
   }
 }

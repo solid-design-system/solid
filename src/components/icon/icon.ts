@@ -4,7 +4,7 @@ import { html } from 'lit';
 import { requestIcon } from './request';
 import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
 import { watch } from '../../internal/watch';
-import ShoelaceElement from '../../internal/shoelace-element';
+import SolidElement from '../../internal/solid-element';
 import styles from './icon.styles';
 import type { CSSResultGroup } from 'lit';
 
@@ -12,15 +12,15 @@ let parser: DOMParser;
 
 /**
  * @summary Icons are symbols that can be used to represent various options within an application.
- * @documentation https://shoelace.style/components/icon
+ * @documentation https://solid.union-investment.com/[storybook-link]/icon
  * @status stable
  * @since 2.0
  *
- * @event sl-load - Emitted when the icon has loaded.
- * @event sl-error - Emitted when the icon fails to load due to an error.
+ * @event sd-load - Emitted when the icon has loaded.
+ * @event sd-error - Emitted when the icon fails to load due to an error.
  */
-@customElement('sl-icon')
-export default class SlIcon extends ShoelaceElement {
+@customElement('sd-icon')
+export default class SdIcon extends SolidElement {
   static styles: CSSResultGroup = styles;
 
   @state() private svg = '';
@@ -104,17 +104,17 @@ export default class SlIcon extends ShoelaceElement {
           if (svgEl !== null) {
             library?.mutator?.(svgEl);
             this.svg = svgEl.outerHTML;
-            this.emit('sl-load');
+            this.emit('sd-load');
           } else {
             this.svg = '';
-            this.emit('sl-error');
+            this.emit('sd-error');
           }
         } else {
           this.svg = '';
-          this.emit('sl-error');
+          this.emit('sd-error');
         }
       } catch {
-        this.emit('sl-error');
+        this.emit('sd-error');
       }
     } else if (this.svg.length > 0) {
       // If we can't resolve a URL and an icon was previously set, remove it
@@ -129,6 +129,6 @@ export default class SlIcon extends ShoelaceElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-icon': SlIcon;
+    'sd-icon': SdIcon;
   }
 }

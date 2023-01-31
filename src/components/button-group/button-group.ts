@@ -1,21 +1,21 @@
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { html } from 'lit';
-import ShoelaceElement from '../../internal/shoelace-element';
+import SolidElement from '../../internal/solid-element';
 import styles from './button-group.styles';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Button groups can be used to group related buttons into sections.
- * @documentation https://shoelace.style/components/button-group
+ * @documentation https://solid.union-investment.com/[storybook-link]/button-group
  * @status stable
  * @since 2.0
  *
- * @slot - One or more `<sl-button>` elements to display in the button group.
+ * @slot - One or more `<sd-button>` elements to display in the button group.
  *
  * @csspart base - The component's base wrapper.
  */
-@customElement('sl-button-group')
-export default class SlButtonGroup extends ShoelaceElement {
+@customElement('sd-button-group')
+export default class SdButtonGroup extends SolidElement {
   static styles: CSSResultGroup = styles;
 
   @query('slot') defaultSlot: HTMLSlotElement;
@@ -30,22 +30,22 @@ export default class SlButtonGroup extends ShoelaceElement {
 
   private handleFocus(event: CustomEvent) {
     const button = findButton(event.target as HTMLElement);
-    button?.classList.add('sl-button-group__button--focus');
+    button?.classList.add('sd-button-group__button--focus');
   }
 
   private handleBlur(event: CustomEvent) {
     const button = findButton(event.target as HTMLElement);
-    button?.classList.remove('sl-button-group__button--focus');
+    button?.classList.remove('sd-button-group__button--focus');
   }
 
   private handleMouseOver(event: CustomEvent) {
     const button = findButton(event.target as HTMLElement);
-    button?.classList.add('sl-button-group__button--hover');
+    button?.classList.add('sd-button-group__button--hover');
   }
 
   private handleMouseOut(event: CustomEvent) {
     const button = findButton(event.target as HTMLElement);
-    button?.classList.remove('sl-button-group__button--hover');
+    button?.classList.remove('sd-button-group__button--hover');
   }
 
   private handleSlotChange() {
@@ -56,11 +56,11 @@ export default class SlButtonGroup extends ShoelaceElement {
       const button = findButton(el);
 
       if (button !== null) {
-        button.classList.add('sl-button-group__button');
-        button.classList.toggle('sl-button-group__button--first', index === 0);
-        button.classList.toggle('sl-button-group__button--inner', index > 0 && index < slottedElements.length - 1);
-        button.classList.toggle('sl-button-group__button--last', index === slottedElements.length - 1);
-        button.classList.toggle('sl-button-group__button--radio', button.tagName.toLowerCase() === 'sl-radio-button');
+        button.classList.add('sd-button-group__button');
+        button.classList.toggle('sd-button-group__button--first', index === 0);
+        button.classList.toggle('sd-button-group__button--inner', index > 0 && index < slottedElements.length - 1);
+        button.classList.toggle('sd-button-group__button--last', index === slottedElements.length - 1);
+        button.classList.toggle('sd-button-group__button--radio', button.tagName.toLowerCase() === 'sd-radio-button');
       }
     });
   }
@@ -84,7 +84,7 @@ export default class SlButtonGroup extends ShoelaceElement {
 }
 
 function findButton(el: HTMLElement) {
-  const selector = 'sl-button, sl-radio-button';
+  const selector = 'sd-button, sd-radio-button';
 
   // The button could be the target element or a child of it (e.g. a dropdown or tooltip anchor)
   return el.closest(selector) ?? el.querySelector(selector);
@@ -92,6 +92,6 @@ function findButton(el: HTMLElement) {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-button-group': SlButtonGroup;
+    'sd-button-group': SdButtonGroup;
   }
 }

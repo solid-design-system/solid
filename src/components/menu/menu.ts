@@ -1,25 +1,25 @@
 import { customElement, query } from 'lit/decorators.js';
 import { html } from 'lit';
-import ShoelaceElement from '../../internal/shoelace-element';
+import SolidElement from '../../internal/solid-element';
 import styles from './menu.styles';
 import type { CSSResultGroup } from 'lit';
-import type SlMenuItem from '../menu-item/menu-item';
+import type SdMenuItem from '../menu-item/menu-item';
 export interface MenuSelectEventDetail {
-  item: SlMenuItem;
+  item: SdMenuItem;
 }
 
 /**
  * @summary Menus provide a list of options for the user to choose from.
- * @documentation https://shoelace.style/components/menu
+ * @documentation https://solid.union-investment.com/[storybook-link]/menu
  * @status stable
  * @since 2.0
  *
  * @slot - The menu's content, including menu items, menu labels, and dividers.
  *
- * @event {{ item: SlMenuItem }} sl-select - Emitted when a menu item is selected.
+ * @event {{ item: SdMenuItem }} sd-select - Emitted when a menu item is selected.
  */
-@customElement('sl-menu')
-export default class SlMenu extends ShoelaceElement {
+@customElement('sd-menu')
+export default class SdMenu extends SolidElement {
   static styles: CSSResultGroup = styles;
 
   @query('slot') defaultSlot: HTMLSlotElement;
@@ -36,12 +36,12 @@ export default class SlMenu extends ShoelaceElement {
       }
 
       return true;
-    }) as SlMenuItem[];
+    }) as SdMenuItem[];
   }
 
   private handleClick(event: MouseEvent) {
     const target = event.target as HTMLElement;
-    const item = target.closest('sl-menu-item');
+    const item = target.closest('sd-menu-item');
 
     if (!item || item.disabled || item.inert) {
       return;
@@ -51,7 +51,7 @@ export default class SlMenu extends ShoelaceElement {
       item.checked = !item.checked;
     }
 
-    this.emit('sl-select', { detail: { item } });
+    this.emit('sd-select', { detail: { item } });
   }
 
   private handleKeyDown(event: KeyboardEvent) {
@@ -105,7 +105,7 @@ export default class SlMenu extends ShoelaceElement {
     const target = event.target as HTMLElement;
 
     if (this.isMenuItem(target)) {
-      this.setCurrentItem(target as SlMenuItem);
+      this.setCurrentItem(target as SdMenuItem);
     }
   }
 
@@ -120,7 +120,7 @@ export default class SlMenu extends ShoelaceElement {
 
   private isMenuItem(item: HTMLElement) {
     return (
-      item.tagName.toLowerCase() === 'sl-menu-item' ||
+      item.tagName.toLowerCase() === 'sd-menu-item' ||
       ['menuitem', 'menuitemcheckbox', 'menuitemradio'].includes(item.getAttribute('role') ?? '')
     );
   }
@@ -137,7 +137,7 @@ export default class SlMenu extends ShoelaceElement {
    * @internal Sets the current menu item to the specified element. This sets `tabindex="0"` on the target element and
    * `tabindex="-1"` to all other items. This method must be called prior to setting focus on a menu item.
    */
-  setCurrentItem(item: SlMenuItem) {
+  setCurrentItem(item: SdMenuItem) {
     const items = this.getAllItems();
 
     // Update tab indexes
@@ -160,6 +160,6 @@ export default class SlMenu extends ShoelaceElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-menu': SlMenu;
+    'sd-menu': SdMenu;
   }
 }

@@ -1,18 +1,18 @@
 {
-  "name": "@shoelace-style/shoelace",
-  "description": "A forward-thinking library of web components.",
-  "version": "2.0.0",
-  "homepage": "https://github.com/shoelace-style/shoelace",
-  "author": "Cory LaViska",
+  "name": "@union-investment/solid",
+  "description": "A solid set of web components.",
+  "version": "1.0.0",
+  "homepage": "https://solid.union-investment.com",
+  "author": "Union Investment",
   "license": "MIT",
   "customElements": "dist/custom-elements.json",
   "web-types": "dist/web-types.json",
   "type": "module",
-  "types": "dist/shoelace.d.ts",
+  "types": "dist/solid.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/shoelace.d.ts",
-      "import": "./dist/shoelace.js"
+      "types": "./dist/solid.d.ts",
+      "import": "./dist/solid.js"
     },
     "./dist/themes/*": "./dist/themes/*",
     "./dist/components/*": "./dist/components/*",
@@ -31,14 +31,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shoelace-style/shoelace.git"
-  },
-  "bugs": {
-    "url": "https://github.com/shoelace-style/shoelace/issues"
-  },
-  "funding": {
-    "type": "individual",
-    "url": "https://github.com/sponsors/claviska"
+    "url": "git+https://Union-Investment@dev.azure.com/Union-Investment/Frontend/_git/solid-components"
   },
   "scripts": {
     "start": "node scripts/build.js --bundle --serve",

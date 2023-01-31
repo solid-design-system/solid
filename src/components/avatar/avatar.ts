@@ -3,19 +3,19 @@ import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property, state } from 'lit/decorators.js';
 import { html } from 'lit';
 import { watch } from '../../internal/watch';
-import ShoelaceElement from '../../internal/shoelace-element';
+import SolidElement from '../../internal/solid-element';
 import styles from './avatar.styles';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Avatars are used to represent a person or object.
- * @documentation https://shoelace.style/components/avatar
+ * @documentation https://solid.union-investment.com/[storybook-link]/avatar
  * @status stable
  * @since 2.0
  *
- * @dependency sl-icon
+ * @dependency sd-icon
  *
- * @slot icon - The default icon to use when no image or initials are present. Works best with `<sl-icon>`.
+ * @slot icon - The default icon to use when no image or initials are present. Works best with `<sd-icon>`.
  *
  * @csspart base - The component's base wrapper.
  * @csspart icon - The container that wraps the avatar's icon.
@@ -24,8 +24,8 @@ import type { CSSResultGroup } from 'lit';
  *
  * @cssproperty --size - The size of the avatar.
  */
-@customElement('sl-avatar')
-export default class SlAvatar extends ShoelaceElement {
+@customElement('sd-avatar')
+export default class SdAvatar extends SolidElement {
   static styles: CSSResultGroup = styles;
 
   @state() private hasError = false;
@@ -56,23 +56,23 @@ export default class SlAvatar extends ShoelaceElement {
       <div
         part="base"
         class=${classMap({
-          avatar: true,
-          'avatar--circle': this.shape === 'circle',
-          'avatar--rounded': this.shape === 'rounded',
-          'avatar--square': this.shape === 'square'
-        })}
+      avatar: true,
+      'avatar--circle': this.shape === 'circle',
+      'avatar--rounded': this.shape === 'rounded',
+      'avatar--square': this.shape === 'square'
+    })}
         role="img"
         aria-label=${this.label}
       >
         ${this.initials
-          ? html` <div part="initials" class="avatar__initials">${this.initials}</div> `
-          : html`
+        ? html` <div part="initials" class="avatar__initials">${this.initials}</div> `
+        : html`
               <slot name="icon" part="icon" class="avatar__icon" aria-hidden="true">
-                <sl-icon name="person-fill" library="system"></sl-icon>
+                <sd-icon name="person-fill" library="system"></sd-icon>
               </slot>
             `}
         ${this.image && !this.hasError
-          ? html`
+        ? html`
               <img
                 part="image"
                 class="avatar__image"
@@ -82,7 +82,7 @@ export default class SlAvatar extends ShoelaceElement {
                 @error="${() => (this.hasError = true)}"
               />
             `
-          : ''}
+        : ''}
       </div>
     `;
   }
@@ -90,6 +90,6 @@ export default class SlAvatar extends ShoelaceElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-avatar': SlAvatar;
+    'sd-avatar': SdAvatar;
   }
 }

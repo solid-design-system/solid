@@ -2,21 +2,21 @@ import { customElement, property } from 'lit/decorators.js';
 import { html } from 'lit';
 import { requestInclude } from './request';
 import { watch } from '../../internal/watch';
-import ShoelaceElement from '../../internal/shoelace-element';
+import SolidElement from '../../internal/solid-element';
 import styles from './include.styles';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Includes give you the power to embed external HTML files into the page.
- * @documentation https://shoelace.style/components/include
+ * @documentation https://solid.union-investment.com/[storybook-link]/include
  * @status stable
  * @since 2.0
  *
- * @event sl-load - Emitted when the included file is loaded.
- * @event {{ status: number }} sl-error - Emitted when the included file fails to load due to an error.
+ * @event sd-load - Emitted when the included file is loaded.
+ * @event {{ status: number }} sd-error - Emitted when the included file fails to load due to an error.
  */
-@customElement('sl-include')
-export default class SlInclude extends ShoelaceElement {
+@customElement('sd-include')
+export default class SdInclude extends SolidElement {
   static styles: CSSResultGroup = styles;
 
   /**
@@ -54,7 +54,7 @@ export default class SlInclude extends ShoelaceElement {
       }
 
       if (!file.ok) {
-        this.emit('sl-error', { detail: { status: file.status } });
+        this.emit('sd-error', { detail: { status: file.status } });
         return;
       }
 
@@ -64,9 +64,9 @@ export default class SlInclude extends ShoelaceElement {
         [...this.querySelectorAll('script')].forEach(script => this.executeScript(script));
       }
 
-      this.emit('sl-load');
+      this.emit('sd-load');
     } catch {
-      this.emit('sl-error', { detail: { status: -1 } });
+      this.emit('sd-error', { detail: { status: -1 } });
     }
   }
 
@@ -77,6 +77,6 @@ export default class SlInclude extends ShoelaceElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-include': SlInclude;
+    'sd-include': SdInclude;
   }
 }

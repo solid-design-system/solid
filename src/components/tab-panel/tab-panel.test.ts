@@ -1,16 +1,16 @@
 import { aTimeout, expect, fixture, html } from '@open-wc/testing';
-import type SlTabPanel from './tab-panel';
+import type SdTabPanel from './tab-panel';
 
-describe('<sl-tab-panel>', () => {
+describe('<sd-tab-panel>', () => {
   it('passes accessibility test', async () => {
-    const el = await fixture<SlTabPanel>(html` <sl-tab-panel>Test</sl-tab-panel> `);
+    const el = await fixture<SdTabPanel>(html` <sd-tab-panel>Test</sd-tab-panel> `);
     await expect(el).to.be.accessible();
   });
 
   it('default properties', async () => {
-    const el = await fixture<SlTabPanel>(html` <sl-tab-panel>Test</sl-tab-panel> `);
+    const el = await fixture<SdTabPanel>(html` <sd-tab-panel>Test</sd-tab-panel> `);
 
-    expect(el.id).to.equal('sl-tab-panel-2');
+    expect(el.id).to.equal('sd-tab-panel-2');
     expect(el.name).to.equal('');
     expect(el.active).to.equal(false);
     expect(el.getAttribute('role')).to.equal('tabpanel');
@@ -18,7 +18,7 @@ describe('<sl-tab-panel>', () => {
   });
 
   it('properties should reflect', async () => {
-    const el = await fixture<SlTabPanel>(html` <sl-tab-panel>Test</sl-tab-panel> `);
+    const el = await fixture<SdTabPanel>(html` <sd-tab-panel>Test</sd-tab-panel> `);
 
     el.name = 'test';
     el.active = true;
@@ -28,7 +28,7 @@ describe('<sl-tab-panel>', () => {
   });
 
   it('changing active should always update aria-hidden role', async () => {
-    const el = await fixture<SlTabPanel>(html` <sl-tab-panel>Test</sl-tab-panel> `);
+    const el = await fixture<SdTabPanel>(html` <sd-tab-panel>Test</sd-tab-panel> `);
 
     el.active = true;
     await aTimeout(100);
@@ -36,7 +36,7 @@ describe('<sl-tab-panel>', () => {
   });
 
   it('passed id should be used', async () => {
-    const el = await fixture<SlTabPanel>(html` <sl-tab-panel id="test-id">Test</sl-tab-panel> `);
+    const el = await fixture<SdTabPanel>(html` <sd-tab-panel id="test-id">Test</sd-tab-panel> `);
 
     expect(el.id).to.equal('test-id');
   });

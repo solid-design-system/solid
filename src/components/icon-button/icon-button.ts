@@ -3,25 +3,25 @@ import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { html, literal } from 'lit/static-html.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import ShoelaceElement from '../../internal/shoelace-element';
+import SolidElement from '../../internal/solid-element';
 import styles from './icon-button.styles';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Icons buttons are simple, icon-only buttons that can be used for actions and in toolbars.
- * @documentation https://shoelace.style/components/icon-button
+ * @documentation https://solid.union-investment.com/[storybook-link]/icon-button
  * @status stable
  * @since 2.0
  *
- * @dependency sl-icon
+ * @dependency sd-icon
  *
- * @event sl-blur - Emitted when the icon button loses focus.
- * @event sl-focus - Emitted when the icon button gains focus.
+ * @event sd-blur - Emitted when the icon button loses focus.
+ * @event sd-focus - Emitted when the icon button gains focus.
  *
  * @csspart base - The component's base wrapper.
  */
-@customElement('sl-icon-button')
-export default class SlIconButton extends ShoelaceElement {
+@customElement('sd-icon-button')
+export default class SdIconButton extends SolidElement {
   static styles: CSSResultGroup = styles;
 
   @query('.icon-button') button: HTMLButtonElement | HTMLLinkElement;
@@ -60,12 +60,12 @@ export default class SlIconButton extends ShoelaceElement {
 
   private handleBlur() {
     this.hasFocus = false;
-    this.emit('sl-blur');
+    this.emit('sd-blur');
   }
 
   private handleFocus() {
     this.hasFocus = true;
-    this.emit('sl-focus');
+    this.emit('sd-focus');
   }
 
   private handleClick(event: MouseEvent) {
@@ -99,10 +99,10 @@ export default class SlIconButton extends ShoelaceElement {
       <${tag}
         part="base"
         class=${classMap({
-          'icon-button': true,
-          'icon-button--disabled': !isLink && this.disabled,
-          'icon-button--focused': this.hasFocus
-        })}
+      'icon-button': true,
+      'icon-button--disabled': !isLink && this.disabled,
+      'icon-button--focused': this.hasFocus
+    })}
         ?disabled=${ifDefined(isLink ? undefined : this.disabled)}
         type=${ifDefined(isLink ? undefined : 'button')}
         href=${ifDefined(isLink ? this.href : undefined)}
@@ -117,13 +117,13 @@ export default class SlIconButton extends ShoelaceElement {
         @focus=${this.handleFocus}
         @click=${this.handleClick}
       >
-        <sl-icon
+        <sd-icon
           class="icon-button__icon"
           name=${ifDefined(this.name)}
           library=${ifDefined(this.library)}
           src=${ifDefined(this.src)}
           aria-hidden="true"
-        ></sl-icon>
+        ></sd-icon>
       </${tag}>
     `;
   }
@@ -131,6 +131,6 @@ export default class SlIconButton extends ShoelaceElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-icon-button': SlIconButton;
+    'sd-icon-button': SdIconButton;
   }
 }

@@ -1,13 +1,13 @@
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { html } from 'lit';
 import { LocalizeController } from '../../utilities/localize';
-import ShoelaceElement from '../../internal/shoelace-element';
+import SolidElement from '../../internal/solid-element';
 import styles from './progress-ring.styles';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Progress rings are used to show the progress of a determinate operation in a circular fashion.
- * @documentation https://shoelace.style/components/progress-ring
+ * @documentation https://solid.union-investment.com/[storybook-link]/progress-ring
  * @status stable
  * @since 2.0
  *
@@ -23,8 +23,8 @@ import type { CSSResultGroup } from 'lit';
  * @cssproperty --indicator-color - The color of the indicator.
  * @cssproperty --indicator-transition-duration - The duration of the indicator's transition when the value changes.
  */
-@customElement('sl-progress-ring')
-export default class SlProgressRing extends ShoelaceElement {
+@customElement('sd-progress-ring')
+export default class SdProgressRing extends SolidElement {
   static styles: CSSResultGroup = styles;
 
   private readonly localize = new LocalizeController(this);
@@ -82,6 +82,6 @@ export default class SlProgressRing extends ShoelaceElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-progress-ring': SlProgressRing;
+    'sd-progress-ring': SdProgressRing;
   }
 }

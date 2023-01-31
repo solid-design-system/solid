@@ -7,23 +7,23 @@ import { html } from 'lit';
 import { LocalizeController } from '../../utilities/localize';
 import { styleMap } from 'lit/directives/style-map.js';
 import { watch } from '../../internal/watch';
-import ShoelaceElement from '../../internal/shoelace-element';
+import SolidElement from '../../internal/solid-element';
 import styles from './image-comparer.styles';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Compare visual differences between similar photos with a sliding panel.
- * @documentation https://shoelace.style/components/image-comparer
+ * @documentation https://solid.union-investment.com/[storybook-link]/image-comparer
  * @status stable
  * @since 2.0
  *
- * @dependency sl-icon
+ * @dependency sd-icon
  *
  * @slot before - The before image, an `<img>` or `<svg>` element.
  * @slot after - The after image, an `<img>` or `<svg>` element.
  * @slot handle - The icon used inside the handle.
  *
- * @event sl-change - Emitted when the position changes.
+ * @event sd-change - Emitted when the position changes.
  *
  * @csspart base - The component's base wrapper.
  * @csspart before - The container that wraps the before image.
@@ -34,8 +34,8 @@ import type { CSSResultGroup } from 'lit';
  * @cssproperty --divider-width - The width of the dividing line.
  * @cssproperty --handle-size - The size of the compare handle.
  */
-@customElement('sl-image-comparer')
-export default class SlImageComparer extends ShoelaceElement {
+@customElement('sd-image-comparer')
+export default class SdImageComparer extends SolidElement {
   static styles: CSSResultGroup = styles;
 
   private readonly localize = new LocalizeController(this);
@@ -91,7 +91,7 @@ export default class SlImageComparer extends ShoelaceElement {
 
   @watch('position', { waitUntilFirstUpdate: true })
   handlePositionChange() {
-    this.emit('sl-change');
+    this.emit('sd-change');
   }
 
   render() {
@@ -102,9 +102,9 @@ export default class SlImageComparer extends ShoelaceElement {
         part="base"
         id="image-comparer"
         class=${classMap({
-          'image-comparer': true,
-          'image-comparer--rtl': isRtl
-        })}
+      'image-comparer': true,
+      'image-comparer--rtl': isRtl
+    })}
         @keydown=${this.handleKeyDown}
       >
         <div class="image-comparer__image">
@@ -115,8 +115,8 @@ export default class SlImageComparer extends ShoelaceElement {
             part="after"
             class="image-comparer__after"
             style=${styleMap({
-              clipPath: isRtl ? `inset(0 0 0 ${100 - this.position}%)` : `inset(0 ${100 - this.position}% 0 0)`
-            })}
+      clipPath: isRtl ? `inset(0 0 0 ${100 - this.position}%)` : `inset(0 ${100 - this.position}% 0 0)`
+    })}
           ></slot>
         </div>
 
@@ -124,8 +124,8 @@ export default class SlImageComparer extends ShoelaceElement {
           part="divider"
           class="image-comparer__divider"
           style=${styleMap({
-            left: isRtl ? `${100 - this.position}%` : `${this.position}%`
-          })}
+      left: isRtl ? `${100 - this.position}%` : `${this.position}%`
+    })}
           @mousedown=${this.handleDrag}
           @touchstart=${this.handleDrag}
         >
@@ -140,7 +140,7 @@ export default class SlImageComparer extends ShoelaceElement {
             aria-controls="image-comparer"
             tabindex="0"
           >
-            <sl-icon library="system" name="grip-vertical"></sl-icon>
+            <sd-icon library="system" name="grip-vertical"></sd-icon>
           </slot>
         </div>
       </div>
@@ -150,6 +150,6 @@ export default class SlImageComparer extends ShoelaceElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-image-comparer': SlImageComparer;
+    'sd-image-comparer': SdImageComparer;
   }
 }

@@ -1,19 +1,19 @@
 import type { ReactiveController, ReactiveControllerHost } from 'lit';
-import type { ShoelaceFormControl } from '../internal/shoelace-element';
-import type SlButton from '../components/button/button';
+import type { SolidFormControl } from '../internal/solid-element';
+import type SdButton from '../components/button/button';
 
 //
-// We store a WeakMap of forms + controls so we can keep references to all Shoelace controls within a given form. As
+// We store a WeakMap of forms + controls so we can keep references to all Solid controls within a given form. As
 // elements connect and disconnect to/from the DOM, their containing form is used as the key and the form control is
 // added and removed from the form's set, respectively.
 //
-export const formCollections: WeakMap<HTMLFormElement, Set<ShoelaceFormControl>> = new WeakMap();
+export const formCollections: WeakMap<HTMLFormElement, Set<SolidFormControl>> = new WeakMap();
 
 //
 // We store a WeakMap of controls that users have interacted with. This allows us to determine the interaction state
 // without littering the DOM with additional data attributes.
 //
-const userInteractedControls: WeakMap<ShoelaceFormControl, boolean> = new WeakMap();
+const userInteractedControls: WeakMap<SolidFormControl, boolean> = new WeakMap();
 
 //
 // We store a WeakMap of reportValidity() overloads so we can override it when form controls connect to the DOM and
@@ -23,30 +23,30 @@ const reportValidityOverloads: WeakMap<HTMLFormElement, () => boolean> = new Wea
 
 export interface FormControlControllerOptions {
   /** A function that returns the form containing the form control. */
-  form: (input: ShoelaceFormControl) => HTMLFormElement | null;
+  form: (input: SolidFormControl) => HTMLFormElement | null;
   /** A function that returns the form control's name, which will be submitted with the form data. */
-  name: (input: ShoelaceFormControl) => string;
+  name: (input: SolidFormControl) => string;
   /** A function that returns the form control's current value. */
-  value: (input: ShoelaceFormControl) => unknown | unknown[];
+  value: (input: SolidFormControl) => unknown | unknown[];
   /** A function that returns the form control's default value. */
-  defaultValue: (input: ShoelaceFormControl) => unknown | unknown[];
+  defaultValue: (input: SolidFormControl) => unknown | unknown[];
   /** A function that returns the form control's current disabled state. If disabled, the value won't be submitted. */
-  disabled: (input: ShoelaceFormControl) => boolean;
+  disabled: (input: SolidFormControl) => boolean;
   /**
    * A function that maps to the form control's reportValidity() function. When the control is invalid, this will
    * prevent submission and trigger the browser's constraint violation warning.
    */
-  reportValidity: (input: ShoelaceFormControl) => boolean;
+  reportValidity: (input: SolidFormControl) => boolean;
   /** A function that sets the form control's value */
-  setValue: (input: ShoelaceFormControl, value: unknown) => void;
+  setValue: (input: SolidFormControl, value: unknown) => void;
 }
 
 export class FormControlController implements ReactiveController {
-  host: ShoelaceFormControl & ReactiveControllerHost;
+  host: SolidFormControl & ReactiveControllerHost;
   form?: HTMLFormElement | null;
   options: FormControlControllerOptions;
 
-  constructor(host: ReactiveControllerHost & ShoelaceFormControl, options?: Partial<FormControlControllerOptions>) {
+  constructor(host: ReactiveControllerHost & SolidFormControl, options?: Partial<FormControlControllerOptions>) {
     (this.host = host).addController(this);
     this.options = {
       form: input => {
@@ -84,12 +84,12 @@ export class FormControlController implements ReactiveController {
       this.attachForm(form);
     }
 
-    this.host.addEventListener('sl-input', this.handleUserInput);
+    this.host.addEventListener('sd-input', this.handleUserInput);
   }
 
   hostDisconnected() {
     this.detachForm();
-    this.host.removeEventListener('sl-input', this.handleUserInput);
+    this.host.removeEventListener('sd-input', this.handleUserInput);
   }
 
   hostUpdated() {
@@ -119,14 +119,14 @@ export class FormControlController implements ReactiveController {
       if (formCollections.has(this.form)) {
         formCollections.get(this.form)!.add(this.host);
       } else {
-        formCollections.set(this.form, new Set<ShoelaceFormControl>([this.host]));
+        formCollections.set(this.form, new Set<SolidFormControl>([this.host]));
       }
 
       this.form.addEventListener('formdata', this.handleFormData);
       this.form.addEventListener('submit', this.handleFormSubmit);
       this.form.addEventListener('reset', this.handleFormReset);
 
-      // Overload the form's reportValidity() method so it looks at Shoelace form controls
+      // Overload the form's reportValidity() method so it looks at Solid form controls
       if (!reportValidityOverloads.has(this.form)) {
         reportValidityOverloads.set(this.form, this.form.reportValidity);
         this.form.reportValidity = () => this.reportFormValidity();
@@ -162,7 +162,7 @@ export class FormControlController implements ReactiveController {
 
     // For buttons, we only submit the value if they were the submitter. This is currently done in doAction() by
     // injecting the name/value on a temporary button, so we can just skip them here.
-    const isButton = this.host.tagName.toLowerCase() === 'sl-button';
+    const isButton = this.host.tagName.toLowerCase() === 'sd-button';
 
     if (!disabled && !isButton && typeof name === 'string' && name.length > 0 && typeof value !== 'undefined') {
       if (Array.isArray(value)) {
@@ -204,7 +204,7 @@ export class FormControlController implements ReactiveController {
 
   private reportFormValidity() {
     //
-    // Shoelace form controls work hard to act like regular form controls. They support the Constraint Validation API
+    // Solid form controls work hard to act like regular form controls. They support the Constraint Validation API
     // and its associated methods such as setCustomValidity() and reportValidity(). However, the HTMLFormElement also
     // has a reportValidity() method that will trigger validation on all child controls. Since we're not yet using
     // ElementInternals, we need to overload this method so it looks for any element with the reportValidity() method.
@@ -216,7 +216,7 @@ export class FormControlController implements ReactiveController {
     // Note that we're also honoring the form's novalidate attribute.
     //
     if (this.form && !this.form.noValidate) {
-      // This seems sloppy, but checking all elements will cover native inputs, Shoelace inputs, and other custom
+      // This seems sloppy, but checking all elements will cover native inputs, Solid inputs, and other custom
       // elements that support the constraint validation API.
       const elements = this.form.querySelectorAll<HTMLInputElement>('*');
 
@@ -232,12 +232,12 @@ export class FormControlController implements ReactiveController {
     return true;
   }
 
-  private setUserInteracted(el: ShoelaceFormControl, hasInteracted: boolean) {
+  private setUserInteracted(el: SolidFormControl, hasInteracted: boolean) {
     userInteractedControls.set(el, hasInteracted);
     el.requestUpdate();
   }
 
-  private doAction(type: 'submit' | 'reset', invoker?: HTMLInputElement | SlButton) {
+  private doAction(type: 'submit' | 'reset', invoker?: HTMLInputElement | SdButton) {
     if (this.form) {
       const button = document.createElement('button');
       button.type = type;
@@ -267,12 +267,12 @@ export class FormControlController implements ReactiveController {
   }
 
   /** Resets the form, restoring all the control to their default value */
-  reset(invoker?: HTMLInputElement | SlButton) {
+  reset(invoker?: HTMLInputElement | SdButton) {
     this.doAction('reset', invoker);
   }
 
   /** Submits the form, triggering validation and form data injection. */
-  submit(invoker?: HTMLInputElement | SlButton) {
+  submit(invoker?: HTMLInputElement | SdButton) {
     // Calling form.submit() bypasses the submit event and constraint validation. To prevent this, we can inject a
     // native submit button into the form, "click" it, then remove it to simulate a standard form submission.
     this.doAction('submit', invoker);

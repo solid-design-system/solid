@@ -1,12 +1,12 @@
 import { customElement, property } from 'lit/decorators.js';
 import { watch } from '../../internal/watch';
-import ShoelaceElement from '../../internal/shoelace-element';
+import SolidElement from '../../internal/solid-element';
 import styles from './divider.styles';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Dividers are used to visually separate or group elements.
- * @documentation https://shoelace.style/components/divider
+ * @documentation https://solid.union-investment.com/[storybook-link]/divider
  * @status stable
  * @since 2.0
  *
@@ -14,8 +14,8 @@ import type { CSSResultGroup } from 'lit';
  * @cssproperty --width - The width of the divider.
  * @cssproperty --spacing - The spacing of the divider.
  */
-@customElement('sl-divider')
-export default class SlDivider extends ShoelaceElement {
+@customElement('sd-divider')
+export default class SdDivider extends SolidElement {
   static styles: CSSResultGroup = styles;
 
   /** Draws the divider in a vertical orientation. */
@@ -34,6 +34,6 @@ export default class SlDivider extends ShoelaceElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-divider': SlDivider;
+    'sd-divider': SdDivider;
   }
 }

@@ -3,20 +3,20 @@ import { html } from 'lit';
 import { styleMap } from 'lit/directives/style-map.js';
 import { watch } from '../../internal/watch';
 import QrCreator from 'qr-creator';
-import ShoelaceElement from '../../internal/shoelace-element';
+import SolidElement from '../../internal/solid-element';
 import styles from './qr-code.styles';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Generates a [QR code](https://www.qrcode.com/) and renders it using the [Canvas API](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API).
- * @documentation https://shoelace.style/components/qr-code
+ * @documentation https://solid.union-investment.com/[storybook-link]/qr-code
  * @status stable
  * @since 2.0
  *
  * @csspart base - The component's base wrapper.
  */
-@customElement('sl-qr-code')
-export default class SlQrCode extends ShoelaceElement {
+@customElement('sd-qr-code')
+export default class SdQrCode extends SolidElement {
   static styles: CSSResultGroup = styles;
 
   @query('canvas') canvas: HTMLElement;
@@ -74,9 +74,9 @@ export default class SlQrCode extends ShoelaceElement {
         role="img"
         aria-label=${this.label.length > 0 ? this.label : this.value}
         style=${styleMap({
-          width: `${this.size}px`,
-          height: `${this.size}px`
-        })}
+      width: `${this.size}px`,
+      height: `${this.size}px`
+    })}
       ></canvas>
     `;
   }
@@ -84,6 +84,6 @@ export default class SlQrCode extends ShoelaceElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-qr-code': SlQrCode;
+    'sd-qr-code': SdQrCode;
   }
 }

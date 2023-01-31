@@ -4,13 +4,13 @@ import { HasSlotController } from '../../internal/slot';
 import { html } from 'lit/static-html.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { watch } from '../../internal/watch';
-import ShoelaceElement from '../../internal/shoelace-element';
+import SolidElement from '../../internal/solid-element';
 import styles from './radio-button.styles';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Radios buttons allow the user to select a single option from a group using a button-like control.
- * @documentation https://shoelace.style/components/radio-button
+ * @documentation https://solid.union-investment.com/[storybook-link]/radio-button
  * @status stable
  * @since 2.0
  *
@@ -18,8 +18,8 @@ import type { CSSResultGroup } from 'lit';
  * @slot prefix - A presentational prefix icon or similar element.
  * @slot suffix - A presentational suffix icon or similar element.
  *
- * @event sl-blur - Emitted when the button loses focus.
- * @event sl-focus - Emitted when the button gains focus.
+ * @event sd-blur - Emitted when the button loses focus.
+ * @event sd-focus - Emitted when the button gains focus.
  *
  * @csspart base - The component's base wrapper.
  * @csspart button - The internal `<button>` element.
@@ -28,8 +28,8 @@ import type { CSSResultGroup } from 'lit';
  * @csspart label - The container that wraps the radio button's label.
  * @csspart suffix - The container that wraps the suffix.
  */
-@customElement('sl-radio-button')
-export default class SlRadioButton extends ShoelaceElement {
+@customElement('sd-radio-button')
+export default class SdRadioButton extends SolidElement {
   static styles: CSSResultGroup = styles;
 
   private readonly hasSlotController = new HasSlotController(this, '[default]', 'prefix', 'suffix');
@@ -64,7 +64,7 @@ export default class SlRadioButton extends ShoelaceElement {
 
   private handleBlur() {
     this.hasFocus = false;
-    this.emit('sl-blur');
+    this.emit('sd-blur');
   }
 
   private handleClick(e: MouseEvent) {
@@ -79,7 +79,7 @@ export default class SlRadioButton extends ShoelaceElement {
 
   private handleFocus() {
     this.hasFocus = true;
-    this.emit('sl-focus');
+    this.emit('sd-focus');
   }
 
   @watch('disabled', { waitUntilFirstUpdate: true })
@@ -105,20 +105,20 @@ export default class SlRadioButton extends ShoelaceElement {
           role="radio"
           aria-checked="${this.checked}"
           class=${classMap({
-            button: true,
-            'button--default': true,
-            'button--small': this.size === 'small',
-            'button--medium': this.size === 'medium',
-            'button--large': this.size === 'large',
-            'button--checked': this.checked,
-            'button--disabled': this.disabled,
-            'button--focused': this.hasFocus,
-            'button--outline': true,
-            'button--pill': this.pill,
-            'button--has-label': this.hasSlotController.test('[default]'),
-            'button--has-prefix': this.hasSlotController.test('prefix'),
-            'button--has-suffix': this.hasSlotController.test('suffix')
-          })}
+      button: true,
+      'button--default': true,
+      'button--small': this.size === 'small',
+      'button--medium': this.size === 'medium',
+      'button--large': this.size === 'large',
+      'button--checked': this.checked,
+      'button--disabled': this.disabled,
+      'button--focused': this.hasFocus,
+      'button--outline': true,
+      'button--pill': this.pill,
+      'button--has-label': this.hasSlotController.test('[default]'),
+      'button--has-prefix': this.hasSlotController.test('prefix'),
+      'button--has-suffix': this.hasSlotController.test('suffix')
+    })}
           aria-disabled=${this.disabled}
           type="button"
           value=${ifDefined(this.value)}
@@ -138,6 +138,6 @@ export default class SlRadioButton extends ShoelaceElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-radio-button': SlRadioButton;
+    'sd-radio-button': SdRadioButton;
   }
 }

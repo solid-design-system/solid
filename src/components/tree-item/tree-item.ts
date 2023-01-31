@@ -10,26 +10,26 @@ import { live } from 'lit/directives/live.js';
 import { LocalizeController } from '../../utilities/localize';
 import { watch } from '../../internal/watch';
 import { when } from 'lit/directives/when.js';
-import ShoelaceElement from '../../internal/shoelace-element';
+import SolidElement from '../../internal/solid-element';
 import styles from './tree-item.styles';
 import type { CSSResultGroup, PropertyValueMap } from 'lit';
 
 /**
  * @summary A tree item serves as a hierarchical node that lives inside a [tree](/components/tree).
- * @documentation https://shoelace.style/components/tree-item
+ * @documentation https://solid.union-investment.com/[storybook-link]/tree-item
  * @status stable
  * @since 2.0
  *
- * @dependency sl-checkbox
- * @dependency sl-icon
- * @dependency sl-spinner
+ * @dependency sd-checkbox
+ * @dependency sd-icon
+ * @dependency sd-spinner
  *
- * @event sl-expand - Emitted when the tree item expands.
- * @event sl-after-expand - Emitted after the tree item expands and all animations are complete.
- * @event sl-collapse - Emitted when the tree item collapses.
- * @event sl-after-collapse - Emitted after the tree item collapses and all animations are complete.
- * @event sl-lazy-change - Emitted when the tree item's lazy state changes.
- * @event sl-lazy-load - Emitted when a lazy item is selected. Use this event to asynchronously load data and append
+ * @event sd-expand - Emitted when the tree item expands.
+ * @event sd-after-expand - Emitted after the tree item expands and all animations are complete.
+ * @event sd-collapse - Emitted when the tree item collapses.
+ * @event sd-after-collapse - Emitted after the tree item collapses and all animations are complete.
+ * @event sd-lazy-change - Emitted when the tree item's lazy state changes.
+ * @event sd-lazy-load - Emitted when a lazy item is selected. Use this event to asynchronously load data and append
  *  items to the tree before expanding. After appending new items, remove the `lazy` attribute to remove the loading
  *  state and update the tree.
  *
@@ -48,8 +48,8 @@ import type { CSSResultGroup, PropertyValueMap } from 'lit';
  * @csspart label - The tree item's label.
  * @csspart children - The container that wraps the tree item's nested children.
  */
-@customElement('sl-tree-item')
-export default class SlTreeItem extends ShoelaceElement {
+@customElement('sd-tree-item')
+export default class SdTreeItem extends SolidElement {
   static styles: CSSResultGroup = styles;
 
   static isTreeItem(node: Node) {
@@ -101,7 +101,7 @@ export default class SlTreeItem extends ShoelaceElement {
   }
 
   private async animateCollapse() {
-    this.emit('sl-collapse');
+    this.emit('sd-collapse');
 
     await stopAnimations(this.childrenContainer);
 
@@ -113,13 +113,13 @@ export default class SlTreeItem extends ShoelaceElement {
     );
     this.childrenContainer.hidden = true;
 
-    this.emit('sl-after-collapse');
+    this.emit('sd-after-collapse');
   }
 
   // Checks whether the item is nested into an item
   private isNestedItem(): boolean {
     const parent = this.parentElement;
-    return !!parent && SlTreeItem.isTreeItem(parent);
+    return !!parent && SdTreeItem.isTreeItem(parent);
   }
 
   private handleChildrenSlotChange() {
@@ -127,14 +127,14 @@ export default class SlTreeItem extends ShoelaceElement {
     this.isLeaf = !this.lazy && this.getChildrenItems().length === 0;
   }
 
-  protected willUpdate(changedProperties: PropertyValueMap<SlTreeItem> | Map<PropertyKey, unknown>) {
+  protected willUpdate(changedProperties: PropertyValueMap<SdTreeItem> | Map<PropertyKey, unknown>) {
     if (changedProperties.has('selected') && !changedProperties.has('indeterminate')) {
       this.indeterminate = false;
     }
   }
 
   private async animateExpand() {
-    this.emit('sl-expand');
+    this.emit('sd-expand');
 
     await stopAnimations(this.childrenContainer);
     this.childrenContainer.hidden = false;
@@ -147,7 +147,7 @@ export default class SlTreeItem extends ShoelaceElement {
     );
     this.childrenContainer.style.height = 'auto';
 
-    this.emit('sl-after-expand');
+    this.emit('sd-after-expand');
   }
 
   @watch('loading', { waitUntilFirstUpdate: true })
@@ -184,7 +184,7 @@ export default class SlTreeItem extends ShoelaceElement {
       if (this.lazy) {
         this.loading = true;
 
-        this.emit('sl-lazy-load');
+        this.emit('sd-lazy-load');
       } else {
         this.animateExpand();
       }
@@ -195,15 +195,15 @@ export default class SlTreeItem extends ShoelaceElement {
 
   @watch('lazy', { waitUntilFirstUpdate: true })
   handleLazyChange() {
-    this.emit('sl-lazy-change');
+    this.emit('sd-lazy-change');
   }
 
   /** Gets all the nested tree items in this node. */
-  getChildrenItems({ includeDisabled = true }: { includeDisabled?: boolean } = {}): SlTreeItem[] {
+  getChildrenItems({ includeDisabled = true }: { includeDisabled?: boolean; } = {}): SdTreeItem[] {
     return this.childrenSlot
       ? ([...this.childrenSlot.assignedElements({ flatten: true })].filter(
-          (item: SlTreeItem) => SlTreeItem.isTreeItem(item) && (includeDisabled || !item.disabled)
-        ) as SlTreeItem[])
+        (item: SdTreeItem) => SdTreeItem.isTreeItem(item) && (includeDisabled || !item.disabled)
+      ) as SdTreeItem[])
       : [];
   }
 
@@ -215,14 +215,14 @@ export default class SlTreeItem extends ShoelaceElement {
       <div
         part="base"
         class="${classMap({
-          'tree-item': true,
-          'tree-item--expanded': this.expanded,
-          'tree-item--selected': this.selected,
-          'tree-item--disabled': this.disabled,
-          'tree-item--leaf': this.isLeaf,
-          'tree-item--has-expand-button': showExpandButton,
-          'tree-item--rtl': this.localize.dir() === 'rtl'
-        })}"
+      'tree-item': true,
+      'tree-item--expanded': this.expanded,
+      'tree-item--selected': this.selected,
+      'tree-item--disabled': this.disabled,
+      'tree-item--leaf': this.isLeaf,
+      'tree-item--has-expand-button': showExpandButton,
+      'tree-item--rtl': this.localize.dir() === 'rtl'
+    })}"
       >
         <div
           class="tree-item__item"
@@ -239,25 +239,25 @@ export default class SlTreeItem extends ShoelaceElement {
           <div
             part="expand-button"
             class=${classMap({
-              'tree-item__expand-button': true,
-              'tree-item__expand-button--visible': showExpandButton
-            })}
+      'tree-item__expand-button': true,
+      'tree-item__expand-button--visible': showExpandButton
+    })}
             aria-hidden="true"
           >
-            ${when(this.loading, () => html` <sl-spinner></sl-spinner> `)}
+            ${when(this.loading, () => html` <sd-spinner></sd-spinner> `)}
             <slot class="tree-item__expand-icon-slot" name="expand-icon">
-              <sl-icon library="system" name=${isRtl ? 'chevron-left' : 'chevron-right'}></sl-icon>
+              <sd-icon library="system" name=${isRtl ? 'chevron-left' : 'chevron-right'}></sd-icon>
             </slot>
             <slot class="tree-item__expand-icon-slot" name="collapse-icon">
-              <sl-icon library="system" name=${isRtl ? 'chevron-left' : 'chevron-right'}></sl-icon>
+              <sd-icon library="system" name=${isRtl ? 'chevron-left' : 'chevron-right'}></sd-icon>
             </slot>
           </div>
 
           ${when(
-            this.selectable,
-            () =>
-              html`
-                <sl-checkbox
+      this.selectable,
+      () =>
+        html`
+                <sd-checkbox
                   tabindex="-1"
                   class="tree-item__checkbox"
                   ?disabled="${this.disabled}"
@@ -265,10 +265,10 @@ export default class SlTreeItem extends ShoelaceElement {
                   ?indeterminate="${this.indeterminate}"
                 >
                   <slot class="tree-item__label" part="label"></slot>
-                </sl-checkbox>
+                </sd-checkbox>
               `,
-            () => html` <slot class="tree-item__label" part="label"></slot> `
-          )}
+      () => html` <slot class="tree-item__label" part="label"></slot> `
+    )}
         </div>
 
         <slot
@@ -301,6 +301,6 @@ setDefaultAnimation('tree-item.collapse', {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-tree-item': SlTreeItem;
+    'sd-tree-item': SdTreeItem;
   }
 }

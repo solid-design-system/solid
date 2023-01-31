@@ -7,24 +7,24 @@ import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { live } from 'lit/directives/live.js';
 import { watch } from '../../internal/watch';
-import ShoelaceElement from '../../internal/shoelace-element';
+import SolidElement from '../../internal/solid-element';
 import styles from './textarea.styles';
 import type { CSSResultGroup } from 'lit';
-import type { ShoelaceFormControl } from '../../internal/shoelace-element';
+import type { SolidFormControl } from '../../internal/solid-element';
 
 /**
  * @summary Textareas collect data from the user and allow multiple lines of text.
- * @documentation https://shoelace.style/components/textarea
+ * @documentation https://solid.union-investment.com/[storybook-link]/textarea
  * @status stable
  * @since 2.0
  *
  * @slot label - The textarea's label. Alternatively, you can use the `label` attribute.
  * @slot help-text - Text that describes how to use the input. Alternatively, you can use the `help-text` attribute.
  *
- * @event sl-blur - Emitted when the control loses focus.
- * @event sl-change - Emitted when an alteration to the control's value is committed by the user.
- * @event sl-focus - Emitted when the control gains focus.
- * @event sl-input - Emitted when the control receives input.
+ * @event sd-blur - Emitted when the control loses focus.
+ * @event sd-change - Emitted when an alteration to the control's value is committed by the user.
+ * @event sd-focus - Emitted when the control gains focus.
+ * @event sd-input - Emitted when the control receives input.
  *
  * @csspart form-control - The form control that wraps the label, input, and help text.
  * @csspart form-control-label - The label's wrapper.
@@ -33,8 +33,8 @@ import type { ShoelaceFormControl } from '../../internal/shoelace-element';
  * @csspart base - The component's base wrapper.
  * @csspart textarea - The internal `<textarea>` control.
  */
-@customElement('sl-textarea')
-export default class SlTextarea extends ShoelaceElement implements ShoelaceFormControl {
+@customElement('sd-textarea')
+export default class SdTextarea extends SolidElement implements SolidFormControl {
   static styles: CSSResultGroup = styles;
 
   private readonly formControlController = new FormControlController(this);
@@ -154,23 +154,23 @@ export default class SlTextarea extends ShoelaceElement implements ShoelaceFormC
 
   private handleBlur() {
     this.hasFocus = false;
-    this.emit('sl-blur');
+    this.emit('sd-blur');
   }
 
   private handleChange() {
     this.value = this.input.value;
     this.setTextareaHeight();
-    this.emit('sl-change');
+    this.emit('sd-change');
   }
 
   private handleFocus() {
     this.hasFocus = true;
-    this.emit('sl-focus');
+    this.emit('sd-focus');
   }
 
   private handleInput() {
     this.value = this.input.value;
-    this.emit('sl-input');
+    this.emit('sd-input');
   }
 
   private setTextareaHeight() {
@@ -216,7 +216,7 @@ export default class SlTextarea extends ShoelaceElement implements ShoelaceFormC
   }
 
   /** Gets or sets the textarea's scroll position. */
-  scrollPosition(position?: { top?: number; left?: number }): { top: number; left: number } | undefined {
+  scrollPosition(position?: { top?: number; left?: number; }): { top: number; left: number; } | undefined {
     if (position) {
       if (typeof position.top === 'number') this.input.scrollTop = position.top;
       if (typeof position.left === 'number') this.input.scrollLeft = position.left;
@@ -284,13 +284,13 @@ export default class SlTextarea extends ShoelaceElement implements ShoelaceFormC
       <div
         part="form-control"
         class=${classMap({
-          'form-control': true,
-          'form-control--small': this.size === 'small',
-          'form-control--medium': this.size === 'medium',
-          'form-control--large': this.size === 'large',
-          'form-control--has-label': hasLabel,
-          'form-control--has-help-text': hasHelpText
-        })}
+      'form-control': true,
+      'form-control--small': this.size === 'small',
+      'form-control--medium': this.size === 'medium',
+      'form-control--large': this.size === 'large',
+      'form-control--has-label': hasLabel,
+      'form-control--has-help-text': hasHelpText
+    })}
       >
         <label
           part="form-control-label"
@@ -305,19 +305,19 @@ export default class SlTextarea extends ShoelaceElement implements ShoelaceFormC
           <div
             part="base"
             class=${classMap({
-              textarea: true,
-              'textarea--small': this.size === 'small',
-              'textarea--medium': this.size === 'medium',
-              'textarea--large': this.size === 'large',
-              'textarea--standard': !this.filled,
-              'textarea--filled': this.filled,
-              'textarea--disabled': this.disabled,
-              'textarea--focused': this.hasFocus,
-              'textarea--empty': !this.value,
-              'textarea--resize-none': this.resize === 'none',
-              'textarea--resize-vertical': this.resize === 'vertical',
-              'textarea--resize-auto': this.resize === 'auto'
-            })}
+      textarea: true,
+      'textarea--small': this.size === 'small',
+      'textarea--medium': this.size === 'medium',
+      'textarea--large': this.size === 'large',
+      'textarea--standard': !this.filled,
+      'textarea--filled': this.filled,
+      'textarea--disabled': this.disabled,
+      'textarea--focused': this.hasFocus,
+      'textarea--empty': !this.value,
+      'textarea--resize-none': this.resize === 'none',
+      'textarea--resize-vertical': this.resize === 'vertical',
+      'textarea--resize-auto': this.resize === 'auto'
+    })}
           >
             <textarea
               part="textarea"
@@ -364,6 +364,6 @@ export default class SlTextarea extends ShoelaceElement implements ShoelaceFormC
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-textarea': SlTextarea;
+    'sd-textarea': SdTextarea;
   }
 }

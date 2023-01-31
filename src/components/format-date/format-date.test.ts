@@ -1,8 +1,8 @@
 import { expect, fixture, html } from '@open-wc/testing';
 import sinon from 'sinon';
-import type SlFormatDate from './format-date';
+import type SdFormatDate from './format-date';
 
-describe('<sl-format-date>', () => {
+describe('<sd-format-date>', () => {
   describe('defaults ', () => {
     let clock: sinon.SinonFakeTimers;
 
@@ -18,7 +18,7 @@ describe('<sl-format-date>', () => {
     });
 
     it('default properties', async () => {
-      const el = await fixture<SlFormatDate>(html` <sl-format-date></sl-format-date> `);
+      const el = await fixture<SdFormatDate>(html` <sd-format-date></sd-format-date> `);
       expect(el.date).to.deep.equal(new Date());
 
       expect(el.lang).to.be.undefined;
@@ -51,9 +51,9 @@ describe('<sl-format-date>', () => {
     ];
     results.forEach(setup => {
       it(`date has correct language format: ${setup.lang}`, async () => {
-        const el = await fixture<SlFormatDate>(
+        const el = await fixture<SdFormatDate>(
           html`
-            <sl-format-date .date="${new Date(new Date().getFullYear(), 0, 1)}" lang="${setup.lang}"></sl-format-date>
+            <sd-format-date .date="${new Date(new Date().getFullYear(), 0, 1)}" lang="${setup.lang}"></sd-format-date>
           `
         );
         expect(el.shadowRoot?.textContent?.trim()).to.equal(setup.result);
@@ -65,12 +65,12 @@ describe('<sl-format-date>', () => {
     const weekdays = ['narrow', 'short', 'long'];
     weekdays.forEach((weekdayFormat: 'narrow' | 'short' | 'long') => {
       it(`date has correct weekday format: ${weekdayFormat}`, async () => {
-        const el = await fixture<SlFormatDate>(
+        const el = await fixture<SdFormatDate>(
           html`
-            <sl-format-date
+            <sd-format-date
               .date="${new Date(new Date().getFullYear(), 0, 1)}"
               weekday="${weekdayFormat}"
-            ></sl-format-date>
+            ></sd-format-date>
           `
         );
 
@@ -86,9 +86,9 @@ describe('<sl-format-date>', () => {
     const eras = ['narrow', 'short', 'long'];
     eras.forEach((eraFormat: 'narrow' | 'short' | 'long') => {
       it(`date has correct era format: ${eraFormat}`, async () => {
-        const el = await fixture<SlFormatDate>(
+        const el = await fixture<SdFormatDate>(
           html`
-            <sl-format-date .date="${new Date(new Date().getFullYear(), 0, 1)}" era="${eraFormat}"></sl-format-date>
+            <sd-format-date .date="${new Date(new Date().getFullYear(), 0, 1)}" era="${eraFormat}"></sd-format-date>
           `
         );
 
@@ -104,9 +104,9 @@ describe('<sl-format-date>', () => {
     const yearFormats = ['numeric', '2-digit'];
     yearFormats.forEach((yearFormat: 'numeric' | '2-digit') => {
       it(`date has correct year format: ${yearFormat}`, async () => {
-        const el = await fixture<SlFormatDate>(
+        const el = await fixture<SdFormatDate>(
           html`
-            <sl-format-date .date="${new Date(new Date().getFullYear(), 0, 1)}" year="${yearFormat}"></sl-format-date>
+            <sd-format-date .date="${new Date(new Date().getFullYear(), 0, 1)}" year="${yearFormat}"></sd-format-date>
           `
         );
 
@@ -122,9 +122,9 @@ describe('<sl-format-date>', () => {
     const monthFormats = ['numeric', '2-digit', 'narrow', 'short', 'long'];
     monthFormats.forEach((monthFormat: 'numeric' | '2-digit' | 'narrow' | 'short' | 'long') => {
       it(`date has correct month format: ${monthFormat}`, async () => {
-        const el = await fixture<SlFormatDate>(
+        const el = await fixture<SdFormatDate>(
           html`
-            <sl-format-date .date="${new Date(new Date().getFullYear(), 0, 1)}" month="${monthFormat}"></sl-format-date>
+            <sd-format-date .date="${new Date(new Date().getFullYear(), 0, 1)}" month="${monthFormat}"></sd-format-date>
           `
         );
 
@@ -140,9 +140,9 @@ describe('<sl-format-date>', () => {
     const dayFormats = ['numeric', '2-digit'];
     dayFormats.forEach((dayFormat: 'numeric' | '2-digit') => {
       it(`date has correct day format: ${dayFormat}`, async () => {
-        const el = await fixture<SlFormatDate>(
+        const el = await fixture<SdFormatDate>(
           html`
-            <sl-format-date .date="${new Date(new Date().getFullYear(), 0, 1)}" day="${dayFormat}"></sl-format-date>
+            <sd-format-date .date="${new Date(new Date().getFullYear(), 0, 1)}" day="${dayFormat}"></sd-format-date>
           `
         );
 
@@ -158,9 +158,9 @@ describe('<sl-format-date>', () => {
     const hourFormats = ['numeric', '2-digit'];
     hourFormats.forEach((hourFormat: 'numeric' | '2-digit') => {
       it(`date has correct hour format: ${hourFormat}`, async () => {
-        const el = await fixture<SlFormatDate>(
+        const el = await fixture<SdFormatDate>(
           html`
-            <sl-format-date .date="${new Date(new Date().getFullYear(), 0, 1)}" hour="${hourFormat}"></sl-format-date>
+            <sd-format-date .date="${new Date(new Date().getFullYear(), 0, 1)}" hour="${hourFormat}"></sd-format-date>
           `
         );
 
@@ -176,12 +176,12 @@ describe('<sl-format-date>', () => {
     const minuteFormats = ['numeric', '2-digit'];
     minuteFormats.forEach((minuteFormat: 'numeric' | '2-digit') => {
       it(`date has correct minute format: ${minuteFormat}`, async () => {
-        const el = await fixture<SlFormatDate>(
+        const el = await fixture<SdFormatDate>(
           html`
-            <sl-format-date
+            <sd-format-date
               .date="${new Date(new Date().getFullYear(), 0, 1)}"
               minute="${minuteFormat}"
-            ></sl-format-date>
+            ></sd-format-date>
           `
         );
 
@@ -197,12 +197,12 @@ describe('<sl-format-date>', () => {
     const secondFormats = ['numeric', '2-digit'];
     secondFormats.forEach((secondFormat: 'numeric' | '2-digit') => {
       it(`date has correct second format: ${secondFormat}`, async () => {
-        const el = await fixture<SlFormatDate>(
+        const el = await fixture<SdFormatDate>(
           html`
-            <sl-format-date
+            <sd-format-date
               .date="${new Date(new Date().getFullYear(), 0, 1)}"
               second="${secondFormat}"
-            ></sl-format-date>
+            ></sd-format-date>
           `
         );
 
@@ -218,12 +218,12 @@ describe('<sl-format-date>', () => {
     const timeZoneNameFormats = ['short', 'long'];
     timeZoneNameFormats.forEach((timeZoneNameFormat: 'short' | 'long') => {
       it(`date has correct timeZoneName format: ${timeZoneNameFormat}`, async () => {
-        const el = await fixture<SlFormatDate>(
+        const el = await fixture<SdFormatDate>(
           html`
-            <sl-format-date
+            <sd-format-date
               .date="${new Date(new Date().getFullYear(), 0, 1)}"
               time-zone-name="${timeZoneNameFormat}"
-            ></sl-format-date>
+            ></sd-format-date>
           `
         );
 
@@ -239,12 +239,12 @@ describe('<sl-format-date>', () => {
     const timeZones = ['America/New_York', 'America/Los_Angeles', 'Europe/Zurich'];
     timeZones.forEach(timeZone => {
       it(`date has correct timeZoneName format: ${timeZone}`, async () => {
-        const el = await fixture<SlFormatDate>(
+        const el = await fixture<SdFormatDate>(
           html`
-            <sl-format-date
+            <sd-format-date
               .date="${new Date(new Date().getFullYear(), 0, 1)}"
               time-zone="${timeZone}"
-            ></sl-format-date>
+            ></sd-format-date>
           `
         );
 
@@ -260,12 +260,12 @@ describe('<sl-format-date>', () => {
     const hourFormatValues = ['auto', '12', '24'];
     hourFormatValues.forEach(hourFormatValue => {
       it(`date has correct hourFormat format: ${hourFormatValue}`, async () => {
-        const el = await fixture<SlFormatDate>(
+        const el = await fixture<SdFormatDate>(
           html`
-            <sl-format-date
+            <sd-format-date
               .date="${new Date(new Date().getFullYear(), 0, 1)}"
               hour-format="${hourFormatValue as 'auto' | '12' | '24'}"
-            ></sl-format-date>
+            ></sd-format-date>
           `
         );
 

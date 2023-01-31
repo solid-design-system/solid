@@ -2,31 +2,31 @@ import '../icon/icon';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { html } from 'lit';
 import { watch } from '../../internal/watch';
-import ShoelaceElement from '../../internal/shoelace-element';
+import SolidElement from '../../internal/solid-element';
 import styles from './animated-image.styles';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary A component for displaying animated GIFs and WEBPs that play and pause on interaction.
- * @documentation https://shoelace.style/components/animated-image
+ * @documentation https://solid.union-investment.com/[storybook-link]/animated-image
  * @status stable
  * @since 2.0
  *
- * @dependency sl-icon
+ * @dependency sd-icon
  *
- * @event sl-load - Emitted when the image loads successfully.
- * @event sl-error - Emitted when the image fails to load.
+ * @event sd-load - Emitted when the image loads successfully.
+ * @event sd-error - Emitted when the image fails to load.
  *
- * @slot play-icon - Optional play icon to use instead of the default. Works best with `<sl-icon>`.
- * @slot pause-icon - Optional pause icon to use instead of the default. Works best with `<sl-icon>`.
+ * @slot play-icon - Optional play icon to use instead of the default. Works best with `<sd-icon>`.
+ * @slot pause-icon - Optional pause icon to use instead of the default. Works best with `<sd-icon>`.
  *
  * @part - control-box - The container that surrounds the pause/play icons and provides their background.
  *
  * @cssproperty --control-box-size - The size of the icon box.
  * @cssproperty --icon-size - The size of the play/pause icons.
  */
-@customElement('sl-animated-image')
-export default class SlAnimatedImage extends ShoelaceElement {
+@customElement('sd-animated-image')
+export default class SdAnimatedImage extends SolidElement {
   static styles: CSSResultGroup = styles;
 
   @query('.animated-image__animated') animatedImage: HTMLImageElement;
@@ -56,13 +56,13 @@ export default class SlAnimatedImage extends ShoelaceElement {
     this.frozenFrame = canvas.toDataURL('image/gif');
 
     if (!this.isLoaded) {
-      this.emit('sl-load');
+      this.emit('sd-load');
       this.isLoaded = true;
     }
   }
 
   private handleError() {
-    this.emit('sl-error');
+    this.emit('sd-error');
   }
 
   @watch('play', { waitUntilFirstUpdate: true })
@@ -95,7 +95,7 @@ export default class SlAnimatedImage extends ShoelaceElement {
         />
 
         ${this.isLoaded
-          ? html`
+        ? html`
               <img
                 class="animated-image__frozen"
                 src=${this.frozenFrame}
@@ -105,11 +105,11 @@ export default class SlAnimatedImage extends ShoelaceElement {
               />
 
               <div part="control-box" class="animated-image__control-box">
-                <slot name="play-icon"><sl-icon name="play-fill" library="system"></sl-icon></slot>
-                <slot name="pause-icon"><sl-icon name="pause-fill" library="system"></sl-icon></slot>
+                <slot name="play-icon"><sd-icon name="play-fill" library="system"></sd-icon></slot>
+                <slot name="pause-icon"><sd-icon name="pause-fill" library="system"></sd-icon></slot>
               </div>
             `
-          : ''}
+        : ''}
       </div>
     `;
   }
@@ -117,6 +117,6 @@ export default class SlAnimatedImage extends ShoelaceElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-animated-image': SlAnimatedImage;
+    'sd-animated-image': SdAnimatedImage;
   }
 }

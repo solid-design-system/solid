@@ -4,17 +4,17 @@ import { customElement, property, query } from 'lit/decorators.js';
 import { getTextContent } from '../../internal/slot';
 import { html } from 'lit';
 import { watch } from '../../internal/watch';
-import ShoelaceElement from '../../internal/shoelace-element';
+import SolidElement from '../../internal/solid-element';
 import styles from './menu-item.styles';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Menu items provide options for the user to pick from in a menu.
- * @documentation https://shoelace.style/components/menu-item
+ * @documentation https://solid.union-investment.com/[storybook-link]/menu-item
  * @status stable
  * @since 2.0
  *
- * @dependency sl-icon
+ * @dependency sd-icon
  *
  * @slot - The menu item's label.
  * @slot prefix - Used to prepend an icon or similar element to the menu item.
@@ -26,8 +26,8 @@ import type { CSSResultGroup } from 'lit';
  * @csspart label - The menu item label.
  * @csspart suffix - The suffix container.
  */
-@customElement('sl-menu-item')
-export default class SlMenuItem extends ShoelaceElement {
+@customElement('sd-menu-item')
+export default class SdMenuItem extends SolidElement {
   static styles: CSSResultGroup = styles;
 
   private cachedTextLabel: string;
@@ -106,14 +106,14 @@ export default class SlMenuItem extends ShoelaceElement {
       <div
         part="base"
         class=${classMap({
-          'menu-item': true,
-          'menu-item--checked': this.checked,
-          'menu-item--disabled': this.disabled,
-          'menu-item--has-submenu': false // reserved for future use
-        })}
+      'menu-item': true,
+      'menu-item--checked': this.checked,
+      'menu-item--disabled': this.disabled,
+      'menu-item--has-submenu': false // reserved for future use
+    })}
       >
         <span part="checked-icon" class="menu-item__check">
-          <sl-icon name="check" library="system" aria-hidden="true"></sl-icon>
+          <sd-icon name="check" library="system" aria-hidden="true"></sd-icon>
         </span>
 
         <slot name="prefix" part="prefix" class="menu-item__prefix"></slot>
@@ -123,7 +123,7 @@ export default class SlMenuItem extends ShoelaceElement {
         <slot name="suffix" part="suffix" class="menu-item__suffix"></slot>
 
         <span class="menu-item__chevron">
-          <sl-icon name="chevron-right" library="system" aria-hidden="true"></sl-icon>
+          <sd-icon name="chevron-right" library="system" aria-hidden="true"></sd-icon>
         </span>
       </div>
     `;
@@ -132,6 +132,6 @@ export default class SlMenuItem extends ShoelaceElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-menu-item': SlMenuItem;
+    'sd-menu-item': SdMenuItem;
   }
 }

@@ -1,15 +1,15 @@
 import { customElement, property } from 'lit/decorators.js';
 import { LocalizeController } from '../../utilities/localize';
-import ShoelaceElement from '../../internal/shoelace-element';
+import SolidElement from '../../internal/solid-element';
 
 /**
  * @summary Formats a number using the specified locale and options.
- * @documentation https://shoelace.style/components/format-number
+ * @documentation https://solid.union-investment.com/[storybook-link]/format-number
  * @status stable
  * @since 2.0
  */
-@customElement('sl-format-number')
-export default class SlFormatNumber extends ShoelaceElement {
+@customElement('sd-format-number')
+export default class SdFormatNumber extends SolidElement {
   private readonly localize = new LocalizeController(this);
 
   /** The number to format. */
@@ -63,6 +63,6 @@ export default class SlFormatNumber extends ShoelaceElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-format-number': SlFormatNumber;
+    'sd-format-number': SdFormatNumber;
   }
 }

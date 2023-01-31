@@ -1,12 +1,12 @@
 import { expect, fixture, html } from '@open-wc/testing';
-import type SlProgressBar from './progress-bar';
+import type SdProgressBar from './progress-bar';
 
-describe('<sl-progress-bar>', () => {
-  let el: SlProgressBar;
+describe('<sd-progress-bar>', () => {
+  let el: SdProgressBar;
 
   describe('when provided just a value parameter', () => {
     before(async () => {
-      el = await fixture<SlProgressBar>(html`<sl-progress-bar value="25"></sl-progress-bar>`);
+      el = await fixture<SdProgressBar>(html`<sd-progress-bar value="25"></sd-progress-bar>`);
     });
 
     it('should pass accessibility tests', async () => {
@@ -19,8 +19,8 @@ describe('<sl-progress-bar>', () => {
     let indicator: HTMLDivElement;
 
     before(async () => {
-      el = await fixture<SlProgressBar>(
-        html`<sl-progress-bar title="Titled Progress Ring" value="25"></sl-progress-bar>`
+      el = await fixture<SdProgressBar>(
+        html`<sd-progress-bar title="Titled Progress Ring" value="25"></sd-progress-bar>`
       );
       base = el.shadowRoot!.querySelector('[part~="base"]')!;
       indicator = el.shadowRoot!.querySelector('[part~="indicator"]')!;
@@ -43,8 +43,8 @@ describe('<sl-progress-bar>', () => {
     let base: HTMLDivElement;
 
     before(async () => {
-      el = await fixture<SlProgressBar>(
-        html`<sl-progress-bar title="Titled Progress Ring" indeterminate></sl-progress-bar>`
+      el = await fixture<SdProgressBar>(
+        html`<sd-progress-bar title="Titled Progress Ring" indeterminate></sd-progress-bar>`
       );
       base = el.shadowRoot!.querySelector('[part~="base"]')!;
     });
@@ -60,8 +60,8 @@ describe('<sl-progress-bar>', () => {
 
   describe('when provided a ariaLabel, and value parameter', () => {
     before(async () => {
-      el = await fixture<SlProgressBar>(
-        html`<sl-progress-bar ariaLabel="Labelled Progress Ring" value="25"></sl-progress-bar>`
+      el = await fixture<SdProgressBar>(
+        html`<sd-progress-bar ariaLabel="Labelled Progress Ring" value="25"></sd-progress-bar>`
       );
     });
 
@@ -72,10 +72,10 @@ describe('<sl-progress-bar>', () => {
 
   describe('when provided a ariaLabelledBy, and value parameter', () => {
     before(async () => {
-      el = await fixture<SlProgressBar>(
+      el = await fixture<SdProgressBar>(
         html`
           <label id="labelledby">Progress Ring Label</label>
-          <sl-progress-bar ariaLabelledBy="labelledby" value="25"></sl-progress-bar>
+          <sd-progress-bar ariaLabelledBy="labelledby" value="25"></sd-progress-bar>
         `
       );
     });

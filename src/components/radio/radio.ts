@@ -3,31 +3,31 @@ import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property, state } from 'lit/decorators.js';
 import { html } from 'lit';
 import { watch } from '../../internal/watch';
-import ShoelaceElement from '../../internal/shoelace-element';
+import SolidElement from '../../internal/solid-element';
 import styles from './radio.styles';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Radios allow the user to select a single option from a group.
- * @documentation https://shoelace.style/components/radio
+ * @documentation https://solid.union-investment.com/[storybook-link]/radio
  * @status stable
  * @since 2.0
  *
- * @dependency sl-icon
+ * @dependency sd-icon
  *
  * @slot - The radio's label.
  *
- * @event sl-blur - Emitted when the control loses focus.
- * @event sl-focus - Emitted when the control gains focus.
+ * @event sd-blur - Emitted when the control loses focus.
+ * @event sd-focus - Emitted when the control gains focus.
  *
  * @csspart base - The component's base wrapper.
  * @csspart control - The circular container that wraps the radio's checked state.
  * @csspart control--checked - The radio control when the radio is checked.
- * @csspart checked-icon - The checked icon, an `<sl-icon>` element.
+ * @csspart checked-icon - The checked icon, an `<sd-icon>` element.
  * @csspart label - The container that wraps the radio's label.
  */
-@customElement('sl-radio')
-export default class SlRadio extends ShoelaceElement {
+@customElement('sd-radio')
+export default class SdRadio extends SolidElement {
   static styles: CSSResultGroup = styles;
 
   @state() checked = false;
@@ -70,7 +70,7 @@ export default class SlRadio extends ShoelaceElement {
 
   private handleBlur() {
     this.hasFocus = false;
-    this.emit('sl-blur');
+    this.emit('sd-blur');
   }
 
   private handleClick() {
@@ -81,7 +81,7 @@ export default class SlRadio extends ShoelaceElement {
 
   private handleFocus() {
     this.hasFocus = true;
-    this.emit('sl-focus');
+    this.emit('sd-focus');
   }
 
   private setInitialAttributes() {
@@ -106,19 +106,19 @@ export default class SlRadio extends ShoelaceElement {
       <span
         part="base"
         class=${classMap({
-          radio: true,
-          'radio--checked': this.checked,
-          'radio--disabled': this.disabled,
-          'radio--focused': this.hasFocus,
-          'radio--small': this.size === 'small',
-          'radio--medium': this.size === 'medium',
-          'radio--large': this.size === 'large'
-        })}
+      radio: true,
+      'radio--checked': this.checked,
+      'radio--disabled': this.disabled,
+      'radio--focused': this.hasFocus,
+      'radio--small': this.size === 'small',
+      'radio--medium': this.size === 'medium',
+      'radio--large': this.size === 'large'
+    })}
       >
         <span part="${`control${this.checked ? ' control--checked' : ''}`}" class="radio__control">
           ${this.checked
-            ? html` <sl-icon part="checked-icon" class="radio__checked-icon" library="system" name="radio"></sl-icon> `
-            : ''}
+        ? html` <sd-icon part="checked-icon" class="radio__checked-icon" library="system" name="radio"></sd-icon> `
+        : ''}
         </span>
 
         <slot part="label" class="radio__label"></slot>
@@ -129,6 +129,6 @@ export default class SlRadio extends ShoelaceElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-radio': SlRadio;
+    'sd-radio': SdRadio;
   }
 }

@@ -1,6 +1,6 @@
 import defaultLibrary from './library.default';
 import systemLibrary from './library.system';
-import type SlIcon from '../icon/icon';
+import type SdIcon from '../icon/icon';
 
 export type IconLibraryResolver = (name: string) => string;
 export type IconLibraryMutator = (svg: SVGElement) => void;
@@ -11,15 +11,15 @@ export interface IconLibrary {
 }
 
 let registry: IconLibrary[] = [defaultLibrary, systemLibrary];
-let watchedIcons: SlIcon[] = [];
+let watchedIcons: SdIcon[] = [];
 
 /** Adds an icon to the list of watched icons. */
-export function watchIcon(icon: SlIcon) {
+export function watchIcon(icon: SdIcon) {
   watchedIcons.push(icon);
 }
 
 /** Removes an icon from the list of watched icons. */
-export function unwatchIcon(icon: SlIcon) {
+export function unwatchIcon(icon: SdIcon) {
   watchedIcons = watchedIcons.filter(el => el !== icon);
 }
 
@@ -31,7 +31,7 @@ export function getIconLibrary(name?: string) {
 /** Adds an icon library to the registry, or overrides an existing one. */
 export function registerIconLibrary(
   name: string,
-  options: { resolver: IconLibraryResolver; mutator?: IconLibraryMutator }
+  options: { resolver: IconLibraryResolver; mutator?: IconLibraryMutator; }
 ) {
   unregisterIconLibrary(name);
   registry.push({

@@ -6,9 +6,9 @@ import { queryByTestId } from '../../internal/test/data-testid-helpers';
 import { sendKeys } from '@web/test-runner-commands';
 import { waitForScrollingToEnd } from '../../internal/test/wait-for-scrolling';
 import type { HTMLTemplateResult } from 'lit';
-import type SlTab from '../tab/tab';
-import type SlTabGroup from './tab-group';
-import type SlTabPanel from '../tab-panel/tab-panel';
+import type SdTab from '../tab/tab';
+import type SdTabGroup from './tab-group';
+import type SdTabPanel from '../tab-panel/tab-panel';
 
 interface ClientRectangles {
   body?: DOMRect;
@@ -19,14 +19,14 @@ interface CustomEventPayload {
   name: string;
 }
 
-const waitForScrollButtonsToBeRendered = async (tabGroup: SlTabGroup): Promise<void> => {
+const waitForScrollButtonsToBeRendered = async (tabGroup: SdTabGroup): Promise<void> => {
   await waitUntil(() => {
-    const scrollButtons = tabGroup.shadowRoot?.querySelectorAll('sl-icon-button');
+    const scrollButtons = tabGroup.shadowRoot?.querySelectorAll('sd-icon-button');
     return scrollButtons?.length === 2;
   });
 };
 
-const getClientRectangles = (tabGroup: SlTabGroup): ClientRectangles => {
+const getClientRectangles = (tabGroup: SdTabGroup): ClientRectangles => {
   const shadowRoot = tabGroup.shadowRoot;
   if (shadowRoot) {
     const nav = shadowRoot.querySelector<HTMLElement>('[part=nav]');
@@ -40,19 +40,19 @@ const getClientRectangles = (tabGroup: SlTabGroup): ClientRectangles => {
 };
 
 const expectHeaderToBeVisible = (container: HTMLElement, dataTestId: string): void => {
-  const generalHeader = queryByTestId<SlTab>(container, dataTestId);
+  const generalHeader = queryByTestId<SdTab>(container, dataTestId);
   expect(generalHeader).not.to.be.null;
   expect(generalHeader).to.be.visible;
 };
 
 const expectOnlyOneTabPanelToBeActive = async (container: HTMLElement, dataTestIdOfActiveTab: string) => {
   await waitUntil(() => {
-    const tabPanels = Array.from(container.getElementsByTagName('sl-tab-panel'));
-    const activeTabPanels = tabPanels.filter((element: SlTabPanel) => element.hasAttribute('active'));
+    const tabPanels = Array.from(container.getElementsByTagName('sd-tab-panel'));
+    const activeTabPanels = tabPanels.filter((element: SdTabPanel) => element.hasAttribute('active'));
     return activeTabPanels.length === 1;
   });
-  const tabPanels = Array.from(container.getElementsByTagName('sl-tab-panel'));
-  const activeTabPanels = tabPanels.filter((element: SlTabPanel) => element.hasAttribute('active'));
+  const tabPanels = Array.from(container.getElementsByTagName('sd-tab-panel'));
+  const activeTabPanels = tabPanels.filter((element: SdTabPanel) => element.hasAttribute('active'));
   expect(activeTabPanels).to.have.lengthOf(1);
   expect(activeTabPanels[0]).to.have.attribute('data-testid', dataTestIdOfActiveTab);
 };
@@ -62,8 +62,8 @@ const expectPromiseToHaveName = async (showEventPromise: Promise<CustomEvent>, e
   expect((showEvent.detail as CustomEventPayload).name).to.equal(expectedName);
 };
 
-const waitForHeaderToBeActive = async (container: HTMLElement, headerTestId: string): Promise<SlTab> => {
-  const generalHeader = queryByTestId<SlTab>(container, headerTestId);
+const waitForHeaderToBeActive = async (container: HTMLElement, headerTestId: string): Promise<SdTab> => {
+  const generalHeader = queryByTestId<SdTab>(container, headerTestId);
   await waitUntil(() => {
     return generalHeader?.hasAttribute('active');
   });
@@ -74,37 +74,37 @@ const waitForHeaderToBeActive = async (container: HTMLElement, headerTestId: str
   }
 };
 
-describe('<sl-tab-group>', () => {
+describe('<sd-tab-group>', () => {
   it('renders', async () => {
-    const tabGroup = await fixture<SlTabGroup>(html`
-      <sl-tab-group>
-        <sl-tab slot="nav" panel="general">General</sl-tab>
-        <sl-tab-panel name="general">This is the general tab panel.</sl-tab-panel>
-      </sl-tab-group>
+    const tabGroup = await fixture<SdTabGroup>(html`
+      <sd-tab-group>
+        <sd-tab slot="nav" panel="general">General</sd-tab>
+        <sd-tab-panel name="general">This is the general tab panel.</sd-tab-panel>
+      </sd-tab-group>
     `);
 
     expect(tabGroup).to.be.visible;
   });
 
   it('is accessible', async () => {
-    const tabGroup = await fixture<SlTabGroup>(html`
-      <sl-tab-group>
-        <sl-tab slot="nav" panel="general">General</sl-tab>
-        <sl-tab-panel name="general">This is the general tab panel.</sl-tab-panel>
-      </sl-tab-group>
+    const tabGroup = await fixture<SdTabGroup>(html`
+      <sd-tab-group>
+        <sd-tab slot="nav" panel="general">General</sd-tab>
+        <sd-tab-panel name="general">This is the general tab panel.</sd-tab-panel>
+      </sd-tab-group>
     `);
 
     await expect(tabGroup).to.be.accessible();
   });
 
   it('displays all tabs', async () => {
-    const tabGroup = await fixture<SlTabGroup>(html`
-      <sl-tab-group>
-        <sl-tab slot="nav" panel="general" data-testid="general-tab-header">General</sl-tab>
-        <sl-tab slot="nav" panel="disabled" disabled data-testid="disabled-tab-header">Disabled</sl-tab>
-        <sl-tab-panel name="general">This is the general tab panel.</sl-tab-panel>
-        <sl-tab-panel name="disabled">This is a disabled tab panel.</sl-tab-panel>
-      </sl-tab-group>
+    const tabGroup = await fixture<SdTabGroup>(html`
+      <sd-tab-group>
+        <sd-tab slot="nav" panel="general" data-testid="general-tab-header">General</sd-tab>
+        <sd-tab slot="nav" panel="disabled" disabled data-testid="disabled-tab-header">Disabled</sd-tab>
+        <sd-tab-panel name="general">This is the general tab panel.</sd-tab-panel>
+        <sd-tab-panel name="disabled">This is a disabled tab panel.</sd-tab-panel>
+      </sd-tab-group>
     `);
 
     expectHeaderToBeVisible(tabGroup, 'general-tab-header');
@@ -112,13 +112,13 @@ describe('<sl-tab-group>', () => {
   });
 
   it('shows the first tab to be active by default', async () => {
-    const tabGroup = await fixture<SlTabGroup>(html`
-      <sl-tab-group>
-        <sl-tab slot="nav" panel="general">General</sl-tab>
-        <sl-tab slot="nav" panel="custom">Custom</sl-tab>
-        <sl-tab-panel name="general" data-testid="general-tab-content">This is the general tab panel.</sl-tab-panel>
-        <sl-tab-panel name="custom">This is the custom tab panel.</sl-tab-panel>
-      </sl-tab-group>
+    const tabGroup = await fixture<SdTabGroup>(html`
+      <sd-tab-group>
+        <sd-tab slot="nav" panel="general">General</sd-tab>
+        <sd-tab slot="nav" panel="custom">Custom</sd-tab>
+        <sd-tab-panel name="general" data-testid="general-tab-content">This is the general tab panel.</sd-tab-panel>
+        <sd-tab-panel name="custom">This is the custom tab panel.</sd-tab-panel>
+      </sd-tab-group>
     `);
 
     await expectOnlyOneTabPanelToBeActive(tabGroup, 'general-tab-content');
@@ -126,11 +126,11 @@ describe('<sl-tab-group>', () => {
 
   describe('proper positioning', () => {
     it('shows the header above the tabs by default', async () => {
-      const tabGroup = await fixture<SlTabGroup>(html`
-        <sl-tab-group>
-          <sl-tab slot="nav" panel="general">General</sl-tab>
-          <sl-tab-panel name="general">This is the general tab panel.</sl-tab-panel>
-        </sl-tab-group>
+      const tabGroup = await fixture<SdTabGroup>(html`
+        <sd-tab-group>
+          <sd-tab slot="nav" panel="general">General</sd-tab>
+          <sd-tab-panel name="general">This is the general tab panel.</sd-tab-panel>
+        </sd-tab-group>
       `);
 
       await aTimeout(0);
@@ -140,11 +140,11 @@ describe('<sl-tab-group>', () => {
     });
 
     it('shows the header below the tabs by setting placement to bottom', async () => {
-      const tabGroup = await fixture<SlTabGroup>(html`
-        <sl-tab-group>
-          <sl-tab slot="nav" panel="general">General</sl-tab>
-          <sl-tab-panel name="general">This is the general tab panel.</sl-tab-panel>
-        </sl-tab-group>
+      const tabGroup = await fixture<SdTabGroup>(html`
+        <sd-tab-group>
+          <sd-tab slot="nav" panel="general">General</sd-tab>
+          <sd-tab-panel name="general">This is the general tab panel.</sd-tab-panel>
+        </sd-tab-group>
       `);
       tabGroup.placement = 'bottom';
 
@@ -155,11 +155,11 @@ describe('<sl-tab-group>', () => {
     });
 
     it('shows the header left of the tabs by setting placement to start', async () => {
-      const tabGroup = await fixture<SlTabGroup>(html`
-        <sl-tab-group>
-          <sl-tab slot="nav" panel="general">General</sl-tab>
-          <sl-tab-panel name="general">This is the general tab panel.</sl-tab-panel>
-        </sl-tab-group>
+      const tabGroup = await fixture<SdTabGroup>(html`
+        <sd-tab-group>
+          <sd-tab slot="nav" panel="general">General</sd-tab>
+          <sd-tab-panel name="general">This is the general tab panel.</sd-tab-panel>
+        </sd-tab-group>
       `);
       tabGroup.placement = 'start';
 
@@ -170,11 +170,11 @@ describe('<sl-tab-group>', () => {
     });
 
     it('shows the header right of the tabs by setting placement to end', async () => {
-      const tabGroup = await fixture<SlTabGroup>(html`
-        <sl-tab-group>
-          <sl-tab slot="nav" panel="general">General</sl-tab>
-          <sl-tab-panel name="general">This is the general tab panel.</sl-tab-panel>
-        </sl-tab-group>
+      const tabGroup = await fixture<SdTabGroup>(html`
+        <sd-tab-group>
+          <sd-tab slot="nav" panel="general">General</sd-tab>
+          <sd-tab-panel name="general">This is the general tab panel.</sd-tab-panel>
+        </sd-tab-group>
       `);
       tabGroup.placement = 'end';
 
@@ -189,8 +189,8 @@ describe('<sl-tab-group>', () => {
     const generateTabs = (n: number): HTMLTemplateResult[] => {
       const result: HTMLTemplateResult[] = [];
       for (let i = 0; i < n; i++) {
-        result.push(html`<sl-tab slot="nav" panel="tab-${i}">Tab ${i}</sl-tab>
-          <sl-tab-panel name="tab-${i}">Content of tab ${i}0</sl-tab-panel> `);
+        result.push(html`<sd-tab slot="nav" panel="tab-${i}">Tab ${i}</sd-tab>
+          <sd-tab-panel name="tab-${i}">Content of tab ${i}0</sd-tab-panel> `);
       }
       return result;
     };
@@ -219,63 +219,63 @@ describe('<sl-tab-group>', () => {
     });
 
     it('shows scroll buttons on too many tabs', async () => {
-      const tabGroup = await fixture<SlTabGroup>(html`<sl-tab-group> ${generateTabs(30)} </sl-tab-group>`);
+      const tabGroup = await fixture<SdTabGroup>(html`<sd-tab-group> ${generateTabs(30)} </sd-tab-group>`);
 
       await waitForScrollButtonsToBeRendered(tabGroup);
 
-      const scrollButtons = tabGroup.shadowRoot?.querySelectorAll('sl-icon-button');
+      const scrollButtons = tabGroup.shadowRoot?.querySelectorAll('sd-icon-button');
       expect(scrollButtons, 'Both scroll buttons should be shown').to.have.length(2);
 
       tabGroup.disconnectedCallback();
     });
 
     it('does not show scroll buttons on too many tabs if deactivated', async () => {
-      const tabGroup = await fixture<SlTabGroup>(html`<sl-tab-group> ${generateTabs(30)} </sl-tab-group>`);
+      const tabGroup = await fixture<SdTabGroup>(html`<sd-tab-group> ${generateTabs(30)} </sd-tab-group>`);
       tabGroup.noScrollControls = true;
 
       await aTimeout(0);
 
-      const scrollButtons = tabGroup.shadowRoot?.querySelectorAll('sl-icon-button');
+      const scrollButtons = tabGroup.shadowRoot?.querySelectorAll('sd-icon-button');
       expect(scrollButtons).to.have.length(0);
     });
 
     it('does not show scroll buttons if all tabs fit on the screen', async () => {
-      const tabGroup = await fixture<SlTabGroup>(html`<sl-tab-group> ${generateTabs(2)} </sl-tab-group>`);
+      const tabGroup = await fixture<SdTabGroup>(html`<sd-tab-group> ${generateTabs(2)} </sd-tab-group>`);
 
       await aTimeout(0);
 
-      const scrollButtons = tabGroup.shadowRoot?.querySelectorAll('sl-icon-button');
+      const scrollButtons = tabGroup.shadowRoot?.querySelectorAll('sd-icon-button');
       expect(scrollButtons).to.have.length(0);
     });
 
     it('does not show scroll buttons if placement is start', async () => {
-      const tabGroup = await fixture<SlTabGroup>(html`<sl-tab-group> ${generateTabs(50)} </sl-tab-group>`);
+      const tabGroup = await fixture<SdTabGroup>(html`<sd-tab-group> ${generateTabs(50)} </sd-tab-group>`);
       tabGroup.placement = 'start';
 
       await aTimeout(0);
 
-      const scrollButtons = tabGroup.shadowRoot?.querySelectorAll('sl-icon-button');
+      const scrollButtons = tabGroup.shadowRoot?.querySelectorAll('sd-icon-button');
       expect(scrollButtons).to.have.length(0);
     });
 
     it('does not show scroll buttons if placement is end', async () => {
-      const tabGroup = await fixture<SlTabGroup>(html`<sl-tab-group> ${generateTabs(50)} </sl-tab-group>`);
+      const tabGroup = await fixture<SdTabGroup>(html`<sd-tab-group> ${generateTabs(50)} </sd-tab-group>`);
       tabGroup.placement = 'end';
 
       await aTimeout(0);
 
-      const scrollButtons = tabGroup.shadowRoot?.querySelectorAll('sl-icon-button');
+      const scrollButtons = tabGroup.shadowRoot?.querySelectorAll('sd-icon-button');
       expect(scrollButtons).to.have.length(0);
     });
 
     it('does scroll on scroll button click', async () => {
       const numberOfElements = 15;
-      const tabGroup = await fixture<SlTabGroup>(
-        html`<sl-tab-group> ${generateTabs(numberOfElements)} </sl-tab-group>`
+      const tabGroup = await fixture<SdTabGroup>(
+        html`<sd-tab-group> ${generateTabs(numberOfElements)} </sd-tab-group>`
       );
 
       await waitForScrollButtonsToBeRendered(tabGroup);
-      const scrollButtons = tabGroup.shadowRoot?.querySelectorAll('sl-icon-button');
+      const scrollButtons = tabGroup.shadowRoot?.querySelectorAll('sd-icon-button');
       expect(scrollButtons).to.have.length(2);
 
       const firstTab = tabGroup.querySelector('[panel="tab-0"]');
@@ -285,7 +285,7 @@ describe('<sl-tab-group>', () => {
       expect(isElementVisibleFromOverflow(tabGroup, firstTab!)).to.be.true;
       expect(isElementVisibleFromOverflow(tabGroup, lastTab!)).to.be.false;
 
-      const scrollToRightButton = tabGroup.shadowRoot?.querySelector('sl-icon-button[part*="scroll-button--end"]');
+      const scrollToRightButton = tabGroup.shadowRoot?.querySelector('sd-icon-button[part*="scroll-button--end"]');
       expect(scrollToRightButton).not.to.be.null;
       await clickOnElement(scrollToRightButton!);
 
@@ -299,14 +299,14 @@ describe('<sl-tab-group>', () => {
   });
 
   describe('tab selection', () => {
-    const expectCustomTabToBeActiveAfter = async (tabGroup: SlTabGroup, action: () => Promise<void>): Promise<void> => {
+    const expectCustomTabToBeActiveAfter = async (tabGroup: SdTabGroup, action: () => Promise<void>): Promise<void> => {
       const generalHeader = await waitForHeaderToBeActive(tabGroup, 'general-header');
       generalHeader.focus();
 
-      const customHeader = queryByTestId<SlTab>(tabGroup, 'custom-header');
+      const customHeader = queryByTestId<SdTab>(tabGroup, 'custom-header');
       expect(customHeader).not.to.have.attribute('active');
 
-      const showEventPromise = oneEvent(tabGroup, 'sl-tab-show') as Promise<CustomEvent>;
+      const showEventPromise = oneEvent(tabGroup, 'sd-tab-show') as Promise<CustomEvent>;
       await action();
 
       expect(customHeader).to.have.attribute('active');
@@ -315,7 +315,7 @@ describe('<sl-tab-group>', () => {
     };
 
     const expectGeneralTabToBeStillActiveAfter = async (
-      tabGroup: SlTabGroup,
+      tabGroup: SdTabGroup,
       action: () => Promise<void>
     ): Promise<void> => {
       const generalHeader = await waitForHeaderToBeActive(tabGroup, 'general-header');
@@ -323,8 +323,8 @@ describe('<sl-tab-group>', () => {
 
       let showEventFired = false;
       let hideEventFired = false;
-      oneEvent(tabGroup, 'sl-tab-show').then(() => (showEventFired = true));
-      oneEvent(tabGroup, 'sl-tab-hide').then(() => (hideEventFired = true));
+      oneEvent(tabGroup, 'sd-tab-show').then(() => (showEventFired = true));
+      oneEvent(tabGroup, 'sd-tab-hide').then(() => (hideEventFired = true));
       await action();
 
       expect(generalHeader).to.have.attribute('active');
@@ -334,27 +334,27 @@ describe('<sl-tab-group>', () => {
     };
 
     it('selects a tab by clicking on it', async () => {
-      const tabGroup = await fixture<SlTabGroup>(html`
-        <sl-tab-group>
-          <sl-tab slot="nav" panel="general" data-testid="general-header">General</sl-tab>
-          <sl-tab slot="nav" panel="custom" data-testid="custom-header">Custom</sl-tab>
-          <sl-tab-panel name="general">This is the general tab panel.</sl-tab-panel>
-          <sl-tab-panel name="custom" data-testid="custom-tab-content">This is the custom tab panel.</sl-tab-panel>
-        </sl-tab-group>
+      const tabGroup = await fixture<SdTabGroup>(html`
+        <sd-tab-group>
+          <sd-tab slot="nav" panel="general" data-testid="general-header">General</sd-tab>
+          <sd-tab slot="nav" panel="custom" data-testid="custom-header">Custom</sd-tab>
+          <sd-tab-panel name="general">This is the general tab panel.</sd-tab-panel>
+          <sd-tab-panel name="custom" data-testid="custom-tab-content">This is the custom tab panel.</sd-tab-panel>
+        </sd-tab-group>
       `);
 
-      const customHeader = queryByTestId<SlTab>(tabGroup, 'custom-header');
+      const customHeader = queryByTestId<SdTab>(tabGroup, 'custom-header');
       return expectCustomTabToBeActiveAfter(tabGroup, () => clickOnElement(customHeader!));
     });
 
     it('does not change if the active tab is reselected', async () => {
-      const tabGroup = await fixture<SlTabGroup>(html`
-        <sl-tab-group>
-          <sl-tab slot="nav" panel="general" data-testid="general-header">General</sl-tab>
-          <sl-tab slot="nav" panel="custom">Custom</sl-tab>
-          <sl-tab-panel name="general" data-testid="general-tab-content">This is the general tab panel.</sl-tab-panel>
-          <sl-tab-panel name="custom">This is the custom tab panel.</sl-tab-panel>
-        </sl-tab-group>
+      const tabGroup = await fixture<SdTabGroup>(html`
+        <sd-tab-group>
+          <sd-tab slot="nav" panel="general" data-testid="general-header">General</sd-tab>
+          <sd-tab slot="nav" panel="custom">Custom</sd-tab>
+          <sd-tab-panel name="general" data-testid="general-tab-content">This is the general tab panel.</sd-tab-panel>
+          <sd-tab-panel name="custom">This is the custom tab panel.</sd-tab-panel>
+        </sd-tab-group>
       `);
 
       const generalHeader = queryByTestId(tabGroup, 'general-header');
@@ -362,13 +362,13 @@ describe('<sl-tab-group>', () => {
     });
 
     it('does not change if a disabled tab is clicked', async () => {
-      const tabGroup = await fixture<SlTabGroup>(html`
-        <sl-tab-group>
-          <sl-tab slot="nav" panel="general" data-testid="general-header">General</sl-tab>
-          <sl-tab slot="nav" panel="disabled" data-testid="disabled-header" disabled>disabled</sl-tab>
-          <sl-tab-panel name="general" data-testid="general-tab-content">This is the general tab panel.</sl-tab-panel>
-          <sl-tab-panel name="disabled">This is the disabled tab panel.</sl-tab-panel>
-        </sl-tab-group>
+      const tabGroup = await fixture<SdTabGroup>(html`
+        <sd-tab-group>
+          <sd-tab slot="nav" panel="general" data-testid="general-header">General</sd-tab>
+          <sd-tab slot="nav" panel="disabled" data-testid="disabled-header" disabled>disabled</sd-tab>
+          <sd-tab-panel name="general" data-testid="general-tab-content">This is the general tab panel.</sd-tab-panel>
+          <sd-tab-panel name="disabled">This is the disabled tab panel.</sd-tab-panel>
+        </sd-tab-group>
       `);
 
       const disabledHeader = queryByTestId(tabGroup, 'disabled-header');
@@ -376,36 +376,36 @@ describe('<sl-tab-group>', () => {
     });
 
     it('selects a tab by using the arrow keys', async () => {
-      const tabGroup = await fixture<SlTabGroup>(html`
-        <sl-tab-group>
-          <sl-tab slot="nav" panel="general" data-testid="general-header">General</sl-tab>
-          <sl-tab slot="nav" panel="custom" data-testid="custom-header">Custom</sl-tab>
-          <sl-tab-panel name="general">This is the general tab panel.</sl-tab-panel>
-          <sl-tab-panel name="custom" data-testid="custom-tab-content">This is the custom tab panel.</sl-tab-panel>
-        </sl-tab-group>
+      const tabGroup = await fixture<SdTabGroup>(html`
+        <sd-tab-group>
+          <sd-tab slot="nav" panel="general" data-testid="general-header">General</sd-tab>
+          <sd-tab slot="nav" panel="custom" data-testid="custom-header">Custom</sd-tab>
+          <sd-tab-panel name="general">This is the general tab panel.</sd-tab-panel>
+          <sd-tab-panel name="custom" data-testid="custom-tab-content">This is the custom tab panel.</sd-tab-panel>
+        </sd-tab-group>
       `);
 
       return expectCustomTabToBeActiveAfter(tabGroup, () => sendKeys({ press: 'ArrowRight' }));
     });
 
     it('selects a tab by using the arrow keys and enter if activation is set to manual', async () => {
-      const tabGroup = await fixture<SlTabGroup>(html`
-        <sl-tab-group>
-          <sl-tab slot="nav" panel="general" data-testid="general-header">General</sl-tab>
-          <sl-tab slot="nav" panel="custom" data-testid="custom-header">Custom</sl-tab>
-          <sl-tab-panel name="general">This is the general tab panel.</sl-tab-panel>
-          <sl-tab-panel name="custom" data-testid="custom-tab-content">This is the custom tab panel.</sl-tab-panel>
-        </sl-tab-group>
+      const tabGroup = await fixture<SdTabGroup>(html`
+        <sd-tab-group>
+          <sd-tab slot="nav" panel="general" data-testid="general-header">General</sd-tab>
+          <sd-tab slot="nav" panel="custom" data-testid="custom-header">Custom</sd-tab>
+          <sd-tab-panel name="general">This is the general tab panel.</sd-tab-panel>
+          <sd-tab-panel name="custom" data-testid="custom-tab-content">This is the custom tab panel.</sd-tab-panel>
+        </sd-tab-group>
       `);
       tabGroup.activation = 'manual';
 
       const generalHeader = await waitForHeaderToBeActive(tabGroup, 'general-header');
       generalHeader.focus();
 
-      const customHeader = queryByTestId<SlTab>(tabGroup, 'custom-header');
+      const customHeader = queryByTestId<SdTab>(tabGroup, 'custom-header');
       expect(customHeader).not.to.have.attribute('active');
 
-      const showEventPromise = oneEvent(tabGroup, 'sl-tab-show') as Promise<CustomEvent>;
+      const showEventPromise = oneEvent(tabGroup, 'sd-tab-show') as Promise<CustomEvent>;
       await sendKeys({ press: 'ArrowRight' });
       await aTimeout(0);
       expect(generalHeader).to.have.attribute('active');
@@ -418,26 +418,26 @@ describe('<sl-tab-group>', () => {
     });
 
     it('does not allow selection of disabled tabs with arrow keys', async () => {
-      const tabGroup = await fixture<SlTabGroup>(html`
-        <sl-tab-group>
-          <sl-tab slot="nav" panel="general" data-testid="general-header">General</sl-tab>
-          <sl-tab slot="nav" panel="disabled" disabled>Disabled</sl-tab>
-          <sl-tab-panel name="general" data-testid="general-tab-content">This is the general tab panel.</sl-tab-panel>
-          <sl-tab-panel name="disabled">This is the custom tab panel.</sl-tab-panel>
-        </sl-tab-group>
+      const tabGroup = await fixture<SdTabGroup>(html`
+        <sd-tab-group>
+          <sd-tab slot="nav" panel="general" data-testid="general-header">General</sd-tab>
+          <sd-tab slot="nav" panel="disabled" disabled>Disabled</sd-tab>
+          <sd-tab-panel name="general" data-testid="general-tab-content">This is the general tab panel.</sd-tab-panel>
+          <sd-tab-panel name="disabled">This is the custom tab panel.</sd-tab-panel>
+        </sd-tab-group>
       `);
 
       return expectGeneralTabToBeStillActiveAfter(tabGroup, () => sendKeys({ press: 'ArrowRight' }));
     });
 
     it('selects a tab by using the show function', async () => {
-      const tabGroup = await fixture<SlTabGroup>(html`
-        <sl-tab-group>
-          <sl-tab slot="nav" panel="general" data-testid="general-header">General</sl-tab>
-          <sl-tab slot="nav" panel="custom" data-testid="custom-header">Custom</sl-tab>
-          <sl-tab-panel name="general">This is the general tab panel.</sl-tab-panel>
-          <sl-tab-panel name="custom" data-testid="custom-tab-content">This is the custom tab panel.</sl-tab-panel>
-        </sl-tab-group>
+      const tabGroup = await fixture<SdTabGroup>(html`
+        <sd-tab-group>
+          <sd-tab slot="nav" panel="general" data-testid="general-header">General</sd-tab>
+          <sd-tab slot="nav" panel="custom" data-testid="custom-header">Custom</sd-tab>
+          <sd-tab-panel name="general">This is the general tab panel.</sd-tab-panel>
+          <sd-tab-panel name="custom" data-testid="custom-tab-content">This is the custom tab panel.</sd-tab-panel>
+        </sd-tab-group>
       `);
 
       return expectCustomTabToBeActiveAfter(tabGroup, () => {

@@ -2,16 +2,16 @@ import { clickOnElement } from '../../internal/test';
 import { expect, fixture, html, oneEvent, waitUntil } from '@open-wc/testing';
 import { sendKeys } from '@web/test-runner-commands';
 import sinon from 'sinon';
-import type SlCheckbox from './checkbox';
+import type SdCheckbox from './checkbox';
 
-describe('<sl-checkbox>', () => {
+describe('<sd-checkbox>', () => {
   it('should pass accessibility tests', async () => {
-    const el = await fixture<SlCheckbox>(html` <sl-checkbox>Checkbox</sl-checkbox> `);
+    const el = await fixture<SdCheckbox>(html` <sd-checkbox>Checkbox</sd-checkbox> `);
     await expect(el).to.be.accessible();
   });
 
   it('default properties', async () => {
-    const el = await fixture<SlCheckbox>(html` <sl-checkbox></sl-checkbox> `);
+    const el = await fixture<SdCheckbox>(html` <sd-checkbox></sd-checkbox> `);
 
     expect(el.name).to.equal('');
     expect(el.value).to.be.undefined;
@@ -24,21 +24,21 @@ describe('<sl-checkbox>', () => {
   });
 
   it('should have title if title attribute is set', async () => {
-    const el = await fixture<SlCheckbox>(html` <sl-checkbox title="Test"></sl-checkbox> `);
+    const el = await fixture<SdCheckbox>(html` <sd-checkbox title="Test"></sd-checkbox> `);
     const input = el.shadowRoot!.querySelector('input')!;
 
     expect(input.title).to.equal('Test');
   });
 
   it('should be disabled with the disabled attribute', async () => {
-    const el = await fixture<SlCheckbox>(html` <sl-checkbox disabled></sl-checkbox> `);
+    const el = await fixture<SdCheckbox>(html` <sd-checkbox disabled></sd-checkbox> `);
     const checkbox = el.shadowRoot!.querySelector('input')!;
 
     expect(checkbox.disabled).to.be.true;
   });
 
   it('should be disabled when disabled property is set', async () => {
-    const el = await fixture<SlCheckbox>(html`<sl-checkbox></sl-checkbox>`);
+    const el = await fixture<SdCheckbox>(html`<sd-checkbox></sd-checkbox>`);
     const checkbox = el.shadowRoot!.querySelector('input')!;
 
     el.disabled = true;
@@ -48,17 +48,17 @@ describe('<sl-checkbox>', () => {
   });
 
   it('should be valid by default', async () => {
-    const el = await fixture<SlCheckbox>(html` <sl-checkbox></sl-checkbox> `);
+    const el = await fixture<SdCheckbox>(html` <sd-checkbox></sd-checkbox> `);
     expect(el.checkValidity()).to.be.true;
   });
 
-  it('should emit sl-change and sl-input when clicked', async () => {
-    const el = await fixture<SlCheckbox>(html` <sl-checkbox></sl-checkbox> `);
+  it('should emit sd-change and sd-input when clicked', async () => {
+    const el = await fixture<SdCheckbox>(html` <sd-checkbox></sd-checkbox> `);
     const changeHandler = sinon.spy();
     const inputHandler = sinon.spy();
 
-    el.addEventListener('sl-change', changeHandler);
-    el.addEventListener('sl-input', inputHandler);
+    el.addEventListener('sd-change', changeHandler);
+    el.addEventListener('sd-input', inputHandler);
     el.click();
     await el.updateComplete;
 
@@ -67,13 +67,13 @@ describe('<sl-checkbox>', () => {
     expect(el.checked).to.be.true;
   });
 
-  it('should emit sl-change and sl-input when toggled with spacebar', async () => {
-    const el = await fixture<SlCheckbox>(html` <sl-checkbox></sl-checkbox> `);
+  it('should emit sd-change and sd-input when toggled with spacebar', async () => {
+    const el = await fixture<SdCheckbox>(html` <sd-checkbox></sd-checkbox> `);
     const changeHandler = sinon.spy();
     const inputHandler = sinon.spy();
 
-    el.addEventListener('sl-change', changeHandler);
-    el.addEventListener('sl-input', inputHandler);
+    el.addEventListener('sd-change', changeHandler);
+    el.addEventListener('sd-input', inputHandler);
     el.focus();
     await el.updateComplete;
     await sendKeys({ press: ' ' });
@@ -83,11 +83,11 @@ describe('<sl-checkbox>', () => {
     expect(el.checked).to.be.true;
   });
 
-  it('should not emit sl-change or sl-input when checked programmatically', async () => {
-    const el = await fixture<SlCheckbox>(html` <sl-checkbox></sl-checkbox> `);
+  it('should not emit sd-change or sd-input when checked programmatically', async () => {
+    const el = await fixture<SdCheckbox>(html` <sd-checkbox></sd-checkbox> `);
 
-    el.addEventListener('sl-change', () => expect.fail('sl-change should not be emitted'));
-    el.addEventListener('sl-input', () => expect.fail('sl-input should not be emitted'));
+    el.addEventListener('sd-change', () => expect.fail('sd-change should not be emitted'));
+    el.addEventListener('sd-input', () => expect.fail('sd-input should not be emitted'));
     el.checked = true;
     await el.updateComplete;
     el.checked = false;
@@ -98,11 +98,11 @@ describe('<sl-checkbox>', () => {
     it('should submit the correct value when a value is provided', async () => {
       const form = await fixture<HTMLFormElement>(html`
         <form>
-          <sl-checkbox name="a" value="1" checked></sl-checkbox>
-          <sl-button type="submit">Submit</sl-button>
+          <sd-checkbox name="a" value="1" checked></sd-checkbox>
+          <sd-button type="submit">Submit</sd-button>
         </form>
       `);
-      const button = form.querySelector('sl-button')!;
+      const button = form.querySelector('sd-button')!;
       const submitHandler = sinon.spy((event: SubmitEvent) => {
         formData = new FormData(form);
         event.preventDefault();
@@ -120,11 +120,11 @@ describe('<sl-checkbox>', () => {
     it('should submit "on" when no value is provided', async () => {
       const form = await fixture<HTMLFormElement>(html`
         <form>
-          <sl-checkbox name="a" checked></sl-checkbox>
-          <sl-button type="submit">Submit</sl-button>
+          <sd-checkbox name="a" checked></sd-checkbox>
+          <sd-button type="submit">Submit</sd-button>
         </form>
       `);
-      const button = form.querySelector('sl-button')!;
+      const button = form.querySelector('sd-button')!;
       const submitHandler = sinon.spy((event: SubmitEvent) => {
         formData = new FormData(form);
         event.preventDefault();
@@ -140,7 +140,7 @@ describe('<sl-checkbox>', () => {
     });
 
     it('should be invalid when setCustomValidity() is called with a non-empty value', async () => {
-      const checkbox = await fixture<HTMLFormElement>(html` <sl-checkbox></sl-checkbox> `);
+      const checkbox = await fixture<HTMLFormElement>(html` <sd-checkbox></sd-checkbox> `);
 
       // Submitting the form after setting custom validity should not trigger the handler
       checkbox.setCustomValidity('Invalid selection');
@@ -161,12 +161,12 @@ describe('<sl-checkbox>', () => {
     });
 
     it('should be invalid when required and unchecked', async () => {
-      const checkbox = await fixture<HTMLFormElement>(html` <sl-checkbox required></sl-checkbox> `);
+      const checkbox = await fixture<HTMLFormElement>(html` <sd-checkbox required></sd-checkbox> `);
       expect(checkbox.checkValidity()).to.be.false;
     });
 
     it('should be valid when required and checked', async () => {
-      const checkbox = await fixture<HTMLFormElement>(html` <sl-checkbox required checked></sl-checkbox> `);
+      const checkbox = await fixture<HTMLFormElement>(html` <sd-checkbox required checked></sd-checkbox> `);
       expect(checkbox.checkValidity()).to.be.true;
     });
 
@@ -174,9 +174,9 @@ describe('<sl-checkbox>', () => {
       const el = await fixture<HTMLFormElement>(html`
         <div>
           <form id="f">
-            <sl-button type="submit">Submit</sl-button>
+            <sd-button type="submit">Submit</sd-button>
           </form>
-          <sl-checkbox form="f" name="a" value="1" checked></sl-checkbox>
+          <sd-checkbox form="f" name="a" value="1" checked></sd-checkbox>
         </div>
       `);
       const form = el.querySelector('form')!;
@@ -190,12 +190,12 @@ describe('<sl-checkbox>', () => {
     it('should reset the element to its initial value', async () => {
       const form = await fixture<HTMLFormElement>(html`
         <form>
-          <sl-checkbox name="a" value="1" checked></sl-checkbox>
-          <sl-button type="reset">Reset</sl-button>
+          <sd-checkbox name="a" value="1" checked></sd-checkbox>
+          <sd-button type="reset">Reset</sd-button>
         </form>
       `);
-      const button = form.querySelector('sl-button')!;
-      const checkbox = form.querySelector('sl-checkbox')!;
+      const button = form.querySelector('sd-button')!;
+      const checkbox = form.querySelector('sd-checkbox')!;
       checkbox.checked = false;
 
       await checkbox.updateComplete;
@@ -218,7 +218,7 @@ describe('<sl-checkbox>', () => {
 
   describe('click', () => {
     it('should click the inner input', async () => {
-      const el = await fixture<SlCheckbox>(html`<sl-checkbox></sl-checkbox>`);
+      const el = await fixture<SdCheckbox>(html`<sd-checkbox></sd-checkbox>`);
       const checkbox = el.shadowRoot!.querySelector('input')!;
       const clickSpy = sinon.spy();
 
@@ -234,7 +234,7 @@ describe('<sl-checkbox>', () => {
 
   describe('focus', () => {
     it('should focus the inner input', async () => {
-      const el = await fixture<SlCheckbox>(html`<sl-checkbox></sl-checkbox>`);
+      const el = await fixture<SdCheckbox>(html`<sd-checkbox></sd-checkbox>`);
       const checkbox = el.shadowRoot!.querySelector('input')!;
       const focusSpy = sinon.spy();
 
@@ -250,7 +250,7 @@ describe('<sl-checkbox>', () => {
 
   describe('blur', () => {
     it('should blur the inner input', async () => {
-      const el = await fixture<SlCheckbox>(html`<sl-checkbox></sl-checkbox>`);
+      const el = await fixture<SdCheckbox>(html`<sd-checkbox></sd-checkbox>`);
       const checkbox = el.shadowRoot!.querySelector('input')!;
       const blurSpy = sinon.spy();
 
@@ -269,7 +269,7 @@ describe('<sl-checkbox>', () => {
 
   describe('indeterminate', () => {
     it('should render indeterminate icon until checked', async () => {
-      const el = await fixture<SlCheckbox>(html`<sl-checkbox indeterminate></sl-checkbox>`);
+      const el = await fixture<SdCheckbox>(html`<sd-checkbox indeterminate></sd-checkbox>`);
       let indeterminateIcon = el.shadowRoot!.querySelector('[part~="indeterminate-icon"]')!;
 
       expect(indeterminateIcon).not.to.be.null;

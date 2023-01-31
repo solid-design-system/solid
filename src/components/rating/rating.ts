@@ -7,20 +7,20 @@ import { LocalizeController } from '../../utilities/localize';
 import { styleMap } from 'lit/directives/style-map.js';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { watch } from '../../internal/watch';
-import ShoelaceElement from '../../internal/shoelace-element';
+import SolidElement from '../../internal/solid-element';
 import styles from './rating.styles';
 import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Ratings give users a way to quickly view and provide feedback.
- * @documentation https://shoelace.style/components/rating
+ * @documentation https://solid.union-investment.com/[storybook-link]/rating
  * @status stable
  * @since 2.0
  *
- * @dependency sl-icon
+ * @dependency sd-icon
  *
- * @event sl-change - Emitted when the rating's value changes.
- * @event {{ phase: 'start' | 'move' | 'end', value: number }} sl-hover - Emitted when the user hovers over a value. The
+ * @event sd-change - Emitted when the rating's value changes.
+ * @event {{ phase: 'start' | 'move' | 'end', value: number }} sd-hover - Emitted when the user hovers over a value. The
  *  `phase` property indicates when hovering starts, moves to a new value, or ends. The `value` property tells what the
  *  rating's value would be if the user were to commit to the hovered value.
  *
@@ -31,8 +31,8 @@ import type { CSSResultGroup } from 'lit';
  * @cssproperty --symbol-size - The size of symbols.
  * @cssproperty --symbol-spacing - The spacing to use around symbols.
  */
-@customElement('sl-rating')
-export default class SlRating extends ShoelaceElement {
+@customElement('sd-rating')
+export default class SdRating extends SolidElement {
   static styles: CSSResultGroup = styles;
 
   private readonly localize = new LocalizeController(this);
@@ -66,9 +66,9 @@ export default class SlRating extends ShoelaceElement {
   /**
    * A function that customizes the symbol to be rendered. The first and only argument is the rating's current value.
    * The function should return a string containing trusted HTML of the symbol to render at the specified value. Works
-   * well with `<sl-icon>` elements.
+   * well with `<sd-icon>` elements.
    */
-  @property() getSymbol: (value: number) => string = () => '<sl-icon name="star-fill" library="system"></sl-icon>';
+  @property() getSymbol: (value: number) => string = () => '<sd-icon name="star-fill" library="system"></sd-icon>';
 
   private getValueFromMousePosition(event: MouseEvent) {
     return this.getValueFromXCoordinate(event.clientX);
@@ -90,7 +90,7 @@ export default class SlRating extends ShoelaceElement {
 
   private handleClick(event: MouseEvent) {
     this.setValue(this.getValueFromMousePosition(event));
-    this.emit('sl-change');
+    this.emit('sd-change');
   }
 
   private setValue(newValue: number) {
@@ -134,7 +134,7 @@ export default class SlRating extends ShoelaceElement {
     }
 
     if (this.value !== oldValue) {
-      this.emit('sl-change');
+      this.emit('sd-change');
     }
   }
 
@@ -166,7 +166,7 @@ export default class SlRating extends ShoelaceElement {
   private handleTouchEnd(event: TouchEvent) {
     this.isHovering = false;
     this.setValue(this.hoverValue);
-    this.emit('sl-change');
+    this.emit('sd-change');
 
     // Prevent click on mobile devices
     event.preventDefault();
@@ -179,7 +179,7 @@ export default class SlRating extends ShoelaceElement {
 
   @watch('hoverValue')
   handleHoverValueChange() {
-    this.emit('sl-hover', {
+    this.emit('sd-hover', {
       detail: {
         phase: 'move',
         value: this.hoverValue
@@ -189,7 +189,7 @@ export default class SlRating extends ShoelaceElement {
 
   @watch('isHovering')
   handleIsHoveringChange() {
-    this.emit('sl-hover', {
+    this.emit('sd-hover', {
       detail: {
         phase: this.isHovering ? 'start' : 'end',
         value: this.hoverValue
@@ -222,11 +222,11 @@ export default class SlRating extends ShoelaceElement {
       <div
         part="base"
         class=${classMap({
-          rating: true,
-          'rating--readonly': this.readonly,
-          'rating--disabled': this.disabled,
-          'rating--rtl': isRtl
-        })}
+      rating: true,
+      'rating--readonly': this.readonly,
+      'rating--disabled': this.disabled,
+      'rating--rtl': isRtl
+    })}
         role="slider"
         aria-label=${this.label}
         aria-disabled=${this.disabled ? 'true' : 'false'}
@@ -246,46 +246,46 @@ export default class SlRating extends ShoelaceElement {
       >
         <span class="rating__symbols rating__symbols--inactive">
           ${counter.map(index => {
-            // Users can click the current value to clear the rating. When this happens, we set this.isHovering to
-            // false to prevent the hover state from confusing them as they move the mouse out of the control. This
-            // extra mouseenter will reinstate it if they happen to mouse over an adjacent symbol.
-            return html`
+      // Users can click the current value to clear the rating. When this happens, we set this.isHovering to
+      // false to prevent the hover state from confusing them as they move the mouse out of the control. This
+      // extra mouseenter will reinstate it if they happen to mouse over an adjacent symbol.
+      return html`
               <span
                 class=${classMap({
-                  rating__symbol: true,
-                  'rating__symbol--hover': this.isHovering && Math.ceil(displayValue) === index + 1
-                })}
+        rating__symbol: true,
+        'rating__symbol--hover': this.isHovering && Math.ceil(displayValue) === index + 1
+      })}
                 role="presentation"
                 @mouseenter=${this.handleMouseEnter}
               >
                 ${unsafeHTML(this.getSymbol(index + 1))}
               </span>
             `;
-          })}
+    })}
         </span>
 
         <span class="rating__symbols rating__symbols--indicator">
           ${counter.map(index => {
-            return html`
+      return html`
               <span
                 class=${classMap({
-                  rating__symbol: true,
-                  'rating__symbol--hover': this.isHovering && Math.ceil(displayValue) === index + 1
-                })}
+        rating__symbol: true,
+        'rating__symbol--hover': this.isHovering && Math.ceil(displayValue) === index + 1
+      })}
                 style=${styleMap({
-                  clipPath:
-                    displayValue > index + 1
-                      ? 'none'
-                      : isRtl
-                      ? `inset(0 0 0 ${100 - ((displayValue - index) / 1) * 100}%)`
-                      : `inset(0 ${100 - ((displayValue - index) / 1) * 100}% 0 0)`
-                })}
+        clipPath:
+          displayValue > index + 1
+            ? 'none'
+            : isRtl
+              ? `inset(0 0 0 ${100 - ((displayValue - index) / 1) * 100}%)`
+              : `inset(0 ${100 - ((displayValue - index) / 1) * 100}% 0 0)`
+      })}
                 role="presentation"
               >
                 ${unsafeHTML(this.getSymbol(index + 1))}
               </span>
             `;
-          })}
+    })}
         </span>
       </div>
     `;
@@ -294,6 +294,6 @@ export default class SlRating extends ShoelaceElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-rating': SlRating;
+    'sd-rating': SdRating;
   }
 }

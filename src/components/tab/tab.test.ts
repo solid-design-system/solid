@@ -1,19 +1,19 @@
 import { expect, fixture, html } from '@open-wc/testing';
 import sinon from 'sinon';
-import type SlTab from './tab';
+import type SdTab from './tab';
 
-describe('<sl-tab>', () => {
+describe('<sd-tab>', () => {
   it('passes accessibility test', async () => {
-    const el = await fixture<SlTab>(html`
-      <sl-tab-group>
-        <sl-tab slot="nav">Test</sl-tab>
-      </sl-tab-group>
+    const el = await fixture<SdTab>(html`
+      <sd-tab-group>
+        <sd-tab slot="nav">Test</sd-tab>
+      </sd-tab-group>
     `);
     await expect(el).to.be.accessible();
   });
 
   it('should render default tab', async () => {
-    const el = await fixture<SlTab>(html` <sl-tab>Test</sl-tab> `);
+    const el = await fixture<SdTab>(html` <sd-tab>Test</sd-tab> `);
 
     const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
 
@@ -28,7 +28,7 @@ describe('<sl-tab>', () => {
   });
 
   it('should disable tab by attribute', async () => {
-    const el = await fixture<SlTab>(html` <sl-tab disabled>Test</sl-tab> `);
+    const el = await fixture<SdTab>(html` <sd-tab disabled>Test</sd-tab> `);
 
     const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
 
@@ -39,7 +39,7 @@ describe('<sl-tab>', () => {
   });
 
   it('should set active tab by attribute', async () => {
-    const el = await fixture<SlTab>(html` <sl-tab active>Test</sl-tab> `);
+    const el = await fixture<SdTab>(html` <sd-tab active>Test</sd-tab> `);
 
     const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
 
@@ -50,7 +50,7 @@ describe('<sl-tab>', () => {
   });
 
   it('should set closable by attribute', async () => {
-    const el = await fixture<SlTab>(html` <sl-tab closable>Test</sl-tab> `);
+    const el = await fixture<SdTab>(html` <sd-tab closable>Test</sd-tab> `);
 
     const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
     const closeButton = el.shadowRoot!.querySelector('[part~="close-button"]');
@@ -62,7 +62,7 @@ describe('<sl-tab>', () => {
 
   describe('focus', () => {
     it('should focus inner div', async () => {
-      const el = await fixture<SlTab>(html` <sl-tab>Test</sl-tab> `);
+      const el = await fixture<SdTab>(html` <sd-tab>Test</sd-tab> `);
 
       const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
 
@@ -75,7 +75,7 @@ describe('<sl-tab>', () => {
 
   describe('blur', () => {
     it('should blur inner div', async () => {
-      const el = await fixture<SlTab>(html` <sl-tab>Test</sl-tab> `);
+      const el = await fixture<SdTab>(html` <sd-tab>Test</sd-tab> `);
 
       el.focus();
       await el.updateComplete;
@@ -89,12 +89,12 @@ describe('<sl-tab>', () => {
 
   describe('closable', () => {
     it('should emit close event when close button clicked', async () => {
-      const el = await fixture<SlTab>(html` <sl-tab closable>Test</sl-tab> `);
+      const el = await fixture<SdTab>(html` <sd-tab closable>Test</sd-tab> `);
 
       const closeButton = el.shadowRoot!.querySelector<HTMLButtonElement>('[part~="close-button"]')!;
       const spy = sinon.spy();
 
-      el.addEventListener('sl-close', spy, { once: true });
+      el.addEventListener('sd-close', spy, { once: true });
 
       closeButton.click();
 

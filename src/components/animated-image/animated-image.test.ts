@@ -1,8 +1,8 @@
 import { expect, fixture, html } from '@open-wc/testing';
 
-describe('<sl-animated-image>', () => {
+describe('<sd-animated-image>', () => {
   it('should render a component', async () => {
-    const el = await fixture(html` <sl-animated-image></sl-animated-image> `);
+    const el = await fixture(html` <sd-animated-image></sd-animated-image> `);
 
     expect(el).to.exist;
   });

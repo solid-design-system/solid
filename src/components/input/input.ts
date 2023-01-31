@@ -9,10 +9,10 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { live } from 'lit/directives/live.js';
 import { LocalizeController } from '../../utilities/localize';
 import { watch } from '../../internal/watch';
-import ShoelaceElement from '../../internal/shoelace-element';
+import SolidElement from '../../internal/solid-element';
 import styles from './input.styles';
 import type { CSSResultGroup } from 'lit';
-import type { ShoelaceFormControl } from '../../internal/shoelace-element';
+import type { SolidFormControl } from '../../internal/solid-element';
 
 //
 // It's currently impossible to hide Firefox's built-in clear icon when using <input type="date|time">, so we need this
@@ -28,11 +28,11 @@ const isFirefox = isChromium ? false : navigator.userAgent.includes('Firefox');
 
 /**
  * @summary Inputs collect data from the user.
- * @documentation https://shoelace.style/components/input
+ * @documentation https://solid.union-investment.com/[storybook-link]/input
  * @status stable
  * @since 2.0
  *
- * @dependency sl-icon
+ * @dependency sd-icon
  *
  * @slot label - The input's label. Alternatively, you can use the `label` attribute.
  * @slot prefix - Used to prepend a presentational icon or similar element to the input.
@@ -42,11 +42,11 @@ const isFirefox = isChromium ? false : navigator.userAgent.includes('Firefox');
  * @slot hide-password-icon - An icon to use in lieu of the default hide password icon.
  * @slot help-text - Text that describes how to use the input. Alternatively, you can use the `help-text` attribute.
  *
- * @event sl-blur - Emitted when the control loses focus.
- * @event sl-change - Emitted when an alteration to the control's value is committed by the user.
- * @event sl-clear - Emitted when the clear button is activated.
- * @event sl-focus - Emitted when the control gains focus.
- * @event sl-input - Emitted when the control receives input.
+ * @event sd-blur - Emitted when the control loses focus.
+ * @event sd-change - Emitted when an alteration to the control's value is committed by the user.
+ * @event sd-clear - Emitted when the clear button is activated.
+ * @event sd-focus - Emitted when the control gains focus.
+ * @event sd-input - Emitted when the control receives input.
  *
  * @csspart form-control - The form control that wraps the label, input, and help text.
  * @csspart form-control-label - The label's wrapper.
@@ -59,8 +59,8 @@ const isFirefox = isChromium ? false : navigator.userAgent.includes('Firefox');
  * @csspart password-toggle-button - The password toggle button.
  * @csspart suffix - The container that wraps the suffix.
  */
-@customElement('sl-input')
-export default class SlInput extends ShoelaceElement implements ShoelaceFormControl {
+@customElement('sd-input')
+export default class SdInput extends SolidElement implements SolidFormControl {
   static styles: CSSResultGroup = styles;
 
   private readonly formControlController = new FormControlController(this);
@@ -231,19 +231,19 @@ export default class SlInput extends ShoelaceElement implements ShoelaceFormCont
 
   private handleBlur() {
     this.hasFocus = false;
-    this.emit('sl-blur');
+    this.emit('sd-blur');
   }
 
   private handleChange() {
     this.value = this.input.value;
-    this.emit('sl-change');
+    this.emit('sd-change');
   }
 
   private handleClearClick(event: MouseEvent) {
     this.value = '';
-    this.emit('sl-clear');
-    this.emit('sl-input');
-    this.emit('sl-change');
+    this.emit('sd-clear');
+    this.emit('sd-input');
+    this.emit('sd-change');
     this.input.focus();
 
     event.stopPropagation();
@@ -251,13 +251,13 @@ export default class SlInput extends ShoelaceElement implements ShoelaceFormCont
 
   private handleFocus() {
     this.hasFocus = true;
-    this.emit('sl-focus');
+    this.emit('sd-focus');
   }
 
   private handleInput() {
     this.value = this.input.value;
     this.formControlController.updateValidity();
-    this.emit('sl-input');
+    this.emit('sd-input');
   }
 
   private handleInvalid() {
@@ -398,13 +398,13 @@ export default class SlInput extends ShoelaceElement implements ShoelaceFormCont
       <div
         part="form-control"
         class=${classMap({
-          'form-control': true,
-          'form-control--small': this.size === 'small',
-          'form-control--medium': this.size === 'medium',
-          'form-control--large': this.size === 'large',
-          'form-control--has-label': hasLabel,
-          'form-control--has-help-text': hasHelpText
-        })}
+      'form-control': true,
+      'form-control--small': this.size === 'small',
+      'form-control--medium': this.size === 'medium',
+      'form-control--large': this.size === 'large',
+      'form-control--has-label': hasLabel,
+      'form-control--has-help-text': hasHelpText
+    })}
       >
         <label
           part="form-control-label"
@@ -419,23 +419,23 @@ export default class SlInput extends ShoelaceElement implements ShoelaceFormCont
           <div
             part="base"
             class=${classMap({
-              input: true,
+      input: true,
 
-              // Sizes
-              'input--small': this.size === 'small',
-              'input--medium': this.size === 'medium',
-              'input--large': this.size === 'large',
+      // Sizes
+      'input--small': this.size === 'small',
+      'input--medium': this.size === 'medium',
+      'input--large': this.size === 'large',
 
-              // States
-              'input--pill': this.pill,
-              'input--standard': !this.filled,
-              'input--filled': this.filled,
-              'input--disabled': this.disabled,
-              'input--focused': this.hasFocus,
-              'input--empty': !this.value,
-              'input--no-spin-buttons': this.noSpinButtons,
-              'input--is-firefox': isFirefox
-            })}
+      // States
+      'input--pill': this.pill,
+      'input--standard': !this.filled,
+      'input--filled': this.filled,
+      'input--disabled': this.disabled,
+      'input--focused': this.hasFocus,
+      'input--empty': !this.value,
+      'input--no-spin-buttons': this.noSpinButtons,
+      'input--is-firefox': isFirefox
+    })}
           >
             <slot name="prefix" part="prefix" class="input__prefix"></slot>
             <input
@@ -472,9 +472,8 @@ export default class SlInput extends ShoelaceElement implements ShoelaceFormCont
               @blur=${this.handleBlur}
             />
 
-            ${
-              hasClearIcon
-                ? html`
+            ${hasClearIcon
+        ? html`
                     <button
                       part="clear-button"
                       class="input__clear"
@@ -484,15 +483,14 @@ export default class SlInput extends ShoelaceElement implements ShoelaceFormCont
                       tabindex="-1"
                     >
                       <slot name="clear-icon">
-                        <sl-icon name="x-circle-fill" library="system"></sl-icon>
+                        <sd-icon name="x-circle-fill" library="system"></sd-icon>
                       </slot>
                     </button>
                   `
-                : ''
-            }
-            ${
-              this.passwordToggle && !this.disabled
-                ? html`
+        : ''
+      }
+            ${this.passwordToggle && !this.disabled
+        ? html`
                     <button
                       part="password-toggle-button"
                       class="input__password-toggle"
@@ -502,20 +500,20 @@ export default class SlInput extends ShoelaceElement implements ShoelaceFormCont
                       tabindex="-1"
                     >
                       ${this.passwordVisible
-                        ? html`
+            ? html`
                             <slot name="show-password-icon">
-                              <sl-icon name="eye-slash" library="system"></sl-icon>
+                              <sd-icon name="eye-slash" library="system"></sd-icon>
                             </slot>
                           `
-                        : html`
+            : html`
                             <slot name="hide-password-icon">
-                              <sl-icon name="eye" library="system"></sl-icon>
+                              <sd-icon name="eye" library="system"></sd-icon>
                             </slot>
                           `}
                     </button>
                   `
-                : ''
-            }
+        : ''
+      }
 
             <slot name="suffix" part="suffix" class="input__suffix"></slot>
           </div>
@@ -538,6 +536,6 @@ export default class SlInput extends ShoelaceElement implements ShoelaceFormCont
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-input': SlInput;
+    'sd-input': SdInput;
   }
 }

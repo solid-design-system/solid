@@ -25,8 +25,8 @@ export function serialize(form: HTMLFormElement) {
 }
 
 /**
- * Returns all form controls that are associated with the specified form. Includes both native and Shoelace form
- * controls. Use this function in lieu of the `HTMLFormElement.elements` property, which doesn't recognize Shoelace
+ * Returns all form controls that are associated with the specified form. Includes both native and Solid form
+ * controls. Use this function in lieu of the `HTMLFormElement.elements` property, which doesn't recognize Solid
  * form controls.
  */
 export function getFormControls(form: HTMLFormElement) {
@@ -34,10 +34,10 @@ export function getFormControls(form: HTMLFormElement) {
   const allNodes = [...rootNode.querySelectorAll('*')];
   const formControls = [...form.elements];
   const collection = formCollections.get(form);
-  const shoelaceFormControls = collection ? Array.from(collection) : [];
+  const solidFormControls = collection ? Array.from(collection) : [];
 
   // To return form controls in the right order, we sort by DOM index
-  return [...formControls, ...shoelaceFormControls].sort((a: Element, b: Element) => {
+  return [...formControls, ...solidFormControls].sort((a: Element, b: Element) => {
     if (allNodes.indexOf(a) < allNodes.indexOf(b)) return -1;
     if (allNodes.indexOf(a) > allNodes.indexOf(b)) return 1;
     return 0;

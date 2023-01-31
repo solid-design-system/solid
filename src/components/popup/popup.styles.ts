@@ -5,7 +5,7 @@ export default css`
   ${componentStyles}
 
   :host {
-    --arrow-color: var(--sl-color-neutral-1000);
+    --arrow-color: var(--sd-color-neutral-1000);
     --arrow-size: 6px;
 
     /*
