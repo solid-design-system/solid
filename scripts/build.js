@@ -6,6 +6,7 @@ import esbuild from 'esbuild';
 import fs from 'fs';
 import { globby } from 'globby';
 import copy from 'recursive-copy';
+import chokidar from 'chokidar';
 
 const { bundle, copydir, dir, serve, types } = commandLineArgs([
   { name: 'bundle', type: Boolean },
@@ -89,4 +90,28 @@ fs.mkdirSync(outdir, { recursive: true });
   }
 
   console.log(chalk.green(`The build has been generated at ${outdir} 📦\n`));
+
+  // Rebuild and reload when source files change
+  chokidar.watch(['src/**/!(*.test).*']).on('change', async filename => {
+    console.log(`Source file changed - ${filename}`);
+    buildResult
+      // Rebuild and reload
+      .rebuild()
+      .then(() => {
+        // Rebuild stylesheets when a theme file changes
+        if (/^src\/themes/.test(filename)) {
+          execSync(`node scripts/make-themes.js --outdir "${outdir}"`, { stdio: 'inherit' });
+        }
+      })
+      .then(() => {
+        // Skip metadata when styles are changed
+        if (/(\.css|\.styles\.ts)$/.test(filename)) {
+          return;
+        }
+
+        execSync(`node scripts/make-metadata.js --outdir "${outdir}"`, { stdio: 'inherit' });
+      })
+      .catch(err => console.error(chalk.red(err)));
+  });
+
 })();
