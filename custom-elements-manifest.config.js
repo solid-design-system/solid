@@ -1,8 +1,9 @@
-import fs from 'fs';
 import { generateCustomData } from 'cem-plugin-vs-code-custom-data-generator';
-import commandLineArgs from 'command-line-args';
 import { parse } from 'comment-parser';
 import { pascalCase } from 'pascal-case';
+import BetterLitTypesPlugin from 'cem-plugin-better-lit-types';
+import commandLineArgs from 'command-line-args';
+import fs from 'fs';
 
 const packageData = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
 const { name, description, version, author, homepage, license } = packageData;
@@ -29,6 +30,7 @@ export default {
   globs: ['src/components/**/*.ts'],
   exclude: ['**/*.styles.ts', '**/*.test.ts'],
   plugins: [
+    BetterLitTypesPlugin,
     // Append package data
     {
       name: 'solid-package-data',

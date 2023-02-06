@@ -28,7 +28,6 @@ export default css`
     transition: var(--sd-transition-x-fast) background-color, var(--sd-transition-x-fast) color,
       var(--sd-transition-x-fast) border, var(--sd-transition-x-fast) box-shadow;
     cursor: inherit;
-    background: red !important;
   }
 
   .button::-moz-focus-inner {
