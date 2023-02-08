@@ -92,7 +92,7 @@ fs.mkdirSync(outdir, { recursive: true });
   console.log(chalk.green(`The build has been generated at ${outdir} 📦\n`));
 
   // Rebuild and reload when source files change
-  chokidar.watch(['src/**/!(*.test).*']).on('change', async filename => {
+  chokidar.watch(['src/**/!(*.test|*.stories).*']).on('change', async filename => {
     console.log(`Source file changed - ${filename}`);
     buildResult
       // Rebuild and reload
