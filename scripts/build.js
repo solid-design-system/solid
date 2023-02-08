@@ -48,7 +48,7 @@ fs.mkdirSync(outdir, { recursive: true });
         // The whole shebang
         './src/solid.ts',
         // Components
-        ...(await globby('./src/components/**/!(*.(style|test)).ts')),
+        ...(await globby('./src/components/**/!(*.(style|test|stories)).ts')),
         // Translations
         ...(await globby('./src/translations/**/*.ts')),
         // Public utilities

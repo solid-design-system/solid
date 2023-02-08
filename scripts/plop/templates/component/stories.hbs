@@ -1,0 +1,21 @@
+import '../../solid';
+import { getDefaultArgs, renderDefaultStory } from '../../../scripts/storybook/helper';
+
+export default {
+  title: 'Components/{{ tag }}',
+  component: '{{ tag }}',
+};
+
+// Renders the default story
+export const Default = (args) => {
+  return renderDefaultStory('{{ tag }}', args);
+};
+
+// Sets the default args of the story
+Default.args = {
+  ...getDefaultArgs('{{ tag }}'),
+  slot: 'Button Label'
+};
+
+// Sets the arg types of the story
+Default.argTypes = {};
