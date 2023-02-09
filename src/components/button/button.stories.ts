@@ -7,7 +7,7 @@ export default {
 };
 
 // Renders the default story
-export const Default = (args) => {
+export const Default = (args: any) => {
   return renderDefaultStory('sd-button', args);
 };
 

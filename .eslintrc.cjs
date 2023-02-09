@@ -46,6 +46,7 @@ module.exports = {
         objectLiteralTypeAssertions: 'never'
       }],
       '@typescript-eslint/consistent-type-imports': 'warn',
+      "@typescript-eslint/no-unsafe-call": "warning",
       '@typescript-eslint/no-base-to-string': 'error',
       '@typescript-eslint/no-confusing-non-null-assertion': 'error',
       '@typescript-eslint/no-invalid-void-type': 'error',
