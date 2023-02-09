@@ -3,10 +3,7 @@ import { LocalizeController as DefaultLocalizationController } from '@shoelace-s
 import type { Translation as DefaultTranslation } from '@shoelace-style/localize';
 
 // Extend the controller and apply our own translation interface for better typings
-export class LocalizeController extends DefaultLocalizationController<Translation> {}
-
-// Export functions from the localize lib so we have one central place to import them from
-export { registerTranslation } from '@shoelace-style/localize';
+export class LocalizeController extends DefaultLocalizationController<Translation> { }
 
 export interface Translation extends DefaultTranslation {
   $code: string; // e.g. en, en-GB

@@ -1,4 +1,4 @@
-import { registerTranslation } from '../utilities/localize';
+import { registerTranslation } from '@shoelace-style/localize';
 import baseTranslation from './en';
 import type { Translation } from '../utilities/localize';
 
