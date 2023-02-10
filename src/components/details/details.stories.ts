@@ -14,8 +14,6 @@ export const Default = (args: any) => {
 // Sets the default args of the story
 Default.args = {
   ...getDefaultArgs('sd-details'),
-  summary: '<span slot="summary">Summary Label</span>',
-  slot: 'Laborum aute aliquip proident commodo pariatur non.'
 };
 
 // Sets the arg types of the story

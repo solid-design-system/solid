@@ -18,6 +18,10 @@ export const getSlots = (customElementTag: string): string[] => {
     ?.map((slot: any) => { return slot.name || 'slot'; });  // If no name is given, 'slot' is used as default
 };
 
+const isRequiredSlot = (slotName: string) => {
+  const requiredSlots = ['label', '', 'slot', 'summary']; // 'slot' and '' are both the default slot.
+  return requiredSlots.includes(slotName);
+};
 
 /**
  * Get the placeholder for a slot. If it's the default slot, no placeholder is returned.
@@ -27,7 +31,11 @@ export const getSlots = (customElementTag: string): string[] => {
  */
 
 const getSlotPlaceholder = (slotName: string) => {
-  return slotName ? `<span slot="${slotName}"></span>` : '';
+  const capitalizeFirstLetter = (string: string) => string[0].toUpperCase() + string.slice(1);
+
+  return slotName
+    ? `<span slot="${slotName}">${isRequiredSlot(slotName) ? `${capitalizeFirstLetter(slotName)} Slot` : ''}</span>`
+    : 'Default Slot';
 };
 
 
@@ -50,7 +58,10 @@ export const getSlotsWithDefaults = (customElementTag: string): Record<string, a
 // Used to spread the slots into the component
 export const renderSlotsWithArgs = (customElementTag: string, args: any): Record<string, any> => {
   return getSlots(customElementTag)
-    ?.map((slot: any) => { return args[slot] && args[slot] !== getSlotPlaceholder(slot) ? unsafeHTML(args[slot]) : nothing; });
+    ?.map((slot: any) => {
+      console.log(slot, args[slot], getSlotPlaceholder(slot), isRequiredSlot(slot));
+      return args[slot] && (isRequiredSlot(slot) || args[slot] !== getSlotPlaceholder(slot)) ? unsafeHTML(args[slot]) : nothing;
+    });
 };
 
 /**

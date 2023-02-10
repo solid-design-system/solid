@@ -13,8 +13,7 @@ export const Default = (args: any) => {
 
 // Sets the default args of the story
 Default.args = {
-  ...getDefaultArgs('sd-split-panel'),
-  slot: 'Default Slot'
+  ...getDefaultArgs('sd-split-panel')
 };
 
 // Sets the arg types of the story

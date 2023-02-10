@@ -13,8 +13,7 @@ export const Default = (args: any) => {
 
 // Sets the default args of the story
 Default.args = {
-  ...getDefaultArgs('sd-resize-observer'),
-  slot: 'Default Slot'
+  ...getDefaultArgs('sd-resize-observer')
 };
 
 // Sets the arg types of the story

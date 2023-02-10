@@ -13,8 +13,7 @@ export const Default = (args: any) => {
 
 // Sets the default args of the story
 Default.args = {
-  ...getDefaultArgs('sd-rating'),
-  slot: 'Default Slot'
+  ...getDefaultArgs('sd-rating')
 };
 
 // Sets the arg types of the story

@@ -13,8 +13,7 @@ export const Default = (args: any) => {
 
 // Sets the default args of the story
 Default.args = {
-  ...getDefaultArgs('sd-mutation-observer'),
-  slot: 'Default Slot'
+  ...getDefaultArgs('sd-mutation-observer')
 };
 
 // Sets the arg types of the story
