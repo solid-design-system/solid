@@ -2,18 +2,18 @@ import '../../solid-components';
 import { getDefaultArgs, renderDefaultStory } from '../../../scripts/storybook/helper';
 
 export default {
-  title: 'Components/sd-button',
-  component: 'sd-button',
+  title: 'Components/sd-tab-panel',
+  component: 'sd-tab-panel',
 };
 
 // Renders the default story
 export const Default = (args: any) => {
-  return renderDefaultStory('sd-button', args);
+  return renderDefaultStory('sd-tab-panel', args);
 };
 
 // Sets the default args of the story
 Default.args = {
-  ...getDefaultArgs('sd-button'),
+  ...getDefaultArgs('sd-tab-panel'),
   slot: 'Default Slot'
 };
 

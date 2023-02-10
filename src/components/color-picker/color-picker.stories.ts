@@ -2,18 +2,18 @@ import '../../solid-components';
 import { getDefaultArgs, renderDefaultStory } from '../../../scripts/storybook/helper';
 
 export default {
-  title: 'Components/sd-button',
-  component: 'sd-button',
+  title: 'Components/sd-color-picker',
+  component: 'sd-color-picker',
 };
 
 // Renders the default story
 export const Default = (args: any) => {
-  return renderDefaultStory('sd-button', args);
+  return renderDefaultStory('sd-color-picker', args);
 };
 
 // Sets the default args of the story
 Default.args = {
-  ...getDefaultArgs('sd-button'),
+  ...getDefaultArgs('sd-color-picker'),
   slot: 'Default Slot'
 };
 

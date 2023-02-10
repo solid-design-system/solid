@@ -114,7 +114,7 @@ describe('<sd-icon-button>', () => {
   describe('when label is present', () => {
     it('the internal aria-label attribute is set to the provided label when rendering a button', async () => {
       const fakeLabel = 'some label';
-      const el = await fixture<SdIconButton>(html` <sd-icon-button label="${fakeLabel}"></sd-icon-button> `);
+      const el = await fixture<SdIconButton>(html` <sd-icon-Default Slot="${fakeLabel}"></sd-icon-button> `);
       expect(el.shadowRoot?.querySelector(`button[aria-label="${fakeLabel}"]`)).to.exist;
     });
 

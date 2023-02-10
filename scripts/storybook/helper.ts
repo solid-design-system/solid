@@ -15,9 +15,7 @@ import { spreadProps } from '@open-wc/lit-helpers';
 export const getSlots = (customElementTag: string): string[] => {
   return getComponentDeclaration(customElements, customElementTag)
     ?.slots // Get declared attributes from the component's custom element
-    ?.map((slot: any) => {
-      return slot.name || 'slot'; // If no name is given, 'slot' is used as default
-    });
+    ?.map((slot: any) => { return slot.name || 'slot'; });  // If no name is given, 'slot' is used as default
 };
 
 
@@ -45,18 +43,14 @@ export const getSlotsWithDefaults = (customElementTag: string): Record<string, a
     // Get declared attributes from the component's custom element
     ?.slots
     // Map each attribute to an object with the name and default value
-    ?.map((slot: any) => {
-      return {
-        [slot.name || 'slot']: getSlotPlaceholder(slot.name)
-      };
-    }).reduce((key: any, value: any) => ({ ...key, ...value }), {});
+    ?.map((slot: any) => { return { [slot.name || 'slot']: getSlotPlaceholder(slot.name) }; })
+    ?.reduce((key: any, value: any) => ({ ...key, ...value }), {});
 };
 
 // Used to spread the slots into the component
 export const renderSlotsWithArgs = (customElementTag: string, args: any): Record<string, any> => {
-  return getSlots(customElementTag).map((slot: any) => {
-    return args[slot] && args[slot] !== getSlotPlaceholder(slot) ? unsafeHTML(args[slot]) : nothing;
-  });
+  return getSlots(customElementTag)
+    ?.map((slot: any) => { return args[slot] && args[slot] !== getSlotPlaceholder(slot) ? unsafeHTML(args[slot]) : nothing; });
 };
 
 /**
@@ -70,9 +64,7 @@ export const renderSlotsWithArgs = (customElementTag: string, args: any): Record
 export const getProps = (customElementTag: string): string[] => {
   return getComponentDeclaration(customElements, customElementTag)
     ?.attributes // Get declared attributes from the component's custom element
-    ?.map((property: any) => {
-      return property.name;
-    });
+    ?.map((property: any) => { return property.name; });
 };
 
 /**
@@ -90,9 +82,7 @@ export const getPropsWithDefaults = (
     // Get declared attributes from the component's custom element
     ?.attributes
     // Map each attribute to an object with the name and default value
-    ?.map((attribute: any) => {
-      return { [attribute.name]: attribute.default || '' };
-    })
+    ?.map((attribute: any) => { return { [attribute.name]: attribute.default || '' }; })
     ?.reduce((key: any, value: any) => ({ ...key, ...value }), {});
 };
 
@@ -105,11 +95,9 @@ export const getPropsWithDefaults = (
  */
 
 export const renderPropsWithArgs = (customElementTag: string, args: any): Record<string, any> => {
-  return spreadProps(getProps(customElementTag).map((prop: any) => {
-    return {
-      [prop]: args[prop]
-    };
-  }).reduce((key: any, value: any) => ({ ...key, ...value }), {}));
+  return spreadProps(getProps(customElementTag)
+    ?.map((prop: any) => { return { [prop]: args[prop] }; })
+    ?.reduce((key: any, value: any) => ({ ...key, ...value }), {}));
 };
 
 

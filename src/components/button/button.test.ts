@@ -8,7 +8,7 @@ describe('<sd-button>', () => {
   describe('accessibility tests', () => {
     variants.forEach(variant => {
       it(`should be accessible when variant is "${variant}"`, async () => {
-        const el = await fixture<SdButton>(html` <sd-button variant="${variant}"> Button Label </sd-button> `);
+        const el = await fixture<SdButton>(html` <sd-button variant="${variant}"> Default Slot </sd-button> `);
         await expect(el).to.be.accessible();
       });
     });
@@ -16,12 +16,12 @@ describe('<sd-button>', () => {
 
   describe('when provided no parameters', () => {
     it('passes accessibility test', async () => {
-      const el = await fixture<SdButton>(html` <sd-button>Button Label</sd-button> `);
+      const el = await fixture<SdButton>(html` <sd-button>Default Slot</sd-button> `);
       await expect(el).to.be.accessible();
     });
 
     it('default values are set correctly', async () => {
-      const el = await fixture<SdButton>(html` <sd-button>Button Label</sd-button> `);
+      const el = await fixture<SdButton>(html` <sd-button>Default Slot</sd-button> `);
 
       expect(el.title).to.equal('');
       expect(el.variant).to.equal('default');
@@ -35,40 +35,40 @@ describe('<sd-button>', () => {
     });
 
     it('should render as a <button>', async () => {
-      const el = await fixture<SdButton>(html` <sd-button>Button Label</sd-button> `);
+      const el = await fixture<SdButton>(html` <sd-button>Default Slot</sd-button> `);
       expect(el.shadowRoot!.querySelector('button')).to.exist;
       expect(el.shadowRoot!.querySelector('a')).not.to.exist;
     });
 
     it('should not have a spinner present', async () => {
-      const el = await fixture<SdButton>(html` <sd-button>Button Label</sd-button> `);
+      const el = await fixture<SdButton>(html` <sd-button>Default Slot</sd-button> `);
       expect(el.shadowRoot!.querySelector('sd-spinner')).not.to.exist;
     });
 
     it('should not have a caret present', async () => {
-      const el = await fixture<SdButton>(html` <sd-button>Button Label</sd-button> `);
+      const el = await fixture<SdButton>(html` <sd-button>Default Slot</sd-button> `);
       expect(el.shadowRoot?.querySelector('[part~="caret"]')).not.to.exist;
     });
   });
 
   describe('when disabled', () => {
     it('passes accessibility test', async () => {
-      const el = await fixture<SdButton>(html` <sd-button disabled>Button Label</sd-button> `);
+      const el = await fixture<SdButton>(html` <sd-button disabled>Default Slot</sd-button> `);
       await expect(el).to.be.accessible();
     });
 
     it('should disable the native <button> when rendering a <button>', async () => {
-      const el = await fixture<SdButton>(html` <sd-button disabled>Button Label</sd-button> `);
+      const el = await fixture<SdButton>(html` <sd-button disabled>Default Slot</sd-button> `);
       expect(el.shadowRoot!.querySelector('button[disabled]')).to.exist;
     });
 
     it('should not disable the native <a> when rendering an <a>', async () => {
-      const el = await fixture<SdButton>(html` <sd-button href="some/path" disabled>Button Label</sd-button> `);
+      const el = await fixture<SdButton>(html` <sd-button href="some/path" disabled>Default Slot</sd-button> `);
       expect(el.shadowRoot!.querySelector('a[disabled]')).not.to.exist;
     });
 
     it('should not bubble up clicks', async () => {
-      const button = await fixture<SdButton>(html` <sd-button disabled>Button Label</sd-button> `);
+      const button = await fixture<SdButton>(html` <sd-button disabled>Default Slot</sd-button> `);
       const handleClick = sinon.spy();
       button.addEventListener('click', handleClick);
       button.click();
@@ -78,7 +78,7 @@ describe('<sd-button>', () => {
       button.shadowRoot!.querySelector('button')!.click();
       expect(handleClick).not.to.have.been.called;
 
-      const buttonLink = await fixture<SdButton>(html` <sd-button href="some/path" disabled>Button Label</sd-button> `);
+      const buttonLink = await fixture<SdButton>(html` <sd-button href="some/path" disabled>Default Slot</sd-button> `);
       buttonLink.addEventListener('click', handleClick);
       buttonLink.click();
 
@@ -98,21 +98,21 @@ describe('<sd-button>', () => {
 
   describe('when loading', () => {
     it('should have a spinner present', async () => {
-      const el = await fixture<SdButton>(html` <sd-button loading>Button Label</sd-button> `);
+      const el = await fixture<SdButton>(html` <sd-button loading>Default Slot</sd-button> `);
       expect(el.shadowRoot!.querySelector('sd-spinner')).to.exist;
     });
   });
 
   describe('when caret', () => {
     it('should have a caret present', async () => {
-      const el = await fixture<SdButton>(html` <sd-button caret>Button Label</sd-button> `);
+      const el = await fixture<SdButton>(html` <sd-button caret>Default Slot</sd-button> `);
       expect(el.shadowRoot!.querySelector('[part~="caret"]')).to.exist;
     });
   });
 
   describe('when href is present', () => {
     it('should render as an <a>', async () => {
-      const el = await fixture<SdButton>(html` <sd-button href="some/path">Button Label</sd-button> `);
+      const el = await fixture<SdButton>(html` <sd-button href="some/path">Default Slot</sd-button> `);
       expect(el.shadowRoot!.querySelector('a')).to.exist;
       expect(el.shadowRoot!.querySelector('button')).not.to.exist;
     });

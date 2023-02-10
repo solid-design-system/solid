@@ -2,18 +2,18 @@ import '../../solid-components';
 import { getDefaultArgs, renderDefaultStory } from '../../../scripts/storybook/helper';
 
 export default {
-  title: 'Components/sd-button',
-  component: 'sd-button',
+  title: 'Components/sd-visually-hidden',
+  component: 'sd-visually-hidden',
 };
 
 // Renders the default story
 export const Default = (args: any) => {
-  return renderDefaultStory('sd-button', args);
+  return renderDefaultStory('sd-visually-hidden', args);
 };
 
 // Sets the default args of the story
 Default.args = {
-  ...getDefaultArgs('sd-button'),
+  ...getDefaultArgs('sd-visually-hidden'),
   slot: 'Default Slot'
 };
 
