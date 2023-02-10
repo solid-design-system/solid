@@ -29,10 +29,11 @@
     "baseUrl": ".",
     "types": [
       "mocha",
-      "user-agent-data-types"
+      "user-agent-data-types",
+      "vite/client"
     ]
   },
   "include": [
-    "src"
+    "src", "vite.config.ts"
   ]
 }

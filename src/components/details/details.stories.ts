@@ -1,4 +1,4 @@
-import '../../solid';
+import '../../solid-components';
 import { getDefaultArgs, renderDefaultStory } from '../../../scripts/storybook/helper';
 
 export default {

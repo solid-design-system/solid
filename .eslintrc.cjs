@@ -142,7 +142,7 @@ module.exports = {
         name: '.',
         message: 'Usage of local index imports is not allowed.'
       }, {
-        name: './index',
+        name: './solid-components',
         message: 'Import from the source file instead.'
       }]
     }],
