@@ -1,6 +1,7 @@
 import { setCustomElementsManifest } from '@storybook/web-components';
 import customElements from '../dist/custom-elements.json';
 import { createArgsExtractor, createLitRenderer } from 'cem-plugin-better-lit-types/storybook'
+import '../dist/themes/light.css';
 
 setCustomElementsManifest(customElements);
 
