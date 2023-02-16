@@ -1,7 +1,7 @@
 import { getComponentDeclaration } from 'cem-plugin-better-lit-types/storybook';
 import customElements from '../../dist/custom-elements.json';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
-import { nothing } from 'lit';
+import { nothing, TemplateResult } from 'lit';
 import { html, literal, unsafeStatic } from 'lit/static-html.js';
 import { spreadProps } from '@open-wc/lit-helpers';
 
@@ -112,19 +112,50 @@ export const renderPropsWithArgs = (customElementTag: string, args: any): Record
 };
 
 
+export const getCssProperties = (customElementTag: string): string[] => {
+  return getComponentDeclaration(customElements, customElementTag)
+    ?.cssProperties // Get declared attributes from the component's custom element
+    ?.map((slot: any) => { return slot.name || 'slot'; });  // If no name is given, 'slot' is used as default
+};
+
+export const getCssPropertiesForArgs = (
+  customElementTag: string
+): Record<string, any> => {
+  return getCssProperties(customElementTag)
+    ?.map((property: any) => { return { [property]: '' }; })
+    ?.reduce((key: any, value: any) => ({ ...key, ...value }), {});;
+};
+
+// Used to spread the slots into the component
+export const renderCssProperties = (customElementTag: string, args: any): TemplateResult => {
+  const cssPropertiesWithValues = getCssProperties(customElementTag)
+    ?.filter((prop: any) => args[prop])
+    ?.map((prop: any) => `${[prop]}: ${args[prop]}`);
+  return cssPropertiesWithValues?.length > 0
+    ? html`<style>
+      ${customElementTag}{
+        ${cssPropertiesWithValues.join(';')};
+      }
+    </style>`
+    : html``;
+};;
 
 export const renderDefaultStory = (customElementTag: string, args: any): any => {
+  console.log(renderCssProperties(customElementTag, args));
   const tagName = unsafeStatic(customElementTag);
   return html`
-    <${tagName} ${renderPropsWithArgs(customElementTag, args)}>
+   ${renderCssProperties(customElementTag, args)}
+    <${tagName} ${renderPropsWithArgs(customElementTag, args)} >
       ${renderSlotsWithArgs(customElementTag, args)}
     </${tagName}>
   `;
 };
 
 export const getDefaultArgs = (customElementTag: string): any => {
+  console.log(getCssPropertiesForArgs(customElementTag));
   return {
     ...getPropsWithDefaults(customElementTag),
-    ...getSlotsWithDefaults(customElementTag)
+    ...getSlotsWithDefaults(customElementTag),
+    ...getCssPropertiesForArgs(customElementTag)
   };
 };
