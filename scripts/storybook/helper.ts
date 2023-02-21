@@ -133,10 +133,10 @@ export const renderCssProperties = (customElementTag: string, args: any): Templa
     ?.map((prop: any) => `${[prop]}: ${args[prop]}`);
   return cssPropertiesWithValues?.length > 0
     ? html`<style>
-      ${customElementTag}{
-        ${cssPropertiesWithValues.join(';')};
-      }
-    </style>`
+  ${customElementTag}{
+    ${cssPropertiesWithValues.join(';')};
+  }
+</style>`
     : html``;
 };;
 
@@ -144,10 +144,10 @@ export const renderDefaultStory = (customElementTag: string, args: any): any => 
   console.log(renderCssProperties(customElementTag, args));
   const tagName = unsafeStatic(customElementTag);
   return html`
-   ${renderCssProperties(customElementTag, args)}
-    <${tagName} ${renderPropsWithArgs(customElementTag, args)} >
-      ${renderSlotsWithArgs(customElementTag, args)}
-    </${tagName}>
+${renderCssProperties(customElementTag, args)}
+<${tagName} ${renderPropsWithArgs(customElementTag, args)} >
+  ${renderSlotsWithArgs(customElementTag, args)}
+</${tagName}>
   `;
 };
 
