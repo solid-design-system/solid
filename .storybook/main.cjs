@@ -13,6 +13,7 @@ module.exports = {
     "options": {}
   },
   "docs": {
-    "autodocs": "tag"
+    docs: true,
+    "autodocs": true
   }
 }
