@@ -3,13 +3,6 @@
 .sd-theme-light {
   color-scheme: light;
 
-  /* Focus rings */
-  --sd-focus-ring-color: var(--sd-color-primary-600);
-  --sd-focus-ring-style: solid;
-  --sd-focus-ring-width: 3px;
-  --sd-focus-ring: var(--sd-focus-ring-style) var(--sd-focus-ring-width) var(--sd-focus-ring-color);
-  --sd-focus-ring-offset: 1px;
-
   /*
    * Forms
    */

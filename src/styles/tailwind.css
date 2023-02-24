@@ -2,12 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
-/* @layer base {
+@layer base {
   :not(:defined) {
     visibility: hidden;
   }
 
   html {
-    @apply text-md font-sans;
+    @apply text-base font-sans;
   }
-} */
+}
+
+@layer components {
+  .focus {
+    @apply focus:ring-2 focus:ring-varcolor-300 focus:ring-offset-1 outline-none;
+  }
+  .disabled {
+    @apply disabled:opacity-50 disabled:saturate-50 disabled:cursor-not-allowed;
+  }
+  .disabled * {
+    @apply pointer-events-none;
+  }
+}

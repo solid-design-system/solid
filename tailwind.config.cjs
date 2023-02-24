@@ -1,3 +1,5 @@
+const plugin = require('tailwindcss/plugin');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -86,6 +88,8 @@ module.exports = {
         900: 'var(--tw-varcolor-900)',
         950: 'var(--tw-varcolor-950)',
       },
+      transparent: "transparent",
+      currentColor: "currentColor",
     },
     borderRadius: {
       sm: "var(--sd-border-radius-small, 0.1875rem)",
@@ -115,17 +119,6 @@ module.exports = {
       sans: "var(--sd-font-sans, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol')",
       serif: "var(--sd-font-serif, Georgia, 'Times New Roman', serif)",
     },
-    fontSize: {
-      "2xs": "var(--sd-font-size-2x-small, 0.625rem)",
-      xs: "var(--sd-font-size-x-small, 0.75rem)",
-      sm: "var(--sd-font-size-small, 0.875rem)",
-      md: "var(--sd-font-size-medium, 1rem)",
-      lg: "var(--sd-font-size-large, 1.25rem)",
-      xl: "var(--sd-font-size-x-large, 1.5rem)",
-      "2xl": "var(--sd-font-size-2x-large, 2.25rem)",
-      "3xl": "var(--sd-font-size-3x-large, 3rem)",
-      "4xl": "var(--sd-font-size-4x-large, 4.5rem)",
-    },
     fontWeight: {
       light: "var(--sd-font-weight-light, 300)",
       normal: "var(--sd-font-weight-normal, 400)",
@@ -147,6 +140,9 @@ module.exports = {
       looser: "var(--sd-line-height-looser, 2.6)",
     },
     extend: {
+      fontSize: {
+        "2xs": ["0.625rem", "0.875rem"],
+      },
       spacing: {
         "3xs": "var(--sd-spacing-3x-small, 0.125rem)",
         "2xs": "var(--sd-spacing-2x-small, 0.25rem)",
@@ -163,5 +159,9 @@ module.exports = {
   },
   plugins: [
     require("@mariohamann/tailwindcss-var"),
+    plugin(({ addVariant }) => {
+      // Add a `third` variant, ie. `third:pb-0`
+      addVariant('not-disabled', '&:not([disabled])');
+    })
   ],
 }

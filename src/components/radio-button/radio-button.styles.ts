@@ -1,9 +1,7 @@
 import { css } from 'lit';
-import buttonStyles from '../button/button.styles';
+// import buttonStyles from '../button/button.styles';
 
 export default css`
-  ${buttonStyles}
-
   .button__prefix,
   .button__suffix,
   .button__label {

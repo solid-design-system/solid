@@ -1,17 +1,15 @@
 import '../icon/icon';
 import '../spinner/spinner';
-import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property, query, state } from 'lit/decorators.js';
+import { css } from 'lit';
 import { FormControlController } from '../../internal/form';
 import { HasSlotController } from '../../internal/slot';
 import { html, literal } from 'lit/static-html.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import { LocalizeController } from '../../utilities/localize';
 import { watch } from '../../internal/watch';
 import SolidElement from '../../internal/solid-element';
-import styles from './button.styles';
-import type { CSSResultGroup } from 'lit';
 import type { SolidFormControl } from '../../internal/solid-element';
+import cx from 'classix';
 
 /**
  * @summary Buttons represent actions that are available to the user.
@@ -37,8 +35,6 @@ import type { SolidFormControl } from '../../internal/solid-element';
  */
 @customElement('sd-button')
 export default class SdButton extends SolidElement implements SolidFormControl {
-  static styles: CSSResultGroup = styles;
-
   private readonly formControlController = new FormControlController(this, {
     form: input => {
       // Buttons support a form attribute that points to an arbitrary form, so if this attribute it set we need to query
@@ -54,17 +50,18 @@ export default class SdButton extends SolidElement implements SolidFormControl {
     }
   });
   private readonly hasSlotController = new HasSlotController(this, '[default]', 'prefix', 'suffix');
-  private readonly localize = new LocalizeController(this);
 
   @query('.button') button: HTMLButtonElement | HTMLLinkElement;
 
-  @state() private hasFocus = false;
   @state() invalid = false;
   @property() title = ''; // make reactive to pass through
 
+  /** The button's theme color. */
+  @property({ reflect: true }) color: 'primary' | 'success' | 'neutral' | 'warning' | 'danger' =
+    'primary';
+
   /** The button's theme variant. */
-  @property({ reflect: true }) variant: 'default' | 'primary' | 'success' | 'neutral' | 'warning' | 'danger' | 'text' =
-    'default';
+  @property({ reflect: true }) variant: 'primary' | 'secondary' | 'tertiary' = 'primary';
 
   /** The button's size. */
   @property({ reflect: true }) size: 'small' | 'medium' | 'large' = 'medium';
@@ -77,9 +74,6 @@ export default class SdButton extends SolidElement implements SolidFormControl {
 
   /** Draws the button in a loading state. */
   @property({ type: Boolean, reflect: true }) loading = false;
-
-  /** Draws an outlined button. */
-  @property({ type: Boolean, reflect: true }) outline = false;
 
   /** Draws a pill-style button with rounded edges. */
   @property({ type: Boolean, reflect: true }) pill = false;
@@ -146,12 +140,10 @@ export default class SdButton extends SolidElement implements SolidFormControl {
   }
 
   private handleBlur() {
-    this.hasFocus = false;
     this.emit('sd-blur');
   }
 
   private handleFocus() {
-    this.hasFocus = true;
     this.emit('sd-focus');
   }
 
@@ -232,36 +224,62 @@ export default class SdButton extends SolidElement implements SolidFormControl {
     const isLink = this.isLink();
     const tag = isLink ? literal`a` : literal`button`;
 
+    const slots = {
+      label: this.hasSlotController.test('[default]'),
+      prefix: this.hasSlotController.test('prefix'),
+      suffix: this.hasSlotController.test('suffix')
+    };
+
     /* eslint-disable lit/no-invalid-html */
     /* eslint-disable lit/binding-positions */
     return html`
-      <${tag}
-        part="base"
-        class=${classMap({
-      button: true,
-      'button--default': this.variant === 'default',
-      'button--primary': this.variant === 'primary',
-      'button--success': this.variant === 'success',
-      'button--neutral': this.variant === 'neutral',
-      'button--warning': this.variant === 'warning',
-      'button--danger': this.variant === 'danger',
-      'button--text': this.variant === 'text',
-      'button--small': this.size === 'small',
-      'button--medium': this.size === 'medium',
-      'button--large': this.size === 'large',
-      'button--caret': this.caret,
-      'button--circle': this.circle,
-      'button--disabled': this.disabled,
-      'button--focused': this.hasFocus,
-      'button--loading': this.loading,
-      'button--standard': !this.outline,
-      'button--outline': this.outline,
-      'button--pill': this.pill,
-      'button--rtl': this.localize.dir() === 'rtl',
-      'button--has-label': this.hasSlotController.test('[default]'),
-      'button--has-prefix': this.hasSlotController.test('prefix'),
-      'button--has-suffix': this.hasSlotController.test('suffix')
-    })}
+      <${tag} part="base" class=${cx(
+      'focus h-varspacing leading-[calc(var(--tw-varspacing)-4px)] border button inline-flex items-stretch justify-center w-full border-solid font-semibold font-sans no-underline select-none whitespace-nowrap align-middle duration-50 transition-all duration-200 ease-in-out cursor-[inherit]',
+      this.disabled && 'disabled',
+      this.loading && 'relative cursor-wait',
+      this.circle && 'px-0 w-varspacing',
+      {
+        /* rounded */
+        pill: 'rounded-full',
+        circle: 'rounded-circle',
+        small: 'rounded-sm',
+        medium: 'rounded-md',
+        large: 'rounded-lg',
+      }[this.pill ? 'pill' : this.circle ? 'circle' : this.size],
+      {
+        /* sizes, fonts */
+        small: 'text-sm varspacing-6',
+        medium: 'text-base varspacing-7',
+        large: 'text-lg varspacing-9',
+      }[this.size],
+      {
+        /* main color */
+        primary: 'varcolor-primary',
+        success: 'varcolor-success',
+        neutral: 'varcolor-neutral',
+        warning: 'varcolor-warning',
+        danger: 'varcolor-danger',
+      }[this.color],
+      {
+        /* variants */
+        primary: 'text-white bg-varcolor-600 border border-transparent not-disabled:hover:bg-varcolor-700  not-disabled:active:bg-varcolor-800',
+        secondary: 'text-varcolor-600 border border-varcolor-600 not-disabled:hover:bg-varcolor-50 not-disabled:hover:text-varcolor-700 not-disabled:hover:border-varcolor-700 active:text-varcolor-800 active:border-varcolor-800',
+        tertiary: 'bg-varcolor-50 text-varcolor-600 border border-transparent not-disabled:hover:bg-varcolor-100 not-disabled:hover:text-varcolor-700 not-disabled:active:text-varcolor-800'
+      }[this.variant],
+      slots.prefix && {
+        /* padding-left if prefix available */
+        small: 'pl-px',
+        medium: 'pl-2',
+        large: 'px-2',
+      }[this.size],
+      slots.suffix || this.caret && {
+        /* padding-right if suffix or carets available */
+        small: 'pr-px',
+        medium: 'pr-2',
+        large: 'pr-2',
+      }[this.size],
+    )
+      }
         ?disabled=${ifDefined(isLink ? undefined : this.disabled)}
         type=${ifDefined(isLink ? undefined : this.type)}
         title=${this.title /* An empty title prevents browser validation tooltips from appearing on hover */}
@@ -278,17 +296,147 @@ export default class SdButton extends SolidElement implements SolidFormControl {
         @focus=${this.handleFocus}
         @click=${this.handleClick}
       >
-        <slot name="prefix" part="prefix" class="button__prefix"></slot>
-        <slot part="label" class="button__label"></slot>
-        <slot name="suffix" part="suffix" class="button__suffix"></slot>
-        ${this.caret ? html` <sd-icon part="caret" class="button__caret" library="system" name="caret"></sd-icon> ` : ''
+        <slot name="prefix" part="prefix" class=${cx(
+        'flex flex-auto items-center pointer-events-none',
+        this.circle && 'display-none',
+        this.loading && 'invisible'
+      )}></slot>
+        <slot part="label" class=${cx(
+        'inline-block',
+        this.loading && 'invisible',
+        slots.label && {
+          small: slots.prefix ? 'pl-px' : 'pl-2',
+          medium: slots.prefix ? 'pl-2' : 'pl-3',
+          large: slots.prefix ? 'pl-2' : 'px-4',
+        }[this.size],
+        slots.label && {
+          small: slots.suffix || this.caret ? 'pr-px' : 'pr-2',
+          medium: slots.suffix || this.caret ? 'pr-2' : 'pr-3',
+          large: slots.suffix || this.caret ? 'pr-2' : 'pr-4',
+        }[this.size],
+      )
+      }></slot>
+        <slot name="suffix"
+          part="suffix"
+          class=${cx(
+        'flex flex-auto items-center pointer-events-none',
+        (this.circle || this.caret) && 'display-none',
+        this.loading && 'invisible'
+      )}>
+        </slot>
+        ${this.caret
+        ? html` <sd-icon part="caret" class=${cx(
+          'h-auto',
+          this.circle && 'display-none',
+          this.loading && 'invisible'
+        )} library="system" name="caret"></sd-icon> `
+        : ''
       }
-        ${this.loading ? html`<sd-spinner></sd-spinner>` : ''}
+      ${this.loading
+        ? html`<sd-spinner
+          class="absolute text-md h-4 w-4 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+        ></sd-spinner>`
+        : ''}
       </${tag}>
     `;
     /* eslint-enable lit/no-invalid-html */
     /* eslint-enable lit/binding-positions */
   }
+
+
+
+  /**
+   * Inherits Tailwindclasses and includes additional styling.
+  */
+  static styles = [
+    ...SolidElement.styles,
+    css`
+      :host {
+        display: inline-block;
+        position: relative;
+        width: auto;
+        cursor: pointer;
+      }
+
+    [part="label"]::slotted(sd-icon) {
+      vertical-align: -2px;
+    }
+
+    sd-spinner{
+      --indicator-color: currentColor;
+      --track-color: var(--tw-varcolor-200);
+    }
+
+
+    /*
+    * Badges:
+    * Slotted badges are positioned absolutely in the top right corner of the button.
+    */
+
+    .button ::slotted(sd-badge) {
+      position: absolute;
+      top: 0;
+      right: 0;
+      translate: 50% -50%;
+      pointer-events: none;
+    }
+
+    /*
+    * Button groups support a variety of button types (e.g. buttons with tooltips, buttons as dropdown triggers, etc.).
+    * This means buttons aren't always direct descendants of the button group, thus we can't target them with the
+    * ::slotted selector. To work around this, the button group component does some magic to add these special classes to
+    * buttons and we style them here instead.
+    */
+
+    :host(.sd-button-group__button--first:not(.sd-button-group__button--last)) .button {
+      border-start-end-radius: 0;
+      border-end-end-radius: 0;
+    }
+
+    :host(.sd-button-group__button--inner) .button {
+      border-radius: 0;
+    }
+
+    :host(.sd-button-group__button--last:not(.sd-button-group__button--first)) .button {
+      border-start-start-radius: 0;
+      border-end-start-radius: 0;
+    }
+
+    /* All except the first */
+    :host(.sd-button-group__button:not(.sd-button-group__button--first)) {
+      margin-inline-start: calc(-1 * var(--sd-input-border-width));
+    }
+
+    /* Add a visual separator between solid buttons */
+    :host(
+        .sd-button-group__button:not(
+            .sd-button-group__button--first,
+            .sd-button-group__button--radio,
+            [variant='default']
+          ):not(:hover)
+      )
+      .button:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      inset-inline-start: 0;
+      bottom: 0;
+      border-left: solid 1px rgb(128 128 128 / 33%);
+      mix-blend-mode: multiply;
+    }
+
+    /* Bump hovered, focused, and checked buttons up so their focus ring isn't clipped */
+    :host(.sd-button-group__button--hover) {
+      z-index: 1;
+    }
+
+    /* Focus and checked are always on top */
+    :host(.sd-button-group__button--focus),
+    :host(.sd-button-group__button[checked]) {
+      z-index: 2;
+    }
+    `
+  ];
 }
 
 declare global {

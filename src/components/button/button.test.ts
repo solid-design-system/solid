@@ -20,16 +20,16 @@ describe('<sd-button>', () => {
       await expect(el).to.be.accessible();
     });
 
-    it('default values are set correctly', async () => {
+    it('primary values are set correctly', async () => {
       const el = await fixture<SdButton>(html` <sd-button>Default Slot</sd-button> `);
 
       expect(el.title).to.equal('');
-      expect(el.variant).to.equal('default');
+      expect(el.variant).to.equal('primary');
+      expect(el.color).to.equal('primary');
       expect(el.size).to.equal('medium');
       expect(el.disabled).to.equal(false);
       expect(el.caret).to.equal(false);
       expect(el.loading).to.equal(false);
-      expect(el.outline).to.equal(false);
       expect(el.pill).to.equal(false);
       expect(el.circle).to.equal(false);
     });
