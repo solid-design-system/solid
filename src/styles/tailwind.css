@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* @layer base {
+  :not(:defined) {
+    visibility: hidden;
+  }
+
+  html {
+    @apply text-md font-sans;
+  }
+} */

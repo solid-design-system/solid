@@ -28,7 +28,7 @@ function replace(string, terms) {
 
 export default {
   globs: ['src/components/**/*.ts'],
-  exclude: ['**/*.styles.ts', '**/*.test.ts'],
+  exclude: ['**/*.styles.ts', '**/*.test.ts', '**/*.stories.ts'],
   plugins: [
     BetterLitTypesPlugin,
     // Append package data
