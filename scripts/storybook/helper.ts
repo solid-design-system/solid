@@ -59,7 +59,6 @@ export const getSlotsWithDefaults = (customElementTag: string): Record<string, a
 export const renderSlotsWithArgs = (customElementTag: string, args: any): Record<string, any> => {
   return getSlots(customElementTag)
     ?.map((slot: any) => {
-      console.log(slot, args[slot], getSlotPlaceholder(slot), isRequiredSlot(slot));
       return args[slot] && (isRequiredSlot(slot) || args[slot] !== getSlotPlaceholder(slot)) ? unsafeHTML(args[slot]) : nothing;
     });
 };
@@ -150,42 +149,77 @@ ${renderCssProperties(customElementTag, args)}
   `;
 };
 
-export const renderInlineVariationsStory = (customElementTag: string, args: any, variation?: { arg: string, values: any[]; }): any => {
+export const renderInlineVariationsStory = ({
+  customElementTag,
+  args,
+  variation,
+  alternativeTitle
+}: {
+  customElementTag: string,
+  args: any,
+  variation?: { arg: string, values: any[]; },
+  alternativeTitle?: string;
+}): any => {
   return html`
-  <div style="margin: 24px 0;">
-  <h3 style="font-size: 16px; margin-bottom: 12px;">${variation?.arg}</h3>
+  <div style="">
+  ${alternativeTitle !== '' ?
+      html`<h3 style="font-size: 16px; margin-bottom: 12px; margin-top: 24px">${alternativeTitle || variation?.arg}</h3>` : ''}
   ${variation?.values?.map((value: any) => {
-    return html`<div style="margin-bottom: 16px; display: inline-block; margin-right: 16px">
+        return html`<div style="margin-bottom: 16px; display: inline-block; margin-right: 16px">
       <p style="font-size: 12px; margin-bottom: 8px; margin-top: 0px;">
         ${value}
       </p>
       ${renderDefaultStory(customElementTag, { ...args, [variation.arg]: value })}
     </div>`;
-  })}
+      })}
   </div>
   `;
 };
 
-export const renderStoryFromAttributes = (customElementTag: string, args: any, attributes: string[]): any => {
+export const renderStoryFromAttributes = ({
+  customElementTag,
+  args,
+  attributes,
+  alternativeTitle
+}: {
+  customElementTag: string,
+  args: any,
+  attributes: string[];
+  alternativeTitle?: string;
+}): any => {
   return html`
   ${getValuesFromAttributes(
     customElementTag,
     attributes
   ).map((attribute: any) => {
-    return renderInlineVariationsStory(customElementTag, args, {
-      arg: attribute.name,
-      values: attribute.values,
-    });
+    return renderInlineVariationsStory(
+      {
+        customElementTag,
+        args,
+        variation: {
+          arg: attribute.name,
+          values: getValuesFromAttribute(customElementTag, attribute.name),
+        },
+        alternativeTitle: alternativeTitle === '' || alternativeTitle ? alternativeTitle : attribute.name,
+      }
+    );
   })}
   `;
 };
 
-export const renderTableVariationsStory = (
+export const renderTableVariationsStory = ({
+  customElementTag,
+  args,
+  variationA,
+  variationB,
+  alternativeTitle
+}: {
   customElementTag: string,
-  args: any,
+  args: { [k: string]: any; },
   variationA: { arg: string, values: any[]; },
-  variationB: { arg: string, values: any[]; }
-): any => {
+  variationB: { arg: string, values: any[]; };
+  alternativeTitle?: string;
+}): any => {
   let firstRow = true;
   return html`
   <table>
@@ -196,7 +230,7 @@ export const renderTableVariationsStory = (
         th, td { padding: 16px; }
       </style>
       <tr>
-        <td></td><td></td><th>${variationA.arg}</th>
+        <td></td><td></td><th>${alternativeTitle || variationA.arg}</th>
       </tr>
       <tr>
         <td></td><td></td>${variationA.values.map((value: any) => html`<td>${value}</td>`)}
@@ -218,19 +252,30 @@ export const renderTableVariationsStory = (
   </table>`;
 };
 
-export const renderTableStoryFromAttributes = (customElementTag: string, args: any, attributeA: string, attributeB: string): any => {
+export const renderTableStoryFromAttributes = ({
+  customElementTag,
+  args,
+  attributeA,
+  attributeB,
+}: {
+  customElementTag: string,
+  args: any,
+  attributeA: string,
+  attributeB: string,
+}): any => {
   return html`
-  ${renderTableVariationsStory(
+  ${renderTableVariationsStory({
     customElementTag,
     args,
-    {
+    variationA: {
       arg: attributeA,
       values: getValuesFromAttribute(customElementTag, attributeA),
     },
-    {
+    variationB: {
       arg: attributeB,
       values: getValuesFromAttribute(customElementTag, attributeB),
     }
+  }
   )}
   `;
 };
@@ -240,7 +285,6 @@ export const getValuesFromAttribute = (customElementTag: string, attribute: stri
   const values = component.attributes.find(
     (attr: any) => attribute?.includes(attr.name)
   );
-
   return values.enum ? values.enum : values.type === 'boolean' ? [true, false] : [];
 };
 
