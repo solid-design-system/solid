@@ -73,8 +73,8 @@ module.exports = {
         900: "var(--sd-color-danger-900, hsl(0 62.8% 30.6%))",
         950: "var(--sd-color-danger-950, hsl(0 60% 19.6%))",
       },
-      black: "var(--sd-color-neutral-0, hsl(0 0% 0%))",
-      white: "var(--sd-color-neutral-1000, hsl(0 0% 100%))",
+      black: "var(--sd-color-neutral-1000, hsl(0 0% 0%))",
+      white: "var(--sd-color-neutral-0, hsl(0 0% 100%))",
       'varcolor': {
         50: 'var(--tw-varcolor-50)',
         100: 'var(--tw-varcolor-100)',
