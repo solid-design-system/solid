@@ -57,6 +57,7 @@ specifiers:
   lit: ^2.6.1
   lit-html: ^2.6.1
   lunr: ^2.3.9
+  normalize.css: ^8.0.1
   pascal-case: ^3.1.2
   plop: ^3.1.1
   postcss: ^8.4.21
@@ -91,6 +92,7 @@ dependencies:
   classix: 2.1.22
   cssnano: 5.1.15_postcss@8.4.21
   lit: 2.6.1
+  normalize.css: 8.0.1
   qr-creator: 1.0.0
   rollup-plugin-minify-html-literals: 1.2.6_rollup@2.79.1
   rollup-plugin-terser: 7.0.2_rollup@2.79.1
@@ -8961,6 +8963,10 @@ packages:
   /normalize-url/6.1.0:
     resolution: {integrity: sha512-DlL+XwOy3NxAQ8xuC0okPgK46iuVNAK01YN7RueYBqqFeGsBjV9XmCAzAdgt+667bCl5kPh9EqKKDwnaPG1I7A==}
     engines: {node: '>=10'}
+    dev: false
+
+  /normalize.css/8.0.1:
+    resolution: {integrity: sha512-qizSNPO93t1YUuUhP22btGOo3chcvDFqFaj2TRybP0DMxkHOCTYwp3n34fel4a31ORXy4m1Xq0Gyqpb5m33qIg==}
     dev: false
 
   /npm-run-path/4.0.1:

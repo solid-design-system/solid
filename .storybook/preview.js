@@ -2,6 +2,7 @@ import { setCustomElementsManifest } from '@storybook/web-components';
 import customElements from '../dist/custom-elements.json';
 import { createArgsExtractor, createLitRenderer } from 'cem-plugin-better-lit-types/storybook'
 import '../dist/themes/light.css';
+import 'normalize.css';
 
 setCustomElementsManifest(customElements);
 
@@ -15,6 +16,5 @@ export const parameters = {
  * Custom renderer made specially for LitComponents
  */
 export const render = createLitRenderer({
-  wrapSlots: true, // Wraps a non-default slot in `<span slot="name">`
   joinArrays: true  // Converts array to a comma-separated string
 })
