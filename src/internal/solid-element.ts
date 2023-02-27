@@ -1,6 +1,6 @@
 import { LitElement, unsafeCSS, css } from 'lit';
 import { property } from 'lit/decorators.js';
-import tailwind from '../styles/tailwind.css';
+import tailwind from '../styles/tailwind.css?inline';
 
 export default class SolidElement extends LitElement {
   // Make localization attributes reactive
