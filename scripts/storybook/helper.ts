@@ -138,10 +138,9 @@ export const renderCssProperties = (customElementTag: string, args: any): Templa
   }
 </style>`
     : html``;
-};;
+};
 
 export const renderDefaultStory = (customElementTag: string, args: any): any => {
-  console.log(renderCssProperties(customElementTag, args));
   const tagName = unsafeStatic(customElementTag);
   return html`
 ${renderCssProperties(customElementTag, args)}
@@ -151,11 +150,114 @@ ${renderCssProperties(customElementTag, args)}
   `;
 };
 
+export const renderInlineVariationsStory = (customElementTag: string, args: any, variation?: { arg: string, values: any[]; }): any => {
+  return html`
+  <div style="margin: 24px 0;">
+  <h3 style="font-size: 16px; margin-bottom: 12px;">${variation?.arg}</h3>
+  ${variation?.values?.map((value: any) => {
+    return html`<div style="margin-bottom: 16px; display: inline-block; margin-right: 16px">
+      <p style="font-size: 12px; margin-bottom: 8px; margin-top: 0px;">
+        ${value}
+      </p>
+      ${renderDefaultStory(customElementTag, { ...args, [variation.arg]: value })}
+    </div>`;
+  })}
+  </div>
+  `;
+};
+
+export const renderStoryFromAttributes = (customElementTag: string, args: any, attributes: string[]): any => {
+  return html`
+  ${getValuesFromAttributes(
+    customElementTag,
+    attributes
+  ).map((attribute: any) => {
+    return renderInlineVariationsStory(customElementTag, args, {
+      arg: attribute.name,
+      values: attribute.values,
+    });
+  })}
+  `;
+};
+
+export const renderTableVariationsStory = (
+  customElementTag: string,
+  args: any,
+  variationA: { arg: string, values: any[]; },
+  variationB: { arg: string, values: any[]; }
+): any => {
+  let firstRow = true;
+  return html`
+  <table>
+    <thead>
+      <style>
+        th { text-align: left; font-size: 16px; }
+        td { font-size: 12px; }
+        th, td { padding: 16px; }
+      </style>
+      <tr>
+        <td></td><td></td><th>${variationA.arg}</th>
+      </tr>
+      <tr>
+        <td></td><td></td>${variationA.values.map((value: any) => html`<td>${value}</td>`)}
+      </tr>
+    </thead>
+    <tbody>
+        ${variationB.values.map((value: any) => {
+    const row = html`<tr><th>${firstRow ? variationB.arg : ''}</th><td>${value}</td>
+            ${variationA.values.map((valueA: any) =>
+      html`<td> ${renderDefaultStory(customElementTag, { ...args, [variationA.arg]: valueA, [variationB.arg]: value })} </td>`
+    )
+      }
+</tr>`;
+    firstRow = false;
+    return row;
+  }
+  )}
+</tbody>
+  </table>`;
+};
+
+export const renderTableStoryFromAttributes = (customElementTag: string, args: any, attributeA: string, attributeB: string): any => {
+  return html`
+  ${renderTableVariationsStory(
+    customElementTag,
+    args,
+    {
+      arg: attributeA,
+      values: getValuesFromAttribute(customElementTag, attributeA),
+    },
+    {
+      arg: attributeB,
+      values: getValuesFromAttribute(customElementTag, attributeB),
+    }
+  )}
+  `;
+};
+
+export const getValuesFromAttribute = (customElementTag: string, attribute: string): any => {
+  const component = getComponentDeclaration(customElements, customElementTag);
+  const values = component.attributes.find(
+    (attr: any) => attribute?.includes(attr.name)
+  );
+
+  return values.enum ? values.enum : values.type === 'boolean' ? [true, false] : [];
+};
+
+export const getValuesFromAttributes = (customElementTag: string, attributes: string[]): any => {
+  return attributes.map((attribute: string) => {
+    return {
+      name: attribute,
+      values: getValuesFromAttribute(customElementTag, attribute),
+    };
+  });
+};
+
+
 export const getDefaultArgs = (customElementTag: string): any => {
-  console.log(getCssPropertiesForArgs(customElementTag));
   return {
     ...getPropsWithDefaults(customElementTag),
     ...getSlotsWithDefaults(customElementTag),
     ...getCssPropertiesForArgs(customElementTag)
   };
-};
+};;

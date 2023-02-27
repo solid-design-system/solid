@@ -24,7 +24,7 @@ describe('<sd-button>', () => {
       const el = await fixture<SdButton>(html` <sd-button>Default Slot</sd-button> `);
 
       expect(el.title).to.equal('');
-      expect(el.variant).to.equal('primary');
+      expect(el.variant).to.equal('secondary');
       expect(el.color).to.equal('primary');
       expect(el.size).to.equal('medium');
       expect(el.disabled).to.equal(false);

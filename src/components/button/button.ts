@@ -61,7 +61,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
     'primary';
 
   /** The button's theme variant. */
-  @property({ reflect: true }) variant: 'primary' | 'secondary' | 'tertiary' = 'primary';
+  @property({ reflect: true }) variant: 'primary' | 'secondary' | 'tertiary' = 'secondary';
 
   /** The button's size. */
   @property({ reflect: true }) size: 'small' | 'medium' | 'large' = 'medium';
@@ -234,7 +234,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
     /* eslint-disable lit/binding-positions */
     return html`
       <${tag} part="base" class=${cx(
-      'focus h-varspacing leading-[calc(var(--tw-varspacing)-4px)] border button inline-flex items-stretch justify-center w-full border-solid font-semibold font-sans no-underline select-none whitespace-nowrap align-middle duration-50 transition-all duration-200 ease-in-out cursor-[inherit]',
+      'focus font-medium h-varspacing leading-[calc(var(--tw-varspacing)-2px)] border button inline-flex items-stretch justify-center w-full border-solid font-semibold font-sans no-underline select-none whitespace-nowrap align-middle duration-50 transition-all duration-200 ease-in-out cursor-[inherit]',
       this.disabled && 'disabled',
       this.loading && 'relative cursor-wait',
       this.circle && 'px-0 w-varspacing',
@@ -248,9 +248,9 @@ export default class SdButton extends SolidElement implements SolidFormControl {
       }[this.pill ? 'pill' : this.circle ? 'circle' : this.size],
       {
         /* sizes, fonts */
-        small: 'text-sm varspacing-6',
-        medium: 'text-base varspacing-7',
-        large: 'text-lg varspacing-9',
+        small: 'text-xs varspacing-7',
+        medium: 'text-sm varspacing-10',
+        large: 'text-base varspacing-12',
       }[this.size],
       {
         /* main color */
@@ -263,7 +263,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
       {
         /* variants */
         primary: 'text-white bg-varcolor-600 border border-transparent not-disabled:hover:bg-varcolor-700  not-disabled:active:bg-varcolor-800',
-        secondary: 'text-varcolor-600 border border-varcolor-600 not-disabled:hover:bg-varcolor-50 not-disabled:hover:text-varcolor-700 not-disabled:hover:border-varcolor-700 active:text-varcolor-800 active:border-varcolor-800',
+        secondary: 'text-varcolor-600 border border-varcolor-600 not-disabled:hover:bg-varcolor-50 not-disabled:hover:text-varcolor-700 not-disabled:hover:border-varcolor-700 active:text-varcolor-800 active:bg-varcolor-100 active:border-varcolor-800',
         tertiary: 'bg-varcolor-50 text-varcolor-600 border border-transparent not-disabled:hover:bg-varcolor-100 not-disabled:hover:text-varcolor-700 not-disabled:active:text-varcolor-800'
       }[this.variant],
       slots.prefix && {
@@ -334,7 +334,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
       }
       ${this.loading
         ? html`<sd-spinner
-          class="absolute text-md h-4 w-4 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+          class="absolute text-md top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
         ></sd-spinner>`
         : ''}
       </${tag}>
