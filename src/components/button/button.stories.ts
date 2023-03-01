@@ -149,6 +149,7 @@ Pill.parameters = { controls: { exclude: relevantAttributes } };
 
 /**
  * Slot story
+ * TODO: It might be better to this with renderTableVariationsStory()
  */
 
 export const Slots = (args: any) => {

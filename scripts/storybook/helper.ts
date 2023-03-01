@@ -207,11 +207,13 @@ export const renderStoryFromAttributes = ({
   `;
 };
 
+
 export const renderTableVariationsStory = ({
   customElementTag,
   args,
   variationA,
   variationB,
+  // TODO: alternativeTitle should be part of the variation object
   alternativeTitle
 }: {
   customElementTag: string,
