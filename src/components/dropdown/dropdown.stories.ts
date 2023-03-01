@@ -6,15 +6,8 @@ export default {
   component: 'sd-dropdown',
 };
 
-// Renders the default story
 export const Default = (args: any) => {
   return renderDefaultStory('sd-dropdown', args);
 };
 
-// Sets the default args of the story
-Default.args = {
-  ...getDefaultArgs('sd-dropdown')
-};
-
-// Sets the arg types of the story
-Default.argTypes = {};
+Default.args = { ...getDefaultArgs('sd-dropdown') };

@@ -6,15 +6,8 @@ export default {
   component: 'sd-spinner',
 };
 
-// Renders the default story
 export const Default = (args: any) => {
   return renderDefaultStory('sd-spinner', args);
 };
 
-// Sets the default args of the story
-Default.args = {
-  ...getDefaultArgs('sd-spinner')
-};
-
-// Sets the arg types of the story
-Default.argTypes = {};
+Default.args = { ...getDefaultArgs('sd-spinner') };

@@ -6,15 +6,8 @@ export default {
   component: 'sd-checkbox',
 };
 
-// Renders the default story
 export const Default = (args: any) => {
   return renderDefaultStory('sd-checkbox', args);
 };
 
-// Sets the default args of the story
-Default.args = {
-  ...getDefaultArgs('sd-checkbox')
-};
-
-// Sets the arg types of the story
-Default.argTypes = {};
+Default.args = { ...getDefaultArgs('sd-checkbox') };

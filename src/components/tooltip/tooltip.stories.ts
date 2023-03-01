@@ -6,15 +6,8 @@ export default {
   component: 'sd-tooltip',
 };
 
-// Renders the default story
 export const Default = (args: any) => {
   return renderDefaultStory('sd-tooltip', args);
 };
 
-// Sets the default args of the story
-Default.args = {
-  ...getDefaultArgs('sd-tooltip')
-};
-
-// Sets the arg types of the story
-Default.argTypes = {};
+Default.args = { ...getDefaultArgs('sd-tooltip') };

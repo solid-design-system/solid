@@ -17,26 +17,7 @@ export const Default = (args: any) => {
   return renderDefaultStory('sd-button', args);
 };
 
-Default.args = {
-  ...getDefaultArgs('sd-button')
-};
-
-
-// /**
-//  * Variant story
-//  */
-
-// export const Variant = (args: any) => {
-//   return renderStoryFromAttributes(
-//     'sd-button',
-//     args,
-//     ['variant']
-//   );
-// };
-
-// // Sets the default args of the story
-// Variant.args = { ...getDefaultArgs('sd-button'), };
-// Variant.parameters = { controls: { exclude: relevantAttributes } };
+Default.args = { ...getDefaultArgs('sd-button') };
 
 /**
  * Variant × Color
@@ -53,7 +34,6 @@ export const VariantAndColor = (args: any) => {
   );
 };
 
-// Sets the default args of the story
 VariantAndColor.storyName = 'Variant × Color';
 VariantAndColor.args = { ...getDefaultArgs('sd-button'), };
 VariantAndColor.parameters = {
@@ -74,7 +54,6 @@ export const VariantAndSize = (args: any) => {
   );
 };
 
-// Sets the default args of the story
 VariantAndSize.storyName = 'Variant × Size';
 VariantAndSize.args = { ...getDefaultArgs('sd-button'), };
 VariantAndSize.parameters = {
@@ -97,7 +76,6 @@ export const Loading = (args: any) => {
   );
 };
 
-// Sets the default args of the story
 Loading.args = { ...getDefaultArgs('sd-button'), };
 Loading.parameters = { controls: { exclude: relevantAttributes } };
 
@@ -117,7 +95,6 @@ export const Caret = (args: any) => {
   );
 };
 
-// Sets the default args of the story
 Caret.args = { ...getDefaultArgs('sd-button'), };
 Caret.parameters = { controls: { exclude: relevantAttributes } };
 
@@ -137,7 +114,6 @@ export const Circle = (args: any) => {
   );
 };
 
-// Sets the default args of the story
 Circle.args = { ...getDefaultArgs('sd-button'), };
 Circle.parameters = { controls: { exclude: [...relevantAttributes, 'circle'] } };
 
@@ -157,7 +133,6 @@ export const Pill = (args: any) => {
   );
 };
 
-// Sets the default args of the story
 Pill.args = { ...getDefaultArgs('sd-button'), };
 Pill.parameters = { controls: { exclude: relevantAttributes } };
 
@@ -216,7 +191,6 @@ export const Slots = (args: any) => {
   return html`${output}`;
 };
 
-// Sets the default args of the story
 Slots.args = { ...getDefaultArgs('sd-button'), };
 Slots.parameters = { controls: { exclude: ['size', 'default', 'prefix', 'suffix', 'caret'] } };
 

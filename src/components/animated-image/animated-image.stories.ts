@@ -6,15 +6,8 @@ export default {
   component: 'sd-animated-image',
 };
 
-// Renders the default story
 export const Default = (args: any) => {
   return renderDefaultStory('sd-animated-image', args);
 };
 
-// Sets the default args of the story
-Default.args = {
-  ...getDefaultArgs('sd-animated-image')
-};
-
-// Sets the arg types of the story
-Default.argTypes = {};
+Default.args = { ...getDefaultArgs('sd-animated-image') };

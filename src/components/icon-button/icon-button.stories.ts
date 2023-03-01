@@ -6,15 +6,8 @@ export default {
   component: 'sd-icon-button',
 };
 
-// Renders the default story
 export const Default = (args: any) => {
   return renderDefaultStory('sd-icon-button', args);
 };
 
-// Sets the default args of the story
-Default.args = {
-  ...getDefaultArgs('sd-icon-button')
-};
-
-// Sets the arg types of the story
-Default.argTypes = {};
+Default.args = { ...getDefaultArgs('sd-icon-button') };
