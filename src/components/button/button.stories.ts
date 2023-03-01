@@ -7,7 +7,21 @@ export default {
   component: 'sd-button',
 };
 
-const relevantAttributes = ['variant', 'color', 'size', 'disabled', 'loading', 'pill', 'caret'];
+/**
+ * Those attributes are relevant for the stories in terms of design variations.
+ * To make story creation faster and as there are lots of them, it is easier to
+ * define them here and use it later.
+ */
+
+const relevantAttributes = [
+  'variant',
+  'color',
+  'size',
+  'disabled',
+  'loading',
+  'pill',
+  'caret'
+];
 
 /**
  * Default story
@@ -36,9 +50,7 @@ export const VariantAndColor = (args: any) => {
 
 VariantAndColor.storyName = 'Variant × Color';
 VariantAndColor.args = { ...getDefaultArgs('sd-button'), };
-VariantAndColor.parameters = {
-  controls: { exclude: ['variant', 'color'] }
-};
+VariantAndColor.parameters = { controls: { exclude: ['variant', 'color'] } };
 
 /**
  * Size × Variant
@@ -56,9 +68,7 @@ export const VariantAndSize = (args: any) => {
 
 VariantAndSize.storyName = 'Variant × Size';
 VariantAndSize.args = { ...getDefaultArgs('sd-button'), };
-VariantAndSize.parameters = {
-  controls: { exclude: ['variant', 'size'] }
-};
+VariantAndSize.parameters = { controls: { exclude: ['variant', 'size'] } };
 
 
 /**
@@ -142,12 +152,21 @@ Pill.parameters = { controls: { exclude: relevantAttributes } };
  */
 
 export const Slots = (args: any) => {
+  /**
+   * Those slots are relevant for the stories in terms of design variations.
+   * To make story creation faster and as there are lots of them, it is easier to
+   * define them here and use it later.
+   */
   const slots = {
     prefix: '<span slot="prefix">&lt;prefix&gt;</span>',
     suffix: '<span slot="suffix">&lt;suffix&gt;</span>',
     slot: '&lt;slot&gt;',
   };
 
+  /**
+   * We're setting default args here, so we don't have to repeat them in every
+   * story and just overwrite the stuff that has to be changed.
+   */
   const defaultArgs = {
     customElementTag: 'sd-button',
     args: { ...args, ...slots },
@@ -157,7 +176,7 @@ export const Slots = (args: any) => {
 
   const output = [];
 
-  // default
+  // Default
   output.push(html`
     ${renderStoryFromAttributes({ ...defaultArgs, alternativeTitle: 'size (default)' })}
     ${renderStoryFromAttributes({ ...defaultArgs, args: { ...defaultArgs.args, prefix: '' } })}
@@ -165,7 +184,7 @@ export const Slots = (args: any) => {
     ${renderStoryFromAttributes({ ...defaultArgs, args: { ...defaultArgs.args, prefix: '', suffix: '' } })}
   `);
 
-  // with caret
+  // With caret
   defaultArgs.args.caret = true;
 
   output.push(html`
@@ -175,7 +194,7 @@ export const Slots = (args: any) => {
     ${renderStoryFromAttributes({ ...defaultArgs, args: { ...defaultArgs.args, prefix: '', suffix: '' } })}
   `);
 
-  //
+  // With badge in default slot
   defaultArgs.args.caret = false;
   defaultArgs.args.slot = defaultArgs.args.slot + '<sd-badge pill>99</sd-badge>';
 
@@ -185,8 +204,6 @@ export const Slots = (args: any) => {
     ${renderStoryFromAttributes({ ...defaultArgs, args: { ...defaultArgs.args, suffix: '' } })}
     ${renderStoryFromAttributes({ ...defaultArgs, args: { ...defaultArgs.args, prefix: '', suffix: '' } })}
   `);
-
-
 
   return html`${output}`;
 };
