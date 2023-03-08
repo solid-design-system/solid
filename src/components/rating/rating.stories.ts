@@ -4,10 +4,11 @@ import { getDefaultArgs, renderDefaultStory } from '../../../scripts/storybook/h
 export default {
   title: 'Components/sd-rating',
   component: 'sd-rating',
+  args: getDefaultArgs('sd-rating'),
 };
 
-export const Default = (args: any) => {
-  return renderDefaultStory('sd-rating', args);
+export const Default = {
+  render: (args: any) => {
+    return renderDefaultStory('sd-rating', args);
+  }
 };
-
-Default.args = { ...getDefaultArgs('sd-rating') };

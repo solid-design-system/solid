@@ -4,10 +4,11 @@ import { getDefaultArgs, renderDefaultStory } from '../../../scripts/storybook/h
 export default {
   title: 'Components/sd-breadcrumb',
   component: 'sd-breadcrumb',
+  args: getDefaultArgs('sd-breadcrumb'),
 };
 
-export const Default = (args: any) => {
-  return renderDefaultStory('sd-breadcrumb', args);
+export const Default = {
+  render: (args: any) => {
+    return renderDefaultStory('sd-breadcrumb', args);
+  }
 };
-
-Default.args = { ...getDefaultArgs('sd-breadcrumb') };

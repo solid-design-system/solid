@@ -5,6 +5,7 @@ import { html } from 'lit-html';
 export default {
   title: 'Components/sd-button',
   component: 'sd-button',
+  args: getDefaultArgs('sd-button'),
 };
 
 /**
@@ -24,191 +25,205 @@ const relevantAttributes = [
 ];
 
 /**
- * Default story
+ * Default: This shows the button in its default state.
  */
 
-export const Default = (args: any) => {
-  return renderDefaultStory('sd-button', args);
-};
-
-Default.args = { ...getDefaultArgs('sd-button') };
-
-/**
- * Variant × Color
- */
-
-export const VariantAndColor = (args: any) => {
-  return renderTableStoryFromAttributes(
-    {
-      customElementTag: 'sd-button',
-      args,
-      attributeA: 'variant',
-      attributeB: 'color',
-    }
-  );
-};
-
-VariantAndColor.storyName = 'Variant × Color';
-VariantAndColor.args = { ...getDefaultArgs('sd-button'), };
-VariantAndColor.parameters = { controls: { exclude: ['variant', 'color'] } };
-
-/**
- * Size × Variant
- */
-
-export const VariantAndSize = (args: any) => {
-  return renderTableStoryFromAttributes({
-    customElementTag: 'sd-button',
-    args,
-    attributeA: 'variant',
-    attributeB: 'size',
+export const Default = {
+  render: (args: any) => {
+    return renderDefaultStory('sd-button', args);
   }
-  );
 };
-
-VariantAndSize.storyName = 'Variant × Size';
-VariantAndSize.args = { ...getDefaultArgs('sd-button'), };
-VariantAndSize.parameters = { controls: { exclude: ['variant', 'size'] } };
-
 
 /**
- * Loading story
+ * The button in all possible combinations of `variant` and `color` in the default `size`.
  */
 
-export const Loading = (args: any) => {
-  const modifiedArgs = { ...args, loading: true };
-  return renderStoryFromAttributes(
-    {
-      customElementTag: 'sd-button',
-      args: modifiedArgs,
-      attributes: relevantAttributes.filter((attr) => attr !== 'loading'),
-    }
-  );
+export const VariantAndColor = {
+  name: 'Variant × Color',
+  parameters: { controls: { exclude: ['variant', 'color'] } },
+  render: (args: any) => {
+    return renderTableStoryFromAttributes(
+      {
+        customElementTag: 'sd-button',
+        args,
+        attributeA: 'variant',
+        attributeB: 'color',
+      }
+    );
+  }
 };
-
-Loading.args = { ...getDefaultArgs('sd-button'), };
-Loading.parameters = { controls: { exclude: relevantAttributes } };
-
 
 /**
- * Caret story
+ * The button in all possible combinations of `variant` and `size` in the default `color`.
  */
 
-export const Caret = (args: any) => {
-  const modifiedArgs = { ...args, caret: true };
-  return renderStoryFromAttributes(
-    {
-      customElementTag: 'sd-button',
-      args: modifiedArgs,
-      attributes: relevantAttributes.filter((attr) => attr !== 'caret'),
-    }
-  );
+export const VariantAndSize = {
+  name: 'Variant × Size',
+  parameters: { controls: { exclude: ['variant', 'size'] } },
+  render: (args: any) => {
+    return renderTableStoryFromAttributes(
+      {
+        customElementTag: 'sd-button',
+        args,
+        attributeA: 'variant',
+        attributeB: 'size',
+      }
+    );
+  }
 };
-
-Caret.args = { ...getDefaultArgs('sd-button'), };
-Caret.parameters = { controls: { exclude: relevantAttributes } };
-
 
 /**
- * Circle story
+ * Use the `loading` attribute to make a button busy. The width will remain the same as before, preventing adjacent elements from moving around. Clicks will be suppressed until the loading state is removed.
  */
 
-export const Circle = (args: any) => {
-  const modifiedArgs = { ...args, circle: true, slot: '💬' };
-  return renderStoryFromAttributes(
-    {
-      customElementTag: 'sd-button',
-      args: modifiedArgs,
-      attributes: relevantAttributes.filter((attr) => attr !== 'circle'),
-    }
-  );
+export const Loading = {
+  parameters: { controls: { exclude: relevantAttributes } },
+  render: (args: any) => {
+    const modifiedArgs = { ...args, loading: true };
+    return renderStoryFromAttributes(
+      {
+        customElementTag: 'sd-button',
+        args: modifiedArgs,
+        attributes: relevantAttributes.filter((attr) => attr !== 'loading'),
+      }
+    );
+  }
 };
 
-Circle.args = { ...getDefaultArgs('sd-button'), };
-Circle.parameters = { controls: { exclude: [...relevantAttributes, 'circle'] } };
+/**
+ * Use the `caret` attribute to add a dropdown indicator when a button will trigger a dropdown, menu, or popover.
+ */
 
+export const Caret = {
+  parameters: { controls: { exclude: relevantAttributes } },
+  render: (args: any) => {
+    const modifiedArgs = { ...args, caret: true };
+    return renderStoryFromAttributes(
+      {
+        customElementTag: 'sd-button',
+        args: modifiedArgs,
+        attributes: relevantAttributes.filter((attr) => attr !== 'caret'),
+      }
+    );
+  }
+};
+
+/**
+ * Use the `disabled` attribute to disable a button. Clicks will be suppressed until the disabled state is removed.
+ */
+
+export const Disabled = {
+  parameters: { controls: { exclude: relevantAttributes } },
+  render: (args: any) => {
+    const modifiedArgs = { ...args, disabled: true };
+    return renderStoryFromAttributes(
+      {
+        customElementTag: 'sd-button',
+        args: modifiedArgs,
+        attributes: relevantAttributes.filter((attr) => attr !== 'disabled'),
+      }
+    );
+  }
+};
+
+/**
+ * Use the `circle` attribute to create circular icon buttons. When this attribute is set, the button expects ideally a single `<sd-icon>` in the default slot.
+ */
+
+export const Circle = {
+  parameters: { controls: { exclude: [...relevantAttributes, 'circle'] } },
+  render: (args: any) => {
+    const modifiedArgs = { ...args, circle: true, slot: '<sd-icon library="system" name="star-fill"></sd-icon>' };
+    return renderStoryFromAttributes(
+      {
+        customElementTag: 'sd-button',
+        args: modifiedArgs,
+        attributes: relevantAttributes.filter((attr) => attr !== 'circle'),
+      }
+    );
+  }
+};
 
 /**
  * Pill story
  */
 
-export const Pill = (args: any) => {
-  const modifiedArgs = { ...args, pill: true };
-  return renderStoryFromAttributes(
-    {
-      customElementTag: 'sd-button',
-      args: modifiedArgs,
-      attributes: relevantAttributes.filter((attr) => attr !== 'pill'),
-    }
-  );
+
+export const Pill = {
+  parameters: { controls: { exclude: relevantAttributes } },
+  render: (args: any) => {
+    const modifiedArgs = { ...args, pill: true };
+    return renderStoryFromAttributes(
+      {
+        customElementTag: 'sd-button',
+        args: modifiedArgs,
+        attributes: relevantAttributes.filter((attr) => attr !== 'pill'),
+      }
+    );
+  }
 };
 
-Pill.args = { ...getDefaultArgs('sd-button'), };
-Pill.parameters = { controls: { exclude: relevantAttributes } };
-
-
 /**
- * Slot story
+ * `Use the prefix and suffix slots to add icons.`
  * TODO: It might be better to this with renderTableVariationsStory()
  */
 
-export const Slots = (args: any) => {
-  /**
-   * Those slots are relevant for the stories in terms of design variations.
-   * To make story creation faster and as there are lots of them, it is easier to
-   * define them here and use it later.
-   */
-  const slots = {
-    prefix: '<span slot="prefix">&lt;prefix&gt;</span>',
-    suffix: '<span slot="suffix">&lt;suffix&gt;</span>',
-    slot: '&lt;slot&gt;',
-  };
+export const Slots = {
+  parameters: { controls: { exclude: ['size', 'default', 'prefix', 'suffix', 'caret'] } },
+  render: (args: any) => {
+    /**
+     * Those slots are relevant for the stories in terms of design variations.
+     * To make story creation faster and as there are lots of them, it is easier to
+     * define them here and use it later.
+     */
+    const slots = {
+      prefix: '<sd-icon slot="prefix"  library="system" name="star-fill"></sd-icon>',
+      suffix: '<sd-icon slot="suffix"  library="system" name="star-fill"></sd-icon>',
+      slot: '&lt;slot&gt;',
+    };
 
-  /**
-   * We're setting default args here, so we don't have to repeat them in every
-   * story and just overwrite the stuff that has to be changed.
-   */
-  const defaultArgs = {
-    customElementTag: 'sd-button',
-    args: { ...args, ...slots },
-    attributes: ['size'],
-    alternativeTitle: '',
-  };
+    /**
+     * We're setting default args here, so we don't have to repeat them in every
+     * story and just overwrite the stuff that has to be changed.
+     */
+    const defaultArgs = {
+      customElementTag: 'sd-button',
+      args: { ...args, ...slots },
+      attributes: ['size'],
+      alternativeTitle: '',
+    };
 
-  const output = [];
+    const output = [];
 
-  // Default
-  output.push(html`
+    // Default
+    output.push(html`
     ${renderStoryFromAttributes({ ...defaultArgs, alternativeTitle: 'size (default)' })}
     ${renderStoryFromAttributes({ ...defaultArgs, args: { ...defaultArgs.args, prefix: '' } })}
     ${renderStoryFromAttributes({ ...defaultArgs, args: { ...defaultArgs.args, suffix: '' } })}
     ${renderStoryFromAttributes({ ...defaultArgs, args: { ...defaultArgs.args, prefix: '', suffix: '' } })}
   `);
 
-  // With caret
-  defaultArgs.args.caret = true;
+    // With caret
+    defaultArgs.args.caret = true;
 
-  output.push(html`
+    output.push(html`
     ${renderStoryFromAttributes({ ...defaultArgs, args: { ...defaultArgs.args }, alternativeTitle: 'size (caret=true)' })}
     ${renderStoryFromAttributes({ ...defaultArgs, args: { ...defaultArgs.args, prefix: '' } })}
     ${renderStoryFromAttributes({ ...defaultArgs, args: { ...defaultArgs.args, suffix: '' } })}
     ${renderStoryFromAttributes({ ...defaultArgs, args: { ...defaultArgs.args, prefix: '', suffix: '' } })}
   `);
 
-  // With badge in default slot
-  defaultArgs.args.caret = false;
-  defaultArgs.args.slot = defaultArgs.args.slot + '<sd-badge pill>99</sd-badge>';
+    // With badge in default slot
+    defaultArgs.args.caret = false;
+    defaultArgs.args.slot = defaultArgs.args.slot + '<sd-badge pill>99</sd-badge>';
 
-  output.push(html`
+    output.push(html`
     ${renderStoryFromAttributes({ ...defaultArgs, args: { ...defaultArgs.args }, alternativeTitle: 'size (slot contains <sd-badge>)' })}
     ${renderStoryFromAttributes({ ...defaultArgs, args: { ...defaultArgs.args, prefix: '' } })}
     ${renderStoryFromAttributes({ ...defaultArgs, args: { ...defaultArgs.args, suffix: '' } })}
     ${renderStoryFromAttributes({ ...defaultArgs, args: { ...defaultArgs.args, prefix: '', suffix: '' } })}
   `);
 
-  return html`${output}`;
+    return html`${output}`;
+  }
 };
-
-Slots.args = { ...getDefaultArgs('sd-button'), };
-Slots.parameters = { controls: { exclude: ['size', 'default', 'prefix', 'suffix', 'caret'] } };
-

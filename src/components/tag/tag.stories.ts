@@ -4,10 +4,11 @@ import { getDefaultArgs, renderDefaultStory } from '../../../scripts/storybook/h
 export default {
   title: 'Components/sd-tag',
   component: 'sd-tag',
+  args: getDefaultArgs('sd-tag'),
 };
 
-export const Default = (args: any) => {
-  return renderDefaultStory('sd-tag', args);
+export const Default = {
+  render: (args: any) => {
+    return renderDefaultStory('sd-tag', args);
+  }
 };
-
-Default.args = { ...getDefaultArgs('sd-tag') };

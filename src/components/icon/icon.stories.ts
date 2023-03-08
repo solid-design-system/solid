@@ -4,10 +4,11 @@ import { getDefaultArgs, renderDefaultStory } from '../../../scripts/storybook/h
 export default {
   title: 'Components/sd-icon',
   component: 'sd-icon',
+  args: getDefaultArgs('sd-icon'),
 };
 
-export const Default = (args: any) => {
-  return renderDefaultStory('sd-icon', args);
+export const Default = {
+  render: (args: any) => {
+    return renderDefaultStory('sd-icon', args);
+  }
 };
-
-Default.args = { ...getDefaultArgs('sd-icon') };

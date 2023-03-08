@@ -4,10 +4,11 @@ import { getDefaultArgs, renderDefaultStory } from '../../../scripts/storybook/h
 export default {
   title: 'Components/sd-checkbox',
   component: 'sd-checkbox',
+  args: getDefaultArgs('sd-checkbox'),
 };
 
-export const Default = (args: any) => {
-  return renderDefaultStory('sd-checkbox', args);
+export const Default = {
+  render: (args: any) => {
+    return renderDefaultStory('sd-checkbox', args);
+  }
 };
-
-Default.args = { ...getDefaultArgs('sd-checkbox') };

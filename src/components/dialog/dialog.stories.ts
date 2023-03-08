@@ -4,10 +4,11 @@ import { getDefaultArgs, renderDefaultStory } from '../../../scripts/storybook/h
 export default {
   title: 'Components/sd-dialog',
   component: 'sd-dialog',
+  args: getDefaultArgs('sd-dialog'),
 };
 
-export const Default = (args: any) => {
-  return renderDefaultStory('sd-dialog', args);
+export const Default = {
+  render: (args: any) => {
+    return renderDefaultStory('sd-dialog', args);
+  }
 };
-
-Default.args = { ...getDefaultArgs('sd-dialog') };

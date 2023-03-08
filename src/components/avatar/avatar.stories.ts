@@ -4,10 +4,11 @@ import { getDefaultArgs, renderDefaultStory } from '../../../scripts/storybook/h
 export default {
   title: 'Components/sd-avatar',
   component: 'sd-avatar',
+  args: getDefaultArgs('sd-avatar'),
 };
 
-export const Default = (args: any) => {
-  return renderDefaultStory('sd-avatar', args);
+export const Default = {
+  render: (args: any) => {
+    return renderDefaultStory('sd-avatar', args);
+  }
 };
-
-Default.args = { ...getDefaultArgs('sd-avatar') };

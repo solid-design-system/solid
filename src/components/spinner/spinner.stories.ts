@@ -4,10 +4,11 @@ import { getDefaultArgs, renderDefaultStory } from '../../../scripts/storybook/h
 export default {
   title: 'Components/sd-spinner',
   component: 'sd-spinner',
+  args: getDefaultArgs('sd-spinner'),
 };
 
-export const Default = (args: any) => {
-  return renderDefaultStory('sd-spinner', args);
+export const Default = {
+  render: (args: any) => {
+    return renderDefaultStory('sd-spinner', args);
+  }
 };
-
-Default.args = { ...getDefaultArgs('sd-spinner') };

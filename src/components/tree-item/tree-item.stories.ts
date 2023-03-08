@@ -4,10 +4,11 @@ import { getDefaultArgs, renderDefaultStory } from '../../../scripts/storybook/h
 export default {
   title: 'Components/sd-tree-item',
   component: 'sd-tree-item',
+  args: getDefaultArgs('sd-tree-item'),
 };
 
-export const Default = (args: any) => {
-  return renderDefaultStory('sd-tree-item', args);
+export const Default = {
+  render: (args: any) => {
+    return renderDefaultStory('sd-tree-item', args);
+  }
 };
-
-Default.args = { ...getDefaultArgs('sd-tree-item') };

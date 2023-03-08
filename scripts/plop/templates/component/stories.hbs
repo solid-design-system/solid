@@ -4,10 +4,11 @@ import { getDefaultArgs, renderDefaultStory } from '../../../scripts/storybook/h
 export default {
   title: 'Components/{{ tag }}',
   component: '{{ tag }}',
+  args: getDefaultArgs('{{ tag }}'),
 };
 
-export const Default = (args: any) => {
-  return renderDefaultStory('{{ tag }}', args);
+export const Default = {
+  render: (args: any) => {
+    return renderDefaultStory('{{ tag }}', args);
+  }
 };
-
-Default.args = {...getDefaultArgs('{{ tag }}')};

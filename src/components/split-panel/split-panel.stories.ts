@@ -4,10 +4,11 @@ import { getDefaultArgs, renderDefaultStory } from '../../../scripts/storybook/h
 export default {
   title: 'Components/sd-split-panel',
   component: 'sd-split-panel',
+  args: getDefaultArgs('sd-split-panel'),
 };
 
-export const Default = (args: any) => {
-  return renderDefaultStory('sd-split-panel', args);
+export const Default = {
+  render: (args: any) => {
+    return renderDefaultStory('sd-split-panel', args);
+  }
 };
-
-Default.args = { ...getDefaultArgs('sd-split-panel') };

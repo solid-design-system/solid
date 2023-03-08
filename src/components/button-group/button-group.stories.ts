@@ -4,10 +4,11 @@ import { getDefaultArgs, renderDefaultStory } from '../../../scripts/storybook/h
 export default {
   title: 'Components/sd-button-group',
   component: 'sd-button-group',
+  args: getDefaultArgs('sd-button-group'),
 };
 
-export const Default = (args: any) => {
-  return renderDefaultStory('sd-button-group', args);
+export const Default = {
+  render: (args: any) => {
+    return renderDefaultStory('sd-button-group', args);
+  }
 };
-
-Default.args = { ...getDefaultArgs('sd-button-group') };

@@ -4,10 +4,11 @@ import { getDefaultArgs, renderDefaultStory } from '../../../scripts/storybook/h
 export default {
   title: 'Components/sd-input',
   component: 'sd-input',
+  args: getDefaultArgs('sd-input'),
 };
 
-export const Default = (args: any) => {
-  return renderDefaultStory('sd-input', args);
+export const Default = {
+  render: (args: any) => {
+    return renderDefaultStory('sd-input', args);
+  }
 };
-
-Default.args = { ...getDefaultArgs('sd-input') };

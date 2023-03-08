@@ -4,10 +4,11 @@ import { getDefaultArgs, renderDefaultStory } from '../../../scripts/storybook/h
 export default {
   title: 'Components/sd-badge',
   component: 'sd-badge',
+  args: getDefaultArgs('sd-badge'),
 };
 
-export const Default = (args: any) => {
-  return renderDefaultStory('sd-badge', args);
+export const Default = {
+  render: (args: any) => {
+    return renderDefaultStory('sd-badge', args);
+  }
 };
-
-Default.args = { ...getDefaultArgs('sd-badge') };

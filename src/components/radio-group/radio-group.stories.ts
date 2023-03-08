@@ -4,10 +4,11 @@ import { getDefaultArgs, renderDefaultStory } from '../../../scripts/storybook/h
 export default {
   title: 'Components/sd-radio-group',
   component: 'sd-radio-group',
+  args: getDefaultArgs('sd-radio-group'),
 };
 
-export const Default = (args: any) => {
-  return renderDefaultStory('sd-radio-group', args);
+export const Default = {
+  render: (args: any) => {
+    return renderDefaultStory('sd-radio-group', args);
+  }
 };
-
-Default.args = { ...getDefaultArgs('sd-radio-group') };

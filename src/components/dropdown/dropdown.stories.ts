@@ -4,10 +4,11 @@ import { getDefaultArgs, renderDefaultStory } from '../../../scripts/storybook/h
 export default {
   title: 'Components/sd-dropdown',
   component: 'sd-dropdown',
+  args: getDefaultArgs('sd-dropdown'),
 };
 
-export const Default = (args: any) => {
-  return renderDefaultStory('sd-dropdown', args);
+export const Default = {
+  render: (args: any) => {
+    return renderDefaultStory('sd-dropdown', args);
+  }
 };
-
-Default.args = { ...getDefaultArgs('sd-dropdown') };

@@ -4,10 +4,11 @@ import { getDefaultArgs, renderDefaultStory } from '../../../scripts/storybook/h
 export default {
   title: 'Components/sd-mutation-observer',
   component: 'sd-mutation-observer',
+  args: getDefaultArgs('sd-mutation-observer'),
 };
 
-export const Default = (args: any) => {
-  return renderDefaultStory('sd-mutation-observer', args);
+export const Default = {
+  render: (args: any) => {
+    return renderDefaultStory('sd-mutation-observer', args);
+  }
 };
-
-Default.args = { ...getDefaultArgs('sd-mutation-observer') };

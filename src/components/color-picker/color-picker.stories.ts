@@ -4,10 +4,11 @@ import { getDefaultArgs, renderDefaultStory } from '../../../scripts/storybook/h
 export default {
   title: 'Components/sd-color-picker',
   component: 'sd-color-picker',
+  args: getDefaultArgs('sd-color-picker'),
 };
 
-export const Default = (args: any) => {
-  return renderDefaultStory('sd-color-picker', args);
+export const Default = {
+  render: (args: any) => {
+    return renderDefaultStory('sd-color-picker', args);
+  }
 };
-
-Default.args = { ...getDefaultArgs('sd-color-picker') };

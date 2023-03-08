@@ -4,10 +4,11 @@ import { getDefaultArgs, renderDefaultStory } from '../../../scripts/storybook/h
 export default {
   title: 'Components/sd-visually-hidden',
   component: 'sd-visually-hidden',
+  args: getDefaultArgs('sd-visually-hidden'),
 };
 
-export const Default = (args: any) => {
-  return renderDefaultStory('sd-visually-hidden', args);
+export const Default = {
+  render: (args: any) => {
+    return renderDefaultStory('sd-visually-hidden', args);
+  }
 };
-
-Default.args = { ...getDefaultArgs('sd-visually-hidden') };

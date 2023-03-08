@@ -4,10 +4,11 @@ import { getDefaultArgs, renderDefaultStory } from '../../../scripts/storybook/h
 export default {
   title: 'Components/sd-progress-ring',
   component: 'sd-progress-ring',
+  args: getDefaultArgs('sd-progress-ring'),
 };
 
-export const Default = (args: any) => {
-  return renderDefaultStory('sd-progress-ring', args);
+export const Default = {
+  render: (args: any) => {
+    return renderDefaultStory('sd-progress-ring', args);
+  }
 };
-
-Default.args = { ...getDefaultArgs('sd-progress-ring') };

@@ -4,10 +4,11 @@ import { getDefaultArgs, renderDefaultStory } from '../../../scripts/storybook/h
 export default {
   title: 'Components/sd-animation',
   component: 'sd-animation',
+  args: getDefaultArgs('sd-animation'),
 };
 
-export const Default = (args: any) => {
-  return renderDefaultStory('sd-animation', args);
+export const Default = {
+  render: (args: any) => {
+    return renderDefaultStory('sd-animation', args);
+  }
 };
-
-Default.args = { ...getDefaultArgs('sd-animation') };
