@@ -305,11 +305,13 @@ export default class SdButton extends SolidElement implements SolidFormControl {
         'inline-block',
         this.loading && 'invisible',
         slots.label && {
+          /* padding-left for label */
           small: slots.prefix ? 'pl-2' : 'pl-3',
           medium: slots.prefix ? 'pl-3' : 'pl-4',
           large: slots.prefix ? 'pl-3' : 'pl-5',
         }[this.size],
         slots.label && {
+          /* padding-right for label */
           small: (slots.suffix || this.caret) ? 'pr-2' : 'pr-3',
           medium: (slots.suffix || this.caret) ? 'pr-3' : 'pr-4',
           large: (slots.suffix || this.caret) ? 'pr-3' : 'pr-5',
