@@ -145,7 +145,7 @@ export const Circle = {
 };
 
 /**
- * Pill story
+ * Use the `pill` attribute to give buttons rounded edges.
  */
 
 
@@ -164,7 +164,7 @@ export const Pill = {
 };
 
 /**
- * `Use the prefix and suffix slots to add icons.`
+ * Use the `prefix` and `suffix` slots to add icons.
  * TODO: It might be better to this with renderTableVariationsStory()
  */
 
