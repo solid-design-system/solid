@@ -171,14 +171,19 @@ export const Pill = {
 export const Slots = {
   parameters: { controls: { exclude: ['size', 'default', 'prefix', 'suffix', 'caret'] } },
   render: (args: any) => {
+    const icon = {
+      prefix: '<sd-icon slot="prefix"  library="system" name="star-fill"></sd-icon>',
+      suffix: '<sd-icon slot="suffix"  library="system" name="star-fill"></sd-icon>',
+    };
+
     /**
      * Those slots are relevant for the stories in terms of design variations.
      * To make story creation faster and as there are lots of them, it is easier to
      * define them here and use it later.
      */
     const slots = {
-      prefix: '<sd-icon slot="prefix"  library="system" name="star-fill"></sd-icon>',
-      suffix: '<sd-icon slot="suffix"  library="system" name="star-fill"></sd-icon>',
+      prefix: icon['prefix'],
+      suffix: icon['suffix'],
       slot: '&lt;slot&gt;',
     };
 

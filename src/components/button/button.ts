@@ -268,15 +268,15 @@ export default class SdButton extends SolidElement implements SolidFormControl {
       }[this.variant],
       slots.prefix && {
         /* padding-left if prefix available */
-        small: 'pl-px',
-        medium: 'pl-2',
-        large: 'px-2',
+        small: 'pl-2',
+        medium: 'pl-3',
+        large: 'pl-3',
       }[this.size],
-      slots.suffix || this.caret && {
+      (slots.suffix || this.caret) && {
         /* padding-right if suffix or carets available */
-        small: 'pr-px',
-        medium: 'pr-2',
-        large: 'pr-2',
+        small: 'pr-2',
+        medium: 'pr-3',
+        large: 'pr-3',
       }[this.size],
     )
       }
@@ -305,14 +305,14 @@ export default class SdButton extends SolidElement implements SolidFormControl {
         'inline-block',
         this.loading && 'invisible',
         slots.label && {
-          small: slots.prefix ? 'pl-px' : 'pl-2',
-          medium: slots.prefix ? 'pl-2' : 'pl-3',
-          large: slots.prefix ? 'pl-2' : 'px-4',
+          small: slots.prefix ? 'pl-2' : 'pl-3',
+          medium: slots.prefix ? 'pl-3' : 'pl-4',
+          large: slots.prefix ? 'pl-3' : 'pl-5',
         }[this.size],
         slots.label && {
-          small: slots.suffix || this.caret ? 'pr-px' : 'pr-2',
-          medium: slots.suffix || this.caret ? 'pr-2' : 'pr-3',
-          large: slots.suffix || this.caret ? 'pr-2' : 'pr-4',
+          small: (slots.suffix || this.caret) ? 'pr-2' : 'pr-3',
+          medium: (slots.suffix || this.caret) ? 'pr-3' : 'pr-4',
+          large: (slots.suffix || this.caret) ? 'pr-3' : 'pr-5',
         }[this.size],
       )
       }></slot>
@@ -320,7 +320,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
           part="suffix"
           class=${cx(
         'flex flex-auto items-center pointer-events-none',
-        (this.circle || this.caret) && 'display-none',
+        (this.circle || this.caret) && 'hidden',
         this.loading && 'invisible'
       )}>
         </slot>
