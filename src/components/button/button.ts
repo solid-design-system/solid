@@ -234,8 +234,8 @@ export default class SdButton extends SolidElement implements SolidFormControl {
     /* eslint-disable lit/binding-positions */
     return html`
       <${tag} part="base" class=${cx(
-      'focus font-medium h-varspacing leading-[calc(var(--tw-varspacing)-2px)] border button inline-flex items-stretch justify-center w-full border-solid font-semibold font-sans no-underline select-none whitespace-nowrap align-middle duration-50 transition-all duration-200 ease-in-out cursor-[inherit]',
-      this.disabled && 'disabled',
+      'focus:focus font-medium h-varspacing leading-[calc(var(--tw-varspacing)-2px)] border button inline-flex items-stretch justify-center w-full border-solid font-semibold font-sans no-underline select-none whitespace-nowrap align-middle duration-50 transition-all duration-200 ease-in-out cursor-[inherit]',
+      this.disabled && 'disabled:disabled',
       this.loading && 'relative cursor-wait',
       this.circle && 'px-0 w-varspacing',
       {

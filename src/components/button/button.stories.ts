@@ -79,11 +79,10 @@ export const VariantAndSize = {
 export const Loading = {
   parameters: { controls: { exclude: relevantAttributes } },
   render: (args: any) => {
-    const modifiedArgs = { ...args, loading: true };
     return renderStoryFromAttributes(
       {
         customElementTag: 'sd-button',
-        args: modifiedArgs,
+        args: { ...args, loading: true },
         attributes: relevantAttributes.filter((attr) => attr !== 'loading'),
       }
     );
@@ -97,11 +96,10 @@ export const Loading = {
 export const Caret = {
   parameters: { controls: { exclude: relevantAttributes } },
   render: (args: any) => {
-    const modifiedArgs = { ...args, caret: true };
     return renderStoryFromAttributes(
       {
         customElementTag: 'sd-button',
-        args: modifiedArgs,
+        args: { ...args, caret: true },
         attributes: relevantAttributes.filter((attr) => attr !== 'caret'),
       }
     );
@@ -115,11 +113,10 @@ export const Caret = {
 export const Disabled = {
   parameters: { controls: { exclude: relevantAttributes } },
   render: (args: any) => {
-    const modifiedArgs = { ...args, disabled: true };
     return renderStoryFromAttributes(
       {
         customElementTag: 'sd-button',
-        args: modifiedArgs,
+        args: { ...args, disabled: true },
         attributes: relevantAttributes.filter((attr) => attr !== 'disabled'),
       }
     );
@@ -133,11 +130,10 @@ export const Disabled = {
 export const Circle = {
   parameters: { controls: { exclude: [...relevantAttributes, 'circle'] } },
   render: (args: any) => {
-    const modifiedArgs = { ...args, circle: true, slot: '<sd-icon library="system" name="star-fill"></sd-icon>' };
     return renderStoryFromAttributes(
       {
         customElementTag: 'sd-button',
-        args: modifiedArgs,
+        args: { ...args, circle: true, slot: '<sd-icon library="system" name="star-fill"></sd-icon>' },
         attributes: relevantAttributes.filter((attr) => attr !== 'circle'),
       }
     );
@@ -152,11 +148,10 @@ export const Circle = {
 export const Pill = {
   parameters: { controls: { exclude: relevantAttributes } },
   render: (args: any) => {
-    const modifiedArgs = { ...args, pill: true };
     return renderStoryFromAttributes(
       {
         customElementTag: 'sd-button',
-        args: modifiedArgs,
+        args: { ...args, pill: true },
         attributes: relevantAttributes.filter((attr) => attr !== 'pill'),
       }
     );

@@ -155,6 +155,9 @@ module.exports = {
         "3xl": "var(--sd-spacing-3x-large, 3rem)",
         "4xl": "var(--sd-spacing-4x-large, 4.5rem)",
       },
+      rounded: {
+        inherit: "inherit",
+      }
     },
   },
   plugins: [

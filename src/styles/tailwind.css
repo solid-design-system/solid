@@ -4,10 +4,10 @@
 
 @layer components {
   .focus {
-    @apply focus:ring-2 focus:ring-varcolor-300 focus:ring-offset-1 outline-none;
+    @apply ring-2 ring-varcolor-300 ring-offset-1 outline-none;
   }
   .disabled {
-    @apply disabled:opacity-50 disabled:saturate-50 disabled:cursor-not-allowed;
+    @apply opacity-50 saturate-50 cursor-not-allowed;
   }
   .disabled * {
     @apply pointer-events-none;

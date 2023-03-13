@@ -1,6 +1,5 @@
 import '../icon/icon';
 import { animateTo, shimKeyframesHeightAuto, stopAnimations } from '../../internal/animate';
-import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property, query } from 'lit/decorators.js';
 import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry';
 import { html } from 'lit';
@@ -8,8 +7,8 @@ import { LocalizeController } from '../../utilities/localize';
 import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch';
 import SolidElement from '../../internal/solid-element';
-import styles from './details.styles';
-import type { CSSResultGroup } from 'lit';
+import { css } from 'lit';
+import cx from 'classix';
 
 /**
  * @summary Details show a brief summary and expand to show additional content.
@@ -40,14 +39,13 @@ import type { CSSResultGroup } from 'lit';
  */
 @customElement('sd-details')
 export default class SdDetails extends SolidElement {
-  static styles: CSSResultGroup = styles;
+  // static styles: CSSResultGroup = styles;
 
   private readonly localize = new LocalizeController(this);
 
-  @query('.details') details: HTMLElement;
-  @query('.details__header') header: HTMLElement;
-  @query('.details__body') body: HTMLElement;
-  @query('.details__expand-icon-slot') expandIconSlot: HTMLSlotElement;
+  @query('[part="base"]') details: HTMLElement;
+  @query('[part="header"]') header: HTMLElement;
+  @query('[part="body"]') body: HTMLElement;
 
   /**
    * Indicates whether or not the details is open. You can toggle this attribute to show and hide the details, or you
@@ -67,6 +65,7 @@ export default class SdDetails extends SolidElement {
   }
 
   private handleSummaryClick() {
+    console.log(this.body, this.header, this.details);
     if (!this.disabled) {
       if (this.open) {
         this.hide();
@@ -163,17 +162,17 @@ export default class SdDetails extends SolidElement {
     return html`
       <div
         part="base"
-        class=${classMap({
-      details: true,
-      'details--open': this.open,
-      'details--disabled': this.disabled,
-      'details--rtl': isRtl
-    })}
+        class=${cx(
+      'border border-neutral-300 rounded-md bg-white overflow [overflow-anchor:none]',
+      this.disabled && 'disabled',
+    )}
       >
         <header
           part="header"
           id="header"
-          class="details__header"
+          class=${cx('flex items-center rounded-inherit cursor-pointer select-none p-4 focus:outline-none focus-visible:focus',
+      this.disabled && 'focus-visible:outline-none shadow-none')
+      }
           role="button"
           aria-expanded=${this.open ? 'true' : 'false'}
           aria-controls="content"
@@ -182,25 +181,33 @@ export default class SdDetails extends SolidElement {
           @click=${this.handleSummaryClick}
           @keydown=${this.handleSummaryKeyDown}
         >
-          <slot name="summary" part="summary" class="details__summary">${this.summary}</slot>
+          <slot name="summary" part="summary" class="flex flex-auto items-center">${this.summary}</slot>
 
-          <span part="summary-icon" class="details__summary-icon">
-            <slot name="expand-icon">
+          <span part="summary-icon" class=${cx(
+        'flex flex-grow-0 flex-shrink-0 flex-auto items-center transition ease-in-out',
+        this.open && 'rotate-90')}>
+            <slot name="expand-icon" class=${cx(this.open && 'hidden')}>
               <sd-icon library="system" name=${isRtl ? 'chevron-left' : 'chevron-right'}></sd-icon>
             </slot>
-            <slot name="collapse-icon">
+            <slot name="collapse-icon" class=${cx(!this.open && 'hidden')}>
               <sd-icon library="system" name=${isRtl ? 'chevron-left' : 'chevron-right'}></sd-icon>
             </slot>
           </span>
         </header>
-
-        <div class="details__body">
-          <slot part="content" id="content" class="details__content" role="region" aria-labelledby="header"></slot>
+        <div part="body" class="overflow-hidden">
+          <slot part="content" id="content" class="block p-4" role="region" aria-labelledby="header"></slot>
         </div>
       </div>
     `;
   }
+
+  static styles = [
+    ...SolidElement.styles,
+    css`:host { display: block; }`
+  ];
 }
+
+
 
 setDefaultAnimation('details.show', {
   keyframes: [

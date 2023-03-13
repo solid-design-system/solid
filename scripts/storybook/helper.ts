@@ -153,19 +153,21 @@ export const renderInlineVariationsStory = ({
   customElementTag,
   args,
   variation,
-  alternativeTitle
+  alternativeTitle,
+  vertical
 }: {
   customElementTag: string,
   args: any,
   variation?: { arg: string, values: any[]; },
   alternativeTitle?: string;
+  vertical?: boolean;
 }): any => {
   return html`
   <div style="">
   ${alternativeTitle !== '' ?
       html`<h3 style="font-size: 16px; margin-bottom: 12px; margin-top: 24px">${alternativeTitle || variation?.arg}</h3>` : ''}
   ${variation?.values?.map((value: any) => {
-        return html`<div style="margin-bottom: 16px; display: inline-block; margin-right: 16px">
+        return html`<div style="margin-bottom: 16px; display: ${vertical ? 'block' : 'inline-block'}; margin-right: 16px">
       <p style="font-size: 12px; margin-bottom: 8px; margin-top: 0px;">
         ${value}
       </p>
@@ -180,12 +182,14 @@ export const renderStoryFromAttributes = ({
   customElementTag,
   args,
   attributes,
-  alternativeTitle
+  alternativeTitle,
+  vertical
 }: {
   customElementTag: string,
   args: any,
   attributes: string[];
   alternativeTitle?: string;
+  vertical?: boolean;
 }): any => {
   return html`
   ${getValuesFromAttributes(
@@ -201,6 +205,7 @@ export const renderStoryFromAttributes = ({
           values: getValuesFromAttribute(customElementTag, attribute.name),
         },
         alternativeTitle: alternativeTitle === '' || alternativeTitle ? alternativeTitle : attribute.name,
+        vertical
       }
     );
   })}

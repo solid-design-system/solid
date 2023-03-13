@@ -12,7 +12,7 @@ describe('<sd-details>', () => {
         consequat.
       </sd-details>
     `);
-    const body = el.shadowRoot!.querySelector<HTMLElement>('.details__body')!;
+    const body = el.shadowRoot!.querySelector<HTMLElement>('[part="body"]')!;
 
     expect(body.hidden).to.be.false;
   });
@@ -25,7 +25,7 @@ describe('<sd-details>', () => {
         consequat.
       </sd-details>
     `);
-    const body = el.shadowRoot!.querySelector<HTMLElement>('.details__body')!;
+    const body = el.shadowRoot!.querySelector<HTMLElement>('[part="body"]')!;
 
     expect(body.hidden).to.be.true;
   });
@@ -38,7 +38,7 @@ describe('<sd-details>', () => {
         consequat.
       </sd-details>
     `);
-    const body = el.shadowRoot!.querySelector<HTMLElement>('.details__body')!;
+    const body = el.shadowRoot!.querySelector<HTMLElement>('[part="body"]')!;
     const showHandler = sinon.spy();
     const afterShowHandler = sinon.spy();
 
@@ -62,7 +62,7 @@ describe('<sd-details>', () => {
         consequat.
       </sd-details>
     `);
-    const body = el.shadowRoot!.querySelector<HTMLElement>('.details__body')!;
+    const body = el.shadowRoot!.querySelector<HTMLElement>('[part="body"]')!;
     const hideHandler = sinon.spy();
     const afterHideHandler = sinon.spy();
 
@@ -86,7 +86,7 @@ describe('<sd-details>', () => {
         consequat.
       </sd-details>
     `);
-    const body = el.shadowRoot!.querySelector<HTMLElement>('.details__body')!;
+    const body = el.shadowRoot!.querySelector<HTMLElement>('[part="body"]')!;
     const showHandler = sinon.spy();
     const afterShowHandler = sinon.spy();
 
@@ -110,7 +110,7 @@ describe('<sd-details>', () => {
         consequat.
       </sd-details>
     `);
-    const body = el.shadowRoot!.querySelector<HTMLElement>('.details__body')!;
+    const body = el.shadowRoot!.querySelector<HTMLElement>('[part="body"]')!;
     const hideHandler = sinon.spy();
     const afterHideHandler = sinon.spy();
 
@@ -177,8 +177,8 @@ describe('<sd-details>', () => {
     `);
     const first = el.querySelectorAll('sd-details')[0];
     const second = el.querySelectorAll('sd-details')[1];
-    const firstBody = first.shadowRoot!.querySelector('.details__body')!;
-    const secondBody = second.shadowRoot!.querySelector('.details__body')!;
+    const firstBody = first.shadowRoot!.querySelector('[part="body"]')!;
+    const secondBody = second.shadowRoot!.querySelector('[part="body"]')!;
 
     await first.show();
     await second.show();
