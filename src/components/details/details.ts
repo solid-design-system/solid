@@ -163,15 +163,16 @@ export default class SdDetails extends SolidElement {
       <div
         part="base"
         class=${cx(
-      'border border-neutral-300 rounded-md bg-white overflow [overflow-anchor:none]',
+      'border varcolor-neutral border-varcolor-300 rounded-md bg-white overflow [overflow-anchor:none]',
       this.disabled && 'disabled',
     )}
       >
         <header
           part="header"
           id="header"
-          class=${cx('flex items-center rounded-inherit cursor-pointer select-none p-4 focus:outline-none focus-visible:focus',
-      this.disabled && 'focus-visible:outline-none shadow-none')
+          class=${cx('flex text-varcolor-700 items-center rounded-md cursor-pointer select-none p-4 focus:outline-none focus-visible:focus',
+      this.disabled && 'focus-visible:outline-none shadow-none',
+      this.open && 'bg-varcolor-50 text-varcolor-900')
       }
           role="button"
           aria-expanded=${this.open ? 'true' : 'false'}
