@@ -31,7 +31,6 @@ import cx from 'classix';
  * @csspart prefix - The container that wraps the prefix.
  * @csspart label - The button's label.
  * @csspart suffix - The container that wraps the suffix.
- * @csspart caret - The button's caret icon, an `<sd-icon>` element.
  */
 @customElement('sd-button')
 export default class SdButton extends SolidElement implements SolidFormControl {
@@ -61,9 +60,6 @@ export default class SdButton extends SolidElement implements SolidFormControl {
 
   /** The button's size. */
   @property({ reflect: true }) size: 'small' | 'medium' | 'large' = 'medium';
-
-  /** Draws the button with a caret. Used to indicate that the button triggers a dropdown menu or similar behavior. */
-  @property({ type: Boolean, reflect: true }) caret = false;
 
   /** Disables the button. */
   @property({ type: Boolean, reflect: true }) disabled = false;
@@ -227,7 +223,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
     /* eslint-disable lit/binding-positions */
     return html`
       <${tag} part="base" class=${cx(
-      'focus:focus font-medium h-varspacing leading-[calc(var(--tw-varspacing)-2px)] border inline-flex items-stretch justify-center w-full font-semibold font-sans no-underline select-none whitespace-nowrap align-middle duration-50 transition duration-200 ease-in-out cursor-[inherit]',
+      'focus:focus font-medium h-varspacing leading-[calc(var(--tw-varspacing)-2px)] border inline-flex items-stretch justify-center w-full font-semibold font-sans no-underline select-none whitespace-nowrap align-middle duration-50 transition-colors duration-200 ease-in-out cursor-[inherit]',
       this.loading && 'relative cursor-wait',
       this.disabled && 'cursor-not-allowed',
       this.circle && 'px-0 w-varspacing',
@@ -237,9 +233,9 @@ export default class SdButton extends SolidElement implements SolidFormControl {
       this.circle ? 'rounded-full' : 'rounded-md',
       {
         /* sizes, fonts */
-        small: 'text-sm varspacing-8 px-4 gap-1',
-        medium: 'text-base varspacing-10 px-4 gap-2',
-        large: 'text-base varspacing-12 px-4 gap-2',
+        small: 'text-sm varspacing-8 px-4',
+        medium: 'text-base varspacing-10 px-4',
+        large: 'text-base varspacing-12 px-4',
       }[this.size],
       {
         /* variants */
@@ -269,7 +265,8 @@ export default class SdButton extends SolidElement implements SolidFormControl {
         <slot name="prefix" part="prefix" class=${cx(
         'flex flex-auto items-center pointer-events-none',
         this.circle && 'hidden',
-        this.loading && 'invisible'
+        this.loading && 'invisible',
+        slots.prefix && (this.size === 'small' ? 'mr-1' : 'mr-2')
       )}></slot>
         <slot part="label" class=${cx(
         'inline-block',
@@ -281,17 +278,10 @@ export default class SdButton extends SolidElement implements SolidFormControl {
           class=${cx(
         'flex flex-auto items-center pointer-events-none',
         this.loading && 'invisible',
-        (this.circle || this.caret) && 'hidden'
+        this.circle && 'hidden',
+        slots.suffix && (this.size === 'small' ? 'ml-1' : 'ml-2')
       )}>
         </slot>
-        ${this.caret
-        ? html` <sd-icon part="caret" class=${cx(
-          'h-auto',
-          this.circle && 'hidden',
-          this.loading && 'invisible'
-        )} library="system" name="caret"></sd-icon> `
-        : ''
-      }
       ${this.loading
         ? html`<sd-spinner
           class="absolute text-md top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"

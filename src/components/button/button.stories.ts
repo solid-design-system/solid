@@ -18,8 +18,7 @@ const relevantAttributes = [
   'variant',
   'size',
   'disabled',
-  'loading',
-  'caret'
+  'loading'
 ];
 
 /**
@@ -69,23 +68,6 @@ export const Loading = {
 };
 
 /**
- * Use the `caret` attribute to add a dropdown indicator when a button will trigger a dropdown, menu, or popover.
- */
-
-export const Caret = {
-  parameters: { controls: { exclude: relevantAttributes } },
-  render: (args: any) => {
-    return renderStoryFromAttributes(
-      {
-        customElementTag: 'sd-button',
-        args: { ...args, caret: true },
-        attributes: relevantAttributes.filter((attr) => attr !== 'caret'),
-      }
-    );
-  }
-};
-
-/**
  * Use the `disabled` attribute to disable a button. Clicks will be suppressed until the disabled state is removed.
  */
 
@@ -125,7 +107,7 @@ export const Circle = {
  */
 
 export const Slots = {
-  parameters: { controls: { exclude: ['size', 'default', 'prefix', 'suffix', 'caret'] } },
+  parameters: { controls: { exclude: ['size', 'default', 'prefix', 'suffix'] } },
   render: (args: any) => {
     const icon = {
       prefix: '<sd-icon slot="prefix"  library="system" name="star-fill"></sd-icon>',
@@ -164,18 +146,7 @@ export const Slots = {
     ${renderStoryFromAttributes({ ...defaultArgs, args: { ...defaultArgs.args, prefix: '', suffix: '' } })}
   `);
 
-    // With caret
-    defaultArgs.args.caret = true;
-
-    output.push(html`
-    ${renderStoryFromAttributes({ ...defaultArgs, args: { ...defaultArgs.args }, alternativeTitle: 'size (caret=true)' })}
-    ${renderStoryFromAttributes({ ...defaultArgs, args: { ...defaultArgs.args, prefix: '' } })}
-    ${renderStoryFromAttributes({ ...defaultArgs, args: { ...defaultArgs.args, suffix: '' } })}
-    ${renderStoryFromAttributes({ ...defaultArgs, args: { ...defaultArgs.args, prefix: '', suffix: '' } })}
-  `);
-
     // With badge in default slot
-    defaultArgs.args.caret = false;
     defaultArgs.args.slot = defaultArgs.args.slot + '<sd-badge pill>99</sd-badge>';
 
     output.push(html`
