@@ -51,17 +51,13 @@ export default class SdButton extends SolidElement implements SolidFormControl {
   });
   private readonly hasSlotController = new HasSlotController(this, '[default]', 'prefix', 'suffix');
 
-  @query('.button') button: HTMLButtonElement | HTMLLinkElement;
+  @query('a, button') button: HTMLButtonElement | HTMLLinkElement;
 
   @state() invalid = false;
   @property() title = ''; // make reactive to pass through
 
-  /** The button's theme color. */
-  @property({ reflect: true }) color: 'primary' | 'success' | 'neutral' | 'warning' | 'danger' =
-    'primary';
-
   /** The button's theme variant. */
-  @property({ reflect: true }) variant: 'primary' | 'secondary' | 'tertiary' = 'secondary';
+  @property({ reflect: true }) variant: 'primary' | 'secondary' | 'tertiary' | 'cta' = 'primary';
 
   /** The button's size. */
   @property({ reflect: true }) size: 'small' | 'medium' | 'large' = 'medium';
@@ -74,9 +70,6 @@ export default class SdButton extends SolidElement implements SolidFormControl {
 
   /** Draws the button in a loading state. */
   @property({ type: Boolean, reflect: true }) loading = false;
-
-  /** Draws a pill-style button with rounded edges. */
-  @property({ type: Boolean, reflect: true }) pill = false;
 
   /**
    * Draws a circular icon button. When this attribute is present, the button expects a single `<sd-icon>` in the
@@ -234,50 +227,27 @@ export default class SdButton extends SolidElement implements SolidFormControl {
     /* eslint-disable lit/binding-positions */
     return html`
       <${tag} part="base" class=${cx(
-      'focus:focus font-medium h-varspacing leading-[calc(var(--tw-varspacing)-2px)] border button inline-flex items-stretch justify-center w-full border-solid font-semibold font-sans no-underline select-none whitespace-nowrap align-middle duration-50 transition-all duration-200 ease-in-out cursor-[inherit]',
-      this.disabled && 'disabled:disabled',
+      'focus:focus font-medium h-varspacing leading-[calc(var(--tw-varspacing)-2px)] border inline-flex items-stretch justify-center w-full font-semibold font-sans no-underline select-none whitespace-nowrap align-middle duration-50 transition duration-200 ease-in-out cursor-[inherit]',
       this.loading && 'relative cursor-wait',
+      this.disabled && 'cursor-not-allowed',
       this.circle && 'px-0 w-varspacing',
-      {
-        /* rounded */
-        pill: 'rounded-full',
-        circle: 'rounded-circle',
-        small: 'rounded-sm',
-        medium: 'rounded-md',
-        large: 'rounded-lg',
-      }[this.pill ? 'pill' : this.circle ? 'circle' : this.size],
+      /**
+       * Anatomy
+       * */
+      this.circle ? 'rounded-full' : 'rounded-md',
       {
         /* sizes, fonts */
-        small: 'text-xs varspacing-7',
-        medium: 'text-sm varspacing-10',
-        large: 'text-base varspacing-12',
+        small: 'text-sm varspacing-8 px-4 gap-1',
+        medium: 'text-base varspacing-10 px-4 gap-2',
+        large: 'text-base varspacing-12 px-4 gap-2',
       }[this.size],
-      {
-        /* main color */
-        primary: 'varcolor-primary',
-        success: 'varcolor-success',
-        neutral: 'varcolor-neutral',
-        warning: 'varcolor-warning',
-        danger: 'varcolor-danger',
-      }[this.color],
       {
         /* variants */
-        primary: 'text-white bg-varcolor-600 border border-transparent not-disabled:hover:bg-varcolor-700  not-disabled:active:bg-varcolor-800',
-        secondary: 'text-varcolor-600 border border-varcolor-600 not-disabled:hover:bg-varcolor-50 not-disabled:hover:text-varcolor-700 not-disabled:hover:border-varcolor-700 active:text-varcolor-800 active:bg-varcolor-100 active:border-varcolor-800',
-        tertiary: 'bg-varcolor-50 text-varcolor-600 border border-transparent not-disabled:hover:bg-varcolor-100 not-disabled:hover:text-varcolor-700 not-disabled:active:text-varcolor-800'
+        primary: 'text-white bg-primary border-transparent hover:bg-primary-500 hover:text-primary-100 active:bg-primary-800 active:text-primary-200 disabled:bg-neutral-500',
+        secondary: 'text-primary bg-white border-primary hover:text-primary-500 hover:bg-primary-100 hover:border-primary-500 active:text-primary-800 active:bg-primary-200 active:border-primary-800 disabled:text-neutral-500 disabled:border-neutral-500',
+        tertiary: 'text-primary bg-white border-transparent hover:text-primary-500 hover:bg-primary-100 active:text-primary-800 active:bg-primary-200 disabled:text-neutral-500',
+        cta: 'text-white bg-accent border-transparent hover:bg-accent-300 active:bg-accent-500 disabled:bg-neutral-500',
       }[this.variant],
-      slots.prefix && {
-        /* padding-left if prefix available */
-        small: 'pl-2',
-        medium: 'pl-3',
-        large: 'pl-3',
-      }[this.size],
-      (slots.suffix || this.caret) && {
-        /* padding-right if suffix or carets available */
-        small: 'pr-2',
-        medium: 'pr-3',
-        large: 'pr-3',
-      }[this.size],
     )
       }
         ?disabled=${ifDefined(isLink ? undefined : this.disabled)}
@@ -298,38 +268,26 @@ export default class SdButton extends SolidElement implements SolidFormControl {
       >
         <slot name="prefix" part="prefix" class=${cx(
         'flex flex-auto items-center pointer-events-none',
-        this.circle && 'display-none',
+        this.circle && 'hidden',
         this.loading && 'invisible'
       )}></slot>
         <slot part="label" class=${cx(
         'inline-block',
         this.loading && 'invisible',
-        slots.label && {
-          /* padding-left for label */
-          small: slots.prefix ? 'pl-2' : 'pl-3',
-          medium: slots.prefix ? 'pl-3' : 'pl-4',
-          large: slots.prefix ? 'pl-3' : 'pl-5',
-        }[this.size],
-        slots.label && {
-          /* padding-right for label */
-          small: (slots.suffix || this.caret) ? 'pr-2' : 'pr-3',
-          medium: (slots.suffix || this.caret) ? 'pr-3' : 'pr-4',
-          large: (slots.suffix || this.caret) ? 'pr-3' : 'pr-5',
-        }[this.size],
       )
       }></slot>
         <slot name="suffix"
           part="suffix"
           class=${cx(
         'flex flex-auto items-center pointer-events-none',
-        (this.circle || this.caret) && 'hidden',
-        this.loading && 'invisible'
+        this.loading && 'invisible',
+        (this.circle || this.caret) && 'hidden'
       )}>
         </slot>
         ${this.caret
         ? html` <sd-icon part="caret" class=${cx(
           'h-auto',
-          this.circle && 'display-none',
+          this.circle && 'hidden',
           this.loading && 'invisible'
         )} library="system" name="caret"></sd-icon> `
         : ''
@@ -375,7 +333,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
     * Slotted badges are positioned absolutely in the top right corner of the button.
     */
 
-    .button ::slotted(sd-badge) {
+    ::slotted(sd-badge) {
       position: absolute;
       top: 0;
       right: 0;

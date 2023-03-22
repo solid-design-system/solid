@@ -4,7 +4,7 @@
 
 @layer components {
   .focus {
-    @apply ring-2 ring-varcolor-300 ring-offset-1 outline-none;
+    @apply ring-2 ring-primary ring-offset-1 outline-none;
   }
   .disabled {
     @apply opacity-50 saturate-50 cursor-not-allowed;

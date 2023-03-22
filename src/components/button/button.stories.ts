@@ -16,11 +16,9 @@ export default {
 
 const relevantAttributes = [
   'variant',
-  'color',
   'size',
   'disabled',
   'loading',
-  'pill',
   'caret'
 ];
 
@@ -35,26 +33,7 @@ export const Default = {
 };
 
 /**
- * The button in all possible combinations of `variant` and `color` in the default `size`.
- */
-
-export const VariantAndColor = {
-  name: 'Variant × Color',
-  parameters: { controls: { exclude: ['variant', 'color'] } },
-  render: (args: any) => {
-    return renderTableStoryFromAttributes(
-      {
-        customElementTag: 'sd-button',
-        args,
-        attributeA: 'variant',
-        attributeB: 'color',
-      }
-    );
-  }
-};
-
-/**
- * The button in all possible combinations of `variant` and `size` in the default `color`.
+ * The button in all possible combinations of `variant` and `size`.
  */
 
 export const VariantAndSize = {
@@ -135,24 +114,6 @@ export const Circle = {
         customElementTag: 'sd-button',
         args: { ...args, circle: true, slot: '<sd-icon library="system" name="star-fill"></sd-icon>' },
         attributes: relevantAttributes.filter((attr) => attr !== 'circle'),
-      }
-    );
-  }
-};
-
-/**
- * Use the `pill` attribute to give buttons rounded edges.
- */
-
-
-export const Pill = {
-  parameters: { controls: { exclude: relevantAttributes } },
-  render: (args: any) => {
-    return renderStoryFromAttributes(
-      {
-        customElementTag: 'sd-button',
-        args: { ...args, pill: true },
-        attributes: relevantAttributes.filter((attr) => attr !== 'pill'),
       }
     );
   }
