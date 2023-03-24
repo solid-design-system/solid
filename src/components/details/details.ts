@@ -163,16 +163,16 @@ export default class SdDetails extends SolidElement {
       <div
         part="base"
         class=${cx(
-      'border varcolor-neutral border-varcolor-300 rounded-md bg-white overflow [overflow-anchor:none]',
+      'border border-neutral-300 bg-white overflow [overflow-anchor:none]',
       this.disabled && 'disabled',
     )}
       >
         <header
           part="header"
           id="header"
-          class=${cx('flex text-base font-bold items-center rounded-md cursor-pointer select-none px-4 py-3 focus:outline-none focus-visible:focus',
+          class=${cx('flex text-base gap-4 font-bold items-center cursor-pointer select-none px-4 py-3 focus:outline-none focus-visible:focus',
       this.disabled && 'focus-visible:outline-none shadow-none',
-      this.open ? 'bg-varcolor-100 text-varcolor-900' : 'hover:bg-varcolor-50 text-varcolor-700 bg-white')
+      this.open ? 'bg-white text-accent hover:bg-neutral-200' : 'text-primary bg-neutral-100 hover:bg-neutral-200')
       }
           role="button"
           aria-expanded=${this.open ? 'true' : 'false'}
@@ -196,7 +196,7 @@ export default class SdDetails extends SolidElement {
           </span>
         </header>
         <div part="body" class="overflow-hidden">
-          <slot part="content" id="content" class="block p-4" role="region" aria-labelledby="header"></slot>
+          <slot part="content" id="content" class="block px-4 py-6" role="region" aria-labelledby="header"></slot>
         </div>
       </div>
     `;
