@@ -28,8 +28,8 @@ export default defineConfig({
         assetFileNames: 'solid-components[extname]',
       },
       plugins: [
-        minifyHTML() as any,
-        terser({ compress: { defaults: true, passes: 2 }, mangle: true }),
+        process.env['npm_lifecycle_event'] === 'build' ? minifyHTML() as any : console.log('no minify'),
+        process.env['npm_lifecycle_event'] === 'build' ? terser({ compress: { defaults: true, passes: 2 }, mangle: true }) as any : console.log('no minify'),
       ],
     },
   },

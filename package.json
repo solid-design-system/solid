@@ -33,6 +33,7 @@
   "scripts": {
     "dev": "concurrently \"node scripts/build.js --dev\" \"pnpm storybook\" ",
     "build": "pnpm vite build && node scripts/build.js",
+    "build:watch": "pnpm vite build --watch",
     "verify": "npm run prettier:check && npm run lint && npm run build && npm run test",
     "prepublishOnly": "npm run verify",
     "prettier": "prettier --write --loglevel warn .",
@@ -41,7 +42,7 @@
     "lint:fix": "eslint src --max-warnings 0 --fix",
     "ts-check": "tsc --noEmit --project ./tsconfig.json",
     "plop": "plop --plopfile scripts/plop/plopfile.js",
-    "test": "web-test-runner --group default",
+    "test": "vite build && web-test-runner --group default",
     "test:component": "web-test-runner -- --watch --group",
     "test:watch": "web-test-runner --watch --group default",
     "storybook": "storybook dev -p 6999",
