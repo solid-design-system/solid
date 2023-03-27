@@ -3,13 +3,7 @@
 @tailwind utilities;
 
 @layer components {
-  .focus {
+  .focus-outline {
     @apply ring-2 ring-primary ring-offset-1 outline-none;
-  }
-  .disabled {
-    @apply opacity-50 saturate-50 cursor-not-allowed;
-  }
-  .disabled * {
-    @apply pointer-events-none;
   }
 }
