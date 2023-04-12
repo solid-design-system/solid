@@ -4,6 +4,7 @@ import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
 import { nothing, TemplateResult } from 'lit';
 import { html, literal, unsafeStatic } from 'lit/static-html.js';
 import { spreadProps } from '@open-wc/lit-helpers';
+import { getWcStorybookHelpers } from "wc-storybook-helpers";
 
 /**
  * Component helper function to get the slots of a component.
@@ -311,4 +312,10 @@ export const getDefaultArgs = (customElementTag: string): any => {
     ...getSlotsWithDefaults(customElementTag),
     ...getCssPropertiesForArgs(customElementTag)
   };
-};;
+};
+
+
+export const getNewDefaultArgs = (customElementTag: string): any => {
+  const { args } = getWcStorybookHelpers(customElementTag);
+  return args;
+};
