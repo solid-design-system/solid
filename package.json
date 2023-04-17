@@ -56,6 +56,7 @@
     "@floating-ui/dom": "^1.1.0",
     "@lit-labs/react": "^1.1.1",
     "@mariohamann/tailwindcss-var": "github:mariohamann/tailwindcss-var",
+    "@mariohamann/wc-storybook-helpers": "^1.1.0",
     "@open-wc/lit-helpers": "0.5.1",
     "@shoelace-style/animations": "^1.1.0",
     "@shoelace-style/localize": "^3.0.4",
@@ -69,8 +70,7 @@
     "qr-creator": "^1.0.0",
     "rollup-plugin-minify-html-literals": "^1.2.6",
     "rollup-plugin-terser": "^7.0.2",
-    "vite": "^4.0.4",
-    "wc-storybook-helpers": "^1.0.0-beta.2"
+    "vite": "^4.0.4"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.6.8",

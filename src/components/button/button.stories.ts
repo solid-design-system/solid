@@ -1,11 +1,14 @@
 import '../../solid-components';
 import { getDefaultArgs, renderDefaultStory, renderTableStoryFromAttributes, renderStoryFromAttributes } from '../../../scripts/storybook/helper';
+import { getWcStorybookHelpers } from "@mariohamann/wc-storybook-helpers";
+const { args, events, argTypes, template } = getWcStorybookHelpers("sd-button");
 import { html } from 'lit-html';
 
 export default {
   title: 'Components/sd-button',
   component: 'sd-button',
-  args: getDefaultArgs('sd-button'),
+  args,
+  argTypes
 };
 
 /**

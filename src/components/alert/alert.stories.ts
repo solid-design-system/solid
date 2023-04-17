@@ -1,12 +1,12 @@
 import '../../solid-components';
-import { getDefaultArgs, renderDefaultStory, getNewDefaultArgs } from '../../../scripts/storybook/helper';
-import { getWcStorybookHelpers } from "wc-storybook-helpers";
-const { events, argTypes, template } = getWcStorybookHelpers("sd-alert");
+import { getWcStorybookHelpers } from "@mariohamann/wc-storybook-helpers";
+const { args, events, argTypes, template } = getWcStorybookHelpers("sd-alert");
 
 export default {
   title: 'Components/sd-alert',
   component: 'sd-alert',
-  args: getNewDefaultArgs('sd-alert'),
+  // We need to show the alert as open, otherwise it won't be visible in Storybook
+  args: { ...args, 'open-attr': true },
   argTypes,
   parameters: {
     actions: {

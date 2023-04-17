@@ -1,6 +1,6 @@
 import '../../solid-components';
 import { getDefaultArgs, renderDefaultStory, getNewDefaultArgs } from '../../../scripts/storybook/helper';
-import { getWcStorybookHelpers } from "wc-storybook-helpers";
+import { getWcStorybookHelpers } from "@mariohamann/wc-storybook-helpers";
 const { events, argTypes, template } = getWcStorybookHelpers("sd-card");
 
 export default {
@@ -18,7 +18,7 @@ export default {
 export const Default = {
   render: (args: any) => {
 
-    return template(args);
+    return renderDefaultStory('sd-card', args);
   }
 
 };

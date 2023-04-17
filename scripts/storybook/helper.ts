@@ -4,7 +4,7 @@ import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
 import { nothing, TemplateResult } from 'lit';
 import { html, literal, unsafeStatic } from 'lit/static-html.js';
 import { spreadProps } from '@open-wc/lit-helpers';
-import { getWcStorybookHelpers } from "wc-storybook-helpers";
+import { getWcStorybookHelpers } from "@mariohamann/wc-storybook-helpers";
 
 /**
  * Component helper function to get the slots of a component.
@@ -141,13 +141,8 @@ export const renderCssProperties = (customElementTag: string, args: any): Templa
 };
 
 export const renderDefaultStory = (customElementTag: string, args: any): any => {
-  const tagName = unsafeStatic(customElementTag);
-  return html`
-${renderCssProperties(customElementTag, args)}
-<${tagName} ${renderPropsWithArgs(customElementTag, args)} >
-  ${renderSlotsWithArgs(customElementTag, args)}
-</${tagName}>
-  `;
+  const { template } = getWcStorybookHelpers(customElementTag);
+  return template(args);
 };
 
 export const renderInlineVariationsStory = ({
