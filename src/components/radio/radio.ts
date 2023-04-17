@@ -1,11 +1,9 @@
 import '../icon/icon';
-import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property, state } from 'lit/decorators.js';
-import { html } from 'lit';
+import { html, css } from 'lit';
 import { watch } from '../../internal/watch';
 import SolidElement from '../../internal/solid-element';
-import styles from './radio.styles';
-import type { CSSResultGroup } from 'lit';
+import cx from 'classix';
 
 /**
  * @summary Radios allow the user to select a single option from a group.
@@ -28,8 +26,6 @@ import type { CSSResultGroup } from 'lit';
  */
 @customElement('sd-radio')
 export default class SdRadio extends SolidElement {
-  static styles: CSSResultGroup = styles;
-
   @state() checked = false;
   @state() protected hasFocus = false;
 
@@ -105,26 +101,110 @@ export default class SdRadio extends SolidElement {
     return html`
       <span
         part="base"
-        class=${classMap({
-      radio: true,
-      'radio--checked': this.checked,
-      'radio--disabled': this.disabled,
-      'radio--focused': this.hasFocus,
-      'radio--small': this.size === 'small',
-      'radio--medium': this.size === 'medium',
-      'radio--large': this.size === 'large'
-    })}
+        class=${cx(
+          'radio inline-flex items-start font-[var(--sd-input-font-family)] text-[var(--sd-input-font-size-medium)] font-[var(--sd-input-font-family)] text-[var(--sd-input-label-color)] cursor-pointer align-middle',
+          this.checked && 'radio--checked',
+          this.disabled && 'opacity-50 cursor-not-allowed',
+          this.hasFocus && 'radio--focused',
+          {
+            /* sizes, fonts */
+            small: 'radio--small',
+            medium: 'radio--medium',
+            large: 'radio--large'
+          }[this.size]
+        )}
       >
-        <span part="${`control${this.checked ? ' control--checked' : ''}`}" class="radio__control">
-          ${this.checked
-        ? html` <sd-icon part="checked-icon" class="radio__checked-icon" library="system" name="radio"></sd-icon> `
-        : ''}
+        <span 
+          part="${`control${this.checked ? ' control--checked' : ''}`}"
+          class="radio__control relative inline-flex items-center justify-center rounded-circle text-transparent bg-[var(--sd-input-background-color)] h-[var(--toggle-size)] w-[var(--toggle-size)]"
+        >
+          ${this.checked ? html` <sd-icon part="checked-icon" class="radio__checked-icon" library="system" name="radio"></sd-icon> `
+            : ''}
         </span>
 
-        <slot part="label" class="radio__label"></slot>
+        <slot part="label" class="radio__label inline-block text-[var(--sd-input-label-color)] leading-[var(--toggle-size)] ms-"></slot>
       </span>
     `;
   }
+
+  /**
+   * Inherits Tailwind classes and includes additional styling.
+   */
+  static styles = [
+    ...SolidElement.styles,
+    css`
+      :host {
+        display: block;
+      }
+
+      :host(:focus-visible) {
+        outline: 0;
+      }
+
+      .radio--small {
+        --toggle-size: var(--sd-toggle-size-small);
+        font-size: var(--sd-input-font-size-small);
+      }
+
+      .radio--medium {
+        --toggle-size: var(--sd-toggle-size-medium);
+        font-size: var(--sd-input-font-size-medium);
+      }
+
+      .radio--large {
+        --toggle-size: var(--sd-toggle-size-large);
+        font-size: var(--sd-input-font-size-large);
+      }
+
+      .radio__checked-icon {
+        display: inline-flex;
+        width: var(--toggle-size);
+        height: var(--toggle-size);
+      }
+
+      .radio__control {
+        flex: 0 0 auto;
+        border: solid var(--sd-input-border-width) var(--sd-input-border-color);
+        transition: var(--sd-transition-fast) border-color, var(--sd-transition-fast) background-color,
+          var(--sd-transition-fast) color, var(--sd-transition-fast) box-shadow;
+      }
+
+      /* Hover */
+      .radio:not(.radio--checked):not(.radio--disabled) .radio__control:hover {
+        border-color: var(--sd-input-border-color-hover);
+        background-color: var(--sd-input-background-color-hover);
+      }
+
+      /* Checked */
+      .radio--checked .radio__control {
+        color: var(--sd-color-neutral-0);
+        border-color: var(--sd-color-primary-600);
+        background-color: var(--sd-color-primary-600);
+      }
+
+      /* Checked + hover */
+      .radio.radio--checked:not(.radio--disabled) .radio__control:hover {
+        border-color: var(--sd-color-primary-500);
+        background-color: var(--sd-color-primary-500);
+      }
+
+      /* Checked + focus */
+      :host(:focus-visible) .radio__control {
+        outline: var(--sd-focus-ring);
+        outline-offset: var(--sd-focus-ring-offset);
+      }
+
+      /* When the control isn't checked, hide the circle for Windows High Contrast mode a11y */
+      .radio:not(.radio--checked) svg circle {
+        opacity: 0;
+      }
+
+      .radio__label {
+        margin-inline-start: 0.5em;
+        user-select: none;
+      }
+    `
+  ];
 }
 
 declare global {
