@@ -161,7 +161,7 @@ export const renderInlineVariationsStory = ({
   return html`
   <div style="">
   ${alternativeTitle !== '' ?
-      html`<h3 style="font-size: 16px; margin-bottom: 12px; margin-top: 24px">${alternativeTitle || variation?.arg}</h3>` : ''}
+      html`<h3 style="font-size: 16px; margin-bottom: 12px; margin-top: 24px">${(alternativeTitle || variation?.arg).replace('-attr', '')}</h3>` : ''}
   ${variation?.values?.map((value: any) => {
         return html`<div style="margin-bottom: 16px; display: ${vertical ? 'block' : 'inline-block'}; margin-right: 16px">
       <p style="font-size: 12px; margin-bottom: 8px; margin-top: 0px;">
@@ -233,7 +233,7 @@ export const renderTableVariationsStory = ({
         th, td { padding: 16px; }
       </style>
       <tr>
-        <td></td><td></td><th>${alternativeTitle || variationA.arg}</th>
+        <td></td><td></td><th>${alternativeTitle || variationA.arg.replace('-attr', '')}</th>
       </tr>
       <tr>
         <td></td><td></td>${variationA.values.map((value: any) => html`<td>${value}</td>`)}
@@ -241,7 +241,7 @@ export const renderTableVariationsStory = ({
     </thead>
     <tbody>
         ${variationB.values.map((value: any) => {
-    const row = html`<tr><th>${firstRow ? variationB.arg : ''}</th><td>${value}</td>
+    const row = html`<tr><th>${firstRow ? variationB.arg.replace('-attr', '') : ''}</th><td>${value}</td>
             ${variationA.values.map((valueA: any) =>
       html`<td> ${renderDefaultStory(customElementTag, { ...args, [variationA.arg]: valueA, [variationB.arg]: value })} </td>`
     )
@@ -284,15 +284,24 @@ export const renderTableStoryFromAttributes = ({
 };
 
 export const getValuesFromAttribute = (customElementTag: string, attribute: string): any => {
-  const component = getComponentDeclaration(customElements, customElementTag);
-  const values = component.attributes.find(
-    (attr: any) => attribute?.includes(attr.name)
-  );
-  return values.enum ? values.enum : values.type === 'boolean' ? [true, false] : [];
+  if (!attribute.endsWith('-attr')) {
+    attribute = `${attribute}-attr`;
+  }
+  const { argTypes } = getWcStorybookHelpers(customElementTag);
+  if (argTypes[attribute]?.control?.type === 'boolean') {
+    console.log('boolean');
+    return [true, false];
+  }
+  else {
+    return argTypes[attribute].options;
+  }
 };
 
 export const getValuesFromAttributes = (customElementTag: string, attributes: string[]): any => {
-  return attributes.map((attribute: string) => {
+  return attributes?.map((attribute: string) => {
+    if (!attribute.endsWith('-attr')) {
+      attribute = `${attribute}-attr`;
+    }
     return {
       name: attribute,
       values: getValuesFromAttribute(customElementTag, attribute),
