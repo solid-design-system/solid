@@ -61,9 +61,11 @@ const sanitizeValue = (value) => {
   return value;
 };
 
-const sanitizeKey = (value) => {
-  value = value.replaceAll("\b", '')
-  value = value.replaceAll(",", '.')
+const sanitizeKey = (value, cssVar) => {
+
+  value = value
+    .replaceAll("\b", '')
+    .replaceAll(",", cssVar ? '\.' : '.')
   return value;
 };
 
@@ -148,7 +150,7 @@ const getSpacings = () => {
       .map(([name, value]) => ({ name, ...value })))
     .forEach(({ name, value, description }) => {
       // add the spacing to the theme
-      result[sanitizeKey(name)] = `var(--sd-spacing-${sanitizeKey(name)}, ${resolveValue(value)})${description ? ` /* ${description} */` : ''}`;
+      result[sanitizeKey(name)] = `var(--sd-spacing-${sanitizeKey(name), true}, ${resolveValue(value)})${description ? ` /* ${description} */` : ''}`;
     });
   return result;
 }
@@ -162,7 +164,7 @@ const getColors = (name, cssVariableScope) => {
       if (name === 'transparent') return;
       const color = hexToRgb(resolveValue(value)).join(' ');
       // add the background color to the theme
-      result[sanitizeValue(name)] = `rgb(var(--sd-color-${sanitizeKey(sanitizeValue(name))}, ${color}) / <alpha-value>)${description ? ` /* ${description} */` : ''}`;
+      result[sanitizeValue(name)] = `rgb(var(--sd-color-${sanitizeKey(sanitizeValue(name), true)}, ${color}) / <alpha-value>)${description ? ` /* ${description} */` : ''}`;
     });
 
   result = reformatColors(result);
@@ -180,7 +182,7 @@ const getCoreTokensByType = (tokenType, cssVariableScope) => {
     if (type === tokenType) {
       const keyWithoutUtility = key.split('-').slice(1).join('-');
       const description = obj[key]['description'];
-      result[keyWithoutUtility] = `var(--sd-${cssVariableScope}-${sanitizeKey(keyWithoutUtility)}, ${obj[key]['value']})${description ? ` /* ${description} */` : ''}`;
+      result[keyWithoutUtility] = `var(--sd-${cssVariableScope}-${sanitizeKey(keyWithoutUtility), true}, ${obj[key]['value']})${description ? ` /* ${description} */` : ''}`;
     }
   });
 
