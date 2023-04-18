@@ -1,14 +1,23 @@
 import '../../solid-components';
-import { getDefaultArgs, renderDefaultStory } from '../../../scripts/storybook/helper';
+import { storybookDefaults, storybookTemplates } from '../../../scripts/storybook/helper';
+
+const { argTypes, args } = storybookDefaults('sd-menu-item');
+const { defaultTemplate } = storybookTemplates('sd-menu-item');
 
 export default {
   title: 'Components/sd-menu-item',
   component: 'sd-menu-item',
-  args: getDefaultArgs('sd-menu-item'),
+  args,
+  argTypes,
 };
+
+
+/**
+ * Default: This shows the menu-item in its default state.
+ */
 
 export const Default = {
   render: (args: any) => {
-    return renderDefaultStory('sd-menu-item', args);
+    return defaultTemplate(args);
   }
 };

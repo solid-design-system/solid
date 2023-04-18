@@ -1,14 +1,23 @@
 import '../../solid-components';
-import { getDefaultArgs, renderDefaultStory } from '../../../scripts/storybook/helper';
+import { storybookDefaults, storybookTemplates } from '../../../scripts/storybook/helper';
+
+const { argTypes, args } = storybookDefaults('sd-relative-time');
+const { defaultTemplate } = storybookTemplates('sd-relative-time');
 
 export default {
   title: 'Components/sd-relative-time',
   component: 'sd-relative-time',
-  args: getDefaultArgs('sd-relative-time'),
+  args,
+  argTypes,
 };
+
+
+/**
+ * Default: This shows the relative-time in its default state.
+ */
 
 export const Default = {
   render: (args: any) => {
-    return renderDefaultStory('sd-relative-time', args);
+    return defaultTemplate(args);
   }
 };

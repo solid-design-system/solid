@@ -1,14 +1,23 @@
 import '../../solid-components';
-import { getDefaultArgs, renderDefaultStory } from '../../../scripts/storybook/helper';
+import { storybookDefaults, storybookTemplates } from '../../../scripts/storybook/helper';
+
+const { argTypes, args } = storybookDefaults('sd-radio');
+const { defaultTemplate } = storybookTemplates('sd-radio');
 
 export default {
   title: 'Components/sd-radio',
   component: 'sd-radio',
-  args: getDefaultArgs('sd-radio'),
+  args,
+  argTypes,
 };
+
+
+/**
+ * Default: This shows the radio in its default state.
+ */
 
 export const Default = {
   render: (args: any) => {
-    return renderDefaultStory('sd-radio', args);
+    return defaultTemplate(args);
   }
 };

@@ -1,325 +1,207 @@
-import { getComponentDeclaration } from 'cem-plugin-better-lit-types/storybook';
-import customElements from '../../dist/custom-elements.json';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
-import { nothing, TemplateResult } from 'lit';
-import { html, literal, unsafeStatic } from 'lit/static-html.js';
-import { spreadProps } from '@open-wc/lit-helpers';
+import { html } from 'lit/static-html.js';
 import { getWcStorybookHelpers } from "@mariohamann/wc-storybook-helpers";
 
 /**
- * Component helper function to get the slots of a component.
- * @param customElementTag - The tag of the custom element, e. g. `'sd-button'`.
- * @returns An array with the slots of the component
- * @example `['prefix']`
+ * Defaults you can use in your stories
  */
 
-export const getSlots = (customElementTag: string): string[] => {
-  return getComponentDeclaration(customElements, customElementTag)
-    ?.slots // Get declared attributes from the component's custom element
-    ?.map((slot: any) => { return slot.name || 'slot'; });  // If no name is given, 'slot' is used as default
-};
-
-const isRequiredSlot = (slotName: string) => {
-  const requiredSlots = ['label', '', 'slot', 'summary']; // 'slot' and '' are both the default slot.
-  return requiredSlots.includes(slotName);
-};
-
-/**
- * Get the placeholder for a slot. If it's the default slot, no placeholder is returned.
- * @param slotName - The name of the slot
- * @returns The placeholder for the slot
- * @example `<span slot="title"></span>`
- */
-
-const getSlotPlaceholder = (slotName: string) => {
-  const capitalizeFirstLetter = (string: string) => string[0].toUpperCase() + string.slice(1);
-
-  return slotName
-    ? `<span slot="${slotName}">${isRequiredSlot(slotName) ? `${capitalizeFirstLetter(slotName)} Slot` : ''}</span>`
-    : 'Default Slot';
-};
-
-
-/**
- * Used to get the slots of a component in an object including the defaults from `lit`
- * @param customElementTag - The tag of the custom element, e. g. `'sd-button'`.
- * @returns An object with the slots as keys and the default values as values
- * @example `{ title: 'Hello World' }`
- **/
-
-export const getSlotsWithDefaults = (customElementTag: string): Record<string, any> => {
-  return getComponentDeclaration(customElements, customElementTag)
-    // Get declared attributes from the component's custom element
-    ?.slots
-    // Map each attribute to an object with the name and default value
-    ?.map((slot: any) => { return { [slot.name || 'slot']: getSlotPlaceholder(slot.name) }; })
-    ?.reduce((key: any, value: any) => ({ ...key, ...value }), {});
-};
-
-// Used to spread the slots into the component
-export const renderSlotsWithArgs = (customElementTag: string, args: any): Record<string, any> => {
-  return getSlots(customElementTag)
-    ?.map((slot: any) => {
-      return args[slot] && (isRequiredSlot(slot) || args[slot] !== getSlotPlaceholder(slot)) ? unsafeHTML(args[slot]) : nothing;
-    });
-};
-
-/**
- * Gets the attributes of a custom element.
- * @param customElementTag - The tag of the custom element, e. g. `'sd-button'`.
- * @returns An array with the attributes of the component. e. g. `['title']`
- * @example `['title']`
- * @example `['title', 'disabled', 'type']`
- **/
-
-export const getProps = (customElementTag: string): string[] => {
-  return getComponentDeclaration(customElements, customElementTag)
-    ?.attributes // Get declared attributes from the component's custom element
-    ?.map((property: any) => { return property.name; });
-};
-
-/**
- * Gets attributes with default values from a custom element.
- *
- * @param customElementTag - The tag of the custom element, e. g. `'sd-button'`.
- * @returns An object with the attributes as keys and the default values as values
- * @example `{ title: 'Hello World' }`
- */
-
-export const getPropsWithDefaults = (
-  customElementTag: string
-): Record<string, any> => {
-  return getComponentDeclaration(customElements, customElementTag)
-    // Get declared attributes from the component's custom element
-    ?.attributes
-    // Map each attribute to an object with the name and default value
-    ?.map((attribute: any) => { return { [attribute.name]: attribute.default || '' }; })
-    ?.reduce((key: any, value: any) => ({ ...key, ...value }), {});
-};
-
-/**
- * Used to spread the attributes into the component
- * @param customElementTag - The tag of the custom element, e. g. `'sd-button'`.
- * @param args - The arguments passed to the story per default or by the user
- * @returns An object with the attributes as keys and the values as values
- * @example `{ title: 'Hello World by Storybook' }`
- */
-
-export const renderPropsWithArgs = (customElementTag: string, args: any): Record<string, any> => {
-  return spreadProps(getProps(customElementTag)
-    ?.map((prop: any) => { return { [prop]: args[prop] }; })
-    ?.reduce((key: any, value: any) => ({ ...key, ...value }), {}));
-};
-
-
-export const getCssProperties = (customElementTag: string): string[] => {
-  return getComponentDeclaration(customElements, customElementTag)
-    ?.cssProperties // Get declared attributes from the component's custom element
-    ?.map((slot: any) => { return slot.name || 'slot'; });  // If no name is given, 'slot' is used as default
-};
-
-export const getCssPropertiesForArgs = (
-  customElementTag: string
-): Record<string, any> => {
-  return getCssProperties(customElementTag)
-    ?.map((property: any) => { return { [property]: '' }; })
-    ?.reduce((key: any, value: any) => ({ ...key, ...value }), {});;
-};
-
-// Used to spread the slots into the component
-export const renderCssProperties = (customElementTag: string, args: any): TemplateResult => {
-  const cssPropertiesWithValues = getCssProperties(customElementTag)
-    ?.filter((prop: any) => args[prop])
-    ?.map((prop: any) => `${[prop]}: ${args[prop]}`);
-  return cssPropertiesWithValues?.length > 0
-    ? html`<style>
-  ${customElementTag}{
-    ${cssPropertiesWithValues.join(';')};
-  }
-</style>`
-    : html``;
-};
-
-export const renderDefaultStory = (customElementTag: string, args: any): any => {
-  const { template } = getWcStorybookHelpers(customElementTag);
-  return template(args);
-};
-
-export const renderInlineVariationsStory = ({
-  customElementTag,
-  args,
-  variation,
-  alternativeTitle,
-  vertical
-}: {
-  customElementTag: string,
-  args: any,
-  variation?: { arg: string, values: any[]; },
-  alternativeTitle?: string;
-  vertical?: boolean;
-}): any => {
-  return html`
-  <div style="">
-  ${alternativeTitle !== '' ?
-      html`<h3 style="font-size: 16px; margin-bottom: 12px; margin-top: 24px">${(alternativeTitle || variation?.arg).replace('-attr', '')}</h3>` : ''}
-  ${variation?.values?.map((value: any) => {
-        return html`<div style="margin-bottom: 16px; display: ${vertical ? 'block' : 'inline-block'}; margin-right: 16px">
-      <p style="font-size: 12px; margin-bottom: 8px; margin-top: 0px;">
-        ${value}
-      </p>
-      ${renderDefaultStory(customElementTag, { ...args, [variation.arg]: value })}
-    </div>`;
-      })}
-  </div>
-  `;
-};
-
-export const renderStoryFromAttributes = ({
-  customElementTag,
-  args,
-  attributes,
-  alternativeTitle,
-  vertical
-}: {
-  customElementTag: string,
-  args: any,
-  attributes: string[];
-  alternativeTitle?: string;
-  vertical?: boolean;
-}): any => {
-  return html`
-  ${getValuesFromAttributes(
-    customElementTag,
-    attributes
-  ).map((attribute: any) => {
-    return renderInlineVariationsStory(
-      {
-        customElementTag,
-        args,
-        variation: {
-          arg: attribute.name,
-          values: getValuesFromAttribute(customElementTag, attribute.name),
-        },
-        alternativeTitle: alternativeTitle === '' || alternativeTitle ? alternativeTitle : attribute.name,
-        vertical
-      }
-    );
-  })}
-  `;
-};
-
-
-export const renderTableVariationsStory = ({
-  customElementTag,
-  args,
-  variationA,
-  variationB,
-  // TODO: alternativeTitle should be part of the variation object
-  alternativeTitle
-}: {
-  customElementTag: string,
-  args: { [k: string]: any; },
-  variationA: { arg: string, values: any[]; },
-  variationB: { arg: string, values: any[]; };
-  alternativeTitle?: string;
-}): any => {
-  let firstRow = true;
-  return html`
-  <table>
-    <thead>
-      <style>
-        th { text-align: left; font-size: 16px; }
-        td { font-size: 12px; }
-        th, td { padding: 16px; }
-      </style>
-      <tr>
-        <td></td><td></td><th>${alternativeTitle || variationA.arg.replace('-attr', '')}</th>
-      </tr>
-      <tr>
-        <td></td><td></td>${variationA.values.map((value: any) => html`<td>${value}</td>`)}
-      </tr>
-    </thead>
-    <tbody>
-        ${variationB.values.map((value: any) => {
-    const row = html`<tr><th>${firstRow ? variationB.arg.replace('-attr', '') : ''}</th><td>${value}</td>
-            ${variationA.values.map((valueA: any) =>
-      html`<td> ${renderDefaultStory(customElementTag, { ...args, [variationA.arg]: valueA, [variationB.arg]: value })} </td>`
-    )
-      }
-</tr>`;
-    firstRow = false;
-    return row;
-  }
-  )}
-</tbody>
-  </table>`;
-};
-
-export const renderTableStoryFromAttributes = ({
-  customElementTag,
-  args,
-  attributeA,
-  attributeB,
-}: {
-  customElementTag: string,
-  args: any,
-  attributeA: string,
-  attributeB: string,
-}): any => {
-  return html`
-  ${renderTableVariationsStory({
-    customElementTag,
-    args,
-    variationA: {
-      arg: attributeA,
-      values: getValuesFromAttribute(customElementTag, attributeA),
-    },
-    variationB: {
-      arg: attributeB,
-      values: getValuesFromAttribute(customElementTag, attributeB),
-    }
-  }
-  )}
-  `;
-};
-
-export const getValuesFromAttribute = (customElementTag: string, attribute: string): any => {
-  if (!attribute.endsWith('-attr')) {
-    attribute = `${attribute}-attr`;
-  }
-  const { argTypes } = getWcStorybookHelpers(customElementTag);
-  if (argTypes[attribute]?.control?.type === 'boolean') {
-    console.log('boolean');
-    return [true, false];
-  }
-  else {
-    return argTypes[attribute].options;
-  }
-};
-
-export const getValuesFromAttributes = (customElementTag: string, attributes: string[]): any => {
-  return attributes?.map((attribute: string) => {
-    if (!attribute.endsWith('-attr')) {
-      attribute = `${attribute}-attr`;
-    }
-    return {
-      name: attribute,
-      values: getValuesFromAttribute(customElementTag, attribute),
-    };
-  });
-};
-
-
-export const getDefaultArgs = (customElementTag: string): any => {
+export const storybookDefaults = (customElementTag: string): any => {
+  const { args, events, argTypes } = getWcStorybookHelpers(customElementTag);
   return {
-    ...getPropsWithDefaults(customElementTag),
-    ...getSlotsWithDefaults(customElementTag),
-    ...getCssPropertiesForArgs(customElementTag)
+    args,
+    events,
+    argTypes
+  };
+};
+
+/**
+ * Small helper functions to create stories
+ */
+
+export const storybookHelpers = (customElementTag: string) => {
+  return {
+    getValuesFromAttribute: (attribute: string): any => {
+      if (!attribute.endsWith('-attr')) {
+        attribute = `${attribute}-attr`;
+      }
+      const { argTypes } = getWcStorybookHelpers(customElementTag);
+      if (argTypes[attribute]?.control?.type === 'boolean') {
+        console.log('boolean');
+        return [true, false];
+      }
+      else {
+        return argTypes[attribute].options;
+      }
+    },
+    getValuesFromAttributes: (attributes: string[]): any => {
+      return attributes?.map((attribute: string) => {
+        if (!attribute.endsWith('-attr')) {
+          attribute = `${attribute}-attr`;
+        }
+        return {
+          name: attribute,
+          values: storybookHelpers(customElementTag).getValuesFromAttribute(attribute),
+        };
+      });
+    },
   };
 };
 
 
-export const getNewDefaultArgs = (customElementTag: string): any => {
-  const { args } = getWcStorybookHelpers(customElementTag);
-  return args;
+/**
+ * Templates to create stories
+ * Dev note: We had to extract the types to a separate interface to get correct type checking
+ */
+
+type StorybookTemplates = {
+  defaultTemplate: (args: { [k: string]: any; }) => any,
+  attributesTemplate: ({
+    args,
+    attributes,
+    alternativeTitle,
+    vertical
+  }: {
+    args: any,
+    attributes: string[];
+    alternativeTitle?: string;
+    vertical?: boolean;
+  }) => any,
+  inlineVariationsTemplate: ({
+    args,
+    variation,
+    alternativeTitle,
+    vertical
+  }: {
+    args: any,
+    variation?: { arg: string, values: any[]; },
+    alternativeTitle?: string;
+    vertical?: boolean;
+  }) => any,
+  variationsToTableTemplate: ({
+    args,
+    variationA,
+    variationB,
+    alternativeTitle,
+  }: {
+    args: { [k: string]: any; };
+    variationA: { arg: string; values: any[]; };
+    variationB: { arg: string; values: any[]; };
+    alternativeTitle?: string;
+  }) => any;
+  attributeToTableTemplate: ({
+    args,
+    attributeA,
+    attributeB,
+  }: {
+    args: { [k: string]: any; };
+    attributeA: string,
+    attributeB: string,
+  }) => any;
+};
+
+/**
+ * Pre-defined templates to create stories
+ */
+
+export const storybookTemplates = (customElementTag: string): StorybookTemplates => {
+  const { template, args } = getWcStorybookHelpers(customElementTag);
+  const { getValuesFromAttribute, getValuesFromAttributes } = storybookHelpers(customElementTag);
+  return {
+    defaultTemplate: (individualArgs) => template(individualArgs || args),
+    attributesTemplate: ({
+      args,
+      attributes,
+      alternativeTitle,
+      vertical
+    }) => {
+      const { inlineVariationsTemplate } = storybookTemplates(customElementTag);
+      return html`
+  ${getValuesFromAttributes(attributes)
+          .map((attribute: any) => {
+            return inlineVariationsTemplate(
+              {
+                args,
+                variation: {
+                  arg: attribute.name,
+                  values: getValuesFromAttribute(attribute.name),
+                },
+                alternativeTitle: alternativeTitle === '' || alternativeTitle ? alternativeTitle : attribute.name,
+                vertical
+              }
+            );
+          })}
+  `;
+    },
+    inlineVariationsTemplate: ({
+      args,
+      variation,
+      alternativeTitle,
+      vertical
+    }) => {
+      return html`
+  <div style="">
+  ${alternativeTitle !== '' ?
+          html`<h3 style="font-size: 16px; margin-bottom: 12px; margin-top: 24px">${(alternativeTitle || variation?.arg).replace('-attr', '')}</h3>` : ''}
+  ${variation?.values?.map((value: any) => {
+            return html`<div style="margin-bottom: 16px; display: ${vertical ? 'block' : 'inline-block'}; margin-right: 16px">
+      <p style="font-size: 12px; margin-bottom: 8px; margin-top: 0px;">
+        ${value}
+      </p>
+      ${template({ ...args, [variation.arg]: value })}
+    </div>`;
+          })}
+  </div>
+  `;
+    },
+    variationsToTableTemplate: ({
+      args,
+      variationA,
+      variationB,
+      // TODO: alternativeTitle should be part of the variation object
+      alternativeTitle
+    }) => {
+      let firstRow = true;
+      return html`
+  <table>
+    <thead>
+      <style> th { text-align: left; font-size: 16px; } td { font-size: 12px; } th, td { padding: 16px; } </style>
+      <tr> <td></td><td></td><th>${alternativeTitle || variationA.arg.replace('-attr', '')}</th> </tr>
+      <tr> <td></td><td></td>${variationA.values.map((value: any) => html`<td>${value}</td>`)} </tr>
+    </thead>
+    <tbody>
+        ${variationB.values.map((value: any) => {
+        const row = html`<tr><th>${firstRow ? variationB.arg.replace('-attr', '') : ''}</th><td>${value}</td>
+            ${variationA.values.map((valueA: any) =>
+          html`<td> ${template({ ...args, [variationA.arg]: valueA, [variationB.arg]: value })} </td>`
+        )
+          }
+</tr>`;
+        firstRow = false;
+        return row;
+      }
+      )}
+</tbody>
+  </table>`;
+    },
+    attributeToTableTemplate: ({
+      args,
+      attributeA,
+      attributeB,
+    }) => {
+      const { variationsToTableTemplate } = storybookTemplates(customElementTag);
+
+      return html`${variationsToTableTemplate({
+        args,
+        variationA: {
+          arg: attributeA,
+          values: getValuesFromAttribute(attributeA),
+        },
+        variationB: {
+          arg: attributeB,
+          values: getValuesFromAttribute(attributeB),
+        }
+      }
+      )} `;
+    },
+  };
 };

@@ -1,14 +1,23 @@
 import '../../solid-components';
-import { getDefaultArgs, renderDefaultStory } from '../../../scripts/storybook/helper';
+import { storybookDefaults, storybookTemplates } from '../../../scripts/storybook/helper';
+
+const { argTypes, args } = storybookDefaults('sd-tag');
+const { defaultTemplate } = storybookTemplates('sd-tag');
 
 export default {
   title: 'Components/sd-tag',
   component: 'sd-tag',
-  args: getDefaultArgs('sd-tag'),
+  args,
+  argTypes,
 };
+
+
+/**
+ * Default: This shows the tag in its default state.
+ */
 
 export const Default = {
   render: (args: any) => {
-    return renderDefaultStory('sd-tag', args);
+    return defaultTemplate(args);
   }
 };

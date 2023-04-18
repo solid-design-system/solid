@@ -1,24 +1,23 @@
 import '../../solid-components';
-import { getDefaultArgs, renderDefaultStory, getNewDefaultArgs } from '../../../scripts/storybook/helper';
-import { getWcStorybookHelpers } from "@mariohamann/wc-storybook-helpers";
-const { events, argTypes, template } = getWcStorybookHelpers("sd-card");
+import { storybookDefaults, storybookTemplates } from '../../../scripts/storybook/helper';
+
+const { argTypes, args } = storybookDefaults('sd-card');
+const { defaultTemplate } = storybookTemplates('sd-card');
 
 export default {
   title: 'Components/sd-card',
   component: 'sd-card',
-  args: getNewDefaultArgs('sd-card'),
+  args,
   argTypes,
-  parameters: {
-    actions: {
-      handles: events,
-    },
-  },
 };
+
+
+/**
+ * Default: This shows the card in its default state.
+ */
 
 export const Default = {
   render: (args: any) => {
-
-    return renderDefaultStory('sd-card', args);
+    return defaultTemplate(args);
   }
-
 };

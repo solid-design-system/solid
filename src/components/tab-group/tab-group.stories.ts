@@ -1,14 +1,23 @@
 import '../../solid-components';
-import { getDefaultArgs, renderDefaultStory } from '../../../scripts/storybook/helper';
+import { storybookDefaults, storybookTemplates } from '../../../scripts/storybook/helper';
+
+const { argTypes, args } = storybookDefaults('sd-tab-group');
+const { defaultTemplate } = storybookTemplates('sd-tab-group');
 
 export default {
   title: 'Components/sd-tab-group',
   component: 'sd-tab-group',
-  args: getDefaultArgs('sd-tab-group'),
+  args,
+  argTypes,
 };
+
+
+/**
+ * Default: This shows the tab-group in its default state.
+ */
 
 export const Default = {
   render: (args: any) => {
-    return renderDefaultStory('sd-tab-group', args);
+    return defaultTemplate(args);
   }
 };

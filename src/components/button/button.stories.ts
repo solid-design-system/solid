@@ -1,14 +1,15 @@
 import '../../solid-components';
-import { renderDefaultStory, renderTableStoryFromAttributes, renderStoryFromAttributes } from '../../../scripts/storybook/helper';
-import { getWcStorybookHelpers } from "@mariohamann/wc-storybook-helpers";
-const { args, events, argTypes, template } = getWcStorybookHelpers("sd-button");
+import { storybookDefaults, storybookTemplates } from '../../../scripts/storybook/helper';
 import { html } from 'lit-html';
+
+const { argTypes, args } = storybookDefaults('sd-button');
+const { defaultTemplate, attributesTemplate, attributeToTableTemplate } = storybookTemplates('sd-button');
 
 export default {
   title: 'Components/sd-button',
   component: 'sd-button',
   args: { ...args, 'default-slot': 'Default' },
-  argTypes
+  argTypes,
 };
 
 /**
@@ -33,7 +34,7 @@ const relevantAttributes = [
 
 export const Default = {
   render: (args: any) => {
-    return renderDefaultStory('sd-button', args);
+    return defaultTemplate(args);
   }
 };
 
@@ -45,9 +46,8 @@ export const VariantAndColor = {
   name: 'Variant × Color',
   parameters: { controls: { exclude: ['variant', 'color'] } },
   render: (args: any) => {
-    return renderTableStoryFromAttributes(
+    return attributeToTableTemplate(
       {
-        customElementTag: 'sd-button',
         args,
         attributeA: 'variant',
         attributeB: 'color',
@@ -64,9 +64,8 @@ export const VariantAndSize = {
   name: 'Variant × Size',
   parameters: { controls: { exclude: ['variant', 'size'] } },
   render: (args: any) => {
-    return renderTableStoryFromAttributes(
+    return attributeToTableTemplate(
       {
-        customElementTag: 'sd-button',
         args,
         attributeA: 'variant',
         attributeB: 'size',
@@ -82,9 +81,8 @@ export const VariantAndSize = {
 export const Loading = {
   parameters: { controls: { exclude: relevantAttributes } },
   render: (args: any) => {
-    return renderStoryFromAttributes(
+    return attributesTemplate(
       {
-        customElementTag: 'sd-button',
         args: { ...args, loading: true },
         attributes: relevantAttributes.filter((attr) => attr !== 'loading'),
       }
@@ -99,9 +97,8 @@ export const Loading = {
 export const Caret = {
   parameters: { controls: { exclude: relevantAttributes } },
   render: (args: any) => {
-    return renderStoryFromAttributes(
+    return attributesTemplate(
       {
-        customElementTag: 'sd-button',
         args: { ...args, caret: true },
         attributes: relevantAttributes.filter((attr) => attr !== 'caret'),
       }
@@ -116,9 +113,8 @@ export const Caret = {
 export const Disabled = {
   parameters: { controls: { exclude: relevantAttributes } },
   render: (args: any) => {
-    return renderStoryFromAttributes(
+    return attributesTemplate(
       {
-        customElementTag: 'sd-button',
         args: { ...args, disabled: true },
         attributes: relevantAttributes.filter((attr) => attr !== 'disabled'),
       }
@@ -133,9 +129,8 @@ export const Disabled = {
 export const Circle = {
   parameters: { controls: { exclude: [...relevantAttributes, 'circle', 'default'] } },
   render: (args: any) => {
-    return renderStoryFromAttributes(
+    return attributesTemplate(
       {
-        customElementTag: 'sd-button',
         args: { ...args, circle: true, 'default-slot': '<sd-icon library="system" name="star-fill"></sd-icon>' },
         attributes: relevantAttributes.filter((attr) => attr !== 'circle'),
       }
@@ -151,9 +146,8 @@ export const Circle = {
 export const Pill = {
   parameters: { controls: { exclude: relevantAttributes } },
   render: (args: any) => {
-    return renderStoryFromAttributes(
+    return attributesTemplate(
       {
-        customElementTag: 'sd-button',
         args: { ...args, pill: true },
         attributes: relevantAttributes.filter((attr) => attr !== 'pill'),
       }
@@ -190,7 +184,6 @@ export const Slots = {
      * story and just overwrite the stuff that has to be changed.
      */
     const defaultOptions = {
-      customElementTag: 'sd-button',
       args: { ...args, ...slots },
       attributes: ['size'],
       alternativeTitle: '',
@@ -200,20 +193,20 @@ export const Slots = {
 
     // Default
     output.push(html`
-    ${renderStoryFromAttributes({ ...defaultOptions, alternativeTitle: 'size (default)' })}
-    ${renderStoryFromAttributes({ ...defaultOptions, args: { ...defaultOptions.args, 'prefix-slot': '' } })}
-    ${renderStoryFromAttributes({ ...defaultOptions, args: { ...defaultOptions.args, 'suffix-slot': '' } })}
-    ${renderStoryFromAttributes({ ...defaultOptions, args: { ...defaultOptions.args, 'prefix-slot': '', 'suffix-slot': '' } })}
+    ${attributesTemplate({ ...defaultOptions, alternativeTitle: 'size (default)' })}
+    ${attributesTemplate({ ...defaultOptions, args: { ...defaultOptions.args, 'prefix-slot': '' } })}
+    ${attributesTemplate({ ...defaultOptions, args: { ...defaultOptions.args, 'suffix-slot': '' } })}
+    ${attributesTemplate({ ...defaultOptions, args: { ...defaultOptions.args, 'prefix-slot': '', 'suffix-slot': '' } })}
   `);
 
     // With caret
     defaultOptions.args.caret = true;
 
     output.push(html`
-    ${renderStoryFromAttributes({ ...defaultOptions, args: { ...defaultOptions.args }, alternativeTitle: 'size (caret=true)' })}
-    ${renderStoryFromAttributes({ ...defaultOptions, args: { ...defaultOptions.args, 'prefix-slot': '' } })}
-    ${renderStoryFromAttributes({ ...defaultOptions, args: { ...defaultOptions.args, 'suffix-slot': '' } })}
-    ${renderStoryFromAttributes({ ...defaultOptions, args: { ...defaultOptions.args, 'prefix-slot': '', 'suffix-slot': '' } })}
+    ${attributesTemplate({ ...defaultOptions, args: { ...defaultOptions.args }, alternativeTitle: 'size (caret=true)' })}
+    ${attributesTemplate({ ...defaultOptions, args: { ...defaultOptions.args, 'prefix-slot': '' } })}
+    ${attributesTemplate({ ...defaultOptions, args: { ...defaultOptions.args, 'suffix-slot': '' } })}
+    ${attributesTemplate({ ...defaultOptions, args: { ...defaultOptions.args, 'prefix-slot': '', 'suffix-slot': '' } })}
   `);
 
     // With badge in default slot
@@ -221,10 +214,10 @@ export const Slots = {
     defaultOptions.args.slot = defaultOptions.args.slot + '<sd-badge pill>99</sd-badge>';
 
     output.push(html`
-    ${renderStoryFromAttributes({ ...defaultOptions, args: { ...defaultOptions.args }, alternativeTitle: 'size (slot contains <sd-badge>)' })}
-    ${renderStoryFromAttributes({ ...defaultOptions, args: { ...defaultOptions.args, 'prefix-slot': '' } })}
-    ${renderStoryFromAttributes({ ...defaultOptions, args: { ...defaultOptions.args, 'suffix-slot': '' } })}
-    ${renderStoryFromAttributes({ ...defaultOptions, args: { ...defaultOptions.args, 'prefix-slot': '', 'suffix-slot': '' } })}
+    ${attributesTemplate({ ...defaultOptions, args: { ...defaultOptions.args }, alternativeTitle: 'size (slot contains <sd-badge>)' })}
+    ${attributesTemplate({ ...defaultOptions, args: { ...defaultOptions.args, 'prefix-slot': '' } })}
+    ${attributesTemplate({ ...defaultOptions, args: { ...defaultOptions.args, 'suffix-slot': '' } })}
+    ${attributesTemplate({ ...defaultOptions, args: { ...defaultOptions.args, 'prefix-slot': '', 'suffix-slot': '' } })}
   `);
 
     return html`${output}`;

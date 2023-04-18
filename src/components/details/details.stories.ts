@@ -1,15 +1,28 @@
 import '../../solid-components';
-import { getDefaultArgs, renderDefaultStory, renderStoryFromAttributes } from '../../../scripts/storybook/helper';
+import { storybookDefaults, storybookTemplates } from '../../../scripts/storybook/helper';
+
+const { argTypes, args } = storybookDefaults('sd-details');
+const { defaultTemplate, attributesTemplate } = storybookTemplates('sd-details');
 
 export default {
   title: 'Components/sd-details',
   component: 'sd-details',
-  args: getDefaultArgs('sd-details'),
+  args: {
+    ...args,
+    'default-slot': '[Default] Elit occaecat exercitation ipsum veniam et cupidatat ea mollit est.',
+    'summary-slot': '<span slot="summary">[Summary] Lorem Ipsum</span>',
+  },
+  argTypes,
 };
+
+
+/**
+ * Default: This shows the details in its default state.
+ */
 
 export const Default = {
   render: (args: any) => {
-    return renderDefaultStory('sd-details', args);
+    return defaultTemplate(args);
   }
 };
 
@@ -20,9 +33,8 @@ export const Default = {
 export const Disabled = {
   parameters: { controls: { exclude: ['disabled'] } },
   render: (args: any) => {
-    return renderStoryFromAttributes(
+    return attributesTemplate(
       {
-        customElementTag: 'sd-details',
         args: { ...args, disabled: true },
         attributes: ['disabled'],
         vertical: true,
@@ -38,9 +50,8 @@ export const Disabled = {
 export const Open = {
   parameters: { controls: { exclude: 'open' } },
   render: (args: any) => {
-    return renderStoryFromAttributes(
+    return attributesTemplate(
       {
-        customElementTag: 'sd-details',
         args: args,
         attributes: ['open'],
         vertical: true,
@@ -53,7 +64,7 @@ export const Open = {
 
 /**
  * Use the expand-icon and collapse-icon slots to change the expand and collapse icons, respectively.
- * To disable the animation, override the rotate property on the summary-icon part as shown below:
+ * To disable the details, override the rotate property on the summary-icon part as shown below:
  * ```
  * sl-details.custom-icons::part(summary-icon) {
  *   rotate: none;
@@ -65,13 +76,12 @@ export const Slots = {
     controls: { exclude: ['expand-icon', 'collapse-icon'] },
   },
   render: (args: any) => {
-    return renderStoryFromAttributes(
+    return attributesTemplate(
       {
-        customElementTag: 'sd-details',
         args: {
           ...args,
-          'expand-icon': '<span slot="expand-icon">✅</span>',
-          'collapse-icon': '<span slot="collapse-icon">❎</span>'
+          'expand-icon-slot': '<span slot="expand-icon">✅</span>',
+          'collapse-icon-slot': '<span slot="collapse-icon">❎</span>'
         },
         attributes: ['open'],
         vertical: true,

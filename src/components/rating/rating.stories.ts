@@ -1,14 +1,23 @@
 import '../../solid-components';
-import { getDefaultArgs, renderDefaultStory } from '../../../scripts/storybook/helper';
+import { storybookDefaults, storybookTemplates } from '../../../scripts/storybook/helper';
+
+const { argTypes, args } = storybookDefaults('sd-rating');
+const { defaultTemplate } = storybookTemplates('sd-rating');
 
 export default {
   title: 'Components/sd-rating',
   component: 'sd-rating',
-  args: getDefaultArgs('sd-rating'),
+  args,
+  argTypes,
 };
+
+
+/**
+ * Default: This shows the rating in its default state.
+ */
 
 export const Default = {
   render: (args: any) => {
-    return renderDefaultStory('sd-rating', args);
+    return defaultTemplate(args);
   }
 };
