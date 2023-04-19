@@ -13,7 +13,7 @@ export default {
 
 
 /**
- * Default: This shows the split-panel in its default state.
+ * Default: This shows sd-split-panel in its default state.
  */
 
 export const Default = {

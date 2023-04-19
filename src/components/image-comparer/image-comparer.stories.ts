@@ -13,7 +13,7 @@ export default {
 
 
 /**
- * Default: This shows the image-comparer in its default state.
+ * Default: This shows sd-image-comparer in its default state.
  */
 
 export const Default = {

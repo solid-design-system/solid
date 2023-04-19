@@ -13,7 +13,7 @@ export default {
 
 
 /**
- * Default: This shows the radio in its default state.
+ * Default: This shows sd-radio in its default state.
  */
 
 export const Default = {

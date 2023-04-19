@@ -13,7 +13,7 @@ export default {
 
 
 /**
- * Default: This shows the badge in its default state.
+ * Default: This shows sd-badge in its default state.
  */
 
 export const Default = {

@@ -13,7 +13,7 @@ export default {
 
 
 /**
- * Default: This shows the spinner in its default state.
+ * Default: This shows sd-spinner in its default state.
  */
 
 export const Default = {

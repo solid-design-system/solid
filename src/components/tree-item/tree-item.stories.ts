@@ -13,7 +13,7 @@ export default {
 
 
 /**
- * Default: This shows the tree-item in its default state.
+ * Default: This shows sd-tree-item in its default state.
  */
 
 export const Default = {

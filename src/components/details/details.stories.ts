@@ -17,7 +17,7 @@ export default {
 
 
 /**
- * Default: This shows the details in its default state.
+ * Default: This shows sd-details in its default state.
  */
 
 export const Default = {

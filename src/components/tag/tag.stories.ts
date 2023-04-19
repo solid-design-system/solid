@@ -13,7 +13,7 @@ export default {
 
 
 /**
- * Default: This shows the tag in its default state.
+ * Default: This shows sd-tag in its default state.
  */
 
 export const Default = {

@@ -13,7 +13,7 @@ export default {
 
 
 /**
- * Default: This shows the include in its default state.
+ * Default: This shows sd-include in its default state.
  */
 
 export const Default = {

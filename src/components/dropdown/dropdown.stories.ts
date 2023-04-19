@@ -13,7 +13,7 @@ export default {
 
 
 /**
- * Default: This shows the dropdown in its default state.
+ * Default: This shows sd-dropdown in its default state.
  */
 
 export const Default = {

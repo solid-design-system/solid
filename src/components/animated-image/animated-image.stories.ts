@@ -13,7 +13,7 @@ export default {
 
 
 /**
- * Default: This shows the animated-image in its default state.
+ * Default: This shows sd-animated-image in its default state.
  */
 
 export const Default = {

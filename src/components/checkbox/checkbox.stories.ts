@@ -13,7 +13,7 @@ export default {
 
 
 /**
- * Default: This shows the checkbox in its default state.
+ * Default: This shows sd-checkbox in its default state.
  */
 
 export const Default = {

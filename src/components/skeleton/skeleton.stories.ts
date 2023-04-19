@@ -13,7 +13,7 @@ export default {
 
 
 /**
- * Default: This shows the skeleton in its default state.
+ * Default: This shows sd-skeleton in its default state.
  */
 
 export const Default = {

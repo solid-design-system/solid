@@ -13,7 +13,7 @@ export default {
 
 
 /**
- * Default: This shows the avatar in its default state.
+ * Default: This shows sd-avatar in its default state.
  */
 
 export const Default = {

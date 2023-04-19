@@ -13,7 +13,7 @@ export default {
 
 
 /**
- * Default: This shows the qr-code in its default state.
+ * Default: This shows sd-qr-code in its default state.
  */
 
 export const Default = {

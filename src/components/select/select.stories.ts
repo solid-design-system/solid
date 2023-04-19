@@ -13,7 +13,7 @@ export default {
 
 
 /**
- * Default: This shows the select in its default state.
+ * Default: This shows sd-select in its default state.
  */
 
 export const Default = {

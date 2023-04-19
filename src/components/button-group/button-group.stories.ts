@@ -13,7 +13,7 @@ export default {
 
 
 /**
- * Default: This shows the button-group in its default state.
+ * Default: This shows sd-button-group in its default state.
  */
 
 export const Default = {

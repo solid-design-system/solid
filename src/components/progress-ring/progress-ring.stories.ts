@@ -13,7 +13,7 @@ export default {
 
 
 /**
- * Default: This shows the progress-ring in its default state.
+ * Default: This shows sd-progress-ring in its default state.
  */
 
 export const Default = {

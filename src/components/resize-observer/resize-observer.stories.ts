@@ -13,7 +13,7 @@ export default {
 
 
 /**
- * Default: This shows the resize-observer in its default state.
+ * Default: This shows sd-resize-observer in its default state.
  */
 
 export const Default = {

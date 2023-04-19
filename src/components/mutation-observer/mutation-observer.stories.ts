@@ -13,7 +13,7 @@ export default {
 
 
 /**
- * Default: This shows the mutation-observer in its default state.
+ * Default: This shows sd-mutation-observer in its default state.
  */
 
 export const Default = {

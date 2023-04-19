@@ -13,7 +13,7 @@ export default {
 
 
 /**
- * Default: This shows the animation in its default state.
+ * Default: This shows sd-animation in its default state.
  */
 
 export const Default = {

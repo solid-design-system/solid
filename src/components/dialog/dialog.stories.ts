@@ -13,7 +13,7 @@ export default {
 
 
 /**
- * Default: This shows the dialog in its default state.
+ * Default: This shows sd-dialog in its default state.
  */
 
 export const Default = {

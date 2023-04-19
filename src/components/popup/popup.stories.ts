@@ -13,7 +13,7 @@ export default {
 
 
 /**
- * Default: This shows the popup in its default state.
+ * Default: This shows sd-popup in its default state.
  */
 
 export const Default = {

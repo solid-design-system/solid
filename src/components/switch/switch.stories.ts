@@ -13,7 +13,7 @@ export default {
 
 
 /**
- * Default: This shows the switch in its default state.
+ * Default: This shows sd-switch in its default state.
  */
 
 export const Default = {

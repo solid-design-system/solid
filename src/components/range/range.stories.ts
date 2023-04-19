@@ -13,7 +13,7 @@ export default {
 
 
 /**
- * Default: This shows the range in its default state.
+ * Default: This shows sd-range in its default state.
  */
 
 export const Default = {

@@ -13,7 +13,7 @@ export default {
 
 
 /**
- * Default: This shows the rating in its default state.
+ * Default: This shows sd-rating in its default state.
  */
 
 export const Default = {

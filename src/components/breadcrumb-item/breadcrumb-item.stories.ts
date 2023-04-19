@@ -13,7 +13,7 @@ export default {
 
 
 /**
- * Default: This shows the breadcrumb-item in its default state.
+ * Default: This shows sd-breadcrumb-item in its default state.
  */
 
 export const Default = {

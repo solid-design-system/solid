@@ -13,7 +13,7 @@ export default {
 
 
 /**
- * Default: This shows the input in its default state.
+ * Default: This shows sd-input in its default state.
  */
 
 export const Default = {

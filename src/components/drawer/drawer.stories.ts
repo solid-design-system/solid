@@ -13,7 +13,7 @@ export default {
 
 
 /**
- * Default: This shows the drawer in its default state.
+ * Default: This shows sd-drawer in its default state.
  */
 
 export const Default = {

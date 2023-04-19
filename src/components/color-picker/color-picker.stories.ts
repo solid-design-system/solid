@@ -13,7 +13,7 @@ export default {
 
 
 /**
- * Default: This shows the color-picker in its default state.
+ * Default: This shows sd-color-picker in its default state.
  */
 
 export const Default = {

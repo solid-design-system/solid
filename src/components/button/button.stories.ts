@@ -29,7 +29,7 @@ const relevantAttributes = [
 ];
 
 /**
- * Default: This shows the button in its default state.
+ * Default: This shows sd-button in its default state.
  */
 
 export const Default = {

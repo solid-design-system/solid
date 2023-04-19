@@ -13,7 +13,7 @@ export default {
 
 
 /**
- * Default: This shows the progress-bar in its default state.
+ * Default: This shows sd-progress-bar in its default state.
  */
 
 export const Default = {

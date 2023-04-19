@@ -13,7 +13,7 @@ export default {
 
 
 /**
- * Default: This shows the relative-time in its default state.
+ * Default: This shows sd-relative-time in its default state.
  */
 
 export const Default = {

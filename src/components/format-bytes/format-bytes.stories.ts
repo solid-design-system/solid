@@ -13,7 +13,7 @@ export default {
 
 
 /**
- * Default: This shows the format-bytes in its default state.
+ * Default: This shows sd-format-bytes in its default state.
  */
 
 export const Default = {

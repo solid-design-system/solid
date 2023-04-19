@@ -13,7 +13,7 @@ export default {
 
 
 /**
- * Default: This shows the tooltip in its default state.
+ * Default: This shows sd-tooltip in its default state.
  */
 
 export const Default = {

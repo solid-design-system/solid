@@ -13,7 +13,7 @@ export default {
 
 
 /**
- * Default: This shows the tab-group in its default state.
+ * Default: This shows sd-tab-group in its default state.
  */
 
 export const Default = {

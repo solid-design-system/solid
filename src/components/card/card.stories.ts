@@ -13,7 +13,7 @@ export default {
 
 
 /**
- * Default: This shows the card in its default state.
+ * Default: This shows sd-card in its default state.
  */
 
 export const Default = {

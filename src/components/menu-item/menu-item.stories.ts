@@ -13,7 +13,7 @@ export default {
 
 
 /**
- * Default: This shows the menu-item in its default state.
+ * Default: This shows sd-menu-item in its default state.
  */
 
 export const Default = {

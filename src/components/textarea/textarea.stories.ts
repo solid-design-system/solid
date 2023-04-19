@@ -13,7 +13,7 @@ export default {
 
 
 /**
- * Default: This shows the textarea in its default state.
+ * Default: This shows sd-textarea in its default state.
  */
 
 export const Default = {

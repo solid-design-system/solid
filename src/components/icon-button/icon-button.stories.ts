@@ -13,7 +13,7 @@ export default {
 
 
 /**
- * Default: This shows the icon-button in its default state.
+ * Default: This shows sd-icon-button in its default state.
  */
 
 export const Default = {
