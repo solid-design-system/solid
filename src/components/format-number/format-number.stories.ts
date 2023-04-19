@@ -1,14 +1,23 @@
 import '../../solid-components';
-import { getDefaultArgs, renderDefaultStory } from '../../../scripts/storybook/helper';
+import { storybookDefaults, storybookTemplates } from '../../../scripts/storybook/helper';
+
+const { argTypes, args } = storybookDefaults('sd-format-number');
+const { defaultTemplate } = storybookTemplates('sd-format-number');
 
 export default {
   title: 'Components/sd-format-number',
   component: 'sd-format-number',
-  args: getDefaultArgs('sd-format-number'),
+  args,
+  argTypes,
 };
+
+
+/**
+ * Default: This shows sd-format-number in its default state.
+ */
 
 export const Default = {
   render: (args: any) => {
-    return renderDefaultStory('sd-format-number', args);
+    return defaultTemplate(args);
   }
 };

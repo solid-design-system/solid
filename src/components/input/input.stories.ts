@@ -1,14 +1,23 @@
 import '../../solid-components';
-import { getDefaultArgs, renderDefaultStory } from '../../../scripts/storybook/helper';
+import { storybookDefaults, storybookTemplates } from '../../../scripts/storybook/helper';
+
+const { argTypes, args } = storybookDefaults('sd-input');
+const { defaultTemplate } = storybookTemplates('sd-input');
 
 export default {
   title: 'Components/sd-input',
   component: 'sd-input',
-  args: getDefaultArgs('sd-input'),
+  args,
+  argTypes,
 };
+
+
+/**
+ * Default: This shows sd-input in its default state.
+ */
 
 export const Default = {
   render: (args: any) => {
-    return renderDefaultStory('sd-input', args);
+    return defaultTemplate(args);
   }
 };

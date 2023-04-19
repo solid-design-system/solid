@@ -1,14 +1,23 @@
 import '../../solid-components';
-import { getDefaultArgs, renderDefaultStory } from '../../../scripts/storybook/helper';
+import { storybookDefaults, storybookTemplates } from '../../../scripts/storybook/helper';
+
+const { argTypes, args } = storybookDefaults('sd-format-bytes');
+const { defaultTemplate } = storybookTemplates('sd-format-bytes');
 
 export default {
   title: 'Components/sd-format-bytes',
   component: 'sd-format-bytes',
-  args: getDefaultArgs('sd-format-bytes'),
+  args,
+  argTypes,
 };
+
+
+/**
+ * Default: This shows sd-format-bytes in its default state.
+ */
 
 export const Default = {
   render: (args: any) => {
-    return renderDefaultStory('sd-format-bytes', args);
+    return defaultTemplate(args);
   }
 };
