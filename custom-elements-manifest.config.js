@@ -1,7 +1,6 @@
 import { generateCustomData } from 'cem-plugin-vs-code-custom-data-generator';
 import { parse } from 'comment-parser';
 import { pascalCase } from 'pascal-case';
-import BetterLitTypesPlugin from 'cem-plugin-better-lit-types';
 import commandLineArgs from 'command-line-args';
 import fs from 'fs';
 
