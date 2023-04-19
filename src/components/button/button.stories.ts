@@ -1,14 +1,15 @@
 import '../../solid-components';
-import { storybookDefaults, storybookTemplates } from '../../../scripts/storybook/helper';
+import { storybookDefaults, storybookTemplates, storybookHelpers } from '../../../scripts/storybook/helper';
 import { html } from 'lit-html';
 
-const { argTypes, args } = storybookDefaults('sd-button');
+const { argTypes } = storybookDefaults('sd-button');
 const { defaultTemplate, attributesTemplate, attributeToTableTemplate } = storybookTemplates('sd-button');
+const { overrideArgs } = storybookHelpers('sd-button');
 
 export default {
   title: 'Components/sd-button',
   component: 'sd-button',
-  args: { ...args, 'default-slot': 'Default' },
+  args: overrideArgs({ slots: { default: 'Default' } }),
   argTypes,
 };
 
@@ -127,12 +128,12 @@ export const Disabled = {
  */
 
 export const Circle = {
-  parameters: { controls: { exclude: [...relevantAttributes, 'circle', 'default'] } },
+  parameters: { controls: { exclude: [...relevantAttributes, 'circle', 'default', 'caret'] } },
   render: (args: any) => {
     return attributesTemplate(
       {
         args: { ...args, circle: true, 'default-slot': '<sd-icon library="system" name="star-fill"></sd-icon>' },
-        attributes: relevantAttributes.filter((attr) => attr !== 'circle'),
+        attributes: relevantAttributes.filter((attr) => attr !== 'circle' || 'caret'),
       }
     );
   }
@@ -163,20 +164,27 @@ export const Pill = {
 export const Slots = {
   parameters: { controls: { exclude: ['size', 'default', 'prefix', 'suffix', 'caret'] } },
   render: (args: any) => {
-    const icon = {
-      'prefix': '<sd-icon slot="prefix"  library="system" name="star-fill"></sd-icon>',
-      'suffix': '<sd-icon slot="suffix"  library="system" name="star-fill"></sd-icon>',
-    };
-
     /**
      * Those slots are relevant for the stories in terms of design variations.
      * To make story creation faster and as there are lots of them, it is easier to
      * define them here and use it later.
      */
-    const slots = {
-      'prefix-slot': icon['prefix'],
-      'suffix-slot': icon['suffix'],
-      'slot-slot': '&lt;slot&gt;',
+    const getSlots = (selection: ('prefix' | 'suffix' | 'default')[], badge?: boolean) => {
+      const slots = {
+        'prefix': '<sd-icon slot="prefix"  library="system" name="star-fill"></sd-icon>',
+        'suffix': '<sd-icon slot="suffix"  library="system" name="star-fill"></sd-icon>',
+        'default': badge ? '&lt;slot&gt;<sd-badge pill>99</sd-badge>' : '&lt;slot&gt;',
+      };
+
+      // conditionally add slots if they are in selection
+      const selectedSlots = selection.reduce((acc, slot) => {
+        acc[slot] = slots[slot];
+        return acc;
+      }, {});
+
+      console.log({ selection, selectedSlots }, overrideArgs({ slots: selectedSlots }, args));
+
+      return overrideArgs({ slots: selectedSlots });
     };
 
     /**
@@ -184,7 +192,6 @@ export const Slots = {
      * story and just overwrite the stuff that has to be changed.
      */
     const defaultOptions = {
-      args: { ...args, ...slots },
       attributes: ['size'],
       alternativeTitle: '',
     };
@@ -193,31 +200,26 @@ export const Slots = {
 
     // Default
     output.push(html`
-    ${attributesTemplate({ ...defaultOptions, alternativeTitle: 'size (default)' })}
-    ${attributesTemplate({ ...defaultOptions, args: { ...defaultOptions.args, 'prefix-slot': '' } })}
-    ${attributesTemplate({ ...defaultOptions, args: { ...defaultOptions.args, 'suffix-slot': '' } })}
-    ${attributesTemplate({ ...defaultOptions, args: { ...defaultOptions.args, 'prefix-slot': '', 'suffix-slot': '' } })}
+    ${attributesTemplate({ ...defaultOptions, args: getSlots(['prefix', 'suffix', 'default']), alternativeTitle: 'size (default)' })}
+    ${attributesTemplate({ ...defaultOptions, args: getSlots(['suffix', 'default']) })}
+    ${attributesTemplate({ ...defaultOptions, args: getSlots(['prefix', 'default']) })}
+    ${attributesTemplate({ ...defaultOptions, args: getSlots(['default']) })}
   `);
 
     // With caret
-    defaultOptions.args.caret = true;
-
     output.push(html`
-    ${attributesTemplate({ ...defaultOptions, args: { ...defaultOptions.args }, alternativeTitle: 'size (caret=true)' })}
-    ${attributesTemplate({ ...defaultOptions, args: { ...defaultOptions.args, 'prefix-slot': '' } })}
-    ${attributesTemplate({ ...defaultOptions, args: { ...defaultOptions.args, 'suffix-slot': '' } })}
-    ${attributesTemplate({ ...defaultOptions, args: { ...defaultOptions.args, 'prefix-slot': '', 'suffix-slot': '' } })}
+    ${attributesTemplate({ ...defaultOptions, args: overrideArgs({ attributes: { caret: true } }, getSlots(['prefix', 'suffix', 'default'])), alternativeTitle: 'size (caret=true)' })}
+    ${attributesTemplate({ ...defaultOptions, args: overrideArgs({ attributes: { caret: true } }, getSlots(['suffix', 'default'])) })}
+    ${attributesTemplate({ ...defaultOptions, args: overrideArgs({ attributes: { caret: true } }, getSlots(['prefix', 'default'])) })}
+    ${attributesTemplate({ ...defaultOptions, args: overrideArgs({ attributes: { caret: true } }, getSlots(['default'])) })}
   `);
 
-    // With badge in default slot
-    defaultOptions.args.caret = false;
-    defaultOptions.args.slot = defaultOptions.args.slot + '<sd-badge pill>99</sd-badge>';
-
+    //   With badge in default slot
     output.push(html`
-    ${attributesTemplate({ ...defaultOptions, args: { ...defaultOptions.args }, alternativeTitle: 'size (slot contains <sd-badge>)' })}
-    ${attributesTemplate({ ...defaultOptions, args: { ...defaultOptions.args, 'prefix-slot': '' } })}
-    ${attributesTemplate({ ...defaultOptions, args: { ...defaultOptions.args, 'suffix-slot': '' } })}
-    ${attributesTemplate({ ...defaultOptions, args: { ...defaultOptions.args, 'prefix-slot': '', 'suffix-slot': '' } })}
+    ${attributesTemplate({ ...defaultOptions, args: getSlots(['prefix', 'suffix', 'default'], true), alternativeTitle: 'size (slot contains <sd-badge>)' })}
+    ${attributesTemplate({ ...defaultOptions, args: getSlots(['suffix', 'default'], true) })}
+    ${attributesTemplate({ ...defaultOptions, args: getSlots(['prefix', 'default'], true) })}
+    ${attributesTemplate({ ...defaultOptions, args: getSlots(['default'], true) })}
   `);
 
     return html`${output}`;
