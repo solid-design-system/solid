@@ -1,14 +1,23 @@
 import '../../solid-components';
-import { getDefaultArgs, renderDefaultStory } from '../../../scripts/storybook/helper';
+import { storybookDefaults, storybookTemplates } from '../../../scripts/storybook/helper';
+
+const { argTypes, args } = storybookDefaults('sd-textarea');
+const { defaultTemplate } = storybookTemplates('sd-textarea');
 
 export default {
   title: 'Components/sd-textarea',
   component: 'sd-textarea',
-  args: getDefaultArgs('sd-textarea'),
+  args,
+  argTypes,
 };
+
+
+/**
+ * Default: This shows sd-textarea in its default state.
+ */
 
 export const Default = {
   render: (args: any) => {
-    return renderDefaultStory('sd-textarea', args);
+    return defaultTemplate(args);
   }
 };

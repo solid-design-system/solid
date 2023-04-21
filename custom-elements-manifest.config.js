@@ -1,7 +1,6 @@
 import { generateCustomData } from 'cem-plugin-vs-code-custom-data-generator';
 import { parse } from 'comment-parser';
 import { pascalCase } from 'pascal-case';
-import BetterLitTypesPlugin from 'cem-plugin-better-lit-types';
 import commandLineArgs from 'command-line-args';
 import fs from 'fs';
 
@@ -26,11 +25,21 @@ function replace(string, terms) {
   return string;
 }
 
+function isQueryDecorator(decorator) {
+  return decorator.name === 'query';
+}
+
+function markMemberAsPrivate(member) {
+  if (member.decorators?.some(isQueryDecorator)) {
+    member.privacy = 'private';
+  }
+}
+
 export default {
   globs: ['src/components/**/*.ts'],
   exclude: ['**/*.styles.ts', '**/*.test.ts', '**/*.stories.ts'],
   plugins: [
-    BetterLitTypesPlugin,
+    // BetterLitTypesPlugin,
     // Append package data
     {
       name: 'solid-package-data',
@@ -38,92 +47,105 @@ export default {
         customElementsManifest.package = { name, description, version, author, homepage, license };
       }
     },
+    {
+      name: 'remove-html-members',
+      moduleLinkPhase({ moduleDoc, customElementsManifest }) {
+        moduleDoc.declarations?.forEach((declaration) => {
+          declaration.members = declaration.members?.filter((member) => {
+            const typeText = member.type?.text || '';
+            const types = typeText.split('|').map((type) => type.trim());
+
+            return !types.some((type) => type.startsWith('HTML'));
+          });
+        });
+      },
+    },
 
     // Parse custom jsDoc tags
-    {
-      name: 'solid-custom-tags',
-      analyzePhase({ ts, node, moduleDoc }) {
-        switch (node.kind) {
-          case ts.SyntaxKind.ClassDeclaration: {
-            const className = node.name.getText();
-            const classDoc = moduleDoc?.declarations?.find(declaration => declaration.name === className);
-            const customTags = ['animation', 'dependency', 'documentation', 'since', 'status', 'title'];
-            let customComments = '/**';
+    // {
+    //   name: 'solid-custom-tags',
+    //   analyzePhase({ ts, node, moduleDoc }) {
+    //     switch (node.kind) {
+    //       case ts.SyntaxKind.ClassDeclaration: {
+    //         const className = node.name.getText();
+    //         const classDoc = moduleDoc?.declarations?.find(declaration => declaration.name === className);
+    //         const customTags = ['animation', 'dependency', 'documentation', 'since', 'status', 'title'];
+    //         let customComments = '/**';
 
-            node.jsDoc?.forEach(jsDoc => {
-              jsDoc?.tags?.forEach(tag => {
-                const tagName = tag.tagName.getText();
+    //         node.jsDoc?.forEach(jsDoc => {
+    //           jsDoc?.tags?.forEach(tag => {
+    //             const tagName = tag.tagName.getText();
 
-                if (customTags.includes(tagName)) {
-                  customComments += `\n * @${tagName} ${tag.comment}`;
-                }
-              });
-            });
+    //             if (customTags.includes(tagName)) {
+    //               customComments += `\n * @${tagName} ${tag.comment}`;
+    //             }
+    //           });
+    //         });
 
-            const parsed = parse(`${customComments}\n */`);
-            parsed[0].tags?.forEach(t => {
-              switch (t.tag) {
-                // Animations
-                case 'animation':
-                  if (!Array.isArray(classDoc['animations'])) {
-                    classDoc['animations'] = [];
-                  }
-                  classDoc['animations'].push({
-                    name: t.name,
-                    description: noDash(t.description)
-                  });
-                  break;
+    //         const parsed = parse(`${customComments}\n */`);
+    //         parsed[0].tags?.forEach(t => {
+    //           switch (t.tag) {
+    //             // Animations
+    //             case 'animation':
+    //               if (!Array.isArray(classDoc['animations'])) {
+    //                 classDoc['animations'] = [];
+    //               }
+    //               classDoc['animations'].push({
+    //                 name: t.name,
+    //                 description: noDash(t.description)
+    //               });
+    //               break;
 
-                // Dependencies
-                case 'dependency':
-                  if (!Array.isArray(classDoc['dependencies'])) {
-                    classDoc['dependencies'] = [];
-                  }
-                  classDoc['dependencies'].push(t.name);
-                  break;
+    //             // Dependencies
+    //             case 'dependency':
+    //               if (!Array.isArray(classDoc['dependencies'])) {
+    //                 classDoc['dependencies'] = [];
+    //               }
+    //               classDoc['dependencies'].push(t.name);
+    //               break;
 
-                // Value-only metadata tags
-                case 'documentation':
-                case 'since':
-                case 'status':
-                case 'title':
-                  classDoc[t.tag] = t.name;
-                  break;
+    //             // Value-only metadata tags
+    //             case 'documentation':
+    //             case 'since':
+    //             case 'status':
+    //             case 'title':
+    //               classDoc[t.tag] = t.name;
+    //               break;
 
-                // All other tags
-                default:
-                  if (!Array.isArray(classDoc[t.tag])) {
-                    classDoc[t.tag] = [];
-                  }
+    //             // All other tags
+    //             default:
+    //               if (!Array.isArray(classDoc[t.tag])) {
+    //                 classDoc[t.tag] = [];
+    //               }
 
-                  classDoc[t.tag].push({
-                    name: t.name,
-                    description: t.description,
-                    type: t.type || undefined
-                  });
-              }
-            });
-          }
-        }
-      }
-    },
-    {
-      name: 'solid-react-event-names',
-      analyzePhase({ ts, node, moduleDoc }) {
-        switch (node.kind) {
-          case ts.SyntaxKind.ClassDeclaration: {
-            const className = node.name.getText();
-            const classDoc = moduleDoc?.declarations?.find(declaration => declaration.name === className);
+    //               classDoc[t.tag].push({
+    //                 name: t.name,
+    //                 description: t.description,
+    //                 type: t.type || undefined
+    //               });
+    //           }
+    //         });
+    //       }
+    //     }
+    //   }
+    // },
+    // {
+    // name: 'solid-react-event-names',
+    // analyzePhase({ ts, node, moduleDoc }) {
+    // switch (node.kind) {
+    // case ts.SyntaxKind.ClassDeclaration: {
+    // const className = node.name.getText();
+    // const classDoc = moduleDoc?.declarations?.find(declaration => declaration.name === className);
 
-            if (classDoc?.events) {
-              classDoc.events.forEach(event => {
-                event.reactName = `on${pascalCase(event.name)}`;
-              });
-            }
-          }
-        }
-      }
-    },
+    // if (classDoc?.events) {
+    // classDoc.events.forEach(event => {
+    // event.reactName = `on${pascalCase(event.name)}`;
+    // });
+    // }
+    // }
+    // }
+    // }
+    // },
     {
       name: 'solid-translate-module-paths',
       packageLinkPhase({ customElementsManifest }) {

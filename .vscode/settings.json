@@ -3,5 +3,9 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
+  },
+  "tailwindCSS.experimental.classRegex": ["([a-zA-Z0-9\\-:]+)"],
+  "editor.quickSuggestions": {
+    "strings": true
   }
 }

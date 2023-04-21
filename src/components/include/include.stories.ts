@@ -1,13 +1,23 @@
 import '../../solid-components';
-import { getDefaultArgs, renderDefaultStory } from '../../../scripts/storybook/helper';
+import { storybookDefaults, storybookTemplates } from '../../../scripts/storybook/helper';
+
+const { argTypes, args } = storybookDefaults('sd-include');
+const { defaultTemplate } = storybookTemplates('sd-include');
 
 export default {
   title: 'Components/sd-include',
   component: 'sd-include',
+  args,
+  argTypes,
 };
 
-export const Default = (args: any) => {
-  return renderDefaultStory('sd-include', args);
-};
 
-Default.args = { ...getDefaultArgs('sd-include') };
+/**
+ * Default: This shows sd-include in its default state.
+ */
+
+export const Default = {
+  render: (args: any) => {
+    return defaultTemplate(args);
+  }
+};
