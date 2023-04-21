@@ -9,8 +9,8 @@ export default {
   component: 'sd-details',
   args: {
     ...args,
-    'default-slot': '[Default] Elit occaecat exercitation ipsum veniam et cupidatat ea mollit est.',
-    'summary-slot': '<span slot="summary">[Summary] Lorem Ipsum</span>',
+    'default-slot': '<slot-comp></slot-comp>',
+    'summary-slot': '<span slot="summary">Summary Slot</span>',
   },
   argTypes,
 };

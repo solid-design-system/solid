@@ -1,13 +1,36 @@
 <script>
   window.global = window;
- document.documentElement.setAttribute('lang', 'en')
+  document.documentElement.setAttribute('lang', 'en');
 </script>
 <style>
   body {
-    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
+      Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   }
 
   *:not(:defined) {
     visibility: hidden;
+  }
+  slot-comp {
+    box-sizing: border-box; /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+    border: 1px dashed #9747ff;
+    color: #9747ff;
+    font-size: 14px;
+    border-radius: 6px; /* Inside auto layout */
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+    font-weight: bold;
+    height: var(--slot-height, 64px);
+    line-height: var(--slot-height, 64px); /* same as height! */
+    visibility: visible !important;
+  }
+  slot-comp::before {
+    content: var(--slot-content, 'Replace this slot');
   }
 </style>
