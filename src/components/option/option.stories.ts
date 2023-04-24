@@ -1,14 +1,23 @@
 import '../../solid-components';
-import { getDefaultArgs, renderDefaultStory } from '../../../scripts/storybook/helper';
+import { storybookDefaults, storybookTemplates } from '../../../scripts/storybook/helper';
+
+const { argTypes, args } = storybookDefaults('sd-option');
+const { defaultTemplate } = storybookTemplates('sd-option');
 
 export default {
   title: 'Components/sd-option',
   component: 'sd-option',
-  args: getDefaultArgs('sd-option'),
+  args,
+  argTypes,
 };
+
+
+/**
+ * Default: This shows sd-option in its default state.
+ */
 
 export const Default = {
   render: (args: any) => {
-    return renderDefaultStory('sd-option', args);
+    return defaultTemplate(args);
   }
 };

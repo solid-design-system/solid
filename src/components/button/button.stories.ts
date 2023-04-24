@@ -1,11 +1,16 @@
 import '../../solid-components';
-import { getDefaultArgs, renderDefaultStory, renderTableStoryFromAttributes, renderStoryFromAttributes } from '../../../scripts/storybook/helper';
+import { storybookDefaults, storybookTemplates, storybookHelpers } from '../../../scripts/storybook/helper';
 import { html } from 'lit-html';
+
+const { argTypes } = storybookDefaults('sd-button');
+const { defaultTemplate, attributesTemplate, attributeToTableTemplate } = storybookTemplates('sd-button');
+const { overrideArgs } = storybookHelpers('sd-button');
 
 export default {
   title: 'Components/sd-button',
   component: 'sd-button',
-  args: getDefaultArgs('sd-button'),
+  args: overrideArgs({ slots: { default: 'Default' } }),
+  argTypes,
 };
 
 /**
@@ -22,26 +27,25 @@ const relevantAttributes = [
 ];
 
 /**
- * Default: This shows the button in its default state.
+ * Default: This shows sd-button in its default state.
  */
 
 export const Default = {
   render: (args: any) => {
-    return renderDefaultStory('sd-button', args);
+    return defaultTemplate(args);
   }
 };
 
 /**
- * The button in all possible combinations of `variant` and `size`.
+ * The button in all possible combinations of `variant` and `size` in the default `color`.
  */
 
 export const VariantAndSize = {
   name: 'Variant × Size',
   parameters: { controls: { exclude: ['variant', 'size'] } },
   render: (args: any) => {
-    return renderTableStoryFromAttributes(
+    return attributeToTableTemplate(
       {
-        customElementTag: 'sd-button',
         args,
         attributeA: 'variant',
         attributeB: 'size',
@@ -57,9 +61,8 @@ export const VariantAndSize = {
 export const Loading = {
   parameters: { controls: { exclude: relevantAttributes } },
   render: (args: any) => {
-    return renderStoryFromAttributes(
+    return attributesTemplate(
       {
-        customElementTag: 'sd-button',
         args: { ...args, loading: true },
         attributes: relevantAttributes.filter((attr) => attr !== 'loading'),
       }
@@ -74,9 +77,8 @@ export const Loading = {
 export const Disabled = {
   parameters: { controls: { exclude: relevantAttributes } },
   render: (args: any) => {
-    return renderStoryFromAttributes(
+    return attributesTemplate(
       {
-        customElementTag: 'sd-button',
         args: { ...args, disabled: true },
         attributes: relevantAttributes.filter((attr) => attr !== 'disabled'),
       }
@@ -89,13 +91,12 @@ export const Disabled = {
  */
 
 export const Circle = {
-  parameters: { controls: { exclude: [...relevantAttributes, 'circle'] } },
+  parameters: { controls: { exclude: [...relevantAttributes, 'circle', 'default', 'caret'] } },
   render: (args: any) => {
-    return renderStoryFromAttributes(
+    return attributesTemplate(
       {
-        customElementTag: 'sd-button',
-        args: { ...args, circle: true, slot: '<sd-icon library="system" name="star-fill"></sd-icon>' },
-        attributes: relevantAttributes.filter((attr) => attr !== 'circle'),
+        args: { ...args, circle: true, 'default-slot': '<sd-icon library="system" name="star-fill"></sd-icon>' },
+        attributes: relevantAttributes.filter((attr) => attr !== 'circle' || 'caret'),
       }
     );
   }
@@ -109,29 +110,34 @@ export const Circle = {
 export const Slots = {
   parameters: { controls: { exclude: ['size', 'default', 'prefix', 'suffix'] } },
   render: (args: any) => {
-    const icon = {
-      prefix: '<sd-icon slot="prefix"  library="system" name="star-fill"></sd-icon>',
-      suffix: '<sd-icon slot="suffix"  library="system" name="star-fill"></sd-icon>',
-    };
-
     /**
      * Those slots are relevant for the stories in terms of design variations.
      * To make story creation faster and as there are lots of them, it is easier to
      * define them here and use it later.
      */
-    const slots = {
-      prefix: icon['prefix'],
-      suffix: icon['suffix'],
-      slot: '&lt;slot&gt;',
+    const getSlots = (selection: ('prefix' | 'suffix' | 'default')[], badge?: boolean) => {
+      const slots = {
+        'prefix': '<sd-icon slot="prefix"  library="system" name="star-fill"></sd-icon>',
+        'suffix': '<sd-icon slot="suffix"  library="system" name="star-fill"></sd-icon>',
+        'default': badge ? '&lt;slot&gt;<sd-badge pill>99</sd-badge>' : '&lt;slot&gt;',
+      };
+
+      // conditionally add slots if they are in selection
+      const selectedSlots = selection.reduce((acc, slot) => {
+        acc[slot] = slots[slot];
+        return acc;
+      }, {});
+
+      console.log({ selection, selectedSlots }, overrideArgs({ slots: selectedSlots }, args));
+
+      return overrideArgs({ slots: selectedSlots });
     };
 
     /**
      * We're setting default args here, so we don't have to repeat them in every
      * story and just overwrite the stuff that has to be changed.
      */
-    const defaultArgs = {
-      customElementTag: 'sd-button',
-      args: { ...args, ...slots },
+    const defaultOptions = {
       attributes: ['size'],
       alternativeTitle: '',
     };
@@ -140,20 +146,17 @@ export const Slots = {
 
     // Default
     output.push(html`
-    ${renderStoryFromAttributes({ ...defaultArgs, alternativeTitle: 'size (default)' })}
-    ${renderStoryFromAttributes({ ...defaultArgs, args: { ...defaultArgs.args, prefix: '' } })}
-    ${renderStoryFromAttributes({ ...defaultArgs, args: { ...defaultArgs.args, suffix: '' } })}
-    ${renderStoryFromAttributes({ ...defaultArgs, args: { ...defaultArgs.args, prefix: '', suffix: '' } })}
+    ${attributesTemplate({ ...defaultOptions, args: getSlots(['prefix', 'suffix', 'default']), alternativeTitle: 'size (default)' })}
+    ${attributesTemplate({ ...defaultOptions, args: getSlots(['suffix', 'default']) })}
+    ${attributesTemplate({ ...defaultOptions, args: getSlots(['prefix', 'default']) })}
+    ${attributesTemplate({ ...defaultOptions, args: getSlots(['default']) })}
   `);
 
-    // With badge in default slot
-    defaultArgs.args.slot = defaultArgs.args.slot + '<sd-badge pill>99</sd-badge>';
-
     output.push(html`
-    ${renderStoryFromAttributes({ ...defaultArgs, args: { ...defaultArgs.args }, alternativeTitle: 'size (slot contains <sd-badge>)' })}
-    ${renderStoryFromAttributes({ ...defaultArgs, args: { ...defaultArgs.args, prefix: '' } })}
-    ${renderStoryFromAttributes({ ...defaultArgs, args: { ...defaultArgs.args, suffix: '' } })}
-    ${renderStoryFromAttributes({ ...defaultArgs, args: { ...defaultArgs.args, prefix: '', suffix: '' } })}
+    ${attributesTemplate({ ...defaultOptions, args: getSlots(['prefix', 'suffix', 'default'], true), alternativeTitle: 'size (slot contains <sd-badge>)' })}
+    ${attributesTemplate({ ...defaultOptions, args: getSlots(['suffix', 'default'], true) })}
+    ${attributesTemplate({ ...defaultOptions, args: getSlots(['prefix', 'default'], true) })}
+    ${attributesTemplate({ ...defaultOptions, args: getSlots(['default'], true) })}
   `);
 
     return html`${output}`;
