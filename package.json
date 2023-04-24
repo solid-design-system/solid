@@ -3,7 +3,9 @@
   "description": "A solid set of web components.",
   "version": "1.0.0",
   "homepage": "https://solid.union-investment.com",
-  "author": "Union Investment",
+  "author": {
+    "name": "Union Investment"
+  },
   "license": "MIT",
   "customElements": "dist/custom-elements.json",
   "web-types": "dist/web-types.json",
@@ -47,7 +49,7 @@
     "test:component": "web-test-runner -- --watch --group",
     "test:watch": "web-test-runner --watch --group default",
     "storybook": "storybook dev -p 6999",
-    "storybook:build": "storybook build"
+    "chromatic": "npx chromatic"
   },
   "engines": {
     "node": ">=14.17.0"
@@ -140,5 +142,7 @@
       "eslint --max-warnings 0 --cache --fix",
       "prettier --write"
     ]
-  }
+  },
+  "readme": "ERROR: No README data found!",
+  "_id": "@union-investment/solid@1.0.0"
 }

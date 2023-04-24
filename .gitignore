@@ -4,6 +4,9 @@ dist
 examples
 node_modules
 src/react
-storybook-static
 .idea*
 __screenshots__/**
+
+# Storybook
+storybook-static
+build-storybook.log
