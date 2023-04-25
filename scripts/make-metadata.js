@@ -5,10 +5,13 @@ import { execSync } from 'child_process';
 import commandLineArgs from 'command-line-args';
 import fs from 'fs';
 import path from 'path';
+import process from 'node:process';
 
 
 const { outdir } = commandLineArgs({ name: 'outdir', type: String });
 
+// get node process
+const nodeProcess = process;
 
 // if env is production
 if (process.env['npm_lifecycle_event'] === 'build') {
