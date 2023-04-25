@@ -1,6 +1,9 @@
 import { esbuildPlugin } from '@web/dev-server-esbuild';
 import { globbySync } from 'globby';
 import { playwrightLauncher } from '@web/test-runner-playwright';
+// web-test-runner.config.js
+import { vitePlugin, removeViteLogging } from '@remcovaes/web-test-runner-vite-plugin';
+
 
 export default {
   rootDir: '.',
@@ -14,22 +17,21 @@ export default {
     }
   },
   plugins: [
-    esbuildPlugin({
-      ts: true,
-      target: 'auto'
-    })
+
+		vitePlugin(),
   ],
   browsers: [
     playwrightLauncher({ product: 'chromium' }),
     playwrightLauncher({ product: 'firefox' }),
     playwrightLauncher({ product: 'webkit' })
   ],
+  filterBrowserLogs: removeViteLogging,
   testRunnerHtml: testFramework => `
     <html lang="en-US">
       <head></head>
       <body>
-        <link rel="stylesheet" href="dist/themes/light.css">
-        <script type="module" src="dist/solid-components.js"></script>
+        <link rel="stylesheet" href="dist/themes/final.css">
+        <script type="module" src="src/solid-components.ts"></script>
         <script type="module" src="${testFramework}"></script>
       </body>
     </html>

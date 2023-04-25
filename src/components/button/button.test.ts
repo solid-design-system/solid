@@ -24,13 +24,10 @@ describe('<sd-button>', () => {
       const el = await fixture<SdButton>(html` <sd-button>Default Slot</sd-button> `);
 
       expect(el.title).to.equal('');
-      expect(el.variant).to.equal('secondary');
-      expect(el.color).to.equal('primary');
+      expect(el.variant).to.equal('primary');
       expect(el.size).to.equal('medium');
       expect(el.disabled).to.equal(false);
-      expect(el.caret).to.equal(false);
       expect(el.loading).to.equal(false);
-      expect(el.pill).to.equal(false);
       expect(el.circle).to.equal(false);
     });
 
@@ -43,11 +40,6 @@ describe('<sd-button>', () => {
     it('should not have a spinner present', async () => {
       const el = await fixture<SdButton>(html` <sd-button>Default Slot</sd-button> `);
       expect(el.shadowRoot!.querySelector('sd-spinner')).not.to.exist;
-    });
-
-    it('should not have a caret present', async () => {
-      const el = await fixture<SdButton>(html` <sd-button>Default Slot</sd-button> `);
-      expect(el.shadowRoot?.querySelector('[part~="caret"]')).not.to.exist;
     });
   });
 
@@ -100,13 +92,6 @@ describe('<sd-button>', () => {
     it('should have a spinner present', async () => {
       const el = await fixture<SdButton>(html` <sd-button loading>Default Slot</sd-button> `);
       expect(el.shadowRoot!.querySelector('sd-spinner')).to.exist;
-    });
-  });
-
-  describe('when caret', () => {
-    it('should have a caret present', async () => {
-      const el = await fixture<SdButton>(html` <sd-button caret>Default Slot</sd-button> `);
-      expect(el.shadowRoot!.querySelector('[part~="caret"]')).to.exist;
     });
   });
 

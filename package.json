@@ -45,7 +45,7 @@
     "lint:fix": "eslint src --max-warnings 0 --fix",
     "ts-check": "tsc --noEmit --project ./tsconfig.json",
     "plop": "plop --plopfile scripts/plop/plopfile.js",
-    "test": "vite build && web-test-runner --group default",
+    "test": "web-test-runner --group default",
     "test:component": "web-test-runner -- --watch --group",
     "test:watch": "web-test-runner --watch --group default",
     "storybook": "storybook dev -p 6999",
@@ -78,6 +78,7 @@
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.8.0",
     "@open-wc/testing": "^3.1.8",
+    "@remcovaes/web-test-runner-vite-plugin": "^1.1.5",
     "@storybook/addon-essentials": "^7.0.7",
     "@storybook/addon-links": "^7.0.7",
     "@storybook/addon-mdx-gfm": "^7.0.7",

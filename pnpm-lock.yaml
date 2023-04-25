@@ -9,6 +9,7 @@ specifiers:
   '@mariohamann/wc-storybook-helpers': ^1.1.1
   '@open-wc/lit-helpers': 0.5.1
   '@open-wc/testing': ^3.1.8
+  '@remcovaes/web-test-runner-vite-plugin': ^1.1.5
   '@shoelace-style/animations': ^1.1.0
   '@shoelace-style/localize': ^3.1.0
   '@storybook/addon-essentials': ^7.0.7
@@ -105,6 +106,7 @@ dependencies:
 devDependencies:
   '@custom-elements-manifest/analyzer': 0.8.0
   '@open-wc/testing': 3.1.8
+  '@remcovaes/web-test-runner-vite-plugin': 1.1.5_vite@4.3.1
   '@storybook/addon-essentials': 7.0.7_biqbaboplfbrettd7655fr4n2y
   '@storybook/addon-links': 7.0.7_biqbaboplfbrettd7655fr4n2y
   '@storybook/addon-mdx-gfm': 7.0.7
@@ -1997,6 +1999,14 @@ packages:
       yargs: 17.7.1
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /@remcovaes/web-test-runner-vite-plugin/1.1.5_vite@4.3.1:
+    resolution: {integrity: sha512-nDVsMBtgx+24MOVC/QzSCf7e62VsA2WyNHYMBcyUBJxOpmDovERXurfH9GoQFUgvxVIcFKYOWLzYLkV4/mZgng==}
+    peerDependencies:
+      vite: ^3.0.0 || ^4.0.0
+    dependencies:
+      vite: 4.3.1
     dev: true
 
   /@rollup/plugin-node-resolve/15.0.2_rollup@3.21.0:
