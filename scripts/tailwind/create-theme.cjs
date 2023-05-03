@@ -211,7 +211,8 @@ const config = {
     ringColor: { ...getColors('border', 'ring-color') },
     space: { ...getSpacings() },
     spacing: { ...getSpacings() },
-    stroke: { ...getColors('border', 'stroke-color') },
+    stroke: { ...getColors('background', 'stroke-color') },
+    // TODO: clarify with Mario if still needed
     tracking: {},
     textColor: { ...getColors('text', 'text-color') },
     textDecorationColor: { ...getColors('text', 'text-decoration-color') },
