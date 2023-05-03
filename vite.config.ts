@@ -23,7 +23,7 @@ export default defineConfig({
       // input: {
       //   main: path.resolve(__dirname, 'src/solid-components.ts'),
       // },
-      // external: ['@floating-ui/dom', '@shoelace-style/animations', 'lit', 'qr-creator'],
+      external: ['@floating-ui/dom', '@shoelace-style/animations', 'lit', 'qr-creator'],
       output:
       {
         // Modern JS bundles (no JS compilation, ES module output)
