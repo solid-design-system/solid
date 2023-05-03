@@ -34,7 +34,7 @@
   },
   "scripts": {
     "dev": "concurrently \"node scripts/build.js --dev\" \"pnpm storybook\" ",
-    "build": "vite build && node scripts/build.js",
+    "build": "vite build --logLevel=silent && node scripts/build.js",
     "preview": "vite preview",
     "build-storybook": "storybook build",
     "verify": "npm run prettier:check && npm run lint && npm run build && npm run test",

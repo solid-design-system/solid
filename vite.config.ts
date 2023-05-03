@@ -5,14 +5,16 @@ import { terser } from 'rollup-plugin-terser';
 import pkgMinifyHTML from 'rollup-plugin-minify-html-literals';
 import summary from 'rollup-plugin-summary';
 
-process.env.VITE_BUILD = 'lib';
-
 const minifyHTML = (pkgMinifyHTML as any).default;
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  /**
+   * Build step for browsers (includes lit etc.)
+   * - umd: Combined js file, faster to load, but not tree-shakeable, recommended
+   * - es: Chunked js files, usable in browser, makes it possible to pick single components
+   */
   build: {
-    // minify: 'terser',
     outDir: 'dist',
     lib: {
       entry: path.resolve(__dirname, 'src/solid-components.ts'),
@@ -20,21 +22,14 @@ export default defineConfig({
       fileName: (format) => `${format}/solid-components.js`,
     },
     rollupOptions: {
-      // input: {
-      //   main: path.resolve(__dirname, 'src/solid-components.ts'),
-      // },
-      external: ['@floating-ui/dom', '@shoelace-style/animations', 'lit', 'qr-creator'],
       output:
       {
         // Modern JS bundles (no JS compilation, ES module output)
         format: 'esm',
         chunkFileNames: 'es/[name].js',
-        // entryFileNames: 'solid-components.js',
         dir: 'dist/components',
-        // inlineDynamicImports: true,
-        // plugins: [htmlPlugin.api.addOutput('modern')],
       },
-      plugins: process.env['npm_lifecycle_event'] === 'build' ? [
+      plugins: [
         // Resolve bare module specifiers to relative paths
         resolve(),
         // Minify HTML template literals
@@ -47,7 +42,7 @@ export default defineConfig({
         }),
         // Print bundle summary
         summary({ showGzippedSize: true }),
-      ] : [],
+      ],
     },
   },
 });
