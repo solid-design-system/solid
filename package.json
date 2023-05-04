@@ -35,7 +35,7 @@
   "scripts": {
     "dev": "concurrently \"node scripts/build.js --dev\" \"pnpm storybook\" ",
     "build": "vite build && node scripts/build.js",
-    "build-storybook": "storybook build",
+    "build-storybook": "pnpm build && storybook build",
     "verify": "npm run prettier:check && npm run lint && npm run build && npm run test",
     "prepublishOnly": "npm run verify",
     "prettier": "prettier --write --loglevel warn .",
