@@ -1,6 +1,7 @@
 import { setCustomElementsManifest } from '@storybook/web-components';
-import customElements from '../dist/custom-elements.json';
-import '../dist/themes/final.css';
+// import '../dist/themes/final.css';
 import 'normalize.css';
 
-setCustomElementsManifest(customElements);
+fetch('/custom-elements.json')
+  .then(res => res.json())
+  .then(customElements => { setCustomElementsManifest(customElements); console.log('Custom elements manifest set', customElements) })
