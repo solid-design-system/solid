@@ -175,7 +175,7 @@ export default {
     },
     // Generate custom VS Code data
     generateCustomData({
-      outdir: '..',
+      outdir: 'dist',
       cssFileName: null
     })
   ]
