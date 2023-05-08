@@ -12,8 +12,8 @@ const components = fs.readdirSync(componentsPath).filter((file) => {
 });
 
 // 2. Copy ./dist/components to ./dist/versioned-components/
-const distComponentsPath = './dist/components';
-const distComponentsVersionedPath = './dist/versioned-components';
+const distComponentsPath = './dist/components/es';
+const distComponentsVersionedPath = './dist/versioned-components/es';
 fs.mkdirSync(distComponentsVersionedPath, { recursive: true });
 
 function copyFolderSync(source, target) {
