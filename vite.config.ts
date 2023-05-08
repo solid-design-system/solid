@@ -7,7 +7,7 @@ import summaryPlugin from 'rollup-plugin-summary';
 import customMinifyPlugin from './scripts/rollup-plugin-custom-minify.js';
 import versionedComponentsPlugin from './scripts/rollup-plugin-versioned-components.js';
 import customElementConfig from './custom-elements-manifest.config.js';
-
+import webTypesPlugin from './scripts/rollup-plugin-web-types.js';
 
 const minifyHTML = (minifyHtmlPlugin as any).default;
 
@@ -53,8 +53,10 @@ export default (({ command }) => {
           summaryPlugin({ showGzippedSize: true }),
           // Add version to component names
           versionedComponentsPlugin(),
+          // Generate web types
+          webTypesPlugin(),
         ],
       },
     },
   };
-});
+}) as typeof defineConfig;
