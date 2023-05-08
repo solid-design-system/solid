@@ -8,8 +8,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 To version components in your projects, follow these steps:
 
-1. Modify the CDN URL from `../1-0-0/components/umd/solid-components.js` to `../1-0-0/versioned-components/umd/solid-components.js`. You can still cherry-pick the components you want to use, for example, `../1-0-0/versioned-components/es/button.js`.
+1. Modify the CDN URL from `../1-0-0/components/es/solid-components.js` to `../1-0-0/versioned-components/es/solid-components.js`. You can still cherry-pick the components you want to use, for example, `../1-0-0/versioned-components/es/button.js`.
 2. Update the tags of your components to include their version, such as `sd-1-0-0-button` instead of `sd-button`.
+
+> We can only allow one bundle for versioned components as otherwise custom-element-registries could collide. We decided to go with only ES modules, as this allows to cherry pick single components, what could help in micro service contexts.
 
 Keep the following in mind for nested components:
 
