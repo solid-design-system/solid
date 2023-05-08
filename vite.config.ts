@@ -4,6 +4,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import minifyHtmlPlugin from 'rollup-plugin-minify-html-literals';
 import summaryPlugin from 'rollup-plugin-summary';
 import customMinifyPlugin from './scripts/rollup-plugin-custom-minify.js';
+import versionedComponentsPlugin from './scripts/rollup-plugin-versioned-components.js';
 
 const minifyHTML = (minifyHtmlPlugin as any).default;
 
@@ -43,6 +44,8 @@ export default defineConfig({
         }),
         // Print bundle summary
         summaryPlugin({ showGzippedSize: true }),
+        // Add version to component names
+        versionedComponentsPlugin(),
       ],
     },
   },
