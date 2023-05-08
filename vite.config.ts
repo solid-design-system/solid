@@ -1,11 +1,11 @@
 import { defineConfig } from 'vite';
 import path from 'path';
 import resolve from '@rollup/plugin-node-resolve';
-import { terser } from 'rollup-plugin-terser';
-import pkgMinifyHTML from 'rollup-plugin-minify-html-literals';
-import summary from 'rollup-plugin-summary';
+import minifyHtmlPlugin from 'rollup-plugin-minify-html-literals';
+import summaryPlugin from 'rollup-plugin-summary';
+import customMinifyPlugin from './scripts/rollup-plugin-custom-minify.js';
 
-const minifyHTML = (pkgMinifyHTML as any).default;
+const minifyHTML = (minifyHtmlPlugin as any).default;
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -34,14 +34,15 @@ export default defineConfig({
         resolve(),
         // Minify HTML template literals
         minifyHTML(),
-        terser({
+        // Minify ES and UMD bundles
+        customMinifyPlugin({
           ecma: 2020,
           module: true,
           compress: { defaults: true, passes: 2 },
           mangle: true
         }),
         // Print bundle summary
-        summary({ showGzippedSize: true }),
+        summaryPlugin({ showGzippedSize: true }),
       ],
     },
   },
