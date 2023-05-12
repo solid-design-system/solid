@@ -1,4 +1,3 @@
-import { esbuildPlugin } from '@web/dev-server-esbuild';
 import { globbySync } from 'globby';
 import { playwrightLauncher } from '@web/test-runner-playwright';
 // web-test-runner.config.js
@@ -18,7 +17,7 @@ export default {
   },
   plugins: [
 
-		vitePlugin(),
+    vitePlugin(),
   ],
   browsers: [
     playwrightLauncher({ product: 'chromium' }),

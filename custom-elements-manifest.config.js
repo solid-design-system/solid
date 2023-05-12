@@ -1,21 +1,12 @@
 import { generateCustomData } from 'cem-plugin-vs-code-custom-data-generator';
-import { parse } from 'comment-parser';
-import { pascalCase } from 'pascal-case';
-import commandLineArgs from 'command-line-args';
-import fs from 'fs';
+// import { parse } from 'comment-parser';
+// import { pascalCase } from 'pascal-case';
 
-const packageData = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
-const { name, description, version, author, homepage, license } = packageData;
+import { name, description, version, author, homepage, license } from './package.json';
 
-const { outdir } = commandLineArgs([
-  { name: 'litelement', type: String },
-  { name: 'analyze', defaultOption: true },
-  { name: 'outdir', type: String }
-]);
-
-function noDash(string) {
-  return string.replace(/^\s?-/, '').trim();
-}
+// function noDash(string) {
+//   return string.replace(/^\s?-/, '').trim();
+// }
 
 function replace(string, terms) {
   terms.forEach(({ from, to }) => {
@@ -29,17 +20,17 @@ function isQueryDecorator(decorator) {
   return decorator.name === 'query';
 }
 
-function markMemberAsPrivate(member) {
-  if (member.decorators?.some(isQueryDecorator)) {
-    member.privacy = 'private';
-  }
-}
+// function markMemberAsPrivate(member) {
+//   if (member.decorators?.some(isQueryDecorator)) {
+//     member.privacy = 'private';
+//   }
+// }
 
 export default {
-  globs: ['src/components/**/*.ts'],
-  exclude: ['**/*.styles.ts', '**/*.test.ts', '**/*.stories.ts'],
+  files: ['./src/components/**/*.ts'],
+  lit: true,
+  output: '../custom-elements.json',
   plugins: [
-    // BetterLitTypesPlugin,
     // Append package data
     {
       name: 'solid-package-data',
@@ -184,7 +175,7 @@ export default {
     },
     // Generate custom VS Code data
     generateCustomData({
-      outdir,
+      outdir: 'dist',
       cssFileName: null
     })
   ]
