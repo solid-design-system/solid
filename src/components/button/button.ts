@@ -1,4 +1,3 @@
-import '../icon/icon';
 import '../spinner/spinner';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { css } from 'lit';

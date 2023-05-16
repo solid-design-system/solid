@@ -49,12 +49,6 @@ export default function (plop) {
         type: 'add',
         path: '../../src/components/{{ tagWithoutPrefix tag }}/{{ tagWithoutPrefix tag }}.stories.ts',
         templateFile: 'templates/component/stories.hbs'
-      },
-      {
-        type: 'modify',
-        path: '../../src/solid.ts',
-        pattern: /\/\* plop:component \*\//,
-        template: `export { default as {{ properCase tag }} } from './components/{{ tagWithoutPrefix tag }}/{{ tagWithoutPrefix tag }}';\n/* plop:component */`
       }
     ]
   });
