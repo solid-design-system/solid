@@ -30,3 +30,5 @@ jobs:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           # Speedup the build by now waiting until everything is sent to Chromatic
           exitOnceUploaded: true
+          # TurboSnap is an advanced Chromatic feature that speeds up builds for faster UI testing and review using Git and Webpack’s dependency graph
+          onlyChanged: true
