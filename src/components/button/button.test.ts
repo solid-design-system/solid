@@ -85,9 +85,7 @@ describe('<sd-button>', () => {
 
   it('should have title if title attribute is set', async () => {
     const el = await fixture<SdButton>(html` <sd-button title="Test"></sd-button> `);
-    const button = el.shadowRoot!.querySelector<HTMLButtonElement>('[part~="base"]')!;
-
-    expect(button.title).to.equal('Test');
+    expect(el.shadowRoot!.querySelector<HTMLButtonElement>('[part~="base"]')!.title).to.equal('Test');
   });
 
   describe('when loading', () => {
