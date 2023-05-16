@@ -95,7 +95,7 @@ export const Circle = {
   render: (args: any) => {
     return attributesTemplate(
       {
-        args: { ...args, circle: true, 'default-slot': '<span type="system" name="star-fill"></span>' },
+        args: { ...args, circle: true, 'default-slot': '★' },
         attributes: relevantAttributes.filter((attr) => attr !== 'circle' || 'caret'),
       }
     );
