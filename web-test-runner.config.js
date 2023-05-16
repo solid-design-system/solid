@@ -2,6 +2,15 @@ import { globbySync } from 'globby';
 import { playwrightLauncher } from '@web/test-runner-playwright';
 import { removeViteLogging, vitePlugin } from '@remcovaes/web-test-runner-vite-plugin';
 
+const browsers = [
+  playwrightLauncher({ product: 'chromium' }),
+  playwrightLauncher({ product: 'webkit' })
+];
+
+if (!process.env.CI) {
+  browsers.push(playwrightLauncher({ product: 'firefox' }));
+}
+
 export default {
   rootDir: '.',
   files: 'src/components/**/*.test.ts', // "default" group
@@ -14,11 +23,7 @@ export default {
     }
   },
   plugins: [vitePlugin()],
-  browsers: [
-    playwrightLauncher({ product: 'chromium' }),
-    // playwrightLauncher({ product: 'firefox' }),
-    playwrightLauncher({ product: 'webkit' })
-  ],
+  browsers,
   filterBrowserLogs: removeViteLogging,
   testRunnerHtml: testFramework => `
     <html lang="en-US">
