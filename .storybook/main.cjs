@@ -1,10 +1,10 @@
-const tsconfigPaths = require("vite-tsconfig-paths");
+const tsconfigPaths = require('vite-tsconfig-paths');
 module.exports = {
-  "stories": ["../src/**/*.mdx", "../src/components/**/*.stories.@(js|jsx|ts|tsx)"],
-  "addons": ["@storybook/addon-links", "@storybook/addon-essentials"],
-  "framework": {
-    "name": "@storybook/web-components-vite",
-    "options": {}
+  stories: ['../src/**/*.mdx', '../src/components/**/*.stories.@(js|jsx|ts|tsx)'],
+  addons: ['@storybook/addon-links', '@storybook/addon-essentials'],
+  framework: {
+    name: '@storybook/web-components-vite',
+    options: {}
   },
   async viteFinal(config) {
     return {
@@ -12,8 +12,8 @@ module.exports = {
       plugins: [...config.plugins, tsconfigPaths.default()]
     };
   },
-  "docs": {
+  docs: {
     docs: true,
-    "autodocs": true
+    autodocs: true
   }
 };

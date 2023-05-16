@@ -8,7 +8,7 @@ export default {
   title: 'Components/sd-spinner',
   component: 'sd-spinner',
   args,
-  argTypes,
+  argTypes
 };
 
 /**

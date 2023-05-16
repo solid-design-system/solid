@@ -3,7 +3,6 @@ import { playwrightLauncher } from '@web/test-runner-playwright';
 // web-test-runner.config.js
 import { vitePlugin, removeViteLogging } from '@remcovaes/web-test-runner-vite-plugin';
 
-
 export default {
   rootDir: '.',
   files: 'src/components/**/*.test.ts', // "default" group
@@ -15,10 +14,7 @@ export default {
       retries: 1
     }
   },
-  plugins: [
-
-    vitePlugin(),
-  ],
+  plugins: [vitePlugin()],
   browsers: [
     playwrightLauncher({ product: 'chromium' }),
     playwrightLauncher({ product: 'firefox' }),

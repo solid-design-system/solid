@@ -12,7 +12,7 @@ export default function versionedComponents() {
       const currentVersion = packageJson.version.replace(/\./g, '-');
 
       const componentsPath = './src/components';
-      const components = fs.readdirSync(componentsPath).filter((file) => {
+      const components = fs.readdirSync(componentsPath).filter(file => {
         return fs.statSync(path.join(componentsPath, file)).isDirectory();
       });
 
@@ -23,7 +23,7 @@ export default function versionedComponents() {
       function copyFolderSync(source, target) {
         const files = fs.readdirSync(source);
 
-        files.forEach((file) => {
+        files.forEach(file => {
           const sourceFile = path.join(source, file);
           const targetFile = path.join(target, file);
 
@@ -41,7 +41,7 @@ export default function versionedComponents() {
       function replaceComponentNames(directory) {
         const files = fs.readdirSync(directory);
 
-        files.forEach((file) => {
+        files.forEach(file => {
           const filePath = path.join(directory, file);
 
           if (fs.lstatSync(filePath).isDirectory()) {
@@ -49,7 +49,7 @@ export default function versionedComponents() {
           } else {
             let fileContent = fs.readFileSync(filePath, 'utf-8');
 
-            components.forEach((componentName) => {
+            components.forEach(componentName => {
               const regex = new RegExp(`(?!--)sd-${componentName}`, 'g');
               fileContent = fileContent.replace(regex, `sd-${currentVersion}-${componentName}`);
             });
@@ -62,6 +62,6 @@ export default function versionedComponents() {
       replaceComponentNames(distComponentsVersionedPath);
 
       console.log(`📦 Versioned components (${packageJson.version}) created`);
-    },
+    }
   };
 }

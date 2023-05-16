@@ -39,10 +39,10 @@
     "build-storybook": "pnpm build && storybook build --output-dir dist/storybook",
     "verify": "npm run prettier:check && npm run lint && npm run build && npm run test",
     "prepublishOnly": "npm run verify",
-    "prettier": "prettier --write --loglevel warn .",
-    "prettier:check": "prettier --check --loglevel warn .",
+    "formatter": "prettier --check --loglevel warn .",
+    "formatter.fix": "prettier --write --loglevel warn .",
     "lint": "eslint src --max-warnings 0",
-    "lint:fix": "eslint src --max-warnings 0 --fix",
+    "lint.fix": "eslint src --max-warnings 0 --fix",
     "ts-check": "tsc --noEmit --project ./tsconfig.json",
     "plop": "plop --plopfile scripts/plop/plopfile.js",
     "test": "web-test-runner --group default",
@@ -140,9 +140,9 @@
     "vite-tsconfig-paths": "^4.2.0"
   },
   "lint-staged": {
-    "*.{ts,js}": [
-      "eslint --max-warnings 0 --cache --fix",
-      "prettier --write"
+    "*": [
+      "pnpm lint.fix",
+      "pnpm formatter.fix"
     ]
   },
   "readme": "ERROR: No README data found!",

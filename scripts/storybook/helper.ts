@@ -59,13 +59,13 @@ export const storybookHelpers = (customElementTag: string) => {
      */
     overrideArgs: (
       overrides: {
-        attributes?: { [k: string]: any; };
-        properties?: { [k: string]: any; };
-        slots?: { [k: string]: any; };
-        cssParts?: { [k: string]: any; };
-        cssProperties?: { [k: string]: any; };
+        attributes?: { [k: string]: any };
+        properties?: { [k: string]: any };
+        slots?: { [k: string]: any };
+        cssParts?: { [k: string]: any };
+        cssProperties?: { [k: string]: any };
       },
-      original?: { [k: string]: any; }
+      original?: { [k: string]: any }
     ) => {
       const args = original || getWcStorybookHelpers(customElementTag).args;
       const suffixes = {
@@ -100,7 +100,7 @@ export const storybookHelpers = (customElementTag: string) => {
  */
 
 type StorybookTemplates = {
-  defaultTemplate: (args: { [k: string]: any; }) => any;
+  defaultTemplate: (args: { [k: string]: any }) => any;
   attributesTemplate: ({
     args,
     attributes,
@@ -119,7 +119,7 @@ type StorybookTemplates = {
     vertical
   }: {
     args: any;
-    variation?: { arg: string; values: any[]; };
+    variation?: { arg: string; values: any[] };
     alternativeTitle?: string;
     vertical?: boolean;
   }) => any;
@@ -129,9 +129,9 @@ type StorybookTemplates = {
     variationB,
     alternativeTitle
   }: {
-    args: { [k: string]: any; };
-    variationA: { arg: string; values: any[]; };
-    variationB: { arg: string; values: any[]; };
+    args: { [k: string]: any };
+    variationA: { arg: string; values: any[] };
+    variationB: { arg: string; values: any[] };
     alternativeTitle?: string;
   }) => any;
   attributeToTableTemplate: ({
@@ -139,7 +139,7 @@ type StorybookTemplates = {
     attributeA,
     attributeB
   }: {
-    args: { [k: string]: any; };
+    args: { [k: string]: any };
     attributeA: string;
     attributeB: string;
   }) => any;
@@ -161,16 +161,16 @@ export const storybookTemplates = (customElementTag: string): StorybookTemplates
       const { inlineVariationsTemplate } = storybookTemplates(customElementTag);
       return html`
         ${getValuesFromAttributes(attributes).map((attribute: any) => {
-        return inlineVariationsTemplate({
-          args,
-          variation: {
-            arg: attribute.name,
-            values: getValuesFromAttribute(attribute.name)
-          },
-          alternativeTitle: alternativeTitle === '' || alternativeTitle ? alternativeTitle : attribute.name,
-          vertical
-        });
-      })}
+          return inlineVariationsTemplate({
+            args,
+            variation: {
+              arg: attribute.name,
+              values: getValuesFromAttribute(attribute.name)
+            },
+            alternativeTitle: alternativeTitle === '' || alternativeTitle ? alternativeTitle : attribute.name,
+            vertical
+          });
+        })}
       `;
     },
     /**
@@ -180,10 +180,10 @@ export const storybookTemplates = (customElementTag: string): StorybookTemplates
       return html`
         <div style="">
           ${alternativeTitle !== ''
-          ? html`<h3 style="font-size: 16px; margin-bottom: 12px; margin-top: 24px">
+            ? html`<h3 style="font-size: 16px; margin-bottom: 12px; margin-top: 24px">
                 ${(alternativeTitle || variation?.arg).replace('-attr', '')}
               </h3>`
-          : ''}
+            : ''}
           ${variation?.values?.map((value: any) => {
             return html`<div
               style="margin-bottom: 16px; display: ${vertical ? 'block' : 'inline-block'}; margin-right: 16px"
@@ -234,17 +234,17 @@ export const storybookTemplates = (customElementTag: string): StorybookTemplates
         </thead>
         <tbody>
           ${variationB.values.map((value: any) => {
-        const row = html`<tr>
+            const row = html`<tr>
               <th>${firstRow ? variationB.arg.replace('-attr', '') : ''}</th>
               <td>${value}</td>
               ${variationA.values.map(
-          (valueA: any) =>
-            html`<td>${template({ ...args, [variationA.arg]: valueA, [variationB.arg]: value })}</td>`
-        )}
+                (valueA: any) =>
+                  html`<td>${template({ ...args, [variationA.arg]: valueA, [variationB.arg]: value })}</td>`
+              )}
             </tr>`;
-        firstRow = false;
-        return row;
-      })}
+            firstRow = false;
+            return row;
+          })}
         </tbody>
       </table>`;
     },

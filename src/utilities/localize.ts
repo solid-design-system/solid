@@ -3,7 +3,7 @@ import { LocalizeController as DefaultLocalizationController } from '@shoelace-s
 import type { Translation as DefaultTranslation } from '@shoelace-style/localize';
 
 // Extend the controller and apply our own translation interface for better typings
-export class LocalizeController extends DefaultLocalizationController<Translation> { }
+export class LocalizeController extends DefaultLocalizationController<Translation> {}
 
 export interface Translation extends DefaultTranslation {
   $code: string; // e.g. en, en-GB

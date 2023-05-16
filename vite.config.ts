@@ -15,7 +15,9 @@ const minifyHTML = (minifyHtmlPlugin as any).default;
 export default (({ command }) => {
   return {
     plugins: [
-      VitePluginCustomElementsManifest(command === 'build' ? customElementConfig : { ...customElementConfig, plugins: [] })
+      VitePluginCustomElementsManifest(
+        command === 'build' ? customElementConfig : { ...customElementConfig, plugins: [] }
+      )
     ],
     /**
      * Build step for browsers (includes lit etc.)
@@ -27,15 +29,14 @@ export default (({ command }) => {
       lib: {
         entry: path.resolve(__dirname, 'src/solid-components.ts'),
         name: 'Solid Components',
-        fileName: (format) => `${format}/solid-components.js`,
+        fileName: format => `${format}/solid-components.js`
       },
       rollupOptions: {
-        output:
-        {
+        output: {
           // Modern JS bundles (no JS compilation, ES module output)
           format: 'esm',
           chunkFileNames: 'es/[name].js',
-          dir: 'dist/components',
+          dir: 'dist/components'
         },
         plugins: [
           // Resolve bare module specifiers to relative paths
@@ -54,9 +55,9 @@ export default (({ command }) => {
           // Add version to component names
           versionedComponentsPlugin(),
           // Generate web types
-          webTypesPlugin(),
-        ],
-      },
-    },
+          webTypesPlugin()
+        ]
+      }
+    }
   };
 }) as typeof defineConfig;

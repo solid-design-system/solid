@@ -41,15 +41,15 @@ export default {
     {
       name: 'remove-html-members',
       moduleLinkPhase({ moduleDoc, customElementsManifest }) {
-        moduleDoc.declarations?.forEach((declaration) => {
-          declaration.members = declaration.members?.filter((member) => {
+        moduleDoc.declarations?.forEach(declaration => {
+          declaration.members = declaration.members?.filter(member => {
             const typeText = member.type?.text || '';
-            const types = typeText.split('|').map((type) => type.trim());
+            const types = typeText.split('|').map(type => type.trim());
 
-            return !types.some((type) => type.startsWith('HTML'));
+            return !types.some(type => type.startsWith('HTML'));
           });
         });
-      },
+      }
     },
 
     // Parse custom jsDoc tags

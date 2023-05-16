@@ -234,17 +234,19 @@ export default class SdButton extends SolidElement implements SolidFormControl {
         /* sizes, fonts */
         small: 'text-sm varspacing-8 px-4',
         medium: 'text-base varspacing-10 px-4',
-        large: 'text-base varspacing-12 px-4',
+        large: 'text-base varspacing-12 px-4'
       }[this.size],
       {
         /* variants */
-        primary: 'text-white bg-primary border-transparent hover:bg-primary-500 hover:text-primary-100 active:bg-primary-800 active:text-primary-200 disabled:bg-neutral-500',
-        secondary: 'text-primary bg-white border-primary hover:text-primary-500 hover:bg-primary-100 hover:border-primary-500 active:text-primary-800 active:bg-primary-200 active:border-primary-800 disabled:text-neutral-500 disabled:border-neutral-500',
-        tertiary: 'text-primary bg-white border-transparent hover:text-primary-500 hover:bg-primary-100 active:text-primary-800 active:bg-primary-200 disabled:text-neutral-500',
-        cta: 'text-white bg-accent border-transparent hover:bg-accent-300 active:bg-accent-500 disabled:bg-neutral-500',
-      }[this.variant],
-    )
-      }
+        primary:
+          'text-white bg-primary border-transparent hover:bg-primary-500 hover:text-primary-100 active:bg-primary-800 active:text-primary-200 disabled:bg-neutral-500',
+        secondary:
+          'text-primary bg-white border-primary hover:text-primary-500 hover:bg-primary-100 hover:border-primary-500 active:text-primary-800 active:bg-primary-200 active:border-primary-800 disabled:text-neutral-500 disabled:border-neutral-500',
+        tertiary:
+          'text-primary bg-white border-transparent hover:text-primary-500 hover:bg-primary-100 active:text-primary-800 active:bg-primary-200 disabled:text-neutral-500',
+        cta: 'text-white bg-accent border-transparent hover:bg-accent-300 active:bg-accent-500 disabled:bg-neutral-500'
+      }[this.variant]
+    )}
         ?disabled=${ifDefined(isLink ? undefined : this.disabled)}
         type=${ifDefined(isLink ? undefined : this.type)}
         title=${this.title /* An empty title prevents browser validation tooltips from appearing on hover */}
@@ -262,41 +264,37 @@ export default class SdButton extends SolidElement implements SolidFormControl {
         @click=${this.handleClick}
       >
         <slot name="prefix" part="prefix" class=${cx(
-        'flex flex-auto items-center pointer-events-none',
-        this.circle && 'hidden',
-        this.loading && 'invisible',
-        slots.prefix && (this.size === 'small' ? 'mr-1' : 'mr-2')
-      )}></slot>
-        <slot part="label" class=${cx(
-        'inline-block',
-        this.loading && 'invisible',
-      )
-      }></slot>
+          'flex flex-auto items-center pointer-events-none',
+          this.circle && 'hidden',
+          this.loading && 'invisible',
+          slots.prefix && (this.size === 'small' ? 'mr-1' : 'mr-2')
+        )}></slot>
+        <slot part="label" class=${cx('inline-block', this.loading && 'invisible')}></slot>
         <slot name="suffix"
           part="suffix"
           class=${cx(
-        'flex flex-auto items-center pointer-events-none',
-        this.loading && 'invisible',
-        this.circle && 'hidden',
-        slots.suffix && (this.size === 'small' ? 'ml-1' : 'ml-2')
-      )}>
+            'flex flex-auto items-center pointer-events-none',
+            this.loading && 'invisible',
+            this.circle && 'hidden',
+            slots.suffix && (this.size === 'small' ? 'ml-1' : 'ml-2')
+          )}>
         </slot>
-      ${this.loading
-        ? html`<sd-spinner
-          class="absolute text-md top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-        ></sd-spinner>`
-        : ''}
+      ${
+        this.loading
+          ? html`<sd-spinner
+              class="absolute text-md top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+            ></sd-spinner>`
+          : ''
+      }
       </${tag}>
     `;
     /* eslint-enable lit/no-invalid-html */
     /* eslint-enable lit/binding-positions */
   }
 
-
-
   /**
    * Inherits Tailwindclasses and includes additional styling.
-  */
+   */
   static styles = [
     ...SolidElement.styles,
     css`
@@ -307,83 +305,82 @@ export default class SdButton extends SolidElement implements SolidFormControl {
         cursor: pointer;
       }
 
-    [part="label"]::slotted(sd-icon) {
-      vertical-align: -2px;
-    }
+      [part='label']::slotted(sd-icon) {
+        vertical-align: -2px;
+      }
 
-    sd-spinner{
-      --indicator-color: currentColor;
-      --track-color: var(--tw-varcolor-200);
-    }
+      sd-spinner {
+        --indicator-color: currentColor;
+        --track-color: var(--tw-varcolor-200);
+      }
 
-
-    /*
+      /*
     * Badges:
     * Slotted badges are positioned absolutely in the top right corner of the button.
     */
 
-    ::slotted(sd-badge) {
-      position: absolute;
-      top: 0;
-      right: 0;
-      translate: 50% -50%;
-      pointer-events: none;
-    }
+      ::slotted(sd-badge) {
+        position: absolute;
+        top: 0;
+        right: 0;
+        translate: 50% -50%;
+        pointer-events: none;
+      }
 
-    /*
+      /*
     * Button groups support a variety of button types (e.g. buttons with tooltips, buttons as dropdown triggers, etc.).
     * This means buttons aren't always direct descendants of the button group, thus we can't target them with the
     * ::slotted selector. To work around this, the button group component does some magic to add these special classes to
     * buttons and we style them here instead.
     */
 
-    :host(.sd-button-group__button--first:not(.sd-button-group__button--last)) .button {
-      border-start-end-radius: 0;
-      border-end-end-radius: 0;
-    }
+      :host(.sd-button-group__button--first:not(.sd-button-group__button--last)) .button {
+        border-start-end-radius: 0;
+        border-end-end-radius: 0;
+      }
 
-    :host(.sd-button-group__button--inner) .button {
-      border-radius: 0;
-    }
+      :host(.sd-button-group__button--inner) .button {
+        border-radius: 0;
+      }
 
-    :host(.sd-button-group__button--last:not(.sd-button-group__button--first)) .button {
-      border-start-start-radius: 0;
-      border-end-start-radius: 0;
-    }
+      :host(.sd-button-group__button--last:not(.sd-button-group__button--first)) .button {
+        border-start-start-radius: 0;
+        border-end-start-radius: 0;
+      }
 
-    /* All except the first */
-    :host(.sd-button-group__button:not(.sd-button-group__button--first)) {
-      margin-inline-start: calc(-1 * var(--sd-input-border-width));
-    }
+      /* All except the first */
+      :host(.sd-button-group__button:not(.sd-button-group__button--first)) {
+        margin-inline-start: calc(-1 * var(--sd-input-border-width));
+      }
 
-    /* Add a visual separator between solid buttons */
-    :host(
-        .sd-button-group__button:not(
-            .sd-button-group__button--first,
-            .sd-button-group__button--radio,
-            [variant='default']
-          ):not(:hover)
-      )
-      .button:after {
-      content: '';
-      position: absolute;
-      top: 0;
-      inset-inline-start: 0;
-      bottom: 0;
-      border-left: solid 1px rgb(128 128 128 / 33%);
-      mix-blend-mode: multiply;
-    }
+      /* Add a visual separator between solid buttons */
+      :host(
+          .sd-button-group__button:not(
+              .sd-button-group__button--first,
+              .sd-button-group__button--radio,
+              [variant='default']
+            ):not(:hover)
+        )
+        .button:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        inset-inline-start: 0;
+        bottom: 0;
+        border-left: solid 1px rgb(128 128 128 / 33%);
+        mix-blend-mode: multiply;
+      }
 
-    /* Bump hovered, focused, and checked buttons up so their focus ring isn't clipped */
-    :host(.sd-button-group__button--hover) {
-      z-index: 1;
-    }
+      /* Bump hovered, focused, and checked buttons up so their focus ring isn't clipped */
+      :host(.sd-button-group__button--hover) {
+        z-index: 1;
+      }
 
-    /* Focus and checked are always on top */
-    :host(.sd-button-group__button--focus),
-    :host(.sd-button-group__button[checked]) {
-      z-index: 2;
-    }
+      /* Focus and checked are always on top */
+      :host(.sd-button-group__button--focus),
+      :host(.sd-button-group__button[checked]) {
+        z-index: 2;
+      }
     `
   ];
 }
