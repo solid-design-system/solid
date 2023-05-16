@@ -87,7 +87,7 @@ export const Disabled = {
 };
 
 /**
- * Use the `circle` attribute to create circular icon buttons. When this attribute is set, the button expects ideally a single `<sd-icon>` in the default slot.
+ * Use the `circle` attribute to create circular icon buttons. When this attribute is set, the button expects ideally a single `<span>` in the default slot.
  */
 
 export const Circle = {
@@ -95,7 +95,7 @@ export const Circle = {
   render: (args: any) => {
     return attributesTemplate(
       {
-        args: { ...args, circle: true, 'default-slot': '<sd-icon library="system" name="star-fill"></sd-icon>' },
+        args: { ...args, circle: true, 'default-slot': '<span type="system" name="star-fill"></span>' },
         attributes: relevantAttributes.filter((attr) => attr !== 'circle' || 'caret'),
       }
     );
@@ -115,11 +115,11 @@ export const Slots = {
      * To make story creation faster and as there are lots of them, it is easier to
      * define them here and use it later.
      */
-    const getSlots = (selection: ('prefix' | 'suffix' | 'default')[], badge?: boolean) => {
+    const getSlots = (selection: ('prefix' | 'suffix' | 'default')[]) => {
       const slots = {
-        'prefix': '<sd-icon slot="prefix"  library="system" name="star-fill"></sd-icon>',
-        'suffix': '<sd-icon slot="suffix"  library="system" name="star-fill"></sd-icon>',
-        'default': badge ? '&lt;slot&gt;<sd-badge pill>99</sd-badge>' : '&lt;slot&gt;',
+        'prefix': '<span slot="prefix">★</span>',
+        'suffix': '<span slot="suffix">★</span>',
+        'default': '&lt;slot&gt;',
       };
 
       // conditionally add slots if they are in selection
@@ -127,8 +127,6 @@ export const Slots = {
         acc[slot] = slots[slot];
         return acc;
       }, {});
-
-      console.log({ selection, selectedSlots }, overrideArgs({ slots: selectedSlots }, args));
 
       return overrideArgs({ slots: selectedSlots });
     };
@@ -144,19 +142,12 @@ export const Slots = {
 
     const output = [];
 
-    // Default
+    // Size
     output.push(html`
     ${attributesTemplate({ ...defaultOptions, args: getSlots(['prefix', 'suffix', 'default']), alternativeTitle: 'size (default)' })}
     ${attributesTemplate({ ...defaultOptions, args: getSlots(['suffix', 'default']) })}
     ${attributesTemplate({ ...defaultOptions, args: getSlots(['prefix', 'default']) })}
     ${attributesTemplate({ ...defaultOptions, args: getSlots(['default']) })}
-  `);
-
-    output.push(html`
-    ${attributesTemplate({ ...defaultOptions, args: getSlots(['prefix', 'suffix', 'default'], true), alternativeTitle: 'size (slot contains <sd-badge>)' })}
-    ${attributesTemplate({ ...defaultOptions, args: getSlots(['suffix', 'default'], true) })}
-    ${attributesTemplate({ ...defaultOptions, args: getSlots(['prefix', 'default'], true) })}
-    ${attributesTemplate({ ...defaultOptions, args: getSlots(['default'], true) })}
   `);
 
     return html`${output}`;
