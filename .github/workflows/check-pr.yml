@@ -4,7 +4,7 @@ on: pull_request
 
 jobs:
   npm:
-    name: Install, lint & test
+    name: Install & check linting, formatting, tests
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -27,14 +27,14 @@ jobs:
         if: steps.npm.outputs.cache-hit != 'true'
         run: pnpm i
 
-      - name: Ch  eck lin
+      - name: Check linting
         run: pnpm lint
 
       - name: Check formatting
         run: pnpm formatter
 
       - name: Install playwright browsers
-        run: npx playwright install --with-deps
+        run: pnpm i @playwright/test && npx playwright install --with-deps
 
       - name: Check tests
         run: pnpm test
