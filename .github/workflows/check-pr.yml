@@ -1,0 +1,37 @@
+name: PR Checks
+
+on: pull_request
+
+jobs:
+  npm:
+    name: Install, lint & test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+
+      # we use npm ci for faster installation –> package-lock.json is the single source of noding truth
+      - name: Install dependencies
+        if: steps.npm.outputs.cache-hit != 'true'
+        run: pnpm i
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Formatter
+        run: pnpm formatter
+
+      - name: Automatic tests
+        run: pnpm test
