@@ -6,6 +6,8 @@ jobs:
   npm:
     name: Install & check linting, formatting, tests
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.33.0-jammy
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -22,9 +24,7 @@ jobs:
           version: 7
           run_install: false
 
-      # we use npm ci for faster installation –> package-lock.json is the single source of noding truth
       - name: Install dependencies
-        if: steps.npm.outputs.cache-hit != 'true'
         run: pnpm i
 
       - name: Check linting
@@ -32,9 +32,6 @@ jobs:
 
       - name: Check formatting
         run: pnpm formatter
-
-      - name: Install playwright browsers
-        run: pnpm i @playwright/test && npx playwright install-deps
 
       - name: Check tests
         run: pnpm test
