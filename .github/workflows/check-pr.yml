@@ -1,4 +1,4 @@
-name: PR Checks
+name: Quality Gate
 
 on: pull_request
 
@@ -27,11 +27,14 @@ jobs:
         if: steps.npm.outputs.cache-hit != 'true'
         run: pnpm i
 
-      - name: Lint
+      - name: Ch  eck lin
         run: pnpm lint
 
-      - name: Formatter
+      - name: Check formatting
         run: pnpm formatter
 
-      - name: Automatic tests
+      - name: Install playwright browsers
+        run: npx playwright install --with-deps
+
+      - name: Check tests
         run: pnpm test
