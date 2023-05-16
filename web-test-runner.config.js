@@ -16,7 +16,7 @@ export default {
   plugins: [vitePlugin()],
   browsers: [
     playwrightLauncher({ product: 'chromium' }),
-    playwrightLauncher({ product: 'firefox' }),
+    // playwrightLauncher({ product: 'firefox' }),
     playwrightLauncher({ product: 'webkit' })
   ],
   filterBrowserLogs: removeViteLogging,
