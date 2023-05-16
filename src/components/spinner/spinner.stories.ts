@@ -11,7 +11,6 @@ export default {
   argTypes,
 };
 
-
 /**
  * Default: This shows sd-spinner in its default state.
  */

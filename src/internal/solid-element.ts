@@ -1,4 +1,4 @@
-import { LitElement, unsafeCSS, css } from 'lit';
+import { css, LitElement, unsafeCSS } from 'lit';
 import { property } from 'lit/decorators.js';
 import tailwind from '../styles/tailwind.css?inline';
 

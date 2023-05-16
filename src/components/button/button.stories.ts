@@ -1,6 +1,6 @@
 import '../../solid-components';
-import { storybookDefaults, storybookTemplates, storybookHelpers } from '../../../scripts/storybook/helper';
 import { html } from 'lit-html';
+import { storybookDefaults, storybookHelpers, storybookTemplates } from '../../../scripts/storybook/helper';
 
 const { argTypes } = storybookDefaults('sd-button');
 const { defaultTemplate, attributesTemplate, attributeToTableTemplate } = storybookTemplates('sd-button');
@@ -109,7 +109,7 @@ export const Circle = {
 
 export const Slots = {
   parameters: { controls: { exclude: ['size', 'default', 'prefix', 'suffix'] } },
-  render: (args: any) => {
+  render: () => {
     /**
      * Those slots are relevant for the stories in terms of design variations.
      * To make story creation faster and as there are lots of them, it is easier to

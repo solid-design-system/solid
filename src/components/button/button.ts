@@ -1,14 +1,14 @@
 import '../spinner/spinner';
-import { customElement, property, query, state } from 'lit/decorators.js';
 import { css } from 'lit';
+import { customElement, property, query, state } from 'lit/decorators.js';
 import { FormControlController } from '../../internal/form';
 import { HasSlotController } from '../../internal/slot';
 import { html, literal } from 'lit/static-html.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { watch } from '../../internal/watch';
+import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 import type { SolidFormControl } from '../../internal/solid-element';
-import cx from 'classix';
 
 /**
  * @summary Buttons represent actions that are available to the user.
