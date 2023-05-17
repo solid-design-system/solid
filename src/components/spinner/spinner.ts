@@ -3,7 +3,6 @@ import { html } from 'lit';
 import { LocalizeController } from '../../utilities/localize';
 import SolidElement from '../../internal/solid-element';
 import styles from './spinner.styles';
-import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Spinners are used to show the progress of an indeterminate operation.
@@ -20,7 +19,7 @@ import type { CSSResultGroup } from 'lit';
  */
 @customElement('sd-spinner')
 export default class SdSpinner extends SolidElement {
-  static styles: CSSResultGroup = styles;
+  static styles = styles;
 
   private readonly localize = new LocalizeController(this);
 

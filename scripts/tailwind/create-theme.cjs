@@ -1,12 +1,11 @@
 const tokens = require('./tokens.json');
 
-const hexToRgb = (hex) => {
+const hexToRgb = hex => {
   const hexCharacters = 'a-f\\d';
   const match3or4Hex = `#?[${hexCharacters}]{3}[${hexCharacters}]?`;
   const match6or8Hex = `#?[${hexCharacters}]{6}([${hexCharacters}]{2})?`;
   const nonHexChars = new RegExp(`[^#${hexCharacters}]`, 'gi');
   const validHexSize = new RegExp(`^${match3or4Hex}$|^${match6or8Hex}$`, 'i');
-
 
   if (typeof hex !== 'string' || nonHexChars.test(hex) || !validHexSize.test(hex)) {
     throw new TypeError('Expected a valid hex string');
@@ -35,35 +34,34 @@ const hexToRgb = (hex) => {
   const blue = number & 255;
 
   return [red, green, blue];
-}
+};
 
-const resolveValue = (value) => {
+const resolveValue = value => {
   // if value starts with "{" it's a reference.
   if (value.startsWith('{')) {
     const path = value.replace('{', '').replace('}', '').split('.');
     const resolvePath = (path, set) => {
       let resolvedValue = tokens[set];
-      path.forEach((p) => {
+      path.forEach(p => {
         resolvedValue = resolvedValue[p];
       });
       return resolvedValue;
     };
     const resolvedValue = resolvePath(path, 'UI Core') || resolvePath(path, 'UI Semantic');
     return resolveValue(resolvedValue.value);
-  }
-  else {
+  } else {
     return sanitizeValue(value);
   }
 };
 
-const sanitizeValue = (value) => {
-  value = value.replaceAll("\b", '')
+const sanitizeValue = value => {
+  value = value.replaceAll('\b', '');
   return value;
 };
 
-const sanitizeKey = (value) => {
-  value = value.replaceAll("\b", '')
-  value = value.replaceAll(",", '.')
+const sanitizeKey = value => {
+  value = value.replaceAll('\b', '');
+  value = value.replaceAll(',', '.');
   return value;
 };
 
@@ -75,7 +73,7 @@ const sanitizeKey = (value) => {
  * @returns {Object} result - The reformatted color object with grouped colors and default values set.
  *
  */
-const reformatColors = (obj) => {
+const reformatColors = obj => {
   let result = {};
 
   for (const key in obj) {
@@ -86,8 +84,7 @@ const reformatColors = (obj) => {
         const [colorName, shade] = key.split('-');
         if (!result[colorName]) {
           result[colorName] = {};
-        }
-        else if (typeof result[colorName] !== 'object') {
+        } else if (typeof result[colorName] !== 'object') {
           // Set the default value when the first shade is found
           if (result[colorName]) {
             const defaultColor = result[colorName];
@@ -106,8 +103,7 @@ const reformatColors = (obj) => {
   result['transparent'] = 'transparent';
 
   return result;
-}
-
+};
 
 // Go through the opacity object that has the format object: {50: { value: string, comment: string }, 60: {value: string, comment: string}}
 // convert it to an interable array first in the format [ {name: '50', value: string, comment: string}, {name: '60', value: string, comment: string}]
@@ -119,12 +115,12 @@ const getOpacities = () => {
       // add the opacity to the theme
       // convert e.g. "90%" to "0.9"
       const convertedValue = resolveValue(value).replace('%', '') / 100;
-      result[sanitizeValue(name)] = `var(--sd-opacity-${sanitizeValue(name)}, ${convertedValue})${description ? ` /* ${description} */` : ''}`;
-
+      result[sanitizeValue(name)] = `var(--sd-opacity-${sanitizeValue(name)}, ${convertedValue})${
+        description ? ` /* ${description} */` : ''
+      }`;
     });
   return result;
-}
-
+};
 
 // Go through the opacity object that has the format object: {50: { value: string, comment: string }, 60: {value: string, comment: string}}
 // convert it to an interable array first in the format [ {name: '50', value: string, comment: string}, {name: '60', value: string, comment: string}]
@@ -133,10 +129,12 @@ const getBorderRadius = () => {
   Object.entries(tokens['UI Semantic'].rounded)
     .map(([name, value]) => ({ name, ...value }))
     .forEach(({ name, value, description }) => {
-      result[sanitizeValue(name)] = `var(--sd-border-radius-${name}, ${resolveValue(value)})${description ? ` /* ${description} */` : ''}`;
+      result[sanitizeValue(name)] = `var(--sd-border-radius-${name}, ${resolveValue(value)})${
+        description ? ` /* ${description} */` : ''
+      }`;
     });
   return result;
-}
+};
 
 // Get all Object.entries(tokens['UI Semantic'].spacing and Object.entries(tokens['UI Semantic'].sizing values
 // Merge them and create spacing tokens for TailwindCSS
@@ -144,14 +142,15 @@ const getSpacings = () => {
   let result = {};
   Object.entries(tokens['UI Semantic'].spacing)
     .map(([name, value]) => ({ name, ...value }))
-    .concat(Object.entries(tokens['UI Semantic'].sizing)
-      .map(([name, value]) => ({ name, ...value })))
+    .concat(Object.entries(tokens['UI Semantic'].sizing).map(([name, value]) => ({ name, ...value })))
     .forEach(({ name, value, description }) => {
       // add the spacing to the theme
-      result[sanitizeKey(name)] = `var(--sd-spacing-${sanitizeKey(name)}, ${resolveValue(value)})${description ? ` /* ${description} */` : ''}`;
+      result[sanitizeKey(name)] = `var(--sd-spacing-${sanitizeKey(name)}, ${resolveValue(value)})${
+        description ? ` /* ${description} */` : ''
+      }`;
     });
   return result;
-}
+};
 
 // Get all Object.entries(tokens['UI Semantic'].background and set them as background colors
 const getColors = (name, cssVariableScope) => {
@@ -162,16 +161,18 @@ const getColors = (name, cssVariableScope) => {
       if (name === 'transparent') return;
       const color = hexToRgb(resolveValue(value)).join(' ');
       // add the background color to the theme
-      result[sanitizeValue(name)] = `rgb(var(--sd-color-${sanitizeKey(sanitizeValue(name))}, ${color}) / <alpha-value>)${description ? ` /* ${description} */` : ''}`;
+      result[sanitizeValue(name)] = `rgb(var(--sd-color-${sanitizeKey(
+        sanitizeValue(name)
+      )}, ${color}) / <alpha-value>)${description ? ` /* ${description} */` : ''}`;
     });
 
   result = reformatColors(result);
   return result;
-}
+};
 
 const getCoreTokensByType = (tokenType, cssVariableScope) => {
   let result = {};
-  const obj = tokens['UI Core']
+  const obj = tokens['UI Core'];
   const keys = Object.keys(obj);
 
   keys.filter(key => {
@@ -180,14 +181,14 @@ const getCoreTokensByType = (tokenType, cssVariableScope) => {
     if (type === tokenType) {
       const keyWithoutUtility = key.split('-').slice(1).join('-');
       const description = obj[key]['description'];
-      result[keyWithoutUtility] = `var(--sd-${cssVariableScope}-${sanitizeKey(keyWithoutUtility)}, ${obj[key]['value']})${description ? ` /* ${description} */` : ''}`;
+      result[keyWithoutUtility] = `var(--sd-${cssVariableScope}-${sanitizeKey(keyWithoutUtility)}, ${
+        obj[key]['value']
+      })${description ? ` /* ${description} */` : ''}`;
     }
   });
 
   return result;
-}
-
-
+};
 
 /** @type {import('tailwindcss').Config} */
 const config = {
@@ -203,7 +204,7 @@ const config = {
     fontFamily: {},
     fontSize: { ...getCoreTokensByType('fontSizes', 'font-size') },
     fontStyle: {},
-    fontWeight: { 'normal': '400', 'bold': '700', }, // Tokens currently provide "Bk" and "Bold" which doesn't help anything
+    fontWeight: { normal: '400', bold: '700' }, // Tokens currently provide "Bk" and "Bold" which doesn't help anything
     lineHeight: { ...getCoreTokensByType('lineHeights', 'leading') },
     opacity: { ...getOpacities() },
     outlineColor: { ...getColors('border', 'outline-color') },
@@ -214,10 +215,9 @@ const config = {
     stroke: { ...getColors('border', 'stroke-color') },
     tracking: {},
     textColor: { ...getColors('text', 'text-color') },
-    textDecorationColor: { ...getColors('text', 'text-decoration-color') },
+    textDecorationColor: { ...getColors('text', 'text-decoration-color') }
   }
 };
 
 const theme = config['theme'];
 module.exports = theme;
-

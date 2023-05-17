@@ -6,7 +6,6 @@ import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
 import { watch } from '../../internal/watch';
 import SolidElement from '../../internal/solid-element';
 import styles from './icon.styles';
-import type { CSSResultGroup } from 'lit';
 
 let parser: DOMParser;
 
@@ -21,7 +20,7 @@ let parser: DOMParser;
  */
 @customElement('sd-icon')
 export default class SdIcon extends SolidElement {
-  static styles: CSSResultGroup = styles;
+  static styles = styles;
 
   @state() private svg = '';
 

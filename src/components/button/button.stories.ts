@@ -1,6 +1,6 @@
 import '../../solid-components';
-import { storybookDefaults, storybookTemplates, storybookHelpers } from '../../../scripts/storybook/helper';
 import { html } from 'lit-html';
+import { storybookDefaults, storybookHelpers, storybookTemplates } from '../../../scripts/storybook/helper';
 
 const { argTypes } = storybookDefaults('sd-button');
 const { defaultTemplate, attributesTemplate, attributeToTableTemplate } = storybookTemplates('sd-button');
@@ -10,7 +10,7 @@ export default {
   title: 'Components/sd-button',
   component: 'sd-button',
   args: overrideArgs({ slots: { default: 'Default' } }),
-  argTypes,
+  argTypes
 };
 
 /**
@@ -19,12 +19,7 @@ export default {
  * define them here and use it later.
  */
 
-const relevantAttributes = [
-  'variant',
-  'size',
-  'disabled',
-  'loading'
-];
+const relevantAttributes = ['variant', 'size', 'disabled', 'loading'];
 
 /**
  * Default: This shows sd-button in its default state.
@@ -44,13 +39,11 @@ export const VariantAndSize = {
   name: 'Variant × Size',
   parameters: { controls: { exclude: ['variant', 'size'] } },
   render: (args: any) => {
-    return attributeToTableTemplate(
-      {
-        args,
-        attributeA: 'variant',
-        attributeB: 'size',
-      }
-    );
+    return attributeToTableTemplate({
+      args,
+      attributeA: 'variant',
+      attributeB: 'size'
+    });
   }
 };
 
@@ -61,12 +54,10 @@ export const VariantAndSize = {
 export const Loading = {
   parameters: { controls: { exclude: relevantAttributes } },
   render: (args: any) => {
-    return attributesTemplate(
-      {
-        args: { ...args, loading: true },
-        attributes: relevantAttributes.filter((attr) => attr !== 'loading'),
-      }
-    );
+    return attributesTemplate({
+      args: { ...args, loading: true },
+      attributes: relevantAttributes.filter(attr => attr !== 'loading')
+    });
   }
 };
 
@@ -77,12 +68,10 @@ export const Loading = {
 export const Disabled = {
   parameters: { controls: { exclude: relevantAttributes } },
   render: (args: any) => {
-    return attributesTemplate(
-      {
-        args: { ...args, disabled: true },
-        attributes: relevantAttributes.filter((attr) => attr !== 'disabled'),
-      }
-    );
+    return attributesTemplate({
+      args: { ...args, disabled: true },
+      attributes: relevantAttributes.filter(attr => attr !== 'disabled')
+    });
   }
 };
 
@@ -93,12 +82,10 @@ export const Disabled = {
 export const Circle = {
   parameters: { controls: { exclude: [...relevantAttributes, 'circle', 'default', 'caret'] } },
   render: (args: any) => {
-    return attributesTemplate(
-      {
-        args: { ...args, circle: true, 'default-slot': '★' },
-        attributes: relevantAttributes.filter((attr) => attr !== 'circle' || 'caret'),
-      }
-    );
+    return attributesTemplate({
+      args: { ...args, circle: true, 'default-slot': '★' },
+      attributes: relevantAttributes.filter(attr => attr !== 'circle' || 'caret')
+    });
   }
 };
 
@@ -109,7 +96,7 @@ export const Circle = {
 
 export const Slots = {
   parameters: { controls: { exclude: ['size', 'default', 'prefix', 'suffix'] } },
-  render: (args: any) => {
+  render: () => {
     /**
      * Those slots are relevant for the stories in terms of design variations.
      * To make story creation faster and as there are lots of them, it is easier to
@@ -117,13 +104,13 @@ export const Slots = {
      */
     const getSlots = (selection: ('prefix' | 'suffix' | 'default')[]) => {
       const slots = {
-        'prefix': '<span slot="prefix">★</span>',
-        'suffix': '<span slot="suffix">★</span>',
-        'default': '&lt;slot&gt;',
+        prefix: '<span slot="prefix">★</span>',
+        suffix: '<span slot="suffix">★</span>',
+        default: '&lt;slot&gt;'
       };
 
       // conditionally add slots if they are in selection
-      const selectedSlots = selection.reduce((acc, slot) => {
+      const selectedSlots = selection.reduce((acc: { [key in 'prefix' | 'suffix' | 'default']?: string }, slot) => {
         acc[slot] = slots[slot];
         return acc;
       }, {});
@@ -137,18 +124,22 @@ export const Slots = {
      */
     const defaultOptions = {
       attributes: ['size'],
-      alternativeTitle: '',
+      alternativeTitle: ''
     };
 
     const output = [];
 
     // Size
     output.push(html`
-    ${attributesTemplate({ ...defaultOptions, args: getSlots(['prefix', 'suffix', 'default']), alternativeTitle: 'size (default)' })}
-    ${attributesTemplate({ ...defaultOptions, args: getSlots(['suffix', 'default']) })}
-    ${attributesTemplate({ ...defaultOptions, args: getSlots(['prefix', 'default']) })}
-    ${attributesTemplate({ ...defaultOptions, args: getSlots(['default']) })}
-  `);
+      ${attributesTemplate({
+        ...defaultOptions,
+        args: getSlots(['prefix', 'suffix', 'default']),
+        alternativeTitle: 'size (default)'
+      })}
+      ${attributesTemplate({ ...defaultOptions, args: getSlots(['suffix', 'default']) })}
+      ${attributesTemplate({ ...defaultOptions, args: getSlots(['prefix', 'default']) })}
+      ${attributesTemplate({ ...defaultOptions, args: getSlots(['default']) })}
+    `);
 
     return html`${output}`;
   }

@@ -1,14 +1,17 @@
+// eslint-disable-next-line
+// @ts-nocheck
+
 import { generateCustomData } from 'cem-plugin-vs-code-custom-data-generator';
 // import { parse } from 'comment-parser';
 // import { pascalCase } from 'pascal-case';
 
-import { name, description, version, author, homepage, license } from './package.json';
+import { author, description, homepage, license, name, version } from './package.json';
 
 // function noDash(string) {
 //   return string.replace(/^\s?-/, '').trim();
 // }
 
-function replace(string, terms) {
+function replace(string: string, terms: { from: string; to: string }[]) {
   terms.forEach(({ from, to }) => {
     string = string?.replace(from, to);
   });
@@ -16,9 +19,9 @@ function replace(string, terms) {
   return string;
 }
 
-function isQueryDecorator(decorator) {
-  return decorator.name === 'query';
-}
+// function isQueryDecorator(decorator) {
+//   return decorator.name === 'query';
+// }
 
 // function markMemberAsPrivate(member) {
 //   if (member.decorators?.some(isQueryDecorator)) {
@@ -40,16 +43,16 @@ export default {
     },
     {
       name: 'remove-html-members',
-      moduleLinkPhase({ moduleDoc, customElementsManifest }) {
-        moduleDoc.declarations?.forEach((declaration) => {
-          declaration.members = declaration.members?.filter((member) => {
+      moduleLinkPhase({ moduleDoc }) {
+        moduleDoc.declarations?.forEach(declaration => {
+          declaration.members = declaration.members?.filter(member => {
             const typeText = member.type?.text || '';
-            const types = typeText.split('|').map((type) => type.trim());
+            const types = typeText.split('|').map(type => type.trim());
 
-            return !types.some((type) => type.startsWith('HTML'));
+            return !types.some(type => type.startsWith('HTML'));
           });
         });
-      },
+      }
     },
 
     // Parse custom jsDoc tags

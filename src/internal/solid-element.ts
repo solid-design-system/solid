@@ -1,6 +1,7 @@
-import { LitElement, unsafeCSS, css } from 'lit';
+import { css, LitElement, unsafeCSS } from 'lit';
 import { property } from 'lit/decorators.js';
 import tailwind from '../styles/tailwind.css?inline';
+import type { CSSResult } from 'lit';
 
 export default class SolidElement extends LitElement {
   // Make localization attributes reactive
@@ -8,18 +9,18 @@ export default class SolidElement extends LitElement {
   @property() lang: string;
 
   /*
-  * 1. Make Tailwind-CSS globally accessible
-  *
-  * This approach seems to be okay facing the following sentence:
-  * "Many modern browsers implement an optimization for <style> tags either cloned from a common
-  * node or hat have identical text, to allow them to share a single backing stylesheet.
-  * With this optimization the performance of external and internal styles should be similar."
-  * (See: https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements#internal_vs._external_styles)
-  */
+   * 1. Make Tailwind-CSS globally accessible
+   *
+   * This approach seems to be okay facing the following sentence:
+   * "Many modern browsers implement an optimization for <style> tags either cloned from a common
+   * node or hat have identical text, to allow them to share a single backing stylesheet.
+   * With this optimization the performance of external and internal styles should be similar."
+   * (See: https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements#internal_vs._external_styles)
+   */
 
-  static styles = [css`
+  static styles: CSSResult = css`
     ${unsafeCSS(tailwind)}
-  `];
+  `;
 
   /** Emits a custom event with more convenient defaults. */
   emit(name: string, options?: CustomEventInit) {

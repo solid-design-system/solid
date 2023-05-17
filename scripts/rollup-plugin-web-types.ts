@@ -10,7 +10,7 @@ import path from 'path';
 export default function webTypesPlugin() {
   return {
     name: 'rollup-plugin-web-types',
-    async writeBundle(outputOptions) {
+    async writeBundle(outputOptions: any) {
       const outputDir = outputOptions.dir.replace('/components', '');
       const webTypesPath = path.join(outputDir, 'web-types.json');
       const metadata = JSON.parse(fs.readFileSync(path.join(outputDir, 'custom-elements.json'), 'utf8'));

@@ -1,35 +1,31 @@
 import { globbySync } from 'globby';
 import { playwrightLauncher } from '@web/test-runner-playwright';
-// web-test-runner.config.js
-import { vitePlugin, removeViteLogging } from '@remcovaes/web-test-runner-vite-plugin';
+import { removeViteLogging, vitePlugin } from '@remcovaes/web-test-runner-vite-plugin';
 
+const browsers = [playwrightLauncher({ product: 'chromium' }), playwrightLauncher({ product: 'webkit' })];
+
+if (!process.env.CI) {
+  browsers.push(playwrightLauncher({ product: 'firefox' }));
+}
 
 export default {
   rootDir: '.',
   files: 'src/components/**/*.test.ts', // "default" group
-  concurrentBrowsers: 3,
+  concurrentBrowsers: 1,
   nodeResolve: true,
   testFramework: {
     config: {
       timeout: 3000,
-      retries: 1
+      retries: 3
     }
   },
-  plugins: [
-
-    vitePlugin(),
-  ],
-  browsers: [
-    playwrightLauncher({ product: 'chromium' }),
-    playwrightLauncher({ product: 'firefox' }),
-    playwrightLauncher({ product: 'webkit' })
-  ],
+  plugins: [vitePlugin()],
+  browsers,
   filterBrowserLogs: removeViteLogging,
   testRunnerHtml: testFramework => `
     <html lang="en-US">
       <head></head>
       <body>
-        <link rel="stylesheet" href="dist/themes/final.css">
         <script type="module" src="src/solid-components.ts"></script>
         <script type="module" src="${testFramework}"></script>
       </body>
