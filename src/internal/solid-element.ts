@@ -1,6 +1,7 @@
 import { css, LitElement, unsafeCSS } from 'lit';
 import { property } from 'lit/decorators.js';
 import tailwind from '../styles/tailwind.css?inline';
+import type { CSSResult } from 'lit';
 
 export default class SolidElement extends LitElement {
   // Make localization attributes reactive
@@ -17,11 +18,9 @@ export default class SolidElement extends LitElement {
    * (See: https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements#internal_vs._external_styles)
    */
 
-  static styles = [
-    css`
-      ${unsafeCSS(tailwind)}
-    `
-  ];
+  static styles: CSSResult = css`
+    ${unsafeCSS(tailwind)}
+  `;
 
   /** Emits a custom event with more convenient defaults. */
   emit(name: string, options?: CustomEventInit) {

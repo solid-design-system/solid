@@ -2,7 +2,8 @@
 {
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
-    "target": "es2017",
+    "target": "esnext",
+    "module": "esnext",
     "lib": [
       "dom",
       "dom.Iterable",
@@ -34,6 +35,10 @@
     ]
   },
   "include": [
-    "src", "vite.config.ts"
+    "src/**/*", "vite.config.ts"
+  ],
+  "exclude": [
+    "src/_components/**",
+    "custom-elements-manifest.config.ts"
   ]
 }

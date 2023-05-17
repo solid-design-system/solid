@@ -110,7 +110,7 @@ export const Slots = {
       };
 
       // conditionally add slots if they are in selection
-      const selectedSlots = selection.reduce((acc, slot) => {
+      const selectedSlots = selection.reduce((acc: { [key in 'prefix' | 'suffix' | 'default']?: string }, slot) => {
         acc[slot] = slots[slot];
         return acc;
       }, {});

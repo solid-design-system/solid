@@ -4,7 +4,7 @@ import path from 'path';
 export default function versionedComponents() {
   return {
     name: 'rollup-plugin-versioned-components',
-    async writeBundle(outputOptions) {
+    async writeBundle(outputOptions: any) {
       if (outputOptions.format !== 'es') {
         return;
       }
@@ -20,7 +20,7 @@ export default function versionedComponents() {
       const distComponentsVersionedPath = './dist/versioned-components/es';
       fs.mkdirSync(distComponentsVersionedPath, { recursive: true });
 
-      function copyFolderSync(source, target) {
+      function copyFolderSync(source: string, target: string) {
         const files = fs.readdirSync(source);
 
         files.forEach(file => {
@@ -38,7 +38,7 @@ export default function versionedComponents() {
 
       copyFolderSync(distComponentsPath, distComponentsVersionedPath);
 
-      function replaceComponentNames(directory) {
+      function replaceComponentNames(directory: string) {
         const files = fs.readdirSync(directory);
 
         files.forEach(file => {

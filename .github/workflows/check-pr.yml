@@ -28,10 +28,16 @@ jobs:
         run: pnpm i
 
       - name: Check linting
-        run: pnpm lint
+        run: pnpm lint.verify
 
       - name: Check formatting
-        run: pnpm formatter
+        run: pnpm format.verify
+
+      - name: Check TypeScript
+        run: pnpm ts.verify
+
+      - name: Check build
+        run: pnpm build
 
       - name: Check tests
         run: pnpm test

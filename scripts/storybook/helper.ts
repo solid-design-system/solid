@@ -179,9 +179,9 @@ export const storybookTemplates = (customElementTag: string): StorybookTemplates
     inlineVariationsTemplate: ({ args, variation, alternativeTitle, vertical }) => {
       return html`
         <div style="">
-          ${alternativeTitle !== ''
+          ${alternativeTitle?.length
             ? html`<h3 style="font-size: 16px; margin-bottom: 12px; margin-top: 24px">
-                ${(alternativeTitle || variation?.arg).replace('-attr', '')}
+                ${(alternativeTitle || variation?.arg)?.replace('-attr', '')}
               </h3>`
             : ''}
           ${variation?.values?.map((value: any) => {

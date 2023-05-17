@@ -35,21 +35,22 @@
   "scripts": {
     "dev": "pnpm storybook",
     "build": "vite build",
-    "preview": "vite preview",
     "build-storybook": "pnpm build && storybook build --output-dir dist/storybook",
-    "verify": "npm run prettier:check && npm run lint && npm run build && npm run test",
-    "prepublishOnly": "npm run verify",
-    "formatter": "prettier --check --loglevel warn .",
-    "formatter.fix": "prettier --write --loglevel warn .",
-    "lint": "eslint src --max-warnings 0",
+    "preview": "vite preview",
+    "fix": "pnpm lint.fix && pnpm format.fix",
+    "verify": "pnpm format.verify > /dev/null && pnpm lint.verify && pnpm ts.verify && pnpm build && echo '✅ Build verified' && pnpm test && echo '✅ Test verified'",
+    "format.fix": "prettier --write --loglevel warn .",
+    "format.verify": "prettier --check --loglevel warn . && echo '✅ Formatting verified'",
     "lint.fix": "eslint src --max-warnings 0 --fix",
-    "ts-check": "tsc --noEmit --project ./tsconfig.json",
+    "lint.verify": "eslint src --max-warnings 0 && echo '✅ Linting verified'",
+    "ts.verify": "tsc --noEmit --project ./tsconfig.json && echo '✅ TypeScript verified'",
     "plop": "plop --plopfile scripts/plop/plopfile.js",
     "test": "web-test-runner --group default",
-    "test:component": "web-test-runner -- --watch --group",
-    "test:watch": "web-test-runner --watch --group default",
+    "test.component": "web-test-runner -- --watch --group",
+    "test.watch": "web-test-runner --watch --group default",
     "storybook": "storybook dev -p 6999",
     "chromatic": "npx chromatic",
+    "prepublishOnly": "pnpm verify",
     "// prepare": "We don't want to start the prepare script for husky when we don't install the dev depencies.",
     "prepare": "node -e \"try { require('husky').install() } catch (e) {if (e.code !== 'MODULE_NOT_FOUND') throw e}\""
   },
@@ -91,6 +92,7 @@
     "@storybook/web-components-vite": "^7.0.12",
     "@types/mocha": "^10.0.1",
     "@types/react": "^18.0.38",
+    "@types/sinon": "^10.0.15",
     "@typescript-eslint/eslint-plugin": "^5.59.0",
     "@typescript-eslint/parser": "^5.59.0",
     "@web/test-runner": "^0.16.1",
@@ -144,8 +146,8 @@
   },
   "lint-staged": {
     "*": [
-      "pnpm lint.fix",
-      "pnpm formatter.fix"
+      "pnpm lint",
+      "pnpm format"
     ]
   },
   "readme": "ERROR: No README data found!",

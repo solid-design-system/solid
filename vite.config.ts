@@ -1,22 +1,23 @@
-import { defineConfig } from 'vite';
-import path from 'path';
-import VitePluginCustomElementsManifest from 'vite-plugin-cem';
-import resolve from '@rollup/plugin-node-resolve';
+import customElementConfig from './custom-elements-manifest.config';
+import customMinifyPlugin from './scripts/rollup-plugin-custom-minify';
 import minifyHtmlPlugin from 'rollup-plugin-minify-html-literals';
+import path from 'path';
+import resolve from '@rollup/plugin-node-resolve';
 import summaryPlugin from 'rollup-plugin-summary';
-import customMinifyPlugin from './scripts/rollup-plugin-custom-minify.js';
-import versionedComponentsPlugin from './scripts/rollup-plugin-versioned-components.js';
-import customElementConfig from './custom-elements-manifest.config.js';
-import webTypesPlugin from './scripts/rollup-plugin-web-types.js';
+import versionedComponentsPlugin from './scripts/rollup-plugin-versioned-components';
+import VitePluginCustomElementsManifest from 'vite-plugin-cem';
+import webTypesPlugin from './scripts/rollup-plugin-web-types';
+import type { defineConfig } from 'vite';
 
+// eslint-disable-next-line
 const minifyHTML = (minifyHtmlPlugin as any).default;
 
 // https://vitejs.dev/config/
-export default (({ command }) => {
+export default (({ command }: { command: string }) => {
   return {
     plugins: [
       VitePluginCustomElementsManifest(
-        command === 'build' ? customElementConfig : { ...customElementConfig, plugins: [] }
+        command === 'build' ? customElementConfig : { ...customElementConfig, plugins: [] as any[] }
       )
     ],
     /**
@@ -42,6 +43,7 @@ export default (({ command }) => {
           // Resolve bare module specifiers to relative paths
           resolve(),
           // Minify HTML template literals
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-call
           minifyHTML(),
           // Minify ES and UMD bundles
           customMinifyPlugin({
