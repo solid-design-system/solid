@@ -31,7 +31,6 @@ export const storybookHelpers = (customElementTag: string) => {
       }
       const { argTypes } = getWcStorybookHelpers(customElementTag);
       if (argTypes[attribute]?.control?.type === 'boolean') {
-        console.log('boolean');
         return [true, false];
       } else {
         return argTypes[attribute].options;
@@ -59,13 +58,13 @@ export const storybookHelpers = (customElementTag: string) => {
      */
     overrideArgs: (
       overrides: {
-        attributes?: { [k: string]: any };
-        properties?: { [k: string]: any };
-        slots?: { [k: string]: any };
-        cssParts?: { [k: string]: any };
-        cssProperties?: { [k: string]: any };
+        attributes?: { [k: string]: any; };
+        properties?: { [k: string]: any; };
+        slots?: { [k: string]: any; };
+        cssParts?: { [k: string]: any; };
+        cssProperties?: { [k: string]: any; };
       },
-      original?: { [k: string]: any }
+      original?: { [k: string]: any; }
     ) => {
       const args = original || getWcStorybookHelpers(customElementTag).args;
       const suffixes = {
@@ -100,7 +99,7 @@ export const storybookHelpers = (customElementTag: string) => {
  */
 
 type StorybookTemplates = {
-  defaultTemplate: (args: { [k: string]: any }) => any;
+  defaultTemplate: (args: { [k: string]: any; }) => any;
   attributesTemplate: ({
     args,
     attributes,
@@ -119,7 +118,7 @@ type StorybookTemplates = {
     vertical
   }: {
     args: any;
-    variation?: { arg: string; values: any[] };
+    variation?: { arg: string; values: any[]; };
     alternativeTitle?: string;
     vertical?: boolean;
   }) => any;
@@ -129,9 +128,9 @@ type StorybookTemplates = {
     variationB,
     alternativeTitle
   }: {
-    args: { [k: string]: any };
-    variationA: { arg: string; values: any[] };
-    variationB: { arg: string; values: any[] };
+    args: { [k: string]: any; };
+    variationA: { arg: string; values: any[]; };
+    variationB: { arg: string; values: any[]; };
     alternativeTitle?: string;
   }) => any;
   attributeToTableTemplate: ({
@@ -139,7 +138,7 @@ type StorybookTemplates = {
     attributeA,
     attributeB
   }: {
-    args: { [k: string]: any };
+    args: { [k: string]: any; };
     attributeA: string;
     attributeB: string;
   }) => any;
@@ -161,16 +160,16 @@ export const storybookTemplates = (customElementTag: string): StorybookTemplates
       const { inlineVariationsTemplate } = storybookTemplates(customElementTag);
       return html`
         ${getValuesFromAttributes(attributes).map((attribute: any) => {
-          return inlineVariationsTemplate({
-            args,
-            variation: {
-              arg: attribute.name,
-              values: getValuesFromAttribute(attribute.name)
-            },
-            alternativeTitle: alternativeTitle === '' || alternativeTitle ? alternativeTitle : attribute.name,
-            vertical
-          });
-        })}
+        return inlineVariationsTemplate({
+          args,
+          variation: {
+            arg: attribute.name,
+            values: getValuesFromAttribute(attribute.name)
+          },
+          alternativeTitle: alternativeTitle === '' || alternativeTitle ? alternativeTitle : attribute.name,
+          vertical
+        });
+      })}
       `;
     },
     /**
@@ -180,10 +179,10 @@ export const storybookTemplates = (customElementTag: string): StorybookTemplates
       return html`
         <div style="">
           ${alternativeTitle?.length
-            ? html`<h3 style="font-size: 16px; margin-bottom: 12px; margin-top: 24px">
+          ? html`<h3 style="font-size: 16px; margin-bottom: 12px; margin-top: 24px">
                 ${(alternativeTitle || variation?.arg)?.replace('-attr', '')}
               </h3>`
-            : ''}
+          : ''}
           ${variation?.values?.map((value: any) => {
             return html`<div
               style="margin-bottom: 16px; display: ${vertical ? 'block' : 'inline-block'}; margin-right: 16px"
@@ -234,17 +233,17 @@ export const storybookTemplates = (customElementTag: string): StorybookTemplates
         </thead>
         <tbody>
           ${variationB.values.map((value: any) => {
-            const row = html`<tr>
+        const row = html`<tr>
               <th>${firstRow ? variationB.arg.replace('-attr', '') : ''}</th>
               <td>${value}</td>
               ${variationA.values.map(
-                (valueA: any) =>
-                  html`<td>${template({ ...args, [variationA.arg]: valueA, [variationB.arg]: value })}</td>`
-              )}
+          (valueA: any) =>
+            html`<td>${template({ ...args, [variationA.arg]: valueA, [variationB.arg]: value })}</td>`
+        )}
             </tr>`;
-            firstRow = false;
-            return row;
-          })}
+        firstRow = false;
+        return row;
+      })}
         </tbody>
       </table>`;
     },
@@ -268,3 +267,98 @@ export const storybookTemplates = (customElementTag: string): StorybookTemplates
     }
   };
 };
+export const storybookTemplate = (customElementTag: string) => {
+  const { template, args: defaultArgs } = getWcStorybookHelpers(customElementTag);
+  const { getValuesFromAttribute } = storybookHelpers(customElementTag);
+
+  const generateStory = ({
+    axis,
+    args = defaultArgs,
+    title = ''
+  }: {
+    axis: {
+      x?: { type: string; name: string; values?: any[]; title?: string; };
+      y?: { type: string; name: string; values?: any[]; title?: string; };
+      z?: { type: string; name: string; value?: any; title?: string; };
+    };
+    args?: any;
+    title?: string;
+  }) => {
+    const { x, y, z } = axis;
+
+    const xAxis = x && {
+      ...x,
+      values: x.type === 'attribute' ? getValuesFromAttribute(x.name, args) : x.values
+    };
+
+    const yAxis = y && {
+      ...y,
+      values: y.type === 'attribute' ? getValuesFromAttribute(y.name, args) : y.values
+    };
+
+    const zAxis = z;
+
+    let firstRow = true;
+    return html`
+      <table>
+        <thead>
+          <style>
+            th {
+              text-align: left;
+              font-size: 16px;
+            }
+            td {
+              font-size: 12px;
+            }
+            th,
+            td {
+              padding: 16px;
+            }
+          </style>
+          ${xAxis && html`
+            <tr>
+              <td></td>
+              <td></td>
+              <th>${(xAxis && yAxis) ? xAxis.name : ''}</th>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              ${xAxis.values.map((value: any) => html`<td>${value}</td>`)}
+            </tr>
+          `}
+        </thead>
+        <tbody>
+          ${(yAxis?.values || ['']).map((yValue: any) => {
+      const row = html`
+              <tr>
+                <th>${firstRow && (xAxis && yAxis) ? xAxis.name : ''}</th>
+                <td>${yValue}</td>
+                ${(xAxis?.values || ['']).map(
+        (xValue: any) => {
+          console.log('xValue', xValue, 'yValue', yValue, 'zAxis', zAxis);
+          return html`
+                      <td>
+                        ${template({
+            ...args,
+            ...zAxis && { [zAxis.name]: zAxis.value },
+            ...xAxis && { [xAxis.name]: xValue },
+            ...yAxis && { [yAxis.name]: yValue }
+          })}
+                      </td>
+                    `;
+        }
+      )}
+              </tr>
+            `;
+      firstRow = false;
+      return row;
+    })}
+        </tbody>
+      </table>
+    `;
+  };
+
+  return { generateStory };
+};
+

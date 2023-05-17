@@ -1,6 +1,6 @@
 import '../../solid-components';
 import { html } from 'lit-html';
-import { storybookDefaults, storybookHelpers, storybookTemplates } from '../../../scripts/storybook/helper';
+import { storybookDefaults, storybookHelpers, storybookTemplate, storybookTemplates } from '../../../scripts/storybook/helper';
 
 const { argTypes } = storybookDefaults('sd-button');
 const { defaultTemplate, attributesTemplate, attributeToTableTemplate } = storybookTemplates('sd-button');
@@ -43,6 +43,22 @@ export const VariantAndSize = {
       args,
       attributeA: 'variant',
       attributeB: 'size'
+    });
+  }
+};
+
+export const VariantAndSizeNew = {
+  name: 'Variant × Size',
+  parameters: { controls: { exclude: ['variant', 'size'] } },
+  render: (args: any) => {
+    const { generateStory } = storybookTemplate('sd-button'); // Replace with your custom element tag
+
+    return generateStory({
+      axis: {
+        x: { type: 'attribute', name: 'variant' },
+        y: { type: 'attribute', name: 'size' },
+      },
+      args,
     });
   }
 };
@@ -132,10 +148,10 @@ export const Slots = {
     // Size
     output.push(html`
       ${attributesTemplate({
-        ...defaultOptions,
-        args: getSlots(['prefix', 'suffix', 'default']),
-        alternativeTitle: 'size (default)'
-      })}
+      ...defaultOptions,
+      args: getSlots(['prefix', 'suffix', 'default']),
+      alternativeTitle: 'size (default)'
+    })}
       ${attributesTemplate({ ...defaultOptions, args: getSlots(['suffix', 'default']) })}
       ${attributesTemplate({ ...defaultOptions, args: getSlots(['prefix', 'default']) })}
       ${attributesTemplate({ ...defaultOptions, args: getSlots(['default']) })}
