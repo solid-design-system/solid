@@ -35,3 +35,4 @@ jobs:
           exitOnceUploaded: true
           # We don't need tests in the main branch
           skip: true
+          buildScriptName: build.storybook
