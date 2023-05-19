@@ -267,36 +267,48 @@ export const storybookTemplates = (customElementTag: string): StorybookTemplates
     }
   };
 };
+
+type AxisDefinition = {
+  type: string;
+  name: string;
+  values?: any[];
+  title?: string;
+};
+
+type ConstantDefinition = {
+  type: string;
+  name: string;
+  value: any;
+  title?: string;
+};
+
 export const storybookTemplate = (customElementTag: string) => {
   const { template, args: defaultArgs } = getWcStorybookHelpers(customElementTag);
   const { getValuesFromAttribute } = storybookHelpers(customElementTag);
 
   const generateStory = ({
     axis,
+    constants = [],
     args = defaultArgs,
-    title = ''
   }: {
     axis: {
-      x?: { type: string; name: string; values?: any[]; title?: string; };
-      y?: { type: string; name: string; values?: any[]; title?: string; };
-      z?: { type: string; name: string; value?: any; title?: string; };
+      x?: AxisDefinition;
+      y?: AxisDefinition;
     };
+    constants?: ConstantDefinition[];
     args?: any;
-    title?: string;
   }) => {
-    const { x, y, z } = axis;
+    const { x, y } = axis;
 
     const xAxis = x && {
       ...x,
-      values: x.type === 'attribute' ? getValuesFromAttribute(x.name, args) : x.values
+      values: x.type === 'attribute' ? getValuesFromAttribute(x.name) : x.values
     };
 
     const yAxis = y && {
       ...y,
-      values: y.type === 'attribute' ? getValuesFromAttribute(y.name, args) : y.values
+      values: y.type === 'attribute' ? getValuesFromAttribute(y.name) : y.values
     };
-
-    const zAxis = z;
 
     let firstRow = true;
     return html`
@@ -334,26 +346,26 @@ export const storybookTemplate = (customElementTag: string) => {
               <tr>
                 <th>${firstRow && (xAxis && yAxis) ? xAxis.name : ''}</th>
                 <td>${yValue}</td>
-                ${(xAxis?.values || ['']).map(
-        (xValue: any) => {
-          console.log('xValue', xValue, 'yValue', yValue, 'zAxis', zAxis);
-          return html`
-                      <td>
-                        ${template({
-            ...args,
-            ...zAxis && { [zAxis.name]: zAxis.value },
-            ...xAxis && { [xAxis.name]: xValue },
-            ...yAxis && { [yAxis.name]: yValue }
-          })}
-                      </td>
-                    `;
-        }
-      )}
+                ${(xAxis?.values || ['']).map((xValue: any) => {
+        // Create constant definitions from the array
+        const constantDefinitions = constants.reduce((acc, curr) => ({ ...acc, [curr.name]: curr.value }), {});
+        return html`
+                    <td>
+                      ${template({
+          ...args,
+          ...constantDefinitions,
+          ...xAxis && { [xAxis.name]: xValue },
+          ...yAxis && { [yAxis.name]: yValue }
+        })}
+                    </td>
+                  `;
+      })}
               </tr>
             `;
       firstRow = false;
       return row;
     })}
+       ;
         </tbody>
       </table>
     `;
@@ -361,4 +373,3 @@ export const storybookTemplate = (customElementTag: string) => {
 
   return { generateStory };
 };
-

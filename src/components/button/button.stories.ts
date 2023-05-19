@@ -52,12 +52,15 @@ export const VariantAndSizeNew = {
   parameters: { controls: { exclude: ['variant', 'size'] } },
   render: (args: any) => {
     const { generateStory } = storybookTemplate('sd-button'); // Replace with your custom element tag
-
     return generateStory({
       axis: {
         x: { type: 'attribute', name: 'variant' },
         y: { type: 'attribute', name: 'size' },
       },
+      constants: [
+        { type: 'attribute', name: 'loading', value: true },
+        { type: 'attribute', name: 'disabled', value: true },
+      ],
       args,
     });
   }
