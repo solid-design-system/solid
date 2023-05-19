@@ -5,6 +5,7 @@ import path from 'path';
 import resolve from '@rollup/plugin-node-resolve';
 import summaryPlugin from 'rollup-plugin-summary';
 import versionedComponentsPlugin from './scripts/rollup-plugin-versioned-components';
+import VitePluginCreateEmptyCemIfNotExisting from './scripts/vite-plugin-create-empty-cem-if-not-existing';
 import VitePluginCustomElementsManifest from 'vite-plugin-cem';
 import webTypesPlugin from './scripts/rollup-plugin-web-types';
 import type { defineConfig } from 'vite';
@@ -16,6 +17,8 @@ const minifyHTML = (minifyHtmlPlugin as any).default;
 export default (({ command }: { command: string }) => {
   return {
     plugins: [
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+      VitePluginCreateEmptyCemIfNotExisting(),
       VitePluginCustomElementsManifest(
         command === 'build' ? customElementConfig : { ...customElementConfig, plugins: [] as any[] }
       )
