@@ -21,6 +21,20 @@ export const storybookDefaults = (customElementTag: string): any => {
 export const storybookHelpers = (customElementTag: string) => {
   return {
     /**
+     *
+     */
+
+    getSuffixFromType: (type: 'attribute' | 'property' | 'slot' | 'cssPart' | 'cssProperty'): string => {
+      return {
+        attribute: '-attr',
+        property: '-prop',
+        slot: '-slot',
+        cssPart: '-part',
+        cssProperty: '',
+      }[type];
+    },
+
+    /**
      * This function is used to get the values from an attribute.
      * It automatically adds the suffixes to the keys as needed for Storybook.
      * It also handles boolean attributes.
@@ -68,11 +82,11 @@ export const storybookHelpers = (customElementTag: string) => {
     ) => {
       const args = original || getWcStorybookHelpers(customElementTag).args;
       const suffixes = {
-        attributes: '-attr',
-        properties: '-prop',
-        slots: '-slot',
-        cssParts: '-part',
-        cssProperties: ''
+        attributes: storybookHelpers(customElementTag).getSuffixFromType('attribute'),
+        properties: storybookHelpers(customElementTag).getSuffixFromType('property'),
+        slots: storybookHelpers(customElementTag).getSuffixFromType('slot'),
+        cssParts: storybookHelpers(customElementTag).getSuffixFromType('cssPart'),
+        cssProperties: storybookHelpers(customElementTag).getSuffixFromType('cssProperty')
       };
 
       for (const [category, suffix] of Object.entries(suffixes)) {
@@ -289,85 +303,115 @@ export const storybookTemplate = (customElementTag: string) => {
   const generateStory = ({
     axis,
     constants = [],
-    args = defaultArgs,
+    args = defaultArgs
   }: {
     axis: {
-      x?: AxisDefinition;
-      y?: AxisDefinition;
+      x?: AxisDefinition | AxisDefinition[];
+      y?: AxisDefinition | AxisDefinition[];
     };
-    constants?: ConstantDefinition[];
+    constants?: ConstantDefinition | ConstantDefinition[];
     args?: any;
   }) => {
     const { x, y } = axis;
 
-    const xAxis = x && {
-      ...x,
-      values: x.type === 'attribute' ? getValuesFromAttribute(x.name) : x.values
-    };
+    const xAxes = Array.isArray(x)
+      ? x.map(xItem => ({
+        ...xItem,
+        values: xItem.type === 'attribute' ? getValuesFromAttribute(xItem.name) : xItem.values
+      }))
+      : x
+        ? [
+          {
+            ...x,
+            values: x.type === 'attribute' ? getValuesFromAttribute(x.name) : x.values
+          }
+        ]
+        : [{}];
 
-    const yAxis = y && {
-      ...y,
-      values: y.type === 'attribute' ? getValuesFromAttribute(y.name) : y.values
-    };
+    const yAxes = Array.isArray(y)
+      ? y.map(yItem => ({
+        ...yItem,
+        values: yItem.type === 'attribute' ? getValuesFromAttribute(yItem.name) : yItem.values
+      }))
+      : y
+        ? [
+          {
+            ...y,
+            values: y.type === 'attribute' ? getValuesFromAttribute(y.name) : y.values
+          }
+        ]
+        : [{}];
 
-    let firstRow = true;
     return html`
-      <table>
-        <thead>
-          <style>
-            th {
-              text-align: left;
-              font-size: 16px;
-            }
-            td {
-              font-size: 12px;
-            }
-            th,
-            td {
-              padding: 16px;
-            }
-          </style>
-          ${xAxis && html`
-            <tr>
-              <td></td>
-              <td></td>
-              <th>${(xAxis && yAxis) ? xAxis.name : ''}</th>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              ${xAxis.values.map((value: any) => html`<td>${value}</td>`)}
-            </tr>
-          `}
-        </thead>
-        <tbody>
-          ${(yAxis?.values || ['']).map((yValue: any) => {
-      const row = html`
-              <tr>
-                <th>${firstRow && (xAxis && yAxis) ? xAxis.name : ''}</th>
-                <td>${yValue}</td>
-                ${(xAxis?.values || ['']).map((xValue: any) => {
-        // Create constant definitions from the array
-        const constantDefinitions = constants.reduce((acc, curr) => ({ ...acc, [curr.name]: curr.value }), {});
+      <style>
+        table + table {
+          margin-top: 48px;
+        }
+        th {
+          text-align: left;
+          font-size: 16px;
+        }
+        td {
+          font-size: 12px;
+        }
+        th,
+        td {
+          padding: 16px;
+        }
+      </style>
+      ${xAxes.map((xAxis: any) => {
+      return html` ${yAxes.map((yAxis: any) => {
+        let firstRow = true;
         return html`
-                    <td>
-                      ${template({
-          ...args,
-          ...constantDefinitions,
-          ...xAxis && { [xAxis.name]: xValue },
-          ...yAxis && { [yAxis.name]: yValue }
-        })}
-                    </td>
+            <table>
+              <thead>
+                ${xAxis &&
+          html`
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <th>${xAxes.length > 1 || (xAxis.values && yAxis.values) ? xAxis.name : ''}</th>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    ${xAxis.values.map((value: any) => html`<td>${value}</td>`)}
+                  </tr>
+                `}
+              </thead>
+              <tbody>
+                ${(yAxis?.values || ['']).map((yValue: any) => {
+            const row = html`
+                    <tr>
+                      <th>${firstRow && ((xAxis && yAxis) || yAxes.length > 1) ? yAxis.name : ''}</th>
+                      <td>${yValue}</td>
+                      ${(xAxis?.values || ['']).map((xValue: any) => {
+              // Create constant definitions from the array
+              const constantDefinitions = (Array.isArray(constants) ? constants : [constants]).reduce(
+                (acc, curr) => ({ ...acc, [curr.name]: curr.value }),
+                {}
+              );
+              return html`
+                          <td>
+                            ${template({
+                ...args,
+                ...constantDefinitions,
+                ...(xAxis && { [`${xAxis.name}${storybookHelpers(customElementTag).getSuffixFromType(xAxis.type)}`]: xValue }),
+                ...(yAxis && { [`${yAxis.name}${storybookHelpers(customElementTag).getSuffixFromType(yAxis.type)}`]: yValue })
+              })}
+                          </td>
+                        `;
+            })}
+                    </tr>
                   `;
-      })}
-              </tr>
-            `;
-      firstRow = false;
-      return row;
+            firstRow = false;
+            return row;
+          })}
+              </tbody>
+            </table>
+          `;
+      })}`;
     })}
-       ;
-        </tbody>
-      </table>
     `;
   };
 

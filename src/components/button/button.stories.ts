@@ -1,6 +1,11 @@
 import '../../solid-components';
 import { html } from 'lit-html';
-import { storybookDefaults, storybookHelpers, storybookTemplate, storybookTemplates } from '../../../scripts/storybook/helper';
+import {
+  storybookDefaults,
+  storybookHelpers,
+  storybookTemplate,
+  storybookTemplates
+} from '../../../scripts/storybook/helper';
 
 const { argTypes } = storybookDefaults('sd-button');
 const { defaultTemplate, attributesTemplate, attributeToTableTemplate } = storybookTemplates('sd-button');
@@ -55,13 +60,9 @@ export const VariantAndSizeNew = {
     return generateStory({
       axis: {
         x: { type: 'attribute', name: 'variant' },
-        y: { type: 'attribute', name: 'size' },
+        y: { type: 'attribute', name: 'size' }
       },
-      constants: [
-        { type: 'attribute', name: 'loading', value: true },
-        { type: 'attribute', name: 'disabled', value: true },
-      ],
-      args,
+      args
     });
   }
 };
