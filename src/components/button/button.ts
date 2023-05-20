@@ -264,27 +264,26 @@ export default class SdButton extends SolidElement implements SolidFormControl {
         @click=${this.handleClick}
       >
         <slot name="prefix" part="prefix" class=${cx(
-          'flex flex-auto items-center pointer-events-none',
-          this.circle && 'hidden',
-          this.loading && 'invisible',
-          slots.prefix && (this.size === 'small' ? 'mr-1' : 'mr-2')
-        )}></slot>
+      'flex flex-auto items-center pointer-events-none',
+      this.circle && 'hidden',
+      this.loading && 'invisible',
+      slots.prefix && (this.size === 'small' ? 'mr-1' : 'mr-2')
+    )}></slot>
         <slot part="label" class=${cx('inline-block', this.loading && 'invisible')}></slot>
         <slot name="suffix"
           part="suffix"
           class=${cx(
-            'flex flex-auto items-center pointer-events-none',
-            this.loading && 'invisible',
-            this.circle && 'hidden',
-            slots.suffix && (this.size === 'small' ? 'ml-1' : 'ml-2')
-          )}>
+      'flex flex-auto items-center pointer-events-none',
+      this.loading && 'invisible',
+      this.circle && 'hidden',
+      slots.suffix && (this.size === 'small' ? 'ml-1' : 'ml-2')
+    )}>
         </slot>
-      ${
-        this.loading
-          ? html`<sd-spinner
+      ${this.loading
+        ? html`<sd-spinner
               class="absolute text-md top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
             ></sd-spinner>`
-          : ''
+        : ''
       }
       </${tag}>
     `;
@@ -295,8 +294,8 @@ export default class SdButton extends SolidElement implements SolidFormControl {
   /**
    * Inherits Tailwindclasses and includes additional styling.
    */
-  styles = [
-    SolidElement.styles,
+  static styles = [
+    ...SolidElement.styles,
     css`
       :host {
         display: inline-block;

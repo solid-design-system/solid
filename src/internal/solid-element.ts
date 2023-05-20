@@ -18,9 +18,9 @@ export default class SolidElement extends LitElement {
    * (See: https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements#internal_vs._external_styles)
    */
 
-  static styles: CSSResult = css`
+  static styles: CSSResult[] = [css`
     ${unsafeCSS(tailwind)}
-  `;
+  `];
 
   /** Emits a custom event with more convenient defaults. */
   emit(name: string, options?: CustomEventInit) {

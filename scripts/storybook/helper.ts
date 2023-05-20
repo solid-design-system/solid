@@ -314,7 +314,9 @@ export const storybookTemplate = (customElementTag: string) => {
   }) => {
 
     const constantDefinitions = (Array.isArray(constants) ? constants : [constants]).reduce(
-      (acc, curr) => ({ ...acc, [curr.name]: curr.value }),
+      (acc, curr) => ({
+        ...acc, [`${curr.name}${storybookHelpers(customElementTag).getSuffixFromType(curr.type as any)}`]: curr.value
+      }),
       {}
     );
 
@@ -390,7 +392,7 @@ export const storybookTemplate = (customElementTag: string) => {
                   <tr>
                     <td></td>
                     <td></td>
-                    ${xAxis.values.map((value: any) => html`<td>${value}</td>`)}
+                    ${xAxis.values.map((xValue: any) => html`<td>${xAxis.type !== 'slot' ? xValue : ''}</td>`)}
                   </tr>
                 `}
               </thead>
@@ -399,18 +401,17 @@ export const storybookTemplate = (customElementTag: string) => {
             const row = html`
                     <tr>
                       <th>${firstRow && ((xAxis && yAxis) || yAxes.length > 1) ? yAxis.name : ''}</th>
-                      <td>${yValue}</td>
+                      <td>${yAxis.type !== 'slot' ? yValue : ''}</td>
                       ${(xAxis?.values || ['']).map((xValue: any) => {
-              // Create constant definitions from the array
               return html`
-                          <td>
+                          <td><div>
                             ${template({
                 ...args,
                 ...constantDefinitions,
                 ...(xAxis && { [`${xAxis.name}${storybookHelpers(customElementTag).getSuffixFromType(xAxis.type)}`]: xValue }),
                 ...(yAxis && { [`${yAxis.name}${storybookHelpers(customElementTag).getSuffixFromType(yAxis.type)}`]: yValue })
               })}
-                          </td>
+                          </td></div>
                         `;
             })}
                     </tr>

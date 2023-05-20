@@ -60,7 +60,7 @@ export const VariantAndSize = {
  * Use the `loading` attribute to make a button busy. The width will remain the same as before, preventing adjacent elements from moving around. Clicks will be suppressed until the loading state is removed.
  */
 
-export const LoadingNew = {
+export const Loading = {
   parameters: { controls: { exclude: ['variant', 'size', 'disabled', 'loading'] } },
   render: (args: any) => {
     return generateStory({
@@ -77,26 +77,23 @@ export const LoadingNew = {
   }
 };
 
-export const Loading = {
-  parameters: { controls: { exclude: relevantAttributes } },
-  render: (args: any) => {
-    return attributesTemplate({
-      args: { ...args, loading: true },
-      attributes: relevantAttributes.filter(attr => attr !== 'loading')
-    });
-  }
-};
-
 /**
  * Use the `disabled` attribute to disable a button. Clicks will be suppressed until the disabled state is removed.
  */
 
 export const Disabled = {
-  parameters: { controls: { exclude: relevantAttributes } },
+  parameters: { controls: { exclude: ['variant', 'size', 'disabled', 'loading'] } },
   render: (args: any) => {
-    return attributesTemplate({
-      args: { ...args, disabled: true },
-      attributes: relevantAttributes.filter(attr => attr !== 'disabled')
+    return generateStory({
+      axis: {
+        x: [
+          { type: 'attribute', name: 'variant' },
+          { type: 'attribute', name: 'size' },
+          { type: 'attribute', name: 'loading' }
+        ],
+      },
+      constants: { type: 'attribute', name: 'disabled', value: true },
+      args
     });
   }
 };
@@ -105,12 +102,24 @@ export const Disabled = {
  * Use the `circle` attribute to create circular icon buttons. When this attribute is set, the button expects ideally a single `<span>` in the default slot.
  */
 
+
 export const Circle = {
-  parameters: { controls: { exclude: [...relevantAttributes, 'circle', 'default', 'caret'] } },
+  parameters: { controls: { exclude: ['variant', 'size', 'disabled', 'loading', 'circle', 'default'] } },
   render: (args: any) => {
-    return attributesTemplate({
-      args: { ...args, circle: true, 'default-slot': '★' },
-      attributes: relevantAttributes.filter(attr => attr !== 'circle' || 'caret')
+    return generateStory({
+      axis: {
+        x: [
+          { type: 'attribute', name: 'variant' },
+          { type: 'attribute', name: 'size' },
+          { type: 'attribute', name: 'loading' },
+          { type: 'attribute', name: 'disabled' }
+        ],
+      },
+      constants: [
+        { type: 'attribute', name: 'circle', value: true },
+        { type: 'slot', name: 'default', value: '★' }
+      ],
+      args
     });
   }
 };
@@ -122,51 +131,19 @@ export const Circle = {
 
 export const Slots = {
   parameters: { controls: { exclude: ['size', 'default', 'prefix', 'suffix'] } },
-  render: () => {
-    /**
-     * Those slots are relevant for the stories in terms of design variations.
-     * To make story creation faster and as there are lots of them, it is easier to
-     * define them here and use it later.
-     */
-    const getSlots = (selection: ('prefix' | 'suffix' | 'default')[]) => {
-      const slots = {
-        prefix: '<span slot="prefix">★</span>',
-        suffix: '<span slot="suffix">★</span>',
-        default: '&lt;slot&gt;'
-      };
-
-      // conditionally add slots if they are in selection
-      const selectedSlots = selection.reduce((acc: { [key in 'prefix' | 'suffix' | 'default']?: string }, slot) => {
-        acc[slot] = slots[slot];
-        return acc;
-      }, {});
-
-      return overrideArgs({ slots: selectedSlots });
-    };
-
-    /**
-     * We're setting default args here, so we don't have to repeat them in every
-     * story and just overwrite the stuff that has to be changed.
-     */
-    const defaultOptions = {
-      attributes: ['size'],
-      alternativeTitle: ''
-    };
-
-    const output = [];
-
-    // Size
-    output.push(html`
-      ${attributesTemplate({
-      ...defaultOptions,
-      args: getSlots(['prefix', 'suffix', 'default']),
-      alternativeTitle: 'size (default)'
-    })}
-      ${attributesTemplate({ ...defaultOptions, args: getSlots(['suffix', 'default']) })}
-      ${attributesTemplate({ ...defaultOptions, args: getSlots(['prefix', 'default']) })}
-      ${attributesTemplate({ ...defaultOptions, args: getSlots(['default']) })}
-    `);
-
-    return html`${output}`;
+  render: (args: any) => {
+    return html`
+    ${['small', 'medium', 'large'].map(size => generateStory({
+      axis: {
+        x: { type: 'slot', name: 'suffix', values: ['', '<span slot="suffix">★</span>'] },
+        y: { type: 'slot', name: 'prefix', values: ['', '<span slot="prefix">★</span>'] }
+      },
+      constants: [
+        { type: 'slot', name: 'default', value: 'Default' },
+        { type: 'attribute', name: 'size', value: size }
+      ],
+      args
+    }))}
+    `;
   }
 };
