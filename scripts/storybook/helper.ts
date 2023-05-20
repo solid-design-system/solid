@@ -72,13 +72,13 @@ export const storybookHelpers = (customElementTag: string) => {
      */
     overrideArgs: (
       overrides: {
-        attributes?: { [k: string]: any; };
-        properties?: { [k: string]: any; };
-        slots?: { [k: string]: any; };
-        cssParts?: { [k: string]: any; };
-        cssProperties?: { [k: string]: any; };
+        attributes?: { [k: string]: any };
+        properties?: { [k: string]: any };
+        slots?: { [k: string]: any };
+        cssParts?: { [k: string]: any };
+        cssProperties?: { [k: string]: any };
       },
-      original?: { [k: string]: any; }
+      original?: { [k: string]: any }
     ) => {
       const args = original || getWcStorybookHelpers(customElementTag).args;
       const suffixes = {
@@ -121,7 +121,6 @@ type ConstantDefinition = {
   title?: string;
 };
 
-
 /**
  * Templates to create stories
  */
@@ -161,31 +160,31 @@ export const storybookTemplate = (customElementTag: string) => {
 
     const xAxes = Array.isArray(x)
       ? x.map(xItem => ({
-        ...xItem,
-        values: xItem.type === 'attribute' ? getValuesFromAttribute(xItem.name) : xItem.values
-      }))
+          ...xItem,
+          values: xItem.type === 'attribute' ? getValuesFromAttribute(xItem.name) : xItem.values
+        }))
       : x
-        ? [
+      ? [
           {
             ...x,
             values: x.type === 'attribute' ? getValuesFromAttribute(x.name) : x.values
           }
         ]
-        : [{}];
+      : [{}];
 
     const yAxes = Array.isArray(y)
       ? y.map(yItem => ({
-        ...yItem,
-        values: yItem.type === 'attribute' ? getValuesFromAttribute(yItem.name) : yItem.values
-      }))
+          ...yItem,
+          values: yItem.type === 'attribute' ? getValuesFromAttribute(yItem.name) : yItem.values
+        }))
       : y
-        ? [
+      ? [
           {
             ...y,
             values: y.type === 'attribute' ? getValuesFromAttribute(y.name) : y.values
           }
         ]
-        : [{}];
+      : [{}];
 
     return html`
       <style>
@@ -205,13 +204,13 @@ export const storybookTemplate = (customElementTag: string) => {
         }
       </style>
       ${xAxes.map((xAxis: any) => {
-      return html` ${yAxes.map((yAxis: any) => {
-        let firstRow = true;
-        return html`
+        return html` ${yAxes.map((yAxis: any) => {
+          let firstRow = true;
+          return html`
             <table>
               <thead>
                 ${xAxis &&
-          html`
+                html`
                   <tr>
                     <td></td>
                     <td></td>
@@ -226,38 +225,38 @@ export const storybookTemplate = (customElementTag: string) => {
               </thead>
               <tbody>
                 ${(yAxis?.values || ['']).map((yValue: any) => {
-            const row = html`
+                  const row = html`
                     <tr>
                       <th>${firstRow && ((xAxis && yAxis) || yAxes.length > 1) ? yAxis.name : ''}</th>
                       <td>${yAxis.type !== 'slot' ? yValue : ''}</td>
                       ${(xAxis?.values || ['']).map((xValue: any) => {
-              return html`
+                        return html`
                           <td><div>
                             ${template({
-                ...args,
-                ...constantDefinitions,
-                ...(xAxis && {
-                  [`${xAxis.name}${storybookHelpers(customElementTag).getSuffixFromType(xAxis.type)}`]:
-                    xValue
-                }),
-                ...(yAxis && {
-                  [`${yAxis.name}${storybookHelpers(customElementTag).getSuffixFromType(yAxis.type)}`]:
-                    yValue
-                })
-              })}
+                              ...args,
+                              ...constantDefinitions,
+                              ...(xAxis && {
+                                [`${xAxis.name}${storybookHelpers(customElementTag).getSuffixFromType(xAxis.type)}`]:
+                                  xValue
+                              }),
+                              ...(yAxis && {
+                                [`${yAxis.name}${storybookHelpers(customElementTag).getSuffixFromType(yAxis.type)}`]:
+                                  yValue
+                              })
+                            })}
                           </td></div>
                         `;
-            })}
+                      })}
                     </tr>
                   `;
-            firstRow = false;
-            return row;
-          })}
+                  firstRow = false;
+                  return row;
+                })}
               </tbody>
             </table>
           `;
-      })}`;
-    })}
+        })}`;
+      })}
     `;
   };
 

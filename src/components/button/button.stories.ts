@@ -118,18 +118,18 @@ export const Slots = {
   render: (args: any) => {
     return html`
       ${['small', 'medium', 'large'].map(size =>
-      generateTemplate({
-        axis: {
-          x: { type: 'slot', name: 'suffix', values: ['', '<span slot="suffix">★</span>'] },
-          y: { type: 'slot', name: 'prefix', values: ['', '<span slot="prefix">★</span>'] }
-        },
-        constants: [
-          { type: 'slot', name: 'default', value: 'Default' },
-          { type: 'attribute', name: 'size', value: size }
-        ],
-        args
-      })
-    )}
+        generateTemplate({
+          axis: {
+            x: { type: 'slot', name: 'suffix', values: ['', '<span slot="suffix">★</span>'] },
+            y: { type: 'slot', name: 'prefix', values: ['', '<span slot="prefix">★</span>'] }
+          },
+          constants: [
+            { type: 'slot', name: 'default', value: 'Default' },
+            { type: 'attribute', name: 'size', value: size }
+          ],
+          args
+        })
+      )}
     `;
   }
 };
