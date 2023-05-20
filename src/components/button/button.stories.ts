@@ -1,17 +1,10 @@
 import '../../solid-components';
 import { html } from 'lit-html';
-import {
-  storybookDefaults,
-  storybookHelpers,
-  storybookTemplate,
-  storybookTemplates
-} from '../../../scripts/storybook/helper';
+import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
 const { argTypes } = storybookDefaults('sd-button');
-const { defaultTemplate, attributesTemplate, attributeToTableTemplate } = storybookTemplates('sd-button');
 const { overrideArgs } = storybookHelpers('sd-button');
-const { generateStory } = storybookTemplate('sd-button'); // Replace with your custom element tag
-
+const { generateTemplate } = storybookTemplate('sd-button'); // Replace with your custom element tag
 
 export default {
   title: 'Components/sd-button',
@@ -21,20 +14,12 @@ export default {
 };
 
 /**
- * Those attributes are relevant for the stories in terms of design variations.
- * To make story creation faster and as there are lots of them, it is easier to
- * define them here and use it later.
- */
-
-const relevantAttributes = ['variant', 'size', 'disabled', 'loading'];
-
-/**
  * Default: This shows sd-button in its default state.
  */
 
 export const Default = {
   render: (args: any) => {
-    return generateStory({ args });
+    return generateTemplate({ args });
   }
 };
 
@@ -46,7 +31,7 @@ export const VariantAndSize = {
   name: 'Variant × Size',
   parameters: { controls: { exclude: ['variant', 'size'] } },
   render: (args: any) => {
-    return generateStory({
+    return generateTemplate({
       axis: {
         x: { type: 'attribute', name: 'variant' },
         y: { type: 'attribute', name: 'size' }
@@ -63,13 +48,13 @@ export const VariantAndSize = {
 export const Loading = {
   parameters: { controls: { exclude: ['variant', 'size', 'disabled', 'loading'] } },
   render: (args: any) => {
-    return generateStory({
+    return generateTemplate({
       axis: {
         x: [
           { type: 'attribute', name: 'variant' },
           { type: 'attribute', name: 'size' },
           { type: 'attribute', name: 'disabled' }
-        ],
+        ]
       },
       constants: { type: 'attribute', name: 'loading', value: true },
       args
@@ -84,13 +69,13 @@ export const Loading = {
 export const Disabled = {
   parameters: { controls: { exclude: ['variant', 'size', 'disabled', 'loading'] } },
   render: (args: any) => {
-    return generateStory({
+    return generateTemplate({
       axis: {
         x: [
           { type: 'attribute', name: 'variant' },
           { type: 'attribute', name: 'size' },
           { type: 'attribute', name: 'loading' }
-        ],
+        ]
       },
       constants: { type: 'attribute', name: 'disabled', value: true },
       args
@@ -102,18 +87,17 @@ export const Disabled = {
  * Use the `circle` attribute to create circular icon buttons. When this attribute is set, the button expects ideally a single `<span>` in the default slot.
  */
 
-
 export const Circle = {
   parameters: { controls: { exclude: ['variant', 'size', 'disabled', 'loading', 'circle', 'default'] } },
   render: (args: any) => {
-    return generateStory({
+    return generateTemplate({
       axis: {
         x: [
           { type: 'attribute', name: 'variant' },
           { type: 'attribute', name: 'size' },
           { type: 'attribute', name: 'loading' },
           { type: 'attribute', name: 'disabled' }
-        ],
+        ]
       },
       constants: [
         { type: 'attribute', name: 'circle', value: true },
@@ -133,17 +117,19 @@ export const Slots = {
   parameters: { controls: { exclude: ['size', 'default', 'prefix', 'suffix'] } },
   render: (args: any) => {
     return html`
-    ${['small', 'medium', 'large'].map(size => generateStory({
-      axis: {
-        x: { type: 'slot', name: 'suffix', values: ['', '<span slot="suffix">★</span>'] },
-        y: { type: 'slot', name: 'prefix', values: ['', '<span slot="prefix">★</span>'] }
-      },
-      constants: [
-        { type: 'slot', name: 'default', value: 'Default' },
-        { type: 'attribute', name: 'size', value: size }
-      ],
-      args
-    }))}
+      ${['small', 'medium', 'large'].map(size =>
+      generateTemplate({
+        axis: {
+          x: { type: 'slot', name: 'suffix', values: ['', '<span slot="suffix">★</span>'] },
+          y: { type: 'slot', name: 'prefix', values: ['', '<span slot="prefix">★</span>'] }
+        },
+        constants: [
+          { type: 'slot', name: 'default', value: 'Default' },
+          { type: 'attribute', name: 'size', value: size }
+        ],
+        args
+      })
+    )}
     `;
   }
 };

@@ -1,8 +1,8 @@
 import '../../solid-components';
-import { storybookDefaults, storybookTemplates } from '../../../scripts/storybook/helper';
+import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
 
 const { argTypes, args } = storybookDefaults('sd-breadcrumb-item');
-const { defaultTemplate } = storybookTemplates('sd-breadcrumb-item');
+const { generateTemplate } = storybookTemplate('sd-breadcrumb-item');
 
 export default {
   title: 'Components/sd-breadcrumb-item',
@@ -18,6 +18,6 @@ export default {
 
 export const Default = {
   render: (args: any) => {
-    return defaultTemplate(args);
+    return generateTemplate({ args });
   }
 };

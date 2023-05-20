@@ -1,8 +1,8 @@
 import '../../solid-components';
-import { storybookDefaults, storybookTemplates } from '../../../scripts/storybook/helper';
+import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
 
 const { argTypes, args } = storybookDefaults('sd-radio-group');
-const { defaultTemplate } = storybookTemplates('sd-radio-group');
+const { generateTemplate } = storybookTemplate('sd-radio-group');
 
 export default {
   title: 'Components/sd-radio-group',
@@ -18,6 +18,6 @@ export default {
 
 export const Default = {
   render: (args: any) => {
-    return defaultTemplate(args);
+    return generateTemplate({ args });
   }
 };

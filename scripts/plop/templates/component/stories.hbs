@@ -1,8 +1,8 @@
 import '../../solid-components';
-import { storybookDefaults, storybookTemplates } from '../../../scripts/storybook/helper';
+import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
 
 const { argTypes, args } = storybookDefaults('{{ tag }}');
-const { defaultTemplate } = storybookTemplates('{{ tag }}');
+const { generateTemplate } = storybookTemplate('{{ tag }}');
 
 export default {
   title: 'Components/{{ tag }}',
@@ -18,6 +18,6 @@ export default {
 
 export const Default = {
   render: (args: any) => {
-    return defaultTemplate(args);
+    return generateTemplate({args});
   }
 };

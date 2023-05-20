@@ -30,7 +30,7 @@ export const storybookHelpers = (customElementTag: string) => {
         property: '-prop',
         slot: '-slot',
         cssPart: '-part',
-        cssProperty: '',
+        cssProperty: ''
       }[type];
     },
 
@@ -107,181 +107,6 @@ export const storybookHelpers = (customElementTag: string) => {
   };
 };
 
-/**
- * Templates to create stories
- * Dev note: We had to extract the types to a separate interface to get correct type checking
- */
-
-type StorybookTemplates = {
-  defaultTemplate: (args: { [k: string]: any; }) => any;
-  attributesTemplate: ({
-    args,
-    attributes,
-    alternativeTitle,
-    vertical
-  }: {
-    args: any;
-    attributes: string[];
-    alternativeTitle?: string;
-    vertical?: boolean;
-  }) => any;
-  inlineVariationsTemplate: ({
-    args,
-    variation,
-    alternativeTitle,
-    vertical
-  }: {
-    args: any;
-    variation?: { arg: string; values: any[]; };
-    alternativeTitle?: string;
-    vertical?: boolean;
-  }) => any;
-  variationsToTableTemplate: ({
-    args,
-    variationA,
-    variationB,
-    alternativeTitle
-  }: {
-    args: { [k: string]: any; };
-    variationA: { arg: string; values: any[]; };
-    variationB: { arg: string; values: any[]; };
-    alternativeTitle?: string;
-  }) => any;
-  attributeToTableTemplate: ({
-    args,
-    attributeA,
-    attributeB
-  }: {
-    args: { [k: string]: any; };
-    attributeA: string;
-    attributeB: string;
-  }) => any;
-};
-
-/**
- * Pre-defined templates to create stories
- */
-
-export const storybookTemplates = (customElementTag: string): StorybookTemplates => {
-  const { template, args } = getWcStorybookHelpers(customElementTag);
-  const { getValuesFromAttribute, getValuesFromAttributes } = storybookHelpers(customElementTag);
-  return {
-    defaultTemplate: individualArgs => template(individualArgs || args),
-    /**
-     * This template is used to create a list with variations of multiple attributes.
-     */
-    attributesTemplate: ({ args, attributes, alternativeTitle, vertical }) => {
-      const { inlineVariationsTemplate } = storybookTemplates(customElementTag);
-      return html`
-        ${getValuesFromAttributes(attributes).map((attribute: any) => {
-        return inlineVariationsTemplate({
-          args,
-          variation: {
-            arg: attribute.name,
-            values: getValuesFromAttribute(attribute.name)
-          },
-          alternativeTitle: alternativeTitle === '' || alternativeTitle ? alternativeTitle : attribute.name,
-          vertical
-        });
-      })}
-      `;
-    },
-    /**
-     * This template is used to create a a list with variations of a single attribute.
-     */
-    inlineVariationsTemplate: ({ args, variation, alternativeTitle, vertical }) => {
-      return html`
-        <div style="">
-          ${alternativeTitle?.length
-          ? html`<h3 style="font-size: 16px; margin-bottom: 12px; margin-top: 24px">
-                ${(alternativeTitle || variation?.arg)?.replace('-attr', '')}
-              </h3>`
-          : ''}
-          ${variation?.values?.map((value: any) => {
-            return html`<div
-              style="margin-bottom: 16px; display: ${vertical ? 'block' : 'inline-block'}; margin-right: 16px"
-            >
-              <p style="font-size: 12px; margin-bottom: 8px; margin-top: 0px;">${value}</p>
-              ${template({ ...args, [variation.arg]: value })}
-            </div>`;
-          })}
-        </div>
-      `;
-    },
-    /**
-     * This template is used to create a table with variations of an attribute and an array.
-     */
-    variationsToTableTemplate: ({
-      args,
-      variationA,
-      variationB,
-      // TODO: alternativeTitle should be part of the variation object
-      alternativeTitle
-    }) => {
-      let firstRow = true;
-      return html` <table>
-        <thead>
-          <style>
-            th {
-              text-align: left;
-              font-size: 16px;
-            }
-            td {
-              font-size: 12px;
-            }
-            th,
-            td {
-              padding: 16px;
-            }
-          </style>
-          <tr>
-            <td></td>
-            <td></td>
-            <th>${alternativeTitle || variationA.arg.replace('-attr', '')}</th>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            ${variationA.values.map((value: any) => html`<td>${value}</td>`)}
-          </tr>
-        </thead>
-        <tbody>
-          ${variationB.values.map((value: any) => {
-        const row = html`<tr>
-              <th>${firstRow ? variationB.arg.replace('-attr', '') : ''}</th>
-              <td>${value}</td>
-              ${variationA.values.map(
-          (valueA: any) =>
-            html`<td>${template({ ...args, [variationA.arg]: valueA, [variationB.arg]: value })}</td>`
-        )}
-            </tr>`;
-        firstRow = false;
-        return row;
-      })}
-        </tbody>
-      </table>`;
-    },
-    /**
-     * This template is used to create a table with variations of two attributes.
-     */
-    attributeToTableTemplate: ({ args, attributeA, attributeB }) => {
-      const { variationsToTableTemplate } = storybookTemplates(customElementTag);
-
-      return html`${variationsToTableTemplate({
-        args,
-        variationA: {
-          arg: attributeA,
-          values: getValuesFromAttribute(attributeA)
-        },
-        variationB: {
-          arg: attributeB,
-          values: getValuesFromAttribute(attributeB)
-        }
-      })} `;
-    }
-  };
-};
-
 type AxisDefinition = {
   type: string;
   name: string;
@@ -296,11 +121,16 @@ type ConstantDefinition = {
   title?: string;
 };
 
+
+/**
+ * Templates to create stories
+ */
+
 export const storybookTemplate = (customElementTag: string) => {
   const { template, args: defaultArgs } = getWcStorybookHelpers(customElementTag);
   const { getValuesFromAttribute } = storybookHelpers(customElementTag);
 
-  const generateStory = ({
+  const generateTemplate = ({
     axis,
     constants = [],
     args = defaultArgs
@@ -312,10 +142,10 @@ export const storybookTemplate = (customElementTag: string) => {
     constants?: ConstantDefinition | ConstantDefinition[];
     args?: any;
   }) => {
-
     const constantDefinitions = (Array.isArray(constants) ? constants : [constants]).reduce(
       (acc, curr) => ({
-        ...acc, [`${curr.name}${storybookHelpers(customElementTag).getSuffixFromType(curr.type as any)}`]: curr.value
+        ...acc,
+        [`${curr.name}${storybookHelpers(customElementTag).getSuffixFromType(curr.type as any)}`]: curr.value
       }),
       {}
     );
@@ -323,7 +153,7 @@ export const storybookTemplate = (customElementTag: string) => {
     if (!axis?.x && !axis?.y) {
       return html`${template({
         ...args,
-        ...constantDefinitions,
+        ...constantDefinitions
       })}`;
     }
 
@@ -356,8 +186,6 @@ export const storybookTemplate = (customElementTag: string) => {
           }
         ]
         : [{}];
-
-
 
     return html`
       <style>
@@ -408,8 +236,14 @@ export const storybookTemplate = (customElementTag: string) => {
                             ${template({
                 ...args,
                 ...constantDefinitions,
-                ...(xAxis && { [`${xAxis.name}${storybookHelpers(customElementTag).getSuffixFromType(xAxis.type)}`]: xValue }),
-                ...(yAxis && { [`${yAxis.name}${storybookHelpers(customElementTag).getSuffixFromType(yAxis.type)}`]: yValue })
+                ...(xAxis && {
+                  [`${xAxis.name}${storybookHelpers(customElementTag).getSuffixFromType(xAxis.type)}`]:
+                    xValue
+                }),
+                ...(yAxis && {
+                  [`${yAxis.name}${storybookHelpers(customElementTag).getSuffixFromType(yAxis.type)}`]:
+                    yValue
+                })
               })}
                           </td></div>
                         `;
@@ -427,5 +261,5 @@ export const storybookTemplate = (customElementTag: string) => {
     `;
   };
 
-  return { generateStory };
+  return { generateTemplate };
 };

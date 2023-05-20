@@ -1,8 +1,8 @@
 import '../../solid-components';
-import { storybookDefaults, storybookTemplates } from '../../../scripts/storybook/helper';
+import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
 
 const { argTypes, args } = storybookDefaults('sd-format-bytes');
-const { defaultTemplate } = storybookTemplates('sd-format-bytes');
+const { generateTemplate } = storybookTemplate('sd-format-bytes');
 
 export default {
   title: 'Components/sd-format-bytes',
@@ -18,6 +18,6 @@ export default {
 
 export const Default = {
   render: (args: any) => {
-    return defaultTemplate(args);
+    return generateTemplate({ args });
   }
 };
