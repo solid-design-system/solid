@@ -305,13 +305,26 @@ export const storybookTemplate = (customElementTag: string) => {
     constants = [],
     args = defaultArgs
   }: {
-    axis: {
+    axis?: {
       x?: AxisDefinition | AxisDefinition[];
       y?: AxisDefinition | AxisDefinition[];
     };
     constants?: ConstantDefinition | ConstantDefinition[];
     args?: any;
   }) => {
+
+    const constantDefinitions = (Array.isArray(constants) ? constants : [constants]).reduce(
+      (acc, curr) => ({ ...acc, [curr.name]: curr.value }),
+      {}
+    );
+
+    if (!axis?.x && !axis?.y) {
+      return html`${template({
+        ...args,
+        ...constantDefinitions,
+      })}`;
+    }
+
     const { x, y } = axis;
 
     const xAxes = Array.isArray(x)
@@ -341,6 +354,8 @@ export const storybookTemplate = (customElementTag: string) => {
           }
         ]
         : [{}];
+
+
 
     return html`
       <style>
@@ -387,10 +402,6 @@ export const storybookTemplate = (customElementTag: string) => {
                       <td>${yValue}</td>
                       ${(xAxis?.values || ['']).map((xValue: any) => {
               // Create constant definitions from the array
-              const constantDefinitions = (Array.isArray(constants) ? constants : [constants]).reduce(
-                (acc, curr) => ({ ...acc, [curr.name]: curr.value }),
-                {}
-              );
               return html`
                           <td>
                             ${template({

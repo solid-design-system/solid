@@ -10,6 +10,8 @@ import {
 const { argTypes } = storybookDefaults('sd-button');
 const { defaultTemplate, attributesTemplate, attributeToTableTemplate } = storybookTemplates('sd-button');
 const { overrideArgs } = storybookHelpers('sd-button');
+const { generateStory } = storybookTemplate('sd-button'); // Replace with your custom element tag
+
 
 export default {
   title: 'Components/sd-button',
@@ -32,7 +34,7 @@ const relevantAttributes = ['variant', 'size', 'disabled', 'loading'];
 
 export const Default = {
   render: (args: any) => {
-    return defaultTemplate(args);
+    return generateStory({ args });
   }
 };
 
@@ -44,19 +46,6 @@ export const VariantAndSize = {
   name: 'Variant × Size',
   parameters: { controls: { exclude: ['variant', 'size'] } },
   render: (args: any) => {
-    return attributeToTableTemplate({
-      args,
-      attributeA: 'variant',
-      attributeB: 'size'
-    });
-  }
-};
-
-export const VariantAndSizeNew = {
-  name: 'Variant × Size',
-  parameters: { controls: { exclude: ['variant', 'size'] } },
-  render: (args: any) => {
-    const { generateStory } = storybookTemplate('sd-button'); // Replace with your custom element tag
     return generateStory({
       axis: {
         x: { type: 'attribute', name: 'variant' },
@@ -70,6 +59,23 @@ export const VariantAndSizeNew = {
 /**
  * Use the `loading` attribute to make a button busy. The width will remain the same as before, preventing adjacent elements from moving around. Clicks will be suppressed until the loading state is removed.
  */
+
+export const LoadingNew = {
+  parameters: { controls: { exclude: ['variant', 'size', 'disabled', 'loading'] } },
+  render: (args: any) => {
+    return generateStory({
+      axis: {
+        x: [
+          { type: 'attribute', name: 'variant' },
+          { type: 'attribute', name: 'size' },
+          { type: 'attribute', name: 'disabled' }
+        ],
+      },
+      constants: { type: 'attribute', name: 'loading', value: true },
+      args
+    });
+  }
+};
 
 export const Loading = {
   parameters: { controls: { exclude: relevantAttributes } },
