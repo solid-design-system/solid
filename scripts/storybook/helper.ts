@@ -187,17 +187,14 @@ export const storybookTemplate = (customElementTag: string) => {
         }
         .story-template th {
           text-align: left;
-          font-size: 12px;
         }
         .story-template td {
-          font-size: 12px;
-        }
-        .story-template th, .story-template td, .story-template tr: {
-          border: none;
+          text-align: center;
         }
         .story-template th,
         .story-template td {
           padding: 16px;
+          font-size: 12px;
         }
         .story-template thead tr th {
           text-align: center;
@@ -207,9 +204,6 @@ export const storybookTemplate = (customElementTag: string) => {
           background: #e0e0e0;
           text-align: left;
           font-size: 14px;
-        }
-        .story-template tr td {
-          text-align: center;
         }
         .story-template tbody tr th {
           text-align: center;
