@@ -1,6 +1,6 @@
 import { setCustomElementsManifest } from '@storybook/web-components';
 import 'normalize.css';
-import '../dist/custom-elements.json';
+import localCustomElements from '../dist/custom-elements.json';
 
 async function loadCustomElements() {
   let customElements;
@@ -13,7 +13,7 @@ async function loadCustomElements() {
     .catch(() => {
       console.log('Failed to fetch custom-elements.json. Using local manifest...');
       // Use manifest file generated on build time
-      return import('../dist/custom-elements.json');
+      return localCustomElements;
     })
     .then(customElements => {
       setCustomElementsManifest(customElements);
