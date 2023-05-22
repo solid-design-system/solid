@@ -110,7 +110,6 @@ export const Circle = {
 
 /**
  * Use the `prefix` and `suffix` slots to add icons.
- * TODO: It might be better to this with renderTableVariationsStory()
  */
 
 export const Slots = {
