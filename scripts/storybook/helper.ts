@@ -70,36 +70,12 @@ export const storybookHelpers = (customElementTag: string) => {
      * This function is used to override the default args.
      * It automatically adds the suffixes to the keys as needed for Storybook.
      */
-    overrideArgs: (
-      overrides: {
-        attributes?: { [k: string]: any };
-        properties?: { [k: string]: any };
-        slots?: { [k: string]: any };
-        cssParts?: { [k: string]: any };
-        cssProperties?: { [k: string]: any };
-      },
-      original?: { [k: string]: any }
-    ) => {
+    overrideArgs: (overrides: ConstantDefinition | ConstantDefinition[], original?: { [k: string]: any }) => {
       const args = original || getWcStorybookHelpers(customElementTag).args;
-      const suffixes = {
-        attributes: storybookHelpers(customElementTag).getSuffixFromType('attribute'),
-        properties: storybookHelpers(customElementTag).getSuffixFromType('property'),
-        slots: storybookHelpers(customElementTag).getSuffixFromType('slot'),
-        cssParts: storybookHelpers(customElementTag).getSuffixFromType('cssPart'),
-        cssProperties: storybookHelpers(customElementTag).getSuffixFromType('cssProperty')
-      };
-
-      for (const [category, suffix] of Object.entries(suffixes)) {
-        const items = overrides[category as keyof typeof overrides];
-        if (items) {
-          for (const [key, value] of Object.entries(items)) {
-            if (!key.endsWith(suffix)) {
-              args[`${key}${suffix}`] = value;
-            } else {
-              args[key] = value;
-            }
-          }
-        }
+      const overridesArray = Array.isArray(overrides) ? overrides : [overrides];
+      for (const override of overridesArray) {
+        const suffix = storybookHelpers(customElementTag).getSuffixFromType(override.type as any);
+        args[`${override.name}${suffix}`] = override.value;
       }
 
       return args;
@@ -232,7 +208,10 @@ export const storybookTemplate = (customElementTag: string) => {
                 html`
                   <tr>
                     ${showYLabel ? html`<td></td>` : ''} ${yAxis.type !== 'slot' ? html` <td></td>` : ''}
-                    ${showXLabel && html`<th colspan=${xAxis.values?.length}><code>${xAxis.name}</code></th>`}
+                    ${
+                      showXLabel &&
+                      html`<th colspan=${xAxis.values?.length}><code>${xAxis.title || xAxis.name}</code></th>`
+                    }
                     </th>
                   </tr>
                   ${
@@ -255,7 +234,7 @@ export const storybookTemplate = (customElementTag: string) => {
                     <tr>
                       ${firstRow && showYLabel
                         ? html`<th rowspan="${yAxis?.values?.length}">
-                            <span><code>${yAxis.name}</code></span>
+                            <span><code>${yAxis.title || yAxis.name}</code></span>
                           </th>`
                         : ''}
                       ${yAxis.type !== 'slot' ? html` <td><code>${yValue}</td></code>` : ''}

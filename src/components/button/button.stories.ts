@@ -9,7 +9,7 @@ const { generateTemplate } = storybookTemplate('sd-button'); // Replace with you
 export default {
   title: 'Components/sd-button',
   component: 'sd-button',
-  args: overrideArgs({ slots: { default: 'Default' } }),
+  args: overrideArgs({ type: 'slot', name: 'default', value: 'Default' }),
   argTypes
 };
 
@@ -122,10 +122,7 @@ export const Slots = {
             x: { type: 'slot', name: 'suffix', values: ['', '<span slot="suffix">★</span>'] },
             y: { type: 'slot', name: 'prefix', values: ['', '<span slot="prefix">★</span>'] }
           },
-          constants: [
-            { type: 'slot', name: 'default', value: 'Default' },
-            { type: 'attribute', name: 'size', value: size }
-          ],
+          constants: [{ type: 'attribute', name: 'size', value: size }],
           args,
           title: `size="${size}"`
         })
