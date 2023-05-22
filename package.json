@@ -37,7 +37,7 @@
     "dev": "pnpm storybook",
     "build": "pnpm build.components && pnpm build.storybook",
     "build.components": "vite build",
-    "build.storybook": "storybook build --output-dir dist/storybook",
+    "build.storybook": "storybook build --output-dir dist/storybook && cp dist/custom-elements.json dist/storybook/custom-elements.json",
     "preview": "vite preview",
     "fix": "pnpm lint.fix && pnpm format.fix",
     "verify": "pnpm format.verify > /dev/null && pnpm lint.verify && pnpm ts.verify && pnpm build && echo '✅ Build verified' && pnpm test && echo '✅ Test verified'",
