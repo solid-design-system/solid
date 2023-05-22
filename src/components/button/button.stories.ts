@@ -1,25 +1,17 @@
 import '../../solid-components';
 import { html } from 'lit-html';
-import { storybookDefaults, storybookHelpers, storybookTemplates } from '../../../scripts/storybook/helper';
+import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
 const { argTypes } = storybookDefaults('sd-button');
-const { defaultTemplate, attributesTemplate, attributeToTableTemplate } = storybookTemplates('sd-button');
 const { overrideArgs } = storybookHelpers('sd-button');
+const { generateTemplate } = storybookTemplate('sd-button'); // Replace with your custom element tag
 
 export default {
   title: 'Components/sd-button',
   component: 'sd-button',
-  args: overrideArgs({ slots: { default: 'Default' } }),
+  args: overrideArgs({ type: 'slot', name: 'default', value: 'Default' }),
   argTypes
 };
-
-/**
- * Those attributes are relevant for the stories in terms of design variations.
- * To make story creation faster and as there are lots of them, it is easier to
- * define them here and use it later.
- */
-
-const relevantAttributes = ['variant', 'size', 'disabled', 'loading'];
 
 /**
  * Default: This shows sd-button in its default state.
@@ -27,7 +19,7 @@ const relevantAttributes = ['variant', 'size', 'disabled', 'loading'];
 
 export const Default = {
   render: (args: any) => {
-    return defaultTemplate(args);
+    return generateTemplate({ args });
   }
 };
 
@@ -39,10 +31,12 @@ export const VariantAndSize = {
   name: 'Variant × Size',
   parameters: { controls: { exclude: ['variant', 'size'] } },
   render: (args: any) => {
-    return attributeToTableTemplate({
-      args,
-      attributeA: 'variant',
-      attributeB: 'size'
+    return generateTemplate({
+      axis: {
+        x: { type: 'attribute', name: 'variant' },
+        y: { type: 'attribute', name: 'size' }
+      },
+      args
     });
   }
 };
@@ -52,11 +46,18 @@ export const VariantAndSize = {
  */
 
 export const Loading = {
-  parameters: { controls: { exclude: relevantAttributes } },
+  parameters: { controls: { exclude: ['variant', 'size', 'disabled', 'loading'] } },
   render: (args: any) => {
-    return attributesTemplate({
-      args: { ...args, loading: true },
-      attributes: relevantAttributes.filter(attr => attr !== 'loading')
+    return generateTemplate({
+      axis: {
+        x: [
+          { type: 'attribute', name: 'variant' },
+          { type: 'attribute', name: 'size' },
+          { type: 'attribute', name: 'disabled' }
+        ]
+      },
+      constants: { type: 'attribute', name: 'loading', value: true },
+      args
     });
   }
 };
@@ -66,11 +67,18 @@ export const Loading = {
  */
 
 export const Disabled = {
-  parameters: { controls: { exclude: relevantAttributes } },
+  parameters: { controls: { exclude: ['variant', 'size', 'disabled', 'loading'] } },
   render: (args: any) => {
-    return attributesTemplate({
-      args: { ...args, disabled: true },
-      attributes: relevantAttributes.filter(attr => attr !== 'disabled')
+    return generateTemplate({
+      axis: {
+        x: [
+          { type: 'attribute', name: 'variant' },
+          { type: 'attribute', name: 'size' },
+          { type: 'attribute', name: 'loading' }
+        ]
+      },
+      constants: { type: 'attribute', name: 'disabled', value: true },
+      args
     });
   }
 };
@@ -80,67 +88,45 @@ export const Disabled = {
  */
 
 export const Circle = {
-  parameters: { controls: { exclude: [...relevantAttributes, 'circle', 'default', 'caret'] } },
+  parameters: { controls: { exclude: ['variant', 'size', 'disabled', 'loading', 'circle', 'default'] } },
   render: (args: any) => {
-    return attributesTemplate({
-      args: { ...args, circle: true, 'default-slot': '★' },
-      attributes: relevantAttributes.filter(attr => attr !== 'circle' || 'caret')
+    return generateTemplate({
+      axis: {
+        x: [
+          { type: 'attribute', name: 'variant' },
+          { type: 'attribute', name: 'size' },
+          { type: 'attribute', name: 'loading' },
+          { type: 'attribute', name: 'disabled' }
+        ]
+      },
+      constants: [
+        { type: 'attribute', name: 'circle', value: true },
+        { type: 'slot', name: 'default', value: '★' }
+      ],
+      args
     });
   }
 };
 
 /**
  * Use the `prefix` and `suffix` slots to add icons.
- * TODO: It might be better to this with renderTableVariationsStory()
  */
 
 export const Slots = {
   parameters: { controls: { exclude: ['size', 'default', 'prefix', 'suffix'] } },
-  render: () => {
-    /**
-     * Those slots are relevant for the stories in terms of design variations.
-     * To make story creation faster and as there are lots of them, it is easier to
-     * define them here and use it later.
-     */
-    const getSlots = (selection: ('prefix' | 'suffix' | 'default')[]) => {
-      const slots = {
-        prefix: '<span slot="prefix">★</span>',
-        suffix: '<span slot="suffix">★</span>',
-        default: '&lt;slot&gt;'
-      };
-
-      // conditionally add slots if they are in selection
-      const selectedSlots = selection.reduce((acc: { [key in 'prefix' | 'suffix' | 'default']?: string }, slot) => {
-        acc[slot] = slots[slot];
-        return acc;
-      }, {});
-
-      return overrideArgs({ slots: selectedSlots });
-    };
-
-    /**
-     * We're setting default args here, so we don't have to repeat them in every
-     * story and just overwrite the stuff that has to be changed.
-     */
-    const defaultOptions = {
-      attributes: ['size'],
-      alternativeTitle: ''
-    };
-
-    const output = [];
-
-    // Size
-    output.push(html`
-      ${attributesTemplate({
-        ...defaultOptions,
-        args: getSlots(['prefix', 'suffix', 'default']),
-        alternativeTitle: 'size (default)'
-      })}
-      ${attributesTemplate({ ...defaultOptions, args: getSlots(['suffix', 'default']) })}
-      ${attributesTemplate({ ...defaultOptions, args: getSlots(['prefix', 'default']) })}
-      ${attributesTemplate({ ...defaultOptions, args: getSlots(['default']) })}
-    `);
-
-    return html`${output}`;
+  render: (args: any) => {
+    return html`
+      ${['small', 'medium', 'large'].map(size =>
+        generateTemplate({
+          axis: {
+            x: { type: 'slot', name: 'suffix', values: ['', '<span slot="suffix">★</span>'] },
+            y: { type: 'slot', name: 'prefix', values: ['', '<span slot="prefix">★</span>'] }
+          },
+          constants: [{ type: 'attribute', name: 'size', value: size }],
+          args,
+          title: `size="${size}"`
+        })
+      )}
+    `;
   }
 };

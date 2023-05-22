@@ -295,7 +295,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
   /**
    * Inherits Tailwindclasses and includes additional styling.
    */
-  styles = [
+  static styles = [
     SolidElement.styles,
     css`
       :host {

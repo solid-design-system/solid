@@ -3,7 +3,7 @@ import { storybookDefaults, storybookTemplates, storybookHelpers } from '../../.
 
 const { argTypes } = storybookDefaults('sd-alert');
 const { overrideArgs } = storybookHelpers('sd-alert');
-const { defaultTemplate } = storybookTemplates('sd-alert');
+const { generateTemplate } = storybookTemplate('sd-alert');
 
 export default {
   title: 'Components/sd-alert',
@@ -15,6 +15,6 @@ export default {
 
 export const Default = {
   render: (args: any) => {
-    return defaultTemplate(args);
+    return generateTemplate({ args });
   }
 };

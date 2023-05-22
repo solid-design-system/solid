@@ -16,7 +16,8 @@ module.exports = {
     'plugin:wc/recommended',
     'plugin:wc/best-practice',
     'plugin:lit/recommended',
-    'plugin:lit-a11y/recommended'
+    'plugin:lit-a11y/recommended',
+    'prettier'
   ],
   env: {
     es2021: true,

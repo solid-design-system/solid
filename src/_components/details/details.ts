@@ -65,7 +65,6 @@ export default class SdDetails extends SolidElement {
   }
 
   private handleSummaryClick() {
-    console.log(this.body, this.header, this.details);
     if (!this.disabled) {
       if (this.open) {
         this.hide();

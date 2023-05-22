@@ -18,10 +18,13 @@ jobs:
       - uses: pnpm/action-setup@v2
         with:
           version: 7.13.6
+      # 👇 Install dependencies with the same package manager used in the project (replace it as needed), e.g. yarn, npm, pnpm
       - name: Install dependencies
-        # 👇 Install dependencies with the same package manager used in the project (replace it as needed), e.g. yarn, npm, pnpm
         run: PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=true pnpm i
-        # 👇 Adds Chromatic as a step in the workflow
+      # 👇 Build storybook with pnpm
+      - name: Build storybook
+        run: pnpm run build.storybook
+      # 👇 Adds Chromatic as a step in the workflow
       - name: Publish to Chromatic
         uses: chromaui/action@v1
         # Options required to the GitHub Chromatic Action
@@ -32,4 +35,4 @@ jobs:
           exitOnceUploaded: true
           # TurboSnap is an advanced Chromatic feature that speeds up builds for faster UI testing and review using Git and Webpack’s dependency graph
           onlyChanged: true
-          buildScriptName: build.storybook
+          storybookBuildDir: dist/storybook

@@ -1,8 +1,8 @@
 import '../../solid-components';
-import { storybookDefaults, storybookTemplates } from '../../../scripts/storybook/helper';
+import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
 
 const { argTypes, args } = storybookDefaults('sd-mutation-observer');
-const { defaultTemplate } = storybookTemplates('sd-mutation-observer');
+const { generateTemplate } = storybookTemplate('sd-mutation-observer');
 
 export default {
   title: 'Components/sd-mutation-observer',
@@ -18,6 +18,6 @@ export default {
 
 export const Default = {
   render: (args: any) => {
-    return defaultTemplate(args);
+    return generateTemplate({ args });
   }
 };

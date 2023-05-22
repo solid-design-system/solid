@@ -11,7 +11,6 @@ const filePath = path.resolve(__dirname, '../dist/custom-elements.json');
 export default function createEmptyCemIfNotExisting() {
   return {
     name: 'create-empty-cem-if-not-existing',
-    apply: 'serve', // only apply this plugin in serve mode
     configResolved() {
       if (!fs.existsSync(path.dirname(filePath))) {
         fs.mkdirSync(path.dirname(filePath), { recursive: true });

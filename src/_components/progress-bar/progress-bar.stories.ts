@@ -1,8 +1,8 @@
 import '../../solid-components';
-import { storybookDefaults, storybookTemplates } from '../../../scripts/storybook/helper';
+import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
 
 const { argTypes, args } = storybookDefaults('sd-progress-bar');
-const { defaultTemplate } = storybookTemplates('sd-progress-bar');
+const { generateTemplate } = storybookTemplate('sd-progress-bar');
 
 export default {
   title: 'Components/sd-progress-bar',
@@ -18,6 +18,6 @@ export default {
 
 export const Default = {
   render: (args: any) => {
-    return defaultTemplate(args);
+    return generateTemplate({ args });
   }
 };

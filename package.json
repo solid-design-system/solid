@@ -35,8 +35,9 @@
   "scripts": {
     "start": "echo '❌ Please use `pnpm dev` instead.'",
     "dev": "pnpm storybook",
-    "build": "vite build",
-    "build.storybook": "pnpm build && storybook build --output-dir dist/storybook",
+    "build": "pnpm build.components && pnpm build.storybook",
+    "build.components": "vite build",
+    "build.storybook": "storybook build --output-dir dist/storybook && cp dist/custom-elements.json dist/storybook/custom-elements.json",
     "preview": "vite preview",
     "fix": "pnpm lint.fix && pnpm format.fix",
     "verify": "pnpm format.verify > /dev/null && pnpm lint.verify && pnpm ts.verify && pnpm build && echo '✅ Build verified' && pnpm test && echo '✅ Test verified'",
@@ -50,7 +51,7 @@
     "test.component": "web-test-runner -- --watch --group",
     "test.watch": "web-test-runner --watch --group default",
     "storybook": "storybook dev -p 6999",
-    "chromatic": "npx chromatic -b build.storybook^",
+    "chromatic": "npx chromatic -b build.storybook",
     "prepublishOnly": "pnpm verify",
     "// prepare": "We don't want to start the prepare script for husky when we don't install the dev depencies.",
     "prepare": "node -e \"try { require('husky').install() } catch (e) {if (e.code !== 'MODULE_NOT_FOUND') throw e}\""
@@ -110,6 +111,7 @@
     "download": "^8.0.0",
     "esbuild": "^0.17.18",
     "eslint": "^8.39.0",
+    "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-chai-expect": "^3.0.0",
     "eslint-plugin-chai-friendly": "^0.7.2",
     "eslint-plugin-import": "^2.27.5",
