@@ -182,41 +182,41 @@ export const storybookTemplate = (customElementTag: string) => {
 
     return html`
       <style>
-        table:not(:first-of-type) {
-          margin-top: 64px;
+        table:not(:first-of-type).story-template {
+          margin-top: 72px;
         }
-        th {
+        .story-template th {
           text-align: left;
           font-size: 12px;
         }
-        td {
+        .story-template td {
           font-size: 12px;
         }
-        th, td, tr: {
+        .story-template th, .story-template td, .story-template tr: {
           border: none;
         }
-        th,
-        td {
+        .story-template th,
+        .story-template td {
           padding: 16px;
         }
-        thead tr th {
+        .story-template thead tr th {
           text-align: center;
           border-bottom: 1px solid #e0e0e0;
         }
-        thead th.title {
+        .story-template thead th.title {
           background: #e0e0e0;
           text-align: left;
           font-size: 14px;
         }
-        tr td {
+        .story-template tr td {
           text-align: center;
         }
-        tbody tr th {
+        .story-template tbody tr th {
           text-align: center;
           padding-left: 0;
           border-right: 1px solid #e0e0e0;
         }
-        tbody tr th span {
+        .story-template tbody tr th span {
           display: block;
           transform: rotate(270deg);
         }
@@ -227,7 +227,7 @@ export const storybookTemplate = (customElementTag: string) => {
           const showXLabel = xAxes.length > 1 || xAxis.values;
           const showYLabel = ((xAxis && yAxis) || yAxes.length > 1) && yAxis?.values;
           return html`
-            <table>
+            <table class="story-template">
               <thead>
                 ${title &&
                 html`<tr>
