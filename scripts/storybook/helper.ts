@@ -132,6 +132,7 @@ export const storybookTemplate = (customElementTag: string) => {
   const generateTemplate = ({
     axis,
     constants = [],
+    title,
     args = defaultArgs
   }: {
     axis?: {
@@ -139,6 +140,7 @@ export const storybookTemplate = (customElementTag: string) => {
       y?: AxisDefinition | AxisDefinition[];
     };
     constants?: ConstantDefinition | ConstantDefinition[];
+    title?: string;
     args?: any;
   }) => {
     const constantDefinitions = (Array.isArray(constants) ? constants : [constants]).reduce(
@@ -158,77 +160,111 @@ export const storybookTemplate = (customElementTag: string) => {
 
     const { x, y } = axis;
 
-    const xAxes = Array.isArray(x)
-      ? x.map(xItem => ({
-          ...xItem,
-          values: xItem.type === 'attribute' ? getValuesFromAttribute(xItem.name) : xItem.values
-        }))
-      : x
-      ? [
+    const generateAxes = (axis: any): AxisDefinition[] => {
+      if (!axis) return [{} as AxisDefinition];
+      if (Array.isArray(axis)) {
+        return axis.map(item => ({
+          ...item,
+          values: item.type === 'attribute' ? getValuesFromAttribute(item.name) : item.values
+        }));
+      } else {
+        return [
           {
-            ...x,
-            values: x.type === 'attribute' ? getValuesFromAttribute(x.name) : x.values
+            ...axis,
+            values: axis.type === 'attribute' ? getValuesFromAttribute(axis.name) : axis.values
           }
-        ]
-      : [{}];
+        ];
+      }
+    };
 
-    const yAxes = Array.isArray(y)
-      ? y.map(yItem => ({
-          ...yItem,
-          values: yItem.type === 'attribute' ? getValuesFromAttribute(yItem.name) : yItem.values
-        }))
-      : y
-      ? [
-          {
-            ...y,
-            values: y.type === 'attribute' ? getValuesFromAttribute(y.name) : y.values
-          }
-        ]
-      : [{}];
+    const xAxes = generateAxes(x);
+    const yAxes = generateAxes(y);
 
     return html`
       <style>
-        table + table {
-          margin-top: 48px;
+        table:not(:first-of-type) {
+          margin-top: 64px;
         }
         th {
           text-align: left;
-          font-size: 16px;
+          font-size: 12px;
         }
         td {
           font-size: 12px;
+        }
+        th, td, tr: {
+          border: none;
         }
         th,
         td {
           padding: 16px;
         }
+        thead tr th {
+          text-align: center;
+          border-bottom: 1px solid #e0e0e0;
+        }
+        thead th.title {
+          background: #e0e0e0;
+          text-align: left;
+          font-size: 14px;
+        }
+        tr td {
+          text-align: center;
+        }
+        tbody tr th {
+          text-align: center;
+          padding-left: 0;
+          border-right: 1px solid #e0e0e0;
+        }
+        tbody tr th span {
+          display: block;
+          transform: rotate(270deg);
+        }
       </style>
       ${xAxes.map((xAxis: any) => {
         return html` ${yAxes.map((yAxis: any) => {
           let firstRow = true;
+          const showXLabel = xAxes.length > 1 || xAxis.values;
+          const showYLabel = ((xAxis && yAxis) || yAxes.length > 1) && yAxis?.values;
           return html`
             <table>
               <thead>
+                ${title &&
+                html`<tr>
+                  <th class="title" colspan=${xAxis.values?.length + 3}><code>${title}</code></th>
+                </tr>`}
                 ${xAxis &&
+                xAxis.values &&
                 html`
                   <tr>
-                    <td></td>
-                    <td></td>
-                    <th>${xAxes.length > 1 || (xAxis.values && yAxis.values) ? xAxis.name : ''}</th>
+                    ${showYLabel ? html`<td></td>` : ''} ${yAxis.type !== 'slot' ? html` <td></td>` : ''}
+                    ${showXLabel && html`<th colspan=${xAxis.values?.length}><code>${xAxis.name}</code></th>`}
+                    </th>
                   </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    ${xAxis.values.map((xValue: any) => html`<td>${xAxis.type !== 'slot' ? xValue : ''}</td>`)}
-                  </tr>
+                  ${
+                    xAxis.type !== 'slot'
+                      ? html`
+                          <tr>
+                            ${showYLabel ? html`<td></td>` : ''} ${yAxis.type !== 'slot' ? html` <td></td>` : ''}
+                            ${xAxis?.values?.map(
+                              (xValue: any) => xAxis.type !== 'slot' && html`<td><code>${xValue}</code></td>`
+                            )}
+                          </tr>
+                        `
+                      : ''
+                  }
                 `}
               </thead>
               <tbody>
                 ${(yAxis?.values || ['']).map((yValue: any) => {
                   const row = html`
                     <tr>
-                      <th>${firstRow && ((xAxis && yAxis) || yAxes.length > 1) ? yAxis.name : ''}</th>
-                      <td>${yAxis.type !== 'slot' ? yValue : ''}</td>
+                      ${firstRow && showYLabel
+                        ? html`<th rowspan="${yAxis?.values?.length}">
+                            <span><code>${yAxis.name}</code></span>
+                          </th>`
+                        : ''}
+                      ${yAxis.type !== 'slot' ? html` <td><code>${yValue}</td></code>` : ''}
                       ${(xAxis?.values || ['']).map((xValue: any) => {
                         return html`
                           <td><div>

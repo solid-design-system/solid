@@ -126,7 +126,8 @@ export const Slots = {
             { type: 'slot', name: 'default', value: 'Default' },
             { type: 'attribute', name: 'size', value: size }
           ],
-          args
+          args,
+          title: `size="${size}"`
         })
       )}
     `;
