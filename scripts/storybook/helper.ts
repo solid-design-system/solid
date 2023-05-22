@@ -1,10 +1,28 @@
 import { html } from 'lit/static-html.js';
 import { getWcStorybookHelpers } from '@mariohamann/wc-storybook-helpers';
 
-/**
- * Defaults you can use in your stories
- */
+type ArgTypesDefinition = 'attribute' | 'property' | 'slot' | 'cssPart' | 'cssProperty';
 
+type AxisDefinition = {
+  type: ArgTypesDefinition;
+  name: string;
+  values?: any[];
+  title?: string;
+};
+
+type ConstantDefinition = {
+  type: ArgTypesDefinition;
+  name: string;
+  value: any;
+  title?: string;
+};
+
+/**
+ * Returns default arguments, events, and argument types for a given custom element tag.
+ *
+ * @param {string} customElementTag - The custom element tag for which the defaults are to be fetched.
+ * @returns {any} - An object containing default arguments, events, and argument types.
+ */
 export const storybookDefaults = (customElementTag: string): any => {
   const { args, events, argTypes } = getWcStorybookHelpers(customElementTag);
   return {
@@ -15,16 +33,20 @@ export const storybookDefaults = (customElementTag: string): any => {
 };
 
 /**
- * Small helper functions to create stories
+ * Returns helper functions for working with the stories of a given custom element tag.
+ *
+ * @param {string} customElementTag - The custom element tag for which the helpers are to be fetched.
+ * @returns {Object} - An object containing several helper functions for working with the stories.
  */
-
 export const storybookHelpers = (customElementTag: string) => {
   return {
     /**
+     * Returns a suffix string based on the type of argument.
      *
+     * @param {ArgTypesDefinition} type - The type of the argument.
+     * @returns {string} - The suffix string.
      */
-
-    getSuffixFromType: (type: 'attribute' | 'property' | 'slot' | 'cssPart' | 'cssProperty'): string => {
+    getSuffixFromType: (type: ArgTypesDefinition): string => {
       return {
         attribute: '-attr',
         property: '-prop',
@@ -35,9 +57,10 @@ export const storybookHelpers = (customElementTag: string) => {
     },
 
     /**
-     * This function is used to get the values from an attribute.
-     * It automatically adds the suffixes to the keys as needed for Storybook.
-     * It also handles boolean attributes.
+     * Returns the possible values for an attribute for a given custom element tag.
+     *
+     * @param {string} attribute - The attribute for which the values are to be fetched.
+     * @returns {any} - The possible values for the attribute.
      */
     getValuesFromAttribute: (attribute: string): any => {
       if (!attribute.endsWith('-attr')) {
@@ -50,10 +73,12 @@ export const storybookHelpers = (customElementTag: string) => {
         return argTypes[attribute].options;
       }
     },
+
     /**
-     * This function is used to get the values from a list of attributes.
-     * It automatically adds the suffixes to the keys as needed for Storybook.
-     * It also handles boolean attributes.
+     * Returns the possible values for a list of attributes for a given custom element tag.
+     *
+     * @param {string[]} attributes - The attributes for which the values are to be fetched.
+     * @returns {any} - The possible values for the attributes.
      */
     getValuesFromAttributes: (attributes: string[]): any => {
       return attributes?.map((attribute: string) => {
@@ -66,9 +91,13 @@ export const storybookHelpers = (customElementTag: string) => {
         };
       });
     },
+
     /**
-     * This function is used to override the default args.
-     * It automatically adds the suffixes to the keys as needed for Storybook.
+     * Returns an arguments object that has been overridden with the specified overrides.
+     *
+     * @param {ConstantDefinition | ConstantDefinition[]} overrides - The overrides for the arguments.
+     * @param {Object} original - The original arguments object that is to be overridden.
+     * @returns {Object} - The arguments object with the overrides applied.
      */
     overrideArgs: (overrides: ConstantDefinition | ConstantDefinition[], original?: { [k: string]: any }) => {
       const args = original || getWcStorybookHelpers(customElementTag).args;
@@ -83,28 +112,50 @@ export const storybookHelpers = (customElementTag: string) => {
   };
 };
 
-type AxisDefinition = {
-  type: string;
-  name: string;
-  values?: any[];
-  title?: string;
-};
-
-type ConstantDefinition = {
-  type: string;
-  name: string;
-  value: any;
-  title?: string;
-};
-
 /**
- * Templates to create stories
+ * Returns a template function for creating stories for a given custom element tag.
+ *
+ * @param {string} customElementTag - The custom element tag for which the story template is to be generated.
+ * @returns {Object} - An object containing a function that generates a story template.
  */
-
 export const storybookTemplate = (customElementTag: string) => {
   const { template, args: defaultArgs } = getWcStorybookHelpers(customElementTag);
   const { getValuesFromAttribute } = storybookHelpers(customElementTag);
 
+  /**
+   * Returns a Lit template function that creates a story based on provided configuration.
+   * This function takes a configuration object that specifies the axes, constants, title, and arguments to be used in the story.
+   *
+   * The `axis` object defines the x-axis and y-axis. Each axis is an `AxisDefinition` object
+   * which consists of a type, name, values, and title. Type is the argument type which can be
+   * 'attribute', 'property', 'slot', 'cssPart', or 'cssProperty'. Name is the argument name.
+   * Values is an array of possible values for the argument. Title is the label of the axis in the story.
+   *
+   * The `constants` array defines the constant arguments to be used in the story.
+   * Each constant is a `ConstantDefinition` object which consists of a type, name, value, and title.
+   * Type is the argument type which can be 'attribute', 'property', 'slot', 'cssPart', or 'cssProperty'.
+   * Name is the argument name. Value is the constant value of the argument. Title is the label of the constant in the story.
+   *
+   * The `title` string is the title of the story. If a title is specified, it will be displayed as a heading in the story.
+   *
+   * The `args` object is the default arguments for the story. If specified, these arguments will be used as defaults
+   * for the story. If a constant or an axis with the same argument name is specified, the value from the constant
+   * or axis will override the default value from `args`.
+   *
+   * The template function returned by `generateTemplate` generates a Lit template for the story based on
+   * the provided configuration. The template displays a table showing all possible combinations of
+   * argument values, with one row for each y-axis value and one column for each x-axis value.
+   * Each cell in the table is filled with the custom element in the corresponding state.
+   *
+   * @param {Object} config - The configuration object for generating the story template.
+   * @param {Object} [config.axis] - The object defining the x-axis and y-axis for the story.
+   * @param {AxisDefinition | AxisDefinition[]} [config.axis.x] - The x-axis definition(s).
+   * @param {AxisDefinition | AxisDefinition[]} [config.axis.y] - The y-axis definition(s).
+   * @param {ConstantDefinition | ConstantDefinition[]} [config.constants] - The constant argument(s) for the story.
+   * @param {string} [config.title] - The title of the story.
+   * @param {Object} [config.args] - The default arguments for the story.
+   * @returns {Object} - The Lit template function for the story.
+   */
   const generateTemplate = ({
     axis,
     constants = [],
