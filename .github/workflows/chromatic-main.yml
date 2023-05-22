@@ -36,6 +36,7 @@ jobs:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           # Speedup the build by now waiting until everything is sent to Chromatic
           exitOnceUploaded: true
-          # We don't need tests in the main branch
-          skip: true
+          # We don't need tests in the main branch, but want to accept everything
+          autoAcceptChanges: true
+          # We need to manually build storybook with pnpm
           storybookBuildDir: dist/storybook
