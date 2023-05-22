@@ -1,5 +1,6 @@
 import { setCustomElementsManifest } from '@storybook/web-components';
 import 'normalize.css';
+import '../dist/custom-elements.json';
 
 async function loadCustomElements() {
   let customElements;
