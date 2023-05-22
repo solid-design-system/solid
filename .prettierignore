@@ -5,6 +5,7 @@ dist
 src/components/icon/icons
 src/_components
 src/react/index.ts
+scripts/tailwind/tokens.json
 node_modules
 package-lock.json
 tsconfig.json
