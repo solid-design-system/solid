@@ -27,17 +27,20 @@ jobs:
       - name: Install dependencies
         run: pnpm i
 
-      - name: Check linting
+      - name: Check "lint.verify"
         run: pnpm lint.verify
 
-      - name: Check formatting
+      - name: Check "format.verify"
         run: pnpm format.verify
 
-      - name: Check TypeScript
+      - name: Check "ts.verify"
         run: pnpm ts.verify
 
-      - name: Check build
-        run: pnpm build
+      - name: Check "build.components"
+        run: pnpm build.components
 
-      - name: Check tests
+      - name: Check "build.storybook"
+        run: pnpm build.storybook
+
+      - name: Check "test"
         run: pnpm test
