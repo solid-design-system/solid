@@ -18,6 +18,12 @@ export default {
  */
 
 export const Default = {
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/fPGhgNZv98U4H69Gu2tlWi/Button?type=design&node-id=13-18&t=jDLqFEdY7ZlOJurc-4'
+    }
+  },
   render: (args: any) => {
     return generateTemplate({ args });
   }
