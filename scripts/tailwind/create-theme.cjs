@@ -142,8 +142,7 @@ const getSpacings = () => {
   let result = {};
   Object.entries({
     ...tokens['UI Semantic'].spacing,
-    0: { value: '0px', description: 'No spacing (manually added)' },
-    auto: { value: 'auto', description: 'Auto spacing (manually added)' }
+    0: { value: '0px', description: 'No spacing (manually added)' }
   })
     .map(([name, value]) => ({ name, ...value }))
     .concat(Object.entries(tokens['UI Semantic'].sizing).map(([name, value]) => ({ name, ...value })))
