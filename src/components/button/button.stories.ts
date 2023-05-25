@@ -190,3 +190,32 @@ export const Slots = {
     `;
   }
 };
+
+/**
+ * Use the `base`, `label`, `icon-left` and `icon-right` part selectors to customize the button.
+ */
+
+export const Parts = {
+  parameters: { controls: { exclude: ['base', 'label', 'icon-left', 'icon-right'] } },
+  render: (args: any) => {
+    let i = 0;
+    return html`
+      ${['base', 'label', 'icon-left', 'icon-right'].map(part => {
+        i++;
+        return generateTemplate({
+          constants: [
+            { type: 'slot', name: 'icon-right', value: '<span slot="icon-right">★</span>' },
+            { type: 'slot', name: 'icon-left', value: '<span slot="icon-left">★</span>' },
+            {
+              type: 'cssPart',
+              name: 'icon-left',
+              value: `table:nth-of-type(${i}) sd-button::part(${part}){outline: solid 2px red}`
+            }
+          ],
+          args,
+          options: { title: `sd-button::part(${part}){...}` }
+        });
+      })}
+    `;
+  }
+};

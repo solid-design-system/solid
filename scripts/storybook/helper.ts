@@ -182,14 +182,14 @@ export const storybookTemplate = (customElementTag: string) => {
       {}
     );
 
-    if (!axis?.x && !axis?.y) {
+    if (!axis?.x && !axis?.y && !options?.title) {
       return html`${template({
         ...args,
         ...constantDefinitions
       })}`;
     }
 
-    const { x, y } = axis;
+    // const { x, y } = axis;
 
     const generateAxes = (axis: any): AxisDefinition[] => {
       if (!axis) return [{} as AxisDefinition];
@@ -208,8 +208,8 @@ export const storybookTemplate = (customElementTag: string) => {
       }
     };
 
-    const xAxes = generateAxes(x);
-    const yAxes = generateAxes(y);
+    const xAxes = generateAxes(axis?.x);
+    const yAxes = generateAxes(axis?.y);
 
     const uuid = `uuid-${crypto.randomUUID()}`;
 
@@ -287,7 +287,7 @@ export const storybookTemplate = (customElementTag: string) => {
               <thead>
                 ${options?.title &&
                 html`<tr>
-                  <th class="title" colspan=${xAxis.values?.length + 3}><code>${options?.title}</code></th>
+                  <th class="title" colspan=${(xAxis.values?.length || 0) + 3}><code>${options?.title}</code></th>
                 </tr>`}
                 ${xAxis &&
                 xAxis.values &&
@@ -296,7 +296,7 @@ export const storybookTemplate = (customElementTag: string) => {
                     ${showYLabel ? html`<td></td>` : ''} ${yAxis.type !== 'slot' ? html` <td></td>` : ''}
                     ${
                       showXLabel &&
-                      html`<th colspan=${xAxis.values?.length}><code>${xAxis.title || xAxis.name}</code></th>`
+                      html`<th colspan=${xAxis.values?.length || 0}><code>${xAxis.title || xAxis.name}</code></th>`
                     }
                     </tr>
                   </tr>

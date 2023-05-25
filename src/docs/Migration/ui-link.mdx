@@ -15,6 +15,25 @@ Check out the `sd-button` docs to see them.
 The new `sd-link` (currently unavailable!) will provide styling for **inline** links that may span more than one line.
 Only the `sd-link` can show `underline`.
 
+## 🔀 CSS variables `--component-link-..., -component-button-...`
+
+We dropped all component (!) specific CSS variables. Instead you are now able to override colors and padding with the part selector, e. g.:
+
+```css
+sd-button::part(base) {
+  background: pink;
+  color: black;
+}
+```
+
+As an alternative you can override CSS variables used in the element:
+
+```css
+sd-button {
+  --sd-spacing-4: 15px; // overrides default 16px
+}
+```
+
 ## ❌ attribute: `icon`.
 
 The `sd-button` and the `sd-link` don't have an `icon` attribute anymore. Instead, there's now a slot:
@@ -40,22 +59,3 @@ If you want to catch the event, you should be able to handle it in your parent c
 ## ❌ attribute: `conversion`.
 
 The `sd-button` and the `sd-link` don't provide a `delay` attribute anymore. If you want to catch the event, you should be able to handle it in your parent component.
-
-## ❌ CSS variables `--component-link-..., -component-button-...`
-
-We dropped all component specific CSS variables. Instead you are now able to override colors and padding with the part selector, e. g.:
-
-```css
-sd-button::part(base) {
-  background: pink;
-  color: black;
-}
-```
-
-As an alternative you can override CSS variables used in the element:
-
-```css
-sd-button {
-  --sd-spacing-4: 15px; // overrides default 16px
-}
-```
