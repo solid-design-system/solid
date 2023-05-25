@@ -19,7 +19,6 @@ export default {
 
 const relevantAttributes = [
   'variant',
-  'size',
 ];
 
 /**
@@ -29,22 +28,6 @@ const relevantAttributes = [
 export const Default = {
   render: (args: any) => {
     return defaultTemplate(args);
-  }
-};
-
-/**
- * Use the `size` attribute to change the size of the spinner.
- */
-
-export const Size = {
-  parameters: { controls: { exclude: relevantAttributes } },
-  render: (args: any) => {
-    return attributesTemplate(
-      {
-        args: { ...args },
-        attributes: ['size'],
-      }
-    );
   }
 };
 

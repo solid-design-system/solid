@@ -9,52 +9,59 @@ import cx from 'classix';
  * @documentation https://solid.union-investment.com/[storybook-link]/spinner
  * @status stable
  * @since 2.0
- *
- * @csspart base - The component's base wrapper.
  */
 @customElement('sd-spinner')
 export default class SdSpinner extends SolidElement {
-  // static styles: CSSResultGroup = styles;
-
-  /** The size of the spinner.
-   */
-  @property({ reflect: true }) size: 'small' | 'medium' | 'large' = 'large';
 
   /** The color variant of the spinner.
   */
-  @property({ reflect: true }) variant: 'primary' | 'secondary' | 'tertiary' | 'cta' | 'disabled' = 'primary';
+  @property({ reflect: true }) variant: 'primary' | 'white' | 'neutral-500' | 'neutral-600' = 'primary';
 
   private readonly localize = new LocalizeController(this);
 
-  // TODO: clarify with design as neutral-200 only exists on background values and not on border values
-  // TODO: clarify with design as border with cannot be calculated as defined in Figma (no .5px values allowed)
-  // TODO: clarify the color variants for the button with design
+  // TODO: clarify dark background in story
 
   render() {
     return html`
-      <div
-        part="base"
-        class=${cx('spinner block rounded-full animate-spin',
+      <svg
+        role="progressbar"
+        class="h-6 w-6 animate-spin"
+        aria-valuetext=${this.localize.term('loading')}
+      >
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12Z"
+        class=${cx(
+      'opacity-10',
       {
-        /* variants */
-        primary: 'border-white',
-        secondary: 'border-neutral-300',
-        tertiary: 'border-neutral-300',
-        cta: 'border-white',
-        disabled: 'border-white',
+        primary: 'fill-primary',
+        white: 'fill-white',
+        'neutral-500': 'fill-neutral-500',
+        'neutral-600': 'fill-neutral-600'
       }[this.variant],
+    )}/>
+        <mask id="mask0_5273_25391" style="mask-type:alpha" maskUnits="userSpaceOnUse">
+          <path d="M24 12C24 5.37258 18.6274 0 12 0V12H24Z"
+            class=${cx(
       {
-        /* variants */
-        primary: 'border-t-primary',
-        secondary: 'border-t-primary',
-        tertiary: 'border-t-primary',
-        cta: 'border-t-accent',
-        disabled: 'border-t-neutral-500',
+        primary: 'fill-primary',
+        white: 'fill-white',
+        'neutral-500': 'fill-neutral-500',
+        'neutral-600': 'fill-neutral-600'
       }[this.variant],
     )}
-        role="progressbar"
-        aria-valuetext=${this.localize.term('loading')}
-      ></div>
+            />
+        </mask>
+        <g mask="url(#mask0_5273_25391)">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12Z"
+          class=${cx(
+      {
+        primary: 'fill-primary',
+        white: 'fill-white',
+        'neutral-500': 'fill-neutral-500',
+        'neutral-600': 'fill-neutral-600'
+      }[this.variant],
+    )}/>
+        </g>
+      </svg>
     `;
   }
 
@@ -64,25 +71,9 @@ export default class SdSpinner extends SolidElement {
   static styles = [
     ...SolidElement.styles,
     css`
-    :host([size="large"]){
-      --size-denominator: 1;
-    }
-    :host([size="medium"]){
-      --size-denominator: 0.75;
-    }
-    :host([size="small"]){
-      --size-denominator: 0.375;
-    }
-
-    :host {
-      display: inline-block;
-    }
-
-    .spinner {
-      width: calc(64px * var(--size-denominator));
-      height: calc(64px * var(--size-denominator));
-      border-width: calc(6px * var(--size-denominator));
-    }
+      :host {
+        display: inline-block;
+      }
     `
   ];
 }
