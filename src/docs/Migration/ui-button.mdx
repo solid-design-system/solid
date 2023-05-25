@@ -2,15 +2,15 @@
 
 Use the new `sd-button` as a replacement. It tries to mirror the attributes of an original HTML button as much as possible, and therefore offers much more. Check out the `sd-button` docs to see them.
 
-## ✨ attribute: `load`.
+## ✨ attribute: `load`
 
 If you use a `ui-button' that shows a loading state, you had to manually handle things. Now you can just set the `loading`argument which sets an`sd-spinner`, preserves the current content (and therefore the width) and handles all the necessary HTML and A11y features.
 
-## 🔀 attribute argument: `variant/transparent`.
+## 🔀 attribute argument: `variant/transparent`
 
 The argument is now called `variant/tertiary` to better reflect the hierarchy of buttons. To improve UX, it behaves differently on hover (changes background instead of underlining).
 
-## ❌ attribute argument: `variant/plain`.
+## ❌ attribute argument: `variant/plain`
 
 Currently, we don't provide a way to manually set negative margins if you want to align a tertiary button horizontally. Please handle this in your application.
 Setting something like the following should do the trick (including skinnability):
@@ -21,7 +21,7 @@ sd-button.align-to-left { }}
 }
 ```
 
-## ❌ attribute: `icon`.
+## ❌ attribute: `icon`
 
 The `sd-button` doesn't have an `icon` attribute. Instead, there's now a slot:
 
@@ -32,3 +32,27 @@ The `sd-button` doesn't have an `icon` attribute. Instead, there's now a slot:
 ```
 
 See the `sd-button/Slots` story for examples. Note that you may have to manually add `skinning' data to invert the icon, as it's no longer provided by the button.
+
+## ❌ automatic color inversion
+
+As we want single components as independent and robust as possible the `sd-button` doesn't automatically inverts it's colors on behalf of CSS variables by higher elements in the DOM.
+Instead you just have to add the `inverted` attribute.
+
+## ❌ CSS variables `--component-button-...`
+
+We dropped all component specific CSS variables. Instead you are now able to override colors and padding with the part selector, e. g.:
+
+```css
+sd-button::part(base) {
+  background: pink;
+  color: black;
+}
+```
+
+As an alternative you can override CSS variables used in the element:
+
+```css
+sd-button {
+  --sd-spacing-4: 15px; // overrides default 16px
+}
+```
