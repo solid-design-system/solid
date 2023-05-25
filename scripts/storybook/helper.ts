@@ -173,7 +173,7 @@ export const storybookTemplate = (customElementTag: string) => {
       templateBackground?: string;
       templateBackgrounds?: { alternate: 'x' | 'y'; colors: string[] };
     };
-    args?: any;
+    args: any;
   }) => {
     const constantDefinitions = (Array.isArray(constants) ? constants : [constants]).reduce(
       (acc, curr) => ({
