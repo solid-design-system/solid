@@ -1,4 +1,5 @@
 import { html } from 'lit/static-html.js';
+import { unsafeCSS } from 'lit';
 import { getWcStorybookHelpers } from '@mariohamann/wc-storybook-helpers';
 
 type ArgTypesDefinition = 'attribute' | 'property' | 'slot' | 'cssPart' | 'cssProperty';
@@ -159,7 +160,7 @@ export const storybookTemplate = (customElementTag: string) => {
   const generateTemplate = ({
     axis,
     constants = [],
-    title,
+    options,
     args = defaultArgs
   }: {
     axis?: {
@@ -167,7 +168,11 @@ export const storybookTemplate = (customElementTag: string) => {
       y?: AxisDefinition | AxisDefinition[];
     };
     constants?: ConstantDefinition | ConstantDefinition[];
-    title?: string;
+    options?: {
+      title?: string;
+      templateBackground?: string;
+      templateBackgrounds?: { alternate: 'x' | 'y'; colors: string[] };
+    };
     args?: any;
   }) => {
     const constantDefinitions = (Array.isArray(constants) ? constants : [constants]).reduce(
@@ -192,13 +197,13 @@ export const storybookTemplate = (customElementTag: string) => {
       if (Array.isArray(axis)) {
         return axis.map(item => ({
           ...item,
-          values: item.type === 'attribute' ? getValuesFromAttribute(item.name) : item.values
+          values: item.values || getValuesFromAttribute(item.name)
         }));
       } else {
         return [
           {
             ...axis,
-            values: axis.type === 'attribute' ? getValuesFromAttribute(axis.name) : axis.values
+            values: axis.values || getValuesFromAttribute(axis.name)
           }
         ];
       }
@@ -206,6 +211,8 @@ export const storybookTemplate = (customElementTag: string) => {
 
     const xAxes = generateAxes(x);
     const yAxes = generateAxes(y);
+
+    const uuid = `uuid-${crypto.randomUUID()}`;
 
     return html`
       <style>
@@ -233,14 +240,43 @@ export const storybookTemplate = (customElementTag: string) => {
           font-size: 14px;
         }
         .story-template tbody tr th {
+          font-weight: normal;
+          text-align: center;
+        }
+        .story-template tbody tr th[rowspan] {
           text-align: center;
           padding-left: 0;
           border-right: 1px solid #e0e0e0;
+          font-weight: bold;
         }
         .story-template tbody tr th span {
           display: block;
           transform: rotate(270deg);
         }
+
+        ${options?.templateBackground &&
+        `
+          .${uuid}.story-template tbody tr.template-row td.template {
+            background: ${options?.templateBackground};
+          }
+        `}
+
+        ${options?.templateBackgrounds?.colors.map((color, index) => {
+          const calculateNth = (index: number) => {
+            return `${options?.templateBackgrounds?.colors.length}n + ${index + 1}`;
+          };
+          return options?.templateBackgrounds?.alternate === 'y'
+            ? `
+                .${uuid}.story-template tbody tr.template-row:nth-of-type(${calculateNth(index)}) td.template {
+                  background: ${color};
+                }
+              `
+            : `
+                .${uuid}.story-template tbody tr.template-row td.template:nth-of-type(${calculateNth(index)}) {
+                  background: ${color};
+                }
+              `;
+        })}
       </style>
       ${xAxes.map((xAxis: any) => {
         return html` ${yAxes.map((yAxis: any) => {
@@ -248,11 +284,11 @@ export const storybookTemplate = (customElementTag: string) => {
           const showXLabel = xAxes.length > 1 || xAxis.values;
           const showYLabel = ((xAxis && yAxis) || yAxes.length > 1) && yAxis?.values;
           return html`
-            <table class="story-template">
+            <table class="story-template ${uuid}">
               <thead>
-                ${title &&
+                ${options?.title &&
                 html`<tr>
-                  <th class="title" colspan=${xAxis.values?.length + 3}><code>${title}</code></th>
+                  <th class="title" colspan=${xAxis.values?.length + 3}><code>${options?.title}</code></th>
                 </tr>`}
                 ${xAxis &&
                 xAxis.values &&
@@ -263,7 +299,7 @@ export const storybookTemplate = (customElementTag: string) => {
                       showXLabel &&
                       html`<th colspan=${xAxis.values?.length}><code>${xAxis.title || xAxis.name}</code></th>`
                     }
-                    </th>
+                    </tr>
                   </tr>
                   ${
                     xAxis.type !== 'slot'
@@ -282,16 +318,16 @@ export const storybookTemplate = (customElementTag: string) => {
               <tbody>
                 ${(yAxis?.values || ['']).map((yValue: any) => {
                   const row = html`
-                    <tr>
+                    <tr class="template-row">
                       ${firstRow && showYLabel
                         ? html`<th rowspan="${yAxis?.values?.length}">
                             <span><code>${yAxis.title || yAxis.name}</code></span>
                           </th>`
                         : ''}
-                      ${yAxis.type !== 'slot' ? html` <td><code>${yValue}</td></code>` : ''}
+                      ${yAxis.type !== 'slot' ? html` <th><code>${yValue}</th></code>` : ''}
                       ${(xAxis?.values || ['']).map((xValue: any) => {
                         return html`
-                          <td><div>
+                          <td class="template"><div>
                             ${template({
                               ...args,
                               ...constantDefinitions,

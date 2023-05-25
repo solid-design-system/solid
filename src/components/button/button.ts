@@ -57,8 +57,11 @@ export default class SdButton extends SolidElement implements SolidFormControl {
   /** The button's theme variant. */
   @property({ reflect: true }) variant: 'primary' | 'secondary' | 'tertiary' | 'cta' = 'primary';
 
+  /** Inverts the button. */
+  @property({ type: Boolean, reflect: true }) inverted = false;
+
   /** The button's size. */
-  @property({ reflect: true }) size: 'small' | 'medium' | 'large' = 'medium';
+  @property({ reflect: true }) size: 'sm' | 'md' | 'lg' = 'md';
 
   /** Disables the button. */
   @property({ type: Boolean, reflect: true }) disabled = false;
@@ -222,7 +225,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
     /* eslint-disable lit/binding-positions */
     return html`
       <${tag} part="base" class=${cx(
-      'focus:focus-outline font-medium h-varspacing leading-[calc(var(--tw-varspacing)-2px)] border inline-flex items-stretch justify-center w-full font-semibold font-sans no-underline select-none whitespace-nowrap align-middle duration-50 transition-colors duration-200 ease-in-out cursor-[inherit]',
+      'focus:focus-outline font-md h-varspacing leading-[calc(var(--tw-varspacing)-2px)] border inline-flex items-stretch justify-center w-full font-semibold font-sans no-underline select-none whitespace-nowrap align-middle duration-50 transition-colors duration-200 ease-in-out cursor-[inherit]',
       this.loading && 'relative cursor-wait',
       this.disabled && 'cursor-not-allowed',
       this.circle && 'px-0 w-varspacing',
@@ -232,9 +235,9 @@ export default class SdButton extends SolidElement implements SolidFormControl {
       this.circle ? 'rounded-full' : 'rounded-md',
       {
         /* sizes, fonts */
-        small: 'text-sm varspacing-8 px-4',
-        medium: 'text-base varspacing-10 px-4',
-        large: 'text-base varspacing-12 px-4'
+        sm: 'text-sm varspacing-8 px-4',
+        md: 'text-base varspacing-10 px-4',
+        lg: 'text-base varspacing-12 px-4'
       }[this.size],
       {
         /* variants */
@@ -267,7 +270,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
           'flex flex-auto items-center pointer-events-none',
           this.circle && 'hidden',
           this.loading && 'invisible',
-          slots.prefix && (this.size === 'small' ? 'mr-1' : 'mr-2')
+          slots.prefix && (this.size === 'sm' ? 'mr-1' : 'mr-2')
         )}></slot>
         <slot part="label" class=${cx('inline-block', this.loading && 'invisible')}></slot>
         <slot name="suffix"
@@ -276,7 +279,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
             'flex flex-auto items-center pointer-events-none',
             this.loading && 'invisible',
             this.circle && 'hidden',
-            slots.suffix && (this.size === 'small' ? 'ml-1' : 'ml-2')
+            slots.suffix && (this.size === 'sm' ? 'ml-1' : 'ml-2')
           )}>
         </slot>
       ${

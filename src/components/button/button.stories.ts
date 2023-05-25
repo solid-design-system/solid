@@ -30,7 +30,7 @@ export const Default = {
 };
 
 /**
- * The button in all possible combinations of `variant` and `size` in the default `color`.
+ * The button in all possible combinations of `variant` and `size`.
  */
 
 export const VariantAndSize = {
@@ -48,11 +48,32 @@ export const VariantAndSize = {
 };
 
 /**
+ * The button in all possible combinations of `variant` `inverted`.
+ */
+
+export const Variant = {
+  name: 'Variant',
+  parameters: { controls: { exclude: ['variant', 'inverted'] } },
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        x: { type: 'attribute', name: 'variant' },
+        y: { type: 'attribute', name: 'inverted', values: [false, true] }
+      },
+      args,
+      options: {
+        templateBackgrounds: { alternate: 'y', colors: ['white', '#00358E'] }
+      }
+    });
+  }
+};
+
+/**
  * Use the `loading` attribute to make a button busy. The width will remain the same as before, preventing adjacent elements from moving around. Clicks will be suppressed until the loading state is removed.
  */
 
 export const Loading = {
-  parameters: { controls: { exclude: ['variant', 'size', 'disabled', 'loading'] } },
+  parameters: { controls: { exclude: ['variant', 'size', 'disabled', 'loading', 'inverted'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -60,9 +81,34 @@ export const Loading = {
           { type: 'attribute', name: 'variant' },
           { type: 'attribute', name: 'size' },
           { type: 'attribute', name: 'disabled' }
+        ],
+        y: { type: 'attribute', name: 'inverted', values: [false, true] }
+      },
+      constants: [
+        { type: 'attribute', name: 'loading', value: true },
+        { type: 'slot', name: 'default', value: 'Loading' }
+      ],
+      args,
+      options: {
+        templateBackgrounds: { alternate: 'y', colors: ['white', '#00358E'] }
+      }
+    });
+  }
+};
+
+export const Inverted = {
+  parameters: { controls: { exclude: ['variant', 'disabled', 'loading'] } },
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        x: [
+          { type: 'attribute', name: 'variant' },
+          { type: 'attribute', name: 'disabled' },
+          { type: 'attribute', name: 'loading' }
         ]
       },
-      constants: { type: 'attribute', name: 'loading', value: true },
+      constants: { type: 'attribute', name: 'inverted', value: true },
+      options: { templateBackground: '#00358E' },
       args
     });
   }
@@ -73,7 +119,7 @@ export const Loading = {
  */
 
 export const Disabled = {
-  parameters: { controls: { exclude: ['variant', 'size', 'disabled', 'loading'] } },
+  parameters: { controls: { exclude: ['variant', 'size', 'disabled', 'loading', 'inverted'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -81,10 +127,14 @@ export const Disabled = {
           { type: 'attribute', name: 'variant' },
           { type: 'attribute', name: 'size' },
           { type: 'attribute', name: 'loading' }
-        ]
+        ],
+        y: { type: 'attribute', name: 'inverted', values: [false, true] }
       },
       constants: { type: 'attribute', name: 'disabled', value: true },
-      args
+      args,
+      options: {
+        templateBackgrounds: { alternate: 'y', colors: ['white', '#00358E'] }
+      }
     });
   }
 };
@@ -122,7 +172,7 @@ export const Slots = {
   parameters: { controls: { exclude: ['size', 'default', 'prefix', 'suffix'] } },
   render: (args: any) => {
     return html`
-      ${['small', 'medium', 'large'].map(size =>
+      ${['sm', 'md', 'lg'].map(size =>
         generateTemplate({
           axis: {
             x: { type: 'slot', name: 'suffix', values: ['', '<span slot="suffix">★</span>'] },
@@ -130,7 +180,7 @@ export const Slots = {
           },
           constants: [{ type: 'attribute', name: 'size', value: size }],
           args,
-          title: `size="${size}"`
+          options: { title: `size="${size}"` }
         })
       )}
     `;
