@@ -137,6 +137,7 @@
     "react-dom": "^18.2.0",
     "recursive-copy": "^2.0.14",
     "rollup-plugin-minify-html-literals": "^1.2.6",
+    "semantic-release": "^21.0.2",
     "sinon": "^15.0.4",
     "source-map": "^0.7.4",
     "storybook": "^7.0.14",
@@ -153,6 +154,29 @@
     "*": [
       "pnpm lint",
       "pnpm format"
+    ]
+  },
+  "release": {
+    "branches": [
+      "main"
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      [
+        "@semantic-release/npm",
+        {
+          "npmPublish": false
+        }
+      ],
+      [
+        "@semantic-release/git",
+        {
+          "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+        }
+      ],
+      "@semantic-release/github"
     ]
   },
   "readme": "ERROR: No README data found!",
