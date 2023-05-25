@@ -1,5 +1,4 @@
 import { html } from 'lit/static-html.js';
-import { unsafeCSS } from 'lit';
 import { getWcStorybookHelpers } from '@mariohamann/wc-storybook-helpers';
 
 type ArgTypesDefinition = 'attribute' | 'property' | 'slot' | 'cssPart' | 'cssProperty';
