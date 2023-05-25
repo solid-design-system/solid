@@ -225,7 +225,11 @@ export default class SdButton extends SolidElement implements SolidFormControl {
     /* eslint-disable lit/binding-positions */
     return html`
       <${tag} part="base" class=${cx(
-      'focus:focus-outline font-md h-varspacing leading-[calc(var(--tw-varspacing)-2px)] border inline-flex items-stretch justify-center w-full font-semibold font-sans no-underline select-none whitespace-nowrap align-middle duration-50 transition-colors duration-200 ease-in-out cursor-[inherit]',
+      `font-md font-semibold font-sans leading-[calc(var(--tw-varspacing)-2px)] no-underline
+        w-full h-varspacing whitespace-nowrap align-middle inline-flex items-stretch justify-center
+        border transition-colors duration-200 ease-in-out
+        select-none cursor-[inherit]
+        ${!this.inverted ? 'focus-visible:focus-outline' : 'focus-visible:focus-outline-inverted'}`,
       this.loading && 'relative cursor-wait',
       this.disabled && 'cursor-not-allowed',
       this.circle && 'px-0 w-varspacing',
@@ -241,13 +245,32 @@ export default class SdButton extends SolidElement implements SolidFormControl {
       }[this.size],
       {
         /* variants */
-        primary:
-          'text-white bg-primary border-transparent hover:bg-primary-500 hover:text-primary-100 active:bg-primary-800 active:text-primary-200 disabled:bg-neutral-500',
-        secondary:
-          'text-primary bg-white border-primary hover:text-primary-500 hover:bg-primary-100 hover:border-primary-500 active:text-primary-800 active:bg-primary-200 active:border-primary-800 disabled:text-neutral-500 disabled:border-neutral-500',
-        tertiary:
-          'text-primary bg-white border-transparent hover:text-primary-500 hover:bg-primary-100 active:text-primary-800 active:bg-primary-200 disabled:text-neutral-500',
-        cta: 'text-white bg-accent border-transparent hover:bg-accent-300 active:bg-accent-500 disabled:bg-neutral-500'
+        primary: `${!this.inverted ? 'text-white bg-primary' : 'text-primary bg-white'} border-transparent
+           hover:bg-primary-500 hover:text-primary-100
+           active:bg-primary-800 active:text-primary-200
+           ${!this.inverted ? 'disabled:bg-neutral-500' : 'disabled:bg-neutral-600'} disabled:text-white`,
+        secondary: !this.inverted
+          ? `text-primary border-primary
+          hover:text-primary-500 hover:bg-primary-100 hover:border-primary-500
+          active:text-primary-800 active:bg-primary-200 active:border-primary-800
+          disabled:text-neutral-500 disabled:border-neutral-500`
+          : `text-white border-white
+          hover:text-primary-100 hover:bg-primary-500 hover:border-primary-100
+          active:text-primary-200 active:bg-primary-800 active:border-primary-200
+          disabled:text-neutral-600 disabled:border-neutral-600`,
+        tertiary: !this.inverted
+          ? `text-primary border-transparent
+          hover:text-primary-500 hover:bg-primary-100
+          active:text-primary-800 active:bg-primary-200
+          disabled:text-neutral-500`
+          : `text-white border-transparent
+          hover:text-primary-100 hover:bg-primary-500
+          active:text-primary-200 active:bg-primary-800
+          disabled:text-neutral-600`,
+        cta: `text-white bg-accent border-transparent
+          hover:bg-accent-300
+          active:bg-accent-500
+          ${!this.inverted ? 'disabled:bg-neutral-500' : 'disabled:bg-neutral-600'} disabled:text-white`
       }[this.variant]
     )}
         ?disabled=${ifDefined(isLink ? undefined : this.disabled)}

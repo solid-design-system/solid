@@ -4,6 +4,10 @@
 
 @layer components {
   .focus-outline {
-    @apply ring-2 ring-primary ring-offset-1 outline-none;
+    @apply outline outline-2 outline-offset-2 outline-primary;
+  }
+
+  .focus-outline-inverted {
+    @apply outline outline-2 outline-offset-2 outline-white;
   }
 }
