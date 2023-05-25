@@ -96,6 +96,10 @@ export const Loading = {
   }
 };
 
+/**
+ * Use the `inverted` attribute to make a button with inverted colors.
+ */
+
 export const Inverted = {
   parameters: { controls: { exclude: ['variant', 'disabled', 'loading'] } },
   render: (args: any) => {
@@ -165,18 +169,18 @@ export const Circle = {
 };
 
 /**
- * Use the `prefix` and `suffix` slots to add icons.
+ * Use the `icon-left` and `icon-right` slots to add icons.
  */
 
 export const Slots = {
-  parameters: { controls: { exclude: ['size', 'default', 'prefix', 'suffix'] } },
+  parameters: { controls: { exclude: ['size', 'default', 'icon-left', 'icon-right'] } },
   render: (args: any) => {
     return html`
       ${['sm', 'md', 'lg'].map(size =>
         generateTemplate({
           axis: {
-            x: { type: 'slot', name: 'suffix', values: ['', '<span slot="suffix">★</span>'] },
-            y: { type: 'slot', name: 'prefix', values: ['', '<span slot="prefix">★</span>'] }
+            x: { type: 'slot', name: 'icon-right', values: ['', '<span slot="icon-right">★</span>'] },
+            y: { type: 'slot', name: 'icon-left', values: ['', '<span slot="icon-left">★</span>'] }
           },
           constants: [{ type: 'attribute', name: 'size', value: size }],
           args,

@@ -23,13 +23,13 @@ import type { SolidFormControl } from '../../internal/solid-element';
  * @event sd-focus - Emitted when the button gains focus.
  *
  * @slot - The button's label.
- * @slot prefix - A presentational prefix icon or similar element.
- * @slot suffix - A presentational suffix icon or similar element.
+ * @slot icon-left - A prefix icon or similar element.
+ * @slot icon-right - A suffix icon or similar element.
  *
  * @csspart base - The component's base wrapper.
- * @csspart prefix - The container that wraps the prefix.
+ * @csspart icon-left - The container that wraps the left icon area.
  * @csspart label - The button's label.
- * @csspart suffix - The container that wraps the suffix.
+ * @csspart icon-right - The container that wraps the right icon area.
  */
 @customElement('sd-button')
 export default class SdButton extends SolidElement implements SolidFormControl {
@@ -47,7 +47,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
       return input.closest('form');
     }
   });
-  private readonly hasSlotController = new HasSlotController(this, '[default]', 'prefix', 'suffix');
+  private readonly hasSlotController = new HasSlotController(this, '[default]', 'icon-left', 'icon-right');
 
   @query('a, button') button: HTMLButtonElement | HTMLLinkElement;
 
@@ -217,8 +217,8 @@ export default class SdButton extends SolidElement implements SolidFormControl {
 
     const slots = {
       label: this.hasSlotController.test('[default]'),
-      prefix: this.hasSlotController.test('prefix'),
-      suffix: this.hasSlotController.test('suffix')
+      'icon-left': this.hasSlotController.test('icon-left'),
+      'icon-right': this.hasSlotController.test('icon-right')
     };
 
     /* eslint-disable lit/no-invalid-html */
@@ -289,20 +289,20 @@ export default class SdButton extends SolidElement implements SolidFormControl {
         @focus=${this.handleFocus}
         @click=${this.handleClick}
       >
-        <slot name="prefix" part="prefix" class=${cx(
+        <slot name="icon-left" part="icon-left" class=${cx(
           'flex flex-auto items-center pointer-events-none',
           this.circle && 'hidden',
           this.loading && 'invisible',
-          slots.prefix && (this.size === 'sm' ? 'mr-1' : 'mr-2')
+          slots['icon-left'] && (this.size === 'sm' ? 'mr-1' : 'mr-2')
         )}></slot>
         <slot part="label" class=${cx('inline-block', this.loading && 'invisible')}></slot>
-        <slot name="suffix"
-          part="suffix"
+        <slot name="icon-right"
+          part="icon-right"
           class=${cx(
             'flex flex-auto items-center pointer-events-none',
             this.loading && 'invisible',
             this.circle && 'hidden',
-            slots.suffix && (this.size === 'sm' ? 'ml-1' : 'ml-2')
+            slots['icon-right'] && (this.size === 'sm' ? 'ml-1' : 'ml-2')
           )}>
         </slot>
       ${
