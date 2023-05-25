@@ -282,6 +282,13 @@ export default class SdButton extends SolidElement implements SolidFormControl {
       ${
         this.loading
           ? html`<sd-spinner
+              variant=${this.disabled
+                ? this.variant === 'primary' || this.variant === 'cta'
+                  ? 'neutral-600'
+                  : 'neutral-500'
+                : this.variant === 'secondary' || this.variant === 'tertiary'
+                ? 'primary'
+                : 'white'}
               class="absolute text-md top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
             ></sd-spinner>`
           : ''
