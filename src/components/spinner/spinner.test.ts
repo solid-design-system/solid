@@ -10,8 +10,8 @@ describe('<sd-spinner>', () => {
 
     it('should have a role of "status".', async () => {
       const spinner = await fixture<SdSpinner>(html` <sd-spinner></sd-spinner> `);
-      const base = spinner.shadowRoot!.querySelector('[part~="base"]')!;
-      expect(base).have.attribute('role', 'progressbar');
+      const svg = spinner.shadowRoot!.querySelector('svg')!;
+      expect(svg).have.attribute('role', 'progressbar');
     });
   });
 });
