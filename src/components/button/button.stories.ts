@@ -1,30 +1,23 @@
 import '../../solid-components';
-import { storybookDefaults, storybookTemplates, storybookHelpers } from '../../../scripts/storybook/helper';
 import { html } from 'lit-html';
+import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
 const { argTypes } = storybookDefaults('sd-button');
-const { defaultTemplate, attributesTemplate, attributeToTableTemplate } = storybookTemplates('sd-button');
 const { overrideArgs } = storybookHelpers('sd-button');
+const { generateTemplate } = storybookTemplate('sd-button'); // Replace with your custom element tag
 
 export default {
   title: 'Components/sd-button',
   component: 'sd-button',
-  args: overrideArgs({ slots: { default: 'Default' } }),
-  argTypes,
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/fPGhgNZv98U4H69Gu2tlWi/Button?type=design&node-id=13-18&t=jDLqFEdY7ZlOJurc-4'
+    }
+  },
+  args: overrideArgs({ type: 'slot', name: 'default', value: 'Default' }),
+  argTypes
 };
-
-/**
- * Those attributes are relevant for the stories in terms of design variations.
- * To make story creation faster and as there are lots of them, it is easier to
- * define them here and use it later.
- */
-
-const relevantAttributes = [
-  'variant',
-  'size',
-  'disabled',
-  'loading'
-];
 
 /**
  * Default: This shows sd-button in its default state.
@@ -32,7 +25,7 @@ const relevantAttributes = [
 
 export const Default = {
   render: (args: any) => {
-    return defaultTemplate(args);
+    return generateTemplate({ args });
   }
 };
 
@@ -44,13 +37,13 @@ export const VariantAndSize = {
   name: 'Variant × Size',
   parameters: { controls: { exclude: ['variant', 'size'] } },
   render: (args: any) => {
-    return attributeToTableTemplate(
-      {
-        args,
-        attributeA: 'variant',
-        attributeB: 'size',
-      }
-    );
+    return generateTemplate({
+      axis: {
+        x: { type: 'attribute', name: 'variant' },
+        y: { type: 'attribute', name: 'size' }
+      },
+      args
+    });
   }
 };
 
@@ -59,14 +52,19 @@ export const VariantAndSize = {
  */
 
 export const Loading = {
-  parameters: { controls: { exclude: relevantAttributes } },
+  parameters: { controls: { exclude: ['variant', 'size', 'disabled', 'loading'] } },
   render: (args: any) => {
-    return attributesTemplate(
-      {
-        args: { ...args, loading: true },
-        attributes: relevantAttributes.filter((attr) => attr !== 'loading'),
-      }
-    );
+    return generateTemplate({
+      axis: {
+        x: [
+          { type: 'attribute', name: 'variant' },
+          { type: 'attribute', name: 'size' },
+          { type: 'attribute', name: 'disabled' }
+        ]
+      },
+      constants: { type: 'attribute', name: 'loading', value: true },
+      args
+    });
   }
 };
 
@@ -75,90 +73,66 @@ export const Loading = {
  */
 
 export const Disabled = {
-  parameters: { controls: { exclude: relevantAttributes } },
+  parameters: { controls: { exclude: ['variant', 'size', 'disabled', 'loading'] } },
   render: (args: any) => {
-    return attributesTemplate(
-      {
-        args: { ...args, disabled: true },
-        attributes: relevantAttributes.filter((attr) => attr !== 'disabled'),
-      }
-    );
+    return generateTemplate({
+      axis: {
+        x: [
+          { type: 'attribute', name: 'variant' },
+          { type: 'attribute', name: 'size' },
+          { type: 'attribute', name: 'loading' }
+        ]
+      },
+      constants: { type: 'attribute', name: 'disabled', value: true },
+      args
+    });
   }
 };
 
 /**
- * Use the `circle` attribute to create circular icon buttons. When this attribute is set, the button expects ideally a single `<sd-icon>` in the default slot.
+ * Use the `circle` attribute to create circular icon buttons. When this attribute is set, the button expects ideally a single `<span>` in the default slot.
  */
 
 export const Circle = {
-  parameters: { controls: { exclude: [...relevantAttributes, 'circle', 'default', 'caret'] } },
+  parameters: { controls: { exclude: ['variant', 'size', 'disabled', 'loading', 'circle', 'default'] } },
   render: (args: any) => {
-    return attributesTemplate(
-      {
-        args: { ...args, circle: true, 'default-slot': '<sd-icon library="system" name="star-fill"></sd-icon>' },
-        attributes: relevantAttributes.filter((attr) => attr !== 'circle' || 'caret'),
-      }
-    );
+    return generateTemplate({
+      axis: {
+        x: [
+          { type: 'attribute', name: 'variant' },
+          { type: 'attribute', name: 'size' },
+          { type: 'attribute', name: 'loading' },
+          { type: 'attribute', name: 'disabled' }
+        ]
+      },
+      constants: [
+        { type: 'attribute', name: 'circle', value: true },
+        { type: 'slot', name: 'default', value: '★' }
+      ],
+      args
+    });
   }
 };
 
 /**
  * Use the `prefix` and `suffix` slots to add icons.
- * TODO: It might be better to this with renderTableVariationsStory()
  */
 
 export const Slots = {
   parameters: { controls: { exclude: ['size', 'default', 'prefix', 'suffix'] } },
   render: (args: any) => {
-    /**
-     * Those slots are relevant for the stories in terms of design variations.
-     * To make story creation faster and as there are lots of them, it is easier to
-     * define them here and use it later.
-     */
-    const getSlots = (selection: ('prefix' | 'suffix' | 'default')[], badge?: boolean) => {
-      const slots = {
-        'prefix': '<sd-icon slot="prefix"  library="system" name="star-fill"></sd-icon>',
-        'suffix': '<sd-icon slot="suffix"  library="system" name="star-fill"></sd-icon>',
-        'default': badge ? '&lt;slot&gt;<sd-badge pill>99</sd-badge>' : '&lt;slot&gt;',
-      };
-
-      // conditionally add slots if they are in selection
-      const selectedSlots = selection.reduce((acc, slot) => {
-        acc[slot] = slots[slot];
-        return acc;
-      }, {});
-
-      console.log({ selection, selectedSlots }, overrideArgs({ slots: selectedSlots }, args));
-
-      return overrideArgs({ slots: selectedSlots });
-    };
-
-    /**
-     * We're setting default args here, so we don't have to repeat them in every
-     * story and just overwrite the stuff that has to be changed.
-     */
-    const defaultOptions = {
-      attributes: ['size'],
-      alternativeTitle: '',
-    };
-
-    const output = [];
-
-    // Default
-    output.push(html`
-    ${attributesTemplate({ ...defaultOptions, args: getSlots(['prefix', 'suffix', 'default']), alternativeTitle: 'size (default)' })}
-    ${attributesTemplate({ ...defaultOptions, args: getSlots(['suffix', 'default']) })}
-    ${attributesTemplate({ ...defaultOptions, args: getSlots(['prefix', 'default']) })}
-    ${attributesTemplate({ ...defaultOptions, args: getSlots(['default']) })}
-  `);
-
-    output.push(html`
-    ${attributesTemplate({ ...defaultOptions, args: getSlots(['prefix', 'suffix', 'default'], true), alternativeTitle: 'size (slot contains <sd-badge>)' })}
-    ${attributesTemplate({ ...defaultOptions, args: getSlots(['suffix', 'default'], true) })}
-    ${attributesTemplate({ ...defaultOptions, args: getSlots(['prefix', 'default'], true) })}
-    ${attributesTemplate({ ...defaultOptions, args: getSlots(['default'], true) })}
-  `);
-
-    return html`${output}`;
+    return html`
+      ${['small', 'medium', 'large'].map(size =>
+        generateTemplate({
+          axis: {
+            x: { type: 'slot', name: 'suffix', values: ['', '<span slot="suffix">★</span>'] },
+            y: { type: 'slot', name: 'prefix', values: ['', '<span slot="prefix">★</span>'] }
+          },
+          constants: [{ type: 'attribute', name: 'size', value: size }],
+          args,
+          title: `size="${size}"`
+        })
+      )}
+    `;
   }
 };

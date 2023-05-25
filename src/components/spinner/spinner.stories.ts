@@ -1,25 +1,15 @@
 import '../../solid-components';
-import { storybookDefaults, storybookTemplates } from '../../../scripts/storybook/helper';
+import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
 
 const { argTypes, args } = storybookDefaults('sd-spinner');
-const { defaultTemplate, attributesTemplate } = storybookTemplates('sd-spinner');
+const { generateTemplate } = storybookTemplate('sd-spinner');
 
 export default {
   title: 'Components/sd-spinner',
   component: 'sd-spinner',
   args,
-  argTypes,
+  argTypes
 };
-
-/**
- * Those attributes are relevant for the stories in terms of design variations.
- * To make story creation faster and as there are lots of them, it is easier to
- * define them here and use it later.
- */
-
-const relevantAttributes = [
-  'variant',
-];
 
 /**
  * Default: This shows sd-spinner in its default state.
@@ -27,7 +17,7 @@ const relevantAttributes = [
 
 export const Default = {
   render: (args: any) => {
-    return defaultTemplate(args);
+    return generateTemplate({ args });
   }
 };
 
@@ -36,13 +26,13 @@ export const Default = {
  */
 
 export const Variant = {
-  parameters: { controls: { exclude: relevantAttributes } },
+  parameters: { controls: { exclude: 'variant' } },
   render: (args: any) => {
-    return attributesTemplate(
-      {
-        args: { ...args },
-        attributes: ['variant'],
-      }
-    );
+    return generateTemplate({
+      axis: {
+        x: { type: 'attribute', name: 'variant' }
+      },
+      args
+    });
   }
 };

@@ -1,14 +1,23 @@
 import '../../solid-components';
-import { getDefaultArgs, renderDefaultStory } from '../../../scripts/storybook/helper';
+import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
+
+const { argTypes, args } = storybookDefaults('{{ tag }}');
+const { generateTemplate } = storybookTemplate('{{ tag }}');
 
 export default {
   title: 'Components/{{ tag }}',
   component: '{{ tag }}',
-  args: getDefaultArgs('{{ tag }}'),
+  args,
+  argTypes,
 };
+
+
+/**
+ * Default: This shows {{ tag }} in its default state.
+ */
 
 export const Default = {
   render: (args: any) => {
-    return renderDefaultStory('{{ tag }}', args);
+    return generateTemplate({args});
   }
 };

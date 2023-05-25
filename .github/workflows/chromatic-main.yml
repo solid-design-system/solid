@@ -1,0 +1,42 @@
+# .github/workflows/chromatic.yml
+
+# Workflow name
+name: 'Chromatic (Main)'
+
+# Event for the workflow
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  chromatic-deployment:
+    runs-on: ubuntu-latest
+    steps:
+        # 👇 Version 2 of the action
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # 👈 Required to retrieve git history
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 7.13.6
+      - name: Install dependencies
+      # 👇 Install dependencies with the same package manager used in the project (replace it as needed), e.g. yarn, npm, pnpm
+        run: PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=true pnpm i
+      # 👇 Build storybook with pnpm
+      - name: Build storybook
+        run: pnpm run build.storybook
+      # 👇 Adds Chromatic as a step in the workflow
+      - name: Publish to Chromatic
+        uses: chromaui/action@v1
+        # Options required to the GitHub Chromatic Action
+        with:
+          # 👇 Chromatic projectToken, refer to the manage page to obtain it.
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          # Speedup the build by now waiting until everything is sent to Chromatic
+          exitOnceUploaded: true
+          # We don't need tests in the main branch, but want to accept everything
+          autoAcceptChanges: true
+          # We need to manually build storybook with pnpm
+          storybookBuildDir: dist/storybook
