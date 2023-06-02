@@ -1,0 +1,22 @@
+parameters:
+  ## Folder path used to specify the destination folder
+  - name: destinationPath
+    type: string
+    default: ''
+
+steps:
+  - task: AzureCLI@2
+    displayName: 'Purge CDN from step above'
+    inputs:
+      azureSubscription: 'Workload CI/CD Service Connection (S_STATICCONTENT_PROD)'
+    scriptType: 'bash'
+    scriptLocation: 'inlineScript'
+    inlineScript: |
+      set -x
+      az cdn endpoint purge \
+        --resource-group rg-staticcontent-prod-frontend-cdn \
+        --profile-name cdn-staticcontent-prod-frontend-cdn \
+        --name "fe-solid-design-system-prod" \
+        --content-paths "/${{parameters.destinationPath}}/*" \
+        --no-wait
+      set +x

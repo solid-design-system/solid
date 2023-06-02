@@ -32,10 +32,10 @@ jobs:
           git config pull.rebase true
           git fetch origin --unshallow
           git remote add --mirror=fetch azure ${{ secrets.AZURE_REMOTE_URL }}
-          if [[ $(git ls-remote --heads azure main | wc -l) == "1" ]]; then
+          if [[ $(git ls-remote --heads azure integration | wc -l) == "1" ]]; then
             echo found
-            git pull azure main
+            git pull azure integration
             git pull -X theirs --allow-unrelated-histories
           fi
-          git push azure main
+          git push azure integration
           git push origin
