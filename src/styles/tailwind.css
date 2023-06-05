@@ -3,6 +3,12 @@
 @tailwind utilities;
 
 @layer components {
+  /**
+    * This is a helper component to quickly add a focus outline to an element.
+    * Known issue: Safari renders always square outlines.
+    * We could fix this by using box-shadows, but we then would have to use ring-offset-color (https://tailwindcss.com/docs/ring-offset-color) to fake the offset.
+    * As we don't know the background color of the focused element, this is not possible. Therefore we're using outlines and wait until Safari gets it fixed.
+    */
   .focus-outline {
     @apply outline outline-2 outline-offset-2 outline-primary;
   }
