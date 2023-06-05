@@ -30,7 +30,7 @@ export const Default = {
 };
 
 /**
- * The button in all possible combinations of `variant` and `size` in the default `color`.
+ * The button in all possible combinations of `variant` and `size`.
  */
 
 export const VariantAndSize = {
@@ -48,21 +48,87 @@ export const VariantAndSize = {
 };
 
 /**
+ * The button in all possible combinations of `variant` `inverted`.
+ */
+
+export const Variant = {
+  name: 'Variant',
+  parameters: { controls: { exclude: ['variant', 'inverted'] } },
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        x: { type: 'attribute', name: 'variant' },
+        y: { type: 'attribute', name: 'inverted', values: [false, true] }
+      },
+      args,
+      options: {
+        templateBackgrounds: { alternate: 'y', colors: ['white', '#00358E'] }
+      }
+    });
+  }
+};
+
+/**
  * Use the `loading` attribute to make a button busy. The width will remain the same as before, preventing adjacent elements from moving around. Clicks will be suppressed until the loading state is removed.
  */
 
 export const Loading = {
-  parameters: { controls: { exclude: ['variant', 'size', 'disabled', 'loading'] } },
+  parameters: { controls: { exclude: ['variant', 'size', 'disabled', 'loading', 'inverted'] } },
+  render: (args: any) => {
+    return html`${generateTemplate({
+      axis: {
+        x: [
+          { type: 'attribute', name: 'variant' },
+          { type: 'attribute', name: 'size' }
+        ],
+        y: { type: 'attribute', name: 'inverted', values: [false, true] }
+      },
+      constants: [
+        { type: 'attribute', name: 'loading', value: true },
+        { type: 'slot', name: 'default', value: 'Loading' }
+      ],
+      args,
+      options: {
+        title: 'disabled=false',
+        templateBackgrounds: { alternate: 'y', colors: ['white', '#00358E'] }
+      }
+    })}
+    ${generateTemplate({
+      axis: {
+        x: [{ type: 'attribute', name: 'variant' }],
+        y: { type: 'attribute', name: 'inverted', values: [false, true] }
+      },
+      constants: [
+        { type: 'attribute', name: 'loading', value: true },
+        { type: 'attribute', name: 'disabled', value: true },
+        { type: 'slot', name: 'default', value: 'Loading' }
+      ],
+      args,
+      options: {
+        title: 'disabled=true',
+        templateBackgrounds: { alternate: 'y', colors: ['white', '#00358E'] }
+      }
+    })}`;
+  }
+};
+
+/**
+ * Use the `inverted` attribute to make a button with inverted colors.
+ */
+
+export const Inverted = {
+  parameters: { controls: { exclude: ['variant', 'disabled', 'loading'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
         x: [
           { type: 'attribute', name: 'variant' },
-          { type: 'attribute', name: 'size' },
-          { type: 'attribute', name: 'disabled' }
+          { type: 'attribute', name: 'disabled' },
+          { type: 'attribute', name: 'loading' }
         ]
       },
-      constants: { type: 'attribute', name: 'loading', value: true },
+      constants: { type: 'attribute', name: 'inverted', value: true },
+      options: { templateBackground: '#00358E' },
       args
     });
   }
@@ -73,7 +139,7 @@ export const Loading = {
  */
 
 export const Disabled = {
-  parameters: { controls: { exclude: ['variant', 'size', 'disabled', 'loading'] } },
+  parameters: { controls: { exclude: ['variant', 'size', 'disabled', 'loading', 'inverted'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -81,58 +147,92 @@ export const Disabled = {
           { type: 'attribute', name: 'variant' },
           { type: 'attribute', name: 'size' },
           { type: 'attribute', name: 'loading' }
-        ]
+        ],
+        y: { type: 'attribute', name: 'inverted', values: [false, true] }
       },
       constants: { type: 'attribute', name: 'disabled', value: true },
-      args
+      args,
+      options: {
+        templateBackgrounds: { alternate: 'y', colors: ['white', '#00358E'] }
+      }
     });
   }
 };
 
 /**
  * Use the `circle` attribute to create circular icon buttons. When this attribute is set, the button expects ideally a single `<span>` in the default slot.
+ * DEVNOTE: We're currently hiding the story as the design is not yet final.
  */
 
-export const Circle = {
-  parameters: { controls: { exclude: ['variant', 'size', 'disabled', 'loading', 'circle', 'default'] } },
+// export const Circle = {
+//   parameters: { controls: { exclude: ['variant', 'size', 'disabled', 'loading', 'circle', 'default'] } },
+//   render: (args: any) => {
+//     return generateTemplate({
+//       axis: {
+//         x: [
+//           { type: 'attribute', name: 'variant' },
+//           { type: 'attribute', name: 'size' },
+//           { type: 'attribute', name: 'loading' },
+//           { type: 'attribute', name: 'disabled' }
+//         ]
+//       },
+//       constants: [
+//         { type: 'attribute', name: 'circle', value: true },
+//         { type: 'slot', name: 'default', value: '★' }
+//       ],
+//       args
+//     });
+//   }
+// };
+
+/**
+ * Use the `icon-left` and `icon-right` slots to add icons.
+ */
+
+export const Slots = {
+  parameters: { controls: { exclude: ['size', 'default', 'icon-left', 'icon-right'] } },
   render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        x: [
-          { type: 'attribute', name: 'variant' },
-          { type: 'attribute', name: 'size' },
-          { type: 'attribute', name: 'loading' },
-          { type: 'attribute', name: 'disabled' }
-        ]
-      },
-      constants: [
-        { type: 'attribute', name: 'circle', value: true },
-        { type: 'slot', name: 'default', value: '★' }
-      ],
-      args
-    });
+    return html`
+      ${['sm', 'md', 'lg'].map(size =>
+        generateTemplate({
+          axis: {
+            x: { type: 'slot', name: 'icon-right', values: ['', '<span slot="icon-right">★</span>'] },
+            y: { type: 'slot', name: 'icon-left', values: ['', '<span slot="icon-left">★</span>'] }
+          },
+          constants: [{ type: 'attribute', name: 'size', value: size }],
+          args,
+          options: { title: `size="${size}"` }
+        })
+      )}
+    `;
   }
 };
 
 /**
- * Use the `prefix` and `suffix` slots to add icons.
+ * Use the `base`, `label`, `icon-left` and `icon-right` part selectors to customize the button.
  */
 
-export const Slots = {
-  parameters: { controls: { exclude: ['size', 'default', 'prefix', 'suffix'] } },
+export const Parts = {
+  parameters: { controls: { exclude: ['base', 'label', 'icon-left', 'icon-right'] } },
   render: (args: any) => {
+    let i = 0;
     return html`
-      ${['small', 'medium', 'large'].map(size =>
-        generateTemplate({
-          axis: {
-            x: { type: 'slot', name: 'suffix', values: ['', '<span slot="suffix">★</span>'] },
-            y: { type: 'slot', name: 'prefix', values: ['', '<span slot="prefix">★</span>'] }
-          },
-          constants: [{ type: 'attribute', name: 'size', value: size }],
+      ${['base', 'label', 'icon-left', 'icon-right'].map(part => {
+        i++;
+        return generateTemplate({
+          constants: [
+            { type: 'slot', name: 'icon-right', value: '<span slot="icon-right">★</span>' },
+            { type: 'slot', name: 'icon-left', value: '<span slot="icon-left">★</span>' },
+            {
+              type: 'cssPart',
+              name: 'icon-left',
+              value: `table.sd-button-parts:nth-of-type(${i}) sd-button::part(${part}){outline: solid 2px red}`
+            }
+          ],
           args,
-          title: `size="${size}"`
-        })
-      )}
+          options: { classes: 'sd-button-parts', title: `sd-button::part(${part}){...}` }
+        });
+      })}
     `;
   }
 };
