@@ -1,6 +1,8 @@
 import '../../solid-components';
+import { expect } from '@storybook/jest';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
+import { userEvent, within } from '@storybook/testing-library';
 
 const { argTypes } = storybookDefaults('sd-button');
 const { overrideArgs } = storybookHelpers('sd-button');
@@ -234,5 +236,45 @@ export const Parts = {
         });
       })}
     `;
+  }
+};
+
+export const InteractiveFocus = {
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        x: { type: 'attribute', name: 'variant' },
+        y: { type: 'attribute', name: 'inverted', values: [false, true] }
+      },
+      args,
+      options: {
+        templateBackgrounds: { alternate: 'y', colors: ['white', '#00358E'] }
+      }
+    });
+  },
+  play: async ({ canvasElement }) => {
+    // Starts querying the component from its root
+    const canvas = within(canvasElement);
+
+    console.log(canvas);
+
+    // Looks up the button and interacts with it.
+    await canvas.getAllByText('Default');
+
+    // make a for loop to check if the button has th shadowRoot and proceed as soon as it has
+
+    for (let i = 0; i < 100; i++) {
+      if (canvas.getAllByText('Default')[0].shadowRoot) {
+        break;
+      }
+      await new Promise(resolve => setTimeout(resolve, 100));
+    }
+
+    const buttons = canvas.getAllByText('Default');
+    buttons.forEach(element => {
+      element.shadowRoot.querySelector('button').focus();
+      // wait 100 ms
+      expect(element);
+    });
   }
 };
