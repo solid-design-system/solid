@@ -75,12 +75,11 @@ export const Variant = {
 export const Loading = {
   parameters: { controls: { exclude: ['variant', 'size', 'disabled', 'loading', 'inverted'] } },
   render: (args: any) => {
-    return generateTemplate({
+    return html`${generateTemplate({
       axis: {
         x: [
           { type: 'attribute', name: 'variant' },
-          { type: 'attribute', name: 'size' },
-          { type: 'attribute', name: 'disabled' }
+          { type: 'attribute', name: 'size' }
         ],
         y: { type: 'attribute', name: 'inverted', values: [false, true] }
       },
@@ -90,9 +89,26 @@ export const Loading = {
       ],
       args,
       options: {
+        title: 'disabled=false',
         templateBackgrounds: { alternate: 'y', colors: ['white', '#00358E'] }
       }
-    });
+    })}
+    ${generateTemplate({
+      axis: {
+        x: [{ type: 'attribute', name: 'variant' }],
+        y: { type: 'attribute', name: 'inverted', values: [false, true] }
+      },
+      constants: [
+        { type: 'attribute', name: 'loading', value: true },
+        { type: 'attribute', name: 'disabled', value: true },
+        { type: 'slot', name: 'default', value: 'Loading' }
+      ],
+      args,
+      options: {
+        title: 'disabled=true',
+        templateBackgrounds: { alternate: 'y', colors: ['white', '#00358E'] }
+      }
+    })}`;
   }
 };
 
@@ -145,28 +161,29 @@ export const Disabled = {
 
 /**
  * Use the `circle` attribute to create circular icon buttons. When this attribute is set, the button expects ideally a single `<span>` in the default slot.
+ * DEVNOTE: We're currently hiding the story as the design is not yet final.
  */
 
-export const Circle = {
-  parameters: { controls: { exclude: ['variant', 'size', 'disabled', 'loading', 'circle', 'default'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        x: [
-          { type: 'attribute', name: 'variant' },
-          { type: 'attribute', name: 'size' },
-          { type: 'attribute', name: 'loading' },
-          { type: 'attribute', name: 'disabled' }
-        ]
-      },
-      constants: [
-        { type: 'attribute', name: 'circle', value: true },
-        { type: 'slot', name: 'default', value: '★' }
-      ],
-      args
-    });
-  }
-};
+// export const Circle = {
+//   parameters: { controls: { exclude: ['variant', 'size', 'disabled', 'loading', 'circle', 'default'] } },
+//   render: (args: any) => {
+//     return generateTemplate({
+//       axis: {
+//         x: [
+//           { type: 'attribute', name: 'variant' },
+//           { type: 'attribute', name: 'size' },
+//           { type: 'attribute', name: 'loading' },
+//           { type: 'attribute', name: 'disabled' }
+//         ]
+//       },
+//       constants: [
+//         { type: 'attribute', name: 'circle', value: true },
+//         { type: 'slot', name: 'default', value: '★' }
+//       ],
+//       args
+//     });
+//   }
+// };
 
 /**
  * Use the `icon-left` and `icon-right` slots to add icons.
@@ -209,11 +226,11 @@ export const Parts = {
             {
               type: 'cssPart',
               name: 'icon-left',
-              value: `table:nth-of-type(${i}) sd-button::part(${part}){outline: solid 2px red}`
+              value: `table.sd-button-parts:nth-of-type(${i}) sd-button::part(${part}){outline: solid 2px red}`
             }
           ],
           args,
-          options: { title: `sd-button::part(${part}){...}` }
+          options: { classes: 'sd-button-parts', title: `sd-button::part(${part}){...}` }
         });
       })}
     `;

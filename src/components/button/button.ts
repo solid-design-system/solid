@@ -61,7 +61,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
   @property({ type: Boolean, reflect: true }) inverted = false;
 
   /** The button's size. */
-  @property({ reflect: true }) size: 'sm' | 'md' | 'lg' = 'lg';
+  @property({ reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
 
   /** Disables the button. */
   @property({ type: Boolean, reflect: true }) disabled = false;

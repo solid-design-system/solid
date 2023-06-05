@@ -162,14 +162,33 @@ export const storybookTemplate = (customElementTag: string) => {
     options,
     args = defaultArgs
   }: {
+    /**
+     * The object defining the x-axis and y-axis for the story.
+     */
     axis?: {
       x?: AxisDefinition | AxisDefinition[];
       y?: AxisDefinition | AxisDefinition[];
     };
+    /**
+     * The constant argument(s) for the story. Those will be applied to every cell in the table.
+     */
     constants?: ConstantDefinition | ConstantDefinition[];
     options?: {
+      /**
+       * The title of the story. This shows up on every table in the story.
+       */
       title?: string;
+      /**
+       * Classes which are added to the table. This can be used to scope CSS.
+       */
+      classes?: string;
+      /**
+       * Background color of the table.
+       */
       templateBackground?: string;
+      /**
+       * Background colors of the table. This can be used to alternate the background color of the table rows or columns.
+       */
       templateBackgrounds?: { alternate: 'x' | 'y'; colors: string[] };
     };
     args: any;
@@ -188,8 +207,6 @@ export const storybookTemplate = (customElementTag: string) => {
         ...constantDefinitions
       })}`;
     }
-
-    // const { x, y } = axis;
 
     const generateAxes = (axis: any): AxisDefinition[] => {
       if (!axis) return [{} as AxisDefinition];
@@ -283,7 +300,7 @@ export const storybookTemplate = (customElementTag: string) => {
           const showXLabel = xAxes.length > 1 || xAxis.values;
           const showYLabel = ((xAxis && yAxis) || yAxes.length > 1) && yAxis?.values;
           return html`
-            <table class="story-template ${uuid}">
+            <table class="story-template ${uuid} ${options?.classes}">
               <thead>
                 ${options?.title &&
                 html`<tr>
