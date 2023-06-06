@@ -1,6 +1,18 @@
 import { setCustomElementsManifest } from '@storybook/web-components';
 import 'normalize.css';
 
+import { registerIconLibrary } from '../src/utilities/icon-library';
+
+registerIconLibrary('global-resources', {
+  resolver: name => {
+    let finalName = name;
+    if (name.includes('system/') && !name.includes('system/colored/')) {
+      finalName = name.replace('system/', 'system/colored/');
+    }
+    return `https://global-resources.fe.union-investment.de/latest/scripts/services/svg/icons/${finalName}.svg`;
+  }
+});
+
 async function loadCustomElements() {
   let customElements;
 
