@@ -235,8 +235,16 @@ export const Parts = {
         i++;
         return generateTemplate({
           constants: [
-            { type: 'slot', name: 'icon-right', value: '<span slot="icon-right">★</span>' },
-            { type: 'slot', name: 'icon-left', value: '<span slot="icon-left">★</span>' },
+            {
+              type: 'slot',
+              name: 'icon-right',
+              value: '<sd-icon library="global-resources" name="system/colored/picture" slot="icon-right"></sd-icon>'
+            },
+            {
+              type: 'slot',
+              name: 'icon-left',
+              value: '<sd-icon library="global-resources" name="system/colored/picture" slot="icon-left"></sd-icon>'
+            },
             {
               type: 'cssPart',
               name: 'icon-left',

@@ -295,19 +295,29 @@ export default class SdButton extends SolidElement implements SolidFormControl {
         @click=${this.handleClick}
       >
         <slot name="icon-left" part="icon-left" class=${cx(
-          'flex flex-auto items-center pointer-events-none',
+          'flex flex-auto items-center pointer-events-none shrink-0 my-auto',
           this.circle && 'hidden',
           this.loading && 'invisible',
-          slots['icon-left'] && (this.size === 'sm' ? 'mr-1' : 'mr-2')
+          slots['icon-left'] &&
+            {
+              sm: 'w-4 h-4 mr-1',
+              md: 'w-5 h-5 mr-2',
+              lg: 'w-6 h-6 mr-2'
+            }[this.size]
         )}></slot>
         <slot part="label" class=${cx('inline-block', this.loading && 'invisible')}></slot>
         <slot name="icon-right"
           part="icon-right"
           class=${cx(
-            'flex flex-auto items-center pointer-events-none',
+            'flex flex-auto items-center pointer-events-none shrink-0 my-auto',
             this.loading && 'invisible',
             this.circle && 'hidden',
-            slots['icon-right'] && (this.size === 'sm' ? 'ml-1' : 'ml-2')
+            slots['icon-right'] &&
+              {
+                sm: 'w-4 h-4 ml-1',
+                md: 'w-5 h-5 ml-2',
+                lg: 'w-6 h-6 ml-2'
+              }[this.size]
           )}>
         </slot>
       ${
@@ -359,20 +369,12 @@ export default class SdButton extends SolidElement implements SolidFormControl {
       }
 
       /**
-       * sd-icons should automatically resize correctly as needed
+       * sd-icons should automatically resize correctly based on the button size.
        */
 
       ::slotted(sd-icon) {
-        width: auto;
-        height: var(--sd-spacing-6, 1.5rem); // h-6, default size
-      }
-
-      :host([size='md']) ::slotted(sd-icon) {
-        height: var(--sd-spacing-5, 1.25rem); // h-5
-      }
-
-      :host([size='sm']) ::slotted(sd-icon) {
-        height: var(--sd-spacing-4, 1rem); // h-4
+        height: 100%;
+        width: 100%;
       }
 
       /*
