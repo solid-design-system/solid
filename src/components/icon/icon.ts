@@ -27,7 +27,8 @@ export default class SdIcon extends SolidElement {
 
   /**
    * An external URL of an SVG file. Be sure you trust the content you are including, as it will be executed as code and
-   * can result in XSS attacks.
+   * can result in XSS attacks. Only SVGs on a local or CORS-enabled endpoint are supported. If you're using more than one custom icon,
+   * it might make sense to register a custom icon library.
    */
   @property() src?: string;
 
@@ -99,7 +100,6 @@ export default class SdIcon extends SolidElement {
         const file = await requestIcon(url);
         if (url !== this.getUrl()) {
           // If the url has changed while fetching the icon, ignore this request
-          return;
         } else if (file.ok) {
           const doc = parser.parseFromString(file.svg, 'text/html');
           const svgEl = doc.body.querySelector('svg');

@@ -8,9 +8,8 @@ export default {
   title: 'Components/sd-include',
   component: 'sd-include',
   args,
-  argTypes,
+  argTypes
 };
-
 
 /**
  * Default: This shows sd-include in its default state.
