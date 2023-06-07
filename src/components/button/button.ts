@@ -295,28 +295,28 @@ export default class SdButton extends SolidElement implements SolidFormControl {
         @click=${this.handleClick}
       >
         <slot name="icon-left" part="icon-left" class=${cx(
-          'flex flex-auto items-center pointer-events-none shrink-0 my-auto',
+          'flex flex-auto items-center pointer-events-none text-varspacing',
           this.circle && 'hidden',
           this.loading && 'invisible',
           slots['icon-left'] &&
             {
-              sm: 'w-4 h-4 mr-1',
-              md: 'w-5 h-5 mr-2',
-              lg: 'w-6 h-6 mr-2'
+              sm: 'varspacing-4 mr-1',
+              md: 'varspacing-5 mr-2',
+              lg: 'varspacing-6 mr-2'
             }[this.size]
         )}></slot>
         <slot part="label" class=${cx('inline-block', this.loading && 'invisible')}></slot>
         <slot name="icon-right"
           part="icon-right"
           class=${cx(
-            'flex flex-auto items-center pointer-events-none shrink-0 my-auto',
+            'flex flex-auto items-center pointer-events-none text-varspacing',
             this.loading && 'invisible',
             this.circle && 'hidden',
             slots['icon-right'] &&
               {
-                sm: 'w-4 h-4 ml-1',
-                md: 'w-5 h-5 ml-2',
-                lg: 'w-6 h-6 ml-2'
+                sm: 'varspacing-4 ml-1',
+                md: 'varspacing-5 ml-2',
+                lg: 'varspacing-6 ml-2'
               }[this.size]
           )}>
         </slot>
@@ -370,11 +370,6 @@ export default class SdButton extends SolidElement implements SolidFormControl {
 
       [part='label']::slotted(sd-icon) {
         vertical-align: -2px;
-      }
-
-      ::slotted(sd-icon) {
-        height: 100%;
-        width: 100%;
       }
 
       ///*
