@@ -11,13 +11,13 @@ let parser: DOMParser;
 
 /**
  * @summary Icons are symbols that can be used to represent various options within an application.
- * @documentation https://solid.union-investment.com/[storybook-link]/icon
  * @status stable
- * @since 2.0
+ * @since 1.0
  *
  * @event sd-load - Emitted when the icon has loaded.
  * @event sd-error - Emitted when the icon fails to load due to an error.
  */
+
 @customElement('sd-icon')
 export default class SdIcon extends SolidElement {
   @state() private svg = '';
