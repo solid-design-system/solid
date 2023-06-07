@@ -196,8 +196,22 @@ export const Slots = {
       ${['sm', 'md', 'lg'].map(size =>
         generateTemplate({
           axis: {
-            x: { type: 'slot', name: 'icon-right', values: ['', '<span slot="icon-right">★</span>'] },
-            y: { type: 'slot', name: 'icon-left', values: ['', '<span slot="icon-left">★</span>'] }
+            x: {
+              type: 'slot',
+              name: 'icon-right',
+              values: [
+                '',
+                '<sd-icon library="global-resources" name="system/colored/picture" slot="icon-right"></sd-icon>'
+              ]
+            },
+            y: {
+              type: 'slot',
+              name: 'icon-left',
+              values: [
+                '',
+                '<sd-icon library="global-resources" name="system/colored/picture" slot="icon-left"></sd-icon>'
+              ]
+            }
           },
           constants: [{ type: 'attribute', name: 'size', value: size }],
           args,

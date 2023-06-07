@@ -3,15 +3,9 @@ import 'normalize.css';
 
 import { registerIconLibrary } from '../src/utilities/icon-library';
 
-registerIconLibrary('global-resources', {
-  resolver: name => {
-    let finalName = name;
-    if (name.includes('system/') && !name.includes('system/colored/')) {
-      finalName = name.replace('system/', 'system/colored/');
-    }
-    return `https://global-resources.fe.union-investment.de/latest/scripts/services/svg/icons/${finalName}.svg`;
-  }
-});
+/**
+ * This loads the custom elements manifest generated on run or on build time.
+ */
 
 async function loadCustomElements() {
   let customElements;
@@ -35,3 +29,82 @@ async function loadCustomElements() {
 }
 
 loadCustomElements();
+
+/**
+ * This registers iconLibraries for the sd-icon component
+ */
+
+registerIconLibrary('global-resources', {
+  resolver: name => {
+    // split path and name
+    let path = name.split('/');
+    let iconName = path.pop();
+
+    // "system" and "system/colored" should both resolve to "system/colored", same for "content"
+    if (path.length === 1) {
+      path.push('colored');
+    }
+
+    return `https://global-resources.fe.union-investment.de/latest/scripts/services/svg/icons/${path.join(
+      '/'
+    )}/${iconName}.svg`;
+  },
+
+  // We need currentColor as the main color for the icons
+  mutator: svg => {
+    const recoloredElements = {};
+    recoloredElements['currentColorFills'] = svg.querySelectorAll('[fill="#00358e"], [fill="#fff"]');
+    recoloredElements['currentColorStrokes'] = svg.querySelectorAll('[stroke="#00358e"], [stroke="#fff"]');
+    recoloredElements['greenFills'] = svg.querySelectorAll('[fill="#43b02a"]');
+    recoloredElements['greenStrokes'] = svg.querySelectorAll('[stroke="#43b02a"]');
+
+    recoloredElements.currentColorFills.forEach(filledElement => {
+      filledElement.setAttribute('fill', 'currentColor');
+    });
+
+    recoloredElements.currentColorStrokes.forEach(strokedElement => {
+      strokedElement.setAttribute('stroke', 'currentColor');
+    });
+
+    recoloredElements.greenFills.forEach(filledElement => {
+      filledElement.setAttribute('fill', 'rgb(var(--sd-color-accent, 67 176 42) / var(--tw-bg-opacity, 1))');
+    });
+
+    recoloredElements.greenStrokes.forEach(strokedElement => {
+      strokedElement.setAttribute('stroke', 'rgb(var(--sd-color-accent, 67 176 42) / var(--tw-bg-opacity, 1))');
+    });
+    return svg;
+  }
+});
+
+registerIconLibrary('global-resources-overriden', {
+  resolver: name => {
+    // split path and name
+    let path = name.split('/');
+    let iconName = path.pop();
+
+    // "system" and "system/colored" should both resolve to "system/colored", same for "content"
+    if (path.length === 1) {
+      path.push('colored');
+    }
+
+    // Override icon names which are baked into components
+    if (path[0] === 'system') {
+      iconName =
+        {
+          alarm: 'wecker'
+        }[iconName] || iconName;
+    } else if (path[0] === 'content') {
+      iconName =
+        {
+          letter: 'korrespondenz'
+        }[iconName] || iconName;
+    }
+
+    return `https://global-resources.fe.union-investment.de/latest/scripts/services/svg/attrax-icons/${path.join(
+      '/'
+    )}/${iconName}.svg`;
+  },
+  // We need currentColor as the main color for the icons
+  mutator: svg => svg.setAttribute('fill', 'currentColor')
+});

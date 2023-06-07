@@ -1,11 +1,11 @@
+import { css, html } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { getIconLibrary, unwatchIcon, watchIcon } from './library';
-import { html } from 'lit';
 import { requestIcon } from './request';
 import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
 import { watch } from '../../internal/watch';
+import componentStyles from '../../styles/component.styles';
 import SolidElement from '../../internal/solid-element';
-import styles from './icon.styles';
 
 let parser: DOMParser;
 
@@ -20,8 +20,6 @@ let parser: DOMParser;
  */
 @customElement('sd-icon')
 export default class SdIcon extends SolidElement {
-  static styles = styles;
-
   @state() private svg = '';
 
   /** The name of the icon to draw. Available names depend on the icon library being used. */
@@ -41,6 +39,12 @@ export default class SdIcon extends SolidElement {
 
   /** The name of a registered custom icon library. */
   @property({ reflect: true }) library = 'default';
+
+  /**
+   * The color of the icon.
+   * "current" refers to currentColor and makes it possible to easily style the icon from outside without any CSS variables.
+   */
+  @property({ reflect: true }) color: 'currentColor' | 'primary' | 'white' = 'currentColor';
 
   connectedCallback() {
     super.connectedCallback();
@@ -124,6 +128,32 @@ export default class SdIcon extends SolidElement {
   render() {
     return html` ${unsafeSVG(this.svg)} `;
   }
+
+  static styles = [
+    css`
+      ${componentStyles}
+      :host {
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+        box-sizing: content-box !important;
+      }
+
+      svg {
+        display: block;
+        height: 100%;
+        width: 100%;
+      }
+
+      :host([color='primary']) svg {
+        color: rgb(var(--sd-color-primary, 0 53 142) / var(--tw-text-opacity, 1)); // text-primary
+      }
+
+      :host([color='white']) svg {
+        color: rgb(var(--sd-color-white, 255 255 255) / var(--tw-text-opacity, 1)); // text-white
+      }
+    `
+  ];
 }
 
 declare global {

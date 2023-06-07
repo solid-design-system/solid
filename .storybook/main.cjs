@@ -5,7 +5,8 @@ module.exports = {
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-mdx-gfm',
-    'storybook-addon-designs'
+    'storybook-addon-designs',
+    'storybook-addon-mock'
   ],
   framework: {
     name: '@storybook/web-components-vite',

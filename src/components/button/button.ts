@@ -358,6 +358,23 @@ export default class SdButton extends SolidElement implements SolidFormControl {
         pointer-events: none;
       }
 
+      /**
+       * sd-icons should automatically resize correctly as needed
+       */
+
+      ::slotted(sd-icon) {
+        width: auto;
+        height: var(--sd-spacing-6, 1.5rem); // h-6, default size
+      }
+
+      :host([size='md']) ::slotted(sd-icon) {
+        height: var(--sd-spacing-5, 1.25rem); // h-5
+      }
+
+      :host([size='sm']) ::slotted(sd-icon) {
+        height: var(--sd-spacing-4, 1rem); // h-4
+      }
+
       /*
     * Button groups support a variety of button types (e.g. buttons with tooltips, buttons as dropdown triggers, etc.).
     * This means buttons aren't always direct descendants of the button group, thus we can't target them with the

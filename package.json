@@ -79,6 +79,7 @@
     "normalize.css": "^8.0.1",
     "qr-creator": "^1.0.0",
     "rollup-plugin-summary": "^2.0.0",
+    "storybook-addon-mock": "^4.0.0",
     "terser": "^5.17.1",
     "vite": "^4.3.4"
   },
