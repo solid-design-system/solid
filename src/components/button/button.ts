@@ -346,10 +346,6 @@ export default class SdButton extends SolidElement implements SolidFormControl {
         cursor: pointer;
       }
 
-      [part='label']::slotted(sd-icon) {
-        vertical-align: -2px;
-      }
-
       sd-spinner {
         --indicator-color: currentColor;
         --track-color: var(--tw-varcolor-200);
@@ -372,65 +368,69 @@ export default class SdButton extends SolidElement implements SolidFormControl {
        * sd-icons should automatically resize correctly based on the button size.
        */
 
+      [part='label']::slotted(sd-icon) {
+        vertical-align: -2px;
+      }
+
       ::slotted(sd-icon) {
         height: 100%;
         width: 100%;
       }
 
-      /*
-    * Button groups support a variety of button types (e.g. buttons with tooltips, buttons as dropdown triggers, etc.).
-    * This means buttons aren't always direct descendants of the button group, thus we can't target them with the
-    * ::slotted selector. To work around this, the button group component does some magic to add these special classes to
-    * buttons and we style them here instead.
-    */
+      ///*
+      // * Button groups support a variety of button types (e.g. buttons with tooltips, buttons as dropdown triggers, etc.).
+      // * This means buttons aren't always direct descendants of the button group, thus we can't target them with the
+      // * ::slotted selector. To work around this, the button group component does some magic to add these special classes to
+      // * buttons and we style them here instead.
+      // */
 
-      :host(.sd-button-group__button--first:not(.sd-button-group__button--last)) .button {
-        border-start-end-radius: 0;
-        border-end-end-radius: 0;
-      }
+      // :host(.sd-button-group__button--first:not(.sd-button-group__button--last)) .button {
+      //   border-start-end-radius: 0;
+      //   border-end-end-radius: 0;
+      // }
 
-      :host(.sd-button-group__button--inner) .button {
-        border-radius: 0;
-      }
+      // :host(.sd-button-group__button--inner) .button {
+      //   border-radius: 0;
+      // }
 
-      :host(.sd-button-group__button--last:not(.sd-button-group__button--first)) .button {
-        border-start-start-radius: 0;
-        border-end-start-radius: 0;
-      }
+      // :host(.sd-button-group__button--last:not(.sd-button-group__button--first)) .button {
+      //   border-start-start-radius: 0;
+      //   border-end-start-radius: 0;
+      // }
 
-      /* All except the first */
-      :host(.sd-button-group__button:not(.sd-button-group__button--first)) {
-        margin-inline-start: calc(-1 * var(--sd-input-border-width));
-      }
+      // /* All except the first */
+      // :host(.sd-button-group__button:not(.sd-button-group__button--first)) {
+      //   margin-inline-start: calc(-1 * var(--sd-input-border-width));
+      // }
 
-      /* Add a visual separator between solid buttons */
-      :host(
-          .sd-button-group__button:not(
-              .sd-button-group__button--first,
-              .sd-button-group__button--radio,
-              [variant='default']
-            ):not(:hover)
-        )
-        .button:after {
-        content: '';
-        position: absolute;
-        top: 0;
-        inset-inline-start: 0;
-        bottom: 0;
-        border-left: solid 1px rgb(128 128 128 / 33%);
-        mix-blend-mode: multiply;
-      }
+      // /* Add a visual separator between solid buttons */
+      // :host(
+      //     .sd-button-group__button:not(
+      //         .sd-button-group__button--first,
+      //         .sd-button-group__button--radio,
+      //         [variant='default']
+      //       ):not(:hover)
+      //   )
+      //   .button:after {
+      //   content: '';
+      //   position: absolute;
+      //   top: 0;
+      //   inset-inline-start: 0;
+      //   bottom: 0;
+      //   border-left: solid 1px rgb(128 128 128 / 33%);
+      //   mix-blend-mode: multiply;
+      // }
 
-      /* Bump hovered, focused, and checked buttons up so their focus ring isn't clipped */
-      :host(.sd-button-group__button--hover) {
-        z-index: 1;
-      }
+      // /* Bump hovered, focused, and checked buttons up so their focus ring isn't clipped */
+      // :host(.sd-button-group__button--hover) {
+      //   z-index: 1;
+      // }
 
-      /* Focus and checked are always on top */
-      :host(.sd-button-group__button--focus),
-      :host(.sd-button-group__button[checked]) {
-        z-index: 2;
-      }
+      // /* Focus and checked are always on top */
+      // :host(.sd-button-group__button--focus),
+      // :host(.sd-button-group__button[checked]) {
+      //   z-index: 2;
+      // }
     `
   ];
 }
