@@ -1,5 +1,5 @@
 import { elementUpdated, expect, fixture, html, oneEvent } from '@open-wc/testing';
-import { registerIconLibrary } from '../../../dist/solid.js';
+import { registerIconLibrary } from './library.js';
 import type SdIcon from './icon';
 
 const testLibraryIcons = {
