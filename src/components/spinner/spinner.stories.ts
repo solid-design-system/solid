@@ -1,4 +1,5 @@
 import '../../solid-components';
+import { html } from 'lit-html';
 import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
 
 const { argTypes, args } = storybookDefaults('sd-spinner');
@@ -22,7 +23,7 @@ export const Default = {
 };
 
 /**
- * Use the `variant` attribute to change the color of the spinner and correspond with the parents variant.
+ * Use the `variant` attribute to change the color of the spinner and correspond (currentColor) with the parents variant.
  */
 
 export const Variant = {
@@ -32,7 +33,29 @@ export const Variant = {
       axis: {
         x: { type: 'attribute', name: 'variant' }
       },
+      options: { templateBackgrounds: { alternate: 'x', colors: ['#F6F6F6', '#00358E', '#F6F6F6'] } },
       args
     });
+  }
+};
+
+/**
+ * Use the font-size in css to scale the spinner.
+ */
+
+export const Sizing = {
+  parameters: { controls: { exclude: ['variant'] } },
+  render: (args: any) => {
+    return html`
+      <style>
+        sd-spinner {
+          font-size: 2rem;
+        }
+      </style>
+      ${generateTemplate({
+        options: { title: `font-size: 2rem` },
+        args
+      })}
+    `;
   }
 };

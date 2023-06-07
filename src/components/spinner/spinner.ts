@@ -14,35 +14,41 @@ import SolidElement from '../../internal/solid-element';
 export default class SdSpinner extends SolidElement {
   /** The color variant of the spinner.
    */
-  @property({ reflect: true }) variant: 'primary' | 'white' | 'neutral-500' | 'neutral-600' = 'primary';
+  @property({ reflect: true }) variant: 'primary' | 'white' | 'currentColor' = 'currentColor';
 
   private readonly localize = new LocalizeController(this);
 
   render() {
-    const color = {
-      primary: 'fill-primary',
-      white: 'fill-white',
-      'neutral-500': 'fill-neutral-500',
-      'neutral-600': 'fill-neutral-600'
-    }[this.variant];
-
     return html`
-      <svg role="progressbar" class="h-6 w-6 animate-spin" aria-valuetext=${this.localize.term('loading')}>
+      <svg
+        role="progressbar"
+        viewBox="0 0 24 24"
+        class=${cx(
+          'animate-spin',
+          {
+            primary: 'text-primary',
+            white: 'text-white',
+            currentColor: ''
+          }[this.variant]
+        )}
+        aria-valuetext=${this.localize.term('loading')}
+      >
         <path
           fill-rule="evenodd"
           clip-rule="evenodd"
           d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12Z"
-          class=${cx('opacity-20', color)}
+          class="opacity-20"
+          fill="currentColor"
         />
         <mask id="mask0_5273_25391" style="mask-type:alpha" maskUnits="userSpaceOnUse">
-          <path d="M24 12C24 5.37258 18.6274 0 12 0V12H24Z" class=${cx(color)} />
+          <path d="M24 12C24 5.37258 18.6274 0 12 0V12H24Z" fill="currentColor" />
         </mask>
         <g mask="url(#mask0_5273_25391)">
           <path
             fill-rule="evenodd"
             clip-rule="evenodd"
             d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12Z"
-            class=${cx(color)}
+            fill="currentColor"
           />
         </g>
       </svg>
@@ -57,6 +63,8 @@ export default class SdSpinner extends SolidElement {
     css`
       :host {
         display: inline-block;
+        width: 1em;
+        height: 1em;
       }
     `
   ];
