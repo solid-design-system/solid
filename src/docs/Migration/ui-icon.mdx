@@ -1,0 +1,39 @@
+# `ui-icon`
+
+Use the new `sd-icon` as a replacement. It tries to mirror the attributes of an original HTML button as much as possible, and therefore offers much more. Check out the `sd-button` docs to see them.
+
+## ℹ️ independency from global-resources
+
+You don't have to import `global-resources` with the icon-provider + JSONs with a list of icons anymore. Instead you implement your so-called resolver. This makes the handling a lot more flexible and more performant. Check out the `sd-icon` docs to see how to do this.
+
+## ℹ️ flexible size and color handling
+
+`size` and `color` are inherited the from the parent's `font-size` and `(text-)color`.
+
+## ✨ attribute: `color`
+
+To make coloring flexible and as easy as possible for skinning at the same time we implemented the `color` attribute.
+
+1. `currentColor` (default) inherits the text color from the parent element and is therefore close to the curent CSS variable handling.
+2. `primary` and `white` are self-explanatory – both per default are skinnable.
+
+## ✨ attribute: `src`
+
+You can now use the `src` attribute to set an icon from an URL.
+
+## ✨ attribute: `label`
+
+You can now describe the icon for screen readers.
+
+## 🔀 attributes `icon`, `type`, `variant` → `name`
+
+We dropped the `icon`, `type` and `variant` attributes.
+
+1. `variant` is not needed anymore, as the color is set via the color attribute.
+2. `type` and `icon` are now merged into the `name` attribute, e. g. `name='content/letter'`
+
+You have to make sure, that your resolver works correctly. Please check out the examples in the `sd-icon` docs for `global-resources` and `global-resources-overriden`.
+
+## 🔀 CSS variables `--component-icon-...`
+
+We dropped all component (!) specific CSS variables. Instead you are now able to override the icon's color with `currentColor`.

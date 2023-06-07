@@ -194,10 +194,29 @@ export const Slots = {
   render: (args: any) => {
     return html`
       ${['sm', 'md', 'lg'].map(size =>
+        // We have to compare different types of icons: "square", "wide" and "tall" ones.
         generateTemplate({
           axis: {
-            x: { type: 'slot', name: 'icon-right', values: ['', '<span slot="icon-right">★</span>'] },
-            y: { type: 'slot', name: 'icon-left', values: ['', '<span slot="icon-left">★</span>'] }
+            x: {
+              type: 'slot',
+              name: 'icon-right',
+              values: [
+                '',
+                '<sd-icon library="global-resources" name="system/picture" slot="icon-right"></sd-icon>',
+                '<sd-icon library="global-resources" name="system/multi-functions" slot="icon-right"></sd-icon>',
+                '<sd-icon library="global-resources" name="system/minus" slot="icon-right"></sd-icon>'
+              ]
+            },
+            y: {
+              type: 'slot',
+              name: 'icon-left',
+              values: [
+                '',
+                '<sd-icon library="global-resources" name="system/picture" slot="icon-left"></sd-icon>',
+                '<sd-icon library="global-resources" name="system/multi-functions" slot="icon-left"></sd-icon>',
+                '<sd-icon library="global-resources" name="system/minus" slot="icon-left"></sd-icon>'
+              ]
+            }
           },
           constants: [{ type: 'attribute', name: 'size', value: size }],
           args,
@@ -221,8 +240,16 @@ export const Parts = {
         i++;
         return generateTemplate({
           constants: [
-            { type: 'slot', name: 'icon-right', value: '<span slot="icon-right">★</span>' },
-            { type: 'slot', name: 'icon-left', value: '<span slot="icon-left">★</span>' },
+            {
+              type: 'slot',
+              name: 'icon-right',
+              value: '<sd-icon library="global-resources" name="system/picture" slot="icon-right"></sd-icon>'
+            },
+            {
+              type: 'slot',
+              name: 'icon-left',
+              value: '<sd-icon library="global-resources" name="system/picture" slot="icon-left"></sd-icon>'
+            },
             {
               type: 'cssPart',
               name: 'icon-left',

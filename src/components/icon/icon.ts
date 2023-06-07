@@ -1,27 +1,25 @@
+import { css, html } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { getIconLibrary, unwatchIcon, watchIcon } from './library';
-import { html } from 'lit';
 import { requestIcon } from './request';
 import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
 import { watch } from '../../internal/watch';
+import componentStyles from '../../styles/component.styles';
 import SolidElement from '../../internal/solid-element';
-import styles from './icon.styles';
 
 let parser: DOMParser;
 
 /**
  * @summary Icons are symbols that can be used to represent various options within an application.
- * @documentation https://solid.union-investment.com/[storybook-link]/icon
  * @status stable
- * @since 2.0
+ * @since 1.0
  *
  * @event sd-load - Emitted when the icon has loaded.
  * @event sd-error - Emitted when the icon fails to load due to an error.
  */
+
 @customElement('sd-icon')
 export default class SdIcon extends SolidElement {
-  static styles = styles;
-
   @state() private svg = '';
 
   /** The name of the icon to draw. Available names depend on the icon library being used. */
@@ -29,7 +27,8 @@ export default class SdIcon extends SolidElement {
 
   /**
    * An external URL of an SVG file. Be sure you trust the content you are including, as it will be executed as code and
-   * can result in XSS attacks.
+   * can result in XSS attacks. Only SVGs on a local or CORS-enabled endpoint are supported. If you're using more than one custom icon,
+   * it might make sense to register a custom icon library.
    */
   @property() src?: string;
 
@@ -41,6 +40,12 @@ export default class SdIcon extends SolidElement {
 
   /** The name of a registered custom icon library. */
   @property({ reflect: true }) library = 'default';
+
+  /**
+   * The color of the icon.
+   * "current" refers to currentColor and makes it possible to easily style the icon from outside without any CSS variables.
+   */
+  @property({ reflect: true }) color: 'currentColor' | 'primary' | 'white' = 'currentColor';
 
   connectedCallback() {
     super.connectedCallback();
@@ -95,7 +100,6 @@ export default class SdIcon extends SolidElement {
         const file = await requestIcon(url);
         if (url !== this.getUrl()) {
           // If the url has changed while fetching the icon, ignore this request
-          return;
         } else if (file.ok) {
           const doc = parser.parseFromString(file.svg, 'text/html');
           const svgEl = doc.body.querySelector('svg');
@@ -124,6 +128,32 @@ export default class SdIcon extends SolidElement {
   render() {
     return html` ${unsafeSVG(this.svg)} `;
   }
+
+  static styles = [
+    css`
+      ${componentStyles}
+      :host {
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+        box-sizing: content-box !important;
+      }
+
+      svg {
+        display: block;
+        height: 100%;
+        width: 100%;
+      }
+
+      :host([color='primary']) svg {
+        color: rgb(var(--sd-color-primary, 0 53 142) / var(--tw-text-opacity, 1)); // text-primary
+      }
+
+      :host([color='white']) svg {
+        color: rgb(var(--sd-color-white, 255 255 255) / var(--tw-text-opacity, 1)); // text-white
+      }
+    `
+  ];
 }
 
 declare global {
