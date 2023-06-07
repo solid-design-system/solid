@@ -4,7 +4,7 @@ import { expect, fixture, html, waitUntil } from '@open-wc/testing';
 import sinon from 'sinon';
 import type SdButton from './button';
 
-const variants = ['default', 'primary', 'success', 'neutral', 'warning', 'danger'];
+const variants = ['primary', 'secondary', 'tertiary', 'cta'];
 
 describe('<sd-button>', () => {
   describe('accessibility tests', () => {
@@ -27,7 +27,7 @@ describe('<sd-button>', () => {
 
       expect(el.title).to.equal('');
       expect(el.variant).to.equal('primary');
-      expect(el.size).to.equal('medium');
+      expect(el.size).to.equal('lg');
       expect(el.disabled).to.equal(false);
       expect(el.loading).to.equal(false);
       expect(el.circle).to.equal(false);
