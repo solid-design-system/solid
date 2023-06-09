@@ -47,13 +47,19 @@ export const Sizing = {
   parameters: { controls: { exclude: ['variant'] } },
   render: (args: any) => {
     return html`
-      <style>
-        sd-spinner {
-          font-size: 2rem;
-        }
-      </style>
       ${generateTemplate({
-        options: { title: `font-size: 2rem` },
+        axis: {
+          x: {
+            type: 'template',
+            name: 'individual sizing',
+            values: [
+              { value: '<div style="font-size: inherit">%TEMPLATE%</div>', title: 'font-size: inherit' },
+              { value: '<div style="font-size: 1rem">%TEMPLATE%</div>', title: 'font-size: 1rem' },
+              { value: '<div style="font-size: 2rem">%TEMPLATE%</div>', title: 'font-size: 2rem' },
+              { value: '<div style="font-size: 3rem">%TEMPLATE%</div>', title: 'font-size: 4rem' }
+            ]
+          }
+        },
         args
       })}
     `;
