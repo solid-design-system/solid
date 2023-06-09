@@ -1,17 +1,18 @@
 import { html } from 'lit/static-html.js';
+import { unsafeStatic } from 'lit/static-html.js';
 import { getWcStorybookHelpers } from '@mariohamann/wc-storybook-helpers';
 
 type ArgTypesDefinition = 'attribute' | 'property' | 'slot' | 'cssPart' | 'cssProperty';
 
 type AxisDefinition = {
-  type: ArgTypesDefinition;
+  type: ArgTypesDefinition | 'template';
   name: string;
-  values?: any[];
+  values?: any[] | { value: any; title?: string }[];
   title?: string;
 };
 
 type ConstantDefinition = {
-  type: ArgTypesDefinition;
+  type: ArgTypesDefinition | 'template';
   name: string;
   value: any;
   title?: string;
@@ -146,15 +147,6 @@ export const storybookTemplate = (customElementTag: string) => {
    * the provided configuration. The template displays a table showing all possible combinations of
    * argument values, with one row for each y-axis value and one column for each x-axis value.
    * Each cell in the table is filled with the custom element in the corresponding state.
-   *
-   * @param {Object} config - The configuration object for generating the story template.
-   * @param {Object} [config.axis] - The object defining the x-axis and y-axis for the story.
-   * @param {AxisDefinition | AxisDefinition[]} [config.axis.x] - The x-axis definition(s).
-   * @param {AxisDefinition | AxisDefinition[]} [config.axis.y] - The y-axis definition(s).
-   * @param {ConstantDefinition | ConstantDefinition[]} [config.constants] - The constant argument(s) for the story.
-   * @param {string} [config.title] - The title of the story.
-   * @param {Object} [config.args] - The default arguments for the story.
-   * @returns {Object} - The Lit template function for the story.
    */
   const generateTemplate = ({
     axis,
@@ -228,6 +220,11 @@ export const storybookTemplate = (customElementTag: string) => {
     const xAxes = generateAxes(axis?.x);
     const yAxes = generateAxes(axis?.y);
 
+    const constantsArray = Array.isArray(constants) ? constants : [constants];
+    const constantsTemplate = constantsArray.find(constant => constant.type === 'template')?.value;
+
+    console.log(constantsArray, constantsTemplate);
+
     const uuid = `uuid-${crypto.randomUUID()}`;
 
     return html`
@@ -259,15 +256,24 @@ export const storybookTemplate = (customElementTag: string) => {
           font-weight: normal;
           text-align: center;
         }
+
+        .story-template tbody tr:first-of-type th:first-of-type {
+          width: 32px;
+        }
+
         .story-template tbody tr th[rowspan] {
           text-align: center;
           padding-left: 0;
           border-right: 1px solid #e0e0e0;
           font-weight: bold;
         }
+
         .story-template tbody tr th span {
-          display: block;
-          transform: rotate(270deg);
+          -ms-writing-mode: tb-rl;
+          -webkit-writing-mode: vertical-rl;
+          writing-mode: vertical-rl;
+          transform: rotate(180deg);
+          white-space: nowrap;
         }
 
         ${options?.templateBackground &&
@@ -310,53 +316,75 @@ export const storybookTemplate = (customElementTag: string) => {
                 xAxis.values &&
                 html`
                   <tr>
-                    ${showYLabel ? html`<td></td>` : ''} ${yAxis.type !== 'slot' ? html` <td></td>` : ''}
+                    ${showYLabel ? html`<td></td>` : ''} <td></td>
                     ${
                       showXLabel &&
                       html`<th colspan=${xAxis.values?.length || 0}><code>${xAxis.title || xAxis.name}</code></th>`
                     }
                     </tr>
                   </tr>
-                  ${
-                    xAxis.type !== 'slot'
-                      ? html`
-                          <tr>
-                            ${showYLabel ? html`<td></td>` : ''} ${yAxis.type !== 'slot' ? html` <td></td>` : ''}
-                            ${xAxis?.values?.map(
-                              (xValue: any) => xAxis.type !== 'slot' && html`<td><code>${xValue}</code></td>`
-                            )}
-                          </tr>
-                        `
-                      : ''
-                  }
+                  ${html`
+                    <tr>
+                      ${showYLabel ? html`<td></td>` : ''}
+                      <td></td>
+                      ${xAxis?.values?.map((xValue: any) => html`<td><code>${xValue.title || xValue}</code></td>`)}
+                    </tr>
+                  `}
                 `}
               </thead>
               <tbody>
                 ${(yAxis?.values || ['']).map((yValue: any) => {
                   const row = html`
                     <tr class="template-row">
-                      ${firstRow && showYLabel
-                        ? html`<th rowspan="${yAxis?.values?.length}">
-                            <span><code>${yAxis.title || yAxis.name}</code></span>
-                          </th>`
-                        : ''}
-                      ${yAxis.type !== 'slot' ? html` <th><code>${yValue}</th></code>` : ''}
+                      ${
+                        firstRow && showYLabel
+                          ? html`<th rowspan="${yAxis?.values?.length}">
+                              <span><code>${yAxis.title || yAxis.name}</code></span>
+                            </th>`
+                          : ''
+                      }
+                      <th><code>${yValue.title || yValue}</th></code>
                       ${(xAxis?.values || ['']).map((xValue: any) => {
                         return html`
-                          <td class="template"><div>
+                          <td class="template template-x-${xAxis?.values?.indexOf(xValue) || 0 + 1} template-y-${
+                          yAxis?.values?.indexOf(yValue) || 0 + 1
+                        }">
+                          ${
+                            xAxis.type === 'template'
+                              ? unsafeStatic((xValue.value || xValue).split('%TEMPLATE%')[0])
+                              : ''
+                          }
+                          ${
+                            yAxis.type === 'template'
+                              ? unsafeStatic((yValue.value || yValue).split('%TEMPLATE%')[0])
+                              : ''
+                          }
+                          ${constantsTemplate ? unsafeStatic(constantsTemplate.split('%TEMPLATE%')[0]) : ''}
                             ${template({
                               ...args,
                               ...constantDefinitions,
-                              ...(xAxis && {
-                                [`${xAxis.name}${storybookHelpers(customElementTag).getSuffixFromType(xAxis.type)}`]:
-                                  xValue
-                              }),
-                              ...(yAxis && {
-                                [`${yAxis.name}${storybookHelpers(customElementTag).getSuffixFromType(yAxis.type)}`]:
-                                  yValue
-                              })
+                              ...(xAxis &&
+                                xAxis.type !== 'template' && {
+                                  [`${xAxis.name}${storybookHelpers(customElementTag).getSuffixFromType(xAxis.type)}`]:
+                                    xValue.value || xValue
+                                }),
+                              ...(yAxis &&
+                                yAxis.type !== 'template' && {
+                                  [`${yAxis.name}${storybookHelpers(customElementTag).getSuffixFromType(yAxis.type)}`]:
+                                    yValue.value || yValue
+                                })
                             })}
-                          </td></div>
+                         ${
+                           yAxis.type === 'template'
+                             ? unsafeStatic((yValue.value || yValue).split('%TEMPLATE%')[1] || '')
+                             : ''
+                         }
+                         ${
+                           xAxis.type === 'template'
+                             ? unsafeStatic((xValue.value || xValue).split('%TEMPLATE%')[1] || '')
+                             : ''
+                         }
+                          ${constantsTemplate ? unsafeStatic(constantsTemplate.split('%TEMPLATE%')[0]) : ''}</td></div>
                         `;
                       })}
                     </tr>
