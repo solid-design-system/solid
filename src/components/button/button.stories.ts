@@ -189,7 +189,7 @@ export const Disabled = {
  * Use the `icon-left` and `icon-right` slots to add icons.
  */
 
-export const Slots = {
+export const IconSlots = {
   parameters: { controls: { exclude: ['size', 'default', 'icon-left', 'icon-right'] } },
   render: (args: any) => {
     return html`
@@ -252,7 +252,7 @@ export const Slots = {
  */
 
 export const IconOnly = {
-  name: 'IconOnly',
+  name: 'Icon Only',
   parameters: { controls: { exclude: ['size', 'inverted'] } },
   render: (args: any) => {
     return generateTemplate({
