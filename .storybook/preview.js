@@ -1,8 +1,8 @@
 import { setCustomElementsManifest } from '@storybook/web-components';
 import 'normalize.css';
-import * as format from 'html-format';
 
 import { registerIconLibrary } from '../src/utilities/icon-library';
+import { storybookUtilities } from '../scripts/storybook/helper';
 
 /**
  * This loads the custom elements manifest generated on run or on build time.
@@ -109,24 +109,7 @@ registerIconLibrary('global-resources-overriden', {
 export const parameters = {
   docs: {
     source: {
-      transform: code => {
-        const body = new DOMParser().parseFromString(code, 'text/html').body;
-        const templates = body.querySelectorAll('.template');
-        let templateInnerHTML = '';
-        if (templates.length) {
-          templateInnerHTML = Array.from(templates)
-            .map(template => template.innerHTML)
-            .join('\n');
-        } else {
-          templateInnerHTML = body.innerHTML;
-        }
-        templateInnerHTML = templateInnerHTML
-          .replace(/<style><\/style>/g, '')
-          .replace(/<style>\n<\/style>/g, '')
-          .replace(/<script>\s*component = document\.querySelector\('(.+?)'\);\s*<\/script>/g, '');
-        // return templateInnerHTML;
-        return format(templateInnerHTML);
-      }
+      transform: code => storybookUtilities.codeOptimizer(code)
     }
   },
   fetchMock: {
