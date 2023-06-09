@@ -75,6 +75,7 @@
     "classix": "^2.1.32",
     "cssnano": "^6.0.1",
     "gzip-size": "^7.0.0",
+    "html-format": "^1.1.2",
     "lit": "^2.7.5",
     "normalize.css": "^8.0.1",
     "qr-creator": "^1.0.0",

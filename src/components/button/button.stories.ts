@@ -252,7 +252,9 @@ export const Slots = {
  */
 
 export const Parts = {
-  parameters: { controls: { exclude: ['base', 'label', 'icon-left', 'icon-right'] } },
+  parameters: {
+    controls: { exclude: ['base', 'label', 'icon-left', 'icon-right'] }
+  },
   render: (args: any) => {
     return generateTemplate({
       axis: {
