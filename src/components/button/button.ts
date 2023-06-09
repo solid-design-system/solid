@@ -50,7 +50,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
   private readonly hasSlotController = new HasSlotController(this, '[default]', 'icon-left', 'icon-right');
 
   @query('a, button') button: HTMLButtonElement | HTMLLinkElement;
-  @queryAssignedElements({ selector: 'sd-icon' }) _iconsInDefaultSlot!: Array<HTMLElement>;
+  @queryAssignedElements({ selector: 'sd-icon' }) _iconsInDefaultSlot!: HTMLElement[];
   @state()
   invalid = false;
   @property() title = ''; // make reactive to pass through
