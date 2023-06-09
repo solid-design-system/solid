@@ -202,9 +202,19 @@ export const Slots = {
               name: 'icon-right',
               values: [
                 '',
-                '<sd-icon library="global-resources" name="system/picture" slot="icon-right"></sd-icon>',
-                '<sd-icon library="global-resources" name="system/multi-functions" slot="icon-right"></sd-icon>',
-                '<sd-icon library="global-resources" name="system/minus" slot="icon-right"></sd-icon>'
+                {
+                  value: '<sd-icon library="global-resources" name="system/picture" slot="icon-right"></sd-icon>',
+                  title: 'system/picture'
+                },
+                {
+                  value:
+                    '<sd-icon library="global-resources" name="system/multi-functions" slot="icon-right"></sd-icon>',
+                  title: 'system/multi-functions'
+                },
+                {
+                  value: '<sd-icon library="global-resources" name="system/minus" slot="icon-right"></sd-icon>',
+                  title: 'system/minus'
+                }
               ]
             },
             y: {
@@ -212,9 +222,19 @@ export const Slots = {
               name: 'icon-left',
               values: [
                 '',
-                '<sd-icon library="global-resources" name="system/picture" slot="icon-left"></sd-icon>',
-                '<sd-icon library="global-resources" name="system/multi-functions" slot="icon-left"></sd-icon>',
-                '<sd-icon library="global-resources" name="system/minus" slot="icon-left"></sd-icon>'
+                {
+                  value: '<sd-icon library="global-resources" name="system/picture" slot="icon-left"></sd-icon>',
+                  title: 'system/picture'
+                },
+                {
+                  value:
+                    '<sd-icon library="global-resources" name="system/multi-functions" slot="icon-left"></sd-icon>',
+                  title: 'system/multi-functions'
+                },
+                {
+                  value: '<sd-icon library="global-resources" name="system/minus" slot="icon-left"></sd-icon>',
+                  title: 'system/minus'
+                }
               ]
             }
           },
@@ -234,32 +254,32 @@ export const Slots = {
 export const Parts = {
   parameters: { controls: { exclude: ['base', 'label', 'icon-left', 'icon-right'] } },
   render: (args: any) => {
-    let i = 0;
-    return html`
-      ${['base', 'label', 'icon-left', 'icon-right'].map(part => {
-        i++;
-        return generateTemplate({
-          constants: [
-            {
-              type: 'slot',
-              name: 'icon-right',
-              value: '<sd-icon library="global-resources" name="system/picture" slot="icon-right"></sd-icon>'
-            },
-            {
-              type: 'slot',
-              name: 'icon-left',
-              value: '<sd-icon library="global-resources" name="system/picture" slot="icon-left"></sd-icon>'
-            },
-            {
-              type: 'cssPart',
-              name: 'icon-left',
-              value: `table.sd-button-parts:nth-of-type(${i}) sd-button::part(${part}){outline: solid 2px red}`
-            }
-          ],
-          args,
-          options: { classes: 'sd-button-parts', title: `sd-button::part(${part}){...}` }
-        });
-      })}
-    `;
+    return generateTemplate({
+      axis: {
+        y: {
+          type: 'template',
+          name: 'sd-button::part(...){outline: solid 2px red}',
+          values: ['base', 'label', 'icon-left', 'icon-right'].map(part => {
+            return {
+              title: part,
+              value: `<style>#part-${part} sd-button::part(${part}){outline: solid 2px red}</style><div id="part-${part}">%TEMPLATE%</div>`
+            };
+          })
+        }
+      },
+      constants: [
+        {
+          type: 'slot',
+          name: 'icon-right',
+          value: '<sd-icon library="global-resources" name="system/picture" slot="icon-right"></sd-icon>'
+        },
+        {
+          type: 'slot',
+          name: 'icon-left',
+          value: '<sd-icon library="global-resources" name="system/picture" slot="icon-left"></sd-icon>'
+        }
+      ],
+      args
+    });
   }
 };
