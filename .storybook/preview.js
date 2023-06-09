@@ -2,6 +2,7 @@ import { setCustomElementsManifest } from '@storybook/web-components';
 import 'normalize.css';
 
 import { registerIconLibrary } from '../src/utilities/icon-library';
+import { storybookUtilities } from '../scripts/storybook/helper';
 
 /**
  * This loads the custom elements manifest generated on run or on build time.
@@ -106,6 +107,11 @@ registerIconLibrary('global-resources-overriden', {
 });
 
 export const parameters = {
+  docs: {
+    source: {
+      transform: code => storybookUtilities.codeOptimizer(code)
+    }
+  },
   fetchMock: {
     mocks: [
       {

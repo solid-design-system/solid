@@ -56,6 +56,7 @@ specifiers:
   front-matter: ^4.0.2
   globby: ^13.1.4
   gzip-size: ^7.0.0
+  html-format: ^1.1.2
   husky: ^8.0.3
   jsonata: ^2.0.3
   lint-staged: ^13.2.2
@@ -103,6 +104,7 @@ dependencies:
   classix: 2.1.32
   cssnano: 6.0.1_postcss@8.4.24
   gzip-size: 7.0.0
+  html-format: 1.1.2
   lit: 2.7.5
   normalize.css: 8.0.1
   qr-creator: 1.0.0
@@ -8578,6 +8580,10 @@ packages:
   /html-escaper/2.0.2:
     resolution: {integrity: sha512-H2iMtd0I4Mt5eYiapRdIDjp+XzelXQ0tFE4JS7YFwFevXXMmOp9myNrUvCg0D6ws8iqkRPBfKHgbwig1SmlLfg==}
     dev: true
+
+  /html-format/1.1.2:
+    resolution: {integrity: sha512-5Y9SJxl5cKn2Oc2L7RV6M14xYUNIdxjcTzVGrqBeBDwL+yGpdAGrSSz9kakJqMvZn/yq8fDAuo9Z0CyQ/aThPw==}
+    dev: false
 
   /html-minifier/4.0.0:
     resolution: {integrity: sha512-aoGxanpFPLg7MkIl/DDFYtb0iWz7jMFGqFhvEDZga6/4QTjneiD8I/NXL1x5aaoCp7FSIT6h/OhykDdPsbtMig==}
