@@ -248,6 +248,28 @@ export const Slots = {
 };
 
 /**
+ * When inserting an `<sd-icon>` into the default slot, the button will be rendered as an icon-only button.
+ */
+
+export const IconOnly = {
+  name: 'IconOnly',
+  parameters: { controls: { exclude: ['size', 'inverted'] } },
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        x: { type: 'attribute', name: 'size' }
+      },
+      constants: {
+        type: 'slot',
+        name: 'default',
+        value: '<sd-icon library="global-resources" name="system/picture"></sd-icon>'
+      },
+      args
+    });
+  }
+};
+
+/**
  * Use the `base`, `label`, `icon-left` and `icon-right` part selectors to customize the button.
  */
 
