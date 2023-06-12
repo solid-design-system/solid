@@ -17,7 +17,7 @@ jobs:
           fetch-depth: 0 # 👈 Required to retrieve git history
       - uses: pnpm/action-setup@v2
         with:
-          version: 7.13.6
+          version: 8.6.2
       # 👇 Install dependencies with the same package manager used in the project (replace it as needed), e.g. yarn, npm, pnpm
       - name: Install dependencies
         run: PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=true pnpm i
