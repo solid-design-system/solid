@@ -10,7 +10,7 @@ import type { CSSResultGroup } from 'lit';
  * @summary Animate elements declaratively with nearly 100 baked-in presets, or roll your own with custom keyframes. Powered by the [Web Animations API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API).
  * @documentation https://solid.union-investment.com/[storybook-link]/animation
  * @status stable
- * @since 2.0
+ * @since 1.0
  *
  * @event sd-cancel - Emitted when the animation is canceled.
  * @event sd-finish - Emitted when the animation finishes.

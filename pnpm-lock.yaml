@@ -15,8 +15,8 @@ dependencies:
     specifier: github:mariohamann/tailwindcss-var
     version: github.com/mariohamann/tailwindcss-var/ca25fd8ee16fd83e48b42406d15af16fe0cac7f9(tailwindcss@3.3.2)
   '@mariohamann/wc-storybook-helpers':
-    specifier: ^1.1.1
-    version: 1.1.1(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^1.2.0
+    version: 1.2.0(react-dom@18.2.0)(react@18.2.0)
   '@shoelace-style/animations':
     specifier: ^1.1.0
     version: 1.1.0
@@ -64,6 +64,9 @@ devDependencies:
   '@custom-elements-manifest/analyzer':
     specifier: ^0.8.3
     version: 0.8.3
+  '@geometricpanda/storybook-addon-badges':
+    specifier: ^2.0.0
+    version: 2.0.0(@storybook/blocks@7.0.20)(@storybook/components@7.0.20)(@storybook/core-events@7.0.20)(@storybook/manager-api@7.0.20)(@storybook/preview-api@7.0.20)(@storybook/theming@7.0.20)(@storybook/types@7.0.20)(react-dom@18.2.0)(react@18.2.0)
   '@open-wc/testing':
     specifier: ^3.2.0
     version: 3.2.0
@@ -121,6 +124,9 @@ devDependencies:
   chromatic:
     specifier: ^6.18.2
     version: 6.18.2
+  comment-parser:
+    specifier: ^1.3.1
+    version: 1.3.1
   eslint:
     specifier: ^8.42.0
     version: 8.42.0
@@ -2879,6 +2885,35 @@ packages:
       '@floating-ui/core': 1.3.0
     dev: false
 
+  /@geometricpanda/storybook-addon-badges@2.0.0(@storybook/blocks@7.0.20)(@storybook/components@7.0.20)(@storybook/core-events@7.0.20)(@storybook/manager-api@7.0.20)(@storybook/preview-api@7.0.20)(@storybook/theming@7.0.20)(@storybook/types@7.0.20)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-M1CQabr1/IDG6ku0/+n6kZBvWTCSun7LndkGsaB89nTNaCcflWxflgY2HdcbjblLL8W0iT7QiW9TgWP4kcpn5Q==}
+    peerDependencies:
+      '@storybook/blocks': ^7.0.0
+      '@storybook/components': ^7.0.0
+      '@storybook/core-events': ^7.0.0
+      '@storybook/manager-api': ^7.0.0
+      '@storybook/preview-api': ^7.0.0
+      '@storybook/theming': ^7.0.0
+      '@storybook/types': ^7.0.0
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
+    dependencies:
+      '@storybook/blocks': 7.0.20(react-dom@18.2.0)(react@18.2.0)
+      '@storybook/components': 7.0.20(react-dom@18.2.0)(react@18.2.0)
+      '@storybook/core-events': 7.0.20
+      '@storybook/manager-api': 7.0.20(react-dom@18.2.0)(react@18.2.0)
+      '@storybook/preview-api': 7.0.20
+      '@storybook/theming': 7.0.20(react-dom@18.2.0)(react@18.2.0)
+      '@storybook/types': 7.0.20
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: true
+
   /@github/catalyst@1.6.0:
     resolution: {integrity: sha512-u8A+DameixqpeyHzvnJWTGj+wfiskQOYHzSiJscCWVfMkIT3rxnbHMtGh3lMthaRY21nbUOK71WcsCnCrXhBJQ==}
     dev: true
@@ -3011,8 +3046,8 @@ packages:
     dependencies:
       '@lit-labs/ssr-dom-shim': 1.1.1
 
-  /@mariohamann/wc-storybook-helpers@1.1.1(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-QXE+U7vPl/s4tiv3XFUh5dnpum1uUHMm6pfZSYTevx8clx/Z9XUr4UoAbX/rE/yKX3qGXRzuVT+C/cKvZRmP3g==}
+  /@mariohamann/wc-storybook-helpers@1.2.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-x/iwoIYNjIFaaoYR+EwFf/IX/gPdGAwvIJWi5FDd+brBJXVqWZ2Fb8KHvhLm82wFgMo4KtxzgZ1EAmkDHVi+GQ==}
     dependencies:
       '@open-wc/lit-helpers': 0.5.1(lit@2.7.5)
       '@storybook/client-api': 6.5.16(react-dom@18.2.0)(react@18.2.0)
@@ -6286,6 +6321,11 @@ packages:
 
   /comment-parser@1.2.4:
     resolution: {integrity: sha512-pm0b+qv+CkWNriSTMsfnjChF9kH0kxz55y44Wo5le9qLxMj5xDQAaEd9ZN1ovSuk9CsrncWaFwgpOMg7ClJwkw==}
+    engines: {node: '>= 12.0.0'}
+    dev: true
+
+  /comment-parser@1.3.1:
+    resolution: {integrity: sha512-B52sN2VNghyq5ofvUsqZjmk6YkihBX5vMSChmSK9v4ShjKf3Vk5Xcmgpw4o+iIgtrnM/u5FiMpz9VKb8lpBveA==}
     engines: {node: '>= 12.0.0'}
     dev: true
 

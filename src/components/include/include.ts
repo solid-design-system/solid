@@ -10,7 +10,7 @@ import type { CSSResultGroup } from 'lit';
  * @summary Includes give you the power to embed external HTML files into the page.
  * @documentation https://solid.union-investment.com/[storybook-link]/include
  * @status stable
- * @since 2.0
+ * @since 1.0
  *
  * @event sd-load - Emitted when the included file is loaded.
  * @event {{ status: number }} sd-error - Emitted when the included file fails to load due to an error.

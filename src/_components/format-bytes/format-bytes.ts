@@ -6,7 +6,7 @@ import SolidElement from '../../internal/solid-element';
  * @summary Formats a number as a human readable bytes value.
  * @documentation https://solid.union-investment.com/[storybook-link]/format-bytes
  * @status stable
- * @since 2.0
+ * @since 1.0
  */
 @customElement('sd-format-bytes')
 export default class SdFormatBytes extends SolidElement {

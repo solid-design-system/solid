@@ -1,7 +1,7 @@
 import '../../solid-components';
 import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, args } = storybookDefaults('sd-visually-hidden');
+const { argTypes, args, parameters } = storybookDefaults('sd-visually-hidden');
 const { generateTemplate } = storybookTemplate('sd-visually-hidden');
 
 export default {
@@ -9,6 +9,7 @@ export default {
   component: 'sd-visually-hidden',
   args,
   argTypes,
+  parameters: {...parameters},
 };
 
 

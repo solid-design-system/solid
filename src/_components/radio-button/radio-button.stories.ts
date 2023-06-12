@@ -1,7 +1,7 @@
 import '../../solid-components';
 import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, args } = storybookDefaults('sd-radio-button');
+const { argTypes, args, parameters } = storybookDefaults('sd-radio-button');
 const { generateTemplate } = storybookTemplate('sd-radio-button');
 
 export default {
@@ -9,6 +9,7 @@ export default {
   component: 'sd-radio-button',
   args,
   argTypes,
+  parameters: {...parameters},
 };
 
 

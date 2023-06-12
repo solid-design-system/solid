@@ -1,7 +1,7 @@
 import '../../solid-components';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, args } = storybookDefaults('sd-icon');
+const { argTypes, args, parameters } = storybookDefaults('sd-icon');
 const { overrideArgs } = storybookHelpers('sd-icon');
 const { generateTemplate } = storybookTemplate('sd-icon');
 
@@ -68,7 +68,8 @@ export default {
     ],
     args
   ),
-  argTypes
+  argTypes,
+  parameters: { ...parameters }
 };
 
 /**

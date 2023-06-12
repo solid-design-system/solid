@@ -22,7 +22,7 @@ const availableUnits: UnitConfig[] = [
  * @summary Outputs a localized time phrase relative to the current date and time.
  * @documentation https://solid.union-investment.com/[storybook-link]/relative-time
  * @status stable
- * @since 2.0
+ * @since 1.0
  */
 @customElement('sd-relative-time')
 export default class SdRelativeTime extends SolidElement {

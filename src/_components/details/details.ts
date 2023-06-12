@@ -14,7 +14,7 @@ import cx from 'classix';
  * @summary Details show a brief summary and expand to show additional content.
  * @documentation https://solid.union-investment.com/[storybook-link]/details
  * @status stable
- * @since 2.0
+ * @since 1.0
  *
  * @dependency sd-icon
  *

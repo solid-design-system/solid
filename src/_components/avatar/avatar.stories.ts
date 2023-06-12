@@ -1,7 +1,7 @@
 import '../../solid-components';
 import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, args } = storybookDefaults('sd-avatar');
+const { argTypes, args, parameters } = storybookDefaults('sd-avatar');
 const { generateTemplate } = storybookTemplate('sd-avatar');
 
 export default {

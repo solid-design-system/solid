@@ -8,7 +8,7 @@ import type { CSSResultGroup } from 'lit';
  * @summary Dividers are used to visually separate or group elements.
  * @documentation https://solid.union-investment.com/[storybook-link]/divider
  * @status stable
- * @since 2.0
+ * @since 1.0
  *
  * @cssproperty --color - The color of the divider.
  * @cssproperty --width - The width of the divider.

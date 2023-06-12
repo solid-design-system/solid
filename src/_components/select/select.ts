@@ -24,7 +24,7 @@ import type SdPopup from '../popup/popup';
  * @summary Selects allow you to choose items from a menu of predefined options.
  * @documentation https://solid.union-investment.com/[storybook-link]/select
  * @status stable
- * @since 2.0
+ * @since 1.0
  *
  * @dependency sd-icon
  * @dependency sd-popup

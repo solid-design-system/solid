@@ -6,7 +6,7 @@ import SolidElement from '../../internal/solid-element';
  * @summary Formats a number using the specified locale and options.
  * @documentation https://solid.union-investment.com/[storybook-link]/format-number
  * @status stable
- * @since 2.0
+ * @since 1.0
  */
 @customElement('sd-format-number')
 export default class SdFormatNumber extends SolidElement {

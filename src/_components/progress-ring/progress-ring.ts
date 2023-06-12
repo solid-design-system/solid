@@ -9,7 +9,7 @@ import type { CSSResultGroup } from 'lit';
  * @summary Progress rings are used to show the progress of a determinate operation in a circular fashion.
  * @documentation https://solid.union-investment.com/[storybook-link]/progress-ring
  * @status stable
- * @since 2.0
+ * @since 1.0
  *
  * @slot - A label to show inside the ring.
  *

@@ -1,7 +1,7 @@
 import '../../solid-components';
 import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, args } = storybookDefaults('sd-badge');
+const { argTypes, args, parameters } = storybookDefaults('sd-badge');
 const { generateTemplate } = storybookTemplate('sd-badge');
 
 export default {
@@ -9,6 +9,7 @@ export default {
   component: 'sd-badge',
   args,
   argTypes,
+  parameters: {...parameters},
 };
 
 

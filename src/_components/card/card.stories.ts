@@ -1,7 +1,7 @@
 import '../../solid-components';
 import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, args } = storybookDefaults('sd-card');
+const { argTypes, args, parameters } = storybookDefaults('sd-card');
 const { generateTemplate } = storybookTemplate('sd-card');
 
 export default {
@@ -9,6 +9,7 @@ export default {
   component: 'sd-card',
   args,
   argTypes,
+  parameters: {...parameters},
 };
 
 

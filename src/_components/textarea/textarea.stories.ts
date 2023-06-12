@@ -1,7 +1,7 @@
 import '../../solid-components';
 import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, args } = storybookDefaults('sd-textarea');
+const { argTypes, args, parameters } = storybookDefaults('sd-textarea');
 const { generateTemplate } = storybookTemplate('sd-textarea');
 
 export default {
@@ -9,6 +9,7 @@ export default {
   component: 'sd-textarea',
   args,
   argTypes,
+  parameters: {...parameters},
 };
 
 

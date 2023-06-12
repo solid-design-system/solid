@@ -1,7 +1,7 @@
 import '../../solid-components';
 import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, args } = storybookDefaults('sd-switch');
+const { argTypes, args, parameters } = storybookDefaults('sd-switch');
 const { generateTemplate } = storybookTemplate('sd-switch');
 
 export default {
@@ -9,6 +9,7 @@ export default {
   component: 'sd-switch',
   args,
   argTypes,
+  parameters: {...parameters},
 };
 
 

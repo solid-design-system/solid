@@ -9,7 +9,7 @@ import cx from 'classix';
  * @summary Radios allow the user to select a single option from a group.
  * @documentation https://solid.union-investment.com/[storybook-link]/radio
  * @status stable
- * @since 2.0
+ * @since 1.0
  *
  * @dependency sd-icon
  *
@@ -114,7 +114,7 @@ export default class SdRadio extends SolidElement {
           }[this.size]
         )}
       >
-        <span 
+        <span
           part="${`control${this.checked ? ' control--checked' : ''}`}"
           class="radio__control relative inline-flex items-center justify-center rounded-circle text-transparent bg-[var(--sd-input-background-color)] h-[var(--toggle-size)] w-[var(--toggle-size)]"
         >

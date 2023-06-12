@@ -39,7 +39,7 @@ declare const EyeDropper: EyeDropperConstructor;
  * @summary Color pickers allow the user to select a color.
  * @documentation https://solid.union-investment.com/[storybook-link]/color-picker
  * @status stable
- * @since 2.0
+ * @since 1.0
  *
  * @dependency sd-button
  * @dependency sd-button-group

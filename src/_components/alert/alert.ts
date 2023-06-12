@@ -18,7 +18,7 @@ const toastStack = Object.assign(document.createElement('div'), { className: 'sd
  * @summary Alerts are used to display important messages inline or as toast notifications.
  * @documentation https://solid.union-investment.com/[storybook-link]/alert
  * @status stable
- * @since 2.0
+ * @since 1.0
  *
  * @dependency sd-icon-button
  *

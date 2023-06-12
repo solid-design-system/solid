@@ -1,7 +1,7 @@
 import '../../solid-components';
 import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, args } = storybookDefaults('sd-breadcrumb-item');
+const { argTypes, args, parameters } = storybookDefaults('sd-breadcrumb-item');
 const { generateTemplate } = storybookTemplate('sd-breadcrumb-item');
 
 export default {
@@ -9,6 +9,7 @@ export default {
   component: 'sd-breadcrumb-item',
   args,
   argTypes,
+  parameters: {...parameters},
 };
 
 

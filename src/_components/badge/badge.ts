@@ -9,7 +9,7 @@ import type { CSSResultGroup } from 'lit';
  * @summary Badges are used to draw attention and display statuses or counts.
  * @documentation https://solid.union-investment.com/[storybook-link]/badge
  * @status stable
- * @since 2.0
+ * @since 1.0
  *
  * @slot - The badge's content.
  *

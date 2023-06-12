@@ -5,6 +5,7 @@ module.exports = {
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-mdx-gfm',
+    '@geometricpanda/storybook-addon-badges',
     'storybook-addon-fetch-mock'
   ],
   framework: {

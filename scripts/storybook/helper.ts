@@ -26,11 +26,37 @@ type ConstantDefinition = {
  * @returns {any} - An object containing default arguments, events, and argument types.
  */
 export const storybookDefaults = (customElementTag: string): any => {
-  const { args, events, argTypes } = getWcStorybookHelpers(customElementTag);
+  const { args, events, argTypes, manifest } = getWcStorybookHelpers(customElementTag);
+
+  const getBadgesConfig = () => {
+    return {
+      status: {
+        styles: {
+          backgroundColor: manifest?.status === 'stable' ? '#43b02a' : 'rgb(255, 131, 0)',
+          borderColor: 'white',
+          color: 'white'
+        },
+        title: `Status: ${manifest?.status}`
+      },
+      since: {
+        styles: {
+          backgroundColor: '#333',
+          borderColor: '#fff',
+          color: '#fff'
+        },
+        title: `Since: ${manifest?.since}`
+      }
+    };
+  };
+
   return {
     args,
     events,
-    argTypes
+    argTypes,
+    parameters: {
+      badges: ['status', 'since'],
+      badgesConfig: getBadgesConfig()
+    }
   };
 };
 

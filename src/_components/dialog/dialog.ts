@@ -19,7 +19,7 @@ import type { CSSResultGroup } from 'lit';
  * @summary Dialogs, sometimes called "modals", appear above the page and require the user's immediate attention.
  * @documentation https://solid.union-investment.com/[storybook-link]/dialog
  * @status stable
- * @since 2.0
+ * @since 1.0
  *
  * @dependency sd-icon-button
  *

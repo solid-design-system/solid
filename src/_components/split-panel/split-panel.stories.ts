@@ -1,7 +1,7 @@
 import '../../solid-components';
 import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, args } = storybookDefaults('sd-split-panel');
+const { argTypes, args, parameters } = storybookDefaults('sd-split-panel');
 const { generateTemplate } = storybookTemplate('sd-split-panel');
 
 export default {
@@ -9,6 +9,7 @@ export default {
   component: 'sd-split-panel',
   args,
   argTypes,
+  parameters: {...parameters},
 };
 
 

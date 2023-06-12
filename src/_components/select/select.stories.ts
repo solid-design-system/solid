@@ -1,7 +1,7 @@
 import '../../solid-components';
 import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, args } = storybookDefaults('sd-select');
+const { argTypes, args, parameters } = storybookDefaults('sd-select');
 const { generateTemplate } = storybookTemplate('sd-select');
 
 export default {
@@ -9,6 +9,7 @@ export default {
   component: 'sd-select',
   args,
   argTypes,
+  parameters: {...parameters},
 };
 
 

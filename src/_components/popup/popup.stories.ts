@@ -1,7 +1,7 @@
 import '../../solid-components';
 import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, args } = storybookDefaults('sd-popup');
+const { argTypes, args, parameters } = storybookDefaults('sd-popup');
 const { generateTemplate } = storybookTemplate('sd-popup');
 
 export default {
@@ -9,6 +9,7 @@ export default {
   component: 'sd-popup',
   args,
   argTypes,
+  parameters: {...parameters},
 };
 
 

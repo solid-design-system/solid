@@ -18,7 +18,7 @@ import type { CSSResultGroup, PropertyValueMap } from 'lit';
  * @summary A tree item serves as a hierarchical node that lives inside a [tree](/components/tree).
  * @documentation https://solid.union-investment.com/[storybook-link]/tree-item
  * @status stable
- * @since 2.0
+ * @since 1.0
  *
  * @dependency sd-checkbox
  * @dependency sd-icon

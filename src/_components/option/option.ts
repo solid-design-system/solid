@@ -12,7 +12,7 @@ import type { CSSResultGroup } from 'lit';
  * @summary Options define the selectable items within various form controls such as [select](/components/select).
  * @documentation https://solid.union-investment.com/[storybook-link]/option
  * @status stable
- * @since 2.0
+ * @since 1.0
  *
  * @dependency sd-icon
  *

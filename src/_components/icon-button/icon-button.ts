@@ -11,7 +11,7 @@ import type { CSSResultGroup } from 'lit';
  * @summary Icons buttons are simple, icon-only buttons that can be used for actions and in toolbars.
  * @documentation https://solid.union-investment.com/[storybook-link]/icon-button
  * @status stable
- * @since 2.0
+ * @since 1.0
  *
  * @dependency sd-icon
  *

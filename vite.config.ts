@@ -19,9 +19,7 @@ export default (({ command }: { command: string }) => {
     plugins: [
       // eslint-disable-next-line @typescript-eslint/no-unsafe-call
       VitePluginCreateEmptyCemIfNotExisting(),
-      VitePluginCustomElementsManifest(
-        command === 'build' ? customElementConfig : { ...customElementConfig, plugins: [] as any[] }
-      )
+      VitePluginCustomElementsManifest(customElementConfig as any)
     ],
     /**
      * Build step for browsers (includes lit etc.)

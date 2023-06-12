@@ -14,7 +14,7 @@ import type { SolidFormControl } from '../../internal/solid-element';
  * @summary Buttons represent actions that are available to the user.
  * @documentation https://solid.union-investment.com/[storybook-link]/button
  * @status stable
- * @since 2.0
+ * @since 1.0
  *
  * @dependency sd-icon
  * @dependency sd-spinner

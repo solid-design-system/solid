@@ -1,7 +1,7 @@
 import '../../solid-components';
 import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, args } = storybookDefaults('{{ tag }}');
+const { argTypes, args, parameters } = storybookDefaults('{{ tag }}');
 const { generateTemplate } = storybookTemplate('{{ tag }}');
 
 export default {
@@ -9,6 +9,7 @@ export default {
   component: '{{ tag }}',
   args,
   argTypes,
+  parameters: {...parameters},
 };
 
 

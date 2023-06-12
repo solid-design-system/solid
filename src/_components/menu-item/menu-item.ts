@@ -12,7 +12,7 @@ import type { CSSResultGroup } from 'lit';
  * @summary Menu items provide options for the user to pick from in a menu.
  * @documentation https://solid.union-investment.com/[storybook-link]/menu-item
  * @status stable
- * @since 2.0
+ * @since 1.0
  *
  * @dependency sd-icon
  *

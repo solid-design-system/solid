@@ -12,7 +12,7 @@ import type { CSSResultGroup } from 'lit';
  * @summary Radios buttons allow the user to select a single option from a group using a button-like control.
  * @documentation https://solid.union-investment.com/[storybook-link]/radio-button
  * @status stable
- * @since 2.0
+ * @since 1.0
  *
  * @slot - The radio button's label.
  * @slot prefix - A presentational prefix icon or similar element.

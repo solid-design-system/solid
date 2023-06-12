@@ -13,7 +13,7 @@ import type { CSSResultGroup } from 'lit';
  * @summary Split panels display two adjacent panels, allowing the user to reposition them.
  * @documentation https://solid.union-investment.com/[storybook-link]/split-panel
  * @status stable
- * @since 2.0
+ * @since 1.0
  *
  * @event sd-reposition - Emitted when the divider's position changes.
  *

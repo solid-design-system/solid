@@ -15,7 +15,7 @@ import type { CSSResultGroup } from 'lit';
  * @summary Compare visual differences between similar photos with a sliding panel.
  * @documentation https://solid.union-investment.com/[storybook-link]/image-comparer
  * @status stable
- * @since 2.0
+ * @since 1.0
  *
  * @dependency sd-icon
  *
