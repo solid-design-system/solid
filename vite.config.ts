@@ -19,7 +19,16 @@ export default (({ command }: { command: string }) => {
     plugins: [
       // eslint-disable-next-line @typescript-eslint/no-unsafe-call
       VitePluginCreateEmptyCemIfNotExisting(),
-      VitePluginCustomElementsManifest(customElementConfig as any)
+      VitePluginCustomElementsManifest(
+        command === 'build'
+          ? customElementConfig
+          : {
+              ...customElementConfig,
+              plugins: customElementConfig.plugins.filter(plugin =>
+                ['solid-custom-tags', 'remove-html-members'].includes(plugin.name)
+              ) as any[]
+            }
+      )
     ],
     /**
      * Build step for browsers (includes lit etc.)
