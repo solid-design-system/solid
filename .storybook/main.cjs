@@ -7,6 +7,7 @@ module.exports = {
     '@storybook/addon-mdx-gfm',
     'storybook-addon-fetch-mock'
   ],
+  staticDirs: ['./assets'],
   framework: {
     name: '@storybook/web-components-vite',
     options: {}

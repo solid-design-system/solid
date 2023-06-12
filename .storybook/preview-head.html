@@ -4,7 +4,7 @@
 </script>
 <style>
   body {
-    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
+    font-family: 'Frutiger Neue', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
       Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   }
 
@@ -32,5 +32,33 @@
   }
   slot-comp::before {
     content: var(--slot-content, 'Replace this slot');
+  }
+
+  @font-face {
+    font-family: 'Frutiger Neue';
+    font-style: normal;
+    font-weight: 400;
+    src: url('/fonts/FrutigerNeuefuerUIWebW05-Bk.woff2') format('woff2');
+  }
+
+  @font-face {
+    font-family: 'Frutiger Neue';
+    font-style: italic;
+    font-weight: 400;
+    src: url('/fonts/FrutigerNeuefuerUIWebW05-BkIt.woff2') format('woff2');
+  }
+
+  @font-face {
+    font-family: 'Frutiger Neue';
+    font-style: normal;
+    font-weight: 600;
+      src: url('/fonts/FrutigerNeuefuerUIWebW05-Bd.woff2') format('woff2');
+  }
+
+  @font-face {
+    font-family: 'Frutiger Neue';
+    font-style: italic;
+    font-weight: 600;
+      src: url('/fonts/FrutigerNeuefuerUIWebW05-BdIt.woff2') format('woff2');
   }
 </style>
