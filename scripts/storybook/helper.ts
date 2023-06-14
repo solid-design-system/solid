@@ -1,6 +1,7 @@
 import { html } from 'lit/static-html.js';
 import { unsafeStatic } from 'lit/static-html.js';
 import { getWcStorybookHelpers } from '@mariohamann/wc-storybook-helpers';
+import format from 'html-format';
 
 type ArgTypesDefinition = 'attribute' | 'property' | 'slot' | 'cssPart' | 'cssProperty';
 
@@ -401,4 +402,29 @@ export const storybookTemplate = (customElementTag: string) => {
   };
 
   return { generateTemplate };
+};
+
+export const storybookUtilities = {
+  /**
+   * This function can be used to optimize the code preview in Storybook.
+   * It especially works in combination with the `generateTemplate` function to optimize the final code.
+   */
+  codeOptimizer: (code: string) => {
+    const body = new DOMParser().parseFromString(code, 'text/html').body;
+    const templates = body.querySelectorAll('.template');
+    let templateInnerHTML = '';
+    if (templates.length) {
+      templateInnerHTML = Array.from(templates)
+        .map(template => template.innerHTML)
+        .join('\n');
+    } else {
+      templateInnerHTML = body.innerHTML;
+    }
+    templateInnerHTML = templateInnerHTML
+      .replace(/<style><\/style>/g, '')
+      .replace(/<style>\n<\/style>/g, '')
+      .replace(/<script>\s*component = document\.querySelector\('(.+?)'\);\s*<\/script>/g, '');
+    // return templateInnerHTML;
+    return format(templateInnerHTML);
+  }
 };
