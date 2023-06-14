@@ -56,7 +56,7 @@ export const Sizing = {
               { value: '<div style="font-size: inherit">%TEMPLATE%</div>', title: 'font-size: inherit' },
               { value: '<div style="font-size: 1rem">%TEMPLATE%</div>', title: 'font-size: 1rem' },
               { value: '<div style="font-size: 2rem">%TEMPLATE%</div>', title: 'font-size: 2rem' },
-              { value: '<div style="font-size: 64px">%TEMPLATE%</div>', title: 'font-size: 4rem' }
+              { value: '<div style="font-size: 4rem">%TEMPLATE%</div>', title: 'font-size: 4rem' }
             ]
           }
         },
