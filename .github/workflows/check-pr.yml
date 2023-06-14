@@ -4,7 +4,7 @@ on: pull_request
 
 jobs:
   npm:
-    name: Install & check linting, formatting, tests
+    name: Install, verify and build
     runs-on: ubuntu-latest
     container:
       image: mcr.microsoft.com/playwright:v1.33.0-jammy
@@ -21,26 +21,26 @@ jobs:
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 7
+          version: 8.6.2
           run_install: false
 
       - name: Install dependencies
         run: pnpm i
 
-      - name: Check "lint.verify"
+      - name: lint.verify
         run: pnpm lint.verify
 
-      - name: Check "format.verify"
+      - name: format.verify
         run: pnpm format.verify
 
-      - name: Check "ts.verify"
+      - name: ts.verify
         run: pnpm ts.verify
 
-      - name: Check "build.components"
+      - name: build.components
         run: pnpm build.components
 
-      - name: Check "build.storybook"
+      - name: build.storybook
         run: pnpm build.storybook
 
-      - name: Check "test"
+      - name: test
         run: pnpm test

@@ -1,17 +1,19 @@
 import { html } from 'lit/static-html.js';
+import { unsafeStatic } from 'lit/static-html.js';
 import { getWcStorybookHelpers } from '@mariohamann/wc-storybook-helpers';
+import format from 'html-format';
 
 type ArgTypesDefinition = 'attribute' | 'property' | 'slot' | 'cssPart' | 'cssProperty';
 
 type AxisDefinition = {
-  type: ArgTypesDefinition;
+  type: ArgTypesDefinition | 'template';
   name: string;
-  values?: any[];
+  values?: any[] | { value: any; title?: string }[];
   title?: string;
 };
 
 type ConstantDefinition = {
-  type: ArgTypesDefinition;
+  type: ArgTypesDefinition | 'template';
   name: string;
   value: any;
   title?: string;
@@ -146,29 +148,43 @@ export const storybookTemplate = (customElementTag: string) => {
    * the provided configuration. The template displays a table showing all possible combinations of
    * argument values, with one row for each y-axis value and one column for each x-axis value.
    * Each cell in the table is filled with the custom element in the corresponding state.
-   *
-   * @param {Object} config - The configuration object for generating the story template.
-   * @param {Object} [config.axis] - The object defining the x-axis and y-axis for the story.
-   * @param {AxisDefinition | AxisDefinition[]} [config.axis.x] - The x-axis definition(s).
-   * @param {AxisDefinition | AxisDefinition[]} [config.axis.y] - The y-axis definition(s).
-   * @param {ConstantDefinition | ConstantDefinition[]} [config.constants] - The constant argument(s) for the story.
-   * @param {string} [config.title] - The title of the story.
-   * @param {Object} [config.args] - The default arguments for the story.
-   * @returns {Object} - The Lit template function for the story.
    */
   const generateTemplate = ({
     axis,
     constants = [],
-    title,
+    options,
     args = defaultArgs
   }: {
+    /**
+     * The object defining the x-axis and y-axis for the story.
+     */
     axis?: {
       x?: AxisDefinition | AxisDefinition[];
       y?: AxisDefinition | AxisDefinition[];
     };
+    /**
+     * The constant argument(s) for the story. Those will be applied to every cell in the table.
+     */
     constants?: ConstantDefinition | ConstantDefinition[];
-    title?: string;
-    args?: any;
+    options?: {
+      /**
+       * The title of the story. This shows up on every table in the story.
+       */
+      title?: string;
+      /**
+       * Classes which are added to the table. This can be used to scope CSS.
+       */
+      classes?: string;
+      /**
+       * Background color of the table.
+       */
+      templateBackground?: string;
+      /**
+       * Background colors of the table. This can be used to alternate the background color of the table rows or columns.
+       */
+      templateBackgrounds?: { alternate: 'x' | 'y'; colors: string[] };
+    };
+    args: any;
   }) => {
     const constantDefinitions = (Array.isArray(constants) ? constants : [constants]).reduce(
       (acc, curr) => ({
@@ -178,34 +194,39 @@ export const storybookTemplate = (customElementTag: string) => {
       {}
     );
 
-    if (!axis?.x && !axis?.y) {
+    if (!axis?.x && !axis?.y && !options?.title) {
       return html`${template({
         ...args,
         ...constantDefinitions
       })}`;
     }
 
-    const { x, y } = axis;
-
     const generateAxes = (axis: any): AxisDefinition[] => {
       if (!axis) return [{} as AxisDefinition];
       if (Array.isArray(axis)) {
         return axis.map(item => ({
           ...item,
-          values: item.type === 'attribute' ? getValuesFromAttribute(item.name) : item.values
+          values: item.values || getValuesFromAttribute(item.name)
         }));
       } else {
         return [
           {
             ...axis,
-            values: axis.type === 'attribute' ? getValuesFromAttribute(axis.name) : axis.values
+            values: axis.values || getValuesFromAttribute(axis.name)
           }
         ];
       }
     };
 
-    const xAxes = generateAxes(x);
-    const yAxes = generateAxes(y);
+    const xAxes = generateAxes(axis?.x);
+    const yAxes = generateAxes(axis?.y);
+
+    const constantsArray = Array.isArray(constants) ? constants : [constants];
+    const constantsTemplate = constantsArray.find(constant => constant.type === 'template')?.value;
+
+    console.log(constantsArray, constantsTemplate);
+
+    const uuid = `uuid-${crypto.randomUUID()}`;
 
     return html`
       <style>
@@ -233,14 +254,52 @@ export const storybookTemplate = (customElementTag: string) => {
           font-size: 14px;
         }
         .story-template tbody tr th {
+          font-weight: normal;
+          text-align: center;
+        }
+
+        .story-template tbody tr:first-of-type th:first-of-type {
+          width: 32px;
+        }
+
+        .story-template tbody tr th[rowspan] {
           text-align: center;
           padding-left: 0;
           border-right: 1px solid #e0e0e0;
+          font-weight: bold;
         }
+
         .story-template tbody tr th span {
-          display: block;
-          transform: rotate(270deg);
+          -ms-writing-mode: tb-rl;
+          -webkit-writing-mode: vertical-rl;
+          writing-mode: vertical-rl;
+          transform: rotate(180deg);
+          white-space: nowrap;
         }
+
+        ${options?.templateBackground &&
+        `
+          .${uuid}.story-template tbody tr.template-row td.template {
+            background: ${options?.templateBackground};
+          }
+        `}
+
+        ${options?.templateBackgrounds?.colors.map((color, index) => {
+          const calculateNth = (index: number) => {
+            return `${options?.templateBackgrounds?.colors.length}n + ${index + 1}`;
+          };
+          return options?.templateBackgrounds?.alternate === 'y'
+            ? `
+                .${uuid}.story-template tbody tr.template-row:nth-of-type(${calculateNth(index)}) td.template {
+                  background: ${color};
+                }
+              `
+            : `
+                .${uuid}.story-template tbody tr.template-row td.template:nth-of-type(${calculateNth(index)}) {
+                  background: ${color};
+                }
+              `;
+        })}
       </style>
       ${xAxes.map((xAxis: any) => {
         return html` ${yAxes.map((yAxis: any) => {
@@ -248,63 +307,85 @@ export const storybookTemplate = (customElementTag: string) => {
           const showXLabel = xAxes.length > 1 || xAxis.values;
           const showYLabel = ((xAxis && yAxis) || yAxes.length > 1) && yAxis?.values;
           return html`
-            <table class="story-template">
+            <table class="story-template ${uuid} ${options?.classes}">
               <thead>
-                ${title &&
+                ${options?.title &&
                 html`<tr>
-                  <th class="title" colspan=${xAxis.values?.length + 3}><code>${title}</code></th>
+                  <th class="title" colspan=${(xAxis.values?.length || 0) + 3}><code>${options?.title}</code></th>
                 </tr>`}
                 ${xAxis &&
                 xAxis.values &&
                 html`
                   <tr>
-                    ${showYLabel ? html`<td></td>` : ''} ${yAxis.type !== 'slot' ? html` <td></td>` : ''}
+                    ${showYLabel ? html`<td></td>` : ''} <td></td>
                     ${
                       showXLabel &&
-                      html`<th colspan=${xAxis.values?.length}><code>${xAxis.title || xAxis.name}</code></th>`
+                      html`<th colspan=${xAxis.values?.length || 0}><code>${xAxis.title || xAxis.name}</code></th>`
                     }
-                    </th>
+                    </tr>
                   </tr>
-                  ${
-                    xAxis.type !== 'slot'
-                      ? html`
-                          <tr>
-                            ${showYLabel ? html`<td></td>` : ''} ${yAxis.type !== 'slot' ? html` <td></td>` : ''}
-                            ${xAxis?.values?.map(
-                              (xValue: any) => xAxis.type !== 'slot' && html`<td><code>${xValue}</code></td>`
-                            )}
-                          </tr>
-                        `
-                      : ''
-                  }
+                  ${html`
+                    <tr>
+                      ${showYLabel ? html`<td></td>` : ''}
+                      <td></td>
+                      ${xAxis?.values?.map((xValue: any) => html`<td><code>${xValue.title || xValue}</code></td>`)}
+                    </tr>
+                  `}
                 `}
               </thead>
               <tbody>
                 ${(yAxis?.values || ['']).map((yValue: any) => {
                   const row = html`
-                    <tr>
-                      ${firstRow && showYLabel
-                        ? html`<th rowspan="${yAxis?.values?.length}">
-                            <span><code>${yAxis.title || yAxis.name}</code></span>
-                          </th>`
-                        : ''}
-                      ${yAxis.type !== 'slot' ? html` <td><code>${yValue}</td></code>` : ''}
+                    <tr class="template-row">
+                      ${
+                        firstRow && showYLabel
+                          ? html`<th rowspan="${yAxis?.values?.length}">
+                              <span><code>${yAxis.title || yAxis.name}</code></span>
+                            </th>`
+                          : ''
+                      }
+                      <th><code>${yValue.title || yValue}</th></code>
                       ${(xAxis?.values || ['']).map((xValue: any) => {
                         return html`
-                          <td><div>
+                          <td class="template template-x-${xAxis?.values?.indexOf(xValue) || 0 + 1} template-y-${
+                          yAxis?.values?.indexOf(yValue) || 0 + 1
+                        }">
+                          ${
+                            xAxis.type === 'template'
+                              ? unsafeStatic((xValue.value || xValue).split('%TEMPLATE%')[0])
+                              : ''
+                          }
+                          ${
+                            yAxis.type === 'template'
+                              ? unsafeStatic((yValue.value || yValue).split('%TEMPLATE%')[0])
+                              : ''
+                          }
+                          ${constantsTemplate ? unsafeStatic(constantsTemplate.split('%TEMPLATE%')[0]) : ''}
                             ${template({
                               ...args,
                               ...constantDefinitions,
-                              ...(xAxis && {
-                                [`${xAxis.name}${storybookHelpers(customElementTag).getSuffixFromType(xAxis.type)}`]:
-                                  xValue
-                              }),
-                              ...(yAxis && {
-                                [`${yAxis.name}${storybookHelpers(customElementTag).getSuffixFromType(yAxis.type)}`]:
-                                  yValue
-                              })
+                              ...(xAxis &&
+                                xAxis.type !== 'template' && {
+                                  [`${xAxis.name}${storybookHelpers(customElementTag).getSuffixFromType(xAxis.type)}`]:
+                                    xValue.value || xValue
+                                }),
+                              ...(yAxis &&
+                                yAxis.type !== 'template' && {
+                                  [`${yAxis.name}${storybookHelpers(customElementTag).getSuffixFromType(yAxis.type)}`]:
+                                    yValue.value || yValue
+                                })
                             })}
-                          </td></div>
+                         ${
+                           yAxis.type === 'template'
+                             ? unsafeStatic((yValue.value || yValue).split('%TEMPLATE%')[1] || '')
+                             : ''
+                         }
+                         ${
+                           xAxis.type === 'template'
+                             ? unsafeStatic((xValue.value || xValue).split('%TEMPLATE%')[1] || '')
+                             : ''
+                         }
+                          ${constantsTemplate ? unsafeStatic(constantsTemplate.split('%TEMPLATE%')[0]) : ''}</td></div>
                         `;
                       })}
                     </tr>
@@ -321,4 +402,29 @@ export const storybookTemplate = (customElementTag: string) => {
   };
 
   return { generateTemplate };
+};
+
+export const storybookUtilities = {
+  /**
+   * This function can be used to optimize the code preview in Storybook.
+   * It especially works in combination with the `generateTemplate` function to optimize the final code.
+   */
+  codeOptimizer: (code: string) => {
+    const body = new DOMParser().parseFromString(code, 'text/html').body;
+    const templates = body.querySelectorAll('.template');
+    let templateInnerHTML = '';
+    if (templates.length) {
+      templateInnerHTML = Array.from(templates)
+        .map(template => template.innerHTML)
+        .join('\n');
+    } else {
+      templateInnerHTML = body.innerHTML;
+    }
+    templateInnerHTML = templateInnerHTML
+      .replace(/<style><\/style>/g, '')
+      .replace(/<style>\n<\/style>/g, '')
+      .replace(/<script>\s*component = document\.querySelector\('(.+?)'\);\s*<\/script>/g, '');
+    // return templateInnerHTML;
+    return format(templateInnerHTML);
+  }
 };
