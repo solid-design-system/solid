@@ -11,3 +11,4 @@ __screenshots__/**
 storybook-static
 build-storybook.log
 custom-elements.json
+vite.config.ts.timestamp*
