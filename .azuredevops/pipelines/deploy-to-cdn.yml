@@ -1,11 +1,6 @@
 trigger:
   branches:
     include:
-      - integration
-
-pr:
-  branches:
-    include:
       - '*'
 
 pool:
@@ -21,7 +16,7 @@ steps:
     displayName: 'Install Node.js'
 
   - script: |
-      npm i pnpm@7 nx@13 -g
+      npm i pnpm@8.6.2 -g
     displayName: 'Install global dependencies'
 
   ## Install all package dependencies
@@ -51,11 +46,11 @@ steps:
 
     ## Build all components
   - script: |
-      pnpm run build.components
+      pnpm run build
 
-  ## if branch is not 'integration' then deploy to CDN using the push-to-storage-feature template otherwise use the push-to-storage-integration template
-  - ${{ if ne(variables['Build.SourceBranch'], 'refs/heads/integration') }}:
+  ## if branch is not 'main' then deploy to CDN using the push-to-storage-feature template otherwise use the push-to-storage-main template
+  - ${{ if ne(variables['Build.SourceBranch'], 'refs/heads/main') }}:
       - template: .azuredevops/pipelines/templates/push-to-storage-feature.template.yml
 
-  - ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/integration') }}:
-      - template: .azuredevops/pipelines/templates/push-to-storage-integration.template.yml
+  - ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/main') }}:
+      - template: .azuredevops/pipelines/templates/push-to-storage-main.template.yml

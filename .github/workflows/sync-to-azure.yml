@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - 'main'
+  workflow_dispatch:
 
 jobs:
   check-env:
@@ -24,18 +25,23 @@ jobs:
     steps:
       - uses: actions/checkout@v2.4.0
 
+      - name: Extract branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch_name
+
       - name: Git sync
         id: branch
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
-          git config pull.rebase true
           git fetch origin --unshallow
-          git remote add --mirror=fetch azure ${{ secrets.AZURE_REMOTE_URL }}
-          if [[ $(git ls-remote --heads azure integration | wc -l) == "1" ]]; then
+          git config pull.ff only
+          git remote add --mirror=fetch azure ${{ secrets.AZURE_WFI_REMOTE_URL }}
+          if [[ $(git ls-remote --heads azure ${{ steps.extract_branch_name.outputs.branch }} | wc -l) == "1" ]]; then
             echo found
-            git pull azure integration
+            git pull azure ${{ steps.extract_branch_name.outputs.branch }}
             git pull -X theirs --allow-unrelated-histories
           fi
-          git push azure integration
+          git push azure --all
           git push origin
