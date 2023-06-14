@@ -12,9 +12,9 @@ import SolidElement from '../../internal/solid-element';
  */
 @customElement('sd-spinner')
 export default class SdSpinner extends SolidElement {
-  /** The color variant of the spinner.
+  /** The color color of the spinner.
    */
-  @property({ reflect: true }) variant: 'primary' | 'white' | 'currentColor' = 'currentColor';
+  @property({ reflect: true }) color: 'primary' | 'white' | 'currentColor' = 'currentColor';
 
   private readonly localize = new LocalizeController(this);
 
@@ -29,7 +29,7 @@ export default class SdSpinner extends SolidElement {
             primary: 'text-primary',
             white: 'text-white',
             currentColor: ''
-          }[this.variant]
+          }[this.color]
         )}
         aria-valuetext=${this.localize.term('loading')}
       >

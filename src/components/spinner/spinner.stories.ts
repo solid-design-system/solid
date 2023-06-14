@@ -23,15 +23,15 @@ export const Default = {
 };
 
 /**
- * Use the `variant` attribute to change the color of the spinner and correspond (currentColor) with the parents variant.
+ * Use the `color` attribute to change the color of the spinner and correspond (currentColor) with the parents color.
  */
 
-export const Variant = {
-  parameters: { controls: { exclude: 'variant' } },
+export const Color = {
+  parameters: { controls: { exclude: 'color' } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        x: { type: 'attribute', name: 'variant' }
+        x: { type: 'attribute', name: 'color' }
       },
       options: { templateBackgrounds: { alternate: 'x', colors: ['#F6F6F6', '#00358E', '#F6F6F6'] } },
       args
@@ -44,7 +44,7 @@ export const Variant = {
  */
 
 export const Sizing = {
-  parameters: { controls: { exclude: ['variant'] } },
+  parameters: { controls: { exclude: ['color'] } },
   render: (args: any) => {
     return html`
       ${generateTemplate({
@@ -56,7 +56,7 @@ export const Sizing = {
               { value: '<div style="font-size: inherit">%TEMPLATE%</div>', title: 'font-size: inherit' },
               { value: '<div style="font-size: 1rem">%TEMPLATE%</div>', title: 'font-size: 1rem' },
               { value: '<div style="font-size: 2rem">%TEMPLATE%</div>', title: 'font-size: 2rem' },
-              { value: '<div style="font-size: 3rem">%TEMPLATE%</div>', title: 'font-size: 4rem' }
+              { value: '<div style="font-size: 64px">%TEMPLATE%</div>', title: 'font-size: 4rem' }
             ]
           }
         },
