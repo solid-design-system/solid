@@ -4,8 +4,22 @@
 </script>
 <style>
   body {
-    font-family: 'Frutiger Neue', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
-      Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    font-family: 'Frutiger Neue', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+      'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+      'Noto Color Emoji';
+  }
+
+  /**
+    * This has to be included to render Neue Frutiger correctly.
+    * We won't provide this in the components as the font is set in the upper scope and the font should adapt to that.
+    */
+
+  :root {
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
   }
 
   *:not(:defined) {
@@ -30,6 +44,7 @@
     line-height: var(--slot-height, 64px); /* same as height! */
     visibility: visible !important;
   }
+
   slot-comp::before {
     content: var(--slot-content, 'Replace this slot');
   }
@@ -52,13 +67,13 @@
     font-family: 'Frutiger Neue';
     font-style: normal;
     font-weight: 600;
-      src: url('/fonts/FrutigerNeuefuerUIWebW05-Bd.woff2') format('woff2');
+    src: url('/fonts/FrutigerNeuefuerUIWebW05-Bd.woff2') format('woff2');
   }
 
   @font-face {
     font-family: 'Frutiger Neue';
     font-style: italic;
     font-weight: 600;
-      src: url('/fonts/FrutigerNeuefuerUIWebW05-BdIt.woff2') format('woff2');
+    src: url('/fonts/FrutigerNeuefuerUIWebW05-BdIt.woff2') format('woff2');
   }
 </style>

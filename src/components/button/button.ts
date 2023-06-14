@@ -6,6 +6,7 @@ import { HasSlotController } from '../../internal/slot';
 import { html, literal } from 'lit/static-html.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { watch } from '../../internal/watch';
+import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 import type { SolidFormControl } from '../../internal/solid-element';
@@ -225,7 +226,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
     /* eslint-disable lit/binding-positions */
     return html`
       <${tag} part="base" class=${cx(
-      `font-md font-semibold font-sans leading-[calc(var(--tw-varspacing)-2px)] no-underline
+      `font-md leading-[calc(var(--tw-varspacing)-2px)] no-underline
         w-full h-varspacing whitespace-nowrap align-middle inline-flex items-stretch justify-center
         border transition-colors duration-200 ease-in-out
         select-none cursor-[inherit]
@@ -337,7 +338,9 @@ export default class SdButton extends SolidElement implements SolidFormControl {
    * Inherits Tailwindclasses and includes additional styling.
    */
   static styles = [
+    componentStyles,
     SolidElement.styles,
+
     css`
       :host {
         display: inline-block;
