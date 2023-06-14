@@ -71,12 +71,6 @@ export default class SdButton extends SolidElement implements SolidFormControl {
   @property({ type: Boolean, reflect: true }) loading = false;
 
   /**
-   * Draws a circular icon button. When this attribute is present, the button expects a single `<sd-icon>` in the
-   * default slot.
-   */
-  @property({ type: Boolean, reflect: true }) circle = false;
-
-  /**
    * The type of button. Note that the default value is `button` instead of `submit`, which is opposite of how native
    * `<button>` elements behave. When the type is `submit`, the button will submit the surrounding form.
    */
@@ -229,16 +223,15 @@ export default class SdButton extends SolidElement implements SolidFormControl {
       <${tag} part="base" class=${cx(
       `font-md font-semibold font-sans leading-[calc(var(--tw-varspacing)-2px)] no-underline
         w-full h-varspacing whitespace-nowrap align-middle inline-flex items-stretch justify-center
-        border transition-colors duration-200 ease-in-out
+        border transition-colors duration-200 ease-in-out rounded-md
         select-none cursor-[inherit]
         ${!this.inverted ? 'focus-visible:focus-outline' : 'focus-visible:focus-outline-inverted'}`,
       this.loading && 'relative cursor-wait',
       this.disabled && 'cursor-not-allowed',
-      (this.circle || slots['icon-only']) && 'px-0 w-varspacing',
+      slots['icon-only'] && 'px-0 w-varspacing',
       /**
        * Anatomy
        * */
-      this.circle ? 'rounded-full' : 'rounded-md',
       {
         /* sizes, fonts */
         sm: 'text-sm varspacing-8 px-4',
@@ -298,7 +291,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
       >
         <slot name="icon-left" part="icon-left" class=${cx(
           'flex flex-auto items-center pointer-events-none',
-          this.circle && 'hidden',
+          slots['icon-only'] && 'hidden',
           this.loading && 'invisible',
           slots['icon-left'] &&
             {
@@ -316,7 +309,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
           class=${cx(
             'flex flex-auto items-center pointer-events-none',
             this.loading && 'invisible',
-            this.circle && 'hidden',
+            slots['icon-only'] && 'hidden',
             slots['icon-right'] &&
               {
                 sm: 'ml-1',

@@ -160,32 +160,6 @@ export const Disabled = {
 };
 
 /**
- * Use the `circle` attribute to create circular icon buttons. When this attribute is set, the button expects ideally a single `<span>` in the default slot.
- * DEVNOTE: We're currently hiding the story as the design is not yet final.
- */
-
-// export const Circle = {
-//   parameters: { controls: { exclude: ['variant', 'size', 'disabled', 'loading', 'circle', 'default'] } },
-//   render: (args: any) => {
-//     return generateTemplate({
-//       axis: {
-//         x: [
-//           { type: 'attribute', name: 'variant' },
-//           { type: 'attribute', name: 'size' },
-//           { type: 'attribute', name: 'loading' },
-//           { type: 'attribute', name: 'disabled' }
-//         ]
-//       },
-//       constants: [
-//         { type: 'attribute', name: 'circle', value: true },
-//         { type: 'slot', name: 'default', value: '★' }
-//       ],
-//       args
-//     });
-//   }
-// };
-
-/**
  * Use the `icon-left` and `icon-right` slots to add icons.
  */
 
