@@ -130,8 +130,8 @@ export default class SdIcon extends SolidElement {
   }
 
   static styles = [
+    componentStyles,
     css`
-      ${componentStyles}
       :host {
         display: inline-block;
         width: 1em;

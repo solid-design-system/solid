@@ -6,6 +6,7 @@ import { HasSlotController } from '../../internal/slot';
 import { html, literal } from 'lit/static-html.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { watch } from '../../internal/watch';
+import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 import type { SolidFormControl } from '../../internal/solid-element';
@@ -221,7 +222,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
     /* eslint-disable lit/binding-positions */
     return html`
       <${tag} part="base" class=${cx(
-      `font-md font-semibold font-sans leading-[calc(var(--tw-varspacing)-2px)] no-underline
+      `font-md leading-[calc(var(--tw-varspacing)-2px)] no-underline
         w-full h-varspacing whitespace-nowrap align-middle inline-flex items-stretch justify-center
         border transition-colors duration-200 ease-in-out rounded-md
         select-none cursor-[inherit]
@@ -321,7 +322,14 @@ export default class SdButton extends SolidElement implements SolidFormControl {
       ${
         this.loading
           ? html`<sd-spinner
-              class="absolute text-md top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+              class="${cx(
+                'absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-varspacing',
+                {
+                  sm: 'varspacing-4',
+                  md: 'varspacing-5',
+                  lg: 'varspacing-6'
+                }[this.size]
+              )}"
             ></sd-spinner>`
           : ''
       }
@@ -335,7 +343,9 @@ export default class SdButton extends SolidElement implements SolidFormControl {
    * Inherits Tailwindclasses and includes additional styling.
    */
   static styles = [
+    componentStyles,
     SolidElement.styles,
+
     css`
       :host {
         display: inline-block;
