@@ -322,14 +322,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
       ${
         this.loading
           ? html`<sd-spinner
-              class="${cx(
-                'absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-varspacing',
-                {
-                  sm: 'varspacing-4',
-                  md: 'varspacing-5',
-                  lg: 'varspacing-6'
-                }[this.size]
-              )}"
+              class="${cx('absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2')}"
             ></sd-spinner>`
           : ''
       }
@@ -376,7 +369,8 @@ export default class SdButton extends SolidElement implements SolidFormControl {
        * sd-icons should automatically resize correctly based on the button size.
        */
 
-      ::slotted(sd-icon) {
+      ::slotted(sd-icon),
+      sd-spinner {
         font-size: calc(var(--tw-varspacing) / 2);
       }
 
