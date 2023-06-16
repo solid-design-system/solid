@@ -15,6 +15,20 @@ steps:
       versionSpec: '16.x'
     displayName: 'Install Node.js'
 
+  ## Check if the last commit comes from semantic-release-bot
+  - bash: |
+      set -x
+      if [[ $(git log -1 --pretty=%B) =~ ^chore\(release\): ]]; then echo "##vso[task.setvariable variable=release]true"; fi
+      set +x
+    displayName: 'Check if the last commit comes from semantic-release-bot'
+
+  ## quit pipeline
+  - ${{ if ne(variables['release'], 'true') }}:
+      - script: |
+          echo "##vso[task.complete result=Failed;]Not a release commit"
+        displayName: 'Quit pipeline'
+
+  ## Install pnpm
   - script: |
       npm i pnpm@8.6.2 -g
     displayName: 'Install global dependencies'
