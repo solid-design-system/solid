@@ -385,7 +385,7 @@ export const storybookTemplate = (customElementTag: string) => {
                              ? unsafeStatic((xValue.value || xValue).split('%TEMPLATE%')[1] || '')
                              : ''
                          }
-                          ${constantsTemplate ? unsafeStatic(constantsTemplate.split('%TEMPLATE%')[0]) : ''}</td></div>
+                          ${constantsTemplate ? unsafeStatic(constantsTemplate.split('%TEMPLATE%')[1]) : ''}</td></div>
                         `;
                       })}
                     </tr>

@@ -46,7 +46,9 @@ registerIconLibrary('global-resources', {
       path.push('colored');
     }
 
-    return `end:/icons/${path.join('/')}/${iconName}.svg`;
+    return `https://global-resources.fe.union-investment.de/latest/scripts/services/svg/icons/${path.join(
+      '/'
+    )}/${iconName}.svg`;
   },
 
   // We need currentColor as the main color for the icons
@@ -100,7 +102,9 @@ registerIconLibrary('global-resources-overriden', {
         }[iconName] || iconName;
     }
 
-    return `end:/attrax-icons/${path.join('/')}/${iconName}.svg`;
+    return `https://global-resources.fe.union-investment.de/latest/scripts/services/svg/attrax-icons/${path.join(
+      '/'
+    )}/${iconName}.svg`;
   },
   // We need currentColor as the main color for the icons
   mutator: svg => svg.setAttribute('fill', 'currentColor')
