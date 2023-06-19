@@ -30,7 +30,6 @@ describe('<sd-button>', () => {
       expect(el.size).to.equal('lg');
       expect(el.disabled).to.equal(false);
       expect(el.loading).to.equal(false);
-      expect(el.circle).to.equal(false);
     });
 
     it('should render as a <button>', async () => {

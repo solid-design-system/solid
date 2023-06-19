@@ -1,6 +1,6 @@
 import '../spinner/spinner';
 import { css } from 'lit';
-import { customElement, property, query, state } from 'lit/decorators.js';
+import { customElement, property, query, queryAssignedElements, state } from 'lit/decorators.js';
 import { FormControlController } from '../../internal/form';
 import { HasSlotController } from '../../internal/slot';
 import { html, literal } from 'lit/static-html.js';
@@ -51,8 +51,9 @@ export default class SdButton extends SolidElement implements SolidFormControl {
   private readonly hasSlotController = new HasSlotController(this, '[default]', 'icon-left', 'icon-right');
 
   @query('a, button') button: HTMLButtonElement | HTMLLinkElement;
-
-  @state() invalid = false;
+  @queryAssignedElements({ selector: 'sd-icon' }) _iconsInDefaultSlot!: HTMLElement[];
+  @state()
+  invalid = false;
   @property() title = ''; // make reactive to pass through
 
   /** The button's theme variant. */
@@ -69,12 +70,6 @@ export default class SdButton extends SolidElement implements SolidFormControl {
 
   /** Draws the button in a loading state. */
   @property({ type: Boolean, reflect: true }) loading = false;
-
-  /**
-   * Draws a circular icon button. When this attribute is present, the button expects a single `<sd-icon>` in the
-   * default slot.
-   */
-  @property({ type: Boolean, reflect: true }) circle = false;
 
   /**
    * The type of button. Note that the default value is `button` instead of `submit`, which is opposite of how native
@@ -219,7 +214,8 @@ export default class SdButton extends SolidElement implements SolidFormControl {
     const slots = {
       label: this.hasSlotController.test('[default]'),
       'icon-left': this.hasSlotController.test('icon-left'),
-      'icon-right': this.hasSlotController.test('icon-right')
+      'icon-right': this.hasSlotController.test('icon-right'),
+      'icon-only': this._iconsInDefaultSlot.length > 0
     };
 
     /* eslint-disable lit/no-invalid-html */
@@ -228,16 +224,15 @@ export default class SdButton extends SolidElement implements SolidFormControl {
       <${tag} part="base" class=${cx(
       `font-md leading-[calc(var(--tw-varspacing)-2px)] no-underline
         w-full h-varspacing whitespace-nowrap align-middle inline-flex items-stretch justify-center
-        border transition-colors duration-200 ease-in-out
+        border transition-colors duration-200 ease-in-out rounded-md
         select-none cursor-[inherit]
         ${!this.inverted ? 'focus-visible:focus-outline' : 'focus-visible:focus-outline-inverted'}`,
       this.loading && 'relative cursor-wait',
       this.disabled && 'cursor-not-allowed',
-      this.circle && 'px-0 w-varspacing',
+      slots['icon-only'] && 'px-0 w-varspacing',
       /**
        * Anatomy
        * */
-      this.circle ? 'rounded-full' : 'rounded-md',
       {
         /* sizes, fonts */
         sm: 'text-sm varspacing-8 px-4',
@@ -296,42 +291,38 @@ export default class SdButton extends SolidElement implements SolidFormControl {
         @click=${this.handleClick}
       >
         <slot name="icon-left" part="icon-left" class=${cx(
-          'flex flex-auto items-center pointer-events-none text-varspacing',
-          this.circle && 'hidden',
+          'flex flex-auto items-center pointer-events-none',
+          slots['icon-only'] && 'hidden',
           this.loading && 'invisible',
           slots['icon-left'] &&
             {
-              sm: 'varspacing-4 mr-1',
-              md: 'varspacing-5 mr-2',
-              lg: 'varspacing-6 mr-2'
+              sm: 'mr-1',
+              md: 'mr-2',
+              lg: 'mr-2'
             }[this.size]
         )}></slot>
-        <slot part="label" class=${cx('inline-block', this.loading && 'invisible')}></slot>
+        <slot part="label" class=${cx(
+          slots['icon-only'] ? 'flex flex-auto items-center pointer-events-none' : 'inline-block',
+          this.loading && 'invisible'
+        )}></slot>
         <slot name="icon-right"
           part="icon-right"
           class=${cx(
-            'flex flex-auto items-center pointer-events-none text-varspacing',
+            'flex flex-auto items-center pointer-events-none',
             this.loading && 'invisible',
-            this.circle && 'hidden',
+            slots['icon-only'] && 'hidden',
             slots['icon-right'] &&
               {
-                sm: 'varspacing-4 ml-1',
-                md: 'varspacing-5 ml-2',
-                lg: 'varspacing-6 ml-2'
+                sm: 'ml-1',
+                md: 'ml-2',
+                lg: 'ml-2'
               }[this.size]
           )}>
         </slot>
       ${
         this.loading
           ? html`<sd-spinner
-              class="${cx(
-                'absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-varspacing',
-                {
-                  sm: 'varspacing-4',
-                  md: 'varspacing-5',
-                  lg: 'varspacing-6'
-                }[this.size]
-              )}"
+              class="${cx('absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2')}"
             ></sd-spinner>`
           : ''
       }
@@ -378,8 +369,9 @@ export default class SdButton extends SolidElement implements SolidFormControl {
        * sd-icons should automatically resize correctly based on the button size.
        */
 
-      [part='label']::slotted(sd-icon) {
-        vertical-align: -2px;
+      ::slotted(sd-icon),
+      sd-spinner {
+        font-size: calc(var(--tw-varspacing) / 2);
       }
 
       ///*
