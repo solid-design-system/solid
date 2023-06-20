@@ -218,4 +218,35 @@ describe('<sd-button>', () => {
       expect(clickHandler).to.have.been.calledOnce;
     });
   });
+
+  describe('when using methods', () => {
+    it('should emit sd-focus and sd-blur when the button is a link and it is focused and blurred', async () => {
+      const el = await fixture<SdButton>(html` <sd-button href="#">Button</sd-button> `);
+      const focusHandler = sinon.spy();
+      const blurHandler = sinon.spy();
+
+      el.addEventListener('sd-focus', focusHandler);
+      el.addEventListener('sd-blur', blurHandler);
+
+      el.focus();
+      await waitUntil(() => focusHandler.calledOnce);
+
+      el.blur();
+      await waitUntil(() => blurHandler.calledOnce);
+
+      expect(focusHandler).to.have.been.calledOnce;
+      expect(blurHandler).to.have.been.calledOnce;
+    });
+
+    it('should emit a click event when calling click()', async () => {
+      const el = await fixture<SdButton>(html` <sd-button></sd-button> `);
+      const clickHandler = sinon.spy();
+
+      el.addEventListener('click', clickHandler);
+      el.click();
+      await waitUntil(() => clickHandler.calledOnce);
+
+      expect(clickHandler).to.have.been.calledOnce;
+    });
+  });
 });

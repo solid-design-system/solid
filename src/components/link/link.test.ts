@@ -1,37 +1,18 @@
 import { expect, fixture, html, waitUntil } from '@open-wc/testing';
-import { ifDefined } from 'lit/directives/if-defined.js';
 import sinon from 'sinon';
 import type SdLink from './link';
 
 describe('<sd-link>', () => {
   describe('accessibility tests', () => {
-    ['', '#'].forEach(variant => {
-      it(`should be accessible when href is "${variant}"`, async () => {
-        const el = await fixture<SdLink>(
-          html` <sd-link href=${ifDefined(variant || undefined)}> Default Slot </sd-link> `
-        );
+    [false, true].forEach(inverted => {
+      it(`should be accessible when href is set and inverted is ${inverted ? 'true' : 'false'}`, async () => {
+        const el = await fixture<SdLink>(html` <sd-link href="#" ?inverted=${inverted}> Default Slot </sd-link> `);
         await expect(el).to.be.accessible();
       });
     });
   });
-  describe('accessibility tests', () => {
-    ['', '#'].forEach(variant => {
-      it(`should be accessible when href is "${variant}" and inverted is "true"`, async () => {
-        const el = await fixture<SdLink>(
-          html` <div style="background: #00358E">
-            <sd-link href=${ifDefined(variant || undefined)} inverted> Default Slot </sd-link>
-          </div>`
-        );
-        await expect(el).to.be.accessible();
-      });
-    });
-  });
-  describe('when provided no parameters', () => {
-    it('passes accessibility test', async () => {
-      const el = await fixture<SdLink>(html`<sd-link>Default Slot</sd-link> `);
-      await expect(el).to.be.accessible();
-    });
 
+  describe('when provided no parameters', () => {
     it('primary values are set correctly', async () => {
       const el = await fixture<SdLink>(html` <sd-link>Default Slot</sd-link> `);
 

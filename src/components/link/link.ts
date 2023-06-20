@@ -1,5 +1,5 @@
 import { css, html } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement, property, query } from 'lit/decorators.js';
 import { HasSlotController } from '../../internal/slot';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import cx from 'classix';
@@ -28,6 +28,8 @@ import SolidElement from '../../internal/solid-element';
 @customElement('sd-link')
 export default class SdLink extends SolidElement {
   private readonly hasSlotController = new HasSlotController(this, '[default]', 'icon-left', 'icon-right');
+
+  @query('a, button') button: HTMLButtonElement | HTMLLinkElement;
 
   /** The link's size. */
   @property({ reflect: true }) size: 'inherit' | 'lg' | 'sm' = 'inherit';
@@ -59,6 +61,16 @@ export default class SdLink extends SolidElement {
     this.emit('sd-focus');
   }
 
+  /** Sets focus on the button. */
+  focus(options?: FocusOptions) {
+    this.button.focus(options);
+  }
+
+  /** Removes focus from the button. */
+  blur() {
+    this.button.blur();
+  }
+
   render() {
     const slots = {
       label: this.hasSlotController.test('[default]'),
@@ -77,7 +89,7 @@ export default class SdLink extends SolidElement {
           inherit: ''
         }[this.size],
         {
-          disabled: !this.inverted ? 'text-neutral-700' : 'text-neutral-500',
+          disabled: !this.inverted ? 'text-neutral-500' : 'text-neutral-600',
           enabled: !this.inverted
             ? ` text-primary hover:text-primary-500 active:text-primary-800 focus-visible:focus-outline`
             : `text-white hover:text-primary-200 active:text-primary-400 focus-visible:focus-outline-inverted`
@@ -88,6 +100,8 @@ export default class SdLink extends SolidElement {
       target=${ifDefined(this.target || undefined)}
       download=${ifDefined(this.download || undefined)}
       rel=${ifDefined(this.target ? 'noreferrer noopener' : undefined)}
+      aria-disabled=${!this.href ? 'true' : 'false'}
+      tabindex=${!this.href ? '-1' : '0'}
       @blur=${this.handleBlur}
       @focus=${this.handleFocus}
       ><slot
@@ -95,12 +109,13 @@ export default class SdLink extends SolidElement {
         part="icon-left"
         class=${cx(
           'inline',
-          slots['icon-left'] &&
-            {
-              sm: this.standalone ? 'mr-1' : 'mr-[2px]',
-              lg: this.standalone ? 'mr-2' : 'mr-1',
-              inherit: this.standalone ? 'mr-[0.5em]' : 'mr-[0.25em]'
-            }[this.size]
+          slots['icon-left'] && !this.standalone
+            ? 'mr-[0.25em]' // in inline text the icon should be closer to link text to avoid visual gaps
+            : {
+                sm: 'mr-1',
+                lg: 'mr-2',
+                inherit: 'mr-[0.5em]'
+              }[this.size]
         )}
       ></slot
       ><span part="label" class="inline underline underline-offset-2"><slot></slot></span
@@ -109,12 +124,13 @@ export default class SdLink extends SolidElement {
         part="icon-right"
         class=${cx(
           'inline',
-          slots['icon-right'] &&
-            {
-              sm: this.standalone ? 'ml-1' : 'ml-[2px]',
-              lg: this.standalone ? 'ml-2' : 'ml-1',
-              inherit: this.standalone ? 'ml-[0.5em]' : 'ml-[0.25em]'
-            }[this.size]
+          slots['icon-right'] && !this.standalone
+            ? 'ml-[0.25em]' // in inline text the icon should be closer to link text to avoid visual gaps
+            : {
+                sm: 'ml-1',
+                lg: 'ml-2',
+                inherit: 'ml-[0.5em]'
+              }[this.size]
         )}
       ></slot
     ></a>`;
