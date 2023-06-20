@@ -244,6 +244,9 @@ export const storybookTemplate = (customElementTag: string) => {
           padding: 16px;
           font-size: 12px;
         }
+        td.template {
+          font-size: 16px;
+        }
         .story-template thead tr th {
           text-align: center;
           border-bottom: 1px solid #e0e0e0;

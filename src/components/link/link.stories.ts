@@ -171,7 +171,7 @@ export const Standalone = {
             {
               type: 'template',
               name: 'defaults',
-              value: `<div style="line-height: 150%; font-size: 16px; text-align: left; width: 200px; word-break: break-all;">${
+              value: `<div style="font-size: 16px; text-align: left; width: 200px; word-break: break-all;">${
                 surroundingContent ? 'Qui do.' : ''
               }%TEMPLATE%${surroundingContent ? 'Eiusmod minim excepteur.</div>' : ''}`
             }
