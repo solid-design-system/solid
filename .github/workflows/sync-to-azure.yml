@@ -19,7 +19,7 @@ jobs:
           if: "${{ env.AZURE_KEY != '' }}"
           run: echo "::set-output name=defined::true"
   sync:
-    name: Sync to FMA
+    name: Sync to solid-design-system
     needs: check-env
     if: needs.check-env.outputs.azure-key == 'true'
     runs-on: ubuntu-latest
