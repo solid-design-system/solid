@@ -1,0 +1,70 @@
+trigger:
+  branches:
+    include:
+      - '*'
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+  - checkout: self
+    fetchDepth: 0
+
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '16.x'
+    displayName: 'Install Node.js'
+
+  ## Check if the last commit comes from semantic-release-bot
+  - bash: |
+      set -x
+      if [[ $(git log -1 --pretty=%B) =~ ^chore\(release\): ]]; then echo "##vso[task.setvariable variable=release]true"; fi
+      set +x
+    displayName: 'Check if the last commit comes from semantic-release-bot'
+
+  ## quit pipeline
+  - ${{ if ne(variables['release'], 'true') }}:
+      - script: |
+          echo "##vso[task.complete result=Failed;]Not a release commit"
+        displayName: 'Quit pipeline'
+
+  ## Install pnpm
+  - script: |
+      npm i pnpm@8.6.2 -g
+    displayName: 'Install global dependencies'
+
+  ## Install all package dependencies
+  - script: |
+      pnpm i
+    displayName: 'Install package dependencies'
+
+  ## Normalize branch name to fit CDN URLs (remove 'refs/heads/' and replace '/' with '_')
+  ## Set [branch] variable to normalized branch name
+  - bash: |
+      set -x
+      REF=$(Build.SourceBranch)
+      echo $REF
+      REG='[a-z]*/[a-z]*/([0-9a-zA-Z/-]*)'
+      if [[ $REF =~ $REG ]]; then echo found; fi
+      branch=${BASH_REMATCH[1]////_}
+      echo $branch
+      # IMPORTANT: We have to stop "set -x" here to prevent accidental apostrophes in the branch name
+      # https://github.com/microsoft/azure-pipelines-tasks/issues/10331#issuecomment-1423932651
+      set +x
+      echo "##vso[task.setvariable variable=branch]$branch"
+    displayName: 'Normalize branch name (remove refs/heads/ and replace / with _)'
+
+  - bash: |
+      echo "$(branch)"
+    displayName: 'Log normalized branch name'
+
+    ## Build all components
+  - script: |
+      pnpm run build
+
+  ## if branch is not 'main' then deploy to CDN using the push-to-storage-feature template otherwise use the push-to-storage-main template
+  - ${{ if ne(variables['Build.SourceBranch'], 'refs/heads/main') }}:
+      - template: .azuredevops/pipelines/templates/push-to-storage-feature.template.yml
+
+  - ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/main') }}:
+      - template: .azuredevops/pipelines/templates/push-to-storage-main.template.yml
