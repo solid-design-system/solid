@@ -224,8 +224,6 @@ export const storybookTemplate = (customElementTag: string) => {
     const constantsArray = Array.isArray(constants) ? constants : [constants];
     const constantsTemplate = constantsArray.find(constant => constant.type === 'template')?.value;
 
-    console.log(constantsArray, constantsTemplate);
-
     const uuid = `uuid-${crypto.randomUUID()}`;
 
     return html`
