@@ -27,7 +27,7 @@ export const Default = {
 };
 
 /**
- * Use the `icon-left` and `icon-right` slots to add icons.
+ * Use the `icon-left` and `icon-right` slots to add icons. They automatically adapt the size.
  */
 
 export const IconsAndSize = {
@@ -62,7 +62,7 @@ export const IconsAndSize = {
 };
 
 /**
- * Use the `icon-left` and `icon-right` slots to add icons.
+ * Unset `href` to make the link disabled.
  */
 
 export const IconsAndDisabled = {
@@ -90,7 +90,7 @@ export const IconsAndDisabled = {
 };
 
 /**
- * Use the `icon-left` and `icon-right` slots to add icons.
+ * Icons automatically adapt to the link's invertedness.
  */
 
 export const IconsAndInverted = {
@@ -129,7 +129,9 @@ export const IconsAndInverted = {
 };
 
 /**
- * Use the `icon-left` and `icon-right` slots to add icons.
+ * This `standalone` attribute controls the layout of the icon and text within the component.
+ * - If true, the icon and text will be displayed side by side, each occupying its own column.
+ * - If false or not provided, the icon will be displayed inline within the text.
  */
 
 export const Standalone = {
@@ -183,5 +185,44 @@ export const Standalone = {
         })
       )}
     `;
+  }
+};
+
+/**
+ * Use the `base`, `label`, `icon-left` and `icon-right` part selectors to customize the button.
+ */
+
+export const Parts = {
+  parameters: {
+    controls: { exclude: ['base', 'label', 'icon-left', 'icon-right'] }
+  },
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        y: {
+          type: 'template',
+          name: 'sd-link::part(...){outline: solid 2px red}',
+          values: ['base', 'label', 'icon-left', 'icon-right'].map(part => {
+            return {
+              title: part,
+              value: `<style>#part-${part} sd-link::part(${part}){outline: solid 2px red}</style><div id="part-${part}">%TEMPLATE%</div>`
+            };
+          })
+        }
+      },
+      constants: [
+        {
+          type: 'slot',
+          name: 'icon-right',
+          value: '<sd-icon library="global-resources" name="system/picture" slot="icon-right"></sd-icon>'
+        },
+        {
+          type: 'slot',
+          name: 'icon-left',
+          value: '<sd-icon library="global-resources" name="system/picture" slot="icon-left"></sd-icon>'
+        }
+      ],
+      args
+    });
   }
 };

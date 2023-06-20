@@ -6,12 +6,10 @@ import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
 /**
- * @summary Short summary of the component's intended use.
+ * @summary A link component.
  * @documentation https://solid.union-investment.com/[storybook-link]/link
  * @status experimental
  * @since 1.0
- *
- * @dependency sd-icon
  *
  * @event sd-blur - Emitted when the link loses focus.
  * @event sd-focus - Emitted when the link gains focus.
@@ -29,7 +27,7 @@ import SolidElement from '../../internal/solid-element';
 export default class SdLink extends SolidElement {
   private readonly hasSlotController = new HasSlotController(this, '[default]', 'icon-left', 'icon-right');
 
-  @query('a, button') button: HTMLButtonElement | HTMLLinkElement;
+  @query('a') button: HTMLButtonElement | HTMLLinkElement;
 
   /** The link's size. */
   @property({ reflect: true }) size: 'inherit' | 'lg' | 'sm' = 'inherit';
@@ -37,11 +35,7 @@ export default class SdLink extends SolidElement {
   /** Inverts the link. */
   @property({ type: Boolean, reflect: true }) inverted = false;
 
-  /**
-   * This prop controls the layout of the icon and text within the component.
-   * If true, the icon and text will be displayed side by side, each occupying its own column.
-   * If false or not provided, the icon will be displayed inline within the text.
-   **/
+  /** Control the layout of icon and text within the component and the component's positioning. */
   @property({ type: Boolean, reflect: true }) standalone = false;
 
   /** When not set, the link will render as disabled. */
