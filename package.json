@@ -30,7 +30,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/solid-design-system/solid.git"
+    "url": "git+https://github.com/solid-design-system/solid.git"
   },
   "scripts": {
     "start": "echo '❌ Please use `pnpm dev` instead.'",
