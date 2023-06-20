@@ -1,18 +1,18 @@
 # `ui-button`
 
-Use the new `sd-button` as a replacement. It tries to mirror the attributes of an original HTML button as much as possible, and therefore offers much more. Check out the `sd-button` docs to see them.
+Solid Components aims to mirror default HTML behavior as closely as possible. The new `sd-button` component supports a range of attributes with correctly typed values. It replaces the `ui-button` with enhanced features and functionality. To understand all the available attributes, please refer to the `sd-button` documentation.
 
-## ✨ attribute: `load`
+## ✨ New attribute: `load`
 
-If you use a `ui-button' that shows a loading state, you had to manually handle things. Now you can just set the `loading`argument which sets an`sd-spinner`, preserves the current content (and therefore the width) and handles all the necessary HTML and A11y features.
+The `load` attribute improves handling of buttons that display a loading state. In the past, manual intervention was necessary to control this state. Now, simply set the `load` attribute. It activates an `sd-spinner`, maintains the current content (and consequently, the width), and manages all essential HTML and A11y features.
 
-## 🔀 attribute argument: `variant/transparent`
+## 🔀 Updated attribute: `variant/transparent` to `variant/tertiary`
 
-The argument is now called `variant/tertiary` to better reflect the hierarchy of buttons. To improve UX, it behaves differently on hover (changes background instead of underlining).
+The attribute argument `variant/transparent` has been renamed to `variant/tertiary` to accurately represent the button hierarchy. To enhance user experience, its behavior on hover has been updated; it now changes background instead of applying an underline.
 
-## 🔀 CSS variables `--component-button-...`
+## 🔀 CSS Variables: `--component-button-...`
 
-We dropped all component (!) specific CSS variables. Instead you are now able to override colors and padding with the part selector, e. g.:
+We have discontinued component-specific CSS variables. You can now alter colors and padding using the part selector. Alternatively, override CSS variables used within the element as needed.
 
 ```css
 sd-button::part(base) {
@@ -29,20 +29,13 @@ sd-button {
 }
 ```
 
-## ❌ attribute argument: `variant/plain`
+## ❌ Removed attribute: `variant/plain`
 
-Currently, we don't provide a way to manually set negative margins if you want to align a tertiary button horizontally. Please handle this in your application.
-Setting something like the following should do the trick (including skinnability):
+We no longer support manually setting negative margins for aligning a tertiary button horizontally. Design-wise, this approach is discouraged as the hover and focus states would be affected. If you require a more minimal link component, please utilize the `sd-link` component. Note that the `sd-link` component is not designed to behave like a button and will not support such features in the future.
 
-```css
-sd-button.align-to-left { }}
-  margin-left: calc(var(--sd-spacing-4, 1rem) * -1);
-}
-```
+## ❌ Removed attribute: `icon`
 
-## ❌ attribute: `icon`
-
-The `sd-button` doesn't have an `icon` attribute. Instead, there's now a slot:
+The `sd-button` no longer includes an `icon` attribute. Instead, it provides a slot for the same purpose. For usage examples, refer to the `sd-button/Slots` story. You might need to manually add 'skinning' data to invert the icon, as this function is no longer provided by the button.
 
 ```html
 <sd-button
@@ -50,9 +43,12 @@ The `sd-button` doesn't have an `icon` attribute. Instead, there's now a slot:
 </sd-button>.
 ```
 
-See the `sd-button/Slots` story for examples. Note that you may have to manually add `skinning' data to invert the icon, as it's no longer provided by the button.
+See the `sd-button/Slots` story for examples.
 
-## ❌ automatic color inversion
+## ✨ `icon-only` state
 
-As we want single components as independent and robust as possible the `sd-button` doesn't automatically inverts it's colors on behalf of CSS variables by higher elements in the DOM.
-Instead you just have to add the `inverted` attribute.
+The `icon-only` state activates when an `sd-icon` is placed inside the main slot of an `sd-button`. In this state, the button automatically becomes square, embodying an `icon-only` button.
+
+## ❌ Automatic Color Inversion
+
+In our pursuit of creating standalone, robust components, the `sd-button` does not automatically invert its colors based on CSS variables from higher elements in the DOM. Instead, to invert colors, you simply need to add the `inverted` attribute.
