@@ -109,13 +109,14 @@ export default class SdLink extends SolidElement {
         part="icon-left"
         class=${cx(
           'inline',
-          slots['icon-left'] && !this.standalone
-            ? 'mr-[0.25em]' // in inline text the icon should be closer to link text to avoid visual gaps
-            : {
-                sm: 'mr-1',
-                lg: 'mr-2',
-                inherit: 'mr-[0.5em]'
-              }[this.size]
+          slots['icon-left'] &&
+            (!this.standalone
+              ? 'mr-[0.25em]' // in inline text the icon should be closer to link text to avoid visual gaps
+              : {
+                  sm: 'mr-1',
+                  lg: 'mr-2',
+                  inherit: 'mr-[0.5em]'
+                }[this.size])
         )}
       ></slot
       ><span part="label" class="inline underline underline-offset-2"><slot></slot></span
@@ -124,13 +125,14 @@ export default class SdLink extends SolidElement {
         part="icon-right"
         class=${cx(
           'inline',
-          slots['icon-right'] && !this.standalone
-            ? 'ml-[0.25em]' // in inline text the icon should be closer to link text to avoid visual gaps
-            : {
-                sm: 'ml-1',
-                lg: 'ml-2',
-                inherit: 'ml-[0.5em]'
-              }[this.size]
+          slots['icon-right'] &&
+            (!this.standalone
+              ? 'ml-[0.25em]' // in inline text the icon should be closer to link text to avoid visual gaps
+              : {
+                  sm: 'ml-1',
+                  lg: 'ml-2',
+                  inherit: 'ml-[0.5em]'
+                }[this.size])
         )}
       ></slot
     ></a>`;
