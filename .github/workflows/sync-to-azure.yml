@@ -38,7 +38,7 @@ jobs:
           git config user.email github-actions@github.com
           git fetch origin --unshallow
           git config pull.ff only
-          git remote add --mirror=fetch azure ${{ secrets.AZURE_WFI_REMOTE_URL }}
+          git remote add --mirror=fetch azure ${{ secrets.AZURE_REMOTE_URL }}
           if [[ $(git ls-remote --heads azure ${{ steps.extract_branch_name.outputs.branch }} | wc -l) == "1" ]]; then
             echo found
             git pull azure ${{ steps.extract_branch_name.outputs.branch }}
