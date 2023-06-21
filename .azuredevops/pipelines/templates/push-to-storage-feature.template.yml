@@ -19,6 +19,6 @@ steps:
       set +x
 
     ## Purge CDN for branch folder
-  - template: .azuredevops/pipelines/templates/purge-cdn.template.yml
+  - template: templates/purge-cdn.template.yml
     parameters:
       destinationPath: '$(branch)'

@@ -55,18 +55,18 @@ steps:
         set +x
 
   ## Purge CDN for all folders
-  - template: .azuredevops/pipelines/templates/purge-cdn.template.yml
+  - template: templates/purge-cdn.template.yml
     parameters:
       destinationPath: '$(version)'
 
-  - template: .azuredevops/pipelines/templates/purge-cdn.template.yml
+  - template: templates/purge-cdn.template.yml
     parameters:
       destinationPath: 'x.x.x'
 
-  - template: .azuredevops/pipelines/templates/purge-cdn.template.yml
+  - template: templates/purge-cdn.template.yml
     parameters:
       destinationPath: '$(versionArray[0]).$(versionArray[1]).x'
 
-  - template: .azuredevops/pipelines/templates/purge-cdn.template.yml
+  - template: templates/purge-cdn.template.yml
     parameters:
       destinationPath: '$(versionArray[0]).x.x'
