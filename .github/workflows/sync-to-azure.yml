@@ -45,4 +45,3 @@ jobs:
             git pull -X theirs --allow-unrelated-histories
           fi
           git push azure --all
-          git push origin
