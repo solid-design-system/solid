@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/solid-design-system/solid/compare/v1.0.0...v1.1.0) (2023-06-21)
+
+
+### Features
+
+* ✨ use correct system icons + update icon and icon docs ([#179](https://github.com/solid-design-system/solid/issues/179)) ([b6c6fd1](https://github.com/solid-design-system/solid/commit/b6c6fd1881dd0b3bf8edda86b987b03610e951f5))
+
 # 1.0.0 (2023-06-21)
 
 
