@@ -84,33 +84,37 @@ export const BoldInMainSlot = {
 
 export const SizeAndIconSlots = {
   name: 'Size × Icon Slots',
-  parameters: { controls: { exclude: ['size', 'default', 'icon-left', 'icon-right'] } },
-  render: (args: any) =>
-    generateTemplate({
-      axis: {
-        x: {
-          type: 'slot',
-          name: 'icon-right',
-          title: 'slot="icon-..."',
-          values: [
-            '',
-            {
-              value: '<sd-icon library="global-resources" name="system/picture" slot="icon-left"></sd-icon>',
-              title: 'left'
+  parameters: { controls: { exclude: ['size', 'default', 'icon-left', 'icon-right', 'standalone'] } },
+  render: (args: any) => {
+    return html`
+      ${[false, true].map(standalone =>
+        generateTemplate({
+          axis: {
+            x: {
+              type: 'slot',
+              name: 'icon-right',
+              title: 'slot="icon-..."',
+              values: [
+                '',
+                {
+                  value: '<sd-icon library="global-resources" name="system/picture" slot="icon-left"></sd-icon>',
+                  title: 'left'
+                },
+                {
+                  value: '<sd-icon library="global-resources" name="system/picture" slot="icon-right"></sd-icon>',
+                  title: 'right'
+                }
+              ]
             },
-            {
-              value: '<sd-icon library="global-resources" name="system/picture" slot="icon-right"></sd-icon>',
-              title: 'right'
-            }
-          ]
-        },
-        y: {
-          type: 'attribute',
-          name: 'size'
-        }
-      },
-      args
-    })
+            y: { type: 'attribute', name: 'size' }
+          },
+          options: { title: `standalone="${standalone ? 'true' : 'false'}` },
+          constants: { type: 'attribute', name: 'standalone', value: standalone },
+          args
+        })
+      )}
+    `;
+  }
 };
 
 /**

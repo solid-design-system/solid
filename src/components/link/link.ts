@@ -88,7 +88,7 @@ export default class SdLink extends SolidElement {
             ? ` text-primary hover:text-primary-500 active:text-primary-800 focus-visible:focus-outline`
             : `text-white hover:text-primary-200 active:text-primary-400 focus-visible:focus-outline-inverted`
         }[this.href ? 'enabled' : 'disabled'],
-        this.standalone ? 'flex items-top' : ''
+        this.standalone && 'flex items-top'
       )}
       href=${ifDefined(this.href || undefined)}
       target=${ifDefined(this.target || undefined)}
@@ -137,8 +137,17 @@ export default class SdLink extends SolidElement {
     SolidElement.styles,
     css`
       ::slotted(sd-icon) {
-        font-size: calc(1.25em);
+        font-size: 1.25em;
         margin-bottom: -0.25em;
+      }
+      /**
+       * In standalone mode, the icon sizes are fixed when a size is set
+       */
+      :host([size='sm'][standalone]) ::slotted(sd-icon) {
+        font-size: 1rem;
+      }
+      :host([size='lg'][standalone]) ::slotted(sd-icon) {
+        font-size: 1.25rem;
       }
     `
   ];
