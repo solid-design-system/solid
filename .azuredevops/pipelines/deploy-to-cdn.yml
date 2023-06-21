@@ -15,17 +15,20 @@ steps:
       versionSpec: '16.x'
     displayName: 'Install Node.js'
 
-  ## Check if the last commit comes from semantic-release-bot
-  - bash: |
-      set -x
-      first_line=$(git log -1 --pretty=%s)
-      echo $first_line
-      if [[ $first_line == "chore(release):"* ]]; then echo "The last commit is a version bump => code will be deployed."; then echo "##vso[task.setvariable variable=release]true";
-      else
-        echo "The last commit is not a version bump => deployment will be canceled."
-      fi
-      set +x
-    displayName: 'Check if the last commit comes from semantic-release-bot'
+  ## Only on the `main` branch, check if the last commit comes from semantic-release-bot
+  - ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/main') }}:
+      - bash: |
+          set -x
+          first_line=$(git log -1 --pretty=%s)
+          echo $first_line
+          if [[ $first_line == "chore(release):"* ]]; then
+            echo "The last commit is a version bump => code will be deployed."; then
+            echo "##vso[task.setvariable variable=release]true"
+          else
+            echo "The last commit is not a version bump => deployment will be canceled."
+          fi
+          set +x
+        displayName: 'Check if the last commit comes from semantic-release-bot'
 
   ## quit pipeline
   - ${{ if ne(variables['release'], 'true') }}:
