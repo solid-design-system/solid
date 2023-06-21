@@ -1,0 +1,47 @@
+name: Sync to Azure
+
+on:
+  workflow_run:
+    workflows: ["Release new version"]
+    types:
+      - completed
+  workflow_dispatch:
+
+jobs:
+  check-env:
+    runs-on: ubuntu-latest
+    outputs:
+      azure-key: ${{ steps.azure-key.outputs.defined }}
+    steps:
+        - id: azure-key
+          env:
+            AZURE_KEY: ${{ secrets.AZURE_REMOTE_URL }}
+          if: "${{ env.AZURE_KEY != '' }}"
+          run: echo "::set-output name=defined::true"
+  sync:
+    name: Sync to solid-design-system
+    needs: check-env
+    if: needs.check-env.outputs.azure-key == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.4.0
+
+      - name: Extract branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch_name
+
+      - name: Git sync
+        id: branch
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git fetch origin --unshallow
+          git config pull.ff only
+          git remote add --mirror=fetch azure ${{ secrets.AZURE_REMOTE_URL }}
+          if [[ $(git ls-remote --heads azure ${{ steps.extract_branch_name.outputs.branch }} | wc -l) == "1" ]]; then
+            echo found
+            git pull azure ${{ steps.extract_branch_name.outputs.branch }}
+            git pull -X theirs --allow-unrelated-histories
+          fi
+          git push azure --all

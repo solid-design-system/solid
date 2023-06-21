@@ -48,7 +48,7 @@ describe('<sd-icon>', () => {
       const el = await fixture<SdIcon>(html` <sd-icon library="system"></sd-icon> `);
       const listener = oneEvent(el, 'sd-load') as Promise<CustomEvent>;
 
-      el.name = 'check';
+      el.name = 'chevron-down';
       const ev = await listener;
       await elementUpdated(el);
 

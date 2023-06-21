@@ -1,10 +1,8 @@
-import { html } from 'lit';
+import { css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import SolidElement from '../../internal/solid-element';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { watch } from '../../internal/watch';
-import { LocalizeController } from '../../utilities/localize';
-import styles from './{{ tagWithoutPrefix tag }}.styles';
-import type { CSSResultGroup } from 'lit';
+import SolidElement from '../../internal/solid-element';
 
 /**
  * @summary Short summary of the component's intended use.
@@ -25,8 +23,6 @@ import type { CSSResultGroup } from 'lit';
  */
 @customElement('{{ tag }}')
 export default class {{ properCase tag }} extends SolidElement {
-  static styles: CSSResultGroup = styles;
-
   private readonly localize = new LocalizeController(this);
 
   /** An example attribute. */
@@ -41,6 +37,9 @@ export default class {{ properCase tag }} extends SolidElement {
   render() {
     return html` <slot></slot> `;
   }
+
+  /** Inherits Tailwindclasses and includes additional styling. */
+  static styles = [SolidElement.styles, css``];
 }
 
 declare global {
