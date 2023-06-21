@@ -64,7 +64,7 @@ steps:
 
   ## if branch is not 'main' then deploy to CDN using the push-to-storage-feature template otherwise use the push-to-storage-main template
   - ${{ if ne(variables['Build.SourceBranch'], 'refs/heads/main') }}:
-      - template: .azuredevops/pipelines/templates/push-to-storage-feature.template.yml
+      - template: templates/push-to-storage-feature.template.yml
 
   - ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/main') }}:
-      - template: .azuredevops/pipelines/templates/push-to-storage-main.template.yml
+      - template: templates/push-to-storage-main.template.yml
