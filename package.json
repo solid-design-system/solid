@@ -125,7 +125,6 @@
     "sinon": "^15.1.0",
     "storybook": "^7.0.20",
     "storybook-addon-designs": "7.0.0-beta.2",
-    "storybook-addon-fetch-mock": "^1.0.1",
     "tailwindcss": "^3.3.2",
     "typescript": "5.0.4",
     "user-agent-data-types": "^0.3.1",

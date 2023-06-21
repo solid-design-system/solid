@@ -1,4 +1,3 @@
-import defaultLibrary from './library.default';
 import systemLibrary from './library.system';
 import type SdIcon from '../icon/icon';
 
@@ -10,7 +9,7 @@ export interface IconLibrary {
   mutator?: IconLibraryMutator;
 }
 
-let registry: IconLibrary[] = [defaultLibrary, systemLibrary];
+let registry: IconLibrary[] = [systemLibrary];
 let watchedIcons: SdIcon[] = [];
 
 /** Adds an icon to the list of watched icons. */
