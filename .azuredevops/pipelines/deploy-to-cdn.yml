@@ -29,12 +29,11 @@ steps:
           fi
           set +x
         displayName: 'Check if the last commit comes from semantic-release-bot'
-
-  ## quit pipeline
-  - ${{ if ne(variables['release'], 'true') }}:
-      - script: |
-          echo "##vso[task.complete result=Failed;]Not a release commit"
-        displayName: 'Quit pipeline'
+      ## quit pipeline
+      - ${{ if ne(variables['release'], 'true') }}:
+          - script: |
+              echo "##vso[task.complete result=Failed;]Not a release commit"
+            displayName: 'Quit pipeline'
 
   ## Install pnpm
   - script: |
