@@ -68,6 +68,7 @@ steps:
     ## Build all components
   - script: |
       pnpm run build
+    displayName: 'Build components'
 
   ## if branch is not 'main' then deploy to CDN using the push-to-storage-feature template otherwise use the push-to-storage-main template
   - ${{ if ne(variables['Build.SourceBranch'], 'refs/heads/main') }}:

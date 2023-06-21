@@ -12,7 +12,7 @@ steps:
         echo "Target folder is $(branch)"
         az storage blob upload-batch \
           --destination \$web \
-          --account-name "safesoliddesignsystemprod" \
+          --account-name "safesoliddesignsysprod" \
           --source dist \
           --destination-path "/$(branch)" \
           --overwrite
