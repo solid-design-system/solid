@@ -24,7 +24,7 @@ jobs:
           version: 8.6.2
 
       - name: Install dependencies
-        run: pnpm i
+        run: PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=true pnpm i
 
       - name: Run Semantic Release
         env:
