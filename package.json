@@ -1,7 +1,7 @@
 {
   "name": "@union-investment/solid",
   "description": "A solid set of web components.",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "homepage": "https://solid.union-investment.com",
   "author": {
     "name": "Union Investment"
@@ -164,6 +164,5 @@
       "@semantic-release/github"
     ]
   },
-  "readme": "ERROR: No README data found!",
-  "_id": "@union-investment/solid@1.0.0"
+  "readme": "ERROR: No README data found!"
 }
