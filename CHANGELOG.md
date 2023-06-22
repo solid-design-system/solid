@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/solid-design-system/solid/compare/v1.2.2...v1.2.3) (2023-06-22)
+
+
+### Bug Fixes
+
+* add push tags to azure ([1bae542](https://github.com/solid-design-system/solid/commit/1bae542d3a0ba39e1fb058f27230a4b125d98a93))
+
 ## [1.2.2](https://github.com/solid-design-system/solid/compare/v1.2.1...v1.2.2) (2023-06-22)
 
 
