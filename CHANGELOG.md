@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/solid-design-system/solid/compare/v1.1.0...v1.2.0) (2023-06-22)
+
+
+### Features
+
+* sd-link ([#169](https://github.com/solid-design-system/solid/issues/169)) ([c54d730](https://github.com/solid-design-system/solid/commit/c54d73079152c123dc36fedc1fc1a5f86a4e6dde))
+
 # [1.1.0](https://github.com/solid-design-system/solid/compare/v1.0.0...v1.1.0) (2023-06-21)
 
 
