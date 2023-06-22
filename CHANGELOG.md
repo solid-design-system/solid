@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/solid-design-system/solid/compare/v1.2.1...v1.2.2) (2023-06-22)
+
+
+### Bug Fixes
+
+* remove skip-ci and modify commit exception ([35af1cb](https://github.com/solid-design-system/solid/commit/35af1cba2de3725805f83433bd7e7bb696c49456))
+
 ## [1.2.1](https://github.com/solid-design-system/solid/compare/v1.2.0...v1.2.1) (2023-06-22)
 
 
