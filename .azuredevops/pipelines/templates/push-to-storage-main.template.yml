@@ -7,17 +7,19 @@ steps:
       scriptType: 'bash'
       scriptLocation: 'inlineScript'
       inlineScript: |
-        version=$(npm --no-git-tag-version version)
+        version=$(node -p "require('./package.json').version")
+        echo "Version is $version"
         versionArray=($(echo "$version" | tr '.' ' '))
+        echo "Version array is $versionArray"
 
         # Deploy to version folder
         set -x
-        echo "Target folder is $(version)"
+        echo "Target folder is $version"
         az storage blob upload-batch \
           --destination \$web \
           --account-name "safesoliddesignsysprod" \
           --source dist \
-          --destination-path "/$(version)" \
+          --destination-path "/$version" \
           --overwrite
         set +x
 
@@ -34,30 +36,30 @@ steps:
 
         # Deploy to patch wildcard folder
         set -x
-        echo "Target folder is $(versionArray[0]).$(versionArray[1]).x"
+        echo "Target folder is $versionArray[1].$versionArray[2].x"
         az storage blob upload-batch \
           --destination \$web \
           --account-name "safesoliddesignsysprod" \
           --source dist \
-          --destination-path "/$(versionArray[0]).$(versionArray[1]).x" \
+          --destination-path "/$versionArray[1].$versionArray[2].x" \
           --overwrite
         set +x
 
         # Deploy to minor wildcard folder
         set -x
-        echo "Target folder is $(versionArray[0]).x.x"
+        echo "Target folder is $versionArray[1].x.x"
         az storage blob upload-batch \
           --destination \$web \
           --account-name "safesoliddesignsysprod" \
           --source dist \
-          --destination-path "/$(versionArray[0]).x.x" \
+          --destination-path "/$versionArray[1].x.x" \
           --overwrite
         set +x
 
   ## Purge CDN for all folders
   - template: purge-cdn.template.yml
     parameters:
-      destinationPath: '$(version)'
+      destinationPath: '$version'
 
   - template: purge-cdn.template.yml
     parameters:
@@ -65,8 +67,8 @@ steps:
 
   - template: purge-cdn.template.yml
     parameters:
-      destinationPath: '$(versionArray[0]).$(versionArray[1]).x'
+      destinationPath: '$versionArray[1].$versionArray[2].x'
 
   - template: purge-cdn.template.yml
     parameters:
-      destinationPath: '$(versionArray[0]).x.x'
+      destinationPath: '$versionArray[1].x.x'
