@@ -147,7 +147,7 @@ export default class SdLink extends SolidElement {
         font-size: 1rem;
       }
       :host([size='lg'][standalone]) ::slotted(sd-icon) {
-        font-size: 1.25rem;
+        font-size: 1.5rem;
       }
     `
   ];
