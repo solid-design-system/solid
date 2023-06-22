@@ -217,23 +217,33 @@ export const StandaloneAndIconSlots = {
 };
 
 /**
- * The `--align-icon` controls the alignment of the icon within the component.
+ * Use the part selector to align the icon within the component.
  */
 
-export const AlignIcon = {
+export const IconAlignment = {
   parameters: {
-    controls: { exclude: ['--align-icon', 'icon-right', 'default', 'standalone'] }
+    controls: { exclude: ['icon-right', 'default', 'standalone', 'base'] }
   },
   render: (args: any) => {
     return generateTemplate({
       axis: {
         y: {
-          type: 'cssProperty',
-          name: '--align-icon',
-          values: ['start', 'center', 'end']
+          type: 'template',
+          name: 'sd-link::part(base){align-items: ...;}',
+          values: ['start', 'center', 'end'].map(alignIcon => {
+            return {
+              value: `<style>#align-icon-${alignIcon} sd-link::part(base){align-items: ${alignIcon};}</style><div id="align-icon-${alignIcon}">%TEMPLATE%</div>`,
+              title: alignIcon
+            };
+          })
         }
       },
       constants: [
+        {
+          type: 'template',
+          name: 'constant-template',
+          value: '<style>div[id^=align-icon-]{text-align: left; width: 300px;}</style>'
+        },
         {
           type: 'slot',
           name: 'icon-right',
@@ -248,11 +258,6 @@ export const AlignIcon = {
           type: 'attribute',
           name: 'standalone',
           value: true
-        },
-        {
-          type: 'template',
-          name: 'default-template',
-          value: `<div style="text-align: left; width: 300px;">%TEMPLATE%</div>`
         }
       ],
       args

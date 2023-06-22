@@ -22,10 +22,7 @@ import SolidElement from '../../internal/solid-element';
  * @csspart icon-left - The container that wraps the left icon area.
  * @csspart label - The link's label.
  * @csspart icon-right - The container that wraps the right icon area.
-
- * @cssproperty [--align-icon=start] - Alignment of icon if standalone link has more than one line of text. Uses `align-items` property.
-
-*/
+ */
 @customElement('sd-link')
 export default class SdLink extends SolidElement {
   private readonly hasSlotController = new HasSlotController(this, '[default]', 'icon-left', 'icon-right');
@@ -91,7 +88,7 @@ export default class SdLink extends SolidElement {
             ? ` text-primary hover:text-primary-500 active:text-primary-800 focus-visible:focus-outline`
             : `text-white hover:text-primary-200 active:text-primary-400 focus-visible:focus-outline-inverted`
         }[this.href ? 'enabled' : 'disabled'],
-        this.standalone && 'flex'
+        this.standalone && 'flex items-start'
       )}
       href=${ifDefined(this.href || undefined)}
       target=${ifDefined(this.target || undefined)}
@@ -151,13 +148,6 @@ export default class SdLink extends SolidElement {
       }
       :host([size='lg'][standalone]) ::slotted(sd-icon) {
         font-size: 1.25rem;
-      }
-
-      /**
-       * @DEVNOTE: It didn't work to set this up with TailwindCSS.
-       */
-      :host([standalone]) a {
-        align-items: var(--align-icon, start);
       }
     `
   ];

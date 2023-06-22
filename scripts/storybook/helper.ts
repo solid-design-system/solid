@@ -352,16 +352,16 @@ export const storybookTemplate = (customElementTag: string) => {
                           yAxis?.values?.indexOf(yValue) || 0 + 1
                         }">
                           ${
-                            xAxis.type === 'template'
-                              ? unsafeStatic((xValue.value || xValue).split('%TEMPLATE%')[0])
-                              : ''
+                            (xAxis.type === 'template' &&
+                              unsafeStatic((xValue.value || xValue).split('%TEMPLATE%')[0] || '')) ||
+                            ''
                           }
                           ${
-                            yAxis.type === 'template'
-                              ? unsafeStatic((yValue.value || yValue).split('%TEMPLATE%')[0])
-                              : ''
+                            (yAxis.type === 'template' &&
+                              unsafeStatic((yValue.value || yValue).split('%TEMPLATE%')[0] || '')) ||
+                            ''
                           }
-                          ${constantsTemplate ? unsafeStatic(constantsTemplate.split('%TEMPLATE%')[0]) : ''}
+                          ${(constantsTemplate && unsafeStatic(constantsTemplate.split('%TEMPLATE%')[0] || '')) || ''}
                             ${template({
                               ...args,
                               ...constantDefinitions,
@@ -377,16 +377,18 @@ export const storybookTemplate = (customElementTag: string) => {
                                 })
                             })}
                          ${
-                           yAxis.type === 'template'
-                             ? unsafeStatic((yValue.value || yValue).split('%TEMPLATE%')[1] || '')
-                             : ''
+                           (yAxis.type === 'template' &&
+                             unsafeStatic((yValue.value || yValue).split('%TEMPLATE%')[1] || '')) ||
+                           ''
                          }
                          ${
-                           xAxis.type === 'template'
-                             ? unsafeStatic((xValue.value || xValue).split('%TEMPLATE%')[1] || '')
-                             : ''
+                           (xAxis.type === 'template' &&
+                             unsafeStatic((xValue.value || xValue).split('%TEMPLATE%')[1] || '')) ||
+                           ''
                          }
-                          ${constantsTemplate ? unsafeStatic(constantsTemplate.split('%TEMPLATE%')[1]) : ''}</td></div>
+                          ${
+                            (constantsTemplate && unsafeStatic(constantsTemplate.split('%TEMPLATE%')[1] || '')) || ''
+                          }</td></div>
                         `;
                       })}
                     </tr>
