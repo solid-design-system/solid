@@ -49,6 +49,9 @@ registerIconLibrary('global-resources', {
     return `https://global-resources.fe.union-investment.de/latest/scripts/services/svg/icons/${path.join(
       '/'
     )}/${iconName}.svg`;
+    return `https://global-resources.fe.union-investment.de/latest/scripts/services/svg/icons/${path.join(
+      '/'
+    )}/${iconName}.svg`;
   },
 
   // We need currentColor as the main color for the icons

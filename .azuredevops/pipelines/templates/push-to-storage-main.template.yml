@@ -15,7 +15,7 @@ steps:
         echo "Target folder is $(version)"
         az storage blob upload-batch \
           --destination \$web \
-          --account-name "safesoliddesignsystemprod" \
+          --account-name "safesoliddesignsysprod" \
           --source dist \
           --destination-path "/$(version)" \
           --overwrite
@@ -26,7 +26,7 @@ steps:
         echo "Target folder is x.x.x"
         az storage blob upload-batch \
           --destination \$web \
-          --account-name "safesoliddesignsystemprod" \
+          --account-name "safesoliddesignsysprod" \
           --source dist \
           --destination-path "/x.x.x" \
           --overwrite
@@ -37,7 +37,7 @@ steps:
         echo "Target folder is $(versionArray[0]).$(versionArray[1]).x"
         az storage blob upload-batch \
           --destination \$web \
-          --account-name "safesoliddesignsystemprod" \
+          --account-name "safesoliddesignsysprod" \
           --source dist \
           --destination-path "/$(versionArray[0]).$(versionArray[1]).x" \
           --overwrite
@@ -48,7 +48,7 @@ steps:
         echo "Target folder is $(versionArray[0]).x.x"
         az storage blob upload-batch \
           --destination \$web \
-          --account-name "safesoliddesignsystemprod" \
+          --account-name "safesoliddesignsysprod" \
           --source dist \
           --destination-path "/$(versionArray[0]).x.x" \
           --overwrite
