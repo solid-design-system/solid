@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/solid-design-system/solid/compare/v1.2.0...v1.2.1) (2023-06-22)
+
+
+### Bug Fixes
+
+* pipeline exception ([16e0e5a](https://github.com/solid-design-system/solid/commit/16e0e5a0868b24013700261d770959dd06e43886))
+
 # [1.2.0](https://github.com/solid-design-system/solid/compare/v1.1.0...v1.2.0) (2023-06-22)
 
 
