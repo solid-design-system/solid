@@ -1,3 +1,10 @@
+## [1.2.5](https://github.com/solid-design-system/solid/compare/v1.2.4...v1.2.5) (2023-06-22)
+
+
+### Bug Fixes
+
+* correct version array handling in deployment ([d680d3d](https://github.com/solid-design-system/solid/commit/d680d3d6484d1ff61c68c8afa2567c7d7b358fdf))
+
 ## [1.2.4](https://github.com/solid-design-system/solid/compare/v1.2.3...v1.2.4) (2023-06-22)
 
 

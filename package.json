@@ -1,7 +1,7 @@
 {
   "name": "@union-investment/solid",
   "description": "A solid set of web components.",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "homepage": "https://solid.union-investment.com",
   "author": {
     "name": "Union Investment"
