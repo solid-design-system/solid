@@ -221,59 +221,61 @@ export default class SdButton extends SolidElement implements SolidFormControl {
     /* eslint-disable lit/no-invalid-html */
     /* eslint-disable lit/binding-positions */
     return html`
-      <${tag} part="base" class=${cx(
-      `font-md leading-[calc(var(--tw-varspacing)-2px)] no-underline
+      <${tag}
+      part="base"
+      class=${cx(
+        `font-md leading-[calc(var(--tw-varspacing)-2px)] no-underline
         w-full h-varspacing whitespace-nowrap align-middle inline-flex items-stretch justify-center
         border transition-colors duration-200 ease-in-out rounded-md
-        select-none cursor-[inherit]
-        ${!this.inverted ? 'focus-visible:focus-outline' : 'focus-visible:focus-outline-inverted'}`,
-      this.loading && 'relative cursor-wait',
-      this.disabled && 'cursor-not-allowed',
-      slots['icon-only'] && 'px-0 w-varspacing',
-      /**
-       * Anatomy
-       * */
-      {
-        /* sizes, fonts */
-        sm: 'text-sm varspacing-8 px-4',
-        md: 'text-base varspacing-10 px-4',
-        lg: 'text-base varspacing-12 px-4'
-      }[this.size],
-      {
-        /* variants */
-        primary: !this.inverted
-          ? `text-white bg-primary border-transparent
+        select-none cursor-[inherit]`,
+        !this.inverted ? 'focus-visible:focus-outline' : 'focus-visible:focus-outline-inverted',
+        this.loading && 'relative cursor-wait',
+        this.disabled && 'cursor-not-allowed',
+        slots['icon-only'] && 'px-0 w-varspacing',
+        /**
+         * Anatomy
+         * */
+        {
+          /* sizes, fonts */
+          sm: 'text-sm varspacing-8 px-4',
+          md: 'text-base varspacing-10 px-4',
+          lg: 'text-base varspacing-12 px-4'
+        }[this.size],
+        {
+          /* variants */
+          primary: !this.inverted
+            ? `text-white bg-primary border-transparent
            hover:text-primary-100 hover:bg-primary-500
            active:text-primary-200 active:bg-primary-800
            disabled:bg-neutral-500`
-          : `text-primary bg-white border-transparent
+            : `text-primary bg-white border-transparent
            hover:text-primary-500 hover:bg-primary-100
            active:text-primary-800 active:bg-primary-200
            disabled:bg-neutral-600 disabled:text-white`,
-        secondary: !this.inverted
-          ? `text-primary border-primary
+          secondary: !this.inverted
+            ? `text-primary border-primary
           hover:text-primary-500 hover:border-primary-500 hover:bg-primary-100
           active:text-primary-800 active:border-primary-800 active:bg-primary-200
           disabled:text-neutral-500 disabled:border-neutral-500`
-          : `text-white border-white
+            : `text-white border-white
           hover:text-primary-100 hover:bg-primary-500 hover:border-primary-100
           active:text-primary-200 active:bg-primary-800 active:border-primary-200
           disabled:text-neutral-600 disabled:border-neutral-600`,
-        tertiary: !this.inverted
-          ? `text-primary border-transparent
+          tertiary: !this.inverted
+            ? `text-primary border-transparent
           hover:text-primary-500 hover:bg-primary-100
           active:text-primary-800 active:bg-primary-200
           disabled:text-neutral-500`
-          : `text-white border-transparent
+            : `text-white border-transparent
           hover:text-primary-100 hover:bg-primary-500
           active:text-primary-200 active:bg-primary-800
           disabled:text-neutral-600`,
-        cta: `text-white bg-accent border-transparent
+          cta: `text-white bg-accent border-transparent
           hover:bg-accent-300
           active:bg-accent-500
           ${!this.inverted ? 'disabled:bg-neutral-500' : 'disabled:bg-neutral-600'} disabled:text-white`
-      }[this.variant]
-    )}
+        }[this.variant]
+      )}
         ?disabled=${ifDefined(isLink ? undefined : this.disabled)}
         type=${ifDefined(isLink ? undefined : this.type)}
         title=${this.title /* An empty title prevents browser validation tooltips from appearing on hover */}
