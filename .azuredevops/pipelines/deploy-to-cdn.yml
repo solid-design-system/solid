@@ -42,7 +42,7 @@ steps:
 
   ## Install all package dependencies
   - script: |
-      pnpm i
+      PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=true pnpm i
     displayName: 'Install package dependencies'
 
   - ${{ if ne(variables['Build.SourceBranch'], 'refs/heads/main') }}:
