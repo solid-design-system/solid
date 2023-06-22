@@ -10,7 +10,7 @@ steps:
         version=$(node -p "require('./package.json').version")
         echo "Version is $version"
         versionArray=($(echo "$version" | tr '.' ' '))
-        echo "Version array is $versionArray"
+        echo "Version array is ${versionArray[@]}"
 
         # Deploy to version folder
         set -x
@@ -36,23 +36,23 @@ steps:
 
         # Deploy to patch wildcard folder
         set -x
-        echo "Target folder is $versionArray[1].$versionArray[2].x"
+        echo "Target folder is ${versionArray[0]}.${versionArray[1]}.x"
         az storage blob upload-batch \
           --destination \$web \
           --account-name "safesoliddesignsysprod" \
           --source dist \
-          --destination-path "/$versionArray[1].$versionArray[2].x" \
+          --destination-path "/${versionArray[0]}.${versionArray[1]}.x" \
           --overwrite
         set +x
 
         # Deploy to minor wildcard folder
         set -x
-        echo "Target folder is $versionArray[1].x.x"
+        echo "Target folder is ${versionArray[0]}.x.x"
         az storage blob upload-batch \
           --destination \$web \
           --account-name "safesoliddesignsysprod" \
           --source dist \
-          --destination-path "/$versionArray[1].x.x" \
+          --destination-path "/${versionArray[0]}.x.x" \
           --overwrite
         set +x
 
@@ -67,8 +67,8 @@ steps:
 
   - template: purge-cdn.template.yml
     parameters:
-      destinationPath: '$versionArray[1].$versionArray[2].x'
+      destinationPath: '${versionArray[0]}.${versionArray[1]}.x'
 
   - template: purge-cdn.template.yml
     parameters:
-      destinationPath: '$versionArray[1].x.x'
+      destinationPath: '${versionArray[0]}.x.x'
