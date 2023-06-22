@@ -57,7 +57,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
   @property() title = ''; // make reactive to pass through
 
   /** The button's theme variant. */
-  @property({ reflect: true }) variant: 'primary' | 'secondary' | 'tertiary' | 'monthly' = 'primary';
+  @property({ reflect: true }) variant: 'primary' | 'secondary' | 'tertiary' | 'cta' = 'primary';
 
   /** Inverts the button. */
   @property({ type: Boolean, reflect: true }) inverted = false;
@@ -270,7 +270,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
           hover:text-primary-100 hover:bg-primary-500
           active:text-primary-200 active:bg-primary-800
           disabled:text-neutral-600`,
-          monthly: `text-white bg-accent border-transparent
+          cta: `text-white bg-accent border-transparent
           hover:bg-accent-300
           active:bg-accent-500
           ${!this.inverted ? 'disabled:bg-neutral-500' : 'disabled:bg-neutral-600'} disabled:text-white`
