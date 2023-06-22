@@ -26,7 +26,6 @@ steps:
             echo "##vso[task.complete result=success;]The last commit is not a version bump => deployment will be canceled."
             exit 1
           fi
-          echo variable 'release': $release
         displayName: 'Check if the last commit comes from semantic-release-bot'
 
   ## Install pnpm
