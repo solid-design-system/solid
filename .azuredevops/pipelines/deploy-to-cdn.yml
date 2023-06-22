@@ -21,17 +21,13 @@ steps:
           first_line=$(git log -1 --pretty=%s)
           echo $first_line
           if [[ $first_line == "chore(release):"* ]]; then
-            echo "##vso[task.setvariable variable=release]true"; echo "The last commit is a version bump => code will be deployed."
+            echo "The last commit is a version bump => code will be deployed."
           else
-            echo "The last commit is not a version bump => deployment will be canceled."
+            echo "##vso[task.complete result=success;]The last commit is not a version bump => deployment will be canceled."
+            exit 1
           fi
           echo variable 'release': $release
         displayName: 'Check if the last commit comes from semantic-release-bot'
-      ## quit pipeline
-      - ${{ if ne(variables['release'], 'true') }}:
-          - script: |
-              echo "##vso[task.complete result=Failed;]Not a release commit"
-            displayName: 'Quit pipeline'
 
   ## Install pnpm
   - script: |
