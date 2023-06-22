@@ -24,7 +24,7 @@ steps:
             echo "The last commit is a version bump => code will be deployed."
           else
             echo "The last commit is not a version bump => code will not be deployed."
-            echo "##vso[task.complete result=SucceededWithIssues;]"
+            exit 1
           fi
         displayName: 'Check if the last commit comes from semantic-release-bot'
 
