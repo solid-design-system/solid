@@ -4,21 +4,21 @@ steps:
     displayName: 'Deploying to Azure Blob Storage'
     inputs:
       azureSubscription: 'Workload CI/CD Service Connection (S_STATICCONTENT_PROD)'
-    scriptType: 'bash'
-    scriptLocation: 'inlineScript'
-    inlineScript: |
-      # Deploy to version folder
-      set -x
-      echo "Target folder is $(branch)"
-      az storage blob upload-batch \
-        --destination \$web \
-        --account-name "safesoliddesignsystemprod" \
-        --source dist \
-        --destination-path "/$(branch)" \
-        --overwrite
-      set +x
+      scriptType: 'bash'
+      scriptLocation: 'inlineScript'
+      inlineScript: |
+        # Deploy to version folder
+        set -x
+        echo "Target folder is $(branch)"
+        az storage blob upload-batch \
+          --destination \$web \
+          --account-name "safesoliddesignsysprod" \
+          --source dist \
+          --destination-path "/$(branch)" \
+          --overwrite
+        set +x
 
     ## Purge CDN for branch folder
-  - template: templates/purge-cdn.template.yml
+  - template: purge-cdn.template.yml
     parameters:
       destinationPath: '$(branch)'
