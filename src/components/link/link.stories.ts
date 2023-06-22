@@ -108,7 +108,7 @@ export const SizeAndIconSlots = {
             },
             y: { type: 'attribute', name: 'size' }
           },
-          options: { title: `standalone="${standalone ? 'true' : 'false'}` },
+          options: { title: `standalone="${standalone ? 'true' : 'false'}"` },
           constants: { type: 'attribute', name: 'standalone', value: standalone },
           args
         })
@@ -214,6 +214,50 @@ export const StandaloneAndIconSlots = {
         })
       )}
     `;
+  }
+};
+
+/**
+ * The `--align-icon` controls the alignment of the icon within the component.
+ */
+
+export const AlignIcon = {
+  parameters: {
+    controls: { exclude: ['base', 'icon-left', '--align-icon'] }
+  },
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        y: {
+          type: 'cssProperty',
+          name: '--align-icon',
+          values: ['start', 'center', 'end']
+        }
+      },
+      constants: [
+        {
+          type: 'slot',
+          name: 'icon-right',
+          value: '<sd-icon library="global-resources" name="system/arrow-right" slot="icon-right"></sd-icon>'
+        },
+        {
+          type: 'slot',
+          name: 'default',
+          value: 'In dolore consectetur do excepteur tempor occaecat magna anim esse sit dolor mollit est voluptate.'
+        },
+        {
+          type: 'attribute',
+          name: 'standalone',
+          value: true
+        },
+        {
+          type: 'template',
+          name: 'defaults',
+          value: `<div style="text-align: right; width: 300px;">%TEMPLATE%</div>`
+        }
+      ],
+      args
+    });
   }
 };
 
