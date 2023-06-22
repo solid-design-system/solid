@@ -23,7 +23,7 @@ steps:
           if [[ $first_line == "chore(release):"* ]]; then
             echo "The last commit is a version bump => code will be deployed."
           else
-            echo "##vso[task.complete result=success;]The last commit is not a version bump => deployment will be canceled."
+            echo "##vso[task.complete result=SucceededWithIssues;]The last commit is not a version bump => deployment will be canceled."
             exit 1
           fi
         displayName: 'Check if the last commit comes from semantic-release-bot'
