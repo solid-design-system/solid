@@ -22,7 +22,7 @@ steps:
           first_line=$(git log -1 --pretty=%s)
           echo $first_line
           if [[ $first_line == "chore(release):"* ]]; then
-            echo "The last commit is a version bump => code will be deployed."; then
+            echo "The last commit is a version bump => code will be deployed.";
             echo "##vso[task.setvariable variable=release]true"
           else
             echo "The last commit is not a version bump => deployment will be canceled."
