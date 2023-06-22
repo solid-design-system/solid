@@ -1,4 +1,4 @@
-# `sd-icon`: Replacement for `ui-icon`
+# `ui-icon`
 
 The new `sd-icon` is intended to be a direct replacement for `ui-icon`. It strives to mirror the attributes of an original HTML button, providing a wider range of features. Please refer to the `sd-icon` documentation for a comprehensive understanding of these attributes.
 
@@ -19,7 +19,7 @@ To ensure flexible coloring while simplifying skinning, we introduced the `color
 
 ## ✨ New attribute: `src`
 
-The `src` attribute allows you to set an icon from a URL.
+The `src` attribute allows you to fetch and set an icon from any URL.
 
 ## ✨ New attribute: `label`
 
@@ -34,6 +34,6 @@ We removed the `icon`, `type`, and `variant` attributes.
 
 Ensure your resolver functions correctly. See the examples in the `sd-icon` documentation under `global-resources` and `global-resources-overridden` for guidance.
 
-## 🔀 CSS Variables: `--component-icon-...`
+## ❌ CSS Variables: `--component-icon-...`
 
 Component-specific CSS variables are discontinued. You can now override the icon's color using the `currentColor` attribute.

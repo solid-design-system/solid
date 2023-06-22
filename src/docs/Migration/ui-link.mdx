@@ -21,7 +21,7 @@ The `ui-link` posed two problems:
 - The component automatically wraps to a new line, forcing subsequent content to a new line. This breaks away from the default `<a>` behavior, causing problems particularly in CMS Rich Text Editors where true inline behavior isn't possible.
 - Icons within the component are always displayed inline, even if the text wraps across multiple lines. This often leads to misuse of the component and unexpected behavior.
 
-`sd-link` resolves these issues with the `standalone` attribute that controls the layout of the icon and text within the component.
+`sd-link` resolves these issues with the `standalone` attribute that controls the layout of the icon and text within the component:
 
 - `false` (Default): Icons are displayed inline with the text, mimicking the default `<a>` element behavior. Icons adjust their spacing according to the current font size.
 - `true`: The link moves to a new line, with the icon and text displayed side-by-side, each in its own column.
@@ -33,7 +33,7 @@ The `sd-link` component offers three different sizes:
 - The default size, `inherit`, adapts the font size from the parent element, especially useful for non-`standalone` links.
 - The `lg` and `sm` sizes set predefined font sizes, beneficial for `standalone` links.
 
-## 🔀 CSS Variables: `--component-link-..., --component-button-...`
+## ❌ CSS Variables: `--component-link-..., --component-button-...`
 
 Component-specific CSS variables have been discontinued. Now, you can override colors and padding using the part selector.
 

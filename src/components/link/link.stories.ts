@@ -39,7 +39,7 @@ export const InvertedAndDisabled = {
         x: {
           type: 'attribute',
           name: 'href',
-          values: ['#', '']
+          values: ['#link', { value: '', title: '–' }]
         },
         y: {
           type: 'attribute',
@@ -84,24 +84,25 @@ export const BoldInMainSlot = {
 
 export const SizeAndIconSlots = {
   name: 'Size × Icon Slots',
-  parameters: { controls: { exclude: ['size', 'default', 'icon-left', 'icon-right', 'standalone'] } },
+  parameters: { controls: { exclude: ['default', 'icon-left', 'size', 'icon-right', 'standalone'] } },
   render: (args: any) => {
     return html`
       ${[false, true].map(standalone =>
         generateTemplate({
           axis: {
             x: {
+              // To make the story creation easier, we put everything in the default slot.
               type: 'slot',
-              name: 'icon-right',
+              name: 'default',
               title: 'slot="icon-..."',
               values: [
-                '',
+                { value: 'Link', title: '–' },
                 {
-                  value: '<sd-icon library="global-resources" name="system/picture" slot="icon-left"></sd-icon>',
+                  value: 'Link<sd-icon library="global-resources" name="system/picture" slot="icon-left"></sd-icon>',
                   title: 'left'
                 },
                 {
-                  value: '<sd-icon library="global-resources" name="system/picture" slot="icon-right"></sd-icon>',
+                  value: 'Link<sd-icon library="global-resources" name="system/picture" slot="icon-right"></sd-icon>',
                   title: 'right'
                 }
               ]
@@ -127,18 +128,19 @@ export const InvertedAndIconSlots = {
   render: (args: any) =>
     generateTemplate({
       axis: {
+        // To make the story creation easier, we put everything in the default slot.
         x: {
           type: 'slot',
-          name: 'icon-right',
+          name: 'default',
           title: 'slot="icon-..."',
           values: [
-            '',
+            { value: 'Link', title: '–' },
             {
-              value: '<sd-icon library="global-resources" name="system/picture" slot="icon-left"></sd-icon>',
+              value: 'Link<sd-icon library="global-resources" name="system/picture" slot="icon-left"></sd-icon>',
               title: 'left'
             },
             {
-              value: '<sd-icon library="global-resources" name="system/picture" slot="icon-right"></sd-icon>',
+              value: 'Link<sd-icon library="global-resources" name="system/picture" slot="icon-right"></sd-icon>',
               title: 'right'
             }
           ]
@@ -164,25 +166,27 @@ export const InvertedAndIconSlots = {
 
 export const StandaloneAndIconSlots = {
   name: 'Standalone × Icon Slots',
-  parameters: { controls: { exclude: ['standalone', 'default', 'icon-left', 'icon-right'] } },
+  parameters: { controls: { exclude: ['icon-right', 'icon-left', 'main', 'standalone', 'default'] } },
   render: (args: any) => {
     return html`
       ${[false, true].map(surroundingContent =>
-        // We have to compare different types of icons: "square", "wide" and "tall" ones.
+        // To make the story creation easier, we put everything in the default slot.
         generateTemplate({
           axis: {
             x: {
               type: 'slot',
-              name: 'icon-right',
+              name: 'default',
               title: 'icon-...',
               values: [
-                '',
+                { value: 'Magna ex ex elit cupidatat non esse.', title: '–' },
                 {
-                  value: '<sd-icon library="global-resources" name="system/picture" slot="icon-left"></sd-icon>',
+                  value:
+                    '<sd-icon library="global-resources" name="system/picture" slot="icon-left"></sd-icon>Magna ex ex elit cupidatat non esse.',
                   title: 'left'
                 },
                 {
-                  value: '<sd-icon library="global-resources" name="system/picture" slot="icon-right"></sd-icon>',
+                  value:
+                    'Magna ex ex elit cupidatat non esse.<sd-icon library="global-resources" name="system/picture" slot="icon-right"></sd-icon>',
                   title: 'right'
                 }
               ]
@@ -195,13 +199,8 @@ export const StandaloneAndIconSlots = {
           },
           constants: [
             {
-              type: 'slot',
-              name: 'default',
-              value: 'Magna ex ex elit cupidatat non esse.'
-            },
-            {
               type: 'template',
-              name: 'defaults',
+              name: 'default-template',
               value: `<div style="font-size: 16px; text-align: left; width: 200px; word-break: break-all;">${
                 surroundingContent ? 'Qui do.' : ''
               }%TEMPLATE%${surroundingContent ? 'Eiusmod minim excepteur.</div>' : ''}`
@@ -223,7 +222,7 @@ export const StandaloneAndIconSlots = {
 
 export const AlignIcon = {
   parameters: {
-    controls: { exclude: ['base', 'icon-left', '--align-icon'] }
+    controls: { exclude: ['--align-icon', 'icon-right', 'default', 'standalone'] }
   },
   render: (args: any) => {
     return generateTemplate({
@@ -252,8 +251,8 @@ export const AlignIcon = {
         },
         {
           type: 'template',
-          name: 'defaults',
-          value: `<div style="text-align: right; width: 300px;">%TEMPLATE%</div>`
+          name: 'default-template',
+          value: `<div style="text-align: left; width: 300px;">%TEMPLATE%</div>`
         }
       ],
       args

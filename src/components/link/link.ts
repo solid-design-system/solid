@@ -9,7 +9,7 @@ import SolidElement from '../../internal/solid-element';
  * @summary A link component.
  * @documentation https://solid.union-investment.com/[storybook-link]/link
  * @status experimental
- * @since 1.0
+ * @since 1.2
  *
  * @event sd-blur - Emitted when the link loses focus.
  * @event sd-focus - Emitted when the link gains focus.
@@ -153,6 +153,9 @@ export default class SdLink extends SolidElement {
         font-size: 1.25rem;
       }
 
+      /**
+       * @DEVNOTE: It didn't work to set this up with TailwindCSS.
+       */
       :host([standalone]) a {
         align-items: var(--align-icon, start);
       }
