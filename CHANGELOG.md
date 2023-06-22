@@ -1,3 +1,10 @@
+## [1.2.4](https://github.com/solid-design-system/solid/compare/v1.2.3...v1.2.4) (2023-06-22)
+
+
+### Bug Fixes
+
+* correct variable syntax in deployment ([566f6bc](https://github.com/solid-design-system/solid/commit/566f6bc36b350fa557732b6c81eac908de9980e1))
+
 ## [1.2.3](https://github.com/solid-design-system/solid/compare/v1.2.2...v1.2.3) (2023-06-22)
 
 
