@@ -349,7 +349,7 @@ export const storybookTemplate = (customElementTag: string) => {
                       ${(xAxis?.values || ['']).map((xValue: any) => {
                         return html`
                           <td class="template template-x-${xAxis?.values?.indexOf(xValue) || 0 + 1} template-y-${
-                          yAxis?.values?.indexOf(yValue) || 0 + 1
+                          yAxis?.values?.indexOf(yValue.value || yValue) || 0 + 1
                         }">
                           ${
                             (xAxis.type === 'template' &&
@@ -368,12 +368,14 @@ export const storybookTemplate = (customElementTag: string) => {
                               ...(xAxis &&
                                 xAxis.type !== 'template' && {
                                   [`${xAxis.name}${storybookHelpers(customElementTag).getSuffixFromType(xAxis.type)}`]:
-                                    xValue.value || xValue
+                                    // As the value could be null or empty, we need to check if the property exists
+                                    xValue.hasOwnProperty('value') ? xValue.value : xValue
                                 }),
                               ...(yAxis &&
                                 yAxis.type !== 'template' && {
                                   [`${yAxis.name}${storybookHelpers(customElementTag).getSuffixFromType(yAxis.type)}`]:
-                                    yValue.value || yValue
+                                    // As the value could be null or empty, we need to check if the property exists
+                                    yValue.hasOwnProperty('value') ? yValue.value : yValue
                                 })
                             })}
                          ${

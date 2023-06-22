@@ -175,7 +175,7 @@ export const IconSlots = {
               type: 'slot',
               name: 'icon-right',
               values: [
-                '',
+                { value: '', title: '–' },
                 {
                   value: '<sd-icon library="global-resources" name="system/picture" slot="icon-right"></sd-icon>',
                   title: 'system/picture'
@@ -195,7 +195,7 @@ export const IconSlots = {
               type: 'slot',
               name: 'icon-left',
               values: [
-                '',
+                { value: '', title: '–' },
                 {
                   value: '<sd-icon library="global-resources" name="system/picture" slot="icon-left"></sd-icon>',
                   title: 'system/picture'
