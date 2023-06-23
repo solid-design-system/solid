@@ -29,6 +29,8 @@ fs.readdir(directoryPath, (err, files) => {
       if (data.includes('.animate-spin{animation:spin 1s linear infinite}')) {
         // Replace and write the new content to file
         const result = data.replace(
+          // If other animations are needed, please think about
+          // e. g. adding "animation-duration: 0 !important" here
           '.animate-spin{animation:spin 1s linear infinite}',
           '.animate-spin{animation: 1s linear 1s infinite spin}'
         );

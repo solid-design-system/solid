@@ -53,7 +53,7 @@
     "test.component": "web-test-runner -- --watch --group",
     "test.watch": "web-test-runner --watch --group default",
     "storybook": "storybook dev -p 6999",
-    "chromatic": "npx chromatic -b build.storybook",
+    "chromatic": "npx chromatic -b build.chromatic",
     "prepublishOnly": "pnpm verify",
     "// prepare": "We don't want to start the prepare script for husky when we don't install the dev depencies.",
     "prepare": "node -e \"try { require('husky').install() } catch (e) {if (e.code !== 'MODULE_NOT_FOUND') throw e}\""
