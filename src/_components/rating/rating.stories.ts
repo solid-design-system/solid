@@ -1,7 +1,7 @@
 import '../../solid-components';
 import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, args } = storybookDefaults('sd-rating');
+const { argTypes, args, parameters } = storybookDefaults('sd-rating');
 const { generateTemplate } = storybookTemplate('sd-rating');
 
 export default {
@@ -9,6 +9,7 @@ export default {
   component: 'sd-rating',
   args,
   argTypes,
+  parameters: {...parameters},
 };
 
 

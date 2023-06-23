@@ -1,7 +1,7 @@
 import '../../solid-components';
 import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, args } = storybookDefaults('sd-relative-time');
+const { argTypes, args, parameters } = storybookDefaults('sd-relative-time');
 const { generateTemplate } = storybookTemplate('sd-relative-time');
 
 export default {
@@ -9,6 +9,7 @@ export default {
   component: 'sd-relative-time',
   args,
   argTypes,
+  parameters: {...parameters},
 };
 
 

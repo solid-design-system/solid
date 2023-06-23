@@ -2,7 +2,7 @@ import '../../solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes } = storybookDefaults('sd-button');
+const { argTypes, parameters } = storybookDefaults('sd-button');
 const { overrideArgs } = storybookHelpers('sd-button');
 const { generateTemplate } = storybookTemplate('sd-button'); // Replace with your custom element tag
 
@@ -10,6 +10,7 @@ export default {
   title: 'Components/sd-button',
   component: 'sd-button',
   parameters: {
+    ...parameters,
     design: {
       type: 'figma',
       url: 'https://www.figma.com/file/fPGhgNZv98U4H69Gu2tlWi/Button?type=design&node-id=13-18&t=jDLqFEdY7ZlOJurc-4'

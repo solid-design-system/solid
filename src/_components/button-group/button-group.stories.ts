@@ -1,7 +1,7 @@
 import '../../solid-components';
 import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, args } = storybookDefaults('sd-button-group');
+const { argTypes, args, parameters } = storybookDefaults('sd-button-group');
 const { generateTemplate } = storybookTemplate('sd-button-group');
 
 export default {
@@ -9,6 +9,7 @@ export default {
   component: 'sd-button-group',
   args,
   argTypes,
+  parameters: {...parameters},
 };
 
 

@@ -1,17 +1,21 @@
 import '../../solid-components';
-import { storybookDefaults, storybookTemplates, storybookHelpers } from '../../../scripts/storybook/helper';
+import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes } = storybookDefaults('sd-alert');
-const { overrideArgs } = storybookHelpers('sd-alert');
+const { argTypes, args, parameters } = storybookDefaults('sd-alert');
 const { generateTemplate } = storybookTemplate('sd-alert');
 
 export default {
   title: 'Components/sd-alert',
   component: 'sd-alert',
-  // We need to show the alert as open, otherwise it won't be visible in Storybook
-  args: overrideArgs({ attributes: { 'open': true } }),
-  argTypes
+  args,
+  argTypes,
+  parameters: {...parameters},
 };
+
+
+/**
+ * Default: This shows sd-alert in its default state.
+ */
 
 export const Default = {
   render: (args: any) => {

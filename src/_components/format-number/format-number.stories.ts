@@ -1,7 +1,7 @@
 import '../../solid-components';
 import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, args } = storybookDefaults('sd-format-number');
+const { argTypes, args, parameters } = storybookDefaults('sd-format-number');
 const { generateTemplate } = storybookTemplate('sd-format-number');
 
 export default {
@@ -9,6 +9,7 @@ export default {
   component: 'sd-format-number',
   args,
   argTypes,
+  parameters: {...parameters},
 };
 
 

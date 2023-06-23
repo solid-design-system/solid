@@ -1,7 +1,7 @@
 import '../../solid-components';
 import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, args } = storybookDefaults('sd-tree');
+const { argTypes, args, parameters } = storybookDefaults('sd-tree');
 const { generateTemplate } = storybookTemplate('sd-tree');
 
 export default {
@@ -9,6 +9,7 @@ export default {
   component: 'sd-tree',
   args,
   argTypes,
+  parameters: {...parameters},
 };
 
 

@@ -1,7 +1,7 @@
 import '../../solid-components';
 import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, args } = storybookDefaults('sd-resize-observer');
+const { argTypes, args, parameters } = storybookDefaults('sd-resize-observer');
 const { generateTemplate } = storybookTemplate('sd-resize-observer');
 
 export default {
@@ -9,6 +9,7 @@ export default {
   component: 'sd-resize-observer',
   args,
   argTypes,
+  parameters: {...parameters},
 };
 
 

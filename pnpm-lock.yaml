@@ -64,6 +64,9 @@ devDependencies:
   '@custom-elements-manifest/analyzer':
     specifier: ^0.8.3
     version: 0.8.3
+  '@geometricpanda/storybook-addon-badges':
+    specifier: ^2.0.0
+    version: 2.0.0(@storybook/blocks@7.0.20)(@storybook/components@7.0.20)(@storybook/core-events@7.0.20)(@storybook/manager-api@7.0.20)(@storybook/preview-api@7.0.20)(@storybook/theming@7.0.20)(@storybook/types@7.0.20)(react-dom@18.2.0)(react@18.2.0)
   '@open-wc/testing':
     specifier: ^3.2.0
     version: 3.2.0
@@ -127,6 +130,9 @@ devDependencies:
   chromatic:
     specifier: ^6.18.2
     version: 6.18.2
+  comment-parser:
+    specifier: ^1.3.1
+    version: 1.3.1
   eslint:
     specifier: ^8.42.0
     version: 8.42.0
@@ -2884,6 +2890,35 @@ packages:
     dependencies:
       '@floating-ui/core': 1.3.0
     dev: false
+
+  /@geometricpanda/storybook-addon-badges@2.0.0(@storybook/blocks@7.0.20)(@storybook/components@7.0.20)(@storybook/core-events@7.0.20)(@storybook/manager-api@7.0.20)(@storybook/preview-api@7.0.20)(@storybook/theming@7.0.20)(@storybook/types@7.0.20)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-M1CQabr1/IDG6ku0/+n6kZBvWTCSun7LndkGsaB89nTNaCcflWxflgY2HdcbjblLL8W0iT7QiW9TgWP4kcpn5Q==}
+    peerDependencies:
+      '@storybook/blocks': ^7.0.0
+      '@storybook/components': ^7.0.0
+      '@storybook/core-events': ^7.0.0
+      '@storybook/manager-api': ^7.0.0
+      '@storybook/preview-api': ^7.0.0
+      '@storybook/theming': ^7.0.0
+      '@storybook/types': ^7.0.0
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
+    dependencies:
+      '@storybook/blocks': 7.0.20(react-dom@18.2.0)(react@18.2.0)
+      '@storybook/components': 7.0.20(react-dom@18.2.0)(react@18.2.0)
+      '@storybook/core-events': 7.0.20
+      '@storybook/manager-api': 7.0.20(react-dom@18.2.0)(react@18.2.0)
+      '@storybook/preview-api': 7.0.20
+      '@storybook/theming': 7.0.20(react-dom@18.2.0)(react@18.2.0)
+      '@storybook/types': 7.0.20
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: true
 
   /@github/catalyst@1.6.0:
     resolution: {integrity: sha512-u8A+DameixqpeyHzvnJWTGj+wfiskQOYHzSiJscCWVfMkIT3rxnbHMtGh3lMthaRY21nbUOK71WcsCnCrXhBJQ==}
@@ -6640,6 +6675,11 @@ packages:
 
   /comment-parser@1.2.4:
     resolution: {integrity: sha512-pm0b+qv+CkWNriSTMsfnjChF9kH0kxz55y44Wo5le9qLxMj5xDQAaEd9ZN1ovSuk9CsrncWaFwgpOMg7ClJwkw==}
+    engines: {node: '>= 12.0.0'}
+    dev: true
+
+  /comment-parser@1.3.1:
+    resolution: {integrity: sha512-B52sN2VNghyq5ofvUsqZjmk6YkihBX5vMSChmSK9v4ShjKf3Vk5Xcmgpw4o+iIgtrnM/u5FiMpz9VKb8lpBveA==}
     engines: {node: '>= 12.0.0'}
     dev: true
 

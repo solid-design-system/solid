@@ -11,7 +11,7 @@ import type { CSSResultGroup } from 'lit';
  * @summary Avatars are used to represent a person or object.
  * @documentation https://solid.union-investment.com/[storybook-link]/avatar
  * @status stable
- * @since 2.0
+ * @since 1.0
  *
  * @dependency sd-icon
  *

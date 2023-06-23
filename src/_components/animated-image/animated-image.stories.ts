@@ -1,7 +1,7 @@
 import '../../solid-components';
 import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, args } = storybookDefaults('sd-animated-image');
+const { argTypes, args, parameters } = storybookDefaults('sd-animated-image');
 const { generateTemplate } = storybookTemplate('sd-animated-image');
 
 export default {
@@ -9,6 +9,7 @@ export default {
   component: 'sd-animated-image',
   args,
   argTypes,
+  parameters: {...parameters},
 };
 
 

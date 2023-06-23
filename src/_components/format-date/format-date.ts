@@ -7,7 +7,7 @@ import SolidElement from '../../internal/solid-element';
  * @summary Formats a date/time using the specified locale and options.
  * @documentation https://solid.union-investment.com/[storybook-link]/format-date
  * @status stable
- * @since 2.0
+ * @since 1.0
  */
 @customElement('sd-format-date')
 export default class SdFormatDate extends SolidElement {

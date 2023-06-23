@@ -1,7 +1,7 @@
 import '../../solid-components';
 import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, args } = storybookDefaults('sd-color-picker');
+const { argTypes, args, parameters } = storybookDefaults('sd-color-picker');
 const { generateTemplate } = storybookTemplate('sd-color-picker');
 
 export default {
@@ -9,6 +9,7 @@ export default {
   component: 'sd-color-picker',
   args,
   argTypes,
+  parameters: {...parameters},
 };
 
 

@@ -52,7 +52,7 @@ function syncCheckboxes(changedTreeItem: SdTreeItem, initialSync = false) {
  * @summary Trees allow you to display a hierarchical list of selectable [tree items](/components/tree-item). Items with children can be expanded and collapsed as desired by the user.
  * @documentation https://solid.union-investment.com/[storybook-link]/tree
  * @status stable
- * @since 2.0
+ * @since 1.0
  *
  * @event {{ selection: TreeItem[] }} sd-selection-change - Emitted when a tree item is selected or deselected.
  *

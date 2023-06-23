@@ -12,7 +12,7 @@ let id = 0;
  * @summary Tab panels are used inside [tab groups](/components/tab-group) to display tabbed content.
  * @documentation https://solid.union-investment.com/[storybook-link]/tab-panel
  * @status stable
- * @since 2.0
+ * @since 1.0
  *
  * @slot - The tab panel's content.
  *

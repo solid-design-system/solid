@@ -10,7 +10,7 @@ import type { CSSResultGroup } from 'lit';
  * @summary A component for displaying animated GIFs and WEBPs that play and pause on interaction.
  * @documentation https://solid.union-investment.com/[storybook-link]/animated-image
  * @status stable
- * @since 2.0
+ * @since 1.0
  *
  * @dependency sd-icon
  *

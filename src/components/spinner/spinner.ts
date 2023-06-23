@@ -8,7 +8,7 @@ import SolidElement from '../../internal/solid-element';
  * @summary Spinners are used to show the progress of an indeterminate operation.
  * @documentation https://solid.union-investment.com/[storybook-link]/spinner
  * @status stable
- * @since 2.0
+ * @since 1.0
  */
 @customElement('sd-spinner')
 export default class SdSpinner extends SolidElement {

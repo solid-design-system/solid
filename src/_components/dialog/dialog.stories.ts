@@ -1,7 +1,7 @@
 import '../../solid-components';
 import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, args } = storybookDefaults('sd-dialog');
+const { argTypes, args, parameters } = storybookDefaults('sd-dialog');
 const { generateTemplate } = storybookTemplate('sd-dialog');
 
 export default {
@@ -9,6 +9,7 @@ export default {
   component: 'sd-dialog',
   args,
   argTypes,
+  parameters: {...parameters},
 };
 
 

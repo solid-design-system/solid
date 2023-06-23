@@ -2,14 +2,15 @@ import '../../solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, args } = storybookDefaults('sd-spinner');
+const { argTypes, args, parameters } = storybookDefaults('sd-spinner');
 const { generateTemplate } = storybookTemplate('sd-spinner');
 
 export default {
   title: 'Components/sd-spinner',
   component: 'sd-spinner',
   args,
-  argTypes
+  argTypes,
+  parameters: { ...parameters }
 };
 
 /**

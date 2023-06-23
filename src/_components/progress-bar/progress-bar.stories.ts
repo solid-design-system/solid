@@ -1,7 +1,7 @@
 import '../../solid-components';
 import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, args } = storybookDefaults('sd-progress-bar');
+const { argTypes, args, parameters } = storybookDefaults('sd-progress-bar');
 const { generateTemplate } = storybookTemplate('sd-progress-bar');
 
 export default {
@@ -9,6 +9,7 @@ export default {
   component: 'sd-progress-bar',
   args,
   argTypes,
+  parameters: {...parameters},
 };
 
 

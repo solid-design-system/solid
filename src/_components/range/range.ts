@@ -17,7 +17,7 @@ import type { SolidFormControl } from '../../internal/solid-element';
  * @summary Ranges allow the user to select a single value within a given range using a slider.
  * @documentation https://solid.union-investment.com/[storybook-link]/range
  * @status stable
- * @since 2.0
+ * @since 1.0
  *
  * @slot label - The range's label. Alternatively, you can use the `label` attribute.
  * @slot help-text - Text that describes how to use the input. Alternatively, you can use the `help-text` attribute.

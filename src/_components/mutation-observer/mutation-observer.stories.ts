@@ -1,7 +1,7 @@
 import '../../solid-components';
 import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, args } = storybookDefaults('sd-mutation-observer');
+const { argTypes, args, parameters } = storybookDefaults('sd-mutation-observer');
 const { generateTemplate } = storybookTemplate('sd-mutation-observer');
 
 export default {
@@ -9,6 +9,7 @@ export default {
   component: 'sd-mutation-observer',
   args,
   argTypes,
+  parameters: {...parameters},
 };
 
 

@@ -11,7 +11,7 @@ import type SdBreadcrumbItem from '../breadcrumb-item/breadcrumb-item';
  * @summary Breadcrumbs provide a group of links so users can easily navigate a website's hierarchy.
  * @documentation https://solid.union-investment.com/[storybook-link]/breadcrumb
  * @status stable
- * @since 2.0
+ * @since 1.0
  *
  * @slot - One or more breadcrumb items to display.
  * @slot separator - The separator to use between breadcrumb items. Works best with `<sd-icon>`.

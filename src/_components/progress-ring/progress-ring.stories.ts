@@ -1,7 +1,7 @@
 import '../../solid-components';
 import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, args } = storybookDefaults('sd-progress-ring');
+const { argTypes, args, parameters } = storybookDefaults('sd-progress-ring');
 const { generateTemplate } = storybookTemplate('sd-progress-ring');
 
 export default {
@@ -9,6 +9,7 @@ export default {
   component: 'sd-progress-ring',
   args,
   argTypes,
+  parameters: {...parameters},
 };
 
 

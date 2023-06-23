@@ -15,7 +15,7 @@ import type { CSSResultGroup } from 'lit';
  * @summary Ratings give users a way to quickly view and provide feedback.
  * @documentation https://solid.union-investment.com/[storybook-link]/rating
  * @status stable
- * @since 2.0
+ * @since 1.0
  *
  * @dependency sd-icon
  *

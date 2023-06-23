@@ -1,7 +1,7 @@
 import '../../solid-components';
 import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, args } = storybookDefaults('sd-menu-label');
+const { argTypes, args, parameters } = storybookDefaults('sd-menu-label');
 const { generateTemplate } = storybookTemplate('sd-menu-label');
 
 export default {
@@ -9,6 +9,7 @@ export default {
   component: 'sd-menu-label',
   args,
   argTypes,
+  parameters: {...parameters},
 };
 
 

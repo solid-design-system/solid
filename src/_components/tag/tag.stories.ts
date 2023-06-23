@@ -1,7 +1,7 @@
 import '../../solid-components';
 import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, args } = storybookDefaults('sd-tag');
+const { argTypes, args, parameters } = storybookDefaults('sd-tag');
 const { generateTemplate } = storybookTemplate('sd-tag');
 
 export default {
@@ -9,6 +9,7 @@ export default {
   component: 'sd-tag',
   args,
   argTypes,
+  parameters: {...parameters},
 };
 
 

@@ -1,7 +1,7 @@
 import '../../solid-components';
 import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, args } = storybookDefaults('sd-image-comparer');
+const { argTypes, args, parameters } = storybookDefaults('sd-image-comparer');
 const { generateTemplate } = storybookTemplate('sd-image-comparer');
 
 export default {
@@ -9,6 +9,7 @@ export default {
   component: 'sd-image-comparer',
   args,
   argTypes,
+  parameters: {...parameters},
 };
 
 

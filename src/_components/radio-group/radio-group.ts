@@ -16,7 +16,7 @@ import type SdRadioButton from '../radio-button/radio-button';
  * @summary Radio groups are used to group multiple [radios](/components/radio) or [radio buttons](/components/radio-button) so they function as a single form control.
  * @documentation https://solid.union-investment.com/[storybook-link]/radio-group
  * @status stable
- * @since 2.0
+ * @since 1.0
  *
  * @dependency sd-button-group
  *
