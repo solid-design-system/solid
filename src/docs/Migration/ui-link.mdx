@@ -1,23 +1,41 @@
 # `ui-link`
 
-## ❌ attribute: `button`.
+Solid Components aim to emulate the default HTML behavior as closely as possible. The new `sd-link` component therefore supports a range of correctly typed attributes (e.g., `target: '_blank' | '_parent' | '_self' | '_top'`). Working alongside the `sd-button`, it replaces the `ui-link` with enhanced features and functionality. For a comprehensive understanding of all available attributes, refer to the `sd-link` documentation.
 
-In the component library, styles were duplicated between `ui-link' and `ui-button'. This caused maintainability problems.
+## ❌ Removed attribute: `button`
+
+In the legacy component library, styles were duplicated between `ui-link` and `ui-button`, leading to maintainability issues.
 
 ### Links that look like _buttons_
 
-If you provide links that should look like buttons, you need to use the new `sd-button` replacement.
-As soon as you set a `href` attribute, you can use all the attributes of an original HTML anchor, much more than before.
-Check out the `sd-button` docs to see them.
+If you have links that should resemble buttons, use the new `sd-button`. By setting a `href` attribute, you can leverage all attributes of an original HTML anchor, thereby providing more options than before. Refer to the `sd-button` documentation for further details.
 
 ### Links that look like _links_
 
-The new `sd-link` (currently unavailable!) will provide styling for **inline** links that may span more than one line.
-Only the `sd-link` can show `underline`.
+The new `sd-link` offers styles for links that may span more than one line and always display an underline.
 
-## 🔀 CSS variables `--component-link-..., -component-button-...`
+## ✨ New attribute: `standalone`
 
-We dropped all component (!) specific CSS variables. Instead you are now able to override colors and padding with the part selector, e. g.:
+The `ui-link` posed two problems:
+
+- The component automatically wraps to a new line, forcing subsequent content to a new line. This breaks away from the default `<a>` behavior, causing problems particularly in CMS Rich Text Editors where true inline behavior isn't possible.
+- Icons within the component are always displayed inline, even if the text wraps across multiple lines. This often leads to misuse of the component and unexpected behavior.
+
+`sd-link` resolves these issues with the `standalone` attribute that controls the layout of the icon and text within the component:
+
+- `false` (Default): Icons are displayed inline with the text, mimicking the default `<a>` element behavior. Icons adjust their spacing according to the current font size.
+- `true`: The link moves to a new line, with the icon and text displayed side-by-side, each in its own column.
+
+## ✨ New attribute: `size`
+
+The `sd-link` component offers three different sizes:
+
+- The default size, `inherit`, adapts the font size from the parent element, especially useful for non-`standalone` links.
+- The `lg` and `sm` sizes set predefined font sizes, beneficial for `standalone` links.
+
+## ❌ CSS Variables: `--component-link-..., --component-button-...`
+
+Component-specific CSS variables have been discontinued. Now, you can override colors and padding using the part selector.
 
 ```css
 sd-button::part(base) {
@@ -26,7 +44,7 @@ sd-button::part(base) {
 }
 ```
 
-As an alternative you can override CSS variables used in the element:
+Alternatively, you can override CSS variables used within the element.
 
 ```css
 sd-button {
@@ -34,28 +52,20 @@ sd-button {
 }
 ```
 
-## ❌ attribute: `icon`.
+## ❌ Removed attribute: `icon`
 
-The `sd-button` and the `sd-link` don't have an `icon` attribute anymore. Instead, there's now a slot:
+The `sd-button` and `sd-link` no longer contain an `icon` attribute. They instead offer new `icon-left` and `icon-right` slots.
 
 ```html
 <sd-button
-  <ui-icon slot="icon-left" ...></ui-icon>.
+  <sd-icon slot="icon-left" ...></sd-icon>.
 </sd-button>.
 ```
 
-See the `sd-button/Slots` story for examples. Note that you may need to manually add `skinning' data to invert the icon, as it's no longer provided by the button.
+## ❌ Removed attribute: `icon-option`
 
-## ❌ attribute: `icon-option`.
+The `sd-button` and `sd-link` no longer offer an `icon-option` attribute. You can place icons in the main slot, which automatically adjusts the padding.
 
-The `sd-button` and the `sd-link` don't provide an `icon-option` attribute anymore. Instead, you can place icons in the main slot, which will automatically change the padding. (Will be implemented when `sd-icon` is developed).
-If you want to catch the event, you should be able to handle it in your top component.
+## ❌ Removed attributess: `delay` / `conversion`
 
-## ❌ attribute: `delay`.
-
-The `sd-button` and the `sd-link` don't provide a `delay` attribute anymore.
-If you want to catch the event, you should be able to handle it in your parent component. Have a look at the current implementation in the `ui-link` component.
-
-## ❌ attribute: `conversion`.
-
-The `sd-button` and the `sd-link` don't provide a `delay` attribute anymore. If you want to catch the event, you should be able to handle it in your parent component.
+The `sd-button` and `sd-link` no longer provide `delay` and `conversion` attributes. If you need to catch the event, handle it in your parent component. Refer to the existing `ui-link` component implementation for an example.

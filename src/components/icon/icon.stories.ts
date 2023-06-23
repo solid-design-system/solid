@@ -1,4 +1,5 @@
 import '../../solid-components';
+import { icons } from './library.system';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
 const { argTypes, args, parameters } = storybookDefaults('sd-icon');
@@ -86,6 +87,40 @@ export const Default = {
 };
 
 /**
+ * System icons are an integrated library of the Solid Components to ensure they're always available.
+ * They are a subset of Union Investment's official icons. As these may change over time, we don't recommend using them directly.
+ *
+ * The story below shows all available icons.
+ */
+
+export const LibrarySystem = {
+  name: 'Library: system',
+  parameters: { controls: { exclude: ['name', 'library'] } },
+  render: (args: any) =>
+    generateTemplate({
+      axis: {
+        x: {
+          type: 'attribute',
+          name: 'color'
+        },
+        y: {
+          type: 'attribute',
+          name: 'name',
+          values: Object.keys(icons)
+        }
+      },
+      constants: [
+        { type: 'attribute', name: 'library', value: 'system' },
+        { type: 'attribute', name: 'name', value: 'check' }
+      ],
+      options: {
+        templateBackgrounds: { alternate: 'x', colors: ['white', 'white', '#00358E'] }
+      },
+      args
+    })
+};
+
+/**
  * The following resolver allows it to fetch data from the global-resources CDN. It points to the latest branch.
  *
  * ```js
@@ -141,9 +176,11 @@ export const Default = {
  * ```
  */
 
-export const LibraryGlobalResources = {
-  name: 'Library: global-resources',
-  parameters: { controls: { exclude: ['name', 'library'] } },
+export const ExampleGlobalResources = {
+  name: 'Example: global-resources',
+  parameters: {
+    controls: { exclude: ['name', 'library'] }
+  },
   render: (args: any) =>
     generateTemplate({
       axis: {
@@ -159,7 +196,6 @@ export const LibraryGlobalResources = {
       },
       constants: [{ type: 'attribute', name: 'library', value: 'global-resources' }],
       options: {
-        title: 'system',
         templateBackgrounds: { alternate: 'y', colors: ['white', 'white', '#00358E'] }
       },
       args
@@ -207,9 +243,11 @@ export const LibraryGlobalResources = {
  * ```
  */
 
-export const LibraryGlobalResourcesOverriden = {
-  name: 'Library: global-resources (overriden)',
-  parameters: { controls: { exclude: ['name', 'library'] } },
+export const ExampleGlobalResourcesOverriden = {
+  name: 'Example: global-resources (overriden)',
+  parameters: {
+    controls: { exclude: ['name', 'library'] }
+  },
   render: (args: any) =>
     generateTemplate({
       axis: {
@@ -225,7 +263,6 @@ export const LibraryGlobalResourcesOverriden = {
       },
       constants: [{ type: 'attribute', name: 'library', value: 'global-resources-overriden' }],
       options: {
-        title: 'system',
         templateBackgrounds: { alternate: 'y', colors: ['white', 'white', '#00358E'] }
       },
       args

@@ -5,9 +5,9 @@ module.exports = {
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-mdx-gfm',
-    '@geometricpanda/storybook-addon-badges',
-    'storybook-addon-fetch-mock'
+    '@geometricpanda/storybook-addon-badges'
   ],
+  staticDirs: ['./assets'],
   framework: {
     name: '@storybook/web-components-vite',
     options: {}

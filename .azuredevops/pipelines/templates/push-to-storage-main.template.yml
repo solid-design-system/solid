@@ -1,0 +1,74 @@
+steps:
+  ## Deploy folder to CDN
+  - task: AzureCLI@2
+    displayName: 'Deploying to Azure Blob Storage'
+    inputs:
+      azureSubscription: 'Workload CI/CD Service Connection (S_STATICCONTENT_PROD)'
+      scriptType: 'bash'
+      scriptLocation: 'inlineScript'
+      inlineScript: |
+        version=$(node -p "require('./package.json').version")
+        echo "Version is $version"
+        versionArray=($(echo "$version" | tr '.' ' '))
+        echo "Version array is ${versionArray[@]}"
+
+        # Deploy to version folder
+        set -x
+        echo "Target folder is $version"
+        az storage blob upload-batch \
+          --destination \$web \
+          --account-name "safesoliddesignsysprod" \
+          --source dist \
+          --destination-path "/$version" \
+          --overwrite
+        set +x
+
+        # Deploy to latest folder
+        set -x
+        echo "Target folder is x.x.x"
+        az storage blob upload-batch \
+          --destination \$web \
+          --account-name "safesoliddesignsysprod" \
+          --source dist \
+          --destination-path "/x.x.x" \
+          --overwrite
+        set +x
+
+        # Deploy to patch wildcard folder
+        set -x
+        echo "Target folder is ${versionArray[0]}.${versionArray[1]}.x"
+        az storage blob upload-batch \
+          --destination \$web \
+          --account-name "safesoliddesignsysprod" \
+          --source dist \
+          --destination-path "/${versionArray[0]}.${versionArray[1]}.x" \
+          --overwrite
+        set +x
+
+        # Deploy to minor wildcard folder
+        set -x
+        echo "Target folder is ${versionArray[0]}.x.x"
+        az storage blob upload-batch \
+          --destination \$web \
+          --account-name "safesoliddesignsysprod" \
+          --source dist \
+          --destination-path "/${versionArray[0]}.x.x" \
+          --overwrite
+        set +x
+
+  ## Purge CDN for all folders
+  - template: purge-cdn.template.yml
+    parameters:
+      destinationPath: '$version'
+
+  - template: purge-cdn.template.yml
+    parameters:
+      destinationPath: 'x.x.x'
+
+  - template: purge-cdn.template.yml
+    parameters:
+      destinationPath: '${versionArray[0]}.${versionArray[1]}.x'
+
+  - template: purge-cdn.template.yml
+    parameters:
+      destinationPath: '${versionArray[0]}.x.x'
