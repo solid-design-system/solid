@@ -22,9 +22,4 @@ module.exports = {
     docs: true,
     autodocs: true
   },
-  parameters: {
-    chromatic: {
-      pauseAnimationAtEnd: true
-    }
-  }
 };
