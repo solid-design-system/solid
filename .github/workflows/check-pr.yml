@@ -42,5 +42,8 @@ jobs:
       - name: build.storybook
         run: pnpm build.storybook
 
+      - name: ci.optimize-chromatic
+        run: pnpm ci.optimize-chromatic
+
       - name: test
         run: pnpm test
