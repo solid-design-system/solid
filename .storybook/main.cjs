@@ -26,4 +26,5 @@ module.exports = {
     chromatic: {
       pauseAnimationAtEnd: true
     }
+  }
 };
