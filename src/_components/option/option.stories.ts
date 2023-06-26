@@ -1,5 +1,6 @@
 import '../../solid-components';
 import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
+import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, args, parameters } = storybookDefaults('sd-option');
 const { generateTemplate } = storybookTemplate('sd-option');
@@ -10,6 +11,7 @@ export default {
   args,
   argTypes,
   parameters: {...parameters},
+  decorators: [withActions] as any
 };
 
 

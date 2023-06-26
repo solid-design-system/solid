@@ -1,6 +1,7 @@
 import '../../solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
+import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-button');
 const { overrideArgs } = storybookHelpers('sd-button');
@@ -17,7 +18,8 @@ export default {
     }
   },
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Default' }),
-  argTypes
+  argTypes,
+  decorators: [withActions] as any
 };
 
 /**

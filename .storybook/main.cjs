@@ -5,7 +5,8 @@ module.exports = {
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-mdx-gfm',
-    '@geometricpanda/storybook-addon-badges'
+    '@geometricpanda/storybook-addon-badges',
+    '@storybook/addon-actions'
   ],
   staticDirs: ['./assets'],
   framework: {
@@ -21,5 +22,5 @@ module.exports = {
   docs: {
     docs: true,
     autodocs: true
-  },
+  }
 };

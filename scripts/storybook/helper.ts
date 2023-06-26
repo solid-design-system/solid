@@ -51,11 +51,13 @@ export const storybookDefaults = (customElementTag: string): any => {
 
   return {
     args,
-    events,
     argTypes,
     parameters: {
       badges: ['status', 'since'],
-      badgesConfig: getBadgesConfig()
+      badgesConfig: getBadgesConfig(),
+      actions: {
+        handles: events
+      }
     }
   };
 };
