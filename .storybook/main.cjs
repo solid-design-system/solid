@@ -21,5 +21,5 @@ module.exports = {
   docs: {
     docs: true,
     autodocs: true
-  },
+  }
 };
