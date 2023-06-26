@@ -50,10 +50,11 @@ export const storybookDefaults = (customElementTag: string): any => {
   };
 
   const getOptimizedArgTypes = () => {
+    type member = { kind: string; privacy?: string; name: string };
     // Get the properties that are not defined as attributes
     const getProperties = () => {
-      const fieldMembers = manifest.members.filter(member => member.kind === 'field');
-      const attributeNames = new Set(manifest.attributes?.map(attr => attr.fieldName));
+      const fieldMembers = (manifest.members as member[]).filter(member => member.kind === 'field');
+      const attributeNames = new Set(manifest.attributes?.map((attr: { fieldName: string }) => attr.fieldName));
       const result = fieldMembers.filter(member => !attributeNames.has(member.name) && member?.privacy !== 'private');
       return result.map(member => member.name);
     };
@@ -392,14 +393,12 @@ export const storybookTemplate = (customElementTag: string) => {
                 ${(yAxis?.values || ['']).map((yValue: any) => {
                   const row = html`
                     <tr class="template-row">
-                      ${
-                        firstRow && showYLabel
-                          ? html`<th rowspan="${yAxis?.values?.length}">
-                              <span><code>${yAxis.title || yAxis.name}</code></span>
-                            </th>`
-                          : ''
-                      }
-                      <th><code>${yValue.title || yValue}</th></code>
+                      ${firstRow && showYLabel
+                        ? html`<th rowspan="${yAxis?.values?.length}">
+                            <span><code>${yAxis.title || yAxis.name}</code></span>
+                          </th>`
+                        : ''}
+                      <th><code>${yValue.title || yValue}</code></th>
                       ${(xAxis?.values || ['']).map((xValue: any) => {
                         return html`
                           <td class="template template-x-${xAxis?.values?.indexOf(xValue) || 0 + 1} template-y-${
