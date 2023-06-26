@@ -49,10 +49,37 @@ export const storybookDefaults = (customElementTag: string): any => {
     };
   };
 
+  const getOptimizedArgTypes = () => {
+    // Get the properties that are not defined as attributes
+    const getProperties = () => {
+      const fieldMembers = manifest.members.filter(member => member.kind === 'field');
+      const attributeNames = new Set(manifest.attributes?.map(attr => attr.fieldName));
+      const result = fieldMembers.filter(member => !attributeNames.has(member.name) && member?.privacy !== 'private');
+      return result.map(member => member.name);
+    };
+
+    return {
+      ...argTypes,
+      // Events should show up but not be editable
+      ...manifest.events?.reduce((acc: any, event: any) => {
+        acc[event.name] = { control: false };
+        return acc;
+      }, {}),
+      // Properties should show up but not be editable
+      ...getProperties()?.reduce((acc: any, property: string) => {
+        // Remove the existing one
+        acc[`${property}-prop`] = { table: { disable: true } };
+        // Add a new one which is not editable
+        acc[property] = { control: false };
+        return acc;
+      }, {})
+    };
+  };
+
   return {
     args,
     events,
-    argTypes,
+    argTypes: getOptimizedArgTypes(),
     parameters: {
       badges: ['status', 'since'],
       badgesConfig: getBadgesConfig()
@@ -94,7 +121,7 @@ export const storybookHelpers = (customElementTag: string) => {
       if (!attribute.endsWith('-attr')) {
         attribute = `${attribute}-attr`;
       }
-      const { argTypes } = getWcStorybookHelpers(customElementTag);
+      const { argTypes } = storybookDefaults(customElementTag);
       if (argTypes[attribute]?.control?.type === 'boolean') {
         return [true, false];
       } else {
@@ -128,7 +155,7 @@ export const storybookHelpers = (customElementTag: string) => {
      * @returns {Object} - The arguments object with the overrides applied.
      */
     overrideArgs: (overrides: ConstantDefinition | ConstantDefinition[], original?: { [k: string]: any }) => {
-      const args = original || getWcStorybookHelpers(customElementTag).args;
+      const args = original || storybookDefaults(customElementTag).args;
       const overridesArray = Array.isArray(overrides) ? overrides : [overrides];
       for (const override of overridesArray) {
         const suffix = storybookHelpers(customElementTag).getSuffixFromType(override.type as any);
@@ -147,7 +174,8 @@ export const storybookHelpers = (customElementTag: string) => {
  * @returns {Object} - An object containing a function that generates a story template.
  */
 export const storybookTemplate = (customElementTag: string) => {
-  const { template, args: defaultArgs } = getWcStorybookHelpers(customElementTag);
+  const { template } = getWcStorybookHelpers(customElementTag);
+  const { args: defaultArgs } = storybookDefaults(customElementTag);
   const { getValuesFromAttribute } = storybookHelpers(customElementTag);
 
   /**
