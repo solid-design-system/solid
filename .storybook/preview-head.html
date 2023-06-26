@@ -9,48 +9,6 @@
       'Noto Color Emoji';
   }
 
-  /**
-    * This has to be included to render Neue Frutiger correctly.
-    * We won't provide this in the components as the font is set in the upper scope and the font should adapt to that.
-    */
-
-  :root {
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-text-size-adjust: 100%;
-    line-height: 1.5;
-    font-size: 16px;
-  }
-
-  *:not(:defined) {
-    visibility: hidden;
-  }
-  slot-comp {
-    box-sizing: border-box; /* Auto layout */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 0px;
-    border: 1px dashed #9747ff;
-    color: #9747ff;
-    font-size: 14px;
-    border-radius: 6px; /* Inside auto layout */
-    order: 0;
-    align-self: stretch;
-    flex-grow: 0;
-    font-weight: bold;
-    height: var(--slot-height, 64px);
-    line-height: var(--slot-height, 64px); /* same as height! */
-    visibility: visible !important;
-  }
-
-  slot-comp::before {
-    content: var(--slot-content, 'Replace this slot');
-  }
-
   @font-face {
     font-family: 'Frutiger Neue';
     font-style: normal;
@@ -77,5 +35,56 @@
     font-style: italic;
     font-weight: 600;
     src: url('/fonts/FrutigerNeuefuerUIWebW05-BdIt.woff2') format('woff2');
+  }
+
+  /**
+    * Render Neue Frutiger correctly.
+    * We won't provide this in the components as the font is set in the upper scope and the font should adapt to that.
+    */
+
+  :root {
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    line-height: 1.5;
+    font-size: 16px;
+  }
+
+  /**
+   * Hide custom elements until they are hydrated.
+   */
+
+  *:not(:defined) {
+    visibility: hidden;
+  }
+
+  /**
+    * Mock for the slot element used in Figma.
+    */
+
+  slot-comp {
+    box-sizing: border-box; /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+    border: 1px dashed #9747ff;
+    color: #9747ff;
+    font-size: 14px;
+    border-radius: 6px; /* Inside auto layout */
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+    font-weight: bold;
+    height: var(--slot-height, 64px);
+    line-height: var(--slot-height, 64px); /* same as height! */
+    visibility: visible !important;
+  }
+
+  slot-comp::before {
+    content: var(--slot-content, 'Replace this slot');
   }
 </style>
