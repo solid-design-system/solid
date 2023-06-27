@@ -151,7 +151,12 @@
     "plugins": [
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator",
-      "@semantic-release/changelog",
+      [
+        "@semantic-release/changelog",
+        {
+          "changelogFile": "src/docs/General/x-Changelog.mdx"
+        }
+      ],
       [
         "@semantic-release/npm",
         {
@@ -161,7 +166,10 @@
       [
         "@semantic-release/git",
         {
-          "message": "chore(release): ${nextRelease.version} \n\n${nextRelease.notes}"
+          "message": "chore(release): ${nextRelease.version} \n\n${nextRelease.notes}",
+          "assets": [
+            "src/docs/General/x-Changelog.mdx"
+          ]
         }
       ],
       [
