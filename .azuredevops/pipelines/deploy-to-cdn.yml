@@ -70,7 +70,7 @@ steps:
         ## If deployment variable is set to docs, then deploy only storybook
       - ${{ if eq(variables['deployment'], 'docs') }}:
           - script: |
-              pnpm run build-storybook
+              pnpm run build.storybook
             displayName: 'Build storybook'
       ## If branch is not 'main' then deploy to CDN using the push-to-storage-feature template otherwise use the push-to-storage-main template
       - ${{ if ne(variables['Build.SourceBranch'], 'refs/heads/main') }}:
