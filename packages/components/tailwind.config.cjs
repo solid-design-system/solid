@@ -1,5 +1,5 @@
 const plugin = require('tailwindcss/plugin');
-const theme = require('./scripts/tailwind/create-theme.cjs');
+const theme = require('@solid-design-system/tokens/src/create-theme.cjs');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {

@@ -1,0 +1,12 @@
+{
+  "name": "@solid-design-system/tokens",
+  "version": "1.0.0",
+  "description": "Solid Design System: Tokens",
+  "main": "index.js",
+  "scripts": {
+    "build": "node scripts/build.mjs"
+  },
+  "keywords": [],
+  "author": "Union Investment",
+  "license": "MIT"
+}
