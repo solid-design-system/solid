@@ -72,8 +72,21 @@ steps:
           - script: |
               pnpm run build.storybook
             displayName: 'Build storybook'
-      ## If branch is not 'main' then deploy to CDN using the push-to-storage-feature template otherwise use the push-to-storage-main template
-      - ${{ if ne(variables['Build.SourceBranch'], 'refs/heads/main') }}:
-          - template: templates/push-to-storage-feature.template.yml
-      - ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/main') }}:
-          - template: templates/push-to-storage-main.template.yml
+      - ${{ if eq(variables['deployment'], 'code') }}:
+          ## If branch is not 'main' then deploy to CDN using the push-to-storage-feature template otherwise use the push-to-storage-main template
+          - ${{ if ne(variables['Build.SourceBranch'], 'refs/heads/main') }}:
+              - template: templates/push-to-storage-feature.template.yml
+          - ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/main') }}:
+              - template: templates/push-to-storage-main.template.yml
+      - ${{ if eq(variables['deployment'], 'docs') }}:
+          ## If branch is not 'main' then deploy to CDN using the push-to-storage-feature template otherwise use the push-to-storage-main template
+          - ${{ if ne(variables['Build.SourceBranch'], 'refs/heads/main') }}:
+              - template: templates/push-to-storage-feature.template.yml
+                parameters:
+                  destinationPath: '/storybook'
+                  sourcePath: '/storybook'
+          - ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/main') }}:
+              - template: templates/push-to-storage-main.template.yml
+                parameters:
+                  destinationPath: '/storybook'
+                  sourcePath: '/storybook'

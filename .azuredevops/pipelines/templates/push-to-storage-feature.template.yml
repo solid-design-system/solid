@@ -1,3 +1,11 @@
+parameters:
+  - name: destinationPath
+    type: string
+    default: ''
+  - name: sourcePath
+    type: string
+    default: ''
+
 steps:
   ## Deploy folder to CDN
   - task: AzureCLI@2
@@ -13,8 +21,8 @@ steps:
         az storage blob upload-batch \
           --destination \$web \
           --account-name "safesoliddesignsysprod" \
-          --source dist \
-          --destination-path "/$(branch)" \
+          --source dist${{parameters.sourcePath}} \
+          --destination-path "/$(branch)${{parameters.destinationPath}}" \
           --overwrite
         set +x
 
