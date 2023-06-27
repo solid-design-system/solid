@@ -63,14 +63,14 @@ steps:
             displayName: 'Normalize branch name (remove refs/heads/ and replace / with _)'
           - bash: |
               echo "$(branch)"
-            displayName: 'Log normalized branch name'  
+            displayName: 'Log normalized branch name'
           - script: |
               pnpm run build
             displayName: 'Create dist'
-          - template: templates/push-to-storage-feature.template.yml  
-      
+          - template: templates/push-to-storage-feature.template.yml
+
       - ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/main') }}:
-            ## If deployment variable is set to code, then deploy all of it
+          ## If deployment variable is set to code, then deploy all of it
           - ${{ if eq(variables['deployment'], 'code') }}:
               - script: |
                   pnpm run build
