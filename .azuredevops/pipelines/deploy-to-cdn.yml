@@ -43,9 +43,9 @@ steps:
       - script: |
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=true pnpm i
         displayName: 'Install package dependencies'
-      ## If the branch is not 'main' then normalize the branch name (remove 'refs/heads/' and replace '/' with '_') and set the [branch] variable to the normalized
-      ## branch name to use the branch name as folder path in the CDN
       - ${{ if ne(variables['Build.SourceBranch'], 'refs/heads/main') }}:
+          ## If the branch is not 'main' then normalize the branch name (remove 'refs/heads/' and replace '/' with '_') and set the [branch] variable to the normalized
+          ## branch name to use the branch name as folder path in the CDN
           - bash: |
               set -x
               REF=$(Build.SourceBranch)
@@ -61,31 +61,24 @@ steps:
             displayName: 'Normalize branch name (remove refs/heads/ and replace / with _)'
           - bash: |
               echo "$(branch)"
-            displayName: 'Log normalized branch name'
-      ## If deployment variable is set to code, then deploy all of it
-      - ${{ if eq(variables['deployment'], 'code') }}:
+            displayName: 'Log normalized branch name'  
           - script: |
               pnpm run build
-            displayName: 'Build components'
-        ## If deployment variable is set to docs, then deploy only storybook
-      - ${{ if eq(variables['deployment'], 'docs') }}:
-          - script: |
-              pnpm run build.storybook
-            displayName: 'Build storybook'
-      - ${{ if eq(variables['deployment'], 'code') }}:
-          ## If branch is not 'main' then deploy to CDN using the push-to-storage-feature template otherwise use the push-to-storage-main template
-          - ${{ if ne(variables['Build.SourceBranch'], 'refs/heads/main') }}:
-              - template: templates/push-to-storage-feature.template.yml
-          - ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/main') }}:
+            displayName: 'Create dist'
+          - template: templates/push-to-storage-feature.template.yml  
+      
+      - ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/main') }}:
+            ## If deployment variable is set to code, then deploy all of it
+          - ${{ if eq(variables['deployment'], 'code') }}:
+              - script: |
+                  pnpm run build
+                displayName: 'Create dist'
               - template: templates/push-to-storage-main.template.yml
-      - ${{ if eq(variables['deployment'], 'docs') }}:
-          ## If branch is not 'main' then deploy to CDN using the push-to-storage-feature template otherwise use the push-to-storage-main template
-          - ${{ if ne(variables['Build.SourceBranch'], 'refs/heads/main') }}:
-              - template: templates/push-to-storage-feature.template.yml
-                parameters:
-                  destinationPath: '/storybook'
-                  sourcePath: '/storybook'
-          - ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/main') }}:
+            ## If deployment variable is set to docs, then deploy only storybook
+          - ${{ if eq(variables['deployment'], 'docs') }}:
+              - script: |
+                  pnpm run build.storybook
+                displayName: 'Create dist/storybook'
               - template: templates/push-to-storage-main.template.yml
                 parameters:
                   destinationPath: '/storybook'
