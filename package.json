@@ -161,7 +161,7 @@
       [
         "@semantic-release/git",
         {
-          "message": "chore(release): ${nextRelease.version} \n\n${nextRelease.notes}"
+          "message": "chore(release): ${nextRelease.version} [skip actions]\n\n${nextRelease.notes}"
         }
       ],
       [
