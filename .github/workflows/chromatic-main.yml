@@ -26,7 +26,7 @@ jobs:
         run: PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=true pnpm i
       # 👇 Build storybook with pnpm
       - name: Build storybook
-        run: pnpm run build.storybook
+        run: pnpm run build.chromatic
       # 👇 Adds Chromatic as a step in the workflow
       - name: Publish to Chromatic
         uses: chromaui/action@v1
@@ -34,7 +34,7 @@ jobs:
         with:
           # 👇 Chromatic projectToken, refer to the manage page to obtain it.
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-          # Speedup the build by now waiting until everything is sent to Chromatic
+          # Speedup the build by not waiting until everything is sent to Chromatic
           exitOnceUploaded: true
           # We don't need tests in the main branch, but want to accept everything
           autoAcceptChanges: true
