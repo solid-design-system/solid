@@ -4,7 +4,7 @@ import { Meta } from '@storybook/blocks';
 
 # Usage
 
-Solid Component components are just regular HTML elements, or [custom elements](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements) to be precise. You can use them like any other element. Each component has detailed documentation that describes its full API, including properties, events, methods, and more.
+Solid Components are just regular HTML elements, or [custom elements](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements) to be precise. You can use them like any other element. Each component has detailed documentation that describes its full API, including properties, events, methods, and more.
 
 If you're new to custom elements, often referred to as "web components," this section will familiarize you with how to use them.
 
@@ -52,7 +52,7 @@ As a result, you should almost always listen for custom events instead. For exam
 </script>
 ```
 
-All custom events are icon-lefted with `sd-` to prevent collisions with standard events and other libraries. Refer to a component's documentation for a complete list of its custom events.
+All custom events are prefixed with `sd-` to prevent collisions with standard events and other libraries. Refer to a component's documentation for a complete list of its custom events.
 
 ## Methods
 
@@ -106,7 +106,7 @@ Custom elements cannot have self-closing tags. Similar to `<script>` and `<texta
 
 ## Differences from Native Elements
 
-You might expect similarly named elements to share the same API as native HTML elements, but this is not always the case. Solid Component components **are not** designed to be one-to-one replacements for their HTML counterparts. While they usually share the same API, there may be subtle differences.
+You might expect similarly named elements to share the same API as native HTML elements, but this is not always the case. Solid Components **are not** designed to be one-to-one replacements for their HTML counterparts. While they usually share the same API, there may be subtle differences.
 
 For example, `<button>` and `<sd-button>` both have a `type` attribute, but the native one defaults to `submit` while the Solid Component one defaults to `button` since this is a better default for most users.
 
@@ -157,7 +157,7 @@ A way to use this method is to hide the `<body>` with `opacity: 0` and add a cla
 
 ## Component Rendering and Updating
 
-Solid Component components are built with [Lit](https://lit.dev/), a tiny library that makes authoring custom elements easier, more maintainable, and a lot of fun! As a Solid Component user, here is some helpful information about rendering and updating you should probably be aware of.
+Solid Components are built with [Lit](https://lit.dev/), a tiny library that makes authoring custom elements easier, more maintainable, and a lot of fun! As a Solid Component user, here is some helpful information about rendering and updating you should probably be aware of.
 
 To optimize performance and reduce re-renders, Lit batches component updates. This means changing multiple attributes or properties at the same time will result in just a single re-render. In most cases, this isn't an issue, but there may be times you'll need to wait for the component to update before continuing.
 
