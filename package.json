@@ -154,7 +154,7 @@
       [
         "@semantic-release/changelog",
         {
-          "changelogFile": "src/docs/General/x-Changelog.mdx"
+          "changelogFile": "src/docs/General/Changelog.mdx"
         }
       ],
       [
@@ -166,9 +166,9 @@
       [
         "@semantic-release/git",
         {
-          "message": "chore(release): ${nextRelease.version} \n\n${nextRelease.notes}",
+          "message": "chore(release): ${nextRelease.version} [skip actions]\n\n${nextRelease.notes}",
           "assets": [
-            "src/docs/General/x-Changelog.mdx"
+            "src/docs/General/Changelog.mdx"
           ]
         }
       ],

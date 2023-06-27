@@ -10,6 +10,4 @@ node_modules
 package-lock.json
 tsconfig.json
 pnpm-lock.yaml
-x-Changelog.mdx
-Changelog.mdx
-CHANGELOG.md
+**/*hangelog.md*

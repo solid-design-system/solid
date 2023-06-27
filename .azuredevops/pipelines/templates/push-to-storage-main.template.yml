@@ -1,3 +1,11 @@
+parameters:
+  - name: destinationPath
+    type: string
+    default: ''
+  - name: sourcePath
+    type: string
+    default: ''
+
 steps:
   ## Deploy folder to CDN
   - task: AzureCLI@2
@@ -18,8 +26,8 @@ steps:
         az storage blob upload-batch \
           --destination \$web \
           --account-name "safesoliddesignsysprod" \
-          --source dist \
-          --destination-path "/$version" \
+          --source dist${{parameters.sourcePath}} \
+          --destination-path "/$version${{parameters.destinationPath}}" \
           --overwrite
         set +x
 
@@ -29,8 +37,8 @@ steps:
         az storage blob upload-batch \
           --destination \$web \
           --account-name "safesoliddesignsysprod" \
-          --source dist \
-          --destination-path "/x.x.x" \
+          --source dist${{parameters.sourcePath}} \
+          --destination-path "/x.x.x${{parameters.destinationPath}}" \
           --overwrite
         set +x
 
@@ -40,8 +48,8 @@ steps:
         az storage blob upload-batch \
           --destination \$web \
           --account-name "safesoliddesignsysprod" \
-          --source dist \
-          --destination-path "/${versionArray[0]}.${versionArray[1]}.x" \
+          --source dist${{parameters.sourcePath}} \
+          --destination-path "/${versionArray[0]}.${versionArray[1]}.x${{parameters.destinationPath}}" \
           --overwrite
         set +x
 
@@ -51,24 +59,25 @@ steps:
         az storage blob upload-batch \
           --destination \$web \
           --account-name "safesoliddesignsysprod" \
-          --source dist \
-          --destination-path "/${versionArray[0]}.x.x" \
+          --source dist${{parameters.sourcePath}} \
+          --destination-path "/${versionArray[0]}.x.x${{parameters.destinationPath}}" \
           --overwrite
         set +x
 
   ## Purge CDN for all folders
   - template: purge-cdn.template.yml
     parameters:
-      destinationPath: '$version'
+      ## Purge CDN for version folder plus parameterized destination path
+      destinationPath: '$version${{parameters.destinationPath}}'
 
   - template: purge-cdn.template.yml
     parameters:
-      destinationPath: 'x.x.x'
+      destinationPath: 'x.x.x${{parameters.destinationPath}}'
 
   - template: purge-cdn.template.yml
     parameters:
-      destinationPath: '${versionArray[0]}.${versionArray[1]}.x'
+      destinationPath: '${versionArray[0]}.${versionArray[1]}.x${{parameters.destinationPath}}'
 
   - template: purge-cdn.template.yml
     parameters:
-      destinationPath: '${versionArray[0]}.x.x'
+      destinationPath: '${versionArray[0]}.x.x${{parameters.destinationPath}}'
