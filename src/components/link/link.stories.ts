@@ -1,6 +1,7 @@
 import '../../solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
+import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes } = storybookDefaults('sd-link');
 const { generateTemplate } = storybookTemplate('sd-link');
@@ -13,7 +14,8 @@ export default {
     { type: 'slot', name: 'default', value: 'Link' },
     { type: 'attribute', name: 'href', value: '#' }
   ]),
-  argTypes
+  argTypes,
+  decorators: [withActions] as any
 };
 
 /**
