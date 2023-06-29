@@ -22,8 +22,7 @@ export default {
 export const Default = {
   render: (args: any) => {
     return generateTemplate({
-      args,
-      constants: { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' }
+      args
     });
   }
 };
@@ -38,8 +37,7 @@ export const States = {
       axis: {
         y: { type: 'attribute', name: 'open' }
       },
-      args,
-      constants: { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' }
+      args
     });
   }
 };
