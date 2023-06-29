@@ -32,12 +32,15 @@ export default class SdAccordionGroup extends SolidElement {
     this.removeEventListener('sd-show', this.handleAccordionShow);
   }
 
+  // eslint-disable-next-line
   private handleAccordionShow = (event: any) => {
     if (this.closeOthers) {
       const slotElement = this.shadowRoot?.querySelector('slot');
       const slottedElements = slotElement?.assignedElements() ?? [];
+      // eslint-disable-next-line
       const parentElement = event.target?.parentNode;
       slottedElements.forEach(a => {
+        // eslint-disable-next-line
         if (a !== event.target && a.parentNode === parentElement) {
           a.removeAttribute('open');
         }
