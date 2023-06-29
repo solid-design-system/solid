@@ -37,7 +37,8 @@ export const States = {
       axis: {
         y: { type: 'attribute', name: 'open' }
       },
-      args
+      args,
+      constants: { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' }
     });
   }
 };
