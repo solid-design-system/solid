@@ -1,7 +1,7 @@
 import '../../solid-components';
 import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, args } = storybookDefaults('sd-accordion');
+const { argTypes, args, parameters } = storybookDefaults('sd-accordion');
 const { generateTemplate } = storybookTemplate('sd-accordion');
 
 export default {
@@ -12,7 +12,8 @@ export default {
     'default-slot': '<slot-comp></slot-comp>',
     'summary-slot': '<span slot="summary">Accordion</span>'
   },
-  argTypes
+  argTypes,
+  parameters: { ...parameters }
 };
 
 /**
@@ -45,9 +46,9 @@ export const States = {
 
 /**
  * Use the expand-icon and collapse-icon slots to change the expand and collapse icons, respectively.
- * To disable the details, override the rotate property on the summary-icon part as shown below:
+ * To disable the accordion, override the rotate property on the summary-icon part as shown below:
  * ```
- * sl-details.custom-icons::part(summary-icon) {
+ * sl-accordion.custom-icons::part(summary-icon) {
  *   rotate: none;
  * }
  * ```

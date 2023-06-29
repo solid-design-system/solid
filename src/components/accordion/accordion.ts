@@ -61,6 +61,7 @@ export default class SdAccordion extends SolidElement {
   }
 
   private handleSummaryClick() {
+    this.header.focus();
     if (this.open) {
       this.hide();
     } else {
@@ -129,12 +130,18 @@ export default class SdAccordion extends SolidElement {
 
   /** Shows the accordion. */
   async show() {
+    if (this.open) {
+      return undefined;
+    }
     this.open = true;
     return waitForEvent(this, 'sd-after-show');
   }
 
   /** Hides the accordion */
   async hide() {
+    if (!this.open) {
+      return undefined;
+    }
     this.open = false;
     return waitForEvent(this, 'sd-after-hide');
   }
@@ -146,7 +153,7 @@ export default class SdAccordion extends SolidElement {
           part="header"
           id="header"
           class=${cx(
-            'flex text-base gap-4 font-bold items-center cursor-pointer select-none px-4 py-3 focus-visible:focus-outline',
+            'flex text-base gap-4 font-bold items-center cursor-pointer select-none px-4 py-3 focus:focus-outline',
             this.open ? 'bg-white text-accent hover:bg-neutral-200' : 'text-primary bg-neutral-100 hover:bg-neutral-200'
           )}
           role="button"

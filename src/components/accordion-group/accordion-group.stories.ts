@@ -1,7 +1,7 @@
 import '../../solid-components';
 import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, args } = storybookDefaults('sd-accordion-group');
+const { argTypes, args, parameters } = storybookDefaults('sd-accordion-group');
 const { generateTemplate } = storybookTemplate('sd-accordion-group');
 
 export default {
@@ -12,7 +12,8 @@ export default {
     'default-slot':
       '<sd-accordion summary="Accordion 1"><slot-comp></slot-comp></sd-accordion><sd-accordion summary="Accordion 2"><slot-comp></slot-comp></sd-accordion><sd-accordion summary="Accordion 3"><slot-comp></slot-comp></sd-accordion><sd-accordion summary="Accordion 4"><slot-comp></slot-comp></sd-accordion><sd-accordion summary="Accordion 5"><slot-comp></slot-comp></sd-accordion>'
   },
-  argTypes
+  argTypes,
+  parameters: { ...parameters }
 };
 
 /**
