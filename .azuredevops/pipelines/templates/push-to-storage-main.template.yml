@@ -24,8 +24,8 @@ steps:
           az storage blob upload-batch \
             --destination \$web \
             --account-name "safesoliddesignsysprod" \
-            --source dist$path \
-            --destination-path "/$version$path" \
+            --source dist${path} \
+            --destination-path "/${version}${path}" \
             --overwrite
           set +x
 
@@ -35,8 +35,8 @@ steps:
           az storage blob upload-batch \
             --destination \$web \
             --account-name "safesoliddesignsysprod" \
-            --source dist$path \
-            --destination-path "/x.x.x$path" \
+            --source dist${path} \
+            --destination-path "/x.x.x${path}" \
             --overwrite
           set +x
 
@@ -46,8 +46,8 @@ steps:
           az storage blob upload-batch \
             --destination \$web \
             --account-name "safesoliddesignsysprod" \
-            --source dist$path \
-            --destination-path "/${versionArray[0]}.${versionArray[1]}.x$path" \
+            --source dist${path} \
+            --destination-path "/${versionArray[0]}.${versionArray[1]}.x${path}" \
             --overwrite
           set +x
 
@@ -57,20 +57,20 @@ steps:
           az storage blob upload-batch \
             --destination \$web \
             --account-name "safesoliddesignsysprod" \
-            --source dist$path \
-            --destination-path "/${versionArray[0]}.x.x$path" \
+            --source dist${path} \
+            --destination-path "/${versionArray[0]}.x.x${path}" \
             --overwrite
           set +x
         fi
 
   - bash: |
-      versionPath="$version$path"
+      versionPath="${version}${path}"
       echo "Version path is: $versionPath"
-      patchWildcardPath="x.x.x$path"
+      patchWildcardPath="x.x.x${path}"
       echo "Patch-wildcard path is: $patchWildcardPath"
-      majorWildcardPath="${versionArray[0]}.x.x$path"
+      majorWildcardPath="${versionArray[0]}.x.x${path}"
       echo "Major-wildcard path is: $majorWildcardPath"
-      minorWildcardPath="${versionArray[0]}.${versionArray[1]}.x$path"
+      minorWildcardPath="${versionArray[0]}.${versionArray[1]}.x${path}"
       echo "Minor-wildcard path is: $minorWildcardPath"
     displayName: 'Set version paths'
 
