@@ -10,11 +10,11 @@ steps:
           # set version paths
           echo "Version path is: $version"
           patchWildcardPath="x.x.x"
-          echo "Patch-wildcard path is: ${patchWildcardPath"
+          echo "Patch-wildcard path is: $patchWildcardPath"
           majorWildcardPath="${versionArray[0]}.x.x"
-          echo "Major-wildcard path is: ${majorWildcardPath}"
+          echo "Major-wildcard path is: $majorWildcardPath"
           minorWildcardPath="${versionArray[0]}.${versionArray[1]}.x"
-          echo "Minor-wildcard path is: ${minorWildcardPath}"
+          echo "Minor-wildcard path is: $minorWildcardPath"
 
           # If docs-only changes, set paths to storybook
           if [[ $deployment == "docs" ]]; then
