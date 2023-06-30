@@ -33,7 +33,7 @@ steps:
             echo "The last commit is not a version bump => code will not be deployed."
             echo "##vso[task.setvariable variable=deployment]none"
           fi
-        displayName: 'Check if code is deployable'
+        displayName: 'Set deployment type'
       - bash: |
           echo "$(deployment)"
         displayName: 'Log deployment type'

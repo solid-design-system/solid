@@ -14,7 +14,7 @@ steps:
             --resource-group rg-staticcontent-prod-frontend-cdn \
             --profile-name cdn-staticcontent-prod-frontend-cdn \
             --name "fe-solid-design-system-prod" \
-            --content-paths "/$versionPath/*" \
+            --content-paths "/$version/*" \
             --no-wait
           set +x
 
