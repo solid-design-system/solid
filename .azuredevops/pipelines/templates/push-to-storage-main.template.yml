@@ -1,6 +1,6 @@
 steps:
   - bash: |
-      path=''
+      cdnPath=''
       if [[ $(deployment) != "none" ]]; then
         # Get version and create version array
         version=$(node -p "require('./package.json').version")
@@ -10,15 +10,15 @@ steps:
 
         # Set Azure variables to use in templates
         if [[ $(deployment) == "docs" ]]; then
-          path='/storybook'
-          version+=$path
+          cdnPath='/storybook'
+          version+=$cdnPath
         fi
         echo "##vso[task.setvariable variable=version]$version"
         echo "Azure Variable <version> is: $(version)"
 
         patchWildcardPath='x.x.x'
         if [[ $(deployment) == "docs" ]]; then
-          patchWildcardPath+=${path}
+          patchWildcardPath+=${cdnPath}
         fi
         echo "##vso[task.setvariable variable=patchWildcardPath]$patchWildcardPath"
         echo "Azure Variable <patchWildcardPath> is: $(patchWildcardPath)"
@@ -26,7 +26,7 @@ steps:
         majorWildcardPath=${versionArray[0]}
         majorWildcardPath+='.x.x'
         if [[ $(deployment) == "docs" ]]; then
-          majorWildcardPath+=${path}
+          majorWildcardPath+=${cdnPath}
         fi
         echo "##vso[task.setvariable variable=majorWildcardPath]$majorWildcardPath"
         echo "Azure Variable <majorWildcardPath>is: $(majorWildcardPath)"
@@ -35,13 +35,13 @@ steps:
         minorWildcardPath+=${versionArray[1]}
         minorWildcardPath+='.x'
         if [[ $(deployment) == "docs" ]]; then
-          minorWildcardPath+=${path}
+          minorWildcardPath+=${cdnPath}
         fi
         echo "##vso[task.setvariable variable=minorWildcardPath]$minorWildcardPath"
         echo "Azure Variable <minorWildcardPath>is: $(minorWildcardPath)"
 
-        echo "##vso[task.setvariable variable=path]$path"
-        echo "Azure Variable <path>is: $(path)"
+        echo "##vso[task.setvariable variable=cdnPath]$cdnPath"
+        echo "Azure Variable <cdnPath>is: $(cdnPath)"
       fi
     displayName: 'Set version and wildcard variables'
 
@@ -60,7 +60,7 @@ steps:
           az storage blob upload-batch \
             --destination \$web \
             --account-name "safesoliddesignsysprod" \
-            --source "dist$(path)" \
+            --source "dist$(cdnPath)" \
             --destination-path "/$(version)" \
             --overwrite
           set +x
@@ -71,7 +71,7 @@ steps:
           az storage blob upload-batch \
             --destination \$web \
             --account-name "safesoliddesignsysprod" \
-            --source "dist$(path)" \
+            --source "dist$(cdnPath)" \
             --destination-path "/$(patchWildcardPath)" \
             --overwrite
           set +x
@@ -82,7 +82,7 @@ steps:
           az storage blob upload-batch \
             --destination \$web \
             --account-name "safesoliddesignsysprod" \
-            --source "dist$(path)" \
+            --source "dist$(cdnPath)" \
             --destination-path "/$(minorWildcardPath)" \
             --overwrite
           set +x
@@ -93,7 +93,7 @@ steps:
           az storage blob upload-batch \
             --destination \$web \
             --account-name "safesoliddesignsysprod" \
-            --source "dist$(path)" \
+            --source "dist$(cdnPath)" \
             --destination-path "/$(majorWildcardPath)" \
             --overwrite
           set +x
