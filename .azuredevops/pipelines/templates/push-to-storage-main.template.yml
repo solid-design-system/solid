@@ -1,5 +1,5 @@
 steps:
-  ## Deploy folder to CDN
+  ## Deploy to CDN
   - task: AzureCLI@2
     displayName: 'Deploying to Azure Blob Storage'
     inputs:
@@ -8,6 +8,7 @@ steps:
       scriptLocation: 'inlineScript'
       inlineScript: |
         path=""
+        # If docs-only changes, set path to storybook
         if [[ $deployment == "docs" ]]; then
           path="/storybook"
         fi
@@ -62,20 +63,16 @@ steps:
           set +x
         fi
 
+  - bash: |
+      versionPath="$version$path"
+      echo "Version path is: $versionPath"
+      patchWildcardPath="x.x.x$path"
+      echo "Patch-wildcard path is: $patchWildcardPath"
+      majorWildcardPath="${versionArray[0]}.x.x$path"
+      echo "Major-wildcard path is: $majorWildcardPath"
+      minorWildcardPath="${versionArray[0]}.${versionArray[1]}.x$path"
+      echo "Minor-wildcard path is: $minorWildcardPath"
+    displayName: 'Set version paths'
+
   ## Purge CDN for all folders
   - template: purge-cdn.template.yml
-    parameters:
-      ## Purge CDN for version folder plus parameterized destination path
-      destinationPath: '$version$path'
-
-  - template: purge-cdn.template.yml
-    parameters:
-      destinationPath: 'x.x.x$path'
-
-  - template: purge-cdn.template.yml
-    parameters:
-      destinationPath: '${versionArray[0]}.${versionArray[1]}.x$path'
-
-  - template: purge-cdn.template.yml
-    parameters:
-      destinationPath: '${versionArray[0]}.x.x$path'

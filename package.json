@@ -1,7 +1,7 @@
 {
   "name": "@union-investment/solid",
   "description": "A solid set of web components.",
-  "version": "1.2.5",
+  "version": "1.3.1",
   "homepage": "https://solid.union-investment.com",
   "author": {
     "name": "Union Investment"
@@ -168,7 +168,8 @@
         {
           "message": "chore(release): ${nextRelease.version} [skip actions]\n\n${nextRelease.notes}",
           "assets": [
-            "src/docs/General/changelog.mdx"
+            "src/docs/General/changelog.mdx",
+            "package.json"
           ]
         }
       ],
