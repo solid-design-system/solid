@@ -1,11 +1,3 @@
-parameters:
-  - name: destinationPath
-    type: string
-    default: ''
-  - name: sourcePath
-    type: string
-    default: ''
-
 steps:
   ## Deploy folder to CDN
   - task: AzureCLI@2
@@ -15,69 +7,75 @@ steps:
       scriptType: 'bash'
       scriptLocation: 'inlineScript'
       inlineScript: |
-        version=$(node -p "require('./package.json').version")
-        echo "Version is $version"
-        versionArray=($(echo "$version" | tr '.' ' '))
-        echo "Version array is ${versionArray[@]}"
+        path=""
+        if [[ $deployment == "docs" ]]; then
+          path="/storybook"
+        fi
+        if [[ $deployment != "none" ]]; then
+          version=$(node -p "require('./package.json').version")
+          echo "Version is $version"
+          versionArray=($(echo "$version" | tr '.' ' '))
+          echo "Version array is ${versionArray[@]}"
 
-        # Deploy to version folder
-        set -x
-        echo "Target folder is $version"
-        az storage blob upload-batch \
-          --destination \$web \
-          --account-name "safesoliddesignsysprod" \
-          --source dist${{parameters.sourcePath}} \
-          --destination-path "/$version${{parameters.destinationPath}}" \
-          --overwrite
-        set +x
+          # Deploy to version folder
+          set -x
+          echo "Target folder is $version"
+          az storage blob upload-batch \
+            --destination \$web \
+            --account-name "safesoliddesignsysprod" \
+            --source dist$path \
+            --destination-path "/$version$path" \
+            --overwrite
+          set +x
 
-        # Deploy to latest folder
-        set -x
-        echo "Target folder is x.x.x"
-        az storage blob upload-batch \
-          --destination \$web \
-          --account-name "safesoliddesignsysprod" \
-          --source dist${{parameters.sourcePath}} \
-          --destination-path "/x.x.x${{parameters.destinationPath}}" \
-          --overwrite
-        set +x
+          # Deploy to latest folder
+          set -x
+          echo "Target folder is x.x.x"
+          az storage blob upload-batch \
+            --destination \$web \
+            --account-name "safesoliddesignsysprod" \
+            --source dist$path \
+            --destination-path "/x.x.x$path" \
+            --overwrite
+          set +x
 
-        # Deploy to patch wildcard folder
-        set -x
-        echo "Target folder is ${versionArray[0]}.${versionArray[1]}.x"
-        az storage blob upload-batch \
-          --destination \$web \
-          --account-name "safesoliddesignsysprod" \
-          --source dist${{parameters.sourcePath}} \
-          --destination-path "/${versionArray[0]}.${versionArray[1]}.x${{parameters.destinationPath}}" \
-          --overwrite
-        set +x
+          # Deploy to patch wildcard folder
+          set -x
+          echo "Target folder is ${versionArray[0]}.${versionArray[1]}.x"
+          az storage blob upload-batch \
+            --destination \$web \
+            --account-name "safesoliddesignsysprod" \
+            --source dist$path \
+            --destination-path "/${versionArray[0]}.${versionArray[1]}.x$path" \
+            --overwrite
+          set +x
 
-        # Deploy to minor wildcard folder
-        set -x
-        echo "Target folder is ${versionArray[0]}.x.x"
-        az storage blob upload-batch \
-          --destination \$web \
-          --account-name "safesoliddesignsysprod" \
-          --source dist${{parameters.sourcePath}} \
-          --destination-path "/${versionArray[0]}.x.x${{parameters.destinationPath}}" \
-          --overwrite
-        set +x
+          # Deploy to minor wildcard folder
+          set -x
+          echo "Target folder is ${versionArray[0]}.x.x"
+          az storage blob upload-batch \
+            --destination \$web \
+            --account-name "safesoliddesignsysprod" \
+            --source dist$path \
+            --destination-path "/${versionArray[0]}.x.x$path" \
+            --overwrite
+          set +x
+        fi
 
   ## Purge CDN for all folders
   - template: purge-cdn.template.yml
     parameters:
       ## Purge CDN for version folder plus parameterized destination path
-      destinationPath: '$version${{parameters.destinationPath}}'
+      destinationPath: '$version$path'
 
   - template: purge-cdn.template.yml
     parameters:
-      destinationPath: 'x.x.x${{parameters.destinationPath}}'
+      destinationPath: 'x.x.x$path'
 
   - template: purge-cdn.template.yml
     parameters:
-      destinationPath: '${versionArray[0]}.${versionArray[1]}.x${{parameters.destinationPath}}'
+      destinationPath: '${versionArray[0]}.${versionArray[1]}.x$path'
 
   - template: purge-cdn.template.yml
     parameters:
-      destinationPath: '${versionArray[0]}.x.x${{parameters.destinationPath}}'
+      destinationPath: '${versionArray[0]}.x.x$path'

@@ -12,11 +12,13 @@ steps:
       scriptType: 'bash'
       scriptLocation: 'inlineScript'
       inlineScript: |
-        set -x
-        az cdn endpoint purge \
-          --resource-group rg-staticcontent-prod-frontend-cdn \
-          --profile-name cdn-staticcontent-prod-frontend-cdn \
-          --name "fe-solid-design-system-prod" \
-          --content-paths "/${{parameters.destinationPath}}/*" \
-          --no-wait
-        set +x
+        if [[ $deployment != "none" ]]; then
+          set -x
+          az cdn endpoint purge \
+            --resource-group rg-staticcontent-prod-frontend-cdn \
+            --profile-name cdn-staticcontent-prod-frontend-cdn \
+            --name "fe-solid-design-system-prod" \
+            --content-paths "/${{parameters.destinationPath}}/*" \
+            --no-wait
+          set +x
+        fi
