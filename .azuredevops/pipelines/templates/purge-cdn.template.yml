@@ -14,7 +14,7 @@ steps:
             --resource-group rg-staticcontent-prod-frontend-cdn \
             --profile-name cdn-staticcontent-prod-frontend-cdn \
             --name "fe-solid-design-system-prod" \
-            --content-paths "/$version/*" \
+            --content-paths "/$(version)/*" \
             --no-wait
           set +x
 
@@ -24,7 +24,7 @@ steps:
             --resource-group rg-staticcontent-prod-frontend-cdn \
             --profile-name cdn-staticcontent-prod-frontend-cdn \
             --name "fe-solid-design-system-prod" \
-            --content-paths "/$patchWildcardPath/*" \
+            --content-paths "/$(patchWildcardPath)/*" \
             --no-wait
           set +x
 
@@ -34,7 +34,7 @@ steps:
             --resource-group rg-staticcontent-prod-frontend-cdn \
             --profile-name cdn-staticcontent-prod-frontend-cdn \
             --name "fe-solid-design-system-prod" \
-            --content-paths "/$majorWildcardPath/*" \
+            --content-paths "/$(majorWildcardPath)/*" \
             --no-wait
           set +x
 
@@ -44,7 +44,7 @@ steps:
             --resource-group rg-staticcontent-prod-frontend-cdn \
             --profile-name cdn-staticcontent-prod-frontend-cdn \
             --name "fe-solid-design-system-prod" \
-            --content-paths "/$minorWildcardPath/*" \
+            --content-paths "/$(minorWildcardPath)/*" \
             --no-wait
           set +x
         fi

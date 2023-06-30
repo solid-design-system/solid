@@ -7,7 +7,7 @@ steps:
           versionArray=($(echo "$version" | tr '.' ' '))
           echo "Version array is ${versionArray[@]}"
 
-          # set version paths
+          # Set version paths
           echo "Version path is: $version"
           patchWildcardPath="x.x.x"
           echo "Patch-wildcard path is: $patchWildcardPath"
@@ -27,8 +27,20 @@ steps:
             minorWildcardPath+=${path}
             echo "Minor-wildcard path is: $minorWildcardPath"
           fi
+
+          # Set Azure variables to use in templates
+          echo "##vso[task.setvariable variable=version]$version"
+          echo $(version)
+          echo "##vso[task.setvariable variable=patchWildcardPath]$patchWildcardPath"
+          echo $(patchWildcardPath)
+          echo "##vso[task.setvariable variable=majorWildcardPath]$majorWildcardPath"
+          echo $(majorWildcardPath)
+          echo "##vso[task.setvariable variable=minorWildcardPath]$minorWildcardPath"
+          echo $(minorWildcardPath)
+          echo "##vso[task.setvariable variable=path]$path"
+          echo $(path)
         fi
-    displayName: 'Set version variables'
+    displayName: 'Set version and wildcard variables'
 
   ## Deploy to CDN
   - task: AzureCLI@2
@@ -45,8 +57,8 @@ steps:
           az storage blob upload-batch \
             --destination \$web \
             --account-name "safesoliddesignsysprod" \
-            --source "dist${path}" \
-            --destination-path "/$version" \
+            --source "dist$(path)" \
+            --destination-path "/$(version)" \
             --overwrite
           set +x
 
@@ -56,8 +68,8 @@ steps:
           az storage blob upload-batch \
             --destination \$web \
             --account-name "safesoliddesignsysprod" \
-            --source "dist${path}" \
-            --destination-path "/$patchWildcardPath" \
+            --source "dist$(path)" \
+            --destination-path "/$(patchWildcardPath)" \
             --overwrite
           set +x
 
@@ -67,8 +79,8 @@ steps:
           az storage blob upload-batch \
             --destination \$web \
             --account-name "safesoliddesignsysprod" \
-            --source "dist${path}" \
-            --destination-path "/$minorWildcardPath" \
+            --source "dist$(path)" \
+            --destination-path "/$(minorWildcardPath)" \
             --overwrite
           set +x
 
@@ -78,8 +90,8 @@ steps:
           az storage blob upload-batch \
             --destination \$web \
             --account-name "safesoliddesignsysprod" \
-            --source "dist${path}" \
-            --destination-path "/$majorWildcardPath" \
+            --source "dist$(path)" \
+            --destination-path "/$(majorWildcardPath)" \
             --overwrite
           set +x
         fi
