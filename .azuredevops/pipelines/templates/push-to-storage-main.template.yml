@@ -1,7 +1,7 @@
 steps:
   - bash: |
       path=""
-      if [[ $deployment != "none" ]]; then
+      if [[ $(deployment) != "none" ]]; then
         version=$(node -p "require('./package.json').version")
         echo "Version is $version"
         versionArray=($(echo "$version" | tr '.' ' '))
@@ -17,7 +17,7 @@ steps:
         echo "Minor-wildcard path is: $minorWildcardPath"
 
         # If docs-only changes, set paths to storybook
-        if [[ $deployment == "docs" ]]; then
+        if [[ $(deployment) == "docs" ]]; then
           path="/storybook"
           version+=$path
           patchWildcardPath+=${path}
@@ -50,7 +50,7 @@ steps:
       scriptType: 'bash'
       scriptLocation: 'inlineScript'
       inlineScript: |
-        if [[ $deployment != "none" ]]; then
+        if [[ $(deployment) != "none" ]]; then
           # Deploy to version folder
           set -x
           echo "Target folder is $version"

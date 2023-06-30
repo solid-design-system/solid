@@ -74,9 +74,9 @@ steps:
       - template: templates/push-to-storage-main.template.yml
       ## If deployment variable is set to 'none' do nothing
       - script: |
-          if [[ $deployment == "code" ]]; then
+          if [[ $(deployment) == "code" ]]; then
             echo "Everything has been deployed."
-          elif [[ $deployment == "docs" ]]; then
+          elif [[ $(deployment) == "docs" ]]; then
             echo "Only storybook has been deployed."
           else
             echo "Nothing has been deployed."

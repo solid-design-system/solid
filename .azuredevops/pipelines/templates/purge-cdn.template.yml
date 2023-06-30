@@ -6,7 +6,7 @@ steps:
       scriptType: 'bash'
       scriptLocation: 'inlineScript'
       inlineScript: |
-        if [[ $deployment != "none" ]]; then
+        if [[ $(deployment) != "none" ]]; then
 
           # Purge version folder
           set -x
