@@ -7,7 +7,6 @@ steps:
       scriptLocation: 'inlineScript'
       inlineScript: |
         if [[ $(deployment) != "none" ]]; then
-
           # Purge version folder
           set -x
           az cdn endpoint purge \

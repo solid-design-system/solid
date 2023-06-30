@@ -14,31 +14,31 @@ steps:
           version+=$cdnPath
         fi
         echo "##vso[task.setvariable variable=version]$version"
-        echo "Azure variable version is $(version)"
+        echo Azure variable version is "$(version)"
 
         patchWildcardPath='x.x.x'
         if [[ $(deployment) == "docs" ]]; then
           patchWildcardPath+=${cdnPath}
         fi
         echo "##vso[task.setvariable variable=patchWildcardPath]$patchWildcardPath"
-        echo "Azure variable patchWildcardPath is $(patchWildcardPath)"
+        echo Azure variable patchWildcardPath is "$(patchWildcardPath)"
 
         majorWildcardPath="${versionArray[0]}.x.x"
         if [[ $(deployment) == "docs" ]]; then
           majorWildcardPath+=${cdnPath}
         fi
         echo "##vso[task.setvariable variable=majorWildcardPath]$majorWildcardPath"
-        echo "Azure variable majorWildcardPath is $(majorWildcardPath)"
+        echo Azure variable majorWildcardPath is "$(majorWildcardPath)"
 
         minorWildcardPath="${versionArray[0]}.${versionArray[1]}.x"
         if [[ $(deployment) == "docs" ]]; then
           minorWildcardPath+=${cdnPath}
         fi
         echo "##vso[task.setvariable variable=minorWildcardPath]$minorWildcardPath"
-        echo "Azure variable minorWildcardPath is $(minorWildcardPath)"
+        echo Azure variable minorWildcardPath is "$(minorWildcardPath)"
 
         echo "##vso[task.setvariable variable=cdnPath]$cdnPath"
-        echo "Azure variable cdnPath is $(cdnPath)"
+        echo Azure variable cdnPath is "$(cdnPath)"
       fi
     displayName: 'Set version and wildcard variables'
 
