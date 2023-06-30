@@ -1,45 +1,45 @@
 steps:
   - bash: |
       path=""
-        if [[ $deployment != "none" ]]; then
-          version=$(node -p "require('./package.json').version")
-          echo "Version is $version"
-          versionArray=($(echo "$version" | tr '.' ' '))
-          echo "Version array is ${versionArray[@]}"
+      if [[ $deployment != "none" ]]; then
+        version=$(node -p "require('./package.json').version")
+        echo "Version is $version"
+        versionArray=($(echo "$version" | tr '.' ' '))
+        echo "Version array is ${versionArray[@]}"
 
-          # Set version paths
-          echo "Version path is: $version"
-          patchWildcardPath="x.x.x"
+        # Set version paths
+        echo "Version path is: $version"
+        patchWildcardPath="x.x.x"
+        echo "Patch-wildcard path is: $patchWildcardPath"
+        majorWildcardPath="${versionArray[0]}.x.x"
+        echo "Major-wildcard path is: $majorWildcardPath"
+        minorWildcardPath="${versionArray[0]}.${versionArray[1]}.x"
+        echo "Minor-wildcard path is: $minorWildcardPath"
+
+        # If docs-only changes, set paths to storybook
+        if [[ $deployment == "docs" ]]; then
+          path="/storybook"
+          version+=$path
+          patchWildcardPath+=${path}
           echo "Patch-wildcard path is: $patchWildcardPath"
-          majorWildcardPath="${versionArray[0]}.x.x"
+          majorWildcardPath+=${path}
           echo "Major-wildcard path is: $majorWildcardPath"
-          minorWildcardPath="${versionArray[0]}.${versionArray[1]}.x"
+          minorWildcardPath+=${path}
           echo "Minor-wildcard path is: $minorWildcardPath"
-
-          # If docs-only changes, set paths to storybook
-          if [[ $deployment == "docs" ]]; then
-            path="/storybook"
-            version+=$path
-            patchWildcardPath+=${path}
-            echo "Patch-wildcard path is: $patchWildcardPath"
-            majorWildcardPath+=${path}
-            echo "Major-wildcard path is: $majorWildcardPath"
-            minorWildcardPath+=${path}
-            echo "Minor-wildcard path is: $minorWildcardPath"
-          fi
-
-          # Set Azure variables to use in templates
-          echo "##vso[task.setvariable variable=version]$version"
-          echo "Azure Variable <version> is: $(version)"
-          echo "##vso[task.setvariable variable=patchWildcardPath]$patchWildcardPath"
-          echo "Azure Variable <patchWildcardPath> is: $(patchWildcardPath)"
-          echo "##vso[task.setvariable variable=majorWildcardPath]$majorWildcardPath"
-          echo "Azure Variable <majorWildcardPath>is: $(majorWildcardPath)"
-          echo "##vso[task.setvariable variable=minorWildcardPath]$minorWildcardPath"
-          echo "Azure Variable <minorWildcardPath>is: $(minorWildcardPath)"
-          echo "##vso[task.setvariable variable=path]$path"
-          echo "Azure Variable <path>is: $(path)"
         fi
+
+        # Set Azure variables to use in templates
+        echo "##vso[task.setvariable variable=version]$version"
+        echo "Azure Variable <version> is: $(version)"
+        echo "##vso[task.setvariable variable=patchWildcardPath]$patchWildcardPath"
+        echo "Azure Variable <patchWildcardPath> is: $(patchWildcardPath)"
+        echo "##vso[task.setvariable variable=majorWildcardPath]$majorWildcardPath"
+        echo "Azure Variable <majorWildcardPath>is: $(majorWildcardPath)"
+        echo "##vso[task.setvariable variable=minorWildcardPath]$minorWildcardPath"
+        echo "Azure Variable <minorWildcardPath>is: $(minorWildcardPath)"
+        echo "##vso[task.setvariable variable=path]$path"
+        echo "Azure Variable <path>is: $(path)"
+      fi
     displayName: 'Set version and wildcard variables'
 
   ## Deploy to CDN
