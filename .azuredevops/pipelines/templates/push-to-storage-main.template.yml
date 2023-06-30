@@ -30,15 +30,15 @@ steps:
 
           # Set Azure variables to use in templates
           echo "##vso[task.setvariable variable=version]$version"
-          echo $(version)
+          echo "Azure Variable <version> is: $(version)"
           echo "##vso[task.setvariable variable=patchWildcardPath]$patchWildcardPath"
-          echo $(patchWildcardPath)
+          echo "Azure Variable <patchWildcardPath> is: $(patchWildcardPath)"
           echo "##vso[task.setvariable variable=majorWildcardPath]$majorWildcardPath"
-          echo $(majorWildcardPath)
+          echo "Azure Variable <majorWildcardPath>is: $(majorWildcardPath)"
           echo "##vso[task.setvariable variable=minorWildcardPath]$minorWildcardPath"
-          echo $(minorWildcardPath)
+          echo "Azure Variable <minorWildcardPath>is: $(minorWildcardPath)"
           echo "##vso[task.setvariable variable=path]$path"
-          echo $(path)
+          echo "Azure Variable <path>is: $(path)"
         fi
     displayName: 'Set version and wildcard variables'
 
