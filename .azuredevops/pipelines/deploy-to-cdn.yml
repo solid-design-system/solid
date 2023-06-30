@@ -5,6 +5,12 @@ trigger:
 
 variables:
   deployment: ''
+  version: ''
+  patchWildcardPath: ''
+  majorWildcardPath: ''
+  minorWildcardPath: ''
+  cdnPath: ''
+  branch: ''
 
 pool:
   vmImage: ubuntu-latest

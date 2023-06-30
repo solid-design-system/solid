@@ -23,17 +23,14 @@ steps:
         echo "##vso[task.setvariable variable=patchWildcardPath]$patchWildcardPath"
         echo "Azure Variable <patchWildcardPath> is: $(patchWildcardPath)"
 
-        majorWildcardPath=${versionArray[0]}
-        majorWildcardPath+='.x.x'
+        majorWildcardPath="${versionArray[0]}.x.x"
         if [[ $(deployment) == "docs" ]]; then
           majorWildcardPath+=${cdnPath}
         fi
         echo "##vso[task.setvariable variable=majorWildcardPath]$majorWildcardPath"
         echo "Azure Variable <majorWildcardPath>is: $(majorWildcardPath)"
 
-        minorWildcardPath=${versionArray[0]}
-        minorWildcardPath+=${versionArray[1]}
-        minorWildcardPath+='.x'
+        minorWildcardPath="${versionArray[0]}.${versionArray[1]}.x"
         if [[ $(deployment) == "docs" ]]; then
           minorWildcardPath+=${cdnPath}
         fi
