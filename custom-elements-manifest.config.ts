@@ -7,9 +7,9 @@ import { parse } from 'comment-parser';
 
 import { author, description, homepage, license, name, version } from './package.json';
 
-// function noDash(string) {
-//   return string.replace(/^\s?-/, '').trim();
-// }
+function noDash(string) {
+  return string.replace(/^\s?-/, '').trim();
+}
 
 function replace(string: string, terms: { from: string; to: string }[]) {
   terms.forEach(({ from, to }) => {
