@@ -75,7 +75,30 @@ export default function webTypesPlugin() {
       const expression = jsonata(jsonataExprString);
       const result = await expression.evaluate(metadata);
 
-      console.log('Generating web types');
+      /**
+       * Version components
+       */
+
+      const packageJson = require('../package.json');
+      const currentVersion = packageJson.version.replace(/\./g, '-');
+
+      const getVersionedName = (name: string) => {
+        return name.replace('sd-', `sd-${currentVersion}-`);
+      };
+
+      const originalElementsWeb = [
+        ...result.contributions.html.elements.filter((element: any) => element.name?.startsWith('sd-'))
+      ];
+
+      // Add versioned names to the elements
+      for (const element of originalElementsWeb) {
+        result.contributions.html.elements.push({
+          ...element,
+          name: getVersionedName(element.name)
+        });
+      }
+
+      console.log('📦 Generating web types');
       fs.writeFileSync(webTypesPath, JSON.stringify(result, null, 2), 'utf8');
     }
   };

@@ -5,6 +5,7 @@ import path from 'path';
 import resolve from '@rollup/plugin-node-resolve';
 import summaryPlugin from 'rollup-plugin-summary';
 import versionedComponentsPlugin from './scripts/rollup-plugin-versioned-components';
+import versionVsCodeDataPlugin from './scripts/rollup-plugin-version-vscode-data';
 import VitePluginCreateEmptyCemIfNotExisting from './scripts/vite-plugin-create-empty-cem-if-not-existing';
 import VitePluginCustomElementsManifest from 'vite-plugin-cem';
 import webTypesPlugin from './scripts/rollup-plugin-web-types';
@@ -63,11 +64,13 @@ export default (({ command }: { command: string }) => {
             mangle: true
           }),
           // Print bundle summary
-          summaryPlugin({ showGzippedSize: true }),
+          // summaryPlugin({ showGzippedSize: true }),
           // Add version to component names
-          versionedComponentsPlugin(),
+          versionedComponentsPlugin('components'),
           // Generate web types
-          webTypesPlugin()
+          webTypesPlugin(),
+          // // Version Data for VSCode and other IDEs
+          versionVsCodeDataPlugin()
         ]
       }
     }

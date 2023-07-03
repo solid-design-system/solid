@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-export default function versionedComponents() {
+export default function versionedComponents(source: string) {
   return {
     name: 'rollup-plugin-versioned-components',
     async writeBundle(outputOptions: any) {
@@ -16,8 +16,14 @@ export default function versionedComponents() {
         return fs.statSync(path.join(componentsPath, file)).isDirectory();
       });
 
-      const distComponentsPath = './dist/components/es';
-      const distComponentsVersionedPath = './dist/versioned-components/es';
+      const distComponentsPath = `./dist/${source}`;
+      const distComponentsVersionedPath = `./dist/versioned-${source}`;
+
+      if (source === 'package') {
+        while (!fs.existsSync('./dist/package/solid-components.d.ts')) {
+          await new Promise(resolve => setTimeout(resolve, 100));
+        }
+      }
       fs.mkdirSync(distComponentsVersionedPath, { recursive: true });
 
       function copyFolderSync(source: string, target: string) {

@@ -11,7 +11,7 @@ fs.readdir(directoryPath, (err, files) => {
   }
 
   files.forEach(file => {
-    if (file.startsWith('solid-element-') && file.endsWith('.js')) {
+    if (file.startsWith('sd-element-') && file.endsWith('.js')) {
       matchedFiles.push(file);
     }
   });

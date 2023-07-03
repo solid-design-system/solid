@@ -4,11 +4,7 @@
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
     "target": "esnext",
     "module": "esnext",
-    "lib": [
-      "dom",
-      "dom.Iterable",
-      "es2020"
-    ],
+    "lib": ["dom", "dom.Iterable", "es2020"],
     "declaration": true,
     "rootDir": ".",
     "strict": true,
@@ -22,23 +18,14 @@
     "moduleResolution": "node",
     "esModuleInterop": true,
     "experimentalDecorators": true,
-    "useDefineForClassFields": false, /* See https://lit.dev/docs/components/properties/#avoiding-issues-with-class-fields */
+    "useDefineForClassFields": false /* See https://lit.dev/docs/components/properties/#avoiding-issues-with-class-fields */,
     "removeComments": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "useUnknownInCatchVariables": true,
     "baseUrl": ".",
-    "types": [
-      "mocha",
-      "user-agent-data-types",
-      "vite/client"
-    ]
+    "types": ["mocha", "user-agent-data-types", "vite/client"]
   },
-  "include": [
-    "src/**/*", "vite.config.ts"
-  ],
-  "exclude": [
-    "src/_components/**",
-    "custom-elements-manifest.config.ts"
-  ]
+  "include": ["src/**/*", "vite.config.*ts"],
+  "exclude": ["src/_components/**", "custom-elements-manifest.config.ts"]
 }
