@@ -1,13 +1,14 @@
 import '../accordion/accordion';
 import { css, html } from 'lit';
-import { customElement, property, queryAll } from 'lit/decorators.js';
+import { customElement, property, queryAll, queryAssignedElements } from 'lit/decorators.js';
+import componentStyles from '../../styles/component.styles';
 import SolidElement from '../../internal/solid-element';
 
 /**
  * @summary Short summary of the component's intended use.
  * @documentation https://solid.union-investment.com/[storybook-link]/accordion-group
  * @status experimental
- * @since 2.0
+ * @since 1.4
  *
  * @dependency sd-accordion
  *
@@ -18,9 +19,10 @@ import SolidElement from '../../internal/solid-element';
 @customElement('sd-accordion-group')
 export default class SdAccordionGroup extends SolidElement {
   @queryAll('sd-accordion') accordions: HTMLElement[];
+  @queryAssignedElements({ selector: 'sd-accordion' }) _accordionsInDefaultSlot!: HTMLElement[];
 
   /** Closes other accordions. */
-  @property({ type: Boolean, reflect: true }) closeOthers = false;
+  @property({ attribute: 'closeothers', type: Boolean }) closeOthers = false;
 
   connectedCallback() {
     super.connectedCallback();
@@ -32,37 +34,38 @@ export default class SdAccordionGroup extends SolidElement {
     this.removeEventListener('sd-show', this.handleAccordionShow);
   }
 
-  // eslint-disable-next-line
-  private handleAccordionShow = (event: any) => {
+  private handleAccordionShow = (event: Event) => {
     if (this.closeOthers) {
-      const slotElement = this.shadowRoot?.querySelector('slot');
-      const slottedElements = slotElement?.assignedElements() ?? [];
-      // eslint-disable-next-line
-      const parentElement = event.target?.parentNode;
-      slottedElements.forEach(a => {
-        // eslint-disable-next-line
-        if (a !== event.target && a.parentNode === parentElement) {
-          a.removeAttribute('open');
+      this._accordionsInDefaultSlot.forEach(accordionElement => {
+        // Check if event was triggered accordionElement
+        if (accordionElement === event.target) {
+          return;
         }
+        // Check if accordionElement is inside this group
+        if (accordionElement.parentNode !== (event.target as HTMLUnknownElement).parentNode) {
+          return;
+        }
+        accordionElement.removeAttribute('open');
       });
     }
   };
 
   render() {
     return html`
-      <div class="sd-accordion-group">
-        <slot closeOthers></slot>
+      <div part="base">
+        <slot></slot>
       </div>
     `;
   }
 
   static styles = [
+    componentStyles,
     SolidElement.styles,
     css`
       :host {
         display: block;
       }
-      :host ::slotted(sd-accordion) {
+      ::slotted(sd-accordion:not(:first-of-type)) {
         margin-top: -1px;
       }
     `

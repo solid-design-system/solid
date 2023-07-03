@@ -10,7 +10,7 @@ export default {
   args: {
     ...args,
     'default-slot':
-      '<sd-accordion summary="Accordion 1"><slot-comp></slot-comp></sd-accordion><sd-accordion summary="Accordion 2"><slot-comp></slot-comp></sd-accordion><sd-accordion summary="Accordion 3"><slot-comp></slot-comp></sd-accordion><sd-accordion summary="Accordion 4"><slot-comp></slot-comp></sd-accordion><sd-accordion summary="Accordion 5"><slot-comp></slot-comp></sd-accordion>'
+      '<sd-accordion summary="Accordion 1"><slot-comp></slot-comp></sd-accordion><sd-accordion summary="Accordion 2"><slot-comp></slot-comp></sd-accordion><sd-accordion summary="Accordion 3"><slot-comp></slot-comp></sd-accordion>'
   },
   argTypes,
   parameters: { ...parameters }
@@ -25,6 +25,18 @@ export const Default = {
     return generateTemplate({
       args,
       constants: { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' }
+    });
+  }
+};
+
+export const CloseOthers = {
+  parameters: { controls: { exclude: 'closeothers' } },
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        y: { type: 'attribute', name: 'closeothers' }
+      },
+      args
     });
   }
 };
