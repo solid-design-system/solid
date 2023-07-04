@@ -19,11 +19,14 @@ export default function versionedComponents(source: string) {
       const distComponentsPath = `./dist/${source}`;
       const distComponentsVersionedPath = `./dist/versioned-${source}`;
 
+      // We have to wait until the declaration files for the unversioned
+      // package are generated and optimized before we can copy them
       if (source === 'package') {
         while (!fs.existsSync('./dist/package/solid-components.d.ts')) {
-          await new Promise(resolve => setTimeout(resolve, 100));
+          await new Promise(resolve => setTimeout(resolve, 250));
         }
       }
+
       fs.mkdirSync(distComponentsVersionedPath, { recursive: true });
 
       function copyFolderSync(source: string, target: string) {

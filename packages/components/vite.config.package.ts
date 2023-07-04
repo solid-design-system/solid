@@ -49,6 +49,7 @@ export default (() => {
           // Print bundle summary
           summaryPlugin(),
           // add types to package
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-call
           addTypesPlugin(),
           // // Add version to component names
           versionedComponentsPlugin('package')

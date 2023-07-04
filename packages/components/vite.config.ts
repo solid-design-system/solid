@@ -64,13 +64,14 @@ export default (({ command }: { command: string }) => {
             mangle: true
           }),
           // Print bundle summary
-          // summaryPlugin({ showGzippedSize: true }),
+          summaryPlugin({ showGzippedSize: true }),
           // Add version to component names
           versionedComponentsPlugin('components'),
           // Generate web types
           webTypesPlugin(),
-          // // Version Data for VSCode and other IDEs
-          versionVsCodeDataPlugin()
+          // Version Data for VSCode
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+          versionVsCodeDataPlugin
         ]
       }
     }
