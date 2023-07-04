@@ -1,5 +1,6 @@
 import '../../solid-components';
 import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
+import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, args, parameters } = storybookDefaults('sd-details');
 const { defaultTemplate, attributesTemplate } = storybookTemplates('sd-details');
@@ -13,6 +14,7 @@ export default {
     'summary-slot': '<span slot="summary">Summary Slot</span>',
   },
   argTypes,
+  decorators: [withActions] as any
 };
 
 

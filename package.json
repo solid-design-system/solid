@@ -1,7 +1,7 @@
 {
   "name": "@union-investment/solid",
   "description": "A solid set of web components.",
-  "version": "1.2.5",
+  "version": "1.3.13",
   "homepage": "https://solid.union-investment.com",
   "author": {
     "name": "Union Investment"
@@ -154,7 +154,7 @@
       [
         "@semantic-release/changelog",
         {
-          "changelogFile": "src/docs/General/Changelog.mdx"
+          "changelogFile": "src/docs/General/changelog.mdx"
         }
       ],
       [
@@ -168,7 +168,8 @@
         {
           "message": "chore(release): ${nextRelease.version} [skip actions]\n\n${nextRelease.notes}",
           "assets": [
-            "src/docs/General/Changelog.mdx"
+            "src/docs/General/changelog.mdx",
+            "package.json"
           ]
         }
       ],

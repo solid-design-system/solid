@@ -1,6 +1,7 @@
 import '../../solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
+import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, args, parameters } = storybookDefaults('sd-spinner');
 const { generateTemplate } = storybookTemplate('sd-spinner');
@@ -10,7 +11,8 @@ export default {
   component: 'sd-spinner',
   args,
   argTypes,
-  parameters: { ...parameters }
+  parameters: { ...parameters },
+  decorators: [withActions] as any
 };
 
 /**

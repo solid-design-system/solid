@@ -5,6 +5,12 @@ trigger:
 
 variables:
   deployment: ''
+  version: ''
+  patchWildcardPath: ''
+  majorWildcardPath: ''
+  minorWildcardPath: ''
+  cdnPath: ''
+  branch: ''
 
 pool:
   vmImage: ubuntu-latest
@@ -26,66 +32,59 @@ steps:
           if [[ $first_line == "chore(release):"* ]]; then
             echo "The last commit is a version bump => code will be deployed."
             echo "##vso[task.setvariable variable=deployment]code"
-          else if [[ $first_line == "docs:"* ]]; then
+          elif [[ $first_line == "docs:"* ]]; then
             echo "The last commit is a docs change only => only storybook will be deployed."
             echo "##vso[task.setvariable variable=deployment]docs"
           else
             echo "The last commit is not a version bump => code will not be deployed."
             echo "##vso[task.setvariable variable=deployment]none"
           fi
-        displayName: 'Check if the last commit comes from semantic-release-bot'
+        displayName: 'Set deployment type'
+      - bash: |
+          echo "$(deployment)"
+        displayName: 'Log deployment type'
 
-  ## If deployment variable is NOT set to none, then deploy
-  - ${{ if ne(variables['deployment'], 'none') }}:
+  - script: |
+      if [[ $deployment != "none" ]]; then
+        npm i pnpm@8.6.2 -g
+        PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=true pnpm i
+        pnpm run build
+      fi
+    displayName: 'Install dependencies and build'
+
+  - ${{ if ne(variables['Build.SourceBranch'], 'refs/heads/main') }}:
+      ## If the branch is not 'main' then normalize the branch name (remove 'refs/heads/' and replace '/' with '_') and set the [branch] variable to the normalized
+      ## branch name to use the branch name as folder path in the CDN
+      - bash: |
+          set -x
+          REF=$(Build.SourceBranch)
+          echo $REF
+          REG='[a-z]*/[a-z]*/([0-9a-zA-Z/-]*)'
+          if [[ $REF =~ $REG ]]; then echo found; fi
+          branch=${BASH_REMATCH[1]////_}
+          echo $branch
+          # IMPORTANT: We have to stop "set -x" here to prevent accidental apostrophes in the branch name
+          # https://github.com/microsoft/azure-pipelines-tasks/issues/10331#issuecomment-1423932651
+          set +x
+          echo "##vso[task.setvariable variable=branch]$branch"
+        displayName: 'Normalize branch name (remove refs/heads/ and replace / with _)'
+      - bash: |
+          echo "$(branch)"
+        displayName: 'Log normalized branch name'
       - script: |
-          npm i pnpm@8.6.2 -g
-        displayName: 'Install global dependencies'
+          pnpm run build
+        displayName: 'Create dist'
+      - template: templates/push-to-storage-feature.template.yml
 
+  - ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/main') }}:
+      - template: templates/push-to-storage-main.template.yml
+      ## If deployment variable is set to 'none' do nothing
       - script: |
-          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=true pnpm i
-        displayName: 'Install package dependencies'
-
-      - ${{ if ne(variables['Build.SourceBranch'], 'refs/heads/main') }}:
-          ## If the branch is not 'main' then normalize the branch name (remove 'refs/heads/' and replace '/' with '_') and set the [branch] variable to the normalized
-          ## branch name to use the branch name as folder path in the CDN
-          - bash: |
-              set -x
-              REF=$(Build.SourceBranch)
-              echo $REF
-              REG='[a-z]*/[a-z]*/([0-9a-zA-Z/-]*)'
-              if [[ $REF =~ $REG ]]; then echo found; fi
-              branch=${BASH_REMATCH[1]////_}
-              echo $branch
-              # IMPORTANT: We have to stop "set -x" here to prevent accidental apostrophes in the branch name
-              # https://github.com/microsoft/azure-pipelines-tasks/issues/10331#issuecomment-1423932651
-              set +x
-              echo "##vso[task.setvariable variable=branch]$branch"
-            displayName: 'Normalize branch name (remove refs/heads/ and replace / with _)'
-          - bash: |
-              echo "$(branch)"
-            displayName: 'Log normalized branch name'
-          - script: |
-              pnpm run build
-            displayName: 'Create dist'
-          - template: templates/push-to-storage-feature.template.yml
-
-      - ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/main') }}:
-          ## If deployment variable is set to code, then deploy all of it
-          - ${{ if eq(variables['deployment'], 'code') }}:
-              - script: |
-                  pnpm run build
-                displayName: 'Create dist'
-              - template: templates/push-to-storage-main.template.yml
-            ## If deployment variable is set to docs, then deploy only storybook
-          - ${{ if eq(variables['deployment'], 'docs') }}:
-              - script: |
-                  pnpm run build.storybook
-                displayName: 'Create dist/storybook'
-              - template: templates/push-to-storage-main.template.yml
-                parameters:
-                  destinationPath: '/storybook'
-            ## If deployment variable is set to 'none' do nothing
-          - ${{ if eq(variables['deployment'], 'none') }}:
-              - script: |
-                  echo "Nothing to deploy."
-                  exit 0
+          if [[ $(deployment) == "code" ]]; then
+            echo "Everything has been deployed."
+          elif [[ $(deployment) == "docs" ]]; then
+            echo "Only storybook has been deployed."
+          else
+            echo "Nothing has been deployed."
+          fi
+        displayName: 'Deployment status'
