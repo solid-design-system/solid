@@ -15,6 +15,11 @@ function versionComponents(source, destination) {
 
   fs.mkdirSync(distComponentsVersionedPath, { recursive: true });
 
+  if (!fs.existsSync(distComponentsPath)) {
+    console.warn(`⚠️  The source directory "${distComponentsPath}" does not exist. Skipping copy...`);
+    return;
+  }
+
   function copyFolderSync(source, target) {
     const files = fs.readdirSync(source);
 

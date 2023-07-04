@@ -44,9 +44,10 @@
   "scripts": {
     "start": "echo '❌ Please use `pnpm dev` instead.'",
     "dev": "pnpm storybook",
-    "build": "pnpm build.components && pnpm build.storybook",
-    "build.components": "pnpm build.cdn && pnpm build.package && node ./scripts/node-version-components.cjs",
-    "build.cdn": "vite build  --config vite.config.js",
+    "build": "pnpm build.components && pnpm build.package && pnpm build.storybook && node ./scripts/node-version-components.cjs",
+    "build.cdn": "pnpm build.components && pnpm build.storybook && node ./scripts/node-version-components.cjs",
+    "build.npm": "pnpm build.components && pnpm build.package && node ./scripts/node-version-components.cjs",
+    "build.components": "vite build  --config vite.config.js",
     "build.package": "vite build --config vite.config.package.js",
     "build.storybook": "storybook build --output-dir dist/storybook && cp dist/custom-elements.json dist/storybook/custom-elements.json",
     "build.chromatic": "pnpm build.storybook && pnpm ci.optimize-chromatic",
@@ -66,7 +67,7 @@
     "storybook": "storybook dev -p 6999",
     "chromatic": "npx chromatic -b build.chromatic",
     "prepublishOnly": "pnpm verify",
-    "postversion": "pnpm build.components",
+    "postversion": "pnpm build.npm",
     "release": "semantic-release  --no-ci --tagFormat 'components/${version}' -e semantic-release-monorepo",
     "release.dry": "semantic-release -d --tagFormat 'components/${version}' -e semantic-release-monorepo"
   },

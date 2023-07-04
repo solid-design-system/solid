@@ -27,6 +27,9 @@ jobs:
             - name: Install dependencies
               run: pnpm i
 
+            - name: (tokens) build
+              run: cd packages/tokens && pnpm build
+
             - name: (components) lint.verify (components)
               run: cd packages/components && pnpm lint.verify
 
@@ -44,6 +47,3 @@ jobs:
 
             - name: (components) test
               run: cd packages/components && pnpm test
-
-            - name: (tokens) build
-              run: cd packages/tokens && pnpm build
