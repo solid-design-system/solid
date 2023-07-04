@@ -8,7 +8,7 @@ Solid Components provide a robust foundation for Union Investment's digital inte
 
 Check out the [full documentation](https://solid-design-system.fe.union-investment.de/x.x.x/storybook/) for detailed information.
 
-Initially based on [Shoelace](https://shoelace.style), developed and designed in New Hampshire by [Cory LaViska](https://twitter.com/claviska).
+Initially based on [Shoelace](https://shoelace.style), developed and designed by [Cory LaViska](https://twitter.com/claviska).
 
 ## License
 
