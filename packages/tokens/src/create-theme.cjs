@@ -59,9 +59,10 @@ const sanitizeValue = value => {
   return value;
 };
 
-const sanitizeKey = value => {
+const sanitizeKey = (value, cssVariable = true) => {
   value = value.replaceAll('\b', '');
   value = value.replaceAll(',', '.');
+  if (cssVariable) value = value.replaceAll('.', '-');
   return value;
 };
 
@@ -142,13 +143,17 @@ const getSpacings = () => {
   let result = {};
   Object.entries({
     ...tokens['UI Semantic'].spacing,
-    0: { value: '0px', description: 'No spacing (manually added)' }
+    0: { value: '0px', description: 'No spacing (manually added)' },
+    auto: {
+      value: 'auto',
+      description: 'Automatic spacing (manually added)'
+    }
   })
     .map(([name, value]) => ({ name, ...value }))
     .concat(Object.entries(tokens['UI Semantic'].sizing).map(([name, value]) => ({ name, ...value })))
     .forEach(({ name, value, description }) => {
       // add the spacing to the theme
-      result[sanitizeKey(name)] = `var(--sd-spacing-${sanitizeKey(name)}, ${resolveValue(value)})${
+      result[sanitizeKey(name, false)] = `var(--sd-spacing-${sanitizeKey(name)}, ${resolveValue(value)})${
         description ? ` /* ${description} */` : ''
       }`;
     });
@@ -170,7 +175,12 @@ const getColors = (name, cssVariableScope) => {
     });
 
   result = reformatColors(result);
-  return result;
+  return {
+    ...result,
+    inherit: 'inherit',
+    current: 'currentColor',
+    transparent: 'transparent'
+  };
 };
 
 const getCoreTokensByType = (tokenType, cssVariableScope) => {
@@ -198,27 +208,30 @@ const config = {
   content: [], // make sure to override this later
   theme: {
     // Checkout https://tailwindcss.com/docs/configuration#core-plugins for a list of core plugins
-    accentColor: { ...getColors('text', 'accent-color') },
+    accentColor: { ...getColors('text', 'text-color') },
     backgroundColor: { ...getColors('background', 'background-color') },
     borderColor: { ...getColors('border', 'border-color') },
     borderRadius: { ...getBorderRadius() },
-    caretColor: { ...getColors('text', 'caret-color') },
+    boxShadowColor: { ...getColors('background', 'background-color') },
+    caretColor: { ...getColors('text', 'text-color') },
     fill: { ...getColors('icon-fill', 'fill-color') },
     fontFamily: {},
     fontSize: { ...getCoreTokensByType('fontSizes', 'font-size') },
     fontStyle: {},
     fontWeight: { normal: '400', bold: '700' }, // Tokens currently provide "Bk" and "Bold" which doesn't help anything
-    lineHeight: { ...getCoreTokensByType('lineHeights', 'leading') },
+    gradientColorStops: { ...getColors('background', 'background-color') },
+    lineHeight: { ...getCoreTokensByType('lineHeights', 'line-height') },
     opacity: { ...getOpacities() },
-    outlineColor: { ...getColors('border', 'outline-color') },
-    placeholderColor: { ...getColors('text', 'placeholder-color') },
-    ringColor: { ...getColors('border', 'ring-color') },
+    outlineColor: { ...getColors('border', 'border-color') },
+    placeholderColor: { ...getColors('text', 'text-color') },
+    ringColor: { ...getColors('border', 'border-color') },
+    ringOffsetColor: { ...getColors('background', 'background-color') },
     space: { ...getSpacings() },
     spacing: { ...getSpacings() },
-    stroke: { ...getColors('border', 'stroke-color') },
+    stroke: { ...getColors('border', 'border-color') },
     tracking: {},
     textColor: { ...getColors('text', 'text-color') },
-    textDecorationColor: { ...getColors('text', 'text-decoration-color') }
+    textDecorationColor: { ...getColors('text', 'text-color') }
   }
 };
 

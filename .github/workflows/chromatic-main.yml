@@ -26,7 +26,7 @@ jobs:
         run: PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=true pnpm i
       # 👇 Build storybook with pnpm
       - name: Build storybook
-        run: pnpm run build.chromatic
+        run: cd packages/components && pnpm run build.chromatic
       # 👇 Adds Chromatic as a step in the workflow
       - name: Publish to Chromatic
         uses: chromaui/action@v1
@@ -39,4 +39,4 @@ jobs:
           # We don't need tests in the main branch, but want to accept everything
           autoAcceptChanges: true
           # We need to manually build storybook with pnpm
-          storybookBuildDir: dist/storybook
+          storybookBuildDir: packages/components/dist/storybook
