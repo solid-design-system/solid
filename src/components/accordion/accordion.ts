@@ -10,15 +10,15 @@ import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
 /**
- * @summary Accordion show a brief summary and expand to show additional content.
+ * @summary Accordion shows a brief summary and expands to show additional content.
  * @documentation https://solid.union-investment.com/[storybook-link]/accordion
  * @status stable
  * @since 2.0
  *
  * @dependency sd-icon
  *
- * @slot - The accordion' main content.
- * @slot summary - The accordion' summary. Alternatively, you can use the `summary` attribute.
+ * @slot - The accordion main content.
+ * @slot summary - The accordion summary. Alternatively, you can use the `summary` attribute.
  * @slot expand-icon - Optional expand icon to use instead of the default. Works best with `<sd-icon>`.
  * @slot collapse-icon - Optional collapse icon to use instead of the default. Works best with `<sd-icon>`.
  *
@@ -44,7 +44,7 @@ export default class SdAccordion extends SolidElement {
 
   @query('[part="base"]') accordion: HTMLElement;
   @query('[part="header"]') header: HTMLElement;
-  @query('[part="body"]') body: HTMLElement;
+  @query('[part="content"]') body: HTMLElement;
 
   /**
    * Indicates whether or not the accordion is open. You can toggle this attribute to show and hide the accordion, or you
@@ -148,7 +148,7 @@ export default class SdAccordion extends SolidElement {
 
   render() {
     return html`
-      <div part="base" class=${cx('border border-neutral-400')}>
+      <div part="base" class="border border-neutral-400">
         <header
           part="header"
           id="header"
@@ -166,18 +166,21 @@ export default class SdAccordion extends SolidElement {
 
           <span
             part="summary-icon"
-            class=${cx('flex flex-grow-0 flex-shrink-0 flex-auto items-center transition ease-in-out')}
+            class=${cx(
+              'flex flex-grow-0 flex-shrink-0 flex-auto items-center transition-all ease-in-out duration-300',
+              this.open && 'rotate-180'
+            )}
           >
             <slot name="expand-icon" class=${cx(this.open && 'hidden')}>
               <sd-icon library="system" name="chevron-down"></sd-icon>
             </slot>
             <slot name="collapse-icon" class=${cx(!this.open && 'hidden')}>
-              <sd-icon library="system" name="chevron-up"></sd-icon>
+              <sd-icon library="system" name="chevron-down"></sd-icon>
             </slot>
           </span>
         </header>
-        <div part="body" class="overflow-hidden">
-          <slot part="content" id="content" class="block px-4 py-6" role="region" aria-labelledby="header"></slot>
+        <div part="content" id="content" class="overflow-hidden">
+          <slot class="block px-4 py-6" role="region" aria-labelledby="header"></slot>
         </div>
       </div>
     `;
@@ -198,7 +201,7 @@ setDefaultAnimation('accordion.show', {
     { height: '0', opacity: '0' },
     { height: 'auto', opacity: '1' }
   ],
-  options: { duration: 250, easing: 'linear' }
+  options: { duration: 300, easing: 'ease' }
 });
 
 setDefaultAnimation('accordion.hide', {
@@ -206,7 +209,7 @@ setDefaultAnimation('accordion.hide', {
     { height: 'auto', opacity: '1' },
     { height: '0', opacity: '0' }
   ],
-  options: { duration: 250, easing: 'linear' }
+  options: { duration: 300, easing: 'ease' }
 });
 
 declare global {

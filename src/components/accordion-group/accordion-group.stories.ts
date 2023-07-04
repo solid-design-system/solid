@@ -17,7 +17,7 @@ export default {
 };
 
 /**
- * Vertical stack of interactive headlines that can be used to toggle the display of additional information; each element can be "collapsed" with only a brief caption visible, or "expanded" to display the entire content.
+ * Vertical stack of sd-accordions.
  */
 
 export const Default = {
@@ -29,14 +29,47 @@ export const Default = {
   }
 };
 
+/**
+ * Set 'close-others' to only have one accordion open.
+ */
+
 export const CloseOthers = {
-  parameters: { controls: { exclude: 'closeothers' } },
+  parameters: { controls: { exclude: 'close-others' } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        y: { type: 'attribute', name: 'closeothers' }
+        y: { type: 'attribute', name: 'close-others' }
       },
-      args
+      args,
+      constants: { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' }
+    });
+  }
+};
+
+/**
+ * Part of sd-accordion-group
+ */
+
+export const Parts = {
+  parameters: {
+    controls: { exclude: 'base' }
+  },
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        y: {
+          type: 'template',
+          name: 'sd-accordion-group::part(...){outline: solid 2px red}',
+          values: ['base'].map(part => {
+            return {
+              title: 'base',
+              value: `<style>#part-${part} sd-accordion-group::part(${part}){outline: solid 2px red}</style><div id="part-${part}">%TEMPLATE%</div>`
+            };
+          })
+        }
+      },
+      args,
+      constants: { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' }
     });
   }
 };

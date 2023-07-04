@@ -1,23 +1,24 @@
 import '../../solid-components';
-import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
+import { html } from 'lit-html';
+import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, args, parameters } = storybookDefaults('sd-accordion');
+const { argTypes, parameters } = storybookDefaults('sd-accordion');
+const { overrideArgs } = storybookHelpers('sd-accordion');
 const { generateTemplate } = storybookTemplate('sd-accordion');
 
 export default {
   title: 'Components/sd-accordion',
   component: 'sd-accordion',
-  args: {
-    ...args,
-    'default-slot': '<slot-comp></slot-comp>',
-    'summary-slot': '<span slot="summary">Accordion</span>'
-  },
+  args: overrideArgs([
+    { type: 'slot', name: 'default', value: '<slot-comp></slot-comp>' },
+    { type: 'attribute', name: 'summary', value: 'Accordion' }
+  ]),
   argTypes,
   parameters: { ...parameters }
 };
 
 /**
- * Use as vertical stack of interactive headlines that can be used to toggle the display of additional information; each element can be collapsed with only a brief caption visible, or 'expanded to display the entire content.
+ * Accordion shows a brief summary and expands to show additional content.
  */
 
 export const Default = {
@@ -46,9 +47,9 @@ export const States = {
 
 /**
  * Use the expand-icon and collapse-icon slots to change the expand and collapse icons, respectively.
- * To disable the accordion, override the rotate property on the summary-icon part as shown below:
+ * To disable the animation, override the rotate property on the summary-icon part as shown below:
  * ```
- * sl-accordion.custom-icons::part(summary-icon) {
+ * sd-accordion.custom-icons::part(summary-icon) {
  *   rotate: none;
  * }
  * ```
@@ -56,16 +57,64 @@ export const States = {
 
 export const Slots = {
   parameters: {
-    controls: { exclude: ['expand-icon', 'collapse-icon'] }
+    controls: { exclude: ['expand-icon', 'collapse-icon', 'default', 'summary'] }
+  },
+  render: (args: any) => {
+    return html`
+      ${['default', 'summary', 'expand-icon', 'collapse-icon'].map(slot =>
+        generateTemplate({
+          axis: {
+            x: {
+              type: 'slot',
+              name: slot,
+              title: 'slot=...',
+              values: [
+                {
+                  value:
+                    slot === 'default'
+                      ? `<slot-comp style="--slot-content: ''"></slot-comp>`
+                      : `<slot-comp slot='${slot}' style="--slot-content: ''; --slot-height: 24px; --slot-width: ${
+                          slot === 'summary' ? '100%' : '24px'
+                        }"></slot-comp>`,
+                  title: slot
+                }
+              ]
+            }
+          },
+          constants: [
+            { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' },
+            { type: 'attribute', name: 'open', value: slot === 'collapse-icon' || slot === 'default' ? true : false }
+          ],
+          args: overrideArgs({ type: 'slot', name: 'default', value: '' }, args)
+        })
+      )}
+    `;
+  }
+};
+
+export const Parts = {
+  parameters: {
+    controls: { exclude: ['base', 'header', 'summary', 'summary-icon', 'content'] }
   },
   render: (args: any) => {
     return generateTemplate({
-      args: {
-        ...args,
-        'expand-icon-slot': '<span slot="expand-icon">✅</span>',
-        'collapse-icon-slot': '<span slot="collapse-icon">❎</span>'
+      axis: {
+        y: {
+          type: 'template',
+          name: 'sd-accordion::part(...){outline: solid 2px red}',
+          values: ['base', 'header', 'summary', 'summary-icon', 'content'].map(part => {
+            return {
+              title: part,
+              value: `<style>#part-${part} sd-accordion::part(${part}){outline: solid 2px red}</style><div id="part-${part}">%TEMPLATE%</div>`
+            };
+          })
+        }
       },
-      constants: { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' }
+      constants: [
+        { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' },
+        { type: 'attribute', name: 'open', value: true }
+      ],
+      args
     });
   }
 };

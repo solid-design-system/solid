@@ -12,9 +12,9 @@ describe('<sd-accordion>', () => {
         consequat.
       </sd-accordion>
     `);
-    const body = el.shadowRoot!.querySelector<HTMLElement>('[part="body"]')!;
+    const content = el.shadowRoot!.querySelector<HTMLElement>('[part="content"]')!;
 
-    expect(body.hidden).to.be.false;
+    expect(content.hidden).to.be.false;
   });
 
   it('should not be visible without the open attribute', async () => {
@@ -25,9 +25,9 @@ describe('<sd-accordion>', () => {
         consequat.
       </sd-accordion>
     `);
-    const body = el.shadowRoot!.querySelector<HTMLElement>('[part="body"]')!;
+    const content = el.shadowRoot!.querySelector<HTMLElement>('[part="content"]')!;
 
-    expect(body.hidden).to.be.true;
+    expect(content.hidden).to.be.true;
   });
 
   it('should emit sd-show and sd-after-show when calling show()', async () => {
@@ -38,7 +38,7 @@ describe('<sd-accordion>', () => {
         consequat.
       </sd-accordion>
     `);
-    const body = el.shadowRoot!.querySelector<HTMLElement>('[part="body"]')!;
+    const content = el.shadowRoot!.querySelector<HTMLElement>('[part="content"]')!;
     const showHandler = sinon.spy();
     const afterShowHandler = sinon.spy();
 
@@ -51,7 +51,7 @@ describe('<sd-accordion>', () => {
 
     expect(showHandler).to.have.been.calledOnce;
     expect(afterShowHandler).to.have.been.calledOnce;
-    expect(body.hidden).to.be.false;
+    expect(content.hidden).to.be.false;
   });
 
   it('should emit sd-hide and sd-after-hide when calling hide()', async () => {
@@ -62,7 +62,7 @@ describe('<sd-accordion>', () => {
         consequat.
       </sd-accordion>
     `);
-    const body = el.shadowRoot!.querySelector<HTMLElement>('[part="body"]')!;
+    const content = el.shadowRoot!.querySelector<HTMLElement>('[part="content"]')!;
     const hideHandler = sinon.spy();
     const afterHideHandler = sinon.spy();
 
@@ -75,7 +75,7 @@ describe('<sd-accordion>', () => {
 
     expect(hideHandler).to.have.been.calledOnce;
     expect(afterHideHandler).to.have.been.calledOnce;
-    expect(body.hidden).to.be.true;
+    expect(content.hidden).to.be.true;
   });
 
   it('should emit sd-show and sd-after-show when setting open = true', async () => {
@@ -86,7 +86,7 @@ describe('<sd-accordion>', () => {
         consequat.
       </sd-accordion>
     `);
-    const body = el.shadowRoot!.querySelector<HTMLElement>('[part="body"]')!;
+    const content = el.shadowRoot!.querySelector<HTMLElement>('[part="content"]')!;
     const showHandler = sinon.spy();
     const afterShowHandler = sinon.spy();
 
@@ -99,7 +99,7 @@ describe('<sd-accordion>', () => {
 
     expect(showHandler).to.have.been.calledOnce;
     expect(afterShowHandler).to.have.been.calledOnce;
-    expect(body.hidden).to.be.false;
+    expect(content.hidden).to.be.false;
   });
 
   it('should emit sd-hide and sd-after-hide when setting open = false', async () => {
@@ -110,7 +110,7 @@ describe('<sd-accordion>', () => {
         consequat.
       </sd-accordion>
     `);
-    const body = el.shadowRoot!.querySelector<HTMLElement>('[part="body"]')!;
+    const content = el.shadowRoot!.querySelector<HTMLElement>('[part="content"]')!;
     const hideHandler = sinon.spy();
     const afterHideHandler = sinon.spy();
 
@@ -123,7 +123,7 @@ describe('<sd-accordion>', () => {
 
     expect(hideHandler).to.have.been.calledOnce;
     expect(afterHideHandler).to.have.been.calledOnce;
-    expect(body.hidden).to.be.true;
+    expect(content.hidden).to.be.true;
   });
 
   it('should not open when preventing sd-show', async () => {
