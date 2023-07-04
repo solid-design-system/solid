@@ -65,7 +65,10 @@
     "test.watch": "web-test-runner --watch --group default",
     "storybook": "storybook dev -p 6999",
     "chromatic": "npx chromatic -b build.chromatic",
-    "prepublishOnly": "pnpm verify"
+    "prepublishOnly": "pnpm verify",
+    "postversion": "pnpm build.components",
+    "release": "semantic-release  --no-ci --tagFormat 'components/${version}' -e semantic-release-monorepo",
+    "release.dry": "semantic-release -d --tagFormat 'components/${version}' -e semantic-release-monorepo"
   },
   "dependencies": {
     "@shoelace-style/animations": "^1.1.0",
@@ -129,6 +132,7 @@
     "rollup-plugin-minify-html-literals": "^1.2.6",
     "rollup-plugin-summary": "^2.0.0",
     "semantic-release": "^21.0.2",
+    "semantic-release-monorepo": "^7.0.5",
     "sinon": "^15.1.0",
     "storybook": "^7.0.20",
     "storybook-addon-designs": "7.0.0-beta.2",
@@ -147,17 +151,26 @@
     "plugins": [
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator",
-      "@semantic-release/changelog",
+      [
+        "@semantic-release/changelog",
+        {
+          "changelogFile": "src/docs/General/changelog.mdx"
+        }
+      ],
       [
         "@semantic-release/npm",
         {
-          "npmPublish": false
+          "npmPublish": true
         }
       ],
       [
         "@semantic-release/git",
         {
-          "message": "chore(release): ${nextRelease.version} \n\n${nextRelease.notes}"
+          "message": "chore(release/components): ${nextRelease.version} [skip actions]\n\n${nextRelease.notes}",
+          "assets": [
+            "src/docs/General/changelog.mdx",
+            "package.json"
+          ]
         }
       ],
       [
@@ -168,5 +181,5 @@
       ]
     ]
   },
-  "readme": "ERROR: No README data found!"
+  "readme": "README.md"
 }

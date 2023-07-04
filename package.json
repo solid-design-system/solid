@@ -8,6 +8,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "release": "cd packages/tokens pnpm release && cd ../.. && cd packages/components pnpm release",
+    "release.dry": "cd packages/tokens pnpm release.dry && cd ../.. && cd packages/packages pnpm release.dry",
+    "fix": "prettier --write .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "// prepare": "We don't want to start the prepare script for husky when we don't install the dev depencies.",
     "prepare": "node -e \"try { require('husky').install() } catch (e) {if (e.code !== 'MODULE_NOT_FOUND') throw e}\""
@@ -21,8 +24,11 @@
   },
   "lint-staged": {
     "*": [
-      "pnpm lint",
+      "cd packages/components pnpm fix",
       "pnpm format"
     ]
+  },
+  "devDependencies": {
+    "prettier": "^2.8.8"
   }
 }

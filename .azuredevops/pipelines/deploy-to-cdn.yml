@@ -29,7 +29,7 @@ steps:
       - bash: |
           first_line=$(git log -1 --pretty=%s)
           echo $first_line
-          if [[ $first_line == "chore(release):"* ]]; then
+          if [[ $first_line == "chore(release/components):"* ]]; then
             echo "The last commit is a version bump => code will be deployed."
             echo "##vso[task.setvariable variable=deployment]code"
           elif [[ $first_line == "docs:"* ]]; then
@@ -71,9 +71,6 @@ steps:
       - bash: |
           echo "$(branch)"
         displayName: 'Log normalized branch name'
-      - script: |
-          pnpm run build
-        displayName: 'Create dist'
       - template: templates/push-to-storage-feature.template.yml
 
   - ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/main') }}:
