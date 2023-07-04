@@ -8,8 +8,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "release": "cd packages/tokens pnpm release && cd ../.. && cd packages/components pnpm release",
-    "release.dry": "cd packages/tokens pnpm release.dry && cd ../.. && cd packages/packages pnpm release.dry",
     "fix": "prettier --write .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "// prepare": "We don't want to start the prepare script for husky when we don't install the dev depencies.",
