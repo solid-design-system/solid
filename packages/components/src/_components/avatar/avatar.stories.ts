@@ -1,5 +1,6 @@
 import '../../solid-components';
 import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
+import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, args, parameters } = storybookDefaults('sd-avatar');
 const { generateTemplate } = storybookTemplate('sd-avatar');
@@ -9,6 +10,7 @@ export default {
   component: 'sd-avatar',
   args: { ...args, 'default-slot': 'Default' },
   argTypes,
+  decorators: [withActions] as any
 };
 
 

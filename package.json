@@ -1,6 +1,10 @@
 {
   "name": "@solid-design-system/root",
   "version": "1.0.0",
+  "homepage": "https://solid-design-system.fe.union-investment.de/x.x.x/storybook/",
+  "author": {
+    "name": "Union Investment"
+  },
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -10,6 +14,15 @@
   },
   "lib": "es2021",
   "keywords": [],
-  "author": "Union Investment",
-  "license": "MIT"
+  "license": "MIT",
+  "engines": {
+    "node": ">=16.17.0",
+    "pnpm": ">=8.6.2"
+  },
+  "lint-staged": {
+    "*": [
+      "pnpm lint",
+      "pnpm format"
+    ]
+  }
 }

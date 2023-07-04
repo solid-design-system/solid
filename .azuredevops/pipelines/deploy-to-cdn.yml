@@ -3,6 +3,15 @@ trigger:
     include:
       - '*'
 
+variables:
+  deployment: ''
+  version: ''
+  patchWildcardPath: ''
+  majorWildcardPath: ''
+  minorWildcardPath: ''
+  cdnPath: ''
+  branch: ''
+
 pool:
   vmImage: ubuntu-latest
 
@@ -22,25 +31,30 @@ steps:
           echo $first_line
           if [[ $first_line == "chore(release):"* ]]; then
             echo "The last commit is a version bump => code will be deployed."
+            echo "##vso[task.setvariable variable=deployment]code"
+          elif [[ $first_line == "docs:"* ]]; then
+            echo "The last commit is a docs change only => only storybook will be deployed."
+            echo "##vso[task.setvariable variable=deployment]docs"
           else
             echo "The last commit is not a version bump => code will not be deployed."
-            exit 1
+            echo "##vso[task.setvariable variable=deployment]none"
           fi
-        displayName: 'Check if the last commit comes from semantic-release-bot'
+        displayName: 'Set deployment type'
+      - bash: |
+          echo "$(deployment)"
+        displayName: 'Log deployment type'
 
-  ## Install pnpm
   - script: |
-      npm i pnpm@8.6.2 -g
-    displayName: 'Install global dependencies'
-
-  ## Install all package dependencies
-  - script: |
-      PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=true pnpm i
-    displayName: 'Install package dependencies'
+      if [[ $deployment != "none" ]]; then
+        npm i pnpm@8.6.2 -g
+        PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=true pnpm i
+        pnpm run build
+      fi
+    displayName: 'Install dependencies and build'
 
   - ${{ if ne(variables['Build.SourceBranch'], 'refs/heads/main') }}:
-      ## Normalize branch name to fit CDN URLs (remove 'refs/heads/' and replace '/' with '_')
-      ## Set [branch] variable to normalized branch name
+      ## If the branch is not 'main' then normalize the branch name (remove 'refs/heads/' and replace '/' with '_') and set the [branch] variable to the normalized
+      ## branch name to use the branch name as folder path in the CDN
       - bash: |
           set -x
           REF=$(Build.SourceBranch)
@@ -57,15 +71,20 @@ steps:
       - bash: |
           echo "$(branch)"
         displayName: 'Log normalized branch name'
-
-    ## Build all components
-  - script: |
-      pnpm run build
-    displayName: 'Build components'
-
-  ## if branch is not 'main' then deploy to CDN using the push-to-storage-feature template otherwise use the push-to-storage-main template
-  - ${{ if ne(variables['Build.SourceBranch'], 'refs/heads/main') }}:
+      - script: |
+          pnpm run build
+        displayName: 'Create dist'
       - template: templates/push-to-storage-feature.template.yml
 
   - ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/main') }}:
       - template: templates/push-to-storage-main.template.yml
+      ## If deployment variable is set to 'none' do nothing
+      - script: |
+          if [[ $(deployment) == "code" ]]; then
+            echo "Everything has been deployed."
+          elif [[ $(deployment) == "docs" ]]; then
+            echo "Only storybook has been deployed."
+          else
+            echo "Nothing has been deployed."
+          fi
+        displayName: 'Deployment status'

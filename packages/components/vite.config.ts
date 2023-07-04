@@ -8,6 +8,7 @@ import versionedComponentsPlugin from './scripts/rollup-plugin-versioned-compone
 import versionVsCodeDataPlugin from './scripts/rollup-plugin-version-vscode-data';
 import VitePluginCreateEmptyCemIfNotExisting from './scripts/vite-plugin-create-empty-cem-if-not-existing';
 import VitePluginCustomElementsManifest from 'vite-plugin-cem';
+import VitePluginGetPlaywrightVersion from './scripts/vite-plugin-get-playwright-version';
 import webTypesPlugin from './scripts/rollup-plugin-web-types';
 import type { defineConfig } from 'vite';
 
@@ -19,6 +20,7 @@ export default (({ command }: { command: string }) => {
   return {
     plugins: [
       // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+      VitePluginGetPlaywrightVersion(),
       VitePluginCreateEmptyCemIfNotExisting(),
       VitePluginCustomElementsManifest(
         command === 'build'

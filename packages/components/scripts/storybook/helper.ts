@@ -49,13 +49,43 @@ export const storybookDefaults = (customElementTag: string): any => {
     };
   };
 
+  const getOptimizedArgTypes = () => {
+    type member = { kind: string; privacy?: string; name: string };
+    // Get the properties that are not defined as attributes
+    const getProperties = () => {
+      const fieldMembers = (manifest.members as member[]).filter(member => member.kind === 'field');
+      const attributeNames = new Set(manifest.attributes?.map((attr: { fieldName: string }) => attr.fieldName));
+      const result = fieldMembers.filter(member => !attributeNames.has(member.name) && member?.privacy !== 'private');
+      return result.map(member => member.name);
+    };
+
+    return {
+      ...argTypes,
+      // Events should show up but not be editable
+      ...manifest.events?.reduce((acc: any, event: any) => {
+        acc[event.name] = { control: false };
+        return acc;
+      }, {}),
+      // Properties should show up but not be editable
+      ...getProperties()?.reduce((acc: any, property: string) => {
+        // Remove the existing one
+        acc[`${property}-prop`] = { table: { disable: true } };
+        // Add a new one which is not editable
+        acc[property] = { control: false };
+        return acc;
+      }, {})
+    };
+  };
+
   return {
     args,
-    events,
-    argTypes,
+    argTypes: getOptimizedArgTypes(),
     parameters: {
       badges: ['status', 'since'],
-      badgesConfig: getBadgesConfig()
+      badgesConfig: getBadgesConfig(),
+      actions: {
+        handles: events
+      }
     }
   };
 };
@@ -94,7 +124,7 @@ export const storybookHelpers = (customElementTag: string) => {
       if (!attribute.endsWith('-attr')) {
         attribute = `${attribute}-attr`;
       }
-      const { argTypes } = getWcStorybookHelpers(customElementTag);
+      const { argTypes } = storybookDefaults(customElementTag);
       if (argTypes[attribute]?.control?.type === 'boolean') {
         return [true, false];
       } else {
@@ -128,7 +158,7 @@ export const storybookHelpers = (customElementTag: string) => {
      * @returns {Object} - The arguments object with the overrides applied.
      */
     overrideArgs: (overrides: ConstantDefinition | ConstantDefinition[], original?: { [k: string]: any }) => {
-      const args = original || getWcStorybookHelpers(customElementTag).args;
+      const args = original || storybookDefaults(customElementTag).args;
       const overridesArray = Array.isArray(overrides) ? overrides : [overrides];
       for (const override of overridesArray) {
         const suffix = storybookHelpers(customElementTag).getSuffixFromType(override.type as any);
@@ -147,7 +177,8 @@ export const storybookHelpers = (customElementTag: string) => {
  * @returns {Object} - An object containing a function that generates a story template.
  */
 export const storybookTemplate = (customElementTag: string) => {
-  const { template, args: defaultArgs } = getWcStorybookHelpers(customElementTag);
+  const { template } = getWcStorybookHelpers(customElementTag);
+  const { args: defaultArgs } = storybookDefaults(customElementTag);
   const { getValuesFromAttribute } = storybookHelpers(customElementTag);
 
   /**
@@ -364,14 +395,12 @@ export const storybookTemplate = (customElementTag: string) => {
                 ${(yAxis?.values || ['']).map((yValue: any) => {
                   const row = html`
                     <tr class="template-row">
-                      ${
-                        firstRow && showYLabel
-                          ? html`<th rowspan="${yAxis?.values?.length}">
-                              <span><code>${yAxis.title || yAxis.name}</code></span>
-                            </th>`
-                          : ''
-                      }
-                      <th><code>${yValue.title || yValue}</th></code>
+                      ${firstRow && showYLabel
+                        ? html`<th rowspan="${yAxis?.values?.length}">
+                            <span><code>${yAxis.title || yAxis.name}</code></span>
+                          </th>`
+                        : ''}
+                      <th><code>${yValue.title || yValue}</code></th>
                       ${(xAxis?.values || ['']).map((xValue: any) => {
                         return html`
                           <td class="template template-x-${xAxis?.values?.indexOf(xValue) || 0 + 1} template-y-${

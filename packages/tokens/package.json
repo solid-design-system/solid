@@ -14,7 +14,14 @@
     "./tailwind": "./dist/tokens.tailwind.json"
   },
   "keywords": [],
-  "author": "Union Investment",
+  "homepage": "https://solid-design-system.fe.union-investment.de/x.x.x/storybook/",
+  "author": {
+    "name": "Union Investment"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/solid-design-system/solid.git"
+  },
   "license": "MIT",
   "devDependencies": {
     "tailwindcss-export-config": "^4.1.0"
