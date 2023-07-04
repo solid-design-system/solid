@@ -64,9 +64,10 @@ const sanitizeValue = (value) => {
 	return value;
 };
 
-const sanitizeKey = (value) => {
+const sanitizeKey = (value, cssVariable = true) => {
 	value = value.replaceAll("\b", "");
 	value = value.replaceAll(",", ".");
+	if (cssVariable) value = value.replaceAll(".", "-");
 	return value;
 };
 
@@ -165,7 +166,7 @@ const getSpacings = () => {
 		)
 		.forEach(({ name, value, description }) => {
 			// add the spacing to the theme
-			result[sanitizeKey(name)] = `var(--sd-spacing-${sanitizeKey(
+			result[sanitizeKey(name, false)] = `var(--sd-spacing-${sanitizeKey(
 				name
 			)}, ${resolveValue(value)})${
 				description ? ` /* ${description} */` : ""

@@ -11,22 +11,35 @@ const __dirname = new URL(".", import.meta.url).pathname;
 
 const defaultConfig = {
 	config: path.join(__dirname, "../tailwind.config.cjs"),
-	destination: "./dist/tokens",
 	format: "scss",
 	prefix: "sd",
 	flat: true,
 	quotedKeys: true,
-	onlyIncludeKeys: Object.keys(theme),
 };
 
 const scssConverter = new TailwindExportConfig({
 	...defaultConfig,
+	destination: "./dist/tokens",
 	format: "scss",
+	onlyIncludeKeys: [
+		"backgroundColor",
+		"borderColor",
+		"borderRadius",
+		"fillColor",
+		"fontSize",
+		"fontWeight",
+		"lineHeight",
+		"opacity",
+		"spacing",
+		"textColor",
+	],
 });
 
 const jsonConverter = new TailwindExportConfig({
 	...defaultConfig,
+	destination: "./dist/tokens.tailwind",
 	format: "json",
+	onlyIncludeKeys: Object.keys(theme),
 });
 
 /**
