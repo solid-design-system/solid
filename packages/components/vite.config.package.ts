@@ -3,7 +3,6 @@ import minifyHtmlPlugin from 'rollup-plugin-minify-html-literals';
 import path from 'path';
 import resolve from '@rollup/plugin-node-resolve';
 import summaryPlugin from 'rollup-plugin-summary';
-import versionedComponentsPlugin from './scripts/rollup-plugin-versioned-components';
 import type { defineConfig } from 'vite';
 
 // eslint-disable-next-line
@@ -50,9 +49,7 @@ export default (() => {
           summaryPlugin(),
           // add types to package
           // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-          addTypesPlugin(),
-          // // Add version to component names
-          versionedComponentsPlugin('package')
+          addTypesPlugin()
         ]
       }
     }

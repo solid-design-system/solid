@@ -4,8 +4,6 @@ import minifyHtmlPlugin from 'rollup-plugin-minify-html-literals';
 import path from 'path';
 import resolve from '@rollup/plugin-node-resolve';
 import summaryPlugin from 'rollup-plugin-summary';
-import versionedComponentsPlugin from './scripts/rollup-plugin-versioned-components';
-import versionVsCodeDataPlugin from './scripts/rollup-plugin-version-vscode-data';
 import VitePluginCreateEmptyCemIfNotExisting from './scripts/vite-plugin-create-empty-cem-if-not-existing';
 import VitePluginCustomElementsManifest from 'vite-plugin-cem';
 import VitePluginGetPlaywrightVersion from './scripts/vite-plugin-get-playwright-version';
@@ -67,13 +65,8 @@ export default (({ command }: { command: string }) => {
           }),
           // Print bundle summary
           summaryPlugin({ showGzippedSize: true }),
-          // Add version to component names
-          versionedComponentsPlugin('components'),
           // Generate web types
-          webTypesPlugin(),
-          // Version Data for VSCode
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-          versionVsCodeDataPlugin
+          webTypesPlugin()
         ]
       }
     }

@@ -10,19 +10,23 @@
   "customElements": "dist/custom-elements.json",
   "web-types": "dist/web-types.json",
   "type": "module",
-  "types": "dist/package/solid-components.d.ts",
   "exports": {
     "./unversioned": {
       "types": "./dist/package/solid-components.d.ts",
       "import": "./dist/package/solid-components.js"
     },
-    "./unversioned/*": "./dist/package/components/*",
+    "./unversioned/*": {
+      "import": "./dist/package/components/*",
+      "types": "./dist/package/solid-components.d.ts"
+    },
     "./versioned": {
       "types": "./dist/versioned-package/solid-components.d.ts",
       "import": "./dist/versioned-package/solid-components.js"
     },
-    "./versioned/*": "./dist/versioned-package/components/*",
-    "./translations/*": "./dist/package/translations/*"
+    "./versioned/*": {
+      "import": "./dist/versioned-package/components/*",
+      "types": "./dist/versioned-package/solid-components.d.ts"
+    }
   },
   "files": [
     "dist/**/*",
@@ -40,8 +44,9 @@
   "scripts": {
     "start": "echo '❌ Please use `pnpm dev` instead.'",
     "dev": "pnpm storybook",
-    "build": "pnpm build.components && pnpm build.package && pnpm build.storybook",
-    "build.components": "vite build  --config vite.config.js",
+    "build": "pnpm build.components && pnpm build.storybook",
+    "build.components": "pnpm build.cdn && pnpm build.package && node ./scripts/node-version-components.cjs",
+    "build.cdn": "vite build  --config vite.config.js",
     "build.package": "vite build --config vite.config.package.js",
     "build.storybook": "storybook build --output-dir dist/storybook && cp dist/custom-elements.json dist/storybook/custom-elements.json",
     "build.chromatic": "pnpm build.storybook && pnpm ci.optimize-chromatic",
