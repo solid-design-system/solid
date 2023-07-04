@@ -48,7 +48,7 @@ steps:
       if [[ $deployment != "none" ]]; then
         npm i pnpm@8.6.2 -g
         PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=true pnpm i
-        cd packages/components pnpm run build.cdn
+        cd packages/components && pnpm run build.cdn
       fi
     displayName: 'Install dependencies and build'
 
