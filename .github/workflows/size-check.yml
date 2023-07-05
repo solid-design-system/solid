@@ -36,8 +36,8 @@ jobs:
           UNCOMPRESSED=$(cd packages/components && node -e "import('./scripts/node-get-sizes.mjs').then(({ getOutputs }) => { console.log(getOutputs().uncompressed.replace('Bundle size (uncompressed): ', '')); });")
           echo "::set-output name=uncompressed_size::$UNCOMPRESSED"
 
-          COMPRESSED=$(cd packages/components && node -e "import('./scripts/node-get-sizes.mjs').then(({ getOutputs }) => { console.log(getOutputs().compressed.replace('Bundle size (gzipped): ', '')); });")
-          echo "::set-output name=compressed_size::$COMPRESSED"
+          GZIP=$(cd packages/components && node -e "import('./scripts/node-get-sizes.mjs').then(({ getOutputs }) => { console.log(getOutputs().gzip.replace('Bundle size (gzipped): ', '')); });")
+          echo "::set-output name=gzip_size::$GZIP"
 
       - name: Uncompressed
         uses: LouisBrunner/checks-action@v1.6.1
@@ -52,7 +52,7 @@ jobs:
         uses: LouisBrunner/checks-action@v1.6.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          name: compressed
+          name: gzip
           conclusion: ${{ job.status }}
           output: |
-            {"title":"ℹ️ ${{ steps.calc_size.outputs.compressed_size }}", "summary":"${{ steps.calc_size.outputs.compressed_size }}"}
+            {"title":"ℹ️ ${{ steps.calc_size.outputs.gzip_size }}", "summary":"${{ steps.calc_size.outputs.gzip_size }}"}
