@@ -26,7 +26,7 @@ const { generateTemplate } = storybookTemplate('sd-icon');
  *
  * ```html
  * <script type="module">
- *   import { registerIconLibrary } from '/dist/utilities/icon-library.js';
+ *   import { registerIconLibrary } from '@solid-design-system/components/unversioned/icon/library';
  *
  *   registerIconLibrary('my-icons', {
  *     resolver: name => `/assets/icons/${name}.svg`,
@@ -46,7 +46,7 @@ const { generateTemplate } = storybookTemplate('sd-icon');
  *
  * ```html
  * <script type="module">
- *   import { registerIconLibrary } from '/dist/utilities/icon-library.js';
+ *   import { registerIconLibrary } from '@solid-design-system/components/unversioned/icon/library';
  *
  *   registerIconLibrary('my-icons-2-3-0', {
  *     resolver: name => `/2-3-0/assets/icons/${name}.svg`,
@@ -126,6 +126,8 @@ export const LibrarySystem = {
  * The following resolver allows it to fetch data from the global-resources CDN. It points to the latest branch.
  *
  * ```js
+ *  import { registerIconLibrary } from '@solid-design-system/components/unversioned/icon/library';
+ *
  *  registerIconLibrary('global-resources', {
  *   resolver: name => {
  *     // split path and name
@@ -209,6 +211,7 @@ export const ExampleGlobalResources = {
  * This is especially useful if you want to override icons which are baked into components.
  *
  * ```js
+ *  import { registerIconLibrary } from '@solid-design-system/components/unversioned/icon/library';
  *
  * registerIconLibrary('global-resources-overriden', {
  *   resolver: name => {
