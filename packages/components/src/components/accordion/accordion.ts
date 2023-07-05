@@ -167,15 +167,15 @@ export default class SdAccordion extends SolidElement {
           <span
             part="summary-icon"
             class=${cx(
-              'flex flex-grow-0 flex-shrink-0 flex-auto items-center transition-all ease-in-out duration-300',
+              'flex flex-grow-0 flex-shrink-0 flex-auto items-center transition-all ease-in-out duration-300 text-xl',
               this.open && 'rotate-180'
             )}
           >
             <slot name="expand-icon" class=${cx(this.open && 'hidden')}>
-              <sd-icon library="system" name="chevron-down" class="w-6 h-6"></sd-icon>
+              <sd-icon library="system" name="chevron-down"></sd-icon>
             </slot>
             <slot name="collapse-icon" class=${cx(!this.open && 'hidden')}>
-              <sd-icon library="system" name="chevron-down" class="w-6 h-6"></sd-icon>
+              <sd-icon library="system" name="chevron-down"></sd-icon>
             </slot>
           </span>
         </header>
