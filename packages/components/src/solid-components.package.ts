@@ -8,5 +8,5 @@ export { default as SdSpinner } from './components/spinner/spinner';
 
 // export * from './utilities/animation';
 // export * from './utilities/base-path';
-// export * from './utilities/icon-library';
+export * from './utilities/icon-library';
 export * from './utilities/localize';

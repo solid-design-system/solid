@@ -7,3 +7,6 @@ const modules = import.meta.glob('./components/**/!(*.stories|*.spec|*.test|*.st
 Object.keys(modules).forEach(module => {
   modules[module]();
 });
+
+export * from './utilities/icon-library';
+export * from './utilities/localize';
