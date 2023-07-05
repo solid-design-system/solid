@@ -1,0 +1,2 @@
+import i from"./library.system-98f1a9a4.js";let e=[i],n=[];function a(r){n.push(r)}function f(r){n=n.filter(t=>t!==r)}function s(r){return e.find(t=>t.name===r)}function l(r,t){c(r),e.push({name:r,resolver:t.resolver,mutator:t.mutator}),n.forEach(o=>{o.library===r&&o.setIcon()})}function c(r){e=e.filter(t=>t.name!==r)}export{s as getIconLibrary,l as registerIconLibrary,c as unregisterIconLibrary,f as unwatchIcon,a as watchIcon};
+//# sourceMappingURL=library-7f5d43fd.js.map

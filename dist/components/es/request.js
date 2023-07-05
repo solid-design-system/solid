@@ -1,0 +1,1 @@
+import{requestInclude as t}from"./request2.js";const e=new Map;async function s(s){if(e.has(s))return e.get(s);const n=await t(s),o={ok:n.ok,status:n.status,svg:null};if(n.ok){const t=document.createElement("div");t.innerHTML=n.html;const e=t.firstElementChild;o.svg="svg"===(null==e?void 0:e.tagName.toLowerCase())?e.outerHTML:""}return e.set(s,o),o}export{s as requestIcon};

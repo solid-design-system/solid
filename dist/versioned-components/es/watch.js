@@ -1,0 +1,1 @@
+function t(t,a){const i={waitUntilFirstUpdate:!1,...a};return(a,s)=>{const{update:n}=a,r=Array.isArray(t)?t:[t];a.update=function(t){r.forEach((a=>{const n=a;if(t.has(n)){const a=t.get(n),r=this[n];a!==r&&(!i.waitUntilFirstUpdate||this.hasUpdated)&&this[s](a,r)}})),n.call(this,t)}}}export{t as w};

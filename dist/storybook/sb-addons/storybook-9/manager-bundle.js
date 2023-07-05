@@ -1,0 +1,4 @@
+try{
+var _=__STORYBOOKADDONS__,{addons:r,types:c,mockChannel:h}=__STORYBOOKADDONS__;var f=__STORYBOOKTHEMING__,{CacheProvider:u,ClassNames:S,Global:y,ThemeProvider:B,background:v,color:C,convert:R,create:a,createCache:x,createGlobal:G,createReset:I,css:N,darken:k,ensure:D,ignoreSsrWarning:K,isPropValid:P,jsx:Y,keyframes:w,lighten:U,styled:A,themes:E,typography:H,useTheme:M,withTheme:j}=__STORYBOOKTHEMING__;var n=a({base:"light",brandTitle:"Solid Components by Union Investment",brandUrl:"https://union-investment.de",brandImage:"https://cdn.dam.union-investment.de/original/454499_UI_Logo_RGB.svg",brandTarget:"_self",colorPrimary:"#00358e",colorSecondary:"#43b02a",appBg:"white",appContentBg:"white",appBorderRadius:4});r.setConfig({theme:n});
+}catch(e){ console.error("[Storybook] One of your manager-entries failed: " + import.meta.url, e); }
+//# sourceMappingURL=manager-bundle.js.map

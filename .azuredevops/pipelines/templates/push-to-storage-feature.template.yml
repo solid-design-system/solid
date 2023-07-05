@@ -13,7 +13,7 @@ steps:
         az storage blob upload-batch \
           --destination \$web \
           --account-name "safesoliddesignsysprod" \
-          --source dist \
+          --source packages/components/dist \
           --destination-path "/$(branch)" \
           --overwrite
         set +x

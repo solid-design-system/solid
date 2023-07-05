@@ -1,0 +1,1 @@
+function t(){let t,e="",n=0;for(;n<arguments.length;)(t=arguments[n++])&&"string"==typeof t&&(e&&(e+=" "),e+=t);return e}export{t};

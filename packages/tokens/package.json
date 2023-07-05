@@ -1,0 +1,74 @@
+{
+  "name": "@solid-design-system/tokens",
+  "version": "1.1.0",
+  "description": "Solid Design System: Tokens",
+  "main": "index.js",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "postversion": "pnpm build",
+    "release": "semantic-release  --tagFormat 'tokens/${version}' -e semantic-release-monorepo",
+    "release.dry": "semantic-release -d --tagFormat 'tokens/${version}' -e semantic-release-monorepo"
+  },
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    "./scss": "./dist/tokens.scss",
+    "./tailwind": "./dist/tokens.tailwind.json"
+  },
+  "keywords": [],
+  "homepage": "https://solid-design-system.fe.union-investment.de/x.x.x/storybook/",
+  "author": {
+    "name": "Union Investment"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/solid-design-system/solid.git"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "semantic-release": "^19.0.5",
+    "semantic-release-monorepo": "^7.0.5",
+    "tailwindcss-export-config": "^4.1.0"
+  },
+  "release": {
+    "branches": [
+      "main"
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      [
+        "@semantic-release/changelog",
+        {
+          "changelogFile": "CHANGELOG.md"
+        }
+      ],
+      [
+        "@semantic-release/npm",
+        {
+          "npmPublish": true
+        }
+      ],
+      [
+        "@semantic-release/git",
+        {
+          "message": "chore(release/tokens): ${nextRelease.version} [skip actions]\n\n${nextRelease.notes}",
+          "assets": [
+            "CHANGELOG.md",
+            "package.json"
+          ]
+        }
+      ],
+      [
+        "@semantic-release/github",
+        {
+          "successComment": false
+        }
+      ]
+    ]
+  },
+  "readme": "README.md"
+}

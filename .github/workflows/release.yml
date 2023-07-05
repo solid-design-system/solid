@@ -26,7 +26,14 @@ jobs:
       - name: Install dependencies
         run: PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=true pnpm i
 
-      - name: Run Semantic Release
+      - name: (tokens) Run Semantic Release
         env:
           GH_TOKEN: ${{ secrets.PAT_RELEASE_KARL }}
-        run: npx semantic-release
+          NPM_TOKEN: ${{ secrets.NPM_RELEASE_TOKEN_MARIO_HAMANN }}
+        run: cd packages/tokens && pnpm release
+
+      - name: (components) Run Semantic Release
+        env:
+          GH_TOKEN: ${{ secrets.PAT_RELEASE_KARL }}
+          NPM_TOKEN: ${{ secrets.NPM_RELEASE_TOKEN_MARIO_HAMANN }}
+        run: cd packages/components && pnpm release

@@ -1,0 +1,1 @@
+import{i as o}from"./lit-element.js";const t=o`:host{box-sizing:border-box}:host *,:host ::after,:host ::before{box-sizing:inherit}[hidden]{display:none!important}`;export{t as c};

@@ -1,0 +1,17 @@
+import{A as t,T as e,x as r,i as s}from"./lit-element.js";import{S as i,n as o,e as a}from"./solid-element.js";import{t as l}from"./state.js";import{watchIcon as n,unwatchIcon as c,getIconLibrary as h}from"./library.js";import{requestIcon as p}from"./request.js";import{w as u}from"./watch.js";import{c as d}from"./component.styles.js";import"./library.system.js";import"./request2.js";
+/**
+ * @license
+ * Copyright 2017 Google LLC
+ * SPDX-License-Identifier: BSD-3-Clause
+ */class m{constructor(t){}get _$AU(){return this._$AM._$AU}_$AT(t,e,r){this._$Ct=t,this._$AM=e,this._$Ci=r}_$AS(t,e){return this.update(t,e)}update(t,e){return this.render(...e)}}
+/**
+ * @license
+ * Copyright 2017 Google LLC
+ * SPDX-License-Identifier: BSD-3-Clause
+ */class y extends m{constructor(e){if(super(e),this.et=t,2!==e.type)throw Error(this.constructor.directiveName+"() can only be used in child bindings")}render(r){if(r===t||null==r)return this.ft=void 0,this.et=r;if(r===e)return r;if("string"!=typeof r)throw Error(this.constructor.directiveName+"() called with a non-string value");if(r===this.et)return this.ft;this.et=r;const s=[r];return s.raw=s,this.ft={_$litType$:this.constructor.resultType,strings:s,values:[]}}}y.directiveName="unsafeHTML",y.resultType=1;
+/**
+ * @license
+ * Copyright 2017 Google LLC
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+class b extends y{}b.directiveName="unsafeSVG",b.resultType=2;const g=(v=b,(...t)=>({_$litDirective$:v,values:t}));var v,f=Object.defineProperty,w=Object.getOwnPropertyDescriptor,A=(t,e,r,s)=>{for(var i,o=s>1?void 0:s?w(e,r):e,a=t.length-1;a>=0;a--)(i=t[a])&&(o=(s?i(e,r,o):i(o))||o);return s&&o&&f(e,r,o),o};let $,j=class extends i{constructor(){super(...arguments),this.svg="",this.label="",this.library="default",this.color="currentColor"}connectedCallback(){super.connectedCallback(),n(this)}firstUpdated(){this.setIcon()}disconnectedCallback(){super.disconnectedCallback(),c(this)}getUrl(){const t=h(this.library);return this.name&&t?t.resolver(this.name):this.src}handleLabelChange(){"string"==typeof this.label&&this.label.length>0?(this.setAttribute("role","img"),this.setAttribute("aria-label",this.label),this.removeAttribute("aria-hidden")):(this.removeAttribute("role"),this.removeAttribute("aria-label"),this.setAttribute("aria-hidden","true"))}async setIcon(){var t;const e=h(this.library),r=this.getUrl();if($||($=new DOMParser),r)try{const s=await p(r);if(r===this.getUrl())if(s.ok){const r=$.parseFromString(s.svg,"text/html").body.querySelector("svg");null!==r?(null==(t=null==e?void 0:e.mutator)||t.call(e,r),this.svg=r.outerHTML,this.emit("sd-load")):(this.svg="",this.emit("sd-error"))}else this.svg="",this.emit("sd-error")}catch{this.emit("sd-error")}else this.svg.length>0&&(this.svg="")}render(){return r`${g(this.svg)}`}};j.styles=[d,s`:host{display:inline-block;width:1em;height:1em;box-sizing:content-box!important}svg{display:block;height:100%;width:100%}:host([color=primary]) svg{color:rgb(var(--sd-color-primary,0 53 142) / var(--tw-text-opacity,1))}// text-primary :host([color=white]) svg{color:rgb(var(--sd-color-white,255 255 255) / var(--tw-text-opacity,1))}`],A([l()],j.prototype,"svg",2),A([o({reflect:!0})],j.prototype,"name",2),A([o()],j.prototype,"src",2),A([o()],j.prototype,"label",2),A([o({reflect:!0})],j.prototype,"library",2),A([o({reflect:!0})],j.prototype,"color",2),A([u("label")],j.prototype,"handleLabelChange",1),A([u(["name","src","library"])],j.prototype,"setIcon",1),j=A([a("sd-1-2-5-icon")],j);export{j as default};

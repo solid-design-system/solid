@@ -3,7 +3,7 @@ steps:
       cdnPath=''
       if [[ $(deployment) != "none" ]]; then
         # Get version and create version array
-        version=$(node -p "require('./package.json').version")
+        version=$(node -p "require('./packages/components/package.json').version")
         echo "Version is $version"
         versionArray=($(echo "$version" | tr '.' ' '))
         echo "Version array is ${versionArray[@]}"
@@ -57,7 +57,7 @@ steps:
           az storage blob upload-batch \
             --destination \$web \
             --account-name "safesoliddesignsysprod" \
-            --source "dist$(cdnPath)" \
+            --source "packages/components/dist$(cdnPath)" \
             --destination-path "/$(version)" \
             --overwrite
           set +x
@@ -68,7 +68,7 @@ steps:
           az storage blob upload-batch \
             --destination \$web \
             --account-name "safesoliddesignsysprod" \
-            --source "dist$(cdnPath)" \
+            --source "packages/components/dist$(cdnPath)" \
             --destination-path "/$(patchWildcardPath)" \
             --overwrite
           set +x
@@ -79,7 +79,7 @@ steps:
           az storage blob upload-batch \
             --destination \$web \
             --account-name "safesoliddesignsysprod" \
-            --source "dist$(cdnPath)" \
+            --source "packages/components/dist$(cdnPath)" \
             --destination-path "/$(minorWildcardPath)" \
             --overwrite
           set +x
@@ -90,7 +90,7 @@ steps:
           az storage blob upload-batch \
             --destination \$web \
             --account-name "safesoliddesignsysprod" \
-            --source "dist$(cdnPath)" \
+            --source "packages/components/dist$(cdnPath)" \
             --destination-path "/$(majorWildcardPath)" \
             --overwrite
           set +x

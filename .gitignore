@@ -1,14 +1,1 @@
-.DS_Store
-.cache
-dist
-examples
 node_modules
-src/react
-.idea*
-__screenshots__/**
-
-# Storybook
-storybook-static
-build-storybook.log
-custom-elements.json
-vite.config.ts.timestamp*

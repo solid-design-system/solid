@@ -3,47 +3,47 @@ name: Quality Gate
 on: pull_request
 
 jobs:
-  npm:
-    name: Install, verify and build
-    runs-on: ubuntu-latest
-    container:
-      image: mcr.microsoft.com/playwright:v1.33.0-jammy
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+    npm:
+        name: Install, verify and build
+        runs-on: ubuntu-latest
+        container:
+            image: mcr.microsoft.com/playwright:v1.33.0-jammy
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
 
-      - name: Install Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
+            - name: Install Node.js
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 18
 
-      - uses: pnpm/action-setup@v2
-        name: Install pnpm
-        id: pnpm-install
-        with:
-          version: 8.6.2
-          run_install: false
+            - uses: pnpm/action-setup@v2
+              name: Install pnpm
+              id: pnpm-install
+              with:
+                  version: 8.6.2
+                  run_install: false
 
-      - name: Install dependencies
-        run: pnpm i
+            - name: Install dependencies
+              run: pnpm i
 
-      - name: lint.verify
-        run: pnpm lint.verify
+            - name: (tokens) build
+              run: cd packages/tokens && pnpm build
 
-      - name: format.verify
-        run: pnpm format.verify
+            - name: (components) lint.verify (components)
+              run: cd packages/components && pnpm lint.verify
 
-      - name: ts.verify
-        run: pnpm ts.verify
+            - name: (components) format.verify
+              run: cd packages/components && pnpm format.verify
 
-      - name: build.components
-        run: pnpm build.components
+            - name: (components) ts.verify
+              run: cd packages/components && pnpm ts.verify
 
-      - name: build.storybook
-        run: pnpm build.storybook
+            - name: (components) build
+              run: cd packages/components && pnpm build
 
-      - name: ci.optimize-chromatic
-        run: pnpm ci.optimize-chromatic
+            - name: (components) ci.optimize-chromatic
+              run: cd packages/components && pnpm ci.optimize-chromatic
 
-      - name: test
-        run: pnpm test
+            - name: (components) test
+              run: cd packages/components && pnpm test

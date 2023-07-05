@@ -1,0 +1,270 @@
+{
+  "version": 1.1,
+  "tags": [
+    {
+      "name": "sd-accordion-group",
+      "description": "Short summary of the component's intended use.\n\n\n---\n\n\n\n\n### **Slots:**\n - _default_ - The default slot where `<sd-accordion>` elements are placed.\n\n### **CSS Parts:**\n - **base** - The component's base wrapper.",
+      "attributes": [
+        {
+          "name": "close-others",
+          "description": "Closes other accordions.",
+          "values": []
+        }
+      ],
+      "references": []
+    },
+    {
+      "name": "sd-accordion",
+      "description": "Accordion shows a brief summary and expands to show additional content.\n\n\n---\n\n\n\n\n### **Events:**\n - **sd-show** - Emitted when the accordion opens.\n- **sd-after-show** - Emitted after the accordion opens and all animations are complete.\n- **sd-hide** - Emitted when the accordion closes.\n- **sd-after-hide** - Emitted after the accordion closes and all animations are complete.\n\n### **Methods:**\n - **show()** - Shows the accordion.\n- **hide()** - Hides the accordion\n\n### **Slots:**\n - _default_ - The accordion main content.\n- **summary** - The accordion summary. Alternatively, you can use the `summary` attribute.\n- **expand-icon** - Optional expand icon to use instead of the default. Works best with `<sd-icon>`.\n- **collapse-icon** - Optional collapse icon to use instead of the default. Works best with `<sd-icon>`.\n\n### **CSS Parts:**\n - **base** - The component's base wrapper.\n- **header** - The header that wraps both the summary and the expand/collapse icon.\n- **summary** - The container that wraps the summary.\n- **summary-icon** - The container that wraps the expand/collapse icons.\n- **content** - The accordion content.",
+      "attributes": [
+        {
+          "name": "open",
+          "description": "Indicates whether or not the accordion is open. You can toggle this attribute to show and hide the accordion, or you\ncan use the `show()` and `hide()` methods and this attribute will reflect the accordion' open state.",
+          "values": []
+        },
+        {
+          "name": "summary",
+          "description": "The summary to show in the header. If you need to display HTML, use the `summary` slot instead.",
+          "values": []
+        }
+      ],
+      "references": []
+    },
+    {
+      "name": "sd-button",
+      "description": "Buttons represent actions that are available to the user.\n\n\n---\n\n\n\n\n### **Events:**\n - **sd-blur** - Emitted when the button loses focus.\n- **sd-focus** - Emitted when the button gains focus.\n\n### **Methods:**\n - **click()** - Simulates a click on the button.\n- **focus(options: _FocusOptions_)** - Sets focus on the button.\n- **blur()** - Removes focus from the button.\n- **checkValidity()** - Checks for validity but does not show the browser's validation message.\n- **reportValidity()** - Checks for validity and shows the browser's validation message if the control is invalid.\n- **setCustomValidity(message: _string_)** - Sets a custom validation message. Pass an empty string to restore validity.\n\n### **Slots:**\n - _default_ - The button's label.\n- **icon-left** - A prefix icon or similar element.\n- **icon-right** - A suffix icon or similar element.\n\n### **CSS Parts:**\n - **base** - The component's base wrapper.\n- **icon-left** - The container that wraps the left icon area.\n- **label** - The button's label.\n- **icon-right** - The container that wraps the right icon area.",
+      "attributes": [
+        { "name": "title", "values": [] },
+        {
+          "name": "variant",
+          "description": "The button's theme variant.",
+          "values": [
+            { "name": "primary" },
+            { "name": "secondary" },
+            { "name": "tertiary" },
+            { "name": "cta" }
+          ]
+        },
+        {
+          "name": "inverted",
+          "description": "Inverts the button.",
+          "values": []
+        },
+        {
+          "name": "size",
+          "description": "The button's size.",
+          "values": [{ "name": "lg" }, { "name": "md" }, { "name": "sm" }]
+        },
+        {
+          "name": "disabled",
+          "description": "Disables the button.",
+          "values": []
+        },
+        {
+          "name": "loading",
+          "description": "Draws the button in a loading state.",
+          "values": []
+        },
+        {
+          "name": "type",
+          "description": "The type of button. Note that the default value is `button` instead of `submit`, which is opposite of how native\n`<button>` elements behave. When the type is `submit`, the button will submit the surrounding form.",
+          "values": [
+            { "name": "button" },
+            { "name": "submit" },
+            { "name": "reset" }
+          ]
+        },
+        {
+          "name": "name",
+          "description": "The name of the button, submitted as a name/value pair with form data, but only when this button is the submitter.\nThis attribute is ignored when `href` is present.",
+          "values": []
+        },
+        {
+          "name": "value",
+          "description": "The value of the button, submitted as a pair with the button's name as part of the form data, but only when this\nbutton is the submitter. This attribute is ignored when `href` is present.",
+          "values": []
+        },
+        {
+          "name": "href",
+          "description": "When set, the underlying button will be rendered as an `<a>` with this `href` instead of a `<button>`.",
+          "values": []
+        },
+        {
+          "name": "target",
+          "description": "Tells the browser where to open the link. Only used when `href` is present.",
+          "values": [
+            { "name": "_blank" },
+            { "name": "_parent" },
+            { "name": "_self" },
+            { "name": "_top" }
+          ]
+        },
+        {
+          "name": "download",
+          "description": "Tells the browser to download the linked file as this filename. Only used when `href` is present.",
+          "values": []
+        },
+        {
+          "name": "form",
+          "description": "The \"form owner\" to associate the button with. If omitted, the closest containing form will be used instead. The\nvalue of this attribute must be an id of a form in the same document or shadow root as the button.",
+          "values": []
+        },
+        {
+          "name": "formaction",
+          "description": "Used to override the form owner's `action` attribute.",
+          "values": []
+        },
+        {
+          "name": "formenctype",
+          "description": "Used to override the form owner's `enctype` attribute.",
+          "values": [
+            { "name": "application/x-www-form-urlencoded" },
+            { "name": "multipart/form-data" },
+            { "name": "text/plain" }
+          ]
+        },
+        {
+          "name": "formmethod",
+          "description": "Used to override the form owner's `method` attribute.",
+          "values": [{ "name": "post" }, { "name": "get" }]
+        },
+        {
+          "name": "formnovalidate",
+          "description": "Used to override the form owner's `novalidate` attribute.",
+          "values": []
+        },
+        {
+          "name": "formtarget",
+          "description": "Used to override the form owner's `target` attribute.",
+          "values": [
+            { "name": "_self" },
+            { "name": "_blank" },
+            { "name": "_parent" },
+            { "name": "_top" }
+          ]
+        }
+      ],
+      "references": []
+    },
+    {
+      "name": "sd-icon",
+      "description": "Icons are symbols that can be used to represent various options within an application.\n\n\n---\n\n\n\n\n### **Events:**\n - **sd-load** - Emitted when the icon has loaded.\n- **sd-error** - Emitted when the icon fails to load due to an error.",
+      "attributes": [
+        {
+          "name": "name",
+          "description": "The name of the icon to draw. Available names depend on the icon library being used.",
+          "values": []
+        },
+        {
+          "name": "src",
+          "description": "An external URL of an SVG file. Be sure you trust the content you are including, as it will be executed as code and\ncan result in XSS attacks. Only SVGs on a local or CORS-enabled endpoint are supported. If you're using more than one custom icon,\nit might make sense to register a custom icon library.",
+          "values": []
+        },
+        {
+          "name": "label",
+          "description": "An alternate description to use for assistive devices. If omitted, the icon will be considered presentational and\nignored by assistive devices.",
+          "values": []
+        },
+        {
+          "name": "library",
+          "description": "The name of a registered custom icon library.",
+          "values": []
+        },
+        {
+          "name": "color",
+          "description": "The color of the icon.\n\"current\" refers to currentColor and makes it possible to easily style the icon from outside without any CSS variables.",
+          "values": [
+            { "name": "currentColor" },
+            { "name": "primary" },
+            { "name": "white" }
+          ]
+        }
+      ],
+      "references": []
+    },
+    {
+      "name": "sd-include",
+      "description": "Includes give you the power to embed external HTML files into the page.\n\n\n---\n\n\n\n\n### **Events:**\n - **sd-load** - Emitted when the included file is loaded.\n- **sd-error** - Emitted when the included file fails to load due to an error.",
+      "attributes": [
+        {
+          "name": "src",
+          "description": "The location of the HTML file to include. Be sure you trust the content you are including as it will be executed as\ncode and can result in XSS attacks.",
+          "values": []
+        },
+        {
+          "name": "mode",
+          "description": "The fetch mode to use.",
+          "values": [
+            { "name": "cors" },
+            { "name": "no-cors" },
+            { "name": "same-origin" }
+          ]
+        },
+        {
+          "name": "allow-scripts",
+          "description": "Allows included scripts to be executed. Be sure you trust the content you are including as it will be executed as\ncode and can result in XSS attacks.",
+          "values": []
+        }
+      ],
+      "references": []
+    },
+    {
+      "name": "sd-link",
+      "description": "A link component.\n\n\n---\n\n\n\n\n### **Events:**\n - **sd-blur** - Emitted when the link loses focus.\n- **sd-focus** - Emitted when the link gains focus.\n\n### **Methods:**\n - **focus(options: _FocusOptions_)** - Sets focus on the button.\n- **blur()** - Removes focus from the button.\n\n### **Slots:**\n - _default_ - The default slot.\n- **icon-left** - The icon to display on the left side of the link.\n- **icon-right** - The icon to display on the right side of the link.\n\n### **CSS Parts:**\n - **base** - The component's base wrapper.\n- **icon-left** - The container that wraps the left icon area.\n- **label** - The link's label.\n- **icon-right** - The container that wraps the right icon area.",
+      "attributes": [
+        {
+          "name": "size",
+          "description": "The link's size.",
+          "values": [{ "name": "inherit" }, { "name": "lg" }, { "name": "sm" }]
+        },
+        {
+          "name": "inverted",
+          "description": "Inverts the link.",
+          "values": []
+        },
+        {
+          "name": "standalone",
+          "description": "Control the layout of icon and text within the component and the component's positioning.",
+          "values": []
+        },
+        {
+          "name": "href",
+          "description": "When not set, the link will render as disabled.",
+          "values": []
+        },
+        {
+          "name": "target",
+          "description": "Tells the browser where to open the link. Only used when `href` is present.",
+          "values": [
+            { "name": "_blank" },
+            { "name": "_parent" },
+            { "name": "_self" },
+            { "name": "_top" }
+          ]
+        },
+        {
+          "name": "download",
+          "description": "Tells the browser to download the linked file as this filename. Only used when `href` is present.",
+          "values": []
+        }
+      ],
+      "references": []
+    },
+    {
+      "name": "sd-spinner",
+      "description": "Spinners are used to show the progress of an indeterminate operation.\n\n\n---\n\n\n",
+      "attributes": [
+        {
+          "name": "color",
+          "description": "The color color of the spinner.",
+          "values": [
+            { "name": "primary" },
+            { "name": "white" },
+            { "name": "currentColor" }
+          ]
+        }
+      ],
+      "references": []
+    }
+  ]
+}
