@@ -1,0 +1,33 @@
+name: File Size Check
+on: 
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  file_size_check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+            node-version: 18
+
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        id: pnpm-install
+        with:
+            version: 8.6.2
+            run_install: false
+
+      - name: Install dependencies
+        run: PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=true pnpm i
+
+      - name: build
+        run: cd packages/components && pnpm build.components
+
+      - name: Report size comparison
+        run: cd packages/components && node -e "import('./scripts/node-get-sizes.mjs').then(({ getOutputs }) => { console.log(getOutputs().uncompressed); });"
+        shell: bash
