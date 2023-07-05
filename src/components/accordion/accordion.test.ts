@@ -12,9 +12,8 @@ describe('<sd-accordion>', () => {
         consequat.
       </sd-accordion>
     `);
-    const content = el.shadowRoot!.querySelector<HTMLElement>('[part="content"]')!;
 
-    expect(content.hidden).to.be.false;
+    expect(el.shadowRoot!.querySelector<HTMLElement>('[part~="content"]')!.hidden).to.be.false;
   });
 
   it('should not be visible without the open attribute', async () => {
@@ -25,9 +24,8 @@ describe('<sd-accordion>', () => {
         consequat.
       </sd-accordion>
     `);
-    const content = el.shadowRoot!.querySelector<HTMLElement>('[part="content"]')!;
 
-    expect(content.hidden).to.be.true;
+    expect(el.shadowRoot!.querySelector<HTMLElement>('[part~="content"]')!.hidden).to.be.true;
   });
 
   it('should emit sd-show and sd-after-show when calling show()', async () => {
@@ -38,7 +36,7 @@ describe('<sd-accordion>', () => {
         consequat.
       </sd-accordion>
     `);
-    const content = el.shadowRoot!.querySelector<HTMLElement>('[part="content"]')!;
+    const content = el.shadowRoot!.querySelector<HTMLElement>('[part~="content"]')!;
     const showHandler = sinon.spy();
     const afterShowHandler = sinon.spy();
 
@@ -62,7 +60,7 @@ describe('<sd-accordion>', () => {
         consequat.
       </sd-accordion>
     `);
-    const content = el.shadowRoot!.querySelector<HTMLElement>('[part="content"]')!;
+    const content = el.shadowRoot!.querySelector<HTMLElement>('[part~="content"]')!;
     const hideHandler = sinon.spy();
     const afterHideHandler = sinon.spy();
 
@@ -86,7 +84,7 @@ describe('<sd-accordion>', () => {
         consequat.
       </sd-accordion>
     `);
-    const content = el.shadowRoot!.querySelector<HTMLElement>('[part="content"]')!;
+    const content = el.shadowRoot!.querySelector<HTMLElement>('[part~="content"]')!;
     const showHandler = sinon.spy();
     const afterShowHandler = sinon.spy();
 
@@ -110,7 +108,7 @@ describe('<sd-accordion>', () => {
         consequat.
       </sd-accordion>
     `);
-    const content = el.shadowRoot!.querySelector<HTMLElement>('[part="content"]')!;
+    const content = el.shadowRoot!.querySelector<HTMLElement>('[part~="content"]')!;
     const hideHandler = sinon.spy();
     const afterHideHandler = sinon.spy();
 
