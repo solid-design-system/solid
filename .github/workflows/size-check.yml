@@ -3,9 +3,7 @@ on:
   pull_request:
     types: [opened, synchronize]
 
-permissions:
-  actions: write
-  checks: write
+permissions: read-all
 
 jobs:
   file_size_check:
