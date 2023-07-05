@@ -5,7 +5,7 @@ import { getOutputs, getSizes } from './node-get-sizes.mjs';
  * 1. Update CHANGELOG.md with new bundle sizes
  */
 
-const additionalContent = `### Size
+const additionalContent = `### Stats
 * ${getOutputs().uncompressed}
 * ${getOutputs().gzip}`;
 
