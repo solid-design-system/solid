@@ -3,6 +3,10 @@ on:
   pull_request:
     types: [opened, synchronize]
 
+permissions:
+  actions: write
+  checks: write
+
 jobs:
   file_size_check:
     runs-on: ubuntu-latest
