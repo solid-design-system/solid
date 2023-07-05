@@ -154,7 +154,7 @@
       [
         "@semantic-release/changelog",
         {
-          "changelogFile": "src/docs/General/changelog.mdx"
+          "changelogFile": "src/docs/General/Changelog.mdx"
         }
       ],
       [
@@ -168,7 +168,7 @@
         {
           "message": "chore(release/components): ${nextRelease.version} [skip actions]\n\n${nextRelease.notes}",
           "assets": [
-            "src/docs/General/changelog.mdx",
+            "src/docs/General/Changelog.mdx",
             "package.json"
           ]
         }
