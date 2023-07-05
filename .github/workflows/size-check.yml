@@ -33,7 +33,7 @@ jobs:
       - name: Calculate package size
         id: calc_size
         run: |
-          OUTPUT=$(cd packages/components && node -e "import('./scripts/node-get-sizes.mjs').then(({ getOutputs }) => { console.log(getOutputs().uncompressed); });")
+          OUTPUT=$(cd packages/components && node -e "import('./scripts/node-get-sizes.mjs').then(({ getOutputs }) => { console.log(getOutputs().uncompressed.replace(' (uncompressed)', '')); });")
           echo "::set-output name=package_size::$OUTPUT"
 
       - name: Report size comparison
@@ -43,4 +43,4 @@ jobs:
           name: comparison
           conclusion: ${{ job.status }}
           output: |
-            {"title":"📦 ${{ steps.calc_size.outputs.package_size }}", "summary":"${{ steps.calc_size.outputs.package_size }}"}
+            {"title":"ℹ️ ${{ steps.calc_size.outputs.package_size }}", "summary":"${{ steps.calc_size.outputs.package_size }}"}
