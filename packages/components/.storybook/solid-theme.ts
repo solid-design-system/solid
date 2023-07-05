@@ -4,7 +4,7 @@ export default create({
   base: 'light',
   brandTitle: 'Solid Components by Union Investment',
   brandUrl: 'https://union-investment.de',
-  brandImage: 'https://cdn.dam.union-investment.de/original/454499_UI_Logo_RGB.svg',
+  brandImage: './images/sds-signet.png',
   brandTarget: '_self',
 
   colorPrimary: '#00358e',
