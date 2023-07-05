@@ -36,4 +36,4 @@ export const getSizes = () => {
     uncompressed: newRealSize,
     gzip: newGzipSize
   };
-}
+};
