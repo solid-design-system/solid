@@ -3,7 +3,7 @@ on:
   pull_request:
     types: [opened, synchronize]
 
-permissions: read-all
+permissions: write-all
 
 jobs:
   file_size_check:
@@ -36,6 +36,11 @@ jobs:
           OUTPUT=$(cd packages/components && node -e "import('./scripts/node-get-sizes.mjs').then(({ getOutputs }) => { console.log(getOutputs().uncompressed); });")
           echo "::set-output name=package_size::$OUTPUT"
 
+      - uses: mshick/add-pr-comment@v2
+        with:
+          message: |
+            ${{ steps.calc_size.outputs.package_size }}
+            
       - name: Report size comparison
         uses: LouisBrunner/checks-action@v1.6.1
         with:
