@@ -28,6 +28,17 @@ jobs:
       - name: build
         run: cd packages/components && pnpm build.components
 
+      - name: Calculate package size
+        id: calc_size
+        run: |
+          OUTPUT=$(cd packages/components && node -e "import('./scripts/node-get-sizes.mjs').then(({ getOutputs }) => { console.log(getOutputs().uncompressed); });")
+          echo "::set-output name=package_size::$OUTPUT"
+
       - name: Report size comparison
-        run: cd packages/components && node -e "import('./scripts/node-get-sizes.mjs').then(({ getOutputs }) => { console.log(getOutputs().uncompressed); });"
-        shell: bash
+        uses: LouisBrunner/checks-action@v1.6.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          name: Size Checker
+          conclusion: ${{ job.status }}
+          output: |
+            {"summary":"${{ steps.calc_size.outputs.package_size }}"}
