@@ -148,7 +148,7 @@ export default class SdAccordion extends SolidElement {
 
   render() {
     return html`
-      <div part="base" class="border border-neutral-400">
+      <div part="base" class="outline outline-1 outline-neutral-400 -outline-offset-1">
         <header
           part="header"
           id="header"
