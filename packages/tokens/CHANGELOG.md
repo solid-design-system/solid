@@ -1,3 +1,10 @@
+# [@solid-design-system/tokens-v1.1.1](https://github.com/solid-design-system/solid/compare/tokens/1.1.0...tokens/1.1.1) (2023-07-06)
+
+
+### Bug Fixes
+
+* 🐛 improve spinner a11y ([#222](https://github.com/solid-design-system/solid/issues/222)) ([ce65ce0](https://github.com/solid-design-system/solid/commit/ce65ce0cab5c58861529895ecd08c22ca005da7f))
+
 # [@solid-design-system/tokens-v1.1.0](https://github.com/solid-design-system/solid/compare/tokens/1.0.0...tokens/1.1.0) (2023-07-04)
 
 
