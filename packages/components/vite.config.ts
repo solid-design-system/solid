@@ -25,8 +25,9 @@ export default (({ command }: { command: string }) => {
           ? customElementConfig
           : {
               ...customElementConfig,
-              plugins: customElementConfig.plugins.filter(plugin =>
-                ['solid-custom-tags', 'remove-html-members'].includes(plugin.name)
+              plugins: customElementConfig.plugins.filter(
+                plugin => ['solid-custom-tags', 'remove-html-members'].includes(plugin.name)
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
               ) as any[]
             }
       )

@@ -2,7 +2,7 @@ import { readFileSync } from 'fs';
 import path from 'path';
 
 // Path to the file
-const filePath = path.resolve(__dirname, '../pnpm-lock.yaml');
+const filePath = path.resolve(__dirname, '../../../pnpm-lock.yaml');
 
 export default () => {
   return {
