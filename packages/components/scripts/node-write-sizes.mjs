@@ -1,5 +1,18 @@
-import fs from 'fs';
+/**
+ * This script updates CHANGELOG.md and package.json with new bundle sizes
+ * for each new version of @solid-design-system/components package.
+ *
+ * The main steps are:
+ *
+ * 1. Append new bundle sizes to the CHANGELOG.md file for the current version.
+ *
+ * 2. Update the package.json file with new bundle sizes.
+ *
+ * This script utilizes getOutputs() and getSizes() from './node-get-sizes.mjs'
+ */
+
 import { getOutputs, getSizes } from './node-get-sizes.mjs';
+import fs from 'fs';
 
 /**
  * 1. Update CHANGELOG.md with new bundle sizes
@@ -44,7 +57,7 @@ console.log('📝 Updated CHANGELOG.md with new bundle sizes.');
  * 2. Update package.json with new bundle sizes
  */
 
-let packageJson = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
+const packageJson = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
 
 packageJson.meta.bundleSizeInKb = getSizes();
 

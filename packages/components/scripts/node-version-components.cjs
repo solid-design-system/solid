@@ -1,3 +1,15 @@
+/**
+ * This plugin automates the process of versioning components by appending
+ * version numbers to component names and copying directories to new locations.
+ *
+ * The two main functions are:
+ *
+ * versionComponents(source, destination): Copies a source directory to a new
+ * destination and appends version numbers to component names.
+ *
+ * versionIdeData(): Adjusts IDE data for the versioned components.
+ */
+
 const fs = require('fs');
 const path = require('path');
 
