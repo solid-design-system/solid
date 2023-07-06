@@ -28,7 +28,7 @@ jobs:
               run: pnpm i
 
             - name: format.verify
-              run: format.verify
+              run: pnpm format.verify
 
             - name: lint.verify
               run: pnpm lint.verify
