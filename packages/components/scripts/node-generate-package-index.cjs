@@ -1,3 +1,13 @@
+/**
+ * Purpose of this script:
+ *
+ * In our package build step, we can't use Vite's glob import feature to import all components.
+ * This script will generate a file based on the original file, replaces Vites glob and instead replaces
+ * it with a list of all components and exports them.
+ *
+ * This script is run in the package build step.
+ */
+
 const fs = require('fs');
 const path = require('path');
 
