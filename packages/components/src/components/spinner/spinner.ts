@@ -31,7 +31,7 @@ export default class SdSpinner extends SolidElement {
             currentColor: ''
           }[this.color]
         )}
-        aria-valuetext=${this.localize.term('loading')}
+        aria-label=${this.localize.term('loading')}
       >
         <path
           fill-rule="evenodd"

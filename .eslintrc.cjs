@@ -20,6 +20,7 @@ module.exports = {
     'prettier'
   ],
   env: {
+    node: true,
     es2021: true,
     browser: true
   },
@@ -36,8 +37,7 @@ module.exports = {
       parser: '@typescript-eslint/parser',
       parserOptions: {
         sourceType: 'module',
-        project: './tsconfig.json',
-        tsconfigRootDir: __dirname
+        project: ['./packages/components/tsconfig.json']
       },
       files: ['*.ts'],
       rules: {
