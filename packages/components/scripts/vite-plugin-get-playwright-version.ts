@@ -21,6 +21,7 @@ export default () => {
       if (id === 'playwright-version') {
         return id; // this means we are handling this id
       }
+      return null;
     },
     load(id: string) {
       if (id === 'playwright-version') {
@@ -35,6 +36,7 @@ export default () => {
         const version = match[1];
         return `export default "${version}";`;
       }
+      return null;
     }
   };
 };
