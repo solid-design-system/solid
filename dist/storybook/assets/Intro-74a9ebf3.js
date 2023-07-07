@@ -1,3 +1,0 @@
-import{j as t}from"./jsx-runtime-6eef64cc.js";import{u as s}from"./index-dc1d5b46.js";import"./index-c013ead5.js";import"./_commonjsHelpers-725317a4.js";const a="https://solid-design-system.union-investment.com";function o(n){const e=Object.assign({h1:"h1",p:"p"},s(),n.components);return t.jsxs(t.Fragment,{children:[t.jsx(e.h1,{id:"intro",children:"Intro"}),`
-`,t.jsx(e.p,{children:"This is the documentation for the Solid Design System. It contains all the information you need to use the components and styles in your project."})]})}function d(n={}){const{wrapper:e}=Object.assign({},s(),n.components);return e?t.jsx(e,Object.assign({},n,{children:t.jsx(o,n)})):o(n)}export{a as cdnBase,d as default};
-//# sourceMappingURL=Intro-74a9ebf3.js.map

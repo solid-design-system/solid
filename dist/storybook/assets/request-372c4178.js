@@ -1,2 +1,0 @@
-import{requestInclude as i}from"./request-f73f8173.js";const s=new Map;async function r(t){if(s.has(t))return s.get(t);const e=await i(t),o={ok:e.ok,status:e.status,svg:null};if(e.ok){const a=document.createElement("div");a.innerHTML=e.html;const n=a.firstElementChild;o.svg=(n==null?void 0:n.tagName.toLowerCase())==="svg"?n.outerHTML:""}return s.set(t,o),o}export{r as requestIcon};
-//# sourceMappingURL=request-372c4178.js.map

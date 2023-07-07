@@ -46,6 +46,27 @@ export const States = {
 };
 
 /**
+ * An accordion item can either be collapsed or open.
+ */
+export const SummaryLength = {
+  parameters: { controls: { exclude: 'summary' } },
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        y: { type: 'slot', name: 'summary', 
+        values: [
+          {value: '<slot slot="summary">Accordion</slot>', title: 'summary-short'},
+          {value: '<slot slot="summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</slot>', title: 'summary-long'}
+        ] }
+      },
+      args,
+      constants: [{ type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' },
+      { type: 'slot', name: 'summary', value: '<slot-comp slot="summary">Test</slot-comp>`' }]
+    });
+  }
+};
+
+/**
  * Use the expand-icon and collapse-icon slots to change the expand and collapse icons, respectively.
  * To disable the animation, override the rotate property on the summary-icon part as shown below:
  * ```

@@ -161,4 +161,56 @@ describe('<sd-accordion>', () => {
     expect(hideHandler).to.have.been.calledOnce;
     expect(el.open).to.be.true;
   });
+
+  it('should toggle accordion when Enter key is pressed on the summary', async () => {
+    const el = await fixture<SdAccordion>(html`
+      <sd-accordion>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat.
+      </sd-accordion>
+    `);
+    const summary = el.shadowRoot!.querySelector<HTMLElement>('[part~="header"]')!;
+    const showHandler = sinon.spy();
+    const hideHandler = sinon.spy();
+
+    el.addEventListener('sd-show', showHandler);
+    el.addEventListener('sd-hide', hideHandler);
+
+    // Simulate Enter key press
+    const enterEvent = new KeyboardEvent('keydown', { key: 'Enter' });
+    summary.dispatchEvent(enterEvent);
+
+    await waitUntil(() => showHandler.calledOnce || hideHandler.calledOnce);
+
+    expect(showHandler.calledOnce).to.be.true;
+    expect(hideHandler.calledOnce).to.be.false;
+    expect(el.open).to.be.true;
+  });
+
+  it('should toggle accordion when Spacebar key is pressed on the summary', async () => {
+    const el = await fixture<SdAccordion>(html`
+      <sd-accordion>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat.
+      </sd-accordion>
+    `);
+    const summary = el.shadowRoot!.querySelector<HTMLElement>('[part~="header"]')!;
+    const showHandler = sinon.spy();
+    const hideHandler = sinon.spy();
+
+    el.addEventListener('sd-show', showHandler);
+    el.addEventListener('sd-hide', hideHandler);
+
+    // Simulate Spacebar key press
+    const spacebarEvent = new KeyboardEvent('keydown', { key: ' ' });
+    summary.dispatchEvent(spacebarEvent);
+
+    await waitUntil(() => showHandler.calledOnce || hideHandler.calledOnce);
+
+    expect(showHandler.calledOnce).to.be.true;
+    expect(hideHandler.calledOnce).to.be.false;
+    expect(el.open).to.be.true;
+  });
 });

@@ -1,1 +1,0 @@
-import{i as o}from"./lit-element.js";import{c as s}from"./component.styles.js";const t=o`${s}:host{display:block}`;export{t as default};

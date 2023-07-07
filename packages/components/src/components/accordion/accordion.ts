@@ -148,17 +148,18 @@ export default class SdAccordion extends SolidElement {
 
   render() {
     return html`
-      <div part="base" class="outline outline-1 outline-neutral-400 -outline-offset-1">
+      <div part="base" class='outline outline-1 outline-neutral-400 -outline-offset-1'>
         <header
           part="header"
           id="header"
           class=${cx(
-            'flex text-base gap-4 font-bold items-center cursor-pointer select-none px-4 py-3 focus:focus-outline',
+            'flex text-base gap-4 font-bold items-center cursor-pointer select-none px-4 py-3 focus:outline focus:outline-primary focus:outline-2 focus:outline-offset-2 focus-visible:focus',
             this.open ? 'bg-white text-accent hover:bg-neutral-200' : 'text-primary bg-neutral-100 hover:bg-neutral-200'
           )}
           role="button"
           aria-expanded=${this.open ? 'true' : 'false'}
           aria-controls="content"
+          tabindex=0
           @click=${this.handleSummaryClick}
           @keydown=${this.handleSummaryKeyDown}
         >

@@ -1,1 +1,0 @@
-const t=new Map;function e(e,s="cors"){if(t.has(e))return t.get(e);const n=fetch(e,{mode:s}).then((async t=>({ok:t.ok,status:t.status,html:await t.text()})));return t.set(e,n),n}export{e as requestInclude};
