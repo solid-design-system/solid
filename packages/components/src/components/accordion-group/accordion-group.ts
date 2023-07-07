@@ -1,6 +1,6 @@
 import '../accordion/accordion';
 import { css, html } from 'lit';
-import { customElement, property, queryAll, queryAssignedElements } from 'lit/decorators.js';
+import { customElement, property, queryAssignedElements } from 'lit/decorators.js';
 import componentStyles from '../../styles/component.styles';
 import SolidElement from '../../internal/solid-element';
 
@@ -18,7 +18,6 @@ import SolidElement from '../../internal/solid-element';
  */
 @customElement('sd-accordion-group')
 export default class SdAccordionGroup extends SolidElement {
-  @queryAll('sd-accordion') accordions: HTMLElement[];
   @queryAssignedElements({ selector: 'sd-accordion' }) _accordionsInDefaultSlot!: HTMLElement[];
 
   /** Closes other accordions. */

@@ -163,7 +163,7 @@ export default class SdAccordion extends SolidElement {
           @click=${this.handleSummaryClick}
           @keydown=${this.handleSummaryKeyDown}
         >
-          <slot name="summary" part="summary" class="flex flex-auto items-center ">${this.summary}</slot>
+          <slot name="summary" part="summary" class="flex flex-auto items-center text-left">${this.summary}</slot>
 
           <span
             part="summary-icon"
