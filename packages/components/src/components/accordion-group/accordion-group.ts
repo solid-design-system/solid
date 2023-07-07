@@ -8,7 +8,7 @@ import SolidElement from '../../internal/solid-element';
  * @summary Short summary of the component's intended use.
  * @documentation https://solid.union-investment.com/[storybook-link]/accordion-group
  * @status experimental
- * @since 1.4
+ * @since 1.1
  *
  * @dependency sd-accordion
  *
