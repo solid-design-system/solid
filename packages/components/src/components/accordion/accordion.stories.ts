@@ -46,7 +46,7 @@ export const States = {
 };
 
 /**
- * An accordion item can either be collapsed or open.
+ * The summary can have multiple lines.
  */
 export const SummaryLength = {
   parameters: { controls: { exclude: 'summary' } },
@@ -57,11 +57,11 @@ export const SummaryLength = {
           type: 'slot',
           name: 'summary',
           values: [
-            { value: '<slot slot="summary">Accordion</slot>', title: 'summary-short' },
+            { value: '<slot slot="summary">Lorem ipsum.</slot>', title: 'short' },
             {
               value:
                 '<slot slot="summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</slot>',
-              title: 'summary-long'
+              title: 'long'
             }
           ]
         }
