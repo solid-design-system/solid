@@ -53,15 +53,24 @@ export const SummaryLength = {
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        y: { type: 'slot', name: 'summary', 
-        values: [
-          {value: '<slot slot="summary">Accordion</slot>', title: 'summary-short'},
-          {value: '<slot slot="summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</slot>', title: 'summary-long'}
-        ] }
+        y: {
+          type: 'slot',
+          name: 'summary',
+          values: [
+            { value: '<slot slot="summary">Accordion</slot>', title: 'summary-short' },
+            {
+              value:
+                '<slot slot="summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</slot>',
+              title: 'summary-long'
+            }
+          ]
+        }
       },
       args,
-      constants: [{ type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' },
-      { type: 'slot', name: 'summary', value: '<slot-comp slot="summary">Test</slot-comp>`' }]
+      constants: [
+        { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' },
+        { type: 'slot', name: 'summary', value: '<slot-comp slot="summary">Test</slot-comp>`' }
+      ]
     });
   }
 };

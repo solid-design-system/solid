@@ -13,7 +13,7 @@ import SolidElement from '../../internal/solid-element';
  * @summary Accordion shows a brief summary and expands to show additional content.
  * @documentation https://solid.union-investment.com/[storybook-link]/accordion
  * @status stable
- * @since 2.0
+ * @since 1.1
  *
  * @dependency sd-icon
  *
@@ -148,7 +148,7 @@ export default class SdAccordion extends SolidElement {
 
   render() {
     return html`
-      <div part="base" class='outline outline-1 outline-neutral-400 -outline-offset-1'>
+      <div part="base" class="outline outline-1 outline-neutral-400 -outline-offset-1">
         <header
           part="header"
           id="header"
@@ -159,7 +159,7 @@ export default class SdAccordion extends SolidElement {
           role="button"
           aria-expanded=${this.open ? 'true' : 'false'}
           aria-controls="content"
-          tabindex=0
+          tabindex="0"
           @click=${this.handleSummaryClick}
           @keydown=${this.handleSummaryKeyDown}
         >
