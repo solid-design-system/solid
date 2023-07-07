@@ -30,7 +30,7 @@ fs.readFile('./src/docs/General/Changelog.mdx', 'utf8', (err, data) => {
 
   // Check if the new version header exists
   const newVersionHeader = `# [@solid-design-system/components-v${newVersion}]`;
-  const nextVersionHeaderRegex = /# @solid-design-system\/components-v\d+\.\d+\.\d+/g;
+  const nextVersionHeaderRegex = /# \[@solid-design-system\/components-v\d+\.\d+\.\d+/g;
 
   let result;
 
