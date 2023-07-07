@@ -37,11 +37,11 @@ export default class SdAccordionGroup extends SolidElement {
   private handleAccordionShow = (event: Event) => {
     if (this.closeOthers) {
       this._accordionsInDefaultSlot.forEach(accordionElement => {
-        // Check if event was triggered accordionElement
+        // Break if accordionElement sent the event
         if (accordionElement === event.target) {
           return;
         }
-        // Check if accordionElement is inside this group
+        // Break if accordionElement is outside this group
         if (accordionElement.parentNode !== (event.target as HTMLUnknownElement).parentNode) {
           return;
         }
