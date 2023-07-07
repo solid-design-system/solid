@@ -1,44 +1,42 @@
 // cspell:dictionaries lorem-ipsum
 import { expect, fixture, html, waitUntil } from '@open-wc/testing';
 import sinon from 'sinon';
-import type SdDetails from './details';
+import type SdAccordion from './accordion';
 
-describe('<sd-details>', () => {
+describe('<sd-accordion>', () => {
   it('should be visible with the open attribute', async () => {
-    const el = await fixture<SdDetails>(html`
-      <sd-details open>
+    const el = await fixture<SdAccordion>(html`
+      <sd-accordion open>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
         magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
         consequat.
-      </sd-details>
+      </sd-accordion>
     `);
-    const body = el.shadowRoot!.querySelector<HTMLElement>('[part="body"]')!;
 
-    expect(body.hidden).to.be.false;
+    expect(el.shadowRoot!.querySelector<HTMLElement>('[part~="content"]')!.hidden).to.be.false;
   });
 
   it('should not be visible without the open attribute', async () => {
-    const el = await fixture<SdDetails>(html`
-      <sd-details>
+    const el = await fixture<SdAccordion>(html`
+      <sd-accordion>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
         magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
         consequat.
-      </sd-details>
+      </sd-accordion>
     `);
-    const body = el.shadowRoot!.querySelector<HTMLElement>('[part="body"]')!;
 
-    expect(body.hidden).to.be.true;
+    expect(el.shadowRoot!.querySelector<HTMLElement>('[part~="content"]')!.hidden).to.be.true;
   });
 
   it('should emit sd-show and sd-after-show when calling show()', async () => {
-    const el = await fixture<SdDetails>(html`
-      <sd-details>
+    const el = await fixture<SdAccordion>(html`
+      <sd-accordion>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
         magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
         consequat.
-      </sd-details>
+      </sd-accordion>
     `);
-    const body = el.shadowRoot!.querySelector<HTMLElement>('[part="body"]')!;
+    const content = el.shadowRoot!.querySelector<HTMLElement>('[part~="content"]')!;
     const showHandler = sinon.spy();
     const afterShowHandler = sinon.spy();
 
@@ -51,18 +49,18 @@ describe('<sd-details>', () => {
 
     expect(showHandler).to.have.been.calledOnce;
     expect(afterShowHandler).to.have.been.calledOnce;
-    expect(body.hidden).to.be.false;
+    expect(content.hidden).to.be.false;
   });
 
   it('should emit sd-hide and sd-after-hide when calling hide()', async () => {
-    const el = await fixture<SdDetails>(html`
-      <sd-details open>
+    const el = await fixture<SdAccordion>(html`
+      <sd-accordion open>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
         magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
         consequat.
-      </sd-details>
+      </sd-accordion>
     `);
-    const body = el.shadowRoot!.querySelector<HTMLElement>('[part="body"]')!;
+    const content = el.shadowRoot!.querySelector<HTMLElement>('[part~="content"]')!;
     const hideHandler = sinon.spy();
     const afterHideHandler = sinon.spy();
 
@@ -75,18 +73,18 @@ describe('<sd-details>', () => {
 
     expect(hideHandler).to.have.been.calledOnce;
     expect(afterHideHandler).to.have.been.calledOnce;
-    expect(body.hidden).to.be.true;
+    expect(content.hidden).to.be.true;
   });
 
   it('should emit sd-show and sd-after-show when setting open = true', async () => {
-    const el = await fixture<SdDetails>(html`
-      <sd-details>
+    const el = await fixture<SdAccordion>(html`
+      <sd-accordion>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
         magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
         consequat.
-      </sd-details>
+      </sd-accordion>
     `);
-    const body = el.shadowRoot!.querySelector<HTMLElement>('[part="body"]')!;
+    const content = el.shadowRoot!.querySelector<HTMLElement>('[part~="content"]')!;
     const showHandler = sinon.spy();
     const afterShowHandler = sinon.spy();
 
@@ -99,18 +97,18 @@ describe('<sd-details>', () => {
 
     expect(showHandler).to.have.been.calledOnce;
     expect(afterShowHandler).to.have.been.calledOnce;
-    expect(body.hidden).to.be.false;
+    expect(content.hidden).to.be.false;
   });
 
   it('should emit sd-hide and sd-after-hide when setting open = false', async () => {
-    const el = await fixture<SdDetails>(html`
-      <sd-details open>
+    const el = await fixture<SdAccordion>(html`
+      <sd-accordion open>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
         magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
         consequat.
-      </sd-details>
+      </sd-accordion>
     `);
-    const body = el.shadowRoot!.querySelector<HTMLElement>('[part="body"]')!;
+    const content = el.shadowRoot!.querySelector<HTMLElement>('[part~="content"]')!;
     const hideHandler = sinon.spy();
     const afterHideHandler = sinon.spy();
 
@@ -123,16 +121,16 @@ describe('<sd-details>', () => {
 
     expect(hideHandler).to.have.been.calledOnce;
     expect(afterHideHandler).to.have.been.calledOnce;
-    expect(body.hidden).to.be.true;
+    expect(content.hidden).to.be.true;
   });
 
   it('should not open when preventing sd-show', async () => {
-    const el = await fixture<SdDetails>(html`
-      <sd-details>
+    const el = await fixture<SdAccordion>(html`
+      <sd-accordion>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
         magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
         consequat.
-      </sd-details>
+      </sd-accordion>
     `);
     const showHandler = sinon.spy((event: CustomEvent) => event.preventDefault());
 
@@ -146,12 +144,12 @@ describe('<sd-details>', () => {
   });
 
   it('should not close when preventing sd-hide', async () => {
-    const el = await fixture<SdDetails>(html`
-      <sd-details open>
+    const el = await fixture<SdAccordion>(html`
+      <sd-accordion open>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
         magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
         consequat.
-      </sd-details>
+      </sd-accordion>
     `);
     const hideHandler = sinon.spy((event: CustomEvent) => event.preventDefault());
 
@@ -164,26 +162,55 @@ describe('<sd-details>', () => {
     expect(el.open).to.be.true;
   });
 
-  it('should be the correct size after opening more than one instance', async () => {
-    const el = await fixture<SdDetails>(html`
-      <div>
-        <sd-details>
-          <div style="height: 200px;"></div>
-        </sd-details>
-        <sd-details>
-          <div style="height: 400px;"></div>
-        </sd-details>
-      </div>
+  it('should toggle accordion when Enter key is pressed on the summary', async () => {
+    const el = await fixture<SdAccordion>(html`
+      <sd-accordion>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat.
+      </sd-accordion>
     `);
-    const first = el.querySelectorAll('sd-details')[0];
-    const second = el.querySelectorAll('sd-details')[1];
-    const firstBody = first.shadowRoot!.querySelector('[part="body"]')!;
-    const secondBody = second.shadowRoot!.querySelector('[part="body"]')!;
+    const summary = el.shadowRoot!.querySelector<HTMLElement>('[part~="header"]')!;
+    const showHandler = sinon.spy();
+    const hideHandler = sinon.spy();
 
-    await first.show();
-    await second.show();
+    el.addEventListener('sd-show', showHandler);
+    el.addEventListener('sd-hide', hideHandler);
 
-    expect(firstBody.clientHeight).to.equal(232); // 200 + 16px + 16px (vertical padding)
-    expect(secondBody.clientHeight).to.equal(432); // 400 + 16px + 16px (vertical padding)
+    // Simulate Enter key press
+    const enterEvent = new KeyboardEvent('keydown', { key: 'Enter' });
+    summary.dispatchEvent(enterEvent);
+
+    await waitUntil(() => showHandler.calledOnce || hideHandler.calledOnce);
+
+    expect(showHandler.calledOnce).to.be.true;
+    expect(hideHandler.calledOnce).to.be.false;
+    expect(el.open).to.be.true;
+  });
+
+  it('should toggle accordion when Spacebar key is pressed on the summary', async () => {
+    const el = await fixture<SdAccordion>(html`
+      <sd-accordion>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat.
+      </sd-accordion>
+    `);
+    const summary = el.shadowRoot!.querySelector<HTMLElement>('[part~="header"]')!;
+    const showHandler = sinon.spy();
+    const hideHandler = sinon.spy();
+
+    el.addEventListener('sd-show', showHandler);
+    el.addEventListener('sd-hide', hideHandler);
+
+    // Simulate Spacebar key press
+    const spacebarEvent = new KeyboardEvent('keydown', { key: ' ' });
+    summary.dispatchEvent(spacebarEvent);
+
+    await waitUntil(() => showHandler.calledOnce || hideHandler.calledOnce);
+
+    expect(showHandler.calledOnce).to.be.true;
+    expect(hideHandler.calledOnce).to.be.false;
+    expect(el.open).to.be.true;
   });
 });

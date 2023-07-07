@@ -1,63 +1,59 @@
 import '../icon/icon';
 import { animateTo, shimKeyframesHeightAuto, stopAnimations } from '../../internal/animate';
+import { css, html } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry';
-import { html } from 'lit';
 import { LocalizeController } from '../../utilities/localize';
 import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch';
-import SolidElement from '../../internal/solid-element';
-import { css } from 'lit';
 import cx from 'classix';
+import SolidElement from '../../internal/solid-element';
 
 /**
- * @summary Details show a brief summary and expand to show additional content.
- * @documentation https://solid.union-investment.com/[storybook-link]/details
+ * @summary Accordion shows a brief summary and expands to show additional content.
+ * @documentation https://solid.union-investment.com/[storybook-link]/accordion
  * @status stable
- * @since 1.0
+ * @since 1.1
  *
  * @dependency sd-icon
  *
- * @slot - The details' main content.
- * @slot summary - The details' summary. Alternatively, you can use the `summary` attribute.
+ * @slot - The accordion main content.
+ * @slot summary - The accordion summary. Alternatively, you can use the `summary` attribute.
  * @slot expand-icon - Optional expand icon to use instead of the default. Works best with `<sd-icon>`.
  * @slot collapse-icon - Optional collapse icon to use instead of the default. Works best with `<sd-icon>`.
  *
- * @event sd-show - Emitted when the details opens.
- * @event sd-after-show - Emitted after the details opens and all animations are complete.
- * @event sd-hide - Emitted when the details closes.
- * @event sd-after-hide - Emitted after the details closes and all animations are complete.
+ * @event sd-show - Emitted when the accordion opens.
+ * @event sd-after-show - Emitted after the accordion opens and all animations are complete.
+ * @event sd-hide - Emitted when the accordion closes.
+ * @event sd-after-hide - Emitted after the accordion closes and all animations are complete.
  *
  * @csspart base - The component's base wrapper.
  * @csspart header - The header that wraps both the summary and the expand/collapse icon.
  * @csspart summary - The container that wraps the summary.
  * @csspart summary-icon - The container that wraps the expand/collapse icons.
- * @csspart content - The details content.
+ * @csspart content - The accordion content.
  *
- * @animation details.show - The animation to use when showing details. You can use `height: auto` with this animation.
- * @animation details.hide - The animation to use when hiding details. You can use `height: auto` with this animation.
+ * @animation accordion.show - The animation to use when showing accordion. You can use `height: auto` with this animation.
+ * @animation accordion.hide - The animation to use when hiding accordion. You can use `height: auto` with this animation.
  */
-@customElement('sd-details')
-export default class SdDetails extends SolidElement {
+@customElement('sd-accordion')
+export default class SdAccordion extends SolidElement {
   // static styles: CSSResultGroup = styles;
 
   private readonly localize = new LocalizeController(this);
 
-  @query('[part="base"]') details: HTMLElement;
+  @query('[part="base"]') accordion: HTMLElement;
   @query('[part="header"]') header: HTMLElement;
-  @query('[part="body"]') body: HTMLElement;
+  @query('[part="content"]') body: HTMLElement;
 
   /**
-   * Indicates whether or not the details is open. You can toggle this attribute to show and hide the details, or you
-   * can use the `show()` and `hide()` methods and this attribute will reflect the details' open state.
+   * Indicates whether or not the accordion is open. You can toggle this attribute to show and hide the accordion, or you
+   * can use the `show()` and `hide()` methods and this attribute will reflect the accordion' open state.
    */
   @property({ type: Boolean, reflect: true }) open = false;
 
   /** The summary to show in the header. If you need to display HTML, use the `summary` slot instead. */
   @property() summary: string;
-
-  /** Disables the details so it can't be toggled. */
-  @property({ type: Boolean, reflect: true }) disabled = false;
 
   firstUpdated() {
     this.body.hidden = !this.open;
@@ -65,14 +61,11 @@ export default class SdDetails extends SolidElement {
   }
 
   private handleSummaryClick() {
-    if (!this.disabled) {
-      if (this.open) {
-        this.hide();
-      } else {
-        this.show();
-      }
-
-      this.header.focus();
+    this.header.focus();
+    if (this.open) {
+      this.hide();
+    } else {
+      this.show();
     }
   }
 
@@ -111,7 +104,7 @@ export default class SdDetails extends SolidElement {
       await stopAnimations(this.body);
       this.body.hidden = false;
 
-      const { keyframes, options } = getAnimation(this, 'details.show', { dir: this.localize.dir() });
+      const { keyframes, options } = getAnimation(this, 'accordion.show', { dir: this.localize.dir() });
       await animateTo(this.body, shimKeyframesHeightAuto(keyframes, this.body.scrollHeight), options);
       this.body.style.height = 'auto';
 
@@ -126,7 +119,7 @@ export default class SdDetails extends SolidElement {
 
       await stopAnimations(this.body);
 
-      const { keyframes, options } = getAnimation(this, 'details.hide', { dir: this.localize.dir() });
+      const { keyframes, options } = getAnimation(this, 'accordion.hide', { dir: this.localize.dir() });
       await animateTo(this.body, shimKeyframesHeightAuto(keyframes, this.body.scrollHeight), options);
       this.body.hidden = true;
       this.body.style.height = 'auto';
@@ -135,98 +128,93 @@ export default class SdDetails extends SolidElement {
     }
   }
 
-  /** Shows the details. */
+  /** Shows the accordion. */
   async show() {
-    if (this.open || this.disabled) {
+    if (this.open) {
       return undefined;
     }
-
     this.open = true;
     return waitForEvent(this, 'sd-after-show');
   }
 
-  /** Hides the details */
+  /** Hides the accordion */
   async hide() {
-    if (!this.open || this.disabled) {
+    if (!this.open) {
       return undefined;
     }
-
     this.open = false;
     return waitForEvent(this, 'sd-after-hide');
   }
 
   render() {
-    const isRtl = this.localize.dir() === 'rtl';
-
     return html`
-      <div
-        part="base"
-        class=${cx(
-      'border border-neutral-300 bg-white overflow [overflow-anchor:none]',
-      this.disabled && 'disabled',
-    )}
-      >
+      <div part="base" class="outline outline-1 outline-neutral-400 -outline-offset-1">
         <header
           part="header"
           id="header"
-          class=${cx('flex text-base gap-4 font-bold items-center cursor-pointer select-none px-4 py-3 focus:outline-none focus-visible:focus',
-      this.disabled && 'focus-visible:outline-none shadow-none',
-      this.open ? 'bg-white text-accent hover:bg-neutral-200' : 'text-primary bg-neutral-100 hover:bg-neutral-200')
-      }
+          class=${cx(
+            'flex text-base gap-4 font-bold items-center cursor-pointer select-none px-4 py-3 focus:outline focus:outline-primary focus:outline-2 focus:outline-offset-2 focus-visible:focus',
+            this.open ? 'bg-white text-accent hover:bg-neutral-200' : 'text-primary bg-neutral-100 hover:bg-neutral-200'
+          )}
           role="button"
           aria-expanded=${this.open ? 'true' : 'false'}
           aria-controls="content"
-          aria-disabled=${this.disabled ? 'true' : 'false'}
-          tabindex=${this.disabled ? '-1' : '0'}
+          tabindex="0"
           @click=${this.handleSummaryClick}
           @keydown=${this.handleSummaryKeyDown}
         >
-          <slot name="summary" part="summary" class="flex flex-auto items-center">${this.summary}</slot>
+          <slot name="summary" part="summary" class="flex flex-auto items-center text-left">${this.summary}</slot>
 
-          <span part="summary-icon" class=${cx(
-        'flex flex-grow-0 flex-shrink-0 flex-auto items-center transition ease-in-out',
-        this.open && 'rotate-90')}>
+          <span
+            part="summary-icon"
+            class=${cx(
+              'flex flex-grow-0 flex-shrink-0 flex-auto items-center transition-all ease-in-out duration-300 text-xl',
+              this.open && 'rotate-180'
+            )}
+          >
             <slot name="expand-icon" class=${cx(this.open && 'hidden')}>
-              <sd-icon library="system" name=${isRtl ? 'chevron-left' : 'chevron-right'}></sd-icon>
+              <sd-icon library="system" name="chevron-down"></sd-icon>
             </slot>
             <slot name="collapse-icon" class=${cx(!this.open && 'hidden')}>
-              <sd-icon library="system" name=${isRtl ? 'chevron-left' : 'chevron-right'}></sd-icon>
+              <sd-icon library="system" name="chevron-down"></sd-icon>
             </slot>
           </span>
         </header>
-        <div part="body" class="overflow-hidden">
-          <slot part="content" id="content" class="block px-4 py-6" role="region" aria-labelledby="header"></slot>
+        <div part="content" id="content" class="overflow-hidden">
+          <slot class="block px-4 py-6" role="region" aria-labelledby="header"></slot>
         </div>
       </div>
     `;
   }
 
   static styles = [
-    ...SolidElement.styles,
-    css`:host { display: block; }`
+    SolidElement.styles,
+    css`
+      :host {
+        display: block;
+      }
+    `
   ];
 }
 
-
-
-setDefaultAnimation('details.show', {
+setDefaultAnimation('accordion.show', {
   keyframes: [
     { height: '0', opacity: '0' },
     { height: 'auto', opacity: '1' }
   ],
-  options: { duration: 250, easing: 'linear' }
+  options: { duration: 300, easing: 'ease' }
 });
 
-setDefaultAnimation('details.hide', {
+setDefaultAnimation('accordion.hide', {
   keyframes: [
     { height: 'auto', opacity: '1' },
     { height: '0', opacity: '0' }
   ],
-  options: { duration: 250, easing: 'linear' }
+  options: { duration: 300, easing: 'ease' }
 });
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sd-details': SdDetails;
+    'sd-accordion': SdAccordion;
   }
 }

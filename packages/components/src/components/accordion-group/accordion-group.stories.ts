@@ -1,0 +1,75 @@
+import '../../solid-components';
+import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
+
+const { argTypes, args, parameters } = storybookDefaults('sd-accordion-group');
+const { generateTemplate } = storybookTemplate('sd-accordion-group');
+
+export default {
+  title: 'Components/sd-accordion-group',
+  component: 'sd-accordion-group',
+  args: {
+    ...args,
+    'default-slot':
+      '<sd-accordion summary="Accordion 1"><slot-comp></slot-comp></sd-accordion><sd-accordion summary="Accordion 2"><slot-comp></slot-comp></sd-accordion><sd-accordion summary="Accordion 3"><slot-comp></slot-comp></sd-accordion>'
+  },
+  argTypes,
+  parameters: { ...parameters }
+};
+
+/**
+ * Vertical stack of sd-accordions.
+ */
+
+export const Default = {
+  render: (args: any) => {
+    return generateTemplate({
+      args,
+      constants: { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' }
+    });
+  }
+};
+
+/**
+ * Set 'close-others' to only have one accordion open.
+ */
+
+export const CloseOthers = {
+  parameters: { controls: { exclude: 'close-others' } },
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        y: { type: 'attribute', name: 'close-others' }
+      },
+      args,
+      constants: { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' }
+    });
+  }
+};
+
+/**
+ * Part of sd-accordion-group
+ */
+
+export const Parts = {
+  parameters: {
+    controls: { exclude: 'base' }
+  },
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        y: {
+          type: 'template',
+          name: 'sd-accordion-group::part(...){outline: solid 2px red}',
+          values: ['base'].map(part => {
+            return {
+              title: 'base',
+              value: `<style>#part-${part} sd-accordion-group::part(${part}){outline: solid 2px red}</style><div id="part-${part}">%TEMPLATE%</div>`
+            };
+          })
+        }
+      },
+      args,
+      constants: { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' }
+    });
+  }
+};
