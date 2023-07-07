@@ -1,3 +1,13 @@
+/**
+ * The `extract-playwright-version` plugin is created for Vite, aiming to dynamically extract
+ * and expose the version number of Playwright from `pnpm-lock.yaml`. This plugin enables Storybook,
+ * which is provided by Vite, to display the current version of Playwright and link to it.
+ *
+ * This plugin:
+ * 1. Resolves the id 'playwright-version' which represents the Playwright version in this context.
+ * 2. Loads the data of this id by reading `pnpm-lock.yaml`, then extracting the version number of Playwright.
+ */
+
 import { readFileSync } from 'fs';
 import path from 'path';
 
@@ -11,7 +21,7 @@ export default () => {
       if (id === 'playwright-version') {
         return id; // this means we are handling this id
       }
-      return;
+      return null;
     },
     load(id: string) {
       if (id === 'playwright-version') {
@@ -26,7 +36,7 @@ export default () => {
         const version = match[1];
         return `export default "${version}";`;
       }
-      return;
+      return null;
     }
   };
 };

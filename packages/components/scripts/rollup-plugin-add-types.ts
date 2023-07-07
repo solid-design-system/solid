@@ -1,6 +1,17 @@
+/**
+ * The addTypesPlugin function provides a plugin that generates TypeScript declaration
+ * files (.d.ts) for JavaScript files in the project. It also performs cleanup operations
+ * such as deleting orphaned .d.ts files and renaming some files.
+ *
+ * This plugin:
+ * 1. Executes the TypeScript compiler to generate declaration files in the target directory.
+ * 2. Deletes 'solid-components.d.ts' and renames 'solid-components.package.d.ts' to 'solid-components.d.ts'.
+ * 3. Recursively processes each directory in the target directory, deleting orphaned .d.ts files and empty directories.
+ */
+
+import { exec } from 'child_process';
 import fs from 'fs';
 import path from 'path';
-import { exec } from 'child_process';
 
 export default function addTypesPlugin() {
   // Define the target directory
@@ -69,7 +80,6 @@ export default function addTypesPlugin() {
       await processDirectory(targetDir);
 
       console.log(`📦 Types generated`);
-      return;
     }
   };
 }

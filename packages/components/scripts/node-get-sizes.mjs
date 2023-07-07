@@ -1,7 +1,15 @@
-import fs from 'fs';
-import { gzipSync } from 'zlib';
+/**
+ * This module calculates the uncompressed and gzipped sizes of the solid-components
+ * bundle, determines the changes compared to the previous sizes, and exports the results.
+ *
+ * The getOutputs() function returns string descriptions of the new sizes and their changes,
+ * while getSizes() function returns the actual numeric sizes.
+ */
 
-let packageJson = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
+import { gzipSync } from 'zlib';
+import fs from 'fs';
+
+const packageJson = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
 
 const getReadableSize = sizeInByte => Math.round(sizeInByte / 1024);
 
