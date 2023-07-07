@@ -1,5 +1,18 @@
-import fs from 'fs';
+/**
+ * This script updates CHANGELOG.md and package.json with new bundle sizes
+ * for each new version of @solid-design-system/components package.
+ *
+ * The main steps are:
+ *
+ * 1. Append new bundle sizes to the CHANGELOG.md file for the current version.
+ *
+ * 2. Update the package.json file with new bundle sizes.
+ *
+ * This script utilizes getOutputs() and getSizes() from './node-get-sizes.mjs'
+ */
+
 import { getOutputs, getSizes } from './node-get-sizes.mjs';
+import fs from 'fs';
 
 /**
  * 1. Update CHANGELOG.md with new bundle sizes
@@ -17,14 +30,14 @@ fs.readFile('./src/docs/General/Changelog.mdx', 'utf8', (err, data) => {
 
   // Check if the new version header exists
   const newVersionHeader = `# [@solid-design-system/components-v${newVersion}]`;
-  const nextVersionHeaderRegex = /# @solid-design-system\/components-v\d+\.\d+\.\d+/g;
+  const nextVersionHeaderRegex = /# \[@solid-design-system\/components-v\d+\.\d+\.\d+/g;
 
   let result;
 
   if (data.startsWith(newVersionHeader)) {
     // If the new version header exists, find the next version header and insert the content before it
     result = data.replace(nextVersionHeaderRegex, (match, offset) => {
-      if (offset === 0) return match;  // Ignore the first match (new version header)
+      if (offset === 0) return match; // Ignore the first match (new version header)
       return additionalContent + match;
     });
   } else {
@@ -44,7 +57,7 @@ console.log('📝 Updated CHANGELOG.md with new bundle sizes.');
  * 2. Update package.json with new bundle sizes
  */
 
-let packageJson = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
+const packageJson = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
 
 packageJson.meta.bundleSizeInKb = getSizes();
 

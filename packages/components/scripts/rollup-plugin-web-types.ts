@@ -1,10 +1,10 @@
-//
-// This script generates a web-types.json file from custom-elements.json for use with WebStorm/PHPStorm
-//
-// Docs: https://github.com/JetBrains/web-types
-//
-import jsonata from 'jsonata';
+/**
+ * This script generates a web-types.json file from custom-elements.json for use with WebStorm/PHPStorm
+ * Docs: https://github.com/JetBrains/web-types
+ */
+
 import fs from 'fs';
+import jsonata from 'jsonata';
 import path from 'path';
 
 export default function webTypesPlugin() {

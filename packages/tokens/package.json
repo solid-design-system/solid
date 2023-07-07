@@ -1,10 +1,11 @@
 {
   "name": "@solid-design-system/tokens",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Solid Design System: Tokens",
   "main": "index.js",
   "scripts": {
     "build": "node scripts/build.mjs",
+    "verify": "pnpm build",
     "postversion": "pnpm build",
     "release": "semantic-release  --tagFormat 'tokens/${version}' -e semantic-release-monorepo",
     "release.dry": "semantic-release -d --tagFormat 'tokens/${version}' -e semantic-release-monorepo"

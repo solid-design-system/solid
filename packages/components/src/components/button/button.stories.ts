@@ -51,11 +51,11 @@ export const VariantAndSize = {
 };
 
 /**
- * The button in all possible combinations of `variant` `inverted`.
+ * The button in all possible combinations of `variant` and `inverted`.
  */
 
-export const Variant = {
-  name: 'Variant',
+export const VariantAndInverted = {
+  name: 'Variant × Inverted',
   parameters: { controls: { exclude: ['variant', 'inverted'] } },
   render: (args: any) => {
     return generateTemplate({

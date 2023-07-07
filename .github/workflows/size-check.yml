@@ -33,14 +33,26 @@ jobs:
       - name: Calculate package size
         id: calc_size
         run: |
-          OUTPUT=$(cd packages/components && node -e "import('./scripts/node-get-sizes.mjs').then(({ getOutputs }) => { console.log(getOutputs().uncompressed.replace(' (uncompressed)', '')); });")
-          echo "::set-output name=package_size::$OUTPUT"
+          UNCOMPRESSED=$(cd packages/components && node -e "import('./scripts/node-get-sizes.mjs').then(({ getOutputs }) => { console.log(getOutputs().uncompressed.replace('Bundle size (uncompressed): ', '')); });")
+          echo "::set-output name=uncompressed_size::$UNCOMPRESSED"
 
-      - name: Report size comparison
+          GZIP=$(cd packages/components && node -e "import('./scripts/node-get-sizes.mjs').then(({ getOutputs }) => { console.log(getOutputs().gzip.replace('Bundle size (gzipped): ', '')); });")
+          echo "::set-output name=gzip_size::$GZIP"
+
+      - name: Uncompressed
         uses: LouisBrunner/checks-action@v1.6.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          name: comparison
+          name: uncompressed
           conclusion: ${{ job.status }}
           output: |
-            {"title":"ℹ️ ${{ steps.calc_size.outputs.package_size }}", "summary":"${{ steps.calc_size.outputs.package_size }}"}
+            {"title":"ℹ️ ${{ steps.calc_size.outputs.uncompressed_size }}", "summary":"${{ steps.calc_size.outputs.uncompressed_size }}"}
+
+      - name: Compressed
+        uses: LouisBrunner/checks-action@v1.6.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          name: gzip
+          conclusion: ${{ job.status }}
+          output: |
+            {"title":"ℹ️ ${{ steps.calc_size.outputs.gzip_size }}", "summary":"${{ steps.calc_size.outputs.gzip_size }}"}

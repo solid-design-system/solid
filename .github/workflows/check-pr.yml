@@ -27,14 +27,14 @@ jobs:
             - name: Install dependencies
               run: pnpm i
 
+            - name: format.verify
+              run: pnpm format.verify
+
+            - name: lint.verify
+              run: pnpm lint.verify
+
             - name: (tokens) build
               run: cd packages/tokens && pnpm build
-
-            - name: (components) lint.verify (components)
-              run: cd packages/components && pnpm lint.verify
-
-            - name: (components) format.verify
-              run: cd packages/components && pnpm format.verify
 
             - name: (components) ts.verify
               run: cd packages/components && pnpm ts.verify
