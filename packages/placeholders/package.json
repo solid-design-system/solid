@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "This package provides license-free placeholder images for all projects at Union Investment.",
   "main": "src/images",
-  "type":"module",
+  "type": "module",
   "exports": {
     "./images": "./src/images"
   },
