@@ -36,7 +36,7 @@ Solid Components are a comprehensive and organized set of reusable components an
 
 ## Merging
 
-We use Semantic Release to helps ensure consistent versioning and release practices. It helps streamline the release process by automating the versioning and publishing of software releases **based on commit messages**. <br/>
+We use Semantic Release to help ensure consistent versioning and release practices. It helps streamline the release process by automating the versioning and publishing of software releases **based on commit messages**. <br/>
 Use the follwoing semantic versioning in your commit messages (`feat`, `fix`, `perf`, `docs`, `chore`, `ci`, `refactor`).
 
 ```
@@ -48,7 +48,7 @@ Commits with type 'perf' will be associated with a patch release.
 
 <b>Remark: </b> Always think from the perspective of the people using our packages/components – will the final dist/bundle change? it's always `feat` `fix` or `perf` – if not, it's one of the others. Please reach out, if you're unsure. <br/>
 
-Always do Squash and Merge, before merging and remember using `feat: ✨ ` or whatever at the beginning of the squash message. Please rewrite or delete your additional commit message, if it's really long. Definitely check, if anywhere [skip ci] or similar was used, as this may break our release flow.
+Always perform a Squash and Merge when merging, and remember to include the appropriate prefix (e.g., feat: ✨) at the beginning of the squash message. Please rewrite or delete your additional commit message, if it's really long. Additionally, double-check if [skip ci] or similar was used anywhere, as this may break our release flow.
 
 ## Quick Start
 
