@@ -3,4 +3,3 @@
 
 npx --no-install lint-staged
 pnpm fix
-cd packages/components && pnpm fix

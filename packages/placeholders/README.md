@@ -1,7 +1,6 @@
 # Placeholder Images
 
-This folder contains placeholder images for all projects at Union Investment. 
-
+This folder contains placeholder images for all projects at Union Investment.
 
 You can find their respective photographer and source below:
 
