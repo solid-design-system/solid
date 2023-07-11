@@ -32,6 +32,12 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_RELEASE_TOKEN_MARIO_HAMANN }}
         run: cd packages/tokens && pnpm release
 
+      - name: (placeholders) Run Semantic Release
+        env:
+          GH_TOKEN: ${{ secrets.PAT_RELEASE_KARL }}
+          NPM_TOKEN: ${{ secrets.NPM_RELEASE_TOKEN_MARIO_HAMANN }}
+        run: cd packages/placeholders && pnpm release
+
       - name: (components) Run Semantic Release
         env:
           GH_TOKEN: ${{ secrets.PAT_RELEASE_KARL }}
