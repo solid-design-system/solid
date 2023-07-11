@@ -1,5 +1,5 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import '../../solid-components';
-import { expect } from '@open-wc/testing';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
 import { userEvent } from '@storybook/testing-library';
@@ -98,6 +98,8 @@ export const Mouseless = {
   play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
     const el = canvasElement.querySelector('.mouseless sd-accordion');
     await waitUntil(() => el?.shadowRoot?.querySelector('header'));
-    await userEvent.type(el!.shadowRoot!.querySelector('header')!, '{space}', { pointerEventsCheck: 0 });
+    await userEvent.type(el!.shadowRoot!.querySelector('header')!, '{space}', {
+      pointerEventsCheck: 0
+    });
   }
 };
