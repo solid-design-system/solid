@@ -1,6 +1,8 @@
 # Placeholder Images
 
-This folder contains placeholder images for all projects at Union Investment. <br />
+This folder contains placeholder images for all projects at Union Investment. 
+
+
 You can find their respective photographer and source below:
 
 - [Architecture - Lance Anderson](https://unsplash.com/photos/JyAh_s_1RjY)
