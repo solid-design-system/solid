@@ -1,6 +1,8 @@
 import '../../solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
+import { userEvent } from '@storybook/testing-library';
+import { waitUntil } from '@open-wc/testing-helpers';
 import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-button');
@@ -282,5 +284,22 @@ export const Parts = {
       ],
       args
     });
+  }
+};
+
+/**
+ * sd-buttons are fully accessibile via keyboard.
+ */
+
+export const Mouseless = {
+  render: (args: any) => {
+    return html`<div class="mouseless">${generateTemplate({ args })}</div>`;
+  },
+
+  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
+    const el = canvasElement.querySelector('.mouseless sd-button');
+    await waitUntil(() => el?.shadowRoot?.querySelector('button'));
+    // We have to catch the event as otherwise Storybook will break
+    await userEvent.type(el!.shadowRoot!.querySelector('button')!, '{return}', { pointerEventsCheck: 0 });
   }
 };

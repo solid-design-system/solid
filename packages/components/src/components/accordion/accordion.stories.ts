@@ -1,6 +1,8 @@
 import '../../solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
+import { userEvent } from '@storybook/testing-library';
+import { waitUntil } from '@open-wc/testing-helpers';
 
 const { argTypes, parameters } = storybookDefaults('sd-accordion');
 const { overrideArgs } = storybookHelpers('sd-accordion');
@@ -146,5 +148,21 @@ export const Parts = {
       ],
       args
     });
+  }
+};
+
+/**
+ * sd-accordions are fully accessibile via keyboard.
+ */
+
+export const Mouseless = {
+  render: (args: any) => {
+    return html`<div class="mouseless">${generateTemplate({ args })}</div>`;
+  },
+
+  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
+    const el = canvasElement.querySelector('.mouseless sd-accordion');
+    await waitUntil(() => el?.shadowRoot?.querySelector('header'));
+    await userEvent.type(el!.shadowRoot!.querySelector('header')!, '{space}', { pointerEventsCheck: 0 });
   }
 };
