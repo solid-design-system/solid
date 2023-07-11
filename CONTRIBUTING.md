@@ -37,7 +37,7 @@ Solid Components are a comprehensive and organized set of reusable components an
 ## Merging
 
 We use Semantic Release to help ensure consistent versioning and release practices. It helps streamline the release process by automating the versioning and publishing of software releases **based on commit messages**. <br/>
-Use the follwoing semantic versioning in your commit messages (`feat`, `fix`, `perf`, `docs`, `chore`, `ci`, `refactor`).
+Use the following semantic versioning in your commit messages (`feat`, `fix`, `perf`, `docs`, `chore`, `ci`, `refactor`).
 
 ```
 Commits with a breaking change will be associated with a major release.
