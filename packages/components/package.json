@@ -104,7 +104,6 @@
     "globby": "^13.1.4",
     "gzip-size": "^7.0.0",
     "html-format": "^1.1.2",
-    "husky": "^8.0.3",
     "jsonata": "^2.0.3",
     "lint-staged": "^13.2.2",
     "lit-html": "^2.7.4",
