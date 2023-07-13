@@ -1,0 +1,33 @@
+# `ui-accordion`
+
+The new `sd-accordion` is designed to replace the `ui-accordion`. The new accordion component supports a wider range of attributes with correctly typed values.
+
+## ❌ Removed attribute: `scrollTopSelector`
+
+#### - description needed here
+
+## ✨ New `slot` component
+
+The new accordion iterates over the `summary` section in `ui-accordion` by adding a new `slot` component. Slots have several new attributes available for better organization and granularity when designing accordions.
+Here is a list of the attributes. For detailed explanations and examples, take a look at the `sd-accordion` story.
+
+### `default`
+
+    * Contains the main content of the accordion.
+
+### `summary`
+
+    * Provides the summary for the accordion header.
+    * This can be an alternative to using the `summary` attribute directly inside the `sd-accordion` component (similar to `ui-accordion`).
+
+### `expand-icon`
+
+    * an (optional) expand icon to use in the place of the default. Works best with `sd-icon`.
+
+### `collapse-icon`
+
+    * an (optional) collapse icon to use in the place of the default. Works best with `sd-icon`.
+
+## 🔀 Updated methods: `toggle()` to `show()` and `hide()`
+
+The toggle() method in `ui-accordion` has been replaced by separate `show()` and `hide()` methods.
