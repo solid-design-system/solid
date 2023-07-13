@@ -2,7 +2,7 @@
 
 ## Table of Contents
 
-- [Before You Get Started](#before-you-get-started)
+- [Functionality & Integration](#functionality--integration)
 - [How We Work](#how-we-work)
 - [Development Guidelines](#development-guidelines)
 - [Merge Requests](#merge-requests)
