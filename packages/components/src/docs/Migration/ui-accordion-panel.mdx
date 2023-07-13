@@ -1,13 +1,56 @@
 # `ui-accordion-panel`
 
-The `sd-accordion-group` component will now replace the `ui-accordion-panel`.
+The new `sd-accordion` is designed to replace the `ui-accordion-panel`. The new accordion component supports a wider range of attributes with correctly typed values.
 
-## 🔀 Updated attribute: `auto-close` to `close-others`
+## ❌ Removed attribute: `scrollTopSelector`
 
-The `auto-close` attribute has been renamed to `close-others` to better describe its functionality.
+The `scrollTopSelector` attribute has been removed. If required, you can implement this functionality by listening to the appropriate event and manually handling the scroll behavior.
 
 ## ✨ New `slot` component
 
-A new `slot` component is introduced in `sd-accordion-group` which is where `sd-accordion` elements will be placed.
+The new accordion iterates over the `summary` section in `ui-accordion-panel` by adding a new `slot` component. Slots have several new attributes available for better organization and granularity when designing accordions.
+Here is a list of the attributes.
 
-Please refer to the `sd-accordion-group` documentation for examples and more detailed information.
+- `default`
+
+  - Contains the main content of the accordion.
+
+- `summary`
+
+  - Provides the summary for the accordion header.
+  - This can be an alternative to using the `summary` attribute directly inside the `sd-accordion` component (similar to `ui-accordion-panel`).
+
+- `expand-icon`
+
+  - an (optional) expand icon to use in the place of the default. Works best with `sd-icon`.
+
+- `collapse-icon`
+
+  - an (optional) collapse icon to use in the place of the default. Works best with `sd-icon`.
+
+## 🔀 Event listner updates
+
+This section covers the updates made to event listeners in the migration to Solid Components:
+
+### 🔀 updated `panelOpen` to `sd-show` and `panelClose` to `sd-hide`
+
+Event listeners `panelOpen` and `panelClose` have been replaced by sd-show`and`sd-hide` respectively. The behavior of these event listeners remains unchanged.
+
+### ❌ Removed event: `panelClick`
+
+We no longer support `panelClick` event.
+
+### ❌ Removed event: `ready`
+
+### ✨ New event `sd-after-hide`
+
+This new event emits when the accordion closes and all the animations have completed.
+
+### ✨ New event `sd-after-show`
+
+Similar to `sd-after-hide`, this event emits when the accordion closes and all the animations have completed.
+
+## 🔀 Updated methods: `toggle()` to `show()` and `hide()`
+
+The toggle() method in `ui-accordion-panel` has been replaced by separate `show()` and `hide()` methods.
+For detailed explanations and examples, take a look at the `sd-accordion` story.
