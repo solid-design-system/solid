@@ -6,7 +6,8 @@ module.exports = {
     '@storybook/addon-essentials',
     '@storybook/addon-mdx-gfm',
     '@geometricpanda/storybook-addon-badges',
-    '@storybook/addon-actions'
+    '@storybook/addon-actions',
+    '@storybook/addon-interactions'
   ],
   staticDirs: ['./assets'],
   framework: {
