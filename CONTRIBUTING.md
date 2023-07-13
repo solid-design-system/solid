@@ -5,7 +5,7 @@
 - [Functionality & Integration](#functionality--integration)
 - [How We Work](#how-we-work)
 - [Development Guidelines](#development-guidelines)
-- [Merge Requests](#merge-requests)
+- [Pull Requests](#pull-requests)
   - [Commit Messages](#commit-messages)
   - [Squash and Merge Your Changes](#squash-and-merge-your-changes)
 - [Quick Start](#quick-start)
