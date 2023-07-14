@@ -60,6 +60,10 @@ Always perform a Squash and Merge when merging. This keeps the Git history clean
 - Please rewrite or delete your additional commit message, if it's really long.
 - Double-check if `[skip ci]` or similar was used anywhere as this may break our release flow.
 
+### Tests
+
+You can take a look at tests on Github. Users might be required to log in to [Chromatic](https://www.chromatic.com/). Make sure to login using your GitHub account to avoid any errors and access the checks related to the Pull Request.
+
 ## Quick Start
 
 To get started with the code steps, follow these instructions:
