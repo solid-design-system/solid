@@ -28,27 +28,29 @@ Here is a list of the attributes.
 
   - an (optional) collapse icon to use in the place of the default. Works best with `sd-icon`.
 
-## 🔀 Event listner updates
+## 🔀 Event listener updates
 
 This section covers the updates made to event listeners in the migration to Solid Components:
 
-### 🔀 updated `panelOpen` to `sd-show` and `panelClose` to `sd-hide`
+### 🔀 Updated methods: `panelOpen` to `sd-show` and `panelClose` to `sd-hide`
 
-Event listeners `panelOpen` and `panelClose` have been replaced by sd-show`and`sd-hide` respectively. The behavior of these event listeners remains unchanged.
+Event listeners `panelOpen` and `panelClose` have been replaced by `sd-show`and`sd-hide` respectively. The behavior of these event listeners remains unchanged.
 
 ### ❌ Removed event: `panelClick`
 
-We no longer support `panelClick` event.
+Due to overlapping information with existing events (`sd-show` and `sd-hide`), we discontinued support for the `panelClick` event. We suggest listening to our existing events or querying the ShadowDOM for header clicks instead.
 
 ### ❌ Removed event: `ready`
 
-### ✨ New event `sd-after-hide`
+The `ready` event is no longer supported. This event emits when a component has finished loading, but additionally triggered Magnolia specific logic. If this functionality is required, please find a solution with the currently existing events.
+
+### ✨ New events: `sd-after-hide`
 
 This new event emits when the accordion closes and all the animations have completed.
 
-### ✨ New event `sd-after-show`
+### ✨ New event: `sd-after-show`
 
-Similar to `sd-after-hide`, this event emits when the accordion closes and all the animations have completed.
+Similar to `sd-after-hide`, this event emits when the accordion opens and all the animations have completed.
 
 ## 🔀 Updated methods: `toggle()` to `show()` and `hide()`
 
