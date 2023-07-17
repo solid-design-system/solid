@@ -22,7 +22,7 @@
 - Development closely works with Design.
 - We heavily utilize slots and parts with reduced business logic within individual components.
 - Extensive documentation and examples for each component can be found in Storybook. [Explore components and interact with them](https://solid-design-system.fe.union-investment.de/x.x.x/storybook/).
-- End-to-End (E2E) tests with Playwright and Visual Regression Tests with Chromatic. Each Story in Storybook serves as a test case.
+- End-to-End (E2E) tests with Playwright and Visual Regression Tests with Chromatic. You can also run various tests by converting components into a story using Storybook.
 
 ## Development Guidelines
 
