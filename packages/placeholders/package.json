@@ -9,7 +9,7 @@
   },
   "type": "module",
   "exports": {
-    "./images": "./src/images"
+    "./images/*": "./src/images/*"
   },
   "repository": {
     "type": "git",
