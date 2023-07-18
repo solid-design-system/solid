@@ -1,4 +1,5 @@
-import '../icon-button/icon-button';
+import '../button/button';
+import '../icon/icon';
 import { animateTo, stopAnimations } from '../../internal/animate';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property, query } from 'lit/decorators.js';
@@ -329,15 +330,9 @@ export default class SdDrawer extends SolidElement {
                   </h2>
                   <div part="header-actions" class="drawer__header-actions">
                     <slot name="header-actions"></slot>
-                    <sd-icon-button
-                      part="close-button"
-                      exportparts="base:close-button__base"
-                      class="drawer__close"
-                      name="x-lg"
-                      label=${this.localize.term('close')}
-                      library="system"
-                      @click=${() => this.requestClose('close-button')}
-                    ></sd-icon-button>
+                    <sd-button part="close-button" @click=${() => this.requestClose('close-button')}
+                      ><sd-icon name="close" library="system"></sd-icon
+                    ></sd-button>
                   </div>
                 </header>
               `
