@@ -8,7 +8,7 @@
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "// prepare": "We don't want to start the prepare script for husky when we don't install the dev depencies.",
+    "// prepare": "We don't want to start the prepare script for husky when we don't install the dev dependencies.",
     "prepare": "node -e \"try { require('husky').install() } catch (e) {if (e.code !== 'MODULE_NOT_FOUND') throw e}\"",
     "verify": "pnpm format.verify > /dev/null && pnpm lint.verify && pnpm --filter tokens verify && pnpm --filter components verify",
     "fix": "pnpm lint.fix && pnpm format.fix",
