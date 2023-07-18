@@ -1,21 +1,20 @@
 import '../button/button';
 import '../icon/icon';
 import { animateTo, stopAnimations } from '../../internal/animate';
-import { classMap } from 'lit/directives/class-map.js';
+import { css, html } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry';
 import { HasSlotController } from '../../internal/slot';
-import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { LocalizeController } from '../../utilities/localize';
 import { lockBodyScrolling, unlockBodyScrolling } from '../../internal/scroll';
 import { uppercaseFirstLetter } from '../../internal/string';
 import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch';
+import componentStyles from '../../styles/component.styles';
+import cx from 'classix';
 import Modal from '../../internal/modal';
 import SolidElement from '../../internal/solid-element';
-import styles from './drawer.styles';
-import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Drawers slide in from a container to expose additional options and information.
@@ -72,16 +71,14 @@ import type { CSSResultGroup } from 'lit';
  */
 @customElement('sd-drawer')
 export default class SdDrawer extends SolidElement {
-  static styles: CSSResultGroup = styles;
-
   private readonly hasSlotController = new HasSlotController(this, 'footer');
   private readonly localize = new LocalizeController(this);
   private modal = new Modal(this);
   private originalTrigger: HTMLElement | null;
 
-  @query('.drawer') drawer: HTMLElement;
-  @query('.drawer__panel') panel: HTMLElement;
-  @query('.drawer__overlay') overlay: HTMLElement;
+  @query('[part=base]') drawer: HTMLElement;
+  @query('[part=panel]') panel: HTMLElement;
+  @query('[part=overlay]') overlay: HTMLElement;
 
   /**
    * Indicates whether or not the drawer is open. You can toggle this attribute to show and hide the drawer, or you can
@@ -296,24 +293,29 @@ export default class SdDrawer extends SolidElement {
     return html`
       <div
         part="base"
-        class=${classMap({
-          drawer: true,
-          'drawer--open': this.open,
-          'drawer--top': this.placement === 'top',
-          'drawer--end': this.placement === 'end',
-          'drawer--bottom': this.placement === 'bottom',
-          'drawer--start': this.placement === 'start',
-          'drawer--contained': this.contained,
-          'drawer--fixed': !this.contained,
-          'drawer--rtl': this.localize.dir() === 'rtl',
-          'drawer--has-footer': this.hasSlotController.test('footer')
-        })}
+        class=${cx(
+          'top-0 start-0 w-full h-full pointer-events-none overflow-hidden',
+          this.contained ? 'absolute' : 'fixed'
+        )}
       >
-        <div part="overlay" class="drawer__overlay" @click=${() => this.requestClose('overlay')} tabindex="-1"></div>
+        <div
+          part="overlay"
+          class=${cx('block fixed top-0 left-0 right-0 bottom-0 bg-neutral-800/75 pointer-events-auto')}
+          @click=${() => this.requestClose('overlay')}
+          tabindex="-1"
+        ></div>
 
         <div
           part="panel"
-          class="drawer__panel"
+          class=${cx(
+            'absolute flex flex-col z-10 max-w-full max-h-full bg-white shadow-lg overflow-auto pointer-events-auto focus:outline-none',
+            {
+              top: 'top-0 end-auto bottom-auto start-0 w-full h-[--size]',
+              end: 'top-0 end-0 bottom-auto start-auto w-[--size] h-full',
+              bottom: 'top-auto end-auto bottom-0 start-0 w-full h-[--size]',
+              start: 'top-0 end-auto bottom-auto start-0 w-[--size] h-full'
+            }[this.placement]
+          )}
           role="dialog"
           aria-modal="true"
           aria-hidden=${this.open ? 'false' : 'true'}
@@ -323,30 +325,64 @@ export default class SdDrawer extends SolidElement {
         >
           ${!this.noHeader
             ? html`
-                <header part="header" class="drawer__header">
-                  <h2 part="title" class="drawer__title" id="title">
+                <header part="header" class="flex">
+                  <h2 part="title" class="flex-auto text-xl p-5 m-0" id="title">
                     <!-- If there's no label, use an invisible character to prevent the header from collapsing -->
                     <slot name="label"> ${this.label.length > 0 ? this.label : String.fromCharCode(65279)} </slot>
                   </h2>
-                  <div part="header-actions" class="drawer__header-actions">
+                  <div part="header-actions" class="shrink-0 flex flex-wrap justify-end gap-1 px-5">
                     <slot name="header-actions"></slot>
-                    <sd-button part="close-button" @click=${() => this.requestClose('close-button')}
-                      ><sd-icon name="close" library="system"></sd-icon
+                    <sd-button variant="tertiary" part="close-button" @click=${() => this.requestClose('close-button')}
+                      ><sd-icon name="xmark" library="system"></sd-icon
                     ></sd-button>
                   </div>
                 </header>
               `
             : ''}
 
-          <slot part="body" class="drawer__body"></slot>
+          <slot part="body" class="flex-auto block p-5 overflow-auto scrolling"></slot>
 
-          <footer part="footer" class="drawer__footer">
+          <footer part="footer" class=${cx(this.hasSlotController.test('footer') ? 'text-right p-5' : 'hidden')}>
             <slot name="footer"></slot>
           </footer>
         </div>
       </div>
     `;
   }
+
+  static styles = [
+    SolidElement.styles,
+    css`
+      ${componentStyles}
+      :host {
+        --size: 25rem;
+        --header-spacing: var(--sd-spacing-large);
+        --body-spacing: var(--sd-spacing-large);
+        --footer-spacing: var(--sd-spacing-large);
+
+        display: contents;
+      }
+
+      :host([contained]) {
+        z-index: initial;
+      }
+
+      :host(:not([contained])) {
+        z-index: var(--sd-z-index-drawer);
+      }
+
+      [part='header-actions'] sd-button,
+      [part='header-actions'] ::slotted(sd-button) {
+        flex: 0 0 auto;
+        display: flex;
+        align-items: center;
+      }
+
+      [part='body'] {
+        -webkit-overflow-scrolling: touch;
+      }
+    `
+  ];
 }
 
 // Top

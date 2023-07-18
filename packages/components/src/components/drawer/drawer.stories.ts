@@ -1,14 +1,15 @@
 import '../../solid-components';
-import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
+import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 import { withActions } from '@storybook/addon-actions/decorator';
 
-const { argTypes, args, parameters } = storybookDefaults('sd-drawer');
+const { argTypes, parameters } = storybookDefaults('sd-drawer');
 const { generateTemplate } = storybookTemplate('sd-drawer');
+const { overrideArgs } = storybookHelpers('sd-drawer');
 
 export default {
   title: 'Components/sd-drawer',
   component: 'sd-drawer',
-  args,
+  args: overrideArgs({ type: 'attribute', name: 'open', value: true }),
   argTypes,
   parameters: { ...parameters },
   decorators: [withActions] as any
