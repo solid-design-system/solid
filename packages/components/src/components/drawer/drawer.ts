@@ -47,15 +47,11 @@ import SolidElement from '../../internal/solid-element';
  * @csspart header-actions - Optional actions to add to the header. Works best with `<sd-icon-button>`.
  * @csspart title - The drawer's title.
  * @csspart close-button - The close button, an `<sd-icon-button>`.
- * @csspart close-button__base - The close button's exported `base` part.
  * @csspart body - The drawer's body.
  * @csspart footer - The drawer's footer.
  *
  * @cssproperty --size - The preferred size of the drawer. This will be applied to the drawer's width or height
  *   depending on its `placement`. Note that the drawer will shrink to accommodate smaller screens.
- * @cssproperty --header-spacing - The amount of padding to use for the header.
- * @cssproperty --body-spacing - The amount of padding to use for the body.
- * @cssproperty --footer-spacing - The amount of padding to use for the footer.
  *
  * @animation drawer.showTop - The animation to use when showing a drawer with `top` placement.
  * @animation drawer.showEnd - The animation to use when showing a drawer with `end` placement.
@@ -300,7 +296,11 @@ export default class SdDrawer extends SolidElement {
       >
         <div
           part="overlay"
-          class=${cx('block fixed top-0 left-0 right-0 bottom-0 bg-neutral-800/75 pointer-events-auto')}
+          class=${cx(
+            this.contained
+              ? 'hidden'
+              : 'block fixed top-0 left-0 right-0 bottom-0 bg-neutral-800/75 pointer-events-auto'
+          )}
           @click=${() => this.requestClose('overlay')}
           tabindex="-1"
         ></div>
@@ -356,9 +356,6 @@ export default class SdDrawer extends SolidElement {
       ${componentStyles}
       :host {
         --size: 25rem;
-        --header-spacing: var(--sd-spacing-large);
-        --body-spacing: var(--sd-spacing-large);
-        --footer-spacing: var(--sd-spacing-large);
 
         display: contents;
       }
