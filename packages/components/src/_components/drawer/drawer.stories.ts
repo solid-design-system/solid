@@ -10,10 +10,9 @@ export default {
   component: 'sd-drawer',
   args,
   argTypes,
-  parameters: {...parameters},
+  parameters: { ...parameters },
   decorators: [withActions] as any
 };
-
 
 /**
  * Default: This shows sd-drawer in its default state.

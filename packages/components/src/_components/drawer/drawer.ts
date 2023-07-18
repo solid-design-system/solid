@@ -75,7 +75,7 @@ export default class SdDrawer extends SolidElement {
 
   private readonly hasSlotController = new HasSlotController(this, 'footer');
   private readonly localize = new LocalizeController(this);
-  private modal: Modal;
+  private modal = new Modal(this);
   private originalTrigger: HTMLElement | null;
 
   @query('.drawer') drawer: HTMLElement;
@@ -108,12 +108,6 @@ export default class SdDrawer extends SolidElement {
    * accessible way for users to dismiss the drawer.
    */
   @property({ attribute: 'no-header', type: Boolean, reflect: true }) noHeader = false;
-
-  connectedCallback() {
-    super.connectedCallback();
-    this.handleDocumentKeyDown = this.handleDocumentKeyDown.bind(this);
-    this.modal = new Modal(this);
-  }
 
   firstUpdated() {
     this.drawer.hidden = !this.open;
@@ -156,12 +150,12 @@ export default class SdDrawer extends SolidElement {
     document.removeEventListener('keydown', this.handleDocumentKeyDown);
   }
 
-  private handleDocumentKeyDown(event: KeyboardEvent) {
+  private handleDocumentKeyDown = (event: KeyboardEvent) => {
     if (this.open && !this.contained && event.key === 'Escape') {
       event.stopPropagation();
       this.requestClose('keyboard');
     }
-  }
+  };
 
   @watch('open', { waitUntilFirstUpdate: true })
   async handleOpenChange() {
@@ -302,17 +296,17 @@ export default class SdDrawer extends SolidElement {
       <div
         part="base"
         class=${classMap({
-      drawer: true,
-      'drawer--open': this.open,
-      'drawer--top': this.placement === 'top',
-      'drawer--end': this.placement === 'end',
-      'drawer--bottom': this.placement === 'bottom',
-      'drawer--start': this.placement === 'start',
-      'drawer--contained': this.contained,
-      'drawer--fixed': !this.contained,
-      'drawer--rtl': this.localize.dir() === 'rtl',
-      'drawer--has-footer': this.hasSlotController.test('footer')
-    })}
+          drawer: true,
+          'drawer--open': this.open,
+          'drawer--top': this.placement === 'top',
+          'drawer--end': this.placement === 'end',
+          'drawer--bottom': this.placement === 'bottom',
+          'drawer--start': this.placement === 'start',
+          'drawer--contained': this.contained,
+          'drawer--fixed': !this.contained,
+          'drawer--rtl': this.localize.dir() === 'rtl',
+          'drawer--has-footer': this.hasSlotController.test('footer')
+        })}
       >
         <div part="overlay" class="drawer__overlay" @click=${() => this.requestClose('overlay')} tabindex="-1"></div>
 
@@ -327,7 +321,7 @@ export default class SdDrawer extends SolidElement {
           tabindex="0"
         >
           ${!this.noHeader
-        ? html`
+            ? html`
                 <header part="header" class="drawer__header">
                   <h2 part="title" class="drawer__title" id="title">
                     <!-- If there's no label, use an invisible character to prevent the header from collapsing -->
@@ -347,7 +341,7 @@ export default class SdDrawer extends SolidElement {
                   </div>
                 </header>
               `
-        : ''}
+            : ''}
 
           <slot part="body" class="drawer__body"></slot>
 
