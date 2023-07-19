@@ -71,9 +71,11 @@
     "@shoelace-style/animations": "^1.1.0",
     "@shoelace-style/localize": "^3.1.0",
     "classix": "^2.1.32",
-    "lit": "^2.7.5"
+    "lit": "^2.7.5",
+    "throttle-debounce": "^5.0.0"
   },
   "devDependencies": {
+    "@types/throttle-debounce": "^5.0.0",
     "@custom-elements-manifest/analyzer": "^0.8.3",
     "@geometricpanda/storybook-addon-badges": "^2.0.0",
     "@mariohamann/tailwindcss-var": "github:mariohamann/tailwindcss-var",
