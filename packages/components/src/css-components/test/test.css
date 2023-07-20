@@ -1,0 +1,16 @@
+.sd-test {
+  @apply outline-accent outline outline-2;
+
+  &--blue {
+    @apply outline-primary;
+  }
+
+  &--thickness {
+    &--thin {
+      @apply outline-1;
+    }
+    &--bold {
+      @apply outline-4;
+    }
+  }
+}
