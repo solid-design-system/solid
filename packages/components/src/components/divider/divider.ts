@@ -1,8 +1,7 @@
 import { customElement, property } from 'lit/decorators.js';
-import { watch } from '../../internal/watch';
+import { html } from 'lit';
+import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
-import styles from './divider.styles';
-import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Dividers are used to visually separate or group elements.
@@ -10,27 +9,33 @@ import type { CSSResultGroup } from 'lit';
  * @status stable
  * @since 1.0
  *
- * @cssproperty --color - The color of the divider.
- * @cssproperty --width - The width of the divider.
- * @cssproperty --spacing - The spacing of the divider.
+ * @cssparts base - The component's base wrapper.
  */
 @customElement('sd-divider')
 export default class SdDivider extends SolidElement {
-  static styles: CSSResultGroup = styles;
+  /** Determines the orientation of the divider. */
+  @property({ reflect: true }) orientation: 'horizontal' | 'vertical' = 'horizontal';
 
-  /** Draws the divider in a vertical orientation. */
-  @property({ type: Boolean, reflect: true }) vertical = false;
-
-  @property({ reflect: true }) orientation: 'horizonal' | 'vertical' = 'horizonal';
+  /** This inverts the divider. */
+  @property({ type: Boolean, reflect: true }) inverted = false;
 
   connectedCallback() {
     super.connectedCallback();
     this.setAttribute('role', 'separator');
   }
 
-  @watch('orientation')
-  handleVerticalChange() {
-    this.setAttribute('aria-orientation', this.orientation === 'horizonal' ? 'vertical' : 'horizontal');
+  render() {
+    return html`
+      <div class=${cx(this.orientation === `horizontal` ? 'w-16' : 'h-16')}>
+        <hr
+          part="main"
+          class=${cx(
+            this.inverted ? 'border-neutral-400' : 'border-primary-400',
+            this.orientation === 'horizontal' ? 'border-t w-full' : ' border-l w-0 h-full'
+          )}
+        />
+      </div>
+    `;
   }
 }
 
