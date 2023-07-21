@@ -19,10 +19,10 @@ import type { TemplateResult } from 'lit-html';
 @customElement('sd-brandshape')
 export default class SdBrandshape extends SolidElement {
   /** The brandshape's theme variant. */
-  @property({ type: String }) variant: 'neutral-100' | 'primary' | 'border-primary' | 'border-accent';
+  @property({ type: String }) variant: 'neutral-100' | 'primary' | 'white' = 'primary';
 
-  /** Defines the position  */
-  @property({ type: String }) brandshape: 'full' | 'onlyTop';
+  /** Defines the form of the brandshape  */
+  @property({ type: String }) form: 'full' | 'top' | 'topCenter' = 'full';
 
   @state() componentBreakpoint: 0 | 768 = 0;
 
@@ -30,9 +30,38 @@ export default class SdBrandshape extends SolidElement {
 
   private containerRef: Ref<HTMLInputElement> = createRef();
 
+  get topSvg(): TemplateResult {
+    return html`<svg viewBox="0 0 958 166" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        class=${this.svgClasses()}
+        d="M836.828 1.89416L0.00140381 164.785V166H958.001V164.785L958.001 101.688C958.001 95.1637 957.373 88.655 956.125 82.2516C945.385 27.1376 891.974 -8.84019 836.828 1.89416Z"
+      />
+    </svg>`;
+  }
+
+  get bottomSvg(): TemplateResult {
+    return html`<svg viewBox="0 0 958 166" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        class=${this.svgClasses()}
+        d="M121.174 164.106L958.001 1.21521V0L0.00158691 0V1.21521L0.00140381 64.3121C0.00140381 70.8363 0.629395 77.345 1.87738 83.7484C12.6174 138.862 66.0284 174.84 121.174 164.106Z"
+      />
+    </svg>`;
+  }
+
+  private svgClasses(): string {
+    return cx(
+      {
+        'neutral-100': 'fill-neutral-200', // replace with neutral-100
+        primary: 'fill-primary',
+        white: 'fill-white'
+      }[this.variant]
+    );
+  }
+
   connectedCallback(): void {
     super.connectedCallback();
     this.resizeObserver = new ResizeObserver(() => {
+      // TODO: check if debounce is needed
       const debounceFunc = debounce(100, () => {
         this.componentBreakpoint = this.containerRef.value!.clientWidth > 768 ? 768 : 0;
       });
@@ -50,35 +79,46 @@ export default class SdBrandshape extends SolidElement {
     this.resizeObserver.observe(this.containerRef.value!);
   }
 
-  private renderFullBrandshape(): TemplateResult {
-    return html` <div>top svg</div>
+  private renderTemplate() {
+    return {
+      full: [this.renderTopBrandshape(), this.renderCenterBrandshape(), this.renderBottomBrandshape()],
+      topCenter: [this.renderTopBrandshape(), this.renderCenterBrandshape()],
+      top: [this.renderTopBrandshape(true)]
+    };
+  }
+
+  private renderTopBrandshape(includingSlot?: boolean): TemplateResult {
+    return includingSlot
+      ? html` <div>
+          ${this.topSvg}
+          <slot></slot>
+        </div>`
+      : this.topSvg;
+  }
+
+  private renderCenterBrandshape(): TemplateResult {
+    return html`
       <div
         class=${cx(
           {
             'neutral-100': 'bg-neutral-100',
             primary: 'bg-primary',
-            'border-primary': 'border-primary border-x-2',
-            'border-accent': 'border-accent border-x-2'
+            white: 'bg-white'
           }[this.variant],
           { 0: 'px-6 py-4', 768: 'px-10 py-8' }[this.componentBreakpoint]
         )}
       >
         <slot></slot>
       </div>
-      <div>bottom svg</div>`;
+    `;
   }
 
-  private renderOnlyTopBrandshape(): TemplateResult {
-    return html` <div>
-      top svg
-      <slot></slot>
-    </div>`;
+  private renderBottomBrandshape(): TemplateResult {
+    return this.bottomSvg;
   }
 
   render() {
-    return html`<div ${ref(this.containerRef)}>
-      ${this.brandshape === 'full' ? this.renderFullBrandshape() : this.renderOnlyTopBrandshape()}
-    </div>`;
+    return html`<div ${ref(this.containerRef)}>${this.renderTemplate()[this.form]}</div>`;
   }
 }
 
