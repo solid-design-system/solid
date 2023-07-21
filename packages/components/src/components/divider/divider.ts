@@ -1,5 +1,6 @@
+import { css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { html } from 'lit';
+import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
@@ -15,7 +16,6 @@ import SolidElement from '../../internal/solid-element';
 export default class SdDivider extends SolidElement {
   /** Determines the orientation of the divider. */
   @property({ reflect: true }) orientation: 'horizontal' | 'vertical' = 'horizontal';
-
   /** This inverts the divider. */
   @property({ type: Boolean, reflect: true }) inverted = false;
 
@@ -26,17 +26,33 @@ export default class SdDivider extends SolidElement {
 
   render() {
     return html`
-      <div class=${cx(this.orientation === `horizontal` ? 'w-16' : 'h-16')}>
-        <hr
-          part="main"
-          class=${cx(
-            this.inverted ? 'border-neutral-400' : 'border-primary-400',
-            this.orientation === 'horizontal' ? 'border-t w-full' : ' border-l w-0 h-full'
-          )}
-        />
-      </div>
+      <hr
+        part="main"
+        class=${cx(
+          this.inverted ? 'border-primary-400' : 'border-neutral-400',
+          this.orientation === 'horizontal' ? 'border-t w-full' : ' border-l h-full'
+        )}
+      />
     `;
   }
+
+  /**
+   * Inherits Tailwindclasses and includes additional styling.
+   */
+  static styles = [
+    componentStyles,
+    SolidElement.styles,
+    css`
+      :host {
+        display: block;
+        margin: 0;
+      }
+
+      :host(sd-divider[orientation='vertical']) {
+        display: inline-block;
+      }
+    `
+  ];
 }
 
 declare global {

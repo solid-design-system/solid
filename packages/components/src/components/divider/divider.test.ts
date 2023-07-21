@@ -8,23 +8,37 @@ describe('<sd-divider>', () => {
       await expect(el).to.be.accessible();
     });
 
-    it('default properties', async () => {
+    it('orientation defaults to horizontal', async () => {
       const el = await fixture<SdDivider>(html` <sd-divider></sd-divider> `);
 
-      expect(el.vertical).to.be.false;
-      expect(el.getAttribute('role')).to.equal('separator');
-      expect(el.getAttribute('aria-orientation')).to.equal('horizontal');
+      expect(el.getAttribute('orientation')).to.equal('horizontal');
+    });
+
+    it('inverted defaults to false', async () => {
+      const el = await fixture<SdDivider>(html` <sd-divider></sd-divider> `);
+
+      expect(el.inverted).to.be.false;
     });
   });
 
-  describe('vertical property change ', () => {
-    it('aria-orientation is updated', async () => {
+  describe('property change ', () => {
+    it('orientation is updated', async () => {
       const el = await fixture<SdDivider>(html` <sd-divider></sd-divider> `);
 
-      el.vertical = true;
+      el.orientation = 'vertical';
       await elementUpdated(el);
 
-      expect(el.getAttribute('aria-orientation')).to.equal('vertical');
+      expect(el.getAttribute('orientation')).to.equal('vertical');
+    });
+
+    it('inverted is updated', async () => {
+      const el = await fixture<SdDivider>(html` <sd-divider></sd-divider> `);
+
+      el.inverted = true;
+
+      await elementUpdated(el);
+
+      expect(el.hasAttribute('inverted')).to.be.true;
     });
   });
 });

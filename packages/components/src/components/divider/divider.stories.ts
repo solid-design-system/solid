@@ -1,8 +1,7 @@
 import '../../solid-components';
+import { html } from 'lit';
 import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
-import { withActions } from '@storybook/addon-actions/decorator';
-
-const { argTypes, args, parameters } = storybookDefaults('sd-divider');
+const { args, argTypes, parameters } = storybookDefaults('sd-divider');
 const { generateTemplate } = storybookTemplate('sd-divider');
 
 export default {
@@ -11,14 +10,22 @@ export default {
   args,
 
   argTypes,
-  // TODO: Add constants for a wrapper
-  // constants: [
-  //   { type: 'template', name: 'width', value: '<div class="h-4 w-4"> %TEMPLATE% </div>' },
-  // ],
-  parameters: { ...parameters },
-  decorators: [withActions] as any
-};
 
+  parameters: { ...parameters },
+  decorators: [
+    (story: () => typeof html) => html`
+      <style>
+        sd-divider[orientation='vertical'] {
+          height: 120px;
+        }
+        sd-divider[orientation='horizontal'] {
+          width: 120px;
+        }
+      </style>
+      ${story()}
+    `
+  ]
+};
 /**
  * This shows sd-divider in its default state.
  */
@@ -66,19 +73,18 @@ export const Inverted = {
  */
 
 export const Parts = {
-  parameters: { controls: { exclude: 'main' } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
         y: {
           type: 'template',
           name: 'sd-divider::part(...){outline: solid 2px red}',
-          values: ['main'].map(part => {
-            return {
-              title: part,
-              value: `<style>#part-${part} sd-divider::part(${part}){outline: solid 2px red}</style><div id="part-${part}">%TEMPLATE%</div>`
-            };
-          })
+          values: [
+            {
+              title: 'main',
+              value: `<style>#part-main sd-divider::part(main){outline: solid 2px red }</style><div id="part-main">%TEMPLATE%</div>`
+            }
+          ]
         }
       },
       args
