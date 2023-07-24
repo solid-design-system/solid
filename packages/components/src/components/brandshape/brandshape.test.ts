@@ -8,7 +8,7 @@ describe('sd-brandshape', () => {
     expect(el).to.exist;
   });
 
-  it('default values are set correctly', async () => {
+  it('should set default values correctly', async () => {
     const el = await fixture<SdBrandshape>(html`<sd-brandshape>Default Slot</sd-brandshape>`);
 
     expect(el.variant).to.equal('primary');

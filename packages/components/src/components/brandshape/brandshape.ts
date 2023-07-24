@@ -10,13 +10,18 @@ import type { Ref } from 'lit/directives/ref.js';
 import type { TemplateResult } from 'lit-html';
 
 /**
- * @summary Buttons represent actions that are available to the user.
+ * @summary The Brandshape highlights a piece of content.
  * @documentation https://solid.union-investment.com/[storybook-brandshape]/brandshape
  * @status
  * @since
  *
  * @slot - The content inside the brandshape.
  *
+ * @csspart base - The component's base wrapper.
+ * @csspart content-center - Center content wrapper.
+ * @csspart content-top - Top content wrapper.
+ *
+ * @cssproperty --brandshape-opacity - The opacity of the brandshape.
  */
 @customElement('sd-brandshape')
 export default class SdBrandshape extends SolidElement {
@@ -26,26 +31,26 @@ export default class SdBrandshape extends SolidElement {
   /** Defines the form of the brandshape  */
   @property({ type: String }) form: 'full' | 'top' | 'topCenter' | 'centerBottom' = 'full';
 
-  @state() private componentBreakpoint: 0 | 768 = 0;
+  @state() private componentBreakpoint: 0 | 560 = 0;
 
   private resizeObserver: ResizeObserver;
 
   private containerRef: Ref<HTMLInputElement> = createRef();
 
   private get topSvg(): TemplateResult {
-    return html`<svg viewBox="0 0 958 166" fill="none" xmlns="http://www.w3.org/2000/svg">
+    return html`<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 958 166">
       <path
         class=${this.svgClasses()}
-        d="M836.828 1.89416L0.00140381 164.785V166H958.001V164.785L958.001 101.688C958.001 95.1637 957.373 88.655 956.125 82.2516C945.385 27.1376 891.974 -8.84019 836.828 1.89416Z"
+        d="M836.828 1.894.001 164.785V168h958v-66.312c0-6.524-.628-13.033-1.876-19.436-10.74-55.114-64.151-91.092-119.297-80.358Z"
       />
     </svg>`;
   }
 
   private get bottomSvg(): TemplateResult {
-    return html`<svg viewBox="0 0 958 166" fill="none" xmlns="http://www.w3.org/2000/svg">
+    return html`<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 958 168">
       <path
         class=${this.svgClasses()}
-        d="M121.174 164.106L958.001 1.21521V0L0.00158691 0V1.21521L0.00140381 64.3121C0.00140381 70.8363 0.629395 77.345 1.87738 83.7484C12.6174 138.862 66.0284 174.84 121.174 164.106Z"
+        d="M121.173 166.106 958 3.216V0H0v66.312c0 6.524.628 13.033 1.876 19.436 10.74 55.114 64.151 91.092 119.297 80.358Z"
       />
     </svg>`;
   }
@@ -53,9 +58,9 @@ export default class SdBrandshape extends SolidElement {
   private svgClasses(): string {
     return cx(
       {
-        'neutral-100': 'fill-neutral-100',
-        primary: 'fill-primary',
-        white: 'fill-white'
+        'neutral-100': 'fill-neutral-100/[var(--brandshape-opacity)]',
+        primary: 'fill-primary/[var(--brandshape-opacity)]',
+        white: 'fill-white/[var(--brandshape-opacity)]'
       }[this.variant]
     );
   }
@@ -64,7 +69,7 @@ export default class SdBrandshape extends SolidElement {
     super.connectedCallback();
     this.resizeObserver = new ResizeObserver(() => {
       const debounceFunc = debounce(100, () => {
-        this.componentBreakpoint = this.containerRef.value!.clientWidth > 768 ? 768 : 0;
+        this.componentBreakpoint = this.containerRef.value!.clientWidth >= 560 ? 560 : 0;
       });
 
       debounceFunc();
@@ -73,7 +78,7 @@ export default class SdBrandshape extends SolidElement {
 
   disconnectedCallback(): void {
     super.disconnectedCallback();
-    if (this.resizeObserver) this.resizeObserver.unobserve(this.containerRef.value!);
+    if (this.resizeObserver) this.resizeObserver.disconnect();
   }
 
   firstUpdated(): void {
@@ -93,7 +98,9 @@ export default class SdBrandshape extends SolidElement {
     return includeSlot
       ? html` <div class="relative">
           ${this.topSvg}
-          <div class="absolute bottom-0 right-0 w-2/5 h-2/3 px-6 py-4"><slot></slot></div>
+          <div part="content-top" class="absolute bottom-0 right-0 flex items-end w-2/5 h-2/3 px-6 py-4">
+            <slot></slot>
+          </div>
         </div>`
       : this.topSvg;
   }
@@ -101,15 +108,15 @@ export default class SdBrandshape extends SolidElement {
   private renderCenterBrandshape(): TemplateResult {
     return html`
       <div
+        part="content-center"
         class=${cx(
           {
-            'neutral-100': 'bg-neutral-100',
-            primary: 'bg-primary',
-            white: 'bg-white'
+            'neutral-100': 'bg-neutral-100/[var(--brandshape-opacity)]',
+            primary: 'bg-primary/[var(--brandshape-opacity)]',
+            white: 'bg-white/[var(--brandshape-opacity)]'
           }[this.variant],
-          { 0: 'px-6 py-4', 768: 'px-10 py-8' }[this.componentBreakpoint],
-          'w-full block',
-          this.form !== 'centerBottom' && '-mt-[1px]'
+          { 0: 'px-6 py-4', 560: 'px-10 py-8' }[this.componentBreakpoint],
+          'w-full block'
         )}
       >
         <slot></slot>
@@ -134,6 +141,8 @@ export default class SdBrandshape extends SolidElement {
     css`
       :host {
         display: block;
+
+        --brandshape-opacity: 1;
       }
     `
   ];
