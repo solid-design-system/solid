@@ -1,7 +1,9 @@
 import { createRef, ref } from 'lit/directives/ref.js';
+import { css } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { debounce } from 'throttle-debounce';
 import { html } from 'lit/static-html.js';
+import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 import type { Ref } from 'lit/directives/ref.js';
@@ -13,7 +15,7 @@ import type { TemplateResult } from 'lit-html';
  * @status
  * @since
  *
- * @slot - The content of the brandshape.
+ * @slot - The content inside the brandshape.
  *
  */
 @customElement('sd-brandshape')
@@ -22,15 +24,15 @@ export default class SdBrandshape extends SolidElement {
   @property({ type: String }) variant: 'neutral-100' | 'primary' | 'white' = 'primary';
 
   /** Defines the form of the brandshape  */
-  @property({ type: String }) form: 'full' | 'top' | 'topCenter' = 'full';
+  @property({ type: String }) form: 'full' | 'top' | 'topCenter' | 'centerBottom' = 'full';
 
-  @state() componentBreakpoint: 0 | 768 = 0;
+  @state() private componentBreakpoint: 0 | 768 = 0;
 
   private resizeObserver: ResizeObserver;
 
   private containerRef: Ref<HTMLInputElement> = createRef();
 
-  get topSvg(): TemplateResult {
+  private get topSvg(): TemplateResult {
     return html`<svg viewBox="0 0 958 166" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
         class=${this.svgClasses()}
@@ -39,7 +41,7 @@ export default class SdBrandshape extends SolidElement {
     </svg>`;
   }
 
-  get bottomSvg(): TemplateResult {
+  private get bottomSvg(): TemplateResult {
     return html`<svg viewBox="0 0 958 166" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
         class=${this.svgClasses()}
@@ -51,7 +53,7 @@ export default class SdBrandshape extends SolidElement {
   private svgClasses(): string {
     return cx(
       {
-        'neutral-100': 'fill-neutral-200', // replace with neutral-100
+        'neutral-100': 'fill-neutral-100',
         primary: 'fill-primary',
         white: 'fill-white'
       }[this.variant]
@@ -61,7 +63,6 @@ export default class SdBrandshape extends SolidElement {
   connectedCallback(): void {
     super.connectedCallback();
     this.resizeObserver = new ResizeObserver(() => {
-      // TODO: check if debounce is needed
       const debounceFunc = debounce(100, () => {
         this.componentBreakpoint = this.containerRef.value!.clientWidth > 768 ? 768 : 0;
       });
@@ -72,7 +73,7 @@ export default class SdBrandshape extends SolidElement {
 
   disconnectedCallback(): void {
     super.disconnectedCallback();
-    this.resizeObserver.unobserve(this.containerRef.value!);
+    if (this.resizeObserver) this.resizeObserver.unobserve(this.containerRef.value!);
   }
 
   firstUpdated(): void {
@@ -83,15 +84,16 @@ export default class SdBrandshape extends SolidElement {
     return {
       full: [this.renderTopBrandshape(), this.renderCenterBrandshape(), this.renderBottomBrandshape()],
       topCenter: [this.renderTopBrandshape(), this.renderCenterBrandshape()],
+      centerBottom: [this.renderCenterBrandshape(), this.renderBottomBrandshape()],
       top: [this.renderTopBrandshape(true)]
     };
   }
 
-  private renderTopBrandshape(includingSlot?: boolean): TemplateResult {
-    return includingSlot
-      ? html` <div>
+  private renderTopBrandshape(includeSlot?: boolean): TemplateResult {
+    return includeSlot
+      ? html` <div class="relative">
           ${this.topSvg}
-          <slot></slot>
+          <div class="absolute bottom-0 right-0 w-2/5 h-2/3 px-6 py-4"><slot></slot></div>
         </div>`
       : this.topSvg;
   }
@@ -105,7 +107,9 @@ export default class SdBrandshape extends SolidElement {
             primary: 'bg-primary',
             white: 'bg-white'
           }[this.variant],
-          { 0: 'px-6 py-4', 768: 'px-10 py-8' }[this.componentBreakpoint]
+          { 0: 'px-6 py-4', 768: 'px-10 py-8' }[this.componentBreakpoint],
+          'w-full block',
+          this.form !== 'centerBottom' && '-mt-[1px]'
         )}
       >
         <slot></slot>
@@ -120,6 +124,19 @@ export default class SdBrandshape extends SolidElement {
   render() {
     return html`<div ${ref(this.containerRef)}>${this.renderTemplate()[this.form]}</div>`;
   }
+
+  /**
+   * Inherits Tailwindclasses and includes additional styling.
+   */
+  static styles = [
+    componentStyles,
+    SolidElement.styles,
+    css`
+      :host {
+        display: block;
+      }
+    `
+  ];
 }
 
 declare global {
