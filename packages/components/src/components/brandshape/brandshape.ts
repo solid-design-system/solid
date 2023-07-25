@@ -68,11 +68,9 @@ export default class SdBrandshape extends SolidElement {
   connectedCallback(): void {
     super.connectedCallback();
     this.resizeObserver = new ResizeObserver(() => {
-      const debounceFunc = debounce(100, () => {
+      debounce(100, () => {
         this.componentBreakpoint = this.containerRef.value!.clientWidth >= 560 ? 560 : 0;
-      });
-
-      debounceFunc();
+      })();
     });
   }
 
