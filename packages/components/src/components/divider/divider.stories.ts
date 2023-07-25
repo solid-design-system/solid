@@ -69,8 +69,7 @@ export const Inverted = {
 };
 
 /**
- * Use a wrapper to set the width and height of the divider.
- * For horizontal dividers, only set the `width`, and for vertical dividers, adjust the `height`.
+ * You can set the component's size with `width` (horizontal) or `height` (vertical) via CSS or inline-styles.
  */
 
 export const Sizes = {
