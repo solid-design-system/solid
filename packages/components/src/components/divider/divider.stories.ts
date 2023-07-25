@@ -69,6 +69,68 @@ export const Inverted = {
 };
 
 /**
+ * Use a wrapper to set the width and height of the divider.
+ * For horizontal dividers, only set the `width`, and for vertical dividers, adjust the `height`.
+ */
+
+export const Sizes = {
+  parameters: { controls: { exclude: 'orientation' } },
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        x: {
+          type: 'template',
+          name: 'size',
+          values: [
+            {
+              title: 'width: 50px',
+              value: `
+              <style> 
+                .size-sm sd-divider[orientation='horizontal']{
+                  width: 50px
+                }
+              </style>
+              <div class="size-sm"><sd-divider/><div>`
+            },
+            {
+              title: 'width: 150px',
+              value: `
+              <style>
+                .size-l sd-divider[orientation='horizontal']{
+                  width: 150px
+                }
+              </style>
+              <div class="size-l"><sd-divider/><div>`
+            },
+            {
+              title: 'height: 50px',
+              value: `
+              <style> 
+                .size-sm sd-divider[orientation='vertical']{
+                  height: 50px
+                }
+              </style>
+              <div class="size-sm"><sd-divider orientation="vertical"/><div>`
+            },
+            {
+              title: 'height: 150px',
+              value: `
+              <style> 
+                .size-l sd-divider[orientation='vertical']{
+                  height: 150px
+                }
+              </style>
+              <div class="size-l"><sd-divider orientation="vertical"/><div>`
+            }
+          ]
+        }
+      },
+      args
+    });
+  }
+};
+
+/**
  * Use the `main` part selector to customize the divider.
  */
 
