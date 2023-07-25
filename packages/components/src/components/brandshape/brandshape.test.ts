@@ -12,7 +12,7 @@ describe('sd-brandshape', () => {
     const el = await fixture<SdBrandshape>(html`<sd-brandshape>Default Slot</sd-brandshape>`);
 
     expect(el.variant).to.equal('primary');
-    expect(el.form).to.equal('full');
+    expect(el.shapes).to.equal(['top', 'middle', 'bottom']);
   });
 
   it('should pass accessibility tests', async () => {

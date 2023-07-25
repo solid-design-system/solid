@@ -8,8 +8,18 @@ export default {
   title: 'Components/sd-brandshape',
   component: 'sd-brandshape',
   parameters: { ...parameters },
-  args: overrideArgs({ type: 'slot', name: 'default', value: 'Default' }),
-  argTypes
+  args: overrideArgs([
+    { type: 'slot', name: 'default', value: 'Default' },
+    { type: 'attribute', name: 'shapes', value: '["top", "middle"]' }
+  ]),
+  argTypes: {
+    ...argTypes,
+    'shapes-attr': {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+      ...argTypes['shapes-attr'],
+      control: 'text'
+    }
+  }
 };
 
 /**
@@ -33,9 +43,10 @@ export const VariantAndForm = {
     return generateTemplate({
       axis: {
         x: { type: 'attribute', name: 'variant' },
-        y: { type: 'attribute', name: 'form' }
+        y: { type: 'attribute', name: 'shapes' }
       },
-      args
+      args,
+      constants: { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' }
     });
   }
 };
