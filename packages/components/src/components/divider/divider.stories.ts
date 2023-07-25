@@ -73,7 +73,6 @@ export const Inverted = {
  */
 
 export const Sizes = {
-  parameters: { controls: { exclude: 'orientation' } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
