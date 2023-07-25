@@ -1,13 +1,23 @@
 ---
 name: Standard Issue
 about: Standard Issue Template
-title: ''
+title: 'feat: add [COMPONENT_NAME]'
 labels: ''
 assignees: ''
 
 ---
 
 ## Description
+
+## API
+
+## Hand-off
+
+### Components detailed requirements
+- [ ] Props, CSS-Properties, Parts & Slots
+  - [ ] ...
+- [ ] Stories
+  - [ ] ...
 
 ## DoR
 - [ ] Item has business value
