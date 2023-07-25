@@ -1,7 +1,6 @@
 import { createRef, ref } from 'lit/directives/ref.js';
 import { css } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
-import { debounce } from 'throttle-debounce';
 import { html } from 'lit/static-html.js';
 import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
@@ -28,8 +27,10 @@ export default class SdBrandshape extends SolidElement {
   /** The brandshape's theme variant. */
   @property({ type: String }) variant: 'neutral-100' | 'primary' | 'white' = 'primary';
 
-  /** Defines the form of the brandshape  */
-  @property({ type: String }) form: 'full' | 'top' | 'topCenter' | 'centerBottom' = 'full';
+  /**
+   * Defines which shapes of the brandshape should be displayed.
+   */
+  @property({ type: Array }) shapes: ('top' | 'middle' | 'bottom')[] = ['top', 'middle', 'bottom'];
 
   @state() private componentBreakpoint: 0 | 560 = 0;
 
@@ -68,9 +69,7 @@ export default class SdBrandshape extends SolidElement {
   connectedCallback(): void {
     super.connectedCallback();
     this.resizeObserver = new ResizeObserver(() => {
-      debounce(100, () => {
-        this.componentBreakpoint = this.containerRef.value!.clientWidth >= 560 ? 560 : 0;
-      })();
+      this.componentBreakpoint = this.containerRef.value!.clientWidth >= 560 ? 560 : 0;
     });
   }
 
@@ -83,17 +82,8 @@ export default class SdBrandshape extends SolidElement {
     this.resizeObserver.observe(this.containerRef.value!);
   }
 
-  private renderTemplate() {
-    return {
-      full: [this.renderTopBrandshape(), this.renderCenterBrandshape(), this.renderBottomBrandshape()],
-      topCenter: [this.renderTopBrandshape(), this.renderCenterBrandshape()],
-      centerBottom: [this.renderCenterBrandshape(), this.renderBottomBrandshape()],
-      top: [this.renderTopBrandshape(true)]
-    };
-  }
-
-  private renderTopBrandshape(includeSlot?: boolean): TemplateResult {
-    return includeSlot
+  private renderTopBrandshape(): TemplateResult {
+    return this.shapes.length === 1
       ? html` <div class="relative">
           ${this.topSvg}
           <div part="content-top" class="absolute bottom-0 right-0 flex items-end w-2/5 h-2/3 px-6 py-4">
@@ -103,7 +93,7 @@ export default class SdBrandshape extends SolidElement {
       : this.topSvg;
   }
 
-  private renderCenterBrandshape(): TemplateResult {
+  private renderMiddleBrandshape(): TemplateResult {
     return html`
       <div
         part="content-center"
@@ -127,7 +117,11 @@ export default class SdBrandshape extends SolidElement {
   }
 
   render() {
-    return html`<div ${ref(this.containerRef)}>${this.renderTemplate()[this.form]}</div>`;
+    return html`<div ${ref(this.containerRef)}>
+      ${this.shapes.includes('top') && this.renderTopBrandshape()}
+      ${this.shapes.includes('middle') && this.renderMiddleBrandshape()}
+      ${this.shapes.includes('bottom') && this.renderBottomBrandshape()}
+    </div>`;
   }
 
   /**
