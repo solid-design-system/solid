@@ -18,8 +18,25 @@ export default {
         sd-divider[orientation='vertical'] {
           height: 120px;
         }
+
         sd-divider[orientation='horizontal'] {
           width: 120px;
+        }
+
+        .size-sm sd-divider[orientation='horizontal'] {
+          width: 50px;
+        }
+
+        .size-sm sd-divider[orientation='vertical'] {
+          height: 50px;
+        }
+
+        .size-l sd-divider[orientation='horizontal'] {
+          width: 150px;
+        }
+
+        .size-l sd-divider[orientation='vertical'] {
+          height: 150px;
         }
       </style>
       ${story()}
@@ -82,43 +99,19 @@ export const Sizes = {
           values: [
             {
               title: 'width: 50px',
-              value: `
-              <style> 
-                .size-sm sd-divider[orientation='horizontal']{
-                  width: 50px
-                }
-              </style>
-              <div class="size-sm"><sd-divider/><div>`
+              value: `<div class="size-sm"><sd-divider/><div>`
             },
             {
               title: 'width: 150px',
-              value: `
-              <style>
-                .size-l sd-divider[orientation='horizontal']{
-                  width: 150px
-                }
-              </style>
-              <div class="size-l"><sd-divider/><div>`
+              value: `<div class="size-l"><sd-divider/><div>`
             },
             {
               title: 'height: 50px',
-              value: `
-              <style> 
-                .size-sm sd-divider[orientation='vertical']{
-                  height: 50px
-                }
-              </style>
-              <div class="size-sm"><sd-divider orientation="vertical"/><div>`
+              value: `<div class="size-sm"><sd-divider orientation="vertical"/><div>`
             },
             {
               title: 'height: 150px',
-              value: `
-              <style> 
-                .size-l sd-divider[orientation='vertical']{
-                  height: 150px
-                }
-              </style>
-              <div class="size-l"><sd-divider orientation="vertical"/><div>`
+              value: `<div class="size-l"><sd-divider orientation="vertical"/><div>`
             }
           ]
         }
