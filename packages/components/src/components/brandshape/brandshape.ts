@@ -17,6 +17,7 @@ import type { TemplateResult } from 'lit-html';
  * @csspart content-middle - Middle content wrapper.
  * @csspart content-top - Top content wrapper.
  * @csspart shape-top - Top shape SVG path.
+ * @csspart shape-middle - Middle shape.
  * @csspart shape-bottom - Bottom shape SVG path.
  */
 @customElement('sd-brandshape')
@@ -79,10 +80,7 @@ export default class SdBrandshape extends SolidElement {
 
   disconnectedCallback(): void {
     super.disconnectedCallback();
-    if (this.resizeObserver) {
-      this.resizeObserver.unobserve(this.containerElem);
-      this.resizeObserver.disconnect();
-    }
+    this.resizeObserver.unobserve(this.containerElem);
   }
 
   private renderTopBrandshape(): TemplateResult {
@@ -98,19 +96,19 @@ export default class SdBrandshape extends SolidElement {
 
   private renderMiddleBrandshape(): TemplateResult {
     return html`
-      <div
-        part="content-middle"
-        class=${cx(
-          {
-            'neutral-100': 'bg-neutral-100',
-            primary: 'bg-primary',
-            white: 'bg-white'
-          }[this.variant],
-          { 0: 'px-6 py-4', 560: 'px-10 py-8' }[this.componentBreakpoint],
-          'w-full block'
-        )}
-      >
-        <slot></slot>
+      <div class=${cx({ 0: 'px-6 py-4', 560: 'px-10 py-8' }[this.componentBreakpoint], 'w-full block relative')}>
+        <div
+          part="shape-middle"
+          class=${cx(
+            {
+              'neutral-100': 'bg-neutral-100',
+              primary: 'bg-primary',
+              white: 'bg-white'
+            }[this.variant],
+            'w-full block absolute h-full top-0 left-0 z-0'
+          )}
+        ></div>
+        <div class="z-10 relative" part="content-middle"><slot></slot></div>
       </div>
     `;
   }

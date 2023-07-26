@@ -48,38 +48,39 @@ export const Default = {
 };
 
 /**
- *  The top shape of the brandshape.
+ *  The different shapes of the brandshape.
  */
-export const Top = {
-  name: 'Shape Top',
-  parameters: { controls: { exclude: ['variant', 'shapes'] } },
+export const Shapes = {
+  name: 'Shapes',
+  parameters: { controls: { exclude: ['shapes'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        y: { type: 'attribute', name: 'variant' }
-      },
-      options: {
-        templateBackgrounds: {
-          alternate: 'y',
-          colors: ['white', 'white', '#00358E']
+        y: {
+          type: 'attribute',
+          name: 'shapes',
+          values: ['["top", "middle", "bottom"]', '["top", "middle"]', '["middle", "bottom"]', '["top"]']
         }
       },
       args,
-      constants: [{ type: 'attribute', name: 'shapes', value: '["top"]' }, increaseColumnWidth()]
+      constants: increaseColumnWidth()
     });
   }
 };
 
 /**
- *  The top, middle shape of the brandshape.
+ *  The different variants of the brandshape.
  */
-export const topMiddle = {
-  name: 'Shape Top Middle',
-  parameters: { controls: { exclude: ['variant', 'shapes'] } },
+export const Variants = {
+  name: 'Variants',
+  parameters: { controls: { exclude: ['variant'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        y: { type: 'attribute', name: 'variant' }
+        y: {
+          type: 'attribute',
+          name: 'variant'
+        }
       },
       options: {
         templateBackgrounds: {
@@ -88,53 +89,35 @@ export const topMiddle = {
         }
       },
       args,
-      constants: [{ type: 'attribute', name: 'shapes', value: '["top", "middle"]' }, increaseColumnWidth()]
+      constants: increaseColumnWidth()
     });
   }
 };
 
 /**
- *  The middle, bottom shape of the brandshape.
+ * Use the `base`, `content-top`, `content-middle`, `shape-top`, `shape-middle` or `shape-bottom` part selectors to customize the brandshape.
  */
-export const middleBottom = {
-  name: 'Shape Middle Bottom',
-  parameters: { controls: { exclude: ['variant', 'shapes'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: { type: 'attribute', name: 'variant' }
-      },
-      options: {
-        templateBackgrounds: {
-          alternate: 'y',
-          colors: ['white', 'white', '#00358E']
-        }
-      },
-      args,
-      constants: [{ type: 'attribute', name: 'shapes', value: '["middle", "bottom"]' }, increaseColumnWidth()]
-    });
-  }
-};
 
-/**
- *  The top, middle, bottom shape of the brandshape.
- */
-export const topMiddleBottom = {
-  name: 'Shape Top Middle Bottom',
-  parameters: { controls: { exclude: ['variant', 'shapes'] } },
+export const Parts = {
+  parameters: {
+    controls: { exclude: ['base', 'content-top', 'content-middle', 'shape-top', 'shape-middle', 'shape-bottom'] }
+  },
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        y: { type: 'attribute', name: 'variant' }
-      },
-      options: {
-        templateBackgrounds: {
-          alternate: 'y',
-          colors: ['white', 'white', '#00358E']
+        y: {
+          type: 'template',
+          name: 'sd-brandshape::part(...){outline: solid 2px red}',
+          values: ['base', 'content-middle', 'shape-top', 'shape-middle', 'shape-bottom'].map(part => {
+            return {
+              title: part,
+              value: `<style>#part-${part} sd-brandshape::part(${part}){outline: solid 2px red; fill: red}</style><div id="part-${part}">%TEMPLATE%</div>`
+            };
+          })
         }
       },
       args,
-      constants: [{ type: 'attribute', name: 'shapes', value: '["top", "middle", "bottom"]' }, increaseColumnWidth()]
+      constants: increaseColumnWidth()
     });
   }
 };
