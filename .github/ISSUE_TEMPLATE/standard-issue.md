@@ -1,7 +1,7 @@
 ---
 name: Standard Issue
 about: Standard Issue Template
-title: 'feat: ✨ add [COMPONENT_NAME]'
+title: 'feat: ✨ add sd-[COMPONENT_NAME]'
 labels: ''
 assignees: ''
 
