@@ -1,4 +1,5 @@
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
+import type { ConstantDefinition } from '../../../scripts/storybook/helper';
 
 const { argTypes, parameters } = storybookDefaults('sd-brandshape');
 const { overrideArgs } = storybookHelpers('sd-brandshape');
@@ -21,10 +22,17 @@ export default {
     'shapes-attr': {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       ...argTypes['shapes-attr'],
-      control: 'text',
-      options: ['["top"]', '["top", "middle"]', '["middle", "bottom"]', '["top", "middle", "bottom"]'] // HAS NO OVERRIDE EFFECT FOR THE STORYBOOK
+      control: 'text'
     }
   }
+};
+
+const increaseColumnWidth = (): ConstantDefinition => {
+  return {
+    type: 'template',
+    name: 'width',
+    value: `<div style="min-width: 300px; max-width: 600px; width: 100vw;">%TEMPLATE%</div>`
+  };
 };
 
 /**
@@ -41,8 +49,8 @@ export const Default = {
  */
 export const Top = {
   name: 'Shape Top',
-  parameters: { controls: { exclude: ['variant', 'form'] } },
-  render: () => {
+  parameters: { controls: { exclude: ['variant', 'shapes'] } },
+  render: (args: any) => {
     return generateTemplate({
       axis: {
         y: { type: 'attribute', name: 'variant' }
@@ -53,15 +61,8 @@ export const Top = {
           colors: ['white', 'white', '#00358E']
         }
       },
-      args: overrideArgs([
-        {
-          type: 'slot',
-          name: 'default',
-          value: 'Default'
-        },
-        { type: 'attribute', name: 'shapes', value: '["top"]' }
-      ]),
-      constants: { type: 'template', name: 'width', value: '<div style="width: 500px">%TEMPLATE%</div>' }
+      args,
+      constants: [{ type: 'attribute', name: 'shapes', value: '["top"]' }, increaseColumnWidth()]
     });
   }
 };
@@ -71,8 +72,8 @@ export const Top = {
  */
 export const topMiddle = {
   name: 'Shape Top Middle',
-  parameters: { controls: { exclude: ['variant', 'form'] } },
-  render: () => {
+  parameters: { controls: { exclude: ['variant', 'shapes'] } },
+  render: (args: any) => {
     return generateTemplate({
       axis: {
         y: { type: 'attribute', name: 'variant' }
@@ -83,15 +84,8 @@ export const topMiddle = {
           colors: ['white', 'white', '#00358E']
         }
       },
-      args: overrideArgs([
-        {
-          type: 'slot',
-          name: 'default',
-          value: 'Default'
-        },
-        { type: 'attribute', name: 'shapes', value: '["top", "middle"]' }
-      ]),
-      constants: { type: 'template', name: 'width', value: '<div style="width: 500px">%TEMPLATE%</div>' }
+      args,
+      constants: [{ type: 'attribute', name: 'shapes', value: '["top", "middle"]' }, increaseColumnWidth()]
     });
   }
 };
@@ -101,8 +95,8 @@ export const topMiddle = {
  */
 export const middleBottom = {
   name: 'Shape Middle Bottom',
-  parameters: { controls: { exclude: ['variant', 'form'] } },
-  render: () => {
+  parameters: { controls: { exclude: ['variant', 'shapes'] } },
+  render: (args: any) => {
     return generateTemplate({
       axis: {
         y: { type: 'attribute', name: 'variant' }
@@ -113,15 +107,8 @@ export const middleBottom = {
           colors: ['white', 'white', '#00358E']
         }
       },
-      args: overrideArgs([
-        {
-          type: 'slot',
-          name: 'default',
-          value: 'Default'
-        },
-        { type: 'attribute', name: 'shapes', value: '["middle", "bottom"]' }
-      ]),
-      constants: { type: 'template', name: 'width', value: '<div style="width: 500px">%TEMPLATE%</div>' }
+      args,
+      constants: [{ type: 'attribute', name: 'shapes', value: '["middle", "bottom"]' }, increaseColumnWidth()]
     });
   }
 };
@@ -131,8 +118,8 @@ export const middleBottom = {
  */
 export const topMiddleBottom = {
   name: 'Shape Top Middle Bottom',
-  parameters: { controls: { exclude: ['variant', 'form'] } },
-  render: () => {
+  parameters: { controls: { exclude: ['variant', 'shapes'] } },
+  render: (args: any) => {
     return generateTemplate({
       axis: {
         y: { type: 'attribute', name: 'variant' }
@@ -143,15 +130,8 @@ export const topMiddleBottom = {
           colors: ['white', 'white', '#00358E']
         }
       },
-      args: overrideArgs([
-        {
-          type: 'slot',
-          name: 'default',
-          value: 'Default'
-        },
-        { type: 'attribute', name: 'shapes', value: '["top", "middle", "bottom"]' }
-      ]),
-      constants: { type: 'template', name: 'width', value: '<div style="width: 500px">%TEMPLATE%</div>' }
+      args,
+      constants: [{ type: 'attribute', name: 'shapes', value: '["top", "middle", "bottom"]' }, increaseColumnWidth()]
     });
   }
 };
