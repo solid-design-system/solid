@@ -30,16 +30,9 @@ export default {
 /**
  * Default: This shows sd-brandshape in its default state.
  */
-
 export const Default = {
   render: (args: any) => {
     return generateTemplate({ args });
-  }
-};
-
-export const test = {
-  render: () => {
-    return '<sd-brandshape>Default Slot</sd-brandshape>';
   }
 };
 
