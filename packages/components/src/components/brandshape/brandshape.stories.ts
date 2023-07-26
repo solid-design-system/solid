@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+import '../../solid-components';
+
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 import type { ConstantDefinition } from '../../../scripts/storybook/helper';
 

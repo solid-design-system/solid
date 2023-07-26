@@ -1,6 +1,5 @@
-import { css } from 'lit';
+import { css, html } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
-import { html } from 'lit/static-html.js';
 import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
@@ -22,7 +21,7 @@ import type { TemplateResult } from 'lit-html';
  */
 @customElement('sd-brandshape')
 export default class SdBrandshape extends SolidElement {
-  @query('.container') containerElem: HTMLElement;
+  @query('.bs-container') containerElem: HTMLElement;
 
   /** The brandshape's theme variant. */
   @property({ type: String }) variant: 'neutral-100' | 'primary' | 'white' = 'primary';
@@ -115,7 +114,7 @@ export default class SdBrandshape extends SolidElement {
   }
 
   render() {
-    return html`<div class="container" part="base">
+    return html`<div class="bs-container" part="base">
       ${this.shapes.includes('top') ? this.renderTopBrandshape() : null}
       ${this.shapes.includes('middle') ? this.renderMiddleBrandshape() : null}
       ${this.shapes.includes('bottom') ? this.renderBottomBrandshape() : null}
