@@ -80,7 +80,10 @@ export const Inverted = {
       axis: {
         y: { type: 'attribute', name: 'inverted' }
       },
-      args
+      args,
+      options: {
+        templateBackgrounds: { alternate: 'y', colors: [ '#00358E', 'white'] }
+      }
     });
   }
 };
