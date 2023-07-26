@@ -15,9 +15,9 @@ assignees: ''
 
 ### Components detailed requirements
 - [ ] Props, CSS-Properties, Parts & Slots
-  - [ ] ...
+  - [ ] tbd
 - [ ] Stories
-  - [ ] ...
+  - [ ] tbd
 
 ## DoR
 - [ ] Item has business value
