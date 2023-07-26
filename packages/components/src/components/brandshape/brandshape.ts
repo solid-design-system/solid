@@ -63,20 +63,26 @@ export default class SdBrandshape extends SolidElement {
     );
   }
 
+  private setBreakpoint(): void {
+    this.componentBreakpoint = this.containerElem.clientWidth >= 560 ? 560 : 0;
+  }
+
   connectedCallback(): void {
     super.connectedCallback();
-    this.resizeObserver = new ResizeObserver(() => {
-      this.componentBreakpoint = this.containerElem.clientWidth >= 560 ? 560 : 0;
-    });
+    this.resizeObserver = new ResizeObserver(() => this.setBreakpoint());
 
     this.updateComplete.then(() => {
+      this.setBreakpoint();
       this.resizeObserver.observe(this.containerElem);
     });
   }
 
   disconnectedCallback(): void {
     super.disconnectedCallback();
-    this.resizeObserver.unobserve(this.containerElem);
+    if (this.resizeObserver) {
+      this.resizeObserver.unobserve(this.containerElem);
+      this.resizeObserver.disconnect();
+    }
   }
 
   private renderTopBrandshape(): TemplateResult {
