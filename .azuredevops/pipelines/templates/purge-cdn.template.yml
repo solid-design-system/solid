@@ -7,43 +7,53 @@ steps:
       scriptLocation: 'inlineScript'
       inlineScript: |
         if [[ $deployment != "none" ]]; then
-          # Purge version folder
+          # Purge all folders
           set -x
           az cdn endpoint purge \
             --resource-group rg-staticcontent-prod-frontend-cdn \
             --profile-name cdn-staticcontent-prod-frontend-cdn \
             --name "fe-solid-design-system-prod" \
-            --content-paths "/$(version)/*" \
+            --content-paths "/*" \
             --no-wait
           set +x
+
+          # Purge version folder
+          # set -x
+          # az cdn endpoint purge \
+          #   --resource-group rg-staticcontent-prod-frontend-cdn \
+          #   --profile-name cdn-staticcontent-prod-frontend-cdn \
+          #   --name "fe-solid-design-system-prod" \
+          #   --content-paths "/$(version)/*" \
+          #   --no-wait
+          # set +x
 
           # Purge patch-wildcard folder
-          set -x
-          az cdn endpoint purge \
-            --resource-group rg-staticcontent-prod-frontend-cdn \
-            --profile-name cdn-staticcontent-prod-frontend-cdn \
-            --name "fe-solid-design-system-prod" \
-            --content-paths "/$(patchWildcardPath)/*" \
-            --no-wait
-          set +x
+          # set -x
+          # az cdn endpoint purge \
+          #   --resource-group rg-staticcontent-prod-frontend-cdn \
+          #   --profile-name cdn-staticcontent-prod-frontend-cdn \
+          #   --name "fe-solid-design-system-prod" \
+          #   --content-paths "/$(patchWildcardPath)/*" \
+          #   --no-wait
+          # set +x
 
           # Purge major-wildcard folder
-          set -x
-          az cdn endpoint purge \
-            --resource-group rg-staticcontent-prod-frontend-cdn \
-            --profile-name cdn-staticcontent-prod-frontend-cdn \
-            --name "fe-solid-design-system-prod" \
-            --content-paths "/$(majorWildcardPath)/*" \
-            --no-wait
-          set +x
+          # set -x
+          # az cdn endpoint purge \
+          #   --resource-group rg-staticcontent-prod-frontend-cdn \
+          #   --profile-name cdn-staticcontent-prod-frontend-cdn \
+          #   --name "fe-solid-design-system-prod" \
+          #   --content-paths "/$(majorWildcardPath)/*" \
+          #   --no-wait
+          # set +x
 
           # Purge minor-wildcard folder
-          set -x
-          az cdn endpoint purge \
-            --resource-group rg-staticcontent-prod-frontend-cdn \
-            --profile-name cdn-staticcontent-prod-frontend-cdn \
-            --name "fe-solid-design-system-prod" \
-            --content-paths "/$(minorWildcardPath)/*" \
-            --no-wait
-          set +x
+          # set -x
+          # az cdn endpoint purge \
+          #   --resource-group rg-staticcontent-prod-frontend-cdn \
+          #   --profile-name cdn-staticcontent-prod-frontend-cdn \
+          #   --name "fe-solid-design-system-prod" \
+          #   --content-paths "/$(minorWildcardPath)/*" \
+          #   --no-wait
+          # set +x
         fi
