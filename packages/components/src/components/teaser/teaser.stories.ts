@@ -22,17 +22,12 @@ export default {
     },
     {
       type: 'slot',
-      name: 'headline',
-      value: '<h2 slot="headline">Remember: Always Use &lt;h&gt; Tags here!</h2>'
-    },
-    {
-      type: 'slot',
       name: 'meta',
       value: `<slot-comp slot='meta' style="--slot-height: 46px; --slot-content: 'Meta slot'"></slot-comp>`
     }
   ]),
   argTypes,
-  parameters: { ...parameters }
+  parameters
 };
 
 /**
@@ -46,14 +41,16 @@ export const Default = {
 };
 
 /**
- * Teaser in all possible variants.
+ * Teaser in all possible combinations of `variant` and `inset`. Note that in case the variant is `white border-neutral-300`, the inset is always `true`.
  */
 
-export const Variants = {
-  parameters: { controls: { exclude: 'variant' } },
+export const VariantAndInset = {
+  name: 'Variant x Inset',
+  parameters: { controls: { exclude: ['variant', 'inset'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
+        x: { type: 'attribute', name: 'inset' },
         y: { type: 'attribute', name: 'variant' }
       },
       args,
@@ -61,7 +58,7 @@ export const Variants = {
         {
           type: 'template',
           name: 'style',
-          value: '<div style="margin-bottom: 50px">%TEMPLATE%</div>'
+          value: '<div style="margin-bottom: 40px; width: 375px; height: 250px;">%TEMPLATE%</div>'
         },
         {
           type: 'attribute',
@@ -74,7 +71,7 @@ export const Variants = {
 };
 
 /**
- * Teaser in all possible combinations of `inset` and 'orientation'. Note that in case the variant is `white border-neutral-300`, the inset is always `true`.
+ * Teaser in all possible combinations of `inset` and `orientation`.
  */
 
 export const InsetAndOrientation = {
@@ -89,6 +86,11 @@ export const InsetAndOrientation = {
       args,
       constants: [
         {
+          type: 'template',
+          name: 'style',
+          value: '<div style="margin-bottom: 40px;">%TEMPLATE%</div>'
+        },
+        {
           type: 'attribute',
           name: 'variant',
           value: 'primary-100'
@@ -99,7 +101,7 @@ export const InsetAndOrientation = {
 };
 
 /**
- * Teaser with different media and content distribution values.
+ * Teaser with different `media` and `content` distribution values.
  */
 
 export const DistributionRatio = {
@@ -112,12 +114,12 @@ export const DistributionRatio = {
           name: 'media and content distribution',
           values: [
             {
-              title: 'media: 66%, content: 33%',
-              value: '<div style="--distribution-media: 66%; --distribution-content: 33%;">%TEMPLATE%</div>'
+              title: 'media: 33%, content: 66%',
+              value: '<div style="--distribution-media: 33%; --distribution-content: 66%;">%TEMPLATE%</div>'
             },
             {
-              title: 'media: 200px, content: 450px',
-              value: '<div style="--distribution-media: 200px; --distribution-content: 450px;">%TEMPLATE%</div>'
+              title: 'media: 200px, content: 100%',
+              value: '<div style="--distribution-media: 200px; --distribution-content: 100%;">%TEMPLATE%</div>'
             }
           ]
         }
@@ -127,7 +129,7 @@ export const DistributionRatio = {
         {
           type: 'template',
           name: 'style',
-          value: '<div style="margin-bottom: 50px">%TEMPLATE%</div>'
+          value: '<div style="margin-bottom: 40px">%TEMPLATE%</div>'
         },
         {
           type: 'attribute',
@@ -145,7 +147,7 @@ export const DistributionRatio = {
 };
 
 /**
- * Responsive teaser in different Breakpoints.
+ * When responsive, teaser changes its orientation from `horizontal` to `vertical` at a component's width of 448px.
  */
 
 export const Breakpoint = {
@@ -191,63 +193,47 @@ export const Breakpoint = {
 };
 
 /**
- * Different headline sizes. It is also possible to use sd-link inside the <h> tag in the headline slot.
+ * Different `headline` sizes. It is also possible to use `sd-link` inside the <h> tag in the headline slot.
  */
 
 export const Headline = {
   parameters: { controls: { exclude: 'headline' } },
   render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: {
-          type: 'slot',
-          name: 'headline',
-          values: [
+    return html`
+      ${['h1', 'h2', 'h3', 'h4', 'h5', 'h6'].map(tag => {
+        return generateTemplate({
+          axis: {
+            y: {
+              type: 'slot',
+              name: 'headline',
+              values: [
+                {
+                  value: `<${tag} slot="headline">${tag}</${tag}>`,
+                  title: tag
+                },
+                {
+                  value: `<${tag} slot="headline"><sd-link href="#">${tag} + sd-link</sd-link></${tag}>`,
+                  title: `${tag} + sd-link`
+                }
+              ]
+            }
+          },
+          args,
+          constants: [
             {
-              value: '<h1 slot="headline">Remember: Always Use &lt;h&gt; Tags here!</h1>',
-              title: 'h1'
+              type: 'template',
+              name: 'style',
+              value: '<div style="margin-bottom: 40px; width: 375px;">%TEMPLATE%</div>'
             },
             {
-              value: '<h2 slot="headline">Remember: Always Use &lt;h&gt; Tags here!</h2>',
-              title: 'h2'
-            },
-            {
-              value: '<h3 slot="headline">Remember: Always Use &lt;h&gt; Tags here!</h3>',
-              title: 'h3'
-            },
-            {
-              value: '<h4 slot="headline">Remember: Always Use &lt;h&gt; Tags here!</h4>',
-              title: 'h4'
-            },
-            {
-              value: '<h5 slot="headline">Remember: Always Use &lt;h&gt; Tags here!</h5>',
-              title: 'h5'
-            },
-            {
-              value: '<h6 slot="headline">Remember: Always Use &lt;h&gt; Tags here!</h6>',
-              title: 'h6'
-            },
-            {
-              value: '<h3 slot="headline"><sd-link href=`#`>Remember: Always Use &lt;h&gt; Tags here!</sd-link></h3>',
-              title: 'headline with sd-link'
+              type: 'attribute',
+              name: 'variant',
+              value: 'primary-100'
             }
           ]
-        }
-      },
-      args,
-      constants: [
-        {
-          type: 'template',
-          name: 'style',
-          value: '<div style="margin-bottom: 40px">%TEMPLATE%</div>'
-        },
-        {
-          type: 'attribute',
-          name: 'variant',
-          value: 'primary-100'
-        }
-      ]
-    });
+        });
+      })}
+    `;
   }
 };
 
@@ -284,7 +270,7 @@ export const Slots = {
             {
               type: 'slot',
               name: 'media',
-              value: `<img slot='media' src="https://images.unsplash.com/photo-1501290741922-b56c0d0884af" alt='Test' style="width:100%; height: 100%;"/>`
+              value: `<img slot='media' src='./placeholders/collaboration.jpg' alt='Test' style="width:100%; height: 100%;"/>`
             },
             {
               type: 'slot',

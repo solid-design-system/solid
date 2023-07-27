@@ -3,6 +3,7 @@ import { customElement, property, query, state } from 'lit/decorators.js';
 import { HasSlotController } from '../../internal/slot';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
+import type { PropertyValues } from 'lit';
 
 /**
  * @summary Teasers group information into flexible containers so users can browse a collection of related items and actions.
@@ -35,7 +36,7 @@ export default class SdTeaser extends SolidElement {
   @property({ reflect: true })
   orientation: 'responsive' | 'vertical' | 'horizontal' = 'responsive';
 
-  /** The teaser's padding */
+  /** The teaser's inner padding. This is always set in `white border-neutral-300`. */
   @property({ type: Boolean, reflect: true }) inset = false;
 
   @query('[part="base"]') teaser: HTMLElement;
@@ -61,10 +62,16 @@ export default class SdTeaser extends SolidElement {
     }
   }
 
+  updated(changedProperties: PropertyValues) {
+    super.updated(changedProperties);
+    if (changedProperties.has('orientation')) {
+      this.updateOrientation();
+    }
+  }
+
   updateOrientation() {
     if (this.orientation === 'responsive') {
       this.currentOrientation = this.offsetWidth > 448 ? 'horizontal' : 'vertical';
-      this.requestUpdate();
     } else {
       this.currentOrientation = this.orientation;
     }
@@ -76,10 +83,10 @@ export default class SdTeaser extends SolidElement {
     }
 
     const slots = {
-      default: this.hasSlotController.test('[default]'),
-      media: this.hasSlotController.test('media'),
-      meta: this.hasSlotController.test('meta'),
-      headline: this.hasSlotController.test('headline')
+      'teaser-has-default': this.hasSlotController.test('[default]'),
+      'teaser-has-media': this.hasSlotController.test('media'),
+      'teaser-has-meta': this.hasSlotController.test('meta'),
+      'teaser-has-headline': this.hasSlotController.test('headline')
     };
 
     return html`
@@ -93,19 +100,17 @@ export default class SdTeaser extends SolidElement {
             primary: 'bg-primary text-white',
             'primary-100': 'bg-primary-100'
           }[this.variant],
-          (this.orientation === 'vertical' || this.currentOrientation === 'vertical') && 'flex-col',
-          (this.orientation === 'horizontal' || this.currentOrientation === 'horizontal') && 'flex-row gap-8',
-          (this.orientation === 'horizontal' || this.currentOrientation === 'horizontal') && this.inset && 'py-8 px-10'
+          this.currentOrientation === 'vertical' && 'flex-col',
+          this.currentOrientation === 'horizontal' && 'flex-row gap-8',
+          this.currentOrientation === 'horizontal' && this.inset && 'py-8 px-10'
         )}
         part="base"
       >
         <div
-          style=${this.orientation === 'horizontal' || this.currentOrientation === 'horizontal'
-            ? `width: var(--distribution-media, 100%);`
-            : ''}
+          style=${this.currentOrientation === 'horizontal' ? `width: var(--distribution-media, 100%);` : ''}
           class=${cx(
-            !this.inset && (this.orientation === 'vertical' || this.currentOrientation === 'vertical') && 'mb-4',
-            !slots['media'] && 'hidden'
+            !this.inset && this.currentOrientation === 'vertical' && 'mb-4',
+            !slots['teaser-has-media'] && 'hidden'
           )}
           part="media"
         >
@@ -113,34 +118,30 @@ export default class SdTeaser extends SolidElement {
         </div>
 
         <div
-          style=${this.orientation === 'horizontal' || this.currentOrientation === 'horizontal'
+          style=${this.currentOrientation === 'horizontal'
             ? `width: var(--distribution-content, 100%); ${
                 this.inset ? 'width: var(--distribution-content, calc(100% - 2rem));' : ''
               }`
             : ''}
           class=${cx(
             'flex flex-col text-left',
-            (this.orientation === 'horizontal' || this.currentOrientation === 'horizontal') && `flex flex-col`,
-            (this.orientation === 'vertical' || this.currentOrientation === 'vertical') && this.inset && 'm-4'
+            this.currentOrientation === 'horizontal' && `flex flex-col`,
+            this.currentOrientation === 'vertical' && this.inset && 'm-4'
           )}
           id="content"
         >
-          <div part="meta" class=${cx('gap-2 mb-4', !slots['meta'] && 'hidden')}>
+          <div part="meta" class=${cx('gap-2 mb-4', !slots['teaser-has-meta'] && 'hidden')}>
             <slot name="meta"></slot>
           </div>
 
           <div
             part="headline"
-            class=${cx(
-              'text-lg font-bold mb-1',
-              this.variant === 'primary' ? 'text-white' : 'text-black',
-              !slots['headline'] && 'hidden'
-            )}
+            class=${cx('text-lg font-bold mb-1', this.variant === 'primary' ? 'text-white' : 'text-black')}
           >
-            <slot name="headline"></slot>
+            <slot name="headline">Always insert one semantically correct heading element here &lt;h&gt;</slot>
           </div>
 
-          <div part="main" class=${cx(!slots['default'] && 'hidden')}>
+          <div part="main" class=${cx(!slots['teaser-has-default'] && 'hidden')}>
             <slot></slot>
           </div>
         </div>
