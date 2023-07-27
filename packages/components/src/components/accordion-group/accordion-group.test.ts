@@ -13,6 +13,8 @@ describe('<sd-accordion-group>', () => {
       `
     );
 
+    await waitUntil(() => el?.shadowRoot);
+
     // Get all the accordions
     const accordions = el.querySelectorAll('sd-accordion');
 
@@ -46,6 +48,8 @@ describe('<sd-accordion-group>', () => {
         </sd-accordion-group>
       `
     );
+
+    await waitUntil(() => el?.shadowRoot);
 
     // Get all the accordions
     const accordions = el.querySelectorAll('sd-accordion');

@@ -39,6 +39,8 @@ describe('<sd-include>', () => {
       text: () => delayResolve('"id": 1')
     });
     const el = await fixture<SdInclude>(html` <sd-include src="/found"></sd-include> `);
+    await waitUntil(() => el?.shadowRoot);
+
     const loadHandler = sinon.spy();
 
     el.addEventListener('sd-load', loadHandler);
@@ -56,6 +58,8 @@ describe('<sd-include>', () => {
       text: () => delayResolve('{}')
     });
     const el = await fixture<SdInclude>(html` <sd-include src="/not-found"></sd-include> `);
+    await waitUntil(() => el?.shadowRoot);
+    
     const loadHandler = sinon.spy();
 
     el.addEventListener('sd-error', loadHandler);

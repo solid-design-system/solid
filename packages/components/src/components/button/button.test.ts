@@ -11,6 +11,8 @@ describe('<sd-button>', () => {
     variants.forEach(variant => {
       it(`should be accessible when variant is "${variant}"`, async () => {
         const el = await fixture<SdButton>(html` <sd-button variant="${variant}"> Default Slot </sd-button> `);
+        await waitUntil(() => el?.shadowRoot);
+
         await expect(el).to.be.accessible();
       });
     });
@@ -19,11 +21,14 @@ describe('<sd-button>', () => {
   describe('when provided no parameters', () => {
     it('passes accessibility test', async () => {
       const el = await fixture<SdButton>(html` <sd-button>Default Slot</sd-button> `);
+      await waitUntil(() => el?.shadowRoot);
+
       await expect(el).to.be.accessible();
     });
 
     it('primary values are set correctly', async () => {
       const el = await fixture<SdButton>(html` <sd-button>Default Slot</sd-button> `);
+      await waitUntil(() => el?.shadowRoot);
 
       expect(el.title).to.equal('');
       expect(el.variant).to.equal('primary');
@@ -34,12 +39,16 @@ describe('<sd-button>', () => {
 
     it('should render as a <button>', async () => {
       const el = await fixture<SdButton>(html` <sd-button>Default Slot</sd-button> `);
+      await waitUntil(() => el?.shadowRoot);
+
       expect(el.shadowRoot!.querySelector('button')).to.exist;
       expect(el.shadowRoot!.querySelector('a')).not.to.exist;
     });
 
     it('should not have a spinner present', async () => {
       const el = await fixture<SdButton>(html` <sd-button>Default Slot</sd-button> `);
+      await waitUntil(() => el?.shadowRoot);
+
       expect(el.shadowRoot!.querySelector('sd-spinner')).not.to.exist;
     });
   });
@@ -47,21 +56,29 @@ describe('<sd-button>', () => {
   describe('when disabled', () => {
     it('passes accessibility test', async () => {
       const el = await fixture<SdButton>(html` <sd-button disabled>Default Slot</sd-button> `);
+      await waitUntil(() => el?.shadowRoot);
+
       await expect(el).to.be.accessible();
     });
 
     it('should disable the native <button> when rendering a <button>', async () => {
       const el = await fixture<SdButton>(html` <sd-button disabled>Default Slot</sd-button> `);
+      await waitUntil(() => el?.shadowRoot);
+
       expect(el.shadowRoot!.querySelector('button[disabled]')).to.exist;
     });
 
     it('should not disable the native <a> when rendering an <a>', async () => {
       const el = await fixture<SdButton>(html` <sd-button href="some/path" disabled>Default Slot</sd-button> `);
+      await waitUntil(() => el?.shadowRoot);
+
       expect(el.shadowRoot!.querySelector('a[disabled]')).not.to.exist;
     });
 
     it('should not bubble up clicks', async () => {
       const button = await fixture<SdButton>(html` <sd-button disabled>Default Slot</sd-button> `);
+      await waitUntil(() => button?.shadowRoot);
+
       const handleClick = sinon.spy();
       button.addEventListener('click', handleClick);
       button.click();
@@ -72,6 +89,8 @@ describe('<sd-button>', () => {
       expect(handleClick).not.to.have.been.called;
 
       const buttonLink = await fixture<SdButton>(html` <sd-button href="some/path" disabled>Default Slot</sd-button> `);
+      await waitUntil(() => buttonLink?.shadowRoot);
+
       buttonLink.addEventListener('click', handleClick);
       buttonLink.click();
 
@@ -84,12 +103,16 @@ describe('<sd-button>', () => {
 
   it('should have title if title attribute is set', async () => {
     const el = await fixture<SdButton>(html` <sd-button title="Test"></sd-button> `);
+    await waitUntil(() => el?.shadowRoot);
+
     expect(el.shadowRoot!.querySelector<HTMLButtonElement>('[part~="base"]')!.title).to.equal('Test');
   });
 
   describe('when loading', () => {
     it('should have a spinner present', async () => {
       const el = await fixture<SdButton>(html` <sd-button loading>Default Slot</sd-button> `);
+      await waitUntil(() => el?.shadowRoot);
+
       expect(el.shadowRoot!.querySelector('sd-spinner')).to.exist;
     });
   });
@@ -97,6 +120,8 @@ describe('<sd-button>', () => {
   describe('when href is present', () => {
     it('should render as an <a>', async () => {
       const el = await fixture<SdButton>(html` <sd-button href="some/path">Default Slot</sd-button> `);
+      await waitUntil(() => el?.shadowRoot);
+
       expect(el.shadowRoot!.querySelector('a')).to.exist;
       expect(el.shadowRoot!.querySelector('button')).not.to.exist;
     });
@@ -109,6 +134,8 @@ describe('<sd-button>', () => {
           <sd-button type="submit">Submit</sd-button>
         </form>
       `);
+      // await waitUntil(() => form?.shadowRoot);
+
       const button = form.querySelector<SdButton>('sd-button')!;
       const handleSubmit = sinon.spy((event: SubmitEvent) => event.preventDefault());
 
@@ -125,6 +152,8 @@ describe('<sd-button>', () => {
           <sd-button type="submit" form="a">Submit</sd-button>
         </div>
       `);
+      // await waitUntil(() => el?.shadowRoot);
+
       const form = el.querySelector<HTMLFormElement>('form')!;
       const button = el.querySelector<SdButton>('sd-button')!;
       const handleSubmit = sinon.spy((event: SubmitEvent) => event.preventDefault());
@@ -143,6 +172,8 @@ describe('<sd-button>', () => {
           </sd-button>
         </form>
       `);
+      // await waitUntil(() => form?.shadowRoot);
+
       const button = form.querySelector<SdButton>('sd-button')!;
       const handleSubmit = sinon.spy((event: SubmitEvent) => {
         submitter = event.submitter as HTMLButtonElement;
@@ -169,6 +200,8 @@ describe('<sd-button>', () => {
           </sd-button>
         </div>
       `);
+      // await waitUntil(() => el?.shadowRoot);
+
       const form = el.querySelector<HTMLFormElement>('form')!;
       const button = el.querySelector<SdButton>('sd-button')!;
       const handleSubmit = sinon.spy((event: SubmitEvent) => {
@@ -191,6 +224,8 @@ describe('<sd-button>', () => {
   describe('when using methods', () => {
     it('should emit sd-focus and sd-blur when the button is focused and blurred', async () => {
       const el = await fixture<SdButton>(html` <sd-button>Button</sd-button> `);
+      await waitUntil(() => el?.shadowRoot);
+
       const focusHandler = sinon.spy();
       const blurHandler = sinon.spy();
 
@@ -209,6 +244,8 @@ describe('<sd-button>', () => {
 
     it('should emit a click event when calling click()', async () => {
       const el = await fixture<SdButton>(html` <sd-button></sd-button> `);
+      await waitUntil(() => el?.shadowRoot);
+
       const clickHandler = sinon.spy();
 
       el.addEventListener('click', clickHandler);
@@ -222,6 +259,8 @@ describe('<sd-button>', () => {
   describe('when using methods', () => {
     it('should emit sd-focus and sd-blur when the button is a link and it is focused and blurred', async () => {
       const el = await fixture<SdButton>(html` <sd-button href="#">Button</sd-button> `);
+      await waitUntil(() => el?.shadowRoot);
+
       const focusHandler = sinon.spy();
       const blurHandler = sinon.spy();
 
@@ -240,6 +279,8 @@ describe('<sd-button>', () => {
 
     it('should emit a click event when calling click()', async () => {
       const el = await fixture<SdButton>(html` <sd-button></sd-button> `);
+      await waitUntil(() => el?.shadowRoot);
+
       const clickHandler = sinon.spy();
 
       el.addEventListener('click', clickHandler);

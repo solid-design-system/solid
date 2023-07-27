@@ -1,4 +1,4 @@
-import { elementUpdated, expect, fixture, html, oneEvent } from '@open-wc/testing';
+import { elementUpdated, expect, fixture, html, oneEvent, waitUntil } from '@open-wc/testing';
 import { registerIconLibrary } from './library.js';
 import type SdIcon from './icon';
 
@@ -37,6 +37,7 @@ describe('<sd-icon>', () => {
   describe('defaults ', () => {
     it('default properties', async () => {
       const el = await fixture<SdIcon>(html` <sd-icon></sd-icon> `);
+      await waitUntil(() => el?.shadowRoot);
 
       expect(el.name).to.be.undefined;
       expect(el.src).to.be.undefined;
@@ -46,6 +47,8 @@ describe('<sd-icon>', () => {
 
     it('renders pre-loaded system icons and emits sd-load event', async () => {
       const el = await fixture<SdIcon>(html` <sd-icon library="system"></sd-icon> `);
+      await waitUntil(() => el?.shadowRoot);
+
       const listener = oneEvent(el, 'sd-load') as Promise<CustomEvent>;
 
       el.name = 'chevron-down';
@@ -58,11 +61,14 @@ describe('<sd-icon>', () => {
 
     it('the icon is accessible', async () => {
       const el = await fixture<SdIcon>(html` <sd-icon library="system" name="check"></sd-icon> `);
+      await waitUntil(() => el?.shadowRoot);
+
       await expect(el).to.be.accessible();
     });
 
     it('the icon has the correct default aria attributes', async () => {
       const el = await fixture<SdIcon>(html` <sd-icon library="system" name="check"></sd-icon> `);
+      await waitUntil(() => el?.shadowRoot);
 
       expect(el.getAttribute('role')).to.be.null;
       expect(el.getAttribute('aria-label')).to.be.null;
@@ -74,6 +80,7 @@ describe('<sd-icon>', () => {
     it('the icon has the correct default aria attributes', async () => {
       const fakeLabel = 'a label';
       const el = await fixture<SdIcon>(html` <sd-icon label="${fakeLabel}" library="system" name="check"></sd-icon> `);
+      await waitUntil(() => el?.shadowRoot);
 
       expect(el.getAttribute('role')).to.equal('img');
       expect(el.getAttribute('aria-label')).to.equal(fakeLabel);
@@ -85,6 +92,7 @@ describe('<sd-icon>', () => {
     it('the svg is rendered', async () => {
       const fakeId = 'test-src';
       const el = await fixture<SdIcon>(html` <sd-icon></sd-icon> `);
+      await waitUntil(() => el?.shadowRoot);
 
       const listener = oneEvent(el, 'sd-load');
       el.src = `data:image/svg+xml,${encodeURIComponent(`<svg id="${fakeId}"></svg>`)}`;
@@ -100,6 +108,8 @@ describe('<sd-icon>', () => {
   describe('new library', () => {
     it('renders icons from the new library and emits sd-load event', async () => {
       const el = await fixture<SdIcon>(html` <sd-icon library="test-library"></sd-icon> `);
+      await waitUntil(() => el?.shadowRoot);
+
       const listener = oneEvent(el, 'sd-load') as Promise<CustomEvent>;
 
       el.name = 'test-icon1';
@@ -112,6 +122,8 @@ describe('<sd-icon>', () => {
 
     it('runs mutator from new library', async () => {
       const el = await fixture<SdIcon>(html` <sd-icon library="test-library" name="test-icon1"></sd-icon> `);
+      await waitUntil(() => el?.shadowRoot);
+
       await elementUpdated(el);
 
       const svg = el.shadowRoot?.querySelector('svg');
@@ -123,12 +135,15 @@ describe('<sd-icon>', () => {
     // using new library so we can test for malformed icons when registered
     it("svg not rendered with an icon that doesn't exist in the library", async () => {
       const el = await fixture<SdIcon>(html` <sd-icon library="test-library" name="does-not-exist"></sd-icon> `);
+      await waitUntil(() => el?.shadowRoot);
 
       expect(el.shadowRoot?.querySelector('svg')).to.be.null;
     });
 
     it('emits sd-error when the file cant be retrieved', async () => {
       const el = await fixture<SdIcon>(html` <sd-icon library="test-library"></sd-icon> `);
+      await waitUntil(() => el?.shadowRoot);
+
       const listener = oneEvent(el, 'sd-error') as Promise<CustomEvent>;
 
       el.name = 'bad-request';
@@ -141,6 +156,8 @@ describe('<sd-icon>', () => {
 
     it("emits sd-error when there isn't an svg element in the registered icon", async () => {
       const el = await fixture<SdIcon>(html` <sd-icon library="test-library"></sd-icon> `);
+      await waitUntil(() => el?.shadowRoot);
+      
       const listener = oneEvent(el, 'sd-error') as Promise<CustomEvent>;
 
       el.name = 'bad-icon';

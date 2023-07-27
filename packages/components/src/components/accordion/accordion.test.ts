@@ -12,6 +12,7 @@ describe('<sd-accordion>', () => {
         consequat.
       </sd-accordion>
     `);
+    await waitUntil(() => el?.shadowRoot?.querySelector('[part~="content"]'));
 
     expect(el.shadowRoot!.querySelector<HTMLElement>('[part~="content"]')!.hidden).to.be.false;
   });
@@ -24,6 +25,7 @@ describe('<sd-accordion>', () => {
         consequat.
       </sd-accordion>
     `);
+    await waitUntil(() => el?.shadowRoot?.querySelector('[part~="content"]'));
 
     expect(el.shadowRoot!.querySelector<HTMLElement>('[part~="content"]')!.hidden).to.be.true;
   });
@@ -36,6 +38,8 @@ describe('<sd-accordion>', () => {
         consequat.
       </sd-accordion>
     `);
+    await waitUntil(() => el?.shadowRoot?.querySelector('[part~="content"]'));
+
     const content = el.shadowRoot!.querySelector<HTMLElement>('[part~="content"]')!;
     const showHandler = sinon.spy();
     const afterShowHandler = sinon.spy();
@@ -60,6 +64,8 @@ describe('<sd-accordion>', () => {
         consequat.
       </sd-accordion>
     `);
+    await waitUntil(() => el?.shadowRoot?.querySelector('[part~="content"]'));
+
     const content = el.shadowRoot!.querySelector<HTMLElement>('[part~="content"]')!;
     const hideHandler = sinon.spy();
     const afterHideHandler = sinon.spy();
@@ -84,6 +90,8 @@ describe('<sd-accordion>', () => {
         consequat.
       </sd-accordion>
     `);
+    await waitUntil(() => el?.shadowRoot?.querySelector('[part~="content"]'));
+
     const content = el.shadowRoot!.querySelector<HTMLElement>('[part~="content"]')!;
     const showHandler = sinon.spy();
     const afterShowHandler = sinon.spy();
@@ -108,6 +116,8 @@ describe('<sd-accordion>', () => {
         consequat.
       </sd-accordion>
     `);
+    await waitUntil(() => el?.shadowRoot?.querySelector('[part~="content"]'));
+
     const content = el.shadowRoot!.querySelector<HTMLElement>('[part~="content"]')!;
     const hideHandler = sinon.spy();
     const afterHideHandler = sinon.spy();
@@ -132,6 +142,8 @@ describe('<sd-accordion>', () => {
         consequat.
       </sd-accordion>
     `);
+    await waitUntil(() => el?.shadowRoot?.querySelector('[part~="content"]'));
+
     const showHandler = sinon.spy((event: CustomEvent) => event.preventDefault());
 
     el.addEventListener('sd-show', showHandler);
@@ -151,6 +163,8 @@ describe('<sd-accordion>', () => {
         consequat.
       </sd-accordion>
     `);
+    await waitUntil(() => el?.shadowRoot?.querySelector('[part~="content"]'));
+
     const hideHandler = sinon.spy((event: CustomEvent) => event.preventDefault());
 
     el.addEventListener('sd-hide', hideHandler);
@@ -170,6 +184,8 @@ describe('<sd-accordion>', () => {
         consequat.
       </sd-accordion>
     `);
+    await waitUntil(() => el?.shadowRoot?.querySelector('[part~="content"]'));
+
     const summary = el.shadowRoot!.querySelector<HTMLElement>('[part~="header"]')!;
     const showHandler = sinon.spy();
     const hideHandler = sinon.spy();
@@ -196,6 +212,8 @@ describe('<sd-accordion>', () => {
         consequat.
       </sd-accordion>
     `);
+    await waitUntil(() => el?.shadowRoot?.querySelector('[part~="content"]'));
+
     const summary = el.shadowRoot!.querySelector<HTMLElement>('[part~="header"]')!;
     const showHandler = sinon.spy();
     const hideHandler = sinon.spy();
