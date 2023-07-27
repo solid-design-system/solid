@@ -16,7 +16,7 @@ export default {
     {
       type: 'slot',
       name: 'default',
-      value: 'Default'
+      value: '<slot-comp style="--slot-height: 32px; --slot-width: 100%;"></slot-comp>'
     },
     { type: 'attribute', name: 'shapes', value: '["top", "middle", "bottom"]' }
   ]),
@@ -95,12 +95,12 @@ export const Variants = {
 };
 
 /**
- * Use the `base`, `content-top`, `content-middle`, `shape-top`, `shape-middle` or `shape-bottom` part selectors to customize the brandshape.
+ * Use the `base`, `content`, `shape-top`, `shape-middle` or `shape-bottom` part selectors to customize the brandshape.
  */
 
 export const Parts = {
   parameters: {
-    controls: { exclude: ['base', 'content-top', 'content-middle', 'shape-top', 'shape-middle', 'shape-bottom'] }
+    controls: { exclude: ['base', 'content', 'shape-top', 'shape-middle', 'shape-bottom'] }
   },
   render: (args: any) => {
     return generateTemplate({
@@ -108,10 +108,10 @@ export const Parts = {
         y: {
           type: 'template',
           name: 'sd-brandshape::part(...){outline: solid 2px red}',
-          values: ['base', 'content-middle', 'shape-top', 'shape-middle', 'shape-bottom'].map(part => {
+          values: ['base', 'content', 'shape-top', 'shape-middle', 'shape-bottom'].map(part => {
             return {
               title: part,
-              value: `<style>#part-${part} sd-brandshape::part(${part}){outline: solid 2px red; fill: red}</style><div id="part-${part}">%TEMPLATE%</div>`
+              value: `<style>#part-${part} sd-brandshape::part(${part}){outline: solid 2px red}</style><div id="part-${part}">%TEMPLATE%</div>`
             };
           })
         }

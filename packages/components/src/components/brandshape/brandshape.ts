@@ -14,15 +14,14 @@ import type { TemplateResult } from 'lit-html';
  * @slot - The content inside the brandshape.
  *
  * @csspart base - The component's base wrapper.
- * @csspart content-middle - Middle content wrapper.
- * @csspart content-top - Top content wrapper.
- * @csspart shape-top - Top shape SVG path.
+ * @csspart content - Middle content wrapper.
+ * @csspart shape-top - Top shape.
  * @csspart shape-middle - Middle shape.
- * @csspart shape-bottom - Bottom shape SVG path.
+ * @csspart shape-bottom - Bottom shape.
  */
 @customElement('sd-brandshape')
 export default class SdBrandshape extends SolidElement {
-  @query('.bs-container') containerElem: HTMLElement;
+  @query('[part=base]') containerElem: HTMLElement;
 
   /** The brandshape's theme variant. */
   @property({ type: String }) variant: 'neutral-100' | 'primary' | 'white' = 'primary';
@@ -35,33 +34,19 @@ export default class SdBrandshape extends SolidElement {
   private resizeObserver: ResizeObserver;
 
   private get topSvg(): TemplateResult {
-    return html`<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 958 166">
+    return html`<svg xmlns="http://www.w3.org/2000/svg" part="shape-top" viewBox="0 0 958 166">
       <path
-        part="shape-top"
-        class=${this.svgClasses()}
         d="M836.828 1.894.001 164.785V168h958v-66.312c0-6.524-.628-13.033-1.876-19.436-10.74-55.114-64.151-91.092-119.297-80.358Z"
       />
     </svg>`;
   }
 
   private get bottomSvg(): TemplateResult {
-    return html`<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 958 168">
+    return html`<svg xmlns="http://www.w3.org/2000/svg" part="shape-bottom" viewBox="0 0 958 168">
       <path
-        part="shape-bottom"
-        class=${this.svgClasses()}
         d="M121.173 166.106 958 3.216V0H0v66.312c0 6.524.628 13.033 1.876 19.436 10.74 55.114 64.151 91.092 119.297 80.358Z"
       />
     </svg>`;
-  }
-
-  private svgClasses(): string {
-    return cx(
-      {
-        'neutral-100': 'fill-neutral-100',
-        primary: 'fill-primary',
-        white: 'fill-white'
-      }[this.variant]
-    );
   }
 
   private setBreakpoint(): void {
@@ -87,7 +72,7 @@ export default class SdBrandshape extends SolidElement {
     return this.shapes.length === 1
       ? html` <div class="relative">
           ${this.topSvg}
-          <div part="content-top" class="absolute bottom-0 right-0 flex items-end w-2/5 h-2/3 px-6 py-4">
+          <div part="content" class="absolute bottom-0 right-0 flex items-end w-2/5 h-2/3 px-6 py-4">
             <slot></slot>
           </div>
         </div>`
@@ -108,7 +93,7 @@ export default class SdBrandshape extends SolidElement {
             'w-full block absolute h-full top-0 left-0 z-0'
           )}
         ></div>
-        <div class="z-10 relative" part="content-middle"><slot></slot></div>
+        <div class="z-10 relative" part="content"><slot></slot></div>
       </div>
     `;
   }
@@ -118,7 +103,16 @@ export default class SdBrandshape extends SolidElement {
   }
 
   render() {
-    return html`<div class="bs-container" part="base">
+    return html`<div
+      class=${cx(
+        {
+          'neutral-100': 'fill-neutral-100',
+          primary: 'fill-primary',
+          white: 'fill-white'
+        }[this.variant]
+      )}
+      part="base"
+    >
       ${this.shapes.includes('top') ? this.renderTopBrandshape() : null}
       ${this.shapes.includes('middle') ? this.renderMiddleBrandshape() : null}
       ${this.shapes.includes('bottom') ? this.renderBottomBrandshape() : null}
