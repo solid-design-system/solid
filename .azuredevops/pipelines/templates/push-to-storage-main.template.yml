@@ -97,4 +97,4 @@ steps:
         fi
 
   ## Purge CDN for all folders
-  - template: purge-cdn.template.yml
+  - template: purge-main-cdn.template.yml

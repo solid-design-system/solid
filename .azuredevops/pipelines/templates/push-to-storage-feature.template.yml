@@ -19,6 +19,4 @@ steps:
         set +x
 
     ## Purge CDN for branch folder
-  - template: purge-cdn.template.yml
-    parameters:
-      destinationPath: '$(branch)'
+  - template: purge-feature-cdn.template.yml
