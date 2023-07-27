@@ -6,14 +6,12 @@ steps:
       scriptType: 'bash'
       scriptLocation: 'inlineScript'
       inlineScript: |
-        if [[ $deployment != "none" ]]; then
-          # Purge branch folder
-          set -x
-          az cdn endpoint purge \
-            --resource-group rg-staticcontent-prod-frontend-cdn \
-            --profile-name cdn-staticcontent-prod-frontend-cdn \
-            --name "fe-solid-design-system-prod" \
-            --content-paths "/$(branch)/*" \
-            --no-wait
-          set +x
-        fi
+        # Purge branch folder
+        set -x
+        az cdn endpoint purge \
+          --resource-group rg-staticcontent-prod-frontend-cdn \
+          --profile-name cdn-staticcontent-prod-frontend-cdn \
+          --name "fe-solid-design-system-prod" \
+          --content-paths "/$(branch)/*" \
+          --no-wait
+        set +x
