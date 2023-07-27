@@ -13,7 +13,7 @@ describe('<sd-spinner>', () => {
     it('should have a role of "status".', async () => {
       const spinner = await fixture<SdSpinner>(html` <sd-spinner></sd-spinner> `);
       await waitUntil(() => spinner?.shadowRoot);
-      
+
       const svg = spinner.shadowRoot!.querySelector('svg')!;
       expect(svg).have.attribute('role', 'progressbar');
     });

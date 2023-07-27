@@ -157,7 +157,7 @@ describe('<sd-icon>', () => {
     it("emits sd-error when there isn't an svg element in the registered icon", async () => {
       const el = await fixture<SdIcon>(html` <sd-icon library="test-library"></sd-icon> `);
       await waitUntil(() => el?.shadowRoot);
-      
+
       const listener = oneEvent(el, 'sd-error') as Promise<CustomEvent>;
 
       el.name = 'bad-icon';

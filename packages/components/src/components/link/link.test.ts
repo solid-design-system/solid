@@ -29,7 +29,7 @@ describe('<sd-link>', () => {
     it('should render as an <a>', async () => {
       const el = await fixture<SdLink>(html` <sd-link>Default Slot</sd-link> `);
       await waitUntil(() => el?.shadowRoot);
-      
+
       expect(el.shadowRoot!.querySelector('a')).to.exist;
     });
   });
