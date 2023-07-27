@@ -95,9 +95,32 @@ export const Variants = {
 };
 
 /**
+ * The different breakpoints of the brandshape.
+ */
+export const Breakpoints = {
+  name: 'Breakpoints',
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        y: {
+          type: 'template',
+          name: 'query width = ...',
+          values: ['< 560px', '≥ 560px'].map(breakpoint => {
+            return {
+              title: breakpoint,
+              value: `<div style="width: ${breakpoint === '< 560px' ? 559 : 560}px">%TEMPLATE%</div>`
+            };
+          })
+        }
+      },
+      args
+    });
+  }
+};
+
+/**
  * Use the `base`, `content`, `shape-top`, `shape-middle` or `shape-bottom` part selectors to customize the brandshape.
  */
-
 export const Parts = {
   parameters: {
     controls: { exclude: ['base', 'content', 'shape-top', 'shape-middle', 'shape-bottom'] }
