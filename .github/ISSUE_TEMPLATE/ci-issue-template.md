@@ -1,7 +1,7 @@
 ---
-name: Standard Issue
-about: Standard Issue Template
-title: 'feat: ✨ add sd-[COMPONENT_NAME]'
+name: CI Issue
+about: CI Issue Template
+title: 'ci: 👷 [TASK_DESCRIPTION]'
 labels: ''
 assignees: ''
 
@@ -9,15 +9,9 @@ assignees: ''
 
 ## Description
 
-## API
+## Environment (GitHub Actions or Azure DevOps)
 
-## Hand-off
-
-### Components detailed requirements
-- [ ] Props, CSS-Properties, Parts & Slots
-  - [ ] tbd
-- [ ] Stories
-  - [ ] tbd
+## Technical Information
 
 ## DoR
 - [ ] Item has business value

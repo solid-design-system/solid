@@ -1,7 +1,7 @@
 ---
-name: Standard Issue
-about: Standard Issue Template
-title: 'feat: ✨ add sd-[COMPONENT_NAME]'
+name: Documentation Issue
+about: Documentation Issue Template
+title: 'docs: 📚 [DOCS_DESCRIPTION]'
 labels: ''
 assignees: ''
 
@@ -9,15 +9,7 @@ assignees: ''
 
 ## Description
 
-## API
-
-## Hand-off
-
-### Components detailed requirements
-- [ ] Props, CSS-Properties, Parts & Slots
-  - [ ] tbd
-- [ ] Stories
-  - [ ] tbd
+## Where to put the documentation
 
 ## DoR
 - [ ] Item has business value

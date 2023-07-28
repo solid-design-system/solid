@@ -1,23 +1,19 @@
 ---
-name: Standard Issue
-about: Standard Issue Template
-title: 'feat: ✨ add sd-[COMPONENT_NAME]'
+name: Performance Issue
+about: Performance Issue Template
+title: 'perf: 🚀 [TASK_DESCRIPTION]'
 labels: ''
 assignees: ''
 
 ---
 
-## Description
+## Current behavior
 
-## API
+## Steps to reproduce
 
-## Hand-off
+## Benefits
 
-### Components detailed requirements
-- [ ] Props, CSS-Properties, Parts & Slots
-  - [ ] tbd
-- [ ] Stories
-  - [ ] tbd
+## Technical Information
 
 ## DoR
 - [ ] Item has business value

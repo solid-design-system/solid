@@ -1,23 +1,19 @@
 ---
-name: Standard Issue
-about: Standard Issue Template
-title: 'feat: ✨ add sd-[COMPONENT_NAME]'
+name: Bugfix Issue
+about: Bugfix Issue Template
+title: 'fix: 🤔 [BUG_DESCRIPTION]'
 labels: ''
 assignees: ''
 
 ---
 
-## Description
+## Current behavior
 
-## API
+## Expected behavior
 
-## Hand-off
+## Steps to reproduce
 
-### Components detailed requirements
-- [ ] Props, CSS-Properties, Parts & Slots
-  - [ ] tbd
-- [ ] Stories
-  - [ ] tbd
+## Technical Information
 
 ## DoR
 - [ ] Item has business value

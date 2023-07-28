@@ -39,6 +39,8 @@ steps:
 
         echo "##vso[task.setvariable variable=cdnPath]$cdnPath"
         echo Azure variable cdnPath is "$(cdnPath)"
+      else
+        echo "Deployment type is 'none', therefore no variables are set."
       fi
     displayName: 'Set version and wildcard variables'
 
@@ -94,7 +96,6 @@ steps:
             --destination-path "/$(majorWildcardPath)" \
             --overwrite
           set +x
+        else
+          echo "Deployment type is 'none', therefore nothing to deploy."
         fi
-
-  ## Purge CDN for all folders
-  - template: purge-cdn.template.yml

@@ -36,7 +36,7 @@ steps:
             echo "The last commit is a docs change only => only storybook will be deployed."
             echo "##vso[task.setvariable variable=deployment]docs"
           else
-            echo "The last commit is not a version bump => code will not be deployed."
+            echo "The last commit is neither a version bump nor a docs change only => code will not be deployed."
             echo "##vso[task.setvariable variable=deployment]none"
           fi
         displayName: 'Set deployment type'
@@ -45,10 +45,12 @@ steps:
         displayName: 'Log deployment type'
 
   - script: |
-      if [[ $deployment != "none" ]]; then
+      if [[ $(deployment) != "none" ]]; then
         npm i pnpm@8.6.2 -g
         PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=true pnpm i
         cd packages/components && pnpm run build.cdn
+      else
+        echo "Deployment type is 'none', therefore no build needed."
       fi
     displayName: 'Install dependencies and build'
 
@@ -71,10 +73,17 @@ steps:
       - bash: |
           echo "$(branch)"
         displayName: 'Log normalized branch name'
+      ## Push to CDN feature branch folder
       - template: templates/push-to-storage-feature.template.yml
+      ## Purge CDN for branch folder
+      - template: templates/purge-feature-cdn.template.yml
 
   - ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/main') }}:
+      ## Push to CDN version folders
       - template: templates/push-to-storage-main.template.yml
+      ## Purge CDN for all version folders
+      - template: templates/purge-main-cdn.template.yml
+
       ## If deployment variable is set to 'none' do nothing
       - script: |
           if [[ $(deployment) == "code" ]]; then

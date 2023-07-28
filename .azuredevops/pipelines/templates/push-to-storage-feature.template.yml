@@ -7,7 +7,7 @@ steps:
       scriptType: 'bash'
       scriptLocation: 'inlineScript'
       inlineScript: |
-        # Deploy to version folder
+        # Deploy to branch folder
         set -x
         echo "Target folder is $(branch)"
         az storage blob upload-batch \
@@ -17,8 +17,3 @@ steps:
           --destination-path "/$(branch)" \
           --overwrite
         set +x
-
-    ## Purge CDN for branch folder
-  - template: purge-cdn.template.yml
-    parameters:
-      destinationPath: '$(branch)'
