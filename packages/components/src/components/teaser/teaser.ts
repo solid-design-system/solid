@@ -161,7 +161,7 @@ export default class SdTeaser extends SolidElement {
       }
 
       ::slotted([slot='headline']) {
-        font-size: 20px !important;
+        font-size: var(--sd-font-size-lg, 1.25rem) !important;
         font-weight: bold;
         margin: 0 !important;
       }
