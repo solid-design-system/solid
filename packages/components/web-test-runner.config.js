@@ -13,6 +13,7 @@ export default {
   files: 'src/components/**/*.test.ts', // "default" group
   concurrentBrowsers: 5,
   nodeResolve: true,
+  testsFinishTimeout: 240000, // double default timeout
   testFramework: {
     config: {
       timeout: 3000,
