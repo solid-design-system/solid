@@ -134,7 +134,7 @@ describe('<sd-button>', () => {
           <sd-button type="submit">Submit</sd-button>
         </form>
       `);
-      await waitUntil(() => form?.shadowRoot);
+      // await waitUntil(() => form?.shadowRoot);
 
       const button = form.querySelector<SdButton>('sd-button')!;
       const handleSubmit = sinon.spy((event: SubmitEvent) => event.preventDefault());
@@ -152,7 +152,7 @@ describe('<sd-button>', () => {
           <sd-button type="submit" form="a">Submit</sd-button>
         </div>
       `);
-      await waitUntil(() => el?.shadowRoot);
+      // await waitUntil(() => el?.shadowRoot?.querySelector(('sd-button')));
 
       const form = el.querySelector<HTMLFormElement>('form')!;
       const button = el.querySelector<SdButton>('sd-button')!;
@@ -172,7 +172,7 @@ describe('<sd-button>', () => {
           </sd-button>
         </form>
       `);
-      await waitUntil(() => form?.shadowRoot);
+      // await waitUntil(() => form?.shadowRoot);
 
       const button = form.querySelector<SdButton>('sd-button')!;
       const handleSubmit = sinon.spy((event: SubmitEvent) => {
@@ -200,7 +200,7 @@ describe('<sd-button>', () => {
           </sd-button>
         </div>
       `);
-      await waitUntil(() => el?.shadowRoot);
+      // await waitUntil(() => el?.shadowRoot);
 
       const form = el.querySelector<HTMLFormElement>('form')!;
       const button = el.querySelector<SdButton>('sd-button')!;
