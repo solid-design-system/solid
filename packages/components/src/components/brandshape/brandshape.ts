@@ -85,7 +85,7 @@ export default class SdBrandshape extends SolidElement {
 
   private setBreakpoint(): void {
     switch (true) {
-      case this.containerElem.clientWidth < 414:
+      case this.containerElem.clientWidth <= 414:
         this.componentBreakpoint = 0;
         break;
       case this.containerElem.clientWidth < 640:

@@ -117,7 +117,7 @@ export const Breakpoints = {
         y: {
           type: 'template',
           name: 'query width = ...',
-          values: ['≤ 414px', ' > 414px', '> 640px'].map(breakpoint => {
+          values: ['≤ 414px', '> 414px', '> 640px'].map(breakpoint => {
             return {
               title: breakpoint,
               value: `<div style="width: ${getSize(breakpoint)}">%TEMPLATE%</div>`
