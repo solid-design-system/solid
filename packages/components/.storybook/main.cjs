@@ -12,7 +12,7 @@ module.exports = {
   staticDirs: [
     './assets',
     {
-      from: '../node_modules/@solid-design-system/placeholders/src/images',
+      from: '../../placeholders/src/images',
       to: '/placeholders'
     }
   ],
