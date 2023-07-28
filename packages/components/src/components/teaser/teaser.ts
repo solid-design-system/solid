@@ -136,7 +136,7 @@ export default class SdTeaser extends SolidElement {
 
           <div
             part="headline"
-            class=${cx('text-lg font-bold mb-1', this.variant === 'primary' ? 'text-white' : 'text-black')}
+            class=${cx('text-lg font-bold m-0', this.variant === 'primary' ? 'text-white' : 'text-black')}
           >
             <slot name="headline">Always insert one semantically correct heading element here (e. g. &lt;h2&gt;)</slot>
           </div>
@@ -158,6 +158,12 @@ export default class SdTeaser extends SolidElement {
 
       ::slotted(*) {
         margin: 0;
+      }
+
+      ::slotted([slot='headline']) {
+        font-size: 20px !important;
+        font-weight: 700px;
+        margin: 0 !important;
       }
     `
   ];
