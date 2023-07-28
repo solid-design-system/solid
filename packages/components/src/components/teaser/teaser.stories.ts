@@ -114,12 +114,12 @@ export const DistributionRatio = {
           name: 'media and content distribution',
           values: [
             {
-              title: 'media: 33%, content: 66%',
+              title: '--distribution-media: 33%, --distribution-content: 66%',
               value: '<div style="--distribution-media: 33%; --distribution-content: 66%;">%TEMPLATE%</div>'
             },
             {
-              title: 'media: 200px, content: 100%',
-              value: '<div style="--distribution-media: 200px; --distribution-content: 100%;">%TEMPLATE%</div>'
+              title: '--distribution-media: 200px, --distribution-content: auto',
+              value: '<div style="--distribution-media: 200px; --distribution-content: auto;">%TEMPLATE%</div>'
             }
           ]
         }
