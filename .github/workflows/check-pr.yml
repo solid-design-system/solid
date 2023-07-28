@@ -15,13 +15,13 @@ jobs:
             - name: Install Node.js
               uses: actions/setup-node@v3
               with:
-                  node-version: 18.16.1
+                  node-version: 18
 
             - uses: pnpm/action-setup@v2
               name: Install pnpm
               id: pnpm-install
               with:
-                  version: 8.6.6
+                  version: 8.6.2
                   run_install: false
 
             - name: Install dependencies
