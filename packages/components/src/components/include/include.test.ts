@@ -1,70 +1,70 @@
-// import { aTimeout, expect, fixture, html, waitUntil } from '@open-wc/testing';
-// import sinon from 'sinon';
-// import type SdInclude from './include';
+import { aTimeout, expect, fixture, html, waitUntil } from '@open-wc/testing';
+import sinon from 'sinon';
+import type SdInclude from './include';
 
-// const stubbedFetchResponse: Response = {
-//   headers: new Headers(),
-//   ok: true,
-//   redirected: false,
-//   status: 200,
-//   statusText: 'OK',
-//   type: 'default',
-//   url: '',
-//   json: () => Promise.resolve({}),
-//   text: () => Promise.resolve(''),
-//   blob: sinon.fake(),
-//   arrayBuffer: sinon.fake(),
-//   formData: sinon.fake(),
-//   bodyUsed: false,
-//   body: null,
-//   clone: sinon.fake()
-// };
+const stubbedFetchResponse: Response = {
+  headers: new Headers(),
+  ok: true,
+  redirected: false,
+  status: 200,
+  statusText: 'OK',
+  type: 'default',
+  url: '',
+  json: () => Promise.resolve({}),
+  text: () => Promise.resolve(''),
+  blob: sinon.fake(),
+  arrayBuffer: sinon.fake(),
+  formData: sinon.fake(),
+  bodyUsed: false,
+  body: null,
+  clone: sinon.fake()
+};
 
-// async function delayResolve(resolveValue: string) {
-//   // Delay the fetch response to give time for the event listener to attach
-//   await aTimeout(10);
-//   return resolveValue;
-// }
+async function delayResolve(resolveValue: string) {
+  // Delay the fetch response to give time for the event listener to attach
+  await aTimeout(10);
+  return resolveValue;
+}
 
-// describe('<sd-include>', () => {
-//   afterEach(() => {
-//     sinon.verifyAndRestore();
-//   });
+describe('<sd-include>', () => {
+  afterEach(() => {
+    sinon.verifyAndRestore();
+  });
 
-//   it('should load content and emit sd-load', async () => {
-//     sinon.stub(window, 'fetch').resolves({
-//       ...stubbedFetchResponse,
-//       ok: true,
-//       status: 200,
-//       text: () => delayResolve('"id": 1')
-//     });
-//     const el = await fixture<SdInclude>(html` <sd-include src="/found"></sd-include> `);
-//     await waitUntil(() => el?.shadowRoot);
+  it('should load content and emit sd-load', async () => {
+    sinon.stub(window, 'fetch').resolves({
+      ...stubbedFetchResponse,
+      ok: true,
+      status: 200,
+      text: () => delayResolve('"id": 1')
+    });
+    const el = await fixture<SdInclude>(html` <sd-include src="/found"></sd-include> `);
+    await waitUntil(() => el?.shadowRoot);
 
-//     const loadHandler = sinon.spy();
+    const loadHandler = sinon.spy();
 
-//     el.addEventListener('sd-load', loadHandler);
-//     await waitUntil(() => loadHandler.calledOnce);
+    el.addEventListener('sd-load', loadHandler);
+    await waitUntil(() => loadHandler.calledOnce);
 
-//     expect(el.innerHTML).to.contain('"id": 1');
-//     expect(loadHandler).to.have.been.calledOnce;
-//   });
+    expect(el.innerHTML).to.contain('"id": 1');
+    expect(loadHandler).to.have.been.calledOnce;
+  });
 
-//   it('should emit sd-error when content cannot be loaded', async () => {
-//     sinon.stub(window, 'fetch').resolves({
-//       ...stubbedFetchResponse,
-//       ok: false,
-//       status: 404,
-//       text: () => delayResolve('{}')
-//     });
-//     const el = await fixture<SdInclude>(html` <sd-include src="/not-found"></sd-include> `);
-//     await waitUntil(() => el?.shadowRoot);
+  it('should emit sd-error when content cannot be loaded', async () => {
+    sinon.stub(window, 'fetch').resolves({
+      ...stubbedFetchResponse,
+      ok: false,
+      status: 404,
+      text: () => delayResolve('{}')
+    });
+    const el = await fixture<SdInclude>(html` <sd-include src="/not-found"></sd-include> `);
+    await waitUntil(() => el?.shadowRoot);
 
-//     const loadHandler = sinon.spy();
+    const loadHandler = sinon.spy();
 
-//     el.addEventListener('sd-error', loadHandler);
-//     await waitUntil(() => loadHandler.calledOnce);
+    el.addEventListener('sd-error', loadHandler);
+    await waitUntil(() => loadHandler.calledOnce);
 
-//     expect(loadHandler).to.have.been.calledOnce;
-//   });
-// });
+    expect(loadHandler).to.have.been.calledOnce;
+  });
+});
