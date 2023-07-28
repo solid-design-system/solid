@@ -76,13 +76,13 @@ steps:
       ## Push to CDN feature branch folder
       - template: templates/push-to-storage-feature.template.yml
       ## Purge CDN for branch folder
-      - template: purge-feature-cdn.template.yml
+      - template: templates/purge-feature-cdn.template.yml
 
   - ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/main') }}:
       ## Push to CDN version folders
       - template: templates/push-to-storage-main.template.yml
       ## Purge CDN for all version folders
-      - template: purge-main-cdn.template.yml
+      - template: templates/purge-main-cdn.template.yml
 
       ## If deployment variable is set to 'none' do nothing
       - script: |
