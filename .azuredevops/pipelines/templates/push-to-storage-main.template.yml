@@ -99,6 +99,3 @@ steps:
         else
           echo "Deployment type is 'none', therefore nothing to deploy."
         fi
-
-  ## Purge CDN for all folders
-  - template: purge-main-cdn.template.yml
