@@ -11,14 +11,14 @@ if (!process.env.CI) {
 export default {
   rootDir: '.',
   files: 'src/components/**/*.test.ts', // "default" group
-  concurrentBrowsers: 1,
+  concurrentBrowsers: 5,
   nodeResolve: true,
+  testsFinishTimeout: 240000,
   testFramework: {
     config: {
       timeout: 3000,
       retries: 10
-    },
-    testsFinishTimeout: 240000
+    }
   },
   plugins: [vitePlugin()],
   browsers,
