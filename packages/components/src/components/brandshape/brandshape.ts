@@ -5,6 +5,8 @@ import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 import type { TemplateResult } from 'lit-html';
 
+type Breakpoints = 0 | 414 | 640;
+
 /**
  * @summary The Brandshape highlights a piece of content.
  * @documentation https://solid.union-investment.com/[storybook-brandshape]/brandshape
@@ -30,21 +32,16 @@ export default class SdBrandshape extends SolidElement {
   /** Defines which shapes of the brandshape should be displayed. */
   @property({ type: Array }) shapes: ('top' | 'middle' | 'bottom')[] = ['top', 'middle', 'bottom'];
 
-  @state() private componentBreakpoint: 0 | 414 | 640 = 0;
+  @state() private componentBreakpoint: Breakpoints = 0;
 
   private resizeObserver: ResizeObserver;
 
-  private getSvg(breakpoint: 0 | 414 | 640, shape: 'top' | 'bottom'): TemplateResult {
-    switch (breakpoint) {
-      case 0:
-        return this.smallSvg(shape);
-      case 414:
-        return this.mediumSvg(shape);
-      case 640:
-        return this.largeSvg(shape);
-      default:
-        return this.largeSvg(shape);
-    }
+  private getSvg(breakpoint: Breakpoints, shape: 'top' | 'bottom'): TemplateResult {
+    return {
+      0: this.smallSvg(shape),
+      414: this.mediumSvg(shape),
+      640: this.largeSvg(shape)
+    }[breakpoint];
   }
 
   private largeSvg(shape: 'top' | 'bottom'): TemplateResult {
