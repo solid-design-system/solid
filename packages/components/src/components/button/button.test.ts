@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-explicit-any, @typescript-eslint/no-shadow, @typescript-eslint/no-unsafe-member-access  */
 
-import { aTimeout, expect, fixture, html, waitUntil } from '@open-wc/testing';
+import { expect, fixture, html, waitUntil } from '@open-wc/testing';
 import sinon from 'sinon';
 import type SdButton from './button';
 
@@ -134,9 +134,7 @@ describe('<sd-button>', () => {
           <sd-button type="submit">Submit</sd-button>
         </form>
       `);
-      await aTimeout(3000); 
       await waitUntil(() => form?.shadowRoot);
-      
 
       const button = form.querySelector<SdButton>('sd-button')!;
       const handleSubmit = sinon.spy((event: SubmitEvent) => event.preventDefault());
@@ -154,7 +152,6 @@ describe('<sd-button>', () => {
           <sd-button type="submit" form="a">Submit</sd-button>
         </div>
       `);
-      await aTimeout(3000); 
       await waitUntil(() => el?.shadowRoot);
 
       const form = el.querySelector<HTMLFormElement>('form')!;
@@ -175,7 +172,6 @@ describe('<sd-button>', () => {
           </sd-button>
         </form>
       `);
-      await aTimeout(3000); 
       await waitUntil(() => form?.shadowRoot);
 
       const button = form.querySelector<SdButton>('sd-button')!;
@@ -204,7 +200,6 @@ describe('<sd-button>', () => {
           </sd-button>
         </div>
       `);
-      await aTimeout(3000); 
       await waitUntil(() => el?.shadowRoot);
 
       const form = el.querySelector<HTMLFormElement>('form')!;
