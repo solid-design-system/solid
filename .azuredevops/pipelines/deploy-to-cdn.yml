@@ -5,8 +5,6 @@ trigger:
 
 variables:
   deployment: ''
-  default: 'code'
-
   version: ''
   patchWildcardPath: ''
   majorWildcardPath: ''
@@ -33,6 +31,7 @@ steps:
           echo $first_line
           if [[ $first_line == "chore(release/components):"* ]]; then
             echo "The last commit is a version bump => code will be deployed."
+            echo "##vso[task.setvariable variable=deployment]code"
           elif [[ $first_line == "docs:"* ]]; then
             echo "The last commit is a docs change only => only storybook will be deployed."
             echo "##vso[task.setvariable variable=deployment]docs"
@@ -44,6 +43,13 @@ steps:
       - bash: |
           echo "$(deployment)"
         displayName: 'Log deployment type'
+
+  ## On all other branches, set the deployment type to 'code' to make sure the code is built in the step below
+  - ${{ if ne(variables['Build.SourceBranch'], 'refs/heads/main') }}:
+      - script: |
+          echo "Pipeline runs on feature branch => everything will be deployed."
+          echo "##vso[task.setvariable variable=deployment]code"
+        displayName: 'Set deployment type for feature branches'
 
   - script: |
       if [[ $(deployment) != "none" ]]; then
