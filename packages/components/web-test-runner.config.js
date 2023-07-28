@@ -16,9 +16,9 @@ export default {
   testFramework: {
     config: {
       timeout: 3000,
-      retries: 10,
+      retries: 10
     },
-    testsFinishTimeout: 240000,
+    testsFinishTimeout: 240000
   },
   plugins: [vitePlugin()],
   browsers,
