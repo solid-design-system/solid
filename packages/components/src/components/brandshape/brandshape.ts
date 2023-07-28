@@ -20,9 +20,6 @@ import type { TemplateResult } from 'lit-html';
  * @csspart shape-bottom - Bottom shape.
  */
 
-type Breakpoints = 0 | 414 | 640;
-type SvgShapes = 'top' | 'bottom';
-
 @customElement('sd-brandshape')
 export default class SdBrandshape extends SolidElement {
   @query('[part=base]') containerElem: HTMLElement;
@@ -33,11 +30,11 @@ export default class SdBrandshape extends SolidElement {
   /** Defines which shapes of the brandshape should be displayed. */
   @property({ type: Array }) shapes: ('top' | 'middle' | 'bottom')[] = ['top', 'middle', 'bottom'];
 
-  @state() private componentBreakpoint: Breakpoints = 0;
+  @state() private componentBreakpoint: 0 | 414 | 640 = 0;
 
   private resizeObserver: ResizeObserver;
 
-  private getSvg(breakpoint: Breakpoints, shape: SvgShapes): TemplateResult {
+  private getSvg(breakpoint: 0 | 414 | 640, shape: 'top' | 'bottom'): TemplateResult {
     switch (breakpoint) {
       case 0:
         return this.smallSvg(shape);
@@ -63,7 +60,7 @@ export default class SdBrandshape extends SolidElement {
     </svg>`;
   }
 
-  private mediumSvg(shape: SvgShapes): TemplateResult {
+  private mediumSvg(shape: 'top' | 'bottom'): TemplateResult {
     return html`<svg
       xmlns="http://www.w3.org/2000/svg"
       class=${cx(shape === 'bottom' && 'rotate-180')}
@@ -76,7 +73,7 @@ export default class SdBrandshape extends SolidElement {
     </svg>`;
   }
 
-  private smallSvg(shape: SvgShapes): TemplateResult {
+  private smallSvg(shape: 'top' | 'bottom'): TemplateResult {
     return html`<svg
       xmlns="http://www.w3.org/2000/svg"
       class=${cx(shape === 'bottom' && 'rotate-180')}
