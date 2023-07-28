@@ -19,6 +19,10 @@ import type { TemplateResult } from 'lit-html';
  * @csspart shape-middle - Middle shape.
  * @csspart shape-bottom - Bottom shape.
  */
+
+type Breakpoints = 0 | 414 | 640;
+type SvgShapes = 'top' | 'bottom';
+
 @customElement('sd-brandshape')
 export default class SdBrandshape extends SolidElement {
   @query('[part=base]') containerElem: HTMLElement;
@@ -29,28 +33,73 @@ export default class SdBrandshape extends SolidElement {
   /** Defines which shapes of the brandshape should be displayed. */
   @property({ type: Array }) shapes: ('top' | 'middle' | 'bottom')[] = ['top', 'middle', 'bottom'];
 
-  @state() private componentBreakpoint: 0 | 560 = 0;
+  @state() private componentBreakpoint: Breakpoints = 0;
 
   private resizeObserver: ResizeObserver;
 
-  private get topSvg(): TemplateResult {
-    return html`<svg xmlns="http://www.w3.org/2000/svg" part="shape-top" viewBox="0 0 958 166">
+  private getSvg(breakpoint: Breakpoints, shape: SvgShapes): TemplateResult {
+    switch (breakpoint) {
+      case 0:
+        return this.smallSvg(shape);
+      case 414:
+        return this.mediumSvg(shape);
+      case 640:
+        return this.largeSvg(shape);
+      default:
+        return this.largeSvg(shape);
+    }
+  }
+
+  private largeSvg(shape: 'top' | 'bottom'): TemplateResult {
+    return html`<svg
+      xmlns="http://www.w3.org/2000/svg"
+      class=${cx(shape === 'bottom' && 'rotate-180')}
+      viewBox="0 0 700 121"
+      part=${shape === 'bottom' ? 'shape-bottom' : 'shape-top'}
+    >
       <path
-        d="M836.828 1.894.001 164.785V168h958v-66.312c0-6.524-.628-13.033-1.876-19.436-10.74-55.114-64.151-91.092-119.297-80.358Z"
+        d="M610.777 1.393.001 120.146 0 123h700.001V74.79c0-4.797-.462-9.585-1.381-14.294-7.909-40.537-47.237-66.998-87.843-59.103Z"
       />
     </svg>`;
   }
 
-  private get bottomSvg(): TemplateResult {
-    return html`<svg xmlns="http://www.w3.org/2000/svg" part="shape-bottom" viewBox="0 0 958 168">
+  private mediumSvg(shape: SvgShapes): TemplateResult {
+    return html`<svg
+      xmlns="http://www.w3.org/2000/svg"
+      class=${cx(shape === 'bottom' && 'rotate-180')}
+      viewBox="0 0 700 119"
+      part=${shape === 'bottom' ? 'shape-bottom' : 'shape-top'}
+    >
       <path
-        d="M121.173 166.106 958 3.216V0H0v66.312c0 6.524.628 13.033 1.876 19.436 10.74 55.114 64.151 91.092 119.297 80.358Z"
+        d="M597.75 1.6 0 118.046V121h700V85.872c0-5.509-.53-11.006-1.583-16.413-9.063-46.543-54.133-76.924-100.667-67.86Z"
+      />
+    </svg>`;
+  }
+
+  private smallSvg(shape: SvgShapes): TemplateResult {
+    return html`<svg
+      xmlns="http://www.w3.org/2000/svg"
+      class=${cx(shape === 'bottom' && 'rotate-180')}
+      viewBox="0 0 700 114"
+      part=${shape === 'bottom' ? 'shape-bottom' : 'shape-top'}
+    >
+      <path
+        d="M566.951 2.08 0 112.466v2.934h700v-3.672c0-7.166-.689-14.314-2.059-21.348-11.789-60.557-70.436-100.09-130.99-88.3Z"
       />
     </svg>`;
   }
 
   private setBreakpoint(): void {
-    this.componentBreakpoint = this.containerElem.clientWidth >= 560 ? 560 : 0;
+    switch (true) {
+      case this.containerElem.clientWidth < 414:
+        this.componentBreakpoint = 0;
+        break;
+      case this.containerElem.clientWidth < 640:
+        this.componentBreakpoint = 414;
+        break;
+      default:
+        this.componentBreakpoint = 640;
+    }
   }
 
   connectedCallback(): void {
@@ -71,17 +120,22 @@ export default class SdBrandshape extends SolidElement {
   private renderTopBrandshape(): TemplateResult {
     return this.shapes.length === 1
       ? html` <div class="relative">
-          ${this.topSvg}
+          ${this.getSvg(this.componentBreakpoint, 'top')}
           <div part="content" class="absolute bottom-0 right-0 flex items-end w-2/5 h-2/3 px-6 py-4">
             <slot></slot>
           </div>
         </div>`
-      : this.topSvg;
+      : this.getSvg(this.componentBreakpoint, 'top');
   }
 
   private renderMiddleBrandshape(): TemplateResult {
     return html`
-      <div class=${cx({ 0: 'px-6 py-4', 560: 'px-10 py-8' }[this.componentBreakpoint], 'w-full block relative')}>
+      <div
+        class=${cx(
+          { 0: 'px-6 py-4', 414: 'px-10 py-8', 640: 'px-10 py-8' }[this.componentBreakpoint],
+          'w-full block relative'
+        )}
+      >
         <div
           part="shape-middle"
           class=${cx(
@@ -99,7 +153,7 @@ export default class SdBrandshape extends SolidElement {
   }
 
   private renderBottomBrandshape(): TemplateResult {
-    return this.bottomSvg;
+    return this.getSvg(this.componentBreakpoint, 'bottom');
   }
 
   render() {

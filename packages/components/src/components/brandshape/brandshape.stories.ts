@@ -100,15 +100,27 @@ export const Variants = {
 export const Breakpoints = {
   name: 'Breakpoints',
   render: (args: any) => {
+    const getSize = (breakpoint: string): string => {
+      switch (breakpoint) {
+        case '≤ 414px':
+          return '414px';
+        case '> 414px':
+          return '415px';
+        case '> 640px':
+          return '641px';
+        default:
+          return '100%';
+      }
+    };
     return generateTemplate({
       axis: {
         y: {
           type: 'template',
           name: 'query width = ...',
-          values: ['< 560px', '≥ 560px'].map(breakpoint => {
+          values: ['≤ 414px', ' > 414px', '> 640px'].map(breakpoint => {
             return {
               title: breakpoint,
-              value: `<div style="width: ${breakpoint === '< 560px' ? 559 : 560}px">%TEMPLATE%</div>`
+              value: `<div style="width: ${getSize(breakpoint)}">%TEMPLATE%</div>`
             };
           })
         }
