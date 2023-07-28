@@ -28,7 +28,7 @@ describe('<sd-link>', () => {
 
     it('should render as an <a>', async () => {
       const el = await fixture<SdLink>(html` <sd-link>Default Slot</sd-link> `);
-      await waitUntil(() => el?.shadowRoot?.querySelector('[part~="label"]'));
+      await waitUntil(() => el?.shadowRoot);
 
       expect(el.shadowRoot!.querySelector('a')).to.exist;
     });
@@ -36,7 +36,7 @@ describe('<sd-link>', () => {
 
   it('should render a component', async () => {
     const el = await fixture(html` <sd-link></sd-link> `);
-    await waitUntil(() => el?.shadowRoot?.querySelector('[part~="label"]'));
+    await waitUntil(() => el?.shadowRoot);
 
     expect(el).to.exist;
   });
@@ -44,7 +44,7 @@ describe('<sd-link>', () => {
   describe('when using methods and href is set', () => {
     it('should emit sd-focus and sd-blur when the link is focused and blurred', async () => {
       const el = await fixture<SdLink>(html` <sd-link href="#">link</sd-link> `);
-      await waitUntil(() => el?.shadowRoot?.querySelector('[part~="label"]'));
+      await waitUntil(() => el?.shadowRoot);
 
       const focusHandler = sinon.spy();
       const blurHandler = sinon.spy();
@@ -64,7 +64,7 @@ describe('<sd-link>', () => {
 
     it('should emit a click event when calling click()', async () => {
       const el = await fixture<SdLink>(html` <sd-link href="#"></sd-link> `);
-      await waitUntil(() => el?.shadowRoot?.querySelector('[part~="label"]'));
+      await waitUntil(() => el?.shadowRoot);
 
       const clickHandler = sinon.spy();
 
