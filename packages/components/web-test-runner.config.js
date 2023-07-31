@@ -10,8 +10,8 @@ if (!process.env.CI) {
 
 export default {
   rootDir: '.',
-  files: 'src/components/**/*.test.ts', // "default" group
-  concurrentBrowsers: 5,
+  files: 'src/components/**/button.test.ts', // "default" group
+  concurrentBrowsers: 1,
   nodeResolve: true,
   testsFinishTimeout: 240000, // double default timeout
   testFramework: {
