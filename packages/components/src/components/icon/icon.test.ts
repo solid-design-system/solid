@@ -1,38 +1,40 @@
 import { elementUpdated, expect, fixture, html, oneEvent } from '@open-wc/testing';
-import { registerIconLibrary } from './library';
+// TODO: registerIconLibrary is currently not working: https://github.com/solid-design-system/solid/issues/296
+// import { registerIconLibrary } from './library';
 import type SdIcon from './icon';
-
-const testLibraryIcons = {
-  'test-icon1': `
-    <svg id="test-icon1">
-      <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"></path>
-    </svg>
-  `,
-  'test-icon2': `
-    <svg id="test-icon2">
-    <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"></path>
-    </svg>
-  `,
-  'bad-icon': `<div></div>`
-};
+// TODO: registerIconLibrary is currently not working: https://github.com/solid-design-system/solid/issues/296
+// const testLibraryIcons = {
+//   'test-icon1': `
+//     <svg id="test-icon1">
+//       <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"></path>
+//     </svg>
+//   `,
+//   'test-icon2': `
+//     <svg id="test-icon2">
+//     <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"></path>
+//     </svg>
+//   `,
+//   'bad-icon': `<div></div>`
+// };
 
 describe('<sd-icon>', () => {
-  before(() => {
-    registerIconLibrary('test-library', {
-      resolver: (name: keyof typeof testLibraryIcons) => {
-        // only for testing a bad request
-        if (name === ('bad-request' as keyof typeof testLibraryIcons)) {
-          return `data:image/svg+xml`;
-        }
+  // TODO: registerIconLibrary is currently not working: https://github.com/solid-design-system/solid/issues/296
+  // before(() => {
+  //   registerIconLibrary('test-library', {
+  //     resolver: (name: keyof typeof testLibraryIcons) => {
+  //       // only for testing a bad request
+  //       if (name === ('bad-request' as keyof typeof testLibraryIcons)) {
+  //         return `data:image/svg+xml`;
+  //       }
 
-        if (name in testLibraryIcons) {
-          return `data:image/svg+xml,${encodeURIComponent(testLibraryIcons[name])}`;
-        }
-        return '';
-      },
-      mutator: (svg: SVGElement) => svg.setAttribute('fill', 'currentColor')
-    });
-  });
+  //       if (name in testLibraryIcons) {
+  //         return `data:image/svg+xml,${encodeURIComponent(testLibraryIcons[name])}`;
+  //       }
+  //       return '';
+  //     },
+  //     mutator: (svg: SVGElement) => svg.setAttribute('fill', 'currentColor')
+  //   });
+  // });
 
   describe('defaults ', () => {
     it('default properties', async () => {
@@ -97,6 +99,7 @@ describe('<sd-icon>', () => {
     });
   });
 
+  // TODO: registerIconLibrary is currently not working: https://github.com/solid-design-system/solid/issues/296
   // describe('new library', () => {
   //   it('renders icons from the new library and emits sd-load event', async () => {
   //     const el = await fixture<SdIcon>(html` <sd-icon library="test-library"></sd-icon> `);
