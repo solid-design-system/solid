@@ -1,0 +1,19 @@
+.sd-display {
+	&--size {    
+		&-xl {
+			@apply text-xl font-normal leading-tight text-black;
+		}
+
+		&-3xl {
+			@apply text-2xl lg:text-3xl font-normal leading-tight text-black;
+		}
+
+		&-4xl {
+			@apply text-3xl lg:text-4xl font-normal leading-tight text-black;
+		}
+	}
+
+	&--inverted {
+		@apply text-white;
+	}
+}

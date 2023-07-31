@@ -1,0 +1,25 @@
+.sd-meta-information {
+	&--size {    
+		&-sm {
+			@apply text-sm;
+		}
+
+		&-lg {
+			@apply text-base font-normal leading-none;
+		}
+	}
+
+	&--color {
+		&-default {
+			@apply text-black;
+		}
+
+		&-additional {
+			@apply text-neutral-700;
+		}
+	}
+
+	&--inverted {
+		@apply text-white;
+	}
+}

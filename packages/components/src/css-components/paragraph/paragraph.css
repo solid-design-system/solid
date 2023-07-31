@@ -1,0 +1,15 @@
+.sd-paragraph{
+	&--size {    
+		&-sm {
+			@apply text-sm font-normal leading-normal text-black;
+		}
+
+		&-lg {
+			@apply text-lg font-normal leading-normal text-black;
+		}
+	}
+
+	&--inverted {
+		@apply text-white;
+	}
+}
