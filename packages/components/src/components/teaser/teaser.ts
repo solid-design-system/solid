@@ -32,16 +32,15 @@ export default class SdTeaser extends SolidElement {
   @property({ reflect: true })
   variant: 'white' | 'white border-neutral-300' | 'neutral-100' | 'primary' | 'primary-100' = 'white';
 
-  /** The teaser's orientation */
-  @property({ reflect: true })
-  orientation: 'responsive' | 'vertical' | 'horizontal' = 'responsive';
+  /** Breakpoint where the teaser switches from `vertical` to `horizontal`. `0` is always `horizontal`, `9999` is always `vertical`. */
+  @property({ reflect: true, type: Number }) breakpoint = 448;
 
   /** The teaser's inner padding. This is always set in `white border-neutral-300`. */
   @property({ type: Boolean, reflect: true }) inset = false;
 
   @query('[part="base"]') teaser: HTMLElement;
 
-  @state() private currentOrientation: 'vertical' | 'horizontal';
+  @state() private _orientation: 'vertical' | 'horizontal';
 
   private readonly hasSlotController = new HasSlotController(this, '[default]', 'media', 'meta', 'headline');
 
@@ -49,7 +48,11 @@ export default class SdTeaser extends SolidElement {
 
   connectedCallback() {
     super.connectedCallback();
-    if (window.ResizeObserver) {
+    if (this.breakpoint === 0) {
+      this._orientation = 'horizontal';
+    } else if (this.breakpoint === 9999) {
+      this._orientation = 'vertical';
+    } else if (window.ResizeObserver) {
       this.resizeObserver = new ResizeObserver(() => this.updateOrientation());
       this.resizeObserver.observe(this);
     }
@@ -70,11 +73,7 @@ export default class SdTeaser extends SolidElement {
   }
 
   updateOrientation() {
-    if (this.orientation === 'responsive') {
-      this.currentOrientation = this.offsetWidth > 448 ? 'horizontal' : 'vertical';
-    } else {
-      this.currentOrientation = this.orientation;
-    }
+    this._orientation = this.offsetWidth >= this.breakpoint ? 'horizontal' : 'vertical';
   }
 
   render() {
@@ -100,33 +99,30 @@ export default class SdTeaser extends SolidElement {
             primary: 'bg-primary text-white',
             'primary-100': 'bg-primary-100'
           }[this.variant],
-          this.currentOrientation === 'vertical' && 'flex-col',
-          this.currentOrientation === 'horizontal' && 'flex-row gap-8',
-          this.currentOrientation === 'horizontal' && this.inset && 'py-8 px-10'
+          this._orientation === 'vertical' && 'flex-col',
+          this._orientation === 'horizontal' && 'flex-row gap-8',
+          this._orientation === 'horizontal' && this.inset && 'py-8 px-10'
         )}
         part="base"
       >
         <div
-          style=${this.currentOrientation === 'horizontal' ? `width: var(--distribution-media, 50%);` : ''}
-          class=${cx(
-            !this.inset && this.currentOrientation === 'vertical' && 'mb-4',
-            !slots['teaser-has-media'] && 'hidden'
-          )}
+          style=${this._orientation === 'horizontal' ? `width: var(--distribution-media, 50%);` : ''}
+          class=${cx(!this.inset && this._orientation === 'vertical' && 'mb-4', !slots['teaser-has-media'] && 'hidden')}
           part="media"
         >
           <slot name="media"></slot>
         </div>
 
         <div
-          style=${this.currentOrientation === 'horizontal'
+          style=${this._orientation === 'horizontal'
             ? `width: var(--distribution-content, 50%); ${
                 this.inset ? 'width: var(--distribution-content, calc(100% - 2rem));' : ''
               }`
             : ''}
           class=${cx(
             'flex flex-col text-left',
-            this.currentOrientation === 'horizontal' && `flex flex-col`,
-            this.currentOrientation === 'vertical' && this.inset && 'm-4'
+            this._orientation === 'horizontal' && `flex flex-col`,
+            this._orientation === 'vertical' && this.inset && 'm-4'
           )}
           id="content"
         >
