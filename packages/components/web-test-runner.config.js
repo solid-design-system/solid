@@ -22,15 +22,26 @@ export default {
   plugins: [vitePlugin()],
   browsers,
   filterBrowserLogs: removeViteLogging,
-  testRunnerHtml: testFramework => `
-    <html lang="en-US">
-      <head></head>
-      <body>
-        <script type="module" src="src/solid-components.ts"></script>
-        <script type="module" src="${testFramework}"></script>
-      </body>
-    </html>
-  `,
+  testRunnerHtml: testFramework => {
+    if (!process.env.CI) {
+      return `
+   <html lang="en-US">
+     <head></head>
+     <body>
+       <script type="module" src="src/solid-components.ts"></script>
+       <script type="module" src="${testFramework}"></script>
+     </body>
+   </html>
+ `}
+    return `
+  <html lang="en-US">
+    <head></head>
+    <body>
+      <script type="module" src="dist/components/umd/solid-components.js"></script>
+      <script type="module" src="${testFramework}"></script>
+    </body>
+  </html>
+`},
   // Create a named group for every test file to enable running single tests. If a test file is `split-panel.test.ts`
   // then you can run `npm run test -- --group split-panel` to run only that component's tests.
   groups: globbySync('src/components/**/*.test.ts').map(path => {
