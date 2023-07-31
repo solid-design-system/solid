@@ -76,14 +76,27 @@ export const VariantAndInset = {
 
 export const InsetAndOrientation = {
   name: 'Inset x Orientation',
-  parameters: { controls: { exclude: ['inset', 'orientation'] } },
+  parameters: { controls: { exclude: ['inset', 'breakpoint'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        x: { type: 'attribute', name: 'inset' },
-        y: { type: 'attribute', name: 'orientation' }
+        x: {
+          type: 'attribute',
+          name: 'breakpoint',
+          values: [
+            {
+              value: '0',
+              title: 'breakpoint = 0'
+            },
+            {
+              value: '9999',
+              title: 'breakpoint = 9999'
+            }
+          ]
+        },
+        y: { type: 'attribute', name: 'inset' }
       },
-      args,
+      args: args,
       constants: [
         {
           type: 'template',
@@ -101,7 +114,7 @@ export const InsetAndOrientation = {
 };
 
 /**
- * Teaser with different `media` and `content` distribution values.
+ * Teaser with different `media` and `content` distribution values. In case there's a requirement to have a fixed value for the `media`, you can override the `sd-teaser::part(media)` selector by applying a `flex-shrink: 0;` style. Same can be done for the `content` part.
  */
 
 export const DistributionRatio = {
@@ -118,8 +131,9 @@ export const DistributionRatio = {
               value: '<div style="--distribution-media: 33%; --distribution-content: 66%;">%TEMPLATE%</div>'
             },
             {
-              title: '--distribution-media: 200px, --distribution-content: auto',
-              value: '<div style="--distribution-media: 200px; --distribution-content: auto;">%TEMPLATE%</div>'
+              title: '--distribution-media: 200px, sd-teaser::part(media){flex-shrink: 0;}',
+              value:
+                '<div style="--distribution-media: 200px;" id="fixed-ratio"><style> #fixed-ratio sd-teaser::part(media){flex-shrink: 0;} </style>%TEMPLATE%</div>'
             }
           ]
         }
@@ -151,24 +165,11 @@ export const DistributionRatio = {
  */
 
 export const Breakpoint = {
-  parameters: { controls: { exclude: 'orientation' } },
+  parameters: { controls: { exclude: 'breakpoint' } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        y: {
-          type: 'template',
-          name: 'style',
-          values: [
-            {
-              value: '<div style="width: 300px">%TEMPLATE%</div>',
-              title: 'grid sm'
-            },
-            {
-              value: '<div style="width: 500px">%TEMPLATE%</div>',
-              title: 'grid md'
-            }
-          ]
-        }
+        y: { type: 'attribute', name: 'breakpoint', values: ['0', '448', '9999'] }
       },
       args,
       constants: [
@@ -176,11 +177,6 @@ export const Breakpoint = {
           type: 'template',
           name: 'style',
           value: '<div style="margin-bottom: 40px">%TEMPLATE%</div>'
-        },
-        {
-          type: 'attribute',
-          name: 'orientation',
-          value: 'responsive'
         },
         {
           type: 'attribute',
@@ -305,14 +301,14 @@ export const Slots = {
 };
 
 export const Parts = {
-  parameters: { controls: { exclude: ['base', 'media', 'meta', 'headline', 'main'] } },
+  parameters: { controls: { exclude: ['base', 'media', 'content', 'meta', 'headline', 'main'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
         y: {
           type: 'template',
           name: 'sd-teaser::part(...){outline: solid 2px red}',
-          values: ['base', 'media', 'meta', 'headline', 'main'].map(part => {
+          values: ['base', 'media', 'content', 'meta', 'headline', 'main'].map(part => {
             return {
               title: part,
               value: `<style>#part-${part} sd-teaser::part(${part}){outline: solid 2px red}</style><div id="part-${part}">%TEMPLATE%</div>`

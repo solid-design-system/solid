@@ -19,6 +19,7 @@ import type { PropertyValues } from 'lit';
  *
  * @csspart base - The component's base wrapper.
  * @csspart media - The container that wraps the media.
+ * @csspart content - The container that wraps the content.
  * @csspart meta -  The container that wraps the meta.
  * @csspart headline - The container that wraps the headline.
  * @csspart main - The container that wraps the main content.
@@ -67,7 +68,7 @@ export default class SdTeaser extends SolidElement {
 
   updated(changedProperties: PropertyValues) {
     super.updated(changedProperties);
-    if (changedProperties.has('orientation')) {
+    if (changedProperties.has('breakpoint')) {
       this.updateOrientation();
     }
   }
@@ -106,7 +107,7 @@ export default class SdTeaser extends SolidElement {
         part="base"
       >
         <div
-          style=${this._orientation === 'horizontal' ? `width: var(--distribution-media, 50%);` : ''}
+          style=${this._orientation === 'horizontal' ? `width: var(--distribution-media, 100%);` : ''}
           class=${cx(!this.inset && this._orientation === 'vertical' && 'mb-4', !slots['teaser-has-media'] && 'hidden')}
           part="media"
         >
@@ -115,7 +116,7 @@ export default class SdTeaser extends SolidElement {
 
         <div
           style=${this._orientation === 'horizontal'
-            ? `width: var(--distribution-content, 50%); ${
+            ? `width: var(--distribution-content, 100%); ${
                 this.inset ? 'width: var(--distribution-content, calc(100% - 2rem));' : ''
               }`
             : ''}
@@ -124,7 +125,7 @@ export default class SdTeaser extends SolidElement {
             this._orientation === 'horizontal' && `flex flex-col`,
             this._orientation === 'vertical' && this.inset && 'm-4'
           )}
-          id="content"
+          part="content"
         >
           <div part="meta" class=${cx('gap-2 mb-4', !slots['teaser-has-meta'] && 'hidden')}>
             <slot name="meta"></slot>
