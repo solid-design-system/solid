@@ -27,7 +27,7 @@ export default {
     <html lang="en-US">
       <head></head>
       <body>
-        <script type="module" src="src/solid-components.ts"></script>
+        <script type="module" src="dist/components/umd/solid-components.js"></script>
         <script type="module" src="${testFramework}"></script>
       </body>
     </html>
