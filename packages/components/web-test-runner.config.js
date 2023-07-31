@@ -15,7 +15,7 @@ export default {
   nodeResolve: true,
   testFramework: {
     config: {
-      timeout: 3000,
+      timeout: 3000
     }
   },
   plugins: [vitePlugin()],
