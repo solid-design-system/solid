@@ -96,7 +96,7 @@ export const InsetAndOrientation = {
         },
         y: { type: 'attribute', name: 'inset' }
       },
-      args: args,
+      args,
       constants: [
         {
           type: 'template',
