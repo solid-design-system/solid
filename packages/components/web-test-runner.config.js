@@ -32,7 +32,8 @@ export default {
        <script type="module" src="${testFramework}"></script>
      </body>
    </html>
- `}
+ `;
+    }
     return `
   <html lang="en-US">
     <head></head>
@@ -41,7 +42,8 @@ export default {
       <script type="module" src="${testFramework}"></script>
     </body>
   </html>
-`},
+`;
+  },
   // Create a named group for every test file to enable running single tests. If a test file is `split-panel.test.ts`
   // then you can run `npm run test -- --group split-panel` to run only that component's tests.
   groups: globbySync('src/components/**/*.test.ts').map(path => {
