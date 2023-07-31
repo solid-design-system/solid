@@ -2,6 +2,7 @@ import { elementUpdated, expect, fixture, html, oneEvent } from '@open-wc/testin
 // TODO: registerIconLibrary is currently not working: https://github.com/solid-design-system/solid/issues/296
 // import { registerIconLibrary } from './library';
 import type SdIcon from './icon';
+
 // TODO: registerIconLibrary is currently not working: https://github.com/solid-design-system/solid/issues/296
 // const testLibraryIcons = {
 //   'test-icon1': `
