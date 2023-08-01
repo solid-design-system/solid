@@ -1,7 +1,7 @@
 ---
-name: Standard Issue
-about: Standard Issue Template
-title: 'feat: ✨ add sd-[COMPONENT_NAME]'
+name: Feature Issue
+about: Feature Issue Template
+title: 'feat: ✨ [FEATURE_NAME] / add sd-[COMPONENT_NAME]'
 labels: ''
 assignees: ''
 
@@ -10,8 +10,9 @@ assignees: ''
 ## Description
 
 ## API
-
+[LINK TO FIGMA]
 ## Hand-off
+[LINK TO FIGMA]
 
 ### Components detailed requirements
 - [ ] Props, CSS-Properties, Parts & Slots

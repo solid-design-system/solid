@@ -1,7 +1,7 @@
 ---
-name: Documentation Issue
-about: Documentation Issue Template
-title: 'docs: 📚 [DOCS_DESCRIPTION]'
+name: Test Issue
+about: Test Issue Template
+title: 'test: 🧪 [TASK_DESCRIPTION]'
 labels: ''
 assignees: ''
 
@@ -9,7 +9,7 @@ assignees: ''
 
 ## Description
 
-## Where to put the documentation
+## Technical Information
 
 ## DoR
 - [ ] Item has business value
@@ -20,5 +20,6 @@ assignees: ''
 ## DoD
 - [ ] Documentation has been created/updated (if applicable)
 - [ ] Migration Guide has been created/updated (if applicable)
+- [ ] Relevant E2E tests (Features, A11y, Bug fixes) are created/updated
 - [ ] Relevant stories (Features, A11y) are created/updated
 - [ ] Implementation works successfully on `feature` branch
