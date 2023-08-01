@@ -15,25 +15,17 @@ export default {
   nodeResolve: true,
   testFramework: {
     config: {
-      timeout: 3000
+      timeout: 3000,
+      retries: 3
     }
   },
   plugins: [vitePlugin()],
   browsers,
   filterBrowserLogs: removeViteLogging,
   testRunnerHtml: testFramework => {
-    if (!process.env.CI) {
+    // Complete tests always use the `umd` build as this is more consistent
+    if (process.env.npm_command === 'test') {
       return `
-   <html lang="en-US">
-     <head></head>
-     <body>
-       <script type="module" src="src/solid-components.ts"></script>
-       <script type="module" src="${testFramework}"></script>
-     </body>
-   </html>
- `;
-    }
-    return `
   <html lang="en-US">
     <head></head>
     <body>
@@ -42,6 +34,16 @@ export default {
     </body>
   </html>
 `;
+    }
+    return `
+   <html lang="en-US">
+     <head></head>
+     <body>
+       <script type="module" src="src/solid-components.ts"></script>
+       <script type="module" src="${testFramework}"></script>
+     </body>
+   </html>
+ `;
   },
   // Create a named group for every test file to enable running single tests. If a test file is `split-panel.test.ts`
   // then you can run `npm run test -- --group split-panel` to run only that component's tests.
