@@ -24,6 +24,7 @@ export default function minifyEsLibPlugin(options = {}) {
           try {
             const minified = await minify(code, options);
             bundle[fileName].code = minified.code;
+            // @ts-ignore
             bundle[fileName].gzippedSize = gzipSizeSync(minified.code);
           } catch (error) {
             console.error(`Error minifying ${fileName}:`, error);
