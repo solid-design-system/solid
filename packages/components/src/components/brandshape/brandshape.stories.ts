@@ -101,16 +101,12 @@ export const Breakpoints = {
   name: 'Breakpoints',
   render: (args: any) => {
     const getSize = (breakpoint: string): string => {
-      switch (breakpoint) {
-        case '≤ 414px':
-          return '414px';
-        case '> 414px':
-          return '415px';
-        case '> 640px':
-          return '641px';
-        default:
-          return '100%';
-      }
+      const breakpoints: { [key: string]: string } = {
+        '≤ 414px': '414px',
+        '> 414px': '415px',
+        '> 640px': '641px'
+      };
+      return breakpoints[breakpoint] || '100%';
     };
     return generateTemplate({
       axis: {
