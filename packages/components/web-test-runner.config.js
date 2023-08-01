@@ -24,7 +24,7 @@ export default {
   filterBrowserLogs: removeViteLogging,
   testRunnerHtml: testFramework => {
     // Always use the `umd` build when testing the whole library as this is more consistent
-    if (process.env.npm_command === 'test' || process.env.npm_command === 'test.verify') {
+    if (process.env.npm_lifecycle_event === 'test' || process.env.npm_lifecycle_event === 'test.verify') {
       return `
   <html lang="en-US">
     <head></head>
