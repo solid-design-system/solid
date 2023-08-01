@@ -23,7 +23,7 @@ export default {
   browsers,
   filterBrowserLogs: removeViteLogging,
   testRunnerHtml: testFramework => {
-    // Complete tests always use the `umd` build as this is more consistent
+    // Always use the `umd` build when testing the whole library as this is more consistent
     if (process.env.npm_command === 'test' || process.env.npm_command === 'test.verify') {
       return `
   <html lang="en-US">
