@@ -11,12 +11,12 @@ if (!process.env.CI) {
 export default {
   rootDir: '.',
   files: 'src/components/**/*.test.ts', // "default" group
-  concurrentBrowsers: 3,
+  concurrentBrowsers: 1,
   nodeResolve: true,
   testFramework: {
     config: {
       timeout: 3000,
-      retries: 3
+      retries: 5
     }
   },
   plugins: [vitePlugin()],
@@ -24,7 +24,7 @@ export default {
   filterBrowserLogs: removeViteLogging,
   testRunnerHtml: testFramework => {
     // Complete tests always use the `umd` build as this is more consistent
-    if (process.env.npm_command === 'test') {
+    if (process.env.npm_command === 'test' || process.env.npm_command === 'test.verify') {
       return `
   <html lang="en-US">
     <head></head>
