@@ -6,6 +6,7 @@ export default function minifyHTMLLiteralsPlugin() {
     name: 'minify-html-literals',
     transform(code, id) {
       const prepareCode = (codeToModify, reverse = false) => {
+        // eslint-disable-next-line no-template-curly-in-string
         const dynamicTags = [{ from: '${tag}', to: 'tag-to-be-replaced' }];
 
         dynamicTags.forEach(dynamicTag => {
