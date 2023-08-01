@@ -116,11 +116,60 @@ describe('<sd-teaser>', () => {
         const mediaWidth = media.offsetWidth;
         const contentWidth = content.offsetWidth;
 
-        // Here you have the widths, you can do something with them
-        console.log(`Media width: ${mediaWidth}, Content width: ${contentWidth}`);
         expect(mediaWidth).to.equal(400);
         expect(contentWidth).to.equal(400);
       }
+    });
+  });
+
+  describe('breakpoints', () => {
+    describe('default breakpoint', () => {
+      it('check if state is vertical', async () => {
+        const el = await fixture<SdTeaser>(html`<sd-teaser style="width:400px;"></sd-teaser>`);
+
+        const base = el.shadowRoot!.querySelector<HTMLElement>('[part="base"]');
+        await el.updateComplete;
+        expect(base?.classList.contains('flex-col')).to.be.true;
+        expect(base?.classList.contains('flex-row')).to.be.false;
+      });
+
+      it('check if state is horizontal', async () => {
+        const el = await fixture<SdTeaser>(html`<sd-teaser style="width:600px;"></sd-teaser>`);
+
+        const base = el.shadowRoot!.querySelector<HTMLElement>('[part="base"]');
+        await el.updateComplete;
+        expect(base?.classList.contains('flex-row')).to.be.true;
+        expect(base?.classList.contains('flex-col')).to.be.false;
+      });
+    });
+
+    describe('manual breakpoint', () => {
+      it('check if state is vertical', async () => {
+        const el = await fixture<SdTeaser>(html`<sd-teaser style="width:400px;" breakpoint="999"></sd-teaser>`);
+
+        const base = el.shadowRoot!.querySelector<HTMLElement>('[part="base"]');
+        await el.updateComplete;
+        expect(base?.classList.contains('flex-col')).to.be.true;
+        expect(base?.classList.contains('flex-row')).to.be.false;
+      });
+
+      it('check if state is still vertical', async () => {
+        const el = await fixture<SdTeaser>(html`<sd-teaser style="width:800px;"></sd-teaser>`);
+
+        const base = el.shadowRoot!.querySelector<HTMLElement>('[part="base"]');
+        await el.updateComplete;
+        expect(base?.classList.contains('flex-row')).to.be.true;
+        expect(base?.classList.contains('flex-col')).to.be.false;
+      });
+
+      it('check if state is horizontal', async () => {
+        const el = await fixture<SdTeaser>(html`<sd-teaser style="width:1000px;"></sd-teaser>`);
+
+        const base = el.shadowRoot!.querySelector<HTMLElement>('[part="base"]');
+        await el.updateComplete;
+        expect(base?.classList.contains('flex-row')).to.be.true;
+        expect(base?.classList.contains('flex-col')).to.be.false;
+      });
     });
   });
 });
