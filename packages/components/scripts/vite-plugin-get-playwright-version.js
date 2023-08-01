@@ -17,13 +17,13 @@ const filePath = path.resolve(__dirname, '../../../pnpm-lock.yaml');
 export default () => {
   return {
     name: 'extract-playwright-version',
-    resolveId(id: string) {
+    resolveId(id) {
       if (id === 'playwright-version') {
         return id; // this means we are handling this id
       }
       return null;
     },
-    load(id: string) {
+    load(id) {
       if (id === 'playwright-version') {
         const pnpmLock = readFileSync(filePath, 'utf8');
 

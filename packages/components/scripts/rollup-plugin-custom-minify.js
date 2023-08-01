@@ -17,14 +17,14 @@ import { minify } from 'terser';
 export default function minifyEsLibPlugin(options = {}) {
   return {
     name: 'rollup-plugin-minify',
-    async generateBundle(_outputOptions: any, bundle: any) {
+    async generateBundle(_outputOptions, bundle) {
       for (const fileName in bundle) {
         if (bundle[fileName].type === 'chunk' && fileName.endsWith('.js')) {
           const code = bundle[fileName].code;
           try {
             const minified = await minify(code, options);
             bundle[fileName].code = minified.code;
-            bundle[fileName].gzippedSize = gzipSizeSync(minified.code!);
+            bundle[fileName].gzippedSize = gzipSizeSync(minified.code);
           } catch (error) {
             console.error(`Error minifying ${fileName}:`, error);
           }

@@ -18,12 +18,12 @@ export default function addTypesPlugin() {
   const targetDir = './dist/package';
 
   // Function to check if a directory is empty
-  function isDirectoryEmpty(directory: string) {
+  function isDirectoryEmpty(directory) {
     return fs.promises.readdir(directory).then(files => files.length === 0);
   }
 
   // Function to process each directory
-  async function processDirectory(directory: string) {
+  async function processDirectory(directory) {
     const files = await fs.promises.readdir(directory);
 
     for (const file of files) {
