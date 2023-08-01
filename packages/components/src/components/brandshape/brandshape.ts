@@ -45,42 +45,45 @@ export default class SdBrandshape extends SolidElement {
   }
 
   private largeSvg(shape: 'top' | 'bottom'): TemplateResult {
-    return html`<svg
-      xmlns="http://www.w3.org/2000/svg"
-      class=${cx(shape === 'bottom' && 'rotate-180')}
-      viewBox="0 0 700 121"
-      part=${shape === 'bottom' ? 'shape-bottom' : 'shape-top'}
-    >
-      <path
-        d="M610.777 1.393.001 120.146 0 123h700.001V74.79c0-4.797-.462-9.585-1.381-14.294-7.909-40.537-47.237-66.998-87.843-59.103Z"
-      />
-    </svg>`;
+    return shape === 'top'
+      ? html`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 121" part="shape-top">
+          <path
+            d="M610.777 1.393.001 120.146 0 123h700.001V74.79c0-4.797-.462-9.585-1.381-14.294-7.909-40.537-47.237-66.998-87.843-59.103Z"
+          />
+        </svg>`
+      : html`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 123" part="shape-bottom">
+          <path
+            d="M89.224 121.607 700 2.854 700.001 0h-700L0 48.21c0 4.797.463 9.584 1.381 14.294 7.909 40.537 47.237 66.998 87.843 59.103Z"
+          />
+        </svg>`;
   }
 
   private mediumSvg(shape: 'top' | 'bottom'): TemplateResult {
-    return html`<svg
-      xmlns="http://www.w3.org/2000/svg"
-      class=${cx(shape === 'bottom' && 'rotate-180')}
-      viewBox="0 0 700 119"
-      part=${shape === 'bottom' ? 'shape-bottom' : 'shape-top'}
-    >
-      <path
-        d="M597.75 1.6 0 118.046V121h700V85.872c0-5.509-.53-11.006-1.583-16.413-9.063-46.543-54.133-76.924-100.667-67.86Z"
-      />
-    </svg>`;
+    return shape === 'top'
+      ? html`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 119" part="shape-top">
+          <path
+            d="M597.75 1.6 0 118.046V121h700V85.872c0-5.509-.53-11.006-1.583-16.413-9.063-46.543-54.133-76.924-100.667-67.86Z"
+          />
+        </svg>`
+      : html`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 121" part="shape-bottom">
+          <path
+            d="M102.25 119.4 700 2.954V0H0v35.128c0 5.509.53 11.006 1.583 16.413 9.063 46.543 54.134 76.924 100.667 67.859Z"
+          />
+        </svg>`;
   }
 
   private smallSvg(shape: 'top' | 'bottom'): TemplateResult {
-    return html`<svg
-      xmlns="http://www.w3.org/2000/svg"
-      class=${cx(shape === 'bottom' && 'rotate-180')}
-      viewBox="0 0 700 114"
-      part=${shape === 'bottom' ? 'shape-bottom' : 'shape-top'}
-    >
-      <path
-        d="M566.951 2.08 0 112.466v2.934h700v-3.672c0-7.166-.689-14.314-2.059-21.348-11.789-60.557-70.436-100.09-130.99-88.3Z"
-      />
-    </svg>`;
+    return shape === 'top'
+      ? html`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 114" part="shape-top">
+          <path
+            d="M566.951 2.08 0 112.466v2.934h700v-3.672c0-7.166-.689-14.314-2.059-21.348-11.789-60.557-70.436-100.09-130.99-88.3Z"
+          />
+        </svg>`
+      : html`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 116" part="shape-bottom">
+          <path
+            d="M133.049 113.32 700 2.934V0H0v3.672c0 7.165.69 14.314 2.059 21.348 11.79 60.557 70.436 100.09 130.99 88.3Z"
+          />
+        </svg>`;
   }
 
   private setBreakpoint(): void {
