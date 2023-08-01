@@ -21,7 +21,4 @@ assignees: ''
 
 ## DoD
 - [ ] Documentation has been created/updated (if applicable)
-- [ ] Migration Guide has been created/updated (if applicable)
-- [ ] Relevant E2E tests (Features, A11y, Bug fixes) are created/updated
-- [ ] Relevant stories (Features, A11y) are created/updated
 - [ ] Implementation works successfully on `feature` branch
