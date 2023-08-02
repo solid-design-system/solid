@@ -1,6 +1,6 @@
 import '../icon/icon';
-import { css, html } from 'lit';
-import { customElement, property, query } from 'lit/decorators.js';
+import { customElement } from 'lit/decorators.js';
+import { html } from 'lit';
 import SolidElement from '../../internal/solid-element';
 
 @customElement('sd-carousel')
