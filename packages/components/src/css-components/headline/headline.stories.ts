@@ -19,17 +19,20 @@ export default {
   },
   argTypes: {
     inverted: {
+      type: 'attribute',
       name: 'inverted',
       control: 'boolean',
       description: 'Inverts the headline. <br><code>boolean</code>'
     },
-    slot: {
-      name: 'slot',
-      control: 'text',
-      description:
-        'this argType is only to show the slot in storybook. You will not need it in your code. <br><code>string</code>'
-    },
+    // slot: {
+    //   type: 'slot',
+    //   name: 'slot',
+    //   control: 'text',
+    //   description:
+    //     'this argType is only to show the slot in storybook. You will not need it in your code. <br><code>string</code>'
+    // },
     size: {
+      type: 'attribute',
       name: 'size',
       control: 'radio',
       options: ['4xl', '3xl', 'xl', 'lg', 'base'],
@@ -48,7 +51,7 @@ const getClasses = args => {
   return {
     'sd-headline': true,
     'sd-headline--inverted': args.inverted,
-    'sd-headline--highlight': args.mark,
+    'sd-headline--highlight': args.highlight,
 
     'sd-headline--size-base': args.headline === 'base',
     'sd-headline--size-lg': args.headline === 'lg',
@@ -62,17 +65,19 @@ const getClasses = args => {
  * This is the the typography section for all kind of styles and sizes of the Headline.
  */
 export const Default = {
-  args: {
-    slot: 'Lorem Ipsum'
-  },
-  render: (args: { size: string; slot: string }) => {
-    return html`<h1 class=${classMap(getClasses({ ...args, headline: `${args.size}` }))}>${args.slot}</h1>`;
+  // args: {
+  //   slot: 'Lorem ipsum'
+  // },
+  render: (args: { size: string; highlight: boolean }) => {
+    return html`<h1 class=${classMap(getClasses({ ...args, headline: `${args.size}` }))}>
+      ${args.highlight ? html`Lorem <mark>Ipsum</mark>` : 'Lorem Ipsum'}
+    </h1>`;
   }
 };
 
 export const SizesAndInverted = {
   name: 'Sizes x Inverted',
-  parameters: { controls: { exclude: ['size', 'slot', 'inverted'] } },
+  parameters: { controls: { exclude: ['size', 'inverted'] } },
   args: {},
   render: (args: { size: string }) => {
     return html`
@@ -97,11 +102,8 @@ export const SizesAndInverted = {
  */
 export const Highlight = {
   name: 'Highlight x Inverted',
-  // args: {
-  //   slot: args[mark] ? 'Lorem <mark>Ipsum</mark>' : 'Lorem Ipsum'
-  // },
-  parameters: { controls: { exclude: ['size', 'slot', 'highlight', 'inverted'] } },
-  render: (args: { size: string; slot: string; highlight: boolean }) => {
+  parameters: { controls: { exclude: ['size', 'highlight', 'inverted'] } },
+  render: (args: { size: string; highlight: boolean }) => {
     return html`
       <div class=${classMap(getClasses({ ...args, headline: '4xl', highlight: true }))}>
         Icon left lorem ipsum <mark>dolor</mark> sit amet

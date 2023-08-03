@@ -19,12 +19,12 @@ export default {
       control: 'boolean',
       description: 'Inverts the headline. <br><code>boolean</code>'
     },
-    slot: {
-      name: 'slot',
-      control: 'text',
-      description:
-        'this argType is only to show the slot in storybook. You will not need it in your code. <br><code>string</code>'
-    },
+    // slot: {
+    //   name: 'slot',
+    //   control: 'text',
+    //   description:
+    //     'this argType is only to show the slot in storybook. You will not need it in your code. <br><code>string</code>'
+    // },
     size: {
       name: 'size',
       control: 'radio',
@@ -48,17 +48,19 @@ const getClasses = args => {
  * This is the the typography section for all kind of styles and sizes of the Headline.
  */
 export const Default = {
-  args: {
-    slot: 'Lorem ipsum'
-  },
-  render: (args: { size: string; slot: string }) => {
-    return html`<div class=${classMap(getClasses({ ...args, leadtext: `${args.size}` }))}>${args.slot}</div>`;
+  // args: {
+  //   slot: 'Lorem ipsum'
+  // },
+  render: (args: { size: string; highlight: string }) => {
+    return html`<div class=${classMap(getClasses({ ...args, leadtext: `${args.size}` }))}>
+      ${args.highlight ? html`Lorem <mark>Ipsum</mark>` : 'Lorem Ipsum'}
+    </div>`;
   }
 };
 
 export const SizesAndInverted = {
   name: 'Sizes x Inverted',
-  parameters: { controls: { exclude: ['size', 'slot', 'inverted'] } },
+  parameters: { controls: { exclude: ['size', 'inverted'] } },
   args: {},
   render: (args: { size: string }) => {
     return html`

@@ -27,7 +27,7 @@
   }
 
   &--highlight {
-    & highlight {
+    & mark {
       @apply text-accent bg-transparent;
     }
   }

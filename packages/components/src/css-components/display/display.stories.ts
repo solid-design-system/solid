@@ -14,7 +14,8 @@ export default {
   args: {
     // boolean for "modifier" arg
     inverted: false,
-    size: 'xl'
+    size: 'xl',
+    highlight: false
   },
   argTypes: {
     inverted: {
@@ -22,18 +23,23 @@ export default {
       control: 'boolean',
       description: 'Inverts the headline. <br><code>boolean</code>'
     },
-    slot: {
-      name: 'slot',
-      control: 'text',
-      description:
-        'this argType is only to show the slot in storybook. You will not need it in your code. <br><code>string</code>'
-    },
+    // slot: {
+    //   name: 'slot',
+    //   control: 'text',
+    //   description:
+    //     'this argType is only to show the slot in storybook. You will not need it in your code. <br><code>string</code>'
+    // },
     size: {
       name: 'size',
       control: 'radio',
       options: ['4xl', '3xl', 'xl'],
       description:
         "The display's size. <br><code>'4xl'</code> &nbsp; <code>'3xl'</code> &nbsp; <code>'xl'</code> &nbsp; <code>'lg'</code>"
+    },
+    highlight: {
+      name: 'highlight',
+      control: 'boolean',
+      description: 'The green accent color can be used to highlight parts of the text. <br><code>boolean</code>'
     }
   }
 };
@@ -42,6 +48,7 @@ const getClasses = args => {
   return {
     'sd-display': true,
     'sd-display--inverted': args.inverted,
+    'sd-display--highlight': args.highlight,
 
     'sd-display--size-xl': args.display === 'xl',
     'sd-display--size-3xl': args.display === '3xl',
@@ -53,17 +60,19 @@ const getClasses = args => {
  * This is the the typography section for all kind of styles and sizes of the Headline.
  */
 export const Default = {
-  args: {
-    slot: 'Lorem ipsum'
-  },
-  render: (args: { size: string; slot: string }) => {
-    return html`<div class=${classMap(getClasses({ ...args, display: `${args.size}` }))}>${args.slot}</div>`;
+  // args: {
+  //   slot: 'Lorem ipsum'
+  // },
+  render: (args: { size: string; highlight: boolean }) => {
+    return html`<div class=${classMap(getClasses({ ...args, display: `${args.size}` }))}>
+      ${args.highlight ? html`Lorem <mark>Ipsum</mark>` : 'Lorem Ipsum'}
+    </div>`;
   }
 };
 
 export const SizesAndInverted = {
   name: 'Sizes x Inverted',
-  parameters: { controls: { exclude: ['size', 'slot', 'inverted'] } },
+  parameters: { controls: { exclude: ['size', 'inverted'] } },
   args: {},
   render: (args: { size: string }) => {
     return html`
@@ -78,5 +87,26 @@ export const SizesAndInverted = {
     // options: {
     //   templateBackgrounds: { alternate: 'y', colors: ['white', '#00358E'] }
     // }
+  }
+};
+
+/**
+ * This is the the typography section for all kind of styles and sizes of the Display.
+ */
+export const Highlight = {
+  name: 'Highlight x Inverted',
+  parameters: { controls: { exclude: ['size', 'highlight', 'inverted'] } },
+  render: (args: { size: string; highlight: boolean }) => {
+    return html`
+      <div class=${classMap(getClasses({ ...args, display: '4xl', highlight: true }))}>
+        Icon left lorem ipsum <mark>dolor</mark> sit amet
+      </div>
+      <div class=${classMap(getClasses({ ...args, display: '3xl', highlight: true }))}>
+        Icon left lorem ipsum <mark>dolor</mark> sit amet
+      </div>
+      <div class=${classMap(getClasses({ ...args, display: 'xl', highlight: true }))}>
+        Icon left lorem ipsum <mark>dolor</mark> sit amet
+      </div>
+    `;
   }
 };

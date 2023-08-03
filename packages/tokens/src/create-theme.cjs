@@ -75,7 +75,7 @@ const sanitizeKey = (value, cssVariable = true) => {
  *
  */
 const reformatColors = obj => {
-  let result = {};
+  const result = {};
 
   for (const key in obj) {
     if (obj.hasOwnProperty(key)) {
@@ -109,7 +109,7 @@ const reformatColors = obj => {
 // Go through the opacity object that has the format object: {50: { value: string, comment: string }, 60: {value: string, comment: string}}
 // convert it to an interable array first in the format [ {name: '50', value: string, comment: string}, {name: '60', value: string, comment: string}]
 const getOpacities = () => {
-  let result = {};
+  const result = {};
   Object.entries(tokens['UI Semantic'].opacity)
     .map(([name, value]) => ({ name, ...value }))
     .forEach(({ name, value, description }) => {
@@ -126,7 +126,7 @@ const getOpacities = () => {
 // Go through the opacity object that has the format object: {50: { value: string, comment: string }, 60: {value: string, comment: string}}
 // convert it to an interable array first in the format [ {name: '50', value: string, comment: string}, {name: '60', value: string, comment: string}]
 const getBorderRadius = () => {
-  let result = {};
+  const result = {};
   Object.entries(tokens['UI Semantic'].rounded)
     .map(([name, value]) => ({ name, ...value }))
     .forEach(({ name, value, description }) => {
@@ -140,7 +140,7 @@ const getBorderRadius = () => {
 // Get all Object.entries(tokens['UI Semantic'].spacing and Object.entries(tokens['UI Semantic'].sizing values
 // Merge them and create spacing tokens for TailwindCSS
 const getSpacings = () => {
-  let result = {};
+  const result = {};
   Object.entries({
     ...tokens['UI Semantic'].spacing,
     0: { value: '0px', description: 'No spacing (manually added)' },
@@ -184,7 +184,7 @@ const getColors = (name, cssVariableScope) => {
 };
 
 const getCoreTokensByType = (tokenType, cssVariableScope) => {
-  let result = {};
+  const result = {};
   const obj = tokens['UI Core'];
   const keys = Object.keys(obj);
 
@@ -237,3 +237,5 @@ const config = {
 
 const theme = config['theme'];
 module.exports = theme;
+
+console.log('config', config);
