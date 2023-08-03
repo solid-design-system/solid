@@ -10,7 +10,7 @@ import type { PropertyValues } from 'lit';
  * @documentation https://solid.union-investment.com/[storybook-link]/teaser
  *
  * @status stable
- * @since 1.2
+ * @since 1.3
  * *
  * @slot - An optional main content slot.
  * @slot media - An optional media slot.
