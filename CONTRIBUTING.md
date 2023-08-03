@@ -26,6 +26,9 @@
 
 ## Development Guidelines
 
+<!-- Maybe add sth. like "Every feature is started on a new branch." -->
+<!-- Maybe add the fact, that all styles are defined by design via tokens. -->
+
 - Solid Components follows a monorepo structure with packages, such as the `components` package.
 - **IMPORTANT:** Make sure to have `pnpm` installed
 - Centralized Linting and Formatting at the Root Level

@@ -1,10 +1,8 @@
-import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property } from 'lit/decorators.js';
 import { html } from 'lit';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 // import styles from './badge.styles';
-import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Badges are used to draw attention and display statuses or counts.
@@ -13,7 +11,7 @@ import type { CSSResultGroup } from 'lit';
  * @since 1.0
  *
  * @slot - The badge's content.
- * @slot overflow-indicator - An indicator for overflowing content.
+ * @slot overflow-indicator - The badge's overflow-indicator.
  *
  * @csspart base - The component's base wrapper.
  */
@@ -36,9 +34,9 @@ export default class SdBadge extends SolidElement {
   render() {
     return html`
       <span
-        part="main"
+        part="base"
         class=${cx(
-          `inline-flex items-center justify-center select-none px-1 leading-none whitespace-nowrap rounded-full`,
+          `inline-flex border items-center justify-center select-none leading-none whitespace-nowrap rounded-full`,
           {
             /* variants */
             default: !this.inverted ? `text-white bg-primary-500 border-white` : `text-primary bg-white border-primary`,
@@ -46,14 +44,25 @@ export default class SdBadge extends SolidElement {
             error: `text-white bg-error border-white`
           }[this.variant],
           {
-            /* sizes, fonts */
-            sm: 'text-sm h-2',
-            md: 'text-sm h-4',
-            lg: 'text-sm h-5'
+            /* size */
+            sm: 'h-2 min-w-[8px]',
+            md: 'h-4 px-[4px] min-w-[16px]',
+            lg: 'h-5 px-[5px] min-w-[20px]'
+          }[this.size],
+          {
+            /* fonts */
+            sm: 'text-[10px]',
+            md: 'text-[10px]',
+            lg: 'text-[12px]'
           }[this.size]
         )}
       >
-        <slot class=${cx(`w-2 shrink-0`)}></slot>
+        <slot class=${cx(this.size === 'sm' && `hidden`)} part="content"></slot>
+        <slot
+          name="overflow-indicator"
+          class=${cx((!this.overflowing || this.size === 'sm') && `hidden`, `align-baseline`)}
+          part="overflow-indicator"
+        ></slot>
       </span>
     `;
   }
