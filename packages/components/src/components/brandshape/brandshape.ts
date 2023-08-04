@@ -10,8 +10,8 @@ type Breakpoints = 0 | 414 | 640;
 /**
  * @summary The Brandshape highlights a piece of content.
  * @documentation https://solid.union-investment.com/[storybook-brandshape]/brandshape
- * @status
- * @since
+ * @status stable
+ * @since 1.4
  *
  * @slot - The content inside the brandshape.
  *
@@ -74,7 +74,7 @@ export default class SdBrandshape extends SolidElement {
 
   private smallSvg(shape: 'top' | 'bottom'): TemplateResult {
     return shape === 'top'
-      ? html`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 114" part="shape-top">
+      ? html`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 113" part="shape-top">
           <path
             d="M566.951 2.08 0 112.466v2.934h700v-3.672c0-7.166-.689-14.314-2.059-21.348-11.789-60.557-70.436-100.09-130.99-88.3Z"
           />
