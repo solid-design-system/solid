@@ -1,21 +1,21 @@
 .sd-meta-information {
   @apply text-base font-normal leading-none text-black;
 
-	&--size-sm {
+  &--size-sm {
     @apply text-sm;
-	}
+  }
 
-	&--color-additional {
+  &--color-additional {
     @apply text-neutral-700;
-	}
+  }
 
-	&--inverted {
-		@apply text-white;
+  &--inverted {
+    @apply text-white;
 
     &.sd-meta-information--color-additional {
       @apply text-primary-400;
     }
-	}
+  }
 
   &--pipe {
     &::after {
