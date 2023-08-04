@@ -1,123 +1,111 @@
+/* eslint-disable @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-explicit-any, @typescript-eslint/no-shadow, @typescript-eslint/no-unsafe-member-access  */
 import { expect, fixture, html } from '@open-wc/testing';
 import type SdBadge from './badge';
+
+const variants = [
+  {
+    name: 'default',
+    tailwindClasses: 'text-white bg-primary-500 border-white',
+    invertedTailwindClasses: 'text-primary bg-white border-primary'
+  },
+  {
+    name: 'success',
+    tailwindClasses: 'text-white bg-[#367B28] border-white',
+    invertedTailwindClasses: 'text-white bg-[#367B28] border-white'
+  },
+  {
+    name: 'error',
+    tailwindClasses: 'text-white bg-error border-white',
+    invertedTailwindClasses: 'text-white bg-error border-white'
+  }
+];
+
+const sizes = [
+  { name: 'sm', tailwindClasses: 'h-2 min-w-[8px] text-[10px]' },
+  { name: 'md', tailwindClasses: 'h-4 px-[4px] min-w-[16px] text-[10px]' },
+  { name: 'lg', tailwindClasses: 'h-5 px-[5px] min-w-[20px] text-[12px]' }
+];
+
+const baseClasses =
+  'inline-flex items-center justify-center align-middle leading-none whitespace-nowrap border rounded-full';
 
 describe('<sd-badge>', () => {
   let el: SdBadge;
 
   describe('when provided no parameters', () => {
-    before(async () => {
+    it('passes accessibility test', async () => {
       el = await fixture<SdBadge>(html` <sd-badge>Badge</sd-badge> `);
-    });
-
-    it('should pass accessibility tests with a role of status on the base part.', async () => {
       await expect(el).to.be.accessible();
     });
 
-    it('should render the child content provided', () => {
+    it('primary values are set correctly', async () => {
+      el = await fixture<SdBadge>(html` <sd-badge>Badge</sd-badge> `);
+      expect(el.variant).to.equal('default');
+      expect(el.size).to.equal('lg');
+      expect(el.inverted).to.equal(false);
+      expect(el.overflowing).to.equal(false);
+    });
+
+    it('should render the child content provided', async () => {
+      el = await fixture<SdBadge>(html` <sd-badge>Badge</sd-badge> `);
       expect(el.innerText).to.eq('Badge');
     });
 
-    it('should default to square styling, with the primary color', () => {
+    it('should render without the overflow indicator', async () => {
+      el = await fixture<SdBadge>(html` <sd-badge>Badge</sd-badge> `);
+      expect(el.shadowRoot!.querySelector('[part~="base"]')).to.exist;
+      expect(el.shadowRoot!.querySelector('[part~="overflow-indicator"]')).have.class('hidden');
+    });
+
+    it('should default to default styling, with the primary color', async () => {
+      el = await fixture<SdBadge>(html` <sd-badge>Badge</sd-badge> `);
       const part = el.shadowRoot!.querySelector('[part~="base"]')!;
-      expect(part.classList.value.trim()).to.contain('text-white bg-primary-500 border-white');
+      expect(part.classList.value.trim()).to.contain(baseClasses);
+      expect(part.classList.value.trim()).to.contain(variants[0].tailwindClasses);
     });
   });
 
-  ['default', 'success', 'error'].forEach(variant => {
-    describe(`when passed a variant attribute ${variant}`, () => {
-      before(async () => {
-        el = await fixture<SdBadge>(html`<sd-badge variant="${variant}">Badge</sd-badge>`);
-      });
+  describe('when passed parameter overflowing = true', () => {
+    it(`should render with overflow indicator"`, async () => {
+      el = await fixture<SdBadge>(html` <sd-badge overflowing>Badge</sd-badge> `);
+      expect(el.shadowRoot!.querySelector('[part~="overflow-indicator"]')).not.have.class('hidden');
+    });
+  });
 
-      it('should pass accessibility tests', async () => {
+  variants.forEach(variant => {
+    describe(`when passed a variant attribute ${variant.name}`, () => {
+      it(`should be accessible when variant is "${variant.name}"`, async () => {
+        el = await fixture<SdBadge>(html` <sd-badge variant="${variant.name}">Badge</sd-badge> `);
         await expect(el).to.be.accessible();
       });
 
-      it('should default to square styling, with the primary color', () => {
+      it(`should render the background, font and border color associated with variant "${variant.name}" and still have the base classes`, async () => {
+        el = await fixture<SdBadge>(html` <sd-badge variant="${variant.name}">Badge</sd-badge> `);
         const part = el.shadowRoot!.querySelector('[part~="base"]')!;
-        if (variant === 'default') {
-          expect(part.classList.value.trim()).to.contain(`text-white bg-primary-500 border-white`);
-        }
-        if (variant === 'success') {
-          expect(part.classList.value.trim()).to.contain(`text-white bg-success border-white`);
-        }
-        if (variant === 'error') {
-          expect(part.classList.value.trim()).to.contain(`text-white bg-error border-white`);
-        }
+        expect(part.classList.value.trim()).to.contain(baseClasses);
+        expect(part.classList.value.trim()).to.contain(variant.tailwindClasses);
+      });
+
+      it(`should render the background, font and border color associated with variant "${variant.name}" in the inverted state`, async () => {
+        el = await fixture<SdBadge>(html` <sd-badge variant="${variant.name}" inverted>Badge</sd-badge> `);
+        const part = el.shadowRoot!.querySelector('[part~="base"]')!;
+        expect(part.classList.value.trim()).to.contain(variant.invertedTailwindClasses);
+      });
+    });
+  });
+
+  sizes.forEach(size => {
+    describe(`when passed a size attribute ${size.name}`, () => {
+      it(`should be accessible when size is "${size.name}"`, async () => {
+        el = await fixture<SdBadge>(html` <sd-badge size="${size}">Badge</sd-badge> `);
+        await expect(el).to.be.accessible();
+      });
+
+      it(`should render the badge and font size associated with size "${size.name}"`, async () => {
+        el = await fixture<SdBadge>(html` <sd-badge size="${size.name}">Badge</sd-badge> `);
+        const base = el.shadowRoot!.querySelector('[part~="base"]')!;
+        expect(base.classList.value.trim()).to.contain(size.tailwindClasses);
       });
     });
   });
 });
-
-// describe('<sd-badge>', () => {
-//   let el: SdBadge;
-
-//   describe('when provided no parameters', () => {
-//     before(async () => {
-//       el = await fixture<SdBadge>(html` <sd-badge>Badge</sd-badge> `);
-//     });
-
-//     it('should pass accessibility tests with a role of status on the base part.', async () => {
-//       await expect(el).to.be.accessible();
-
-//       const part = el.shadowRoot!.querySelector('[part~="base"]')!;
-//       expect(part.getAttribute('role')).to.eq('status');
-//     });
-
-//     it('should render the child content provided', () => {
-//       expect(el.innerText).to.eq('Badge');
-//     });
-
-//     it('should default to square styling, with the primary color', () => {
-//       const part = el.shadowRoot!.querySelector('[part~="base"]')!;
-//       expect(part.classList.value.trim()).to.eq('badge badge--primary');
-//     });
-//   });
-
-//   describe('when provided a pill parameter', () => {
-//     before(async () => {
-//       el = await fixture<SdBadge>(html` <sd-badge pill>Badge</sd-badge> `);
-//     });
-
-//     it('should pass accessibility tests', async () => {
-//       await expect(el).to.be.accessible();
-//     });
-
-//     it('should append the pill class to the classlist to render a pill', () => {
-//       const part = el.shadowRoot!.querySelector('[part~="base"]')!;
-//       expect(part.classList.value.trim()).to.eq('badge badge--primary badge--pill');
-//     });
-//   });
-
-//   describe('when provided a pulse parameter', () => {
-//     before(async () => {
-//       el = await fixture<SdBadge>(html` <sd-badge pulse>Badge</sd-badge> `);
-//     });
-
-//     it('should pass accessibility tests', async () => {
-//       await expect(el).to.be.accessible();
-//     });
-
-//     it('should append the pulse class to the classlist to render a pulse', () => {
-//       const part = el.shadowRoot!.querySelector('[part~="base"]')!;
-//       expect(part.classList.value.trim()).to.eq('badge badge--primary badge--pulse');
-//     });
-//   });
-
-//   ['primary', 'success', 'neutral', 'warning', 'danger'].forEach(variant => {
-//     describe(`when passed a variant attribute ${variant}`, () => {
-//       before(async () => {
-//         el = await fixture<SdBadge>(html`<sd-badge variant="${variant}">Badge</sd-badge>`);
-//       });
-
-//       it('should pass accessibility tests', async () => {
-//         await expect(el).to.be.accessible();
-//       });
-
-//       it('should default to square styling, with the primary color', () => {
-//         const part = el.shadowRoot!.querySelector('[part~="base"]')!;
-//         expect(part.classList.value.trim()).to.eq(`badge badge--${variant}`);
-//       });
-//     });
-//   });
-// });

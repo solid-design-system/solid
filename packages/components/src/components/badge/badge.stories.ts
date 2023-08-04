@@ -18,14 +18,7 @@ export default {
       url: 'https://www.figma.com/file/fPGhgNZv98U4H69Gu2tlWi/Button?type=design&node-id=13-18&t=jDLqFEdY7ZlOJurc-4'
     }
   },
-  args: overrideArgs([
-    { type: 'slot', name: 'default', value: '<span>8</span>' },
-    {
-      type: 'slot',
-      name: 'overflow-indicator',
-      value: '<p slot="overflow-indicator">+</p>'
-    }
-  ]),
+  args: overrideArgs([{ type: 'slot', name: 'default', value: '8' }]),
   argTypes,
   decorators: [withActions] as any
 };
@@ -104,7 +97,7 @@ export const Overflown = {
 
 export const Parts = {
   parameters: {
-    controls: { exclude: ['base', 'content', 'overflow-indicator'] }
+    controls: { exclude: ['base', 'content', 'overflow-indicator', 'size', 'overflowing'] }
   },
   render: (args: any) => {
     return generateTemplate({
@@ -115,7 +108,7 @@ export const Parts = {
           values: ['base', 'content', 'overflow-indicator'].map(part => {
             return {
               title: part,
-              value: `<style>#part-${part} sd-badge::part(${part}){outline: solid 2px red} #part-${part} .${part}{outline: solid 2px red}</style><div id="part-${part}">%TEMPLATE%</div>`
+              value: `<style>#part-${part} sd-badge::part(${part}){outline: solid 2px red}</style><div id="part-${part}">%TEMPLATE%</div>`
             };
           })
         }
@@ -140,7 +133,7 @@ export const Parts = {
  */
 export const Slots = {
   parameters: {
-    controls: { exclude: ['default', 'overflow-indicator', 'size', 'overflowing', 'inverted'] }
+    controls: { exclude: ['default', 'overflow-indicator', 'size', 'overflowing'] }
   },
   decorators: [
     (story: any) =>
@@ -160,7 +153,7 @@ export const Slots = {
   ],
   render: (args: any) => {
     return html`
-      ${['default', 'overflow-indicator'].map(slot =>
+      ${['default'].map(slot =>
         generateTemplate({
           axis: {
             x: {
@@ -169,10 +162,7 @@ export const Slots = {
               title: 'slot=...',
               values: [
                 {
-                  value:
-                    slot === 'default'
-                      ? `<span class="slot-highlight">8</span>`
-                      : `<span class="slot-highlight" slot='${slot}'>+</span>`,
+                  value: `<span class="slot-highlight">8</span>`,
                   title: slot
                 }
               ]
