@@ -72,11 +72,9 @@ const sanitizeKey = (value, cssVariable = true) => {
  *
  * @param {Object} obj - The input color object with keys representing color names and shades, and values representing color codes.
  * @returns {Object} result - The reformatted color object with grouped colors and default values set.
- *
  */
 const reformatColors = obj => {
   const result = {};
-
   for (const key in obj) {
     if (obj.hasOwnProperty(key)) {
       const colorValue = obj[key];
@@ -97,6 +95,8 @@ const reformatColors = obj => {
         result[colorName][shade] = colorValue;
       } else if (!result[key]) {
         result[key] = colorValue;
+      } else if (!result[key]['DEFAULT']) {
+        result[key]['DEFAULT'] = colorValue;
       }
     }
   }

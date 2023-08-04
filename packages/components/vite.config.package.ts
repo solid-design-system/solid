@@ -1,12 +1,9 @@
 import addTypesPlugin from './scripts/rollup-plugin-add-types';
-import minifyHtmlPlugin from 'rollup-plugin-minify-html-literals';
+import customMinifyHTMLLiteralsPlugin from './scripts/rollup-plugin-minify-html-literals';
 import path from 'path';
 import resolve from '@rollup/plugin-node-resolve';
 import summaryPlugin from 'rollup-plugin-summary';
 import type { defineConfig } from 'vite';
-
-// eslint-disable-next-line
-const minifyHTML = (minifyHtmlPlugin as any).default;
 
 // https://vitejs.dev/config/
 export default (() => {
@@ -44,7 +41,7 @@ export default (() => {
           }),
           // Minify HTML template literals
           // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-          minifyHTML(),
+          customMinifyHTMLLiteralsPlugin(),
           // Print bundle summary
           summaryPlugin(),
           // add types to package

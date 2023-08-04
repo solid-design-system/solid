@@ -1,7 +1,7 @@
 {
   "name": "@solid-design-system/components",
   "description": "Solid Design System: Components",
-  "version": "1.1.0",
+  "version": "1.5.1",
   "homepage": "https://solid-design-system.fe.union-investment.de/x.x.x/storybook/",
   "author": {
     "name": "Union Investment"
@@ -54,11 +54,12 @@
     "build.storybook": "storybook build --output-dir dist/storybook && cp dist/custom-elements.json dist/storybook/custom-elements.json",
     "build.chromatic": "pnpm build.storybook && pnpm ci.optimize-chromatic",
     "preview": "vite preview",
-    "verify": "pnpm ts.verify && pnpm build && echo '✅ Build verified' && pnpm ci.optimize-chromatic && echo '✅ Chromatic optimization verified' && pnpm test && echo '✅ Test verified'",
+    "verify": "pnpm ts.verify && pnpm build && echo '✅ Build verified' && pnpm ci.optimize-chromatic && echo '✅ Chromatic optimization verified' && pnpm test.verify && echo '✅ Test verified'",
     "ts.verify": "tsc --noEmit --project ./tsconfig.json && echo '✅ TypeScript verified'",
     "plop": "plop --plopfile scripts/plop/plopfile.js",
     "ci.optimize-chromatic": "node ./scripts/storybook/optimize-chromatic.cjs",
-    "test": "web-test-runner --group default",
+    "test": "pnpm build.components && web-test-runner --group default",
+    "test.verify": "web-test-runner --group default",
     "test.component": "web-test-runner -- --watch --group",
     "test.watch": "web-test-runner --watch --group default",
     "storybook": "storybook dev -p 6999",
@@ -111,13 +112,13 @@
     "jsonata": "^2.0.3",
     "lint-staged": "^13.2.2",
     "lit-html": "^2.7.4",
+    "minify-html-literals": "^1.3.5",
     "normalize.css": "^8.0.1",
     "plop": "^3.1.2",
     "postcss": "^8.4.24",
     "prettier": "^2.8.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "rollup-plugin-minify-html-literals": "^1.2.6",
     "rollup-plugin-summary": "^2.0.0",
     "semantic-release": "^19.0.5",
     "semantic-release-monorepo": "^7.0.5",
@@ -172,8 +173,8 @@
   "readme": "README.md",
   "meta": {
     "bundleSizeInKb": {
-      "uncompressed": 69,
-      "gzip": 20
+      "uncompressed": 76,
+      "gzip": 21
     }
   }
 }

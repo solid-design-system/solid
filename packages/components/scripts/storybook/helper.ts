@@ -12,12 +12,12 @@ interface AxisDefinition {
   title?: string;
 }
 
-interface ConstantDefinition {
+export type ConstantDefinition = {
   type: ArgTypesDefinition | 'template';
   name: string;
   value: any;
   title?: string;
-}
+};
 
 /**
  * Returns default arguments, events, and argument types for a given custom element tag.
