@@ -3,12 +3,22 @@ import { customElement } from 'lit/decorators.js';
 import componentStyles from 'src/styles/component.styles';
 import SolidElement from '../../internal/solid-element';
 
+/**
+ * @summary Accordion shows a brief summary and expands to show additional content.
+ * @documentation https://solid.union-investment.com/[storybook-link]/carousel-item
+ * @status stable
+ * @since 1.4
+ *
+ *
+ * @slot - The accordion main content.
+ */
+
 @customElement('sd-carousel-item')
 export default class SdCarouselItem extends SolidElement {
   render() {
     return html`
-      <div class="flex items-center justify-center flex-col w-full h-max snap-start snap-always">
-        <slot class="w-full h-full object-cover"></slot>
+      <div class="flex flex-col items-center justify-center w-full h-max snap-start snap-always">
+        <slot class="object-cover w-full h-full"></slot>
       </div>
     `;
   }

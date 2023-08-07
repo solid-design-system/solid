@@ -9,7 +9,6 @@ export default {
   title: 'Components/sd-carousel-item',
   component: 'sd-carousel-item',
   args: overrideArgs([{ type: 'slot', name: 'default', value: '<slot-comp></slot-comp>' }]),
-
   argTypes,
   parameters: { ...parameters }
 };

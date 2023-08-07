@@ -1,7 +1,22 @@
+import '../carousel-item/carousel-item';
 import '../icon/icon';
 import { customElement, property } from 'lit/decorators.js';
 import { html } from 'lit';
+import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
+
+/**
+ * @summary Accordion shows a brief summary and expands to show additional content.
+ * @documentation https://solid.union-investment.com/[storybook-link]/carousel-item
+ * @status stable
+ * @since 1.4
+ *
+ *
+ * @slot - The accordion main content.
+ *
+ * @dependency sd-carousel-item
+ * @dependency sd-icon
+ */
 
 @customElement('sd-carousel')
 export default class SdCarousel extends SolidElement {
@@ -15,17 +30,62 @@ export default class SdCarousel extends SolidElement {
 
   render() {
     return html`
-      <span class="flex flex-row">
-        <button class="text-primary rotate-90 hover:text-neutral-500">
-          <sd-icon library="system" name="chevron-down"></sd-icon>
-        </button>
-        <span>
-          <span class="h-3 w-3 inline-block bg-accent rounded-full"></span>
+      <div>
+        <slot></slot>
+        <span class=${cx('flex flex-row items-center justify-center space-x-6', this.inverted ? 'bg-primary' : '')}>
+          <button
+            class=${cx(
+              'rotate-90',
+              this.inverted
+                ? 'text-white hover:text-primary-500'
+                : 'text-primary hover:text-primary-500 disabled:text-neutral-500 '
+            )}
+          >
+            <sd-icon class="w-6 h-6" library="system" name="chevron-down"></sd-icon>
+          </button>
+
+          <span class="flex items-center justify-center gap-2">
+            <span
+              class=${cx(
+                'h-4 w-4 inline-block border active:bg-accent hover:border-primary-500 rounded-full',
+                this.inverted ? 'border-white hover:border-primary-500' : 'border-primary'
+              )}
+            ></span>
+
+            <span
+              class=${cx(
+                'h-4 w-4 inline-block border active:bg-accent hover:border-primary-500 rounded-full',
+                this.inverted ? 'border-white hover:border-primary-500' : 'border-primary'
+              )}
+            ></span>
+
+            <span
+              class=${cx(
+                'h-4 w-4 inline-block border active:bg-accent hover:border-primary-500 rounded-full',
+                this.inverted ? 'border-white hover:border-primary-500' : 'border-primary'
+              )}
+            ></span>
+
+            <span
+              class=${cx(
+                'h-4 w-4 inline-block border active:bg-accent hover:border-primary-500 rounded-full',
+                this.inverted ? 'border-white hover:border-primary-500' : 'border-primary'
+              )}
+            ></span>
+          </span>
+
+          <button
+            class=${cx(
+              'rotate-90',
+              this.inverted
+                ? 'text-white hover:text-primary-500'
+                : 'text-primary  hover:text-primary-500 disabled:text-neutral-500'
+            )}
+          >
+            <sd-icon class="w-6 h-6" library="system" name="chevron-up"></sd-icon>
+          </button>
         </span>
-        <button class="text-primary rotate-90 hover:text-neutral-500">
-          <sd-icon library="system" name="chevron-up"></sd-icon>
-        </button>
-      </span>
+      </div>
     `;
   }
 }
