@@ -114,6 +114,54 @@ export const InsetAndOrientation = {
 };
 
 /**
+ * Teaser when the `meta` slot is empty in all possible combinations of `inset` and `orientation`.
+ */
+
+export const NoMeta = {
+  name: 'Empty Meta Slot',
+  parameters: { controls: { exclude: ['meta', 'breakpoint', 'inset'] } },
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        x: {
+          type: 'attribute',
+          name: 'breakpoint',
+          values: [
+            {
+              value: '0',
+              title: 'breakpoint = 0'
+            },
+            {
+              value: '9999',
+              title: 'breakpoint = 9999'
+            }
+          ]
+        },
+        y: { type: 'attribute', name: 'inset' }
+      },
+      args,
+      constants: [
+        {
+          type: 'template',
+          name: 'style',
+          value: '<div style="margin-bottom: 40px">%TEMPLATE%</div>'
+        },
+        {
+          type: 'slot',
+          name: 'meta',
+          value: '<slot name="meta"></slot>'
+        },
+        {
+          type: 'attribute',
+          name: 'variant',
+          value: 'primary-100'
+        }
+      ]
+    });
+  }
+};
+
+/**
  * Teaser with different `media` and `content` distribution values. In case there's a requirement to have a fixed value for the `media`, you can override the `sd-teaser::part(media)` selector by applying a `flex-shrink: 0;` style. Same can be done for the `content` part.
  */
 
