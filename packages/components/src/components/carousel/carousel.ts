@@ -28,6 +28,25 @@ export default class SdCarousel extends SolidElement {
   /** Specifies how many slides should be shown at a given time.  */
   @property({ type: Number, attribute: 'slides-per-page' }) slidesPerPage = 1;
 
+  private handleVariant() {
+    if (this.variant === 'dot') {
+      return html`<span class="flex items-center justify-center gap-2">
+        <span
+          class=${cx(
+            'h-4 w-4 inline-block border active:bg-accent hover:border-primary-500 rounded-full',
+            this.inverted ? 'border-white hover:border-primary-500' : 'border-primary'
+          )}
+        ></span>
+      </span>`;
+    } else {
+      return html` <span class="flex gap-0.5 ">
+        <span class=${cx('w-5 text-center', this.inverted ? 'text-white' : 'text-black')}>1</span>
+        <span class="scale-y-[1.8]">/</span>
+        <span class="w-5">12</span>
+      </span>`;
+    }
+  }
+
   render() {
     return html`
       <div>
@@ -35,7 +54,7 @@ export default class SdCarousel extends SolidElement {
           <slot></slot>
         </div>
 
-        <span class=${cx('flex flex-row items-center justify-center space-x-6', this.inverted ? 'bg-primary' : '')}>
+        <span class=${cx('flex flex-row items-center justify-center gap-6', this.inverted ? 'bg-primary' : '')}>
           <button
             class=${cx(
               'rotate-90',
@@ -47,35 +66,7 @@ export default class SdCarousel extends SolidElement {
             <sd-icon class="w-6 h-6" library="system" name="chevron-down"></sd-icon>
           </button>
 
-          <span class="flex items-center justify-center gap-2">
-            <span
-              class=${cx(
-                'h-4 w-4 inline-block border active:bg-accent hover:border-primary-500 rounded-full',
-                this.inverted ? 'border-white hover:border-primary-500' : 'border-primary'
-              )}
-            ></span>
-
-            <span
-              class=${cx(
-                'h-4 w-4 inline-block border active:bg-accent hover:border-primary-500 rounded-full',
-                this.inverted ? 'border-white hover:border-primary-500' : 'border-primary'
-              )}
-            ></span>
-
-            <span
-              class=${cx(
-                'h-4 w-4 inline-block border active:bg-accent hover:border-primary-500 rounded-full',
-                this.inverted ? 'border-white hover:border-primary-500' : 'border-primary'
-              )}
-            ></span>
-
-            <span
-              class=${cx(
-                'h-4 w-4 inline-block border active:bg-accent hover:border-primary-500 rounded-full',
-                this.inverted ? 'border-white hover:border-primary-500' : 'border-primary'
-              )}
-            ></span>
-          </span>
+          ${this.handleVariant()}
 
           <button
             class=${cx(
