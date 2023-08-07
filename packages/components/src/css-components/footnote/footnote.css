@@ -1,0 +1,15 @@
+.sd-footnote {
+	&--number {    
+		@apply list-decimal;
+	}
+
+	&--inverted {
+		@apply text-white;
+	}
+
+	&--highlight {
+		& mark {
+		  @apply text-accent bg-transparent;
+		}
+	}
+}
