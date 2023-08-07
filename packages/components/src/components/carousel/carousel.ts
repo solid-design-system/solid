@@ -31,7 +31,10 @@ export default class SdCarousel extends SolidElement {
   render() {
     return html`
       <div>
-        <slot></slot>
+        <div class="mb-6">
+          <slot></slot>
+        </div>
+
         <span class=${cx('flex flex-row items-center justify-center space-x-6', this.inverted ? 'bg-primary' : '')}>
           <button
             class=${cx(
