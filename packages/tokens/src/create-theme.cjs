@@ -237,5 +237,3 @@ const config = {
 
 const theme = config['theme'];
 module.exports = theme;
-
-console.log('config', config);
