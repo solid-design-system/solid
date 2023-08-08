@@ -26,6 +26,8 @@ This guide outlines the steps to perform a standard release from the main branch
 
 > Note: There is no differentiation between deployment type for feature branches. Therewith the type `code` will be used for all feature branch deployments and updates.
 
+See [CONTRIBUTING.md](../../../CONTRIBUTING.md#working-with-feature-branches) for more information on how to use a contributed feature with a feature branch deployment.
+
 ## Docs Release
 
 To perform a documentation-only release, a _*standard*_ release has to be performed. The pipelines will automatically recognize (by checking the commit message) that only documentation has been updated and therefore only deploy the Storybook folder to the current version folder on the CDN.
