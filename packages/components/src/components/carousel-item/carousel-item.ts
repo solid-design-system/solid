@@ -4,17 +4,26 @@ import componentStyles from 'src/styles/component.styles';
 import SolidElement from '../../internal/solid-element';
 
 /**
- * @summary Accordion shows a brief summary and expands to show additional content.
+ * @summary A carousel item represent a slide within a [carousel](/components/carousel).
  * @documentation https://solid.union-investment.com/[storybook-link]/carousel-item
  * @status stable
  * @since 1.4
  *
  *
- * @slot - The accordion main content.
+ * @slot - The carousel item's content.
  */
 
 @customElement('sd-carousel-item')
 export default class SdCarouselItem extends SolidElement {
+  static isCarouselItem(node: Node) {
+    return node instanceof Element && node.getAttribute('aria-roledescription') === 'slide';
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.setAttribute('role', 'group');
+  }
+
   render() {
     return html`
       <div class="flex flex-col items-center justify-center w-full h-max snap-start snap-always">

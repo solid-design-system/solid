@@ -37,12 +37,30 @@ export default class SdCarousel extends SolidElement {
             this.inverted ? 'border-white hover:border-primary-500' : 'border-primary'
           )}
         ></span>
+        <span
+          class=${cx(
+            'h-4 w-4 inline-block border active:bg-accent hover:border-primary-500 rounded-full',
+            this.inverted ? 'border-white hover:border-primary-500' : 'border-primary'
+          )}
+        ></span>
+        <span
+          class=${cx(
+            'h-4 w-4 inline-block border active:bg-accent hover:border-primary-500 rounded-full',
+            this.inverted ? 'border-white hover:border-primary-500' : 'border-primary'
+          )}
+        ></span>
+        <span
+          class=${cx(
+            'h-4 w-4 inline-block border active:bg-accent hover:border-primary-500 rounded-full',
+            this.inverted ? 'border-white hover:border-primary-500' : 'border-primary'
+          )}
+        ></span>
       </span>`;
     } else {
       return html` <span class="flex gap-0.5 ">
         <span class=${cx('w-5 text-center', this.inverted ? 'text-white' : 'text-black')}>1</span>
-        <span class="scale-y-[1.8]">/</span>
-        <span class="w-5">12</span>
+        <span class=${cx('scale-y-[1.8]', 'text-center', this.inverted ? 'text-white' : 'text-black')}>/</span>
+        <span class=${cx('w-5 text-center', this.inverted ? 'text-white' : 'text-black')}>12</span>
       </span>`;
     }
   }
