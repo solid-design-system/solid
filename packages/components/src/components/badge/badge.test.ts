@@ -27,18 +27,19 @@ const sizes = [
 ];
 
 const baseClasses =
-  'inline-flex items-center justify-center align-middle leading-none whitespace-nowrap border rounded-full';
+  'inline-flex items-center justify-center align-middle leading-none whitespace-nowrap border rounded-full select-none font-semibold cursor-[inherit]';
 
 describe('<sd-badge>', () => {
   let el: SdBadge;
 
   describe('when provided no parameters', () => {
-    it('passes accessibility test', async () => {
+    it('should pass accessibility tests with a role of status on the base part.', async () => {
       el = await fixture<SdBadge>(html` <sd-badge>Badge</sd-badge> `);
+      expect(el.shadowRoot!.querySelector('[part~="base"]')!.getAttribute('role')).to.eq('status');
       await expect(el).to.be.accessible();
     });
 
-    it('primary values are set correctly', async () => {
+    it('should have the primary values set correctly', async () => {
       el = await fixture<SdBadge>(html` <sd-badge>Badge</sd-badge> `);
       expect(el.variant).to.equal('default');
       expect(el.size).to.equal('lg');
@@ -66,6 +67,11 @@ describe('<sd-badge>', () => {
   });
 
   describe('when passed parameter overflowing = true', () => {
+    it('should pass accessibility tests.', async () => {
+      el = await fixture<SdBadge>(html` <sd-badge overflowing>Badge</sd-badge> `);
+      await expect(el).to.be.accessible();
+    });
+
     it(`should render with overflow indicator"`, async () => {
       el = await fixture<SdBadge>(html` <sd-badge overflowing>Badge</sd-badge> `);
       expect(el.shadowRoot!.querySelector('[part~="overflow-indicator"]')).not.have.class('hidden');

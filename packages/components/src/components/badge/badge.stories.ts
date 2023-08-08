@@ -8,6 +8,10 @@ const { argTypes, parameters } = storybookDefaults('sd-badge');
 const { overrideArgs } = storybookHelpers('sd-badge');
 const { generateTemplate } = storybookTemplate('sd-badge'); // Replace with your custom element tag
 
+/**
+ * Badges are used to draw attention and display statuses or counts.
+ */
+
 export default {
   title: 'Components/sd-badge',
   component: 'sd-badge',
@@ -18,13 +22,13 @@ export default {
       url: 'https://www.figma.com/file/fPGhgNZv98U4H69Gu2tlWi/Button?type=design&node-id=13-18&t=jDLqFEdY7ZlOJurc-4'
     }
   },
-  args: overrideArgs([{ type: 'slot', name: 'default', value: '8' }]),
+  args: overrideArgs([{ type: 'slot', name: 'default', value: '<span>8</span>' }]),
   argTypes,
   decorators: [withActions] as any
 };
 
 /**
- * Default: This shows sd-badge in its default state.
+ * Default: This shows the badge in its default state.
  */
 
 export const Default = {
@@ -73,7 +77,7 @@ export const VariantAndSize = {
 };
 
 /**
- * The badge in all possible combinations of `variant` and `size`.
+ * The badge in all possible combinations of `variant` and `size` with overflow indicator.
  */
 
 export const Overflown = {
@@ -92,7 +96,7 @@ export const Overflown = {
 };
 
 /**
- * Use the `base`, `label`, `icon-left` and `icon-right` part selectors to customize the button.
+ * Use the `base`, `content` and `overflow-indicator` part selectors to customize the button.
  */
 
 export const Parts = {
@@ -129,11 +133,11 @@ export const Parts = {
 };
 
 /**
- *
+ * Use the default slot to add content to the badge.
  */
 export const Slots = {
   parameters: {
-    controls: { exclude: ['default', 'overflow-indicator', 'size', 'overflowing'] }
+    controls: { exclude: ['size', 'overflowing'] }
   },
   decorators: [
     (story: any) =>
@@ -153,7 +157,7 @@ export const Slots = {
   ],
   render: (args: any) => {
     return html`
-      ${['default'].map(slot =>
+      ${['default', 'overflow-indicator'].map(slot =>
         generateTemplate({
           axis: {
             x: {
@@ -162,7 +166,10 @@ export const Slots = {
               title: 'slot=...',
               values: [
                 {
-                  value: `<span class="slot-highlight">8</span>`,
+                  value:
+                    slot === 'default'
+                      ? `<span class="slot-highlight">8</span>`
+                      : `<span slot="overflow-indicator" class="slot-highlight">+</span>`,
                   title: slot
                 }
               ]
@@ -180,7 +187,7 @@ export const Slots = {
 };
 
 /**
- * Use the `base`, `label`, `icon-left` and `icon-right` part selectors to customize the button.
+ * The badge in all possible combinations of `variant` and `size` when slotted in sd-button.
  */
 
 export const ButtonAndBadge = {
