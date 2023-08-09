@@ -107,7 +107,7 @@ export const Parts = {
       axis: {
         y: {
           type: 'template',
-          name: 'sd-badge::part(...){outline: solid 2px red}',
+          name: 'sd-badge::part(...){outline: solid 1.5px red}',
           values: ['base', 'content', 'overflow-indicator'].map(part => {
             return {
               title: part,
