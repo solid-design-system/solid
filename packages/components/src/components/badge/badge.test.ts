@@ -31,6 +31,7 @@ const baseClasses =
 
 describe('<sd-badge>', () => {
   let el: SdBadge;
+
   describe('when provided no parameters', () => {
     it('should pass accessibility tests with a role of status on the base part.', async () => {
       el = await fixture<SdBadge>(html` <sd-badge>Badge</sd-badge> `);

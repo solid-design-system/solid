@@ -60,10 +60,10 @@ export default class SdBadge extends SolidElement {
           }[this.size]
         )}
       >
-        <div part="content" class=${cx(this.size === 'sm' && `hidden`)}>
+        <span part="content" class=${cx(this.size === 'sm' && `hidden`)}>
           <slot></slot>
-        </div>
-        <div
+        </span>
+        <span
           part="overflow-indicator"
           class=${cx(
             (!this.overflowing || this.size === 'sm' || !slots['badge-has-overflow-indicator']) && `hidden`,
@@ -71,7 +71,7 @@ export default class SdBadge extends SolidElement {
           )}
         >
           <slot name="overflow-indicator"></slot>
-        </div>
+        </span>
       </span>
     `;
   }
