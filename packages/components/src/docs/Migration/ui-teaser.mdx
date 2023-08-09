@@ -57,9 +57,10 @@ The new `sd-teaser` component uses slots to create a more customizable and flexi
 
 The new sd-teaser component introduces two new CSS properties:
 
-`--distribution-media`: The distribution ratio of the media.
+`--distribution-media` - The distribution ratio of the media.
 
-`--distribution-content`: The distribution ratio of the content.
+`--distribution-content` - The distribution ratio of the content.
+
 This can only be used when the orientation is horizontal. In case there's a requirement to have a fixed value for the media or content, you can override the sd-teaser::part(media) or sd-teaser::part(content) selector by applying a flex-shrink of 0.
 
 ```css
@@ -76,7 +77,4 @@ The following events and methods have been removed from the new teaser component
 - `linkClick`
 - `onAfterResize`
 - `hasLinks`
-
-## 🔀 Updated Methods
-
-The `createLink` method has been removed in the new `sd-teaser` component. You can use the slot system to add links or any other elements to the `sd-teaser`.
+- `createLink` - You can use the slot system to add links or any other elements to the `sd-teaser`.
