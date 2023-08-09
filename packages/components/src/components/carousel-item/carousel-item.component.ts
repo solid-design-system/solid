@@ -33,6 +33,6 @@ export default class SdCarouselItem extends SolidElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sl-carousel-item': SdCarouselItem;
+    'sd-carousel-item': SdCarouselItem;
   }
 }

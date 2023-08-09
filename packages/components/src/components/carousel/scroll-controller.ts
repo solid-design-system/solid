@@ -1,4 +1,4 @@
-import { debounce } from '../../internal/debounce.js';
+import { debounce } from '../../internal/debounce.ts';
 import { prefersReducedMotion } from '../../internal/animate.js';
 import { waitForEvent } from '../../internal/event.js';
 import type { ReactiveController, ReactiveElement } from 'lit';
