@@ -9,7 +9,13 @@ module.exports = {
     '@storybook/addon-actions',
     '@storybook/addon-interactions'
   ],
-  staticDirs: ['./assets'],
+  staticDirs: [
+    './assets',
+    {
+      from: '../../placeholders/src/images',
+      to: '/placeholders'
+    }
+  ],
   framework: {
     name: '@storybook/web-components-vite',
     options: {}

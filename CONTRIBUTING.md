@@ -93,3 +93,14 @@ $ cd components
   && pnpm dev        // start dev server
   && pnpm test       // run tests
 ```
+
+## Working with feature branches
+
+As stated in the [release-guide.md](./packages/components/docs/release-guide.md#feature-branch-release) document, the SDS offers using a feature branch deployment to test the implementation of a new feature in your own project environment.
+
+> Note: This is only intended for testing purposes. **_Do not use it in production._**
+
+The following limitations apply to feature branch deployments:
+
+1. Feature branches are not stable, and their versions may conflict with other versions from other feature branches or the main branch. This may lead to unexpected behavior while using versioned components.
+2. The feature must be completed and merged to the main branch of the SDS repository before it can be used in any other production environment. This means the feature cannot be added to the SDS library if it is not ready before the go-live date in your own project environment.

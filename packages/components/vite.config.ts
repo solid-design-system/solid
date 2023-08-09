@@ -1,6 +1,6 @@
 import customElementConfig from './custom-elements-manifest.config';
+import customMinifyHTMLLiteralsPlugin from './scripts/rollup-plugin-minify-html-literals';
 import customMinifyPlugin from './scripts/rollup-plugin-custom-minify';
-import minifyHtmlPlugin from 'rollup-plugin-minify-html-literals';
 import path from 'path';
 import resolve from '@rollup/plugin-node-resolve';
 import summaryPlugin from 'rollup-plugin-summary';
@@ -9,9 +9,6 @@ import VitePluginCustomElementsManifest from 'vite-plugin-cem';
 import VitePluginGetPlaywrightVersion from './scripts/vite-plugin-get-playwright-version';
 import webTypesPlugin from './scripts/rollup-plugin-web-types';
 import type { defineConfig } from 'vite';
-
-// eslint-disable-next-line
-const minifyHTML = (minifyHtmlPlugin as any).default;
 
 // https://vitejs.dev/config/
 export default (({ command }: { command: string }) => {
@@ -56,7 +53,7 @@ export default (({ command }: { command: string }) => {
           resolve(),
           // Minify HTML template literals
           // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-          minifyHTML(),
+          customMinifyHTMLLiteralsPlugin(),
           // Minify ES and UMD bundles
           customMinifyPlugin({
             ecma: 2020,
