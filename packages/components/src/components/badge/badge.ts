@@ -1,5 +1,6 @@
 import { customElement, property } from 'lit/decorators.js';
-import { html, render } from 'lit';
+import { HasSlotController } from '../../internal/slot';
+import { html } from 'lit';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 // import styles from './badge.styles';
@@ -40,7 +41,7 @@ export default class SdBadge extends SolidElement {
         role="status"
         part="base"
         class=${cx(
-          `inline-flex items-center justify-center align-middle leading-none whitespace-nowrap border rounded-full select-none font-semibold cursor-[inherit]`,
+          `inline-flex items-center justify-center align-middle leading-normal whitespace-nowrap border rounded-full select-none font-semibold cursor-[inherit]`,
           {
             /* variants */
             default: !this.inverted ? `text-white bg-primary-500 border-white` : `text-primary bg-white border-primary`,
@@ -55,7 +56,7 @@ export default class SdBadge extends SolidElement {
           }[this.size]
         )}
       >
-        <span part="content" class=${cx(this.size === 'sm' && `hidden`, `leading-normal`)}>
+        <span part="content" class=${cx(this.size === 'sm' && `hidden`)}>
           <slot></slot>
         </span>
         <span part="overflow-indicator" class=${cx((!this.overflowing || this.size === 'sm') && `hidden`)}
@@ -64,16 +65,16 @@ export default class SdBadge extends SolidElement {
       </span>
     `;
   }
-
+  // <slot name="overflow-indicator"></slot>
   firstUpdated() {
     if (!this.querySelector(`*[slot='overflow-indicator']`)) {
-      render(html`<span slot="overflow-indicator" aria-hidden="true">+</span>`, this);
+      //render(html`<span slot="overflow-indicator" aria-hidden="true">+</span>`, this);
     }
   }
 
   updated(changedProperties: Map<string, string | boolean>) {
     if (changedProperties.size > 0 && changedProperties.has('overflowing')) {
-      this.querySelector(`*[slot='overflow-indicator']`)?.setAttribute('aria-hidden', (!this.overflowing).toString());
+      //this.querySelector(`*[slot='overflow-indicator']`)?.setAttribute('aria-hidden', (!this.overflowing).toString());
     }
   }
 }
