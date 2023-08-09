@@ -3,7 +3,6 @@ import { HasSlotController } from '../../internal/slot';
 import { html } from 'lit';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
-// import styles from './badge.styles';
 
 /**
  * @summary Badges are used to draw attention and display statuses or counts.
