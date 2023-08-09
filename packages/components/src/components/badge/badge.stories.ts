@@ -6,11 +6,7 @@ import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-badge');
 const { overrideArgs } = storybookHelpers('sd-badge');
-const { generateTemplate } = storybookTemplate('sd-badge'); // Replace with your custom element tag
-
-/**
- * Badges are used to draw attention and display statuses or counts.
- */
+const { generateTemplate } = storybookTemplate('sd-badge');
 
 export default {
   title: 'Components/sd-badge',
@@ -22,13 +18,16 @@ export default {
       url: 'https://www.figma.com/file/fPGhgNZv98U4H69Gu2tlWi/Button?type=design&node-id=13-18&t=jDLqFEdY7ZlOJurc-4'
     }
   },
-  args: overrideArgs([{ type: 'slot', name: 'default', value: '<span>8</span>' }]),
+  args: overrideArgs([
+    { type: 'slot', name: 'default', value: '8' },
+    { type: 'slot', name: 'overflow-indicator', value: '<span slot="overflow-indicator">+</span>' }
+  ]),
   argTypes,
   decorators: [withActions] as any
 };
 
 /**
- * Default: This shows the badge in its default state.
+ * This shows the badge in its default state.
  */
 
 export const Default = {
@@ -112,7 +111,7 @@ export const Parts = {
           values: ['base', 'content', 'overflow-indicator'].map(part => {
             return {
               title: part,
-              value: `<style>#part-${part} sd-badge::part(${part}){outline: solid 2px red}</style><div id="part-${part}">%TEMPLATE%</div>`
+              value: `<style>#part-${part} sd-badge::part(${part}){outline: solid 1.5px red; margin-bottom: 0;}</style><div id="part-${part}">%TEMPLATE%</div>`
             };
           })
         }
@@ -133,7 +132,18 @@ export const Parts = {
 };
 
 /**
- * Use the default slot to add content to the badge.
+ * Use the `default` slot to add content to the badge.
+ * Use the `overflow-indicator` slot to add an overflow indicator when the parameter <i>overflowing</i> is true.
+ *
+ * <b>Why did we add a slot for the overflow-indicator?</b>
+ * Content in the shadow dom is currently not accessible by screen readers.
+ * To make the overflow-indicator accessible it needs to be provided through a slot, as it will be reflected in the light dom in this case.
+ *
+ * <b>Hints</b>
+ * - If you add icons to one of the slots, please make sure to account for accessibility by providing an alt-text.
+ * - If <b>not</b> passed an element to the overflow-indicator slot, the badge will <b>not</b> add an overflow-indicator per default, even if the parameter <i>overflowing</i> is set.
+ * - If passed an element to the overflow-indicator slot, the badge will automatically account for readability by screen readers by setting the aria-hidden attribute based on the <i>overflowing</i> parameter.
+ * - Please make sure to pass only one single element to the overflow-indicator slot or wrap your elments in a parent element.
  */
 export const Slots = {
   parameters: {
@@ -143,7 +153,6 @@ export const Slots = {
     (story: any) =>
       html`<style>
           .slot-highlight {
-            --slot-content: '8';
             color: white;
             border-radius: 6px;
             border-color: red;
@@ -152,8 +161,10 @@ export const Slots = {
             --slot-height: 100%;
             --slot-width: 100%;
           }
-        </style>
-        <div style="zoom: 1.25;">${story()}</div>`
+          sd-badge::part(overflow-indicator) {
+            margin-bottom: 0;
+          }</style
+        >${story()}`
   ],
   render: (args: any) => {
     return html`
@@ -187,7 +198,7 @@ export const Slots = {
 };
 
 /**
- * The badge in all possible combinations of `variant` and `size` when slotted in sd-button.
+ * The badge in all possible combinations of `variant` and `size` when slotted in the `icon-right` slot of sd-button.
  */
 
 export const ButtonAndBadge = {

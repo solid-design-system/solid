@@ -27,7 +27,7 @@ const sizes = [
 ];
 
 const baseClasses =
-  'inline-flex items-center justify-center align-middle leading-none whitespace-nowrap border rounded-full select-none font-semibold cursor-[inherit]';
+  'inline-flex items-center text-center justify-center align-middle leading-none whitespace-nowrap border rounded-full select-none font-semibold cursor-[inherit]';
 
 describe('<sd-badge>', () => {
   let el: SdBadge;
@@ -56,6 +56,7 @@ describe('<sd-badge>', () => {
       el = await fixture<SdBadge>(html` <sd-badge>Badge</sd-badge> `);
       expect(el.shadowRoot!.querySelector('[part~="base"]')).to.exist;
       expect(el.shadowRoot!.querySelector('[part~="overflow-indicator"]')).have.class('hidden');
+      expect(el.querySelector(`*[slot='overflow-indicator']`)).to.not.exist;
     });
 
     it('should default to default styling, with the primary color', async () => {
@@ -66,15 +67,26 @@ describe('<sd-badge>', () => {
     });
   });
 
-  describe('when passed parameter overflowing = true', () => {
-    it('should pass accessibility tests.', async () => {
-      el = await fixture<SdBadge>(html` <sd-badge overflowing>Badge</sd-badge> `);
+  describe('when passed an overflow-indicator', () => {
+    it('should pass accessibility tests if parameter overflowing is true.', async () => {
+      el = await fixture<SdBadge>(
+        html` <sd-badge overflowing>Badge<span slot="overflow-indicator">+</span></sd-badge> `
+      );
       await expect(el).to.be.accessible();
     });
 
-    it(`should render with overflow indicator"`, async () => {
-      el = await fixture<SdBadge>(html` <sd-badge overflowing>Badge</sd-badge> `);
+    it(`should render with an overflow indicator that is also visible to screen readers if parameter overflowing is true"`, async () => {
+      el = await fixture<SdBadge>(
+        html` <sd-badge overflowing>Badge<span slot="overflow-indicator">+</span></sd-badge> `
+      );
       expect(el.shadowRoot!.querySelector('[part~="overflow-indicator"]')).not.have.class('hidden');
+      expect(el.querySelector(`*[slot='overflow-indicator']`)!.getAttribute('aria-hidden')).to.eq('false');
+    });
+
+    it(`should render without an overflow indicator that is also not visible to screen readers if parameter overflowing is false"`, async () => {
+      el = await fixture<SdBadge>(html` <sd-badge>Badge<span slot="overflow-indicator">+</span></sd-badge> `);
+      expect(el.shadowRoot!.querySelector('[part~="overflow-indicator"]')).to.have.class('hidden');
+      expect(el.querySelector(`*[slot='overflow-indicator']`)!.getAttribute('aria-hidden')).to.eq('true');
     });
   });
 

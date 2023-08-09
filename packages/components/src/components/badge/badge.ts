@@ -12,16 +12,14 @@ import SolidElement from '../../internal/solid-element';
  * @since 1.0
  *
  * @slot - The badge's content.
- * @slot overflow-indicator - The badge's overflow-indicator.
+ * @slot overflow-indicator - Optional: The badge's overflow-indicator.
  *
- * @csspart base - The component's base wrapper.
- * @csspart content - The component's main content.
- * @csspart overflow-indicator - The component's overflow indicator.
+ * @csspart base - The badge's base wrapper.
+ * @csspart content - The badge's main content.
+ * @csspart overflow-indicator - The badge's overflow indicator.
  */
 @customElement('sd-badge')
 export default class SdBadge extends SolidElement {
-  // static styles: CSSResultGroup = styles;
-
   /** Inverts the badge. */
   @property({ type: Boolean, reflect: true }) inverted = false;
 
@@ -31,17 +29,24 @@ export default class SdBadge extends SolidElement {
   /** The badge's theme variant. */
   @property({ reflect: true }) variant: 'default' | 'success' | 'error' = 'default';
 
-  /** Toggles the overflow indicator */
+  /** Toggles the overflow indicator. */
   @property({ type: Boolean, reflect: true }) overflowing = false;
 
+  private readonly hasSlotController = new HasSlotController(this, '[default]', 'overflow-indicator');
+
   render() {
+    const slots = {
+      'badge-has-default': this.hasSlotController.test('[default]'),
+      'badge-has-overflow-indicator': this.hasSlotController.test('overflow-indicator')
+    };
+
     return html`
       <span
         tabindex="0"
         role="status"
         part="base"
         class=${cx(
-          `inline-flex items-center justify-center align-middle leading-normal whitespace-nowrap border rounded-full select-none font-semibold cursor-[inherit]`,
+          `inline-flex items-center text-center justify-center align-middle leading-none whitespace-nowrap border rounded-full select-none font-semibold cursor-[inherit]`,
           {
             /* variants */
             default: !this.inverted ? `text-white bg-primary-500 border-white` : `text-primary bg-white border-primary`,
@@ -56,25 +61,25 @@ export default class SdBadge extends SolidElement {
           }[this.size]
         )}
       >
-        <span part="content" class=${cx(this.size === 'sm' && `hidden`)}>
+        <div part="content" class=${cx(this.size === 'sm' && `hidden`)}>
           <slot></slot>
-        </span>
-        <span part="overflow-indicator" class=${cx((!this.overflowing || this.size === 'sm') && `hidden`)}
-          ><slot name="overflow-indicator"></slot
-        ></span>
+        </div>
+        <div
+          part="overflow-indicator"
+          class=${cx(
+            (!this.overflowing || this.size === 'sm' || !slots['badge-has-overflow-indicator']) && `hidden`,
+            `mb-[20%]`
+          )}
+        >
+          <slot name="overflow-indicator"></slot>
+        </div>
       </span>
     `;
   }
-  // <slot name="overflow-indicator"></slot>
-  firstUpdated() {
-    if (!this.querySelector(`*[slot='overflow-indicator']`)) {
-      //render(html`<span slot="overflow-indicator" aria-hidden="true">+</span>`, this);
-    }
-  }
 
   updated(changedProperties: Map<string, string | boolean>) {
-    if (changedProperties.size > 0 && changedProperties.has('overflowing')) {
-      //this.querySelector(`*[slot='overflow-indicator']`)?.setAttribute('aria-hidden', (!this.overflowing).toString());
+    if (changedProperties.has('overflowing')) {
+      this.querySelector(`*[slot='overflow-indicator']`)?.setAttribute('aria-hidden', (!this.overflowing).toString());
     }
   }
 }
