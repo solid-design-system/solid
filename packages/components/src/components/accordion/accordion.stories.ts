@@ -167,3 +167,48 @@ export const Mouseless = {
     await userEvent.type(el!.shadowRoot!.querySelector('header')!, '{space}', { pointerEventsCheck: 0 });
   }
 };
+
+/**
+ * sd-accordions are fully accessibile via keyboard.
+ */
+
+export const Whitelabel = {
+  parameters: {
+    controls: { include: [] }
+  },
+  render: (args: any) =>
+    html`<div id="whitelabel">
+      <sd-accordion summary="Accordion"
+        ><svg
+          slot="expand-icon"
+          focusable="false"
+          preserveAspectRatio="xMidYMid meet"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          aria-hidden="true"
+        >
+          <path d="M11 8L6 13 5.3 12.3 9.6 8 5.3 3.7 6 3z"></path>
+        </svg>
+        <svg
+          slot="collapse-icon"
+          focusable="false"
+          preserveAspectRatio="xMidYMid meet"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          aria-hidden="true"
+        >
+          <path d="M11 8L6 13 5.3 12.3 9.6 8 5.3 3.7 6 3z"></path>
+        </svg>
+        The accordion component delivers large amounts of content in a small space through progressive disclosure. The
+        user gets key details about the underlying content and can choose to expand that content within the constraints
+        of the accordion. Accordions work especially well on mobile interfaces or whenever vertical space is at a
+        premium.
+      </sd-accordion>
+    </div>`
+};
