@@ -304,3 +304,33 @@ export const Mouseless = {
     await userEvent.type(el!.shadowRoot!.querySelector('button')!, '{return}', { pointerEventsCheck: 0 });
   }
 };
+
+/**
+ * sd-accordions are fully accessibile via keyboard.
+ */
+
+export const Whitelabel = {
+  parameters: {
+    controls: { include: [] }
+  },
+  render: (args: any) =>
+    html`<div id="whitelabel">
+      <sd-button
+        ><svg
+          slot="icon-right"
+          focusable="false"
+          preserveAspectRatio="xMidYMid meet"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          aria-hidden="true"
+          width="16"
+          height="16"
+          viewBox="0 0 32 32"
+          class="cds--btn__icon"
+        >
+          <path d="M17 15L17 8 15 8 15 15 8 15 8 17 15 17 15 24 17 24 17 17 24 17 24 15z"></path>
+        </svg>
+        Button
+      </sd-button>
+    </div>`
+};

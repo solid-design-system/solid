@@ -187,6 +187,10 @@
   --cds-tag-hover-warm-gray: #cac5c4;
 }
 
+/**
+  * sd-accordion
+  */
+
 #whitelabel sd-accordion::part(base) {
   outline: 0;
 }
@@ -201,10 +205,6 @@
   transition: background 0.05s ease;
   padding-top: 10px;
   padding-bottom: 12px;
-}
-
-#whitelabel sd-accordion-group::part(base) {
-  border-bottom: 1px solid var(--cds-border-subtle);
 }
 
 #whitelabel sd-accordion svg[slot] {
@@ -227,4 +227,43 @@
   font-weight: var(--cds-body-01-font-weight, 400);
   letter-spacing: var(--cds-body-01-letter-spacing, 0.16px);
   line-height: var(--cds-body-01-line-height, 1.42857);
+}
+
+/**
+  * sd-accordion-group
+  */
+
+#whitelabel sd-accordion-group::part(base) {
+  border-bottom: 1px solid var(--cds-border-subtle);
+}
+
+/**
+  * sd-button
+  */
+
+#whitelabel sd-button::part(base) {
+  border-radius: 0;
+  background-color: var(--cds-button-primary, #0f62fe);
+}
+
+#whitelabel sd-button::part(label) {
+  font-size: 14px;
+}
+
+#whitelabel sd-button:hover::part(base) {
+  background-color: var(--cds-button-primary-hover, #0050e6);
+}
+
+#whitelabel sd-button:focus::part(base) {
+  outline: 3px solid white;
+  outline-offset: -3px;
+}
+
+#whitelabel sd-button:focus {
+  outline: 2px solid var(--cds-focus, #0f62fe);
+  outline-offset: -2px;
+}
+
+#whitelabel sd-button svg[slot='icon-right'] {
+  padding-left: 20px;
 }
