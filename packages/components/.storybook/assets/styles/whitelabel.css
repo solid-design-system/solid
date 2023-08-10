@@ -267,3 +267,18 @@
 #whitelabel sd-button svg[slot='icon-right'] {
   padding-left: 20px;
 }
+
+/**
+  * sd-link
+  */
+
+#whitelabel sd-link[href]:not([hover])::part(label) {
+  font-size: 14px;
+  color: var(--cds-link-text-color, var(--cds-link-primary, #0f62fe));
+  text-decoration: none !important;
+}
+
+#whitelabel sd-link[href]:hover::part(label) {
+  color: var(--cds-link-hover-text-color, var(--cds-link-primary-hover, #0043ce));
+  text-decoration: underline !important;
+}

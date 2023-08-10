@@ -326,3 +326,17 @@ export const Mouseless = {
     await userEvent.type(el!.shadowRoot!.querySelector('a')!, '{return}', { pointerEventsCheck: 0 });
   }
 };
+
+/**
+ * sd-accordions are fully accessibile via keyboard.
+ */
+
+export const Whitelabel = {
+  parameters: {
+    controls: { include: [] }
+  },
+  render: (args: any) =>
+    html`<div id="whitelabel">
+      <sd-link href="#" standalone> Button </sd-link>
+    </div>`
+};
