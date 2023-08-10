@@ -15,13 +15,10 @@ export default {
     ...parameters,
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/file/frKFVz9UBKAtsvErLKTeGj/Badge?type=design&node-id=0-1&t=OeLPPGif39ASuNmf-0'
+      url: 'https://www.figma.com/file/frKFVz9UBKAtsvErLKTeGj/Badge?type=design&node-id=0-1&mode=design&t=OeLPPGif39ASuNmf-0'
     }
   },
-  args: overrideArgs([
-    { type: 'slot', name: 'default', value: '8' },
-    { type: 'slot', name: 'overflow-indicator', value: '<span slot="overflow-indicator">+</span>' }
-  ]),
+  args: overrideArgs([{ type: 'slot', name: 'default', value: '8' }]),
   argTypes,
   decorators: [withActions] as any
 };
@@ -81,15 +78,18 @@ export const VariantAndSize = {
 
 export const Overflown = {
   name: 'Variant × Size (Overflowing)',
-  parameters: { controls: { exclude: ['variant', 'size', 'overflowing'] } },
+  parameters: { controls: { exclude: ['variant', 'size'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
         x: { type: 'attribute', name: 'variant' },
         y: { type: 'attribute', name: 'size' }
       },
-      constants: [{ type: 'attribute', name: 'overflowing', value: true }],
-      args
+      constants: [],
+      args: overrideArgs(
+        { type: 'slot', name: 'overflow-indicator', value: '<span slot="overflow-indicator">+</span>' },
+        args
+      )
     });
   }
 };
@@ -117,12 +117,12 @@ export const ButtonAndBadge = {
 };
 
 /**
- * Use the `base`, `content` and `overflow-indicator` part selectors to customize the button.
+ * Use the `base`, `content` and `overflow-indicator` part selectors to customize the badge.
  */
 
 export const Parts = {
   parameters: {
-    controls: { exclude: ['base', 'content', 'overflow-indicator', 'size', 'overflowing'] }
+    controls: { exclude: ['base', 'content', 'overflow-indicator', 'size'] }
   },
   render: (args: any) => {
     return generateTemplate({
@@ -145,8 +145,7 @@ export const Parts = {
           type: 'slot',
           name: 'overflow-indicator',
           value: '<span class="overflow-indicator" slot="overflow-indicator">+</span>'
-        },
-        { type: 'attribute', name: 'overflowing', value: true }
+        }
       ],
       args
     });
@@ -155,7 +154,7 @@ export const Parts = {
 
 /**
  * Use the `default` slot to add content to the badge.
- * Use the `overflow-indicator` slot to add an overflow indicator when the parameter <i>overflowing</i> is true.
+ * Use the `overflow-indicator` slot to add an overflow indicator.
  *
  * <b>Why did we add a slot for the overflow-indicator?</b>
  * Content in the shadow dom is currently not accessible by screen readers.
@@ -163,13 +162,11 @@ export const Parts = {
  *
  * <b>Hints</b>
  * - If you add icons to one of the slots, please make sure to account for accessibility by providing an alt-text.
- * - If <b>not</b> passed an element to the overflow-indicator slot, the badge will <b>not</b> add an overflow-indicator per default, even if the parameter <i>overflowing</i> is set.
- * - If passed an element to the overflow-indicator slot, the badge will automatically account for readability by screen readers by setting the aria-hidden attribute based on the <i>overflowing</i> parameter.
- * - Please make sure to pass only one single element to the overflow-indicator slot or wrap your elments in a parent element.
+ * - If <b>not</b> passed an element to the overflow-indicator slot, the badge will <b>not</b> add an overflow-indicator per default.
  */
 export const Slots = {
   parameters: {
-    controls: { exclude: ['size', 'overflowing'] }
+    controls: { exclude: ['size'] }
   },
   decorators: [
     (story: any) =>
@@ -208,10 +205,7 @@ export const Slots = {
               ]
             }
           },
-          constants: [
-            { type: 'template', name: 'width', value: '<div style="width: 100px">%TEMPLATE%</div>' },
-            { type: 'attribute', name: 'overflowing', value: true }
-          ],
+          constants: [{ type: 'template', name: 'width', value: '<div style="width: 100px">%TEMPLATE%</div>' }],
           args
         })
       )}

@@ -28,9 +28,6 @@ export default class SdBadge extends SolidElement {
   /** The badge's theme variant. */
   @property({ reflect: true }) variant: 'default' | 'success' | 'error' = 'default';
 
-  /** Toggles the overflow indicator. */
-  @property({ type: Boolean, reflect: true }) overflowing = false;
-
   private readonly hasSlotController = new HasSlotController(this, '[default]', 'overflow-indicator');
 
   render() {
@@ -65,21 +62,12 @@ export default class SdBadge extends SolidElement {
         </span>
         <span
           part="overflow-indicator"
-          class=${cx(
-            (!this.overflowing || this.size === 'sm' || !slots['badge-has-overflow-indicator']) && `hidden`,
-            `mb-[20%]`
-          )}
+          class=${cx((!slots['badge-has-overflow-indicator'] || this.size === 'sm') && `hidden`, `pl-px mb-[20%]`)}
         >
           <slot name="overflow-indicator"></slot>
         </span>
       </span>
     `;
-  }
-
-  updated(changedProperties: Map<string, string | boolean>) {
-    if (changedProperties.has('overflowing')) {
-      this.querySelector(`*[slot='overflow-indicator']`)?.setAttribute('aria-hidden', (!this.overflowing).toString());
-    }
   }
 }
 

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-explicit-any, @typescript-eslint/no-shadow, @typescript-eslint/no-unsafe-member-access  */
 import { expect, fixture, html } from '@open-wc/testing';
 import type SdBadge from './badge';
 
@@ -44,7 +43,6 @@ describe('<sd-badge>', () => {
       expect(el.variant).to.equal('default');
       expect(el.size).to.equal('lg');
       expect(el.inverted).to.equal(false);
-      expect(el.overflowing).to.equal(false);
     });
 
     it('should render the child content provided', async () => {
@@ -68,25 +66,14 @@ describe('<sd-badge>', () => {
   });
 
   describe('when passed an overflow-indicator', () => {
-    it('should pass accessibility tests if parameter overflowing is true.', async () => {
-      el = await fixture<SdBadge>(
-        html` <sd-badge overflowing>Badge<span slot="overflow-indicator">+</span></sd-badge> `
-      );
+    it('should pass accessibility tests.', async () => {
+      el = await fixture<SdBadge>(html` <sd-badge>Badge<span slot="overflow-indicator">+</span></sd-badge> `);
       await expect(el).to.be.accessible();
     });
 
-    it(`should render with an overflow indicator that is also visible to screen readers if parameter overflowing is true"`, async () => {
-      el = await fixture<SdBadge>(
-        html` <sd-badge overflowing>Badge<span slot="overflow-indicator">+</span></sd-badge> `
-      );
-      expect(el.shadowRoot!.querySelector('[part~="overflow-indicator"]')).not.have.class('hidden');
-      expect(el.querySelector(`*[slot='overflow-indicator']`)!.getAttribute('aria-hidden')).to.eq('false');
-    });
-
-    it(`should render without an overflow indicator that is also not visible to screen readers if parameter overflowing is false"`, async () => {
+    it(`should render with an overflow indicator."`, async () => {
       el = await fixture<SdBadge>(html` <sd-badge>Badge<span slot="overflow-indicator">+</span></sd-badge> `);
-      expect(el.shadowRoot!.querySelector('[part~="overflow-indicator"]')).to.have.class('hidden');
-      expect(el.querySelector(`*[slot='overflow-indicator']`)!.getAttribute('aria-hidden')).to.eq('true');
+      expect(el.shadowRoot!.querySelector('[part~="overflow-indicator"]')).not.have.class('hidden');
     });
   });
 
