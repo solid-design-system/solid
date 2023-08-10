@@ -80,7 +80,6 @@ Install `pnpm` package manager globally.
 pnpm i
 cd packages/components
 pnpm dev
-
 ```
 
 These steps will install the necessary dependencies, navigate to the "packages/components" directory, and start the development server. You can now begin working on the components.
@@ -90,7 +89,7 @@ These steps will install the necessary dependencies, navigate to the "packages/c
 ```
 $ pnpm fix           // fix all formatting and linting in repo
 $ pnpm verify        // run tests and builds in repo
-$ cd components
+$ cd packages/components
   && pnpm dev        // start dev server
   && pnpm test       // run tests
 ```
