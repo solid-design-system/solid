@@ -243,7 +243,7 @@
 #whitelabel sd-button::part(base) {
   outline: 0;
   outline-offset: 0;
-  transition: all 0.075s ease;
+  transition: all 0.1s ease;
   border-radius: 0;
   background-color: var(--cds-button-primary, #0f62fe);
 }
@@ -278,6 +278,7 @@
   font-size: 14px;
   color: var(--cds-link-text-color, var(--cds-link-primary, #0f62fe));
   text-decoration: none !important;
+  text-underline-offset: auto;
 }
 
 #whitelabel sd-link[href]:hover::part(label) {
