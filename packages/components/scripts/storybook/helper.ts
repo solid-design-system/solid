@@ -53,16 +53,16 @@ export const storybookDefaults = (customElementTag: string): any => {
     type member = { kind: string; privacy?: string; name: string };
     // Get the properties that are not defined as attributes
     const getProperties = () => {
-      const fieldMembers = (manifest.members as member[]).filter(member => member.kind === 'field');
-      const attributeNames = new Set(manifest.attributes?.map((attr: { fieldName: string }) => attr.fieldName));
-      const result = fieldMembers.filter(member => !attributeNames.has(member.name) && member?.privacy !== 'private');
-      return result.map(member => member.name);
+      const fieldMembers = (manifest?.members as member[])?.filter(member => member.kind === 'field');
+      const attributeNames = new Set(manifest?.attributes?.map((attr: { fieldName: string }) => attr.fieldName));
+      const result = fieldMembers?.filter(member => !attributeNames.has(member.name) && member?.privacy !== 'private');
+      return result?.map(member => member.name);
     };
-
+    console.log(manifest);
     return {
       ...argTypes,
       // Events should show up but not be editable
-      ...manifest.events?.reduce((acc: any, event: any) => {
+      ...manifest?.events?.reduce((acc: any, event: any) => {
         acc[event.name] = { control: false };
         return acc;
       }, {}),
