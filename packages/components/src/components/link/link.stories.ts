@@ -337,6 +337,6 @@ export const Whitelabel = {
   },
   render: (args: any) =>
     html`<div id="whitelabel">
-      <sd-link href="#" standalone> Button </sd-link>
+      <sd-link href="#" standalone> Link </sd-link>
     </div>`
 };
