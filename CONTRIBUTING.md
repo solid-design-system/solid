@@ -33,7 +33,7 @@
 - Run `pnpm verify` at the root directory periodically, particularly, before pushing changes when a pull request is already opened.
 - Every branch should be associated with a PR.
 - Nearly all styles (colors, fonts, sizes etc.) are defined by our design team and provided for usage in our code via tokens (/packages/tokens/src/token.json).
-  Components should use this tokens instead of individual styles if possible.
+  Components should use this tokens instead of individual styles as much as possible.
 - Components should be optimized for accessibility. Check https://www.w3.org/WAI/standards-guidelines/wcag/ for more information on accessibility.
 
 ## Pull Requests
