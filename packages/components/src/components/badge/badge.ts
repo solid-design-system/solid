@@ -8,7 +8,7 @@ import SolidElement from '../../internal/solid-element';
  * @summary Badges are used to draw attention and display statuses or counts.
  * @documentation https://solid.union-investment.com/[storybook-link]/badge
  * @status stable
- * @since 1.0
+ * @since 1.5.0
  *
  * @slot - The badge's content.
  * @slot overflow-indicator - Optional: The badge's overflow-indicator.
