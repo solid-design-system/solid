@@ -306,7 +306,7 @@ export const Mouseless = {
 };
 
 /**
- * sd-accordions are fully accessibile via keyboard.
+ * sd-button can be white-labeled.
  */
 
 export const Whitelabel = {

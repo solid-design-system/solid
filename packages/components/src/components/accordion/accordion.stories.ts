@@ -169,7 +169,7 @@ export const Mouseless = {
 };
 
 /**
- * sd-accordions are fully accessibile via keyboard.
+ * sd-accordion can be white-labeled.
  */
 
 export const Whitelabel = {

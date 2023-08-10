@@ -104,6 +104,10 @@ export const Mouseless = {
   }
 };
 
+/**
+ * sd-accordion-group can be white-labeled.
+ */
+
 export const Whitelabel = {
   parameters: {
     controls: { include: [] }
