@@ -215,7 +215,6 @@
   background: #e8e8e8;
 }
 
-#whitelabel sd-accordion[open]::part(header),
 #whitelabel sd-accordion:focus::part(header) {
   outline: 2px dotted var(--cds-focus, #0f62fe);
   box-sizing: border-box;
@@ -242,6 +241,9 @@
   */
 
 #whitelabel sd-button::part(base) {
+  outline: 0;
+  outline-offset: 0;
+  transition: all 0.075s ease;
   border-radius: 0;
   background-color: var(--cds-button-primary, #0f62fe);
 }
