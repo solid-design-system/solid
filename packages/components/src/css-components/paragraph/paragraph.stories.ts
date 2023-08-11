@@ -8,11 +8,12 @@ import { html } from 'lit-html';
  */
 
 export default {
-  title: 'CSS-Components/sd-paragraph',
+  title: 'Styles/sd-paragraph',
   args: {
     // boolean for "modifier" arg
     inverted: false,
-    size: 'lg'
+    size: 'lg',
+    highlight: false
   },
   argTypes: {
     inverted: {
@@ -20,17 +21,16 @@ export default {
       control: 'boolean',
       description: 'Inverts the headline. <br><code>boolean</code>'
     },
-    // slot: {
-    //   name: 'slot',
-    //   control: 'text',
-    //   description:
-    //     'this argType is only to show the slot in storybook. You will not need it in your code. <br><code>string</code>'
-    // },
     size: {
       name: 'size',
       control: 'radio',
       options: ['xl', 'lg'],
       description: "The paragraph's size.<br><code>'lg'</code> &nbsp; <code>'sm'</code>"
+    },
+    highlight: {
+      name: 'highlight',
+      control: 'boolean',
+      description: 'The green accent color can be used to highlight parts of the text. <br><code>boolean</code>'
     }
   }
 };
@@ -39,6 +39,7 @@ const getClasses = args => {
   return {
     'sd-paragraph': true,
     'sd-paragraph--inverted': args.inverted,
+    'sd-mark': args.highlight,
 
     'sd-paragraph--size-lg': args.paragraph === 'lg',
     'sd-paragraph--size-xl': args.paragraph === 'xl'
@@ -49,12 +50,14 @@ const getClasses = args => {
  * This is the the typography section for all kind of styles and sizes of the Headline.
  */
 export const Default = {
-  // args: {
-  //   slot: 'Lorem ipsum'
-  // },
   render: (args: { size: string; highlight: string }) => {
-    return html`<div class=${classMap(getClasses({ ...args, paragraph: `${args.size}` }))}>
-      ${args.highlight ? html`Lorem <mark>Ipsum</mark>` : 'Lorem Ipsum'}
+    // need to remove highlight from args to avoid adding the class twice
+    const { highlight, ...restOfArgs } = args;
+
+    return html`<div class=${classMap(getClasses({ ...restOfArgs, leadtext: `${args.size}` }))}>
+      ${args.highlight
+        ? html`Lorem <mark class=${classMap(getClasses({ highlight: `${args.highlight}` }))}></div>Ipsum</mark>`
+        : 'Lorem Ipsum'}
     </div>`;
   }
 };
@@ -75,5 +78,26 @@ export const SizesAndInverted = {
     // options: {
     //   templateBackgrounds: { alternate: 'y', colors: ['white', '#00358E'] }
     // }
+  }
+};
+
+/**
+ * This is the the typography section for all kind of styles and sizes of the Display.
+ */
+export const Highlight = {
+  name: 'Highlight x Inverted',
+  parameters: { controls: { exclude: ['size', 'highlight', 'inverted'] } },
+  render: (args: { size: string; highlight: boolean }) => {
+    const { highlight, ...restOfArgs } = args;
+    return html`
+      <div class=${classMap(getClasses({ ...restOfArgs, display: 'lg', highlight: true }))}>
+        Icon left lorem ipsum <mark class=${classMap(getClasses({ highlight: `${args.highlight}` }))}>dolor</mark> sit
+        amet
+      </div>
+      <div class=${classMap(getClasses({ ...restOfArgs, display: 'sm', highlight: true }))}>
+        Icon left lorem ipsum <mark class=${classMap(getClasses({ highlight: `${args.highlight}` }))}>dolor</mark> sit
+        amet
+      </div>
+    `;
   }
 };
