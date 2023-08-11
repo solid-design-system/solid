@@ -1,6 +1,6 @@
+import { css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { HasSlotController } from '../../internal/slot';
-import { html } from 'lit';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
@@ -42,7 +42,7 @@ export default class SdBadge extends SolidElement {
         role="status"
         part="base"
         class=${cx(
-          `inline-flex items-center text-center justify-center align-middle leading-none whitespace-nowrap border rounded-full select-none font-semibold cursor-[inherit]`,
+          `inline-flex items-start content-end gap-[1px] justify-center leading-normal whitespace-nowrap border rounded-full select-none font-semibold cursor-[inherit]`,
           {
             /* variants */
             default: !this.inverted ? `text-white bg-primary-500 border-white` : `text-primary bg-white border-primary`,
@@ -62,13 +62,29 @@ export default class SdBadge extends SolidElement {
         </span>
         <span
           part="overflow-indicator"
-          class=${cx((!slots['badge-has-overflow-indicator'] || this.size === 'sm') && `hidden`, `pl-px mb-[20%]`)}
+          class=${cx((!slots['badge-has-overflow-indicator'] || this.size === 'sm') && `hidden`)}
         >
           <slot name="overflow-indicator"></slot>
         </span>
       </span>
     `;
   }
+
+  static styles = [
+    SolidElement.styles,
+    css`
+      :host {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      slot[name='overflow-indicator']::slotted(*) {
+        position: relative;
+        top: calc(((-1em / 1.5) + 1ex) / 2);
+      }
+    `
+  ];
 }
 
 declare global {

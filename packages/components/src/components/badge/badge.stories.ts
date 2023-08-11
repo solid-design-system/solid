@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import '../../solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
@@ -102,17 +101,22 @@ export const ButtonAndBadge = {
   name: 'Variant × Size with Button',
   parameters: { controls: { exclude: ['variant', 'size'] } },
   render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        x: { type: 'attribute', name: 'variant' },
-        y: { type: 'attribute', name: 'size' }
-      },
-      constants: [
-        { type: 'template', name: 'button', value: '<sd-button>Default%TEMPLATE%</sd-button>' },
-        { type: 'attribute', name: 'slot', value: 'icon-right' }
-      ],
-      args
-    });
+    return html`
+      ${['lg', 'md', 'sm'].map(buttonSize =>
+        generateTemplate({
+          axis: {
+            x: { type: 'attribute', name: 'variant' },
+            y: { type: 'attribute', name: 'size' }
+          },
+          constants: [
+            { type: 'template', name: 'button', value: `<sd-button size=${buttonSize}>Default%TEMPLATE%</sd-button>` },
+            { type: 'attribute', name: 'slot', value: 'icon-right' }
+          ],
+          args,
+          options: { title: `Button-Size="${buttonSize}"` }
+        })
+      )}
+    `;
   }
 };
 
