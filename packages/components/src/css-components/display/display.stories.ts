@@ -10,7 +10,7 @@ import { html } from 'lit-html';
  */
 
 export default {
-  title: 'CSS-Components/sd-display',
+  title: 'Styles/sd-display',
   args: {
     // boolean for "modifier" arg
     inverted: false,
@@ -23,12 +23,6 @@ export default {
       control: 'boolean',
       description: 'Inverts the headline. <br><code>boolean</code>'
     },
-    // slot: {
-    //   name: 'slot',
-    //   control: 'text',
-    //   description:
-    //     'this argType is only to show the slot in storybook. You will not need it in your code. <br><code>string</code>'
-    // },
     size: {
       name: 'size',
       control: 'radio',
@@ -48,7 +42,7 @@ const getClasses = args => {
   return {
     'sd-display': true,
     'sd-display--inverted': args.inverted,
-    'sd-display--highlight': args.highlight,
+    'sd-mark': args.highlight,
 
     'sd-display--size-xl': args.display === 'xl',
     'sd-display--size-3xl': args.display === '3xl',
@@ -60,12 +54,14 @@ const getClasses = args => {
  * This is the the typography section for all kind of styles and sizes of the Headline.
  */
 export const Default = {
-  // args: {
-  //   slot: 'Lorem ipsum'
-  // },
   render: (args: { size: string; highlight: boolean }) => {
-    return html`<div class=${classMap(getClasses({ ...args, display: `${args.size}` }))}>
-      ${args.highlight ? html`Lorem <mark>Ipsum</mark>` : 'Lorem Ipsum'}
+    // need to remove highlight from args to avoid adding the class twice
+    const { highlight, ...restOfArgs } = args;
+
+    return html`<div class=${classMap(getClasses({ ...restOfArgs, display: `${args.size}` }))}>
+      ${args.highlight
+        ? html`Lorem <mark class=${classMap(getClasses({ highlight: `${args.highlight}` }))}>Ipsum</mark>`
+        : 'Lorem Ipsum'}
     </div>`;
   }
 };
@@ -97,15 +93,19 @@ export const Highlight = {
   name: 'Highlight x Inverted',
   parameters: { controls: { exclude: ['size', 'highlight', 'inverted'] } },
   render: (args: { size: string; highlight: boolean }) => {
+    const { highlight, ...restOfArgs } = args;
     return html`
-      <div class=${classMap(getClasses({ ...args, display: '4xl', highlight: true }))}>
-        Icon left lorem ipsum <mark>dolor</mark> sit amet
+      <div class=${classMap(getClasses({ ...restOfArgs, display: '4xl', highlight: true }))}>
+        Icon left lorem ipsum <mark class=${classMap(getClasses({ highlight: `${args.highlight}` }))}>dolor</mark> sit
+        amet
       </div>
-      <div class=${classMap(getClasses({ ...args, display: '3xl', highlight: true }))}>
-        Icon left lorem ipsum <mark>dolor</mark> sit amet
+      <div class=${classMap(getClasses({ ...restOfArgs, display: '3xl', highlight: true }))}>
+        Icon left lorem ipsum <mark class=${classMap(getClasses({ highlight: `${args.highlight}` }))}>dolor</mark> sit
+        amet
       </div>
-      <div class=${classMap(getClasses({ ...args, display: 'xl', highlight: true }))}>
-        Icon left lorem ipsum <mark>dolor</mark> sit amet
+      <div class=${classMap(getClasses({ ...restOfArgs, display: 'xl', highlight: true }))}>
+        Icon left lorem ipsum <mark class=${classMap(getClasses({ highlight: `${args.highlight}` }))}>dolor</mark> sit
+        amet
       </div>
     `;
   }
