@@ -54,7 +54,7 @@ export const Default = {
     // need to remove highlight from args to avoid adding the class twice
     const { highlight, ...restOfArgs } = args;
 
-    return html`<div class=${classMap(getClasses({ ...restOfArgs, leadtext: `${args.size}` }))}>
+    return html`<div class=${classMap(getClasses({ ...restOfArgs, paragraph: `${args.size}` }))}>
       ${args.highlight
         ? html`Lorem <mark class=${classMap(getClasses({ highlight: `${args.highlight}` }))}></div>Ipsum</mark>`
         : 'Lorem Ipsum'}
