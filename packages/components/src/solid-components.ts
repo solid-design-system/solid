@@ -1,6 +1,6 @@
 // Import CSS components
 
-import './css-components/index.css';
+import './styles/index.css';
 
 // Import Web components and register them
 
