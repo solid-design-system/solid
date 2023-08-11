@@ -7,7 +7,7 @@ import { html } from 'lit-html';
  */
 
 export default {
-  title: 'CSS-Components/sd-meta-information',
+  title: 'CSS-Components/sd-meta-information-01',
   args: {
     // boolean for "modifier" arg
     inverted: false,

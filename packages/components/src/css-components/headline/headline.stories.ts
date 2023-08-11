@@ -10,7 +10,7 @@ import { html } from 'lit-html';
  */
 
 export default {
-  title: 'Styles/sd-headline',
+  title: 'Styles/sd-headline-01',
   args: {
     // boolean for "modifier" arg
     inverted: false,
