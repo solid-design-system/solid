@@ -10,7 +10,7 @@ import { html } from 'lit-html';
  */
 
 export default {
-  title: 'CSS-Components/sd-headline',
+  title: 'Styles/sd-headline',
   args: {
     // boolean for "modifier" arg
     inverted: false,
@@ -24,13 +24,6 @@ export default {
       control: 'boolean',
       description: 'Inverts the headline. <br><code>boolean</code>'
     },
-    // slot: {
-    //   type: 'slot',
-    //   name: 'slot',
-    //   control: 'text',
-    //   description:
-    //     'this argType is only to show the slot in storybook. You will not need it in your code. <br><code>string</code>'
-    // },
     size: {
       type: 'attribute',
       name: 'size',
@@ -51,7 +44,7 @@ const getClasses = args => {
   return {
     'sd-headline': true,
     'sd-headline--inverted': args.inverted,
-    'sd-headline--highlight': args.highlight,
+    'sd-mark': args.highlight,
 
     'sd-headline--size-base': args.headline === 'base',
     'sd-headline--size-lg': args.headline === 'lg',
@@ -65,13 +58,15 @@ const getClasses = args => {
  * This is the the typography section for all kind of styles and sizes of the Headline.
  */
 export const Default = {
-  // args: {
-  //   slot: 'Lorem ipsum'
-  // },
   render: (args: { size: string; highlight: boolean }) => {
-    return html`<h1 class=${classMap(getClasses({ ...args, headline: `${args.size}` }))}>
-      ${args.highlight ? html`Lorem <mark>Ipsum</mark>` : 'Lorem Ipsum'}
-    </h1>`;
+    // need to remove highlight from args to avoid adding the class twice
+    const { highlight, ...restOfArgs } = args;
+
+    return html`<div class=${classMap(getClasses({ ...restOfArgs, headline: `${args.size}` }))}>
+      ${args.highlight
+        ? html`Lorem <mark class=${classMap(getClasses({ highlight: `${args.highlight}` }))}></div>Ipsum</mark>`
+        : 'Lorem Ipsum'}
+    </div>`;
   }
 };
 
@@ -121,5 +116,20 @@ export const Highlight = {
         Icon left lorem ipsum <mark>dolor</mark> sit amet
       </div>
     `;
+  }
+};
+
+/**
+ * This is the the typography section for all kind of styles and sizes of the Headline.
+ */
+export const Icon = {
+  name: 'Icon Alignment',
+  render: (args: { size: string }) => {
+    return html`<div>
+      <h1 class=${classMap(getClasses({ ...args, headline: `4xl` }))}>
+        <sd-icon library="global-resources" name="system/picture"></sd-icon>
+        Lorem Ipsum
+      </h1>
+    </div>`;
   }
 };

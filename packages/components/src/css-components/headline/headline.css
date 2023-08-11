@@ -14,7 +14,6 @@
 
     &-3xl {
       @apply text-2xl lg:text-3xl font-bold leading-tight text-primary;
-      ;
     }
 
     &-4xl {
@@ -25,10 +24,8 @@
   &--inverted {
     @apply text-white;
   }
+}
 
-  &--highlight {
-    & mark {
-      @apply text-accent bg-transparent;
-    }
-  }
+sd-icon {
+  @apply inline-block mr-4 w-12 h-12;
 }
