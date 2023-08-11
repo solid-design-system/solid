@@ -1,6 +1,8 @@
 import { setCustomElementsManifest } from '@storybook/web-components';
 import 'normalize.css';
 
+import { styleDefinitions } from '../src/css-components/definitions';
+
 import { registerIconLibrary } from '../src/utilities/icon-library';
 import { storybookUtilities } from '../scripts/storybook/helper';
 
@@ -9,7 +11,66 @@ import { storybookUtilities } from '../scripts/storybook/helper';
  */
 
 async function loadCustomElements() {
-  let customElements;
+  function generateFakeComponentInManifest(input) {
+    const output = {
+      declarations: [
+        {
+          kind: 'class',
+          description: '',
+          name: input.styleName,
+          slots: [{ description: 'Content of the element.', name: '' }],
+          members: [],
+          attributes: [],
+          style: true,
+          summary: input.summary,
+          status: input.status,
+          since: input.since,
+          tagName: input.styleName
+        }
+      ]
+    };
+
+    for (const attribute of input.attributes) {
+      if (attribute.options) {
+        // It's a field with multiple options.
+        output.declarations[0].members.push({
+          kind: 'field',
+          name: attribute.name,
+          type: { text: `'${attribute.options.join("' | '")}'` },
+          description: attribute.description,
+          attribute: attribute.name,
+          reflects: true
+        });
+
+        output.declarations[0].attributes.push({
+          name: attribute.name,
+          type: { text: `'${attribute.options.join("' | '")}'` },
+          description: attribute.description,
+          fieldName: attribute.name
+        });
+      } else {
+        // It's a boolean field.
+        output.declarations[0].members.push({
+          kind: 'field',
+          name: attribute.name,
+          type: { text: 'boolean' },
+          default: 'false',
+          description: attribute.description,
+          attribute: attribute.name
+        });
+
+        output.declarations[0].attributes.push({
+          name: attribute.name,
+          type: { text: 'boolean' },
+          default: 'false',
+          description: attribute.description,
+          fieldName: attribute.name
+        });
+      }
+    }
+
+    return output;
+  }
 
   fetch('./custom-elements.json')
     .then(() => {
@@ -22,11 +83,14 @@ async function loadCustomElements() {
       return import('../dist/custom-elements.json');
     })
     .then(customElements => {
-      setCustomElementsManifest(customElements);
-    });
+      console.log('Custom elements manifest loaded');
 
-  setCustomElementsManifest(customElements);
-  console.log('Custom elements manifest set', customElements);
+      let overridenCustomElements = customElements;
+      styleDefinitions.map(style => overridenCustomElements?.modules?.push(generateFakeComponentInManifest(style)));
+
+      setCustomElementsManifest(overridenCustomElements);
+      return;
+    });
 }
 
 loadCustomElements();
