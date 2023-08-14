@@ -450,7 +450,7 @@ export default class SdCarousel extends SolidElement {
                                 class="${cx(
                                   'carousel__pagination-item',
                                   'block cursor-pointer bg-none border-0',
-                                  isActive ? 'bg-accent' : ''
+                                  isActive ? 'bg-accent rounded-full' : ''
                                 )}"
                                 role="tab"
                                 aria-selected="${isActive ? 'true' : 'false'}"
