@@ -380,6 +380,8 @@ export default class SdCarousel extends SolidElement {
     const currentPage = this.getCurrentPage();
     const prevEnabled = this.loop || currentPage > 0;
     const nextEnabled = this.loop || currentPage < pagesCount - 1;
+    const isLtr = this.localize.dir() === 'ltr';
+
     return html`
       <div part="base" class=${cx(`carousel min-h-full min-w-full`, this.inverted ? 'bg-primary' : '')}>
         <div
@@ -427,7 +429,7 @@ export default class SdCarousel extends SolidElement {
                           !prevEnabled ? 'cursor-not-allowed !text-neutral-500' : ''
                         )}
                         library="system"
-                        name="chevron-down"
+                        name="${isLtr ? 'chevron-down' : 'chevron-up'}"
                       ></sd-icon>
                     </slot>
                   </button>
@@ -511,7 +513,7 @@ export default class SdCarousel extends SolidElement {
                           !nextEnabled ? ' cursor-not-allowed !text-neutral-500' : ''
                         )}
                         library="system"
-                        name="chevron-up"
+                        name="${isLtr ? 'chevron-up' : 'chevron-down'}"
                       ></sd-icon>
                     </slot>
                   </button>
