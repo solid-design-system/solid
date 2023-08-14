@@ -1,31 +1,32 @@
 .sd-meta-information {
-	&--size {    
-		&-sm {
-			@apply text-sm;
-		}
+  @apply text-base font-normal leading-none text-black;
 
-		&-lg {
-			@apply text-base font-normal leading-none;
-		}
+	&--size-sm {
+    @apply text-sm;
 	}
 
-	&--color {
-		&-default {
-			@apply text-black;
-		}
-
-		&-additional {
-			@apply text-neutral-700;
-		}
+	&--color-additional {
+    @apply text-neutral-700;
 	}
 
 	&--inverted {
 		@apply text-white;
+
+    &.sd-meta-information--color-additional {
+      @apply text-primary-400;
+    }
 	}
 
-	&--highlight {
-		& mark {
-		  @apply text-accent bg-transparent;
-		}
-	}
+  &--pipe {
+    &::after {
+      content: '|';
+      @apply ml-1;
+    }
+
+    &.sd-meta-information--size-sm {
+      &::after {
+        @apply ml-0.5;
+      }
+    }
+  }
 }
