@@ -2,10 +2,6 @@
   @apply text-xl font-normal leading-tight text-black;
 
 	&--size {    
-		/* &-xl {
-			@apply text-xl font-normal leading-tight text-black;
-		} */
-
 		&-3xl {
 			@apply text-2xl lg:text-3xl font-normal leading-tight text-black;
 		}
