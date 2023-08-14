@@ -6,7 +6,7 @@ const { argTypes, args, parameters } = storybookDefaults('sd-image-comparer');
 const { generateTemplate } = storybookTemplate('sd-image-comparer');
 
 export default {
-  title: 'Components/sd-image-comparer',
+  title: 'SDS Components/sd-image-comparer',
   component: 'sd-image-comparer',
   args,
   argTypes,

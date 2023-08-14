@@ -6,7 +6,7 @@ const { argTypes, args, parameters } = storybookDefaults('sd-input');
 const { generateTemplate } = storybookTemplate('sd-input');
 
 export default {
-  title: 'Components/sd-input',
+  title: 'SDS Components/sd-input',
   component: 'sd-input',
   args,
   argTypes,

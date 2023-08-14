@@ -6,7 +6,7 @@ const { argTypes, args, parameters } = storybookDefaults('sd-textarea');
 const { generateTemplate } = storybookTemplate('sd-textarea');
 
 export default {
-  title: 'Components/sd-textarea',
+  title: 'SDS Components/sd-textarea',
   component: 'sd-textarea',
   args,
   argTypes,

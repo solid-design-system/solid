@@ -6,7 +6,7 @@ const { argTypes, args, parameters } = storybookDefaults('sd-resize-observer');
 const { generateTemplate } = storybookTemplate('sd-resize-observer');
 
 export default {
-  title: 'Components/sd-resize-observer',
+  title: 'SDS Components/sd-resize-observer',
   component: 'sd-resize-observer',
   args,
   argTypes,

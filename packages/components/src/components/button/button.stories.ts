@@ -11,7 +11,7 @@ const { overrideArgs } = storybookHelpers('sd-button');
 const { generateTemplate } = storybookTemplate('sd-button'); // Replace with your custom element tag
 
 export default {
-  title: 'Components/sd-button',
+  title: 'SDS Components/sd-button',
   component: 'sd-button',
   parameters: {
     ...parameters,

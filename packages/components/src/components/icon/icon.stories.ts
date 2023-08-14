@@ -61,7 +61,7 @@ const { generateTemplate } = storybookTemplate('sd-icon');
  */
 
 export default {
-  title: 'Components/sd-icon',
+  title: 'SDS Components/sd-icon',
   component: 'sd-icon',
   args: overrideArgs(
     [

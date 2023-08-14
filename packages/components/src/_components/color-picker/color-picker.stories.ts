@@ -6,7 +6,7 @@ const { argTypes, args, parameters } = storybookDefaults('sd-color-picker');
 const { generateTemplate } = storybookTemplate('sd-color-picker');
 
 export default {
-  title: 'Components/sd-color-picker',
+  title: 'SDS Components/sd-color-picker',
   component: 'sd-color-picker',
   args,
   argTypes,

@@ -7,7 +7,7 @@ const { argTypes, args, parameters } = storybookDefaults('sd-spinner');
 const { generateTemplate } = storybookTemplate('sd-spinner');
 
 export default {
-  title: 'Components/sd-spinner',
+  title: 'SDS Components/sd-spinner',
   component: 'sd-spinner',
   args,
   argTypes,

@@ -6,7 +6,7 @@ const { argTypes, args, parameters } = storybookDefaults('sd-format-date');
 const { generateTemplate } = storybookTemplate('sd-format-date');
 
 export default {
-  title: 'Components/sd-format-date',
+  title: 'SDS Components/sd-format-date',
   component: 'sd-format-date',
   args,
   argTypes,

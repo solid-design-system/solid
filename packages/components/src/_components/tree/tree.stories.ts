@@ -6,7 +6,7 @@ const { argTypes, args, parameters } = storybookDefaults('sd-tree');
 const { generateTemplate } = storybookTemplate('sd-tree');
 
 export default {
-  title: 'Components/sd-tree',
+  title: 'SDS Components/sd-tree',
   component: 'sd-tree',
   args,
   argTypes,

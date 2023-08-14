@@ -9,7 +9,7 @@ const { argTypes, args, parameters } = storybookDefaults('sd-accordion-group');
 const { generateTemplate } = storybookTemplate('sd-accordion-group');
 
 export default {
-  title: 'Components/sd-accordion-group',
+  title: 'SDS Components/sd-accordion-group',
   component: 'sd-accordion-group',
   args: {
     ...args,

@@ -6,7 +6,7 @@ const { argTypes, args, parameters } = storybookDefaults('sd-visually-hidden');
 const { generateTemplate } = storybookTemplate('sd-visually-hidden');
 
 export default {
-  title: 'Components/sd-visually-hidden',
+  title: 'SDS Components/sd-visually-hidden',
   component: 'sd-visually-hidden',
   args,
   argTypes,

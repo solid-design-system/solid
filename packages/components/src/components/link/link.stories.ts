@@ -11,7 +11,7 @@ const { generateTemplate } = storybookTemplate('sd-link');
 const { overrideArgs } = storybookHelpers('sd-link');
 
 export default {
-  title: 'Components/sd-link',
+  title: 'SDS Components/sd-link',
   component: 'sd-link',
   args: overrideArgs([
     { type: 'slot', name: 'default', value: 'Link' },

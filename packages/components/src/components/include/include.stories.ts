@@ -48,7 +48,7 @@ const { generateTemplate } = storybookTemplate('sd-include');
  */
 
 export default {
-  title: 'Utilities/sd-include',
+  title: 'SDS Utilities/sd-include',
   component: 'sd-include',
   args: overrideArgs([{ type: 'attribute', name: 'src', value: 'https://union-investment.de/lorem-ipsum' }], args),
   argTypes,

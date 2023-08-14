@@ -6,7 +6,7 @@ const { argTypes, args, parameters } = storybookDefaults('sd-checkbox');
 const { generateTemplate } = storybookTemplate('sd-checkbox');
 
 export default {
-  title: 'Components/sd-checkbox',
+  title: 'SDS Components/sd-checkbox',
   component: 'sd-checkbox',
   args,
   argTypes,

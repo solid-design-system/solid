@@ -6,7 +6,7 @@ const { argTypes, args, parameters } = storybookDefaults('sd-badge');
 const { generateTemplate } = storybookTemplate('sd-badge');
 
 export default {
-  title: 'Components/sd-badge',
+  title: 'SDS Components/sd-badge',
   component: 'sd-badge',
   args,
   argTypes,

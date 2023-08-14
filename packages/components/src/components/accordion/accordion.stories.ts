@@ -10,7 +10,7 @@ const { overrideArgs } = storybookHelpers('sd-accordion');
 const { generateTemplate } = storybookTemplate('sd-accordion');
 
 export default {
-  title: 'Components/sd-accordion',
+  title: 'SDS Components/sd-accordion',
   component: 'sd-accordion',
   args: overrideArgs([
     { type: 'slot', name: 'default', value: '<slot-comp></slot-comp>' },

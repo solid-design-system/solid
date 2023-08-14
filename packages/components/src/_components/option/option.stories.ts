@@ -6,7 +6,7 @@ const { argTypes, args, parameters } = storybookDefaults('sd-option');
 const { generateTemplate } = storybookTemplate('sd-option');
 
 export default {
-  title: 'Components/sd-option',
+  title: 'SDS Components/sd-option',
   component: 'sd-option',
   args,
   argTypes,

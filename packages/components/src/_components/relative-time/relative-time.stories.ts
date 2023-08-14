@@ -6,7 +6,7 @@ const { argTypes, args, parameters } = storybookDefaults('sd-relative-time');
 const { generateTemplate } = storybookTemplate('sd-relative-time');
 
 export default {
-  title: 'Components/sd-relative-time',
+  title: 'SDS Components/sd-relative-time',
   component: 'sd-relative-time',
   args,
   argTypes,

@@ -6,7 +6,7 @@ const { argTypes, args, parameters } = storybookDefaults('sd-radio-button');
 const { generateTemplate } = storybookTemplate('sd-radio-button');
 
 export default {
-  title: 'Components/sd-radio-button',
+  title: 'SDS Components/nts/sd-radio-button',
   component: 'sd-radio-button',
   args,
   argTypes,

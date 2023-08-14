@@ -9,7 +9,7 @@ const { overrideArgs } = storybookHelpers('sd-brandshape');
 const { generateTemplate } = storybookTemplate('sd-brandshape');
 
 export default {
-  title: 'Components/sd-brandshape',
+  title: 'SDS Components/sd-brandshape',
   component: 'sd-brandshape',
   parameters: { ...parameters },
   args: overrideArgs([

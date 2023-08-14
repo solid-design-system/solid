@@ -6,7 +6,7 @@ const { argTypes, args, parameters } = storybookDefaults('sd-rating');
 const { generateTemplate } = storybookTemplate('sd-rating');
 
 export default {
-  title: 'Components/sd-rating',
+  title: 'SDS Components/sd-rating',
   component: 'sd-rating',
   args,
   argTypes,
