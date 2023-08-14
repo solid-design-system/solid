@@ -384,16 +384,11 @@ export default class SdCarousel extends SolidElement {
     const currentPage = this.getCurrentPage();
     const prevEnabled = this.loop || currentPage > 0;
     const nextEnabled = this.loop || currentPage < pagesCount - 1;
-    const isLtr = this.localize.dir() === 'ltr';
+    // TODO: Determine if this is needed -- remove otherwise
+    // const isLtr = this.localize.dir() === 'ltr';
 
     return html`
-      <div
-        part="base"
-        class=${cx(`
-          carousel
-          grid grid-cols-[min-content_1fr_min-content] grid-rows-[1fr_min-content]
-          align-center min-h-full min-w-full relative`)}
-      >
+      <div part="base" class=${cx(`carousel min-h-full min-w-full`)}>
         <div
           id="scroll-container"
           part="scroll-container"
@@ -401,7 +396,7 @@ export default class SdCarousel extends SolidElement {
             'carousel__slides',
             'carousel__slides--horizontal',
             `
-            grid h-full w-full items-center justify-items-center overflow-auto
+            grid max-h-full w-full items-center justify-items-center overflow-auto
             overscroll-x-contain grid-flow-col auto-rows-[100%]
             snap-x snap-mandatory overflow-y-hidden`
           )}"
@@ -415,80 +410,93 @@ export default class SdCarousel extends SolidElement {
           <slot></slot>
         </div>
 
-        ${this.navigation
-          ? html`
-              <div part="navigation" class=${cx('carousel__navigation', 'contents')}>
-                <button
-                  part="navigation-button navigation-button--previous"
-                  class=${cx(
-                    'carousel__navigation-button',
-                    `flex flex-[0_0_auto] items-center 
+        <div class=${cx('flex flex-row items-center justify-center gap-6', this.inverted ? 'bg-primary' : '')}>
+          ${this.navigation
+            ? html`
+                <div part="navigation" class=${cx('carousel__navigation', 'contents')}>
+                  <button
+                    part="navigation-button navigation-button--previous"
+                    class=${cx(
+                      'rotate-90',
+                      this.inverted ? 'text-white hover:text-primary-500' : 'text-primary hover:text-primary-500 ',
+                      'carousel__navigation-button',
+                      `flex flex-[0_0_auto] items-center 
                     bg-none border-none cursor-pointer appearance-none col-[1] row-[1]`,
-                    !prevEnabled ? 'carousel__navigation-button--disabled' : ''
-                  )}
-                  aria-label="${this.localize.term('previousSlide')}"
-                  aria-controls="scroll-container"
-                  aria-disabled="${prevEnabled ? 'false' : 'true'}"
-                  @click=${prevEnabled ? () => this.previous() : null}
-                >
-                  <slot name="previous-icon">
-                    <sd-icon library="system" name="${isLtr ? 'chevron-down' : 'chevron-up'}"></sd-icon>
-                  </slot>
-                </button>
+                      !prevEnabled
+                        ? 'carousel__navigation-button--disabled text-neutral-500 cursor-not-allowed opacity-50'
+                        : ''
+                    )}
+                    aria-label="${this.localize.term('previousSlide')}"
+                    aria-controls="scroll-container"
+                    aria-disabled="${prevEnabled ? 'false' : 'true'}"
+                    @click=${prevEnabled ? () => this.previous() : null}
+                  >
+                    <slot name="previous-icon">
+                      <sd-icon library="system" name="chevron-down"></sd-icon>
+                    </slot>
+                  </button>
 
-                <button
-                  part="navigation-button navigation-button--next"
-                  class=${cx(
-                    'carousel__navigation-button',
-                    `flex flex-[0_0_auto] items-center 
+                  ${this.pagination
+                    ? html`
+                        <div
+                          part="pagination"
+                          role="tablist"
+                          class="carousel__pagination"
+                          aria-controls="scroll-container"
+                        >
+                          ${map(range(pagesCount), index => {
+                            const isActive = index === currentPage;
+                            return html`
+                              <button
+                                part="pagination-item ${isActive ? 'pagination-item--active' : ''}"
+                                class="${cx(
+                                  'carousel__pagination-item',
+                                  'block cursor-pointer bg-none border-0 p-0 mx-2',
+                                  isActive ? 'bg-accent' : ''
+                                )}"
+                                role="tab"
+                                aria-selected="${isActive ? 'true' : 'false'}"
+                                aria-label="${this.localize.term('goToSlide', index + 1, pagesCount)}"
+                                tabindex=${isActive ? '0' : '-1'}
+                                @click=${() => this.goToSlide(index * slidesPerPage)}
+                                @keydown=${this.handleKeyDown}
+                              >
+                                <span
+                                  class=${cx(
+                                    'h-4 w-4 inline-block border hover:border-primary-500 rounded-full',
+                                    this.inverted ? 'border-white hover:border-primary-500' : 'border-primary',
+                                    isActive ? 'bg-accent' : ''
+                                  )}
+                                ></span>
+                              </button>
+                            `;
+                          })}
+                        </div>
+                      `
+                    : ''}
+
+                  <button
+                    part="navigation-button navigation-button--next"
+                    class=${cx(
+                      'rotate-90',
+                      'carousel__navigation-button',
+                      `flex flex-[0_0_auto] items-center 
                     bg-none border-none cursor-pointer appearance-none col-[3] row-[1]`,
-                    !nextEnabled ? 'carousel__navigation-button--disabled' : ''
-                  )}
-                  aria-label="${this.localize.term('nextSlide')}"
-                  aria-controls="scroll-container"
-                  aria-disabled="${nextEnabled ? 'false' : 'true'}"
-                  @click=${nextEnabled ? () => this.next() : null}
-                >
-                  <slot name="next-icon">
-                    <sd-icon library="system" name="${isLtr ? 'chevron-down' : 'chevron-up'}"></sd-icon>
-                  </slot>
-                </button>
-              </div>
-            `
-          : ''}
-        ${this.pagination
-          ? html`
-              <div part="pagination" role="tablist" class="carousel__pagination" aria-controls="scroll-container">
-                ${map(range(pagesCount), index => {
-                  const isActive = index === currentPage;
-                  return html`
-                    <button
-                      part="pagination-item ${isActive ? 'pagination-item--active' : ''}"
-                      class="${cx(
-                        'carousel__pagination-item',
-                        'block cursor-pointer bg-none border-0 p-0 m-0',
-                        isActive ? 'bg-accent scale-125' : ''
-                      )}"
-                      role="tab"
-                      aria-selected="${isActive ? 'true' : 'false'}"
-                      aria-label="${this.localize.term('goToSlide', index + 1, pagesCount)}"
-                      tabindex=${isActive ? '0' : '-1'}
-                      @click=${() => this.goToSlide(index * slidesPerPage)}
-                      @keydown=${this.handleKeyDown}
-                    >
-                      <span
-                        class=${cx(
-                          'h-4 w-4 inline-block border hover:border-primary-500 rounded-full',
-                          this.inverted ? 'border-white hover:border-primary-500' : 'border-primary',
-                          isActive ? 'bg-accent' : ''
-                        )}
-                      ></span>
-                    </button>
-                  `;
-                })}
-              </div>
-            `
-          : ''}
+                      !nextEnabled ? 'carousel__navigation-button--disabled' : ''
+                    )}
+                    aria-label="${this.localize.term('nextSlide')}"
+                    aria-controls="scroll-container"
+                    aria-disabled="${nextEnabled ? 'false' : 'true'}"
+                    @click=${nextEnabled ? () => this.next() : null}
+                  >
+                    <slot name="next-icon">
+                      <sd-icon library="system" name="chevron-up"></sd-icon>
+                    </slot>
+                  </button>
+                </div>
+              `
+            : ''}
+        </div>
       </div>
     `;
   }
@@ -509,7 +517,7 @@ export default class SdCarousel extends SolidElement {
         grid-template-areas:
           '. slides .'
           '. pagination .';
-        gap: var(--sl-spacing-medium);
+        gap: var(--sl-spacing-medium, 10px);
       }
 
       .carousel__pagination {
@@ -568,7 +576,6 @@ export default class SdCarousel extends SolidElement {
       }
 
       .carousel__navigation-button--disabled {
-        opacity: 0.5;
         cursor: not-allowed;
       }
 
