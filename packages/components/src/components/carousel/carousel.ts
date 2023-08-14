@@ -407,32 +407,24 @@ export default class SdCarousel extends SolidElement {
           ${this.navigation
             ? html`
                 <div part="navigation" class=${cx('contents')}>
-                  <button
+                  <sd-button
+                    size="sm"
+                    ?disabled=${!prevEnabled ? true : false}
+                    ?inverted=${this.inverted}
+                    variant="tertiary"
                     part="navigation-button navigation-button--previous"
-                    class=${cx(
-                      'mr-6 rotate-90',
-                      'focus-visible:outline focus-within:outline-2',
-                      this.inverted ? 'focus-visible:outline-white' : 'focus-visible:outline-primary',
-                      `flex flex-[0_0_auto] items-center 
-                    bg-none border-none cursor-pointer appearance-none col-[1] row-[1]`
-                    )}
+                    class=${cx('rotate-90 mr-6')}
                     aria-label="${this.localize.term('previousSlide')}"
                     aria-controls="scroll-container"
                     aria-disabled="${prevEnabled ? 'false' : 'true'}"
                     @click=${prevEnabled ? () => this.previous() : null}
                   >
-                    <slot name="previous-icon">
-                      <sd-icon
-                        class=${cx(
-                          'h-6 w-6',
-                          this.inverted ? 'text-white hover:text-primary-500' : 'text-primary hover:text-primary-500 ',
-                          !prevEnabled ? 'cursor-not-allowed !text-neutral-500' : ''
-                        )}
-                        library="system"
-                        name="${isLtr ? 'chevron-down' : 'chevron-up'}"
-                      ></sd-icon>
-                    </slot>
-                  </button>
+                    <sd-icon
+                      class=${cx('h-6 w-6')}
+                      library="system"
+                      name="${isLtr ? 'chevron-down' : 'chevron-up'}"
+                    ></sd-icon>
+                  </sd-button>
 
                   ${this.variant === 'dot'
                     ? html`
@@ -466,7 +458,7 @@ export default class SdCarousel extends SolidElement {
                                     isActive
                                       ? this.inverted
                                         ? 'bg-accent hover:bg-accent-300 border-none'
-                                        : 'bg-accent hover:bg-accent-500 border-none' //TODO: missing token accent550
+                                        : 'bg-accent hover:bg-accent-550 border-none' //TODO: missing token accent550
                                       : ''
                                   )}
                                 ></span>
@@ -475,10 +467,10 @@ export default class SdCarousel extends SolidElement {
                           })}
                         </div>
                       `
-                    : html` <span class="flex gap-0.5 ">
+                    : html` <span class="flex space-x-[0.5rem] ">
                         <span
                           class=${cx(
-                            'w-5 text-center active:border-b-2 active:border-accent',
+                            'w-5 text-center border-b-2 border-accent',
                             this.inverted ? 'text-white' : 'text-black'
                           )}
                           >${currentPage + 1}</span
@@ -491,32 +483,24 @@ export default class SdCarousel extends SolidElement {
                         >
                       </span>`}
 
-                  <button
+                  <sd-button
+                    size="sm"
+                    ?disabled=${!nextEnabled ? true : false}
+                    ?inverted=${this.inverted}
+                    variant="tertiary"
                     part="navigation-button navigation-button--next"
-                    class=${cx(
-                      'ml-6 rotate-90',
-                      'focus-visible:outline focus-within:outline-2',
-                      this.inverted ? 'focus-visible:outline-white' : 'focus-visible:outline-primary',
-                      `flex flex-[0_0_auto] items-center 
-                    bg-none border-none cursor-pointer appearance-none col-[3] row-[1]`
-                    )}
+                    class=${cx('rotate-90 ml-6')}
                     aria-label="${this.localize.term('nextSlide')}"
                     aria-controls="scroll-container"
                     aria-disabled="${nextEnabled ? 'false' : 'true'}"
                     @click=${nextEnabled ? () => this.next() : null}
                   >
-                    <slot name="next-icon">
-                      <sd-icon
-                        class=${cx(
-                          'h-6 w-6',
-                          this.inverted ? 'text-white hover:text-primary-500' : 'text-primary hover:text-primary-500 ',
-                          !nextEnabled ? ' cursor-not-allowed !text-neutral-500' : ''
-                        )}
-                        library="system"
-                        name="${isLtr ? 'chevron-up' : 'chevron-down'}"
-                      ></sd-icon>
-                    </slot>
-                  </button>
+                    <sd-icon
+                      class=${cx('h-6 w-6')}
+                      library="system"
+                      name="${isLtr ? 'chevron-up' : 'chevron-down'}"
+                    ></sd-icon>
+                  </sd-button>
                 </div>
               `
             : ''}
@@ -573,6 +557,10 @@ export default class SdCarousel extends SolidElement {
 
       .carousel__navigation {
         grid-area: navigation;
+      }
+
+      sd-button::part(base):hover {
+        background: none;
       }
     `
   ];
