@@ -458,7 +458,7 @@ export default class SdCarousel extends SolidElement {
                                     isActive
                                       ? this.inverted
                                         ? 'bg-accent hover:bg-accent-300 border-none'
-                                        : 'bg-accent hover:bg-accent-550 border-none' //TODO: missing token accent550
+                                        : 'bg-accent hover:bg-accent-550 border-none'
                                       : ''
                                   )}
                                 ></span>
@@ -470,15 +470,20 @@ export default class SdCarousel extends SolidElement {
                     : html` <span class="flex space-x-[0.5rem] ">
                         <span
                           class=${cx(
-                            'w-5 text-center border-b-2 border-accent',
+                            'w-5 text-center border-b-2 border-accent cursor-auto',
                             this.inverted ? 'text-white' : 'text-black'
                           )}
                           >${currentPage + 1}</span
                         >
-                        <span class=${cx('scale-y-[1.5]', 'text-center', this.inverted ? 'text-white' : 'text-black')}
+                        <span
+                          class=${cx(
+                            'scale-y-[1.5] cursor-auto',
+                            'text-center',
+                            this.inverted ? 'text-white' : 'text-black'
+                          )}
                           >/</span
                         >
-                        <span class=${cx('w-5 text-center', this.inverted ? 'text-white' : 'text-black')}
+                        <span class=${cx('w-5 text-center cursor-auto', this.inverted ? 'text-white' : 'text-black')}
                           >${pagesCount}</span
                         >
                       </span>`}
