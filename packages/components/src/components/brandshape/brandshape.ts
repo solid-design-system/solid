@@ -46,12 +46,12 @@ export default class SdBrandshape extends SolidElement {
 
   private largeSvg(shape: 'top' | 'bottom'): TemplateResult {
     return shape === 'top'
-      ? html`<svg xmlns="http://www.w3.org/2000/svg" class="w-full h-full flex" viewBox="0 0 700 121">
+      ? html`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 121">
           <path
             d="M610.777 1.393.001 120.146 0 123h700.001V74.79c0-4.797-.462-9.585-1.381-14.294-7.909-40.537-47.237-66.998-87.843-59.103Z"
           />
         </svg>`
-      : html`<svg xmlns="http://www.w3.org/2000/svg" class="w-full h-full flex" viewBox="0 0 700 123">
+      : html`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 123">
           <path
             d="M89.224 121.607 700 2.854 700.001 0h-700L0 48.21c0 4.797.463 9.584 1.381 14.294 7.909 40.537 47.237 66.998 87.843 59.103Z"
           />
@@ -60,12 +60,12 @@ export default class SdBrandshape extends SolidElement {
 
   private mediumSvg(shape: 'top' | 'bottom'): TemplateResult {
     return shape === 'top'
-      ? html`<svg xmlns="http://www.w3.org/2000/svg" class="w-full h-full flex" viewBox="0 0 700 119">
+      ? html`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 119">
           <path
             d="M597.75 1.6 0 118.046V121h700V85.872c0-5.509-.53-11.006-1.583-16.413-9.063-46.543-54.133-76.924-100.667-67.86Z"
           />
         </svg>`
-      : html`<svg xmlns="http://www.w3.org/2000/svg" class="w-full h-full flex" viewBox="0 0 700 121">
+      : html`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 121">
           <path
             d="M102.25 119.4 700 2.954V0H0v35.128c0 5.509.53 11.006 1.583 16.413 9.063 46.543 54.134 76.924 100.667 67.859Z"
           />
@@ -74,12 +74,12 @@ export default class SdBrandshape extends SolidElement {
 
   private smallSvg(shape: 'top' | 'bottom'): TemplateResult {
     return shape === 'top'
-      ? html`<svg xmlns="http://www.w3.org/2000/svg" class="w-full h-full flex" viewBox="0 0 700 113">
+      ? html`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 113">
           <path
             d="M566.951 2.08 0 112.466v2.934h700v-3.672c0-7.166-.689-14.314-2.059-21.348-11.789-60.557-70.436-100.09-130.99-88.3Z"
           />
         </svg>`
-      : html`<svg xmlns="http://www.w3.org/2000/svg" class="w-full h-full flex" viewBox="0 0 700 116">
+      : html`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 116">
           <path
             d="M133.049 113.32 700 2.934V0H0v3.672c0 7.165.69 14.314 2.059 21.348 11.79 60.557 70.436 100.09 130.99 88.3Z"
           />
@@ -115,26 +115,28 @@ export default class SdBrandshape extends SolidElement {
   }
 
   private renderTopBrandshape(): TemplateResult {
-    return this.shapes.length === 1
-      ? html` <div class="relative">
-          ${this.getSvg(this.componentBreakpoint, 'top')}
-          <div part="content" class="absolute bottom-0 right-0 flex items-end w-2/5 h-2/3 px-6 py-4">
-            <slot></slot>
-          </div>
-        </div>`
-      : html`<div class="relative" part="shape-top">
-          ${this.getSvg(this.componentBreakpoint, 'top')}
-          <div
-            class=${cx(
-              {
-                'neutral-100': 'bg-neutral-100',
-                primary: 'bg-primary',
-                white: 'bg-white'
-              }[this.variant],
-              'block absolute left-0 bottom-0 w-full h-[1px]'
-            )}
-          ></div>
-        </div>`;
+    return html`
+      <div class="relative" part="shape-top">
+        ${this.shapes.length === 1
+          ? html` <div class="relative">
+              ${this.getSvg(this.componentBreakpoint, 'top')}
+              <div part="content" class="absolute bottom-0 right-0 flex items-end w-2/5 h-2/3 px-6 py-4">
+                <slot></slot>
+              </div>
+            </div>`
+          : this.getSvg(this.componentBreakpoint, 'top')}
+        <div
+          class=${cx(
+            {
+              'neutral-100': 'bg-neutral-100',
+              primary: 'bg-primary',
+              white: 'bg-white'
+            }[this.variant],
+            'block absolute left-0 bottom-0 w-full h-[1px]'
+          )}
+        ></div>
+      </div>
+    `;
   }
 
   private renderMiddleBrandshape(): TemplateResult {
