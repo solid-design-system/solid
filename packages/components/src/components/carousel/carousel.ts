@@ -383,7 +383,7 @@ export default class SdCarousel extends SolidElement {
     const isLtr = this.localize.dir() === 'ltr';
 
     return html`
-      <div part="base" class=${cx(`carousel min-h-full min-w-full`, this.inverted ? 'bg-primary' : '')}>
+      <div part="base" class=${cx(`carousel min-h-full min-w-full`)}>
         <div
           id="scroll-container"
           part="scroll-container"
