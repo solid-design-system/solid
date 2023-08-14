@@ -1,7 +1,7 @@
 import '../accordion/accordion';
 import { css, html } from 'lit';
 import { customElement, property, queryAssignedElements } from 'lit/decorators.js';
-import componentStyles from '../css/component.styles';
+import componentStyles from '../../styles/component.styles';
 import SolidElement from '../../internal/solid-element';
 
 /**

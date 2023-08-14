@@ -4,7 +4,7 @@ import { getIconLibrary, unwatchIcon, watchIcon } from './library';
 import { requestIcon } from './request';
 import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
 import { watch } from '../../internal/watch';
-import componentStyles from '../css/component.styles';
+import componentStyles from '../../styles/component.styles';
 import SolidElement from '../../internal/solid-element';
 
 let parser: DOMParser;
