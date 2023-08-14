@@ -63,14 +63,8 @@ export const MarkAndInverted = {
     return generateTemplate({
       axis: {
         x: {
-          type: 'slot',
-          name: 'default',
-          title: 'sd-display--size-...',
-          values: [
-            { value: 'Lorem <mark class="sd-mark">Ipsum</mark>', title: '-' },
-            { value: 'Lorem <mark class="sd-mark">Ipsum</mark>', title: '3xl' },
-            { value: 'Lorem <mark class="sd-mark">Ipsum</mark>', title: '4xl' }
-          ]
+          type: 'attribute',
+          name: 'sd-display--size-...'
         },
         y: {
           type: 'attribute',
@@ -78,6 +72,7 @@ export const MarkAndInverted = {
           values: [false, true]
         }
       },
+      constants: { type: 'slot', name: 'default', value: 'Lorem <mark class="sd-mark">Ipsum</mark>' },
       args,
       options: {
         templateBackgrounds: { alternate: 'y', colors: ['white', '#00358E'] }
