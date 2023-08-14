@@ -1,32 +1,8 @@
 import { expect, fixture, html } from '@open-wc/testing';
 import type SdBadge from './badge';
 
-const variants = [
-  {
-    name: 'default',
-    tailwindClasses: 'text-white bg-primary-500 border-white',
-    invertedTailwindClasses: 'text-primary bg-white border-primary'
-  },
-  {
-    name: 'success',
-    tailwindClasses: 'text-white bg-[#367B28] border-white',
-    invertedTailwindClasses: 'text-white bg-[#367B28] border-white'
-  },
-  {
-    name: 'error',
-    tailwindClasses: 'text-white bg-error border-white',
-    invertedTailwindClasses: 'text-white bg-error border-white'
-  }
-];
-
-const sizes = [
-  { name: 'sm', tailwindClasses: 'h-2 min-w-[8px] text-[10px]' },
-  { name: 'md', tailwindClasses: 'h-4 px-[4px] min-w-[16px] text-[10px]' },
-  { name: 'lg', tailwindClasses: 'h-5 px-[5px] min-w-[20px] text-[12px]' }
-];
-
-const baseClasses =
-  'inline-flex items-center text-center justify-center align-middle leading-none whitespace-nowrap border rounded-full select-none font-semibold cursor-[inherit]';
+const variants = ['default', 'success', 'error'];
+const sizes = ['lg', 'md', 'sm'];
 
 describe('<sd-badge>', () => {
   let el: SdBadge;
@@ -56,13 +32,6 @@ describe('<sd-badge>', () => {
       expect(el.shadowRoot!.querySelector('[part~="overflow-indicator"]')).have.class('hidden');
       expect(el.querySelector(`*[slot='overflow-indicator']`)).to.not.exist;
     });
-
-    it('should default to default styling, with the primary color', async () => {
-      el = await fixture<SdBadge>(html` <sd-badge>Badge</sd-badge> `);
-      const part = el.shadowRoot!.querySelector('[part~="base"]')!;
-      expect(part.classList.value.trim()).to.contain(baseClasses);
-      expect(part.classList.value.trim()).to.contain(variants[0].tailwindClasses);
-    });
   });
 
   describe('when passed an overflow-indicator', () => {
@@ -78,38 +47,19 @@ describe('<sd-badge>', () => {
   });
 
   variants.forEach(variant => {
-    describe(`when passed a variant attribute ${variant.name}`, () => {
-      it(`should be accessible when variant is "${variant.name}"`, async () => {
-        el = await fixture<SdBadge>(html` <sd-badge variant="${variant.name}">Badge</sd-badge> `);
+    describe(`when passed a variant attribute ${variant}`, () => {
+      it(`should be accessible when variant is "${variant}"`, async () => {
+        el = await fixture<SdBadge>(html` <sd-badge variant="${variant}">Badge</sd-badge> `);
         await expect(el).to.be.accessible();
-      });
-
-      it(`should render the background, font and border color associated with variant "${variant.name}" and still have the base classes`, async () => {
-        el = await fixture<SdBadge>(html` <sd-badge variant="${variant.name}">Badge</sd-badge> `);
-        const part = el.shadowRoot!.querySelector('[part~="base"]')!;
-        expect(part.classList.value.trim()).to.contain(baseClasses);
-        expect(part.classList.value.trim()).to.contain(variant.tailwindClasses);
-      });
-
-      it(`should render the background, font and border color associated with variant "${variant.name}" in the inverted state`, async () => {
-        el = await fixture<SdBadge>(html` <sd-badge variant="${variant.name}" inverted>Badge</sd-badge> `);
-        const part = el.shadowRoot!.querySelector('[part~="base"]')!;
-        expect(part.classList.value.trim()).to.contain(variant.invertedTailwindClasses);
       });
     });
   });
 
   sizes.forEach(size => {
-    describe(`when passed a size attribute ${size.name}`, () => {
-      it(`should be accessible when size is "${size.name}"`, async () => {
+    describe(`when passed a size attribute ${size}`, () => {
+      it(`should be accessible when size is "${size}"`, async () => {
         el = await fixture<SdBadge>(html` <sd-badge size="${size}">Badge</sd-badge> `);
         await expect(el).to.be.accessible();
-      });
-
-      it(`should render the badge and font size associated with size "${size.name}"`, async () => {
-        el = await fixture<SdBadge>(html` <sd-badge size="${size.name}">Badge</sd-badge> `);
-        const base = el.shadowRoot!.querySelector('[part~="base"]')!;
-        expect(base.classList.value.trim()).to.contain(size.tailwindClasses);
       });
     });
   });

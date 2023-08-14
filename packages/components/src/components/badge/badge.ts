@@ -42,7 +42,7 @@ export default class SdBadge extends SolidElement {
         role="status"
         part="base"
         class=${cx(
-          `inline-flex items-start content-end gap-[1px] justify-center leading-normal whitespace-nowrap border rounded-full select-none font-semibold cursor-[inherit]`,
+          `inline-flex items-center gap-x-[1px] justify-center leading-none whitespace-nowrap border rounded-full select-none font-semibold cursor-[inherit]`,
           {
             /* variants */
             default: !this.inverted ? `text-white bg-primary-500 border-white` : `text-primary bg-white border-primary`,
@@ -81,6 +81,7 @@ export default class SdBadge extends SolidElement {
 
       slot[name='overflow-indicator']::slotted(*) {
         position: relative;
+        /* To vertically center lowercase characters such as the plus sign, knowing that uppercase letters are centered, usually take up 2/3 of 1em and lowercase letters take up 1ex. */
         top: calc(((-1em / 1.5) + 1ex) / 2);
       }
     `
