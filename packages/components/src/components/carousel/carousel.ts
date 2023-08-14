@@ -439,7 +439,7 @@ export default class SdCarousel extends SolidElement {
                     </slot>
                   </button>
 
-                  ${this.pagination
+                  ${this.variant === 'dot'
                     ? html`
                         <div
                           part="pagination"
@@ -480,7 +480,17 @@ export default class SdCarousel extends SolidElement {
                           })}
                         </div>
                       `
-                    : ''}
+                    : html` <span class="flex gap-0.5 ">
+                        <span class=${cx('w-5 text-center', this.inverted ? 'text-white' : 'text-black')}
+                          >${currentPage + 1}</span
+                        >
+                        <span class=${cx('scale-y-[1.5]', 'text-center', this.inverted ? 'text-white' : 'text-black')}
+                          >/</span
+                        >
+                        <span class=${cx('w-5 text-center', this.inverted ? 'text-white' : 'text-black')}
+                          >${pagesCount}</span
+                        >
+                      </span>`}
 
                   <button
                     part="navigation-button navigation-button--next"
