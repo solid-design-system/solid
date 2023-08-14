@@ -94,33 +94,6 @@ export const Overflown = {
 };
 
 /**
- * The badge in all possible combinations of `variant` and `size` when slotted in the `icon-right` slot of sd-button.
- */
-
-export const ButtonAndBadge = {
-  name: 'Variant × Size with Button',
-  parameters: { controls: { exclude: ['variant', 'size'] } },
-  render: (args: any) => {
-    return html`
-      ${['lg', 'md', 'sm'].map(buttonSize =>
-        generateTemplate({
-          axis: {
-            x: { type: 'attribute', name: 'variant' },
-            y: { type: 'attribute', name: 'size' }
-          },
-          constants: [
-            { type: 'template', name: 'button', value: `<sd-button size=${buttonSize}>Default%TEMPLATE%</sd-button>` },
-            { type: 'attribute', name: 'slot', value: 'icon-right' }
-          ],
-          args,
-          options: { title: `Button-Size="${buttonSize}"` }
-        })
-      )}
-    `;
-  }
-};
-
-/**
  * Use the `base`, `content` and `overflow-indicator` part selectors to customize the badge.
  */
 
