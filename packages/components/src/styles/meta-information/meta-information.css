@@ -20,12 +20,12 @@
   &--pipe {
     &::after {
       content: '|';
-      @apply ml-1;
+      @apply mx-1;
     }
 
     &.sd-meta-information--size-sm {
       &::after {
-        @apply ml-0.5;
+        @apply mx-0.5;
       }
     }
   }
