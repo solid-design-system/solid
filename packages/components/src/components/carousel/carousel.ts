@@ -15,7 +15,7 @@ import SdCarouselItem from '../carousel-item/carousel-item.ts';
 import SolidElement from '../../internal/solid-element.js';
 
 /**
- * @summary Carousels display an arbitrary number of content slides along a horizontal or vertical axis.
+ * @summary Carousels display an arbitrary number of content slides along a horizontal axis.
  *
  * @since 2.2
  * @status experimental
@@ -39,14 +39,13 @@ import SolidElement from '../../internal/solid-element.js';
  * @csspart navigation-button--next - Applied to the next button.
  *
  * @cssproperty --slide-gap - The space between each slide.
- * @cssproperty --aspect-ratio - The aspect ratio of each slide.
  * @cssproperty --scroll-hint - The amount of padding to apply to the scroll area, allowing adjacent slides to become
  *  partially visible as a scroll hint.
  */
 @customElement('sd-carousel')
 export default class SdCarousel extends SolidElement {
   /** Determines the counting system for the carousel. */
-  @property({ attribute: 'variant', reflect: true }) variant: 'dot' | 'numeral' = 'numeral';
+  @property({ attribute: 'variant', reflect: true }) variant: 'dot' | 'digit' = 'digit';
   /** Inverts the carousel */
   @property({ type: Boolean, reflect: true }) inverted = false;
 
@@ -73,9 +72,6 @@ export default class SdCarousel extends SolidElement {
    * greater than one.
    */
   @property({ type: Number, attribute: 'slides-per-move' }) slidesPerMove = 1;
-
-  /** Specifies the orientation in which the carousel will lay out.  */
-  @property() orientation: 'horizontal' | 'vertical' = 'horizontal';
 
   /** When set, it is possible to scroll through the slides by dragging them with the mouse. */
   @property({ type: Boolean, reflect: true, attribute: 'mouse-dragging' }) mouseDragging = false;
@@ -384,17 +380,13 @@ export default class SdCarousel extends SolidElement {
     const currentPage = this.getCurrentPage();
     const prevEnabled = this.loop || currentPage > 0;
     const nextEnabled = this.loop || currentPage < pagesCount - 1;
-    // TODO: Determine if this is needed -- remove otherwise -- button part removed
-    const isLtr = this.localize.dir() === 'ltr';
     return html`
-      <div part="base" class=${cx(`carousel min-h-full min-w-full my-6`)}>
+      <div part="base" class=${cx(`carousel min-h-full min-w-full`, this.inverted ? 'bg-primary' : '')}>
         <div
           id="scroll-container"
           part="scroll-container"
           class="${cx(
-            'carousel__slides',
-            'carousel__slides--horizontal',
-            `
+            `carousel__slides my-6
             grid max-h-full w-full items-center justify-items-center overflow-auto
             overscroll-x-contain grid-flow-col auto-rows-[100%]
             snap-x snap-mandatory overflow-y-hidden`
@@ -412,12 +404,13 @@ export default class SdCarousel extends SolidElement {
         <div class=${cx('flex flex-row items-center justify-center', this.inverted ? 'bg-primary' : '')}>
           ${this.navigation
             ? html`
-                <div part="navigation" class=${cx('carousel__navigation', 'contents')}>
+                <div part="navigation" class=${cx('contents')}>
                   <button
                     part="navigation-button navigation-button--previous"
                     class=${cx(
                       'mr-6 rotate-90',
-                      'carousel__navigation-button',
+                      'focus-visible:outline focus-within:outline-2',
+                      this.inverted ? 'focus-visible:outline-white' : 'focus-visible:outline-primary',
                       `flex flex-[0_0_auto] items-center 
                     bg-none border-none cursor-pointer appearance-none col-[1] row-[1]`
                     )}
@@ -481,7 +474,11 @@ export default class SdCarousel extends SolidElement {
                         </div>
                       `
                     : html` <span class="flex gap-0.5 ">
-                        <span class=${cx('w-5 text-center', this.inverted ? 'text-white' : 'text-black')}
+                        <span
+                          class=${cx(
+                            'w-5 text-center active:border-b-2 active:border-accent',
+                            this.inverted ? 'text-white' : 'text-black'
+                          )}
                           >${currentPage + 1}</span
                         >
                         <span class=${cx('scale-y-[1.5]', 'text-center', this.inverted ? 'text-white' : 'text-black')}
@@ -496,7 +493,8 @@ export default class SdCarousel extends SolidElement {
                     part="navigation-button navigation-button--next"
                     class=${cx(
                       'ml-6 rotate-90',
-                      'carousel__navigation-button',
+                      'focus-visible:outline focus-within:outline-2',
+                      this.inverted ? 'focus-visible:outline-white' : 'focus-visible:outline-primary',
                       `flex flex-[0_0_auto] items-center 
                     bg-none border-none cursor-pointer appearance-none col-[3] row-[1]`
                     )}
@@ -531,7 +529,6 @@ export default class SdCarousel extends SolidElement {
       ${componentStyles}
       :host {
         --slide-gap: var(--sl-spacing-medium, 1rem);
-        --aspect-ratio: 16 / 9;
         --scroll-hint: 0px;
 
         display: flex;
@@ -550,9 +547,11 @@ export default class SdCarousel extends SolidElement {
       .carousel__slides {
         grid-area: slides;
         scrollbar-width: none;
-        aspect-ratio: calc(var(--aspect-ratio) * var(--slides-per-page));
-        border-radius: var(--sl-border-radius-small);
         --slide-size: calc((100% - (var(--slides-per-page) - 1) * var(--slide-gap)) / var(--slides-per-page));
+        grid-auto-columns: var(--slide-size);
+        column-gap: var(--slide-gap);
+        scroll-padding-inline: var(--scroll-hint);
+        padding-inline: var(--scroll-hint);
       }
 
       @media (prefers-reduced-motion) {
@@ -561,20 +560,9 @@ export default class SdCarousel extends SolidElement {
         }
       }
 
-      .carousel__slides--horizontal {
-        grid-auto-columns: var(--slide-size);
-        column-gap: var(--slide-gap);
-        scroll-padding-inline: var(--scroll-hint);
-        padding-inline: var(--scroll-hint);
-      }
-
       .carousel__slides--dragging,
       .carousel__slides--dropping {
         scroll-snap-type: unset;
-      }
-
-      :host([vertical]) ::slotted(sl-carousel-item) {
-        height: 100%;
       }
 
       .carousel__slides::-webkit-scrollbar {
@@ -583,35 +571,6 @@ export default class SdCarousel extends SolidElement {
 
       .carousel__navigation {
         grid-area: navigation;
-        font-size: var(--sl-font-size-x-large);
-      }
-
-      .carousel__navigation-button {
-        border-radius: var(--sl-border-radius-small);
-        font-size: inherit;
-        color: var(--sl-color-neutral-600);
-        padding: var(--sl-spacing-x-small);
-        transition: var(--sl-transition-medium) color;
-      }
-
-      /* what does this piece of css do, how can i replace it? */
-      .carousel__navigation-button--disabled::part(base) {
-        pointer-events: none;
-      }
-
-      .carousel__pagination-item {
-        border-radius: var(--sl-border-radius-circle);
-        width: var(--sl-spacing-small);
-        height: var(--sl-spacing-small);
-        background-color: var(--sl-color-neutral-300);
-      }
-
-      /* Focus styles */
-      .carousel__slides:focus-visible,
-      .carousel__navigation-button:focus-visible,
-      .carousel__pagination-item:focus-visible {
-        outline: var(--sl-focus-ring);
-        outline-offset: var(--sl-focus-ring-offset);
       }
     `
   ];

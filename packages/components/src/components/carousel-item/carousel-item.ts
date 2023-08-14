@@ -10,9 +10,8 @@ import type { CSSResultGroup } from 'lit';
  * @since 2.0
  * @status experimental
  *
- * @slot - The carousel item's content..
+ * @slot - The carousel item's content.
  *
- * @cssproperty --aspect-ratio - The slide's aspect ratio. Inherited from the carousel by default.
  *
  */
 @customElement('sd-carousel-item')

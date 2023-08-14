@@ -1,12 +1,19 @@
 import '../../solid-components';
-import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
-const { argTypes, args, parameters } = storybookDefaults('sd-carousel-item');
+import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
+const { argTypes, parameters } = storybookDefaults('sd-carousel-item');
+const { overrideArgs } = storybookHelpers('sd-carousel-item');
 const { generateTemplate } = storybookTemplate('sd-carousel-item');
 
 export default {
   title: 'Components/sd-carousel-item',
   component: 'sd-carousel-item',
-  args,
+  args: overrideArgs([
+    {
+      type: 'slot',
+      name: 'default',
+      value: `<slot-comp></slot-comp>`
+    }
+  ]),
   argTypes,
   parameters: { ...parameters }
 };

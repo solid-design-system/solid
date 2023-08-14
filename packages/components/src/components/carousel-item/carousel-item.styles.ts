@@ -5,8 +5,6 @@ export default css`
   ${componentStyles}
 
   :host {
-    --aspect-ratio: inherit;
-
     display: flex;
     align-items: center;
     justify-content: center;
