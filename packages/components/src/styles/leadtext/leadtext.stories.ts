@@ -21,7 +21,7 @@ export default {
 };
 
 /**
- * Default: This shows sd-leadtest in its default state.
+ * Default: This shows sd-leadtext in its default state.
  */
 
 export const Default = {
