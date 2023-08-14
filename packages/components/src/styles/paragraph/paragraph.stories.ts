@@ -34,7 +34,7 @@ export const Default = {
 };
 
 /**
- * Use the `inverted` class to make a leadtext with inverted colors.
+ * Use the `inverted` class to make a paragraph with inverted colors.
  */
 
 export const Inverted = {
@@ -52,7 +52,7 @@ export const Inverted = {
 };
 
 /**
- * Use the `mark` class to highlight parts of the text inside leadtext with the green accent color.
+ * Use the `mark` class to highlight parts of the text inside paragraph with the green accent color.
  */
 
 export const MarkAndInverted = {
