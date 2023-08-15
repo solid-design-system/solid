@@ -132,14 +132,11 @@ export const Parts = {
 /**
  * Use the `default` slot to add content to the badge.
  * Use the `overflow-indicator` slot to add an overflow indicator.
- *
- * <b>Why did we add a slot for the overflow-indicator?</b>
- * Content in the shadow dom is currently not accessible by screen readers.
- * To make the overflow-indicator accessible it needs to be provided through a slot, as it will be reflected in the light dom in this case.
- *
+ * *
  * <b>Hints</b>
  * - If you add icons to one of the slots, please make sure to account for accessibility by providing an alt-text.
  * - If <b>not</b> passed an element to the overflow-indicator slot, the badge will <b>not</b> add an overflow-indicator per default.
+ * - Content in the overflow-indicator slot is not centered vertically per default, as we do not know what will end up in the slot.
  */
 export const Slots = {
   parameters: {
@@ -156,9 +153,6 @@ export const Slots = {
             border-style: solid;
             --slot-height: 100%;
             --slot-width: 100%;
-          }
-          sd-badge::part(overflow-indicator) {
-            margin-bottom: 0;
           }</style
         >${story()}`
   ],
