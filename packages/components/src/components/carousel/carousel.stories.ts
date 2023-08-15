@@ -53,7 +53,7 @@ export const Default = {
 };
 
 /**
- * Use the variant attribute to set the type of page classifcation.
+ * Use the `variant` attribute to select the pagination format.
  */
 
 export const Variant = {
@@ -69,7 +69,7 @@ export const Variant = {
 };
 
 /**
- * Use the inverted attribute to make a divider with inverted colors.
+ * Use the `inverted` attribute to make a carousel with inverted colors.
  */
 
 export const Inverted = {
@@ -88,7 +88,7 @@ export const Inverted = {
 };
 
 /**
- * Use the loop attribute to toggle the looping of your slides.
+ * Use the `loop` attribute to enable/disable the looping of your slides.
  */
 
 export const Loop = {
@@ -104,7 +104,7 @@ export const Loop = {
 };
 
 /**
- * Use the navigate attribute to toggle the visibility of the navigation buttons.
+ * Use the `navigate` attribute to toggle the visibility of the navigation buttons.
  */
 
 export const Navigation = {
@@ -120,7 +120,7 @@ export const Navigation = {
 };
 
 /**
- * Use the pagination attribute to toggle the visibility of the pagination dots/numbers.
+ * Use the `pagination` attribute to toggle the visibility of the pagination dots/numbers.
  */
 
 export const Pagination = {
@@ -136,7 +136,7 @@ export const Pagination = {
 };
 
 /**
- * Use the autoplay attribute to toggle autoplay.
+ * Use the `autoplay` attribute to toggle autoplay.
  */
 
 export const Autoplay = {
@@ -153,7 +153,7 @@ export const Autoplay = {
 };
 
 /**
- * Use the autoplay Interval attribute to set differents speeds of slide change.
+ * Use the `autoplay-interval` attribute to set the speed of slide change in milliseconds.
  */
 
 export const autoplayInterval = {
@@ -170,7 +170,7 @@ export const autoplayInterval = {
 };
 
 /**
- * Use the slides per page attribute to set slides slides that would be shown at a given time..
+ * Use the `slides-per-page` attribute to set the number of slides that would be shown at a given time.
  */
 
 export const SlidesPerPage = {
@@ -187,7 +187,7 @@ export const SlidesPerPage = {
 };
 
 /**
- * Use the slides per move attribute to set slides per swipe or button click.
+ * Use the `slides-per-move` attribute to set slides per swipe or button click.
  */
 
 export const SlidesPerMove = {
@@ -203,7 +203,7 @@ export const SlidesPerMove = {
 };
 
 /**
- * Use the mouse Dragging attribute to allow users to drag slides with a mouse.
+ * Use the `mouse-dragging` attribute to allow users to drag slides with a mouse.
  */
 
 export const MouseDragging = {

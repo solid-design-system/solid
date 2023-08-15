@@ -45,7 +45,7 @@ import SolidElement from '../../internal/solid-element.js';
 @customElement('sd-carousel')
 export default class SdCarousel extends SolidElement {
   /** Determines the counting system for the carousel. */
-  @property({ attribute: 'variant', reflect: true }) variant: 'dot' | 'digit' = 'digit';
+  @property({ type: String, attribute: 'string', reflect: true }) variant: 'dot' | 'num' = 'num';
   /** Inverts the carousel */
   @property({ type: Boolean, reflect: true }) inverted = false;
 
