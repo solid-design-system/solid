@@ -6,7 +6,7 @@ const path = require('path');
  */
 try {
   console.log('Rewriting index.html document title.');
-  const version = process.env.VERSION;
+  const version = process.argv[2];
   const filePath = '../../dist/storybook/index.html';
   const document = fs.readFileSync(path.resolve(__dirname, filePath), 'utf8');
   const output = document
