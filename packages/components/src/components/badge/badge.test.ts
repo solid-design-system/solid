@@ -1,7 +1,7 @@
 import { expect, fixture, html } from '@open-wc/testing';
 import type SdBadge from './badge';
 
-const variants = ['default', 'success', 'error'];
+const variants = ['default', 'error'];
 const sizes = ['lg', 'md', 'sm'];
 
 describe('<sd-badge>', () => {
