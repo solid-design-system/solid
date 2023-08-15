@@ -383,12 +383,12 @@ export default class SdCarousel extends SolidElement {
     const isLtr = this.localize.dir() === 'ltr';
 
     return html`
-      <div part="base" class=${cx(`carousel min-h-full min-w-full`)}>
+      <div part="base" class=${cx(`carousel h-full w-full`, this.inverted ? 'bg-[#00358E]' : '')}>
         <div
           id="scroll-container"
           part="scroll-container"
           class="${cx(
-            `carousel__slides my-6
+            `carousel__slides mb-6
             grid max-h-full w-full items-center justify-items-center overflow-auto
             overscroll-x-contain grid-flow-col auto-rows-[100%]
             snap-x snap-mandatory overflow-y-hidden`
@@ -413,14 +413,14 @@ export default class SdCarousel extends SolidElement {
                     ?inverted=${this.inverted}
                     variant="tertiary"
                     part="navigation-button navigation-button--previous"
-                    class=${cx('rotate-90 mr-6')}
+                    class=${cx('mr-6')}
                     aria-label="${this.localize.term('previousSlide')}"
                     aria-controls="scroll-container"
                     aria-disabled="${prevEnabled ? 'false' : 'true'}"
                     @click=${prevEnabled ? () => this.previous() : null}
                   >
                     <sd-icon
-                      class=${cx('h-6 w-6')}
+                      class=${cx('h-6 w-6 rotate-90 ')}
                       library="system"
                       name="${isLtr ? 'chevron-down' : 'chevron-up'}"
                     ></sd-icon>
@@ -494,14 +494,14 @@ export default class SdCarousel extends SolidElement {
                     ?inverted=${this.inverted}
                     variant="tertiary"
                     part="navigation-button navigation-button--next"
-                    class=${cx('rotate-90 ml-6')}
+                    class=${cx('ml-6')}
                     aria-label="${this.localize.term('nextSlide')}"
                     aria-controls="scroll-container"
                     aria-disabled="${nextEnabled ? 'false' : 'true'}"
                     @click=${nextEnabled ? () => this.next() : null}
                   >
                     <sd-icon
-                      class=${cx('h-6 w-6')}
+                      class=${cx('h-6 w-6 rotate-90')}
                       library="system"
                       name="${isLtr ? 'chevron-up' : 'chevron-down'}"
                     ></sd-icon>
