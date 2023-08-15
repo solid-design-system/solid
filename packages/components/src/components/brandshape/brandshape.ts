@@ -125,16 +125,7 @@ export default class SdBrandshape extends SolidElement {
               </div>
             </div>`
           : this.getSvg(this.componentBreakpoint, 'top')}
-        <div
-          class=${cx(
-            {
-              'neutral-100': 'bg-neutral-100',
-              primary: 'bg-primary',
-              white: 'bg-white'
-            }[this.variant],
-            'block absolute left-0 bottom-0 w-full h-[1px]'
-          )}
-        ></div>
+        ${this.renderWhitespaceFix('top')}
       </div>
     `;
   }
@@ -165,18 +156,25 @@ export default class SdBrandshape extends SolidElement {
 
   private renderBottomBrandshape(): TemplateResult {
     return html`<div class="relative" part="shape-bottom">
-      ${this.getSvg(this.componentBreakpoint, 'bottom')}
-      <div
-        class=${cx(
-          {
-            'neutral-100': 'bg-neutral-100',
-            primary: 'bg-primary',
-            white: 'bg-white'
-          }[this.variant],
-          'block absolute left-0 top-0 w-full h-[1px]'
-        )}
-      ></div>
+      ${this.getSvg(this.componentBreakpoint, 'bottom')}${this.renderWhitespaceFix('bottom')}
     </div>`;
+  }
+
+  /**
+   * Renders a small line to prevent a whitespace between the svg and the div of the middle brandshape.
+   */
+  private renderWhitespaceFix(position: 'top' | 'bottom'): TemplateResult {
+    return html` <div
+      class=${cx(
+        {
+          'neutral-100': 'bg-neutral-100',
+          primary: 'bg-primary',
+          white: 'bg-white'
+        }[this.variant],
+        { top: 'bottom-0', bottom: 'top-0' }[position],
+        'block absolute left-0 w-full h-[1px]'
+      )}
+    ></div>`;
   }
 
   render() {
