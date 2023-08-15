@@ -81,7 +81,11 @@ export default class SdBadge extends SolidElement {
 
       slot[name='overflow-indicator']::slotted(*) {
         position: relative;
-        /* To vertically center lowercase characters such as the plus sign, knowing that uppercase letters are centered, usually take up 2/3 of 1em and lowercase letters take up 1ex. */
+        /* 
+        *  We need to vertically center lowercase characters such as the plus sign.
+        *  We know that uppercase letters are centered and usually take up 2/3 of 1em. Lowercase letters take up 1ex.
+        *  Therefore, we use a negative margin to move lowercase letters up by half of the difference between these values.
+        */
         top: calc(((-1em / 1.5) + 1ex) / 2);
       }
     `
