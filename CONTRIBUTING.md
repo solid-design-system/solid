@@ -24,6 +24,7 @@
 - We provide extensive documentation and examples for each component in Storybook. [Explore components and interact with them](https://solid-design-system.fe.union-investment.de/x.x.x/storybook/).
 - We provide End-to-End (E2E) tests with Playwright and Visual Regression Tests with Chromatic. The latter are automatically generated from the created Storybook stories.
 - We optimize our components for accessibility.
+- We do not mention the names of internal or external colleagues in issues or other documents hosted on github, as our project is entirely public and can be accessed by anybody. Tagging/mentioning colleagues using their github profiles is fine, as they decided to be visible on github.
 
 ## Development Guidelines
 
