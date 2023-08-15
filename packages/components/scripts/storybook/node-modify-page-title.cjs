@@ -24,7 +24,7 @@ try {
       `<meta itemprop="name" content="Solid Design System by Union Investment | ${version}" />`
     );
   fs.writeFileSync(path.resolve(__dirname, filePath), output);
-  console.log('Title rewrite complete.');
+  console.log(`Title rewrite complete => Solid Design System by Union Investment | ${version}`);
 } catch (error) {
   console.log('Title rewrite failed.');
   console.error(error);
