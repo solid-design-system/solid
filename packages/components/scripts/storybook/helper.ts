@@ -252,7 +252,7 @@ export const storybookTemplate = (customElementTag: string) => {
     };
     args: any;
   }) => {
-    const template = (args: { [key: string]: any }, options?: { templateContent?: string }) => {
+    const template = (args: any) => {
       if (!manifest.style) {
         return theTemplate(args);
       }
