@@ -20,12 +20,13 @@ export interface Style {
 // Use import.meta.glob to get all the .definition.ts files
 const definitionModules = import.meta.glob('./**/*.definition.ts');
 
-const styleDefinitions = [];
+const styleDefinitions: Style[] = [];
 
-Object.keys(definitionModules).forEach(modulePath => {
-  definitionModules[modulePath]().then(module => {
-    styleDefinitions.push(module.default);
-  });
+Object.keys(definitionModules).forEach(async modulePath => {
+  const module = await definitionModules[modulePath](); // Await the module import
+  if (module !== null && typeof module === 'object' && 'default' in module) {
+    styleDefinitions.push(module.default as Style); // Type assertion
+  }
 });
 
 export { styleDefinitions };

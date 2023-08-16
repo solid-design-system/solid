@@ -252,7 +252,7 @@ export const storybookTemplate = (customElementTag: string) => {
     };
     args: any;
   }) => {
-    const template = (args: any) => {
+    const template = (args: { [key: string]: any }, options?: { templateContent?: string }) => {
       if (!manifest.style) {
         return theTemplate(args);
       }
@@ -279,7 +279,7 @@ export const storybookTemplate = (customElementTag: string) => {
           }
 
           return acc;
-        }, {} as { [key]: boolean });
+        }, {} as { [key: string]: boolean });
 
       const slotContent = args['default-slot'] || '';
 
