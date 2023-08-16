@@ -50,32 +50,3 @@ export const Inverted = {
     });
   }
 };
-
-/**
- * Use the `mark` class to highlight parts of the text inside leadtext with the green accent color.
- */
-
-export const MarkAndInverted = {
-  name: 'Mark × Inverted',
-  parameters: { controls: { exclude: ['sd-leadtext--size-...', 'sd-leadtext--inverted', 'default'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        x: {
-          type: 'attribute',
-          name: 'sd-leadtext--size-...'
-        },
-        y: {
-          type: 'attribute',
-          name: 'sd-leadtext--inverted',
-          values: [false, true]
-        }
-      },
-      constants: { type: 'slot', name: 'default', value: 'Lorem <mark class="sd-mark">Ipsum</mark>' },
-      args,
-      options: {
-        templateBackgrounds: { alternate: 'y', colors: ['white', '#00358E'] }
-      }
-    });
-  }
-};
