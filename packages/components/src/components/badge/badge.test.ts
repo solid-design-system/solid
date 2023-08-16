@@ -25,25 +25,6 @@ describe('<sd-badge>', () => {
       el = await fixture<SdBadge>(html` <sd-badge>Badge</sd-badge> `);
       expect(el.innerText).to.eq('Badge');
     });
-
-    it('should render without the overflow indicator', async () => {
-      el = await fixture<SdBadge>(html` <sd-badge>Badge</sd-badge> `);
-      expect(el.shadowRoot!.querySelector('[part~="base"]')).to.exist;
-      expect(el.shadowRoot!.querySelector('[part~="overflow-indicator"]')).have.class('hidden');
-      expect(el.querySelector(`*[slot='overflow-indicator']`)).to.not.exist;
-    });
-  });
-
-  describe('when passed an overflow-indicator', () => {
-    it('should pass accessibility tests.', async () => {
-      el = await fixture<SdBadge>(html` <sd-badge>Badge<span slot="overflow-indicator">+</span></sd-badge> `);
-      await expect(el).to.be.accessible();
-    });
-
-    it(`should render with an overflow indicator."`, async () => {
-      el = await fixture<SdBadge>(html` <sd-badge>Badge<span slot="overflow-indicator">+</span></sd-badge> `);
-      expect(el.shadowRoot!.querySelector('[part~="overflow-indicator"]')).not.have.class('hidden');
-    });
   });
 
   variants.forEach(variant => {

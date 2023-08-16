@@ -1,6 +1,5 @@
 import { css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { HasSlotController } from '../../internal/slot';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
@@ -11,31 +10,22 @@ import SolidElement from '../../internal/solid-element';
  * @since 1.5.0
  *
  * @slot - The badge's content.
- * @slot overflow-indicator - Optional: The badge's overflow-indicator.
  *
  * @csspart base - The badge's base wrapper.
  * @csspart content - The badge's main content.
- * @csspart overflow-indicator - The badge's overflow indicator.
  */
 @customElement('sd-badge')
 export default class SdBadge extends SolidElement {
-  /** Inverts the badge. */
-  @property({ type: Boolean, reflect: true }) inverted = false;
+  /** The badge's theme variant. */
+  @property({ reflect: true }) variant: 'default' | 'success' | 'error' = 'default';
 
   /** The badge's size. */
   @property({ reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
 
-  /** The badge's theme variant. */
-  @property({ reflect: true }) variant: 'default' | 'success' | 'error' = 'default';
-
-  private readonly hasSlotController = new HasSlotController(this, '[default]', 'overflow-indicator');
+  /** Inverts the badge. */
+  @property({ type: Boolean, reflect: true }) inverted = false;
 
   render() {
-    const slots = {
-      'badge-has-default': this.hasSlotController.test('[default]'),
-      'badge-has-overflow-indicator': this.hasSlotController.test('overflow-indicator')
-    };
-
     return html`
       <span
         tabindex="0"
@@ -59,12 +49,6 @@ export default class SdBadge extends SolidElement {
       >
         <span part="content" class=${cx(this.size === 'sm' && `hidden`)}>
           <slot></slot>
-        </span>
-        <span
-          part="overflow-indicator"
-          class=${cx((!slots['badge-has-overflow-indicator'] || this.size === 'sm') && `hidden`)}
-        >
-          <slot name="overflow-indicator"></slot>
         </span>
       </span>
     `;
