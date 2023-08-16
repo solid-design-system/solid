@@ -1,30 +1,56 @@
 import '../../solid-components';
-import { classMap } from 'lit/directives/class-map.js';
-import { html } from 'lit-html';
 
-/**
- * The green accent color can be used to highlight parts of the text.
- */
+import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
+
+const { argTypes, parameters } = storybookDefaults('sd-mark');
+const { overrideArgs } = storybookHelpers('sd-mark');
+const { generateTemplate } = storybookTemplate('sd-mark');
 
 export default {
   title: 'Styles/sd-mark',
-  args: {
-    // boolean for "modifier" arg
+  component: 'sd-mark',
+  parameters: {
+    ...parameters,
+    design: {
+      type: 'figma',
+      url: ''
+    }
   },
-  argTypes: {}
-};
-
-const getClasses = (args: any) => {
-  return {
-    'sd-mark': true
-  };
+  args: overrideArgs({ type: 'slot', name: 'default', value: 'Lorem Ipsum' }),
+  argTypes
 };
 
 /**
- * This is the the typography section for all kind of styles and sizes of the Headline.
+ * Default: This shows sd-mark in its default state.
  */
+
 export const Default = {
   render: (args: any) => {
-    return html`<mark class=${classMap(getClasses({ ...args }))}>Lorem Ipsum</mark>`;
+    return generateTemplate({
+      options: { templateContent: '<mark class="%CLASSES%">%SLOT%</mark>' },
+      args
+    });
+  }
+};
+
+/**
+ * Examples: This shows how sd-mark looks in different contexts.
+ */
+
+export const Examples = {
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        y: {
+          type: 'template',
+          name: 'sd-mark',
+          values: ['sd-display', 'sd-leadtext', 'sd-paragraph'].map(style => {
+            return { value: `<p class="${style}">%TEMPLATE%</p>`, title: style };
+          })
+        }
+      },
+      options: { templateContent: 'Lorem <mark class="%CLASSES%">Ipsum</mark>' },
+      args
+    });
   }
 };
