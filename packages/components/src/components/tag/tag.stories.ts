@@ -1,19 +1,19 @@
 import '../../solid-components';
-import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
+import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, args, parameters } = storybookDefaults('sd-tag');
 const { generateTemplate } = storybookTemplate('sd-tag');
+const { overrideArgs } = storybookHelpers('sd-tag');
 
 export default {
   title: 'Components/sd-tag',
   component: 'sd-tag',
-  args,
+  args: overrideArgs({ type: 'slot', name: 'default', value: 'Tag' }),
   argTypes,
-  parameters: {...parameters},
+  parameters: { ...parameters },
   decorators: [withActions] as any
 };
-
 
 /**
  * Default: This shows sd-tag in its default state.

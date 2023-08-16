@@ -1,11 +1,8 @@
-import '../icon-button/icon-button';
-import { classMap } from 'lit/directives/class-map.js';
+import { css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { html } from 'lit';
 import { LocalizeController } from '../../utilities/localize';
+import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
-import styles from './tag.styles';
-import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Tags are used as labels to organize things or to indicate a selection.
@@ -13,7 +10,7 @@ import type { CSSResultGroup } from 'lit';
  * @status stable
  * @since 1.0
  *
- * @dependency sd-icon-button
+ * @dependency sd-button
  *
  * @slot - The tag's content.
  *
@@ -21,25 +18,22 @@ import type { CSSResultGroup } from 'lit';
  *
  * @csspart base - The component's base wrapper.
  * @csspart content - The tag's content.
- * @csspart remove-button - The tag's remove button, an `<sd-icon-button>`.
- * @csspart remove-button__base - The remove button's exported `base` part.
  */
 @customElement('sd-tag')
 export default class SdTag extends SolidElement {
-  static styles: CSSResultGroup = styles;
   private readonly localize = new LocalizeController(this);
 
-  /** The tag's theme variant. */
-  @property({ reflect: true }) variant: 'primary' | 'success' | 'neutral' | 'warning' | 'danger' | 'text' = 'neutral';
-
   /** The tag's size. */
-  @property({ reflect: true }) size: 'small' | 'medium' | 'large' = 'medium';
+  @property({ reflect: true }) size: 'lg' | 'sm' = 'lg';
 
-  /** Draws a pill-style tag with rounded edges. */
-  @property({ type: Boolean, reflect: true }) pill = false;
+  /** Draws the button in a loading state. */
+  @property({ type: Boolean, reflect: true }) selected = false;
 
-  /** Makes the tag removable and shows a remove button. */
-  @property({ type: Boolean }) removable = false;
+  /** Draws the button in a loading state. */
+  @property({ type: Boolean, reflect: true }) filtered = false;
+
+  /** Draws the button in a loading state. */
+  @property({ type: Boolean, reflect: true }) disabled = false;
 
   private handleRemoveClick() {
     this.emit('sd-remove');
@@ -49,32 +43,23 @@ export default class SdTag extends SolidElement {
     return html`
       <span
         part="base"
-        class=${classMap({
-          tag: true,
-
-          // Types
-          'tag--primary': this.variant === 'primary',
-          'tag--success': this.variant === 'success',
-          'tag--neutral': this.variant === 'neutral',
-          'tag--warning': this.variant === 'warning',
-          'tag--danger': this.variant === 'danger',
-          'tag--text': this.variant === 'text',
-
-          // Sizes
-          'tag--small': this.size === 'small',
-          'tag--medium': this.size === 'medium',
-          'tag--large': this.size === 'large',
-
-          // Modifiers
-          'tag--pill': this.pill,
-          'tag--removable': this.removable
-        })}
+        class=${cx(
+          `inline-flex border rounded-full text-base`,
+          /**
+           * Anatomy
+           * */
+          {
+            /* sizes, fonts */
+            sm: 'px-3 py-[5px]',
+            lg: 'px-4 py-2'
+          }[this.size],
+          !this.selected ? `bg-primary text-white` : `bg-white text-primary`
+        )}
       >
-        <slot part="content" class="tag__content"></slot>
-
-        ${this.removable
+        <slot part="content"></slot>
+        ${this.filtered
           ? html`
-              <sd-icon-button
+              <sd-button
                 part="remove-button"
                 exportparts="base:remove-button__base"
                 name="x-lg"
@@ -83,12 +68,22 @@ export default class SdTag extends SolidElement {
                 class="tag__remove"
                 @click=${this.handleRemoveClick}
                 tabindex="-1"
-              ></sd-icon-button>
+                >x</sd-button
+              >
             `
           : ''}
       </span>
     `;
   }
+
+  static styles = [
+    SolidElement.styles,
+    css`
+      :host {
+        display: inline-block;
+      }
+    `
+  ];
 }
 
 declare global {
