@@ -1,4 +1,4 @@
-import '../../_components/icon-button/icon-button';
+import '../icon-button/icon-button';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement, property } from 'lit/decorators.js';
 import { html } from 'lit';
