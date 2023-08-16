@@ -50,33 +50,3 @@ export const Inverted = {
     });
   }
 };
-
-/**
- * Use the `mark` class to highlight parts of the text inside display with the green accent color.
- */
-
-// export const MarkAndInverted = {
-//   name: 'Mark × Inverted',
-//   parameters: { controls: { exclude: ['sd-display--size-...', 'sd-display--inverted', 'default'] } },
-//   render: (args: any) => {
-//     console.log('args', args);
-//     return generateTemplate({
-//       axis: {
-//         x: {
-//           type: 'attribute',
-//           name: 'sd-display--size-...'
-//         },
-//         y: {
-//           type: 'attribute',
-//           name: 'sd-display--inverted',
-//           values: [false, true]
-//         }
-//       },
-//       constants: { type: 'slot', name: 'default', value: 'Lorem <mark class="sd-mark">Ipsum</mark>' },
-//       args,
-//       options: {
-//         templateBackgrounds: { alternate: 'y', colors: ['white', '#00358E'] }
-//       }
-//     });
-//   }
-// };
