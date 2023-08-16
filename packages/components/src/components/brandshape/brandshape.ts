@@ -161,7 +161,7 @@ export default class SdBrandshape extends SolidElement {
   }
 
   /**
-   * Renders a small line to prevent a whitespace between the svg and the div of the middle brandshape.
+   * Renders a small line to prevent whitespace between the svg and the div of the middle brandshape.
    */
   private renderWhitespaceFix(position: 'top' | 'bottom'): TemplateResult {
     return html` <div
