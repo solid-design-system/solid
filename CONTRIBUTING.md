@@ -21,8 +21,9 @@
 
 - Development closely works with Design.
 - We heavily utilize slots and parts with reduced business logic within individual components.
-- Extensive documentation and examples for each component can be found in Storybook. [Explore components and interact with them](https://solid-design-system.fe.union-investment.de/x.x.x/storybook/).
+- We provide extensive documentation and examples for each component in Storybook. [Explore components and interact with them](https://solid-design-system.fe.union-investment.de/x.x.x/storybook/).
 - We provide End-to-End (E2E) tests with Playwright and Visual Regression Tests with Chromatic. The latter are automatically generated from the created Storybook stories.
+- We optimize our components for accessibility.
 
 ## Development Guidelines
 
@@ -32,6 +33,9 @@
 - Packages have to be run individually (eg: `cd packages/components` → `pnpm dev` to start development server)
 - Run `pnpm verify` at the root directory periodically, particularly, before pushing changes when a pull request is already opened.
 - Every branch should be associated with a PR.
+- Nearly all styles (colors, fonts, sizes etc.) are defined by our design team and provided for usage in our code via tokens (`packages/tokens/src/token.json`).
+  Components should use these tokens instead of individual styles as much as possible. Only where the tokens do not provide a styling, component specific styles should be added inside the [component-name].ts file
+- Components should be optimized for accessibility. Check the website of the [Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/WAI/standards-guidelines/wcag/) for more information on accessibility.
 
 ## Pull Requests
 
@@ -76,7 +80,6 @@ Install `pnpm` package manager globally.
 pnpm i
 cd packages/components
 pnpm dev
-
 ```
 
 These steps will install the necessary dependencies, navigate to the "packages/components" directory, and start the development server. You can now begin working on the components.
@@ -86,7 +89,18 @@ These steps will install the necessary dependencies, navigate to the "packages/c
 ```
 $ pnpm fix           // fix all formatting and linting in repo
 $ pnpm verify        // run tests and builds in repo
-$ cd components
+$ cd packages/components
   && pnpm dev        // start dev server
   && pnpm test       // run tests
 ```
+
+## Working with feature branches
+
+As stated in the [release-guide.md](./packages/components/docs/release-guide.md#feature-branch-release) document, the SDS offers using a feature branch deployment to test the implementation of a new feature in your own project environment.
+
+> Note: This is only intended for testing purposes. **_Do not use it in production._**
+
+The following limitations apply to feature branch deployments:
+
+1. Feature branches are not stable, and their versions may conflict with other versions from other feature branches or the main branch. This may lead to unexpected behavior while using versioned components.
+2. The feature must be completed and merged to the main branch of the SDS repository before it can be used in any other production environment. This means the feature cannot be added to the SDS library if it is not ready before the go-live date in your own project environment.

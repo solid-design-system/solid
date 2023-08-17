@@ -12,7 +12,7 @@ type AxisDefinition = {
   title?: string;
 };
 
-type ConstantDefinition = {
+export type ConstantDefinition = {
   type: ArgTypesDefinition | 'template';
   name: string;
   value: any;
