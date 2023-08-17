@@ -4,7 +4,6 @@ import { html, literal } from 'lit/static-html.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
-
 /**
  * @summary Tags are used as labels to organize things or to indicate a selection.
  * @documentation https://solid.union-investment.com/[storybook-link]/tag
