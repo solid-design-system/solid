@@ -27,8 +27,8 @@ export default (() => {
                 dest: 'dist/versioned-styles',
                 rename: () => `solid-styles.css`,
                 transform: contents => {
-                  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-                  const version = packageJson.version as string;
+                  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment
+                  const version = packageJson.version;
                   return contents.toString().replace(/\.sd-/g, `.sd-${version.replace(/\./g, '-')}-`);
                 }
               }
