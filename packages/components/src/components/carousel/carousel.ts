@@ -351,7 +351,7 @@ export default class SdCarousel extends SolidElement {
     const isLtr = this.localize.dir() === 'ltr';
 
     return html`
-      <div part="base" class=${cx(`carousel h-full w-full`, this.inverted ? 'bg-[#00358E]' : '')}>
+      <div part="base" class=${cx(`carousel h-full w-full`)}>
         <div
           id="scroll-container"
           part="scroll-container"
@@ -371,7 +371,7 @@ export default class SdCarousel extends SolidElement {
           <slot></slot>
         </div>
 
-        <div class=${cx('w-full flex items-center justify-center relative', this.inverted ? 'bg-primary' : '')}>
+        <div class=${cx('w-full flex items-center justify-center relative')}>
           <div part="navigation" class=${cx('flex items-center')}>
             <sd-button
               ?disabled=${!prevEnabled ? true : false}
