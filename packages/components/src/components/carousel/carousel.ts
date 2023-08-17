@@ -371,7 +371,7 @@ export default class SdCarousel extends SolidElement {
           <slot></slot>
         </div>
 
-        <div class=${cx('w-full flex items-center justify-center relative')}>
+        <div part="controls" class=${cx('w-full flex items-center justify-center relative')}>
           <div part="navigation" class=${cx('flex items-center')}>
             <sd-button
               ?disabled=${!prevEnabled ? true : false}
@@ -396,7 +396,7 @@ export default class SdCarousel extends SolidElement {
             ${this.variant === 'dot'
               ? html`
                   <div
-                    part="pagination"
+                    part="pagination-dot"
                     role="tablist"
                     class="${cx(' flex wrap items-center gap-2')}"
                     aria-controls="scroll-container"
@@ -434,7 +434,7 @@ export default class SdCarousel extends SolidElement {
                     })}
                   </div>
                 `
-              : html` <span class="flex gap-0.5 cursor-default">
+              : html` <span part="pagination-number" class="flex gap-0.5 cursor-default">
                   <span
                     class=${cx('w-5 text-center border-b-2 border-accent', this.inverted ? 'text-white' : 'text-black')}
                     >${currentPage + 1}</span
