@@ -35,10 +35,19 @@ export default class SdTag extends SolidElement {
   /** Draws the button in a loading state. */
   @property({ type: Boolean, reflect: true }) disabled = false;
 
-  private handleRemoveClick() {
-    this.emit('sd-remove');
+  /** When set, the underlying button will be rendered as an `<a>` with this `href` instead of a `<button>`. */
+  @property() href = '';
+
+  /** Tells the browser where to open the link. Only used when `href` is present. */
+  @property() target: '_blank' | '_parent' | '_self' | '_top';
+
+  private handleBlur() {
+    this.emit('sd-blur');
   }
 
+  private handleFocus() {
+    this.emit('sd-focus');
+  }
   render() {
     return html`
       <span
@@ -57,21 +66,6 @@ export default class SdTag extends SolidElement {
         )}
       >
         <slot part="content"></slot>
-        ${this.filtered
-          ? html`
-              <sd-button
-                part="remove-button"
-                exportparts="base:remove-button__base"
-                name="x-lg"
-                library="system"
-                label=${this.localize.term('remove')}
-                class="tag__remove"
-                @click=${this.handleRemoveClick}
-                tabindex="-1"
-                >x</sd-button
-              >
-            `
-          : ''}
       </span>
     `;
   }
