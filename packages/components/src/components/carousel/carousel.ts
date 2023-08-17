@@ -60,9 +60,6 @@ export default class SdCarousel extends SolidElement {
   /** Specifies how many slides should be shown at a given time.  */
   @property({ type: Number, attribute: 'slides-per-page' }) slidesPerPage = 1;
 
-  /** When set, it is possible to scroll through the slides by dragging them with the mouse. */
-  @property({ type: Boolean, reflect: true, attribute: 'mouse-dragging' }) mouseDragging = false;
-
   @query('slot:not([name])') defaultSlot: HTMLSlotElement;
   @query('.carousel__slides') scrollContainer: HTMLElement;
   @query('.carousel__pagination') paginationContainer: HTMLElement;
@@ -296,26 +293,13 @@ export default class SdCarousel extends SolidElement {
     }
   }
 
-  @watch('mouseDragging')
-  handleMouseDraggingChange() {
-    this.scrollController.mouseDragging = this.mouseDragging;
-  }
-
   /**
    * Move the carousel backward by `slides-per-move` slides.
    *
    * @param behavior - The behavior used for scrolling.
    */
   previous(behavior: ScrollBehavior = 'smooth') {
-    let previousIndex = this.activeSlide || this.activeSlide - this.slidesPerMove;
-    let canSnap = false;
-
-    while (!canSnap && previousIndex > 0) {
-      previousIndex -= 1;
-      canSnap = Math.abs(previousIndex - this.slidesPerMove) % this.slidesPerMove === 0;
-    }
-
-    this.goToSlide(previousIndex, behavior);
+    this.goToSlide(this.activeSlide - 1, behavior);
   }
 
   /**
