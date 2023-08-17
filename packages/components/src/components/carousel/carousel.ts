@@ -27,7 +27,8 @@ import SolidElement from '../../internal/solid-element.js';
  * @slot - The carousel's main content, one or more `<sd-carousel-item>` elements.
  * @slot next-icon - Optional next icon to use instead of the default. Works best with `<sd-icon>`.
  * @slot previous-icon - Optional previous icon to use instead of the default. Works best with `<sd-icon>`.
- * @slot autoplay-controller-icon - Optional autoplay controller icon to use instead of the default pause/play icons. Works best with `<sd-icon>`.
+ * @slot autoplay-start - Optional start icon to use instead of the default. Works best with `<sd-icon>`.
+ * @slot autoplay-pause - Optional pause icon to use instead of the default. Works best with `<sd-icon>`.
  *
  * @csspart base - The carousel's internal wrapper.
  * @csspart scroll-container - The scroll container that wraps the slides.
@@ -212,7 +213,7 @@ export default class SdCarousel extends SolidElement {
     this.requestUpdate();
   };
 
-  private toggleAutoplay() {
+  public toggleAutoplay() {
     this.pausedAutoplay = !this.pausedAutoplay;
     if (this.pausedAutoplay) {
       this.autoplayController.manualPause();
@@ -465,7 +466,7 @@ export default class SdCarousel extends SolidElement {
               ?inverted=${this.inverted}
               variant="tertiary"
               part="navigation-button navigation-button--next"
-              class=${cx('ml-2')}
+              class="ml-2"
               aria-label="${this.localize.term('nextSlide')}"
               aria-controls="scroll-container"
               aria-disabled="${nextEnabled ? 'false' : 'true'}"
@@ -487,7 +488,7 @@ export default class SdCarousel extends SolidElement {
             part="autoplay-controls"
             @click=${this.toggleAutoplay}
           >
-            <slot name="autoplay-play" class=${cx(!this.pausedAutoplay ? 'hidden' : '')}>
+            <slot name="autoplay-start" class=${cx(!this.pausedAutoplay ? 'hidden' : '')}>
               <sd-icon class=${cx('h-6 w-6')} library="system" name="start"></sd-icon>
             </slot>
 
@@ -548,6 +549,13 @@ export default class SdCarousel extends SolidElement {
 
       .carousel__navigation {
         grid-area: navigation;
+      }
+
+      sd-button::part(label) {
+        display: flex;
+        flex: 1 1 auto;
+        align-items: center;
+        pointer-events: none;
       }
     `
   ];
