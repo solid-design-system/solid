@@ -1,4 +1,4 @@
-import type { Style } from '../definitions';
+import type { Style } from '../solid-styles.declaration';
 
 export default {
   styleName: 'sd-mark',

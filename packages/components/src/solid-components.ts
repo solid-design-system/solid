@@ -1,8 +1,4 @@
-// Import CSS components
-
-import './styles/index.css';
-
-// Import Web components and register them
+// Import Web Womponents and register them
 
 /* PACKAGES:START */
 const modules = import.meta.glob('./components/**/!(*.stories|*.spec|*.test|*.style).ts');

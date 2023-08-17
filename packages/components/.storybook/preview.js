@@ -1,7 +1,8 @@
 import { setCustomElementsManifest } from '@storybook/web-components';
 import 'normalize.css';
+import '../src/solid-styles.css';
 
-import { styleDefinitions } from '../src/styles/definitions';
+import { styleDefinitions } from '../src/styles/solid-styles.declaration';
 
 import { registerIconLibrary } from '../src/utilities/icon-library';
 import { storybookUtilities } from '../scripts/storybook/helper';

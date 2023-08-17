@@ -1,4 +1,4 @@
-type StyleStatus = 'experimental' | 'stable' | 'deprecated'; // or any other status you might have
+type StyleStatus = 'experimental' | 'stable' | 'deprecated';
 
 interface StyleAttribute {
   name: string;
@@ -18,7 +18,7 @@ export interface Style {
 }
 
 // Use import.meta.glob to get all the .definition.ts files
-const definitionModules = import.meta.glob('./**/*.definition.ts');
+const definitionModules = import.meta.glob('./**/*.declaration.ts');
 
 const styleDefinitions: Style[] = [];
 

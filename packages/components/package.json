@@ -26,6 +26,12 @@
     "./versioned/*": {
       "import": "./dist/versioned-package/components/*",
       "types": "./dist/versioned-package/solid-components.d.ts"
+    },
+    "./unversioned-styles": {
+      "import": "./dist/styles/solid-styles.css"
+    },
+    "./versioned-styles": {
+      "import": "./dist/versioned-styles/solid-styles.css"
     }
   },
   "files": [
@@ -44,10 +50,11 @@
   "scripts": {
     "start": "echo '❌ Please use `pnpm dev` instead.'",
     "dev": "pnpm storybook",
-    "build": "pnpm build.components && pnpm build.package && pnpm build.storybook && node ./scripts/node-version-components.cjs",
+    "build": "pnpm build.components && pnpm build.package && pnpm build.storybook && node ./scripts/node-version-components.cjs && pnpm build.styles",
     "build.cdn": "pnpm build.components && pnpm build.storybook && node ./scripts/node-version-components.cjs",
     "build.npm": "pnpm build.components && pnpm build.package && node ./scripts/node-version-components.cjs",
     "build.components": "vite build  --config vite.config.js",
+    "build.styles": "vite build  --config vite.config.styles.js",
     "build.package": "pnpm build.package/create-index && vite build --config vite.config.package.js && pnpm build.package/remove-index",
     "build.package/create-index": "node scripts/node-generate-package-index.cjs && echo '✅ Index created'",
     "build.package/remove-index": "node -e \"require('fs').unlinkSync('src/solid-components.package.ts')\" && echo '✅ Index removed'",
@@ -119,6 +126,7 @@
     "prettier": "^2.8.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-summary": "^2.0.0",
     "semantic-release": "^19.0.5",
     "semantic-release-monorepo": "^7.0.5",
