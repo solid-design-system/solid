@@ -61,7 +61,7 @@ export const Variant = {
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        y: { type: 'attribute', name: 'variant' }
+        y: { type: 'attribute', name: 'variant', values: ['dot', 'number'] }
       },
       args
     });
@@ -97,38 +97,6 @@ export const Loop = {
     return generateTemplate({
       axis: {
         y: { type: 'attribute', name: 'loop' }
-      },
-      args
-    });
-  }
-};
-
-/**
- * Use the `navigate` attribute to toggle the visibility of the navigation buttons.
- */
-
-export const Navigation = {
-  parameters: { controls: { exclude: 'navigation' } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: { type: 'attribute', name: 'navigation' }
-      },
-      args
-    });
-  }
-};
-
-/**
- * Use the `pagination` attribute to toggle the visibility of the pagination dots/numbers.
- */
-
-export const Pagination = {
-  parameters: { controls: { exclude: 'pagination' } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: { type: 'attribute', name: 'pagination' }
       },
       args
     });

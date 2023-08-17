@@ -45,18 +45,12 @@ import SolidElement from '../../internal/solid-element.js';
 @customElement('sd-carousel')
 export default class SdCarousel extends SolidElement {
   /** Determines the counting system for the carousel. */
-  @property({ type: String, attribute: 'string', reflect: true }) variant: 'dot' | 'num' = 'num';
+  @property({ type: String, attribute: 'variant', reflect: true }) variant: 'dot' | 'number' = 'number';
   /** Inverts the carousel */
   @property({ type: Boolean, reflect: true }) inverted = false;
 
   /** When set, allows the user to navigate the carousel in the same direction indefinitely. */
   @property({ type: Boolean, reflect: true }) loop = false;
-
-  /** When set, show the carousel's navigation. */
-  @property({ type: Boolean, reflect: true }) navigation = true;
-
-  /** When set, show the carousel's pagination indicators. */
-  @property({ type: Boolean, reflect: true }) pagination = true;
 
   /** When set, the slides will scroll automatically when the user is not interacting with them.  */
   @property({ type: Boolean, reflect: true }) autoplay = false;
@@ -403,112 +397,104 @@ export default class SdCarousel extends SolidElement {
           <slot></slot>
         </div>
 
-        <div class=${cx('flex flex-row items-center justify-center', this.inverted ? 'bg-primary' : '')}>
-          ${this.navigation
-            ? html`
-                <div part="navigation" class=${cx('contents')}>
-                  <sd-button
-                    size="sm"
-                    ?disabled=${!prevEnabled ? true : false}
-                    ?inverted=${this.inverted}
-                    variant="tertiary"
-                    part="navigation-button navigation-button--previous"
-                    class=${cx('mr-6')}
-                    aria-label="${this.localize.term('previousSlide')}"
-                    aria-controls="scroll-container"
-                    aria-disabled="${prevEnabled ? 'false' : 'true'}"
-                    @click=${prevEnabled ? () => this.previous() : null}
-                  >
-                    <sd-icon
-                      class=${cx('h-6 w-6 rotate-90 ')}
-                      library="system"
-                      name="${isLtr ? 'chevron-down' : 'chevron-up'}"
-                    ></sd-icon>
-                  </sd-button>
+        <div class=${cx('w-full flex items-center justify-center relative', this.inverted ? 'bg-primary' : '')}>
+          <div part="navigation" class=${cx('flex items-center')}>
+            <sd-button
+              ?disabled=${!prevEnabled ? true : false}
+              ?inverted=${this.inverted}
+              variant="tertiary"
+              part="navigation-button navigation-button--previous"
+              class=${cx('mr-6')}
+              aria-label="${this.localize.term('previousSlide')}"
+              aria-controls="scroll-container"
+              aria-disabled="${prevEnabled ? 'false' : 'true'}"
+              @click=${prevEnabled ? () => this.previous() : null}
+            >
+              <sd-icon
+                class=${cx('h-6 w-6 rotate-90 ')}
+                library="system"
+                name="${isLtr ? 'chevron-down' : 'chevron-up'}"
+              ></sd-icon>
+            </sd-button>
 
-                  ${this.variant === 'dot'
-                    ? html`
-                        <div
-                          part="pagination"
-                          role="tablist"
-                          class="${cx(' flex wrap items-center gap-2')}"
-                          aria-controls="scroll-container"
-                        >
-                          ${map(range(pagesCount), index => {
-                            const isActive = index === currentPage;
-                            return html`
-                              <button
-                                part="pagination-item ${isActive ? 'pagination-item--active' : ''}"
-                                class="${cx(
-                                  'carousel__pagination-item',
-                                  'block cursor-pointer bg-none border-0',
-                                  isActive ? 'bg-accent rounded-full' : ''
-                                )}"
-                                role="tab"
-                                aria-selected="${isActive ? 'true' : 'false'}"
-                                aria-label="${this.localize.term('goToSlide', index + 1, pagesCount)}"
-                                tabindex=${isActive ? '0' : '-1'}
-                                @click=${() => this.goToSlide(index * slidesPerPage)}
-                                @keydown=${this.handleKeyDown}
-                              >
-                                <span
-                                  class=${cx(
-                                    'h-4 w-4 block border hover:border-primary-500 rounded-full',
-                                    this.inverted ? 'border-white hover:border-primary-500' : 'border-primary',
-                                    isActive
-                                      ? this.inverted
-                                        ? 'bg-accent hover:bg-accent-300 border-none'
-                                        : 'bg-accent hover:bg-accent-550 border-none'
-                                      : ''
-                                  )}
-                                ></span>
-                              </button>
-                            `;
-                          })}
-                        </div>
-                      `
-                    : html` <span class="flex space-x-[0.5rem] ">
-                        <span
-                          class=${cx(
-                            'w-5 text-center border-b-2 border-accent cursor-auto',
-                            this.inverted ? 'text-white' : 'text-black'
-                          )}
-                          >${currentPage + 1}</span
-                        >
-                        <span
-                          class=${cx(
-                            'scale-y-[1.5] cursor-auto',
-                            'text-center',
-                            this.inverted ? 'text-white' : 'text-black'
-                          )}
-                          >/</span
-                        >
-                        <span class=${cx('w-5 text-center cursor-auto', this.inverted ? 'text-white' : 'text-black')}
-                          >${pagesCount}</span
-                        >
-                      </span>`}
-
-                  <sd-button
-                    size="sm"
-                    ?disabled=${!nextEnabled ? true : false}
-                    ?inverted=${this.inverted}
-                    variant="tertiary"
-                    part="navigation-button navigation-button--next"
-                    class=${cx('ml-6')}
-                    aria-label="${this.localize.term('nextSlide')}"
+            ${this.variant === 'dot'
+              ? html`
+                  <div
+                    part="pagination"
+                    role="tablist"
+                    class="${cx(' flex wrap items-center gap-2')}"
                     aria-controls="scroll-container"
-                    aria-disabled="${nextEnabled ? 'false' : 'true'}"
-                    @click=${nextEnabled ? () => this.next() : null}
                   >
-                    <sd-icon
-                      class=${cx('h-6 w-6 rotate-90')}
-                      library="system"
-                      name="${isLtr ? 'chevron-up' : 'chevron-down'}"
-                    ></sd-icon>
-                  </sd-button>
-                </div>
-              `
-            : ''}
+                    ${map(range(pagesCount), index => {
+                      const isActive = index === currentPage;
+                      return html`
+                        <button
+                          part="pagination-item ${isActive ? 'pagination-item--active' : ''}"
+                          class="${cx(
+                            'carousel__pagination-item',
+                            'block cursor-pointer bg-none border-0',
+                            isActive ? 'bg-accent rounded-full' : ''
+                          )}"
+                          role="tab"
+                          aria-selected="${isActive ? 'true' : 'false'}"
+                          aria-label="${this.localize.term('goToSlide', index + 1, pagesCount)}"
+                          tabindex=${isActive ? '0' : '-1'}
+                          @click=${() => this.goToSlide(index * slidesPerPage)}
+                          @keydown=${this.handleKeyDown}
+                        >
+                          <span
+                            class=${cx(
+                              'h-4 w-4 block border hover:border-primary-500 rounded-full',
+                              this.inverted ? 'border-white hover:border-primary-500' : 'border-primary',
+                              isActive
+                                ? this.inverted
+                                  ? 'bg-accent hover:bg-accent-300 border-none'
+                                  : 'bg-accent hover:bg-accent-550 border-none'
+                                : ''
+                            )}
+                          ></span>
+                        </button>
+                      `;
+                    })}
+                  </div>
+                `
+              : html` <span class="flex space-x-[0.5rem] cursor-default">
+                  <span
+                    class=${cx('w-5 text-center border-b-2 border-accent', this.inverted ? 'text-white' : 'text-black')}
+                    >${currentPage + 1}</span
+                  >
+                  <span class=${cx('scale-y-[1.5]', 'text-center', this.inverted ? 'text-white' : 'text-black')}
+                    >/</span
+                  >
+                  <span class=${cx('w-5 text-center', this.inverted ? 'text-white' : 'text-black')}>${pagesCount}</span>
+                </span>`}
+
+            <sd-button
+              ?disabled=${!nextEnabled ? true : false}
+              ?inverted=${this.inverted}
+              variant="tertiary"
+              part="navigation-button navigation-button--next"
+              class=${cx('ml-6')}
+              aria-label="${this.localize.term('nextSlide')}"
+              aria-controls="scroll-container"
+              aria-disabled="${nextEnabled ? 'false' : 'true'}"
+              @click=${nextEnabled ? () => this.next() : null}
+            >
+              <sd-icon
+                class=${cx('h-6 w-6 rotate-90')}
+                library="system"
+                name="${isLtr ? 'chevron-up' : 'chevron-down'}"
+              ></sd-icon>
+            </sd-button>
+          </div>
+          <sd-button
+            ?inverted=${this.inverted}
+            variant="tertiary"
+            class=${cx('items-end absolute right-0')}
+            part="autoplay-controls"
+          >
+            <sd-icon class=${cx('h-6 w-6')} library="system" name="start"></sd-icon>
+          </sd-button>
         </div>
       </div>
     `;
@@ -562,10 +548,6 @@ export default class SdCarousel extends SolidElement {
 
       .carousel__navigation {
         grid-area: navigation;
-      }
-
-      sd-button::part(base):hover {
-        background: none;
       }
     `
   ];
