@@ -27,6 +27,7 @@ import SolidElement from '../../internal/solid-element.js';
  * @slot - The carousel's main content, one or more `<sd-carousel-item>` elements.
  * @slot next-icon - Optional next icon to use instead of the default. Works best with `<sd-icon>`.
  * @slot previous-icon - Optional previous icon to use instead of the default. Works best with `<sd-icon>`.
+ * @slot autoplay-controller-icon - Optional autoplay controller icon to use instead of the default pause/play icons. Works best with `<sd-icon>`.
  *
  * @csspart base - The carousel's internal wrapper.
  * @csspart scroll-container - The scroll container that wraps the slides.
@@ -45,7 +46,7 @@ import SolidElement from '../../internal/solid-element.js';
 @customElement('sd-carousel')
 export default class SdCarousel extends SolidElement {
   /** Determines the counting system for the carousel. */
-  @property({ type: String, attribute: 'variant', reflect: true }) variant: 'dot' | 'number' = 'number';
+  @property({ type: String, reflect: true }) variant: 'dot' | 'num' = 'num';
   /** Inverts the carousel */
   @property({ type: Boolean, reflect: true }) inverted = false;
 
@@ -55,17 +56,8 @@ export default class SdCarousel extends SolidElement {
   /** When set, the slides will scroll automatically when the user is not interacting with them.  */
   @property({ type: Boolean, reflect: true }) autoplay = false;
 
-  /** Specifies the amount of time, in milliseconds, between each automatic scroll.  */
-  @property({ type: Number, attribute: 'autoplay-interval' }) autoplayInterval = 3000;
-
   /** Specifies how many slides should be shown at a given time.  */
   @property({ type: Number, attribute: 'slides-per-page' }) slidesPerPage = 1;
-
-  /**
-   * Specifies the number of slides the carousel will advance when scrolling, useful when specifying a `slides-per-page`
-   * greater than one.
-   */
-  @property({ type: Number, attribute: 'slides-per-move' }) slidesPerMove = 1;
 
   /** When set, it is possible to scroll through the slides by dragging them with the mouse. */
   @property({ type: Boolean, reflect: true, attribute: 'mouse-dragging' }) mouseDragging = false;
@@ -76,6 +68,9 @@ export default class SdCarousel extends SolidElement {
 
   // The index of the active slide
   @state() activeSlide = 0;
+
+  // Boolean keeping track of the autoplay pause/play button
+  @property({ type: Boolean, reflect: true }) pausedAutoplay = false;
 
   private autoplayController = new AutoplayController(this, () => this.next());
   private scrollController = new ScrollController(this);
@@ -217,6 +212,15 @@ export default class SdCarousel extends SolidElement {
     this.requestUpdate();
   };
 
+  private toggleAutoplay() {
+    this.pausedAutoplay = !this.pausedAutoplay;
+    if (this.pausedAutoplay) {
+      this.autoplayController.manualPause();
+    } else if (this.autoplay) {
+      this.autoplayController.manualResume();
+    }
+  }
+
   @watch('loop', { waitUntilFirstUpdate: true })
   @watch('slidesPerPage', { waitUntilFirstUpdate: true })
   initializeSlides() {
@@ -283,26 +287,11 @@ export default class SdCarousel extends SolidElement {
     }
   }
 
-  @watch('slidesPerMove')
-  handleSlidesPerMoveChange() {
-    const slides = this.getSlides({ excludeClones: false });
-
-    const slidesPerMove = this.slidesPerMove;
-    slides.forEach((slide, i) => {
-      const shouldSnap = Math.abs(i - slidesPerMove) % slidesPerMove === 0;
-      if (shouldSnap) {
-        slide.style.removeProperty('scroll-snap-align');
-      } else {
-        slide.style.setProperty('scroll-snap-align', 'none');
-      }
-    });
-  }
-
   @watch('autoplay')
   handleAutoplayChange() {
     this.autoplayController.stop();
     if (this.autoplay) {
-      this.autoplayController.start(this.autoplayInterval);
+      this.autoplayController.start(3000);
     }
   }
 
@@ -334,7 +323,7 @@ export default class SdCarousel extends SolidElement {
    * @param behavior - The behavior used for scrolling.
    */
   next(behavior: ScrollBehavior = 'smooth') {
-    this.goToSlide(this.activeSlide + this.slidesPerMove, behavior);
+    this.goToSlide(this.activeSlide + 1, behavior);
   }
 
   /**
@@ -404,17 +393,19 @@ export default class SdCarousel extends SolidElement {
               ?inverted=${this.inverted}
               variant="tertiary"
               part="navigation-button navigation-button--previous"
-              class=${cx('mr-6')}
+              class=${cx('mr-2')}
               aria-label="${this.localize.term('previousSlide')}"
               aria-controls="scroll-container"
               aria-disabled="${prevEnabled ? 'false' : 'true'}"
               @click=${prevEnabled ? () => this.previous() : null}
             >
-              <sd-icon
-                class=${cx('h-6 w-6 rotate-90 ')}
-                library="system"
-                name="${isLtr ? 'chevron-down' : 'chevron-up'}"
-              ></sd-icon>
+              <slot name="previous-icon">
+                <sd-icon
+                  class=${cx('h-6 w-6 rotate-90 justify-self-center')}
+                  library="system"
+                  name="${isLtr ? 'chevron-down' : 'chevron-up'}"
+                ></sd-icon>
+              </slot>
             </sd-button>
 
             ${this.variant === 'dot'
@@ -458,7 +449,7 @@ export default class SdCarousel extends SolidElement {
                     })}
                   </div>
                 `
-              : html` <span class="flex space-x-[0.5rem] cursor-default">
+              : html` <span class="flex gap-0.5 cursor-default">
                   <span
                     class=${cx('w-5 text-center border-b-2 border-accent', this.inverted ? 'text-white' : 'text-black')}
                     >${currentPage + 1}</span
@@ -474,26 +465,35 @@ export default class SdCarousel extends SolidElement {
               ?inverted=${this.inverted}
               variant="tertiary"
               part="navigation-button navigation-button--next"
-              class=${cx('ml-6')}
+              class=${cx('ml-2')}
               aria-label="${this.localize.term('nextSlide')}"
               aria-controls="scroll-container"
               aria-disabled="${nextEnabled ? 'false' : 'true'}"
               @click=${nextEnabled ? () => this.next() : null}
             >
-              <sd-icon
-                class=${cx('h-6 w-6 rotate-90')}
-                library="system"
-                name="${isLtr ? 'chevron-up' : 'chevron-down'}"
-              ></sd-icon>
+              <slot name="next-icon">
+                <sd-icon
+                  class=${cx('h-6 w-6 rotate-90')}
+                  library="system"
+                  name="${isLtr ? 'chevron-up' : 'chevron-down'}"
+                ></sd-icon>
+              </slot>
             </sd-button>
           </div>
           <sd-button
             ?inverted=${this.inverted}
             variant="tertiary"
-            class=${cx('items-end absolute right-0')}
+            class=${cx('items-end absolute right-0 transition-all', !this.autoplay ? 'hidden' : '')}
             part="autoplay-controls"
+            @click=${this.toggleAutoplay}
           >
-            <sd-icon class=${cx('h-6 w-6')} library="system" name="start"></sd-icon>
+            <slot name="autoplay-play" class=${cx(!this.pausedAutoplay ? 'hidden' : '')}>
+              <sd-icon class=${cx('h-6 w-6')} library="system" name="start"></sd-icon>
+            </slot>
+
+            <slot name="autoplay-pause" class=${cx(this.pausedAutoplay ? 'hidden' : '')}>
+              <sd-icon class=${cx('h-6 w-6')} library="system" name="pause"></sd-icon>
+            </slot>
           </sd-button>
         </div>
       </div>

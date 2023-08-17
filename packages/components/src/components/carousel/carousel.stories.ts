@@ -21,8 +21,6 @@ export default {
         <sd-carousel-item> <slot-comp></slot-comp> </sd-carousel-item>
         <sd-carousel-item> <slot-comp></slot-comp> </sd-carousel-item>
         <sd-carousel-item> <slot-comp></slot-comp> </sd-carousel-item>
-        <sd-carousel-item> <slot-comp></slot-comp> </sd-carousel-item>
-        <sd-carousel-item> <slot-comp></slot-comp> </sd-carousel-item>
         <sd-carousel-item> <slot-comp></slot-comp> </sd-carousel-item>`
     }
   ]),
@@ -121,23 +119,6 @@ export const Autoplay = {
 };
 
 /**
- * Use the `autoplay-interval` attribute to set the speed of slide change in milliseconds.
- */
-
-export const autoplayInterval = {
-  parameters: { controls: { exclude: 'autoplay-interval' } },
-  render: (args: any) => {
-    return html`${generateTemplate({
-      axis: {
-        y: { type: 'attribute', name: 'autoplay-interval(ms)', values: [3000, 2000, 1000] }
-      },
-      constants: [{ type: 'attribute', name: 'autoplay', value: true }],
-      args
-    })}`;
-  }
-};
-
-/**
  * Use the `slides-per-page` attribute to set the number of slides that would be shown at a given time.
  */
 
@@ -149,22 +130,6 @@ export const SlidesPerPage = {
         y: { type: 'attribute', name: 'slides-per-page', values: [1, 2, 3] }
       },
       constants: [{ type: 'attribute', name: 'variant', value: 'dot' }],
-      args
-    });
-  }
-};
-
-/**
- * Use the `slides-per-move` attribute to set slides per swipe or button click.
- */
-
-export const SlidesPerMove = {
-  parameters: { controls: { exclude: 'slides-per-move' } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: { type: 'attribute', name: 'slides-per-move', values: [1, 2, 3] }
-      },
       args
     });
   }

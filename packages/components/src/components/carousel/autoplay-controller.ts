@@ -70,4 +70,15 @@ export class AutoplayController implements ReactiveController {
       this.host.requestUpdate();
     }
   };
+
+  manualPause = () => {
+      this.paused = true;
+      this.host.requestUpdate();
+
+  };
+
+  manualResume = () => {
+      this.paused = false;
+      this.host.requestUpdate();
+  };
 }
