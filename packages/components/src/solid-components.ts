@@ -1,4 +1,4 @@
-// Import Web Womponents and register them
+// Import all components and register them
 
 /* PACKAGES:START */
 const modules = import.meta.glob('./components/**/!(*.stories|*.spec|*.test|*.style).ts');
