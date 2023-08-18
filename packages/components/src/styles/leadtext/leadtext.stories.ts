@@ -38,14 +38,14 @@ export const Default = {
  */
 
 export const Inverted = {
-  parameters: { controls: { exclude: ['sd-leadtext--size-...', 'sd-leadtext--inverted'] } },
+  parameters: { controls: { exclude: ['sd-leadtext--inverted'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        x: [{ type: 'attribute', name: 'sd-leadtext--size-...' }]
+        y: [{ type: 'attribute', name: 'sd-leadtext--inverted', values: [false, true] }]
       },
       constants: { type: 'attribute', name: 'sd-leadtext--inverted', value: true },
-      options: { templateBackground: '#00358E' },
+      options: { templateBackgrounds: { alternate: 'y', colors: ['transparent', '#00358E'] } },
       args
     });
   }

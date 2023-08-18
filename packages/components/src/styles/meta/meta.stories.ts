@@ -77,43 +77,19 @@ export const VariantAndInverted = {
 };
 
 /**
- * Use the `inverted` class to make the sd-meta with inverted colors.
- */
-
-export const Inverted = {
-  parameters: {
-    controls: {
-      exclude: ['sd-meta--size-...', 'sd-meta--inverted', 'sd-meta--color-additional']
-    }
-  },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        x: [
-          { type: 'attribute', name: 'sd-meta--size-...' },
-          { type: 'attribute', name: 'sd-meta--color-additional' },
-          { type: 'attribute', name: 'sd-meta--pipe' }
-        ]
-      },
-      constants: { type: 'attribute', name: 'sd-meta--inverted', value: true },
-      options: { templateBackground: '#00358E' },
-      args
-    });
-  }
-};
-
-/**
  * The sd-meta with pipe.
  */
 
 export const Pipe = {
-  parameters: { controls: { exclude: ['sd-meta--pipe', 'sd-meta--size-...'] } },
+  parameters: { controls: { exclude: ['sd-meta--pipe', 'sd-meta--color-additional', 'sd-meta--inverted'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        x: { type: 'attribute', name: 'sd-meta--pipe' },
-        y: { type: 'attribute', name: 'sd-meta--size-...' }
+        x: { type: 'attribute', name: 'sd-meta--color-additional' },
+        y: { type: 'attribute', name: 'sd-meta--inverted', values: [false, true] }
       },
+      constants: { type: 'attribute', name: 'sd-meta--pipe', value: true },
+      options: { templateBackgrounds: { alternate: 'y', colors: ['transparent', '#00358E'] } },
       args
     });
   }

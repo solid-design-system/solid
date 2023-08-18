@@ -38,14 +38,14 @@ export const Default = {
  */
 
 export const Inverted = {
-  parameters: { controls: { exclude: ['sd-display--size-...', 'sd-display--inverted'] } },
+  parameters: { controls: { exclude: ['sd-display--inverted'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        x: [{ type: 'attribute', name: 'sd-display--size-...' }]
+        y: [{ type: 'attribute', name: 'sd-display--inverted', values: [false, true] }]
       },
       constants: { type: 'attribute', name: 'sd-display--inverted', value: true },
-      options: { templateBackground: '#00358E' },
+      options: { templateBackgrounds: { alternate: 'y', colors: ['transparent', '#00358E'] } },
       args
     });
   }

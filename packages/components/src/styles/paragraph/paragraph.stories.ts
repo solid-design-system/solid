@@ -38,14 +38,14 @@ export const Default = {
  */
 
 export const Inverted = {
-  parameters: { controls: { exclude: ['sd-paragraph--size-...', 'sd-paragraph--inverted'] } },
+  parameters: { controls: { exclude: ['sd-paragraph--inverted'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        x: [{ type: 'attribute', name: 'sd-paragraph--size-...' }]
+        y: [{ type: 'attribute', name: 'sd-paragraph--inverted', values: [false, true] }]
       },
       constants: { type: 'attribute', name: 'sd-paragraph--inverted', value: true },
-      options: { templateBackground: '#00358E' },
+      options: { templateBackgrounds: { alternate: 'y', colors: ['transparent', '#00358E'] } },
       args
     });
   }
