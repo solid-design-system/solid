@@ -103,7 +103,7 @@ export const Slots = {
           title: 'slot=...',
           values: [
             {
-              value: `<span class="slot-highlight">8</span>`,
+              value: `<span class='slot-highlight'>8</span>`,
               title: 'default'
             }
           ]
