@@ -20,7 +20,7 @@ import SolidElement from '../../internal/solid-element';
  * @summary Drawers slide in from a container to expose additional options and information.
  * @documentation https://solid.union-investment.com/[storybook-link]/drawer
  * @status stable
- * @since 1.0
+ * @since 1.6
  *
  * @dependency sd-icon-button
  *
@@ -75,11 +75,11 @@ export default class SdDrawer extends SolidElement {
    * Indicates whether or not the drawer is open. You can toggle this attribute to show and hide the drawer, or you can
    * use the `show()` and `hide()` methods and this attribute will reflect the drawer's open state.
    */
-  @property({ type: Boolean, reflect: true }) open = true;
+  @property({ type: Boolean, reflect: true }) open = false;
 
   /**
-   * The drawer's label as displayed in the header. You should always include a relevant label even when using
-   * `no-header`, as it is required for proper accessibility. If you need to display HTML, use the `label` slot instead.
+   * You should always include a relevant label even when using
+   * `no-header`, as it is required for proper accessibility.
    */
   @property({ attribute: 'label', reflect: true }) label = '';
 
@@ -87,14 +87,9 @@ export default class SdDrawer extends SolidElement {
   @property({ reflect: true }) placement: 'end' | 'start' = 'end';
 
   /**
-   * Extra padding can be turned off if a button is used in the `header` slot.
-   */
-  @property({ attribute: 'no-padding', type: Boolean, reflect: true }) noPadding = false;
-
-  /**
    * By default, the drawer slides out of its containing block (the viewport). Contained is a hidden feature used only for testing purposes. Please do not use it in production as it will likely change.
    */
-  @property({ type: Boolean, reflect: true }) contained = true;
+  @property({ type: Boolean, reflect: true }) contained = false;
   /**
    * Removes the header. This will also remove the default close button, so please ensure you provide an easy,
    * accessible way for users to dismiss the drawer.
@@ -320,15 +315,9 @@ export default class SdDrawer extends SolidElement {
         >
           ${!this.noHeader
             ? html`
-                <header
-                  part="header"
-                  class=${cx('flex justify-between py-3 pr-3 items-center', this.noPadding ? '' : 'pl-4')}
-                >
-                  <!-- If there's no label, use an invisible character to prevent the header from collapsing -->
+                <header part="header" class="flex justify-between py-2 pr-2 items-center pl-4">
                   <div part="title">
-                    <slot name="header" part="title" class="flex-auto text-xl m-0" id="title"
-                      ><span name="label"> ${this.label.length > 0 ? this.label : String.fromCharCode(65279)} </span>
-                    </slot>
+                    <slot name="header" part="title" class="flex-auto text-xl m-0" id="title"> </slot>
                   </div>
                   <div part="header-content" class="shrink-0 flex flex-wrap justify-end gap-1 ml-4">
                     <sd-button

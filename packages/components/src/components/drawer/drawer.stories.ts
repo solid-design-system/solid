@@ -11,6 +11,7 @@ const { overrideArgs } = storybookHelpers('sd-drawer');
 export default {
   title: 'Components/sd-drawer',
   component: 'sd-drawer',
+
   args: overrideArgs([
     {
       type: 'slot',
@@ -26,10 +27,15 @@ export default {
       type: 'slot',
       name: 'footer',
       value: `<slot-comp slot='footer' style="--slot-height: 48px;"></slot-comp>`
-    }
+    },
+    { type: 'attribute', name: 'open', value: true },
+    { type: 'attribute', name: 'contained', value: true }
   ]),
   argTypes,
-  parameters
+  parameters: {
+    ...parameters,
+    controls: { exclude: ['contained'] }
+  }
 };
 
 /**
@@ -46,48 +52,30 @@ export const Default = {
   }
 };
 
-export const Label = {
-  render: (args: any) => {
-    return html` <div id="parent-container" style="width: auto; height: 95vh; position: relative;">
-      ${generateTemplate({
-        axis: {
-          x: {
-            type: 'attribute',
-            name: 'label',
-            title: 'label',
-            values: [{ value: 'Label', title: 'Label' }]
-          }
-        },
-        args,
-        constants: [
-          {
-            type: 'slot',
-            name: 'header',
-            value: `<slot-comp slot='header' style="height: 48px; width: 140px;"></slot-comp>`
-          }
-        ]
-      })}
-    </div>`;
-  }
-};
-
+/**
+ * Drawer with a tertiary button in the header. In case there's a requirement not to have left-padding in the header, as it's the case with the tertiary button in the `header` slot, you can override the `sd-drawer::part(header)` selector by applying a `left-padding: 0;` style.
+ */
 export const ButtonInHeader = {
   name: 'Button in Header',
   parameters: {
-    controls: { exclude: ['header', 'no-padding'] }
+    controls: { exclude: ['header', 'contained'] }
   },
   render: (args: any) => {
-    return html` <div id="parent-container" style="width: auto; height: 95vh; position: relative;">
+    return html` <div id="header-with-btn" style="width: auto; height: 95vh; position: relative;">
+      <style>
+        #header-with-btn sd-drawer::part(header) {
+          padding-left: 0;
+        }
+      </style>
       ${generateTemplate({
-        args,
         constants: [
           {
             type: 'slot',
             name: 'header',
-            value: `<sd-button slot='header' variant='primary'>Button</sd-button>`
-          },
-          { type: 'attribute', name: 'no-padding', value: true }
-        ]
+            value: `<sd-button slot='header' variant='tertiary'>Header</sd-button>`
+          }
+        ],
+        args
       })}
     </div>`;
   }
@@ -95,9 +83,9 @@ export const ButtonInHeader = {
 
 export const Slots = {
   parameters: {
-    controls: { exclude: ['default', 'header', 'footer'] }
+    controls: { exclude: ['default', 'header', 'footer', 'contained'] }
   },
-  render: () => {
+  render: (args: any) => {
     return html`
       ${['default', 'header', 'footer'].map((slot, index) =>
         generateTemplate({
@@ -110,7 +98,7 @@ export const Slots = {
                 {
                   value:
                     slot === 'default'
-                      ? `<slot-comp style="--slot-content: ''; --slot-height: 238px;'"></slot-comp>`
+                      ? `<slot-comp style="--slot-content: ''; --slot-height: 100%;'"></slot-comp>`
                       : `<slot-comp slot='${slot}' style="--slot-content: ''; --slot-height: 48px; --slot-width: ${
                           slot === 'header' ? '140px' : 'auto'
                         }"></slot-comp>`,
@@ -121,31 +109,15 @@ export const Slots = {
           },
           constants: [
             {
-              type: 'slot',
-              name: 'default',
-              value: `<slot-comp style="height: 100%;"></slot-comp>`
-            },
-            {
-              type: 'slot',
-              name: 'header',
-              value: `<slot-comp slot='header' style="height: 48px; width: 140px;"></slot-comp>`
-            },
-            {
-              type: 'slot',
-              name: 'footer',
-              value: `<slot-comp slot='footer' style="height: 48px;"></slot-comp>`
-            },
-            {
               type: 'template',
               name: 'width',
               value: `
-                <div id="parent-container-${index}" style="width: 250px; height: 400px; position: relative;">
-                  %TEMPLATE%
-                </div>
-              `
+              <div id="parent-container-${index}" style="width: 600px; height: 600px; position: relative;">%TEMPLATE%
+              </div>
+            `
             }
           ],
-          args: overrideArgs({ type: 'attribute', name: 'open', value: true })
+          args
         })
       )}
     `;
@@ -165,62 +137,48 @@ export const Parts = {
         'close-button',
         'body',
         'footer',
-        '--width'
+        '--width',
+        'contained'
       ]
     }
   },
-  render: () => {
+  render: (args: any) => {
     return html`
-      ${['base', 'overlay', 'panel', 'header', 'header-content', 'title', 'close-button', 'body', 'footer'].map(
-        (part, index) =>
-          generateTemplate({
-            axis: {
-              x: {
-                type: 'template',
-                name: 'sd-drawer::part(...){outline: solid 2px red}',
-                values: [
-                  {
-                    title: part,
-                    value: `<style>#part-${part} sd-drawer::part(${part}){outline: solid 2px red}</style><div id="part-${part}">%TEMPLATE%</div>`
-                  }
-                ]
-              }
-            },
-            constants: [
-              {
-                type: 'slot',
-                name: 'default',
-                value: `<slot-comp style="height: 100%;"></slot-comp>`
-              },
-              {
-                type: 'slot',
-                name: 'header',
-                value: `<slot-comp slot='header' style="height: 48px; width: 140px;"></slot-comp>`
-              },
-              {
-                type: 'slot',
-                name: 'footer',
-                value: `<slot-comp slot='footer' style="height: 48px;"></slot-comp>`
-              },
-              {
-                type: 'template',
-                name: 'width',
-                value: `
-                <div id="parent-container-${index}" style="width: auto; height: 500px; position: relative;"><sd-drawer style='--width:250px;'>
-                  %TEMPLATE%</sd-drawer>
+      ${['base', 'overlay', 'panel', 'header', 'header-content', 'title', 'close-button', 'body', 'footer'].map(part =>
+        generateTemplate({
+          axis: {
+            x: {
+              type: 'template',
+              name: 'sd-drawer::part(...){outline: solid 2px red}',
+              values: [
+                {
+                  title: part,
+                  value: `<style>#part-${part} sd-drawer::part(${part}){outline: solid 2px red; ${
+                    part === 'base' ? '' : 'outline-offset: -2px'
+                  };}</style><div id="part-${part}">%TEMPLATE%</div>`
+                }
+              ]
+            }
+          },
+          constants: [
+            {
+              type: 'template',
+              name: 'width',
+              value: `
+                <div style="width: 600px; height: 600px; position: relative;">%TEMPLATE%
                 </div>
               `
-              }
-            ],
-            args: overrideArgs({ type: 'attribute', name: 'open', value: false })
-          })
+            }
+          ],
+          args
+        })
       )}
     `;
   }
 };
 
 export const Scrolling = {
-  parameters: { controls: { exclude: 'default' } },
+  parameters: { controls: { exclude: ['default', 'contained'] } },
   render: (args: any) => {
     return html` <div id="parent-container" style="width: auto; height: 95vh; position: relative;">
       ${generateTemplate({
@@ -238,17 +196,17 @@ export const Scrolling = {
 };
 
 export const Mouseless = {
-  parameters: { controls: { exclude: ['default', 'header', 'footer', 'no-padding'] } },
+  parameters: { controls: { exclude: ['default', 'header', 'footer', 'contained'] } },
   render: (args: any) => {
-    return html`<div class="mouseless" style="width: auto; height: 95vh; position: relative;">
+    return html`<div class="mouseless" id="header-with-btn" style="width: auto; height: 95vh; position: relative;">
+      <style>
+        #header-with-btn sd-drawer::part(header) {
+          padding-left: 0;
+        }
+      </style>
       ${generateTemplate({
         args,
         constants: [
-          {
-            type: 'attribute',
-            name: 'no-padding',
-            value: true
-          },
           {
             type: 'slot',
             name: 'default',
@@ -257,7 +215,7 @@ export const Mouseless = {
           {
             type: 'slot',
             name: 'header',
-            value: `<sd-button slot='header' variant='primary'>Header</sd-button>`
+            value: `<sd-button slot='header' variant='tertiary'>Header</sd-button>`
           },
           {
             type: 'slot',
@@ -279,6 +237,7 @@ export const Mouseless = {
  *By default, the drawer’s panel will gain focus when opened. This allows a subsequent tab press to focus on the first tabbable element in the drawer. If you want a different element to have focus, add the autofocus attribute to it
  */
 export const InitialFocus = {
+  parameters: { controls: { exclude: 'contained' } },
   render: (args: any) => {
     return html` <div id="parent-container" style="width: auto; height: 95vh; position: relative;">
       ${generateTemplate({
