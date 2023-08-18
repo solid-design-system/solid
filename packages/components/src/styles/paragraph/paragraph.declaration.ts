@@ -1,4 +1,4 @@
-import type { Style } from '../solid-styles.declaration';
+import type { Style } from '../../declaration';
 
 export default {
   styleName: 'sd-paragraph',

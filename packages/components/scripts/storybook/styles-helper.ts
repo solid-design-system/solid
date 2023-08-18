@@ -1,21 +1,4 @@
-type StyleStatus = 'experimental' | 'stable' | 'deprecated';
-
-interface StyleAttribute {
-  name: string;
-  description: string;
-  /**
-   * If you don't set options, the attribute will be rendered as a boolean attribute.
-   */
-  options?: string[];
-}
-
-export interface Style {
-  styleName: string;
-  summary: string;
-  status: StyleStatus;
-  since: string;
-  attributes: StyleAttribute[];
-}
+import type { Style } from '../../src/declaration';
 
 const definitionModules = import.meta.glob('../../src/styles/**/*.declaration.ts');
 
