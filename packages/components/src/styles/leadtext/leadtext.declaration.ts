@@ -4,7 +4,7 @@ export default {
   styleName: 'sd-leadtext',
   summary: 'Leadtext is used for text that should be highlighted and a focal point of the page.',
   status: 'experimental',
-  since: '1.1',
+  since: '1.7',
   attributes: [
     {
       name: 'sd-leadtext--size-...',

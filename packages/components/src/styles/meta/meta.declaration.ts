@@ -4,7 +4,7 @@ export default {
   styleName: 'sd-meta',
   summary: 'List of meta information like file size, date or whatever needed.',
   status: 'experimental',
-  since: '1.1',
+  since: '1.7',
   attributes: [
     {
       name: 'sd-meta--size-...',
