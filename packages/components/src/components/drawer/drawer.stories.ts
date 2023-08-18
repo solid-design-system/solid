@@ -196,7 +196,7 @@ export const Scrolling = {
 };
 
 export const Mouseless = {
-  parameters: { controls: { exclude: ['default', 'header', 'footer', 'contained'] } },
+  parameters: { controls: { exclude: ['default', 'header', 'footer', 'contained', 'no-header'] } },
   render: (args: any) => {
     return html`<div class="mouseless" id="header-with-btn" style="width: auto; height: 95vh; position: relative;">
       <style>
@@ -221,15 +221,26 @@ export const Mouseless = {
             type: 'slot',
             name: 'footer',
             value: `<sd-button slot='footer' variant='secondary'>Footer</sd-button>`
+          },
+          {
+            type: 'attribute',
+            name: 'no-header',
+            value: false
           }
         ]
       })}
     </div>`;
   },
-  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
-    const el = canvasElement.querySelector('.mouseless sd-drawer');
+  play: async ({ canvasElement }: { canvasElement?: HTMLUnknownElement }) => {
+    const el = canvasElement?.querySelector('.mouseless sd-drawer');
     await waitUntil(() => el?.shadowRoot?.querySelector('header'));
-    await userEvent.type(el!.shadowRoot!.querySelector('header')!, '{space}', { pointerEventsCheck: 0 });
+
+    if (el?.shadowRoot) {
+      const header = el.shadowRoot.querySelector('header');
+      if (header) {
+        await userEvent.type(header, '{space}', { pointerEventsCheck: 0 });
+      }
+    }
   }
 };
 
