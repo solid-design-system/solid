@@ -154,7 +154,7 @@ export const Parts = {
         'navigation-button--next',
         'autoplay-controls',
         'variant',
-        'autoplay',
+        'autoplay'
       ]
     }
   },
@@ -188,7 +188,7 @@ export const Parts = {
       },
       constants: [
         { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' },
-        { type: 'attribute', name: 'autoplay', value: true },
+        { type: 'attribute', name: 'autoplay', value: true }
       ],
       args
     });
