@@ -72,13 +72,10 @@ export default class SdTag extends SolidElement {
         @focus=${this.handleFocus}
         @click=${this.handleRemoveClick}
         class=${cx(
-          `inline-flex border rounded-full items-center group`,
-          /**
-           * Anatomy
-           * */
+          'inline-flex border rounded-full items-center group',
           {
             /* sizes, fonts */
-            lg: 'px-4 py-2 text-base gap-3',
+            lg: 'px-4 py-2 text-base gap-2',
             sm: 'px-3 py-[5px] text-sm gap-2'
           }[this.size],
           this.selected && !this.filtered
@@ -87,21 +84,20 @@ export default class SdTag extends SolidElement {
             disabled:bg-neutral-500`
             : `bg-white text-primary 
             hover:border-primary-500 hover:bg-neutral-100 hover:text-primary-500
-            disabled:border-neutral-500 disabled:text-neutral-500 
-            `
+            disabled:border-neutral-500 disabled:text-neutral-500`
         )}
       >
         <slot part="content"></slot>
         <div part="cross" class=${cx(
-          `relative flex flex-col justify-center`,
+          'relative flex flex-col justify-center',
           {
             lg: 'h-4 w-4',
             sm: 'h-3 w-3'
           }[this.size],
           !this.filtered && 'hidden'
         )}>
-          <div class="absolute w-full h-[1px] bg-primary group-hover:bg-primary-500 -rotate-45"></div>
-          <div class="absolute w-full h-[1px] bg-primary group-hover:bg-primary-500 rotate-45"></div>
+          <div class="absolute w-full h-[1px] bg-primary group-hover:bg-primary-500 group-disabled:bg-neutral-500 -rotate-45"></div>
+          <div class="absolute w-full h-[1px] bg-primary group-hover:bg-primary-500 group-disabled:bg-neutral-500 rotate-45"></div>
         </div>
       </${tag}>
     `;
