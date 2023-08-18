@@ -6,6 +6,7 @@ const translation: Translation = {
   $name: 'Deutsch',
   $dir: 'ltr',
 
+  carousel: 'Karussell',
   clearEntry: 'Eingabe löschen',
   close: 'Schließen',
   copy: 'Kopieren',
@@ -14,9 +15,12 @@ const translation: Translation = {
     if (num === 1) return '1 Option ausgewählt';
     return `${num} Optionen ausgewählt`;
   },
+  previousSlide: 'Vorherige Folie',
   currentValue: 'Aktueller Wert',
+  goToSlide: (slide, count) => `Gehen Sie zu Folie ${slide} von ${count}`,
   hidePassword: 'Passwort verbergen',
   loading: 'Wird geladen',
+  nextSlide: 'Nächste Folie',
   progress: 'Fortschritt',
   remove: 'Entfernen',
   resize: 'Größe ändern',
@@ -24,6 +28,7 @@ const translation: Translation = {
   scrollToStart: 'Zum Anfang scrollen',
   selectAColorFromTheScreen: 'Wähle eine Farbe vom Bildschirm',
   showPassword: 'Passwort anzeigen',
+  slideNum: slide => `Folie ${slide}`,
   toggleColorFormat: 'Farbformat umschalten'
 };
 
