@@ -41,8 +41,8 @@ export const Default = {
  * The sd-meta in all possible combinations of `variant` and `size`.
  */
 
-export const VariantAndSize = {
-  name: 'Variant × Size',
+export const LightAndSize = {
+  name: 'Light × Size',
   parameters: { controls: { exclude: ['sd-meta--light', 'sd-meta--size-...'] } },
   render: (args: any) => {
     return generateTemplate({
@@ -56,11 +56,11 @@ export const VariantAndSize = {
 };
 
 /**
- * The sd-meta in all possible combinations of `variant` and `inverted`.
+ * The sd-meta in all possible combinations of `light` and `inverted`.
  */
 
-export const VariantAndInverted = {
-  name: 'Variant × Inverted',
+export const LightAndInverted = {
+  name: 'Light × Inverted',
   parameters: { controls: { exclude: ['sd-meta--light', 'sd-meta--inverted'] } },
   render: (args: any) => {
     return generateTemplate({
