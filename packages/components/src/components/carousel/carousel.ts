@@ -1,4 +1,4 @@
-import '../icon/icon.ts';
+import '../icon/icon.js';
 import { AutoplayController } from './autoplay-controller.js';
 import { clamp } from '../../internal/math.js';
 import { css, html } from 'lit';
@@ -11,7 +11,7 @@ import { ScrollController } from './scroll-controller.js';
 import { watch } from '../../internal/watch.js';
 import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
-import SdCarouselItem from '../carousel-item/carousel-item.ts';
+import SdCarouselItem from '../carousel-item/carousel-item.js';
 import SolidElement from '../../internal/solid-element.js';
 
 /**
@@ -32,13 +32,17 @@ import SolidElement from '../../internal/solid-element.js';
  *
  * @csspart base - The carousel's internal wrapper.
  * @csspart scroll-container - The scroll container that wraps the slides.
- * @csspart pagination - The pagination indicators wrapper.
+ * @csspart controls - A wrapper for the navigation and autoplay controller buttons.
+ * @csspart pagination-dot - The pagination indicator in dot format.
+ * @csspart pagination-number - The pagination indicator in number format.
  * @csspart pagination-item - The pagination indicator.
  * @csspart pagination-item--active - Applied when the item is active.
  * @csspart navigation - The navigation wrapper.
  * @csspart navigation-button - The navigation button.
  * @csspart navigation-button--previous - Applied to the previous button.
  * @csspart navigation-button--next - Applied to the next button.
+ * @csspart autoplay-controls - A wrapper for pause/start button.
+ *
  *
  * @cssproperty --slide-gap - The space between each slide.
  * @cssproperty --scroll-hint - The amount of padding to apply to the scroll area, allowing adjacent slides to become
@@ -47,7 +51,7 @@ import SolidElement from '../../internal/solid-element.js';
 @customElement('sd-carousel')
 export default class SdCarousel extends SolidElement {
   /** Determines the counting system for the carousel. */
-  @property({ type: String, reflect: true }) variant: 'dot' | 'num' = 'num';
+  @property({ type: String, reflect: true }) variant: 'dot' | 'number' = 'number';
   /** Inverts the carousel */
   @property({ type: Boolean, reflect: true }) inverted = false;
 
@@ -68,7 +72,7 @@ export default class SdCarousel extends SolidElement {
   @state() activeSlide = 0;
 
   // Boolean keeping track of the autoplay pause/play button
-  @property({ type: Boolean, reflect: true }) pausedAutoplay = false;
+  @state() pausedAutoplay = false;
 
   private autoplayController = new AutoplayController(this, () => this.next());
   private scrollController = new ScrollController(this);
@@ -210,12 +214,13 @@ export default class SdCarousel extends SolidElement {
     this.requestUpdate();
   };
 
-  public toggleAutoplay() {
-    this.pausedAutoplay = !this.pausedAutoplay;
+  @watch('pausedAutoplay')
+  handlePausedAutoplay() {
+    console.log('pausedAutoplay: ', this.pausedAutoplay);
     if (this.pausedAutoplay) {
-      this.autoplayController.manualPause();
+      this.autoplayController.controlledPause();
     } else if (this.autoplay) {
-      this.autoplayController.manualResume();
+      this.autoplayController.controlledResume();
     }
   }
 
@@ -288,7 +293,7 @@ export default class SdCarousel extends SolidElement {
   @watch('autoplay')
   handleAutoplayChange() {
     this.autoplayController.stop();
-    if (this.autoplay) {
+    if (this.autoplay && !this.pausedAutoplay) {
       this.autoplayController.start(3000);
     }
   }
@@ -308,7 +313,9 @@ export default class SdCarousel extends SolidElement {
    * @param behavior - The behavior used for scrolling.
    */
   next(behavior: ScrollBehavior = 'smooth') {
-    this.goToSlide(this.activeSlide + 1, behavior);
+    if (this.activeSlide !== this.getSlides().length - 1) {
+      this.goToSlide(this.activeSlide + 1, behavior);
+    }
   }
 
   /**
@@ -357,8 +364,9 @@ export default class SdCarousel extends SolidElement {
           part="scroll-container"
           class="${cx(
             `carousel__slides mb-6
-            grid max-h-full w-full items-center justify-items-center overflow-auto
-            overscroll-x-contain grid-flow-col auto-rows-[100%]
+            grid max-h-full w-full items-center justify-items-center overflow-auto`,
+            !this.inverted ? 'focus-visible:focus-outline' : 'focus-visible:focus-outline-inverted',
+            `overscroll-x-contain grid-flow-col auto-rows-[100%]
             snap-x snap-mandatory overflow-y-hidden`
           )}"
           style="--slides-per-page: ${this.slidesPerPage};"
@@ -372,13 +380,17 @@ export default class SdCarousel extends SolidElement {
         </div>
 
         <div part="controls" class=${cx('w-full flex items-center justify-center relative')}>
-          <div part="navigation" class=${cx('flex items-center')}>
-            <sd-button
+          <div part="navigation" class=${cx('carousel__navigation flex items-center justify-center')}>
+            <button
               ?disabled=${!prevEnabled ? true : false}
-              ?inverted=${this.inverted}
-              variant="tertiary"
               part="navigation-button navigation-button--previous"
-              class=${cx('mr-2')}
+              class=${cx(
+                'mr-6',
+                'rounded-sm',
+                !this.inverted ? 'focus-visible:focus-outline' : 'focus-visible:focus-outline-inverted',
+                `flex flex-[0_0_auto] items-center 
+                    bg-none border-none cursor-pointer appearance-none col-[1] row-[1]`
+              )}
               aria-label="${this.localize.term('previousSlide')}"
               aria-controls="scroll-container"
               aria-disabled="${prevEnabled ? 'false' : 'true'}"
@@ -386,19 +398,23 @@ export default class SdCarousel extends SolidElement {
             >
               <slot name="previous-icon">
                 <sd-icon
-                  class=${cx('h-6 w-6 rotate-90 justify-self-center')}
+                  class=${cx(
+                    'h-6 w-6 rotate-90',
+                    this.inverted ? 'text-white hover:text-primary-500' : 'text-primary hover:text-primary-500 ',
+                    !prevEnabled && 'cursor-not-allowed !text-neutral-500'
+                  )}
                   library="system"
                   name="${isLtr ? 'chevron-down' : 'chevron-up'}"
                 ></sd-icon>
               </slot>
-            </sd-button>
+            </button>
 
             ${this.variant === 'dot'
               ? html`
                   <div
                     part="pagination-dot"
                     role="tablist"
-                    class="${cx(' flex wrap items-center gap-2')}"
+                    class="${cx('carousel__pagination flex wrap items-center gap-2')}"
                     aria-controls="scroll-container"
                   >
                     ${map(range(pagesCount), index => {
@@ -408,13 +424,14 @@ export default class SdCarousel extends SolidElement {
                           part="pagination-item ${isActive ? 'pagination-item--active' : ''}"
                           class="${cx(
                             'carousel__pagination-item',
-                            'block cursor-pointer bg-none border-0',
-                            isActive ? 'bg-accent rounded-full' : ''
+                            'block cursor-pointer bg-none border-0 rounded-full',
+                            isActive ? 'bg-accent' : '',
+                            !this.inverted ? 'focus-within:focus-outline' : 'focus-within:focus-outline-inverted'
                           )}"
                           role="tab"
+                          tabindex="${isActive ? '0' : '-1'}"
                           aria-selected="${isActive ? 'true' : 'false'}"
                           aria-label="${this.localize.term('goToSlide', index + 1, pagesCount)}"
-                          tabindex=${isActive ? '0' : '-1'}
                           @click=${() => this.goToSlide(index * slidesPerPage)}
                           @keydown=${this.handleKeyDown}
                         >
@@ -422,11 +439,8 @@ export default class SdCarousel extends SolidElement {
                             class=${cx(
                               'h-4 w-4 block border hover:border-primary-500 rounded-full',
                               this.inverted ? 'border-white hover:border-primary-500' : 'border-primary',
-                              isActive
-                                ? this.inverted
-                                  ? 'bg-accent hover:bg-accent-300 border-none'
-                                  : 'bg-accent hover:bg-accent-550 border-none'
-                                : ''
+                              isActive && 'bg-accent border-none',
+                              isActive ? (this.inverted ? 'hover:bg-accent-300' : 'hover:bg-accent-550') : ''
                             )}
                           ></span>
                         </button>
@@ -434,23 +448,37 @@ export default class SdCarousel extends SolidElement {
                     })}
                   </div>
                 `
-              : html` <span part="pagination-number" class="flex gap-0.5 cursor-default">
+              : html` <span
+                  part="pagination-number"
+                  class="carousel__pagination flex gap-0.5 cursor-default select-none"
+                >
                   <span
+                    part="pagination-item"
                     class=${cx('w-5 text-center border-b-2 border-accent', this.inverted ? 'text-white' : 'text-black')}
                     >${currentPage + 1}</span
                   >
-                  <span class=${cx('scale-y-[1.5]', 'text-center', this.inverted ? 'text-white' : 'text-black')}
+                  <span
+                    part="pagination-divider"
+                    class=${cx('scale-y-[1.5]', 'text-center', this.inverted ? 'text-white' : 'text-black')}
                     >/</span
                   >
-                  <span class=${cx('w-5 text-center', this.inverted ? 'text-white' : 'text-black')}>${pagesCount}</span>
+                  <span
+                    part="pagination-item"
+                    class=${cx('w-5 text-center', this.inverted ? 'text-white' : 'text-black')}
+                    >${pagesCount}</span
+                  >
                 </span>`}
 
-            <sd-button
+            <button
               ?disabled=${!nextEnabled ? true : false}
-              ?inverted=${this.inverted}
-              variant="tertiary"
               part="navigation-button navigation-button--next"
-              class="ml-2"
+              class=${cx(
+                'ml-6',
+                'rounded-sm',
+                !this.inverted ? 'focus-visible:focus-outline' : 'focus-visible:focus-outline-inverted',
+                `flex flex-[0_0_auto] items-center 
+                    bg-none border-none cursor-pointer appearance-none col-[1] row-[1]`
+              )}
               aria-label="${this.localize.term('nextSlide')}"
               aria-controls="scroll-container"
               aria-disabled="${nextEnabled ? 'false' : 'true'}"
@@ -458,28 +486,52 @@ export default class SdCarousel extends SolidElement {
             >
               <slot name="next-icon">
                 <sd-icon
-                  class=${cx('h-6 w-6 rotate-90')}
+                  class=${cx(
+                    'h-6 w-6 rotate-90',
+                    this.inverted ? 'text-white hover:text-primary-500' : 'text-primary hover:text-primary-500 ',
+                    !nextEnabled && 'cursor-not-allowed !text-neutral-500'
+                  )}
                   library="system"
                   name="${isLtr ? 'chevron-up' : 'chevron-down'}"
                 ></sd-icon>
               </slot>
-            </sd-button>
+            </button>
           </div>
-          <sd-button
-            ?inverted=${this.inverted}
-            variant="tertiary"
-            class=${cx('items-end absolute right-0 transition-all', !this.autoplay ? 'hidden' : '')}
+          <button
+            class=${cx(
+              'ml-6',
+              'items-end absolute right-0',
+              'rounded-sm',
+              !this.inverted ? 'focus-visible:focus-outline' : 'focus-visible:focus-outline-inverted',
+              `flex flex-[0_0_auto] items-center 
+                    bg-none border-none cursor-pointer appearance-none col-[1] row-[1]`,
+              !this.autoplay && 'hidden'
+            )}
             part="autoplay-controls"
-            @click=${this.toggleAutoplay}
+            @click=${() => (this.pausedAutoplay = !this.pausedAutoplay)}
           >
             <slot name="autoplay-start" class=${cx(!this.pausedAutoplay ? 'hidden' : '')}>
-              <sd-icon class=${cx('h-6 w-6')} library="system" name="start"></sd-icon>
+              <sd-icon
+                class=${cx(
+                  'h-6 w-6',
+                  this.inverted ? 'text-white hover:text-primary-500' : 'text-primary hover:text-primary-500 '
+                )}
+                library="system"
+                name="start"
+              ></sd-icon>
             </slot>
 
             <slot name="autoplay-pause" class=${cx(this.pausedAutoplay ? 'hidden' : '')}>
-              <sd-icon class=${cx('h-6 w-6')} library="system" name="pause"></sd-icon>
+              <sd-icon
+                class=${cx(
+                  'h-6 w-6',
+                  this.inverted ? 'text-white hover:text-primary-500' : 'text-primary hover:text-primary-500 '
+                )}
+                library="system"
+                name="pause"
+              ></sd-icon>
             </slot>
-          </sd-button>
+          </button>
         </div>
       </div>
     `;

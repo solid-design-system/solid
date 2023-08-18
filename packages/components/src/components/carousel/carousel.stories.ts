@@ -71,13 +71,15 @@ export const Variant = {
  */
 
 export const Inverted = {
-  parameters: { controls: { exclude: 'inverted' } },
+  parameters: { controls: { exclude: ['inverted', 'variant'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
+        x: { type: 'attribute', name: 'variant' },
         y: { type: 'attribute', name: 'inverted' }
       },
       args,
+      constants: [{ type: 'attribute', name: 'autoplay', value: true }],
       options: {
         templateBackgrounds: { alternate: 'y', colors: ['#00358E', 'white'] }
       }
@@ -135,17 +137,59 @@ export const SlidesPerPage = {
   }
 };
 
-/**
- * Use the `mouse-dragging` attribute to allow users to drag slides with a mouse.
- */
-
-export const MouseDragging = {
-  parameters: { controls: { exclude: 'mouse-dragging' } },
+export const Parts = {
+  parameters: {
+    controls: {
+      exclude: [
+        'base',
+        'scroll-container',
+        'controls',
+        'pagination-dot',
+        'pagination-number',
+        'pagination-item',
+        'pagination-item--active',
+        'navigation',
+        'navigation-button',
+        'navigation-button--previous',
+        'navigation-button--next',
+        'autoplay-controls',
+        'variant',
+        'autoplay',
+      ]
+    }
+  },
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        y: { type: 'attribute', name: 'mouse-dragging' }
+        x: { type: 'attribute', name: 'variant' },
+        y: {
+          type: 'template',
+          name: 'sd-carousel::part(...){outline: solid 2px red}',
+          values: [
+            'base',
+            'scroll-container',
+            'controls',
+            'pagination-dot',
+            'pagination-number',
+            'pagination-item',
+            'pagination-item--active',
+            'navigation',
+            'navigation-button',
+            'navigation-button--previous',
+            'navigation-button--next',
+            'autoplay-controls'
+          ].map(part => {
+            return {
+              title: part,
+              value: `<style>#part-${part} sd-carousel::part(${part}){outline: solid 2px red}</style><div id="part-${part}">%TEMPLATE%</div>`
+            };
+          })
+        }
       },
+      constants: [
+        { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' },
+        { type: 'attribute', name: 'autoplay', value: true },
+      ],
       args
     });
   }
