@@ -1,4 +1,4 @@
-.sd-meta-information {
+.sd-meta {
   @apply text-base font-normal leading-none text-black;
 
   &--size-sm {
@@ -12,7 +12,7 @@
   &--inverted {
     @apply text-white;
 
-    &.sd-meta-information--color-additional {
+    &.sd-meta--color-additional {
       @apply text-primary-400;
     }
   }
@@ -23,7 +23,7 @@
       @apply mx-1;
     }
 
-    &.sd-meta-information--size-sm {
+    &.sd-meta--size-sm {
       &::after {
         @apply mx-0.5;
       }

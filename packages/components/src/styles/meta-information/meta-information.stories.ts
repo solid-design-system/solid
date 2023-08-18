@@ -2,17 +2,17 @@ import '../../solid-components';
 
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, parameters } = storybookDefaults('sd-meta-information');
-const { overrideArgs } = storybookHelpers('sd-meta-information');
-const { generateTemplate } = storybookTemplate('sd-meta-information');
+const { argTypes, parameters } = storybookDefaults('sd-meta');
+const { overrideArgs } = storybookHelpers('sd-meta');
+const { generateTemplate } = storybookTemplate('sd-meta');
 
 /**
  * List of meta information like file size, date or whatever needed.
  */
 
 export default {
-  title: 'Styles/sd-meta-information',
-  component: 'sd-meta-information',
+  title: 'Styles/sd-meta',
+  component: 'sd-meta',
   parameters: {
     ...parameters,
     design: {
@@ -25,7 +25,7 @@ export default {
 };
 
 /**
- * Default: This shows sd-meta-information in its default state.
+ * Default: This shows sd-meta in its default state.
  */
 
 export const Default = {
@@ -38,17 +38,17 @@ export const Default = {
 };
 
 /**
- * The sd-meta-information in all possible combinations of `variant` and `size`.
+ * The sd-meta in all possible combinations of `variant` and `size`.
  */
 
 export const VariantAndSize = {
   name: 'Variant × Size',
-  parameters: { controls: { exclude: ['sd-meta-information--color-additional', 'sd-meta-information--size-...'] } },
+  parameters: { controls: { exclude: ['sd-meta--color-additional', 'sd-meta--size-...'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        x: { type: 'attribute', name: 'sd-meta-information--color-additional' },
-        y: { type: 'attribute', name: 'sd-meta-information--size-...' }
+        x: { type: 'attribute', name: 'sd-meta--color-additional' },
+        y: { type: 'attribute', name: 'sd-meta--size-...' }
       },
       args
     });
@@ -56,17 +56,17 @@ export const VariantAndSize = {
 };
 
 /**
- * The sd-meta-information in all possible combinations of `variant` and `inverted`.
+ * The sd-meta in all possible combinations of `variant` and `inverted`.
  */
 
 export const VariantAndInverted = {
   name: 'Variant × Inverted',
-  parameters: { controls: { exclude: ['sd-meta-information--color-additional', 'sd-meta-information--inverted'] } },
+  parameters: { controls: { exclude: ['sd-meta--color-additional', 'sd-meta--inverted'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        x: { type: 'attribute', name: 'sd-meta-information--color-additional' },
-        y: { type: 'attribute', name: 'sd-meta-information--inverted', values: [false, true] }
+        x: { type: 'attribute', name: 'sd-meta--color-additional' },
+        y: { type: 'attribute', name: 'sd-meta--inverted', values: [false, true] }
       },
       args,
       options: {
@@ -77,29 +77,25 @@ export const VariantAndInverted = {
 };
 
 /**
- * Use the `inverted` class to make the sd-meta-information with inverted colors.
+ * Use the `inverted` class to make the sd-meta with inverted colors.
  */
 
 export const Inverted = {
   parameters: {
     controls: {
-      exclude: [
-        'sd-meta-information--size-...',
-        'sd-meta-information--inverted',
-        'sd-meta-information--color-additional'
-      ]
+      exclude: ['sd-meta--size-...', 'sd-meta--inverted', 'sd-meta--color-additional']
     }
   },
   render: (args: any) => {
     return generateTemplate({
       axis: {
         x: [
-          { type: 'attribute', name: 'sd-meta-information--size-...' },
-          { type: 'attribute', name: 'sd-meta-information--color-additional' },
-          { type: 'attribute', name: 'sd-meta-information--pipe' }
+          { type: 'attribute', name: 'sd-meta--size-...' },
+          { type: 'attribute', name: 'sd-meta--color-additional' },
+          { type: 'attribute', name: 'sd-meta--pipe' }
         ]
       },
-      constants: { type: 'attribute', name: 'sd-meta-information--inverted', value: true },
+      constants: { type: 'attribute', name: 'sd-meta--inverted', value: true },
       options: { templateBackground: '#00358E' },
       args
     });
@@ -107,16 +103,16 @@ export const Inverted = {
 };
 
 /**
- * The sd-meta-information with pipe.
+ * The sd-meta with pipe.
  */
 
 export const Pipe = {
-  parameters: { controls: { exclude: ['sd-meta-information--pipe', 'sd-meta-information--size-...'] } },
+  parameters: { controls: { exclude: ['sd-meta--pipe', 'sd-meta--size-...'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        x: { type: 'attribute', name: 'sd-meta-information--pipe' },
-        y: { type: 'attribute', name: 'sd-meta-information--size-...' }
+        x: { type: 'attribute', name: 'sd-meta--pipe' },
+        y: { type: 'attribute', name: 'sd-meta--size-...' }
       },
       args
     });
