@@ -216,7 +216,6 @@ export default class SdCarousel extends SolidElement {
 
   @watch('pausedAutoplay')
   handlePausedAutoplay() {
-    console.log('pausedAutoplay: ', this.pausedAutoplay);
     if (this.pausedAutoplay) {
       this.autoplayController.controlledPause();
     } else if (this.autoplay) {
