@@ -43,11 +43,11 @@ export const Default = {
 
 export const VariantAndSize = {
   name: 'Variant × Size',
-  parameters: { controls: { exclude: ['sd-meta--color-additional', 'sd-meta--size-...'] } },
+  parameters: { controls: { exclude: ['sd-meta--light', 'sd-meta--size-...'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        x: { type: 'attribute', name: 'sd-meta--color-additional' },
+        x: { type: 'attribute', name: 'sd-meta--light' },
         y: { type: 'attribute', name: 'sd-meta--size-...' }
       },
       args
@@ -61,11 +61,11 @@ export const VariantAndSize = {
 
 export const VariantAndInverted = {
   name: 'Variant × Inverted',
-  parameters: { controls: { exclude: ['sd-meta--color-additional', 'sd-meta--inverted'] } },
+  parameters: { controls: { exclude: ['sd-meta--light', 'sd-meta--inverted'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        x: { type: 'attribute', name: 'sd-meta--color-additional' },
+        x: { type: 'attribute', name: 'sd-meta--light' },
         y: { type: 'attribute', name: 'sd-meta--inverted', values: [false, true] }
       },
       args,
@@ -81,11 +81,11 @@ export const VariantAndInverted = {
  */
 
 export const Pipe = {
-  parameters: { controls: { exclude: ['sd-meta--pipe', 'sd-meta--color-additional', 'sd-meta--inverted'] } },
+  parameters: { controls: { exclude: ['sd-meta--pipe', 'sd-meta--light', 'sd-meta--inverted'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        x: { type: 'attribute', name: 'sd-meta--color-additional' },
+        x: { type: 'attribute', name: 'sd-meta--light' },
         y: { type: 'attribute', name: 'sd-meta--inverted', values: [false, true] }
       },
       constants: { type: 'attribute', name: 'sd-meta--pipe', value: true },

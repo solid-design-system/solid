@@ -2,7 +2,7 @@ import type { Style } from '../solid-styles.declaration';
 
 export default {
   styleName: 'sd-meta',
-  summary: 'List of meta information like file size, date or whatever needed.',
+  summary: 'meta information like file size, date or whatever needed.',
   status: 'experimental',
   since: '1.7',
   attributes: [
@@ -13,15 +13,15 @@ export default {
     },
     {
       name: 'sd-meta--inverted',
-      description: 'Inverts the meta information.'
+      description: 'Inverts the meta element.'
     },
     {
       name: 'sd-meta--pipe',
-      description: 'Adds a pipe between the meta information and the date.'
+      description: 'Adds a pipe right from the meta elemen t.'
     },
     {
-      name: 'sd-meta--color-additional',
-      description: 'The color of the meta information.'
+      name: 'sd-meta--light',
+      description: 'Makes sd-meta light.'
     }
   ]
 } satisfies Style;
