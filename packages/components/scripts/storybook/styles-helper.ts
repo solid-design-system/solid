@@ -17,7 +17,7 @@ export interface Style {
   attributes: StyleAttribute[];
 }
 
-const definitionModules = import.meta.glob('./**/*.declaration.ts');
+const definitionModules = import.meta.glob('../../src/styles/**/*.declaration.ts');
 
 /**
  * Fetches and returns an array of style definitions from the imported modules.
