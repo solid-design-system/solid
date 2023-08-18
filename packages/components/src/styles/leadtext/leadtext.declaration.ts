@@ -8,7 +8,7 @@ export default {
   attributes: [
     {
       name: 'sd-leadtext--size-...',
-      options: ['-', 'lg'],
+      options: ['lg'],
       description: "The leadtext's size."
     },
     {

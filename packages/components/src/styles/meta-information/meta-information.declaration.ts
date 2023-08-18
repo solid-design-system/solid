@@ -8,7 +8,7 @@ export default {
   attributes: [
     {
       name: 'sd-meta-information--size-...',
-      options: ['-', 'sm'],
+      options: ['sm'],
       description: 'The size. Small can be used as an alternative in tight spaces.'
     },
     {

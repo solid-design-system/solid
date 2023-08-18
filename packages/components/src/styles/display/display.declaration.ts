@@ -9,7 +9,7 @@ export default {
   attributes: [
     {
       name: 'sd-display--size-...',
-      options: ['-', '3xl', '4xl'],
+      options: ['3xl', '4xl'],
       description: "The display's size."
     },
     {

@@ -9,7 +9,7 @@ export default {
   attributes: [
     {
       name: 'sd-paragraph--size-...',
-      options: ['-', 'sm'],
+      options: ['sm'],
       description: "The paragraph's size."
     },
     {
