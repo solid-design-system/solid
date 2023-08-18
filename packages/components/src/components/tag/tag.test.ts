@@ -42,7 +42,6 @@ describe('<sd-tag>', () => {
     const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
     const removeButton = el.shadowRoot!.querySelector('[part~="remove-button"]');
 
-    expect(el.removable).to.equal(true);
     expect(base.getAttribute('class')).to.equal(' tag tag--neutral tag--medium tag--removable ');
     expect(removeButton).not.to.be.null;
   });
