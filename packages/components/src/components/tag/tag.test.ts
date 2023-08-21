@@ -1,63 +1,85 @@
-import { expect, fixture, html } from '@open-wc/testing';
+import { expect, fixture, html, waitUntil } from '@open-wc/testing';
 import sinon from 'sinon';
 import type SdTag from './tag';
 
+const sizes = ['lg', 'sm'];
+
 describe('<sd-tag>', () => {
-  it('should render default tag', async () => {
-    const el = await fixture<SdTag>(html` <sd-tag>Test</sd-tag> `);
+  let el: SdTag;
 
-    const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
+  describe('when provided no parameters', () => {
+    it('should pass accessibility tests', async () => {
+      el = await fixture<SdTag>(html`<sd-tag>Tag</sd-tag>`);
+      await expect(el).to.be.accessible();
+    });
 
-    expect(el.getAttribute('size')).to.equal('medium');
-    expect(base.getAttribute('class')).to.equal(' tag tag--neutral tag--medium ');
+    it('should have the primary values set correctly', async () => {
+      el = await fixture<SdTag>(html`<sd-tag>Tag</sd-tag>`);
+      expect(el.size).to.equal('lg');
+      expect(el.selected).to.equal(false);
+      expect(el.filtered).to.equal(false);
+      expect(el.disabled).to.equal(false);
+    });
+
+    it('should render as a <button>', async () => {
+      el = await fixture<SdTag>(html`<sd-tag>Tag</sd-tag>`);
+      expect(el.shadowRoot!.querySelector('button')).to.exist;
+      expect(el.shadowRoot!.querySelector('a')).not.to.exist;
+    });
   });
 
-  it('should set variant by attribute', async () => {
-    const el = await fixture<SdTag>(html` <sd-tag variant="danger">Test</sd-tag> `);
+  describe('when disabled', () => {
+    it('should pass accessibility tests', async () => {
+      el = await fixture<SdTag>(html`<sd-tag disabled>Tag</sd-tag>`);
+      await expect(el).to.be.accessible();
+    });
 
-    const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
+    it('should disable the native <button> when rendering a <button>', async () => {
+      el = await fixture<SdTag>(html`<sd-tag disabled>Tag</sd-tag>`);
+      expect(el.shadowRoot!.querySelector('button[disabled]')).to.exist;
+    });
 
-    expect(base.getAttribute('class')).to.equal(' tag tag--danger tag--medium ');
+    it('should not disable the native <a> when rendering an <a>', async () => {
+      el = await fixture<SdTag>(html`<sd-tag href="some/path" disabled>Tag</sd-tag>`);
+      expect(el.shadowRoot!.querySelector('a[disabled]')).not.to.exist;
+    });
+
+    it('should not bubble up clicks', async () => {
+      const button = await fixture<SdTag>(html`<sd-tag disabled>Tag</sd-tag>`);
+      const handleClick = sinon.spy();
+      button.addEventListener('click', handleClick);
+      button.click();
+
+      expect(handleClick).not.to.have.been.called;
+
+      button.shadowRoot!.querySelector('button')!.click();
+      expect(handleClick).not.to.have.been.called;
+
+      const buttonLink = await fixture<SdTag>(html`<sd-tag href="some/path" disabled>Tag</sd-tag>`);
+      buttonLink.addEventListener('click', handleClick);
+      buttonLink.click();
+
+      expect(handleClick).not.to.have.been.called;
+
+      buttonLink.shadowRoot!.querySelector('a')!.click();
+      expect(handleClick).not.to.have.been.called;
+    });
   });
 
-  it('should set size by attribute', async () => {
-    const el = await fixture<SdTag>(html` <sd-tag size="large">Test</sd-tag> `);
-
-    const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
-
-    expect(base.getAttribute('class')).to.equal(' tag tag--neutral tag--large ');
+  sizes.forEach(size => {
+    describe(`when passed a size attribute ${size}`, () => {
+      it(`should be accessible when size is "${size}"`, async () => {
+        el = await fixture<SdTag>(html` <sd-tag size="${size}">Tag</sd-tag> `);
+        await expect(el).to.be.accessible();
+      });
+    });
   });
 
-  it('should set pill-attribute by attribute', async () => {
-    const el = await fixture<SdTag>(html` <sd-tag pill>Test</sd-tag> `);
-
-    const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
-
-    expect(base.getAttribute('class')).to.equal(' tag tag--neutral tag--medium tag--pill ');
-  });
-
-  it('should set removable by attribute', async () => {
-    const el = await fixture<SdTag>(html` <sd-tag removable>Test</sd-tag> `);
-
-    const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
-    const removeButton = el.shadowRoot!.querySelector('[part~="remove-button"]');
-
-    expect(base.getAttribute('class')).to.equal(' tag tag--neutral tag--medium tag--removable ');
-    expect(removeButton).not.to.be.null;
-  });
-
-  describe('removable', () => {
-    it('should emit remove event when remove button clicked', async () => {
-      const el = await fixture<SdTag>(html` <sd-tag removable>Test</sd-tag> `);
-
-      const removeButton = el.shadowRoot!.querySelector<HTMLButtonElement>('[part~="remove-button"]')!;
-      const spy = sinon.spy();
-
-      el.addEventListener('sd-remove', spy, { once: true });
-
-      removeButton.click();
-
-      expect(spy.called).to.equal(true);
+  describe('when href is present', () => {
+    it('should render as an <a>', async () => {
+      el = await fixture<SdTag>(html` <sd-tag href="some/path">Tag</sd-tag> `);
+      expect(el.shadowRoot!.querySelector('a')).to.exist;
+      expect(el.shadowRoot!.querySelector('button')).not.to.exist;
     });
   });
 });

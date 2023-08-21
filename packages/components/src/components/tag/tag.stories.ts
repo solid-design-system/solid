@@ -1,4 +1,5 @@
 import '../../solid-components';
+import { html } from 'lit';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 import { withActions } from '@storybook/addon-actions/decorator';
 
@@ -22,5 +23,129 @@ export default {
 export const Default = {
   render: (args: any) => {
     return generateTemplate({ args });
+  }
+};
+
+/**
+ * The tag in all possible combinations of `filtered` and `selected`.
+ */
+
+export const FilteredAndSelected = {
+  name: 'Filtered × Selected',
+  parameters: { controls: { exclude: ['size', 'selected', 'filtered', 'disabled'] } },
+  render: (args: any) => {
+    return html`
+      ${['lg', 'sm'].map(size =>
+        // We have to compare different types of icons: "square", "wide" and "tall" ones.
+        generateTemplate({
+          axis: {
+            x: { type: 'attribute', name: 'selected', values: ['false', 'true'] },
+            y: { type: 'attribute', name: 'filtered', values: ['false', 'true'] }
+          },
+          constants: [{ type: 'attribute', name: 'size', value: size }],
+          args,
+          options: { title: `size="${size}"` }
+        })
+      )}
+    `;
+  }
+};
+
+/**
+ * Use the `disabled` attribute to disable a tag. Clicks will be suppressed until the disabled state is removed.
+ */
+
+export const Disabled = {
+  name: 'Disabled',
+  parameters: { controls: { exclude: ['size', 'selected', 'filtered', 'disabled'] } },
+  render: (args: any) => {
+    return html`
+      ${['lg', 'sm'].map(size =>
+        // We have to compare different types of icons: "square", "wide" and "tall" ones.
+        generateTemplate({
+          axis: {
+            x: { type: 'attribute', name: 'selected', values: ['false', 'true'] },
+            y: { type: 'attribute', name: 'filtered', values: ['false', 'true'] }
+          },
+          constants: [
+            { type: 'attribute', name: 'size', value: size },
+            {
+              type: 'attribute',
+              name: 'disabled',
+              value: 'true'
+            }
+          ],
+          args,
+          options: { title: `size="${size}"` }
+        })
+      )}
+    `;
+  }
+};
+
+/**
+ * Use the `default` slot to add content to the tag.
+ *
+ * If you add icons to the slot, please make sure to account for accessibility by providing an alt-text.
+ */
+
+export const Slots = {
+  parameters: {
+    controls: { exclude: ['size', 'selected', 'filtered', 'disabled'] }
+  },
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        x: {
+          type: 'slot',
+          name: 'default',
+          title: 'slot=...',
+          values: [
+            {
+              title: 'default',
+              value: `<slot-comp style="--slot-content: ''; --slot-height: 16px; --slot-width: 108px; font-size: 8px">Replace this slot</slot-comp>`
+            }
+          ]
+        }
+      },
+      args,
+      constants: [{ type: 'attribute', name: 'filtered', value: 'true' }]
+    });
+  }
+};
+
+/**
+ * Use the `base`, `content` and `cross` part selectors to customize the button.
+ */
+
+export const Parts = {
+  parameters: {
+    controls: { exclude: ['base', 'content', 'removable-indicator', 'size', 'selected', 'filtered', 'disabled'] }
+  },
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        y: {
+          type: 'template',
+          name: 'sd-tag::part(...){outline: solid 2px red}',
+          values: ['base', 'content', 'removable-indicator'].map(part => {
+            return {
+              title: part,
+              value: `<style>#part-${part} sd-tag::part(${part}){outline: solid 2px red;} #part-${part} .${part}{outline: solid 2px red;}</style><div id="part-${part}">%TEMPLATE%</div>`
+            };
+          })
+        }
+      },
+      constants: [
+        { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' },
+        {
+          type: 'slot',
+          name: 'default',
+          value: '<span class="content">Tag</span>'
+        },
+        { type: 'attribute', name: 'filtered', value: 'true' }
+      ],
+      args
+    });
   }
 };
