@@ -58,7 +58,7 @@
     "build.package": "pnpm build.package/create-index && vite build --config vite.config.package.js && pnpm build.package/remove-index",
     "build.package/create-index": "node scripts/node-generate-package-index.cjs && echo '✅ Index created'",
     "build.package/remove-index": "node -e \"require('fs').unlinkSync('src/solid-components.package.ts')\" && echo '✅ Index removed'",
-    "build.storybook": "storybook build --output-dir dist/storybook && cp dist/custom-elements.json dist/storybook/custom-elements.json",
+    "build.storybook": "storybook build --output-dir dist/storybook && vite-node scripts/node-optimize-storybook.js",
     "build.chromatic": "pnpm build.storybook && pnpm ci.optimize-chromatic",
     "preview": "vite preview",
     "verify": "pnpm ts.verify && pnpm build && echo '✅ Build verified' && pnpm ci.optimize-chromatic && echo '✅ Chromatic optimization verified' && pnpm test.verify && echo '✅ Test verified'",
@@ -138,6 +138,7 @@
     "typescript": "5.0.4",
     "user-agent-data-types": "^0.3.1",
     "vite": "^4.3.9",
+    "vite-node": "^0.34.2",
     "vite-plugin-cem": "^0.5.0",
     "vite-tsconfig-paths": "^4.2.0"
   },
