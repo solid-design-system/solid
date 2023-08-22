@@ -265,7 +265,7 @@ export const storybookTemplate = (customElementTag: string) => {
           // Check if value is 'true' and set the baseName class accordingly
           if (args[key] === true) {
             acc[baseName] = true;
-          } else if (args[key] === 'false' || args[key] === '-') {
+          } else if (args[key] === 'false' || args[key] === '(default)') {
             acc[baseName] = false;
           }
           // If value is not 'true' or 'false', add the actual value as a class

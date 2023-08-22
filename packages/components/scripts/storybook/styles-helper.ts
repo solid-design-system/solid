@@ -54,7 +54,7 @@ function generateFakeComponentInManifest(input: Style) {
       output.declarations[0].members.push({
         kind: 'field',
         name: attribute.name,
-        type: { text: `'-' | '${attribute.options.join("' | '")}'` },
+        type: { text: `'(default)' | '${attribute.options.join("' | '")}'` },
         description: attribute.description,
         attribute: attribute.name,
         reflects: true
