@@ -6,6 +6,14 @@ const { argTypes, parameters } = storybookDefaults('sd-paragraph');
 const { overrideArgs } = storybookHelpers('sd-paragraph');
 const { generateTemplate } = storybookTemplate('sd-paragraph');
 
+/**
+ * A paragraph is used to display blocks of text. It uses the base font size and can contain bold and/or link styles.<br>
+ * <br>
+ * <b>Sizes</b>
+ * <li>lg is the default paragraph size.</li>
+ * <li>sm can be used as an alternative for tighter spaces.</li>
+ */
+
 export default {
   title: 'Styles/sd-paragraph',
   component: 'sd-paragraph',

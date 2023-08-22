@@ -6,6 +6,15 @@ const { argTypes, parameters } = storybookDefaults('sd-display');
 const { overrideArgs } = storybookHelpers('sd-display');
 const { generateTemplate } = storybookTemplate('sd-display');
 
+/**
+ * Display provides larger text sizes that are not used as headlines. <br>
+ * <br>
+ * The different sizes allow for a more versatile styling of text elements. Display text should not be used as substitute for headlines.<br>
+ * <br>
+ * <b>Sizes</b>
+ * <li>xl is the default size.</li>
+ */
+
 export default {
   title: 'Styles/sd-display',
   component: 'sd-display',

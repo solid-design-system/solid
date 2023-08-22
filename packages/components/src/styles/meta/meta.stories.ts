@@ -7,7 +7,11 @@ const { overrideArgs } = storybookHelpers('sd-meta');
 const { generateTemplate } = storybookTemplate('sd-meta');
 
 /**
- * List of meta information like file size, date or whatever needed.
+ * List of meta information like file size, date or whatever needed. Seperated by pipes.<br>
+ * <br>
+ * <b>Sizes</b><br>
+ * <li>lg is the default size.</li>
+ * <li>sm can be used as an alternative in tight spaces.</li>
  */
 
 export default {

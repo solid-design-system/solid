@@ -6,6 +6,14 @@ const { argTypes, parameters } = storybookDefaults('sd-leadtext');
 const { overrideArgs } = storybookHelpers('sd-leadtext');
 const { generateTemplate } = storybookTemplate('sd-leadtext');
 
+/**
+ * Leadtext is used for text that should be highlighted and a focal point of the page. <br>
+ * <br>
+ * <b>Sizes</b><br>
+ * <li>xl is the default size.</li>
+ * <li>lg can be used as an alternative to xl.</li>
+ */
+
 export default {
   title: 'Styles/sd-leadtext',
   component: 'sd-leadtext',
