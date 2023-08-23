@@ -21,8 +21,10 @@
 
 - Development closely works with Design.
 - We heavily utilize slots and parts with reduced business logic within individual components.
-- Extensive documentation and examples for each component can be found in Storybook. [Explore components and interact with them](https://solid-design-system.fe.union-investment.de/x.x.x/storybook/).
+- We provide extensive documentation and examples for each component in Storybook. [Explore components and interact with them](https://solid-design-system.fe.union-investment.de/x.x.x/storybook/).
 - We provide End-to-End (E2E) tests with Playwright and Visual Regression Tests with Chromatic. The latter are automatically generated from the created Storybook stories.
+- We optimize our components for accessibility.
+- We don't mention the names of internal or external colleagues in issues or other documents hosted on GitHub, as our project is entirely public and can be accessed by anybody. Tagging/mentioning colleagues using their GitHub profiles is fine, as they decided to be visible on GitHub.
 
 ## Development Guidelines
 
@@ -32,6 +34,9 @@
 - Packages have to be run individually (eg: `cd packages/components` → `pnpm dev` to start development server)
 - Run `pnpm verify` at the root directory periodically, particularly, before pushing changes when a pull request is already opened.
 - Every branch should be associated with a PR.
+- Nearly all styles (colors, fonts, sizes etc.) are defined by our design team and provided for usage in our code via tokens (`packages/tokens/src/token.json`).
+  Components should use these tokens instead of individual styles as much as possible. Only where the tokens do not provide a styling, component specific styles should be added inside the [component-name].ts file
+- Components should be optimized for accessibility. Check the website of the [Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/WAI/standards-guidelines/wcag/) for more information on accessibility.
 
 ## Pull Requests
 
@@ -76,7 +81,6 @@ Install `pnpm` package manager globally.
 pnpm i
 cd packages/components
 pnpm dev
-
 ```
 
 These steps will install the necessary dependencies, navigate to the "packages/components" directory, and start the development server. You can now begin working on the components.
@@ -86,7 +90,7 @@ These steps will install the necessary dependencies, navigate to the "packages/c
 ```
 $ pnpm fix           // fix all formatting and linting in repo
 $ pnpm verify        // run tests and builds in repo
-$ cd components
+$ cd packages/components
   && pnpm dev        // start dev server
   && pnpm test       // run tests
 ```
