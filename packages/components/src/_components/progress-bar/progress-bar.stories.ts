@@ -6,7 +6,7 @@ const { argTypes, args, parameters } = storybookDefaults('sd-progress-bar');
 const { generateTemplate } = storybookTemplate('sd-progress-bar');
 
 export default {
-  title: 'SDS Components/sd-progress-bar',
+  title: 'Components/sd-progress-bar',
   component: 'sd-progress-bar',
   args,
   argTypes,

@@ -6,7 +6,7 @@ const { argTypes, args, parameters } = storybookDefaults('sd-format-bytes');
 const { generateTemplate } = storybookTemplate('sd-format-bytes');
 
 export default {
-  title: 'SDS Components/sd-format-bytes',
+  title: 'Components/sd-format-bytes',
   component: 'sd-format-bytes',
   args,
   argTypes,

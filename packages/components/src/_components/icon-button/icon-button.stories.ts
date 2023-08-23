@@ -6,7 +6,7 @@ const { argTypes, args, parameters } = storybookDefaults('sd-icon-button');
 const { generateTemplate } = storybookTemplate('sd-icon-button');
 
 export default {
-  title: 'SDS Components/sd-icon-button',
+  title: 'Components/sd-icon-button',
   component: 'sd-icon-button',
   args,
   argTypes,

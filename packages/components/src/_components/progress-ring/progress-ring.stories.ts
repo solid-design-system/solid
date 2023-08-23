@@ -6,7 +6,7 @@ const { argTypes, args, parameters } = storybookDefaults('sd-progress-ring');
 const { generateTemplate } = storybookTemplate('sd-progress-ring');
 
 export default {
-  title: 'SDS Components/sd-progress-ring',
+  title: 'Components/sd-progress-ring',
   component: 'sd-progress-ring',
   args,
   argTypes,

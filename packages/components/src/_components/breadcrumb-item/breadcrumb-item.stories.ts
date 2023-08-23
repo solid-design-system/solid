@@ -6,7 +6,7 @@ const { argTypes, args, parameters } = storybookDefaults('sd-breadcrumb-item');
 const { generateTemplate } = storybookTemplate('sd-breadcrumb-item');
 
 export default {
-  title: 'SDS Components/sd-breadcrumb-item',
+  title: 'Components/sd-breadcrumb-item',
   component: 'sd-breadcrumb-item',
   args,
   argTypes,

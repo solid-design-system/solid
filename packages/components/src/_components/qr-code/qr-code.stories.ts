@@ -6,7 +6,7 @@ const { argTypes, args, parameters } = storybookDefaults('sd-qr-code');
 const { generateTemplate } = storybookTemplate('sd-qr-code');
 
 export default {
-  title: 'SDS Components/sd-qr-code',
+  title: 'Components/sd-qr-code',
   component: 'sd-qr-code',
   args,
   argTypes,

@@ -6,7 +6,7 @@ const { argTypes, args, parameters } = storybookDefaults('sd-animation');
 const { generateTemplate } = storybookTemplate('sd-animation');
 
 export default {
-  title: 'SDS Components/sd-animation',
+  title: 'Components/sd-animation',
   component: 'sd-animation',
   args,
   argTypes,

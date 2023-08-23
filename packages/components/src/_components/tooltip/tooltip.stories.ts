@@ -6,7 +6,7 @@ const { argTypes, args, parameters } = storybookDefaults('sd-tooltip');
 const { generateTemplate } = storybookTemplate('sd-tooltip');
 
 export default {
-  title: 'SDS Components/sd-tooltip',
+  title: 'Components/sd-tooltip',
   component: 'sd-tooltip',
   args,
   argTypes,

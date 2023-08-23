@@ -6,7 +6,7 @@ const { argTypes, args, parameters } = storybookDefaults('sd-divider');
 const { generateTemplate } = storybookTemplate('sd-divider');
 
 export default {
-  title: 'SDS Components/sd-divider',
+  title: 'Components/sd-divider',
   component: 'sd-divider',
   args,
   argTypes,

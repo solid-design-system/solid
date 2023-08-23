@@ -6,7 +6,7 @@ const { argTypes, args, parameters } = storybookDefaults('sd-split-panel');
 const { generateTemplate } = storybookTemplate('sd-split-panel');
 
 export default {
-  title: 'SDS Components/sd-split-panel',
+  title: 'Components/sd-split-panel',
   component: 'sd-split-panel',
   args,
   argTypes,

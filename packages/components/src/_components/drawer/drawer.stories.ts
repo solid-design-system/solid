@@ -6,7 +6,7 @@ const { argTypes, args, parameters } = storybookDefaults('sd-drawer');
 const { generateTemplate } = storybookTemplate('sd-drawer');
 
 export default {
-  title: 'SDS Components/sd-drawer',
+  title: 'Components/sd-drawer',
   component: 'sd-drawer',
   args,
   argTypes,

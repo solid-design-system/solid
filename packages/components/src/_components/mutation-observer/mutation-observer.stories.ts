@@ -6,7 +6,7 @@ const { argTypes, args, parameters } = storybookDefaults('sd-mutation-observer')
 const { generateTemplate } = storybookTemplate('sd-mutation-observer');
 
 export default {
-  title: 'SDS Components/sd-mutation-observer',
+  title: 'Components/sd-mutation-observer',
   component: 'sd-mutation-observer',
   args,
   argTypes,

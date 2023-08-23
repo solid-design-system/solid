@@ -6,7 +6,7 @@ const { argTypes, args, parameters } = storybookDefaults('sd-dialog');
 const { generateTemplate } = storybookTemplate('sd-dialog');
 
 export default {
-  title: 'SDS Components/sd-dialog',
+  title: 'Components/sd-dialog',
   component: 'sd-dialog',
   args,
   argTypes,

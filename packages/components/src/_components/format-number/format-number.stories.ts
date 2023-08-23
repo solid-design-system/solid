@@ -6,7 +6,7 @@ const { argTypes, args, parameters } = storybookDefaults('sd-format-number');
 const { generateTemplate } = storybookTemplate('sd-format-number');
 
 export default {
-  title: 'SDS Components/sd-format-number',
+  title: 'Components/sd-format-number',
   component: 'sd-format-number',
   args,
   argTypes,

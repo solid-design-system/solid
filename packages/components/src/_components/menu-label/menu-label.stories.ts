@@ -6,7 +6,7 @@ const { argTypes, args, parameters } = storybookDefaults('sd-menu-label');
 const { generateTemplate } = storybookTemplate('sd-menu-label');
 
 export default {
-  title: 'SDS Components/sd-menu-label',
+  title: 'Components/sd-menu-label',
   component: 'sd-menu-label',
   args,
   argTypes,

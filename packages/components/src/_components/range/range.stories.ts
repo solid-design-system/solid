@@ -6,7 +6,7 @@ const { argTypes, args, parameters } = storybookDefaults('sd-range');
 const { generateTemplate } = storybookTemplate('sd-range');
 
 export default {
-  title: 'SDS Components/sd-range',
+  title: 'Components/sd-range',
   component: 'sd-range',
   args,
   argTypes,

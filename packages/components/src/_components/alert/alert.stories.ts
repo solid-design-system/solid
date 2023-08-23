@@ -6,7 +6,7 @@ const { argTypes, args, parameters } = storybookDefaults('sd-alert');
 const { generateTemplate } = storybookTemplate('sd-alert');
 
 export default {
-  title: 'SDS Components/sd-alert',
+  title: 'Components/sd-alert',
   component: 'sd-alert',
   args,
   argTypes,

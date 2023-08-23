@@ -6,7 +6,7 @@ const { argTypes, args, parameters } = storybookDefaults('sd-radio');
 const { generateTemplate } = storybookTemplate('sd-radio');
 
 export default {
-  title: 'SDS Components/sd-radio',
+  title: 'Components/sd-radio',
   component: 'sd-radio',
   args,
   argTypes,

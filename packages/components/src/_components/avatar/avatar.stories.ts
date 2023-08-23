@@ -6,7 +6,7 @@ const { argTypes, args, parameters } = storybookDefaults('sd-avatar');
 const { generateTemplate } = storybookTemplate('sd-avatar');
 
 export default {
-  title: 'SDS Components/sd-avatar',
+  title: 'Components/sd-avatar',
   component: 'sd-avatar',
   args: { ...args, 'default-slot': 'Default' },
   argTypes,

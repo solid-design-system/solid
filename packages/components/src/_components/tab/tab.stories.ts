@@ -6,7 +6,7 @@ const { argTypes, args, parameters } = storybookDefaults('sd-tab');
 const { generateTemplate } = storybookTemplate('sd-tab');
 
 export default {
-  title: 'SDS Components/sd-tab',
+  title: 'Components/sd-tab',
   component: 'sd-tab',
   args,
   argTypes,
