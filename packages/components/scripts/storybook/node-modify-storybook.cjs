@@ -6,8 +6,8 @@ const path = require('path');
  */
 
 const searchDir = 'dist/storybook/sb-manager';
-const searchText = '\u22C5 Storybook';
-const replaceText = 'Solid Design System by Union Investment (Storybook)';
+const searchText = 'u22C5 Storybook';
+const replaceText = 'u22C5 Solid Design System by Union Investment (Storybook)';
 
 function replaceTextInFiles(directory) {
   fs.readdir(directory, (err, files) => {
@@ -27,13 +27,15 @@ function replaceTextInFiles(directory) {
 
         const updatedContent = content.replace(new RegExp(searchText, 'g'), replaceText);
 
-        fs.writeFile(filePath, updatedContent, 'utf8', err => {
-          if (err) {
-            console.error('Error writing file:', err);
-          } else {
-            console.log(`Replaced text in ${file}`);
-          }
-        });
+        if (updatedContent !== content) {
+          fs.writeFile(filePath, updatedContent, 'utf8', err => {
+            if (err) {
+              console.error('Error writing file:', err);
+            } else {
+              console.log(`Replaced text in ${file}`);
+            }
+          });
+        }
       });
     });
   });
