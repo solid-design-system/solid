@@ -9,13 +9,12 @@ import SolidElement from '../../internal/solid-element';
  * @summary Tags are used as labels to organize things or to indicate a selection.
  * @documentation https://solid.union-investment.com/[storybook-link]/tag
  * @status stable
- * @since 1.0
+ * @since 1.7.0
  *
  * @slot - The tag's content.
  *
  * @event sd-blur - Emitted when the tag loses focus.
  * @event sd-focus - Emitted when the tag gains focus.
- * @event sd-remove - Emitted when the tag is clicked.
  *
  * @csspart base - The component's base wrapper.
  * @csspart content - The tag's content.
@@ -23,7 +22,7 @@ import SolidElement from '../../internal/solid-element';
  */
 @customElement('sd-tag')
 export default class SdTag extends SolidElement {
-  @query('a, button') button: HTMLButtonElement | HTMLLinkElement;
+  @query('a, button') tag: HTMLButtonElement | HTMLLinkElement;
 
   /** The tag's size. */
   @property({ reflect: true }) size: 'lg' | 'sm' = 'lg';
@@ -43,6 +42,9 @@ export default class SdTag extends SolidElement {
   /** Tells the browser where to open the link. Only used when `href` is present. */
   @property() target: '_blank' | '_parent' | '_self' | '_top';
 
+  /** Tells the browser to download the linked file as this filename. Only used when `href` is present. */
+  @property() download?: string;
+
   private handleBlur() {
     this.emit('sd-blur');
   }
@@ -51,56 +53,60 @@ export default class SdTag extends SolidElement {
     this.emit('sd-focus');
   }
 
-  private handleRemoveClick() {
-    this.emit('sd-remove');
-  }
-
   private isLink() {
     return this.href ? true : false;
   }
 
-  /** Simulates a click on the button. */
+  /** Simulates a click on the tag. */
   click() {
-    this.button.click();
+    this.tag.click();
+  }
+
+  /** Sets focus on the tag. */
+  focus(options?: FocusOptions) {
+    this.tag.focus(options);
+  }
+
+  /** Removes focus from the tag. */
+  blur() {
+    this.tag.blur();
   }
 
   render() {
     const isLink = this.isLink();
     const tag = isLink ? literal`a` : literal`button`;
-    /** eslint needs to be partly disabled, otherwise we cannot make the tag dynamic **/
     /* eslint-disable lit/no-invalid-html */
     /* eslint-disable lit/binding-positions */
     return html`
       <${tag}
-        part="base"
+        part='base'
+        type=${ifDefined(isLink ? undefined : 'button')}
         href=${ifDefined(isLink ? this.href : undefined)}
         rel=${ifDefined(isLink && this.target ? 'noreferrer noopener' : undefined)}
         target=${ifDefined(isLink ? this.target : undefined)}
+        download=${ifDefined(isLink ? this.download : undefined)}
         ?disabled=${ifDefined(isLink ? undefined : this.disabled)}
         aria-disabled=${this.disabled ? 'true' : 'false'}
         tabindex=${this.disabled ? '-1' : '0'}
         @blur=${this.handleBlur}
         @focus=${this.handleFocus}
-        @click=${this.handleRemoveClick}
         class=${cx(
-          'inline-flex border rounded-full items-center group leading-none whitespace-nowrap',
+          /* basic styles of the wrapper */
+          'inline-flex border rounded-full items-center group leading-none whitespace-nowrap focus-visible:focus-outline',
           {
             /* sizes, fonts */
             lg: 'px-4 py-2 text-base gap-2',
             sm: 'px-3 py-[5px] text-sm gap-1'
           }[this.size],
+          /* colors */
           this.selected && !this.filtered
-            ? `bg-primary text-white 
-            hover:bg-primary-500 
-            disabled:bg-neutral-500`
-            : `bg-white text-primary 
-            hover:border-primary-500 hover:bg-neutral-100 hover:text-primary-500
-            disabled:border-neutral-500 disabled:text-neutral-500`,
-          this.disabled && 'cursor-not-allowed'
+            ? 'bg-primary border-primary text-white hover:bg-primary-500 hover:border-primary-500 disabled:bg-neutral-500 disabled:border-neutral-500'
+            : 'border-primary text-primary hover:border-primary-500 hover:bg-neutral-100 hover:text-primary-500  disabled:border-neutral-500 disabled:text-neutral-500',
+          this.disabled && !isLink && 'cursor-not-allowed'
         )}
       >
-        <slot part="content"></slot>
-        <div part="removable-indicator" class=${cx(
+        <slot part='content'></slot>
+        <div part='removable-indicator' class=${cx(
           'relative flex flex-col justify-center',
           {
             lg: 'h-4 w-4',
@@ -108,8 +114,8 @@ export default class SdTag extends SolidElement {
           }[this.size],
           !this.filtered && 'hidden'
         )}>
-          <div class="absolute w-full h-[1px] bg-primary group-hover:bg-primary-500 group-disabled:bg-neutral-500 -rotate-45"></div>
-          <div class="absolute w-full h-[1px] bg-primary group-hover:bg-primary-500 group-disabled:bg-neutral-500 rotate-45"></div>
+          <div class='absolute w-full h-[1px] bg-primary group-hover:bg-primary-500 group-disabled:bg-neutral-500 -rotate-45'></div>
+          <div class='absolute w-full h-[1px] bg-primary group-hover:bg-primary-500 group-disabled:bg-neutral-500 rotate-45'></div>
         </div>
       </${tag}>
     `;

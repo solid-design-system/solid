@@ -26,6 +26,34 @@ describe('<sd-tag>', () => {
       expect(el.shadowRoot!.querySelector('button')).to.exist;
       expect(el.shadowRoot!.querySelector('a')).not.to.exist;
     });
+
+    it('should render the child content provided', async () => {
+      el = await fixture<SdTag>(html`<sd-tag>Tag</sd-tag>`);
+      expect(el.innerText).to.eq('Tag');
+    });
+  });
+
+  sizes.forEach(size => {
+    describe(`when passed a size attribute ${size}`, () => {
+      it(`should be accessible when size is "${size}"`, async () => {
+        el = await fixture<SdTag>(html` <sd-tag size="${size}">Tag</sd-tag> `);
+        await expect(el).to.be.accessible();
+      });
+    });
+  });
+
+  describe('when selected', () => {
+    it('should pass accessibility tests', async () => {
+      el = await fixture<SdTag>(html`<sd-tag selected>Tag</sd-tag>`);
+      await expect(el).to.be.accessible();
+    });
+  });
+
+  describe('when filtered', () => {
+    it('should pass accessibility tests', async () => {
+      el = await fixture<SdTag>(html`<sd-tag filtered>Tag</sd-tag>`);
+      await expect(el).to.be.accessible();
+    });
   });
 
   describe('when disabled', () => {
@@ -44,7 +72,7 @@ describe('<sd-tag>', () => {
       expect(el.shadowRoot!.querySelector('a[disabled]')).not.to.exist;
     });
 
-    it('should not bubble up clicks', async () => {
+    it('should not bubble up clicks when rendering a <button>', async () => {
       const button = await fixture<SdTag>(html`<sd-tag disabled>Tag</sd-tag>`);
       const handleClick = sinon.spy();
       button.addEventListener('click', handleClick);
@@ -54,32 +82,68 @@ describe('<sd-tag>', () => {
 
       button.shadowRoot!.querySelector('button')!.click();
       expect(handleClick).not.to.have.been.called;
-
-      const buttonLink = await fixture<SdTag>(html`<sd-tag href="some/path" disabled>Tag</sd-tag>`);
-      buttonLink.addEventListener('click', handleClick);
-      buttonLink.click();
-
-      expect(handleClick).not.to.have.been.called;
-
-      buttonLink.shadowRoot!.querySelector('a')!.click();
-      expect(handleClick).not.to.have.been.called;
     });
   });
 
-  sizes.forEach(size => {
-    describe(`when passed a size attribute ${size}`, () => {
-      it(`should be accessible when size is "${size}"`, async () => {
-        el = await fixture<SdTag>(html` <sd-tag size="${size}">Tag</sd-tag> `);
-        await expect(el).to.be.accessible();
-      });
+  describe('when using methods and rendering a <button>', () => {
+    it('should emit sd-focus and sd-blur when the tag is focused and blurred', async () => {
+      el = await fixture<SdTag>(html` <sd-tag>Tag</sd-tag> `);
+      const focusHandler = sinon.spy();
+      const blurHandler = sinon.spy();
+
+      el.addEventListener('sd-focus', focusHandler);
+      el.addEventListener('sd-blur', blurHandler);
+
+      el.focus();
+      await waitUntil(() => focusHandler.calledOnce);
+
+      el.blur();
+      await waitUntil(() => blurHandler.calledOnce);
+
+      expect(focusHandler).to.have.been.calledOnce;
+      expect(blurHandler).to.have.been.calledOnce;
+    });
+
+    it('should emit a click event when calling click()', async () => {
+      el = await fixture<SdTag>(html` <sd-tag>Tag</sd-tag> `);
+      const clickHandler = sinon.spy();
+
+      el.addEventListener('click', clickHandler);
+      el.click();
+      await waitUntil(() => clickHandler.calledOnce);
+
+      expect(clickHandler).to.have.been.calledOnce;
     });
   });
 
-  describe('when href is present', () => {
-    it('should render as an <a>', async () => {
-      el = await fixture<SdTag>(html` <sd-tag href="some/path">Tag</sd-tag> `);
-      expect(el.shadowRoot!.querySelector('a')).to.exist;
-      expect(el.shadowRoot!.querySelector('button')).not.to.exist;
+  describe('when using methods and rendering a <a>', () => {
+    it('should emit sd-focus and sd-blur when the tag is focused and blurred', async () => {
+      el = await fixture<SdTag>(html` <sd-tag href="#">Tag</sd-tag> `);
+      const focusHandler = sinon.spy();
+      const blurHandler = sinon.spy();
+
+      el.addEventListener('sd-focus', focusHandler);
+      el.addEventListener('sd-blur', blurHandler);
+
+      el.focus();
+      await waitUntil(() => focusHandler.calledOnce);
+
+      el.blur();
+      await waitUntil(() => blurHandler.calledOnce);
+
+      expect(focusHandler).to.have.been.calledOnce;
+      expect(blurHandler).to.have.been.calledOnce;
+    });
+
+    it('should emit a click event when calling click()', async () => {
+      el = await fixture<SdTag>(html` <sd-tag href="#">Tag</sd-tag> `);
+      const clickHandler = sinon.spy();
+
+      el.addEventListener('click', clickHandler);
+      el.click();
+      await waitUntil(() => clickHandler.calledOnce);
+
+      expect(clickHandler).to.have.been.calledOnce;
     });
   });
 });

@@ -1,9 +1,11 @@
 import '../../solid-components';
 import { html } from 'lit';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
+import { userEvent } from '@storybook/testing-library';
+import { waitUntil } from '@open-wc/testing-helpers';
 import { withActions } from '@storybook/addon-actions/decorator';
 
-const { argTypes, args, parameters } = storybookDefaults('sd-tag');
+const { argTypes, parameters } = storybookDefaults('sd-tag');
 const { generateTemplate } = storybookTemplate('sd-tag');
 const { overrideArgs } = storybookHelpers('sd-tag');
 
@@ -27,7 +29,7 @@ export const Default = {
 };
 
 /**
- * The tag in all possible combinations of `filtered` and `selected`.
+ * The tag in all possible combinations of `filtered` and `selected` for both sizes.
  */
 
 export const FilteredAndSelected = {
@@ -36,7 +38,6 @@ export const FilteredAndSelected = {
   render: (args: any) => {
     return html`
       ${['lg', 'sm'].map(size =>
-        // We have to compare different types of icons: "square", "wide" and "tall" ones.
         generateTemplate({
           axis: {
             x: { type: 'attribute', name: 'selected', values: ['false', 'true'] },
@@ -44,7 +45,7 @@ export const FilteredAndSelected = {
           },
           constants: [{ type: 'attribute', name: 'size', value: size }],
           args,
-          options: { title: `size="${size}"` }
+          options: { title: `size='${size}'` }
         })
       )}
     `;
@@ -61,7 +62,6 @@ export const Disabled = {
   render: (args: any) => {
     return html`
       ${['lg', 'sm'].map(size =>
-        // We have to compare different types of icons: "square", "wide" and "tall" ones.
         generateTemplate({
           axis: {
             x: { type: 'attribute', name: 'selected', values: ['false', 'true'] },
@@ -76,7 +76,7 @@ export const Disabled = {
             }
           ],
           args,
-          options: { title: `size="${size}"` }
+          options: { title: `size='${size}'` }
         })
       )}
     `;
@@ -103,7 +103,7 @@ export const Slots = {
           values: [
             {
               title: 'default',
-              value: `<slot-comp style="--slot-content: ''; --slot-height: 16px; --slot-width: 108px; font-size: 8px">Replace this slot</slot-comp>`
+              value: `<slot-comp style='--slot-content: ''; --slot-height: 16px; --slot-width: 108px; font-size: 8px'>Replace this slot</slot-comp>`
             }
           ]
         }
@@ -115,7 +115,7 @@ export const Slots = {
 };
 
 /**
- * Use the `base`, `content` and `cross` part selectors to customize the button.
+ * Use the `base`, `content` and `removable-indicator` part selectors to customize the button.
  */
 
 export const Parts = {
@@ -131,7 +131,7 @@ export const Parts = {
           values: ['base', 'content', 'removable-indicator'].map(part => {
             return {
               title: part,
-              value: `<style>#part-${part} sd-tag::part(${part}){outline: solid 2px red;} #part-${part} .${part}{outline: solid 2px red;}</style><div id="part-${part}">%TEMPLATE%</div>`
+              value: `<style>#part-${part} sd-tag::part(${part}){outline: solid 2px red;} #part-${part} .${part}{outline: solid 2px red;}</style><div id='part-${part}'>%TEMPLATE%</div>`
             };
           })
         }
@@ -147,5 +147,21 @@ export const Parts = {
       ],
       args
     });
+  }
+};
+
+/**
+ * sd-tags are fully accessibile via keyboard.
+ */
+
+export const Mouseless = {
+  render: (args: any) => {
+    return html`<div class="mouseless">${generateTemplate({ args })}</div>`;
+  },
+
+  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
+    const el = canvasElement.querySelector('.mouseless sd-tag');
+    await waitUntil(() => el?.shadowRoot?.querySelector('button'));
+    await userEvent.type(el!.shadowRoot!.querySelector('button')!, '{space}', { pointerEventsCheck: 0 });
   }
 };
