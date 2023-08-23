@@ -2,27 +2,6 @@
 
 The new `sd-tag` is designed to replace the `ui-tag` and provide enhanced functionality. To understand all the available attributes, please refer to the `sd-tag` documentation.
 
-## ❌ Removed attribute: `content`
-
-The most important change is that the `sd-tag` no longer includes a `content` attribute. Instead, it provides a slot for the same purpose. The advantage of this change is that the slot accepts text as well as any valid html content, so it is way more flexible than the `content` attribute.
-
-For usage examples, refer to the `sd-tag/Slots` story.
-
-## ❌ Removed CSS Variables
-
-Component-specific CSS variables have been discontinued. Now, you can override colors and padding using the part selector.
-
-```css
-sd-tag::part(base) {
-  background: pink;
-  color: black;
-}
-```
-
-## ❌ Removed default click handler
-
-The `sd-tag` component does not provide a default handler/behavior for click events.
-
 ## ✨ New attributes: `href`, `target` and `download`
 
 When the new `href` attribute is set the `sd-tag` component renders as a link (`<a>`) and not as a button (`<button>`). The additional `target` attribute controls where the browser should open the link, the `download` attribute may be used to tell the browser to download the linked file with the specified filename. If the `href` attribute is omitted, the `target` and `download` attribute are ignored.
@@ -39,3 +18,26 @@ The `sd-tag` component offers two different sizes:
 
 - `lg` is the default size
 - `sm` size is an alternative size for use in very tight spaces
+
+## ❌ Removed CSS Variables
+
+Component-specific CSS variables have been discontinued. Now, you can override colors and padding using the part selector.
+
+```css
+sd-tag::part(base) {
+  background: pink;
+  color: black;
+}
+```
+
+## ❌ Removed default click handler
+
+The `sd-tag` component does not provide a default handler/behavior for click events. Therefore, the `value` attribute has been removed as well.
+
+## ❌ Removed attribute: `labelId`
+
+The `sd-tag` no longer has a label part and therefore does not provide a `labelId` attribute.
+
+## 🔀 Updated attribute: `checked` to `selected`
+
+The attribute `checked` has been renamed to `selected`.
