@@ -1,0 +1,35 @@
+# `ui-pill`
+
+The new `sd-tag` is designed to replace the `ui-pill` and provide enhanced functionality. To understand all the available attributes, please refer to the `sd-tag` documentation.
+
+## ✨ New attribute: `download`
+
+The `download` attribute may be used to tell the browser to download the linked file with the specified filename. If the `href` attribute is omitted, the `target` and `download` attribute are ignored.
+
+**Hint:** When the `href` attribute is set i.e. the `sd-tag` is rendered as a link (`<a>`), the `disabled` attribute is ignored, as links may not be disabled. To disable the `sd-tag` the `href` attribute has to be removed as well.
+
+## ✨ New attribute: `filtered`
+
+The new `filtered` attribute controls whether or not the tag should display a small close icon (`x`) next to the label of the tag to indicate that the filtered attribute may be removed.
+
+## ✨ New attribute: `size`
+
+The `sd-tag` component offers two different sizes:
+
+- `lg` is the default size
+- `sm` size is an alternative size for use in very tight spaces
+
+## ❌ Removed CSS Variables
+
+Component-specific CSS variables have been discontinued. Now, you can override colors and padding using the part selector.
+
+```css
+sd-tag::part(base) {
+  background: pink;
+  color: black;
+}
+```
+
+## 🔀 Updated attribute: `active` to `selected`
+
+The attribute `active` has been renamed to `selected`.
