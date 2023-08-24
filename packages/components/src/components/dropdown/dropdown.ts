@@ -408,9 +408,9 @@ export default class SdDropdown extends SolidElement {
         auto-size="vertical"
         auto-size-padding="10"
         class=${classMap({
-      dropdown: true,
-      'dropdown--open': this.open
-    })}
+          dropdown: true,
+          'dropdown--open': this.open
+        })}
       >
         <slot
           name="trigger"
