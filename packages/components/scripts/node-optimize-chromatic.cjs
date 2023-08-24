@@ -1,8 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
-const directoryPath = path.join(__dirname, '../../dist/storybook/assets');
-let matchedFiles = [];
+const directoryPath = path.join(__dirname, '../dist/storybook/assets');
+const matchedFiles = [];
 
 fs.readdir(directoryPath, (err, files) => {
   if (err) {

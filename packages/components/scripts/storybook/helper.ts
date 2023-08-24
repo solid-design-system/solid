@@ -1,23 +1,23 @@
-import { html } from 'lit/static-html.js';
-import { unsafeStatic } from 'lit/static-html.js';
+import { classMap } from 'lit/directives/class-map.js';
 import { getWcStorybookHelpers } from '@mariohamann/wc-storybook-helpers';
+import { html, unsafeStatic } from 'lit/static-html.js';
 import format from 'html-format';
 
 type ArgTypesDefinition = 'attribute' | 'property' | 'slot' | 'cssPart' | 'cssProperty';
 
-type AxisDefinition = {
+interface AxisDefinition {
   type: ArgTypesDefinition | 'template';
   name: string;
   values?: any[] | { value: any; title?: string }[];
   title?: string;
-};
+}
 
-export type ConstantDefinition = {
+export interface ConstantDefinition {
   type: ArgTypesDefinition | 'template';
   name: string;
   value: any;
   title?: string;
-};
+}
 
 /**
  * Returns default arguments, events, and argument types for a given custom element tag.
@@ -50,19 +50,23 @@ export const storybookDefaults = (customElementTag: string): any => {
   };
 
   const getOptimizedArgTypes = () => {
-    type member = { kind: string; privacy?: string; name: string };
+    interface member {
+      kind: string;
+      privacy?: string;
+      name: string;
+    }
     // Get the properties that are not defined as attributes
     const getProperties = () => {
-      const fieldMembers = (manifest.members as member[]).filter(member => member.kind === 'field');
+      const fieldMembers = (manifest?.members as member[])?.filter(member => member.kind === 'field');
       const attributeNames = new Set(manifest.attributes?.map((attr: { fieldName: string }) => attr.fieldName));
-      const result = fieldMembers.filter(member => !attributeNames.has(member.name) && member?.privacy !== 'private');
-      return result.map(member => member.name);
+      const result = fieldMembers?.filter(member => !attributeNames.has(member.name) && member?.privacy !== 'private');
+      return result?.map(member => member.name);
     };
 
     return {
       ...argTypes,
       // Events should show up but not be editable
-      ...manifest.events?.reduce((acc: any, event: any) => {
+      ...manifest?.events?.reduce((acc: any, event: any) => {
         acc[event.name] = { control: false };
         return acc;
       }, {}),
@@ -177,7 +181,8 @@ export const storybookHelpers = (customElementTag: string) => {
  * @returns {Object} - An object containing a function that generates a story template.
  */
 export const storybookTemplate = (customElementTag: string) => {
-  const { template } = getWcStorybookHelpers(customElementTag);
+  const { template: theTemplate, manifest } = getWcStorybookHelpers(customElementTag);
+
   const { args: defaultArgs } = storybookDefaults(customElementTag);
   const { getValuesFromAttribute } = storybookHelpers(customElementTag);
 
@@ -240,9 +245,65 @@ export const storybookTemplate = (customElementTag: string) => {
        * Background colors of the table. This can be used to alternate the background color of the table rows or columns.
        */
       templateBackgrounds?: { alternate: 'x' | 'y'; colors: string[] };
+      /**
+       * Custom template function which can be used to customize the template.
+       */
+      templateContent?: string;
     };
     args: any;
   }) => {
+    const template = (args: any) => {
+      if (!manifest.style) {
+        return theTemplate(args);
+      }
+      // Extract class related attributes and transform into an object.
+      const classesObj = Object.keys(args)
+        .filter(key => key.endsWith('-attr'))
+        .reduce((acc, key) => {
+          const baseName = key.substring(0, key.length - 5); // Remove '-attr'
+
+          // Check if value is 'true' and set the baseName class accordingly
+          if (args[key] === true) {
+            acc[baseName] = true;
+          } else if (args[key] === 'false' || args[key] === '(default)') {
+            acc[baseName] = false;
+          }
+          // If value is not 'true' or 'false', add the actual value as a class
+          else if (args[key]) {
+            // This makes it easier to write shorter class names in the docs
+            if (baseName.endsWith('...')) {
+              acc[baseName.replace('...', args[key])] = true;
+            } else {
+              acc[args[key]] = true;
+            }
+          }
+
+          return acc;
+        }, {} as { [key: string]: boolean });
+
+      const slotContent = args['default-slot'] || '';
+
+      // Compute the classes object
+      const classes = { [customElementTag]: true, ...classesObj };
+
+      // Convert classes object to a space-separated string of class names
+      const classesAsString = Object.keys(classes)
+        .filter(key => classes[key])
+        .join(' ');
+
+      if (options?.templateContent) {
+        // Replace placeholders in the provided template content
+        const replacedContent = options.templateContent
+          .replaceAll('%SLOT%', slotContent)
+          .replaceAll('%CLASSES%', classesAsString);
+
+        return unsafeStatic(replacedContent);
+      }
+
+      // Default rendering using lit-html
+      return html`<div class=${classMap(classes)}>${unsafeStatic(slotContent)}</div>`;
+    };
+
     const constantDefinitions = (Array.isArray(constants) ? constants : [constants]).reduce(
       (acc, curr) => ({
         ...acc,

@@ -1,0 +1,32 @@
+.sd-meta {
+  @apply text-base font-normal leading-none text-black;
+
+  &--size-sm {
+    @apply text-sm;
+  }
+
+  &--light {
+    @apply text-neutral-700;
+  }
+
+  &--inverted {
+    @apply text-white;
+
+    &.sd-meta--light {
+      @apply text-primary-400;
+    }
+  }
+
+  &--pipe {
+    &::after {
+      content: '|';
+      @apply mx-1;
+    }
+
+    &.sd-meta--size-sm {
+      &::after {
+        @apply mx-0.5;
+      }
+    }
+  }
+}
