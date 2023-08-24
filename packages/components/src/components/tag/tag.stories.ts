@@ -103,7 +103,7 @@ export const Slots = {
           values: [
             {
               title: 'default',
-              value: `<slot-comp style='--slot-content: ''; --slot-height: 16px; --slot-width: 108px; font-size: 8px'>Replace this slot</slot-comp>`
+              value: `<slot-comp style="--slot-content: ''; height: 16px; --slot-width: 108px; font-size: 8px">Replace this slot</slot-comp>`
             }
           ]
         }
