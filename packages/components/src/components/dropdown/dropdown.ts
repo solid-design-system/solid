@@ -12,9 +12,8 @@ import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 import type SdButton from '../button/button';
-import type SdIconButton from '../icon-button/icon-button';
-import type SdMenu from '../menu/menu';
-import type SdMenuItem from '../menu-item/menu-item';
+import type SdMenu from '../../_components/menu/menu'; // This import should be changed as soon as the menu is moved to the components folder
+import type SdMenuItem from '../../_components/menu-item/menu-item'; // This import should be changed as soon as the menu-item is moved to the components folder
 import type SdPopup from '../popup/popup';
 
 /**
@@ -307,7 +306,7 @@ export default class SdDropdown extends SolidElement {
         // Solid buttons have to update the internal button so it's announced correctly by screen readers
         case 'sd-button':
         case 'sd-icon-button':
-          target = (accessibleTrigger as SdButton | SdIconButton).button;
+          target = (accessibleTrigger as SdButton).button;
           break;
 
         default:
