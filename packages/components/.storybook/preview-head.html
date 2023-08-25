@@ -89,6 +89,38 @@
     content: var(--slot-content, 'Replace this slot');
   }
 
+  .slot {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: stretch;
+    justify-content: center;
+    visibility: visible !important;
+    border-radius: 6px;
+  }
+
+  .slot--text {
+    color: #9747ff;
+    font-size: 14px;
+    font-family: 'Courier New', Courier, monospace;
+    flex-grow: 0;
+    font-weight: bold;
+    padding: 8px;
+  }
+
+  .slot--background {
+    background-color: #9747ff34;
+  }
+
+  .slot--border {
+    border: 1px dashed #9747ff;
+  }
+
+  .slot--overlay {
+    filter: sepia(100%) hue-rotate(216deg);
+    }
+
   .mouseless,
   .mouseless:hover {
     cursor: none !important;

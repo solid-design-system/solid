@@ -97,8 +97,8 @@ export default class SdDropdown extends SolidElement {
    */
   @property({ attribute: false }) containingElement?: HTMLElement;
 
-  /** The distance in pixels from which to offset the panel away from its trigger. This defaults to `0` for `rounded=false` and to `4` for `rounded=true`. */
-  @property({ type: Number }) distance;
+  /** The distance in pixels from which to offset the panel away from its trigger. This defaults to `0` for `rounded=false` and to a minimum of `4` for `rounded=true`. */
+  @property({ type: Number }) distance = 0;
 
   /** The distance in pixels from which to offset the panel along its trigger. */
   @property({ type: Number }) skidding = 0;
@@ -402,22 +402,12 @@ export default class SdDropdown extends SolidElement {
   }
 
   render() {
-    let distance = 0;
-    console.log(this.distance);
-    if (this.distance === '0' || this.distance === 0) {
-      //
-    } else if (this.distance) {
-      distance = this.distance;
-    } else if (this.rounded) {
-      distance = 4;
-    }
-
     return html`
       <sd-popup
         part="base"
         id="dropdown"
         placement=${this.placement}
-        distance=${distance}
+        distance=${this.rounded && this.distance < 4 ? 4 : this.distance}
         skidding=${this.skidding}
         strategy=${this.hoist ? 'fixed' : 'absolute'}
         flip
@@ -482,6 +472,7 @@ export default class SdDropdown extends SolidElement {
       /* When users slot a menu, make sure it conforms to the popup's auto-size */
       ::slotted(sd-menu),
       :host(:not([no-auto-size])) ::slotted(*) {
+        overflow: auto;
         max-width: var(--auto-size-available-width) !important;
         max-height: var(--auto-size-available-height) !important;
       }

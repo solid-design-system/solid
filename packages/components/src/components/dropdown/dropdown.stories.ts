@@ -12,11 +12,10 @@ export default {
   component: 'sd-dropdown',
   args: overrideArgs([
     { type: 'slot', name: 'trigger', value: '<sd-button slot="trigger">Trigger</sd-button>' },
-    { type: 'attribute', name: 'rounded', value: true },
     {
       type: 'slot',
       name: 'default',
-      value: '<slot-comp style="width: 20px; height: 20px; --slot-content: \'\'"></slot-comp>'
+      value: '<div class="slot slot--border slot--background" style="width: 24px; height: 24px;"></div>'
     },
     {
       type: 'attribute',
@@ -30,8 +29,14 @@ export default {
     withActions,
     (story: any) =>
       html`<style>
-          sd-dropdown:not([rounded]) sd-button::part(base) {
+          sd-dropdown:not([rounded]) sd-button::part(base),
+          sd-dropdown:not([rounded]) .slot {
             border-radius: 0;
+          }
+          td.template,
+          .example {
+            width: 120px;
+            height: 70px;
           }</style
         >${story()}`
   ]
@@ -43,8 +48,64 @@ export default {
 
 export const Default = {
   render: (args: any) => {
-    return html`<div style="height: 200px; overflow: hidden;">${generateTemplate({ args })}</div>`;
+    return html`<div style="height: 200px; overflow: hidden;">
+      ${generateTemplate({
+        constants: {
+          type: 'slot',
+          name: 'default',
+          value: '<div class="example"></div>'
+        },
+        args
+      })}
+    </div>`;
   }
+};
+
+/**
+ * For round triggers, set the `rounded` attribute. this automatically adds a minimal distance of 4px between the trigger and the panel.
+ */
+
+export const Rounded = {
+  parameters: { controls: { exclude: ['rounded', 'default'] } },
+  render: (args: any) =>
+    generateTemplate({
+      axis: {
+        x: {
+          type: 'attribute',
+          name: 'rounded'
+        }
+      },
+      constants: {
+        type: 'slot',
+        name: 'default',
+        value: '<div class="example"></div>'
+      },
+      args
+    })
+};
+
+/**
+ * The overlay automatically adjusts its size to fit the screen. The content gets scrollable then. To disable this behavior, set the `no-auto-size` attribute.
+ */
+
+export const NoAutoSize = {
+  parameters: { controls: { exclude: ['rounded', 'default'] } },
+  render: (args: any) =>
+    generateTemplate({
+      axis: {
+        x: {
+          type: 'attribute',
+          name: 'no-auto-size'
+        }
+      },
+      constants: {
+        type: 'slot',
+        name: 'default',
+        value:
+          '<div style="width: 120px;"><div style="height: 110vh; padding: 12px;"><div  class="slot slot--border slot--overlay slot--text slot--background" style="height: 100%">Scroll down</div></div></div>'
+      },
+      args
+    })
 };
 
 /**
@@ -92,12 +153,6 @@ export const Distance = {
       },
       constants: [
         {
-          type: 'template',
-          name: 'the-template',
-          value:
-            '<div style="height: 70px; width: 120px; overflow: hidden; display: flex; align-items: center; justify-content: center;">%TEMPLATE%</div>'
-        },
-        {
           type: 'attribute',
           name: 'placement',
           value: 'bottom'
@@ -133,12 +188,6 @@ export const Skidding = {
           values: ['0', '-20', '20']
         }
       },
-      constants: {
-        type: 'template',
-        name: 'the-template',
-        value:
-          '<div style="height: 70px; width: 120px; overflow: hidden; display: flex; align-items: center; justify-content: center;">%TEMPLATE%</div>'
-      },
       args
     });
   }
@@ -169,17 +218,17 @@ export const Slots = {
           title: 'slot=...',
           values: [
             {
-              value: `<slot-comp></slot-comp>`,
+              value: `<div class="slot slot--border slot--overlay example"></div><sd-button slot="trigger">Trigger</sd-button>`,
               title: 'default'
             },
             {
-              value: `<sd-button class="slot-highlight" slot="trigger"></sd-button>`,
+              value: `<div class="slot slot--text example"></div><sd-button class="slot slot--border slot--overlay" slot="trigger">Trigger</sd-button><div class="slot-overlay"  slot="trigger"></div>`,
               title: 'trigger'
             }
           ]
         }
       },
-      constants: [{ type: 'template', name: 'width', value: '<div style="width: 100px">%TEMPLATE%</div>' }],
+      constants: [{ type: 'slot', name: 'trigger', value: '' }],
       args
     });
   }
