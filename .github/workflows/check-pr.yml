@@ -27,23 +27,14 @@ jobs:
             - name: Install dependencies
               run: pnpm i
 
-            - name: format.verify
+            - name: (monorepo) format.verify
               run: pnpm format.verify
 
-            - name: lint.verify
+            - name: (monorepo) lint.verify
               run: pnpm lint.verify
 
-            - name: (tokens) build
-              run: cd packages/tokens && pnpm build
+            - name: (tokens) verify
+              run: cd packages/tokens && pnpm verify
 
-            - name: (components) ts.verify
-              run: cd packages/components && pnpm ts.verify
-
-            - name: (components) build
-              run: cd packages/components && pnpm build
-
-            - name: (components) ci.optimize-chromatic
-              run: cd packages/components && pnpm ci.optimize-chromatic
-
-            - name: (components) test
-              run: cd packages/components && pnpm test.verify
+            - name: (components) verify
+              run: cd packages/components && pnpm verify
