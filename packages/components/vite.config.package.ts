@@ -51,6 +51,6 @@ export default (() => {
           addTypesPlugin()
         ]
       }
-    }cd
+    }
   };
 }) as typeof defineConfig;
