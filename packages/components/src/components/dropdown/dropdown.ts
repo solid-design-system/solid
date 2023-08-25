@@ -1,17 +1,16 @@
 import '../popup/popup';
 import { animateTo, stopAnimations } from '../../internal/animate';
-import { classMap } from 'lit/directives/class-map.js';
+import { css, html } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry';
 import { getTabbableBoundary } from '../../internal/tabbable';
-import { html } from 'lit';
 import { LocalizeController } from '../../utilities/localize';
 import { scrollIntoView } from '../../internal/scroll';
 import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch';
+import componentStyles from '../../styles/component.styles';
+import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
-import styles from './dropdown.styles';
-import type { CSSResultGroup } from 'lit';
 import type SdButton from '../button/button';
 import type SdIconButton from '../icon-button/icon-button';
 import type SdMenu from '../menu/menu';
@@ -43,11 +42,9 @@ import type SdPopup from '../popup/popup';
  */
 @customElement('sd-dropdown')
 export default class SdDropdown extends SolidElement {
-  static styles: CSSResultGroup = styles;
-
-  @query('.dropdown') popup: SdPopup;
-  @query('.dropdown__trigger') trigger: HTMLSlotElement;
-  @query('.dropdown__panel') panel: HTMLSlotElement;
+  @query('#dropdown') popup: SdPopup;
+  @query('#dropdown__trigger') trigger: HTMLSlotElement;
+  @query('#dropdown__panel') panel: HTMLSlotElement;
 
   private readonly localize = new LocalizeController(this);
 
@@ -56,6 +53,16 @@ export default class SdDropdown extends SolidElement {
    * can use the `show()` and `hide()` methods and this attribute will reflect the dropdown's open state.
    */
   @property({ type: Boolean, reflect: true }) open = false;
+
+  /**
+   * Indicates whether or not the dropdown should be styled with rounded corners.
+   */
+  @property({ type: Boolean, reflect: true }) rounded = false;
+
+  /**
+   * Indicates whether or not the dropdown should automatically resize its content's width/height regarding the available space on screen.
+   */
+  @property({ type: Boolean, reflect: true, attribute: 'no-auto-size' }) noAutoSize = false;
 
   /**
    * The preferred placement of the dropdown panel. Note that the actual placement may vary as needed to keep the panel
@@ -90,8 +97,8 @@ export default class SdDropdown extends SolidElement {
    */
   @property({ attribute: false }) containingElement?: HTMLElement;
 
-  /** The distance in pixels from which to offset the panel away from its trigger. */
-  @property({ type: Number }) distance = 0;
+  /** The distance in pixels from which to offset the panel away from its trigger. This defaults to `0` for `rounded=false` and to `4` for `rounded=true`. */
+  @property({ type: Number }) distance;
 
   /** The distance in pixels from which to offset the panel along its trigger. */
   @property({ type: Number }) skidding = 0;
@@ -395,28 +402,35 @@ export default class SdDropdown extends SolidElement {
   }
 
   render() {
+    let distance = 0;
+    console.log(this.distance);
+    if (this.distance === '0' || this.distance === 0) {
+      //
+    } else if (this.distance) {
+      distance = this.distance;
+    } else if (this.rounded) {
+      distance = 4;
+    }
+
     return html`
       <sd-popup
         part="base"
         id="dropdown"
         placement=${this.placement}
-        distance=${this.distance}
+        distance=${distance}
         skidding=${this.skidding}
         strategy=${this.hoist ? 'fixed' : 'absolute'}
         flip
         shift
         auto-size="vertical"
         auto-size-padding="10"
-        class=${classMap({
-          dropdown: true,
-          'dropdown--open': this.open
-        })}
+        ?active=${this.open}
       >
         <slot
           name="trigger"
           slot="anchor"
           part="trigger"
-          class="dropdown__trigger"
+          class="block"
           @click=${this.handleTriggerClick}
           @keydown=${this.handleTriggerKeyDown}
           @keyup=${this.handleTriggerKeyUp}
@@ -425,13 +439,54 @@ export default class SdDropdown extends SolidElement {
 
         <slot
           part="panel"
-          class="dropdown__panel"
+          class=${cx(
+            'shadow bg-white',
+            this.open ? 'block pointer-events-auto' : 'pointer-events-none',
+            this.rounded && 'rounded-md'
+          )}
           aria-hidden=${this.open ? 'false' : 'true'}
           aria-labelledby="dropdown"
         ></slot>
       </sd-popup>
     `;
   }
+
+  static styles = [
+    SolidElement.styles,
+    componentStyles,
+    css`
+      :host {
+        display: inline-block;
+      }
+
+      #dropdown::part(popup) {
+        z-index: var(--sd-z-index-dropdown);
+      }
+
+      #dropdown[data-current-placement^='top']::part(popup) {
+        transform-origin: bottom;
+      }
+
+      #dropdown[data-current-placement^='bottom']::part(popup) {
+        transform-origin: top;
+      }
+
+      #dropdown[data-current-placement^='left']::part(popup) {
+        transform-origin: right;
+      }
+
+      #dropdown[data-current-placement^='right']::part(popup) {
+        transform-origin: left;
+      }
+
+      /* When users slot a menu, make sure it conforms to the popup's auto-size */
+      ::slotted(sd-menu),
+      :host(:not([no-auto-size])) ::slotted(*) {
+        max-width: var(--auto-size-available-width) !important;
+        max-height: var(--auto-size-available-height) !important;
+      }
+    `
+  ];
 }
 
 setDefaultAnimation('dropdown.show', {
