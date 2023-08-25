@@ -324,7 +324,6 @@ export default class SdDrawer extends SolidElement {
                       size="lg"
                       part="close-button"
                       @click=${() => this.requestClose('close-button')}
-                      class=""
                       ><sd-icon name="xmark" library="system"></sd-icon
                     ></sd-button>
                   </div>
@@ -370,6 +369,10 @@ export default class SdDrawer extends SolidElement {
       [part='body']::-webkit-scrollbar {
         width: 0;
         height: 0;
+      }
+
+      [part='header'] {
+        min-height: 56px;
       }
     `
   ];

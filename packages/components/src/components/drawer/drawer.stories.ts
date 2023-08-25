@@ -82,7 +82,7 @@ export const ButtonInHeader = {
 };
 
 /**
- * The padding in header and footer can be removed by overriding the `sd-drawer::part(header)` and `sd-drawer::part(footer)` selectors with styles
+ * In case it is neccessary the padding in header, body and footer can be removed by overriding the `sd-drawer::part(header)`, `sd-drawer::part(body)`,`sd-drawer::part(footer)` selectors by applying a `left-padding: 0;` style, or adjusted with other values that fit the requirements.
  */
 export const Padding = {
   parameters: {
