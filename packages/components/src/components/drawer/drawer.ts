@@ -22,10 +22,10 @@ import SolidElement from '../../internal/solid-element';
  * @status stable
  * @since 1.6
  *
- * @dependency sd-icon-button
+ * @dependency sd-button
  *
  * @slot - The drawer's main content.
- * @slot header - The drawer's header. This element wraps the title and header actions.
+ * @slot header - The drawer's header, usually a title.
  * @slot footer - The drawer's footer, usually one or more buttons representing various options.
  *
  * @event sd-show - Emitted when the drawer opens.
@@ -42,10 +42,9 @@ import SolidElement from '../../internal/solid-element';
  * @csspart base - The component's base wrapper.
  * @csspart overlay - The overlay that covers the screen behind the drawer.
  * @csspart panel - The drawer's panel (where the drawer and its content are rendered).
- * @csspart header - The drawer's header. This element wraps the title and header actions.
- * @csspart header-content - Optional actions to add to the header. Works best with `<sd-icon-button>`.
+ * @csspart header - The drawer's header. This element wraps the title and the close-button.
  * @csspart title - The drawer's title.
- * @csspart close-button - The close button, an `<sd-icon-button>`.
+ * @csspart close-button - The close button, an `<sd-button>`.
  * @csspart body - The drawer's body.
  * @csspart footer - The drawer's footer.
  *
@@ -174,9 +173,9 @@ export default class SdDrawer extends SolidElement {
 
       // Set initial focus
       requestAnimationFrame(() => {
-        const slInitialFocus = this.emit('sd-initial-focus', { cancelable: true });
+        const sdInitialFocus = this.emit('sd-initial-focus', { cancelable: true });
 
-        if (!slInitialFocus.defaultPrevented) {
+        if (!sdInitialFocus.defaultPrevented) {
           // Set focus to the autofocus target and restore the attribute
           if (autoFocusTarget) {
             (autoFocusTarget as HTMLInputElement).focus({ preventScroll: true });
@@ -309,32 +308,33 @@ export default class SdDrawer extends SolidElement {
           role="dialog"
           aria-modal="true"
           aria-hidden=${this.open ? 'false' : 'true'}
-          aria-label=${ifDefined(this.noHeader ? this.label : undefined)}
+          aria-label=${this.label}
           aria-labelledby=${ifDefined(!this.noHeader ? 'title' : undefined)}
           tabindex="0"
         >
           ${!this.noHeader
             ? html`
-                <header part="header" class="flex justify-between py-2 pr-2 items-center pl-4">
+                <header part="header" class="flex justify-between py-2 px-4 items-center relative">
                   <div part="title">
                     <slot name="header" part="title" class="flex-auto text-xl m-0" id="title"> </slot>
                   </div>
-                  <div part="header-content" class="shrink-0 flex flex-wrap justify-end gap-1 ml-4">
+                  <div class="shrink-0 flex flex-wrap justify-end gap-1 ml-4 absolute top-2 right-2">
                     <sd-button
                       variant="tertiary"
                       size="lg"
                       part="close-button"
                       @click=${() => this.requestClose('close-button')}
+                      class=""
                       ><sd-icon name="xmark" library="system"></sd-icon
                     ></sd-button>
                   </div>
                 </header>
               `
             : ''}
-          <div part="body" class="flex-auto block overflow-auto scrolling my-4">
+          <div part="body" class="flex-auto block px-4">
             <slot></slot>
           </div>
-          <footer part="footer" class=${cx(this.hasSlotController.test('footer') ? 'text-left' : 'hidden')}>
+          <footer part="footer" class=${cx(this.hasSlotController.test('footer') ? 'text-left p-4' : 'hidden')}>
             <slot name="footer"></slot>
           </footer>
         </div>
@@ -360,15 +360,16 @@ export default class SdDrawer extends SolidElement {
         z-index: var(--sd-z-index-drawer);
       }
 
-      [part='header-content'] sd-button,
-      [part='header-content'] ::slotted(sd-button) {
-        flex: 0 0 auto;
-        display: flex;
-        align-items: center;
-      }
-
       [part='body'] {
         -webkit-overflow-scrolling: touch;
+        overflow-y: scroll;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* Internet Explorer 10+ */
+      }
+
+      [part='body']::-webkit-scrollbar {
+        width: 0;
+        height: 0;
       }
     `
   ];
