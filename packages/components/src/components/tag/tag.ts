@@ -9,7 +9,7 @@ import SolidElement from '../../internal/solid-element';
  * @summary Tags are used as labels to organize things or to indicate a selection.
  * @documentation https://solid.union-investment.com/[storybook-link]/tag
  * @status stable
- * @since 1.7.0
+ * @since 1.8.0
  *
  * @slot - The tag's content.
  *
@@ -18,7 +18,7 @@ import SolidElement from '../../internal/solid-element';
  *
  * @csspart base - The component's base wrapper.
  * @csspart content - The tag's content.
- * @csspart removable-indicator - The tag's removable indicator.
+ * @csspart removable-indicator - The tag's removability indicator.
  */
 @customElement('sd-tag')
 export default class SdTag extends SolidElement {
@@ -27,11 +27,11 @@ export default class SdTag extends SolidElement {
   /** The tag's size. */
   @property({ reflect: true }) size: 'lg' | 'sm' = 'lg';
 
-  /** Displays the tag in a select state. */
+  /** Displays the tag in a selected state. */
   @property({ type: Boolean, reflect: true }) selected = false;
 
-  /** Displays the tag in a filtered state. */
-  @property({ type: Boolean, reflect: true }) filtered = false;
+  /** Displays the tag with a removability indicator. */
+  @property({ type: Boolean, reflect: true }) removable = false;
 
   /** Displays the tag in a disabled state. */
   @property({ type: Boolean, reflect: true }) disabled = false;
@@ -95,13 +95,13 @@ export default class SdTag extends SolidElement {
           'inline-flex border rounded-full items-center group leading-none whitespace-nowrap focus-visible:focus-outline',
           {
             /* sizes, fonts */
-            lg: 'px-4 py-2 text-base gap-2',
+            lg: !this.removable ? 'px-4 py-2 text-base gap-2' : 'pl-4 pr-3 py-2 text-base gap-2',
             sm: 'px-3 py-[5px] text-sm gap-1'
           }[this.size],
           /* colors */
-          this.selected && !this.filtered
-            ? 'bg-primary border-primary text-white hover:bg-primary-500 hover:border-primary-500 disabled:bg-neutral-500 disabled:border-neutral-500'
-            : 'border-primary text-primary hover:border-primary-500 hover:bg-neutral-100 hover:text-primary-500  disabled:border-neutral-500 disabled:text-neutral-500',
+          !this.selected
+            ? 'border-primary text-primary hover:border-primary-500 hover:bg-neutral-100 hover:text-primary-500  disabled:border-neutral-500 disabled:text-neutral-500'
+            : 'bg-primary border-primary text-white hover:bg-primary-500 hover:border-primary-500 disabled:bg-neutral-500 disabled:border-neutral-500',
           this.disabled && !isLink && 'cursor-not-allowed'
         )}
       >
@@ -112,10 +112,16 @@ export default class SdTag extends SolidElement {
             lg: 'h-4 w-4',
             sm: 'h-3 w-3'
           }[this.size],
-          !this.filtered && 'hidden'
+          !this.removable && 'hidden'
         )}>
-          <div class='absolute w-full h-[1px] bg-primary group-hover:bg-primary-500 group-disabled:bg-neutral-500 -rotate-45'></div>
-          <div class='absolute w-full h-[1px] bg-primary group-hover:bg-primary-500 group-disabled:bg-neutral-500 rotate-45'></div>
+          <div class=${cx(
+            'absolute w-full h-[1px]  -rotate-45',
+            !this.selected ? 'bg-primary group-hover:bg-primary-500 group-disabled:bg-neutral-500' : 'bg-white'
+          )}></div>
+          <div class=${cx(
+            'absolute w-full h-[1px]  rotate-45',
+            !this.selected ? 'bg-primary group-hover:bg-primary-500 group-disabled:bg-neutral-500' : 'bg-white'
+          )}></div>
         </div>
       </${tag}>
     `;

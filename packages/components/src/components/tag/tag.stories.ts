@@ -29,19 +29,19 @@ export const Default = {
 };
 
 /**
- * The tag in all possible combinations of `filtered` and `selected` for both sizes.
+ * The tag in all possible combinations of `removable` and `selected` for both sizes.
  */
 
-export const FilteredAndSelected = {
-  name: 'Filtered × Selected',
-  parameters: { controls: { exclude: ['size', 'selected', 'filtered', 'disabled'] } },
+export const removableAndSelected = {
+  name: 'Removable × Selected',
+  parameters: { controls: { exclude: ['size', 'selected', 'removable', 'disabled'] } },
   render: (args: any) => {
     return html`
       ${['lg', 'sm'].map(size =>
         generateTemplate({
           axis: {
             x: { type: 'attribute', name: 'selected', values: ['false', 'true'] },
-            y: { type: 'attribute', name: 'filtered', values: ['false', 'true'] }
+            y: { type: 'attribute', name: 'removable', values: ['false', 'true'] }
           },
           constants: [{ type: 'attribute', name: 'size', value: size }],
           args,
@@ -54,18 +54,22 @@ export const FilteredAndSelected = {
 
 /**
  * Use the `disabled` attribute to disable a tag. Clicks will be suppressed until the disabled state is removed.
+ *
+ * __Hint:__ If the href attribute is set i.e. the tag is rendered as a link (`<a>`),
+ * the disabled attribute is ignored, as links may not be disabled.
+ * To disable the tag in this case the href attribute has to be removed as well.
  */
 
 export const Disabled = {
   name: 'Disabled',
-  parameters: { controls: { exclude: ['size', 'selected', 'filtered', 'disabled'] } },
+  parameters: { controls: { exclude: ['size', 'selected', 'removable', 'disabled'] } },
   render: (args: any) => {
     return html`
       ${['lg', 'sm'].map(size =>
         generateTemplate({
           axis: {
             x: { type: 'attribute', name: 'selected', values: ['false', 'true'] },
-            y: { type: 'attribute', name: 'filtered', values: ['false', 'true'] }
+            y: { type: 'attribute', name: 'removable', values: ['false', 'true'] }
           },
           constants: [
             { type: 'attribute', name: 'size', value: size },
@@ -91,7 +95,7 @@ export const Disabled = {
 
 export const Slots = {
   parameters: {
-    controls: { exclude: ['size', 'selected', 'filtered', 'disabled'] }
+    controls: { exclude: ['size', 'selected', 'removable', 'disabled'] }
   },
   render: (args: any) => {
     return generateTemplate({
@@ -109,7 +113,7 @@ export const Slots = {
         }
       },
       args,
-      constants: [{ type: 'attribute', name: 'filtered', value: 'true' }]
+      constants: [{ type: 'attribute', name: 'removable', value: 'true' }]
     });
   }
 };
@@ -120,7 +124,7 @@ export const Slots = {
 
 export const Parts = {
   parameters: {
-    controls: { exclude: ['base', 'content', 'removable-indicator', 'size', 'selected', 'filtered', 'disabled'] }
+    controls: { exclude: ['base', 'content', 'removable-indicator', 'size', 'selected', 'removable', 'disabled'] }
   },
   render: (args: any) => {
     return generateTemplate({
@@ -143,7 +147,7 @@ export const Parts = {
           name: 'default',
           value: '<span class="content">Tag</span>'
         },
-        { type: 'attribute', name: 'filtered', value: 'true' }
+        { type: 'attribute', name: 'removable', value: 'true' }
       ],
       args
     });

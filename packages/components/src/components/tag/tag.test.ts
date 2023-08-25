@@ -17,7 +17,7 @@ describe('<sd-tag>', () => {
       el = await fixture<SdTag>(html`<sd-tag>Tag</sd-tag>`);
       expect(el.size).to.equal('lg');
       expect(el.selected).to.equal(false);
-      expect(el.filtered).to.equal(false);
+      expect(el.removable).to.equal(false);
       expect(el.disabled).to.equal(false);
     });
 
@@ -49,9 +49,9 @@ describe('<sd-tag>', () => {
     });
   });
 
-  describe('when filtered', () => {
+  describe('when removable', () => {
     it('should pass accessibility tests', async () => {
-      el = await fixture<SdTag>(html`<sd-tag filtered>Tag</sd-tag>`);
+      el = await fixture<SdTag>(html`<sd-tag removable>Tag</sd-tag>`);
       await expect(el).to.be.accessible();
     });
   });
