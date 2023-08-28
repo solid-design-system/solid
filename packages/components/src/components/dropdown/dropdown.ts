@@ -42,8 +42,8 @@ import type SdPopup from '../popup/popup';
 @customElement('sd-dropdown')
 export default class SdDropdown extends SolidElement {
   @query('#dropdown') popup: SdPopup;
-  @query('#dropdown__trigger') trigger: HTMLSlotElement;
-  @query('#dropdown__panel') panel: HTMLSlotElement;
+  @query('[part=trigger]') trigger: HTMLSlotElement;
+  @query('[part=panel]') panel: HTMLSlotElement;
 
   private readonly localize = new LocalizeController(this);
 

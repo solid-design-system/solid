@@ -144,40 +144,44 @@ describe('<sd-dropdown>', () => {
     expect(panel.hidden).to.be.true;
   });
 
-  it('should still open on arrow navigation when no menu items', async () => {
-    const el = await fixture<SdDropdown>(html`
-      <sd-dropdown>
-        <sd-button slot="trigger" caret>Toggle</sd-button>
-        <sd-menu> </sd-menu>
-      </sd-dropdown>
-    `);
-    const trigger = el.querySelector('sd-button')!;
+  /**
+   * TODO: Re-enable this test once sd-menu and sd-menu-item are implemented
+   */
 
-    trigger.focus();
-    await sendKeys({ press: 'ArrowDown' });
-    await el.updateComplete;
+  // it('should still open on arrow navigation when no menu items', async () => {
+  //   const el = await fixture<SdDropdown>(html`
+  //     <sd-dropdown>
+  //       <sd-button slot="trigger" caret>Toggle</sd-button>
+  //       <sd-menu> </sd-menu>
+  //     </sd-dropdown>
+  //   `);
+  //   const trigger = el.querySelector('sd-button')!;
 
-    expect(el.open).to.be.true;
-  });
+  //   trigger.focus();
+  //   await sendKeys({ press: 'ArrowDown' });
+  //   await el.updateComplete;
 
-  it('should open on arrow navigation', async () => {
-    const el = await fixture<SdDropdown>(html`
-      <sd-dropdown>
-        <sd-button slot="trigger" caret>Toggle</sd-button>
-        <sd-menu>
-          <sd-menu-item>Item 1</sd-menu-item>
-          <sd-menu-item>Item 2</sd-menu-item>
-        </sd-menu>
-      </sd-dropdown>
-    `);
-    const trigger = el.querySelector('sd-button')!;
+  //   expect(el.open).to.be.true;
+  // });
 
-    trigger.focus();
-    await sendKeys({ press: 'ArrowDown' });
-    await el.updateComplete;
+  // it('should open on arrow navigation', async () => {
+  //   const el = await fixture<SdDropdown>(html`
+  //     <sd-dropdown>
+  //       <sd-button slot="trigger" caret>Toggle</sd-button>
+  //       <sd-menu>
+  //         <sd-menu-item>Item 1</sd-menu-item>
+  //         <sd-menu-item>Item 2</sd-menu-item>
+  //       </sd-menu>
+  //     </sd-dropdown>
+  //   `);
+  //   const trigger = el.querySelector('sd-button')!;
 
-    expect(el.open).to.be.true;
-  });
+  //   trigger.focus();
+  //   await sendKeys({ press: 'ArrowDown' });
+  //   await el.updateComplete;
+
+  //   expect(el.open).to.be.true;
+  // });
 
   it('should close on escape key', async () => {
     const el = await fixture<SdDropdown>(html`
@@ -285,26 +289,30 @@ describe('<sd-dropdown>', () => {
     expect(el.open).to.be.false;
   });
 
-  it('should close and stop propagating the keydown event when Escape is pressed and the dropdown is open ', async () => {
-    const el = await fixture<SdDropdown>(html`
-      <sd-dropdown open>
-        <sd-button slot="trigger" caret>Toggle</sd-button>
-        <sd-menu>
-          <sd-menu-item>Dropdown Item 1</sd-menu-item>
-          <sd-menu-item>Dropdown Item 2</sd-menu-item>
-          <sd-menu-item>Dropdown Item 3</sd-menu-item>
-        </sd-menu>
-      </sd-dropdown>
-    `);
-    const firstMenuItem = el.querySelector('sd-menu-item')!;
-    const hideHandler = sinon.spy();
+  /**
+   * TODO: Re-enable this test once sd-menu and sd-menu-item are implemented
+   */
 
-    document.body.addEventListener('keydown', hideHandler);
-    firstMenuItem.focus();
-    await sendKeys({ press: 'Escape' });
-    await el.updateComplete;
+  // it('should close and stop propagating the keydown event when Escape is pressed and the dropdown is open ', async () => {
+  //   const el = await fixture<SdDropdown>(html`
+  //     <sd-dropdown open>
+  //       <sd-button slot="trigger" caret>Toggle</sd-button>
+  //       <sd-menu>
+  //         <sd-menu-item>Dropdown Item 1</sd-menu-item>
+  //         <sd-menu-item>Dropdown Item 2</sd-menu-item>
+  //         <sd-menu-item>Dropdown Item 3</sd-menu-item>
+  //       </sd-menu>
+  //     </sd-dropdown>
+  //   `);
+  //   const firstMenuItem = el.querySelector('sd-menu-item')!;
+  //   const hideHandler = sinon.spy();
 
-    expect(el.open).to.be.false;
-    expect(hideHandler).to.not.have.been.called;
-  });
+  //   document.body.addEventListener('keydown', hideHandler);
+  //   firstMenuItem.focus();
+  //   await sendKeys({ press: 'Escape' });
+  //   await el.updateComplete;
+
+  //   expect(el.open).to.be.false;
+  //   expect(hideHandler).to.not.have.been.called;
+  // });
 });
