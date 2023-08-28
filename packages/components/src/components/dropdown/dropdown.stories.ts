@@ -1,6 +1,8 @@
 import '../../solid-components';
 import { html } from 'lit';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
+import { userEvent } from '@storybook/testing-library';
+import { waitUntil } from '@open-wc/testing-helpers';
 import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-dropdown');
@@ -43,6 +45,11 @@ export default {
             width: 120px;
             height: 70px;
           }
+          .example {
+            display: flex;
+            flex-direction: column;
+            padding: 12px;
+          }
           .template-placement sd-dropdown[placement^='top'] .slot,
           .template-placement sd-dropdown[placement^='bottom'] .slot {
             width: 48px;
@@ -53,7 +60,7 @@ export default {
             height: 36px;
           }</style
         >${story()}`
-  ]
+  ] as unknown
 };
 
 /**
@@ -250,5 +257,46 @@ export const Slots = {
       constants: [{ type: 'slot', name: 'trigger', value: '' }],
       args
     });
+  }
+};
+
+/**
+ * sd-dropdowns and their content are fully accessibile via keyboard.
+ */
+
+export const Mouseless = {
+  parameters: {
+    controls: {
+      exclude: ['rounded', 'open']
+    }
+  },
+  render: (args: any) => {
+    return html`<div class="mouseless">
+      ${generateTemplate({
+        args,
+        constants: [
+          {
+            type: 'slot',
+            name: 'default',
+            value:
+              '<div class="example"><sd-link href="#">Link 1</sd-link><sd-link href="#">Link 2</sd-link><sd-link href="#">Link 3</sd-link></div>'
+          },
+          {
+            type: 'attribute',
+            name: 'open',
+            value: false
+          }
+        ]
+      })}
+    </div>`;
+  },
+
+  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
+    const trigger = canvasElement.querySelector('.mouseless sd-button');
+    const dropdown = canvasElement.querySelector('.mouseless sd-dropdown');
+    await waitUntil(() => dropdown?.shadowRoot?.querySelector('#dropdown'));
+    await waitUntil(() => trigger?.shadowRoot?.querySelector('button'));
+    await waitUntil(() => dropdown?.shadowRoot?.querySelector('sd-popup:not([active])'));
+    await userEvent.type(trigger, '{return}', { pointerEventsCheck: 0 });
   }
 };
