@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import '../../solid-components';
 import { html } from 'lit';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
@@ -167,6 +166,12 @@ export const Mouseless = {
   play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
     const el = canvasElement.querySelector('.mouseless sd-tag');
     await waitUntil(() => el?.shadowRoot?.querySelector('button'));
-    await userEvent.type(el!.shadowRoot!.querySelector('button')!, '{space}', { pointerEventsCheck: 0 });
+
+    if (el?.shadowRoot) {
+      const button = el.shadowRoot.querySelector('button');
+      if (button) {
+        await userEvent.type(button, '{space}', { pointerEventsCheck: 0 });
+      }
+    }
   }
 };
