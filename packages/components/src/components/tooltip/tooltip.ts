@@ -270,7 +270,9 @@ export default class SdTooltip extends SolidElement {
         shift
         arrow
       >
-        <slot slot="anchor" aria-describedby="tooltip"></slot>
+        <slot slot="anchor" aria-describedby="tooltip">
+          <sd-icon library="system" name="info-sign"></sd-icon>
+        </slot>
 
         <slot
           name="content"
