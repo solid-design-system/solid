@@ -96,7 +96,7 @@ export default class SdDropdown extends SolidElement {
    */
   @property({ attribute: false }) containingElement?: HTMLElement;
 
-  /** The distance in pixels from which to offset the panel away from its trigger. This defaults to `0` for `rounded=false` and to a minimum of `4` for `rounded=true`. */
+  /** The distance in pixels from which to offset the panel away from its trigger. This defaults to `0` for `rounded=false` and to a minimum of `1` for `rounded=true`. */
   @property({ type: Number }) distance = 0;
 
   /** The distance in pixels from which to offset the panel along its trigger. */
@@ -406,7 +406,7 @@ export default class SdDropdown extends SolidElement {
         part="base"
         id="dropdown"
         placement=${this.placement}
-        distance=${this.rounded && this.distance < 4 ? 4 : this.distance}
+        distance=${this.rounded && this.distance < 1 ? 1 : this.distance}
         skidding=${this.skidding}
         strategy=${this.hoist ? 'fixed' : 'absolute'}
         flip

@@ -15,7 +15,7 @@ export default {
     {
       type: 'slot',
       name: 'default',
-      value: '<div class="slot slot--border slot--background" style="width: 24px; height: 24px;"></div>'
+      value: '<div class="slot slot--border slot--background"></div>'
     },
     {
       type: 'attribute',
@@ -29,14 +29,28 @@ export default {
     withActions,
     (story: any) =>
       html`<style>
+          div.slot {
+            width: 24px;
+            height: 24px;
+          }
           sd-dropdown:not([rounded]) sd-button::part(base),
           sd-dropdown:not([rounded]) .slot {
             border-radius: 0;
           }
           td.template,
-          .example {
+          .example,
+          div.example {
             width: 120px;
             height: 70px;
+          }
+          .template-placement sd-dropdown[placement^='top'] .slot,
+          .template-placement sd-dropdown[placement^='bottom'] .slot {
+            width: 48px;
+          }
+
+          .template-placement sd-dropdown[placement^='left'] .slot,
+          .template-placement sd-dropdown[placement^='right'] .slot {
+            height: 36px;
           }</style
         >${story()}`
   ]
@@ -62,7 +76,7 @@ export const Default = {
 };
 
 /**
- * For round triggers, set the `rounded` attribute. this automatically adds a minimal distance of 4px between the trigger and the panel.
+ * For round triggers, set the `rounded` attribute. this automatically adds a minimal distance of 1px between the trigger and the panel.
  */
 
 export const Rounded = {
@@ -102,7 +116,7 @@ export const NoAutoSize = {
         type: 'slot',
         name: 'default',
         value:
-          '<div style="width: 120px;"><div style="height: 110vh; padding: 12px;"><div  class="slot slot--border slot--overlay slot--text slot--background" style="height: 100%">Scroll down</div></div></div>'
+          '<div style="width: 120px;"><div style="height: 110vh; padding: 12px;"><div  class="slot slot--border slot--text slot--background" style="height: 100%; width: auto;">Scroll down<br><br>⬇️</div></div></div>'
       },
       args
     })
@@ -125,7 +139,12 @@ export const Placement = {
             values: [value, `${value}-start`, `${value}-end`]
           }
         },
-        args
+        args,
+        constants: {
+          type: 'template',
+          name: 'placement',
+          value: `<div class="template-placement">%TEMPLATE%</div>`
+        }
       })
     )}`;
   }
@@ -218,11 +237,11 @@ export const Slots = {
           title: 'slot=...',
           values: [
             {
-              value: `<div class="slot slot--border slot--overlay example"></div><sd-button slot="trigger">Trigger</sd-button>`,
+              value: `<div class="slot slot--border slot--background example"></div><sd-button slot="trigger">Trigger</sd-button>`,
               title: 'default'
             },
             {
-              value: `<div class="slot slot--text example"></div><sd-button class="slot slot--border slot--overlay" slot="trigger">Trigger</sd-button><div class="slot-overlay"  slot="trigger"></div>`,
+              value: `<div class="slot slot--text example"></div><sd-button class="slot slot--border" slot="trigger">Trigger</sd-button><div class="slot-overlay"  slot="trigger"></div>`,
               title: 'trigger'
             }
           ]
