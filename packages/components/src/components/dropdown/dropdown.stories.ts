@@ -297,6 +297,7 @@ export const Mouseless = {
     await waitUntil(() => dropdown?.shadowRoot?.querySelector('#dropdown'));
     await waitUntil(() => trigger?.shadowRoot?.querySelector('button'));
     await waitUntil(() => dropdown?.shadowRoot?.querySelector('sd-popup:not([active])'));
-    await userEvent.type(trigger, '{return}', { pointerEventsCheck: 0 });
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    await userEvent.type(trigger!, '{return}', { pointerEventsCheck: 0 });
   }
 };
