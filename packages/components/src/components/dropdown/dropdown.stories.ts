@@ -287,7 +287,7 @@ export const Mouseless = {
             value: false
           }
         ]
-      })}<a href="#test">Test</a>
+      })}
     </div>`;
   },
 
