@@ -468,9 +468,12 @@ export default class SdDropdown extends SolidElement {
         transform-origin: left;
       }
 
-      /* When users slot a menu, make sure it conforms to the popup's auto-size */
-      ::slotted(sd-menu),
-      :host(:not([no-auto-size])) ::slotted(*) {
+      /*
+      * Make sure that slotted content conforms to the popup's auto-size if:
+      * - it's an sd-menu
+      * - it's not the trigger and the dropdown is not set to no-auto-size
+      */
+      :host(:not([no-auto-size])) ::slotted(*:not([slot='trigger'])) {
         overflow: auto;
         max-width: var(--auto-size-available-width) !important;
         max-height: var(--auto-size-available-height) !important;
