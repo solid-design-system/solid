@@ -271,7 +271,7 @@ export const Mouseless = {
     }
   },
   render: (args: any) => {
-    return html`<div class="">
+    return html`<div class="mouseless">
       ${generateTemplate({
         args,
         constants: [
@@ -290,7 +290,6 @@ export const Mouseless = {
       })}
     </div>`;
   },
-
   play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
     const trigger = canvasElement.querySelector('.mouseless sd-button');
     const dropdown = canvasElement.querySelector('.mouseless sd-dropdown');
@@ -298,6 +297,6 @@ export const Mouseless = {
     await waitUntil(() => trigger?.shadowRoot?.querySelector('button'));
     await waitUntil(() => dropdown?.shadowRoot?.querySelector('sd-popup:not([active])'));
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    await userEvent.type(trigger!, '{return}', { pointerEventsCheck: 0 });
+    await userEvent.type(trigger!.shadowRoot!.querySelector('button')!, '{return}', { pointerEventsCheck: 0 });
   }
 };
