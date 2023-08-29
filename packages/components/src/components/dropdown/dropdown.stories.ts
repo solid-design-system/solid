@@ -83,7 +83,7 @@ export const Default = {
 };
 
 /**
- * For round triggers, set the `rounded` attribute. this automatically adds a minimal distance of 1px between the trigger and the panel.
+ * For round triggers, set the `rounded` attribute. This automatically adds a minimal distance of 1px between the trigger and the panel.
  */
 
 export const Rounded = {
