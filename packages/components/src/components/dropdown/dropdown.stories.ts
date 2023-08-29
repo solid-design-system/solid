@@ -279,7 +279,7 @@ export const Mouseless = {
             type: 'slot',
             name: 'default',
             value:
-              '<div class="example"><sd-link href="https://google.de">Link 1</sd-link><sd-link href="#">Link 2</sd-link><sd-link href="#">Link 3</sd-link></div>'
+              '<div class="example"><sd-link href="#">Link 1</sd-link><sd-link href="#">Link 2</sd-link><sd-link href="#">Link 3</sd-link></div>'
           },
           {
             type: 'attribute',
