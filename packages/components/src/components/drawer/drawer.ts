@@ -89,11 +89,11 @@ export default class SdDrawer extends SolidElement {
    * By default, the drawer slides out of its containing block (the viewport). Contained is a hidden feature used only for testing purposes. Please do not use it in production as it will likely change.
    */
   @property({ type: Boolean, reflect: true }) contained = false;
+
   /**
-   * Removes the header. This will also remove the default close button, so please ensure you provide an easy,
-   * accessible way for users to dismiss the drawer.
+   * Removes the header. This will also remove the default close button, so please ensure you provide an easy, accessible way for users to dismiss the drawer.
    */
-  @property({ attribute: 'no-header', type: Boolean, reflect: true }) noHeader = false;
+  @property({ attribute: 'no-header', type: Boolean }) noHeader = false;
 
   firstUpdated() {
     this.drawer.hidden = !this.open;
@@ -137,7 +137,7 @@ export default class SdDrawer extends SolidElement {
   }
 
   private handleDocumentKeyDown = (event: KeyboardEvent) => {
-    if (this.open && !this.contained && event.key === 'Escape') {
+    if (this.open && event.key === 'Escape') {
       event.stopPropagation();
       this.requestClose('keyboard');
     }
