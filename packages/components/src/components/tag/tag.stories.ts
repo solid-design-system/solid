@@ -29,26 +29,38 @@ export const Default = {
 };
 
 /**
- * The tag in all possible combinations of `removable` and `selected` for both sizes.
+ * The tag in all possible combinations of `selected` and `size`.
  */
 
-export const removableAndSelected = {
-  name: 'Removable × Selected',
-  parameters: { controls: { exclude: ['size', 'selected', 'removable', 'disabled'] } },
+export const selectedAndSize = {
+  name: 'Selected × Size',
+  parameters: { controls: { exclude: ['size', 'selected'] } },
   render: (args: any) => {
-    return html`
-      ${['lg', 'sm'].map(size =>
-        generateTemplate({
-          axis: {
-            x: { type: 'attribute', name: 'selected', values: ['false', 'true'] },
-            y: { type: 'attribute', name: 'removable', values: ['false', 'true'] }
-          },
-          constants: [{ type: 'attribute', name: 'size', value: size }],
-          args,
-          options: { title: `size='${size}'` }
-        })
-      )}
-    `;
+    return generateTemplate({
+      axis: {
+        x: { type: 'attribute', name: 'selected', values: ['false', 'true'] },
+        y: { type: 'attribute', name: 'size' }
+      },
+      args
+    });
+  }
+};
+
+/**
+ * The tag in all possible combinations of `removable` and `size`.
+ */
+
+export const removableAndSize = {
+  name: 'Removable × Size',
+  parameters: { controls: { exclude: ['size', 'removable'] } },
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        x: { type: 'attribute', name: 'removable', values: ['false', 'true'] },
+        y: { type: 'attribute', name: 'size' }
+      },
+      args
+    });
   }
 };
 
@@ -62,33 +74,28 @@ export const removableAndSelected = {
 
 export const Disabled = {
   name: 'Disabled',
-  parameters: { controls: { exclude: ['size', 'selected', 'removable', 'disabled'] } },
+  parameters: { controls: { exclude: ['selected', 'removable', 'disabled'] } },
   render: (args: any) => {
-    return html`
-      ${['lg', 'sm'].map(size =>
-        generateTemplate({
-          axis: {
-            x: { type: 'attribute', name: 'selected', values: ['false', 'true'] },
-            y: { type: 'attribute', name: 'removable', values: ['false', 'true'] }
-          },
-          constants: [
-            { type: 'attribute', name: 'size', value: size },
-            {
-              type: 'attribute',
-              name: 'disabled',
-              value: 'true'
-            }
-          ],
-          args,
-          options: { title: `size='${size}'` }
-        })
-      )}
-    `;
+    return generateTemplate({
+      axis: {
+        x: { type: 'attribute', name: 'selected', values: ['false', 'true'] },
+        y: { type: 'attribute', name: 'removable', values: ['false', 'true'] }
+      },
+      constants: [
+        {
+          type: 'attribute',
+          name: 'disabled',
+          value: 'true'
+        }
+      ],
+      args
+    });
   }
 };
 
 /**
  * Use the `default` slot to add content to the tag.
+ * Use the `removable-indicator` slot to change the removability indicator.
  *
  * If you add icons to the slot, please make sure to account for accessibility by providing an alt-text.
  */
@@ -98,23 +105,30 @@ export const Slots = {
     controls: { exclude: ['size', 'selected', 'removable', 'disabled'] }
   },
   render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        x: {
-          type: 'slot',
-          name: 'default',
-          title: 'slot=...',
-          values: [
-            {
-              title: 'default',
-              value: `<slot-comp style="--slot-content: ''; height: 16px; --slot-width: 108px; font-size: 8px">Replace this slot</slot-comp>`
+    return html`
+      ${['default', 'removable-indicator'].map(slot =>
+        generateTemplate({
+          axis: {
+            x: {
+              type: 'slot',
+              name: slot,
+              title: 'slot=...',
+              values: [
+                {
+                  title: slot,
+                  value:
+                    slot === 'default'
+                      ? `<slot-comp style="--slot-content: ''; --slot-height: 16px; --slot-width: 108px; font-size: 8px"></slot-comp>`
+                      : `<slot-comp slot="removable-indicator" style="--slot-content: ''; --slot-height: 16px; --slot-width: 16px; font-size: 8px"></slot-comp>`
+                }
+              ]
             }
-          ]
-        }
-      },
-      args,
-      constants: [{ type: 'attribute', name: 'removable', value: 'true' }]
-    });
+          },
+          args,
+          constants: [{ type: 'attribute', name: 'removable', value: 'true' }]
+        })
+      )}
+    `;
   }
 };
 
@@ -124,7 +138,7 @@ export const Slots = {
 
 export const Parts = {
   parameters: {
-    controls: { exclude: ['base', 'content', 'removable-indicator', 'size', 'selected', 'removable', 'disabled'] }
+    controls: { exclude: ['size', 'selected', 'removable', 'disabled'] }
   },
   render: (args: any) => {
     return generateTemplate({

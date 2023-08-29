@@ -1,5 +1,6 @@
 import { css } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
+import { HasSlotController } from '../../internal/slot';
 import { html, literal } from 'lit/static-html.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import cx from 'classix';
@@ -12,6 +13,7 @@ import SolidElement from '../../internal/solid-element';
  * @since 1.8.0
  *
  * @slot - The tag's content.
+ * @slot removable-indicator - The tag's removability indicator.
  *
  * @event sd-blur - Emitted when the tag loses focus.
  * @event sd-focus - Emitted when the tag gains focus.
@@ -22,6 +24,8 @@ import SolidElement from '../../internal/solid-element';
  */
 @customElement('sd-tag')
 export default class SdTag extends SolidElement {
+  private readonly hasSlotController = new HasSlotController(this, '[default]', 'removable-indicator');
+
   @query('a, button') tag: HTMLButtonElement | HTMLLinkElement;
 
   /** The tag's size. */
@@ -75,6 +79,12 @@ export default class SdTag extends SolidElement {
   render() {
     const isLink = this.isLink();
     const tag = isLink ? literal`a` : literal`button`;
+
+    const slots = {
+      label: this.hasSlotController.test('[default]'),
+      'removable-indicator': this.hasSlotController.test('removable-indicator')
+    };
+
     /* eslint-disable lit/no-invalid-html */
     /* eslint-disable lit/binding-positions */
     return html`
@@ -92,11 +102,16 @@ export default class SdTag extends SolidElement {
         @focus=${this.handleFocus}
         class=${cx(
           /* basic styles of the wrapper */
-          'inline-flex border rounded-full items-center group leading-none whitespace-nowrap focus-visible:focus-outline',
+          'inline-flex border box-border rounded-full items-center group leading-none whitespace-nowrap focus-visible:focus-outline',
           {
             /* sizes, fonts */
-            lg: !this.removable ? 'px-4 py-2 text-base gap-2' : 'pl-4 pr-3 py-2 text-base gap-2',
-            sm: 'px-3 py-[5px] text-sm gap-1'
+            lg: 'h-8 text-base gap-2',
+            sm: 'h-6 text-sm gap-1'
+          }[this.size],
+          {
+            /* padding */
+            lg: !this.removable ? 'px-4 py-2' : 'pl-4 pr-3 py-2',
+            sm: !this.removable ? 'px-3 py-[5px]' : 'pl-3 pr-2 py-2'
           }[this.size],
           /* colors */
           !this.selected
@@ -106,13 +121,15 @@ export default class SdTag extends SolidElement {
         )}
       >
         <slot part='content'></slot>
+        <slot part='removable-indicator' name='removable-indicator'></slot>
         <div part='removable-indicator' class=${cx(
           'relative flex flex-col justify-center',
           {
             lg: 'h-4 w-4',
             sm: 'h-3 w-3'
           }[this.size],
-          !this.removable && 'hidden'
+          !this.removable && 'hidden',
+          slots['removable-indicator'] && 'hidden'
         )}>
           <div class=${cx(
             'absolute w-full h-[1px]  -rotate-45',
