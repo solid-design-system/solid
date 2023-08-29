@@ -54,10 +54,12 @@ export default {
           .template-placement sd-dropdown[placement^='bottom'] .slot {
             width: 48px;
           }
-
           .template-placement sd-dropdown[placement^='left'] .slot,
           .template-placement sd-dropdown[placement^='right'] .slot {
             height: 36px;
+          }
+          #anchor--components-sd-dropdown--no-auto-size .innerZoomElementWrapper {
+            min-height: 500px;
           }</style
         >${story()}`
   ] as unknown
