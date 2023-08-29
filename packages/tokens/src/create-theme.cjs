@@ -204,8 +204,6 @@ const getShadows = () => {
   return result;
 };
 
-getShadows();
-
 const getCoreTokensByType = (tokenType, cssVariableScope) => {
   const result = {};
   const obj = tokens['UI Core'];
