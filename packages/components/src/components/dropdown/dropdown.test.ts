@@ -289,6 +289,81 @@ describe('<sd-dropdown>', () => {
     expect(el.open).to.be.false;
   });
 
+  // Handle tabbing for Safari and other Browsers, see https://github.com/microsoft/playwright/issues/2114#issuecomment-1517642401
+  const tabKey =
+    navigator.userAgent.includes('Safari') && !navigator.userAgent.includes('HeadlessChrome') ? 'Alt+Tab' : 'Tab';
+
+  /**
+   * DEV NOTE: These test would expect "Full Keyboard Access" to be activated on macOS to work in Firefox.
+   * As this can't be guaranteed, we skip these tests for Firefox.
+   */
+  if (!navigator.userAgent.includes('Firefox')) {
+    it('should focus focusable content when doing a tab after opening', async () => {
+      const el = await fixture<SdDropdown>(html`
+        <sd-dropdown>
+          <sd-button slot="trigger" caret>Toggle</sd-button>
+          <a href="#">Link 1</a>
+        </sd-dropdown>
+      `);
+      const trigger = el.querySelector('sd-button')!;
+      const link = el.querySelector('a')!;
+
+      trigger.focus();
+      await el.updateComplete;
+      await sendKeys({ press: 'Enter' });
+      await el.updateComplete;
+      await sendKeys({ press: tabKey });
+
+      expect(link).to.be.equal(document.activeElement);
+    });
+
+    it('should focus element outside of dropdown if last focusable element inside dropdown was left', async () => {
+      const el = await fixture<SdDropdown>(html`
+        <sd-dropdown>
+          <sd-button slot="trigger" caret>Toggle</sd-button>
+          <a href="#">Link 1</a>
+        </sd-dropdown>
+        <a id="link" href="#">Link 1</a>
+      `);
+      const trigger = el.querySelector('sd-button')!;
+      const link = document.querySelector('#link')!;
+
+      trigger.focus();
+      await el.updateComplete;
+      await sendKeys({ press: 'Enter' });
+      await el.updateComplete;
+      await sendKeys({ press: tabKey });
+      await sendKeys({ press: tabKey });
+
+      await el.updateComplete;
+      expect(el.open).to.be.false;
+      expect(link).to.be.equal(document.activeElement);
+    });
+
+    it('should close dropdown if last focusable element inside dropdown was left', async () => {
+      const el = await fixture<SdDropdown>(html`
+        <sd-dropdown>
+          <sd-button slot="trigger" caret>Toggle</sd-button>
+          <a href="#">Link 1</a>
+        </sd-dropdown>
+        <a id="link" href="#">Link 1</a>
+      `);
+      const trigger = el.querySelector('sd-button')!;
+      const link = document.querySelector('#link')!;
+
+      trigger.focus();
+      await el.updateComplete;
+      await sendKeys({ press: 'Enter' });
+      await el.updateComplete;
+      await sendKeys({ press: tabKey });
+      await sendKeys({ press: tabKey });
+
+      await el.updateComplete;
+      expect(el.open).to.be.false;
+      expect(link).to.be.equal(document.activeElement);
+    });
+  }
+
   /**
    * TODO: Re-enable this test once sd-menu and sd-menu-item are implemented
    */
