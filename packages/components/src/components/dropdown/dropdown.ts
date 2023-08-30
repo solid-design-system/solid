@@ -20,7 +20,7 @@ import type SdPopup from '../popup/popup';
  * @summary Dropdowns expose additional content that "drops down" in a panel.
  * @documentation https://solid.union-investment.com/[storybook-link]/dropdown
  * @status stable
- * @since 1.0
+ * @since 1.8
  *
  * @dependency sd-popup
  *
