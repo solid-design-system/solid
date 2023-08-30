@@ -328,7 +328,7 @@ export default class SdDrawer extends SolidElement {
                       size="lg"
                       part="close-button"
                       @click=${() => this.requestClose('close-button')}
-                      ><sd-icon name="xmark" library="system"></sd-icon
+                      ><sd-icon name="close" library="system"></sd-icon
                     ></sd-button>
                   </div>
                 </header>
@@ -367,7 +367,6 @@ export default class SdDrawer extends SolidElement {
         -webkit-overflow-scrolling: touch;
         overflow-y: scroll;
         scrollbar-width: none; /* Firefox */
-        -ms-overflow-style: none; /* Internet Explorer 10+ */
       }
 
       [part='body']::-webkit-scrollbar {
