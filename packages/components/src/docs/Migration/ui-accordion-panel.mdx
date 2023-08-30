@@ -1,15 +1,14 @@
 # `ui-accordion-panel`
 
-The new `sd-accordion` is designed to replace the `ui-accordion-panel`. The new accordion component supports a wider range of attributes with correctly typed values.
+The new `sd-accordion` is designed to replace the `ui-accordion-panel`.
 
 ## ❌ Removed attribute: `scrollTopSelector`
 
 The `scrollTopSelector` attribute has been removed. If required, you can implement this functionality by listening to the appropriate event and manually handling the scroll behavior.
 
-## ✨ New `slot` component
+## ✨ New `slot`s
 
-The new accordion iterates over the `summary` section in `ui-accordion-panel` by adding a new `slot` component. Slots have several new attributes available for better organization and granularity when designing accordions.
-Here is a list of the attributes.
+The `sd-accordion` component uses slots to create a more customizable and flexible component structure. Here are the new slots available:
 
 - `default`
 
