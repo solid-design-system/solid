@@ -314,7 +314,11 @@ export default class SdDrawer extends SolidElement {
         >
           ${!this.noHeader
             ? html`
-                <header part="header" class="flex justify-between py-2 px-4 items-center relative">
+                <header
+                  part="header"
+                  class="flex justify-between py-2 px-4 items-center flex-shrink-0"
+                  style="min-height: 56px;"
+                >
                   <div part="title">
                     <slot name="header" part="title" class="flex-auto text-xl m-0" id="title"> </slot>
                   </div>
@@ -369,10 +373,6 @@ export default class SdDrawer extends SolidElement {
       [part='body']::-webkit-scrollbar {
         width: 0;
         height: 0;
-      }
-
-      [part='header'] {
-        min-height: 56px;
       }
     `
   ];
