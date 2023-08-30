@@ -13,7 +13,7 @@ const { overrideArgs } = storybookHelpers('sd-popup');
  *
  * Popup doesn’t provide any styles — just positioning! The popup’s preferred placement, distance, and skidding (offset) can be configured using attributes.
  *
- * > Popup is a low-level utility built specifically for positioning elements. Do not mistake it for a tooltip or similar because it does not facilitate an accessible experience! Almost every correct usage of <sl-popup> will involve building other components. It should rarely, if ever, occur directly in your HTML.
+ * > Popup is a low-level utility built specifically for positioning elements. Do not mistake it for a tooltip or similar because it does not facilitate an accessible experience! Almost every correct usage of <sd-popup> will involve building other components. It should rarely, if ever, occur directly in your HTML.
  */
 
 export default {
