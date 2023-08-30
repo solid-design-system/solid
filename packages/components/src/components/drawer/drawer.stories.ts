@@ -81,12 +81,60 @@ export const ButtonInHeader = {
 };
 
 /**
+ * If you do not need a header, you can remove it by applying the `no-header` attribute.
+ */
+export const NoHeader = {
+  name: 'No Header',
+  parameters: {
+    controls: { exclude: ['no-header', 'header', 'contained'] }
+  },
+  render: (args: any) => {
+    return html` <div style="width: auto; height: 95vh; position: relative;">
+      ${generateTemplate({
+        constants: [
+          {
+            type: 'attribute',
+            name: 'no-header',
+            value: true
+          }
+        ],
+        args
+      })}
+    </div>`;
+  }
+};
+
+/**
+ * If you do not need a footer, you can remove it by omitting the footer slot.
+ */
+export const NoFooter = {
+  name: 'No Footer',
+  parameters: {
+    controls: { exclude: ['footer', 'contained'] }
+  },
+  render: (args: any) => {
+    return html` <div style="width: auto; height: 95vh; position: relative;">
+      ${generateTemplate({
+        constants: [
+          {
+            type: 'slot',
+            name: 'footer',
+            value: ''
+          }
+        ],
+        args
+      })}
+    </div>`;
+  }
+};
+
+/**
  * In case it is neccessary the padding in header, body and footer can be removed by overriding the `sd-drawer::part(header)`, `sd-drawer::part(body)`,`sd-drawer::part(footer)` selectors by applying a `left-padding: 0;` style, or adjusted with other values that fit the requirements.
  */
 export const Padding = {
   parameters: {
     controls: {
-      exclude: ['header', 'body', 'footer', 'contained']
+      exclude: ['default', 'header', 'footer', 'contained']
     }
   },
   render: (args: any) => {
@@ -166,7 +214,7 @@ export const Placement = {
  *By default, the drawer’s panel will gain focus when opened. This allows a subsequent tab press to focus on the first tabbable element in the drawer. If you want a different element to have focus, add the autofocus attribute to it
  */
 export const Autofocus = {
-  parameters: { controls: { exclude: 'contained' } },
+  parameters: { controls: { exclude: ['contained', 'default', 'header', 'footer'] } },
   render: (args: any) => {
     return html` <div style="width: auto; height: 95vh; position: relative;">
       ${generateTemplate({
