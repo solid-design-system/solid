@@ -9,7 +9,7 @@ const { overrideArgs } = storybookHelpers('sd-popup');
 /**
  * Popup is a utility that lets you declaratively anchor "popup" containers to another element.
  *
- * This component’s name is inspired by <popup>. It uses Floating UI under the hood to provide a well-tested, lightweight, and fully declarative positioning utility for tooltips, dropdowns, and more.
+ * This component’s name is inspired by `<popup>`. It uses Floating UI under the hood to provide a well-tested, lightweight, and fully declarative positioning utility for tooltips, dropdowns, and more.
  *
  * Popup doesn’t provide any styles — just positioning! The popup’s preferred placement, distance, and skidding (offset) can be configured using attributes.
  *
