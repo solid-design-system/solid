@@ -63,7 +63,7 @@ export default {
             height: 36px;
           }
 
-          #story--components-sd-dropdown--placement td.template,
+          .placement-story td.template,
           #story--components-sd-dropdown--skidding td.template,
           #story--components-sd-dropdown--distance td.template {
             position: relative;
@@ -183,30 +183,32 @@ export const NoFlip = {
 export const Placement = {
   parameters: { controls: { exclude: ['placement'] } },
   render: (args: any) => {
-    return html` ${['top', 'bottom', 'left', 'right'].map(value =>
-      generateTemplate({
-        axis: {
-          x: {
-            type: 'attribute',
-            name: 'placement',
-            values: [value, `${value}-start`, `${value}-end`]
-          }
-        },
-        args,
-        constants: [
-          {
-            type: 'template',
-            name: 'placement',
-            value: `<div class="template-placement">%TEMPLATE%</div>`
+    return html`<div class="placement-story">
+      ${['top', 'bottom', 'left', 'right'].map(value =>
+        generateTemplate({
+          axis: {
+            x: {
+              type: 'attribute',
+              name: 'placement',
+              values: [value, `${value}-start`, `${value}-end`]
+            }
           },
-          {
-            type: 'attribute',
-            name: 'no-flip',
-            value: true
-          }
-        ]
-      })
-    )}`;
+          args,
+          constants: [
+            {
+              type: 'template',
+              name: 'placement',
+              value: `<div class="template-placement">%TEMPLATE%</div>`
+            },
+            {
+              type: 'attribute',
+              name: 'no-flip',
+              value: true
+            }
+          ]
+        })
+      )}
+    </div> `;
   }
 };
 
