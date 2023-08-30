@@ -144,10 +144,6 @@ describe('<sd-dropdown>', () => {
     expect(panel.hidden).to.be.true;
   });
 
-  /**
-   * TODO: Re-enable this test once sd-menu and sd-menu-item are implemented
-   */
-
   // it('should still open on arrow navigation when no menu items', async () => {
   //   const el = await fixture<SdDropdown>(html`
   //     <sd-dropdown>
@@ -363,10 +359,6 @@ describe('<sd-dropdown>', () => {
       expect(link).to.be.equal(document.activeElement);
     });
   }
-
-  /**
-   * TODO: Re-enable this test once sd-menu and sd-menu-item are implemented
-   */
 
   // it('should close and stop propagating the keydown event when Escape is pressed and the dropdown is open ', async () => {
   //   const el = await fixture<SdDropdown>(html`
