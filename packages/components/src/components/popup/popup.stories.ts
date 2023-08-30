@@ -1,4 +1,5 @@
 import '../../solid-components';
+import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 import { withActions } from '@storybook/addon-actions/decorator';
 
@@ -38,11 +39,11 @@ export default {
 };
 
 /**
- * Default: This shows sd-popup in its default state.
+ * Default: This shows sd-popup in its default state when active.
  */
 
 export const Default = {
   render: (args: any) => {
-    return generateTemplate({ args });
+    return html`<div style="padding: 40px;">${generateTemplate({ args })}</div>`;
   }
 };
