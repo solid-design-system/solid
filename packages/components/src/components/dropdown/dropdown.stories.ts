@@ -13,7 +13,11 @@ export default {
   title: 'Components/sd-dropdown',
   component: 'sd-dropdown',
   args: overrideArgs([
-    { type: 'slot', name: 'trigger', value: '<sd-button slot="trigger">Trigger</sd-button>' },
+    {
+      type: 'slot',
+      name: 'trigger',
+      value: '<sd-button slot="trigger" style="position: relative">Trigger</sd-button>'
+    },
     {
       type: 'slot',
       name: 'default',
@@ -58,8 +62,17 @@ export default {
           .template-placement sd-dropdown[placement^='right'] .slot {
             height: 36px;
           }
-          #anchor--components-sd-dropdown--no-auto-size .innerZoomElementWrapper {
-            min-height: 500px;
+
+          #story--components-sd-dropdown--placement td.template,
+          #story--components-sd-dropdown--skidding td.template,
+          #story--components-sd-dropdown--distance td.template {
+            position: relative;
+            overflow: auto;
+          }
+          #anchor--components-sd-dropdown--no-auto-size .innerZoomElementWrapper,
+          #anchor--components-sd-dropdown--rounded .innerZoomElementWrapper,
+          #anchor--components-sd-dropdown--slots .innerZoomElementWrapper {
+            min-height: 350px;
           }</style
         >${story()}`
   ] as unknown
