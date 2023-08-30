@@ -121,11 +121,12 @@ export const Rounded = {
 };
 
 /**
- * The overlay automatically adjusts its size to fit the screen. The content gets scrollable then. To disable this behavior, set the `no-auto-size` attribute.
+ * The dropdown automatically adjusts its size to fit the screen. The content gets scrollable then. To disable this behavior, set the `no-auto-size` attribute.
+ * Note: `no-flip` is activated here.
  */
 
 export const NoAutoSize = {
-  parameters: { controls: { exclude: ['rounded', 'default'] } },
+  parameters: { controls: { exclude: ['default', 'no-flip', 'no-auto-size'] } },
   render: (args: any) =>
     generateTemplate({
       axis: {
@@ -134,11 +135,41 @@ export const NoAutoSize = {
           name: 'no-auto-size'
         }
       },
+      constants: [
+        {
+          type: 'slot',
+          name: 'default',
+          value:
+            '<div style="width: 120px;"><div style="height: 110vh; padding: 12px;"><div  class="slot slot--border slot--text slot--background" style="height: 100%; width: auto;">Scroll down<br><br>⬇️</div></div></div>'
+        },
+        {
+          type: 'attribute',
+          name: 'no-flip',
+          value: true
+        }
+      ],
+      args
+    })
+};
+
+/**
+ * The dropdown automatically flips its position to stay most visible in the viewport. To disable this behavior, set the `no-flip` attribute.
+ */
+
+export const NoFlip = {
+  parameters: { controls: { exclude: ['no-flip', 'default'] } },
+  render: (args: any) =>
+    generateTemplate({
+      axis: {
+        x: {
+          type: 'attribute',
+          name: 'no-flip'
+        }
+      },
       constants: {
         type: 'slot',
         name: 'default',
-        value:
-          '<div style="width: 120px;"><div style="height: 110vh; padding: 12px;"><div  class="slot slot--border slot--text slot--background" style="height: 100%; width: auto;">Scroll down<br><br>⬇️</div></div></div>'
+        value: '<div class="example"></div>'
       },
       args
     })
@@ -162,11 +193,18 @@ export const Placement = {
           }
         },
         args,
-        constants: {
-          type: 'template',
-          name: 'placement',
-          value: `<div class="template-placement">%TEMPLATE%</div>`
-        }
+        constants: [
+          {
+            type: 'template',
+            name: 'placement',
+            value: `<div class="template-placement">%TEMPLATE%</div>`
+          },
+          {
+            type: 'attribute',
+            name: 'no-flip',
+            value: true
+          }
+        ]
       })
     )}`;
   }

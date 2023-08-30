@@ -59,11 +59,6 @@ export default class SdDropdown extends SolidElement {
   @property({ type: Boolean, reflect: true }) rounded = false;
 
   /**
-   * Indicates whether or not the dropdown should automatically resize its content's width/height regarding the available space on screen.
-   */
-  @property({ type: Boolean, reflect: true, attribute: 'no-auto-size' }) noAutoSize = false;
-
-  /**
    * The preferred placement of the dropdown panel. Note that the actual placement may vary as needed to keep the panel
    * inside of the viewport.
    */
@@ -101,6 +96,16 @@ export default class SdDropdown extends SolidElement {
 
   /** The distance in pixels from which to offset the panel along its trigger. */
   @property({ type: Number }) skidding = 0;
+
+  /**
+   * Indicates whether or not the dropdown should automatically resize its content's width/height regarding the available space on screen.
+   */
+  @property({ type: Boolean, reflect: true, attribute: 'no-auto-size' }) noAutoSize = false;
+
+  /**
+   * When set to true, the placement of the dropdown will not flip to the opposite site to keep it in view.
+   */
+  @property({ type: Boolean, reflect: true, attribute: 'no-flip' }) noFlip = false;
 
   /**
    * Enable this option to prevent the panel from being clipped when the component is placed inside a container with
@@ -409,7 +414,7 @@ export default class SdDropdown extends SolidElement {
         distance=${this.rounded && this.distance < 1 ? 1 : this.distance}
         skidding=${this.skidding}
         strategy=${this.hoist ? 'fixed' : 'absolute'}
-        flip
+        ?flip=${!this.noFlip}
         shift
         auto-size="vertical"
         auto-size-padding="10"
