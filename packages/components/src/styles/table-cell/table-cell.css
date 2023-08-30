@@ -1,0 +1,23 @@
+.sd-table-cell {
+  @apply border-solid border-neutral-400 border-y-[1px] border-x-0 text-sm text-left p-4;
+
+  &--divider {
+    @apply border-r-[1px];
+  }
+
+  &--transparent {
+    @apply bg-transparent;
+  }
+
+  &--white {
+    @apply bg-white;
+  }
+
+  &--primary-100 {
+    @apply bg-primary-100;
+  }
+
+  &--neutral-100 {
+    @apply bg-neutral-100;
+  }
+}
