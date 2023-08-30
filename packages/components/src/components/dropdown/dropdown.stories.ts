@@ -98,7 +98,7 @@ export const Default = {
 };
 
 /**
- * For round triggers, set the `rounded` attribute. This automatically adds a minimal distance of 1px between the trigger and the panel.
+ * For round triggers (like e. g. default `sd-buttons`), set the `rounded` attribute. This sets a rounding on the dropdown and automatically adds a minimal distance of 1px between the trigger and the panel.
  */
 
 export const Rounded = {
