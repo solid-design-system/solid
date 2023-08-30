@@ -118,14 +118,17 @@ export const Slots = {
                   title: slot,
                   value:
                     slot === 'default'
-                      ? `<slot-comp style="--slot-content: ''; --slot-height: 16px; --slot-width: 108px; font-size: 8px"></slot-comp>`
-                      : `<slot-comp slot="removable-indicator" style="--slot-content: ''; --slot-height: 16px; --slot-width: 16px; font-size: 8px"></slot-comp>`
+                      ? `<slot-comp style="--slot-content: ''; --slot-height: auto; --slot-width: 108px; font-size: 8px"></slot-comp>`
+                      : `<slot-comp slot="removable-indicator" style="--slot-content: ''; --slot-height: auto; --slot-width: 16px; font-size: 8px"></slot-comp>`
                 }
               ]
             }
           },
           args,
-          constants: [{ type: 'attribute', name: 'removable', value: 'true' }]
+          constants: [
+            { type: 'attribute', name: 'removable', value: 'true' },
+            { type: 'attribute', name: 'size', value: 'lg' }
+          ]
         })
       )}
     `;
@@ -161,7 +164,14 @@ export const Parts = {
           name: 'default',
           value: '<span class="content">Tag</span>'
         },
-        { type: 'attribute', name: 'removable', value: 'true' }
+        {
+          type: 'slot',
+          name: 'removable-indicator',
+          value:
+            '<sd-icon slot="removable-indicator" library="system" name="close" label="remove" class="removable-indicator">'
+        },
+        { type: 'attribute', name: 'removable', value: 'true' },
+        { type: 'attribute', name: 'size', value: 'lg' }
       ],
       args
     });

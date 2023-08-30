@@ -1,6 +1,5 @@
 import { css } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
-import { HasSlotController } from '../../internal/slot';
 import { html, literal } from 'lit/static-html.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import cx from 'classix';
@@ -24,8 +23,6 @@ import SolidElement from '../../internal/solid-element';
  */
 @customElement('sd-tag')
 export default class SdTag extends SolidElement {
-  private readonly hasSlotController = new HasSlotController(this, '[default]', 'removable-indicator');
-
   @query('a, button') tag: HTMLButtonElement | HTMLLinkElement;
 
   /** The tag's size. */
@@ -80,11 +77,6 @@ export default class SdTag extends SolidElement {
     const isLink = this.isLink();
     const tag = isLink ? literal`a` : literal`button`;
 
-    const slots = {
-      label: this.hasSlotController.test('[default]'),
-      'removable-indicator': this.hasSlotController.test('removable-indicator')
-    };
-
     /* eslint-disable lit/no-invalid-html */
     /* eslint-disable lit/binding-positions */
     return html`
@@ -102,7 +94,7 @@ export default class SdTag extends SolidElement {
         @focus=${this.handleFocus}
         class=${cx(
           /* basic styles of the wrapper */
-          'inline-flex border box-border rounded-full items-center group leading-none whitespace-nowrap focus-visible:focus-outline',
+          'inline-flex border box-border rounded-full items-center leading-none whitespace-nowrap focus-visible:focus-outline',
           {
             /* sizes, fonts */
             lg: 'h-8 text-base gap-2',
@@ -121,25 +113,16 @@ export default class SdTag extends SolidElement {
         )}
       >
         <slot part='content'></slot>
-        <slot part='removable-indicator' name='removable-indicator'></slot>
-        <div part='removable-indicator' class=${cx(
-          'relative flex flex-col justify-center',
-          {
-            lg: 'h-4 w-4',
-            sm: 'h-3 w-3'
-          }[this.size],
+        <slot part='removable-indicator' name='removable-indicator' class=${cx(
           !this.removable && 'hidden',
-          slots['removable-indicator'] && 'hidden'
+          {
+            /* sizes, fonts */
+            lg: 'text-base',
+            sm: 'text-[12px]'
+          }[this.size]
         )}>
-          <div class=${cx(
-            'absolute w-full h-[1px]  -rotate-45',
-            !this.selected ? 'bg-primary group-hover:bg-primary-500 group-disabled:bg-neutral-500' : 'bg-white'
-          )}></div>
-          <div class=${cx(
-            'absolute w-full h-[1px]  rotate-45',
-            !this.selected ? 'bg-primary group-hover:bg-primary-500 group-disabled:bg-neutral-500' : 'bg-white'
-          )}></div>
-        </div>
+          <sd-icon library='system' name='close' label='remove'></sd-icon>
+        </slot>
       </${tag}>
     `;
     /* eslint-enable lit/no-invalid-html */
