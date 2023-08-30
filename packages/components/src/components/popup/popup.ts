@@ -9,7 +9,7 @@ import SolidElement from '../../internal/solid-element';
  * @summary Popup is a utility that lets you declaratively anchor "popup" containers to another element.
  * @documentation https://solid.union-investment.com/[storybook-link]/popup
  * @status stable
- * @since 1.0
+ * @since 1.8
  *
  * @event sd-reposition - Emitted when the popup is repositioned. This event can fire a lot, so avoid putting expensive
  *  operations in your listener or consider debouncing it.
