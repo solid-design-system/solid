@@ -71,7 +71,7 @@ export const ButtonInHeader = {
           {
             type: 'slot',
             name: 'header',
-            value: `<sd-button slot='header' variant='tertiary'>Header<sd-icon name="arrow-left" library="system" slot="icon-left"></sd-icon></sd-button>`
+            value: `<sd-button slot='header' variant='tertiary'>Header<sd-icon library="global-resources" name="system/arrow-left" slot="icon-left"></sd-icon></sd-button>`
           }
         ],
         args
