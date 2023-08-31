@@ -58,7 +58,7 @@ export const VariantAndInset = {
         {
           type: 'template',
           name: 'style',
-          value: '<div style="margin-bottom: 40px; width: 375px; height: 250px;">%TEMPLATE%</div>'
+          value: '<div style="margin-bottom: 40px; height: 250px;">%TEMPLATE%</div>'
         },
         {
           type: 'attribute',
@@ -76,7 +76,7 @@ export const VariantAndInset = {
 
 export const InsetAndOrientation = {
   name: 'Inset x Orientation',
-  parameters: { controls: { exclude: ['inset', 'breakpoint'] } },
+  parameters: { controls: { exclude: ['inset', 'breakpoint', 'variant'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -102,6 +102,11 @@ export const InsetAndOrientation = {
           type: 'template',
           name: 'style',
           value: '<div style="margin-bottom: 40px;">%TEMPLATE%</div>'
+        },
+        {
+          type: 'attribute',
+          name: 'variant',
+          value: 'neutral-100'
         }
       ]
     });
@@ -149,7 +154,7 @@ export const NoMeta = {
         {
           type: 'attribute',
           name: 'variant',
-          value: 'white border-neutral-300'
+          value: 'neutral-100'
         }
       ]
     });
@@ -161,7 +166,9 @@ export const NoMeta = {
  */
 
 export const DistributionRatio = {
-  parameters: { controls: { exclude: ['--distribution-media', '--distribution-content', 'variant'] } },
+  parameters: {
+    controls: { exclude: ['--distribution-media', '--distribution-content', 'variant', 'breakpoint', 'inset'] }
+  },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -208,7 +215,7 @@ export const DistributionRatio = {
  */
 
 export const Breakpoint = {
-  parameters: { controls: { exclude: ['breakpoint', 'variant'] } },
+  parameters: { controls: { exclude: ['breakpoint', 'variant', 'inset'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -236,7 +243,7 @@ export const Breakpoint = {
  */
 
 export const Headline = {
-  parameters: { controls: { exclude: ['headline', 'variant'] } },
+  parameters: { controls: { exclude: ['headline', 'variant', 'inset'] } },
   render: (args: any) => {
     return html`
       ${['h1', 'h2', 'h3', 'h4', 'h5', 'h6'].map(tag => {
@@ -282,7 +289,7 @@ export const Headline = {
 
 export const Slots = {
   parameters: {
-    controls: { exclude: ['default', 'media', 'meta', 'headline', 'variant'] }
+    controls: { exclude: ['default', 'media', 'meta', 'headline', 'variant', 'inset'] }
   },
   render: (args: any) => {
     return html`
@@ -344,7 +351,7 @@ export const Slots = {
 };
 
 export const Parts = {
-  parameters: { controls: { exclude: ['base', 'media', 'content', 'meta', 'headline', 'main', 'variant'] } },
+  parameters: { controls: { exclude: ['base', 'media', 'content', 'meta', 'headline', 'main', 'variant', 'inset'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
