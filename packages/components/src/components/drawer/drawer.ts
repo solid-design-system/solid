@@ -20,7 +20,7 @@ import SolidElement from '../../internal/solid-element';
  * @summary Drawers slide in from a container to expose additional options and information.
  * @documentation https://solid.union-investment.com/[storybook-link]/drawer
  * @status stable
- * @since 1.6
+ * @since 1.9
  *
  * @dependency sd-button
  *
