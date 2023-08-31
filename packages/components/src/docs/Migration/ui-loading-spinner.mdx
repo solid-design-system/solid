@@ -1,11 +1,19 @@
-# `sd-spinner`: Replacement for `ui-loading-spinner`
+# Migration Guide: From `ui-loading-spinner` to `sd-spinner`
 
-The new `sd-spinner` is designed to replace the `ui-loading-spinner`.
+The new `sd-spinner` is designed to replace the `ui-loading-spinner`. Instead of mainly providing content via attributes, the `sd-spinner` component uses slots to allow for more flexibility and customization.
 
-## ✨ New attribute: `color`
+## ⚙️ Attributes
+
+### ✨ New Attributes
+
+#### [color]
 
 The `ui-loading-spinner` managed its color through global skinning. The `sd-spinner` uses the `color` attribute for color setting, ensuring better consistency with other components.
 
-## ❌ Removed fixed size
+<hr />
+
+## 💪 Additional Changes
+
+### ❌ Removed fixed size
 
 The `ui-loading-spinner` had a fixed size of `25px`. The `sd-spinner`, on the other hand, is fully responsive and can be sized using CSS via the `font-size` property. Its default size is `1em`, which is equivalent to `16px` by default.

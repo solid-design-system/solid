@@ -4,3 +4,24 @@ export const cdnBase = 'https://solid-design-system.union-investment.com';
 # Introduction for Migration
 
 This is the migration guide for the Solid Design System from "Component Library" (built with Stencil) to "Solid Components" (built with LitElement).
+
+## Global Changes
+
+### CSS Variables
+
+We have discontinued component-specific CSS variables. You can now alter colors and padding using the part selector. Alternatively, override CSS variables used within the element as needed.
+
+```css
+sd-button::part(base) {
+  background: pink;
+  color: black;
+}
+```
+
+As an alternative you can override CSS variables used in the element:
+
+```css
+sd-button {
+  --sd-spacing-4: 15px; // overrides default 16px
+}
+```
