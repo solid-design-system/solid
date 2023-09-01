@@ -1,66 +1,84 @@
-# `ui-teaser`
+# Migration Guide: From `ui-teaser` to `sd-teaser`
 
-The new `sd-teaser` is designed to replace the `ui-teaser`. The new teaser component offers a more flexible and customizable component structure through the use of slots, and supports better control over layout distribution with new CSS properties.
+The new `sd-teaser` is designed to replace the `ui-teaser`. Instead of mainly providing content via attributes, the `sd-teaser` component uses slots to allow for more flexibility and customization.
 
-## ❌ Removed Attributes
+## 💾 Slots
 
-The following properties have been removed from the new teaser component:
+### ✨ New Slots
 
-- `headline`
-- `text`
-- `date`
-- `category`
-- `author`
-- `image`
-- `imageAltText`
-- `imageMouseover`
-- `copyright`
-- `alignButton`
-- `mediaSelection`
-- `videoSrc`
-- `videoLoopSetting`
-- `replace`
-- `sizes`
-- `links`
-- `utilityLinks`
-- `isTextFloating`
+#### [default]
 
-If these properties are required, you should implement them using slots in the new `sd-teaser` component.
+Contains the main content of the teaser.
 
-## 🔀 Updated Attributes
+#### [media]
 
-### 🔀 Updated Attribute: `variant`
+A slot to provide media content for the teaser.
 
-The `variant` attribute has been updated to support the following values : `white` | `white border-neutral-300` | `neutral-100` | `primary` | `primary-100`.
+#### [meta]
 
-### ✨ New Attribute: `breakpoint`
+A slot to provide metadata for the teaser.
+
+#### [headline]
+
+A slot to provide the headline for the teaser.
+
+<hr />
+
+## ⚙️ Attributes
+
+### ✨ New Attributes
+
+#### [breakpoint]
 
 The `breakpoint` attribute is a new addition that determines when the teaser switches from `vertical` to `horizontal`. `0` is always `horizontal`, `9999` is always `vertical`. Default value is `448`.
 
-### ✨ New attribute: `inset`
+#### [inset]
 
 The `inset` attribute is used to set the inner padding of the teaser. This is always set in `white border-neutral-300` variant.
 
-## ✨ New `slots`
+### 🔀 Updated Attributes
 
-The new `sd-teaser` component uses slots to create a more customizable and flexible component structure. Here are the new slots available:
+#### [variant]
 
-- `default` - Contains the main content of the teaser.
+The `variant` attribute has been updated to support the following values : `white` | `white border-neutral-300` | `neutral-100` | `primary` | `primary-100`.
 
-- `media` - A slot to provide media content for the teaser.
+### ❌ Removed Attributes
 
-- `meta` - A slot for presenting metadata related to the teaser.
+The following attributes have been removed from the new sd-teaser component:
 
-- `headline` - A slot for the headline of the teaser.
+1. [headline]
+2. [text]
+3. [image]
+4. [imageAltText]
+5. [imageMouseover]
+6. [date]
+7. [category]
+8. [author]
+9. [alignButton]
+10. [mediaSelection]
+11. [videoSrc]
+12. [videoLoopSetting]
+13. [replace]
+14. [sizes]
+15. [links]
+16. [utilityLinks]
+17. [isTextFloating]
 
-### ✨ New CSS Properties
+If these properties are required, you should implement them using slots in the new `sd-teaser` component.
 
-The new sd-teaser component introduces two new CSS properties:
+<hr />
 
-`--distribution-media` - The distribution ratio of the media.
+## ✍️ CSS Variables
 
-`--distribution-content` - The distribution ratio of the content.
+### ✨ New CSS Variables
 
+#### [--distribution-media]
+
+The distribution ratio of the media.
+
+#### [--distribution-content]
+
+The distribution ratio of the content.
 This can only be used when the orientation is horizontal. In case there's a requirement to have a fixed value for the media or content, you can override the sd-teaser::part(media) or sd-teaser::part(content) selector by applying a flex-shrink of 0.
 
 ```css
@@ -69,12 +87,25 @@ sd-teaser::part(media) {
 }
 ```
 
-## ❌ Removed Events and Methods
+<hr />
 
-The following events and methods have been removed from the new teaser component:
+## 🥳 Events
 
-- `componentResized`
-- `linkClick`
-- `onAfterResize`
-- `hasLinks`
-- `createLink` - You can use the slot system to add links or any other elements to the `sd-teaser`.
+### ❌ Removed Events:
+
+The following events have been removed from the new sd-teaser component:
+
+1. [componentResized]
+2. [linkClick]
+
+<hr />
+
+## 🧪 Methods
+
+### ❌ Removed Methods:
+
+The following methods have been removed from the new sd-teaser component:
+
+1. [onAfterResize]
+2. [hasLinks]
+3. [createLink] - You can use the slot system to add links or any other elements to the `sd-teaser`.

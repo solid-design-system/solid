@@ -1,30 +1,60 @@
 # Migration Guide: From `ui-dropdown` to `sd-dropdown`
 
-The new `sd-dropdown` is designed to replace the `ui-dropdown`. Instead of providing content via attributes, the new dropdown uses slots to allow for more flexibility and customization.
+The new `sd-dropdown` is designed to replace the `ui-dropdown`. Instead of mainly providing content via attributes, the `sd-dropdown` component uses slots to allow for more flexibility and customization.
 
-## ✨ New Slot: `trigger`
+## 💾 Slots
+
+### ✨ New Slots
+
+#### [trigger]
 
 The new `sd-dropdown` does not offer a direct trigger element. Instead, it leverages the `trigger` slot to determine the element that should invoke the dropdown. On top you can programmatically open the dropdown by setting the `open` property to `true`.
 
-## ❌ Removed Attributes
+<hr />
 
-The old `ui-dropdown` had several attributes that are no longer present in the `sd-dropdown` due to the redesigned approach using slots:
+## ⚙️ Attributes
 
-- `title` and `icon`: Previously used for the dropdown's appearance.
-- `iconOption`: Determined if an icon can be added.
-- `titleDisplayPosition`: Controlled the title's positioning.
-- `links` and `utilityDropdownLinks`: Managed the links in the dropdown.
-- `downloads` and `untilityDownloads`: Managed download links in the dropdown.
+### ✨ New Attributes
 
-These functionalities are now inherently managed through the default and "trigger" slots in `sd-dropdown`, streamlining the component structure and allowing for more customization.
+#### [rounded]
 
-## 🔀 Updated Attributes
+To style the dropdown with rounded corners.
 
-### 🔀 Updated Attribute: `open`
+#### [noAutoSize]
+
+Controls the automatic resizing of content's width/height.
+
+#### [disabled]
+
+Disables the dropdown.
+
+#### [stayOpenOnSelect]
+
+Keeps the dropdown open after an item is selected.
+
+#### [containingElement]
+
+The dropdown closes when the user interacts outside of this element.
+
+#### [distance]
+
+Offset distance of the panel away from its trigger.
+
+#### [skidding]
+
+Offset distance of the panel along its trigger.
+
+#### [hoist]
+
+Option to prevent clipping of the panel when placed inside a container with `overflow: auto|scroll`.
+
+### 🔀 Updated Attributes
+
+#### [open]
 
 While both the old and new dropdown components have an `open` property to control the visibility of the dropdown, in the new `sd-dropdown`, it is exposed as a property which can be directly set to true or false.
 
-### 🔀 Updated Attribute: `placement`
+#### [placement]
 
 The old `dropdownPosition` has been replaced by the `placement` attribute. Here's how you can map the values:
 
@@ -32,31 +62,46 @@ The old `dropdownPosition` has been replaced by the `placement` attribute. Here'
 - `bottom-right` in `ui-dropdown` translates to `bottom-end` in `sd-dropdown`.
 - on top you have the possibility to set `top`, `left`, `right` including `*-start` and `*-end` variants, too.
 
-## ✨ New Attributes
+### ❌ Removed Attributes
 
-These are attributes that didn't exist in the old dropdown:
+The following attributes have been removed from the new sd-dropdown component:
 
-- `rounded`: To style the dropdown with rounded corners.
-- `noAutoSize`: Controls the automatic resizing of content's width/height.
-- `disabled`: Disables the dropdown.
-- `stayOpenOnSelect`: Keeps the dropdown open after an item is selected.
-- `containingElement`: The dropdown closes when the user interacts outside of this element.
-- `distance`: Offset distance of the panel away from its trigger.
-- `skidding`: Offset distance of the panel along its trigger.
-- `hoist`: Option to prevent clipping of the panel when placed inside a container with `overflow: auto|scroll`.
+1. [title & icon]
+   Previously used for the dropdown's appearance.
+2. [iconOption]
+   Determined if an icon can be added.
+3. [titleDisplayPosition]
+   Controlled the title's positioning.
+4. [links & utilityDropdownLinks]
+   Managed the links in the dropdown.
+5. [downloads & untilityDownloads]
+   Managed download links in the dropdown.
 
-## 🔄 Events Update
+<hr />
 
-### Removed Events:
+## 🥳 Events
 
-- `entryClick`: Emitted when an option in the menu was clicked.
-- `toggle`: Emitted when the dropdown button was clicked. This event provided the open state of the dropdown.
+### ✨ New Events
 
-You can still listen to your slotted `trigger` element or set click listeners on your slotted content.
+#### [sd-show]
 
-### New Events:
+Emitted when the dropdown opens.
 
-- **`sd-show`**: Emitted when the dropdown opens.
-- **`sd-after-show`**: Emitted after the dropdown has fully opened and all animations are complete.
-- **`sd-hide`**: Emitted when the dropdown closes.
-- **`sd-after-hide`**: Emitted after the dropdown has fully closed and all animations are complete.
+#### [sd-after-show]
+
+Emitted after the dropdown has fully opened and all animations are complete.
+
+#### [sd-hide]
+
+Emitted when the dropdown closes.
+
+#### [sd-after-hide]
+
+Emitted after the dropdown has fully closed and all animations are complete.
+
+### ❌ Removed Events:
+
+The following events have been removed from the new sd-dropdown component:
+
+1. [entryClick]
+2. [toggle]
