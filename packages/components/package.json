@@ -1,7 +1,7 @@
 {
   "name": "@solid-design-system/components",
   "description": "Solid Design System: Components",
-  "version": "1.7.0",
+  "version": "1.9.0",
   "homepage": "https://solid-design-system.fe.union-investment.de/x.x.x/storybook/",
   "author": {
     "name": "Union Investment"
@@ -75,6 +75,7 @@
     "release.dry": "semantic-release -d --tagFormat 'components/${version}' -e semantic-release-monorepo"
   },
   "dependencies": {
+    "@floating-ui/dom": "^1.5.1",
     "@shoelace-style/animations": "^1.1.0",
     "@shoelace-style/localize": "^3.1.0",
     "classix": "^2.1.32",
@@ -181,8 +182,8 @@
   "readme": "README.md",
   "meta": {
     "bundleSizeInKb": {
-      "uncompressed": 78,
-      "gzip": 22
+      "uncompressed": 119,
+      "gzip": 33
     }
   }
 }

@@ -183,6 +183,27 @@ const getColors = (name, cssVariableScope) => {
   };
 };
 
+const getShadows = () => {
+  const result = {};
+  const obj = tokens['UI Semantic'];
+  const keys = Object.keys(obj);
+
+  keys
+    .filter(key => obj[key]['type'] === 'boxShadow')
+    .forEach(key => {
+      const { value } = obj[key];
+      const { x, y, blur, spread, color } = value;
+      const regex = /({[^}]+})/g;
+      const rgbaParts = [...color.matchAll(regex)].map(match => match[1]);
+      const colorValue = hexToRgb(resolveValue(rgbaParts[0])).join(' ');
+      const opacityValue = resolveValue(rgbaParts[1]);
+      const shadow = `${x}px ${y}px ${blur}px ${spread}px rgb(${sanitizeValue(colorValue)} / ${opacityValue})`;
+      const optimizedKey = key.replace('shadow-', '').replace('shadow', 'DEFAULT');
+      result[optimizedKey] = `var(--sd-${sanitizeKey(key)}, ${shadow})`;
+    });
+  return result;
+};
+
 const getCoreTokensByType = (tokenType, cssVariableScope) => {
   const result = {};
   const obj = tokens['UI Core'];
@@ -205,7 +226,6 @@ const getCoreTokensByType = (tokenType, cssVariableScope) => {
 
 /** @type {import('tailwindcss').Config} */
 const config = {
-  content: [], // make sure to override this later
   theme: {
     // Checkout https://tailwindcss.com/docs/configuration#core-plugins for a list of core plugins
     accentColor: { ...getColors('text', 'text-color') },
@@ -231,7 +251,8 @@ const config = {
     stroke: { ...getColors('border', 'border-color') },
     tracking: {},
     textColor: { ...getColors('text', 'text-color') },
-    textDecorationColor: { ...getColors('text', 'text-color') }
+    textDecorationColor: { ...getColors('text', 'text-color') },
+    boxShadow: { ...getShadows() }
   }
 };
 
