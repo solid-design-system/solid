@@ -1,35 +1,46 @@
-# `ui-pill`
+# Migration Guide: From `ui-pill` to `sd-tag`
 
-The new `sd-tag` is designed to replace the `ui-pill` and provide enhanced functionality. To understand all the available attributes, please refer to the `sd-tag` documentation.
+The new `sd-tag` is designed to replace the `ui-pill`. Instead of mainly providing content via attributes, the `sd-tag` component uses slots to allow for more flexibility and customization.
 
-## ✨ New attribute: `download`
+## 💾 Slots
+
+### ✨ New Slots
+
+#### [default]
+
+Contains the main content of the tag.
+
+#### [removable-indicator]
+
+Contains the removability indicator of the tag. By default this is a close icon.
+
+<hr />
+
+## ⚙️ Attributes
+
+### ✨ New Attributes
+
+#### [download]
 
 The `download` attribute may be used to tell the browser to download the linked file with the specified filename. If the `href` attribute is omitted, the `target` and `download` attribute are ignored.
 
 **Hint:** When the `href` attribute is set i.e. the `sd-tag` is rendered as a link (`<a>`), the `disabled` attribute is ignored, as links may not be disabled. To disable the `sd-tag` the `href` attribute has to be removed as well.
 
-## ✨ New attribute: `removable`
+#### [removable]
 
-The new `removable` attribute controls whether or not the tag should display a small close icon (`x`) next to the label of the tag to indicate that the filtered attribute may be removed.
+The new `removable` attribute controls whether or not the tag should display a close icon (`x`) next to the label of the tag to indicate that the filtered attribute may be removed.
 
-## ✨ New attribute: `size`
+#### [size]
 
 The `sd-tag` component offers two different sizes:
 
 - `lg` is the default size
 - `sm` size is an alternative size for use in very tight spaces
 
-## ❌ Removed CSS Variables
+### 🔀 Updated Attributes
 
-Component-specific CSS variables have been discontinued. Now, you can override colors and padding using the part selector.
-
-```css
-sd-tag::part(base) {
-  background: pink;
-  color: black;
-}
-```
-
-## 🔀 Updated attribute: `active` to `selected`
+#### [active]
 
 The attribute `active` has been renamed to `selected`.
+
+<hr />
