@@ -1,10 +1,40 @@
 import '../../solid-components';
-
+import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
 const { argTypes, parameters } = storybookDefaults('sd-table-cell');
 const { overrideArgs } = storybookHelpers('sd-table-cell');
 const { generateTemplate } = storybookTemplate('sd-table-cell');
+
+const tableDataOld = [
+  {
+    id: 1,
+    isin: '',
+    name: 'UniGlobal',
+    kvg: 'Union Investment Privatfonds GmbH',
+    price: '90,46 EUR',
+    priceDate: '31.08.2023',
+    changeLastDay: '+ 0.27 %'
+  },
+  {
+    id: 2,
+    isin: '',
+    name: 'UniGlobal',
+    kvg: 'Union Investment Privatfonds GmbH',
+    price: '90,46 EUR',
+    priceDate: '31.08.2023',
+    changeLastDay: '+ 0.27 %'
+  },
+  {
+    id: 3,
+    isin: '',
+    name: 'UniGlobal',
+    kvg: 'Union Investment Privatfonds GmbH',
+    price: '90,46 EUR',
+    priceDate: '31.08.2023',
+    changeLastDay: '+ 0.27 %'
+  }
+];
 
 /**
  * A paragraph is used to display blocks of text. It uses the base font size and can contain bold and/or link styles.<br>
@@ -34,5 +64,162 @@ export const Default = {
       options: { templateContent: '<td class="%CLASSES%">%SLOT%</td>' },
       args
     });
+  }
+};
+
+/**
+ * Examples: This shows how sd-table-cell looks in different contexts.
+ */
+
+export const Examples = {
+  render: (args: any) => {
+    const columns = 5;
+    const rows = 5;
+    const headerData = Array.from({ length: columns }, () => 'Header');
+    const tableData = Array.from({ length: rows }, () => Array.from({ length: columns }, () => 'Content'));
+    return html`
+      <style>
+        table:not(:first-of-type).story-template {
+          margin-top: 72px;
+        }
+        .story-template th,
+        .story-template td {
+          padding: 16px;
+          font-size: 12px;
+        }
+        .story-template thead th.title {
+          background: #e0e0e0;
+          text-align: left;
+          font-size: 14px;
+          margin-bottom: 20px;
+        }
+      </style>
+      <table class="story-template sd-table simple-table">
+        <thead>
+          <tr>
+            <th class="title" colspan="7">Simple Table With Vertical Lines</th>
+          </tr>
+          ${(() => {
+            return html`<tr>
+              ${headerData.map((cellData, i) => {
+                if (i + 1 === headerData.length) {
+                  return html`<th class="sd-table-cell sd-table-cell--transparent">${cellData}</th>`;
+                }
+                return html`<th class="sd-table-cell sd-table-cell--transparent sd-table-cell--divider">
+                  ${cellData}
+                </th>`;
+              })}
+            </tr>`;
+          })()}
+        </thead>
+        <tbody>
+          ${tableData.map(rowData => {
+            return html`<tr>
+              ${rowData.map((cellData, i) => {
+                if (i + 1 === rowData.length) {
+                  return html`<td class="sd-table-cell sd-table-cell--transparent">${cellData}</td>`;
+                }
+                return html`<td class="sd-table-cell sd-table-cell--transparent sd-table-cell--divider">
+                  ${cellData}
+                </td>`;
+              })}
+            </tr>`;
+          })}
+        </tbody>
+      </table>
+
+      <table class="story-template sd-table">
+        <thead>
+          <tr>
+            <th class="title" colspan="7">Sortable Table</th>
+          </tr>
+          ${(() => {
+            return html`<tr>
+              ${headerData.map((cellData, i) => {
+                if (i + 1 === headerData.length) {
+                  return html`<th class="sd-table-cell sd-table-cell--neutral-100">
+                    ${cellData}
+                    <sd-button variant="tertiary" size="sm">
+                      <sd-icon library="global-resources" name="system/sort-up"></sd-icon>
+                    </sd-button>
+                  </th>`;
+                }
+                if (i === 0) {
+                  return html`<th class="sd-table-cell sd-table-cell--neutral-100 sd-table-cell--divider">
+                    ${cellData}
+                    <sd-button variant="tertiary" size="sm">
+                      <sd-icon library="global-resources" name="system/sort-down-filled"></sd-icon>
+                    </sd-button>
+                  </th>`;
+                }
+                return html`<th class="sd-table-cell sd-table-cell--neutral-100 sd-table-cell--divider">
+                  ${cellData}
+                  <sd-button variant="tertiary" size="sm">
+                    <sd-icon library="global-resources" name="system/sort-up"></sd-icon>
+                  </sd-button>
+                </th>`;
+              })}
+            </tr>`;
+          })()}
+        </thead>
+        <tbody>
+          ${tableData.map(rowData => {
+            return html`<tr>
+              ${rowData.map((cellData, i) => {
+                if (i + 1 === rowData.length) {
+                  return html`<td class="sd-table-cell sd-table-cell--transparent">${cellData}</td>`;
+                }
+                return html`<td class="sd-table-cell sd-table-cell--transparent sd-table-cell--divider">
+                  ${cellData}
+                </td>`;
+              })}
+            </tr>`;
+          })}
+        </tbody>
+      </table>
+
+      <table class="story-template sd-table">
+        <thead>
+          <tr>
+            <th class="title" colspan="7">Simple Table With Vertical Lines And Alternating Colors</th>
+          </tr>
+          ${(() => {
+            return html`<tr>
+              ${headerData.map((cellData, i) => {
+                if (i + 1 === headerData.length) {
+                  return html`<th class="sd-table-cell sd-table-cell--primary-100">${cellData}</th>`;
+                }
+                return html`<th class="sd-table-cell sd-table-cell--primary-100 sd-table-cell--divider">
+                  ${cellData}
+                </th>`;
+              })}
+            </tr>`;
+          })()}
+        </thead>
+
+        <tbody>
+          ${tableData.map((rowData, j) => {
+            return html`<tr>
+              ${rowData.map((cellData, i) => {
+                if (i + 1 === rowData.length) {
+                  if (j % 2 === 0) {
+                    return html`<td class="sd-table-cell sd-table-cell--white">${cellData}</td>`;
+                  }
+                  return html`<td class="sd-table-cell sd-table-cell--white sd-table-cell--primary-100">
+                    ${cellData}
+                  </td>`;
+                }
+                if (j % 2 === 0) {
+                  return html`<td class="sd-table-cell sd-table-cell--white sd-table-cell--divider">${cellData}</td>`;
+                }
+                return html`<td class="sd-table-cell sd-table-cell--primary-100 sd-table-cell--divider">
+                  ${cellData}
+                </td>`;
+              })}
+            </tr>`;
+          })}
+        </tbody>
+      </table>
+    `;
   }
 };

@@ -1,3 +1,18 @@
+/* 
+* Remove inherited styles from table before applying our styles.
+* Source: https://meyerweb.com/eric/tools/css/reset/
+*/
+.sd-table {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
 .sd-table-cell {
   @apply border-solid border-neutral-400 border-y-[1px] border-x-0 text-sm text-left p-4;
 
@@ -20,4 +35,8 @@
   &--neutral-100 {
     @apply bg-neutral-100;
   }
+}
+
+.sd-table-cell * {
+  @apply align-middle;
 }
