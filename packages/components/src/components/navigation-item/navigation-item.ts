@@ -168,7 +168,7 @@ export default class SdNavigationItem extends SolidElement {
       this.current ? 'border-accent' : 'border-transparent',
       this.disabled && 'text-neutral-500 border-neutral-500',
       { base: 'text-base', larger: 'text-lg', smaller: 'text-[14px]' }[this.size],
-      includeChildren ? '' : 'inline-block w-full'
+      includeChildren ? 'flex flex-col' : 'inline-block w-full'
     );
     const chevronClasses = cx(
       'h-6 w-6',
@@ -204,7 +204,8 @@ export default class SdNavigationItem extends SolidElement {
       @click=${this.handleClick}
       >
         <span class=${cx(
-          'relative pt-3 inline-flex justify-between w-full',
+          'relative pt-3 inline-flex justify-between',
+          includeChildren ? 'grow' : 'w-full',
           slots['description'] ? horizontalPaddingBottom : 'pb-1',
           calculatePaddingX()
         )}>
@@ -222,7 +223,8 @@ export default class SdNavigationItem extends SolidElement {
           </span>
         </span>
         <slot name="description" part="description" class=${cx(
-          'inline-block w-full bg-primary-100',
+          'inline-block bg-primary-100',
+          includeChildren ? 'grow' : 'w-full',
           horizontalPaddingBottom,
           calculatePaddingX()
         )}>description</slot>
@@ -231,9 +233,9 @@ export default class SdNavigationItem extends SolidElement {
     /* eslint-enable lit/no-invalid-html */
     /* eslint-enable lit/binding-positions */
 
-    return !this.href && slots['children']
+    return includeChildren
       ? html`${divider}
-          <details class="w-full relative flex">${root}<slot name="children"></slot></details>`
+          <details class="relative flex max-w-[100%]">${root}<slot name="children"></slot></details>`
       : html`${divider}${root}`;
   }
 
