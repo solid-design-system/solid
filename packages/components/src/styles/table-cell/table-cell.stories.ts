@@ -6,36 +6,6 @@ const { argTypes, parameters } = storybookDefaults('sd-table-cell');
 const { overrideArgs } = storybookHelpers('sd-table-cell');
 const { generateTemplate } = storybookTemplate('sd-table-cell');
 
-const tableDataOld = [
-  {
-    id: 1,
-    isin: '',
-    name: 'UniGlobal',
-    kvg: 'Union Investment Privatfonds GmbH',
-    price: '90,46 EUR',
-    priceDate: '31.08.2023',
-    changeLastDay: '+ 0.27 %'
-  },
-  {
-    id: 2,
-    isin: '',
-    name: 'UniGlobal',
-    kvg: 'Union Investment Privatfonds GmbH',
-    price: '90,46 EUR',
-    priceDate: '31.08.2023',
-    changeLastDay: '+ 0.27 %'
-  },
-  {
-    id: 3,
-    isin: '',
-    name: 'UniGlobal',
-    kvg: 'Union Investment Privatfonds GmbH',
-    price: '90,46 EUR',
-    priceDate: '31.08.2023',
-    changeLastDay: '+ 0.27 %'
-  }
-];
-
 /**
  * A paragraph is used to display blocks of text. It uses the base font size and can contain bold and/or link styles.<br>
  * <br>
@@ -67,6 +37,8 @@ export const Default = {
   }
 };
 
+// TODO: Add sample "Simple Table, First Column Fixed" and "Multi Select Table" as soon as we have sd-scrollable.
+
 /**
  * Examples: This shows how sd-table-cell looks in different contexts.
  */
@@ -79,26 +51,28 @@ export const Examples = {
     const tableData = Array.from({ length: rows }, () => Array.from({ length: columns }, () => 'Content'));
     return html`
       <style>
-        table:not(:first-of-type).story-template {
-          margin-top: 72px;
+        .sd-table {
+          width: 600px;
         }
-        .story-template th,
-        .story-template td {
+
+        .headline {
           padding: 16px;
-          font-size: 12px;
-        }
-        .story-template thead th.title {
           background: #e0e0e0;
           text-align: left;
           font-size: 14px;
+          font-weight: bold;
           margin-bottom: 20px;
+          width: 600px;
+          box-sizing: border-box;
+        }
+
+        div:not(:first-of-type).headline {
+          margin-top: 72px;
         }
       </style>
-      <table class="story-template sd-table simple-table">
+      <div class="headline">Simple Table With Vertical Lines</div>
+      <table class="sd-table">
         <thead>
-          <tr>
-            <th class="title" colspan="7">Simple Table With Vertical Lines</th>
-          </tr>
           ${(() => {
             return html`<tr>
               ${headerData.map((cellData, i) => {
@@ -128,11 +102,9 @@ export const Examples = {
         </tbody>
       </table>
 
-      <table class="story-template sd-table">
+      <div class="headline">Sortable Table</div>
+      <table class="sd-table">
         <thead>
-          <tr>
-            <th class="title" colspan="7">Sortable Table</th>
-          </tr>
           ${(() => {
             return html`<tr>
               ${headerData.map((cellData, i) => {
@@ -178,11 +150,9 @@ export const Examples = {
         </tbody>
       </table>
 
-      <table class="story-template sd-table">
+      <div class="headline">Sortable Table</div>
+      <table class="sd-table">
         <thead>
-          <tr>
-            <th class="title" colspan="7">Simple Table With Vertical Lines And Alternating Colors</th>
-          </tr>
           ${(() => {
             return html`<tr>
               ${headerData.map((cellData, i) => {
@@ -196,7 +166,6 @@ export const Examples = {
             </tr>`;
           })()}
         </thead>
-
         <tbody>
           ${tableData.map((rowData, j) => {
             return html`<tr>

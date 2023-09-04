@@ -12,19 +12,19 @@ export default {
     },
     {
       name: 'sd-table-cell--transparent',
-      description: 'Displays a divider to the right.'
+      description: 'Applies transparent backround-color to table cell.'
     },
     {
       name: 'sd-table-cell--white',
-      description: 'Displays a divider to the right.'
+      description: 'Applies white backround-color to table cell.'
     },
     {
       name: 'sd-table-cell--primary-100',
-      description: 'Displays a divider to the right.'
+      description: 'Applies backround-color primary-100 to table cell.'
     },
     {
       name: 'sd-table-cell--neutral-100',
-      description: 'Displays a divider to the right.'
+      description: 'Applies backround-color neutral-100 to table cell.'
     }
   ]
 } satisfies Style;
