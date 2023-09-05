@@ -56,7 +56,7 @@ export const Disabled = {
 };
 
 /**
- * Use the `selected` class to make a interactive element look selected.
+ * Use the `selected` class to make an interactive element look selected.
  */
 
 export const Selected = {
