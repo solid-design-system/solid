@@ -9,7 +9,7 @@ import SolidElement from '../../internal/solid-element';
  * @summary Tags are used as labels to organize things or to indicate a selection.
  * @documentation https://solid.union-investment.com/[storybook-link]/tag
  * @status stable
- * @since 1.8.0
+ * @since 1.10
  *
  * @slot - The tag's content.
  * @slot removable-indicator - The tag's removability indicator.
