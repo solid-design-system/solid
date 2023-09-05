@@ -38,11 +38,11 @@ export const Default = {
 };
 
 /**
- * Use the `disabled` class to make a interactive element look disabled. This works as well when setting an `disabled` attribute on the element.
+ * Use the `disabled` class to make an interactive element look disabled. This works as well when setting an `disabled` attribute on the element.
  */
 
 export const Disabled = {
-  parameters: { controls: { exclude: ['sd-interactive--disabled'] } },
+  parameters: { controls: { exclude: ['sd-interactive--disabled', 'sd-interactive--reset'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -50,24 +50,6 @@ export const Disabled = {
       },
       options: { templateContent: '<button class="%CLASSES%">%SLOT%</button>' },
       constants: { type: 'attribute', name: 'sd-interactive--disabled', value: true },
-      args
-    });
-  }
-};
-
-/**
- * Use the `selected` class to make an interactive element look selected.
- */
-
-export const Selected = {
-  parameters: { controls: { exclude: ['sd-interactive--selected'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: [{ type: 'attribute', name: 'sd-interactive--selected', values: [false, true] }]
-      },
-      options: { templateContent: '<button class="%CLASSES%">%SLOT%</button>' },
-      constants: { type: 'attribute', name: 'sd-interactive--selected', value: true },
       args
     });
   }

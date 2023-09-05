@@ -4,15 +4,11 @@ export default {
   styleName: 'sd-interactive',
   summary: 'Generates basic styles for interactive elements.',
   status: 'experimental',
-  since: '1.9',
+  since: '1.10',
   attributes: [
     {
       name: 'sd-interactive--disabled',
       description: 'Makes an element look disabled.'
-    },
-    {
-      name: 'sd-interactive--selected',
-      description: 'Makes an element look active.'
     },
     {
       name: 'sd-interactive--reset',
