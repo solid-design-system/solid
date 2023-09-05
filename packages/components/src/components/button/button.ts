@@ -293,7 +293,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
         @click=${this.handleClick}
       >
         <slot name="icon-left" part="icon-left" class=${cx(
-          'flex flex-auto items-center pointer-events-none bg-primary-100',
+          'flex flex-auto items-center pointer-events-none',
           slots['icon-only'] && 'hidden',
           this.loading && 'invisible',
           slots['icon-left'] &&

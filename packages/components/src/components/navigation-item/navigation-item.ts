@@ -21,12 +21,16 @@ import SolidElement from '../../internal/solid-element';
  * @slot icon-right - A suffix icon or similar element.
  * @slot main - Main slot used to set additional content like badges. Available for horizontal and vertical orientations.
  * @slot description - *Vertical only: Slot used to provide a description for the navigation item.
- * @slot children - Slot used to provide nested child navigation elements. If present, a chevron will be shown on the right side.
+ * @slot children - Slot used to provide nested child navigation elements. If provided, details and summary elements will be used. A chevron will be shown on the right side regardless of the chevron property.
  *
  * @csspart base - The component's base wrapper.
  * @csspart icon-left - The container that wraps the left icon area.
  * @csspart label - The button's label.
  * @csspart icon-right - The container that wraps the right icon area.
+ * @csspart header - The header that wraps both the summary and the expand/collapse icon.
+ * @csspart summary - The container that wraps the summary.
+ * @csspart summary-icon - The container that wraps the expand/collapse icons.
+ * @csspart content - The accordion content.
  *
  * @cssproperty --example - An example CSS custom property.
  */
@@ -52,7 +56,8 @@ export default class SdNavigationItem extends SolidElement {
   @property({ reflect: true }) href = '';
 
   /** Indicates that the navigation item is currently selected. Aria-current should be added if true */
-  @property({ type: Boolean, reflect: true }) current = false;
+  @property({ type: Boolean, reflect: true })
+  current = false;
 
   /** Disables the navigation item. */
   @property({ type: Boolean, reflect: true }) disabled = false;
@@ -106,6 +111,14 @@ export default class SdNavigationItem extends SolidElement {
     this.button.blur();
   }
 
+  private setAriaCurrent() {
+    if (this.current) {
+      this.setAttribute('aria-current', 'page');
+    } else {
+      this.removeAttribute('aria-current');
+    }
+  }
+
   private handleClick(event: MouseEvent) {
     console.log('handleClick');
     const detailsElementOpen: boolean = this.shadowRoot?.querySelector('details')?.open || false;
@@ -117,7 +130,18 @@ export default class SdNavigationItem extends SolidElement {
     this.detailsOpen = !this.detailsOpen;
   }
 
+  private calculatePaddingX(): string {
+    if (this.horizontal) return '';
+    if (this.relaxed && this.indented) return 'pl-8 pr-4';
+    if (this.relaxed) return 'px-4';
+    if (this.indented) return 'pl-4';
+    return '';
+  }
+
   render() {
+    // TODO: where is best to implement this logic?
+    this.setAriaCurrent();
+
     const slots = {
       label: this.hasSlotController.test('[default]'),
       'icon-left': this.hasSlotController.test('icon-left'),
@@ -127,29 +151,13 @@ export default class SdNavigationItem extends SolidElement {
       description: this.hasSlotController.test('description'),
       children: this.hasSlotController.test('children')
     };
-
     const isLink = this.isLink();
     const tag = isLink ? literal`a` : slots['children'] ? literal`summary` : literal`button`;
     const includeChildren = !this.href && slots['children'];
+
+    // styles
     const horizontalPaddingBottom = this.horizontal ? 'pb-2' : 'pb-3';
-
-    const calculatePaddingX = (): string => {
-      if (this.relaxed && this.indented) {
-        return 'pl-8 pr-4';
-      }
-
-      if (this.relaxed) {
-        return 'px-4';
-      }
-
-      if (this.indented) {
-        return 'pl-4';
-      }
-
-      return '';
-    };
-
-    const horizontalStyle = this.horizontal
+    const hostDisplayStyle = this.horizontal
       ? html`<style>
           :host {
             display: inline-block;
@@ -161,73 +169,92 @@ export default class SdNavigationItem extends SolidElement {
           }
         </style>`;
 
-    // Conditionally Style Root
-    const rootClasses = cx(
-      'hover:bg-neutral-200 transition-all relative',
-      this.horizontal ? 'border-b-4 px-4' : 'border-l-4 pl-[28px] pr-8',
-      this.current ? 'border-accent' : 'border-transparent',
-      this.disabled && 'text-neutral-500 border-neutral-500',
-      { base: 'text-base', larger: 'text-lg', smaller: 'text-[14px]' }[this.size],
-      includeChildren ? 'flex flex-col' : 'inline-block w-full'
-    );
-    const chevronClasses = cx(
-      'h-6 w-6',
-      includeChildren ? (this.detailsOpen ? 'rotate-180' : 'rotate-0') : 'rotate-[270deg]'
-    );
+    // conditional elements
+    const chevron =
+      (this.chevron || slots['children']) && !this.horizontal
+        ? html`<sd-icon
+            name="chevron-down"
+            part="chevron"
+            library="system"
+            color="currentColor"
+            class=${cx('h-6 w-6', includeChildren ? (this.detailsOpen ? 'rotate-180' : 'rotate-0') : 'rotate-[270deg]')}
+          ></sd-icon>`
+        : null;
 
-    // Additional Elements
-    const chevron = html`<sd-icon
-      name="chevron-down"
-      library="system"
-      color="currentColor"
-      class=${chevronClasses}
-    ></sd-icon>`;
+    const divider =
+      this.divider && !this.horizontal
+        ? html`<sd-divider
+            part="divider"
+            class=${cx(
+              'w-[calc(100%-64px)] absolute top-[-1px] left-0',
+              this.horizontal ? 'mx-4' : 'mx-8',
+              this.calculatePaddingX()
+            )}
+          ></sd-divider>`
+        : null;
 
-    const divider = this.divider
-      ? html`<sd-divider
-          class=${cx(
-            'w-[calc(100%-64px)] absolute top-[-1px] left-0',
-            this.horizontal ? 'mx-4' : 'mx-8',
-            calculatePaddingX()
-          )}
-        ></sd-divider>`
+    const iconLeftSlot = slots['icon-left']
+      ? html`<slot name="icon-left" part="icon-left" class="inline-flex justify-center items-center mr-2"></slot>`
       : null;
+
+    const iconRightSlot = slots['icon-right']
+      ? html`<slot name="icon-right" part="icon-right" class="inline-flex justify-center items-center mr-2"></slot>`
+      : null;
+
+    const mainSlot =
+      slots['main'] && !this.horizontal ? html`<slot name="main" part="main" class=${cx('inline mr-4')}></slot>` : null;
+
+    const descriptionSlot =
+      slots['description'] && !this.horizontal
+        ? html`<slot
+            name="description"
+            part="description"
+            class=${cx(
+              'inline-block text-black text-sm',
+              includeChildren ? 'grow' : 'w-full',
+              horizontalPaddingBottom,
+              this.calculatePaddingX()
+            )}
+          ></slot>`
+        : null;
+
+    const childrenSlot = slots['children'] && !this.horizontal ? html`<slot name="children"></slot>` : null;
 
     /* eslint-disable lit/no-invalid-html */
     /* eslint-disable lit/binding-positions */
     const root = html`
-      ${horizontalStyle}
+      ${hostDisplayStyle}
 
       <${tag}
-      part="base"
-      class=${rootClasses}
-      @click=${this.handleClick}
+        part="base"
+        class=${cx(
+          'hover:bg-neutral-200 transition-all min-h-[48px] cursor-pointer relative',
+          this.horizontal ? 'border-b-4 px-4' : 'border-l-4 pl-[28px] pr-8',
+          this.current ? 'border-accent' : 'border-transparent',
+          this.disabled ? 'text-neutral-500 border-neutral-500 pointer-events-none' : 'text-primary',
+          { base: 'text-base', larger: 'text-lg', smaller: 'text-[14px]' }[this.size],
+          includeChildren ? 'flex flex-col' : 'inline-block w-full'
+        )}
+        @click=${!isLink ? this.handleClick : null}
+        ${isLink ? literal`href=` : literal``}${this.href} 
       >
         <span class=${cx(
-          'relative pt-3 inline-flex justify-between',
+          'relative pt-3 inline-flex justify-between items-center',
           includeChildren ? 'grow' : 'w-full',
-          slots['description'] ? horizontalPaddingBottom : 'pb-1',
-          calculatePaddingX()
+          slots['description'] ? 'pb-1' : horizontalPaddingBottom,
+          this.calculatePaddingX()
         )}>
-          <span>
-            <slot name="icon-left" part="icon-left" class=${cx('inline mr-2')}>L</slot>
-            <span class=${cx(
-              slots['icon-left'] && 'ml-2',
-              slots['icon-right'] && 'mr-2'
-            )}><slot part="label">Label</slot></span>
-            <slot name="icon-right" part="icon-right">R</slot>
+          <span class="inline-flex items-center justify-center">
+            ${iconLeftSlot}
+            <slot part="label" class=${cx('inline', slots['icon-right'] || slots['main'] ? 'mr-2' : '')}></slot>
+            ${iconRightSlot}
           </span>
           <span class="inline-flex items-center">
-            <slot name="main" part="main" class=${cx('inline mr-4')}>main</slot>
+            ${mainSlot}
             ${chevron}
           </span>
         </span>
-        <slot name="description" part="description" class=${cx(
-          'inline-block bg-primary-100',
-          includeChildren ? 'grow' : 'w-full',
-          horizontalPaddingBottom,
-          calculatePaddingX()
-        )}>description</slot>
+        ${descriptionSlot}
       </${tag}>
     `;
     /* eslint-enable lit/no-invalid-html */
@@ -235,7 +262,7 @@ export default class SdNavigationItem extends SolidElement {
 
     return includeChildren
       ? html`${divider}
-          <details class="relative flex max-w-[100%]">${root}<slot name="children"></slot></details>`
+          <details class="relative flex max-w-[100%]">${root}${childrenSlot}</details>`
       : html`${divider}${root}`;
   }
 
@@ -248,7 +275,6 @@ export default class SdNavigationItem extends SolidElement {
 
     css`
       :host {
-        background-color: lime;
         box-sizing: border-box;
         position: relative;
       }
@@ -263,18 +289,9 @@ export default class SdNavigationItem extends SolidElement {
         cursor: pointer;
       }
 
-      sd-spinner {
-        --indicator-color: currentColor;
-        --track-color: var(--tw-varcolor-200);
-      }
-
-      /**
-       * sd-icons should automatically resize correctly based on the button size.
-       */
-
-      ::slotted(sd-icon),
-      sd-spinner {
-        font-size: calc(var(--tw-varspacing) / 2);
+      ::slotted(sd-icon) {
+        /* TODO: calculate 1.5 times font size? */
+        font-size: calc(var(--tw-varspacing));
       }
     `
   ];
