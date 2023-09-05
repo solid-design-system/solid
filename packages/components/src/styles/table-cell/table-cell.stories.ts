@@ -45,10 +45,8 @@ export const Default = {
 
 export const Examples = {
   render: (args: any) => {
-    const columns = 5;
-    const rows = 5;
-    const headerData = Array.from({ length: columns }, () => 'Header');
-    const tableData = Array.from({ length: rows }, () => Array.from({ length: columns }, () => 'Content'));
+    const headerData = Array.from({ length: 5 }, () => 'Header');
+    const tableData = Array.from({ length: 5 }, () => Array.from({ length: 5 }, () => 'Content'));
     return html`
       <style>
         .sd-table {
@@ -75,8 +73,8 @@ export const Examples = {
         <thead>
           ${(() => {
             return html`<tr>
-              ${headerData.map((cellData, i) => {
-                if (i + 1 === headerData.length) {
+              ${headerData.map((cellData, columnIndex) => {
+                if (columnIndex + 1 === headerData.length) {
                   return html`<th class="sd-table-cell sd-table-cell--transparent">${cellData}</th>`;
                 }
                 return html`<th class="sd-table-cell sd-table-cell--transparent sd-table-cell--divider">
@@ -89,8 +87,8 @@ export const Examples = {
         <tbody>
           ${tableData.map(rowData => {
             return html`<tr>
-              ${rowData.map((cellData, i) => {
-                if (i + 1 === rowData.length) {
+              ${rowData.map((cellData, columnIndex) => {
+                if (columnIndex + 1 === rowData.length) {
                   return html`<td class="sd-table-cell sd-table-cell--transparent">${cellData}</td>`;
                 }
                 return html`<td class="sd-table-cell sd-table-cell--transparent sd-table-cell--divider">
@@ -107,8 +105,8 @@ export const Examples = {
         <thead>
           ${(() => {
             return html`<tr>
-              ${headerData.map((cellData, i) => {
-                if (i + 1 === headerData.length) {
+              ${headerData.map((cellData, columnIndex) => {
+                if (columnIndex + 1 === headerData.length) {
                   return html`<th class="sd-table-cell sd-table-cell--neutral-100">
                     ${cellData}
                     <sd-button variant="tertiary" size="sm">
@@ -116,7 +114,7 @@ export const Examples = {
                     </sd-button>
                   </th>`;
                 }
-                if (i === 0) {
+                if (columnIndex === 0) {
                   return html`<th class="sd-table-cell sd-table-cell--neutral-100 sd-table-cell--divider">
                     ${cellData}
                     <sd-button variant="tertiary" size="sm">
@@ -137,8 +135,8 @@ export const Examples = {
         <tbody>
           ${tableData.map(rowData => {
             return html`<tr>
-              ${rowData.map((cellData, i) => {
-                if (i + 1 === rowData.length) {
+              ${rowData.map((cellData, columnIndex) => {
+                if (columnIndex + 1 === rowData.length) {
                   return html`<td class="sd-table-cell sd-table-cell--transparent">${cellData}</td>`;
                 }
                 return html`<td class="sd-table-cell sd-table-cell--transparent sd-table-cell--divider">
@@ -155,8 +153,8 @@ export const Examples = {
         <thead>
           ${(() => {
             return html`<tr>
-              ${headerData.map((cellData, i) => {
-                if (i + 1 === headerData.length) {
+              ${headerData.map((cellData, columnIndex) => {
+                if (columnIndex + 1 === headerData.length) {
                   return html`<th class="sd-table-cell sd-table-cell--primary-100">${cellData}</th>`;
                 }
                 return html`<th class="sd-table-cell sd-table-cell--primary-100 sd-table-cell--divider">
@@ -167,18 +165,18 @@ export const Examples = {
           })()}
         </thead>
         <tbody>
-          ${tableData.map((rowData, j) => {
+          ${tableData.map((rowData, rowIndex) => {
             return html`<tr>
-              ${rowData.map((cellData, i) => {
-                if (i + 1 === rowData.length) {
-                  if (j % 2 === 0) {
+              ${rowData.map((cellData, columnIndex) => {
+                if (columnIndex + 1 === rowData.length) {
+                  if (rowIndex % 2 === 0) {
                     return html`<td class="sd-table-cell sd-table-cell--white">${cellData}</td>`;
                   }
                   return html`<td class="sd-table-cell sd-table-cell--white sd-table-cell--primary-100">
                     ${cellData}
                   </td>`;
                 }
-                if (j % 2 === 0) {
+                if (rowIndex % 2 === 0) {
                   return html`<td class="sd-table-cell sd-table-cell--white sd-table-cell--divider">${cellData}</td>`;
                 }
                 return html`<td class="sd-table-cell sd-table-cell--primary-100 sd-table-cell--divider">
