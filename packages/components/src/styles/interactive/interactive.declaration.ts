@@ -4,7 +4,7 @@ export default {
   styleName: 'sd-interactive',
   summary: 'Generates basic styles for interactive elements.',
   status: 'experimental',
-  since: '1.10',
+  since: '1.11',
   attributes: [
     {
       name: 'sd-interactive--disabled',
