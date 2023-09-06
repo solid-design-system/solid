@@ -31,12 +31,8 @@
             "mocha",
             "user-agent-data-types",
             "vite/client"
-<<<<<<< Updated upstream
-        ]
-=======
         ],
         "resolveJsonModule": true
->>>>>>> Stashed changes
     },
     "include": [
         "src/**/*",
@@ -46,8 +42,4 @@
         "src/_components/**",
         "custom-elements-manifest.config.ts"
     ]
-<<<<<<< Updated upstream
 }
-=======
-}
->>>>>>> Stashed changes
