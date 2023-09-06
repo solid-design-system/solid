@@ -1,4 +1,5 @@
 import '../../solid-components';
+import '../../styles/interactive/interactive.css';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
@@ -107,26 +108,26 @@ export const Examples = {
             return html`<tr>
               ${headerData.map((cellData, columnIndex) => {
                 if (columnIndex + 1 === headerData.length) {
-                  return html`<th class="sd-table-cell sd-table-cell--neutral-100">
+                  return html`<th class="sd-table-cell sd-table-cell--neutral-100" aria-sort="descending">
                     ${cellData}
-                    <sd-button variant="tertiary" size="sm">
+                    <button class="sd-interactive sd-interactive--reset">
                       <sd-icon library="global-resources" name="system/sort-up"></sd-icon>
-                    </sd-button>
+                    </button>
                   </th>`;
                 }
                 if (columnIndex === 0) {
                   return html`<th class="sd-table-cell sd-table-cell--neutral-100 sd-table-cell--divider">
                     ${cellData}
-                    <sd-button variant="tertiary" size="sm">
+                    <button class="sd-interactive sd-interactive--reset">
                       <sd-icon library="global-resources" name="system/sort-down-filled"></sd-icon>
-                    </sd-button>
+                    </button>
                   </th>`;
                 }
                 return html`<th class="sd-table-cell sd-table-cell--neutral-100 sd-table-cell--divider">
                   ${cellData}
-                  <sd-button variant="tertiary" size="sm">
+                  <button class="sd-interactive sd-interactive--reset">
                     <sd-icon library="global-resources" name="system/sort-up"></sd-icon>
-                  </sd-button>
+                  </button>
                 </th>`;
               })}
             </tr>`;
@@ -148,7 +149,7 @@ export const Examples = {
         </tbody>
       </table>
 
-      <div class="headline">Sortable Table</div>
+      <div class="headline">Simple Table With Alternating Colors</div>
       <table class="sd-table">
         <thead>
           ${(() => {
