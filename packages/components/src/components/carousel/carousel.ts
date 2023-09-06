@@ -383,6 +383,7 @@ export default class SdCarousel extends SolidElement {
             <button
               ?disabled=${!prevEnabled ? true : false}
               part="navigation-button navigation-button--previous"
+              id="carousel__navigation-button--previous"
               class=${cx(
                 'mr-6',
                 'rounded-sm',
@@ -413,7 +414,7 @@ export default class SdCarousel extends SolidElement {
                   <div
                     part="pagination-dot"
                     role="tablist"
-                    class="${cx('carousel__pagination flex wrap items-center gap-2')}"
+                    class="${cx('carousel__pagination dot flex wrap items-center gap-2')}"
                     aria-controls="scroll-container"
                   >
                     ${map(range(pagesCount), index => {
@@ -449,7 +450,8 @@ export default class SdCarousel extends SolidElement {
                 `
               : html` <span
                   part="pagination-number"
-                  class="carousel__pagination flex gap-0.5 cursor-default select-none"
+                  class="carousel__pagination number flex gap-0.5 cursor-default select-none"
+                  aria-controls="scroll-container"
                 >
                   <span
                     part="pagination-item"
@@ -471,6 +473,7 @@ export default class SdCarousel extends SolidElement {
             <button
               ?disabled=${!nextEnabled ? true : false}
               part="navigation-button navigation-button--next"
+              id="carousel__navigation-button--next"
               class=${cx(
                 'ml-6',
                 'rounded-sm',
