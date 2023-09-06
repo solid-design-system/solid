@@ -386,10 +386,15 @@ export default class SdCarousel extends SolidElement {
               id="carousel__navigation-button--previous"
               class=${cx(
                 'mr-6',
-                'rounded-sm',
-                !this.inverted ? 'focus-visible:focus-outline' : 'focus-visible:focus-outline-inverted',
-                `flex flex-[0_0_auto] items-center 
-                    bg-none border-none cursor-pointer appearance-none col-[1] row-[1]`
+
+                // TODO: Replace styles with sd-interactive
+                // 'sd-interactive sd-interactive--reset',
+                // !prevEnabled && 'sd-interactive--disabled',
+                this.inverted
+                  ? 'text-white hover:text-primary-500 focus-visible:focus-outline'
+                  : 'text-primary hover:text-primary-500 focus-visible:focus-outline-inverted',
+                !prevEnabled && 'cursor-not-allowed !text-neutral-500',
+                'flex flex-[0_0_auto] col-[1] row-[1]'
               )}
               aria-label="${this.localize.term('previousSlide')}"
               aria-controls="scroll-container"
@@ -398,11 +403,7 @@ export default class SdCarousel extends SolidElement {
             >
               <slot name="previous-icon">
                 <sd-icon
-                  class=${cx(
-                    'h-6 w-6 rotate-90',
-                    this.inverted ? 'text-white hover:text-primary-500' : 'text-primary hover:text-primary-500 ',
-                    !prevEnabled && 'cursor-not-allowed !text-neutral-500'
-                  )}
+                  class=${cx('h-6 w-6 rotate-90')}
                   library="system"
                   name="${isLtr ? 'chevron-down' : 'chevron-up'}"
                 ></sd-icon>
@@ -471,15 +472,19 @@ export default class SdCarousel extends SolidElement {
                 </span>`}
 
             <button
-              ?disabled=${!nextEnabled ? true : false}
               part="navigation-button navigation-button--next"
               id="carousel__navigation-button--next"
               class=${cx(
                 'ml-6',
-                'rounded-sm',
-                !this.inverted ? 'focus-visible:focus-outline' : 'focus-visible:focus-outline-inverted',
-                `flex flex-[0_0_auto] items-center 
-                    bg-none border-none cursor-pointer appearance-none col-[1] row-[1]`
+
+                // TODO: Replace styles with sd-interactive
+                // 'sd-interactive sd-interactive--reset',
+                // !nextEnabled && 'sd-interactive--disabled'
+                this.inverted
+                  ? 'text-white hover:text-primary-500 focus-visible:focus-outline'
+                  : 'text-primary hover:text-primary-500 focus-visible:focus-outline-inverted',
+                !nextEnabled && 'cursor-not-allowed !text-neutral-500',
+                'flex flex-[0_0_auto] col-[1] row-[1]'
               )}
               aria-label="${this.localize.term('nextSlide')}"
               aria-controls="scroll-container"
@@ -488,11 +493,7 @@ export default class SdCarousel extends SolidElement {
             >
               <slot name="next-icon">
                 <sd-icon
-                  class=${cx(
-                    'h-6 w-6 rotate-90',
-                    this.inverted ? 'text-white hover:text-primary-500' : 'text-primary hover:text-primary-500 ',
-                    !nextEnabled && 'cursor-not-allowed !text-neutral-500'
-                  )}
+                  class=${cx('h-6 w-6 rotate-90')}
                   library="system"
                   name="${isLtr ? 'chevron-up' : 'chevron-down'}"
                 ></sd-icon>
@@ -504,7 +505,12 @@ export default class SdCarousel extends SolidElement {
               'ml-6',
               'items-end absolute right-0',
               'rounded-sm',
-              !this.inverted ? 'focus-visible:focus-outline' : 'focus-visible:focus-outline-inverted',
+              // TODO: Replace styles with sd-interactive
+              // 'sd-interactive sd-interactive--reset',
+              // !nextEnabled && 'sd-interactive--disabled'
+              this.inverted
+                ? 'text-white hover:text-primary-500 focus-visible:focus-outline'
+                : 'text-primary hover:text-primary-500 focus-visible:focus-outline-inverted',
               `flex flex-[0_0_auto] items-center 
                     bg-none border-none cursor-pointer appearance-none col-[1] row-[1]`,
               !this.autoplay && 'hidden'
@@ -513,25 +519,11 @@ export default class SdCarousel extends SolidElement {
             @click=${() => (this.pausedAutoplay = !this.pausedAutoplay)}
           >
             <slot name="autoplay-start" class=${cx(!this.pausedAutoplay ? 'hidden' : '')}>
-              <sd-icon
-                class=${cx(
-                  'h-6 w-6',
-                  this.inverted ? 'text-white hover:text-primary-500' : 'text-primary hover:text-primary-500 '
-                )}
-                library="system"
-                name="start"
-              ></sd-icon>
+              <sd-icon class="h-6 w-6" library="system" name="start"></sd-icon>
             </slot>
 
             <slot name="autoplay-pause" class=${cx(this.pausedAutoplay ? 'hidden' : '')}>
-              <sd-icon
-                class=${cx(
-                  'h-6 w-6',
-                  this.inverted ? 'text-white hover:text-primary-500' : 'text-primary hover:text-primary-500 '
-                )}
-                library="system"
-                name="pause"
-              ></sd-icon>
+              <sd-icon class="h-6 w-6" library="system" name="pause"></sd-icon>
             </slot>
           </button>
         </div>
