@@ -1,58 +1,85 @@
-# `ui-accordion-panel`
+# Migration Guide: From `ui-accordion-panel` to `sd-accordion`
 
-The new `sd-accordion` is designed to replace the `ui-accordion-panel`. The new accordion component supports a wider range of attributes with correctly typed values.
+The new `sd-accordion` is designed to replace the `ui-accordion-panel`. Instead of mainly providing content via attributes, the `sd-accordion` component uses slots to allow for more flexibility and customization.
 
-## ❌ Removed attribute: `scrollTopSelector`
+## 💾 Slots
 
-The `scrollTopSelector` attribute has been removed. If required, you can implement this functionality by listening to the appropriate event and manually handling the scroll behavior.
+### ✨ New Slots
 
-## ✨ New `slot` component
+#### [default]
 
-The new accordion iterates over the `summary` section in `ui-accordion-panel` by adding a new `slot` component. Slots have several new attributes available for better organization and granularity when designing accordions.
-Here is a list of the attributes.
+- Contains the main content of the accordion.
 
-- `default`
+#### [summary]
 
-  - Contains the main content of the accordion.
+- Provides the summary for the accordion header.
+- This can be an alternative to using the `summary` attribute directly inside the `sd-accordion` component (similar to `ui-accordion-panel`.
 
-- `summary`
+#### [expand-icon]
 
-  - Provides the summary for the accordion header.
-  - This can be an alternative to using the `summary` attribute directly inside the `sd-accordion` component (similar to `ui-accordion-panel`).
+- an (optional) expand icon to use in the place of the default. Works best with `sd-icon`.
 
-- `expand-icon`
+#### [collapse-icon]
 
-  - an (optional) expand icon to use in the place of the default. Works best with `sd-icon`.
+- an (optional) collapse icon to use in the place of the default. Works best with `sd-icon`.
 
-- `collapse-icon`
+<hr />
 
-  - an (optional) collapse icon to use in the place of the default. Works best with `sd-icon`.
+## ⚙️ Attributes
 
-## 🔀 Event listener updates
+### ❌ Removed Attributes
 
-This section covers the updates made to event listeners in the migration to Solid Components:
+The following attributes have been removed from the new sd-accordion component:
 
-### 🔀 Updated methods: `panelOpen` to `sd-show` and `panelClose` to `sd-hide`
+1. [scrollTopSelector]
 
-Event listeners `panelOpen` and `panelClose` have been replaced by `sd-show`and`sd-hide` respectively. The behavior of these event listeners remains unchanged.
+<hr />
 
-### ❌ Removed event: `panelClick`
+## 🥳 Events
 
-Due to overlapping information with existing events (example: `sd-show` and `sd-hide`), we discontinued support for the `panelClick` event. We suggest listening to our existing events or querying the ShadowDOM for header clicks instead.
+### ✨ New Events
 
-### ❌ Removed event: `ready`
-
-The `ready` event is no longer supported. This event emits when a component has finished loading, but additionally triggered Magnolia specific logic. If this functionality is required, please find a solution with the currently existing events.
-
-### ✨ New events: `sd-after-hide`
+#### [sd-after-hide]
 
 This new event emits when the accordion closes and all the animations have completed.
 
-### ✨ New event: `sd-after-show`
+#### [sd-after-show]
 
 Similar to `sd-after-hide`, this event emits when the accordion opens and all the animations have completed.
 
-## 🔀 Updated methods: `toggle()` to `show()` and `hide()`
+### 🔄 Updated Events
 
-The toggle() method in `ui-accordion-panel` has been replaced by separate `show()` and `hide()` methods.
-For detailed explanations and examples, take a look at the `sd-accordion` story.
+#### [sd-show]
+
+Renamed from `panelOpen` to `sd-show`.
+
+#### [sd-hide]
+
+Renamed from `panelClose` to `sd-hide`.
+
+### ❌ Removed Events:
+
+The following events and methods have been removed from the new sd-accordion component:
+
+1. [ready]
+2. [panelClick]
+
+<hr />
+
+## 🧪 Methods
+
+### ✨ New Methods
+
+#### [show()]
+
+New method to show the accordion (part of the former `toggle()` method).
+
+#### [hide()]
+
+New method to hide the accordion (part of the former `toggle()` method).
+
+### ❌ Removed Methods:
+
+The following methods have been removed from the new `sd-accordion` component:
+
+1. [toggle()]

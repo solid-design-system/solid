@@ -1,16 +1,15 @@
 import { arrow, autoUpdate, computePosition, flip, offset, shift, size } from '@floating-ui/dom';
-import { classMap } from 'lit/directives/class-map.js';
+import { css, html } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
-import { html } from 'lit';
+import componentStyles from '../../styles/component.styles';
+import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
-import styles from './popup.styles';
-import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Popup is a utility that lets you declaratively anchor "popup" containers to another element.
  * @documentation https://solid.union-investment.com/[storybook-link]/popup
  * @status stable
- * @since 1.0
+ * @since 1.8
  *
  * @event sd-reposition - Emitted when the popup is repositioned. This event can fire a lot, so avoid putting expensive
  *  operations in your listener or consider debouncing it.
@@ -36,14 +35,12 @@ import type { CSSResultGroup } from 'lit';
  */
 @customElement('sd-popup')
 export default class SdPopup extends SolidElement {
-  static styles: CSSResultGroup = styles;
-
   private anchorEl: HTMLElement | null;
   private cleanup: ReturnType<typeof autoUpdate> | undefined;
 
   /** A reference to the internal popup container. Useful for animating and styling the popup with JavaScript. */
-  @query('.popup') popup: HTMLElement;
-  @query('.popup__arrow') private arrowEl: HTMLElement;
+  @query('[part="popup"]') popup: HTMLElement;
+  @query('[part="arrow"]') private arrowEl: HTMLElement;
 
   /**
    * The element the popup will be anchored to. If the anchor lives outside of the popup, you can provide its `id` or a
@@ -435,18 +432,44 @@ export default class SdPopup extends SolidElement {
 
       <div
         part="popup"
-        class=${classMap({
-      popup: true,
-      'popup--active': this.active,
-      'popup--fixed': this.strategy === 'fixed',
-      'popup--has-arrow': this.arrow
-    })}
+        class=${cx('isolate', this.strategy !== 'fixed' ? 'absolute' : 'fixed', !this.active && 'hidden')}
       >
         <slot></slot>
-        ${this.arrow ? html`<div part="arrow" class="popup__arrow" role="presentation"></div>` : ''}
+        ${this.arrow ? html`<div part="arrow" class="absolute rotate-45 -z-10" role="presentation"></div>` : ''}
       </div>
     `;
   }
+
+  static styles = [
+    SolidElement.styles,
+    componentStyles,
+    css`
+      :host {
+        --arrow-color: var(--sd-color-neutral-1000);
+        --arrow-size: 6px;
+
+        /*
+     * These properties are computed to account for the arrow's dimensions after being rotated 45º. The constant
+     * 0.7071 is derived from sin(45), which is the diagonal size of the arrow's container after rotating.
+     */
+        --arrow-size-diagonal: calc(var(--arrow-size) * 0.7071);
+        --arrow-padding-offset: calc(var(--arrow-size-diagonal) - var(--arrow-size));
+
+        display: contents;
+      }
+
+      [part='popup'] {
+        max-width: var(--auto-size-available-width, none);
+        max-height: var(--auto-size-available-height, none);
+      }
+
+      [part='arrow'] {
+        width: calc(var(--arrow-size-diagonal) * 2);
+        height: calc(var(--arrow-size-diagonal) * 2);
+        background: var(--arrow-color);
+      }
+    `
+  ];
 }
 
 declare global {
