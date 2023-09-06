@@ -2,10 +2,47 @@ import '../../solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 import { withActions } from '@storybook/addon-actions/decorator';
+import type { ConstantDefinition } from '../../../scripts/storybook/helper';
 const { overrideArgs } = storybookHelpers('sd-navigation-item');
 const { argTypes, args, parameters } = storybookDefaults('sd-navigation-item');
 const { generateTemplate } = storybookTemplate('sd-navigation-item');
 
+// Reusable Constants
+const iconSlotConstant = (right?: boolean): ConstantDefinition => ({
+  type: 'slot',
+  name: right ? 'icon-right' : 'icon-left',
+  value: `<sd-icon library="global-resources" name="system/picture" slot="${
+    right ? 'icon-right' : 'icon-left'
+  }"></sd-icon>`
+});
+
+const defaultSlotConstant: ConstantDefinition = {
+  type: 'slot',
+  name: 'default',
+  value: '<span>Navigation</span>'
+};
+
+const descriptionSlotConstant: ConstantDefinition = {
+  type: 'slot',
+  name: 'description',
+  value:
+    '<p slot="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie phasellus dui vel id.</p>'
+};
+
+const mainSlotConstant: ConstantDefinition = {
+  type: 'slot',
+  name: 'main',
+  value: '<span slot="main"><sd-badge>888</sd-badge></span>'
+};
+
+const childrenSlotConstant: ConstantDefinition = {
+  type: 'slot',
+  name: 'children',
+  value:
+    '<div slot="children">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie phasellus dui vel id.</div>'
+};
+
+// Stories
 export default {
   title: 'Components/sd-navigation-item',
   component: 'sd-navigation-item',
@@ -25,30 +62,6 @@ export default {
 export const Default = {
   render: (args: any) => {
     return generateTemplate({ args });
-  }
-};
-
-/**
- * The navigation with every given `size` in selected (current=true) and unselected variants for both Horizontal and Vertical orientations.
- */
-
-export const CurrentAndSize = {
-  name: 'Current × Size',
-  parameters: { controls: { exclude: ['size'] } },
-  render: (args: any) => {
-    return html`
-      ${['true', 'false'].map(horizontal =>
-        generateTemplate({
-          axis: {
-            x: { type: 'attribute', name: 'size' },
-            y: { type: 'attribute', name: 'current' }
-          },
-          constants: [{ type: 'attribute', name: 'horizontal', value: horizontal }],
-          args,
-          options: { title: `horizontal="${horizontal}"` }
-        })
-      )}
-    `;
   }
 };
 
@@ -73,61 +86,42 @@ export const Disabled = {
 };
 
 /**
- * Use the `icon-left` and `icon-right` slots to add icons.
+ * The navigation element when `horizontal` is true.
  */
 
-export const IconSlots = {
-  parameters: { controls: { exclude: ['size', 'default', 'icon-left', 'icon-right'] } },
+export const Horizontal = {
+  parameters: {
+    controls: {
+      exclude: [
+        'href',
+        'current',
+        'size',
+        'horizontal',
+        'chevron',
+        'indented',
+        'relaxed',
+        'divider',
+        'open',
+        'description',
+        'children',
+        'summary'
+      ]
+    }
+  },
   render: (args: any) => {
     return html`
-      ${['smaller', 'base', 'larger'].map(size =>
-        // We have to compare different types of icons: "square", "wide" and "tall" ones.
+      ${['', 'https://www.union-investment.de/'].map(href =>
         generateTemplate({
           axis: {
-            x: {
-              type: 'slot',
-              name: 'icon-right',
-              values: [
-                { value: '', title: '–' },
-                {
-                  value: '<sd-icon library="global-resources" name="system/picture" slot="icon-right"></sd-icon>',
-                  title: 'system/picture'
-                },
-                {
-                  value:
-                    '<sd-icon library="global-resources" name="system/multi-functions" slot="icon-right"></sd-icon>',
-                  title: 'system/multi-functions'
-                },
-                {
-                  value: '<sd-icon library="global-resources" name="system/minus" slot="icon-right"></sd-icon>',
-                  title: 'system/minus'
-                }
-              ]
-            },
-            y: {
-              type: 'slot',
-              name: 'icon-left',
-              values: [
-                { value: '', title: '–' },
-                {
-                  value: '<sd-icon library="global-resources" name="system/picture" slot="icon-left"></sd-icon>',
-                  title: 'system/picture'
-                },
-                {
-                  value:
-                    '<sd-icon library="global-resources" name="system/multi-functions" slot="icon-left"></sd-icon>',
-                  title: 'system/multi-functions'
-                },
-                {
-                  value: '<sd-icon library="global-resources" name="system/minus" slot="icon-left"></sd-icon>',
-                  title: 'system/minus'
-                }
-              ]
-            }
+            x: { type: 'attribute', name: 'size' },
+            y: { type: 'attribute', name: 'current' }
           },
-          constants: [{ type: 'attribute', name: 'size', value: size }],
+          constants: [
+            { type: 'attribute', name: 'horizontal', value: true },
+            { type: 'attribute', name: 'href', value: href }
+          ],
           args,
-          options: { title: `size="${size}"` }
+          options: { title: `${href ? 'Link ' : 'Button '} (href="${href}") ${href ? '' : ' ("sd-click" event) '}` }
         })
       )}
     `;
@@ -143,21 +137,9 @@ export const Vertical = {
   render: (args: any) => {
     return generateTemplate({
       constants: [
-        {
-          type: 'slot',
-          name: 'icon-left',
-          value: '<sd-icon library="global-resources" name="system/picture" slot="icon-left"></sd-icon>'
-        },
-        {
-          type: 'slot',
-          name: 'default',
-          value: '<span>Navigation</span>'
-        },
-        {
-          type: 'slot',
-          name: 'main',
-          value: '<span slot="main"><sd-badge>888</sd-badge></span>'
-        },
+        iconSlotConstant(),
+        defaultSlotConstant,
+        mainSlotConstant,
         { type: 'attribute', name: 'chevron', value: true }
       ],
       args
@@ -169,51 +151,98 @@ export const Vertical = {
  * Default: This shows sd-navigation-item in its default state.
  */
 
-export const Vertical2 = {
+export const Children = {
   render: (args: any) => {
     return generateTemplate({
       constants: [
-        {
-          type: 'slot',
-          name: 'icon-left',
-          value: '<sd-icon library="global-resources" name="system/picture" slot="icon-left"></sd-icon>'
-        },
-        {
-          type: 'slot',
-          name: 'default',
-          value: '<span>Navigation</span>'
-        },
-        {
-          type: 'slot',
-          name: 'main',
-          value: '<span slot="main"><sd-badge>888</sd-badge></span>'
-        },
-        {
-          type: 'slot',
-          name: 'description',
-          value:
-            '<p slot="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie phasellus dui vel id.</p>'
-        }
+        iconSlotConstant(),
+        defaultSlotConstant,
+        iconSlotConstant(true),
+        mainSlotConstant,
+        descriptionSlotConstant,
+        childrenSlotConstant
       ],
       args
     });
   }
 };
 
-export const Test2 = {
-  parameters: { controls: { exclude: ['children'] } },
+/**
+ * Use the expand-icon and collapse-icon slots to change the expand and collapse icons, respectively.
+ * To disable the animation, override the rotate property on the summary-icon part as shown below:
+ * ```
+ * sd-accordion.custom-icons::part(summary-icon) {
+ *   rotate: none;
+ * }
+ * ```
+ */
+
+export const Slots = {
+  parameters: {
+    controls: { exclude: [] }
+  },
+  render: (args: any) => {
+    return html`
+      ${['default', 'icon-left', 'main', 'description', 'children'].map(slot =>
+        generateTemplate({
+          axis: {
+            x: {
+              type: 'slot',
+              name: slot,
+              title: 'slot=...',
+              values: [
+                {
+                  value:
+                    slot === 'default'
+                      ? `<slot-comp style="--slot-content: ''; --slot-height: 24px; --slot-width: 100px;"></slot-comp>`
+                      : `<slot-comp slot='${slot}' style="--slot-content: ''; --slot-height: 24px; --slot-width: ${
+                          slot === 'description' || slot === 'children' ? '100%' : '24px'
+                        }"></slot-comp>`,
+                  title: slot
+                }
+              ]
+            }
+          },
+          constants: [
+            { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' },
+            { type: 'attribute', name: 'chevron', value: true },
+            defaultSlotConstant,
+            iconSlotConstant(),
+            iconSlotConstant(true),
+            mainSlotConstant,
+            descriptionSlotConstant
+          ],
+          args: overrideArgs({ type: 'slot', name: 'default', value: '' }, args)
+        })
+      )}
+    `;
+  }
+};
+
+/**
+ * Use the `base`, `label`, `icon-left` and `icon-right` part selectors to customize the button.
+ */
+
+export const Parts = {
   render: (args: any) => {
     return generateTemplate({
+      axis: {
+        y: {
+          type: 'template',
+          name: 'sd-navigation-item::part(...){outline: solid 2px red}',
+          values: ['base', 'icon-left', 'label', 'icon-right', 'main', 'chevron', 'description'].map(part => {
+            return {
+              title: part,
+              value: `<style>#part-${part} sd-navigation-item::part(${part}){outline: solid 2px red}</style><div id="part-${part}">%TEMPLATE%</div>`
+            };
+          })
+        }
+      },
       constants: [
         {
-          type: 'slot',
-          name: 'icon-left',
-          value: '<sd-icon library="global-resources" name="system/picture" slot="icon-left"></sd-icon>'
-        },
-        {
-          type: 'slot',
-          name: 'default',
-          value: '<span>Label</span>'
+          type: 'attribute',
+          name: 'chevron',
+          value: true
         },
         {
           type: 'slot',
@@ -222,15 +251,15 @@ export const Test2 = {
         },
         {
           type: 'slot',
-          name: 'main',
-          value: '<span slot="main"><sd-badge>Badge</sd-badge></span>'
+          name: 'icon-left',
+          value: '<sd-icon library="global-resources" name="system/picture" slot="icon-left"></sd-icon>'
         },
         {
           type: 'slot',
-          name: 'children',
-          value:
-            '<p slot="children">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>'
-        }
+          name: 'main',
+          value: '<sd-badge slot="main">888</sd-badge>'
+        },
+        descriptionSlotConstant
       ],
       args
     });

@@ -1,20 +1,25 @@
 import '../spinner/spinner';
 import { css } from 'lit';
-import { customElement, property, query, queryAssignedElements, state } from 'lit/decorators.js';
+import { customElement, property, query, queryAssignedElements } from 'lit/decorators.js';
 import { HasSlotController } from '../../internal/slot';
 import { html, literal } from 'lit/static-html.js';
 import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
+// Thoughts & Questions:
+// - Are event names like 'sd-click' sufficient?
+// - Is setting aria-current="page" in the render method efficient?
+
 /**
- * @summary Flexible button / link component that can be used to quickly build navigations.
+ * @summary Flexible button / link component that can be used to quickly build navigations. Takes one of 3 forms: link (overrides all other if 'href' is provided), button (default), or accordion (if 'children' slot present).
  * @status experimental
  * @since 1.0
  *
  * @dependency sd-example
  *
- * @event sd-event-name - Emitted as an example.
+ * @event sd-toggle-details - Emitted when a navigation item (accordion) with no 'href' and a 'children' slot is clicked. The event reflects the HTML details element open state and forwards it in the event object detail property as 'isOpen'.
+ * @event sd-click - Emitted when the navigation item (button) with no 'href' is clicked.
  *
  * @slot - The navigation item's label.
  * @slot icon-left - A prefix icon or similar element.
@@ -32,7 +37,6 @@ import SolidElement from '../../internal/solid-element';
  * @csspart summary-icon - The container that wraps the expand/collapse icons.
  * @csspart content - The accordion content.
  *
- * @cssproperty --example - An example CSS custom property.
  */
 @customElement('sd-navigation-item')
 export default class SdNavigationItem extends SolidElement {
@@ -46,16 +50,23 @@ export default class SdNavigationItem extends SolidElement {
     'children'
   );
 
+  // TODO: remove test callback
+  connectedCallback() {
+    super.connectedCallback();
+
+    // eslint-disable-next-line wc/require-listener-teardown
+    this.addEventListener('sd-click', event => {
+      console.log('sd-click event received:', event);
+    });
+  }
+
   @query('a, button') button: HTMLButtonElement | HTMLLinkElement;
   @queryAssignedElements({ selector: 'sd-icon' }) _iconsInDefaultSlot!: HTMLElement[];
 
-  @state()
-  detailsOpen = false;
-
-  /** The navigation item's href target. If provided, the navigation item will use an anchor tag, otherwise it will use a button tag. */
+  /** The navigation item's href target. If provided, the navigation item will use an anchor tag otherwise it will use a button tag. The 'children' slot and accordion behavior will be ignored if an 'href' is provided. */
   @property({ reflect: true }) href = '';
 
-  /** Indicates that the navigation item is currently selected. Aria-current should be added if true */
+  /** Indicates that the navigation item is currently selected. The aria-current attribute is set to "page" on the host if true. */
   @property({ type: Boolean, reflect: true })
   current = false;
 
@@ -80,35 +91,11 @@ export default class SdNavigationItem extends SolidElement {
   /** *Vertical Only: Adds additional padding to navigation item's left and right sides. */
   @property({ type: Boolean, reflect: true }) divider = false;
 
-  private handleBlur() {
-    this.emit('sd-blur');
-  }
-
-  private handleFocus() {
-    this.emit('sd-focus');
-  }
-
-  private isButton() {
-    return this.href ? false : true;
-  }
+  /** *Vertical Only if 'children' slot and no 'href': Reflects HTML details element state and allows control from parent. */
+  @property({ type: Boolean, reflect: true }) open = true;
 
   private isLink() {
     return this.href ? true : false;
-  }
-
-  /** Simulates a click on the button. */
-  click() {
-    this.button.click();
-  }
-
-  /** Sets focus on the button. */
-  focus(options?: FocusOptions) {
-    this.button.focus(options);
-  }
-
-  /** Removes focus from the button. */
-  blur() {
-    this.button.blur();
   }
 
   private setAriaCurrent() {
@@ -119,15 +106,19 @@ export default class SdNavigationItem extends SolidElement {
     }
   }
 
-  private handleClick(event: MouseEvent) {
+  private handleClickDetails(event: MouseEvent) {
+    // prevent default so component property is respected
+    event.preventDefault();
+    event.stopPropagation();
+
+    this.open = !this.open;
+    this.emit('sd-toggle-details', { detail: { isOpen: this.open } });
+  }
+
+  private handleClickButton(event: MouseEvent) {
+    console.log(event);
     console.log('handleClick');
-    const detailsElementOpen: boolean = this.shadowRoot?.querySelector('details')?.open || false;
-
-    console.log(detailsElementOpen);
-
-    this.emit('sd-toggle-details', { detail: { isOpen: detailsElementOpen } });
-
-    this.detailsOpen = !this.detailsOpen;
+    this.emit('sd-toggle-details', { detail: { isOpen: this.open } });
   }
 
   private calculatePaddingX(): string {
@@ -177,7 +168,7 @@ export default class SdNavigationItem extends SolidElement {
             part="chevron"
             library="system"
             color="currentColor"
-            class=${cx('h-6 w-6', includeChildren ? (this.detailsOpen ? 'rotate-180' : 'rotate-0') : 'rotate-[270deg]')}
+            class=${cx('h-6 w-6', includeChildren ? (this.open ? 'rotate-180' : 'rotate-0') : 'rotate-[270deg]')}
           ></sd-icon>`
         : null;
 
@@ -235,8 +226,8 @@ export default class SdNavigationItem extends SolidElement {
           { base: 'text-base', larger: 'text-lg', smaller: 'text-[14px]' }[this.size],
           includeChildren ? 'flex flex-col' : 'inline-block w-full'
         )}
-        @click=${!isLink ? this.handleClick : null}
-        ${isLink ? literal`href=` : literal``}${this.href} 
+        @click=${isLink ? null : this.handleClickButton}
+        ${isLink ? literal`href=` : literal``}${this.href}
       >
         <span class=${cx(
           'relative pt-3 inline-flex justify-between items-center',
@@ -244,7 +235,7 @@ export default class SdNavigationItem extends SolidElement {
           slots['description'] ? 'pb-1' : horizontalPaddingBottom,
           this.calculatePaddingX()
         )}>
-          <span class="inline-flex items-center justify-center">
+          <span class="inline-flex items-center flex-auto">
             ${iconLeftSlot}
             <slot part="label" class=${cx('inline', slots['icon-right'] || slots['main'] ? 'mr-2' : '')}></slot>
             ${iconRightSlot}
@@ -262,7 +253,9 @@ export default class SdNavigationItem extends SolidElement {
 
     return includeChildren
       ? html`${divider}
-          <details class="relative flex max-w-[100%]">${root}${childrenSlot}</details>`
+          <details @click=${this.handleClickDetails} ?open=${this.open} class="relative flex">
+            ${root}${childrenSlot}
+          </details>`
       : html`${divider}${root}`;
   }
 
