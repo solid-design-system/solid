@@ -6,30 +6,26 @@ The new `sd-carousel` is designed to replace the `ui-slider`. Instead of mainly 
 
 ### ✨ New Slots
 
-#### [1st_new_slot]
+#### [default]
 
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
+The carousel's main content. Typically includes one or more `<sd-carousel-item>` elements.
 
-#### [2nd_new_slot]
+#### [next-icon]
 
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
+An optional next icon that can be used instead of the default. This works best with `<sd-icon>`.
 
-### 🔀 Updated Slots
+#### [previous-icon]
 
-#### [1st_updated_slot]
+An optional previous icon that can be used instead of the default. This works best with `<sd-icon>`.
 
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
+#### [autoplay-start]
 
-#### [2nd_updated_slot]
+An optional icon slot to replace the start/play button that appears when `autoplay` is set to true. Works best with `<sd-icon>`.
 
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
+#### [autoplay-pause]
 
-### ❌ Removed Slots
+An optional icon slot to replace the pause button that appears when `autoplay` is set to true. Works best with `<sd-icon>`.
 
-The following slots have been removed from the new [SD_COMPONENT] component:
-
-1. [1st_removed_slot]
-2. [2nd_removed_slot]
 
 <hr />
 
@@ -37,30 +33,45 @@ The following slots have been removed from the new [SD_COMPONENT] component:
 
 ### ✨ New Attributes
 
-#### [1st_new_attribute]
+#### [autoplay]
 
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
+When set, the slides will scroll automatically when the user is not interacting with them. 
 
-#### [2nd_new_attribute]
+#### [inverted]
 
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
+The `inverted` attribute allows users to invert the colors of the `sd-carousel`.
 
 ### 🔀 Updated Attributes
 
-#### [1st_updated_attribute]
+#### [paginationType]
 
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
+The attribute `paginationType` has been updated to `variant` with new options `dot` and `number` replacing `default` and `fraction`.
 
-#### [2nd_updated_attribute]
+#### [noLoop]
 
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
+The attribute `noLoop` has been updated to `loop` to streamline and clarify the control of looping behavior.
+
+#### [slidesPerPage]
+
+The `slidesPerPage` attribute now accepts any number instead of the previous 1-4 range.
 
 ### ❌ Removed Attributes
 
-The following attributes have been removed from the new [SD_COMPONENT] component:
+The following attributes have been removed from the new sd-carousel component:
 
-1. [1st_removed_attribute]
-2. [2nd_removed_attribute]
+1. [moveMode]
+2. [slidesPerPageAbove1024]
+3. [breakpointsBase]
+4. [autoSlideInterval]
+5. [uniqueId]
+6. [conversion]
+7. [autoHeight]
+8. [autoInit]
+9. [animation]
+10. [navigationArrowsOnMobile]
+11. [navigationArrowType]
+12. [fractionPaginationThreshold]
+13. [teaseNextSlideOnMobile]
 
 <hr />
 
@@ -68,92 +79,43 @@ The following attributes have been removed from the new [SD_COMPONENT] component
 
 ### ✨ New CSS Variables
 
-#### [1st_new_CSS_variable]
+#### [--slide-gap]
 
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
+Use the `--slide-gap` CSS property to set the gap between two slides in the carousel.
 
-#### [2nd_new_CSS_variable]
+#### [--scroll-hint]
 
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-### 🔀 Updated CSS variables
-
-#### [1st_updated_CSS_variable]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-#### [2nd_updated_CSS_variable]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-### ❌ Removed CSS variables
-
-The following CSS variables have been removed from the new [SD_COMPONENT] component:
-
-1. [1st_removed_CSS_variable]
-2. [2nd_removed_CSS_variable]
+Use `--scroll-hint` to set the padding to apply to the scroll area, allowing adjacent slides to become partially visible as a scroll hint.
 
 <hr />
 
 ## 🥳 Events
 
-### ✨ New Events
-
-#### [1st_new_event]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-#### [2nd_new_event]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
 ### 🔄 Updated Events
 
-#### [1st_updated_event]
+#### [uiSliderSlideChange]
 
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
+Renamed `uiSliderSlideChange` to `sd-slide-change`.
 
-#### [2nd_updated_event]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
 
 ### ❌ Removed Events:
 
-The following events have been removed from the new [SD_COMPONENT] component:
+#### [uiSliderReady]
 
-1. [1st_removed_event]
-2. [2nd_removed_event]
+`uiSliderReady` has been removed from the new `sd-carousel` component.
+
 
 <hr />
 
 ## 🦻 Event Listeners
 
-### ✨ New Event Listeners
-
-#### [1st_new_event_listener]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-#### [2nd_new_event_listener]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-### 🔄 Updated Event Listeners
-
-#### [1st_updated_event_listener]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-#### [2nd_updated_event_listener]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
 ### ❌ Removed Event Listeners:
 
-The following event listeners have been removed from the new [SD_COMPONENT] component:
+The following event listeners have been removed from the new `sd-carousel` component:
 
-1. [1st_removed_event_listeners]
-2. [2nd_removed_event_listeners]
+1. [componentResized]
+2. [videoPlay]
+3. [videoPause]
 
 <hr />
 
@@ -161,39 +123,34 @@ The following event listeners have been removed from the new [SD_COMPONENT] comp
 
 ### ✨ New Methods
 
-#### [1st_new_method]
+#### [getPageCount]
 
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
+New method to find the total number of pages.
 
-#### [2nd_new_method]
+#### [getCurrentPage]
 
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
+New method to find the active page number.
 
-### 🔄 Updated Methods
+#### [goToSlide]
 
-#### [1st_updated_method]
+New method to scroll the carousel to a specified index.
 
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
+#### [previous]
 
-#### [2nd_updated_method]
+New method to go to the previous slide.
 
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
+#### [next]
+
+New method to go to the next slide.
 
 ### ❌ Removed Methods:
 
-The following methods have been removed from the new [SD_COMPONENT] component:
+The following methods have been removed from the new `sd-carousel` component:
 
-1. [1st_removed_method]
-2. [2nd_removed_method]
+1. [jumpToSlide]
+2. [onAfterResize]
+3. [getSlideCountForBpSmall]
+4. [getSlideCountForBpMedium]
+5. [update]
 
 <hr />
-
-## 💪 Additional Changes
-
-### [1st_additional_change]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-### [2nd_additional_change]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
