@@ -1,4 +1,3 @@
-// import '../../../dist/package/solid-components.js';
 import { clickOnElement } from '../../internal/test.js';
 import { expect, fixture, html, oneEvent } from '@open-wc/testing';
 import sinon from 'sinon';
@@ -21,6 +20,26 @@ describe('<sd-carousel>', () => {
     expect(el).to.have.attribute('aria-label', 'Carousel');
     expect(el.shadowRoot!.querySelector('.carousel__navigation')).to.exist;
     expect(el.shadowRoot!.querySelector('.carousel__pagination')).to.exist;
+    expect(el.shadowRoot!.querySelector('.number')).to.exist;
+  });
+
+  it('should render a carousel with dot variation', async () => {
+    // Arrange
+    const el = await fixture<SdCarousel>(html`
+      <sd-carousel variant="dot">
+        <sd-carousel-item>Node 1</sd-carousel-item>
+        <sd-carousel-item>Node 2</sd-carousel-item>
+        <sd-carousel-item>Node 3</sd-carousel-item>
+      </sd-carousel>
+    `);
+
+    // Assert
+    expect(el).to.exist;
+    expect(el).to.have.attribute('role', 'region');
+    expect(el).to.have.attribute('aria-label', 'Carousel');
+    expect(el.shadowRoot!.querySelector('.carousel__navigation')).to.exist;
+    expect(el.shadowRoot!.querySelector('.carousel__pagination')).to.exist;
+    expect(el.shadowRoot!.querySelector('.dot')).to.exist;
   });
 
   it('should be scrollable along the x-axis', async () => {
@@ -79,7 +98,7 @@ describe('<sd-carousel>', () => {
     it('should not resume if the user is still interacting', async () => {
       // Arrange
       const el = await fixture<SdCarousel>(html`
-        <sd-carousel autoplay autoplay-interval="10">
+        <sd-carousel autoplay>
           <sd-carousel-item>Node 1</sd-carousel-item>
           <sd-carousel-item>Node 2</sd-carousel-item>
           <sd-carousel-item>Node 3</sd-carousel-item>
