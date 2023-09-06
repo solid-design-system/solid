@@ -14,3 +14,24 @@ declare namespace Chai {
 interface HTMLInputElement {
   showPicker: () => void;
 }
+
+// for css styles
+
+type StyleStatus = 'experimental' | 'stable' | 'deprecated';
+
+export interface StyleAttribute {
+  name: string;
+  description: string;
+  /**
+   * If you don't set options, the attribute will be rendered as a boolean attribute.
+   */
+  options?: string[];
+}
+
+export interface Style {
+  styleName: string;
+  summary: string;
+  status: StyleStatus;
+  since: string;
+  attributes: StyleAttribute[];
+}

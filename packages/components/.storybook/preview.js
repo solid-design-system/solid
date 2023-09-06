@@ -1,6 +1,7 @@
 import { setCustomElementsManifest } from '@storybook/web-components';
 import 'normalize.css';
-
+import '../src/solid-styles.css';
+import { fetchStyleComponents } from '../scripts/storybook/styles-helper';
 import { registerIconLibrary } from '../src/utilities/icon-library';
 import { storybookUtilities } from '../scripts/storybook/helper';
 
@@ -21,12 +22,20 @@ async function loadCustomElements() {
       // Use manifest file generated on build time
       return import('../dist/custom-elements.json');
     })
-    .then(customElements => {
+    .then(async customElements => {
+      // In production, the manifest is optimized and styles are added during the build process.
+      // However, in development mode, the manifest isn't built with styles, so we add them dynamically.
+      // In the latter case therefore we have to "fetchStyleComponents", too.
+      const stylesAreAlreadyIncluded = customElements.modules.some(module => module.styles === true);
+      if (!stylesAreAlreadyIncluded) {
+        const styleComponents = await fetchStyleComponents();
+        customElements.modules = [...customElements?.modules, ...styleComponents];
+      }
+
       setCustomElementsManifest(customElements);
     });
 
-  setCustomElementsManifest(customElements);
-  console.log('Custom elements manifest set', customElements);
+  console.log('Custom elements manifest loaded');
 }
 
 loadCustomElements();

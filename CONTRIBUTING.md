@@ -5,6 +5,7 @@
 - [Functionality & Integration](#functionality--integration)
 - [How We Work](#how-we-work)
 - [Development Guidelines](#development-guidelines)
+- [Migration Guides](#migration-guides)
 - [Pull Requests](#pull-requests)
   - [Commit Messages](#commit-messages)
   - [Squash and Merge Your Changes](#squash-and-merge-your-changes)
@@ -24,6 +25,7 @@
 - We provide extensive documentation and examples for each component in Storybook. [Explore components and interact with them](https://solid-design-system.fe.union-investment.de/x.x.x/storybook/).
 - We provide End-to-End (E2E) tests with Playwright and Visual Regression Tests with Chromatic. The latter are automatically generated from the created Storybook stories.
 - We optimize our components for accessibility.
+- We don't mention the names of internal or external colleagues in issues or other documents hosted on GitHub, as our project is entirely public and can be accessed by anybody. Tagging/mentioning colleagues using their GitHub profiles is fine, as they decided to be visible on GitHub.
 
 ## Development Guidelines
 
@@ -36,6 +38,10 @@
 - Nearly all styles (colors, fonts, sizes etc.) are defined by our design team and provided for usage in our code via tokens (`packages/tokens/src/token.json`).
   Components should use these tokens instead of individual styles as much as possible. Only where the tokens do not provide a styling, component specific styles should be added inside the [component-name].ts file
 - Components should be optimized for accessibility. Check the website of the [Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/WAI/standards-guidelines/wcag/) for more information on accessibility.
+
+## Migration Guides
+
+Each new component in the Solid Design System, representing an old component from the Component Library, must have a migration guide. This helps developers to easily switch from the old component to the new one. The migration guide should be placed in the `packages/components/src/docs/Migration` folder. The migration guide should base on the [migration guide template](./templates/migration-guide-template.mdx) and be named by the old component name (e.g.`ui-button.mdx`).
 
 ## Pull Requests
 
@@ -52,7 +58,7 @@ Commits with type 'fix' will be associated with a patch release.
 Commits with type 'perf' will be associated with a patch release.
 ```
 
-**Remark:** Always think from the perspective of the person using our packages/components – will the final distribution/bundle change? If so, then it's always `feat` `fix` or `perf` – if not, it's one of the others. Please reach out if you're unsure.
+**Remark:** Always think from the perspective of the person using our packages/components – will the final distribution/bundle change? If so, then it's always `feat` `fix` or `perf` – if not, it's one of the others. Please reach out if you're unsure.
 
 ---
 
