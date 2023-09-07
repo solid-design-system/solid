@@ -17,9 +17,9 @@ import SolidElement from '../../internal/solid-element';
  * @status experimental
  * @since 1.0
  *
- * @dependency sd-example
+ * @dependency sd-divider
  *
- * @event sd-toggle-details - Emitted when a navigation item (accordion) with no 'href' and a 'children' slot is clicked. The event reflects the HTML details element open state and forwards it in the event object detail property as 'isOpen'.
+ * @event sd-toggle-details - Emitted when a navigation item (accordion) with no 'href' and a 'children' slot is clicked. The event reflects the HTML details element open state and forwards it in the event object detail property as 'open'.
  * @event sd-click - Emitted when the navigation item (button) with no 'href' is clicked.
  *
  * @slot - The navigation item's label.
@@ -50,7 +50,7 @@ export default class SdNavigationItem extends SolidElement {
     'children'
   );
 
-  @query('a, button') button: HTMLButtonElement | HTMLLinkElement;
+  @query('a, button, summary') button: HTMLButtonElement | HTMLLinkElement;
   @queryAssignedElements({ selector: 'sd-icon' }) _iconsInDefaultSlot!: HTMLElement[];
 
   /** The navigation item's href target. If provided, the navigation item will use an anchor tag otherwise it will use a button tag. The 'children' slot and accordion behavior will be ignored if an 'href' is provided. */
@@ -82,14 +82,14 @@ export default class SdNavigationItem extends SolidElement {
   @property({ type: Boolean, reflect: true }) divider = false;
 
   /** *Vertical Only if 'children' slot and no 'href': Reflects HTML details element state and allows control from parent. */
-  @property({ type: Boolean, reflect: true }) open = true;
+  @property({ type: Boolean, reflect: true }) open = false;
 
   private handleClickSummary(event: MouseEvent) {
     event.preventDefault();
     event.stopPropagation();
 
     this.open = !this.open;
-    this.emit('sd-toggle-details', { detail: { isOpen: this.open } });
+    this.emit('sd-toggle-details', { detail: { open: this.open } });
   }
 
   private handleClickButton() {
