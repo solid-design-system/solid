@@ -3,13 +3,14 @@ import { css } from 'lit';
 import { customElement, property, query, queryAssignedElements } from 'lit/decorators.js';
 import { HasSlotController } from '../../internal/slot';
 import { html, literal } from 'lit/static-html.js';
+import { when } from 'lit/directives/when.js';
 import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
 // Thoughts & Questions:
 // - Are event names like 'sd-click' sufficient?
-// - Is setting aria-current="page" in the render method efficient?
+// - Is there a better way to conditionally include the href only if the component is a link ?
 
 /**
  * @summary Flexible button / link component that can be used to quickly build navigations. Takes one of 3 forms: link (overrides all other if 'href' is provided), button (default), or accordion (if 'children' slot present).
@@ -28,14 +29,13 @@ import SolidElement from '../../internal/solid-element';
  * @slot description - *Vertical only: Slot used to provide a description for the navigation item.
  * @slot children - Slot used to provide nested child navigation elements. If provided, details and summary elements will be used. A chevron will be shown on the right side regardless of the chevron property.
  *
+ * @csspart divider - The component's optional top divider.
  * @csspart base - The component's base wrapper.
  * @csspart icon-left - The container that wraps the left icon area.
- * @csspart label - The button's label.
+ * @csspart label - The component's label.
  * @csspart icon-right - The container that wraps the right icon area.
- * @csspart header - The header that wraps both the summary and the expand/collapse icon.
- * @csspart summary - The container that wraps the summary.
- * @csspart summary-icon - The container that wraps the expand/collapse icons.
- * @csspart content - The accordion content.
+ * @csspart main - The container that wraps the main slot area (primarily used for badges).
+ * @csspart chevron - The container that wraps the chevron.
  *
  */
 @customElement('sd-navigation-item')
@@ -49,16 +49,6 @@ export default class SdNavigationItem extends SolidElement {
     'description',
     'children'
   );
-
-  // TODO: remove test callback
-  connectedCallback() {
-    super.connectedCallback();
-
-    // eslint-disable-next-line wc/require-listener-teardown
-    this.addEventListener('sd-click', event => {
-      console.log('sd-click event received:', event);
-    });
-  }
 
   @query('a, button') button: HTMLButtonElement | HTMLLinkElement;
   @queryAssignedElements({ selector: 'sd-icon' }) _iconsInDefaultSlot!: HTMLElement[];
@@ -94,20 +84,7 @@ export default class SdNavigationItem extends SolidElement {
   /** *Vertical Only if 'children' slot and no 'href': Reflects HTML details element state and allows control from parent. */
   @property({ type: Boolean, reflect: true }) open = true;
 
-  private isLink() {
-    return this.href ? true : false;
-  }
-
-  private setAriaCurrent() {
-    if (this.current) {
-      this.setAttribute('aria-current', 'page');
-    } else {
-      this.removeAttribute('aria-current');
-    }
-  }
-
-  private handleClickDetails(event: MouseEvent) {
-    // prevent default so component property is respected
+  private handleClickSummary(event: MouseEvent) {
     event.preventDefault();
     event.stopPropagation();
 
@@ -115,10 +92,16 @@ export default class SdNavigationItem extends SolidElement {
     this.emit('sd-toggle-details', { detail: { isOpen: this.open } });
   }
 
-  private handleClickButton(event: MouseEvent) {
-    console.log(event);
-    console.log('handleClick');
-    this.emit('sd-toggle-details', { detail: { isOpen: this.open } });
+  private handleClickButton() {
+    this.emit('sd-click');
+  }
+
+  private isLink(): boolean {
+    return !!this.href;
+  }
+
+  private isSummary(): boolean {
+    return !this.href && this.hasSlotController.test('children');
   }
 
   private calculatePaddingX(): string {
@@ -130,9 +113,6 @@ export default class SdNavigationItem extends SolidElement {
   }
 
   render() {
-    // TODO: where is best to implement this logic?
-    this.setAriaCurrent();
-
     const slots = {
       label: this.hasSlotController.test('[default]'),
       'icon-left': this.hasSlotController.test('icon-left'),
@@ -142,9 +122,7 @@ export default class SdNavigationItem extends SolidElement {
       description: this.hasSlotController.test('description'),
       children: this.hasSlotController.test('children')
     };
-    const isLink = this.isLink();
-    const tag = isLink ? literal`a` : slots['children'] ? literal`summary` : literal`button`;
-    const includeChildren = !this.href && slots['children'];
+    const tag = this.isLink() ? literal`a` : slots['children'] ? literal`summary` : literal`button`;
 
     // styles
     const horizontalPaddingBottom = this.horizontal ? 'pb-2' : 'pb-3';
@@ -168,7 +146,7 @@ export default class SdNavigationItem extends SolidElement {
             part="chevron"
             library="system"
             color="currentColor"
-            class=${cx('h-6 w-6', includeChildren ? (this.open ? 'rotate-180' : 'rotate-0') : 'rotate-[270deg]')}
+            class=${cx('h-6 w-6', this.isSummary() ? (this.open ? 'rotate-180' : 'rotate-0') : 'rotate-[270deg]')}
           ></sd-icon>`
         : null;
 
@@ -202,7 +180,7 @@ export default class SdNavigationItem extends SolidElement {
             part="description"
             class=${cx(
               'inline-block text-black text-sm',
-              includeChildren ? 'grow' : 'w-full',
+              this.isSummary() ? 'grow' : 'w-full',
               horizontalPaddingBottom,
               this.calculatePaddingX()
             )}
@@ -224,14 +202,19 @@ export default class SdNavigationItem extends SolidElement {
           this.current ? 'border-accent' : 'border-transparent',
           this.disabled ? 'text-neutral-500 border-neutral-500 pointer-events-none' : 'text-primary',
           { base: 'text-base', larger: 'text-lg', smaller: 'text-[14px]' }[this.size],
-          includeChildren ? 'flex flex-col' : 'inline-block w-full'
+          this.isSummary() ? 'flex flex-col' : 'inline-block w-full'
         )}
-        @click=${isLink ? null : this.handleClickButton}
-        ${isLink ? literal`href=` : literal``}${this.href}
+        aria-controls=${this.isSummary() ? 'navigation-item' : undefined}
+        ${when(this.current, () => literal`aria-current="page"`)}
+        aria-disabled=${this.disabled ? 'true' : 'false'}
+        ${this.isLink() ? literal`href=` : literal``}${this.href}
+        role=${this.isLink() ? 'link' : 'button'}
+        tabindex=${this.disabled ? '-1' : '0'}
+        @click=${this.isLink() ? null : this.isSummary() ? this.handleClickSummary : this.handleClickButton}
       >
         <span class=${cx(
           'relative pt-3 inline-flex justify-between items-center',
-          includeChildren ? 'grow' : 'w-full',
+          this.isSummary() ? 'grow' : 'w-full',
           slots['description'] ? 'pb-1' : horizontalPaddingBottom,
           this.calculatePaddingX()
         )}>
@@ -251,11 +234,9 @@ export default class SdNavigationItem extends SolidElement {
     /* eslint-enable lit/no-invalid-html */
     /* eslint-enable lit/binding-positions */
 
-    return includeChildren
+    return this.isSummary()
       ? html`${divider}
-          <details @click=${this.handleClickDetails} ?open=${this.open} class="relative flex">
-            ${root}${childrenSlot}
-          </details>`
+          <details ?open=${this.open} class="relative flex">${root}${childrenSlot}</details>`
       : html`${divider}${root}`;
   }
 
