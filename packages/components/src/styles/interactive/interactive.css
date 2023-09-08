@@ -23,7 +23,7 @@
     @apply text-white hover:text-primary-200;
   }
 
-  &--inverted:disabled{
+  &--inverted:disabled {
     @apply text-neutral-600;
   }
 
