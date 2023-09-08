@@ -1,24 +1,16 @@
 ---
 name: Feature Issue
 about: Feature Issue Template
-title: 'feat: ✨ [FEATURE_NAME] / add sd-[COMPONENT_NAME]'
+title: 'feat: ✨ [FEATURE_NAME]'
 labels: ''
 assignees: ''
 
 ---
 
-## Description
-
-## API
-[LINK TO FIGMA]
-## Hand-off
-[LINK TO FIGMA]
-
-### Components detailed requirements
-- [ ] Props, CSS-Properties, Parts & Slots
-  - [ ] tbd
-- [ ] Stories
-  - [ ] tbd
+## User Story
+As a [PERSONA] of the Solid Design System, I would like to [REQUIRE], as well as [FURTHER_REQUIREMENT],
+so that [PRODUCT_VALUE], and [FURTHER_PRODUCT_VALUE].
+### Suggesed Solution
 
 ## DoR
 - [ ] Item has business value
