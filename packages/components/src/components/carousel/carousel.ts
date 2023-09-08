@@ -496,7 +496,7 @@ export default class SdCarousel extends SolidElement {
               '!absolute !right-0',
 
               this.inverted ? 'sd-interactive--reset sd-interactive--inverted' : 'sd-interactive sd-interactive--reset',
-              !this.autoplay && 'hidden'
+              !this.autoplay && '!hidden'
             )}
             part="autoplay-controls"
             @click=${() => (this.pausedAutoplay = !this.pausedAutoplay)}
