@@ -58,7 +58,7 @@ export const VariantAndInset = {
         {
           type: 'template',
           name: 'style',
-          value: '<div style="margin-bottom: 40px; width: 375px; height: 250px;">%TEMPLATE%</div>'
+          value: '<div style="margin-bottom: 40px; height: 250px;">%TEMPLATE%</div>'
         },
         {
           type: 'attribute',
@@ -76,7 +76,7 @@ export const VariantAndInset = {
 
 export const InsetAndOrientation = {
   name: 'Inset x Orientation',
-  parameters: { controls: { exclude: ['inset', 'breakpoint'] } },
+  parameters: { controls: { exclude: ['inset', 'breakpoint', 'variant'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -106,7 +106,7 @@ export const InsetAndOrientation = {
         {
           type: 'attribute',
           name: 'variant',
-          value: 'primary-100'
+          value: 'neutral-100'
         }
       ]
     });
@@ -119,7 +119,7 @@ export const InsetAndOrientation = {
 
 export const NoMeta = {
   name: 'Empty Meta Slot',
-  parameters: { controls: { exclude: ['meta', 'breakpoint', 'inset'] } },
+  parameters: { controls: { exclude: ['meta', 'breakpoint', 'inset', 'variant'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -154,7 +154,7 @@ export const NoMeta = {
         {
           type: 'attribute',
           name: 'variant',
-          value: 'primary-100'
+          value: 'neutral-100'
         }
       ]
     });
@@ -166,7 +166,9 @@ export const NoMeta = {
  */
 
 export const DistributionRatio = {
-  parameters: { controls: { exclude: ['--distribution-media', '--distribution-content'] } },
+  parameters: {
+    controls: { exclude: ['--distribution-media', '--distribution-content', 'variant', 'breakpoint', 'inset'] }
+  },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -201,7 +203,7 @@ export const DistributionRatio = {
         {
           type: 'attribute',
           name: 'variant',
-          value: 'primary-100'
+          value: 'white border-neutral-300'
         }
       ]
     });
@@ -209,11 +211,11 @@ export const DistributionRatio = {
 };
 
 /**
- * When responsive, teaser changes its orientation from `horizontal` to `vertical` at a component's width of 448px.
+ * Breakpoint where the teaser switches from `vertical` to `horizontal`, `0` is always `horizontal`, `9999` is always `vertical`. When responsive, teaser changes its orientation from `horizontal` to `vertical` at a component's width of 448px.
  */
 
 export const Breakpoint = {
-  parameters: { controls: { exclude: 'breakpoint' } },
+  parameters: { controls: { exclude: ['breakpoint', 'variant', 'inset'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -229,7 +231,7 @@ export const Breakpoint = {
         {
           type: 'attribute',
           name: 'variant',
-          value: 'primary-100'
+          value: 'white border-neutral-300'
         }
       ]
     });
@@ -237,11 +239,11 @@ export const Breakpoint = {
 };
 
 /**
- * Different `headline` sizes. It is also possible to use `sd-link` inside the <h> tag in the headline slot.
+ * Different `headline` sizes. It is also possible to use `sd-link` inside the `<h>` tag in the headline slot.
  */
 
 export const Headline = {
-  parameters: { controls: { exclude: 'headline' } },
+  parameters: { controls: { exclude: ['headline', 'variant', 'inset'] } },
   render: (args: any) => {
     return html`
       ${['h1', 'h2', 'h3', 'h4', 'h5', 'h6'].map(tag => {
@@ -272,7 +274,7 @@ export const Headline = {
             {
               type: 'attribute',
               name: 'variant',
-              value: 'primary-100'
+              value: 'white border-neutral-300'
             }
           ]
         });
@@ -287,7 +289,7 @@ export const Headline = {
 
 export const Slots = {
   parameters: {
-    controls: { exclude: ['default', 'media', 'meta', 'headline'] }
+    controls: { exclude: ['default', 'media', 'meta', 'headline', 'variant', 'inset'] }
   },
   render: (args: any) => {
     return html`
@@ -339,7 +341,7 @@ export const Slots = {
             {
               type: 'attribute',
               name: 'variant',
-              value: 'primary-100'
+              value: 'white border-neutral-300'
             }
           ]
         })
@@ -349,7 +351,7 @@ export const Slots = {
 };
 
 export const Parts = {
-  parameters: { controls: { exclude: ['base', 'media', 'content', 'meta', 'headline', 'main'] } },
+  parameters: { controls: { exclude: ['base', 'media', 'content', 'meta', 'headline', 'main', 'variant', 'inset'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -374,7 +376,7 @@ export const Parts = {
         {
           type: 'attribute',
           name: 'variant',
-          value: 'primary-100'
+          value: 'white border-neutral-300'
         }
       ]
     });
