@@ -4,7 +4,7 @@
     outline: revert;
   }
 
-  @apply cursor-pointer no-underline;
+  @apply no-underline cursor-pointer;
 
   &:focus-visible {
     @apply outline outline-2 outline-offset-2 outline-primary;
@@ -16,6 +16,18 @@
 
   &--disabled,
   &[disabled] {
-    @apply text-neutral-600 cursor-not-allowed;
+    @apply cursor-not-allowed text-neutral-600;
+  }
+
+  &--inverted {
+    @apply text-white hover:text-primary-200;
+  }
+
+  &--inverted:disabled{
+    @apply text-neutral-600;
+  }
+
+  &--inverted:focus-visible {
+    @apply outline outline-2 outline-offset-2 outline-white;
   }
 }
