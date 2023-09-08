@@ -365,7 +365,7 @@ export default class SdCarousel extends SolidElement {
           class="${cx(
             `carousel__slides mb-6
             grid max-h-full w-full items-center justify-items-center overflow-auto`,
-            !this.inverted ? 'focus-visible:focus-outline' : 'focus-visible:focus-outline-inverted',
+            !this.inverted ? 'focus-visible:focus-outline-inverted' : 'focus-visible:focus-outline',
             `overscroll-x-contain grid-flow-col auto-rows-[100%]
             snap-x snap-mandatory overflow-y-hidden`
           )}"
@@ -387,7 +387,6 @@ export default class SdCarousel extends SolidElement {
               ?disabled=${!prevEnabled ? true : false}
               class=${cx(
                 '!mr-6 !rounded-sm',
-
                 !prevEnabled && 'sd-interactive--disabled',
                 this.inverted ? 'sd-interactive--inverted' : 'sd-interactive sd-interactive--reset'
               )}
@@ -472,7 +471,6 @@ export default class SdCarousel extends SolidElement {
               ?disabled=${!nextEnabled ? true : false}
               class=${cx(
                 '!ml-6 !rounded-sm',
-
                 !nextEnabled && 'sd-interactive--disabled',
                 this.inverted ? 'sd-interactive--inverted' : 'sd-interactive sd-interactive--reset'
               )}
@@ -494,7 +492,6 @@ export default class SdCarousel extends SolidElement {
             class=${cx(
               'ml-6 !rounded-sm',
               '!absolute !right-0',
-
               this.inverted ? 'sd-interactive--reset sd-interactive--inverted' : 'sd-interactive sd-interactive--reset',
               !this.autoplay && '!hidden'
             )}
