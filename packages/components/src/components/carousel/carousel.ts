@@ -365,7 +365,7 @@ export default class SdCarousel extends SolidElement {
           class="${cx(
             `carousel__slides mb-6
             grid max-h-full w-full items-center justify-items-center overflow-auto`,
-            !this.inverted ? 'focus-visible:focus-outline-inverted' : 'focus-visible:focus-outline',
+            this.inverted ? 'focus-visible:focus-outline-inverted' : 'focus-visible:focus-outline',
             `overscroll-x-contain grid-flow-col auto-rows-[100%]
             snap-x snap-mandatory overflow-y-hidden`
           )}"
