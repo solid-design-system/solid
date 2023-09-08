@@ -56,6 +56,27 @@ export const Disabled = {
 };
 
 /**
+ * Use the `inverted` class to invert the colors of an interactive element.
+ */
+
+export const Inverted = {
+  parameters: { controls: { exclude: ['sd-interactive--inverted', 'sd-interactive--reset'] } },
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        y: [{ type: 'attribute', name: 'sd-interactive--inverted', values: [false, true] }]
+      },
+      options: {
+        templateContent: '<button class="%CLASSES%">%SLOT%</button>',
+        templateBackgrounds: { alternate: 'y', colors: ['white', '#00358E'] }
+      },
+      constants: { type: 'attribute', name: 'sd-interactive--inverted', value: true },
+      args
+    });
+  }
+};
+
+/**
  * Use the `reset` class to reset the default browser styles of e. g. a button.
  */
 
