@@ -7,8 +7,8 @@ import SolidElement from '../../internal/solid-element.js';
  * @summary A carousel item represent a slide within a [carousel](/components/carousel).
  * @documentation https://solid.union-investment.com/[storybook-link]/carousel
  *
- * @since 2.0
- * @status experimental
+ * @since 1.12.0
+ * @status stable
  *
  * @slot - The carousel item's content.
  *
