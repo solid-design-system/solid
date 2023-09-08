@@ -425,7 +425,7 @@ export default class SdCarousel extends SolidElement {
                             this.inverted ? 'focus-within:focus-outline-inverted' : 'focus-within:focus-outline'
                           )}"
                           role="tab"
-                          tabindex="${isActive ? '0' : '-1'}"
+                          tabindex="0"
                           aria-selected="${isActive ? 'true' : 'false'}"
                           aria-label="${this.localize.term('goToSlide', index + 1, pagesCount)}"
                           @click=${() => this.goToSlide(index * slidesPerPage)}
