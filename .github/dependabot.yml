@@ -12,6 +12,8 @@ updates:
     labels:
       - "npm dependencies"
       - "root"
+    commit-message:
+      prefix: fix
     reviewers:
       - "solid-design-system/development"
 
@@ -25,8 +27,11 @@ updates:
     labels:
       - "npm dependencies"
       - "components"
+    commit-message:
+      prefix: fix
     reviewers:
       - "solid-design-system/development"
+
 
   # Enable version updates for Placeholders package
   - package-ecosystem: "npm"
@@ -38,5 +43,7 @@ updates:
     labels:
       - "npm dependencies"
       - "placeholders"
+    commit-message:
+      prefix: fix
     reviewers:
       - "solid-design-system/development"
