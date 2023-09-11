@@ -1,0 +1,42 @@
+version: 2
+updates:
+  # Enable version updates at root 
+  - package-ecosystem: "npm"
+    # Look for `package.json` and `lock` files in the `root` directory
+    directory: "/"
+    # Check the pnpm registry for updates every day (weekdays)
+    schedule:
+      interval: "daily"
+      time: "03:00"
+      timezone: "Europe/Berlin"
+    labels:
+      - "npm dependencies"
+      - "root"
+    reviewers:
+      - "solid-design-system/development"
+
+  # Enable version updates for Components package
+  - package-ecosystem: "npm"
+    directory: "/packages/components/"
+    schedule:
+      interval: "daily"
+      time: "03:00"
+      timezone: "Europe/Berlin"
+    labels:
+      - "npm dependencies"
+      - "components"
+    reviewers:
+      - "solid-design-system/development"
+
+  # Enable version updates for Placeholders package
+  - package-ecosystem: "npm"
+    directory: "/packages/placeholders/"
+    schedule:
+      interval: "daily"
+      time: "03:00"
+      timezone: "Europe/Berlin"
+    labels:
+      - "npm dependencies"
+      - "placeholders"
+    reviewers:
+      - "solid-design-system/development"
