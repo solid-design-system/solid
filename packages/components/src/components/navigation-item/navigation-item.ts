@@ -3,14 +3,10 @@ import { css } from 'lit';
 import { customElement, property, query, queryAssignedElements } from 'lit/decorators.js';
 import { HasSlotController } from '../../internal/slot';
 import { html, literal } from 'lit/static-html.js';
-import { when } from 'lit/directives/when.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
-
-// Thoughts & Questions:
-// - Are event names like 'sd-click' sufficient?
-// - Is there a better way to conditionally include the href only if the component is a link ?
 
 /**
  * @summary Flexible button / link component that can be used to quickly build navigations. Takes one of 3 forms: link (overrides all other if 'href' is provided), button (default), or accordion (if 'children' slot present).
@@ -19,8 +15,9 @@ import SolidElement from '../../internal/solid-element';
  *
  * @dependency sd-divider
  *
- * @event sd-toggle-details - Emitted when a navigation item (accordion) with no 'href' and a 'children' slot is clicked. The event reflects the HTML details element open state and forwards it in the event object detail property as 'open'.
- * @event sd-click - Emitted when the navigation item (button) with no 'href' is clicked.
+ * @event sd-mouse-enter - Emitted when the cursor enters navigation item.
+ * @event sd-mouse-leave - Emitted when the cursor leaves navigation item.
+ * @event sd-click - Emitted when the navigation item is clicked. Adds detail object with boolean "open" property if accordion.
  *
  * @slot - The navigation item's label.
  * @slot icon-left - A prefix icon or similar element.
@@ -84,16 +81,35 @@ export default class SdNavigationItem extends SolidElement {
   /** *Vertical Only if 'children' slot and no 'href': Reflects HTML details element state and allows control from parent. */
   @property({ type: Boolean, reflect: true }) open = false;
 
+  private handleMouseEnter() {
+    this.emit('sd-mouse-enter');
+  }
+
+  private handleMouseLeave() {
+    this.emit('sd-mouse-leave');
+  }
+
   private handleClickSummary(event: MouseEvent) {
     event.preventDefault();
     event.stopPropagation();
 
-    this.open = !this.open;
-    this.emit('sd-toggle-details', { detail: { open: this.open } });
+    if (!this.disabled) {
+      this.open = !this.open;
+      this.emit('sd-click', { detail: { open: this.open } });
+    }
   }
 
-  private handleClickButton() {
-    this.emit('sd-click');
+  private handleClickButton(event: MouseEvent) {
+    if (this.disabled) {
+      event.preventDefault();
+      event.stopPropagation();
+    } else {
+      this.emit('sd-click');
+    }
+  }
+
+  private isButton(): boolean {
+    return !this.href && !this.hasSlotController.test('children');
   }
 
   private isLink(): boolean {
@@ -179,7 +195,7 @@ export default class SdNavigationItem extends SolidElement {
             name="description"
             part="description"
             class=${cx(
-              'inline-block text-black text-sm',
+              'inline-block text-sm',
               this.isSummary() ? 'grow' : 'w-full',
               horizontalPaddingBottom,
               this.calculatePaddingX()
@@ -204,13 +220,16 @@ export default class SdNavigationItem extends SolidElement {
           { base: 'text-base', larger: 'text-lg', smaller: 'text-[14px]' }[this.size],
           this.isSummary() ? 'flex flex-col' : 'inline-block w-full'
         )}
-        aria-controls=${this.isSummary() ? 'navigation-item' : undefined}
-        ${when(this.current, () => literal`aria-current="page"`)}
-        aria-disabled=${this.disabled ? 'true' : 'false'}
-        ${this.isLink() ? literal`href=` : literal``}${this.href}
+        aria-controls=${ifDefined(this.isSummary() ? 'navigation-item-details' : undefined)}
+        aria-current=${ifDefined(this.current ? 'page' : undefined)}
+        aria-disabled=${this.disabled}
+        ?disabled=${ifDefined(this.isButton() ? this.disabled : undefined)}
+        href=${ifDefined(this.href || undefined)}
         role=${this.isLink() ? 'link' : 'button'}
         tabindex=${this.disabled ? '-1' : '0'}
-        @click=${this.isLink() ? null : this.isSummary() ? this.handleClickSummary : this.handleClickButton}
+        @click=${this.isSummary() ? this.handleClickSummary : this.isButton() ? this.handleClickButton : null}
+        @mouseenter=${ifDefined(this.disabled ? undefined : this.handleMouseEnter)}
+        @mouseleave=${ifDefined(this.disabled ? undefined : this.handleMouseLeave)}
       >
         <span class=${cx(
           'relative pt-3 inline-flex justify-between items-center',
@@ -236,7 +255,9 @@ export default class SdNavigationItem extends SolidElement {
 
     return this.isSummary()
       ? html`${divider}
-          <details ?open=${this.open} class="relative flex">${root}${childrenSlot}</details>`
+          <details id="navigation-item-details" ?open=${this.open} class="relative flex">
+            ${root}${childrenSlot}
+          </details>`
       : html`${divider}${root}`;
   }
 

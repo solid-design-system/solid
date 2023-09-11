@@ -148,7 +148,7 @@ export const Vertical = {
 };
 
 /**
- * Default: This shows sd-navigation-item in its default state.
+ * Default: This shows sd-navigation-item in its accordion variant when the "children" slot is used.
  */
 
 export const Children = {
@@ -166,16 +166,6 @@ export const Children = {
     });
   }
 };
-
-/**
- * Use the expand-icon and collapse-icon slots to change the expand and collapse icons, respectively.
- * To disable the animation, override the rotate property on the summary-icon part as shown below:
- * ```
- * sd-accordion.custom-icons::part(summary-icon) {
- *   rotate: none;
- * }
- * ```
- */
 
 export const Slots = {
   parameters: {
@@ -206,6 +196,11 @@ export const Slots = {
           constants: [
             { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' },
             { type: 'attribute', name: 'chevron', value: true },
+            {
+              type: 'attribute',
+              name: 'open',
+              value: true
+            },
             defaultSlotConstant,
             iconSlotConstant(),
             iconSlotConstant(true),
@@ -220,7 +215,7 @@ export const Slots = {
 };
 
 /**
- * Use the `base`, `label`, `icon-left` and `icon-right` part selectors to customize the button.
+ * Use the 'base', 'icon-left', 'label', 'icon-right', 'main', 'chevron', and 'description' part selectors to customize the navigation item.
  */
 
 export const Parts = {

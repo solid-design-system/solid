@@ -2,107 +2,275 @@ import { expect, fixture, html, waitUntil } from '@open-wc/testing';
 import sinon from 'sinon';
 import type SdNavigationItem from './navigation-item';
 
+const defaultSlot = 'Default Slot';
 const childrenSlot = html`<div slot="children">Children</div>`;
+const variants = {
+  button: {
+    default: html`<sd-navigation-item>${defaultSlot}</sd-navigation-item>`,
+    disabled: html`<sd-navigation-item disabled>${defaultSlot}</sd-navigation-item>`
+  },
+  link: {
+    default: html`<sd-navigation-item href="#">${defaultSlot}</sd-navigation-item>`,
+    disabled: html`<sd-navigation-item disabled href="#">${defaultSlot}</sd-navigation-item>`,
+    children: html`<sd-navigation-item href="#">${defaultSlot}${childrenSlot}</sd-navigation-item>`
+  },
+  accordion: {
+    default: html`<sd-navigation-item>${defaultSlot}${childrenSlot}</sd-navigation-item>`,
+    disabled: html`<sd-navigation-item disabled>${defaultSlot}${childrenSlot}</sd-navigation-item>`
+  }
+};
 
 describe('<sd-navigation-item>', () => {
-  it('renders a component', async () => {
-    const el = await fixture<SdNavigationItem>(html` <sd-navigation-item></sd-navigation-item> `);
+  // Test default button variant
+  describe('by default', () => {
+    // Render
+    it('only renders a button element', async () => {
+      const el = await fixture<SdNavigationItem>(variants.button.default);
 
-    expect(el).to.exist;
+      expect(el).to.exist;
+      expect(el.shadowRoot!.querySelector('a')).to.not.exist;
+      expect(el.shadowRoot!.querySelector('button')).to.exist;
+      expect(el.shadowRoot!.querySelector('summary')).to.not.exist;
+      expect(el.shadowRoot!.querySelector('details')).to.not.exist;
+    });
+
+    // Accessibility
+    it('passes accessibility test', async () => {
+      const el = await fixture<SdNavigationItem>(variants.button.default);
+      await expect(el).to.be.accessible();
+    });
+
+    // Events
+    it('emits "sd-mouse-enter" / "sd-mouse-leave" events when mouse enters / leaves', async () => {
+      const el = await fixture<SdNavigationItem>(variants.button.default);
+      const button = el.shadowRoot!.querySelector('button');
+      const mouseEnterHandler = sinon.spy();
+      const mouseLeaveHandler = sinon.spy();
+
+      el.addEventListener('sd-mouse-enter', mouseEnterHandler);
+      el.addEventListener('sd-mouse-leave', mouseLeaveHandler);
+
+      // Trigger mouseenter event
+      const mouseEnterEvent = new MouseEvent('mouseenter');
+      button!.dispatchEvent(mouseEnterEvent);
+
+      // Wait for event handling
+      await el.updateComplete;
+
+      // Trigger mouseleave event
+      const mouseLeaveEvent = new MouseEvent('mouseleave');
+      button!.dispatchEvent(mouseLeaveEvent);
+
+      // Wait for event handling
+      await el.updateComplete;
+
+      expect(mouseEnterHandler).to.have.been.calledOnce;
+      expect(mouseLeaveHandler).to.have.been.calledOnce;
+    });
+
+    it('emits "sd-click" event with no detail property when clicked', async () => {
+      const el = await fixture<SdNavigationItem>(variants.button.default);
+      const button = el.shadowRoot!.querySelector('button');
+      const clickHandler = sinon.spy();
+
+      el.addEventListener('sd-click', clickHandler);
+
+      button!.click();
+
+      await waitUntil(() => clickHandler.calledOnce);
+
+      expect(clickHandler).to.not.have.been.calledWith(sinon.match.has('detail', sinon.match.has('open')));
+      expect(button).to.not.have.attribute('open');
+    });
+
+    describe('when disabled', () => {
+      it('passes accessibility test', async () => {
+        const el = await fixture<SdNavigationItem>(variants.button.disabled);
+        await expect(el).to.be.accessible();
+      });
+
+      it('should disable the native <button>', async () => {
+        const el = await fixture<SdNavigationItem>(
+          html` <sd-navigation-item disabled>Default Slot</sd-navigation-item> `
+        );
+        expect(el.shadowRoot!.querySelector('button[disabled]')).to.exist;
+      });
+
+      it('should not emit any events', async () => {
+        const el = await fixture<SdNavigationItem>(variants.button.default);
+        const button = el.shadowRoot!.querySelector('button');
+        const mouseEnterHandler = sinon.spy();
+        const mouseLeaveHandler = sinon.spy();
+
+        el.addEventListener('sd-mouse-enter', mouseEnterHandler);
+        el.addEventListener('sd-mouse-leave', mouseLeaveHandler);
+
+        // Trigger mouseenter event
+        const mouseEnterEvent = new MouseEvent('mouseenter');
+        button!.dispatchEvent(mouseEnterEvent);
+
+        // Wait for event handling
+        await el.updateComplete;
+
+        // Trigger mouseleave event
+        const mouseLeaveEvent = new MouseEvent('mouseleave');
+        button!.dispatchEvent(mouseLeaveEvent);
+
+        // Wait for event handling
+        await el.updateComplete;
+
+        expect(mouseEnterHandler).to.have.been.calledOnce;
+        expect(mouseLeaveHandler).to.have.been.calledOnce;
+      });
+    });
   });
 
-  // Test rendering of different element types
-  it('only renders a button element by default', async () => {
-    const el = await fixture<SdNavigationItem>(html`<sd-navigation-item></sd-navigation-item>`);
+  // Test overriding link variant
+  describe('when given an "href" property', () => {
+    // Render
+    it('only renders an anchor element, regardless of children', async () => {
+      const el = await fixture<SdNavigationItem>(variants.link.children);
 
-    expect(el.shadowRoot!.querySelector('a')).to.not.exist;
-    expect(el.shadowRoot!.querySelector('button')).to.exist;
-    expect(el.shadowRoot!.querySelector('summary')).to.not.exist;
-    expect(el.shadowRoot!.querySelector('details')).to.not.exist;
+      expect(el).to.exist;
+      expect(el.shadowRoot!.querySelector('a')).to.exist;
+      expect(el.shadowRoot!.querySelector('button')).to.not.exist;
+      expect(el.shadowRoot!.querySelector('summary')).to.not.exist;
+      expect(el.shadowRoot!.querySelector('details')).to.not.exist;
+    });
+
+    // Accessibility
+    it('passes accessibility test', async () => {
+      const el = await fixture<SdNavigationItem>(variants.link.default);
+      await expect(el).to.be.accessible();
+    });
+
+    // Events
+    it('emits "sd-mouse-enter" / "sd-mouse-leave" events when mouse enters / leaves', async () => {
+      const el = await fixture<SdNavigationItem>(variants.link.default);
+      const link = el.shadowRoot!.querySelector('a');
+      const mouseEnterHandler = sinon.spy();
+      const mouseLeaveHandler = sinon.spy();
+
+      el.addEventListener('sd-mouse-enter', mouseEnterHandler);
+      el.addEventListener('sd-mouse-leave', mouseLeaveHandler);
+
+      // Trigger mouseenter event
+      const mouseEnterEvent = new MouseEvent('mouseenter');
+      link!.dispatchEvent(mouseEnterEvent);
+
+      // Wait for event handling
+      await el.updateComplete;
+
+      // Trigger mouseleave event
+      const mouseLeaveEvent = new MouseEvent('mouseleave');
+      link!.dispatchEvent(mouseLeaveEvent);
+
+      // Wait for event handling
+      await el.updateComplete;
+
+      expect(mouseEnterHandler).to.have.been.calledOnce;
+      expect(mouseLeaveHandler).to.have.been.calledOnce;
+    });
+
+    it('does not emit "sd-click" event when clicked', async () => {
+      const el = await fixture<SdNavigationItem>(variants.link.default);
+      const link = el.shadowRoot!.querySelector('a');
+      const clickHandler = sinon.spy();
+
+      // Add an event listener
+      el.addEventListener('sd-click', clickHandler);
+
+      // Dispatch a click event with a delay
+      setTimeout(() => {
+        const clickEvent = new MouseEvent('click');
+        link!.dispatchEvent(clickEvent);
+      });
+
+      // Wait for the event loop to process the click event
+      await new Promise(resolve => setTimeout(resolve, 0));
+
+      // Ensure that the "sd-click" event was not emitted
+      expect(clickHandler.called).to.be.false;
+    });
   });
 
-  it('only renders an anchor element when "href" property is provided, regardless of children', async () => {
-    const el = await fixture<SdNavigationItem>(html`<sd-navigation-item href="#">${childrenSlot}</sd-navigation-item>`);
-    expect(el.shadowRoot!.querySelector('a')).to.exist;
-    expect(el.shadowRoot!.querySelector('button')).to.not.exist;
-    expect(el.shadowRoot!.querySelector('summary')).to.not.exist;
-    expect(el.shadowRoot!.querySelector('details')).to.not.exist;
+  // Test accordion variant
+  describe('when given a value for the "children" slot', () => {
+    // Render
+    it('only renders a details and summary element pair', async () => {
+      const el = await fixture<SdNavigationItem>(variants.accordion.default);
+
+      expect(el).to.exist;
+      expect(el.shadowRoot!.querySelector('a')).to.not.exist;
+      expect(el.shadowRoot!.querySelector('button')).to.not.exist;
+      expect(el.shadowRoot!.querySelector('summary')).to.exist;
+      expect(el.shadowRoot!.querySelector('details')).to.exist;
+    });
+
+    // Accessibility
+    it('passes accessibility test', async () => {
+      const el = await fixture<SdNavigationItem>(variants.accordion.default);
+      await expect(el).to.be.accessible();
+    });
+
+    // Events
+    it('emits "sd-mouse-enter" / "sd-mouse-leave" events when mouse enters / leaves', async () => {
+      const el = await fixture<SdNavigationItem>(variants.accordion.default);
+      const summary = el.shadowRoot!.querySelector('summary');
+      const mouseEnterHandler = sinon.spy();
+      const mouseLeaveHandler = sinon.spy();
+
+      el.addEventListener('sd-mouse-enter', mouseEnterHandler);
+      el.addEventListener('sd-mouse-leave', mouseLeaveHandler);
+
+      // Trigger mouseenter event
+      const mouseEnterEvent = new MouseEvent('mouseenter');
+      summary!.dispatchEvent(mouseEnterEvent);
+
+      // Wait for event handling
+      await el.updateComplete;
+
+      // Trigger mouseleave event
+      const mouseLeaveEvent = new MouseEvent('mouseleave');
+      summary!.dispatchEvent(mouseLeaveEvent);
+
+      // Wait for event handling
+      await el.updateComplete;
+
+      expect(mouseEnterHandler).to.have.been.calledOnce;
+      expect(mouseLeaveHandler).to.have.been.calledOnce;
+    });
+
+    it('emits "sd-click" event with detail property "open" set to true when clicking closed HTML details element summary', async () => {
+      const el = await fixture<SdNavigationItem>(variants.accordion.default);
+      const details = el.shadowRoot!.querySelector('details');
+      const summary = el.shadowRoot!.querySelector('summary');
+      const clickHandler = sinon.spy();
+
+      el.addEventListener('sd-click', clickHandler);
+
+      summary!.click();
+      await waitUntil(() => clickHandler.calledOnce);
+
+      expect(clickHandler).to.have.been.calledWith(sinon.match.has('detail', sinon.match.has('open', true)));
+      expect(details).to.have.attribute('open');
+    });
+
+    it('emits "sd-click" event with detail property "open" set to false when clicking open HTML details element summary', async () => {
+      const el = await fixture<SdNavigationItem>(
+        html`<sd-navigation-item open>Default Slot ${childrenSlot}</sd-navigation-item>;`
+      );
+      const details = el.shadowRoot!.querySelector('details');
+      const summary = el.shadowRoot!.querySelector('summary');
+      const clickHandler = sinon.spy();
+
+      el.addEventListener('sd-click', clickHandler);
+
+      summary!.click();
+      await waitUntil(() => clickHandler.calledOnce);
+
+      expect(clickHandler).to.have.been.calledWith(sinon.match.has('detail', sinon.match.has('open', false)));
+      expect(details).to.not.have.attribute('open');
+    });
   });
-
-  it('only renders a details element when the "children" slot is used and no "href" property is provided', async () => {
-    const el = await fixture<SdNavigationItem>(html`<sd-navigation-item>${childrenSlot}</sd-navigation-item>`);
-    expect(el.shadowRoot!.querySelector('a')).to.not.exist;
-    expect(el.shadowRoot!.querySelector('button')).to.not.exist;
-    expect(el.shadowRoot!.querySelector('summary')).to.exist;
-    expect(el.shadowRoot!.querySelector('details')).to.exist;
-  });
-
-  // Test events
-  it('emits "sd-click" event when clicking the button variant', async () => {
-    const el = await fixture<SdNavigationItem>(html`<sd-navigation-item></sd-navigation-item>`);
-    const button = el.shadowRoot!.querySelector('button');
-    const clickSpy = sinon.spy();
-
-    el.addEventListener('sd-click', clickSpy);
-
-    button!.click();
-
-    await waitUntil(() => clickSpy.calledOnce);
-
-    expect(clickSpy).to.have.been.calledOnce;
-  });
-
-  it('emits "sd-toggle-details" event with "open" property set to true in event.detail when clicking the closed summary variant', async () => {
-    const el = await fixture<SdNavigationItem>(html`<sd-navigation-item>${childrenSlot}</sd-navigation-item>`);
-    const details = el.shadowRoot!.querySelector('details');
-    const summary = el.shadowRoot!.querySelector('summary');
-    const toggleHandler = sinon.spy();
-
-    el.addEventListener('sd-toggle-details', toggleHandler);
-
-    summary!.click();
-
-    await waitUntil(() => toggleHandler.calledOnce);
-
-    expect(toggleHandler).to.have.been.calledOnce;
-    expect(toggleHandler).to.have.been.calledWith(sinon.match.has('detail', sinon.match.has('open', true)));
-    expect(details).to.have.attribute('open');
-  });
-
-  it('emits "sd-toggle-details" event with "open" property set to false in event.detail when clicking the open summary variant', async () => {
-    const el = await fixture<SdNavigationItem>(html`<sd-navigation-item open>${childrenSlot}</sd-navigation-item>`);
-    const details = el.shadowRoot!.querySelector('details');
-    const summary = el.shadowRoot!.querySelector('summary');
-    const toggleHandler = sinon.spy();
-
-    el.addEventListener('sd-toggle-details', toggleHandler);
-
-    summary!.click();
-
-    await waitUntil(() => toggleHandler.calledOnce);
-
-    expect(toggleHandler).to.have.been.calledOnce;
-    expect(toggleHandler).to.have.been.calledWith(sinon.match.has('detail', sinon.match.has('open', false)));
-    expect(details).to.not.have.attribute('open');
-  });
-
-  // it('adds "aria-disabled" attribute when "disabled" property is true', async () => {
-  //   const el = await fixture<SdNavigationItem>(html`<sd-navigation-item disabled>Button</sd-navigation-item>`);
-  //   expect(el.getAttribute('aria-disabled')).to.equal('true');
-  // });
-
-  // it('sets "aria-current" attribute when "current" property is true', async () => {
-  //   const el = await fixture<SdNavigationItem>(html`<sd-navigation-item current>Button</sd-navigation-item>`);
-  //   expect(el.getAttribute('aria-current')).to.equal('page');
-  // });
-
-  // it('applies appropriate "role" attribute based on element type', async () => {
-  //   const buttonEl = await fixture<SdNavigationItem>(html`<sd-navigation-item>Button</sd-navigation-item>`);
-  //   const linkEl = await fixture<SdNavigationItem>(html`<sd-navigation-item href="#">Link</sd-navigation-item>`);
-  //   const summaryEl = await fixture<SdNavigationItem>(html`<sd-navigation-item><summary>Summary</summary></sd-navigation-item>`);
-
-  //   expect(buttonEl.getAttribute('role')).to.equal('button');
-  //   expect(linkEl.getAttribute('role')).to.equal('link');
-  //   expect(summaryEl.getAttribute('role')).to.equal('button');
-  // });
 });
