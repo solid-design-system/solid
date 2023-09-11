@@ -9,7 +9,6 @@ updates:
       interval: "daily"
       time: "03:00"
       timezone: "Europe/Berlin"
-    target-branch: "ci/add-dependabot"
     labels:
       - "npm dependencies"
       - "root"
@@ -25,7 +24,6 @@ updates:
       interval: "daily"
       time: "03:00"
       timezone: "Europe/Berlin"
-    target-branch: "ci/add-dependabot"
     labels:
       - "npm dependencies"
       - "components"
@@ -42,7 +40,6 @@ updates:
       interval: "daily"
       time: "03:00"
       timezone: "Europe/Berlin"
-    target-branch: "ci/add-dependabot"
     labels:
       - "npm dependencies"
       - "placeholders"
