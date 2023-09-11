@@ -4,7 +4,7 @@ import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../..
 import { withActions } from '@storybook/addon-actions/decorator';
 import type { ConstantDefinition } from '../../../scripts/storybook/helper';
 const { overrideArgs } = storybookHelpers('sd-navigation-item');
-const { argTypes, args, parameters } = storybookDefaults('sd-navigation-item');
+const { argTypes, parameters } = storybookDefaults('sd-navigation-item');
 const { generateTemplate } = storybookTemplate('sd-navigation-item');
 
 // Reusable Constants
@@ -46,10 +46,7 @@ const childrenSlotConstant: ConstantDefinition = {
 export default {
   title: 'Components/sd-navigation-item',
   component: 'sd-navigation-item',
-  args: overrideArgs([
-    // { type: 'attribute', name: 'current', value: 'true' },
-    { type: 'slot', name: 'default', value: 'Navigation' }
-  ]),
+  args: overrideArgs([{ type: 'slot', name: 'default', value: 'Navigation' }]),
   argTypes,
   parameters: { ...parameters },
   decorators: [withActions] as any
@@ -129,7 +126,7 @@ export const Horizontal = {
 };
 
 /**
- * Default: This shows sd-navigation-item in its default state.
+ * The navigation element when `horizontal` is false.
  */
 
 export const Vertical = {
@@ -148,7 +145,7 @@ export const Vertical = {
 };
 
 /**
- * Default: This shows sd-navigation-item in its accordion variant when the "children" slot is used.
+ * The navigation element when `children` slot is used. (accordion variant).
  */
 
 export const Children = {
