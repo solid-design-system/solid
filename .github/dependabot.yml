@@ -47,3 +47,18 @@ updates:
       prefix: fix
     reviewers:
       - "solid-design-system/development"
+      
+  # Enable version updates for Tokens package
+  - package-ecosystem: "npm"
+    directory: "/packages/tokens/"
+    schedule:
+      interval: "daily"
+      time: "03:00"
+      timezone: "Europe/Berlin"
+    labels:
+      - "npm dependencies"
+      - "tokens"
+    commit-message:
+      prefix: fix
+    reviewers:
+      - "solid-design-system/development"
