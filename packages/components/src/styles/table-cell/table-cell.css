@@ -1,14 +1,9 @@
 /* 
 * Remove inherited styles from table before applying our styles.
-* Source: https://meyerweb.com/eric/tools/css/reset/
 */
 .sd-table {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
+  all: unset;
+  display: table;
   border-collapse: collapse;
   border-spacing: 0;
 }

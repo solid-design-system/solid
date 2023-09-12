@@ -1,199 +1,96 @@
 # Migration Guide: From `ui-table` to `sd-table-cell`
 
-The new `sd-table-cell` is designed to replace the `ui-table`. Instead of providing a component, the `sd-table-cell` component provides css styles.
+The new `sd-table-cell` is designed to replace the `ui-table`. Rather than offering a complex component structure, `sd-table-cell` primarily focuses on providing CSS styles for `<table>`, `<th>`, and `<td>` elements.
+
+As a result, tables no longer require the `ui-table` wrapper and instead can directly utilize the provided CSS classes.
 
 ## 💾 Slots
 
-### ✨ New Slots
-
-#### [1st_new_slot]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-#### [2nd_new_slot]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-### 🔀 Updated Slots
-
-#### [1st_updated_slot]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-#### [2nd_updated_slot]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
 ### ❌ Removed Slots
 
-The following slots have been removed from the new [SD_COMPONENT] component:
+The following slots have been removed from the new [sd-table-cell] component:
 
-1. [1st_removed_slot]
-2. [2nd_removed_slot]
+1. [default]
+
+<hr />
+
+## 🎨 CSS Classes
+
+### ✨ New CSS Classes
+
+#### [sd-table]
+
+The `sd-table` class is intended for use with the `<table>` element and effectively resets the table styles like padding and border.
+
+#### [sd-table-cell]
+
+The `sd-table-cell` class should be applied to both `<th>` and `<td>` elements. It introduces top and bottom borders to the cell and defines font size, text alignment and padding.
+
+#### [sd-table-cell--divider]
+
+This class adds a divider to the right side of the table cell.
+
+#### [sd-table-cell--transparent]
+
+This class adds a transparent background color to the table cell.
+
+#### [sd-table-cell--white]
+
+This class adds a white background color to the table cell.
+
+#### [sd-table-cell--primary-100]
+
+This class adds a background color of primary-100 to the table cell.
+
+#### [sd-table-cell--neutral-100]
+
+This class adds a background color of neutral-100 to the table cell.
 
 <hr />
 
 ## ⚙️ Attributes
 
-### ✨ New Attributes
-
-#### [1st_new_attribute]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-#### [2nd_new_attribute]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-### 🔀 Updated Attributes
-
-#### [1st_updated_attribute]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-#### [2nd_updated_attribute]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
 ### ❌ Removed Attributes
 
-The following attributes have been removed from the new [SD_COMPONENT] component:
+Since the new [sd-table-cell] is no longer a component basically all attributes have been removed:
 
-1. [1st_removed_attribute]
-2. [2nd_removed_attribute]
+1. [backgroundAlternating]
+2. [coloredHead]
+3. [columnLayout]
+4. [firstColumnAsHeader]
+5. [firstColumnFixed]
+6. [firstRowAsHeader]
+7. [light]
 
 <hr />
 
 ## ✍️ CSS Variables
 
-### ✨ New CSS Variables
-
-#### [1st_new_CSS_variable]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-#### [2nd_new_CSS_variable]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-### 🔀 Updated CSS variables
-
-#### [1st_updated_CSS_variable]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-#### [2nd_updated_CSS_variable]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
 ### ❌ Removed CSS variables
 
-The following CSS variables have been removed from the new [SD_COMPONENT] component:
+The following CSS variables have been removed from the new [sd-table-cell] component:
 
-1. [1st_removed_CSS_variable]
-2. [2nd_removed_CSS_variable]
-
-<hr />
-
-## 🥳 Events
-
-### ✨ New Events
-
-#### [1st_new_event]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-#### [2nd_new_event]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-### 🔄 Updated Events
-
-#### [1st_updated_event]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-#### [2nd_updated_event]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-### ❌ Removed Events:
-
-The following events have been removed from the new [SD_COMPONENT] component:
-
-1. [1st_removed_event]
-2. [2nd_removed_event]
+1. [--component-table-head-color]
+2. [--component-table-first-column-color]
 
 <hr />
 
 ## 🦻 Event Listeners
 
-### ✨ New Event Listeners
-
-#### [1st_new_event_listener]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-#### [2nd_new_event_listener]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-### 🔄 Updated Event Listeners
-
-#### [1st_updated_event_listener]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-#### [2nd_updated_event_listener]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
 ### ❌ Removed Event Listeners:
 
-The following event listeners have been removed from the new [SD_COMPONENT] component:
+The following event listeners have been removed from the new [sd-table-cell] component:
 
-1. [1st_removed_event_listeners]
-2. [2nd_removed_event_listeners]
+1. [onGridReady]
 
 <hr />
 
 ## 🧪 Methods
 
-### ✨ New Methods
-
-#### [1st_new_method]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-#### [2nd_new_method]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-### 🔄 Updated Methods
-
-#### [1st_updated_method]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-#### [2nd_updated_method]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
 ### ❌ Removed Methods:
 
-The following methods have been removed from the new [SD_COMPONENT] component:
+The following methods have been removed from the new [sd-table-cell] component:
 
-1. [1st_removed_method]
-2. [2nd_removed_method]
+1. [componentDidLoad]
 
 <hr />
-
-## 💪 Additional Changes
-
-### [1st_additional_change]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-### [2nd_additional_change]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
