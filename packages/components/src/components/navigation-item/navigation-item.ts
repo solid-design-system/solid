@@ -113,7 +113,7 @@ export default class SdNavigationItem extends SolidElement {
     return !!this.href;
   }
 
-  private isSummary(): boolean {
+  private isAccordion(): boolean {
     return !this.href && this.hasSlotController.test('children');
   }
 
@@ -158,7 +158,7 @@ export default class SdNavigationItem extends SolidElement {
             part="chevron"
             library="system"
             color="currentColor"
-            class=${cx('h-6 w-6', this.isSummary() ? (this.open ? 'rotate-180' : 'rotate-0') : 'rotate-[270deg]')}
+            class=${cx('h-6 w-6', this.isAccordion() ? (this.open ? 'rotate-180' : 'rotate-0') : 'rotate-[270deg]')}
           ></sd-icon>`
         : null;
 
@@ -183,7 +183,9 @@ export default class SdNavigationItem extends SolidElement {
       : null;
 
     const mainSlot =
-      slots['main'] && !this.horizontal ? html`<slot name="main" part="main" class=${cx('inline mr-4')}></slot>` : null;
+      slots['main'] && !this.horizontal
+        ? html`<slot name="main" part="main" class=${cx('inline-flex justify-center items-center mr-4')}></slot>`
+        : null;
 
     const descriptionSlot =
       slots['description'] && !this.horizontal
@@ -192,7 +194,7 @@ export default class SdNavigationItem extends SolidElement {
             part="description"
             class=${cx(
               'inline-block text-sm',
-              this.isSummary() ? 'grow' : 'w-full',
+              this.isAccordion() ? 'grow' : 'w-full',
               horizontalPaddingBottom,
               this.calculatePaddingX()
             )}
@@ -214,22 +216,22 @@ export default class SdNavigationItem extends SolidElement {
           this.current ? 'border-accent' : 'border-transparent',
           this.disabled ? 'text-neutral-500 border-neutral-500 pointer-events-none' : 'text-primary',
           { base: 'text-base', larger: 'text-lg', smaller: 'text-[14px]' }[this.size],
-          this.isSummary() ? 'flex flex-col' : 'inline-block w-full'
+          this.isAccordion() ? 'flex flex-col' : 'inline-block w-full'
         )}
-        aria-controls=${ifDefined(this.isSummary() ? 'navigation-item-details' : undefined)}
+        aria-controls=${ifDefined(this.isAccordion() ? 'navigation-item-details' : undefined)}
         aria-current=${ifDefined(this.current ? 'page' : undefined)}
         aria-disabled=${this.disabled}
         ?disabled=${ifDefined(this.isButton() ? this.disabled : undefined)}
         href=${ifDefined(this.href || undefined)}
         role=${this.isLink() ? 'link' : 'button'}
         tabindex=${this.disabled ? '-1' : '0'}
-        @click=${this.isSummary() ? this.handleClickSummary : this.isButton() ? this.handleClickButton : null}
+        @click=${this.isAccordion() ? this.handleClickSummary : this.isButton() ? this.handleClickButton : undefined}
         @mouseenter=${ifDefined(this.disabled ? undefined : this.handleMouseEnter)}
         @mouseleave=${ifDefined(this.disabled ? undefined : this.handleMouseLeave)}
       >
         <span class=${cx(
           'relative pt-3 inline-flex justify-between items-center',
-          this.isSummary() ? 'grow' : 'w-full',
+          this.isAccordion() ? 'grow' : 'w-full',
           slots['description'] ? 'pb-1' : horizontalPaddingBottom,
           this.calculatePaddingX()
         )}>
@@ -249,7 +251,7 @@ export default class SdNavigationItem extends SolidElement {
     /* eslint-enable lit/no-invalid-html */
     /* eslint-enable lit/binding-positions */
 
-    return this.isSummary()
+    return this.isAccordion()
       ? html`${divider}
           <details id="navigation-item-details" ?open=${this.open} class="relative flex">
             ${root}${childrenSlot}

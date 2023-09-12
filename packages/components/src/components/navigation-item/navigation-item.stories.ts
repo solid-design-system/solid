@@ -63,21 +63,113 @@ export const Default = {
 };
 
 /**
- * The navigation element when `disabled` is true.
+ * Demonstrate the 3 basic variants of the navigation item.
  */
 
-export const Disabled = {
+export const Variants = {
+  name: 'Variant × Size',
   parameters: {
-    controls: { exclude: ['disabled', 'current', 'horizontal', 'chevron', 'indented', 'relaxed', 'divider'] }
+    controls: {
+      exclude: ['href', 'size', 'horizontal', 'indented', 'relaxed', 'open', 'children']
+    }
+  },
+  render: (args: any) => {
+    return html`
+      ${generateTemplate({
+        axis: {
+          x: { type: 'attribute', name: 'horizontal' },
+          y: { type: 'attribute', name: 'size' }
+        },
+        args,
+        options: {
+          title: 'Button (<button>, href undefined, children slot undefined, *default variant)'
+        }
+      })}
+      ${generateTemplate({
+        axis: {
+          x: { type: 'attribute', name: 'horizontal' },
+          y: { type: 'attribute', name: 'size' }
+        },
+        args,
+        options: { title: 'Link (<a>, href defined, *overrides other variants)' },
+        constants: { type: 'attribute', name: 'href', value: 'https://www.union-investment.de/' }
+      })}
+      ${generateTemplate({
+        args,
+        options: {
+          title: 'Accordion (href undefined, children slot defined, *vertical only)'
+        },
+        constants: [
+          childrenSlotConstant,
+          { type: 'attribute', name: 'horizontal', value: false },
+          { type: 'attribute', name: 'open', value: true }
+        ]
+      })}
+    `;
+  }
+};
+
+/**
+ * The default navigation item shown with events (button variant).
+ */
+
+export const Button = {
+  parameters: {
+    controls: { exclude: 'children' }
   },
   render: (args: any) => {
     return generateTemplate({
-      axis: {
-        x: { type: 'attribute', name: 'size' },
-        y: { type: 'attribute', name: 'horizontal' }
-      },
-      constants: [{ type: 'attribute', name: 'disabled', value: true }],
+      constants: [iconSlotConstant(), defaultSlotConstant, mainSlotConstant, descriptionSlotConstant],
       args
+    });
+  }
+};
+
+/**
+ * The navigation item with href defined (link variant).
+ */
+
+export const Link = {
+  parameters: {
+    controls: { exclude: 'children' }
+  },
+  render: (args: any) => {
+    return generateTemplate({
+      constants: [
+        { type: 'attribute', name: 'href', value: '#' },
+        iconSlotConstant(),
+        defaultSlotConstant,
+        mainSlotConstant,
+        descriptionSlotConstant
+      ],
+      args
+    });
+  }
+};
+
+/**
+ * The navigation element when `children` slot is used (accordion variant).
+ */
+
+export const Accordion = {
+  parameters: {
+    controls: { exclude: 'chevron' }
+  },
+  render: (args: any) => {
+    return generateTemplate({
+      constants: [
+        iconSlotConstant(),
+        defaultSlotConstant,
+        iconSlotConstant(true),
+        mainSlotConstant,
+        descriptionSlotConstant,
+        childrenSlotConstant
+      ],
+      args,
+      options: {
+        title:
+          'Accordion ("sd-click" event includes "details: { open: boolean }" property, *chevron used for open state)'
+      }
     });
   }
 };
@@ -89,38 +181,26 @@ export const Disabled = {
 export const Horizontal = {
   parameters: {
     controls: {
-      exclude: [
-        'href',
-        'current',
-        'size',
-        'horizontal',
-        'chevron',
-        'indented',
-        'relaxed',
-        'divider',
-        'open',
-        'description',
-        'children',
-        'summary'
-      ]
+      exclude: ['horizontal', 'chevron', 'indented', 'relaxed', 'divider', 'open', 'description', 'children', 'summary']
     }
   },
   render: (args: any) => {
     return html`
-      ${['', 'https://www.union-investment.de/'].map(href =>
-        generateTemplate({
-          axis: {
-            x: { type: 'attribute', name: 'size' },
-            y: { type: 'attribute', name: 'current' }
-          },
-          constants: [
-            { type: 'attribute', name: 'horizontal', value: true },
-            { type: 'attribute', name: 'href', value: href }
-          ],
-          args,
-          options: { title: `${href ? 'Link ' : 'Button '} (href="${href}") ${href ? '' : ' ("sd-click" event) '}` }
-        })
-      )}
+      ${generateTemplate({
+        axis: {
+          y: { type: 'attribute', name: 'size' }
+        },
+        constants: [
+          { type: 'attribute', name: 'horizontal', value: true },
+          iconSlotConstant(),
+          defaultSlotConstant,
+          iconSlotConstant(true)
+        ],
+        args,
+        options: {
+          title: 'horizontal=true (reduced API, *vertical properties + description / children slots ignored)'
+        }
+      })}
     `;
   }
 };
@@ -133,34 +213,51 @@ export const Vertical = {
   parameters: { controls: { exclude: ['chevron'] } },
   render: (args: any) => {
     return generateTemplate({
-      constants: [
-        iconSlotConstant(),
-        defaultSlotConstant,
-        mainSlotConstant,
-        { type: 'attribute', name: 'chevron', value: true }
-      ],
-      args
-    });
-  }
-};
-
-/**
- * The navigation element when `children` slot is used. (accordion variant).
- */
-
-export const Children = {
-  render: (args: any) => {
-    return generateTemplate({
+      axis: {
+        y: { type: 'attribute', name: 'size' }
+      },
       constants: [
         iconSlotConstant(),
         defaultSlotConstant,
         iconSlotConstant(true),
         mainSlotConstant,
-        descriptionSlotConstant,
-        childrenSlotConstant
+        { type: 'attribute', name: 'chevron', value: true }
       ],
-      args
+      args,
+      options: {
+        title: 'horizontal=false (full API, item grows to width of parent)'
+      }
     });
+  }
+};
+
+/**
+ * The navigation element when `disabled` is true.
+ */
+
+export const Disabled = {
+  parameters: {
+    controls: { exclude: 'disabled' }
+  },
+  render: (args: any) => {
+    return html`
+      ${generateTemplate({
+        axis: {
+          y: { type: 'attribute', name: 'size' },
+          x: { type: 'attribute', name: 'horizontal' }
+        },
+        constants: [
+          { type: 'attribute', name: 'disabled', value: true },
+          iconSlotConstant(),
+          defaultSlotConstant,
+          iconSlotConstant(true),
+          mainSlotConstant,
+          descriptionSlotConstant,
+          childrenSlotConstant
+        ],
+        args
+      })}
+    `;
   }
 };
 
@@ -257,3 +354,21 @@ export const Parts = {
     });
   }
 };
+
+// TODO: Fix, Reviewer: I don't understand how to get this working
+/**
+ * sd-navigation-items are fully accessibile via keyboard.
+ */
+
+// export const Mouseless = {
+//   render: (args: any) => {
+//     return html`<div class="mouseless">${generateTemplate({ args })}</div>`;
+//   },
+
+//   play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
+//     const el = canvasElement.querySelector('.mouseless sd-navigation-item');
+//     await waitUntil(() => el?.shadowRoot?.querySelector('button'));
+//     // We have to catch the event as otherwise Storybook will break
+//     await userEvent.type(el!.shadowRoot!.querySelector('button')!, '{return}', { pointerEventsCheck: 0 });
+//   }
+// };

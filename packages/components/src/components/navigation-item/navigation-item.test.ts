@@ -7,15 +7,18 @@ const childrenSlot = html`<div slot="children">Children</div>`;
 const variants = {
   button: {
     default: html`<sd-navigation-item>${defaultSlot}</sd-navigation-item>`,
+    current: html`<sd-navigation-item current>${defaultSlot}</sd-navigation-item>`,
     disabled: html`<sd-navigation-item disabled>${defaultSlot}</sd-navigation-item>`
   },
   link: {
     default: html`<sd-navigation-item href="#">${defaultSlot}</sd-navigation-item>`,
+    current: html`<sd-navigation-item current href="#">${defaultSlot}</sd-navigation-item>`,
     disabled: html`<sd-navigation-item disabled href="#">${defaultSlot}</sd-navigation-item>`,
     children: html`<sd-navigation-item href="#">${defaultSlot}${childrenSlot}</sd-navigation-item>`
   },
   accordion: {
     default: html`<sd-navigation-item>${defaultSlot}${childrenSlot}</sd-navigation-item>`,
+    current: html`<sd-navigation-item current>${defaultSlot}${childrenSlot}</sd-navigation-item>`,
     disabled: html`<sd-navigation-item disabled>${defaultSlot}${childrenSlot}</sd-navigation-item>`
   }
 };
@@ -38,6 +41,12 @@ describe('<sd-navigation-item>', () => {
     it('passes accessibility test', async () => {
       const el = await fixture<SdNavigationItem>(variants.button.default);
       await expect(el).to.be.accessible();
+    });
+
+    it('adds aria-current: "page" to <a> when current is true', async () => {
+      const el = await fixture<SdNavigationItem>(variants.link.current);
+      const link = el.shadowRoot!.querySelector('a');
+      expect(link).attribute('aria-current', 'page');
     });
 
     // Events
@@ -71,6 +80,7 @@ describe('<sd-navigation-item>', () => {
     it('emits "sd-click" event with no detail property when clicked', async () => {
       const el = await fixture<SdNavigationItem>(variants.button.default);
       const button = el.shadowRoot!.querySelector('button');
+
       const clickHandler = sinon.spy();
 
       el.addEventListener('sd-click', clickHandler);
@@ -89,15 +99,19 @@ describe('<sd-navigation-item>', () => {
         await expect(el).to.be.accessible();
       });
 
+      it('adds aria-disabled', async () => {
+        const el = await fixture<SdNavigationItem>(variants.button.disabled);
+        const button = el.shadowRoot!.querySelector('button');
+        expect(button).attribute('aria-disabled');
+      });
+
       it('should disable the native <button>', async () => {
-        const el = await fixture<SdNavigationItem>(
-          html` <sd-navigation-item disabled>Default Slot</sd-navigation-item> `
-        );
+        const el = await fixture<SdNavigationItem>(variants.button.disabled);
         expect(el.shadowRoot!.querySelector('button[disabled]')).to.exist;
       });
 
       it('should not emit any events', async () => {
-        const el = await fixture<SdNavigationItem>(variants.button.default);
+        const el = await fixture<SdNavigationItem>(variants.button.disabled);
         const button = el.shadowRoot!.querySelector('button');
         const mouseEnterHandler = sinon.spy();
         const mouseLeaveHandler = sinon.spy();
@@ -119,8 +133,8 @@ describe('<sd-navigation-item>', () => {
         // Wait for event handling
         await el.updateComplete;
 
-        expect(mouseEnterHandler).to.have.been.calledOnce;
-        expect(mouseLeaveHandler).to.have.been.calledOnce;
+        expect(mouseEnterHandler).not.to.have.been.calledOnce;
+        expect(mouseLeaveHandler).not.to.have.been.calledOnce;
       });
     });
   });
@@ -142,6 +156,12 @@ describe('<sd-navigation-item>', () => {
     it('passes accessibility test', async () => {
       const el = await fixture<SdNavigationItem>(variants.link.default);
       await expect(el).to.be.accessible();
+    });
+
+    it('adds aria-current: "page" to <a> when current is true', async () => {
+      const el = await fixture<SdNavigationItem>(variants.link.current);
+      const link = el.shadowRoot!.querySelector('a');
+      expect(link).attribute('aria-current', 'page');
     });
 
     // Events
@@ -192,6 +212,52 @@ describe('<sd-navigation-item>', () => {
       // Ensure that the "sd-click" event was not emitted
       expect(clickHandler.called).to.be.false;
     });
+
+    describe('when disabled', () => {
+      it('passes accessibility test', async () => {
+        const el = await fixture<SdNavigationItem>(variants.link.disabled);
+        await expect(el).to.be.accessible();
+      });
+
+      it('adds aria-disabled', async () => {
+        const el = await fixture<SdNavigationItem>(variants.link.disabled);
+        const link = el.shadowRoot!.querySelector('a');
+        expect(link).attribute('aria-disabled');
+      });
+
+      it('should not disable the native <a>', async () => {
+        const el = await fixture<SdNavigationItem>(variants.link.disabled);
+        const link = el.shadowRoot!.querySelector('a');
+        expect(link).not.to.have.attribute('disabled');
+      });
+
+      it('should not emit any events', async () => {
+        const el = await fixture<SdNavigationItem>(variants.link.disabled);
+        const link = el.shadowRoot!.querySelector('a');
+        const mouseEnterHandler = sinon.spy();
+        const mouseLeaveHandler = sinon.spy();
+
+        el.addEventListener('sd-mouse-enter', mouseEnterHandler);
+        el.addEventListener('sd-mouse-leave', mouseLeaveHandler);
+
+        // Trigger mouseenter event
+        const mouseEnterEvent = new MouseEvent('mouseenter');
+        link!.dispatchEvent(mouseEnterEvent);
+
+        // Wait for event handling
+        await el.updateComplete;
+
+        // Trigger mouseleave event
+        const mouseLeaveEvent = new MouseEvent('mouseleave');
+        link!.dispatchEvent(mouseLeaveEvent);
+
+        // Wait for event handling
+        await el.updateComplete;
+
+        expect(mouseEnterHandler).not.to.have.been.calledOnce;
+        expect(mouseLeaveHandler).not.to.have.been.calledOnce;
+      });
+    });
   });
 
   // Test accordion variant
@@ -211,6 +277,18 @@ describe('<sd-navigation-item>', () => {
     it('passes accessibility test', async () => {
       const el = await fixture<SdNavigationItem>(variants.accordion.default);
       await expect(el).to.be.accessible();
+    });
+
+    it('adds aria-current: "page" to <summary> when current is true', async () => {
+      const el = await fixture<SdNavigationItem>(variants.accordion.current);
+      const summary = el.shadowRoot!.querySelector('summary');
+      expect(summary).attribute('aria-current', 'page');
+    });
+
+    it('adds aria-controls: "navigation-item-details" to <summary>', async () => {
+      const el = await fixture<SdNavigationItem>(variants.accordion.default);
+      const summary = el.shadowRoot!.querySelector('summary');
+      expect(summary).attribute('aria-controls', 'navigation-item-details');
     });
 
     // Events
@@ -271,6 +349,89 @@ describe('<sd-navigation-item>', () => {
 
       expect(clickHandler).to.have.been.calledWith(sinon.match.has('detail', sinon.match.has('open', false)));
       expect(details).to.not.have.attribute('open');
+    });
+
+    // TODO: Fix following two tests, two attempts at the same thing
+    // TODO: Add complete keydown testing to all variants
+    // REVIEWER: I don't understand how to fix keydown tests for this component
+
+    // it('should toggle accordion when Enter key is pressed on the summary', async () => {
+    //   const el = await fixture<SdNavigationItem>(variants.accordion.default);
+    //   const summary = el.shadowRoot!.querySelector('summary')!;
+    //   const keydownHandler = sinon.spy();
+
+    //   el.addEventListener('sd-click', keydownHandler);
+
+    //   // Simulate Enter key press
+    //   const enterEvent = new KeyboardEvent('keydown', { key: 'Enter' });
+    //   summary.dispatchEvent(enterEvent);
+
+    //   await waitUntil(() => keydownHandler.calledOnce);
+
+    //   expect(keydownHandler.calledOnce).to.be.true;
+    // });
+
+    // it('emits "sd-click" event with detail property "open" set to true when pressing Enter key while focused on closed HTML details element summary', async () => {
+    //   const el = await fixture<SdNavigationItem>(variants.accordion.default);
+    //   const summary = el.shadowRoot!.querySelector('summary');
+    //   const keydownHandler = sinon.spy();
+
+    //   el.addEventListener('sd-click', keydownHandler);
+
+    //   // Simulate Enter key press
+    //   const enterEvent = new KeyboardEvent('keydown', { key: 'Enter' });
+    //   summary!.dispatchEvent(enterEvent);
+
+    //   // Wait for event handling
+    //   await el.updateComplete;
+
+    //   expect(keydownHandler).to.have.been.calledOnce;
+    // });
+
+    describe('when disabled', () => {
+      it('passes accessibility test', async () => {
+        const el = await fixture<SdNavigationItem>(variants.accordion.disabled);
+        await expect(el).to.be.accessible();
+      });
+
+      it('adds aria-disabled', async () => {
+        const el = await fixture<SdNavigationItem>(variants.accordion.disabled);
+        const summary = el.shadowRoot!.querySelector('summary');
+        expect(summary).attribute('aria-disabled');
+      });
+
+      it('should disable the native <summary> element', async () => {
+        const el = await fixture<SdNavigationItem>(variants.accordion.disabled);
+        const summary = el.shadowRoot!.querySelector('summary');
+        expect(summary).attribute('aria-disabled');
+      });
+
+      it('should not emit any events', async () => {
+        const el = await fixture<SdNavigationItem>(variants.accordion.disabled);
+        const summary = el.shadowRoot!.querySelector('summary');
+        const mouseEnterHandler = sinon.spy();
+        const mouseLeaveHandler = sinon.spy();
+
+        el.addEventListener('sd-mouse-enter', mouseEnterHandler);
+        el.addEventListener('sd-mouse-leave', mouseLeaveHandler);
+
+        // Trigger mouseenter event
+        const mouseEnterEvent = new MouseEvent('mouseenter');
+        summary!.dispatchEvent(mouseEnterEvent);
+
+        // Wait for event handling
+        await el.updateComplete;
+
+        // Trigger mouseleave event
+        const mouseLeaveEvent = new MouseEvent('mouseleave');
+        summary!.dispatchEvent(mouseLeaveEvent);
+
+        // Wait for event handling
+        await el.updateComplete;
+
+        expect(mouseEnterHandler).not.to.have.been.calledOnce;
+        expect(mouseLeaveHandler).not.to.have.been.calledOnce;
+      });
     });
   });
 });
