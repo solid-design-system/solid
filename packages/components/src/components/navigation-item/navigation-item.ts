@@ -1,6 +1,6 @@
 import '../spinner/spinner';
 import { css } from 'lit';
-import { customElement, property, query, queryAssignedElements } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 import { HasSlotController } from '../../internal/slot';
 import { html, literal } from 'lit/static-html.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
@@ -46,9 +46,6 @@ export default class SdNavigationItem extends SolidElement {
     'description',
     'children'
   );
-
-  @query('a, button, summary') button: HTMLButtonElement | HTMLLinkElement;
-  @queryAssignedElements({ selector: 'sd-icon' }) _iconsInDefaultSlot!: HTMLElement[];
 
   /** The navigation item's href target. If provided, the navigation item will use an anchor tag otherwise it will use a button tag. The 'children' slot and accordion behavior will be ignored if an 'href' is provided. */
   @property({ reflect: true }) href = '';
@@ -133,7 +130,6 @@ export default class SdNavigationItem extends SolidElement {
       label: this.hasSlotController.test('[default]'),
       'icon-left': this.hasSlotController.test('icon-left'),
       'icon-right': this.hasSlotController.test('icon-right'),
-      'icon-only': this._iconsInDefaultSlot.length > 0,
       main: this.hasSlotController.test('main'),
       description: this.hasSlotController.test('description'),
       children: this.hasSlotController.test('children')
