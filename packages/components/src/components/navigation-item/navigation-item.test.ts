@@ -50,22 +50,6 @@ describe('<sd-navigation-item>', () => {
     });
 
     // Events
-    it('emits "sd-click" event with no detail property when clicked', async () => {
-      const el = await fixture<SdNavigationItem>(variants.button.default);
-      const button = el.shadowRoot!.querySelector('button');
-
-      const clickHandler = sinon.spy();
-
-      el.addEventListener('sd-click', clickHandler);
-
-      button!.click();
-
-      await waitUntil(() => clickHandler.calledOnce);
-
-      expect(clickHandler).to.not.have.been.calledWith(sinon.match.has('detail', sinon.match.has('open')));
-      expect(button).to.not.have.attribute('open');
-    });
-
     describe('when disabled', () => {
       it('passes accessibility test', async () => {
         const el = await fixture<SdNavigationItem>(variants.button.disabled);
@@ -211,22 +195,22 @@ describe('<sd-navigation-item>', () => {
     });
 
     // Events
-    it('emits "sd-click" event with detail property "open" set to true when clicking closed HTML details element summary', async () => {
+    it('emits "sd-show" event when clicking closed HTML details element summary', async () => {
       const el = await fixture<SdNavigationItem>(variants.accordion.default);
       const details = el.shadowRoot!.querySelector('details');
       const summary = el.shadowRoot!.querySelector('summary');
       const clickHandler = sinon.spy();
 
-      el.addEventListener('sd-click', clickHandler);
+      el.addEventListener('sd-show', clickHandler);
 
       summary!.click();
       await waitUntil(() => clickHandler.calledOnce);
 
-      expect(clickHandler).to.have.been.calledWith(sinon.match.has('detail', sinon.match.has('open', true)));
+      expect(clickHandler).to.have.been.calledOnce;
       expect(details).to.have.attribute('open');
     });
 
-    it('emits "sd-click" event with detail property "open" set to false when clicking open HTML details element summary', async () => {
+    it('emits "sd-hide" when clicking open HTML details element summary', async () => {
       const el = await fixture<SdNavigationItem>(
         html`<sd-navigation-item open>Default Slot ${childrenSlot}</sd-navigation-item>;`
       );
@@ -234,12 +218,12 @@ describe('<sd-navigation-item>', () => {
       const summary = el.shadowRoot!.querySelector('summary');
       const clickHandler = sinon.spy();
 
-      el.addEventListener('sd-click', clickHandler);
+      el.addEventListener('sd-hide', clickHandler);
 
       summary!.click();
       await waitUntil(() => clickHandler.calledOnce);
 
-      expect(clickHandler).to.have.been.calledWith(sinon.match.has('detail', sinon.match.has('open', false)));
+      expect(clickHandler).to.have.been.calledOnce;
       expect(details).to.not.have.attribute('open');
     });
 

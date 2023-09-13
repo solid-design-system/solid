@@ -83,7 +83,6 @@ export default class SdNavigationItem extends SolidElement {
 
     if (!this.disabled) {
       this.open = !this.open;
-      this.emit('sd-click', { detail: { open: this.open } });
     }
   }
 
@@ -91,8 +90,6 @@ export default class SdNavigationItem extends SolidElement {
     if (this.disabled) {
       event.preventDefault();
       event.stopPropagation();
-    } else {
-      this.emit('sd-click');
     }
   }
 
@@ -108,12 +105,18 @@ export default class SdNavigationItem extends SolidElement {
     return !this.href && this.hasSlotController.test('children');
   }
 
-  private calculatePaddingX(): string {
-    if (this.horizontal) return '';
-    if (this.relaxed && this.indented) return 'pl-8 pr-4';
-    if (this.relaxed) return 'px-4';
-    if (this.indented) return 'pl-4';
-    return '';
+  private calculatePaddingX(absoluteElement?: boolean): string {
+    if (absoluteElement) {
+      if (this.relaxed && this.indented) return 'pl-16 pr-12';
+      if (this.relaxed) return 'px-12';
+      if (this.indented) return 'pl-12 pr-8';
+      return 'px-8';
+    } else {
+      if (this.relaxed && this.indented) return 'pl-8 pr-4';
+      if (this.relaxed) return 'px-4';
+      if (this.indented) return 'pl-4';
+      return '';
+    }
   }
 
   render() {
@@ -157,11 +160,7 @@ export default class SdNavigationItem extends SolidElement {
       this.divider && !this.horizontal
         ? html`<sd-divider
             part="divider"
-            class=${cx(
-              'w-[calc(100%-64px)] absolute top-[-1px] left-0',
-              this.horizontal ? 'mx-4' : 'mx-8',
-              this.calculatePaddingX()
-            )}
+            class=${cx('w-full absolute top-[-1px] left-0', this.calculatePaddingX(true))}
           ></sd-divider>`
         : null;
 
