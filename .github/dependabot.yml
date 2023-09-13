@@ -13,9 +13,12 @@ updates:
       - "npm dependencies"
       - "root"
     commit-message:
-      prefix: fix
+      prefix: chore
     reviewers:
       - "solid-design-system/development"
+    # Limit the number of open pull requests created for root directory.
+    # Leave limit at 0 to disable Dependabot PRs entirely.
+    # open-pull-requests-limit: 0
 
   # Enable version updates for Components package
   - package-ecosystem: "npm"
@@ -28,9 +31,12 @@ updates:
       - "npm dependencies"
       - "components"
     commit-message:
-      prefix: fix
+      prefix: chore
     reviewers:
       - "solid-design-system/development"
+    # Limit the number of open pull requests created for components.
+    # Leave limit at 0 to disable Dependabot PRs entirely.
+    # open-pull-requests-limit: 0
 
 
   # Enable version updates for Placeholders package
@@ -44,9 +50,12 @@ updates:
       - "npm dependencies"
       - "placeholders"
     commit-message:
-      prefix: fix
+      prefix: chore
     reviewers:
       - "solid-design-system/development"
+    # Limit the number of open pull requests for placeholders.
+    # Leave limit at 0 to disable Dependabot PRs entirely.
+    # open-pull-requests-limit: 0
       
   # Enable version updates for Tokens package
   - package-ecosystem: "npm"
@@ -59,6 +68,9 @@ updates:
       - "npm dependencies"
       - "tokens"
     commit-message:
-      prefix: fix
+      prefix: chore
     reviewers:
       - "solid-design-system/development"
+    # Limit the number of open pull requests for tokens
+    # Leave limit at 0 to disable Dependabot PRs entirely.
+    # open-pull-requests-limit: 0
