@@ -75,19 +75,19 @@ export const Examples = {
       if (icon && headerCell) {
         switch (sortData[column]) {
           case 'none':
-            sortData[column] = 'ascending';
-            icon.setAttribute('name', 'system/sort-up-filled');
-            headerCell.setAttribute('aria-sort', 'ascending');
-            return;
-          case 'ascending':
             sortData[column] = 'descending';
             icon.setAttribute('name', 'system/sort-down-filled');
             headerCell.setAttribute('aria-sort', 'descending');
             return;
-          case 'descending':
+          case 'ascending':
             sortData[column] = 'none';
-            icon.setAttribute('name', 'system/sort-up');
+            icon.setAttribute('name', 'system/sort-down');
             headerCell.removeAttribute('aria-sort');
+            return;
+          case 'descending':
+            sortData[column] = 'ascending';
+            icon.setAttribute('name', 'system/sort-up-filled');
+            headerCell.setAttribute('aria-sort', 'ascending');
         }
       }
     };
@@ -201,7 +201,7 @@ export const Examples = {
                       ${cellData}<sd-icon
                         id="sortIcon-${columnIndex}"
                         library="global-resources"
-                        name="system/sort-up"
+                        name="system/sort-down"
                       ></sd-icon>
                     </button>
                   </th>`;
