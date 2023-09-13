@@ -386,9 +386,9 @@ export default class SdCarousel extends SolidElement {
               id="carousel__navigation-button--previous"
               ?disabled=${!prevEnabled ? true : false}
               class=${cx(
-                '!mr-6 !rounded-sm',
+                '!mr-6 !rounded-sm sd-interactive',
                 !prevEnabled && 'sd-interactive--disabled',
-                this.inverted ? 'sd-interactive--inverted' : 'sd-interactive sd-interactive--reset'
+                this.inverted ? 'sd-interactive--inverted' : 'sd-interactive--reset'
               )}
               aria-label="${this.localize.term('previousSlide')}"
               aria-controls="scroll-container"
@@ -470,9 +470,9 @@ export default class SdCarousel extends SolidElement {
               id="carousel__navigation-button--next"
               ?disabled=${!nextEnabled ? true : false}
               class=${cx(
-                '!ml-6 !rounded-sm',
+                '!ml-6 !rounded-sm sd-interactive ',
                 !nextEnabled && 'sd-interactive--disabled',
-                this.inverted ? 'sd-interactive--inverted' : 'sd-interactive sd-interactive--reset'
+                this.inverted ? 'sd-interactive--inverted' : 'sd-interactive--reset'
               )}
               aria-label="${this.localize.term('nextSlide')}"
               aria-controls="scroll-container"
@@ -491,8 +491,8 @@ export default class SdCarousel extends SolidElement {
           <button
             class=${cx(
               'ml-6 !rounded-sm',
-              '!absolute !right-0',
-              this.inverted ? 'sd-interactive--reset sd-interactive--inverted' : 'sd-interactive sd-interactive--reset',
+              '!absolute !right-0 sd-interactive',
+              this.inverted ? 'sd-interactive--inverted' : 'sd-interactive--reset',
               !this.autoplay && '!hidden'
             )}
             part="autoplay-controls"
