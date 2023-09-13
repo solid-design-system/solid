@@ -68,7 +68,7 @@ export const Examples = {
       })
     );
 
-    // Function to exchange the sort icons in the sortable table after a click on the table header
+    // Function to exchange the sort icons and set the aria-sort attribute in the sortable table after a click on the table header
     const sortTable = (column: number) => {
       const icon = document.getElementById(`sortIcon-${column}`);
       const headerCell = document.getElementById(`sortableHeader-${column}`);
