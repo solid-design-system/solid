@@ -59,7 +59,7 @@ export default class SdNavigationItem extends SolidElement {
   /** The navigation item's font size. */
   @property({ reflect: true }) size: 'base' | 'larger' | 'smaller' = 'base';
 
-  /** The navigation item's orientation. If true, properties below this point are not used. */
+  /** The navigation item's orientation. If false, properties below this point are not used. */
   @property({ type: Boolean, reflect: true }) vertical = false;
 
   /** *Vertical Only: Appends a chevron to the right side of a navigation item. */
@@ -143,31 +143,9 @@ export default class SdNavigationItem extends SolidElement {
     const tag = this.isLink() ? literal`a` : slots['children'] ? literal`summary` : literal`button`;
     const horizontalPaddingBottom = this.vertical ? 'pb-3' : 'pb-2';
 
-    const divider =
-      this.divider && this.vertical
-        ? html`<sd-divider
-            part="divider"
-            class=${cx('w-full transition-all absolute -top-[1px] left-0', this.calculatePaddingX(true))}
-          ></sd-divider>`
-        : null;
-
     const mainSlot =
       slots['main'] && this.vertical
         ? html`<slot name="main" part="main" class=${cx('inline-flex justify-center items-center mr-4')}></slot>`
-        : null;
-
-    const descriptionSlot =
-      slots['description'] && this.vertical
-        ? html`<slot
-            name="description"
-            part="description"
-            class=${cx(
-              'inline-block text-sm',
-              this.isAccordion() ? 'grow' : 'w-full',
-              horizontalPaddingBottom,
-              this.calculatePaddingX()
-            )}
-          ></slot>`
         : null;
 
     const childrenSlot = slots['children'] && this.vertical ? html`<slot name="children"></slot>` : null;
@@ -179,11 +157,11 @@ export default class SdNavigationItem extends SolidElement {
         part="base"
         class=${cx(
           'hover:bg-neutral-200 transition-all min-h-[48px] cursor-pointer relative',
-          this.vertical ? 'border-l-4 pl-[28px] pr-8' : 'border-b-4 px-4',
-          this.current ? 'border-accent' : 'border-transparent',
-          this.disabled ? 'text-neutral-500 border-neutral-500 pointer-events-none' : 'text-primary',
           { base: 'text-base', larger: 'text-lg', smaller: 'text-[14px]' }[this.size],
-          this.isAccordion() ? 'flex flex-col' : 'inline-block w-full'
+          this.disabled ? 'text-neutral-500 border-neutral-500 pointer-events-none' : 'text-primary',
+          this.isAccordion() ? 'flex flex-col' : 'inline-block w-full',
+          this.divider && this.vertical && 'mt-[1px]',
+          this.vertical ? 'px-8' : 'px-4'
         )}
         aria-controls=${ifDefined(this.isAccordion() ? 'navigation-item-details' : undefined)}
         aria-current=${ifDefined(this.current ? 'page' : undefined)}
@@ -194,7 +172,19 @@ export default class SdNavigationItem extends SolidElement {
         tabindex=${this.disabled ? '-1' : '0'}
         @click=${this.isAccordion() ? this.handleClickSummary : this.isButton() ? this.handleClickButton : undefined}
       >
-        ${divider}
+        ${
+          this.divider && this.vertical
+            ? html`<sd-divider
+                part="divider"
+                class=${cx('w-full transition-all absolute -top-[1px] left-0', this.calculatePaddingX(true))}
+              ></sd-divider>`
+            : ''
+        }
+        <div class=${cx(
+          'absolute h-full w-full left-0 top-0 pointer-events-none',
+          this.vertical ? 'border-l-4' : 'border-b-4',
+          this.current ? 'border-accent' : 'border-transparent'
+        )}></div>
         <span class=${cx(
           'relative pt-3 inline-flex justify-between items-center',
           this.isAccordion() ? 'grow' : 'w-full',
@@ -222,17 +212,29 @@ export default class SdNavigationItem extends SolidElement {
             }
           </span>
         </span>
-        ${descriptionSlot}
+        ${
+          slots['description'] && this.vertical
+            ? html`<slot
+                name="description"
+                part="description"
+                class=${cx(
+                  'inline-block text-sm',
+                  this.isAccordion() ? 'grow' : 'w-full',
+                  horizontalPaddingBottom,
+                  this.calculatePaddingX()
+                )}
+              ></slot>`
+            : ''
+        }
       </${tag}>
     `;
     /* eslint-enable lit/no-invalid-html */
     /* eslint-enable lit/binding-positions */
 
     return this.isAccordion()
-      ? html`${divider}
-          <details id="navigation-item-details" ?open=${this.open} class="relative flex">
-            ${root}${childrenSlot}
-          </details>`
+      ? html`<details id="navigation-item-details" ?open=${this.open} class="relative flex">
+          ${root}${childrenSlot}
+        </details>`
       : html`${root}`;
   }
 
@@ -247,6 +249,11 @@ export default class SdNavigationItem extends SolidElement {
       :host {
         box-sizing: border-box;
         position: relative;
+        display: inline-block;
+      }
+
+      :host([vertical]) {
+        display: block;
       }
 
       :host > * {
