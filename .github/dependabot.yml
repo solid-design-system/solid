@@ -12,8 +12,6 @@ updates:
     labels:
       - "npm dependencies"
       - "root"
-    commit-message:
-      prefix: chore
     reviewers:
       - "solid-design-system/development"
     # Limit the number of open pull requests created for root directory.
@@ -30,8 +28,6 @@ updates:
     labels:
       - "npm dependencies"
       - "components"
-    commit-message:
-      prefix: chore
     reviewers:
       - "solid-design-system/development"
     # Limit the number of open pull requests created for components.
@@ -49,8 +45,6 @@ updates:
     labels:
       - "npm dependencies"
       - "placeholders"
-    commit-message:
-      prefix: chore
     reviewers:
       - "solid-design-system/development"
     # Limit the number of open pull requests for placeholders.
@@ -67,8 +61,6 @@ updates:
     labels:
       - "npm dependencies"
       - "tokens"
-    commit-message:
-      prefix: chore
     reviewers:
       - "solid-design-system/development"
     # Limit the number of open pull requests for tokens
