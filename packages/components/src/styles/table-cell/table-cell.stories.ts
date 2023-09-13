@@ -44,7 +44,7 @@ export const Default = {
  * The data generation and table sorting logic should not be used in production environments.
  */
 
-export const Examples = {
+export const Samples = {
   parameters: {
     controls: {
       exclude: [
