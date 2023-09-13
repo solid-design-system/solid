@@ -15,9 +15,8 @@ import SolidElement from '../../internal/solid-element';
  *
  * @dependency sd-divider
  *
- * @event sd-mouse-enter - Emitted when the cursor enters navigation item.
- * @event sd-mouse-leave - Emitted when the cursor leaves navigation item.
- * @event sd-click - Emitted when the navigation item is clicked. Adds detail object with boolean "open" property if accordion.
+ * @event sd-show - Emitted when the navigation item has has children, no href, and is clicked while HTML details are hidden.
+ * @event sd-hide - Emitted when the navigation item has has children, no href, and is clicked while HTML details are shown.
  *
  * @slot - The navigation item's label.
  * @slot icon-left - A prefix icon or similar element.
@@ -77,14 +76,6 @@ export default class SdNavigationItem extends SolidElement {
 
   /** *Vertical Only if 'children' slot and no 'href': Reflects HTML details element state and allows control from parent. */
   @property({ type: Boolean, reflect: true }) open = false;
-
-  private handleMouseEnter() {
-    this.emit('sd-mouse-enter');
-  }
-
-  private handleMouseLeave() {
-    this.emit('sd-mouse-leave');
-  }
 
   private handleClickSummary(event: MouseEvent) {
     event.preventDefault();
@@ -226,8 +217,6 @@ export default class SdNavigationItem extends SolidElement {
         role=${this.isLink() ? 'link' : 'button'}
         tabindex=${this.disabled ? '-1' : '0'}
         @click=${this.isAccordion() ? this.handleClickSummary : this.isButton() ? this.handleClickButton : undefined}
-        @mouseenter=${ifDefined(this.disabled ? undefined : this.handleMouseEnter)}
-        @mouseleave=${ifDefined(this.disabled ? undefined : this.handleMouseLeave)}
       >
         <span class=${cx(
           'relative pt-3 inline-flex justify-between items-center',

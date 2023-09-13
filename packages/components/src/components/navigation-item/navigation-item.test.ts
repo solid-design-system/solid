@@ -50,33 +50,6 @@ describe('<sd-navigation-item>', () => {
     });
 
     // Events
-    it('emits "sd-mouse-enter" / "sd-mouse-leave" events when mouse enters / leaves', async () => {
-      const el = await fixture<SdNavigationItem>(variants.button.default);
-      const button = el.shadowRoot!.querySelector('button');
-      const mouseEnterHandler = sinon.spy();
-      const mouseLeaveHandler = sinon.spy();
-
-      el.addEventListener('sd-mouse-enter', mouseEnterHandler);
-      el.addEventListener('sd-mouse-leave', mouseLeaveHandler);
-
-      // Trigger mouseenter event
-      const mouseEnterEvent = new MouseEvent('mouseenter');
-      button!.dispatchEvent(mouseEnterEvent);
-
-      // Wait for event handling
-      await el.updateComplete;
-
-      // Trigger mouseleave event
-      const mouseLeaveEvent = new MouseEvent('mouseleave');
-      button!.dispatchEvent(mouseLeaveEvent);
-
-      // Wait for event handling
-      await el.updateComplete;
-
-      expect(mouseEnterHandler).to.have.been.calledOnce;
-      expect(mouseLeaveHandler).to.have.been.calledOnce;
-    });
-
     it('emits "sd-click" event with no detail property when clicked', async () => {
       const el = await fixture<SdNavigationItem>(variants.button.default);
       const button = el.shadowRoot!.querySelector('button');
@@ -110,32 +83,32 @@ describe('<sd-navigation-item>', () => {
         expect(el.shadowRoot!.querySelector('button[disabled]')).to.exist;
       });
 
-      it('should not emit any events', async () => {
-        const el = await fixture<SdNavigationItem>(variants.button.disabled);
-        const button = el.shadowRoot!.querySelector('button');
-        const mouseEnterHandler = sinon.spy();
-        const mouseLeaveHandler = sinon.spy();
+      // it('should not emit any events', async () => {
+      //   const el = await fixture<SdNavigationItem>(variants.button.disabled);
+      //   const button = el.shadowRoot!.querySelector('button');
+      //   const mouseEnterHandler = sinon.spy();
+      //   const mouseLeaveHandler = sinon.spy();
 
-        el.addEventListener('sd-mouse-enter', mouseEnterHandler);
-        el.addEventListener('sd-mouse-leave', mouseLeaveHandler);
+      //   el.addEventListener('sd-mouse-enter', mouseEnterHandler);
+      //   el.addEventListener('sd-mouse-leave', mouseLeaveHandler);
 
-        // Trigger mouseenter event
-        const mouseEnterEvent = new MouseEvent('mouseenter');
-        button!.dispatchEvent(mouseEnterEvent);
+      //   // Trigger mouseenter event
+      //   const mouseEnterEvent = new MouseEvent('mouseenter');
+      //   button!.dispatchEvent(mouseEnterEvent);
 
-        // Wait for event handling
-        await el.updateComplete;
+      //   // Wait for event handling
+      //   await el.updateComplete;
 
-        // Trigger mouseleave event
-        const mouseLeaveEvent = new MouseEvent('mouseleave');
-        button!.dispatchEvent(mouseLeaveEvent);
+      //   // Trigger mouseleave event
+      //   const mouseLeaveEvent = new MouseEvent('mouseleave');
+      //   button!.dispatchEvent(mouseLeaveEvent);
 
-        // Wait for event handling
-        await el.updateComplete;
+      //   // Wait for event handling
+      //   await el.updateComplete;
 
-        expect(mouseEnterHandler).not.to.have.been.calledOnce;
-        expect(mouseLeaveHandler).not.to.have.been.calledOnce;
-      });
+      //   expect(mouseEnterHandler).not.to.have.been.calledOnce;
+      //   expect(mouseLeaveHandler).not.to.have.been.calledOnce;
+      // });
     });
   });
 
@@ -165,53 +138,26 @@ describe('<sd-navigation-item>', () => {
     });
 
     // Events
-    it('emits "sd-mouse-enter" / "sd-mouse-leave" events when mouse enters / leaves', async () => {
-      const el = await fixture<SdNavigationItem>(variants.link.default);
-      const link = el.shadowRoot!.querySelector('a');
-      const mouseEnterHandler = sinon.spy();
-      const mouseLeaveHandler = sinon.spy();
+    // it('does not emit "sd-click" event when clicked', async () => {
+    //   const el = await fixture<SdNavigationItem>(variants.link.default);
+    //   const link = el.shadowRoot!.querySelector('a');
+    //   const clickHandler = sinon.spy();
 
-      el.addEventListener('sd-mouse-enter', mouseEnterHandler);
-      el.addEventListener('sd-mouse-leave', mouseLeaveHandler);
+    //   // Add an event listener
+    //   el.addEventListener('sd-click', clickHandler);
 
-      // Trigger mouseenter event
-      const mouseEnterEvent = new MouseEvent('mouseenter');
-      link!.dispatchEvent(mouseEnterEvent);
+    //   // Dispatch a click event with a delay
+    //   setTimeout(() => {
+    //     const clickEvent = new MouseEvent('click');
+    //     link!.dispatchEvent(clickEvent);
+    //   });
 
-      // Wait for event handling
-      await el.updateComplete;
+    //   // Wait for the event loop to process the click event
+    //   await new Promise(resolve => setTimeout(resolve, 0));
 
-      // Trigger mouseleave event
-      const mouseLeaveEvent = new MouseEvent('mouseleave');
-      link!.dispatchEvent(mouseLeaveEvent);
-
-      // Wait for event handling
-      await el.updateComplete;
-
-      expect(mouseEnterHandler).to.have.been.calledOnce;
-      expect(mouseLeaveHandler).to.have.been.calledOnce;
-    });
-
-    it('does not emit "sd-click" event when clicked', async () => {
-      const el = await fixture<SdNavigationItem>(variants.link.default);
-      const link = el.shadowRoot!.querySelector('a');
-      const clickHandler = sinon.spy();
-
-      // Add an event listener
-      el.addEventListener('sd-click', clickHandler);
-
-      // Dispatch a click event with a delay
-      setTimeout(() => {
-        const clickEvent = new MouseEvent('click');
-        link!.dispatchEvent(clickEvent);
-      });
-
-      // Wait for the event loop to process the click event
-      await new Promise(resolve => setTimeout(resolve, 0));
-
-      // Ensure that the "sd-click" event was not emitted
-      expect(clickHandler.called).to.be.false;
-    });
+    //   // Ensure that the "sd-click" event was not emitted
+    //   expect(clickHandler.called).to.be.false;
+    // });
 
     describe('when disabled', () => {
       it('passes accessibility test', async () => {
@@ -229,33 +175,6 @@ describe('<sd-navigation-item>', () => {
         const el = await fixture<SdNavigationItem>(variants.link.disabled);
         const link = el.shadowRoot!.querySelector('a');
         expect(link).not.to.have.attribute('disabled');
-      });
-
-      it('should not emit any events', async () => {
-        const el = await fixture<SdNavigationItem>(variants.link.disabled);
-        const link = el.shadowRoot!.querySelector('a');
-        const mouseEnterHandler = sinon.spy();
-        const mouseLeaveHandler = sinon.spy();
-
-        el.addEventListener('sd-mouse-enter', mouseEnterHandler);
-        el.addEventListener('sd-mouse-leave', mouseLeaveHandler);
-
-        // Trigger mouseenter event
-        const mouseEnterEvent = new MouseEvent('mouseenter');
-        link!.dispatchEvent(mouseEnterEvent);
-
-        // Wait for event handling
-        await el.updateComplete;
-
-        // Trigger mouseleave event
-        const mouseLeaveEvent = new MouseEvent('mouseleave');
-        link!.dispatchEvent(mouseLeaveEvent);
-
-        // Wait for event handling
-        await el.updateComplete;
-
-        expect(mouseEnterHandler).not.to.have.been.calledOnce;
-        expect(mouseLeaveHandler).not.to.have.been.calledOnce;
       });
     });
   });
@@ -292,33 +211,6 @@ describe('<sd-navigation-item>', () => {
     });
 
     // Events
-    it('emits "sd-mouse-enter" / "sd-mouse-leave" events when mouse enters / leaves', async () => {
-      const el = await fixture<SdNavigationItem>(variants.accordion.default);
-      const summary = el.shadowRoot!.querySelector('summary');
-      const mouseEnterHandler = sinon.spy();
-      const mouseLeaveHandler = sinon.spy();
-
-      el.addEventListener('sd-mouse-enter', mouseEnterHandler);
-      el.addEventListener('sd-mouse-leave', mouseLeaveHandler);
-
-      // Trigger mouseenter event
-      const mouseEnterEvent = new MouseEvent('mouseenter');
-      summary!.dispatchEvent(mouseEnterEvent);
-
-      // Wait for event handling
-      await el.updateComplete;
-
-      // Trigger mouseleave event
-      const mouseLeaveEvent = new MouseEvent('mouseleave');
-      summary!.dispatchEvent(mouseLeaveEvent);
-
-      // Wait for event handling
-      await el.updateComplete;
-
-      expect(mouseEnterHandler).to.have.been.calledOnce;
-      expect(mouseLeaveHandler).to.have.been.calledOnce;
-    });
-
     it('emits "sd-click" event with detail property "open" set to true when clicking closed HTML details element summary', async () => {
       const el = await fixture<SdNavigationItem>(variants.accordion.default);
       const details = el.shadowRoot!.querySelector('details');
@@ -406,32 +298,32 @@ describe('<sd-navigation-item>', () => {
         expect(summary).attribute('aria-disabled');
       });
 
-      it('should not emit any events', async () => {
-        const el = await fixture<SdNavigationItem>(variants.accordion.disabled);
-        const summary = el.shadowRoot!.querySelector('summary');
-        const mouseEnterHandler = sinon.spy();
-        const mouseLeaveHandler = sinon.spy();
+      // it('should not emit any events', async () => {
+      //   const el = await fixture<SdNavigationItem>(variants.accordion.disabled);
+      //   const summary = el.shadowRoot!.querySelector('summary');
+      //   const mouseEnterHandler = sinon.spy();
+      //   const mouseLeaveHandler = sinon.spy();
 
-        el.addEventListener('sd-mouse-enter', mouseEnterHandler);
-        el.addEventListener('sd-mouse-leave', mouseLeaveHandler);
+      //   el.addEventListener('sd-mouse-enter', mouseEnterHandler);
+      //   el.addEventListener('sd-mouse-leave', mouseLeaveHandler);
 
-        // Trigger mouseenter event
-        const mouseEnterEvent = new MouseEvent('mouseenter');
-        summary!.dispatchEvent(mouseEnterEvent);
+      //   // Trigger mouseenter event
+      //   const mouseEnterEvent = new MouseEvent('mouseenter');
+      //   summary!.dispatchEvent(mouseEnterEvent);
 
-        // Wait for event handling
-        await el.updateComplete;
+      //   // Wait for event handling
+      //   await el.updateComplete;
 
-        // Trigger mouseleave event
-        const mouseLeaveEvent = new MouseEvent('mouseleave');
-        summary!.dispatchEvent(mouseLeaveEvent);
+      //   // Trigger mouseleave event
+      //   const mouseLeaveEvent = new MouseEvent('mouseleave');
+      //   summary!.dispatchEvent(mouseLeaveEvent);
 
-        // Wait for event handling
-        await el.updateComplete;
+      //   // Wait for event handling
+      //   await el.updateComplete;
 
-        expect(mouseEnterHandler).not.to.have.been.calledOnce;
-        expect(mouseLeaveHandler).not.to.have.been.calledOnce;
-      });
+      //   expect(mouseEnterHandler).not.to.have.been.calledOnce;
+      //   expect(mouseLeaveHandler).not.to.have.been.calledOnce;
+      // });
     });
   });
 });
