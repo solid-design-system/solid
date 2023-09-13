@@ -1,7 +1,7 @@
 ---
-name: Chore Issue
-about: Chore Issue Template
-title: 'chore: 🔧 [TASK_DESCRIPTION]'
+name: New Component Issue
+about: New Component Issue Template
+title: 'feat: ✨ add sd-[COMPONENT_NAME]'
 labels: ''
 assignees: ''
 
@@ -10,12 +10,17 @@ assignees: ''
 ## User Story
 As a [PERSONA] of the Solid Design System, I would like to [REQUIRE], as well as [FURTHER_REQUIREMENT],
 so that [PRODUCT_VALUE], and [FURTHER_PRODUCT_VALUE].
-### Suggesed Solution
 
+## API
+[LINK TO FIGMA]
+## Hand-off
+[LINK TO FIGMA]
 
-## Environment (GitHub Actions or Azure DevOps)
-
-## Technical Information
+### Components detailed requirements
+- [ ] Props, CSS-Properties, Parts & Slots
+  - [ ] tbd
+- [ ] Stories
+  - [ ] tbd
 
 ## DoR
 - [ ] Item has business value
@@ -25,4 +30,7 @@ so that [PRODUCT_VALUE], and [FURTHER_PRODUCT_VALUE].
 
 ## DoD
 - [ ] Documentation has been created/updated (if applicable)
+- [ ] Migration Guide has been created/updated (if applicable)
+- [ ] Relevant E2E tests (Features, A11y, Bug fixes) are created/updated
+- [ ] Relevant stories (Features, A11y) are created/updated
 - [ ] Implementation works successfully on `feature` branch
