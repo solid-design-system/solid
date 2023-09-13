@@ -38,7 +38,7 @@ export const Default = {
 // TODO: Add sample "Simple Table, First Column Fixed" and "Multi Select Table" as soon as we have sd-scrollable.
 
 /**
- * Demonstrates the usage of sd-table-cell in various contexts.
+ * These examples demonstrate the usage of sd-table-cell in various contexts.
  *
  * __Note:__ These examples are intended solely for illustrating how sd-table-cell can be used to style tables.
  * The data generation and table sorting logic should not be used in production environments.
@@ -186,10 +186,6 @@ export const Examples = {
         </table>
 
         <div class="headline">Sortable Table</div>
-        <div class="disclaimer">
-          The sort function in this table is only designed to illustrate the behavior of the ui elements and is not
-          actually sorting the table data. It is not designed for production usage!
-        </div>
         <table class="sd-table" id="sortableTable" .sortData=${sortData}>
           <thead>
             ${(() => {

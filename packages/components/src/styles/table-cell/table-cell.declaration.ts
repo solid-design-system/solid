@@ -2,9 +2,10 @@ import type { Style } from '../../declaration';
 
 export default {
   styleName: 'sd-table-cell',
-  summary: 'A ...',
-  status: 'experimental',
-  since: '1.7',
+  summary:
+    'A table is organized structured content, used for scanning, comparing, and analyzing the data. The table cell is a single cell inside this table.',
+  status: 'stable',
+  since: '1.12',
   attributes: [
     {
       name: 'sd-table-cell--divider',
