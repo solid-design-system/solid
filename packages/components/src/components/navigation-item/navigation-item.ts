@@ -60,7 +60,7 @@ export default class SdNavigationItem extends SolidElement {
   @property({ reflect: true }) size: 'base' | 'larger' | 'smaller' = 'base';
 
   /** The navigation item's orientation. If true, properties below this point are not used. */
-  @property({ type: Boolean, reflect: true }) horizontal = false;
+  @property({ type: Boolean, reflect: true }) vertical = false;
 
   /** *Vertical Only: Appends a chevron to the right side of a navigation item. */
   @property({ type: Boolean, reflect: true }) chevron = false;
@@ -136,63 +136,28 @@ export default class SdNavigationItem extends SolidElement {
   render() {
     const slots = {
       label: this.hasSlotController.test('[default]'),
-      'icon-left': this.hasSlotController.test('icon-left'),
-      'icon-right': this.hasSlotController.test('icon-right'),
       main: this.hasSlotController.test('main'),
       description: this.hasSlotController.test('description'),
       children: this.hasSlotController.test('children')
     };
     const tag = this.isLink() ? literal`a` : slots['children'] ? literal`summary` : literal`button`;
-
-    // styles
-    const horizontalPaddingBottom = this.horizontal ? 'pb-2' : 'pb-3';
-    const hostDisplayStyle = this.horizontal
-      ? html`<style>
-          :host {
-            display: inline-block;
-          }
-        </style>`
-      : html`<style>
-          :host {
-            display: block;
-          }
-        </style>`;
-
-    // conditional elements
-    const chevron =
-      (this.chevron || slots['children']) && !this.horizontal
-        ? html`<sd-icon
-            name="chevron-down"
-            part="chevron"
-            library="system"
-            color="currentColor"
-            class=${cx('h-6 w-6', this.isAccordion() ? (this.open ? 'rotate-180' : 'rotate-0') : 'rotate-[270deg]')}
-          ></sd-icon>`
-        : null;
+    const horizontalPaddingBottom = this.vertical ? 'pb-3' : 'pb-2';
 
     const divider =
-      this.divider && !this.horizontal
+      this.divider && this.vertical
         ? html`<sd-divider
             part="divider"
-            class=${cx('w-full absolute top-[-1px] left-0', this.calculatePaddingX(true))}
+            class=${cx('w-full transition-all absolute -top-[1px] left-0', this.calculatePaddingX(true))}
           ></sd-divider>`
         : null;
 
-    const iconLeftSlot = slots['icon-left']
-      ? html`<slot name="icon-left" part="icon-left" class="inline-flex justify-center items-center mr-2"></slot>`
-      : null;
-
-    const iconRightSlot = slots['icon-right']
-      ? html`<slot name="icon-right" part="icon-right" class="inline-flex justify-center items-center mr-2"></slot>`
-      : null;
-
     const mainSlot =
-      slots['main'] && !this.horizontal
+      slots['main'] && this.vertical
         ? html`<slot name="main" part="main" class=${cx('inline-flex justify-center items-center mr-4')}></slot>`
         : null;
 
     const descriptionSlot =
-      slots['description'] && !this.horizontal
+      slots['description'] && this.vertical
         ? html`<slot
             name="description"
             part="description"
@@ -205,18 +170,16 @@ export default class SdNavigationItem extends SolidElement {
           ></slot>`
         : null;
 
-    const childrenSlot = slots['children'] && !this.horizontal ? html`<slot name="children"></slot>` : null;
+    const childrenSlot = slots['children'] && this.vertical ? html`<slot name="children"></slot>` : null;
 
     /* eslint-disable lit/no-invalid-html */
     /* eslint-disable lit/binding-positions */
     const root = html`
-      ${hostDisplayStyle}
-
       <${tag}
         part="base"
         class=${cx(
           'hover:bg-neutral-200 transition-all min-h-[48px] cursor-pointer relative',
-          this.horizontal ? 'border-b-4 px-4' : 'border-l-4 pl-[28px] pr-8',
+          this.vertical ? 'border-l-4 pl-[28px] pr-8' : 'border-b-4 px-4',
           this.current ? 'border-accent' : 'border-transparent',
           this.disabled ? 'text-neutral-500 border-neutral-500 pointer-events-none' : 'text-primary',
           { base: 'text-base', larger: 'text-lg', smaller: 'text-[14px]' }[this.size],
@@ -231,6 +194,7 @@ export default class SdNavigationItem extends SolidElement {
         tabindex=${this.disabled ? '-1' : '0'}
         @click=${this.isAccordion() ? this.handleClickSummary : this.isButton() ? this.handleClickButton : undefined}
       >
+        ${divider}
         <span class=${cx(
           'relative pt-3 inline-flex justify-between items-center',
           this.isAccordion() ? 'grow' : 'w-full',
@@ -238,13 +202,24 @@ export default class SdNavigationItem extends SolidElement {
           this.calculatePaddingX()
         )}>
           <span class="inline-flex items-center flex-auto">
-            ${iconLeftSlot}
-            <slot part="label" class=${cx('inline', slots['icon-right'] || slots['main'] ? 'mr-2' : '')}></slot>
-            ${iconRightSlot}
+            <slot part="label" class=${cx('inline', slots['main'] ? 'mr-2' : '')}></slot>
           </span>
           <span class="inline-flex items-center">
             ${mainSlot}
-            ${chevron}
+            ${
+              (this.chevron || slots['children']) && this.vertical
+                ? html`<sd-icon
+                    name="chevron-down"
+                    part="chevron"
+                    library="system"
+                    color="currentColor"
+                    class=${cx(
+                      'h-6 w-6',
+                      this.isAccordion() ? (this.open ? 'rotate-180' : 'rotate-0') : 'rotate-[270deg]'
+                    )}
+                  ></sd-icon>`
+                : ''
+            }
           </span>
         </span>
         ${descriptionSlot}
@@ -258,7 +233,7 @@ export default class SdNavigationItem extends SolidElement {
           <details id="navigation-item-details" ?open=${this.open} class="relative flex">
             ${root}${childrenSlot}
           </details>`
-      : html`${divider}${root}`;
+      : html`${root}`;
   }
 
   /**

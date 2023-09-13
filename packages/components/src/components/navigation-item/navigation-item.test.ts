@@ -227,43 +227,6 @@ describe('<sd-navigation-item>', () => {
       expect(details).to.not.have.attribute('open');
     });
 
-    // TODO: Fix following two tests, two attempts at the same thing
-    // TODO: Add complete keydown testing to all variants
-    // REVIEWER: I don't understand how to fix keydown tests for this component
-
-    // it('should toggle accordion when Enter key is pressed on the summary', async () => {
-    //   const el = await fixture<SdNavigationItem>(variants.accordion.default);
-    //   const summary = el.shadowRoot!.querySelector('summary')!;
-    //   const keydownHandler = sinon.spy();
-
-    //   el.addEventListener('sd-click', keydownHandler);
-
-    //   // Simulate Enter key press
-    //   const enterEvent = new KeyboardEvent('keydown', { key: 'Enter' });
-    //   summary.dispatchEvent(enterEvent);
-
-    //   await waitUntil(() => keydownHandler.calledOnce);
-
-    //   expect(keydownHandler.calledOnce).to.be.true;
-    // });
-
-    // it('emits "sd-click" event with detail property "open" set to true when pressing Enter key while focused on closed HTML details element summary', async () => {
-    //   const el = await fixture<SdNavigationItem>(variants.accordion.default);
-    //   const summary = el.shadowRoot!.querySelector('summary');
-    //   const keydownHandler = sinon.spy();
-
-    //   el.addEventListener('sd-click', keydownHandler);
-
-    //   // Simulate Enter key press
-    //   const enterEvent = new KeyboardEvent('keydown', { key: 'Enter' });
-    //   summary!.dispatchEvent(enterEvent);
-
-    //   // Wait for event handling
-    //   await el.updateComplete;
-
-    //   expect(keydownHandler).to.have.been.calledOnce;
-    // });
-
     describe('when disabled', () => {
       it('passes accessibility test', async () => {
         const el = await fixture<SdNavigationItem>(variants.accordion.disabled);
