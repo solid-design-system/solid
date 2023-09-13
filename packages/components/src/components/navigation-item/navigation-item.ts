@@ -19,32 +19,19 @@ import SolidElement from '../../internal/solid-element';
  * @event sd-hide - Emitted when the navigation item has has children, no href, and is clicked while HTML details are shown.
  *
  * @slot - The navigation item's label.
- * @slot icon-left - A prefix icon or similar element.
- * @slot icon-right - A suffix icon or similar element.
- * @slot main - Main slot used to set additional content like badges. Available for horizontal and vertical orientations.
  * @slot description - *Vertical only: Slot used to provide a description for the navigation item.
  * @slot children - Slot used to provide nested child navigation elements. If provided, details and summary elements will be used. A chevron will be shown on the right side regardless of the chevron property.
  *
  * @csspart divider - The component's optional top divider.
- * @csspart base - The component's base wrapper.
- * @csspart icon-left - The container that wraps the left icon area.
- * @csspart label - The component's label.
- * @csspart icon-right - The container that wraps the right icon area.
- * @csspart main - The container that wraps the main slot area (primarily used for badges).
+ * @csspart base - The component's base wrapper including children.
+ * @csspart content - The component's content excluding children.
+ * @csspart description - The component's description area below its main content.
  * @csspart chevron - The container that wraps the chevron.
  *
  */
 @customElement('sd-navigation-item')
 export default class SdNavigationItem extends SolidElement {
-  private readonly hasSlotController = new HasSlotController(
-    this,
-    '[default]',
-    'icon-left',
-    'icon-right',
-    'main',
-    'description',
-    'children'
-  );
+  private readonly hasSlotController = new HasSlotController(this, '[default]', 'description', 'children');
 
   /** The navigation item's href target. If provided, the navigation item will use an anchor tag otherwise it will use a button tag. The 'children' slot and accordion behavior will be ignored if an 'href' is provided. */
   @property({ reflect: true }) href = '';
@@ -143,11 +130,6 @@ export default class SdNavigationItem extends SolidElement {
     const tag = this.isLink() ? literal`a` : slots['children'] ? literal`summary` : literal`button`;
     const horizontalPaddingBottom = this.vertical ? 'pb-3' : 'pb-2';
 
-    const mainSlot =
-      slots['main'] && this.vertical
-        ? html`<slot name="main" part="main" class=${cx('inline-flex justify-center items-center mr-4')}></slot>`
-        : null;
-
     const childrenSlot = slots['children'] && this.vertical ? html`<slot name="children"></slot>` : null;
 
     /* eslint-disable lit/no-invalid-html */
@@ -192,25 +174,22 @@ export default class SdNavigationItem extends SolidElement {
           this.calculatePaddingX()
         )}>
           <span class="inline-flex items-center flex-auto">
-            <slot part="label" class=${cx('inline', slots['main'] ? 'mr-2' : '')}></slot>
+            <slot part="content" class='inline mr-2'></slot>
           </span>
-          <span class="inline-flex items-center">
-            ${mainSlot}
-            ${
-              (this.chevron || slots['children']) && this.vertical
-                ? html`<sd-icon
-                    name="chevron-down"
-                    part="chevron"
-                    library="system"
-                    color="currentColor"
-                    class=${cx(
-                      'h-6 w-6',
-                      this.isAccordion() ? (this.open ? 'rotate-180' : 'rotate-0') : 'rotate-[270deg]'
-                    )}
-                  ></sd-icon>`
-                : ''
-            }
-          </span>
+          ${
+            (this.chevron || slots['children']) && this.vertical
+              ? html`<sd-icon
+                  name="chevron-down"
+                  part="chevron"
+                  library="system"
+                  color="currentColor"
+                  class=${cx(
+                    'h-6 w-6',
+                    this.isAccordion() ? (this.open ? 'rotate-180' : 'rotate-0') : 'rotate-[270deg]'
+                  )}
+                ></sd-icon>`
+              : ''
+          }
         </span>
         ${
           slots['description'] && this.vertical
