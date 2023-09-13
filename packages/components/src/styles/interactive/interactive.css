@@ -11,7 +11,7 @@
   }
 
   &--inverted {
-    @apply text-white hover:text-primary-200 active:text-primary-200;
+    @apply text-white hover:text-primary-200 active:text-primary-400;
     &:focus-visible {
       @apply outline outline-2 outline-offset-2 outline-white;
     }
