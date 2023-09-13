@@ -276,10 +276,8 @@ export default class SdNavigationItem extends SolidElement {
         text-align: left;
       }
 
-      summary {
-        display: inline;
-        list-style: none;
-        cursor: pointer;
+      details summary::-webkit-details-marker {
+        display: none;
       }
 
       ::slotted(sd-icon) {
