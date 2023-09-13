@@ -77,22 +77,6 @@ export default class SdNavigationItem extends SolidElement {
   /** *Vertical Only if 'children' slot and no 'href': Reflects HTML details element state and allows control from parent. */
   @property({ type: Boolean, reflect: true }) open = false;
 
-  private handleClickSummary(event: MouseEvent) {
-    event.preventDefault();
-    event.stopPropagation();
-
-    if (!this.disabled) {
-      this.open = !this.open;
-    }
-  }
-
-  private handleClickButton(event: MouseEvent) {
-    if (this.disabled) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-  }
-
   private isButton(): boolean {
     return !this.href && !this.hasSlotController.test('children');
   }
@@ -103,6 +87,36 @@ export default class SdNavigationItem extends SolidElement {
 
   private isAccordion(): boolean {
     return !this.href && this.hasSlotController.test('children');
+  }
+
+  private handleClickButton(event: MouseEvent) {
+    if (this.disabled) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+  }
+
+  private handleClickSummary(event: MouseEvent) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    if (!this.disabled) {
+      if (this.open) {
+        this.hideDetails();
+      } else {
+        this.showDetails();
+      }
+    }
+  }
+
+  private hideDetails() {
+    this.open = false;
+    this.emit('sd-hide', { cancelable: true });
+  }
+
+  private showDetails() {
+    this.open = true;
+    this.emit('sd-show', { cancelable: true });
   }
 
   private calculatePaddingX(absoluteElement?: boolean): string {
