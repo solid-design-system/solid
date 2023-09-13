@@ -304,3 +304,43 @@ export const Mouseless = {
     await userEvent.type(el!.shadowRoot!.querySelector('button')!, '{return}', { pointerEventsCheck: 0 });
   }
 };
+
+/**
+ * Use the `disabled` attribute to disable a button. Clicks will be suppressed until the disabled state is removed.
+ */
+
+export const Sample = {
+  name: 'Example: sd-button with sd-badge',
+  parameters: { controls: { exclude: ['variant', 'size', 'disabled', 'loading', 'inverted'] } },
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        x: [
+          { type: 'slot', name: 'default', values: ['Label<sd-badge variant="default" size="lg">8</sd-badge>'] },
+          { type: 'slot', name: 'default', values: ['Label<sd-badge variant="success" size="lg">999+</sd-badge>'] },
+          { type: 'slot', name: 'default', values: ['Label<sd-badge variant="default" size="lg">8</sd-badge>'] },
+          {
+            type: 'slot',
+            name: 'default',
+            values: [
+              '<sd-icon library="global-resources" name="system/picture" slot="icon-left"></sd-icon><sd-badge variant="default" size="lg">8</sd-badge> Label'
+            ]
+          },
+
+          {
+            type: 'slot',
+            name: 'default',
+            values: ['<sd-icon library="global-resources" name="system/picture"></sd-icon>']
+          }
+        ],
+        y: { type: 'attribute', name: 'inverted', values: [false, true] }
+      },
+
+      // constants:,
+      args,
+      options: {
+        templateBackgrounds: { alternate: 'y', colors: ['white', '#00358E'] }
+      }
+    });
+  }
+};
