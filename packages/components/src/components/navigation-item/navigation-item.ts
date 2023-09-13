@@ -1,4 +1,3 @@
-import '../spinner/spinner';
 import { css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { HasSlotController } from '../../internal/slot';
@@ -36,9 +35,14 @@ export default class SdNavigationItem extends SolidElement {
   /** The navigation item's href target. If provided, the navigation item will use an anchor tag otherwise it will use a button tag. The 'children' slot and accordion behavior will be ignored if an 'href' is provided. */
   @property({ reflect: true }) href = '';
 
+  /** Tells the browser where to open the link. Only used when `href` is present. */
+  @property() target: '_blank' | '_parent' | '_self' | '_top';
+
+  /** Tells the browser to download the linked file as this filename. Only used when `href` is present. */
+  @property() download?: string;
+
   /** Indicates that the navigation item is currently selected. The aria-current attribute is set to "page" on the host if true. */
-  @property({ type: Boolean, reflect: true })
-  current = false;
+  @property({ type: Boolean, reflect: true }) current = false;
 
   /** Disables the navigation item. */
   @property({ type: Boolean, reflect: true }) disabled = false;
@@ -49,19 +53,19 @@ export default class SdNavigationItem extends SolidElement {
   /** The navigation item's orientation. If false, properties below this point are not used. */
   @property({ type: Boolean, reflect: true }) vertical = false;
 
-  /** *Vertical Only: Appends a chevron to the right side of a navigation item. */
+  /** Appends a chevron to the right side of a navigation item. Only used if `vertical` is true. */
   @property({ type: Boolean, reflect: true }) chevron = false;
 
-  /** *Vertical Only: Adds additional padding to navigation item's left side. */
+  /** Adds additional padding to navigation item's left side. Only used if `vertical` is true. */
   @property({ type: Boolean, reflect: true }) indented = false;
 
-  /** *Vertical Only: Adds additional padding to navigation item's left and right sides. */
+  /** Adds additional padding to navigation item's left and right sides. Only used if `vertical` is true. */
   @property({ type: Boolean, reflect: true }) relaxed = false;
 
-  /** *Vertical Only: Adds additional padding to navigation item's left and right sides. */
+  /** Adds additional padding to navigation item's left and right sides. Only used if `vertical` is true. */
   @property({ type: Boolean, reflect: true }) divider = false;
 
-  /** *Vertical Only if 'children' slot and no 'href': Reflects HTML details element state and allows control from parent. */
+  /** Reflects HTML details element state and allows control from parent. Only used if `vertical` is true, no `href`is undefined, and `children` is defined. */
   @property({ type: Boolean, reflect: true }) open = false;
 
   private isButton(): boolean {
@@ -73,7 +77,7 @@ export default class SdNavigationItem extends SolidElement {
   }
 
   private isAccordion(): boolean {
-    return !this.href && this.hasSlotController.test('children');
+    return !this.href && this.hasSlotController.test('children') && this.vertical;
   }
 
   private handleClickButton(event: MouseEvent) {
@@ -106,31 +110,26 @@ export default class SdNavigationItem extends SolidElement {
     this.emit('sd-show', { cancelable: true });
   }
 
-  private calculatePaddingX(absoluteElement?: boolean): string {
-    if (absoluteElement) {
-      if (this.relaxed && this.indented) return 'pl-16 pr-12';
-      if (this.relaxed) return 'px-12';
-      if (this.indented) return 'pl-12 pr-8';
-      return 'px-8';
-    } else {
-      if (this.relaxed && this.indented) return 'pl-8 pr-4';
-      if (this.relaxed) return 'px-4';
-      if (this.indented) return 'pl-4';
-      return '';
-    }
+  private calculatePaddingX(): string {
+    if (this.relaxed && this.indented) return 'pl-8 pr-4';
+    if (this.relaxed) return 'px-4';
+    if (this.indented) return 'pl-4';
+    return '';
   }
 
   render() {
+    const isLink = this.isLink();
+    const isButton = this.isButton();
+    const isAccordion = this.isAccordion();
+
     const slots = {
       label: this.hasSlotController.test('[default]'),
       main: this.hasSlotController.test('main'),
       description: this.hasSlotController.test('description'),
       children: this.hasSlotController.test('children')
     };
-    const tag = this.isLink() ? literal`a` : slots['children'] ? literal`summary` : literal`button`;
+    const tag = isLink ? literal`a` : slots['children'] ? literal`summary` : literal`button`;
     const horizontalPaddingBottom = this.vertical ? 'pb-3' : 'pb-2';
-
-    const childrenSlot = slots['children'] && this.vertical ? html`<slot name="children"></slot>` : null;
 
     /* eslint-disable lit/no-invalid-html */
     /* eslint-disable lit/binding-positions */
@@ -141,27 +140,22 @@ export default class SdNavigationItem extends SolidElement {
           'hover:bg-neutral-200 transition-all min-h-[48px] cursor-pointer relative',
           { base: 'text-base', larger: 'text-lg', smaller: 'text-[14px]' }[this.size],
           this.disabled ? 'text-neutral-500 border-neutral-500 pointer-events-none' : 'text-primary',
-          this.isAccordion() ? 'flex flex-col' : 'inline-block w-full',
+          isAccordion ? 'flex flex-col' : 'inline-block w-full',
           this.divider && this.vertical && 'mt-[1px]',
           this.vertical ? 'px-8' : 'px-4'
         )}
-        aria-controls=${ifDefined(this.isAccordion() ? 'navigation-item-details' : undefined)}
+        aria-controls=${ifDefined(isAccordion ? 'navigation-item-details' : undefined)}
         aria-current=${ifDefined(this.current ? 'page' : undefined)}
         aria-disabled=${this.disabled}
-        ?disabled=${ifDefined(this.isButton() ? this.disabled : undefined)}
+        ?disabled=${ifDefined(isButton ? this.disabled : undefined)}
         href=${ifDefined(this.href || undefined)}
-        role=${this.isLink() ? 'link' : 'button'}
+        target=${ifDefined(isLink ? this.target : undefined)}
+        download=${ifDefined(isLink ? this.download : undefined)}
+        rel=${ifDefined(isLink && this.target ? 'noreferrer noopener' : undefined)}
+        role=${isLink ? 'link' : 'button'}
         tabindex=${this.disabled ? '-1' : '0'}
-        @click=${this.isAccordion() ? this.handleClickSummary : this.isButton() ? this.handleClickButton : undefined}
+        @click=${isAccordion ? this.handleClickSummary : isButton ? this.handleClickButton : undefined}
       >
-        ${
-          this.divider && this.vertical
-            ? html`<sd-divider
-                part="divider"
-                class=${cx('w-full transition-all absolute -top-[1px] left-0', this.calculatePaddingX(true))}
-              ></sd-divider>`
-            : ''
-        }
         <div class=${cx(
           'absolute h-full w-full left-0 top-0 pointer-events-none',
           this.vertical ? 'border-l-4' : 'border-b-4',
@@ -169,10 +163,18 @@ export default class SdNavigationItem extends SolidElement {
         )}></div>
         <span class=${cx(
           'relative pt-3 inline-flex justify-between items-center',
-          this.isAccordion() ? 'grow' : 'w-full',
+          isAccordion ? 'grow' : 'w-full',
           slots['description'] ? 'pb-1' : horizontalPaddingBottom,
           this.calculatePaddingX()
         )}>
+          ${
+            this.divider && this.vertical
+              ? html`<sd-divider
+                  part="divider"
+                  class=${cx('w-full transition-all absolute -top-[1px] left-0', this.calculatePaddingX())}
+                ></sd-divider>`
+              : ''
+          }
           <span class="inline-flex items-center flex-auto">
             <slot part="content" class='inline mr-2'></slot>
           </span>
@@ -183,10 +185,7 @@ export default class SdNavigationItem extends SolidElement {
                   part="chevron"
                   library="system"
                   color="currentColor"
-                  class=${cx(
-                    'h-6 w-6',
-                    this.isAccordion() ? (this.open ? 'rotate-180' : 'rotate-0') : 'rotate-[270deg]'
-                  )}
+                  class=${cx('h-6 w-6', isAccordion ? (this.open ? 'rotate-180' : 'rotate-0') : 'rotate-[270deg]')}
                 ></sd-icon>`
               : ''
           }
@@ -197,8 +196,8 @@ export default class SdNavigationItem extends SolidElement {
                 name="description"
                 part="description"
                 class=${cx(
-                  'inline-block text-sm',
-                  this.isAccordion() ? 'grow' : 'w-full',
+                  'inline-block text-sm text-left',
+                  isAccordion ? 'grow' : 'w-full',
                   horizontalPaddingBottom,
                   this.calculatePaddingX()
                 )}
@@ -210,9 +209,9 @@ export default class SdNavigationItem extends SolidElement {
     /* eslint-enable lit/no-invalid-html */
     /* eslint-enable lit/binding-positions */
 
-    return this.isAccordion()
+    return isAccordion
       ? html`<details id="navigation-item-details" ?open=${this.open} class="relative flex">
-          ${root}${childrenSlot}
+          ${root}<slot name="children"></slot>
         </details>`
       : html`${root}`;
   }
@@ -235,17 +234,8 @@ export default class SdNavigationItem extends SolidElement {
         display: block;
       }
 
-      :host > * {
-        text-align: left;
-      }
-
       details summary::-webkit-details-marker {
         display: none;
-      }
-
-      ::slotted(sd-icon) {
-        /* TODO: calculate 1.5 times font size? */
-        font-size: calc(var(--tw-varspacing));
       }
     `
   ];
