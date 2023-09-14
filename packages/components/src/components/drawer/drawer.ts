@@ -1,32 +1,31 @@
-import '../icon-button/icon-button';
+import '../button/button';
+import '../icon/icon';
 import { animateTo, stopAnimations } from '../../internal/animate';
-import { classMap } from 'lit/directives/class-map.js';
+import { css, html } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry';
 import { HasSlotController } from '../../internal/slot';
-import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { LocalizeController } from '../../utilities/localize';
 import { lockBodyScrolling, unlockBodyScrolling } from '../../internal/scroll';
 import { uppercaseFirstLetter } from '../../internal/string';
 import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch';
+import componentStyles from '../../styles/component.styles';
+import cx from 'classix';
 import Modal from '../../internal/modal';
 import SolidElement from '../../internal/solid-element';
-import styles from './drawer.styles';
-import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Drawers slide in from a container to expose additional options and information.
  * @documentation https://solid.union-investment.com/[storybook-link]/drawer
  * @status stable
- * @since 1.0
+ * @since 1.9
  *
- * @dependency sd-icon-button
+ * @dependency sd-button
  *
  * @slot - The drawer's main content.
- * @slot label - The drawer's label. Alternatively, you can use the `label` attribute.
- * @slot header-actions - Optional actions to add to the header. Works best with `<sd-icon-button>`.
+ * @slot header - The drawer's header, usually a title.
  * @slot footer - The drawer's footer, usually one or more buttons representing various options.
  *
  * @event sd-show - Emitted when the drawer opens.
@@ -43,27 +42,18 @@ import type { CSSResultGroup } from 'lit';
  * @csspart base - The component's base wrapper.
  * @csspart overlay - The overlay that covers the screen behind the drawer.
  * @csspart panel - The drawer's panel (where the drawer and its content are rendered).
- * @csspart header - The drawer's header. This element wraps the title and header actions.
- * @csspart header-actions - Optional actions to add to the header. Works best with `<sd-icon-button>`.
+ * @csspart header - The drawer's header. This element wraps the title and the close-button.
  * @csspart title - The drawer's title.
- * @csspart close-button - The close button, an `<sd-icon-button>`.
- * @csspart close-button__base - The close button's exported `base` part.
+ * @csspart close-button - The close button, an `<sd-button>`.
  * @csspart body - The drawer's body.
  * @csspart footer - The drawer's footer.
  *
- * @cssproperty --size - The preferred size of the drawer. This will be applied to the drawer's width or height
+ * @cssproperty --width - The preferred width of the drawer.
  *   depending on its `placement`. Note that the drawer will shrink to accommodate smaller screens.
- * @cssproperty --header-spacing - The amount of padding to use for the header.
- * @cssproperty --body-spacing - The amount of padding to use for the body.
- * @cssproperty --footer-spacing - The amount of padding to use for the footer.
  *
- * @animation drawer.showTop - The animation to use when showing a drawer with `top` placement.
  * @animation drawer.showEnd - The animation to use when showing a drawer with `end` placement.
- * @animation drawer.showBottom - The animation to use when showing a drawer with `bottom` placement.
  * @animation drawer.showStart - The animation to use when showing a drawer with `start` placement.
- * @animation drawer.hideTop - The animation to use when hiding a drawer with `top` placement.
  * @animation drawer.hideEnd - The animation to use when hiding a drawer with `end` placement.
- * @animation drawer.hideBottom - The animation to use when hiding a drawer with `bottom` placement.
  * @animation drawer.hideStart - The animation to use when hiding a drawer with `start` placement.
  * @animation drawer.denyClose - The animation to use when a request to close the drawer is denied.
  * @animation drawer.overlay.show - The animation to use when showing the drawer's overlay.
@@ -71,16 +61,14 @@ import type { CSSResultGroup } from 'lit';
  */
 @customElement('sd-drawer')
 export default class SdDrawer extends SolidElement {
-  static styles: CSSResultGroup = styles;
-
   private readonly hasSlotController = new HasSlotController(this, 'footer');
   private readonly localize = new LocalizeController(this);
-  private modal: Modal;
+  private modal = new Modal(this);
   private originalTrigger: HTMLElement | null;
 
-  @query('.drawer') drawer: HTMLElement;
-  @query('.drawer__panel') panel: HTMLElement;
-  @query('.drawer__overlay') overlay: HTMLElement;
+  @query('[part=base]') drawer: HTMLElement;
+  @query('[part=panel]') panel: HTMLElement;
+  @query('[part=overlay]') overlay: HTMLElement;
 
   /**
    * Indicates whether or not the drawer is open. You can toggle this attribute to show and hide the drawer, or you can
@@ -89,31 +77,23 @@ export default class SdDrawer extends SolidElement {
   @property({ type: Boolean, reflect: true }) open = false;
 
   /**
-   * The drawer's label as displayed in the header. You should always include a relevant label even when using
-   * `no-header`, as it is required for proper accessibility. If you need to display HTML, use the `label` slot instead.
+   * You should always include a relevant label even when using
+   * `no-header`, as it is required for proper accessibility.
    */
-  @property({ reflect: true }) label = '';
+  @property({ attribute: 'label', reflect: true }) label = '';
 
   /** The direction from which the drawer will open. */
-  @property({ reflect: true }) placement: 'top' | 'end' | 'bottom' | 'start' = 'end';
+  @property({ reflect: true }) placement: 'end' | 'start' = 'end';
 
   /**
-   * By default, the drawer slides out of its containing block (usually the viewport). To make the drawer slide out of
-   * its parent element, set this attribute and add `position: relative` to the parent.
+   * By default, the drawer slides out of its containing block (the viewport). Contained is a hidden feature used only for testing purposes. Please do not use it in production as it will likely change.
    */
   @property({ type: Boolean, reflect: true }) contained = false;
 
   /**
-   * Removes the header. This will also remove the default close button, so please ensure you provide an easy,
-   * accessible way for users to dismiss the drawer.
+   * Removes the header. This will also remove the default close button, so please ensure you provide an easy, accessible way for users to dismiss the drawer.
    */
-  @property({ attribute: 'no-header', type: Boolean, reflect: true }) noHeader = false;
-
-  connectedCallback() {
-    super.connectedCallback();
-    this.handleDocumentKeyDown = this.handleDocumentKeyDown.bind(this);
-    this.modal = new Modal(this);
-  }
+  @property({ attribute: 'no-header', type: Boolean }) noHeader = false;
 
   firstUpdated() {
     this.drawer.hidden = !this.open;
@@ -156,12 +136,12 @@ export default class SdDrawer extends SolidElement {
     document.removeEventListener('keydown', this.handleDocumentKeyDown);
   }
 
-  private handleDocumentKeyDown(event: KeyboardEvent) {
-    if (this.open && !this.contained && event.key === 'Escape') {
+  private handleDocumentKeyDown = (event: KeyboardEvent) => {
+    if (this.open && event.key === 'Escape') {
       event.stopPropagation();
       this.requestClose('keyboard');
     }
-  }
+  };
 
   @watch('open', { waitUntilFirstUpdate: true })
   async handleOpenChange() {
@@ -193,9 +173,9 @@ export default class SdDrawer extends SolidElement {
 
       // Set initial focus
       requestAnimationFrame(() => {
-        const slInitialFocus = this.emit('sd-initial-focus', { cancelable: true });
+        const sdInitialFocus = this.emit('sd-initial-focus', { cancelable: true });
 
-        if (!slInitialFocus.defaultPrevented) {
+        if (!sdInitialFocus.defaultPrevented) {
           // Set focus to the autofocus target and restore the attribute
           if (autoFocusTarget) {
             (autoFocusTarget as HTMLInputElement).focus({ preventScroll: true });
@@ -301,78 +281,123 @@ export default class SdDrawer extends SolidElement {
     return html`
       <div
         part="base"
-        class=${classMap({
-      drawer: true,
-      'drawer--open': this.open,
-      'drawer--top': this.placement === 'top',
-      'drawer--end': this.placement === 'end',
-      'drawer--bottom': this.placement === 'bottom',
-      'drawer--start': this.placement === 'start',
-      'drawer--contained': this.contained,
-      'drawer--fixed': !this.contained,
-      'drawer--rtl': this.localize.dir() === 'rtl',
-      'drawer--has-footer': this.hasSlotController.test('footer')
-    })}
+        class=${cx(
+          'top-0 start-0 w-full h-full pointer-events-none overflow-hidden',
+          this.contained ? 'absolute' : 'fixed'
+        )}
       >
-        <div part="overlay" class="drawer__overlay" @click=${() => this.requestClose('overlay')} tabindex="-1"></div>
+        <div
+          part="overlay"
+          class=${cx(
+            'block top-0 left-0 right-0 bottom-0 bg-neutral-800/75 pointer-events-auto',
+            this.contained ? 'absolute' : 'fixed'
+          )}
+          @click=${() => this.requestClose('overlay')}
+          tabindex="-1"
+        ></div>
 
         <div
           part="panel"
-          class="drawer__panel"
+          class=${cx(
+            'absolute flex flex-col z-10 max-w-full max-h-full bg-white shadow-lg overflow-auto pointer-events-auto focus:outline-none',
+            {
+              end: 'top-0 end-0 bottom-auto start-auto w-[--width] h-full',
+              start: 'top-0 end-auto bottom-auto start-0 w-[--width] h-full'
+            }[this.placement]
+          )}
           role="dialog"
           aria-modal="true"
           aria-hidden=${this.open ? 'false' : 'true'}
-          aria-label=${ifDefined(this.noHeader ? this.label : undefined)}
+          aria-label=${this.label}
           aria-labelledby=${ifDefined(!this.noHeader ? 'title' : undefined)}
           tabindex="0"
         >
           ${!this.noHeader
-        ? html`
-                <header part="header" class="drawer__header">
-                  <h2 part="title" class="drawer__title" id="title">
-                    <!-- If there's no label, use an invisible character to prevent the header from collapsing -->
-                    <slot name="label"> ${this.label.length > 0 ? this.label : String.fromCharCode(65279)} </slot>
-                  </h2>
-                  <div part="header-actions" class="drawer__header-actions">
-                    <slot name="header-actions"></slot>
-                    <sd-icon-button
+            ? html`
+                <header
+                  part="header"
+                  class="flex justify-between py-2 px-4 items-center flex-shrink-0"
+                  style="min-height: 56px;"
+                >
+                  <div part="title">
+                    <slot name="header" part="title" class="flex-auto text-xl m-0" id="title"> </slot>
+                  </div>
+                  <div class="shrink-0 flex flex-wrap justify-end gap-1 ml-4 absolute top-2 right-2">
+                    <sd-button
+                      variant="tertiary"
+                      size="lg"
                       part="close-button"
-                      exportparts="base:close-button__base"
-                      class="drawer__close"
-                      name="x-lg"
-                      label=${this.localize.term('close')}
-                      library="system"
                       @click=${() => this.requestClose('close-button')}
-                    ></sd-icon-button>
+                      ><sd-icon name="close" library="system"></sd-icon
+                    ></sd-button>
                   </div>
                 </header>
               `
-        : ''}
-
-          <slot part="body" class="drawer__body"></slot>
-
-          <footer part="footer" class="drawer__footer">
+            : ''}
+          <div part="body" class="flex-auto block px-4">
+            <slot></slot>
+          </div>
+          <footer part="footer" class=${cx(this.hasSlotController.test('footer') ? 'text-left p-4' : 'hidden')}>
             <slot name="footer"></slot>
           </footer>
         </div>
       </div>
     `;
   }
+
+  static styles = [
+    SolidElement.styles,
+    css`
+      ${componentStyles}
+      :host {
+        --width: 25rem;
+
+        display: contents;
+      }
+
+      :host([contained]) {
+        z-index: initial;
+      }
+
+      :host(:not([contained])) {
+        z-index: var(--sd-z-index-drawer);
+      }
+
+      [part='body'] {
+        -webkit-overflow-scrolling: touch;
+        overflow-y: scroll;
+        scrollbar-width: none; /* Firefox */
+      }
+
+      [part='body']::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+      }
+    `
+  ];
 }
 
-// Top
-setDefaultAnimation('drawer.showTop', {
+// Start
+setDefaultAnimation('drawer.showStart', {
   keyframes: [
-    { opacity: 0, translate: '0 -100%' },
-    { opacity: 1, translate: '0 0' }
+    { opacity: 0, translate: '-100%' },
+    { opacity: 1, translate: '0' }
+  ],
+  rtlKeyframes: [
+    { opacity: 0, translate: '100%' },
+    { opacity: 1, translate: '0' }
   ],
   options: { duration: 250, easing: 'ease' }
 });
 
-setDefaultAnimation('drawer.hideTop', {
+setDefaultAnimation('drawer.hideStart', {
   keyframes: [
-    { opacity: 1, translate: '0 0' },
-    { opacity: 0, translate: '0 -100%' }
+    { opacity: 1, translate: '0' },
+    { opacity: 0, translate: '-100%' }
+  ],
+  rtlKeyframes: [
+    { opacity: 1, translate: '0' },
+    { opacity: 0, translate: '100%' }
   ],
   options: { duration: 250, easing: 'ease' }
 });
@@ -398,48 +423,6 @@ setDefaultAnimation('drawer.hideEnd', {
   rtlKeyframes: [
     { opacity: 1, translate: '0' },
     { opacity: 0, translate: '-100%' }
-  ],
-  options: { duration: 250, easing: 'ease' }
-});
-
-// Bottom
-setDefaultAnimation('drawer.showBottom', {
-  keyframes: [
-    { opacity: 0, translate: '0 100%' },
-    { opacity: 1, translate: '0 0' }
-  ],
-  options: { duration: 250, easing: 'ease' }
-});
-
-setDefaultAnimation('drawer.hideBottom', {
-  keyframes: [
-    { opacity: 1, translate: '0 0' },
-    { opacity: 0, translate: '0 100%' }
-  ],
-  options: { duration: 250, easing: 'ease' }
-});
-
-// Start
-setDefaultAnimation('drawer.showStart', {
-  keyframes: [
-    { opacity: 0, translate: '-100%' },
-    { opacity: 1, translate: '0' }
-  ],
-  rtlKeyframes: [
-    { opacity: 0, translate: '100%' },
-    { opacity: 1, translate: '0' }
-  ],
-  options: { duration: 250, easing: 'ease' }
-});
-
-setDefaultAnimation('drawer.hideStart', {
-  keyframes: [
-    { opacity: 1, translate: '0' },
-    { opacity: 0, translate: '-100%' }
-  ],
-  rtlKeyframes: [
-    { opacity: 1, translate: '0' },
-    { opacity: 0, translate: '100%' }
   ],
   options: { duration: 250, easing: 'ease' }
 });

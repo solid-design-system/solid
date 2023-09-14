@@ -1,49 +1,51 @@
-# `ui-button`
+# Migration Guide: From `ui-button` to `sd-button`
 
-Solid Components aims to mirror default HTML behavior as closely as possible. The new `sd-button` component supports a range of attributes with correctly typed values. It replaces the `ui-button` with enhanced features and functionality. To understand all the available attributes, please refer to the `sd-button` documentation.
+The new `sd-button` is designed to replace the `ui-button`. Instead of mainly providing content via attributes, the `sd-button` component uses slots to allow for more flexibility and customization.
 
-## ✨ New attribute: `load`
+<hr />
+
+## ⚙️ Attributes
+
+### ✨ New Attributes
+
+#### [load]
 
 The `load` attribute improves handling of buttons that display a loading state. In the past, manual intervention was necessary to control this state. Now, simply set the `load` attribute. It activates an `sd-spinner`, maintains the current content (and consequently, the width), and manages all essential HTML and A11y features.
 
-## 🔀 Updated attribute: `variant/transparent` to `variant/tertiary`
+### 🔀 Updated Attributes
+
+#### [variant/transparent]
 
 The attribute argument `variant/transparent` has been renamed to `variant/tertiary` to accurately represent the button hierarchy. To enhance user experience, its behavior on hover has been updated; it now changes background instead of applying an underline.
 
-## ❌ CSS Variables: `--component-button-...`
+### ❌ Removed Attributes
 
-We have discontinued component-specific CSS variables. You can now alter colors and padding using the part selector. Alternatively, override CSS variables used within the element as needed.
+The following attributes have been removed from the new sd-button component:
 
-```css
-sd-button::part(base) {
-  background: pink;
-  color: black;
-}
-```
-
-As an alternative you can override CSS variables used in the element:
-
-```css
-sd-button {
-  --sd-spacing-4: 15px; // overrides default 16px
-}
-```
-
-## ❌ Removed attribute: `variant/plain`
-
-We no longer support manually setting negative margins for aligning a tertiary button horizontally. Design-wise, this approach is discouraged as the hover and focus states would be affected. If you require a more minimal link component, please utilize the `sd-link` component. Note that the `sd-link` component is not designed to behave like a button and will not support such features in the future.
-
-## ❌ Removed attribute: `icon`
-
-The `sd-button` no longer includes an `icon` attribute. Instead, it provides a slot for the same purpose. For usage examples, refer to the `sd-button/Slots` story. You might need to manually add 'skinning' data to invert the icon, as this function is no longer provided by the button.
+1. [variant/plain]
+   If you require a more minimal link component, please utilize the `sd-link` component.
+2. [icon]
+   The `sd-button` no longer includes an `icon` attribute. Instead, it provides a slot for the same purpose.
 
 ```html
 <sd-button
-  <ui-icon slot="icon-left" ...></ui-icon>.
-</sd-button>.
+  <ui-icon slot="icon-left" ...></ui-icon>
+</sd-button>
 ```
 
-See the `sd-button/Slots` story for examples.
+<hr />
+
+## ✍️ CSS variables
+
+### ❌ Removed CSS variables
+
+The following CSS variables have been removed from the new sd-button component:
+
+1. [--component-button-...]
+
+<hr />
+
+## 💪 Additional Changes
 
 ## ✨ New `icon-only` state
 

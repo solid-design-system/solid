@@ -1,0 +1,21 @@
+.sd-interactive {
+  &--reset {
+    all: unset;
+    outline: revert;
+  }
+
+  @apply cursor-pointer no-underline;
+
+  &:focus-visible {
+    @apply outline outline-2 outline-offset-2 outline-primary;
+  }
+
+  &:not([disabled], .sd-interactive--disabled) {
+    @apply text-primary hover:text-primary-500 active:text-primary-800;
+  }
+
+  &--disabled,
+  &[disabled] {
+    @apply text-neutral-600 cursor-not-allowed;
+  }
+}
