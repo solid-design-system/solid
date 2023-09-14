@@ -1,4 +1,5 @@
-name: Automatic pull request review
+name: (deps) Automatic PR approval
+
 on: [pull_request_target]
 jobs:
   automate-pullrequest-review:
