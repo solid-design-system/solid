@@ -1,3 +1,5 @@
+name: (deps) Update dependencies
+
 version: 2
 updates:
   # Enable version updates at root 
