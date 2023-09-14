@@ -1,13 +1,3 @@
-/* 
-* Remove inherited styles from table before applying our styles.
-*/
-.sd-table {
-  all: unset;
-  display: table;
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
 .sd-table-cell {
   @apply border-solid border-neutral-400 border-y-[1px] border-x-0 text-sm text-left p-4;
 
@@ -15,23 +5,21 @@
     @apply border-r-[1px];
   }
 
-  &--transparent {
-    @apply bg-transparent;
-  }
+  &--bg {
+    &-transparent {
+      @apply bg-transparent;
+    }
 
-  &--white {
-    @apply bg-white;
-  }
+    &-white {
+      @apply bg-white;
+    }
 
-  &--primary-100 {
-    @apply bg-primary-100;
-  }
+    &-primary-100 {
+      @apply bg-primary-100;
+    }
 
-  &--neutral-100 {
-    @apply bg-neutral-100;
+    &-neutral-100 {
+      @apply bg-neutral-100;
+    }
   }
-}
-
-.sd-table-cell * {
-  @apply align-middle;
 }

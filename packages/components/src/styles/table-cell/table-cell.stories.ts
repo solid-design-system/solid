@@ -1,5 +1,6 @@
 import '../../solid-components';
 import { html } from 'lit-html';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
 const { argTypes, parameters } = storybookDefaults('sd-table-cell');
@@ -7,9 +8,8 @@ const { overrideArgs } = storybookHelpers('sd-table-cell');
 const { generateTemplate } = storybookTemplate('sd-table-cell');
 
 /**
- * The sd-table-cell component offers basic styling for table cells.
- * Additionally, it includes a sd-table class, which should be applied to the table element,
- * resetting the default HTML styles for the table.
+ * The `sd-table-cell` component offers basic styling for table cells.
+ * It is designed to be used in conjunction with the `sd-table` component.
  */
 
 export default {
@@ -29,13 +29,11 @@ export default {
 export const Default = {
   render: (args: any) => {
     return generateTemplate({
-      options: { templateContent: '<td class="%CLASSES%">%SLOT%</td>' },
+      options: { templateContent: '<table class="sd-table"><tr><td class="%CLASSES%">%SLOT%</td></tr></table>' },
       args
     });
   }
 };
-
-// TODO: Add sample "Simple Table, First Column Fixed" and "Multi Select Table" as soon as we have sd-scrollable.
 
 /**
  * These examples demonstrate the usage of sd-table-cell in various contexts.
@@ -47,20 +45,16 @@ export const Default = {
 export const Samples = {
   parameters: {
     controls: {
-      exclude: [
-        'sd-table-cell--divider',
-        'sd-table-cell--white',
-        'sd-table-cell--transparent',
-        'sd-table-cell--primary-100',
-        'sd-table-cell--neutral-100'
-      ]
+      exclude: ['sd-table-cell--divider', 'sd-table-cell--bg-...']
     }
   },
   render: (args: Record<string, any>) => {
     // Initalize table data
     const tableRowCount = 7;
     const tableColumnCount = 5;
-    const sortData: ('ascending' | 'descending' | 'none')[] = Array.from({ length: tableColumnCount }, () => 'none');
+    const sortData: ('ascending' | 'descending' | 'none')[] = Array.from({ length: tableColumnCount }, (v, i) =>
+      i === 0 ? 'ascending' : 'none'
+    );
     const headerData = Array.from({ length: tableColumnCount }, () => 'Header');
     const tableData = Array.from({ length: tableRowCount }, () =>
       Array.from({ length: tableColumnCount }, () => {
@@ -68,27 +62,44 @@ export const Samples = {
       })
     );
 
-    // Function to exchange the sort icons and set the aria-sort attribute in the sortable table after a click on the table header
+    // Function to exchange the sort icons and set the aria-sort attribute in the sortable table after a click on a table header
     const sortTable = (column: number) => {
-      const icon = document.getElementById(`sortIcon-${column}`);
-      const headerCell = document.getElementById(`sortableHeader-${column}`);
-      if (icon && headerCell) {
-        switch (sortData[column]) {
-          case 'none':
-            sortData[column] = 'descending';
-            icon.setAttribute('name', 'system/sort-down-filled');
-            headerCell.setAttribute('aria-sort', 'descending');
-            return;
-          case 'ascending':
-            sortData[column] = 'none';
-            icon.setAttribute('name', 'system/sort-down');
+      const sortingOptions: {
+        [key: string]: {
+          nextSort: 'ascending' | 'descending' | 'none';
+          iconName: string;
+          ariaSort: string | undefined;
+        };
+      } = {
+        none: { nextSort: 'ascending', iconName: 'system/sort-up', ariaSort: undefined },
+        ascending: { nextSort: 'descending', iconName: 'system/sort-up-filled', ariaSort: 'ascending' },
+        descending: { nextSort: 'none', iconName: 'system/sort-down-filled', ariaSort: 'descending' }
+      };
+      const icons = document.querySelectorAll('[id*="sortIcon"]');
+      const headerCells = document.querySelectorAll('[id*="sortableHeader"]');
+
+      if (icons && headerCells) {
+        headerCells.forEach((headerCell, index) => {
+          //Change the sort icon and aria-sort attribute for the clicked column
+          if (index === column) {
+            const nextSort = sortingOptions[sortData[column]].nextSort;
+            const { iconName, ariaSort } = sortingOptions[nextSort];
+
+            sortData[index] = nextSort;
+            icons[index].setAttribute('name', iconName);
+            ariaSort !== undefined
+              ? headerCell.setAttribute('aria-sort', ariaSort)
+              : headerCell.removeAttribute('aria-sort');
+          }
+          //Reset the sort icon and remove the aria-sort attribute for all other columns
+          else {
+            const { iconName } = sortingOptions['none'];
+
+            sortData[index] = 'none';
+            icons[index].setAttribute('name', iconName);
             headerCell.removeAttribute('aria-sort');
-            return;
-          case 'descending':
-            sortData[column] = 'ascending';
-            icon.setAttribute('name', 'system/sort-up-filled');
-            headerCell.setAttribute('aria-sort', 'ascending');
-        }
+          }
+        });
       }
     };
 
@@ -120,7 +131,7 @@ export const Samples = {
           box-sizing: border-box;
         }
 
-        .sd-table {
+        .sample-table {
           margin-top: 20px;
           width: 100%;
         }
@@ -142,23 +153,19 @@ export const Samples = {
           text-align: left;
         }
 
-        .sd-table-cell.sortable button:hover {
-          background-color: white;
-        }
-
         div:not(:first-of-type).headline {
           margin-top: 72px;
         }
       </style>
       <div class="story-wrapper">
         <div class="headline">Simple Table With Vertical Lines</div>
-        <table class="sd-table">
+        <table class="sd-table sample-table">
           <thead>
             ${(() => {
               return html`<tr>
                 ${headerData.map((cellData, columnIndex) => {
                   return html`<th
-                    class="sd-table-cell sd-table-cell--transparent ${columnIndex + 1 < headerData.length
+                    class="sd-table-cell sd-table-cell--bg-transparent ${columnIndex + 1 < headerData.length
                       ? 'sd-table-cell--divider'
                       : ''}"
                   >
@@ -173,7 +180,7 @@ export const Samples = {
               return html`<tr>
                 ${rowData.map((cellData, columnIndex) => {
                   return html`<td
-                    class="sd-table-cell sd-table-cell--transparent ${columnIndex + 1 < headerData.length
+                    class="sd-table-cell sd-table-cell--bg-transparent ${columnIndex + 1 < headerData.length
                       ? 'sd-table-cell--divider'
                       : ''}"
                   >
@@ -186,22 +193,23 @@ export const Samples = {
         </table>
 
         <div class="headline">Sortable Table</div>
-        <table class="sd-table" id="sortableTable" .sortData=${sortData}>
+        <table class="sd-table sample-table" id="sortableTable" .sortData=${sortData}>
           <thead>
             ${(() => {
               return html`<tr>
                 ${headerData.map((cellData, columnIndex) => {
                   return html`<th
-                    class="sd-table-cell sd-table-cell--neutral-100 sortable ${columnIndex + 1 < headerData.length
+                    class="sd-table-cell sd-table-cell--bg-transparent sortable ${columnIndex + 1 < headerData.length
                       ? 'sd-table-cell--divider'
                       : ''}"
                     id="sortableHeader-${columnIndex}"
+                    aria-sort=${ifDefined(sortData[columnIndex] === 'none' ? undefined : 'ascending')}
                   >
                     <button class="sd-interactive sd-interactive--reset" @click="${() => sortTable(columnIndex)}">
                       ${cellData}<sd-icon
                         id="sortIcon-${columnIndex}"
                         library="global-resources"
-                        name="system/sort-down"
+                        name=${sortData[columnIndex] === 'none' ? 'system/sort-up' : 'system/sort-up-filled'}
                       ></sd-icon>
                     </button>
                   </th>`;
@@ -214,7 +222,7 @@ export const Samples = {
               return html`<tr>
                 ${rowData.map((cellData, columnIndex) => {
                   return html`<td
-                    class="sd-table-cell sd-table-cell--transparent ${columnIndex + 1 < headerData.length
+                    class="sd-table-cell sd-table-cell--bg-transparent ${columnIndex + 1 < headerData.length
                       ? 'sd-table-cell--divider'
                       : ''}"
                   >
@@ -226,13 +234,13 @@ export const Samples = {
           </tbody>
         </table>
         <div class="headline">Simple Table With Alternating Colors</div>
-        <table class="sd-table">
+        <table class="sd-table sample-table">
           <thead>
             ${(() => {
               return html`<tr>
                 ${headerData.map((cellData, columnIndex) => {
                   return html`<th
-                    class="sd-table-cell sd-table-cell--primary-100 ${columnIndex + 1 < headerData.length
+                    class="sd-table-cell sd-table-cell--bg-primary-100 ${columnIndex + 1 < headerData.length
                       ? 'sd-table-cell--divider'
                       : ''}"
                   >
@@ -248,8 +256,8 @@ export const Samples = {
                 ${rowData.map((cellData, columnIndex) => {
                   return html`<td
                     class="sd-table-cell ${rowIndex % 2 === 0
-                      ? 'sd-table-cell--white'
-                      : 'sd-table-cell--primary-100'} ${columnIndex + 1 < headerData.length &&
+                      ? 'sd-table-cell--bg-white'
+                      : 'sd-table-cell--bg-primary-100'} ${columnIndex + 1 < headerData.length &&
                     'sd-table-cell--divider'}"
                   >
                     ${cellData}
@@ -261,14 +269,10 @@ export const Samples = {
         </table>
 
         <div class="headline">Simple Table, First Column Fixed</div>
-        <div class="disclaimer">
-          This sample will be provided as soon as we have implemented the sd-scrollable component.
-        </div>
+        <div class="disclaimer">This sample will be provided soon.</div>
 
         <div class="headline">Multi Select Table</div>
-        <div class="disclaimer">
-          This sample will be provided as soon as we have implemented the sd-scrollable component.
-        </div>
+        <div class="disclaimer">This sample will be provided soon.</div>
       </div>
     `;
   }
