@@ -1,4 +1,4 @@
-name: dependabot-auto-merge
+name: (deps) Automatic PR merge
 
 on: pull_request_target
 
