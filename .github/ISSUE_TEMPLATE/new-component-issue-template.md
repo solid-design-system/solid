@@ -1,6 +1,6 @@
 ---
-name: Feature Issue
-about: Feature Issue Template
+name: New Component Issue
+about: New Component Issue Template
 title: 'feat: ✨ add sd-[COMPONENT_NAME]'
 labels: ''
 assignees: ''
