@@ -1,7 +1,6 @@
 import '../../solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { userEvent } from '@storybook/testing-library';
 import { waitUntil } from '@open-wc/testing-helpers';
 import { withActions } from '@storybook/addon-actions/decorator';
 import type { ConstantDefinition } from '../../../scripts/storybook/helper';
@@ -41,7 +40,6 @@ export default {
 
 /**
  * The `sd-navigation-item` in its default state as a horizontally oriented button.
- * It is a flexible component that can be used to quickly build navigations.
  */
 
 export const Default = {
