@@ -3,3 +3,6 @@
 @import './styles/leadtext/leadtext.css';
 @import './styles/paragraph/paragraph.css';
 @import './styles/mark/mark.css';
+
+@import './styles/avatar/avatar.css';
+@import './styles/quote/quote.css';
