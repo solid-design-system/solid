@@ -81,6 +81,7 @@ export const SummaryLength = {
 /**
  * Use the expand-icon and collapse-icon slots to change the expand and collapse icons, respectively.
  * To disable the animation, override the rotate property on the summary-icon part as shown below:
+ *
  * ```
  * sd-accordion.custom-icons::part(summary-icon) {
  *   rotate: none;

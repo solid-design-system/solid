@@ -32,7 +32,9 @@ export default (() => {
           preserveModulesRoot: 'src'
         },
         external: id => {
-          return (id.includes('lit') && !id.includes('utilities')) || id.includes('classix');
+          return (
+            id.includes('floating-ui') || (id.includes('lit') && !id.includes('utilities')) || id.includes('classix')
+          );
         },
         plugins: [
           // Resolve bare module specifiers to relative paths

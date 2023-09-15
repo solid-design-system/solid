@@ -5,6 +5,7 @@
 - [Functionality & Integration](#functionality--integration)
 - [How We Work](#how-we-work)
 - [Development Guidelines](#development-guidelines)
+- [Migration Guides](#migration-guides)
 - [Pull Requests](#pull-requests)
   - [Commit Messages](#commit-messages)
   - [Squash and Merge Your Changes](#squash-and-merge-your-changes)
@@ -38,6 +39,16 @@
   Components should use these tokens instead of individual styles as much as possible. Only where the tokens do not provide a styling, component specific styles should be added inside the [component-name].ts file
 - Components should be optimized for accessibility. Check the website of the [Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/WAI/standards-guidelines/wcag/) for more information on accessibility.
 
+## Adding Dependecies
+
+When utilizing external dependencies, it's crucial to prioritize security. Before integrating a new package, research it online, check for security advisories and community feedback, and assess its maintenance status and compatibility.
+
+We highly recommend to use websites e.g. https://nvd.nist.gov/vuln/search to check a dependency/package before adding them to the project.
+
+## Migration Guides
+
+Each new component in the Solid Design System, representing an old component from the Component Library, must have a migration guide. This helps developers to easily switch from the old component to the new one. The migration guide should be placed in the `packages/components/src/docs/Migration` folder. The migration guide should base on the [migration guide template](./templates/migration-guide-template.mdx) and be named by the old component name (e.g.`ui-button.mdx`).
+
 ## Pull Requests
 
 ### Commit Messages
@@ -53,7 +64,7 @@ Commits with type 'fix' will be associated with a patch release.
 Commits with type 'perf' will be associated with a patch release.
 ```
 
-**Remark:** Always think from the perspective of the person using our packages/components – will the final distribution/bundle change? If so, then it's always `feat` `fix` or `perf` – if not, it's one of the others. Please reach out if you're unsure.
+**Remark:** Always think from the perspective of the person using our packages/components – will the final distribution/bundle change? If so, then it's always `feat` `fix` or `perf` – if not, it's one of the others. Please reach out if you're unsure.
 
 ---
 

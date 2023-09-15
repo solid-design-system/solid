@@ -1,28 +1,26 @@
 import '../popup/popup';
 import { animateTo, stopAnimations } from '../../internal/animate';
-import { classMap } from 'lit/directives/class-map.js';
+import { css, html } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry';
 import { getTabbableBoundary } from '../../internal/tabbable';
-import { html } from 'lit';
 import { LocalizeController } from '../../utilities/localize';
 import { scrollIntoView } from '../../internal/scroll';
 import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch';
+import componentStyles from '../../styles/component.styles';
+import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
-import styles from './dropdown.styles';
-import type { CSSResultGroup } from 'lit';
 import type SdButton from '../button/button';
-import type SdIconButton from '../icon-button/icon-button';
-import type SdMenu from '../menu/menu';
-import type SdMenuItem from '../menu-item/menu-item';
+import type SdMenu from '../../_components/menu/menu'; // This import should be changed as soon as the menu is moved to the components folder
+import type SdMenuItem from '../../_components/menu-item/menu-item'; // This import should be changed as soon as the menu-item is moved to the components folder
 import type SdPopup from '../popup/popup';
 
 /**
  * @summary Dropdowns expose additional content that "drops down" in a panel.
  * @documentation https://solid.union-investment.com/[storybook-link]/dropdown
  * @status stable
- * @since 1.0
+ * @since 1.8
  *
  * @dependency sd-popup
  *
@@ -43,11 +41,9 @@ import type SdPopup from '../popup/popup';
  */
 @customElement('sd-dropdown')
 export default class SdDropdown extends SolidElement {
-  static styles: CSSResultGroup = styles;
-
-  @query('.dropdown') popup: SdPopup;
-  @query('.dropdown__trigger') trigger: HTMLSlotElement;
-  @query('.dropdown__panel') panel: HTMLSlotElement;
+  @query('#dropdown') popup: SdPopup;
+  @query('[part=trigger]') trigger: HTMLSlotElement;
+  @query('[part=panel]') panel: HTMLSlotElement;
 
   private readonly localize = new LocalizeController(this);
 
@@ -56,6 +52,11 @@ export default class SdDropdown extends SolidElement {
    * can use the `show()` and `hide()` methods and this attribute will reflect the dropdown's open state.
    */
   @property({ type: Boolean, reflect: true }) open = false;
+
+  /**
+   * Indicates whether or not the dropdown should be styled with rounded corners.
+   */
+  @property({ type: Boolean, reflect: true }) rounded = false;
 
   /**
    * The preferred placement of the dropdown panel. Note that the actual placement may vary as needed to keep the panel
@@ -90,11 +91,21 @@ export default class SdDropdown extends SolidElement {
    */
   @property({ attribute: false }) containingElement?: HTMLElement;
 
-  /** The distance in pixels from which to offset the panel away from its trigger. */
+  /** The distance in pixels from which to offset the panel away from its trigger. This defaults to `0` for `rounded=false` and to a minimum of `1` for `rounded=true`. */
   @property({ type: Number }) distance = 0;
 
   /** The distance in pixels from which to offset the panel along its trigger. */
   @property({ type: Number }) skidding = 0;
+
+  /**
+   * Indicates whether or not the dropdown should automatically resize its content's width/height regarding the available space on screen.
+   */
+  @property({ type: Boolean, reflect: true, attribute: 'no-auto-size' }) noAutoSize = false;
+
+  /**
+   * When set to true, the placement of the dropdown will not flip to the opposite site to keep it in view.
+   */
+  @property({ type: Boolean, reflect: true, attribute: 'no-flip' }) noFlip = false;
 
   /**
    * Enable this option to prevent the panel from being clipped when the component is placed inside a container with
@@ -300,7 +311,7 @@ export default class SdDropdown extends SolidElement {
         // Solid buttons have to update the internal button so it's announced correctly by screen readers
         case 'sd-button':
         case 'sd-icon-button':
-          target = (accessibleTrigger as SdButton | SdIconButton).button;
+          target = (accessibleTrigger as SdButton).button;
           break;
 
         default:
@@ -400,23 +411,20 @@ export default class SdDropdown extends SolidElement {
         part="base"
         id="dropdown"
         placement=${this.placement}
-        distance=${this.distance}
+        distance=${this.rounded && this.distance < 1 ? 1 : this.distance}
         skidding=${this.skidding}
         strategy=${this.hoist ? 'fixed' : 'absolute'}
-        flip
+        ?flip=${!this.noFlip}
         shift
         auto-size="vertical"
         auto-size-padding="10"
-        class=${classMap({
-      dropdown: true,
-      'dropdown--open': this.open
-    })}
+        ?active=${this.open}
       >
         <slot
           name="trigger"
           slot="anchor"
           part="trigger"
-          class="dropdown__trigger"
+          class="block"
           @click=${this.handleTriggerClick}
           @keydown=${this.handleTriggerKeyDown}
           @keyup=${this.handleTriggerKeyUp}
@@ -425,13 +433,58 @@ export default class SdDropdown extends SolidElement {
 
         <slot
           part="panel"
-          class="dropdown__panel"
+          class=${cx(
+            'shadow bg-white',
+            this.open ? 'block pointer-events-auto' : 'pointer-events-none',
+            this.rounded && 'rounded-md'
+          )}
           aria-hidden=${this.open ? 'false' : 'true'}
           aria-labelledby="dropdown"
         ></slot>
       </sd-popup>
     `;
   }
+
+  static styles = [
+    SolidElement.styles,
+    componentStyles,
+    css`
+      :host {
+        display: inline-block;
+      }
+
+      #dropdown::part(popup) {
+        z-index: var(--sd-z-index-dropdown);
+      }
+
+      #dropdown[data-current-placement^='top']::part(popup) {
+        transform-origin: bottom;
+      }
+
+      #dropdown[data-current-placement^='bottom']::part(popup) {
+        transform-origin: top;
+      }
+
+      #dropdown[data-current-placement^='left']::part(popup) {
+        transform-origin: right;
+      }
+
+      #dropdown[data-current-placement^='right']::part(popup) {
+        transform-origin: left;
+      }
+
+      /*
+      * Make sure that slotted content conforms to the popup's auto-size if:
+      * - it's an sd-menu
+      * - it's not the trigger and the dropdown is not set to no-auto-size
+      */
+      :host(:not([no-auto-size])) ::slotted(*:not([slot='trigger'])) {
+        overflow: auto;
+        max-width: var(--auto-size-available-width) !important;
+        max-height: var(--auto-size-available-height) !important;
+      }
+    `
+  ];
 }
 
 setDefaultAnimation('dropdown.show', {
