@@ -263,9 +263,9 @@ export default class SdTooltip extends SolidElement {
           arrow:base__arrow
         "
         class=${classMap({
-      tooltip: true,
-      'tooltip--open': this.open
-    })}
+          tooltip: true,
+          'tooltip--open': this.open
+        })}
         placement=${this.placement}
         distance=${this.distance}
         skidding=${this.skidding}

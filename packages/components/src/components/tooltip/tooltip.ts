@@ -1,12 +1,13 @@
 import '../popup/popup';
 import { animateTo, parseDuration, stopAnimations } from '../../internal/animate';
-import { classMap } from 'lit/directives/class-map.js';
-import { css, html } from 'lit';
+import { css, html, unsafeCSS } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry';
 import { LocalizeController } from '../../utilities/localize';
 import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch';
+import cx from 'classix';
+import InteractiveStyles from '../../styles/interactive/interactive.css?inline';
 import SolidElement from '../../internal/solid-element';
 import type SdPopup from '../popup/popup';
 
@@ -66,7 +67,9 @@ export default class SdTooltip extends SolidElement {
     | 'bottom-end'
     | 'left'
     | 'left-start'
-    | 'left-end' = 'top';
+    | 'left-end' = 'right';
+
+  @property() size: 'lg' | 'sm' = 'lg';
 
   /** Disables the tooltip so it won't show when triggered. */
   @property({ type: Boolean, reflect: true }) disabled = false;
@@ -156,10 +159,14 @@ export default class SdTooltip extends SolidElement {
   }
 
   private handleKeyDown(event: KeyboardEvent) {
-    // Pressing escape when the target element has focus should dismiss the tooltip
-    if (this.open && event.key === 'Escape') {
+    // Pressing escape, space or enter when the tooltip is open should dismiss the tooltip
+    if (this.open && (event.key === 'Escape' || event.key === 'Enter' || event.key === ' ')) {
+      event.preventDefault();
       event.stopPropagation();
       this.hide();
+    } else if ((event.key === 'Enter' || event.key === ' ') && !this.open) {
+      event.preventDefault();
+      this.show();
     }
   }
 
@@ -258,10 +265,7 @@ export default class SdTooltip extends SolidElement {
           popup:base__popup,
           arrow:base__arrow
         "
-        class=${classMap({
-          tooltip: true,
-          'tooltip--open': this.open
-        })}
+        class=${cx('tooltip', this.open && 'tooltip--open')}
         placement=${this.placement}
         distance=${this.distance}
         skidding=${this.skidding}
@@ -270,23 +274,74 @@ export default class SdTooltip extends SolidElement {
         shift
         arrow
       >
-        <slot slot="anchor" aria-describedby="tooltip">
-          <sd-icon library="system" name="info-sign"></sd-icon>
+        <slot slot="anchor" class=${cx(this.size === 'lg' ? 'text-2xl' : 'text-base')}>
+          <sd-icon library="system" name="info-sign" class="sd-interactive" tabindex="0"></sd-icon>
         </slot>
 
         <slot
           name="content"
           part="body"
           id="tooltip"
-          class="tooltip__body "
+          class="tooltip__body bg-primary text-white py-3 px-4 shadow"
           role="tooltiprole"
           aria-live=${this.open ? 'polite' : 'off'}
+          tabindex="0"
         >
           ${this.content}
         </slot>
       </sd-popup>
     `;
   }
+  static styles = [
+    SolidElement.styles,
+    unsafeCSS(InteractiveStyles),
+    css`
+      :host {
+        --max-width: 20rem;
+        --hide-delay: 0ms;
+        --show-delay: 150ms;
+
+        display: contents;
+      }
+
+      .tooltip::part(popup) {
+        pointer-events: none;
+        z-index: 10;
+      }
+
+      .tooltip[placement^='top']::part(popup) {
+        transform-origin: bottom;
+      }
+
+      .tooltip[placement^='bottom']::part(popup) {
+        transform-origin: top;
+      }
+
+      .tooltip[placement^='left']::part(popup) {
+        transform-origin: right;
+      }
+
+      .tooltip[placement^='right']::part(popup) {
+        transform-origin: left;
+      }
+
+      .tooltip__body {
+        display: block;
+        width: max-content;
+        border-radius: none;
+        font-family: Frutiger Neue fuer UI Web;
+        font-size: 14px;
+        font-weight: 350;
+        line-height: 21px;
+        pointer-events: none;
+      }
+
+      .tooltip {
+        --arrow-size: 10px;
+        --arrow-color: #00358e;
+      }
+    `
+  ];
 }
 
 setDefaultAnimation('tooltip.show', {
