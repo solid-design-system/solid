@@ -8,7 +8,7 @@ import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
 /**
- * @summary Flexible button / link component that can be used to quickly build navigations. Takes one of 3 forms: link (overrides all other if 'href' is provided), button (default), or accordion (if 'children' slot present).
+ * @summary Flexible button / link component that can be used to quickly build navigations. Takes one of 3 forms: link (overrides all other if 'href' is provided), button (default), or accordion (if 'children' slot defined).
  * @status experimental
  * @since 1.0
  *
@@ -21,11 +21,11 @@ import SolidElement from '../../internal/solid-element';
  * @slot description - *Vertical only: Slot used to provide a description for the navigation item.
  * @slot children - Slot used to provide nested child navigation elements. If provided, details and summary elements will be used. A chevron will be shown on the right side regardless of the chevron property.
  *
- * @csspart divider - The component's optional top divider.
  * @csspart base - The component's base wrapper including children.
  * @csspart content - The component's content excluding children.
- * @csspart description - The component's description area below its main content.
  * @csspart chevron - The container that wraps the chevron.
+ * @csspart description - The component's description area below its main content.
+ * @csspart divider - The component's optional top divider.
  *
  */
 @customElement('sd-navigation-item')
@@ -35,10 +35,10 @@ export default class SdNavigationItem extends SolidElement {
   /** The navigation item's href target. If provided, the navigation item will use an anchor tag otherwise it will use a button tag. The 'children' slot and accordion behavior will be ignored if an 'href' is provided. */
   @property({ reflect: true }) href = '';
 
-  /** Tells the browser where to open the link. Only used when `href` is present. */
+  /** Tells the browser where to open the link. Only used when `href` is defined. */
   @property() target: '_blank' | '_parent' | '_self' | '_top';
 
-  /** Tells the browser to download the linked file as this filename. Only used when `href` is present. */
+  /** Tells the browser to download the linked file as this filename. Only used when `href` is defined. */
   @property() download?: string;
 
   /** Indicates that the navigation item is currently selected. The aria-current attribute is set to "page" on the host if true. */
@@ -77,7 +77,7 @@ export default class SdNavigationItem extends SolidElement {
   }
 
   private isAccordion(): boolean {
-    return !this.href && this.hasSlotController.test('children') && this.vertical;
+    return !this.href && this.hasSlotController.test('children');
   }
 
   private handleClickButton(event: MouseEvent) {
@@ -128,7 +128,7 @@ export default class SdNavigationItem extends SolidElement {
       description: this.hasSlotController.test('description'),
       children: this.hasSlotController.test('children')
     };
-    const tag = isLink ? literal`a` : slots['children'] ? literal`summary` : literal`button`;
+    const tag = isLink ? literal`a` : isAccordion ? literal`summary` : literal`button`;
     const horizontalPaddingBottom = this.vertical ? 'pb-3' : 'pb-2';
 
     /* eslint-disable lit/no-invalid-html */
@@ -139,7 +139,7 @@ export default class SdNavigationItem extends SolidElement {
         class=${cx(
           'hover:bg-neutral-200 transition-all min-h-[48px] cursor-pointer relative',
           { base: 'text-base', larger: 'text-lg', smaller: 'text-[14px]' }[this.size],
-          this.disabled ? 'text-neutral-500 border-neutral-500 pointer-events-none' : 'text-primary',
+          this.disabled ? 'text-neutral-500 pointer-events-none' : 'text-primary',
           isAccordion ? 'flex flex-col' : 'inline-block w-full',
           this.divider && this.vertical && 'mt-[1px]',
           this.vertical ? 'px-8' : 'px-4'
@@ -159,7 +159,8 @@ export default class SdNavigationItem extends SolidElement {
         <div class=${cx(
           'absolute h-full w-full left-0 top-0 pointer-events-none',
           this.vertical ? 'border-l-4' : 'border-b-4',
-          this.current ? 'border-accent' : 'border-transparent'
+          this.current ? 'border-accent' : 'border-transparent',
+          this.disabled && 'border-neutral-500'
         )}></div>
         <span class=${cx(
           'relative pt-3 inline-flex justify-between items-center',
@@ -176,7 +177,7 @@ export default class SdNavigationItem extends SolidElement {
               : ''
           }
           <span class="inline-flex items-center flex-auto">
-            <slot part="content" class='inline mr-2'></slot>
+            <slot part="content" class='inline'></slot>
           </span>
           ${
             (this.chevron || slots['children']) && this.vertical
@@ -185,7 +186,10 @@ export default class SdNavigationItem extends SolidElement {
                   part="chevron"
                   library="system"
                   color="currentColor"
-                  class=${cx('h-6 w-6', isAccordion ? (this.open ? 'rotate-180' : 'rotate-0') : 'rotate-[270deg]')}
+                  class=${cx(
+                    'h-6 w-6 ml-2 transition-all',
+                    isAccordion ? (this.open ? 'rotate-180' : 'rotate-0') : 'rotate-[270deg]'
+                  )}
                 ></sd-icon>`
               : ''
           }

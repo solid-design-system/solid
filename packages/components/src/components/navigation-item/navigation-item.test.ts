@@ -67,32 +67,32 @@ describe('<sd-navigation-item>', () => {
         expect(el.shadowRoot!.querySelector('button[disabled]')).to.exist;
       });
 
-      // it('should not emit any events', async () => {
-      //   const el = await fixture<SdNavigationItem>(variants.button.disabled);
-      //   const button = el.shadowRoot!.querySelector('button');
-      //   const mouseEnterHandler = sinon.spy();
-      //   const mouseLeaveHandler = sinon.spy();
+      it('should not emit any events when disabled', async () => {
+        const el = await fixture<SdNavigationItem>(variants.button.disabled);
+        const button = el.shadowRoot!.querySelector('button');
+        const focusHandler = sinon.spy();
+        const clickHandler = sinon.spy();
 
-      //   el.addEventListener('sd-mouse-enter', mouseEnterHandler);
-      //   el.addEventListener('sd-mouse-leave', mouseLeaveHandler);
+        el.addEventListener('focus', focusHandler);
+        el.addEventListener('click', clickHandler);
 
-      //   // Trigger mouseenter event
-      //   const mouseEnterEvent = new MouseEvent('mouseenter');
-      //   button!.dispatchEvent(mouseEnterEvent);
+        // Trigger focus event
+        el.disabled = true; // Simulate focusing on the disabled element
+        el.focus();
 
-      //   // Wait for event handling
-      //   await el.updateComplete;
+        // Wait for event handling
+        await el.updateComplete;
 
-      //   // Trigger mouseleave event
-      //   const mouseLeaveEvent = new MouseEvent('mouseleave');
-      //   button!.dispatchEvent(mouseLeaveEvent);
+        // Simulate a click on the disabled element
+        const clickEvent = new MouseEvent('click');
+        button!.dispatchEvent(clickEvent);
 
-      //   // Wait for event handling
-      //   await el.updateComplete;
+        // Wait for event handling
+        await el.updateComplete;
 
-      //   expect(mouseEnterHandler).not.to.have.been.calledOnce;
-      //   expect(mouseLeaveHandler).not.to.have.been.calledOnce;
-      // });
+        expect(focusHandler.calledOnce).to.be.false;
+        expect(clickHandler.calledOnce).to.be.false;
+      });
     });
   });
 
@@ -122,26 +122,32 @@ describe('<sd-navigation-item>', () => {
     });
 
     // Events
-    // it('does not emit "sd-click" event when clicked', async () => {
-    //   const el = await fixture<SdNavigationItem>(variants.link.default);
-    //   const link = el.shadowRoot!.querySelector('a');
-    //   const clickHandler = sinon.spy();
+    it('should not emit any events when disabled', async () => {
+      const el = await fixture<SdNavigationItem>(variants.link.disabled);
+      const link = el.shadowRoot!.querySelector('a');
+      const focusHandler = sinon.spy();
+      const clickHandler = sinon.spy();
 
-    //   // Add an event listener
-    //   el.addEventListener('sd-click', clickHandler);
+      el.addEventListener('focus', focusHandler);
+      el.addEventListener('click', clickHandler);
 
-    //   // Dispatch a click event with a delay
-    //   setTimeout(() => {
-    //     const clickEvent = new MouseEvent('click');
-    //     link!.dispatchEvent(clickEvent);
-    //   });
+      // Trigger focus event
+      el.disabled = true; // Simulate focusing on the disabled element
+      el.focus();
 
-    //   // Wait for the event loop to process the click event
-    //   await new Promise(resolve => setTimeout(resolve, 0));
+      // Wait for event handling
+      await el.updateComplete;
 
-    //   // Ensure that the "sd-click" event was not emitted
-    //   expect(clickHandler.called).to.be.false;
-    // });
+      // Simulate a click on the disabled element
+      const clickEvent = new MouseEvent('click');
+      link!.dispatchEvent(clickEvent);
+
+      // Wait for event handling
+      await el.updateComplete;
+
+      expect(focusHandler.calledOnce).to.be.false;
+      expect(clickHandler.calledOnce).to.be.false;
+    });
 
     describe('when disabled', () => {
       it('passes accessibility test', async () => {
@@ -245,32 +251,43 @@ describe('<sd-navigation-item>', () => {
         expect(summary).attribute('aria-disabled');
       });
 
-      // it('should not emit any events', async () => {
-      //   const el = await fixture<SdNavigationItem>(variants.accordion.disabled);
-      //   const summary = el.shadowRoot!.querySelector('summary');
-      //   const mouseEnterHandler = sinon.spy();
-      //   const mouseLeaveHandler = sinon.spy();
+      it('should not emit any events when disabled', async () => {
+        const el = await fixture<SdNavigationItem>(variants.accordion.disabled);
+        const summary = el.shadowRoot!.querySelector('summary');
+        const focusHandler = sinon.spy();
+        const clickHandler = sinon.spy();
+        const showHandler = sinon.spy();
+        const hideHandler = sinon.spy();
 
-      //   el.addEventListener('sd-mouse-enter', mouseEnterHandler);
-      //   el.addEventListener('sd-mouse-leave', mouseLeaveHandler);
+        el.addEventListener('focus', focusHandler);
+        el.addEventListener('click', clickHandler);
+        el.addEventListener('sd-show', showHandler);
+        el.addEventListener('sd-hide', hideHandler);
 
-      //   // Trigger mouseenter event
-      //   const mouseEnterEvent = new MouseEvent('mouseenter');
-      //   summary!.dispatchEvent(mouseEnterEvent);
+        // Trigger focus event
+        el.disabled = true; // Simulate focusing on the disabled element
+        el.focus();
 
-      //   // Wait for event handling
-      //   await el.updateComplete;
+        // Wait for event handling
+        await el.updateComplete;
 
-      //   // Trigger mouseleave event
-      //   const mouseLeaveEvent = new MouseEvent('mouseleave');
-      //   summary!.dispatchEvent(mouseLeaveEvent);
+        // Simulate a click on the disabled element
+        const clickEvent = new MouseEvent('click');
+        summary!.dispatchEvent(clickEvent);
 
-      //   // Wait for event handling
-      //   await el.updateComplete;
+        // Wait for event handling
+        await el.updateComplete;
 
-      //   expect(mouseEnterHandler).not.to.have.been.calledOnce;
-      //   expect(mouseLeaveHandler).not.to.have.been.calledOnce;
-      // });
+        expect(focusHandler.calledOnce).to.be.false;
+        expect(clickHandler.calledOnce).to.be.false;
+        expect(showHandler.calledOnce).to.be.false;
+
+        // Simulate a second click on the disabled element
+        const clickAgainEvent = new MouseEvent('click');
+        summary!.dispatchEvent(clickAgainEvent);
+
+        expect(hideHandler.calledOnce).to.be.false;
+      });
     });
   });
 });
