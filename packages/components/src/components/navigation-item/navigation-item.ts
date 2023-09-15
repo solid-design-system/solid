@@ -10,7 +10,7 @@ import SolidElement from '../../internal/solid-element';
 /**
  * @summary Flexible button / link component that can be used to quickly build navigations. Takes one of 3 forms: link (overrides all other if 'href' is provided), button (default), or accordion (if 'children' slot defined).
  * @status experimental
- * @since 1.0
+ * @since 2.11.0
  *
  * @dependency sd-divider
  *
