@@ -1,6 +1,5 @@
 import '../../solid-components';
 import { html } from 'lit-html';
-import { ifDefined } from 'lit/directives/if-defined.js';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
 const { argTypes, parameters } = storybookDefaults('sd-table-cell');
