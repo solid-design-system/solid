@@ -14,7 +14,7 @@ export default {
 };
 
 /**
- * Default: This shows sd-avatar in its default state.
+ * Default: This shows quote in its default state.
  */
 
 export const Default = {
@@ -26,7 +26,7 @@ export const Default = {
       <img
         class="w-16 h-16 rounded-full overflow-hidden object-cover"
         src="./placeholders/family.jpg"
-        alt="Avatar Placeholder"
+        alt="A caring father, balancing one child on his shoulder and gently cradling another in his arms."
       />
       <div>
         <p class="sd-paragraph font-bold mb-1">Jane Miller</p>
@@ -37,11 +37,10 @@ export const Default = {
 };
 
 /**
- * Use the `inverted` class to make a paragraph with inverted colors.
+ * Use the `size` version to make a quote with different sizes.
  */
 
 export const Size = {
-  parameters: { controls: { exclude: ['sd-quote--size-...', 'sd-quote--inverted'] } },
   render: () => html` <div class="flex items-end gap-5">
     <div class="text-left text-black">
       <q class="block mb-6 text-3xl lg:text-4xl leading-tight"
@@ -51,7 +50,7 @@ export const Size = {
         <img
           class="w-16 h-16 rounded-full overflow-hidden object-cover"
           src="./placeholders/family.jpg"
-          alt="Avatar Placeholder"
+          alt="A caring father, balancing one child on his shoulder and gently cradling another in his arms."
         />
         <div>
           <p class="sd-paragraph font-bold mb-1">Jane Miller</p>
@@ -69,7 +68,7 @@ export const Size = {
         <img
           class="w-16 h-16 rounded-full overflow-hidden object-cover"
           src="./placeholders/family.jpg"
-          alt="Avatar Placeholder"
+          alt="A caring father, balancing one child on his shoulder and gently cradling another in his arms."
         />
         <div>
           <p class="sd-paragraph font-bold mb-1">Jane Miller</p>
@@ -85,7 +84,7 @@ export const Size = {
         <img
           class="w-16 h-16 rounded-full overflow-hidden object-cover"
           src="./placeholders/family.jpg"
-          alt="Avatar Placeholder"
+          alt="A caring father, balancing one child on his shoulder and gently cradling another in his arms."
         />
         <div>
           <p class="sd-paragraph font-bold mb-1">Jane Miller</p>
@@ -98,7 +97,7 @@ export const Size = {
 };
 
 /**
- * Use the `inverted` class to make a paragraph with inverted colors.
+ * Use the `inverted` version to make a quote with inverted colors.
  */
 
 export const Inverted = {
@@ -111,7 +110,7 @@ export const Inverted = {
         <img
           class="w-16 h-16 rounded-full overflow-hidden object-cover"
           src="./placeholders/family.jpg"
-          alt="Avatar Placeholder"
+          alt="A caring father, balancing one child on his shoulder and gently cradling another in his arms."
         />
         <div>
           <p class="sd-paragraph sd-paragraph--inverted font-bold mb-1">Jane Miller</p>
@@ -129,7 +128,7 @@ export const Inverted = {
         <img
           class="w-16 h-16 rounded-full overflow-hidden object-cover"
           src="./placeholders/family.jpg"
-          alt="Avatar Placeholder"
+          alt="A caring father, balancing one child on his shoulder and gently cradling another in his arms."
         />
         <div>
           <p class="sd-paragraph sd-paragraph--inverted font-bold mb-1">Jane Miller</p>
@@ -145,7 +144,7 @@ export const Inverted = {
         <img
           class="w-16 h-16 rounded-full overflow-hidden object-cover"
           src="./placeholders/family.jpg"
-          alt="Avatar Placeholder"
+          alt="A caring father, balancing one child on his shoulder and gently cradling another in his arms."
         />
         <div>
           <p class="sd-paragraph sd-paragraph--inverted font-bold mb-1">Jane Miller</p>
@@ -158,7 +157,7 @@ export const Inverted = {
 };
 
 /**
- * Use the `variant` class to make a avatar with variants.
+ * Use the `variant` version to make a quote with or whithout avatatar image.
  */
 
 export const Variant = {
@@ -171,7 +170,7 @@ export const Variant = {
         <img
           class="w-16 h-16 rounded-full overflow-hidden object-cover"
           src="./placeholders/family.jpg"
-          alt="Avatar Placeholder"
+          alt="A caring father, balancing one child on his shoulder and gently cradling another in his arms."
         />
         <div>
           <p class="sd-paragraph font-bold mb-1">Jane Miller</p>
@@ -189,7 +188,7 @@ export const Variant = {
         <img
           class="hidden w-16 h-16 rounded-full overflow-hidden object-cover"
           src="./placeholders/family.jpg"
-          alt="Avatar Placeholder"
+          alt="A caring father, balancing one child on his shoulder and gently cradling another in his arms."
         />
         <div>
           <p class="sd-paragraph font-bold mb-1">Jane Miller</p>
