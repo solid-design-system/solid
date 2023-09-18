@@ -148,7 +148,8 @@ const mocks = {
   /**
    * Content
    */
-  'https://union-investment.de/lorem-ipsum': '<h2>Imprint</h2>Ad Lorem aliquip adipisicing tempor in mollit proident.',
+  'https://union-investment.de/lorem-ipsum':
+    '<h2 class="font-bold text-xl mb-4">Imprint</h2>Ad Lorem aliquip adipisicing tempor in mollit proident.',
   /**
    * System icons
    */

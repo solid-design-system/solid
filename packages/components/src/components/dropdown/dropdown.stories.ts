@@ -43,11 +43,14 @@ export default {
           sd-dropdown:not([rounded]) .slot {
             border-radius: 0;
           }
-          td.template,
+          td.template > * {
+            padding: 24px;
+          }
+          td.template > *,
           .example,
           div.example {
-            width: 120px;
-            height: 70px;
+            width: 140px;
+            height: 100px;
           }
           .example {
             display: flex;
