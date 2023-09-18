@@ -223,7 +223,7 @@ export const Autofocus = {
           {
             type: 'slot',
             name: 'default',
-            value: `<input autofocus placeholder="I will have focus when the drawer is opened" style="width: 80%"></input>`
+            value: `<input autofocus placeholder="I will have focus when the drawer is opened" class="mt-3 block w-full rounded-md border-0 py-1.5 px-3 text-neutral-900 shadow-sm ring-1 ring-inset ring-neutral-300 placeholder:text-gray-400 focus-visible:focus-outline sm:text-sm sm:leading-6"> </div>`
           },
           {
             type: 'slot',
@@ -365,7 +365,7 @@ export const Mouseless = {
           {
             type: 'slot',
             name: 'default',
-            value: `<input placeholder="Default"></input>`
+            value: `<input autofocus placeholder="Placeholder" class="mt-3 block w-full rounded-md border-0 py-1.5 px-3 text-neutral-900 shadow-sm ring-1 ring-inset ring-neutral-300 placeholder:text-gray-400 focus-visible:focus-outline sm:text-sm sm:leading-6"> </div>`
           },
           {
             type: 'slot',
