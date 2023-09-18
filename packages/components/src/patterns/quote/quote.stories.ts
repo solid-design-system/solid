@@ -21,7 +21,7 @@ const img = (hidden = false) => html`
   />
 `;
 
-const information = (hidden = false, text = '4xl') => (hidden ? '' : html`<p class="mt-4 text-sm">4xl</p>`);
+const information = (hidden = false, text = '4xl') => (hidden ? '' : html`<p class="mt-4 text-sm">${text}</p>`);
 
 /**
  * Default: This shows quote in its default state.
