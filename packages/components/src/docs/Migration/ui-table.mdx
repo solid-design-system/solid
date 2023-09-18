@@ -1,6 +1,6 @@
-# Migration Guide: From `ui-table` to `sd-table-cell`
+# Migration Guide: From `ui-table` to `sd-table` and `sd-table-cell`
 
-The new `sd-table-cell` is designed to replace the `ui-table`. Rather than offering a complex component structure, `sd-table-cell` primarily focuses on providing CSS styles for `<table>`, `<th>`, and `<td>` elements.
+The new `sd-table` and `sd-table-cell` are designed to replace the `ui-table`. Rather than offering a complex component structure, they primarily focus on providing CSS styles for `<table>`, `<th>`, and `<td>` elements.
 
 As a result, tables no longer require the `ui-table` wrapper and instead can directly utilize the provided CSS classes.
 
@@ -8,7 +8,7 @@ As a result, tables no longer require the `ui-table` wrapper and instead can dir
 
 ### ❌ Removed Slots
 
-The following slots have been removed from the new [sd-table-cell] component:
+The following slots have been removed from the new components:
 
 1. [default]
 
@@ -30,19 +30,19 @@ The `sd-table-cell` class should be applied to both `<th>` and `<td>` elements. 
 
 This class adds a divider to the right side of the table cell.
 
-#### [sd-table-cell--transparent]
+#### [sd-table-cell--bg-transparent]
 
 This class adds a transparent background color to the table cell.
 
-#### [sd-table-cell--white]
+#### [sd-table-cell--bg-white]
 
 This class adds a white background color to the table cell.
 
-#### [sd-table-cell--primary-100]
+#### [sd-table-cell--bg-primary-100]
 
 This class adds a background color of primary-100 to the table cell.
 
-#### [sd-table-cell--neutral-100]
+#### [sd-table-cell--bg-neutral-100]
 
 This class adds a background color of neutral-100 to the table cell.
 
@@ -52,7 +52,7 @@ This class adds a background color of neutral-100 to the table cell.
 
 ### ❌ Removed Attributes
 
-Since the new [sd-table-cell] is no longer a component basically all attributes have been removed:
+Since the new [sd-table] and [sd-table-cell] are no longer components basically all attributes have been removed:
 
 1. [backgroundAlternating]
 2. [coloredHead]
@@ -68,7 +68,7 @@ Since the new [sd-table-cell] is no longer a component basically all attributes 
 
 ### ❌ Removed CSS variables
 
-The following CSS variables have been removed from the new [sd-table-cell] component:
+The following CSS variables have been removed from the new components:
 
 1. [--component-table-head-color]
 2. [--component-table-first-column-color]
@@ -79,7 +79,7 @@ The following CSS variables have been removed from the new [sd-table-cell] compo
 
 ### ❌ Removed Event Listeners:
 
-The following event listeners have been removed from the new [sd-table-cell] component:
+The following event listeners have been removed from the new components:
 
 1. [onGridReady]
 
@@ -89,7 +89,7 @@ The following event listeners have been removed from the new [sd-table-cell] com
 
 ### ❌ Removed Methods:
 
-The following methods have been removed from the new [sd-table-cell] component:
+The following methods have been removed from the new components:
 
 1. [componentDidLoad]
 
