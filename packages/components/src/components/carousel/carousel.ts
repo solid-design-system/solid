@@ -155,6 +155,7 @@ export default class SdCarousel extends SolidElement {
       }
 
       if (isNext) {
+        console.log('keydown-next');
         this.next();
       }
 
@@ -313,9 +314,7 @@ export default class SdCarousel extends SolidElement {
    * @param behavior - The behavior used for scrolling.
    */
   next(behavior: ScrollBehavior = 'smooth') {
-    if (this.activeSlide !== this.getSlides().length - 1) {
-      this.goToSlide(this.activeSlide + 1, behavior);
-    }
+    this.goToSlide(this.activeSlide + 1, behavior);
   }
 
   /**
@@ -477,7 +476,12 @@ export default class SdCarousel extends SolidElement {
               aria-label="${this.localize.term('nextSlide')}"
               aria-controls="scroll-container"
               aria-disabled="${nextEnabled ? 'false' : 'true'}"
-              @click=${nextEnabled ? () => this.next() : null}
+              @click=${nextEnabled
+                ? () => {
+                    console.log('click-next');
+                    this.next();
+                  }
+                : null}
             >
               <slot name="next-icon">
                 <sd-icon
