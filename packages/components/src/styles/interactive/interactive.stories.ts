@@ -1,4 +1,5 @@
 import '../../solid-components';
+import { html } from 'lit';
 
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
@@ -21,7 +22,31 @@ export default {
     { type: 'slot', name: 'default', value: 'Lorem Ipsum' },
     { type: 'attribute', name: 'sd-interactive--reset', value: true }
   ]),
-  argTypes
+  argTypes,
+  decorators: [
+    (story: any) => html`<style>
+        button.sd-interactive:not(.sd-interactive--reset) {
+          background-color: rgb(239, 239, 239);
+          border: 1px solid rgb(204, 204, 204);
+          border-radius: 4px;
+          color: rgb(51, 51, 51);
+          cursor: pointer;
+          font-family: 'Roboto', sans-serif;
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 20px;
+          padding: 8px 16px;
+        }
+        button.sd-interactive:not(.sd-interactive--reset):hover {
+          background-color: rgb(230, 230, 230);
+          border-color: rgb(204, 204, 204);
+          color: rgb(51, 51, 51) !important;
+        }
+        button.sd-interactive:not(.sd-interactive--reset):active {
+          background-color: rgb(204, 204, 204);
+        }</style
+      >${story()}`
+  ]
 };
 
 /**

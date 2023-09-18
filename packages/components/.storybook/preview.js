@@ -1,6 +1,7 @@
 import { setCustomElementsManifest } from '@storybook/web-components';
 import 'normalize.css';
 import '../src/solid-styles.css';
+import '../src/styles/tailwind.css';
 import { fetchStyleComponents } from '../scripts/storybook/styles-helper';
 import { registerIconLibrary } from '../src/utilities/icon-library';
 import { storybookUtilities } from '../scripts/storybook/helper';
@@ -147,7 +148,8 @@ const mocks = {
   /**
    * Content
    */
-  'https://union-investment.de/lorem-ipsum': '<h2>Imprint</h2>Ad Lorem aliquip adipisicing tempor in mollit proident.',
+  'https://union-investment.de/lorem-ipsum':
+    '<h2 class="font-bold text-xl mb-4">Imprint</h2>Ad Lorem aliquip adipisicing tempor in mollit proident.',
   /**
    * System icons
    */
