@@ -139,7 +139,7 @@ export const Inverted = {
 };
 
 /**
- * Use the `variant` version to make a quote with or whithout avatatar image.
+ * Use the `variant` version to make a quote with or without avatar image.
  */
 
 export const Variant = {
@@ -155,7 +155,7 @@ export const Variant = {
           <p class="sd-paragraph sd-paragraph--size-sm">Job Title</p>
         </div>
       </div>
-      ${information(false, 'with profil image')}
+      ${information(false, 'with profile image')}
     </div>
 
     <div class="text-left text-black">
@@ -169,7 +169,7 @@ export const Variant = {
           <p class="sd-paragraph sd-paragraph--size-sm">Job Title</p>
         </div>
       </div>
-      ${information(false, 'without profil image')}
+      ${information(false, 'without profile image')}
     </div>
   </div>`
 };
