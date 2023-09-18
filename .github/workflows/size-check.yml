@@ -28,7 +28,7 @@ jobs:
         run: PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=true pnpm i
 
       - name: build
-        run: cd packages/components && pnpm build.components
+        run: cd packages/components && pnpm build/components
 
       - name: Calculate package size
         id: calc_size
