@@ -1,7 +1,0 @@
-.sd-avatar {
-  @apply w-16 h-16 rounded-full overflow-hidden object-cover;
-
-  &--variant-square {
-    @apply rounded-none;
-  }
-}
