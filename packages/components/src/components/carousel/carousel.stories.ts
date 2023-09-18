@@ -6,7 +6,7 @@ import { userEvent } from '@storybook/testing-library';
 import { waitUntil } from '@open-wc/testing-helpers';
 
 const { argTypes, parameters } = storybookDefaults('sd-carousel');
-const { overrideArgs } = storybookHelpers('sd-carousel-item');
+const { overrideArgs } = storybookHelpers('sd-carousel');
 const { generateTemplate } = storybookTemplate('sd-carousel');
 
 export default {

@@ -155,7 +155,6 @@ export default class SdCarousel extends SolidElement {
       }
 
       if (isNext) {
-        console.log('keydown-next');
         this.next();
       }
 
