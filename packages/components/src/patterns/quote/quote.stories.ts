@@ -2,7 +2,7 @@ import '../../solid-components';
 import { html } from 'lit-html';
 
 export default {
-  title: 'Pattern/Quote',
+  title: 'Pattern/quote',
   component: 'Quote',
   parameters: {
     chromatic: { disableSnapshot: true },
