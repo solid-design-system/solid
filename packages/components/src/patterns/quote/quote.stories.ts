@@ -13,21 +13,27 @@ export default {
   }
 };
 
+const img = (hidden = false) => html`
+  <img
+    class="w-16 h-16 rounded-full overflow-hidden object-cover ${hidden ? 'hidden' : ''}"
+    src="./placeholders/family.jpg"
+    alt="A caring father, balancing one child on his shoulder and gently cradling another in his arms."
+  />
+`;
+
+const information = (hidden = false, text = '4xl') => (hidden ? '' : html`<p class="mt-4 text-sm">4xl</p>`);
+
 /**
  * Default: This shows quote in its default state.
  */
 
 export const Default = {
-  render: () => html` <div class="text-left">
+  render: () => html`<div class="text-left">
     <q class="block mb-6 text-3xl lg:text-4xl leading-tight"
       >Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</q
     >
     <div class="gap-4 flex items-center">
-      <img
-        class="w-16 h-16 rounded-full overflow-hidden object-cover"
-        src="./placeholders/family.jpg"
-        alt="A caring father, balancing one child on his shoulder and gently cradling another in his arms."
-      />
+      ${img()}
       <div>
         <p class="sd-paragraph font-bold mb-1">Jane Miller</p>
         <p class="sd-paragraph sd-paragraph--size-sm">Job Title</p>
@@ -47,17 +53,13 @@ export const Size = {
         >Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</q
       >
       <div class="gap-6 flex items-center">
-        <img
-          class="w-16 h-16 rounded-full overflow-hidden object-cover"
-          src="./placeholders/family.jpg"
-          alt="A caring father, balancing one child on his shoulder and gently cradling another in his arms."
-        />
+        ${img()}
         <div>
           <p class="sd-paragraph font-bold mb-1">Jane Miller</p>
           <p class="sd-paragraph sd-paragraph--size-sm">Job Title</p>
         </div>
       </div>
-      <p class="mt-4 text-sm">4xl</p>
+      ${information()}
     </div>
 
     <div class="text-left text-black">
@@ -65,33 +67,25 @@ export const Size = {
         >Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</q
       >
       <div class="gap-6 flex items-center">
-        <img
-          class="w-16 h-16 rounded-full overflow-hidden object-cover"
-          src="./placeholders/family.jpg"
-          alt="A caring father, balancing one child on his shoulder and gently cradling another in his arms."
-        />
+        ${img()}
         <div>
           <p class="sd-paragraph font-bold mb-1">Jane Miller</p>
           <p class="sd-paragraph sd-paragraph--size-sm">Job Title</p>
         </div>
       </div>
-      <p class="mt-4 text-sm">3xl</p>
+      ${information(false, '3xl')}
     </div>
 
     <div class="text-left text-black">
       <q class="block mb-4 text-xl leading-tight">Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</q>
       <div class="gap-4 flex items-center">
-        <img
-          class="w-16 h-16 rounded-full overflow-hidden object-cover"
-          src="./placeholders/family.jpg"
-          alt="A caring father, balancing one child on his shoulder and gently cradling another in his arms."
-        />
+        ${img()}
         <div>
           <p class="sd-paragraph font-bold mb-1">Jane Miller</p>
           <p class="sd-paragraph sd-paragraph--size-sm">Job Title</p>
         </div>
       </div>
-      <p class="mt-4 text-sm">xl</p>
+      ${information(false, 'xl')}
     </div>
   </div>`
 };
@@ -107,17 +101,13 @@ export const Inverted = {
         >Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</q
       >
       <div class="gap-6 flex items-center">
-        <img
-          class="w-16 h-16 rounded-full overflow-hidden object-cover"
-          src="./placeholders/family.jpg"
-          alt="A caring father, balancing one child on his shoulder and gently cradling another in his arms."
-        />
+        ${img()}
         <div>
           <p class="sd-paragraph sd-paragraph--inverted font-bold mb-1">Jane Miller</p>
           <p class="sd-paragraph sd-paragraph--size-sm sd-paragraph--inverted">Job Title</p>
         </div>
       </div>
-      <p class="mt-4 text-sm">4xl</p>
+      ${information()}
     </div>
 
     <div class="text-left text-white">
@@ -125,33 +115,25 @@ export const Inverted = {
         >Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</q
       >
       <div class="gap-6 flex items-center">
-        <img
-          class="w-16 h-16 rounded-full overflow-hidden object-cover"
-          src="./placeholders/family.jpg"
-          alt="A caring father, balancing one child on his shoulder and gently cradling another in his arms."
-        />
+        ${img()}
         <div>
           <p class="sd-paragraph sd-paragraph--inverted font-bold mb-1">Jane Miller</p>
           <p class="sd-paragraph sd-paragraph--size-sm sd-paragraph--inverted">Job Title</p>
         </div>
       </div>
-      <p class="mt-4 text-sm">3xl</p>
+      ${information(false, '3xl')}
     </div>
 
     <div class="text-left text-white">
       <q class="block mb-4 text-xl leading-tight">Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</q>
       <div class="gap-4 flex items-center">
-        <img
-          class="w-16 h-16 rounded-full overflow-hidden object-cover"
-          src="./placeholders/family.jpg"
-          alt="A caring father, balancing one child on his shoulder and gently cradling another in his arms."
-        />
+        ${img()}
         <div>
           <p class="sd-paragraph sd-paragraph--inverted font-bold mb-1">Jane Miller</p>
           <p class="sd-paragraph sd-paragraph--size-sm sd-paragraph--inverted">Job Title</p>
         </div>
       </div>
-      <p class="mt-4 text-sm">xl</p>
+      ${information(false, 'xl')}
     </div>
   </div>`
 };
@@ -167,17 +149,13 @@ export const Variant = {
         >Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</q
       >
       <div class="gap-6 flex items-center">
-        <img
-          class="w-16 h-16 rounded-full overflow-hidden object-cover"
-          src="./placeholders/family.jpg"
-          alt="A caring father, balancing one child on his shoulder and gently cradling another in his arms."
-        />
+        ${img()}
         <div>
           <p class="sd-paragraph font-bold mb-1">Jane Miller</p>
           <p class="sd-paragraph sd-paragraph--size-sm">Job Title</p>
         </div>
       </div>
-      <p class="mt-4 text-sm">with profil image</p>
+      ${information(false, 'with profil image')}
     </div>
 
     <div class="text-left text-black">
@@ -185,17 +163,13 @@ export const Variant = {
         >Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</q
       >
       <div class="gap-6 flex items-center">
-        <img
-          class="hidden w-16 h-16 rounded-full overflow-hidden object-cover"
-          src="./placeholders/family.jpg"
-          alt="A caring father, balancing one child on his shoulder and gently cradling another in his arms."
-        />
+        ${img(true)}
         <div>
           <p class="sd-paragraph font-bold mb-1">Jane Miller</p>
           <p class="sd-paragraph sd-paragraph--size-sm">Job Title</p>
         </div>
       </div>
-      <p class="mt-4 text-sm">without profil image</p>
+      ${information(false, 'without profil image')}
     </div>
   </div>`
 };
