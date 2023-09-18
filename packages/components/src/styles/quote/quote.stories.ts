@@ -57,7 +57,7 @@ export const Default = {
  */
 
 export const Size = {
-  parameters: { controls: { exclude: ['sd-quote--size-...'] } },
+  parameters: { controls: { exclude: ['sd-quote--size-...', 'sd-quote--inverted'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -94,7 +94,7 @@ export const Inverted = {
  */
 
 export const Variant = {
-  parameters: { controls: { exclude: ['sd-quote--image'] } },
+  parameters: { controls: { exclude: ['sd-quote--image', 'sd-quote--inverted'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
