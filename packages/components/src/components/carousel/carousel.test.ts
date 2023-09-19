@@ -233,6 +233,35 @@ describe('<sd-carousel>', () => {
     });
   });
 
+  describe('when `slides-per-move` attribute is provided', () => {
+    it('should set the granularity of snapping', async () => {
+      // Arrange
+      const expectedSnapGranularity = 2;
+      const el = await fixture<SdCarousel>(html`
+        <sd-carousel slides-per-move="${expectedSnapGranularity}">
+          <sd-carousel-item>Node 1</sd-carousel-item>
+          <sd-carousel-item>Node 2</sd-carousel-item>
+          <sd-carousel-item>Node 3</sd-carousel-item>
+          <sd-carousel-item>Node 4</sd-carousel-item>
+        </sd-carousel>
+      `);
+
+      // Act
+      await el.updateComplete;
+
+      // Assert
+      for (let i = 0; i < el.children.length; i++) {
+        const child = el.children[i] as HTMLElement;
+
+        if (i % expectedSnapGranularity === 0) {
+          expect(child.style.getPropertyValue('scroll-snap-align')).to.be.equal('');
+        } else {
+          expect(child.style.getPropertyValue('scroll-snap-align')).to.be.equal('none');
+        }
+      }
+    });
+  });
+
   describe('Navigation controls', () => {
     describe('when the user clicks the next button', () => {
       it('should scroll to the next slide', async () => {
