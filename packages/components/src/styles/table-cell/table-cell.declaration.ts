@@ -12,8 +12,9 @@ export default {
     },
     {
       name: 'sd-table-cell--bg-...',
-      options: ['transparent', 'white', 'primary-100', 'neutral-100'],
-      description: 'Applies the selected backround-color to table cell.'
+      options: ['white', 'primary-100', 'neutral-100'],
+      description:
+        'Applies the selected background-color to the table cell. If not selected, a transparent background-color is used per default.'
     }
   ]
 } satisfies Style;
