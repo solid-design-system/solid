@@ -4,6 +4,6 @@ export default {
   styleName: 'sd-table',
   summary: 'A table is organized structured content, used for scanning, comparing, and analyzing the data.',
   status: 'stable',
-  since: '1.12',
+  since: '1.13',
   attributes: []
 } satisfies Style;
