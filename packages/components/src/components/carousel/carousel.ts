@@ -65,6 +65,12 @@ export default class SdCarousel extends SolidElement {
   /** Specifies how many slides should be shown at a given time.  */
   @property({ type: Number, attribute: 'slides-per-page' }) slidesPerPage = 1;
 
+  /**
+   * Specifies the number of slides the carousel will advance when scrolling, useful when specifying a `slides-per-page`
+   * greater than one.
+   */
+  @property({ type: Number, attribute: 'slides-per-move' }) slidesPerMove = 1;
+
   @query('slot:not([name])') defaultSlot: HTMLSlotElement;
   @query('.carousel__slides') scrollContainer: HTMLElement;
   @query('.carousel__pagination') paginationContainer: HTMLElement;
@@ -290,6 +296,21 @@ export default class SdCarousel extends SolidElement {
     }
   }
 
+  @watch('slidesPerMove')
+  handleSlidesPerMoveChange() {
+    const slides = this.getSlides({ excludeClones: false });
+
+    const slidesPerMove = this.slidesPerMove;
+    slides.forEach((slide, i) => {
+      const shouldSnap = Math.abs(i - slidesPerMove) % slidesPerMove === 0;
+      if (shouldSnap) {
+        slide.style.removeProperty('scroll-snap-align');
+      } else {
+        slide.style.setProperty('scroll-snap-align', 'none');
+      }
+    });
+  }
+
   @watch('autoplay')
   handleAutoplayChange() {
     this.autoplayController.stop();
@@ -304,7 +325,15 @@ export default class SdCarousel extends SolidElement {
    * @param behavior - The behavior used for scrolling.
    */
   previous(behavior: ScrollBehavior = 'smooth') {
-    this.goToSlide(this.activeSlide - 1, behavior);
+    let previousIndex = this.activeSlide || this.activeSlide - this.slidesPerMove;
+    let canSnap = false;
+
+    while (!canSnap && previousIndex > 0) {
+      previousIndex -= 1;
+      canSnap = Math.abs(previousIndex - this.slidesPerMove) % this.slidesPerMove === 0;
+    }
+
+    this.goToSlide(previousIndex, behavior);
   }
 
   /**
@@ -313,7 +342,7 @@ export default class SdCarousel extends SolidElement {
    * @param behavior - The behavior used for scrolling.
    */
   next(behavior: ScrollBehavior = 'smooth') {
-    this.goToSlide(this.activeSlide + 1, behavior);
+    this.goToSlide(this.activeSlide + this.slidesPerMove, behavior);
   }
 
   /**

@@ -137,6 +137,28 @@ export const SlidesPerPage = {
   }
 };
 
+/**
+ * Use `slides-per-move` to set how many slides the carousel advances when scrolling. Useful when specifying a `slides-per-page`
+ * greater than one.
+ */
+
+export const SlidesPerMove = {
+  parameters: { controls: { exclude: 'slides-per-move' } },
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        y: { type: 'attribute', name: 'slides-per-move', values: [1, 2] }
+      },
+      constants: [
+        { type: 'attribute', name: 'variant', value: 'dot' },
+        { type: 'attribute', name: 'slides-per-page', value: 2 },
+        { type: 'attribute', name: 'loop', value: 'true' }
+      ],
+      args
+    });
+  }
+};
+
 export const Parts = {
   parameters: {
     controls: {
