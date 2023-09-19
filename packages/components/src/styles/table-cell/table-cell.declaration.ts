@@ -4,7 +4,7 @@ export default {
   styleName: 'sd-table-cell',
   summary: 'A table cell is a single cell inside a table, used to display discrete data elements.',
   status: 'stable',
-  since: '1.12',
+  since: '1.13',
   attributes: [
     {
       name: 'sd-table-cell--divider',
