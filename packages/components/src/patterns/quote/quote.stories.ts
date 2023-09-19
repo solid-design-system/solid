@@ -28,7 +28,7 @@ const information = (hidden = false, text = '4xl') => (hidden ? '' : html`<p cla
  */
 
 export const Default = {
-  render: () => html`<div class="text-left">
+  render: () => html`<div class="text-left text-black">
     <q class="block mb-6 text-3xl lg:text-4xl leading-tight"
       >Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</q
     >
