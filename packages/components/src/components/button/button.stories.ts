@@ -313,28 +313,57 @@ export const Sample = {
   name: 'Example: sd-button with sd-badge',
   parameters: { controls: { exclude: ['variant', 'size', 'inverted'] } },
   render: (args: any) => {
-    return html`
-    ${[
-      { type: 'attribute', name: 'variant', values: ['primary'], constant: `Label<sd-badge size="md">8</sd-badge>` }, 
-      { type: 'attribute', name: 'variant', values: ['primary'], constant: `Label<sd-badge variant="success" size="md">999+</sd-badge>` }, 
-      { type: 'slot', name: 'default', values: [{ value: '<sd-icon library="global-resources" name="system/picture" slot="icon-left"></sd-icon><sd-badge variant="default" size="lg">8</sd-badge> Label', title: 'left icon' }], constant: `` }, 
-      { type: 'attribute', name: 'size', values: ['lg'], constant: `<sd-icon library="global-resources" name="system/picture"></sd-icon><sd-badge variant="success" size="lg">8</sd-badge>` }, 
-      { type: 'attribute', name: 'size', values: ['md'], constant: `<sd-icon library="global-resources" name="system/picture"></sd-icon><sd-badge variant="error" size="md">8</sd-badge>` }, 
-      { type: 'attribute', name: 'size', values: ['sm'], constant: `<sd-icon library="global-resources" name="system/picture"></sd-icon><sd-badge size="sm"></sd-badge>`}, 
+    return html` ${[
+      { type: 'attribute', name: 'variant', values: ['primary'], constant: `Label<sd-badge size="md">8</sd-badge>` },
+      {
+        type: 'attribute',
+        name: 'variant',
+        values: ['primary'],
+        constant: `Label<sd-badge variant="success" size="md">999+</sd-badge>`
+      },
+      {
+        type: 'slot',
+        name: 'default',
+        values: [
+          {
+            value:
+              '<sd-icon library="global-resources" name="system/picture" slot="icon-left"></sd-icon><sd-badge variant="default" size="lg">8</sd-badge> Label',
+            title: 'left icon'
+          }
+        ],
+        constant: ``
+      },
+      {
+        type: 'attribute',
+        name: 'size',
+        values: ['lg'],
+        constant: `<sd-icon library="global-resources" name="system/picture"></sd-icon><sd-badge variant="success" size="lg">8</sd-badge>`
+      },
+      {
+        type: 'attribute',
+        name: 'size',
+        values: ['md'],
+        constant: `<sd-icon library="global-resources" name="system/picture"></sd-icon><sd-badge variant="error" size="md">8</sd-badge>`
+      },
+      {
+        type: 'attribute',
+        name: 'size',
+        values: ['sm'],
+        constant: `<sd-icon library="global-resources" name="system/picture"></sd-icon><sd-badge size="sm"></sd-badge>`
+      }
     ].map(button =>
       generateTemplate({
         axis: {
-          y: [
-            { type: button.type === 'attribute' ? 'attribute' : 'slot', name: button.name, values: button.values },
-          ],
+          y: [{ type: button.type === 'attribute' ? 'attribute' : 'slot', name: button.name, values: button.values }],
           x: { type: 'attribute', name: 'inverted', values: [false, true] }
         },
-  
+
         constants: { type: 'slot', name: 'default', value: `${button.constant}` },
         args,
         options: {
           templateBackgrounds: { alternate: 'x', colors: ['white', '#00358E'] }
         }
-      }))}`
+      })
+    )}`;
   }
 };
