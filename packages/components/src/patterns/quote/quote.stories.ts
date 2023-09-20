@@ -24,7 +24,9 @@ const img = (hidden = false) => html`
 const information = (hidden = false, text = '4xl') => (hidden ? '' : html`<p class="mt-4 text-sm">${text}</p>`);
 
 /**
- * Default: This shows quote in its default state.
+ * The default version of a `quote` pattern showcases a quote in an appealing layout,
+ * accompanied by an image of the speaker, along with their name and job description.
+ * This adds context and personality to the quote, making it more engaging and relatable.
  */
 
 export const Default = {
@@ -43,7 +45,8 @@ export const Default = {
 };
 
 /**
- * Use the `size` version to make a quote with different sizes.
+ * This version of the quote provides flexibility in terms of `size` and offers three options: 4xl, 3xl, and xl.
+ * This allows you to choose the size that best fits your layout, while maintaining a cohesive and impactful visual presentation.
  */
 
 export const Size = {
@@ -91,7 +94,9 @@ export const Size = {
 };
 
 /**
- * Use the `inverted` version to make a quote with inverted colors.
+ * This version, called 'inverted', maintains the flexibility of the quote component. It primarily
+ * focuses on changing all text within the component to white, ensuring readability and adaptability
+ * for various branding requirements.
  */
 
 export const Inverted = {
@@ -139,7 +144,9 @@ export const Inverted = {
 };
 
 /**
- * Use the `variant` version to make a quote with or without avatar image.
+ * The `variant` version of this quote provides additional flexibility by allowing you to toggle
+ * the avatar image on or off. This enables you to use the component with or without a user image,
+ * catering to your design needs.
  */
 
 export const Variant = {
