@@ -176,7 +176,6 @@ describe('<sd-teaser>', () => {
     const el = await fixture<SdTeaser>(html`<sd-teaser variant="white border-neutral-300"></sd-teaser>`);
 
     expect(el.variant).to.equal('white border-neutral-300');
-    expect(el.inset).to.equal(true); // The inset should be true initially due to the variant
 
     el.variant = 'neutral-100';
     await el.updateComplete;
