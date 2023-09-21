@@ -445,8 +445,8 @@ export default class SdPopup extends SolidElement {
     componentStyles,
     css`
       :host {
-        --arrow-color: var(--sd-color-neutral-1000);
-        --arrow-size: 6px;
+        --arrow-color: var(--arrow-color);
+        --arrow-size: 10px;
 
         /*
      * These properties are computed to account for the arrow's dimensions after being rotated 45º. The constant

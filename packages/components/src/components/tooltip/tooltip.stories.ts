@@ -1,7 +1,9 @@
 import '../../solid-components';
 import { html } from 'lit';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
+import { userEvent } from '@storybook/testing-library';
 import { withActions } from '@storybook/addon-actions/decorator';
+import { waitUntil } from '@open-wc/testing-helpers';
 
 const { argTypes, parameters } = storybookDefaults('sd-tooltip');
 const { overrideArgs } = storybookHelpers('sd-tooltip');
@@ -17,9 +19,9 @@ export default {
       value: true
     },
     {
-      type: 'slot',
+      type: 'attribute',
       name: 'content',
-      value: `<div slot='content'>Lorem ipsum sic semper</div>`
+      value: `Lorem ipsum sic semper`
     }
   ]),
   argTypes,
@@ -75,24 +77,6 @@ export const Default = {
   }
 };
 
-export const Content = {
-  parameters: {
-    controls: { exclude: 'content' }
-  },
-  render: (args: any) => {
-    return generateTemplate({
-      constants: [
-        {
-          type: 'attribute',
-          name: 'content',
-          value: 'Lorem ipsum dolor sit amet'
-        }
-      ],
-      args
-    });
-  }
-};
-
 export const Placement = {
   parameters: { controls: { exclude: ['placement', 'open'] } },
   render: (args: any) => {
@@ -135,22 +119,83 @@ export const Size = {
           name: 'size'
         }
       },
-      args
+      args,
+      constants: [{ type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' }]
     })
 };
 
-export const Other = {
-  parameters: { controls: { exclude: ['size', 'open'] } },
+export const Disabled = {
+  parameters: { controls: { exclude: ['disabled', 'open'] } },
   render: (args: any) =>
     generateTemplate({
       axis: {
         x: {
           type: 'attribute',
-          name: 'size'
+          name: 'disabled'
         }
       },
-      args
+      args,
+      constants: [{ type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' }]
     })
+};
+
+export const Content = {
+  parameters: {
+    controls: { exclude: 'content' }
+  },
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        x: {
+          type: 'slot',
+          name: 'content',
+          values: [
+            {
+              value: `<div slot='content'>Lorem ipsum sic semper</div>`,
+              title: 'short'
+            },
+            {
+              value: `<div slot='content' style='width: 150px; height:200px; overflow:scroll;'>Lorem ipsum sic semper dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl quis ultrices aliquam, nunc nisl aliquet nunc, quis aliquam nisl nisl quis nisl. Nulla euismod, nisl quis ultrices aliquam, nunc nisl aliquet nunc, quis aliquam nisl nisl quis nisl.</div>`,
+              title: 'long with fixed size'
+            }
+          ]
+        }
+      },
+      args,
+      constants: [{ type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' }]
+    });
+  }
+};
+
+/**
+ * Use the `default` and `content` slots in case you need to change them.
+ *
+ */
+
+export const DifferentSlots = {
+  parameters: {
+    controls: { exclude: ['default', 'content', 'open'] }
+  },
+  render: (args: any) => {
+    return html` ${['default', 'content'].map(slot =>
+      generateTemplate({
+        axis: {
+          x: {
+            type: 'slot',
+            name: slot,
+            title: 'slot=...',
+            values: [
+              {
+                value: slot === 'default' ? `<span>Tooltip</span>` : `<div slot='content'><b>Headline<b></div>`,
+                title: `${slot} slot`
+              }
+            ]
+          }
+        },
+        args
+      })
+    )}`;
+  }
 };
 
 export const Slots = {
@@ -184,29 +229,20 @@ export const Slots = {
   }
 };
 
-export const Parts = {
+export const Mouseless = {
   parameters: {
-    controls: { exclude: ['base', 'body', 'open'] }
+    controls: {
+      exclude: ['open']
+    }
   },
   render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: {
-          type: 'template',
-          name: 'sd-accordion::part(...){outline: solid 2px red}',
-          values: ['base', 'body'].map(part => {
-            return {
-              title: part,
-              value: `<style>#part-${part} sd-accordion::part(${part}){outline: solid 2px red}</style><div id="part-${part}">%TEMPLATE%</div>`
-            };
-          })
-        }
-      },
-      constants: [
-        { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' },
-        { type: 'attribute', name: 'open', value: true }
-      ],
-      args
-    });
+    return html`<div class="mouseless">${generateTemplate({ args })}</div>`;
+  },
+  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
+    const el = canvasElement.querySelector('.mouseless sd-tooltip');
+    await waitUntil(() => el?.shadowRoot?.querySelector('#tooltip'));
+    await waitUntil(() => el?.shadowRoot?.querySelector('sd-icon'));
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    await userEvent.type(el!.shadowRoot!.querySelector('sd-icon')!, '{return}', { pointerEventsCheck: 0 });
   }
 };

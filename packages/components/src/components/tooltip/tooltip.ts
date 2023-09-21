@@ -74,21 +74,15 @@ export default class SdTooltip extends SolidElement {
   /** Disables the tooltip so it won't show when triggered. */
   @property({ type: Boolean, reflect: true }) disabled = false;
 
-  /** The distance in pixels from which to offset the tooltip away from its target. */
-  @property({ type: Number }) distance = 8;
-
   /** Indicates whether or not the tooltip is open. You can use this in lieu of the show/hide methods. */
   @property({ type: Boolean, reflect: true }) open = false;
-
-  /** The distance in pixels from which to offset the tooltip along its target. */
-  @property({ type: Number }) skidding = 0;
 
   /**
    * Controls how the tooltip is activated. Possible options include `click`, `hover`, `focus`, and `manual`. Multiple
    * options can be passed by separating them with a space. When manual is used, the tooltip must be activated
    * programmatically.
    */
-  @property() trigger = 'hover focus';
+  @property() trigger = 'click';
 
   /**
    * Enable this option to prevent the tooltip from being clipped when the component is placed inside a container with
@@ -222,7 +216,7 @@ export default class SdTooltip extends SolidElement {
     }
   }
 
-  @watch(['content', 'distance', 'hoist', 'placement', 'skidding'])
+  @watch(['content', 'hoist', 'placement'])
   async handleOptionsChange() {
     if (this.hasUpdated) {
       await this.updateComplete;
@@ -267,22 +261,22 @@ export default class SdTooltip extends SolidElement {
         "
         class=${cx('tooltip', this.open && 'tooltip--open')}
         placement=${this.placement}
-        distance=${this.distance}
-        skidding=${this.skidding}
+        distance="10"
+        skidding="0"
         strategy=${this.hoist ? 'fixed' : 'absolute'}
         flip
         shift
         arrow
       >
-        <slot slot="anchor" class=${cx(this.size === 'lg' ? 'text-2xl' : 'text-base')}>
-          <sd-icon library="system" name="info-sign" class="sd-interactive" tabindex="0"></sd-icon>
+        <slot slot="anchor" class=${cx(this.size === 'lg' ? 'text-xl' : 'text-base')}>
+          <sd-icon library="system" name="info-sign" class="sd-interactive rounded-full" tabindex="0"></sd-icon>
         </slot>
 
         <slot
           name="content"
           part="body"
           id="tooltip"
-          class="tooltip__body bg-primary text-white py-3 px-4 shadow"
+          class="tooltip__body bg-primary text-white py-3 px-4 shadow block rounded-none font-custom bold text-sm pointer-events-none overflow-y-auto"
           role="tooltiprole"
           aria-live=${this.open ? 'polite' : 'off'}
           tabindex="0"
@@ -326,18 +320,12 @@ export default class SdTooltip extends SolidElement {
       }
 
       .tooltip__body {
-        display: block;
-        width: max-content;
-        border-radius: none;
         font-family: Frutiger Neue fuer UI Web;
-        font-size: 14px;
         font-weight: 350;
         line-height: 21px;
-        pointer-events: none;
       }
 
       .tooltip {
-        --arrow-size: 10px;
         --arrow-color: #00358e;
       }
     `
