@@ -182,7 +182,12 @@ export const Mouseless = {
   play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
     const el = canvasElement.querySelector('.mouseless sd-radio-group');
     await waitUntil(() => el?.shadowRoot?.querySelector('label'));
-    // We have to catch the event as otherwise Storybook will break
-    await userEvent.type(el!.shadowRoot!.querySelector('label')!, '{return}', { pointerEventsCheck: 0 });
+
+    if (el?.shadowRoot) {
+      const label = el.shadowRoot.querySelector('label');
+      if (label) {
+        await userEvent.type(label, '{space}', { pointerEventsCheck: 0 });
+      }
+    }
   }
 };
