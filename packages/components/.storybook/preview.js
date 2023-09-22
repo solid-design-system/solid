@@ -39,7 +39,7 @@ async function loadCustomElements() {
   console.log('Custom elements manifest loaded');
 }
 
-loadCustomElements();
+await loadCustomElements();
 
 /**
  * This registers iconLibraries for the sd-icon component
