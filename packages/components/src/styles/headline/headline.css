@@ -1,0 +1,28 @@
+.sd-headline{
+    @apply text-4xl ml-4 text-primary;
+
+    &--size-4xl{
+        @apply text-4xl;
+    }
+
+    &--size-3xl{
+        @apply text-3xl;
+    }
+
+    &--size-xl{
+        @apply text-xl ml-2 text-black;
+    }
+
+    &--size-lg{
+        @apply text-lg text-black;
+    }
+
+    &--size-base{
+        @apply text-base text-black;
+    }
+
+    &--inverted{
+        @apply text-white;
+    }
+
+}
