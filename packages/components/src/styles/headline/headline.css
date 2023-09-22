@@ -1,12 +1,12 @@
 .sd-headline{
-    @apply text-4xl ml-4 text-primary;
+    @apply text-3xl sm:text-4xl ml-4 text-primary;
 
     &--size-4xl{
-        @apply text-4xl;
+        @apply text-3xl sm:text-4xl;
     }
 
     &--size-3xl{
-        @apply text-3xl;
+        @apply text-2xl sm:text-3xl
     }
 
     &--size-xl{
