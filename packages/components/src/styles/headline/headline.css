@@ -14,11 +14,11 @@
     }
 
     &--size-lg{
-        @apply text-lg text-black;
+        @apply text-lg ml-2 text-black;
     }
 
     &--size-base{
-        @apply text-base text-black;
+        @apply text-base ml-2 text-black;
     }
 
     &--inverted{

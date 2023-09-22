@@ -42,7 +42,7 @@ export default {
 export const Default = {
     render: (args: any) => {
       return generateTemplate({
-        options: { templateContent: '<div class="%CLASSES%">%SLOT%</time>' },
+        options: { templateContent: '<div class="%CLASSES%">%SLOT%</div>' },
         args
       });
     }
