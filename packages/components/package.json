@@ -128,7 +128,7 @@
     "react-dom": "^18.2.0",
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-summary": "^2.0.0",
-    "semantic-release": "^19.0.5",
+    "semantic-release": "^22.0.1",
     "semantic-release-monorepo": "^7.0.5",
     "sinon": "^15.1.0",
     "storybook": "^7.3.2",
