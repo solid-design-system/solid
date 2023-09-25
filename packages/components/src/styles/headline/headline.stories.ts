@@ -83,7 +83,7 @@ export const Icon = {
         name: 'default',
         value: ` 
         <sd-icon name="content/picture" library="global-resources"></sd-icon>
-        Icon left lorem ipsum dolor sit amet.`
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.`
       },
       args
     });
