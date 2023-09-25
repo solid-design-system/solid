@@ -68,10 +68,10 @@ export const Inverted = {
 };
 
 /**
- * Use the `inline` class to determine the positioning of an (optional) icon.
+ * Use Icons with the `inline` class to specify the positioning.
  */
 
-export const Inline = {
+export const Icon = {
   parameters: { controls: { exclude: ['sd-headline--inline'] } },
   render: (args: any) => {
     return generateTemplate({
@@ -82,7 +82,7 @@ export const Inline = {
         type: 'slot',
         name: 'default',
         value: ` 
-        <sd-icon name="content/picture" library="global-resources" color="primary"></sd-icon>
+        <sd-icon name="content/picture" library="global-resources"></sd-icon>
         Icon left lorem ipsum dolor sit amet.`
       },
       args

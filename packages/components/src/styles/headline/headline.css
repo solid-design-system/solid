@@ -1,5 +1,9 @@
 .sd-headline {
-  @apply text-3xl sm:text-4xl font-bold text-primary flex ml-4;
+  @apply text-3xl sm:text-4xl font-bold text-primary flex items-start gap-4;
+
+  sd-icon{
+    @apply text-[3rem] shrink-0;
+   }
 
   &--size-4xl {
     @apply text-3xl sm:text-4xl;
@@ -11,6 +15,7 @@
 
   &--size-xl {
     @apply text-xl ml-2 text-black;
+
   }
 
   &--size-lg {
@@ -19,15 +24,20 @@
 
   &--size-base {
     @apply text-base ml-2 text-black;
+
+    
   }
+
+  &--size-xl, &--size-lg, &--size-base{
+    sd-icon{
+        @apply text-[2rem] shrink-0;
+       }
+  }
+
 
   &--inverted {
     @apply text-white;
   }
-
-  sd-icon{
-    @apply text-4xl shrink-0;
-   }
 
   &--inline {
     @apply inline;
