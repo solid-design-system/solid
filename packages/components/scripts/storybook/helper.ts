@@ -2,6 +2,7 @@ import { classMap } from 'lit/directives/class-map.js';
 import { getWcStorybookHelpers } from '@mariohamann/wc-storybook-helpers';
 import { html, unsafeStatic } from 'lit/static-html.js';
 import format from 'html-format';
+import loadCustomElements from './fetch-cem';
 
 type ArgTypesDefinition = 'attribute' | 'property' | 'slot' | 'cssPart' | 'cssProperty';
 
@@ -18,6 +19,8 @@ export interface ConstantDefinition {
   value: any;
   title?: string;
 }
+
+await loadCustomElements();
 
 /**
  * Returns default arguments, events, and argument types for a given custom element tag.
