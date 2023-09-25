@@ -8,7 +8,7 @@
  */
 
 interface Constructor<T> {
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   new (...args: any[]): T;
 }
 
@@ -35,7 +35,7 @@ const legacyCustomElement = (tagName: string, clazz: Constructor<HTMLElement>) =
   if (window.customElements.get(tagName)) {
     console.warn(`Custom element ${tagName} already defined. Registration skipped.`);
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-explicit-any
     return clazz as any;
   }
 
@@ -45,7 +45,7 @@ const legacyCustomElement = (tagName: string, clazz: Constructor<HTMLElement>) =
   // `Constructor<HTMLElement>` for some reason.
   // `Constructor<HTMLElement>` is helpful to make sure the decorator is
   // applied to elements however.
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-explicit-any
   return clazz as any;
 };
 
