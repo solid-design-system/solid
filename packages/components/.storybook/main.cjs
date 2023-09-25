@@ -26,10 +26,9 @@ module.exports = {
     options: {}
   },
   async viteFinal(config) {
-    return {
-      ...config,
-      plugins: [...config.plugins, tsconfigPaths.default()]
-    };
+    config.build.target = 'esnext'; // to allow top level await
+    config.plugins = [...config.plugins, tsconfigPaths.default()];
+    return config;
   },
   docs: {
     docs: true,
