@@ -6,13 +6,15 @@ import pkg from '../../../package.json';
 
 # Introduction of Solid Components v{pkg.version}
 
+## Principles
+
 Solid Components are part of the Solid Design System, serving as a robust foundation for Union Investment's digital presence, built upon three core principles:
 
 1. 🌟 **Usable & consistent**
 2. 🧩 **Reusable & flexible**
 3. 🛠️ **Maintainable & reliable**
 
-## 🌟 Usable & consistent
+### 🌟 Usable & consistent
 
 Our mission is to reflect the Union Investment brand in a consistent and accessible manner. Our strategies include:
 
@@ -23,7 +25,7 @@ Our mission is to reflect the Union Investment brand in a consistent and accessi
 
 Recognizing that not all scenarios can be pre-designed, we focus on building a core of consistent and adaptable components.
 
-## 🧩 Reusable & flexible
+### 🧩 Reusable & flexible
 
 Solid Components are designed to be adaptable and reusable across different projects:
 
@@ -32,7 +34,7 @@ Solid Components are designed to be adaptable and reusable across different proj
 
 Rather than catering to specific project needs, we aim to create versatile components applicable to a broad range of situations, enhancing their long-term value.
 
-## 🛠️ Maintainable & reliable
+### 🛠️ Maintainable & reliable
 
 Solid Components are designed to offer high reliability and easy maintainability:
 
@@ -42,3 +44,19 @@ Solid Components are designed to offer high reliability and easy maintainability
 - **Thorough testing**: High test coverage with E2E-Tests via Playwright (<a href={`https://github.com/microsoft/playwright/releases/tag/v${playwrightVersion}`} target="\_blank">tested Browser versions</a>) and Visual Regression Tests via Chromatic ([current Browser versions](https://www.chromatic.com/docs/infrastructure-release-notes)).
 
 Our emphasis is on creating a solid foundation of reliable, maintainable components that balance necessary features with ease of upkeep.
+
+## Structure
+
+### Styles & Components
+
+Our library offers reusable Styles and Components, each having their own technology and purpose:
+
+- **Styles**: These are standalone CSS files. They don't provide any logic and are often non-interactive.
+- **Components**: These are Web Components. They are often more complex than Styles, and could feature reactivity, state, multiple slots, properties, and more.
+
+### Samples & Patterns
+
+Alongside the documentation for Styles and Components, we also present Samples and Patterns. These differ in their scope:
+
+- **Samples**: Tied to a specific component, these show its use in a particular context. They are added as "Sample" stories in the component's documentation.
+- **Patterns**: More advanced, they demonstrate how to combine several components to solve a specific problem. They are added as stories in the "Patterns" section.
