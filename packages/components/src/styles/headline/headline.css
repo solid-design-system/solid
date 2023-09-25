@@ -2,7 +2,7 @@
   @apply text-3xl sm:text-4xl font-bold text-primary flex items-start gap-4;
 
   sd-icon{
-    @apply text-[3rem] shrink-0;
+    @apply text-[3rem] shrink-0 mt-1;
    }
 
   &--size-4xl {
@@ -43,7 +43,7 @@
     @apply inline;
 
     sd-icon {
-        @apply mr-4 align-middle;
+        @apply mr-4 -mt-2 align-middle;
       }
   }
 }
