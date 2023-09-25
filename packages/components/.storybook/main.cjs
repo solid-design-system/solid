@@ -26,6 +26,7 @@ module.exports = {
     options: {}
   },
   async viteFinal(config) {
+    if (config.build === undefined) config.build = {}; // fallback if build is not defined
     config.build.target = 'esnext'; // to allow top level await
     config.plugins = [...config.plugins, tsconfigPaths.default()];
     return config;
