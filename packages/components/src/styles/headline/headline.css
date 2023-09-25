@@ -1,28 +1,39 @@
-.sd-headline{
-    @apply text-3xl sm:text-4xl ml-4 text-primary;
+.sd-headline {
+  @apply text-3xl sm:text-4xl font-bold text-primary flex ml-4;
 
-    &--size-4xl{
-        @apply text-3xl sm:text-4xl;
-    }
+  &--size-4xl {
+    @apply text-3xl sm:text-4xl;
+  }
 
-    &--size-3xl{
-        @apply text-2xl sm:text-3xl
-    }
+  &--size-3xl {
+    @apply text-2xl sm:text-3xl;
+  }
 
-    &--size-xl{
-        @apply text-xl ml-2 text-black;
-    }
+  &--size-xl {
+    @apply text-xl ml-2 text-black;
+  }
 
-    &--size-lg{
-        @apply text-lg ml-2 text-black;
-    }
+  &--size-lg {
+    @apply text-lg ml-2 text-black;
+  }
 
-    &--size-base{
-        @apply text-base ml-2 text-black;
-    }
+  &--size-base {
+    @apply text-base ml-2 text-black;
+  }
 
-    &--inverted{
-        @apply text-white;
-    }
+  &--inverted {
+    @apply text-white;
+  }
 
+  sd-icon{
+    @apply text-4xl shrink-0;
+   }
+
+  &--inline {
+    @apply inline;
+
+    sd-icon {
+        @apply mr-4 align-middle;
+      }
+  }
 }
