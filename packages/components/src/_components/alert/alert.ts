@@ -1,7 +1,8 @@
 import '../icon-button/icon-button';
 import { animateTo, stopAnimations } from '../../internal/animate';
 import { classMap } from 'lit/directives/class-map.js';
-import { customElement, property, query } from 'lit/decorators.js';
+import { customElement } from '../../../src/internal/register-custom-element';
+import { property, query } from 'lit/decorators.js';
 import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry';
 import { HasSlotController } from '../../internal/slot';
 import { html } from 'lit';

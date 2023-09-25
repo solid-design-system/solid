@@ -1,6 +1,7 @@
 import { css, html } from 'lit';
-import { customElement, property, query, state } from 'lit/decorators.js';
+import { customElement } from '../../../src/internal/register-custom-element';
 import { HasSlotController } from '../../internal/slot';
+import { property, query, state } from 'lit/decorators.js';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 import type { PropertyValues } from 'lit';

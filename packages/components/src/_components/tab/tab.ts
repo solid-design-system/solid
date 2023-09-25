@@ -1,6 +1,7 @@
 import '../icon-button/icon-button';
 import { classMap } from 'lit/directives/class-map.js';
-import { customElement, property, query } from 'lit/decorators.js';
+import { customElement } from '../../../src/internal/register-custom-element';
+import {property, query } from 'lit/decorators.js';
 import { html } from 'lit';
 import { LocalizeController } from '../../utilities/localize';
 import { watch } from '../../internal/watch';

@@ -1,5 +1,6 @@
 import { classMap } from 'lit/directives/class-map.js';
-import { customElement, property, query, state } from 'lit/decorators.js';
+import { customElement } from '../../../src/internal/register-custom-element';
+import {property, query, state } from 'lit/decorators.js';
 import { HasSlotController } from '../../internal/slot';
 import { html } from 'lit/static-html.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
