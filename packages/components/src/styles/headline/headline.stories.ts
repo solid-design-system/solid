@@ -27,7 +27,7 @@ export default {
   decorators: [
     (story: () => typeof html) => html`
       <style>
-        td.template{
+        td.template {
           text-align: left !important;
         }
       </style>
