@@ -1,6 +1,7 @@
 import { css, html } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
+import { customElement } from '../../../src/internal/register-custom-element';
 import { getIconLibrary, unwatchIcon, watchIcon } from './library';
+import { property, state } from 'lit/decorators.js';
 import { requestIcon } from './request';
 import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
 import { watch } from '../../internal/watch';

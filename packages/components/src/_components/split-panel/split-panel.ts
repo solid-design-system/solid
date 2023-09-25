@@ -1,5 +1,6 @@
 import { clamp } from '../../internal/math';
-import { customElement, property, query } from 'lit/decorators.js';
+import { customElement } from '../../../src/internal/register-custom-element';
+import {property, query } from 'lit/decorators.js';
 import { drag } from '../../internal/drag';
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
