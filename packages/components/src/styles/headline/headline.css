@@ -44,10 +44,14 @@
   }
 
   &--size-base {
-    @apply text-base;
+    @apply text-base text-black;
 
     sd-icon {
       @apply -mt-1 sm:-mt-1;
+    }
+
+    mark {
+      @apply text-inherit;
     }
   }
 
@@ -55,6 +59,12 @@
     @apply text-white;
 
     sd-icon {
+      @apply text-white;
+    }
+  }
+
+  &--inverted &--size-base {
+    mark {
       @apply text-white;
     }
   }

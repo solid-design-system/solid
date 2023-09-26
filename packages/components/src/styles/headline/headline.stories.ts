@@ -68,7 +68,7 @@ export const Inverted = {
 };
 
 /**
- * Use Icons with the `inline` class to specify the positioning.
+ * The headline with an (optional) Icon. The `inline` class can be used to specify positioning.
  */
 
 export const Icon = {
@@ -88,4 +88,136 @@ export const Icon = {
       args
     });
   }
+};
+
+/**
+ * The headline with all possible combinations of 'size' and 'inverted,' both with and without an Icon.
+ */
+
+export const IconXSize = {
+  name: 'Size x Inverted',
+  parameters: {
+    controls: {
+      exclude: [
+        'sd-headline--size-4xl',
+        'sd-headline--size-3xl',
+        'sd-headline--size-xl',
+        'sd-headline--size-lg',
+        'sd-headline--size-base'
+      ]
+    }
+  },
+  render: (args: any) => {
+    return html` ${[
+      {
+        title: 'without an Icon',
+        constant: `
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.`
+      },
+      {
+        title: 'with an Icon',
+        constant: `
+        <sd-icon name="content/picture" library="global-resources"></sd-icon>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.`
+      }
+    ].map(headline =>
+      generateTemplate({
+        axis: {
+          x: [{ type: 'attribute', name: 'sd-headline--inverted', values: [false, true] }],
+          y: [
+            {
+              type: 'attribute',
+              name: 'sd-headline--size',
+              values: [
+                'sd-headline--size-4xl',
+                'sd-headline--size-3xl',
+                'sd-headline--size-xl',
+                'sd-headline--size-lg',
+                'sd-headline--size-base'
+              ]
+            }
+          ]
+        },
+        constants: {
+          type: 'slot',
+          name: 'default',
+          value: `${headline.constant}`
+        },
+        options: {
+          templateBackgrounds: { alternate: 'x', colors: ['tranparent', '#00358E'] },
+          title: `${headline.title}`
+        },
+        args
+      })
+    )}`;
+  }
+};
+
+/**
+ * The headline paired with the mark styles with all the possible combinations of `size`, `inverted` and the presence of `icons`. It is recommended to use the `inline` style to maintain smooth wrapping.
+  */
+
+export const HeadlineWithMark = {
+  name: 'Headline with mark',
+  parameters: {
+    controls: {
+      exclude: [
+        'sd-headline--size-4xl',
+        'sd-headline--size-3xl',
+        'sd-headline--size-xl',
+        'sd-headline--size-lg',
+        'sd-headline--size-base'
+      ]
+    }
+  },
+  render: (args: any) => {
+    return html` ${[
+      {
+        title: 'without an Icon',
+        constant: `
+        Lorem ipsum <mark class="sd-mark">sic semper</mark>`
+      },
+      {
+        title: 'with an Icon',
+        constant: `
+        <sd-icon name="content/picture" library="global-resources"></sd-icon>
+        Lorem ipsum <mark class="sd-mark">sic semper</mark>`
+      }
+    ].map(headline =>
+      generateTemplate({
+        axis: {
+          x: [{ type: 'attribute', name: 'sd-headline--inverted', values: [false, true] }],
+          y: [
+            {
+              type: 'attribute',
+              name: 'sd-headline--size',
+              values: [
+                'sd-headline--size-4xl',
+                'sd-headline--size-3xl',
+                'sd-headline--size-xl',
+                'sd-headline--size-lg',
+                'sd-headline--size-base'
+              ]
+            }
+          ]
+        },
+        constants: [{
+          type: 'slot',
+          name: 'default',
+          value: `${headline.constant}`
+        },
+        {
+          type: 'attribute',
+          name: 'sd-headline--inline',
+          value: true
+        }],
+        options: {
+          templateBackgrounds: { alternate: 'x', colors: ['tranparent', '#00358E'] },
+          title: `${headline.title}`
+        },
+        args
+      })
+    )}`;
+  }
+
 };
