@@ -4,18 +4,21 @@
     outline: revert;
   }
 
-  @apply cursor-pointer no-underline;
+  @apply no-underline cursor-pointer text-primary hover:text-primary-500 active:text-primary-800 transition-colors;
 
   &:focus-visible {
     @apply outline outline-2 outline-offset-2 outline-primary;
   }
 
-  &:not([disabled], .sd-interactive--disabled) {
-    @apply text-primary hover:text-primary-500 active:text-primary-800;
+  &--inverted {
+    @apply text-white hover:text-primary-200 active:text-primary-400;
+    &:focus-visible {
+      @apply outline outline-2 outline-offset-2 outline-white;
+    }
   }
 
   &--disabled,
   &[disabled] {
-    @apply text-neutral-600 cursor-not-allowed;
+    @apply cursor-not-allowed text-neutral-600 hover:text-neutral-600 active:text-neutral-600;
   }
 }

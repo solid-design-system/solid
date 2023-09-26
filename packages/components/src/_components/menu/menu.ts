@@ -1,4 +1,5 @@
-import { customElement, query } from 'lit/decorators.js';
+import { customElement } from '../../../src/internal/register-custom-element';
+import {query } from 'lit/decorators.js';
 import { html } from 'lit';
 import SolidElement from '../../internal/solid-element';
 import styles from './menu.styles';

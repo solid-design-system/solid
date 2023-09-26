@@ -1,7 +1,8 @@
 import '../popup/popup';
 import { animateTo, parseDuration, stopAnimations } from '../../internal/animate';
 import { classMap } from 'lit/directives/class-map.js';
-import { customElement, property, query } from 'lit/decorators.js';
+import { customElement } from '../../../src/internal/register-custom-element';
+import {property, query } from 'lit/decorators.js';
 import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry';
 import { html } from 'lit';
 import { LocalizeController } from '../../utilities/localize';
