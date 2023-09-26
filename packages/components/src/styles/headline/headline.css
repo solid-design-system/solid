@@ -1,8 +1,8 @@
 .sd-headline {
-  @apply text-3xl sm:text-4xl font-bold text-primary flex items-start gap-4;
+  @apply flex items-start gap-4 text-3xl font-bold sm:text-4xl text-primary;
 
   sd-icon {
-    @apply text-[3rem] shrink-0 mt-1;
+    @apply text-[3rem] text-primary shrink-0 sm:mt-2 align-middle;
   }
 
   &--size-4xl {
@@ -11,37 +11,59 @@
 
   &--size-3xl {
     @apply text-2xl sm:text-3xl;
-  }
 
-  &--size-xl {
-    @apply text-xl ml-2 text-black;
-  }
-
-  &--size-lg {
-    @apply text-lg ml-2 text-black;
-  }
-
-  &--size-base {
-    @apply text-base ml-2 text-black;
+    sd-icon {
+      @apply -mt-1 sm:mt-0;
+    }
   }
 
   &--size-xl,
   &--size-lg,
   &--size-base {
+    @apply gap-2 text-black;
+
     sd-icon {
-      @apply text-[2rem] shrink-0;
+      @apply mr-2 text-[2rem];
+    }
+  }
+
+  &--size-xl {
+    @apply text-xl;
+
+    sd-icon {
+      @apply mt-0.5 sm:mt-0.5;
+    }
+  }
+
+  &--size-lg {
+    @apply text-lg;
+
+    sd-icon {
+      @apply mt-0 sm:mt-0;
+    }
+  }
+
+  &--size-base {
+    @apply text-base;
+
+    sd-icon {
+      @apply -mt-1 sm:-mt-1;
     }
   }
 
   &--inverted {
     @apply text-white;
+
+    sd-icon {
+      @apply text-white;
+    }
   }
 
   &--inline {
     @apply inline;
 
     sd-icon {
-      @apply mr-4 -mt-2 align-middle;
+      @apply -mt-1;
     }
   }
 }
