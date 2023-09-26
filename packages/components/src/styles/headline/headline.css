@@ -1,5 +1,5 @@
 .sd-headline {
-  @apply text-3xl font-bold sm:text-4xl text-primary;
+  @apply flex items-start gap-4 text-3xl font-bold sm:text-4xl text-primary;
 
   sd-icon {
     @apply text-[3rem] text-primary shrink-0 sm:mt-2 align-middle;
@@ -75,9 +75,5 @@
     sd-icon {
       @apply -mt-1;
     }
-  }
-
-  &--left {
-    @apply flex items-start gap-4
   }
 }
