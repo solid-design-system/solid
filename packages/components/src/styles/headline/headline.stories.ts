@@ -155,7 +155,7 @@ export const IconXSize = {
 
 /**
  * The headline paired with the mark styles with all the possible combinations of `size`, `inverted` and the presence of `icons`. It is recommended to use the `inline` style to maintain smooth wrapping.
-  */
+ */
 
 export const HeadlineWithMark = {
   name: 'Headline with mark',
@@ -201,16 +201,18 @@ export const HeadlineWithMark = {
             }
           ]
         },
-        constants: [{
-          type: 'slot',
-          name: 'default',
-          value: `${headline.constant}`
-        },
-        {
-          type: 'attribute',
-          name: 'sd-headline--inline',
-          value: true
-        }],
+        constants: [
+          {
+            type: 'slot',
+            name: 'default',
+            value: `${headline.constant}`
+          },
+          {
+            type: 'attribute',
+            name: 'sd-headline--inline',
+            value: true
+          }
+        ],
         options: {
           templateBackgrounds: { alternate: 'x', colors: ['tranparent', '#00358E'] },
           title: `${headline.title}`
@@ -219,5 +221,4 @@ export const HeadlineWithMark = {
       })
     )}`;
   }
-
 };
