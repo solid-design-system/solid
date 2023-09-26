@@ -14,6 +14,10 @@ export default {
     {
       name: 'sd-headline--inverted',
       description: 'Inverts the headline text.'
+    },
+    {
+      name: 'sd-headline--inline',
+      description: 'Positions the icon to be inline with the text.'
     }
   ]
 } satisfies Style;
