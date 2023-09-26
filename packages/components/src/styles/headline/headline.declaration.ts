@@ -17,7 +17,11 @@ export default {
     },
     {
       name: 'sd-headline--inline',
-      description: 'Positions the icon to be inline with the text.'
+      description: 'Positions the icon to be inline with the headline text.'
+    },
+    {
+      name: 'sd-headline--left',
+      description: 'Positions the icon to the left of the headline text.'
     }
   ]
 } satisfies Style;

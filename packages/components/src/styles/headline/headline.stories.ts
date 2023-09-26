@@ -76,7 +76,8 @@ export const Icon = {
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        y: [{ type: 'attribute', name: 'sd-headline--inline', values: [true, false] }]
+        y: [{ type: 'attribute', name: 'sd-headline--inline', values: [true] },
+        { type: 'attribute', name: 'sd-headline--left', values: [true] }]
       },
       constants: {
         type: 'slot',
