@@ -72,10 +72,10 @@ export const Inverted = {
 };
 
 /**
- * The headline with an (optional) Icon. The `inline` class can be used to specify positioning.
+ * The `inline` class can be used to maintain inline positioning when used together with an Icon or other components.
  */
 
-export const Icon = {
+export const Inline = {
   parameters: { controls: { exclude: ['sd-headline--inline'] } },
   render: (args: any) => {
     return generateTemplate({
