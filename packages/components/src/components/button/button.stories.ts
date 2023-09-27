@@ -5,7 +5,6 @@ import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../..
 import { userEvent } from '@storybook/testing-library';
 import { waitUntil } from '@open-wc/testing-helpers';
 import { withActions } from '@storybook/addon-actions/decorator';
-
 const { argTypes, parameters } = storybookDefaults('sd-button');
 const { overrideArgs } = storybookHelpers('sd-button');
 const { generateTemplate } = storybookTemplate('sd-button'); // Replace with your custom element tag
@@ -306,64 +305,52 @@ export const Mouseless = {
 };
 
 /**
- * Use the `disabled` attribute to disable a button. Clicks will be suppressed until the disabled state is removed.
+ * Here are some examples of sd-button working with sd-badge.
  */
-
 export const Sample = {
-  name: 'Example: sd-button with sd-badge',
-  parameters: { controls: { exclude: ['variant', 'size', 'inverted'] } },
-  render: (args: any) => {
-    return html` ${[
-      { type: 'attribute', name: 'variant', values: ['primary'], constant: `Label<sd-badge size="md">8</sd-badge>` },
-      {
-        type: 'attribute',
-        name: 'variant',
-        values: ['primary'],
-        constant: `Label<sd-badge variant="success" size="md">999+</sd-badge>`
-      },
-      {
-        type: 'slot',
-        name: 'default',
-        values: [
-          {
-            value:
-              '<sd-icon library="global-resources" name="system/picture" slot="icon-left"></sd-icon><sd-badge variant="default" size="lg">8</sd-badge> Label',
-            title: 'left icon'
-          }
-        ],
-        constant: ``
-      },
-      {
-        type: 'attribute',
-        name: 'size',
-        values: ['lg'],
-        constant: `<sd-icon library="global-resources" name="system/picture"></sd-icon><sd-badge variant="success" size="lg">8</sd-badge>`
-      },
-      {
-        type: 'attribute',
-        name: 'size',
-        values: ['md'],
-        constant: `<sd-icon library="global-resources" name="system/picture"></sd-icon><sd-badge variant="error" size="md">8</sd-badge>`
-      },
-      {
-        type: 'attribute',
-        name: 'size',
-        values: ['sm'],
-        constant: `<sd-icon library="global-resources" name="system/picture"></sd-icon><sd-badge size="sm"></sd-badge>`
-      }
-    ].map(button =>
-      generateTemplate({
-        axis: {
-          y: [{ type: button.type === 'attribute' ? 'attribute' : 'slot', name: button.name, values: button.values }],
-          x: { type: 'attribute', name: 'inverted', values: [false, true] }
-        },
+  name: 'Samples: sd-button with sd-badge',
+  render: () => {
+    const iconLeft = html`<sd-icon slot="icon-left" library="global-resources" name="system/picture"></sd-icon>`;
+    const iconOnly = html`<sd-icon library="global-resources" name="system/picture"></sd-icon>`;
 
-        constants: { type: 'slot', name: 'default', value: `${button.constant}` },
-        args,
-        options: {
-          templateBackgrounds: { alternate: 'x', colors: ['white', '#00358E'] }
-        }
-      })
-    )}`;
+    return html`
+      <div class="flex flex-col justify-around gap-8 h-40 w-min m-4">
+        <section class="flex p-4 gap-10">
+          <sd-button>Label <sd-badge>8</sd-badge></sd-button>
+          <sd-button>Label <sd-badge variant="success">999+</sd-badge></sd-button>
+          <sd-button variant="secondary"> ${iconLeft}Label<sd-badge>8</sd-badge></sd-button>
+          <sd-button variant="secondary">${iconOnly}<sd-badge variant="success">8</sd-badge></sd-button>
+
+          <sd-button variant="tertiary">
+            ${iconOnly}
+            <sd-badge class="mt-3 mr-3" variant="error">8</sd-badge>
+          </sd-button>
+
+          <sd-button variant="tertiary">
+            ${iconOnly}
+            <sd-badge class="mt-[0.8rem] mr-[0.8rem]" size="sm"></sd-badge>
+          </sd-button>
+        </section>
+
+        <section class="flex p-4 gap-10 bg-primary">
+          <sd-button inverted>Label <sd-badge inverted>8</sd-badge></sd-button>
+          <sd-button inverted>Label <sd-badge inverted variant="success">999+</sd-badge></sd-button>
+          <sd-button inverted variant="secondary"> ${iconLeft}Label<sd-badge inverted>8</sd-badge></sd-button>
+          <sd-button inverted variant="secondary"
+            >${iconOnly}<sd-badge inverted variant="success">8</sd-badge></sd-button
+          >
+
+          <sd-button inverted variant="tertiary">
+            ${iconOnly}
+            <sd-badge inverted class="mt-3 mr-3" variant="error">8</sd-badge>
+          </sd-button>
+
+          <sd-button inverted variant="tertiary">
+            ${iconOnly}
+            <sd-badge inverted class="mt-[0.8rem] mr-[0.8rem]" size="sm"></sd-badge>
+          </sd-button>
+        </section>
+      </div>
+    `;
   }
 };
