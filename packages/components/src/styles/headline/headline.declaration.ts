@@ -8,7 +8,7 @@ export default {
   attributes: [
     {
       name: 'sd-headline--size-...',
-      options: ['4xl', '3xl', 'xl', 'lg', 'base'],
+      options: ['3xl', 'xl', 'lg', 'base'],
       description: "The headlines's size."
     },
     {

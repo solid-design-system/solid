@@ -99,7 +99,7 @@ export const IconXSize = {
   parameters: {
     controls: {
       exclude: [
-        'sd-headline--size-4xl',
+        'default',
         'sd-headline--size-3xl',
         'sd-headline--size-xl',
         'sd-headline--size-lg',
@@ -129,7 +129,7 @@ export const IconXSize = {
               type: 'attribute',
               name: 'sd-headline--size',
               values: [
-                'sd-headline--size-4xl',
+                'default',
                 'sd-headline--size-3xl',
                 'sd-headline--size-xl',
                 'sd-headline--size-lg',
@@ -162,7 +162,7 @@ export const HeadlineWithMark = {
   parameters: {
     controls: {
       exclude: [
-        'sd-headline--size-4xl',
+        'default',
         'sd-headline--size-3xl',
         'sd-headline--size-xl',
         'sd-headline--size-lg',
@@ -192,7 +192,7 @@ export const HeadlineWithMark = {
               type: 'attribute',
               name: 'sd-headline--size',
               values: [
-                'sd-headline--size-4xl',
+                'default',
                 'sd-headline--size-3xl',
                 'sd-headline--size-xl',
                 'sd-headline--size-lg',

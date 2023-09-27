@@ -5,10 +5,6 @@
     @apply text-[3rem] text-primary shrink-0 sm:mt-2 align-middle;
   }
 
-  &--size-4xl {
-    @apply text-3xl sm:text-4xl;
-  }
-
   &--size-3xl {
     @apply text-2xl sm:text-3xl;
 
