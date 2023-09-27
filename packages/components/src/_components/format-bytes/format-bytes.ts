@@ -1,4 +1,5 @@
-import { customElement, property } from 'lit/decorators.js';
+import { customElement } from '../../../src/internal/register-custom-element';
+import {property } from 'lit/decorators.js';
 import { LocalizeController } from '../../utilities/localize';
 import SolidElement from '../../internal/solid-element';
 

@@ -4,3 +4,5 @@
 @import './styles/paragraph/paragraph.css';
 @import './styles/mark/mark.css';
 @import './styles/interactive/interactive.css';
+@import './styles/table-cell/table-cell.css';
+@import './styles/table/table.css';

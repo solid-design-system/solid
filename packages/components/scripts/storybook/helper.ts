@@ -2,6 +2,7 @@ import { classMap } from 'lit/directives/class-map.js';
 import { getWcStorybookHelpers } from '@mariohamann/wc-storybook-helpers';
 import { html, unsafeStatic } from 'lit/static-html.js';
 import format from 'html-format';
+import loadCustomElements from './fetch-cem';
 
 type ArgTypesDefinition = 'attribute' | 'property' | 'slot' | 'cssPart' | 'cssProperty';
 
@@ -18,6 +19,8 @@ export interface ConstantDefinition {
   value: any;
   title?: string;
 }
+
+await loadCustomElements();
 
 /**
  * Returns default arguments, events, and argument types for a given custom element tag.
@@ -58,7 +61,7 @@ export const storybookDefaults = (customElementTag: string): any => {
     // Get the properties that are not defined as attributes
     const getProperties = () => {
       const fieldMembers = (manifest?.members as member[])?.filter(member => member.kind === 'field');
-      const attributeNames = new Set(manifest.attributes?.map((attr: { fieldName: string }) => attr.fieldName));
+      const attributeNames = new Set(manifest?.attributes?.map((attr: { fieldName: string }) => attr.fieldName));
       const result = fieldMembers?.filter(member => !attributeNames.has(member.name) && member?.privacy !== 'private');
       return result?.map(member => member.name);
     };
@@ -253,7 +256,7 @@ export const storybookTemplate = (customElementTag: string) => {
     args: any;
   }) => {
     const template = (args: any) => {
-      if (!manifest.style) {
+      if (!manifest?.style) {
         return theTemplate(args);
       }
       // Extract class related attributes and transform into an object.
