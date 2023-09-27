@@ -8,7 +8,11 @@ const { generateTemplate } = storybookTemplate('sd-headline');
 
 /**
  * Headlines are vital for displaying content hierarchy and to improve accessibility. <br>
- * A headline can be additionally accompanied by an icon. The icon can be displayed on the left side or inline. <br>
+ * A headline can be additionally accompanied by an icon. The icon can be displayed on the left side or inline.
+ * <br>
+ * <b>Sizes</b><br>
+ * <li>4xl is the default size.</li>
+ * <li>3xl, xl, lg and base can be used as alternatives to 4xl.</li>
  *
  */
 
@@ -171,54 +175,104 @@ export const HeadlineWithMark = {
     }
   },
   render: (args: any) => {
-    return html` ${[
-      {
-        title: 'without an Icon',
-        constant: `
-        Lorem ipsum <mark class="sd-mark">sic semper</mark>`
-      },
-      {
-        title: 'with an Icon',
-        constant: `
-        <sd-icon name="content/picture" library="global-resources"></sd-icon>
-        Lorem ipsum <mark class="sd-mark">sic semper</mark>`
-      }
-    ].map(headline =>
-      generateTemplate({
-        axis: {
-          x: [{ type: 'attribute', name: 'sd-headline--inverted', values: [false, true] }],
-          y: [
+    return html`
+      <style>
+        .story-wrapper {
+          display: inline-block;
+          max-width: 1200px;
+        }
+
+        .headline {
+          padding: 16px;
+          background: #e0e0e0;
+          text-align: left;
+          font-size: 14px;
+          font-weight: bold;
+          width: 100%;
+          box-sizing: border-box;
+        }
+
+        div:not(:first-of-type).headline {
+          margin-top: 72px;
+        }
+      </style>
+
+      <div class="story-wrapper">
+        <div class="headline">No Icon</div>
+
+        ${generateTemplate({
+          axis: {
+            x: [{ type: 'attribute', name: 'sd-headline--inverted', values: [false, true] }],
+            y: [
+              {
+                type: 'attribute',
+                name: 'sd-headline--size',
+                values: [
+                  'default',
+                  'sd-headline--size-3xl',
+                  'sd-headline--size-xl',
+                  'sd-headline--size-lg',
+                  'sd-headline--size-base'
+                ]
+              }
+            ]
+          },
+          constants: [
+            {
+              type: 'slot',
+              name: 'default',
+              value: `Lorem ipsum <mark class="sd-mark">sic semper</mark>`
+            },
             {
               type: 'attribute',
-              name: 'sd-headline--size',
-              values: [
-                'default',
-                'sd-headline--size-3xl',
-                'sd-headline--size-xl',
-                'sd-headline--size-lg',
-                'sd-headline--size-base'
-              ]
+              name: 'sd-headline--inline',
+              value: true
             }
-          ]
-        },
-        constants: [
-          {
-            type: 'slot',
-            name: 'default',
-            value: `${headline.constant}`
+          ],
+          options: {
+            templateBackgrounds: { alternate: 'x', colors: ['tranparent', '#00358E'] }
           },
-          {
-            type: 'attribute',
-            name: 'sd-headline--inline',
-            value: true
-          }
-        ],
-        options: {
-          templateBackgrounds: { alternate: 'x', colors: ['tranparent', '#00358E'] },
-          title: `${headline.title}`
-        },
-        args
-      })
-    )}`;
+          args
+        })}
+
+        <div class="headline">Icon Included</div>
+
+        ${generateTemplate({
+          axis: {
+            x: [{ type: 'attribute', name: 'sd-headline--inverted', values: [false, true] }],
+            y: [
+              {
+                type: 'attribute',
+                name: 'sd-headline--size',
+                values: [
+                  'default',
+                  'sd-headline--size-3xl',
+                  'sd-headline--size-xl',
+                  'sd-headline--size-lg',
+                  'sd-headline--size-base'
+                ]
+              }
+            ]
+          },
+          constants: [
+            {
+              type: 'slot',
+              name: 'default',
+              value: `<sd-icon name="content/picture" library="global-resources"></sd-icon>
+            Lorem ipsum <mark class="sd-mark">sic semper</mark>`
+            },
+            {
+              type: 'attribute',
+              name: 'sd-headline--inline',
+              value: true
+            }
+          ],
+          options: {
+            templateBackgrounds: { alternate: 'x', colors: ['tranparent', '#00358E'] }
+          },
+          args
+        })}
+      </div>
+    `;
   }
 };

@@ -2,7 +2,7 @@ import type { Style } from '../../declaration';
 
 export default {
   styleName: 'sd-headline',
-  summary: 'Leadtext is used for text that should be highlighted and a focal point of the page.',
+  summary: 'Headlines are vital for displaying content hierarchy and to improve accessibility. A headline can be additionally accompanied by an icon. The icon can be displayed on the left side or inline.',
   status: 'experimental',
   since: '1.7',
   attributes: [
