@@ -23,7 +23,7 @@ import SolidElement from '../../internal/solid-element';
  *  maybe a border or box shadow.
  * @csspart popup - The popup's container. Useful for setting a background color, box shadow, etc.
  *
- * @cssproperty [--arrow-size=6px] - The size of the arrow. Note that an arrow won't be shown unless the `arrow`
+ * @cssproperty [--arrow-size=10px] - The size of the arrow. Note that an arrow won't be shown unless the `arrow`
  *  attribute is used.
  * @cssproperty [--arrow-color=var(--sd-color-neutral-0)] - The color of the arrow.
  * @cssproperty [--auto-size-available-width] - A read-only custom property that determines the amount of width the
@@ -435,7 +435,9 @@ export default class SdPopup extends SolidElement {
         class=${cx('isolate', this.strategy !== 'fixed' ? 'absolute' : 'fixed', !this.active && 'hidden')}
       >
         <slot></slot>
-        ${this.arrow ? html`<div part="arrow" class="absolute rotate-45 -z-10" role="presentation"></div>` : ''}
+        ${this.arrow
+          ? html`<div part="arrow" class="absolute rotate-45 -z-10 bg-primary" role="presentation"></div>`
+          : ''}
       </div>
     `;
   }
@@ -445,7 +447,7 @@ export default class SdPopup extends SolidElement {
     componentStyles,
     css`
       :host {
-        --arrow-color: var(--arrow-color);
+        --arrow-color: var(--sd-color-primary);
         --arrow-size: 10px;
 
         /*
@@ -466,7 +468,6 @@ export default class SdPopup extends SolidElement {
       [part='arrow'] {
         width: calc(var(--arrow-size-diagonal) * 2);
         height: calc(var(--arrow-size-diagonal) * 2);
-        background: var(--arrow-color);
       }
     `
   ];

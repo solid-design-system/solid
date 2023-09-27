@@ -252,6 +252,15 @@ export default class SdTooltip extends SolidElement {
   }
 
   render() {
+    const isStart = this.placement.endsWith('-start');
+    const isEnd = this.placement.endsWith('-end');
+
+    const skiddingMap = new Map([
+      ['start', '2'],
+      ['end', '-2']
+    ]);
+
+    const isSm = this.size === 'sm';
     return html`
       <sd-popup
         part="base"
@@ -262,11 +271,12 @@ export default class SdTooltip extends SolidElement {
         class=${cx('tooltip', this.open && 'tooltip--open')}
         placement=${this.placement}
         distance="10"
-        skidding="0"
+        skidding=${((skiddingMap.get(isStart ? 'start' : isEnd ? 'end' : 'default') || 0) as number) * (isSm ? -1 : 1)}
         strategy=${this.hoist ? 'fixed' : 'absolute'}
         flip
         shift
         arrow
+        arrow-padding="0"
       >
         <slot slot="anchor" class=${cx(this.size === 'lg' ? 'text-xl' : 'text-base')}>
           <sd-icon library="system" name="info-sign" class="sd-interactive rounded-full" tabindex="0"></sd-icon>
@@ -276,7 +286,7 @@ export default class SdTooltip extends SolidElement {
           name="content"
           part="body"
           id="tooltip"
-          class="tooltip__body bg-primary text-white py-3 px-4 shadow block rounded-none font-custom bold text-sm pointer-events-none overflow-y-auto"
+          class="tooltip__body font-family-primary bg-primary text-white py-3 px-4 block shadow rounded-none font-custom bold text-sm pointer-events-none overflow-y-scroll"
           role="tooltiprole"
           aria-live=${this.open ? 'polite' : 'off'}
           tabindex="0"
@@ -291,7 +301,6 @@ export default class SdTooltip extends SolidElement {
     unsafeCSS(InteractiveStyles),
     css`
       :host {
-        --max-width: 20rem;
         --hide-delay: 0ms;
         --show-delay: 150ms;
 
@@ -320,13 +329,7 @@ export default class SdTooltip extends SolidElement {
       }
 
       .tooltip__body {
-        font-family: Frutiger Neue fuer UI Web;
-        font-weight: 350;
-        line-height: 21px;
-      }
-
-      .tooltip {
-        --arrow-color: #00358e;
+        max-width: var(--max-width);
       }
     `
   ];

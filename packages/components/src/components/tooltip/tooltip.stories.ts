@@ -2,8 +2,8 @@ import '../../solid-components';
 import { html } from 'lit';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 import { userEvent } from '@storybook/testing-library';
-import { withActions } from '@storybook/addon-actions/decorator';
 import { waitUntil } from '@open-wc/testing-helpers';
+import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-tooltip');
 const { overrideArgs } = storybookHelpers('sd-tooltip');
@@ -21,7 +21,7 @@ export default {
     {
       type: 'attribute',
       name: 'content',
-      value: `Lorem ipsum sic semper`
+      value: 'Lorem ipsum'
     }
   ]),
   argTypes,
@@ -29,32 +29,12 @@ export default {
   decorators: [
     withActions,
     (story: any) => html` <style>
-        div.slot {
-          width: 24px;
-          height: 24px;
-        }
-        sd-tooltip:not([rounded]) sd-button::part(base),
-        sd-tooltip:not([rounded]) .slot {
-          border-radius: 0;
-        }
-        td.template,
-        .example,
-        div.example {
-          width: 120px;
-          height: 70px;
-        }
-        .example {
+        .template-placement {
+          height: 110px;
+          width: 250px;
           display: flex;
-          flex-direction: column;
-          padding: 12px;
-        }
-        .template-placement sd-tooltip[placement^='top'] .slot,
-        .template-placement sd-tooltip[placement^='bottom'] .slot {
-          width: 48px;
-        }
-        .template-placement sd-tooltip[placement^='left'] .slot,
-        .template-placement sd-tooltip[placement^='right'] .slot {
-          height: 36px;
+          align-items: center;
+          justify-content: center;
         }
         .placement-story td.template,
         #story--components-sd-tooltip--skidding td.template,
@@ -96,11 +76,6 @@ export const Placement = {
               type: 'template',
               name: 'placement',
               value: `<div class="template-placement">%TEMPLATE%</div>`
-            },
-            {
-              type: 'slot',
-              name: 'content',
-              value: '<div class="slot slot--border slot--background"></div>'
             }
           ]
         })
@@ -141,9 +116,9 @@ export const Disabled = {
 
 export const Content = {
   parameters: {
-    controls: { exclude: 'content' }
+    controls: { exclude: ['content'] }
   },
-  render: (args: any) => {
+  render: () => {
     return generateTemplate({
       axis: {
         x: {
@@ -155,13 +130,24 @@ export const Content = {
               title: 'short'
             },
             {
-              value: `<div slot='content' style='width: 150px; height:200px; overflow:scroll;'>Lorem ipsum sic semper dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl quis ultrices aliquam, nunc nisl aliquet nunc, quis aliquam nisl nisl quis nisl. Nulla euismod, nisl quis ultrices aliquam, nunc nisl aliquet nunc, quis aliquam nisl nisl quis nisl.</div>`,
+              value: `<div slot='content' style='overflow-y: scroll;'>Lorem ipsum sic semper dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl quis ultrices aliquam, nunc nisl aliquet nunc, quis aliquam nisl nisl quis nisl. Nulla euismod, nisl quis ultrices aliquam, nunc nisl aliquet nunc, quis aliquam nisl nisl quis nisl.>Lorem ipsum sic semper dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl quis ultrices aliquam, nunc nisl aliquet nunc, quis aliquam nisl nisl quis nisl. Nulla euismod, nisl quis ultrices aliquam, nunc nisl aliquet nunc, quis aliquam nisl nisl quis nisl.</div>`,
               title: 'long with fixed size'
             }
           ]
         }
       },
-      args,
+      args: overrideArgs([
+        {
+          type: 'attribute',
+          name: 'open',
+          value: true
+        },
+        {
+          type: 'attribute',
+          name: 'placement',
+          value: 'right-start'
+        }
+      ]),
       constants: [{ type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' }]
     });
   }
