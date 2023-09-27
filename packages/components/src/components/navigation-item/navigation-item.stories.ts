@@ -49,6 +49,18 @@ export const Default = {
 };
 
 /**
+ * The `sd-navigation-item` using bold text.
+ */
+
+export const Bold = {
+  render: (args: any) =>
+    generateTemplate({
+      args,
+      axis: { x: { type: 'slot', name: 'default', values: ['Navigation', '<b>Navigation</b>'] } }
+    })
+};
+
+/**
  * There are 3 variants determined by the `href` and `vertical` properties in addition to the `children` slot.  Each variant has 3 size options to define text size.
  */
 
