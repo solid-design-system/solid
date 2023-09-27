@@ -1,8 +1,9 @@
 import { css } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement } from 'lit/decorators/custom-element.js';
 import { HasSlotController } from '../../internal/slot';
 import { html, literal } from 'lit/static-html.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
+import { property } from 'lit/decorators.js';
 import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
@@ -157,8 +158,10 @@ export default class SdNavigationItem extends SolidElement {
         @click=${isAccordion ? this.handleClickSummary : isButton ? this.handleClickButton : undefined}
       >
         <div class=${cx(
-          'absolute w-full h-full left-0 top-0 pointer-events-none transition-all',
-          this.vertical ? 'border-l-4 h-[calc(100%-8px)] top-1 group-hover:h-full group-hover:top-0' : 'border-b-4',
+          'absolute w-full left-0 top-0 pointer-events-none transition-all duration-150',
+          this.vertical
+            ? 'border-l-4 h-[calc(100%-8px)] top-1 group-hover:h-full group-hover:top-0'
+            : 'border-b-4 h-full',
           this.current ? 'border-accent' : 'border-transparent',
           this.disabled && 'border-neutral-500'
         )}></div>

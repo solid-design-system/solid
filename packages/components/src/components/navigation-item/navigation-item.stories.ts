@@ -163,7 +163,8 @@ export const Disabled = {
  * Horizontal variants have a reduced API and ignore the excluded properties.
  */
 
-export const Horizontal = {
+export const VerticalAndCurrent = {
+  name: 'Vertical × Current',
   parameters: {
     controls: {
       exclude: [
@@ -173,6 +174,7 @@ export const Horizontal = {
         'relaxed',
         'divider',
         'open',
+        'current',
         'description',
         'children',
         'sd-show',
@@ -184,9 +186,9 @@ export const Horizontal = {
     return html`
       ${generateTemplate({
         axis: {
+          x: { type: 'attribute', name: 'vertical' },
           y: { type: 'attribute', name: 'current' }
         },
-        constants: [{ type: 'attribute', name: 'vertical', value: false }],
         args
       })}
     `;
