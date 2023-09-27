@@ -45,7 +45,7 @@ export default class SdTooltip extends SolidElement {
   private readonly localize = new LocalizeController(this);
 
   @query('slot:not([name])') defaultSlot: HTMLSlotElement;
-  @query('.tooltip__body') body: HTMLElement;
+  @query('#tooltip-body') body: HTMLElement;
   @query('sd-popup') popup: SdPopup;
 
   /** The tooltip's content. If you need to display HTML, use the `content` slot instead. */
@@ -55,7 +55,7 @@ export default class SdTooltip extends SolidElement {
    * The preferred placement of the tooltip. Note that the actual placement may vary as needed to keep the tooltip
    * inside of the viewport.
    */
-  @property() placement:
+  @property({ reflect: true }) placement:
     | 'top'
     | 'top-start'
     | 'top-end'
@@ -264,19 +264,21 @@ export default class SdTooltip extends SolidElement {
     return html`
       <sd-popup
         part="base"
+        id="tooltip"
         exportparts="
           popup:base__popup,
           arrow:base__arrow
         "
         class=${cx('tooltip', this.open && 'tooltip--open')}
         placement=${this.placement}
-        distance="10"
+        distance="12"
         skidding=${((skiddingMap.get(isStart ? 'start' : isEnd ? 'end' : 'default') || 0) as number) * (isSm ? -1 : 1)}
         strategy=${this.hoist ? 'fixed' : 'absolute'}
         flip
         shift
         arrow
         arrow-padding="0"
+        auto-size="vertical"
       >
         <slot slot="anchor" class=${cx(this.size === 'lg' ? 'text-xl' : 'text-base')}>
           <sd-icon library="system" name="info-sign" class="sd-interactive rounded-full" tabindex="0"></sd-icon>
@@ -285,8 +287,8 @@ export default class SdTooltip extends SolidElement {
         <slot
           name="content"
           part="body"
-          id="tooltip"
-          class="tooltip__body font-family-primary bg-primary text-white py-3 px-4 block shadow rounded-none font-custom bold text-sm pointer-events-none overflow-y-scroll"
+          id="tooltip-body"
+          class="tooltip__body bg-primary text-white py-3 px-4 block shadow rounded-none text-sm text-left"
           role="tooltiprole"
           aria-live=${this.open ? 'polite' : 'off'}
           tabindex="0"
@@ -307,29 +309,35 @@ export default class SdTooltip extends SolidElement {
         display: contents;
       }
 
-      .tooltip::part(popup) {
+      #tooltip::part(popup) {
         pointer-events: none;
         z-index: 10;
       }
 
-      .tooltip[placement^='top']::part(popup) {
+      #tooltip[placement^='top']::part(popup) {
         transform-origin: bottom;
       }
 
-      .tooltip[placement^='bottom']::part(popup) {
+      #tooltip[placement^='bottom']::part(popup) {
         transform-origin: top;
       }
 
-      .tooltip[placement^='left']::part(popup) {
+      #tooltip[placement^='left']::part(popup) {
         transform-origin: right;
       }
 
-      .tooltip[placement^='right']::part(popup) {
+      #tooltip[placement^='right']::part(popup) {
         transform-origin: left;
       }
 
-      .tooltip__body {
+      #tooltip::part(body) {
         max-width: var(--max-width);
+      }
+
+      :host(:not([no-auto-size])) ::slotted(*:not([slot='anchor'])) {
+        overflow: auto;
+        max-width: var(--auto-size-available-width) !important;
+        max-height: var(--auto-size-available-height) !important;
       }
     `
   ];

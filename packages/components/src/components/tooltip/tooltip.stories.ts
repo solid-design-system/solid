@@ -58,7 +58,7 @@ export const Default = {
 };
 
 export const Placement = {
-  parameters: { controls: { exclude: ['placement', 'open'] } },
+  parameters: { controls: { exclude: 'placement' } },
   render: (args: any) => {
     return html`<div class="placement-story">
       ${['top', 'bottom', 'left', 'right'].map(value =>
@@ -85,7 +85,7 @@ export const Placement = {
 };
 
 export const Size = {
-  parameters: { controls: { exclude: ['size', 'open'] } },
+  parameters: { controls: { exclude: 'size' } },
   render: (args: any) =>
     generateTemplate({
       axis: {
@@ -100,7 +100,7 @@ export const Size = {
 };
 
 export const Disabled = {
-  parameters: { controls: { exclude: ['disabled', 'open'] } },
+  parameters: { controls: { exclude: 'disabled' } },
   render: (args: any) =>
     generateTemplate({
       axis: {
@@ -114,9 +114,47 @@ export const Disabled = {
     })
 };
 
-export const Content = {
+/**
+ * Use the `default` and `content` slots in case you need to change them. Additionally a headline can be shown by bolding the text. Links or buttons (interactive elements) are not allowed.
+ *
+ */
+
+export const DifferentSlots = {
   parameters: {
-    controls: { exclude: ['content'] }
+    controls: { exclude: ['default', 'content'] }
+  },
+  render: (args: any) => {
+    return html` ${['default', 'content'].map(slot =>
+      generateTemplate({
+        axis: {
+          x: {
+            type: 'slot',
+            name: slot,
+            title: 'slot=...',
+            values: [
+              {
+                value:
+                  slot === 'default'
+                    ? `<span>Tooltip</span>`
+                    : `<div slot='content'><b>Headline</b><br>Lorem ipsum</div>`,
+                title: `${slot} slot`
+              }
+            ]
+          }
+        },
+        args
+      })
+    )}`;
+  }
+};
+
+/**
+ * In case of having the content longer than the space available, the tooltip can be set to scrollable by overriding the `pointer-events` property to auto. This behavior is heavily discouraged, but it is available in case of need.
+ *
+ */
+export const LongContent = {
+  parameters: {
+    controls: { exclude: ['content', '--max-width'] }
   },
   render: () => {
     return generateTemplate({
@@ -126,12 +164,8 @@ export const Content = {
           name: 'content',
           values: [
             {
-              value: `<div slot='content'>Lorem ipsum sic semper</div>`,
-              title: 'short'
-            },
-            {
-              value: `<div slot='content' style='overflow-y: scroll;'>Lorem ipsum sic semper dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl quis ultrices aliquam, nunc nisl aliquet nunc, quis aliquam nisl nisl quis nisl. Nulla euismod, nisl quis ultrices aliquam, nunc nisl aliquet nunc, quis aliquam nisl nisl quis nisl.>Lorem ipsum sic semper dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl quis ultrices aliquam, nunc nisl aliquet nunc, quis aliquam nisl nisl quis nisl. Nulla euismod, nisl quis ultrices aliquam, nunc nisl aliquet nunc, quis aliquam nisl nisl quis nisl.</div>`,
-              title: 'long with fixed size'
+              value: `<div slot='content' style='pointer-events:auto; width:100px;'>Lorem ipsum sic semper dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl quis ultrices aliquam, nunc nisl aliquet nunc, quis aliquam nisl nisl quis nisl. Nulla euismod, nisl quis ultrices aliquam, nunc nisl aliquet nunc, quis aliquam nisl nisl quis nisl. Lorem ipsum sic semper dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl quis ultrices aliquam, nunc nisl aliquet nunc, quis aliquam nisl nisl quis nisl. Nulla euismod, nisl quis ultrices aliquam, nunc nisl aliquet nunc, quis aliquam nisl nisl quis nisl.</div>`,
+              title: 'long with fixed width'
             }
           ]
         }
@@ -145,48 +179,23 @@ export const Content = {
         {
           type: 'attribute',
           name: 'placement',
-          value: 'right-start'
+          value: 'bottom'
         }
       ]),
-      constants: [{ type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' }]
+      constants: [
+        {
+          type: 'template',
+          name: 'width',
+          value: '<div style="width: 300px">%TEMPLATE%</div>'
+        }
+      ]
     });
-  }
-};
-
-/**
- * Use the `default` and `content` slots in case you need to change them.
- *
- */
-
-export const DifferentSlots = {
-  parameters: {
-    controls: { exclude: ['default', 'content', 'open'] }
-  },
-  render: (args: any) => {
-    return html` ${['default', 'content'].map(slot =>
-      generateTemplate({
-        axis: {
-          x: {
-            type: 'slot',
-            name: slot,
-            title: 'slot=...',
-            values: [
-              {
-                value: slot === 'default' ? `<span>Tooltip</span>` : `<div slot='content'><b>Headline<b></div>`,
-                title: `${slot} slot`
-              }
-            ]
-          }
-        },
-        args
-      })
-    )}`;
   }
 };
 
 export const Slots = {
   parameters: {
-    controls: { exclude: ['default', 'content', 'open'] }
+    controls: { exclude: ['default', 'content'] }
   },
   render: (args: any) => {
     return html`
@@ -202,7 +211,7 @@ export const Slots = {
                   value:
                     slot === 'default'
                       ? `<slot-comp style="--slot-content: ''; --slot-height: 24px; --slot-width: 24px;"></slot-comp>`
-                      : `<slot-comp slot='content' style="--slot-content: ''; --slot-height: 20px; --slot-width: 30px;"></slot-comp>`,
+                      : `<slot-comp slot='content' style="--slot-content: ''; --slot-height: 20px; --slot-width: 60px;"></slot-comp>`,
                   title: slot
                 }
               ]
