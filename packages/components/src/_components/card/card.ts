@@ -1,5 +1,6 @@
 import { classMap } from 'lit/directives/class-map.js';
-import { customElement } from 'lit/decorators.js';
+import { customElement } from '../../../src/internal/register-custom-element';
+import { } from 'src/internal/register-custom-element';
 import { HasSlotController } from '../../internal/slot';
 import { html } from 'lit';
 import SolidElement from '../../internal/solid-element';

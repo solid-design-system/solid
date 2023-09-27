@@ -1,0 +1,14 @@
+name: (deps) Automatic PR approval
+
+on: [pull_request_target]
+jobs:
+  automate-pullrequest-review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Approve dependabot PR
+        if: ${{ github.actor == 'dependabot[bot]' }}
+        uses: andrewmusgrave/automatic-pull-request-review@0.0.5
+        with:
+          repo-token: ${{ secrets.PAT_RELEASE_KARL}}
+          event: APPROVE
+          body: 'Thank you dependabot 🎊'

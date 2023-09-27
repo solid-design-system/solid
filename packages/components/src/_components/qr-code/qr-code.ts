@@ -1,4 +1,5 @@
-import { customElement, property, query } from 'lit/decorators.js';
+import { customElement } from '../../../src/internal/register-custom-element';
+import {property, query } from 'lit/decorators.js';
 import { html } from 'lit';
 import { styleMap } from 'lit/directives/style-map.js';
 import { watch } from '../../internal/watch';

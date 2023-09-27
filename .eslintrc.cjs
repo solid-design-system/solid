@@ -95,7 +95,19 @@ module.exports = {
         '@typescript-eslint/method-signature-style': 'warn',
         '@typescript-eslint/no-extraneous-class': 'error',
         '@typescript-eslint/no-parameter-properties': 'error',
-        '@typescript-eslint/strict-boolean-expressions': 'off'
+        '@typescript-eslint/strict-boolean-expressions': 'off',
+        'no-restricted-imports': [
+          'error',
+          {
+            paths: [
+              {
+                name: 'lit/decorators.js',
+                importNames: ['customElement'],
+                message: "Use import 'customElement' from '../../../src/internal/register-custom-element' instead."
+              }
+            ]
+          }
+        ]
       }
     },
     {

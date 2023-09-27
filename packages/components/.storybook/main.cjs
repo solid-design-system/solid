@@ -3,7 +3,8 @@ module.exports = {
   stories: [
     '../src/**/*.mdx',
     '../src/components/**/*.stories.@(js|jsx|ts|tsx)',
-    '../src/styles/**/*.stories.@(js|jsx|ts|tsx)'
+    '../src/styles/**/*.stories.@(js|jsx|ts|tsx)',
+    '../src/patterns/**/*.stories.@(js|jsx|ts|tsx)'
   ],
   addons: [
     '@storybook/addon-links',
@@ -25,10 +26,10 @@ module.exports = {
     options: {}
   },
   async viteFinal(config) {
-    return {
-      ...config,
-      plugins: [...config.plugins, tsconfigPaths.default()]
-    };
+    if (config.build === undefined) config.build = {}; // fallback if build is not defined
+    config.build.target = 'esnext'; // to allow top level await
+    config.plugins = [...config.plugins, tsconfigPaths.default()];
+    return config;
   },
   docs: {
     docs: true,
