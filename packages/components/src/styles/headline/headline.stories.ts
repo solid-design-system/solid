@@ -154,11 +154,11 @@ export const IconXSize = {
 };
 
 /**
- * The headline paired with the mark styles with all the possible combinations of `size`, `inverted` and the presence of `icons`. It is recommended to use the `inline` style to maintain smooth wrapping.
+ * The sd-headline paired with sd-mark styles with all the possible combinations of `size`, `inverted` and the presence of `icons`. Use the `inline` style to maintain smooth wrapping.
  */
 
 export const HeadlineWithMark = {
-  name: 'Headline with mark',
+  name: 'Sample: sd-headline with sd-mark',
   parameters: {
     controls: {
       exclude: [

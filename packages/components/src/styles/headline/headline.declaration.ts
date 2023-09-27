@@ -17,7 +17,7 @@ export default {
     },
     {
       name: 'sd-headline--inline',
-      description: 'Positions the icon to be inline with the headline text.'
+      description: 'Maintains inline behavior when interacting with icons or other components.'
     }
   ]
 } satisfies Style;
