@@ -154,7 +154,7 @@ export const DifferentSlots = {
  */
 export const LongContent = {
   parameters: {
-    controls: { exclude: ['content', '--max-width'] }
+    controls: { exclude: 'content' }
   },
   render: () => {
     return generateTemplate({

@@ -305,7 +305,6 @@ export default class SdTooltip extends SolidElement {
       :host {
         --hide-delay: 0ms;
         --show-delay: 150ms;
-
         display: contents;
       }
 
@@ -330,7 +329,7 @@ export default class SdTooltip extends SolidElement {
         transform-origin: left;
       }
 
-      #tooltip::part(body) {
+      #tooltip-body {
         max-width: var(--max-width);
       }
 
