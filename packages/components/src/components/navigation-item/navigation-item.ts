@@ -10,7 +10,7 @@ import SolidElement from '../../internal/solid-element';
 /**
  * @summary Flexible button / link component that can be used to quickly build navigations. Takes one of 3 forms: link (overrides all other if 'href' is provided), button (default), or accordion (if 'children' slot defined).
  * @status experimental
- * @since 2.11.0
+ * @since 1.12.0
  *
  * @dependency sd-divider
  *
@@ -48,7 +48,7 @@ export default class SdNavigationItem extends SolidElement {
   @property({ type: Boolean, reflect: true }) disabled = false;
 
   /** The navigation item's font size. */
-  @property({ reflect: true }) size: 'base' | 'larger' | 'smaller' = 'base';
+  @property({ reflect: true }) size: 'base' | 'lg' | 'sm' = 'base';
 
   /** The navigation item's orientation. If false, properties below this point are not used. */
   @property({ type: Boolean, reflect: true }) vertical = false;
@@ -137,8 +137,8 @@ export default class SdNavigationItem extends SolidElement {
       <${tag}
         part="base"
         class=${cx(
-          'hover:bg-neutral-200 transition-all min-h-[48px] cursor-pointer relative',
-          { base: 'text-base', larger: 'text-lg', smaller: 'text-[14px]' }[this.size],
+          'hover:bg-neutral-200 group transition-all min-h-[48px] cursor-pointer relative focus-visible:focus-outline',
+          { base: 'text-base', lg: 'text-lg', sm: 'text-[14px]' }[this.size],
           this.disabled ? 'text-neutral-500 pointer-events-none' : 'text-primary',
           isAccordion ? 'flex flex-col' : 'inline-block w-full',
           this.divider && this.vertical && 'mt-[1px]',
@@ -157,8 +157,8 @@ export default class SdNavigationItem extends SolidElement {
         @click=${isAccordion ? this.handleClickSummary : isButton ? this.handleClickButton : undefined}
       >
         <div class=${cx(
-          'absolute h-full w-full left-0 top-0 pointer-events-none',
-          this.vertical ? 'border-l-4' : 'border-b-4',
+          'absolute w-full h-full left-0 top-0 pointer-events-none transition-all',
+          this.vertical ? 'border-l-4 h-[calc(100%-8px)] top-1 group-hover:h-full group-hover:top-0' : 'border-b-4',
           this.current ? 'border-accent' : 'border-transparent',
           this.disabled && 'border-neutral-500'
         )}></div>

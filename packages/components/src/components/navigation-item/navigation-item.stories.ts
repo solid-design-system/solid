@@ -83,7 +83,7 @@ export const Variants = {
       ${generateTemplate({
         axis: {
           x: { type: 'attribute', name: 'vertical', values: [true] },
-          y: { type: 'attribute', name: 'size' }
+          y: { type: 'attribute', name: 'size', values: ['base'] }
         },
         args,
         options: {
@@ -191,7 +191,12 @@ export const Chevron = {
     return html`${['Button', 'Link', 'Accordion'].map(title => {
       const constants: ConstantDefinition[] = [
         { type: 'attribute', name: 'vertical', value: true },
-        { type: 'attribute', name: 'href', value: title === 'Link' ? 'https://www.union-investment.de/' : '' }
+        { type: 'attribute', name: 'href', value: title === 'Link' ? 'https://www.union-investment.de/' : '' },
+        {
+          type: 'slot',
+          name: 'default',
+          value: '<div style="width: 245px; text-align: left;">Navigation</div>'
+        }
       ];
 
       if (title === 'Accordion') {
