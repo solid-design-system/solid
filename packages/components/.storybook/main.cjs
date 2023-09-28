@@ -1,6 +1,10 @@
 const tsconfigPaths = require('vite-tsconfig-paths');
 module.exports = {
-  stories: ['../src/**/*.mdx', '../src/components/**/*.stories.@(js|jsx|ts|tsx)'],
+  stories: [
+    '../src/**/*.mdx',
+    '../src/components/**/*.stories.@(js|jsx|ts|tsx)',
+    '../src/styles/**/*.stories.@(js|jsx|ts|tsx)'
+  ],
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
@@ -9,7 +13,13 @@ module.exports = {
     '@storybook/addon-actions',
     '@storybook/addon-interactions'
   ],
-  staticDirs: ['./assets'],
+  staticDirs: [
+    './assets',
+    {
+      from: '../../placeholders/src/images',
+      to: '/placeholders'
+    }
+  ],
   framework: {
     name: '@storybook/web-components-vite',
     options: {}

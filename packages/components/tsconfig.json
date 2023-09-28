@@ -4,7 +4,7 @@
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
     "target": "esnext",
     "module": "esnext",
-    "lib": ["dom", "dom.Iterable", "es2020"],
+    "lib": ["dom", "dom.Iterable", "es2021"],
     "declaration": true,
     "rootDir": ".",
     "strict": true,
@@ -24,7 +24,8 @@
     "forceConsistentCasingInFileNames": true,
     "useUnknownInCatchVariables": true,
     "baseUrl": ".",
-    "types": ["mocha", "user-agent-data-types", "vite/client"]
+    "types": ["mocha", "user-agent-data-types", "vite/client"],
+    "resolveJsonModule": true
   },
   "include": ["src/**/*", "vite.config.*ts"],
   "exclude": ["src/_components/**", "custom-elements-manifest.config.ts"]

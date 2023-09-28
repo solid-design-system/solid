@@ -1,3 +1,17 @@
+# [@solid-design-system/tokens-v1.2.1](https://github.com/solid-design-system/solid/compare/tokens/1.2.0...tokens/1.2.1) (2023-08-29)
+
+
+### Bug Fixes
+
+* implement correct boxShadows ([#354](https://github.com/solid-design-system/solid/issues/354)) ([d4be2bb](https://github.com/solid-design-system/solid/commit/d4be2bbca8e8cab7a1227bf82495677305ed0395))
+
+# [@solid-design-system/tokens-v1.2.0](https://github.com/solid-design-system/solid/compare/tokens/1.1.1...tokens/1.2.0) (2023-08-16)
+
+
+### Features
+
+* ✨ update tokens for better a11y ([#318](https://github.com/solid-design-system/solid/issues/318)) ([907cb40](https://github.com/solid-design-system/solid/commit/907cb40d501320d3876d767d81e450da95064e28))
+
 # [@solid-design-system/tokens-v1.1.1](https://github.com/solid-design-system/solid/compare/tokens/1.1.0...tokens/1.1.1) (2023-07-06)
 
 
