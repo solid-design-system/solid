@@ -111,7 +111,7 @@ export default class SdRadio extends SolidElement {
       <span
         part="base"
         class=${cx(
-          'radio group inline-flex items-start items-center font-[var(--sd-input-font-family)] text-[var(--sd-input-font-size-medium)] font-[var(--sd-input-font-family)] text-[var(--sd-input-label-color)] cursor-pointer align-middle',
+          'radio group inline-flex items-start items-center text-base leading-normal text-black cursor-pointer align-middle',
           this.checked && 'radio--checked',
           this.disabled && 'hover:cursor-not-allowed',
           this.hasFocus && 'radio--focused',
