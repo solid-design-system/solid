@@ -111,7 +111,7 @@ export default class SdRadio extends SolidElement {
       <span
         part="base"
         class=${cx(
-          'radio inline-flex items-start items-center font-[var(--sd-input-font-family)] text-[var(--sd-input-font-size-medium)] font-[var(--sd-input-font-family)] text-[var(--sd-input-label-color)] cursor-pointer align-middle',
+          'radio group inline-flex items-start items-center font-[var(--sd-input-font-family)] text-[var(--sd-input-font-size-medium)] font-[var(--sd-input-font-family)] text-[var(--sd-input-label-color)] cursor-pointer align-middle',
           this.checked && 'radio--checked',
           this.disabled && 'hover:cursor-not-allowed',
           this.hasFocus && 'radio--focused',
@@ -123,13 +123,13 @@ export default class SdRadio extends SolidElement {
         )}
       >
         <span
-          part="${`control${this.checked ? 'control--checked' : ''}`}"
+          part="${`${this.checked ? 'control--checked' : 'control--unchecked'}`}"
           class=${cx(
             'radio__control relative inline-flex items-center justify-center border rounded-full bg-white h-4 w-4',
             (this.disabled && 'border-neutral-500') ||
-              (this.invalid && 'border-error') ||
-              (this.checked && 'border-accent hover:border-accent-300') ||
-              'border-neutral-800 hover:bg-neutral-200'
+              (this.invalid && 'border-error hover:border-error-400 group-hover:border-error-400') ||
+              (this.checked && 'border-accent hover:border-accent-550 group-hover:border-accent-550') ||
+              'border-neutral-800 hover:bg-neutral-200 group-hover:bg-neutral-200'
           )}
         >
           ${this.checked
@@ -139,8 +139,8 @@ export default class SdRadio extends SolidElement {
                   class=${cx(
                     'rounded-full inline-flex text-white border bg-accent h-2.5 w-2.5',
                     (this.disabled && 'bg-neutral-500') ||
-                      (this.invalid && 'bg-error') ||
-                      (this.checked && 'bg-accent hover:bg-accent-300') ||
+                      (this.invalid && 'bg-error hover:bg-error-400 group-hover:bg-error-400 ') ||
+                      (this.checked && 'bg-accent hover:bg-accent-550 group-hover:bg-accent-550 ') ||
                       'bg-neutral-800'
                   )}
                 ></span>
