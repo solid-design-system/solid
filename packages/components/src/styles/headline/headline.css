@@ -70,8 +70,8 @@
 
 .sd-headline--inline.sd-headline--size-xl,
 .sd-headline--inline.sd-headline--size-lg,
-.sd-headline--inline.sd-headline--size-base{
-  sd-icon{
+.sd-headline--inline.sd-headline--size-base {
+  sd-icon {
     @apply mr-0.5;
   }
 }
