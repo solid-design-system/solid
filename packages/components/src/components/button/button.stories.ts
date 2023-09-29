@@ -307,49 +307,69 @@ export const Mouseless = {
 /**
  * Here are some examples of sd-button working with sd-badge.
  */
-export const Sample = {
-  name: 'Samples: sd-button with sd-badge',
+export const Samples = {
   render: () => {
     const iconLeft = html`<sd-icon slot="icon-left" library="global-resources" name="system/picture"></sd-icon>`;
     const iconOnly = html`<sd-icon library="global-resources" name="system/picture"></sd-icon>`;
 
     return html`
-      <div class="flex flex-col justify-around gap-8 h-40 w-min m-4">
-        <section class="flex p-4 gap-10">
-          <sd-button>Label <sd-badge>8</sd-badge></sd-button>
-          <sd-button>Label <sd-badge variant="success">999+</sd-badge></sd-button>
-          <sd-button variant="secondary"> ${iconLeft}Label<sd-badge>8</sd-badge></sd-button>
-          <sd-button variant="secondary">${iconOnly}<sd-badge variant="success">8</sd-badge></sd-button>
+      <style>
+        .story-wrapper {
+          display: inline-block;
+          max-width: 1200px;
+        }
+        .headline {
+          padding: 16px;
+          background: #e0e0e0;
+          text-align: left;
+          font-size: 14px;
+          font-weight: bold;
+          width: 100%;
+          box-sizing: border-box;
+        }
+        div:not(:first-of-type).headline {
+          margin-top: 72px;
+        }
+      </style>
+      <div class="story-wrapper">
+        <div class="headline">sd-button with sd-badge</div>
+        <div class="flex flex-col justify-around gap-8 h-40 w-min m-4">
+          <section class="flex p-4 gap-10">
+            <sd-button>Label <sd-badge>8</sd-badge></sd-button>
+            <sd-button>Label <sd-badge variant="success">999+</sd-badge></sd-button>
+            <sd-button variant="secondary"> ${iconLeft}Label<sd-badge>8</sd-badge></sd-button>
+            <sd-button variant="secondary">${iconOnly}<sd-badge variant="success">8</sd-badge></sd-button>
 
-          <sd-button variant="tertiary">
-            ${iconOnly}
-            <sd-badge class="mt-3 mr-3" variant="error">8</sd-badge>
-          </sd-button>
+            <sd-button variant="tertiary">
+              ${iconOnly}
+              <sd-badge class="mt-3 mr-3" variant="error">8</sd-badge>
+            </sd-button>
 
-          <sd-button variant="tertiary">
-            ${iconOnly}
-            <sd-badge class="mt-[0.8rem] mr-[0.8rem]" size="sm"></sd-badge>
-          </sd-button>
-        </section>
+            <sd-button variant="tertiary">
+              ${iconOnly}
+              <sd-badge class="mt-[0.8rem] mr-[0.8rem]" size="sm"></sd-badge>
+            </sd-button>
+          </section>
 
-        <section class="flex p-4 gap-10 bg-primary">
-          <sd-button inverted>Label <sd-badge inverted>8</sd-badge></sd-button>
-          <sd-button inverted>Label <sd-badge inverted variant="success">999+</sd-badge></sd-button>
-          <sd-button inverted variant="secondary"> ${iconLeft}Label<sd-badge inverted>8</sd-badge></sd-button>
-          <sd-button inverted variant="secondary"
-            >${iconOnly}<sd-badge inverted variant="success">8</sd-badge></sd-button
-          >
+          <section class="flex p-4 gap-10 bg-primary">
+            <sd-button inverted>Label <sd-badge inverted>8</sd-badge></sd-button>
+            <sd-button inverted>Label <sd-badge inverted variant="success">999+</sd-badge></sd-button>
+            <sd-button inverted variant="secondary"> ${iconLeft}Label<sd-badge inverted>8</sd-badge></sd-button>
+            <sd-button inverted variant="secondary"
+              >${iconOnly}<sd-badge inverted variant="success">8</sd-badge></sd-button
+            >
 
-          <sd-button inverted variant="tertiary">
-            ${iconOnly}
-            <sd-badge inverted class="mt-3 mr-3" variant="error">8</sd-badge>
-          </sd-button>
+            <sd-button inverted variant="tertiary">
+              ${iconOnly}
+              <sd-badge inverted class="mt-3 mr-3" variant="error">8</sd-badge>
+            </sd-button>
 
-          <sd-button inverted variant="tertiary">
-            ${iconOnly}
-            <sd-badge inverted class="mt-[0.8rem] mr-[0.8rem]" size="sm"></sd-badge>
-          </sd-button>
-        </section>
+            <sd-button inverted variant="tertiary">
+              ${iconOnly}
+              <sd-badge inverted class="mt-[0.8rem] mr-[0.8rem]" size="sm"></sd-badge>
+            </sd-button>
+          </section>
+        </div>
       </div>
     `;
   }
