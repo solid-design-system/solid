@@ -39,6 +39,19 @@
   Components should use these tokens instead of individual styles as much as possible. Only where the tokens do not provide a styling, component specific styles should be added inside the [component-name].ts file
 - Components should be optimized for accessibility. Check the website of the [Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/WAI/standards-guidelines/wcag/) for more information on accessibility.
 
+  ### Guide on //TODOs
+  Using `TODO` comments can be a convienient way to quickly record an identified issue or give future developers bug-related hints. The problem is that these comments are not tracked anywhere and might create a pool of "issues" that are not properly recorded. Therefore developers can use TODO comments but they should always include a reference to a ticket defining the issue.
+
+  ```
+  //Example
+  
+  // TODO: This test times out: https://github.com/solid-design-system/solid/issues/387
+       *a test that is not working under current conditions*
+  ```
+
+
+  This ensures clarity for future developers and avoids the accumulation of unresolved problems. While it's acceptable to comment out non-functional code (eg. tests that don't work under current conditions) with a TODO, code that requires extensive refactoring should not be commented out to avoid introducing "dirty" code into the product.
+
 ## Adding Dependecies
 
 When utilizing external dependencies, it's crucial to prioritize security. Before integrating a new package, research it online, check for security advisories and community feedback, and assess its maintenance status and compatibility.
