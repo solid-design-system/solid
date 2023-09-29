@@ -40,17 +40,16 @@
 - Components should be optimized for accessibility. Check the website of the [Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/WAI/standards-guidelines/wcag/) for more information on accessibility.
 
   ### Guide on //TODOs
+
   Using `TODO` comments can be a convienient way to quickly record an identified issue or give future developers bug-related hints. The problem is that these comments are not tracked anywhere and might create a pool of "issues" that are not properly recorded. Therefore developers can use TODO comments but they should always include a reference to a ticket defining the issue.
 
   ```
   //Example
-  
+
   // TODO: This test times out: https://github.com/solid-design-system/solid/issues/387
-       *a test that is not working under current conditions*
   ```
 
-
-  This ensures clarity for future developers and avoids the accumulation of unresolved problems. While it's acceptable to comment out non-functional code (eg. tests that don't work under current conditions) with a TODO, code that requires extensive refactoring should not be commented out to avoid introducing "dirty" code into the product.
+  This ensures clarity for future developers and avoids the accumulation of unresolved problems. While it's acceptable to comment out temporarily non-functional code (eg. tests that don't work under current conditions) along with a TODO, code that requires a rework should not be commented out. If the code is essential, please add it to a ticket that explains the problem.
 
 ## Adding Dependecies
 
