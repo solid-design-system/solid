@@ -203,7 +203,7 @@ export default class SdNavigationItem extends SolidElement {
                 name="description"
                 part="description"
                 class=${cx(
-                  'inline-block text-sm text-left',
+                  'inline-block text-sm text-left text-black',
                   isAccordion ? 'grow' : 'w-full',
                   horizontalPaddingBottom,
                   this.calculatePaddingX()
