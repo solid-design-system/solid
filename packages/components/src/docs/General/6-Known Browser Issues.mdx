@@ -1,0 +1,30 @@
+import { Source, Markdown, Meta } from '@storybook/blocks';
+import playwrightVersion from 'playwright-version';
+import pkg from '../../../package.json';
+
+<Meta title="Docs/General/Known Browser Issues" />
+
+# Known Browser Issues
+
+We've identified several browser issues that may affect visual consistency while using our components.
+It's important for developers to be aware of these issues when implementing our components.
+
+### Missing Border Radius for Focus Styles in Safari
+
+In Safari, focus styles may lack border radius, unlike other browsers. This
+inconsistency could affect design cohesion. While we can't fix it, developers
+should be mindful of this behavior in Safari.
+
+### Blurry Placeholder Image in Chrome
+
+In Chrome, placeholder images may appear blurry at times. This is not a package issue but Chrome-specific behavior.
+
+### Wobbly Spinner in Safari
+
+"The 'sd-spinner' component may experience spinner animation issues in Safari, causing
+them to appear wobbly. This behavior is beyond our control, so developers should be aware
+of this when implementing the 'sd-spinner' component in Safari."
+
+Being aware of these browser-specific issues is essential. While we cannot
+directly resolve them, developers can make informed decisions and implement
+any necessary workarounds when using our components.
