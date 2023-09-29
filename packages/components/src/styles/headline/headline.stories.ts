@@ -197,7 +197,7 @@ export const Samples = {
       </style>
 
       <div class="story-wrapper">
-        <div class="headline">Sd-headline with Sd-mark (no icon)</div>
+        <div class="headline">sd-headline with sd-mark (no icon)</div>
 
         ${generateTemplate({
           axis: {
@@ -234,7 +234,7 @@ export const Samples = {
           args
         })}
 
-        <div class="headline">Sd-headline with Sd-mark (icon included)</div>
+        <div class="headline">sd-headline with sd-mark (icon included)</div>
 
         ${generateTemplate({
           axis: {
