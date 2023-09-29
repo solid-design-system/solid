@@ -62,3 +62,4 @@ updates:
       - "solid-design-system/development"
     # Set limit to 0 to disable Dependabot PRs entirely.
     open-pull-requests-limit: 0
+
