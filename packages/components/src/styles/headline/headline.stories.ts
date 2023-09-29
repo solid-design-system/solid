@@ -87,7 +87,7 @@ export const Inline = {
         name: 'default',
         value: ` 
         <sd-icon name="content/picture" library="global-resources"></sd-icon>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.`
+        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</span>`
       },
       args
     });
@@ -98,7 +98,7 @@ export const Inline = {
  * The headline with all possible combinations of 'size' and 'inverted,' both with and without an Icon.
  */
 
-export const IconXSize = {
+export const SizeXInverted = {
   name: 'Size x Inverted',
   parameters: {
     controls: {
@@ -161,8 +161,7 @@ export const IconXSize = {
  * The sd-headline paired with sd-mark styles with all the possible combinations of `size`, `inverted` and the presence of `icons`. Use the `inline` style to maintain smooth wrapping.
  */
 
-export const HeadlineWithMark = {
-  name: 'Sample: sd-headline with sd-mark',
+export const Samples = {
   parameters: {
     controls: {
       exclude: [
@@ -198,7 +197,7 @@ export const HeadlineWithMark = {
       </style>
 
       <div class="story-wrapper">
-        <div class="headline">No Icon</div>
+        <div class="headline">Sd-headline with Sd-mark (no icon)</div>
 
         ${generateTemplate({
           axis: {
@@ -235,7 +234,7 @@ export const HeadlineWithMark = {
           args
         })}
 
-        <div class="headline">Icon Included</div>
+        <div class="headline">Sd-headline with Sd-mark (icon included)</div>
 
         ${generateTemplate({
           axis: {

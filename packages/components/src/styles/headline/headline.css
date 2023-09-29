@@ -1,8 +1,8 @@
 .sd-headline {
-  @apply flex items-start gap-4 text-3xl font-bold sm:text-4xl text-primary;
+  @apply flex text-3xl font-bold sm:text-4xl text-primary gap-4;
 
   sd-icon {
-    @apply text-[3rem] text-primary shrink-0 sm:mt-2 align-middle;
+    @apply text-[3rem] text-primary shrink-0 sm:mt-2;
   }
 
   &--size-3xl {
@@ -16,10 +16,10 @@
   &--size-xl,
   &--size-lg,
   &--size-base {
-    @apply gap-2 text-black;
+    @apply text-black gap-2;
 
     sd-icon {
-      @apply mr-2 text-[2rem];
+      @apply text-[2rem];
     }
   }
 
@@ -43,7 +43,7 @@
     @apply text-base text-black;
 
     sd-icon {
-      @apply -mt-1 sm:-mt-1;
+      @apply -mt-1;
     }
 
     mark {
@@ -59,17 +59,19 @@
     }
   }
 
-  &--inverted &--size-base {
-    mark {
-      @apply text-white;
-    }
-  }
-
   &--inline {
     @apply inline;
 
     sd-icon {
-      @apply -mt-1;
+      @apply align-middle mr-2 -mt-1;
     }
+  }
+}
+
+.sd-headline--inline.sd-headline--size-xl,
+.sd-headline--inline.sd-headline--size-lg,
+.sd-headline--inline.sd-headline--size-base{
+  sd-icon{
+    @apply mr-0.5;
   }
 }
