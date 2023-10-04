@@ -115,7 +115,7 @@ export const SizeXInverted = {
   render: (args: any) => {
     return html` ${[
       {
-        title: 'without an Icon',
+        title: 'Without an sd-icon',
         constant: `
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.`
       },
