@@ -49,7 +49,7 @@
   // TODO: This test times out: https://github.com/solid-design-system/solid/issues/387
   ```
 
-  This ensures clarity for future developers and avoids the accumulation of unresolved problems. While it's acceptable to comment out temporarily non-functional code (eg. tests that don't work under current conditions) along with a TODO, code that requires a rework should not be commented out. If the code is essential, please add it to a ticket that explains the problem.
+  This ensures clarity for future developers and avoids the accumulation of unresolved problems. While it's acceptable to comment out temporarily non-functional code (eg. tests that don't work under current conditions) along with a TODO, code that requires a rework should not be commented out but completely removed from the code base. If the code is essential for a future fix, please add it to a ticket that explains the problem.
 
 ## Adding Dependecies
 
