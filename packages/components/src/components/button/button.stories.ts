@@ -334,37 +334,41 @@ export const Samples = {
       <div class="story-wrapper">
         <div class="headline">sd-button with sd-badge</div>
         <div class="flex flex-col justify-around gap-8 h-40 w-min m-4">
-          <section class="flex p-4 gap-10">
+          <section class="flex p-4 gap-10 items-center">
             <sd-button>Label <sd-badge>8</sd-badge></sd-button>
             <sd-button>Label <sd-badge variant="success">999+</sd-badge></sd-button>
-            <sd-button variant="secondary"> ${iconLeft}Label<sd-badge>8</sd-badge></sd-button>
-            <sd-button variant="secondary">${iconOnly}<sd-badge variant="success">8</sd-badge></sd-button>
+            <sd-button variant="secondary" size="md"> ${iconLeft}Label<sd-badge>8</sd-badge></sd-button>
+            <sd-button variant="secondary" size="md"
+              >${iconOnly}<sd-badge variant="success" size="md">8</sd-badge></sd-button
+            >
 
-            <sd-button variant="tertiary">
+            <sd-button variant="tertiary" size="md">
               ${iconOnly}
-              <sd-badge class="mt-3 mr-3" variant="error">8</sd-badge>
+              <sd-badge class="mt-3 mr-3" variant="error" size="md">8</sd-badge>
             </sd-button>
 
-            <sd-button variant="tertiary">
+            <sd-button variant="tertiary" size="md">
               ${iconOnly}
               <sd-badge class="mt-[0.8rem] mr-[0.8rem]" size="sm"></sd-badge>
             </sd-button>
           </section>
 
-          <section class="flex p-4 gap-10 bg-primary">
+          <section class="flex p-4 gap-10 bg-primary items-center">
             <sd-button inverted>Label <sd-badge inverted>8</sd-badge></sd-button>
             <sd-button inverted>Label <sd-badge inverted variant="success">999+</sd-badge></sd-button>
-            <sd-button inverted variant="secondary"> ${iconLeft}Label<sd-badge inverted>8</sd-badge></sd-button>
-            <sd-button inverted variant="secondary"
-              >${iconOnly}<sd-badge inverted variant="success">8</sd-badge></sd-button
+            <sd-button inverted variant="secondary" size="md">
+              ${iconLeft}Label<sd-badge inverted>8</sd-badge></sd-button
+            >
+            <sd-button inverted variant="secondary" size="md"
+              >${iconOnly}<sd-badge inverted variant="success" size="md">8</sd-badge></sd-button
             >
 
-            <sd-button inverted variant="tertiary">
+            <sd-button inverted variant="tertiary" size="md">
               ${iconOnly}
-              <sd-badge inverted class="mt-3 mr-3" variant="error">8</sd-badge>
+              <sd-badge inverted class="mt-3 mr-3" variant="error" size="md">8</sd-badge>
             </sd-button>
 
-            <sd-button inverted variant="tertiary">
+            <sd-button inverted variant="tertiary" size="md">
               ${iconOnly}
               <sd-badge inverted class="mt-[0.8rem] mr-[0.8rem]" size="sm"></sd-badge>
             </sd-button>
