@@ -344,7 +344,7 @@ export const Samples = {
 
             <sd-button variant="tertiary" size="md">
               ${iconOnly}
-              <sd-badge class="mt-3 mr-3" variant="error" size="md">8</sd-badge>
+              <sd-badge class="mt-2.5 mr-2.5" variant="error" size="md">8</sd-badge>
             </sd-button>
 
             <sd-button variant="tertiary" size="md">
@@ -365,12 +365,12 @@ export const Samples = {
 
             <sd-button inverted variant="tertiary" size="md">
               ${iconOnly}
-              <sd-badge inverted class="mt-3 mr-3" variant="error" size="md">8</sd-badge>
+              <sd-badge inverted class="mt-2.5 mr-2.5" variant="error" size="md">8</sd-badge>
             </sd-button>
 
             <sd-button inverted variant="tertiary" size="md">
               ${iconOnly}
-              <sd-badge inverted class="mt-[0.8rem] mr-[0.8rem]" size="sm"></sd-badge>
+              <sd-badge inverted class="mt-[0.75rem] mr-[0.75rem]" size="sm"></sd-badge>
             </sd-button>
           </section>
         </div>
