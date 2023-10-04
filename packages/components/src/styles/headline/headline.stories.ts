@@ -120,7 +120,7 @@ export const SizeXInverted = {
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.`
       },
       {
-        title: 'with an Icon',
+        title: 'With an sd-icon',
         constant: `
         <sd-icon name="content/picture" library="global-resources"></sd-icon>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.`
