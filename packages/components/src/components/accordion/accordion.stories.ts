@@ -4,6 +4,7 @@ import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 import { userEvent } from '@storybook/testing-library';
 import { waitUntil } from '@open-wc/testing-helpers';
+import cx from 'classix';
 
 const { argTypes, parameters } = storybookDefaults('sd-accordion');
 const { overrideArgs } = storybookHelpers('sd-accordion');
@@ -13,7 +14,7 @@ export default {
   title: 'Components/sd-accordion',
   component: 'sd-accordion',
   args: overrideArgs([
-    { type: 'slot', name: 'default', value: '<slot-comp></slot-comp>' },
+    { type: 'slot', name: 'default', value: '<div class="slot slot--border slot--text h-16">Replace this slot</div>' },
     { type: 'attribute', name: 'summary', value: 'Accordion' }
   ]),
   argTypes,
@@ -72,7 +73,7 @@ export const SummaryLength = {
       args,
       constants: [
         { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' },
-        { type: 'slot', name: 'summary', value: '<slot-comp slot="summary">Test</slot-comp>`' }
+        { type: 'slot', name: 'summary', value: '<div slot="summary" class="slot slot--text">Test</div>`' }
       ]
     });
   }
@@ -106,10 +107,11 @@ export const Slots = {
                 {
                   value:
                     slot === 'default'
-                      ? `<slot-comp style="--slot-content: ''"></slot-comp>`
-                      : `<slot-comp slot='${slot}' style="--slot-content: ''; --slot-height: 24px; --slot-width: ${
-                          slot === 'summary' ? '100%' : '24px'
-                        }"></slot-comp>`,
+                      ? `<div class="slot slot--border slot--background slot--text h-16">Replace this slot</div>`
+                      : `<div slot='${slot}' class="${cx(
+                          'slot slot--border slot--background h-6',
+                          slot === 'summary' ? 'w-[100%]' : 'w-6'
+                        )}"></div>`,
                   title: slot
                 }
               ]

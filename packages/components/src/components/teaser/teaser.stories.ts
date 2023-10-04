@@ -13,17 +13,17 @@ export default {
     {
       type: 'slot',
       name: 'default',
-      value: `<slot-comp style="--slot-height: 48px; --slot-content: 'Main slot'"></slot-comp>`
+      value: `<div class="slot slot--border slot--text h-12">Media slot</div>`
     },
     {
       type: 'slot',
       name: 'media',
-      value: `<slot-comp slot='media' style="--slot-height: 48px; --slot-content: 'Media slot'"></slot-comp>`
+      value: `<div slot="media" class="slot slot--border slot--text h-12">Media slot</div>`
     },
     {
       type: 'slot',
       name: 'meta',
-      value: `<slot-comp slot='meta' style="--slot-height: 46px; --slot-content: 'Meta slot'"></slot-comp>`
+      value: `<div slot="meta" class="slot slot--border slot--text h-12">Media slot</div>`
     }
   ]),
   argTypes,
@@ -304,8 +304,8 @@ export const Slots = {
                 {
                   value:
                     slot === 'default'
-                      ? `<slot-comp style="--slot-content: ''"></slot-comp>`
-                      : `<slot-comp slot='${slot}' style="--slot-content: '';}"></slot-comp>`,
+                      ? `<div class="slot slot--border slot--background h-16"></div>`
+                      : `<div slot='${slot}' class="slot slot--border slot--background h-16"></div>`,
                   title: slot
                 }
               ]
