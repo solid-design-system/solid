@@ -12,7 +12,7 @@ const { generateTemplate } = storybookTemplate('sd-headline');
  * <br>
  * <b>Sizes</b><br>
  * <li>4xl is the default size.</li>
- * <li>3xl, xl, lg and base can be used as alternatives to 4xl.</li>
+ * <li>3xl, xl, lg and base can be used to change the visual size of the HTML element.</li>
  * <li>On smaller screens (eg: mobile), the default size is 3xl. Additionally, the 3xl property behaves as if it were 2xl.</li>
  *
  */
