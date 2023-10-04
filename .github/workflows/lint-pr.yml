@@ -2,10 +2,7 @@ name: "Lint PR"
 
 on:
   pull_request_target:
-    types:
-      - opened
-      - edited
-      - synchronize
+    types: [opened, edited, synchronize]
   
 permissions:
   pull-requests: read
@@ -19,7 +16,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.PAT_RELEASE_KARL }}
         with:
-            types:
+            types: |
                 fix
                 feat
                 docs
