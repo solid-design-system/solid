@@ -18,7 +18,7 @@ export default {
     },
     {
       name: 'sd-headline--inline',
-      description: 'Maintains inline behavior when interacting with icons or other components.'
+      description: 'Sets inline behavior. Used exclusively when an sd-icon or other component is present.'
     }
   ]
 } satisfies Style;
