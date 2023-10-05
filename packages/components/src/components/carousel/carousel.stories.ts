@@ -17,11 +17,11 @@ export default {
       type: 'slot',
       name: 'default',
       value: `
-        <sd-carousel-item> <slot-comp></slot-comp> </sd-carousel-item>
-        <sd-carousel-item> <slot-comp></slot-comp> </sd-carousel-item>
-        <sd-carousel-item> <slot-comp></slot-comp> </sd-carousel-item>
-        <sd-carousel-item> <slot-comp></slot-comp> </sd-carousel-item>
-        <sd-carousel-item> <slot-comp></slot-comp> </sd-carousel-item>`
+        <sd-carousel-item><div class="slot slot--border slot--text h-16">Default slot</div></sd-carousel-item>
+        <sd-carousel-item><div class="slot slot--border slot--text h-16">Default slot</div></sd-carousel-item>
+        <sd-carousel-item><div class="slot slot--border slot--text h-16">Default slot</div></sd-carousel-item>
+        <sd-carousel-item><div class="slot slot--border slot--text h-16">Default slot</div></sd-carousel-item>
+        <sd-carousel-item><div class="slot slot--border slot--text h-16">Default slot</div></sd-carousel-item>`
     }
   ]),
   argTypes,

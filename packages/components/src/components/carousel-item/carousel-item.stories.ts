@@ -11,7 +11,7 @@ export default {
     {
       type: 'slot',
       name: 'default',
-      value: `<slot-comp></slot-comp>`
+      value: `<div class="slot slot--border slot--text h-16">Default slot</div>`
     }
   ]),
   argTypes,
