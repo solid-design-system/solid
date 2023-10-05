@@ -1,5 +1,4 @@
 import '../../solid-components';
-import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 import { withActions } from '@storybook/addon-actions/decorator';
 
@@ -80,20 +79,6 @@ export const Slots = {
   parameters: {
     controls: { exclude: ['size'] }
   },
-  decorators: [
-    (story: any) =>
-      html`<style>
-          .slot-highlight {
-            color: white;
-            border-radius: 6px;
-            border-color: red;
-            border-width: 2px;
-            border-style: solid;
-            --slot-height: 100%;
-            --slot-width: 100%;
-          }</style
-        >${story()}`
-  ],
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -103,7 +88,7 @@ export const Slots = {
           title: 'slot=...',
           values: [
             {
-              value: `<span class='slot-highlight'>8</span>`,
+              value: `<span class='slot slot--border slot--background'>8</span>`,
               title: 'default'
             }
           ]
