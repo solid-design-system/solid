@@ -13,7 +13,7 @@ export default {
     {
       type: 'slot',
       name: 'default',
-      value: `<div class="slot slot--border slot--text h-12">Media slot</div>`
+      value: `<div class="slot slot--border slot--text h-12">Main slot</div>`
     },
     {
       type: 'slot',
@@ -23,7 +23,7 @@ export default {
     {
       type: 'slot',
       name: 'meta',
-      value: `<div slot="meta" class="slot slot--border slot--text h-12">Media slot</div>`
+      value: `<div slot="meta" class="slot slot--border slot--text h-12">Meta slot</div>`
     }
   ]),
   argTypes,
