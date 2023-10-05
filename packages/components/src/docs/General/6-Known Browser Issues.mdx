@@ -9,11 +9,6 @@ import pkg from '../../../package.json';
 We've identified several browser issues that may affect visual consistency while using Solid Components.
 It's important for developers to be aware of these issues when implementing our components.
 
-## Missing Border Radius for Focus Styles in Safari
-
-In Safari, focus styles may lack border radius, unlike other browsers. This
-inconsistency could affect design cohesion.
-
 ## Blurry Placeholder Images in Chrome
 
 In Chrome, our placeholder images may appear blurry at times. This is not a package issue but Chrome-specific behavior.
@@ -23,6 +18,5 @@ In Chrome, our placeholder images may appear blurry at times. This is not a pack
 The 'sd-spinner' component may experience spinner animation issues in Safari, causing
 them to appear wobbly.
 
-Being aware of these browser-specific issues is essential. While we cannot
-directly resolve them, developers can make informed decisions and implement
-any necessary workarounds when using Solid Components.
+While acknowledging browser-specific issues, we opted not to include complex workarounds in Solid Components.
+This approach maintains code simplicity, making it easier for developers to work with our library while keeping it adaptable to evolving browser standards.
