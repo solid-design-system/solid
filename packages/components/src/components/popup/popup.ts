@@ -24,8 +24,6 @@ import SolidElement from '../../internal/solid-element';
  *  maybe a border or box shadow.
  * @csspart popup - The popup's container. Useful for setting a background color, box shadow, etc.
  *
- * @cssproperty [--arrow-size=10px] - The size of the arrow. Note that an arrow won't be shown unless the `arrow`
- *  attribute is used.
  * @cssproperty [--arrow-color=var(--sd-color-neutral-0)] - The color of the arrow.
  * @cssproperty [--auto-size-available-width] - A read-only custom property that determines the amount of width the
  *  popup can be before overflowing. Useful for positioning child elements that need to overflow. This property is only
@@ -86,8 +84,7 @@ export default class SdPopup extends SolidElement {
   @property({ type: Number }) skidding = 0;
 
   /**
-   * Attaches an arrow to the popup. The arrow's size and color can be customized using the `--arrow-size` and
-   * `--arrow-color` custom properties. For additional customizations, you can also target the arrow using
+   * Attaches an arrow to the popup. For additional customizations, you can also target the arrow using
    * `::part(arrow)` in your stylesheet.
    */
   @property({ type: Boolean }) arrow = false;
@@ -103,7 +100,7 @@ export default class SdPopup extends SolidElement {
    * The amount of padding between the arrow and the edges of the popup. If the popup has a border-radius, for example,
    * this will prevent it from overflowing the corners.
    */
-  @property({ attribute: 'arrow-padding', type: Number }) arrowPadding = 10;
+  @property({ attribute: 'arrow-padding', type: Number }) arrowPadding = 0;
 
   /**
    * When set, placement of the popup will flip to the opposite site to keep it in view. You can use
@@ -437,7 +434,7 @@ export default class SdPopup extends SolidElement {
       >
         <slot></slot>
         ${this.arrow
-          ? html`<div part="arrow" class="absolute rotate-45 -z-10 bg-primary" role="presentation"></div>`
+          ? html`<div part="arrow" class="absolute rotate-45 -z-10 bg-primary shadow" role="presentation"></div>`
           : ''}
       </div>
     `;
@@ -448,15 +445,12 @@ export default class SdPopup extends SolidElement {
     componentStyles,
     css`
       :host {
-        --arrow-color: var(--sd-color-primary);
-        --arrow-size: 10px;
-
         /*
      * These properties are computed to account for the arrow's dimensions after being rotated 45º. The constant
      * 0.7071 is derived from sin(45), which is the diagonal size of the arrow's container after rotating.
      */
-        --arrow-size-diagonal: calc(var(--arrow-size) * 0.7071);
-        --arrow-padding-offset: calc(var(--arrow-size-diagonal) - var(--arrow-size));
+        --arrow-size-diagonal: calc(10px * 0.7071);
+        --arrow-padding-offset: calc(var(--arrow-size-diagonal) - 10px);
 
         display: contents;
       }

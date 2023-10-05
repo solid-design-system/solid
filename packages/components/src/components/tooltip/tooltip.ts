@@ -46,7 +46,7 @@ export default class SdTooltip extends SolidElement {
   private readonly localize = new LocalizeController(this);
 
   @query('slot:not([name])') defaultSlot: HTMLSlotElement;
-  @query('#tooltip-body') body: HTMLElement;
+  @query('#tooltip') body: HTMLElement;
   @query('sd-popup') popup: SdPopup;
 
   /** The tooltip's content. If you need to display HTML, use the `content` slot instead. */
@@ -68,7 +68,7 @@ export default class SdTooltip extends SolidElement {
     | 'bottom-end'
     | 'left'
     | 'left-start'
-    | 'left-end' = 'right';
+    | 'left-end' = 'top';
 
   @property() size: 'lg' | 'sm' = 'lg';
 
@@ -154,14 +154,10 @@ export default class SdTooltip extends SolidElement {
   }
 
   private handleKeyDown(event: KeyboardEvent) {
-    // Pressing escape, space or enter when the tooltip is open should dismiss the tooltip
-    if (this.open && (event.key === 'Escape' || event.key === 'Enter' || event.key === ' ')) {
-      event.preventDefault();
+    // Pressing escape when the target element has focus should dismiss the tooltip
+    if (this.open && event.key === 'Escape') {
       event.stopPropagation();
       this.hide();
-    } else if ((event.key === 'Enter' || event.key === ' ') && !this.open) {
-      event.preventDefault();
-      this.show();
     }
   }
 
@@ -261,38 +257,43 @@ export default class SdTooltip extends SolidElement {
       ['end', '-2']
     ]);
 
-    const isSm = this.size === 'sm';
     return html`
       <sd-popup
         part="base"
-        id="tooltip"
         exportparts="
           popup:base__popup,
           arrow:base__arrow
         "
-        class=${cx('tooltip', this.open && 'tooltip--open')}
+        class=${cx(this.open && 'tooltip--open')}
         placement=${this.placement}
         distance="12"
-        skidding=${((skiddingMap.get(isStart ? 'start' : isEnd ? 'end' : 'default') || 0) as number) * (isSm ? -1 : 1)}
+        skidding=${((skiddingMap.get(isStart ? 'start' : isEnd ? 'end' : 'default') || 0) as number) *
+        (this.size === 'sm' ? -1 : 1)}
         strategy=${this.hoist ? 'fixed' : 'absolute'}
         flip
         shift
         arrow
-        arrow-padding="0"
         auto-size="vertical"
       >
-        <slot slot="anchor" class=${cx(this.size === 'lg' ? 'text-xl' : 'text-base')}>
-          <sd-icon library="system" name="info-sign" class="sd-interactive rounded-full" tabindex="0"></sd-icon>
+        <slot slot="anchor" aria-describedby="tooltip" class=${cx(this.size === 'lg' ? 'text-xl' : 'text-base')}>
+          <button class="flex">
+            <sd-icon
+              library="system"
+              name="info-circle"
+              class=${cx('sd-interactive rounded-full', this.disabled && 'sd-interactive--disabled')}
+              tabindex="0"
+            ></sd-icon>
+          </button>
         </slot>
 
         <slot
           name="content"
           part="body"
-          id="tooltip-body"
-          class="tooltip__body bg-primary text-white py-3 px-4 block shadow rounded-none text-sm text-left"
-          role="tooltiprole"
+          id="tooltip"
+          class=" bg-primary text-white py-3 px-4 block shadow rounded-none text-sm text-left"
+          role="tooltip"
+          aria-label="Tooltip description"
           aria-live=${this.open ? 'polite' : 'off'}
-          tabindex="0"
         >
           ${this.content}
         </slot>
@@ -309,32 +310,36 @@ export default class SdTooltip extends SolidElement {
         display: contents;
       }
 
-      #tooltip::part(popup) {
+      sd-popup::part(popup) {
         pointer-events: none;
         z-index: 10;
       }
 
-      #tooltip[placement^='top']::part(popup) {
+      sd-popup[placement^='top']::part(popup) {
         transform-origin: bottom;
       }
 
-      #tooltip[placement^='bottom']::part(popup) {
+      sd-popup[placement^='bottom']::part(popup) {
         transform-origin: top;
       }
 
-      #tooltip[placement^='left']::part(popup) {
+      sd-popup[placement^='left']::part(popup) {
         transform-origin: right;
       }
 
-      #tooltip[placement^='right']::part(popup) {
+      sd-popup[placement^='right']::part(popup) {
         transform-origin: left;
       }
 
-      #tooltip-body {
+      #tooltip {
         max-width: var(--max-width);
       }
 
-      :host(:not([no-auto-size])) ::slotted(*:not([slot='anchor'])) {
+      :host([disabled]) ::slotted(sd-icon) {
+        /* replace with the CSS properties that correspond to the 'sd-interactive--disabled' class */
+      }
+
+      ::slotted([slot='content']) {
         overflow: auto;
         max-width: var(--auto-size-available-width) !important;
         max-height: var(--auto-size-available-height) !important;

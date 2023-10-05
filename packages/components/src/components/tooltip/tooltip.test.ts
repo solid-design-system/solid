@@ -7,7 +7,7 @@ describe('<sd-tooltip>', () => {
   it('should be visible with the open attribute', async () => {
     const el = await fixture<SdTooltip>(html`
       <sd-tooltip content="This is a tooltip" open>
-        <sd-icon>Click Me</sd-icon>
+        <sd-button>Hover Me</sd-button>
       </sd-tooltip>
     `);
     const body = el.shadowRoot!.querySelector<HTMLElement>('[part~="body"]')!;
@@ -18,7 +18,7 @@ describe('<sd-tooltip>', () => {
   it('should not be visible without the open attribute', async () => {
     const el = await fixture<SdTooltip>(html`
       <sd-tooltip content="This is a tooltip">
-        <sd-icon>Click Me</sd-icon>
+        <sd-button>Hover Me</sd-button>
       </sd-tooltip>
     `);
     const body = el.shadowRoot!.querySelector<HTMLElement>('[part~="body"]')!;
@@ -29,7 +29,7 @@ describe('<sd-tooltip>', () => {
   it('should emit sd-show and sd-after-show when calling show()', async () => {
     const el = await fixture<SdTooltip>(html`
       <sd-tooltip content="This is a tooltip">
-        <sd-icon>Click Me</sd-icon>
+        <sd-button>Hover Me</sd-button>
       </sd-tooltip>
     `);
     const body = el.shadowRoot!.querySelector<HTMLElement>('[part~="body"]')!;
@@ -51,7 +51,7 @@ describe('<sd-tooltip>', () => {
   it('should emit sd-hide and sd-after-hide when calling hide()', async () => {
     const el = await fixture<SdTooltip>(html`
       <sd-tooltip content="This is a tooltip" open>
-        <sd-icon>Click Me</sd-icon>
+        <sd-button>Hover Me</sd-button>
       </sd-tooltip>
     `);
     const body = el.shadowRoot!.querySelector<HTMLElement>('[part~="body"]')!;
@@ -73,7 +73,7 @@ describe('<sd-tooltip>', () => {
   it('should emit sd-show and sd-after-show when setting open = true', async () => {
     const el = await fixture<SdTooltip>(html`
       <sd-tooltip content="This is a tooltip">
-        <sd-icon>Click Me</sd-icon>
+        <sd-button>Hover Me</sd-button>
       </sd-tooltip>
     `);
     const body = el.shadowRoot!.querySelector<HTMLElement>('[part~="body"]')!;
@@ -95,7 +95,7 @@ describe('<sd-tooltip>', () => {
   it('should emit sd-hide and sd-after-hide when setting open = false', async () => {
     const el = await fixture<SdTooltip>(html`
       <sd-tooltip content="This is a tooltip" open>
-        <sd-icon>Click Me</sd-icon>
+        <sd-button>Hover Me</sd-button>
       </sd-tooltip>
     `);
     const body = el.shadowRoot!.querySelector<HTMLElement>('[part~="body"]')!;
@@ -117,7 +117,7 @@ describe('<sd-tooltip>', () => {
   it('should hide the tooltip when tooltip is visible and disabled becomes true', async () => {
     const el = await fixture<SdTooltip>(html`
       <sd-tooltip content="This is a tooltip" open>
-        <sd-icon>Click Me</sd-icon>
+        <sd-button>Hover Me</sd-button>
       </sd-tooltip>
     `);
     const body = el.shadowRoot!.querySelector<HTMLElement>('[part~="body"]')!;
@@ -139,7 +139,7 @@ describe('<sd-tooltip>', () => {
   it('should show when open initially', async () => {
     const el = await fixture<SdTooltip>(html`
       <sd-tooltip content="This is a tooltip" open>
-        <sd-icon>Click Me</sd-icon>
+        <sd-button>Hover Me</sd-button>
       </sd-tooltip>
     `);
     const body = el.shadowRoot!.querySelector<HTMLElement>('[part~="body"]')!;
@@ -151,7 +151,7 @@ describe('<sd-tooltip>', () => {
   it('should not accept pointer events on the tooltip', async () => {
     const el = await fixture<SdTooltip>(html`
       <sd-tooltip content="This is a tooltip" open>
-        <sd-icon>Click Me</sd-icon>
+        <sd-button>Hover Me</sd-button>
       </sd-tooltip>
     `);
     const popup = el.shadowRoot!.querySelector<SdPopup>('sd-popup')!;

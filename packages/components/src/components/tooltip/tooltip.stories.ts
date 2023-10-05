@@ -20,6 +20,11 @@ export default {
     },
     {
       type: 'attribute',
+      name: 'placement',
+      value: 'right'
+    },
+    {
+      type: 'attribute',
       name: 'content',
       value: 'Lorem ipsum'
     }
@@ -29,12 +34,15 @@ export default {
   decorators: [
     withActions,
     (story: any) => html` <style>
-        .template-placement {
-          height: 110px;
+        .template-position {
           width: 250px;
           display: flex;
           align-items: center;
           justify-content: center;
+        }
+
+        .template-height {
+          height: 110px;
         }
         .placement-story td.template,
         #story--components-sd-tooltip--skidding td.template,
@@ -53,7 +61,11 @@ export default {
 
 export const Default = {
   render: (args: any) => {
-    return generateTemplate({ args });
+    return html`<div class="template-position template-height">
+      ${generateTemplate({
+        args
+      })}
+    </div>`;
   }
 };
 
@@ -75,7 +87,7 @@ export const Placement = {
             {
               type: 'template',
               name: 'placement',
-              value: `<div class="template-placement">%TEMPLATE%</div>`
+              value: `<div class="template-height template-position">%TEMPLATE%</div>`
             }
           ]
         })
@@ -95,7 +107,7 @@ export const Size = {
         }
       },
       args,
-      constants: [{ type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' }]
+      constants: [{ type: 'template', name: 'width', value: '<div class="template-position">%TEMPLATE%</div>' }]
     })
 };
 
@@ -110,42 +122,8 @@ export const Disabled = {
         }
       },
       args,
-      constants: [{ type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' }]
+      constants: [{ type: 'template', name: 'width', value: '<div class="template-position">%TEMPLATE%</div>' }]
     })
-};
-
-/**
- * Use the `default` and `content` slots in case you need to change them. Additionally a headline can be shown by bolding the text. Links or buttons (interactive elements) are not allowed.
- *
- */
-
-export const DifferentSlots = {
-  parameters: {
-    controls: { exclude: ['default', 'content'] }
-  },
-  render: (args: any) => {
-    return html` ${['default', 'content'].map(slot =>
-      generateTemplate({
-        axis: {
-          x: {
-            type: 'slot',
-            name: slot,
-            title: 'slot=...',
-            values: [
-              {
-                value:
-                  slot === 'default'
-                    ? `<span>Tooltip</span>`
-                    : `<div slot='content'><b>Headline</b><br>Lorem ipsum</div>`,
-                title: `${slot} slot`
-              }
-            ]
-          }
-        },
-        args
-      })
-    )}`;
-  }
 };
 
 /**
@@ -186,7 +164,7 @@ export const LongContent = {
         {
           type: 'template',
           name: 'width',
-          value: '<div style="width: 300px">%TEMPLATE%</div>'
+          value: '<div class="template-position">%TEMPLATE%</div>'
         }
       ]
     });
@@ -198,29 +176,33 @@ export const Slots = {
     controls: { exclude: ['default', 'content'] }
   },
   render: (args: any) => {
-    return html`
-      ${['default', 'content'].map(slot =>
-        generateTemplate({
-          axis: {
-            x: {
-              type: 'slot',
-              name: slot,
-              title: 'slot=...',
-              values: [
-                {
-                  value:
-                    slot === 'default'
-                      ? `<slot-comp style="--slot-content: ''; --slot-height: 24px; --slot-width: 24px;"></slot-comp>`
-                      : `<slot-comp slot='content' style="--slot-content: ''; --slot-height: 20px; --slot-width: 60px;"></slot-comp>`,
-                  title: slot
-                }
-              ]
+    return generateTemplate({
+      axis: {
+        x: {
+          type: 'slot',
+          name: 'default',
+          title: 'slot=...',
+          values: [
+            {
+              value: `<slot-comp style="--slot-content: ''; --slot-height: 24px; --slot-width: 24px;" class='tooltip-slots'></slot-comp>`,
+              title: 'default'
+            },
+            {
+              value: `<slot-comp slot='content' style="--slot-content: ''; --slot-height: 22px; --slot-width: 82px;" class='tooltip-slots'></slot-comp>`,
+              title: 'content'
             }
-          },
-          args
-        })
-      )}
-    `;
+          ]
+        }
+      },
+      args,
+      constants: [
+        {
+          type: 'template',
+          name: 'width',
+          value: '<div class="template-position">%TEMPLATE%</div>'
+        }
+      ]
+    });
   }
 };
 
