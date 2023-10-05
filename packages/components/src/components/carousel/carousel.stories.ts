@@ -17,11 +17,11 @@ export default {
       type: 'slot',
       name: 'default',
       value: `
-        <sd-carousel-item><div class="slot slot--border slot--text h-16">Default slot</div></sd-carousel-item>
-        <sd-carousel-item><div class="slot slot--border slot--text h-16">Default slot</div></sd-carousel-item>
-        <sd-carousel-item><div class="slot slot--border slot--text h-16">Default slot</div></sd-carousel-item>
-        <sd-carousel-item><div class="slot slot--border slot--text h-16">Default slot</div></sd-carousel-item>
-        <sd-carousel-item><div class="slot slot--border slot--text h-16">Default slot</div></sd-carousel-item>`
+        <sd-carousel-item><div class="slot slot--border slot--text h-16">Default slot 1</div></sd-carousel-item>
+        <sd-carousel-item><div class="slot slot--border slot--text h-16">Default slot 2</div></sd-carousel-item>
+        <sd-carousel-item><div class="slot slot--border slot--text h-16">Default slot 3</div></sd-carousel-item>
+        <sd-carousel-item><div class="slot slot--border slot--text h-16">Default slot 4</div></sd-carousel-item>
+        <sd-carousel-item><div class="slot slot--border slot--text h-16">Default slot 5</div></sd-carousel-item>`
     }
   ]),
   argTypes,
@@ -114,7 +114,10 @@ export const Autoplay = {
       axis: {
         y: { type: 'attribute', name: 'autoplay' }
       },
-      constants: [{ type: 'attribute', name: 'variant', value: 'dot' }],
+      constants: [
+        { type: 'attribute', name: 'variant', value: 'dot' },
+        { type: 'attribute', name: 'loop', value: 'true' }
+      ],
       args
     });
   }
@@ -138,21 +141,20 @@ export const SlidesPerPage = {
 };
 
 /**
- * Use `slides-per-move` to set how many slides the carousel advances when scrolling. Useful when specifying a `slides-per-page`
- * greater than one.
+ * Use `slides-per-move` to set how many slides the carousel advances when scrolling. Especially useful when specifying a `slides-per-page` greater than one by allowing you to scroll through multiple slides simultaneously, providing a way to navigate all visible slides on the page at once.
  */
 
 export const SlidesPerMove = {
-  parameters: { controls: { exclude: 'slides-per-move' } },
+  parameters: { controls: { exclude: ['slides-per-move', 'slides-per-page'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
+        x: { type: 'attribute', name: 'slides-per-page', values: [1, 2] },
         y: { type: 'attribute', name: 'slides-per-move', values: [1, 2] }
       },
       constants: [
-        { type: 'attribute', name: 'variant', value: 'dot' },
-        { type: 'attribute', name: 'slides-per-page', value: 2 },
-        { type: 'attribute', name: 'loop', value: 'true' }
+        // { type: 'attribute', name: 'loop', value: 'true' },
+        { type: 'attribute', name: 'variant', value: 'dot' }
       ],
       args
     });

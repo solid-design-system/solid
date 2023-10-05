@@ -67,8 +67,8 @@ export default class SdCarousel extends SolidElement {
   @property({ type: Number, attribute: 'slides-per-page' }) slidesPerPage = 1;
 
   /**
-   * Specifies the number of slides the carousel will advance when scrolling, useful when specifying a `slides-per-page`
-   * greater than one.
+   * Use `slides-per-move` to set how many slides the carousel advances when scrolling.
+   * Especially useful when specifying a `slides-per-page` greater than one by allowing you to scroll through multiple slides simultaneously.
    */
   @property({ type: Number, attribute: 'slides-per-move' }) slidesPerMove = 1;
 
