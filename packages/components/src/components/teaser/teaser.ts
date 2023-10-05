@@ -1,6 +1,7 @@
 import { css, html } from 'lit';
-import { customElement, property, query, state } from 'lit/decorators.js';
+import { customElement } from '../../../src/internal/register-custom-element';
 import { HasSlotController } from '../../internal/slot';
+import { property, query, state } from 'lit/decorators.js';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 import type { PropertyValues } from 'lit';
@@ -78,9 +79,7 @@ export default class SdTeaser extends SolidElement {
   }
 
   render() {
-    if (this.variant === 'white border-neutral-300') {
-      this.inset = true;
-    }
+    const inset = this.variant === 'white border-neutral-300' || this.inset;
 
     const slots = {
       'teaser-has-default': this.hasSlotController.test('[default]'),
@@ -102,13 +101,13 @@ export default class SdTeaser extends SolidElement {
           }[this.variant],
           this._orientation === 'vertical' && 'flex-col',
           this._orientation === 'horizontal' && 'flex-row gap-8',
-          this._orientation === 'horizontal' && this.inset && 'py-8 px-10'
+          this._orientation === 'horizontal' && inset && 'py-8 px-10'
         )}
         part="base"
       >
         <div
           style=${this._orientation === 'horizontal' ? `width: var(--distribution-media, 100%);` : ''}
-          class=${cx(!this.inset && this._orientation === 'vertical' && 'mb-4', !slots['teaser-has-media'] && 'hidden')}
+          class=${cx(!inset && this._orientation === 'vertical' && 'mb-4', !slots['teaser-has-media'] && 'hidden')}
           part="media"
         >
           <slot name="media"></slot>
@@ -117,13 +116,13 @@ export default class SdTeaser extends SolidElement {
         <div
           style=${this._orientation === 'horizontal'
             ? `width: var(--distribution-content, 100%); ${
-                this.inset ? 'width: var(--distribution-content, calc(100% - 2rem));' : ''
+                inset ? 'width: var(--distribution-content, calc(100% - 2rem));' : ''
               }`
             : ''}
           class=${cx(
             'flex flex-col text-left',
             this._orientation === 'horizontal' && `flex flex-col`,
-            this._orientation === 'vertical' && this.inset && 'm-4'
+            this._orientation === 'vertical' && inset && 'm-4'
           )}
           part="content"
         >

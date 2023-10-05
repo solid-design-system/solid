@@ -35,6 +35,22 @@ const { generateTemplate } = storybookTemplate('sd-icon');
  * </script>
  * ```
  *
+ * If you use the UMD bundle, you have to access the `registerIconLibrary()` function from the `SolidComponents` global.
+ *
+ * ```html
+ * <script src="https://solid-design-system.fe.union-investment.de/x.x.x/components/umd/solid-components.js"></script>
+ * <script>
+ *  const { registerIconLibrary } = window['Solid Components'];
+ *
+ *  registerIconLibrary('my-icons', {
+ *    resolver: name => `/assets/icons/${name}.svg`,
+ *    mutator: svg => svg.setAttribute('fill', 'currentColor')
+ *  });
+ * </script>
+ * ```
+ *
+ * Please have in mind, that you have to make sure that `window['Solid Components']` is available before you call `registerIconLibrary()` e. g. via polling or similar.
+ *
  * To display an icon, set the library and name attributes of an <sl-icon> element.
  *
  * ```html

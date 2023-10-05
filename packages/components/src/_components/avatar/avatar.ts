@@ -1,6 +1,7 @@
 import '../icon/icon';
 import { classMap } from 'lit/directives/class-map.js';
-import { customElement, property, state } from 'lit/decorators.js';
+import { customElement } from '../../../src/internal/register-custom-element';
+import {property, state } from 'lit/decorators.js';
 import { html } from 'lit';
 import { watch } from '../../internal/watch';
 import SolidElement from '../../internal/solid-element';

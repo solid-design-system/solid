@@ -1,5 +1,6 @@
 import { animations } from './animations';
-import { customElement, property, queryAsync } from 'lit/decorators.js';
+import { customElement } from '../../../src/internal/register-custom-element';
+import {property, queryAsync } from 'lit/decorators.js';
 import { html } from 'lit';
 import { watch } from '../../internal/watch';
 import SolidElement from '../../internal/solid-element';
