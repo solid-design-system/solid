@@ -19,7 +19,7 @@ export default {
     {
       name: 'sd-headline--inline',
       description:
-        'Sets inline behavior. Used exclusively when an sd-icon or other component is present. See usage <a href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/?path=/docs/styles-sd-headline--inline">here.</a>'
+        'Sets inline behavior. Used exclusively when an sd-icon or other component is present. See usage <a href="#inline">here.</a>'
     }
   ]
 } satisfies Style;
