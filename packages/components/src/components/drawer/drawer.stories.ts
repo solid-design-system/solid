@@ -17,17 +17,17 @@ export default {
     {
       type: 'slot',
       name: 'default',
-      value: `<div class="slot slot--border slot--text h-full">Replace this slot</div>`
+      value: `<div class="slot slot--border slot--text h-full">Main slot</div>`
     },
     {
       type: 'slot',
       name: 'header',
-      value: `<div slot='header' class="slot slot--border slot--text h-12 w-[140px]">Replace this slot</div>`
+      value: `<div slot='header' class="slot slot--border slot--text h-12 w-[140px]">Header slot</div>`
     },
     {
       type: 'slot',
       name: 'footer',
-      value: `<div slot='footer' class="slot slot--border slot--text h-12">Replace this slot</div>`
+      value: `<div slot='footer' class="slot slot--border slot--text h-12">Footer slot</div>`
     },
     { type: 'attribute', name: 'open', value: true },
     { type: 'attribute', name: 'contained', value: true }
@@ -166,7 +166,7 @@ export const Padding = {
             {
               type: 'slot',
               name: 'header',
-              value: `<div slot='header' class="slot slot--border slot--text h-[56px] w-[140px]">Replace this slot</div>`
+              value: `<div slot='header' class="slot slot--border slot--text h-[56px] w-[140px]">Header slot</div>`
             }
           ],
           args
@@ -277,11 +277,11 @@ export const Slots = {
                 {
                   value:
                     slot === 'default'
-                      ? `<div class="slot slot--border slot--background slot--text h-full">Replace this slot</div>`
+                      ? `<div class="slot slot--border slot--background slot--text h-full">Main slot</div>`
                       : `<div slot='${slot}' class="${cx(
                           'slot slot--border slot--background slot--text h-12',
                           slot === 'header' ? 'w-[140px]' : 'w-auto'
-                        )}">Replace this slot</div>`,
+                        )}">${slot === 'header' ? 'Header slot' : 'Footer slot'}</div>`,
                   title: slot
                 }
               ]

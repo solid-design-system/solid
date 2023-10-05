@@ -14,7 +14,7 @@ export default {
   title: 'Components/sd-accordion',
   component: 'sd-accordion',
   args: overrideArgs([
-    { type: 'slot', name: 'default', value: '<div class="slot slot--border slot--text h-16">Replace this slot</div>' },
+    { type: 'slot', name: 'default', value: '<div class="slot slot--border slot--text h-16">Default slot</div>' },
     { type: 'attribute', name: 'summary', value: 'Accordion' }
   ]),
   argTypes,
@@ -107,7 +107,7 @@ export const Slots = {
                 {
                   value:
                     slot === 'default'
-                      ? `<div class="slot slot--border slot--background slot--text h-16">Replace this slot</div>`
+                      ? `<div class="slot slot--border slot--background slot--text h-16">Default slot</div>`
                       : `<div slot='${slot}' class="${cx(
                           'slot slot--border slot--background h-6',
                           slot === 'summary' ? 'w-[100%]' : 'w-6'
