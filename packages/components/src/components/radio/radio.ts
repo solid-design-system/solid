@@ -59,8 +59,6 @@ export default class SdRadio extends SolidElement {
     this.addEventListener('blur', this.handleBlur);
     this.addEventListener('click', this.handleClick);
     this.addEventListener('focus', this.handleFocus);
-
-    console.log('hasFocus 1', this.hasFocus);
   }
 
   private removeEventListeners() {
@@ -72,8 +70,6 @@ export default class SdRadio extends SolidElement {
   private handleBlur() {
     this.hasFocus = false;
     this.emit('sd-blur');
-
-    console.log('hasFocus3 ', this.hasFocus);
   }
 
   private handleClick() {
@@ -85,8 +81,6 @@ export default class SdRadio extends SolidElement {
   private handleFocus() {
     this.hasFocus = true;
     this.emit('sd-focus');
-
-    console.log('hasFocus 2', this.hasFocus);
   }
 
   private setInitialAttributes() {
@@ -111,14 +105,14 @@ export default class SdRadio extends SolidElement {
       <span
         part="base"
         class=${cx(
-          'radio group inline-flex items-start items-center text-base leading-normal text-black cursor-pointer align-middle',
+          'sd-radio group inline-flex items-start items-center text-base leading-normal text-black cursor-pointer align-middle',
           this.checked && 'radio--checked',
           this.disabled && 'hover:cursor-not-allowed',
           this.hasFocus && 'radio--focused',
           {
             /* sizes, fonts */
-            sm: 'radio--small text-sm',
-            lg: 'radio--large text-base'
+            sm: 'text-sm',
+            lg: 'text-base'
           }[this.size]
         )}
       >
