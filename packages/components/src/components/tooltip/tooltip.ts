@@ -266,7 +266,7 @@ export default class SdTooltip extends SolidElement {
         "
         class=${cx(this.open && 'tooltip--open')}
         placement=${this.placement}
-        distance="12"
+        distance="10"
         skidding=${((skiddingMap.get(isStart ? 'start' : isEnd ? 'end' : 'default') || 0) as number) *
         (this.size === 'sm' ? -1 : 1)}
         strategy=${this.hoist ? 'fixed' : 'absolute'}
@@ -276,12 +276,11 @@ export default class SdTooltip extends SolidElement {
         auto-size="vertical"
       >
         <slot slot="anchor" aria-describedby="tooltip" class=${cx(this.size === 'lg' ? 'text-xl' : 'text-base')}>
-          <button class="flex">
+          <button class="flex sd-interactive rounded-full">
             <sd-icon
               library="system"
               name="info-circle"
-              class=${cx('sd-interactive rounded-full', this.disabled && 'sd-interactive--disabled')}
-              tabindex="0"
+              class=${cx(this.disabled && 'sd-interactive--disabled')}
             ></sd-icon>
           </button>
         </slot>
