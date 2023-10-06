@@ -349,7 +349,7 @@ export const Samples = {
 
             <sd-button variant="tertiary" size="md">
               ${iconOnly}
-              <sd-badge class="mt-[0.8rem] mr-[0.8rem]" size="sm"></sd-badge>
+              <sd-badge class="mt-[0.75rem] mr-[0.75rem]" size="sm"></sd-badge>
             </sd-button>
           </section>
 
