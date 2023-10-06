@@ -10,16 +10,21 @@ import type SdButton from '../components/button/button';
 export const formCollections: WeakMap<HTMLFormElement, Set<SolidFormControl>> = new WeakMap();
 
 //
-// We store a WeakMap of controls that users have interacted with. This allows us to determine the interaction state
+// We store a WeakMap of reportValidity() overloads so we can override it when form controls connect to the DOM and
+// restore the original behavior when they disconnect.
+//
+const reportValidityOverloads: WeakMap<HTMLFormElement, () => boolean> = new WeakMap();
+
+//
+// We store a Set of controls that users have interacted with. This allows us to determine the interaction state
 // without littering the DOM with additional data attributes.
 //
 const userInteractedControls: WeakMap<SolidFormControl, boolean> = new WeakMap();
 
 //
-// We store a WeakMap of reportValidity() overloads so we can override it when form controls connect to the DOM and
-// restore the original behavior when they disconnect.
+// We store a WeakMap of interactions for each form control so we can track when all conditions are met for validation.
 //
-const reportValidityOverloads: WeakMap<HTMLFormElement, () => boolean> = new WeakMap();
+const interactions = new WeakMap<SolidFormControl, string[]>();
 
 export interface FormControlControllerOptions {
   /** A function that returns the form containing the form control. */
@@ -39,8 +44,13 @@ export interface FormControlControllerOptions {
   reportValidity: (input: SolidFormControl) => boolean;
   /** A function that sets the form control's value */
   setValue: (input: SolidFormControl, value: unknown) => void;
+  /**
+   * An array of event names to listen to. When all events in the list are emitted, the control will receive validity
+   * states such as user-valid and user-invalid.user interacted validity states. */
+  assumeInteractionOn: string[];
 }
 
+/** A reactive controller to allow form controls to participate in form submission, validation, etc. */
 export class FormControlController implements ReactiveController {
   host: SolidFormControl & ReactiveControllerHost;
   form?: HTMLFormElement | null;
@@ -68,13 +78,9 @@ export class FormControlController implements ReactiveController {
       disabled: input => input.disabled ?? false,
       reportValidity: input => (typeof input.reportValidity === 'function' ? input.reportValidity() : true),
       setValue: (input, value: string) => (input.value = value),
+      assumeInteractionOn: ['sd-input'],
       ...options
     };
-    this.handleFormData = this.handleFormData.bind(this);
-    this.handleFormSubmit = this.handleFormSubmit.bind(this);
-    this.handleFormReset = this.handleFormReset.bind(this);
-    this.reportFormValidity = this.reportFormValidity.bind(this);
-    this.handleUserInput = this.handleUserInput.bind(this);
   }
 
   hostConnected() {
@@ -84,12 +90,21 @@ export class FormControlController implements ReactiveController {
       this.attachForm(form);
     }
 
-    this.host.addEventListener('sd-input', this.handleUserInput);
+    // Listen for interactions
+    interactions.set(this.host, []);
+    this.options.assumeInteractionOn.forEach(event => {
+      this.host.addEventListener(event, this.handleInteraction);
+    });
   }
 
   hostDisconnected() {
     this.detachForm();
-    this.host.removeEventListener('sd-input', this.handleUserInput);
+
+    // Clean up interactions
+    interactions.delete(this.host);
+    this.options.assumeInteractionOn.forEach(event => {
+      this.host.removeEventListener(event, this.handleInteraction);
+    });
   }
 
   hostUpdated() {
@@ -107,7 +122,7 @@ export class FormControlController implements ReactiveController {
     }
 
     if (this.host.hasUpdated) {
-      this.setValidity(this.host.checkValidity());
+      this.setValidity(this.host.validity.valid);
     }
   }
 
@@ -155,7 +170,7 @@ export class FormControlController implements ReactiveController {
     this.form = undefined;
   }
 
-  private handleFormData(event: FormDataEvent) {
+  private handleFormData = (event: FormDataEvent) => {
     const disabled = this.options.disabled(this.host);
     const name = this.options.name(this.host);
     const value = this.options.value(this.host);
@@ -173,9 +188,9 @@ export class FormControlController implements ReactiveController {
         event.formData.append(name, (value as string | number | boolean).toString());
       }
     }
-  }
+  };
 
-  private handleFormSubmit(event: Event) {
+  private handleFormSubmit = (event: Event) => {
     const disabled = this.options.disabled(this.host);
     const reportValidity = this.options.reportValidity;
 
@@ -190,17 +205,26 @@ export class FormControlController implements ReactiveController {
       event.preventDefault();
       event.stopImmediatePropagation();
     }
-  }
+  };
 
-  private handleFormReset() {
+  private handleFormReset = () => {
     this.options.setValue(this.host, this.options.defaultValue(this.host));
     this.setUserInteracted(this.host, false);
-  }
+    interactions.set(this.host, []);
+  };
 
-  private async handleUserInput() {
-    await this.host.updateComplete;
-    this.setUserInteracted(this.host, true);
-  }
+  private handleInteraction = (event: Event) => {
+    const emittedEvents = interactions.get(this.host)!;
+
+    if (!emittedEvents.includes(event.type)) {
+      emittedEvents.push(event.type);
+    }
+
+    // Mark it as user-interacted as soon as all associated events have been emitted
+    if (emittedEvents.length === this.options.assumeInteractionOn.length) {
+      this.setUserInteracted(this.host, true);
+    }
+  };
 
   private reportFormValidity() {
     //
@@ -266,6 +290,11 @@ export class FormControlController implements ReactiveController {
     }
   }
 
+  /** Returns the associated `<form>` element, if one exists. */
+  getForm() {
+    return this.form ?? null;
+  }
+
   /** Resets the form, restoring all the control to their default value */
   reset(invoker?: HTMLInputElement | SdButton) {
     this.doAction('reset', invoker);
@@ -313,11 +342,69 @@ export class FormControlController implements ReactiveController {
   }
 
   /**
-   * Updates the form control's validity based on the current value of `host.checkValidity()`. Call this when anything
+   * Updates the form control's validity based on the current value of `host.validity.valid`. Call this when anything
    * that affects constraint validation changes so the component receives the correct validity states.
    */
   updateValidity() {
     const host = this.host;
-    this.setValidity(host.checkValidity());
+    this.setValidity(host.validity.valid);
+  }
+
+  /**
+   * Dispatches a non-bubbling, cancelable custom event of type `sl-invalid`.
+   * If the `sl-invalid` event will be cancelled then the original `invalid`
+   * event (which may have been passed as argument) will also be cancelled.
+   * If no original `invalid` event has been passed then the `sl-invalid`
+   * event will be cancelled before being dispatched.
+   */
+  emitInvalidEvent(originalInvalidEvent?: Event) {
+    const slInvalidEvent = new CustomEvent<Record<PropertyKey, never>>('sd-invalid', {
+      bubbles: false,
+      composed: false,
+      cancelable: true,
+      detail: {}
+    });
+
+    if (!originalInvalidEvent) {
+      slInvalidEvent.preventDefault();
+    }
+
+    if (!this.host.dispatchEvent(slInvalidEvent)) {
+      originalInvalidEvent?.preventDefault();
+    }
   }
 }
+
+/*
+ * Predefined common validity states.
+ * All of them are read-only.
+ */
+
+// A validity state object that represents `valid`
+export const validValidityState: ValidityState = Object.freeze({
+  badInput: false,
+  customError: false,
+  patternMismatch: false,
+  rangeOverflow: false,
+  rangeUnderflow: false,
+  stepMismatch: false,
+  tooLong: false,
+  tooShort: false,
+  typeMismatch: false,
+  valid: true,
+  valueMissing: false
+});
+
+// A validity state object that represents `value missing`
+export const valueMissingValidityState: ValidityState = Object.freeze({
+  ...validValidityState,
+  valid: false,
+  valueMissing: true
+});
+
+// A validity state object that represents a custom error
+export const customErrorValidityState: ValidityState = Object.freeze({
+  ...validValidityState,
+  valid: false,
+  customError: true
+});
