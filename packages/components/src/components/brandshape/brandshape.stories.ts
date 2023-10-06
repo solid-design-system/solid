@@ -16,7 +16,7 @@ export default {
     {
       type: 'slot',
       name: 'default',
-      value: '<slot-comp style="--slot-height: 32px; --slot-width: 100%;"></slot-comp>'
+      value: '<div class="slot slot--border slot--text h-8 w-full">Default slot</div>'
     },
     { type: 'attribute', name: 'shapes', value: '["top", "middle", "bottom"]' }
   ]),

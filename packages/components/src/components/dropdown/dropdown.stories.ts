@@ -306,7 +306,7 @@ export const Slots = {
               title: 'default'
             },
             {
-              value: `<div class="slot slot--text example"></div><sd-button class="slot slot--border" slot="trigger">Trigger</sd-button><div class="slot-overlay"  slot="trigger"></div>`,
+              value: `<div class="slot slot--text example"></div><sd-button class="slot slot--border slot--background" slot="trigger">Trigger</sd-button><div class="slot-overlay"  slot="trigger"></div>`,
               title: 'trigger'
             }
           ]
