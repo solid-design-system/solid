@@ -19,7 +19,7 @@ import SolidElement from '../../internal/solid-element.js';
 /**
  * @summary Carousels display an arbitrary number of content slides along a horizontal axis.
  *
- * @since 1.12.0
+ * @since 1.18.0
  * @status stable
  *
  * @dependency sd-icon
