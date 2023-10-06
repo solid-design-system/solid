@@ -67,8 +67,10 @@ export default class SdCarousel extends SolidElement {
   @property({ type: Number, attribute: 'slides-per-page' }) slidesPerPage = 1;
 
   /**
-   * Use `slides-per-move` to set how many slides the carousel advances when scrolling.
-   * Especially useful when specifying a `slides-per-page` greater than one by allowing you to scroll through multiple slides simultaneously.
+   * Use `slides-per-move` to set how many slides the carousel advances when scrolling. This is useful when specifying a `slides-per-page` greater than one. By setting `slides-per-move` to the same value as `slides-per-page`, the carousel will advance by one page at a time.<br>
+   * <b>Note:</b><br>
+   * <li> The number of slides should be divisible by the number of `slides-per-page` to maintain consistent scroll behavior.</li>
+   * <li>Variations between `slides-per-move` and `slides-per-page` can lead to unexpected scrolling behavior. Keep your intended UX in mind when adjusting these values.</li>
    */
   @property({ type: Number, attribute: 'slides-per-move' }) slidesPerMove = 1;
 
@@ -358,12 +360,12 @@ export default class SdCarousel extends SolidElement {
     const slides = this.getSlides();
     const slidesWithClones = this.getSlides({ excludeClones: false });
 
-    // Workaround to avoid slidesPerMove overscrolling when looping.
-    if (this.slidesPerMove === 1 || (this.slidesPerMove > 1 && index <= slides.length)) {
-      // Sets the next index without taking into account clones, if any.
-      const newActiveSlide = (index + slides.length) % slides.length;
-      this.activeSlide = newActiveSlide;
-    }
+    // Sets the next index without taking into account clones, if any.
+    // Inconsistencies may arise when scrolling from the last slide if slidesPerMove is not divisible by the slide count.
+    // This is most apparent with slidesPerPage set to one, but we won't provide a fix as it's not a recommended use case anyways.
+    const newActiveSlide = (index + slides.length) % slides.length;
+    this.activeSlide = newActiveSlide;
+
     // Get the index of the next slide. For looping carousel it adds `slidesPerPage`
     // to normalize the starting index in order to ignore the first nth clones.
     const nextSlideIndex = clamp(index + (loop ? slidesPerPage : 0), 0, slidesWithClones.length - 1);

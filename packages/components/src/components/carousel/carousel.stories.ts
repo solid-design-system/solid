@@ -141,20 +141,33 @@ export const SlidesPerPage = {
 };
 
 /**
- * Use `slides-per-move` to set how many slides the carousel advances when scrolling. Especially useful when specifying a `slides-per-page` greater than one by allowing you to scroll through multiple slides simultaneously, providing a way to navigate all visible slides on the page at once.
+ * Use `slides-per-move` to set how many slides the carousel advances when scrolling. This is useful when specifying a `slides-per-page` greater than one. By setting `slides-per-move` to the same value as `slides-per-page`, the carousel will advance by one page at a time.<br>
+ * <b>Note:</b><br>
+ * <li> The number of slides should be divisible by the number of `slides-per-page` to maintain consistent scroll behavior.</li>
+ * <li>Variations between `slides-per-move` and `slides-per-page` can lead to unexpected scrolling behavior. Keep your intended UX in mind when adjusting these values.</li>
  */
 
 export const SlidesPerMove = {
-  parameters: { controls: { exclude: ['slides-per-move', 'slides-per-page'] } },
+  parameters: { controls: { exclude: 'slides-per-move' } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        x: { type: 'attribute', name: 'slides-per-page', values: [1, 2] },
-        y: { type: 'attribute', name: 'slides-per-move', values: [1, 2] }
+        y: { type: 'attribute', name: 'slides-per-move', values: [2] }
       },
       constants: [
         { type: 'attribute', name: 'loop', value: 'true' },
-        { type: 'attribute', name: 'variant', value: 'dot' }
+        { type: 'attribute', name: 'slides-per-page', value: 2 },
+        {
+          type: 'slot',
+          name: 'default',
+          value: `
+            <sd-carousel-item><div class="slot slot--border slot--text h-16">Default slot 1</div></sd-carousel-item>
+            <sd-carousel-item><div class="slot slot--border slot--text h-16">Default slot 2</div></sd-carousel-item>
+            <sd-carousel-item><div class="slot slot--border slot--text h-16">Default slot 3</div></sd-carousel-item>
+            <sd-carousel-item><div class="slot slot--border slot--text h-16">Default slot 4</div></sd-carousel-item>
+            <sd-carousel-item><div class="slot slot--border slot--text h-16">Default slot 5</div></sd-carousel-item>
+            <sd-carousel-item><div class="slot slot--border slot--text h-16">Default slot 6</div></sd-carousel-item>`
+        }
       ],
       args
     });
