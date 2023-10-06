@@ -1,8 +1,7 @@
 import { css, html } from 'lit';
 import { customElement } from '../../../src/internal/register-custom-element';
 import { LocalizeController } from '../../utilities/localize';
-import { property, query } from 'lit/decorators.js';
-import { watch } from '../../internal/watch';
+import { property } from 'lit/decorators.js';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
@@ -24,38 +23,38 @@ import SolidElement from '../../internal/solid-element';
 export default class SdVideo extends SolidElement {
   private readonly localize = new LocalizeController(this);
 
-  @query('slot') defaultSlot: HTMLSlotElement;
-
-  private videoElement: HTMLVideoElement | null = null;
-
   /** True if the contained video is playing. Hides everything when true. */
   @property({ type: Boolean, reflect: true }) playing = false;
 
   /** Show a darker overlay. */
-  @property({ type: Boolean, reflect: true }) overlay = false;
+  @property({ type: Boolean, reflect: true }) overlay = true;
 
-  @watch('playing')
-  handlePlayingChange() {
-    this.emit('sd-play', { detail: { playing: this.playing } });
-  }
-
-  handleClickPlayIcon() {
-    this.playing = true;
+  play() {
+    this.emit('sd-play');
   }
 
   render() {
     return html`
-      <div part="base">
+      <div part="base" aria-label="Video Player">
         <slot></slot>
         <div
-          @click=${this.handleClickPlayIcon}
+          role="presentation"
+          class=${cx(
+            this.overlay && !this.playing ? 'opacity-100' : 'opacity-0',
+            'bg-[rgba(0,0,0,0.65)] w-full h-full absolute top-0 left-0 transition-opacity duration-300 pointer-events-none'
+          )}
+        ></div>
+        <button
+          aria-label="Play video"
+          tabindex="0"
+          @click=${this.play}
           class=${cx(
             this.playing ? 'opacity-0' : 'opacity-100',
-            'cursor-pointer absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] p-4 bg-white bg-opacity-75 rounded-full flex items-center justify-center transition-opacity duration-300'
+            'absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] p-4 bg-white bg-opacity-75 rounded-full flex items-center justify-center transition-opacity duration-300'
           )}
         >
           <slot name="play-icon" part="play-icon"></slot>
-        </div>
+        </button>
       </div>
     `;
   }

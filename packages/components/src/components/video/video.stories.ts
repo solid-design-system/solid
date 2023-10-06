@@ -1,4 +1,5 @@
 import '../../solid-components';
+import { html } from 'lit-html';
 import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
 import { withActions } from '@storybook/addon-actions/decorator';
 
@@ -40,24 +41,12 @@ export const Default = {
 
 export const VideoElement = {
   name: 'Video Element',
-  parameters: { controls: { exclude: ['size', 'inverted'] } },
+  parameters: {
+    controls: {
+      exclude: ['overlay', 'playing', 'default', 'play-icon']
+    }
+  },
   render: (args: any) => {
-    return generateTemplate({
-      constants: [
-        {
-          type: 'slot',
-          name: 'default',
-          value:
-            '<video controls><source src="http://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4" />Your browser does not support the video tag.</video>'
-        },
-        {
-          type: 'slot',
-          name: 'play-icon',
-          value:
-            '<sd-icon library="global-resources" name="system/start" slot="play-icon" color="primary" style="font-size: 64px;"></sd-icon>'
-        }
-      ],
-      args
-    });
+    return html`<sd-video-example></sd-video-example>`;
   }
 };
