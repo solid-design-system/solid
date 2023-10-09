@@ -169,8 +169,6 @@ export default class SdRadio extends SolidElement {
 
       .radio__control {
         flex: 0 0 auto;
-        transition: var(--sd-transition-fast) border-color, var(--sd-transition-fast) background-color,
-          var(--sd-transition-fast) color, var(--sd-transition-fast) box-shadow;
       }
 
       /* Checked + focus */
