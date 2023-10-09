@@ -1,5 +1,6 @@
 import { css, html } from 'lit';
-import { customElement, property, query, state } from 'lit/decorators.js';
+import { customElement } from '../../../src/internal/register-custom-element';
+import { property, query, state } from 'lit/decorators.js';
 import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';

@@ -3,6 +3,7 @@ import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 import { userEvent } from '@storybook/testing-library';
 import { waitUntil } from '@open-wc/testing-helpers';
+import cx from 'classix';
 
 const { argTypes, parameters } = storybookDefaults('sd-drawer');
 const { generateTemplate } = storybookTemplate('sd-drawer');
@@ -16,17 +17,17 @@ export default {
     {
       type: 'slot',
       name: 'default',
-      value: `<slot-comp style="height: 100%;"></slot-comp>`
+      value: `<div class="slot slot--border slot--text h-full">Main slot</div>`
     },
     {
       type: 'slot',
       name: 'header',
-      value: `<slot-comp slot='header' style="height: 48px; width: 140px;"></slot-comp>`
+      value: `<div slot='header' class="slot slot--border slot--text h-12 w-[140px]">Header slot</div>`
     },
     {
       type: 'slot',
       name: 'footer',
-      value: `<slot-comp slot='footer' style="--slot-height: 48px;"></slot-comp>`
+      value: `<div slot='footer' class="slot slot--border slot--text h-12">Footer slot</div>`
     },
     { type: 'attribute', name: 'open', value: true },
     { type: 'attribute', name: 'contained', value: true }
@@ -165,7 +166,7 @@ export const Padding = {
             {
               type: 'slot',
               name: 'header',
-              value: `<slot-comp slot='header' style="height: 56px; width: 140px;"></slot-comp>`
+              value: `<div slot='header' class="slot slot--border slot--text h-[56px] w-[140px]">Header slot</div>`
             }
           ],
           args
@@ -276,10 +277,11 @@ export const Slots = {
                 {
                   value:
                     slot === 'default'
-                      ? `<slot-comp style="--slot-content: ''; --slot-height: 100%;'"></slot-comp>`
-                      : `<slot-comp slot='${slot}' style="--slot-content: ''; --slot-height: 48px; --slot-width: ${
-                          slot === 'header' ? '140px' : 'auto'
-                        }"></slot-comp>`,
+                      ? `<div class="slot slot--border slot--background slot--text h-full">Main slot</div>`
+                      : `<div slot='${slot}' class="${cx(
+                          'slot slot--border slot--background slot--text h-12',
+                          slot === 'header' ? 'w-[140px]' : 'w-auto'
+                        )}">${slot === 'header' ? 'Header slot' : 'Footer slot'}</div>`,
                   title: slot
                 }
               ]
