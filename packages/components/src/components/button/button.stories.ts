@@ -5,7 +5,6 @@ import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../..
 import { userEvent } from '@storybook/testing-library';
 import { waitUntil } from '@open-wc/testing-helpers';
 import { withActions } from '@storybook/addon-actions/decorator';
-
 const { argTypes, parameters } = storybookDefaults('sd-button');
 const { overrideArgs } = storybookHelpers('sd-button');
 const { generateTemplate } = storybookTemplate('sd-button'); // Replace with your custom element tag
@@ -302,5 +301,80 @@ export const Mouseless = {
     await waitUntil(() => el?.shadowRoot?.querySelector('button'));
     // We have to catch the event as otherwise Storybook will break
     await userEvent.type(el!.shadowRoot!.querySelector('button')!, '{return}', { pointerEventsCheck: 0 });
+  }
+};
+
+/**
+ * Here are some examples of sd-button working with sd-badge.
+ */
+export const Samples = {
+  render: () => {
+    const iconLeft = html`<sd-icon slot="icon-left" library="global-resources" name="system/picture"></sd-icon>`;
+    const iconOnly = html`<sd-icon library="global-resources" name="system/picture"></sd-icon>`;
+
+    return html`
+      <style>
+        .story-wrapper {
+          display: inline-block;
+          max-width: 1200px;
+        }
+        .headline {
+          padding: 16px;
+          background: #e0e0e0;
+          text-align: left;
+          font-size: 14px;
+          font-weight: bold;
+          width: 100%;
+          box-sizing: border-box;
+        }
+        div:not(:first-of-type).headline {
+          margin-top: 72px;
+        }
+      </style>
+      <div class="story-wrapper">
+        <div class="headline">sd-button with sd-badge</div>
+        <div class="flex flex-col justify-around gap-8 h-40 w-min m-4">
+          <section class="flex p-4 gap-10 items-center">
+            <sd-button>Label <sd-badge>8</sd-badge></sd-button>
+            <sd-button>Label <sd-badge variant="success">999+</sd-badge></sd-button>
+            <sd-button variant="secondary" size="md"> ${iconLeft}Label<sd-badge>8</sd-badge></sd-button>
+            <sd-button variant="secondary" size="md"
+              >${iconOnly}<sd-badge variant="success" size="md">8</sd-badge></sd-button
+            >
+
+            <sd-button variant="tertiary" size="md">
+              ${iconOnly}
+              <sd-badge class="mt-2.5 mr-2.5" variant="error" size="md">8</sd-badge>
+            </sd-button>
+
+            <sd-button variant="tertiary" size="md">
+              ${iconOnly}
+              <sd-badge class="mt-[0.75rem] mr-[0.75rem]" size="sm"></sd-badge>
+            </sd-button>
+          </section>
+
+          <section class="flex p-4 gap-10 bg-primary items-center">
+            <sd-button inverted>Label <sd-badge inverted>8</sd-badge></sd-button>
+            <sd-button inverted>Label <sd-badge inverted variant="success">999+</sd-badge></sd-button>
+            <sd-button inverted variant="secondary" size="md">
+              ${iconLeft}Label<sd-badge inverted>8</sd-badge></sd-button
+            >
+            <sd-button inverted variant="secondary" size="md"
+              >${iconOnly}<sd-badge inverted variant="success" size="md">8</sd-badge></sd-button
+            >
+
+            <sd-button inverted variant="tertiary" size="md">
+              ${iconOnly}
+              <sd-badge inverted class="mt-2.5 mr-2.5" variant="error" size="md">8</sd-badge>
+            </sd-button>
+
+            <sd-button inverted variant="tertiary" size="md">
+              ${iconOnly}
+              <sd-badge inverted class="mt-[0.75rem] mr-[0.75rem]" size="sm"></sd-badge>
+            </sd-button>
+          </section>
+        </div>
+      </div>
+    `;
   }
 };

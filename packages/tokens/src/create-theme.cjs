@@ -63,6 +63,8 @@ const sanitizeKey = (value, cssVariable = true) => {
   value = value.replaceAll('\b', '');
   value = value.replaceAll(',', '.');
   if (cssVariable) value = value.replaceAll('.', '-');
+  value = value.replace('-default', '');
+  if (value === 'default') value = 'DEFAULT';
   return value;
 };
 
@@ -161,18 +163,41 @@ const getSpacings = () => {
 };
 
 // Get all Object.entries(tokens['UI Semantic'].background and set them as background colors
-const getColors = (name, cssVariableScope) => {
+const getColors = (scope, cssVariableScope) => {
   let result = {};
-  Object.entries(tokens['UI Semantic'][name])
-    .map(([name, value]) => ({ name, ...value }))
-    .forEach(({ name, value, description }) => {
-      if (name === 'transparent') return;
-      const color = hexToRgb(resolveValue(value)).join(' ');
-      // add the background color to the theme
-      result[sanitizeValue(name)] = `rgb(var(--sd-color-${sanitizeKey(
-        sanitizeValue(name)
-      )}, ${color}) / <alpha-value>)${description ? ` /* ${description} */` : ''}`;
-    });
+  const getColor = value => hexToRgb(resolveValue(value)).join(' ');
+  if (scope) {
+    // The color palette for a specific scope e. g. text, background, border
+    Object.entries(tokens['UI Semantic'][scope])
+      .map(([name, value]) => ({ name, ...value }))
+      .forEach(({ name, value, description }) => {
+        if (name === 'transparent') return;
+        // add the background color to the theme
+        result[sanitizeValue(name)] = `rgb(var(--sd-color-${sanitizeKey(sanitizeValue(name))}, ${getColor(
+          value
+        )}) / <alpha-value>)${description ? ` /* ${description} */` : ''}`;
+      });
+  } else {
+    // The full color palette - especially used for documentation purposes
+    Object.entries(tokens['UI Core'])
+      .filter(([colorName]) => ['blue', 'green', 'grey', 'black', 'white'].includes(colorName))
+      .forEach(([colorName, shades]) => {
+        if (colorName === 'black' || colorName === 'white') {
+          result[sanitizeKey(colorName)] = `rgb(var(--sd-color-${sanitizeKey(sanitizeValue(colorName))}, ${getColor(
+            shades.value
+          )}) / <alpha-value>)`;
+        } else {
+          Object.entries(shades).forEach(([shadeName, { value, description }]) => {
+            const name = `${
+              { blue: 'primary', green: 'accent', grey: 'neutral' }[colorName] || colorName
+            }-${shadeName}`;
+            result[sanitizeKey(name)] = `rgb(var(--sd-color-${sanitizeKey(sanitizeValue(name))}, ${getColor(
+              value
+            )}) / <alpha-value>)${description ? ` /* ${description} */` : ''}`;
+          });
+        }
+      });
+  }
 
   result = reformatColors(result);
   return {
@@ -234,6 +259,7 @@ const config = {
     borderRadius: { ...getBorderRadius() },
     boxShadowColor: { ...getColors('background', 'background-color') },
     caretColor: { ...getColors('text', 'text-color') },
+    color: { ...getColors() },
     fill: { ...getColors('icon-fill', 'fill-color') },
     fontFamily: {},
     fontSize: { ...getCoreTokensByType('fontSizes', 'font-size') },

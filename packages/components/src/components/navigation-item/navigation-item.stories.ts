@@ -3,6 +3,7 @@ import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 import { waitUntil } from '@open-wc/testing-helpers';
 import { withActions } from '@storybook/addon-actions/decorator';
+import cx from 'classix';
 import type { ConstantDefinition } from '../../../scripts/storybook/helper';
 const { overrideArgs } = storybookHelpers('sd-navigation-item');
 const { argTypes, parameters } = storybookDefaults('sd-navigation-item');
@@ -282,10 +283,11 @@ export const Slots = {
                 {
                   value:
                     slot === 'default'
-                      ? `<slot-comp style="--slot-content: ''; --slot-height: 24px; --slot-width: 100px;"></slot-comp>`
-                      : `<slot-comp slot='${slot}' style="--slot-content: ''; --slot-height: 24px; --slot-width: ${
-                          slot === 'description' || slot === 'children' ? '100%' : '24px'
-                        }"></slot-comp>`,
+                      ? `<div class="slot slot--border slot--background h-8 w-[100px]"></div>`
+                      : `<div slot='${slot}' class="${cx(
+                          'slot slot--border slot--background h-6',
+                          slot === 'description' || slot === 'children' ? 'w-full' : 'w-6'
+                        )}"></div>`,
                   title: slot
                 }
               ]
