@@ -403,15 +403,6 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
               />
             </label>
           </div>
-
-          <!-- TODO: integrate these part into the component when radio-button is converted to a solid component
-           ${this.hasButtonGroup
-            ? html`
-                <sd-button-group part="button-group" exportparts="base:button-group__base" role="presentation">
-                  ${defaultSlot}
-                </sd-button-group>
-              `
-            : defaultSlot} -->
           ${defaultSlot}
         </div>
 
