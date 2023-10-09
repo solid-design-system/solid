@@ -9,9 +9,7 @@ import SolidElement from '../../internal/solid-element';
  * @summary A radio allows to select only one value from a set of options. Clicking on an unchecked radio will deselect the other one(s).
  * @documentation https://solid.union-investment.com/[storybook-link]/radio
  * @status stable
- * @since 2.0
- *
- * @dependency sd-icon
+ * @since 1.18.0
  *
  * @slot - The radio's label.
  *
@@ -19,9 +17,9 @@ import SolidElement from '../../internal/solid-element';
  * @event sd-focus - Emitted when the control gains focus.
  *
  * @csspart base - The component's base wrapper.
- * @csspart control - The circular container that wraps the radio's checked state.
+ * @csspart control--unchecked - The radio control when the radio is unchecked.
  * @csspart control--checked - The radio control when the radio is checked.
- * @csspart checked-icon - The checked icon, an `<sd-icon>` element.
+ * @csspart checked - The dot inside the radio component when the radio is checked.
  * @csspart label - The container that wraps the radio's label.
  */
 @customElement('sd-radio')
