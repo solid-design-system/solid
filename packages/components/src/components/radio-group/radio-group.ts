@@ -8,6 +8,7 @@ import {
 } from '../../internal/form';
 import { HasSlotController } from '../../internal/slot';
 import { watch } from '../../internal/watch';
+import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
 import SdButtonGroup from '../../_components/button-group/button-group';
 import SolidElement from '../../internal/solid-element';
@@ -19,7 +20,7 @@ import type SdRadioButton from '../../_components/radio-button/radio-button';
  * @summary Radio groups are used to group multiple [radios](/components/radio) or [radio buttons](/components/radio-button) so they function as a single form control.
  * @documentation https://solid.union-investment.com/[storybook-link]/radio-group
  * @status stable
- * @since 2.0
+ * @since 1.18.0
  *
  * @dependency sd-button-group
  *
@@ -35,9 +36,11 @@ import type SdRadioButton from '../../_components/radio-button/radio-button';
  * @csspart form-control-label - The label's wrapper.
  * @csspart form-control-input - The input's wrapper.
  * @csspart form-control-error-text - The error text's wrapper.
- * @csspart button-group - The button group that wraps radio buttons.
- * @csspart button-group__base - The button group's `base` part.
  */
+
+// TODO: integrate these parts into the component when radio-button is converted to a solid component
+// @csspart button-group - The button group that wraps radio buttons.
+// @csspart button-group__base - The button group's `base` part.
 @customElement('sd-radio-group')
 export default class SdRadioGroup extends SolidElement implements SolidFormControl {
   static dependencies = { 'sd-button-group': SdButtonGroup };
@@ -60,7 +63,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
    */
   @property() label = '';
 
-  /** The radio groups's error text. If you need to display HTML, use the `error-text` slot instead. */
+  /** The radio groups's error text. Use to display an error message below the component. */
   @property({ attribute: 'error-text' }) errorText = '';
 
   /** The name of the radio group, submitted as a name/value pair with form data. */
@@ -69,7 +72,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
   /** The current value of the radio group, submitted as a name/value pair with form data. */
   @property({ reflect: true }) value = '';
 
-  /** The radio group's size. This size will be applied to all child radios and radio buttons. */
+  /** The radio group's size. This size will be applied to the label, all child radios and radio buttons. */
   @property({ reflect: true }) size: 'sm' | 'lg' = 'lg';
 
   /**  A Boolean attribute which, if present, marks the radio valid or invalid  */
@@ -220,7 +223,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
       // Sync the checked state and size
       radios.map(async radio => {
         await radio.updateComplete;
-        console.log('radio', radio);
+
         radio.checked = radio.value === this.value;
         radio.size = this.size;
         radio.invalid = this.invalid;
@@ -400,13 +403,15 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
             </label>
           </div>
 
-          ${this.hasButtonGroup
+          <!-- TODO: integrate these part into the component when radio-button is converted to a solid component
+           ${this.hasButtonGroup
             ? html`
                 <sd-button-group part="button-group" exportparts="base:button-group__base" role="presentation">
                   ${defaultSlot}
                 </sd-button-group>
               `
-            : defaultSlot}
+            : defaultSlot} -->
+          ${defaultSlot}
         </div>
 
         <div
@@ -432,25 +437,16 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
    * Inherits Tailwind classes and includes additional styling.
    */
   static styles = [
+    componentStyles,
     SolidElement.styles,
     css`
       :host {
         display: block;
-        box-sizing: border-box;
-      }
-
-      :host *,
-      :host *::before,
-      :host *::after {
-        box-sizing: inherit;
-      }
-
-      [hidden] {
-        display: none !important;
       }
 
       .form-control-input--vertical ::slotted(sd-radio) {
         margin-bottom: 8px;
+        display: flex;
       }
 
       .form-control-input--vertical ::slotted(sd-radio:last-of-type) {
@@ -467,7 +463,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
 
       /* Label */
       .form-control--has-label .form-control__label {
-        display: inline-block;
+        display: flex;
       }
 
       :host([required]) .form-control--has-label .form-control__label::after {
@@ -477,7 +473,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
 
       /* error text */
       .form-control--has-error-text .form-control__error-text {
-        display: block;
+        display: flex;
       }
 
       .visually-hidden {
