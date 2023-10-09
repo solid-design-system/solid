@@ -460,7 +460,6 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
 
       :host([required]) .form-control--has-label .form-control__label::after {
         content: '*';
-        margin-inline-start: -2px;
       }
 
       /* error text */
