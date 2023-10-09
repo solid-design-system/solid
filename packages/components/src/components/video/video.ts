@@ -1,6 +1,5 @@
 import { css, html } from 'lit';
 import { customElement } from '../../../src/internal/register-custom-element';
-import { LocalizeController } from '../../utilities/localize';
 import { property } from 'lit/decorators.js';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
@@ -21,9 +20,6 @@ import SolidElement from '../../internal/solid-element';
  */
 @customElement('sd-video')
 export default class SdVideo extends SolidElement {
-  // TODO: REVIEWER: Am I missing tasks involving the localize controller?
-  private readonly localize = new LocalizeController(this);
-
   /** True if the contained video is playing. Hides everything when true. */
   @property({ type: Boolean, reflect: true }) playing = false;
 
