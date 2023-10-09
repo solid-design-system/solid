@@ -46,7 +46,7 @@ export const VideoElement = {
       exclude: ['overlay', 'playing', 'default', 'play-icon']
     }
   },
-  render: (args: any) => {
+  render: () => {
     return html`<sd-video-example></sd-video-example>`;
   }
 };
