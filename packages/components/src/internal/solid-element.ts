@@ -55,8 +55,8 @@ export interface SolidFormControl extends SolidElement {
   maxlength?: number;
 
   // Form validation properties
-  readonly validity: ValidityState;
-  readonly validationMessage: string;
+  readonly validity?: ValidityState;
+  readonly validationMessage?: string;
 
   // Validation methods
   checkValidity: () => boolean;

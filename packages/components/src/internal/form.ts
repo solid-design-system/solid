@@ -122,7 +122,7 @@ export class FormControlController implements ReactiveController {
     }
 
     if (this.host.hasUpdated) {
-      this.setValidity(this.host.validity.valid);
+      this.setValidity(this.host?.validity!.valid);
     }
   }
 
@@ -347,7 +347,7 @@ export class FormControlController implements ReactiveController {
    */
   updateValidity() {
     const host = this.host;
-    this.setValidity(host.validity.valid);
+    this.setValidity(host?.validity!.valid);
   }
 
   /**
