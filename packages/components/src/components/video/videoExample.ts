@@ -34,7 +34,13 @@ export default class SdVideoExample extends SolidElement {
     return html`
       <div>
         <sd-video ?playing=${this.playing} ?overlay=${this.overlay}>
-          <video @play="${this.play}" @pause="${this.pause}" controls>
+          <video
+            @play="${this.play}"
+            @pause="${this.pause}"
+            controls
+            poster="https://www.blender.org/wp-content/uploads/2020/10/robin-tran-redautumnforest_pr1.jpg"
+            style="max-width: 854px; may-height: 480px;"
+          >
             <source src="http://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>

@@ -21,16 +21,18 @@ import SolidElement from '../../internal/solid-element';
  */
 @customElement('sd-video')
 export default class SdVideo extends SolidElement {
+  // TODO: REVIEWER: Am I missing tasks involving the localize controller?
   private readonly localize = new LocalizeController(this);
 
   /** True if the contained video is playing. Hides everything when true. */
   @property({ type: Boolean, reflect: true }) playing = false;
 
   /** Show a darker overlay. */
-  @property({ type: Boolean, reflect: true }) overlay = true;
+  @property({ type: Boolean, reflect: true }) overlay = false;
 
   play() {
     this.emit('sd-play');
+    this.playing = true;
   }
 
   render() {
@@ -38,6 +40,7 @@ export default class SdVideo extends SolidElement {
       <div part="base" aria-label="Video Player">
         <slot></slot>
         <div
+          id="overlay"
           role="presentation"
           class=${cx(
             this.overlay && !this.playing ? 'opacity-100' : 'opacity-0',
