@@ -26,7 +26,7 @@ export default {
 };
 
 /**
- * Default: This shows sd-video in its default state.
+ * `sd-video` does not have any content by default because it is a wrapper component.
  */
 
 export const Default = {
@@ -36,7 +36,7 @@ export const Default = {
 };
 
 /**
- * The `sd-video` element with a standard `video` element in the `default` slot.
+ * The `sd-video` element wrapping a standard `video` element in the `default` slot including a `poster` attribute. Includes an `sd-icon` elment in the `play-icon` slot. `overlay` property is set to `true`.
  */
 
 export const VideoElement = {
