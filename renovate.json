@@ -2,5 +2,29 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:base"
-  ]
+  ],
+  "packageRules": [
+    {
+      "matchUpdateTypes": [
+        "minor",
+        "patch",
+        "pin",
+        "digest"
+      ],
+      "autoApprove": true,
+      "automergeType": "pr",
+      "automergeStrategy": "squash",
+      "automerge": true
+    },
+    {
+      "matchDepNames": [
+        "node",
+        "pnpm",
+        "nx"
+      ],
+      "enabled": false
+    }
+  ],
+  "prConcurrentLimit": 10,
+  "commitMessageAction": "chore(deps): update dependency ${dependency} to ${currentVersion}"
 }
