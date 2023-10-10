@@ -181,8 +181,8 @@ export default class SdAccordion extends SolidElement {
             </slot>
           </span>
         </header>
-        <div part="content" id="content" class="overflow-hidden">
-          <slot class="block px-4 py-6" role="region" aria-labelledby="header"></slot>
+        <div part="content" id="content" class="overflow-hidden px-4 py-6">
+          <slot role="region" aria-labelledby="header"></slot>
         </div>
       </div>
     `;
