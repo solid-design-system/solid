@@ -1,7 +1,7 @@
 import '../../solid-components';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes } = storybookDefaults('sd-radio');
+const { argTypes, parameters } = storybookDefaults('sd-radio');
 const { generateTemplate } = storybookTemplate('sd-radio');
 const { overrideArgs } = storybookHelpers('sd-radio');
 
@@ -9,7 +9,8 @@ export default {
   title: 'Components/sd-radio',
   component: 'sd-radio',
   args: overrideArgs([{ type: 'slot', name: 'default', value: 'Default Slot' }]),
-  argTypes
+  argTypes,
+  parameters: { ...parameters }
 };
 
 /**
@@ -80,6 +81,41 @@ export const Invalid = {
         ]
       },
       constants: { type: 'attribute', name: 'invalid', value: true },
+      args
+    });
+  }
+};
+
+/**
+ * Use the `base`, `control--unchecked`, `control--checked`, `checked` and `label` part selectors to customize the radio.
+ */
+export const Parts = {
+  parameters: {
+    controls: { exclude: ['base', 'control--unchecked', 'control--checked', 'checked', 'label'] }
+  },
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        y: {
+          type: 'template',
+          name: 'sd-radio::part(...){outline: solid 2px red}',
+          values: ['base', 'control--unchecked', 'control--checked', 'checked', 'label'].map(part => {
+            return {
+              title: part,
+              value: `
+                <style>#part-${part} sd-radio::part(${part}){outline: solid 2px red}</style>
+                <div id="part-${part}">
+                ${
+                  part === 'control--unchecked'
+                    ? '<sd-radio-group value="1">%TEMPLATE%</sd-radio-group>'
+                    : '<sd-radio-group>%TEMPLATE%</sd-radio-group>'
+                }
+                </div>
+              `
+            };
+          })
+        }
+      },
       args
     });
   }

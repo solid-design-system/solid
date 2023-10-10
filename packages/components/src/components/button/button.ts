@@ -1,7 +1,7 @@
 import '../spinner/spinner';
 import { css } from 'lit';
 import { customElement } from '../../../src/internal/register-custom-element';
-import { FormControlController } from '../../internal/form';
+import { FormControlController, validValidityState } from '../../internal/form';
 import { HasSlotController } from '../../internal/slot';
 import { html, literal } from 'lit/static-html.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
@@ -23,6 +23,8 @@ import type { SolidFormControl } from '../../internal/solid-element';
  *
  * @event sd-blur - Emitted when the button loses focus.
  * @event sd-focus - Emitted when the button gains focus.
+ * @event sd-invalid - Emitted when the form control has been checked for validity and its constraints aren't satisfied.
+
  *
  * @slot - The button's label.
  * @slot icon-left - A prefix icon or similar element.
@@ -53,8 +55,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
 
   @query('a, button') button: HTMLButtonElement | HTMLLinkElement;
   @queryAssignedElements({ selector: 'sd-icon' }) _iconsInDefaultSlot!: HTMLElement[];
-  @state()
-  invalid = false;
+  @state() invalid = false;
   @property() title = ''; // make reactive to pass through
 
   /** The button's theme variant. */
@@ -121,6 +122,24 @@ export default class SdButton extends SolidElement implements SolidFormControl {
   /** Used to override the form owner's `target` attribute. */
   @property({ attribute: 'formtarget' }) formTarget: '_self' | '_blank' | '_parent' | '_top' | string;
 
+  /** Gets the validity state object */
+  get validity() {
+    if (this.isButton()) {
+      return (this.button as HTMLButtonElement).validity;
+    }
+
+    return validValidityState;
+  }
+
+  /** Gets the validation message */
+  get validationMessage() {
+    if (this.isButton()) {
+      return (this.button as HTMLButtonElement).validationMessage;
+    }
+
+    return '';
+  }
+
   firstUpdated() {
     if (this.isButton()) {
       this.formControlController.updateValidity();
@@ -149,6 +168,11 @@ export default class SdButton extends SolidElement implements SolidFormControl {
     if (this.type === 'reset') {
       this.formControlController.reset(this);
     }
+  }
+
+  private handleInvalid(event: Event) {
+    this.formControlController.setValidity(false);
+    this.formControlController.emitInvalidEvent(event);
   }
 
   private isButton() {
@@ -182,13 +206,18 @@ export default class SdButton extends SolidElement implements SolidFormControl {
     this.button.blur();
   }
 
-  /** Checks for validity but does not show the browser's validation message. */
+  /** Checks for validity but does not show the browser's validation message. Returns `true` when valid and `false` when invalid. */
   checkValidity() {
     if (this.isButton()) {
       return (this.button as HTMLButtonElement).checkValidity();
     }
 
     return true;
+  }
+
+  /** Gets the associated form, if one exists. */
+  getForm(): HTMLFormElement | null {
+    return this.formControlController.getForm();
   }
 
   /** Checks for validity and shows the browser's validation message if the control is invalid. */
@@ -291,6 +320,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
         tabindex=${this.disabled ? '-1' : '0'}
         @blur=${this.handleBlur}
         @focus=${this.handleFocus}
+        @invalid=${this.isButton() ? this.handleInvalid : null}
         @click=${this.handleClick}
       >
         <slot name="icon-left" part="icon-left" class=${cx(
