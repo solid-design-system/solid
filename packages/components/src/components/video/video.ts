@@ -59,12 +59,7 @@ export default class SdVideo extends SolidElement {
         >
           <slot name="play-icon" part="play-icon">
             ${this.hasSlotController.test('[default]')
-              ? html`<sd-icon
-                  library="global-resources"
-                  name="system/start"
-                  color="primary"
-                  class="text-[4rem]"
-                ></sd-icon> `
+              ? html`<sd-icon library="system" name="start" color="primary" class="text-[4rem]"></sd-icon> `
               : null}
           </slot>
         </button>
