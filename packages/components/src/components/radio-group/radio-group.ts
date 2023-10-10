@@ -39,7 +39,7 @@ import type SdRadioButton from '../../_components/radio-button/radio-button';
  * @csspart form-control-error-text - The error text's wrapper.
  */
 
-// TODO: integrate these parts into the component when radio-button is converted to a solid component
+// TODO: integrate these parts into the component when radio-button-group is converted to a solid component: https://github.com/solid-design-system/solid/issues/216
 // @csspart button-group - The button group that wraps radio buttons.
 // @csspart button-group__base - The button group's `base` part.
 @customElement('sd-radio-group')
