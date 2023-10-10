@@ -25,6 +25,5 @@
       "enabled": false
     }
   ],
-  "prConcurrentLimit": 10,
-  "commitMessageAction": "chore(deps): update dependency ${dependency} to ${currentVersion}"
+  "prConcurrentLimit": 10
 }
