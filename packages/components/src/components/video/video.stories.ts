@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import '../../solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
@@ -43,10 +44,36 @@ export const VideoElement = {
   name: 'Video Element',
   parameters: {
     controls: {
-      exclude: ['overlay', 'playing', 'default', 'play-icon']
+      exclude: ['playing', 'default']
     }
   },
-  render: () => {
-    return html`<sd-video-example></sd-video-example>`;
+  render: (args: any) => {
+    return html`
+      ${generateTemplate({
+        args,
+        constants: {
+          type: 'slot',
+          name: 'default',
+          value:
+            '<video controls poster="https://www.blender.org/wp-content/uploads/2020/10/robin-tran-redautumnforest_pr1.jpg" style="max-width: 854px; may-height: 480px;"><source src="http://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4" />Your browser does not support the video tag.</video>'
+        }
+      })}
+      <script>
+        const videoEl = document.querySelector('video');
+        const sdVideo = document.querySelector('sd-video');
+
+        sdVideo.addEventListener('sd-play', () => {
+          videoEl.play();
+        });
+
+        videoEl.addEventListener('play', () => {
+          sdVideo.play();
+        });
+
+        videoEl.addEventListener('pause', () => {
+          sdVideo.playing = false;
+        });
+      </script>
+    `;
   }
 };

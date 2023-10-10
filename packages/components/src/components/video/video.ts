@@ -1,5 +1,6 @@
 import { css, html } from 'lit';
 import { customElement } from '../../../src/internal/register-custom-element';
+import { HasSlotController } from 'src/internal/slot';
 import { property } from 'lit/decorators.js';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
@@ -17,9 +18,12 @@ import SolidElement from '../../internal/solid-element';
  * @slot play-icon - The video's play icon.
  *
  * @csspart base - The component's base wrapper.
+ * @csspart play-button - Button element wrapper around the play-icon slot.
  */
 @customElement('sd-video')
 export default class SdVideo extends SolidElement {
+  private readonly hasSlotController = new HasSlotController(this, '[default]', 'play-icon');
+
   /** True if the contained video is playing. Hides everything when true. */
   @property({ type: Boolean, reflect: true }) playing = false;
 
@@ -44,6 +48,7 @@ export default class SdVideo extends SolidElement {
           )}
         ></div>
         <button
+          part="play-button"
           aria-label="Play video"
           tabindex="0"
           @click=${this.play}
@@ -52,7 +57,16 @@ export default class SdVideo extends SolidElement {
             'absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] p-4 bg-white bg-opacity-75 rounded-full flex items-center justify-center transition-opacity duration-300'
           )}
         >
-          <slot name="play-icon" part="play-icon"></slot>
+          <slot name="play-icon" part="play-icon">
+            ${this.hasSlotController.test('[default]')
+              ? html`<sd-icon
+                  library="global-resources"
+                  name="system/start"
+                  color="primary"
+                  class="text-[4rem]"
+                ></sd-icon> `
+              : null}
+          </slot>
         </button>
       </div>
     `;
