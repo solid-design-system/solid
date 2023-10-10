@@ -1,25 +1,16 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:base"
-  ],
+  "extends": ["config:base"],
   "packageRules": [
     {
-      "matchUpdateTypes": [
-        "minor",
-        "patch"
-      ],
+      "matchUpdateTypes": ["minor", "patch"],
       "autoApprove": true,
       "automergeType": "pr",
       "automergeStrategy": "squash",
       "automerge": true
     },
     {
-      "matchDepNames": [
-        "node",
-        "pnpm",
-        "nx"
-      ],
+      "matchDepNames": ["node", "pnpm", "nx"],
       "enabled": false
     }
   ],
