@@ -7,6 +7,10 @@ import { withActions } from '@storybook/addon-actions/decorator';
 const { argTypes, args, parameters } = storybookDefaults('sd-video');
 const { generateTemplate } = storybookTemplate('sd-video');
 
+const placeholderWidth = 400;
+const placeholderHeight = placeholderWidth * (9 / 16);
+const placeholderImg = `<div style="width: ${placeholderWidth}px; height: ${placeholderHeight}px;" class="flex items-center justify-center overflow-hidden"><img src="./placeholders/generic.jpg" /></div>`;
+
 export default {
   title: 'Components/sd-video',
   component: 'sd-video',
@@ -27,7 +31,7 @@ export const Default = {
         {
           type: 'slot',
           name: 'default',
-          value: '<img src="./placeholders/generic.jpg" />'
+          value: placeholderImg
         }
       ],
       args
@@ -52,7 +56,7 @@ export const PlayingOverlay = {
           {
             type: 'slot',
             name: 'default',
-            value: '<img src="./placeholders/generic.jpg" />'
+            value: placeholderImg
           }
         ],
         args
@@ -62,7 +66,8 @@ export const PlayingOverlay = {
 };
 
 /**
- * Use in combination with a viewer component (e. g. from Moving Image) or a bare `<video>`-Tag. Here we wrap a `video` element that includes a `poster` attribute.
+ * Use in combination with a viewer component (e. g. from Moving Image) or a bare `<video>`-Tag. <br/>
+ * Here we wrap a `video` element that includes a `poster` attribute.
  */
 
 export const VideoElement = {
@@ -92,7 +97,7 @@ export const VideoElement = {
         });
 
         videoEl.addEventListener('play', () => {
-          sdVideo.play();
+          sdVideo.playing = true;
         });
 
         videoEl.addEventListener('pause', () => {
