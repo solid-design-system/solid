@@ -106,7 +106,7 @@
     "@types/mocha": "^10.0.1",
     "@types/sinon": "^10.0.15",
     "@web/test-runner": "^0.16.1",
-    "@web/test-runner-commands": "^0.7.0",
+    "@web/test-runner-commands": "^0.8.0",
     "@web/test-runner-playwright": "^0.10.1",
     "autoprefixer": "^10.4.14",
     "cem-plugin-vs-code-custom-data-generator": "^1.4.1",
