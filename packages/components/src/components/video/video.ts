@@ -7,12 +7,12 @@ import SolidElement from '../../internal/solid-element';
 
 /**
  * @summary Used to wrap external video elements (e. g. from Moving Image or bare <video>-Tags) and provide some basic styling for Union Investment.
- * @status experimental
- * @since 1.0
+ * @status stable
+ * @since 1.12.0
  *
  * @dependency sd-example
  *
- * @event sd-play - Event emitted when the video is played or paused. Detail reflects "playing" property.
+ * @event sd-play - Event emitted when clicking the `play-icon`. Listen for this event and use it to play the wrapped video.
  *
  * @slot - The default slot used to pass a video player element.
  * @slot play-icon - The video's play icon.
@@ -24,13 +24,13 @@ import SolidElement from '../../internal/solid-element';
 export default class SdVideo extends SolidElement {
   private readonly hasSlotController = new HasSlotController(this, '[default]', 'play-icon');
 
-  /** True if the contained video is playing. Hides everything when true. */
+  /** Set to `true` to hide the play icon and the overlay. */
   @property({ type: Boolean, reflect: true }) playing = false;
 
-  /** Show a darker overlay. */
+  /** Set to `true` to show a dark overlay. Only used when `playing` is `false`. */
   @property({ type: Boolean, reflect: true }) overlay = false;
 
-  play() {
+  private play() {
     this.emit('sd-play');
     this.playing = true;
   }
@@ -59,7 +59,12 @@ export default class SdVideo extends SolidElement {
         >
           <slot name="play-icon" part="play-icon">
             ${this.hasSlotController.test('[default]')
-              ? html`<sd-icon library="system" name="start" color="primary" class="text-[4rem]"></sd-icon> `
+              ? html`<sd-icon
+                  library="system"
+                  name="start"
+                  color="primary"
+                  class="text-[4rem] translate-x-1"
+                ></sd-icon> `
               : null}
           </slot>
         </button>
