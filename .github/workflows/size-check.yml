@@ -40,7 +40,7 @@ jobs:
           echo "::set-output name=gzip_size::$GZIP"
 
       - name: Uncompressed
-        uses: LouisBrunner/checks-action@v1.6.1
+        uses: LouisBrunner/checks-action@v1.6.2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           name: uncompressed
@@ -49,7 +49,7 @@ jobs:
             {"title":"ℹ️ ${{ steps.calc_size.outputs.uncompressed_size }}", "summary":"${{ steps.calc_size.outputs.uncompressed_size }}"}
 
       - name: Compressed
-        uses: LouisBrunner/checks-action@v1.6.1
+        uses: LouisBrunner/checks-action@v1.6.2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           name: gzip
