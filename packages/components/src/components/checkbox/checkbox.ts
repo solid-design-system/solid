@@ -1,16 +1,14 @@
 import '../icon/icon';
-import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from '../../../src/internal/register-custom-element';
-import {property, query, state } from 'lit/decorators.js';
+import { property, query, state } from 'lit/decorators.js';
 import { defaultValue } from '../../internal/default-value';
 import { FormControlController } from '../../internal/form';
-import { html } from 'lit';
+import { css, html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { live } from 'lit/directives/live.js';
 import { watch } from '../../internal/watch';
+import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
-import styles from './checkbox.styles';
-import type { CSSResultGroup } from 'lit';
 import type { SolidFormControl } from '../../internal/solid-element';
 
 /**
@@ -38,8 +36,6 @@ import type { SolidFormControl } from '../../internal/solid-element';
  */
 @customElement('sd-checkbox')
 export default class SdCheckbox extends SolidElement implements SolidFormControl {
-  static styles: CSSResultGroup = styles;
-
   private readonly formControlController = new FormControlController(this, {
     value: (control: SdCheckbox) => (control.checked ? control.value || 'on' : undefined),
     defaultValue: (control: SdCheckbox) => control.defaultChecked,
@@ -59,7 +55,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
   @property() value: string;
 
   /** The checkbox's size. */
-  @property({ reflect: true }) size: 'small' | 'medium' | 'large' = 'medium';
+  @property({ reflect: true }) size: 'sm' | 'lg' = 'lg';
 
   /** Disables the checkbox. */
   @property({ type: Boolean, reflect: true }) disabled = false;
@@ -161,19 +157,20 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
     return html`
       <label
         part="base"
-        class=${classMap({
-      checkbox: true,
-      'checkbox--checked': this.checked,
-      'checkbox--disabled': this.disabled,
-      'checkbox--focused': this.hasFocus,
-      'checkbox--indeterminate': this.indeterminate,
-      'checkbox--small': this.size === 'small',
-      'checkbox--medium': this.size === 'medium',
-      'checkbox--large': this.size === 'large'
-    })}
+        class=${cx(
+          'sd-checkbox group inline-flex items-start items-center text-base leading-normal text-black cursor-pointer align-middle',
+          this.checked && 'checkbox--checked',
+          this.disabled && 'hover:cursor-not-allowed',
+          this.hasFocus && 'checkbox--focused',
+          {
+            /* sizes, fonts */
+            sm: 'text-sm',
+            lg: 'text-base'
+          }[this.size]
+        )}
       >
         <input
-          class="checkbox__input"
+          class="checkbox__input absolute opacity-0 p-0 m-0 pointer-events-none"
           type="checkbox"
           title=${this.title /* An empty title prevents browser validation tooltips from appearing on hover */}
           name=${this.name}
@@ -191,15 +188,20 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
 
         <span
           part="control${this.checked ? ' control--checked' : ''}${this.indeterminate ? ' control--indeterminate' : ''}"
-          class="checkbox__control"
+          class=${cx(
+            'checkbox__control relative inline-flex items-center justify-center border rounded-sm h-4 w-4',
+            (this.disabled && 'border-neutral-500') ||
+              (this.checked && 'border-accent hover:border-accent-550 group-hover:border-accent-550 bg-accent') ||
+              'border-neutral-800 hover:bg-neutral-200 group-hover:bg-neutral-200 bg-white'
+          )}
         >
           ${this.checked
-        ? html`
-                <sd-icon part="checked-icon" class="checkbox__checked-icon" library="system" name="check"></sd-icon>
+            ? html`
+                <sd-icon part="checked-icon" class="checkbox__checked-icon h-3 w-3" library="system" name="status-hook"></sd-icon>
               `
-        : ''}
+            : ''}
           ${!this.checked && this.indeterminate
-        ? html`
+            ? html`
                 <sd-icon
                   part="indeterminate-icon"
                   class="checkbox__indeterminate-icon"
@@ -207,13 +209,45 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
                   name="indeterminate"
                 ></sd-icon>
               `
-        : ''}
+            : ''}
         </span>
 
-        <slot part="label" class="checkbox__label"></slot>
+        <slot
+          part="label"
+          class=${cx(
+            'checkbox__label ml-2 select-none inline-block text-[var(--sd-input-label-color)]',
+            (this.disabled && 'text-neutral-500') || 'text-neutral-800'
+          )}
+        ></slot>
       </label>
     `;
   }
+
+  /**
+   * Inherits Tailwind classes and includes additional styling.
+   */
+  static styles = [
+    SolidElement.styles,
+    css`
+      :host {
+        display: block;
+      }
+
+      :host(:focus-visible) {
+        outline: 0;
+      }
+
+      .checkbox__control {
+        flex: 0 0 auto;
+      }
+
+      /* Checked + focus */
+      :host(:focus-visible) .checkbox__control {
+        outline: 2px solid #00358e;
+        outline-offset: 2px;
+      }
+    `
+  ];
 }
 
 declare global {

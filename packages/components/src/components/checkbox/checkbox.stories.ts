@@ -1,14 +1,15 @@
 import '../../solid-components';
-import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
+import {storybookDefaults, storybookHelpers, storybookTemplate} from '../../../scripts/storybook/helper';
 import { withActions } from '@storybook/addon-actions/decorator';
 
-const { argTypes, args, parameters } = storybookDefaults('sd-checkbox');
+const { argTypes, parameters } = storybookDefaults('sd-checkbox');
 const { generateTemplate } = storybookTemplate('sd-checkbox');
+const { overrideArgs } = storybookHelpers('sd-checkbox');
 
 export default {
   title: 'Components/sd-checkbox',
   component: 'sd-checkbox',
-  args,
+  args: overrideArgs([{ type: 'slot', name: 'default', value: 'Default Slot' }]),
   argTypes,
   parameters: {...parameters},
   decorators: [withActions] as any
