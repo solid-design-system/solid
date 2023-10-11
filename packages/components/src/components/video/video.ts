@@ -37,7 +37,7 @@ export default class SdVideo extends SolidElement {
 
   render() {
     return html`
-      <div part="base" aria-label="Video Player">
+      <div part="base" aria-label="Video Player" class="focus-visible:focus-outline">
         <slot></slot>
         <div
           id="overlay"
@@ -59,12 +59,7 @@ export default class SdVideo extends SolidElement {
         >
           <slot name="play-icon" part="play-icon">
             ${this.hasSlotController.test('[default]')
-              ? html`<sd-icon
-                  library="system"
-                  name="start"
-                  color="primary"
-                  class="text-[4rem] translate-x-1"
-                ></sd-icon> `
+              ? html`<sd-icon library="system" name="start" color="primary" class="text-[4rem]"></sd-icon> `
               : null}
           </slot>
         </button>

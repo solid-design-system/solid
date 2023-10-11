@@ -22,12 +22,39 @@ export default {
 
 export const Default = {
   render: (args: any) => {
+    return generateTemplate({
+      constants: [
+        {
+          type: 'slot',
+          name: 'default',
+          value: '<img src="./placeholders/generic.jpg" />'
+        }
+      ],
+      args
+    });
+  }
+};
+
+/**
+ * `sd-video` with all possible property configurations.
+ */
+
+export const PlayingOverlay = {
+  name: 'Playing × Overlay',
+  render: (args: any) => {
     return html`
       ${generateTemplate({
         axis: {
           x: { type: 'attribute', name: 'playing' },
           y: { type: 'attribute', name: 'overlay' }
         },
+        constants: [
+          {
+            type: 'slot',
+            name: 'default',
+            value: '<img src="./placeholders/generic.jpg" />'
+          }
+        ],
         args
       })}
     `;
