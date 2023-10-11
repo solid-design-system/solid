@@ -4,76 +4,69 @@ import { Meta } from '@storybook/blocks';
 
 # Accessibility
 
-Union Investment strives to offer digital products and services that are accessible to all, regardless of their abilities/limitations or the technology used.
+Union Investment strives to offer digital products and services that are accessible to all, regardless of their abilities/limitations or the technology used. This is an accessibility checklist used by the SDS team when designing and developing new features. It helps us improve the experience for everyone who uses our product and ensures our high standards are met.
 
-This is an ongoing process. We will continue to improve accessibility and meet at least the WCAG 2.1 Level AA guidelines - also with a view to the Barrier-Free Accessibility Strengthening Act that will come into force from 2025.
-Developing a WCAG-confrom basis
-Optimization of individual aspects
-Integration into processes as Definition-of-Done (DOD).
+This is an ongoing process. We will continue to improve accessibility and meet at least the **WCAG 2.1 Level AA guidelines** - also with a view to the Barrier-Free Accessibility Strengthening Act that will come into force from 2025.
 
-By making your website accessible, you ensure that all users, including people with disabilities, have a good user experience and can easily access information.
+## Developing a WCAG-compliant Basis
 
-Web accessibility includes all disabilities that affect access to the Internet:
+We are committed to creating products that conform to the WCAG 2.1 guidelines, a standard also embraced by AK CD. This commitment includes a range of specific practices:
 
-auditory
-cognitive
-neurological
-physical
-speech
-visual
-age-related impairments
+### Semantic Structure & HTML Usage
 
-In Germany, about 71,544 people are completely blind, almost 47,000 people are severely visually impaired and 230,507 people have other visual impairments of lesser degree. Thus, about 0.4 percent of Germany's population is considered visually impaired. (Source: German Federal Statistical Office, 2019)
+- **Native HTML over ARIA labels**: Always use native HTML instead of ARIA labels. This practice ensures that our content is as accessible as possible to a wide range of assistive technologies.
 
-About 83,000 deaf people live in Germany. Thus, about 0.1 percent of Germany's inhabitants are considered auditorily impaired. (Source: Federal Statistical Office, 2018)
-
-## Rules
-
-In order to create an AA-compliant website, some rules must be followed:
-
-It is always recommended to use native HTML instead of ARIA labels.
-Implement a semantically correct structure (H1 followed by H2, P is used for text, ...).
-Remember that all elements of a website should be focusable only with the keyboard, in the desired order and with a visual focus.
-Do not delete the ARIA information from the solid examples. They ensure correct interpretation by screen readers.
-
-## What's new
-
-New approach to accentuation: Omit using green text and use green only for graphical elements.
-New look and feel: Active component states are not always highlighted in green anymore. E.g. radio button groups.
-New functional colors are used for success and error messages as well as positive and negative (performance) values, notifications and badges. Also for notifications a new yellow color has been introduced as a warning color and a lightblue color as an informative color.
-Usage limitations for colored text: green text and graphical elements can only be used on the following backgrounds: white, primary, primary-100, neutral-100. On these backgrounds green text has a minium font size of 18.67px in bold and 24px in book. When inverted on green background only text colors white and primary can be used. On green background white text has a minimum font size of 18.67px in bold and 24px in book.
-
-The CTA-Button has a specific green background color that is only allowed for this variant.
-
-## Checklist
+- **Semantically Correct Structure**: Implement a semantically correct structure, for example, H1 followed by H2, and P used for text, etc. This helps assistive technologies understand the structure and meaning of our content.
 
 ### Screen reader & keyboard controls
 
-- Evaluate the accessibility of the application using screen readers and keyboard navigation.
-- Ensure all interactive elements can be accessed and activated using only the keyboard.
-- Verify that the page structure and headings follow a logical hierarchy.
+- **Keyboard-Accessible Elements**: All elements should be focusable only with the keyboard, in a desired order and with a visual focus. This assures that our content is accessible to users who rely on keyboard navigation.
 
-### Multimedia
+- **Preserving ARIA Information**: Do not delete the ARIA information from the solid examples. They ensure correct interpretation by screen readers.
 
-- Provide alternative text for images, icons, and non-text content.
-- Include captions and transcripts for videos and audio content.
-- Avoid auto-playing audio and video without user controls.
+### Multimedia:
 
-### Text, labels & zoom settings
+- **Alt text**: Provide alternative text for images, icons, and non-text content.
 
-- Ensure text is readable and in plain language.
-- Use clear and descriptive labels for interactive elements.
-- Test text readability with different zoom levels and browser settings.
+- **Captions and transcripts**: Always include captions and transcripts for videos and audio content.
 
-### Color
+- **Avoid auto-playing** audio and video without user controls.
 
-- Verify that color contrast meets the WCAG AA standard.
-- Check color combinations for common forms of color blindness.
-- Consider dark and light mode support and ensure proper color contrast in both modes.
+### Color:
 
-Additionally, we incorporate the following practices to ensure accessibility:
+- **Color contrast**: Verify that color contrast meets the WCAG AA standard.
+- **Color combinations**: Check color combinations for common forms of color blindness.
 
-- Mouseless stories to test and ensure all functionality is accessible without relying on mouse interactions.
-- Focus on proper focus order and visibility for interactive elements.
+## Additionally, we incorporate the following practices to ensure accessibility:
+
+- **Mouseless stories** to test and ensure all functionality is accessible without relying on mouse interactions.
+
+- **A11y test cases**.
+
+- **Focus visibility and order** for interactive elements.
+
+## Integration into Processes as Definition-of-Done (DOD)
+
+Accessibility is not an afterthought. It is integrated into our **Definition-of-Done**. This means that no work is considered complete until it meets our accessibility standards.
+
+## The Importance of Web Accessibility
+
+By making your website accessible, you ensure that all users, including people with disabilities, have a good user experience and can easily access information. Web accessibility includes all disabilities that affect access to the Internet, including auditory, cognitive, neurological, physical, speech, visual, and age-related impairments.
+
+In Germany, about 0.4 percent of the population is visually impaired and about 0.1 percent of the inhabitants are auditorily impaired. Making sure our products are accessible opens them up to a wider audience and ensures that we are not excluding any potential users.
+
+## What's New
+
+We have made several changes to our design system to improve accessibility, including the following:
+
+**New approach to accentuation**: Omit using green text and use green only for graphical elements.
+
+**New look and feel**: Active component states are not always highlighted in green anymore. E.g. radio button groups.
+
+**New functional colors** are used for success and error messages as well as positive and negative (performance) values, notifications and badges. Also for notifications a new yellow color has been introduced as a warning color and a lightblue color as an informative color.
+
+**Usage limitations for colored text**: green text and graphical elements can only be used on the following backgrounds: white, primary, primary-100, neutral-100. On these backgrounds green text has a minium font size of 18.67px in bold and 24px in book. When inverted on green background only text colors white and primary can be used. On green background white text has a minimum font size of 18.67px in bold and 24px in book.
+
+**The CTA-Button** has a specific green background color that is only allowed for this variant.
 
 For more information on this refer to development guidelines and best practices specific to accessibility to ensure compliance with WCAG 2.1 AA standards (https://www.w3.org/WAI/standards-guidelines/wcag/).
