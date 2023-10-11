@@ -8,7 +8,7 @@ import SolidElement from '../../internal/solid-element';
 /**
  * @summary Used to wrap external video elements (e. g. from Moving Image or bare <video>-Tags) and provide some basic styling for Union Investment.
  * @status stable
- * @since 1.16.0
+ * @since 1.19.0
  *
  * @dependency sd-example
  *
