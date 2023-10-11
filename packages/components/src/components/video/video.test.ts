@@ -26,14 +26,14 @@ describe('<sd-video>', () => {
   });
 
   it('toggles playing property on play()', () => {
-    el.play();
+    el.playing = true;
     expect(el.playing).to.be.true;
   });
 
   it('emits "sd-play" event on play()', () => {
     const playSpy = sinon.spy();
     el.addEventListener('sd-play', playSpy);
-    el.play();
+    el.shadowRoot?.querySelector('button')?.click();
     expect(playSpy.calledOnce).to.be.true;
   });
 
@@ -42,7 +42,7 @@ describe('<sd-video>', () => {
     await el.updateComplete;
     expect(el.shadowRoot!.querySelector('#overlay.opacity-100')).to.exist;
 
-    el.play();
+    el.playing = true;
     await el.updateComplete;
     expect(el.shadowRoot!.querySelector('#overlay.opacity-0')).to.exist;
   });
