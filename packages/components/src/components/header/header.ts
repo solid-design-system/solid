@@ -9,6 +9,11 @@ import SolidElement from '../../internal/solid-element';
  * @documentation https://solid.union-investment.com/[storybook-link]/header
  * @status stable
  * @since 1.0
+ * @prop --sd-header-inner-width: width of the header content
+ * @prop --sd-header-inner-max-width: max-width of the header content
+ * @prop --sd-header-padding-top: padding-top of the header content
+ * @prop --sd-header-padding-bottom: padding-bottom of the header content
+ * @prop --sd-header-padding-x: padding left and right of the header content
  */
 @customElement('sd-header')
 export class SdHeader extends SolidElement {
@@ -55,7 +60,7 @@ export class SdHeader extends SolidElement {
   render() {
     return html`
       <header
-        class="header"
+        class="header w-screen bg-white relative"
         role="banner"
         @slotchange=${(event: Event) => {
           const slot = event.target as HTMLSlotElement;
@@ -76,14 +81,29 @@ export class SdHeader extends SolidElement {
   static styles = css`
     :host {
       display: block;
-      background-color: #f5f5f5;
-      padding: 16px;
+      z-index: var(--component-ui-header-fixed-z-index, #{$z-index-header});
+      position: absolute;
+      top: 0;
+      left: 0;
     }
 
-    h1 {
-      margin: 0;
-      font-size: 24px;
-      color: #333;
+    .header {
+      box-shadow: 0 2px 3px rgba($ui-dark, 0.45);
+    }
+
+    .content {
+      position: relative;
+      margin: 0 auto;
+      width: var(--sd-header-inner-width, calc(100vw - 2 * var(--sd-header-x-padding, #{$outer-padding})));
+      max-width: var(--sd-header-inner-max-width);
+      padding-top: var(--sd-header-padding-top, var(--sd-header-y-padding, 16px));
+      padding-right: var(--sd-header-padding-x, #{$outer-padding});
+      padding-bottom: var(--sd-header-padding-bottom, var(--sd-header-y-padding, 0));
+      padding-left: var(--sd-header-padding-x, #{$outer-padding});
+    }
+
+    :host([fixed]) {
+      position: fixed;
     }
   `;
 }
