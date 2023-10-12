@@ -64,31 +64,6 @@
     * Mock for the slot element used in Figma.
     */
 
-  slot-comp {
-    box-sizing: border-box; /* Auto layout */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 0px;
-    border: 1px dashed #9747ff;
-    color: #9747ff;
-    font-size: 14px;
-    border-radius: 6px; /* Inside auto layout */
-    order: 0;
-    align-self: stretch;
-    flex-grow: 0;
-    font-weight: bold;
-    width: var(--slot-width, auto);
-    height: var(--slot-height, 64px);
-    line-height: var(--slot-height, 64px); /* same as height! */
-    visibility: visible !important;
-  }
-
-  slot-comp::before {
-    content: var(--slot-content, 'Replace this slot');
-  }
-
   .slot {
     box-sizing: border-box;
     display: flex;

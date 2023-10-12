@@ -1,3 +1,10 @@
+# [@solid-design-system/placeholders-v1.1.0](https://github.com/solid-design-system/solid/compare/placeholders/1.0.1...placeholders/1.1.0) (2023-10-11)
+
+
+### Features
+
+* add generic placeholder image ([#457](https://github.com/solid-design-system/solid/issues/457)) ([611449c](https://github.com/solid-design-system/solid/commit/611449c232435a505b994c9dfc355661895a6e28)), closes [#455](https://github.com/solid-design-system/solid/issues/455)
+
 # [@solid-design-system/placeholders-v1.0.1](https://github.com/solid-design-system/solid/compare/placeholders/1.0.0...placeholders/1.0.1) (2023-07-17)
 
 

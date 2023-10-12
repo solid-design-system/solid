@@ -118,8 +118,8 @@ export const Slots = {
                   title: slot,
                   value:
                     slot === 'default'
-                      ? `<slot-comp style="--slot-content: ''; --slot-height: auto; --slot-width: 108px; font-size: 8px"></slot-comp>`
-                      : `<slot-comp slot="removable-indicator" style="--slot-content: ''; --slot-height: auto; --slot-width: 16px; font-size: 8px"></slot-comp>`
+                      ? `<div class="slot slot--background slot--border h-auto w-[108px] text-[8px]"></div>`
+                      : `<div slot="removable-indicator" class="slot slot--background slot--border h-auto w-4 text-[8px]"></div>`
                 }
               ]
             }

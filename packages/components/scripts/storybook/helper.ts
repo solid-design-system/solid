@@ -65,7 +65,6 @@ export const storybookDefaults = (customElementTag: string): any => {
       const result = fieldMembers?.filter(member => !attributeNames.has(member.name) && member?.privacy !== 'private');
       return result?.map(member => member.name);
     };
-
     return {
       ...argTypes,
       // Events should show up but not be editable

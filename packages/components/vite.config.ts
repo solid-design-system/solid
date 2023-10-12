@@ -7,6 +7,7 @@ import summaryPlugin from 'rollup-plugin-summary';
 import VitePluginCreateEmptyCemIfNotExisting from './scripts/vite-plugin-create-empty-cem-if-not-existing';
 import VitePluginCustomElementsManifest from 'vite-plugin-cem';
 import VitePluginGetPlaywrightVersion from './scripts/vite-plugin-get-playwright-version';
+import VitePluginGetTailwindTheme from './scripts/vite-plugin-get-tailwind-theme';
 import webTypesPlugin from './scripts/rollup-plugin-web-types';
 import type { defineConfig } from 'vite';
 
@@ -16,6 +17,7 @@ export default (({ command }: { command: string }) => {
     plugins: [
       // eslint-disable-next-line @typescript-eslint/no-unsafe-call
       VitePluginGetPlaywrightVersion(),
+      VitePluginGetTailwindTheme(),
       VitePluginCreateEmptyCemIfNotExisting(),
       VitePluginCustomElementsManifest(
         command === 'build'
