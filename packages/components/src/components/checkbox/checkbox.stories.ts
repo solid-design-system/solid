@@ -116,9 +116,9 @@ export const Parts = {
                 <div id="part-${part}">
                 ${
                   part === 'control--unchecked'
-                      ? '<sd-checkbox-group value="1">%TEMPLATE%</sd-checkbox-group>'
-                      : '<sd-checkbox-group>%TEMPLATE%</sd-checkbox-group>'
-              }
+                    ? '<sd-checkbox-group value="1">%TEMPLATE%</sd-checkbox-group>'
+                    : '<sd-checkbox-group>%TEMPLATE%</sd-checkbox-group>'
+                }
                 </div>
               `
             };
@@ -128,4 +128,4 @@ export const Parts = {
       args
     });
   }
-}
+};

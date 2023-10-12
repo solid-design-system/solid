@@ -1,11 +1,11 @@
 import '../icon/icon';
+import { css, html } from 'lit';
 import { customElement } from '../../../src/internal/register-custom-element';
-import { property, query, state } from 'lit/decorators.js';
 import { defaultValue } from '../../internal/default-value';
 import { FormControlController } from '../../internal/form';
-import { css, html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { live } from 'lit/directives/live.js';
+import { property, query, state } from 'lit/decorators.js';
 import { watch } from '../../internal/watch';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
@@ -82,6 +82,10 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
   /** Makes the checkbox a required field. */
   @property({ type: Boolean, reflect: true }) required = false;
 
+  /** Gets the validity state object */
+  get validity() {
+    return this.input.validity;
+  }
   firstUpdated() {
     this.formControlController.updateValidity();
   }
@@ -197,7 +201,12 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
         >
           ${this.checked
             ? html`
-                <sd-icon part="checked-icon" class="checkbox__checked-icon h-3 w-3" library="system" name="status-hook"></sd-icon>
+                <sd-icon
+                  part="checked-icon"
+                  class="checkbox__checked-icon h-3 w-3"
+                  library="system"
+                  name="status-hook"
+                ></sd-icon>
               `
             : ''}
           ${!this.checked && this.indeterminate
