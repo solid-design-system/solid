@@ -1,38 +1,23 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:base",
-    "schedule:daily",
-    ":disableRateLimiting"
-  ],
+  "extends": ["config:base", "schedule:daily", ":disableRateLimiting"],
   "timezone": "Europe/Berlin",
   "packageRules": [
     {
-      "matchUpdateTypes": [
-        "minor",
-        "patch"
-      ],
+      "matchUpdateTypes": ["minor", "patch"],
       "matchCurrentVersion": "!/^0/",
       "automerge": true
     },
     {
-      "matchDepTypes": [
-        "devDependencies"
-      ],
+      "matchDepTypes": ["devDependencies"],
       "automerge": true
     },
     {
-      "matchDepNames": [
-        "node",
-        "pnpm",
-        "nx"
-      ],
+      "matchDepNames": ["node", "pnpm", "nx"],
       "enabled": false
     },
     {
-      "matchPackagePrefixes": [
-        "@types/"
-      ],
+      "matchPackagePrefixes": ["@types/"],
       "automerge": true,
       "major": {
         "automerge": false
