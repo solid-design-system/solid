@@ -117,7 +117,7 @@
     "gzip-size": "^7.0.0",
     "html-format": "^1.1.2",
     "jsonata": "^2.0.3",
-    "lint-staged": "^13.2.2",
+    "lint-staged": "^14.0.0",
     "lit-html": "^2.7.4",
     "minify-html-literals": "^1.3.5",
     "normalize.css": "^8.0.1",
