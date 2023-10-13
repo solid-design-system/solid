@@ -1,6 +1,7 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:base", "schedule:daily", ":disableRateLimiting"],
+  "schedule": "before 5am every weekday",
   "timezone": "Europe/Berlin",
   "packageRules": [
     {
@@ -31,5 +32,6 @@
   "prConcurrentLimit": 10,
   "automergeType": "pr",
   "automergeStrategy": "squash",
+  "automergeSchedule": ["after 10pm every weekday", "before 5am every weekday"],
   "autoApprove": true
 }
