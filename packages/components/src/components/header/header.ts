@@ -1,5 +1,6 @@
 import { css, html } from 'lit';
 import { customElement } from '../../../src/internal/register-custom-element';
+import { debounce } from '../../internal/debounce.js';
 import { property } from 'lit/decorators.js';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
@@ -9,31 +10,34 @@ import SolidElement from '../../internal/solid-element';
  * @documentation https://solid.union-investment.com/[storybook-link]/header
  * @status stable
  * @since 1.0
- * @prop --sd-header-inner-width: width of the header content
- * @prop --sd-header-inner-max-width: max-width of the header content
- * @prop --sd-header-padding-top: padding-top of the header content
- * @prop --sd-header-padding-bottom: padding-bottom of the header content
- * @prop --sd-header-padding-x: padding left and right of the header content
+ * @slot - The header's default content.
+ * @cssproperty  --sd-header-inner-width: width of the header content
+ * @cssproperty  --sd-header-inner-max-width: max-width of the header content
+ * @cssproperty  --sd-header-padding-top: padding-top of the header content
+ * @cssproperty  --sd-header-padding-bottom: padding-bottom of the header content
+ * @cssproperty  --sd-header-padding-x: padding left and right of the header content
+ * @cssproperty  --sd-header-height: height of the header
  */
 @customElement('sd-header')
 export class SdHeader extends SolidElement {
-  @property({ reflect: true }) fixed = false;
+  @property({ reflect: true, type: Boolean }) fixed = false;
+  @property({ attribute: 'auto-spacing', reflect: true, type: Boolean }) autoSpacing = true;
 
   private refHeaderElement?: HTMLElement;
   private resizeObserver?: ResizeObserver;
 
-  connectedCallback() {
+  connectedCallback(): void {
     super.connectedCallback();
     this.setBodySpacing = this.setBodySpacing.bind(this);
     this.addResizeObserver = this.addResizeObserver.bind(this);
   }
 
-  firstUpdated() {
+  firstUpdated(): void {
     this.setBodySpacing();
     this.addResizeObserver();
   }
 
-  disconnectedCallback() {
+  disconnectedCallback(): void {
     super.disconnectedCallback();
     if (this.resizeObserver) {
       this.resizeObserver.disconnect();
@@ -41,9 +45,14 @@ export class SdHeader extends SolidElement {
     }
   }
 
-  private addResizeObserver() {
+  @debounce(100)
+  private onResize(): void {
+    this.setBodySpacing();
+  }
+
+  private addResizeObserver(): void {
     this.resizeObserver = new ResizeObserver(() => {
-      this.setBodySpacing();
+      this.onResize();
     });
 
     if (this.refHeaderElement) {
@@ -51,17 +60,18 @@ export class SdHeader extends SolidElement {
     }
   }
 
-  private setBodySpacing() {
-    if (this.refHeaderElement) {
-      document.body.style.paddingTop = `${this.refHeaderElement.clientHeight}px`;
+  private setBodySpacing(): void {
+    if (this.refHeaderElement && this.autoSpacing) {
+      document.body.style.setProperty('--sd-header--height', `${this.refHeaderElement.clientHeight}px`);
     }
   }
 
   render() {
     return html`
       <header
-        class="header w-screen bg-white relative"
+        class="header bg-white ${this.fixed ? 'fixed top-0 left-0 shadow' : 'relative'}"
         role="banner"
+        style=${this.fixed ? 'position: fixed; top: 0; left: 0;' : ''}
         @slotchange=${(event: Event) => {
           const slot = event.target as HTMLSlotElement;
           const assignedElements = slot.assignedElements();
@@ -72,38 +82,40 @@ export class SdHeader extends SolidElement {
           }
         }}
       >
-        <div class="content">
+        <div part="main">
           <slot></slot>
         </div>
       </header>
     `;
   }
+
   static styles = css`
     :host {
       display: block;
-      z-index: var(--component-ui-header-fixed-z-index, #{$z-index-header});
-      position: absolute;
-      top: 0;
-      left: 0;
     }
 
     .header {
-      box-shadow: 0 2px 3px rgba($ui-dark, 0.45);
+      background-color: white;
     }
 
-    .content {
+    .fixed {
+      box-shadow: 0 4px 2px -2px gray;
+    }
+
+    [part='main'] {
       position: relative;
       margin: 0 auto;
-      width: var(--sd-header-inner-width, calc(100vw - 2 * var(--sd-header-x-padding, #{$outer-padding})));
+      width: var(--sd-header-inner-width, calc(100vw - 2 * var(--sd-header-padding-x, 16px)));
       max-width: var(--sd-header-inner-max-width);
-      padding-top: var(--sd-header-padding-top, var(--sd-header-y-padding, 16px));
-      padding-right: var(--sd-header-padding-x, #{$outer-padding});
-      padding-bottom: var(--sd-header-padding-bottom, var(--sd-header-y-padding, 0));
-      padding-left: var(--sd-header-padding-x, #{$outer-padding});
+      padding-top: var(--sd-header-padding-top, var(--sd-header-padding-y, 16px));
+      padding-right: var(--sd-header-padding-x, 16px);
+      padding-bottom: var(--sd-header-padding-bottom, var(--sd-header-padding-y, 16px));
+      padding-left: var(--sd-header-padding-x, 16px);
+      box-sizing: border-box;
     }
 
-    :host([fixed]) {
-      position: fixed;
+    body {
+      padding-top: var(--sd-header--height);
     }
   `;
 }
