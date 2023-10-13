@@ -43,67 +43,122 @@ export const Default = {
  * `sd-video` with all possible property configurations.
  */
 
-export const PlayingOverlay = {
-  name: 'Playing × Overlay',
-  render: (args: any) => {
-    return html`
-      ${generateTemplate({
-        axis: {
-          x: { type: 'attribute', name: 'playing' },
-          y: { type: 'attribute', name: 'overlay' }
-        },
-        constants: [
-          {
-            type: 'slot',
-            name: 'default',
-            value: placeholderImg
-          }
-        ],
-        args
-      })}
-    `;
-  }
-};
+// export const PlayingOverlay = {
+//   name: 'Playing × Overlay',
+//   render: (args: any) => {
+//     return html`
+//       ${generateTemplate({
+//         axis: {
+//           x: { type: 'attribute', name: 'playing' },
+//           y: { type: 'attribute', name: 'overlay' }
+//         },
+//         constants: [
+//           {
+//             type: 'slot',
+//             name: 'default',
+//             value: placeholderImg
+//           }
+//         ],
+//         args
+//       })}
+//     `;
+//   }
+// };
 
-/**
- * Use in combination with a viewer component (e. g. from Moving Image) or a bare `<video>`-Tag. <br/>
- * Here we wrap a `video` element that includes a `poster` attribute.
- */
+// /**
+//  * Use in combination with a viewer component (e. g. from Moving Image) or a bare `<video>`-Tag. <br/>
+//  * Here we wrap a `video` element that includes a `poster` attribute.
+//  */
 
-export const VideoElement = {
-  name: 'Video Element',
-  parameters: {
-    controls: {
-      exclude: ['playing', 'default']
-    }
-  },
-  render: (args: any) => {
-    return html`
-      ${generateTemplate({
-        args,
-        constants: {
-          type: 'slot',
-          name: 'default',
-          value:
-            '<video controls poster="https://www.blender.org/wp-content/uploads/2020/10/robin-tran-redautumnforest_pr1.jpg" style="max-width: 854px; may-height: 480px;"><source src="http://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4" />Your browser does not support the video tag.</video>'
-        }
-      })}
-      <script>
-        const videoEl = document.querySelector('video');
-        const sdVideo = document.querySelector('sd-video');
+// export const VideoElement = {
+//   name: 'Video Element',
+//   parameters: {
+//     controls: {
+//       exclude: ['playing', 'default']
+//     }
+//   },
+//   render: (args: any) => {
+//     return html`
+//       <div id="sdVideoExample">
+//         ${generateTemplate({
+//           args,
+//           constants: [
+//             {
+//               type: 'slot',
+//               name: 'default',
+//               value:
+//                 '<video controls id="videoExample" style="width: 854px; height: 480px;"><source src="http://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4" />Your browser does not support the video tag.</video>'
+//             },
+//             {
+//               type: 'slot',
+//               name: 'poster',
+//               value:
+//                 '<img slot="poster" alt="poster" src="https://www.blender.org/wp-content/uploads/2020/10/robin-tran-redautumnforest_pr1.jpg" />'
+//             }
+//           ]
+//         })}
+//         <script>
+//           function runScriptOnPathChange() {
+//             // *NOTE: Storybook single page behavior complicates queries between the "Docs" and "Video Element" stories.
+//             // Therefore it is necessary to query for all existing elements and target the one specific to our story, otherwise we end up with strange overlapping behaviors in Storybook.
+//             const videoEls = document.querySelectorAll('#videoExample');
+//             const sdVideos = document.querySelectorAll('#sdVideoExample > sd-video');
 
-        sdVideo.addEventListener('sd-play', () => {
-          videoEl.play();
-        });
+//             console.log(videoEls);
 
-        videoEl.addEventListener('play', () => {
-          sdVideo.playing = true;
-        });
+//             const videoEl =
+//               document.querySelectorAll('#videoExample')[1] || document.querySelectorAll('#videoExample')[0];
+//             const sdVideo =
+//               document.querySelectorAll('#sdVideoExample > sd-video')[1] ||
+//               document.querySelectorAll('#sdVideoExample > sd-video')[0];
 
-        videoEl.addEventListener('pause', () => {
-          sdVideo.playing = false;
-        });
-      </script>
-    `;
-  }
-};
+//             console.log(videoEl);
+//             console.log(sdVideo);
+
+//             function setupEventListeners() {
+//               sdVideo?.addEventListener('sd-play', playVideo);
+//               videoEl?.addEventListener('play', updatePlayingStatus);
+//               videoEl?.addEventListener('pause', updatePlayingStatus);
+//             }
+
+//             function playVideo() {
+//               videoEl.play();
+//             }
+
+//             function updatePlayingStatus() {
+//               sdVideo.playing = videoEl.paused ? false : true;
+//             }
+
+//             function removeEventListeners() {
+//               // ensure we affect ANY existing elements by querying for all, see *NOTE above
+//               const videoEls = document.querySelectorAll('#videoExample');
+//               const sdVideos = document.querySelectorAll('#sdVideoExample > sd-video');
+
+//               videoEls.forEach(videoEl => {
+//                 videoEl.pause();
+//                 videoEl.currentTime = 0;
+
+//                 videoEl?.removeEventListener('play', updatePlayingStatus);
+//                 videoEl?.removeEventListener('pause', updatePlayingStatus);
+//               });
+
+//               sdVideos.forEach(sdVideo => {
+//                 sdVideo.playing = false;
+//                 sdVideo?.removeEventListener('sd-play', playVideo);
+//               });
+//             }
+
+//             removeEventListeners();
+//             setupEventListeners();
+//           }
+
+//           // Run the script when the page loads
+//           runScriptOnPathChange();
+
+//           // Run the script again whenever the hash (path) changes
+//           window.onhashchange = runScriptOnPathChange;
+//         </script>
+//       </div>
+//     `;
+//   }
+// };

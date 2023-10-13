@@ -16,35 +16,69 @@ import SolidElement from '../../internal/solid-element';
  *
  * @slot - The default slot used to pass a video player element.
  * @slot play-icon - The video's play icon.
+ * @slot poster - Specifies an image to be shown before initial play of the wrapped video. Acts like the 'poster' attribute on the native <video> tag. Optionally use this slot to mask
+ * loading appearance of wrapped video player.
  *
  * @csspart base - The component's base wrapper.
  * @csspart play-button - Button element wrapper around the play-icon slot.
  */
+
+export const transitionDuration = 300;
+
 @customElement('sd-video')
 export default class SdVideo extends SolidElement {
-  private readonly hasSlotController = new HasSlotController(this, '[default]', 'play-icon');
-
   /** Set to `true` to hide the play icon and the overlay. */
   @property({ type: Boolean, reflect: true }) playing = false;
 
   /** Set to `true` to show a dark overlay. Only used when `playing` is `false`. */
   @property({ type: Boolean, reflect: true }) overlay = false;
 
+  private readonly hasSlotController = new HasSlotController(this, '[default]', 'play-icon', 'poster');
+
+  /** Synchronize all CSS transitions in ms. */
+  private readonly transitionDuration = transitionDuration;
+
+  /** Getter for optional poster slot. */
+  private get poster(): Element | null {
+    const slot: HTMLSlotElement = this.shadowRoot!.querySelector('slot[name=poster]')!;
+
+    if (slot.assignedElements().length > 0) {
+      return slot.assignedElements()[0];
+    }
+    return null;
+  }
+
+  /** Method to fade out and remove poster after initial play. */
+  private removePoster(): void {
+    if (this.poster instanceof HTMLImageElement) {
+      this.poster.style.transition = `opacity ${this.transitionDuration}ms`;
+      this.poster.style.opacity = '0';
+
+      // remove from DOM after initial fade to avoid calling this function again on subsequent plays
+      setTimeout(() => {
+        this.poster?.remove();
+      }, this.transitionDuration);
+    }
+  }
+
   private play() {
     this.emit('sd-play');
     this.playing = true;
+    this.removePoster();
   }
 
   render() {
     return html`
       <div part="base" aria-label="Video Player" class="focus-visible:focus-outline">
         <slot></slot>
+        <slot name="poster" part="poster" role="presentation"></slot>
         <div
+          part="overlay"
           id="overlay"
           role="presentation"
           class=${cx(
             this.overlay && !this.playing ? 'opacity-100' : 'opacity-0',
-            'bg-[rgba(0,0,0,0.65)] w-full h-full absolute top-0 left-0 transition-opacity duration-300 pointer-events-none'
+            `bg-[rgba(0,0,0,0.65)] w-full h-full absolute top-0 left-0 transition-opacity duration-${this.transitionDuration} pointer-events-none z-20`
           )}
         ></div>
         <button
@@ -53,14 +87,15 @@ export default class SdVideo extends SolidElement {
           tabindex="0"
           @click=${this.play}
           class=${cx(
-            this.playing ? 'opacity-0' : 'opacity-100',
-            'absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] p-4 bg-white bg-opacity-75 rounded-full flex items-center justify-center transition-opacity duration-300'
+            this.playing ? 'opacity-0 pointer-events-none' : 'opacity-100',
+            `absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] p-4 bg-white bg-opacity-75 rounded-full flex items-center justify-center transition-opacity duration-${this.transitionDuration} z-30`
           )}
         >
           <slot name="play-icon" part="play-icon">
             ${this.hasSlotController.test('[default]')
-              ? html`<sd-icon library="system" name="start" color="primary" class="text-[4rem]"></sd-icon> `
+              ? html`<sd-icon library="system" name="start" color="primary" class="text-[4rem]"></sd-icon>`
               : null}
+            <sd-icon library="system" name="start" color="primary" class="text-[4rem]"></sd-icon>
           </slot>
         </button>
       </div>
@@ -75,9 +110,19 @@ export default class SdVideo extends SolidElement {
         position: relative;
         display: inline-block;
       }
+
+      ::slotted([slot='poster']) {
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 10;
+      }
     `
   ];
 }
+
+// 'w-full h-full absolute top-0 left-0 transition-opacity duration-300 pointer-events-none z-10'
 
 declare global {
   interface HTMLElementTagNameMap {

@@ -1,6 +1,21 @@
-import { expect, fixture, html } from '@open-wc/testing';
+import { expect, fixture, html, waitUntil } from '@open-wc/testing';
+import { transitionDuration } from './video';
 import sinon from 'sinon';
 import type SdVideo from './video';
+
+const defaultSlot = html` <video controls>
+  <source src="http://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>`;
+const posterSlot = html` <img
+  slot="poster"
+  alt="poster"
+  src="https://www.blender.org/wp-content/uploads/2020/10/robin-tran-redautumnforest_pr1.jpg"
+/>`;
+const variants = {
+  default: html`<sd-navigation-item>${defaultSlot}</sd-navigation-item>`,
+  poster: html`<sd-navigation-item>${defaultSlot}${posterSlot}</sd-navigation-item>`
+};
 
 describe('<sd-video>', () => {
   let el: SdVideo;
@@ -11,6 +26,10 @@ describe('<sd-video>', () => {
         <source src="http://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
+      <img
+        slot="poster"
+        alt="poster"
+        src="https://www.blender.org/wp-content/uploads/2020/10/robin-tran-redautumnforest_pr1.jpg" />
       <sd-icon library="global-resources" name="system/start" slot="play-icon"></sd-icon
     ></sd-video>`);
   });
@@ -25,30 +44,65 @@ describe('<sd-video>', () => {
     expect(el.overlay).to.be.false;
   });
 
-  it('toggles playing property on play()', () => {
-    el.playing = true;
-    expect(el.playing).to.be.true;
+  it('renders slot elements correctly', () => {
+    // Query for the default slot content
+    const defaultSlotContent = el.shadowRoot!.querySelector('slot')?.assignedNodes();
+
+    // Assert that default slot content exists
+    expect(defaultSlotContent).to.exist;
+    expect(el.querySelector('video')).to.exist;
+
+    expect(el.shadowRoot!.querySelector('slot[name=play-icon]')).to.exist;
+    expect(el.querySelector('sd-icon')).to.exist;
+
+    expect(el.shadowRoot!.querySelector('slot[name=poster]')).to.exist;
+    expect(el.querySelector('img')).to.exist;
   });
 
-  it('emits "sd-play" event on play()', () => {
-    const playSpy = sinon.spy();
-    el.addEventListener('sd-play', playSpy);
+  describe('when "play-icon" is clicked', () => {
+    it('emits "sd-play" event ', () => {
+      const playSpy = sinon.spy();
+      el.addEventListener('sd-play', playSpy);
+      el.shadowRoot?.querySelector('button')?.click();
+      expect(playSpy.calledOnce).to.be.true;
+    });
+
+    it('toggles playing property', () => {
+      el.shadowRoot?.querySelector('button')?.click();
+      expect(el.playing).to.be.true;
+    });
+
+    it('updates overlay class', async () => {
+      el.overlay = true;
+      await el.updateComplete;
+      expect(el.shadowRoot!.querySelector('#overlay.opacity-100')).to.exist;
+
+      el.playing = true;
+      await el.updateComplete;
+      expect(el.shadowRoot!.querySelector('#overlay.opacity-0')).to.exist;
+    });
+  });
+
+  it('removes poster on play', async () => {
+    expect(el.querySelector('img')).to.exist;
+
     el.shadowRoot?.querySelector('button')?.click();
-    expect(playSpy.calledOnce).to.be.true;
+    await el.updateComplete;
+
+    setTimeout(() => {
+      expect(el.querySelector('img')).to.not.exist;
+    }, transitionDuration);
   });
 
-  it('updates overlay class based on playing property', async () => {
+  it('updates CSS classes based on overlay and playing properties', async () => {
+    const overlayDiv = el.shadowRoot!.querySelector('#overlay');
+
     el.overlay = true;
     await el.updateComplete;
-    expect(el.shadowRoot!.querySelector('#overlay.opacity-100')).to.exist;
+    expect(overlayDiv!.classList.contains('opacity-100')).to.be.true;
 
     el.playing = true;
     await el.updateComplete;
-    expect(el.shadowRoot!.querySelector('#overlay.opacity-0')).to.exist;
-  });
-
-  it('renders slot elements correctly', () => {
-    expect(el.querySelector('video')).to.exist;
-    expect(el.querySelector('sd-icon')).to.exist;
+    expect(overlayDiv!.classList.contains('opacity-0')).to.be.true;
   });
 });
