@@ -1,4 +1,3 @@
-/* eslint-disable lit/attribute-value-entities */
 import { css, html } from 'lit';
 import { customElement } from '../../../src/internal/register-custom-element';
 import { HasSlotController } from '../../internal/slot';

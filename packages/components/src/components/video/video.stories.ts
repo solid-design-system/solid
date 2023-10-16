@@ -9,9 +9,6 @@ import type { ConstantDefinition } from '../../../scripts/storybook/helper';
 const { argTypes, args, parameters } = storybookDefaults('sd-video');
 const { generateTemplate } = storybookTemplate('sd-video');
 
-const placeholderWidth = 400;
-const placeholderHeight = placeholderWidth * (9 / 16);
-const placeholderImg = `<div style="width: ${placeholderWidth}px; height: ${placeholderHeight}px;" class="flex items-center justify-center overflow-hidden"><img src="./placeholders/generic.jpg" /></div>`;
 const videoConstant: ConstantDefinition = {
   type: 'slot',
   name: 'default',
@@ -45,7 +42,8 @@ export const Default = {
         {
           type: 'slot',
           name: 'default',
-          value: placeholderImg
+          value:
+            '<div style="width: 400px; height: 225px;" class="flex items-center justify-center overflow-hidden"><img src="./placeholders/generic.jpg" /></div>'
         }
       ],
       args
@@ -70,7 +68,8 @@ export const PlayingOverlay = {
           {
             type: 'slot',
             name: 'default',
-            value: placeholderImg
+            value:
+              '<div style="width: 400px; height: 225px;" class="flex items-center justify-center overflow-hidden"><img src="./placeholders/generic.jpg" /></div>'
           }
         ],
         args
