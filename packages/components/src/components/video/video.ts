@@ -38,7 +38,7 @@ export default class SdVideo extends SolidElement {
   private get poster(): Element | null {
     const slot: HTMLSlotElement = this.shadowRoot!.querySelector('slot[name=poster]')!;
 
-    if (slot.assignedElements().length > 0) {
+    if (slot?.assignedElements().length > 0) {
       return slot.assignedElements()[0];
     }
     return null;
@@ -51,25 +51,31 @@ export default class SdVideo extends SolidElement {
     }
   }
 
-  /** Method to remove poster from DOM after initial play & fadeout. Ensures poster does not show up again after initial play. */
-  private removePoster() {
+  /** Method to hide poster after initial play & fadeout. */
+  private hidePoster() {
     if (this.poster instanceof HTMLImageElement) {
-      this.poster.remove();
+      this.poster.style.display = 'none';
     }
   }
 
-  private play() {
+  /** Internal method to group play behaviors. If a KeyboardEvent is used, refocus on the native video element to give the user seamless keyboard control. */
+  private play(e: MouseEvent | KeyboardEvent) {
     this.emit('sd-play');
     this.playing = true;
     this.fadeoutPoster();
+
+    if (e instanceof KeyboardEvent) {
+      setTimeout(() => {
+        this.querySelector('video')?.focus();
+      });
+    }
   }
 
   render() {
     return html`
-      <div part="base" aria-label="Video Player" class="focus-visible:focus-outline">
-        <slot></slot>
+      <div part="base" aria-label="Video Player">
         ${this.hasSlotController.test('poster')
-          ? html`<slot name="poster" part="poster" role="presentation" @transitionend=${this.removePoster}></slot>`
+          ? html`<slot name="poster" part="poster" role="presentation" @transitionend=${this.hidePoster}></slot>`
           : null}
         <div
           part="overlay"
@@ -85,17 +91,17 @@ export default class SdVideo extends SolidElement {
           aria-label="Play video"
           tabindex="0"
           @click=${this.play}
+          @keydown=${this.play}
           class=${cx(
             this.playing ? 'opacity-0 pointer-events-none' : 'opacity-100',
             'absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] p-4 bg-white bg-opacity-75 rounded-full flex items-center justify-center z-30 play-pause-transition'
           )}
         >
           <slot name="play-icon" part="play-icon">
-            ${this.hasSlotController.test('[default]')
-              ? html`<sd-icon library="system" name="start" color="primary" class="text-[4rem]"></sd-icon>`
-              : null}
+            <sd-icon library="system" name="start" color="primary" class="text-[4rem]"></sd-icon>
           </slot>
         </button>
+        <slot></slot>
       </div>
     `;
   }
