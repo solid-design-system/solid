@@ -4,6 +4,7 @@ import { html } from 'lit-html';
 import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
 import { waitUntil } from '@open-wc/testing-helpers';
 import { withActions } from '@storybook/addon-actions/decorator';
+import type { ConstantDefinition } from '../../../scripts/storybook/helper';
 
 const { argTypes, args, parameters } = storybookDefaults('sd-video');
 const { generateTemplate } = storybookTemplate('sd-video');
@@ -11,13 +12,13 @@ const { generateTemplate } = storybookTemplate('sd-video');
 const placeholderWidth = 400;
 const placeholderHeight = placeholderWidth * (9 / 16);
 const placeholderImg = `<div style="width: ${placeholderWidth}px; height: ${placeholderHeight}px;" class="flex items-center justify-center overflow-hidden"><img src="./placeholders/generic.jpg" /></div>`;
-const videoConstant = {
+const videoConstant: ConstantDefinition = {
   type: 'slot',
   name: 'default',
   value:
     '<video controls id="videoExample" style="min-width: 854px; min-height: 480px; width: 854px; height: 480px;"><source src="http://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4" />Your browser does not support the video tag.</video>'
 };
-const posterConstant = {
+const posterConstant: ConstantDefinition = {
   type: 'slot',
   name: 'poster',
   value:
