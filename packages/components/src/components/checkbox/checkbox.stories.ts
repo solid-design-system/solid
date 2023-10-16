@@ -95,6 +95,32 @@ export const Invalid = {
   }
 };
 
+export const Indeterminate = {
+  parameters: { controls: { exclude: ['indeterminate'] } },
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        x: [
+          {
+            type: 'attribute',
+            name: 'indeterminate',
+            values: [false, true]
+          }
+        ],
+        y: [
+          {
+            type: 'attribute',
+            name: 'size',
+            values: ['sm', 'lg']
+          }
+        ]
+      },
+      constants: { type: 'attribute', name: 'indeterminate', value: true },
+      args
+    });
+  }
+};
+
 /**
  * Use the `base`, `control--unchecked`, `control--checked`, `checked` and `label` part selectors to customize the checkbox.
  */

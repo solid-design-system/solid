@@ -195,7 +195,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
           class=${cx(
             'checkbox__control relative inline-flex items-center justify-center border rounded-sm h-4 w-4',
             (this.disabled && 'border-neutral-500') ||
-              (this.checked && 'border-accent hover:border-accent-550 group-hover:border-accent-550 bg-accent') ||
+              ((this.checked || this.indeterminate) && 'border-accent hover:border-accent-550 group-hover:border-accent-550 bg-accent') ||
               'border-neutral-800 hover:bg-neutral-200 group-hover:bg-neutral-200 bg-white'
           )}
         >
