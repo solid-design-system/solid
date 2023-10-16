@@ -63,6 +63,9 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
   /** Draws the checkbox in a checked state. */
   @property({ type: Boolean, reflect: true }) checked = false;
 
+  /**  A Boolean attribute which, if present, marks the radio valid or invalid  */
+  @property({ type: Boolean, reflect: true }) invalid = false;
+
   /**
    * Draws the checkbox in an indeterminate state. This is usually applied to checkboxes that represents a "select
    * all/none" behavior when associated checkboxes have a mix of checked and unchecked states.
@@ -112,6 +115,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
 
   @watch('disabled', { waitUntilFirstUpdate: true })
   handleDisabledChange() {
+    this.setAttribute('aria-disabled', this.disabled ? 'true' : 'false');
     // Disabled form controls are always valid
     this.formControlController.setValidity(this.disabled);
   }
@@ -195,7 +199,10 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
           class=${cx(
             'checkbox__control relative inline-flex items-center justify-center border rounded-sm h-4 w-4',
             (this.disabled && 'border-neutral-500') ||
-              ((this.checked || this.indeterminate) && 'border-accent hover:border-accent-550 group-hover:border-accent-550 bg-accent') ||
+              (this.invalid &&
+                `border-error hover:border-error-400 ${this.checked && 'bg-error hover:bg-error-400'}`) ||
+              ((this.checked || this.indeterminate) &&
+                'border-accent hover:border-accent-550 group-hover:border-accent-550 bg-accent') ||
               'border-neutral-800 hover:bg-neutral-200 group-hover:bg-neutral-200 bg-white'
           )}
         >
@@ -227,7 +234,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
           part="label"
           class=${cx(
             'checkbox__label ml-2 select-none inline-block text-[var(--sd-input-label-color)]',
-            (this.disabled && 'text-neutral-500') || 'text-neutral-800'
+            (this.disabled && 'text-neutral-500') || (this.invalid && 'text-error') || 'text-neutral-800'
           )}
         ></slot>
       </label>

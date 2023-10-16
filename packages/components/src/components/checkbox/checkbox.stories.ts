@@ -74,18 +74,15 @@ export const Size = {
  */
 
 export const Invalid = {
-  parameters: { controls: { exclude: ['invalid'] } },
+  parameters: { controls: { exclude: ['invalid', 'size'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
         y: [
           {
             type: 'attribute',
-            name: 'size'
-          },
-          {
-            type: 'attribute',
-            name: 'disabled'
+            name: 'size',
+            values: ['sm', 'lg']
           }
         ]
       },
