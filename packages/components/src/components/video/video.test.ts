@@ -1,21 +1,6 @@
-import { expect, fixture, html, waitUntil } from '@open-wc/testing';
-import { transitionDuration } from './video';
+import { expect, fixture, html } from '@open-wc/testing';
 import sinon from 'sinon';
 import type SdVideo from './video';
-
-const defaultSlot = html` <video controls>
-  <source src="http://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4" />
-  Your browser does not support the video tag.
-</video>`;
-const posterSlot = html` <img
-  slot="poster"
-  alt="poster"
-  src="https://www.blender.org/wp-content/uploads/2020/10/robin-tran-redautumnforest_pr1.jpg"
-/>`;
-const variants = {
-  default: html`<sd-navigation-item>${defaultSlot}</sd-navigation-item>`,
-  poster: html`<sd-navigation-item>${defaultSlot}${posterSlot}</sd-navigation-item>`
-};
 
 describe('<sd-video>', () => {
   let el: SdVideo;
@@ -91,7 +76,7 @@ describe('<sd-video>', () => {
 
     setTimeout(() => {
       expect(el.querySelector('img')).to.not.exist;
-    }, transitionDuration);
+    }, 300);
   });
 
   it('updates CSS classes based on overlay and playing properties', async () => {

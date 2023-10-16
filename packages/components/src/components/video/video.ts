@@ -1,3 +1,4 @@
+/* eslint-disable lit/attribute-value-entities */
 import { css, html } from 'lit';
 import { customElement } from '../../../src/internal/register-custom-element';
 import { HasSlotController } from '../../internal/slot';
@@ -23,8 +24,6 @@ import SolidElement from '../../internal/solid-element';
  * @csspart play-button - Button element wrapper around the play-icon slot.
  */
 
-export const transitionDuration = 300;
-
 @customElement('sd-video')
 export default class SdVideo extends SolidElement {
   /** Set to `true` to hide the play icon and the overlay. */
@@ -34,9 +33,6 @@ export default class SdVideo extends SolidElement {
   @property({ type: Boolean, reflect: true }) overlay = false;
 
   private readonly hasSlotController = new HasSlotController(this, '[default]', 'play-icon', 'poster');
-
-  /** Synchronize all CSS transitions in ms. */
-  private readonly transitionDuration = transitionDuration;
 
   /** Getter for optional poster slot. */
   private get poster(): Element | null {
@@ -48,37 +44,40 @@ export default class SdVideo extends SolidElement {
     return null;
   }
 
-  /** Method to fade out and remove poster after initial play. */
-  private removePoster(): void {
+  /** Method to fade out poster after initial play. */
+  private fadeoutPoster(): void {
     if (this.poster instanceof HTMLImageElement) {
-      this.poster.style.transition = `opacity ${this.transitionDuration}ms`;
       this.poster.style.opacity = '0';
+    }
+  }
 
-      // remove from DOM after initial fade to avoid calling this function again on subsequent plays
-      setTimeout(() => {
-        this.poster?.remove();
-      }, this.transitionDuration);
+  /** Method to remove poster from DOM after initial play & fadeout. Ensures poster does not show up again after initial play. */
+  private removePoster() {
+    if (this.poster instanceof HTMLImageElement) {
+      this.poster.remove();
     }
   }
 
   private play() {
     this.emit('sd-play');
     this.playing = true;
-    this.removePoster();
+    this.fadeoutPoster();
   }
 
   render() {
     return html`
       <div part="base" aria-label="Video Player" class="focus-visible:focus-outline">
         <slot></slot>
-        <slot name="poster" part="poster" role="presentation"></slot>
+        ${this.hasSlotController.test('poster')
+          ? html`<slot name="poster" part="poster" role="presentation" @transitionend=${this.removePoster}></slot>`
+          : null}
         <div
           part="overlay"
           id="overlay"
           role="presentation"
           class=${cx(
             this.overlay && !this.playing ? 'opacity-100' : 'opacity-0',
-            `bg-[rgba(0,0,0,0.65)] w-full h-full absolute top-0 left-0 transition-opacity duration-${this.transitionDuration} pointer-events-none z-20`
+            'bg-[rgba(0,0,0,0.65)] w-full h-full absolute top-0 left-0 pointer-events-none z-20 play-pause-transition'
           )}
         ></div>
         <button
@@ -88,14 +87,13 @@ export default class SdVideo extends SolidElement {
           @click=${this.play}
           class=${cx(
             this.playing ? 'opacity-0 pointer-events-none' : 'opacity-100',
-            `absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] p-4 bg-white bg-opacity-75 rounded-full flex items-center justify-center transition-opacity duration-${this.transitionDuration} z-30`
+            'absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] p-4 bg-white bg-opacity-75 rounded-full flex items-center justify-center z-30 play-pause-transition'
           )}
         >
           <slot name="play-icon" part="play-icon">
             ${this.hasSlotController.test('[default]')
               ? html`<sd-icon library="system" name="start" color="primary" class="text-[4rem]"></sd-icon>`
               : null}
-            <sd-icon library="system" name="start" color="primary" class="text-[4rem]"></sd-icon>
           </slot>
         </button>
       </div>
@@ -111,18 +109,21 @@ export default class SdVideo extends SolidElement {
         display: inline-block;
       }
 
+      ::slotted([slot='poster']),
+      .play-pause-transition {
+        transition: opacity 300ms;
+      }
+
       ::slotted([slot='poster']) {
-        width: 100%;
         position: absolute;
         left: 0;
         top: 0;
+        width: 100%;
         z-index: 10;
       }
     `
   ];
 }
-
-// 'w-full h-full absolute top-0 left-0 transition-opacity duration-300 pointer-events-none z-10'
 
 declare global {
   interface HTMLElementTagNameMap {

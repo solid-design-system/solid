@@ -43,122 +43,117 @@ export const Default = {
  * `sd-video` with all possible property configurations.
  */
 
-// export const PlayingOverlay = {
-//   name: 'Playing × Overlay',
-//   render: (args: any) => {
-//     return html`
-//       ${generateTemplate({
-//         axis: {
-//           x: { type: 'attribute', name: 'playing' },
-//           y: { type: 'attribute', name: 'overlay' }
-//         },
-//         constants: [
-//           {
-//             type: 'slot',
-//             name: 'default',
-//             value: placeholderImg
-//           }
-//         ],
-//         args
-//       })}
-//     `;
-//   }
-// };
+export const PlayingOverlay = {
+  name: 'Playing × Overlay',
+  render: (args: any) => {
+    return html`
+      ${generateTemplate({
+        axis: {
+          x: { type: 'attribute', name: 'playing' },
+          y: { type: 'attribute', name: 'overlay' }
+        },
+        constants: [
+          {
+            type: 'slot',
+            name: 'default',
+            value: placeholderImg
+          }
+        ],
+        args
+      })}
+    `;
+  }
+};
 
-// /**
-//  * Use in combination with a viewer component (e. g. from Moving Image) or a bare `<video>`-Tag. <br/>
-//  * Here we wrap a `video` element that includes a `poster` attribute.
-//  */
+/**
+ * Use in combination with a viewer component (e. g. from Moving Image) or a bare `<video>`-Tag. <br/>
+ * Here we wrap a `video` element that includes a `poster` attribute.
+ */
 
-// export const VideoElement = {
-//   name: 'Video Element',
-//   parameters: {
-//     controls: {
-//       exclude: ['playing', 'default']
-//     }
-//   },
-//   render: (args: any) => {
-//     return html`
-//       <div id="sdVideoExample">
-//         ${generateTemplate({
-//           args,
-//           constants: [
-//             {
-//               type: 'slot',
-//               name: 'default',
-//               value:
-//                 '<video controls id="videoExample" style="width: 854px; height: 480px;"><source src="http://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4" />Your browser does not support the video tag.</video>'
-//             },
-//             {
-//               type: 'slot',
-//               name: 'poster',
-//               value:
-//                 '<img slot="poster" alt="poster" src="https://www.blender.org/wp-content/uploads/2020/10/robin-tran-redautumnforest_pr1.jpg" />'
-//             }
-//           ]
-//         })}
-//         <script>
-//           function runScriptOnPathChange() {
-//             // *NOTE: Storybook single page behavior complicates queries between the "Docs" and "Video Element" stories.
-//             // Therefore it is necessary to query for all existing elements and target the one specific to our story, otherwise we end up with strange overlapping behaviors in Storybook.
-//             const videoEls = document.querySelectorAll('#videoExample');
-//             const sdVideos = document.querySelectorAll('#sdVideoExample > sd-video');
+export const VideoElement = {
+  name: 'Video Element',
+  parameters: {
+    controls: {
+      exclude: ['playing', 'default']
+    }
+  },
+  render: (args: any) => {
+    return html`
+      <div id="sdVideoExample">
+        ${generateTemplate({
+          args,
+          constants: [
+            {
+              type: 'slot',
+              name: 'default',
+              value:
+                '<video controls id="videoExample" style="min-width: 854px; min-height: 480px;"><source src="http://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4" />Your browser does not support the video tag.</video>'
+            },
+            {
+              type: 'slot',
+              name: 'poster',
+              value:
+                '<img slot="poster" alt="poster" src="https://www.blender.org/wp-content/uploads/2020/10/robin-tran-redautumnforest_pr1.jpg" />'
+            }
+          ]
+        })}
+        <script>
+          function runScriptOnPathChange() {
+            // *NOTE: Storybook single page behavior complicates queries between the "Docs" and "Video Element" stories.
+            // Therefore it is necessary to query for all existing elements and target the one specific to our story, otherwise we end up with strange overlapping behaviors in Storybook.
+            const videoEls = document.querySelectorAll('#videoExample');
+            const sdVideos = document.querySelectorAll('#sdVideoExample > sd-video');
 
-//             console.log(videoEls);
+            const videoEl =
+              document.querySelectorAll('#videoExample')[1] || document.querySelectorAll('#videoExample')[0];
+            const sdVideo =
+              document.querySelectorAll('#sdVideoExample > sd-video')[1] ||
+              document.querySelectorAll('#sdVideoExample > sd-video')[0];
 
-//             const videoEl =
-//               document.querySelectorAll('#videoExample')[1] || document.querySelectorAll('#videoExample')[0];
-//             const sdVideo =
-//               document.querySelectorAll('#sdVideoExample > sd-video')[1] ||
-//               document.querySelectorAll('#sdVideoExample > sd-video')[0];
+            function setupEventListeners() {
+              sdVideo?.addEventListener('sd-play', playVideo);
+              videoEl?.addEventListener('play', updatePlayingStatus);
+              videoEl?.addEventListener('pause', updatePlayingStatus);
+            }
 
-//             console.log(videoEl);
-//             console.log(sdVideo);
+            function playVideo() {
+              videoEl.play();
+            }
 
-//             function setupEventListeners() {
-//               sdVideo?.addEventListener('sd-play', playVideo);
-//               videoEl?.addEventListener('play', updatePlayingStatus);
-//               videoEl?.addEventListener('pause', updatePlayingStatus);
-//             }
+            function updatePlayingStatus() {
+              sdVideo.playing = videoEl.paused ? false : true;
+            }
 
-//             function playVideo() {
-//               videoEl.play();
-//             }
+            function removeEventListeners() {
+              // ensure we affect ANY existing elements by querying for all, see *NOTE above
+              const videoEls = document.querySelectorAll('#videoExample');
+              const sdVideos = document.querySelectorAll('#sdVideoExample > sd-video');
 
-//             function updatePlayingStatus() {
-//               sdVideo.playing = videoEl.paused ? false : true;
-//             }
+              videoEls.forEach(videoEl => {
+                videoEl.pause();
+                videoEl.currentTime = 0;
 
-//             function removeEventListeners() {
-//               // ensure we affect ANY existing elements by querying for all, see *NOTE above
-//               const videoEls = document.querySelectorAll('#videoExample');
-//               const sdVideos = document.querySelectorAll('#sdVideoExample > sd-video');
+                videoEl?.removeEventListener('play', updatePlayingStatus);
+                videoEl?.removeEventListener('pause', updatePlayingStatus);
+              });
 
-//               videoEls.forEach(videoEl => {
-//                 videoEl.pause();
-//                 videoEl.currentTime = 0;
+              sdVideos.forEach(sdVideo => {
+                sdVideo.playing = false;
+                sdVideo?.removeEventListener('sd-play', playVideo);
+              });
+            }
 
-//                 videoEl?.removeEventListener('play', updatePlayingStatus);
-//                 videoEl?.removeEventListener('pause', updatePlayingStatus);
-//               });
+            removeEventListeners();
+            setupEventListeners();
+          }
 
-//               sdVideos.forEach(sdVideo => {
-//                 sdVideo.playing = false;
-//                 sdVideo?.removeEventListener('sd-play', playVideo);
-//               });
-//             }
+          // Run the script when the page loads
+          runScriptOnPathChange();
 
-//             removeEventListeners();
-//             setupEventListeners();
-//           }
-
-//           // Run the script when the page loads
-//           runScriptOnPathChange();
-
-//           // Run the script again whenever the hash (path) changes
-//           window.onhashchange = runScriptOnPathChange;
-//         </script>
-//       </div>
-//     `;
-//   }
-// };
+          // Run the script again whenever the hash (path) changes
+          window.onhashchange = runScriptOnPathChange;
+        </script>
+      </div>
+    `;
+  }
+};
