@@ -1,16 +1,14 @@
 import { animateTo, stopAnimations } from '../../internal/animate.js';
-import { classMap } from 'lit/directives/class-map.js';
+import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element.js';
 import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry.js';
-import { HasSlotController } from '../../internal/slot.js';
-import { html } from 'lit';
 import { LocalizeController } from '../../utilities/localize.js';
 import { property, query } from 'lit/decorators.js';
 import { waitForEvent } from '../../internal/event.js';
 import { watch } from '../../internal/watch.js';
-import ShoelaceElement from '../../internal/solid-element.js';
-import styles from './notification.styles.js';
-import type { CSSResultGroup } from 'lit';
+import componentStyles from '../../styles/component.styles';
+import cx from 'classix';
+import SolidElement from '../../internal/solid-element.js';
 
 const toastStack = Object.assign(document.createElement('div'), { className: 'sd-toast-stack' });
 
@@ -41,11 +39,8 @@ const toastStack = Object.assign(document.createElement('div'), { className: 'sd
  */
 
 @customElement('sd-notification')
-export default class SdNotification extends ShoelaceElement {
-  static styles: CSSResultGroup = styles;
-
+export default class SdNotification extends SolidElement {
   private autoHideTimeout: number;
-  private readonly hasSlotController = new HasSlotController(this, 'icon', 'suffix');
   private readonly localize = new LocalizeController(this);
 
   @query('[part~="base"]') base: HTMLElement;
@@ -60,7 +55,10 @@ export default class SdNotification extends ShoelaceElement {
   @property({ type: Boolean, reflect: true }) closable = false;
 
   /** The alert's theme variant. */
-  @property({ reflect: true }) variant: 'primary' | 'success' | 'neutral' | 'warning' | 'danger' = 'primary';
+  @property({ reflect: true }) variant: 'info' | 'success' | 'error' | 'warning' = 'info';
+
+  /** The position of the toasted sd-notification. */
+  @property({ reflect: true }) toastStack: 'top-right' | 'bottom-center' = 'top-right';
 
   /**
    * The length of time, in milliseconds, the alert will show before closing itself. If the user interacts with
@@ -68,6 +66,9 @@ export default class SdNotification extends ShoelaceElement {
    * the alert will not close on its own.
    */
   @property({ type: Number }) duration = Infinity;
+
+  /** Enables an animation that visualizes the duration of a notification. */
+  @property({ type: Boolean, reflect: true }) durationIndicator = false;
 
   firstUpdated() {
     this.base.hidden = !this.open;
@@ -184,17 +185,7 @@ export default class SdNotification extends ShoelaceElement {
     return html`
       <div
         part="base"
-        class=${classMap({
-          alert: true,
-          'alert--open': this.open,
-          'alert--closable': this.closable,
-          'alert--has-icon': this.hasSlotController.test('icon'),
-          'alert--primary': this.variant === 'primary',
-          'alert--success': this.variant === 'success',
-          'alert--neutral': this.variant === 'neutral',
-          'alert--warning': this.variant === 'warning',
-          'alert--danger': this.variant === 'danger'
-        })}
+        class=${cx('alert relative flex items-stretch')}
         role="alert"
         aria-hidden=${this.open ? 'false' : 'true'}
         @mousemove=${this.handleMouseMove}
@@ -207,6 +198,7 @@ export default class SdNotification extends ShoelaceElement {
           ? html`
               <sd-button
                 size="sm"
+                variant="tertiary"
                 part="close-button"
                 class="alert__close-button"
                 label=${this.localize.term('close')}
@@ -219,6 +211,40 @@ export default class SdNotification extends ShoelaceElement {
       </div>
     `;
   }
+
+  /**
+   * Inherits Tailwindclasses and includes additional styling.
+   */
+  static styles = [
+    componentStyles,
+    SolidElement.styles,
+    css`
+      :host {
+        display: contents;
+
+        /* For better DX, we'll reset the margin here so the base part can inherit it */
+        margin: 0;
+      }
+
+      .alert {
+        background-color: var(--sd-panel-background-color);
+        border: solid var(--sd-panel-border-width) var(--sd-panel-border-color);
+        border-top-width: calc(var(--sd-panel-border-width) * 3);
+        border-radius: var(--sd-border-radius-medium);
+        font-family: var(--sd-font-sans);
+        font-size: var(--sd-font-size-small);
+        font-weight: var(--sd-font-weight-normal);
+        line-height: 1.6;
+        color: var(--sd-color-neutral-700);
+        margin: inherit;
+      }
+
+      .alert:not(.alert--has-icon) .alert__icon,
+      .alert:not(.alert--closable) .alert__close-button {
+        display: none;
+      }
+    `
+  ];
 }
 
 setDefaultAnimation('alert.show', {
