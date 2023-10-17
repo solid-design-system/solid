@@ -1,12 +1,21 @@
 import '../../solid-components';
-import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
-const { args, argTypes, parameters } = storybookDefaults('sd-notification');
+import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
+const { argTypes, parameters } = storybookDefaults('sd-notification');
 const { generateTemplate } = storybookTemplate('sd-notification');
+const { overrideArgs } = storybookHelpers('sd-notification');
 
 export default {
   title: 'Components/sd-notification',
   component: 'sd-notification',
-  args,
+  args: overrideArgs([
+    { type: 'slot', name: 'icon', value: `<sd-icon name="close" library="system" color="currentColor"></sd-icon>` },
+    {
+      type: 'slot',
+      name: 'default',
+      value: `
+        This is a notification. It is used to display important messages to the user.`
+    },
+  ]),
   argTypes,
   parameters: { ...parameters }
 };

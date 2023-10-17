@@ -1,4 +1,3 @@
-import '../icon-button/icon-button.js';
 import { animateTo, stopAnimations } from '../../internal/animate.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from '../../internal/register-custom-element.js';
@@ -41,8 +40,8 @@ const toastStack = Object.assign(document.createElement('div'), { className: 'sd
  * @animation alert.hide - The animation to use when hiding the alert.
  */
 
-@customElement('sd-alert')
-export default class SdAlert extends ShoelaceElement {
+@customElement('sd-notification')
+export default class SdNotification extends ShoelaceElement {
   static styles: CSSResultGroup = styles;
 
   private autoHideTimeout: number;
@@ -55,7 +54,7 @@ export default class SdAlert extends ShoelaceElement {
    * Indicates whether or not the alert is open. You can toggle this attribute to show and hide the alert, or you can
    * use the `show()` and `hide()` methods and this attribute will reflect the alert's open state.
    */
-  @property({ type: Boolean, reflect: true }) open = false;
+  @property({ type: Boolean, reflect: true }) open = true;
 
   /** Enables a close button that allows the user to dismiss the alert. */
   @property({ type: Boolean, reflect: true }) closable = false;
@@ -172,7 +171,7 @@ export default class SdAlert extends ShoelaceElement {
           resolve();
 
           // Remove the toast stack from the DOM when there are no more alerts
-          if (toastStack.querySelector('sd-alert') === null) {
+          if (toastStack.querySelector('sd-notification') === null) {
             toastStack.remove();
           }
         },
@@ -206,15 +205,15 @@ export default class SdAlert extends ShoelaceElement {
 
         ${this.closable
           ? html`
-              <sd-icon-button
+              <sd-button
+                size="sm"
                 part="close-button"
-                exportparts="base:close-button__base"
                 class="alert__close-button"
-                name="x-lg"
-                library="system"
                 label=${this.localize.term('close')}
                 @click=${this.handleCloseClick}
-              ></sd-icon-button>
+              >
+                <sd-icon name="close" library="system" color="currentColor"></sd-icon>
+              </sd-button>
             `
           : ''}
       </div>
@@ -240,6 +239,6 @@ setDefaultAnimation('alert.hide', {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sd-alert': SdAlert;
+    'sd-notification': SdNotification;
   }
 }
