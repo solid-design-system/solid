@@ -91,6 +91,7 @@
     "@remcovaes/web-test-runner-vite-plugin": "^1.1.5",
     "@rollup/plugin-node-resolve": "^15.1.0",
     "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/exec": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@storybook/addon-essentials": "^7.3.2",
     "@storybook/addon-interactions": "^7.3.2",
@@ -175,6 +176,12 @@
         "@semantic-release/github",
         {
           "successComment": false
+        }
+      ],
+      [
+        "@semantic-release/exec",
+        {
+          "publishCmd": "./prepare-changelog.sh"
         }
       ]
     ]
