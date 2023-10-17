@@ -54,6 +54,7 @@ export default class SdRadioButton extends SolidElement {
 
   /** The radio button's size. */
   @property({ reflect: true }) size: 'small' | 'medium' | 'large' = 'medium';
+  @property({ type: Boolean, reflect: true }) invalid = false;
 
   /** Draws a pill-style radio button with rounded edges. */
   @property({ type: Boolean, reflect: true }) pill = false;
