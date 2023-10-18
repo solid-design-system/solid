@@ -64,6 +64,27 @@ Each new component in the Solid Design System, representing an old component fro
 
 ## Pull Requests
 
+### Assignees and Reviewers
+
+When opening a PR, please make sure all checkboxes under "Definition of reviewable" are checked.
+As next step, please assign the reviewer needed for the PR.
+The SDS uses the following process to assign PRs and request reviews (due to handling on the project board in GitHub).
+_**The reviewer section from GitHub is not used for assigning reviewers. Instead, the following process is used:**_
+
+1. The author of the PR needs to assign themselves
+2. The author of the PR needs to assign the reviewer needed for the PR (according to the rules below)
+3. Reviewers will unassign themselves after they have reviewed the PR
+4. If changes are requested, the author needs to reassign the reviewer after the changes are made and pushed
+
+> _**NOTE:**_
+> If UI changes need to be reviewed in Chromatic, the reviewer need to add a comment to the PR, stating if the changes are approved or new changes are requested. This is mandatory as the Chromatic approval will not send any notifications.
+
+Assigning reviewers follows a few rules:
+
+1. **New Feature PRs:** All members from the SDS team need to be assigned to the PR (@solid-design-system/sds-core-team).
+2. **Bug Fix or Docs PRs:** Minimum 1 developer from the SDS core-team (@solid-design-system/sds-core-dev-team) needs to be added as reviewer. Designers can be added as reviewers as well if visual changes are made.
+3. **CI/CD PRs:** Minimum 1 out of Özlem, Mario or Karl needs to be added as reviewer.
+
 ### Commit Messages
 
 We use Semantic Release to automate versioning and publishing based on commit messages, ensuring consistent release practices. Pull Request titles are especially important for semantic versioning, so follow these guidelines when writing them as well.
@@ -78,8 +99,6 @@ Commits with type 'perf' will be associated with a patch release.
 ```
 
 **Remark:** Always think from the perspective of the person using our packages/components – will the final distribution/bundle change? If so, then it's always `feat` `fix` or `perf` – if not, it's one of the others. Please reach out if you're unsure.
-
----
 
 ### Squash and Merge Your Changes
 
