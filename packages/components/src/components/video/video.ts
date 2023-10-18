@@ -16,11 +16,11 @@ import SolidElement from '../../internal/solid-element';
  *
  * @slot - The default slot used to pass a video player element.
  * @slot play-icon - The video's play icon.
- * @slot poster - Specifies an image to be shown before initial play of the wrapped video. Acts like the 'poster' attribute on the native <video> tag. Optionally use this slot to mask
- * loading appearance of wrapped video player.
+ * @slot poster - Specifies an image to be shown before initial play of the wrapped video. Acts like the `poster` attribute on the native video tag.
  *
  * @csspart base - The component's base wrapper.
- * @csspart play-button - Button element wrapper around the play-icon slot.
+ * @csspart play-button - The `<button>` element wrapper around the play-icon slot.
+ * @csspart overlay - The `<div>` element styled as an absolutely positioned transparent overlay.
  */
 
 @customElement('sd-video')
@@ -58,12 +58,16 @@ export default class SdVideo extends SolidElement {
   }
 
   /** Internal method to group play behaviors. If a KeyboardEvent is used, refocus on the native video element to give the user seamless keyboard control. */
-  private play(e: MouseEvent | KeyboardEvent) {
+  private play() {
     this.emit('sd-play');
     this.playing = true;
     this.fadeoutPoster();
+  }
 
-    if (e instanceof KeyboardEvent) {
+  /** Restrict keydown control to enter and space bar to mimic the native video tag behavior. */
+  private handleKeydown(e: MouseEvent | KeyboardEvent) {
+    if (e instanceof KeyboardEvent && (e.key === 'Enter' || e.key === ' ')) {
+      this.play();
       setTimeout(() => {
         this.querySelector('video')?.focus();
       });
@@ -74,7 +78,7 @@ export default class SdVideo extends SolidElement {
     return html`
       <div part="base" aria-label="Video Player">
         ${this.hasSlotController.test('poster')
-          ? html`<slot name="poster" part="poster" role="presentation" @transitionend=${this.hidePoster}></slot>`
+          ? html`<slot name="poster" role="presentation" @transitionend=${this.hidePoster}></slot>`
           : null}
         <div
           part="overlay"
@@ -90,10 +94,10 @@ export default class SdVideo extends SolidElement {
           aria-label="Play video"
           tabindex="0"
           @click=${this.play}
-          @keydown=${this.play}
+          @keydown=${this.handleKeydown}
           class=${cx(
             this.playing ? 'opacity-0 pointer-events-none' : 'opacity-100',
-            'absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] p-4 bg-white bg-opacity-75 rounded-full flex items-center justify-center z-30 play-pause-transition'
+            'absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 p-4 bg-white bg-opacity-75 rounded-full flex items-center justify-center z-30 play-pause-transition'
           )}
         >
           <slot name="play-icon" part="play-icon">
@@ -112,6 +116,7 @@ export default class SdVideo extends SolidElement {
       :host {
         position: relative;
         display: inline-block;
+        overflow: hidden;
       }
 
       ::slotted([slot='poster']),

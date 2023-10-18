@@ -13,13 +13,18 @@ const videoConstant: ConstantDefinition = {
   type: 'slot',
   name: 'default',
   value:
-    '<video controls id="videoExample" style="min-width: 854px; min-height: 480px; width: 854px; height: 480px;"><source src="http://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4" />Your browser does not support the video tag.</video>'
+    '<video controls id="video-example" class="w-full aspect-video"><source src="http://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4" />Your browser does not support the video tag.</video>'
+};
+const imageConstant: ConstantDefinition = {
+  type: 'slot',
+  name: 'default',
+  value: '<img class="w-[400px] aspect-video object-cover" src="./placeholders/generic.jpg" />'
 };
 const posterConstant: ConstantDefinition = {
   type: 'slot',
   name: 'poster',
   value:
-    '<img slot="poster" alt="poster" src="https://www.blender.org/wp-content/uploads/2020/10/robin-tran-redautumnforest_pr1.jpg" />'
+    '<img slot="poster" alt="poster" class="w-WHATEVER-WIDTH aspect-video cover" src="./placeholders/architecture.jpg" />'
 };
 
 export default {
@@ -38,14 +43,7 @@ export default {
 export const Default = {
   render: (args: any) => {
     return generateTemplate({
-      constants: [
-        {
-          type: 'slot',
-          name: 'default',
-          value:
-            '<div style="width: 400px; height: 225px;" class="flex items-center justify-center overflow-hidden"><img src="./placeholders/generic.jpg" /></div>'
-        }
-      ],
+      constants: imageConstant,
       args
     });
   }
@@ -64,53 +62,57 @@ export const PlayingOverlay = {
           x: { type: 'attribute', name: 'playing' },
           y: { type: 'attribute', name: 'overlay' }
         },
-        constants: [
-          {
-            type: 'slot',
-            name: 'default',
-            value:
-              '<div style="width: 400px; height: 225px;" class="flex items-center justify-center overflow-hidden"><img src="./placeholders/generic.jpg" /></div>'
-          }
-        ],
+        constants: imageConstant,
         args
       })}
     `;
   }
 };
 
-// Script used in next 2 stories
+// Script used in next 2 stories. Due to Storybook behavior, we need to carefully target the appropriate elements in the context of the story.
 const videoElementScript = html`<script>
+  /**
+   * Handles setting up event listeners and defining behaviors for video elements.
+   */
   function runScriptOnPathChange() {
-    // *NOTE: Storybook single page behavior complicates queries between the "Docs" and "Video Element" stories.
-    // Therefore it is necessary to query for all existing elements and target the one specific to our story, otherwise we end up with strange overlapping behaviors in Storybook.
-    const videoEls = document.querySelectorAll('#videoExample');
-    const sdVideos = document.querySelectorAll('#sdVideoExample > sd-video');
+    // Query all video elements
+    const videoEls = document.querySelectorAll('#video-example');
+    const sdVideos = document.querySelectorAll('#sd-video-example > sd-video');
 
-    const videoEl = document.querySelectorAll('#videoExample')[1] || document.querySelectorAll('#videoExample')[0];
+    // Select the first or second video element based on availability
+    const videoEl = document.querySelectorAll('#video-example')[1] || document.querySelectorAll('#video-example')[0];
     const sdVideo =
-      document.querySelectorAll('#sdVideoExample > sd-video')[1] ||
-      document.querySelectorAll('#sdVideoExample > sd-video')[0];
+      document.querySelectorAll('#sd-video-example > sd-video')[1] ||
+      document.querySelectorAll('#sd-video-example > sd-video')[0];
 
+    /**
+     * Sets up event listeners for video elements.
+     */
     function setupEventListeners() {
       sdVideo?.addEventListener('sd-play', playVideo);
       videoEl?.addEventListener('play', updatePlayingStatus);
       videoEl?.addEventListener('pause', updatePlayingStatus);
     }
 
+    /**
+     * Plays the video element.
+     */
     function playVideo() {
       videoEl.play();
     }
 
+    /**
+     * Updates the playing status of the video element.
+     */
     function updatePlayingStatus() {
       sdVideo.playing = videoEl.paused ? false : true;
     }
 
+    /**
+     * Removes event listeners and resets video elements to their initial state.
+     */
     function removeEventListeners() {
-      // ensure we affect ANY existing elements by querying for all, see *NOTE above
-      const videoEls = document.querySelectorAll('#videoExample');
-      const sdVideos = document.querySelectorAll('#sdVideoExample > sd-video');
-      const sdVideoPlayButtons = document.querySelectorAll('#sdVideoExample > sd-video');
-
+      // Reset and remove event listeners for video elements
       videoEls.forEach(videoEl => {
         videoEl.pause();
         videoEl.currentTime = 0;
@@ -119,12 +121,14 @@ const videoElementScript = html`<script>
         videoEl?.removeEventListener('pause', updatePlayingStatus);
       });
 
+      // Reset and remove event listeners for sd-video elements
       sdVideos.forEach(sdVideo => {
         sdVideo.playing = false;
         sdVideo?.removeEventListener('sd-play', playVideo);
       });
     }
 
+    // Initial setup
     removeEventListeners();
     setupEventListeners();
   }
@@ -138,7 +142,7 @@ const videoElementScript = html`<script>
 
 /**
  * Use in combination with a viewer component (e. g. from Moving Image) or a bare `<video>`-Tag. <br/>
- * Here we wrap a `video` element that includes a `poster` attribute.
+ * Here we wrap a `video` element that includes setting an image to the `poster` slot.
  */
 
 export const VideoElement = {
@@ -150,7 +154,7 @@ export const VideoElement = {
   },
   render: (args: any) => {
     return html`
-      <div id="sdVideoExample">
+      <div id="sd-video-example">
         ${generateTemplate({
           args,
           constants: [videoConstant, posterConstant]
@@ -174,7 +178,7 @@ export const Mouseless = {
   },
   render: (args: any) => {
     return html`
-      <div id="sdVideoExample">
+      <div id="sd-video-example" class="mouseless">
         ${generateTemplate({
           args,
           constants: [videoConstant, posterConstant]
@@ -185,7 +189,7 @@ export const Mouseless = {
   },
 
   play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
-    const el = canvasElement.querySelector('#sdVideoExample > sd-video');
+    const el = canvasElement.querySelector('#sd-video-example > sd-video');
 
     await waitUntil(() => el?.shadowRoot?.querySelector('button'));
 
