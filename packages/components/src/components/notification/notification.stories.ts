@@ -8,13 +8,12 @@ export default {
   title: 'Components/sd-notification',
   component: 'sd-notification',
   args: overrideArgs([
-    { type: 'slot', name: 'icon', value: `<sd-icon name="close" library="system" color="currentColor"></sd-icon>` },
     {
       type: 'slot',
       name: 'default',
       value: `
         This is a notification. It is used to display important messages to the user.`
-    },
+    }
   ]),
   argTypes,
   parameters: { ...parameters }
