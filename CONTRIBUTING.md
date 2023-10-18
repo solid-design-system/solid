@@ -81,8 +81,8 @@ _**The reviewer section from GitHub is not used for assigning reviewers. Instead
 
 Assigning reviewers follows a few rules:
 
-1. **New Feature PRs:** All members from the SDS team need to be assigned to the PR (@solid-design-system/sds-core-team).
-2. **Bug Fix or Docs PRs:** Minimum 1 developer from the SDS core-team (@solid-design-system/sds-core-dev-team) needs to be added as reviewer. Designers can be added as reviewers as well if visual changes are made.
+1. **New Feature PRs:** All current members from the SDS team need to be assigned to the PR (@solid-design-system/current-sds-team).
+2. **Bug Fix or Docs PRs:** Minimum 1 developer from the SDS dev-core-team (@solid-design-system/core-development) needs to be added as reviewer. Designers need to be added separately if visual changes are made.
 3. **CI/CD PRs:** Minimum 1 out of Özlem, Mario or Karl needs to be added as reviewer.
 
 ### Commit Messages
