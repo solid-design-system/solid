@@ -1,5 +1,6 @@
 import '../../solid-components';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
+import { html } from 'lit';
 
 const { argTypes, parameters } = storybookDefaults('sd-checkbox');
 const { generateTemplate } = storybookTemplate('sd-checkbox');
@@ -129,6 +130,45 @@ export const Indeterminate = {
       args
     });
   }
+};
+
+export const InForm = {
+  render: () => html`
+    <form novalidate id="test" class="custom-validity">
+      <sd-button id="getCheckedValues" type="submit">submit</sd-button>
+    </form>
+    <sd-checkbox name="test" value="item1" error-message="CHECK!!" id="test1" form="test">Item 1</sd-checkbox>
+    <script>
+      const form = document.querySelector('.custom-validity');
+      const checkbox = document.querySelector('sd-checkbox');
+      const errorMessage = \`Don't forget to check me!\`;
+
+      // Set initial validity as soon as the element is defined
+      customElements.whenDefined('sd-checkbox').then(async () => {
+        await checkbox.updateComplete;
+        checkbox.setCustomValidity(errorMessage);
+        console.log('when defined', checkbox.validity);
+      });
+
+      // Update validity on change
+      checkbox.addEventListener('sd-change', () => {
+        console.log('event', checkbox.validity);
+        checkbox.setCustomValidity(checkbox.checked ? '' : errorMessage);
+      });
+
+      // Handle submit
+      form.addEventListener('submit', event => {
+        event.preventDefault();
+        if (!checkbox.validity.valid) {
+          checkbox.setAttribute('invalid', true);
+          checkbox.setAttribute('error-text', 'CHECK!!!!')
+        } else {
+          checkbox.removeAttribute('invalid');
+          checkbox.removeAttribute('error-text');
+        }
+      });
+    </script>
+  `
 };
 
 /**
