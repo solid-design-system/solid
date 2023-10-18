@@ -1,18 +1,17 @@
 import '../icon/icon';
 import { classMap } from 'lit/directives/class-map.js';
-import { customElement } from '../../../src/internal/register-custom-element';
-import {property, query, state } from 'lit/decorators.js';
+import { css, html } from 'lit';
+import { customElement } from '../../internal/register-custom-element';
 import { defaultValue } from '../../internal/default-value';
 import { FormControlController } from '../../internal/form';
 import { HasSlotController } from '../../internal/slot';
-import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { live } from 'lit/directives/live.js';
 import { LocalizeController } from '../../utilities/localize';
+import { property, query, state } from 'lit/decorators.js';
 import { watch } from '../../internal/watch';
+import componentStyles from '../../styles/component.styles';
 import SolidElement from '../../internal/solid-element';
-import styles from './input.styles';
-import type { CSSResultGroup } from 'lit';
 import type { SolidFormControl } from '../../internal/solid-element';
 
 //
@@ -62,8 +61,6 @@ const isFirefox = isChromium ? false : navigator.userAgent.includes('Firefox');
  */
 @customElement('sd-input')
 export default class SdInput extends SolidElement implements SolidFormControl {
-  static styles: CSSResultGroup = styles;
-
   private readonly formControlController = new FormControlController(this);
   private readonly hasSlotController = new HasSlotController(this, 'help-text', 'label');
   private readonly localize = new LocalizeController(this);
@@ -399,13 +396,13 @@ export default class SdInput extends SolidElement implements SolidFormControl {
       <div
         part="form-control"
         class=${classMap({
-      'form-control': true,
-      'form-control--small': this.size === 'small',
-      'form-control--medium': this.size === 'medium',
-      'form-control--large': this.size === 'large',
-      'form-control--has-label': hasLabel,
-      'form-control--has-help-text': hasHelpText
-    })}
+          'form-control': true,
+          'form-control--small': this.size === 'small',
+          'form-control--medium': this.size === 'medium',
+          'form-control--large': this.size === 'large',
+          'form-control--has-label': hasLabel,
+          'form-control--has-help-text': hasHelpText
+        })}
       >
         <label
           part="form-control-label"
@@ -420,23 +417,23 @@ export default class SdInput extends SolidElement implements SolidFormControl {
           <div
             part="base"
             class=${classMap({
-      input: true,
+              input: true,
 
-      // Sizes
-      'input--small': this.size === 'small',
-      'input--medium': this.size === 'medium',
-      'input--large': this.size === 'large',
+              // Sizes
+              'input--small': this.size === 'small',
+              'input--medium': this.size === 'medium',
+              'input--large': this.size === 'large',
 
-      // States
-      'input--pill': this.pill,
-      'input--standard': !this.filled,
-      'input--filled': this.filled,
-      'input--disabled': this.disabled,
-      'input--focused': this.hasFocus,
-      'input--empty': !this.value,
-      'input--no-spin-buttons': this.noSpinButtons,
-      'input--is-firefox': isFirefox
-    })}
+              // States
+              'input--pill': this.pill,
+              'input--standard': !this.filled,
+              'input--filled': this.filled,
+              'input--disabled': this.disabled,
+              'input--focused': this.hasFocus,
+              'input--empty': !this.value,
+              'input--no-spin-buttons': this.noSpinButtons,
+              'input--is-firefox': isFirefox
+            })}
           >
             <slot name="prefix" part="prefix" class="input__prefix"></slot>
             <input
@@ -472,9 +469,9 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               @focus=${this.handleFocus}
               @blur=${this.handleBlur}
             />
-
-            ${hasClearIcon
-        ? html`
+            ${
+              hasClearIcon
+                ? html`
                     <button
                       part="clear-button"
                       class="input__clear"
@@ -488,10 +485,11 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                       </slot>
                     </button>
                   `
-        : ''
-      }
-            ${this.passwordToggle && !this.disabled
-        ? html`
+                : ''
+            }
+            ${
+              this.passwordToggle && !this.disabled
+                ? html`
                     <button
                       part="password-toggle-button"
                       class="input__password-toggle"
@@ -501,22 +499,23 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                       tabindex="-1"
                     >
                       ${this.passwordVisible
-            ? html`
+                        ? html`
                             <slot name="show-password-icon">
                               <sd-icon name="eye-slash" library="system"></sd-icon>
                             </slot>
                           `
-            : html`
+                        : html`
                             <slot name="hide-password-icon">
                               <sd-icon name="eye" library="system"></sd-icon>
                             </slot>
                           `}
                     </button>
                   `
-        : ''
-      }
+                : ''
+            }
 
             <slot name="suffix" part="suffix" class="input__suffix"></slot>
+            
           </div>
         </div>
 
@@ -529,10 +528,35 @@ export default class SdInput extends SolidElement implements SolidFormControl {
         >
           ${this.helpText}
         </slot>
+
         </div>
       </div>
     `;
   }
+
+  /**
+   * Inherits Tailwindclasses and includes additional styling.
+   */
+  static styles = [
+    componentStyles,
+    SolidElement.styles,
+
+    css`
+      :host {
+        box-sizing: border-box;
+        position: relative;
+        display: inline-block;
+      }
+
+      :host([vertical]) {
+        display: block;
+      }
+
+      details summary::-webkit-details-marker {
+        display: none;
+      }
+    `
+  ];
 }
 
 declare global {
