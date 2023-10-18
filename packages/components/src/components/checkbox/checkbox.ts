@@ -166,7 +166,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
       <label
         part="base"
         class=${cx(
-          'sd-checkbox group inline-flex items-start items-center text-base leading-normal text-black cursor-pointer align-middle',
+          'sd-checkbox group inline-flex items-start leading-normal text-black cursor-pointer',
           this.checked && 'checkbox--checked',
           this.disabled && 'hover:cursor-not-allowed',
           this.hasFocus && 'checkbox--focused',
@@ -197,7 +197,9 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
         <span
           part="control${this.checked ? ' control--checked' : ''}${this.indeterminate ? ' control--indeterminate' : ''}"
           class=${cx(
-            'checkbox__control relative inline-flex items-center justify-center border rounded-sm h-4 w-4',
+            `checkbox__control relative inline-flex items-center justify-center border rounded-sm h-4 w-4 ${
+              (this.size === 'sm' && 'mt-[2px]') || (this.size === 'lg' && 'mt-[3px]')
+            }`,
             (this.disabled && 'border-neutral-500') ||
               (this.invalid &&
                 `border-error hover:border-error-400 ${this.checked && 'bg-error hover:bg-error-400'}`) ||
@@ -211,7 +213,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
                 <sd-icon
                   class="text-white"
                   part="checked-icon"
-                  class="checkbox__checked-icon h-3 w-3"
+                  class="checkbox__checked-icon"
                   library="system"
                   name="status-hook"
                 ></sd-icon>

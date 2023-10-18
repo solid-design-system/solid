@@ -64,7 +64,7 @@ export const Size = {
           name: 'size'
         }
       },
-      args
+      args: overrideArgs([{ type: 'slot', name: 'default', value: 'Default slot<br />Second Line' }])
     });
   }
 };
@@ -97,13 +97,6 @@ export const Indeterminate = {
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        x: [
-          {
-            type: 'attribute',
-            name: 'indeterminate',
-            values: [false, true]
-          }
-        ],
         y: [
           {
             type: 'attribute',
