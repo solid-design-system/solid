@@ -237,13 +237,14 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
               `
             : ''}
         </span>
-        <slot
-          part="label"
+        <span
           class=${cx(
             'checkbox__label select-none inline-block ml-2 text-[var(--sd-input-label-color)]',
             (this.disabled && 'text-neutral-500') || (this.invalid && 'text-error') || 'text-neutral-800'
           )}
-        ></slot>
+        >
+          <slot part="label"></slot>
+        </span>
       </label>
       <div
         part="form-control-error-text"
@@ -277,6 +278,10 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
 
       :host(:focus-visible) {
         outline: 0;
+      }
+
+      :host([required]) .checkbox__label::after {
+        content: '*';
       }
 
       .checkbox__control {

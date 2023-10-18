@@ -95,6 +95,23 @@ export const Invalid = {
   }
 };
 
+/**
+ * Use the `required` attribute to mark the element as required. This can be used for form validation purposes.
+ */
+
+export const Required = {
+  parameters: { controls: { exclude: ['required'] } },
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        x: [{ type: 'attribute', name: 'size' }],
+        y: { type: 'attribute', name: 'required' }
+      },
+      args
+    });
+  }
+};
+
 export const Indeterminate = {
   parameters: { controls: { exclude: ['indeterminate'] } },
   render: (args: any) => {
