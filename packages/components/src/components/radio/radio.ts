@@ -118,7 +118,7 @@ export default class SdRadio extends SolidElement {
         <span
           part="${`${this.checked ? 'control--checked' : 'control--unchecked'}`}"
           class=${cx(
-            'radio__control relative inline-flex items-center justify-center border rounded-full bg-white h-4 w-4',
+            'radio__control flex-initial shrink-0 relative inline-flex items-center justify-center border rounded-full bg-white h-4 w-4',
             (this.disabled && 'border-neutral-500') ||
               (this.invalid && 'border-error hover:border-error-400 group-hover:border-error-400') ||
               (this.checked && 'border-accent hover:border-accent-550 group-hover:border-accent-550') ||
@@ -167,12 +167,9 @@ export default class SdRadio extends SolidElement {
         outline: 0;
       }
 
-      .radio__control {
-        flex: 0 0 auto;
-      }
-
       /* Checked + focus */
-      :host(:focus-visible) .radio__control {
+      :host(:focus-visible) [part='control--checked'],
+      :host(:focus-visible) [part='control--unchecked'] {
         outline: 2px solid #00358e;
         outline-offset: 2px;
       }
