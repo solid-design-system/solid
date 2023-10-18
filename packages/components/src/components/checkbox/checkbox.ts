@@ -262,7 +262,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
       }
 
       /* Checked + focus */
-      :host(:focus-visible) .checkbox__control {
+      .checkbox__input:focus-visible ~ .checkbox__control {
         outline: 2px solid #00358e;
         outline-offset: 2px;
       }
