@@ -56,7 +56,7 @@ export const DisabledAndSize = {
 
 export const Size = {
   parameters: { controls: { exclude: ['size'] } },
-  render: (args: any) => {
+  render: () => {
     return generateTemplate({
       axis: {
         x: {
@@ -74,7 +74,7 @@ export const Size = {
  */
 
 export const Invalid = {
-  parameters: { controls: { exclude: ['invalid', 'size'] } },
+  parameters: { controls: { exclude: ['invalid', 'size', 'error-text'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -86,7 +86,10 @@ export const Invalid = {
           }
         ]
       },
-      constants: { type: 'attribute', name: 'invalid', value: true },
+      constants: [
+        { type: 'attribute', name: 'invalid', value: true },
+        { type: 'attribute', name: 'error-text', value: 'Error message' }
+      ],
       args
     });
   }

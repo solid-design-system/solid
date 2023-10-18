@@ -10,6 +10,7 @@ import { watch } from '../../internal/watch';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 import type { SolidFormControl } from '../../internal/solid-element';
+import { HasSlotController } from '../../internal/slot';
 
 /**
  * @summary Checkboxes allow the user to toggle an option on or off.
@@ -41,12 +42,16 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
     defaultValue: (control: SdCheckbox) => control.defaultChecked,
     setValue: (control: SdCheckbox, checked: boolean) => (control.checked = checked)
   });
+  private readonly hasSlotController = new HasSlotController(this, 'label', 'error-text');
 
   @query('input[type="checkbox"]') input: HTMLInputElement;
 
   @state() private hasFocus = false;
 
   @property() title = ''; // make reactive to pass through
+
+  /** The checkbox error text. Use to display an error message below the component. */
+  @property({ attribute: 'error-text' }) errorText = '';
 
   /** The name of the checkbox, submitted as a name/value pair with form data. */
   @property() name = '';
@@ -162,14 +167,18 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
   }
 
   render() {
+    const hasErrorTextSlot = this.hasSlotController.test('error-text');
+    const hasErrorText = this.errorText ? true : hasErrorTextSlot;
+
     return html`
       <label
         part="base"
         class=${cx(
-          'sd-checkbox group inline-flex items-start leading-normal text-black cursor-pointer',
+          'sd-checkbox group inline-flex items-start leading-normal text-black cursor-pointer text-left',
           this.checked && 'checkbox--checked',
           this.disabled && 'hover:cursor-not-allowed',
           this.hasFocus && 'checkbox--focused',
+          hasErrorText && 'checkbox--has-error-text text-error',
           {
             /* sizes, fonts */
             sm: 'text-sm',
@@ -231,14 +240,30 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
               `
             : ''}
         </span>
-
-        <slot
-          part="label"
-          class=${cx(
-            'checkbox__label ml-2 select-none inline-block text-[var(--sd-input-label-color)]',
-            (this.disabled && 'text-neutral-500') || (this.invalid && 'text-error') || 'text-neutral-800'
-          )}
-        ></slot>
+        <span class=${cx('inline-block ml-2')}>
+          <slot
+            part="label"
+            class=${cx(
+              'checkbox__label select-none inline-block text-[var(--sd-input-label-color)]',
+              (this.disabled && 'text-neutral-500') || (this.invalid && 'text-error') || 'text-neutral-800'
+            )}
+          ></slot>
+          <div
+            part="form-control-error-text"
+            id="error-text"
+            class=${cx(
+              'form-control__error-text hidden text-error leading-normal',
+              {
+                /* sizes, fonts */
+                sm: 'text-sm',
+                lg: 'text-base'
+              }[this.size]
+            )}
+            aria-hidden=${hasErrorText ? 'false' : 'true'}
+          >
+            <slot name="error-text">${this.errorText}</slot>
+          </div>
+        </span>
       </label>
     `;
   }
@@ -265,6 +290,10 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
       .checkbox__input:focus-visible ~ .checkbox__control {
         outline: 2px solid #00358e;
         outline-offset: 2px;
+      }
+
+      .checkbox--has-error-text .form-control__error-text {
+        display: flex;
       }
     `
   ];
