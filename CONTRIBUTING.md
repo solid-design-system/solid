@@ -27,6 +27,27 @@
 - We optimize our components for accessibility.
 - We don't mention the names of internal or external colleagues in issues or other documents hosted on GitHub, as our project is entirely public and can be accessed by anybody. Tagging/mentioning colleagues using their GitHub profiles is fine, as they decided to be visible on GitHub.
 
+### Milestones
+
+We use milestones as a way to group issues and pull requests together towards a specific goal we want to achieve.
+
+Milestones have:
+
+- A name which defines to which goal the milestone is working towards.
+- A start date which defines when the milestone starts.
+- An end date which defines when the milestone ends.
+- A description which defines what the milestone is about.
+
+Throughout the weekly refinements, we add issues to the upcoming milestone. We also use the refinements to define the goal a new milestone is working towards. Deadline for this is the last refinement before the current milestone ends.
+In addition to this, we have some rules for the milestones:
+
+- We only have one milestone active at a time.
+- Ongoing tasks (e.g. orga-tasks) are not part of the milestone.
+- We only add issues to the milestone which are ready to be worked on.
+- We only add issues to the milestone which are not blocked by other issues (which are not in the same milestone).
+- If issues are not closed by the end of the milestone, we move them to the next milestone.
+- Milestone dates should not be changed once the milestone is started.
+
 ## Development Guidelines
 
 - Solid Components follows a monorepo structure with packages, such as the `components` package.
