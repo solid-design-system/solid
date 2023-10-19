@@ -11,6 +11,7 @@ import { LocalizeController } from '../../utilities/localize';
 import { property, query, state } from 'lit/decorators.js';
 import { watch } from '../../internal/watch';
 import componentStyles from '../../styles/component.styles';
+import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 import type { SolidFormControl } from '../../internal/solid-element';
 
@@ -416,24 +417,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
         <div part="form-control-input" class="form-control-input">
           <div
             part="base"
-            class=${classMap({
-              input: true,
-
-              // Sizes
-              'input--small': this.size === 'small',
-              'input--medium': this.size === 'medium',
-              'input--large': this.size === 'large',
-
-              // States
-              'input--pill': this.pill,
-              'input--standard': !this.filled,
-              'input--filled': this.filled,
-              'input--disabled': this.disabled,
-              'input--focused': this.hasFocus,
-              'input--empty': !this.value,
-              'input--no-spin-buttons': this.noSpinButtons,
-              'input--is-firefox': isFirefox
-            })}
+            class=${cx(this.size === 'small' ? 'text-sm' : 'text-base')}
           >
             <slot name="prefix" part="prefix" class="input__prefix"></slot>
             <input
