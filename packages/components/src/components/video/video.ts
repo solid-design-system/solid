@@ -132,7 +132,6 @@ export default class SdVideo extends SolidElement {
         z-index: 10;
       }
 
-      // Queries
       #default-play-icon,
       ::slotted([slot='play-icon']) {
         font-size: 4rem;
@@ -151,10 +150,6 @@ export default class SdVideo extends SolidElement {
         #default-play-icon,
         ::slotted([slot='play-icon']) {
           font-size: 2rem;
-          position: absolute;
-          left: 50%;
-          top: 50%;
-          translate: -50% -50%;
         }
 
         [part='play-button'] {
