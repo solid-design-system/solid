@@ -398,16 +398,16 @@ export default class SdInput extends SolidElement implements SolidFormControl {
         part="form-control"
         class=${cx(
           'form-control',
+          hasLabel && 'form-control--has-label',
+          hasHelpText && 'form-control--has-help-text',
           this.size === 'small' && 'form-control--small',
           this.size === 'medium' && 'form-control--medium',
-          this.size === 'large' && 'form-control--large',
-          hasLabel && 'form-control--has-label',
-          hasHelpText && 'form-control--has-help-text'
+          this.size === 'large' && 'form-control--large'
         )}
       >
         <label
           part="form-control-label"
-          class="form-control__label"
+          class=${cx('form-control__label text-primary-500', hasLabel ? 'inline-block' : 'hidden')}
           for="input"
           aria-hidden=${hasLabel ? 'false' : 'true'}
         >
@@ -422,7 +422,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               this.size === 'small' ? 'text-sm' : 'text-base',
 
               // States
-              this.pill && 'input--pill',
+              this.pill && 'input--pill', // remove?
               this.filled ? 'input--filled' : 'input--standard',
               this.disabled && 'input--disabled',
               this.hasFocus && 'input--focused',
@@ -551,6 +551,63 @@ export default class SdInput extends SolidElement implements SolidFormControl {
 
       details summary::-webkit-details-marker {
         display: none;
+      }
+
+      /* Original Shoelace form styles: lines are commented out after conversion to TW */
+      /* .form-control .form-control__label {
+        display: none;
+      } */
+
+      .form-control .form-control__help-text {
+        display: none;
+      }
+
+      /* Label */
+      .form-control--has-label .form-control__label {
+        /* display: inline-block;
+        color: var(--sd-input-label-color);
+        margin-bottom: var(--sd-spacing-3x-small); */
+      }
+
+      .form-control--has-label.form-control--small .form-control__label {
+        font-size: var(--sd-input-label-font-size-small);
+      }
+
+      .form-control--has-label.form-control--medium .form-control__label {
+        font-size: var(--sd-input-label-font-size-medium);
+      }
+
+      .form-control--has-label.form-control--large .form-control_label {
+        font-size: var(--sd-input-label-font-size-large);
+      }
+
+      :host([required]) .form-control--has-label .form-control__label::after {
+        content: var(--sd-input-required-content);
+        margin-inline-start: var(--sd-input-required-content-offset);
+        color: var(--sd-input-required-content-color);
+      }
+
+      /* Help text */
+      .form-control--has-help-text .form-control__help-text {
+        display: block;
+        color: var(--sd-input-help-text-color);
+        margin-top: var(--sd-spacing-3x-small);
+      }
+
+      .form-control--has-help-text.form-control--small .form-control__help-text {
+        font-size: var(--sd-input-help-text-font-size-small);
+      }
+
+      .form-control--has-help-text.form-control--medium .form-control__help-text {
+        font-size: var(--sd-input-help-text-font-size-medium);
+      }
+
+      .form-control--has-help-text.form-control--large .form-control__help-text {
+        font-size: var(--sd-input-help-text-font-size-large);
+      }
+
+      .form-control--has-help-text.form-control--radio-group .form-control__help-text {
+        margin-top: var(--sd-spacing-2x-small);
       }
     `
   ];
