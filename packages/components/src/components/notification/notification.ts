@@ -57,6 +57,9 @@ export default class SdNotification extends SolidElement {
   /** The alert's theme variant. */
   @property({ reflect: true }) variant: 'info' | 'success' | 'error' | 'warning' = 'info';
 
+  /** Enables a toast notification. */
+  @property({ type: Boolean, reflect: true }) toasted = false;
+
   /** The position of the toasted sd-notification. */
   @property({ reflect: true, attribute: 'toast-stack' }) toastStack: 'top-right' | 'bottom-center' = 'top-right';
 
@@ -185,10 +188,10 @@ export default class SdNotification extends SolidElement {
     return html`
       <div
         part="base"
-        class=${cx(`
-        h-12 w-full overflow-hidden
-        flex items-center m-[inherit]
-        `)}
+        class=${cx(
+          'h-12 w-full overflow-hidden flex items-center m-[inherit]',
+          this.toasted && 'shadow-[0px_1px_3px_0px_#515151]'
+        )}
         role="alert"
         aria-hidden=${this.open ? 'false' : 'true'}
         @mousemove=${this.handleMouseMove}
@@ -221,9 +224,12 @@ export default class SdNotification extends SolidElement {
         </div>
 
         <div
-          class="border-solid border-[1px] border-l-0 border-neutral-400 h-full w-full pl-2 gap-2 flex items-center justify-stretch"
+          class=${cx(
+            'h-full w-full pl-2 gap-2 flex items-center justify-stretch bg-white',
+            !this.toasted && 'border-solid border-[1px] border-l-0 border-neutral-400'
+          )}
         >
-          <slot part="message" aria-live="polite" class=""></slot>
+          <slot part="message" aria-live="polite"></slot>
 
           ${this.closable
             ? html`
