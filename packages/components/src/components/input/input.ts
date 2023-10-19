@@ -396,14 +396,14 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     return html`
       <div
         part="form-control"
-        class=${classMap({
-          'form-control': true,
-          'form-control--small': this.size === 'small',
-          'form-control--medium': this.size === 'medium',
-          'form-control--large': this.size === 'large',
-          'form-control--has-label': hasLabel,
-          'form-control--has-help-text': hasHelpText
-        })}
+        class=${cx(
+          'form-control',
+          this.size === 'small' && 'form-control--small',
+          this.size === 'medium' && 'form-control--medium',
+          this.size === 'large' && 'form-control--large',
+          hasLabel && 'form-control--has-label',
+          hasHelpText && 'form-control--has-help-text'
+        )}
       >
         <label
           part="form-control-label"
