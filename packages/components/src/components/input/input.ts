@@ -417,7 +417,19 @@ export default class SdInput extends SolidElement implements SolidFormControl {
         <div part="form-control-input" class="form-control-input">
           <div
             part="base"
-            class=${cx(this.size === 'small' ? 'text-sm' : 'text-base')}
+            class=${cx(
+              // Sizes
+              this.size === 'small' ? 'text-sm' : 'text-base',
+
+              // States
+              this.pill && 'input--pill',
+              this.filled ? 'input--filled' : 'input--standard',
+              this.disabled && 'input--disabled',
+              this.hasFocus && 'input--focused',
+              !this.value && 'input--empty',
+              this.noSpinButtons && 'input--no-spin-buttons',
+              isFirefox && 'input--is-firefox'
+            )}
           >
             <slot name="prefix" part="prefix" class="input__prefix"></slot>
             <input
