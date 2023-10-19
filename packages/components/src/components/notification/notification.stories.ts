@@ -12,7 +12,8 @@ export default {
       type: 'slot',
       name: 'default',
       value: `
-        This is a notification. It is used to display important messages to the user.`
+      <div class="slot slot--border slot--text h-8 my-auto w-full">Default slot</div>
+      `
     }
   ]),
   argTypes,

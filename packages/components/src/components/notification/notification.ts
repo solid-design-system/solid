@@ -16,7 +16,7 @@ const toastStack = Object.assign(document.createElement('div'), { className: 'sd
  * @summary Alerts are used to display important messages inline or as toast notifications.
  * @documentation https://solid.union-investment.com/[storybook-link]/notification
  * @status stable
- * @since 2.0
+ * @since 1.20.0
  *
  * @dependency sd-icon-button
  *
@@ -189,44 +189,38 @@ export default class SdNotification extends SolidElement {
       <div
         part="base"
         class=${cx(
-          'h-12 w-full overflow-hidden flex items-center m-[inherit]',
-          this.toasted && 'shadow-[0px_1px_3px_0px_#515151]'
+          'w-full overflow-hidden flex items-center relative',
+          this.toasted && 'shadow-[0px_1px_3px_0px_#515151]',
+          this.variant === 'info' && 'bg-info',
+          this.variant === 'success' && 'bg-success',
+          this.variant === 'warning' && 'bg-warning',
+          this.variant === 'error' && 'bg-error'
         )}
         role="alert"
         aria-hidden=${this.open ? 'false' : 'true'}
         @mousemove=${this.handleMouseMove}
       >
-        <div
-          part="icon-slot"
-          class=${cx(
-            'text-white h-full w-auto aspect-square flex items-center justify-center flex-[0_0_auto]',
-            this.variant === 'info' && 'bg-info',
-            this.variant === 'success' && 'bg-success',
-            this.variant === 'warning' && 'bg-warning',
-            this.variant === 'error' && 'bg-error'
-          )}
-        >
-          <slot name="icon" part="icon">
-            <sd-icon
-              name=${this.variant === 'info'
-                ? 'info'
-                : this.variant === 'success'
-                ? 'success'
-                : this.variant === 'warning'
-                ? 'warning'
-                : this.variant === 'error'
-                ? 'error'
-                : ''}
-              library="system"
-              class="h-6 w-6"
-            ></sd-icon>
-          </slot>
-        </div>
+        <slot name="icon" part="icon" class=${cx('text-white h-full min-w-min px-3 flex justify-center')}>
+          <sd-icon
+            name=${this.variant === 'info'
+              ? 'info'
+              : this.variant === 'success'
+              ? 'success'
+              : this.variant === 'warning'
+              ? 'warning'
+              : this.variant === 'error'
+              ? 'error'
+              : ''}
+            library="system"
+            class="h-6 w-6"
+          ></sd-icon>
+        </slot>
 
         <div
           class=${cx(
-            'h-full w-full pl-2 gap-2 flex items-center justify-stretch bg-white',
-            !this.toasted && 'border-solid border-[1px] border-l-0 border-neutral-400'
+            'h-full w-full gap-2 flex items-center justify-stretch bg-white',
+            !this.toasted && 'border-solid border-[1px] border-l-0 border-neutral-400',
+            this.closable ? 'p-1 pl-3' : 'px-3 py-2'
           )}
         >
           <slot part="message" aria-live="polite"></slot>
@@ -237,7 +231,7 @@ export default class SdNotification extends SolidElement {
                   size="md"
                   variant="tertiary"
                   part="close-button"
-                  class="ml-auto mr-2 flex flex-[0_0_auto] items-center"
+                  class="ml-auto flex flex-[0_0_auto] items-center"
                   label=${this.localize.term('close')}
                   @click=${this.handleCloseClick}
                 >
@@ -246,6 +240,17 @@ export default class SdNotification extends SolidElement {
               `
             : ''}
         </div>
+
+        ${this.durationIndicator && this.duration !== Infinity
+          ? html`
+              <div
+                part="duration-indicator"
+                style="width: 100%; animation: grow ${this.duration}ms linear 0s 1;"
+                class=${cx('h-[2px] bottom-0 absolute bg-primary z-10')}
+              ></div>
+              <div part="duration-indicator" class="w-full h-[2px] bottom-0 absolute bg-neutral-400"></div>
+            `
+          : ''}
       </div>
     `;
   }
@@ -259,9 +264,14 @@ export default class SdNotification extends SolidElement {
     css`
       :host {
         display: contents;
-
-        /* For better DX, we'll reset the margin here so the base part can inherit it */
-        margin: 0;
+      }
+      @keyframes grow {
+        0% {
+          width: 0%;
+        }
+        100% {
+          width: 100%;
+        }
       }
     `
   ];
