@@ -58,7 +58,7 @@ export default class SdNotification extends SolidElement {
   @property({ reflect: true }) variant: 'info' | 'success' | 'error' | 'warning' = 'info';
 
   /** The position of the toasted sd-notification. */
-  @property({ reflect: true }) toastStack: 'top-right' | 'bottom-center' = 'top-right';
+  @property({ reflect: true, attribute: 'toast-stack' }) toastStack: 'top-right' | 'bottom-center' = 'top-right';
 
   /**
    * The length of time, in milliseconds, the alert will show before closing itself. If the user interacts with
@@ -68,7 +68,7 @@ export default class SdNotification extends SolidElement {
   @property({ type: Number }) duration = Infinity;
 
   /** Enables an animation that visualizes the duration of a notification. */
-  @property({ type: Boolean, reflect: true }) durationIndicator = false;
+  @property({ type: Boolean, reflect: true, attribute: 'duration-indicator' }) durationIndicator = false;
 
   firstUpdated() {
     this.base.hidden = !this.open;
