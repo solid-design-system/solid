@@ -197,6 +197,7 @@ export default class SdNotification extends SolidElement {
           this.variant === 'error' && 'bg-error'
         )}
         role="alert"
+        id="notification"
         aria-hidden=${this.open ? 'false' : 'true'}
         @mousemove=${this.handleMouseMove}
       >
@@ -245,8 +246,8 @@ export default class SdNotification extends SolidElement {
           ? html`
               <div
                 part="duration-indicator"
-                style="width: 100%; animation: grow ${this.duration}ms linear 0s 1;"
-                class=${cx('h-[2px] bottom-0 absolute bg-primary z-10')}
+                style=${`animation-duration: ${this.duration}ms`}
+                class=${cx(`h-[2px] bottom-0 absolute bg-primary z-10 width-animation`)}
               ></div>
               <div part="duration-indicator" class="w-full h-[2px] bottom-0 absolute bg-neutral-400"></div>
             `
@@ -265,6 +266,19 @@ export default class SdNotification extends SolidElement {
       :host {
         display: contents;
       }
+
+      .width-animation {
+        width: 0%;
+        animation: grow;
+        animation-timing-function: linear;
+        animation-delay: 0s;
+      }
+
+      #notification:hover .width-animation {
+        width: 0%;
+        animation: none;
+      }
+
       @keyframes grow {
         0% {
           width: 0%;
