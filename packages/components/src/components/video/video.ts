@@ -97,11 +97,11 @@ export default class SdVideo extends SolidElement {
           @keydown=${this.handleKeydown}
           class=${cx(
             this.playing ? 'opacity-0 pointer-events-none' : 'opacity-100',
-            'absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 p-4 bg-white bg-opacity-75 rounded-full flex items-center justify-center z-30 play-pause-transition focus-visible:focus-outline'
+            'absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 p-4 bg-white bg-opacity-75 rounded-full z-30 play-pause-transition focus-visible:focus-outline'
           )}
         >
           <slot name="play-icon" part="play-icon">
-            <sd-icon library="system" name="start" color="primary" class="text-[4rem]"></sd-icon>
+            <sd-icon id="default-play-icon" library="system" name="start" color="primary"></sd-icon>
           </slot>
         </button>
         <slot></slot>
@@ -130,6 +130,37 @@ export default class SdVideo extends SolidElement {
         top: 0;
         width: 100%;
         z-index: 10;
+      }
+
+      // Queries
+      #default-play-icon,
+      ::slotted([slot='play-icon']) {
+        font-size: 4rem;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        translate: -50% -50%;
+      }
+
+      [part='play-button'] {
+        width: 96px;
+        height: 96px;
+      }
+
+      @media screen and (max-width: 414px) {
+        #default-play-icon,
+        ::slotted([slot='play-icon']) {
+          font-size: 2rem;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          translate: -50% -50%;
+        }
+
+        [part='play-button'] {
+          width: 48px;
+          height: 48px;
+        }
       }
     `
   ];
