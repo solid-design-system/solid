@@ -1,5 +1,4 @@
 import '../icon/icon';
-import { classMap } from 'lit/directives/class-map.js';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { defaultValue } from '../../internal/default-value';
@@ -12,6 +11,7 @@ import { property, query, state } from 'lit/decorators.js';
 import { watch } from '../../internal/watch';
 import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
+import formControlStyles from '../../styles/form-control.styles';
 import SolidElement from '../../internal/solid-element';
 import type { SolidFormControl } from '../../internal/solid-element';
 
@@ -535,6 +535,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
    */
   static styles = [
     componentStyles,
+    formControlStyles,
     SolidElement.styles,
 
     css`
