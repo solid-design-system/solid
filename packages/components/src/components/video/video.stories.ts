@@ -13,7 +13,7 @@ const videoConstant: ConstantDefinition = {
   type: 'slot',
   name: 'default',
   value:
-    '<video controls id="video-example" class="w-full aspect-video"><source src="http://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4" />Your browser does not support the video tag.</video>'
+    '<video controls id="video-example" class="w-[854px] aspect-video"><source src="http://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4" />Your browser does not support the video tag.</video>'
 };
 const imageConstant: ConstantDefinition = {
   type: 'slot',
@@ -23,8 +23,7 @@ const imageConstant: ConstantDefinition = {
 const posterConstant: ConstantDefinition = {
   type: 'slot',
   name: 'poster',
-  value:
-    '<img slot="poster" alt="poster" class="w-WHATEVER-WIDTH aspect-video cover" src="./placeholders/architecture.jpg" />'
+  value: '<img slot="poster" alt="poster" class="w-[854px] aspect-video cover" src="./placeholders/architecture.jpg" />'
 };
 
 export default {
@@ -154,7 +153,7 @@ export const VideoElement = {
   },
   render: (args: any) => {
     return html`
-      <div id="sd-video-example">
+      <div id="sd-video-example" className="p-0">
         ${generateTemplate({
           args,
           constants: [videoConstant, posterConstant]
@@ -178,7 +177,7 @@ export const Mouseless = {
   },
   render: (args: any) => {
     return html`
-      <div id="sd-video-example" class="mouseless">
+      <div id="sd-video-example" class="mouseless p-0">
         ${generateTemplate({
           args,
           constants: [videoConstant, posterConstant]

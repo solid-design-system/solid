@@ -97,7 +97,7 @@ export default class SdVideo extends SolidElement {
           @keydown=${this.handleKeydown}
           class=${cx(
             this.playing ? 'opacity-0 pointer-events-none' : 'opacity-100',
-            'absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 p-4 bg-white bg-opacity-75 rounded-full flex items-center justify-center z-30 play-pause-transition'
+            'absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 p-4 bg-white bg-opacity-75 rounded-full flex items-center justify-center z-30 play-pause-transition focus-visible:focus-outline'
           )}
         >
           <slot name="play-icon" part="play-icon">
