@@ -146,7 +146,7 @@ export default class SdVideo extends SolidElement {
         height: 96px;
       }
 
-      @media screen and (max-width: 414px) {
+      @media screen and (max-width: 413px) {
         #default-play-icon,
         ::slotted([slot='play-icon']) {
           font-size: 2rem;
