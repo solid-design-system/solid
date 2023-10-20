@@ -30,7 +30,7 @@ export default class SdRadio extends SolidElement {
   @state() protected hasFocus = false;
 
   /** The radio's size. */
-  @property({ reflect: true }) size: 'sm' | 'lg' = 'lg';
+  @property({ reflect: true }) size: 'lg' | 'sm' = 'lg';
 
   /**  A Boolean attribute which, if present, marks the radio Button valid or invalid  */
   @property({ type: Boolean, reflect: true }) invalid = false;

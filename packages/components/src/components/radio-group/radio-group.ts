@@ -74,7 +74,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
   @property({ reflect: true }) value = '';
 
   /** The radio group's size. This size will be applied to the label, all child radios and radio buttons. */
-  @property({ reflect: true }) size: 'sm' | 'lg' = 'lg';
+  @property({ reflect: true }) size: 'lg' | 'sm' = 'lg';
 
   /**  A Boolean attribute which, if present, marks the radio valid or invalid  */
   @property({ type: Boolean, reflect: true }) invalid = false;
