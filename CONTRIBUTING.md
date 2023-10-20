@@ -35,7 +35,7 @@ Milestones have:
 
 - A name which defines to which goal the milestone is working towards.
 - An end date which defines when the milestone ends.
-- A description which defines what the milestone is about.
+- A description which provides more detailed information about what we want to achieve in this milestone.
 
 Throughout the weekly refinements, we add issues to the upcoming milestone. We also use the refinements to define the goal a new milestone is working towards. Deadline for this is the last refinement before the current milestone ends.
 In addition to this, we have some rules for the milestones:
