@@ -289,7 +289,7 @@ export default class SdTooltip extends SolidElement {
           name="content"
           part="body"
           id="tooltip"
-          class=" bg-primary text-white py-3 px-4 block shadow rounded-none text-sm text-left"
+          class=" bg-primary text-white py-3 px-4 block rounded-none text-sm text-left"
           role="tooltip"
           aria-label="Tooltip description"
           aria-live=${this.open ? 'polite' : 'off'}
@@ -312,6 +312,9 @@ export default class SdTooltip extends SolidElement {
       sd-popup::part(popup) {
         pointer-events: none;
         z-index: 10;
+        --tw-shadow: var(--sd-shadow, 0px 1px 3px 0px rgb(81 81 81 / 75%));
+        --tw-shadow-colored: 0px 1px 3px 0px var(--tw-shadow-color);
+        box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
       }
 
       sd-popup[placement^='top']::part(popup) {
