@@ -175,11 +175,11 @@ export default class SdRadio extends SolidElement {
       }
 
       .small-size .label {
-        margin-top: 1px;
+        margin-top: 0.5px;
       }
 
       .label {
-        margin-top: 3px;
+        margin-top: 1.5px;
       }
     `
   ];
