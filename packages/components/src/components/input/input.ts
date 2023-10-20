@@ -97,13 +97,10 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   @defaultValue() defaultValue = '';
 
   /** The input's size. */
-  @property({ reflect: true }) size: 'small' | 'medium' | 'large' = 'medium';
+  @property({ reflect: true }) size: 'sm' | 'md' | 'lg' = 'lg';
 
   /** Draws a filled input. */
   @property({ type: Boolean, reflect: true }) filled = false;
-
-  /** Draws a pill-style input with rounded edges. */
-  @property({ type: Boolean, reflect: true }) pill = false;
 
   /** The input's label. If you need to display HTML, use the `label` slot instead. */
   @property() label = '';
@@ -396,18 +393,15 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     return html`
       <div
         part="form-control"
-        class=${cx(
-          'form-control',
-          hasLabel && 'form-control--has-label',
-          hasHelpText && 'form-control--has-help-text',
-          this.size === 'small' && 'form-control--small',
-          this.size === 'medium' && 'form-control--medium',
-          this.size === 'large' && 'form-control--large'
-        )}
+        class=${cx('form-control', hasLabel && 'form-control--has-label')}
       >
         <label
           part="form-control-label"
-          class=${cx('form-control__label text-primary-500', hasLabel ? 'inline-block' : 'hidden')}
+          class=${cx(
+            'form-control-label',
+            hasLabel ? 'inline-block' : 'hidden',
+            this.size === 'sm' ? 'text-sm' : 'text-base'
+          )}
           for="input"
           aria-hidden=${hasLabel ? 'false' : 'true'}
         >
@@ -419,13 +413,12 @@ export default class SdInput extends SolidElement implements SolidFormControl {
             part="base"
             class=${cx(
               // Sizes
-              this.size === 'small' ? 'text-sm' : 'text-base',
+              this.size === 'sm' ? 'text-sm' : 'text-base',
 
               // States
-              this.pill && 'input--pill', // remove?
               this.filled ? 'input--filled' : 'input--standard',
-              this.disabled && 'input--disabled',
-              this.hasFocus && 'input--focused',
+              this.disabled && '',
+              this.hasFocus && '',
               !this.value && 'input--empty',
               this.noSpinButtons && 'input--no-spin-buttons',
               isFirefox && 'input--is-firefox'
@@ -435,7 +428,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
             <input
               part="input"
               id="input"
-              class="input__control"
+              class=${cx('input__control px-4 py-2 border rounded')}
               type=${this.type === 'password' && this.passwordVisible ? 'text' : this.type}
               title=${this.title /* An empty title prevents browser validation tooltips from appearing on hover */}
               name=${ifDefined(this.name)}
@@ -519,7 +512,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
           name="help-text"
           part="form-control-help-text"
           id="help-text"
-          class="form-control__help-text"
+          class=${cx('text-sm', hasHelpText ? 'block' : 'hidden')}
           aria-hidden=${hasHelpText ? 'false' : 'true'}
         >
           ${this.helpText}
@@ -554,60 +547,10 @@ export default class SdInput extends SolidElement implements SolidFormControl {
       }
 
       /* Original Shoelace form styles: lines are commented out after conversion to TW */
-      /* .form-control .form-control__label {
-        display: none;
-      } */
-
-      .form-control .form-control__help-text {
-        display: none;
-      }
-
-      /* Label */
-      .form-control--has-label .form-control__label {
-        /* display: inline-block;
-        color: var(--sd-input-label-color);
-        margin-bottom: var(--sd-spacing-3x-small); */
-      }
-
-      .form-control--has-label.form-control--small .form-control__label {
-        font-size: var(--sd-input-label-font-size-small);
-      }
-
-      .form-control--has-label.form-control--medium .form-control__label {
-        font-size: var(--sd-input-label-font-size-medium);
-      }
-
-      .form-control--has-label.form-control--large .form-control_label {
-        font-size: var(--sd-input-label-font-size-large);
-      }
-
       :host([required]) .form-control--has-label .form-control__label::after {
         content: var(--sd-input-required-content);
         margin-inline-start: var(--sd-input-required-content-offset);
         color: var(--sd-input-required-content-color);
-      }
-
-      /* Help text */
-      .form-control--has-help-text .form-control__help-text {
-        display: block;
-        color: var(--sd-input-help-text-color);
-        margin-top: var(--sd-spacing-3x-small);
-      }
-
-      .form-control--has-help-text.form-control--small .form-control__help-text {
-        font-size: var(--sd-input-help-text-font-size-small);
-      }
-
-      .form-control--has-help-text.form-control--medium .form-control__help-text {
-        font-size: var(--sd-input-help-text-font-size-medium);
-      }
-
-      .form-control--has-help-text.form-control--large .form-control__help-text {
-        font-size: var(--sd-input-help-text-font-size-large);
-      }
-
-      .form-control--has-help-text.form-control--radio-group .form-control__help-text {
-        margin-top: var(--sd-spacing-2x-small);
       }
     `
   ];
