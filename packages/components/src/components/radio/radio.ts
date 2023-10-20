@@ -110,7 +110,7 @@ export default class SdRadio extends SolidElement {
           this.hasFocus && 'radio--focused',
           {
             /* sizes, fonts */
-            sm: 'text-sm',
+            sm: 'small-size text-sm',
             lg: 'text-base'
           }[this.size]
         )}
@@ -144,7 +144,7 @@ export default class SdRadio extends SolidElement {
         <slot
           part="label"
           class=${cx(
-            'ml-2 select-none inline-block text-[var(--sd-input-label-color)]',
+            'label ml-2 select-none inline-block text-[var(--sd-input-label-color)]',
             (this.disabled && 'text-neutral-500') || (this.invalid && 'text-error') || 'text-neutral-800'
           )}
         >
@@ -172,6 +172,14 @@ export default class SdRadio extends SolidElement {
       :host(:focus-visible) [part='control--unchecked'] {
         outline: 2px solid #00358e;
         outline-offset: 2px;
+      }
+
+      .small-size .label {
+        margin-top: 1px;
+      }
+
+      .label {
+        margin-top: 3px;
       }
     `
   ];
