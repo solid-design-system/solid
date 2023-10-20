@@ -41,7 +41,7 @@ const isFirefox = isChromium ? false : navigator.userAgent.includes('Firefox');
  * @slot clear-icon - An icon to use in lieu of the default clear icon.
  * @slot show-password-icon - An icon to use in lieu of the default show password icon.
  * @slot hide-password-icon - An icon to use in lieu of the default hide password icon.
- * @slot help-text - Text that describes how to use the input. Alternatively, you can use the `help-text` attribute.
+ * @slot hint - Text that describes how to use the input. Alternatively, you can use the `hint` attribute.
  *
  * @event sd-blur - Emitted when the control loses focus.
  * @event sd-change - Emitted when an alteration to the control's value is committed by the user.
@@ -52,7 +52,7 @@ const isFirefox = isChromium ? false : navigator.userAgent.includes('Firefox');
  * @csspart form-control - The form control that wraps the label, input, and help text.
  * @csspart form-control-label - The label's wrapper.
  * @csspart form-control-input - The input's wrapper.
- * @csspart form-control-help-text - The help text's wrapper.
+ * @csspart form-control-hint - The help text's wrapper.
  * @csspart base - The component's base wrapper.
  * @csspart input - The internal `<input>` control.
  * @csspart prefix - The container that wraps the prefix.
@@ -63,7 +63,7 @@ const isFirefox = isChromium ? false : navigator.userAgent.includes('Firefox');
 @customElement('sd-input')
 export default class SdInput extends SolidElement implements SolidFormControl {
   private readonly formControlController = new FormControlController(this);
-  private readonly hasSlotController = new HasSlotController(this, 'help-text', 'label');
+  private readonly hasSlotController = new HasSlotController(this, 'hint', 'label');
   private readonly localize = new LocalizeController(this);
 
   @query('.input__control') input: HTMLInputElement;
@@ -105,8 +105,8 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   /** The input's label. If you need to display HTML, use the `label` slot instead. */
   @property() label = '';
 
-  /** The input's help text. If you need to display HTML, use the `help-text` slot instead. */
-  @property({ attribute: 'help-text' }) helpText = '';
+  /** The input's help text. If you need to display HTML, use the `hint` slot instead. */
+  @property({ attribute: 'hint' }) helpText = '';
 
   /** Adds a clear button when the input is not empty. */
   @property({ type: Boolean }) clearable = false;
@@ -384,7 +384,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
 
   render() {
     const hasLabelSlot = this.hasSlotController.test('label');
-    const hasHelpTextSlot = this.hasSlotController.test('help-text');
+    const hasHelpTextSlot = this.hasSlotController.test('hint');
     const hasLabel = this.label ? true : !!hasLabelSlot;
     const hasHelpText = this.helpText ? true : !!hasHelpTextSlot;
     const hasClearIcon =
@@ -450,7 +450,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               pattern=${ifDefined(this.pattern)}
               enterkeyhint=${ifDefined(this.enterkeyhint)}
               inputmode=${ifDefined(this.inputmode)}
-              aria-describedby="help-text"
+              aria-describedby="hint"
               @change=${this.handleChange}
               @input=${this.handleInput}
               @invalid=${this.handleInvalid}
@@ -509,9 +509,9 @@ export default class SdInput extends SolidElement implements SolidFormControl {
         </div>
 
         <slot
-          name="help-text"
-          part="form-control-help-text"
-          id="help-text"
+          name="hint"
+          part="form-control-hint"
+          id="hint"
           class=${cx('text-sm', hasHelpText ? 'block' : 'hidden')}
           aria-hidden=${hasHelpText ? 'false' : 'true'}
         >
