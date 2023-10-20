@@ -96,26 +96,26 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   /** The default value of the form control. Primarily used for resetting the form control. */
   @defaultValue() defaultValue = '';
 
-  /** The input's size. */
-  @property({ reflect: true }) size: 'sm' | 'md' | 'lg' = 'lg';
-
-  /** Draws a filled input. */
-  @property({ type: Boolean, reflect: true }) filled = false;
+  /** Placeholder text to show as a hint when the input is empty. */
+  @property() placeholder = '';
 
   /** The input's label. If you need to display HTML, use the `label` slot instead. */
   @property() label = '';
 
+  /** Adds plain text to the input's success / error message underneath the hint. */
+  @property({ attribute: 'hint' }) hint = '';
+
   /** The input's help text. If you need to display HTML, use the `hint` slot instead. */
-  @property({ attribute: 'hint' }) helpText = '';
+  @property({ attribute: 'message' }) message = '';
+
+  /** The input's size. */
+  @property({ reflect: true }) size: 'sm' | 'md' | 'lg' = 'lg';
 
   /** Adds a clear button when the input is not empty. */
   @property({ type: Boolean }) clearable = false;
 
   /** Disables the input. */
   @property({ type: Boolean, reflect: true }) disabled = false;
-
-  /** Placeholder text to show as a hint when the input is empty. */
-  @property() placeholder = '';
 
   /** Makes the input readonly. */
   @property({ type: Boolean, reflect: true }) readonly = false;
@@ -384,24 +384,20 @@ export default class SdInput extends SolidElement implements SolidFormControl {
 
   render() {
     const hasLabelSlot = this.hasSlotController.test('label');
-    const hasHelpTextSlot = this.hasSlotController.test('hint');
+    const hashintSlot = this.hasSlotController.test('hint');
     const hasLabel = this.label ? true : !!hasLabelSlot;
-    const hasHelpText = this.helpText ? true : !!hasHelpTextSlot;
+    const hashint = this.hint ? true : !!hashintSlot;
     const hasClearIcon =
       this.clearable && !this.disabled && !this.readonly && (typeof this.value === 'number' || this.value.length > 0);
 
     return html`
       <div
         part="form-control"
-        class=${cx('form-control', hasLabel && 'form-control--has-label')}
+        class=${cx('form-control', hasLabel && 'form-control--has-label', this.size === 'sm' ? 'text-sm' : 'text-base')}
       >
         <label
           part="form-control-label"
-          class=${cx(
-            'form-control-label',
-            hasLabel ? 'inline-block' : 'hidden',
-            this.size === 'sm' ? 'text-sm' : 'text-base'
-          )}
+          class=${cx('form-control-label', hasLabel ? 'inline-block' : 'hidden')}
           for="input"
           aria-hidden=${hasLabel ? 'false' : 'true'}
         >
@@ -412,11 +408,13 @@ export default class SdInput extends SolidElement implements SolidFormControl {
           <div
             part="base"
             class=${cx(
+              'px-4 border rounded flex flex-row items-center',
+              this.disabled && 'border-neutral-400 text-neutral-400',
+
               // Sizes
-              this.size === 'sm' ? 'text-sm' : 'text-base',
+              this.size === 'lg' ? 'py-2' : 'py-1',
 
               // States
-              this.filled ? 'input--filled' : 'input--standard',
               this.disabled && '',
               this.hasFocus && '',
               !this.value && 'input--empty',
@@ -428,7 +426,10 @@ export default class SdInput extends SolidElement implements SolidFormControl {
             <input
               part="input"
               id="input"
-              class=${cx('input__control px-4 py-2 border rounded')}
+              class=${cx(
+                'input__control focus:outline-none disabled:bg-transparent',
+                this.size === 'sm' ? 'p-1' : 'p-2'
+              )}
               type=${this.type === 'password' && this.passwordVisible ? 'text' : this.type}
               title=${this.title /* An empty title prevents browser validation tooltips from appearing on hover */}
               name=${ifDefined(this.name)}
@@ -463,14 +464,27 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                 ? html`
                     <button
                       part="clear-button"
-                      class="input__clear"
+                      class="input__clear flex justify-center mx-2"
                       type="button"
                       aria-label=${this.localize.term('clearEntry')}
                       @click=${this.handleClearClick}
                       tabindex="-1"
                     >
                       <slot name="clear-icon">
-                        <sd-icon name="x-circle-fill" library="system"></sd-icon>
+                        <!-- TODO: Switch to system icon?  Use text-neutal-400 class? Not currently available -->
+                        <sd-icon
+                          class=${cx(
+                            'text-neutral-400',
+                            {
+                              /* sizes, paddings */
+                              sm: 'h-4 w-4',
+                              md: 'h-5 w-5',
+                              lg: 'h-6 w-6'
+                            }[this.size]
+                          )}
+                          library="global-resources"
+                          name="system/closing-round"
+                        ></sd-icon>
                       </slot>
                     </button>
                   `
@@ -503,7 +517,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                 : ''
             }
 
-            <slot name="suffix" part="suffix" class="input__suffix"></slot>
+            <slot name="suffix" part="suffix"></slot>
             
           </div>
         </div>
@@ -512,10 +526,10 @@ export default class SdInput extends SolidElement implements SolidFormControl {
           name="hint"
           part="form-control-hint"
           id="hint"
-          class=${cx('text-sm', hasHelpText ? 'block' : 'hidden')}
-          aria-hidden=${hasHelpText ? 'false' : 'true'}
+          class=${cx('text-sm', hashint ? 'block' : 'hidden')}
+          aria-hidden=${hashint ? 'false' : 'true'}
         >
-          ${this.helpText}
+          ${this.hint}
         </slot>
 
         </div>
@@ -552,6 +566,10 @@ export default class SdInput extends SolidElement implements SolidFormControl {
         margin-inline-start: var(--sd-input-required-content-offset);
         color: var(--sd-input-required-content-color);
       }
+
+      /* TODO: Should we conditional affect the suffix or prefix slotted icon based on size?  Design specifies but we removed icon slot. */
+      /* ::slotted(sd-icon) {
+      } */
     `
   ];
 }
