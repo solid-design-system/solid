@@ -177,7 +177,7 @@ export const Mouseless = {
   },
   render: (args: any) => {
     return html`
-      <div id="sd-video-example" class="mouseless p-0">
+      <div id="sd-video-example" class="mouseless p-0 hover:p-0">
         ${generateTemplate({
           args,
           constants: [videoConstant, posterConstant]
