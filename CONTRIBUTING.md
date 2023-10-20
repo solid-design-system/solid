@@ -33,7 +33,7 @@ We use milestones as a way to group issues and pull requests together towards a 
 
 Milestones have:
 
-- A name which defines to which goal the milestone is working towards.
+- A name which shortly defines to which goal the milestone is working towards.
 - An end date which defines when the milestone ends.
 - A description which provides more detailed information about what we want to achieve in this milestone.
 
