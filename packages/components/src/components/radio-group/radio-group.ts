@@ -103,11 +103,14 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
     const hasCustomValidityMessage = this.customValidityMessage !== '';
 
     if (hasCustomValidityMessage) {
+      this.invalid = true;
       return customErrorValidityState;
     } else if (isRequiredAndEmpty) {
+      this.invalid = true;
       return valueMissingValidityState;
     }
 
+    this.invalid = false;
     return validValidityState;
   }
 
@@ -294,6 +297,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
   handleValueChange() {
     if (this.hasUpdated) {
       this.updateCheckedRadio();
+      this.reportValidity();
     }
   }
 
