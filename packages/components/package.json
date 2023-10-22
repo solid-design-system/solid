@@ -82,7 +82,7 @@
     "lit": "^2.7.5"
   },
   "devDependencies": {
-    "@custom-elements-manifest/analyzer": "^0.8.3",
+    "@custom-elements-manifest/analyzer": "^0.9.0",
     "@geometricpanda/storybook-addon-badges": "^2.0.0",
     "@mariohamann/tailwindcss-var": "github:mariohamann/tailwindcss-var",
     "@mariohamann/wc-storybook-helpers": "^1.3.0",

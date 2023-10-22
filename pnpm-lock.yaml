@@ -70,8 +70,8 @@ importers:
         version: 2.7.5
     devDependencies:
       '@custom-elements-manifest/analyzer':
-        specifier: ^0.8.3
-        version: 0.8.3
+        specifier: ^0.9.0
+        version: 0.9.0
       '@geometricpanda/storybook-addon-badges':
         specifier: ^2.0.0
         version: 2.0.0(@storybook/blocks@7.3.2)(@storybook/components@7.3.2)(@storybook/core-events@7.3.2)(@storybook/manager-api@7.3.2)(@storybook/preview-api@7.3.2)(@storybook/theming@7.3.2)(@storybook/types@7.3.2)(react-dom@18.2.0)(react@18.2.0)
@@ -1752,8 +1752,8 @@ packages:
       typescript: 4.3.5
     dev: true
 
-  /@custom-elements-manifest/analyzer@0.8.3:
-    resolution: {integrity: sha512-wT+t4JNVMj56bSCNxxjkDSKx2KJ6bzXQMjinXJe/2+9J7Abaw/9a4+EWYLWQ//KBXRvyNhWrkolFL6ICc/VATg==}
+  /@custom-elements-manifest/analyzer@0.9.0:
+    resolution: {integrity: sha512-aYCc+CmUamFG3FbHO2m1hz/qik61pgYIJkN986k2BPamQmgomST1ZnRngDjUSt6RmO8NrZydxUzg+AKdEaE4EA==}
     hasBin: true
     dependencies:
       '@custom-elements-manifest/find-dependencies': 0.0.5
@@ -3432,7 +3432,7 @@ packages:
       read-pkg: 5.2.0
       registry-auth-token: 5.0.2
       semantic-release: 19.0.5
-      semver: 7.5.1
+      semver: 7.5.4
       tempy: 1.0.1
     dev: true
 
@@ -4514,7 +4514,7 @@ packages:
       memoizerific: 1.11.3
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-      semver: 7.5.1
+      semver: 7.5.4
       store2: 2.14.2
       telejson: 7.1.0
       ts-dedent: 2.2.0
@@ -5441,7 +5441,7 @@ packages:
       debug: 4.3.4
       globby: 11.1.0
       is-glob: 4.0.3
-      semver: 7.5.1
+      semver: 7.5.4
       tsutils: 3.21.0(typescript@5.0.4)
       typescript: 5.0.4
     transitivePeerDependencies:
@@ -5487,14 +5487,14 @@ packages:
     resolution: {integrity: sha512-XVKH79pk4d3EHRhofete8eAnqto1e8mCRAqPV00KLNFzCWSe8sWmLnqKCqkPNARC6nksMaGrATnA5sPDRllMpQ==}
     engines: {node: '>=10.0.0'}
     dependencies:
-      semver: 7.5.1
+      semver: 7.5.4
     dev: true
 
   /@web/config-loader@0.2.1:
     resolution: {integrity: sha512-cQvTYA5lWLyyO8/R2aOReiudLa8r0LFHvMNYCwSAjzvrghb+AHxaW3BJWP9ORx6OaDcI7g5X8OATA81LSJce4A==}
     engines: {node: '>=16.0.0'}
     dependencies:
-      semver: 7.5.1
+      semver: 7.5.4
     dev: true
 
   /@web/dev-server-core@0.5.1:
@@ -13289,7 +13289,7 @@ packages:
     resolution: {integrity: sha512-GX0Ix/CJcHyB8c4ykpHGIAvLyOwOobtM/8d+TQkAd81/bEjgPHrfba41Vpesr7jX/t8Uh+R3EX9eAS5be+jQYg==}
     engines: {node: '>=8'}
     dependencies:
-      semver: 6.3.0
+      semver: 6.3.1
     dev: true
 
   /semver-regex@3.1.4:
