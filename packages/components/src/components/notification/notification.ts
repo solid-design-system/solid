@@ -155,6 +155,18 @@ export default class SdNotification extends SolidElement {
    */
   async toast() {
     return new Promise<void>(resolve => {
+      toastStack.style.position = 'fixed';
+      toastStack.style.marginRight = '24px';
+
+      if (this.toastStack === 'top-right') {
+        toastStack.style.top = '0';
+        toastStack.style.right = '0';
+      } else {
+        toastStack.style.bottom = '0';
+        toastStack.style.left = '50%';
+        toastStack.style.transform = 'translateX(-50%)';
+      }
+
       if (toastStack.parentElement === null) {
         document.body.append(toastStack);
       }
@@ -189,7 +201,7 @@ export default class SdNotification extends SolidElement {
       <div
         part="base"
         class=${cx(
-          'w-full overflow-hidden flex items-center relative',
+          'w-full overflow-hidden flex items-center relative m-2',
           this.variant === 'info' && 'bg-info',
           this.variant === 'success' && 'bg-success',
           this.variant === 'warning' && 'bg-warning',
@@ -224,7 +236,7 @@ export default class SdNotification extends SolidElement {
             this.closable ? 'p-1 pl-3' : 'px-3 py-2'
           )}
         >
-          <slot part="message" aria-live="polite"></slot>
+          <slot part="message" aria-live="polite">Hello There</slot>
 
           ${this.closable
             ? html`

@@ -102,6 +102,37 @@ export const DurationIndicator = {
 };
 
 /**
+ * Here are some examples of sd-button working with sd-badge.
+ */
+export const ToastNotifications = {
+  render: () => {
+    return html`
+      <sd-button variant="primary">Create Toast</sd-button>
+
+      <script>
+        const button = document.querySelector('sd-button');
+
+        function notify(variant = 'info', duration = 5000, toastStack = 'top-right') {
+          const alert = Object.assign(document.createElement('sd-notification'), {
+            closable: true,
+            duration: duration,
+            toastStack: toastStack,
+            innerHTML: 'Lorem ipsum dolor sit amet.'
+          });
+
+          document.body.append(alert);
+          return alert.toast();
+        }
+
+        button.addEventListener('click', () => {
+          notify();
+        });
+      </script>
+    `;
+  }
+};
+
+/**
  * Use the `base`, `icon`, `content`, `message`, `duration-indicator-current`, `duration-indicator-total` and `close-button`, part selectors to customize the notification.
  */
 
