@@ -1,7 +1,5 @@
 import '../../solid-components';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { html } from 'lit';
-
 const { argTypes, parameters } = storybookDefaults('sd-checkbox');
 const { generateTemplate } = storybookTemplate('sd-checkbox');
 const { overrideArgs } = storybookHelpers('sd-checkbox');
@@ -132,51 +130,26 @@ export const Indeterminate = {
   }
 };
 
-export const InForm = {
-  render: () => html`
-    <form novalidate id="test" class="custom-validity">
-      <sd-button id="getCheckedValues" type="submit">submit</sd-button>
-    </form>
-    <sd-checkbox name="test" value="item1" error-message="CHECK!!" id="test1" form="test">Item 1</sd-checkbox>
-    <script>
-      const form = document.querySelector('.custom-validity');
-      const checkbox = document.querySelector('sd-checkbox');
-      const errorMessage = \`Don't forget to check me!\`;
-
-      // Set initial validity as soon as the element is defined
-      customElements.whenDefined('sd-checkbox').then(async () => {
-        await checkbox.updateComplete;
-        checkbox.setCustomValidity(errorMessage);
-        console.log('when defined', checkbox.validity);
-      });
-
-      // Update validity on change
-      checkbox.addEventListener('sd-change', () => {
-        console.log('event', checkbox.validity);
-        checkbox.setCustomValidity(checkbox.checked ? '' : errorMessage);
-      });
-
-      // Handle submit
-      form.addEventListener('submit', event => {
-        event.preventDefault();
-        if (!checkbox.validity.valid) {
-          checkbox.setAttribute('invalid', true);
-          checkbox.setAttribute('error-text', 'CHECK!!!!')
-        } else {
-          checkbox.removeAttribute('invalid');
-          checkbox.removeAttribute('error-text');
-        }
-      });
-    </script>
-  `
-};
 
 /**
  * Use the `base`, `control--unchecked`, `control--checked`, `checked` and `label` part selectors to customize the checkbox.
  */
+
 export const Parts = {
   parameters: {
-    controls: { exclude: ['base', 'control--unchecked', 'control--checked', 'checked', 'label'] }
+    controls: {
+      exclude: [
+        'base',
+        'control',
+        'control--unchecked',
+        'control--checked',
+        'checked-icon',
+        'control--indeterminate',
+        'indeterminate-icon',
+        'label',
+        'form-control-error-text'
+      ]
+    }
   },
   render: (args: any) => {
     return generateTemplate({
@@ -184,18 +157,26 @@ export const Parts = {
         y: {
           type: 'template',
           name: 'sd-checkbox::part(...){outline: solid 2px red}',
-          values: ['base', 'control--unchecked', 'control--checked', 'checked', 'label'].map(part => {
+          values: [
+            'base',
+            'control',
+            'control--unchecked',
+            'control--checked',
+            'checked-icon',
+            'control--indeterminate',
+            'indeterminate-icon',
+            'label',
+            'form-control-error-text'
+          ].map(part => {
             return {
               title: part,
               value: `
-                <style>#part-${part} sd-checkbox::part(${part}){outline: solid 2px red}</style>
-                <div id="part-${part}">
-                ${
-                  part === 'control--unchecked'
-                    ? '<sd-checkbox-group value="1">%TEMPLATE%</sd-checkbox-group>'
-                    : '<sd-checkbox-group>%TEMPLATE%</sd-checkbox-group>'
-                }
-                </div>
+                <style>
+                    #part-${part} sd-checkbox::part(${part}){outline: solid 2px red};
+                    .hidden {display: none}
+                </style>
+                <div id="part-${part}">${checkboxTemplate(part)}</div>
+                <div class="hidden">%TEMPLATE%</div>
               `
             };
           })
@@ -203,5 +184,22 @@ export const Parts = {
       },
       args
     });
+  }
+};
+
+const checkboxTemplate = (part: string) => {
+  switch (part) {
+    case 'control--checked':
+      return `<sd-checkbox checked>Default Slot</sd-checkbox>`;
+    case 'checked-icon':
+      return `<sd-checkbox checked>Default Slot</sd-checkbox>`;
+    case 'control--indeterminate':
+      return `<sd-checkbox indeterminate>Default Slot</sd-checkbox>`;
+    case 'indeterminate-icon':
+      return `<sd-checkbox indeterminate>Default Slot</sd-checkbox>`;
+    case 'form-control-error-text':
+      return `<sd-checkbox error-text="Error message" invalid>Default Slot</sd-checkbox>`;
+    default:
+      return `<sd-checkbox>Default Slot</sd-checkbox>`;
   }
 };
