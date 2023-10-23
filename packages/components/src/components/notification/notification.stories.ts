@@ -15,11 +15,7 @@ export default {
     {
       type: 'slot',
       name: 'default',
-      value: `
-      <div class="slot slot--border slot--text h-8 my-auto w-full">
-      Default slot
-      </div>
-      `
+      value: `<div class="slot slot--border slot--text h-8 my-auto w-full">Default slot</div>`
     }
   ]),
   argTypes,
@@ -112,16 +108,15 @@ export const ToastNotifications = {
       <script>
         const button = document.querySelector('sd-button');
 
-        function notify(variant = 'info', duration = 5000, toastStack = 'top-right') {
-          const alert = Object.assign(document.createElement('sd-notification'), {
+        function notify(variant = 'info', toastStack = 'top-right') {
+          const notification = Object.assign(document.createElement('sd-notification'), {
             closable: true,
-            duration: duration,
             toastStack: toastStack,
             innerHTML: 'Lorem ipsum dolor sit amet.'
           });
 
-          document.body.append(alert);
-          return alert.toast();
+          document.body.append(notification);
+          return notification.toast();
         }
 
         button.addEventListener('click', () => {

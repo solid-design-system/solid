@@ -20,25 +20,25 @@ const toastStack = Object.assign(document.createElement('div'), { className: 'sd
  *
  * @dependency sd-icon-button
  *
- * @slot - The alert's main content.
- * @slot icon - An icon to show in the alert. Works best with `<sd-icon>`.
+ * @slot - The sd-notification's main content.
+ * @slot icon - An icon to show in the sd-notification. Works best with `<sd-icon>`.
  *
- * @event sd-show - Emitted when the alert opens.
- * @event sd-after-show - Emitted after the alert opens and all animations are complete.
- * @event sd-hide - Emitted when the alert closes.
- * @event sd-after-hide - Emitted after the alert closes and all animations are complete.
+ * @event sd-show - Emitted when the notification opens.
+ * @event sd-after-show - Emitted after the notification opens and all animations are complete.
+ * @event sd-hide - Emitted when the notification closes.
+ * @event sd-after-hide - Emitted after the notification closes and all animations are complete.
  *
  * @csspart base - The component's base wrapper.
  * @csspart icon - The container that wraps the optional icon.
- * @csspart content - The container that wraps the alert's main content and the close button.
- * @csspart message - The container that wraps the alert's main content.
+ * @csspart content - The container that wraps the notifications's main content and the close button.
+ * @csspart message - The container that wraps the notifications's main content.
  * @csspart duration-indicator-current - The current duration indicator.
  * @csspart duration-indicator-total - The total duration indicator.
  * @csspart close-button - The close button, an `<sd-icon-button>`.
  * @csspart close-button__base - The close button's exported `base` part.
  *
- * @animation alert.show - The animation to use when showing the alert.
- * @animation alert.hide - The animation to use when hiding the alert.
+ * @animation notification.show - The animation to use when showing the sd-notification.
+ * @animation notifiation.hide - The animation to use when hiding the sd-notification.
  */
 
 @customElement('sd-notification')
@@ -49,24 +49,24 @@ export default class SdNotification extends SolidElement {
   @query('[part~="base"]') base: HTMLElement;
 
   /**
-   * Indicates whether or not the alert is open. You can toggle this attribute to show and hide the alert, or you can
-   * use the `show()` and `hide()` methods and this attribute will reflect the alert's open state.
+   * Indicates whether or not sd-notification is open. You can toggle this attribute to show and hide the notification, or you can
+   * use the `show()` and `hide()` methods and this attribute will reflect the notifications's open state.
    */
   @property({ type: Boolean, reflect: true }) open = true;
 
-  /** Enables a close button that allows the user to dismiss the alert. */
+  /** Enables a close button that allows the user to dismiss the notification. */
   @property({ type: Boolean, reflect: true }) closable = false;
 
-  /** The alert's theme variant. */
+  /** The sd-notification's theme. */
   @property({ reflect: true }) variant: 'info' | 'success' | 'error' | 'warning' = 'info';
 
   /** The position of the toasted sd-notification. */
   @property({ reflect: true, attribute: 'toast-stack' }) toastStack: 'top-right' | 'bottom-center' = 'top-right';
 
   /**
-   * The length of time, in milliseconds, the alert will show before closing itself. If the user interacts with
-   * the alert before it closes (e.g. moves the mouse over it), the timer will restart. Defaults to `Infinity`, meaning
-   * the alert will not close on its own.
+   * The length of time, in milliseconds, the sd-notification will show before closing itself. If the user interacts with
+   * the notification before it closes (e.g. moves the mouse over it), the timer will restart. Defaults to `Infinity`, meaning
+   * the notification will not close on its own.
    */
   @property({ type: Number }) duration = Infinity;
 
@@ -104,7 +104,7 @@ export default class SdNotification extends SolidElement {
 
       await stopAnimations(this.base);
       this.base.hidden = false;
-      const { keyframes, options } = getAnimation(this, 'alert.show', { dir: this.localize.dir() });
+      const { keyframes, options } = getAnimation(this, 'notification.show', { dir: this.localize.dir() });
       await animateTo(this.base, keyframes, options);
 
       this.emit('sd-after-show');
@@ -115,7 +115,7 @@ export default class SdNotification extends SolidElement {
       clearTimeout(this.autoHideTimeout);
 
       await stopAnimations(this.base);
-      const { keyframes, options } = getAnimation(this, 'alert.hide', { dir: this.localize.dir() });
+      const { keyframes, options } = getAnimation(this, 'notification.hide', { dir: this.localize.dir() });
       await animateTo(this.base, keyframes, options);
       this.base.hidden = true;
 
@@ -128,7 +128,7 @@ export default class SdNotification extends SolidElement {
     this.restartAutoHide();
   }
 
-  /** Shows the alert. */
+  /** Shows the notification. */
   async show() {
     if (this.open) {
       return undefined;
@@ -138,7 +138,7 @@ export default class SdNotification extends SolidElement {
     return waitForEvent(this, 'sd-after-show');
   }
 
-  /** Hides the alert */
+  /** Hides the notification */
   async hide() {
     if (!this.open) {
       return undefined;
@@ -149,14 +149,16 @@ export default class SdNotification extends SolidElement {
   }
 
   /**
-   * Displays the alert as a toast notification. This will move the alert out of its position in the DOM and, when
-   * dismissed, it will be removed from the DOM completely. By storing a reference to the alert, you can reuse it by
-   * calling this method again. The returned promise will resolve after the alert is hidden.
+   * Displays the notification as a toast notification. This will move the notification out of its position in the DOM and, when
+   * dismissed, it will be removed from the DOM completely. By storing a reference to the notification, you can reuse it by
+   * calling this method again. The returned promise will resolve after the notification is hidden.
    */
   async toast() {
     return new Promise<void>(resolve => {
       toastStack.style.position = 'fixed';
       toastStack.style.marginRight = '24px';
+      toastStack.style.zIndex = '9999';
+      toastStack.style.maxWidth = '320px';
 
       if (this.toastStack === 'top-right') {
         toastStack.style.top = '0';
@@ -212,7 +214,7 @@ export default class SdNotification extends SolidElement {
         aria-hidden=${this.open ? 'false' : 'true'}
         @mousemove=${this.handleMouseMove}
       >
-        <slot name="icon" part="icon" class=${cx('text-white h-full min-w-min px-3 flex justify-center')}>
+        <slot name="icon" part="icon" class=${cx('h-full min-w-min text-white px-3 flex justify-center')}>
           <sd-icon
             name=${this.variant === 'info'
               ? 'info'
@@ -303,7 +305,7 @@ export default class SdNotification extends SolidElement {
   ];
 }
 
-setDefaultAnimation('alert.show', {
+setDefaultAnimation('notification.show', {
   keyframes: [
     { opacity: 0, scale: 0.8 },
     { opacity: 1, scale: 1 }
@@ -311,7 +313,7 @@ setDefaultAnimation('alert.show', {
   options: { duration: 250, easing: 'ease' }
 });
 
-setDefaultAnimation('alert.hide', {
+setDefaultAnimation('notification.hide', {
   keyframes: [
     { opacity: 1, scale: 1 },
     { opacity: 0, scale: 0.8 }
