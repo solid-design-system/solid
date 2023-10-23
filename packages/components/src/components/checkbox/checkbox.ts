@@ -152,6 +152,11 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
     return this.input.checkValidity();
   }
 
+  /** Gets the associated form, if one exists. */
+  getForm(): HTMLFormElement | null {
+    return this.formControlController.getForm();
+  }
+
   /** Checks for validity and shows a validation message if the control is invalid. */
   reportValidity() {
     return this.input.reportValidity();
@@ -196,6 +201,9 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
           .disabled=${this.disabled}
           .required=${this.required}
           aria-checked=${this.checked ? 'true' : 'false'}
+          aria-invalid=${this.invalid ? 'true' : 'false'}
+          aria-describedby="error-text"
+          aria-errormessage="error-text"
           @click=${this.handleClick}
           @input=${this.handleInput}
           @blur=${this.handleBlur}
@@ -203,7 +211,9 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
         />
 
         <span
-          part="control${this.checked ? ' control--checked' : ''}${this.indeterminate ? ' control--indeterminate' : ''}"
+          part="control ${this.checked ? ' control--checked' : 'control--unchecked'}${this.indeterminate
+            ? ' control--indeterminate'
+            : ''}"
           class=${cx(
             `checkbox__control relative inline-flex items-center justify-center border rounded-sm h-4 w-4 ${
               (this.size === 'sm' && 'mt-[2px]') || (this.size === 'lg' && 'mt-[3px]')
@@ -238,16 +248,18 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
             : ''}
         </span>
         <span
+          part="label"
           class=${cx(
             'checkbox__label select-none inline-block ml-2 text-[var(--sd-input-label-color)]',
             (this.disabled && 'text-neutral-500') || (this.invalid && 'text-error') || 'text-neutral-800'
           )}
         >
-          <slot part="label"></slot>
+          <slot></slot>
         </span>
       </label>
       <div
         part="form-control-error-text"
+        aria-live="polite"
         id="error-text"
         class=${cx(
           'form-control__error-text mt-2 text-left text-error leading-normal',
