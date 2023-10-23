@@ -74,7 +74,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
   @property({ reflect: true }) value = '';
 
   /** The radio group's size. This size will be applied to the label, all child radios and radio buttons. */
-  @property({ reflect: true }) size: 'sm' | 'lg' = 'lg';
+  @property({ reflect: true }) size: 'lg' | 'sm' = 'lg';
 
   /**  A Boolean attribute which, if present, marks the radio valid or invalid  */
   @property({ type: Boolean, reflect: true }) invalid = false;
@@ -103,11 +103,14 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
     const hasCustomValidityMessage = this.customValidityMessage !== '';
 
     if (hasCustomValidityMessage) {
+      this.invalid = true;
       return customErrorValidityState;
     } else if (isRequiredAndEmpty) {
+      this.invalid = true;
       return valueMissingValidityState;
     }
 
+    this.invalid = false;
     return validValidityState;
   }
 
@@ -294,6 +297,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
   handleValueChange() {
     if (this.hasUpdated) {
       this.updateCheckedRadio();
+      this.reportValidity();
     }
   }
 
@@ -460,6 +464,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
 
       :host([required]) .form-control--has-label .form-control__label::after {
         content: '*';
+        margin-left: 2px;
       }
 
       /* error text */
