@@ -143,26 +143,26 @@ describe('<sd-checkbox>', () => {
       expect(formData!.get('a')).to.equal('on');
     });
 
-    // it('should be invalid when setCustomValidity() is called with a non-empty value', async () => {
-    //   const checkbox = await fixture<HTMLFormElement>(html` <sd-checkbox></sd-checkbox> `);
-    //
-    //   // Submitting the form after setting custom validity should not trigger the handler
-    //   checkbox.setCustomValidity('Invalid selection');
-    //   await checkbox.updateComplete;
-    //
-    //   expect(checkbox.checkValidity()).to.be.false;
-    //   expect(checkbox.checkValidity()).to.be.false;
-    //   expect(checkbox.hasAttribute('data-invalid')).to.be.true;
-    //   expect(checkbox.hasAttribute('data-valid')).to.be.false;
-    //   expect(checkbox.hasAttribute('data-user-invalid')).to.be.false;
-    //   expect(checkbox.hasAttribute('data-user-valid')).to.be.false;
-    //
-    //   await clickOnElement(checkbox);
-    //   await checkbox.updateComplete;
-    //
-    //   expect(checkbox.hasAttribute('data-user-invalid')).to.be.true;
-    //   expect(checkbox.hasAttribute('data-user-valid')).to.be.false;
-    // });
+    it('should be invalid when setCustomValidity() is called with a non-empty value', async () => {
+      const checkbox = await fixture<HTMLFormElement>(html` <sd-checkbox></sd-checkbox> `);
+
+      // Submitting the form after setting custom validity should not trigger the handler
+      checkbox.setCustomValidity('Invalid selection');
+      await checkbox.updateComplete;
+
+      expect(checkbox.checkValidity()).to.be.false;
+      expect(checkbox.checkValidity()).to.be.false;
+      expect(checkbox.hasAttribute('data-invalid')).to.be.true;
+      expect(checkbox.hasAttribute('data-valid')).to.be.false;
+      expect(checkbox.hasAttribute('data-user-invalid')).to.be.false;
+      expect(checkbox.hasAttribute('data-user-valid')).to.be.false;
+
+      checkbox.click();
+      await checkbox.updateComplete;
+
+      expect(checkbox.hasAttribute('data-user-invalid')).to.be.true;
+      expect(checkbox.hasAttribute('data-user-valid')).to.be.false;
+    });
 
     it('should be invalid when required and unchecked', async () => {
       const checkbox = await fixture<HTMLFormElement>(html` <sd-checkbox required></sd-checkbox> `);

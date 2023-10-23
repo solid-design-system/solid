@@ -113,6 +113,11 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
     this.emit('sd-input');
   }
 
+  private handleInvalid(event: Event) {
+    this.formControlController.setValidity(false);
+    this.formControlController.emitInvalidEvent(event);
+  }
+
   private handleFocus() {
     this.hasFocus = true;
     this.emit('sd-focus');
@@ -206,6 +211,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
           aria-errormessage="error-text"
           @click=${this.handleClick}
           @input=${this.handleInput}
+          @invalid=${this.handleInvalid}
           @blur=${this.handleBlur}
           @focus=${this.handleFocus}
         />
