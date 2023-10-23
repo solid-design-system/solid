@@ -49,10 +49,10 @@ export default class SdNotification extends SolidElement {
   @query('[part~="base"]') base: HTMLElement;
 
   /**
-   * Indicates whether or not sd-notification is open. You can toggle this attribute to show and hide the notification, or you can
-   * use the `show()` and `hide()` methods and this attribute will reflect the notifications's open state.
+   * Indicates whether or not sd-notification is closed. You can toggle this attribute to show and hide the notification, or you can
+   * use the `show()` and `hide()` methods and this attribute will reflect the notifications's closed state.
    */
-  @property({ type: Boolean, reflect: true }) open = true;
+  @property({ type: Boolean, reflect: true }) closed = false;
 
   /** Enables a close button that allows the user to dismiss the notification. */
   @property({ type: Boolean, reflect: true }) closable = false;
@@ -74,12 +74,12 @@ export default class SdNotification extends SolidElement {
   @property({ type: Boolean, reflect: true, attribute: 'duration-indicator' }) durationIndicator = false;
 
   firstUpdated() {
-    this.base.hidden = !this.open;
+    this.base.hidden = this.closed;
   }
 
   private restartAutoHide() {
     clearTimeout(this.autoHideTimeout);
-    if (this.open && this.duration < Infinity) {
+    if (!this.closed && this.duration < Infinity) {
       this.autoHideTimeout = window.setTimeout(() => this.hide(), this.duration);
     }
   }
@@ -92,9 +92,9 @@ export default class SdNotification extends SolidElement {
     this.restartAutoHide();
   }
 
-  @watch('open', { waitUntilFirstUpdate: true })
+  @watch('closed', { waitUntilFirstUpdate: true })
   async handleOpenChange() {
-    if (this.open) {
+    if (!this.closed) {
       // Show
       this.emit('sd-show');
 
@@ -130,21 +130,21 @@ export default class SdNotification extends SolidElement {
 
   /** Shows the notification. */
   async show() {
-    if (this.open) {
+    if (!this.closed) {
       return undefined;
     }
 
-    this.open = true;
+    this.closed = false;
     return waitForEvent(this, 'sd-after-show');
   }
 
   /** Hides the notification */
   async hide() {
-    if (!this.open) {
+    if (this.closed) {
       return undefined;
     }
 
-    this.open = false;
+    this.closed = true;
     return waitForEvent(this, 'sd-after-hide');
   }
 
@@ -211,7 +211,7 @@ export default class SdNotification extends SolidElement {
         )}
         role="alert"
         id="notification"
-        aria-hidden=${this.open ? 'false' : 'true'}
+        aria-hidden=${this.closed ? 'true' : 'false'}
         @mousemove=${this.handleMouseMove}
       >
         <slot name="icon" part="icon" class=${cx('h-full min-w-min text-white px-3 flex justify-center')}>
