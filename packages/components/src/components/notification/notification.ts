@@ -30,7 +30,10 @@ const toastStack = Object.assign(document.createElement('div'), { className: 'sd
  *
  * @csspart base - The component's base wrapper.
  * @csspart icon - The container that wraps the optional icon.
+ * @csspart content - The container that wraps the alert's main content and the close button.
  * @csspart message - The container that wraps the alert's main content.
+ * @csspart duration-indicator-current - The current duration indicator.
+ * @csspart duration-indicator-total - The total duration indicator.
  * @csspart close-button - The close button, an `<sd-icon-button>`.
  * @csspart close-button__base - The close button's exported `base` part.
  *
@@ -52,13 +55,10 @@ export default class SdNotification extends SolidElement {
   @property({ type: Boolean, reflect: true }) open = true;
 
   /** Enables a close button that allows the user to dismiss the alert. */
-  @property({ type: Boolean, reflect: true }) closable = true;
+  @property({ type: Boolean, reflect: true }) closable = false;
 
   /** The alert's theme variant. */
   @property({ reflect: true }) variant: 'info' | 'success' | 'error' | 'warning' = 'info';
-
-  /** Enables a toast notification. */
-  @property({ type: Boolean, reflect: true }) toasted = false;
 
   /** The position of the toasted sd-notification. */
   @property({ reflect: true, attribute: 'toast-stack' }) toastStack: 'top-right' | 'bottom-center' = 'top-right';
@@ -190,7 +190,6 @@ export default class SdNotification extends SolidElement {
         part="base"
         class=${cx(
           'w-full overflow-hidden flex items-center relative',
-          this.toasted && 'shadow-[0px_1px_3px_0px_#515151]',
           this.variant === 'info' && 'bg-info',
           this.variant === 'success' && 'bg-success',
           this.variant === 'warning' && 'bg-warning',
@@ -218,9 +217,10 @@ export default class SdNotification extends SolidElement {
         </slot>
 
         <div
+          part="content"
           class=${cx(
             'h-full w-full gap-2 flex items-center justify-stretch bg-white',
-            !this.toasted && 'border-solid border-[1px] border-l-0 border-neutral-400',
+            'border-solid border-[1px] border-l-0 border-neutral-400',
             this.closable ? 'p-1 pl-3' : 'px-3 py-2'
           )}
         >
@@ -242,14 +242,14 @@ export default class SdNotification extends SolidElement {
             : ''}
         </div>
 
-        ${this.durationIndicator && this.duration !== Infinity
+        ${this.durationIndicator
           ? html`
               <div
-                part="duration-indicator"
+                part="duration-indicator-current"
                 style=${`animation-duration: ${this.duration}ms`}
                 class=${cx(`h-[2px] bottom-0 absolute bg-primary z-10 width-animation`)}
               ></div>
-              <div part="duration-indicator" class="w-full h-[2px] bottom-0 absolute bg-neutral-400"></div>
+              <div part="duration-indicator-total" class="w-full h-[2px] bottom-0 absolute bg-neutral-400"></div>
             `
           : ''}
       </div>
