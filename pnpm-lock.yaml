@@ -153,6 +153,9 @@ importers:
       cem-plugin-vs-code-custom-data-generator:
         specifier: ^1.4.1
         version: 1.4.1
+      chroma-js:
+        specifier: ^2.4.2
+        version: 2.4.2
       chromatic:
         specifier: ^6.18.2
         version: 6.18.2
@@ -4419,10 +4422,10 @@ packages:
       - supports-color
     dev: true
 
-  /@storybook/expect@27.5.2-0:
-    resolution: {integrity: sha512-cP99mhWN/JeCp7VSIiymvj5tmuMY050iFohvp8Zq+kewKsBSZ6/qpTJAGCCZk6pneTcp4S0Fm5BSqyxzbyJ3gw==}
+  /@storybook/expect@28.1.3-5:
+    resolution: {integrity: sha512-lS1oJnY1qTAxnH87C765NdfvGhksA6hBcbUVI5CHiSbNsEtr456wtg/z+dT9XlPriq1D5t2SgfNL9dBAoIGyIA==}
     dependencies:
-      '@types/jest': 29.5.2
+      '@types/jest': 28.1.3
     dev: true
 
   /@storybook/global@5.0.0:
@@ -4453,7 +4456,7 @@ packages:
   /@storybook/jest@0.2.1:
     resolution: {integrity: sha512-mAazxprQUZp3ACTQ/u3KnFAQybH8CSE0JyyW6mp5J34o9CYuUYyRVwUZm4rzO3u2vG228dxKRgogs6BxIUUeCA==}
     dependencies:
-      '@storybook/expect': 27.5.2-0
+      '@storybook/expect': 28.1.3-5
       '@testing-library/jest-dom': 5.16.5
       '@types/jest': 28.1.3
       jest-mock: 27.5.1
@@ -6622,6 +6625,10 @@ packages:
   /chownr@2.0.0:
     resolution: {integrity: sha512-bIomtDF5KGpdogkLd9VspvFzk9KfpyyGlS8YFVZl7TGPBHL5snIOnxeshwVgPteQ9b4Eydl+pVbIyE1DcvCWgQ==}
     engines: {node: '>=10'}
+    dev: true
+
+  /chroma-js@2.4.2:
+    resolution: {integrity: sha512-U9eDw6+wt7V8z5NncY2jJfZa+hUH8XEj8FQHgFJTrUFnJfXYf4Ml4adI2vXZOjqRDpFWtYVWypDfZwnJ+HIR4A==}
     dev: true
 
   /chromatic@6.18.2:
