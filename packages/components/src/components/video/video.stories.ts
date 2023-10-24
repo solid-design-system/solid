@@ -91,7 +91,7 @@ const videoElementScript = html`<script>
       sdVideo?.addEventListener('sd-play', playVideo);
       videoEl?.addEventListener('play', updatePlayingAttr);
       videoEl?.addEventListener('pause', updatePlayingAttr);
-      videoEl?.addEventListener('seeking', updatePlayingAttr);
+      videoEl?.addEventListener('seeking', updatePlayingAttr); // listen for seeking event to fine tune play icon behavior, works in combination with debounce
     }
 
     /**
@@ -104,7 +104,7 @@ const videoElementScript = html`<script>
     /**
      * Standard debounce utility.
      */
-    function debounce(func, timeout = 50) {
+    function debounce(func, timeout = 10) {
       let timer;
       return (...args) => {
         clearTimeout(timer);

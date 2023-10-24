@@ -19,7 +19,8 @@ import SolidElement from '../../internal/solid-element';
  * @slot poster - Specifies an image to be shown before initial play of the wrapped video. Acts like the `poster` attribute on the native video tag.
  *
  * @csspart base - The component's base wrapper.
- * @csspart play-button - The `<button>` element wrapper around the play-icon slot.
+ * @csspart play-button - The `<button>` element wrapper around the play-icon slot (full screen to field all click events).
+ * @csspart play-button-bg - The `<div>` element wrapper around the play-button that defines the circular background.
  * @csspart overlay - The `<div>` element styled as an absolutely positioned transparent overlay.
  */
 
@@ -90,21 +91,25 @@ export default class SdVideo extends SolidElement {
           )}
         ></div>
         <button
+          part="play-button"
+          aria-label="Play video"
           tabindex="0"
           @click=${this.play}
           @keydown=${this.handleKeydown}
-          class=${cx(this.playing && 'pointer-events-none', 'w-full h-full absolute top-0 left-0 z-30')}
+          class=${cx(
+            this.playing && 'pointer-events-none',
+            'w-full h-full absolute top-0 left-0 z-30 text-primary hover:text-primary-500'
+          )}
         >
           <div
-            part="play-button"
-            aria-label="Play video"
+            part="play-button-bg"
             class=${cx(
               this.playing ? 'opacity-0' : 'opacity-100',
               'absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 p-4 bg-white bg-opacity-75 rounded-full play-pause-transition'
             )}
           >
             <slot name="play-icon" part="play-icon">
-              <sd-icon id="default-play-icon" library="system" name="start" color="primary"></sd-icon>
+              <sd-icon id="default-play-icon" library="system" name="start"></sd-icon>
             </slot>
           </div>
         </button>
@@ -145,7 +150,7 @@ export default class SdVideo extends SolidElement {
         translate: -50% -50%;
       }
 
-      [part='play-button'] {
+      [part='play-button-bg'] {
         width: 96px;
         height: 96px;
       }
@@ -156,7 +161,7 @@ export default class SdVideo extends SolidElement {
           font-size: 2rem;
         }
 
-        [part='play-button'] {
+        [part='play-button-bg'] {
           width: 48px;
           height: 48px;
         }
