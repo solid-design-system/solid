@@ -110,7 +110,6 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
       return valueMissingValidityState;
     }
 
-    this.invalid = false;
     return validValidityState;
   }
 
