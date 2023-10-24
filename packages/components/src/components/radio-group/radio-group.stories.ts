@@ -103,7 +103,7 @@ export const Disabled = {
  */
 
 export const Invalid = {
-  parameters: { controls: { exclude: ['size', 'required', 'invalid', 'error-text'] } },
+  parameters: { controls: { exclude: ['size', 'value', 'required', 'invalid', 'error-text'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
