@@ -25,6 +25,11 @@ const posterConstant: ConstantDefinition = {
   name: 'poster',
   value: '<img slot="poster" alt="poster" class="w-[854px] aspect-video cover" src="./placeholders/architecture.jpg" />'
 };
+const iconConstant: ConstantDefinition = {
+  type: 'slot',
+  name: 'play-icon',
+  value: '<sd-icon slot="play-icon" library="system" name="start"></sd-icon>'
+};
 
 export default {
   title: 'Components/sd-video',
@@ -68,7 +73,10 @@ export const PlayingOverlay = {
   }
 };
 
-// Script used in next 2 stories. Due to Storybook behavior, we need to carefully target the appropriate elements in the context of the story.
+/**
+ * Utility script used in next 2 stories. You can use similar logic to wire up video elements in your project.
+ */
+
 const videoElementScript = html`<script>
   /**
    * Handles setting up event listeners and defining behaviors for video elements.
@@ -79,6 +87,7 @@ const videoElementScript = html`<script>
     const sdVideos = document.querySelectorAll('#sd-video-example > sd-video');
 
     // Select the first or second video element based on availability
+    // Due to Storybook behavior, we need to carefully target the appropriate elements in the context of the story.
     const videoEl = document.querySelectorAll('#video-example')[1] || document.querySelectorAll('#video-example')[0];
     const sdVideo =
       document.querySelectorAll('#sd-video-example > sd-video')[1] ||
@@ -202,7 +211,7 @@ export const Mouseless = {
       <div id="sd-video-example" class="mouseless p-0 hover:p-0">
         ${generateTemplate({
           args,
-          constants: [videoConstant, posterConstant]
+          constants: [videoConstant, posterConstant, iconConstant]
         })}
         ${videoElementScript}
       </div>

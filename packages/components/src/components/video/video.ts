@@ -1,7 +1,7 @@
 import { css, html } from 'lit';
 import { customElement } from '../../../src/internal/register-custom-element';
 import { HasSlotController } from '../../internal/slot';
-import { property } from 'lit/decorators.js';
+import { property, query } from 'lit/decorators.js';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
@@ -26,11 +26,18 @@ import SolidElement from '../../internal/solid-element';
 
 @customElement('sd-video')
 export default class SdVideo extends SolidElement {
+  @query('[part=base]') hostEl: HTMLElement;
+
   /** Set to `true` to hide the play icon and the overlay. */
   @property({ type: Boolean, reflect: true }) playing = false;
 
   /** Set to `true` to show a dark overlay. Only used when `playing` is `false`. */
   @property({ type: Boolean, reflect: true }) overlay = false;
+
+  /** Reactive property to trigger breakpoint re-renders. */
+  @property({ type: Boolean }) isBelowBreakpoint = false;
+
+  private resizeObserver: ResizeObserver;
 
   private readonly hasSlotController = new HasSlotController(this, '[default]', 'play-icon', 'poster');
 
@@ -44,28 +51,28 @@ export default class SdVideo extends SolidElement {
     return null;
   }
 
-  /** Method to fade out poster after initial play. */
+  /** Fade out poster after initial play. */
   private fadeoutPoster(): void {
     if (this.poster instanceof HTMLImageElement) {
       this.poster.style.opacity = '0';
     }
   }
 
-  /** Method to hide poster after initial play & fadeout. */
+  /** Hide poster after initial play & fadeout. */
   private hidePoster() {
     if (this.poster instanceof HTMLImageElement) {
       this.poster.style.display = 'none';
     }
   }
 
-  /** Internal method to group play behaviors. If a KeyboardEvent is used, refocus on the native video element to give the user seamless keyboard control. */
+  /** Utility function to group play behaviors. */
   private play() {
     this.emit('sd-play');
     this.playing = true;
     this.fadeoutPoster();
   }
 
-  /** Restrict keydown control to enter and space bar to mimic the native video tag behavior. */
+  /** Restrict keydown control to enter and space bar to mimic the native video tag behavior. If a KeyboardEvent is used, refocus on the native video element to give the user seamless keyboard control. */
   private handleKeydown(e: MouseEvent | KeyboardEvent) {
     if (e instanceof KeyboardEvent && (e.key === 'Enter' || e.key === ' ')) {
       this.play();
@@ -75,21 +82,34 @@ export default class SdVideo extends SolidElement {
     }
   }
 
+  /** Resize the play-button-bg when passing host element width breakpoint 414px. */
+  private handleButtonResize() {
+    if (this.hostEl.clientWidth <= 414 && !this.isBelowBreakpoint) {
+      this.isBelowBreakpoint = true;
+    }
+
+    if (this.hostEl.clientWidth > 414 && this.isBelowBreakpoint) {
+      this.isBelowBreakpoint = false;
+    }
+  }
+
+  connectedCallback(): void {
+    super.connectedCallback();
+    this.resizeObserver = new ResizeObserver(() => this.handleButtonResize());
+
+    this.updateComplete.then(() => {
+      this.resizeObserver.observe(this.hostEl);
+    });
+  }
+
+  disconnectedCallback(): void {
+    super.disconnectedCallback();
+    this.resizeObserver.unobserve(this.hostEl);
+  }
+
   render() {
     return html`
       <div part="base" aria-label="Video Player" class="cursor-pointer">
-        ${this.hasSlotController.test('poster')
-          ? html`<slot name="poster" role="presentation" @transitionend=${this.hidePoster}></slot>`
-          : null}
-        <div
-          part="overlay"
-          id="overlay"
-          role="presentation"
-          class=${cx(
-            this.overlay && !this.playing ? 'opacity-100' : 'opacity-0',
-            'bg-[rgba(0,0,0,0.65)] w-full h-full absolute top-0 left-0 pointer-events-none z-20 play-pause-transition'
-          )}
-        ></div>
         <button
           part="play-button"
           aria-label="Play video"
@@ -105,14 +125,27 @@ export default class SdVideo extends SolidElement {
             part="play-button-bg"
             class=${cx(
               this.playing ? 'opacity-0' : 'opacity-100',
+              this.isBelowBreakpoint ? 'w-[48px] h-[48px]' : 'w-[96px] h-[96px]',
               'absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 p-4 bg-white bg-opacity-75 rounded-full play-pause-transition'
             )}
           >
-            <slot name="play-icon" part="play-icon">
+            <slot name="play-icon" part="play-icon" class=${cx(this.isBelowBreakpoint ? 'text-[2rem]' : 'text-[4rem]')}>
               <sd-icon id="default-play-icon" library="system" name="start"></sd-icon>
             </slot>
           </div>
         </button>
+        ${this.hasSlotController.test('poster')
+          ? html`<slot name="poster" role="presentation" @transitionend=${this.hidePoster}></slot>`
+          : null}
+        <div
+          part="overlay"
+          id="overlay"
+          role="presentation"
+          class=${cx(
+            this.overlay && !this.playing ? 'opacity-100' : 'opacity-0',
+            'bg-[rgba(0,0,0,0.65)] w-full h-full absolute top-0 left-0 pointer-events-none z-20 play-pause-transition'
+          )}
+        ></div>
         <slot></slot>
       </div>
     `;
@@ -143,28 +176,10 @@ export default class SdVideo extends SolidElement {
 
       #default-play-icon,
       ::slotted([slot='play-icon']) {
-        font-size: 4rem;
         position: absolute;
         left: 50%;
         top: 50%;
         translate: -50% -50%;
-      }
-
-      [part='play-button-bg'] {
-        width: 96px;
-        height: 96px;
-      }
-
-      @media screen and (max-width: 413px) {
-        #default-play-icon,
-        ::slotted([slot='play-icon']) {
-          font-size: 2rem;
-        }
-
-        [part='play-button-bg'] {
-          width: 48px;
-          height: 48px;
-        }
       }
     `
   ];
