@@ -238,7 +238,7 @@ export default class SdNotification extends SolidElement {
             this.closable ? 'p-1 pl-3' : 'px-3 py-2'
           )}
         >
-          <slot part="message" aria-live="polite">Hello There</slot>
+          <slot part="message" class="block w-full" aria-live="polite"></slot>
 
           ${this.closable
             ? html`
