@@ -76,7 +76,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
   /** The radio group's size. This size will be applied to the label, all child radios and radio buttons. */
   @property({ reflect: true }) size: 'lg' | 'sm' = 'lg';
 
-  /**  A Boolean attribute which, if present, marks the radio valid or invalid  */
+  /**  A Boolean attribute which, if present, marks the radio valid or invalid. Please note that 'invalid' can only be used in conjunction with 'this.required'.  */
   @property({ type: Boolean, reflect: true }) invalid = false;
 
   /**
@@ -110,6 +110,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
       return valueMissingValidityState;
     }
 
+    this.invalid = false;
     return validValidityState;
   }
 
