@@ -144,7 +144,7 @@ export default class SdRadio extends SolidElement {
         <slot
           part="label"
           class=${cx(
-            'label ml-2 select-none inline-block text-[var(--sd-input-label-color)]',
+            'label ml-2 select-none inline-block text-black',
             (this.disabled && 'text-neutral-500') || (this.invalid && 'text-error') || 'text-neutral-800'
           )}
         >
