@@ -132,8 +132,8 @@ export default class SdRadio extends SolidElement {
                   class=${cx(
                     'rounded-full inline-flex text-white border bg-accent h-2.5 w-2.5',
                     (this.disabled && 'bg-neutral-500') ||
-                      (this.invalid && 'bg-error hover:bg-error-400 group-hover:bg-error-400 ') ||
-                      (this.checked && 'bg-accent hover:bg-accent-550 group-hover:bg-accent-550 ') ||
+                      (this.invalid && 'bg-error hover:bg-error-400 group-hover:bg-error-400') ||
+                      (this.checked && 'bg-accent hover:bg-accent-550 group-hover:bg-accent-550') ||
                       'bg-neutral-800'
                   )}
                 ></span>
@@ -144,7 +144,7 @@ export default class SdRadio extends SolidElement {
         <slot
           part="label"
           class=${cx(
-            'label ml-2 select-none inline-block ',
+            'label ml-2 select-none inline-block',
             (this.disabled && 'text-neutral-500') || (this.invalid && 'text-error') || 'text-black'
           )}
         >
@@ -172,14 +172,6 @@ export default class SdRadio extends SolidElement {
       :host(:focus-visible) [part='control--unchecked'] {
         outline: 2px solid #00358e;
         outline-offset: 2px;
-      }
-
-      .small-size .label {
-        margin-top: 0.5px;
-      }
-
-      .label {
-        margin-top: 1.5px;
       }
     `
   ];

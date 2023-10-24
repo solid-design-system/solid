@@ -22,12 +22,12 @@ export default {
     {
       type: 'slot',
       name: 'label',
-      value: `<label slot="label">Select an option</label>`
+      value: `<label slot="label">Group Label</label>`
     },
     {
       type: 'slot',
       name: 'default',
-      value: `<sd-radio value="1">Option 1</sd-radio><sd-radio value="2">Option 2</sd-radio><sd-radio value="3">Option 3</sd-radio>`
+      value: `<sd-radio value="1">Radio 1</sd-radio><sd-radio value="2">Radio 2</sd-radio><sd-radio value="3">Radio 3</sd-radio>`
     },
     { type: 'attribute', name: 'name', value: 'radio-group' },
     { type: 'attribute', name: 'value', value: '2' }
