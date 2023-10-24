@@ -76,7 +76,7 @@ export default class SdVideo extends SolidElement {
 
   render() {
     return html`
-      <div part="base" aria-label="Video Player">
+      <div part="base" aria-label="Video Player" class="cursor-pointer">
         ${this.hasSlotController.test('poster')
           ? html`<slot name="poster" role="presentation" @transitionend=${this.hidePoster}></slot>`
           : null}
@@ -90,19 +90,23 @@ export default class SdVideo extends SolidElement {
           )}
         ></div>
         <button
-          part="play-button"
-          aria-label="Play video"
           tabindex="0"
           @click=${this.play}
           @keydown=${this.handleKeydown}
-          class=${cx(
-            this.playing ? 'opacity-0 pointer-events-none' : 'opacity-100',
-            'absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 p-4 bg-white bg-opacity-75 rounded-full z-30 play-pause-transition focus-visible:focus-outline'
-          )}
+          class=${cx(this.playing && 'pointer-events-none', 'w-full h-full absolute top-0 left-0 z-30')}
         >
-          <slot name="play-icon" part="play-icon">
-            <sd-icon id="default-play-icon" library="system" name="start" color="primary"></sd-icon>
-          </slot>
+          <div
+            part="play-button"
+            aria-label="Play video"
+            class=${cx(
+              this.playing ? 'opacity-0' : 'opacity-100',
+              'absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 p-4 bg-white bg-opacity-75 rounded-full play-pause-transition'
+            )}
+          >
+            <slot name="play-icon" part="play-icon">
+              <sd-icon id="default-play-icon" library="system" name="start" color="primary"></sd-icon>
+            </slot>
+          </div>
         </button>
         <slot></slot>
       </div>

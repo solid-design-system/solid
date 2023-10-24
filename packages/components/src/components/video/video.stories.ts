@@ -89,8 +89,9 @@ const videoElementScript = html`<script>
      */
     function setupEventListeners() {
       sdVideo?.addEventListener('sd-play', playVideo);
-      videoEl?.addEventListener('play', updatePlayingStatus);
-      videoEl?.addEventListener('pause', updatePlayingStatus);
+      videoEl?.addEventListener('play', updatePlayingAttr);
+      videoEl?.addEventListener('pause', updatePlayingAttr);
+      videoEl?.addEventListener('seeking', updatePlayingAttr);
     }
 
     /**
@@ -101,10 +102,30 @@ const videoElementScript = html`<script>
     }
 
     /**
-     * Updates the playing status of the video element.
+     * Standard debounce utility.
      */
-    function updatePlayingStatus() {
-      sdVideo.playing = videoEl.paused ? false : true;
+    function debounce(func, timeout = 50) {
+      let timer;
+      return (...args) => {
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+          func.apply(this, args);
+        }, timeout);
+      };
+    }
+
+    /**
+     * Updates the playing attribute of the sd video element with a debounce to prevent flickering play icon during 'seeking' events.
+     */
+    const updatePlayingAttr = debounce(e => mutatePlayingAttr(e));
+
+    /**
+     * Mutates the playing status of the video element.
+     */
+    function mutatePlayingAttr(e) {
+      if (e.type === 'play' || e.type === 'pause') {
+        sdVideo.playing = videoEl.paused ? false : true;
+      }
     }
 
     /**
@@ -116,8 +137,9 @@ const videoElementScript = html`<script>
         videoEl.pause();
         videoEl.currentTime = 0;
 
-        videoEl?.removeEventListener('play', updatePlayingStatus);
-        videoEl?.removeEventListener('pause', updatePlayingStatus);
+        videoEl?.removeEventListener('play', updatePlayingAttr);
+        videoEl?.removeEventListener('pause', updatePlayingAttr);
+        videoEl?.removeEventListener('seeking', updatePlayingAttr);
       });
 
       // Reset and remove event listeners for sd-video elements
