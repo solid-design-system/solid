@@ -18,10 +18,11 @@ so that [PRODUCT_VALUE], and [FURTHER_PRODUCT_VALUE].
 
 ### Components detailed requirements
 #### Props
-| Status | Name | Type | Description |
-| ------------- | ------------- | ------------- | ------------- |
-| <ul><li>[ ] </li></ul>  | `name` | `type` | description |
-| <ul><li>[ ] </li></ul>  | `name` | `type1` I `type2` | description |
+| Status | Name | Type | Default | Description |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| <ul><li>[ ] </li></ul>  | `name` | `type` | `default` | description |
+| <ul><li>[ ] </li></ul>  | `name` | `type1` / `type2` | `default` | description |
+
 
 #### CSS-Properties
   - [ ] `name` - description
@@ -35,6 +36,9 @@ so that [PRODUCT_VALUE], and [FURTHER_PRODUCT_VALUE].
 #### Stories (besides the `default` story)
   - [ ] name
   - [ ] name
+#### Samples
+  - [ ] `name` - description
+  - [ ] `name` - description
 
 ### Open Questions towards design
 - [ ] Question1
