@@ -10,7 +10,7 @@ import SolidElement from '../../internal/solid-element';
  * @status stable
  * @since 1.19.0
  *
- * @dependency sd-example
+ * @dependency sd-icon
  *
  * @event sd-play - Event emitted when clicking the `play-icon`. Listen for this event and use it to play the wrapped video.
  *
