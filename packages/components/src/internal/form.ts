@@ -27,9 +27,9 @@ export interface FormControlControllerOptions {
   /** A function that returns the form control's name, which will be submitted with the form data. */
   name: (input: SolidFormControl) => string;
   /** A function that returns the form control's current value. */
-  value: (input: SolidFormControl) => unknown | unknown[];
+  value: (input: SolidFormControl) => unknown;
   /** A function that returns the form control's default value. */
-  defaultValue: (input: SolidFormControl) => unknown | unknown[];
+  defaultValue: (input: SolidFormControl) => unknown;
   /** A function that returns the form control's current disabled state. If disabled, the value won't be submitted. */
   disabled: (input: SolidFormControl) => boolean;
   /**
