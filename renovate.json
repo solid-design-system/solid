@@ -6,11 +6,7 @@
   "packageRules": [
     {
       "matchUpdateTypes": ["minor", "patch"],
-      "matchCurrentVersion": "!/^0/",
-      "automerge": true
-    },
-    {
-      "matchDepTypes": ["devDependencies"],
+      "matchCurrentVersion": ">= 1.0.0",
       "automerge": true
     },
     {
@@ -28,6 +24,9 @@
   "lockFileMaintenance": {
     "enabled": true,
     "automerge": true
+  },
+  "major": {
+    "automerge": false
   },
   "prConcurrentLimit": 10,
   "automergeType": "pr",
