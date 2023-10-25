@@ -261,27 +261,30 @@ export const storybookTemplate = (customElementTag: string) => {
       // Extract class related attributes and transform into an object.
       const classesObj = Object.keys(args)
         .filter(key => key.endsWith('-attr'))
-        .reduce((acc, key) => {
-          const baseName = key.substring(0, key.length - 5); // Remove '-attr'
+        .reduce(
+          (acc, key) => {
+            const baseName = key.substring(0, key.length - 5); // Remove '-attr'
 
-          // Check if value is 'true' and set the baseName class accordingly
-          if (args[key] === true) {
-            acc[baseName] = true;
-          } else if (args[key] === 'false' || args[key] === '(default)') {
-            acc[baseName] = false;
-          }
-          // If value is not 'true' or 'false', add the actual value as a class
-          else if (args[key]) {
-            // This makes it easier to write shorter class names in the docs
-            if (baseName.endsWith('...')) {
-              acc[baseName.replace('...', args[key])] = true;
-            } else {
-              acc[args[key]] = true;
+            // Check if value is 'true' and set the baseName class accordingly
+            if (args[key] === true) {
+              acc[baseName] = true;
+            } else if (args[key] === 'false' || args[key] === '(default)') {
+              acc[baseName] = false;
             }
-          }
+            // If value is not 'true' or 'false', add the actual value as a class
+            else if (args[key]) {
+              // This makes it easier to write shorter class names in the docs
+              if (baseName.endsWith('...')) {
+                acc[baseName.replace('...', args[key])] = true;
+              } else {
+                acc[args[key]] = true;
+              }
+            }
 
-          return acc;
-        }, {} as { [key: string]: boolean });
+            return acc;
+          },
+          {} as { [key: string]: boolean }
+        );
 
       const slotContent = args['default-slot'] || '';
 
@@ -467,8 +470,8 @@ export const storybookTemplate = (customElementTag: string) => {
                       ${(xAxis?.values || ['']).map((xValue: any) => {
                         return html`
                           <td class="template template-x-${xAxis?.values?.indexOf(xValue) || 0 + 1} template-y-${
-                          yAxis?.values?.indexOf(yValue.value || yValue) || 0 + 1
-                        }">
+                            yAxis?.values?.indexOf(yValue.value || yValue) || 0 + 1
+                          }">
                           ${
                             (xAxis.type === 'template' &&
                               unsafeStatic((xValue.value || xValue).split('%TEMPLATE%')[0] || '')) ||
