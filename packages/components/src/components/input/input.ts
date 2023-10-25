@@ -41,7 +41,7 @@ const isFirefox = isChromium ? false : navigator.userAgent.includes('Firefox');
  * @slot clear-icon - An icon to use in lieu of the default clear icon.
  * @slot show-password-icon - An icon to use in lieu of the default show password icon.
  * @slot hide-password-icon - An icon to use in lieu of the default hide password icon.
- * @slot hint - Text that describes how to use the input. Alternatively, you can use the `hint` attribute.
+ * @slot help-text - Text that describes how to use the input. Alternatively, you can use the `help-text` attribute.
  *
  * @event sd-blur - Emitted when the control loses focus.
  * @event sd-change - Emitted when an alteration to the control's value is committed by the user.
@@ -52,7 +52,7 @@ const isFirefox = isChromium ? false : navigator.userAgent.includes('Firefox');
  * @csspart form-control - The form control that wraps the label, input, and help text.
  * @csspart form-control-label - The label's wrapper.
  * @csspart form-control-input - The input's wrapper.
- * @csspart form-control-hint - The help text's wrapper.
+ * @csspart form-control-help-text - The help text's wrapper.
  * @csspart base - The component's base wrapper.
  * @csspart input - The internal `<input>` control.
  * @csspart prefix - The container that wraps the prefix.
@@ -62,8 +62,16 @@ const isFirefox = isChromium ? false : navigator.userAgent.includes('Firefox');
  */
 @customElement('sd-input')
 export default class SdInput extends SolidElement implements SolidFormControl {
-  private readonly formControlController = new FormControlController(this);
-  private readonly hasSlotController = new HasSlotController(this, 'hint', 'label');
+  // private readonly formControlController = new FormControlController(this);
+  private readonly hasSlotController = new HasSlotController(
+    this,
+    'help-text',
+    'label',
+    'prefix',
+    'suffix',
+    'message',
+    'placeholder'
+  );
   private readonly localize = new LocalizeController(this);
 
   @query('.input__control') input: HTMLInputElement;
@@ -87,9 +95,16 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     | 'time'
     | 'url' = 'text';
 
-  /** The name of the input, submitted as a name/value pair with form data. */
-  @property() name = '';
+  /** The input's size. */
+  @property({ reflect: true }) size: 'sm' | 'md' | 'lg' = 'lg';
 
+  /**
+   * Tells the browser what type of data will be entered by the user, allowing it to display the appropriate virtual
+   * keyboard on supportive devices.
+   */
+  @property() inputmode: 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
+
+  // --------------------------- GENERIC --------------------------- //
   /** The current value of the input, submitted as a name/value pair with form data. */
   @property() value = '';
 
@@ -102,14 +117,11 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   /** The input's label. If you need to display HTML, use the `label` slot instead. */
   @property() label = '';
 
-  /** Adds plain text to the input's success / error message underneath the hint. */
-  @property({ attribute: 'hint' }) hint = '';
+  /** The input's help text. If you need to display HTML, use the `help-text` slot instead. */
+  @property({ attribute: 'help-text' }) helpText = '';
 
-  /** The input's help text. If you need to display HTML, use the `hint` slot instead. */
+  /** Adds plain text to the input's success / error message underneath the help-text. */
   @property({ attribute: 'message' }) message = '';
-
-  /** The input's size. */
-  @property({ reflect: true }) size: 'sm' | 'md' | 'lg' = 'lg';
 
   /** Adds a clear button when the input is not empty. */
   @property({ type: Boolean }) clearable = false;
@@ -120,6 +132,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   /** Makes the input readonly. */
   @property({ type: Boolean, reflect: true }) readonly = false;
 
+  // --------------------------- PASSWORD TYPE --------------------------- //
   /** Adds a button to toggle the password's visibility. Only applies to password types. */
   @property({ attribute: 'password-toggle', type: Boolean }) passwordToggle = false;
 
@@ -129,6 +142,20 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   /** Hides the browser's built-in increment/decrement spin buttons for number inputs. */
   @property({ attribute: 'no-spin-buttons', type: Boolean }) noSpinButtons = false;
 
+  /** The minimum length of input that will be considered valid. */
+  @property({ type: Number }) minlength: number;
+
+  /** The maximum length of input that will be considered valid. */
+  @property({ type: Number }) maxlength: number;
+
+  // --------------------------- NUMBER TYPE --------------------------- //
+  /** The input's minimum value. Only applies to date and number input types. */
+  @property({ type: Number }) min: number;
+
+  /** The input's maximum value. Only applies to date and number input types. */
+  @property({ type: Number }) max: number;
+
+  // --------------------------- FORM TYPE --------------------------- //
   /**
    * By default, form controls are associated with the nearest containing `<form>` element. This attribute allows you
    * to place the form control outside of a form and associate it with the form that has this `id`. The form must be in
@@ -136,23 +163,14 @@ export default class SdInput extends SolidElement implements SolidFormControl {
    */
   @property({ reflect: true }) form = '';
 
+  /** The name of the input, submitted as a name/value pair with form data. */
+  @property() name = '';
+
   /** Makes the input a required field. */
   @property({ type: Boolean, reflect: true }) required = false;
 
   /** A regular expression pattern to validate input against. */
   @property() pattern: string;
-
-  /** The minimum length of input that will be considered valid. */
-  @property({ type: Number }) minlength: number;
-
-  /** The maximum length of input that will be considered valid. */
-  @property({ type: Number }) maxlength: number;
-
-  /** The input's minimum value. Only applies to date and number input types. */
-  @property({ type: Number }) min: number;
-
-  /** The input's maximum value. Only applies to date and number input types. */
-  @property({ type: Number }) max: number;
 
   /**
    * Specifies the granularity that the value must adhere to, or the special value `any` which means no stepping is
@@ -189,12 +207,6 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   })
   spellcheck = true;
 
-  /**
-   * Tells the browser what type of data will be entered by the user, allowing it to display the appropriate virtual
-   * keyboard on supportive devices.
-   */
-  @property() inputmode: 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
-
   /** Gets or sets the current value as a `Date` object. Returns `null` if the value can't be converted. */
   get valueAsDate() {
     return this.input?.valueAsDate ?? null;
@@ -222,7 +234,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   }
 
   firstUpdated() {
-    this.formControlController.updateValidity();
+    // this.formControlController.updateValidity();
   }
 
   private handleBlur() {
@@ -245,19 +257,21 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     event.stopPropagation();
   }
 
+  // TODO: re-enable, fix error
   private handleFocus() {
-    this.hasFocus = true;
-    this.emit('sd-focus');
+    // this.hasFocus = true;
+    // this.emit('sd-focus');
   }
 
+  // TODO: re-enable, fix error
   private handleInput() {
-    this.value = this.input.value;
-    this.formControlController.updateValidity();
-    this.emit('sd-input');
+    // this.value = this.input.value;
+    // this.formControlController.updateValidity();
+    // this.emit('sd-input');
   }
 
   private handleInvalid() {
-    this.formControlController.setValidity(false);
+    // this.formControlController.setValidity(false);
   }
 
   private handleKeyDown(event: KeyboardEvent) {
@@ -274,7 +288,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
         // See https://github.com/shoelace-style/shoelace/pull/988
         //
         if (!event.defaultPrevented && !event.isComposing) {
-          this.formControlController.submit();
+          // this.formControlController.submit();
         }
       });
     }
@@ -287,7 +301,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   @watch('disabled', { waitUntilFirstUpdate: true })
   handleDisabledChange() {
     // Disabled form controls are always valid
-    this.formControlController.setValidity(this.disabled);
+    // this.formControlController.setValidity(this.disabled);
   }
 
   @watch('step', { waitUntilFirstUpdate: true })
@@ -295,13 +309,13 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     // If step changes, the value may become invalid so we need to recheck after the update. We set the new step
     // imperatively so we don't have to wait for the next render to report the updated validity.
     this.input.step = String(this.step);
-    this.formControlController.updateValidity();
+    // this.formControlController.updateValidity();
   }
 
   @watch('value', { waitUntilFirstUpdate: true })
   async handleValueChange() {
     await this.updateComplete;
-    this.formControlController.updateValidity();
+    // this.formControlController.updateValidity();
   }
 
   /** Sets focus on the input. */
@@ -379,16 +393,21 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   /** Sets a custom validation message. Pass an empty string to restore validity. */
   setCustomValidity(message: string) {
     this.input.setCustomValidity(message);
-    this.formControlController.updateValidity();
+    // this.formControlController.updateValidity();
   }
 
   render() {
-    const hasLabelSlot = this.hasSlotController.test('label');
-    const hashintSlot = this.hasSlotController.test('hint');
-    const hasLabel = this.label ? true : !!hasLabelSlot;
-    const hashint = this.hint ? true : !!hashintSlot;
-    const hasClearIcon =
-      this.clearable && !this.disabled && !this.readonly && (typeof this.value === 'number' || this.value.length > 0);
+    const slots = {
+      label: this.hasSlotController.test('label'),
+      helpText: this.hasSlotController.test('help-text'),
+      description: this.hasSlotController.test('description'),
+      prefix: this.hasSlotController.test('prefix'),
+      suffix: this.hasSlotController.test('suffix')
+    };
+
+    const hasLabel = this.label ? true : !!slots['label'];
+    const hasHelpText = this.helpText ? true : !!slots['helpText'];
+    const hasClearIcon = this.clearable && !this.readonly && (typeof this.value === 'number' || this.value.length > 0);
 
     return html`
       <div
@@ -408,8 +427,9 @@ export default class SdInput extends SolidElement implements SolidFormControl {
           <div
             part="base"
             class=${cx(
-              'px-4 border rounded flex flex-row items-center',
-              this.disabled && 'border-neutral-400 text-neutral-400',
+              'px-4 border border-neutral-800 rounded flex flex-row items-center ',
+              this.disabled && 'border-neutral-500 text-neutral-500',
+              this.readonly ? 'bg-neutral-100 hover:bg-neutral-100' : 'hover:bg-neutral-200',
 
               // Sizes
               this.size === 'lg' ? 'py-2' : 'py-1',
@@ -422,14 +442,11 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               isFirefox && 'input--is-firefox'
             )}
           >
-            <slot name="prefix" part="prefix" class="input__prefix"></slot>
+            ${slots['prefix'] ? html`<slot name="prefix" part="prefix" class="input__prefix inline mr-2"></slot>` : ''}
             <input
               part="input"
               id="input"
-              class=${cx(
-                'input__control focus:outline-none disabled:bg-transparent',
-                this.size === 'sm' ? 'p-1' : 'p-2'
-              )}
+              class=${cx('input__control focus:outline-none bg-transparent')}
               type=${this.type === 'password' && this.passwordVisible ? 'text' : this.type}
               title=${this.title /* An empty title prevents browser validation tooltips from appearing on hover */}
               name=${ifDefined(this.name)}
@@ -451,7 +468,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               pattern=${ifDefined(this.pattern)}
               enterkeyhint=${ifDefined(this.enterkeyhint)}
               inputmode=${ifDefined(this.inputmode)}
-              aria-describedby="hint"
+              aria-describedby="help-text"
               @change=${this.handleChange}
               @input=${this.handleInput}
               @invalid=${this.handleInvalid}
@@ -464,9 +481,9 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                 ? html`
                     <button
                       part="clear-button"
-                      class="input__clear flex justify-center mx-2"
+                      class="input__clear flex justify-center ml-2 "
                       type="button"
-                      aria-label=${this.localize.term('clearEntry')}
+                      aria-label=${this.localize.term(['clearEntry'])}
                       @click=${this.handleClearClick}
                       tabindex="-1"
                     >
@@ -474,7 +491,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                         <!-- TODO: Switch to system icon?  Use text-neutal-400 class? Not currently available -->
                         <sd-icon
                           class=${cx(
-                            'text-neutral-400',
+                            'text-neutral-500',
                             {
                               /* sizes, paddings */
                               sm: 'h-4 w-4',
@@ -516,20 +533,22 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                   `
                 : ''
             }
-
-            <slot name="suffix" part="suffix"></slot>
-            
+          ${
+            slots['suffix']
+              ? html`<slot name="suffix" part="suffix" class="input__suffix ml-2 flex items-center"></slot>`
+              : ''
+          }
           </div>
         </div>
 
         <slot
-          name="hint"
-          part="form-control-hint"
-          id="hint"
-          class=${cx('text-sm', hashint ? 'block' : 'hidden')}
-          aria-hidden=${hashint ? 'false' : 'true'}
+          name="help-text"
+          part="form-control-help-text"
+          id="help-text"
+          class=${cx('text-sm', hasHelpText ? 'block' : 'hidden')}
+          aria-hidden=${hasHelpText ? 'false' : 'true'}
         >
-          ${this.hint}
+          ${this.helpText}
         </slot>
 
         </div>
