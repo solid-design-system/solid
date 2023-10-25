@@ -98,13 +98,14 @@ export const DurationIndicator = {
 };
 
 /**
- * Here are some examples of sd-button working with sd-badge.
+ * Create a toast notification by using the `toast` method and select a positioning using `toastStack`.
  */
-export const ToastNotifications = {
+export const Toast = {
   render: () => {
     return html`
-      <sd-button variant="primary">Create Toast</sd-button>
-
+      <div class="toast-button-wrapper">
+        <sd-button role="button" id="toast-generator" variant="primary">Create Toast</sd-button>
+      </div>
       <script>
         const button = document.querySelector('sd-button');
 
@@ -116,7 +117,7 @@ export const ToastNotifications = {
           });
 
           document.body.append(notification);
-          return notification.toast();
+          return notification.toast(variant);
         }
 
         button.addEventListener('click', () => {
@@ -125,6 +126,10 @@ export const ToastNotifications = {
       </script>
     `;
   }
+  // play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
+  //   const button = canvasElement.querySelector('#toast-generator');
+  //   await userEvent.click(button!);
+  // }
 };
 
 /**
