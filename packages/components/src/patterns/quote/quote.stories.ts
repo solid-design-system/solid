@@ -30,18 +30,19 @@ const information = (hidden = false, text = '4xl') => (hidden ? '' : html`<p cla
  */
 
 export const Default = {
-  render: () => html`<div class="text-left text-black">
-    <q class="block mb-6 text-3xl lg:text-4xl leading-tight"
-      >Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</q
-    >
-    <div class="gap-4 flex items-center">
-      ${img()}
-      <div>
-        <p class="sd-paragraph font-bold mb-1">Jane Miller</p>
-        <p class="sd-paragraph sd-paragraph--size-sm">Job Title</p>
+  render: () =>
+    html`<div class="text-left text-black">
+      <q class="block mb-6 text-3xl lg:text-4xl leading-tight"
+        >Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</q
+      >
+      <div class="gap-4 flex items-center">
+        ${img()}
+        <div>
+          <p class="sd-paragraph font-bold mb-1">Jane Miller</p>
+          <p class="sd-paragraph sd-paragraph--size-sm">Job Title</p>
+        </div>
       </div>
-    </div>
-  </div>`
+    </div>`
 };
 
 /**
@@ -50,47 +51,48 @@ export const Default = {
  */
 
 export const Size = {
-  render: () => html` <div class="flex items-end gap-5">
-    <div class="text-left text-black">
-      <q class="block mb-6 text-3xl lg:text-4xl leading-tight"
-        >Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</q
-      >
-      <div class="gap-6 flex items-center">
-        ${img()}
-        <div>
-          <p class="sd-paragraph font-bold mb-1">Jane Miller</p>
-          <p class="sd-paragraph sd-paragraph--size-sm">Job Title</p>
+  render: () =>
+    html` <div class="flex items-end gap-5">
+      <div class="text-left text-black">
+        <q class="block mb-6 text-3xl lg:text-4xl leading-tight"
+          >Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</q
+        >
+        <div class="gap-6 flex items-center">
+          ${img()}
+          <div>
+            <p class="sd-paragraph font-bold mb-1">Jane Miller</p>
+            <p class="sd-paragraph sd-paragraph--size-sm">Job Title</p>
+          </div>
         </div>
+        ${information()}
       </div>
-      ${information()}
-    </div>
 
-    <div class="text-left text-black">
-      <q class="block mb-4 text-2xl lg:text-3xl leading-tight"
-        >Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</q
-      >
-      <div class="gap-6 flex items-center">
-        ${img()}
-        <div>
-          <p class="sd-paragraph font-bold mb-1">Jane Miller</p>
-          <p class="sd-paragraph sd-paragraph--size-sm">Job Title</p>
+      <div class="text-left text-black">
+        <q class="block mb-4 text-2xl lg:text-3xl leading-tight"
+          >Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</q
+        >
+        <div class="gap-6 flex items-center">
+          ${img()}
+          <div>
+            <p class="sd-paragraph font-bold mb-1">Jane Miller</p>
+            <p class="sd-paragraph sd-paragraph--size-sm">Job Title</p>
+          </div>
         </div>
+        ${information(false, '3xl')}
       </div>
-      ${information(false, '3xl')}
-    </div>
 
-    <div class="text-left text-black">
-      <q class="block mb-4 text-xl leading-tight">Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</q>
-      <div class="gap-4 flex items-center">
-        ${img()}
-        <div>
-          <p class="sd-paragraph font-bold mb-1">Jane Miller</p>
-          <p class="sd-paragraph sd-paragraph--size-sm">Job Title</p>
+      <div class="text-left text-black">
+        <q class="block mb-4 text-xl leading-tight">Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</q>
+        <div class="gap-4 flex items-center">
+          ${img()}
+          <div>
+            <p class="sd-paragraph font-bold mb-1">Jane Miller</p>
+            <p class="sd-paragraph sd-paragraph--size-sm">Job Title</p>
+          </div>
         </div>
+        ${information(false, 'xl')}
       </div>
-      ${information(false, 'xl')}
-    </div>
-  </div>`
+    </div>`
 };
 
 /**
@@ -100,47 +102,48 @@ export const Size = {
  */
 
 export const Inverted = {
-  render: () => html` <div class="flex items-end gap-5 p-5 bg-primary">
-    <div class="text-left text-white">
-      <q class="block mb-6 text-3xl lg:text-4xl leading-tight"
-        >Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</q
-      >
-      <div class="gap-6 flex items-center">
-        ${img()}
-        <div>
-          <p class="sd-paragraph sd-paragraph--inverted font-bold mb-1">Jane Miller</p>
-          <p class="sd-paragraph sd-paragraph--size-sm sd-paragraph--inverted">Job Title</p>
+  render: () =>
+    html` <div class="flex items-end gap-5 p-5 bg-primary">
+      <div class="text-left text-white">
+        <q class="block mb-6 text-3xl lg:text-4xl leading-tight"
+          >Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</q
+        >
+        <div class="gap-6 flex items-center">
+          ${img()}
+          <div>
+            <p class="sd-paragraph sd-paragraph--inverted font-bold mb-1">Jane Miller</p>
+            <p class="sd-paragraph sd-paragraph--size-sm sd-paragraph--inverted">Job Title</p>
+          </div>
         </div>
+        ${information()}
       </div>
-      ${information()}
-    </div>
 
-    <div class="text-left text-white">
-      <q class="block mb-4 text-2xl lg:text-3xl leading-tight"
-        >Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</q
-      >
-      <div class="gap-6 flex items-center">
-        ${img()}
-        <div>
-          <p class="sd-paragraph sd-paragraph--inverted font-bold mb-1">Jane Miller</p>
-          <p class="sd-paragraph sd-paragraph--size-sm sd-paragraph--inverted">Job Title</p>
+      <div class="text-left text-white">
+        <q class="block mb-4 text-2xl lg:text-3xl leading-tight"
+          >Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</q
+        >
+        <div class="gap-6 flex items-center">
+          ${img()}
+          <div>
+            <p class="sd-paragraph sd-paragraph--inverted font-bold mb-1">Jane Miller</p>
+            <p class="sd-paragraph sd-paragraph--size-sm sd-paragraph--inverted">Job Title</p>
+          </div>
         </div>
+        ${information(false, '3xl')}
       </div>
-      ${information(false, '3xl')}
-    </div>
 
-    <div class="text-left text-white">
-      <q class="block mb-4 text-xl leading-tight">Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</q>
-      <div class="gap-4 flex items-center">
-        ${img()}
-        <div>
-          <p class="sd-paragraph sd-paragraph--inverted font-bold mb-1">Jane Miller</p>
-          <p class="sd-paragraph sd-paragraph--size-sm sd-paragraph--inverted">Job Title</p>
+      <div class="text-left text-white">
+        <q class="block mb-4 text-xl leading-tight">Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</q>
+        <div class="gap-4 flex items-center">
+          ${img()}
+          <div>
+            <p class="sd-paragraph sd-paragraph--inverted font-bold mb-1">Jane Miller</p>
+            <p class="sd-paragraph sd-paragraph--size-sm sd-paragraph--inverted">Job Title</p>
+          </div>
         </div>
+        ${information(false, 'xl')}
       </div>
-      ${information(false, 'xl')}
-    </div>
-  </div>`
+    </div>`
 };
 
 /**
@@ -150,33 +153,34 @@ export const Inverted = {
  */
 
 export const Variant = {
-  render: () => html` <div class="flex items-end gap-5">
-    <div class="text-left text-black">
-      <q class="block mb-6 text-3xl lg:text-4xl leading-tight"
-        >Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</q
-      >
-      <div class="gap-6 flex items-center">
-        ${img()}
-        <div>
-          <p class="sd-paragraph font-bold mb-1">Jane Miller</p>
-          <p class="sd-paragraph sd-paragraph--size-sm">Job Title</p>
+  render: () =>
+    html` <div class="flex items-end gap-5">
+      <div class="text-left text-black">
+        <q class="block mb-6 text-3xl lg:text-4xl leading-tight"
+          >Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</q
+        >
+        <div class="gap-6 flex items-center">
+          ${img()}
+          <div>
+            <p class="sd-paragraph font-bold mb-1">Jane Miller</p>
+            <p class="sd-paragraph sd-paragraph--size-sm">Job Title</p>
+          </div>
         </div>
+        ${information(false, 'with profile image')}
       </div>
-      ${information(false, 'with profile image')}
-    </div>
 
-    <div class="text-left text-black">
-      <q class="block mb-6 text-3xl lg:text-4xl leading-tight"
-        >Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</q
-      >
-      <div class="gap-6 flex items-center">
-        ${img(true)}
-        <div>
-          <p class="sd-paragraph font-bold mb-1">Jane Miller</p>
-          <p class="sd-paragraph sd-paragraph--size-sm">Job Title</p>
+      <div class="text-left text-black">
+        <q class="block mb-6 text-3xl lg:text-4xl leading-tight"
+          >Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</q
+        >
+        <div class="gap-6 flex items-center">
+          ${img(true)}
+          <div>
+            <p class="sd-paragraph font-bold mb-1">Jane Miller</p>
+            <p class="sd-paragraph sd-paragraph--size-sm">Job Title</p>
+          </div>
         </div>
+        ${information(false, 'without profile image')}
       </div>
-      ${information(false, 'without profile image')}
-    </div>
-  </div>`
+    </div>`
 };
