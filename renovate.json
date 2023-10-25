@@ -38,6 +38,9 @@
     "enabled": true,
     "automerge": true
   },
+  "major": {
+    "automerge": false
+  },
   "prConcurrentLimit": 10,
   "automergeType": "pr",
   "automergeStrategy": "squash",
