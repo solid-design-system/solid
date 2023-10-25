@@ -377,7 +377,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
           part="form-control-label"
           id="label"
           class="form-control__label mb-2 hidden p-0 font-bold leading-normal text-black"
-          aria-hidden=${hasLabel ? 'false' : 'true'}
+          aria-hidden=${!hasLabel}
           @click=${this.handleLabelClick}
         >
           <slot name="label">${this.label}</slot>
@@ -394,7 +394,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
             }[this.orientation]
           )}
         >
-          <div class="visually-hidden absolute p-0 overflow-hidden whitespace-nowrap border-0">
+          <div class="sr-only">
             <div id="error-message" aria-live="assertive">${this.errorMessage}</div>
             <label class="radio-group__validation">
               <input
@@ -421,7 +421,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
               lg: 'text-base'
             }[this.size]
           )}
-          aria-hidden=${hasErrorText ? 'false' : 'true'}
+          aria-hidden=${!hasErrorText}
         >
           <slot name="error-text">${this.errorText}</slot>
         </div>
@@ -470,13 +470,6 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
       /* error text */
       .form-control--has-error-text .form-control__error-text {
         display: flex;
-      }
-
-      .visually-hidden {
-        width: 1px;
-        height: 1px;
-        margin: -1px;
-        clip: rect(0, 0, 0, 0);
       }
     `
   ];
