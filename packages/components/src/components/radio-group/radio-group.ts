@@ -361,7 +361,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
         class=${cx(
           'form-control form-control--radio-group border-0 p-0 m-0',
           hasLabel && 'form-control--has-label',
-          hasErrorText && 'form-control--has-error-text text-error',
+          hasErrorText && 'text-error',
           {
             /* sizes, fonts */
             sm: 'text-sm',
@@ -386,11 +386,11 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
         <div
           part="form-control-input"
           class=${cx(
-            'form-control-input',
+            'form-control-input flex',
             this.invalid && 'form-control-input--invalid text-error',
             {
-              vertical: 'form-control-input--vertical flex flex-col',
-              horizontal: 'form-control-input--horizontal flex flex-row'
+              vertical: 'form-control-input--vertical flex-col',
+              horizontal: 'form-control-input--horizontal flex-row'
             }[this.orientation]
           )}
         >
@@ -414,7 +414,8 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
           part="form-control-error-text"
           id="error-text"
           class=${cx(
-            'form-control__error-text mt-2 hidden text-error leading-normal',
+            'mt-2 text-error leading-normal',
+            `${hasErrorText ? 'flex' : 'hidden'}`,
             {
               /* sizes, fonts */
               sm: 'text-sm',
@@ -465,11 +466,6 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
       :host([required]) .form-control--has-label .form-control__label::after {
         content: '*';
         margin-left: 2px;
-      }
-
-      /* error text */
-      .form-control--has-error-text .form-control__error-text {
-        display: flex;
       }
     `
   ];
