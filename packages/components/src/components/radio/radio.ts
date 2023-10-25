@@ -118,7 +118,7 @@ export default class SdRadio extends SolidElement {
         <span
           part="${`${this.checked ? 'control--checked' : 'control--unchecked'}`}"
           class=${cx(
-            'radio__control flex-initial shrink-0 relative inline-flex items-center justify-center border rounded-full bg-white h-4 w-4',
+            'flex-initial shrink-0 relative inline-flex items-center justify-center border rounded-full bg-white h-4 w-4',
             (this.disabled && 'border-neutral-500') ||
               (this.invalid && 'border-error hover:border-error-400 group-hover:border-error-400') ||
               (this.checked && 'border-accent hover:border-accent-550 group-hover:border-accent-550') ||
