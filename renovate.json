@@ -1,24 +1,33 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base", "schedule:daily", ":disableRateLimiting"],
+  "extends": [
+    "config:base",
+    "schedule:daily",
+    ":disableRateLimiting"
+  ],
   "schedule": "before 5am every weekday",
   "timezone": "Europe/Berlin",
   "packageRules": [
     {
-      "matchUpdateTypes": ["minor", "patch"],
-      "matchCurrentVersion": "!/^0/",
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
+      "matchCurrentVersion": ">= 1.0.0",
       "automerge": true
     },
     {
-      "matchDepTypes": ["devDependencies"],
-      "automerge": true
-    },
-    {
-      "matchDepNames": ["node", "pnpm", "nx"],
+      "matchDepNames": [
+        "node",
+        "pnpm",
+        "nx"
+      ],
       "enabled": false
     },
     {
-      "matchPackagePrefixes": ["@types/"],
+      "matchPackagePrefixes": [
+        "@types/"
+      ],
       "automerge": true,
       "major": {
         "automerge": false
@@ -32,6 +41,9 @@
   "prConcurrentLimit": 10,
   "automergeType": "pr",
   "automergeStrategy": "squash",
-  "automergeSchedule": ["after 10pm every weekday", "before 5am every weekday"],
+  "automergeSchedule": [
+    "after 10pm every weekday",
+    "before 5am every weekday"
+  ],
   "autoApprove": true
 }
