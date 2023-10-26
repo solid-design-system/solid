@@ -10,7 +10,7 @@ import SolidElement from '../../internal/solid-element';
  * @summary A radio allows to select only one value from a set of options. Clicking on an unchecked radio will deselect the other one(s).
  * @documentation https://solid.union-investment.com/[storybook-link]/radio
  * @status stable
- * @since 1.18.0
+ * @since 1.19.0
  *
  * @slot - The radio's label.
  *
