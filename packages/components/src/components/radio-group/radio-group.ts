@@ -55,17 +55,19 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
   @query('.radio-group__validation-input') validationInput: HTMLInputElement;
 
   @state() private hasButtonGroup = false;
-  @state() private errorMessage = '';
   @state() defaultValue = '';
+
+  /**  A Boolean attribute which, if present, marks the radio valid or invalid. Please note that 'invalid' can only be used in conjunction with 'this.required'.  */
+  @state() private invalid = false;
+
+  /** The radio groups's error text. Use to display an error message below the component. Please note that 'error-text' can only be used in conjunction with 'this.required' and 'this.invalid'.  */
+  @state() private errorText = '';
 
   /**
    * The radio group's label. Required for proper accessibility. If you need to display HTML, use the `label` slot
    * instead.
    */
   @property() label = '';
-
-  /** The radio groups's error text. Use to display an error message below the component. */
-  @property({ attribute: 'error-text' }) errorText = '';
 
   /** The name of the radio group, submitted as a name/value pair with form data. */
   @property() name = 'option';
@@ -75,9 +77,6 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
 
   /** The radio group's size. This size will be applied to the label, all child radios and radio buttons. */
   @property({ reflect: true }) size: 'lg' | 'sm' = 'lg';
-
-  /**  A Boolean attribute which, if present, marks the radio valid or invalid. Please note that 'invalid' can only be used in conjunction with 'this.required'.  */
-  @property({ type: Boolean, reflect: true }) invalid = false;
 
   /**
    * By default, form controls are associated with the nearest containing `<form>` element. This attribute allows you
@@ -120,8 +119,10 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
     const hasCustomValidityMessage = this.customValidityMessage !== '';
 
     if (hasCustomValidityMessage) {
+      console.log('this.customValidityMessage', this.customValidityMessage);
       return this.customValidityMessage;
     } else if (isRequiredAndEmpty) {
+      console.log('this.validationInput.validationMessage', this.validationInput);
       return this.validationInput.validationMessage;
     }
 
@@ -320,10 +321,11 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
   }
 
   /** Checks for validity and shows the browser's validation message if the control is invalid. */
+  // TODO: https://github.com/solid-design-system/solid/issues/501
   reportValidity(): boolean {
     const isValid = this.validity.valid;
 
-    this.errorMessage = this.customValidityMessage || isValid ? '' : this.validationInput.validationMessage;
+    this.errorText = this.customValidityMessage || isValid ? '' : this.validationInput.validationMessage;
     this.formControlController.setValidity(isValid);
     this.validationInput.hidden = true;
     clearTimeout(this.validationTimeout);
@@ -341,7 +343,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
   /** Sets a custom validation message. Pass an empty string to restore validity. */
   setCustomValidity(message = '') {
     this.customValidityMessage = message;
-    this.errorMessage = message;
+    this.errorText = message;
     this.validationInput.setCustomValidity(message);
     this.formControlController.updateValidity();
   }
@@ -370,8 +372,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
         )}
         role="radiogroup"
         aria-labelledby="label"
-        aria-describedby="error-text"
-        aria-errormessage="error-message"
+        aria-errormessage="error-text"
       >
         <label
           part="form-control-label"
@@ -395,7 +396,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
           )}
         >
           <div class="sr-only">
-            <div id="error-message" aria-live="assertive">${this.errorMessage}</div>
+            <div id="error-message" aria-live="assertive">${this.errorText}</div>
             <label class="radio-group__validation">
               <input
                 type="text"
@@ -408,23 +409,6 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
             </label>
           </div>
           ${defaultSlot}
-        </div>
-
-        <div
-          part="form-control-error-text"
-          id="error-text"
-          class=${cx(
-            'mt-2 text-error leading-normal',
-            `${hasErrorText ? 'flex' : 'hidden'}`,
-            {
-              /* sizes, fonts */
-              sm: 'text-sm',
-              lg: 'text-base'
-            }[this.size]
-          )}
-          aria-hidden=${!hasErrorText}
-        >
-          <slot name="error-text">${this.errorText}</slot>
         </div>
       </fieldset>
     `;
