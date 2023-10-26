@@ -21,7 +21,7 @@ export default {
 
 export const Default = {
   render: (args: any) => {
-    return html`<sd-input clearable></sd-input>`;
+    return generateTemplate({ args });
   }
 };
 
@@ -29,31 +29,33 @@ export const Default = {
  * Dev: Temporary Dev story
  */
 
-export const Dev = {
-  render: (args: any) => {
-    return html`<sd-input ${{ ...args }}>
-      <span slot="prefix">prefix</span>
-      <sd-icon slot="suffix" library="global-resources" name="system/picture"></sd-icon>
-    </sd-input>`;
-  }
-};
-
 // export const Dev = {
 //   render: (args: any) => {
-//     return generateTemplate({
-//       constants: [
-//         { type: 'attribute', name: 'value', value: 'value' },
-//         { type: 'attribute', name: 'label', value: 'label' },
-//         { type: 'attribute', name: 'help-text', value: 'help-text' },
-//         { type: 'attribute', name: 'clearable', value: true },
-//         { type: 'slot', name: 'prefix', value: '<span slot="prefix">prefix</span>' },
-//         {
-//           type: 'slot',
-//           name: 'suffix',
-//           value: '<sd-icon slot="suffix" library="global-resources" name="system/picture"></sd-icon>'
-//         }
-//       ],
-//       args
-//     });
+//     return html`<sd-input ${{ ...args }}>
+//       <span slot="label">label</span>
+//       <span slot="prefix">prefix</span>
+//       <sd-icon slot="suffix" library="global-resources" name="system/picture"></sd-icon>
+//       <span slot="help-text">help-text</span>
+//     </sd-input>`;
 //   }
 // };
+
+export const Dev = {
+  render: (args: any) => {
+    return generateTemplate({
+      constants: [
+        { type: 'attribute', name: 'value', value: 'value' },
+        { type: 'attribute', name: 'label', value: 'label' },
+        { type: 'attribute', name: 'help-text', value: 'help-text' },
+        { type: 'attribute', name: 'clearable', value: true },
+        { type: 'slot', name: 'prefix', value: '<span slot="prefix">prefix</span>' },
+        {
+          type: 'slot',
+          name: 'suffix',
+          value: '<sd-icon slot="suffix" library="global-resources" name="system/picture"></sd-icon>'
+        }
+      ],
+      args
+    });
+  }
+};

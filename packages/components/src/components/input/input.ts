@@ -1,8 +1,13 @@
 import '../icon/icon';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
+import {
+  customErrorValidityState,
+  FormControlController,
+  validValidityState,
+  valueMissingValidityState
+} from '../../internal/form';
 import { defaultValue } from '../../internal/default-value';
-import { FormControlController } from '../../internal/form';
 import { HasSlotController } from '../../internal/slot';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { live } from 'lit/directives/live.js';
@@ -62,7 +67,7 @@ const isFirefox = isChromium ? false : navigator.userAgent.includes('Firefox');
  */
 @customElement('sd-input')
 export default class SdInput extends SolidElement implements SolidFormControl {
-  // private readonly formControlController = new FormControlController(this);
+  protected readonly formControlController = new FormControlController(this);
   private readonly hasSlotController = new HasSlotController(
     this,
     'help-text',
@@ -72,6 +77,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     'message',
     'placeholder'
   );
+  private customValidityMessage = '';
   private readonly localize = new LocalizeController(this);
 
   @query('.input__control') input: HTMLInputElement;
@@ -233,8 +239,22 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     this.value = input.value;
   }
 
+  /** Gets the validity state object */
+  get validity() {
+    const isRequiredAndEmpty = this.required && !this.value;
+    const hasCustomValidityMessage = this.customValidityMessage !== '';
+
+    if (hasCustomValidityMessage) {
+      return customErrorValidityState;
+    } else if (isRequiredAndEmpty) {
+      return valueMissingValidityState;
+    }
+
+    return validValidityState;
+  }
+
   firstUpdated() {
-    // this.formControlController.updateValidity();
+    this.formControlController.updateValidity();
   }
 
   private handleBlur() {
@@ -249,9 +269,9 @@ export default class SdInput extends SolidElement implements SolidFormControl {
 
   private handleClearClick(event: MouseEvent) {
     this.value = '';
-    this.emit('sd-clear');
-    this.emit('sd-input');
-    this.emit('sd-change');
+    // this.emit('sd-clear');
+    // this.emit('sd-input');
+    // this.emit('sd-change');
     this.input.focus();
 
     event.stopPropagation();
@@ -266,12 +286,12 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   // TODO: re-enable, fix error
   private handleInput() {
     this.value = this.input.value;
-    // this.formControlController.updateValidity();
+    this.formControlController.updateValidity();
     // this.emit('sd-input');
   }
 
   private handleInvalid() {
-    // this.formControlController.setValidity(false);
+    this.formControlController.setValidity(false);
   }
 
   private handleKeyDown(event: KeyboardEvent) {
@@ -288,7 +308,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
         // See https://github.com/shoelace-style/shoelace/pull/988
         //
         if (!event.defaultPrevented && !event.isComposing) {
-          // this.formControlController.submit();
+          this.formControlController.submit();
         }
       });
     }
@@ -301,7 +321,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   @watch('disabled', { waitUntilFirstUpdate: true })
   handleDisabledChange() {
     // Disabled form controls are always valid
-    // this.formControlController.setValidity(this.disabled);
+    this.formControlController.setValidity(this.disabled);
   }
 
   @watch('step', { waitUntilFirstUpdate: true })
@@ -309,13 +329,13 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     // If step changes, the value may become invalid so we need to recheck after the update. We set the new step
     // imperatively so we don't have to wait for the next render to report the updated validity.
     this.input.step = String(this.step);
-    // this.formControlController.updateValidity();
+    this.formControlController.updateValidity();
   }
 
   @watch('value', { waitUntilFirstUpdate: true })
   async handleValueChange() {
     await this.updateComplete;
-    // this.formControlController.updateValidity();
+    this.formControlController.updateValidity();
   }
 
   /** Sets focus on the input. */
@@ -393,7 +413,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   /** Sets a custom validation message. Pass an empty string to restore validity. */
   setCustomValidity(message: string) {
     this.input.setCustomValidity(message);
-    // this.formControlController.updateValidity();
+    this.formControlController.updateValidity();
   }
 
   render() {
