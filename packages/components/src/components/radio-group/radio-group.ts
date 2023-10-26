@@ -36,7 +36,6 @@ import type SdRadioButton from '../../_components/radio-button/radio-button';
  * @csspart form-control - The form control that wraps the label, input, and error text.
  * @csspart form-control-label - The label's wrapper.
  * @csspart form-control-input - The input's wrapper.
- * @csspart form-control-error-text - The error text's wrapper.
  */
 
 // TODO: integrate these parts into the component when radio-button-group is converted to a solid component: https://github.com/solid-design-system/solid/issues/216
