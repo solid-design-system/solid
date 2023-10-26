@@ -17,10 +17,32 @@ so that [PRODUCT_VALUE], and [FURTHER_PRODUCT_VALUE].
 [LINK TO FIGMA]
 
 ### Components detailed requirements
-- [ ] Props, CSS-Properties, Parts & Slots
-  - [ ] tbd
-- [ ] Stories
-  - [ ] tbd
+#### Props
+| Status | Name | Type | Default | Description |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| <ul><li>[ ] </li></ul>  | `name` | `type` | `default` | description |
+| <ul><li>[ ] </li></ul>  | `name` | `type1` / `type2` | `default` | description |
+
+
+#### CSS-Properties
+  - [ ] `name` - description
+  - [ ] `name` - description
+#### Parts
+  - [ ] `name` - description
+  - [ ] `name` - description
+#### Slots
+  - [ ] `name` - description
+  - [ ] `name` - description
+#### Stories (besides the `default` story)
+  - [ ] name
+  - [ ] name
+#### Samples
+  - [ ] `name` - description
+  - [ ] `name` - description
+
+### Open Questions towards design
+- [ ] Question1
+- [ ] Question2
 
 ## DoR
 - [ ] Item has business value

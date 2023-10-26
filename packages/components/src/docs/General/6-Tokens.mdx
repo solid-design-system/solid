@@ -1,0 +1,22 @@
+{/* Colors.mdx */}
+
+import { Meta, ColorPalette, ColorItem } from '@storybook/blocks';
+import theme from 'tailwind-theme';
+
+<Meta title="Docs/General/Tokens" />
+
+## Colors
+
+The following colors are used throughout the whole design system. They use CSS custom properties to allow for easy customization.
+They use shorthand RGB values (e. g. `108 194 84`) to allow setting opacity via other CSS properties/utility classes.
+
+<ColorPalette>
+  <ColorItem title="Primary" subtitle="--sd-color-primary-{shade}" colors={theme.color.primary} />
+  <ColorItem title="Accent" subtitle="--sd-color-accent-{shade}" colors={theme.color.accent} />
+  <ColorItem title="Neutral" subtitle="--sd-color-neutral-{shade}" colors={theme.color.neutral} />
+  <ColorItem
+    title="Additional"
+    subtitle="--sd-color-{color}"
+    colors={{ black: theme.color.black, white: theme.color.white }}
+  />
+</ColorPalette>

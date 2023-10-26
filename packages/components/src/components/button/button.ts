@@ -119,7 +119,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
   @property({ attribute: 'formnovalidate', type: Boolean }) formNoValidate: boolean;
 
   /** Used to override the form owner's `target` attribute. */
-  @property({ attribute: 'formtarget' }) formTarget: '_self' | '_blank' | '_parent' | '_top' | string;
+  @property({ attribute: 'formtarget' }) formTarget: '_self' | '_blank' | '_parent' | '_top';
 
   firstUpdated() {
     if (this.isButton()) {

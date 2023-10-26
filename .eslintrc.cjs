@@ -94,7 +94,6 @@ module.exports = {
         '@typescript-eslint/member-delimiter-style': 'warn',
         '@typescript-eslint/method-signature-style': 'warn',
         '@typescript-eslint/no-extraneous-class': 'error',
-        '@typescript-eslint/no-parameter-properties': 'error',
         '@typescript-eslint/strict-boolean-expressions': 'off',
         'no-restricted-imports': [
           'error',
