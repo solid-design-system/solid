@@ -59,3 +59,27 @@ export const Dev = {
     });
   }
 };
+
+export const Form = {
+  render: (args: any) => {
+    return html` <form action="" method="get" name="testForm">
+      ${generateTemplate({
+        constants: [
+          { type: 'attribute', name: 'form', value: 'testForm' },
+          { type: 'attribute', name: 'name', value: 'testField' },
+          { type: 'attribute', name: 'placeholder', value: 'placeholder' },
+          { type: 'attribute', name: 'label', value: 'label' },
+          { type: 'attribute', name: 'help-text', value: 'help-text' },
+          { type: 'attribute', name: 'clearable', value: true },
+          { type: 'slot', name: 'prefix', value: '<span slot="prefix">prefix</span>' },
+          {
+            type: 'slot',
+            name: 'suffix',
+            value: '<sd-icon slot="suffix" library="global-resources" name="system/picture"></sd-icon>'
+          }
+        ],
+        args
+      })}
+    </form>`;
+  }
+};
