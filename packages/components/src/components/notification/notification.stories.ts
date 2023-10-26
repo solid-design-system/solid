@@ -19,7 +19,17 @@ export default {
     }
   ]),
   argTypes,
-  parameters: { ...parameters }
+  parameters: { ...parameters },
+  decorators: [
+    (story: () => typeof html) => html`
+      <style>
+        td.template {
+          width: 100%;
+        }
+      </style>
+      ${story()}
+    `
+  ]
 };
 
 /**
@@ -98,26 +108,26 @@ export const DurationIndicator = {
 };
 
 /**
- * Create a toast notification by using the `toast` method and select a positioning using `toastStack`.
+ * Display a toast notification at the top-right of the screen by using the `toast` method. The default position is `top-right`.
  */
-export const Toast = {
+export const ToastNotification = {
+  name: 'Toast Notification (Default)',
   render: () => {
     return html`
-      <div class="toast-button-wrapper">
-        <sd-button role="button" id="toast-generator" variant="primary">Create Toast</sd-button>
-      </div>
+      <sd-button id="top-right" variant="primary">Create Toast - default</sd-button>
       <script>
-        const button = document.querySelector('sd-button');
+        var button = document.querySelector('#top-right');
 
-        function notify(variant = 'info', toastStack = 'top-right') {
+        function notify(variant = 'info', toastStack = 'top-right', duration = 5000) {
           const notification = Object.assign(document.createElement('sd-notification'), {
             closable: true,
             toastStack: toastStack,
+            duration: duration,
             innerHTML: 'Lorem ipsum dolor sit amet.'
           });
 
           document.body.append(notification);
-          return notification.toast(variant);
+          return notification.toast();
         }
 
         button.addEventListener('click', () => {
@@ -125,11 +135,47 @@ export const Toast = {
         });
       </script>
     `;
+  },
+  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
+    const button = canvasElement.querySelector('#top-right');
+    await userEvent.click(button!);
   }
-  // play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
-  //   const button = canvasElement.querySelector('#toast-generator');
-  //   await userEvent.click(button!);
-  // }
+};
+
+/**
+ * Display a toast notification positioned at the bottom-center of the screen. Set the `toastStack` attribute to `bottom-center` for the alternative position of the toast sd-notification.
+ */
+export const ToastBottomCenter = {
+  name: 'Toast Notification (Bottom Center)',
+  render: () => {
+    return html`
+      <sd-button id="bottom-center" variant="primary">Create Toast - bottom center</sd-button>
+
+      <script>
+        var buttonBottomCenter = document.querySelector('#bottom-center');
+
+        function notifyBottomCenter(variant = 'info', toastStack = 'bottom-center', duration = 5000) {
+          const notification = Object.assign(document.createElement('sd-notification'), {
+            closable: true,
+            toastStack: toastStack,
+            duration: duration,
+            innerHTML: 'Lorem ipsum dolor sit amet.'
+          });
+
+          document.body.append(notification);
+          return notification.toast();
+        }
+
+        buttonBottomCenter.addEventListener('click', () => {
+          notifyBottomCenter();
+        });
+      </script>
+    `;
+  },
+  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
+    const button = canvasElement.querySelector('#bottom-center');
+    await userEvent.click(button!);
+  }
 };
 
 /**
@@ -201,8 +247,8 @@ export const Mouseless = {
 
   play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
     const el = canvasElement.querySelector('.mouseless sd-notification');
-    await waitUntil(() => el?.shadowRoot?.querySelector('#notification'));
+    await waitUntil(() => el?.shadowRoot?.querySelector('sd-button'));
     // We have to catch the event as otherwise Storybook will break
-    await userEvent.type(el!.shadowRoot!.querySelector('#notification')!, '{return}', { pointerEventsCheck: 0 });
+    await userEvent.type(el!.shadowRoot!.querySelector('sd-button')!, '{return}', { pointerEventsCheck: 0 });
   }
 };

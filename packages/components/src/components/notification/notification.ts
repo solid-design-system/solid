@@ -10,7 +10,12 @@ import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element.js';
 
-const toastStack = Object.assign(document.createElement('div'), { className: 'sd-toast-stack' });
+const toastStackDefault = Object.assign(document.createElement('div'), {
+  className: 'sd-toast-stack sd-toast-stack--top-right'
+});
+const toastStackBottomCenter = Object.assign(document.createElement('div'), {
+  className: 'sd-toast-stack sd-toast-stack--bottom-center'
+});
 
 /**
  * @summary Alerts are used to display important messages inline or as toast notifications.
@@ -44,6 +49,7 @@ const toastStack = Object.assign(document.createElement('div'), { className: 'sd
 @customElement('sd-notification')
 export default class SdNotification extends SolidElement {
   private autoHideTimeout: number;
+  // private countIntervalId: number;
   private readonly localize = new LocalizeController(this);
 
   @query('[part~="base"]') base: HTMLElement;
@@ -69,18 +75,50 @@ export default class SdNotification extends SolidElement {
    * the notification will not close on its own.
    */
   @property({ type: Number }) duration = Infinity;
+  private remainingDuration = this.duration;
+  private startTime = Date.now();
 
   /** Enables an animation that visualizes the duration of a notification. */
   @property({ type: Boolean, reflect: true, attribute: 'duration-indicator' }) durationIndicator = false;
 
   firstUpdated() {
     this.base.hidden = this.closed;
+    this.resumeTimer();
   }
 
   private restartAutoHide() {
     clearTimeout(this.autoHideTimeout);
     if (!this.closed && this.duration < Infinity) {
-      this.autoHideTimeout = window.setTimeout(() => this.hide(), this.duration);
+      // this.countInterval();
+      this.autoHideTimeout = window.setTimeout(() => {
+        // clearInterval(this.countIntervalId);
+        this.hide();
+      }, this.duration);
+    }
+  }
+
+  private pauseAutoHide() {
+    clearTimeout(this.autoHideTimeout);
+  }
+
+  private updateTimer() {
+    this.autoHideTimeout = window.setTimeout(() => {
+      this.hide();
+    }, this.remainingDuration);
+  }
+
+  private resumeTimer() {
+    this.pauseAutoHide(); // Clear the existing timer
+
+    let elapsedTime = 0;
+    const currentTime = Date.now();
+    elapsedTime += currentTime - this.startTime;
+
+    if (elapsedTime >= this.remainingDuration) {
+      this.hide();
+    } else {
+      this.remainingDuration -= elapsedTime;
+      this.updateTimer();
     }
   }
 
@@ -155,19 +193,7 @@ export default class SdNotification extends SolidElement {
    */
   async toast() {
     return new Promise<void>(resolve => {
-      toastStack.style.position = 'fixed';
-      toastStack.style.marginRight = '24px';
-      toastStack.style.zIndex = '9999';
-      toastStack.style.maxWidth = '320px';
-
-      if (this.toastStack === 'top-right') {
-        toastStack.style.top = '0';
-        toastStack.style.right = '0';
-      } else {
-        toastStack.style.bottom = '0';
-        toastStack.style.left = '50%';
-        toastStack.style.transform = 'translateX(-50%)';
-      }
+      const toastStack = this.toastStack === 'bottom-center' ? toastStackBottomCenter : toastStackDefault;
 
       if (toastStack.parentElement === null) {
         document.body.append(toastStack);

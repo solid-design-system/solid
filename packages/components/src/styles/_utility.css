@@ -11,19 +11,28 @@
 
 .sd-toast-stack {
   position: fixed;
-  top: 0;
-  inset-inline-end: 0;
-  z-index: var(--sd-z-index-toast);
-  width: 28rem;
-  max-width: 100%;
+
+  z-index: 9999;
+  max-width: 320px;
   max-height: 100%;
-  overflow: auto;
+
+  &--top-right {
+    top: 0;
+    right: 0;
+    margin-right: 16px;
+  }
+
+  &--bottom-center {
+    bottom: 0;
+    inset-inline-start: 50%;
+    transform: translateX(-50%);
+  }
 }
 
-.sd-toast-stack sd-alert {
-  margin: var(--sd-spacing-medium);
+.sd-toast-stack sd-notification {
+  margin: 8px;
 }
 
-.sd-toast-stack sd-alert::part(base) {
-  box-shadow: var(--sd-shadow-large);
+.sd-toast-stack sd-notification::part(base) {
+  box-shadow: 0px 1px 3px 0px #515151;
 }
