@@ -27,14 +27,5 @@ jobs:
             - name: Install dependencies
               run: pnpm i
 
-            - name: (monorepo) format.verify
-              run: pnpm format.verify
-
-            - name: (monorepo) lint.verify
-              run: pnpm lint.verify
-
-            - name: (tokens) verify
-              run: cd packages/tokens && pnpm verify
-
-            - name: (components) verify
-              run: cd packages/components && pnpm verify
+            - name: (monorepo) verify
+              run: pnpm verify
