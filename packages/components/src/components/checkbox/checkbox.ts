@@ -173,7 +173,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
       <label
         part="base"
         class=${cx(
-          'sd-checkbox group inline-flex items-start leading-normal text-black cursor-pointer',
+          'sd-checkbox group flex items-start text-base leading-normal text-black cursor-pointer',
           this.checked && 'checkbox--checked',
           this.disabled && 'hover:cursor-not-allowed',
           this.hasFocus && 'checkbox--focused',
@@ -207,7 +207,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
             ? ' control--indeterminate'
             : ''}"
           class=${cx(
-            `checkbox__control relative inline-flex items-center justify-center border rounded-sm h-4 w-4 ${
+            `checkbox__control relative flex items-center justify-center border rounded-sm h-4 w-4 ${
               (this.size === 'sm' && 'mt-[2px]') || (this.size === 'lg' && 'mt-[3px]')
             }`,
             (this.disabled && 'border-neutral-500') ||
@@ -220,7 +220,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
             ? html`
                 <sd-icon
                   part="checked-icon"
-                  class="checkbox__checked-icon text-white"
+                  class="checkbox__checked-icon text-white w-3 h-3"
                   library="system"
                   name="status-hook"
                 ></sd-icon>
@@ -230,7 +230,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
             ? html`
                 <sd-icon
                   part="indeterminate-icon"
-                  class="checkbox__indeterminate-icon text-white"
+                  class="checkbox__indeterminate-icon text-white w-3 h-3"
                   library="system"
                   name="status-minus"
                 ></sd-icon>
