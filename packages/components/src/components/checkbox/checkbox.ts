@@ -10,7 +10,6 @@ import { watch } from '../../internal/watch';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 import type { SolidFormControl } from '../../internal/solid-element';
-import { HasSlotController } from '../../internal/slot';
 
 /**
  * @summary Checkboxes allow the user to toggle an option on or off.
@@ -42,16 +41,12 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
     defaultValue: (control: SdCheckbox) => control.defaultChecked,
     setValue: (control: SdCheckbox, checked: boolean) => (control.checked = checked)
   });
-  private readonly hasSlotController = new HasSlotController(this, 'label', 'error-text');
 
   @query('input[type="checkbox"]') input: HTMLInputElement;
 
   @state() private hasFocus = false;
 
   @property() title = ''; // make reactive to pass through
-
-  /** The checkbox error text. Use to display an error message below the component. */
-  @property({ attribute: 'error-text' }) errorText = '';
 
   /** The name of the checkbox, submitted as a name/value pair with form data. */
   @property() name = '';
@@ -177,9 +172,6 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
   }
 
   render() {
-    const hasErrorTextSlot = this.hasSlotController.test('error-text');
-    const hasErrorText = this.errorText ? true : hasErrorTextSlot;
-
     return html`
       <label
         part="base"
@@ -207,8 +199,6 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
           .required=${this.required}
           aria-checked=${this.checked ? 'true' : 'false'}
           aria-invalid=${this.invalid ? 'true' : 'false'}
-          aria-describedby="error-text"
-          aria-errormessage="error-text"
           @click=${this.handleClick}
           @input=${this.handleInput}
           @invalid=${this.handleInvalid}
@@ -257,30 +247,12 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
           part="label"
           class=${cx(
             'checkbox__label select-none inline-block ml-2 text-[var(--sd-input-label-color)]',
-            (this.disabled && 'text-neutral-500')
-              || (this.invalid && 'text-error') || 'text-neutral-800'
+            (this.disabled && 'text-neutral-500') || (this.invalid && 'text-error') || 'text-neutral-800'
           )}
         >
           <slot></slot>
         </span>
       </label>
-      <div
-        part="form-control-error-text"
-        aria-live="polite"
-        id="error-text"
-        class=${cx(
-          'form-control__error-text mt-2 text-left text-error leading-normal',
-          hasErrorText ? 'block' : 'hidden',
-          {
-            /* sizes, fonts */
-            sm: 'text-sm',
-            lg: 'text-base'
-          }[this.size]
-        )}
-        aria-hidden=${hasErrorText ? 'false' : 'true'}
-      >
-        <slot name="error-text">${this.errorText}</slot>
-      </div>
     `;
   }
 

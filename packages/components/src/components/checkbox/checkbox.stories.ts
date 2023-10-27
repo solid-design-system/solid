@@ -73,7 +73,7 @@ export const Size = {
  */
 
 export const Invalid = {
-  parameters: { controls: { exclude: ['invalid', 'size', 'error-text'] } },
+  parameters: { controls: { exclude: ['invalid', 'size'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -85,10 +85,7 @@ export const Invalid = {
           }
         ]
       },
-      constants: [
-        { type: 'attribute', name: 'invalid', value: true },
-        { type: 'attribute', name: 'error-text', value: 'Error message' }
-      ],
+      constants: [{ type: 'attribute', name: 'invalid', value: true }],
       args
     });
   }
@@ -130,7 +127,6 @@ export const Indeterminate = {
   }
 };
 
-
 /**
  * Use the `base`, `control--unchecked`, `control--checked`, `checked` and `label` part selectors to customize the checkbox.
  */
@@ -146,8 +142,7 @@ export const Parts = {
         'checked-icon',
         'control--indeterminate',
         'indeterminate-icon',
-        'label',
-        'form-control-error-text'
+        'label'
       ]
     }
   },
@@ -165,8 +160,7 @@ export const Parts = {
             'checked-icon',
             'control--indeterminate',
             'indeterminate-icon',
-            'label',
-            'form-control-error-text'
+            'label'
           ].map(part => {
             return {
               title: part,
