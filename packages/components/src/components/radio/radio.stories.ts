@@ -41,7 +41,7 @@ export const DisabledAndSize = {
         y: {
           type: 'attribute',
           name: 'size',
-          values: ['sm', 'lg']
+          values: ['lg', 'sm']
         }
       },
       constants: { type: 'attribute', name: 'disabled', value: true },

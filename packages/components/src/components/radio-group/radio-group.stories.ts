@@ -22,18 +22,12 @@ export default {
     {
       type: 'slot',
       name: 'label',
-      value: `
-        <label slot="label">Select an option</label>
-      `
+      value: `<label slot="label">Group Label</label>`
     },
     {
       type: 'slot',
       name: 'default',
-      value: `
-        <sd-radio value="1">Option 1</sd-radio>
-        <sd-radio value="2">Option 2</sd-radio>
-        <sd-radio value="3">Option 3</sd-radio>
-        `
+      value: `<sd-radio value="1">Radio 1</sd-radio><sd-radio value="2">Radio 2</sd-radio><sd-radio value="3">Radio 3</sd-radio>`
     },
     { type: 'attribute', name: 'name', value: 'radio-group' },
     { type: 'attribute', name: 'value', value: '2' }
@@ -109,15 +103,16 @@ export const Disabled = {
  */
 
 export const Invalid = {
-  parameters: { controls: { exclude: ['invalid', 'size', 'error-text'] } },
+  parameters: { controls: { exclude: ['size', 'value', 'required', 'invalid'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        y: [{ type: 'attribute', name: 'size' }]
+        y: { type: 'attribute', name: 'size' }
       },
       constants: [
         { type: 'attribute', name: 'invalid', value: true },
-        { type: 'attribute', name: 'error-text', value: 'Error message' }
+        { type: 'attribute', name: 'required', value: true },
+        { type: 'attribute', name: 'value', value: '' }
       ],
       args
     });
@@ -142,11 +137,11 @@ export const Required = {
 };
 
 /**
- * Use the `form-control`, `form-control-label`, `form-control-input` and `form-control-error-text` part selectors to customize the radio-group.
+ * Use the `form-control`, `form-control-label` and `form-control-input` part selectors to customize the radio-group.
  */
 export const Parts = {
   parameters: {
-    controls: { exclude: ['form-control', 'form-control-label', 'form-control-input', 'form-control-error-text'] }
+    controls: { exclude: ['form-control', 'form-control-label', 'form-control-input'] }
   },
   render: (args: any) => {
     return generateTemplate({
@@ -154,7 +149,7 @@ export const Parts = {
         y: {
           type: 'template',
           name: 'sd-radio-group::part(...){outline: solid 2px red}',
-          values: ['form-control', 'form-control-label', 'form-control-input', 'form-control-error-text'].map(part => {
+          values: ['form-control', 'form-control-label', 'form-control-input'].map(part => {
             return {
               title: part,
               value: `<style>#part-${part} sd-radio-group::part(${part}){outline: solid 2px red}</style><div id="part-${part}">%TEMPLATE%</div>`
@@ -162,10 +157,7 @@ export const Parts = {
           })
         }
       },
-      constants: [
-        { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' },
-        { type: 'attribute', name: 'error-text', value: 'Error message' }
-      ],
+      constants: [{ type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' }],
       args
     });
   }
