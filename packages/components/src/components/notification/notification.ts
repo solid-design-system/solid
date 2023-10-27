@@ -74,60 +74,56 @@ export default class SdNotification extends SolidElement {
    * the notification before it closes (e.g. moves the mouse over it), the timer will restart. Defaults to `Infinity`, meaning
    * the notification will not close on its own.
    */
-  @property({ type: Number }) duration = Infinity;
+  @property({ type: Number }) duration = 5000;
   private remainingDuration = this.duration;
   private startTime = Date.now();
+  private pauseTime = {
+    new: 0,
+    last: 0
+  };
+  private elapsedTime = 0;
 
   /** Enables an animation that visualizes the duration of a notification. */
-  @property({ type: Boolean, reflect: true, attribute: 'duration-indicator' }) durationIndicator = false;
+  @property({ type: Boolean, reflect: true, attribute: 'duration-indicator' }) durationIndicator = true;
 
   firstUpdated() {
     this.base.hidden = this.closed;
-    this.resumeTimer();
   }
 
-  private restartAutoHide() {
+  private startAutoHide() {
     clearTimeout(this.autoHideTimeout);
+
     if (!this.closed && this.duration < Infinity) {
-      // this.countInterval();
       this.autoHideTimeout = window.setTimeout(() => {
-        // clearInterval(this.countIntervalId);
         this.hide();
-      }, this.duration);
+      }, this.remainingDuration);
     }
   }
 
   private pauseAutoHide() {
     clearTimeout(this.autoHideTimeout);
-  }
 
-  private updateTimer() {
-    this.autoHideTimeout = window.setTimeout(() => {
-      this.hide();
-    }, this.remainingDuration);
-  }
+    if (this.duration < Infinity) {
+      // Check if this is the first time the notification is paused
+      if (this.elapsedTime === 0) {
+        this.elapsedTime = Date.now() - this.startTime;
+        this.pauseTime.last = Date.now();
 
-  private resumeTimer() {
-    this.pauseAutoHide(); // Clear the existing timer
+        console.log('1st: this.elapsedTime: ', this.elapsedTime);
+      } else {
+        this.elapsedTime = Date.now() - this.pauseTime.last;
+        this.pauseTime.last = this.pauseTime.new;
 
-    let elapsedTime = 0;
-    const currentTime = Date.now();
-    elapsedTime += currentTime - this.startTime;
+        console.log('this.elapsedTime: ', this.elapsedTime);
+      }
 
-    if (elapsedTime >= this.remainingDuration) {
-      this.hide();
-    } else {
-      this.remainingDuration -= elapsedTime;
-      this.updateTimer();
+      this.remainingDuration -= this.elapsedTime;
+      console.log('this.remainingDuration: ', this.remainingDuration);
     }
   }
 
   private handleCloseClick() {
     this.hide();
-  }
-
-  private handleMouseMove() {
-    this.restartAutoHide();
   }
 
   @watch('closed', { waitUntilFirstUpdate: true })
@@ -137,7 +133,10 @@ export default class SdNotification extends SolidElement {
       this.emit('sd-show');
 
       if (this.duration < Infinity) {
-        this.restartAutoHide();
+        this.elapsedTime = 0;
+        this.remainingDuration = this.duration;
+        this.startTime = Date.now();
+        this.startAutoHide();
       }
 
       await stopAnimations(this.base);
@@ -151,6 +150,10 @@ export default class SdNotification extends SolidElement {
       this.emit('sd-hide');
 
       clearTimeout(this.autoHideTimeout);
+      this.remainingDuration = this.duration;
+      this.elapsedTime = 0;
+      this.pauseTime.new = 0;
+      this.pauseTime.last = 0;
 
       await stopAnimations(this.base);
       const { keyframes, options } = getAnimation(this, 'notification.hide', { dir: this.localize.dir() });
@@ -163,7 +166,7 @@ export default class SdNotification extends SolidElement {
 
   @watch('duration')
   handleDurationChange() {
-    this.restartAutoHide();
+    this.startAutoHide();
   }
 
   /** Shows the notification. */
@@ -238,7 +241,8 @@ export default class SdNotification extends SolidElement {
         role="alert"
         id="notification"
         aria-hidden=${this.closed ? 'true' : 'false'}
-        @mousemove=${this.handleMouseMove}
+        @mouseenter=${this.pauseAutoHide}
+        @mouseleave=${this.startAutoHide}
       >
         <slot name="icon" part="icon" class=${cx('h-full min-w-min text-white px-3 flex justify-center')}>
           <sd-icon
@@ -315,8 +319,7 @@ export default class SdNotification extends SolidElement {
       }
 
       #notification:hover .width-animation {
-        width: 0%;
-        animation: none;
+        animation-play-state: paused;
       }
 
       @keyframes grow {
