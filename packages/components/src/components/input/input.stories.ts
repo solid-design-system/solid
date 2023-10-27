@@ -65,6 +65,7 @@ export const Form = {
     return html` <form action="" method="get" name="testForm">
       ${generateTemplate({
         constants: [
+          { type: 'attribute', name: 'required', value: true },
           { type: 'attribute', name: 'form', value: 'testForm' },
           { type: 'attribute', name: 'name', value: 'testField' },
           { type: 'attribute', name: 'placeholder', value: 'placeholder' },
@@ -80,6 +81,21 @@ export const Form = {
         ],
         args
       })}
+      <input type="submit" value="SUBMIT" />
+    </form>`;
+  }
+};
+
+export const BasicForm = {
+  render: () => {
+    return html`<form name="testForm" action="" method="get" class="form-example">
+      <div class="form-example">
+        <label for="name">Enter your name: </label>
+        <sd-input type="text" name="name" form="testForm" id="name" required></sd-input>
+      </div>
+      <div class="form-example">
+        <input type="submit" value="Subscribe!" />
+      </div>
     </form>`;
   }
 };

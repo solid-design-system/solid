@@ -259,7 +259,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
 
   private handleBlur() {
     this.hasFocus = false;
-    // this.emit('sd-blur');
+    this.emit('sd-blur');
   }
 
   private handleChange() {
@@ -269,9 +269,9 @@ export default class SdInput extends SolidElement implements SolidFormControl {
 
   private handleClearClick(event: MouseEvent) {
     this.value = '';
-    // this.emit('sd-clear');
-    // this.emit('sd-input');
-    // this.emit('sd-change');
+    this.emit('sd-clear');
+    this.emit('sd-input');
+    this.emit('sd-change');
     this.input.focus();
 
     event.stopPropagation();
@@ -291,6 +291,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   }
 
   private handleInvalid() {
+    console.log('handleInvalid');
     this.formControlController.setValidity(false);
   }
 
