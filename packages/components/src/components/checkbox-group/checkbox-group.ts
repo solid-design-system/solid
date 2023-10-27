@@ -33,9 +33,6 @@ export default class SdCheckboxGroup extends SolidElement {
   /** The checkbox group's size. This size will be applied to the label, all child checkboxes. */
   @property({ reflect: true }) size: 'lg' | 'sm' = 'lg';
 
-  /**  A Boolean attribute which, if present, marks the checkbox-group valid or invalid  */
-  @property({ type: Boolean, reflect: true }) invalid = false;
-
   /**
    * The orientation property determines the alignment of the component's content or elements. It accepts two possible
    * values: 'horizontal' and 'vertical'. The default value is 'vertical'.
@@ -57,7 +54,6 @@ export default class SdCheckboxGroup extends SolidElement {
         await checkbox.updateComplete;
 
         checkbox.size = this.size;
-        checkbox.invalid = this.invalid;
       })
     );
 
@@ -116,7 +112,6 @@ export default class SdCheckboxGroup extends SolidElement {
           part="form-control-input"
           class=${cx(
             'form-control-input',
-            this.invalid && 'form-control-input--invalid text-error',
             {
               vertical: 'form-control-input--vertical flex flex-col',
               horizontal: 'form-control-input--horizontal flex flex-row'
