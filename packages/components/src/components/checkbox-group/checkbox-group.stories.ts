@@ -87,26 +87,6 @@ export const Disabled = {
 };
 
 /**
- * Use the `invalid` attribute to mark the element is not in a format or a value the application will accept.
- */
-
-export const Invalid = {
-  parameters: { controls: { exclude: ['size', 'value', 'invalid'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: { type: 'attribute', name: 'size' }
-      },
-      constants: [
-        { type: 'attribute', name: 'invalid', value: true },
-        { type: 'attribute', name: 'value', value: '' }
-      ],
-      args
-    });
-  }
-};
-
-/**
  * Use the `form-control`, `form-control-label` and `form-control-input` part selectors to customize the checkbox-group.
  */
 export const Parts = {

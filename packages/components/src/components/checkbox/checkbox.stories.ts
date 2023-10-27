@@ -40,7 +40,7 @@ export const DisabledAndSize = {
         y: {
           type: 'attribute',
           name: 'size',
-          values: ['sm', 'lg']
+          values: ['lg', 'sm']
         }
       },
       constants: { type: 'attribute', name: 'disabled', value: true },
@@ -60,7 +60,8 @@ export const Size = {
       axis: {
         x: {
           type: 'attribute',
-          name: 'size'
+          name: 'size',
+          values: ['lg', 'sm']
         }
       },
       args
@@ -75,33 +76,11 @@ export const MultipleLines = {
       axis: {
         x: {
           type: 'attribute',
-          name: 'size'
+          name: 'size',
+          values: ['lg', 'sm']
         }
       },
-      args: overrideArgs([{ type: 'slot', name: 'default', value: 'Default slot<br />Second Line' }])
-    });
-  }
-};
-
-/**
- * Use the `invalid` attribute to mark the element is not in a format or a value the application will accept.
- */
-
-export const Invalid = {
-  parameters: { controls: { exclude: ['invalid', 'size'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: [
-          {
-            type: 'attribute',
-            name: 'size',
-            values: ['sm', 'lg']
-          }
-        ]
-      },
-      constants: [{ type: 'attribute', name: 'invalid', value: true }],
-      args
+      args: overrideArgs([{ type: 'slot', name: 'default', value: 'Default Slot<br />Second Line' }])
     });
   }
 };
@@ -115,7 +94,7 @@ export const Required = {
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        x: [{ type: 'attribute', name: 'size' }],
+        x: [{ type: 'attribute', name: 'size', values: ['lg', 'sm'] }],
         y: { type: 'attribute', name: 'required' }
       },
       args
@@ -132,7 +111,7 @@ export const Indeterminate = {
           {
             type: 'attribute',
             name: 'size',
-            values: ['sm', 'lg']
+            values: ['lg', 'sm']
           }
         ]
       },
@@ -145,7 +124,6 @@ export const Indeterminate = {
 /**
  * Use the `base`, `control--unchecked`, `control--checked`, `checked` and `label` part selectors to customize the checkbox.
  */
-
 export const Parts = {
   parameters: {
     controls: {
@@ -157,7 +135,17 @@ export const Parts = {
         'checked-icon',
         'control--indeterminate',
         'indeterminate-icon',
-        'label'
+        'label',
+        'title',
+        'name',
+        'value',
+        'size',
+        'disabled',
+        'checked',
+        'indeterminate',
+        'form',
+        'required',
+        'default'
       ]
     }
   },
