@@ -211,8 +211,6 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
               (this.size === 'sm' && 'mt-[2px]') || (this.size === 'lg' && 'mt-[3px]')
             }`,
             (this.disabled && 'border-neutral-500') ||
-              ('invalid' &&
-                `border-error hover:border-error-400 ${this.checked && 'bg-error group-hover:bg-error-400'}`) ||
               ((this.checked || this.indeterminate) &&
                 'border-accent hover:border-accent-550 group-hover:border-accent-550 bg-accent group-hover:bg-accent-550') ||
               'border-neutral-800 hover:bg-neutral-200 group-hover:bg-neutral-200 bg-white'
@@ -243,7 +241,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
           part="label"
           class=${cx(
             'checkbox__label select-none inline-block ml-2 text-[var(--sd-input-label-color)]',
-            (this.disabled && 'text-neutral-500') || ('invalid' && 'text-error') || 'text-neutral-800'
+            (this.disabled && 'text-neutral-500') || 'text-neutral-800'
           )}
         >
           <slot></slot>
@@ -268,6 +266,14 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
 
       :host([required]) .checkbox__label::after {
         content: ' *';
+      }
+
+      :host([data-user-invalid]) .checkbox__label {
+        color: rgb(var(--sd-color-error, 204 25 55));
+      }
+
+      :host([data-user-invalid]) .checkbox__control {
+        border-color: rgb(var(--sd-color-error, 204 25 55));
       }
 
       .checkbox__control {
