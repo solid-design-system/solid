@@ -178,6 +178,9 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   /** A regular expression pattern to validate input against. */
   @property() pattern: string;
 
+  /**  A Boolean attribute which, if present, marks the radio Button valid or invalid  */
+  @property({ type: Boolean, reflect: true }) invalid = false;
+
   /**
    * Specifies the granularity that the value must adhere to, or the special value `any` which means no stepping is
    * implied, allowing any numeric value. Only applies to date and number input types.
@@ -245,11 +248,14 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     const hasCustomValidityMessage = this.customValidityMessage !== '';
 
     if (hasCustomValidityMessage) {
+      this.invalid = true;
       return customErrorValidityState;
     } else if (isRequiredAndEmpty) {
+      this.invalid = true;
       return valueMissingValidityState;
     }
 
+    this.invalid = false;
     return validValidityState;
   }
 
@@ -290,6 +296,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
 
   private handleInvalid() {
     console.log('handleInvalid');
+    console.log(this.invalid);
     this.formControlController.setValidity(false);
   }
 
@@ -446,8 +453,13 @@ export default class SdInput extends SolidElement implements SolidFormControl {
           <div
             part="base"
             class=${cx(
-              'px-4 border border-neutral-800 rounded flex flex-row items-center ',
-              this.disabled && 'border-neutral-500 text-neutral-500',
+              'px-4 border rounded flex flex-row items-center ',
+              this.disabled
+                ? 'border-neutral-500 text-neutral-500'
+                : this.invalid
+                ? 'form-control-input--invalid border-error'
+                : 'border-neutral-800',
+              this.disabled && '',
               this.readonly ? 'bg-neutral-100 hover:bg-neutral-100' : 'hover:bg-neutral-200',
 
               // Sizes
