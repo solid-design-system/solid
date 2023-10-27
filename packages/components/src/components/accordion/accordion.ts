@@ -32,7 +32,8 @@ import SolidElement from '../../internal/solid-element';
  * @csspart header - The header that wraps both the summary and the expand/collapse icon.
  * @csspart summary - The container that wraps the summary.
  * @csspart summary-icon - The container that wraps the expand/collapse icons.
- * @csspart content - The accordion content.
+ * @csspart content - The container that wraps the accordion content slot.
+ * @csspart content__slot - The accordion content slot.
  *
  * @animation accordion.show - The animation to use when showing accordion. You can use `height: auto` with this animation.
  * @animation accordion.hide - The animation to use when hiding accordion. You can use `height: auto` with this animation.
@@ -182,7 +183,7 @@ export default class SdAccordion extends SolidElement {
           </span>
         </header>
         <div part="content" id="content" class="overflow-hidden">
-          <slot class="block px-4 py-6" role="region" aria-labelledby="header"></slot>
+          <slot part="content__slot" class="block px-4 py-6" role="region" aria-labelledby="header"></slot>
         </div>
       </div>
     `;

@@ -10,7 +10,7 @@ import SolidElement from '../../internal/solid-element';
  * @summary A radio allows to select only one value from a set of options. Clicking on an unchecked radio will deselect the other one(s).
  * @documentation https://solid.union-investment.com/[storybook-link]/radio
  * @status stable
- * @since 1.18.0
+ * @since 1.20.0
  *
  * @slot - The radio's label.
  *
@@ -118,7 +118,7 @@ export default class SdRadio extends SolidElement {
         <span
           part="${`${this.checked ? 'control--checked' : 'control--unchecked'}`}"
           class=${cx(
-            'radio__control flex-initial shrink-0 relative inline-flex items-center justify-center border rounded-full bg-white h-4 w-4',
+            'flex-initial shrink-0 relative inline-flex items-center justify-center border rounded-full bg-white h-4 w-4',
             (this.disabled && 'border-neutral-500') ||
               (this.invalid && 'border-error hover:border-error-400 group-hover:border-error-400') ||
               (this.checked && 'border-accent hover:border-accent-550 group-hover:border-accent-550') ||
@@ -132,8 +132,8 @@ export default class SdRadio extends SolidElement {
                   class=${cx(
                     'rounded-full inline-flex text-white border bg-accent h-2.5 w-2.5',
                     (this.disabled && 'bg-neutral-500') ||
-                      (this.invalid && 'bg-error hover:bg-error-400 group-hover:bg-error-400 ') ||
-                      (this.checked && 'bg-accent hover:bg-accent-550 group-hover:bg-accent-550 ') ||
+                      (this.invalid && 'bg-error hover:bg-error-400 group-hover:bg-error-400') ||
+                      (this.checked && 'bg-accent hover:bg-accent-550 group-hover:bg-accent-550') ||
                       'bg-neutral-800'
                   )}
                 ></span>
@@ -144,8 +144,8 @@ export default class SdRadio extends SolidElement {
         <slot
           part="label"
           class=${cx(
-            'label ml-2 select-none inline-block text-[var(--sd-input-label-color)]',
-            (this.disabled && 'text-neutral-500') || (this.invalid && 'text-error') || 'text-neutral-800'
+            'label ml-2 select-none inline-block',
+            (this.disabled && 'text-neutral-500') || (this.invalid && 'text-error') || 'text-black'
           )}
         >
         </slot>
@@ -172,14 +172,6 @@ export default class SdRadio extends SolidElement {
       :host(:focus-visible) [part='control--unchecked'] {
         outline: 2px solid #00358e;
         outline-offset: 2px;
-      }
-
-      .small-size .label {
-        margin-top: 0.5px;
-      }
-
-      .label {
-        margin-top: 1.5px;
       }
     `
   ];
