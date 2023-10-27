@@ -77,11 +77,6 @@ export default class SdNotification extends SolidElement {
   @property({ type: Number }) duration = 5000;
   private remainingDuration = this.duration;
   private startTime = Date.now();
-  private pauseTime = {
-    new: 0,
-    last: 0
-  };
-  private elapsedTime = 0;
 
   /** Enables an animation that visualizes the duration of a notification. */
   @property({ type: Boolean, reflect: true, attribute: 'duration-indicator' }) durationIndicator = true;
@@ -91,6 +86,7 @@ export default class SdNotification extends SolidElement {
   }
 
   private startAutoHide() {
+    this.startTime = Date.now();
     clearTimeout(this.autoHideTimeout);
 
     if (!this.closed && this.duration < Infinity) {
@@ -104,21 +100,7 @@ export default class SdNotification extends SolidElement {
     clearTimeout(this.autoHideTimeout);
 
     if (this.duration < Infinity) {
-      // Check if this is the first time the notification is paused
-      if (this.elapsedTime === 0) {
-        this.elapsedTime = Date.now() - this.startTime;
-        this.pauseTime.last = Date.now();
-
-        console.log('1st: this.elapsedTime: ', this.elapsedTime);
-      } else {
-        this.elapsedTime = Date.now() - this.pauseTime.last;
-        this.pauseTime.last = this.pauseTime.new;
-
-        console.log('this.elapsedTime: ', this.elapsedTime);
-      }
-
-      this.remainingDuration -= this.elapsedTime;
-      console.log('this.remainingDuration: ', this.remainingDuration);
+      this.remainingDuration -= Date.now() - this.startTime;
     }
   }
 
@@ -133,7 +115,6 @@ export default class SdNotification extends SolidElement {
       this.emit('sd-show');
 
       if (this.duration < Infinity) {
-        this.elapsedTime = 0;
         this.remainingDuration = this.duration;
         this.startTime = Date.now();
         this.startAutoHide();
@@ -151,9 +132,6 @@ export default class SdNotification extends SolidElement {
 
       clearTimeout(this.autoHideTimeout);
       this.remainingDuration = this.duration;
-      this.elapsedTime = 0;
-      this.pauseTime.new = 0;
-      this.pauseTime.last = 0;
 
       await stopAnimations(this.base);
       const { keyframes, options } = getAnimation(this, 'notification.hide', { dir: this.localize.dir() });
