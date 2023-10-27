@@ -1,11 +1,13 @@
 import '../icon/icon';
 import { css, html } from 'lit';
 import { customElement } from '../../../src/internal/register-custom-element';
-import SolidElement from '../../internal/solid-element';
+import { HasSlotController } from '../../internal/slot';
 import { property } from 'lit/decorators.js';
-import cx from 'classix';
-import SdCheckbox from '../checkbox/checkbox';
 import { watch } from '../../internal/watch';
+import componentStyles from '../../styles/component.styles';
+import cx from 'classix';
+import SolidElement from '../../internal/solid-element';
+import type SdCheckbox from '../checkbox/checkbox';
 
 /**
  * @summary Checkbox groups are used to group multiple [checkbox](/components/checkbox). It provides only presentational functionality.
@@ -20,15 +22,13 @@ import { watch } from '../../internal/watch';
 
 @customElement('sd-checkbox-group')
 export default class SdCheckboxGroup extends SolidElement {
+  private readonly hasSlotController = new HasSlotController(this, 'label');
 
   /**
    * The checkbox group's label. Required for proper accessibility. If you need to display HTML, use the `label` slot
    * instead.
    */
   @property() label = '';
-
-  /** The checkbox group's error text. Use to display an error message below the component. */
-  @property({ attribute: 'error-text' }) errorText = '';
 
   /** The checkbox group's size. This size will be applied to the label, all child checkboxes. */
   @property({ reflect: true }) size: 'lg' | 'sm' = 'lg';
@@ -44,7 +44,6 @@ export default class SdCheckboxGroup extends SolidElement {
    */
   @property({ reflect: true }) orientation: 'horizontal' | 'vertical' = 'vertical';
 
-
   private getAllCheckboxes() {
     return [...this.querySelectorAll<SdCheckbox>('sd-checkbox')];
   }
@@ -53,13 +52,13 @@ export default class SdCheckboxGroup extends SolidElement {
     const checkboxes = this.getAllCheckboxes();
 
     await Promise.all(
-        // Sync the checked state and size
-        checkboxes.map(async checkbox => {
-          await checkbox.updateComplete;
+      // Sync the checked state and size
+      checkboxes.map(async checkbox => {
+        await checkbox.updateComplete;
 
-          checkbox.size = this.size;
-          checkbox.invalid = this.invalid;
-        })
+        checkbox.size = this.size;
+        checkbox.invalid = this.invalid;
+      })
     );
 
     if (!checkboxes.some(checkbox => checkbox.checked)) {
@@ -80,18 +79,21 @@ export default class SdCheckboxGroup extends SolidElement {
     this.syncCheckboxes();
   }
   @watch('invalid', { waitUntilFirstUpdate: true })
-  handleInvalid () {
+  handleInvalid() {
     this.syncCheckboxes();
   }
 
   render() {
-    const defaultSlot = html`
-      <slot @slotchange=${this.syncCheckboxes}></slot>
-    `;
+    const hasLabelSlot = this.hasSlotController.test('label');
+    const hasLabel = this.label ? true : hasLabelSlot;
+    const defaultSlot = html` <slot @slotchange=${this.syncCheckboxes}></slot> `;
 
     return html`
       <fieldset
-        class=${cx(
+          part="form-control"
+          class=${cx(
+          'form-control form-control--checkbox-group border-0 p-0 m-0',
+          hasLabel && 'form-control--has-label',
           {
             /* sizes, fonts */
             sm: 'text-sm',
@@ -100,16 +102,15 @@ export default class SdCheckboxGroup extends SolidElement {
         )}
         role="group"
         aria-labelledby="label"
-        aria-describedby="error-text"
-        aria-errormessage="error-message"
       >
-        <legend
+        <label
           part="form-control-label"
           id="label"
-          class="form-control__label mb-2 p-0 font-bold leading-normal text-black"
+          class="form-control__label mb-2 hidden p-0 font-bold leading-normal text-black"
+          aria-hidden=${!hasLabel}
         >
           <slot name="label">${this.label}</slot>
-        </legend>
+        </label>
 
         <div
           part="form-control-input"
@@ -124,21 +125,6 @@ export default class SdCheckboxGroup extends SolidElement {
         >
           ${defaultSlot}
         </div>
-
-        <div
-          part="form-control-error-text"
-          id="error-text"
-          class=${cx(
-            'form-control__error-text mt-2 text-error leading-normal',
-            {
-              /* sizes, fonts */
-              sm: 'text-sm',
-              lg: 'text-base'
-            }[this.size]
-          )}
-        >
-          <slot name="error-text">${this.errorText}</slot>
-        </div>
       </fieldset>
     `;
   }
@@ -146,7 +132,42 @@ export default class SdCheckboxGroup extends SolidElement {
   /**
    * Inherits Tailwind classes and includes additional styling.
    */
-  static styles = [SolidElement.styles, css``];
+  static styles = [
+    componentStyles,
+    SolidElement.styles,
+    css`
+      :host {
+        display: block;
+      }
+
+      .form-control-input--vertical ::slotted(sd-checkbox) {
+        margin-bottom: 8px;
+        display: flex;
+      }
+
+      .form-control-input--vertical ::slotted(sd-checkbox:last-of-type) {
+        margin-bottom: 0;
+      }
+
+      .form-control-input--horizontal ::slotted(sd-checkbox) {
+        margin-right: 24px;
+      }
+
+      .form-control-input--horizontal ::slotted(sd-checkbox:last-of-type) {
+        margin-right: 0;
+      }
+
+      /* Label */
+      .form-control--has-label .form-control__label {
+        display: flex;
+      }
+
+      :host([required]) .form-control--has-label .form-control__label::after {
+        content: '*';
+        margin-left: 2px;
+      }
+    `
+  ];
 }
 
 declare global {

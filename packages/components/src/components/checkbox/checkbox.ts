@@ -63,9 +63,6 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
   /** Draws the checkbox in a checked state. */
   @property({ type: Boolean, reflect: true }) checked = false;
 
-  /**  A Boolean attribute which, if present, marks the radio valid or invalid  */
-  @property({ type: Boolean, reflect: true }) invalid = false;
-
   /**
    * Draws the checkbox in an indeterminate state. This is usually applied to checkboxes that represents a "select
    * all/none" behavior when associated checkboxes have a mix of checked and unchecked states.
@@ -198,7 +195,6 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
           .disabled=${this.disabled}
           .required=${this.required}
           aria-checked=${this.checked ? 'true' : 'false'}
-          aria-invalid=${this.invalid ? 'true' : 'false'}
           @click=${this.handleClick}
           @input=${this.handleInput}
           @invalid=${this.handleInvalid}
@@ -215,7 +211,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
               (this.size === 'sm' && 'mt-[2px]') || (this.size === 'lg' && 'mt-[3px]')
             }`,
             (this.disabled && 'border-neutral-500') ||
-              (this.invalid &&
+              ('invalid' &&
                 `border-error hover:border-error-400 ${this.checked && 'bg-error group-hover:bg-error-400'}`) ||
               ((this.checked || this.indeterminate) &&
                 'border-accent hover:border-accent-550 group-hover:border-accent-550 bg-accent group-hover:bg-accent-550') ||
@@ -247,7 +243,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
           part="label"
           class=${cx(
             'checkbox__label select-none inline-block ml-2 text-[var(--sd-input-label-color)]',
-            (this.disabled && 'text-neutral-500') || (this.invalid && 'text-error') || 'text-neutral-800'
+            (this.disabled && 'text-neutral-500') || ('invalid' && 'text-error') || 'text-neutral-800'
           )}
         >
           <slot></slot>
@@ -264,7 +260,6 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
     css`
       :host {
         display: block;
-        text-align: left;
       }
 
       :host(:focus-visible) {

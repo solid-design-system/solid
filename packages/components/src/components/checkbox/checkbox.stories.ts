@@ -55,6 +55,21 @@ export const DisabledAndSize = {
 
 export const Size = {
   parameters: { controls: { exclude: ['size'] } },
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        x: {
+          type: 'attribute',
+          name: 'size'
+        }
+      },
+      args
+    });
+  }
+};
+
+export const MultipleLines = {
+  parameters: { controls: { exclude: ['size'] } },
   render: () => {
     return generateTemplate({
       axis: {
