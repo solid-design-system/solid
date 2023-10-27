@@ -140,24 +140,6 @@ export default class SdButton extends SolidElement implements SolidFormControl {
     return '';
   }
 
-  /** Gets the validity state object */
-  get validity() {
-    if (this.isButton()) {
-      return (this.button as HTMLButtonElement).validity;
-    }
-
-    return validValidityState;
-  }
-
-  /** Gets the validation message */
-  get validationMessage() {
-    if (this.isButton()) {
-      return (this.button as HTMLButtonElement).validationMessage;
-    }
-
-    return '';
-  }
-
   firstUpdated() {
     if (this.isButton()) {
       this.formControlController.updateValidity();

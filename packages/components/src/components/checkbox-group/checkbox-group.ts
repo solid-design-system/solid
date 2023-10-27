@@ -86,8 +86,8 @@ export default class SdCheckboxGroup extends SolidElement {
 
     return html`
       <fieldset
-          part="form-control"
-          class=${cx(
+        part="form-control"
+        class=${cx(
           'form-control form-control--checkbox-group border-0 p-0 m-0',
           hasLabel && 'form-control--has-label',
           {
