@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { useAddonState, useChannel } from "@storybook/manager-api";
+import React, { useState, useEffect, useCallback } from 'react';
 import { AddonPanel, Form } from "@storybook/components";
 import chroma from 'chroma-js';
 import { PARAM_KEY } from "./constants";
 import { useGlobals } from "@storybook/manager-api";
 import theme from '../../../tokens/src/create-theme.cjs';
 
-const { Input, Textarea, Button } = Form;
+const { Textarea, Button } = Form;
 
 const defaultLuminanceMap = {
   50: 0.95,
@@ -14,12 +13,12 @@ const defaultLuminanceMap = {
   200: 0.73,
   300: 0.62,
   400: 0.35,
-  500: 0.28,
-  550: 0.22,
-  600: 0.18,
-  700: 0.10,
+  500: 0.22,
+  550: 0.18,
+  600: 0.10,
+  700: 0.08,
   800: 0.04,
-  DEFAULT: 0.3
+  DEFAULT: 0.22
 };
 
 const extractRGB = (str) => {
@@ -130,7 +129,7 @@ export const Panel: React.FC<PanelProps> = (props) => {
     scale.forEach((currentColor, index) => {
       const scaleValue = scalesForType[index];
       const rgb = chroma(currentColor).rgb();
-      tokens += `--sd-color-${type}${scaleValue !== 'DEFAULT' ? `-${scaleValue}` : ''}: ${rgb.join(' ')};\n`;
+      tokens += `  --sd-color-${type}${scaleValue !== 'DEFAULT' ? `-${scaleValue}` : ''}: ${rgb.join(' ')};\n`;
     });
 
     return tokens;
@@ -147,11 +146,28 @@ export const Panel: React.FC<PanelProps> = (props) => {
     setOutput(allTokens);
   };
 
+  const useDebouncedEffect = (effect, delay, deps) => {
+    const callback = useCallback(effect, deps);
+
+    useEffect(() => {
+      const handler = setTimeout(() => {
+        callback();
+      }, delay);
+      return () => {
+        clearTimeout(handler);
+      };
+    }, [callback, delay]);
+  };
+
   useEffect(() => {
+    calculateColors();
+  }, [colors, useDefaultLuminanceMap]);
+
+  useDebouncedEffect(() => {
     updateGlobals({
       [PARAM_KEY + '_CONTENT']: output
     });
-  }, [output]);
+  }, 500, [output]);
 
   return (
     <AddonPanel {...props}>
@@ -178,25 +194,21 @@ export const Panel: React.FC<PanelProps> = (props) => {
             checked={useDefaultLuminanceMap}
             onChange={(e) => setUseDefaultLuminanceMap(e.target.checked)}
           />
-          <label htmlFor="useDefaultLuminanceMap">Do not use Luminence of Union Investment</label>
+          <label htmlFor="useDefaultLuminanceMap">Use colors which are closer to given colors. (This might reduce accessibility – please double check compliance yourself.)</label>
         </div>
 
         <div style={{ display: "flex", gap: "8px", marginTop: "12px" }}>
-          <Button onClick={calculateColors}
-            secondary={true}
-          >Calculate Colors</Button>
-
           <Button onClick={() => {
             updateGlobals({ [PARAM_KEY]: !isActive });
+            console.log({ output, content });
           }}
             primary={isActive}
           >
-            {isActive ? "Disable Theme" : "Enable Theme"}
+            {isActive ? "🟢 Disable Theme" : "🔴 Enable Theme"}
           </Button>
-
         </div>
 
-        <Textarea style={{ marginTop: "16px" }} rows="12" readOnly value={output || content} />
+        <Textarea style={{ marginTop: "16px", fontFamily: "monospace", width: "400px", height: "600px" }} readOnly value={output || content} />
       </div>
     </AddonPanel>
   );
