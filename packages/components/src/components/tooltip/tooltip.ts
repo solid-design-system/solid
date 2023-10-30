@@ -56,19 +56,8 @@ export default class SdTooltip extends SolidElement {
    * The preferred placement of the tooltip. Note that the actual placement may vary as needed to keep the tooltip
    * inside of the viewport.
    */
-  @property({ reflect: true }) placement:
-    | 'top'
-    | 'top-start'
-    | 'top-end'
-    | 'right'
-    | 'right-start'
-    | 'right-end'
-    | 'bottom'
-    | 'bottom-start'
-    | 'bottom-end'
-    | 'left'
-    | 'left-start'
-    | 'left-end' = 'top';
+  @property({ reflect: true }) placement: 'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end' =
+    'top';
 
   @property() size: 'lg' | 'sm' = 'lg';
 
@@ -321,14 +310,6 @@ export default class SdTooltip extends SolidElement {
 
       sd-popup[placement^='bottom']::part(popup) {
         transform-origin: top;
-      }
-
-      sd-popup[placement^='left']::part(popup) {
-        transform-origin: right;
-      }
-
-      sd-popup[placement^='right']::part(popup) {
-        transform-origin: left;
       }
 
       #tooltip {

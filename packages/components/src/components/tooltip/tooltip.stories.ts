@@ -20,11 +20,6 @@ export default {
     },
     {
       type: 'attribute',
-      name: 'placement',
-      value: 'right'
-    },
-    {
-      type: 'attribute',
       name: 'content',
       value: 'Lorem ipsum'
     }
@@ -36,7 +31,7 @@ export default {
     (story: any) =>
       html` <style>
           .template-position {
-            width: 250px;
+            width: 200px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -74,7 +69,7 @@ export const Placement = {
   parameters: { controls: { exclude: 'placement' } },
   render: (args: any) => {
     return html`<div class="placement-story">
-      ${['top', 'bottom', 'left', 'right'].map(value =>
+      ${['top', 'bottom'].map(value =>
         generateTemplate({
           axis: {
             x: {
@@ -108,7 +103,14 @@ export const Size = {
         }
       },
       args,
-      constants: [{ type: 'template', name: 'width', value: '<div class="template-position">%TEMPLATE%</div>' }]
+      constants: [
+        { type: 'template', name: 'width', value: '<div class="template-position">%TEMPLATE%</div>' },
+        {
+          type: 'attribute',
+          name: 'placement',
+          value: 'bottom'
+        }
+      ]
     })
 };
 
@@ -123,7 +125,14 @@ export const Disabled = {
         }
       },
       args,
-      constants: [{ type: 'template', name: 'width', value: '<div class="template-position">%TEMPLATE%</div>' }]
+      constants: [
+        { type: 'template', name: 'width', value: '<div class="template-position">%TEMPLATE%</div>' },
+        {
+          type: 'attribute',
+          name: 'placement',
+          value: 'bottom'
+        }
+      ]
     })
 };
 
@@ -185,11 +194,11 @@ export const Slots = {
           title: 'slot=...',
           values: [
             {
-              value: `<slot-comp style="--slot-content: ''; --slot-height: 24px; --slot-width: 24px;" class='tooltip-slots'></slot-comp>`,
+              value: `<div class="slot slot--border slot--background slot--text" style="--slot-content: ''; --slot-height: 24px; --slot-width: 24px;"></div>`,
               title: 'default'
             },
             {
-              value: `<slot-comp slot='content' style="--slot-content: ''; --slot-height: 22px; --slot-width: 82px;" class='tooltip-slots'></slot-comp>`,
+              value: `<div class="slot slot--border slot--background slot--text" slot='content' style="--slot-content: ''; --slot-height: 22px; --slot-width: 82px;"></div>`,
               title: 'content'
             }
           ]
@@ -201,6 +210,11 @@ export const Slots = {
           type: 'template',
           name: 'width',
           value: '<div class="template-position">%TEMPLATE%</div>'
+        },
+        {
+          type: 'attribute',
+          name: 'placement',
+          value: 'bottom'
         }
       ]
     });
@@ -214,7 +228,7 @@ export const Mouseless = {
     }
   },
   render: (args: any) => {
-    return html`<div class="mouseless">${generateTemplate({ args })}</div>`;
+    return html`<div class="mouseless template-position template-height">${generateTemplate({ args })}</div>`;
   },
   play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
     const el = canvasElement.querySelector('.mouseless sd-tooltip');
