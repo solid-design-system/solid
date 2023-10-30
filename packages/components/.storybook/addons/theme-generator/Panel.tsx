@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { AddonPanel, Form } from "@storybook/components";
 import { PARAM_KEY, PANEL_DEFAULTS } from "./constants";
 import { useGlobals } from "@storybook/manager-api";
-import { calculateColorsAsCss } from './colorCalculations';  // Import from your utility file
+import { calculateColorsAsCss } from './colorCalculations';
 import theme from '../../../../tokens/src/create-theme.cjs';
 
 const { Textarea, Button } = Form;

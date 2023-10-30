@@ -63,6 +63,10 @@ const findClosestLuminanceKey = (luminanceValue, luminanceMap) => {
   }, allKeys[0]); // Setting the initial value as the first key (excluding "DEFAULT")
 };
 
+// Adjusts the luminance map to make that the original color is always in use at some point.
+// Colors close to the original color will be changed more than colors further away.
+// E. g. if primary-500 fits best, primary-400 and primary-600 will be adjusted more than primary-300 and primary-700
+// Aim is that the whole color palette is most consistent in itself using the original color
 const adjustLuminanceMap = (color, luminanceMap) => {
   const colorLuminance = chroma(color).luminance();
   const closestLuminanceKey = findClosestLuminanceKey(colorLuminance, luminanceMap);
