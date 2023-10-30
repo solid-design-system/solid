@@ -107,7 +107,6 @@ export const Required = {
   }
 };
 
-
 export const Checked = {
   parameters: { controls: { exclude: ['checked'] } },
   render: (args: any) => {
@@ -131,7 +130,6 @@ export const Checked = {
     });
   }
 };
-
 
 export const Indeterminate = {
   parameters: { controls: { exclude: ['indeterminate'] } },
@@ -167,9 +165,9 @@ export const Invalid = {
     return html`
       <form>
         ${generateTemplate({
-      args,
-      constants: [{ type: 'attribute', name: 'required', value: true }]
-    })}
+          args,
+          constants: [{ type: 'attribute', name: 'required', value: true }]
+        })}
         <sd-button style="margin-top: 16px" type="submit">Submit</sd-button>
       </form>
     `;
@@ -181,19 +179,18 @@ export const Invalid = {
   }
 };
 
-
 export const IndeterminateInvalid = {
   parameters: { controls: { exclude: ['required', 'indeterminate'] } },
   render: (args: any) => {
     return html`
       <form>
         ${generateTemplate({
-      args,
-      constants: [
-        { type: 'attribute', name: 'required', value: true },
-        { type: 'attribute', name: 'indeterminate', value: true }
-      ]
-    })}
+          args,
+          constants: [
+            { type: 'attribute', name: 'required', value: true },
+            { type: 'attribute', name: 'indeterminate', value: true }
+          ]
+        })}
         <sd-button style="margin-top: 16px" type="submit">Submit</sd-button>
       </form>
     `;
