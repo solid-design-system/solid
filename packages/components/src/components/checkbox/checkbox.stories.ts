@@ -40,11 +40,13 @@ export const DisabledAndSize = {
           name: 'disabled',
           values: [false, true]
         },
-        y: {
-          type: 'attribute',
-          name: 'size',
-          values: ['lg', 'sm']
-        }
+        y: [
+          {
+            type: 'attribute',
+            name: 'size',
+            values: ['lg', 'sm']
+          }
+        ]
       },
       constants: { type: 'attribute', name: 'disabled', value: true },
       args
@@ -105,35 +107,42 @@ export const Required = {
   }
 };
 
-/**
- * Test invalid state inside a form.
- */
 
-export const Invalid = {
-  parameters: { controls: { exclude: ['required'] } },
+export const Checked = {
+  parameters: { controls: { exclude: ['checked'] } },
   render: (args: any) => {
-    return html`
-      <form>
-        ${generateTemplate({
-          args,
-          constants: [{ type: 'attribute', name: 'required', value: true }]
-        })}
-        <sd-button style="margin-top: 16px" type="submit">Submit</sd-button>
-      </form>
-    `;
-  },
-  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
-    const el = canvasElement.querySelector('sd-button');
-    await waitUntil(() => el?.shadowRoot?.querySelector('button'));
-    await userEvent.type(el!.shadowRoot!.querySelector('button')!, '{return}', { pointerEventsCheck: 0 });
+    return generateTemplate({
+      axis: {
+        x: {
+          type: 'attribute',
+          name: 'disabled',
+          values: [false, true]
+        },
+        y: [
+          {
+            type: 'attribute',
+            name: 'size',
+            values: ['lg', 'sm']
+          }
+        ]
+      },
+      constants: { type: 'attribute', name: 'checked', value: true },
+      args
+    });
   }
 };
+
 
 export const Indeterminate = {
   parameters: { controls: { exclude: ['indeterminate'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
+        x: {
+          type: 'attribute',
+          name: 'disabled',
+          values: [false, true]
+        },
         y: [
           {
             type: 'attribute',
@@ -145,6 +154,54 @@ export const Indeterminate = {
       constants: { type: 'attribute', name: 'indeterminate', value: true },
       args
     });
+  }
+};
+
+/**
+ * Test invalid state inside a form.
+ */
+
+export const Invalid = {
+  parameters: { controls: { exclude: ['required'] } },
+  render: (args: any) => {
+    return html`
+      <form>
+        ${generateTemplate({
+      args,
+      constants: [{ type: 'attribute', name: 'required', value: true }]
+    })}
+        <sd-button style="margin-top: 16px" type="submit">Submit</sd-button>
+      </form>
+    `;
+  },
+  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
+    const el = canvasElement.querySelector('sd-button');
+    await waitUntil(() => el?.shadowRoot?.querySelector('button'));
+    await userEvent.type(el!.shadowRoot!.querySelector('button')!, '{return}', { pointerEventsCheck: 0 });
+  }
+};
+
+
+export const IndeterminateInvalid = {
+  parameters: { controls: { exclude: ['required', 'indeterminate'] } },
+  render: (args: any) => {
+    return html`
+      <form>
+        ${generateTemplate({
+      args,
+      constants: [
+        { type: 'attribute', name: 'required', value: true },
+        { type: 'attribute', name: 'indeterminate', value: true }
+      ]
+    })}
+        <sd-button style="margin-top: 16px" type="submit">Submit</sd-button>
+      </form>
+    `;
+  },
+  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
+    const el = canvasElement.querySelector('sd-button');
+    await waitUntil(() => el?.shadowRoot?.querySelector('button'));
+    await userEvent.type(el!.shadowRoot!.querySelector('button')!, '{return}', { pointerEventsCheck: 0 });
   }
 };
 

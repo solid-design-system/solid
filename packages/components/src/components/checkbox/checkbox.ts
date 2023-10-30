@@ -210,7 +210,9 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
             `checkbox__control relative flex items-center justify-center border rounded-sm h-4 w-4 ${
               (this.size === 'sm' && 'mt-[2px]') || (this.size === 'lg' && 'mt-[3px]')
             }`,
-            (this.disabled && 'border-neutral-500') ||
+            (this.disabled && this.indeterminate && 'border-neutral-500 bg-neutral-500') ||
+              (this.disabled && this.checked && 'border-neutral-500 bg-neutral-500') ||
+              (this.disabled && 'border-neutral-500') ||
               ((this.checked || this.indeterminate) &&
                 'border-accent hover:border-accent-550 group-hover:border-accent-550 bg-accent group-hover:bg-accent-550') ||
               'border-neutral-800 hover:bg-neutral-200 group-hover:bg-neutral-200 bg-white'
@@ -274,6 +276,10 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
 
       :host([data-user-invalid]) .checkbox__control {
         border-color: rgb(var(--sd-color-error, 204 25 55));
+      }
+
+      :host([data-user-invalid]):host([indeterminate]) .checkbox__control {
+        background-color: rgb(var(--sd-color-error, 204 25 55));
       }
 
       .checkbox__control {
