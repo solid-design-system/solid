@@ -81,7 +81,7 @@ export const Inverted = {
       args,
       constants: [{ type: 'attribute', name: 'autoplay', value: true }],
       options: {
-        templateBackgrounds: { alternate: 'y', colors: ['#00358E', 'white'] }
+        templateBackgrounds: { alternate: 'y', colors: ['rgb(var(--sd-color-primary, 0 53 142))', 'white'] }
       }
     });
   }

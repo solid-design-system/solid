@@ -3,7 +3,7 @@ import { AddonPanel, Form } from "@storybook/components";
 import { PARAM_KEY, PANEL_DEFAULTS } from "./constants";
 import { useGlobals } from "@storybook/manager-api";
 import { calculateColorsAsCss } from './colorCalculations';  // Import from your utility file
-import theme from '../../../tokens/src/create-theme.cjs';
+import theme from '../../../../tokens/src/create-theme.cjs';
 
 const { Textarea, Button } = Form;
 
@@ -51,7 +51,7 @@ export const Panel: React.FC<PanelProps> = (props) => {
   return (
     <AddonPanel {...props}>
       <div style={{ padding: "20px" }}>
-        <h2>Color Tokens Generator</h2>
+        <h2>Soid Theme Generator</h2>
         {['primary', 'accent', 'neutral'].map((colorKey) => (
           <div style={{ display: "flex", alignItems: "center", marginTop: "8px" }}>
             <label style={{ width: "60px", display: 'inline-block' }}>{colorKey.charAt(0).toUpperCase() + colorKey.slice(1)}</label>

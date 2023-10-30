@@ -13,7 +13,7 @@ module.exports = {
     '@geometricpanda/storybook-addon-badges',
     '@storybook/addon-actions',
     '@storybook/addon-interactions',
-    './addons/local-preset'
+    './addons/theme-generator/preset'
   ],
   staticDirs: [
     './assets',

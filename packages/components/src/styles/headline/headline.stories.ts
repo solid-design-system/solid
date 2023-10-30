@@ -66,7 +66,9 @@ export const Inverted = {
         y: [{ type: 'attribute', name: 'sd-headline--inverted', values: [false, true] }]
       },
       constants: { type: 'attribute', name: 'sd-headline--inverted', value: true },
-      options: { templateBackgrounds: { alternate: 'y', colors: ['transparent', '#00358E'] } },
+      options: {
+        templateBackgrounds: { alternate: 'y', colors: ['transparent', 'rgb(var(--sd-color-primary, 0 53 142))'] }
+      },
       args
     });
   }
@@ -86,7 +88,7 @@ export const Inline = {
       constants: {
         type: 'slot',
         name: 'default',
-        value: ` 
+        value: `
         <sd-icon name="content/picture" library="global-resources"></sd-icon>
         <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</span>`
       },
@@ -149,7 +151,7 @@ export const SizeXInverted = {
           value: `${headline.constant}`
         },
         options: {
-          templateBackgrounds: { alternate: 'x', colors: ['tranparent', '#00358E'] },
+          templateBackgrounds: { alternate: 'x', colors: ['tranparent', 'rgb(var(--sd-color-primary, 0 53 142))'] },
           title: `${headline.title}`
         },
         args
@@ -230,7 +232,7 @@ export const Samples = {
             }
           ],
           options: {
-            templateBackgrounds: { alternate: 'x', colors: ['tranparent', '#00358E'] }
+            templateBackgrounds: { alternate: 'x', colors: ['tranparent', 'rgb(var(--sd-color-primary, 0 53 142))'] }
           },
           args
         })}
@@ -268,7 +270,7 @@ export const Samples = {
             }
           ],
           options: {
-            templateBackgrounds: { alternate: 'x', colors: ['tranparent', '#00358E'] }
+            templateBackgrounds: { alternate: 'x', colors: ['tranparent', 'rgb(var(--sd-color-primary, 0 53 142))'] }
           },
           args
         })}

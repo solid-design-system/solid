@@ -85,7 +85,7 @@ export const Variants = {
       options: {
         templateBackgrounds: {
           alternate: 'y',
-          colors: ['white', 'white', '#00358E']
+          colors: ['white', 'white', 'rgb(var(--sd-color-primary, 0 53 142))']
         }
       },
       args,
