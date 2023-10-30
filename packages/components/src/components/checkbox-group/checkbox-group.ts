@@ -148,6 +148,10 @@ export default class SdCheckboxGroup extends SolidElement {
         margin-right: 24px;
       }
 
+      :host([size='sm']) .form-control-input--horizontal ::slotted(sd-checkbox) {
+        margin-right: 16px;
+      }
+
       .form-control-input--horizontal ::slotted(sd-checkbox:last-of-type) {
         margin-right: 0;
       }
