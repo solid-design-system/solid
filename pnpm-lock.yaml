@@ -34,7 +34,7 @@ importers:
         version: 1.10.1(eslint@8.52.0)
       eslint-plugin-lit-a11y:
         specifier: ^4.0.0
-        version: 4.1.0(eslint@8.52.0)
+        version: 4.0.0(eslint@8.52.0)
       eslint-plugin-sort-imports-es6-autofix:
         specifier: ^0.6.0
         version: 0.6.0(eslint@8.52.0)
@@ -7440,8 +7440,8 @@ packages:
       - supports-color
     dev: true
 
-  /eslint-plugin-lit-a11y@4.1.0(eslint@8.52.0):
-    resolution: {integrity: sha512-tJUYhKUZ1+NwOBzNHRX7ZETvGgMxWA+m9TsM23oN1qp4hQacTYBafeOhXHh6zyGnHaBIWzmCxW/G7doHeetkAw==}
+  /eslint-plugin-lit-a11y@4.0.0(eslint@8.52.0):
+    resolution: {integrity: sha512-0qVe6Wz9/NzZs+0BwjetVRaSRs48dWgMKshmLmhrL3p3Ko86ujJdP4xkWMDsFJwJa58zJmTj2NKmraqPD0N54w==}
     peerDependencies:
       eslint: '>= 5'
     dependencies:
