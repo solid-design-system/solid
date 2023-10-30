@@ -1,0 +1,77 @@
+.sd-headline {
+  @apply flex text-3xl font-bold sm:text-4xl text-primary gap-4;
+
+  sd-icon {
+    @apply text-[3rem] text-primary shrink-0 sm:mt-2;
+  }
+
+  &--size-3xl {
+    @apply text-2xl sm:text-3xl;
+
+    sd-icon {
+      @apply -mt-1 sm:mt-0;
+    }
+  }
+
+  &--size-xl,
+  &--size-lg,
+  &--size-base {
+    @apply text-black gap-2;
+
+    sd-icon {
+      @apply text-[2rem];
+    }
+  }
+
+  &--size-xl {
+    @apply text-xl;
+
+    sd-icon {
+      @apply mt-0.5 sm:mt-0.5;
+    }
+  }
+
+  &--size-lg {
+    @apply text-lg;
+
+    sd-icon {
+      @apply mt-0 sm:mt-0;
+    }
+  }
+
+  &--size-base {
+    @apply text-base text-black;
+
+    sd-icon {
+      @apply -mt-1;
+    }
+
+    mark {
+      @apply text-inherit;
+    }
+  }
+
+  &--inverted {
+    @apply text-white;
+
+    sd-icon {
+      @apply text-white;
+    }
+  }
+
+  &--inline {
+    @apply inline;
+
+    sd-icon {
+      @apply align-middle mr-2 -mt-1;
+    }
+  }
+}
+
+.sd-headline--inline.sd-headline--size-xl,
+.sd-headline--inline.sd-headline--size-lg,
+.sd-headline--inline.sd-headline--size-base {
+  sd-icon {
+    @apply mr-0.5;
+  }
+}

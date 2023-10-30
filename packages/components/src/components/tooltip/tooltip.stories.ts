@@ -33,25 +33,26 @@ export default {
   parameters: { ...parameters },
   decorators: [
     withActions,
-    (story: any) => html` <style>
-        .template-position {
-          width: 250px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
+    (story: any) =>
+      html` <style>
+          .template-position {
+            width: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
 
-        .template-height {
-          height: 110px;
-        }
-        .placement-story td.template,
-        #story--components-sd-tooltip--skidding td.template,
-        #story--components-sd-tooltip--distance td.template {
-          position: relative;
-          overflow: auto;
-        }
-      </style>
-      ${story()}`
+          .template-height {
+            height: 110px;
+          }
+          .placement-story td.template,
+          #story--components-sd-tooltip--skidding td.template,
+          #story--components-sd-tooltip--distance td.template {
+            position: relative;
+            overflow: auto;
+          }
+        </style>
+        ${story()}`
   ] as unknown
 };
 

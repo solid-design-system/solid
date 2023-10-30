@@ -27,6 +27,26 @@
 - We optimize our components for accessibility.
 - We don't mention the names of internal or external colleagues in issues or other documents hosted on GitHub, as our project is entirely public and can be accessed by anybody. Tagging/mentioning colleagues using their GitHub profiles is fine, as they decided to be visible on GitHub.
 
+### Milestones
+
+We use milestones as a way to group issues and pull requests together towards a specific goal we want to achieve.
+
+Milestones have:
+
+- A name which shortly defines to which goal the milestone is working towards.
+- An end date which defines when the milestone ends.
+- A description which provides more detailed information about what we want to achieve in this milestone.
+
+Throughout the weekly refinements, we add issues to the upcoming milestone. We also use the refinements to define the goal a new milestone is working towards. Deadline for this is the last refinement before the current milestone ends.
+In addition to this, we have some rules for the milestones:
+
+- We only have one milestone active at a time.
+- Ongoing tasks (e.g. orga-tasks) are not part of the milestone.
+- We only add issues to the milestone which are ready to be worked on.
+- We only add issues to the milestone which are not blocked by other issues (which are not in the same milestone).
+- If issues are not closed by the end of the milestone, we move them to the next milestone.
+- Milestone dates should not be changed once the milestone is started.
+
 ## Development Guidelines
 
 - Solid Components follows a monorepo structure with packages, such as the `components` package.
@@ -37,7 +57,20 @@
 - Every branch should be associated with a PR.
 - Nearly all styles (colors, fonts, sizes etc.) are defined by our design team and provided for usage in our code via tokens (`packages/tokens/src/token.json`).
   Components should use these tokens instead of individual styles as much as possible. Only where the tokens do not provide a styling, component specific styles should be added inside the [component-name].ts file
+- Use `.slot` and the additional utility classes classes defined in `packages/components/.storybook/preview-head.html` to mock the slot element used in Figma. These classes are integrated into the Storybook header and should exclusively be used in Storybook. Check out the 'Slot' stories for components like 'sd-dropdown' to see how these classes are used.
 - Components should be optimized for accessibility. Check the website of the [Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/WAI/standards-guidelines/wcag/) for more information on accessibility.
+
+  ### Guide on `//TODOs`
+
+  Using `TODO` comments can be a convienient way to quickly record an identified issue or give future developers bug-related hints. The problem is that these comments are not tracked anywhere and might create a pool of "issues" that are not properly recorded. Therefore developers can use TODO comments but they should always include a reference to a ticket defining the issue.
+
+  ```
+  //Example
+
+  // TODO: This test times out: https://github.com/solid-design-system/solid/issues/387
+  ```
+
+  This ensures clarity for future developers and avoids the accumulation of unresolved problems. While it's acceptable to comment out temporarily non-functional code (eg. tests that don't work under current conditions) along with a TODO, code that requires a rework should not be commented out but completely removed from the code base. If the code is essential for a future fix, please add it to a ticket that explains the problem.
 
 ## Adding Dependecies
 
@@ -50,6 +83,27 @@ We highly recommend to use websites e.g. https://nvd.nist.gov/vuln/search to che
 Each new component in the Solid Design System, representing an old component from the Component Library, must have a migration guide. This helps developers to easily switch from the old component to the new one. The migration guide should be placed in the `packages/components/src/docs/Migration` folder. The migration guide should base on the [migration guide template](./templates/migration-guide-template.mdx) and be named by the old component name (e.g.`ui-button.mdx`).
 
 ## Pull Requests
+
+### Assignees and Reviewers
+
+When opening a PR, please make sure all checkboxes under "Definition of reviewable" are checked.
+As next step, please assign the reviewer needed for the PR.
+The SDS uses the following process to assign PRs and request reviews (due to handling on the project board in GitHub).
+_**The reviewer section from GitHub is not used for assigning reviewers. Instead, the following process is used:**_
+
+1. The author of the PR needs to assign themselves
+2. The author of the PR needs to assign the reviewer needed for the PR (according to the rules below)
+3. Reviewers will unassign themselves after they have reviewed the PR
+4. If changes are requested, the author needs to reassign the reviewer after the changes are made and pushed
+
+> _**NOTE:**_
+> If UI changes need to be reviewed in Chromatic, the reviewer need to add a comment to the PR, stating if the changes are approved or new changes are requested. This is mandatory as the Chromatic approval will not send any notifications.
+
+Assigning reviewers follows a few rules:
+
+1. **New Feature PRs:** All current members from the SDS team need to be assigned to the PR (@solid-design-system/current-sds-team).
+2. **Bug Fix or Docs PRs:** Minimum 1 developer from the SDS dev-core-team (@solid-design-system/core-development) needs to be assigned to the PR. Designers need to be added separately if visual changes are made.
+3. **CI/CD PRs:** Minimum 1 out of Özlem, Mario or Karl needs to be assigned to the PR.
 
 ### Commit Messages
 
@@ -65,8 +119,6 @@ Commits with type 'perf' will be associated with a patch release.
 ```
 
 **Remark:** Always think from the perspective of the person using our packages/components – will the final distribution/bundle change? If so, then it's always `feat` `fix` or `perf` – if not, it's one of the others. Please reach out if you're unsure.
-
----
 
 ### Squash and Merge Your Changes
 
