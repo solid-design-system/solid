@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { AddonPanel, Form } from "@storybook/components";
-import { PARAM_KEY } from "./constants";
+import { PARAM_KEY, PANEL_DEFAULTS } from "./constants";
 import { useGlobals } from "@storybook/manager-api";
 import { calculateColorsAsCss } from './colorCalculations';  // Import from your utility file
+import theme from '../../../tokens/src/create-theme.cjs';
 
 const { Textarea, Button } = Form;
 
@@ -12,19 +13,13 @@ interface PanelProps {
 
 export const Panel: React.FC<PanelProps> = (props) => {
 
-  const [useDefaultLuminanceMap, setUseDefaultLuminanceMap] = useState(false);
+  const [useDefaultLuminanceMap, setUseDefaultLuminanceMap] = useState(PANEL_DEFAULTS.useDefaultLuminanceMap);
 
-  const [colors, setColors] = useState({
-    primary: "#4bbce2",
-    accent: "#e24a89",
-    neutral: "#b0b0b0",
-  });
-
+  const [colors, setColors] = useState(PANEL_DEFAULTS.colors);
 
   const [output, setOutput] = useState("");
   const [globals, updateGlobals] = useGlobals();
   const isActive = globals[PARAM_KEY] || false;
-  const content = globals[PARAM_KEY + '_CONTENT'] || '';
 
   const useDebouncedEffect = (effect, delay, deps) => {
     const callback = useCallback(effect, deps);
@@ -40,14 +35,18 @@ export const Panel: React.FC<PanelProps> = (props) => {
   };
 
   useEffect(() => {
-    setOutput(calculateColorsAsCss(colors, useDefaultLuminanceMap));
+    setOutput(calculateColorsAsCss(colors, theme, useDefaultLuminanceMap));
   }, [colors, useDefaultLuminanceMap]);
 
   useDebouncedEffect(() => {
+    const panelState = {
+      colors,
+      useDefaultLuminanceMap
+    };
     updateGlobals({
-      [PARAM_KEY + '_CONTENT']: output
+      [PARAM_KEY + '_STATE']: JSON.stringify(panelState)
     });
-  }, 500, [output]);
+  }, 500, [colors, useDefaultLuminanceMap]);
 
   return (
     <AddonPanel {...props}>
@@ -80,7 +79,6 @@ export const Panel: React.FC<PanelProps> = (props) => {
         <div style={{ display: "flex", gap: "8px", marginTop: "12px" }}>
           <Button onClick={() => {
             updateGlobals({ [PARAM_KEY]: !isActive });
-            console.log({ output, content });
           }}
             primary={isActive}
           >
@@ -88,7 +86,7 @@ export const Panel: React.FC<PanelProps> = (props) => {
           </Button>
         </div>
 
-        <Textarea style={{ marginTop: "16px", fontFamily: "monospace", width: "400px", height: "600px" }} readOnly value={output || content} />
+        <Textarea style={{ marginTop: "16px", fontFamily: "monospace", width: "400px", height: "600px" }} readOnly value={output || ""} />
       </div>
     </AddonPanel>
   );

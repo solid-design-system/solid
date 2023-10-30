@@ -1,5 +1,4 @@
 import chroma from 'chroma-js';
-import theme from '../../../tokens/src/create-theme.cjs';
 
 const defaultLuminanceMap = {
   50: 0.95,
@@ -49,8 +48,6 @@ const calculateLuminanceMap = colorObject => {
   return luminanceMaps;
 };
 
-const luminanceMaps = calculateLuminanceMap(theme['color']);
-
 const gaussian = (x, stdDev = 1) => {
   return Math.exp(-Math.pow(x, 2) / (2 * Math.pow(stdDev, 2)));
 };
@@ -84,8 +81,9 @@ const adjustLuminanceMap = (color, luminanceMap) => {
   return newLuminanceMap;
 };
 
-export const calculateColorsForType = (type, colors, useDefaultLuminanceMap) => {
+export const calculateColorsForType = (type, theme, colors, useDefaultLuminanceMap) => {
   const color = colors[type];
+  const luminanceMaps = calculateLuminanceMap(theme['color']);
 
   if (!color || !chroma.valid(color)) return '';
 
@@ -114,11 +112,11 @@ export const calculateColorsForType = (type, colors, useDefaultLuminanceMap) => 
   return tokens;
 };
 
-export const calculateColorsAsCss = (colors, useDefaultLuminanceMap) => {
+export const calculateColorsAsCss = (colors, theme, useDefaultLuminanceMap) => {
   let allTokens = ':root{\n  /* Copy & paste into your theme */\n';
 
   Object.keys(colors).forEach(type => {
-    allTokens += calculateColorsForType(type, colors, useDefaultLuminanceMap);
+    allTokens += calculateColorsForType(type, theme, colors, useDefaultLuminanceMap);
   });
 
   allTokens += '}';

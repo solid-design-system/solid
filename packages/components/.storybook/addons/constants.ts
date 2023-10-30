@@ -1,11 +1,12 @@
-export const ADDON_ID = "storybook/my-addon";
-export const TOOL_ID = `${ADDON_ID}/tool`;
+export const ADDON_ID = 'solid/theme-generator';
 export const PANEL_ID = `${ADDON_ID}/panel`;
 export const TAB_ID = `${ADDON_ID}/tab`;
-export const PARAM_KEY = `myAddonParameter`;
-
-export const EVENTS = {
-  RESULT: `${ADDON_ID}/result`,
-  REQUEST: `${ADDON_ID}/request`,
-  CLEAR: `${ADDON_ID}/clear`,
+export const PARAM_KEY = `solidThemeGenerator`;
+export const PANEL_DEFAULTS = {
+  colors: {
+    primary: '#4bbce2',
+    accent: '#e24a89',
+    neutral: '#b0b0b0'
+  },
+  useDefaultLuminanceMap: false
 };

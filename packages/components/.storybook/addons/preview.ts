@@ -21,7 +21,7 @@ const preview: ProjectAnnotations<Renderer> = {
   decorators: [withGlobals],
   globals: {
     [PARAM_KEY]: false,
-    [PARAM_KEY + '_CONTENT']: ''
+    [PARAM_KEY + '_STATE']: ''
   }
 };
 
