@@ -21,6 +21,12 @@ export const Panel: React.FC<PanelProps> = (props) => {
   const [globals, updateGlobals] = useGlobals();
   const isActive = globals[PARAM_KEY] || false;
 
+  const [hexInputs, setHexInputs] = useState({
+    primary: PANEL_DEFAULTS.colors.primary,
+    accent: PANEL_DEFAULTS.colors.accent,
+    neutral: PANEL_DEFAULTS.colors.neutral,
+  });
+
   const useDebouncedEffect = (effect, delay, deps) => {
     const callback = useCallback(effect, deps);
 
@@ -55,13 +61,34 @@ export const Panel: React.FC<PanelProps> = (props) => {
         {['primary', 'accent', 'neutral'].map((colorKey) => (
           <div style={{ display: "flex", alignItems: "center", marginTop: "8px" }}>
             <label style={{ width: "60px", display: 'inline-block' }}>{colorKey.charAt(0).toUpperCase() + colorKey.slice(1)}</label>
+
+            {/* Color Picker */}
             <input
               type="color"
               value={colors[colorKey]}
               onChange={(e) => {
                 const newColor = e.target.value;
                 setColors(prev => ({ ...prev, [colorKey]: newColor }));
+                setHexInputs(prev => ({ ...prev, [colorKey]: newColor }));
               }}
+            />
+
+            {/* Text Input for Hex Color */}
+            <input
+              type="text"
+              value={hexInputs[colorKey]}
+              pattern="^#(?:[0-9a-fA-F]{3}){1,2}$"
+              placeholder="#RRGGBB"
+              onChange={(e) => {
+                const newHexValue = e.target.value;
+                setHexInputs(prev => ({ ...prev, [colorKey]: newHexValue }));
+
+                // Check if it's a valid hex color and update the main color state
+                if (/^#(?:[0-9a-fA-F]{3}){1,2}$/.test(newHexValue)) {
+                  setColors(prev => ({ ...prev, [colorKey]: newHexValue }));
+                }
+              }}
+              style={{ marginLeft: '8px' }}
             />
           </div>
         ))}
@@ -73,7 +100,7 @@ export const Panel: React.FC<PanelProps> = (props) => {
             checked={useDefaultLuminanceMap}
             onChange={(e) => setUseDefaultLuminanceMap(e.target.checked)}
           />
-          <label htmlFor="useDefaultLuminanceMap">Normalize colors (This might reduce accessibility – please check compliance yourself.)</label>
+          <label htmlFor="useDefaultLuminanceMap">Normalize colors (This might improve your scale but could reduce accessibility – please check a11y compliance yourself.)</label>
         </div>
 
         <div style={{ display: "flex", gap: "8px", marginTop: "12px" }}>
@@ -82,7 +109,7 @@ export const Panel: React.FC<PanelProps> = (props) => {
           }}
             primary={isActive}
           >
-            {isActive ? "🟢 Disable Theme" : "🔴 Enable Theme"}
+            {isActive ? "🟢 Disable Theme" : "⚪️ Enable Theme"}
           </Button>
         </div>
 
