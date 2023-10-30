@@ -1,5 +1,8 @@
 import '../../solid-components';
+import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
+import { userEvent } from '@storybook/testing-library';
+import { waitUntil } from '@open-wc/testing-helpers';
 const { argTypes, parameters } = storybookDefaults('sd-checkbox');
 const { generateTemplate } = storybookTemplate('sd-checkbox');
 const { overrideArgs } = storybookHelpers('sd-checkbox');
@@ -99,6 +102,30 @@ export const Required = {
       },
       args
     });
+  }
+};
+
+/**
+ * Test invalid state inside a form.
+ */
+
+export const Invalid = {
+  parameters: { controls: { exclude: ['required'] } },
+  render: (args: any) => {
+    return html`
+      <form>
+        ${generateTemplate({
+          args,
+          constants: [{ type: 'attribute', name: 'required', value: true }]
+        })}
+        <sd-button style="margin-top: 16px" type="submit">Submit</sd-button>
+      </form>
+    `;
+  },
+  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
+    const el = canvasElement.querySelector('sd-button');
+    await waitUntil(() => el?.shadowRoot?.querySelector('button'));
+    await userEvent.type(el!.shadowRoot!.querySelector('button')!, '{return}', { pointerEventsCheck: 0 });
   }
 };
 
