@@ -2,6 +2,7 @@ import { css, html } from 'lit';
 import { customElement } from '../../../src/internal/register-custom-element';
 import { debounce } from '../../internal/debounce.js';
 import { property } from 'lit/decorators.js';
+import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
@@ -75,9 +76,8 @@ export default class SdHeader extends SolidElement {
   render() {
     return html`
       <header
-        class=${cx('w-screen bg-white',this.fixed ? 'fixed top-0 left-0 shadow ' : 'absolute')}
+        class=${cx('w-screen bg-white relative', this.fixed && 'fixed-shadow')}
         role="banner"
-        style=${this.fixed ? 'position: fixed; top: 0; left: 0;' : ''}
         @slotchange=${(event: Event) => {
           const slot = event.target as HTMLSlotElement;
           const assignedElements = slot.assignedElements();
@@ -88,25 +88,36 @@ export default class SdHeader extends SolidElement {
           }
         }}
       >
-        <div part="main">
+        <div part="main" class= 'relative'>
           <slot></slot>
         </div>
       </header>
     `;
   }
 
-  static styles = css`
+  static styles = [
+    SolidElement.styles,
+    componentStyles,
+    css`
 
     :host {
       display: block;
+      z-index: 65536;
+      position: absolute;
+      top: 0;
+      left: 0;
     }
 
-    .fixed {
+    :host([fixed]) {
+      position: fixed;
+    }
+
+    .fixed-shadow {
       box-shadow: 0 4px 2px -2px gray;
+      width: 100vw;
     }
 
     [part='main'] {
-      position: relative;
       margin: 0 auto;
       width: var(--sd-header-inner-width, calc(100vw - 2 * var(--sd-header-x-padding, 16px)));
       max-width: var(--sd-header-inner-max-width);
@@ -120,7 +131,8 @@ export default class SdHeader extends SolidElement {
     body {
       padding-top: var(--sd-header--height);
     }
-  `;
+  `
+];
 }
 
 declare global {
