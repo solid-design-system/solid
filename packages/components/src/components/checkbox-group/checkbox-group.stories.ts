@@ -51,7 +51,7 @@ export const Orientation = {
 };
 
 /**
- * Use the disabled attribute to disable a input checkbox. Clicks will be suppressed until the disabled state is removed
+ * Use the disabled attribute to disable an input checkbox. Clicks will be suppressed until the disabled state is removed
  */
 
 export const Disabled = {
