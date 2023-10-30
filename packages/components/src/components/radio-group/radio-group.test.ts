@@ -2,7 +2,7 @@ import { aTimeout, expect, fixture, html, oneEvent, waitUntil } from '@open-wc/t
 import { clickOnElement } from '../../internal/test';
 import { sendKeys } from '@web/test-runner-commands';
 import sinon from 'sinon';
-import type SdRadio from '../radio/radio';
+import type SdRadio from '../../components/radio/radio';
 import type SdRadioGroup from './radio-group';
 
 describe('<sd-radio-group>', () => {
