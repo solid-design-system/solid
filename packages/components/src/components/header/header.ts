@@ -8,18 +8,24 @@ import SolidElement from '../../internal/solid-element';
 /**
  * @summary Header
  * @documentation https://solid.union-investment.com/[storybook-link]/header
+ * 
  * @status stable
  * @since 1.0
+ * 
  * @slot - The header's default content.
- * @cssproperty  --sd-header-inner-width: width of the header content
- * @cssproperty  --sd-header-inner-max-width: max-width of the header content
- * @cssproperty  --sd-header-padding-top: padding-top of the header content
- * @cssproperty  --sd-header-padding-bottom: padding-bottom of the header content
- * @cssproperty  --sd-header-padding-x: padding left and right of the header content
- * @cssproperty  --sd-header-height: height of the header
+ * 
+ * @csspart main - The container that wraps the header's content.
+ * 
+ * @cssproperty --sd-header-inner-width - width of the header content
+ * @cssproperty --sd-header-inner-max-width - max-width of the header content
+ * @cssproperty --sd-header-padding-top - padding-top of the header content
+ * @cssproperty --sd-header-padding-bottom - padding-bottom of the header content
+ * @cssproperty --sd-header-x-padding - padding left and right of the header content
+ * @cssproperty --sd-header-y-padding - padding top and bottom of the header content
+ * @cssproperty --sd-header-height - height of the header
  */
 @customElement('sd-header')
-export class SdHeader extends SolidElement {
+export default class SdHeader extends SolidElement {
   @property({ reflect: true, type: Boolean }) fixed = false;
   @property({ attribute: 'auto-spacing', reflect: true, type: Boolean }) autoSpacing = true;
 
@@ -69,7 +75,7 @@ export class SdHeader extends SolidElement {
   render() {
     return html`
       <header
-        class="header bg-white ${this.fixed ? 'fixed top-0 left-0 shadow' : 'relative'}"
+        class=${cx('w-screen bg-white',this.fixed ? 'fixed top-0 left-0 shadow ' : 'absolute')}
         role="banner"
         style=${this.fixed ? 'position: fixed; top: 0; left: 0;' : ''}
         @slotchange=${(event: Event) => {
@@ -90,12 +96,9 @@ export class SdHeader extends SolidElement {
   }
 
   static styles = css`
+
     :host {
       display: block;
-    }
-
-    .header {
-      background-color: white;
     }
 
     .fixed {
@@ -105,12 +108,12 @@ export class SdHeader extends SolidElement {
     [part='main'] {
       position: relative;
       margin: 0 auto;
-      width: var(--sd-header-inner-width, calc(100vw - 2 * var(--sd-header-padding-x, 16px)));
+      width: var(--sd-header-inner-width, calc(100vw - 2 * var(--sd-header-x-padding, 16px)));
       max-width: var(--sd-header-inner-max-width);
-      padding-top: var(--sd-header-padding-top, var(--sd-header-padding-y, 16px));
-      padding-right: var(--sd-header-padding-x, 16px);
-      padding-bottom: var(--sd-header-padding-bottom, var(--sd-header-padding-y, 16px));
-      padding-left: var(--sd-header-padding-x, 16px);
+      padding-top: var(--sd-header-padding-top, var(--sd-header-y-padding, 16px));
+      padding-right: var(--sd-header-x-padding, 16px);
+      padding-bottom: var(--sd-header-padding-bottom, var(--sd-header-y-padding, 16px));
+      padding-left: var(--sd-header-x-padding, 16px);
       box-sizing: border-box;
     }
 

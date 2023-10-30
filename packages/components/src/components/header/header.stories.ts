@@ -14,7 +14,7 @@ export default {
     {
       type: 'slot',
       name: 'default',
-      value: `<div class="slot slot--border slot--text h-full w-full">Default slot</div>`
+      value: `<div class="slot slot--border slot--text">Default slot</div>`
     }
   ]),
   argTypes,
@@ -84,7 +84,7 @@ export const Samples = {
           max-height: 52px;
         }
         /* Mobile styles (default) */
-        sd-header {
+        .test {
           --sd-header-inner-width: calc(100vw - 32px);
           --sd-header-padding-x: 16px;
           /* ... other properties ... */
@@ -92,7 +92,7 @@ export const Samples = {
 
         /* Tablet styles */
         @media (min-width: 768px) {
-          sd-header {
+          .test {
             --sd-header-inner-width: calc(100vw - 48px);
             --sd-header-padding-x: 24px;
             /* ... other properties ... */
@@ -101,7 +101,7 @@ export const Samples = {
 
         /* Desktop styles */
         @media (min-width: 1024px) {
-          sd-header {
+          .test {
             --sd-header-inner-width: calc(100vw - 64px);
             --sd-header-padding-x: 32px;
             /* ... other properties ... */
@@ -110,28 +110,28 @@ export const Samples = {
       </style>
       <div class="story-wrapper">
         <div class="header-sample">Responsive Header</div>
-        <sd-header
+        <sd-header class='test'
           ><sd-include src="https://cdn.dam.union-investment.de/original/454499_UI_Logo_RGB.svg"></sd-include
           ><sd-navigation-item>Über Uns</sd-navigation-item><sd-navigation-item>Märkte</sd-navigation-item
           ><sd-navigation-item>Presseservice</sd-navigation-item><sd-navigation-item>Nachhaltigkeit</sd-navigation-item
           ><sd-navigation-item>Karriere</sd-navigation-item></sd-header
         >
         <div class="header-sample">Header / LG</div>
-        <sd-header
+        <sd-header class='test'
           ><sd-include src="https://cdn.dam.union-investment.de/original/454499_UI_Logo_RGB.svg"></sd-include
           ><sd-navigation-item>Über Uns</sd-navigation-item><sd-navigation-item>Märkte</sd-navigation-item
           ><sd-navigation-item>Presseservice</sd-navigation-item><sd-navigation-item>Nachhaltigkeit</sd-navigation-item
           ><sd-navigation-item>Karriere</sd-navigation-item></sd-header
         >
         <div class="header-sample">Header / MD</div>
-        <sd-header
+        <sd-header class='test'
           ><sd-include src="https://cdn.dam.union-investment.de/original/454499_UI_Logo_RGB.svg"></sd-include
           ><sd-navigation-item>Über Uns</sd-navigation-item><sd-navigation-item>Märkte</sd-navigation-item
           ><sd-navigation-item>Presseservice</sd-navigation-item><sd-navigation-item>Nachhaltigkeit</sd-navigation-item
           ><sd-navigation-item>Karriere</sd-navigation-item></sd-header
         >
         <div class="header-sample">Header / SM</div>
-        <sd-header
+        <sd-header class='test'
           ><sd-include src="https://cdn.dam.union-investment.de/original/454499_UI_Logo_RGB.svg"></sd-include
           ><sd-navigation-item>Über Uns</sd-navigation-item><sd-navigation-item>Märkte</sd-navigation-item
           ><sd-navigation-item>Presseservice</sd-navigation-item><sd-navigation-item>Nachhaltigkeit</sd-navigation-item
