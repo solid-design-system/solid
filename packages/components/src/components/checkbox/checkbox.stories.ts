@@ -12,7 +12,13 @@ export default {
   component: 'sd-checkbox',
   args: overrideArgs([{ type: 'slot', name: 'default', value: 'Default Slot' }]),
   argTypes,
-  parameters: { ...parameters }
+  parameters: {
+    ...parameters,
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/Q7E9GTBET7Gs2HyH1kbpu5/Checkbox-%2F-Checkbox-Group?type=design&node-id=0-1&mode=design&t=DV2yJRUqqYBrskyb-0'
+    }
+  }
 };
 
 /**
