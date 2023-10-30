@@ -242,7 +242,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
         <span
           part="label"
           class=${cx(
-            'checkbox__label select-none inline-block ml-2 text-[var(--sd-input-label-color)]',
+            'checkbox__label select-none inline-block ml-2 text-black',
             (this.disabled && 'text-neutral-500') || 'text-neutral-800'
           )}
         >
