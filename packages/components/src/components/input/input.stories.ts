@@ -115,52 +115,6 @@ export const Sizes = {
   }
 };
 
-export const Form = {
-  render: (args: any) => {
-    return html`
-      <form action="" method="get" id="testForm" name="testForm">
-        <div class="">
-          ${generateTemplate({
-            constants: [
-              { type: 'attribute', name: 'required', value: false },
-              { type: 'attribute', name: 'pattern', value: '[A-Za-z]{3}' },
-              { type: 'attribute', name: 'form', value: 'testForm' },
-              { type: 'attribute', name: 'name', value: 'testField' },
-              { type: 'attribute', name: 'placeholder', value: 'placeholder' },
-              { type: 'attribute', name: 'label', value: 'label' },
-              { type: 'attribute', name: 'help-text', value: 'help-text' },
-              { type: 'attribute', name: 'clearable', value: true },
-              {
-                type: 'slot',
-                name: 'right',
-                value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
-              }
-            ],
-            args
-          })}
-        </div>
-        <sd-button type="submit">Submit</sd-button>
-      </form>
-      <script>
-        const form = document.querySelector('#testForm');
-        const sdinput = document.querySelector('sd-input');
-
-        function handleSubmit(event) {
-          if (sdinput.checkValidity()) {
-            event.preventDefault(); // Prevent the default form submission behavior
-
-            const formData = new FormData(form);
-            const formValues = Object.fromEntries(formData);
-            alert('Form submitted successfully with the following values:' + JSON.stringify(formValues));
-          }
-        }
-
-        form.addEventListener('submit', handleSubmit);
-      </script>
-    `;
-  }
-};
-
 /**
  * Shows available slots. The `label` and `help-text` slots will overwrite their corresponding attributes.
  */
@@ -212,3 +166,165 @@ export const Slots = {
     `;
   }
 };
+
+/**
+ * Use the `form-control`, `form-control-label`, `form-control-input`, `form-control-help-text`, `base`, `border`, `input`, `left`, `clear-button`, and `right` part selectors to customize the input.
+ */
+
+export const Parts = {
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        y: {
+          type: 'template',
+          name: 'sd-input::part(...){outline: solid 2px red}',
+          values: [
+            'form-control',
+            'form-control-label',
+            'form-control-input',
+            'form-control-help-text',
+            'base',
+            'border',
+            'input',
+            'left',
+            'clear-button',
+            'right'
+          ].map(part => {
+            return {
+              title: part,
+              value: `<style>#part-${part} sd-input::part(${part}){outline: solid 2px red}</style><div id="part-${part}">%TEMPLATE%</div>`
+            };
+          })
+        }
+      },
+      constants: [
+        { type: 'attribute', name: 'clearable', value: true },
+        { type: 'attribute', name: 'value', value: 'value' },
+        { type: 'attribute', name: 'label', value: 'label' },
+        { type: 'attribute', name: 'help-text', value: 'help-text' },
+        { type: 'slot', name: 'label', value: 'label' },
+        {
+          type: 'slot',
+          name: 'left',
+          value: '<sd-icon slot="left" library="global-resources" name="system/picture"></sd-icon>'
+        },
+        {
+          type: 'slot',
+          name: 'right',
+          value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
+        }
+      ],
+      args
+    });
+  }
+};
+
+/**
+ * Validation. Who does not like it?
+ */
+
+export const Validation = {
+  render: (args: any) => {
+    return html`
+      <form action="" method="get" id="testForm" name="testForm" class="w-[300px]">
+        <div class="mb-2">
+          ${generateTemplate({
+            constants: [
+              { type: 'attribute', name: 'label', value: 'Required' },
+              { type: 'attribute', name: 'name', value: 'required field' },
+              { type: 'attribute', name: 'placeholder', value: '.*' },
+              { type: 'attribute', name: 'help-text', value: 'input must be filled to be valid' },
+              { type: 'attribute', name: 'form', value: 'testForm' },
+              { type: 'attribute', name: 'required', value: true },
+              { type: 'attribute', name: 'clearable', value: true },
+              {
+                type: 'slot',
+                name: 'right',
+                value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
+              }
+            ],
+            args
+          })}
+        </div>
+        <div class="mb-2">
+          ${generateTemplate({
+            constants: [
+              { type: 'attribute', name: 'label', value: 'Minimum Length' },
+              { type: 'attribute', name: 'name', value: 'min length field' },
+              { type: 'attribute', name: 'placeholder', value: '^.{3,}$' },
+              { type: 'attribute', name: 'help-text', value: 'input must meet minlength to be valid' },
+              { type: 'attribute', name: 'form', value: 'testForm' },
+              { type: 'attribute', name: 'required', value: false },
+              { type: 'attribute', name: 'minlength', value: 3 },
+              { type: 'attribute', name: 'clearable', value: true },
+              {
+                type: 'slot',
+                name: 'right',
+                value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
+              }
+            ],
+            args
+          })}
+        </div>
+        <div class="mb-2">
+          ${generateTemplate({
+            constants: [
+              { type: 'attribute', name: 'label', value: 'Pattern' },
+              { type: 'attribute', name: 'name', value: 'pattern field' },
+              { type: 'attribute', name: 'placeholder', value: '[A-Za-z]{3,}' },
+              { type: 'attribute', name: 'help-text', value: 'input must match pattern to be valid' },
+              { type: 'attribute', name: 'form', value: 'testForm' },
+              { type: 'attribute', name: 'required', value: false },
+              { type: 'attribute', name: 'pattern', value: '[A-Za-z]{3,}' },
+              { type: 'attribute', name: 'clearable', value: true },
+              {
+                type: 'slot',
+                name: 'right',
+                value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
+              }
+            ],
+            args
+          })}
+        </div>
+        <sd-button type="submit">Submit</sd-button>
+      </form>
+      <script>
+        const form = document.querySelector('#testForm');
+        const sdinput = document.querySelector('sd-input');
+
+        function handleSubmit(event) {
+          if (sdinput.checkValidity()) {
+            event.preventDefault(); // Prevent the default form submission behavior
+
+            const formData = new FormData(form);
+            const formValues = Object.fromEntries(formData);
+            alert('Form submitted successfully with the following values: ' + JSON.stringify(formValues, null, 2));
+          }
+        }
+
+        form.addEventListener('submit', handleSubmit);
+      </script>
+    `;
+  }
+};
+
+// export const BasicForm = {
+//   render: () => {
+//     return html`
+//       <form>
+//         <label for="choose">Would you prefer a banana or cherry?</label>
+//         <input required id="choose" name="i-like" />
+//         <button>Submit</button>
+//       </form>
+//       <style>
+//         input:invalid {
+//           border: 2px dashed red;
+//         }
+
+//         input:valid {
+//           border: 2px solid black;
+//         }
+//       </style>
+//     `;
+//   }
+// };

@@ -54,6 +54,7 @@ const isFirefox = isChromium ? false : navigator.userAgent.includes('Firefox');
  * @csspart form-control-input - The input's wrapper.
  * @csspart form-control-help-text - The help text's wrapper.
  * @csspart base - The component's base wrapper.
+ * @csspart border - The base part's absolutely positioned border. Allows for easy adjustment of border thickness without affecting component dimensions.
  * @csspart input - The internal `<input>` control.
  * @csspart left - The container that wraps the left.
  * @csspart clear-button - The clear button.
@@ -132,7 +133,6 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   /** Makes the input readonly. */
   @property({ type: Boolean, reflect: true }) readonly = false;
 
-  // --------------------------- PASSWORD TYPE --------------------------- //
   /** Adds a button to toggle the password's visibility. Only applies to password types. */
   @property({ attribute: 'password-toggle', type: Boolean }) passwordToggle = false;
 
@@ -148,14 +148,12 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   /** The maximum length of input that will be considered valid. */
   @property({ type: Number }) maxlength: number;
 
-  // --------------------------- NUMBER TYPE --------------------------- //
   /** The input's minimum value. Only applies to date and number input types. */
   @property({ type: Number }) min: number;
 
   /** The input's maximum value. Only applies to date and number input types. */
   @property({ type: Number }) max: number;
 
-  // --------------------------- FORM ATTRIBUTES --------------------------- //
   /**
    * By default, form controls are associated with the nearest containing `<form>` element. This attribute allows you
    * to place the form control outside of a form and associate it with the form that has this `id`. The form must be in
@@ -551,6 +549,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
             ${
               hasClearIcon
                 ? html`
+                    <!-- TODO: How do we resolve the error in localize.term? -->
                     <button
                       part="clear-button"
                       class=${cx('input__clear flex justify-center', iconMarginLeft, iconSize)}
@@ -583,6 +582,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
             ${
               this.passwordToggle && !this.disabled
                 ? html`
+                    <!-- TODO: How do we resolve the error in localize.term? -->
                     <button
                       aria-label=${this.localize.term(this.passwordVisible ? 'hidePassword' : 'showPassword')}
                       part="password-toggle-button"
@@ -631,6 +631,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                   `
                 : ''
             }
+            <!-- TODO: How are the "success" styles supposed to work? -->
             ${
               isValid
                 ? html`
