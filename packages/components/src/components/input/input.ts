@@ -504,7 +504,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                     name="left"
                     part="left"
                     class=${cx(
-                      'input__left inline',
+                      'input__left inline-flex',
                       this.size === 'sm' ? 'mr-1' : 'mr-2',
                       this.disabled ? 'text-neutral-500' : 'text-primary', // TODO: does left receive the same styles as right?  Nothing in design.
                       iconSize
@@ -516,7 +516,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               part="input"
               id="input"
               class=${cx(
-                'input__control focus:outline-none bg-transparent flex-grow placeholder-neutral-700',
+                'input__control flex-grow focus:outline-none bg-transparent placeholder-neutral-700',
                 textSize
               )}
               type=${this.type === 'password' && this.passwordVisible ? 'text' : this.type}
@@ -675,7 +675,6 @@ export default class SdInput extends SolidElement implements SolidFormControl {
         position: relative;
         display: inline-block;
         text-align: left;
-        max-width: inherit;
         width: 100%;
       }
 
