@@ -233,29 +233,9 @@ export const Validation = {
               { type: 'attribute', name: 'label', value: 'Required' },
               { type: 'attribute', name: 'name', value: 'required field' },
               { type: 'attribute', name: 'placeholder', value: '.*' },
-              { type: 'attribute', name: 'help-text', value: 'input must be filled to be valid' },
+              { type: 'attribute', name: 'help-text', value: 'input must be filled' },
               { type: 'attribute', name: 'form', value: 'testForm' },
               { type: 'attribute', name: 'required', value: true },
-              { type: 'attribute', name: 'clearable', value: true },
-              {
-                type: 'slot',
-                name: 'right',
-                value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
-              }
-            ],
-            args
-          })}
-        </div>
-        <div class="mb-2">
-          ${generateTemplate({
-            constants: [
-              { type: 'attribute', name: 'label', value: 'Minimum Length' },
-              { type: 'attribute', name: 'name', value: 'min length field' },
-              { type: 'attribute', name: 'placeholder', value: '^.{3,}$' },
-              { type: 'attribute', name: 'help-text', value: 'input must meet minlength to be valid' },
-              { type: 'attribute', name: 'form', value: 'testForm' },
-              { type: 'attribute', name: 'required', value: false },
-              { type: 'attribute', name: 'minlength', value: 3 },
               { type: 'attribute', name: 'clearable', value: true },
               {
                 type: 'slot',
@@ -272,11 +252,91 @@ export const Validation = {
               { type: 'attribute', name: 'label', value: 'Pattern' },
               { type: 'attribute', name: 'name', value: 'pattern field' },
               { type: 'attribute', name: 'placeholder', value: '[A-Za-z]{3,}' },
-              { type: 'attribute', name: 'help-text', value: 'input must match pattern to be valid' },
+              { type: 'attribute', name: 'help-text', value: 'input must match pattern' },
               { type: 'attribute', name: 'form', value: 'testForm' },
-              { type: 'attribute', name: 'required', value: false },
+              { type: 'attribute', name: 'required', value: true },
               { type: 'attribute', name: 'pattern', value: '[A-Za-z]{3,}' },
               { type: 'attribute', name: 'clearable', value: true },
+              {
+                type: 'slot',
+                name: 'right',
+                value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
+              }
+            ],
+            args
+          })}
+        </div>
+        <div class="mb-2">
+          ${generateTemplate({
+            constants: [
+              { type: 'attribute', name: 'label', value: 'Min Length' },
+              { type: 'attribute', name: 'name', value: 'min length field' },
+              { type: 'attribute', name: 'placeholder', value: '^.{3,}$' },
+              { type: 'attribute', name: 'help-text', value: 'value must meet minlength' },
+              { type: 'attribute', name: 'form', value: 'testForm' },
+              { type: 'attribute', name: 'required', value: true },
+              { type: 'attribute', name: 'minlength', value: 3 },
+              { type: 'attribute', name: 'clearable', value: true },
+              {
+                type: 'slot',
+                name: 'right',
+                value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
+              }
+            ],
+            args
+          })}
+        </div>
+        <div class="mb-2">
+          ${generateTemplate({
+            constants: [
+              { type: 'attribute', name: 'label', value: 'Max Length' },
+              { type: 'attribute', name: 'name', value: 'max length field' },
+              { type: 'attribute', name: 'placeholder', value: '^.{0,3}$' },
+              { type: 'attribute', name: 'help-text', value: 'value cannot exceed maxlength' },
+              { type: 'attribute', name: 'form', value: 'testForm' },
+              { type: 'attribute', name: 'required', value: true },
+              { type: 'attribute', name: 'maxlength', value: 3 },
+              { type: 'attribute', name: 'clearable', value: true },
+              {
+                type: 'slot',
+                name: 'right',
+                value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
+              }
+            ],
+            args
+          })}
+        </div>
+        <div class="mb-2">
+          ${generateTemplate({
+            constants: [
+              { type: 'attribute', name: 'type', value: 'number' },
+              { type: 'attribute', name: 'label', value: 'Min' },
+              { type: 'attribute', name: 'name', value: 'min field' },
+              { type: 'attribute', name: 'placeholder', value: '^d{1,3}$' },
+              { type: 'attribute', name: 'help-text', value: 'numeric value must be greater than min' },
+              { type: 'attribute', name: 'form', value: 'testForm' },
+              { type: 'attribute', name: 'required', value: true },
+              { type: 'attribute', name: 'min', value: 3 },
+              {
+                type: 'slot',
+                name: 'right',
+                value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
+              }
+            ],
+            args
+          })}
+        </div>
+        <div class="mb-2">
+          ${generateTemplate({
+            constants: [
+              { type: 'attribute', name: 'type', value: 'number' },
+              { type: 'attribute', name: 'label', value: 'Max' },
+              { type: 'attribute', name: 'name', value: 'max field' },
+              { type: 'attribute', name: 'placeholder', value: '^d{1,3}$' },
+              { type: 'attribute', name: 'help-text', value: 'numeric value must not exceed max' },
+              { type: 'attribute', name: 'form', value: 'testForm' },
+              { type: 'attribute', name: 'required', value: true },
+              { type: 'attribute', name: 'max', value: 3 },
               {
                 type: 'slot',
                 name: 'right',
@@ -290,14 +350,16 @@ export const Validation = {
       </form>
       <script>
         const form = document.querySelector('#testForm');
-        const sdinput = document.querySelector('sd-input');
+        const sdInputs = document.querySelectorAll('sd-input');
 
         function handleSubmit(event) {
-          if (sdinput.checkValidity()) {
+          const isValid = sdInput => sdInput.checkValidity();
+          if (sdInputs.every(isValid)) {
             event.preventDefault(); // Prevent the default form submission behavior
 
             const formData = new FormData(form);
             const formValues = Object.fromEntries(formData);
+
             alert('Form submitted successfully with the following values: ' + JSON.stringify(formValues, null, 2));
           }
         }

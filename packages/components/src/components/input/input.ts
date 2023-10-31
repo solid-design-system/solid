@@ -89,6 +89,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     | 'date'
     | 'datetime-local'
     | 'email'
+    | 'number'
     | 'password'
     | 'search'
     | 'tel'
@@ -411,8 +412,9 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     const hasLabel = this.label ? true : !!slots['label'];
     const hasHelpText = this.helpText ? true : !!slots['helpText'];
     const hasClearIcon = this.clearable && !this.readonly && (typeof this.value === 'number' || this.value.length > 0);
-    const isInvalid = (this.required || !!this.pattern) && !this.checkValidity();
-    const isValid = (this.required || !!this.pattern) && this.checkValidity();
+    const hasValidationAttr = this.required || !!this.pattern || !!this.minlength || !!this.maxlength;
+    const isInvalid = hasValidationAttr && !this.checkValidity();
+    const isValid = hasValidationAttr && this.checkValidity();
     // Hierarchy of input states:
     const inputState = this.disabled
       ? 'disabled'

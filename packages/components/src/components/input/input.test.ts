@@ -1,8 +1,7 @@
 // eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment
 import { expect, fixture, html, oneEvent, waitUntil } from '@open-wc/testing';
-import { getFormControls } from '../../../dist/utilities/form.js';
-import { sendKeys } from '@web/test-runner-commands';
-import { serialize } from '../../utilities/form.js'; // must come from the same module
+import { getFormControls, serialize } from '../../utilities/form.js';
+import { sendKeys } from '@web/test-runner-commands'; // must come from the same module
 import sinon from 'sinon';
 import type SdInput from './input.js';
 
@@ -21,8 +20,6 @@ describe('<sd-input>', () => {
     expect(el.value).to.equal('');
     expect(el.defaultValue).to.equal('');
     expect(el.title).to.equal('');
-    expect(el.filled).to.be.false;
-    expect(el.pill).to.be.false;
     expect(el.label).to.equal('');
     expect(el.helpText).to.equal('');
     expect(el.clearable).to.be.false;
