@@ -400,6 +400,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   }
 
   render() {
+    // Slots
     const slots = {
       label: this.hasSlotController.test('label'),
       helpText: this.hasSlotController.test('help-text'),
@@ -408,12 +409,12 @@ export default class SdInput extends SolidElement implements SolidFormControl {
       right: this.hasSlotController.test('right')
     };
 
+    // States
     const hasLabel = this.label ? true : !!slots['label'];
     const hasHelpText = this.helpText ? true : !!slots['helpText'];
-    const hasClearIcon = this.clearable && !this.readonly && (typeof this.value === 'number' || this.value.length >= 0);
+    const hasClearIcon = this.clearable && !this.readonly && (typeof this.value === 'number' || this.value.length > 0);
     const isInvalid = (this.required || !!this.pattern) && !this.checkValidity();
     const isValid = (this.required || !!this.pattern) && this.checkValidity();
-
     // Hierarchy of input states:
     const inputState = this.disabled
       ? 'disabled'
@@ -431,6 +432,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
       ? 'valid'
       : 'default';
 
+    // Conditional Styles
     const textSize = this.size === 'sm' ? 'text-sm' : 'text-base';
     const textColor = {
       disabled: 'text-neutral-500',
@@ -442,6 +444,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
       valid: 'text-success',
       default: 'text-black'
     }[inputState];
+
     const iconMarginLeft = this.size === 'sm' ? 'ml-1' : 'ml-2';
     const iconSize = {
       sm: 'text-base',
@@ -449,10 +452,11 @@ export default class SdInput extends SolidElement implements SolidFormControl {
       lg: 'text-xl'
     }[this.size];
 
+    // Render
     return html`
       <div
         part="form-control"
-        class=${cx('form-control', hasLabel && 'form-control--has-label')}
+        class=${cx('form-control', hasLabel && 'form-control--has-label', this.disabled && 'pointer-events-none')}
       >
         <label
           part="form-control-label"
@@ -480,10 +484,12 @@ export default class SdInput extends SolidElement implements SolidFormControl {
           <div
             part="base"
             class=${cx(
-              'px-4 rounded flex flex-row items-center hover:bg-neutral-200 rounded-[4px]',
+              'px-4 rounded flex flex-row items-center rounded-[4px]',
               // Vertical Padding
               this.size === 'lg' ? 'py-2' : 'py-1',
               // States
+              !this.disabled && !this.readonly ? 'hover:bg-neutral-200' : '',
+              this.readonly && 'bg-neutral-100',
               isInvalid && 'form-control-input--invalid',
               textColor,
               !this.value && 'input--empty',
@@ -494,13 +500,25 @@ export default class SdInput extends SolidElement implements SolidFormControl {
           <!-- TODO: do we want iconSize to apply to the left slot? -->
             ${
               slots['left']
-                ? html`<slot name="left" part="left" class=${cx('input__left inline mr-2', iconSize)}></slot>`
+                ? html`<slot
+                    name="left"
+                    part="left"
+                    class=${cx(
+                      'input__left inline',
+                      this.size === 'sm' ? 'mr-1' : 'mr-2',
+                      this.disabled ? 'text-neutral-500' : 'text-primary', // TODO: does left receive the same styles as right?  Nothing in design.
+                      iconSize
+                    )}
+                  ></slot>`
                 : ''
             }
             <input
               part="input"
               id="input"
-              class=${cx('input__control focus:outline-none bg-transparent flex-grow ', textSize)}
+              class=${cx(
+                'input__control focus:outline-none bg-transparent flex-grow placeholder-neutral-700',
+                textSize
+              )}
               type=${this.type === 'password' && this.passwordVisible ? 'text' : this.type}
               title=${this.title /* An empty title prevents browser validation tooltips from appearing on hover */}
               name=${ifDefined(this.name)}
@@ -593,7 +611,12 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                 ? html`<slot
                     name="right"
                     part="right"
-                    class=${cx('input__right inline-flex text-primary', iconMarginLeft, iconSize)}
+                    class=${cx(
+                      'input__right inline-flex',
+                      this.disabled ? 'text-neutral-500' : 'text-primary',
+                      iconMarginLeft,
+                      iconSize
+                    )}
                   ></slot>`
                 : ''
             }
@@ -652,6 +675,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
         position: relative;
         display: inline-block;
         text-align: left;
+        max-width: inherit;
         width: 100%;
       }
 

@@ -16,17 +16,81 @@ export default {
 };
 
 /**
- * Default: This shows sd-input in its default state.
+ * This shows sd-input in its default state.
  */
 
 export const Default = {
   render: (args: any) => {
-    return generateTemplate({ args });
+    return html`<div class="max-w-[231px]">${generateTemplate({ args })}</div> `;
   }
 };
 
 /**
- * Dev: Temporary Dev story
+ * Use the disabled attribute to disable an input. All interaction is disabled and no events will be fired.
+ */
+
+export const Disabled = {
+  parameters: {
+    controls: {
+      exclude: ['disabled']
+    }
+  },
+  render: (args: any) => {
+    return html`
+      <div class="max-w-[231px]">
+        ${generateTemplate({
+          constants: [
+            { type: 'attribute', name: 'value', value: 'value' },
+            { type: 'attribute', name: 'label', value: 'label' },
+            { type: 'attribute', name: 'help-text', value: 'help-text' },
+            { type: 'attribute', name: 'disabled', value: true },
+            {
+              type: 'slot',
+              name: 'right',
+              value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
+            }
+          ],
+          args
+        })}
+      </div>
+    `;
+  }
+};
+
+/**
+ * Use the readonly attribute to render an input as readonly.  Interaction is enabled, but the input cannot be edited.  Events will be fired.
+ */
+
+export const Readonly = {
+  parameters: {
+    controls: {
+      exclude: ['readonly']
+    }
+  },
+  render: (args: any) => {
+    return html`
+      <div class="max-w-[231px]">
+        ${generateTemplate({
+          constants: [
+            { type: 'attribute', name: 'value', value: 'value' },
+            { type: 'attribute', name: 'label', value: 'label' },
+            { type: 'attribute', name: 'help-text', value: 'help-text' },
+            { type: 'attribute', name: 'readonly', value: true },
+            {
+              type: 'slot',
+              name: 'right',
+              value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
+            }
+          ],
+          args
+        })}
+      </div>
+    `;
+  }
+};
+
+/**
+ * This shows sd-input in its various sizes.
  */
 
 export const Sizes = {
@@ -39,7 +103,6 @@ export const Sizes = {
         { type: 'attribute', name: 'placeholder', value: 'placeholder' },
         { type: 'attribute', name: 'label', value: 'label' },
         { type: 'attribute', name: 'help-text', value: 'help-text' },
-        { type: 'attribute', name: 'message', value: 'message' },
         { type: 'attribute', name: 'clearable', value: true },
         {
           type: 'slot',
@@ -56,7 +119,7 @@ export const Form = {
   render: (args: any) => {
     return html`
       <form action="" method="get" id="testForm" name="testForm">
-        <div class="w-1/2">
+        <div class="max-w-[231px]">
           ${generateTemplate({
             constants: [
               { type: 'attribute', name: 'required', value: false },
