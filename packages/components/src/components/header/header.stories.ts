@@ -1,11 +1,14 @@
 import '../../solid-components';
-import { html } from 'lit-html';
+import { html } from 'lit';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-header');
-const { overrideArgs } = storybookHelpers('sd-header');
 const { generateTemplate } = storybookTemplate('sd-header');
+const { overrideArgs } = storybookHelpers('sd-header');
+
+const LOGO_UI = 'https://cdn.dam.union-investment.de/original/454499_UI_Logo_RGB.svg';
+const LOGO_FINANZ = 'https://cdn.dam.union-investment.de/original/454453_logo-finanzagenda-desktop.svg';
 
 export default {
   title: 'Components/sd-header',
@@ -19,7 +22,58 @@ export default {
   ]),
   argTypes,
   parameters: { ...parameters },
-  decorators: [withActions] as any
+  decorators: [
+    withActions,
+    (story: any) =>
+      html` <style>
+          .header-sample {
+            padding: 16px;
+            background: #e0e0e0;
+            text-align: left;
+            font-size: 14px;
+            font-weight: bold;
+            width: 100%;
+            box-sizing: border-box;
+          }
+          .logo-svg svg {
+            height: 32px;
+          }
+          /* LG styles */
+          @media (min-width: 1024px) {
+            .logo-svg svg {
+              height: 56px;
+            }
+          }
+
+          /* MD styles */
+          @media (max-width: 1023px) and (min-width: 768px) {
+            .logo-svg svg {
+              height: 48px;
+            }
+            .top-right {
+              display: flex;
+              gap: 48px;
+            }
+          }
+
+          /* SM styles */
+          @media (max-width: 767px) {
+            .logo-svg svg {
+              height: 32px;
+            }
+          }
+          .top,
+          .bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+          }
+          .top-left {
+            display: flex;
+            flex-shrink: 1;
+          }</style
+        >${story()}`
+  ] as unknown
 };
 
 /**
@@ -34,7 +88,7 @@ export const Default = {
 
 export const Fixed = {
   parameters: {
-    controls: { exclude: 'fixed' }
+    controls: { exclude: ['fixed', '--sd-header-inner-width'] }
   },
   render: (args: any) => {
     return generateTemplate({
@@ -50,94 +104,207 @@ export const Fixed = {
   }
 };
 
-/**
- * Here are some examples of sd-header.
- */
-export const Samples = {
+/* Sample Header responsive – variant A - 01 */
+export const ResponsiveSample = {
   parameters: {
     controls: {
       exclude: [
+        'default',
         'fixed',
         'auto-spacing',
-        'sd-header-inner-width',
-        'sd-header-padding-x',
-        'sd-header-inner-max-width',
-        'sd-header-padding-top',
-        'sd-header-padding-bottom',
-        'sd-header-height'
+        '--sd-header-inner-width',
+        '--sd-header-inner-max-width',
+        '--sd-header-padding-x',
+        '--sd-header-padding-top',
+        '--sd-header-padding-bottom'
       ]
     }
   },
-  render: () => {
+  render: (args: any) => {
     return html`
-      <style>
-        .header-sample {
-          padding: 16px;
-          background: #e0e0e0;
-          text-align: left;
-          font-size: 14px;
-          font-weight: bold;
-          width: 100%;
-          box-sizing: border-box;
-        }
-        svg {
-          max-height: 52px;
-        }
-        /* Mobile styles (default) */
-        .test {
-          --sd-header-inner-width: calc(100vw - 32px);
-          --sd-header-padding-x: 16px;
-          /* ... other properties ... */
-        }
-
-        /* Tablet styles */
-        @media (min-width: 768px) {
-          .test {
-            --sd-header-inner-width: calc(100vw - 48px);
-            --sd-header-padding-x: 24px;
-            /* ... other properties ... */
-          }
-        }
-
-        /* Desktop styles */
-        @media (min-width: 1024px) {
-          .test {
-            --sd-header-inner-width: calc(100vw - 64px);
-            --sd-header-padding-x: 32px;
-            /* ... other properties ... */
-          }
-        }
-      </style>
       <div class="story-wrapper">
-        <div class="header-sample">Responsive Header</div>
-        <sd-header class='test'
-          ><sd-include src="https://cdn.dam.union-investment.de/original/454499_UI_Logo_RGB.svg"></sd-include
-          ><sd-navigation-item>Über Uns</sd-navigation-item><sd-navigation-item>Märkte</sd-navigation-item
-          ><sd-navigation-item>Presseservice</sd-navigation-item><sd-navigation-item>Nachhaltigkeit</sd-navigation-item
-          ><sd-navigation-item>Karriere</sd-navigation-item></sd-header
-        >
-        <div class="header-sample">Header / LG</div>
-        <sd-header class='test'
-          ><sd-include src="https://cdn.dam.union-investment.de/original/454499_UI_Logo_RGB.svg"></sd-include
-          ><sd-navigation-item>Über Uns</sd-navigation-item><sd-navigation-item>Märkte</sd-navigation-item
-          ><sd-navigation-item>Presseservice</sd-navigation-item><sd-navigation-item>Nachhaltigkeit</sd-navigation-item
-          ><sd-navigation-item>Karriere</sd-navigation-item></sd-header
-        >
-        <div class="header-sample">Header / MD</div>
-        <sd-header class='test'
-          ><sd-include src="https://cdn.dam.union-investment.de/original/454499_UI_Logo_RGB.svg"></sd-include
-          ><sd-navigation-item>Über Uns</sd-navigation-item><sd-navigation-item>Märkte</sd-navigation-item
-          ><sd-navigation-item>Presseservice</sd-navigation-item><sd-navigation-item>Nachhaltigkeit</sd-navigation-item
-          ><sd-navigation-item>Karriere</sd-navigation-item></sd-header
-        >
-        <div class="header-sample">Header / SM</div>
-        <sd-header class='test'
-          ><sd-include src="https://cdn.dam.union-investment.de/original/454499_UI_Logo_RGB.svg"></sd-include
-          ><sd-navigation-item>Über Uns</sd-navigation-item><sd-navigation-item>Märkte</sd-navigation-item
-          ><sd-navigation-item>Presseservice</sd-navigation-item><sd-navigation-item>Nachhaltigkeit</sd-navigation-item
-          ><sd-navigation-item>Karriere</sd-navigation-item></sd-header
-        >
+        <style>
+          /* Hide .bottom and show .top-right for viewports < lg */
+          .bottom {
+            display: none;
+          }
+          .top-right {
+            display: flex;
+          }
+
+          /* Show .bottom and hide .top-right for viewports >= lg */
+          @media (min-width: 1024px) {
+            .bottom {
+              display: flex;
+            }
+            .top-right {
+              display: none;
+            }
+            sd-navigation-item::part(content) {
+              display: flex;
+              align-items: center;
+            }
+          }
+        </style>
+        <div class="header-sample">Responsive Sample</div>
+        <sd-header style="--sd-header-padding-x:8px; --sd-header-padding-top:0; --sd-header-padding-bottom:0;">
+          <div class="top">
+            <div class="top-left">
+              <sd-include class="logo-svg" src=${LOGO_UI}></sd-include>
+            </div>
+            <div class="top-right">
+              <sd-navigation-item>
+                <sd-icon name="system/menu" library="global-resources" class="text-xl"></sd-icon>
+              </sd-navigation-item>
+            </div>
+          </div>
+          <div class="bottom">
+            <div class="bottom-left">
+              <sd-navigation-item>Über Uns</sd-navigation-item><sd-navigation-item>Märkte</sd-navigation-item
+              ><sd-navigation-item>Presseservice</sd-navigation-item
+              ><sd-navigation-item>Nachhaltigkeit</sd-navigation-item><sd-navigation-item>Karriere</sd-navigation-item>
+            </div>
+            <div class="bottom-right">
+              <sd-navigation-item>
+                <sd-icon name="system/website" library="global-resources" class="text-xl"></sd-icon>
+              </sd-navigation-item>
+              <sd-navigation-item>
+                <sd-icon name="system/magnifying-glass" library="global-resources" class="text-xl"></sd-icon>
+              </sd-navigation-item>
+              <sd-navigation-item>
+                <sd-icon name="system/profile" library="global-resources" class="text-xl"></sd-icon>Mein Depot
+              </sd-navigation-item>
+              <sd-navigation-item>
+                <sd-icon name="system/lock-locked" library="global-resources" class="text-xl"></sd-icon>Meine Bewerbung
+              </sd-navigation-item>
+            </div>
+          </div>
+        </sd-header>
       </div>
+    `;
+  }
+};
+
+/* Sample Header lg – variant B */
+export const LargeViewportSample = {
+  parameters: {
+    controls: {
+      exclude: [
+        'default',
+        'fixed',
+        'auto-spacing',
+        '--sd-header-inner-width',
+        '--sd-header-inner-max-width',
+        '--sd-header-padding-x',
+        '--sd-header-padding-top',
+        '--sd-header-padding-bottom'
+      ]
+    }
+  },
+  render: (args: any) => {
+    return html`
+      <div class="header-sample">Large Viewport Sample</div>
+      <div>
+        <sd-header
+          style="--sd-header-padding-x:8px; --sd-header-padding-top:0; --sd-header-padding-bottom:0;"
+          class="gap-3"
+        >
+          <div class="top">
+            <div class="top-left">
+              <sd-include class="logo-svg" src=${LOGO_UI}></sd-include>
+            </div>
+            <div class="top-right">
+              <sd-include class="logo-svg" src=${LOGO_FINANZ}></sd-include>
+            </div>
+          </div>
+          <div class="bottom">
+            <div class="bottom-left">
+              <sd-navigation-item>Ausgangspunkt</sd-navigation-item><sd-navigation-item>Standpunkt</sd-navigation-item
+              ><sd-navigation-item>Auf den Punkt</sd-navigation-item><sd-navigation-item>Treffpunkt</sd-navigation-item>
+            </div>
+            <div class="bottom-right">
+              <sd-navigation-item>
+                <sd-icon name="system/website" library="global-resources" class="text-xl"></sd-icon>
+              </sd-navigation-item>
+              <sd-navigation-item>
+                <sd-icon name="system/magnifying-glass" library="global-resources" class="text-xl"></sd-icon>
+              </sd-navigation-item>
+            </div>
+          </div>
+        </sd-header>
+      </div>
+    `;
+  }
+};
+
+export const MediumViewportSample = {
+  parameters: {
+    viewport: { defaultViewport: 'tablet' },
+    controls: {
+      exclude: [
+        'default',
+        'fixed',
+        'auto-spacing',
+        '--sd-header-inner-width',
+        '--sd-header-inner-max-width',
+        '--sd-header-padding-x',
+        '--sd-header-padding-top',
+        '--sd-header-padding-bottom'
+      ]
+    }
+  },
+  render: (args: any) => {
+    return html`
+      <div class="header-sample">Medium Viewport Sample</div>
+      <sd-header style="--sd-header-padding-x:8px; --sd-header-padding-top:0; --sd-header-padding-bottom:0;" ;>
+        <div class="top">
+          <div class="top-left">
+            <sd-include class="logo-svg" src=${LOGO_UI}></sd-include>
+          </div>
+          <div class="top-right">
+            <sd-include class="logo-svg" src=${LOGO_FINANZ}></sd-include>
+            <sd-navigation-item>
+              <sd-icon name="system/menu" library="global-resources" class="text-xl"></sd-icon>
+            </sd-navigation-item>
+          </div>
+        </div>
+      </sd-header>
+    `;
+  }
+};
+
+/* Sample Header sm - variant A */
+export const SmallViewportSample = {
+  parameters: {
+    viewport: { defaultViewport: 'mobile1' },
+    controls: {
+      exclude: [
+        'default',
+        'fixed',
+        'auto-spacing',
+        '--sd-header-inner-width',
+        '--sd-header-inner-max-width',
+        '--sd-header-padding-x',
+        '--sd-header-padding-top',
+        '--sd-header-padding-bottom'
+      ]
+    }
+  },
+  render: (args: any) => {
+    return html`
+      <div class="header-sample">Small Viewport Sample</div>
+      <sd-header style="--sd-header-padding-x:8px; --sd-header-padding-top:0; --sd-header-padding-bottom:0;" ;>
+        <div class="top">
+          <div class="top-left">
+            <sd-include class="logo-svg" src=${LOGO_UI}></sd-include>
+          </div>
+          <div class="top-right">
+            <sd-navigation-item>
+              <sd-icon name="system/menu" library="global-resources" class="text-xl"></sd-icon>
+            </sd-navigation-item>
+          </div>
+        </div>
+      </sd-header>
     `;
   }
 };
