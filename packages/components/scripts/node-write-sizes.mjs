@@ -23,7 +23,7 @@ const newVersion = pkg.version;
 
 const additionalContent = `### 📈 Stats\n* ${getOutputs().uncompressed}\n* ${getOutputs().gzip}\n\n`;
 
-fs.readFile('./src/docs/General/Changelog.mdx', 'utf8', (err, data) => {
+fs.readFile('./CHANGELOG.md', 'utf8', (err, data) => {
   if (err) {
     return console.log(err);
   }
@@ -48,7 +48,7 @@ fs.readFile('./src/docs/General/Changelog.mdx', 'utf8', (err, data) => {
   }
 
   // Write the updated changelog back to CHANGELOG.md
-  fs.writeFile('./src/docs/General/Changelog.mdx', result, 'utf8', err => {
+  fs.writeFile('./CHANGELOG.md', result, 'utf8', err => {
     if (err) return console.log(err);
   });
 });
