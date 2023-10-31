@@ -10,7 +10,7 @@
       "automerge": true
     },
     {
-      "matchDepNames": ["node", "pnpm", "nx"],
+      "matchDepNames": ["node", "pnpm"],
       "enabled": false
     },
     {
@@ -23,7 +23,7 @@
   ],
   "lockFileMaintenance": {
     "enabled": true,
-    "automerge": true
+    "automerge": false
   },
   "major": {
     "automerge": false
