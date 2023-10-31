@@ -154,7 +154,7 @@
       [
         "@semantic-release/changelog",
         {
-          "changelogFile": "src/docs/General/Changelog.mdx"
+          "changelogFile": "CHANGELOG.md"
         }
       ],
       [
@@ -168,7 +168,7 @@
         {
           "message": "chore(release/components): ${nextRelease.version} [skip actions]\n\n${nextRelease.notes}",
           "assets": [
-            "src/docs/General/Changelog.mdx",
+            "CHANGELOG.md",
             "package.json"
           ]
         }
@@ -177,12 +177,6 @@
         "@semantic-release/github",
         {
           "successComment": false
-        }
-      ],
-      [
-        "@semantic-release/exec",
-        {
-          "publishCmd": "./prepare-changelog.sh"
         }
       ]
     ]
