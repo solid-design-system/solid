@@ -1,13 +1,8 @@
 import '../icon/icon';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
-import {
-  customErrorValidityState,
-  FormControlController,
-  validValidityState,
-  valueMissingValidityState
-} from '../../internal/form';
 import { defaultValue } from '../../internal/default-value';
+import { FormControlController } from '../../internal/form';
 import { HasSlotController } from '../../internal/slot';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { live } from 'lit/directives/live.js';
@@ -41,8 +36,8 @@ const isFirefox = isChromium ? false : navigator.userAgent.includes('Firefox');
  * @dependency sd-icon
  *
  * @slot label - The input's label. Alternatively, you can use the `label` attribute.
- * @slot prefix - Used to prepend a presentational icon or similar element to the input.
- * @slot suffix - Used to append a presentational icon or similar element to the input.
+ * @slot left - Used to prepend a presentational icon or similar element to the input.
+ * @slot right - Used to append a presentational icon or similar element to the input.
  * @slot clear-icon - An icon to use in lieu of the default clear icon.
  * @slot show-password-icon - An icon to use in lieu of the default show password icon.
  * @slot hide-password-icon - An icon to use in lieu of the default hide password icon.
@@ -60,10 +55,10 @@ const isFirefox = isChromium ? false : navigator.userAgent.includes('Firefox');
  * @csspart form-control-help-text - The help text's wrapper.
  * @csspart base - The component's base wrapper.
  * @csspart input - The internal `<input>` control.
- * @csspart prefix - The container that wraps the prefix.
+ * @csspart left - The container that wraps the left.
  * @csspart clear-button - The clear button.
  * @csspart password-toggle-button - The password toggle button.
- * @csspart suffix - The container that wraps the suffix.
+ * @csspart right - The container that wraps the right.
  */
 @customElement('sd-input')
 export default class SdInput extends SolidElement implements SolidFormControl {
@@ -72,12 +67,11 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     this,
     'help-text',
     'label',
-    'prefix',
-    'suffix',
+    'left',
+    'right',
     'message',
     'placeholder'
   );
-  private customValidityMessage = '';
   private readonly localize = new LocalizeController(this);
 
   @query('.input__control') input: HTMLInputElement;
@@ -85,6 +79,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   @state() private hasFocus = false;
   @property() title = ''; // make reactive to pass through
 
+  // TODO: Inclusion of 'number' makes story book use numeric input, storybook also includes " " option which is irrelevant
   /**
    * The type of input. Works the same as a native `<input>` element, but only a subset of types are supported. Defaults
    * to `text`.
@@ -93,7 +88,6 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     | 'date'
     | 'datetime-local'
     | 'email'
-    | 'number'
     | 'password'
     | 'search'
     | 'tel'
@@ -161,7 +155,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   /** The input's maximum value. Only applies to date and number input types. */
   @property({ type: Number }) max: number;
 
-  // --------------------------- FORM TYPE --------------------------- //
+  // --------------------------- FORM ATTRIBUTES --------------------------- //
   /**
    * By default, form controls are associated with the nearest containing `<form>` element. This attribute allows you
    * to place the form control outside of a form and associate it with the form that has this `id`. The form must be in
@@ -177,9 +171,6 @@ export default class SdInput extends SolidElement implements SolidFormControl {
 
   /** A regular expression pattern to validate input against. */
   @property() pattern: string;
-
-  /**  A Boolean attribute which, if present, marks the radio Button valid or invalid  */
-  @property({ type: Boolean, reflect: true }) invalid = false;
 
   /**
    * Specifies the granularity that the value must adhere to, or the special value `any` which means no stepping is
@@ -244,19 +235,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
 
   /** Gets the validity state object */
   get validity() {
-    const isRequiredAndEmpty = this.required && !this.value;
-    const hasCustomValidityMessage = this.customValidityMessage !== '';
-
-    if (hasCustomValidityMessage) {
-      this.invalid = true;
-      return customErrorValidityState;
-    } else if (isRequiredAndEmpty) {
-      this.invalid = true;
-      return valueMissingValidityState;
-    }
-
-    this.invalid = false;
-    return validValidityState;
+    return this.input.validity;
   }
 
   firstUpdated() {
@@ -295,8 +274,6 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   }
 
   private handleInvalid() {
-    console.log('handleInvalid');
-    console.log(this.invalid);
     this.formControlController.setValidity(false);
   }
 
@@ -408,7 +385,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
 
   /** Checks for validity but does not show the browser's validation message. */
   checkValidity() {
-    return this.input.checkValidity();
+    return this.input?.checkValidity();
   }
 
   /** Checks for validity and shows the browser's validation message if the control is invalid. */
@@ -427,57 +404,103 @@ export default class SdInput extends SolidElement implements SolidFormControl {
       label: this.hasSlotController.test('label'),
       helpText: this.hasSlotController.test('help-text'),
       description: this.hasSlotController.test('description'),
-      prefix: this.hasSlotController.test('prefix'),
-      suffix: this.hasSlotController.test('suffix')
+      left: this.hasSlotController.test('left'),
+      right: this.hasSlotController.test('right')
     };
 
     const hasLabel = this.label ? true : !!slots['label'];
     const hasHelpText = this.helpText ? true : !!slots['helpText'];
-    const hasClearIcon = this.clearable && !this.readonly && (typeof this.value === 'number' || this.value.length > 0);
+    const hasClearIcon = this.clearable && !this.readonly && (typeof this.value === 'number' || this.value.length >= 0);
+    const isInvalid = (this.required || !!this.pattern) && !this.checkValidity();
+    const isValid = (this.required || !!this.pattern) && this.checkValidity();
+
+    // Hierarchy of input states:
+    const inputState = this.disabled
+      ? 'disabled'
+      : this.readonly
+      ? 'readonly'
+      : this.hasFocus && isInvalid
+      ? 'activeInvalid'
+      : this.hasFocus && isValid
+      ? 'activeValid'
+      : this.hasFocus
+      ? 'active'
+      : isInvalid
+      ? 'invalid'
+      : isValid
+      ? 'valid'
+      : 'default';
+
+    const textSize = this.size === 'sm' ? 'text-sm' : 'text-base';
+    const textColor = {
+      disabled: 'text-neutral-500',
+      readonly: 'text-neutral-500',
+      activeInvalid: 'text-error',
+      activeValid: 'text-success',
+      active: 'text-black',
+      invalid: 'text-error',
+      valid: 'text-success',
+      default: 'text-black'
+    }[inputState];
+    const iconMarginLeft = this.size === 'sm' ? 'ml-1' : 'ml-2';
+    const iconSize = {
+      sm: 'text-base',
+      md: 'text-lg',
+      lg: 'text-xl'
+    }[this.size];
 
     return html`
       <div
         part="form-control"
-        class=${cx('form-control', hasLabel && 'form-control--has-label', this.size === 'sm' ? 'text-sm' : 'text-base')}
+        class=${cx('form-control', hasLabel && 'form-control--has-label')}
       >
         <label
           part="form-control-label"
-          class=${cx('form-control-label', hasLabel ? 'inline-block' : 'hidden')}
+          class=${cx('form-control-label', hasLabel ? 'inline-block' : 'hidden', textSize)}
           for="input"
           aria-hidden=${hasLabel ? 'false' : 'true'}
         >
-          <slot name="label">${this.label}</slot>
+          <slot name="label">${this.label}${this.required ? '*' : ''}</slot>
         </label>
 
-        <div part="form-control-input" class="form-control-input">
+        <div part="form-control-input" class="form-control-input relative w-full">
+          <div part="border" class=${cx(
+            'absolute w-full h-full pointer-events-none border rounded-[4px]',
+            {
+              disabled: 'border-neutral-500',
+              readonly: 'border-neutral-500',
+              activeInvalid: 'border-error border-2',
+              activeValid: 'border-success border-2',
+              active: 'border-primary border-2',
+              invalid: 'border-error',
+              valid: 'border-success',
+              default: 'border-neutral-800'
+            }[inputState]
+          )}></div>
           <div
             part="base"
             class=${cx(
-              'px-4 border rounded flex flex-row items-center ',
-              this.disabled
-                ? 'border-neutral-500 text-neutral-500'
-                : this.invalid
-                ? 'form-control-input--invalid border-error'
-                : 'border-neutral-800',
-              this.disabled && '',
-              this.readonly ? 'bg-neutral-100 hover:bg-neutral-100' : 'hover:bg-neutral-200',
-
-              // Sizes
+              'px-4 rounded flex flex-row items-center hover:bg-neutral-200 rounded-[4px]',
+              // Vertical Padding
               this.size === 'lg' ? 'py-2' : 'py-1',
-
               // States
-              this.disabled && '',
-              this.hasFocus && '',
+              isInvalid && 'form-control-input--invalid',
+              textColor,
               !this.value && 'input--empty',
               this.noSpinButtons && 'input--no-spin-buttons',
               isFirefox && 'input--is-firefox'
             )}
           >
-            ${slots['prefix'] ? html`<slot name="prefix" part="prefix" class="input__prefix inline mr-2"></slot>` : ''}
+          <!-- TODO: do we want iconSize to apply to the left slot? -->
+            ${
+              slots['left']
+                ? html`<slot name="left" part="left" class=${cx('input__left inline mr-2', iconSize)}></slot>`
+                : ''
+            }
             <input
               part="input"
               id="input"
-              class=${cx('input__control focus:outline-none bg-transparent')}
+              class=${cx('input__control focus:outline-none bg-transparent flex-grow ', textSize)}
               type=${this.type === 'password' && this.passwordVisible ? 'text' : this.type}
               title=${this.title /* An empty title prevents browser validation tooltips from appearing on hover */}
               name=${ifDefined(this.name)}
@@ -512,7 +535,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                 ? html`
                     <button
                       part="clear-button"
-                      class="input__clear flex justify-center ml-2 "
+                      class=${cx('input__clear flex justify-center', iconMarginLeft, iconSize)}
                       type="button"
                       aria-label=${this.localize.term(['clearEntry'])}
                       @click=${this.handleClearClick}
@@ -538,14 +561,15 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                   `
                 : ''
             }
+            <!-- TODO: Do we need password logic? -->
             ${
               this.passwordToggle && !this.disabled
                 ? html`
                     <button
+                      aria-label=${this.localize.term(this.passwordVisible ? 'hidePassword' : 'showPassword')}
                       part="password-toggle-button"
                       class="input__password-toggle"
                       type="button"
-                      aria-label=${this.localize.term(this.passwordVisible ? 'hidePassword' : 'showPassword')}
                       @click=${this.handlePasswordToggle}
                       tabindex="-1"
                     >
@@ -564,11 +588,38 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                   `
                 : ''
             }
-          ${
-            slots['suffix']
-              ? html`<slot name="suffix" part="suffix" class="input__suffix ml-2 flex items-center"></slot>`
-              : ''
-          }
+            ${
+              slots['right']
+                ? html`<slot
+                    name="right"
+                    part="right"
+                    class=${cx('input__right inline-flex text-primary', iconMarginLeft, iconSize)}
+                  ></slot>`
+                : ''
+            }
+            ${
+              isInvalid
+                ? html`
+                    <sd-icon
+                      class=${cx('text-error', iconMarginLeft, iconSize)}
+                      library="global-resources"
+                      name="system/risk"
+                    ></sd-icon>
+                  `
+                : ''
+            }
+            ${
+              isValid
+                ? html`
+                    <sd-icon
+                      class=${cx('text-success', iconMarginLeft, iconSize)}
+                      library="global-resources"
+                      name="system/hook"
+                    ></sd-icon>
+                  `
+                : ''
+            }
+            
           </div>
         </div>
 
@@ -600,6 +651,8 @@ export default class SdInput extends SolidElement implements SolidFormControl {
         box-sizing: border-box;
         position: relative;
         display: inline-block;
+        text-align: left;
+        width: 100%;
       }
 
       :host([vertical]) {
@@ -616,10 +669,6 @@ export default class SdInput extends SolidElement implements SolidFormControl {
         margin-inline-start: var(--sd-input-required-content-offset);
         color: var(--sd-input-required-content-color);
       }
-
-      /* TODO: Should we conditional affect the suffix or prefix slotted icon based on size?  Design specifies but we removed icon slot. */
-      /* ::slotted(sd-icon) {
-      } */
     `
   ];
 }
