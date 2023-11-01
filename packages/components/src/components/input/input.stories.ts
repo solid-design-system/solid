@@ -220,13 +220,13 @@ export const Parts = {
 };
 
 /**
- * Validation. Who does not like it?
+ * Demonstrates the various validation options extended from the native input element in addition to error and success styles.
  */
 
 export const Validation = {
   render: (args: any) => {
     return html`
-      <form action="" method="get" id="testForm" name="testForm" class="w-[300px]">
+      <form action="" method="get" id="testForm" name="testForm" class="w-[370px]">
         <div class="mb-2">
           ${generateTemplate({
             constants: [
@@ -337,6 +337,101 @@ export const Validation = {
               { type: 'attribute', name: 'form', value: 'testForm' },
               { type: 'attribute', name: 'required', value: true },
               { type: 'attribute', name: 'max', value: 3 },
+              {
+                type: 'slot',
+                name: 'right',
+                value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
+              }
+            ],
+            args
+          })}
+        </div>
+        <div class="mb-2">
+          ${generateTemplate({
+            constants: [
+              { type: 'attribute', name: 'type', value: 'email' },
+              { type: 'attribute', name: 'label', value: 'Email' },
+              { type: 'attribute', name: 'name', value: 'email field' },
+              { type: 'attribute', name: 'placeholder', value: 'someone@example.com' },
+              { type: 'attribute', name: 'help-text', value: 'value must match email address format' },
+              { type: 'attribute', name: 'form', value: 'testForm' },
+              { type: 'attribute', name: 'required', value: true },
+              {
+                type: 'slot',
+                name: 'right',
+                value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
+              }
+            ],
+            args
+          })}
+        </div>
+        <div class="mb-2">
+          ${generateTemplate({
+            constants: [
+              { type: 'attribute', name: 'type', value: 'date' },
+              { type: 'attribute', name: 'label', value: 'Date' },
+              { type: 'attribute', name: 'name', value: 'date field' },
+              { type: 'attribute', name: 'placeholder', value: 'someone@example.com' },
+              { type: 'attribute', name: 'help-text', value: 'value is restricted to date format' },
+              { type: 'attribute', name: 'form', value: 'testForm' },
+              { type: 'attribute', name: 'required', value: true },
+              {
+                type: 'slot',
+                name: 'right',
+                value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
+              }
+            ],
+            args
+          })}
+        </div>
+        <div class="mb-2">
+          ${generateTemplate({
+            constants: [
+              { type: 'attribute', name: 'type', value: 'datetime-local' },
+              { type: 'attribute', name: 'label', value: 'Date Time' },
+              { type: 'attribute', name: 'name', value: 'datetime field' },
+              { type: 'attribute', name: 'placeholder', value: 'someone@example.com' },
+              { type: 'attribute', name: 'help-text', value: 'value is restricted to datetime format' },
+              { type: 'attribute', name: 'form', value: 'testForm' },
+              { type: 'attribute', name: 'required', value: true },
+              {
+                type: 'slot',
+                name: 'right',
+                value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
+              }
+            ],
+            args
+          })}
+        </div>
+        <div class="mb-2">
+          ${generateTemplate({
+            constants: [
+              { type: 'attribute', name: 'type', value: 'time' },
+              { type: 'attribute', name: 'label', value: 'Time' },
+              { type: 'attribute', name: 'name', value: 'time field' },
+              { type: 'attribute', name: 'placeholder', value: '' },
+              { type: 'attribute', name: 'help-text', value: 'value is restricted to time format' },
+              { type: 'attribute', name: 'form', value: 'testForm' },
+              { type: 'attribute', name: 'required', value: true },
+              {
+                type: 'slot',
+                name: 'right',
+                value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
+              }
+            ],
+            args
+          })}
+        </div>
+        <div class="mb-2">
+          ${generateTemplate({
+            constants: [
+              { type: 'attribute', name: 'type', value: 'url' },
+              { type: 'attribute', name: 'label', value: 'URL' },
+              { type: 'attribute', name: 'name', value: 'url field' },
+              { type: 'attribute', name: 'placeholder', value: 'https://www.union-investment.de/' },
+              { type: 'attribute', name: 'help-text', value: 'value must match url format' },
+              { type: 'attribute', name: 'form', value: 'testForm' },
+              { type: 'attribute', name: 'required', value: true },
               {
                 type: 'slot',
                 name: 'right',

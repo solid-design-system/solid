@@ -61,6 +61,7 @@ const isFirefox = isChromium ? false : navigator.userAgent.includes('Firefox');
  * @csspart password-toggle-button - The password toggle button.
  * @csspart right - The container that wraps the right.
  */
+
 @customElement('sd-input')
 export default class SdInput extends SolidElement implements SolidFormControl {
   protected readonly formControlController = new FormControlController(this);
@@ -516,7 +517,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               part="input"
               id="input"
               class=${cx(
-                'input__control flex-grow focus:outline-none bg-transparent placeholder-neutral-700',
+                'input__control min-w-0 flex-grow focus:outline-none bg-transparent placeholder-neutral-700',
                 textSize
               )}
               type=${this.type === 'password' && this.passwordVisible ? 'text' : this.type}
@@ -532,7 +533,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               max=${ifDefined(this.max)}
               step=${ifDefined(this.step as number)}
               .value=${live(this.value)}
-              autocapitalize=${ifDefined(this.type === 'password' ? 'off' : this.autocapitalize)}
+              autocapitalize=${ifDefined(this.type === 'password' ? 'off' : this.autocapitalize)} 
               autocomplete=${ifDefined(this.type === 'password' ? 'off' : this.autocomplete)}
               autocorrect=${ifDefined(this.type === 'password' ? 'off' : this.autocorrect)}
               ?autofocus=${this.autofocus}
@@ -551,7 +552,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
             ${
               hasClearIcon
                 ? html`
-                    <!-- TODO: How do we resolve the error in localize.term? -->
+                    <!-- TODO: How do we resolve the error in localize.term? Is it important? -->
                     <button
                       part="clear-button"
                       class=${cx('input__clear flex justify-center', iconMarginLeft, iconSize)}
@@ -563,15 +564,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                       <slot name="clear-icon">
                         <!-- TODO: Switch to system icon?  Use text-neutal-400 class? Not currently available -->
                         <sd-icon
-                          class=${cx(
-                            'text-neutral-500',
-                            {
-                              /* sizes, paddings */
-                              sm: 'h-4 w-4',
-                              md: 'h-5 w-5',
-                              lg: 'h-6 w-6'
-                            }[this.size]
-                          )}
+                          class="text-neutral-500"
                           library="global-resources"
                           name="system/closing-round"
                         ></sd-icon>
@@ -593,7 +586,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                       @click=${this.handlePasswordToggle}
                       tabindex="-1"
                     >
-                      ${this.passwordVisible
+                      ${this.passwordVisible // TODO: The following icons do not yet exist, do we comment out or delete?
                         ? html`
                             <slot name="show-password-icon">
                               <sd-icon name="eye-slash" library="system"></sd-icon>
@@ -633,7 +626,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                   `
                 : ''
             }
-            <!-- TODO: How are the "success" styles supposed to work? -->
+            <!-- TODO: How are the "success" styles supposed to work? Is this sufficient? -->
             ${
               isValid
                 ? html`
@@ -687,13 +680,6 @@ export default class SdInput extends SolidElement implements SolidFormControl {
 
       details summary::-webkit-details-marker {
         display: none;
-      }
-
-      /* Original Shoelace form styles: lines are commented out after conversion to TW */
-      :host([required]) .form-control--has-label .form-control__label::after {
-        content: var(--sd-input-required-content);
-        margin-inline-start: var(--sd-input-required-content-offset);
-        color: var(--sd-input-required-content-color);
       }
     `
   ];
