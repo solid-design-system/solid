@@ -15,7 +15,7 @@ describe('<sd-input>', () => {
     const el = await fixture<SdInput>(html` <sd-input></sd-input> `);
 
     expect(el.type).to.equal('text');
-    expect(el.size).to.equal('medium');
+    expect(el.size).to.equal('lg');
     expect(el.name).to.equal('');
     expect(el.value).to.equal('');
     expect(el.defaultValue).to.equal('');
@@ -461,15 +461,14 @@ describe('<sd-input>', () => {
             <input type="text" name="d" value="4" />
             <sd-input name="e" value="5"></sd-input>
             <textarea name="f">6</textarea>
-            <sd-textarea name="g" value="7"></sd-textarea>
-            <sd-checkbox name="h" value="8"></sd-checkbox>
+            <textarea name="g">7</textarea>
+            <input type="checkbox" name="h" value="8" />
           </form>
           <input type="text" name="i" value="9" form="f1" />
           <sd-input type="text" name="j" value="10" form="f1"></sd-input>
         </div>
       `);
       const form = el.querySelector<HTMLFormElement>('form')!;
-
       const formControls = getFormControls(form); // eslint-disable-line
       expect(formControls.length).to.equal(10); // eslint-disable-line
       expect(formControls.map((fc: HTMLInputElement) => fc.value).join('')).to.equal('12345678910'); // eslint-disable-line
