@@ -1,17 +1,38 @@
 import '../../solid-components';
 import { html } from 'lit-html';
-import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
+import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
+import { waitUntil } from '@open-wc/testing-helpers';
 import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, args, parameters } = storybookDefaults('sd-input');
 const { generateTemplate } = storybookTemplate('sd-input');
+const { overrideArgs } = storybookHelpers('sd-input');
 
 export default {
   title: 'Components/sd-input',
   component: 'sd-input',
   args,
-  argTypes,
-  parameters: { ...parameters },
+  argTypes: {
+    ...argTypes,
+    'type-attr': {
+      name: 'type',
+      table: {
+        category: 'attributes',
+        defaultValue: 'text'
+      },
+      description:
+        'The type of input. Works the same as a native `<input>` element, but only a subset of types are supported. ',
+      control: 'select',
+      options: ['date', 'datetime-local', 'email', 'number', 'password', 'search', 'tel', 'text', 'time', 'url', 'text']
+    }
+  },
+  parameters: {
+    ...parameters,
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/xSIeTnyfW2T21Uw5JgdZOg/Input?node-id=0%3A1&mode=dev'
+    }
+  },
   decorators: [withActions] as any
 };
 
@@ -35,21 +56,16 @@ export const Disabled = {
       exclude: ['disabled']
     }
   },
+  args: overrideArgs([
+    { type: 'attribute', name: 'value', value: 'value' },
+    { type: 'attribute', name: 'label', value: 'label' },
+    { type: 'attribute', name: 'help-text', value: 'help-text' }
+  ]),
   render: (args: any) => {
     return html`
       <div class="w-[231px]">
         ${generateTemplate({
-          constants: [
-            { type: 'attribute', name: 'value', value: 'value' },
-            { type: 'attribute', name: 'label', value: 'label' },
-            { type: 'attribute', name: 'help-text', value: 'help-text' },
-            { type: 'attribute', name: 'disabled', value: true },
-            {
-              type: 'slot',
-              name: 'right',
-              value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
-            }
-          ],
+          constants: [{ type: 'attribute', name: 'disabled', value: true }],
           args
         })}
       </div>
@@ -67,21 +83,16 @@ export const Readonly = {
       exclude: ['readonly']
     }
   },
+  args: overrideArgs([
+    { type: 'attribute', name: 'value', value: 'value' },
+    { type: 'attribute', name: 'label', value: 'label' },
+    { type: 'attribute', name: 'help-text', value: 'help-text' }
+  ]),
   render: (args: any) => {
     return html`
       <div class="w-[231px]">
         ${generateTemplate({
-          constants: [
-            { type: 'attribute', name: 'value', value: 'value' },
-            { type: 'attribute', name: 'label', value: 'label' },
-            { type: 'attribute', name: 'help-text', value: 'help-text' },
-            { type: 'attribute', name: 'readonly', value: true },
-            {
-              type: 'slot',
-              name: 'right',
-              value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
-            }
-          ],
+          constants: [{ type: 'attribute', name: 'readonly', value: true }],
           args
         })}
       </div>
@@ -94,22 +105,27 @@ export const Readonly = {
  */
 
 export const Sizes = {
+  parameters: {
+    controls: {
+      exclude: ['size']
+    }
+  },
+  args: overrideArgs([
+    { type: 'attribute', name: 'value', value: 'value' },
+    { type: 'attribute', name: 'label', value: 'label' },
+    { type: 'attribute', name: 'help-text', value: 'help-text' },
+    { type: 'attribute', name: 'clearable', value: true },
+    {
+      type: 'slot',
+      name: 'right',
+      value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
+    }
+  ]),
   render: (args: any) => {
     return generateTemplate({
       axis: {
         y: { type: 'attribute', name: 'size' }
       },
-      constants: [
-        { type: 'attribute', name: 'placeholder', value: 'placeholder' },
-        { type: 'attribute', name: 'label', value: 'label' },
-        { type: 'attribute', name: 'help-text', value: 'help-text' },
-        { type: 'attribute', name: 'clearable', value: true },
-        {
-          type: 'slot',
-          name: 'right',
-          value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
-        }
-      ],
       args
     });
   }
@@ -121,7 +137,9 @@ export const Sizes = {
 
 export const Slots = {
   parameters: {
-    controls: { exclude: [] }
+    controls: {
+      exclude: ['label', 'left', 'right', 'clear-icon', 'help-text', 'clearable', 'value']
+    }
   },
   render: (args: any) => {
     return html`
@@ -148,7 +166,6 @@ export const Slots = {
             { type: 'attribute', name: 'value', value: 'value' },
             { type: 'attribute', name: 'label', value: 'label' },
             { type: 'attribute', name: 'help-text', value: 'help-text' },
-            { type: 'slot', name: 'label', value: 'label' },
             {
               type: 'slot',
               name: 'left',
@@ -172,6 +189,11 @@ export const Slots = {
  */
 
 export const Parts = {
+  parameters: {
+    controls: {
+      exclude: ['label', 'left', 'right', 'clear-icon', 'help-text', 'clearable', 'value']
+    }
+  },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -202,7 +224,6 @@ export const Parts = {
         { type: 'attribute', name: 'value', value: 'value' },
         { type: 'attribute', name: 'label', value: 'label' },
         { type: 'attribute', name: 'help-text', value: 'help-text' },
-        { type: 'slot', name: 'label', value: 'label' },
         {
           type: 'slot',
           name: 'left',
@@ -224,6 +245,36 @@ export const Parts = {
  */
 
 export const Validation = {
+  parameters: {
+    controls: {
+      exclude: [
+        'title',
+        'type',
+        'size',
+        'inputmode',
+        'value',
+        'placeholder',
+        'label',
+        'help-text',
+        'message',
+        'clearable',
+        'disabled',
+        'readonly',
+        'password-toggle',
+        'password-visible',
+        'no-spin-buttons',
+        'minlength',
+        'maxlength',
+        'min',
+        'max',
+        'form',
+        'name',
+        'required',
+        'pattern',
+        'step'
+      ]
+    }
+  },
   render: (args: any) => {
     return html`
       <form action="" method="get" id="testForm" name="testForm" class="w-[370px]">
@@ -444,11 +495,12 @@ export const Validation = {
         <sd-button type="submit">Submit</sd-button>
       </form>
       <script>
-        const form = document.querySelector('#testForm');
-        const sdInputs = document.querySelectorAll('sd-input');
-
         function handleSubmit(event) {
+          const form = document.querySelector('#testForm');
+          const sdInputs = Array.from(document.querySelectorAll('sd-input'));
+
           const isValid = sdInput => sdInput.checkValidity();
+
           if (sdInputs.every(isValid)) {
             event.preventDefault(); // Prevent the default form submission behavior
 
@@ -459,29 +511,24 @@ export const Validation = {
           }
         }
 
-        form.addEventListener('submit', handleSubmit);
+        document.querySelector('#testForm').addEventListener('submit', handleSubmit);
       </script>
     `;
   }
 };
 
-// export const BasicForm = {
-//   render: () => {
-//     return html`
-//       <form>
-//         <label for="choose">Would you prefer a banana or cherry?</label>
-//         <input required id="choose" name="i-like" />
-//         <button>Submit</button>
-//       </form>
-//       <style>
-//         input:invalid {
-//           border: 2px dashed red;
-//         }
+/**
+ * `sd-input` is fully accessibile via keyboard.
+ */
 
-//         input:valid {
-//           border: 2px solid black;
-//         }
-//       </style>
-//     `;
-//   }
-// };
+export const Mouseless = {
+  render: (args: any) => {
+    return html`<div class="mouseless">${generateTemplate({ args })}</div>`;
+  },
+
+  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
+    const el = canvasElement.querySelector('.mouseless sd-input');
+    await waitUntil(() => el?.shadowRoot?.querySelector('input'));
+    el?.shadowRoot?.querySelector('input').focus();
+  }
+};

@@ -79,9 +79,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   @query('.input__control') input: HTMLInputElement;
 
   @state() private hasFocus = false;
-  @property() title = ''; // make reactive to pass through
 
-  // TODO: Inclusion of 'number' makes story book use numeric input, storybook also includes " " option which is irrelevant
   /**
    * The type of input. Works the same as a native `<input>` element, but only a subset of types are supported. Defaults
    * to `text`.
@@ -124,7 +122,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   @property({ attribute: 'help-text' }) helpText = '';
 
   /** Adds plain text to the input's success / error message underneath the help-text. */
-  @property({ attribute: 'message' }) message = '';
+  @property({ attribute: 'message' }) message = ''; // TODO: Should we remove this until we have sd-inline-error?
 
   /** Adds a clear button when the input is not empty. */
   @property({ type: Boolean }) clearable = false;
@@ -165,6 +163,11 @@ export default class SdInput extends SolidElement implements SolidFormControl {
 
   /** The name of the input, submitted as a name/value pair with form data. */
   @property() name = '';
+
+  /**
+   * The `title` attribute specifies extra information about an element most often as tooltip text when the mouse moves over the element.
+   */
+  @property() title = ''; // make reactive to pass through
 
   /** Makes the input a required field. */
   @property({ type: Boolean, reflect: true }) required = false;
