@@ -523,7 +523,7 @@ export const Validation = {
 
 export const Mouseless = {
   render: (args: any) => {
-    return html`<div class="mouseless">${generateTemplate({ args })}</div>`;
+    return html`<div class="mouseless w-[231px]">${generateTemplate({ args })}</div>`;
   },
 
   play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
