@@ -54,7 +54,7 @@ export const InvertedAndDisabled = {
       },
       args,
       options: {
-        templateBackgrounds: { alternate: 'y', colors: ['white', '#00358E'] }
+        templateBackgrounds: { alternate: 'y', colors: ['white', 'rgb(var(--sd-color-primary, 0 53 142))'] }
       }
     })
 };
@@ -78,7 +78,7 @@ export const BoldInMainSlot = {
       },
       args,
       options: {
-        templateBackgrounds: { alternate: 'y', colors: ['white', '#00358E'] }
+        templateBackgrounds: { alternate: 'y', colors: ['white', 'rgb(var(--sd-color-primary, 0 53 142))'] }
       }
     })
 };
@@ -158,7 +158,7 @@ export const InvertedAndIconSlots = {
       },
       args,
       options: {
-        templateBackgrounds: { alternate: 'y', colors: ['white', '#00358E'] }
+        templateBackgrounds: { alternate: 'y', colors: ['white', 'rgb(var(--sd-color-primary, 0 53 142))'] }
       }
     })
 };

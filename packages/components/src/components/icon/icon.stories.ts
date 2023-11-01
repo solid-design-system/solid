@@ -132,7 +132,7 @@ export const LibrarySystem = {
         { type: 'attribute', name: 'name', value: 'check' }
       ],
       options: {
-        templateBackgrounds: { alternate: 'x', colors: ['white', 'white', '#00358E'] }
+        templateBackgrounds: { alternate: 'x', colors: ['white', 'white', 'rgb(var(--sd-color-primary, 0 53 142))'] }
       },
       args
     })
@@ -163,8 +163,8 @@ export const LibrarySystem = {
  *   // We need currentColor as the main color for the icons
  *   mutator: svg => {
  *     const recoloredElements = {};
- *     recoloredElements['currentColorFills'] = svg.querySelectorAll('[fill="#00358e"], [fill="#fff"]');
- *     recoloredElements['currentColorStrokes'] = svg.querySelectorAll('[stroke="#00358e"], [stroke="#fff"]');
+ *     recoloredElements['currentColorFills'] = svg.querySelectorAll('[fill="rgb(var(--sd-color-primary, 0 53 142))"], [fill="#fff"]');
+ *     recoloredElements['currentColorStrokes'] = svg.querySelectorAll('[stroke="rgb(var(--sd-color-primary, 0 53 142))"], [stroke="#fff"]');
  *     recoloredElements['greenFills'] = svg.querySelectorAll('[fill="#43b02a"]');
  *     recoloredElements['greenStrokes'] = svg.querySelectorAll('[stroke="#43b02a"]');
  *
@@ -216,7 +216,7 @@ export const ExampleGlobalResources = {
       },
       constants: [{ type: 'attribute', name: 'library', value: 'global-resources' }],
       options: {
-        templateBackgrounds: { alternate: 'y', colors: ['white', 'white', '#00358E'] }
+        templateBackgrounds: { alternate: 'y', colors: ['white', 'white', 'rgb(var(--sd-color-primary, 0 53 142))'] }
       },
       args
     })
@@ -284,7 +284,7 @@ export const ExampleGlobalResourcesOverriden = {
       },
       constants: [{ type: 'attribute', name: 'library', value: 'global-resources-overriden' }],
       options: {
-        templateBackgrounds: { alternate: 'y', colors: ['white', 'white', '#00358E'] }
+        templateBackgrounds: { alternate: 'y', colors: ['white', 'white', 'rgb(var(--sd-color-primary, 0 53 142))'] }
       },
       args
     })

@@ -36,7 +36,12 @@ export const Color = {
       axis: {
         x: { type: 'attribute', name: 'color' }
       },
-      options: { templateBackgrounds: { alternate: 'x', colors: ['#F6F6F6', '#00358E', '#F6F6F6'] } },
+      options: {
+        templateBackgrounds: {
+          alternate: 'x',
+          colors: ['', 'rgb(var(--sd-color-primary, 0 53 142))', '#F6F6F6']
+        }
+      },
       args
     });
   }
