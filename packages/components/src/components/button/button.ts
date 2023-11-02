@@ -24,7 +24,6 @@ import type { SolidFormControl } from '../../internal/solid-element';
  * @event sd-blur - Emitted when the button loses focus.
  * @event sd-focus - Emitted when the button gains focus.
  * @event sd-invalid - Emitted when the form control has been checked for validity and its constraints aren't satisfied.
-
  *
  * @slot - The button's label.
  * @slot icon-left - A prefix icon or similar element.
