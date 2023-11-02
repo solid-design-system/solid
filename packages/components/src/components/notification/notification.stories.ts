@@ -83,7 +83,7 @@ export const Duration = {
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        y: { type: 'attribute', name: 'duration', values: [Infinity, 90000] }
+        y: { type: 'attribute', name: 'duration', values: [Infinity, 5000] }
       },
       args
     });
@@ -102,7 +102,7 @@ export const DurationIndicator = {
         y: { type: 'attribute', name: 'duration-indicator' }
       },
       args,
-      constants: { type: 'attribute', name: 'duration', value: [90000] }
+      constants: { type: 'attribute', name: 'duration', value: [5000] }
     });
   }
 };
@@ -118,9 +118,10 @@ export const ToastNotification = {
       <script>
         var button = document.querySelector('#top-right');
 
-        function notify(variant = 'info', toastStack = 'top-right', duration = 5000) {
+        function notify(variant = 'info', toastStack = 'top-right', duration = Infinity) {
           const notification = Object.assign(document.createElement('sd-notification'), {
             closable: true,
+            variant: variant,
             toastStack: toastStack,
             duration: duration,
             innerHTML: 'Lorem ipsum dolor sit amet.'
@@ -154,9 +155,10 @@ export const ToastBottomCenter = {
       <script>
         var buttonBottomCenter = document.querySelector('#bottom-center');
 
-        function notifyBottomCenter(variant = 'info', toastStack = 'bottom-center', duration = 5000) {
+        function notifyBottomCenter(variant = 'info', toastStack = 'bottom-center', duration = Infinity) {
           const notification = Object.assign(document.createElement('sd-notification'), {
             closable: true,
+            variant: variant,
             toastStack: toastStack,
             duration: duration,
             innerHTML: 'Lorem ipsum dolor sit amet.'

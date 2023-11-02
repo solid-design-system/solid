@@ -49,7 +49,6 @@ const toastStackBottomCenter = Object.assign(document.createElement('div'), {
 @customElement('sd-notification')
 export default class SdNotification extends SolidElement {
   private autoHideTimeout: number;
-  // private countIntervalId: number;
   private readonly localize = new LocalizeController(this);
 
   @query('[part~="base"]') base: HTMLElement;
@@ -74,12 +73,13 @@ export default class SdNotification extends SolidElement {
    * the notification before it closes (e.g. moves the mouse over it), the timer will restart. Defaults to `Infinity`, meaning
    * the notification will not close on its own.
    */
-  @property({ type: Number }) duration = 5000;
-  private remainingDuration = this.duration;
-  private startTime = Date.now();
+  @property({ type: Number }) duration = Infinity;
 
   /** Enables an animation that visualizes the duration of a notification. */
-  @property({ type: Boolean, reflect: true, attribute: 'duration-indicator' }) durationIndicator = true;
+  @property({ type: Boolean, reflect: true, attribute: 'duration-indicator' }) durationIndicator = false;
+
+  private remainingDuration = this.duration;
+  private startTime = Date.now();
 
   firstUpdated() {
     this.base.hidden = this.closed;
