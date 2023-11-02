@@ -449,6 +449,17 @@ export default class SdInput extends SolidElement implements SolidFormControl {
       default: 'text-black'
     }[inputState];
 
+    const borderColor = {
+      disabled: 'border-neutral-500',
+      readonly: 'border-neutral-500',
+      activeInvalid: 'border-error border-2',
+      activeValid: 'border-success border-2',
+      active: 'border-primary border-2',
+      invalid: 'border-error',
+      valid: 'border-success',
+      default: 'border-neutral-800'
+    }[inputState];
+
     const iconMarginLeft = this.size === 'sm' ? 'ml-1' : 'ml-2';
     const iconSize = {
       sm: 'text-base',
@@ -474,16 +485,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
         <div part="form-control-input" class="form-control-input relative w-full">
           <div part="border" class=${cx(
             'absolute w-full h-full pointer-events-none border rounded-[4px]',
-            {
-              disabled: 'border-neutral-500',
-              readonly: 'border-neutral-500',
-              activeInvalid: 'border-error border-2',
-              activeValid: 'border-success border-2',
-              active: 'border-primary border-2',
-              invalid: 'border-error',
-              valid: 'border-success',
-              default: 'border-neutral-800'
-            }[inputState]
+            borderColor
           )}></div>
           <div
             part="base"
@@ -674,6 +676,19 @@ export default class SdInput extends SolidElement implements SolidFormControl {
 
       details summary::-webkit-details-marker {
         display: none;
+      }
+
+      /* Hides browser stepper for number type. Necessary for "Stepper Sample".  IMO inconsistent if we allow datepicker and other default input icons / controls. */
+      /* Chrome, Safari, Edge, Opera */
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      /* Firefox */
+      input[type='number'] {
+        -moz-appearance: textfield;
       }
     `
   ];

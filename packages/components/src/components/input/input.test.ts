@@ -455,21 +455,22 @@ describe('<sd-input>', () => {
       const el = await fixture<HTMLFormElement>(html`
         <div>
           <input type="text" name="a" value="1" form="f1" />
-          <sd-input type="text" name="b" value="2" form="f1"></sd-input>
+          <input type="text" name="b" value="2" form="f1" />
           <form id="f1">
             <input type="hidden" name="c" value="3" />
             <input type="text" name="d" value="4" />
-            <sd-input name="e" value="5"></sd-input>
+            <input name="e" value="5" />
             <textarea name="f">6</textarea>
             <textarea name="g">7</textarea>
             <input type="checkbox" name="h" value="8" />
           </form>
           <input type="text" name="i" value="9" form="f1" />
-          <sd-input type="text" name="j" value="10" form="f1"></sd-input>
+          <input type="text" name="j" value="10" form="f1" />
         </div>
       `);
       const form = el.querySelector<HTMLFormElement>('form')!;
       const formControls = getFormControls(form); // eslint-disable-line
+
       expect(formControls.length).to.equal(10); // eslint-disable-line
       expect(formControls.map((fc: HTMLInputElement) => fc.value).join('')).to.equal('12345678910'); // eslint-disable-line
     });

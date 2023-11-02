@@ -532,3 +532,116 @@ export const Mouseless = {
     el?.shadowRoot?.querySelector('input')!.focus();
   }
 };
+
+/**
+ * Step function used in Stepper sample.
+ */
+const step = (direction: 'up' | 'down') => {
+  // Get input element and buttons
+  const inputEl = document.querySelector('sd-input')!;
+  const stepDownButton = document.querySelector('#stepDownButton')!;
+
+  // function to add class if not present
+  const addClass = (el: Element, className: string) => {
+    if (!el.classList.contains(className)) {
+      el.classList.add(className);
+    }
+  };
+
+  // function to remove class if present
+  const removeClass = (el: Element, className: string) => {
+    if (el.classList.contains(className)) {
+      el.classList.remove(className);
+    }
+  };
+
+  // function to adjust classlist of stepDownButton
+  const adjustClasslist = () => {
+    if (inputEl.value === '0') {
+      addClass(stepDownButton, 'text-neutral-500');
+    } else {
+      removeClass(stepDownButton, 'text-neutral-500');
+    }
+  };
+
+  // Call sd-input stepUp() or stepDown() method
+  if (direction === 'up') inputEl.stepUp();
+  if (direction === 'down') inputEl.stepDown();
+
+  // Adjust input value to 2 decimals (currency)
+  inputEl.value = String(parseInt(inputEl.value, 10).toFixed(2));
+
+  // Invoke adjustClasslist()
+  adjustClasslist();
+};
+
+/**
+ * Sample implementation of a currency stepper.
+ */
+
+export const Samples = {
+  parameters: {
+    controls: {
+      exclude: [
+        'title',
+        'type',
+        'size',
+        'inputmode',
+        'value',
+        'placeholder',
+        'label',
+        'help-text',
+        'message',
+        'clearable',
+        'disabled',
+        'readonly',
+        'password-toggle',
+        'password-visible',
+        'no-spin-buttons',
+        'minlength',
+        'maxlength',
+        'min',
+        'max',
+        'form',
+        'name',
+        'required',
+        'pattern',
+        'step'
+      ]
+    }
+  },
+  render: () => {
+    return html`
+      <style>
+        .headline {
+          margin-bottom: 16px;
+          padding: 16px;
+          background: #e0e0e0;
+          text-align: left;
+          font-size: 14px;
+          font-weight: bold;
+          width: 100%;
+          box-sizing: border-box;
+        }
+      </style>
+      <div>
+        <div class="headline">sd-input with currency stepper</div>
+        <sd-input type="number" min="0" class="w-[231px]"
+          ><span slot="right" class="text-sm inline-flex items-center"
+            ><span class="text-neutral-700">EUR</span>
+            <button
+              id="stepDownButton"
+              @click=${() => step('down')}
+              class="ml-4 scale-[1.714] inline-flex items-center text-neutral-500"
+            >
+              <sd-icon library="global-resources" name="system/minus-round"></sd-icon>
+            </button>
+            <button id="stepUpButton" @click=${() => step('up')} class="ml-4 scale-[1.714] inline-flex items-center">
+              <sd-icon library="global-resources" name="system/plus-round"></sd-icon></button
+          ></span>
+        </sd-input>
+      </div>
+      <script></script>
+    `;
+  }
+};
