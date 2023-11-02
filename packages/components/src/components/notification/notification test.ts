@@ -1,306 +1,341 @@
-// import '../../../dist/shoelace.js';
-// import { aTimeout, expect, fixture, html, oneEvent } from '@open-wc/testing';
-// import { clickOnElement, moveMouseOnElement } from '../../internal/test.js';
-// import { queryByTestId } from '../../internal/test/data-testid-helpers.js';
-// import { resetMouse } from '@web/test-runner-commands';
-// import sinon from 'sinon';
-// import type SdAlert from './alert.js';
-// import type SlIconButton from '../icon-button/icon-button.js';
+/* eslint-disable @typescript-eslint/no-unused-expressions */
+import { aTimeout, expect, fixture, html, oneEvent } from '@open-wc/testing';
+import { clickOnElement, moveMouseOnElement } from '../../internal/test.js';
+import { queryByTestId } from '../../internal/test/data-testid-helpers.js';
+import { resetMouse } from '@web/test-runner-commands';
+import sinon from 'sinon';
+
+import type SdIcon from '../icon/icon';
+import type SdNotification from './notification';
+
+const getNotificationContainer = (notification: SdNotification): HTMLElement => {
+  return notification.shadowRoot!.querySelector<HTMLElement>('[part="base"]')!;
+};
+
+const expectNotificationToBeVisible = (notification: SdNotification): void => {
+  const notificationContainer = getNotificationContainer(notification);
+  const style = window.getComputedStyle(notificationContainer);
+  expect(style.display).not.to.equal('none');
+  expect(style.visibility).not.to.equal('hidden');
+  expect(style.visibility).not.to.equal('collapse');
+};
+
+const expectNotificationToBeInvisible = (notification: SdNotification): void => {
+  const notifictionContainer = getNotificationContainer(notification);
+  const style = window.getComputedStyle(notifictionContainer);
+  expect(style.display, 'notification should be invisible').to.equal('none');
+};
+
+const expectHideAndAfterHideToBeEmittedInCorrectOrder = async (
+  notification: SdNotification,
+  action: () => void | Promise<void>
+) => {
+  const hidePromise = oneEvent(notification, 'sd-hide');
+  const afterHidePromise = oneEvent(notification, 'sd-after-hide');
+  let afterHideHappened = false;
+  oneEvent(notification, 'sd-after-hide').then(() => (afterHideHappened = true));
+
+  action();
+
+  await hidePromise;
+  expect(afterHideHappened).to.be.false;
+
+  await afterHidePromise;
+  expectNotificationToBeInvisible(notification);
+};
+
+const expectShowAndAfterShowToBeEmittedInCorrectOrder = async (
+  notification: SdNotification,
+  action: () => void | Promise<void>
+) => {
+  const showPromise = oneEvent(notification, 'sd-show');
+  const afterShowPromise = oneEvent(notification, 'sd-after-show');
+  let afterShowHappened = false;
+  oneEvent(notification, 'sd-after-show').then(() => (afterShowHappened = true));
+
+  action();
+
+  await showPromise;
+  expect(afterShowHappened).to.be.false;
+
+  await afterShowPromise;
+  expectNotificationToBeVisible(notification);
+};
+
+const getCloseButton = (notification: SdNotification): SdIcon | null | undefined =>
+  notification.shadowRoot?.querySelector<SdIcon>('[part="close-button"]');
+
+describe('<sd-notification>', () => {
+  let clock: sinon.SinonFakeTimers | null = null;
+
+  afterEach(async () => {
+    clock?.restore();
+    await resetMouse();
+  });
+
+  it('renders', async () => {
+    const notification = await fixture<SdNotification>(
+      html`<sd-notification open>I am an notification</sd-notification>`
+    );
+
+    expectNotificationToBeVisible(notification);
+  });
+
+  it('is accessible', async () => {
+    const notification = await fixture<SdNotification>(
+      html`<sd-notification open>I am an notification</sd-notification>`
+    );
+
+    await expect(notification).to.be.accessible();
+  });
+
+  describe('notification visibility', () => {
+    it('should be visible with the open attribute', async () => {
+      const notification = await fixture<SdNotification>(
+        html`<sd-notification open>I am an notification</sd-notification>`
+      );
+
+      expectNotificationToBeVisible(notification);
+    });
+
+    it('should not be visible without the open attribute', async () => {
+      const notification = await fixture<SdNotification>(
+        html` <sd-notification>I am an notification</sd-notification>`
+      );
+
+      expectNotificationToBeInvisible(notification);
+    });
+
+    it('should emit sd-show and sd-after-show when calling show()', async () => {
+      const notification = await fixture<SdNotification>(
+        html` <sd-notification>I am an notification</sd-notification>`
+      );
+
+      expectNotificationToBeInvisible(notification);
+
+      await expectShowAndAfterShowToBeEmittedInCorrectOrder(notification, () => notification.show());
+    });
+
+    it('should emit sd-hide and sd-after-hide when calling hide()', async () => {
+      const notification = await fixture<SdNotification>(
+        html` <sd-notification open>I am an notification</sd-notification>`
+      );
+
+      await expectHideAndAfterHideToBeEmittedInCorrectOrder(notification, () => notification.hide());
+    });
+
+    it('should emit sd-show and sd-after-show when setting open = true', async () => {
+      const notification = await fixture<SdNotification>(
+        html` <sd-notification>I am an notification</sd-notification> `
+      );
+
+      await expectShowAndAfterShowToBeEmittedInCorrectOrder(notification, () => {
+        notification.closed = false;
+      });
+    });
+
+    it('should emit sd-hide and sd-after-hide when setting open = false', async () => {
+      const notification = await fixture<SdNotification>(
+        html` <sd-notification open>I am an notification</sd-notification> `
+      );
+
+      await expectHideAndAfterHideToBeEmittedInCorrectOrder(notification, () => {
+        notification.closed = true;
+      });
+    });
+  });
+
+  describe('close button', () => {
+    it('shows a close button if the notification has the closable attribute', () => async () => {
+      const notification = await fixture<SdNotification>(
+        html` <sd-notification open closable>I am an notification</sd-notification> `
+      );
+      const closeButton = getCloseButton(notification);
+
+      expect(closeButton).to.be.visible;
+    });
+
+    it('clicking the close button closes the notification', () => async () => {
+      const notification = await fixture<SdNotification>(
+        html` <sd-notification open closable>I am an notification</sd-notification> `
+      );
+      const closeButton = getCloseButton(notification);
+
+      await expectHideAndAfterHideToBeEmittedInCorrectOrder(notification, () => clickOnElement(closeButton));
+    });
+  });
+
+  describe('toast', () => {
+    const getToastStack = (): HTMLDivElement | null => document.querySelector<HTMLDivElement>('.sd-toast-stack');
+
+    const closeRemainingNotifications = async (): Promise<void> => {
+      const toastStack = getToastStack();
+      if (toastStack?.children) {
+        for (const element of toastStack.children) {
+          await (element as SdNotification).hide();
+        }
+      }
+    };
+
+    beforeEach(async () => {
+      await closeRemainingNotifications();
+    });
+
+    it('can be rendered as a toast', async () => {
+      const notification = await fixture<SdNotification>(html`<sd-notification>I am an notification</sd-notification>`);
+
+      expectShowAndAfterShowToBeEmittedInCorrectOrder(notification, () => notification.toast());
+      const toastStack = getToastStack();
+      expect(toastStack).to.be.visible;
+      expect(toastStack?.firstChild).to.be.equal(notification);
+    });
+
+    it('resolves only after being closed', async () => {
+      const notification = await fixture<SdNotification>(
+        html`<sd-notification closable>I am an notification</sd-notification>`
+      );
 
-// const getAlertContainer = (alert: SdAlert): HTMLElement => {
-//   return alert.shadowRoot!.querySelector<HTMLElement>('[part="base"]')!;
-// };
+      const afterShowEvent = oneEvent(notification, 'sd-after-show');
+      let toastPromiseResolved = false;
+      notification.toast().then(() => (toastPromiseResolved = true));
 
-// const expectAlertToBeVisible = (alert: SdAlert): void => {
-//   const alertContainer = getAlertContainer(alert);
-//   const style = window.getComputedStyle(alertContainer);
-//   expect(style.display).not.to.equal('none');
-//   expect(style.visibility).not.to.equal('hidden');
-//   expect(style.visibility).not.to.equal('collapse');
-// };
+      await afterShowEvent;
+      expect(toastPromiseResolved).to.be.false;
 
-// const expectAlertToBeInvisible = (alert: SdAlert): void => {
-//   const alertContainer = getAlertContainer(alert);
-//   const style = window.getComputedStyle(alertContainer);
-//   expect(style.display, 'alert should be invisible').to.equal('none');
-// };
+      const closePromise = oneEvent(notification, 'sd-after-hide');
+      const closeButton = getCloseButton(notification);
+      clickOnElement(closeButton);
 
-// const expectHideAndAfterHideToBeEmittedInCorrectOrder = async (alert: SdAlert, action: () => void | Promise<void>) => {
-//   const hidePromise = oneEvent(alert, 'sd-hide');
-//   const afterHidePromise = oneEvent(alert, 'sd-after-hide');
-//   let afterHideHappened = false;
-//   oneEvent(alert, 'sd-after-hide').then(() => (afterHideHappened = true));
+      await closePromise;
+      await aTimeout(0);
 
-//   action();
+      expect(toastPromiseResolved).to.be.true;
+    });
 
-//   await hidePromise;
-//   expect(afterHideHappened).to.be.false;
+    const expectToastStack = () => {
+      const toastStack = getToastStack();
+      expect(toastStack).not.to.be.null;
+    };
 
-//   await afterHidePromise;
-//   expectAlertToBeInvisible(alert);
-// };
-
-// const expectShowAndAfterShowToBeEmittedInCorrectOrder = async (alert: SdAlert, action: () => void | Promise<void>) => {
-//   const showPromise = oneEvent(alert, 'sd-show');
-//   const afterShowPromise = oneEvent(alert, 'sd-after-show');
-//   let afterShowHappened = false;
-//   oneEvent(alert, 'sd-after-show').then(() => (afterShowHappened = true));
+    const expectNoToastStack = () => {
+      const toastStack = getToastStack();
+      expect(toastStack).to.be.null;
+    };
 
-//   action();
-
-//   await showPromise;
-//   expect(afterShowHappened).to.be.false;
-
-//   await afterShowPromise;
-//   expectAlertToBeVisible(alert);
-// };
-
-// const getCloseButton = (alert: SdAlert): SlIconButton | null | undefined =>
-//   alert.shadowRoot?.querySelector<SlIconButton>('[part="close-button"]');
-
-// describe('<sd-alert>', () => {
-//   let clock: sinon.SinonFakeTimers | null = null;
-
-//   afterEach(async () => {
-//     clock?.restore();
-//     await resetMouse();
-//   });
-
-//   it('renders', async () => {
-//     const alert = await fixture<SdAlert>(html`<sd-alert open>I am an alert</sd-alert>`);
-
-//     expectAlertToBeVisible(alert);
-//   });
-
-//   it('is accessible', async () => {
-//     const alert = await fixture<SdAlert>(html`<sd-alert open>I am an alert</sd-alert>`);
-
-//     await expect(alert).to.be.accessible();
-//   });
-
-//   describe('alert visibility', () => {
-//     it('should be visible with the open attribute', async () => {
-//       const alert = await fixture<SdAlert>(html`<sd-alert open>I am an alert</sd-alert>`);
-
-//       expectAlertToBeVisible(alert);
-//     });
-
-//     it('should not be visible without the open attribute', async () => {
-//       const alert = await fixture<SdAlert>(html` <sd-alert>I am an alert</sd-alert>`);
-
-//       expectAlertToBeInvisible(alert);
-//     });
+    const openToast = async (notification: SdNotification): Promise<void> => {
+      const openPromise = oneEvent(notification, 'sd-after-show');
+      notification.toast();
+      await openPromise;
+    };
 
-//     it('should emit sd-show and sd-after-show when calling show()', async () => {
-//       const alert = await fixture<SdAlert>(html` <sd-alert>I am an alert</sd-alert>`);
-
-//       expectAlertToBeInvisible(alert);
-
-//       await expectShowAndAfterShowToBeEmittedInCorrectOrder(alert, () => alert.show());
-//     });
-
-//     it('should emit sd-hide and sd-after-hide when calling hide()', async () => {
-//       const alert = await fixture<SdAlert>(html` <sd-alert open>I am an alert</sd-alert>`);
-
-//       await expectHideAndAfterHideToBeEmittedInCorrectOrder(alert, () => alert.hide());
-//     });
-
-//     it('should emit sd-show and sd-after-show when setting open = true', async () => {
-//       const alert = await fixture<SdAlert>(html` <sd-alert>I am an alert</sd-alert> `);
-
-//       await expectShowAndAfterShowToBeEmittedInCorrectOrder(alert, () => {
-//         alert.open = true;
-//       });
-//     });
-
-//     it('should emit sd-hide and sd-after-hide when setting open = false', async () => {
-//       const alert = await fixture<SdAlert>(html` <sd-alert open>I am an alert</sd-alert> `);
-
-//       await expectHideAndAfterHideToBeEmittedInCorrectOrder(alert, () => {
-//         alert.open = false;
-//       });
-//     });
-//   });
-
-//   describe('close button', () => {
-//     it('shows a close button if the alert has the closable attribute', () => async () => {
-//       const alert = await fixture<SdAlert>(html` <sd-alert open closable>I am an alert</sd-alert> `);
-//       const closeButton = getCloseButton(alert);
+    const closeToast = async (notification: SdNotification): Promise<void> => {
+      const closePromise = oneEvent(notification, 'sd-after-hide');
+      const closeButton = getCloseButton(notification);
+      await clickOnElement(closeButton);
+      await closePromise;
+      await aTimeout(0);
+    };
 
-//       expect(closeButton).to.be.visible;
-//     });
-
-//     it('clicking the close button closes the alert', () => async () => {
-//       const alert = await fixture<SdAlert>(html` <sd-alert open closable>I am an alert</sd-alert> `);
-//       const closeButton = getCloseButton(alert);
-
-//       await expectHideAndAfterHideToBeEmittedInCorrectOrder(alert, () => {
-//         clickOnElement(closeButton!);
-//       });
-//     });
-//   });
-
-//   describe('toast', () => {
-//     const getToastStack = (): HTMLDivElement | null => document.querySelector<HTMLDivElement>('.sd-toast-stack');
-
-//     const closeRemainingAlerts = async (): Promise<void> => {
-//       const toastStack = getToastStack();
-//       if (toastStack?.children) {
-//         for (const element of toastStack.children) {
-//           await (element as SdAlert).hide();
-//         }
-//       }
-//     };
-
-//     beforeEach(async () => {
-//       await closeRemainingAlerts();
-//     });
-
-//     it('can be rendered as a toast', async () => {
-//       const alert = await fixture<SdAlert>(html`<sd-alert>I am an alert</sd-alert>`);
-
-//       expectShowAndAfterShowToBeEmittedInCorrectOrder(alert, () => alert.toast());
-//       const toastStack = getToastStack();
-//       expect(toastStack).to.be.visible;
-//       expect(toastStack?.firstChild).to.be.equal(alert);
-//     });
-
-//     it('resolves only after being closed', async () => {
-//       const alert = await fixture<SdAlert>(html`<sd-alert closable>I am an alert</sd-alert>`);
-
-//       const afterShowEvent = oneEvent(alert, 'sd-after-show');
-//       let toastPromiseResolved = false;
-//       alert.toast().then(() => (toastPromiseResolved = true));
-
-//       await afterShowEvent;
-//       expect(toastPromiseResolved).to.be.false;
-
-//       const closePromise = oneEvent(alert, 'sd-after-hide');
-//       const closeButton = getCloseButton(alert);
-//       clickOnElement(closeButton!);
-
-//       await closePromise;
-//       await aTimeout(0);
-
-//       expect(toastPromiseResolved).to.be.true;
-//     });
-
-//     const expectToastStack = () => {
-//       const toastStack = getToastStack();
-//       expect(toastStack).not.to.be.null;
-//     };
-
-//     const expectNoToastStack = () => {
-//       const toastStack = getToastStack();
-//       expect(toastStack).to.be.null;
-//     };
-
-//     const openToast = async (alert: SdAlert): Promise<void> => {
-//       const openPromise = oneEvent(alert, 'sd-after-show');
-//       alert.toast();
-//       await openPromise;
-//     };
-
-//     const closeToast = async (alert: SdAlert): Promise<void> => {
-//       const closePromise = oneEvent(alert, 'sd-after-hide');
-//       const closeButton = getCloseButton(alert);
-//       await clickOnElement(closeButton!);
-//       await closePromise;
-//       await aTimeout(0);
-//     };
-
-//     it('deletes the toast stack after the last alert is done', async () => {
-//       const container = await fixture<HTMLElement>(html`<div>
-//         <sd-alert data-testid="alert1" closable>alert 1</sd-alert>
-//         <sd-alert data-testid="alert2" closable>alert 2</sd-alert>
-//       </div>`);
-
-//       const alert1 = queryByTestId<SdAlert>(container, 'alert1');
-//       const alert2 = queryByTestId<SdAlert>(container, 'alert2');
-
-//       await openToast(alert1!);
-
-//       expectToastStack();
-
-//       await openToast(alert2!);
-
-//       expectToastStack();
-
-//       await closeToast(alert1!);
-
-//       expectToastStack();
-
-//       await closeToast(alert2!);
-
-//       expectNoToastStack();
-//     });
-//   });
-
-//   describe('timer controlled closing', () => {
-//     it('closes after a predefined amount of time', async () => {
-//       clock = sinon.useFakeTimers();
-//       const alert = await fixture<SdAlert>(html` <sd-alert open duration="3000">I am an alert</sd-alert>`);
-
-//       expectAlertToBeVisible(alert);
-
-//       clock.tick(2999);
-
-//       expectAlertToBeVisible(alert);
-
-//       await expectHideAndAfterHideToBeEmittedInCorrectOrder(alert, () => {
-//         clock?.tick(1);
-//       });
-//     });
-
-//     it('resets the closing timer after mouse-over', async () => {
-//       clock = sinon.useFakeTimers();
-//       const alert = await fixture<SdAlert>(html` <sd-alert open duration="3000">I am an alert</sd-alert>`);
-
-//       expectAlertToBeVisible(alert);
-
-//       clock.tick(1000);
-
-//       await moveMouseOnElement(alert);
-
-//       clock.tick(2999);
-
-//       expectAlertToBeVisible(alert);
-
-//       await expectHideAndAfterHideToBeEmittedInCorrectOrder(alert, () => {
-//         clock?.tick(1);
-//       });
-//     });
-
-//     it('resets the closing timer after opening', async () => {
-//       clock = sinon.useFakeTimers();
-//       const alert = await fixture<SdAlert>(html` <sd-alert duration="3000">I am an alert</sd-alert>`);
-
-//       expectAlertToBeInvisible(alert);
-
-//       clock.tick(1000);
-
-//       const afterShowPromise = oneEvent(alert, 'sd-after-show');
-//       alert.show();
-//       await afterShowPromise;
-
-//       clock.tick(2999);
-
-//       await expectHideAndAfterHideToBeEmittedInCorrectOrder(alert, () => {
-//         clock?.tick(1);
-//       });
-//     });
-//   });
-
-//   describe('alert variants', () => {
-//     const variants = ['primary', 'success', 'neutral', 'warning', 'danger'];
-
-//     variants.forEach(variant => {
-//       it(`adapts to the variant: ${variant}`, async () => {
-//         const alert = await fixture<SdAlert>(html`<sd-alert variant="${variant}" open>I am an alert</sd-alert>`);
-
-//         const alertContainer = getAlertContainer(alert);
-//         expect(alertContainer).to.have.class(`alert--${variant}`);
-//       });
-//     });
-//   });
-// });
+    it('deletes the toast stack after the last notification is done', async () => {
+      const container = await fixture<HTMLElement>(html`<div>
+        <sd-notification data-testid="notification1" closable>notification 1</sd-notification>
+        <sd-notification data-testid="notification2" closable>notification 2</sd-notification>
+      </div>`);
+
+      const notification1 = queryByTestId<SdNotification>(container, 'notification1');
+      const notification2 = queryByTestId<SdNotification>(container, 'notification2');
+
+      await openToast(notification1);
+
+      expectToastStack();
+
+      await openToast(notification2);
+
+      expectToastStack();
+
+      await closeToast(notification1);
+
+      expectToastStack();
+
+      await closeToast(notification2);
+
+      expectNoToastStack();
+    });
+  });
+
+  describe('timer controlled closing', () => {
+    it('closes after a predefined amount of time', async () => {
+      clock = sinon.useFakeTimers();
+      const notification = await fixture<SdNotification>(
+        html` <sd-notification open duration="3000">I am an notification</sd-notification>`
+      );
+
+      expectNotificationToBeVisible(notification);
+
+      clock.tick(2999);
+
+      expectNotificationToBeVisible(notification);
+
+      await expectHideAndAfterHideToBeEmittedInCorrectOrder(notification, () => {
+        clock?.tick(1);
+      });
+    });
+
+    it('resets the closing timer after mouse-over', async () => {
+      clock = sinon.useFakeTimers();
+      const notification = await fixture<SdNotification>(
+        html` <sd-notification open duration="3000">I am an notification</sd-notification>`
+      );
+
+      expectNotificationToBeVisible(notification);
+
+      clock.tick(1000);
+
+      await moveMouseOnElement(notification);
+
+      clock.tick(2999);
+
+      expectNotificationToBeVisible(notification);
+
+      await expectHideAndAfterHideToBeEmittedInCorrectOrder(notification, () => {
+        clock?.tick(1);
+      });
+    });
+
+    it('resets the closing timer after opening', async () => {
+      clock = sinon.useFakeTimers();
+      const notification = await fixture<SdNotification>(
+        html` <sd-notification duration="3000">I am an notification</sd-notification>`
+      );
+
+      expectNotificationToBeInvisible(notification);
+
+      clock.tick(1000);
+
+      const afterShowPromise = oneEvent(notification, 'sd-after-show');
+      notification.show();
+      await afterShowPromise;
+
+      clock.tick(2999);
+
+      await expectHideAndAfterHideToBeEmittedInCorrectOrder(notification, () => {
+        clock?.tick(1);
+      });
+    });
+  });
+
+  describe('notification variants', () => {
+    const variants = ['primary', 'success', 'neutral', 'warning', 'danger'];
+
+    variants.forEach(variant => {
+      it(`adapts to the variant: ${variant}`, async () => {
+        const notification = await fixture<SdNotification>(
+          html`<sd-notification variant="${variant}" open>I am an notification</sd-notification>`
+        );
+
+        const notificationContainer = getNotificationContainer(notification);
+        expect(notificationContainer).to.have.class(`notification--${variant}`);
+      });
+    });
+  });
+});
