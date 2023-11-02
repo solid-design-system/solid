@@ -325,7 +325,7 @@ describe('<sd-notification>', () => {
   });
 
   describe('notification variants', () => {
-    const variants = ['primary', 'success', 'neutral', 'warning', 'danger'];
+    const variants = ['info', 'success', 'warning', 'error'];
 
     variants.forEach(variant => {
       it(`adapts to the variant: ${variant}`, async () => {
