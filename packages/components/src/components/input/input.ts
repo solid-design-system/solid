@@ -560,7 +560,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                       part="clear-button"
                       class=${cx('input__clear flex justify-center', iconMarginLeft, iconSize)}
                       type="button"
-                      aria-label=${this.localize.term(['clearEntry'])}
+                      aria-label=${this.localize.term('clearEntry')}
                       @click=${this.handleClearClick}
                       tabindex="-1"
                     >
@@ -576,7 +576,6 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                   `
                 : ''
             }
-            <!-- TODO: Do we need password logic? -->
             ${
               this.passwordToggle && !this.disabled
                 ? html`
@@ -590,16 +589,8 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                       tabindex="-1"
                     >
                       ${this.passwordVisible // TODO: The following icons do not yet exist, do we comment out or delete?
-                        ? html`
-                            <slot name="show-password-icon">
-                              <sd-icon name="eye-slash" library="system"></sd-icon>
-                            </slot>
-                          `
-                        : html`
-                            <slot name="hide-password-icon">
-                              <sd-icon name="eye" library="system"></sd-icon>
-                            </slot>
-                          `}
+                        ? html` <slot name="show-password-icon"> show </slot> `
+                        : html` <slot name="hide-password-icon"> hide </slot> `}
                     </button>
                   `
                 : ''

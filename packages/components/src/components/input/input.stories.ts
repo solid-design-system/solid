@@ -529,6 +529,6 @@ export const Mouseless = {
   play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
     const el = canvasElement.querySelector('.mouseless sd-input');
     await waitUntil(() => el?.shadowRoot?.querySelector('input'));
-    el?.shadowRoot?.querySelector('input').focus();
+    el?.shadowRoot?.querySelector('input')!.focus();
   }
 };
