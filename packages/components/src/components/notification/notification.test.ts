@@ -191,6 +191,7 @@ describe('<sd-notification>', () => {
       let toastPromiseResolved = false;
       notification.toast().then(() => (toastPromiseResolved = true));
       console.log(2);
+      await afterShowEvent;
       console.log(3);
       expect(toastPromiseResolved).to.be.false;
 
@@ -200,7 +201,6 @@ describe('<sd-notification>', () => {
 
       await closePromise;
       console.log(4);
-      await afterShowEvent;
       console.log(5);
       await aTimeout(0);
       console.log(6);
