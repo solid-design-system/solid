@@ -10,6 +10,10 @@ const { overrideArgs } = storybookHelpers('sd-header');
 const LOGO_UI = 'https://cdn.dam.union-investment.de/original/454499_UI_Logo_RGB.svg';
 const LOGO_FINANZ = 'https://cdn.dam.union-investment.de/original/454453_logo-finanzagenda-desktop.svg';
 
+/**
+ * Note: The width requirement for the header component results in a visual overflow in Storybook docs.
+ */
+
 export default {
   title: 'Components/sd-header',
   component: 'sd-header',
@@ -123,7 +127,9 @@ export const ResponsiveSample = {
     }
   },
   render: (args: any) => {
-    return html`<div style="height: 100px;">
+    return html`<div
+      style="height: 100px; --sd-header-padding-x:8px; --sd-header-padding-top:0; --sd-header-padding-bottom:0;"
+    >
       <style>
         .bottom {
           display: none;
@@ -197,7 +203,9 @@ export const LargeViewportSample = {
     }
   },
   render: (args: any) => {
-    return html`<div style="height: 100px;">
+    return html`<div
+      style="height: 100px; --sd-header-padding-x:8px; --sd-header-padding-top:0; --sd-header-padding-bottom:0;"
+    >
       ${generateTemplate({
         args,
         constants: [
@@ -244,7 +252,9 @@ export const MediumViewportSample = {
     }
   },
   render: (args: any) => {
-    return html`<div style="height: 100px;">
+    return html`<div
+      style="height: 100px; --sd-header-padding-x:8px; --sd-header-padding-top:0; --sd-header-padding-bottom:0;"
+    >
       ${generateTemplate({
         args,
         constants: [
@@ -282,7 +292,9 @@ export const SmallViewportSample = {
     }
   },
   render: (args: any) => {
-    return html`<div style="height: 100px;">
+    return html`<div
+      style="height: 100px; --sd-header-padding-x:8px; --sd-header-padding-top:0; --sd-header-padding-bottom:0;"
+    >
       ${generateTemplate({
         args,
         constants: [
