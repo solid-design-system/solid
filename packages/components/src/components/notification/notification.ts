@@ -131,7 +131,6 @@ export default class SdNotification extends SolidElement {
       this.emit('sd-hide');
 
       clearTimeout(this.autoHideTimeout);
-      this.remainingDuration = this.duration;
 
       await stopAnimations(this.base);
       const { keyframes, options } = getAnimation(this, 'notification.hide', { dir: this.localize.dir() });

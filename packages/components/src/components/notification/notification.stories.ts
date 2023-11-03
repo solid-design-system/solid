@@ -118,7 +118,7 @@ export const ToastNotification = {
       <script>
         var button = document.querySelector('#top-right');
 
-        function notify(variant = 'info', toastStack = 'top-right', duration = Infinity) {
+        function notify(variant = 'warning', toastStack = 'top-right', duration = 5000) {
           const notification = Object.assign(document.createElement('sd-notification'), {
             closable: true,
             variant: variant,
@@ -155,7 +155,7 @@ export const ToastBottomCenter = {
       <script>
         var buttonBottomCenter = document.querySelector('#bottom-center');
 
-        function notifyBottomCenter(variant = 'info', toastStack = 'bottom-center', duration = Infinity) {
+        function notifyBottomCenter(variant = 'info', toastStack = 'bottom-center', duration = 5000) {
           const notification = Object.assign(document.createElement('sd-notification'), {
             closable: true,
             variant: variant,
