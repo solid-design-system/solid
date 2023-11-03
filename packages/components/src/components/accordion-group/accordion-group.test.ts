@@ -3,15 +3,13 @@ import type SdAccordionGroup from './accordion-group';
 
 describe('<sd-accordion-group>', () => {
   it('should close other accordions when close-others is true', async () => {
-    const el = await fixture<SdAccordionGroup>(
-      html`
-        <sd-accordion-group close-others>
-          <sd-accordion open>Accordion</sd-accordion>
-          <sd-accordion>Accordion</sd-accordion>
-          <sd-accordion>Accordion</sd-accordion>
-        </sd-accordion-group>
-      `
-    );
+    const el = await fixture<SdAccordionGroup>(html`
+      <sd-accordion-group close-others>
+        <sd-accordion open>Accordion</sd-accordion>
+        <sd-accordion>Accordion</sd-accordion>
+        <sd-accordion>Accordion</sd-accordion>
+      </sd-accordion-group>
+    `);
 
     // Get all the accordions
     const accordions = el.querySelectorAll('sd-accordion');
@@ -37,15 +35,13 @@ describe('<sd-accordion-group>', () => {
 
 describe('<sd-accordion-group>', () => {
   it('should not close other accordions when close-others is false', async () => {
-    const el = await fixture<SdAccordionGroup>(
-      html`
-        <sd-accordion-group>
-          <sd-accordion open>Accordion</sd-accordion>
-          <sd-accordion>Accordion</sd-accordion>
-          <sd-accordion>Accordion</sd-accordion>
-        </sd-accordion-group>
-      `
-    );
+    const el = await fixture<SdAccordionGroup>(html`
+      <sd-accordion-group>
+        <sd-accordion open>Accordion</sd-accordion>
+        <sd-accordion>Accordion</sd-accordion>
+        <sd-accordion>Accordion</sd-accordion>
+      </sd-accordion-group>
+    `);
 
     // Get all the accordions
     const accordions = el.querySelectorAll('sd-accordion');
