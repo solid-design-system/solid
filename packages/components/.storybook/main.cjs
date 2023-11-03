@@ -12,7 +12,8 @@ module.exports = {
     '@storybook/addon-mdx-gfm',
     '@geometricpanda/storybook-addon-badges',
     '@storybook/addon-actions',
-    '@storybook/addon-interactions'
+    '@storybook/addon-interactions',
+    './addons/theme-generator/preset'
   ],
   staticDirs: [
     './assets',

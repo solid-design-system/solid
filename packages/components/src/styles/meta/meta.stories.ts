@@ -74,7 +74,7 @@ export const LightAndInverted = {
       },
       args,
       options: {
-        templateBackgrounds: { alternate: 'y', colors: ['white', '#00358E'] }
+        templateBackgrounds: { alternate: 'y', colors: ['white', 'rgb(var(--sd-color-primary, 0 53 142))'] }
       }
     });
   }
@@ -93,7 +93,9 @@ export const Pipe = {
         y: { type: 'attribute', name: 'sd-meta--inverted', values: [false, true] }
       },
       constants: { type: 'attribute', name: 'sd-meta--pipe', value: true },
-      options: { templateBackgrounds: { alternate: 'y', colors: ['transparent', '#00358E'] } },
+      options: {
+        templateBackgrounds: { alternate: 'y', colors: ['transparent', 'rgb(var(--sd-color-primary, 0 53 142))'] }
+      },
       args
     });
   }
