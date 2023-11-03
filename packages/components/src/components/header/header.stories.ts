@@ -119,49 +119,39 @@ export const Fixed = {
 export const ResponsiveSample = {
   parameters: {
     controls: {
-      exclude: [
-        'default',
-        'fixed',
-        'auto-spacing',
-        '--sd-header-inner-width',
-        '--sd-header-inner-max-width',
-        '--sd-header-padding-x',
-        '--sd-header-padding-top',
-        '--sd-header-padding-bottom'
-      ]
-    },
-    argTypes: {
-      navigationItems: { control: 'array' },
-      title: { control: 'text' }
+      exclude: ['default']
     }
   },
-  render: () => {
-    return html`
-      <div>
-        <style>
+  render: (args: any) => {
+    return html`<div style="height: 100px;">
+      <style>
+        .bottom {
+          display: none;
+        }
+        .top-right {
+          display: flex;
+        }
+
+        @media (min-width: 1024px) {
           .bottom {
-            display: none;
-          }
-          .top-right {
             display: flex;
           }
-
-          @media (min-width: 1024px) {
-            .bottom {
-              display: flex;
-            }
-            .top-right {
-              display: none;
-            }
-            sd-navigation-item::part(content) {
-              display: flex;
-              align-items: center;
-            }
+          .top-right {
+            display: none;
           }
-        </style>
-        <div class="header-sample">Responsive Sample</div>
-        <sd-header style="--sd-header-padding-x:8px; --sd-header-padding-top:0; --sd-header-padding-bottom:0;">
-          <div class="top">
+          sd-navigation-item::part(content) {
+            display: flex;
+            align-items: center;
+          }
+        }
+      </style>
+      ${generateTemplate({
+        args,
+        constants: [
+          {
+            type: 'slot',
+            name: 'default',
+            value: `<div class="top">
             <div class="top-left">
               <sd-include class="logo-svg" src=${LOGO_UI}></sd-include>
             </div>
@@ -191,10 +181,11 @@ export const ResponsiveSample = {
                 <sd-icon name="system/lock-locked" library="global-resources" class="text-xl"></sd-icon>Meine Bewerbung
               </sd-navigation-item>
             </div>
-          </div>
-        </sd-header>
-      </div>
-    `;
+          </div>`
+          }
+        ]
+      })}
+    </div>`;
   }
 };
 
@@ -202,30 +193,18 @@ export const ResponsiveSample = {
 export const LargeViewportSample = {
   parameters: {
     controls: {
-      exclude: [
-        'default',
-        'fixed',
-        'auto-spacing',
-        '--sd-header-inner-width',
-        '--sd-header-inner-max-width',
-        '--sd-header-padding-x',
-        '--sd-header-padding-top',
-        '--sd-header-padding-bottom'
-      ]
-    },
-    argTypes: {
-      navigationItems: { control: 'array' },
-      title: { control: 'text' }
+      exclude: ['default']
     }
   },
-  render: () => {
-    return html`
-      <div class="header-sample">Large Viewport Sample</div>
-      <div>
-        <sd-header
-          style="--sd-header-padding-x:8px; --sd-header-padding-top:0; --sd-header-padding-bottom:0;"
-          class="gap-3"
-        >
+  render: (args: any) => {
+    return html`<div style="height: 100px;">
+      ${generateTemplate({
+        args,
+        constants: [
+          {
+            type: 'slot',
+            name: 'default',
+            value: `
           <div class="top">
             <div class="top-left">
               <sd-include class="logo-svg" src=${LOGO_UI}></sd-include>
@@ -248,9 +227,11 @@ export const LargeViewportSample = {
               </sd-navigation-item>
             </div>
           </div>
-        </sd-header>
-      </div>
-    `;
+    `
+          }
+        ]
+      })}
+    </div>`;
   }
 };
 
@@ -259,23 +240,18 @@ export const MediumViewportSample = {
   parameters: {
     viewport: { defaultViewport: 'tablet' },
     controls: {
-      exclude: [
-        'default',
-        'fixed',
-        'auto-spacing',
-        '--sd-header-inner-width',
-        '--sd-header-inner-max-width',
-        '--sd-header-padding-x',
-        '--sd-header-padding-top',
-        '--sd-header-padding-bottom'
-      ]
+      exclude: ['default']
     }
   },
-  render: () => {
-    return html`
-      <div class="header-sample">Medium Viewport Sample</div>
-      <div>
-        <sd-header style="--sd-header-padding-x:8px; --sd-header-padding-top:0; --sd-header-padding-bottom:0;" ;>
+  render: (args: any) => {
+    return html`<div style="height: 100px;">
+      ${generateTemplate({
+        args,
+        constants: [
+          {
+            type: 'slot',
+            name: 'default',
+            value: `
           <div class="top">
             <div class="top-left">
               <sd-include class="logo-svg" src=${LOGO_UI}></sd-include>
@@ -289,7 +265,11 @@ export const MediumViewportSample = {
           </div>
         </sd-header>
       </div>
-    `;
+    `
+          }
+        ]
+      })}
+    </div>`;
   }
 };
 
@@ -298,22 +278,18 @@ export const SmallViewportSample = {
   parameters: {
     viewport: { defaultViewport: 'mobile1' },
     controls: {
-      exclude: [
-        'default',
-        'fixed',
-        'auto-spacing',
-        '--sd-header-inner-width',
-        '--sd-header-inner-max-width',
-        '--sd-header-padding-x',
-        '--sd-header-padding-top',
-        '--sd-header-padding-bottom'
-      ]
+      exclude: ['default']
     }
   },
-  render: () => {
-    return html`
-      <div class="header-sample">Small Viewport Sample</div>
-      <sd-header style="--sd-header-padding-x:8px; --sd-header-padding-top:0; --sd-header-padding-bottom:0;" ;>
+  render: (args: any) => {
+    return html`<div style="height: 100px;">
+      ${generateTemplate({
+        args,
+        constants: [
+          {
+            type: 'slot',
+            name: 'default',
+            value: `
         <div class="top">
           <div class="top-left">
             <sd-include class="logo-svg" src=${LOGO_UI}></sd-include>
@@ -324,7 +300,10 @@ export const SmallViewportSample = {
             </sd-navigation-item>
           </div>
         </div>
-      </sd-header>
-    `;
+    `
+          }
+        ]
+      })}
+    </div>`;
   }
 };
