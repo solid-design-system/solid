@@ -131,13 +131,16 @@ export const ResponsiveSample = {
         'navigationItems',
         'title'
       ]
+    },
+    argTypes: {
+      navigationItems: { control: 'array' },
+      title: { control: 'text' }
     }
   },
   render: (args: any) => {
     return html`
       <div>
         <style>
-          /* Hide .bottom and show .top-right for viewports < lg */
           .bottom {
             display: none;
           }
@@ -145,7 +148,6 @@ export const ResponsiveSample = {
             display: flex;
           }
 
-          /* Show .bottom and hide .top-right for viewports >= lg */
           @media (min-width: 1024px) {
             .bottom {
               display: flex;
@@ -216,6 +218,10 @@ export const LargeViewportSample = {
         'navigationItems',
         'title'
       ]
+    },
+    argTypes: {
+      navigationItems: { control: 'array' },
+      title: { control: 'text' }
     }
   },
   render: (args: any) => {
@@ -273,6 +279,9 @@ export const MediumViewportSample = {
         '--sd-header-padding-bottom',
         'title'
       ]
+    },
+    argTypes: {
+      title: { control: 'text' }
     }
   },
   render: (args: any) => {
@@ -316,6 +325,9 @@ export const SmallViewportSample = {
         '--sd-header-padding-bottom',
         'title'
       ]
+    },
+    argTypes: {
+      title: { control: 'text' }
     }
   },
   render: (args: any) => {
