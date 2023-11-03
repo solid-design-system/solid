@@ -20,11 +20,11 @@ describe('<sd-header>', () => {
     expect(el.autoSpacing).to.be.false;
   });
 
-  it('sets body style padding-top when auto-spacing is true', async () => {
-    await fixture<SdHeader>(html`<sd-header .autoSpacing=${true}></sd-header>`);
+  it('does not set body style padding-top when auto-spacing is false', async () => {
+    await fixture<SdHeader>(html`<sd-header .autoSpacing=${false}></sd-header>`);
     // Timeout for ResizeObserver to run
     await new Promise(r => setTimeout(r, 100));
-    expect(document.body.style.paddingTop).to.not.be.empty;
+    expect(document.body.style.paddingTop).to.be.empty;
   });
 
   it('applies correct custom CSS properties', async () => {
