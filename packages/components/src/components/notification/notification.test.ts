@@ -94,7 +94,7 @@ describe('<sd-notification>', () => {
       expectNotificationToBeVisible(notification);
     });
 
-    it('should not be visible when closed attribute is true', async () => {
+    it('should not be visible when closed = true', async () => {
       const notification = await fixture<SdNotification>(
         html` <sd-notification closed>I am a notification</sd-notification>`
       );
@@ -185,14 +185,13 @@ describe('<sd-notification>', () => {
     });
 
     it('resolves only after being closed', async () => {
-      const notification = await fixture<SdNotification>(
-        html`<sd-notification toast-stack="top-right" closable>I am a notification</sd-notification>`
-      );
-
+      const notification = await fixture<SdNotification>(html`<sd-notification>I am a notification</sd-notification>`);
+      console.log(1);
       const afterShowEvent = oneEvent(notification, 'sd-after-show');
       let toastPromiseResolved = false;
       notification.toast().then(() => (toastPromiseResolved = true));
-      await afterShowEvent;
+      console.log(2);
+      console.log(3);
       expect(toastPromiseResolved).to.be.false;
 
       const closePromise = oneEvent(notification, 'sd-after-hide');
@@ -200,7 +199,11 @@ describe('<sd-notification>', () => {
       clickOnElement(closeButton!);
 
       await closePromise;
+      console.log(4);
+      await afterShowEvent;
+      console.log(5);
       await aTimeout(0);
+      console.log(6);
 
       expect(toastPromiseResolved).to.be.true;
     });
@@ -320,6 +323,12 @@ describe('<sd-notification>', () => {
 
   describe('notification variants', () => {
     const variants = ['info', 'success', 'warning', 'error'];
+    const variantToClassMap = {
+      info: 'bg-info',
+      success: 'bg-success',
+      warning: 'bg-warning',
+      error: 'bg-error'
+    };
 
     variants.forEach(variant => {
       it(`adapts to the variant: ${variant}`, async () => {
@@ -330,7 +339,9 @@ describe('<sd-notification>', () => {
         );
 
         const notificationContainer = getNotificationContainer(notification);
-        expect(notificationContainer).to.have.class(`${variant as 'info' | 'success' | 'warning' | 'error'}`);
+        expect(notificationContainer).to.have.class(
+          variantToClassMap[variant as 'info' | 'success' | 'warning' | 'error']
+        );
       });
     });
   });

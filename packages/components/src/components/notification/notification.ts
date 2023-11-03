@@ -86,6 +86,21 @@ export default class SdNotification extends SolidElement {
   }
 
   private startAutoHide() {
+    clearTimeout(this.autoHideTimeout);
+    if (!this.closed && this.duration < Infinity) {
+      this.autoHideTimeout = window.setTimeout(() => this.hide(), this.duration);
+    }
+  }
+
+  private onHover() {
+    clearTimeout(this.autoHideTimeout);
+
+    if (this.duration < Infinity) {
+      this.remainingDuration -= Date.now() - this.startTime;
+    }
+  }
+
+  private onHoverEnd() {
     this.startTime = Date.now();
     clearTimeout(this.autoHideTimeout);
 
@@ -93,14 +108,6 @@ export default class SdNotification extends SolidElement {
       this.autoHideTimeout = window.setTimeout(() => {
         this.hide();
       }, this.remainingDuration);
-    }
-  }
-
-  private pauseAutoHide() {
-    clearTimeout(this.autoHideTimeout);
-
-    if (this.duration < Infinity) {
-      this.remainingDuration -= Date.now() - this.startTime;
     }
   }
 
@@ -218,8 +225,8 @@ export default class SdNotification extends SolidElement {
         role="alert"
         id="notification"
         aria-hidden=${this.closed ? 'true' : 'false'}
-        @mouseenter=${this.pauseAutoHide}
-        @mouseleave=${this.startAutoHide}
+        @mouseenter=${this.onHover}
+        @mouseleave=${this.onHoverEnd}
       >
         <slot name="icon" part="icon" class=${cx('h-full min-w-min text-white px-3 flex justify-center')}>
           <sd-icon
