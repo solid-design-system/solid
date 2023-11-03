@@ -87,6 +87,7 @@ export default class SdNotification extends SolidElement {
 
   private startAutoHide() {
     clearTimeout(this.autoHideTimeout);
+    this.remainingDuration = this.duration;
     if (!this.closed && this.duration < Infinity) {
       this.autoHideTimeout = window.setTimeout(() => this.hide(), this.duration);
     }
