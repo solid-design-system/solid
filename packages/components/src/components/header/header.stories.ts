@@ -127,9 +127,7 @@ export const ResponsiveSample = {
         '--sd-header-inner-max-width',
         '--sd-header-padding-x',
         '--sd-header-padding-top',
-        '--sd-header-padding-bottom',
-        'navigationItems',
-        'title'
+        '--sd-header-padding-bottom'
       ]
     },
     argTypes: {
@@ -137,7 +135,7 @@ export const ResponsiveSample = {
       title: { control: 'text' }
     }
   },
-  render: (args: any) => {
+  render: () => {
     return html`
       <div>
         <style>
@@ -161,7 +159,7 @@ export const ResponsiveSample = {
             }
           }
         </style>
-        <div class="header-sample">${args.title}</div>
+        <div class="header-sample">Responsive Sample</div>
         <sd-header style="--sd-header-padding-x:8px; --sd-header-padding-top:0; --sd-header-padding-bottom:0;">
           <div class="top">
             <div class="top-left">
@@ -175,7 +173,9 @@ export const ResponsiveSample = {
           </div>
           <div class="bottom">
             <div class="bottom-left">
-              ${args.navigationItems.map((item: string) => html`<sd-navigation-item>${item}</sd-navigation-item>`)}
+              <sd-navigation-item>Über Uns</sd-navigation-item><sd-navigation-item>Märkte</sd-navigation-item
+              ><sd-navigation-item>Presseservice</sd-navigation-item
+              ><sd-navigation-item>Nachhaltigkeit</sd-navigation-item><sd-navigation-item>Karriere</sd-navigation-item>
             </div>
             <div class="bottom-right">
               <sd-navigation-item>
@@ -195,10 +195,6 @@ export const ResponsiveSample = {
         </sd-header>
       </div>
     `;
-  },
-  args: {
-    navigationItems: ['Über Uns', 'Märkte', 'Presseservice', 'Nachhaltigkeit', 'Karriere'],
-    title: 'Responsive Sample'
   }
 };
 
@@ -214,9 +210,7 @@ export const LargeViewportSample = {
         '--sd-header-inner-max-width',
         '--sd-header-padding-x',
         '--sd-header-padding-top',
-        '--sd-header-padding-bottom',
-        'navigationItems',
-        'title'
+        '--sd-header-padding-bottom'
       ]
     },
     argTypes: {
@@ -224,9 +218,9 @@ export const LargeViewportSample = {
       title: { control: 'text' }
     }
   },
-  render: (args: any) => {
+  render: () => {
     return html`
-      <div class="header-sample">${args.title}</div>
+      <div class="header-sample">Large Viewport Sample</div>
       <div>
         <sd-header
           style="--sd-header-padding-x:8px; --sd-header-padding-top:0; --sd-header-padding-bottom:0;"
@@ -242,7 +236,8 @@ export const LargeViewportSample = {
           </div>
           <div class="bottom">
             <div class="bottom-left">
-              ${args.navigationItems.map((item: string) => html`<sd-navigation-item>${item}</sd-navigation-item>`)}
+              <sd-navigation-item>Ausgangspunkt</sd-navigation-item><sd-navigation-item>Standpunkt</sd-navigation-item
+              ><sd-navigation-item>Auf den Punkt</sd-navigation-item><sd-navigation-item>Treffpunkt</sd-navigation-item>
             </div>
             <div class="bottom-right">
               <sd-navigation-item>
@@ -256,10 +251,6 @@ export const LargeViewportSample = {
         </sd-header>
       </div>
     `;
-  },
-  args: {
-    navigationItems: ['Ausgangspunkt', 'Standpunkt', 'Auf den Punkt', 'Treffpunkt'],
-    title: 'Large Viewport Sample'
   }
 };
 
@@ -276,17 +267,13 @@ export const MediumViewportSample = {
         '--sd-header-inner-max-width',
         '--sd-header-padding-x',
         '--sd-header-padding-top',
-        '--sd-header-padding-bottom',
-        'title'
+        '--sd-header-padding-bottom'
       ]
-    },
-    argTypes: {
-      title: { control: 'text' }
     }
   },
-  render: (args: any) => {
+  render: () => {
     return html`
-      <div class="header-sample">${args.title}</div>
+      <div class="header-sample">Medium Viewport Sample</div>
       <div>
         <sd-header style="--sd-header-padding-x:8px; --sd-header-padding-top:0; --sd-header-padding-bottom:0;" ;>
           <div class="top">
@@ -303,9 +290,6 @@ export const MediumViewportSample = {
         </sd-header>
       </div>
     `;
-  },
-  args: {
-    title: 'Medium Viewport Sample'
   }
 };
 
@@ -322,17 +306,13 @@ export const SmallViewportSample = {
         '--sd-header-inner-max-width',
         '--sd-header-padding-x',
         '--sd-header-padding-top',
-        '--sd-header-padding-bottom',
-        'title'
+        '--sd-header-padding-bottom'
       ]
-    },
-    argTypes: {
-      title: { control: 'text' }
     }
   },
-  render: (args: any) => {
+  render: () => {
     return html`
-      <div class="header-sample">${args.title}</div>
+      <div class="header-sample">Small Viewport Sample</div>
       <sd-header style="--sd-header-padding-x:8px; --sd-header-padding-top:0; --sd-header-padding-bottom:0;" ;>
         <div class="top">
           <div class="top-left">
@@ -346,8 +326,5 @@ export const SmallViewportSample = {
         </div>
       </sd-header>
     `;
-  },
-  args: {
-    title: 'Small Viewport Sample'
   }
 };
