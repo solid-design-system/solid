@@ -58,7 +58,7 @@ export const Disabled = {
   },
   args: overrideArgs([
     { type: 'attribute', name: 'value', value: 'value' },
-    { type: 'attribute', name: 'label', value: 'label' },
+    { type: 'attribute', name: 'label', value: 'Label' },
     { type: 'attribute', name: 'help-text', value: 'help-text' }
   ]),
   render: (args: any) => {
@@ -85,7 +85,7 @@ export const Readonly = {
   },
   args: overrideArgs([
     { type: 'attribute', name: 'value', value: 'value' },
-    { type: 'attribute', name: 'label', value: 'label' },
+    { type: 'attribute', name: 'label', value: 'Label' },
     { type: 'attribute', name: 'help-text', value: 'help-text' }
   ]),
   render: (args: any) => {
@@ -112,7 +112,7 @@ export const Sizes = {
   },
   args: overrideArgs([
     { type: 'attribute', name: 'value', value: 'value' },
-    { type: 'attribute', name: 'label', value: 'label' },
+    { type: 'attribute', name: 'label', value: 'Label' },
     { type: 'attribute', name: 'help-text', value: 'help-text' },
     { type: 'attribute', name: 'clearable', value: true },
     {
@@ -164,7 +164,7 @@ export const Slots = {
             { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' },
             { type: 'attribute', name: 'clearable', value: true },
             { type: 'attribute', name: 'value', value: 'value' },
-            { type: 'attribute', name: 'label', value: 'label' },
+            { type: 'attribute', name: 'label', value: 'Label' },
             { type: 'attribute', name: 'help-text', value: 'help-text' },
             {
               type: 'slot',
@@ -222,7 +222,7 @@ export const Parts = {
       constants: [
         { type: 'attribute', name: 'clearable', value: true },
         { type: 'attribute', name: 'value', value: 'value' },
-        { type: 'attribute', name: 'label', value: 'label' },
+        { type: 'attribute', name: 'label', value: 'Label' },
         { type: 'attribute', name: 'help-text', value: 'help-text' },
         {
           type: 'slot',
@@ -257,7 +257,6 @@ export const Validation = {
         'label',
         'help-text',
         'message',
-        'clearable',
         'disabled',
         'readonly',
         'password-toggle',
@@ -287,7 +286,6 @@ export const Validation = {
               { type: 'attribute', name: 'help-text', value: 'input must be filled' },
               { type: 'attribute', name: 'form', value: 'testForm' },
               { type: 'attribute', name: 'required', value: true },
-              { type: 'attribute', name: 'clearable', value: true },
               {
                 type: 'slot',
                 name: 'right',
@@ -307,7 +305,6 @@ export const Validation = {
               { type: 'attribute', name: 'form', value: 'testForm' },
               { type: 'attribute', name: 'required', value: true },
               { type: 'attribute', name: 'pattern', value: '[A-Za-z]{3,}' },
-              { type: 'attribute', name: 'clearable', value: true },
               {
                 type: 'slot',
                 name: 'right',
@@ -327,7 +324,6 @@ export const Validation = {
               { type: 'attribute', name: 'form', value: 'testForm' },
               { type: 'attribute', name: 'required', value: true },
               { type: 'attribute', name: 'minlength', value: 3 },
-              { type: 'attribute', name: 'clearable', value: true },
               {
                 type: 'slot',
                 name: 'right',
@@ -347,7 +343,6 @@ export const Validation = {
               { type: 'attribute', name: 'form', value: 'testForm' },
               { type: 'attribute', name: 'required', value: true },
               { type: 'attribute', name: 'maxlength', value: 3 },
-              { type: 'attribute', name: 'clearable', value: true },
               {
                 type: 'slot',
                 name: 'right',

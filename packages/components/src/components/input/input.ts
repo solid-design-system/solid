@@ -97,7 +97,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     | 'url' = 'text';
 
   /** The input's size. */
-  @property({ reflect: true }) size: 'sm' | 'md' | 'lg' = 'lg';
+  @property({ reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
 
   /**
    * Tells the browser what type of data will be entered by the user, allowing it to display the appropriate virtual
@@ -440,7 +440,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     const textSize = this.size === 'sm' ? 'text-sm' : 'text-base';
     const textColor = {
       disabled: 'text-neutral-500',
-      readonly: 'text-neutral-500',
+      readonly: 'text-black',
       activeInvalid: 'text-error',
       activeValid: 'text-success',
       active: 'text-black',
@@ -451,7 +451,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
 
     const borderColor = {
       disabled: 'border-neutral-500',
-      readonly: 'border-neutral-500',
+      readonly: 'border-neutral-800',
       activeInvalid: 'border-error border-2',
       activeValid: 'border-success border-2',
       active: 'border-primary border-2',
@@ -475,7 +475,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
       >
         <label
           part="form-control-label"
-          class=${cx('form-control-label', hasLabel ? 'inline-block' : 'hidden', textSize)}
+          class=${cx('form-control-label mb-2', hasLabel ? 'inline-block' : 'hidden', textSize)}
           for="input"
           aria-hidden=${hasLabel ? 'false' : 'true'}
         >
@@ -523,6 +523,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               id="input"
               class=${cx(
                 'input__control min-w-0 flex-grow focus:outline-none bg-transparent placeholder-neutral-700',
+                this.size === 'sm' ? 'h-6' : 'h-8',
                 textSize
               )}
               type=${this.type === 'password' && this.passwordVisible ? 'text' : this.type}
@@ -557,7 +558,6 @@ export default class SdInput extends SolidElement implements SolidFormControl {
             ${
               hasClearIcon
                 ? html`
-                    <!-- TODO: How do we resolve the error in localize.term? Is it important? -->
                     <button
                       part="clear-button"
                       class=${cx('input__clear flex justify-center', iconMarginLeft, iconSize)}
@@ -569,7 +569,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                       <slot name="clear-icon">
                         <!-- TODO: Switch to system icon?  Use text-neutal-400 class? Not currently available -->
                         <sd-icon
-                          class="text-neutral-500"
+                          class="text-neutral-400"
                           library="global-resources"
                           name="system/closing-round"
                         ></sd-icon>
@@ -581,7 +581,6 @@ export default class SdInput extends SolidElement implements SolidFormControl {
             ${
               this.passwordToggle && !this.disabled
                 ? html`
-                    <!-- TODO: How do we resolve the error in localize.term? -->
                     <button
                       aria-label=${this.localize.term(this.passwordVisible ? 'hidePassword' : 'showPassword')}
                       part="password-toggle-button"
@@ -595,20 +594,6 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                         : html` <slot name="hide-password-icon"> hide </slot> `}
                     </button>
                   `
-                : ''
-            }
-            ${
-              slots['right']
-                ? html`<slot
-                    name="right"
-                    part="right"
-                    class=${cx(
-                      'input__right inline-flex',
-                      this.disabled ? 'text-neutral-500' : 'text-primary',
-                      iconMarginLeft,
-                      iconSize
-                    )}
-                  ></slot>`
                 : ''
             }
             ${
@@ -632,6 +617,20 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                       name="system/hook"
                     ></sd-icon>
                   `
+                : ''
+            }
+            ${
+              slots['right']
+                ? html`<slot
+                    name="right"
+                    part="right"
+                    class=${cx(
+                      'input__right inline-flex',
+                      this.disabled ? 'text-neutral-500' : 'text-primary',
+                      iconMarginLeft,
+                      iconSize
+                    )}
+                  ></slot>`
                 : ''
             }
             
