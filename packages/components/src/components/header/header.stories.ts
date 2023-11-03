@@ -66,6 +66,11 @@ export default {
           .bottom {
             display: flex;
             justify-content: space-between;
+          }
+          .top {
+            align-items: center;
+          }
+          .bottom {
             align-items: end;
           }
           .top-left {
@@ -122,7 +127,7 @@ export const ResponsiveSample = {
   },
   render: (args: any) => {
     return html`
-      <div class="story-wrapper">
+      <div>
         <style>
           /* Hide .bottom and show .top-right for viewports < lg */
           .bottom {
