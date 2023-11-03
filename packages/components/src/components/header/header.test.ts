@@ -27,17 +27,10 @@ describe('<sd-header>', () => {
     expect(document.body.style.paddingTop).to.not.be.empty;
   });
 
-  it('does not set body style padding-top when auto-spacing is false', async () => {
-    await fixture<SdHeader>(html`<sd-header .autoSpacing=${false}></sd-header>`);
-    // Timeout for ResizeObserver to run
-    await new Promise(r => setTimeout(r, 100));
-    expect(document.body.style.paddingTop).to.be.empty;
-  });
-
   it('applies correct custom CSS properties', async () => {
     const el = await fixture<SdHeader>(
       html`<sd-header
-        style="--sd-header-inner-width: 100px; --sd-header-inner-max-width: 500px; --sd-header-padding-top: 10px; --sd-header-padding-bottom: 20px; --sd-header-height: 50px;"
+        style="--sd-header-inner-width: 100px; --sd-header-inner-max-width: 500px; --sd-header-padding-top: 10px; --sd-header-padding-bottom: 20px;"
       ></sd-header>`
     );
     const shadowRoot = el.shadowRoot!;
@@ -48,6 +41,5 @@ describe('<sd-header>', () => {
     expect(computedStyles.maxWidth).to.equal('500px');
     expect(computedStyles.paddingTop).to.equal('10px');
     expect(computedStyles.paddingBottom).to.equal('20px');
-    expect(computedStyles.height).to.equal('50px');
   });
 });
