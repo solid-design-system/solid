@@ -87,7 +87,11 @@ export default {
 
 export const Default = {
   render: (args: any) => {
-    return generateTemplate({ args });
+    return html`<div style="height: 100px;">
+      ${generateTemplate({
+        args
+      })}
+    </div>`;
   }
 };
 
@@ -96,16 +100,18 @@ export const Fixed = {
     controls: { exclude: ['fixed', '--sd-header-inner-width'] }
   },
   render: (args: any) => {
-    return generateTemplate({
-      constants: [
-        {
-          type: 'attribute',
-          name: 'fixed',
-          value: 'true'
-        }
-      ],
-      args
-    });
+    return html`<div style="height: 100px;">
+      ${generateTemplate({
+        constants: [
+          {
+            type: 'attribute',
+            name: 'fixed',
+            value: 'true'
+          }
+        ],
+        args
+      })}
+    </div>`;
   }
 };
 
@@ -121,7 +127,9 @@ export const ResponsiveSample = {
         '--sd-header-inner-max-width',
         '--sd-header-padding-x',
         '--sd-header-padding-top',
-        '--sd-header-padding-bottom'
+        '--sd-header-padding-bottom',
+        'navigationItems',
+        'title'
       ]
     }
   },
@@ -151,7 +159,7 @@ export const ResponsiveSample = {
             }
           }
         </style>
-        <div class="header-sample">Responsive Sample</div>
+        <div class="header-sample">${args.title}</div>
         <sd-header style="--sd-header-padding-x:8px; --sd-header-padding-top:0; --sd-header-padding-bottom:0;">
           <div class="top">
             <div class="top-left">
@@ -165,9 +173,7 @@ export const ResponsiveSample = {
           </div>
           <div class="bottom">
             <div class="bottom-left">
-              <sd-navigation-item>Über Uns</sd-navigation-item><sd-navigation-item>Märkte</sd-navigation-item
-              ><sd-navigation-item>Presseservice</sd-navigation-item
-              ><sd-navigation-item>Nachhaltigkeit</sd-navigation-item><sd-navigation-item>Karriere</sd-navigation-item>
+              ${args.navigationItems.map((item: string) => html`<sd-navigation-item>${item}</sd-navigation-item>`)}
             </div>
             <div class="bottom-right">
               <sd-navigation-item>
@@ -187,6 +193,10 @@ export const ResponsiveSample = {
         </sd-header>
       </div>
     `;
+  },
+  args: {
+    navigationItems: ['Über Uns', 'Märkte', 'Presseservice', 'Nachhaltigkeit', 'Karriere'],
+    title: 'Responsive Sample'
   }
 };
 
@@ -202,13 +212,15 @@ export const LargeViewportSample = {
         '--sd-header-inner-max-width',
         '--sd-header-padding-x',
         '--sd-header-padding-top',
-        '--sd-header-padding-bottom'
+        '--sd-header-padding-bottom',
+        'navigationItems',
+        'title'
       ]
     }
   },
   render: (args: any) => {
     return html`
-      <div class="header-sample">Large Viewport Sample</div>
+      <div class="header-sample">${args.title}</div>
       <div>
         <sd-header
           style="--sd-header-padding-x:8px; --sd-header-padding-top:0; --sd-header-padding-bottom:0;"
@@ -224,8 +236,7 @@ export const LargeViewportSample = {
           </div>
           <div class="bottom">
             <div class="bottom-left">
-              <sd-navigation-item>Ausgangspunkt</sd-navigation-item><sd-navigation-item>Standpunkt</sd-navigation-item
-              ><sd-navigation-item>Auf den Punkt</sd-navigation-item><sd-navigation-item>Treffpunkt</sd-navigation-item>
+              ${args.navigationItems.map((item: string) => html`<sd-navigation-item>${item}</sd-navigation-item>`)}
             </div>
             <div class="bottom-right">
               <sd-navigation-item>
@@ -239,9 +250,14 @@ export const LargeViewportSample = {
         </sd-header>
       </div>
     `;
+  },
+  args: {
+    navigationItems: ['Ausgangspunkt', 'Standpunkt', 'Auf den Punkt', 'Treffpunkt'],
+    title: 'Large Viewport Sample'
   }
 };
 
+/* Sample Header md - variant B */
 export const MediumViewportSample = {
   parameters: {
     viewport: { defaultViewport: 'tablet' },
@@ -254,27 +270,33 @@ export const MediumViewportSample = {
         '--sd-header-inner-max-width',
         '--sd-header-padding-x',
         '--sd-header-padding-top',
-        '--sd-header-padding-bottom'
+        '--sd-header-padding-bottom',
+        'title'
       ]
     }
   },
   render: (args: any) => {
     return html`
-      <div class="header-sample">Medium Viewport Sample</div>
-      <sd-header style="--sd-header-padding-x:8px; --sd-header-padding-top:0; --sd-header-padding-bottom:0;" ;>
-        <div class="top">
-          <div class="top-left">
-            <sd-include class="logo-svg" src=${LOGO_UI}></sd-include>
+      <div class="header-sample">${args.title}</div>
+      <div>
+        <sd-header style="--sd-header-padding-x:8px; --sd-header-padding-top:0; --sd-header-padding-bottom:0;" ;>
+          <div class="top">
+            <div class="top-left">
+              <sd-include class="logo-svg" src=${LOGO_UI}></sd-include>
+            </div>
+            <div style="display:flex; align-items:end; gap:48px;">
+              <sd-include class="logo-svg" src=${LOGO_FINANZ}></sd-include>
+              <sd-navigation-item>
+                <sd-icon name="system/menu" library="global-resources" class="text-xl"></sd-icon>
+              </sd-navigation-item>
+            </div>
           </div>
-          <div class="top-right">
-            <sd-include class="logo-svg" src=${LOGO_FINANZ}></sd-include>
-            <sd-navigation-item>
-              <sd-icon name="system/menu" library="global-resources" class="text-xl"></sd-icon>
-            </sd-navigation-item>
-          </div>
-        </div>
-      </sd-header>
+        </sd-header>
+      </div>
     `;
+  },
+  args: {
+    title: 'Medium Viewport Sample'
   }
 };
 
@@ -291,19 +313,20 @@ export const SmallViewportSample = {
         '--sd-header-inner-max-width',
         '--sd-header-padding-x',
         '--sd-header-padding-top',
-        '--sd-header-padding-bottom'
+        '--sd-header-padding-bottom',
+        'title'
       ]
     }
   },
   render: (args: any) => {
     return html`
-      <div class="header-sample">Small Viewport Sample</div>
+      <div class="header-sample">${args.title}</div>
       <sd-header style="--sd-header-padding-x:8px; --sd-header-padding-top:0; --sd-header-padding-bottom:0;" ;>
         <div class="top">
           <div class="top-left">
             <sd-include class="logo-svg" src=${LOGO_UI}></sd-include>
           </div>
-          <div class="top-right">
+          <div style="display:flex;">
             <sd-navigation-item>
               <sd-icon name="system/menu" library="global-resources" class="text-xl"></sd-icon>
             </sd-navigation-item>
@@ -311,5 +334,8 @@ export const SmallViewportSample = {
         </div>
       </sd-header>
     `;
+  },
+  args: {
+    title: 'Small Viewport Sample'
   }
 };
