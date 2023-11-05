@@ -124,7 +124,6 @@ export const ToastNotification = {
             variant: variant,
             toastStack: toastStack,
             duration: duration,
-            durationIndicator: true,
             innerHTML: 'Lorem ipsum dolor sit amet.'
           });
 
@@ -162,7 +161,6 @@ export const ToastBottomCenter = {
             variant: variant,
             toastStack: toastStack,
             duration: duration,
-            durationIndicator: true,
             innerHTML: 'Lorem ipsum dolor sit amet.'
           });
 

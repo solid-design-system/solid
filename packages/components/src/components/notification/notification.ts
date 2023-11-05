@@ -85,6 +85,11 @@ export default class SdNotification extends SolidElement {
     this.base.hidden = this.closed;
   }
 
+  connectedCallback() {
+    super.connectedCallback();
+    this.emit('sd-after-show');
+  }
+
   private startAutoHide() {
     clearTimeout(this.autoHideTimeout);
     this.remainingDuration = this.duration;
@@ -127,7 +132,6 @@ export default class SdNotification extends SolidElement {
         this.startTime = Date.now();
         this.startAutoHide();
       }
-
       await stopAnimations(this.base);
       this.base.hidden = false;
       const { keyframes, options } = getAnimation(this, 'notification.show', { dir: this.localize.dir() });
@@ -216,20 +220,24 @@ export default class SdNotification extends SolidElement {
     return html`
       <div
         part="base"
-        class=${cx(
-          'w-full overflow-hidden flex items-center relative m-2',
-          this.variant === 'info' && 'bg-info',
-          this.variant === 'success' && 'bg-success',
-          this.variant === 'warning' && 'bg-warning',
-          this.variant === 'error' && 'bg-error'
-        )}
+        class=${cx('w-full overflow-hidden flex items-stretch relative m-2')}
         role="alert"
         id="notification"
         aria-hidden=${this.closed ? 'true' : 'false'}
         @mouseenter=${this.onHover}
         @mouseleave=${this.onHoverEnd}
       >
-        <slot name="icon" part="icon" class=${cx('h-full min-w-min text-white px-3 flex justify-center')}>
+        <slot
+          name="icon"
+          part="icon"
+          class=${cx(
+            'min-w-min flex items-center px-3 justify-center',
+            this.variant === 'info' && 'bg-info',
+            this.variant === 'success' && 'bg-success',
+            this.variant === 'warning' && 'bg-warning',
+            this.variant === 'error' && 'bg-error'
+          )}
+        >
           <sd-icon
             name=${this.variant === 'info'
               ? 'info'
@@ -241,7 +249,7 @@ export default class SdNotification extends SolidElement {
               ? 'error'
               : ''}
             library="system"
-            class="h-6 w-6"
+            class="h-6 w-6 text-white"
           ></sd-icon>
         </slot>
 

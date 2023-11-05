@@ -185,25 +185,22 @@ describe('<sd-notification>', () => {
     });
 
     it('resolves only after being closed', async () => {
-      const notification = await fixture<SdNotification>(html`<sd-notification>I am a notification</sd-notification>`);
-      console.log(1);
+      const notification = await fixture<SdNotification>(
+        html`<sd-notification closable>I am a notification</sd-notification>`
+      );
       const afterShowEvent = oneEvent(notification, 'sd-after-show');
       let toastPromiseResolved = false;
       notification.toast().then(() => (toastPromiseResolved = true));
-      console.log(2);
       await afterShowEvent;
-      console.log(3);
       expect(toastPromiseResolved).to.be.false;
 
       const closePromise = oneEvent(notification, 'sd-after-hide');
       const closeButton = getCloseButton(notification);
-      clickOnElement(closeButton!);
+
+      await clickOnElement(closeButton!);
 
       await closePromise;
-      console.log(4);
-      console.log(5);
       await aTimeout(0);
-      console.log(6);
 
       expect(toastPromiseResolved).to.be.true;
     });
