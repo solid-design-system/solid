@@ -317,7 +317,7 @@ export const Slots = {
 };
 
 /**
- * Use the 'base', 'content', 'chevron', and 'description' part selectors to customize the navigation item.
+ * Use the `base`, `content`, `chevron`, and `description` part selectors to customize the navigation item.
  */
 
 export const Parts = {
