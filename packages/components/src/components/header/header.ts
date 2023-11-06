@@ -26,8 +26,11 @@ import type { PropertyValues } from 'lit';
  */
 @customElement('sd-header')
 export default class SdHeader extends SolidElement {
+  /**  Determines whether the header is fixed or not. If the header is fixed at the top of the page, a shadow is shown underneath. */
   @property({ reflect: true, type: Boolean }) fixed = false;
-  @property({ attribute: 'auto-spacing', reflect: true, type: Boolean }) autoSpacing = true;
+
+  /** Determines whether automatic spacing is applied above the body content. If true, the body's top padding is set to the header's height, preventing overlap. */
+  @property({ attribute: 'auto-spacing', reflect: true, type: Boolean }) autoSpacing = false;
 
   private refHeaderElement?: HTMLElement;
   private resizeObserver?: ResizeObserver;
