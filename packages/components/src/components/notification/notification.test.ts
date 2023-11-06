@@ -12,6 +12,10 @@ const getNotificationContainer = (notification: SdNotification): HTMLElement => 
   return notification.shadowRoot!.querySelector<HTMLElement>('[part="base"]')!;
 };
 
+const getIconSlot = (notification: SdNotification): HTMLElement => {
+  return notification.shadowRoot!.querySelector<HTMLElement>('[part="icon"]')!;
+};
+
 const expectNotificationToBeVisible = (notification: SdNotification): void => {
   const notificationContainer = getNotificationContainer(notification);
   const style = window.getComputedStyle(notificationContainer);
@@ -335,7 +339,7 @@ describe('<sd-notification>', () => {
           >`
         );
 
-        const notificationContainer = getNotificationContainer(notification);
+        const notificationContainer = getIconSlot(notification);
         expect(notificationContainer).to.have.class(
           variantToClassMap[variant as 'info' | 'success' | 'warning' | 'error']
         );

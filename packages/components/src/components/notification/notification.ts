@@ -21,7 +21,7 @@ const toastStackBottomCenter = Object.assign(document.createElement('div'), {
  * @summary Alerts are used to display important messages inline or as toast notifications.
  * @documentation https://solid.union-investment.com/[storybook-link]/notification
  * @status stable
- * @since 1.20.0
+ * @since 1.21.0
  *
  * @dependency sd-icon-button
  *
