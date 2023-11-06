@@ -106,7 +106,7 @@ export const Panel: React.FC<PanelProps> = props => {
             onChange={e => setUseDefaultLuminanceMap(e.target.checked)}
           />
           <label htmlFor="useDefaultLuminanceMap">
-            Normalize colors (This might improve your scale but could reduce accessibility – please check a11y
+            Normalize colors (A normalized scale might match your brand better but could reduce accessibility and usability – make sure to check a11y
             compliance yourself.)
           </label>
         </div>

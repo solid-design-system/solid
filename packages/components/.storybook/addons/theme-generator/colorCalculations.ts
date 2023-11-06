@@ -48,10 +48,6 @@ const calculateLuminanceMap = colorObject => {
   return luminanceMaps;
 };
 
-const gaussian = (x, stdDev = 1) => {
-  return Math.exp(-Math.pow(x, 2) / (2 * Math.pow(stdDev, 2)));
-};
-
 const findClosestLuminanceKey = (luminanceValue, luminanceMap) => {
   const allKeys = Object.keys(luminanceMap).filter(key => key !== 'DEFAULT'); // Exclude the "DEFAULT" key
 
@@ -68,21 +64,43 @@ const findClosestLuminanceKey = (luminanceValue, luminanceMap) => {
 // E. g. if primary-500 fits best, primary-400 and primary-600 will be adjusted more than primary-300 and primary-700
 // Aim is that the whole color palette is most consistent in itself using the original color
 const adjustLuminanceMap = (color, luminanceMap) => {
+  // Calculate the luminance of the given color
   const colorLuminance = chroma(color).luminance();
-  const closestLuminanceKey = findClosestLuminanceKey(colorLuminance, luminanceMap);
-  const closestLuminance = luminanceMap[closestLuminanceKey];
 
-  const difference = colorLuminance - closestLuminance;
-  let newLuminanceMap = {};
+  // Find the closest luminance key in the map
+  const closestLuminanceKey = parseInt(findClosestLuminanceKey(colorLuminance, luminanceMap));
 
-  for (let key in luminanceMap) {
-    let luminanceDistance = closestLuminance - luminanceMap[key];
-    let impactFactor = gaussian(luminanceDistance, 0.5);
-    let adjustment = difference * impactFactor;
+  // Calculate the difference from the closest key's luminance
+  const difference = colorLuminance - luminanceMap[closestLuminanceKey];
 
-    newLuminanceMap[key] = Math.min(1, Math.max(0, luminanceMap[key] + adjustment)); // Clamp between 0 and 1
-  }
-  return newLuminanceMap;
+  // Calculate the gradients for the linear adjustment
+  const gradient = difference / (1000 - closestLuminanceKey);
+
+  let adjustedLuminanceMap = { ...luminanceMap }; // Clone the original map to avoid mutating it directly
+
+  // Apply the linear function to adjust the luminance values
+  Object.keys(adjustedLuminanceMap).forEach(key => {
+    const currentKey = parseInt(key);
+    let adjustment;
+
+    if (currentKey <= closestLuminanceKey) {
+      adjustment = gradient * currentKey;
+    } else {
+      adjustment = gradient * (currentKey - closestLuminanceKey);
+    }
+
+    let adjustedLuminance = luminanceMap[key] + adjustment;
+    // Ensure the adjusted luminance doesn't fall below a minimum threshold to maintain the gradient
+    adjustedLuminance = Math.max(adjustedLuminance, 0.01); // Set minimum luminance threshold
+
+    // Average the adjusted value with the original value to maintain a gradient
+    adjustedLuminanceMap[key] = (adjustedLuminance + luminanceMap[key]) / 2;
+  });
+
+  // Ensure DEFAULT has the luminance of the 500 key
+  adjustedLuminanceMap['DEFAULT'] = adjustedLuminanceMap['500'];
+
+  return adjustedLuminanceMap;
 };
 
 export const calculateColorsForType = (type, theme, colors, useDefaultLuminanceMap) => {
@@ -109,8 +127,15 @@ export const calculateColorsForType = (type, theme, colors, useDefaultLuminanceM
   let tokens = '';
   scale.forEach((currentColor, index) => {
     const scaleValue = scalesForType[index];
-    const rgb = chroma(currentColor).rgb();
-    tokens += `  --sd-color-${type}${scaleValue !== 'DEFAULT' ? `-${scaleValue}` : ''}: ${rgb.join(' ')};\n`;
+    if (scaleValue === 'DEFAULT') {
+      const rgb = chroma(
+        scale[{ primary: useDefaultLuminanceMap ? 4 : 5, accent: useDefaultLuminanceMap ? 4 : 3 }[type]]
+      ).rgb(); // when we normalize the colors, we just use 500 for primary and accent, otherwise we use 600 (primary) or 400 (accent)
+      tokens += `  --sd-color-${type}: ${rgb.join(' ')};\n`;
+    } else {
+      const rgb = chroma(currentColor).rgb();
+      tokens += `  --sd-color-${type}${`-${scaleValue}`}: ${rgb.join(' ')};\n`;
+    }
   });
 
   return tokens;
