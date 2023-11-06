@@ -460,7 +460,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
       default: 'border-neutral-800'
     }[inputState];
 
-    const iconMarginLeft = this.size === 'sm' ? 'ml-1' : 'ml-2';
+    const iconMarginLeft = { sm: 'ml-1', md: 'ml-2', lg: 'ml-2' }[this.size];
     const iconSize = {
       sm: 'text-base',
       md: 'text-lg',
@@ -484,13 +484,13 @@ export default class SdInput extends SolidElement implements SolidFormControl {
 
         <div part="form-control-input" class="form-control-input relative w-full">
           <div part="border" class=${cx(
-            'absolute w-full h-full pointer-events-none border rounded-[4px]',
+            'absolute w-full h-full pointer-events-none border rounded-default',
             borderColor
           )}></div>
           <div
             part="base"
             class=${cx(
-              'px-4 rounded flex flex-row items-center rounded-[4px]',
+              'px-4 flex flex-row items-center rounded-default',
               // Vertical Padding
               this.size === 'lg' ? 'py-2' : 'py-1',
               // States
