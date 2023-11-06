@@ -1,45 +1,26 @@
+import 'flatpickr/dist/themes/dark.css';
 import { css, html } from 'lit';
 import { customElement } from '../../../src/internal/register-custom-element';
 import { query } from 'lit/decorators.js';
 import flatpickr from 'flatpickr';
 import SolidElement from '../../internal/solid-element';
 
-/**
- * @summary Short summary of the component's intended use.
- * @status experimental
- * @since 1.0
- *
- * @dependency sd-example
- *
- * @event sd-event-name - Emitted as an example.
- *
- * @slot - The default slot.
- * @slot example - An example slot.
- *
- * @csspart base - The component's base wrapper.
- *
- * @cssproperty --example - An example CSS custom property.
- */
 @customElement('sd-datepicker')
 export default class SdDatepicker extends SolidElement {
   @query('input') input: HTMLInputElement;
 
-  flatpickr: any = null;
+  flatpickr: flatpickr.Instance;
 
   firstUpdated() {
-    console.log('firstUpdated');
-    console.log(this.input);
+    this.flatpickr = flatpickr(this.input, {});
 
-    flatpickr(this.input, {});
+    console.log('firstUpdated');
+    console.log(this.flatpickr);
   }
 
   render() {
     return html`<div>
-      <input id="datepicker" class="form-control" /><link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
-      />
-      <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+      <input class="flatpickr flatpickr-input" type="text" placeholder="Select Date.." />
     </div>`;
   }
 
