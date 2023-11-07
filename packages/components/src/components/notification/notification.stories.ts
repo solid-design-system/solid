@@ -16,6 +16,11 @@ export default {
       type: 'slot',
       name: 'default',
       value: `<div class="slot slot--border slot--text h-8 my-auto w-full">Default slot</div>`
+    },
+    {
+      type: 'attribute',
+      name: 'open',
+      value: true
     }
   ]),
   argTypes,
@@ -38,7 +43,9 @@ export default {
 
 export const Default = {
   render: (args: any) => {
-    return generateTemplate({ args });
+    return generateTemplate({
+      args
+    });
   }
 };
 
@@ -53,7 +60,8 @@ export const Variants = {
       axis: {
         y: { type: 'attribute', name: 'variant' }
       },
-      args
+      args,
+      constants: { type: 'attribute', name: 'open', value: true }
     });
   }
 };
@@ -69,7 +77,8 @@ export const Closable = {
       axis: {
         y: { type: 'attribute', name: 'closable' }
       },
-      args
+      args,
+      constants: { type: 'attribute', name: 'open', value: true }
     });
   }
 };
@@ -85,7 +94,8 @@ export const Duration = {
       axis: {
         y: { type: 'attribute', name: 'duration', values: [Infinity, 5000] }
       },
-      args
+      args,
+      constants: { type: 'attribute', name: 'open', value: true }
     });
   }
 };
@@ -95,14 +105,17 @@ export const Duration = {
  */
 
 export const DurationIndicator = {
-  parameters: { controls: { exclude: ['duration-indicator'] } },
+  parameters: { controls: { exclude: ['duration', 'duration-indicator'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        y: { type: 'attribute', name: 'duration-indicator' }
+        y: { type: 'attribute', name: 'duration-indicator', values: [true] }
       },
       args,
-      constants: { type: 'attribute', name: 'duration', value: [5000] }
+      constants: [
+        { type: 'attribute', name: 'duration', value: [10000] },
+        { type: 'attribute', name: 'open', value: true }
+      ]
     });
   }
 };
@@ -224,7 +237,8 @@ export const Parts = {
       constants: [
         { type: 'attribute', name: 'duration', value: [Infinity] },
         { type: 'attribute', name: 'duration-indicator', value: [true] },
-        { type: 'attribute', name: 'closable', value: [true] }
+        { type: 'attribute', name: 'closable', value: [true] },
+        { type: 'attribute', name: 'open', value: [true] }
       ]
     });
   }

@@ -54,10 +54,10 @@ export default class SdNotification extends SolidElement {
   @query('[part~="base"]') base: HTMLElement;
 
   /**
-   * Indicates whether or not sd-notification is closed. You can toggle this attribute to show and hide the notification, or you can
-   * use the `show()` and `hide()` methods and this attribute will reflect the notifications's closed state.
+   * Indicates whether or not sd-notification is open. You can toggle this attribute to show and hide the notification, or you can
+   * use the `show()` and `hide()` methods and this attribute will reflect the notifications's open state.
    */
-  @property({ type: Boolean, reflect: true }) closed = false;
+  @property({ type: Boolean, reflect: true }) open = false;
 
   /** Enables a close button that allows the user to dismiss the notification. */
   @property({ type: Boolean, reflect: true }) closable = false;
@@ -82,19 +82,14 @@ export default class SdNotification extends SolidElement {
   private startTime = Date.now();
 
   firstUpdated() {
-    this.base.hidden = this.closed;
-  }
-
-  connectedCallback() {
-    super.connectedCallback();
-    this.emit('sd-after-show');
+    this.base.hidden = !this.open;
   }
 
   private startAutoHide() {
     clearTimeout(this.autoHideTimeout);
     this.startTime = Date.now();
     this.remainingDuration = this.duration;
-    if (!this.closed && this.duration < Infinity) {
+    if (this.open && this.duration < Infinity) {
       this.autoHideTimeout = window.setTimeout(() => this.hide(), this.duration);
     }
   }
@@ -111,7 +106,7 @@ export default class SdNotification extends SolidElement {
     this.startTime = Date.now();
     clearTimeout(this.autoHideTimeout);
 
-    if (!this.closed && this.duration < Infinity) {
+    if (this.open && this.duration < Infinity) {
       this.autoHideTimeout = window.setTimeout(() => {
         this.hide();
       }, this.remainingDuration);
@@ -122,9 +117,9 @@ export default class SdNotification extends SolidElement {
     this.hide();
   }
 
-  @watch('closed', { waitUntilFirstUpdate: true })
+  @watch('open', { waitUntilFirstUpdate: true })
   async handleOpenChange() {
-    if (!this.closed) {
+    if (this.open) {
       // Show
       this.emit('sd-show');
 
@@ -159,21 +154,21 @@ export default class SdNotification extends SolidElement {
 
   /** Shows the notification. */
   async show() {
-    if (!this.closed) {
+    if (this.open) {
       return undefined;
     }
 
-    this.closed = false;
+    this.open = true;
     return waitForEvent(this, 'sd-after-show');
   }
 
   /** Hides the notification */
   async hide() {
-    if (this.closed) {
+    if (!this.open) {
       return undefined;
     }
 
-    this.closed = true;
+    this.open = false;
     return waitForEvent(this, 'sd-after-hide');
   }
 
@@ -222,7 +217,7 @@ export default class SdNotification extends SolidElement {
         class=${cx('w-full overflow-hidden flex items-stretch relative m-2')}
         role="alert"
         id="notification"
-        aria-hidden=${this.closed ? 'true' : 'false'}
+        aria-hidden=${this.open ? 'false' : 'true'}
         @mouseenter=${this.onHover}
         @mouseleave=${this.onHoverEnd}
       >

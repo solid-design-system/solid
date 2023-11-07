@@ -78,13 +78,17 @@ describe('<sd-notification>', () => {
   });
 
   it('renders', async () => {
-    const notification = await fixture<SdNotification>(html`<sd-notification>I am a notification</sd-notification>`);
+    const notification = await fixture<SdNotification>(
+      html`<sd-notification open>I am a notification</sd-notification>`
+    );
 
     expectNotificationToBeVisible(notification);
   });
 
   it('is accessible', async () => {
-    const notification = await fixture<SdNotification>(html`<sd-notification>I am a notification</sd-notification>`);
+    const notification = await fixture<SdNotification>(
+      html`<sd-notification open>I am a notification</sd-notification>`
+    );
 
     await expect(notification).to.be.accessible();
   });
@@ -92,24 +96,20 @@ describe('<sd-notification>', () => {
   describe('notification visibility', () => {
     it('should be visible with the closed attribute is false', async () => {
       const notification = await fixture<SdNotification>(
-        html`<sd-notification !closed>I am a notification</sd-notification>`
+        html`<sd-notification open>I am a notification</sd-notification>`
       );
 
       expectNotificationToBeVisible(notification);
     });
 
-    it('should not be visible when closed = true', async () => {
-      const notification = await fixture<SdNotification>(
-        html` <sd-notification closed>I am a notification</sd-notification>`
-      );
+    it('should not be visible when closed', async () => {
+      const notification = await fixture<SdNotification>(html` <sd-notification>I am a notification</sd-notification>`);
 
       expectNotificationToBeInvisible(notification);
     });
 
     it('should emit sd-show and sd-after-show when calling show()', async () => {
-      const notification = await fixture<SdNotification>(
-        html` <sd-notification closed>I am a notification</sd-notification>`
-      );
+      const notification = await fixture<SdNotification>(html` <sd-notification>I am a notification</sd-notification>`);
 
       expectNotificationToBeInvisible(notification);
 
@@ -117,18 +117,20 @@ describe('<sd-notification>', () => {
     });
 
     it('should emit sd-hide and sd-after-hide when calling hide()', async () => {
-      const notification = await fixture<SdNotification>(html` <sd-notification>I am a notification</sd-notification>`);
+      const notification = await fixture<SdNotification>(
+        html` <sd-notification open>I am a notification</sd-notification>`
+      );
 
       await expectHideAndAfterHideToBeEmittedInCorrectOrder(notification, () => notification.hide());
     });
 
-    it('should emit sd-show and sd-after-show when setting closed = false', async () => {
+    it('should emit sd-show and sd-after-show when opened', async () => {
       const notification = await fixture<SdNotification>(html`
-        <sd-notification closed>I am a notification</sd-notification>
+        <sd-notification>I am a notification</sd-notification>
       `);
 
       await expectShowAndAfterShowToBeEmittedInCorrectOrder(notification, () => {
-        notification.closed = false;
+        notification.open = true;
       });
     });
 
@@ -138,7 +140,7 @@ describe('<sd-notification>', () => {
       `);
 
       await expectHideAndAfterHideToBeEmittedInCorrectOrder(notification, () => {
-        notification.closed = true;
+        notification.open = false;
       });
     });
   });
@@ -265,7 +267,7 @@ describe('<sd-notification>', () => {
     it('closes after a predefined amount of time', async () => {
       clock = sinon.useFakeTimers();
       const notification = await fixture<SdNotification>(
-        html` <sd-notification duration="3000">I am a notification</sd-notification>`
+        html` <sd-notification open duration="3000">I am a notification</sd-notification>`
       );
 
       expectNotificationToBeVisible(notification);
@@ -282,7 +284,7 @@ describe('<sd-notification>', () => {
     it('pauses the closing timer on mouse-over', async () => {
       clock = sinon.useFakeTimers();
       const notification = await fixture<SdNotification>(
-        html` <sd-notification duration="3000" closable>I am a notification</sd-notification>`
+        html` <sd-notification open duration="3000" closable>I am a notification</sd-notification>`
       );
 
       expectNotificationToBeVisible(notification);
@@ -303,7 +305,7 @@ describe('<sd-notification>', () => {
     it('resets the closing timer after opening', async () => {
       clock = sinon.useFakeTimers();
       const notification = await fixture<SdNotification>(
-        html` <sd-notification duration="3000" closed>I am a notification</sd-notification>`
+        html` <sd-notification duration="3000">I am a notification</sd-notification>`
       );
 
       expectNotificationToBeInvisible(notification);
