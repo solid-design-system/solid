@@ -128,9 +128,7 @@ export const calculateColorsForType = (type, theme, colors, useDefaultLuminanceM
   scale.forEach((currentColor, index) => {
     const scaleValue = scalesForType[index];
     if (scaleValue === 'DEFAULT') {
-      const rgb = chroma(
-        scale[{ primary: useDefaultLuminanceMap ? 4 : 5, accent: useDefaultLuminanceMap ? 4 : 3 }[type]]
-      ).rgb(); // when we normalize the colors, we just use 500 for primary and accent, otherwise we use 600 (primary) or 400 (accent)
+      const rgb = chroma(scale[{ primary: 5, accent: 3 }[type]]).rgb(); //  as default we use 600 (primary) or 400 (accent)
       tokens += `  --sd-color-${type}: ${rgb.join(' ')};\n`;
     } else {
       const rgb = chroma(currentColor).rgb();
