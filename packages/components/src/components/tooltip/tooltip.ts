@@ -316,10 +316,6 @@ export default class SdTooltip extends SolidElement {
         max-width: var(--max-width);
       }
 
-      :host([disabled]) ::slotted(sd-icon) {
-        /* replace with the CSS properties that correspond to the 'sd-interactive--disabled' class */
-      }
-
       ::slotted([slot='content']) {
         overflow: auto;
         max-width: var(--auto-size-available-width) !important;
