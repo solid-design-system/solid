@@ -95,6 +95,7 @@ export const Parts = {
   },
   render: (args: any) => {
     return generateTemplate({
+      constants: { type: 'attribute', name: 'value', value: '1' },
       axis: {
         y: {
           type: 'template',
@@ -106,7 +107,7 @@ export const Parts = {
                 <style>#part-${part} sd-radio::part(${part}){outline: solid 2px red}</style>
                 <div id="part-${part}">
                 ${
-                  part === 'control--unchecked'
+                  part.includes('checked') && !part.includes('unchecked')
                     ? '<sd-radio-group value="1">%TEMPLATE%</sd-radio-group>'
                     : '<sd-radio-group>%TEMPLATE%</sd-radio-group>'
                 }
