@@ -503,7 +503,6 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               isFirefox && 'input--is-firefox'
             )}
           >
-          <!-- TODO: do we want iconSize to apply to the left slot? -->
             ${
               slots['left']
                 ? html`<slot
@@ -512,7 +511,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                     class=${cx(
                       'input__left inline-flex',
                       this.size === 'sm' ? 'mr-1' : 'mr-2',
-                      this.disabled ? 'text-neutral-500' : 'text-primary', // TODO: does left receive the same styles as right?  Nothing in design.
+                      this.disabled ? 'text-neutral-500' : 'text-primary',
                       iconSize
                     )}
                   ></slot>`
@@ -554,32 +553,36 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               @keydown=${this.handleKeyDown}
               @focus=${this.handleFocus}
               @blur=${this.handleBlur}
-            />
+            >
             ${
               hasClearIcon
                 ? html`
                     <button
                       part="clear-button"
-                      class=${cx('input__clear flex justify-center', iconMarginLeft, iconSize)}
+                      class=${cx('input__clear flex justify-center', iconMarginLeft)}
                       type="button"
                       aria-label=${this.localize.term('clearEntry')}
                       @click=${this.handleClearClick}
                       tabindex="-1"
                     >
                       <slot name="clear-icon">
-                        <sd-icon class="text-neutral-400" library="system" name="closing-round"></sd-icon>
+                        <sd-icon
+                          class=${cx('text-netural-400', iconSize)}
+                          library="system"
+                          name="closing-round"
+                        ></sd-icon>
                       </slot>
                     </button>
                   `
                 : ''
             }
             ${
-              this.passwordToggle && !this.disabled
+              this.passwordToggle && this.type === 'password' && !this.disabled
                 ? html`
                     <button
                       aria-label=${this.localize.term(this.passwordVisible ? 'hidePassword' : 'showPassword')}
                       part="password-toggle-button"
-                      class="input__password-toggle"
+                      class="input__password-toggle flex items-center"
                       type="button"
                       @click=${this.handlePasswordToggle}
                       tabindex="-1"
@@ -605,6 +608,16 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                           `}
                     </button>
                   `
+                : ''
+            }
+            ${
+              this.type === 'date'
+                ? html` <sd-icon class=${cx(iconMarginLeft, iconSize)} library="system" name="calendar"></sd-icon> `
+                : ''
+            }
+            ${
+              this.type === 'time'
+                ? html` <sd-icon class=${cx(iconMarginLeft, iconSize)} library="system" name="calendar"></sd-icon> `
                 : ''
             }
             ${
@@ -684,7 +697,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
         display: none;
       }
 
-      /* Hides browser stepper for number type. Necessary for "Stepper Sample".  IMO inconsistent if we allow datepicker and other default input icons / controls. */
+      /* Hides browser stepper for number type. Necessary for "Stepper Sample". */
       /* Chrome, Safari, Edge, Opera */
       input::-webkit-outer-spin-button,
       input::-webkit-inner-spin-button {
@@ -695,6 +708,29 @@ export default class SdInput extends SolidElement implements SolidFormControl {
       /* Firefox */
       input[type='number'] {
         -moz-appearance: textfield;
+      }
+
+      /* Hides cross icon for search type. */
+      input[type='search']::-webkit-search-decoration,
+      input[type='search']::-webkit-search-cancel-button,
+      input[type='search']::-webkit-search-results-button,
+      input[type='search']::-webkit-search-results-decoration {
+        display: none;
+      }
+
+      /* Hides clock icon for time type. */
+      input[type='time']::-webkit-calendar-picker-indicator {
+        background: none;
+      }
+
+      /* Hides calendar picker for date type. Does not work in Firefox! */
+      input[type='date']::-webkit-calendar-picker-indicator {
+        display: none;
+      }
+
+      /* Hides calendar picker for date type. Does not work in Firefox! */
+      input[type='datetime-local']::-webkit-calendar-picker-indicator {
+        display: none;
       }
     `
   ];
