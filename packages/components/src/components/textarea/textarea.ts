@@ -36,13 +36,12 @@ import type { CSSResultGroup } from 'lit';
  */
 @customElement('sd-textarea')
 export default class SlTextarea extends SolidElement implements SolidFormControl {
-  static styles: CSSResultGroup = styles;
+  static styles: CSSResultGroup = styles; //TODO remove
 
-  private readonly formControlController = new FormControlController(this, {
-    assumeInteractionOn: ['sl-blur', 'sl-input']
-  });
+  private readonly formControlController = new FormControlController(this);
   private readonly hasSlotController = new HasSlotController(this, 'help-text', 'label');
-  private resizeObserver: ResizeObserver;
+  // private resizeObserver: ResizeObserver;
+  // private readonly localize = new LocalizeController(this);
 
   @query('.textarea__control') input: HTMLTextAreaElement;
 
@@ -56,10 +55,7 @@ export default class SlTextarea extends SolidElement implements SolidFormControl
   @property() value = '';
 
   /** The textarea's size. */
-  @property({ reflect: true }) size: 'small' | 'medium' | 'large' = 'medium';
-
-  /** Draws a filled textarea. */
-  @property({ type: Boolean, reflect: true }) filled = false;
+  @property({ reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
 
   /** The textarea's label. If you need to display HTML, use the `label` slot instead. */
   @property() label = '';
@@ -71,10 +67,10 @@ export default class SlTextarea extends SolidElement implements SolidFormControl
   @property() placeholder = '';
 
   /** The number of rows to display by default. */
-  @property({ type: Number }) rows = 4;
+  @property({ type: Number }) rows = 3;
 
   /** Controls how the textarea can be resized. */
-  @property() resize: 'none' | 'vertical' | 'auto' = 'vertical';
+  @property() resize: 'none' | 'vertical' | 'auto' = 'none';
 
   /** Disables the textarea. */
   @property({ type: Boolean, reflect: true }) disabled = false;
@@ -92,11 +88,17 @@ export default class SlTextarea extends SolidElement implements SolidFormControl
   /** Makes the textarea a required field. */
   @property({ type: Boolean, reflect: true }) required = false;
 
+  /** The minimum length of input that will be considered valid. */
+  @property({ type: Number }) minlength: number;
+
+  /** The maximum length of input that will be considered valid. */
+  @property({ type: Number }) maxlength: number;
+
   /** Controls whether and how text input is automatically capitalized as it is entered by the user. */
   @property() autocapitalize: 'off' | 'none' | 'on' | 'sentences' | 'words' | 'characters';
 
   /** Indicates whether the browser's autocorrect feature is on or off. */
-  @property() autocorrect: string;
+  @property() autocorrect: 'off' | 'on';
 
   /**
    * Specifies what permission the browser has to provide assistance in filling out form field values. Refer to
@@ -142,11 +144,11 @@ export default class SlTextarea extends SolidElement implements SolidFormControl
 
   connectedCallback() {
     super.connectedCallback();
-    this.resizeObserver = new ResizeObserver(() => this.setTextareaHeight());
+    // this.resizeObserver = new ResizeObserver(() => this.setTextareaHeight());
 
     this.updateComplete.then(() => {
       this.setTextareaHeight();
-      this.resizeObserver.observe(this.input);
+      // this.resizeObserver.observe(this.input);
     });
   }
 
@@ -156,7 +158,7 @@ export default class SlTextarea extends SolidElement implements SolidFormControl
 
   disconnectedCallback() {
     super.disconnectedCallback();
-    this.resizeObserver.unobserve(this.input);
+    // this.resizeObserver.unobserve(this.input);
   }
 
   private handleBlur() {
@@ -302,9 +304,9 @@ export default class SlTextarea extends SolidElement implements SolidFormControl
         part="form-control"
         class=${classMap({
       'form-control': true,
-      'form-control--small': this.size === 'small',
-      'form-control--medium': this.size === 'medium',
-      'form-control--large': this.size === 'large',
+      'form-control--small': this.size === 'sm',
+      'form-control--medium': this.size === 'md',
+      'form-control--large': this.size === 'lg',
       'form-control--has-label': hasLabel,
       'form-control--has-help-text': hasHelpText
     })}
@@ -323,11 +325,10 @@ export default class SlTextarea extends SolidElement implements SolidFormControl
             part="base"
             class=${classMap({
       textarea: true,
-      'textarea--small': this.size === 'small',
-      'textarea--medium': this.size === 'medium',
-      'textarea--large': this.size === 'large',
-      'textarea--standard': !this.filled,
-      'textarea--filled': this.filled,
+      'textarea--small': this.size === 'sm',
+      'textarea--medium': this.size === 'md',
+      'textarea--large': this.size === 'lg',
+      'textarea--standard': true,
       'textarea--disabled': this.disabled,
       'textarea--focused': this.hasFocus,
       'textarea--empty': !this.value,
