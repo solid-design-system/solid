@@ -174,9 +174,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
         part="base"
         class=${cx(
           'sd-checkbox group flex items-start text-base leading-normal text-black cursor-pointer',
-          this.checked && 'checkbox--checked',
           this.disabled && 'hover:cursor-not-allowed',
-          this.hasFocus && 'checkbox--focused',
           {
             /* sizes, fonts */
             sm: 'text-sm',
@@ -185,7 +183,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
         )}
       >
         <input
-          class="checkbox__input absolute opacity-0 p-0 m-0 pointer-events-none"
+          class="peer absolute opacity-0 p-0 m-0 pointer-events-none"
           type="checkbox"
           title=${this.title /* An empty title prevents browser validation tooltips from appearing on hover */}
           name=${this.name}
@@ -203,13 +201,18 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
         />
 
         <span
-          part="control ${this.checked ? ' control--checked' : 'control--unchecked'}${this.indeterminate
+          id="control"
+          part="control ${this.checked ? ' control--checked' : 'control--unchecked'} ${this.indeterminate
             ? ' control--indeterminate'
             : ''}"
           class=${cx(
-            `checkbox__control relative flex items-center justify-center border rounded-sm h-4 w-4 ${
-              (this.size === 'sm' && 'mt-[2px]') || (this.size === 'lg' && 'mt-[3px]')
-            }`,
+            `relative flex flex-initial items-center justify-center border rounded-sm h-4 w-4 
+            peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 
+            peer-focus-visible:outline-primary`,
+            {
+              sm: 'mt-[2px]',
+              lg: 'mt-[3px]'
+            }[this.size],
             (this.disabled && this.indeterminate && 'border-neutral-500 bg-neutral-500') ||
               (this.disabled && this.checked && 'border-neutral-500 bg-neutral-500') ||
               (this.disabled && 'border-neutral-500') ||
@@ -220,19 +223,14 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
         >
           ${this.checked
             ? html`
-                <sd-icon
-                  part="checked-icon"
-                  class="checkbox__checked-icon text-white w-3 h-3"
-                  library="system"
-                  name="status-hook"
-                ></sd-icon>
+                <sd-icon part="checked-icon" class="text-white w-3 h-3" library="system" name="status-hook"></sd-icon>
               `
             : ''}
           ${!this.checked && this.indeterminate
             ? html`
                 <sd-icon
                   part="indeterminate-icon"
-                  class="checkbox__indeterminate-icon text-white w-3 h-3"
+                  class="text-white w-3 h-3"
                   library="system"
                   name="status-minus"
                 ></sd-icon>
@@ -241,8 +239,9 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
         </span>
         <span
           part="label"
+          id="label"
           class=${cx(
-            'checkbox__label select-none inline-block ml-2 text-black',
+            'select-none inline-block ml-2 text-black',
             (this.disabled && 'text-neutral-500') || 'text-neutral-800'
           )}
         >
@@ -266,30 +265,20 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
         outline: 0;
       }
 
-      :host([required]) .checkbox__label::after {
+      :host([required]) #label::after {
         content: ' *';
       }
 
-      :host([data-user-invalid]) .checkbox__label {
+      :host([data-user-invalid]) #label {
         color: rgb(var(--sd-color-error, 204 25 55));
       }
 
-      :host([data-user-invalid]) .checkbox__control {
+      :host([data-user-invalid]) #control {
         border-color: rgb(var(--sd-color-error, 204 25 55));
       }
 
-      :host([data-user-invalid]):host([indeterminate]) .checkbox__control {
+      :host([data-user-invalid]):host([indeterminate]) #control {
         background-color: rgb(var(--sd-color-error, 204 25 55));
-      }
-
-      .checkbox__control {
-        flex: 0 0 auto;
-      }
-
-      /* Checked + focus */
-      .checkbox__input:focus-visible ~ .checkbox__control {
-        outline: 2px solid #00358e;
-        outline-offset: 2px;
       }
     `
   ];

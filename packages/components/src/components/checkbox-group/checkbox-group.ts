@@ -88,8 +88,7 @@ export default class SdCheckboxGroup extends SolidElement {
       <fieldset
         part="form-control"
         class=${cx(
-          'form-control form-control--checkbox-group border-0 p-0 m-0',
-          hasLabel && 'form-control--has-label',
+          'border-0 p-0 m-0',
           {
             /* sizes, fonts */
             sm: 'text-sm',
@@ -102,7 +101,7 @@ export default class SdCheckboxGroup extends SolidElement {
         <label
           part="form-control-label"
           id="label"
-          class="form-control__label mb-2 hidden p-0 font-bold leading-normal text-black"
+          class="mb-2 hidden p-0 font-bold leading-normal text-black"
           aria-hidden=${!hasLabel}
         >
           <slot name="label">${this.label}</slot>
@@ -111,10 +110,9 @@ export default class SdCheckboxGroup extends SolidElement {
         <div
           part="form-control-input"
           class=${cx(
-            'form-control-input',
             {
-              vertical: 'form-control-input--vertical flex flex-col',
-              horizontal: 'form-control-input--horizontal flex flex-row'
+              vertical: 'flex flex-col',
+              horizontal: 'flex flex-row'
             }[this.orientation]
           )}
         >
@@ -135,35 +133,25 @@ export default class SdCheckboxGroup extends SolidElement {
         display: block;
       }
 
-      .form-control-input--vertical ::slotted(sd-checkbox) {
+      :host([orientation='vertical']) ::slotted(sd-checkbox) {
         margin-bottom: 8px;
         display: flex;
       }
 
-      .form-control-input--vertical ::slotted(sd-checkbox:last-of-type) {
+      :host([orientation='vertical']) ::slotted(sd-checkbox:last-of-type) {
         margin-bottom: 0;
       }
 
-      .form-control-input--horizontal ::slotted(sd-checkbox) {
+      :host([orientation='horizontal']) ::slotted(sd-checkbox) {
         margin-right: 24px;
       }
 
-      :host([size='sm']) .form-control-input--horizontal ::slotted(sd-checkbox) {
+      :host([size='sm']):host([orientation='horizontal']) ::slotted(sd-checkbox) {
         margin-right: 16px;
       }
 
-      .form-control-input--horizontal ::slotted(sd-checkbox:last-of-type) {
+      :host([orientation='horizontal']) ::slotted(sd-checkbox:last-of-type) {
         margin-right: 0;
-      }
-
-      /* Label */
-      .form-control--has-label .form-control__label {
-        display: flex;
-      }
-
-      :host([required]) .form-control--has-label .form-control__label::after {
-        content: '*';
-        margin-left: 2px;
       }
     `
   ];
