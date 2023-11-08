@@ -5,7 +5,7 @@ import { defaultValue } from '../../internal/default-value';
 import { FormControlController } from '../../internal/form';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { live } from 'lit/directives/live.js';
-import { property, query, state } from 'lit/decorators.js';
+import { property, query } from 'lit/decorators.js';
 import { watch } from '../../internal/watch';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
