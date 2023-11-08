@@ -6,7 +6,7 @@ describe('<sd-header>', () => {
     const el = await fixture<SdHeader>(html`<sd-header></sd-header>`);
 
     expect(el.fixed).to.be.false;
-    expect(el.autoSpacing).to.be.true;
+    expect(el.autoSpacing).to.be.false;
     expect(el.shadowRoot!.querySelector<HTMLElement>('[part~="main"]')).to.exist;
   });
 
