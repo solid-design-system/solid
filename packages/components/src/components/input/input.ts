@@ -76,7 +76,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   );
   private readonly localize = new LocalizeController(this);
 
-  @query('.input__control') input: HTMLInputElement;
+  @query('.input__control', { reflect: true }) input: HTMLInputElement;
 
   @state() private hasFocus = false;
 
