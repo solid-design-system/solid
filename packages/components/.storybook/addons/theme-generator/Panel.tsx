@@ -12,7 +12,8 @@ interface PanelProps {
 }
 
 export const Panel: React.FC<PanelProps> = props => {
-  const [useDefaultLuminanceMap, setUseDefaultLuminanceMap] = useState(PANEL_DEFAULTS.useDefaultLuminanceMap);
+  const [useNormalizedLuminanceMap, setUseNormalizedLuminanceMap] = useState(PANEL_DEFAULTS.useNormalizedLuminanceMap);
+  const [useForcedShades, setUseForcedShades] = useState(PANEL_DEFAULTS.useForcedShades);
 
   const [colors, setColors] = useState(PANEL_DEFAULTS.colors);
 
@@ -40,21 +41,22 @@ export const Panel: React.FC<PanelProps> = props => {
   };
 
   useEffect(() => {
-    setOutput(calculateColorsAsCss(colors, theme, useDefaultLuminanceMap));
-  }, [colors, useDefaultLuminanceMap]);
+    setOutput(calculateColorsAsCss(colors, theme, useNormalizedLuminanceMap, useForcedShades));
+  }, [colors, useNormalizedLuminanceMap, useForcedShades]);
 
   useDebouncedEffect(
     () => {
       const panelState = {
         colors,
-        useDefaultLuminanceMap
+        useNormalizedLuminanceMap,
+        useForcedShades
       };
       updateGlobals({
         [PARAM_KEY + '_STATE']: JSON.stringify(panelState)
       });
     },
     500,
-    [colors, useDefaultLuminanceMap]
+    [colors, useNormalizedLuminanceMap, useForcedShades]
   );
 
   return (
@@ -99,16 +101,27 @@ export const Panel: React.FC<PanelProps> = props => {
         ))}
 
         <div style={{ marginTop: '12px' }}>
-          <input
-            id="useDefaultLuminanceMap"
-            type="checkbox"
-            checked={useDefaultLuminanceMap}
-            onChange={e => setUseDefaultLuminanceMap(e.target.checked)}
-          />
-          <label htmlFor="useDefaultLuminanceMap">
-            Normalize colors (A normalized scale might match your brand better but could reduce accessibility and
-            usability – make sure to check a11y compliance yourself.)
-          </label>
+          <div>
+            <input
+              id="useNormalizedLuminanceMap"
+              type="checkbox"
+              checked={useNormalizedLuminanceMap}
+              onChange={e => setUseNormalizedLuminanceMap(e.target.checked)}
+            />
+            <label htmlFor="useNormalizedLuminanceMap">
+              ⚠️ Enable Color Normalization (Toggles the adjustment of color shades for visual consistency. Caution: Verify against accessibility standards for color contrast after applying.)
+            </label>
+          </div>
+          <div>
+            <input
+              id="useForcedShades"
+              type="checkbox"
+              checked={useForcedShades}
+              onChange={e => setUseForcedShades(e.target.checked)}
+            />
+            <label htmlFor="useForcedShades">
+              ⚠️ Enforce Reference Color (Sets the provided color as the baseline for default shades (primary-600, accent-400). Note: This can significantly impact contrast ratios. Always check for accessibility compliance after changes.)
+            </label></div>
         </div>
 
         <div style={{ display: 'flex', gap: '8px', marginTop: '12px' }}>

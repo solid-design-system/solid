@@ -48,7 +48,7 @@ const calculateLuminanceMap = colorObject => {
   return luminanceMaps;
 };
 
-const findClosestLuminanceKey = (luminanceValue, luminanceMap) => {
+const findClosestShade = (luminanceValue, luminanceMap) => {
   const allKeys = Object.keys(luminanceMap).filter(key => key !== 'DEFAULT'); // Exclude the "DEFAULT" key
 
   return allKeys.reduce((closest, key) => {
@@ -63,30 +63,32 @@ const findClosestLuminanceKey = (luminanceValue, luminanceMap) => {
 // Colors close to the original color will be changed more than colors further away.
 // E. g. if primary-500 fits best, primary-400 and primary-600 will be adjusted more than primary-300 and primary-700
 // Aim is that the whole color palette is most consistent in itself using the original color
-const adjustLuminanceMap = (color, luminanceMap) => {
+const adjustLuminanceMap = (color, luminanceMap, forcedShade) => {
   // Calculate the luminance of the given color
   const colorLuminance = chroma(color).luminance();
 
   // Find the closest luminance key in the map
-  const closestLuminanceKey = parseInt(findClosestLuminanceKey(colorLuminance, luminanceMap));
+  const referenceShade = parseInt(forcedShade || findClosestShade(colorLuminance, luminanceMap));
+
+  // console.log({ color, referenceShade, forcedShade, colorLuminance, luminanceMap });
 
   // Calculate the difference from the closest key's luminance
-  const difference = colorLuminance - luminanceMap[closestLuminanceKey];
+  const difference = colorLuminance - luminanceMap[referenceShade];
 
   // Calculate the gradients for the linear adjustment
-  const gradient = difference / (1000 - closestLuminanceKey);
+  const gradient = difference / (1000 - referenceShade);
 
   let adjustedLuminanceMap = { ...luminanceMap }; // Clone the original map to avoid mutating it directly
 
   // Apply the linear function to adjust the luminance values
   Object.keys(adjustedLuminanceMap).forEach(key => {
-    const currentKey = parseInt(key);
+    const currentShade = parseInt(key);
     let adjustment;
 
-    if (currentKey <= closestLuminanceKey) {
-      adjustment = gradient * currentKey;
+    if (currentShade <= referenceShade) {
+      adjustment = gradient * currentShade;
     } else {
-      adjustment = gradient * (currentKey - closestLuminanceKey);
+      adjustment = gradient * (currentShade - referenceShade);
     }
 
     let adjustedLuminance = luminanceMap[key] + adjustment;
@@ -103,7 +105,7 @@ const adjustLuminanceMap = (color, luminanceMap) => {
   return adjustedLuminanceMap;
 };
 
-export const calculateColorsForType = (type, theme, colors, useDefaultLuminanceMap) => {
+export const calculateColorsForType = (type, theme, colors, useNormalizedLuminanceMap, useForcedShades) => {
   const color = colors[type];
   const luminanceMaps = calculateLuminanceMap(theme['color']);
 
@@ -112,9 +114,13 @@ export const calculateColorsForType = (type, theme, colors, useDefaultLuminanceM
   const hex = chroma(color).hex();
   const scalesForType = Object.keys(luminanceMaps[type]);
 
-  const selectedLuminanceMap = useDefaultLuminanceMap ? defaultLuminanceMap : luminanceMaps[type];
+  const selectedLuminanceMap = useNormalizedLuminanceMap ? defaultLuminanceMap : luminanceMaps[type];
 
-  const adjustedLuminanceMap = adjustLuminanceMap(color, selectedLuminanceMap);
+  const adjustedLuminanceMap = adjustLuminanceMap(
+    color,
+    selectedLuminanceMap,
+    useForcedShades ? { primary: 600, accent: 400 }[type] || null : null
+  );
 
   const luminancesForType = scalesForType.map(scaleValue => {
     return adjustedLuminanceMap[scaleValue];
@@ -139,11 +145,13 @@ export const calculateColorsForType = (type, theme, colors, useDefaultLuminanceM
   return tokens;
 };
 
-export const calculateColorsAsCss = (colors, theme, useDefaultLuminanceMap) => {
+export const calculateColorsAsCss = (colors, theme, useNormalizedLuminanceMap, useForcedShades) => {
   let allTokens = ':root{\n  /* Copy & paste into your theme */\n';
 
+  console.log({ colors, theme, useNormalizedLuminanceMap, useForcedShades });
+
   Object.keys(colors).forEach(type => {
-    allTokens += calculateColorsForType(type, theme, colors, useDefaultLuminanceMap);
+    allTokens += calculateColorsForType(type, theme, colors, useNormalizedLuminanceMap, useForcedShades);
   });
 
   allTokens += '}';
