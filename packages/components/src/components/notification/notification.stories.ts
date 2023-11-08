@@ -113,7 +113,7 @@ export const DurationIndicator = {
       },
       args,
       constants: [
-        { type: 'attribute', name: 'duration', value: [10000] },
+        { type: 'attribute', name: 'duration', value: 10000 },
         { type: 'attribute', name: 'open', value: true }
       ]
     });
@@ -235,10 +235,10 @@ export const Parts = {
       },
       args,
       constants: [
-        { type: 'attribute', name: 'duration', value: [Infinity] },
-        { type: 'attribute', name: 'duration-indicator', value: [true] },
-        { type: 'attribute', name: 'closable', value: [true] },
-        { type: 'attribute', name: 'open', value: [true] }
+        { type: 'attribute', name: 'duration', value: Infinity },
+        { type: 'attribute', name: 'duration-indicator', value: true },
+        { type: 'attribute', name: 'closable', value: true },
+        { type: 'attribute', name: 'open', value: true }
       ]
     });
   }
@@ -254,8 +254,8 @@ export const Mouseless = {
       ${generateTemplate({
         args,
         constants: [
-          { type: 'attribute', name: 'closable', value: [true] },
-          { type: 'attribute', name: 'open', value: 'true' }
+          { type: 'attribute', name: 'closable', value: true },
+          { type: 'attribute', name: 'open', value: true }
         ]
       })}
     </div>`;
