@@ -1,31 +1,31 @@
 import { classMap } from 'lit/directives/class-map.js';
-import { customElement } from '../../../src/internal/register-custom-element';
-import {property, query, state } from 'lit/decorators.js';
-import { defaultValue } from '../../internal/default-value';
-import { FormControlController } from '../../internal/form';
-import { HasSlotController } from '../../internal/slot';
+import {customElement} from "../../internal/register-custom-element";
+import { defaultValue } from '../../internal/default-value.js';
+import { FormControlController } from '../../internal/form.js';
+import { HasSlotController } from '../../internal/slot.js';
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { live } from 'lit/directives/live.js';
-import { watch } from '../../internal/watch';
-import SolidElement from '../../internal/solid-element';
-import styles from './textarea.styles';
+import { property, query, state } from 'lit/decorators.js';
+import { watch } from '../../internal/watch.js';
+import SolidElement, {SolidFormControl} from "../../internal/solid-element";
+import styles from './textarea.styles.js';
 import type { CSSResultGroup } from 'lit';
-import type { SolidFormControl } from '../../internal/solid-element';
 
 /**
  * @summary Textareas collect data from the user and allow multiple lines of text.
- * @documentation https://solid.union-investment.com/[storybook-link]/textarea
+ * @documentation https://shoelace.style/components/textarea
  * @status stable
- * @since 1.0
+ * @since 2.0
  *
  * @slot label - The textarea's label. Alternatively, you can use the `label` attribute.
  * @slot help-text - Text that describes how to use the input. Alternatively, you can use the `help-text` attribute.
  *
- * @event sd-blur - Emitted when the control loses focus.
- * @event sd-change - Emitted when an alteration to the control's value is committed by the user.
- * @event sd-focus - Emitted when the control gains focus.
- * @event sd-input - Emitted when the control receives input.
+ * @event sl-blur - Emitted when the control loses focus.
+ * @event sl-change - Emitted when an alteration to the control's value is committed by the user.
+ * @event sl-focus - Emitted when the control gains focus.
+ * @event sl-input - Emitted when the control receives input.
+ * @event sl-invalid - Emitted when the form control has been checked for validity and its constraints aren't satisfied.
  *
  * @csspart form-control - The form control that wraps the label, input, and help text.
  * @csspart form-control-label - The label's wrapper.
@@ -35,10 +35,12 @@ import type { SolidFormControl } from '../../internal/solid-element';
  * @csspart textarea - The internal `<textarea>` control.
  */
 @customElement('sd-textarea')
-export default class SdTextarea extends SolidElement implements SolidFormControl {
+export default class SlTextarea extends SolidElement implements SolidFormControl {
   static styles: CSSResultGroup = styles;
 
-  private readonly formControlController = new FormControlController(this);
+  private readonly formControlController = new FormControlController(this, {
+    assumeInteractionOn: ['sl-blur', 'sl-input']
+  });
   private readonly hasSlotController = new HasSlotController(this, 'help-text', 'label');
   private resizeObserver: ResizeObserver;
 
@@ -90,12 +92,6 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
   /** Makes the textarea a required field. */
   @property({ type: Boolean, reflect: true }) required = false;
 
-  /** The minimum length of input that will be considered valid. */
-  @property({ type: Number }) minlength: number;
-
-  /** The maximum length of input that will be considered valid. */
-  @property({ type: Number }) maxlength: number;
-
   /** Controls whether and how text input is automatically capitalized as it is entered by the user. */
   @property() autocapitalize: 'off' | 'none' | 'on' | 'sentences' | 'words' | 'characters';
 
@@ -134,6 +130,16 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
   /** The default value of the form control. Primarily used for resetting the form control. */
   @defaultValue() defaultValue = '';
 
+  /** Gets the validity state object */
+  get validity() {
+    return this.input.validity;
+  }
+
+  /** Gets the validation message */
+  get validationMessage() {
+    return this.input.validationMessage;
+  }
+
   connectedCallback() {
     super.connectedCallback();
     this.resizeObserver = new ResizeObserver(() => this.setTextareaHeight());
@@ -155,23 +161,28 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
 
   private handleBlur() {
     this.hasFocus = false;
-    this.emit('sd-blur');
+    this.emit('sl-blur');
   }
 
   private handleChange() {
     this.value = this.input.value;
     this.setTextareaHeight();
-    this.emit('sd-change');
+    this.emit('sl-change');
   }
 
   private handleFocus() {
     this.hasFocus = true;
-    this.emit('sd-focus');
+    this.emit('sl-focus');
   }
 
   private handleInput() {
     this.value = this.input.value;
-    this.emit('sd-input');
+    this.emit('sl-input');
+  }
+
+  private handleInvalid(event: Event) {
+    this.formControlController.setValidity(false);
+    this.formControlController.emitInvalidEvent(event);
   }
 
   private setTextareaHeight() {
@@ -217,7 +228,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
   }
 
   /** Gets or sets the textarea's scroll position. */
-  scrollPosition(position?: { top?: number; left?: number; }): { top: number; left: number; } | undefined {
+  scrollPosition(position?: { top?: number; left?: number }): { top: number; left: number } | undefined {
     if (position) {
       if (typeof position.top === 'number') this.input.scrollTop = position.top;
       if (typeof position.left === 'number') this.input.scrollLeft = position.left;
@@ -259,9 +270,14 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
     }
   }
 
-  /** Checks for validity but does not show the browser's validation message. */
+  /** Checks for validity but does not show a validation message. Returns `true` when valid and `false` when invalid. */
   checkValidity() {
     return this.input.checkValidity();
+  }
+
+  /** Gets the associated form, if one exists. */
+  getForm(): HTMLFormElement | null {
+    return this.formControlController.getForm();
   }
 
   /** Checks for validity and shows the browser's validation message if the control is invalid. */
@@ -332,8 +348,6 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
               ?required=${this.required}
               placeholder=${ifDefined(this.placeholder)}
               rows=${ifDefined(this.rows)}
-              minlength=${ifDefined(this.minlength)}
-              maxlength=${ifDefined(this.maxlength)}
               autocapitalize=${ifDefined(this.autocapitalize)}
               autocorrect=${ifDefined(this.autocorrect)}
               ?autofocus=${this.autofocus}
@@ -343,28 +357,22 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
               aria-describedby="help-text"
               @change=${this.handleChange}
               @input=${this.handleInput}
+              @invalid=${this.handleInvalid}
               @focus=${this.handleFocus}
               @blur=${this.handleBlur}
             ></textarea>
           </div>
         </div>
 
-        <slot
-          name="help-text"
+        <div
           part="form-control-help-text"
           id="help-text"
           class="form-control__help-text"
           aria-hidden=${hasHelpText ? 'false' : 'true'}
         >
-          ${this.helpText}
-        </slot>
+          <slot name="help-text">${this.helpText}</slot>
+        </div>
       </div>
     `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'sd-textarea': SdTextarea;
   }
 }
