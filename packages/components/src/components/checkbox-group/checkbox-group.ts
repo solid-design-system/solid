@@ -101,7 +101,7 @@ export default class SdCheckboxGroup extends SolidElement {
         <label
           part="form-control-label"
           id="label"
-          class="mb-2 hidden p-0 font-bold leading-normal text-black"
+          class=${cx('mb-2 p-0 font-bold leading-normal text-black', hasLabel ? 'flex' : 'hidden')}
           aria-hidden=${!hasLabel}
         >
           <slot name="label">${this.label}</slot>
