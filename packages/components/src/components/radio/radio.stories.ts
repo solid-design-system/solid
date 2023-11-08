@@ -107,7 +107,7 @@ export const Parts = {
                 <style>#part-${part} sd-radio::part(${part}){outline: solid 2px red}</style>
                 <div id="part-${part}">
                 ${
-                  part.includes('checked') && !part.includes('unchecked')
+                  !part.includes('unchecked')
                     ? '<sd-radio-group value="1">%TEMPLATE%</sd-radio-group>'
                     : '<sd-radio-group>%TEMPLATE%</sd-radio-group>'
                 }
