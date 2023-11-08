@@ -109,7 +109,8 @@ export const Panel: React.FC<PanelProps> = props => {
               onChange={e => setUseNormalizedLuminanceMap(e.target.checked)}
             />
             <label htmlFor="useNormalizedLuminanceMap">
-              ⚠️ Enable Color Normalization (Toggles the adjustment of color shades for visual consistency. Caution: Verify against accessibility standards for color contrast after applying.)
+              ⚠️ Enable Color Normalization (Toggles the adjustment of color shades for visual consistency. Caution:
+              Verify against accessibility standards for color contrast after applying.)
             </label>
           </div>
           <div>
@@ -120,8 +121,11 @@ export const Panel: React.FC<PanelProps> = props => {
               onChange={e => setUseForcedShades(e.target.checked)}
             />
             <label htmlFor="useForcedShades">
-              ⚠️ Enforce Reference Color (Sets the provided color as the baseline for default shades (primary-600, accent-400). Note: This can significantly impact contrast ratios. Always check for accessibility compliance after changes.)
-            </label></div>
+              ⚠️ Enforce Reference Color (Sets the provided color as the baseline for default shades (primary-600,
+              accent-400). Note: This can significantly impact contrast ratios. Always check for accessibility
+              compliance after changes.)
+            </label>
+          </div>
         </div>
 
         <div style={{ display: 'flex', gap: '8px', marginTop: '12px' }}>
