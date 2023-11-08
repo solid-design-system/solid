@@ -41,7 +41,7 @@ export default (({ command }: { command: string }) => {
       lib: {
         entry: path.resolve(__dirname, 'src/solid-components.ts'),
         name: 'Solid Components',
-        fileName: format => `${format}/solid-components.js`
+        fileName: (format: string) => `${format}/solid-components.js`
       },
       rollupOptions: {
         output: {
@@ -71,4 +71,4 @@ export default (({ command }: { command: string }) => {
       }
     }
   };
-}) as typeof defineConfig;
+}) as unknown as typeof defineConfig;

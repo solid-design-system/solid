@@ -39,4 +39,4 @@ export default (() => {
       }
     }
   };
-}) as typeof defineConfig;
+}) as unknown as typeof defineConfig;

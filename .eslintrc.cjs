@@ -106,7 +106,8 @@ module.exports = {
               }
             ]
           }
-        ]
+        ],
+        'lit-a11y/no-aria-slot': 'off'
       }
     },
     {

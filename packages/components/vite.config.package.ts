@@ -31,7 +31,8 @@ export default (() => {
           assetFileNames: `[name].[ext]`,
           preserveModulesRoot: 'src'
         },
-        external: id => {
+        external: (id: string) => {
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-return
           return (
             id.includes('floating-ui') || (id.includes('lit') && !id.includes('utilities')) || id.includes('classix')
           );
@@ -53,4 +54,4 @@ export default (() => {
       }
     }
   };
-}) as typeof defineConfig;
+}) as unknown as typeof defineConfig;
