@@ -44,8 +44,6 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
 
   @query('input[type="checkbox"]') input: HTMLInputElement;
 
-  @state() private hasFocus = false;
-
   @property() title = ''; // make reactive to pass through
 
   /** The name of the checkbox, submitted as a name/value pair with form data. */
@@ -97,7 +95,6 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
   }
 
   private handleBlur() {
-    this.hasFocus = false;
     this.emit('sd-blur');
   }
 
@@ -111,7 +108,6 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
   }
 
   private handleFocus() {
-    this.hasFocus = true;
     this.emit('sd-focus');
   }
 
