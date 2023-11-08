@@ -132,18 +132,25 @@ export default class SdHeader extends SolidElement {
         position: fixed;
       }
 
-      .fixed-shadow {
-        box-shadow: 0 4px 2px -2px gray;
+      .fixed-shadow::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 100%;
+        height: 8px;
+        background: var(
+          --gradient-vertical-black-40-transparent,
+          linear-gradient(0deg, rgba(24, 24, 24, 0), rgba(24, 24, 24, 0.4))
+        );
       }
 
       [part='main'] {
         margin: 0 auto;
         width: var(--sd-header-inner-width, calc(100vw - 2 * var(--sd-header-padding-x, 16px)));
         max-width: var(--sd-header-inner-max-width);
-        padding-top: var(--sd-header-padding-top, 16px);
-        padding-right: var(--sd-header-padding-x, 16px);
-        padding-bottom: var(--sd-header-padding-bottom, 16px);
-        padding-left: var(--sd-header-padding-x, 16px);
+        padding: var(--sd-header-padding-top, 12px) var(--sd-header-padding-x, 16px)
+          var(--sd-header-padding-bottom, 12px) var(--sd-header-padding-x, 16px);
         box-sizing: border-box;
       }
 

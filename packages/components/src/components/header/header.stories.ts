@@ -7,9 +7,6 @@ const { argTypes, parameters } = storybookDefaults('sd-header');
 const { generateTemplate } = storybookTemplate('sd-header');
 const { overrideArgs } = storybookHelpers('sd-header');
 
-const LOGO_UI = 'https://cdn.dam.union-investment.de/original/454499_UI_Logo_RGB.svg';
-const LOGO_FINANZ = 'https://cdn.dam.union-investment.de/original/454453_logo-finanzagenda-desktop.svg';
-
 /**
  * Note: The width requirement for the header component results in a visual overflow in Storybook docs.
  */
@@ -39,32 +36,8 @@ export default {
             width: 100%;
             box-sizing: border-box;
           }
-          .logo-svg svg {
+          .logo-svg {
             height: 32px;
-          }
-          /* LG styles */
-          @media (min-width: 1024px) {
-            .logo-svg svg {
-              height: 56px;
-            }
-          }
-
-          /* MD styles */
-          @media (max-width: 1023px) and (min-width: 768px) {
-            .logo-svg svg {
-              height: 48px;
-            }
-            .top-right {
-              display: flex;
-              gap: 48px;
-            }
-          }
-
-          /* SM styles */
-          @media (max-width: 767px) {
-            .logo-svg svg {
-              height: 32px;
-            }
           }
           .top,
           .bottom {
@@ -76,10 +49,44 @@ export default {
           }
           .bottom {
             align-items: end;
+            padding-top: 12px;
           }
           .top-left {
             display: flex;
             flex-shrink: 1;
+          }
+          .bottom-left {
+            margin-left: -16px;
+          }
+          .bottom-end::part(base) {
+            padding-right: 0;
+          }
+          .nav-icon {
+            margin: -1.5px -4px;
+          }
+          /* LG styles */
+          @media (min-width: 1024px) {
+            .logo-svg {
+              height: 56px;
+            }
+          }
+
+          /* MD styles */
+          @media (max-width: 1023px) and (min-width: 768px) {
+            .logo-svg {
+              height: 48px;
+            }
+            .top-right {
+              display: flex;
+              gap: 48px;
+            }
+          }
+
+          /* SM styles */
+          @media (max-width: 767px) {
+            .logo-svg {
+              height: 32px;
+            }
           }</style
         >${story()}`
   ] as unknown
@@ -119,6 +126,52 @@ export const Fixed = {
   }
 };
 
+/* Sample Header with Inner Width Set */
+export const InnerWidth = {
+  parameters: {
+    controls: {
+      exclude: ['default']
+    }
+  },
+  render: (args: any) => {
+    return html` <div
+      style="height: 100px; --sd-header-padding-x:8px; --sd-header-padding-top:0; --sd-header-padding-bottom:0; --sd-header-inner-width: 1024px;"
+    >
+      ${generateTemplate({
+        args,
+        constants: [
+          {
+            type: 'slot',
+            name: 'default',
+            value: `<div class="top">
+            <div class="top-left">
+            <img class='logo-svg' src='./placeholders/logo-ui-lg.svg' alt='Logo'/>
+            </div>
+            <div class="top-right">
+            <img class='logo-svg' src='./placeholders/logo-fa-lg.svg' alt='Logo'/>
+            </div>
+          </div>
+          <div class="bottom">
+            <div class="bottom-left">
+              <sd-navigation-item><b>Ausgangspunkt</b></sd-navigation-item><sd-navigation-item><b>Standpunkt</b></sd-navigation-item
+              ><sd-navigation-item><b>Auf den Punkt</b></sd-navigation-item><sd-navigation-item><b>Treffpunkt</b></sd-navigation-item>
+            </div>
+            <div class="bottom-right">
+              <sd-navigation-item>
+                <sd-icon name="system/website" library="global-resources" class="text-xl nav-icon"></sd-icon>
+              </sd-navigation-item>
+              <sd-navigation-item>
+                <sd-icon name="system/magnifying-glass" library="global-resources" class="text-xl nav-icon"></sd-icon>
+              </sd-navigation-item>
+            </div>
+          </div>`
+          }
+        ]
+      })}
+    </div>`;
+  }
+};
+
 /* Sample Header responsive – variant A - 01 */
 export const ResponsiveSample = {
   parameters: {
@@ -128,7 +181,7 @@ export const ResponsiveSample = {
   },
   render: (args: any) => {
     return html`<div
-      style="height: 100px; --sd-header-padding-x:8px; --sd-header-padding-top:0; --sd-header-padding-bottom:0;"
+      style="height: 100px; --sd-header-padding-x:0; --sd-header-padding-top:0; --sd-header-padding-bottom:0;"
     >
       <style>
         .bottom {
@@ -159,7 +212,7 @@ export const ResponsiveSample = {
             name: 'default',
             value: `<div class="top">
             <div class="top-left">
-              <sd-include class="logo-svg" src=${LOGO_UI}></sd-include>
+            <img class='logo-svg' src='./placeholders/logo-ui-lg.svg' alt='Logo'/>
             </div>
             <div class="top-right">
               <sd-navigation-item>
@@ -169,22 +222,22 @@ export const ResponsiveSample = {
           </div>
           <div class="bottom">
             <div class="bottom-left">
-              <sd-navigation-item>Über Uns</sd-navigation-item><sd-navigation-item>Märkte</sd-navigation-item
-              ><sd-navigation-item>Presseservice</sd-navigation-item
-              ><sd-navigation-item>Nachhaltigkeit</sd-navigation-item><sd-navigation-item>Karriere</sd-navigation-item>
+              <sd-navigation-item><b>Über Uns</b></sd-navigation-item><sd-navigation-item><b>Märkte</b></sd-navigation-item
+              ><sd-navigation-item><b>Presseservice</b></sd-navigation-item
+              ><sd-navigation-item><b>Nachhaltigkeit</b></sd-navigation-item><sd-navigation-item><b>Karriere</b></sd-navigation-item>
             </div>
             <div class="bottom-right">
               <sd-navigation-item>
-                <sd-icon name="system/website" library="global-resources" class="text-xl"></sd-icon>
+                <sd-icon name="system/website" library="global-resources" class="text-xl nav-icon"></sd-icon>
               </sd-navigation-item>
               <sd-navigation-item>
-                <sd-icon name="system/magnifying-glass" library="global-resources" class="text-xl"></sd-icon>
+                <sd-icon name="system/magnifying-glass" library="global-resources" class="text-xl nav-icon"></sd-icon>
               </sd-navigation-item>
               <sd-navigation-item>
-                <sd-icon name="system/profile" library="global-resources" class="text-xl"></sd-icon>Mein Depot
+                <sd-icon name="system/profile" library="global-resources" class="text-xl mr-2"></sd-icon>Mein Depot
               </sd-navigation-item>
-              <sd-navigation-item>
-                <sd-icon name="system/lock-locked" library="global-resources" class="text-xl"></sd-icon>Meine Bewerbung
+              <sd-navigation-item class="bottom-end">
+                <sd-icon name="system/lock-locked" library="global-resources" class="text-xl mr-2"></sd-icon>Meine Bewerbung
               </sd-navigation-item>
             </div>
           </div>`
@@ -204,7 +257,7 @@ export const LargeViewportSample = {
   },
   render: (args: any) => {
     return html`<div
-      style="height: 100px; --sd-header-padding-x:8px; --sd-header-padding-top:0; --sd-header-padding-bottom:0;"
+      style="height: 100px; --sd-header-padding-x:0; --sd-header-padding-top:0; --sd-header-padding-bottom:0;"
     >
       ${generateTemplate({
         args,
@@ -215,23 +268,23 @@ export const LargeViewportSample = {
             value: `
           <div class="top">
             <div class="top-left">
-              <sd-include class="logo-svg" src=${LOGO_UI}></sd-include>
+            <img class='logo-svg' src='./placeholders/logo-ui-lg.svg' alt='Logo'/>
             </div>
             <div class="top-right">
-              <sd-include class="logo-svg" src=${LOGO_FINANZ}></sd-include>
+            <img class='logo-svg' src='./placeholders/logo-fa-lg.svg' alt='Logo'/>
             </div>
           </div>
           <div class="bottom">
             <div class="bottom-left">
-              <sd-navigation-item>Ausgangspunkt</sd-navigation-item><sd-navigation-item>Standpunkt</sd-navigation-item
-              ><sd-navigation-item>Auf den Punkt</sd-navigation-item><sd-navigation-item>Treffpunkt</sd-navigation-item>
+              <sd-navigation-item><b>Ausgangspunkt</b></sd-navigation-item><sd-navigation-item><b>Standpunkt</b></sd-navigation-item
+              ><sd-navigation-item><b>Auf den Punkt</b></sd-navigation-item><sd-navigation-item><b>Treffpunkt</b></sd-navigation-item>
             </div>
             <div class="bottom-right">
               <sd-navigation-item>
-                <sd-icon name="system/website" library="global-resources" class="text-xl"></sd-icon>
+                <sd-icon name="system/website" library="global-resources" class="text-xl nav-icon"></sd-icon>
               </sd-navigation-item>
               <sd-navigation-item>
-                <sd-icon name="system/magnifying-glass" library="global-resources" class="text-xl"></sd-icon>
+                <sd-icon name="system/magnifying-glass" library="global-resources" class="text-xl nav-icon"></sd-icon>
               </sd-navigation-item>
             </div>
           </div>
@@ -253,7 +306,7 @@ export const MediumViewportSample = {
   },
   render: (args: any) => {
     return html`<div
-      style="height: 100px; --sd-header-padding-x:8px; --sd-header-padding-top:0; --sd-header-padding-bottom:0;"
+      style="height: 100px; --sd-header-padding-x:0; --sd-header-padding-top:0; --sd-header-padding-bottom:0;"
     >
       ${generateTemplate({
         args,
@@ -264,12 +317,12 @@ export const MediumViewportSample = {
             value: `
           <div class="top">
             <div class="top-left">
-              <sd-include class="logo-svg" src=${LOGO_UI}></sd-include>
+            <img class='logo-svg' src='./placeholders/logo-ui-md.svg' alt='Logo'/>
             </div>
             <div style="display:flex; align-items:end; gap:48px;">
-              <sd-include class="logo-svg" src=${LOGO_FINANZ}></sd-include>
+            <img class='logo-svg' src='./placeholders/logo-fa-lg.svg' alt='Logo'/>
               <sd-navigation-item>
-                <sd-icon name="system/menu" library="global-resources" class="text-xl"></sd-icon>
+                <sd-icon name="system/menu" library="global-resources" class="text-xl nav-icon"></sd-icon>
               </sd-navigation-item>
             </div>
           </div>
@@ -293,7 +346,7 @@ export const SmallViewportSample = {
   },
   render: (args: any) => {
     return html`<div
-      style="height: 100px; --sd-header-padding-x:8px; --sd-header-padding-top:0; --sd-header-padding-bottom:0;"
+      style="height: 100px; --sd-header-padding-x:0; --sd-header-padding-top:0; --sd-header-padding-bottom:0;"
     >
       ${generateTemplate({
         args,
@@ -304,11 +357,11 @@ export const SmallViewportSample = {
             value: `
         <div class="top">
           <div class="top-left">
-            <sd-include class="logo-svg" src=${LOGO_UI}></sd-include>
+          <img class='logo-svg' src='./placeholders/logo-ui-sm.svg' alt='Logo'/>
           </div>
-          <div style="display:flex;">
+          <div>
             <sd-navigation-item>
-              <sd-icon name="system/menu" library="global-resources" class="text-xl"></sd-icon>
+              <sd-icon name="system/menu" library="global-resources" class="text-xl nav-icon"></sd-icon>
             </sd-navigation-item>
           </div>
         </div>
