@@ -1,3 +1,48 @@
+# [@solid-design-system/components-v1.21.0](https://github.com/solid-design-system/solid/compare/components/1.20.0...components/1.21.0) (2023-11-08)
+
+
+### Features
+
+* ✨ update all dependencies ([#523](https://github.com/solid-design-system/solid/issues/523)) ([a7f1b95](https://github.com/solid-design-system/solid/commit/a7f1b958bfe3764f2a35ad3c9be8d991bb1354d2))
+
+### 📈 Stats
+* Bundle size (uncompressed): 170 KB (unchanged)
+* Bundle size (gzipped): 45 KB (unchanged)
+
+# [@solid-design-system/components-v1.20.0](https://github.com/solid-design-system/solid/compare/components/1.19.0...components/1.20.0) (2023-10-27)
+
+
+### Features
+
+* ✨sd-radio & sd-radio-group  ([#442](https://github.com/solid-design-system/solid/issues/442)) ([0d43359](https://github.com/solid-design-system/solid/commit/0d4335911e67e60a7cf63afaa4a9f8c472f4dee9))
+
+### 📈 Stats
+* Bundle size (uncompressed): 170 KB (+16 KB / +10%)
+* Bundle size (gzipped): 45 KB (+3 KB / +7%)
+
+# [@solid-design-system/components-v1.19.0](https://github.com/solid-design-system/solid/compare/components/1.18.1...components/1.19.0) (2023-10-26)
+
+
+### Features
+
+* ✨ sd-video ([#451](https://github.com/solid-design-system/solid/issues/451)) ([0b98b47](https://github.com/solid-design-system/solid/commit/0b98b47f5850f99607a96c7f746586220e2b5b4a))
+
+### 📈 Stats
+* Bundle size (uncompressed): 154 KB (+4 KB / +3%)
+* Bundle size (gzipped): 42 KB (+1 KB / +2%)
+
+# [@solid-design-system/components-v1.18.1](https://github.com/solid-design-system/solid/compare/components/1.18.0...components/1.18.1) (2023-10-13)
+
+
+### Bug Fixes
+
+* 🤔 added part selector to accordion content slot. ([#454](https://github.com/solid-design-system/solid/issues/454)) ([2d3ed01](https://github.com/solid-design-system/solid/commit/2d3ed01099648e6868e44a201992c7f3251959bb))
+* add new start icon ([#470](https://github.com/solid-design-system/solid/issues/470)) ([728fcf3](https://github.com/solid-design-system/solid/commit/728fcf358d4e0a4383ef75b9fed32e1376d06ae6))
+
+### 📈 Stats
+* Bundle size (uncompressed): 150 KB (unchanged)
+* Bundle size (gzipped): 41 KB (unchanged)
+
 # [@solid-design-system/components-v1.18.0](https://github.com/solid-design-system/solid/compare/components/1.17.0...components/1.18.0) (2023-10-10)
 
 
