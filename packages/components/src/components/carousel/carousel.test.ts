@@ -295,7 +295,7 @@ describe('<sd-carousel>', () => {
           const nextButton: HTMLElement = el.shadowRoot!.querySelector('#carousel__navigation-button--next')!;
           sinon.stub(el, 'next');
           el.goToSlide(2, 'auto');
-          await oneEvent(el.scrollContainer, 'scrollend');
+          await oneEvent(el.scrollContainer, 'scrollend', false);
           await el.updateComplete;
           // Act
           await clickOnElement(nextButton);
@@ -347,7 +347,7 @@ describe('<sd-carousel>', () => {
 
       // Go to the second slide so that the previous button will be enabled
       el.goToSlide(1, 'auto');
-      await oneEvent(el.scrollContainer, 'scrollend');
+      await oneEvent(el.scrollContainer, 'scrollend', false);
       await el.updateComplete;
 
       const previousButton: HTMLElement = el.shadowRoot!.querySelector('#carousel__navigation-button--previous')!;
@@ -398,9 +398,9 @@ describe('<sd-carousel>', () => {
           // Act
           await clickOnElement(previousButton);
           // wait first scroll to clone
-          await oneEvent(el.scrollContainer, 'scrollend');
+          await oneEvent(el.scrollContainer, 'scrollend', false);
           // wait scroll to actual item
-          await oneEvent(el.scrollContainer, 'scrollend');
+          await oneEvent(el.scrollContainer, 'scrollend', false);
           // Assert
           expect(previousButton).to.have.attribute('aria-disabled', 'false');
           expect(el.activeSlide).to.be.equal(2);
@@ -464,7 +464,7 @@ describe('<sd-carousel>', () => {
 
         // Act
         el.goToSlide(2);
-        await oneEvent(el.scrollContainer, 'scrollend');
+        await oneEvent(el.scrollContainer, 'scrollend', false);
         await el.updateComplete;
 
         // Assert
