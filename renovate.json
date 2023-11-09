@@ -6,15 +6,11 @@
   "packageRules": [
     {
       "matchUpdateTypes": ["minor", "patch"],
-      "matchCurrentVersion": "!/^0/",
+      "matchCurrentVersion": ">= 1.0.0",
       "automerge": true
     },
     {
-      "matchDepTypes": ["devDependencies"],
-      "automerge": true
-    },
-    {
-      "matchDepNames": ["node", "pnpm", "nx"],
+      "matchDepNames": ["node", "pnpm"],
       "enabled": false
     },
     {
@@ -27,7 +23,10 @@
   ],
   "lockFileMaintenance": {
     "enabled": true,
-    "automerge": true
+    "automerge": false
+  },
+  "major": {
+    "automerge": false
   },
   "prConcurrentLimit": 10,
   "automergeType": "pr",

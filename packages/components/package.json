@@ -1,7 +1,7 @@
 {
   "name": "@solid-design-system/components",
   "description": "Solid Design System: Components",
-  "version": "1.18.1",
+  "version": "1.20.0",
   "homepage": "https://solid-design-system.fe.union-investment.de/x.x.x/storybook/",
   "author": {
     "name": "Union Investment"
@@ -106,11 +106,12 @@
     "@storybook/web-components-vite": "^7.3.2",
     "@types/mocha": "^10.0.1",
     "@types/sinon": "^10.0.15",
-    "@web/test-runner": "^0.16.1",
+    "@web/test-runner": "^0.17.0",
     "@web/test-runner-commands": "^0.8.0",
     "@web/test-runner-playwright": "^0.10.1",
     "autoprefixer": "^10.4.14",
     "cem-plugin-vs-code-custom-data-generator": "^1.4.1",
+    "chroma-js": "^2.4.2",
     "chromatic": "^6.18.2",
     "comment-parser": "^1.3.1",
     "cssnano": "^6.0.1",
@@ -153,7 +154,7 @@
       [
         "@semantic-release/changelog",
         {
-          "changelogFile": "src/docs/General/Changelog.mdx"
+          "changelogFile": "CHANGELOG.md"
         }
       ],
       [
@@ -167,7 +168,7 @@
         {
           "message": "chore(release/components): ${nextRelease.version} [skip actions]\n\n${nextRelease.notes}",
           "assets": [
-            "src/docs/General/Changelog.mdx",
+            "CHANGELOG.md",
             "package.json"
           ]
         }
@@ -177,20 +178,14 @@
         {
           "successComment": false
         }
-      ],
-      [
-        "@semantic-release/exec",
-        {
-          "publishCmd": "./prepare-changelog.sh"
-        }
       ]
     ]
   },
   "readme": "README.md",
   "meta": {
     "bundleSizeInKb": {
-      "uncompressed": 150,
-      "gzip": 41
+      "uncompressed": 170,
+      "gzip": 45
     }
   }
 }
