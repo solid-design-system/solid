@@ -32,6 +32,16 @@ pnpm dev
 
 These steps will install the necessary dependencies, navigate to the "packages/components" directory, and start the development server. You can now take a look at our existing components or begin working on new ones.
 
+### Helpful Commands
+
+```
+$ pnpm fix           // fix all formatting and linting in repo
+$ pnpm verify        // run tests and builds in repo
+$ cd packages/components
+  && pnpm dev        // start dev server
+  && pnpm test       // run tests
+```
+
 ## Contributing
 
 We welcome contributions from the community! If you'd like to contribute to any of the packages or improve the Solid Design System, please follow our contribution guidelines provided in this repository.

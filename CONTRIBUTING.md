@@ -4,13 +4,17 @@
 
 - [Functionality & Integration](#functionality--integration)
 - [How We Work](#how-we-work)
+  - [Milestones](#milestones)
 - [Development Guidelines](#development-guidelines)
+  - [Guide on `//TODOs`](#guide-on-todos)
+- [Adding Dependecies](#adding-dependecies)
 - [Migration Guides](#migration-guides)
 - [Pull Requests](#pull-requests)
+  - [Assignees and Reviewers](#assignees-and-reviewers)
   - [Commit Messages](#commit-messages)
   - [Squash and Merge Your Changes](#squash-and-merge-your-changes)
-- [Quick Start](#quick-start)
-  - [Helpful Commands](#helpful-commands)
+  - [Tests](#tests)
+- [Working with feature branches](#working-with-feature-branches)
 
 ## Functionality & Integration
 
@@ -131,16 +135,6 @@ Always perform a Squash and Merge when merging. This keeps the Git history clean
 ### Tests
 
 You can take a look at tests on Github. Users might be required to log in to [Chromatic](https://www.chromatic.com/). Make sure to login using your GitHub account to avoid any errors and access the checks related to the Pull Request.
-
-### Helpful Commands
-
-```
-$ pnpm fix           // fix all formatting and linting in repo
-$ pnpm verify        // run tests and builds in repo
-$ cd packages/components
-  && pnpm dev        // start dev server
-  && pnpm test       // run tests
-```
 
 ## Working with feature branches
 
