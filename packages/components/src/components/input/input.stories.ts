@@ -52,7 +52,7 @@ export const Default = {
  */
 
 export const Labels = {
-  args: overrideArgs([{ type: 'attribute', name: 'label', value: 'My Solid Input' }]),
+  args: overrideArgs([{ type: 'attribute', name: 'label', value: 'Label' }]),
   render: (args: any) => {
     return html`
       <div class="w-[231px]">
@@ -136,7 +136,10 @@ export const TogglePassword = {
       <div class="w-[231px]">
         ${generateTemplate({
           args,
-          constants: [{ type: 'attribute', name: 'password-toggle', value: true }]
+          constants: [
+            { type: 'attribute', name: 'password-toggle', value: true },
+            { type: 'attribute', name: 'label', value: 'Password' }
+          ]
         })}
       </div>
     `;
@@ -235,7 +238,7 @@ export const Sizes = {
 export const Validation = {
   parameters: {
     controls: {
-      include: ['clearable']
+      include: ['clearable', 'disabled']
     }
   },
   render: (args: any) => {
