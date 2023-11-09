@@ -14,6 +14,24 @@ The placeholder package provides placeholder images that can be used alongside t
 
 ### 3. Tokens
 
-The tokens package contains all the design tokens used in the Solid Design System. 
+The tokens package contains all the design tokens used in the Solid Design System.
 
+## Quick Start
 
+To get started with the code steps, follow these instructions:
+
+We use `pnpm` package manager, so make sure to have it installed globally before you start.
+
+- https://pnpm.io/installation
+
+```
+pnpm i
+cd packages/components
+pnpm dev
+```
+
+These steps will install the necessary dependencies, navigate to the "packages/components" directory, and start the development server. You can now take a look at our existing components or begin working on new ones.
+
+## Contributing
+
+We welcome contributions from the community! If you'd like to contribute to any of the packages or improve the Solid Design System, please follow our contribution guidelines provided in this repository.

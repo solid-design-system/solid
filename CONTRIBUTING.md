@@ -132,22 +132,6 @@ Always perform a Squash and Merge when merging. This keeps the Git history clean
 
 You can take a look at tests on Github. Users might be required to log in to [Chromatic](https://www.chromatic.com/). Make sure to login using your GitHub account to avoid any errors and access the checks related to the Pull Request.
 
-## Quick Start
-
-To get started with the code steps, follow these instructions:
-
-Install `pnpm` package manager globally.
-
-- https://pnpm.io/installation
-
-```
-pnpm i
-cd packages/components
-pnpm dev
-```
-
-These steps will install the necessary dependencies, navigate to the "packages/components" directory, and start the development server. You can now begin working on the components.
-
 ### Helpful Commands
 
 ```
