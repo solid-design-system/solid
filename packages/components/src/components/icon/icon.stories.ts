@@ -9,13 +9,13 @@ const { generateTemplate } = storybookTemplate('sd-icon');
 
 /**
  * ## Colors
- * Per default icons inherit their color from the current text color. Thus, you can set the color property on the <sl-icon> element or an ancestor to change the color.
+ * Per default icons inherit their color from the current text color. Thus, you can set the color property on the <sd-icon> element or an ancestor to change the color.
  *
  * ## Sizes
  * Icons are sized relative to the current font size. To change their size, set the font-size property on the icon itself or on a parent element as shown below.
  *
  * ## Libraries
- * You can register additional icons to use with the <sl-icon> component through icon libraries. Icon files can exist locally or on a CORS-enabled endpoint (e.g. a CDN). There is no limit to how many icon libraries you can register and there is no cost associated with registering them, as individual icons are only requested when they're used.
+ * You can register additional icons to use with the <sd-icon> component through icon libraries. Icon files can exist locally or on a CORS-enabled endpoint (e.g. a CDN). There is no limit to how many icon libraries you can register and there is no cost associated with registering them, as individual icons are only requested when they're used.
  * Solid will ship with two built-in icon libraries, default and system. The default icon library contains all of the icons by Union Investment's Design System. The system icon library contains only a small subset of icons that are used internally by Solid components.
  *
  * To register an additional icon library, use the `registerIconLibrary()` function that's exported from `utilities/icon-library.js`. At a minimum, you must provide a name and a resolver function. The resolver function translates an icon name to a URL where the corresponding SVG file exists. Refer to the examples below to better understand how it works.
@@ -51,11 +51,11 @@ const { generateTemplate } = storybookTemplate('sd-icon');
  *
  * Please have in mind, that you have to make sure that `window['Solid Components']` is available before you call `registerIconLibrary()` e. g. via polling or similar.
  *
- * To display an icon, set the library and name attributes of an <sl-icon> element.
+ * To display an icon, set the library and name attributes of an <sd-icon> element.
  *
  * ```html
  * <!-- This will show the icon located at /assets/icons/smile.svg -->
- * <sl-icon library="my-icons" name="smile"></sl-icon>
+ * <sd-icon library="my-icons" name="smile"></sd-icon>
  * ```
  *
  * You can even version your icon libraries:
