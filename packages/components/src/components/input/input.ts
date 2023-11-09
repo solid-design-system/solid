@@ -588,7 +588,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                       @click=${this.handlePasswordToggle}
                       tabindex="-1"
                     >
-                      ${this.passwordVisible // TODO: The following icons do not yet exist, do we comment out or delete?
+                      ${this.passwordVisible
                         ? html`
                             <slot name="show-password-icon"
                               ><sd-icon
@@ -628,7 +628,6 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                   `
                 : ''
             }
-            <!-- TODO: How are the "success" styles supposed to work? Is this sufficient? -->
             ${
               isValid
                 ? html`
