@@ -554,12 +554,13 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               @focus=${this.handleFocus}
               @blur=${this.handleBlur}
             >
+            <!-- TODO: substitute text-neutral-400 for text-neutral-500 when available -->
             ${
               hasClearIcon
                 ? html`
                     <button
                       part="clear-button"
-                      class=${cx('input__clear flex justify-center', iconMarginLeft)}
+                      class=${cx('input__clear flex justify-center text-neutral-500', iconMarginLeft)}
                       type="button"
                       aria-label=${this.localize.term('clearEntry')}
                       @click=${this.handleClearClick}
@@ -728,7 +729,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
         display: none;
       }
 
-      /* Hides calendar picker for date type. Does not work in Firefox! */
+      /* Hides calendar picker for datetime-local type. Does not work in Firefox! */
       input[type='datetime-local']::-webkit-calendar-picker-indicator {
         display: none;
       }
