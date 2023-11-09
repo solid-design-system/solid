@@ -116,8 +116,6 @@ const versionIdeData = () => {
   // Write updated data back to the files
   fs.writeFileSync(dataFilePathHtml, JSON.stringify(dataHtml, null, 2));
   console.log(`📦 Versioned HTML data (${packageJson.version}) created in vscode.html-custom-data.json`);
-  fs.writeFileSync(dataFilePathWeb, JSON.stringify(dataWeb, null, 2));
-  console.log(`📦 Versioned web data (${packageJson.version}) created in web-types.json`);
 };
 
 versionComponents('components/es', 'versioned-components/es');
