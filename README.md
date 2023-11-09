@@ -35,3 +35,7 @@ These steps will install the necessary dependencies, navigate to the "packages/c
 ## Contributing
 
 We welcome contributions from the community! If you'd like to contribute to any of the packages or improve the Solid Design System, please follow our [contribution guidelines](CONTRIBUTING.md) provided in this repository.
+
+## License
+
+This repository is licensed under MIT, except the fonts, icons and images, which are licensed under their respective licenses. Read the [full license](./packages/components/LICENSE.md) for more information.
