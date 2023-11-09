@@ -58,8 +58,8 @@ export default {
           .bottom-left {
             margin-left: -16px;
           }
-          .bottom-end::part(base) {
-            padding-right: 0;
+          .bottom-end {
+            margin-right: -16px;
           }
           .nav-icon {
             margin: -1.5px -4px;
@@ -126,52 +126,6 @@ export const Fixed = {
   }
 };
 
-/* Sample Header with Inner Width Set */
-export const InnerWidth = {
-  parameters: {
-    controls: {
-      exclude: ['default']
-    }
-  },
-  render: (args: any) => {
-    return html` <div
-      style="height: 100px; --sd-header-padding-x:8px; --sd-header-padding-top:0; --sd-header-padding-bottom:0; --sd-header-inner-width: 1024px;"
-    >
-      ${generateTemplate({
-        args,
-        constants: [
-          {
-            type: 'slot',
-            name: 'default',
-            value: `<div class="top">
-            <div class="top-left">
-            <img class='logo-svg' src='./placeholders/logo-ui-lg.svg' alt='Logo'/>
-            </div>
-            <div class="top-right">
-            <img class='logo-svg' src='./placeholders/logo-fa-lg.svg' alt='Logo'/>
-            </div>
-          </div>
-          <div class="bottom">
-            <div class="bottom-left">
-              <sd-navigation-item><b>Ausgangspunkt</b></sd-navigation-item><sd-navigation-item><b>Standpunkt</b></sd-navigation-item
-              ><sd-navigation-item><b>Auf den Punkt</b></sd-navigation-item><sd-navigation-item><b>Treffpunkt</b></sd-navigation-item>
-            </div>
-            <div class="bottom-right">
-              <sd-navigation-item>
-                <sd-icon name="system/website" library="global-resources" class="text-xl nav-icon"></sd-icon>
-              </sd-navigation-item>
-              <sd-navigation-item>
-                <sd-icon name="system/magnifying-glass" library="global-resources" class="text-xl nav-icon"></sd-icon>
-              </sd-navigation-item>
-            </div>
-          </div>`
-          }
-        ]
-      })}
-    </div>`;
-  }
-};
-
 /* Sample Header responsive – variant A - 01 */
 export const ResponsiveSample = {
   parameters: {
@@ -181,9 +135,38 @@ export const ResponsiveSample = {
   },
   render: (args: any) => {
     return html`<div
-      style="height: 100px; --sd-header-padding-x:0; --sd-header-padding-top:0; --sd-header-padding-bottom:0;"
+      style="height: 100px; --sd-header-inner-max-width: 1456px; --sd-header-padding-top:24px; --sd-header-padding-bottom:0;"
     >
       <style>
+        :root {
+          --sd-header-padding-top: 24px;
+          --sd-header-padding-x: 16px; /* Default padding for mobile view */
+        }
+
+        @media (min-width: 375px) {
+          :root {
+            --sd-header-padding-x: 8px; /* Padding for screens from 375 to 1024 */
+          }
+        }
+
+        @media (min-width: 1024px) {
+          :root {
+            --sd-header-padding-x: 24px; /* Padding for screens from 1024 to 1280 */
+          }
+        }
+
+        @media (min-width: 1280px) {
+          :root {
+            --sd-header-padding-x: 32px; /* Padding for screens from 1280 to 1440 */
+          }
+        }
+
+        @media (min-width: 1440px) {
+          :root {
+            --sd-header-padding-x: 48px; /* Padding for screens from 1440 and larger */
+          }
+        }
+
         .bottom {
           display: none;
         }
@@ -191,7 +174,7 @@ export const ResponsiveSample = {
           display: flex;
         }
 
-        @media (min-width: 1024px) {
+        @media (min-width: 1280px) {
           .bottom {
             display: flex;
           }
@@ -226,7 +209,7 @@ export const ResponsiveSample = {
               ><sd-navigation-item><b>Presseservice</b></sd-navigation-item
               ><sd-navigation-item><b>Nachhaltigkeit</b></sd-navigation-item><sd-navigation-item><b>Karriere</b></sd-navigation-item>
             </div>
-            <div class="bottom-right">
+            <div class="bottom-end">
               <sd-navigation-item>
                 <sd-icon name="system/website" library="global-resources" class="text-xl nav-icon"></sd-icon>
               </sd-navigation-item>
@@ -236,7 +219,7 @@ export const ResponsiveSample = {
               <sd-navigation-item>
                 <sd-icon name="system/profile" library="global-resources" class="text-xl mr-2"></sd-icon>Mein Depot
               </sd-navigation-item>
-              <sd-navigation-item class="bottom-end">
+              <sd-navigation-item>
                 <sd-icon name="system/lock-locked" library="global-resources" class="text-xl mr-2"></sd-icon>Meine Bewerbung
               </sd-navigation-item>
             </div>
@@ -257,7 +240,7 @@ export const LargeViewportSample = {
   },
   render: (args: any) => {
     return html`<div
-      style="height: 100px; --sd-header-padding-x:0; --sd-header-padding-top:0; --sd-header-padding-bottom:0;"
+      style="height: 116px; --sd-header-padding-x:32px; --sd-header-padding-top:24px; --sd-header-padding-bottom:0;"
     >
       ${generateTemplate({
         args,
@@ -306,7 +289,7 @@ export const MediumViewportSample = {
   },
   render: (args: any) => {
     return html`<div
-      style="height: 100px; --sd-header-padding-x:0; --sd-header-padding-top:0; --sd-header-padding-bottom:0;"
+      style="height: 100px; --sd-header-padding-x:24px; --sd-header-padding-top:24px; --sd-header-padding-bottom:24px;"
     >
       ${generateTemplate({
         args,
@@ -345,9 +328,7 @@ export const SmallViewportSample = {
     }
   },
   render: (args: any) => {
-    return html`<div
-      style="height: 100px; --sd-header-padding-x:0; --sd-header-padding-top:0; --sd-header-padding-bottom:0;"
-    >
+    return html`<div style="height: 100px; --sd-header-padding-top:8px; --sd-header-padding-bottom:8px;">
       ${generateTemplate({
         args,
         constants: [
