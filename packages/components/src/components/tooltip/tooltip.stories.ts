@@ -151,7 +151,20 @@ export const LongContent = {
           padding-right: 8px;
         }
         .long-content {
-          padding-right: 8px;
+          padding-right: 4px;
+        }
+        .long-content::-webkit-scrollbar {
+          width: 4px;
+          height: 8px; /* for making the scrollbar's height smaller */
+        }
+
+        .long-content::-webkit-scrollbar-thumb {
+          background-color: transparent; /* make scrollbar transparent */
+          border-radius: 4px;
+        }
+
+        .long-content:hover::-webkit-scrollbar-thumb {
+          background-color: #888; /* change color when hovering over the container */
         }
       </style>
       ${generateTemplate({
