@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v1.21.1](https://github.com/solid-design-system/solid/compare/components/1.21.0...components/1.21.1) (2023-11-09)
+
+
+### Bug Fixes
+
+* 🤔 Typo -> sl-icon ([#525](https://github.com/solid-design-system/solid/issues/525)) ([1c2e363](https://github.com/solid-design-system/solid/commit/1c2e3639b7c33cc87fb8cbda36b2c6aa0b8c4959))
+
+### 📈 Stats
+* Bundle size (uncompressed): 170 KB (unchanged)
+* Bundle size (gzipped): 45 KB (unchanged)
+
 # [@solid-design-system/components-v1.21.0](https://github.com/solid-design-system/solid/compare/components/1.20.0...components/1.21.0) (2023-11-08)
 
 
