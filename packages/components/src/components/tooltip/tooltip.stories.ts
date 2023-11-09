@@ -137,7 +137,7 @@ export const Disabled = {
 };
 
 /**
- * In case of having the content longer than the space available, the tooltip can be set to scrollable by overriding the `pointer-events` property to auto. This behavior is heavily discouraged, but it is available in case of need.
+ * In case of having the content longer than the space available, the tooltip can be set to scrollable by overriding the `pointer-events` property to auto. In this case the padding-right should also be adjusted via `sd-tooltip::part(body)`. This behavior is heavily discouraged, but it is available in case of need.
  *
  */
 export const LongContent = {
@@ -145,39 +145,49 @@ export const LongContent = {
     controls: { exclude: 'content' }
   },
   render: () => {
-    return generateTemplate({
-      axis: {
-        x: {
-          type: 'slot',
-          name: 'content',
-          values: [
-            {
-              value: `<div slot='content' style='pointer-events:auto; width:100px;'>Lorem ipsum sic semper dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl quis ultrices aliquam, nunc nisl aliquet nunc, quis aliquam nisl nisl quis nisl. Nulla euismod, nisl quis ultrices aliquam, nunc nisl aliquet nunc, quis aliquam nisl nisl quis nisl. Lorem ipsum sic semper dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl quis ultrices aliquam, nunc nisl aliquet nunc, quis aliquam nisl nisl quis nisl. Nulla euismod, nisl quis ultrices aliquam, nunc nisl aliquet nunc, quis aliquam nisl nisl quis nisl.</div>`,
-              title: 'long with fixed width'
-            }
-          ]
+    return html` <div>
+      <style>
+        sd-tooltip::part(body) {
+          padding-right: 8px;
         }
-      },
-      args: overrideArgs([
-        {
-          type: 'attribute',
-          name: 'open',
-          value: true
+        .long-content {
+          padding-right: 8px;
+        }
+      </style>
+      ${generateTemplate({
+        axis: {
+          x: {
+            type: 'slot',
+            name: 'content',
+            values: [
+              {
+                value: `<div class='long-content' slot='content' style='pointer-events:auto; width: 100px;'>Lorem ipsum sic semper dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl quis ultrices aliquam, nunc nisl aliquet nunc, quis aliquam nisl nisl quis nisl. Nulla euismod, nisl quis ultrices aliquam, nunc nisl aliquet nunc, quis aliquam nisl nisl quis nisl. Lorem ipsum sic semper dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl quis ultrices aliquam, nunc nisl aliquet nunc, quis aliquam nisl nisl quis nisl. Nulla euismod, nisl quis ultrices aliquam, nunc nisl aliqu et nunc, quis ali qu am nisl nisl quis nisl.</div>`,
+                title: 'long with fixed width'
+              }
+            ]
+          }
         },
-        {
-          type: 'attribute',
-          name: 'placement',
-          value: 'bottom'
-        }
-      ]),
-      constants: [
-        {
-          type: 'template',
-          name: 'width',
-          value: '<div class="template-position">%TEMPLATE%</div>'
-        }
-      ]
-    });
+        args: overrideArgs([
+          {
+            type: 'attribute',
+            name: 'open',
+            value: true
+          },
+          {
+            type: 'attribute',
+            name: 'placement',
+            value: 'bottom'
+          }
+        ]),
+        constants: [
+          {
+            type: 'template',
+            name: 'width',
+            value: '<div class="template-position">%TEMPLATE%</div>'
+          }
+        ]
+      })}
+    </div>`;
   }
 };
 
