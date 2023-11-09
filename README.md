@@ -1,18 +1,18 @@
 # Solid Design System Monorepo
 
-This monorepo houses the components, placeholder images, and design tokens for the Solid Design System.
+Monorepo for Union Investment's Solid Design System.
 
 ## Packages
 
-### 1. Solid
+**1. Solid**
 
 The solid package contains all the components that make up the Solid Design System.
 
-### 2. Placeholder
+**2. Placeholder**
 
 The placeholder package provides placeholder images that can be used alongside the Solid Design System components during development and prototyping.
 
-### 3. Tokens
+**3. Tokens**
 
 The tokens package contains all the design tokens used in the Solid Design System.
 
@@ -44,4 +44,8 @@ $ cd packages/components
 
 ## Contributing
 
-We welcome contributions from the community! If you'd like to contribute to any of the packages or improve the Solid Design System, please follow our contribution guidelines provided in this repository.
+We welcome contributions from the community! If you'd like to contribute to any of the packages or improve the Solid Design System, please follow our [contribution guidelines](CONTRIBUTING.md) provided in this repository.
+
+## License
+
+This repository is licensed under MIT, except the fonts, icons and images, which are licensed under their respective licenses. Read the [full license](./packages/components/LICENSE.md) for more information.
