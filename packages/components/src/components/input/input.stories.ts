@@ -48,6 +48,102 @@ export const Default = {
 };
 
 /**
+ * Use the `label` attribute to give the input an accessible label. For labels that contain HTML, use the `label` slot instead.
+ */
+
+export const Labels = {
+  args: overrideArgs([{ type: 'attribute', name: 'label', value: 'My Solid Input' }]),
+  render: (args: any) => {
+    return html`
+      <div class="w-[231px]">
+        ${generateTemplate({
+          args
+        })}
+      </div>
+    `;
+  }
+};
+
+/**
+ * Add descriptive help text to an input with the `help-text` attribute. For help texts that contain HTML, use the `help-text` slot instead.
+ */
+
+export const HelpText = {
+  name: 'Help Text',
+  args: overrideArgs([
+    { type: 'attribute', name: 'label', value: 'Nickname' },
+    { type: 'attribute', name: 'help-text', value: 'How would you like to be called?' }
+  ]),
+  render: (args: any) => {
+    return html`
+      <div class="w-[231px]">
+        ${generateTemplate({
+          args
+        })}
+      </div>
+    `;
+  }
+};
+
+/**
+ * Use the `placeholder` attribute to add a placeholder.
+ */
+
+export const Placeholders = {
+  args: overrideArgs([{ type: 'attribute', name: 'placeholder', value: 'Type something' }]),
+  render: (args: any) => {
+    return html`
+      <div class="w-[231px]">
+        ${generateTemplate({
+          args
+        })}
+      </div>
+    `;
+  }
+};
+
+/**
+ * Add the `clearable` attribute to add a clear button when the input has content.
+ */
+
+export const Clearable = {
+  args: overrideArgs([{ type: 'attribute', name: 'clearable', value: true }]),
+  render: (args: any) => {
+    return html`
+      <div class="w-[231px]">
+        ${generateTemplate({
+          args
+        })}
+      </div>
+    `;
+  }
+};
+
+/**
+ * Add the `password-toggle` attribute to add a toggle button that will show the password when activated. Only works with `type="password"`.
+ */
+
+export const TogglePassword = {
+  name: 'Toggle Password',
+  parameters: {
+    controls: {
+      exclude: ['password-toggle']
+    }
+  },
+  args: overrideArgs([{ type: 'attribute', name: 'type', value: 'password' }]),
+  render: (args: any) => {
+    return html`
+      <div class="w-[231px]">
+        ${generateTemplate({
+          args,
+          constants: [{ type: 'attribute', name: 'password-toggle', value: true }]
+        })}
+      </div>
+    `;
+  }
+};
+
+/**
  * Use the disabled attribute to disable an input. All interaction is disabled and no events will be fired.
  */
 
@@ -98,39 +194,6 @@ export const Readonly = {
         })}
       </div>
     `;
-  }
-};
-
-/**
- * This shows sd-input in its various sizes.
- */
-
-export const Password = {
-  parameters: {
-    controls: {
-      exclude: ['size']
-    }
-  },
-  args: overrideArgs([
-    { type: 'attribute', name: 'value', value: 'value' },
-    { type: 'attribute', name: 'label', value: 'Label' },
-    { type: 'attribute', name: 'help-text', value: 'help-text' },
-    { type: 'attribute', name: 'clearable', value: true },
-    { type: 'attribute', name: 'passwordToggle', value: true },
-    { type: 'attribute', name: 'type', value: 'password' },
-    {
-      type: 'slot',
-      name: 'right',
-      value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
-    }
-  ]),
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: { type: 'attribute', name: 'size' }
-      },
-      args
-    });
   }
 };
 
