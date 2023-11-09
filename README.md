@@ -1,6 +1,6 @@
 # Solid Design System Monorepo
 
-This monorepo houses the components, placeholder images, and design tokens for the Solid Design System.
+Monorepo for Union Investment's Solid Design System.
 
 ## Packages
 
