@@ -155,7 +155,6 @@ export const LongContent = {
         }
         .long-content::-webkit-scrollbar {
           width: 4px;
-          height: 8px; /* for making the scrollbar's height smaller */
         }
 
         .long-content::-webkit-scrollbar-thumb {
@@ -164,7 +163,7 @@ export const LongContent = {
         }
 
         .long-content:hover::-webkit-scrollbar-thumb {
-          background-color: #888; /* change color when hovering over the container */
+          background-color: rgba(81, 81, 81, 0.9);
         }
       </style>
       ${generateTemplate({
