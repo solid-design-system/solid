@@ -235,7 +235,7 @@ export const Sizes = {
 export const Validation = {
   parameters: {
     controls: {
-      include: []
+      include: ['clearable']
     }
   },
   render: (args: any) => {
