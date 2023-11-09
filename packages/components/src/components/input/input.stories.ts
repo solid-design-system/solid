@@ -3,6 +3,7 @@ import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 import { waitUntil } from '@open-wc/testing-helpers';
 import { withActions } from '@storybook/addon-actions/decorator';
+import type SdInput from './input';
 
 const { argTypes, args, parameters } = storybookDefaults('sd-input');
 const { generateTemplate } = storybookTemplate('sd-input');
@@ -563,22 +564,45 @@ export const Samples = {
       </style>
       <div>
         <div class="headline">sd-input with currency stepper</div>
-        <sd-input id="numericInput" type="number" min="0" class="w-[231px]">
-          <span slot="right" class="text-sm inline-flex items-center gap-4">
-            <span class="text-neutral-700">EUR</span>
+        <sd-input id="stepperSampleInput" type="number" min="0" class="w-[231px]"
+          ><span slot="right" class="text-sm inline-flex items-center"
+            ><span class="text-neutral-700">EUR</span>
             <button
-              onclick="document.getElementById('numericInput').stepDown()"
-              class="scale-[1.714] inline-flex items-center text-neutral-500"
+              disabled
+              id="stepDownButton"
+              @click=${() => {
+                const inputEl: SdInput = document.querySelector('#stepperSampleInput')!;
+                const stepDownButton: HTMLButtonElement = document.querySelector('#stepDownButton')!;
+                const numericValue = parseInt(inputEl.value, 10);
+                const stepDownValue = numericValue - 1;
+
+                if (stepDownValue <= 0) {
+                  stepDownButton.disabled = true;
+                  inputEl.value = '0.00';
+                } else {
+                  inputEl.stepDown();
+                  // Adjust input value to 2 decimals (currency)
+                  inputEl.value = String(parseInt(inputEl.value, 10).toFixed(2));
+                }
+              }}
+              class="ml-4 scale-[1.714] inline-flex items-center sd-interactive"
             >
               <sd-icon library="global-resources" name="system/minus-round"></sd-icon>
             </button>
             <button
-              onclick="document.getElementById('numericInput').stepUp()"
-              class="scale-[1.714] inline-flex items-center"
+              id="stepUpButton"
+              @click=${() => {
+                const inputEl: SdInput = document.querySelector('#stepperSampleInput')!;
+                const stepDownButton: HTMLButtonElement = document.querySelector('#stepDownButton')!;
+                stepDownButton.disabled = false;
+                inputEl.stepUp();
+                // Adjust input value to 2 decimals (currency)
+                inputEl.value = String(parseInt(inputEl.value, 10).toFixed(2));
+              }}
+              class="ml-4 scale-[1.714] inline-flex items-center sd-interactive"
             >
-              <sd-icon library="global-resources" name="system/plus-round"></sd-icon>
-            </button>
-          </span>
+              <sd-icon library="global-resources" name="system/plus-round"></sd-icon></button
+          ></span>
         </sd-input>
       </div>
     `;
