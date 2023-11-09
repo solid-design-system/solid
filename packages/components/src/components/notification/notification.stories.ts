@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import '../../solid-components';
 import { html } from 'lit';
@@ -15,7 +16,7 @@ export default {
     {
       type: 'slot',
       name: 'default',
-      value: `<div class="slot slot--border slot--text h-8 my-auto w-full">Default slot</div>`
+      value: `<div class="h-8 flex items-center">Lorem ipsum dolor sit</div>`
     },
     {
       type: 'attribute',
@@ -54,7 +55,7 @@ export const Default = {
  */
 
 export const Variants = {
-  parameters: { controls: { exclude: ['variant'] } },
+  parameters: { controls: { exclude: ['variant', 'open'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -71,7 +72,7 @@ export const Variants = {
  */
 
 export const Closable = {
-  parameters: { controls: { exclude: ['closable'] } },
+  parameters: { controls: { exclude: ['closable', 'open'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -105,7 +106,7 @@ export const Duration = {
  */
 
 export const DurationIndicator = {
-  parameters: { controls: { exclude: ['duration', 'duration-indicator'] } },
+  parameters: { controls: { exclude: ['duration', 'duration-indicator', 'open'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -124,19 +125,24 @@ export const DurationIndicator = {
  * Display a toast notification at the top-right of the screen by using the `toast` method. The default position is `top-right`.
  */
 export const ToastNotification = {
+  parameters: {
+    controls: {
+      exclude: ['open', 'closable', 'variant', 'toast-stack', 'duration', 'duration-indicator', 'default-slot']
+    }
+  },
   name: 'Toast Notification (Default)',
-  render: () => {
+  render: (_args: Record<string, any>) => {
     return html`
       <sd-button id="top-right" variant="primary">Create Toast - default</sd-button>
       <script>
         var button = document.querySelector('#top-right');
 
-        function notify(variant = 'warning', toastStack = 'top-right', duration = 5000) {
+        function notify() {
           const notification = Object.assign(document.createElement('sd-notification'), {
             closable: true,
-            variant: variant,
-            toastStack: toastStack,
-            duration: duration,
+            variant: 'warning',
+            toastStack: 'top-right',
+            duration: 5000,
             innerHTML: 'Lorem ipsum dolor sit amet.'
           });
 
@@ -160,22 +166,29 @@ export const ToastNotification = {
  * Display a toast notification positioned at the bottom-center of the screen. Set the `toastStack` attribute to `bottom-center` for the alternative position of the toast sd-notification.
  */
 export const ToastBottomCenter = {
+  parameters: {
+    controls: {
+      exclude: ['open', 'closable', 'variant', 'toast-stack', 'duration', 'duration-indicator']
+    }
+  },
   name: 'Toast Notification (Bottom Center)',
-  render: () => {
+  render: (_args: Record<string, any>) => {
     return html`
       <sd-button id="bottom-center" variant="primary">Create Toast - bottom center</sd-button>
 
       <script>
         var buttonBottomCenter = document.querySelector('#bottom-center');
 
-        function notifyBottomCenter(variant = 'info', toastStack = 'bottom-center', duration = 5000) {
+        function notifyBottomCenter() {
           const notification = Object.assign(document.createElement('sd-notification'), {
             closable: true,
-            variant: variant,
-            toastStack: toastStack,
-            duration: duration,
+            variant: 'info',
+            toastStack: 'bottom-center',
+            duration: Infinity,
             innerHTML: 'Lorem ipsum dolor sit amet.'
           });
+
+          notification.style.width = '251px';
 
           document.body.append(notification);
           return notification.toast();

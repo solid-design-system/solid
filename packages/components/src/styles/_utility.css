@@ -10,29 +10,24 @@
 }
 
 .sd-toast-stack {
-  position: fixed;
-
-  z-index: 9999;
-  max-width: 320px;
-  max-height: 100%;
+  @apply fixed z-50 max-w-[400px] max-h-full box-border;
 
   &--top-right {
-    top: 0;
-    right: 0;
-    margin-right: 16px;
+    @apply top-0 right-0 mr-4;
   }
 
   &--bottom-center {
-    bottom: 0;
+    @apply bottom-0 -translate-x-1/2;
     inset-inline-start: 50%;
-    transform: translateX(-50%);
   }
 }
 
-.sd-toast-stack sd-notification {
-  margin: 8px;
-}
+.sd-toast-stack {
+  sd-notification::part(base) {
+    @apply shadow;
+  }
 
-.sd-toast-stack sd-notification::part(base) {
-  box-shadow: 0px 1px 3px 0px #515151;
+  sd-notification::part(content) {
+    @apply border-white pl-3 pr-[0px,] py-[8px];
+  }
 }

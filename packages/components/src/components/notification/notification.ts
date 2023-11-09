@@ -21,9 +21,9 @@ const toastStackBottomCenter = Object.assign(document.createElement('div'), {
  * @summary Alerts are used to display important messages inline or as toast notifications.
  * @documentation https://solid.union-investment.com/[storybook-link]/notification
  * @status stable
- * @since 1.21.0
+ * @since 1.22.0
  *
- * @dependency sd-icon-button
+ * @dependency sd-button
  *
  * @slot - The sd-notification's main content.
  * @slot icon - An icon to show in the sd-notification. Works best with `<sd-icon>`.
@@ -40,7 +40,6 @@ const toastStackBottomCenter = Object.assign(document.createElement('div'), {
  * @csspart duration-indicator-current - The current duration indicator.
  * @csspart duration-indicator-total - The total duration indicator.
  * @csspart close-button - The close button, an `<sd-icon-button>`.
- * @csspart close-button__base - The close button's exported `base` part.
  *
  * @animation notification.show - The animation to use when showing the sd-notification.
  * @animation notifiation.hide - The animation to use when hiding the sd-notification.
@@ -211,6 +210,13 @@ export default class SdNotification extends SolidElement {
   }
 
   render() {
+    const variantToName = {
+      info: 'info',
+      success: 'success',
+      warning: 'warning',
+      error: 'error'
+    };
+
     return html`
       <div
         part="base"
@@ -226,36 +232,25 @@ export default class SdNotification extends SolidElement {
           part="icon"
           class=${cx(
             'min-w-min flex items-center px-3 justify-center',
-            this.variant === 'info' && 'bg-info',
-            this.variant === 'success' && 'bg-success',
-            this.variant === 'warning' && 'bg-warning',
-            this.variant === 'error' && 'bg-error'
+            {
+              info: 'bg-info',
+              success: 'bg-success',
+              warning: 'bg-warning',
+              error: 'bg-error'
+            }[this.variant]
           )}
         >
-          <sd-icon
-            name=${this.variant === 'info'
-              ? 'info'
-              : this.variant === 'success'
-              ? 'success'
-              : this.variant === 'warning'
-              ? 'warning'
-              : this.variant === 'error'
-              ? 'error'
-              : ''}
-            library="system"
-            class="h-6 w-6 text-white"
-          ></sd-icon>
+          <sd-icon name=${variantToName[this.variant] || ''} library="system" class="h-6 w-6 text-white"></sd-icon>
         </slot>
 
         <div
           part="content"
           class=${cx(
-            'h-full w-full gap-2 flex items-center justify-stretch bg-white',
-            'border-solid border-[1px] border-l-0 border-neutral-400',
-            this.closable ? 'p-1 pl-3' : 'px-3 py-2'
+            'h-full w-full p-1 gap-2 flex items-center justify-stretch bg-white',
+            'border-solid border-[1px] border-l-0 border-neutral-400'
           )}
         >
-          <slot part="message" class="block w-full" aria-live="polite"></slot>
+          <slot part="message" class="block w-full px-3 py-2" aria-live="polite"></slot>
 
           ${this.closable
             ? html`
