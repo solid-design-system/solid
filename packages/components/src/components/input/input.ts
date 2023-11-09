@@ -413,6 +413,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     };
 
     // States
+    const isFirefox = navigator.userAgent.toLowerCase().includes('firefox');
     const hasLabel = this.label ? true : !!slots['label'];
     const hasHelpText = this.helpText ? true : !!slots['helpText'];
     const hasClearIcon = this.clearable && !this.readonly && (typeof this.value === 'number' || this.value.length > 0);
@@ -612,7 +613,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                 : ''
             }
             ${
-              this.type === 'date'
+              this.type === 'date' && !isFirefox
                 ? html` <sd-icon class=${cx(iconMarginLeft, iconSize)} library="system" name="calendar"></sd-icon> `
                 : ''
             }
