@@ -51,7 +51,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
   private validationTimeout: number;
 
   @query('slot:not([name])') defaultSlot: HTMLSlotElement;
-  @query('.radio-group__validation-input') validationInput: HTMLInputElement;
+  @query('#validation-input') validationInput: HTMLInputElement;
 
   @state() private hasButtonGroup = false;
   @state() defaultValue = '';
@@ -396,7 +396,15 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
           <div class="sr-only">
             <div id="error-message" aria-live="assertive">${this.errorText}</div>
             <label>
-              <input type="text" ?required=${this.required} tabindex="-1" hidden @invalid=${this.handleInvalid} />
+              <input
+                id="validation-input"
+                class="radio-group__validation-input"
+                type="text"
+                ?required=${this.required}
+                tabindex="-1"
+                hidden
+                @invalid=${this.handleInvalid}
+              />
             </label>
           </div>
           ${defaultSlot}
