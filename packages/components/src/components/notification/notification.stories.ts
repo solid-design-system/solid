@@ -85,7 +85,7 @@ export const Closable = {
 };
 
 /**
- * Use the `duration` attribute to set the duration(in milliseconds) of the notification.
+ * Use the `duration` attribute to set the duration (in milliseconds) of the notification.
  */
 
 export const Duration = {
