@@ -608,7 +608,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                 : ''
             }
             ${
-              this.type === 'date' && !isFirefox
+              (this.type === 'date' || this.type === 'datetime-local') && !isFirefox
                 ? html`
                     <sd-icon
                       class=${cx(iconColor, iconMarginLeft, iconSize)}

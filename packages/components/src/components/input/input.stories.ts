@@ -232,6 +232,136 @@ export const Sizes = {
 };
 
 /**
+ * Demonstrates the allowed input types.
+ */
+
+export const Types = {
+  parameters: {
+    controls: {
+      include: ['size', 'disabled', 'clearable', 'readonly']
+    }
+  },
+  render: (args: any) => {
+    return html`
+      <div class="w-[370px]">
+        <div class="mb-2">
+          ${generateTemplate({
+            constants: [
+              { type: 'attribute', name: 'type', value: 'date' },
+              { type: 'attribute', name: 'label', value: 'Date' },
+              { type: 'attribute', name: 'placeholder', value: 'someone@example.com' },
+              { type: 'attribute', name: 'help-text', value: 'value is restricted to date format' }
+            ],
+            args
+          })}
+        </div>
+        <div class="mb-2">
+          ${generateTemplate({
+            constants: [
+              { type: 'attribute', name: 'type', value: 'datetime-local' },
+              { type: 'attribute', name: 'label', value: 'Date Time' },
+              { type: 'attribute', name: 'placeholder', value: 'someone@example.com' },
+              { type: 'attribute', name: 'help-text', value: 'value is restricted to datetime format' }
+            ],
+            args
+          })}
+        </div>
+        <div class="mb-2">
+          ${generateTemplate({
+            constants: [
+              { type: 'attribute', name: 'type', value: 'email' },
+              { type: 'attribute', name: 'label', value: 'Email' },
+              { type: 'attribute', name: 'placeholder', value: 'someone@example.com' },
+              { type: 'attribute', name: 'help-text', value: 'validate with email address format' }
+            ],
+            args
+          })}
+        </div>
+        <div class="mb-2">
+          ${generateTemplate({
+            constants: [
+              { type: 'attribute', name: 'type', value: 'number' },
+              { type: 'attribute', name: 'label', value: 'Number' },
+              { type: 'attribute', name: 'placeholder', value: '^d{1,3}$' },
+              { type: 'attribute', name: 'help-text', value: 'value is restricted to numbers' }
+            ],
+            args
+          })}
+        </div>
+        <div class="mb-2">
+          ${generateTemplate({
+            constants: [
+              { type: 'attribute', name: 'type', value: 'password' },
+              { type: 'attribute', name: 'label', value: 'Password' },
+              { type: 'attribute', name: 'password-toggle', value: true },
+              { type: 'attribute', name: 'placeholder', value: '.*' },
+              { type: 'attribute', name: 'help-text', value: 'use password display format' }
+            ],
+            args
+          })}
+        </div>
+        <div class="mb-2">
+          ${generateTemplate({
+            constants: [
+              { type: 'attribute', name: 'type', value: 'search' },
+              { type: 'attribute', name: 'label', value: 'Search' },
+              { type: 'attribute', name: 'placeholder', value: '^d{1,3}$' },
+              { type: 'attribute', name: 'help-text', value: 'use search format' }
+            ],
+            args
+          })}
+        </div>
+        <div class="mb-2">
+          ${generateTemplate({
+            constants: [
+              { type: 'attribute', name: 'type', value: 'tel' },
+              { type: 'attribute', name: 'label', value: 'Tel' },
+              { type: 'attribute', name: 'placeholder', value: '+49 1234 567891' },
+              { type: 'attribute', name: 'help-text', value: 'validate with tel format' }
+            ],
+            args
+          })}
+        </div>
+        <div class="mb-2">
+          ${generateTemplate({
+            constants: [
+              { type: 'attribute', name: 'type', value: 'text' },
+              { type: 'attribute', name: 'label', value: 'Text' },
+              { type: 'attribute', name: 'placeholder', value: '.*' },
+              { type: 'attribute', name: 'help-text', value: 'default type' }
+            ],
+            args
+          })}
+        </div>
+        <div class="mb-2">
+          ${generateTemplate({
+            constants: [
+              { type: 'attribute', name: 'type', value: 'time' },
+              { type: 'attribute', name: 'label', value: 'Time' },
+              { type: 'attribute', name: 'placeholder', value: '' },
+              { type: 'attribute', name: 'help-text', value: 'value is restricted to time format' }
+            ],
+            args
+          })}
+        </div>
+        <div class="mb-2">
+          ${generateTemplate({
+            constants: [
+              { type: 'attribute', name: 'type', value: 'url' },
+              { type: 'attribute', name: 'label', value: 'URL' },
+              { type: 'attribute', name: 'name', value: 'url field' },
+              { type: 'attribute', name: 'placeholder', value: 'https://www.union-investment.de/' },
+              { type: 'attribute', name: 'help-text', value: 'validate with url format' }
+            ],
+            args
+          })}
+        </div>
+      </div>
+    `;
+  }
+};
+
+/**
  * Demonstrates the various validation options extended from the native input element in addition to error and success styles.
  */
 
