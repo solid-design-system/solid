@@ -138,10 +138,7 @@ export default class SdHeader extends SolidElement {
         right: 0;
         top: 100%;
         height: 8px;
-        background: var(
-          --gradient-vertical-black-40-transparent,
-          linear-gradient(0deg, rgba(24, 24, 24, 0), rgba(24, 24, 24, 0.4))
-        );
+        background: var(--gradient-vertical-black-40-transparent, linear-gradient(0deg, #18181800 50%, #18181866 100%));
       }
 
       [part='main'] {

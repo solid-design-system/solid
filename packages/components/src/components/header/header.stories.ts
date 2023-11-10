@@ -64,15 +64,18 @@ export default {
           .nav-icon {
             margin: -1.5px -4px;
           }
+          sd-header {
+            max-height: 140px;
+          }
           /* LG styles */
-          @media (min-width: 1024px) {
+          @media (min-width: 1025px) {
             .logo-svg {
               height: 56px;
             }
           }
 
           /* MD styles */
-          @media (max-width: 1023px) and (min-width: 768px) {
+          @media (max-width: 1024px) and (min-width: 768px) {
             .logo-svg {
               height: 48px;
             }
@@ -80,12 +83,18 @@ export default {
               display: flex;
               gap: 48px;
             }
+            sd-header {
+              height: 96px;
+            }
           }
 
           /* SM styles */
-          @media (max-width: 767px) {
+          @media (max-width: 375px) {
             .logo-svg {
               height: 32px;
+            }
+            sd-header {
+              height: 64px;
             }
           }</style
         >${story()}`
@@ -199,7 +208,7 @@ export const ResponsiveSample = {
             </div>
             <div class="top-right">
               <sd-navigation-item>
-                <sd-icon name="system/menu" library="global-resources" class="text-xl"></sd-icon>
+                <sd-icon name="system/menu" library="global-resources" class="text-xl nav-icon"></sd-icon>
               </sd-navigation-item>
             </div>
           </div>
