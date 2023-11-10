@@ -13,7 +13,7 @@ import type SdCheckbox from '../checkbox/checkbox';
  * @summary Checkbox groups are used to group multiple [checkbox](/components/checkbox). It provides only presentational functionality.
  * @documentation https://solid.union-investment.com/[storybook-link]/checkbox-group
  * @status stable
- * @since 1.18.0
+ * @since 1.22.0
  *
  * @slot - The default slot where `<sd-checkbox>` elements are placed.
  * @slot label - The checkbox group's label. Required for proper accessibility. Alternatively, you can use the `label`
