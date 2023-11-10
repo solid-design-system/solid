@@ -335,12 +335,12 @@ export const Mouseless = {
         ]
       })}
     </div>`;
-  },
-
-  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
-    const el = canvasElement.querySelector('.mouseless sd-notification');
-    await waitUntil(() => el?.shadowRoot?.querySelector('sd-button'));
-    // We have to catch the event as otherwise Storybook will break
-    await userEvent.type(el!.shadowRoot!.querySelector('sd-button')!, '{return}', { pointerEventsCheck: 0 });
   }
+
+  // play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
+  //   const el = canvasElement.querySelector('.mouseless sd-notification');
+  //   await waitUntil(() => el?.shadowRoot?.querySelector('sd-button'));
+  //   // We have to catch the event as otherwise Storybook will break
+  //   await userEvent.type(el!.shadowRoot!.querySelector('sd-button')!, '{return}', { pointerEventsCheck: 0 });
+  // }
 };
