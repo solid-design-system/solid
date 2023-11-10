@@ -133,14 +133,44 @@ export const ToastNotification = {
   name: 'Toast Notification (Default)',
   render: (_args: Record<string, any>) => {
     return html`
-      <sd-button id="top-right" variant="primary">Create Toast - default</sd-button>
-      <script>
-        var button = document.querySelector('#top-right');
+      <div class="w-1/3 h-12 flex justify-around">
+        <button
+          class="top-right sd-interactive hover:text-white hover:opacity-75 bg-info w-24 text-white rounded-md"
+          notification-type="info"
+          variant="primary"
+        >
+          Info
+        </button>
+        <button
+          class="top-right sd-interactive hover:text-white hover:opacity-75 bg-success w-24 text-white rounded-md"
+          notification-type="success"
+          variant="primary"
+        >
+          Success
+        </button>
+        <button
+          class="top-right sd-interactive hover:text-white hover:opacity-75 bg-warning w-24 text-white rounded-md"
+          notification-type="warning"
+          variant="primary"
+        >
+          Warning
+        </button>
+        <button
+          class="top-right sd-interactive hover:text-white hover:opacity-75 bg-error w-24 text-white rounded-md"
+          notification-type="error"
+          variant="primary"
+        >
+          Error
+        </button>
+      </div>
 
-        function notify() {
+      <script>
+        var buttons = document.querySelectorAll('.top-right');
+
+        function notify(variant = 'info') {
           const notification = Object.assign(document.createElement('sd-notification'), {
             closable: true,
-            variant: 'warning',
+            variant: variant,
             toastStack: 'top-right',
             duration: 5000,
             innerHTML: 'Lorem ipsum dolor sit amet.'
@@ -150,8 +180,10 @@ export const ToastNotification = {
           return notification.toast();
         }
 
-        button.addEventListener('click', () => {
-          notify();
+        buttons.forEach(button => {
+          button.addEventListener('click', () => {
+            notify(button.getAttribute('notification-type'));
+          });
         });
       </script>
     `;
@@ -174,15 +206,44 @@ export const ToastBottomCenter = {
   name: 'Toast Notification (Bottom Center)',
   render: (_args: Record<string, any>) => {
     return html`
-      <sd-button id="bottom-center" variant="primary">Create Toast - bottom center</sd-button>
+      <div class="w-1/3 h-12 flex justify-around">
+        <button
+          class="bottom-center sd-interactive hover:text-white hover:opacity-75 bg-info w-24 text-white rounded-md"
+          notification-type="info"
+          variant="primary"
+        >
+          Info
+        </button>
+        <button
+          class="bottom-center sd-interactive hover:text-white hover:opacity-75 bg-success w-24 text-white rounded-md"
+          notification-type="success"
+          variant="primary"
+        >
+          Success
+        </button>
+        <button
+          class="bottom-center sd-interactive hover:text-white hover:opacity-75 bg-warning w-24 text-white rounded-md"
+          notification-type="warning"
+          variant="primary"
+        >
+          Warning
+        </button>
+        <button
+          class="bottom-center sd-interactive hover:text-white hover:opacity-75 bg-error w-24 text-white rounded-md"
+          notification-type="error"
+          variant="primary"
+        >
+          Error
+        </button>
+      </div>
 
       <script>
-        var buttonBottomCenter = document.querySelector('#bottom-center');
+        var buttons = document.querySelectorAll('.bottom-center');
 
-        function notifyBottomCenter() {
+        function notifyBottomCenter(variant = 'info') {
           const notification = Object.assign(document.createElement('sd-notification'), {
             closable: true,
-            variant: 'info',
+            variant: variant,
             toastStack: 'bottom-center',
             duration: Infinity,
             innerHTML: 'Lorem ipsum dolor sit amet.'
@@ -194,8 +255,10 @@ export const ToastBottomCenter = {
           return notification.toast();
         }
 
-        buttonBottomCenter.addEventListener('click', () => {
-          notifyBottomCenter();
+        buttons.forEach(button => {
+          button.addEventListener('click', () => {
+            notifyBottomCenter(button.getAttribute('notification-type'));
+          });
         });
       </script>
     `;
