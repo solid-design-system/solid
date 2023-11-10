@@ -15,7 +15,7 @@ import type { SolidFormControl } from '../../internal/solid-element';
  * @summary Checkboxes allow the user to toggle an option on or off.
  * @documentation https://solid.union-investment.com/[storybook-link]/checkbox
  * @status stable
- * @since 1.0
+ * @since 1.22.0
  *
  * @dependency sd-icon
  *
