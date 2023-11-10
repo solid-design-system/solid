@@ -1,4 +1,3 @@
-import { clickOnElement } from '../../internal/test';
 import { expect, fixture, html, oneEvent, waitUntil } from '@open-wc/testing';
 import { sendKeys } from '@web/test-runner-commands';
 import sinon from 'sinon';
@@ -10,9 +9,13 @@ describe('<sd-checkbox>', () => {
     await expect(el).to.be.accessible();
   });
 
+  it('should not be checked by default', async () => {
+    const radio = await fixture<SdCheckbox>(html`<sd-checkbox></sd-checkbox>`);
+    expect(radio.checked).to.be.false;
+  });
+
   it('default properties', async () => {
     const el = await fixture<SdCheckbox>(html` <sd-checkbox></sd-checkbox> `);
-
     expect(el.name).to.equal('');
     expect(el.value).to.be.undefined;
     expect(el.title).to.equal('');
@@ -153,7 +156,7 @@ describe('<sd-checkbox>', () => {
       expect(checkbox.hasAttribute('data-user-invalid')).to.be.false;
       expect(checkbox.hasAttribute('data-user-valid')).to.be.false;
 
-      await clickOnElement(checkbox);
+      checkbox.click();
       await checkbox.updateComplete;
 
       expect(checkbox.hasAttribute('data-user-invalid')).to.be.true;
@@ -201,7 +204,7 @@ describe('<sd-checkbox>', () => {
       await checkbox.updateComplete;
       setTimeout(() => button.click());
 
-      await oneEvent(form, 'reset');
+      await oneEvent(form, 'reset', false);
       await checkbox.updateComplete;
 
       expect(checkbox.checked).to.true;
@@ -209,7 +212,7 @@ describe('<sd-checkbox>', () => {
       checkbox.defaultChecked = false;
 
       setTimeout(() => button.click());
-      await oneEvent(form, 'reset');
+      await oneEvent(form, 'reset', false);
       await checkbox.updateComplete;
 
       expect(checkbox.checked).to.false;
