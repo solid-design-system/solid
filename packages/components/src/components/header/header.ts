@@ -37,12 +37,12 @@ export default class SdHeader extends SolidElement {
 
   connectedCallback(): void {
     super.connectedCallback();
-    this.setBodySpacing = this.setBodySpacing.bind(this);
+    this.setCalculatedHeightProperty = this.setCalculatedHeightProperty.bind(this);
     this.addResizeObserver = this.addResizeObserver.bind(this);
   }
 
   firstUpdated(): void {
-    this.setBodySpacing();
+    this.setCalculatedHeightProperty();
     this.addResizeObserver();
   }
 
@@ -58,7 +58,7 @@ export default class SdHeader extends SolidElement {
     super.updated(changedProperties);
 
     if (changedProperties.has('autoSpacing')) {
-      this.setBodySpacing();
+      this.setCalculatedHeightProperty();
       if (this.autoSpacing) {
         this.addResizeObserver();
       } else if (this.resizeObserver) {
@@ -71,7 +71,7 @@ export default class SdHeader extends SolidElement {
   @debounce(100)
   private onResize(): void {
     if (this.autoSpacing) {
-      this.setBodySpacing();
+      this.setCalculatedHeightProperty();
     }
   }
 
@@ -85,11 +85,14 @@ export default class SdHeader extends SolidElement {
     }
   }
 
-  private setBodySpacing(): void {
+  private setCalculatedHeightProperty(): void {
     if (this.autoSpacing && this.refHeaderElement) {
-      document.documentElement.style.setProperty('--sd-header-height', `${this.refHeaderElement.clientHeight}px`);
+      document.documentElement.style.setProperty(
+        '--sd-header-calculated-height',
+        `${this.refHeaderElement.clientHeight}px`
+      );
     } else {
-      document.documentElement.style.removeProperty('--sd-header-height');
+      document.documentElement.style.removeProperty('--sd-header-calculated-height');
     }
   }
 

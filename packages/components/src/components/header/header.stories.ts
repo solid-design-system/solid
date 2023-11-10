@@ -27,74 +27,10 @@ export default {
     withActions,
     (story: any) =>
       html` <style>
-          .header-sample {
-            padding: 16px;
-            background: #e0e0e0;
-            text-align: left;
-            font-size: 14px;
-            font-weight: bold;
-            width: 100%;
-            box-sizing: border-box;
-          }
-          .logo-svg {
-            height: 32px;
-          }
-          .top,
-          .bottom {
-            display: flex;
-            justify-content: space-between;
-          }
-          .top {
-            align-items: center;
-          }
-          .bottom {
-            align-items: end;
-            padding-top: 12px;
-          }
-          .top-left {
-            display: flex;
-            flex-shrink: 1;
-          }
-          .bottom-left {
-            margin-left: -16px;
-          }
-          .bottom-end {
-            margin-right: -16px;
-          }
-          .nav-icon {
-            margin: -1.5px -4px;
-          }
-          sd-header {
-            max-height: 140px;
-          }
-          /* LG styles */
-          @media (min-width: 1025px) {
-            .logo-svg {
-              height: 56px;
-            }
-          }
-
-          /* MD styles */
           @media (max-width: 1024px) and (min-width: 768px) {
-            .logo-svg {
-              height: 48px;
-            }
             .top-right {
               display: flex;
               gap: 48px;
-            }
-            sd-header {
-              height: 96px;
-            }
-          }
-
-          /* SM styles */
-          @media (max-width: 375px) {
-            .logo-svg {
-              height: 32px;
-            }
-            sd-header {
-              height: 64px;
             }
           }</style
         >${story()}`
@@ -136,7 +72,7 @@ export const Fixed = {
 };
 
 /* Sample Header responsive – variant A - 01 */
-export const ResponsiveSample = {
+export const ResponsiveSample1 = {
   parameters: {
     controls: {
       exclude: ['default']
@@ -149,6 +85,23 @@ export const ResponsiveSample = {
       <style>
         :root {
           --sd-header-padding: 24px 8px 0 8px;
+        }
+
+        sd-header {
+          max-height: 140px;
+        }
+
+        /* SM styles */
+        @media (max-width: 375px) {
+          sd-header {
+            height: 64px;
+          }
+        }
+        /* SM styles */
+        @media (max-width: 375px) {
+          sd-header {
+            height: 96px;
+          }
         }
 
         @media (min-width: 1024px) {
@@ -182,29 +135,31 @@ export const ResponsiveSample = {
           {
             type: 'slot',
             name: 'default',
-            value: `<div class="top">
-            <div class="top-left">
-            <img class='logo-svg' src='./placeholders/logo-ui-lg.svg' alt='Logo'/>
+            value: `<div class="flex justify-between items-center">
+            <div class="flex flex-shrink">
+            <img class='h-8 md:h-12 lg:h-[56px]' src='./placeholders/logo-ui-lg.svg' alt='Logo'/>
             </div>
             <div class="flex xl:hidden">
               <sd-navigation-item>
-                <sd-icon name="system/menu" library="global-resources" class="text-xl nav-icon"></sd-icon>
+                <sd-icon name="system/menu" library="global-resources" class="text-xl  -my-[1.5px] -mx-[4px]"></sd-icon>
               </sd-navigation-item>
             </div>
           </div>
-          <div class="hidden xl:flex">
-            <div class="bottom-left">
+          <div class="hidden xl:flex items-end p-3">
+            <!-- bottom-end-area start !-->
+            <div class="-ml-4">
               <sd-navigation-item><b>Über Uns</b></sd-navigation-item><sd-navigation-item><b>Märkte</b></sd-navigation-item
               ><sd-navigation-item><b>Presseservice</b></sd-navigation-item
               ><sd-navigation-item><b>Nachhaltigkeit</b></sd-navigation-item><sd-navigation-item><b>Karriere</b></sd-navigation-item>
             </div>
             <!-- bottom-end-area start !-->
-            <div class="bottom-end">
+            <!-- bottom-end-area start !-->
+            <div class="-mr-4">
               <sd-navigation-item>
-                <sd-icon name="system/website" library="global-resources" class="text-xl nav-icon"></sd-icon>
+                <sd-icon name="system/website" library="global-resources" class="text-xl -my-[1.5px] -mx-[4px]"></sd-icon>
               </sd-navigation-item>
               <sd-navigation-item>
-                <sd-icon name="system/magnifying-glass" library="global-resources" class="text-xl nav-icon"></sd-icon>
+                <sd-icon name="system/magnifying-glass" library="global-resources" class="text-xl  -my-[1.5px] -mx-[-4px]"></sd-icon>
               </sd-navigation-item>
               <sd-navigation-item>
                 <sd-icon name="system/profile" library="global-resources" class="text-xl mr-2"></sd-icon>Mein Depot
@@ -223,8 +178,8 @@ export const ResponsiveSample = {
 };
 
 /* Sample Header lg – variant B */
-export const MediumViewportSample = {
-  ...ResponsiveSample,
+export const MediumViewportSample1 = {
+  ...ResponsiveSample1,
   parameters: {
     viewport: { defaultViewport: 'tablet' },
     controls: {
@@ -234,8 +189,8 @@ export const MediumViewportSample = {
 };
 
 /* Sample Header sm - variant A */
-export const SmallViewportSample = {
-  ...ResponsiveSample,
+export const SmallViewportSample1 = {
+  ...ResponsiveSample1,
   parameters: {
     viewport: { defaultViewport: 'mobile1' },
     controls: {
