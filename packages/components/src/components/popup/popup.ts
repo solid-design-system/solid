@@ -24,6 +24,8 @@ import SolidElement from '../../internal/solid-element';
  *  maybe a border or box shadow.
  * @csspart popup - The popup's container. Useful for setting a background color, box shadow, etc.
  *
+ * @cssproperty [--arrow-size=6px] - The size of the arrow. Note that an arrow won't be shown unless the `arrow`
+ *  attribute is used.
  * @cssproperty [--arrow-color=var(--sd-color-neutral-0)] - The color of the arrow.
  * @cssproperty [--auto-size-available-width] - A read-only custom property that determines the amount of width the
  *  popup can be before overflowing. Useful for positioning child elements that need to overflow. This property is only
@@ -84,7 +86,8 @@ export default class SdPopup extends SolidElement {
   @property({ type: Number }) skidding = 0;
 
   /**
-   * Attaches an arrow to the popup. For additional customizations, you can also target the arrow using
+   * Attaches an arrow to the popup. The arrow's size and color can be customized using the `--arrow-size` and
+   * `--arrow-color` custom properties. For additional customizations, you can also target the arrow using
    * `::part(arrow)` in your stylesheet.
    */
   @property({ type: Boolean }) arrow = false;
