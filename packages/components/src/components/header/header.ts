@@ -87,9 +87,9 @@ export default class SdHeader extends SolidElement {
 
   private setBodySpacing(): void {
     if (this.autoSpacing && this.refHeaderElement) {
-      document.documentElement.style.setProperty('--sd-header--height', `${this.refHeaderElement.clientHeight}px`);
+      document.documentElement.style.setProperty('--sd-header-height', `${this.refHeaderElement.clientHeight}px`);
     } else {
-      document.documentElement.style.removeProperty('--sd-header--height');
+      document.documentElement.style.removeProperty('--sd-header-height');
     }
   }
 
@@ -145,8 +145,7 @@ export default class SdHeader extends SolidElement {
         margin: 0 auto;
         width: var(--sd-header-inner-width);
         max-width: var(--sd-header-inner-max-width);
-        padding: var(--sd-header-padding-top, 12px) var(--sd-header-padding-x, 16px)
-          var(--sd-header-padding-bottom, 12px) var(--sd-header-padding-x, 16px);
+        padding: var(--sd-header-padding, 12px 16px);
         box-sizing: border-box;
       }
 

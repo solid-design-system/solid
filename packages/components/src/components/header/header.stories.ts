@@ -148,48 +148,28 @@ export const ResponsiveSample = {
     >
       <style>
         :root {
-          --sd-header-padding-top: 24px;
-          --sd-header-padding-x: 16px; /* Default padding for mobile view */
-        }
-
-        @media (min-width: 375px) {
-          :root {
-            --sd-header-padding-x: 8px; /* Padding for screens from 375 to 1024 */
-          }
+          --sd-header-padding: 24px 8px 0 8px;
         }
 
         @media (min-width: 1024px) {
           :root {
-            --sd-header-padding-x: 24px; /* Padding for screens from 1024 to 1280 */
+            --sd-header-padding: 24px 24px 0 24px;
           }
         }
 
         @media (min-width: 1280px) {
           :root {
-            --sd-header-padding-x: 32px; /* Padding for screens from 1280 to 1440 */
+            --sd-header-padding: 24px 32px 0 32px;
           }
         }
 
         @media (min-width: 1440px) {
           :root {
-            --sd-header-padding-x: 48px; /* Padding for screens from 1440 and larger */
+            --sd-header-padding: 24px 48px 0 48px;
           }
-        }
-
-        .bottom {
-          display: none;
-        }
-        .top-right {
-          display: flex;
         }
 
         @media (min-width: 1280px) {
-          .bottom {
-            display: flex;
-          }
-          .top-right {
-            display: none;
-          }
           sd-navigation-item::part(content) {
             display: flex;
             align-items: center;
@@ -206,18 +186,19 @@ export const ResponsiveSample = {
             <div class="top-left">
             <img class='logo-svg' src='./placeholders/logo-ui-lg.svg' alt='Logo'/>
             </div>
-            <div class="top-right">
+            <div class="flex xl:hidden">
               <sd-navigation-item>
                 <sd-icon name="system/menu" library="global-resources" class="text-xl nav-icon"></sd-icon>
               </sd-navigation-item>
             </div>
           </div>
-          <div class="bottom">
+          <div class="hidden xl:flex">
             <div class="bottom-left">
               <sd-navigation-item><b>Über Uns</b></sd-navigation-item><sd-navigation-item><b>Märkte</b></sd-navigation-item
               ><sd-navigation-item><b>Presseservice</b></sd-navigation-item
               ><sd-navigation-item><b>Nachhaltigkeit</b></sd-navigation-item><sd-navigation-item><b>Karriere</b></sd-navigation-item>
             </div>
+            <!-- bottom-end-area start !-->
             <div class="bottom-end">
               <sd-navigation-item>
                 <sd-icon name="system/website" library="global-resources" class="text-xl nav-icon"></sd-icon>
@@ -231,6 +212,7 @@ export const ResponsiveSample = {
               <sd-navigation-item>
                 <sd-icon name="system/lock-locked" library="global-resources" class="text-xl mr-2"></sd-icon>Meine Bewerbung
               </sd-navigation-item>
+            <!-- bottom-end-area end !-->
             </div>
           </div>`
           }
