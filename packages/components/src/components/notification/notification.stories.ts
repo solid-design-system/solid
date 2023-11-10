@@ -133,7 +133,7 @@ export const ToastNotification = {
   name: 'Toast Notification (Default)',
   render: (_args: Record<string, any>) => {
     return html`
-      <div class="w-1/3 h-12 flex justify-around">
+      <div class="h-12 flex gap-1">
         <button
           class="top-right sd-interactive hover:text-white hover:opacity-75 bg-info w-24 text-white rounded-md"
           notification-type="info"
@@ -206,7 +206,7 @@ export const ToastBottomCenter = {
   name: 'Toast Notification (Bottom Center)',
   render: (_args: Record<string, any>) => {
     return html`
-      <div class="w-1/3 h-12 flex justify-around">
+      <div class="h-12 flex gap-1">
         <button
           class="bottom-center sd-interactive hover:text-white hover:opacity-75 bg-info w-24 text-white rounded-md"
           notification-type="info"
