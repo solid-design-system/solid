@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v1.22.0](https://github.com/solid-design-system/solid/compare/components/1.21.1...components/1.22.0) (2023-11-10)
+
+
+### Features
+
+* ✨ sd-checkbox & sd-checkbox-group ([#507](https://github.com/solid-design-system/solid/issues/507)) ([ea9bda2](https://github.com/solid-design-system/solid/commit/ea9bda262efaa1fd3b36f9666b0b6b6619ec4509))
+
+### 📈 Stats
+* Bundle size (uncompressed): 179 KB (+9 KB / +5%)
+* Bundle size (gzipped): 47 KB (+2 KB / +4%)
+
 # [@solid-design-system/components-v1.21.1](https://github.com/solid-design-system/solid/compare/components/1.21.0...components/1.21.1) (2023-11-09)
 
 
