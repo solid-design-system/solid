@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v1.23.0](https://github.com/solid-design-system/solid/compare/components/1.22.0...components/1.23.0) (2023-11-10)
+
+
+### Features
+
+* ✨ add sd-tooltip ([#436](https://github.com/solid-design-system/solid/issues/436)) ([45d8f63](https://github.com/solid-design-system/solid/commit/45d8f63323c24008f45f0ccfb79065847c994566)), closes [#244](https://github.com/solid-design-system/solid/issues/244)
+
+### 📈 Stats
+* Bundle size (uncompressed): 185 KB (+6 KB / +3%)
+* Bundle size (gzipped): 48 KB (+1 KB / +2%)
+
 # [@solid-design-system/components-v1.22.0](https://github.com/solid-design-system/solid/compare/components/1.21.1...components/1.22.0) (2023-11-10)
 
 
