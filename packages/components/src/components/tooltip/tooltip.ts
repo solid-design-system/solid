@@ -1,16 +1,15 @@
 import '../popup/popup';
 import { animateTo, parseDuration, stopAnimations } from '../../internal/animate';
-import { classMap } from 'lit/directives/class-map.js';
+import { css, html, unsafeCSS } from 'lit';
 import { customElement } from '../../../src/internal/register-custom-element';
-import {property, query } from 'lit/decorators.js';
 import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry';
-import { html } from 'lit';
 import { LocalizeController } from '../../utilities/localize';
+import { property, query } from 'lit/decorators.js';
 import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch';
+import cx from 'classix';
+import InteractiveStyles from '../../styles/interactive/interactive.css?inline';
 import SolidElement from '../../internal/solid-element';
-import styles from './tooltip.styles';
-import type { CSSResultGroup } from 'lit';
 import type SdPopup from '../popup/popup';
 
 /**
@@ -43,13 +42,11 @@ import type SdPopup from '../popup/popup';
  */
 @customElement('sd-tooltip')
 export default class SdTooltip extends SolidElement {
-  static styles: CSSResultGroup = styles;
-
   private hoverTimeout: number;
   private readonly localize = new LocalizeController(this);
 
   @query('slot:not([name])') defaultSlot: HTMLSlotElement;
-  @query('.tooltip__body') body: HTMLElement;
+  @query('#tooltip') body: HTMLElement;
   @query('sd-popup') popup: SdPopup;
 
   /** The tooltip's content. If you need to display HTML, use the `content` slot instead. */
@@ -59,38 +56,24 @@ export default class SdTooltip extends SolidElement {
    * The preferred placement of the tooltip. Note that the actual placement may vary as needed to keep the tooltip
    * inside of the viewport.
    */
-  @property() placement:
-    | 'top'
-    | 'top-start'
-    | 'top-end'
-    | 'right'
-    | 'right-start'
-    | 'right-end'
-    | 'bottom'
-    | 'bottom-start'
-    | 'bottom-end'
-    | 'left'
-    | 'left-start'
-    | 'left-end' = 'top';
+  @property({ reflect: true }) placement: 'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end' =
+    'top';
+
+  /** Sets the size of the default trigger icon. */
+  @property() size: 'lg' | 'sm' = 'lg';
 
   /** Disables the tooltip so it won't show when triggered. */
   @property({ type: Boolean, reflect: true }) disabled = false;
 
-  /** The distance in pixels from which to offset the tooltip away from its target. */
-  @property({ type: Number }) distance = 8;
-
   /** Indicates whether or not the tooltip is open. You can use this in lieu of the show/hide methods. */
   @property({ type: Boolean, reflect: true }) open = false;
-
-  /** The distance in pixels from which to offset the tooltip along its target. */
-  @property({ type: Number }) skidding = 0;
 
   /**
    * Controls how the tooltip is activated. Possible options include `click`, `hover`, `focus`, and `manual`. Multiple
    * options can be passed by separating them with a space. When manual is used, the tooltip must be activated
    * programmatically.
    */
-  @property() trigger = 'hover focus';
+  @property() trigger = 'click focus';
 
   /**
    * Enable this option to prevent the tooltip from being clipped when the component is placed inside a container with
@@ -220,7 +203,7 @@ export default class SdTooltip extends SolidElement {
     }
   }
 
-  @watch(['content', 'distance', 'hoist', 'placement', 'skidding'])
+  @watch(['content', 'hoist', 'placement'])
   async handleOptionsChange() {
     if (this.hasUpdated) {
       await this.updateComplete;
@@ -256,6 +239,9 @@ export default class SdTooltip extends SolidElement {
   }
 
   render() {
+    const isStart = this.placement.endsWith('-start');
+    const isEnd = this.placement.endsWith('-end');
+
     return html`
       <sd-popup
         part="base"
@@ -263,26 +249,35 @@ export default class SdTooltip extends SolidElement {
           popup:base__popup,
           arrow:base__arrow
         "
-        class=${classMap({
-      tooltip: true,
-      'tooltip--open': this.open
-    })}
+        class=${cx(this.open && 'tooltip--open')}
         placement=${this.placement}
-        distance=${this.distance}
-        skidding=${this.skidding}
+        distance="10"
+        skidding=${{ start: 2, end: -2, default: 0 }[isStart ? 'start' : isEnd ? 'end' : 'default'] *
+        (this.size === 'sm' ? -1 : 1)}
         strategy=${this.hoist ? 'fixed' : 'absolute'}
         flip
         shift
         arrow
+        auto-size="vertical"
+        arrow-padding="0"
       >
-        <slot slot="anchor" aria-describedby="tooltip"></slot>
+        <slot slot="anchor" aria-describedby="tooltip" class=${cx(this.size === 'lg' ? 'text-xl' : 'text-base')}>
+          <button class="flex sd-interactive rounded-full">
+            <sd-icon
+              library="system"
+              name="info-circle"
+              class=${cx(this.disabled && 'sd-interactive--disabled')}
+            ></sd-icon>
+          </button>
+        </slot>
 
         <slot
           name="content"
           part="body"
           id="tooltip"
-          class="tooltip__body"
+          class=" bg-primary text-white py-3 px-4 block rounded-none text-sm text-left"
           role="tooltip"
+          aria-label="Tooltip"
           aria-live=${this.open ? 'polite' : 'off'}
         >
           ${this.content}
@@ -290,6 +285,52 @@ export default class SdTooltip extends SolidElement {
       </sd-popup>
     `;
   }
+  static styles = [
+    SolidElement.styles,
+    unsafeCSS(InteractiveStyles),
+    css`
+      :host {
+        --hide-delay: 0ms;
+        --show-delay: 150ms;
+        display: contents;
+      }
+
+      sd-popup {
+        --arrow-color: rgb(var(--sd-color-primary, 0 53 142) / 1);
+        --arrow-size: 10px;
+      }
+
+      sd-popup::part(popup) {
+        pointer-events: none;
+        z-index: 10;
+        box-shadow: 0px 1px 3px 0px rgb(81 81 81 / 75%);
+      }
+
+      sd-popup::part(arrow) {
+        --tw-shadow: var(--sd-shadow, 0px 1px 3px 0px rgb(81 81 81 / 75%));
+        --tw-shadow-colored: 0px 1px 3px 0px var(--tw-shadow-color);
+        box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+      }
+
+      sd-popup[placement^='top']::part(popup) {
+        transform-origin: bottom;
+      }
+
+      sd-popup[placement^='bottom']::part(popup) {
+        transform-origin: top;
+      }
+
+      #tooltip {
+        max-width: var(--max-width);
+      }
+
+      ::slotted([slot='content']) {
+        overflow: auto;
+        max-width: var(--auto-size-available-width) !important;
+        max-height: var(--auto-size-available-height) !important;
+      }
+    `
+  ];
 }
 
 setDefaultAnimation('tooltip.show', {
