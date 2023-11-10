@@ -84,41 +84,29 @@ export const ResponsiveSample1 = {
     >
       <style>
         :root {
-          --sd-header-padding: 24px 8px 0 8px;
+          --sd-header-padding: 0 8px 0 8px;
         }
 
         sd-header {
+          height: 64px;
           max-height: 140px;
         }
 
-        /* SM styles */
-        @media (max-width: 375px) {
-          sd-header {
-            height: 64px;
+        @media (min-width: 376px) {
+          :root {
+            --sd-header-padding: 24px;
           }
-        }
-        /* SM styles */
-        @media (max-width: 375px) {
           sd-header {
             height: 96px;
           }
         }
 
-        @media (min-width: 1024px) {
-          :root {
-            --sd-header-padding: 24px 24px 0 24px;
-          }
-        }
-
-        @media (min-width: 1280px) {
+        @media (min-width: 1025px) {
           :root {
             --sd-header-padding: 24px 32px 0 32px;
           }
-        }
-
-        @media (min-width: 1440px) {
-          :root {
-            --sd-header-padding: 24px 48px 0 48px;
+          sd-header {
+            height: 140px;
           }
         }
 
@@ -126,6 +114,12 @@ export const ResponsiveSample1 = {
           sd-navigation-item::part(content) {
             display: flex;
             align-items: center;
+          }
+        }
+
+        @media (min-width: 1440px) {
+          :root {
+            --sd-header-padding: 24px 48px 0 48px;
           }
         }
       </style>
@@ -139,27 +133,27 @@ export const ResponsiveSample1 = {
             <div class="flex flex-shrink">
             <img class='h-8 md:h-12 lg:h-[56px]' src='./placeholders/logo-ui-lg.svg' alt='Logo'/>
             </div>
-            <div class="flex xl:hidden">
+            <div class="flex lg:hidden">
               <sd-navigation-item>
                 <sd-icon name="system/menu" library="global-resources" class="text-xl  -my-[1.5px] -mx-[4px]"></sd-icon>
               </sd-navigation-item>
             </div>
           </div>
-          <div class="hidden xl:flex items-end p-3">
-            <!-- bottom-end-area start !-->
+          <div class="hidden lg:flex items-end pt-3 justify-between">
+            <!-- bottom-left-area start !-->
             <div class="-ml-4">
               <sd-navigation-item><b>Über Uns</b></sd-navigation-item><sd-navigation-item><b>Märkte</b></sd-navigation-item
               ><sd-navigation-item><b>Presseservice</b></sd-navigation-item
               ><sd-navigation-item><b>Nachhaltigkeit</b></sd-navigation-item><sd-navigation-item><b>Karriere</b></sd-navigation-item>
             </div>
-            <!-- bottom-end-area start !-->
-            <!-- bottom-end-area start !-->
-            <div class="-mr-4">
+            <!-- bottom-left-area end !-->
+            <!-- bottom-right-area start !-->
+            <div class="-mr-4 flex">
               <sd-navigation-item>
                 <sd-icon name="system/website" library="global-resources" class="text-xl -my-[1.5px] -mx-[4px]"></sd-icon>
               </sd-navigation-item>
               <sd-navigation-item>
-                <sd-icon name="system/magnifying-glass" library="global-resources" class="text-xl  -my-[1.5px] -mx-[-4px]"></sd-icon>
+                <sd-icon name="system/magnifying-glass" library="global-resources" class="text-xl -my-[1.5px] -mx-[4px]"></sd-icon>
               </sd-navigation-item>
               <sd-navigation-item>
                 <sd-icon name="system/profile" library="global-resources" class="text-xl mr-2"></sd-icon>Mein Depot
@@ -167,7 +161,7 @@ export const ResponsiveSample1 = {
               <sd-navigation-item>
                 <sd-icon name="system/lock-locked" library="global-resources" class="text-xl mr-2"></sd-icon>Meine Bewerbung
               </sd-navigation-item>
-            <!-- bottom-end-area end !-->
+            <!-- bottom-right-area end !-->
             </div>
           </div>`
           }

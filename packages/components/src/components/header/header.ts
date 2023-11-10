@@ -114,7 +114,7 @@ export default class SdHeader extends SolidElement {
     const slot = event.target as HTMLSlotElement;
     if (slot.assignedElements().length > 0) {
       this.refHeaderElement = event.currentTarget as HTMLElement;
-      this.setBodySpacing();
+      this.setCalculatedHeightProperty();
     }
   }
 
@@ -123,7 +123,8 @@ export default class SdHeader extends SolidElement {
     componentStyles,
     css`
       :host {
-        display: block;
+        display: flex;
+        align-items: center;
         z-index: 65536;
         position: absolute;
         top: 0;
