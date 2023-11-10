@@ -16,7 +16,7 @@ import type SdPopup from '../popup/popup';
  * @summary Tooltips display additional information based on a specific action.
  * @documentation https://solid.union-investment.com/[storybook-link]/tooltip
  * @status stable
- * @since 1.0
+ * @since 1.23.0
  *
  * @dependency sd-popup
  *
