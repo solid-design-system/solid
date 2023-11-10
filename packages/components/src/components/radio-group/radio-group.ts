@@ -398,7 +398,6 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
             <label>
               <input
                 id="validation-input"
-                class="radio-group__validation-input"
                 type="text"
                 ?required=${this.required}
                 tabindex="-1"
