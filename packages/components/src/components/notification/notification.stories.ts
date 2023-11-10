@@ -16,7 +16,7 @@ export default {
     {
       type: 'slot',
       name: 'default',
-      value: `<div class="h-8 flex items-center">Lorem ipsum dolor sit</div>`
+      value: `<div class="flex items-center h-6">Lorem ipsum dolor sit.</div>`
     },
     {
       type: 'attribute',

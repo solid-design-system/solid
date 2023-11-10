@@ -255,7 +255,7 @@ export default class SdNotification extends SolidElement {
           ${this.closable
             ? html`
                 <sd-button
-                  size="lg"
+                  size="md"
                   variant="tertiary"
                   part="close-button"
                   class="ml-auto flex flex-[0_0_auto] items-stretch"
