@@ -250,15 +250,15 @@ export default class SdNotification extends SolidElement {
             'border-solid border-[1px] border-l-0 border-neutral-400'
           )}
         >
-          <slot part="message" class="block w-full px-3 py-2" aria-live="polite"></slot>
+          <slot part="message" class="block w-full pl-3 py-2" aria-live="polite"></slot>
 
           ${this.closable
             ? html`
                 <sd-button
-                  size="md"
+                  size="lg"
                   variant="tertiary"
                   part="close-button"
-                  class="ml-auto flex flex-[0_0_auto] items-center"
+                  class="ml-auto flex flex-[0_0_auto] items-stretch"
                   label=${this.localize.term('close')}
                   @click=${this.handleCloseClick}
                 >
