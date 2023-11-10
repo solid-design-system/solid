@@ -59,6 +59,7 @@ export default class SdTooltip extends SolidElement {
   @property({ reflect: true }) placement: 'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end' =
     'top';
 
+  /** Sets the size of the default trigger icon. */
   @property() size: 'lg' | 'sm' = 'lg';
 
   /** Disables the tooltip so it won't show when triggered. */
@@ -72,7 +73,7 @@ export default class SdTooltip extends SolidElement {
    * options can be passed by separating them with a space. When manual is used, the tooltip must be activated
    * programmatically.
    */
-  @property() trigger = 'click';
+  @property() trigger = 'click focus';
 
   /**
    * Enable this option to prevent the tooltip from being clipped when the component is placed inside a container with
@@ -241,11 +242,6 @@ export default class SdTooltip extends SolidElement {
     const isStart = this.placement.endsWith('-start');
     const isEnd = this.placement.endsWith('-end');
 
-    const skiddingMap = new Map([
-      ['start', '2'],
-      ['end', '-2']
-    ]);
-
     return html`
       <sd-popup
         part="base"
@@ -256,7 +252,7 @@ export default class SdTooltip extends SolidElement {
         class=${cx(this.open && 'tooltip--open')}
         placement=${this.placement}
         distance="10"
-        skidding=${((skiddingMap.get(isStart ? 'start' : isEnd ? 'end' : 'default') || 0) as number) *
+        skidding=${{ start: 2, end: -2, default: 0 }[isStart ? 'start' : isEnd ? 'end' : 'default'] *
         (this.size === 'sm' ? -1 : 1)}
         strategy=${this.hoist ? 'fixed' : 'absolute'}
         flip
@@ -281,7 +277,7 @@ export default class SdTooltip extends SolidElement {
           id="tooltip"
           class=" bg-primary text-white py-3 px-4 block rounded-none text-sm text-left"
           role="tooltip"
-          aria-label="Tooltip description"
+          aria-label="Tooltip"
           aria-live=${this.open ? 'polite' : 'off'}
         >
           ${this.content}
