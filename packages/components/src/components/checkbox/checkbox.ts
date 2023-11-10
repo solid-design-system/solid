@@ -1,23 +1,21 @@
 import '../icon/icon';
-import { classMap } from 'lit/directives/class-map.js';
+import { css, html } from 'lit';
 import { customElement } from '../../../src/internal/register-custom-element';
-import {property, query, state } from 'lit/decorators.js';
 import { defaultValue } from '../../internal/default-value';
 import { FormControlController } from '../../internal/form';
-import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { live } from 'lit/directives/live.js';
+import { property, query } from 'lit/decorators.js';
 import { watch } from '../../internal/watch';
+import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
-import styles from './checkbox.styles';
-import type { CSSResultGroup } from 'lit';
 import type { SolidFormControl } from '../../internal/solid-element';
 
 /**
  * @summary Checkboxes allow the user to toggle an option on or off.
  * @documentation https://solid.union-investment.com/[storybook-link]/checkbox
  * @status stable
- * @since 1.0
+ * @since 1.22.0
  *
  * @dependency sd-icon
  *
@@ -38,8 +36,6 @@ import type { SolidFormControl } from '../../internal/solid-element';
  */
 @customElement('sd-checkbox')
 export default class SdCheckbox extends SolidElement implements SolidFormControl {
-  static styles: CSSResultGroup = styles;
-
   private readonly formControlController = new FormControlController(this, {
     value: (control: SdCheckbox) => (control.checked ? control.value || 'on' : undefined),
     defaultValue: (control: SdCheckbox) => control.defaultChecked,
@@ -47,8 +43,6 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
   });
 
   @query('input[type="checkbox"]') input: HTMLInputElement;
-
-  @state() private hasFocus = false;
 
   @property() title = ''; // make reactive to pass through
 
@@ -59,7 +53,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
   @property() value: string;
 
   /** The checkbox's size. */
-  @property({ reflect: true }) size: 'small' | 'medium' | 'large' = 'medium';
+  @property({ reflect: true }) size: 'sm' | 'lg' = 'lg';
 
   /** Disables the checkbox. */
   @property({ type: Boolean, reflect: true }) disabled = false;
@@ -86,6 +80,10 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
   /** Makes the checkbox a required field. */
   @property({ type: Boolean, reflect: true }) required = false;
 
+  /** Gets the validity state object */
+  get validity() {
+    return this.input.validity;
+  }
   firstUpdated() {
     this.formControlController.updateValidity();
   }
@@ -97,7 +95,6 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
   }
 
   private handleBlur() {
-    this.hasFocus = false;
     this.emit('sd-blur');
   }
 
@@ -105,13 +102,18 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
     this.emit('sd-input');
   }
 
+  private handleInvalid(event: Event) {
+    this.formControlController.setValidity(false);
+    this.formControlController.emitInvalidEvent(event);
+  }
+
   private handleFocus() {
-    this.hasFocus = true;
     this.emit('sd-focus');
   }
 
   @watch('disabled', { waitUntilFirstUpdate: true })
   handleDisabledChange() {
+    this.setAttribute('aria-disabled', this.disabled ? 'true' : 'false');
     // Disabled form controls are always valid
     this.formControlController.setValidity(this.disabled);
   }
@@ -143,6 +145,11 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
     return this.input.checkValidity();
   }
 
+  /** Gets the associated form, if one exists. */
+  getForm(): HTMLFormElement | null {
+    return this.formControlController.getForm();
+  }
+
   /** Checks for validity and shows a validation message if the control is invalid. */
   reportValidity() {
     return this.input.reportValidity();
@@ -161,19 +168,18 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
     return html`
       <label
         part="base"
-        class=${classMap({
-      checkbox: true,
-      'checkbox--checked': this.checked,
-      'checkbox--disabled': this.disabled,
-      'checkbox--focused': this.hasFocus,
-      'checkbox--indeterminate': this.indeterminate,
-      'checkbox--small': this.size === 'small',
-      'checkbox--medium': this.size === 'medium',
-      'checkbox--large': this.size === 'large'
-    })}
+        class=${cx(
+          'sd-checkbox group flex items-start text-base leading-normal text-black cursor-pointer',
+          this.disabled && 'hover:cursor-not-allowed',
+          {
+            /* sizes, fonts */
+            sm: 'text-sm',
+            lg: 'text-base'
+          }[this.size]
+        )}
       >
         <input
-          class="checkbox__input"
+          class="peer absolute opacity-0 p-0 m-0 pointer-events-none"
           type="checkbox"
           title=${this.title /* An empty title prevents browser validation tooltips from appearing on hover */}
           name=${this.name}
@@ -185,35 +191,93 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
           aria-checked=${this.checked ? 'true' : 'false'}
           @click=${this.handleClick}
           @input=${this.handleInput}
+          @invalid=${this.handleInvalid}
           @blur=${this.handleBlur}
           @focus=${this.handleFocus}
         />
 
         <span
-          part="control${this.checked ? ' control--checked' : ''}${this.indeterminate ? ' control--indeterminate' : ''}"
-          class="checkbox__control"
+          id="control"
+          part="control ${this.checked ? ' control--checked' : 'control--unchecked'} ${this.indeterminate
+            ? ' control--indeterminate'
+            : ''}"
+          class=${cx(
+            `relative flex flex-initial items-center justify-center border rounded-sm h-4 w-4 
+            peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 
+            peer-focus-visible:outline-primary`,
+            {
+              sm: 'mt-[2px]',
+              lg: 'mt-[3px]'
+            }[this.size],
+            (this.disabled && this.indeterminate && 'border-neutral-500 bg-neutral-500') ||
+              (this.disabled && this.checked && 'border-neutral-500 bg-neutral-500') ||
+              (this.disabled && 'border-neutral-500') ||
+              ((this.checked || this.indeterminate) &&
+                'border-accent hover:border-accent-550 group-hover:border-accent-550 bg-accent group-hover:bg-accent-550') ||
+              'border-neutral-800 hover:bg-neutral-200 group-hover:bg-neutral-200 bg-white'
+          )}
         >
           ${this.checked
-        ? html`
-                <sd-icon part="checked-icon" class="checkbox__checked-icon" library="system" name="check"></sd-icon>
+            ? html`
+                <sd-icon part="checked-icon" class="text-white w-3 h-3" library="system" name="status-hook"></sd-icon>
               `
-        : ''}
+            : ''}
           ${!this.checked && this.indeterminate
-        ? html`
+            ? html`
                 <sd-icon
                   part="indeterminate-icon"
-                  class="checkbox__indeterminate-icon"
+                  class="text-white w-3 h-3"
                   library="system"
-                  name="indeterminate"
+                  name="status-minus"
                 ></sd-icon>
               `
-        : ''}
+            : ''}
         </span>
-
-        <slot part="label" class="checkbox__label"></slot>
+        <span
+          part="label"
+          id="label"
+          class=${cx(
+            'select-none inline-block ml-2 text-black',
+            (this.disabled && 'text-neutral-500') || 'text-neutral-800'
+          )}
+        >
+          <slot></slot>
+        </span>
       </label>
     `;
   }
+
+  /**
+   * Inherits Tailwind classes and includes additional styling.
+   */
+  static styles = [
+    SolidElement.styles,
+    css`
+      :host {
+        display: block;
+      }
+
+      :host(:focus-visible) {
+        outline: 0;
+      }
+
+      :host([required]) #label::after {
+        content: ' *';
+      }
+
+      :host([data-user-invalid]) #label {
+        color: rgb(var(--sd-color-error, 204 25 55));
+      }
+
+      :host([data-user-invalid]) #control {
+        border-color: rgb(var(--sd-color-error, 204 25 55));
+      }
+
+      :host([data-user-invalid]):host([indeterminate]) #control {
+        background-color: rgb(var(--sd-color-error, 204 25 55));
+      }
+    `
+  ];
 }
 
 declare global {
