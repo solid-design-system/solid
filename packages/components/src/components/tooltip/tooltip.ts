@@ -263,6 +263,7 @@ export default class SdTooltip extends SolidElement {
         shift
         arrow
         auto-size="vertical"
+        arrow-padding="0"
       >
         <slot slot="anchor" aria-describedby="tooltip" class=${cx(this.size === 'lg' ? 'text-xl' : 'text-base')}>
           <button class="flex sd-interactive rounded-full">
@@ -298,10 +299,21 @@ export default class SdTooltip extends SolidElement {
         display: contents;
       }
 
+      sd-popup {
+        --arrow-color: rgb(var(--sd-color-primary, 0 53 142) / 1);
+        --arrow-size: 10px;
+      }
+
       sd-popup::part(popup) {
         pointer-events: none;
         z-index: 10;
         box-shadow: 0px 1px 3px 0px rgb(81 81 81 / 75%);
+      }
+
+      sd-popup::part(arrow) {
+        --tw-shadow: var(--sd-shadow, 0px 1px 3px 0px rgb(81 81 81 / 75%));
+        --tw-shadow-colored: 0px 1px 3px 0px var(--tw-shadow-color);
+        box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
       }
 
       sd-popup[placement^='top']::part(popup) {

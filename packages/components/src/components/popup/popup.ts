@@ -100,7 +100,7 @@ export default class SdPopup extends SolidElement {
    * The amount of padding between the arrow and the edges of the popup. If the popup has a border-radius, for example,
    * this will prevent it from overflowing the corners.
    */
-  @property({ attribute: 'arrow-padding', type: Number }) arrowPadding = 0;
+  @property({ attribute: 'arrow-padding', type: Number }) arrowPadding = 10;
 
   /**
    * When set, placement of the popup will flip to the opposite site to keep it in view. You can use
@@ -433,9 +433,7 @@ export default class SdPopup extends SolidElement {
         class=${cx('isolate', this.strategy !== 'fixed' ? 'absolute' : 'fixed', !this.active && 'hidden')}
       >
         <slot></slot>
-        ${this.arrow
-          ? html`<div part="arrow" class="absolute rotate-45 -z-10 bg-primary shadow" role="presentation"></div>`
-          : ''}
+        ${this.arrow ? html`<div part="arrow" class="absolute rotate-45 -z-10" role="presentation"></div>` : ''}
       </div>
     `;
   }
@@ -445,12 +443,15 @@ export default class SdPopup extends SolidElement {
     componentStyles,
     css`
       :host {
+        --arrow-color: var(--sd-color-neutral-1000);
+        --arrow-size: 6px;
+
         /*
      * These properties are computed to account for the arrow's dimensions after being rotated 45º. The constant
      * 0.7071 is derived from sin(45), which is the diagonal size of the arrow's container after rotating.
      */
-        --arrow-size-diagonal: calc(10px * 0.7071);
-        --arrow-padding-offset: calc(var(--arrow-size-diagonal) - 10px);
+        --arrow-size-diagonal: calc(var(--arrow-size) * 0.7071);
+        --arrow-padding-offset: calc(var(--arrow-size-diagonal) - var(--arrow-size));
 
         display: contents;
       }
@@ -463,6 +464,7 @@ export default class SdPopup extends SolidElement {
       [part='arrow'] {
         width: calc(var(--arrow-size-diagonal) * 2);
         height: calc(var(--arrow-size-diagonal) * 2);
+        background: var(--arrow-color);
       }
     `
   ];
