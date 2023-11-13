@@ -6,18 +6,12 @@ describe('<sd-header>', () => {
     const el = await fixture<SdHeader>(html`<sd-header></sd-header>`);
 
     expect(el.fixed).to.be.false;
-    expect(el.autoSpacing).to.be.false;
     expect(el.shadowRoot!.querySelector<HTMLElement>('[part~="main"]')).to.exist;
   });
 
   it('allows to set fixed property', async () => {
     const el = await fixture<SdHeader>(html`<sd-header .fixed=${true}></sd-header>`);
     expect(el.fixed).to.be.true;
-  });
-
-  it('allows to set auto-spacing property', async () => {
-    const el = await fixture<SdHeader>(html`<sd-header .autoSpacing=${false}></sd-header>`);
-    expect(el.autoSpacing).to.be.false;
   });
 
   it('sets body style padding-top when auto-spacing is true', async () => {
@@ -37,7 +31,7 @@ describe('<sd-header>', () => {
   it('applies correct custom CSS properties', async () => {
     const el = await fixture<SdHeader>(
       html`<sd-header
-        style="--sd-header-inner-width: 100px; --sd-header-inner-max-width: 500px; --sd-header-padding-top: 10px; --sd-header-padding-bottom: 20px;"
+        style="--sd-header-inner-width: 100px; --sd-header-inner-max-width: 500px; --sd-header-padding: 10px;"
       ></sd-header>`
     );
     const shadowRoot = el.shadowRoot!;
@@ -46,7 +40,6 @@ describe('<sd-header>', () => {
 
     expect(computedStyles.width).to.equal('100px');
     expect(computedStyles.maxWidth).to.equal('500px');
-    expect(computedStyles.paddingTop).to.equal('10px');
-    expect(computedStyles.paddingBottom).to.equal('20px');
+    expect(computedStyles.padding).to.equal('10px');
   });
 });
