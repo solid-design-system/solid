@@ -37,8 +37,8 @@ const toastStackBottomCenter = Object.assign(document.createElement('div'), {
  * @csspart icon - The container that wraps the optional icon.
  * @csspart content - The container that wraps the notifications's main content and the close button.
  * @csspart message - The container that wraps the notifications's main content.
- * @csspart duration-indicator-current - The current duration indicator.
- * @csspart duration-indicator-total - The total duration indicator.
+ * @csspart duration-indicator__elapsed - The current duration indicator.
+ * @csspart duration-indicator__total - The total duration indicator.
  * @csspart close-button - The close button, an `<sd-icon-button>`.
  *
  * @animation notification.show - The animation to use when showing the sd-notification.
@@ -271,12 +271,12 @@ export default class SdNotification extends SolidElement {
         ${this.durationIndicator
           ? html`
               <div
-                part="duration-indicator-current"
-                id="duration-indicator-current"
+                part="duration-indicator__elapsed"
+                id="duration-indicator__elapsed"
                 style=${`animation-duration: ${this.duration}ms`}
                 class=${cx(`absolute w-0 h-[2px] bottom-0 bg-primary z-10 animate-grow`)}
               ></div>
-              <div part="duration-indicator-total" class="w-full h-[2px] bottom-0 absolute bg-neutral-400"></div>
+              <div part="duration-indicator__total" class="w-full h-[2px] bottom-0 absolute bg-neutral-400"></div>
             `
           : ''}
       </div>
@@ -294,7 +294,7 @@ export default class SdNotification extends SolidElement {
         display: contents;
       }
 
-      #notification:hover #duration-indicator-current {
+      #notification:hover #duration-indicator__elapsed {
         animation-play-state: paused !important;
       }
     `

@@ -271,7 +271,7 @@ export const ToastBottomCenter = {
 };
 
 /**
- * Use the `base`, `icon`, `content`, `message`, `duration-indicator-current`, `duration-indicator-total` and `close-button`, part selectors to customize the notification.
+ * Use the `base`, `icon`, `content`, `message`, `duration-indicator__elapsed`, `duration-indicator__total` and `close-button`, part selectors to customize the notification.
  */
 
 export const Parts = {
@@ -282,8 +282,8 @@ export const Parts = {
         'icon',
         'content',
         'message',
-        'duration-indicator-current',
-        'duration-indicator-total',
+        'duration-indicator__elapsed',
+        'duration-indicator__total',
         'close-button'
       ]
     }
@@ -299,8 +299,8 @@ export const Parts = {
             'icon',
             'content',
             'message',
-            'duration-indicator-current',
-            'duration-indicator-total',
+            'duration-indicator__elapsed',
+            'duration-indicator__total',
             'close-button'
           ].map(part => {
             return {
