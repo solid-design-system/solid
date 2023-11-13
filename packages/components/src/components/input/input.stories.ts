@@ -43,7 +43,7 @@ export default {
 
 export const Default = {
   render: (args: any) => {
-    return html`<div class="w-[231px]">${generateTemplate({ args })}</div> `;
+    return html`<div class="w-[250px]">${generateTemplate({ args })}</div> `;
   }
 };
 
@@ -55,7 +55,7 @@ export const Labels = {
   args: overrideArgs([{ type: 'attribute', name: 'label', value: 'Label' }]),
   render: (args: any) => {
     return html`
-      <div class="w-[231px]">
+      <div class="w-[250px]">
         ${generateTemplate({
           args
         })}
@@ -76,7 +76,7 @@ export const HelpText = {
   ]),
   render: (args: any) => {
     return html`
-      <div class="w-[231px]">
+      <div class="w-[250px]">
         ${generateTemplate({
           args
         })}
@@ -93,7 +93,7 @@ export const Placeholders = {
   args: overrideArgs([{ type: 'attribute', name: 'placeholder', value: 'Type something' }]),
   render: (args: any) => {
     return html`
-      <div class="w-[231px]">
+      <div class="w-[250px]">
         ${generateTemplate({
           args
         })}
@@ -110,7 +110,7 @@ export const Clearable = {
   args: overrideArgs([{ type: 'attribute', name: 'clearable', value: true }]),
   render: (args: any) => {
     return html`
-      <div class="w-[231px]">
+      <div class="w-[250px]">
         ${generateTemplate({
           args
         })}
@@ -133,7 +133,7 @@ export const TogglePassword = {
   args: overrideArgs([{ type: 'attribute', name: 'type', value: 'password' }]),
   render: (args: any) => {
     return html`
-      <div class="w-[231px]">
+      <div class="w-[250px]">
         ${generateTemplate({
           args,
           constants: [
@@ -163,7 +163,7 @@ export const Disabled = {
   ]),
   render: (args: any) => {
     return html`
-      <div class="w-[231px]">
+      <div class="w-[250px]">
         ${generateTemplate({
           constants: [{ type: 'attribute', name: 'disabled', value: true }],
           args
@@ -190,7 +190,7 @@ export const Readonly = {
   ]),
   render: (args: any) => {
     return html`
-      <div class="w-[231px]">
+      <div class="w-[250px]">
         ${generateTemplate({
           constants: [{ type: 'attribute', name: 'readonly', value: true }],
           args
@@ -724,7 +724,7 @@ export const Parts = {
 
 export const Mouseless = {
   render: (args: any) => {
-    return html`<div class="mouseless w-[231px]">${generateTemplate({ args })}</div>`;
+    return html`<div class="mouseless w-[250px]">${generateTemplate({ args })}</div>`;
   },
 
   play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
@@ -746,21 +746,9 @@ export const Samples = {
   },
   render: () => {
     return html`
-      <style>
-        .headline {
-          margin-bottom: 16px;
-          padding: 16px;
-          background: #e0e0e0;
-          text-align: left;
-          font-size: 14px;
-          font-weight: bold;
-          width: 100%;
-          box-sizing: border-box;
-        }
-      </style>
-      <div>
-        <div class="headline">sd-input with currency stepper</div>
-        <sd-input id="stepperSampleInput" type="number" min="0" class="w-[231px]"
+      <div class="w-[250px]">
+        <div class="mb-4 p-4 bg-neutral-300 text-sm font-bold w-full box-border">sd-input with currency stepper</div>
+        <sd-input id="stepperSampleInput" type="number" min="0"
           ><span slot="right" class="text-sm inline-flex items-center"
             ><span class="text-neutral-700">EUR</span>
             <button

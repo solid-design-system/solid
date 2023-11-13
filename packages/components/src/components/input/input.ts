@@ -76,7 +76,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   );
   private readonly localize = new LocalizeController(this);
 
-  @query('.input__control') input: HTMLInputElement;
+  @query('#input') input: HTMLInputElement;
 
   @state() private hasFocus = false;
 
@@ -105,7 +105,6 @@ export default class SdInput extends SolidElement implements SolidFormControl {
    */
   @property() inputmode: 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
 
-  // --------------------------- GENERIC --------------------------- //
   /** The current value of the input, submitted as a name/value pair with form data. */
   @property() value = '';
 
@@ -120,9 +119,6 @@ export default class SdInput extends SolidElement implements SolidFormControl {
 
   /** The input's help text. If you need to display HTML, use the `help-text` slot instead. */
   @property({ attribute: 'help-text' }) helpText = '';
-
-  /** Adds plain text to the input's success / error message underneath the help-text. */
-  @property({ attribute: 'message' }) message = ''; // TODO: Should we remove this until we have sd-inline-error?
 
   /** Adds a clear button when the input is not empty. */
   @property({ type: Boolean }) clearable = false;
@@ -509,7 +505,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                 ? html`<slot
                     name="left"
                     part="left"
-                    class=${cx('input__left inline-flex', this.size === 'sm' ? 'mr-1' : 'mr-2', iconColor, iconSize)}
+                    class=${cx('inline-flex', this.size === 'sm' ? 'mr-1' : 'mr-2', iconColor, iconSize)}
                   ></slot>`
                 : ''
             }
@@ -517,7 +513,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               part="input"
               id="input"
               class=${cx(
-                'input__control min-w-0 flex-grow focus:outline-none bg-transparent placeholder-neutral-700',
+                'min-w-0 flex-grow focus:outline-none bg-transparent placeholder-neutral-700',
                 this.size === 'sm' ? 'h-6' : 'h-8',
                 textSize
               )}
@@ -534,7 +530,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               max=${ifDefined(this.max)}
               step=${ifDefined(this.step as number)}
               .value=${live(this.value)}
-              autocapitalize=${ifDefined(this.type === 'password' ? 'off' : this.autocapitalize)} 
+              autocapitalize=${ifDefined(this.type === 'password' ? 'off' : this.autocapitalize)}
               autocomplete=${ifDefined(this.type === 'password' ? 'off' : this.autocomplete)}
               autocorrect=${ifDefined(this.type === 'password' ? 'off' : this.autocorrect)}
               ?autofocus=${this.autofocus}
@@ -556,7 +552,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                 ? html`
                     <button
                       part="clear-button"
-                      class=${cx('input__clear flex justify-center ', iconMarginLeft)}
+                      class=${cx('flex justify-center ', iconMarginLeft)}
                       type="button"
                       aria-label=${this.localize.term('clearEntry')}
                       @click=${this.handleClearClick}
@@ -579,7 +575,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                     <button
                       aria-label=${this.localize.term(this.passwordVisible ? 'hidePassword' : 'showPassword')}
                       part="password-toggle-button"
-                      class="input__password-toggle flex items-center"
+                      class="flex items-center"
                       type="button"
                       @click=${this.handlePasswordToggle}
                       tabindex="-1"
@@ -648,7 +644,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                 ? html`<slot
                     name="right"
                     part="right"
-                    class=${cx('input__right inline-flex', iconColor, iconMarginLeft, iconSize)}
+                    class=${cx('inline-flex', iconColor, iconMarginLeft, iconSize)}
                   ></slot>`
                 : ''
             }
