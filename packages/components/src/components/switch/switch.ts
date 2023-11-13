@@ -184,12 +184,12 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
           part="control ${this.checked ? ' control--checked' : 'control--unchecked'}"
           class=${cx(
             `relative flex flex-initial items-center justify-center border rounded-full h-4 w-8  
-            peer-focus-visible:outline peer-focus-visible:outline-2 
-            peer-focus-visible:outline-primary transition ease`,
+            peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2
+            peer-focus-visible:outline-primary transition ease-out duration-500`,
             (this.disabled && this.checked && 'border-neutral-500 bg-neutral-500') ||
               (this.disabled && 'border-neutral-500') ||
-              (this.checked && 'border-accent bg-accent') ||
-              'border-neutral-800 bg-white'
+              (this.checked && 'border-accent bg-accent hover:bg-accent-550') ||
+              'border-neutral-800 bg-white hover:bg-neutral-200'
           )}
         >
           <span
