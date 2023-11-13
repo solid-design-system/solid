@@ -272,8 +272,9 @@ export default class SdNotification extends SolidElement {
           ? html`
               <div
                 part="duration-indicator-current"
+                id="duration-indicator-current"
                 style=${`animation-duration: ${this.duration}ms`}
-                class=${cx(`h-[2px] bottom-0 absolute bg-primary z-10 width-animation`)}
+                class=${cx(`absolute w-0 h-[2px] bottom-0 bg-primary z-10 animate-grow`)}
               ></div>
               <div part="duration-indicator-total" class="w-full h-[2px] bottom-0 absolute bg-neutral-400"></div>
             `
@@ -293,24 +294,8 @@ export default class SdNotification extends SolidElement {
         display: contents;
       }
 
-      .width-animation {
-        width: 0%;
-        animation: grow;
-        animation-timing-function: linear;
-        animation-delay: 0s;
-      }
-
-      #notification:hover .width-animation {
-        animation-play-state: paused;
-      }
-
-      @keyframes grow {
-        0% {
-          width: 0%;
-        }
-        100% {
-          width: 100%;
-        }
+      #notification:hover #duration-indicator-current {
+        animation-play-state: paused !important;
       }
     `
   ];
