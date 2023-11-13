@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v1.25.0](https://github.com/solid-design-system/solid/compare/components/1.24.0...components/1.25.0) (2023-11-13)
+
+
+### Features
+
+* ✨ add sd-header ([#512](https://github.com/solid-design-system/solid/issues/512)) ([3e012fc](https://github.com/solid-design-system/solid/commit/3e012fcea68230d18f5cc797a8a1ed1298b5ec19)), closes [#301](https://github.com/solid-design-system/solid/issues/301)
+
+### 📈 Stats
+* Bundle size (uncompressed): 204 KB (+2 KB / +1%)
+* Bundle size (gzipped): 53 KB (+1 KB / +2%)
+
 # [@solid-design-system/components-v1.24.0](https://github.com/solid-design-system/solid/compare/components/1.23.0...components/1.24.0) (2023-11-13)
 
 
