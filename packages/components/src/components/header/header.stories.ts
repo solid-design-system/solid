@@ -296,7 +296,7 @@ export const SampleB = {
             </div>
             <!-- bottom-left-area end !-->
             <!-- bottom-right-area start !-->
-            <div class="-mr-4 flex items-center">
+            <div class="flex items-center">
               <sd-navigation-item>
                 <div class="w-4 h-4 flex items-center"><sd-icon title="Unsere weiteren Auftritte" name="system/website" library="global-resources" class="text-xl absolute -ml-[4px]"></sd-icon></div>
               </sd-navigation-item>
