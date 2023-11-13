@@ -11,7 +11,7 @@ import type { PropertyValues } from 'lit';
  * @documentation https://solid.union-investment.com/[storybook-link]/header
  *
  * @status stable
- * @since 1.24.0
+ * @since 1.25.0
  *
  * @slot - The header's default content.
  *
@@ -93,7 +93,7 @@ export default class SdHeader extends SolidElement {
   render() {
     return html`
       <header class="w-full bg-white relative" role="banner" @slotchange=${this.handleSlotChange}>
-        <div part="main" class="relative mx-0 my-auto box-border">
+        <div part="main" class="relative mx-auto my-0 box-border">
           <slot></slot>
         </div>
       </header>
