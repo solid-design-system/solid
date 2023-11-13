@@ -28,6 +28,6 @@
   }
 
   sd-notification::part(content) {
-    @apply border-white pl-3 pr-[0px,] py-[8px];
+    @apply border-white;
   }
 }
