@@ -181,7 +181,7 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
           class=${cx(
             `relative flex flex-initial items-center justify-center border rounded-full h-4 w-8  
             peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2
-            peer-focus-visible:outline-primary transition ease-out duration-500`,
+            peer-focus-visible:outline-primary`,
             (this.disabled && this.checked && 'border-neutral-500 bg-neutral-500') ||
               (this.disabled && 'border-neutral-500') ||
               (this.checked && 'border-accent bg-accent hover:bg-accent-550') ||
@@ -192,7 +192,7 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
             id="thumb"
             part="thumb"
             class=${cx(
-              'w-2.5 h-2.5 rounded-full transition ease',
+              'w-2.5 h-2.5 rounded-full transition-transform ease-in-out duration-200',
               (this.checked && 'translate-x-2 bg-white') ||
                 (this.disabled && this.checked && 'bg-white') ||
                 (this.disabled && '-translate-x-2 bg-neutral-500') ||
