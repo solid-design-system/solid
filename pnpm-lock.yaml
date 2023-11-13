@@ -160,8 +160,8 @@ importers:
         specifier: ^2.4.2
         version: 2.4.2
       chromatic:
-        specifier: ^7.6.0
-        version: 7.6.0
+        specifier: ^9.0.0
+        version: 9.0.0
       comment-parser:
         specifier: ^1.4.1
         version: 1.4.1
@@ -6113,8 +6113,8 @@ packages:
     resolution: {integrity: sha512-U9eDw6+wt7V8z5NncY2jJfZa+hUH8XEj8FQHgFJTrUFnJfXYf4Ml4adI2vXZOjqRDpFWtYVWypDfZwnJ+HIR4A==}
     dev: true
 
-  /chromatic@7.6.0:
-    resolution: {integrity: sha512-4MwlX8EDMyfQKf1NXTdUhJ2b0EYueByaVrF75pdFaOzHH7n3OhzknmQYbUSegLiFhKvHuvM8nZvf9SCajO+Cow==}
+  /chromatic@9.0.0:
+    resolution: {integrity: sha512-PczbWYOfqsf/SM0yIzI3ZOpFznEyf9Fc96EkxoYkhztFaA9CEOcpA9nk8zpmNgPUQWmIWNyG7z4xEK40sApFzw==}
     hasBin: true
     dev: true
 
