@@ -138,7 +138,7 @@ export const SampleA = {
             value: `<div class="flex justify-between items-center">
             <!-- top-left-area start !-->
             <div class="flex flex-shrink">
-              <img class='h-8 md:h-12 lg:h-[56px]' src='../../../dist/storybook/images/logo-unioninvestment-lg.svg' alt='Logo'/>
+              <img class='h-8 md:h-12 lg:h-[56px]' src='../../../.storybook/assets/images/logo-unioninvestment-lg.svg' alt='Logo'/>
             </div>
             <!-- top-left-area end !-->
             <!-- top-right-area start !-->
@@ -269,15 +269,15 @@ export const SampleB = {
             value: `<div class="flex justify-between items-center">
             <!-- top-left-area start !-->
             <div class="flex flex-shrink">
-              <img class='sm:h-12 lg:h-[56px] hidden sm:flex' src='../../../dist/storybook/images/logo-unioninvestment-lg.svg' alt='Logo'/>
-              <img class='h-8 sm:hidden' src='../../../dist/storybook/images/logo-unioninvestment-sm.svg' alt='Logo'/>
+              <img class='sm:h-12 lg:h-[56px] hidden sm:flex' src='../../../.storybook/assets/images/logo-unioninvestment-lg.svg' alt='Logo'/>
+              <img class='h-8 sm:hidden' src='../../../.storybook/assets/images/logo-unioninvestment-sm.svg' alt='Logo'/>
             </div>
             <!-- top-left-area end !-->
             <!-- top-right-area start !-->
             <div class="flex gap-2 sm:gap-12 items-center">
               <div class="flex">
-                <img class='md:h-12 lg:h-[56px] hidden md:flex' src='../../../dist/storybook/images/logo-finanzagenda-lg.svg' alt='Logo'/>
-                <img class='h-12 lg:h-[56px] md:hidden' src='../../../dist/storybook/images/logo-finanzagenda-sm.svg' alt='Logo'/>
+                <img class='md:h-12 lg:h-[56px] hidden md:flex' src='../../../.storybook/assets/images/logo-finanzagenda-lg.svg' alt='Logo'/>
+                <img class='h-12 lg:h-[56px] md:hidden' src='../../../.storybook/assets/images/logo-finanzagenda-sm.svg' alt='Logo'/>
               </div>
               <div class="flex lg:hidden">
                 <sd-navigation-item>
