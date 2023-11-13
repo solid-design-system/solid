@@ -31,7 +31,7 @@ const isFirefox = isChromium ? false : navigator.userAgent.includes('Firefox');
  * @summary Inputs collect data from the user.
  * @documentation https://solid.union-investment.com/[storybook-link]/input
  * @status stable
- * @since 1.0
+ * @since 1.24.0
  *
  * @dependency sd-icon
  *
