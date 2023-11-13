@@ -184,8 +184,8 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
           part="control ${this.checked ? ' control--checked' : 'control--unchecked'}"
           class=${cx(
             `relative flex flex-initial items-center justify-center border rounded-full h-4 w-8  
-            peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 
-            peer-focus-visible:outline-primary`,
+            peer-focus-visible:outline peer-focus-visible:outline-2 
+            peer-focus-visible:outline-primary transition ease`,
             (this.disabled && this.checked && 'border-neutral-500 bg-neutral-500') ||
               (this.disabled && 'border-neutral-500') ||
               (this.checked && 'border-accent bg-accent') ||
@@ -196,11 +196,11 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
             id="thumb"
             part="thumb"
             class=${cx(
-              'w-2.5 h-2.5 rounded-full',
-              (this.disabled && this.checked && 'bg-white') ||
-                (this.disabled && 'bg-neutral-500') ||
-                (this.checked && 'bg-white') ||
-                'bg-neutral-800'
+              'w-2.5 h-2.5 rounded-full transition ease',
+              (this.checked && 'translate-x-2 bg-white') ||
+                (this.disabled && this.checked && 'bg-white') ||
+                (this.disabled && '-translate-x-2 bg-neutral-500') ||
+                'bg-neutral-800 -translate-x-2'
             )}
           ></span>
         </span>
