@@ -1,3 +1,36 @@
+# [@solid-design-system/components-v1.23.0](https://github.com/solid-design-system/solid/compare/components/1.22.0...components/1.23.0) (2023-11-10)
+
+
+### Features
+
+* ✨ add sd-tooltip ([#436](https://github.com/solid-design-system/solid/issues/436)) ([45d8f63](https://github.com/solid-design-system/solid/commit/45d8f63323c24008f45f0ccfb79065847c994566)), closes [#244](https://github.com/solid-design-system/solid/issues/244)
+
+### 📈 Stats
+* Bundle size (uncompressed): 185 KB (+6 KB / +3%)
+* Bundle size (gzipped): 48 KB (+1 KB / +2%)
+
+# [@solid-design-system/components-v1.22.0](https://github.com/solid-design-system/solid/compare/components/1.21.1...components/1.22.0) (2023-11-10)
+
+
+### Features
+
+* ✨ sd-checkbox & sd-checkbox-group ([#507](https://github.com/solid-design-system/solid/issues/507)) ([ea9bda2](https://github.com/solid-design-system/solid/commit/ea9bda262efaa1fd3b36f9666b0b6b6619ec4509))
+
+### 📈 Stats
+* Bundle size (uncompressed): 179 KB (+9 KB / +5%)
+* Bundle size (gzipped): 47 KB (+2 KB / +4%)
+
+# [@solid-design-system/components-v1.21.1](https://github.com/solid-design-system/solid/compare/components/1.21.0...components/1.21.1) (2023-11-09)
+
+
+### Bug Fixes
+
+* 🤔 Typo -> sl-icon ([#525](https://github.com/solid-design-system/solid/issues/525)) ([1c2e363](https://github.com/solid-design-system/solid/commit/1c2e3639b7c33cc87fb8cbda36b2c6aa0b8c4959))
+
+### 📈 Stats
+* Bundle size (uncompressed): 170 KB (unchanged)
+* Bundle size (gzipped): 45 KB (unchanged)
+
 # [@solid-design-system/components-v1.21.0](https://github.com/solid-design-system/solid/compare/components/1.20.0...components/1.21.0) (2023-11-08)
 
 

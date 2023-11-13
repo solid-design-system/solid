@@ -1,7 +1,7 @@
 {
   "name": "@solid-design-system/components",
   "description": "Solid Design System: Components",
-  "version": "1.21.0",
+  "version": "1.23.0",
   "homepage": "https://solid-design-system.fe.union-investment.de/x.x.x/storybook/",
   "author": {
     "name": "Union Investment"
@@ -112,10 +112,10 @@
     "autoprefixer": "^10.4.16",
     "cem-plugin-vs-code-custom-data-generator": "^1.4.2",
     "chroma-js": "^2.4.2",
-    "chromatic": "^7.6.0",
+    "chromatic": "^9.0.0",
     "comment-parser": "^1.4.1",
     "cssnano": "^6.0.1",
-    "globby": "^13.2.2",
+    "globby": "^14.0.0",
     "gzip-size": "^7.0.0",
     "html-format": "^1.1.2",
     "jsonata": "^2.0.3",
@@ -184,8 +184,8 @@
   "readme": "README.md",
   "meta": {
     "bundleSizeInKb": {
-      "uncompressed": 170,
-      "gzip": 45
+      "uncompressed": 185,
+      "gzip": 48
     }
   }
 }
