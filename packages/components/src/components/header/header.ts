@@ -11,7 +11,7 @@ import type { PropertyValues } from 'lit';
  * @documentation https://solid.union-investment.com/[storybook-link]/header
  *
  * @status stable
- * @since 1.0
+ * @since 1.24.0
  *
  * @slot - The header's default content.
  *
