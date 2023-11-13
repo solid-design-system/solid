@@ -134,37 +134,12 @@ export const ToastNotification = {
   name: 'Toast Notification (Default)',
   render: (_args: Record<string, any>) => {
     return html`
-      <div class="h-12 text-lg font-bold flex gap-1">
-        <button
-          class="top-right sd-interactive hover:text-white hover:opacity-75 bg-info w-24 text-white rounded-md"
-          notification-type="info"
-          variant="primary"
-        >
-          Info
-        </button>
-        <button
-          class="top-right sd-interactive hover:text-white hover:opacity-75 bg-success w-24 text-white rounded-md"
-          notification-type="success"
-          variant="primary"
-        >
-          Success
-        </button>
-        <button
-          class="top-right sd-interactive hover:text-white hover:opacity-75 bg-warning w-24 text-white rounded-md"
-          notification-type="warning"
-          variant="primary"
-        >
-          Warning
-        </button>
-        <button
-          class="top-right sd-interactive hover:text-white hover:opacity-75 bg-error w-24 text-white rounded-md"
-          notification-type="error"
-          variant="primary"
-        >
-          Error
-        </button>
+      <div class="flex gap-2">
+        <sd-button variant="secondary" notification-type="info" class="w-24 top-right"> Info </sd-button>
+        <sd-button variant="secondary" notification-type="success" class="w-24 top-right"> Success </sd-button>
+        <sd-button variant="secondary" notification-type="warning" class="w-24 top-right">Warning</sd-button>
+        <sd-button variant="secondary" notification-type="error" class="w-24 top-right">Error</sd-button>
       </div>
-
       <script>
         var buttons = document.querySelectorAll('.top-right');
 
@@ -207,35 +182,11 @@ export const ToastBottomCenter = {
   name: 'Toast Notification (Bottom Center)',
   render: (_args: Record<string, any>) => {
     return html`
-      <div class="text-lg font-bold h-12 flex gap-1">
-        <button
-          class="bottom-center sd-interactive hover:text-white hover:opacity-75 bg-info w-24 text-white rounded-md"
-          notification-type="info"
-          variant="primary"
-        >
-          Info
-        </button>
-        <button
-          class="bottom-center sd-interactive hover:text-white hover:opacity-75 bg-success w-24 text-white rounded-md"
-          notification-type="success"
-          variant="primary"
-        >
-          Success
-        </button>
-        <button
-          class="bottom-center sd-interactive hover:text-white hover:opacity-75 bg-warning w-24 text-white rounded-md"
-          notification-type="warning"
-          variant="primary"
-        >
-          Warning
-        </button>
-        <button
-          class="bottom-center sd-interactive hover:text-white hover:opacity-75 bg-error w-24 text-white rounded-md"
-          notification-type="error"
-          variant="primary"
-        >
-          Error
-        </button>
+      <div class="flex gap-2">
+        <sd-button variant="secondary" notification-type="info" class="w-24 bottom-center"> Info </sd-button>
+        <sd-button variant="secondary" notification-type="success" class="w-24 bottom-center"> Success </sd-button>
+        <sd-button variant="secondary" notification-type="warning" class="w-24 bottom-center">Warning</sd-button>
+        <sd-button variant="secondary" notification-type="error" class="w-24 bottom-center">Error</sd-button>
       </div>
 
       <script>
@@ -250,7 +201,7 @@ export const ToastBottomCenter = {
             innerHTML: 'Lorem ipsum dolor sit amet.'
           });
 
-          notification.style.width = '251px';
+          notification.style.width = '250px';
 
           document.body.append(notification);
           return notification.toast();

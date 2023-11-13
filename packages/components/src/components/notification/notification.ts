@@ -210,13 +210,6 @@ export default class SdNotification extends SolidElement {
   }
 
   render() {
-    const variantToIconName = {
-      info: 'info-circle',
-      success: 'confirm-circle',
-      warning: 'exclamation-circle',
-      error: 'warning'
-    };
-
     return html`
       <div
         part="base"
@@ -240,12 +233,16 @@ export default class SdNotification extends SolidElement {
             }[this.variant]
           )}
         >
-          <sd-icon name=${{
-       info: 'info-circle',
-       success: 'confirm-circle',
-       warning: 'exclamation-circle',
-       error: 'warning'
-     }[this.variant] || ''} library="system" class="h-6 w-6 text-white"></sd-icon>
+          <sd-icon
+            name=${{
+              info: 'info-circle',
+              success: 'confirm-circle',
+              warning: 'exclamation-circle',
+              error: 'warning'
+            }[this.variant] || ''}
+            library="system"
+            class="h-6 w-6 text-white"
+          ></sd-icon>
         </slot>
 
         <div
