@@ -137,9 +137,9 @@ export const SampleA = {
             name: 'default',
             value: `<div class="flex justify-between items-center">
             <!-- top-left-area start !-->
-            <div class="flex flex-shrink">
+            <a class="flex flex-shrink" href='#'>
               <img class='h-8 md:h-12 lg:h-[56px]' src='images/logo-unioninvestment-lg.svg' alt='Logo'/>
-            </div>
+            </a>
             <!-- top-left-area end !-->
             <!-- top-right-area start !-->
             <div class="flex lg:hidden">
@@ -268,10 +268,10 @@ export const SampleB = {
             name: 'default',
             value: `<div class="flex justify-between items-center">
             <!-- top-left-area start !-->
-            <div class="flex flex-shrink">
+            <a class="flex flex-shrink" href='#'>
               <img class='sm:h-12 lg:h-[56px] hidden sm:flex' src='/images/logo-unioninvestment-lg.svg' alt='Logo'/>
               <img class='h-8 sm:hidden' src='images/logo-unioninvestment-sm.svg' alt='Logo'/>
-            </div>
+            </a>
             <!-- top-left-area end !-->
             <!-- top-right-area start !-->
             <div class="flex gap-2 sm:gap-12 items-center">
