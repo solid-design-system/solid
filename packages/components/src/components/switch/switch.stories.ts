@@ -52,15 +52,6 @@ export const Disabled = {
   }
 };
 
-export const MultipleLines = {
-  parameters: { controls: { exclude: ['size'] } },
-  render: () => {
-    return generateTemplate({
-      args: overrideArgs([{ type: 'slot', name: 'default', value: 'Default Slot<br />Second Line' }])
-    });
-  }
-};
-
 /**
  * Use the `required` attribute to mark the element as required. This can be used for form validation purposes.
  */
@@ -149,7 +140,7 @@ export const Parts = {
         y: {
           type: 'template',
           name: 'sd-switch::part(...){outline: solid 2px red}',
-          values: ['base', 'control', 'control--unchecked', 'control--checked', 'checked-icon', 'label'].map(part => {
+          values: ['base', 'control', 'control--unchecked', 'control--checked', 'thumb', 'label'].map(part => {
             return {
               title: part,
               value: `

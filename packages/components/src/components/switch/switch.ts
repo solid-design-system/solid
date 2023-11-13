@@ -1,4 +1,3 @@
-import '../icon/icon';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { defaultValue } from '../../internal/default-value';
@@ -15,9 +14,8 @@ import type { SolidFormControl } from '../../internal/solid-element';
  * @summary Checkboxes allow the user to toggle an option on or off.
  * @documentation https://solid.union-investment.com/[storybook-link]/switch
  * @status stable
- * @since 1.22.0
+ * @since 1.24.0
  *
- * @dependency sd-icon
  *
  * @slot - The switch's label.
  *
@@ -29,9 +27,7 @@ import type { SolidFormControl } from '../../internal/solid-element';
  * @csspart base - The component's base wrapper.
  * @csspart control - The square container that wraps the switch's checked state.
  * @csspart control--checked - Matches the control part when the switch is checked.
- * @csspart control--indeterminate - Matches the control part when the switch is indeterminate.
- * @csspart checked-icon - The checked icon, an `<sd-icon>` element.
- * @csspart indeterminate-icon - The indeterminate icon, an `<sd-icon>` element.
+ * @csspart thumb - The circle that marks the checked state.
  * @csspart label - The container that wraps the switch's label.
  */
 @customElement('sd-switch')
