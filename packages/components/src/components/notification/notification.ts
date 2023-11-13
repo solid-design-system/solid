@@ -210,11 +210,11 @@ export default class SdNotification extends SolidElement {
   }
 
   render() {
-    const variantToName = {
-      info: 'info',
-      success: 'success',
-      warning: 'warning',
-      error: 'error'
+    const variantToIconName = {
+      info: 'info-circle',
+      success: 'confirm-circle',
+      warning: 'exclamation-circle',
+      error: 'warning'
     };
 
     return html`
@@ -240,7 +240,7 @@ export default class SdNotification extends SolidElement {
             }[this.variant]
           )}
         >
-          <sd-icon name=${variantToName[this.variant] || ''} library="system" class="h-6 w-6 text-white"></sd-icon>
+          <sd-icon name=${variantToIconName[this.variant] || ''} library="system" class="h-6 w-6 text-white"></sd-icon>
         </slot>
 
         <div

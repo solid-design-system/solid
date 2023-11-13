@@ -4,6 +4,8 @@ import '../../solid-components';
 import { html } from 'lit';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 import { userEvent } from '@storybook/testing-library';
+import { waitUntil } from '@open-wc/testing-helpers';
+
 const { argTypes, parameters } = storybookDefaults('sd-notification');
 const { generateTemplate } = storybookTemplate('sd-notification');
 const { overrideArgs } = storybookHelpers('sd-notification');
@@ -132,7 +134,7 @@ export const ToastNotification = {
   name: 'Toast Notification (Default)',
   render: (_args: Record<string, any>) => {
     return html`
-      <div class="h-12 flex gap-1">
+      <div class="h-12 text-lg font-bold flex gap-1">
         <button
           class="top-right sd-interactive hover:text-white hover:opacity-75 bg-info w-24 text-white rounded-md"
           notification-type="info"
@@ -205,7 +207,7 @@ export const ToastBottomCenter = {
   name: 'Toast Notification (Bottom Center)',
   render: (_args: Record<string, any>) => {
     return html`
-      <div class="h-12 flex gap-1">
+      <div class="text-lg font-bold h-12 flex gap-1">
         <button
           class="bottom-center sd-interactive hover:text-white hover:opacity-75 bg-info w-24 text-white rounded-md"
           notification-type="info"
@@ -325,7 +327,8 @@ export const Parts = {
 
 export const Mouseless = {
   render: (args: any) => {
-    return html`<div class="mouseless">
+    // eslint-disable-next-line lit-a11y/no-autofocus
+    return html`<div class="mouseless" autofocus>
       ${generateTemplate({
         args,
         constants: [
@@ -334,12 +337,21 @@ export const Mouseless = {
         ]
       })}
     </div>`;
-  }
+  },
 
-  // play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
-  //   const el = canvasElement.querySelector('.mouseless sd-notification');
-  //   await waitUntil(() => el?.shadowRoot?.querySelector('sd-button'));
-  //   // We have to catch the event as otherwise Storybook will break
-  //   await userEvent.type(el!.shadowRoot!.querySelector('sd-button')!, '{return}', { pointerEventsCheck: 0 });
-  // }
+  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
+    const el = canvasElement.querySelector('.mouseless sd-notification');
+    await waitUntil(() => el?.shadowRoot?.querySelector('sd-button'));
+    console.log('before trying to focus');
+    console.log(document.activeElement);
+
+    await userEvent.tab();
+    // await clickOnElement(canvasElement.querySelector('.mouseless sd-notification')!);
+    console.log('after trying to focus');
+    console.log(document.activeElement);
+
+    console.log(document.activeElement);
+
+    // await userEvent.tab({ focusTrap: el?.shadowRoot?.querySelector('sd-button') as HTMLElement });
+  }
 };
