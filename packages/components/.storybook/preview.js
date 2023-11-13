@@ -85,6 +85,7 @@ registerIconLibrary('global-resources-overriden', {
 
 export const parameters = {
   docs: {
+    story: { inline: false },
     source: {
       transform: code => storybookUtilities.codeOptimizer(code)
     }

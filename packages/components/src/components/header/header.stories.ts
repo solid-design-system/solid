@@ -7,10 +7,6 @@ const { argTypes, parameters } = storybookDefaults('sd-header');
 const { generateTemplate } = storybookTemplate('sd-header');
 const { overrideArgs } = storybookHelpers('sd-header');
 
-/**
- * Note: The width requirement for the header component results in a visual overflow in Storybook docs.
- */
-
 export default {
   title: 'Components/sd-header',
   component: 'sd-header',
@@ -26,7 +22,13 @@ export default {
   decorators: [
     withActions,
     (story: any) =>
-      html` <style>
+      html`<style>
+          body.sb-show-main.sb-main-padded {
+            padding: 0;
+          }
+          .innerZoomElementWrapper > * {
+            border: none !important;
+          }
           @media (max-width: 1024px) and (min-width: 768px) {
             .top-right {
               display: flex;
@@ -56,8 +58,7 @@ export const Fixed = {
     controls: { exclude: ['fixed', '--sd-header-inner-width'] }
   },
   render: (args: any) => {
-    return html`<div style="height: 100px;">
-      ${generateTemplate({
+    return html` ${generateTemplate({
         constants: [
           {
             type: 'attribute',
@@ -67,24 +68,24 @@ export const Fixed = {
         ],
         args
       })}
-    </div>`;
+      <div class="bg-neutral-100 p-8" style="margin-top: var(--sd-header-calculated-height)">
+        This element automatically sets its position depending on the height of the header.
+      </div>`;
   }
 };
 
 /* Sample Header responsive – variant A - 01 */
-export const ResponsiveSample1 = {
+export const SampleA = {
   parameters: {
     controls: {
       exclude: ['default']
     }
   },
   render: (args: any) => {
-    return html`<div
-      style="height: 100px; --sd-header-inner-max-width: 1456px; --sd-header-padding-top:24px; --sd-header-padding-bottom:0;"
-    >
+    return html`<div style="height: 100px; --sd-header-inner-max-width: 1456px;">
       <style>
         :root {
-          --sd-header-padding: 0 8px 0 8px;
+          --sd-header-padding: 8px 16px;
         }
 
         sd-header {
@@ -127,12 +128,17 @@ export const ResponsiveSample1 = {
         args,
         constants: [
           {
+            type: 'attribute',
+            name: 'fixed',
+            value: 'true'
+          },
+          {
             type: 'slot',
             name: 'default',
             value: `<div class="flex justify-between items-center">
             <!-- top-left-area start !-->
             <div class="flex flex-shrink">
-            <img class='h-8 md:h-12 lg:h-[56px]' src='./placeholders/logo-ui-lg.svg' alt='Logo'/>
+              <img class='h-8 md:h-12 lg:h-[56px]' src='../../../dist/storybook/images/logo-unioninvestment-lg.svg' alt='Logo'/>
             </div>
             <!-- top-left-area end !-->
             <!-- top-right-area start !-->
@@ -152,18 +158,18 @@ export const ResponsiveSample1 = {
             </div>
             <!-- bottom-left-area end !-->
             <!-- bottom-right-area start !-->
-            <div class="-mr-4 flex">
+            <div class="-mr-4 flex items-center">
               <sd-navigation-item>
-                <sd-icon name="system/website" library="global-resources" class="text-xl -my-[1.5px] -mx-[4px]"></sd-icon>
+                <div class="w-4 h-4 flex items-center"><sd-icon title="Unsere weiteren Auftritte" name="system/website" library="global-resources" class="text-xl absolute -ml-[4px]"></sd-icon></div>
               </sd-navigation-item>
               <sd-navigation-item>
-                <sd-icon name="system/magnifying-glass" library="global-resources" class="text-xl -my-[1.5px] -mx-[4px]"></sd-icon>
+                <div class="w-4 h-4 flex items-center"><sd-icon title="Suche" name="system/magnifying-glass" library="global-resources" class="text-xl absolute -ml-[4px]"></sd-icon></div>
               </sd-navigation-item>
               <sd-navigation-item>
-                <sd-icon name="system/profile" library="global-resources" class="text-xl mr-2"></sd-icon>Mein Depot
+                <div class="flex items-center gap-2"><sd-icon name="system/profile" library="global-resources" class="text-xl"></sd-icon><span>Mein Depot</span></div>
               </sd-navigation-item>
               <sd-navigation-item>
-                <sd-icon name="system/lock-locked" library="global-resources" class="text-xl mr-2"></sd-icon>Meine Bewerbung
+                <div class="flex items-center gap-2"><sd-icon name="system/lock-locked" library="global-resources" class="text-xl"></sd-icon><span>Meine Bewerbung</span></div>
               </sd-navigation-item>
             <!-- bottom-right-area end !-->
             </div>
@@ -176,8 +182,9 @@ export const ResponsiveSample1 = {
 };
 
 /* Sample Header lg – variant A - 01 */
-export const MediumViewportSample1 = {
-  ...ResponsiveSample1,
+export const SampleAMd = {
+  name: '↳ Tablet',
+  ...SampleA,
   parameters: {
     viewport: { defaultViewport: 'tablet' },
     controls: {
@@ -187,8 +194,9 @@ export const MediumViewportSample1 = {
 };
 
 /* Sample Header sm - variant A - 01 */
-export const SmallViewportSample1 = {
-  ...ResponsiveSample1,
+export const SampleASm = {
+  name: '↳ Small mobile',
+  ...SampleA,
   parameters: {
     viewport: { defaultViewport: 'mobile1' },
     controls: {
@@ -198,19 +206,17 @@ export const SmallViewportSample1 = {
 };
 
 /* Sample Header responsive – variant B */
-export const ResponsiveSample2 = {
+export const SampleB = {
   parameters: {
     controls: {
       exclude: ['default']
     }
   },
   render: (args: any) => {
-    return html`<div
-      style="height: 100px; --sd-header-inner-max-width: 1456px; --sd-header-padding-top:24px; --sd-header-padding-bottom:0;"
-    >
+    return html`<div style="height: 100px; --sd-header-inner-max-width: 1456px;">
       <style>
         :root {
-          --sd-header-padding: 0 8px 0 8px;
+          --sd-header-padding: 8px 16px;
         }
 
         sd-header {
@@ -253,24 +259,33 @@ export const ResponsiveSample2 = {
         args,
         constants: [
           {
+            type: 'attribute',
+            name: 'fixed',
+            value: 'true'
+          },
+          {
             type: 'slot',
             name: 'default',
             value: `<div class="flex justify-between items-center">
             <!-- top-left-area start !-->
             <div class="flex flex-shrink">
-            <img class='h-8 md:h-12 lg:h-[56px]' src='./placeholders/logo-ui-lg.svg' alt='Logo'/>
+              <img class='sm:h-12 lg:h-[56px] hidden sm:flex' src='../../../dist/storybook/images/logo-unioninvestment-lg.svg' alt='Logo'/>
+              <img class='h-8 sm:hidden' src='../../../dist/storybook/images/logo-unioninvestment-sm.svg' alt='Logo'/>
             </div>
             <!-- top-left-area end !-->
             <!-- top-right-area start !-->
-            <div class="flex">
-            <img class='h-8 md:h-12 lg:h-[56px]' src='./placeholders/logo-fa-lg.svg' alt='Logo'/>
+            <div class="flex gap-2 sm:gap-12 items-center">
+              <div class="flex">
+                <img class='md:h-12 lg:h-[56px] hidden md:flex' src='../../../dist/storybook/images/logo-finanzagenda-lg.svg' alt='Logo'/>
+                <img class='h-12 lg:h-[56px] md:hidden' src='../../../dist/storybook/images/logo-finanzagenda-sm.svg' alt='Logo'/>
+              </div>
+              <div class="flex lg:hidden">
+                <sd-navigation-item>
+                  <sd-icon name="system/menu" library="global-resources" class="text-xl  -my-[1.5px] -mx-[4px]"></sd-icon>
+                </sd-navigation-item>
+              </div>
             </div>
             <!-- top-right-area end !-->
-            <div class="flex lg:hidden">
-              <sd-navigation-item>
-                <sd-icon name="system/menu" library="global-resources" class="text-xl  -my-[1.5px] -mx-[4px]"></sd-icon>
-              </sd-navigation-item>
-            </div>
           </div>
           <div class="hidden lg:flex items-end pt-3 justify-between">
             <!-- bottom-left-area start !-->
@@ -281,12 +296,12 @@ export const ResponsiveSample2 = {
             </div>
             <!-- bottom-left-area end !-->
             <!-- bottom-right-area start !-->
-            <div class="-mr-4 flex">
+            <div class="-mr-4 flex items-center">
               <sd-navigation-item>
-                <sd-icon name="system/website" library="global-resources" class="text-xl -my-[1.5px] -mx-[4px]"></sd-icon>
+                <div class="w-4 h-4 flex items-center"><sd-icon title="Unsere weiteren Auftritte" name="system/website" library="global-resources" class="text-xl absolute -ml-[4px]"></sd-icon></div>
               </sd-navigation-item>
               <sd-navigation-item>
-                <sd-icon name="system/magnifying-glass" library="global-resources" class="text-xl -my-[1.5px] -mx-[4px]"></sd-icon>
+                <div class="w-4 h-4 flex items-center"><sd-icon title="Suche" name="system/magnifying-glass" library="global-resources" class="text-xl absolute -ml-[4px]"></sd-icon></div>
               </sd-navigation-item>
             <!-- bottom-right-area end !-->
             </div>
@@ -299,8 +314,9 @@ export const ResponsiveSample2 = {
 };
 
 /* Sample Header lg – variant B */
-export const MediumViewportSample2 = {
-  ...ResponsiveSample2,
+export const SampleBMd = {
+  name: '↳ Tablet',
+  ...SampleB,
   parameters: {
     viewport: { defaultViewport: 'tablet' },
     controls: {
@@ -311,7 +327,8 @@ export const MediumViewportSample2 = {
 
 /* Sample Header sm - variant B */
 export const SmallViewportSample2 = {
-  ...ResponsiveSample2,
+  ...SampleB,
+  name: '↳ Small mobile',
   parameters: {
     viewport: { defaultViewport: 'mobile1' },
     controls: {

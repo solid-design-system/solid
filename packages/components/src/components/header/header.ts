@@ -3,7 +3,6 @@ import { customElement } from '../../../src/internal/register-custom-element';
 import { debounce } from '../../internal/debounce.js';
 import { property } from 'lit/decorators.js';
 import componentStyles from '../../styles/component.styles';
-import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 import type { PropertyValues } from 'lit';
 
@@ -20,17 +19,12 @@ import type { PropertyValues } from 'lit';
  *
  * @cssproperty --sd-header-inner-width - width of the header content
  * @cssproperty --sd-header-inner-max-width - max-width of the header content
- * @cssproperty --sd-header-padding-top - padding-top of the header content
- * @cssproperty --sd-header-padding-bottom - padding-bottom of the header content
- * @cssproperty --sd-header-padding-x - padding-left and padding-right of the header content
+ * @cssproperty --sd-header-padding - padding-left and padding-right of the header content
  */
 @customElement('sd-header')
 export default class SdHeader extends SolidElement {
   /**  Determines whether the header is fixed or not. If the header is fixed at the top of the page, a shadow is shown underneath. */
   @property({ reflect: true, type: Boolean }) fixed = false;
-
-  /** Determines whether automatic spacing is applied above the body content. If true, the body's top padding is set to the header's height, preventing overlap. */
-  @property({ attribute: 'auto-spacing', reflect: true, type: Boolean }) autoSpacing = false;
 
   private refHeaderElement?: HTMLElement;
   private resizeObserver?: ResizeObserver;
@@ -42,35 +36,35 @@ export default class SdHeader extends SolidElement {
   }
 
   firstUpdated(): void {
-    this.setCalculatedHeightProperty();
-    this.addResizeObserver();
+    this.toggleHeightCalculation();
+  }
+
+  toggleHeightCalculation(): void {
+    if (this.fixed) {
+      this.setCalculatedHeightProperty();
+      this.addResizeObserver();
+    } else {
+      this.setCalculatedHeightProperty();
+      this.resizeObserver?.disconnect();
+      this.resizeObserver = undefined;
+    }
   }
 
   disconnectedCallback(): void {
     super.disconnectedCallback();
-    if (this.resizeObserver) {
-      this.resizeObserver.disconnect();
-      this.resizeObserver = undefined;
-    }
   }
 
   updated(changedProperties: PropertyValues): void {
     super.updated(changedProperties);
 
-    if (changedProperties.has('autoSpacing')) {
-      this.setCalculatedHeightProperty();
-      if (this.autoSpacing) {
-        this.addResizeObserver();
-      } else if (this.resizeObserver) {
-        this.resizeObserver.disconnect();
-        this.resizeObserver = undefined;
-      }
+    if (changedProperties.has('fixed')) {
+      this.toggleHeightCalculation();
     }
   }
 
   @debounce(100)
   private onResize(): void {
-    if (this.autoSpacing) {
+    if (this.fixed) {
       this.setCalculatedHeightProperty();
     }
   }
@@ -86,7 +80,7 @@ export default class SdHeader extends SolidElement {
   }
 
   private setCalculatedHeightProperty(): void {
-    if (this.autoSpacing && this.refHeaderElement) {
+    if (this.fixed && this.refHeaderElement) {
       document.documentElement.style.setProperty(
         '--sd-header-calculated-height',
         `${this.refHeaderElement.clientHeight}px`
@@ -98,12 +92,8 @@ export default class SdHeader extends SolidElement {
 
   render() {
     return html`
-      <header
-        class=${cx('w-screen bg-white relative', this.fixed && 'fixed-shadow w-screen')}
-        role="banner"
-        @slotchange=${this.handleSlotChange}
-      >
-        <div part="main" class="relative">
+      <header class="w-full bg-white relative" role="banner" @slotchange=${this.handleSlotChange}>
+        <div part="main" class="relative mx-0 my-auto box-border">
           <slot></slot>
         </div>
       </header>
@@ -123,19 +113,16 @@ export default class SdHeader extends SolidElement {
     componentStyles,
     css`
       :host {
-        display: flex;
-        align-items: center;
-        z-index: 65536;
-        position: absolute;
-        top: 0;
-        left: 0;
+        display: block;
       }
-
       :host([fixed]) {
         position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
       }
 
-      .fixed-shadow::after {
+      :host([fixed]) header::after {
         content: '';
         position: absolute;
         left: 0;
@@ -146,15 +133,9 @@ export default class SdHeader extends SolidElement {
       }
 
       [part='main'] {
-        margin: 0 auto;
         width: var(--sd-header-inner-width);
         max-width: var(--sd-header-inner-max-width);
         padding: var(--sd-header-padding, 12px 16px);
-        box-sizing: border-box;
-      }
-
-      body {
-        padding-top: var(--sd-header--height);
       }
     `
   ];
