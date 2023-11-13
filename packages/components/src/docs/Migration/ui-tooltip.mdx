@@ -1,0 +1,75 @@
+# Migration Guide: From `ui-tooltip` to `sd-tooltip`
+
+The new `sd-tooltip` is designed to replace the `ui-tooltip`. Instead of mainly providing content via attributes, the `sd-tooltip` component uses slots to allow for more flexibility and customization.
+
+## 💾 Slots
+
+### 🔀 Updated Slots
+
+#### [default] to [content]
+
+Content is now added via the `content` slot instead of the `default` slot.
+
+#### [trigger] to [default]
+
+The tooltip trigger is now added via the `default` slot and has a default of the `info-circle` icon.
+
+<hr />
+
+## ⚙️ Attributes
+
+### ✨ New Attributes
+
+#### [size]
+
+Sizes large is the default size. Small is an alternative size for use in very tight spaces.
+
+#### [disabled]
+
+Disables the tooltip.
+
+#### [trigger]
+
+Controls how the tooltip is activated.
+
+<hr />
+
+## ✍️ CSS Variables
+
+### ✨ New CSS Variables
+
+#### [--max-width]
+
+The maximum width of the tooltip before its content will wrap.
+
+#### [--hide-delay]
+
+The amount of time to wait before hiding the tooltip when hovering.
+
+#### [--show-delay]
+
+The amount of time to wait before showing the tooltip when hovering.
+
+<hr />
+
+## 🥳 Events
+
+### ✨ New Events
+
+#### [sd-show]
+
+Emitted when the tooltip opens.
+
+#### [sd-after-show]
+
+Emitted after the tooltip has fully opened and all animations are complete.
+
+#### [sd-hide]
+
+Emitted when the tooltip closes.
+
+#### [sd-after-hide]
+
+Emitted after the tooltip has fully closed and all animations are complete.
+
+<hr />

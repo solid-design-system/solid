@@ -105,9 +105,7 @@ export default class SdRadio extends SolidElement {
         part="base"
         class=${cx(
           'sd-radio group inline-flex items-start items-center text-base leading-normal text-black cursor-pointer align-middle',
-          this.checked && 'radio--checked',
           this.disabled && 'hover:cursor-not-allowed',
-          this.hasFocus && 'radio--focused',
           {
             /* sizes, fonts */
             sm: 'small-size text-sm',
@@ -144,7 +142,7 @@ export default class SdRadio extends SolidElement {
         <slot
           part="label"
           class=${cx(
-            'label ml-2 select-none inline-block',
+            'ml-2 select-none inline-block',
             (this.disabled && 'text-neutral-500') || (this.invalid && 'text-error') || 'text-black'
           )}
         >
