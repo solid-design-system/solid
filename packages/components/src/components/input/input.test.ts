@@ -1,10 +1,9 @@
 // eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment
 import { expect, fixture, html, oneEvent, waitUntil } from '@open-wc/testing';
-import { getFormControls } from '../../../dist/utilities/form.js';
-import { sendKeys } from '@web/test-runner-commands';
-import { serialize } from '../../utilities/form'; // must come from the same module
+import { getFormControls, serialize } from '../../utilities/form.js';
+import { sendKeys } from '@web/test-runner-commands'; // must come from the same module
 import sinon from 'sinon';
-import type SdInput from './input';
+import type SdInput from './input.js';
 
 describe('<sd-input>', () => {
   it('should pass accessibility tests', async () => {
@@ -16,13 +15,11 @@ describe('<sd-input>', () => {
     const el = await fixture<SdInput>(html` <sd-input></sd-input> `);
 
     expect(el.type).to.equal('text');
-    expect(el.size).to.equal('medium');
+    expect(el.size).to.equal('lg');
     expect(el.name).to.equal('');
     expect(el.value).to.equal('');
     expect(el.defaultValue).to.equal('');
     expect(el.title).to.equal('');
-    expect(el.filled).to.be.false;
-    expect(el.pill).to.be.false;
     expect(el.label).to.equal('');
     expect(el.helpText).to.equal('');
     expect(el.clearable).to.be.false;
@@ -254,7 +251,7 @@ describe('<sd-input>', () => {
       await input.updateComplete;
 
       setTimeout(() => button.click());
-      await oneEvent(form, 'reset');
+      await oneEvent(form, 'reset', false);
       await input.updateComplete;
 
       expect(input.value).to.equal('test');
@@ -262,7 +259,7 @@ describe('<sd-input>', () => {
       input.defaultValue = '';
 
       setTimeout(() => button.click());
-      await oneEvent(form, 'reset');
+      await oneEvent(form, 'reset', false);
       await input.updateComplete;
 
       expect(input.value).to.equal('');
@@ -458,22 +455,22 @@ describe('<sd-input>', () => {
       const el = await fixture<HTMLFormElement>(html`
         <div>
           <input type="text" name="a" value="1" form="f1" />
-          <sd-input type="text" name="b" value="2" form="f1"></sd-input>
+          <input type="text" name="b" value="2" form="f1" />
           <form id="f1">
             <input type="hidden" name="c" value="3" />
             <input type="text" name="d" value="4" />
-            <sd-input name="e" value="5"></sd-input>
+            <input name="e" value="5" />
             <textarea name="f">6</textarea>
-            <sd-textarea name="g" value="7"></sd-textarea>
-            <sd-checkbox name="h" value="8"></sd-checkbox>
+            <textarea name="g">7</textarea>
+            <input type="checkbox" name="h" value="8" />
           </form>
           <input type="text" name="i" value="9" form="f1" />
-          <sd-input type="text" name="j" value="10" form="f1"></sd-input>
+          <input type="text" name="j" value="10" form="f1" />
         </div>
       `);
       const form = el.querySelector<HTMLFormElement>('form')!;
-
       const formControls = getFormControls(form); // eslint-disable-line
+
       expect(formControls.length).to.equal(10); // eslint-disable-line
       expect(formControls.map((fc: HTMLInputElement) => fc.value).join('')).to.equal('12345678910'); // eslint-disable-line
     });

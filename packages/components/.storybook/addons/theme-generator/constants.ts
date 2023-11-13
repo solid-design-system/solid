@@ -7,5 +7,6 @@ export const PANEL_DEFAULTS = {
     accent: '#e24a89',
     neutral: '#b0b0b0'
   },
-  useDefaultLuminanceMap: false
+  useNormalizedLuminanceMap: false,
+  useForcedShades: false
 };
