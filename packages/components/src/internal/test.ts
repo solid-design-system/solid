@@ -11,36 +11,7 @@ export async function clickOnElement(
   /** The vertical offset to apply to the position when clicking */
   offsetY = 0
 ) {
-  const { x, y, width, height } = el.getBoundingClientRect();
-  const centerX = Math.floor(x + window.pageXOffset + width / 2);
-  const centerY = Math.floor(y + window.pageYOffset + height / 2);
-  let clickX: number;
-  let clickY: number;
-
-  switch (position) {
-    case 'top':
-      clickX = centerX;
-      clickY = y;
-      break;
-    case 'right':
-      clickX = x + width - 1;
-      clickY = centerY;
-      break;
-    case 'bottom':
-      clickX = centerX;
-      clickY = y + height - 1;
-      break;
-    case 'left':
-      clickX = x;
-      clickY = centerY;
-      break;
-    default:
-      clickX = centerX;
-      clickY = centerY;
-  }
-
-  clickX += offsetX;
-  clickY += offsetY;
+  const { clickX, clickY } = determineMousePosition(el, position, offsetX, offsetY);
 
   await sendMouse({ type: 'click', position: [clickX, clickY] });
 }
