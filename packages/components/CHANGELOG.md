@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v1.24.0](https://github.com/solid-design-system/solid/compare/components/1.23.0...components/1.24.0) (2023-11-13)
+
+
+### Features
+
+* ✨ add sd-input ([#515](https://github.com/solid-design-system/solid/issues/515)) ([327dcd0](https://github.com/solid-design-system/solid/commit/327dcd06f2f9daefe03ecdc9ade6648e2499e468)), closes [#255](https://github.com/solid-design-system/solid/issues/255)
+
+### 📈 Stats
+* Bundle size (uncompressed): 202 KB (+17 KB / +9%)
+* Bundle size (gzipped): 52 KB (+4 KB / +8%)
+
 # [@solid-design-system/components-v1.23.0](https://github.com/solid-design-system/solid/compare/components/1.22.0...components/1.23.0) (2023-11-10)
 
 
