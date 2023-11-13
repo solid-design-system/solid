@@ -130,14 +130,18 @@ export const ResponsiveSample1 = {
             type: 'slot',
             name: 'default',
             value: `<div class="flex justify-between items-center">
+            <!-- top-left-area start !-->
             <div class="flex flex-shrink">
             <img class='h-8 md:h-12 lg:h-[56px]' src='./placeholders/logo-ui-lg.svg' alt='Logo'/>
             </div>
+            <!-- top-left-area end !-->
+            <!-- top-right-area start !-->
             <div class="flex lg:hidden">
               <sd-navigation-item>
                 <sd-icon name="system/menu" library="global-resources" class="text-xl  -my-[1.5px] -mx-[4px]"></sd-icon>
               </sd-navigation-item>
             </div>
+            <!-- top-right-area end !-->
           </div>
           <div class="hidden lg:flex items-end pt-3 justify-between">
             <!-- bottom-left-area start !-->
@@ -171,7 +175,7 @@ export const ResponsiveSample1 = {
   }
 };
 
-/* Sample Header lg – variant B */
+/* Sample Header lg – variant A - 01 */
 export const MediumViewportSample1 = {
   ...ResponsiveSample1,
   parameters: {
@@ -182,9 +186,132 @@ export const MediumViewportSample1 = {
   }
 };
 
-/* Sample Header sm - variant A */
+/* Sample Header sm - variant A - 01 */
 export const SmallViewportSample1 = {
   ...ResponsiveSample1,
+  parameters: {
+    viewport: { defaultViewport: 'mobile1' },
+    controls: {
+      exclude: ['default']
+    }
+  }
+};
+
+/* Sample Header responsive – variant B */
+export const ResponsiveSample2 = {
+  parameters: {
+    controls: {
+      exclude: ['default']
+    }
+  },
+  render: (args: any) => {
+    return html`<div
+      style="height: 100px; --sd-header-inner-max-width: 1456px; --sd-header-padding-top:24px; --sd-header-padding-bottom:0;"
+    >
+      <style>
+        :root {
+          --sd-header-padding: 0 8px 0 8px;
+        }
+
+        sd-header {
+          height: 64px;
+          max-height: 140px;
+        }
+
+        @media (min-width: 376px) {
+          :root {
+            --sd-header-padding: 24px;
+          }
+          sd-header {
+            height: 96px;
+          }
+        }
+
+        @media (min-width: 1025px) {
+          :root {
+            --sd-header-padding: 24px 32px 0 32px;
+          }
+          sd-header {
+            height: 140px;
+          }
+        }
+
+        @media (min-width: 1280px) {
+          sd-navigation-item::part(content) {
+            display: flex;
+            align-items: center;
+          }
+        }
+
+        @media (min-width: 1440px) {
+          :root {
+            --sd-header-padding: 24px 48px 0 48px;
+          }
+        }
+      </style>
+      ${generateTemplate({
+        args,
+        constants: [
+          {
+            type: 'slot',
+            name: 'default',
+            value: `<div class="flex justify-between items-center">
+            <!-- top-left-area start !-->
+            <div class="flex flex-shrink">
+            <img class='h-8 md:h-12 lg:h-[56px]' src='./placeholders/logo-ui-lg.svg' alt='Logo'/>
+            </div>
+            <!-- top-left-area end !-->
+            <!-- top-right-area start !-->
+            <div class="flex">
+            <img class='h-8 md:h-12 lg:h-[56px]' src='./placeholders/logo-fa-lg.svg' alt='Logo'/>
+            </div>
+            <!-- top-right-area end !-->
+            <div class="flex lg:hidden">
+              <sd-navigation-item>
+                <sd-icon name="system/menu" library="global-resources" class="text-xl  -my-[1.5px] -mx-[4px]"></sd-icon>
+              </sd-navigation-item>
+            </div>
+          </div>
+          <div class="hidden lg:flex items-end pt-3 justify-between">
+            <!-- bottom-left-area start !-->
+            <div class="-ml-4">
+              <sd-navigation-item><b>Über Uns</b></sd-navigation-item><sd-navigation-item><b>Märkte</b></sd-navigation-item
+              ><sd-navigation-item><b>Presseservice</b></sd-navigation-item
+              ><sd-navigation-item><b>Nachhaltigkeit</b></sd-navigation-item><sd-navigation-item><b>Karriere</b></sd-navigation-item>
+            </div>
+            <!-- bottom-left-area end !-->
+            <!-- bottom-right-area start !-->
+            <div class="-mr-4 flex">
+              <sd-navigation-item>
+                <sd-icon name="system/website" library="global-resources" class="text-xl -my-[1.5px] -mx-[4px]"></sd-icon>
+              </sd-navigation-item>
+              <sd-navigation-item>
+                <sd-icon name="system/magnifying-glass" library="global-resources" class="text-xl -my-[1.5px] -mx-[4px]"></sd-icon>
+              </sd-navigation-item>
+            <!-- bottom-right-area end !-->
+            </div>
+          </div>`
+          }
+        ]
+      })}
+    </div>`;
+  }
+};
+
+/* Sample Header lg – variant B */
+export const MediumViewportSample2 = {
+  ...ResponsiveSample2,
+  parameters: {
+    viewport: { defaultViewport: 'tablet' },
+    controls: {
+      exclude: ['default']
+    }
+  }
+};
+
+/* Sample Header sm - variant B */
+export const SmallViewportSample2 = {
+  ...ResponsiveSample2,
   parameters: {
     viewport: { defaultViewport: 'mobile1' },
     controls: {
