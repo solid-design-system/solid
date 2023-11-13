@@ -481,13 +481,13 @@ export default class SdInput extends SolidElement implements SolidFormControl {
 
         <div part="form-control-input" class="form-control-input relative w-full">
           <div part="border" class=${cx(
-            'absolute w-full h-full pointer-events-none border rounded-default',
+            'absolute w-full h-full pointer-events-none border rounded-default transition-all',
             borderColor
           )}></div>
           <div
             part="base"
             class=${cx(
-              'px-4 flex flex-row items-center rounded-default',
+              'px-4 flex flex-row items-center rounded-default transition-all',
               // Vertical Padding
               this.size === 'lg' ? 'py-2' : 'py-1',
               // States
