@@ -183,14 +183,26 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
           id="control"
           part="control ${this.checked ? ' control--checked' : 'control--unchecked'}"
           class=${cx(
-            `relative flex flex-initial items-center justify-center border border-neutral-800 rounded-full bg-white h-4 w-8 
+            `relative flex flex-initial items-center justify-center border rounded-full h-4 w-8  
             peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 
             peer-focus-visible:outline-primary`,
             (this.disabled && this.checked && 'border-neutral-500 bg-neutral-500') ||
-              (this.disabled && 'border-neutral-500')
+              (this.disabled && 'border-neutral-500') ||
+              (this.checked && 'border-accent bg-accent') ||
+              'border-neutral-800 bg-white'
           )}
         >
-          <span part="thumb" class=${cx('w-2.5 h-2.5 bg-neutral-800 rounded-full')}></span>
+          <span
+            id="thumb"
+            part="thumb"
+            class=${cx(
+              'w-2.5 h-2.5 rounded-full',
+              (this.disabled && this.checked && 'bg-white') ||
+                (this.disabled && 'bg-neutral-500') ||
+                (this.checked && 'bg-white') ||
+                'bg-neutral-800'
+            )}
+          ></span>
         </span>
         <span
           part="label"
@@ -230,10 +242,11 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
 
       :host([data-user-invalid]) #control {
         border-color: rgb(var(--sd-color-error, 204 25 55));
+        background-color: rgb(var(--sd-color-error, 204 25 55));
       }
 
-      :host([data-user-invalid]):host([indeterminate]) #control {
-        background-color: rgb(var(--sd-color-error, 204 25 55));
+      :host([data-user-invalid]) #thumb {
+        background-color: rgb(var(--sd-white, 255 255 255));
       }
     `
   ];
