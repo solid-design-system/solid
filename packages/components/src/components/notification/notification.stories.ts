@@ -278,8 +278,7 @@ export const Parts = {
 
 export const Mouseless = {
   render: (args: any) => {
-    // eslint-disable-next-line lit-a11y/no-autofocus
-    return html`<div class="mouseless" autofocus>
+    return html`<div class="mouseless">
       ${generateTemplate({
         args,
         constants: [
@@ -293,16 +292,7 @@ export const Mouseless = {
   play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
     const el = canvasElement.querySelector('.mouseless sd-notification');
     await waitUntil(() => el?.shadowRoot?.querySelector('sd-button'));
-    console.log('before trying to focus');
-    console.log(document.activeElement);
 
-    await userEvent.tab();
-    // await clickOnElement(canvasElement.querySelector('.mouseless sd-notification')!);
-    console.log('after trying to focus');
-    console.log(document.activeElement);
-
-    console.log(document.activeElement);
-
-    // await userEvent.tab({ focusTrap: el?.shadowRoot?.querySelector('sd-button') as HTMLElement });
+    el?.shadowRoot?.querySelector('sd-button')?.focus();
   }
 };
