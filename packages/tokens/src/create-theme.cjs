@@ -245,6 +245,17 @@ const getCoreTokensByType = (tokenType, cssVariableScope) => {
       })${description ? ` /* ${description} */` : ''}`;
     }
   });
+  return result;
+};
+
+const getZIndices = () => {
+  const result = {
+    drawer: 'var(--sd-z-index-drawer, 700)',
+    tight: 'var(--sd-z-index-dialog, 800)',
+    dropdown: 'var(--sd-z-index-dropdown, 900)',
+    'alert-group': 'var(--sd-z-index-alert-group, 950)',
+    tooltip: 'var(--sd-z-index-tooltip, 1000)'
+  };
 
   return result;
 };
@@ -278,7 +289,8 @@ const config = {
     tracking: {},
     textColor: { ...getColors('text', 'text-color') },
     textDecorationColor: { ...getColors('text', 'text-color') },
-    boxShadow: { ...getShadows() }
+    boxShadow: { ...getShadows() },
+    zIndex: { ...getZIndices() }
   }
 };
 
