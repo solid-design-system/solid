@@ -105,7 +105,6 @@ export default class SdInput extends SolidElement implements SolidFormControl {
    */
   @property() inputmode: 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
 
-  // --------------------------- GENERIC --------------------------- //
   /** The current value of the input, submitted as a name/value pair with form data. */
   @property() value = '';
 
@@ -120,9 +119,6 @@ export default class SdInput extends SolidElement implements SolidFormControl {
 
   /** The input's help text. If you need to display HTML, use the `help-text` slot instead. */
   @property({ attribute: 'help-text' }) helpText = '';
-
-  /** Adds plain text to the input's success / error message underneath the help-text. */
-  @property({ attribute: 'message' }) message = ''; // TODO: Should we remove this until we have sd-inline-error?
 
   /** Adds a clear button when the input is not empty. */
   @property({ type: Boolean }) clearable = false;
@@ -534,7 +530,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               max=${ifDefined(this.max)}
               step=${ifDefined(this.step as number)}
               .value=${live(this.value)}
-              autocapitalize=${ifDefined(this.type === 'password' ? 'off' : this.autocapitalize)} 
+              autocapitalize=${ifDefined(this.type === 'password' ? 'off' : this.autocapitalize)}
               autocomplete=${ifDefined(this.type === 'password' ? 'off' : this.autocomplete)}
               autocorrect=${ifDefined(this.type === 'password' ? 'off' : this.autocorrect)}
               ?autofocus=${this.autofocus}
