@@ -148,8 +148,6 @@ export const calculateColorsForType = (type, theme, colors, useNormalizedLuminan
 export const calculateColorsAsCss = (colors, theme, useNormalizedLuminanceMap, useForcedShades) => {
   let allTokens = ':root{\n  /* Copy & paste into your theme */\n';
 
-  console.log({ colors, theme, useNormalizedLuminanceMap, useForcedShades });
-
   Object.keys(colors).forEach(type => {
     allTokens += calculateColorsForType(type, theme, colors, useNormalizedLuminanceMap, useForcedShades);
   });
