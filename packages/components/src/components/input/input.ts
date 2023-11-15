@@ -96,6 +96,9 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     | 'time'
     | 'url' = 'text';
 
+  /** Prevent submit on enter keydown. */
+  @property({ type: Boolean, reflect: true }) preventSubmit = false;
+
   /** The input's size. */
   @property({ reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
 
@@ -282,17 +285,23 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     // Pressing enter when focused on an input should submit the form like a native input, but we wait a tick before
     // submitting to allow users to cancel the keydown event if they need to
     if (event.key === 'Enter' && !hasModifier) {
-      setTimeout(() => {
-        //
-        // When using an Input Method Editor (IME), pressing enter will cause the form to submit unexpectedly. One way
-        // to check for this is to look at event.isComposing, which will be true when the IME is open.
-        //
-        // See https://github.com/shoelace-style/shoelace/pull/988
-        //
-        if (!event.defaultPrevented && !event.isComposing) {
-          this.formControlController.submit();
-        }
-      });
+      console.log('sd-input: handleKeyDown');
+      if (this.preventSubmit) {
+        // allows us to optionally trigger any external library functions fired on click (e.g. Flatpickr open calendar on keydown)
+        this.click();
+      } else {
+        setTimeout(() => {
+          //
+          // When using an Input Method Editor (IME), pressing enter will cause the form to submit unexpectedly. One way
+          // to check for this is to look at event.isComposing, which will be true when the IME is open.
+          //
+          // See https://github.com/shoelace-style/shoelace/pull/988
+          //
+          if (!event.defaultPrevented && !event.isComposing) {
+            this.formControlController.submit();
+          }
+        });
+      }
     }
   }
 
@@ -418,14 +427,14 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     // Hierarchy of input states:
     const inputState = this.disabled
       ? 'disabled'
-      : this.readonly
-        ? 'readonly'
-        : this.hasFocus && isInvalid
-          ? 'activeInvalid'
-          : this.hasFocus && isValid
-            ? 'activeValid'
-            : this.hasFocus
-              ? 'active'
+      : this.hasFocus && isInvalid
+        ? 'activeInvalid'
+        : this.hasFocus && isValid
+          ? 'activeValid'
+          : this.hasFocus
+            ? 'active'
+            : this.readonly
+              ? 'readonly'
               : isInvalid
                 ? 'invalid'
                 : isValid
