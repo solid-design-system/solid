@@ -11,7 +11,7 @@ import SolidElement from '../../internal/solid-element';
 import type { SolidFormControl } from '../../internal/solid-element';
 
 /**
- * @summary Checkboxes allow the user to toggle an option on or off.
+ * @summary Switches allow the user to toggle an option on or off.
  * @documentation https://solid.union-investment.com/[storybook-link]/switch
  * @status stable
  * @since 1.24.0
@@ -26,7 +26,7 @@ import type { SolidFormControl } from '../../internal/solid-element';
  *
  * @csspart base - The component's base wrapper.
  * @csspart control - The square container that wraps the switch's checked state.
- * @csspart control--checked - Matches the control part when the switch is checked.
+ * @csspart control--switched-on - Matches the control part when the switch is checked.
  * @csspart thumb - The circle that marks the checked state.
  * @csspart label - The container that wraps the switch's label.
  */
@@ -38,7 +38,7 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
     setValue: (control: SdSwitch, checked: boolean) => (control.checked = checked)
   });
 
-  @query('input[type="checkbox"]') input: HTMLInputElement;
+  @query('input') input: HTMLInputElement;
 
   @property() title = ''; // make reactive to pass through
 
@@ -104,7 +104,7 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
     this.formControlController.setValidity(this.disabled);
   }
 
-  @watch(['checked', 'indeterminate'], { waitUntilFirstUpdate: true })
+  @watch(['checked'], { waitUntilFirstUpdate: true })
   handleStateChange() {
     this.input.checked = this.checked; // force a sync update
     this.formControlController.updateValidity();
@@ -154,11 +154,12 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
       <label
         part="base"
         class=${cx(
-          'sd-switch group flex items-center text-base leading-normal text-black cursor-pointer',
+          'group flex items-center text-base leading-normal text-black cursor-pointer',
           this.disabled && 'hover:cursor-not-allowed'
         )}
       >
         <input
+          id="input"
           class="peer absolute opacity-0 p-0 m-0 pointer-events-none"
           type="checkbox"
           title=${this.title /* An empty title prevents browser validation tooltips from appearing on hover */}
@@ -177,15 +178,15 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
 
         <span
           id="control"
-          part="control ${this.checked ? ' control--checked' : 'control--unchecked'}"
+          part="control ${this.checked ? ' control--switched-on' : 'control--switched-off'}"
           class=${cx(
-            `relative flex flex-initial items-center justify-center border rounded-full h-4 w-8  
+            `relative flex flex-initial items-center justify-center border rounded-full h-4 w-8 transition-colors ease duration-100
             peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2
             peer-focus-visible:outline-primary`,
             (this.disabled && this.checked && 'border-neutral-500 bg-neutral-500') ||
               (this.disabled && 'border-neutral-500') ||
-              (this.checked && 'border-accent bg-accent hover:bg-accent-550') ||
-              'border-neutral-800 bg-white hover:bg-neutral-200'
+              (this.checked && 'border-accent bg-accent hover:bg-accent-550 group-hover:bg-accent-550') ||
+              'border-neutral-800 bg-white hover:bg-neutral-200 group-hover:bg-neutral-200'
           )}
         >
           <span
@@ -243,6 +244,10 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
 
       :host([data-user-invalid]) #thumb {
         background-color: rgb(var(--sd-white, 255 255 255));
+      }
+
+      :host([data-user-invalid]) #input:hover ~ #control {
+        background-color: rgb(var(--sd-color-error-400, 172 25 56));
       }
     `
   ];

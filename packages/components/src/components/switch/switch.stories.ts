@@ -32,7 +32,7 @@ export const Default = {
 };
 
 /**
- * Use the disabled attribute to disable an input checkbox. Clicks will be suppressed until the disabled state is removed
+ * Use the disabled attribute to disable an input switch. Clicks will be suppressed until the disabled state is removed
  */
 
 export const Disabled = {
@@ -110,7 +110,7 @@ export const Invalid = {
 };
 
 /**
- * Use the `base`, `control--unchecked`, `control--checked`, `checked` and `label` part selectors to customize the checkbox.
+ * Use the `base`, `control--switched-off`, `control--switched-on`, `checked` and `label` part selectors to customize the switch.
  */
 export const Parts = {
   parameters: {
@@ -118,8 +118,8 @@ export const Parts = {
       exclude: [
         'base',
         'control',
-        'control--unchecked',
-        'control--checked',
+        'control--switched-off',
+        'control--switched-on',
         'checked-icon',
         'label',
         'title',
@@ -140,7 +140,7 @@ export const Parts = {
         y: {
           type: 'template',
           name: 'sd-switch::part(...){outline: solid 2px red}',
-          values: ['base', 'control', 'control--unchecked', 'control--checked', 'thumb', 'label'].map(part => {
+          values: ['base', 'control', 'control--switched-off', 'control--switched-on', 'thumb', 'label'].map(part => {
             return {
               title: part,
               value: `
@@ -148,7 +148,7 @@ export const Parts = {
                     #part-${part} sd-switch::part(${part}){outline: solid 2px red};
                     .hidden {display: none}
                 </style>
-                <div id="part-${part}">${checkboxTemplate(part)}</div>
+                <div id="part-${part}">${switchTemplate(part)}</div>
                 <div class="hidden">%TEMPLATE%</div>
               `
             };
@@ -160,9 +160,9 @@ export const Parts = {
   }
 };
 
-const checkboxTemplate = (part: string) => {
+const switchTemplate = (part: string) => {
   switch (part) {
-    case 'control--checked':
+    case 'control--switched-on':
       return `<sd-switch checked>Default Slot</sd-switch>`;
     case 'checked-icon':
       return `<sd-switch checked>Default Slot</sd-switch>`;
