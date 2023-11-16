@@ -51,22 +51,6 @@ export const CloseOthers = {
 };
 
 /**
- * Use 'background' property to set the background color to 'white', 'neutral-100', or 'primary-100'.
- */
-export const Background = {
-  parameters: { controls: { exclude: 'background' } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: { type: 'attribute', name: 'background' }
-      },
-      args,
-      constants: { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' }
-    });
-  }
-};
-
-/**
  * Part of sd-accordion-group
  */
 
@@ -117,5 +101,57 @@ export const Mouseless = {
     await userEvent.type(el!.shadowRoot!.querySelector('header')!, '{space}', {
       pointerEventsCheck: 0
     });
+  }
+};
+
+/**
+ * Accordion group can be used with background options of white, neutral-100 and primary-100.
+ */
+
+export const Samples = {
+  render: () => {
+    return html`
+      <div class="w-full flex gap-8 flex-col">
+        <div>
+          <div class="p-4 mb-8 bg-neutral-100 text-left text-[14px] font-bold box-border">white</div>
+
+          <sd-accordion-group class="w-1/2 bg-white p-8">
+            <sd-accordion summary="Accordion 1"
+              ><div class="slot slot--border slot--text h-16">Default slot</div></sd-accordion
+            ><sd-accordion summary="Accordion 2"
+              ><div class="slot slot--border slot--text h-16">Default slot</div></sd-accordion
+            ><sd-accordion summary="Accordion 3"
+              ><div class="slot slot--border slot--text h-16">Default slot</div></sd-accordion
+            >
+          </sd-accordion-group>
+        </div>
+
+        <div>
+          <div class="w-full p-4 mb-8 bg-neutral-100 text-left text-[14px] font-bold box-border">neutral-100</div>
+          <sd-accordion-group class="w-1/2 bg-neutral-100 p-8">
+            <sd-accordion summary="Accordion 1"
+              ><div class="slot slot--border slot--text h-16">Default slot</div></sd-accordion
+            ><sd-accordion summary="Accordion 2"
+              ><div class="slot slot--border slot--text h-16">Default slot</div></sd-accordion
+            ><sd-accordion summary="Accordion 3"
+              ><div class="slot slot--border slot--text h-16">Default slot</div></sd-accordion
+            >
+          </sd-accordion-group>
+        </div>
+
+        <div>
+          <div class="w-full p-4 mb-8 bg-neutral-100 text-left text-[14px] font-bold box-border">primary-100</div>
+          <sd-accordion-group class="w-1/2 bg-primary-100 p-8">
+            <sd-accordion summary="Accordion 1"
+              ><div class="slot slot--border slot--text h-16">Default slot</div></sd-accordion
+            ><sd-accordion summary="Accordion 2"
+              ><div class="slot slot--border slot--text h-16">Default slot</div></sd-accordion
+            ><sd-accordion summary="Accordion 3"
+              ><div class="slot slot--border slot--text h-16">Default slot</div></sd-accordion
+            >
+          </sd-accordion-group>
+        </div>
+      </div>
+    `;
   }
 };
