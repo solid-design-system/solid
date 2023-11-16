@@ -26,8 +26,8 @@ import type { SolidFormControl } from '../../internal/solid-element';
  *
  * @csspart base - The component's base wrapper.
  * @csspart control - The square container that wraps the switch's state.
- * @csspart control--switched-on - Matches the control part when the switch is on.
- * @csspart control--switched-off - Matches the control part when the switch is off.
+ * @csspart control--checked - Matches the control part when the switch is on.
+ * @csspart control--unchecked - Matches the control part when the switch is off.
  * @csspart thumb - The circle that marks the switch's state.
  * @csspart label - The container that wraps the switch's label.
  */
@@ -180,7 +180,7 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
 
         <span
           id="control"
-          part="control ${this.checked ? ' control--switched-on' : 'control--switched-off'}"
+          part="control ${this.checked ? ' control--checked' : 'control--unchecked'}"
           class=${cx(
             `relative flex flex-initial items-center justify-center border rounded-full h-4 w-8 transition-colors ease duration-100
             peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2

@@ -114,7 +114,7 @@ export const Invalid = {
 };
 
 /**
- * Use the `base`, `control--switched-off`, `control--switched-on`, `checked` and `label` part selectors to customize the switch.
+ * Use the `base`, `control--unchecked`, `control--checked`, `checked` and `label` part selectors to customize the switch.
  */
 
 export const Parts = {
@@ -123,8 +123,8 @@ export const Parts = {
       exclude: [
         'base',
         'control',
-        'control--switched-off',
-        'control--switched-on',
+        'control--unchecked',
+        'control--checked',
         'label',
         'title',
         'name',
@@ -145,7 +145,7 @@ export const Parts = {
         y: {
           type: 'template',
           name: 'sd-switch::part(...){outline: solid 2px red}',
-          values: ['base', 'control', 'control--switched-off', 'control--switched-on', 'thumb', 'label'].map(part => {
+          values: ['base', 'control', 'control--unchecked', 'control--checked', 'thumb', 'label'].map(part => {
             return {
               title: part,
               value: `
@@ -155,7 +155,7 @@ export const Parts = {
                 </style>
                 
                 <div id="part-${part}">${
-                  part.includes('control--switched-on')
+                  part.includes('control--checked')
                     ? '<sd-switch checked>Default Slot</sd-switch>'
                     : '<sd-switch>Default Slot</sd-switch>'
                 }</div>
