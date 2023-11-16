@@ -24,6 +24,9 @@ export default class SdAccordionGroup extends SolidElement {
   /** Closes other accordions. */
   @property({ attribute: 'close-others', type: Boolean }) closeOthers = false;
 
+  /** Set the background color of the accordion group. */
+  @property({ reflect: true }) background: 'white' | 'neutral-100' | 'primary-100' = 'white';
+
   connectedCallback() {
     super.connectedCallback();
     this.addEventListener('sd-show', this.handleAccordionShow);
@@ -52,7 +55,7 @@ export default class SdAccordionGroup extends SolidElement {
 
   render() {
     return html`
-      <div part="base">
+      <div part="base" class="bg-${this.background}">
         <slot></slot>
       </div>
     `;
@@ -64,6 +67,7 @@ export default class SdAccordionGroup extends SolidElement {
     css`
       :host {
         display: block;
+        background-color: var(--sd-color-white);
       }
       ::slotted(sd-accordion:not(:first-of-type)) {
         margin-top: -1px;

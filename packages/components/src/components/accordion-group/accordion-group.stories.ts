@@ -51,6 +51,22 @@ export const CloseOthers = {
 };
 
 /**
+ * Use 'background' property to set the background color to 'white', 'neutral-100', or 'primary-100'.
+ */
+export const Background = {
+  parameters: { controls: { exclude: 'background' } },
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        y: { type: 'attribute', name: 'background' }
+      },
+      args,
+      constants: { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' }
+    });
+  }
+};
+
+/**
  * Part of sd-accordion-group
  */
 
