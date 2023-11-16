@@ -68,6 +68,10 @@ export const Required = {
   }
 };
 
+/**
+ * Use the checked attribute to activate the switch.
+ */
+
 export const Checked = {
   parameters: { controls: { exclude: ['checked'] } },
   render: (args: any) => {
@@ -112,6 +116,7 @@ export const Invalid = {
 /**
  * Use the `base`, `control--switched-off`, `control--switched-on`, `checked` and `label` part selectors to customize the switch.
  */
+
 export const Parts = {
   parameters: {
     controls: {
@@ -120,7 +125,6 @@ export const Parts = {
         'control',
         'control--switched-off',
         'control--switched-on',
-        'checked-icon',
         'label',
         'title',
         'name',
@@ -129,6 +133,7 @@ export const Parts = {
         'disabled',
         'checked',
         'form',
+        'thumb',
         'required',
         'default'
       ]
@@ -148,7 +153,12 @@ export const Parts = {
                     #part-${part} sd-switch::part(${part}){outline: solid 2px red};
                     .hidden {display: none}
                 </style>
-                <div id="part-${part}">${switchTemplate(part)}</div>
+                
+                <div id="part-${part}">${
+                  part.includes('control--switched-on')
+                    ? '<sd-switch checked>Default Slot</sd-switch>'
+                    : '<sd-switch>Default Slot</sd-switch>'
+                }</div>
                 <div class="hidden">%TEMPLATE%</div>
               `
             };
@@ -157,18 +167,5 @@ export const Parts = {
       },
       args
     });
-  }
-};
-
-const switchTemplate = (part: string) => {
-  switch (part) {
-    case 'control--switched-on':
-      return `<sd-switch checked>Default Slot</sd-switch>`;
-    case 'checked-icon':
-      return `<sd-switch checked>Default Slot</sd-switch>`;
-    case 'form-control-error-text':
-      return `<sd-switch error-text="Error message" invalid>Default Slot</sd-switch>`;
-    default:
-      return `<sd-switch>Default Slot</sd-switch>`;
   }
 };

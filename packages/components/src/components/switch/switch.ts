@@ -25,9 +25,10 @@ import type { SolidFormControl } from '../../internal/solid-element';
  * @event sd-input - Emitted when the switch receives input.
  *
  * @csspart base - The component's base wrapper.
- * @csspart control - The square container that wraps the switch's checked state.
- * @csspart control--switched-on - Matches the control part when the switch is checked.
- * @csspart thumb - The circle that marks the checked state.
+ * @csspart control - The square container that wraps the switch's state.
+ * @csspart control--switched-on - Matches the control part when the switch is on.
+ * @csspart control--switched-off - Matches the control part when the switch is off.
+ * @csspart thumb - The circle that marks the switch's state.
  * @csspart label - The container that wraps the switch's label.
  */
 @customElement('sd-switch')

@@ -5,7 +5,7 @@ import type SdSwitch from './switch';
 
 describe('<sd-switch>', () => {
   it('should pass accessibility tests', async () => {
-    const el = await fixture<SdSwitch>(html` <sd-switch>Checkbox</sd-switch> `);
+    const el = await fixture<SdSwitch>(html` <sd-switch>Switch</sd-switch> `);
     await expect(el).to.be.accessible();
   });
 
