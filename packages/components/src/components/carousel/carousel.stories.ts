@@ -244,6 +244,6 @@ export const Mouseless = {
     const el = canvasElement.querySelector('.mouseless sd-carousel');
     await waitUntil(() => el?.shadowRoot?.querySelector('#scroll-container'));
 
-    el?.shadowRoot?.querySelector('#scroll-container')!.focus();
+    el?.shadowRoot?.querySelector<HTMLElement>('#scroll-container')!.focus();
   }
 };

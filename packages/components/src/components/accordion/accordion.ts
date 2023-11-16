@@ -167,7 +167,7 @@ export default class SdAccordion extends SolidElement {
           <div
             class=${cx(
               !this.open && 'opacity-0',
-              'w-1 bg-accent absolute left-0 transition-all h-8 group-hover:h-full'
+              'w-1 bg-accent absolute left-0 transition-all h-[75%] group-hover:h-full'
             )}
           ></div>
           <slot name="summary" part="summary" class="flex flex-auto items-center text-left">${this.summary}</slot>
