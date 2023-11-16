@@ -9,26 +9,26 @@ import { German } from 'flatpickr/dist/l10n/de.js';
 import { query } from 'lit/decorators.js';
 import flatpickr from 'flatpickr';
 import monthSelectPlugin from 'flatpickr/dist/plugins/monthSelect/index';
+import pluginTemplate from './pluginTemplate';
 import rangePlugin from 'flatpickr/dist/plugins/rangePlugin';
 import SolidElement from '../../internal/solid-element';
 import solidPlugin from './solidPlugin';
-// import solidPlugin from 'flatpickr/dist/plugins/solid/index';
 
 @customElement('sd-datepicker')
 export default class SdDatepicker extends SolidElement {
-  @query('#firstRangeInput') input: HTMLInputElement;
+  @query('sd-input') input: HTMLInputElement;
 
   flatpickr: flatpickr.Instance;
 
   firstUpdated() {
     this.flatpickr = flatpickr(this.input, {
-      // allowInput: true,
+      allowInput: true,
       dateFormat: 'd.m.Y',
       locale: German,
       // mode: 'single', // 'single', 'multiple', 'range'
-      position: 'below left',
+      // showMonths: 2,
       plugins: [
-        new solidPlugin()
+        // new solidPlugin(),
         // new rangePlugin({ input: '#secondRangeInput' })
         // new monthSelectPlugin({
         //   shorthand: true, //defaults to false
@@ -40,25 +40,35 @@ export default class SdDatepicker extends SolidElement {
     });
   }
 
+  handleKeydown(e: HTMLKeyboardEvent) {
+    if (e.key === 'ArrowDown') {
+      const firstVisibleDay = document.querySelector('.flatpickr-day');
+      firstVisibleDay.focus();
+    }
+  }
+
+  handleInput() {
+    const inputDate = new Date(this.input.value);
+    const isValid = !isNaN(inputDate.getTime());
+
+    if (isValid) {
+      this.flatpickr.selectedDates = [inputDate];
+      this.flatpickr.jumpToDate(inputDate);
+    }
+  }
+
   render() {
     return html`
       <div>
-        <!-- <sd-input id="firstRangeInput" class="flatpickr flatpickr-input" placeholder="Enter date">
-          <sd-icon slot="right" class="text-primary" library="system" name="calendar"></sd-icon>
-        </sd-input> -->
-        <input class="flatpickr flatpickr-input border-primary-200 border-2 mb-2" />
-        <sd-input preventSubmit id="firstRangeInput" class="flatpickr flatpickr-input"></sd-input>
-
-        <button
-          @click=${() => {
-            console.log('on click');
-            console.log(this.input);
-
-            this.input.focus();
-          }}
+        <sd-input
+          class="flatpickr flatpickr-input"
+          placeholder="Enter date"
+          preventSubmit
+          @keydown=${this.handleKeydown}
+          @input=${this.handleInput}
         >
-          focus sd input
-        </button>
+          <sd-icon slot="right" class="text-primary" library="system" name="calendar"></sd-icon>
+        </sd-input>
       </div>
     `;
   }
