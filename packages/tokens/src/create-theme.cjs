@@ -251,7 +251,7 @@ const getCoreTokensByType = (tokenType, cssVariableScope) => {
 const getZIndices = () => {
   const result = {
     drawer: 'var(--sd-z-index-drawer, 700)',
-    tight: 'var(--sd-z-index-dialog, 800)',
+    dialog: 'var(--sd-z-index-dialog, 800)',
     dropdown: 'var(--sd-z-index-dropdown, 900)',
     'alert-group': 'var(--sd-z-index-alert-group, 950)',
     tooltip: 'var(--sd-z-index-tooltip, 1000)'
