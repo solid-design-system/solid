@@ -1,8 +1,8 @@
 ---
-name: New Component Issue
-about: New Component Issue Template
+name: New Component Issue Design
+about: New Component Issue Template for Design
 title: 'feat: ✨ add sd-[COMPONENT_NAME]'
-labels: ''
+labels: '🎨 needs design'
 assignees: ''
 
 ---
@@ -15,6 +15,10 @@ so that [PRODUCT_VALUE], and [FURTHER_PRODUCT_VALUE].
 [LINK TO FIGMA]
 ## Hand-off
 [LINK TO FIGMA]
+## Documentation
+[LINK TO FIGMA]
+
+### Component name and version number:
 
 ### Components detailed requirements
 #### Props
@@ -23,24 +27,11 @@ so that [PRODUCT_VALUE], and [FURTHER_PRODUCT_VALUE].
 | <ul><li>[ ] </li></ul>  | `name` | `type` | `default` | description |
 | <ul><li>[ ] </li></ul>  | `name` | `type1` / `type2` | `default` | description |
 
-
-#### CSS-Properties
-  - [ ] `name` - description
-  - [ ] `name` - description
-#### Parts
-  - [ ] `name` - description
-  - [ ] `name` - description
 #### Slots
   - [ ] `name` - description
   - [ ] `name` - description
-#### Stories (besides the `default` story)
-  - [ ] name
-  - [ ] name
-#### Samples
-  - [ ] `name` - description
-  - [ ] `name` - description
 
-### Open Questions towards design
+### Open Questions towards development
 - [ ] Question1
 - [ ] Question2
 
@@ -51,8 +42,10 @@ so that [PRODUCT_VALUE], and [FURTHER_PRODUCT_VALUE].
 - [ ] Item dependencies have been identified
 
 ## DoD
-- [ ] Documentation has been created/updated (if applicable)
-- [ ] Migration Guide has been created/updated (if applicable)
-- [ ] Relevant E2E tests (Features, A11y, Bug fixes) are created/updated
-- [ ] Relevant stories (Features, A11y) are created/updated
-- [ ] Implementation works successfully on `feature` branch
+- [ ] Brand approval (if neccessary)
+- [ ] Figma documentation file incl. hand-off has been created/updated (if applicable)
+- [ ] Tokens have been applied/updated (if applicable)
+- [ ] Crosslinks are created/updated
+- [ ] Implementation works successfully on `figma` branch
+- [ ] Published in Figma and communicated in release notes
+- [ ] Issues for dependencies have been created (if neccessary)
