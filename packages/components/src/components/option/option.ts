@@ -1,13 +1,14 @@
 import '../icon/icon';
-import { classMap } from 'lit/directives/class-map.js';
+import { css, html } from 'lit';
 import { customElement } from '../../../src/internal/register-custom-element';
-import {property, query, state } from 'lit/decorators.js';
-import { html } from 'lit';
+import { HasSlotController } from '../../internal/slot';
 import { LocalizeController } from '../../utilities/localize';
+import { property, query, state } from 'lit/decorators.js';
 import { watch } from '../../internal/watch';
+import componentStyles from '../../styles/component.styles';
+import cx from 'classix';
+import formControlStyles from '../../styles/form-control.styles';
 import SolidElement from '../../internal/solid-element';
-import styles from './option.styles';
-import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Options define the selectable items within various form controls such as [select](/components/select).
@@ -29,7 +30,7 @@ import type { CSSResultGroup } from 'lit';
  */
 @customElement('sd-option')
 export default class SdOption extends SolidElement {
-  static styles: CSSResultGroup = styles;
+  private readonly hasSlotController = new HasSlotController(this, 'default', 'prefix', 'suffix');
 
   private cachedTextLabel: string;
   // @ts-expect-error - Controller is currently unused
@@ -105,26 +106,54 @@ export default class SdOption extends SolidElement {
   }
 
   render() {
+    // Slots
+    const slots = {
+      default: this.hasSlotController.test('default'),
+      prefix: this.hasSlotController.test('prefix'),
+      suffix: this.hasSlotController.test('suffix')
+    };
+
     return html`
       <div
         part="base"
-        class=${classMap({
-      option: true,
-      'option--current': this.current,
-      'option--disabled': this.disabled,
-      'option--selected': this.selected,
-      'option--hover': this.hasHover
-    })}
+        class=${cx(
+          'px-2 py-3 flex items-center w-full',
+          this.hasHover && !this.disabled ? 'bg-neutral-200' : '',
+          this.disabled ? 'text-neutral-500 cursor-not-allowed' : 'cursor-pointer',
+          this.current && '',
+          this.selected && ''
+        )}
         @mouseenter=${this.handleMouseEnter}
         @mouseleave=${this.handleMouseLeave}
       >
-        <sd-icon part="checked-icon" class="option__check" name="check" library="system" aria-hidden="true"></sd-icon>
-        <slot part="prefix" name="prefix" class="option__prefix"></slot>
-        <slot part="label" class="option__label" @slotchange=${this.handleDefaultSlotChange}></slot>
-        <slot part="suffix" name="suffix" class="option__suffix"></slot>
+        <!-- TODO: substitute sd-checkbox? -->
+        <!-- <sd-icon part="checked-icon" class="hidden" name="check" library="system" aria-hidden="true"></sd-icon> -->
+        ${slots['prefix'] ? html`<slot name="prefix" part="prefix" class="inline-flex mr-2"></slot>` : ''}
+        <slot
+          part="label"
+          class="option__label inline-block flex-grow"
+          @slotchange=${this.handleDefaultSlotChange}
+        ></slot>
+        ${slots['suffix'] ? html`<slot name="suffix" part="suffix" class="inline-flex ml-2"></slot>` : ''}
       </div>
     `;
   }
+
+  /**
+   * Inherits Tailwindclasses and includes additional styling.
+   */
+  static styles = [
+    componentStyles,
+    formControlStyles,
+    SolidElement.styles,
+    css`
+      :host {
+        display: inline-block;
+        position: relative;
+        width: 100%;
+      }
+    `
+  ];
 }
 
 declare global {

@@ -3,20 +3,20 @@ import '../popup/popup';
 import '../tag/tag';
 import { animateTo, stopAnimations } from '../../internal/animate';
 import { classMap } from 'lit/directives/class-map.js';
+import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { defaultValue } from '../../internal/default-value';
 import { FormControlController } from '../../internal/form';
 import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry';
 import { HasSlotController } from '../../internal/slot';
-import { html } from 'lit';
 import { LocalizeController } from '../../utilities/localize';
 import { property, query, state } from 'lit/decorators.js';
 import { scrollIntoView } from '../../internal/scroll';
 import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch';
+import componentStyles from '../../styles/component.styles';
+import formControlStyles from '../../styles/form-control.styles';
 import SolidElement from '../../internal/solid-element';
-import styles from './select.styles';
-import type { CSSResultGroup } from 'lit';
 import type { SolidFormControl } from '../../internal/solid-element';
 import type SdOption from '../../_components/option/option';
 import type SdPopup from '../popup/popup';
@@ -63,8 +63,6 @@ import type SdPopup from '../popup/popup';
  */
 @customElement('sd-select')
 export default class SdSelect extends SolidElement implements SolidFormControl {
-  static styles: CSSResultGroup = styles;
-
   private readonly formControlController = new FormControlController(this);
   private readonly hasSlotController = new HasSlotController(this, 'help-text', 'label');
   private readonly localize = new LocalizeController(this);
@@ -802,6 +800,21 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
       </div>
     `;
   }
+
+  /**
+   * Inherits Tailwindclasses and includes additional styling.
+   */
+  static styles = [
+    componentStyles,
+    formControlStyles,
+    SolidElement.styles,
+    css`
+      :host {
+        display: inline-block;
+        width: 100%;
+      }
+    `
+  ];
 }
 
 setDefaultAnimation('select.show', {
