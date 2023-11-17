@@ -14,29 +14,29 @@ import SolidElement from '../../internal/solid-element';
  * @summary Options define the selectable items within various form controls such as [select](/components/select).
  * @documentation https://solid.union-investment.com/[storybook-link]/option
  * @status stable
- * @since 1.0
+ * @since 1.24.0 // TODO UPDATE BEFORE MERGE!!!
  *
  * @dependency sd-icon
  *
  * @slot - The option's label.
- * @slot prefix - Used to prepend an icon or similar element to the menu item.
- * @slot suffix - Used to append an icon or similar element to the menu item.
+ * @slot left - Used to prepend an icon or similar element to the menu item.
+ * @slot right - Used to append an icon or similar element to the menu item.
  *
  * @csspart checked-icon - The checked icon, an `<sd-icon>` element.
  * @csspart base - The component's base wrapper.
  * @csspart label - The option's label.
- * @csspart prefix - The container that wraps the prefix.
- * @csspart suffix - The container that wraps the suffix.
+ * @csspart left - The container that wraps the left.
+ * @csspart right - The container that wraps the right.
  */
 @customElement('sd-option')
 export default class SdOption extends SolidElement {
-  private readonly hasSlotController = new HasSlotController(this, 'default', 'prefix', 'suffix');
+  private readonly hasSlotController = new HasSlotController(this, 'default', 'left', 'right');
 
   private cachedTextLabel: string;
   // @ts-expect-error - Controller is currently unused
   private readonly localize = new LocalizeController(this);
 
-  @query('.option__label') defaultSlot: HTMLSlotElement;
+  @query('[part="base"]') defaultSlot: HTMLSlotElement;
 
   @state() current = false; // the user has keyed into the option, but hasn't selected it yet (shows a highlight)
   @state() selected = false; // the option is selected and has aria-selected="true"
@@ -109,15 +109,15 @@ export default class SdOption extends SolidElement {
     // Slots
     const slots = {
       default: this.hasSlotController.test('default'),
-      prefix: this.hasSlotController.test('prefix'),
-      suffix: this.hasSlotController.test('suffix')
+      left: this.hasSlotController.test('left'),
+      right: this.hasSlotController.test('right')
     };
 
     return html`
       <div
         part="base"
         class=${cx(
-          'px-2 py-3 flex items-center w-full',
+          'px-2 py-3 flex items-center w-full transition-all',
           this.hasHover && !this.disabled ? 'bg-neutral-200' : '',
           this.disabled ? 'text-neutral-500 cursor-not-allowed' : 'cursor-pointer',
           this.current && '',
@@ -128,13 +128,9 @@ export default class SdOption extends SolidElement {
       >
         <!-- TODO: substitute sd-checkbox? -->
         <!-- <sd-icon part="checked-icon" class="hidden" name="check" library="system" aria-hidden="true"></sd-icon> -->
-        ${slots['prefix'] ? html`<slot name="prefix" part="prefix" class="inline-flex mr-2"></slot>` : ''}
-        <slot
-          part="label"
-          class="option__label inline-block flex-grow"
-          @slotchange=${this.handleDefaultSlotChange}
-        ></slot>
-        ${slots['suffix'] ? html`<slot name="suffix" part="suffix" class="inline-flex ml-2"></slot>` : ''}
+        ${slots['left'] ? html`<slot name="left" part="left" class="inline-flex mr-2"></slot>` : ''}
+        <slot part="label" class="inline-block flex-grow" @slotchange=${this.handleDefaultSlotChange}></slot>
+        ${slots['right'] ? html`<slot name="right" part="right" class="inline-flex ml-2"></slot>` : ''}
       </div>
     `;
   }

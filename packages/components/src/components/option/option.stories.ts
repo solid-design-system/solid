@@ -30,7 +30,7 @@ export const Default = {
 };
 
 /**
- * The `sd-option` when `disabled` is set to `true`.
+ * Use the `disabled` attribute to disable an option. Clicks will be suppressed until the disabled state is removed.
  */
 
 export const Disabled = {
@@ -50,13 +50,13 @@ export const Disabled = {
 export const Slots = {
   parameters: {
     controls: {
-      exclude: ['default', 'prefix', 'suffix']
+      exclude: ['default', 'left', 'right']
     }
   },
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Option' }),
   render: (args: any) => {
     return html`
-      ${['default', 'prefix', 'suffix'].map(slot =>
+      ${['default', 'left', 'right'].map(slot =>
         generateTemplate({
           axis: {
             x: {
@@ -79,13 +79,13 @@ export const Slots = {
           constants: [
             {
               type: 'slot',
-              name: 'prefix',
-              value: '<sd-icon slot="prefix" library="global-resources" name="system/picture"></sd-icon>'
+              name: 'left',
+              value: '<sd-icon slot="left" library="global-resources" name="system/picture"></sd-icon>'
             },
             {
               type: 'slot',
-              name: 'suffix',
-              value: '<sd-icon slot="suffix" library="global-resources" name="system/picture"></sd-icon>'
+              name: 'right',
+              value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
             }
           ],
           args
@@ -96,13 +96,13 @@ export const Slots = {
 };
 
 /**
- * Use the `base`, `label`, `prefix`, `suffix` part selectors to customize the option.
+ * Use the `base`, `label`, `left`, `right` part selectors to customize the option.
  */
 
 export const Parts = {
   parameters: {
     controls: {
-      exclude: ['base', 'label', 'prefix', 'suffix']
+      exclude: ['base', 'label', 'left', 'right']
     }
   },
   render: (args: any) => {
@@ -111,7 +111,7 @@ export const Parts = {
         y: {
           type: 'template',
           name: 'sd-option::part(...){outline: solid 2px red}',
-          values: ['base', 'label', 'prefix', 'suffix'].map(part => {
+          values: ['base', 'label', 'left', 'right'].map(part => {
             return {
               title: part,
               value: `<style>#part-${part} sd-option::part(${part}){outline: solid 2px red}</style><div id="part-${part}">%TEMPLATE%</div>`
@@ -122,8 +122,8 @@ export const Parts = {
       constants: [
         {
           type: 'slot',
-          name: 'prefix',
-          value: '<sd-icon slot="prefix" library="global-resources" name="system/picture"></sd-icon>'
+          name: 'left',
+          value: '<sd-icon slot="left" library="global-resources" name="system/picture"></sd-icon>'
         },
         {
           type: 'slot',
@@ -132,8 +132,8 @@ export const Parts = {
         },
         {
           type: 'slot',
-          name: 'suffix',
-          value: '<sd-icon slot="suffix" library="global-resources" name="system/picture"></sd-icon>'
+          name: 'right',
+          value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
         }
       ],
       args
