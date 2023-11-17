@@ -3,7 +3,7 @@ import { clickOnElement } from '../../internal/test';
 import { sendKeys } from '@web/test-runner-commands';
 import { serialize } from '../../utilities/form';
 import sinon from 'sinon';
-import type SdOption from '../option/option';
+import type SdOption from '../../_components/option/option';
 import type SdSelect from './select';
 
 describe('<sd-select>', () => {

@@ -1,4 +1,5 @@
 import '../../solid-components';
+import { html } from 'lit-html';
 import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
 import { withActions } from '@storybook/addon-actions/decorator';
 
@@ -10,10 +11,9 @@ export default {
   component: 'sd-select',
   args,
   argTypes,
-  parameters: {...parameters},
+  parameters: { ...parameters },
   decorators: [withActions] as any
 };
-
 
 /**
  * Default: This shows sd-select in its default state.
@@ -22,5 +22,20 @@ export default {
 export const Default = {
   render: (args: any) => {
     return generateTemplate({ args });
+  }
+};
+
+/**
+ * Dev: Temporary development story
+ */
+
+export const Dev = {
+  render: (args: any) => {
+    return html`
+      <sd-select>
+        <option>Option 1</option>
+        <option>Option 2</option>
+      </sd-select>
+    `;
   }
 };

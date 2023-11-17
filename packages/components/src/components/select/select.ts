@@ -3,14 +3,14 @@ import '../popup/popup';
 import '../tag/tag';
 import { animateTo, stopAnimations } from '../../internal/animate';
 import { classMap } from 'lit/directives/class-map.js';
-import { customElement } from '../../../src/internal/register-custom-element';
-import {property, query, state } from 'lit/decorators.js';
+import { customElement } from '../../internal/register-custom-element';
 import { defaultValue } from '../../internal/default-value';
 import { FormControlController } from '../../internal/form';
 import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry';
 import { HasSlotController } from '../../internal/slot';
 import { html } from 'lit';
 import { LocalizeController } from '../../utilities/localize';
+import { property, query, state } from 'lit/decorators.js';
 import { scrollIntoView } from '../../internal/scroll';
 import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch';
@@ -18,7 +18,7 @@ import SolidElement from '../../internal/solid-element';
 import styles from './select.styles';
 import type { CSSResultGroup } from 'lit';
 import type { SolidFormControl } from '../../internal/solid-element';
-import type SdOption from '../option/option';
+import type SdOption from '../../_components/option/option';
 import type SdPopup from '../popup/popup';
 
 /**
@@ -101,7 +101,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   @defaultValue() defaultValue: string | string[] = '';
 
   /** The select's size. */
-  @property() size: 'small' | 'medium' | 'large' = 'medium';
+  @property() size: 'lg' | 'md' | 'sm' = 'lg';
 
   /** Placeholder text to show as a hint when the select is empty. */
   @property() placeholder = '';
@@ -640,13 +640,13 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
       <div
         part="form-control"
         class=${classMap({
-      'form-control': true,
-      'form-control--small': this.size === 'small',
-      'form-control--medium': this.size === 'medium',
-      'form-control--large': this.size === 'large',
-      'form-control--has-label': hasLabel,
-      'form-control--has-help-text': hasHelpText
-    })}
+          'form-control': true,
+          'form-control--small': this.size === 'sm',
+          'form-control--medium': this.size === 'md',
+          'form-control--large': this.size === 'lg',
+          'form-control--has-label': hasLabel,
+          'form-control--has-help-text': hasHelpText
+        })}
       >
         <label
           id="label"
@@ -661,21 +661,21 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
         <div part="form-control-input" class="form-control-input">
           <sd-popup
             class=${classMap({
-      select: true,
-      'select--standard': true,
-      'select--filled': this.filled,
-      'select--pill': this.pill,
-      'select--open': this.open,
-      'select--disabled': this.disabled,
-      'select--multiple': this.multiple,
-      'select--focused': this.hasFocus,
-      'select--placeholder-visible': isPlaceholderVisible,
-      'select--top': this.placement === 'top',
-      'select--bottom': this.placement === 'bottom',
-      'select--small': this.size === 'small',
-      'select--medium': this.size === 'medium',
-      'select--large': this.size === 'large'
-    })}
+              select: true,
+              'select--standard': true,
+              'select--filled': this.filled,
+              'select--pill': this.pill,
+              'select--open': this.open,
+              'select--disabled': this.disabled,
+              'select--multiple': this.multiple,
+              'select--focused': this.hasFocus,
+              'select--placeholder-visible': isPlaceholderVisible,
+              'select--top': this.placement === 'top',
+              'select--bottom': this.placement === 'bottom',
+              'select--small': this.size === 'sm',
+              'select--medium': this.size === 'md',
+              'select--large': this.size === 'lg'
+            })}
             placement=${this.placement}
             strategy=${this.hoist ? 'fixed' : 'absolute'}
             flip
@@ -717,30 +717,34 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
               />
 
               ${this.multiple
-        ? html`
+                ? html`
                     <div part="tags" class="select__tags">
                       ${this.selectedOptions.map((option, index) => {
-          if (index < this.maxOptionsVisible || this.maxOptionsVisible <= 0) {
-            return html`
+                        if (index < this.maxOptionsVisible || this.maxOptionsVisible <= 0) {
+                          return html`
                             <sd-tag
                               part="tag"
                               ?pill=${this.pill}
-                              size=${this.size}
+                              size=${this.size === 'lg' ? 'lg' : 'sm'}
                               removable
                               @sd-remove=${(event: CustomEvent) => this.handleTagRemove(event, option)}
                             >
                               ${option.getTextLabel()}
                             </sd-tag>
                           `;
-          } else if (index === this.maxOptionsVisible) {
-            return html` <sd-tag size=${this.size}> +${this.selectedOptions.length - index} </sd-tag> `;
-          } else {
-            return null;
-          }
-        })}
+                        } else if (index === this.maxOptionsVisible) {
+                          return html`
+                            <sd-tag size=${this.size === 'lg' ? 'lg' : 'sm'}>
+                              +${this.selectedOptions.length - index}
+                            </sd-tag>
+                          `;
+                        } else {
+                          return null;
+                        }
+                      })}
                     </div>
                   `
-        : ''}
+                : ''}
 
               <input
                 class="select__value-input"
@@ -754,7 +758,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
               />
 
               ${hasClearIcon
-        ? html`
+                ? html`
                     <button
                       part="clear-button"
                       class="select__clear"
@@ -769,7 +773,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                       </slot>
                     </button>
                   `
-        : ''}
+                : ''}
 
               <slot name="expand-icon" part="expand-icon" class="select__expand-icon">
                 <sd-icon library="system" name="chevron-down"></sd-icon>
