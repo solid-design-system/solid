@@ -135,13 +135,39 @@ export const ToastNotification = {
   render: (_args: Record<string, any>) => {
     return html`
       <div class="flex gap-2">
-        <sd-button variant="secondary" notification-type="info" class="w-24 top-right"> Info </sd-button>
-        <sd-button variant="secondary" notification-type="success" class="w-24 top-right"> Success </sd-button>
-        <sd-button variant="secondary" notification-type="warning" class="w-24 top-right">Warning</sd-button>
-        <sd-button variant="secondary" notification-type="error" class="w-24 top-right">Error</sd-button>
+        <sd-button
+          variant="secondary"
+          data-notification-type="info"
+          data-notification-position="top-right"
+          class="w-24"
+        >
+          Info
+        </sd-button>
+        <sd-button
+          variant="secondary"
+          data-notification-type="success"
+          data-notification-position="top-right"
+          class="w-24"
+        >
+          Success
+        </sd-button>
+        <sd-button
+          variant="secondary"
+          data-notification-type="warning"
+          data-notification-position="top-right"
+          class="w-24"
+          >Warning</sd-button
+        >
+        <sd-button
+          variant="secondary"
+          data-notification-type="error"
+          data-notification-position="top-right"
+          class="w-24"
+          >Error</sd-button
+        >
       </div>
       <script>
-        var buttons = document.querySelectorAll('.top-right');
+        var buttons = document.querySelectorAll('[data-notification-position="top-right"]');
 
         function notify(variant = 'info') {
           const notification = Object.assign(document.createElement('sd-notification'), {
@@ -158,7 +184,7 @@ export const ToastNotification = {
 
         buttons.forEach(button => {
           button.addEventListener('click', () => {
-            notify(button.getAttribute('notification-type'));
+            notify(button.getAttribute('data-notification-type'));
           });
         });
       </script>
@@ -183,14 +209,40 @@ export const ToastBottomCenter = {
   render: (_args: Record<string, any>) => {
     return html`
       <div class="flex gap-2">
-        <sd-button variant="secondary" notification-type="info" class="w-24 bottom-center"> Info </sd-button>
-        <sd-button variant="secondary" notification-type="success" class="w-24 bottom-center"> Success </sd-button>
-        <sd-button variant="secondary" notification-type="warning" class="w-24 bottom-center">Warning</sd-button>
-        <sd-button variant="secondary" notification-type="error" class="w-24 bottom-center">Error</sd-button>
+        <sd-button
+          variant="secondary"
+          data-notification-type="info"
+          data-notification-position="bottom-center"
+          class="w-24"
+        >
+          Info
+        </sd-button>
+        <sd-button
+          variant="secondary"
+          data-notification-type="success"
+          data-notification-position="bottom-center"
+          class="w-24"
+        >
+          Success
+        </sd-button>
+        <sd-button
+          variant="secondary"
+          data-notification-type="warning"
+          data-notification-position="bottom-center"
+          class="w-24"
+          >Warning</sd-button
+        >
+        <sd-button
+          variant="secondary"
+          data-notification-type="error"
+          data-notification-position="bottom-center"
+          class="w-24"
+          >Error</sd-button
+        >
       </div>
 
       <script>
-        var buttons = document.querySelectorAll('.bottom-center');
+        var buttons = document.querySelectorAll('[data-notification-position="bottom-center"]');
 
         function notifyBottomCenter(variant = 'info') {
           const notification = Object.assign(document.createElement('sd-notification'), {
@@ -209,7 +261,7 @@ export const ToastBottomCenter = {
 
         buttons.forEach(button => {
           button.addEventListener('click', () => {
-            notifyBottomCenter(button.getAttribute('notification-type'));
+            notifyBottomCenter(button.getAttribute('data-notification-type'));
           });
         });
       </script>
