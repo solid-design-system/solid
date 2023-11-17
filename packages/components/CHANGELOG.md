@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v1.27.0](https://github.com/solid-design-system/solid/compare/components/1.26.0...components/1.27.0) (2023-11-17)
+
+
+### Features
+
+* ✨ add sd-notification ([#517](https://github.com/solid-design-system/solid/issues/517)) ([4b290d1](https://github.com/solid-design-system/solid/commit/4b290d102d910e75df0d85c54c8bf886d8b99c5a))
+
+### 📈 Stats
+* Bundle size (uncompressed): 217 KB (+8 KB / +4%)
+* Bundle size (gzipped): 55 KB (+2 KB / +4%)
+
 # [@solid-design-system/components-v1.26.0](https://github.com/solid-design-system/solid/compare/components/1.25.0...components/1.26.0) (2023-11-17)
 
 
