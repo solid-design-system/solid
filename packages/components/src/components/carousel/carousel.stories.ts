@@ -2,7 +2,6 @@
 import '../../solid-components';
 import { html } from 'lit';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { userEvent } from '@storybook/testing-library';
 import { waitUntil } from '@open-wc/testing-helpers';
 
 const { argTypes, parameters } = storybookDefaults('sd-carousel');
@@ -243,7 +242,8 @@ export const Mouseless = {
 
   play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
     const el = canvasElement.querySelector('.mouseless sd-carousel');
-    await waitUntil(() => el?.shadowRoot?.querySelector('scroll-container'));
-    await userEvent.type(el!.shadowRoot!.querySelector('scroll-container')!, '{space}', { pointerEventsCheck: 0 });
+    await waitUntil(() => el?.shadowRoot?.querySelector('#scroll-container'));
+
+    el?.shadowRoot?.querySelector<HTMLElement>('#scroll-container')!.focus();
   }
 };
