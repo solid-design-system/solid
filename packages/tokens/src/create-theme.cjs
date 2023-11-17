@@ -250,6 +250,12 @@ const getCoreTokensByType = (tokenType, cssVariableScope) => {
 
 const getZIndices = () => {
   const result = {
+    10: '10',
+    20: '20',
+    30: '30',
+    40: '40',
+    50: '50',
+    auto: 'auto',
     drawer: 'var(--sd-z-index-drawer, 700)',
     dialog: 'var(--sd-z-index-dialog, 800)',
     dropdown: 'var(--sd-z-index-dropdown, 900)',
