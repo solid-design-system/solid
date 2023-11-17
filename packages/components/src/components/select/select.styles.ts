@@ -135,29 +135,6 @@ export default css`
     box-shadow: 0 0 0 var(--sd-focus-ring-width) var(--sd-input-focus-ring-color);
   }
 
-  /* Filled selects */
-  .select--filled .select__combobox {
-    border: none;
-    background-color: var(--sd-input-filled-background-color);
-    color: var(--sd-input-color);
-  }
-
-  .select--filled:hover:not(.select--disabled) .select__combobox {
-    background-color: var(--sd-input-filled-background-color-hover);
-  }
-
-  .select--filled.select--disabled .select__combobox {
-    background-color: var(--sd-input-filled-background-color-disabled);
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-
-  .select--filled:not(.select--disabled).select--open .select__combobox,
-  .select--filled:not(.select--disabled).select--focused .select__combobox {
-    background-color: var(--sd-input-filled-background-color-focus);
-    outline: var(--sd-focus-ring);
-  }
-
   /* Sizes */
   .select--small .select__combobox {
     border-radius: var(--sd-input-border-radius-small);

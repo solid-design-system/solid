@@ -133,9 +133,6 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
    */
   @property({ type: Boolean }) hoist = false;
 
-  /** Draws a filled select. */
-  @property({ type: Boolean, reflect: true }) filled = false;
-
   /** The select's label. If you need to display HTML, use the `label` slot instead. */
   @property() label = '';
 
@@ -660,7 +657,6 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
             class=${classMap({
               select: true,
               'select--standard': true,
-              'select--filled': this.filled,
               'select--open': this.open,
               'select--disabled': this.disabled,
               'select--multiple': this.multiple,
