@@ -36,8 +36,8 @@ so that [PRODUCT_VALUE], and [FURTHER_PRODUCT_VALUE].
   - [ ] `name` - description
   - [ ] `name` - description
 #### Stories (besides the `default` story)
-  - [ ] name
-  - [ ] name
+  - [ ] name (description)
+  - [ ] name (description)
 #### Samples
   - [ ] `name` - description
   - [ ] `name` - description
