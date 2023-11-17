@@ -10,7 +10,7 @@ on:
       - main
 
 jobs:
-  chromatic-deployment:
+  chromatic-deployment-main:
     runs-on: ubuntu-latest
     steps:
         # 👇 Version 2 of the action
