@@ -32,10 +32,13 @@ export const Default = {
 export const Dev = {
   render: (args: any) => {
     return html`
-      <sd-select>
-        <option>Option 1</option>
-        <option>Option 2</option>
-      </sd-select>
+      <div class="w-[300px]">
+        <sd-select>
+          <div slot="label">Label</div>
+          <option>Option 1</option>
+          <option>Option 2</option>
+        </sd-select>
+      </div>
     `;
   }
 };

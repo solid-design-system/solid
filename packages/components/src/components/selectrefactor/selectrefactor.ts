@@ -1,7 +1,7 @@
 import { css, html } from 'lit';
 import { customElement } from '../../../src/internal/register-custom-element';
 import { LocalizeController } from '../../utilities/localize';
-import {property } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
 import { watch } from '../../internal/watch';
 import SolidElement from '../../internal/solid-element';
 
@@ -35,7 +35,12 @@ export default class SdSelectrefactor extends SolidElement {
   }
 
   render() {
-    return html` <slot></slot> `;
+    return html`
+      <sd-dropdown>
+        <div>panel</div>
+        <div slot="trigger">hello</div></sd-dropdown
+      >
+    `;
   }
 
   /** Inherits Tailwindclasses and includes additional styling. */

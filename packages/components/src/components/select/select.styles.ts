@@ -46,7 +46,10 @@ export default css`
     vertical-align: middle;
     overflow: hidden;
     cursor: pointer;
-    transition: var(--sd-transition-fast) color, var(--sd-transition-fast) border, var(--sd-transition-fast) box-shadow,
+    transition:
+      var(--sd-transition-fast) color,
+      var(--sd-transition-fast) border,
+      var(--sd-transition-fast) box-shadow,
       var(--sd-transition-fast) background-color;
   }
 
@@ -229,19 +232,6 @@ export default css`
 
   .select--large .select__tags {
     gap: 4px;
-  }
-
-  /* Pills */
-  .select--pill.select--small .select__combobox {
-    border-radius: var(--sd-input-height-small);
-  }
-
-  .select--pill.select--medium .select__combobox {
-    border-radius: var(--sd-input-height-medium);
-  }
-
-  .select--pill.select--large .select__combobox {
-    border-radius: var(--sd-input-height-large);
   }
 
   /* Prefix */

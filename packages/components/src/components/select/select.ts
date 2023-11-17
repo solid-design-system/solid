@@ -136,9 +136,6 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   /** Draws a filled select. */
   @property({ type: Boolean, reflect: true }) filled = false;
 
-  /** Draws a pill-style select with rounded edges. */
-  @property({ type: Boolean, reflect: true }) pill = false;
-
   /** The select's label. If you need to display HTML, use the `label` slot instead. */
   @property() label = '';
 
@@ -664,7 +661,6 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
               select: true,
               'select--standard': true,
               'select--filled': this.filled,
-              'select--pill': this.pill,
               'select--open': this.open,
               'select--disabled': this.disabled,
               'select--multiple': this.multiple,
@@ -724,7 +720,6 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                           return html`
                             <sd-tag
                               part="tag"
-                              ?pill=${this.pill}
                               size=${this.size === 'lg' ? 'lg' : 'sm'}
                               removable
                               @sd-remove=${(event: CustomEvent) => this.handleTagRemove(event, option)}
