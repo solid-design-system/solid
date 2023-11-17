@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v1.26.0](https://github.com/solid-design-system/solid/compare/components/1.25.0...components/1.26.0) (2023-11-17)
+
+
+### Features
+
+* ✨ sd-switch ([#538](https://github.com/solid-design-system/solid/issues/538)) ([259b53e](https://github.com/solid-design-system/solid/commit/259b53e0cc893c1e2743d7c152811b4a0702181a))
+
+### 📈 Stats
+* Bundle size (uncompressed): 209 KB (+5 KB / +2%)
+* Bundle size (gzipped): 53 KB (unchanged)
+
 # [@solid-design-system/components-v1.25.0](https://github.com/solid-design-system/solid/compare/components/1.24.0...components/1.25.0) (2023-11-13)
 
 
