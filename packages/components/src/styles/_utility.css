@@ -10,7 +10,7 @@
 }
 
 .sd-toast-stack {
-  @apply fixed z-50 max-w-[400px] max-h-full box-border;
+  @apply fixed z-alert-group max-w-[400px] max-h-full box-border;
 
   &--top-right {
     @apply top-0 right-0 mr-4;
