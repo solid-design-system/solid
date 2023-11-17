@@ -82,9 +82,23 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   @state() currentOption: SdOption;
   @state() selectedOptions: SdOption[] = [];
 
-  /** The name of the select, submitted as a name/value pair with form data. */
-  @property() name = '';
+  // --- --- --- VISUAL PROPS  --- --- --- //
+  /** The select's size. */
+  @property() size: 'lg' | 'md' | 'sm' = 'lg';
 
+  /**
+   * The preferred placement of the select's menu. Note that the actual placement may vary as needed to keep the listbox
+   * inside of the viewport.
+   */
+  @property({ reflect: true }) placement: 'top' | 'bottom' = 'bottom';
+
+  /**
+   * Enable this option to prevent the listbox from being clipped when the component is placed inside a container with
+   * `overflow: auto|scroll`. Hoisting uses a fixed positioning strategy that works in many, but not all, scenarios.
+   */
+  @property({ type: Boolean }) hoist = false;
+
+  // --- --- --- TEXT VALUE PROPS  --- --- --- //
   /**
    * The current value of the select, submitted as a name/value pair with form data. When `multiple` is enabled, the
    * value will be a space-delimited list of values based on the options selected.
@@ -100,11 +114,14 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   /** The default value of the form control. Primarily used for resetting the form control. */
   @defaultValue() defaultValue: string | string[] = '';
 
-  /** The select's size. */
-  @property() size: 'lg' | 'md' | 'sm' = 'lg';
-
   /** Placeholder text to show as a hint when the select is empty. */
   @property() placeholder = '';
+
+  /** The select's label. If you need to display HTML, use the `label` slot instead. */
+  @property() label = '';
+
+  /** The select's help text. If you need to display HTML, use the `help-text` slot instead. */
+  @property({ attribute: 'help-text' }) helpText = '';
 
   /** Allows more than one option to be selected. */
   @property({ type: Boolean, reflect: true }) multiple = false;
@@ -115,42 +132,29 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
    */
   @property({ attribute: 'max-options-visible', type: Number }) maxOptionsVisible = 3;
 
-  /** Disables the select control. */
-  @property({ type: Boolean, reflect: true }) disabled = false;
-
-  /** Adds a clear button when the select is not empty. */
-  @property({ type: Boolean }) clearable = false;
-
+  // --- --- --- BOOLEAN PROPS  --- --- --- //
   /**
    * Indicates whether or not the select is open. You can toggle this attribute to show and hide the menu, or you can
    * use the `show()` and `hide()` methods and this attribute will reflect the select's open state.
    */
   @property({ type: Boolean, reflect: true }) open = false;
 
-  /**
-   * Enable this option to prevent the listbox from being clipped when the component is placed inside a container with
-   * `overflow: auto|scroll`. Hoisting uses a fixed positioning strategy that works in many, but not all, scenarios.
-   */
-  @property({ type: Boolean }) hoist = false;
+  /** Adds a clear button when the select is not empty. */
+  @property({ type: Boolean }) clearable = false;
 
-  /** The select's label. If you need to display HTML, use the `label` slot instead. */
-  @property() label = '';
+  /** Disables the select control. */
+  @property({ type: Boolean, reflect: true }) disabled = false;
 
-  /**
-   * The preferred placement of the select's menu. Note that the actual placement may vary as needed to keep the listbox
-   * inside of the viewport.
-   */
-  @property({ reflect: true }) placement: 'top' | 'bottom' = 'bottom';
-
-  /** The select's help text. If you need to display HTML, use the `help-text` slot instead. */
-  @property({ attribute: 'help-text' }) helpText = '';
-
+  // --- --- --- FORM PROPS  --- --- --- //
   /**
    * By default, form controls are associated with the nearest containing `<form>` element. This attribute allows you
    * to place the form control outside of a form and associate it with the form that has this `id`. The form must be in
    * the same document or shadow root for this to work.
    */
   @property({ reflect: true }) form = '';
+
+  /** The name of the select, submitted as a name/value pair with form data. */
+  @property() name = '';
 
   /** The select's required attribute. */
   @property({ type: Boolean, reflect: true }) required = false;
