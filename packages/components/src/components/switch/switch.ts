@@ -14,7 +14,7 @@ import type { SolidFormControl } from '../../internal/solid-element';
  * @summary Switches allow the user to toggle an option on or off.
  * @documentation https://solid.union-investment.com/[storybook-link]/switch
  * @status stable
- * @since 1.24.0
+ * @since 1.26.0
  *
  *
  * @slot - The switch's label.
