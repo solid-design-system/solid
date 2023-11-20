@@ -7,6 +7,10 @@ import { html } from 'lit-html';
 const { argTypes, args, parameters } = storybookDefaults('sd-option');
 const { generateTemplate } = storybookTemplate('sd-option');
 
+/**
+ * Options define the selectable items within various form controls such as `sd-select`
+ */
+
 export default {
   title: 'Components/sd-option',
   component: 'sd-option',

@@ -33,10 +33,9 @@ export const Dev = {
   render: (args: any) => {
     return html`
       <div class="w-[300px]">
-        <sd-select>
-          <div slot="label">Label</div>
-          <option>Option 1</option>
-          <option>Option 2</option>
+        <sd-select label="Select one">
+          <sd-option value="option-1">Option 1</sd-option>
+          <sd-option value="option-2">Option 2</sd-option>
         </sd-select>
       </div>
     `;

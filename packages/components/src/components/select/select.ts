@@ -1,31 +1,32 @@
-import '../icon/icon';
-import '../popup/popup';
-import '../tag/tag';
-import { animateTo, stopAnimations } from '../../internal/animate';
+import { animateTo, stopAnimations } from '../../internal/animate.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
-import { defaultValue } from '../../internal/default-value';
-import { FormControlController } from '../../internal/form';
-import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry';
-import { HasSlotController } from '../../internal/slot';
-import { LocalizeController } from '../../utilities/localize';
+import { defaultValue } from '../../internal/default-value.js';
+import { FormControlController } from '../../internal/form.js';
+import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry.js';
+import { HasSlotController } from '../../internal/slot.js';
+import { LocalizeController } from '../../utilities/localize.js';
 import { property, query, state } from 'lit/decorators.js';
-import { scrollIntoView } from '../../internal/scroll';
-import { waitForEvent } from '../../internal/event';
-import { watch } from '../../internal/watch';
+import { scrollIntoView } from '../../internal/scroll.js';
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
+import { waitForEvent } from '../../internal/event.js';
+import { watch } from '../../internal/watch.js';
 import componentStyles from '../../styles/component.styles';
 import formControlStyles from '../../styles/form-control.styles';
+import SdIcon from '../icon/icon';
+import SdPopup from '../popup/popup';
+import SdTag from '../tag/tag';
 import SolidElement from '../../internal/solid-element';
 import type { SolidFormControl } from '../../internal/solid-element';
-import type SdOption from '../../_components/option/option';
-import type SdPopup from '../popup/popup';
+import type { TemplateResult } from 'lit';
+import type SdOption from '../option/option';
 
 /**
  * @summary Selects allow you to choose items from a menu of predefined options.
- * @documentation https://solid.union-investment.com/[storybook-link]/select
+ * @documentation https://shoelace.style/components/select
  * @status stable
- * @since 1.0
+ * @since 2.0
  *
  * @dependency sd-icon
  * @dependency sd-popup
@@ -47,6 +48,7 @@ import type SdPopup from '../popup/popup';
  * @event sd-after-show - Emitted after the select's menu opens and all animations are complete.
  * @event sd-hide - Emitted when the select's menu closes.
  * @event sd-after-hide - Emitted after the select's menu closes and all animations are complete.
+ * @event sd-invalid - Emitted when the form control has been checked for validity and its constraints aren't satisfied.
  *
  * @csspart form-control - The form control that wraps the label, input, and help text.
  * @csspart form-control-label - The label's wrapper.
@@ -58,12 +60,24 @@ import type SdPopup from '../popup/popup';
  * @csspart listbox - The listbox container where options are slotted.
  * @csspart tags - The container that houses option tags when `multiselect` is used.
  * @csspart tag - The individual tags that represent each multiselect option.
+ * @csspart tag__base - The tag's base part.
+ * @csspart tag__content - The tag's content part.
+ * @csspart tag__remove-button - The tag's remove button.
+ * @csspart tag__remove-button__base - The tag's remove button base part.
  * @csspart clear-button - The clear button.
  * @csspart expand-icon - The container that wraps the expand icon.
  */
 @customElement('sd-select')
 export default class SdSelect extends SolidElement implements SolidFormControl {
-  private readonly formControlController = new FormControlController(this);
+  static dependencies = {
+    'sd-icon': SdIcon,
+    'sd-popup': SdPopup,
+    'sd-tag': SdTag
+  };
+
+  private readonly formControlController = new FormControlController(this, {
+    assumeInteractionOn: ['sd-blur', 'sd-input']
+  });
   private readonly hasSlotController = new HasSlotController(this, 'help-text', 'label');
   private readonly localize = new LocalizeController(this);
   private typeToSelectString = '';
@@ -80,26 +94,13 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   @state() currentOption: SdOption;
   @state() selectedOptions: SdOption[] = [];
 
-  // --- --- --- VISUAL PROPS  --- --- --- //
-  /** The select's size. */
-  @property() size: 'lg' | 'md' | 'sm' = 'lg';
+  /** The name of the select, submitted as a name/value pair with form data. */
+  @property() name = '';
 
-  /**
-   * The preferred placement of the select's menu. Note that the actual placement may vary as needed to keep the listbox
-   * inside of the viewport.
-   */
-  @property({ reflect: true }) placement: 'top' | 'bottom' = 'bottom';
-
-  /**
-   * Enable this option to prevent the listbox from being clipped when the component is placed inside a container with
-   * `overflow: auto|scroll`. Hoisting uses a fixed positioning strategy that works in many, but not all, scenarios.
-   */
-  @property({ type: Boolean }) hoist = false;
-
-  // --- --- --- TEXT VALUE PROPS  --- --- --- //
   /**
    * The current value of the select, submitted as a name/value pair with form data. When `multiple` is enabled, the
-   * value will be a space-delimited list of values based on the options selected.
+   * value attribute will be a space-delimited list of values based on the options selected, and the value property will
+   * be an array. **For this reason, values must not contain spaces.**
    */
   @property({
     converter: {
@@ -112,14 +113,11 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   /** The default value of the form control. Primarily used for resetting the form control. */
   @defaultValue() defaultValue: string | string[] = '';
 
+  /** The select's size. */
+  @property({ reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
+
   /** Placeholder text to show as a hint when the select is empty. */
   @property() placeholder = '';
-
-  /** The select's label. If you need to display HTML, use the `label` slot instead. */
-  @property() label = '';
-
-  /** The select's help text. If you need to display HTML, use the `help-text` slot instead. */
-  @property({ attribute: 'help-text' }) helpText = '';
 
   /** Allows more than one option to be selected. */
   @property({ type: Boolean, reflect: true }) multiple = false;
@@ -130,20 +128,42 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
    */
   @property({ attribute: 'max-options-visible', type: Number }) maxOptionsVisible = 3;
 
-  // --- --- --- BOOLEAN PROPS  --- --- --- //
+  /** Disables the select control. */
+  @property({ type: Boolean, reflect: true }) disabled = false;
+
+  /** Adds a clear button when the select is not empty. */
+  @property({ type: Boolean }) clearable = false;
+
   /**
    * Indicates whether or not the select is open. You can toggle this attribute to show and hide the menu, or you can
    * use the `show()` and `hide()` methods and this attribute will reflect the select's open state.
    */
   @property({ type: Boolean, reflect: true }) open = false;
 
-  /** Adds a clear button when the select is not empty. */
-  @property({ type: Boolean }) clearable = false;
+  /**
+   * Enable this option to prevent the listbox from being clipped when the component is placed inside a container with
+   * `overflow: auto|scroll`. Hoisting uses a fixed positioning strategy that works in many, but not all, scenarios.
+   */
+  @property({ type: Boolean }) hoist = false;
 
-  /** Disables the select control. */
-  @property({ type: Boolean, reflect: true }) disabled = false;
+  /** Draws a filled select. */
+  @property({ type: Boolean, reflect: true }) filled = false;
 
-  // --- --- --- FORM PROPS  --- --- --- //
+  /** Draws a pill-style select with rounded edges. */
+  @property({ type: Boolean, reflect: true }) pill = false;
+
+  /** The select's label. If you need to display HTML, use the `label` slot instead. */
+  @property() label = '';
+
+  /**
+   * The preferred placement of the select's menu. Note that the actual placement may vary as needed to keep the listbox
+   * inside of the viewport.
+   */
+  @property({ reflect: true }) placement: 'top' | 'bottom' = 'bottom';
+
+  /** The select's help text. If you need to display HTML, use the `help-text` slot instead. */
+  @property({ attribute: 'help-text' }) helpText = '';
+
   /**
    * By default, form controls are associated with the nearest containing `<form>` element. This attribute allows you
    * to place the form control outside of a form and associate it with the form that has this `id`. The form must be in
@@ -151,17 +171,46 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
    */
   @property({ reflect: true }) form = '';
 
-  /** The name of the select, submitted as a name/value pair with form data. */
-  @property() name = '';
-
   /** The select's required attribute. */
   @property({ type: Boolean, reflect: true }) required = false;
 
+  /**
+   * A function that customizes the tags to be rendered when multiple=true. The first argument is the option, the second
+   * is the current tag's index.  The function should return either a Lit TemplateResult or a string containing trusted HTML of the symbol to render at
+   * the specified value.
+   */
+  @property() getTag: (option: SdOption, index: number) => TemplateResult | string | HTMLElement = option => {
+    return html`
+      <sd-tag
+        part="tag"
+        exportparts="
+              base:tag__base,
+              content:tag__content,
+              remove-button:tag__remove-button,
+              remove-button__base:tag__remove-button__base
+            "
+        ?pill=${this.pill}
+        size=${this.size === 'lg' ? 'lg' : 'sm'}
+        removable
+        @sd-remove=${(event: CustomEvent) => this.handleTagRemove(event, option)}
+      >
+        ${option.getTextLabel()}
+      </sd-tag>
+    `;
+  };
+
+  /** Gets the validity state object */
+  get validity() {
+    return this.valueInput.validity;
+  }
+
+  /** Gets the validation message */
+  get validationMessage() {
+    return this.valueInput.validationMessage;
+  }
+
   connectedCallback() {
     super.connectedCallback();
-    this.handleDocumentFocusIn = this.handleDocumentFocusIn.bind(this);
-    this.handleDocumentKeyDown = this.handleDocumentKeyDown.bind(this);
-    this.handleDocumentMouseDown = this.handleDocumentMouseDown.bind(this);
 
     // Because this is a form control, it shouldn't be opened initially
     this.open = false;
@@ -190,15 +239,15 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     this.emit('sd-blur');
   }
 
-  private handleDocumentFocusIn(event: KeyboardEvent) {
+  private handleDocumentFocusIn = (event: KeyboardEvent) => {
     // Close when focusing out of the select
     const path = event.composedPath();
     if (this && !path.includes(this)) {
       this.hide();
     }
-  }
+  };
 
-  private handleDocumentKeyDown(event: KeyboardEvent) {
+  private handleDocumentKeyDown = (event: KeyboardEvent) => {
     const target = event.target as HTMLElement;
     const isClearButton = target.closest('.select__clear') !== null;
     const isIconButton = target.closest('sd-icon-button') !== null;
@@ -236,8 +285,11 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
           this.setSelectedOptions(this.currentOption);
         }
 
-        this.emit('sd-input');
-        this.emit('sd-change');
+        // Emit after updating
+        this.updateComplete.then(() => {
+          this.emit('sd-input');
+          this.emit('sd-change');
+        });
 
         if (!this.multiple) {
           this.hide();
@@ -322,15 +374,15 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
         }
       }
     }
-  }
+  };
 
-  private handleDocumentMouseDown(event: MouseEvent) {
+  private handleDocumentMouseDown = (event: MouseEvent) => {
     // Close when clicking outside of the select
     const path = event.composedPath();
     if (this && !path.includes(this)) {
       this.hide();
     }
-  }
+  };
 
   private handleLabelClick() {
     this.displayInput.focus();
@@ -361,9 +413,13 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     if (this.value !== '') {
       this.setSelectedOptions([]);
       this.displayInput.focus({ preventScroll: true });
-      this.emit('sd-clear');
-      this.emit('sd-input');
-      this.emit('sd-change');
+
+      // Emit after update
+      this.updateComplete.then(() => {
+        this.emit('sd-clear');
+        this.emit('sd-input');
+        this.emit('sd-change');
+      });
     }
   }
 
@@ -389,8 +445,11 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
       this.updateComplete.then(() => this.displayInput.focus({ preventScroll: true }));
 
       if (this.value !== oldValue) {
-        this.emit('sd-input');
-        this.emit('sd-change');
+        // Emit after updating
+        this.updateComplete.then(() => {
+          this.emit('sd-input');
+          this.emit('sd-change');
+        });
       }
 
       if (!this.multiple) {
@@ -406,18 +465,15 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     const values: string[] = [];
 
     // Check for duplicate values in menu items
-    allOptions.forEach(option => {
-      if (values.includes(option.value)) {
-        console.error(
-          `An option with a duplicate value of "${option.value}" has been found in <sd-select>. All options must have unique values.`,
-          option
-        );
-      }
-      values.push(option.value);
-    });
+    if (customElements.get('sd-option')) {
+      allOptions.forEach(option => values.push(option.value));
 
-    // Select only the options that match the new value
-    this.setSelectedOptions(allOptions.filter(el => value.includes(el.value)));
+      // Select only the options that match the new value
+      this.setSelectedOptions(allOptions.filter(el => value.includes(el.value)));
+    } else {
+      // Rerun this handler when <sd-option> is registered
+      customElements.whenDefined('sd-option').then(() => this.handleDefaultSlotChange());
+    }
   }
 
   private handleTagRemove(event: CustomEvent, option: SdOption) {
@@ -425,8 +481,12 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
 
     if (!this.disabled) {
       this.toggleOptionSelection(option, false);
-      this.emit('sd-input');
-      this.emit('sd-change');
+
+      // Emit after updating
+      this.updateComplete.then(() => {
+        this.emit('sd-input');
+        this.emit('sd-change');
+      });
     }
   }
 
@@ -514,6 +574,26 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
       this.formControlController.updateValidity();
     });
   }
+  protected get tags() {
+    return this.selectedOptions.map((option, index) => {
+      if (index < this.maxOptionsVisible || this.maxOptionsVisible <= 0) {
+        const tag = this.getTag(option, index);
+        // Wrap so we can handle the remove
+        return html`<div @sd-remove=${(e: CustomEvent) => this.handleTagRemove(e, option)}>
+          ${typeof tag === 'string' ? unsafeHTML(tag) : tag}
+        </div>`;
+      } else if (index === this.maxOptionsVisible) {
+        // Hit tag limit
+        return html`<sd-tag>+${this.selectedOptions.length - index}</sd-tag>`;
+      }
+      return html``;
+    });
+  }
+
+  private handleInvalid(event: Event) {
+    this.formControlController.setValidity(false);
+    this.formControlController.emitInvalidEvent(event);
+  }
 
   @watch('disabled', { waitUntilFirstUpdate: true })
   handleDisabledChange() {
@@ -598,9 +678,14 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     return waitForEvent(this, 'sd-after-hide');
   }
 
-  /** Checks for validity but does not show the browser's validation message. */
+  /** Checks for validity but does not show a validation message. Returns `true` when valid and `false` when invalid. */
   checkValidity() {
     return this.valueInput.checkValidity();
+  }
+
+  /** Gets the associated form, if one exists. */
+  getForm(): HTMLFormElement | null {
+    return this.formControlController.getForm();
   }
 
   /** Checks for validity and shows the browser's validation message if the control is invalid. */
@@ -659,6 +744,8 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
             class=${classMap({
               select: true,
               'select--standard': true,
+              'select--filled': this.filled,
+              'select--pill': this.pill,
               'select--open': this.open,
               'select--disabled': this.disabled,
               'select--multiple': this.multiple,
@@ -710,34 +797,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 @blur=${this.handleBlur}
               />
 
-              ${this.multiple
-                ? html`
-                    <div part="tags" class="select__tags">
-                      ${this.selectedOptions.map((option, index) => {
-                        if (index < this.maxOptionsVisible || this.maxOptionsVisible <= 0) {
-                          return html`
-                            <sd-tag
-                              part="tag"
-                              size=${this.size === 'lg' ? 'lg' : 'sm'}
-                              removable
-                              @sd-remove=${(event: CustomEvent) => this.handleTagRemove(event, option)}
-                            >
-                              ${option.getTextLabel()}
-                            </sd-tag>
-                          `;
-                        } else if (index === this.maxOptionsVisible) {
-                          return html`
-                            <sd-tag size=${this.size === 'lg' ? 'lg' : 'sm'}>
-                              +${this.selectedOptions.length - index}
-                            </sd-tag>
-                          `;
-                        } else {
-                          return null;
-                        }
-                      })}
-                    </div>
-                  `
-                : ''}
+              ${this.multiple ? html`<div part="tags" class="select__tags">${this.tags}</div>` : ''}
 
               <input
                 class="select__value-input"
@@ -748,6 +808,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 tabindex="-1"
                 aria-hidden="true"
                 @focus=${() => this.focus()}
+                @invalid=${this.handleInvalid}
               />
 
               ${hasClearIcon
@@ -773,7 +834,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
               </slot>
             </div>
 
-            <slot
+            <div
               id="listbox"
               role="listbox"
               aria-expanded=${this.open ? 'true' : 'false'}
@@ -784,18 +845,19 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
               tabindex="-1"
               @mouseup=${this.handleOptionClick}
               @slotchange=${this.handleDefaultSlotChange}
-            ></slot>
+            >
+              <slot></slot>
+            </div>
           </sd-popup>
+        </div>
 
-          <slot
-            name="help-text"
-            part="form-control-help-text"
-            id="help-text"
-            class="form-control__help-text"
-            aria-hidden=${hasHelpText ? 'false' : 'true'}
-          >
-            ${this.helpText}
-          </slot>
+        <div
+          part="form-control-help-text"
+          id="help-text"
+          class="form-control__help-text"
+          aria-hidden=${hasHelpText ? 'false' : 'true'}
+        >
+          <slot name="help-text">${this.helpText}</slot>
         </div>
       </div>
     `;
