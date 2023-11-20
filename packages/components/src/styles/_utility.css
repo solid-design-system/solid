@@ -10,20 +10,24 @@
 }
 
 .sd-toast-stack {
-  position: fixed;
-  top: 0;
-  inset-inline-end: 0;
-  z-index: var(--sd-z-index-toast);
-  width: 28rem;
-  max-width: 100%;
-  max-height: 100%;
-  overflow: auto;
+  @apply fixed z-alert-group max-w-[400px] max-h-full box-border;
+
+  &--top-right {
+    @apply top-0 right-0 mr-4;
+  }
+
+  &--bottom-center {
+    @apply bottom-0 -translate-x-1/2;
+    inset-inline-start: 50%;
+  }
 }
 
-.sd-toast-stack sd-alert {
-  margin: var(--sd-spacing-medium);
-}
+.sd-toast-stack {
+  sd-notification::part(base) {
+    @apply shadow;
+  }
 
-.sd-toast-stack sd-alert::part(base) {
-  box-shadow: var(--sd-shadow-large);
+  sd-notification::part(content) {
+    @apply border-white;
+  }
 }

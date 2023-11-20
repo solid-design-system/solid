@@ -1,3 +1,10 @@
+# [@solid-design-system/tokens-v1.2.2](https://github.com/solid-design-system/solid/compare/tokens/1.2.1...tokens/1.2.2) (2023-11-17)
+
+
+### Bug Fixes
+
+* 🤔 add z-index tokens  ([#576](https://github.com/solid-design-system/solid/issues/576)) ([bba9e50](https://github.com/solid-design-system/solid/commit/bba9e505cfe91122a10bad0d3d23d0b56b8a76b0))
+
 # [@solid-design-system/tokens-v1.2.1](https://github.com/solid-design-system/solid/compare/tokens/1.2.0...tokens/1.2.1) (2023-08-29)
 
 

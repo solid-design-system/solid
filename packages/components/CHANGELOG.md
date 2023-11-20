@@ -1,3 +1,36 @@
+# [@solid-design-system/components-v1.28.0](https://github.com/solid-design-system/solid/compare/components/1.27.0...components/1.28.0) (2023-11-20)
+
+
+### Features
+
+* ✨ update sd-accordion meeting WCAG criteria / design refresh ([#575](https://github.com/solid-design-system/solid/issues/575)) ([9fdbfcb](https://github.com/solid-design-system/solid/commit/9fdbfcb220d885717801eea3267bc72f4f580ad4))
+
+### 📈 Stats
+* Bundle size (uncompressed): 217 KB (unchanged)
+* Bundle size (gzipped): 55 KB (unchanged)
+
+# [@solid-design-system/components-v1.27.0](https://github.com/solid-design-system/solid/compare/components/1.26.0...components/1.27.0) (2023-11-17)
+
+
+### Features
+
+* ✨ add sd-notification ([#517](https://github.com/solid-design-system/solid/issues/517)) ([4b290d1](https://github.com/solid-design-system/solid/commit/4b290d102d910e75df0d85c54c8bf886d8b99c5a))
+
+### 📈 Stats
+* Bundle size (uncompressed): 217 KB (+8 KB / +4%)
+* Bundle size (gzipped): 55 KB (+2 KB / +4%)
+
+# [@solid-design-system/components-v1.26.0](https://github.com/solid-design-system/solid/compare/components/1.25.0...components/1.26.0) (2023-11-17)
+
+
+### Features
+
+* ✨ sd-switch ([#538](https://github.com/solid-design-system/solid/issues/538)) ([259b53e](https://github.com/solid-design-system/solid/commit/259b53e0cc893c1e2743d7c152811b4a0702181a))
+
+### 📈 Stats
+* Bundle size (uncompressed): 209 KB (+5 KB / +2%)
+* Bundle size (gzipped): 53 KB (unchanged)
+
 # [@solid-design-system/components-v1.25.0](https://github.com/solid-design-system/solid/compare/components/1.24.0...components/1.25.0) (2023-11-13)
 
 
