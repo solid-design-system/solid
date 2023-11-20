@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v1.28.0](https://github.com/solid-design-system/solid/compare/components/1.27.0...components/1.28.0) (2023-11-20)
+
+
+### Features
+
+* ✨ update sd-accordion meeting WCAG criteria / design refresh ([#575](https://github.com/solid-design-system/solid/issues/575)) ([9fdbfcb](https://github.com/solid-design-system/solid/commit/9fdbfcb220d885717801eea3267bc72f4f580ad4))
+
+### 📈 Stats
+* Bundle size (uncompressed): 217 KB (unchanged)
+* Bundle size (gzipped): 55 KB (unchanged)
+
 # [@solid-design-system/components-v1.27.0](https://github.com/solid-design-system/solid/compare/components/1.26.0...components/1.27.0) (2023-11-17)
 
 
