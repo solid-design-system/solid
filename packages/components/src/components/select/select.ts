@@ -703,10 +703,18 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   }
 
   render() {
-    const hasLabelSlot = this.hasSlotController.test('label');
-    const hasHelpTextSlot = this.hasSlotController.test('help-text');
-    const hasLabel = this.label ? true : !!hasLabelSlot;
-    const hasHelpText = this.helpText ? true : !!hasHelpTextSlot;
+    // Slots
+    const slots = {
+      default: this.hasSlotController.test('[default]'),
+      label: this.hasSlotController.test('label'),
+      prefix: this.hasSlotController.test('prefix'),
+      clearIcon: this.hasSlotController.test('clear-icon'),
+      expandIcon: this.hasSlotController.test('expand-icon'),
+      helpText: this.hasSlotController.test('help-text')
+    };
+
+    const hasLabel = this.label ? true : !!slots['label'];
+    const hasHelpText = this.helpText ? true : !!slots['helpText'];
     const hasClearIcon = this.clearable && !this.disabled && this.value.length > 0;
     const isPlaceholderVisible = this.placeholder && this.value.length === 0;
 
