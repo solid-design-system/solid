@@ -732,7 +732,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
         ? 'activeInvalid'
         : this.hasFocus && isValid
           ? 'activeValid'
-          : this.hasFocus
+          : this.hasFocus || this.open
             ? 'active'
             : isInvalid
               ? 'invalid'
@@ -786,7 +786,11 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
         <div part="form-control-input" class="form-control-input cursor-pointer relative">
           <div
             part="border"
-            class=${cx('absolute w-full h-full pointer-events-none border rounded-default transition-all', borderColor)}
+            class=${cx(
+              borderColor,
+              'absolute w-full h-full pointer-events-none border rounded-default transition-all',
+              this.open && 'rounded-bl-none rounded-br-none'
+            )}
           ></div>
           <sd-popup
             class=${classMap({
@@ -898,7 +902,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
               aria-multiselectable=${this.multiple ? 'true' : 'false'}
               aria-labelledby="label"
               part="listbox"
-              class=${cx('border rounded-default bg-white px-2 py-3', borderColor)}
+              class="border-r-2 border-b-2 border-l-2 rounded-br-default rounded-bl-default bg-white px-2 py-3"
               tabindex="-1"
               @mouseup=${this.handleOptionClick}
               @slotchange=${this.handleDefaultSlotChange}
