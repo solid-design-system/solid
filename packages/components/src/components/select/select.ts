@@ -782,21 +782,25 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
           <slot name="label">${this.label}</slot>
         </label>
 
-        <div part="form-control-input" class="form-control-input">
+        <div part="form-control-input" class="form-control-input cursor-pointer relative">
+          <div
+            part="border"
+            class=${cx('absolute w-full h-full pointer-events-none border rounded-default transition-all', borderColor)}
+          ></div>
           <sd-popup
             class=${classMap({
-              select: true,
-              'select--standard': true,
-              'select--open': this.open,
-              'select--disabled': this.disabled,
-              'select--multiple': this.multiple,
-              'select--focused': this.hasFocus,
-              'select--placeholder-visible': isPlaceholderVisible,
-              'select--top': this.placement === 'top',
-              'select--bottom': this.placement === 'bottom',
-              'select--small': this.size === 'sm',
-              'select--medium': this.size === 'md',
-              'select--large': this.size === 'lg'
+              // select: true,
+              // 'select--standard': true,
+              // 'select--open': this.open,
+              // 'select--disabled': this.disabled,
+              // 'select--multiple': this.multiple,
+              // 'select--focused': this.hasFocus,
+              // 'select--placeholder-visible': isPlaceholderVisible,
+              // 'select--top': this.placement === 'top',
+              // 'select--bottom': this.placement === 'bottom',
+              // 'select--small': this.size === 'sm',
+              // 'select--medium': this.size === 'md',
+              // 'select--large': this.size === 'lg'
             })}
             placement=${this.placement}
             strategy=${this.hoist ? 'fixed' : 'absolute'}
@@ -808,16 +812,15 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
           >
             <div
               part="combobox"
-              class=${cx('select__combobox border rounded-default', borderColor)}
+              class=${cx('select__combobox px-3 py-2 flex flex-row items-center')}
               slot="anchor"
               @keydown=${this.handleComboboxKeyDown}
               @mousedown=${this.handleComboboxMouseDown}
             >
               <slot part="prefix" name="prefix" class="select__prefix"></slot>
-
               <input
                 part="display-input"
-                class="select__display-input"
+                class="outline-none flex-grow cursor-pointer"
                 type="text"
                 placeholder=${this.placeholder}
                 .disabled=${this.disabled}
@@ -841,7 +844,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
               ${this.multiple ? html`<div part="tags" class="select__tags">${this.tags}</div>` : ''}
 
               <input
-                class="select__value-input"
+                class="select__value-input hidden"
                 type="text"
                 ?disabled=${this.disabled}
                 ?required=${this.required}
@@ -882,7 +885,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
               aria-multiselectable=${this.multiple ? 'true' : 'false'}
               aria-labelledby="label"
               part="listbox"
-              class="select__listbox"
+              class=${cx('border rounded-default', borderColor)}
               tabindex="-1"
               @mouseup=${this.handleOptionClick}
               @slotchange=${this.handleDefaultSlotChange}

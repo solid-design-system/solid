@@ -120,8 +120,8 @@ export default class SdOption extends SolidElement {
           'px-2 py-3 flex items-center w-full transition-all',
           this.hasHover && !this.disabled ? 'bg-neutral-200' : '',
           this.disabled ? 'text-neutral-500 cursor-not-allowed' : 'cursor-pointer',
-          this.current && '',
-          this.selected && ''
+          this.current && 'bg-neutral-200',
+          this.selected && 'bg-primary text-white'
         )}
         @mouseenter=${this.handleMouseEnter}
         @mouseleave=${this.handleMouseLeave}
