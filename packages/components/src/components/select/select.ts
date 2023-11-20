@@ -13,6 +13,7 @@ import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { waitForEvent } from '../../internal/event.js';
 import { watch } from '../../internal/watch.js';
 import componentStyles from '../../styles/component.styles';
+import cx from 'classix';
 import formControlStyles from '../../styles/form-control.styles';
 import SdIcon from '../icon/icon';
 import SdPopup from '../popup/popup';
@@ -83,11 +84,11 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   private typeToSelectString = '';
   private typeToSelectTimeout: number;
 
-  @query('.select') popup: SdPopup;
-  @query('.select__combobox') combobox: HTMLSlotElement;
-  @query('.select__display-input') displayInput: HTMLInputElement;
+  @query('sd-popup') popup: SdPopup;
+  @query('[part="combobox"]') combobox: HTMLSlotElement;
+  @query('[part="display-input"]') displayInput: HTMLInputElement;
   @query('.select__value-input') valueInput: HTMLInputElement;
-  @query('.select__listbox') listbox: HTMLSlotElement;
+  @query('[part="listbox"]') listbox: HTMLSlotElement;
 
   @state() private hasFocus = false;
   @state() displayLabel = '';
@@ -717,19 +718,60 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     const hasHelpText = this.helpText ? true : !!slots['helpText'];
     const hasClearIcon = this.clearable && !this.disabled && this.value.length > 0;
     const isPlaceholderVisible = this.placeholder && this.value.length === 0;
+    // TODO: Refine
+    const hasValidationAttr = this.required;
+    const isInvalid = hasValidationAttr && !this.checkValidity();
+    const isValid = hasValidationAttr && this.checkValidity();
+
+    // Hierarchy of input states:
+    const inputState = this.disabled
+      ? 'disabled'
+      : this.hasFocus && isInvalid
+        ? 'activeInvalid'
+        : this.hasFocus && isValid
+          ? 'activeValid'
+          : this.hasFocus
+            ? 'active'
+            : isInvalid
+              ? 'invalid'
+              : isValid
+                ? 'valid'
+                : 'default';
+
+    // Conditional Styles
+    const textSize = this.size === 'sm' ? 'text-sm' : 'text-base';
+    const textColor = {
+      disabled: 'text-neutral-500',
+      readonly: 'text-black',
+      activeInvalid: 'text-error',
+      activeValid: 'text-success',
+      active: 'text-black',
+      invalid: 'text-error',
+      valid: 'text-success',
+      default: 'text-black'
+    }[inputState];
+
+    const borderColor = {
+      disabled: 'border-neutral-500',
+      readonly: 'border-neutral-800',
+      activeInvalid: 'border-error border-2',
+      activeValid: 'border-success border-2',
+      active: 'border-primary border-2',
+      invalid: 'border-error',
+      valid: 'border-success',
+      default: 'border-neutral-800'
+    }[inputState];
+
+    const iconColor = this.disabled ? 'text-neutral-500' : 'text-primary';
+    const iconMarginLeft = { sm: 'ml-1', md: 'ml-2', lg: 'ml-2' }[this.size];
+    const iconSize = {
+      sm: 'text-base',
+      md: 'text-lg',
+      lg: 'text-xl'
+    }[this.size];
 
     return html`
-      <div
-        part="form-control"
-        class=${classMap({
-          'form-control': true,
-          'form-control--small': this.size === 'sm',
-          'form-control--medium': this.size === 'md',
-          'form-control--large': this.size === 'lg',
-          'form-control--has-label': hasLabel,
-          'form-control--has-help-text': hasHelpText
-        })}
-      >
+      <div part="form-control" class=${cx('form-control')}>
         <label
           id="label"
           part="form-control-label"
@@ -766,7 +808,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
           >
             <div
               part="combobox"
-              class="select__combobox"
+              class=${cx('select__combobox border rounded-default', borderColor)}
               slot="anchor"
               @keydown=${this.handleComboboxKeyDown}
               @mousedown=${this.handleComboboxMouseDown}
@@ -871,7 +913,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     SolidElement.styles,
     css`
       :host {
-        display: inline-block;
+        display: block;
         width: 100%;
       }
     `
