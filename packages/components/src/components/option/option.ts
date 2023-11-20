@@ -118,8 +118,8 @@ export default class SdOption extends SolidElement {
         part="base"
         class=${cx(
           'px-2 py-3 flex items-center w-full transition-all',
-          this.hasHover && !this.disabled ? 'bg-neutral-200' : '',
           this.disabled ? 'text-neutral-500 cursor-not-allowed' : 'cursor-pointer',
+          this.hasHover && !this.disabled ? 'bg-neutral-200' : '',
           this.current && 'bg-neutral-200',
           this.selected && 'bg-primary text-white'
         )}
@@ -144,7 +144,9 @@ export default class SdOption extends SolidElement {
     SolidElement.styles,
     css`
       :host {
-        display: inline-block;
+        /* necessary to hide focus style in sd-select */
+        outline: none !important;
+        display: block;
         position: relative;
         width: 100%;
       }

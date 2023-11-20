@@ -714,6 +714,8 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
       helpText: this.hasSlotController.test('help-text')
     };
 
+    console.log(this.helpText);
+
     const hasLabel = this.label ? true : !!slots['label'];
     const hasHelpText = this.helpText ? true : !!slots['helpText'];
     const hasClearIcon = this.clearable && !this.disabled && this.value.length > 0;
@@ -775,7 +777,6 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
         <label
           id="label"
           part="form-control-label"
-          class="form-control__label"
           aria-hidden=${hasLabel ? 'false' : 'true'}
           @click=${this.handleLabelClick}
         >
@@ -817,7 +818,13 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
               @keydown=${this.handleComboboxKeyDown}
               @mousedown=${this.handleComboboxMouseDown}
             >
-              <slot part="prefix" name="prefix" class="select__prefix"></slot>
+              ${slots['prefix']
+                ? html`<slot
+                    name="prefix"
+                    part="prefix"
+                    class=${cx('inline-flex', this.size === 'sm' ? 'mr-1' : 'mr-2', iconColor, iconSize)}
+                  ></slot>`
+                : ''}
               <input
                 part="display-input"
                 class="outline-none flex-grow cursor-pointer"
@@ -874,7 +881,13 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 : ''}
 
               <slot name="expand-icon" part="expand-icon" class="select__expand-icon">
-                <sd-icon library="system" name="chevron-down"></sd-icon>
+                <sd-icon
+                  name="chevron-down"
+                  part="chevron"
+                  library="system"
+                  color="currentColor"
+                  class=${cx('h-6 w-6 ml-2 transition-all', this.open ? 'rotate-180' : 'rotate-0')}
+                ></sd-icon>
               </slot>
             </div>
 
@@ -885,7 +898,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
               aria-multiselectable=${this.multiple ? 'true' : 'false'}
               aria-labelledby="label"
               part="listbox"
-              class=${cx('border rounded-default', borderColor)}
+              class=${cx('border rounded-default bg-white px-2 py-3', borderColor)}
               tabindex="-1"
               @mouseup=${this.handleOptionClick}
               @slotchange=${this.handleDefaultSlotChange}
@@ -895,12 +908,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
           </sd-popup>
         </div>
 
-        <div
-          part="form-control-help-text"
-          id="help-text"
-          class="form-control__help-text"
-          aria-hidden=${hasHelpText ? 'false' : 'true'}
-        >
+        <div class="" part="form-control-help-text" id="help-text" aria-hidden=${hasHelpText ? 'false' : 'true'}>
           <slot name="help-text">${this.helpText}</slot>
         </div>
       </div>
