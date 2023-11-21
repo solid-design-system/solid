@@ -58,6 +58,42 @@ export const Labels = {
 };
 
 /**
+ * Help Text: Add descriptive help text to a select with the `help-text` attribute. For help texts that contain HTML, use the help-text slot instead.
+ */
+
+export const HelpText = {
+  name: 'Help Text',
+  parameters: {
+    exclude: ['default', 'help-text', 'label']
+  },
+  render: (args: any) => {
+    return html`<div class="max-w-[500px]">
+      ${generateTemplate({
+        constants: [
+          {
+            type: 'slot',
+            name: 'default',
+            value:
+              '<sd-option value="novice">Novice</sd-option><sd-option value="intermediate">Intermediate</sd-option><sd-option value="advanced">Advanced</sd-option>'
+          },
+          {
+            type: 'attribute',
+            name: 'help-text',
+            value: 'Please tell us your skill level.'
+          },
+          {
+            type: 'attribute',
+            name: 'label',
+            value: 'Experience'
+          }
+        ],
+        args
+      })}
+    </div>`;
+  }
+};
+
+/**
  * Dev: Temporary development story
  */
 

@@ -792,7 +792,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     }[this.size];
 
     return html`
-      <div part="form-control" class=${cx('form-control', textSize)}>
+      <div part="form-control" class=${cx('form-control', textColor, textSize)}>
         <label
           id="label"
           part="form-control-label"
@@ -945,7 +945,12 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
           </sd-popup>
         </div>
 
-        <div class="" part="form-control-help-text" id="help-text" aria-hidden=${hasHelpText ? 'false' : 'true'}>
+        <div
+          class="text-sm text-neutral-700"
+          part="form-control-help-text"
+          id="help-text"
+          aria-hidden=${hasHelpText ? 'false' : 'true'}
+        >
           <slot name="help-text">${this.helpText}</slot>
         </div>
       </div>
