@@ -62,9 +62,9 @@ export const Disabled = {
     return html`
       <div class="w-[300px]">
         ${generateTemplate({
-      constants: [{ type: 'attribute', name: 'disabled', value: true }],
-      args
-    })}
+          constants: [{ type: 'attribute', name: 'disabled', value: true }],
+          args
+        })}
       </div>
     `;
   }
@@ -88,9 +88,9 @@ export const Readonly = {
     return html`
       <div class="w-[300px]">
         ${generateTemplate({
-      constants: [{ type: 'attribute', name: 'readonly', value: true }],
-      args
-    })}
+          constants: [{ type: 'attribute', name: 'readonly', value: true }],
+          args
+        })}
       </div>
     `;
   }

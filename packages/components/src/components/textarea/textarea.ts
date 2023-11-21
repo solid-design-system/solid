@@ -1,16 +1,16 @@
-import {css, html} from 'lit';
-import {customElement} from "../../internal/register-custom-element";
-import {defaultValue} from '../../internal/default-value.js';
-import {FormControlController} from '../../internal/form.js';
-import {HasSlotController} from '../../internal/slot.js';
-import {ifDefined} from 'lit/directives/if-defined.js';
-import {live} from 'lit/directives/live.js';
-import {property, query, state} from 'lit/decorators.js';
-import {watch} from '../../internal/watch.js';
+import { css, html } from 'lit';
+import { customElement } from '../../internal/register-custom-element';
+import { defaultValue } from '../../internal/default-value.js';
+import { FormControlController } from '../../internal/form.js';
+import { HasSlotController } from '../../internal/slot.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
+import { live } from 'lit/directives/live.js';
+import { property, query, state } from 'lit/decorators.js';
+import { watch } from '../../internal/watch.js';
 import cx from 'classix';
-import formControlStyles from "../../styles/form-control.styles";
-import SolidElement from "../../internal/solid-element";
-import type {SolidFormControl} from "../../internal/solid-element";
+import formControlStyles from '../../styles/form-control.styles';
+import SolidElement from '../../internal/solid-element';
+import type { SolidFormControl } from '../../internal/solid-element';
 
 /**
  * @summary Textareas collect data from the user and allow multiple lines of text.
@@ -36,7 +36,6 @@ import type {SolidFormControl} from "../../internal/solid-element";
  */
 @customElement('sd-textarea')
 export default class SdTextarea extends SolidElement implements SolidFormControl {
-
   private readonly formControlController = new FormControlController(this);
   private readonly hasSlotController = new HasSlotController(this, 'help-text', 'label');
 
@@ -52,44 +51,44 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
   @property() value = '';
 
   /** The textarea's size. */
-  @property({reflect: true}) size: 'lg' | 'md' | 'sm' = 'lg';
+  @property({ reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
 
   /** The textarea's label. If you need to display HTML, use the `label` slot instead. */
   @property() label = '';
 
   /** The textarea's help text. If you need to display HTML, use the `help-text` slot instead. */
-  @property({attribute: 'help-text'}) helpText = '';
+  @property({ attribute: 'help-text' }) helpText = '';
 
   /** Placeholder text to show as a hint when the input is empty. */
   @property() placeholder = '';
 
   /** The number of rows to display by default. */
-  @property({type: Number}) rows = 4;
+  @property({ type: Number }) rows = 4;
 
   /** Controls how the textarea can be resized. */
   @property() resize: 'none' | 'vertical' | 'auto' = 'none';
 
   /** Disables the textarea. */
-  @property({type: Boolean, reflect: true}) disabled = false;
+  @property({ type: Boolean, reflect: true }) disabled = false;
 
   /** Makes the textarea readonly. */
-  @property({type: Boolean, reflect: true}) readonly = false;
+  @property({ type: Boolean, reflect: true }) readonly = false;
 
   /**
    * By default, form controls are associated with the nearest containing `<form>` element. This attribute allows you
    * to place the form control outside of a form and associate it with the form that has this `id`. The form must be in
    * the same document or shadow root for this to work.
    */
-  @property({reflect: true}) form = '';
+  @property({ reflect: true }) form = '';
 
   /** Makes the textarea a required field. */
-  @property({type: Boolean, reflect: true}) required = false;
+  @property({ type: Boolean, reflect: true }) required = false;
 
   /** The minimum length of input that will be considered valid. */
-  @property({type: Number}) minlength: number;
+  @property({ type: Number }) minlength: number;
 
   /** The maximum length of input that will be considered valid. */
-  @property({type: Number}) maxlength: number;
+  @property({ type: Number }) maxlength: number;
 
   /** Controls whether and how text input is automatically capitalized as it is entered by the user. */
   @property() autocapitalize: 'off' | 'none' | 'on' | 'sentences' | 'words' | 'characters';
@@ -104,7 +103,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
   @property() autocomplete: string;
 
   /** Indicates that the input should receive focus on page load. */
-  @property({type: Boolean}) autofocus: boolean;
+  @property({ type: Boolean }) autofocus: boolean;
 
   /** Used to customize the label or icon of the Enter key on virtual keyboards. */
   @property() enterkeyhint: 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send';
@@ -194,18 +193,18 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
     }
   }
 
-  @watch('disabled', {waitUntilFirstUpdate: true})
+  @watch('disabled', { waitUntilFirstUpdate: true })
   handleDisabledChange() {
     // Disabled form controls are always valid
     this.formControlController.setValidity(this.disabled);
   }
 
-  @watch('rows', {waitUntilFirstUpdate: true})
+  @watch('rows', { waitUntilFirstUpdate: true })
   handleRowsChange() {
     this.setTextareaHeight();
   }
 
-  @watch('value', {waitUntilFirstUpdate: true})
+  @watch('value', { waitUntilFirstUpdate: true })
   async handleValueChange() {
     await this.updateComplete;
     this.formControlController.updateValidity();
@@ -333,7 +332,8 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
     return html`
       <div
         part="form-control"
-        class=${cx('form-control',
+        class=${cx(
+          'form-control',
           hasLabel && 'form-control--has-label',
           hasHelpText && 'form-control--has-help-text',
           this.disabled && 'pointer-events-none'
@@ -349,10 +349,10 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
         </label>
 
         <div part="form-control-input" class="form-control-input relative w-full">
-          <div part="border" class=${cx(
-            'absolute w-full h-full pointer-events-none border rounded-default',
-            borderColor
-          )}></div>
+          <div
+            part="border"
+            class=${cx('absolute w-full h-full pointer-events-none border rounded-default', borderColor)}
+          ></div>
           <div
             part="base"
             class=${cx(
@@ -373,7 +373,8 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
             <textarea
               part="textarea"
               id="input"
-              class=${cx('textarea__control no-scrollbar flex-grow focus:outline-none bg-transparent placeholder-neutral-700"',
+              class=${cx(
+                'textarea__control no-scrollbar flex-grow focus:outline-none bg-transparent placeholder-neutral-700"',
                 textSize
               )}
               title=${this.title /* An empty title prevents browser validation tooltips from appearing on hover */}

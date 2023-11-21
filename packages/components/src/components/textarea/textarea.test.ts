@@ -1,4 +1,4 @@
-import { expect, fixture, html,  waitUntil } from '@open-wc/testing';
+import { expect, fixture, html, waitUntil } from '@open-wc/testing';
 import { sendKeys } from '@web/test-runner-commands';
 import { serialize } from '../../utilities/form.js';
 import sinon from 'sinon';
