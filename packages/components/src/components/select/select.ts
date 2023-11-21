@@ -788,7 +788,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
             part="border"
             class=${cx(
               borderColor,
-              'absolute w-full h-full pointer-events-none border rounded-default transition-all',
+              'absolute w-full h-full pointer-events-none border rounded-default',
               this.open && 'rounded-bl-none rounded-br-none'
             )}
           ></div>
@@ -870,7 +870,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 ? html`
                     <button
                       part="clear-button"
-                      class="select__clear"
+                      class=${cx('select__clear flex justify-center ', iconMarginLeft)}
                       type="button"
                       aria-label=${this.localize.term('clearEntry')}
                       @mousedown=${this.handleClearMouseDown}
@@ -878,7 +878,11 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                       tabindex="-1"
                     >
                       <slot name="clear-icon">
-                        <sd-icon name="x-circle-fill" library="system"></sd-icon>
+                        <sd-icon
+                          class=${cx('text-neutral-500', iconSize)}
+                          library="system"
+                          name="closing-round"
+                        ></sd-icon>
                       </slot>
                     </button>
                   `
