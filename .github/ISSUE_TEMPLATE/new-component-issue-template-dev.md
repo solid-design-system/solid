@@ -2,7 +2,7 @@
 name: New Component Issue Development
 about: New Component Issue Template for Development
 title: 'feat: ✨ add sd-[COMPONENT_NAME]'
-labels: '🔧 needs dev'
+labels: '🔧 code'
 assignees: ''
 
 ---

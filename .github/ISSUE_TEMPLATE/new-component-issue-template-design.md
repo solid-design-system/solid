@@ -2,7 +2,7 @@
 name: New Component Issue Design
 about: New Component Issue Template for Design
 title: 'feat: ✨ add sd-[COMPONENT_NAME]'
-labels: '🎨 needs design'
+labels: '🎨 figma'
 assignees: ''
 
 ---
