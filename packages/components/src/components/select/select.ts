@@ -130,7 +130,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
    * The maximum number of selected options to show when `multiple` is true. After the maximum, "+n" will be shown to
    * indicate the number of additional items that are selected. Set to 0 to remove the limit.
    */
-  @property({ attribute: 'max-options-visible', type: Number }) maxOptionsVisible = 2;
+  @property({ attribute: 'max-options-visible', type: Number }) maxOptionsVisible = 4;
 
   /** Disables the select control. */
   @property({ type: Boolean, reflect: true }) disabled = false;
@@ -835,7 +835,10 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 : ''}
               <input
                 part="display-input"
-                class="outline-none flex-grow cursor-pointer"
+                class=${cx(
+                  'outline-none flex-grow cursor-pointer',
+                  this.multiple && this.checklist && this.value.length > 0 ? 'hidden' : ''
+                )}
                 type="text"
                 placeholder=${this.placeholder}
                 .disabled=${this.disabled}
@@ -856,7 +859,9 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 @blur=${this.handleBlur}
               />
 
-              ${this.multiple && this.checklist ? html`<div part="tags" class="select__tags">${this.tags}</div>` : ''}
+              ${this.multiple && this.checklist
+                ? html`<div part="tags" class="flex-grow flex flex-wrap items-center gap-1">${this.tags}</div>`
+                : ''}
 
               <input
                 class="select__value-input hidden"
