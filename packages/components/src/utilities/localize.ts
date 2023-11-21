@@ -27,6 +27,7 @@ export interface Translation extends DefaultTranslation {
   scrollToEnd: string;
   scrollToStart: string;
   selectAColorFromTheScreen: string;
+  selectDefaultPlaceholder: string;
   showPassword: string;
   slideNum: (slide: number) => string;
   toggleColorFormat: string;

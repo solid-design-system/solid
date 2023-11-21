@@ -33,7 +33,7 @@ export const Dev = {
   render: () => {
     return html`
       <div class="w-[300px]">
-        <sd-select clearable label="Label" help-text="help-text">
+        <sd-select multiple clearable label="Label" help-text="help-text">
           <sd-icon slot="prefix" library="global-resources" name="system/picture"></sd-icon>
           <sd-option value="option-1">Option 1</sd-option>
           <sd-option value="option-2">Option 2</sd-option>

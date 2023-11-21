@@ -118,16 +118,19 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   @property({ reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
 
   /** Placeholder text to show as a hint when the select is empty. */
-  @property() placeholder = '';
+  @property() placeholder = this.localize.term('selectDefaultPlaceholder');
 
   /** Allows more than one option to be selected. */
   @property({ type: Boolean, reflect: true }) multiple = false;
+
+  /** Enables checklist variant when `multiple` is true. Listbox then uses check box style options and the value input displays interactive `sd-tags` representing individual options up until the `maxOptionsVisible` limit after which a single `sd-tag` will list the number of additional selected options.  */
+  @property({ type: Boolean, reflect: true }) checklist = false;
 
   /**
    * The maximum number of selected options to show when `multiple` is true. After the maximum, "+n" will be shown to
    * indicate the number of additional items that are selected. Set to 0 to remove the limit.
    */
-  @property({ attribute: 'max-options-visible', type: Number }) maxOptionsVisible = 3;
+  @property({ attribute: 'max-options-visible', type: Number }) maxOptionsVisible = 2;
 
   /** Disables the select control. */
   @property({ type: Boolean, reflect: true }) disabled = false;
@@ -552,7 +555,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     if (this.multiple) {
       this.value = this.selectedOptions.map(el => el.value);
 
-      if (this.placeholder && this.value.length === 0) {
+      if (this.checklist || this.value.length === 0) {
         // When no items are selected, keep the value empty so the placeholder shows
         this.displayLabel = '';
       } else {
@@ -568,6 +571,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
       this.formControlController.updateValidity();
     });
   }
+
   protected get tags() {
     return this.selectedOptions.map((option, index) => {
       if (index < this.maxOptionsVisible || this.maxOptionsVisible <= 0) {
@@ -852,7 +856,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 @blur=${this.handleBlur}
               />
 
-              ${this.multiple ? html`<div part="tags" class="select__tags">${this.tags}</div>` : ''}
+              ${this.multiple && this.checklist ? html`<div part="tags" class="select__tags">${this.tags}</div>` : ''}
 
               <input
                 class="select__value-input hidden"
