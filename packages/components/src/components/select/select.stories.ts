@@ -118,6 +118,30 @@ export const Placeholder = {
 };
 
 /**
+ * Clearable: Use the `clearable` attribute to make the control clearable. The clear button only appears when an option is selected.
+ */
+
+export const Clearable = {
+  parameters: {
+    exclude: ['clearable']
+  },
+  render: (args: any) => {
+    return html`<div class="max-w-[500px]">
+      ${generateTemplate({
+        constants: [
+          {
+            type: 'attribute',
+            name: 'clearable',
+            value: true
+          }
+        ],
+        args
+      })}
+    </div>`;
+  }
+};
+
+/**
  * Dev: Temporary development story
  */
 
@@ -126,12 +150,6 @@ export const Dev = {
     return html`<div class="max-w-[500px]">
       ${generateTemplate({
         constants: [
-          {
-            type: 'slot',
-            name: 'default',
-            value:
-              '<sd-option value="option-1">Option 1</sd-option><sd-option value="option-2">Option 2</sd-option><sd-option value="option-3">Option 3</sd-option><sd-option value="option-4">Option 4</sd-option><sd-option value="option-5">Option 5</sd-option>'
-          },
           {
             type: 'attribute',
             name: 'clearable',

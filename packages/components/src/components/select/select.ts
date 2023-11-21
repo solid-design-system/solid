@@ -745,7 +745,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     const isValid = hasValidationAttr && this.checkValidity();
 
     // Hierarchy of input states:
-    const inputState = this.disabled
+    const selectState = this.disabled
       ? 'disabled'
       : this.hasFocus && isInvalid
         ? 'activeInvalid'
@@ -770,7 +770,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
       invalid: 'text-error',
       valid: 'text-success',
       default: 'text-black'
-    }[inputState];
+    }[selectState];
 
     const borderColor = {
       disabled: 'border-neutral-500',
@@ -781,7 +781,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
       invalid: 'border-error',
       valid: 'border-success',
       default: 'border-neutral-800'
-    }[inputState];
+    }[selectState];
 
     const iconColor = this.disabled ? 'text-neutral-500' : 'text-primary';
     const iconMarginLeft = { sm: 'ml-1', md: 'ml-2', lg: 'ml-2' }[this.size];
