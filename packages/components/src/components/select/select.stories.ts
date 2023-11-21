@@ -26,6 +26,61 @@ export const Default = {
 };
 
 /**
+ * Default: This shows sd-select in its default state.
+ */
+
+export const DevDynamic = {
+  render: (args: any) => {
+    return generateTemplate({
+      constants: [
+        {
+          type: 'slot',
+          name: 'default',
+          value:
+            '<sd-option value="option-1">Option 1</sd-option><sd-option value="option-2">Option 2</sd-option><sd-option value="option-3">Option 3</sd-option><sd-option value="option-4">Option 4</sd-option><sd-option value="option-5">Option 5</sd-option>'
+        },
+        {
+          type: 'attribute',
+          name: 'clearable',
+          value: true
+        },
+        {
+          type: 'attribute',
+          name: 'multiple',
+          value: true
+        },
+        {
+          type: 'attribute',
+          name: 'checklist',
+          value: true
+        }
+      ],
+      args
+    });
+  }
+};
+
+/**
+ * Default: This shows sd-select in its default state.
+ */
+
+export const DevDynamic2 = {
+  render: (args: any) => {
+    return generateTemplate({
+      constants: [
+        {
+          type: 'slot',
+          name: 'default',
+          value:
+            '<sd-checkbox value="option-1">Option 1</sd-checkbox><sd-checkbox value="option-2">Option 2</sd-checkbox><sd-checkbox value="option-3">Option 3</sd-checkbox><sd-checkbox value="option-4">Option 4</sd-checkbox><sd-checkbox value="option-5">Option 5</sd-checkbox>'
+        }
+      ],
+      args
+    });
+  }
+};
+
+/**
  * Dev: Temporary development story
  */
 
