@@ -52,6 +52,9 @@ export default class SdOption extends SolidElement {
   /** Draws the option in a disabled state, preventing selection. */
   @property({ type: Boolean, reflect: true }) disabled = false;
 
+  /** Uses `sd-checkbox` to style the option. */
+  @property({ type: Boolean, reflect: true }) checkbox = false;
+
   connectedCallback() {
     super.connectedCallback();
     this.setAttribute('role', 'option');
@@ -121,13 +124,29 @@ export default class SdOption extends SolidElement {
           this.disabled ? 'text-neutral-500 cursor-not-allowed' : 'cursor-pointer',
           this.hasHover && !this.disabled ? 'bg-neutral-200' : '',
           this.current && 'bg-neutral-200',
-          this.selected && 'bg-primary text-white'
+          this.selected && !this.checkbox ? 'bg-primary text-white' : ''
         )}
         @mouseenter=${this.handleMouseEnter}
         @mouseleave=${this.handleMouseLeave}
       >
-        <!-- TODO: substitute sd-checkbox? -->
-        <!-- <sd-icon part="checked-icon" class="hidden" name="check" library="system" aria-hidden="true"></sd-icon> -->
+        ${this.checkbox
+          ? html`<span
+              id="control"
+              part="control ${this.selected ? ' control--checked' : 'control--unchecked'}"
+              class=${cx('relative flex flex-initial items-center justify-center border rounded-sm h-4 w-4 mx-2')}
+            >
+              ${this.selected
+                ? html`
+                    <sd-icon
+                      part="checked-icon"
+                      class="text-white w-3 h-3"
+                      library="system"
+                      name="status-hook"
+                    ></sd-icon>
+                  `
+                : ''}
+            </span>`
+          : ''}
         ${slots['left'] ? html`<slot name="left" part="left" class="inline-flex mr-2"></slot>` : ''}
         <slot part="label" class="inline-block flex-grow" @slotchange=${this.handleDefaultSlotChange}></slot>
         ${slots['right'] ? html`<slot name="right" part="right" class="inline-flex ml-2"></slot>` : ''}

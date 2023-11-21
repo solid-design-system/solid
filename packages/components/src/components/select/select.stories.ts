@@ -48,31 +48,6 @@ export const DevDynamic = {
           type: 'attribute',
           name: 'multiple',
           value: true
-        },
-        {
-          type: 'attribute',
-          name: 'checklist',
-          value: true
-        }
-      ],
-      args
-    });
-  }
-};
-
-/**
- * Default: This shows sd-select in its default state.
- */
-
-export const DevDynamic2 = {
-  render: (args: any) => {
-    return generateTemplate({
-      constants: [
-        {
-          type: 'slot',
-          name: 'default',
-          value:
-            '<sd-checkbox value="option-1">Option 1</sd-checkbox><sd-checkbox value="option-2">Option 2</sd-checkbox><sd-checkbox value="option-3">Option 3</sd-checkbox><sd-checkbox value="option-4">Option 4</sd-checkbox><sd-checkbox value="option-5">Option 5</sd-checkbox>'
         }
       ],
       args

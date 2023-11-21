@@ -463,7 +463,12 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
 
     // Check for duplicate values in menu items
     if (customElements.get('sd-option')) {
-      allOptions.forEach(option => values.push(option.value));
+      allOptions.forEach(option => {
+        if (this.checklist) {
+          option.checkbox = true;
+        }
+        values.push(option.value);
+      });
 
       // Select only the options that match the new value
       this.setSelectedOptions(allOptions.filter(el => value.includes(el.value)));
@@ -654,6 +659,18 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     }
   }
 
+  @watch('checklist', { waitUntilFirstUpdate: true })
+  handleChecklistChange() {
+    const allOptions = this.getAllOptions();
+
+    // Mutate all sd-option checkbox attributes based on checklist state
+    if (customElements.get('sd-option')) {
+      allOptions.forEach(option => {
+        option.checkbox = this.checklist;
+      });
+    }
+  }
+
   /** Shows the listbox. */
   async show() {
     if (this.open || this.disabled) {
@@ -717,8 +734,6 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
       expandIcon: this.hasSlotController.test('expand-icon'),
       helpText: this.hasSlotController.test('help-text')
     };
-
-    console.log(this.helpText);
 
     const hasLabel = this.label ? true : !!slots['label'];
     const hasHelpText = this.helpText ? true : !!slots['helpText'];
