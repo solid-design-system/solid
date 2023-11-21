@@ -133,7 +133,13 @@ export default class SdOption extends SolidElement {
           ? html`<span
               id="control"
               part="control ${this.selected ? ' control--checked' : 'control--unchecked'}"
-              class=${cx('relative flex flex-initial items-center justify-center border rounded-sm h-4 w-4 mx-2')}
+              class=${cx(
+                'relative flex flex-initial items-center justify-center border rounded-sm h-4 w-4 mx-2',
+                this.selected
+                  ? 'border-accent hover:border-accent-550 bg-accent'
+                  : 'border-neutral-800 hover:bg-neutral-200 bg-white',
+                this.disabled && 'border-neutral-500 bg-neutral-500'
+              )}
             >
               ${this.selected
                 ? html`
