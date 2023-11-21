@@ -20,7 +20,7 @@ export default {
         defaultValue: 'text'
       },
       description:
-        'The type of input. Works the same as a native `<input>` element, but only a subset of types are supported. ',
+        'The type of input. Works the same as a native `<textarea>` element, but only a subset of types are supported. ',
       control: 'select',
       options: ['date', 'datetime-local', 'email', 'number', 'password', 'search', 'tel', 'text', 'time', 'url', 'text']
     }
@@ -29,7 +29,7 @@ export default {
     ...parameters,
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/file/xSIeTnyfW2T21Uw5JgdZOg/Input?node-id=0%3A1&mode=dev'
+      url: 'https://www.figma.com/file/07Bzd23A0QSrSWiXy6w2uM/Text-Area?node-id=1010%3A1736&mode=dev'
     }
   },
   decorators: [withActions] as any
@@ -40,7 +40,7 @@ export default {
  */
 export const Default = {
   render: (args: any) => {
-    return html`<div class="w-[231px]">${generateTemplate({ args })}</div> `;
+    return html`<div class="w-[250px]">${generateTemplate({ args })}</div> `;
   }
 };
 
@@ -60,7 +60,7 @@ export const Disabled = {
   ]),
   render: (args: any) => {
     return html`
-      <div class="w-[231px]">
+      <div class="w-[300px]">
         ${generateTemplate({
       constants: [{ type: 'attribute', name: 'disabled', value: true }],
       args
@@ -86,7 +86,7 @@ export const Readonly = {
   ]),
   render: (args: any) => {
     return html`
-      <div class="w-[231px]">
+      <div class="w-[300px]">
         ${generateTemplate({
       constants: [{ type: 'attribute', name: 'readonly', value: true }],
       args
