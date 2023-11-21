@@ -123,14 +123,14 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   /** Allows more than one option to be selected. */
   @property({ type: Boolean, reflect: true }) multiple = false;
 
-  /** Enables checklist variant when `multiple` is true. Listbox then uses check box style options and the value input displays interactive `sd-tags` representing individual options up until the `maxOptionsVisible` limit after which a single `sd-tag` will list the number of additional selected options.  */
+  /** Enables checklist variant when `multiple` is true. Each `sd-option` element in the listbox has its `checkbox` attribute set to `true` and the value input displays interactive `sd-tag` elements representing individual options up until the `maxOptionsVisible` limit after which a single `sd-tag` will list the number of additional selected options.  */
   @property({ type: Boolean, reflect: true }) checklist = false;
 
   /**
    * The maximum number of selected options to show when `multiple` is true. After the maximum, "+n" will be shown to
    * indicate the number of additional items that are selected. Set to 0 to remove the limit.
    */
-  @property({ attribute: 'max-options-visible', type: Number }) maxOptionsVisible = 4;
+  @property({ attribute: 'max-options-visible', type: Number }) maxOptionsVisible = 3;
 
   /** Disables the select control. */
   @property({ type: Boolean, reflect: true }) disabled = false;
@@ -387,10 +387,10 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
 
   private handleComboboxMouseDown(event: MouseEvent) {
     const path = event.composedPath();
-    const isIconButton = path.some(el => el instanceof Element && el.tagName.toLowerCase() === 'sd-icon-button');
+    const isRemovableIndicator = path.some(el => el instanceof HTMLSlotElement && el.name === 'removable-indicator');
 
     // Ignore disabled controls and clicks on tags (remove buttons)
-    if (this.disabled || isIconButton) {
+    if (this.disabled || isRemovableIndicator) {
       return;
     }
 
