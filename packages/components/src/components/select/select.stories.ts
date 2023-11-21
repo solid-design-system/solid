@@ -142,6 +142,35 @@ export const Clearable = {
 };
 
 /**
+ * Disabled: Use the `disabled` attribute to disable a select.
+ */
+
+export const Disabled = {
+  parameters: {
+    exclude: ['disabled']
+  },
+  render: (args: any) => {
+    return html`<div class="max-w-[500px]">
+      ${generateTemplate({
+        constants: [
+          {
+            type: 'attribute',
+            name: 'disabled',
+            value: true
+          },
+          {
+            type: 'slot',
+            name: 'prefix',
+            value: '<sd-icon slot="prefix" library="global-resources" name="system/picture"></sd-icon>'
+          }
+        ],
+        args
+      })}
+    </div>`;
+  }
+};
+
+/**
  * Dev: Temporary development story
  */
 
