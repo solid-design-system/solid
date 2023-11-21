@@ -94,6 +94,30 @@ export const HelpText = {
 };
 
 /**
+ * Placeholder: Use the `placeholder` attribute to add a placeholder.  We use the localized string "Please select" by default.
+ */
+
+export const Placeholder = {
+  parameters: {
+    exclude: ['placeholder']
+  },
+  render: (args: any) => {
+    return html`<div class="max-w-[500px]">
+      ${generateTemplate({
+        constants: [
+          {
+            type: 'attribute',
+            name: 'placeholder',
+            value: 'Placeholder'
+          }
+        ],
+        args
+      })}
+    </div>`;
+  }
+};
+
+/**
  * Dev: Temporary development story
  */
 
