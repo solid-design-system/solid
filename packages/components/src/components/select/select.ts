@@ -792,10 +792,11 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     }[this.size];
 
     return html`
-      <div part="form-control" class=${cx('form-control')}>
+      <div part="form-control" class=${cx('form-control', textSize)}>
         <label
           id="label"
           part="form-control-label"
+          class=${hasLabel && 'inline-block mb-2'}
           aria-hidden=${hasLabel ? 'false' : 'true'}
           @click=${this.handleLabelClick}
         >
@@ -918,14 +919,12 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                   `
                 : ''}
 
-              <slot name="expand-icon" part="expand-icon" class="select__expand-icon">
-                <sd-icon
-                  name="chevron-down"
-                  part="chevron"
-                  library="system"
-                  color="currentColor"
-                  class=${cx('h-6 w-6 ml-2 transition-all', this.open ? 'rotate-180' : 'rotate-0')}
-                ></sd-icon>
+              <slot
+                name="expand-icon"
+                part="expand-icon"
+                class=${cx('inline-flex ml-2 transition-all', this.open ? 'rotate-180' : 'rotate-0', iconSize)}
+              >
+                <sd-icon name="chevron-down" part="chevron" library="system" color="currentColor"></sd-icon>
               </slot>
             </div>
 
