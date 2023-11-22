@@ -4,7 +4,7 @@ import { withActions } from '@storybook/addon-actions/decorator';
 const { overrideArgs } = storybookHelpers('sd-option');
 import { html } from 'lit-html';
 
-const { argTypes, args, parameters } = storybookDefaults('sd-option');
+const { argTypes, parameters } = storybookDefaults('sd-option');
 const { generateTemplate } = storybookTemplate('sd-option');
 
 /**
@@ -14,7 +14,7 @@ const { generateTemplate } = storybookTemplate('sd-option');
 export default {
   title: 'Components/sd-option',
   component: 'sd-option',
-  args,
+  args: overrideArgs({ type: 'slot', name: 'default', value: 'Option' }),
   argTypes,
   parameters: { ...parameters },
   decorators: [withActions] as any
@@ -38,10 +38,22 @@ export const Default = {
  */
 
 export const Disabled = {
-  args: overrideArgs({ type: 'slot', name: 'default', value: 'Option' }),
   render: (args: any) => {
     return generateTemplate({
       constants: { type: 'attribute', name: 'disabled', value: true },
+      args
+    });
+  }
+};
+
+/**
+ * Use the `checkbox` attribute to prefix a styled checkbox. Enabled automatically when using `sd-select` with attribute `checklist` set to `true`.
+ */
+
+export const Checkbox = {
+  render: (args: any) => {
+    return generateTemplate({
+      constants: { type: 'attribute', name: 'checkbox', value: true },
       args
     });
   }
@@ -57,7 +69,6 @@ export const Slots = {
       exclude: ['default', 'left', 'right']
     }
   },
-  args: overrideArgs({ type: 'slot', name: 'default', value: 'Option' }),
   render: (args: any) => {
     return html`
       ${['default', 'left', 'right'].map(slot =>

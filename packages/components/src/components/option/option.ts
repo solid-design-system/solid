@@ -52,7 +52,7 @@ export default class SdOption extends SolidElement {
   /** Draws the option in a disabled state, preventing selection. */
   @property({ type: Boolean, reflect: true }) disabled = false;
 
-  /** Uses `sd-checkbox` to style the option. */
+  /** Prefixes a styled checkbox to the option. Enabled automatically in `sd-select` when attribute `checklist` is set to `true`. */
   @property({ type: Boolean, reflect: true }) checkbox = false;
 
   connectedCallback() {
