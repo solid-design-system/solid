@@ -10,14 +10,14 @@ In order to ensure a certain level of quality and reliability, we use a combinat
 
 #### Visual Regression Testing
 
-We use chromatic screenshot testing to ensure that our components are visually correct. This automatically runs on every PR and will show any visual changes that have been made. Changes can be approved or rejected and will be shown in the PR.
+We use Chromatic screenshot testing to ensure that our components are visually correct. This automatically runs on every PR and will show any visual changes that have been made. Changes can be approved or rejected and will be shown in the PR.
 
 #### Code Analyzer
 
 We use several automations to ensure that our code is consistent and correct. This includes:
 
-- QualityGate - this action builds the whole project and veryfies the syntax of the code
-- File Size Check - this action checks the new bundle size of the project to ensure that we don't add too much bloat
+- Quality Gate - this action builds the whole project, verifies linting, formatting and runs all tests
+- File Size Check - this action communicates and compares the bundle size to monitor performance
 - Linting - this action checks the code for any linting errors
 - Validate PR Title - this action checks the PR title to ensure that it follows our naming conventions matching with sematic versioning
 - CodeQL Scan - this action checks the code for any security vulnerabilities
@@ -28,7 +28,7 @@ The above actions are automatically run on every PR and are required to pass bef
 
 Besides the automatic checks, we also do manual QA on every PR. This includes:
 
-- code review
+- code review with a minimum of one reviewer
 - testing the changes in a published feature environment
 
 #### Details
