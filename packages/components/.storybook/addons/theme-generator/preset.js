@@ -1,9 +1,9 @@
 function previewAnnotations(entry = []) {
-  return [...entry, require.resolve('./preview')];
+  return [...entry, require.resolve('../preview')];
 }
 
 function managerEntries(entry = []) {
-  return [...entry, require.resolve('./manager')];
+  return [...entry, require.resolve('../manager')];
 }
 
 module.exports = {

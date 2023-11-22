@@ -1,6 +1,6 @@
 import type { Renderer, PartialStoryFn as StoryFunction, StoryContext } from '@storybook/types';
 import { useEffect, useGlobals } from '@storybook/preview-api';
-import { PARAM_KEY, PANEL_DEFAULTS } from './constants';
+import { PARAM_KEY, PANEL_DEFAULTS } from '../constants';
 import { calculateColorsAsCss } from './colorCalculations';
 import theme from 'tailwind-theme';
 

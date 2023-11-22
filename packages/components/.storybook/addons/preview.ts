@@ -1,6 +1,6 @@
 import type { Renderer, ProjectAnnotations } from '@storybook/types';
 import { PARAM_KEY } from './constants';
-import { withGlobals } from './withGlobals';
+import { withGlobals } from './theme-generator/withGlobals';
 
 const preview: ProjectAnnotations<Renderer> = {
   decorators: [withGlobals],
