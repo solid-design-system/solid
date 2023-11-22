@@ -1,6 +1,7 @@
 import '../../solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
+import { waitUntil } from '@open-wc/testing-helpers';
 import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, args, parameters } = storybookDefaults('sd-textarea');
@@ -12,18 +13,7 @@ export default {
   component: 'sd-textarea',
   args,
   argTypes: {
-    ...argTypes,
-    'type-attr': {
-      name: 'type',
-      table: {
-        category: 'attributes',
-        defaultValue: 'text'
-      },
-      description:
-        'The type of input. Works the same as a native `<textarea>` element, but only a subset of types are supported. ',
-      control: 'select',
-      options: ['date', 'datetime-local', 'email', 'number', 'password', 'search', 'tel', 'text', 'time', 'url', 'text']
-    }
+    ...argTypes
   },
   parameters: {
     ...parameters,
@@ -45,6 +35,61 @@ export const Default = {
 };
 
 /**
+ * Use the `label` attribute to give the input an accessible label. For labels that contain HTML, use the `label` slot instead.
+ */
+
+export const Labels = {
+  args: overrideArgs([{ type: 'attribute', name: 'label', value: 'Label' }]),
+  render: (args: any) => {
+    return html`
+      <div class="w-[250px]">
+        ${generateTemplate({
+          args
+        })}
+      </div>
+    `;
+  }
+};
+
+/**
+ * Add descriptive help text to an input with the `help-text` attribute. For help texts that contain HTML, use the `help-text` slot instead.
+ */
+
+export const HelpText = {
+  name: 'Help Text',
+  args: overrideArgs([
+    { type: 'attribute', name: 'label', value: 'Nickname' },
+    { type: 'attribute', name: 'help-text', value: 'How would you like to be called?' }
+  ]),
+  render: (args: any) => {
+    return html`
+      <div class="w-[250px]">
+        ${generateTemplate({
+          args
+        })}
+      </div>
+    `;
+  }
+};
+
+/**
+ * Use the `placeholder` attribute to add a placeholder.
+ */
+
+export const Placeholders = {
+  args: overrideArgs([{ type: 'attribute', name: 'placeholder', value: 'Type something' }]),
+  render: (args: any) => {
+    return html`
+      <div class="w-[250px]">
+        ${generateTemplate({
+          args
+        })}
+      </div>
+    `;
+  }
+};
+
+/**
  * Use the disabled attribute to disable an input. All interaction is disabled and no events will be fired.
  */
 export const Disabled = {
@@ -60,7 +105,7 @@ export const Disabled = {
   ]),
   render: (args: any) => {
     return html`
-      <div class="w-[300px]">
+      <div class="w-[250px]">
         ${generateTemplate({
           constants: [{ type: 'attribute', name: 'disabled', value: true }],
           args
@@ -86,12 +131,241 @@ export const Readonly = {
   ]),
   render: (args: any) => {
     return html`
-      <div class="w-[300px]">
+      <div class="w-[250px]">
         ${generateTemplate({
           constants: [{ type: 'attribute', name: 'readonly', value: true }],
           args
         })}
       </div>
     `;
+  }
+};
+
+/**
+ * This shows sd-input in its various sizes.
+ */
+
+export const Sizes = {
+  parameters: {
+    controls: {
+      exclude: ['size']
+    }
+  },
+  args: overrideArgs([
+    { type: 'attribute', name: 'value', value: 'value' },
+    { type: 'attribute', name: 'label', value: 'Label' },
+    { type: 'attribute', name: 'help-text', value: 'help-text' }
+  ]),
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        y: { type: 'attribute', name: 'size' }
+      },
+      args
+    });
+  }
+};
+
+export const Types = {
+  parameters: {
+    controls: {
+      include: ['size', 'disabled', 'readonly']
+    }
+  },
+  render: (args: any) => {
+    return html`
+      <div class="w-[370px]">
+        <div class="mb-2">
+          ${generateTemplate({
+            constants: [
+              { type: 'attribute', name: 'type', value: 'text' },
+              { type: 'attribute', name: 'label', value: 'Text' },
+              { type: 'attribute', name: 'placeholder', value: '.*' },
+              { type: 'attribute', name: 'help-text', value: 'default type' }
+            ],
+            args
+          })}
+        </div>
+      </div>
+    `;
+  }
+};
+
+/**
+ * Demonstrates the various validation options extended from the native input element in addition to error and success styles.
+ */
+
+export const Validation = {
+  parameters: {
+    controls: {
+      include: ['clearable', 'disabled']
+    }
+  },
+  render: (args: any) => {
+    return html`
+      <form action="" method="get" id="testForm" name="testForm" class="w-[370px]">
+        <div class="mb-2">
+          ${generateTemplate({
+            constants: [
+              { type: 'attribute', name: 'label', value: 'Required' },
+              { type: 'attribute', name: 'name', value: 'required field' },
+              { type: 'attribute', name: 'placeholder', value: '.*' },
+              { type: 'attribute', name: 'help-text', value: 'input must be filled' },
+              { type: 'attribute', name: 'form', value: 'testForm' },
+              { type: 'attribute', name: 'required', value: true }
+            ],
+            args
+          })}
+        </div>
+        <div class="mb-2">
+          ${generateTemplate({
+            constants: [
+              { type: 'attribute', name: 'label', value: 'Min Length' },
+              { type: 'attribute', name: 'name', value: 'min length field' },
+              { type: 'attribute', name: 'placeholder', value: '^.{3,}$' },
+              { type: 'attribute', name: 'help-text', value: 'value must meet minlength' },
+              { type: 'attribute', name: 'form', value: 'testForm' },
+              { type: 'attribute', name: 'required', value: true },
+              { type: 'attribute', name: 'minlength', value: 3 }
+            ],
+            args
+          })}
+        </div>
+        <div class="mb-2">
+          ${generateTemplate({
+            constants: [
+              { type: 'attribute', name: 'label', value: 'Max Length' },
+              { type: 'attribute', name: 'name', value: 'max length field' },
+              { type: 'attribute', name: 'placeholder', value: '^.{0,3}$' },
+              { type: 'attribute', name: 'help-text', value: 'value cannot exceed maxlength' },
+              { type: 'attribute', name: 'form', value: 'testForm' },
+              { type: 'attribute', name: 'required', value: true },
+              { type: 'attribute', name: 'maxlength', value: 3 }
+            ],
+            args
+          })}
+        </div>
+        <sd-button type="submit">Submit</sd-button>
+      </form>
+      <script>
+        function handleSubmit(event) {
+          const form = document.querySelector('#testForm');
+          const sdInputs = Array.from(document.querySelectorAll('sd-input'));
+
+          const isValid = sdInput => sdInput.checkValidity();
+
+          if (sdInputs.every(isValid)) {
+            event.preventDefault(); // Prevent the default form submission behavior
+
+            const formData = new FormData(form);
+            const formValues = Object.fromEntries(formData);
+
+            alert('Form submitted successfully with the following values: ' + JSON.stringify(formValues, null, 2));
+          }
+        }
+
+        document.querySelector('#testForm').addEventListener('submit', handleSubmit);
+      </script>
+    `;
+  }
+};
+
+/**
+ * Shows available slots. The `label` and `help-text` slots will overwrite their corresponding attributes.
+ */
+
+export const Slots = {
+  parameters: {
+    controls: {
+      exclude: ['label', 'help-text', 'value']
+    }
+  },
+  render: (args: any) => {
+    return html`
+      ${['label', 'help-text'].map(slot =>
+        generateTemplate({
+          axis: {
+            x: {
+              type: 'slot',
+              name: slot,
+              title: 'slot=...',
+              values: [
+                {
+                  value: `<div slot='${slot}' class="slot slot--border slot--background h-6 ${
+                    slot === 'label' || slot === 'help-text' ? 'w-18' : 'w-6'
+                  }"></div>`,
+                  title: slot
+                }
+              ]
+            }
+          },
+          constants: [
+            { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' },
+            { type: 'attribute', name: 'value', value: 'value' },
+            { type: 'attribute', name: 'label', value: 'Label' },
+            { type: 'attribute', name: 'help-text', value: 'help-text' }
+          ],
+          args
+        })
+      )}
+    `;
+  }
+};
+
+/**
+ * Use the `form-control`, `form-control-label`, `form-control-input`, `form-control-help-text`, `base`, `border`, `input`, `left`, `clear-button`, and `right` part selectors to customize the input.
+ */
+
+export const Parts = {
+  parameters: {
+    controls: {
+      exclude: ['label', 'help-text', 'value']
+    }
+  },
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        y: {
+          type: 'template',
+          name: 'sd-input::part(...){outline: solid 2px red}',
+          values: [
+            'form-control',
+            'form-control-label',
+            'form-control-input',
+            'form-control-help-text',
+            'base',
+            'border',
+            'input'
+          ].map(part => {
+            return {
+              title: part,
+              value: `<style>#part-${part} sd-input::part(${part}){outline: solid 2px red}</style><div id="part-${part}">%TEMPLATE%</div>`
+            };
+          })
+        }
+      },
+      constants: [
+        { type: 'attribute', name: 'value', value: 'value' },
+        { type: 'attribute', name: 'label', value: 'Label' },
+        { type: 'attribute', name: 'help-text', value: 'help-text' }
+      ],
+      args
+    });
+  }
+};
+
+/**
+ * `sd-input` is fully accessibile via keyboard.
+ */
+
+export const Mouseless = {
+  render: (args: any) => {
+    return html`<div class="mouseless w-[250px]">${generateTemplate({ args })}</div>`;
+  },
+
+  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
+    const el = canvasElement.querySelector('.mouseless sd-input');
+    await waitUntil(() => el?.shadowRoot?.querySelector('input'));
+    el?.shadowRoot?.querySelector('input')!.focus();
   }
 };
