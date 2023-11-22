@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/blocks';
 
-<Meta title="Docs/General/Testing" />
+<Meta title="Docs/General/Quality Assurance" />
 
 ## VRT / QA Workflow
 
@@ -18,7 +18,6 @@ We use several automations to ensure that our code is consistent and correct. Th
 
 - Quality Gate - this action builds the whole project, verifies linting, formatting and runs all tests
 - File Size Check - this action communicates and compares the bundle size to monitor performance
-- Linting - this action checks the code for any linting errors
 - Validate PR Title - this action checks the PR title to ensure that it follows our naming conventions matching with sematic versioning
 - CodeQL Scan - this action checks the code for any security vulnerabilities
 
@@ -39,11 +38,11 @@ A detailed description of the QA process can be found in the [VRT / QA Workflow 
 
 #### Visual Regression Testing
 
-VRT is currently in evaluation for the design team.
+VRT using dedicated Figma plugins is currently in evaluation for the design team.
 
 #### UI Review
 
-Changes in the UI are reviewed by the design team using the chromatic feature enviroment and chromatic screenshot testing mentioned above. This allows the design team to review the changes in the actual UI and not just in a design tool. The reviewer can either accept or reject the changes and leave comments.
+New/changed code components are reviewed by the design team using the Chromatic feature enviroment, Chromatic screenshot testing mentioned above and Storybook code inspection. This allows the design team to review the changes in the actual UI and not just in a design tool. The reviewer can either accept or reject the changes and leave comments. After all comments have been fixed, design reviews again and approves the PR on Chromatic if all design checks have been passed.
 
 #### Figma Design Lint
 
