@@ -173,9 +173,9 @@ describe('<sd-teaser>', () => {
     });
   });
   it('keeps inset property as false after changing variant', async () => {
-    const el = await fixture<SdTeaser>(html`<sd-teaser variant="white border-neutral-300"></sd-teaser>`);
+    const el = await fixture<SdTeaser>(html`<sd-teaser variant="white border-neutral-400"></sd-teaser>`);
 
-    expect(el.variant).to.equal('white border-neutral-300');
+    expect(el.variant).to.equal('white border-neutral-400');
 
     el.variant = 'neutral-100';
     await el.updateComplete;
