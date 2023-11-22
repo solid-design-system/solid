@@ -1,0 +1,54 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Docs/General/Testing" />
+
+## VRT / QA Workflow
+
+In order to ensure a certain level of quality and reliability, we use a combination of visual regression testing and manual QA.
+
+### Development
+
+#### Visual Regression Testing
+
+We use chromatic screenshot testing to ensure that our components are visually correct. This automatically runs on every PR and will show any visual changes that have been made. Changes can be approved or rejected and will be shown in the PR.
+
+#### Code Analyzer
+
+We use several automations to ensure that our code is consistent and correct. This includes:
+
+- QualityGate - this action builds the whole project and veryfies the syntax of the code
+- File Size Check - this action checks the new bundle size of the project to ensure that we don't add too much bloat
+- Linting - this action checks the code for any linting errors
+- Validate PR Title - this action checks the PR title to ensure that it follows our naming conventions matching with sematic versioning
+- CodeQL Scan - this action checks the code for any security vulnerabilities
+
+The above actions are automatically run on every PR and are required to pass before the PR can be merged.
+
+#### Manual QA
+
+Besides the automatic checks, we also do manual QA on every PR. This includes:
+
+- code review
+- testing the changes in a published feature environment
+
+### Details
+
+A detailed description of the QA process can be found in the [VRT / QA Workflow File for Development](https://www.figma.com/file/yg2PKZ0ghndLBAPYm7kbaN/VRT-%2F-QA-Workflow?type=whiteboard&node-id=427-582&t=aJsKurM4wVpfftjE-4) in Figma.
+
+### Design
+
+#### Visual Regression Testing
+
+VRT is currently in evaluation for the design team.
+
+#### UI Review
+
+Changes in the UI are reviewed by the design team using the chromatic feature enviroment and chromatic screenshot testing mentioned above. This allows the design team to review the changes in the actual UI and not just in a design tool. The reviewer can either accept or reject the changes and leave comments.
+
+#### Figma Design Lint
+
+We use the [Figma Design Lint Plugin](https://www.figma.com/community/plugin/735098356222747486/Figma-Design-Lint) to ensure that our designs are consistent and correct. This plugin checks the design for any inconsistencies and errors and will show them in the design file. The plugin is automatically run on every PR and is required to pass before the PR can be merged.
+
+### Details
+
+A detailed description of the QA process can be found in the [VRT / QA Workflow File for Design](https://www.figma.com/file/yg2PKZ0ghndLBAPYm7kbaN/VRT-%2F-QA-Workflow?type=whiteboard&node-id=427-1517&t=aJsKurM4wVpfftjE-4) in Figma.
