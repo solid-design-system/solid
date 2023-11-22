@@ -816,7 +816,9 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
             )}
           ></div>
           <sd-popup
-            class=${classMap({
+            @sd-current-placement=${e => console.log(e)}
+            class=${(cx('inline-flex relative'),
+            classMap({
               // select: true,
               // 'select--standard': true,
               // 'select--open': this.open,
@@ -829,7 +831,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
               // 'select--small': this.size === 'sm',
               // 'select--medium': this.size === 'md',
               // 'select--large': this.size === 'lg'
-            })}
+            }))}
             placement=${this.placement}
             strategy=${this.hoist ? 'fixed' : 'absolute'}
             flip
@@ -841,7 +843,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
             <div
               part="combobox"
               class=${cx(
-                'select__combobox px-4 flex flex-row items-center',
+                'select__combobox relative px-4 flex flex-row items-center',
                 { sm: 'h-8 py-1', md: 'h-10 py-1', lg: 'h-12 py-2' }[this.size]
               )}
               slot="anchor"
