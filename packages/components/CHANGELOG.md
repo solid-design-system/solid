@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v1.29.0](https://github.com/solid-design-system/solid/compare/components/1.28.0...components/1.29.0) (2023-11-23)
+
+
+### Features
+
+* ✨ update tokens ([#591](https://github.com/solid-design-system/solid/issues/591)) ([2bfbf3e](https://github.com/solid-design-system/solid/commit/2bfbf3efe455faaa2365fef01b252ef507b450ca))
+
+### 📈 Stats
+* Bundle size (uncompressed): 217 KB (unchanged)
+* Bundle size (gzipped): 55 KB (unchanged)
+
 # [@solid-design-system/components-v1.28.0](https://github.com/solid-design-system/solid/compare/components/1.27.0...components/1.28.0) (2023-11-20)
 
 
