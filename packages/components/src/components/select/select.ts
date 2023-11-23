@@ -817,10 +817,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
           <slot name="label">${this.label}</slot>
         </label>
 
-        <div
-          part="form-control-input"
-          class=${cx('form-control-input cursor-pointer relative', { sm: 'h-8', md: 'h-10', lg: 'h-12' }[this.size])}
-        >
+        <div part="form-control-input" class=${cx('form-control-input cursor-pointer relative')}>
           <div
             part="border"
             class=${cx(
@@ -860,8 +857,8 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
             <div
               part="combobox"
               class=${cx(
-                'select__combobox relative px-4 flex flex-row items-center overflow-hidden transform-all',
-                { sm: 'h-8 py-1', md: 'h-10 py-1', lg: 'h-12 py-2' }[this.size]
+                'relative px-4 flex flex-row items-center transform-all',
+                { sm: 'py-1', md: 'py-1', lg: 'py-2' }[this.size]
               )}
               slot="anchor"
               @keydown=${this.handleComboboxKeyDown}
@@ -877,8 +874,9 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
               <input
                 part="display-input"
                 class=${cx(
-                  'outline-none flex-grow cursor-pointer bg-transparent',
-                  this.multiple && this.checklist && this.value.length > 0 ? 'hidden' : ''
+                  'appearance-none outline-none flex-grow cursor-pointer bg-transparent',
+                  this.multiple && this.checklist && this.value.length > 0 ? 'hidden' : '',
+                  { sm: 'h-6', md: 'h-8', lg: 'h-8' }[this.size]
                 )}
                 type="text"
                 placeholder=${this.placeholder}
