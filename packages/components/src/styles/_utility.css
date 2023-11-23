@@ -1,0 +1,33 @@
+/*
+ * This file contains utility classes that can't be contained in a component and must be applied to the light DOM. None
+ * of the rules in this stylesheet should target component tags or HTML tags, and all classes *must* start with ".sd-"
+ * to reduce the possibility of collisions.
+ */
+
+.sd-scroll-lock {
+  padding-right: var(--sd-scroll-lock-size) !important;
+  overflow: hidden !important;
+}
+
+.sd-toast-stack {
+  @apply fixed z-alert-group max-w-[400px] max-h-full box-border;
+
+  &--top-right {
+    @apply top-0 right-0 mr-4;
+  }
+
+  &--bottom-center {
+    @apply bottom-0 -translate-x-1/2;
+    inset-inline-start: 50%;
+  }
+}
+
+.sd-toast-stack {
+  sd-notification::part(base) {
+    @apply shadow;
+  }
+
+  sd-notification::part(content) {
+    @apply border-white;
+  }
+}

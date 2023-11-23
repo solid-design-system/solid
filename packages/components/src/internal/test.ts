@@ -11,6 +11,12 @@ export async function clickOnElement(
   /** The vertical offset to apply to the position when clicking */
   offsetY = 0
 ) {
+  const { clickX, clickY } = determineMousePosition(el, position, offsetX, offsetY);
+
+  await sendMouse({ type: 'click', position: [clickX, clickY] });
+}
+
+function determineMousePosition(el: Element, position: string, offsetX: number, offsetY: number) {
   const { x, y, width, height } = el.getBoundingClientRect();
   const centerX = Math.floor(x + window.pageXOffset + width / 2);
   const centerY = Math.floor(y + window.pageYOffset + height / 2);
@@ -41,6 +47,21 @@ export async function clickOnElement(
 
   clickX += offsetX;
   clickY += offsetY;
+  return { clickX, clickY };
+}
 
-  await sendMouse({ type: 'click', position: [clickX, clickY] });
+/** A testing utility that moves the mouse onto an element. */
+export async function moveMouseOnElement(
+  /** The element to click */
+  el: Element,
+  /** The location of the element to click */
+  position: 'top' | 'right' | 'bottom' | 'left' | 'center' = 'center',
+  /** The horizontal offset to apply to the position when clicking */
+  offsetX = 0,
+  /** The vertical offset to apply to the position when clicking */
+  offsetY = 0
+) {
+  const { clickX, clickY } = determineMousePosition(el, position, offsetX, offsetY);
+
+  await sendMouse({ type: 'move', position: [clickX, clickY] });
 }

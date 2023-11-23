@@ -51,7 +51,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
   private validationTimeout: number;
 
   @query('slot:not([name])') defaultSlot: HTMLSlotElement;
-  @query('.radio-group__validation-input') validationInput: HTMLInputElement;
+  @query('#validation-input') validationInput: HTMLInputElement;
 
   @state() private hasButtonGroup = false;
   @state() defaultValue = '';
@@ -360,8 +360,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
       <fieldset
         part="form-control"
         class=${cx(
-          'form-control form-control--radio-group border-0 p-0 m-0',
-          hasLabel && 'form-control--has-label',
+          'border-0 p-0 m-0',
           hasErrorText && 'text-error',
           {
             /* sizes, fonts */
@@ -376,7 +375,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
         <label
           part="form-control-label"
           id="label"
-          class="form-control__label mb-2 hidden p-0 font-bold leading-normal text-black"
+          class=${cx('mb-2 p-0 font-bold leading-normal text-black', hasLabel ? 'has-label flex' : 'hidden')}
           aria-hidden=${!hasLabel}
           @click=${this.handleLabelClick}
         >
@@ -389,17 +388,17 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
             'form-control-input flex',
             this.invalid && 'form-control-input--invalid text-error',
             {
-              vertical: 'form-control-input--vertical flex-col',
-              horizontal: 'form-control-input--horizontal flex-row'
+              vertical: 'flex-col',
+              horizontal: 'flex-row'
             }[this.orientation]
           )}
         >
           <div class="sr-only">
             <div id="error-message" aria-live="assertive">${this.errorText}</div>
-            <label class="radio-group__validation">
+            <label>
               <input
+                id="validation-input"
                 type="text"
-                class="radio-group__validation-input"
                 ?required=${this.required}
                 tabindex="-1"
                 hidden
@@ -424,29 +423,28 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
         display: block;
       }
 
-      .form-control-input--vertical ::slotted(sd-radio) {
+      :host([orientation='vertical']) ::slotted(sd-radio) {
         margin-bottom: 8px;
         display: flex;
       }
 
-      .form-control-input--vertical ::slotted(sd-radio:last-of-type) {
+      :host([orientation='vertical']) ::slotted(sd-radio:last-of-type) {
         margin-bottom: 0;
       }
 
-      .form-control-input--horizontal ::slotted(sd-radio) {
+      :host([orientation='horizontal']) ::slotted(sd-radio) {
         margin-right: 24px;
       }
 
-      .form-control-input--horizontal ::slotted(sd-radio:last-of-type) {
+      :host([size='sm']):host([orientation='horizontal']) ::slotted(sd-radio) {
+        margin-right: 16px;
+      }
+
+      :host([orientation='horizontal']) ::slotted(sd-radio:last-of-type) {
         margin-right: 0;
       }
 
-      /* Label */
-      .form-control--has-label .form-control__label {
-        display: flex;
-      }
-
-      :host([required]) .form-control--has-label .form-control__label::after {
+      :host([required]) #label.has-label::after {
         content: '*';
         margin-left: 2px;
       }

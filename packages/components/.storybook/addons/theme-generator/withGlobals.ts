@@ -14,7 +14,8 @@ export const withGlobals = (StoryFn: StoryFunction<Renderer>, context: StoryCont
   let customTheme = calculateColorsAsCss(
     panelState?.colors || PANEL_DEFAULTS.colors,
     theme,
-    panelState?.useDefaultLuminanceMap || PANEL_DEFAULTS.useDefaultLuminanceMap
+    panelState?.useNormalizedLuminanceMap || PANEL_DEFAULTS.useNormalizedLuminanceMap,
+    panelState?.useForcedShades || PANEL_DEFAULTS.useForcedShades
   );
 
   const isInDocs = context.viewMode === 'docs';
