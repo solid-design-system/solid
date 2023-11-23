@@ -834,7 +834,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
           ></div>
           <sd-popup
             @sd-current-placement=${this.handleCurrentPlacement}
-            class=${(cx('inline-flex relative'),
+            class=${(cx('inline-flex relative', this.currentPlacement === 'bottom' ? 'origin-top' : 'origin-bottom'),
             classMap({
               // select: true,
               // 'select--standard': true,
