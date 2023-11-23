@@ -860,7 +860,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
             <div
               part="combobox"
               class=${cx(
-                'select__combobox relative px-4 flex flex-row items-center',
+                'select__combobox relative px-4 flex flex-row items-center overflow-hidden transform-all',
                 { sm: 'h-8 py-1', md: 'h-10 py-1', lg: 'h-12 py-2' }[this.size]
               )}
               slot="anchor"
