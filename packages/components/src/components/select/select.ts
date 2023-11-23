@@ -159,6 +159,11 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
    */
   @property({ reflect: true }) placement: 'top' | 'bottom' = 'bottom';
 
+  /**
+   * The actual current placement of the select's menu sourced from `sd-popup`.
+   */
+  @state() private currentPlacement = this.placement;
+
   /** The select's help text. If you need to display HTML, use the `help-text` slot instead. */
   @property({ attribute: 'help-text' }) helpText = '';
 
@@ -724,6 +729,15 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     this.displayInput.blur();
   }
 
+  /** Receives incoming event detail from sd-popup and updates local state for conditional styling. */
+  handleCurrentPlacement(e: CustomEvent<'top' | 'bottom'>) {
+    const incomingPlacement = e.detail;
+
+    if (incomingPlacement) {
+      this.currentPlacement = incomingPlacement;
+    }
+  }
+
   render() {
     // Slots
     const slots = {
@@ -812,11 +826,14 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
             class=${cx(
               borderColor,
               'absolute w-full h-full pointer-events-none border rounded-default',
-              this.open && 'rounded-bl-none rounded-br-none'
+              this.open &&
+                (this.currentPlacement === 'bottom'
+                  ? 'rounded-bl-none rounded-br-none'
+                  : 'rounded-tl-none rounded-tr-none')
             )}
           ></div>
           <sd-popup
-            @sd-current-placement=${e => console.log(e)}
+            @sd-current-placement=${this.handleCurrentPlacement}
             class=${(cx('inline-flex relative'),
             classMap({
               // select: true,
@@ -937,7 +954,12 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
               aria-multiselectable=${this.multiple ? 'true' : 'false'}
               aria-labelledby="label"
               part="listbox"
-              class="border-r-2 border-b-2 border-l-2 rounded-br-default rounded-bl-default bg-white px-2 py-3"
+              class=${cx(
+                'bg-white px-2 py-3',
+                this.currentPlacement === 'bottom'
+                  ? 'border-r-2 border-b-2 border-l-2 rounded-br-default rounded-bl-default'
+                  : 'border-r-2 border-t-2 border-l-2 rounded-tr-default rounded-tl-default'
+              )}
               tabindex="-1"
               @mouseup=${this.handleOptionClick}
               @slotchange=${this.handleDefaultSlotChange}

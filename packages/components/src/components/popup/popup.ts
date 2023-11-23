@@ -1,7 +1,6 @@
 import { arrow, autoUpdate, computePosition, flip, offset, shift, size } from '@floating-ui/dom';
 import { css, html } from 'lit';
 import { customElement } from '../../../src/internal/register-custom-element';
-import { debounce } from '../../internal/debounce.js';
 import { property, query } from 'lit/decorators.js';
 import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
@@ -236,7 +235,6 @@ export default class SdPopup extends SolidElement {
     this.mutationObserver.observe(this, config);
   }
 
-  @debounce(100)
   private handleCurrentPlacementChange(mutations: MutationRecord[]) {
     return mutations.forEach(mutation => {
       // Check if the "data-current-placement" attribute changed
