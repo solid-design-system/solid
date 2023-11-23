@@ -123,7 +123,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
    * Tells the browser what type of data will be entered by the user, allowing it to display the appropriate virtual
    * keyboard on supportive devices.
    */
-  @property() inputmode: 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
+  @property() inputmode: 'none' | 'text';
 
   /** The default value of the form control. Primarily used for resetting the form control. */
   @defaultValue() defaultValue = '';
@@ -140,11 +140,9 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
 
   connectedCallback() {
     super.connectedCallback();
-    // this.resizeObserver = new ResizeObserver(() => this.setTextareaHeight());
 
     this.updateComplete.then(() => {
       this.setTextareaHeight();
-      // this.resizeObserver.observe(this.input);
     });
   }
 
@@ -154,7 +152,6 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
 
   disconnectedCallback() {
     super.disconnectedCallback();
-    // this.resizeObserver.unobserve(this.input);
   }
 
   private handleBlur() {
