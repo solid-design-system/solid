@@ -292,7 +292,7 @@ export const Slots = {
               values: [
                 {
                   value: `<div slot='${slot}' class="slot slot--border slot--background h-6 ${
-                    slot === 'label' || slot === 'help-text' ? 'w-18' : 'w-6'
+                    slot === 'label' || slot === 'help-text' ? 'w-20' : 'w-6'
                   }"></div>`,
                   title: slot
                 }

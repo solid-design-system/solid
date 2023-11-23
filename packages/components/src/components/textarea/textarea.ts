@@ -331,7 +331,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
       <div
         part="form-control"
         class=${cx(
-          'form-control',
+          'form-control text-left',
           hasLabel && 'form-control--has-label',
           hasHelpText && 'form-control--has-help-text',
           this.disabled && 'pointer-events-none'
