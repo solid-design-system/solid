@@ -6,33 +6,33 @@ export default css`
   ${componentStyles}
   ${formControlStyles}
 
-  :host {
+  /* :host {
     display: block;
-  }
+  } */
 
   /** The popup */
-  .select {
+  /* .select {
     flex: 1 1 auto;
     display: inline-flex;
     width: 100%;
     position: relative;
     vertical-align: middle;
-  }
+  } */
 
   .select::part(popup) {
     z-index: var(--sl-z-index-dropdown);
   }
 
-  .select[data-current-placement^='top']::part(popup) {
+  /* .select[data-current-placement^='top']::part(popup) {
     transform-origin: bottom;
   }
 
   .select[data-current-placement^='bottom']::part(popup) {
     transform-origin: top;
-  }
+  } */
 
   /* Combobox */
-  .select__combobox {
+  /* .select__combobox {
     flex: 1;
     display: flex;
     width: 100%;
@@ -51,9 +51,9 @@ export default css`
       var(--sl-transition-fast) border,
       var(--sl-transition-fast) box-shadow,
       var(--sl-transition-fast) background-color;
-  }
+  } */
 
-  .select__display-input {
+  /* .select__display-input {
     position: relative;
     width: 100%;
     font: inherit;
@@ -65,9 +65,9 @@ export default css`
     padding: 0;
     margin: 0;
     -webkit-appearance: none;
-  }
+  } */
 
-  .select__display-input::placeholder {
+  /* .select__display-input::placeholder {
     color: var(--sl-input-placeholder-color);
   }
 
@@ -77,10 +77,10 @@ export default css`
 
   .select__display-input:focus {
     outline: none;
-  }
+  } */
 
   /* Visually hide the display input when multiple is enabled */
-  .select--multiple:not(.select--placeholder-visible) .select__display-input {
+  /* .select--multiple:not(.select--placeholder-visible) .select__display-input {
     position: absolute;
     z-index: -1;
     top: 0;
@@ -100,19 +100,19 @@ export default css`
     margin: 0;
     opacity: 0;
     z-index: -1;
-  }
+  } */
 
-  .select__tags {
+  /* .select__tags {
     display: flex;
     flex: 1;
     align-items: center;
     flex-wrap: wrap;
     margin-inline-start: var(--sl-spacing-2x-small);
-  }
+  } */
 
-  .select__tags::slotted(sl-tag) {
+  /* .select__tags::slotted(sl-tag) {
     cursor: pointer !important;
-  }
+  } */
 
   .select--disabled .select__tags,
   .select--disabled .select__tags::slotted(sl-tag) {
@@ -139,118 +139,6 @@ export default css`
     background-color: var(--sl-input-background-color-focus);
     border-color: var(--sl-input-border-color-focus);
     box-shadow: 0 0 0 var(--sl-focus-ring-width) var(--sl-input-focus-ring-color);
-  }
-
-  /* Filled selects */
-  .select--filled .select__combobox {
-    border: none;
-    background-color: var(--sl-input-filled-background-color);
-    color: var(--sl-input-color);
-  }
-
-  .select--filled:hover:not(.select--disabled) .select__combobox {
-    background-color: var(--sl-input-filled-background-color-hover);
-  }
-
-  .select--filled.select--disabled .select__combobox {
-    background-color: var(--sl-input-filled-background-color-disabled);
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-
-  .select--filled:not(.select--disabled).select--open .select__combobox,
-  .select--filled:not(.select--disabled).select--focused .select__combobox {
-    background-color: var(--sl-input-filled-background-color-focus);
-    outline: var(--sl-focus-ring);
-  }
-
-  /* Sizes */
-  .select--small .select__combobox {
-    border-radius: var(--sl-input-border-radius-small);
-    font-size: var(--sl-input-font-size-small);
-    min-height: var(--sl-input-height-small);
-    padding-block: 0;
-    padding-inline: var(--sl-input-spacing-small);
-  }
-
-  .select--small .select__clear {
-    margin-inline-start: var(--sl-input-spacing-small);
-  }
-
-  .select--small .select__prefix::slotted(*) {
-    margin-inline-end: var(--sl-input-spacing-small);
-  }
-
-  .select--small.select--multiple:not(.select--placeholder-visible) .select__combobox {
-    padding-block: 2px;
-    padding-inline-start: 0;
-  }
-
-  .select--small .select__tags {
-    gap: 2px;
-  }
-
-  .select--medium .select__combobox {
-    border-radius: var(--sl-input-border-radius-medium);
-    font-size: var(--sl-input-font-size-medium);
-    min-height: var(--sl-input-height-medium);
-    padding-block: 0;
-    padding-inline: var(--sl-input-spacing-medium);
-  }
-
-  .select--medium .select__clear {
-    margin-inline-start: var(--sl-input-spacing-medium);
-  }
-
-  .select--medium .select__prefix::slotted(*) {
-    margin-inline-end: var(--sl-input-spacing-medium);
-  }
-
-  .select--medium.select--multiple:not(.select--placeholder-visible) .select__combobox {
-    padding-inline-start: 0;
-    padding-block: 3px;
-  }
-
-  .select--medium .select__tags {
-    gap: 3px;
-  }
-
-  .select--large .select__combobox {
-    border-radius: var(--sl-input-border-radius-large);
-    font-size: var(--sl-input-font-size-large);
-    min-height: var(--sl-input-height-large);
-    padding-block: 0;
-    padding-inline: var(--sl-input-spacing-large);
-  }
-
-  .select--large .select__clear {
-    margin-inline-start: var(--sl-input-spacing-large);
-  }
-
-  .select--large .select__prefix::slotted(*) {
-    margin-inline-end: var(--sl-input-spacing-large);
-  }
-
-  .select--large.select--multiple:not(.select--placeholder-visible) .select__combobox {
-    padding-inline-start: 0;
-    padding-block: 4px;
-  }
-
-  .select--large .select__tags {
-    gap: 4px;
-  }
-
-  /* Pills */
-  .select--pill.select--small .select__combobox {
-    border-radius: var(--sl-input-height-small);
-  }
-
-  .select--pill.select--medium .select__combobox {
-    border-radius: var(--sl-input-height-medium);
-  }
-
-  .select--pill.select--large .select__combobox {
-    border-radius: var(--sl-input-height-large);
   }
 
   /* Prefix */

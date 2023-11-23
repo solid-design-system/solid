@@ -953,7 +953,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
               aria-labelledby="label"
               part="listbox"
               class=${cx(
-                'bg-white px-2 py-3',
+                'bg-white px-2 py-3 block relative',
                 this.currentPlacement === 'bottom'
                   ? 'border-r-2 border-b-2 border-l-2 rounded-br-default rounded-bl-default'
                   : 'border-r-2 border-t-2 border-l-2 rounded-tr-default rounded-tl-default'
@@ -989,7 +989,13 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     css`
       :host {
         display: block;
+        position: relative;
         width: 100%;
+      }
+
+      [part='form-control'] {
+        position: relative;
+        z-index: 100;
       }
     `
   ];

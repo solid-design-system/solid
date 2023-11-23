@@ -24,7 +24,7 @@ export default {
 };
 
 /**
- * Default: This shows sd-select in its default state.
+ * This shows sd-select in its default state.
  */
 
 export const Default = {
@@ -34,7 +34,7 @@ export const Default = {
 };
 
 /**
- * Labels: Use the `label` attribute to give the select an accessible label. For labels that contain HTML, use the `label` slot instead.
+ * Use the `label` attribute to give the select an accessible label. For labels that contain HTML, use the `label` slot instead.
  */
 
 export const Labels = {
@@ -58,7 +58,7 @@ export const Labels = {
 };
 
 /**
- * Help Text: Add descriptive help text to a select with the `help-text` attribute. For help texts that contain HTML, use the help-text slot instead.
+ * Add descriptive help text to a select with the `help-text` attribute. For help texts that contain HTML, use the help-text slot instead.
  */
 
 export const HelpText = {
@@ -94,7 +94,7 @@ export const HelpText = {
 };
 
 /**
- * Placeholder: Use the `placeholder` attribute to add a placeholder.  We use the localized string "Please select" by default.
+ * Use the `placeholder` attribute to add a placeholder.  We use the localized string "Please select" by default.
  */
 
 export const Placeholder = {
@@ -118,7 +118,7 @@ export const Placeholder = {
 };
 
 /**
- * Clearable: Use the `clearable` attribute to make the control clearable. The clear button only appears when an option is selected.
+ * Use the `clearable` attribute to make the control clearable. The clear button only appears when an option is selected.
  */
 
 export const Clearable = {
@@ -142,7 +142,7 @@ export const Clearable = {
 };
 
 /**
- * Disabled: Use the `disabled` attribute to disable a select.
+ * Use the `disabled` attribute to disable a select.
  */
 
 export const Disabled = {
@@ -158,6 +158,36 @@ export const Disabled = {
             name: 'disabled',
             value: true
           },
+          {
+            type: 'slot',
+            name: 'prefix',
+            value: '<sd-icon slot="prefix" library="global-resources" name="system/picture"></sd-icon>'
+          }
+        ],
+        args
+      })}
+    </div>`;
+  }
+};
+
+/**
+ * Use the `size` attribute to change a select’s size. Note that `size` does not apply to listbox options.
+ */
+
+export const Sizes = {
+  parameters: {
+    exclude: ['size']
+  },
+  render: (args: any) => {
+    return html`<div class="max-w-[500px]">
+      ${generateTemplate({
+        axis: {
+          y: {
+            type: 'attribute',
+            name: 'size'
+          }
+        },
+        constants: [
           {
             type: 'slot',
             name: 'prefix',
@@ -197,6 +227,32 @@ export const Dev = {
         ],
         args
       })}
+    </div>`;
+  }
+};
+
+/**
+ * Dev: Temporary development story
+ */
+
+export const Dev2 = {
+  render: (args: any) => {
+    return html`<div class="max-w-[500px]">
+      <sd-select>
+        <sd-option value="option-1">Option 1</sd-option>
+        <sd-option value="option-2">Option 2</sd-option>
+        <sd-option value="option-3">Option 3</sd-option>
+        <sd-option value="option-4">Option 4</sd-option>
+        <sd-option value="option-5">Option 5</sd-option>
+      </sd-select>
+      <sd-select>
+        <sd-option value="option-1">Option 1</sd-option>
+        <sd-option value="option-2">Option 2</sd-option>
+        <sd-option value="option-3">Option 3</sd-option>
+        <sd-option value="option-4">Option 4</sd-option>
+        <sd-option value="option-5">Option 5</sd-option>
+      </sd-select>
+      <span class="text-2xl">Hello</span>
     </div>`;
   }
 };
