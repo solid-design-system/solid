@@ -32,6 +32,7 @@ import type { SolidFormControl } from '../../internal/solid-element';
  * @csspart form-control-input - The input's wrapper.
  * @csspart form-control-help-text - The help text's wrapper.
  * @csspart base - The component's base wrapper.
+ * @csspart border - The component's base wrapper.
  * @csspart textarea - The internal `<textarea>` control.
  */
 @customElement('sd-textarea')

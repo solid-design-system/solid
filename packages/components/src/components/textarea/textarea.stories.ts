@@ -26,7 +26,7 @@ export default {
 };
 
 /**
- * This shows sd-input in its default state.
+ * This shows sd-textarea in its default state.
  */
 export const Default = {
   render: (args: any) => {
@@ -35,7 +35,7 @@ export const Default = {
 };
 
 /**
- * Use the `label` attribute to give the input an accessible label. For labels that contain HTML, use the `label` slot instead.
+ * Use the `label` attribute to give the textarea an accessible label. For labels that contain HTML, use the `label` slot instead.
  */
 
 export const Labels = {
@@ -52,14 +52,14 @@ export const Labels = {
 };
 
 /**
- * Add descriptive help text to an input with the `help-text` attribute. For help texts that contain HTML, use the `help-text` slot instead.
+ * Add descriptive help text to a textarea with the `help-text` attribute. For help texts that contain HTML, use the `help-text` slot instead.
  */
 
 export const HelpText = {
   name: 'Help Text',
   args: overrideArgs([
-    { type: 'attribute', name: 'label', value: 'Nickname' },
-    { type: 'attribute', name: 'help-text', value: 'How would you like to be called?' }
+    { type: 'attribute', name: 'label', value: 'A short story' },
+    { type: 'attribute', name: 'help-text', value: 'A funny little story about web components.' }
   ]),
   render: (args: any) => {
     return html`
@@ -90,7 +90,7 @@ export const Placeholders = {
 };
 
 /**
- * Use the disabled attribute to disable an input. All interaction is disabled and no events will be fired.
+ * Use the disabled attribute to disable a textarea. All interaction is disabled and no events will be fired.
  */
 export const Disabled = {
   parameters: {
@@ -116,7 +116,7 @@ export const Disabled = {
 };
 
 /**
- * Use the readonly attribute to render an input as readonly.  Interaction is enabled, but the input cannot be edited.  Events will be fired.
+ * Use the readonly attribute to render a textarea as readonly.  Interaction is enabled, but the textarea cannot be edited.  Events will be fired.
  */
 export const Readonly = {
   parameters: {
@@ -142,7 +142,7 @@ export const Readonly = {
 };
 
 /**
- * This shows sd-input in its various sizes.
+ * This shows sd-textarea in its various sizes.
  */
 
 export const Sizes = {
@@ -192,7 +192,7 @@ export const Types = {
 };
 
 /**
- * Demonstrates the various validation options extended from the native input element in addition to error and success styles.
+ * Demonstrates the various validation options extended from the native textarea element in addition to error and success styles.
  */
 
 export const Validation = {
@@ -210,7 +210,7 @@ export const Validation = {
               { type: 'attribute', name: 'label', value: 'Required' },
               { type: 'attribute', name: 'name', value: 'required field' },
               { type: 'attribute', name: 'placeholder', value: '.*' },
-              { type: 'attribute', name: 'help-text', value: 'input must be filled' },
+              { type: 'attribute', name: 'help-text', value: 'textarea must be filled' },
               { type: 'attribute', name: 'form', value: 'testForm' },
               { type: 'attribute', name: 'required', value: true }
             ],
@@ -250,11 +250,11 @@ export const Validation = {
       <script>
         function handleSubmit(event) {
           const form = document.querySelector('#testForm');
-          const sdInputs = Array.from(document.querySelectorAll('sd-input'));
+          const sdTextarea = Array.from(document.querySelectorAll('sd-textarea'));
 
-          const isValid = sdInput => sdInput.checkValidity();
+          const isValid = sdTextarea => sdTextarea.checkValidity();
 
-          if (sdInputs.every(isValid)) {
+          if (sdTextarea.every(isValid)) {
             event.preventDefault(); // Prevent the default form submission behavior
 
             const formData = new FormData(form);
@@ -313,7 +313,7 @@ export const Slots = {
 };
 
 /**
- * Use the `form-control`, `form-control-label`, `form-control-input`, `form-control-help-text`, `base`, `border`, `input`, `left`, `clear-button`, and `right` part selectors to customize the input.
+ * Use the `form-control`, `form-control-label`, `form-control-input`, `form-control-help-text`, `base`, `border`, and `textarea` part selectors to customize the input.
  */
 
 export const Parts = {
@@ -327,7 +327,7 @@ export const Parts = {
       axis: {
         y: {
           type: 'template',
-          name: 'sd-input::part(...){outline: solid 2px red}',
+          name: 'sd-textarea::part(...){outline: solid 2px red}',
           values: [
             'form-control',
             'form-control-label',
@@ -335,11 +335,11 @@ export const Parts = {
             'form-control-help-text',
             'base',
             'border',
-            'input'
+            'textarea'
           ].map(part => {
             return {
               title: part,
-              value: `<style>#part-${part} sd-input::part(${part}){outline: solid 2px red}</style><div id="part-${part}">%TEMPLATE%</div>`
+              value: `<style>#part-${part} sd-textarea::part(${part}){outline: solid 2px red}</style><div id="part-${part}">%TEMPLATE%</div>`
             };
           })
         }
@@ -355,7 +355,7 @@ export const Parts = {
 };
 
 /**
- * `sd-input` is fully accessibile via keyboard.
+ * `sd-textarea` is fully accessibile via keyboard.
  */
 
 export const Mouseless = {
@@ -364,8 +364,8 @@ export const Mouseless = {
   },
 
   play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
-    const el = canvasElement.querySelector('.mouseless sd-input');
-    await waitUntil(() => el?.shadowRoot?.querySelector('input'));
-    el?.shadowRoot?.querySelector('input')!.focus();
+    const el = canvasElement.querySelector('.mouseless sd-textarea');
+    await waitUntil(() => el?.shadowRoot?.querySelector('textarea'));
+    el?.shadowRoot?.querySelector('textarea')!.focus();
   }
 };
