@@ -1,23 +1,21 @@
-import { classMap } from 'lit/directives/class-map.js';
+import { css, html } from 'lit';
 import { customElement } from '../../../src/internal/register-custom-element';
-import { property, query, state } from 'lit/decorators.js';
 import { HasSlotController } from '../../internal/slot';
-import { html } from 'lit/static-html.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
+import { property, query, state } from 'lit/decorators.js';
 import { watch } from '../../internal/watch';
+import componentStyles from '../../styles/component.styles';
+import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
-import styles from './radio-button.styles';
-import type { CSSResultGroup } from 'lit';
 
 /**
- * @summary Radios buttons allow the user to select a single option from a group using a button-like control.
+ * @summary Radio buttons allow the user to select a single option from a group using a button-like control.
  * @documentation https://solid.union-investment.com/[storybook-link]/radio-button
  * @status stable
  * @since 1.0
  *
  * @slot - The radio button's label.
- * @slot prefix - A presentational prefix icon or similar element.
- * @slot suffix - A presentational suffix icon or similar element.
+ * @slot icon - A presentational icon.
  *
  * @event sd-blur - Emitted when the button loses focus.
  * @event sd-focus - Emitted when the button gains focus.
@@ -25,15 +23,12 @@ import type { CSSResultGroup } from 'lit';
  * @csspart base - The component's base wrapper.
  * @csspart button - The internal `<button>` element.
  * @csspart button--checked - The internal button element when the radio button is checked.
- * @csspart prefix - The container that wraps the prefix.
+ * @csspart icon - The container that wraps the icon.
  * @csspart label - The container that wraps the radio button's label.
- * @csspart suffix - The container that wraps the suffix.
  */
 @customElement('sd-radio-button')
 export default class SdRadioButton extends SolidElement {
-  static styles: CSSResultGroup = styles;
-
-  private readonly hasSlotController = new HasSlotController(this, '[default]', 'prefix', 'suffix');
+  private readonly hasSlotController = new HasSlotController(this, '[default]', 'icon');
 
   @query('.button') input: HTMLInputElement;
   @query('.hidden-input') hiddenInput: HTMLInputElement;
@@ -53,11 +48,13 @@ export default class SdRadioButton extends SolidElement {
   @property({ type: Boolean, reflect: true }) disabled = false;
 
   /** The radio button's size. */
-  @property({ reflect: true }) size: 'small' | 'medium' | 'large' = 'medium';
-  @property({ type: Boolean, reflect: true }) invalid = false;
+  @property({ reflect: true }) size: 'sm' | 'md' | 'lg' = 'lg';
 
   /** Draws a pill-style radio button with rounded edges. */
   @property({ type: Boolean, reflect: true }) pill = false;
+
+  /** Shows or hides the label */
+  @property({ type: Boolean }) showLabel = false;
 
   connectedCallback() {
     super.connectedCallback();
@@ -101,26 +98,27 @@ export default class SdRadioButton extends SolidElement {
 
   render() {
     return html`
-      <div part="base" role="presentation">
+      <div part="base" role="presentation" class="relative">
         <button
           part="${`button${this.checked ? ' button--checked' : ''}`}"
           role="radio"
           aria-checked="${this.checked}"
-          class=${classMap({
-            button: true,
-            'button--default': true,
-            'button--small': this.size === 'small',
-            'button--medium': this.size === 'medium',
-            'button--large': this.size === 'large',
-            'button--checked': this.checked,
-            'button--disabled': this.disabled,
-            'button--focused': this.hasFocus,
-            'button--outline': true,
-            'button--pill': this.pill,
-            'button--has-label': this.hasSlotController.test('[default]'),
-            'button--has-prefix': this.hasSlotController.test('prefix'),
-            'button--has-suffix': this.hasSlotController.test('suffix')
-          })}
+          class="${cx(
+            'relative w-fit p-3 -mx-[1px] text-center border rounded-md transition-all ease-in-out duration-100 items-center focus-visible:focus-outline',
+            this.size === 'sm' ? 'text-sm' : 'text-base',
+            this.checked && !this.disabled
+              ? 'bg-primary text-white hover:bg-primary-500'
+              : this.disabled && !this.checked
+                ? 'border-neutral-500 text-neutral-500 hover:cursor-not-allowed'
+                : this.disabled && this.checked
+                  ? 'bg-neutral-500 text-white hover:cursor-not-allowed'
+                  : 'bg-white text-primary border-primary hover:bg-primary-100 hover:border-primary-500 hover:text-primary-500 cursor-pointer',
+
+            this.hasFocus && 'focused-class',
+            this.pill && 'rounded-full',
+            this.hasSlotController.test('[default]') && 'button--has-label',
+            this.hasSlotController.test('icon') && 'button--has-icon flex gap-2'
+          )}"
           aria-disabled=${this.disabled}
           type="button"
           value=${ifDefined(this.value)}
@@ -129,13 +127,46 @@ export default class SdRadioButton extends SolidElement {
           @focus=${this.handleFocus}
           @click=${this.handleClick}
         >
-          <slot name="prefix" part="prefix" class="button__prefix"></slot>
-          <slot part="label" class="button__label"></slot>
-          <slot name="suffix" part="suffix" class="button__suffix"></slot>
+          <slot
+            name="icon"
+            part="icon"
+            class="${cx(
+              this.hasSlotController.test('icon') && 'inline-flex relative items-center',
+              this.size === 'sm' ? 'text-base' : '',
+              this.size === 'md' ? 'text-lg' : '',
+              this.size === 'lg' ? 'text-xl' : ''
+            )}"
+          ></slot>
+          ${this.showLabel
+            ? html`<slot part="label" class="button__label inline-flex relative items-center"></slot>`
+            : null}
         </button>
       </div>
     `;
   }
+  static styles = [
+    SolidElement.styles,
+    componentStyles,
+    css`
+      :host {
+        display: block;
+        width: min-content;
+      }
+
+      /* We use a hidden input so constraint validation errors work, since they don't appear to show when used with buttons. We can't actually hide it, though, otherwise the messages will be suppressed by the browser. */
+      .hidden-input {
+        all: unset;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        outline: dotted 1px red;
+        opacity: 0;
+        z-index: -1;
+      }
+    `
+  ];
 }
 
 declare global {

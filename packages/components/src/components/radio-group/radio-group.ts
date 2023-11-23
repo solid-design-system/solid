@@ -230,7 +230,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
 
         radio.checked = radio.value === this.value;
         radio.size = this.size;
-        radio.invalid = this.invalid;
+        // radio.invalid = this.invalid;
       })
     );
 
