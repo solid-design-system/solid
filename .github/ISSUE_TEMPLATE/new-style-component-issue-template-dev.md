@@ -1,7 +1,7 @@
 ---
 name: New Style Component Issue Development
 about: New Style Component Issue Template for Development
-title: 'feat: ✨ add sd-[COMPONENT_NAME]' - CSS style
+title: 'feat: ✨ add sd-[COMPONENT_NAME] - CSS style'
 labels: '🔧 code, style-components'
 assignees: ''
 
