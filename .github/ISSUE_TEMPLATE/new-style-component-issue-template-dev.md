@@ -1,8 +1,8 @@
 ---
-name: New Component Issue Development
-about: New Component Issue Template for Development
-title: 'feat: ✨ add sd-[COMPONENT_NAME]'
-labels: '🔧 code'
+name: New Style Component Issue Development
+about: New Style Component Issue Template for Development
+title: 'feat: ✨ add sd-[COMPONENT_NAME]' - CSS style
+labels: '🔧 code, style-components'
 assignees: ''
 
 ---
@@ -19,19 +19,9 @@ As a [PERSONA] of the Solid Design System, I would like to [REQUIRE], as well as
 #### Props
 | Status | Name | Type | Default | Description |
 | ------------- | ------------- | ------------- | ------------- | ------------- |
-| <ul><li>[ ] </li></ul>  | `name` | `type` | `default` | description |
-| <ul><li>[ ] </li></ul>  | `name` | `type1` / `type2` | `default` | description |
+| <ul><li>[ ] </li></ul>  | `--name-` | `type` | `default` | description |
+| <ul><li>[ ] </li></ul>  | `--name-` | `type1` / `type2` | `default` | description |
 
-
-#### CSS-Properties
-  - [ ] `name` - description
-  - [ ] `name` - description
-#### Parts (besides the shoelace parts)
-  - [ ] `name` - description
-  - [ ] `name` - description
-#### Slots
-  - [ ] `name` - description
-  - [ ] `name` - description
 #### Stories (besides the `default` story)
   - [ ] `name` - (description)
   - [ ] `name` - (description)
@@ -52,6 +42,5 @@ As a [PERSONA] of the Solid Design System, I would like to [REQUIRE], as well as
 ## DoD
 - [ ] Documentation has been created/updated (if applicable)
 - [ ] Migration Guide has been created/updated (if applicable)
-- [ ] Relevant E2E tests (Features, A11y, Bug fixes) are created/updated
 - [ ] Relevant stories (Features, A11y) are created/updated
 - [ ] Implementation works successfully on `feature` branch
