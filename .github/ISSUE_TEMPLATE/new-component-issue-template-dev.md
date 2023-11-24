@@ -8,8 +8,7 @@ assignees: ''
 ---
 
 ## User Story
-As a [PERSONA] of the Solid Design System, I would like to [REQUIRE], as well as [FURTHER_REQUIREMENT],
-so that [PRODUCT_VALUE], and [FURTHER_PRODUCT_VALUE].
+As a [PERSONA] of the Solid Design System, I would like to [REQUIRE], as well as [FURTHER_REQUIREMENT], so that [PRODUCT_VALUE], and [FURTHER_PRODUCT_VALUE].
 
 ## API
 [LINK TO FIGMA]
@@ -29,7 +28,7 @@ so that [PRODUCT_VALUE], and [FURTHER_PRODUCT_VALUE].
 #### CSS-Properties
   - [ ] `name` - description
   - [ ] `name` - description
-#### Parts
+#### Parts (besides the shoelace parts)
   - [ ] `name` - description
   - [ ] `name` - description
 #### Slots
