@@ -774,6 +774,8 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 : 'default';
 
     // Conditional Styles
+    const cursorStyles = this.disabled ? 'cursor-not-allowed' : 'cursor-pointer';
+
     const textSize = this.size === 'sm' ? 'text-sm' : 'text-base';
     const textColor = {
       disabled: 'text-neutral-500',
@@ -806,7 +808,10 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     }[this.size];
 
     return html`
-      <div part="form-control" class=${cx('form-control', textColor, textSize)}>
+      <div
+        part="form-control"
+        class=${cx('form-control relative', cursorStyles, textColor, textSize, this.open && 'z-10')}
+      >
         <label
           id="label"
           part="form-control-label"
@@ -817,7 +822,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
           <slot name="label">${this.label}</slot>
         </label>
 
-        <div part="form-control-input" class=${cx('form-control-input cursor-pointer relative')}>
+        <div part="form-control-input" class=${cx('form-control-input relative bg-white')}>
           <div
             part="border"
             class=${cx(
@@ -874,7 +879,8 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
               <input
                 part="display-input"
                 class=${cx(
-                  'appearance-none outline-none flex-grow cursor-pointer bg-transparent',
+                  'appearance-none outline-none flex-grow bg-transparent',
+                  cursorStyles,
                   this.multiple && this.checklist && this.value.length > 0 ? 'hidden' : '',
                   { sm: 'h-6', md: 'h-8', lg: 'h-8' }[this.size]
                 )}
@@ -993,7 +999,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
         width: 100%;
       }
 
-      [part='form-control'] {
+      [part='listbox'] {
         position: relative;
         z-index: 100;
       }

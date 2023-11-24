@@ -15,12 +15,12 @@ export default {
       type: 'slot',
       name: 'default',
       value:
-        '<sd-option value="option-1">Option 1</sd-option><sd-option value="option-2">Option 2</sd-option><sd-option value="option-3">Option 3</sd-option><sd-option value="option-4">Option 4</sd-option><sd-option value="option-5">Option 5</sd-option>'
+        '<sd-option value="option-1">Option 1</sd-option><sd-option value="option-2">Option 2</sd-option><sd-option value="option-3">Option 3</sd-option>'
     }
   ]),
   argTypes,
   parameters: { ...parameters },
-  decorators: [withActions] as any
+  decorators: [withActions, (story: any) => html`<div>${story()}</div>`] as unknown
 };
 
 /**
@@ -29,7 +29,7 @@ export default {
 
 export const Default = {
   render: (args: any) => {
-    return generateTemplate({ args });
+    return html`<div class="h-[240px]">${generateTemplate({ args })}</div>`;
   }
 };
 
@@ -37,12 +37,14 @@ export const Default = {
  * Use the `label` attribute to give the select an accessible label. For labels that contain HTML, use the `label` slot instead.
  */
 
-export const Labels = {
+export const Label = {
   parameters: {
-    exclude: ['label']
+    controls: {
+      exclude: ['label']
+    }
   },
   render: (args: any) => {
-    return html`<div class="max-w-[500px]">
+    return html`<div class="h-[240px]">
       ${generateTemplate({
         constants: [
           {
@@ -64,10 +66,12 @@ export const Labels = {
 export const HelpText = {
   name: 'Help Text',
   parameters: {
-    exclude: ['default', 'help-text', 'label']
+    controls: {
+      exclude: ['help-text']
+    }
   },
   render: (args: any) => {
-    return html`<div class="max-w-[500px]">
+    return html`<div class="h-[240px]">
       ${generateTemplate({
         constants: [
           {
@@ -99,10 +103,12 @@ export const HelpText = {
 
 export const Placeholder = {
   parameters: {
-    exclude: ['placeholder']
+    controls: {
+      include: ['placeholder']
+    }
   },
   render: (args: any) => {
-    return html`<div class="max-w-[500px]">
+    return html`<div class="h-[240px]">
       ${generateTemplate({
         constants: [
           {
@@ -123,10 +129,12 @@ export const Placeholder = {
 
 export const Clearable = {
   parameters: {
-    exclude: ['clearable']
+    controls: {
+      exclude: ['clearable']
+    }
   },
   render: (args: any) => {
-    return html`<div class="max-w-[500px]">
+    return html`<div class="h-[240px]">
       ${generateTemplate({
         constants: [
           {
@@ -147,10 +155,12 @@ export const Clearable = {
 
 export const Disabled = {
   parameters: {
-    exclude: ['disabled']
+    controls: {
+      exclude: ['disabled']
+    }
   },
   render: (args: any) => {
-    return html`<div class="max-w-[500px]">
+    return html`<div>
       ${generateTemplate({
         constants: [
           {
@@ -176,13 +186,15 @@ export const Disabled = {
 
 export const Sizes = {
   parameters: {
-    exclude: ['size']
+    controls: {
+      include: []
+    }
   },
   render: (args: any) => {
-    return html`<div class="max-w-[500px]">
+    return html`<div class="h-[340px]">
       ${generateTemplate({
         axis: {
-          y: {
+          x: {
             type: 'attribute',
             name: 'size'
           }
@@ -190,11 +202,72 @@ export const Sizes = {
         constants: [
           {
             type: 'slot',
-            name: 'prefix',
-            value: '<sd-icon slot="prefix" library="global-resources" name="system/picture"></sd-icon>'
+            name: 'default',
+            value:
+              '<sd-option value="option-1">Option 1</sd-option><sd-option value="option-2">Option 2</sd-option><sd-option value="option-3">Option 3</sd-option>'
           }
         ],
-        args
+        args: null
+      })}
+    </div>`;
+  }
+};
+
+/**
+ * The preferred placement of the select’s listbox can be set with the `placement` attribute. Note that the actual position may vary to ensure the panel remains in the viewport. Valid placements are `top` and `bottom`.
+ */
+
+export const Placement = {
+  parameters: {
+    controls: {
+      include: []
+    }
+  },
+  render: (args: any) => {
+    return html`<div class="h-[340px]">
+      ${generateTemplate({
+        axis: {
+          x: {
+            type: 'attribute',
+            name: 'placement',
+            values: ['bottom', 'top']
+          }
+        },
+        constants: [
+          {
+            type: 'slot',
+            name: 'default',
+            value: '<sd-option value="option-1">Option 1</sd-option><sd-option value="option-2">Option 2</sd-option>'
+          }
+        ],
+        args: null
+      })}
+    </div>`;
+  }
+};
+
+/**
+ * Use `<sl-divider>` to group listbox items visually. You can also use `<small>` to provide labels, but they won’t be announced by most assistive devices.
+ */
+
+export const GroupingOptions = {
+  parameters: {
+    controls: {
+      include: []
+    }
+  },
+  render: (args: any) => {
+    return html`<div class="h-[290px]">
+      ${generateTemplate({
+        constants: [
+          {
+            type: 'slot',
+            name: 'default',
+            value:
+              '<small>Odd Options</small><sd-option value="option-1">Option 1</sd-option><sd-option value="option-3">Option 3</sd-option><sd-divider class="mb-2"></sd-divider><small>Even Options</small><sd-option value="option-2">Option 2</sd-option>'
+          }
+        ],
+        args: null
       })}
     </div>`;
   }
@@ -206,7 +279,7 @@ export const Sizes = {
 
 export const Dev = {
   render: (args: any) => {
-    return html`<div class="max-w-[500px]">
+    return html`<div>
       ${generateTemplate({
         constants: [
           {
