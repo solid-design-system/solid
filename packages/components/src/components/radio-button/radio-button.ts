@@ -50,9 +50,6 @@ export default class SdRadioButton extends SolidElement {
   /** The radio button's size. */
   @property({ reflect: true }) size: 'sm' | 'md' | 'lg' = 'lg';
 
-  /** Draws a pill-style radio button with rounded edges. */
-  @property({ type: Boolean, reflect: true }) pill = false;
-
   /** Shows or hides the label */
   @property({ type: Boolean }) showLabel = false;
 
@@ -97,6 +94,8 @@ export default class SdRadioButton extends SolidElement {
   }
 
   render() {
+    const buttonSizeClass = `${this.size}-${this.showLabel ? 'label' : 'no-label'}`;
+
     return html`
       <div part="base" role="presentation" class="relative">
         <button
@@ -104,20 +103,20 @@ export default class SdRadioButton extends SolidElement {
           role="radio"
           aria-checked="${this.checked}"
           class="${cx(
-            'relative w-fit p-3 -mx-[1px] text-center border rounded-md transition-all ease-in-out duration-100 items-center focus-visible:focus-outline',
+            'relative text-center border rounded-md transition-all ease-in-out duration-100 items-center justify-center focus-visible:focus-outline',
             this.size === 'sm' ? 'text-sm' : 'text-base',
             this.checked && !this.disabled
-              ? 'bg-primary text-white hover:bg-primary-500'
+              ? 'bg-primary border-primary text-white hover:bg-primary-500'
               : this.disabled && !this.checked
                 ? 'border-neutral-500 text-neutral-500 hover:cursor-not-allowed'
                 : this.disabled && this.checked
                   ? 'bg-neutral-500 text-white hover:cursor-not-allowed'
                   : 'bg-white text-primary border-primary hover:bg-primary-100 hover:border-primary-500 hover:text-primary-500 cursor-pointer',
-
+            this.showLabel && 'px-4',
             this.hasFocus && 'focused-class',
-            this.pill && 'rounded-full',
             this.hasSlotController.test('[default]') && 'button--has-label',
-            this.hasSlotController.test('icon') && 'button--has-icon flex gap-2'
+            this.hasSlotController.test('icon') && 'button--has-icon flex gap-2',
+            buttonSizeClass
           )}"
           aria-disabled=${this.disabled}
           type="button"
@@ -132,9 +131,9 @@ export default class SdRadioButton extends SolidElement {
             part="icon"
             class="${cx(
               this.hasSlotController.test('icon') && 'inline-flex relative items-center',
-              this.size === 'sm' ? 'text-base' : '',
-              this.size === 'md' ? 'text-lg' : '',
-              this.size === 'lg' ? 'text-xl' : ''
+              this.size === 'sm' && 'text-base',
+              this.size === 'md' && 'text-lg',
+              this.size === 'lg' && 'text-xl'
             )}"
           ></slot>
           ${this.showLabel
@@ -164,6 +163,63 @@ export default class SdRadioButton extends SolidElement {
         outline: dotted 1px red;
         opacity: 0;
         z-index: -1;
+      }
+
+      .lg-label {
+        height: 48px;
+      }
+
+      .lg-no-label {
+        height: 48px;
+        width: 48px;
+      }
+
+      .md-label {
+        height: 40px;
+      }
+
+      .md-no-label {
+        height: 40px;
+        width: 40px;
+      }
+
+      .sm-label {
+        height: 32px;
+      }
+
+      .sm-no-label {
+        height: 32px;
+        width: 32px;
+      }
+
+      :host(.sd-button-group__button--first:not(.sd-button-group__button--last)) button {
+        border-start-end-radius: 0;
+        border-end-end-radius: 0;
+      }
+
+      :host(.sd-button-group__button--inner) button {
+        border-radius: 0;
+      }
+
+      :host(.sd-button-group__button--last:not(.sd-button-group__button--first)) button {
+        border-start-start-radius: 0;
+        border-end-start-radius: 0;
+      }
+
+      /* All except the first */
+      :host(.sd-button-group__button:not(.sd-button-group__button--first)) {
+        margin-inline-start: -1px;
+      }
+
+      /* Bump hovered, focused, and checked buttons up so their focus ring isn't clipped */
+      :host(.sd-button-group__button--hover) {
+        z-index: 1;
+      }
+
+      /* Focus and checked are always on top */
+      :host(.sd-button-group__button--focus),
+      :host(.sd-button-group__button[checked]) {
+        z-index: 2;
       }
     `
   ];

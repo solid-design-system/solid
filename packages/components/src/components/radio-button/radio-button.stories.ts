@@ -28,6 +28,11 @@ export const Default = {
           type: 'slot',
           name: 'icon',
           value: '<sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>'
+        },
+        {
+          type: 'slot',
+          name: 'default',
+          value: '<div>Label</div>'
         }
       ]
     });
@@ -51,6 +56,11 @@ export const Size = {
           type: 'slot',
           name: 'icon',
           value: '<sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>'
+        },
+        {
+          type: 'slot',
+          name: 'default',
+          value: '<div>Label</div>'
         }
       ]
     });
@@ -84,6 +94,11 @@ export const DisabledAndSize = {
           type: 'slot',
           name: 'icon',
           value: '<sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>'
+        },
+        {
+          type: 'slot',
+          name: 'default',
+          value: '<div>Label</div>'
         }
       ],
       args

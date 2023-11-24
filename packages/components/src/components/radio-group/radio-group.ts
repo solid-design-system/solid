@@ -36,11 +36,10 @@ import type SdRadioButton from '../../components/radio-button/radio-button';
  * @csspart form-control - The form control that wraps the label, input, and error text.
  * @csspart form-control-label - The label's wrapper.
  * @csspart form-control-input - The input's wrapper.
+ * @csspart button-group - The button group that wraps radio buttons.
+ * @csspart button-group__base - The button group's `base` part.
  */
 
-// TODO: integrate these parts into the component when radio-button-group is converted to a solid component: https://github.com/solid-design-system/solid/issues/216
-// @csspart button-group - The button group that wraps radio buttons.
-// @csspart button-group__base - The button group's `base` part.
 @customElement('sd-radio-group')
 export default class SdRadioGroup extends SolidElement implements SolidFormControl {
   static dependencies = { 'sd-button-group': SdButtonGroup };
@@ -230,7 +229,9 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
 
         radio.checked = radio.value === this.value;
         radio.size = this.size;
-        // radio.invalid = this.invalid;
+        if ('invalid' in radio) {
+          radio.invalid = this.invalid;
+        }
       })
     );
 
@@ -406,7 +407,13 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
               />
             </label>
           </div>
-          ${defaultSlot}
+          ${this.hasButtonGroup
+            ? html`
+                <sd-button-group part="button-group" exportparts="base:button-group__base" role="presentation">
+                  ${defaultSlot}
+                </sd-button-group>
+              `
+            : defaultSlot}
         </div>
       </fieldset>
     `;

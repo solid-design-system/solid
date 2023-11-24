@@ -183,3 +183,20 @@ export const Mouseless = {
     }
   }
 };
+
+export const RadioButtonGroup = {
+  parameters: { controls: { exclude: ['size', 'value', 'required', 'invalid', 'label'] } },
+  render: (args: any) => {
+    return generateTemplate({
+      args,
+      constants: [
+        {
+          type: 'slot',
+          name: 'default',
+          value:
+            '<sd-radio-button value="1"><sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon></sd-radio-button><sd-radio-button value="2"showlabel><div>Label</div><sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon></sd-radio-button><sd-radio-button value="3"><sd-icon library="global-resources" name="system/picture" slot="icon"></sd-radio-button>'
+        }
+      ]
+    });
+  }
+};
