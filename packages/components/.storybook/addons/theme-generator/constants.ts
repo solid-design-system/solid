@@ -1,5 +1,5 @@
-export const ADDON_ID_THEME_GENERATOR = 'solid/theme-generator';
-export const PANEL_ID = `${ADDON_ID_THEME_GENERATOR}/panel`;
+export const ADDON_ID = 'solid/theme-generator';
+export const PANEL_ID = `${ADDON_ID}/panel`;
 export const PARAM_KEY = `solidThemeGenerator`;
 export const PANEL_DEFAULTS = {
   colors: {
