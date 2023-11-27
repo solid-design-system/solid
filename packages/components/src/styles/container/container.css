@@ -1,0 +1,23 @@
+.sd-container {
+  @apply bg-neutral-100 px-10 py-8;
+
+  &--variant-primary-100 {
+    @apply bg-primary-100;
+  }
+
+  &--variant-primary {
+    @apply bg-primary;
+  }
+
+  &--variant-border-neutral-400 {
+    @apply border-[1px] border-neutral-400 bg-white;
+  }
+
+  &--variant-white {
+    @apply bg-white;
+  }
+
+  &--padding-sm {
+    @apply px-6 py-4;
+  }
+}
