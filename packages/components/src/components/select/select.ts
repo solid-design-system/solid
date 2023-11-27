@@ -1,5 +1,4 @@
 import { animateTo, stopAnimations } from '../../internal/animate.js';
-import { classMap } from 'lit/directives/class-map.js';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { defaultValue } from '../../internal/default-value.js';
@@ -182,6 +181,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
    * is the current tag's index.  The function should return either a Lit TemplateResult or a string containing trusted HTML of the symbol to render at
    * the specified value.
    */
+  // TODO: what is exportparts?
   @property() getTag: (option: SdOption, index: number) => TemplateResult | string | HTMLElement = option => {
     return html`
       <sd-tag
@@ -810,7 +810,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     return html`
       <div
         part="form-control"
-        class=${cx('form-control relative', cursorStyles, textColor, textSize, this.open && 'z-10')}
+        class=${cx('form-control relative text-left', cursorStyles, textColor, textSize, this.open && 'z-10')}
       >
         <label
           id="label"
@@ -822,7 +822,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
           <slot name="label">${this.label}</slot>
         </label>
 
-        <div part="form-control-input" class=${cx('form-control-input relative bg-white')}>
+        <div part="form-control-input" class=${cx('relative w-full bg-white')}>
           <div
             part="border"
             class=${cx(
@@ -836,21 +836,10 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
           ></div>
           <sd-popup
             @sd-current-placement=${this.handleCurrentPlacement}
-            class=${(cx('inline-flex relative', this.currentPlacement === 'bottom' ? 'origin-top' : 'origin-bottom'),
-            classMap({
-              // select: true,
-              // 'select--standard': true,
-              // 'select--open': this.open,
-              // 'select--disabled': this.disabled,
-              // 'select--multiple': this.multiple,
-              // 'select--focused': this.hasFocus,
-              // 'select--placeholder-visible': isPlaceholderVisible,
-              // 'select--top': this.placement === 'top',
-              // 'select--bottom': this.placement === 'bottom',
-              // 'select--small': this.size === 'sm',
-              // 'select--medium': this.size === 'md',
-              // 'select--large': this.size === 'lg'
-            }))}
+            class=${cx(
+              'inline-flex relative w-full',
+              this.currentPlacement === 'bottom' ? 'origin-top' : 'origin-bottom'
+            )}
             placement=${this.placement}
             strategy=${this.hoist ? 'fixed' : 'absolute'}
             flip
@@ -862,7 +851,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
             <div
               part="combobox"
               class=${cx(
-                'relative px-4 flex flex-row items-center transform-all',
+                'relative w-full px-4 flex flex-row items-center transform-all',
                 { sm: 'py-1', md: 'py-1', lg: 'py-2' }[this.size]
               )}
               slot="anchor"
@@ -997,11 +986,6 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
         display: block;
         position: relative;
         width: 100%;
-      }
-
-      [part='listbox'] {
-        position: relative;
-        z-index: 100;
       }
     `
   ];
