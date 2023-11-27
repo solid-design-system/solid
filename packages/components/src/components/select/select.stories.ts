@@ -327,6 +327,122 @@ export const GroupingOptions = {
 };
 
 /**
+ * Demonstrates the form behavior with validation styles when the `required` attribute is set to `true`.
+ */
+
+export const Validation = {
+  parameters: {
+    controls: {
+      include: ['clearable', 'disabled']
+    }
+  },
+  render: (args: any) => {
+    return html`
+      <form action="" method="get" id="testForm" name="testForm" class="w-[370px]">
+        <div class="mb-2">
+          ${generateTemplate({
+            constants: [
+              { type: 'attribute', name: 'label', value: 'Required' },
+              { type: 'attribute', name: 'name', value: 'required field' },
+              { type: 'attribute', name: 'placeholder', value: '.*' },
+              { type: 'attribute', name: 'help-text', value: 'input must be filled' },
+              { type: 'attribute', name: 'form', value: 'testForm' },
+              { type: 'attribute', name: 'clearable', value: true },
+              { type: 'attribute', name: 'required', value: true },
+              {
+                type: 'slot',
+                name: 'prefix',
+                value: '<sd-icon slot="prefix" library="global-resources" name="system/picture"></sd-icon>'
+              },
+              {
+                type: 'slot',
+                name: 'default',
+                value:
+                  '<sd-option value="option-1">Option 1</sd-option><sd-option value="option-2">Option 2</sd-option>'
+              }
+            ],
+            args: null
+          })}
+        </div>
+        <div class="mb-2">
+          ${generateTemplate({
+            constants: [
+              { type: 'attribute', name: 'label', value: 'Required Multiple' },
+              { type: 'attribute', name: 'name', value: 'required multiple field' },
+              { type: 'attribute', name: 'placeholder', value: '.*' },
+              { type: 'attribute', name: 'help-text', value: 'input must be filled' },
+              { type: 'attribute', name: 'form', value: 'testForm' },
+              { type: 'attribute', name: 'clearable', value: true },
+              { type: 'attribute', name: 'required', value: true },
+              { type: 'attribute', name: 'multiple', value: true },
+              {
+                type: 'slot',
+                name: 'prefix',
+                value: '<sd-icon slot="prefix" library="global-resources" name="system/picture"></sd-icon>'
+              },
+              {
+                type: 'slot',
+                name: 'default',
+                value:
+                  '<sd-option value="option-1">Option 1</sd-option><sd-option value="option-2">Option 2</sd-option>'
+              }
+            ],
+            args: null
+          })}
+        </div>
+        <div class="mb-2">
+          ${generateTemplate({
+            constants: [
+              { type: 'attribute', name: 'label', value: 'Required Multiple Checklist' },
+              { type: 'attribute', name: 'name', value: 'required multiple checklist field' },
+              { type: 'attribute', name: 'placeholder', value: '.*' },
+              { type: 'attribute', name: 'help-text', value: 'input must be filled' },
+              { type: 'attribute', name: 'form', value: 'testForm' },
+              { type: 'attribute', name: 'clearable', value: true },
+              { type: 'attribute', name: 'required', value: true },
+              { type: 'attribute', name: 'multiple', value: true },
+              { type: 'attribute', name: 'checklist', value: true },
+              {
+                type: 'slot',
+                name: 'prefix',
+                value: '<sd-icon slot="prefix" library="global-resources" name="system/picture"></sd-icon>'
+              },
+              {
+                type: 'slot',
+                name: 'default',
+                value:
+                  '<sd-option value="option-1">Option 1</sd-option><sd-option value="option-2">Option 2</sd-option>'
+              }
+            ],
+            args: null
+          })}
+        </div>
+        <sd-button type="submit">Submit</sd-button>
+      </form>
+      <script>
+        function handleSubmit(event) {
+          const form = document.querySelector('#testForm');
+          const sdSelects = Array.from(document.querySelectorAll('sd-select'));
+
+          const isValid = sdSelect => sdSelect.checkValidity();
+
+          if (sdSelects.every(isValid)) {
+            event.preventDefault(); // Prevent the default form submission behavior
+
+            const formData = new FormData(form);
+            const formValues = Object.fromEntries(formData);
+
+            alert('Form submitted successfully with the following values: ' + JSON.stringify(formValues, null, 2));
+          }
+        }
+
+        document.querySelector('#testForm').addEventListener('submit', handleSubmit);
+      </script>
+    `;
+  }
+};
+
+/**
  * Shows available slots. The `label` and `help-text` slots will overwrite their corresponding attributes.
  */
 
@@ -361,7 +477,7 @@ export const Slots = {
             { type: 'attribute', name: 'help-text', value: 'help-text' },
             {
               type: 'slot',
-              name: 'left',
+              name: 'prefix',
               value: '<sd-icon slot="prefix" library="global-resources" name="system/picture"></sd-icon>'
             },
             {
@@ -378,7 +494,22 @@ export const Slots = {
 };
 
 /**
- * Use the `form-control`, `form-control-label`, `form-control-input`, `form-control-help-text`, `base`, `border`, `input`, `left`, `clear-button`, and `right` part selectors to customize the input.
+ * Use the `form-control`,
+  `form-control-label`,
+  `form-control-input`,
+  `form-control-help-text`,
+  `combobox`,
+  `prefix`,
+  `display-input`,
+  `listbox`,
+  `tags`,
+  `tag`,
+  `tag__base`,
+  `tag__content`,
+  `tag__remove-button`,
+  `tag__remove-button__base`,
+  `clear-button`, and
+  `expand-icon` part selectors to customize the select component.
  */
 
 const partsArr = [

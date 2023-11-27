@@ -86,7 +86,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   @query('sd-popup') popup: SdPopup;
   @query('[part="combobox"]') combobox: HTMLSlotElement;
   @query('[part="display-input"]') displayInput: HTMLInputElement;
-  @query('.select__value-input') valueInput: HTMLInputElement;
+  @query('.value-input') valueInput: HTMLInputElement;
   @query('[part="listbox"]') listbox: HTMLSlotElement;
 
   @state() private hasFocus = false;
@@ -700,7 +700,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
 
   /** Checks for validity but does not show a validation message. Returns `true` when valid and `false` when invalid. */
   checkValidity() {
-    return this.valueInput.checkValidity();
+    return this.valueInput?.checkValidity();
   }
 
   /** Gets the associated form, if one exists. */
@@ -898,7 +898,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 : ''}
 
               <input
-                class="select__value-input hidden"
+                class="value-input hidden"
                 type="text"
                 ?disabled=${this.disabled}
                 ?required=${this.required}
@@ -928,6 +928,20 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                         ></sd-icon>
                       </slot>
                     </button>
+                  `
+                : ''}
+              ${isInvalid
+                ? html`
+                    <sd-icon class=${cx('text-error', iconMarginLeft, iconSize)} library="system" name="risk"></sd-icon>
+                  `
+                : ''}
+              ${isValid
+                ? html`
+                    <sd-icon
+                      class=${cx('text-success', iconMarginLeft, iconSize)}
+                      library="system"
+                      name="confirm"
+                    ></sd-icon>
                   `
                 : ''}
 
