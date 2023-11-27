@@ -1,6 +1,7 @@
 import '../../solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
+import { waitUntil } from '@open-wc/testing-helpers';
 import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-select');
@@ -330,11 +331,6 @@ export const GroupingOptions = {
  */
 
 export const Slots = {
-  parameters: {
-    controls: {
-      exclude: ['default', 'label', 'prefix', 'clear-icon', 'expand-icon', 'help-text']
-    }
-  },
   render: (args: any) => {
     return html`
       ${['default', 'label', 'prefix', 'clear-icon', 'expand-icon', 'help-text'].map(slot =>
@@ -360,6 +356,7 @@ export const Slots = {
           constants: [
             { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' },
             { type: 'attribute', name: 'clearable', value: true },
+
             { type: 'attribute', name: 'label', value: 'Label' },
             { type: 'attribute', name: 'help-text', value: 'help-text' },
             {
@@ -373,7 +370,7 @@ export const Slots = {
               value: '<sd-option value="option-1">Option 1</sd-option><sd-option value="option-2">Option 2</sd-option>'
             }
           ],
-          args: null
+          args
         })
       )}
     `;
@@ -384,73 +381,78 @@ export const Slots = {
  * Use the `form-control`, `form-control-label`, `form-control-input`, `form-control-help-text`, `base`, `border`, `input`, `left`, `clear-button`, and `right` part selectors to customize the input.
  */
 
-// export const Parts = {
-//   parameters: {
-//     controls: {
-//       exclude: ['label', 'left', 'right', 'clear-icon', 'help-text', 'clearable', 'value']
-//     }
-//   },
-//   render: (args: any) => {
-//     return generateTemplate({
-//       axis: {
-//         y: {
-//           type: 'template',
-//           name: 'sd-input::part(...){outline: solid 2px red}',
-//           values: [
-//             'form-control',
-//             'form-control-label',
-//             'form-control-input',
-//             'form-control-help-text',
-//             'base',
-//             'border',
-//             'input',
-//             'left',
-//             'clear-button',
-//             'right'
-//           ].map(part => {
-//             return {
-//               title: part,
-//               value: `<style>#part-${part} sd-input::part(${part}){outline: solid 2px red}</style><div id="part-${part}">%TEMPLATE%</div>`
-//             };
-//           })
-//         }
-//       },
-//       constants: [
-//         { type: 'attribute', name: 'clearable', value: true },
-//         { type: 'attribute', name: 'value', value: 'value' },
-//         { type: 'attribute', name: 'label', value: 'Label' },
-//         { type: 'attribute', name: 'help-text', value: 'help-text' },
-//         {
-//           type: 'slot',
-//           name: 'left',
-//           value: '<sd-icon slot="left" library="global-resources" name="system/picture"></sd-icon>'
-//         },
-//         {
-//           type: 'slot',
-//           name: 'right',
-//           value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
-//         }
-//       ],
-//       args
-//     });
-//   }
-// };
+const partsArr = [
+  'form-control',
+  'form-control-label',
+  'form-control-input',
+  'form-control-help-text',
+  'combobox',
+  'prefix',
+  'display-input',
+  'listbox',
+  'tags',
+  'tag',
+  'tag__base',
+  'tag__content',
+  'tag__remove-button',
+  'tag__remove-button__base',
+  'clear-button',
+  'expand-icon'
+];
+
+export const Parts = {
+  parameters: {
+    controls: {
+      exclude: partsArr
+    }
+  },
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        y: {
+          type: 'template',
+          name: 'sd-select::part(...){outline: solid 2px red}',
+          values: partsArr.map(part => {
+            return {
+              title: part,
+              value: `<style>#part-${part} sd-select::part(${part}){outline: solid 2px red}</style><div id="part-${part}">%TEMPLATE%</div>`
+            };
+          })
+        }
+      },
+      constants: [
+        { type: 'attribute', name: 'multiple', value: true },
+        { type: 'attribute', name: 'checklist', value: true },
+        { type: 'attribute', name: 'value', value: 'option-1 option-2' },
+        { type: 'attribute', name: 'clearable', value: true },
+        { type: 'attribute', name: 'label', value: 'Label' },
+        { type: 'attribute', name: 'help-text', value: 'help-text' },
+        {
+          type: 'slot',
+          name: 'prefix',
+          value: '<sd-icon slot="prefix" library="global-resources" name="system/picture"></sd-icon>'
+        }
+      ],
+      args
+    });
+  }
+};
 
 /**
- * `sd-input` is fully accessibile via keyboard.
+ * `sd-select` is fully accessibile via keyboard.
  */
 
-// export const Mouseless = {
-//   render: (args: any) => {
-//     return html`<div class="mouseless w-[250px]">${generateTemplate({ args })}</div>`;
-//   },
+export const Mouseless = {
+  render: (args: any) => {
+    return html`<div class="mouseless w-[250px]">${generateTemplate({ args })}</div>`;
+  },
 
-//   play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
-//     const el = canvasElement.querySelector('.mouseless sd-input');
-//     await waitUntil(() => el?.shadowRoot?.querySelector('input'));
-//     el?.shadowRoot?.querySelector('input')!.focus();
-//   }
-// };
+  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
+    const el = canvasElement.querySelector('.mouseless sd-select');
+    await waitUntil(() => el?.shadowRoot?.querySelector('input'));
+    el?.shadowRoot?.querySelector('input')!.focus();
+  }
+};
 
 /**
  * Dev: Temporary development story
@@ -459,26 +461,16 @@ export const Slots = {
 export const Dev = {
   render: (args: any) => {
     return html`<div>
-      ${generateTemplate({
-        constants: [
-          {
-            type: 'attribute',
-            name: 'clearable',
-            value: true
-          },
-          {
-            type: 'attribute',
-            name: 'multiple',
-            value: true
-          },
-          {
-            type: 'slot',
-            name: 'prefix',
-            value: '<sd-icon slot="prefix" library="global-resources" name="system/picture"></sd-icon>'
-          }
-        ],
-        args
-      })}
+      <sd-select>
+        <sd-option value="1">Option 1</sd-option>
+        <sd-option value="2">Option 2</sd-option>
+        <sd-option value="3">Option 3</sd-option>
+      </sd-select>
+      <sd-select>
+        <sd-option value="1">Option 1</sd-option>
+        <sd-option value="2">Option 2</sd-option>
+        <sd-option value="3">Option 3</sd-option>
+      </sd-select>
     </div>`;
   }
 };
