@@ -53,6 +53,9 @@ export default class SdRadioButton extends SolidElement {
   /** Shows or hides the label */
   @property({ type: Boolean }) showLabel = false;
 
+  /** Hides the icon when set to true */
+  @property({ type: Boolean }) hideIcon = false;
+
   connectedCallback() {
     super.connectedCallback();
     this.setAttribute('role', 'presentation');
@@ -135,6 +138,7 @@ export default class SdRadioButton extends SolidElement {
               this.size === 'md' && 'text-lg',
               this.size === 'lg' && 'text-xl'
             )}"
+            ?hidden=${this.hideIcon}
           ></slot>
           ${this.showLabel
             ? html`<slot part="label" class="button__label inline-flex relative items-center"></slot>`

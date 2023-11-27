@@ -184,6 +184,10 @@ export const Mouseless = {
   }
 };
 
+/**
+ * This shows `sd-radio-button-group` in it's default state.
+ */
+
 export const RadioButtonGroup = {
   parameters: { controls: { exclude: ['size', 'value', 'required', 'invalid', 'label'] } },
   render: (args: any) => {
@@ -194,9 +198,37 @@ export const RadioButtonGroup = {
           type: 'slot',
           name: 'default',
           value:
-            '<sd-radio-button value="1"><sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon></sd-radio-button><sd-radio-button value="2"showlabel><div>Label</div><sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon></sd-radio-button><sd-radio-button value="3"><sd-icon library="global-resources" name="system/picture" slot="icon"></sd-radio-button>'
+            '<sd-radio-button value="1"><sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon></sd-radio-button><sd-radio-button value="2" showlabel><div>Label</div><sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon></sd-radio-button><sd-radio-button value="3"><sd-icon library="global-resources" name="system/picture" slot="icon"></sd-radio-button>'
         }
       ]
     });
+  }
+};
+
+/**
+ * `sd-radio-button-group` is fully accessibile via keyboard.
+ */
+
+export const MouselessRadioButtonGroup = {
+  render: (args: any) => {
+    return html`<div class="mouseless">
+      ${generateTemplate({
+        args,
+        constants: [
+          {
+            type: 'slot',
+            name: 'default',
+            value:
+              '<sd-radio-button value="1"><sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon></sd-radio-button><sd-radio-button value="2" showlabel><div>Label</div><sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon></sd-radio-button><sd-radio-button value="3"><sd-icon library="global-resources" name="system/picture" slot="icon"></sd-radio-button>'
+          }
+        ]
+      })}
+    </div>`;
+  },
+
+  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
+    const el = canvasElement.querySelector('.mouseless sd-radio-button');
+    await waitUntil(() => el?.shadowRoot?.querySelector('button'));
+    el?.shadowRoot?.querySelector('button')!.focus();
   }
 };

@@ -1,15 +1,28 @@
 import '../../solid-components';
-import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
+import { html } from 'lit-html';
+import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
+import { waitUntil } from '@open-wc/testing-helpers';
 import { withActions } from '@storybook/addon-actions/decorator';
 
-const { args, argTypes, parameters } = storybookDefaults('sd-radio-button');
-// const { overrideArgs } = storybookHelpers('sd-radio-button');
+const { argTypes, parameters } = storybookDefaults('sd-radio-button');
+const { overrideArgs } = storybookHelpers('sd-radio-button');
 const { generateTemplate } = storybookTemplate('sd-radio-button');
 
 export default {
   title: 'Components/sd-radio-button',
   component: 'sd-radio-button',
-  args,
+  args: overrideArgs([
+    {
+      type: 'slot',
+      name: 'icon',
+      value: '<sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>'
+    },
+    {
+      type: 'slot',
+      name: 'default',
+      value: '<div>Label</div>'
+    }
+  ]),
   argTypes,
   parameters: { ...parameters },
   decorators: [withActions] as any
@@ -21,21 +34,7 @@ export default {
 
 export const Default = {
   render: (args: any) => {
-    return generateTemplate({
-      args,
-      constants: [
-        {
-          type: 'slot',
-          name: 'icon',
-          value: '<sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>'
-        },
-        {
-          type: 'slot',
-          name: 'default',
-          value: '<div>Label</div>'
-        }
-      ]
-    });
+    return generateTemplate({ args });
   }
 };
 
@@ -50,19 +49,7 @@ export const Size = {
       axis: {
         x: { type: 'attribute', name: 'size' }
       },
-      args,
-      constants: [
-        {
-          type: 'slot',
-          name: 'icon',
-          value: '<sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>'
-        },
-        {
-          type: 'slot',
-          name: 'default',
-          value: '<div>Label</div>'
-        }
-      ]
+      args
     });
   }
 };
@@ -88,19 +75,7 @@ export const DisabledAndSize = {
           values: ['lg', 'md', 'sm']
         }
       },
-      constants: [
-        { type: 'attribute', name: 'disabled', value: true },
-        {
-          type: 'slot',
-          name: 'icon',
-          value: '<sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>'
-        },
-        {
-          type: 'slot',
-          name: 'default',
-          value: '<div>Label</div>'
-        }
-      ],
+      constants: [{ type: 'attribute', name: 'disabled', value: true }],
       args
     });
   }
@@ -110,8 +85,8 @@ export const DisabledAndSize = {
  * Use the show-label attribute to show the label of the radio button.
  */
 
-export const LabelAndSize = {
-  name: 'Label × Size',
+export const CombinationAndSize = {
+  name: 'Combination × Size',
   parameters: { controls: { exclude: ['icon', 'label', 'showLabel', 'size'] } },
   render: (args: any) => {
     return generateTemplate({
@@ -127,19 +102,6 @@ export const LabelAndSize = {
           values: ['lg', 'md', 'sm']
         }
       },
-      constants: [
-        {
-          type: 'slot',
-          name: 'icon',
-          value: '<sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>'
-        },
-        { type: 'attribute', name: 'showLabel', value: true },
-        {
-          type: 'slot',
-          name: 'default',
-          value: '<div>Label</div>'
-        }
-      ],
       args
     });
   }
@@ -149,17 +111,21 @@ export const LabelAndSize = {
  * Label only
  */
 
-export const LabelOnly = {
+export const LabelOnlyAndSize = {
+  name: 'Label only × Size',
   parameters: { controls: { exclude: ['icon', 'label', 'showLabel'] } },
   render: (args: any) => {
     return generateTemplate({
+      axis: {
+        y: {
+          type: 'attribute',
+          name: 'size',
+          values: ['lg', 'md', 'sm']
+        }
+      },
       constants: [
         { type: 'attribute', name: 'showLabel', value: true },
-        {
-          type: 'slot',
-          name: 'default',
-          value: '<div>Label</div>'
-        }
+        { type: 'attribute', name: 'hideIcon', value: true }
       ],
       args
     });
@@ -198,19 +164,27 @@ export const Parts = {
         }
       },
       args,
-      constants: [
-        {
-          type: 'slot',
-          name: 'icon',
-          value: '<sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>'
-        },
-        { type: 'attribute', name: 'showLabel', value: true },
-        {
-          type: 'slot',
-          name: 'default',
-          value: '<div>Label</div>'
-        }
-      ]
+      constants: [{ type: 'attribute', name: 'showLabel', value: true }]
     });
+  }
+};
+
+/**
+ * `sd-radio-button` is fully accessibile via keyboard.
+ */
+
+export const Mouseless = {
+  render: (args: any) => {
+    return html`<div class="mouseless">
+      ${generateTemplate({
+        args
+      })}
+    </div>`;
+  },
+
+  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
+    const el = canvasElement.querySelector('.mouseless sd-radio-button');
+    await waitUntil(() => el?.shadowRoot?.querySelector('button'));
+    el?.shadowRoot?.querySelector('button')!.focus();
   }
 };
