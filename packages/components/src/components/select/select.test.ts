@@ -3,7 +3,7 @@ import { clickOnElement } from '../../internal/test';
 import { sendKeys } from '@web/test-runner-commands';
 import { serialize } from '../../utilities/form';
 import sinon from 'sinon';
-import type SdOption from '../../_components/option/option';
+import type SdOption from '../../components/option/option';
 import type SdSelect from './select';
 
 describe('<sd-select>', () => {
@@ -171,7 +171,7 @@ describe('<sd-select>', () => {
         <sd-option value="option-3">Option 3</sd-option>
       </sd-select>
     `);
-    const displayInput = el.shadowRoot!.querySelector<HTMLSelectElement>('.select__display-input')!;
+    const displayInput = el.shadowRoot!.querySelector<HTMLSelectElement>('[part="display-input"]')!;
 
     el.focus();
     await sendKeys({ press: 'r' });
@@ -188,7 +188,7 @@ describe('<sd-select>', () => {
         <sd-option value="option-3">Option 3</sd-option>
       </sd-select>
     `);
-    const displayInput = el.shadowRoot!.querySelector<HTMLSelectElement>('.select__display-input')!;
+    const displayInput = el.shadowRoot!.querySelector<HTMLSelectElement>('[part="display-input"]')!;
 
     el.focus();
     await sendKeys({ down: 'Control' });
@@ -408,7 +408,7 @@ describe('<sd-select>', () => {
         <sd-option value="option-3">Option 3</sd-option>
       </sd-select>
     `);
-    const displayInput = el.shadowRoot!.querySelector<HTMLSelectElement>('.select__display-input')!;
+    const displayInput = el.shadowRoot!.querySelector<HTMLSelectElement>('[part="display-input"]')!;
     const option = el.querySelector('sd-option')!;
 
     expect(displayInput.value).to.equal('Option 1');
@@ -464,7 +464,7 @@ describe('<sd-select>', () => {
 
   it('should emit sd-change and sd-input when a tag is removed', async () => {
     const el = await fixture<SdSelect>(html`
-      <sd-select value="option-1 option-2 option-3" multiple>
+      <sd-select value="option-1 option-2 option-3" multiple checklist>
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
         <sd-option value="option-3">Option 3</sd-option>
@@ -473,7 +473,8 @@ describe('<sd-select>', () => {
     const changeHandler = sinon.spy();
     const inputHandler = sinon.spy();
     const tag = el.shadowRoot!.querySelector('[part~="tag"]')!;
-    const removeButton = tag.shadowRoot!.querySelector('[part~="remove-button"]')!;
+
+    const removeButton = tag.shadowRoot!.querySelector('[part="removable-indicator"]')!;
 
     el.addEventListener('sd-change', changeHandler);
     el.addEventListener('sd-input', inputHandler);
@@ -510,18 +511,5 @@ describe('<sd-select>', () => {
     await el.hide();
     expect(hideHandler).to.have.been.calledOnce;
     expect(afterHideHandler).to.have.been.calledOnce;
-  });
-
-  it('should have rounded tags when using the pill attribute', async () => {
-    const el = await fixture<SdSelect>(html`
-      <sd-select value="option-1 option-2" multiple pill>
-        <sd-option value="option-1">Option 1</sd-option>
-        <sd-option value="option-2">Option 2</sd-option>
-        <sd-option value="option-3">Option 3</sd-option>
-      </sd-select>
-    `);
-    const tag = el.shadowRoot!.querySelector('[part~="tag"]')!;
-
-    expect(tag.hasAttribute('pill')).to.be.true;
   });
 });

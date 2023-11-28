@@ -62,8 +62,7 @@ import type SdOption from '../option/option';
  * @csspart tag - The individual tags that represent each multiselect option.
  * @csspart tag__base - The tag's base part.
  * @csspart tag__content - The tag's content part.
- * @csspart tag__remove-button - The tag's remove button.
- * @csspart tag__remove-button__base - The tag's remove button base part.
+ * @csspart tag__removable-indicator - The tag's remove button.
  * @csspart clear-button - The clear button.
  * @csspart expand-icon - The container that wraps the expand icon.
  */
@@ -189,8 +188,8 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
         exportparts="
               base:tag__base,
               content:tag__content,
-              remove-button:tag__remove-button,
-              remove-button__base:tag__remove-button__base
+              removable-indicator:tag__removable-indicator,
+              removable-indicator__base:tag__removable-indicator__base
             "
         size=${this.size === 'lg' ? 'lg' : 'sm'}
         removable
