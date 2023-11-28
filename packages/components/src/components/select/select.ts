@@ -173,9 +173,6 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
    */
   @property({ reflect: true }) form = '';
 
-  /** Set to true to show built-in error / success styles based on the required attribute. This can, for example, be conditionally activated with an `isSubmitted` state in the context of a form. */
-  @property({ type: Boolean, reflect: true }) enableValidation = false;
-
   /** The select's required attribute. */
   @property({ type: Boolean, reflect: true }) required = false;
 
@@ -755,10 +752,8 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     const hasLabel = this.label ? true : !!slots['label'];
     const hasHelpText = this.helpText ? true : !!slots['helpText'];
     const hasClearIcon = this.clearable && !this.disabled && this.value.length > 0;
-
-    const hasValidationAttr = this.required && this.enableValidation;
-    const isInvalid = hasValidationAttr && !this.checkValidity();
-    const isValid = hasValidationAttr && this.checkValidity();
+    const isInvalid = this.required && !this.checkValidity();
+    const isValid = this.required && this.checkValidity();
 
     // Hierarchy of input states:
     const selectState = this.disabled

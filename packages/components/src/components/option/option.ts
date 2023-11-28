@@ -120,11 +120,11 @@ export default class SdOption extends SolidElement {
       <div
         part="base"
         class=${cx(
-          'px-2 py-3 flex items-center w-full transition-all text-left',
+          'px-2 py-3 flex items-center w-full transition-all text-left text-base',
           this.disabled ? 'text-neutral-500 cursor-not-allowed' : 'cursor-pointer',
           this.hasHover && !this.disabled ? 'bg-neutral-200' : '',
           this.current && 'bg-neutral-200',
-          this.selected && !this.checkbox ? 'bg-primary text-white' : ''
+          this.selected && !this.checkbox ? 'bg-primary text-white' : 'text-black'
         )}
         @mouseenter=${this.handleMouseEnter}
         @mouseleave=${this.handleMouseLeave}

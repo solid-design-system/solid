@@ -3,22 +3,44 @@ import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 import { waitUntil } from '@open-wc/testing-helpers';
 import { withActions } from '@storybook/addon-actions/decorator';
+import type { ConstantDefinition } from '../../../scripts/storybook/helper';
 
 const { argTypes, parameters } = storybookDefaults('sd-select');
 const { generateTemplate } = storybookTemplate('sd-select');
 const { overrideArgs } = storybookHelpers('sd-select');
 
+// Reusable Constants
+const defaultSlotConstant: ConstantDefinition = {
+  type: 'slot',
+  name: 'default',
+  value:
+    '<sd-option value="option-1">Option 1</sd-option><sd-option value="option-2">Option 2</sd-option><sd-option value="option-3">Option 3</sd-option>'
+};
+
+const defaultSlotConstant2: ConstantDefinition = {
+  type: 'slot',
+  name: 'default',
+  value: '<sd-option value="option-1">Option 1</sd-option><sd-option value="option-2">Option 2</sd-option>'
+};
+
+const leftSlotConstant: ConstantDefinition = {
+  type: 'slot',
+  name: 'prefix',
+  value: '<sd-icon slot="prefix" library="global-resources" name="system/picture"></sd-icon>'
+};
+
+const clearableConstant: ConstantDefinition = { type: 'attribute', name: 'clearable', value: true };
+
+const multipleConstant: ConstantDefinition = { type: 'attribute', name: 'multiple', value: true };
+
+const helpTextConstant: ConstantDefinition = { type: 'attribute', name: 'help-text', value: 'help-text' };
+
+const labelConstant: ConstantDefinition = { type: 'attribute', name: 'label', value: 'Label' };
+
 export default {
   title: 'Components/sd-select',
   component: 'sd-select',
-  args: overrideArgs([
-    {
-      type: 'slot',
-      name: 'default',
-      value:
-        '<sd-option value="option-1">Option 1</sd-option><sd-option value="option-2">Option 2</sd-option><sd-option value="option-3">Option 3</sd-option>'
-    }
-  ]),
+  args: overrideArgs([defaultSlotConstant]),
   argTypes: {
     ...argTypes,
     'value-attr': {
@@ -53,7 +75,7 @@ export const Default = {
 };
 
 /**
- * Use the `label` attribute to give the select an accessible label. For labels that contain HTML, use the `label` slot instead. Setting `required` to `true` will append an asterisk to the label.
+ * Use the `label` attribute to give the select an accessible label. For labels that contain HTML, use the `label` slot instead.
  */
 
 export const Labels = {
@@ -63,25 +85,9 @@ export const Labels = {
     }
   },
   render: (args: any) => {
-    return html`<div class="h-[340px]">
+    return html`<div class="h-[260px] w-[420px]">
       ${generateTemplate({
-        options: {
-          classes: 'w-full'
-        },
-        axis: {
-          x: {
-            type: 'attribute',
-            name: 'required',
-            values: [false, true]
-          }
-        },
-        constants: [
-          {
-            type: 'attribute',
-            name: 'label',
-            value: 'Label'
-          }
-        ],
+        constants: [labelConstant],
         args
       })}
     </div>`;
@@ -197,11 +203,7 @@ export const Disabled = {
             name: 'disabled',
             value: true
           },
-          {
-            type: 'slot',
-            name: 'prefix',
-            value: '<sd-icon slot="prefix" library="global-resources" name="system/picture"></sd-icon>'
-          }
+          leftSlotConstant
         ],
         args
       })}
@@ -228,27 +230,11 @@ export const Multiple = {
         axis: {
           x: {
             type: 'attribute',
-            name: 'checklist'
+            name: 'checklist',
+            values: [false, true]
           }
         },
-        constants: [
-          {
-            type: 'attribute',
-            name: 'clearable',
-            value: true
-          },
-          {
-            type: 'attribute',
-            name: 'multiple',
-            value: true
-          },
-          {
-            type: 'slot',
-            name: 'default',
-            value:
-              '<sd-option value="option-1">Option 1</sd-option><sd-option value="option-2">Option 2</sd-option><sd-option value="option-3">Option 3</sd-option>'
-          }
-        ],
+        constants: [clearableConstant, multipleConstant, defaultSlotConstant],
         args: null
       })}
     </div>`;
@@ -277,14 +263,7 @@ export const Sizes = {
             name: 'size'
           }
         },
-        constants: [
-          {
-            type: 'slot',
-            name: 'default',
-            value:
-              '<sd-option value="option-1">Option 1</sd-option><sd-option value="option-2">Option 2</sd-option><sd-option value="option-3">Option 3</sd-option>'
-          }
-        ],
+        constants: [defaultSlotConstant],
         args: null
       })}
     </div>`;
@@ -314,13 +293,7 @@ export const Placement = {
             values: ['bottom', 'top']
           }
         },
-        constants: [
-          {
-            type: 'slot',
-            name: 'default',
-            value: '<sd-option value="option-1">Option 1</sd-option><sd-option value="option-2">Option 2</sd-option>'
-          }
-        ],
+        constants: [defaultSlotConstant2],
         args: null
       })}
     </div>`;
@@ -365,29 +338,23 @@ export const Validation = {
     }
   },
   render: (args: any) => {
+    const sharedConstants: ConstantDefinition[] = [
+      { type: 'attribute', name: 'form', value: 'testForm' },
+      { type: 'attribute', name: 'clearable', value: true },
+      { type: 'attribute', name: 'required', value: true },
+      { type: 'attribute', name: 'placeholder', value: '.*' },
+      { type: 'attribute', name: 'help-text', value: 'selection must be made' },
+      defaultSlotConstant2
+    ];
+
     return html`
       <form action="" method="get" id="testForm" name="testForm" class="w-[370px]">
         <div class="mb-2">
           ${generateTemplate({
             constants: [
+              ...sharedConstants,
               { type: 'attribute', name: 'label', value: 'Required' },
-              { type: 'attribute', name: 'name', value: 'required field' },
-              { type: 'attribute', name: 'placeholder', value: '.*' },
-              { type: 'attribute', name: 'help-text', value: 'input must be filled' },
-              { type: 'attribute', name: 'form', value: 'testForm' },
-              { type: 'attribute', name: 'clearable', value: true },
-              { type: 'attribute', name: 'required', value: true },
-              {
-                type: 'slot',
-                name: 'prefix',
-                value: '<sd-icon slot="prefix" library="global-resources" name="system/picture"></sd-icon>'
-              },
-              {
-                type: 'slot',
-                name: 'default',
-                value:
-                  '<sd-option value="option-1">Option 1</sd-option><sd-option value="option-2">Option 2</sd-option>'
-              }
+              { type: 'attribute', name: 'name', value: 'required field' }
             ],
             args: null
           })}
@@ -395,52 +362,22 @@ export const Validation = {
         <div class="mb-2">
           ${generateTemplate({
             constants: [
+              ...sharedConstants,
               { type: 'attribute', name: 'label', value: 'Required Multiple' },
               { type: 'attribute', name: 'name', value: 'required multiple field' },
-              { type: 'attribute', name: 'placeholder', value: '.*' },
-              { type: 'attribute', name: 'help-text', value: 'input must be filled' },
-              { type: 'attribute', name: 'form', value: 'testForm' },
-              { type: 'attribute', name: 'clearable', value: true },
-              { type: 'attribute', name: 'required', value: true },
-              { type: 'attribute', name: 'multiple', value: true },
-              {
-                type: 'slot',
-                name: 'prefix',
-                value: '<sd-icon slot="prefix" library="global-resources" name="system/picture"></sd-icon>'
-              },
-              {
-                type: 'slot',
-                name: 'default',
-                value:
-                  '<sd-option value="option-1">Option 1</sd-option><sd-option value="option-2">Option 2</sd-option>'
-              }
+              multipleConstant
             ],
             args: null
           })}
         </div>
-        <div class="mb-2">
+        <div class="mb-4">
           ${generateTemplate({
             constants: [
+              ...sharedConstants,
               { type: 'attribute', name: 'label', value: 'Required Multiple Checklist' },
               { type: 'attribute', name: 'name', value: 'required multiple checklist field' },
-              { type: 'attribute', name: 'placeholder', value: '.*' },
-              { type: 'attribute', name: 'help-text', value: 'input must be filled' },
-              { type: 'attribute', name: 'form', value: 'testForm' },
-              { type: 'attribute', name: 'clearable', value: true },
-              { type: 'attribute', name: 'required', value: true },
-              { type: 'attribute', name: 'multiple', value: true },
-              { type: 'attribute', name: 'checklist', value: true },
-              {
-                type: 'slot',
-                name: 'prefix',
-                value: '<sd-icon slot="prefix" library="global-resources" name="system/picture"></sd-icon>'
-              },
-              {
-                type: 'slot',
-                name: 'default',
-                value:
-                  '<sd-option value="option-1">Option 1</sd-option><sd-option value="option-2">Option 2</sd-option>'
-              }
+              multipleConstant,
+              { type: 'attribute', name: 'checklist', value: true }
             ],
             args: null
           })}
@@ -499,20 +436,11 @@ export const Slots = {
           },
           constants: [
             { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' },
-            { type: 'attribute', name: 'clearable', value: true },
-
-            { type: 'attribute', name: 'label', value: 'Label' },
-            { type: 'attribute', name: 'help-text', value: 'help-text' },
-            {
-              type: 'slot',
-              name: 'prefix',
-              value: '<sd-icon slot="prefix" library="global-resources" name="system/picture"></sd-icon>'
-            },
-            {
-              type: 'slot',
-              name: 'default',
-              value: '<sd-option value="option-1">Option 1</sd-option><sd-option value="option-2">Option 2</sd-option>'
-            }
+            clearableConstant,
+            labelConstant,
+            helpTextConstant,
+            leftSlotConstant,
+            defaultSlotConstant2
           ],
           args
         })
@@ -580,17 +508,13 @@ export const Parts = {
         }
       },
       constants: [
-        { type: 'attribute', name: 'multiple', value: true },
         { type: 'attribute', name: 'checklist', value: true },
         { type: 'attribute', name: 'value', value: 'option-1 option-2' },
-        { type: 'attribute', name: 'clearable', value: true },
-        { type: 'attribute', name: 'label', value: 'Label' },
-        { type: 'attribute', name: 'help-text', value: 'help-text' },
-        {
-          type: 'slot',
-          name: 'prefix',
-          value: '<sd-icon slot="prefix" library="global-resources" name="system/picture"></sd-icon>'
-        }
+        clearableConstant,
+        helpTextConstant,
+        labelConstant,
+        leftSlotConstant,
+        multipleConstant
       ],
       args
     });
@@ -603,7 +527,33 @@ export const Parts = {
 
 export const Mouseless = {
   render: (args: any) => {
-    return html`<div class="mouseless w-[250px]">${generateTemplate({ args })}</div>`;
+    const sharedConstants: ConstantDefinition[] = [
+      {
+        type: 'slot',
+        name: 'default',
+        value: '<sd-option value="option-1">Option 1</sd-option><sd-option value="option-2">Option 2</sd-option>'
+      }
+    ];
+
+    return html`<div class="mouseless h-[260px] w-full flex gap-4">
+      ${generateTemplate({
+        constants: [...sharedConstants, { type: 'attribute', name: 'label', value: 'Default' }],
+        args: null
+      })}
+      ${generateTemplate({
+        constants: [...sharedConstants, multipleConstant, { type: 'attribute', name: 'label', value: 'Multiple' }],
+        args: null
+      })}
+      ${generateTemplate({
+        constants: [
+          ...sharedConstants,
+          multipleConstant,
+          { type: 'attribute', name: 'checklist', value: true },
+          { type: 'attribute', name: 'label', value: 'Checklist' }
+        ],
+        args: null
+      })}
+    </div>`;
   },
 
   play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
@@ -617,19 +567,22 @@ export const Mouseless = {
  * Dev: Temporary development story
  */
 
-export const Dev = {
-  render: (args: any) => {
-    return html`<div>
-      <sd-select>
-        <sd-option value="1">Option 1</sd-option>
-        <sd-option value="2">Option 2</sd-option>
-        <sd-option value="3">Option 3</sd-option>
-      </sd-select>
-      <sd-select>
-        <sd-option value="1">Option 1</sd-option>
-        <sd-option value="2">Option 2</sd-option>
-        <sd-option value="3">Option 3</sd-option>
-      </sd-select>
-    </div>`;
-  }
-};
+// export const Dev = {
+//   render: (args: any) => {
+//     return html`<div>
+//       <form action="" method="get" id="testForm" name="testForm" class="w-[370px]">
+//         <sd-select required form="testForm" name="requiredField">
+//           <sd-option value="1">Option 1</sd-option>
+//           <sd-option value="2">Option 2</sd-option>
+//           <sd-option value="3">Option 3</sd-option>
+//         </sd-select>
+//         <sd-select required form="testForm" name="requiredField2">
+//           <sd-option value="1">Option 1</sd-option>
+//           <sd-option value="2">Option 2</sd-option>
+//           <sd-option value="3">Option 3</sd-option>
+//         </sd-select>
+//         <sd-button type="submit">Submit</sd-button>
+//       </form>
+//     </div>`;
+//   }
+// };
