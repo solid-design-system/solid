@@ -41,7 +41,7 @@ export const Default = {
 };
 
 /**
- * Teaser in all possible combinations of `variant` and `inset`. Note that in case the variant is `white border-neutral-300`, the inset is always `true`.
+ * Teaser in all possible combinations of `variant` and `inset`. Note that in case the variant is `white border-neutral-400`, the inset is always `true`.
  */
 
 export const VariantAndInset = {
@@ -203,7 +203,7 @@ export const DistributionRatio = {
         {
           type: 'attribute',
           name: 'variant',
-          value: 'white border-neutral-300'
+          value: 'white border-neutral-400'
         }
       ]
     });
@@ -231,7 +231,7 @@ export const Breakpoint = {
         {
           type: 'attribute',
           name: 'variant',
-          value: 'white border-neutral-300'
+          value: 'white border-neutral-400'
         }
       ]
     });
@@ -274,7 +274,7 @@ export const Headline = {
             {
               type: 'attribute',
               name: 'variant',
-              value: 'white border-neutral-300'
+              value: 'white border-neutral-400'
             }
           ]
         });
@@ -341,7 +341,7 @@ export const Slots = {
             {
               type: 'attribute',
               name: 'variant',
-              value: 'white border-neutral-300'
+              value: 'white border-neutral-400'
             }
           ]
         })
@@ -376,7 +376,7 @@ export const Parts = {
         {
           type: 'attribute',
           name: 'variant',
-          value: 'white border-neutral-300'
+          value: 'white border-neutral-400'
         }
       ]
     });

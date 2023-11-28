@@ -1,3 +1,10 @@
+# [@solid-design-system/tokens-v1.3.0](https://github.com/solid-design-system/solid/compare/tokens/1.2.2...tokens/1.3.0) (2023-11-23)
+
+
+### Features
+
+* ✨ update tokens ([#591](https://github.com/solid-design-system/solid/issues/591)) ([2bfbf3e](https://github.com/solid-design-system/solid/commit/2bfbf3efe455faaa2365fef01b252ef507b450ca))
+
 # [@solid-design-system/tokens-v1.2.2](https://github.com/solid-design-system/solid/compare/tokens/1.2.1...tokens/1.2.2) (2023-11-17)
 
 

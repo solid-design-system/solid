@@ -32,12 +32,12 @@ import type { PropertyValues } from 'lit';
 @customElement('sd-teaser')
 export default class SdTeaser extends SolidElement {
   @property({ reflect: true })
-  variant: 'white' | 'white border-neutral-300' | 'neutral-100' | 'primary' | 'primary-100' = 'white';
+  variant: 'white' | 'white border-neutral-400' | 'neutral-100' | 'primary' | 'primary-100' = 'white';
 
   /** Breakpoint where the teaser switches from `vertical` to `horizontal`. `0` is always `horizontal`, `9999` is always `vertical`. */
   @property({ reflect: true, type: Number }) breakpoint = 448;
 
-  /** The teaser's inner padding. This is always set in `white border-neutral-300`. */
+  /** The teaser's inner padding. This is always set in `white border-neutral-400`. */
   @property({ type: Boolean, reflect: true }) inset = false;
 
   @query('[part="base"]') teaser: HTMLElement;
@@ -79,7 +79,7 @@ export default class SdTeaser extends SolidElement {
   }
 
   render() {
-    const inset = this.variant === 'white border-neutral-300' || this.inset;
+    const inset = this.variant === 'white border-neutral-400' || this.inset;
 
     const slots = {
       'teaser-has-default': this.hasSlotController.test('[default]'),
@@ -94,7 +94,7 @@ export default class SdTeaser extends SolidElement {
           'flex',
           {
             white: 'bg-white',
-            'white border-neutral-300': 'bg-white border border-neutral-300',
+            'white border-neutral-400': 'bg-white border border-neutral-400',
             'neutral-100': 'bg-neutral-100',
             primary: 'bg-primary text-white',
             'primary-100': 'bg-primary-100'

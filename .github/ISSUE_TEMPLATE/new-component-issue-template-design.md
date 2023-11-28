@@ -2,20 +2,17 @@
 name: New Component Issue Design
 about: New Component Issue Template for Design
 title: 'feat: ✨ add sd-[COMPONENT_NAME]'
-labels: '🎨 needs design'
+labels: '🎨 figma'
 assignees: ''
 
 ---
 
 ## User Story
-As a [PERSONA] of the Solid Design System, I would like to [REQUIRE], as well as [FURTHER_REQUIREMENT],
-so that [PRODUCT_VALUE], and [FURTHER_PRODUCT_VALUE].
+As a [PERSONA] of the Solid Design System, I would like to [REQUIRE], as well as [FURTHER_REQUIREMENT], so that [PRODUCT_VALUE], and [FURTHER_PRODUCT_VALUE].
 
-## API
+## Documentation
 [LINK TO FIGMA]
 ## Hand-off
-[LINK TO FIGMA]
-## Documentation
 [LINK TO FIGMA]
 
 ### Component name and version number:
