@@ -19,7 +19,19 @@ export default {
         '<sd-option value="option-1">Option 1</sd-option><sd-option value="option-2">Option 2</sd-option><sd-option value="option-3">Option 3</sd-option>'
     }
   ]),
-  argTypes,
+  argTypes: {
+    ...argTypes,
+    'value-attr': {
+      name: 'value',
+      table: {
+        category: 'attributes',
+        defaultValue: ''
+      },
+      description:
+        'The current value of the select, submitted as a name/value pair with form data. When `multiple` is enabled, the value attribute will be a space-delimited list of values based on the options selected, and the value property will be an array. **For this reason, values must not contain spaces.**',
+      control: 'text'
+    }
+  },
   parameters: {
     ...parameters,
     design: {
