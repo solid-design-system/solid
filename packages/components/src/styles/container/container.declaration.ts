@@ -5,7 +5,7 @@ export default {
   summary:
     'Container lets users delimit and highlight a piece of content. The user has no interaction with it, it is merely a visual element that influences the flow of the page.',
   status: 'stable',
-  since: '1.29.0',
+  since: '1.30.0',
   attributes: [
     {
       name: 'sd-container--variant-...',
