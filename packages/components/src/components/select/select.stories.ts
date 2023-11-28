@@ -53,18 +53,28 @@ export const Default = {
 };
 
 /**
- * Use the `label` attribute to give the select an accessible label. For labels that contain HTML, use the `label` slot instead.
+ * Use the `label` attribute to give the select an accessible label. For labels that contain HTML, use the `label` slot instead. Setting `required` to `true` will append an asterisk to the label.
  */
 
-export const Label = {
+export const Labels = {
   parameters: {
     controls: {
       exclude: ['label']
     }
   },
   render: (args: any) => {
-    return html`<div class="h-[260px] w-[420px]">
+    return html`<div class="h-[340px]">
       ${generateTemplate({
+        options: {
+          classes: 'w-full'
+        },
+        axis: {
+          x: {
+            type: 'attribute',
+            name: 'required',
+            values: [false, true]
+          }
+        },
         constants: [
           {
             type: 'attribute',

@@ -173,6 +173,9 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
    */
   @property({ reflect: true }) form = '';
 
+  /** Set to true to show built-in error / success styles based on the required attribute. This can, for example, be conditionally activated with an `isSubmitted` state in the context of a form. */
+  @property({ type: Boolean, reflect: true }) enableValidation = false;
+
   /** The select's required attribute. */
   @property({ type: Boolean, reflect: true }) required = false;
 
@@ -752,9 +755,8 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     const hasLabel = this.label ? true : !!slots['label'];
     const hasHelpText = this.helpText ? true : !!slots['helpText'];
     const hasClearIcon = this.clearable && !this.disabled && this.value.length > 0;
-    const isPlaceholderVisible = this.placeholder && this.value.length === 0;
-    // TODO: Refine
-    const hasValidationAttr = this.required;
+
+    const hasValidationAttr = this.required && this.enableValidation;
     const isInvalid = hasValidationAttr && !this.checkValidity();
     const isValid = hasValidationAttr && this.checkValidity();
 
@@ -819,7 +821,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
           aria-hidden=${hasLabel ? 'false' : 'true'}
           @click=${this.handleLabelClick}
         >
-          <slot name="label">${this.label}</slot>
+          <slot name="label">${this.label}${this.required ? '*' : ''}</slot>
         </label>
 
         <div part="form-control-input" class=${cx('relative w-full bg-white')}>
