@@ -334,7 +334,7 @@ export const GroupingOptions = {
 export const Validation = {
   parameters: {
     controls: {
-      include: ['clearable', 'disabled']
+      include: []
     }
   },
   render: (args: any) => {
@@ -526,6 +526,11 @@ export const Parts = {
  */
 
 export const Mouseless = {
+  parameters: {
+    controls: {
+      include: []
+    }
+  },
   render: (args: any) => {
     const sharedConstants: ConstantDefinition[] = [
       {
@@ -562,27 +567,3 @@ export const Mouseless = {
     el?.shadowRoot?.querySelector('input')!.focus();
   }
 };
-
-/**
- * Dev: Temporary development story
- */
-
-// export const Dev = {
-//   render: (args: any) => {
-//     return html`<div>
-//       <form action="" method="get" id="testForm" name="testForm" class="w-[370px]">
-//         <sd-select required form="testForm" name="requiredField">
-//           <sd-option value="1">Option 1</sd-option>
-//           <sd-option value="2">Option 2</sd-option>
-//           <sd-option value="3">Option 3</sd-option>
-//         </sd-select>
-//         <sd-select required form="testForm" name="requiredField2">
-//           <sd-option value="1">Option 1</sd-option>
-//           <sd-option value="2">Option 2</sd-option>
-//           <sd-option value="3">Option 3</sd-option>
-//         </sd-select>
-//         <sd-button type="submit">Submit</sd-button>
-//       </form>
-//     </div>`;
-//   }
-// };
