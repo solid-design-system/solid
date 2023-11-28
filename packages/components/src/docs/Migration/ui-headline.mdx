@@ -1,199 +1,49 @@
 # Migration Guide: From `ui-headline` to `sd-headline`
 
-The new `sd-headline` is designed to replace the `ui-headline`. Instead of providing the headline as a component, the `sd-headline` is a set of CSS styles that can be customized by using utility classes following BEM naming convention.
+The new `sd-headline` is designed to replace the `ui-headline`. Rather than offering a complex component structure, they primarily focus on providing CSS styles for heading elements.
 
 ## 💾 Slots
-
-### ✨ New Slots
-
-#### [1st_new_slot]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-#### [2nd_new_slot]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-### 🔀 Updated Slots
-
-#### [1st_updated_slot]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-#### [2nd_updated_slot]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
 
 ### ❌ Removed Slots
 
 The following slots have been removed from the new sd-headline component:
 
-1. [1st_removed_slot]
-2. [2nd_removed_slot]
+1. [default]
+
+<hr />
+
+## 🎨 CSS Classes
+
+### ✨ New CSS Classes
+
+#### [sd-headline]
+
+The `sd-headline` class is intended for use with heading elements (e.g., `h1`, `h2`, etc.) which are vital for displaying content hierarchy and to improve accessibility.
+
+#### [sd-headline--size-...]
+
+The `sd-headline--size-...` classes define the size of the headline. The options (excluding the default value) include `3xl`, `xl`, `lg` and `base`.
+
+#### [sd-headline--inverted]
+
+This class inverts the headline text.
+
+#### [sd-headline--inline]
+
+This class sets inline behavior. It should be used exclusively when an sd-icon or other component is present.
 
 <hr />
 
 ## ⚙️ Attributes
 
-### ✨ New Attributes
-
-#### [1st_new_attribute]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-#### [2nd_new_attribute]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-### 🔀 Updated Attributes
-
-#### [1st_updated_attribute]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-#### [2nd_updated_attribute]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
 ### ❌ Removed Attributes
 
 The following attributes have been removed from the new sd-headline component:
 
-1. [1st_removed_attribute]
-2. [2nd_removed_attribute]
+1. [conversion]
+2. [icon]
+3. [icon-variant]
+4. [is-headline-centered]
+5. [level]
 
 <hr />
-
-## ✍️ CSS Variables
-
-### ✨ New CSS Variables
-
-#### [1st_new_CSS_variable]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-#### [2nd_new_CSS_variable]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-### 🔀 Updated CSS variables
-
-#### [1st_updated_CSS_variable]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-#### [2nd_updated_CSS_variable]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-### ❌ Removed CSS variables
-
-The following CSS variables have been removed from the new sd-headline component:
-
-1. [1st_removed_CSS_variable]
-2. [2nd_removed_CSS_variable]
-
-<hr />
-
-## 🥳 Events
-
-### ✨ New Events
-
-#### [1st_new_event]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-#### [2nd_new_event]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-### 🔄 Updated Events
-
-#### [1st_updated_event]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-#### [2nd_updated_event]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-### ❌ Removed Events:
-
-The following events have been removed from the new sd-headline component:
-
-1. [1st_removed_event]
-2. [2nd_removed_event]
-
-<hr />
-
-## 🦻 Event Listeners
-
-### ✨ New Event Listeners
-
-#### [1st_new_event_listener]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-#### [2nd_new_event_listener]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-### 🔄 Updated Event Listeners
-
-#### [1st_updated_event_listener]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-#### [2nd_updated_event_listener]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-### ❌ Removed Event Listeners:
-
-The following event listeners have been removed from the new sd-headline component:
-
-1. [1st_removed_event_listeners]
-2. [2nd_removed_event_listeners]
-
-<hr />
-
-## 🧪 Methods
-
-### ✨ New Methods
-
-#### [1st_new_method]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-#### [2nd_new_method]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-### 🔄 Updated Methods
-
-#### [1st_updated_method]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-#### [2nd_updated_method]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-### ❌ Removed Methods:
-
-The following methods have been removed from the new sd-headline component:
-
-1. [1st_removed_method]
-2. [2nd_removed_method]
-
-<hr />
-
-## 💪 Additional Changes
-
-### [1st_additional_change]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-### [2nd_additional_change]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
