@@ -58,8 +58,8 @@ export const Labels = {
 export const HelpText = {
   name: 'Help Text',
   args: overrideArgs([
-    { type: 'attribute', name: 'label', value: 'A short story' },
-    { type: 'attribute', name: 'help-text', value: 'A funny little story about web components.' }
+    { type: 'attribute', name: 'label', value: 'Label' },
+    { type: 'attribute', name: 'help-text', value: 'Help text' }
   ]),
   render: (args: any) => {
     return html`
@@ -77,7 +77,10 @@ export const HelpText = {
  */
 
 export const Placeholders = {
-  args: overrideArgs([{ type: 'attribute', name: 'placeholder', value: 'Type something' }]),
+  args: overrideArgs([
+    { type: 'attribute', name: 'label', value: 'Label' },
+    { type: 'attribute', name: 'placeholder', value: 'Placeholder' }
+  ]),
   render: (args: any) => {
     return html`
       <div class="w-[250px]">
@@ -163,31 +166,6 @@ export const Sizes = {
       },
       args
     });
-  }
-};
-
-export const Types = {
-  parameters: {
-    controls: {
-      include: ['size', 'disabled', 'readonly']
-    }
-  },
-  render: (args: any) => {
-    return html`
-      <div class="w-[370px]">
-        <div class="mb-2">
-          ${generateTemplate({
-            constants: [
-              { type: 'attribute', name: 'type', value: 'text' },
-              { type: 'attribute', name: 'label', value: 'Text' },
-              { type: 'attribute', name: 'placeholder', value: '.*' },
-              { type: 'attribute', name: 'help-text', value: 'default type' }
-            ],
-            args
-          })}
-        </div>
-      </div>
-    `;
   }
 };
 
