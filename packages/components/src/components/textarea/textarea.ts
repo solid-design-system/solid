@@ -354,7 +354,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
           'form-control text-left',
           hasLabel && 'form-control--has-label',
           hasHelpText && 'form-control--has-help-text',
-          this.disabled && 'pointer-events-none'
+          this.disabled && 'pointer-events-none cursor-not-allowed'
         )}
       >
         <label
