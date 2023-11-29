@@ -251,11 +251,10 @@ You can take a look at tests on Github. Users might be required to log in to [Ch
 
 Workflow:
 
-1. To deploy a feature branch, trigger the 'sync-to-azure' workflow [manually](https://docs.github.com/en/actions/using-workflows/manually-running-a-workflow), with your feature branch as workflow target. 
+1. To deploy a feature branch, trigger the 'sync-to-azure' workflow [manually](https://docs.github.com/en/actions/using-workflows/manually-running-a-workflow), with your feature branch as workflow target.
 2. On Azure, the 'deploy-to-cdn.yml' pipeline is automatically triggered, following a similar procedure as described above. The only difference is that it uses the 'push-to-storage-feature.template.yml' template and deploys the code into a folder with the name of the branch. The branch name is manipulated to replace all '/' with '\_' to ensure a valid folder name.
 
 > Note: There is no differentiation between deployment type for feature branches. Therewith the type `code` will be used for all feature branch deployments and updates.
-
 
 ### Docs Deployment
 
