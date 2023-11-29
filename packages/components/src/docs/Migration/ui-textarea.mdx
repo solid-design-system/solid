@@ -1,0 +1,126 @@
+# Migration Guide: From `ui-textarea` to `sd-textarea`
+
+The new `sd-textarea` is designed to replace the `ui-textarea`. Instead of mainly providing content via attributes, the `sd-textarea` component uses slots to allow for more flexibility and customization.
+
+## 💾 Slots
+
+### ✨ New Slots
+
+#### [label]
+
+The textarea's label. Alternatively, you can use the `label` attribute
+
+#### [help-text]
+
+Text that describes how to use the input. Alternatively, you can use the `help-text` attribute.
+
+## ⚙️ Attributes
+
+### ✨ New Attributes
+
+#### [title]
+
+An empty title prevents browser validation tooltips from appearing on hover
+
+#### [value]
+
+The current value of the textarea, submitted as a name/value pair with form data.
+
+#### [size]
+
+The textarea's size. Possible values are `lg`, `md`, and `sm`, default is `lg`.
+
+#### [resize]
+
+Controls how the textarea can be resized. Possible values are `none` and `vertical`, default is `vertical`.
+
+#### [readonly]
+
+Makes the textarea readonly.
+
+#### [form]
+
+By default, form controls are associated with the nearest containing `<form>` element. This attribute allows you
+to place the form control outside of a form and associate it with the form that has this `id`. The form must be in
+the same document or shadow root for this to work.
+
+#### [minlength]
+
+The minimum length of input that will be considered valid.
+
+#### [autocapitalize]
+
+Controls whether and how text input is automatically capitalized as it is entered by the user. Possible values are `off`, `none`, `on`, `sentences`, `words`, `characters`.
+
+#### [autocorrect]
+
+Indicates whether the browser's autocorrect feature is on or off. Possible values are `off`, `on`.
+
+#### [autocomplete]
+
+Specifies what permission the browser has to provide assistance in filling out form field values. Refer to
+[this page on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete) for available values.
+
+#### [autofocus]
+
+Indicates that the input should receive focus on page load.
+
+#### [enterkeyhint]
+
+Used to customize the label or icon of the Enter key on virtual keyboards. Possible values are `enter`, `done`, `go`, `next`, `previous`, `search`, `send`.
+
+#### [spellcheck]
+
+Enables spell checking on the textarea.
+
+#### [inputmode]
+
+Tells the browser what type of data will be entered by the user, allowing it to display the appropriate virtual
+keyboard on supportive devices. Possible values are `none` and `text`, default is `text`.
+
+#### [defaultValue]
+
+The default value of the form control. Primarily used for resetting the form control.
+
+### 🔀 Updated Attributes
+
+#### [hint]
+
+The `hint` attribute has been renamed to `help-text`.
+
+### ❌ Removed Attributes
+
+The following attributes have been removed from the new sd-textarea component:
+
+1. [message]
+2. [error]
+3. [success]
+4. [fieldId]
+
+<hr />
+
+## 🥳 Events
+
+### ✨ New Events
+
+#### [sd-blur]
+
+Emitted when the control loses focus.
+
+#### [sd-change]
+
+Emitted when an alteration to the control's value is committed by the user.
+
+#### [sd-focus]
+
+Emitted when the control gains focus.
+
+#### [sd-invalid]
+
+Emitted when the form control has been checked for validity and its constraints aren't satisfied.
+
+### 🔄 Updated Events
+
+#### [sd-input]
+
+`uiInputChange` has been renamed to `sd-input`.

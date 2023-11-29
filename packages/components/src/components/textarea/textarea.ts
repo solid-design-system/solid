@@ -44,6 +44,8 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
   @query('.textarea__control') textarea: HTMLTextAreaElement;
 
   @state() private hasFocus = false;
+
+  /** An empty title prevents browser validation tooltips from appearing on hover */
   @property() title = ''; // make reactive to pass through
 
   /** The name of the textarea, submitted as a name/value pair with form data. */
@@ -125,7 +127,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
    * Tells the browser what type of data will be entered by the user, allowing it to display the appropriate virtual
    * keyboard on supportive devices.
    */
-  @property() inputmode: 'none' | 'text';
+  @property() inputmode: 'none' | 'text' = 'text';
 
   /** The default value of the form control. Primarily used for resetting the form control. */
   @defaultValue() defaultValue = '';
@@ -226,6 +228,20 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
   /** Selects all the text in the textarea. */
   select() {
     this.textarea.select();
+  }
+
+  /** Gets or sets the textarea's scroll position. */
+  scrollPosition(position?: { top?: number; left?: number }): { top: number; left: number } | undefined {
+    if (position) {
+      if (typeof position.top === 'number') this.textarea.scrollTop = position.top;
+      if (typeof position.left === 'number') this.textarea.scrollLeft = position.left;
+      return undefined;
+    }
+
+    return {
+      top: this.textarea.scrollTop,
+      left: this.textarea.scrollTop
+    };
   }
 
   /** Sets the start and end positions of the text selection (0-based). */
