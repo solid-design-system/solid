@@ -554,7 +554,7 @@ export const Mouseless = {
           ...sharedConstants,
           multipleConstant,
           { type: 'attribute', name: 'checklist', value: true },
-          { type: 'attribute', name: 'label', value: 'Checklist' }
+          { type: 'attribute', name: 'label', value: 'Multiple Checklist' }
         ],
         args: null
       })}
@@ -567,3 +567,51 @@ export const Mouseless = {
     el?.shadowRoot?.querySelector('input')!.focus();
   }
 };
+
+/**
+ * DEV: debug form behavior
+ */
+
+// export const Dev = {
+//   parameters: {
+//     controls: {
+//       include: []
+//     }
+//   },
+//   render: (args: any) => {
+//     return html`
+//       <form class="[&>*]:mb-4" action="" method="get" id="testForm" name="testForm">
+//         <input class="border w-full" name="field1" form="testForm" required />
+//         <sd-input name="field2" form="testForm" required></sd-input>
+//         <sd-select required name="field3" form="testForm"><sd-option value="option-1">Option 1</sd-option></sd-select>
+//         <sd-button
+//           @click=${() => {
+//             const form: HTMLFormElement = document.querySelector('#testForm')!;
+
+//             console.error('CLICKED SUBMIT');
+//             console.log(form.checkValidity());
+//           }}
+//           type="submit"
+//           >Submit</sd-button
+//         >
+//         <sd-button
+//           @click=${() => {
+//             const sdSelect = document.querySelector('sd-select');
+//             sdSelect?.focus();
+//           }}
+//           >Focus</sd-button
+//         >
+//       </form>
+//       <script>
+//         function handleSubmit(event) {
+//           const form = document.querySelector('#testForm');
+
+//           console.error('HANDLE SUBMIT');
+//           console.log(form.checkValidity());
+//         }
+
+//         document.querySelector('#testForm').addEventListener('submit', handleSubmit);
+//       </script>
+//     `;
+//   }
+// };

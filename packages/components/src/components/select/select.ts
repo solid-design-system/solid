@@ -720,7 +720,6 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
 
   /** Sets focus on the control. */
   focus(options?: FocusOptions) {
-    console.log('focus');
     this.displayInput.focus(options);
   }
 
