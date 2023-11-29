@@ -127,7 +127,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
    * Tells the browser what type of data will be entered by the user, allowing it to display the appropriate virtual
    * keyboard on supportive devices.
    */
-  @property() inputmode: 'none' | 'text' = 'text';
+  @property() inputmode: 'none' | 'text';
 
   /** The default value of the form control. Primarily used for resetting the form control. */
   @defaultValue() defaultValue = '';
