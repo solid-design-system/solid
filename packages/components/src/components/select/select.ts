@@ -720,6 +720,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
 
   /** Sets focus on the control. */
   focus(options?: FocusOptions) {
+    console.log('focus');
     this.displayInput.focus(options);
   }
 
@@ -862,6 +863,8 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                   ></slot>`
                 : ''}
               <input
+                name=${this.name}
+                form=${this.form}
                 part="display-input"
                 class=${cx(
                   'appearance-none outline-none flex-grow bg-transparent',
@@ -894,7 +897,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 : ''}
 
               <input
-                class="value-input hidden"
+                class="value-input absolute top-0 left-0 w-full h-full opacity-0 -z-1"
                 type="text"
                 ?disabled=${this.disabled}
                 ?required=${this.required}
