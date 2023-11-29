@@ -62,7 +62,7 @@
 
 - **User Story**: As a developer, I want to be able to use the Solid Design System without having to ask for help.
 - **Actions**:
-  - Provide stories for props, slots etc. in Storybook. [Explore components and interact with them](https://solid-design-system.fe.union-investment.de/x.x.x/storybook/).
+  - Provide stories for props, slots etc. in Storybook
   - Props, events, slots, parts and CSS Custom Properties should be documented in the component's source code using [JSDoc](https://jsdoc.app/). Make sure to include a description, type, and default value for each.
   - Use `.slot` and the additional utility classes classes defined in `packages/components/.storybook/preview-head.html` to mock the slot element used in Figma. These classes are integrated into the Storybook header and should exclusively be used in Storybook. Check out the 'Slot' stories for components like 'sd-dropdown' to see how these classes are used.
 
@@ -226,7 +226,11 @@ You can take a look at tests on Github. Users might be required to log in to [Ch
 2. Once the release workflow is completed, it triggers the 'sync-to-azure' workflow. This workflow ensures synchronization between the main branch on GitHub and the main branch in the Azure DevOps repository.
 3. On Azure, the 'deploy-to-cdn.yml' pipeline is automatically triggered. This pipeline deploys the code and Storybook to the SDS CDN.
 
-> Note: The pipeline checks the last commit and sets one of 3 possible deployment type. This step ensures that a new version is deployed only when there is a new release and only the docs are deployed if there are docs-only changes. Otherwise, it would overwrite the current version with new code. The 3 types are `code`: This is the default deployment type and deploys the code and Storybook to the CDN, `docs`: This type is set when the last commit message starts with the word 'docs:' and deploys only the Storybook to the CDN and `none`: This type is set when the last commit message starts with anything else and skips the deployment to the CDN.
+> Note: The pipeline checks the last commit and sets one of 3 possible deployment type. This step ensures that a new version is deployed only when there is a new release and only the docs are deployed if there are docs-only changes. Otherwise, it would overwrite the current version with new code. The 3 types are:
+>
+> - `code`: This type is set when the last commit message starts with `chore(release/components)` it deploys to the CDN
+> - `docs`: This type is set when the last commit message starts with 'docs:' and deploys only the Storybook to the CDN
+> - `none`: This type is set when the last commit message starts with anything else and skips deployment to the CDN.
 
 4. For the main branch, the pipeline utilizes the 'push-to-storage-main.template.yml' template to deploy the code to the CDN. This template deploys the code into different folders to provide wildcard URLs:
 
@@ -247,13 +251,12 @@ You can take a look at tests on Github. Users might be required to log in to [Ch
 
 Workflow:
 
-1. To deploy a feature branch, trigger the 'sync-to-azure' workflow manually.
+1. To deploy a feature branch, trigger the 'sync-to-azure' workflow [manually](https://docs.github.com/en/actions/using-workflows/manually-running-a-workflow), with your feature branch as workflow target. 
 2. On Azure, the 'deploy-to-cdn.yml' pipeline is automatically triggered, following a similar procedure as described above. The only difference is that it uses the 'push-to-storage-feature.template.yml' template and deploys the code into a folder with the name of the branch. The branch name is manipulated to replace all '/' with '\_' to ensure a valid folder name.
 
 > Note: There is no differentiation between deployment type for feature branches. Therewith the type `code` will be used for all feature branch deployments and updates.
 
-See [CONTRIBUTING.md](../../../CONTRIBUTING.md#working-with-feature-branches) for more information on how to use a contributed feature with a feature branch deployment.
 
 ### Docs Deployment
 
-To perform a documentation-only deployment, make a commit on main with `docs: ` prefix. The pipelines will automatically recognize (by checking the commit message) that only documentation has been updated and therefore only deploys the Storybook folder to the current version folder on the CDN.
+To perform a documentation-only deployment, make a commit on main with `docs: ` prefix. See the `Note` under [Standard Release from Main Branch](#standard-release-from-main-branch) for more details.
