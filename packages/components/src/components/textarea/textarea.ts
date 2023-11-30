@@ -39,7 +39,6 @@ import type { SolidFormControl } from '../../internal/solid-element';
 export default class SdTextarea extends SolidElement implements SolidFormControl {
   private readonly formControlController = new FormControlController(this);
   private readonly hasSlotController = new HasSlotController(this, 'help-text', 'label');
-  private resizeObserver: ResizeObserver;
 
   @query('.textarea__control') textarea: HTMLTextAreaElement;
 
@@ -68,9 +67,6 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
 
   /** The number of rows to display by default. */
   @property({ type: Number }) rows = 4;
-
-  /** Controls how the textarea can be resized. */
-  @property() resize: 'none' | 'vertical' | 'auto' = 'vertical';
 
   /** Disables the textarea. */
   @property({ type: Boolean, reflect: true }) disabled = false;
@@ -144,11 +140,9 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
 
   connectedCallback() {
     super.connectedCallback();
-    this.resizeObserver = new ResizeObserver(() => this.setTextareaHeight());
 
     this.updateComplete.then(() => {
       this.setTextareaHeight();
-      this.resizeObserver.observe(this.textarea);
     });
   }
 
@@ -158,7 +152,6 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
 
   disconnectedCallback() {
     super.disconnectedCallback();
-    this.resizeObserver.unobserve(this.textarea);
   }
 
   private handleBlur() {
@@ -189,12 +182,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
   }
 
   private setTextareaHeight() {
-    if (this.resize === 'auto') {
-      this.textarea.style.height = 'auto';
-      this.textarea.style.height = `${this.textarea.scrollHeight}px`;
-    } else {
-      (this.textarea.style.height as string | undefined) = undefined;
-    }
+    (this.textarea.style.height as string | undefined) = undefined;
   }
 
   @watch('disabled', { waitUntilFirstUpdate: true })
@@ -374,7 +362,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
           <div
             part="base"
             class=${cx(
-              'textarea px-4 flex flex-row items-center rounded-default',
+              'textarea px-4 flex flex-row items-center rounded-default textarea--resize-none',
               this.size === 'sm' && 'textarea--small',
               this.size === 'md' && 'textarea--medium',
               this.size === 'lg' && 'textarea--large',
@@ -385,10 +373,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
               this.readonly && 'bg-neutral-100',
               isInvalid && 'form-control-input--invalid',
               textColor,
-              !this.value && 'textarea--empty',
-              this.resize === 'none' && 'textarea--resize-none',
-              this.resize === 'vertical' && 'textarea--resize-vertical',
-              this.resize === 'auto' && 'textarea--resize-auto'
+              !this.value && 'textarea--empty'
             )}
           >
             <textarea
@@ -456,16 +441,6 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
 
       .textarea--resize-none .textarea__control {
         resize: none;
-      }
-
-      .textarea--resize-vertical .textarea__control {
-        resize: vertical;
-      }
-
-      .textarea--resize-auto .textarea__control {
-        height: auto;
-        resize: none;
-        overflow-y: hidden;
       }
     `
   ];

@@ -29,46 +29,13 @@ export default {
  * This shows sd-textarea in its default state.
  */
 export const Default = {
-  render: (args: any) => {
-    return html`<div class="w-[250px]">${generateTemplate({ args })}</div> `;
-  }
-};
-
-/**
- * Use the `label` attribute to give the textarea an accessible label. For labels that contain HTML, use the `label` slot instead.
- */
-
-export const Labels = {
-  args: overrideArgs([{ type: 'attribute', name: 'label', value: 'Label' }]),
-  render: (args: any) => {
-    return html`
-      <div class="w-[250px]">
-        ${generateTemplate({
-          args
-        })}
-      </div>
-    `;
-  }
-};
-
-/**
- * Add descriptive help text to a textarea with the `help-text` attribute. For help texts that contain HTML, use the `help-text` slot instead.
- */
-
-export const HelpText = {
-  name: 'Help Text',
   args: overrideArgs([
     { type: 'attribute', name: 'label', value: 'Label' },
-    { type: 'attribute', name: 'help-text', value: 'Help text' }
+    { type: 'attribute', name: 'value', value: 'value' },
+    { type: 'attribute', name: 'help-text', value: 'help-text' },
   ]),
   render: (args: any) => {
-    return html`
-      <div class="w-[250px]">
-        ${generateTemplate({
-          args
-        })}
-      </div>
-    `;
+    return html`<div class="w-[250px]">${generateTemplate({ args })}</div> `;
   }
 };
 
@@ -79,7 +46,8 @@ export const HelpText = {
 export const Placeholders = {
   args: overrideArgs([
     { type: 'attribute', name: 'label', value: 'Label' },
-    { type: 'attribute', name: 'placeholder', value: 'Placeholder' }
+    { type: 'attribute', name: 'placeholder', value: 'Placeholder' },
+    { type: 'attribute', name: 'help-text', value: 'help-text' }
   ]),
   render: (args: any) => {
     return html`
@@ -337,6 +305,11 @@ export const Parts = {
  */
 
 export const Mouseless = {
+  args: overrideArgs([
+    { type: 'attribute', name: 'label', value: 'Label' },
+    { type: 'attribute', name: 'value', value: 'value' },
+    { type: 'attribute', name: 'help-text', value: 'help-text' }
+  ]),
   render: (args: any) => {
     return html`<div class="mouseless w-[250px]">${generateTemplate({ args })}</div>`;
   },
