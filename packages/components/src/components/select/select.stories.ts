@@ -10,37 +10,44 @@ const { generateTemplate } = storybookTemplate('sd-select');
 const { overrideArgs } = storybookHelpers('sd-select');
 
 // Reusable Constants
-const defaultSlotConstant: ConstantDefinition = {
+const twoOptionsConstant: ConstantDefinition = {
+  type: 'slot',
+  name: 'default',
+  value: '<sd-option value="option-1">Option 1</sd-option><sd-option value="option-2">Option 2</sd-option>'
+};
+const threeOptionsConstant: ConstantDefinition = {
   type: 'slot',
   name: 'default',
   value:
     '<sd-option value="option-1">Option 1</sd-option><sd-option value="option-2">Option 2</sd-option><sd-option value="option-3">Option 3</sd-option>'
 };
-
-const defaultSlotConstant2: ConstantDefinition = {
+const fiveOptionsConstant: ConstantDefinition = {
   type: 'slot',
   name: 'default',
-  value: '<sd-option value="option-1">Option 1</sd-option><sd-option value="option-2">Option 2</sd-option>'
+  value:
+    '<sd-option value="option-1">Option 1</sd-option><sd-option value="option-2">Option 2</sd-option><sd-option value="option-3">Option 3</sd-option><sd-option value="option-4">Option 4</sd-option><sd-option value="option-5">Option 5</sd-option>'
 };
-
 const leftSlotConstant: ConstantDefinition = {
   type: 'slot',
   name: 'prefix',
   value: '<sd-icon slot="prefix" library="global-resources" name="system/picture"></sd-icon>'
 };
-
 const clearableConstant: ConstantDefinition = { type: 'attribute', name: 'clearable', value: true };
-
 const multipleConstant: ConstantDefinition = { type: 'attribute', name: 'multiple', value: true };
-
 const helpTextConstant: ConstantDefinition = { type: 'attribute', name: 'help-text', value: 'help-text' };
-
 const labelConstant: ConstantDefinition = { type: 'attribute', name: 'label', value: 'Label' };
 
+// Stories
 export default {
   title: 'Components/sd-select',
   component: 'sd-select',
-  args: overrideArgs([defaultSlotConstant]),
+  args: overrideArgs([
+    clearableConstant,
+    threeOptionsConstant,
+    labelConstant,
+    { type: 'attribute', name: 'placeholder', value: 'Please Select' },
+    { type: 'attribute', name: 'max-options-visible', value: 3 }
+  ]),
   argTypes: {
     ...argTypes,
     'value-attr': {
@@ -70,174 +77,7 @@ export default {
 
 export const Default = {
   render: (args: any) => {
-    return html`<div class="h-[220px] w-[420px]">${generateTemplate({ args })}</div>`;
-  }
-};
-
-/**
- * Use the `label` attribute to give the select an accessible label. For labels that contain HTML, use the `label` slot instead.
- */
-
-export const Labels = {
-  parameters: {
-    controls: {
-      exclude: ['label']
-    }
-  },
-  render: (args: any) => {
-    return html`<div class="h-[260px] w-[420px]">
-      ${generateTemplate({
-        constants: [labelConstant],
-        args
-      })}
-    </div>`;
-  }
-};
-
-/**
- * Add descriptive help text to a select with the `help-text` attribute. For help texts that contain HTML, use the help-text slot instead.
- */
-
-export const HelpText = {
-  name: 'Help Text',
-  parameters: {
-    controls: {
-      exclude: ['help-text']
-    }
-  },
-  render: (args: any) => {
-    return html`<div class="h-[260px] w-[420px]">
-      ${generateTemplate({
-        constants: [
-          {
-            type: 'slot',
-            name: 'default',
-            value:
-              '<sd-option value="novice">Novice</sd-option><sd-option value="intermediate">Intermediate</sd-option><sd-option value="advanced">Advanced</sd-option>'
-          },
-          {
-            type: 'attribute',
-            name: 'help-text',
-            value: 'Please tell us your skill level.'
-          },
-          {
-            type: 'attribute',
-            name: 'label',
-            value: 'Experience'
-          }
-        ],
-        args
-      })}
-    </div>`;
-  }
-};
-
-/**
- * Use the `placeholder` attribute to add a placeholder.  We use the localized string "Please select" by default.
- */
-
-export const Placeholder = {
-  parameters: {
-    controls: {
-      include: ['placeholder']
-    }
-  },
-  render: (args: any) => {
-    return html`<div class="h-[220px] w-[420px]">
-      ${generateTemplate({
-        constants: [
-          {
-            type: 'attribute',
-            name: 'placeholder',
-            value: 'Placeholder'
-          }
-        ],
-        args
-      })}
-    </div>`;
-  }
-};
-
-/**
- * Use the `clearable` attribute to make the control clearable. The clear button only appears when an option is selected.
- */
-
-export const Clearable = {
-  parameters: {
-    controls: {
-      exclude: ['clearable']
-    }
-  },
-  render: (args: any) => {
-    return html`<div class="h-[220px] w-[420px]">
-      ${generateTemplate({
-        constants: [
-          {
-            type: 'attribute',
-            name: 'clearable',
-            value: true
-          }
-        ],
-        args
-      })}
-    </div>`;
-  }
-};
-
-/**
- * Use the `disabled` attribute to disable a select.
- */
-
-export const Disabled = {
-  parameters: {
-    controls: {
-      exclude: ['disabled']
-    }
-  },
-  render: (args: any) => {
-    return html`<div class="w-[420px]">
-      ${generateTemplate({
-        constants: [
-          {
-            type: 'attribute',
-            name: 'disabled',
-            value: true
-          },
-          leftSlotConstant
-        ],
-        args
-      })}
-    </div>`;
-  }
-};
-
-/**
- * To allow multiple options to be selected, use the `multiple` attribute. It’s a good practice to use `clearable` when this option is enabled. To use the checkbox with tags variant, set the `checklist` variant to `true`.  To set multiple values at once, set value to a space-delimited list of values.
- */
-
-export const Multiple = {
-  parameters: {
-    controls: {
-      include: []
-    }
-  },
-  render: (args: any) => {
-    return html`<div class="h-[340px]">
-      ${generateTemplate({
-        options: {
-          classes: 'w-full [&>tbody>tr>td]:w-[50%]'
-        },
-        axis: {
-          x: {
-            type: 'attribute',
-            name: 'checklist',
-            values: [false, true]
-          }
-        },
-        constants: [clearableConstant, multipleConstant, defaultSlotConstant],
-        args: null
-      })}
-    </div>`;
+    return html`<div class="h-[260px] w-[420px]">${generateTemplate({ args })}</div>`;
   }
 };
 
@@ -245,7 +85,8 @@ export const Multiple = {
  * Use the `size` attribute to change a select’s size. Note that `size` does not apply to listbox options.
  */
 
-export const Sizes = {
+export const SizeDisabled = {
+  name: 'Size x Disabled',
   parameters: {
     controls: {
       include: []
@@ -261,9 +102,14 @@ export const Sizes = {
           x: {
             type: 'attribute',
             name: 'size'
+          },
+          y: {
+            type: 'attribute',
+            name: 'disabled',
+            values: [false, true]
           }
         },
-        constants: [defaultSlotConstant],
+        constants: [threeOptionsConstant, leftSlotConstant, { type: 'attribute', name: 'value', value: 'option-1' }],
         args: null
       })}
     </div>`;
@@ -271,29 +117,34 @@ export const Sizes = {
 };
 
 /**
- * The preferred placement of the select’s listbox can be set with the `placement` attribute. Note that the actual position may vary to ensure the panel remains in the viewport. Valid placements are `top` and `bottom`.
+ * To allow multiple options to be selected, use the `multiple` attribute. It’s a good practice to use `clearable` when this option is enabled. To use the checkbox with tags variant, set the `checklist` variant to `true`.  To set multiple values at once, set value to a space-delimited list of values.  The preferred placement of the select’s listbox can be set with the `placement` attribute. Note that the actual position may vary to ensure the panel remains in the viewport. Valid placements are `top` and `bottom`.
  */
 
-export const Placement = {
+export const Multiple = {
   parameters: {
     controls: {
       include: []
     }
   },
   render: (args: any) => {
-    return html`<div class="h-[290px]">
+    return html`<div class="h-[340px] w-full">
       ${generateTemplate({
         options: {
-          classes: 'w-full'
+          classes: 'w-full [&>tbody>tr>td]:w-[50%]'
         },
         axis: {
+          y: {
+            type: 'attribute',
+            name: 'checklist',
+            values: [false, true]
+          },
           x: {
             type: 'attribute',
-            name: 'placement',
-            values: ['bottom', 'top']
+            name: 'value',
+            values: ['', 'option-1 option-2 option-3 option-4']
           }
         },
-        constants: [defaultSlotConstant2],
+        constants: [clearableConstant, multipleConstant, fiveOptionsConstant],
         args: null
       })}
     </div>`;
@@ -301,37 +152,11 @@ export const Placement = {
 };
 
 /**
- * Use `<sl-divider>` to group listbox items visually. You can also use `<small>` to provide labels, but they won’t be announced by most assistive devices.
+ * Shows the validation styles when the `required` and `enableValidation` attributes are set to `true`.
  */
 
-export const GroupingOptions = {
-  parameters: {
-    controls: {
-      include: []
-    }
-  },
-  render: (args: any) => {
-    return html`<div class="h-[290px] w-[420px]">
-      ${generateTemplate({
-        constants: [
-          {
-            type: 'slot',
-            name: 'default',
-            value:
-              '<small>Odd Options</small><sd-option value="option-1">Option 1</sd-option><sd-option value="option-3">Option 3</sd-option><sd-divider class="mb-2"></sd-divider><small>Even Options</small><sd-option value="option-2">Option 2</sd-option>'
-          }
-        ],
-        args: null
-      })}
-    </div>`;
-  }
-};
-
-/**
- * Demonstrates the form behavior with validation styles when the `required` attribute is set to `true`.
- */
-
-export const Validation = {
+export const ValidInvalid = {
+  name: 'Valid x Invalid',
   parameters: {
     controls: {
       include: []
@@ -339,70 +164,38 @@ export const Validation = {
   },
   render: (args: any) => {
     const sharedConstants: ConstantDefinition[] = [
-      { type: 'attribute', name: 'form', value: 'testForm' },
+      { type: 'attribute', name: 'enableValidation', value: true },
       { type: 'attribute', name: 'clearable', value: true },
       { type: 'attribute', name: 'required', value: true },
+      { type: 'attribute', name: 'checklist', value: true },
       { type: 'attribute', name: 'placeholder', value: '.*' },
       { type: 'attribute', name: 'help-text', value: 'selection must be made' },
-      defaultSlotConstant2
+      twoOptionsConstant
     ];
 
     return html`
-      <form action="" method="get" id="testForm" name="testForm" class="w-[370px]">
-        <div class="mb-2">
-          ${generateTemplate({
-            constants: [
-              ...sharedConstants,
-              { type: 'attribute', name: 'label', value: 'Required' },
-              { type: 'attribute', name: 'name', value: 'required field' }
-            ],
-            args: null
-          })}
-        </div>
-        <div class="mb-2">
-          ${generateTemplate({
-            constants: [
-              ...sharedConstants,
-              { type: 'attribute', name: 'label', value: 'Required Multiple' },
-              { type: 'attribute', name: 'name', value: 'required multiple field' },
-              multipleConstant
-            ],
-            args: null
-          })}
-        </div>
-        <div class="mb-4">
-          ${generateTemplate({
-            constants: [
-              ...sharedConstants,
-              { type: 'attribute', name: 'label', value: 'Required Multiple Checklist' },
-              { type: 'attribute', name: 'name', value: 'required multiple checklist field' },
-              multipleConstant,
-              { type: 'attribute', name: 'checklist', value: true }
-            ],
-            args: null
-          })}
-        </div>
-        <sd-button type="submit">Submit</sd-button>
-      </form>
-      <script>
-        function handleSubmit(event) {
-          const form = document.querySelector('#testForm');
-          const sdSelects = Array.from(document.querySelectorAll('sd-select'));
-
-          const isValid = sdSelect => sdSelect.checkValidity();
-
-          if (sdSelects.every(isValid)) {
-            event.preventDefault(); // Prevent the default form submission behavior
-
-            const formData = new FormData(form);
-            const formValues = Object.fromEntries(formData);
-
-            alert('Form submitted successfully with the following values: ' + JSON.stringify(formValues, null, 2));
-          }
-        }
-
-        document.querySelector('#testForm').addEventListener('submit', handleSubmit);
-      </script>
+      <div class="w-full">
+        ${generateTemplate({
+          axis: {
+            x: {
+              type: 'attribute',
+              name: 'value',
+              values: ['option-1', '']
+            },
+            y: {
+              type: 'attribute',
+              name: 'multiple',
+              values: [false, true]
+            }
+          },
+          constants: [
+            ...sharedConstants,
+            { type: 'attribute', name: 'label', value: 'Required' },
+            { type: 'attribute', name: 'name', value: 'required field' }
+          ],
+          args: null
+        })}
+      </div>
     `;
   }
 };
@@ -412,6 +205,11 @@ export const Validation = {
  */
 
 export const Slots = {
+  parameters: {
+    controls: {
+      include: []
+    }
+  },
   render: (args: any) => {
     return html`
       ${['default', 'label', 'prefix', 'clear-icon', 'expand-icon', 'help-text'].map(slot =>
@@ -427,7 +225,7 @@ export const Slots = {
                     slot === 'default'
                       ? `<div class="slot slot--border slot--background h-8 w-full"></div>`
                       : `<div slot='${slot}' class="slot slot--border slot--background h-6 ${
-                          slot === 'label' || slot === 'help-text' ? 'w-18' : 'w-6'
+                          slot === 'label' || slot === 'help-text' ? 'w-20' : 'w-6'
                         }"></div>`,
                   title: slot
                 }
@@ -440,7 +238,7 @@ export const Slots = {
             labelConstant,
             helpTextConstant,
             leftSlotConstant,
-            defaultSlotConstant2
+            twoOptionsConstant
           ],
           args
         })
@@ -490,7 +288,7 @@ const partsArr = [
 export const Parts = {
   parameters: {
     controls: {
-      exclude: partsArr
+      include: []
     }
   },
   render: (args: any) => {
@@ -565,6 +363,115 @@ export const Mouseless = {
     const el = canvasElement.querySelector('.mouseless sd-select');
     await waitUntil(() => el?.shadowRoot?.querySelector('input'));
     el?.shadowRoot?.querySelector('input')!.focus();
+  }
+};
+
+/**
+ * Use `<sl-divider>` to group listbox items visually. You can also use `<small>` to provide labels, but they won’t be announced by most assistive devices.
+ */
+
+export const SampleGroupingOptions = {
+  name: 'Sample: Grouping Options',
+  parameters: {
+    controls: {
+      include: []
+    }
+  },
+  render: (args: any) => {
+    return html`<div class="h-[290px] w-[420px]">
+      ${generateTemplate({
+        constants: [
+          {
+            type: 'slot',
+            name: 'default',
+            value:
+              '<small>Odd Options</small><sd-option value="option-1">Option 1</sd-option><sd-option value="option-3">Option 3</sd-option><sd-divider class="mb-2"></sd-divider><small>Even Options</small><sd-option value="option-2">Option 2</sd-option>'
+          }
+        ],
+        args
+      })}
+    </div>`;
+  }
+};
+
+/**
+ * Demonstrates the form behavior with validation styles when the `required` attribute is set to `true`.
+ */
+
+export const SampleForm = {
+  name: 'Sample: Form',
+  parameters: {
+    controls: {
+      include: []
+    }
+  },
+  render: (args: any) => {
+    const sharedConstants: ConstantDefinition[] = [
+      { type: 'attribute', name: 'form', value: 'testForm' },
+      { type: 'attribute', name: 'clearable', value: true },
+      { type: 'attribute', name: 'required', value: true },
+      { type: 'attribute', name: 'placeholder', value: '.*' },
+      { type: 'attribute', name: 'help-text', value: 'selection must be made' },
+      twoOptionsConstant
+    ];
+
+    return html`
+      <form action="" method="get" id="testForm" name="testForm" class="w-[370px]">
+        <div class="mb-2">
+          ${generateTemplate({
+            constants: [
+              ...sharedConstants,
+              { type: 'attribute', name: 'label', value: 'Required' },
+              { type: 'attribute', name: 'name', value: 'required field' }
+            ],
+            args: null
+          })}
+        </div>
+        <div class="mb-2">
+          ${generateTemplate({
+            constants: [
+              ...sharedConstants,
+              { type: 'attribute', name: 'label', value: 'Required Multiple' },
+              { type: 'attribute', name: 'name', value: 'required multiple field' },
+              multipleConstant
+            ],
+            args: null
+          })}
+        </div>
+        <div class="mb-4">
+          ${generateTemplate({
+            constants: [
+              ...sharedConstants,
+              { type: 'attribute', name: 'label', value: 'Required Multiple Checklist' },
+              { type: 'attribute', name: 'name', value: 'required multiple checklist field' },
+              multipleConstant,
+              { type: 'attribute', name: 'checklist', value: true }
+            ],
+            args: null
+          })}
+        </div>
+        <sd-button type="submit">Submit</sd-button>
+      </form>
+      <script>
+        function handleSubmit(event) {
+          const form = document.querySelector('#testForm');
+          const sdSelects = Array.from(document.querySelectorAll('sd-select'));
+
+          const isValid = sdSelect => sdSelect.checkValidity();
+
+          if (sdSelects.every(isValid)) {
+            event.preventDefault(); // Prevent the default form submission behavior
+
+            const formData = new FormData(form);
+            const formValues = Object.fromEntries(formData);
+
+            alert('Form submitted successfully with the following values: ' + JSON.stringify(formValues, null, 2));
+          }
+        }
+
+        document.querySelector('#testForm').addEventListener('submit', handleSubmit);
+      </script>
+    `;
   }
 };
 

@@ -89,9 +89,67 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   @query('[part="listbox"]') listbox: HTMLSlotElement;
 
   @state() private hasFocus = false;
-  @state() displayLabel = '';
-  @state() currentOption: SdOption;
-  @state() selectedOptions: SdOption[] = [];
+  /** When `multiple` is `true` and `checklist` is `false`, the displayLabel sets the text shown in the display input. We use the localized string "Options Selected (#)" by default. */
+  @state() private displayLabel = '';
+  @state() private currentOption: SdOption;
+  @state() private selectedOptions: SdOption[] = [];
+
+  /** The default value of the form control. Primarily used for resetting the form control. */
+  @defaultValue() defaultValue: string | string[] = '';
+
+  /**
+   * Indicates whether or not the select is open. You can toggle this attribute to show and hide the menu, or you can
+   * use the `show()` and `hide()` methods and this attribute will reflect the select's open state.
+   */
+  @property({ type: Boolean, reflect: true }) open = false;
+
+  /** The select's size. */
+  @property({ reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
+
+  /** The select's label. If you need to display HTML, use the `label` slot instead. */
+  @property() label = '';
+
+  /** Placeholder text to show as a hint when the select is empty. */
+  @property() placeholder = this.localize.term('selectDefaultPlaceholder');
+
+  /** The select's help text. If you need to display HTML, use the `help-text` slot instead. */
+  @property({ attribute: 'help-text' }) helpText = '';
+
+  /**
+   * The preferred placement of the select's menu. Note that the actual placement may vary as needed to keep the listbox
+   * inside of the viewport.
+   */
+  @property({ reflect: true }) placement: 'top' | 'bottom' = 'bottom';
+
+  /**
+   * The actual current placement of the select's menu sourced from `sd-popup`.
+   */
+  @state() private currentPlacement = this.placement;
+
+  /** Adds a clear button when the select is not empty. */
+  @property({ type: Boolean }) clearable = false;
+
+  /** Disables the select control. */
+  @property({ type: Boolean, reflect: true }) disabled = false;
+
+  /** Allows more than one option to be selected. */
+  @property({ type: Boolean, reflect: true }) multiple = false;
+
+  /** Enables checklist variant when `multiple` is true. Each `sd-option` element in the listbox has its `checkbox` attribute set to `true` and the value input displays interactive `sd-tag` elements representing individual options.  */
+  @property({ type: Boolean, reflect: true }) checklist = false;
+
+  /**
+   * The maximum number of selected options to show when `multiple` is true. After the maximum, "+n" will be shown to
+   * indicate the number of additional items that are selected. Set to 0 to remove the limit.
+   */
+  @property({ attribute: 'max-options-visible', type: Number }) maxOptionsVisible = 3;
+
+  /**
+   * By default, form controls are associated with the nearest containing `<form>` element. This attribute allows you
+   * to place the form control outside of a form and associate it with the form that has this `id`. The form must be in
+   * the same document or shadow root for this to work.
+   */
+  @property({ reflect: true }) form = '';
 
   /** The name of the select, submitted as a name/value pair with form data. */
   @property() name = '';
@@ -109,38 +167,11 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   })
   value: string | string[] = '';
 
-  /** The default value of the form control. Primarily used for resetting the form control. */
-  @defaultValue() defaultValue: string | string[] = '';
+  /** The select's required attribute. */
+  @property({ type: Boolean, reflect: true }) required = false;
 
-  /** The select's size. */
-  @property({ reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
-
-  /** Placeholder text to show as a hint when the select is empty. */
-  @property() placeholder = this.localize.term('selectDefaultPlaceholder');
-
-  /** Allows more than one option to be selected. */
-  @property({ type: Boolean, reflect: true }) multiple = false;
-
-  /** Enables checklist variant when `multiple` is true. Each `sd-option` element in the listbox has its `checkbox` attribute set to `true` and the value input displays interactive `sd-tag` elements representing individual options up until the `maxOptionsVisible` limit after which a single `sd-tag` will list the number of additional selected options.  */
-  @property({ type: Boolean, reflect: true }) checklist = false;
-
-  /**
-   * The maximum number of selected options to show when `multiple` is true. After the maximum, "+n" will be shown to
-   * indicate the number of additional items that are selected. Set to 0 to remove the limit.
-   */
-  @property({ attribute: 'max-options-visible', type: Number }) maxOptionsVisible = 3;
-
-  /** Disables the select control. */
-  @property({ type: Boolean, reflect: true }) disabled = false;
-
-  /** Adds a clear button when the select is not empty. */
-  @property({ type: Boolean }) clearable = false;
-
-  /**
-   * Indicates whether or not the select is open. You can toggle this attribute to show and hide the menu, or you can
-   * use the `show()` and `hide()` methods and this attribute will reflect the select's open state.
-   */
-  @property({ type: Boolean, reflect: true }) open = false;
+  /** This option is a gate for validation styles. It is enabled after a field receives focus if the `required` attribute is set to true. */
+  @property({ type: Boolean, reflect: true }) enableValidation = false;
 
   /**
    * Enable this option to prevent the listbox from being clipped when the component is placed inside a container with
@@ -148,39 +179,11 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
    */
   @property({ type: Boolean }) hoist = false;
 
-  /** The select's label. If you need to display HTML, use the `label` slot instead. */
-  @property() label = '';
-
-  /**
-   * The preferred placement of the select's menu. Note that the actual placement may vary as needed to keep the listbox
-   * inside of the viewport.
-   */
-  @property({ reflect: true }) placement: 'top' | 'bottom' = 'bottom';
-
-  /**
-   * The actual current placement of the select's menu sourced from `sd-popup`.
-   */
-  @state() private currentPlacement = this.placement;
-
-  /** The select's help text. If you need to display HTML, use the `help-text` slot instead. */
-  @property({ attribute: 'help-text' }) helpText = '';
-
-  /**
-   * By default, form controls are associated with the nearest containing `<form>` element. This attribute allows you
-   * to place the form control outside of a form and associate it with the form that has this `id`. The form must be in
-   * the same document or shadow root for this to work.
-   */
-  @property({ reflect: true }) form = '';
-
-  /** The select's required attribute. */
-  @property({ type: Boolean, reflect: true }) required = false;
-
   /**
    * A function that customizes the tags to be rendered when multiple=true. The first argument is the option, the second
    * is the current tag's index.  The function should return either a Lit TemplateResult or a string containing trusted HTML of the symbol to render at
    * the specified value.
    */
-  // TODO: what is exportparts?
   @property() getTag: (option: SdOption, index: number) => TemplateResult | string | HTMLElement = option => {
     return html`
       <sd-tag
@@ -189,7 +192,6 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
               base:tag__base,
               content:tag__content,
               removable-indicator:tag__removable-indicator,
-              removable-indicator__base:tag__removable-indicator__base
             "
         size=${this.size === 'lg' ? 'lg' : 'sm'}
         removable
@@ -231,6 +233,8 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
 
   private handleFocus() {
     this.hasFocus = true;
+    // TODO: Reviewer: Is this how we want to handle validation styles?
+    this.enableValidation = true;
     this.displayInput.setSelectionRange(0, 0);
     this.emit('sd-focus');
   }
@@ -751,8 +755,9 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     const hasLabel = this.label ? true : !!slots['label'];
     const hasHelpText = this.helpText ? true : !!slots['helpText'];
     const hasClearIcon = this.clearable && !this.disabled && this.value.length > 0;
-    const isInvalid = this.required && !this.checkValidity();
-    const isValid = this.required && this.checkValidity();
+
+    const isInvalid = this.enableValidation && this.required && !this.checkValidity();
+    const isValid = this.enableValidation && this.required && this.checkValidity();
 
     // Hierarchy of input states:
     const selectState = this.disabled
@@ -896,7 +901,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 : ''}
 
               <input
-                class=${cx('value-input absolute top-0 left-0 w-full h-full opacity-0 -z-1', cursorStyles)}
+                class=${cx('value-input absolute top-0 left-0 w-full h-full opacity-0 -z-10', cursorStyles)}
                 type="text"
                 ?disabled=${this.disabled}
                 ?required=${this.required}
@@ -911,7 +916,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 ? html`
                     <button
                       part="clear-button"
-                      class=${cx('select__clear flex justify-center ', iconMarginLeft)}
+                      class=${cx('select__clear flex justify-center z-10', iconMarginLeft)}
                       type="button"
                       aria-label=${this.localize.term('clearEntry')}
                       @mousedown=${this.handleClearMouseDown}
