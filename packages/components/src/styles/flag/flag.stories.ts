@@ -11,7 +11,10 @@ const { generateTemplate } = storybookTemplate('sd-flag');
  * A small, non-interactive label the represents a category.
  *
  * <b>Variants</b><br>
- * <li>white is the default variant.</li>
+ * <li>white is the default variant</li>
+ * <li>--neutral-200</li>
+ * <li>--neutral-300</li>
+ * <li>--neutral-500</li>
  */
 
 export default {
@@ -22,17 +25,18 @@ export default {
   },
   args: overrideArgs([{ type: 'slot', name: 'default', value: 'Lorem Ipsum' }]),
   argTypes,
-  decorators: [(story: any) => html`
-    <style>
-      .background {
-        background: rgb(var(--sd-color-neutral-200, 242 242 242));
-        height: 50px;
-        width: fit-content;
-        padding: 5px;
-      }
-    </style>
-    ${story()}
-  `
+  decorators: [
+    (story: any) => html`
+      <style>
+        .background {
+          background: rgb(var(--sd-color-neutral-200, 242 242 242));
+          height: 50px;
+          width: fit-content;
+          padding: 10px;
+        }
+      </style>
+      ${story()}
+    `
   ]
 };
 
@@ -65,7 +69,7 @@ export const Variants = {
             {
               type: 'attribute',
               name: 'Variant',
-              values: ['sd-flag', 'sd-flag--neutral-200', 'sd-flag--neutral-300', 'sd-flag--neutral-500']
+              values: ['sd-flag--white', 'sd-flag--neutral-200', 'sd-flag--neutral-300', 'sd-flag--neutral-500']
             }
           ]
         },
@@ -75,8 +79,7 @@ export const Variants = {
           value: `${flag.constant}`
         },
         options: {
-          templateBackground: 'rgb(var(--sd-color-neutral-200, 242 242 242))',
-          title: `${flag.title}`
+          templateBackground: 'rgb(var(--sd-color-neutral-200, 242 242 242))'
         },
         args
       })
