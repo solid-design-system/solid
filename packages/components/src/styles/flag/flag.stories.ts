@@ -22,24 +22,24 @@ export default {
   },
   args: overrideArgs([{ type: 'slot', name: 'default', value: 'Lorem Ipsum' }]),
   argTypes,
-  decorators: [
-    (story: any) =>
-      html` <style>
-          #root-inner {
-            background-color: rgb(242 242 242);
-          }
-        </style>
-        ${story()}`
+  decorators: [(story: any) => html`
+    <style>
+      .background {
+        background: rgb(var(--sd-color-neutral-200, 242 242 242));
+        height: 50px;
+        width: fit-content;
+        padding: 5px;
+      }
+    </style>
+    ${story()}
+  `
   ]
 };
 
 export const Default = {
   render: (args: any) => {
     return generateTemplate({
-      options: {
-        templateContent: '<span class="%CLASSES%">%SLOT%</span>'
-        // templateBackground: 'rgb(var(--sd-color-neutral-200, 242 242 242))'
-      },
+      options: { templateContent: '<div class="background"><span class="%CLASSES%">%SLOT%</span></div>' },
       args
     });
   }
@@ -49,7 +49,7 @@ export const Variants = {
   name: 'Variants',
   parameters: {
     controls: {
-      exclude: ['sd-flag--size-neutral-200', 'sd-flag--size-neutral-300', 'sd-flag--size-neutral-500']
+      exclude: ['sd-flag', 'sd-flag--size-neutral-200', 'sd-flag--size-neutral-300', 'sd-flag--size-neutral-500']
     }
   },
   render: (args: any) => {
@@ -65,7 +65,7 @@ export const Variants = {
             {
               type: 'attribute',
               name: 'Variant',
-              values: ['sd-flag--neutral-200', 'sd-flag--neutral-300', 'sd-flag--neutral-500']
+              values: ['sd-flag', 'sd-flag--neutral-200', 'sd-flag--neutral-300', 'sd-flag--neutral-500']
             }
           ]
         },
@@ -75,7 +75,7 @@ export const Variants = {
           value: `${flag.constant}`
         },
         options: {
-          // templateBackground: 'rgb(var(--sd-color-neutral-200, 242 242 242))',
+          templateBackground: 'rgb(var(--sd-color-neutral-200, 242 242 242))',
           title: `${flag.title}`
         },
         args
