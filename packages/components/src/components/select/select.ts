@@ -896,7 +896,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 : ''}
 
               <input
-                class="value-input absolute top-0 left-0 w-full h-full opacity-0 -z-1"
+                class=${cx('value-input absolute top-0 left-0 w-full h-full opacity-0 -z-1', cursorStyles)}
                 type="text"
                 ?disabled=${this.disabled}
                 ?required=${this.required}

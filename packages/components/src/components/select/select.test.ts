@@ -3,6 +3,7 @@ import { clickOnElement } from '../../internal/test';
 import { sendKeys } from '@web/test-runner-commands';
 import { serialize } from '../../utilities/form';
 import sinon from 'sinon';
+import type SdButton from '../button/button';
 import type SdOption from '../../components/option/option';
 import type SdSelect from './select';
 
@@ -380,31 +381,34 @@ describe('<sd-select>', () => {
     });
   });
 
-  // describe('when resetting a form', () => {
-  //   it('should reset the element to its initial value', async () => {
-  //     const form = await fixture<HTMLFormElement>(html`
-  //       <form>
-  //         <sd-select value="option-1">
-  //           <sd-option value="option-1">Option 1</sd-option>
-  //           <sd-option value="option-2">Option 2</sd-option>
-  //           <sd-option value="option-3">Option 3</sd-option>
-  //         </sd-select>
-  //         <sd-button type="reset">Reset</sd-button>
-  //       </form>
-  //     `);
-  //     const resetButton = form.querySelector('sd-button')!;
-  //     const select = form.querySelector('sd-select')!;
+  describe('when resetting a form', () => {
+    it('should reset the element to its initial value', async () => {
+      const form = await fixture<HTMLFormElement>(html`
+        <form>
+          <sd-select value="option-1">
+            <sd-option value="option-1">Option 1</sd-option>
+            <sd-option value="option-2">Option 2</sd-option>
+            <sd-option value="option-3">Option 3</sd-option>
+          </sd-select>
+          <sd-button type="reset">Reset</sd-button>
+        </form>
+      `);
+      const resetButton: SdButton = form.querySelector('sd-button')!;
+      const select = form.querySelector('sd-select')!;
 
-  //     select.value = 'option-3';
-  //     await select.updateComplete;
-  //     expect(select.value).to.equal('option-3');
+      select.value = 'option-3';
+      await select.updateComplete;
+      expect(select.value).to.equal('option-3');
 
-  //     setTimeout(() => clickOnElement(resetButton));
-  //     await oneEvent(form, 'reset', false);
-  //     await select.updateComplete;
-  //     expect(select.value).to.equal('option-1');
-  //   });
-  // });
+      setTimeout(() => {
+        resetButton.click();
+        clickOnElement(resetButton);
+      });
+      await oneEvent(form, 'reset', false);
+      await select.updateComplete;
+      expect(select.value).to.equal('option-1');
+    });
+  });
 
   it('should update the display label when an option changes', async () => {
     const el = await fixture<SdSelect>(html`
@@ -449,24 +453,25 @@ describe('<sd-select>', () => {
     expect(blurHandler).to.have.been.calledOnce;
   });
 
-  // it('should emit sd-clear when the clear button is clicked', async () => {
-  //   const el = await fixture<SdSelect>(html`
-  //     <sd-select value="option-1" clearable>
-  //       <sd-option value="option-1">Option 1</sd-option>
-  //       <sd-option value="option-2">Option 2</sd-option>
-  //       <sd-option value="option-3">Option 3</sd-option>
-  //     </sd-select>
-  //   `);
-  //   const clearHandler = sinon.spy();
-  //   const clearButton = el.shadowRoot!.querySelector('[part~="clear-button"]')!;
+  it('should emit sd-clear when the clear button is clicked', async () => {
+    const el = await fixture<SdSelect>(html`
+      <sd-select value="option-1" clearable>
+        <sd-option value="option-1">Option 1</sd-option>
+        <sd-option value="option-2">Option 2</sd-option>
+        <sd-option value="option-3">Option 3</sd-option>
+      </sd-select>
+    `);
+    const clearHandler = sinon.spy();
+    const clearButton: HTMLButtonElement = el.shadowRoot!.querySelector('[part~="clear-button"]')!;
 
-  //   el.addEventListener('sd-clear', clearHandler);
-  //   await el.show();
-  //   await clickOnElement(clearButton);
-  //   await el.updateComplete;
+    el.addEventListener('sd-clear', clearHandler);
+    await el.show();
+    clearButton.click();
+    await clickOnElement(clearButton);
+    await el.updateComplete;
 
-  //   expect(clearHandler).to.have.been.calledOnce;
-  // });
+    expect(clearHandler).to.have.been.calledOnce;
+  });
 
   it('should emit sd-change and sd-input when a tag is removed', async () => {
     const el = await fixture<SdSelect>(html`
