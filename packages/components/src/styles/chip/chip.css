@@ -1,5 +1,5 @@
 .sd-chip {
-  @apply h-6 bg-white rounded-default text-black text-sm text-center inline-block align-middle px-2 overflow-hidden;
+  @apply h-6 bg-white rounded-default text-black text-sm inline-flex items-center px-2 overflow-hidden;
 
   &--primary-200 {
     @apply bg-primary-200;
