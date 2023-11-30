@@ -8,7 +8,10 @@ const { overrideArgs } = storybookHelpers('sd-chip');
 const { generateTemplate } = storybookTemplate('sd-chip');
 
 /**
- * Generates basic styles for chip elements.
+ * A small, non-interactive label the represents a status, property or meta-data.
+ *
+ * <b>Variants</b><br>
+ * <li>white is the default variant.</li>
  */
 
 export default {
@@ -19,13 +22,24 @@ export default {
   },
   args: overrideArgs([{ type: 'slot', name: 'default', value: 'Lorem Ipsum' }]),
   argTypes,
-  decorators: [(story: any) => html`${story()}`]
+  decorators: [(story: any) => html`
+    <style>
+      .background {
+        background: rgb(var(--sd-color-neutral-200, 242 242 242));
+        height: 50px;
+        width: fit-content;
+        padding: 5px;
+      }
+    </style>
+  ${story()}
+  `
+  ]
 };
 
 export const Default = {
   render: (args: any) => {
     return generateTemplate({
-      options: { templateContent: '<span class="%CLASSES%">%SLOT%</span>' },
+      options: { templateContent: '<div class="background"><span class="%CLASSES%">%SLOT%</span></div>' },
       args
     });
   }
@@ -35,7 +49,7 @@ export const Variants = {
   name: 'Variants',
   parameters: {
     controls: {
-      exclude: ['sd-chip--size-primary-200', 'sd-chip--size-primary-300', 'sd-chip--size-primary-500']
+      exclude: ['sd-chip', 'sd-chip--size-primary-200', 'sd-chip--size-primary-300', 'sd-chip--size-primary-500']
     }
   },
   render: (args: any) => {
@@ -51,7 +65,7 @@ export const Variants = {
             {
               type: 'attribute',
               name: 'Variant',
-              values: ['sd-chip--primary-200', 'sd-chip--primary-300', 'sd-chip--primary-500']
+              values: ['sd-chip', 'sd-chip--primary-200', 'sd-chip--primary-300', 'sd-chip--primary-500']
             }
           ]
         },
