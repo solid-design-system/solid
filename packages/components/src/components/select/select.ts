@@ -814,7 +814,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     return html`
       <div
         part="form-control"
-        class=${cx('form-control relative text-left', cursorStyles, textColor, textSize, this.open && 'z-20')}
+        class=${cx('form-control relative text-left', cursorStyles, textColor, textSize, this.open && 'z-10')}
       >
         <label
           id="label"
@@ -968,7 +968,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
               aria-labelledby="label"
               part="listbox"
               class=${cx(
-                'bg-white px-2 py-3 relative z-20',
+                'bg-white px-2 py-3 relative',
                 this.currentPlacement === 'bottom'
                   ? 'border-r-2 border-b-2 border-l-2 rounded-br-default rounded-bl-default'
                   : 'border-r-2 border-t-2 border-l-2 rounded-tr-default rounded-tl-default'
@@ -1006,6 +1006,10 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
         display: block;
         position: relative;
         width: 100%;
+      }
+
+      sd-popup::part(popup) {
+        overflow-y: scroll;
       }
 
       sd-tag::part(base) {
