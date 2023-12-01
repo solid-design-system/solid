@@ -189,7 +189,6 @@ export const ValidInvalid = {
       { type: 'attribute', name: 'clearable', value: true },
       { type: 'attribute', name: 'required', value: true },
       { type: 'attribute', name: 'checklist', value: true },
-      { type: 'attribute', name: 'placeholder', value: '.*' },
       { type: 'attribute', name: 'help-text', value: 'selection must be made' },
       leftSlotConstant,
       twoOptionsConstant
