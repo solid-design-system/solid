@@ -27,6 +27,12 @@ const fiveOptionsConstant: ConstantDefinition = {
   value:
     '<sd-option value="option-1">Option 1</sd-option><sd-option value="option-2">Option 2</sd-option><sd-option value="option-3">Option 3</sd-option><sd-option value="option-4">Option 4</sd-option><sd-option value="option-5">Option 5</sd-option>'
 };
+const tenOptionsConstant: ConstantDefinition = {
+  type: 'slot',
+  name: 'default',
+  value:
+    '<sd-option value="option-1">Option 1</sd-option><sd-option value="option-2">Option 2</sd-option><sd-option value="option-3">Option 3</sd-option><sd-option value="option-4">Option 4</sd-option><sd-option value="option-5">Option 5</sd-option><sd-option value="option-6">Option 6</sd-option><sd-option value="option-7">Option 7</sd-option><sd-option value="option-8">Option 8</sd-option><sd-option value="option-9">Option 9</sd-option><sd-option value="option-10">Option 10</sd-option>'
+};
 const leftSlotConstant: ConstantDefinition = {
   type: 'slot',
   name: 'prefix',
@@ -85,8 +91,8 @@ export const Default = {
  * Use the `size` attribute to change a select’s size. Note that `size` does not apply to listbox options.
  */
 
-export const SizeDisabled = {
-  name: 'Size x Disabled',
+export const SizeMultiple = {
+  name: 'Size x Multiple',
   parameters: {
     controls: {
       include: []
@@ -105,11 +111,16 @@ export const SizeDisabled = {
           },
           y: {
             type: 'attribute',
-            name: 'disabled',
+            name: 'checklist',
             values: [false, true]
           }
         },
-        constants: [threeOptionsConstant, leftSlotConstant, { type: 'attribute', name: 'value', value: 'option-1' }],
+        constants: [
+          threeOptionsConstant,
+          leftSlotConstant,
+          multipleConstant,
+          { type: 'attribute', name: 'value', value: 'option-1' }
+        ],
         args: null
       })}
     </div>`;
@@ -120,7 +131,8 @@ export const SizeDisabled = {
  * To allow multiple options to be selected, use the `multiple` attribute. It’s a good practice to use `clearable` when this option is enabled. To use the checkbox with tags variant, set the `checklist` variant to `true`.  To set multiple values at once, set value to a space-delimited list of values.  The preferred placement of the select’s listbox can be set with the `placement` attribute. Note that the actual position may vary to ensure the panel remains in the viewport. Valid placements are `top` and `bottom`.
  */
 
-export const Multiple = {
+export const DisabledMultiple = {
+  name: 'Disabled x Multiple',
   parameters: {
     controls: {
       include: []
@@ -140,11 +152,20 @@ export const Multiple = {
           },
           x: {
             type: 'attribute',
-            name: 'value',
-            values: ['', 'option-1 option-2 option-3 option-4']
+            name: 'disabled',
+            values: [false, true]
           }
         },
-        constants: [clearableConstant, multipleConstant, fiveOptionsConstant],
+        constants: [
+          clearableConstant,
+          multipleConstant,
+          tenOptionsConstant,
+          {
+            type: 'attribute',
+            name: 'value',
+            value: 'option-1 option-2 option-3 option-4'
+          }
+        ],
         args: null
       })}
     </div>`;
@@ -170,6 +191,7 @@ export const ValidInvalid = {
       { type: 'attribute', name: 'checklist', value: true },
       { type: 'attribute', name: 'placeholder', value: '.*' },
       { type: 'attribute', name: 'help-text', value: 'selection must be made' },
+      leftSlotConstant,
       twoOptionsConstant
     ];
 

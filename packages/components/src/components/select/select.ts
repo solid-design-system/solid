@@ -187,13 +187,14 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   @property() getTag: (option: SdOption, index: number) => TemplateResult | string | HTMLElement = option => {
     return html`
       <sd-tag
+        ?disabled=${this.disabled}
         part="tag"
         exportparts="
               base:tag__base,
               content:tag__content,
               removable-indicator:tag__removable-indicator,
             "
-        size=${this.size === 'lg' ? 'lg' : 'sm'}
+        size=${this.size === 'sm' ? 'sm' : 'lg'}
         removable
         @sd-remove=${(event: CustomEvent) => this.handleTagRemove(event, option)}
       >
@@ -595,7 +596,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
         </div>`;
       } else if (index === this.maxOptionsVisible) {
         // Hit tag limit
-        return html`<sd-tag>+${this.selectedOptions.length - index}</sd-tag>`;
+        return html`<sd-tag ?disabled=${this.disabled}>+${this.selectedOptions.length - index}</sd-tag>`;
       }
       return html``;
     });
@@ -811,7 +812,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     return html`
       <div
         part="form-control"
-        class=${cx('form-control relative text-left', cursorStyles, textColor, textSize, this.open && 'z-10')}
+        class=${cx('form-control relative text-left', cursorStyles, textColor, textSize, this.open && 'z-20')}
       >
         <label
           id="label"
@@ -828,7 +829,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
             part="border"
             class=${cx(
               borderColor,
-              'absolute w-full h-full pointer-events-none border rounded-default',
+              'absolute w-full h-full pointer-events-none border rounded-default z-10',
               this.open &&
                 (this.currentPlacement === 'bottom'
                   ? 'rounded-bl-none rounded-br-none'
@@ -852,8 +853,9 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
             <div
               part="combobox"
               class=${cx(
-                'relative w-full px-4 flex flex-row items-center transform-all',
-                { sm: 'py-1', md: 'py-1', lg: 'py-2' }[this.size]
+                'relative w-full px-4 flex flex-row items-center transform-all hover:bg-neutral-200',
+                { sm: 'py-1', md: 'py-1', lg: 'py-2' }[this.size],
+                { sm: 'h-8', md: 'h-10', lg: 'h-12' }[this.size]
               )}
               slot="anchor"
               @keydown=${this.handleComboboxKeyDown}
@@ -873,8 +875,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 class=${cx(
                   'appearance-none outline-none flex-grow bg-transparent',
                   cursorStyles,
-                  this.multiple && this.checklist && this.value.length > 0 ? 'hidden' : '',
-                  { sm: 'h-6', md: 'h-8', lg: 'h-8' }[this.size]
+                  this.multiple && this.checklist && this.value.length > 0 ? 'hidden' : ''
                 )}
                 type="text"
                 placeholder=${this.placeholder}
@@ -1003,6 +1004,14 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
         display: block;
         position: relative;
         width: 100%;
+      }
+
+      sd-tag::part(base) {
+        border-radius: 4px;
+      }
+
+      sd-tag::part(base):hover {
+        background-color: rgb(var(--sd-color-primary-100, 236 240 249) / 1);
       }
     `
   ];
