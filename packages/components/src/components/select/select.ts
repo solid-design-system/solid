@@ -6,7 +6,7 @@ import { FormControlController } from '../../internal/form.js';
 import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry.js';
 import { HasSlotController } from '../../internal/slot.js';
 import { LocalizeController } from '../../utilities/localize.js';
-import { property, query, state } from 'lit/decorators.js';
+import { property, query, queryAssignedElements, state } from 'lit/decorators.js';
 import { scrollIntoView } from '../../internal/scroll.js';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { waitForEvent } from '../../internal/event.js';
@@ -81,6 +81,8 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   private readonly localize = new LocalizeController(this);
   private typeToSelectString = '';
   private typeToSelectTimeout: number;
+
+  @queryAssignedElements({ selector: 'sd-option' }) _optionsInDefaultSlot!: SdOption[];
 
   @query('sd-popup') popup: SdPopup;
   @query('[part="combobox"]') combobox: HTMLSlotElement;
@@ -253,6 +255,8 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   };
 
   private handleDocumentKeyDown = (event: KeyboardEvent) => {
+    console.log('handleDocumentKeyDown');
+
     const target = event.target as HTMLElement;
     const isClearButton = target.closest('.select__clear') !== null;
     const isIconButton = target.closest('sd-icon-button') !== null;
@@ -616,6 +620,18 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     this.hasHover = false;
   }
 
+  @watch('checklist', { waitUntilFirstUpdate: true })
+  handleChecklistChange() {
+    const allOptions = this.getAllOptions();
+
+    // Mutate all sd-option checkbox attributes based on checklist state
+    if (customElements.get('sd-option')) {
+      allOptions.forEach(option => {
+        option.checkbox = this.checklist;
+      });
+    }
+  }
+
   @watch('disabled', { waitUntilFirstUpdate: true })
   handleDisabledChange() {
     // Close the listbox when the control is disabled
@@ -623,15 +639,6 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
       this.open = false;
       this.handleOpenChange();
     }
-  }
-
-  @watch('value', { waitUntilFirstUpdate: true })
-  handleValueChange() {
-    const allOptions = this.getAllOptions();
-    const value = Array.isArray(this.value) ? this.value : [this.value];
-
-    // Select only the options that match the new value
-    this.setSelectedOptions(allOptions.filter(el => value.includes(el.value)));
   }
 
   @watch('open', { waitUntilFirstUpdate: true })
@@ -677,16 +684,20 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     }
   }
 
-  @watch('checklist', { waitUntilFirstUpdate: true })
-  handleChecklistChange() {
-    const allOptions = this.getAllOptions();
+  @watch('size', { waitUntilFirstUpdate: true })
+  handleSizeChange() {
+    this._optionsInDefaultSlot.forEach(option => {
+      option.size = this.size;
+    });
+  }
 
-    // Mutate all sd-option checkbox attributes based on checklist state
-    if (customElements.get('sd-option')) {
-      allOptions.forEach(option => {
-        option.checkbox = this.checklist;
-      });
-    }
+  @watch('value', { waitUntilFirstUpdate: true })
+  handleValueChange() {
+    const allOptions = this.getAllOptions();
+    const value = Array.isArray(this.value) ? this.value : [this.value];
+
+    // Select only the options that match the new value
+    this.setSelectedOptions(allOptions.filter(el => value.includes(el.value)));
   }
 
   /** When updated, check for the `data-user-invalid` attribute which indicates whether the user has interacted with the select element. If present, there has been interaction so we enable validation styles. */

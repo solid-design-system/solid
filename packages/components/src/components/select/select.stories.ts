@@ -86,7 +86,7 @@ export const Default = {
 };
 
 /**
- * Use the `size` attribute to change a select’s size. Note that `size` does not apply to listbox options.
+ * Use the `size` attribute to change a select’s size. It will cascade to slotted `sd-option` elements.
  */
 
 export const SizeMultiple = {
