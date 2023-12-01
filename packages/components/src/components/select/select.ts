@@ -255,8 +255,6 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   };
 
   private handleDocumentKeyDown = (event: KeyboardEvent) => {
-    console.log('handleDocumentKeyDown');
-
     const target = event.target as HTMLElement;
     const isClearButton = target.closest('.select__clear') !== null;
     const isIconButton = target.closest('sd-icon-button') !== null;
