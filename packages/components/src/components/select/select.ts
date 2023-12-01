@@ -89,6 +89,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   @query('[part="listbox"]') listbox: HTMLSlotElement;
 
   @state() private hasFocus = false;
+  @state() hasHover = false; // we need this because Safari doesn't honor :hover styles while dragging
   /** When `multiple` is `true` and `checklist` is `false`, the displayLabel sets the text shown in the display input. We use the localized string "Options Selected (#)" by default. */
   @state() private displayLabel = '';
   @state() private currentOption: SdOption;
@@ -607,6 +608,14 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     this.formControlController.emitInvalidEvent(event);
   }
 
+  private handleMouseEnter() {
+    this.hasHover = true;
+  }
+
+  private handleMouseLeave() {
+    this.hasHover = false;
+  }
+
   @watch('disabled', { waitUntilFirstUpdate: true })
   handleDisabledChange() {
     // Close the listbox when the control is disabled
@@ -831,12 +840,13 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
           <slot name="label">${this.label}${this.required ? '*' : ''}</slot>
         </label>
 
-        <div part="form-control-input" class=${cx('relative w-full bg-white group')}>
+        <div part="form-control-input" class=${cx('relative w-full bg-white')}>
           <div
             part="border"
             class=${cx(
               borderColor,
-              'absolute top-0 w-full h-full pointer-events-none border rounded-default group-hover:bg-neutral-200',
+              'absolute top-0 w-full h-full pointer-events-none border rounded-default',
+              this.hasHover && 'bg-neutral-200',
               this.open &&
                 (this.currentPlacement === 'bottom'
                   ? 'rounded-bl-none rounded-br-none'
@@ -867,6 +877,8 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
               slot="anchor"
               @keydown=${this.handleComboboxKeyDown}
               @mousedown=${this.handleComboboxMouseDown}
+              @mouseenter=${this.handleMouseEnter}
+              @mouseleave=${this.handleMouseLeave}
             >
               ${slots['prefix']
                 ? html`<slot

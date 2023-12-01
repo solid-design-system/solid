@@ -2,7 +2,6 @@ import '../../solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 import { waitUntil } from '@open-wc/testing-helpers';
-import { withActions } from '@storybook/addon-actions/decorator';
 import type { ConstantDefinition } from '../../../scripts/storybook/helper';
 
 const { argTypes, parameters } = storybookDefaults('sd-select');
