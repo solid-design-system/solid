@@ -596,7 +596,9 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
         </div>`;
       } else if (index === this.maxOptionsVisible) {
         // Hit tag limit
-        return html`<sd-tag ?disabled=${this.disabled}>+${this.selectedOptions.length - index}</sd-tag>`;
+        return html`<sd-tag size=${this.size === 'sm' ? 'sm' : 'lg'} ?disabled=${this.disabled}
+          >+${this.selectedOptions.length - index}</sd-tag
+        >`;
       }
       return html``;
     });
@@ -824,12 +826,12 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
           <slot name="label">${this.label}${this.required ? '*' : ''}</slot>
         </label>
 
-        <div part="form-control-input" class=${cx('relative w-full bg-white')}>
+        <div part="form-control-input" class=${cx('relative w-full bg-white group')}>
           <div
             part="border"
             class=${cx(
               borderColor,
-              'absolute w-full h-full pointer-events-none border rounded-default z-10',
+              'absolute top-0 w-full h-full pointer-events-none border rounded-default group-hover:bg-neutral-200',
               this.open &&
                 (this.currentPlacement === 'bottom'
                   ? 'rounded-bl-none rounded-br-none'
@@ -853,7 +855,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
             <div
               part="combobox"
               class=${cx(
-                'relative w-full px-4 flex flex-row items-center transform-all hover:bg-neutral-200 inline-block',
+                'relative w-full px-4 flex flex-row items-center rounded-default',
                 { sm: 'py-1', md: 'py-1', lg: 'py-2' }[this.size],
                 { sm: 'min-h-[32px]', md: 'min-h-[40px]', lg: 'min-h-[48px]' }[this.size]
               )}
@@ -917,7 +919,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 ? html`
                     <button
                       part="clear-button"
-                      class=${cx('select__clear flex justify-center z-10', iconMarginLeft)}
+                      class=${cx('select__clear flex justify-center', iconMarginLeft)}
                       type="button"
                       aria-label=${this.localize.term('clearEntry')}
                       @mousedown=${this.handleClearMouseDown}
@@ -966,7 +968,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
               aria-labelledby="label"
               part="listbox"
               class=${cx(
-                'bg-white px-2 py-3 block relative',
+                'bg-white px-2 py-3 relative z-20',
                 this.currentPlacement === 'bottom'
                   ? 'border-r-2 border-b-2 border-l-2 rounded-br-default rounded-bl-default'
                   : 'border-r-2 border-t-2 border-l-2 rounded-tr-default rounded-tl-default'
