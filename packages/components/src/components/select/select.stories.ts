@@ -73,8 +73,7 @@ export default {
       type: 'figma',
       url: 'https://www.figma.com/file/ZphyVFsUHL72voMrJagMeo/Select?node-id=1002%3A2284&mode=dev'
     }
-  },
-  decorators: [withActions, (story: any) => html`<div>${story()}</div>`] as unknown
+  }
 };
 
 /**

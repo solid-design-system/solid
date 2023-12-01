@@ -170,7 +170,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   /** The select's required attribute. */
   @property({ type: Boolean, reflect: true }) required = false;
 
-  /** This option is a gate for validation styles. It is enabled after a field receives focus if the `required` attribute is set to true. */
+  /** This option is a gate for validation styles. It is enabled automatically if the `required` attribute is `true` and the form controller `data-user-invalid` attribute (indicates the user has interacted with the element) is `true`. */
   @property({ type: Boolean, reflect: true }) enableValidation = false;
 
   /**
@@ -680,7 +680,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     }
   }
 
-  /** When updated, check for the `data-user-invalid` attribute which indicates the user has interacted with the select element. If present, enable validation styles. */
+  /** When updated, check for the `data-user-invalid` attribute which indicates whether the user has interacted with the select element. If present, there has been interaction so we enable validation styles. */
   updated() {
     if (this.hasAttribute('data-user-invalid')) {
       this.enableValidation = true;
