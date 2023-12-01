@@ -42,8 +42,8 @@ export default class SdOption extends SolidElement {
   @state() selected = false; // the option is selected and has aria-selected="true"
   @state() hasHover = false; // we need this because Safari doesn't honor :hover styles while dragging
 
-  /** The select's size. */
-  @property({ reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
+  /** The option's size is inherited automatically from the `size` attribute of the parent `sd-select`. */
+  @property() size: 'lg' | 'md' | 'sm' = 'lg';
 
   /** Prefixes a styled checkbox to the option. Enabled automatically in `sd-select` when attribute `checklist` is set to `true`. */
   @property({ type: Boolean, reflect: true }) checkbox = false;
@@ -123,7 +123,7 @@ export default class SdOption extends SolidElement {
       <div
         part="base"
         class=${cx(
-          'px-4 flex items-center w-full transition-all text-left text-base relative text-black group',
+          'px-4 flex items-center w-full transition-all text-left text-base relative text-black',
           { sm: 'py-1', md: 'py-2', lg: 'py-3' }[this.size],
           this.disabled ? 'text-neutral-500 cursor-not-allowed' : 'cursor-pointer',
           this.hasHover && !this.disabled ? 'bg-neutral-200' : '',
@@ -132,23 +132,25 @@ export default class SdOption extends SolidElement {
         @mouseenter=${this.handleMouseEnter}
         @mouseleave=${this.handleMouseLeave}
       >
-        <div
+        <span
           class=${cx(
-            'absolute w-full left-0 top-0 pointer-events-none transition-all duration-150 border-l-4 h-[calc(100%-8px)] top-1 group-hover:h-full group-hover:top-0',
+            'absolute w-full left-0 top-0 pointer-events-none transition-all duration-150 border-l-4 h-[calc(100%-8px)]',
             this.selected ? 'border-accent' : 'border-transparent',
-            this.disabled && 'border-neutral-500'
+            this.disabled && 'border-neutral-500 top-1',
+            !this.disabled && this.hasHover ? 'h-full top-0' : 'top-1'
           )}
-        ></div>
+        ></span>
         ${this.checkbox
           ? html`<span
               id="control"
               part="control ${this.selected ? ' control--checked' : 'control--unchecked'}"
               class=${cx(
-                'relative flex flex-initial items-center justify-center border rounded-sm h-4 w-4 mx-2',
-                this.selected
-                  ? 'border-accent hover:border-accent-550 bg-accent'
-                  : 'border-neutral-800 hover:bg-neutral-200 bg-white',
-                this.disabled && 'border-neutral-500 bg-neutral-500'
+                'relative flex flex-initial items-center justify-center border rounded-sm h-4 w-4 mr-2',
+                this.disabled
+                  ? 'border-neutral-500'
+                  : this.selected
+                    ? 'border-accent hover:border-accent-550 bg-accent'
+                    : 'border-neutral-800'
               )}
             >
               ${this.selected

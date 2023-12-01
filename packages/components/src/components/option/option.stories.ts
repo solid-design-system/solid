@@ -34,12 +34,25 @@ export const Default = {
 };
 
 /**
- * Use the `disabled` attribute to disable an option. Clicks will be suppressed until the disabled state is removed.
+ * Use the `disabled` attribute to disable an option. Clicks will be suppressed until the disabled state is removed. Use the `checkbox` attribute to prefix a styled checkbox. Enabled automatically when using `sd-select` with attribute `checklist` set to `true`.
  */
 
-export const Disabled = {
+export const DisabledCheckbox = {
+  name: 'Disabled x Checkbox',
   render: (args: any) => {
     return generateTemplate({
+      axis: {
+        x: {
+          type: 'attribute',
+          name: 'disabled',
+          values: [false, true]
+        },
+        y: {
+          type: 'attribute',
+          name: 'checkbox',
+          values: [false, true]
+        }
+      },
       constants: { type: 'attribute', name: 'disabled', value: true },
       args
     });
@@ -47,12 +60,24 @@ export const Disabled = {
 };
 
 /**
- * Use the `checkbox` attribute to prefix a styled checkbox. Enabled automatically when using `sd-select` with attribute `checklist` set to `true`.
+ * Use the `size` attribute to change a select’s size. This will be inherited automatically from the `size` attribute of the parent `sd-select`.
  */
 
-export const Checkbox = {
+export const SizeCheckbox = {
+  name: 'Size x Checkbox',
   render: (args: any) => {
     return generateTemplate({
+      axis: {
+        x: {
+          type: 'attribute',
+          name: 'size'
+        },
+        y: {
+          type: 'attribute',
+          name: 'checkbox',
+          values: [false, true]
+        }
+      },
       constants: { type: 'attribute', name: 'checkbox', value: true },
       args
     });
