@@ -5,6 +5,36 @@ import { registerIconLibrary } from '../src/utilities/icon-library';
 import { storybookUtilities } from '../scripts/storybook/helper';
 
 /**
+ * This provides which background colors are available in the preview
+ */
+const preview = {
+  parameters: {
+    backgrounds: {
+      default: 'white',
+      values: [
+        {
+          name: 'white',
+          value: '#fff',
+        },
+        {
+          name: 'primary',
+          value: 'rgb(var(--sd-color-primary, 0 53 142))',
+        },
+        {
+          name: 'primary-100',
+          value: 'rgb(var(--sd-color-primary-100, 236 240 249))',
+        },
+        {
+          name: 'neutral-200',
+          value: 'rgb(var(--sd-color-neutral-200, 242 242 242))',
+        },
+      ],
+    },
+  },
+};
+export default preview;
+
+/**
  * This registers iconLibraries for the sd-icon component
  */
 

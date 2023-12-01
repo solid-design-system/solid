@@ -21,20 +21,15 @@ export default {
   title: 'Styles/sd-chip',
   component: 'sd-chip',
   parameters: {
-    ...parameters
+    ...parameters,
+    backgrounds: {
+      default: 'neutral-200',
+    },
   },
   args: overrideArgs([{ type: 'slot', name: 'default', value: 'Lorem Ipsum' }]),
   argTypes,
   decorators: [
     (story: any) => html`
-      <style>
-        .background {
-          background: rgb(var(--sd-color-neutral-200, 242 242 242));
-          height: 50px;
-          width: fit-content;
-          padding: 10px;
-        }
-      </style>
       ${story()}
     `
   ]
@@ -43,7 +38,7 @@ export default {
 export const Default = {
   render: (args: any) => {
     return generateTemplate({
-      options: { templateContent: '<div class="background"><span class="%CLASSES%">%SLOT%</span></div>' },
+      options: { templateContent: '<span class="%CLASSES%">%SLOT%</span>' },
       args
     });
   }
@@ -77,9 +72,6 @@ export const Variants = {
           type: 'slot',
           name: 'default',
           value: `${chip.constant}`
-        },
-        options: {
-          templateBackground: 'rgb(var(--sd-color-neutral-200, 242 242 242))'
         },
         args
       })
