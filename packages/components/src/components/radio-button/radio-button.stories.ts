@@ -49,35 +49,46 @@ export const Size = {
       axis: {
         x: { type: 'attribute', name: 'size' }
       },
-      args
+      args,
+      constants: [
+        {
+          type: 'template',
+          name: 'showLabel',
+          value: '<div class="bg-primary-100 w-20 p-4">%TEMPLATE%</div>'
+        }
+      ]
     });
   }
 };
 
 /**
- * Use the disabled attribute to disable a input radio. Clicks will be suppressed until the disabled state is removed
+ * Use the disabled attribute to disable an input radio. Clicks will be suppressed until the disabled state is removed. `Checked` is an "internal" attribute but is shown here as an example of all possible combinations.
  */
 
-export const DisabledAndSize = {
-  name: 'Disabled × Size',
-  parameters: { controls: { exclude: ['disabled', 'size', 'default'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        x: {
-          type: 'attribute',
-          name: 'disabled',
-          values: [false, true]
-        },
-        y: {
-          type: 'attribute',
-          name: 'size',
-          values: ['lg', 'md', 'sm']
-        }
-      },
-      constants: [{ type: 'attribute', name: 'disabled', value: true }],
-      args
-    });
+export const DisabledAndChecked = {
+  name: 'Disabled × Checked',
+  parameters: { controls: { exclude: ['disabled', 'checked', 'default'] } },
+  render: () => {
+    return html`
+      <div class="bg-neutral-100 flex flex-col gap-4 w-[260px] p-4">
+        <sd-radio-button showLabel>
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          <slot>Default</slot>
+        </sd-radio-button>
+        <sd-radio-button disabled showLabel>
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          <slot>Disabled</slot>
+        </sd-radio-button>
+        <sd-radio-button checked showLabel>
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          <slot>Checked</slot>
+        </sd-radio-button>
+        <sd-radio-button checked disabled showLabel>
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          <slot class="whitespace-nowrap">Disabled and Checked</slot>
+        </sd-radio-button>
+      </div>
+    `;
   }
 };
 
@@ -85,8 +96,8 @@ export const DisabledAndSize = {
  * Use the show-label attribute to show the label of the radio button.
  */
 
-export const CombinationAndSize = {
-  name: 'Combination × Size',
+export const LabelAndSize = {
+  name: 'Label × Size',
   parameters: { controls: { exclude: ['icon', 'label', 'showLabel', 'size'] } },
   render: (args: any) => {
     return generateTemplate({
@@ -129,6 +140,30 @@ export const LabelOnlyAndSize = {
       ],
       args
     });
+  }
+};
+
+/**
+ * Radio buttons can be grouped together using the `sd-radio-group` component. Another example can be found there.
+ */
+export const RadioButtonGroup = {
+  parameters: { controls: { exclude: ['disabled', 'checked', 'default'] } },
+  render: () => {
+    return html`
+      <div>
+        <sd-radio-group value="1">
+          <sd-radio-button value="1">
+            <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          </sd-radio-button>
+          <sd-radio-button value="2">
+            <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          </sd-radio-button>
+          <sd-radio-button value="3">
+            <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          </sd-radio-button>
+        </sd-radio-group>
+      </div>
+    `;
   }
 };
 

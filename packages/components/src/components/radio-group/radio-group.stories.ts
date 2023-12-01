@@ -189,7 +189,7 @@ export const Mouseless = {
  */
 
 export const RadioButtonGroup = {
-  parameters: { controls: { exclude: ['size', 'value', 'required', 'invalid', 'label'] } },
+  parameters: { controls: { exclude: ['default', 'size', 'value', 'required', 'invalid', 'label', 'orientation'] } },
   render: (args: any) => {
     return generateTemplate({
       args,
@@ -198,7 +198,12 @@ export const RadioButtonGroup = {
           type: 'slot',
           name: 'default',
           value:
-            '<sd-radio-button value="1"><sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon></sd-radio-button><sd-radio-button value="2" showlabel><div>Label</div><sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon></sd-radio-button><sd-radio-button value="3"><sd-icon library="global-resources" name="system/picture" slot="icon"></sd-radio-button>'
+            '<sd-radio-button value="1" showLabel><sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon><div>Label</div></sd-radio-button><sd-radio-button value="2" showLabel><sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon><div>Label</div></sd-radio-button><sd-radio-button value="3" showLabel><sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon><div>Label</div></sd-radio-button>'
+        },
+        {
+          type: 'slot',
+          name: 'label',
+          value: ``
         }
       ]
     });
@@ -219,7 +224,17 @@ export const MouselessRadioButtonGroup = {
             type: 'slot',
             name: 'default',
             value:
-              '<sd-radio-button value="1"><sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon></sd-radio-button><sd-radio-button value="2" showlabel><div>Label</div><sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon></sd-radio-button><sd-radio-button value="3"><sd-icon library="global-resources" name="system/picture" slot="icon"></sd-radio-button>'
+              '<sd-radio-button value="1"><sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon></sd-radio-button><sd-radio-button value="2"><sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon></sd-radio-button><sd-radio-button value="3"><sd-icon library="global-resources" name="system/picture" slot="icon"></sd-radio-button>'
+          },
+          {
+            type: 'attribute',
+            name: 'value',
+            value: `2`
+          },
+          {
+            type: 'slot',
+            name: 'label',
+            value: ``
           }
         ]
       })}
@@ -227,7 +242,7 @@ export const MouselessRadioButtonGroup = {
   },
 
   play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
-    const el = canvasElement.querySelector('.mouseless sd-radio-button');
+    const el = canvasElement.querySelectorAll('.mouseless sd-radio-button')[1];
     await waitUntil(() => el?.shadowRoot?.querySelector('button'));
     el?.shadowRoot?.querySelector('button')!.focus();
   }

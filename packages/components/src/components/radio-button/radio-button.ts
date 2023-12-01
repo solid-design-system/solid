@@ -48,7 +48,7 @@ export default class SdRadioButton extends SolidElement {
   @property({ type: Boolean, reflect: true }) disabled = false;
 
   /** The radio button's size. */
-  @property({ reflect: true }) size: 'sm' | 'md' | 'lg' = 'lg';
+  @property({ reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
 
   /** Shows or hides the label */
   @property({ type: Boolean }) showLabel = false;
@@ -106,15 +106,15 @@ export default class SdRadioButton extends SolidElement {
           role="radio"
           aria-checked="${this.checked}"
           class="${cx(
-            'relative text-center border rounded-md transition-all ease-in-out duration-100 items-center justify-center focus-visible:focus-outline',
+            'relative text-center border rounded-default transition-all ease-in-out duration-100 items-center justify-center focus-visible:focus-outline',
             this.size === 'sm' ? 'text-sm' : 'text-base',
             this.checked && !this.disabled
-              ? 'bg-primary border-primary text-white hover:bg-primary-500'
+              ? 'bg-primary border-primary text-white hover:bg-primary-500 hover:border-primary-500'
               : this.disabled && !this.checked
                 ? 'border-neutral-500 text-neutral-500 hover:cursor-not-allowed'
                 : this.disabled && this.checked
                   ? 'bg-neutral-500 text-white hover:cursor-not-allowed'
-                  : 'bg-white text-primary border-primary hover:bg-primary-100 hover:border-primary-500 hover:text-primary-500 cursor-pointer',
+                  : 'bg-transparent text-primary border-primary hover:bg-primary-100 hover:border-primary-500 hover:text-primary-500 cursor-pointer',
             this.showLabel && 'px-4',
             this.hasFocus && 'focused-class',
             this.hasSlotController.test('[default]') && 'button--has-label',
@@ -134,9 +134,11 @@ export default class SdRadioButton extends SolidElement {
             part="icon"
             class="${cx(
               this.hasSlotController.test('icon') && 'inline-flex relative items-center',
-              this.size === 'sm' && 'text-base',
-              this.size === 'md' && 'text-lg',
-              this.size === 'lg' && 'text-xl'
+              {
+                sm: 'text-base',
+                md: 'text-lg',
+                lg: 'text-xl'
+              }[this.size]
             )}"
             ?hidden=${this.hideIcon}
           ></slot>
