@@ -26,12 +26,6 @@ const fiveOptionsConstant: ConstantDefinition = {
   value:
     '<sd-option value="option-1">Option 1</sd-option><sd-option value="option-2">Option 2</sd-option><sd-option value="option-3">Option 3</sd-option><sd-option value="option-4">Option 4</sd-option><sd-option value="option-5">Option 5</sd-option>'
 };
-const tenOptionsConstant: ConstantDefinition = {
-  type: 'slot',
-  name: 'default',
-  value:
-    '<sd-option value="option-1">Option 1</sd-option><sd-option value="option-2">Option 2</sd-option><sd-option value="option-3">Option 3</sd-option><sd-option value="option-4">Option 4</sd-option><sd-option value="option-5">Option 5</sd-option><sd-option value="option-6">Option 6</sd-option><sd-option value="option-7">Option 7</sd-option><sd-option value="option-8">Option 8</sd-option><sd-option value="option-9">Option 9</sd-option><sd-option value="option-10">Option 10</sd-option>'
-};
 const leftSlotConstant: ConstantDefinition = {
   type: 'slot',
   name: 'prefix',
@@ -96,7 +90,7 @@ export const SizeMultiple = {
       include: []
     }
   },
-  render: (args: any) => {
+  render: () => {
     return html`<div class="h-[340px]">
       ${generateTemplate({
         options: {
@@ -181,7 +175,7 @@ export const ValidInvalid = {
       include: []
     }
   },
-  render: (args: any) => {
+  render: () => {
     const sharedConstants: ConstantDefinition[] = [
       { type: 'attribute', name: 'enableValidation', value: true },
       { type: 'attribute', name: 'clearable', value: true },
@@ -348,7 +342,7 @@ export const Mouseless = {
       include: []
     }
   },
-  render: (args: any) => {
+  render: () => {
     const sharedConstants: ConstantDefinition[] = [
       {
         type: 'slot',
@@ -424,7 +418,7 @@ export const SampleForm = {
       include: []
     }
   },
-  render: (args: any) => {
+  render: () => {
     const sharedConstants: ConstantDefinition[] = [
       { type: 'attribute', name: 'form', value: 'testForm' },
       { type: 'attribute', name: 'clearable', value: true },
