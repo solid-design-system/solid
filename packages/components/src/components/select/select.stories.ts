@@ -130,7 +130,7 @@ export const DisabledMultiple = {
       include: []
     }
   },
-  render: (args: any) => {
+  render: () => {
     return html`<div class="h-[340px] w-full">
       ${generateTemplate({
         options: {
