@@ -42,18 +42,21 @@ export default class SdOption extends SolidElement {
   @state() selected = false; // the option is selected and has aria-selected="true"
   @state() hasHover = false; // we need this because Safari doesn't honor :hover styles while dragging
 
+  /** The select's size. */
+  @property({ reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
+
+  /** Prefixes a styled checkbox to the option. Enabled automatically in `sd-select` when attribute `checklist` is set to `true`. */
+  @property({ type: Boolean, reflect: true }) checkbox = false;
+
+  /** Draws the option in a disabled state, preventing selection. */
+  @property({ type: Boolean, reflect: true }) disabled = false;
+
   /**
    * The option's value. When selected, the containing form control will receive this value. The value must be unique
    * from other options in the same group. Values may not contain spaces, as spaces are used as delimiters when listing
    * multiple values.
    */
   @property({ reflect: true }) value = '';
-
-  /** Draws the option in a disabled state, preventing selection. */
-  @property({ type: Boolean, reflect: true }) disabled = false;
-
-  /** Prefixes a styled checkbox to the option. Enabled automatically in `sd-select` when attribute `checklist` is set to `true`. */
-  @property({ type: Boolean, reflect: true }) checkbox = false;
 
   connectedCallback() {
     super.connectedCallback();
@@ -120,15 +123,22 @@ export default class SdOption extends SolidElement {
       <div
         part="base"
         class=${cx(
-          'px-2 py-3 flex items-center w-full transition-all text-left text-base',
+          'px-4 flex items-center w-full transition-all text-left text-base relative text-black group',
+          { sm: 'py-1', md: 'py-2', lg: 'py-3' }[this.size],
           this.disabled ? 'text-neutral-500 cursor-not-allowed' : 'cursor-pointer',
           this.hasHover && !this.disabled ? 'bg-neutral-200' : '',
-          this.current && 'bg-neutral-200',
-          this.selected && !this.checkbox ? 'bg-primary text-white' : 'text-black'
+          this.current && 'bg-neutral-200'
         )}
         @mouseenter=${this.handleMouseEnter}
         @mouseleave=${this.handleMouseLeave}
       >
+        <div
+          class=${cx(
+            'absolute w-full left-0 top-0 pointer-events-none transition-all duration-150 border-l-4 h-[calc(100%-8px)] top-1 group-hover:h-full group-hover:top-0',
+            this.selected ? 'border-accent' : 'border-transparent',
+            this.disabled && 'border-neutral-500'
+          )}
+        ></div>
         ${this.checkbox
           ? html`<span
               id="control"
