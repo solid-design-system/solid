@@ -234,8 +234,6 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
 
   private handleFocus() {
     this.hasFocus = true;
-    // TODO: Reviewer: Is this how we want to handle validation styles?
-    this.enableValidation = true;
     this.displayInput.setSelectionRange(0, 0);
     this.emit('sd-focus');
   }
@@ -679,6 +677,13 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
       allOptions.forEach(option => {
         option.checkbox = this.checklist;
       });
+    }
+  }
+
+  /** When updated, check for the `data-user-invalid` attribute which indicates the user has interacted with the select element. If present, enable validation styles. */
+  updated() {
+    if (this.hasAttribute('data-user-invalid')) {
+      this.enableValidation = true;
     }
   }
 
