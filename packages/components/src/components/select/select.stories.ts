@@ -493,23 +493,3 @@ export const SampleForm = {
     `;
   }
 };
-
-/**
- * DEV: debug form behavior
- */
-
-export const Dev = {
-  render: (args: any) => {
-    return html`<div class="h-[340px] mt-[50%]">
-      ${generateTemplate({
-        constants: [
-          tenOptionsConstant,
-          leftSlotConstant,
-          multipleConstant,
-          { type: 'attribute', name: 'value', value: 'option-1 option-2 option-3 option-4' }
-        ],
-        args
-      })}
-    </div>`;
-  }
-};

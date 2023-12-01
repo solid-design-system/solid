@@ -35,9 +35,10 @@ import type SdOption from '../option/option';
  * @slot - The listbox options. Must be `<sd-option>` elements. You can use `<sd-divider>` to group items visually.
  * @slot label - The input's label. Alternatively, you can use the `label` attribute.
  * @slot prefix - Used to prepend a presentational icon or similar element to the combobox.
+ * @slot help-text - Text that describes how to use the input. Alternatively, you can use the `help-text` attribute.
  * @slot clear-icon - An icon to use in lieu of the default clear icon.
  * @slot expand-icon - The icon to show when the control is expanded and collapsed. Rotates on open and close.
- * @slot help-text - Text that describes how to use the input. Alternatively, you can use the `help-text` attribute.
+
  *
  * @event sd-change - Emitted when the control's value changes.
  * @event sd-clear - Emitted when the control's value is cleared.
@@ -142,7 +143,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   @property({ type: Boolean, reflect: true }) checklist = false;
 
   /**
-   * The maximum number of selected options to show when `multiple` is true. After the maximum, "+n" will be shown to
+   * The maximum number of selected options to show when `multiple` and `checklist` are `true`. After the maximum, "+n" will be shown to
    * indicate the number of additional items that are selected. Set to 0 to remove the limit.
    */
   @property({ attribute: 'max-options-visible', type: Number }) maxOptionsVisible = 3;
