@@ -1,0 +1,532 @@
+# Migration Guide: `ui-input`
+
+As the CL component has been reduced a lot and split up into several SDS components, here you can find migration guides for:
+`ui-input` to `sd-input`,
+`ui-input` to `sd-radio`,
+`ui-input` to `sd-switch` and
+`ui-input` to `sd-checkbox`
+
+# From `ui-input` to `sd-input`
+
+Instead of mainly providing content via attributes, the new `sd-input` component uses slots to allow for more flexibility and customization.
+
+## 💾 Slots
+
+### ✨ New Slots
+
+#### [label]
+
+The input's label.
+
+#### [left]
+
+Used to prepend a presentational icon or similar element to the input.
+
+#### [right]
+
+Used to append a presentational icon or similar element to the input.
+
+#### [clear-icon]
+
+An icon to use in lieu of the default clear icon.
+
+#### [show-password-icon]
+
+An icon to use in lieu of the default show password icon.
+
+#### [hide-password-icon]
+
+An icon to use in lieu of the default hide password icon.
+
+#### [help-text]
+
+Text that describes how to use the input.
+
+<hr />
+
+## ⚙️ Attributes
+
+### ✨ New Attributes
+
+#### [size]
+
+The input's size. It can be lg, md or sm and defaults to lg.
+
+#### [inputmode]
+
+Tells the browser what type of data will be entered by the user, allowing it to display the appropriate virtual keyboard on supportive devices.
+
+#### [helpText]
+
+The input's help text.
+
+#### [readonly]
+
+Makes the input readonly.
+
+#### [passwordToggle]
+
+Adds a button to toggle the password's visibility. Only applies to password types.
+
+#### [passwordVisible]
+
+Determines whether or not the password is currently visible. Only applies to password input types.
+
+#### [noSpinButtons]
+
+Hides the browser's built-in increment/decrement spin buttons for number inputs.
+
+#### [minlength]
+
+The minimum length of input that will be considered valid
+
+#### [maxlength]
+
+The maximum length of input that will be considered valid.
+
+#### [form]
+
+This attribute allows you to place the form control outside of a form and associate it with the form that has this `id`. The form must be in the same document or shadow root for this to work.
+
+#### [title]
+
+The `title` attribute specifies extra information about an element most often as tooltip text when the mouse moves over the element.
+
+#### [pattern]
+
+A regular expression pattern to validate input against.
+
+#### [autocomplete]
+
+Specifies what permission the browser has to provide assistance in filling out form field values.
+
+#### [enterkeyhint]
+
+Used to customize the label or icon of the Enter key on virtual keyboards.
+
+#### [spellcheck]
+
+Enables spell checking on the input.
+
+### 🔀 Updated Attributes
+
+#### [focus]
+
+The old `focus` attribute has been replaced by the `autofocus` attribute, so it will focus the input on initial page load.
+
+#### [stepSize]
+
+The old `stepSize` attribute has been replaced with the new `step` attribute in sd-input.
+
+#### [uppercase]
+
+The old `uppercase` attribute has been replaced with the new `autocapitalize` attribute in sd-input. Instead of the old boolean value, the new attribute accepts the following values: `off`, `none`, `on`, `sentences`, `words`, `characters`.
+
+### ❌ Removed Attributes
+
+The following attributes have been removed from the new sd-input component:
+
+1. [autocorrectType]
+2. [checked]
+3. [description]
+4. [error]
+5. [focusOnIconClick]
+6. [hint]
+7. [icon]
+8. [labelIsHtml]
+9. [lowercase]
+10. [mask]
+11. [message]
+12. [scale]
+13. [stepControls]
+14. [success]
+15. [switch]
+16. [thousandsSeparator]
+17. [unit]
+18. [variant]
+
+<hr />
+
+## 🥳 Events
+
+### ✨ New Events
+
+#### [sd-input]
+
+Emitted when the control receives input.
+
+### 🔄 Updated Events
+
+#### [uiInputBlur]
+
+The old `uiInputBlur` event has been replaced with the new `sd-blur` event in sd-input.
+
+#### [uiInputChange]
+
+The old `uiInputChange` event has been replaced with the new `sd-change` event in sd-input.
+
+#### [uiInputClear]
+
+The old `uiInputClear` event has been replaced with the new `sd-clear` event in sd-input.
+
+#### [uiInputFocus]
+
+The old `uiInputFocus` event has been replaced with the new `sd-focus` event in sd-input.
+
+### ❌ Removed Events:
+
+The following events have been removed from the new sd-input component:
+
+1. [inputIconClicked]
+2. [uiInputDidRender]
+3. [uiInputEnterKeyDown]
+
+<hr />
+
+## 🧪 Methods
+
+### ❌ Removed Methods:
+
+The following methods have been removed from the new sd-input component:
+
+1. [onDeselect()]
+
+<hr />
+
+# From `ui-input` to `sd-radio`
+
+Instead of mainly providing content via attributes, the new `sd-radio` component uses slots to allow for more flexibility and customization.
+
+## 💾 Slots
+
+### ✨ New Slots
+
+#### [default]
+
+The radio's label.
+
+<hr />
+
+## ⚙️ Attributes
+
+### ✨ New Attributes
+
+#### [size]
+
+The radio's size. It can be lg or md and defaults to lg.
+
+#### [invalid]
+
+A Boolean attribute which, if present, marks the radio Button valid or invalid.
+
+### ❌ Removed Attributes
+
+The following attributes have been removed from the new sd-radio component:
+
+1.  [autocorrect]
+
+2.  [autocorrectType]
+
+3.  [checked]
+
+4.  [clearable]
+
+5.  [description]
+
+6.  [error]
+
+7.  [focus]
+
+8.  [focusOnIconClick]
+
+9.  [hint]
+
+10. [icon]
+
+11. [label]
+
+12. [labelIsHtml]
+
+13. [lowercase]
+
+14. [mask]
+
+15. [max]
+
+16. [message]
+
+17. [min]
+
+18. [name]
+
+19. [placeholder]
+
+20. [required]
+
+21. [scale]
+
+22. [stepControls]
+
+23. [stepSize]
+
+24. [success]
+
+25. [switch]
+
+26. [thousandsSeparator]
+
+27. [type]
+
+28. [unit]
+
+29. [uppercase]
+
+30. [variant]
+
+<hr />
+
+## 🥳 Events
+
+### 🔄 Updated Events
+
+#### [uiInputBlur]
+
+The old `uiInputBlur` event has been replaced with the new `sd-blur` event in sd-input.
+
+#### [uiInputFocus]
+
+The old `uiInputFocus` event has been replaced with the new `sd-focus` event in sd-input.
+
+### ❌ Removed Events:
+
+The following events have been removed from the new sd-radio component:
+
+1. [inputIconClicked]
+2. [uiInputChange]
+3. [uiInputClear]
+4. [uiInputDidRender]
+5. [uiInputEnterKeyDown]
+
+<hr />
+
+## 🧪 Methods
+
+### ❌ Removed Methods:
+
+The following methods have been removed from the new sd-radio component:
+
+1. [onDeselect()]
+
+<hr />
+
+# From `ui-input` to `sd-switch`
+
+Instead of mainly providing content via attributes, the `sd-switch` component uses slots to allow for more flexibility and customization.
+
+## 💾 Slots
+
+### ✨ New Slots
+
+#### [default]
+
+The switch's label.
+
+<hr />
+
+## ⚙️ Attributes
+
+### ✨ New Attributes
+
+#### [title]
+
+The title of the switch adds a tooltip with title text.
+
+#### [form]
+
+This attribute allows you to place the form control outside of a form and associate it with the form that has this id. The form must be in the same document or shadow root for this to work.
+
+### ❌ Removed Attributes
+
+The following attributes have been removed from the new sd-switch component:
+
+1. [autocorrect]
+2. [autocorrectType]
+3. [clearable]
+4. [description]
+5. [error]
+6. [focus]
+7. [focusOnIconClick]
+8. [hint]
+9. [icon]
+10. [label]
+11. [labelIsHtml]
+12. [lowercase]
+13. [mask]
+14. [max]
+15. [message]
+16. [min]
+17. [placeholder]
+18. [scale]
+19. [stepControls]
+20. [stepSize]
+21. [success]
+22. [switch]
+23. [thousandsSeparator]
+24. [type]
+25. [unit]
+26. [uppercase]
+27. [variant]
+
+<hr />
+
+## 🥳 Events
+
+### ✨ New Events
+
+#### [sd-input]
+
+Emitted when the switch receives input.
+
+### 🔄 Updated Events
+
+#### [uiInputBlur]
+
+The old `uiInputBlur` event has been replaced with the new `sd-blur` event in sd-input.
+
+#### [uiInputChange]
+
+The old `uiInputChange` event has been replaced with the new `sd-change` event in sd-input.
+
+#### [uiInputFocus]
+
+The old `uiInputFocus` event has been replaced with the new `sd-focus` event in sd-input.
+
+### ❌ Removed Events:
+
+The following events have been removed from the new sd-switch component:
+
+1. [inputIconClicked]
+2. [uiInputClear]
+3. [uiInputDidRender]
+4. [uiInputEnterKeyDown]
+
+<hr />
+
+## 🧪 Methods
+
+### ❌ Removed Methods:
+
+The following methods have been removed from the new sd-switch component:
+
+1. [onDeselect()]
+
+<hr />
+
+# From `ui-input` to `sd-checkbox`
+
+Instead of mainly providing content via attributes, the `sd-checkbox` component uses slots to allow for more flexibility and customization.
+
+## 💾 Slots
+
+### ✨ New Slots
+
+#### [default]
+
+The checkbox's label.
+
+<hr />
+
+## ⚙️ Attributes
+
+### ✨ New Attributes
+
+#### [title]
+
+The title of the checkbox.
+
+#### [size]
+
+The checkbox's size. It can be lg or sm and defaults to lg.
+
+#### [indeterminate]
+
+Draws the checkbox in an indeterminate state.
+
+#### [form]
+
+This attribute allows you to place the form control outside of a form and associate it with the form that has this id. The form must be in the same document or shadow root for this to work.
+
+### ❌ Removed Attributes
+
+The following attributes have been removed from the new sd-checkbox component:
+
+1. [autocorrect]
+2. [autocorrectType]
+3. [clearable]
+4. [description]
+5. [error]
+6. [focus]
+7. [focusOnIconClick]
+8. [hint]
+9. [icon]
+10. [label]
+11. [labelIsHtml]
+12. [lowercase]
+13. [mask]
+14. [max]
+15. [message]
+16. [min]
+17. [placeholder]
+18. [scale]
+19. [stepControls]
+20. [stepSize]
+21. [success]
+22. [switch]
+23. [thousandsSeparator]
+24. [type]
+25. [unit]
+26. [uppercase]
+27. [variant]
+
+<hr />
+
+## 🥳 Events
+
+### ✨ New Events
+
+#### [sd-input]
+
+Emitted when the checkbox receives input.
+
+### 🔄 Updated Events
+
+#### [uiInputBlur]
+
+The old `uiInputBlur` event has been replaced with the new `sd-blur` event in sd-input.
+
+#### [uiInputChange]
+
+The old `uiInputChange` event has been replaced with the new `sd-change` event in sd-input.
+
+#### [uiInputFocus]
+
+The old `uiInputFocus` event has been replaced with the new `sd-focus` event in sd-input.
+
+### ❌ Removed Events:
+
+The following events have been removed from the new sd-checkbox component:
+
+1. [inputIconClicked]
+2. [uiInputClear]
+3. [uiInputDidRender]
+4. [uiInputEnterKeyDown]
+
+<hr />
+
+## 🧪 Methods
+
+### ❌ Removed Methods:
+
+The following methods have been removed from the new sd-checkbox component:
+
+1. [onDeselect()]
