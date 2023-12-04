@@ -14,23 +14,23 @@ const preview = {
       values: [
         {
           name: 'white',
-          value: '#fff',
+          value: '#fff'
         },
         {
           name: 'primary',
-          value: 'rgb(var(--sd-color-primary, 0 53 142))',
+          value: 'rgb(var(--sd-color-primary, 0 53 142))'
         },
         {
           name: 'primary-100',
-          value: 'rgb(var(--sd-color-primary-100, 236 240 249))',
+          value: 'rgb(var(--sd-color-primary-100, 236 240 249))'
         },
         {
           name: 'neutral-200',
-          value: 'rgb(var(--sd-color-neutral-200, 242 242 242))',
-        },
-      ],
-    },
-  },
+          value: 'rgb(var(--sd-color-neutral-200, 242 242 242))'
+        }
+      ]
+    }
+  }
 };
 export default preview;
 

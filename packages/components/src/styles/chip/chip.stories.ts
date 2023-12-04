@@ -23,16 +23,12 @@ export default {
   parameters: {
     ...parameters,
     backgrounds: {
-      default: 'neutral-200',
-    },
+      default: 'neutral-200'
+    }
   },
   args: overrideArgs([{ type: 'slot', name: 'default', value: 'Lorem Ipsum' }]),
   argTypes,
-  decorators: [
-    (story: any) => html`
-      ${story()}
-    `
-  ]
+  decorators: [(story: any) => html` ${story()} `]
 };
 
 export const Default = {
