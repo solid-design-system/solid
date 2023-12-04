@@ -619,6 +619,15 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     this.hasHover = false;
   }
 
+  /** Receives incoming event detail from sd-popup and updates local state for conditional styling. */
+  private handleCurrentPlacement(e: CustomEvent<'top' | 'bottom'>) {
+    const incomingPlacement = e.detail;
+
+    if (incomingPlacement) {
+      this.currentPlacement = incomingPlacement;
+    }
+  }
+
   @watch('checklist', { waitUntilFirstUpdate: true })
   handleChecklistChange() {
     const allOptions = this.getAllOptions();
@@ -757,15 +766,6 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   /** Removes focus from the control. */
   blur() {
     this.displayInput.blur();
-  }
-
-  /** Receives incoming event detail from sd-popup and updates local state for conditional styling. */
-  handleCurrentPlacement(e: CustomEvent<'top' | 'bottom'>) {
-    const incomingPlacement = e.detail;
-
-    if (incomingPlacement) {
-      this.currentPlacement = incomingPlacement;
-    }
   }
 
   render() {
