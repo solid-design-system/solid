@@ -26,11 +26,6 @@ const fiveOptionsConstant: ConstantDefinition = {
   value:
     '<sd-option value="option-1">Option 1</sd-option><sd-option value="option-2">Option 2</sd-option><sd-option value="option-3">Option 3</sd-option><sd-option value="option-4">Option 4</sd-option><sd-option value="option-5">Option 5</sd-option>'
 };
-const leftSlotConstant: ConstantDefinition = {
-  type: 'slot',
-  name: 'prefix',
-  value: '<sd-icon slot="prefix" library="global-resources" name="system/picture"></sd-icon>'
-};
 const clearableConstant: ConstantDefinition = { type: 'attribute', name: 'clearable', value: true };
 const multipleConstant: ConstantDefinition = { type: 'attribute', name: 'multiple', value: true };
 const helpTextConstant: ConstantDefinition = { type: 'attribute', name: 'help-text', value: 'help-text' };
@@ -41,7 +36,6 @@ export default {
   title: 'Components/sd-select',
   component: 'sd-select',
   args: overrideArgs([
-    clearableConstant,
     threeOptionsConstant,
     labelConstant,
     { type: 'attribute', name: 'placeholder', value: 'Please Select' },
@@ -103,13 +97,12 @@ export const SizeMultiple = {
           },
           y: {
             type: 'attribute',
-            name: 'checklist',
+            name: 'useTags',
             values: [false, true]
           }
         },
         constants: [
           fiveOptionsConstant,
-          leftSlotConstant,
           multipleConstant,
           { type: 'attribute', name: 'value', value: 'option-1 option-2 option-3 option-4' }
         ],
@@ -120,7 +113,7 @@ export const SizeMultiple = {
 };
 
 /**
- * To allow multiple options to be selected, use the `multiple` attribute. It’s a good practice to use `clearable` when this option is enabled. To use the checkbox with tags variant, set the `checklist` variant to `true`.  To set multiple values at once, set value to a space-delimited list of values.  The preferred placement of the select’s listbox can be set with the `placement` attribute. Note that the actual position may vary to ensure the panel remains in the viewport. Valid placements are `top` and `bottom`.
+ * To allow multiple options to be selected, use the `multiple` attribute. It’s a good practice to use `clearable` when this option is enabled. To use the checkbox with tags variant, set the `useTags` variant to `true`.  To set multiple values at once, set value to a space-delimited list of values.  The preferred placement of the select’s listbox can be set with the `placement` attribute. Note that the actual position may vary to ensure the panel remains in the viewport. Valid placements are `top` and `bottom`.
  */
 
 export const DisabledMultiple = {
@@ -139,7 +132,7 @@ export const DisabledMultiple = {
         axis: {
           y: {
             type: 'attribute',
-            name: 'checklist',
+            name: 'useTags',
             values: [false, true]
           },
           x: {
@@ -165,64 +158,6 @@ export const DisabledMultiple = {
 };
 
 /**
- * Shows the validation styles when the `required` and `enableValidation` attributes are set to `true`.
- */
-
-export const ValidInvalid = {
-  name: 'Valid x Invalid',
-  parameters: {
-    controls: {
-      include: []
-    }
-  },
-  render: () => {
-    const sharedConstants: ConstantDefinition[] = [
-      { type: 'attribute', name: 'clearable', value: true },
-      { type: 'attribute', name: 'required', value: true },
-      { type: 'attribute', name: 'checklist', value: true },
-      helpTextConstant,
-      leftSlotConstant,
-      twoOptionsConstant
-    ];
-
-    return html`
-      <div class="w-full">
-        ${generateTemplate({
-          axis: {
-            x: {
-              type: 'attribute',
-              name: 'value',
-              values: ['option-1', '']
-            },
-            y: {
-              type: 'attribute',
-              name: 'multiple',
-              values: [false, true]
-            }
-          },
-          constants: [
-            ...sharedConstants,
-            { type: 'attribute', name: 'label', value: 'Required' },
-            { type: 'attribute', name: 'name', value: 'required field' }
-          ],
-          args: null
-        })}
-      </div>
-    `;
-  },
-  play: ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
-    const sdSelects = canvasElement.querySelectorAll('sd-select');
-    sdSelects.forEach(sdSelect => {
-      if (sdSelect.value) {
-        sdSelect.setAttribute('data-user-valid', 'true');
-      } else {
-        sdSelect.setAttribute('data-user-invalid', 'true');
-      }
-    });
-  }
-};
-
-/**
  * Shows available slots. The `label` and `help-text` slots will overwrite their corresponding attributes.
  */
 
@@ -234,7 +169,7 @@ export const Slots = {
   },
   render: (args: any) => {
     return html`
-      ${['default', 'label', 'prefix', 'clear-icon', 'expand-icon', 'help-text'].map(slot =>
+      ${['default', 'label', 'clear-icon', 'expand-icon', 'help-text'].map(slot =>
         generateTemplate({
           axis: {
             x: {
@@ -259,7 +194,6 @@ export const Slots = {
             clearableConstant,
             labelConstant,
             helpTextConstant,
-            leftSlotConstant,
             twoOptionsConstant
           ],
           args
@@ -275,7 +209,6 @@ export const Slots = {
   `form-control-input`,
   `form-control-help-text`,
   `combobox`,
-  `prefix`,
   `display-input`,
   `listbox`,
   `tags`,
@@ -294,7 +227,6 @@ const partsArr = [
   'form-control-input',
   'form-control-help-text',
   'combobox',
-  'prefix',
   'display-input',
   'listbox',
   'tags',
@@ -328,12 +260,11 @@ export const Parts = {
         }
       },
       constants: [
-        { type: 'attribute', name: 'checklist', value: true },
+        { type: 'attribute', name: 'useTags', value: true },
         { type: 'attribute', name: 'value', value: 'option-1 option-2' },
         clearableConstant,
         helpTextConstant,
         labelConstant,
-        leftSlotConstant,
         multipleConstant
       ],
       args
@@ -373,8 +304,8 @@ export const Mouseless = {
         constants: [
           ...sharedConstants,
           multipleConstant,
-          { type: 'attribute', name: 'checklist', value: true },
-          { type: 'attribute', name: 'label', value: 'Multiple Checklist' }
+          { type: 'attribute', name: 'useTags', value: true },
+          { type: 'attribute', name: 'label', value: 'Multiple w/ Tags' }
         ],
         args: null
       })}
@@ -407,7 +338,7 @@ export const SampleGroupingOptions = {
             type: 'slot',
             name: 'default',
             value:
-              '<small>Odd Options</small><sd-option value="option-1">Option 1</sd-option><sd-option value="option-3">Option 3</sd-option><sd-divider class="mb-2"></sd-divider><small>Even Options</small><sd-option value="option-2">Option 2</sd-option>'
+              '<small>Nisi eu excepteur anim esse</small><sd-option value="option-1">Option 1</sd-option><sd-option value="option-2">Option 2</sd-option><sd-divider class="mb-2"></sd-divider><small>Nisi eu excepteur anim esse</small><sd-option value="option-3">Option 3</sd-option>'
           }
         ],
         args
@@ -432,14 +363,12 @@ export const SampleForm = {
       { type: 'attribute', name: 'form', value: 'testForm' },
       { type: 'attribute', name: 'clearable', value: true },
       { type: 'attribute', name: 'required', value: true },
-      { type: 'attribute', name: 'placeholder', value: '.*' },
-      { type: 'attribute', name: 'help-text', value: 'selection must be made' },
       twoOptionsConstant
     ];
 
     return html`
       <form action="" method="get" id="testForm" name="testForm" class="w-[370px]">
-        <div class="mb-2">
+        <div class="mb-6">
           ${generateTemplate({
             constants: [
               ...sharedConstants,
@@ -449,7 +378,7 @@ export const SampleForm = {
             args: null
           })}
         </div>
-        <div class="mb-2">
+        <div class="mb-6">
           ${generateTemplate({
             constants: [
               ...sharedConstants,
@@ -460,14 +389,14 @@ export const SampleForm = {
             args: null
           })}
         </div>
-        <div class="mb-4">
+        <div class="mb-8">
           ${generateTemplate({
             constants: [
               ...sharedConstants,
-              { type: 'attribute', name: 'label', value: 'Required Multiple Checklist' },
-              { type: 'attribute', name: 'name', value: 'required multiple checklist field' },
+              { type: 'attribute', name: 'label', value: 'Required Multiple w/ Tags' },
+              { type: 'attribute', name: 'name', value: 'required multiple tags field' },
               multipleConstant,
-              { type: 'attribute', name: 'checklist', value: true }
+              { type: 'attribute', name: 'useTags', value: true }
             ],
             args: null
           })}

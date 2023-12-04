@@ -50,7 +50,7 @@ Adds a clear button when the select is not empty.
 
 #### max-options-visible
 
-The maximum number of selected options to show when `multiple` and `checklist` are `true`. After the maximum, "+n" will be shown to indicate the number of additional items that are selected. Set to 0 to remove the limit.
+The maximum number of selected options to show when `multiple` and `useTags` are `true`. After the maximum, "+n" will be shown to indicate the number of additional items that are selected. Set to 0 to remove the limit.
 
 #### form
 
@@ -66,9 +66,9 @@ The name of the select, submitted as a name/value pair with form data.
 
 Replaces `hint`. If you need to display HTML, use the `help-text` slot instead.
 
-#### multiple & checklist
+#### multiple & useTags
 
-Two boolean attributes that replace `variant`. `multiple` enables multiple options to be selected but does not show them in the display input. `checklist` alters the multiple variant to use a list of checkbox style options in addition to showing individual `sd-tag` elements in the display input.
+Two boolean attributes that replace `variant`. `multiple` enables multiple options to be selected but does not show them in the display input. `useTags` alters the multiple variant to use individual `sd-tag` elements to display options in the display input.
 
 #### value
 

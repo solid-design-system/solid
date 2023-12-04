@@ -34,7 +34,6 @@ import type SdOption from '../option/option';
  *
  * @slot - The listbox options. Must be `<sd-option>` elements. You can use `<sd-divider>` to group items visually.
  * @slot label - The input's label. Alternatively, you can use the `label` attribute.
- * @slot prefix - Used to prepend a presentational icon or similar element to the combobox.
  * @slot help-text - Text that describes how to use the input. Alternatively, you can use the `help-text` attribute.
  * @slot clear-icon - An icon to use in lieu of the default clear icon.
  * @slot expand-icon - The icon to show when the control is expanded and collapsed. Rotates on open and close.
@@ -55,8 +54,7 @@ import type SdOption from '../option/option';
  * @csspart form-control-label - The label's wrapper.
  * @csspart form-control-input - The select's wrapper.
  * @csspart form-control-help-text - The help text's wrapper.
- * @csspart combobox - The container the wraps the prefix, combobox, clear icon, and expand button.
- * @csspart prefix - The container that wraps the prefix slot.
+ * @csspart combobox - The container the wraps the combobox, clear icon, and expand button.
  * @csspart display-input - The element that displays the selected option's label, an `<input>` element.
  * @csspart listbox - The listbox container where options are slotted.
  * @csspart tags - The container that houses option tags when `multiselect` is used.
@@ -93,7 +91,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
 
   @state() private hasFocus = false;
   @state() hasHover = false; // we need this because Safari doesn't honor :hover styles while dragging
-  /** When `multiple` is `true` and `checklist` is `false`, the displayLabel sets the text shown in the display input. We use the localized string "Options Selected (#)" by default. */
+  /** When `multiple` is `true` and `useTags` is `false`, the displayLabel sets the text shown in the display input. We use the localized string "Options Selected (#)" by default. */
   @state() private displayLabel = '';
   @state() private currentOption: SdOption;
   @state() private selectedOptions: SdOption[] = [];
@@ -139,11 +137,11 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   /** Allows more than one option to be selected. */
   @property({ type: Boolean, reflect: true }) multiple = false;
 
-  /** Enables checklist variant when `multiple` is true. Each `sd-option` element in the listbox has its `checkbox` attribute set to `true` and the value input displays interactive `sd-tag` elements representing individual options.  */
-  @property({ type: Boolean, reflect: true }) checklist = false;
+  /** Uses interactive `sd-tag` elements representing individual options in the display input when `multiple` is `true`. */
+  @property({ type: Boolean, reflect: true }) useTags = false;
 
   /**
-   * The maximum number of selected options to show when `multiple` and `checklist` are `true`. After the maximum, "+n" will be shown to
+   * The maximum number of selected options to show when `multiple` and `useTags` are `true`. After the maximum, "+n" will be shown to
    * indicate the number of additional items that are selected. Set to 0 to remove the limit.
    */
   @property({ attribute: 'max-options-visible', type: Number }) maxOptionsVisible = 3;
@@ -216,6 +214,9 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
 
   connectedCallback() {
     super.connectedCallback();
+
+    // Cascade select size to options once connected
+    this.applySizeToOptions();
 
     // Because this is a form control, it shouldn't be opened initially
     this.open = false;
@@ -472,7 +473,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     // Check for duplicate values in menu items
     if (customElements.get('sd-option')) {
       allOptions.forEach(option => {
-        if (this.checklist) {
+        if (this.multiple) {
           option.checkbox = true;
         }
         values.push(option.value);
@@ -568,7 +569,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     if (this.multiple) {
       this.value = this.selectedOptions.map(el => el.value);
 
-      if (this.checklist || this.value.length === 0) {
+      if (this.useTags || this.value.length === 0) {
         // When no items are selected, keep the value empty so the placeholder shows
         this.displayLabel = '';
       } else {
@@ -625,14 +626,14 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     }
   }
 
-  @watch('checklist', { waitUntilFirstUpdate: true })
-  handleChecklistChange() {
+  @watch('useTags', { waitUntilFirstUpdate: true })
+  handleUseTagsChange() {
     const allOptions = this.getAllOptions();
 
-    // Mutate all sd-option checkbox attributes based on checklist state
+    // Mutate all sd-option checkbox attributes based on useTags state
     if (customElements.get('sd-option')) {
       allOptions.forEach(option => {
-        option.checkbox = this.checklist;
+        option.checkbox = this.multiple;
       });
     }
   }
@@ -690,7 +691,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   }
 
   @watch('size', { waitUntilFirstUpdate: true })
-  handleSizeChange() {
+  applySizeToOptions() {
     this._optionsInDefaultSlot.forEach(option => {
       option.size = this.size;
     });
@@ -763,7 +764,6 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     const slots = {
       default: this.hasSlotController.test('[default]'),
       label: this.hasSlotController.test('label'),
-      prefix: this.hasSlotController.test('prefix'),
       clearIcon: this.hasSlotController.test('clear-icon'),
       expandIcon: this.hasSlotController.test('expand-icon'),
       helpText: this.hasSlotController.test('help-text')
@@ -817,7 +817,6 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
       default: 'border-neutral-800'
     }[selectState];
 
-    const iconColor = this.disabled ? 'text-neutral-500' : 'text-primary';
     const iconMarginLeft = { sm: 'ml-1', md: 'ml-2', lg: 'ml-2' }[this.size];
     const iconSize = {
       sm: 'text-base',
@@ -838,7 +837,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
           aria-hidden=${hasLabel ? 'false' : 'true'}
           @click=${this.handleLabelClick}
         >
-          <slot name="label">${this.label}${this.required ? '*' : ''}</slot>
+          <slot name="label">${this.label}${this.required ? ' *' : ''}</slot>
         </label>
 
         <div part="form-control-input" class=${cx('relative w-full bg-white')}>
@@ -881,13 +880,6 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
               @mouseenter=${this.handleMouseEnter}
               @mouseleave=${this.handleMouseLeave}
             >
-              ${slots['prefix']
-                ? html`<slot
-                    name="prefix"
-                    part="prefix"
-                    class=${cx('inline-flex', this.size === 'sm' ? 'mr-1' : 'mr-2', iconColor, iconSize)}
-                  ></slot>`
-                : ''}
               <input
                 name=${this.name}
                 form=${this.form}
@@ -895,7 +887,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 class=${cx(
                   'appearance-none outline-none flex-grow bg-transparent',
                   cursorStyles,
-                  this.multiple && this.checklist && this.value.length > 0 ? 'hidden' : ''
+                  this.multiple && this.useTags && this.value.length > 0 ? 'hidden' : ''
                 )}
                 type="text"
                 placeholder=${this.placeholder}
@@ -917,8 +909,16 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 @blur=${this.handleBlur}
               />
 
-              ${this.multiple && this.checklist
-                ? html`<div part="tags" class="flex-grow flex flex-wrap items-center gap-1">${this.tags}</div>`
+              ${this.multiple && this.useTags
+                ? html`<div
+                    part="tags"
+                    class=${cx(
+                      'flex-grow flex flex-wrap items-center',
+                      { sm: 'gap-1', md: 'gap-1', lg: 'gap-2' }[this.size]
+                    )}
+                  >
+                    ${this.tags}
+                  </div>`
                 : ''}
 
               <input
@@ -1030,7 +1030,6 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
         overflow-y: scroll;
       }
 
-      // adapt sd-tag for use as sd-select-option (this is the figma naming)
       sd-tag::part(base) {
         border-radius: 4px;
       }

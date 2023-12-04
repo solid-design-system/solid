@@ -475,7 +475,7 @@ describe('<sd-select>', () => {
 
   it('should emit sd-change and sd-input when a tag is removed', async () => {
     const el = await fixture<SdSelect>(html`
-      <sd-select value="option-1 option-2 option-3" multiple checklist>
+      <sd-select value="option-1 option-2 option-3" multiple useTags>
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
         <sd-option value="option-3">Option 3</sd-option>
