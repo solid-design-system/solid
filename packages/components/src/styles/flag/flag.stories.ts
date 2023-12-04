@@ -91,7 +91,6 @@ export const Samples = {
   render: () => {
     return html`
       <div class="flex justify-between gap-8">
-
         <div class="grow basis-0">
           <sd-teaser variant="white border-neutral-400" breakpoint="9999" inset>
             <div slot="media" class="relative">
@@ -120,12 +119,17 @@ export const Samples = {
         <div class="grow basis-0">
           <sd-teaser variant="primary-100" breakpoint="9999" inset>
             <div slot="media" class="relative">
-<!--              <img class="aspect-video object-cover" src="./placeholders/generic.jpg" alt="A generic placeholder jpg" />-->
+              <!--              <img class="aspect-video object-cover" src="./placeholders/generic.jpg" alt="A generic placeholder jpg" />-->
               <!-- Should be top-3-->
               <span class="absolute top-2 sd-chip sd-chip--primary-200">chip name</span>
               <span class="absolute top-2 right-0 sd-flag sd-flag--neutral-500">flag name</span>
               <div class="flex justify-center ">
-                <sd-icon name="content/picture" library="global-resources" color="primary" style="font-size: 96px"></sd-icon>
+                <sd-icon
+                  name="content/picture"
+                  library="global-resources"
+                  color="primary"
+                  style="font-size: 96px"
+                ></sd-icon>
               </div>
             </div>
             <div slot="meta" class="meta-info">
