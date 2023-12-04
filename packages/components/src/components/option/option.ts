@@ -43,7 +43,7 @@ export default class SdOption extends SolidElement {
   @state() hasHover = false; // we need this because Safari doesn't honor :hover styles while dragging
 
   /** The option's size is inherited automatically from the `size` attribute of the parent `sd-select`. */
-  @property() size: 'lg' | 'md' | 'sm' = 'lg';
+  @property({ reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
 
   /** Prefixes a styled checkbox to the option. Enabled automatically in `sd-select` when attribute `checklist` is set to `true`. */
   @property({ type: Boolean, reflect: true }) checkbox = false;
