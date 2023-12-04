@@ -32,7 +32,7 @@ export const Default = {
   args: overrideArgs([
     { type: 'attribute', name: 'label', value: 'Label' },
     { type: 'attribute', name: 'value', value: 'value' },
-    { type: 'attribute', name: 'help-text', value: 'help-text' },
+    { type: 'attribute', name: 'help-text', value: 'help-text' }
   ]),
   render: (args: any) => {
     return html`<div class="w-[250px]">${generateTemplate({ args })}</div> `;
