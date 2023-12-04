@@ -21,29 +21,20 @@ export default {
   title: 'Styles/sd-flag',
   component: 'sd-flag',
   parameters: {
-    ...parameters
+    ...parameters,
+    backgrounds: {
+      default: 'dark'
+    }
   },
   args: overrideArgs([{ type: 'slot', name: 'default', value: 'Lorem Ipsum' }]),
   argTypes,
-  decorators: [
-    (story: any) => html`
-      <style>
-        .background {
-          background: rgb(var(--sd-color-neutral-200, 242 242 242));
-          height: 50px;
-          width: fit-content;
-          padding: 10px;
-        }
-      </style>
-      ${story()}
-    `
-  ]
+  decorators: [(story: any) => html` ${story()} `]
 };
 
 export const Default = {
   render: (args: any) => {
     return generateTemplate({
-      options: { templateContent: '<div class="background"><span class="%CLASSES%">%SLOT%</span></div>' },
+      options: { templateContent: '<span class="%CLASSES%">%SLOT%</span>' },
       args
     });
   }
@@ -78,11 +69,107 @@ export const Variants = {
           name: 'default',
           value: `${flag.constant}`
         },
-        options: {
-          templateBackground: 'rgb(var(--sd-color-neutral-200, 242 242 242))'
-        },
         args
       })
     )}`;
+  }
+};
+
+/**
+ * Sample implementation of a currency stepper.
+ */
+
+export const Samples = {
+  parameters: {
+    controls: {
+      include: []
+    },
+    backgrounds: {
+      default: 'white'
+    }
+  },
+  render: () => {
+    return html`
+      <div class="flex justify-between gap-8">
+
+        <div class="grow basis-0">
+          <sd-teaser variant="white border-neutral-400" breakpoint="9999" inset>
+            <div slot="media" class="relative">
+              <img class="aspect-video object-cover" src="./placeholders/generic.jpg" alt="A generic placeholder jpg" />
+              <!-- Should be top-3-->
+              <span class="absolute top-2 sd-chip">chip name</span>
+              <span class="absolute top-2 right-0 sd-flag sd-flag--neutral-200">flag name</span>
+            </div>
+            <div slot="meta" class="meta-info">
+              <span class="meta-info-item">01.12.2013</span>
+              <span class="meta-info-item">| Author name</span>
+            </div>
+            <h3 slot="headline">Risus luctus sem a laoreet convallis nunc id quis fusce</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget risus porta, tincidunt turpis at,
+              interdum tortor.
+            </p>
+            <div class="flex flex-row gap-2">
+              <span class="sd-chip sd-chip--primary-200">chip name</span>
+              <span class="sd-chip sd-chip--primary-200">chip name</span>
+            </div>
+            <sd-button variant="primary">Label</sd-button>
+          </sd-teaser>
+        </div>
+
+        <div class="grow basis-0">
+          <sd-teaser variant="primary-100" breakpoint="9999" inset>
+            <div slot="media" class="relative">
+<!--              <img class="aspect-video object-cover" src="./placeholders/generic.jpg" alt="A generic placeholder jpg" />-->
+              <!-- Should be top-3-->
+              <span class="absolute top-2 sd-chip sd-chip--primary-200">chip name</span>
+              <span class="absolute top-2 right-0 sd-flag sd-flag--neutral-500">flag name</span>
+              <div class="flex justify-center ">
+                <sd-icon name="content/picture" library="global-resources" color="primary" style="font-size: 96px"></sd-icon>
+              </div>
+            </div>
+            <div slot="meta" class="meta-info">
+              <span class="meta-info-item">01.12.2013</span>
+              <span class="meta-info-item">| Author name</span>
+            </div>
+            <h3 slot="headline">Risus luctus sem a laoreet convallis nunc id quis fusce</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget risus porta, tincidunt turpis at,
+              interdum tortor.
+            </p>
+            <div class="flex flex-row gap-2">
+              <span class="sd-chip sd-chip--primary-300">chip name</span>
+              <span class="sd-chip sd-chip--primary-300">chip name</span>
+            </div>
+            <sd-button variant="primary">Label</sd-button>
+          </sd-teaser>
+        </div>
+
+        <div class="grow basis-0">
+          <sd-teaser variant="primary" breakpoint="9999" inset>
+            <div slot="media" class="relative">
+              <img class="aspect-video object-cover" src="./placeholders/generic.jpg" alt="A generic placeholder jpg" />
+              <!-- Should be top-3-->
+              <span class="absolute top-2 sd-chip">chip name</span>
+              <span class="absolute top-2 right-0 sd-flag sd-flag--neutral-200">flag name</span>
+            </div>
+            <div slot="meta" class="meta-info">
+              <span class="meta-info-item">01.12.2013</span>
+              <span class="meta-info-item">| Author name</span>
+            </div>
+            <h3 slot="headline">Risus luctus sem a laoreet convallis nunc id quis fusce</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget risus porta, tincidunt turpis at,
+              interdum tortor.
+            </p>
+            <div class="flex flex-row gap-2">
+              <span class="sd-chip sd-chip--primary-500">chip name</span>
+              <span class="sd-chip sd-chip--primary-500">chip name</span>
+            </div>
+            <sd-button variant="primary" inverted>Label</sd-button>
+          </sd-teaser>
+        </div>
+      </div>
+    `;
   }
 };
