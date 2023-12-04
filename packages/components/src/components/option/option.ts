@@ -135,7 +135,7 @@ export default class SdOption extends SolidElement {
         <span
           class=${cx(
             'absolute w-full left-0 top-0 pointer-events-none transition-all duration-150 border-l-4 h-[calc(100%-8px)]',
-            this.selected ? 'border-accent' : 'border-transparent',
+            this.selected && !this.checkbox ? 'border-accent' : 'border-transparent',
             this.disabled && 'border-neutral-500 top-1',
             !this.disabled && this.hasHover ? 'h-full top-0' : 'top-1'
           )}
@@ -146,11 +146,7 @@ export default class SdOption extends SolidElement {
               part="control ${this.selected ? ' control--checked' : 'control--unchecked'}"
               class=${cx(
                 'relative flex flex-initial items-center justify-center border rounded-sm h-4 w-4 mr-2',
-                this.disabled
-                  ? 'border-neutral-500'
-                  : this.selected
-                    ? 'border-accent hover:border-accent-550 bg-accent'
-                    : 'border-neutral-800'
+                this.disabled ? 'border-neutral-500' : this.selected ? 'bg-accent border-accent' : 'border-neutral-800'
               )}
             >
               ${this.selected
