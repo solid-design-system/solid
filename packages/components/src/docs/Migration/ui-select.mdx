@@ -1,0 +1,246 @@
+# Migration Guide: From `ui-select` to `sd-select`
+
+The new `sd-select` is designed to replace the `ui-select`. Instead of mainly providing content via attributes, the `sd-select` component uses slots to allow for more flexibility and customization.
+
+## 💾 Slots
+
+### ✨ New Slots
+
+#### label
+
+The input's label. Alternatively, you can use the label attribute.
+
+#### left
+
+Used to prepend a presentational icon or similar element to the combobox.
+
+#### help-text
+
+Text that describes how to use the input. Alternatively, you can use the help-text attribute.
+
+#### clear-icon
+
+An icon to use in lieu of the default clear icon.
+
+#### expand-icon
+
+The icon to show when the control is expanded and collapsed. Rotates on open and close.
+
+<hr />
+
+## ⚙️ Attributes
+
+### ✨ New Attributes
+
+#### size
+
+The select's size.
+
+#### placeholder
+
+Placeholder text to show as a hint when the select is empty.
+
+#### placement
+
+The preferred placement of the select's menu. Note that the actual placement may vary as needed to keep the listbox inside of the viewport.
+
+#### clearable
+
+Adds a clear button when the select is not empty.
+
+#### max-options-visible
+
+The maximum number of selected options to show when `multiple` and `checklist` are `true`. After the maximum, "+n" will be shown to indicate the number of additional items that are selected. Set to 0 to remove the limit.
+
+#### form
+
+By default, form controls are associated with the nearest containing form element. This attribute allows you to place the form control outside of a form and associate it with the form that has this id. The form must be in the same document or shadow root for this to work.
+
+#### name
+
+The name of the select, submitted as a name/value pair with form data.
+
+### 🔀 Updated Attributes
+
+#### help-text
+
+Replaces `hint`. If you need to display HTML, use the `help-text` slot instead.
+
+#### enableValidation
+
+Replaces `error` and `success`. When enabled, validation styles are based on the `required` attribute.
+
+#### multiple & checklist
+
+Two boolean attributes that replace `variant`. `multiple` enables multiple options to be selected but does not show them in the display input. `checklist` alters the multiple variant to use a list of checkbox style options in addition to showing individual `sd-tag` elements in the display input.
+
+#### value
+
+The current value of the select, submitted as a name/value pair with form data. When multiple is enabled, the value attribute will be a space-delimited list of values based on the options selected, and the value property will be an array. For this reason, values must not contain spaces.
+
+#### hoist
+
+Enable this option to prevent the listbox from being clipped when the component is placed inside a container with overflow: auto|scroll. Hoisting uses a fixed positioning strategy that works in many, but not all, scenarios.
+
+#### getTag
+
+A function that customizes the tags to be rendered when multiple=true. The first argument is the option, the second is the current tag's index. The function should return either a Lit TemplateResult or a string containing trusted HTML of the symbol to render at the specified value.
+
+### ❌ Removed Attributes
+
+The following attributes have been removed from the new sd-select component:
+
+1. choicesArray
+2. disabledOptions
+3. error
+4. hint
+5. inFocus
+6. message
+7. success
+8. variant
+
+<hr />
+
+## ✍️ CSS Variables
+
+### ✨ New CSS Variables
+
+#### All
+
+See CSS Shadow Parts in the Storybook docs.
+
+<hr />
+
+## 🥳 Events
+
+### ✨ New Events
+
+### sd-clear
+
+Emitted when the control's value is cleared.
+
+### sd-input
+
+Emitted when the control receives input.
+
+### sd-focus
+
+Emitted when the control gains focus.
+
+### sd-blur
+
+Emitted when the control loses focus.
+
+### sd-show
+
+Emitted when the select's menu opens.
+
+### sd-after-show
+
+Emitted after the select's menu opens and all animations are complete.
+
+### sd-hide
+
+Emitted when the select's menu closes.
+
+### sd-after-hide
+
+Emitted after the select's menu closes and all animations are complete.
+
+### sd-invalid
+
+Emitted when the form control has been checked for validity and its constraints aren't satisfied.
+
+### 🔄 Updated Events
+
+#### sd-change
+
+Replaces `change`. Emitted when the control's value changes.
+
+### ❌ Removed Events:
+
+The following events have been removed from the new sd-select component:
+
+1. change
+2. uiSelectCheckboxChange
+
+<hr />
+
+## 🦻 Event Listeners
+
+### ✨ New Event Listeners
+
+#### focusin
+
+Close the listbox when focusing out of the select.
+
+#### keydown
+
+Conditionally handle keyboard interaction.
+
+#### mousedown
+
+Close the listbox when clicking outside of the select.
+
+### ❌ Removed Event Listeners:
+
+The following event listeners have been removed from the new sd-select component:
+
+1. showDropdown
+2. hideDropdown
+3. change
+4. choice
+5. click
+
+<hr />
+
+## 🧪 Methods
+
+### ✨ New Methods
+
+#### show
+
+Shows the listbox.
+
+#### hide
+
+Hides the listbox.
+
+#### checkValidity
+
+Hides the listbox.
+
+#### getForm
+
+Gets the associated form, if one exists.
+
+#### reportValidity
+
+Checks for validity and shows the browser's validation message if the control is invalid.
+
+#### setCustomValidity
+
+Sets a custom validation message. Pass an empty string to restore validity.
+
+#### focus
+
+Sets focus on the control.
+
+#### blur
+
+Removes focus from the control.
+
+### ❌ Removed Methods:
+
+The following methods have been removed from the new sd-select component:
+
+1. setPlaceholderText
+2. onActiveDropdownClick
+3. hasDuplicates
+4. updateDisabledItems
+5. isVariantCheckbox
+6. disableItemsChangeHandler
+7. disabledChangeHandler
+8. handleClick
+9. removeAlreadySelected
+10. setChoicesHandler
