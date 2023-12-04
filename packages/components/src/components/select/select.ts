@@ -174,9 +174,6 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   /** The select's required attribute. */
   @property({ type: Boolean, reflect: true }) required = false;
 
-  /** This option is a gate for validation styles. It is enabled automatically if the `required` attribute is `true` and the form controller `data-user-invalid` attribute (indicates the user has interacted with the element) is `true`. */
-  @property({ type: Boolean, reflect: true }) enableValidation = false;
-
   /**
    * Enable this option to prevent the listbox from being clipped when the component is placed inside a container with
    * `overflow: auto|scroll`. Hoisting uses a fixed positioning strategy that works in many, but not all, scenarios.
@@ -708,13 +705,6 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     this.setSelectedOptions(allOptions.filter(el => value.includes(el.value)));
   }
 
-  /** When updated, check for the `data-user-invalid` attribute which indicates whether the user has interacted with the select element. If present, there has been interaction so we enable validation styles. */
-  updated() {
-    if (this.hasAttribute('data-user-invalid')) {
-      this.enableValidation = true;
-    }
-  }
-
   /** Shows the listbox. */
   async show() {
     if (this.open || this.disabled) {
@@ -783,8 +773,8 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     const hasHelpText = this.helpText ? true : !!slots['helpText'];
     const hasClearIcon = this.clearable && !this.disabled && this.value.length > 0;
 
-    const isInvalid = this.enableValidation && this.required && !this.checkValidity();
-    const isValid = this.enableValidation && this.required && this.checkValidity();
+    const isInvalid = this.hasAttribute('data-user-invalid') && this.required && !this.checkValidity();
+    const isValid = this.hasAttribute('data-user-valid') && this.required && this.checkValidity();
 
     // Hierarchy of input states:
     const selectState = this.disabled
@@ -835,6 +825,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
       lg: 'text-xl'
     }[this.size];
 
+    // Template
     return html`
       <div
         part="form-control"
@@ -1039,6 +1030,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
         overflow-y: scroll;
       }
 
+      // adapt sd-tag for use as sd-select-option (this is the figma naming)
       sd-tag::part(base) {
         border-radius: 4px;
       }

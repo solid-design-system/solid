@@ -177,7 +177,6 @@ export const ValidInvalid = {
   },
   render: () => {
     const sharedConstants: ConstantDefinition[] = [
-      { type: 'attribute', name: 'enableValidation', value: true },
       { type: 'attribute', name: 'clearable', value: true },
       { type: 'attribute', name: 'required', value: true },
       { type: 'attribute', name: 'checklist', value: true },
@@ -210,6 +209,16 @@ export const ValidInvalid = {
         })}
       </div>
     `;
+  },
+  play: ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
+    const sdSelects = canvasElement.querySelectorAll('sd-select');
+    sdSelects.forEach(sdSelect => {
+      if (sdSelect.value) {
+        sdSelect.setAttribute('data-user-valid', 'true');
+      } else {
+        sdSelect.setAttribute('data-user-invalid', 'true');
+      }
+    });
   }
 };
 
