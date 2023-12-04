@@ -16,7 +16,7 @@ import type { SolidFormControl } from '../../internal/solid-element';
  * @summary Textareas collect data from the user and allow multiple lines of text.
  * @documentation https://shoelace.style/components/textarea
  * @status stable
- * @since 2.0
+ * @since 1.30.0
  *
  * @slot label - The textarea's label. Alternatively, you can use the `label` attribute.
  * @slot help-text - Text that describes how to use the input. Alternatively, you can use the `help-text` attribute.
