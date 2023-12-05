@@ -1,4 +1,4 @@
-import { expect, fixture, html, waitUntil } from '@open-wc/testing';
+import { expect, fixture, html, oneEvent, waitUntil } from '@open-wc/testing';
 import { sendKeys } from '@web/test-runner-commands';
 import { serialize } from '../../utilities/form.js';
 import sinon from 'sinon';
@@ -238,35 +238,35 @@ describe('<sd-textarea>', () => {
     });
   });
 
-  // describe('when resetting a form', () => {
-  //   it('should reset the element to its initial value', async () => {
-  //     const form = await fixture<HTMLFormElement>(html`
-  //       <form>
-  //         <sd-textarea name="a" value="test"></sd-textarea>
-  //         <sd-button type="reset">Reset</sd-button>
-  //       </form>
-  //     `);
-  //     const button = form.querySelector('sd-button')!;
-  //     const textarea = form.querySelector('sd-textarea')!;
-  //     textarea.value = '1234';
-  //
-  //     await textarea.updateComplete;
-  //
-  //     setTimeout(() => button.click());
-  //     await oneEvent(form, 'reset');
-  //     await textarea.updateComplete;
-  //
-  //     expect(textarea.value).to.equal('test');
-  //
-  //     textarea.defaultValue = '';
-  //
-  //     setTimeout(() => button.click());
-  //     await oneEvent(form, 'reset');
-  //     await textarea.updateComplete;
-  //
-  //     expect(textarea.value).to.equal('');
-  //   });
-  // });
+  describe('when resetting a form', () => {
+    it('should reset the element to its initial value', async () => {
+      const form = await fixture<HTMLFormElement>(html`
+        <form>
+          <sd-textarea name="a" value="test"></sd-textarea>
+          <sd-button type="reset">Reset</sd-button>
+        </form>
+      `);
+      const button = form.querySelector('sd-button')!;
+      const textarea = form.querySelector('sd-textarea')!;
+      textarea.value = '1234';
+
+      await textarea.updateComplete;
+
+      setTimeout(() => button.click());
+      await oneEvent(form, 'reset', false);
+      await textarea.updateComplete;
+
+      expect(textarea.value).to.equal('test');
+
+      textarea.defaultValue = '';
+
+      setTimeout(() => button.click());
+      await oneEvent(form, 'reset', false);
+      await textarea.updateComplete;
+
+      expect(textarea.value).to.equal('');
+    });
+  });
 
   describe('when using spellcheck', () => {
     it('should enable spellcheck when no attribute is present', async () => {

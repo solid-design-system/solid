@@ -314,26 +314,6 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
 
     // Conditional Styles
     const textSize = this.size === 'sm' ? 'text-sm' : 'text-base';
-    const textColor = {
-      disabled: 'text-neutral-500',
-      readonly: 'text-black',
-      activeInvalid: 'text-error',
-      activeValid: 'text-success',
-      active: 'text-black',
-      invalid: 'text-error',
-      valid: 'text-success',
-      default: 'text-black'
-    }[inputState];
-    const borderColor = {
-      disabled: 'border-neutral-500',
-      readonly: 'border-neutral-800',
-      activeInvalid: 'border-error border-2',
-      activeValid: 'border-success border-2',
-      active: 'border-primary border-2',
-      invalid: 'border-error',
-      valid: 'border-success',
-      default: 'border-neutral-800'
-    }[inputState];
 
     return html`
       <div
@@ -357,22 +337,42 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
         <div part="form-control-input" class="form-control-input relative w-full">
           <div
             part="border"
-            class=${cx('absolute w-full h-full pointer-events-none border rounded-default', borderColor)}
+            class=${cx(
+              'absolute w-full h-full pointer-events-none border rounded-default',
+              {
+                disabled: 'border-neutral-500',
+                readonly: 'border-neutral-800',
+                activeInvalid: 'border-error border-2',
+                activeValid: 'border-success border-2',
+                active: 'border-primary border-2',
+                invalid: 'border-error',
+                valid: 'border-success',
+                default: 'border-neutral-800'
+              }[inputState]
+            )}
           ></div>
           <div
             part="base"
             class=${cx(
               'textarea px-4 flex flex-row items-center rounded-default textarea--resize-none',
-              this.size === 'sm' && 'textarea--small',
-              this.size === 'md' && 'textarea--medium',
-              this.size === 'lg' && 'textarea--large',
-              // Vertical Padding
-              this.size === 'lg' ? 'py-2' : 'py-1',
-              // States
+              {
+                sm: 'textarea-sm py-1',
+                md: 'textarea-md py-1',
+                lg: 'textarea-lg py-2'
+              }[this.size],
+              {
+                disabled: 'text-neutral-500',
+                readonly: 'text-black',
+                activeInvalid: 'text-error',
+                activeValid: 'text-success',
+                active: 'text-black',
+                invalid: 'text-error',
+                valid: 'text-success',
+                default: 'text-black'
+              }[inputState],
               !this.disabled && !this.readonly ? 'hover:bg-neutral-200' : '',
               this.readonly && 'bg-neutral-100',
               isInvalid && 'form-control-input--invalid',
-              textColor,
               !this.value && 'textarea--empty'
             )}
           >
