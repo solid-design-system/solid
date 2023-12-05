@@ -647,7 +647,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
 
         <div
           id="error-message"
-          class="text-error text-sm mt-0.5"
+          class="text-error text-sm mt-2"
           part="error-message"
           aria-live="polite"
           ?hidden=${!isInvalid}
