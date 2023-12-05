@@ -14,7 +14,7 @@ import SolidElement from '../../internal/solid-element';
  * @summary Options define the selectable items within various form controls such as [select](/components/select).
  * @documentation https://solid.union-investment.com/[storybook-link]/option
  * @status stable
- * @since 1.24.0 // TODO UPDATE BEFORE MERGE!!!
+ * @since 1.30.0
  *
  * @dependency sd-icon
  *
