@@ -794,29 +794,6 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     // Conditional Styles
     const cursorStyles = this.disabled ? 'cursor-not-allowed' : 'cursor-pointer';
 
-    const textSize = this.size === 'sm' ? 'text-sm' : 'text-base';
-    const textColor = {
-      disabled: 'text-neutral-500',
-      readonly: 'text-black',
-      activeInvalid: 'text-error',
-      activeValid: 'text-success',
-      active: 'text-black',
-      invalid: 'text-error',
-      valid: 'text-success',
-      default: 'text-black'
-    }[selectState];
-
-    const borderColor = {
-      disabled: 'border-neutral-500',
-      readonly: 'border-neutral-800',
-      activeInvalid: 'border-error border-2',
-      activeValid: 'border-success border-2',
-      active: 'border-primary border-2',
-      invalid: 'border-error',
-      valid: 'border-success',
-      default: 'border-neutral-800'
-    }[selectState];
-
     const iconMarginLeft = { sm: 'ml-1', md: 'ml-2', lg: 'ml-2' }[this.size];
     const iconSize = {
       sm: 'text-base',
@@ -828,7 +805,22 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     return html`
       <div
         part="form-control"
-        class=${cx('form-control relative text-left', cursorStyles, textColor, textSize, this.open && 'z-10')}
+        class=${cx(
+          'form-control relative text-left',
+          cursorStyles,
+          this.size === 'sm' ? 'text-sm' : 'text-base',
+          {
+            disabled: 'text-neutral-500',
+            readonly: 'text-black',
+            activeInvalid: 'text-error',
+            activeValid: 'text-success',
+            active: 'text-black',
+            invalid: 'text-error',
+            valid: 'text-success',
+            default: 'text-black'
+          }[selectState],
+          this.open && 'z-10'
+        )}
       >
         <label
           id="label"
@@ -837,16 +829,25 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
           aria-hidden=${hasLabel ? 'false' : 'true'}
           @click=${this.handleLabelClick}
         >
-          <slot name="label">${this.label}${this.required ? ' *' : ''}</slot>
+          <slot name="label">${this.label}</slot>
         </label>
 
         <div part="form-control-input" class=${cx('relative w-full bg-white')}>
           <div
             part="border"
             class=${cx(
-              borderColor,
               'absolute top-0 w-full h-full pointer-events-none border rounded-default',
               this.hasHover && 'bg-neutral-200',
+              {
+                disabled: 'border-neutral-500',
+                readonly: 'border-neutral-800',
+                activeInvalid: 'border-error border-2',
+                activeValid: 'border-success border-2',
+                active: 'border-primary border-2',
+                invalid: 'border-error',
+                valid: 'border-success',
+                default: 'border-neutral-800'
+              }[selectState],
               this.open &&
                 (this.currentPlacement === 'bottom'
                   ? 'rounded-bl-none rounded-br-none'
@@ -1019,6 +1020,10 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
         display: block;
         position: relative;
         width: 100%;
+      }
+
+      :host([required]) #label::after {
+        content: ' *';
       }
 
       sd-popup::part(popup) {
