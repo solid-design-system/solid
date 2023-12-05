@@ -78,6 +78,8 @@ export default class SdInput extends SolidElement implements SolidFormControl {
 
   @query('#input') input: HTMLInputElement;
 
+  @query('#error-message') errorMessage: HTMLDivElement;
+
   @state() private hasFocus = false;
 
   /**
@@ -272,8 +274,11 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     this.emit('sd-input');
   }
 
-  private handleInvalid() {
+  private handleInvalid(event: Event) {
     this.formControlController.setValidity(false);
+    this.formControlController.emitInvalidEvent(event);
+    event.preventDefault();
+    this.errorMessage.textContent = (event.target as HTMLInputElement).validationMessage;
   }
 
   private handleKeyDown(event: KeyboardEvent) {
@@ -412,9 +417,8 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     const hasLabel = this.label ? true : !!slots['label'];
     const hasHelpText = this.helpText ? true : !!slots['helpText'];
     const hasClearIcon = this.clearable && !this.readonly && (typeof this.value === 'number' || this.value.length > 0);
-    const hasValidationAttr = this.required || !!this.pattern || !!this.minlength || !!this.maxlength;
-    const isInvalid = hasValidationAttr && !this.checkValidity();
-    const isValid = hasValidationAttr && this.checkValidity();
+    const isInvalid = this.hasAttribute('data-user-invalid') && !this.checkValidity();
+    const isValid = this.hasAttribute('data-user-valid') && this.checkValidity();
     // Hierarchy of input states:
     const inputState = this.disabled
       ? 'disabled'
@@ -480,10 +484,10 @@ export default class SdInput extends SolidElement implements SolidFormControl {
         </label>
 
         <div part="form-control-input" class="form-control-input relative w-full">
-          <div part="border" class=${cx(
-            'absolute w-full h-full pointer-events-none border rounded-default transition-all',
-            borderColor
-          )}></div>
+          <div
+            part="border"
+            class=${cx('absolute w-full h-full pointer-events-none border rounded-default', borderColor)}
+          ></div>
           <div
             part="base"
             class=${cx(
@@ -500,15 +504,13 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               isFirefox && 'input--is-firefox'
             )}
           >
-            ${
-              slots['left']
-                ? html`<slot
-                    name="left"
-                    part="left"
-                    class=${cx('inline-flex', this.size === 'sm' ? 'mr-1' : 'mr-2', iconColor, iconSize)}
-                  ></slot>`
-                : ''
-            }
+            ${slots['left']
+              ? html`<slot
+                  name="left"
+                  part="left"
+                  class=${cx('inline-flex', this.size === 'sm' ? 'mr-1' : 'mr-2', iconColor, iconSize)}
+                ></slot>`
+              : ''}
             <input
               part="input"
               id="input"
@@ -545,110 +547,91 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               @keydown=${this.handleKeyDown}
               @focus=${this.handleFocus}
               @blur=${this.handleBlur}
-            >
+            />
             <!-- TODO: substitute text-neutral-400 for text-neutral-500 when available! -->
-            ${
-              hasClearIcon
-                ? html`
-                    <button
-                      part="clear-button"
-                      class=${cx('flex justify-center ', iconMarginLeft)}
-                      type="button"
-                      aria-label=${this.localize.term('clearEntry')}
-                      @click=${this.handleClearClick}
-                      tabindex="-1"
-                    >
-                      <slot name="clear-icon">
-                        <sd-icon
-                          class=${cx('text-neutral-500', iconSize)}
-                          library="system"
-                          name="closing-round"
-                        ></sd-icon>
-                      </slot>
-                    </button>
-                  `
-                : ''
-            }
-            ${
-              this.passwordToggle && this.type === 'password'
-                ? html`
-                    <button
-                      aria-label=${this.localize.term(this.passwordVisible ? 'hidePassword' : 'showPassword')}
-                      part="password-toggle-button"
-                      class="flex items-center"
-                      type="button"
-                      @click=${this.handlePasswordToggle}
-                      tabindex="-1"
-                    >
-                      ${this.passwordVisible
-                        ? html`
-                            <slot name="show-password-icon"
-                              ><sd-icon
-                                class=${cx(iconColor, iconMarginLeft, iconSize)}
-                                library="system"
-                                name="eye"
-                              ></sd-icon
-                            ></slot>
-                          `
-                        : html`
-                            <slot name="hide-password-icon"
-                              ><sd-icon
-                                class=${cx(iconColor, iconMarginLeft, iconSize)}
-                                library="system"
-                                name="eye-crossed-out"
-                              ></sd-icon
-                            ></slot>
-                          `}
-                    </button>
-                  `
-                : ''
-            }
-            ${
-              (this.type === 'date' || this.type === 'datetime-local') && !isFirefox
-                ? html`
-                    <sd-icon
-                      class=${cx(iconColor, iconMarginLeft, iconSize)}
-                      library="system"
-                      name="calendar"
-                    ></sd-icon>
-                  `
-                : ''
-            }
-            ${
-              this.type === 'time'
-                ? html`
-                    <sd-icon class=${cx(iconColor, iconMarginLeft, iconSize)} library="system" name="clock"></sd-icon>
-                  `
-                : ''
-            }
-            ${
-              isInvalid
-                ? html`
-                    <sd-icon class=${cx('text-error', iconMarginLeft, iconSize)} library="system" name="risk"></sd-icon>
-                  `
-                : ''
-            }
-            ${
-              isValid
-                ? html`
-                    <sd-icon
-                      class=${cx('text-success', iconMarginLeft, iconSize)}
-                      library="system"
-                      name="confirm"
-                    ></sd-icon>
-                  `
-                : ''
-            }
-            ${
-              slots['right']
-                ? html`<slot
-                    name="right"
-                    part="right"
-                    class=${cx('inline-flex', iconColor, iconMarginLeft, iconSize)}
-                  ></slot>`
-                : ''
-            }
-            
+            ${hasClearIcon
+              ? html`
+                  <button
+                    part="clear-button"
+                    class=${cx('flex justify-center ', iconMarginLeft)}
+                    type="button"
+                    aria-label=${this.localize.term('clearEntry')}
+                    @click=${this.handleClearClick}
+                    tabindex="-1"
+                  >
+                    <slot name="clear-icon">
+                      <sd-icon
+                        class=${cx('text-neutral-500', iconSize)}
+                        library="system"
+                        name="closing-round"
+                      ></sd-icon>
+                    </slot>
+                  </button>
+                `
+              : ''}
+            ${this.passwordToggle && this.type === 'password'
+              ? html`
+                  <button
+                    aria-label=${this.localize.term(this.passwordVisible ? 'hidePassword' : 'showPassword')}
+                    part="password-toggle-button"
+                    class="flex items-center"
+                    type="button"
+                    @click=${this.handlePasswordToggle}
+                    tabindex="-1"
+                  >
+                    ${this.passwordVisible
+                      ? html`
+                          <slot name="show-password-icon"
+                            ><sd-icon
+                              class=${cx(iconColor, iconMarginLeft, iconSize)}
+                              library="system"
+                              name="eye"
+                            ></sd-icon
+                          ></slot>
+                        `
+                      : html`
+                          <slot name="hide-password-icon"
+                            ><sd-icon
+                              class=${cx(iconColor, iconMarginLeft, iconSize)}
+                              library="system"
+                              name="eye-crossed-out"
+                            ></sd-icon
+                          ></slot>
+                        `}
+                  </button>
+                `
+              : ''}
+            ${(this.type === 'date' || this.type === 'datetime-local') && !isFirefox
+              ? html`
+                  <sd-icon class=${cx(iconColor, iconMarginLeft, iconSize)} library="system" name="calendar"></sd-icon>
+                `
+              : ''}
+            ${this.type === 'time'
+              ? html`
+                  <sd-icon class=${cx(iconColor, iconMarginLeft, iconSize)} library="system" name="clock"></sd-icon>
+                `
+              : ''}
+            ${isInvalid
+              ? html`
+                  <sd-icon class=${cx('text-error', iconMarginLeft, iconSize)} library="system" name="risk"></sd-icon>
+                `
+              : ''}
+            ${isValid
+              ? html`
+                  <sd-icon
+                    class=${cx('text-success', iconMarginLeft, iconSize)}
+                    library="system"
+                    name="confirm"
+                  ></sd-icon>
+                `
+              : ''}
+            ${slots['right']
+              ? html`<slot
+                  name="right"
+                  part="right"
+                  class=${cx('inline-flex', iconColor, iconMarginLeft, iconSize)}
+                ></slot>`
+              : ''}
           </div>
         </div>
 
@@ -662,7 +645,13 @@ export default class SdInput extends SolidElement implements SolidFormControl {
           ${this.helpText}
         </slot>
 
-        </div>
+        <div
+          id="error-message"
+          class="text-error text-sm mt-0.5"
+          part="error-message"
+          aria-live="polite"
+          ?hidden=${!isInvalid}
+        ></div>
       </div>
     `;
   }
