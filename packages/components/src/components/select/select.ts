@@ -871,8 +871,11 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
               part="combobox"
               class=${cx(
                 'relative w-full px-4 flex flex-row items-center rounded-default',
-                { sm: 'py-1', md: 'py-1', lg: 'py-2' }[this.size],
-                { sm: 'min-h-[32px]', md: 'min-h-[40px]', lg: 'min-h-[48px]' }[this.size]
+                { 
+                  sm: 'py-1 min-h-[32px]', 
+                  md: 'py-1 min-h-[40px]', 
+                  lg: 'py-2 min-h-[48px]' 
+                }[this.size],
               )}
               slot="anchor"
               @keydown=${this.handleComboboxKeyDown}
