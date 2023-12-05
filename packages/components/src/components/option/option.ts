@@ -124,8 +124,11 @@ export default class SdOption extends SolidElement {
         part="base"
         class=${cx(
           'px-4 flex items-center w-full transition-all text-left text-base relative text-black',
-          { sm: 'py-1', md: 'py-2', lg: 'py-3' }[this.size],
-          { sm: 'text-sm', md: 'text-base', lg: 'text-base' }[this.size],
+          {
+            sm: 'text-sm py-1',
+            md: 'text-base py-2',
+            lg: 'text-base py-3'
+          }[this.size],
           this.disabled ? 'text-neutral-500 cursor-not-allowed' : 'cursor-pointer',
           this.hasHover && !this.disabled ? 'bg-neutral-200' : '',
           this.current && 'bg-neutral-200'
