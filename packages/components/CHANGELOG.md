@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v1.30.0](https://github.com/solid-design-system/solid/compare/components/1.29.0...components/1.30.0) (2023-12-05)
+
+
+### Features
+
+* ✨ add sd-container - CSS style ([#619](https://github.com/solid-design-system/solid/issues/619)) ([f8028cc](https://github.com/solid-design-system/solid/commit/f8028cc6568aa9954f8941b62c9246419363c2c6))
+
+### 📈 Stats
+* Bundle size (uncompressed): 217 KB (unchanged)
+* Bundle size (gzipped): 55 KB (unchanged)
+
 # [@solid-design-system/components-v1.29.0](https://github.com/solid-design-system/solid/compare/components/1.28.0...components/1.29.0) (2023-11-23)
 
 
