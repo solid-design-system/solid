@@ -910,15 +910,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
               />
 
               ${this.multiple && this.useTags
-                ? html`<div
-                    part="tags"
-                    class=${cx(
-                      'flex-grow flex flex-wrap items-center',
-                      { sm: 'gap-1', md: 'gap-1', lg: 'gap-2' }[this.size]
-                    )}
-                  >
-                    ${this.tags}
-                  </div>`
+                ? html`<div part="tags" class="flex-grow flex flex-wrap items-center gap-1">${this.tags}</div>`
                 : ''}
 
               <input
@@ -1032,6 +1024,13 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
 
       sd-tag::part(base) {
         border-radius: 4px;
+        padding-left: 4px;
+        padding-right: 4px;
+      }
+
+      sd-tag[size='lg']::part(base) {
+        padding-left: 8px;
+        padding-right: 8px;
       }
 
       sd-tag::part(base):hover {
