@@ -1,15 +1,15 @@
 .sd-flag {
-  @apply h-8 bg-white text-black text-sm inline-flex items-center px-3 overflow-hidden;
+  @apply h-8 bg-neutral-200 text-black text-sm inline-flex items-center px-3 overflow-hidden;
 
-  &--neutral-200 {
-    @apply bg-neutral-200;
+  &--neutral-500 {
+    @apply bg-neutral-500 text-white;
   }
 
   &--neutral-300 {
     @apply bg-neutral-300;
   }
 
-  &--neutral-500 {
-    @apply bg-neutral-500 text-white;
+  &--white {
+    @apply bg-white;
   }
 }

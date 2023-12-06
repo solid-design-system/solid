@@ -11,10 +11,10 @@ const { generateTemplate } = storybookTemplate('sd-flag');
  * A small, non-interactive label the represents a category.
  *
  * <b>Variants</b><br>
- * <li>white is the default variant</li>
- * <li>--neutral-200</li>
- * <li>--neutral-300</li>
+ * <li>--neutral-200 is the default variant</li>
  * <li>--neutral-500</li>
+ * <li>--neutral-300</li>
+ * <li>--white</li>
  */
 
 export default {
@@ -23,12 +23,15 @@ export default {
   parameters: {
     ...parameters,
     backgrounds: {
-      default: 'dark'
+      default: 'neutral-200'
+    },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/vQ57OHDm26QE1gtZKtfb6L/Flag?type=design&node-id=804-717&mode=design&t=bdhcOj9ub57hEPZl-0'
     }
   },
   args: overrideArgs([{ type: 'slot', name: 'default', value: 'Lorem Ipsum' }]),
-  argTypes,
-  decorators: [(story: any) => html` ${story()} `]
+  argTypes
 };
 
 export const Default = {
@@ -41,43 +44,22 @@ export const Default = {
 };
 
 export const Variants = {
-  name: 'Variants',
-  parameters: {
-    controls: {
-      exclude: ['sd-flag', 'sd-flag--size-neutral-200', 'sd-flag--size-neutral-300', 'sd-flag--size-neutral-500']
-    }
-  },
+  parameters: { controls: { exclude: ['default', 'sd-flag--...'] } },
   render: (args: any) => {
-    return html` ${[
-      {
-        title: '',
-        constant: `Lorem ipsum`
-      }
-    ].map(flag =>
-      generateTemplate({
-        axis: {
-          y: [
-            {
-              type: 'attribute',
-              name: 'Variant',
-              values: ['sd-flag--white', 'sd-flag--neutral-200', 'sd-flag--neutral-300', 'sd-flag--neutral-500']
-            }
-          ]
-        },
-        constants: {
-          type: 'slot',
-          name: 'default',
-          value: `${flag.constant}`
-        },
-        args
-      })
-    )}`;
+    return generateTemplate({
+      axis: {
+        y: [
+          {
+            type: 'attribute',
+            name: 'sd-flag',
+            values: ['sd-flag--neutral-500', 'sd-flag--neutral-300', 'sd-flag--neutral-200', 'sd-flag--white']
+          }
+        ]
+      },
+      args
+    });
   }
 };
-
-/**
- * Sample implementation on 3 consecutive teasers.
- */
 
 export const Samples = {
   parameters: {

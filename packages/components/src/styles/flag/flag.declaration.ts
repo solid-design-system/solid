@@ -4,11 +4,11 @@ export default {
   styleName: 'sd-flag',
   summary: 'Generates basic styles for flag elements.',
   status: 'experimental',
-  since: '1.0',
+  since: '1.31.0',
   attributes: [
     {
-      name: 'sd-flag--neutral-...',
-      options: ['200', '300', '500'],
+      name: 'sd-flag--...',
+      options: ['neutral-500', 'neutral-300', 'white'],
       description: ''
     }
   ]
