@@ -338,7 +338,7 @@ export const SampleGroupingOptions = {
             type: 'slot',
             name: 'default',
             value:
-              '<small>Nisi eu excepteur anim esse</small><sd-option value="option-1">Option 1</sd-option><sd-option value="option-2">Option 2</sd-option><sd-divider class="mb-2"></sd-divider><small>Nisi eu excepteur anim esse</small><sd-option value="option-3">Option 3</sd-option>'
+              '<div class="text-black px-4 font-bold">Nisi eu excepteur anim esse</div><sd-option value="option-1">Option 1</sd-option><sd-option value="option-2">Option 2</sd-option><sd-divider class="mb-2"></sd-divider><div class="text-black px-4 font-bold">Nisi eu excepteur anim esse</div><sd-option value="option-3">Option 3</sd-option>'
           }
         ],
         args
