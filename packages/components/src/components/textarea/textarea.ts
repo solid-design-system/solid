@@ -322,7 +322,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
           'form-control text-left',
           hasLabel && 'form-control--has-label',
           hasHelpText && 'form-control--has-help-text',
-          this.disabled && 'pointer-events-none cursor-not-allowed'
+          this.disabled && 'cursor-not-allowed'
         )}
       >
         <label
@@ -439,6 +439,10 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
       :host([required]) #label.has-label::after {
         content: '*';
         margin-left: 2px;
+      }
+
+      :host([disabled]) .textarea__control {
+        cursor: not-allowed;
       }
 
       .no-scrollbar::-webkit-scrollbar {
