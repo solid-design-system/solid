@@ -10,10 +10,10 @@ const { generateTemplate } = storybookTemplate('sd-chip');
  * A small, non-interactive label the represents a status, property or meta-data.
  *
  * <b>Variants</b><br>
- * <li>white is the default variant</li>
- * <li>--primary-200</li>
- * <li>--primary-300</li>
+ * <li>--primary-200 is the default variant</li>
  * <li>--primary-500</li>
+ * <li>--primary-300</li>
+ * <li>--white</li>
  */
 
 export default {
@@ -43,7 +43,7 @@ export const Default = {
 };
 
 export const Variants = {
-  parameters: { controls: { exclude: ['default', 'sd-chip--primary-...'] } },
+  parameters: { controls: { exclude: ['default', 'sd-chip--...'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
