@@ -77,7 +77,7 @@ export const Samples = {
           <div slot="media" class="relative">
             <img class="aspect-video object-cover" src="./placeholders/generic.jpg" alt="A generic placeholder jpg" />
             <!-- Should be top-3-->
-            <span class="absolute top-2 sd-chip">chip name</span>
+            <span class="absolute top-2 sd-chip sd-chip--white">chip name</span>
             <span class="absolute top-2 right-0 sd-flag sd-flag--neutral-200">flag name</span>
           </div>
           <div slot="meta" class="meta-info">
@@ -90,18 +90,22 @@ export const Samples = {
             tortor.
           </p>
           <div class="flex flex-row gap-2">
-            <span class="sd-chip sd-chip--primary-200">chip name</span>
-            <span class="sd-chip sd-chip--primary-200">chip name</span>
+            <span class="sd-chip">chip name</span>
+            <span class="sd-chip">chip name</span>
           </div>
           <sd-button variant="primary">Label</sd-button>
         </sd-teaser>
 
         <sd-teaser variant="primary-100" breakpoint="9999" inset>
           <div slot="media" class="relative">
-            <img class="aspect-video object-cover" src="./placeholders/generic.jpg" alt="A generic placeholder jpg" />
+            <img
+              class="aspect-video object-cover"
+              src="./placeholders/generic_neutral.jpg"
+              alt="A generic placeholder jpg"
+            />
             <!-- Should be top-3-->
             <span class="absolute top-2 sd-chip">chip name</span>
-            <span class="absolute top-2 right-0 sd-flag sd-flag--neutral-200">flag name</span>
+            <span class="absolute top-2 right-0 sd-flag sd-flag--neutral-500">flag name</span>
           </div>
           <div slot="meta" class="meta-info">
             <span class="meta-info-item">01.12.2013</span>
@@ -113,8 +117,8 @@ export const Samples = {
             tortor.
           </p>
           <div class="flex flex-row gap-2">
-            <span class="sd-chip sd-chip--primary-200">chip name</span>
-            <span class="sd-chip sd-chip--primary-200">chip name</span>
+            <span class="sd-chip sd-chip--primary-300">chip name</span>
+            <span class="sd-chip sd-chip--primary-300">chip name</span>
           </div>
           <sd-button variant="primary">Label</sd-button>
         </sd-teaser>
@@ -123,7 +127,7 @@ export const Samples = {
           <div slot="media" class="relative">
             <img class="aspect-video object-cover" src="./placeholders/generic.jpg" alt="A generic placeholder jpg" />
             <!-- Should be top-3-->
-            <span class="absolute top-2 sd-chip">chip name</span>
+            <span class="absolute top-2 sd-chip sd-chip--white">chip name</span>
             <span class="absolute top-2 right-0 sd-flag sd-flag--neutral-200">flag name</span>
           </div>
           <div slot="meta" class="meta-info">
@@ -136,8 +140,8 @@ export const Samples = {
             tortor.
           </p>
           <div class="flex flex-row gap-2">
-            <span class="sd-chip sd-chip--primary-200">chip name</span>
-            <span class="sd-chip sd-chip--primary-200">chip name</span>
+            <span class="sd-chip sd-chip--primary-500">chip name</span>
+            <span class="sd-chip sd-chip--primary-500">chip name</span>
           </div>
           <sd-button variant="primary" inverted>Label</sd-button>
         </sd-teaser>
