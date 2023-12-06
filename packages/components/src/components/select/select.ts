@@ -95,6 +95,11 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   @state() private displayLabel = '';
   @state() private currentOption: SdOption;
   @state() private selectedOptions: SdOption[] = [];
+  /**
+   * Indicates whether or not the user input is valid after the user has interacted with the component. These states are activated when the attribute "data-user-valid" or "data-user-invalid" are set on the component via the form controller.
+   */
+  @state() private isValid = false;
+  @state() private isInvalid = false;
 
   /** The default value of the form control. Primarily used for resetting the form control. */
   @defaultValue() defaultValue: string | string[] = '';
@@ -220,6 +225,17 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
 
     // Because this is a form control, it shouldn't be opened initially
     this.open = false;
+  }
+
+  /** Checks for the presence of the attributes 'data-user-valid' or 'data-user-invalid' and updates the corresponding state for reactive conditional styling. */
+  updated() {
+    if (this.hasAttribute('data-user-valid') && this.checkValidity()) {
+      this.isValid = true;
+    }
+
+    if (this.hasAttribute('data-user-invalid') && !this.checkValidity()) {
+      this.isInvalid = true;
+    }
   }
 
   private addOpenListeners() {
@@ -773,21 +789,18 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     const hasHelpText = this.helpText ? true : !!slots['helpText'];
     const hasClearIcon = this.clearable && !this.disabled && this.value.length > 0;
 
-    const isInvalid = this.hasAttribute('data-user-invalid') && this.required && !this.checkValidity();
-    const isValid = this.hasAttribute('data-user-valid') && this.required && this.checkValidity();
-
     // Hierarchy of input states:
     const selectState = this.disabled
       ? 'disabled'
-      : this.hasFocus && isInvalid
+      : this.hasFocus && this.isInvalid
         ? 'activeInvalid'
-        : this.hasFocus && isValid
+        : this.hasFocus && this.isValid
           ? 'activeValid'
           : this.hasFocus || this.open
             ? 'active'
-            : isInvalid
+            : this.isInvalid
               ? 'invalid'
-              : isValid
+              : this.isValid
                 ? 'valid'
                 : 'default';
 
@@ -950,12 +963,12 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                     </button>
                   `
                 : ''}
-              ${isInvalid
+              ${this.isInvalid
                 ? html`
                     <sd-icon class=${cx('text-error', iconMarginLeft, iconSize)} library="system" name="risk"></sd-icon>
                   `
                 : ''}
-              ${isValid
+              ${this.isValid
                 ? html`
                     <sd-icon
                       class=${cx('text-success', iconMarginLeft, iconSize)}
