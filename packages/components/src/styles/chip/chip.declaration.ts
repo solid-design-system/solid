@@ -4,7 +4,7 @@ export default {
   styleName: 'sd-chip',
   summary: 'Generates basic styles for chip elements.',
   status: 'experimental',
-  since: '1.0',
+  since: '1.30.0',
   attributes: [
     {
       name: 'sd-chip--primary-...',

@@ -1,5 +1,4 @@
 import '../../solid-components';
-import { html } from 'lit';
 
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
@@ -24,11 +23,14 @@ export default {
     ...parameters,
     backgrounds: {
       default: 'neutral-200'
+    },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/IUiRoK2jiW8ydM77uiY2RX/Chip?type=design&mode=design&t=cioeESUO1sJ6UIu8-0'
     }
   },
-  args: overrideArgs([{ type: 'slot', name: 'default', value: 'Lorem Ipsum' }]),
-  argTypes,
-  decorators: [(story: any) => html` ${story()} `]
+  args: overrideArgs({ type: 'slot', name: 'default', value: 'Lorem Ipsum' }),
+  argTypes
 };
 
 export const Default = {
@@ -41,36 +43,19 @@ export const Default = {
 };
 
 export const Variants = {
-  name: 'Variants',
-  parameters: {
-    controls: {
-      exclude: ['sd-chip', 'sd-chip--size-primary-200', 'sd-chip--size-primary-300', 'sd-chip--size-primary-500']
-    }
-  },
+  parameters: { controls: { exclude: ['default', 'sd-chip--primary-...'] } },
   render: (args: any) => {
-    return html` ${[
-      {
-        title: '',
-        constant: `Lorem ipsum`
-      }
-    ].map(chip =>
-      generateTemplate({
-        axis: {
-          y: [
-            {
-              type: 'attribute',
-              name: 'Variant',
-              values: ['sd-chip--white', 'sd-chip--primary-200', 'sd-chip--primary-300', 'sd-chip--primary-500']
-            }
-          ]
-        },
-        constants: {
-          type: 'slot',
-          name: 'default',
-          value: `${chip.constant}`
-        },
-        args
-      })
-    )}`;
+    return generateTemplate({
+      axis: {
+        y: [
+          {
+            type: 'attribute',
+            name: 'sd-chip',
+            values: ['sd-chip--primary-500', 'sd-chip--primary-300', 'sd-chip--primary-200', 'sd-chip--white']
+          }
+        ]
+      },
+      args
+    });
   }
 };
