@@ -11,9 +11,8 @@ const translation: Translation = {
   close: 'Schließen',
   copy: 'Kopieren',
   numOptionsSelected: num => {
-    if (num === 0) return 'Keine Optionen ausgewählt';
-    if (num === 1) return '1 Option ausgewählt';
-    return `${num} Optionen ausgewählt`;
+    if (num === 0) return '';
+    return `Optionen ausgewählt (${num})`;
   },
   previousSlide: 'Vorherige Folie',
   currentValue: 'Aktueller Wert',
@@ -27,6 +26,7 @@ const translation: Translation = {
   scrollToEnd: 'Zum Ende scrollen',
   scrollToStart: 'Zum Anfang scrollen',
   selectAColorFromTheScreen: 'Farbe vom Bildschirm auswählen',
+  selectDefaultPlaceholder: 'Bitte auswählen',
   showPassword: 'Passwort anzeigen',
   slideNum: slide => `Folie ${slide}`,
   toggleColorFormat: 'Farbformat umschalten'
