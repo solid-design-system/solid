@@ -829,7 +829,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
           aria-hidden=${hasLabel ? 'false' : 'true'}
           @click=${this.handleLabelClick}
         >
-          <slot name="label">${this.label}</slot>
+          <slot name="label" class=${cx(this.disabled && 'text-black')}>${this.label}</slot>
         </label>
 
         <div part="form-control-input" class=${cx('relative w-full bg-white')}>
