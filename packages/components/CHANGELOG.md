@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v1.31.0](https://github.com/solid-design-system/solid/compare/components/1.30.0...components/1.31.0) (2023-12-06)
+
+
+### Features
+
+* ✨ add sd-chip ([#637](https://github.com/solid-design-system/solid/issues/637)) ([b05a90c](https://github.com/solid-design-system/solid/commit/b05a90ce1b392331f3b5c8b1dd991424bf584e24))
+
+### 📈 Stats
+* Bundle size (uncompressed): 217 KB (unchanged)
+* Bundle size (gzipped): 55 KB (unchanged)
+
 # [@solid-design-system/components-v1.30.0](https://github.com/solid-design-system/solid/compare/components/1.29.0...components/1.30.0) (2023-12-05)
 
 
