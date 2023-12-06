@@ -77,7 +77,7 @@ export const FlagSamples = {
           <div slot="media" class="relative">
             <img class="aspect-video object-cover" src="./placeholders/generic.jpg" alt="A generic placeholder jpg" />
             <!-- Should be top-3-->
-            <span class="absolute top-2 sd-chip sd-chip--white">chip name</span>
+            <span class="absolute top-3 sd-chip sd-chip--white">chip name</span>
             <span class="absolute top-2 right-0 sd-flag sd-flag--neutral-200">flag name</span>
           </div>
           <div slot="meta" class="meta-info">
@@ -87,8 +87,8 @@ export const FlagSamples = {
           <h3 slot="headline">Risus luctus sem a laoreet convallis nunc id quis fusce</h3>
           <div class="flex flex-col gap-5">
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget risus porta, tincidunt turpis at, interdum
-              tortor.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget risus porta, tincidunt turpis at,
+              interdum tortor.
             </p>
             <div class="flex flex-row gap-2">
               <span class="sd-chip">chip name</span>
@@ -118,8 +118,8 @@ export const FlagSamples = {
           <h3 slot="headline">Risus luctus sem a laoreet convallis nunc id quis fusce</h3>
           <div class="flex flex-col gap-5">
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget risus porta, tincidunt turpis at, interdum
-              tortor.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget risus porta, tincidunt turpis at,
+              interdum tortor.
             </p>
             <div class="flex flex-row gap-2">
               <span class="sd-chip sd-chip--primary-300">chip name</span>
@@ -145,8 +145,8 @@ export const FlagSamples = {
           <h3 slot="headline">Risus luctus sem a laoreet convallis nunc id quis fusce</h3>
           <div class="flex flex-col gap-5">
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget risus porta, tincidunt turpis at, interdum
-              tortor.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget risus porta, tincidunt turpis at,
+              interdum tortor.
             </p>
             <div class="flex flex-row gap-2">
               <span class="sd-chip sd-chip--primary-500">chip name</span>
