@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v1.32.0](https://github.com/solid-design-system/solid/compare/components/1.31.0...components/1.32.0) (2023-12-06)
+
+
+### Features
+
+* ✨ add sd-select [#258](https://github.com/solid-design-system/solid/issues/258) ([#634](https://github.com/solid-design-system/solid/issues/634)) ([02ec3b6](https://github.com/solid-design-system/solid/commit/02ec3b67be228ef7aec79ea0596297735c4ecdb8))
+
+### 📈 Stats
+* Bundle size (uncompressed): 239 KB (+22 KB / +10%)
+* Bundle size (gzipped): 60 KB (+5 KB / +9%)
+
 # [@solid-design-system/components-v1.31.0](https://github.com/solid-design-system/solid/compare/components/1.30.0...components/1.31.0) (2023-12-06)
 
 
