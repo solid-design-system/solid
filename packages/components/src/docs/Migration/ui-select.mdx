@@ -6,23 +6,23 @@ The new `sd-select` is designed to replace the `ui-select`. Instead of mainly pr
 
 ### ✨ New Slots
 
-#### label
+#### [label]
 
 The input's label. Alternatively, you can use the label attribute.
 
-#### left
+#### [left]
 
 Used to prepend a presentational icon or similar element to the combobox.
 
-#### help-text
+#### [help-text]
 
 Text that describes how to use the input. Alternatively, you can use the help-text attribute.
 
-#### clear-icon
+#### [clear-icon]
 
 An icon to use in lieu of the default clear icon.
 
-#### expand-icon
+#### [expand-icon]
 
 The icon to show when the control is expanded and collapsed. Rotates on open and close.
 
@@ -32,53 +32,53 @@ The icon to show when the control is expanded and collapsed. Rotates on open and
 
 ### ✨ New Attributes
 
-#### size
+#### [size]
 
 The select's size.
 
-#### placeholder
+#### [placeholder]
 
 Placeholder text to show as a hint when the select is empty.
 
-#### placement
+#### [placement]
 
 The preferred placement of the select's menu. Note that the actual placement may vary as needed to keep the listbox inside of the viewport.
 
-#### clearable
+#### [clearable]
 
 Adds a clear button when the select is not empty.
 
-#### max-options-visible
+#### [max-options-visible]
 
 The maximum number of selected options to show when `multiple` and `useTags` are `true`. After the maximum, "+n" will be shown to indicate the number of additional items that are selected. Set to 0 to remove the limit.
 
-#### form
+#### [form]
 
 By default, form controls are associated with the nearest containing form element. This attribute allows you to place the form control outside of a form and associate it with the form that has this id. The form must be in the same document or shadow root for this to work.
 
-#### name
+#### [name]
 
 The name of the select, submitted as a name/value pair with form data.
 
 ### 🔀 Updated Attributes
 
-#### help-text
+#### [help-text]
 
 Replaces `hint`. If you need to display HTML, use the `help-text` slot instead.
 
-#### multiple & useTags
+#### [multiple & useTags]
 
 Two boolean attributes that replace `variant`. `multiple` enables multiple options to be selected but does not show them in the display input. `useTags` alters the multiple variant to use individual `sd-tag` elements to display options in the display input.
 
-#### value
+#### [value]
 
 The current value of the select, submitted as a name/value pair with form data. When multiple is enabled, the value attribute will be a space-delimited list of values based on the options selected, and the value property will be an array. For this reason, values must not contain spaces.
 
-#### hoist
+#### [hoist]
 
 Enable this option to prevent the listbox from being clipped when the component is placed inside a container with overflow: auto|scroll. Hoisting uses a fixed positioning strategy that works in many, but not all, scenarios.
 
-#### getTag
+#### [getTag]
 
 A function that customizes the tags to be rendered when multiple=true. The first argument is the option, the second is the current tag's index. The function should return either a Lit TemplateResult or a string containing trusted HTML of the symbol to render at the specified value.
 
@@ -101,7 +101,7 @@ The following attributes have been removed from the new sd-select component:
 
 ### ✨ New CSS Variables
 
-#### All
+#### [All]
 
 See CSS Shadow Parts in the Storybook docs.
 
@@ -149,7 +149,7 @@ Emitted when the form control has been checked for validity and its constraints 
 
 ### 🔄 Updated Events
 
-#### sd-change
+#### [sd-change]
 
 Replaces `change`. Emitted when the control's value changes.
 
@@ -166,15 +166,15 @@ The following events have been removed from the new sd-select component:
 
 ### ✨ New Event Listeners
 
-#### focusin
+#### [focusin]
 
 Close the listbox when focusing out of the select.
 
-#### keydown
+#### [keydown]
 
 Conditionally handle keyboard interaction.
 
-#### mousedown
+#### [mousedown]
 
 Close the listbox when clicking outside of the select.
 
@@ -194,35 +194,35 @@ The following event listeners have been removed from the new sd-select component
 
 ### ✨ New Methods
 
-#### show
+#### [show]
 
 Shows the listbox.
 
-#### hide
+#### [hide]
 
 Hides the listbox.
 
-#### checkValidity
+#### [checkValidity]
 
 Hides the listbox.
 
-#### getForm
+#### [getForm]
 
 Gets the associated form, if one exists.
 
-#### reportValidity
+#### [reportValidity]
 
 Checks for validity and shows the browser's validation message if the control is invalid.
 
-#### setCustomValidity
+#### [setCustomValidity]
 
 Sets a custom validation message. Pass an empty string to restore validity.
 
-#### focus
+#### [focus]
 
 Sets focus on the control.
 
-#### blur
+#### [blur]
 
 Removes focus from the control.
 
