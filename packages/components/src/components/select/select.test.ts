@@ -69,7 +69,6 @@ describe('<sd-select>', () => {
 
     await el.show();
     await clickOnElement(disabledOption);
-    // disabledOption.click();
     await el.updateComplete;
 
     expect(el.value).to.equal('option-1');

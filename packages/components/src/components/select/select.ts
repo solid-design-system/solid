@@ -1041,7 +1041,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
         padding-right: 8px;
       }
 
-      sd-tag::part(base):hover {
+      sd-tag[disabled='false']::part(base):hover {
         background-color: rgb(var(--sd-color-primary-100, 236 240 249) / 1);
       }
     `
