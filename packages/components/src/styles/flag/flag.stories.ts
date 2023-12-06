@@ -61,10 +61,10 @@ export const Variants = {
   }
 };
 
-export const Samples = {
+export const FlagSamples = {
   parameters: {
     controls: {
-      include: []
+      exclude: ['default', 'sd-flag--...', 'sd-chip--...']
     },
     backgrounds: {
       default: 'white'
@@ -85,15 +85,19 @@ export const Samples = {
             <span class="meta-info-item">| Author name</span>
           </div>
           <h3 slot="headline">Risus luctus sem a laoreet convallis nunc id quis fusce</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget risus porta, tincidunt turpis at, interdum
-            tortor.
-          </p>
-          <div class="flex flex-row gap-2">
-            <span class="sd-chip">chip name</span>
-            <span class="sd-chip">chip name</span>
+          <div class="flex flex-col gap-5">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget risus porta, tincidunt turpis at, interdum
+              tortor.
+            </p>
+            <div class="flex flex-row gap-2">
+              <span class="sd-chip">chip name</span>
+              <span class="sd-chip">chip name</span>
+            </div>
+            <div class="flex-none">
+              <sd-button variant="primary">Label</sd-button>
+            </div>
           </div>
-          <sd-button variant="primary">Label</sd-button>
         </sd-teaser>
 
         <sd-teaser variant="primary-100" breakpoint="9999" inset>
@@ -112,15 +116,19 @@ export const Samples = {
             <span class="meta-info-item">| Author name</span>
           </div>
           <h3 slot="headline">Risus luctus sem a laoreet convallis nunc id quis fusce</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget risus porta, tincidunt turpis at, interdum
-            tortor.
-          </p>
-          <div class="flex flex-row gap-2">
-            <span class="sd-chip sd-chip--primary-300">chip name</span>
-            <span class="sd-chip sd-chip--primary-300">chip name</span>
+          <div class="flex flex-col gap-5">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget risus porta, tincidunt turpis at, interdum
+              tortor.
+            </p>
+            <div class="flex flex-row gap-2">
+              <span class="sd-chip sd-chip--primary-300">chip name</span>
+              <span class="sd-chip sd-chip--primary-300">chip name</span>
+            </div>
+            <div class="flex-none">
+              <sd-button variant="primary">Label</sd-button>
+            </div>
           </div>
-          <sd-button variant="primary">Label</sd-button>
         </sd-teaser>
 
         <sd-teaser variant="primary" breakpoint="9999" inset>
@@ -135,15 +143,19 @@ export const Samples = {
             <span class="meta-info-item">| Author name</span>
           </div>
           <h3 slot="headline">Risus luctus sem a laoreet convallis nunc id quis fusce</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget risus porta, tincidunt turpis at, interdum
-            tortor.
-          </p>
-          <div class="flex flex-row gap-2">
-            <span class="sd-chip sd-chip--primary-500">chip name</span>
-            <span class="sd-chip sd-chip--primary-500">chip name</span>
+          <div class="flex flex-col gap-5">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget risus porta, tincidunt turpis at, interdum
+              tortor.
+            </p>
+            <div class="flex flex-row gap-2">
+              <span class="sd-chip sd-chip--primary-500">chip name</span>
+              <span class="sd-chip sd-chip--primary-500">chip name</span>
+            </div>
+            <div class="flex-none">
+              <sd-button variant="primary" inverted>Label</sd-button>
+            </div>
           </div>
-          <sd-button variant="primary" inverted>Label</sd-button>
         </sd-teaser>
       </div>
     `;

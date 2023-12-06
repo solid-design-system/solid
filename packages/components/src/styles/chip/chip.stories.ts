@@ -1,5 +1,6 @@
 import '../../solid-components';
 
+import { FlagSamples } from '../flag/flag.stories';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
 const { argTypes, parameters } = storybookDefaults('sd-chip');
@@ -59,3 +60,5 @@ export const Variants = {
     });
   }
 };
+
+export const ChipSamples = FlagSamples;
