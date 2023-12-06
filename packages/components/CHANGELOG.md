@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v1.33.0](https://github.com/solid-design-system/solid/compare/components/1.32.0...components/1.33.0) (2023-12-06)
+
+
+### Features
+
+* ✨ add sd-textarea ([#589](https://github.com/solid-design-system/solid/issues/589)) ([2bc32a9](https://github.com/solid-design-system/solid/commit/2bc32a917d57b37dd82e8cc6100702ca714f162d))
+
+### 📈 Stats
+* Bundle size (uncompressed): 246 KB (+7 KB / +3%)
+* Bundle size (gzipped): 61 KB (+1 KB / +2%)
+
 # [@solid-design-system/components-v1.32.0](https://github.com/solid-design-system/solid/compare/components/1.31.0...components/1.32.0) (2023-12-06)
 
 
