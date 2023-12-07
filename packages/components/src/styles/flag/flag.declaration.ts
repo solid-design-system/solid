@@ -4,7 +4,7 @@ export default {
   styleName: 'sd-flag',
   summary: 'Generates basic styles for flag elements.',
   status: 'experimental',
-  since: '1.31.0',
+  since: '1.33.2',
   attributes: [
     {
       name: 'sd-flag--...',
