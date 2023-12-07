@@ -76,8 +76,7 @@ export const FlagSamples = {
         <sd-teaser variant="white border-neutral-400" breakpoint="9999" inset>
           <div slot="media" class="relative">
             <img class="aspect-video object-cover" src="./placeholders/generic.jpg" alt="A generic placeholder jpg" />
-            <!-- Should be top-3-->
-            <span class="absolute top-3 sd-chip sd-chip--white">chip name</span>
+            <span class="absolute top-3 left-4 sd-chip sd-chip--white">chip name</span>
             <span class="absolute top-2 right-0 sd-flag sd-flag--neutral-200">flag name</span>
           </div>
           <div slot="meta" class="meta-info">
@@ -107,8 +106,7 @@ export const FlagSamples = {
               src="./placeholders/generic_neutral.jpg"
               alt="A generic placeholder jpg"
             />
-            <!-- Should be top-3-->
-            <span class="absolute top-2 sd-chip">chip name</span>
+            <span class="absolute top-3 left-4 sd-chip">chip name</span>
             <span class="absolute top-2 right-0 sd-flag sd-flag--neutral-500">flag name</span>
           </div>
           <div slot="meta" class="meta-info">
@@ -134,8 +132,7 @@ export const FlagSamples = {
         <sd-teaser variant="primary" breakpoint="9999" inset>
           <div slot="media" class="relative">
             <img class="aspect-video object-cover" src="./placeholders/generic.jpg" alt="A generic placeholder jpg" />
-            <!-- Should be top-3-->
-            <span class="absolute top-2 sd-chip sd-chip--white">chip name</span>
+            <span class="absolute top-3 left-4 sd-chip sd-chip--white">chip name</span>
             <span class="absolute top-2 right-0 sd-flag sd-flag--neutral-200">flag name</span>
           </div>
           <div slot="meta" class="meta-info">
