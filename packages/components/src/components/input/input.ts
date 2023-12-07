@@ -81,6 +81,11 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   @query('#error-message') errorMessage: HTMLDivElement;
 
   @state() private hasFocus = false;
+  /**
+   * Indicates whether or not the user input is valid after the user has interacted with the component. These states are activated when the attribute "data-user-valid" or "data-user-invalid" are set on the component via the form controller. They are different than the native input validity state which is always either `true` or `false`.
+   */
+  @state() private showValidStyle = false;
+  @state() private showInvalidStyle = false;
 
   /**
    * The type of input. Works the same as a native `<input>` element, but only a subset of types are supported. Defaults
@@ -241,6 +246,23 @@ export default class SdInput extends SolidElement implements SolidFormControl {
 
   firstUpdated() {
     this.formControlController.updateValidity();
+  }
+
+  updated() {
+    this.updateValidityStyle(); // run after each update for immediate conditional styling
+  }
+
+  /** Checks for the presence of the attributes 'data-user-valid' or 'data-user-invalid' and updates the corresponding style state. */
+  private updateValidityStyle() {
+    if (this.hasAttribute('data-user-valid') && this.checkValidity()) {
+      this.showValidStyle = true;
+      this.showInvalidStyle = false;
+    }
+
+    if (this.hasAttribute('data-user-invalid') && !this.checkValidity()) {
+      this.showInvalidStyle = true;
+      this.showValidStyle = false;
+    }
   }
 
   private handleBlur() {
@@ -417,22 +439,21 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     const hasLabel = this.label ? true : !!slots['label'];
     const hasHelpText = this.helpText ? true : !!slots['helpText'];
     const hasClearIcon = this.clearable && !this.readonly && (typeof this.value === 'number' || this.value.length > 0);
-    const isInvalid = this.hasAttribute('data-user-invalid') && !this.checkValidity();
-    const isValid = this.hasAttribute('data-user-valid') && this.checkValidity();
+
     // Hierarchy of input states:
     const inputState = this.disabled
       ? 'disabled'
       : this.readonly
         ? 'readonly'
-        : this.hasFocus && isInvalid
+        : this.hasFocus && this.showInvalidStyle
           ? 'activeInvalid'
-          : this.hasFocus && isValid
+          : this.hasFocus && this.showValidStyle
             ? 'activeValid'
             : this.hasFocus
               ? 'active'
-              : isInvalid
+              : this.showInvalidStyle
                 ? 'invalid'
-                : isValid
+                : this.showValidStyle
                   ? 'valid'
                   : 'default';
 
@@ -498,7 +519,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               // States
               !this.disabled && !this.readonly ? 'hover:bg-neutral-200' : '',
               this.readonly && 'bg-neutral-100',
-              isInvalid && 'form-control-input--invalid',
+              this.showInvalidStyle && 'form-control-input--invalid',
               textColor,
               !this.value && 'input--empty',
               this.noSpinButtons && 'input--no-spin-buttons',
@@ -612,12 +633,12 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                   <sd-icon class=${cx(iconColor, iconMarginLeft, iconSize)} library="system" name="clock"></sd-icon>
                 `
               : ''}
-            ${isInvalid
+            ${this.showInvalidStyle
               ? html`
                   <sd-icon class=${cx('text-error', iconMarginLeft, iconSize)} library="system" name="risk"></sd-icon>
                 `
               : ''}
-            ${isValid
+            ${this.showValidStyle
               ? html`
                   <sd-icon
                     class=${cx('text-success', iconMarginLeft, iconSize)}
@@ -651,7 +672,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
           class="text-error text-sm mt-2"
           part="error-message"
           aria-live="polite"
-          ?hidden=${!isInvalid}
+          ?hidden=${!this.showInvalidStyle}
         ></div>
       </div>
     `;
