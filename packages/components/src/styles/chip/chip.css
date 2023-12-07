@@ -1,0 +1,15 @@
+.sd-chip {
+  @apply h-6 bg-primary-200 rounded-default text-black text-sm inline-flex items-center px-2 overflow-hidden;
+
+  &--primary-500 {
+    @apply bg-primary-500 text-white;
+  }
+
+  &--primary-300 {
+    @apply bg-primary-300;
+  }
+
+  &--white {
+    @apply bg-white;
+  }
+}

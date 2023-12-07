@@ -17,6 +17,7 @@ import SolidElement from '../../internal/solid-element';
  *
  * @event sd-blur - Emitted when the tag loses focus.
  * @event sd-focus - Emitted when the tag gains focus.
+ * @event sd-remove - Emitted when the remove button is activated.
  *
  * @csspart base - The component's base wrapper.
  * @csspart content - The tag's content.
@@ -53,6 +54,10 @@ export default class SdTag extends SolidElement {
 
   private handleFocus() {
     this.emit('sd-focus');
+  }
+
+  private handleRemoveClick() {
+    this.emit('sd-remove');
   }
 
   private isLink() {
@@ -114,16 +119,24 @@ export default class SdTag extends SolidElement {
         )}
       >
         <slot part='content'></slot>
-        <slot part='removable-indicator' name='removable-indicator' class=${cx(
-          !this.removable && 'hidden',
-          {
-            /* sizes, fonts */
-            lg: 'text-base',
-            sm: 'text-[12px]'
-          }[this.size]
-        )}>
-          <sd-icon library='system' name='close' label='remove'></sd-icon>
-        </slot>
+        ${
+          this.removable
+            ? html` <slot
+                part="removable-indicator"
+                name="removable-indicator"
+                @click=${this.handleRemoveClick}
+                class=${cx(
+                  {
+                    /* sizes, fonts */
+                    lg: 'text-base',
+                    sm: 'text-[12px]'
+                  }[this.size]
+                )}
+              >
+                <sd-icon library="system" name="close" label="remove"></sd-icon>
+              </slot>`
+            : ''
+        }
       </${tag}>
     `;
     /* eslint-enable lit/no-invalid-html */

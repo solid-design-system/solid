@@ -476,11 +476,12 @@ export default class SdInput extends SolidElement implements SolidFormControl {
       >
         <label
           part="form-control-label"
-          class=${cx('form-control-label mb-2', hasLabel ? 'inline-block' : 'hidden', textSize)}
+          id="label"
+          class=${cx('form-control-label mb-2', hasLabel ? 'has-label  inline-block' : 'hidden', textSize)}
           for="input"
           aria-hidden=${hasLabel ? 'false' : 'true'}
         >
-          <slot name="label">${this.label}${this.required ? '*' : ''}</slot>
+          <slot name="label">${this.label}</slot>
         </label>
 
         <div part="form-control-input" class="form-control-input relative w-full">
@@ -675,6 +676,11 @@ export default class SdInput extends SolidElement implements SolidFormControl {
 
       :host([vertical]) {
         display: block;
+      }
+
+      :host([required]) #label.has-label::after {
+        content: '*';
+        margin-left: 2px;
       }
 
       details summary::-webkit-details-marker {

@@ -3,7 +3,8 @@ import { clickOnElement } from '../../internal/test';
 import { sendKeys } from '@web/test-runner-commands';
 import { serialize } from '../../utilities/form';
 import sinon from 'sinon';
-import type SdOption from '../option/option';
+import type SdButton from '../button/button';
+import type SdOption from '../../components/option/option';
 import type SdSelect from './select';
 
 describe('<sd-select>', () => {
@@ -64,7 +65,7 @@ describe('<sd-select>', () => {
         <sd-option value="option-2" disabled>Option 2</sd-option>
       </sd-select>
     `);
-    const disabledOption = el.querySelector('sd-option[disabled]')!;
+    const disabledOption: HTMLOptionElement = el.querySelector('sd-option[disabled]')!;
 
     await el.show();
     await clickOnElement(disabledOption);
@@ -171,7 +172,7 @@ describe('<sd-select>', () => {
         <sd-option value="option-3">Option 3</sd-option>
       </sd-select>
     `);
-    const displayInput = el.shadowRoot!.querySelector<HTMLSelectElement>('.select__display-input')!;
+    const displayInput = el.shadowRoot!.querySelector<HTMLSelectElement>('[part="display-input"]')!;
 
     el.focus();
     await sendKeys({ press: 'r' });
@@ -188,7 +189,7 @@ describe('<sd-select>', () => {
         <sd-option value="option-3">Option 3</sd-option>
       </sd-select>
     `);
-    const displayInput = el.shadowRoot!.querySelector<HTMLSelectElement>('.select__display-input')!;
+    const displayInput = el.shadowRoot!.querySelector<HTMLSelectElement>('[part="display-input"]')!;
 
     el.focus();
     await sendKeys({ down: 'Control' });
@@ -239,6 +240,7 @@ describe('<sd-select>', () => {
       `);
       const select = el.querySelector<SdSelect>('sd-select')!;
       el.requestSubmit();
+
       expect(select.shadowRoot!.activeElement).to.equal(select.displayInput);
     });
 
@@ -262,6 +264,8 @@ describe('<sd-select>', () => {
 
       await el.show();
       await clickOnElement(secondOption);
+      await el.updateComplete;
+      el.blur();
       await el.updateComplete;
 
       expect(el.checkValidity()).to.be.true;
@@ -289,6 +293,8 @@ describe('<sd-select>', () => {
       await el.show();
       await clickOnElement(secondOption);
       el.value = '';
+      await el.updateComplete;
+      el.blur();
       await el.updateComplete;
 
       expect(el.hasAttribute('data-user-invalid')).to.be.true;
@@ -386,15 +392,18 @@ describe('<sd-select>', () => {
           <sd-button type="reset">Reset</sd-button>
         </form>
       `);
-      const resetButton = form.querySelector('sd-button')!;
+      const resetButton: SdButton = form.querySelector('sd-button')!;
       const select = form.querySelector('sd-select')!;
 
       select.value = 'option-3';
       await select.updateComplete;
       expect(select.value).to.equal('option-3');
 
-      setTimeout(() => clickOnElement(resetButton));
-      await oneEvent(form, 'reset');
+      setTimeout(() => {
+        resetButton.click();
+        clickOnElement(resetButton);
+      });
+      await oneEvent(form, 'reset', false);
       await select.updateComplete;
       expect(select.value).to.equal('option-1');
     });
@@ -408,13 +417,13 @@ describe('<sd-select>', () => {
         <sd-option value="option-3">Option 3</sd-option>
       </sd-select>
     `);
-    const displayInput = el.shadowRoot!.querySelector<HTMLSelectElement>('.select__display-input')!;
+    const displayInput = el.shadowRoot!.querySelector<HTMLSelectElement>('[part="display-input"]')!;
     const option = el.querySelector('sd-option')!;
 
     expect(displayInput.value).to.equal('Option 1');
 
     option.textContent = 'updated';
-    await oneEvent(option, 'slotchange');
+    await oneEvent(option, 'slotchange', false);
     await el.updateComplete;
 
     expect(displayInput.value).to.equal('updated');
@@ -452,10 +461,11 @@ describe('<sd-select>', () => {
       </sd-select>
     `);
     const clearHandler = sinon.spy();
-    const clearButton = el.shadowRoot!.querySelector('[part~="clear-button"]')!;
+    const clearButton: HTMLButtonElement = el.shadowRoot!.querySelector('[part~="clear-button"]')!;
 
     el.addEventListener('sd-clear', clearHandler);
     await el.show();
+    clearButton.click();
     await clickOnElement(clearButton);
     await el.updateComplete;
 
@@ -464,7 +474,7 @@ describe('<sd-select>', () => {
 
   it('should emit sd-change and sd-input when a tag is removed', async () => {
     const el = await fixture<SdSelect>(html`
-      <sd-select value="option-1 option-2 option-3" multiple>
+      <sd-select value="option-1 option-2 option-3" multiple useTags>
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
         <sd-option value="option-3">Option 3</sd-option>
@@ -473,12 +483,13 @@ describe('<sd-select>', () => {
     const changeHandler = sinon.spy();
     const inputHandler = sinon.spy();
     const tag = el.shadowRoot!.querySelector('[part~="tag"]')!;
-    const removeButton = tag.shadowRoot!.querySelector('[part~="remove-button"]')!;
+
+    const removeButton: HTMLSlotElement = tag.shadowRoot!.querySelector('[part="removable-indicator"]')!;
 
     el.addEventListener('sd-change', changeHandler);
     el.addEventListener('sd-input', inputHandler);
 
-    await clickOnElement(removeButton);
+    removeButton.click();
     await el.updateComplete;
 
     expect(changeHandler).to.have.been.calledOnce;
@@ -510,18 +521,5 @@ describe('<sd-select>', () => {
     await el.hide();
     expect(hideHandler).to.have.been.calledOnce;
     expect(afterHideHandler).to.have.been.calledOnce;
-  });
-
-  it('should have rounded tags when using the pill attribute', async () => {
-    const el = await fixture<SdSelect>(html`
-      <sd-select value="option-1 option-2" multiple pill>
-        <sd-option value="option-1">Option 1</sd-option>
-        <sd-option value="option-2">Option 2</sd-option>
-        <sd-option value="option-3">Option 3</sd-option>
-      </sd-select>
-    `);
-    const tag = el.shadowRoot!.querySelector('[part~="tag"]')!;
-
-    expect(tag.hasAttribute('pill')).to.be.true;
   });
 });
