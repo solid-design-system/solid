@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v1.33.1](https://github.com/solid-design-system/solid/compare/components/1.33.0...components/1.33.1) (2023-12-07)
+
+
+### Bug Fixes
+
+* improve TailwindCSS parser ([#643](https://github.com/solid-design-system/solid/issues/643)) ([d876249](https://github.com/solid-design-system/solid/commit/d8762493b3eceaa218665c98edef25d4531d3b04))
+
+### 📈 Stats
+* Bundle size (uncompressed): 246 KB (unchanged)
+* Bundle size (gzipped): 61 KB (unchanged)
+
 # [@solid-design-system/components-v1.33.0](https://github.com/solid-design-system/solid/compare/components/1.32.0...components/1.33.0) (2023-12-06)
 
 
