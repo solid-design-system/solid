@@ -21,11 +21,7 @@ const includeStorybookStories = process.env.npm_lifecycle_event?.includes('story
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    './src/components/**/*.ts',
-    './src/patterns/**/*.ts',
-    `!./src/**/*.{${includeStorybookStories ? '' : 'stories,'}styles,test}.*`
-  ],
+  content: includeStorybookStories ? ['./src/**/*.ts'] : ['./src/components/**/*.ts'],
   theme,
   plugins: [
     require('@mariohamann/tailwindcss-var'),
