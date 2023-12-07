@@ -88,7 +88,6 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   @query('[part="display-input"]') displayInput: HTMLInputElement;
   @query('.value-input') valueInput: HTMLInputElement;
   @query('[part="listbox"]') listbox: HTMLSlotElement;
-
   @query('#error-message') errorMessage: HTMLDivElement;
 
   @state() private hasFocus = false;

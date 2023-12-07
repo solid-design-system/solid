@@ -4,7 +4,7 @@ import { defaultValue } from '../../internal/default-value';
 import { FormControlController } from '../../internal/form';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { live } from 'lit/directives/live.js';
-import { property, query } from 'lit/decorators.js';
+import { property, query, state } from 'lit/decorators.js';
 import { watch } from '../../internal/watch';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
@@ -40,6 +40,12 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
   });
 
   @query('input') input: HTMLInputElement;
+  @query('#error-message') errorMessage: HTMLDivElement;
+
+  /**
+   * Indicates whether or not the user input is valid after the user has interacted with the component. These states are activated when the attribute "data-user-valid" or "data-user-invalid" are set on the component via the form controller. They are different than the native input validity state which is always either `true` or `false`.
+   */
+  @state() private showInvalidStyle = false;
 
   /** The title of the switch adds a tooltip with title text. */
   @property() title = ''; // make reactive to pass through
@@ -73,8 +79,24 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
   get validity() {
     return this.input.validity;
   }
+
   firstUpdated() {
     this.formControlController.updateValidity();
+  }
+
+  updated() {
+    this.updateValidityStyle(); // run after each update for immediate conditional styling
+  }
+
+  /** Checks for the presence of the attributes 'data-user-valid' or 'data-user-invalid' and updates the corresponding style state. */
+  private updateValidityStyle() {
+    if (this.hasAttribute('data-user-valid') && this.checkValidity()) {
+      this.showInvalidStyle = false;
+    }
+
+    if (this.hasAttribute('data-user-invalid') && !this.checkValidity()) {
+      this.showInvalidStyle = true;
+    }
   }
 
   private handleClick() {
@@ -93,6 +115,8 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
   private handleInvalid(event: Event) {
     this.formControlController.setValidity(false);
     this.formControlController.emitInvalidEvent(event);
+    event.preventDefault();
+    this.errorMessage.textContent = (event.target as HTMLInputElement).validationMessage;
   }
 
   private handleFocus() {
@@ -214,6 +238,13 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
           <slot></slot>
         </span>
       </label>
+      <div
+        id="error-message"
+        class="text-error text-sm mt-2"
+        part="error-message"
+        aria-live="polite"
+        ?hidden=${!this.showInvalidStyle}
+      ></div>
     `;
   }
 
