@@ -84,7 +84,8 @@ export const SizeMultiple = {
       include: []
     }
   },
-  render: () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  render: (args: any) => {
     return html`<div class="h-[340px]">
       ${generateTemplate({
         options: {
@@ -123,7 +124,8 @@ export const DisabledMultiple = {
       include: []
     }
   },
-  render: () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  render: (args: any) => {
     return html`<div class="h-[340px] w-full">
       ${generateTemplate({
         options: {
@@ -282,7 +284,8 @@ export const Mouseless = {
       include: []
     }
   },
-  render: () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  render: (args: any) => {
     const sharedConstants: ConstantDefinition[] = [
       {
         type: 'slot',
@@ -358,7 +361,8 @@ export const SampleForm = {
       include: []
     }
   },
-  render: () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  render: (args: any) => {
     const sharedConstants: ConstantDefinition[] = [
       { type: 'attribute', name: 'form', value: 'testForm' },
       { type: 'attribute', name: 'clearable', value: true },

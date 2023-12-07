@@ -832,16 +832,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
           'form-control relative text-left',
           cursorStyles,
           this.size === 'sm' ? 'text-sm' : 'text-base',
-          {
-            disabled: 'text-neutral-500',
-            readonly: 'text-black',
-            activeInvalid: 'text-error',
-            activeValid: 'text-success',
-            active: 'text-black',
-            invalid: 'text-error',
-            valid: 'text-success',
-            default: 'text-black'
-          }[selectState],
+
           this.open && 'z-10'
         )}
       >
@@ -852,10 +843,25 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
           aria-hidden=${hasLabel ? 'false' : 'true'}
           @click=${this.handleLabelClick}
         >
-          <slot name="label" class=${cx(this.disabled && 'text-black')}>${this.label}</slot>
+          <slot name="label">${this.label}</slot>
         </label>
 
-        <div part="form-control-input" class=${cx('relative w-full bg-white')}>
+        <div
+          part="form-control-input"
+          class=${cx(
+            'relative w-full bg-white',
+            {
+              disabled: 'text-neutral-500',
+              readonly: 'text-black',
+              activeInvalid: 'text-error',
+              activeValid: 'text-success',
+              active: 'text-black',
+              invalid: 'text-error',
+              valid: 'text-success',
+              default: 'text-black'
+            }[selectState]
+          )}
+        >
           <div
             part="border"
             class=${cx(
