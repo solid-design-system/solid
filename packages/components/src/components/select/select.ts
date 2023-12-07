@@ -89,6 +89,8 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   @query('.value-input') valueInput: HTMLInputElement;
   @query('[part="listbox"]') listbox: HTMLSlotElement;
 
+  @query('#error-message') errorMessage: HTMLDivElement;
+
   @state() private hasFocus = false;
   @state() hasHover = false; // we need this because Safari doesn't honor :hover styles while dragging
   /** When `multiple` is `true` and `useTags` is `false`, the displayLabel sets the text shown in the display input. We use the localized string "Options Selected (#)" by default. */
@@ -96,10 +98,10 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   @state() private currentOption: SdOption;
   @state() private selectedOptions: SdOption[] = [];
   /**
-   * Indicates whether or not the user input is valid after the user has interacted with the component. These states are activated when the attribute "data-user-valid" or "data-user-invalid" are set on the component via the form controller.
+   * Indicates whether or not the user input is valid after the user has interacted with the component. These states are activated when the attribute "data-user-valid" or "data-user-invalid" are set on the component via the form controller. They are different than the native input validity state which is always either `true` or `false`.
    */
-  @state() private isValid = false;
-  @state() private isInvalid = false;
+  @state() private showValidStyle = false;
+  @state() private showInvalidStyle = false;
 
   /** The default value of the form control. Primarily used for resetting the form control. */
   @defaultValue() defaultValue: string | string[] = '';
@@ -227,14 +229,20 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     this.open = false;
   }
 
-  /** Checks for the presence of the attributes 'data-user-valid' or 'data-user-invalid' and updates the corresponding state for reactive conditional styling. */
   updated() {
+    this.updateValidityStyle(); // run after each update for immediate conditional styling
+  }
+
+  /** Checks for the presence of the attributes 'data-user-valid' or 'data-user-invalid' and updates the corresponding style state. */
+  private updateValidityStyle() {
     if (this.hasAttribute('data-user-valid') && this.checkValidity()) {
-      this.isValid = true;
+      this.showValidStyle = true;
+      this.showInvalidStyle = false;
     }
 
     if (this.hasAttribute('data-user-invalid') && !this.checkValidity()) {
-      this.isInvalid = true;
+      this.showInvalidStyle = true;
+      this.showValidStyle = false;
     }
   }
 
@@ -623,6 +631,8 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   private handleInvalid(event: Event) {
     this.formControlController.setValidity(false);
     this.formControlController.emitInvalidEvent(event);
+    event.preventDefault();
+    this.errorMessage.textContent = (event.target as HTMLInputElement).validationMessage;
   }
 
   private handleMouseEnter() {
@@ -792,15 +802,15 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     // Hierarchy of input states:
     const selectState = this.disabled
       ? 'disabled'
-      : this.hasFocus && this.isInvalid
+      : this.hasFocus && this.showInvalidStyle
         ? 'activeInvalid'
-        : this.hasFocus && this.isValid
+        : this.hasFocus && this.showValidStyle
           ? 'activeValid'
           : this.hasFocus || this.open
             ? 'active'
-            : this.isInvalid
+            : this.showInvalidStyle
               ? 'invalid'
-              : this.isValid
+              : this.showValidStyle
                 ? 'valid'
                 : 'default';
 
@@ -963,12 +973,12 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                     </button>
                   `
                 : ''}
-              ${this.isInvalid
+              ${this.showInvalidStyle
                 ? html`
                     <sd-icon class=${cx('text-error', iconMarginLeft, iconSize)} library="system" name="risk"></sd-icon>
                   `
                 : ''}
-              ${this.isValid
+              ${this.showValidStyle
                 ? html`
                     <sd-icon
                       class=${cx('text-success', iconMarginLeft, iconSize)}
@@ -1017,6 +1027,13 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
         >
           <slot name="help-text">${this.helpText}</slot>
         </div>
+        <div
+          id="error-message"
+          class="text-error text-sm mt-2"
+          part="error-message"
+          aria-live="polite"
+          ?hidden=${!this.showInvalidStyle}
+        ></div>
       </div>
     `;
   }
