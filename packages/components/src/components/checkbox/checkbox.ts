@@ -126,7 +126,6 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
   private handleInvalid(event: Event) {
     this.formControlController.setValidity(false);
     this.formControlController.emitInvalidEvent(event);
-    event.preventDefault();
     this.errorMessage.textContent = (event.target as HTMLInputElement).validationMessage;
   }
 

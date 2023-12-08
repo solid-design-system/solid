@@ -205,6 +205,10 @@ export class FormControlController implements ReactiveController {
       event.preventDefault();
       event.stopImmediatePropagation();
     }
+
+    // Focus the first invalid element
+    const invalidElements: NodeListOf<HTMLFormElement> | undefined = this.form?.querySelectorAll('[data-invalid]');
+    if (invalidElements?.length) invalidElements[0].focus();
   };
 
   private handleFormReset = () => {
@@ -351,14 +355,16 @@ export class FormControlController implements ReactiveController {
   }
 
   /**
-   * Dispatches a non-bubbling, cancelable custom event of type `sl-invalid`.
-   * If the `sl-invalid` event will be cancelled then the original `invalid`
-   * event (which may have been passed as argument) will also be cancelled.
-   * If no original `invalid` event has been passed then the `sl-invalid`
+   * Dispatches a non-bubbling, cancelable custom event of type `sd-invalid`.
+   * If no original `invalid` event has been passed then the `sd-invalid`
    * event will be cancelled before being dispatched.
    */
   emitInvalidEvent(originalInvalidEvent?: Event) {
-    const slInvalidEvent = new CustomEvent<Record<PropertyKey, never>>('sd-invalid', {
+    // TODO: Reviewer, do you agree with this?  This prevents us from having to preventDefault() on the original event in every form element component.
+    // We always want to prevent the original invalid event from bubbling so no browser validation messages are shown.
+    originalInvalidEvent?.preventDefault();
+
+    const sdInvalidEvent = new CustomEvent<Record<PropertyKey, never>>('sd-invalid', {
       bubbles: false,
       composed: false,
       cancelable: true,
@@ -366,11 +372,7 @@ export class FormControlController implements ReactiveController {
     });
 
     if (!originalInvalidEvent) {
-      slInvalidEvent.preventDefault();
-    }
-
-    if (!this.host.dispatchEvent(slInvalidEvent)) {
-      originalInvalidEvent?.preventDefault();
+      sdInvalidEvent.preventDefault();
     }
   }
 }
