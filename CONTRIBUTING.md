@@ -60,7 +60,7 @@
 
 ### We Document Extensively and Consistently
 
-- **User Story**: As a developer, I want to be able to use the Solid Design System without having to ask for help.
+- **User Story**: As a developer, I want to be able to use the Solid Design System without having to ask for help and understand how the component works in different states.
 - **Actions**:
   - Provide stories for props, slots etc. in Storybook
   - Props, events, slots, parts and CSS Custom Properties should be documented in the component's source code using [JSDoc](https://jsdoc.app/). Make sure to include a description, type, and default value for each.
@@ -228,8 +228,8 @@ You can take a look at tests on Github. Users might be required to log in to [Ch
 
 > Note: The pipeline checks the last commit and sets one of 3 possible deployment type. This step ensures that a new version is deployed only when there is a new release and only the docs are deployed if there are docs-only changes. Otherwise, it would overwrite the current version with new code. The 3 types are:
 >
-> - `code`: This type is set when the last commit message starts with `chore(release/components)` it deploys to the CDN
-> - `docs`: This type is set when the last commit message starts with 'docs:' and deploys only the Storybook to the CDN
+> - `code`: This type is set when the last commit message starts with `chore(release/components):` (coming from a semantic-release version bump) and it deploys everything to the CDN
+> - `docs`: This type is set when the last commit message starts with `docs:` and deploys only the Storybook to the CDN
 > - `none`: This type is set when the last commit message starts with anything else and skips deployment to the CDN.
 
 4. For the main branch, the pipeline utilizes the 'push-to-storage-main.template.yml' template to deploy the code to the CDN. This template deploys the code into different folders to provide wildcard URLs:
