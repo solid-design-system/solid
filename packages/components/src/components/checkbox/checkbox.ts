@@ -187,7 +187,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
   }
 
   render() {
-    // Hierarchy of input states:
+    // Hierarchy of checkbox states:
     const checkboxState =
       this.disabled && this.indeterminate
         ? 'disabledIndeterminate'
