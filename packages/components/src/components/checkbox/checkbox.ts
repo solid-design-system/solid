@@ -288,7 +288,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
       </label>
       <div
         id="error-message"
-        class="text-error text-sm mt-2"
+        class="text-error text-sm mt-2 text-left"
         part="error-message"
         aria-live="polite"
         ?hidden=${!this.showInvalidStyle}
