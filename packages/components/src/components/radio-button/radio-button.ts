@@ -91,7 +91,9 @@ export default class SdRadioButton extends SolidElement {
   }
 
   render() {
-    const buttonSizeClass = `${this.size}-${this.hasSlotController.test('[default]') ? 'label' : 'no-label'}`;
+    const hasDefaultSlot = this.hasSlotController.test('[default]');
+    const hasIconSlot = this.hasSlotController.test('icon');
+    const buttonSizeClass = `${this.size}-${hasDefaultSlot ? 'label' : 'no-label'}`;
 
     return html`
       <div part="base" role="presentation" class="relative">
@@ -109,10 +111,10 @@ export default class SdRadioButton extends SolidElement {
                 : this.disabled && this.checked
                   ? 'bg-neutral-500 text-white hover:cursor-not-allowed'
                   : 'bg-transparent text-primary border-primary hover:bg-primary-100 hover:border-primary-500 hover:text-primary-500 cursor-pointer',
-            this.hasSlotController.test('[default]') && 'px-4',
+            hasDefaultSlot && 'px-4',
             this.hasFocus && 'focused-class',
-            this.hasSlotController.test('[default]') && 'button--has-label',
-            this.hasSlotController.test('icon') && 'button--has-icon flex gap-2',
+            hasDefaultSlot && 'button--has-label',
+            hasIconSlot && 'button--has-icon flex gap-2',
             buttonSizeClass
           )}"
           aria-disabled=${this.disabled}
@@ -127,16 +129,16 @@ export default class SdRadioButton extends SolidElement {
             name="icon"
             part="icon"
             class="${cx(
-              this.hasSlotController.test('icon') && 'inline-flex relative items-center',
+              hasIconSlot && 'inline-flex relative items-center',
               {
                 sm: 'text-base',
                 md: 'text-lg',
                 lg: 'text-xl'
               }[this.size]
             )}"
-            ?hidden=${!this.hasSlotController.test('icon')}
+            ?hidden=${!hasIconSlot}
           ></slot>
-          ${this.hasSlotController.test('[default]')
+          ${hasDefaultSlot
             ? html`<slot part="label" class="button__label inline-flex relative items-center whitespace-nowrap"></slot>`
             : null}
         </button>
