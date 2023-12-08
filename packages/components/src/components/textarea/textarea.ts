@@ -41,8 +41,14 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
   private readonly hasSlotController = new HasSlotController(this, 'help-text', 'label');
 
   @query('.textarea__control') textarea: HTMLTextAreaElement;
+  @query('#error-message') errorMessage: HTMLDivElement;
 
   @state() private hasFocus = false;
+  /**
+   * Indicates whether or not the user input is valid after the user has interacted with the component. These states are activated when the attribute "data-user-valid" or "data-user-invalid" are set on the component via the form controller. They are different than the native input validity state which is always either `true` or `false`.
+   */
+  @state() private showValidStyle = false;
+  @state() private showInvalidStyle = false;
 
   /** An empty title prevents browser validation tooltips from appearing on hover */
   @property() title = ''; // make reactive to pass through
@@ -150,8 +156,25 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
     this.formControlController.updateValidity();
   }
 
+  updated() {
+    this.updateValidityStyle(); // run after each update for immediate conditional styling
+  }
+
   disconnectedCallback() {
     super.disconnectedCallback();
+  }
+
+  /** Checks for the presence of the attributes 'data-user-valid' or 'data-user-invalid' and updates the corresponding style state. */
+  private updateValidityStyle() {
+    if (this.hasAttribute('data-user-valid') && this.checkValidity()) {
+      this.showValidStyle = true;
+      this.showInvalidStyle = false;
+    }
+
+    if (this.hasAttribute('data-user-invalid') && !this.checkValidity()) {
+      this.showInvalidStyle = true;
+      this.showValidStyle = false;
+    }
   }
 
   private handleBlur() {
@@ -179,6 +202,8 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
   private handleInvalid(event: Event) {
     this.formControlController.setValidity(false);
     this.formControlController.emitInvalidEvent(event);
+    event.preventDefault();
+    this.errorMessage.textContent = (event.target as HTMLInputElement).validationMessage;
   }
 
   private setTextareaHeight() {
@@ -292,23 +317,21 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
     // States
     const hasLabel = this.label ? true : !!slots['label'];
     const hasHelpText = this.helpText ? true : !!slots['helpText'];
-    const hasValidationAttr = this.required || !!this.minlength || !!this.maxlength;
-    const isInvalid = hasValidationAttr && !this.checkValidity();
-    const isValid = hasValidationAttr && this.checkValidity();
+
     // Hierarchy of input states:
     const inputState = this.disabled
       ? 'disabled'
       : this.readonly
         ? 'readonly'
-        : this.hasFocus && isInvalid
+        : this.hasFocus && this.showInvalidStyle
           ? 'activeInvalid'
-          : this.hasFocus && isValid
+          : this.hasFocus && this.showValidStyle
             ? 'activeValid'
             : this.hasFocus
               ? 'active'
-              : isInvalid
+              : this.showInvalidStyle
                 ? 'invalid'
-                : isValid
+                : this.showValidStyle
                   ? 'valid'
                   : 'default';
 
@@ -373,7 +396,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
               }[inputState],
               !this.disabled && !this.readonly ? 'hover:bg-neutral-200' : '',
               this.readonly && 'bg-neutral-100',
-              isInvalid && 'form-control-input--invalid',
+              this.showInvalidStyle && 'form-control-input--invalid',
               !this.value && 'textarea--empty'
             )}
           >
@@ -420,6 +443,13 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
           ${this.helpText}
         </slot>
       </div>
+      <div
+        id="error-message"
+        class="text-error text-sm mt-2"
+        part="error-message"
+        aria-live="polite"
+        ?hidden=${!this.showInvalidStyle}
+      ></div>
     `;
   }
 
