@@ -209,10 +209,15 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
             `relative flex flex-initial items-center justify-center border rounded-full h-4 w-8 transition-colors ease duration-100
             peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2
             peer-focus-visible:outline-primary`,
-            (this.disabled && this.checked && 'border-neutral-500 bg-neutral-500') ||
-              (this.disabled && 'border-neutral-500') ||
-              (this.checked && 'border-accent bg-accent hover:bg-accent-550 group-hover:bg-accent-550') ||
-              'border-neutral-800 bg-white hover:bg-neutral-200 group-hover:bg-neutral-200'
+            this.disabled && this.checked
+              ? 'border-neutral-500 bg-neutral-500'
+              : this.disabled
+                ? 'border-neutral-500'
+                : this.showInvalidStyle
+                  ? 'border-error bg-error hover:bg-error-400'
+                  : this.checked
+                    ? 'border-accent bg-accent hover:bg-accent-550 group-hover:bg-accent-550'
+                    : 'border-neutral-800 bg-white hover:bg-neutral-200 group-hover:bg-neutral-200'
           )}
         >
           <span
@@ -220,10 +225,15 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
             part="thumb"
             class=${cx(
               'w-2.5 h-2.5 rounded-full transition-transform ease-in-out duration-200',
-              (this.checked && 'translate-x-2 bg-white') ||
-                (this.disabled && this.checked && 'bg-white') ||
-                (this.disabled && '-translate-x-2 bg-neutral-500') ||
-                'bg-neutral-800 -translate-x-2'
+              this.disabled && this.checked
+                ? 'bg-white'
+                : this.disabled
+                  ? '-translate-x-2 bg-neutral-500'
+                  : this.showInvalidStyle
+                    ? 'bg-white -translate-x-2'
+                    : this.checked
+                      ? 'translate-x-2 bg-white'
+                      : 'bg-neutral-800 -translate-x-2'
             )}
           ></span>
         </span>
@@ -231,8 +241,8 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
           part="label"
           id="label"
           class=${cx(
-            'select-none inline-block ml-2 text-black',
-            (this.disabled && 'text-neutral-500') || 'text-neutral-800'
+            'select-none inline-block ml-2',
+            this.disabled ? 'text-neutral-500' : this.showInvalidStyle ? 'text-error' : 'text-black'
           )}
         >
           <slot></slot>
@@ -264,23 +274,6 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
 
       :host([required]) #label::after {
         content: ' *';
-      }
-
-      :host([data-user-invalid]) #label {
-        color: rgb(var(--sd-color-error, 204 25 55));
-      }
-
-      :host([data-user-invalid]) #control {
-        border-color: rgb(var(--sd-color-error, 204 25 55));
-        background-color: rgb(var(--sd-color-error, 204 25 55));
-      }
-
-      :host([data-user-invalid]) #thumb {
-        background-color: rgb(var(--sd-white, 255 255 255));
-      }
-
-      :host([data-user-invalid]) #input:hover ~ #control {
-        background-color: rgb(var(--sd-color-error-400, 172 25 56));
       }
     `
   ];
