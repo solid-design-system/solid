@@ -666,15 +666,14 @@ export default class SdInput extends SolidElement implements SolidFormControl {
         >
           ${this.helpText}
         </slot>
-
-        <div
-          id="error-message"
-          class="text-error text-sm mt-2"
-          part="error-message"
-          aria-live="polite"
-          ?hidden=${!this.showInvalidStyle}
-        ></div>
       </div>
+      <div
+        id="error-message"
+        class="text-error text-sm mt-2"
+        part="error-message"
+        aria-live="polite"
+        ?hidden=${!this.showInvalidStyle}
+      ></div>
     `;
   }
 

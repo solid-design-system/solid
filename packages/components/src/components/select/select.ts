@@ -1032,14 +1032,14 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
         >
           <slot name="help-text">${this.helpText}</slot>
         </div>
-        <div
-          id="error-message"
-          class="text-error text-sm mt-2"
-          part="error-message"
-          aria-live="polite"
-          ?hidden=${!this.showInvalidStyle}
-        ></div>
       </div>
+      <div
+        id="error-message"
+        class="text-error text-sm mt-2"
+        part="error-message"
+        aria-live="polite"
+        ?hidden=${!this.showInvalidStyle}
+      ></div>
     `;
   }
 
