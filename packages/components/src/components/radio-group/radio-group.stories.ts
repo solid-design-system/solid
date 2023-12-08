@@ -185,10 +185,10 @@ export const Mouseless = {
 };
 
 /**
- * This shows `sd-radio-button-group` in it's default state.
+ * This shows `sd-radio-group` using multiple `sd-radio-buttons` in it's default state.
  */
 
-export const RadioButtonGroup = {
+export const RadioButtons = {
   parameters: { controls: { exclude: ['default', 'size', 'value', 'required', 'invalid', 'label', 'orientation'] } },
   render: (args: any) => {
     return generateTemplate({
@@ -211,10 +211,11 @@ export const RadioButtonGroup = {
 };
 
 /**
- * `sd-radio-button-group` is fully accessibile via keyboard.
+ * `sd-radio-group` with multiple `sd-radio-buttons` is fully accessibile via keyboard.
  */
 
-export const MouselessRadioButtonGroup = {
+export const MouselessWithRadioButtons = {
+  parameters: { controls: { exclude: ['default', 'size', 'value', 'required', 'invalid', 'label', 'orientation'] } },
   render: (args: any) => {
     return html`<div class="mouseless">
       ${generateTemplate({

@@ -50,12 +50,6 @@ export default class SdRadioButton extends SolidElement {
   /** The radio button's size. */
   @property({ reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
 
-  /** Shows or hides the label */
-  @property({ type: Boolean }) showLabel = false;
-
-  /** Hides the icon when set to true */
-  @property({ type: Boolean }) hideIcon = false;
-
   connectedCallback() {
     super.connectedCallback();
     this.setAttribute('role', 'presentation');
@@ -97,7 +91,7 @@ export default class SdRadioButton extends SolidElement {
   }
 
   render() {
-    const buttonSizeClass = `${this.size}-${this.showLabel ? 'label' : 'no-label'}`;
+    const buttonSizeClass = `${this.size}-${this.hasSlotController.test('[default]') ? 'label' : 'no-label'}`;
 
     return html`
       <div part="base" role="presentation" class="relative">
@@ -115,7 +109,7 @@ export default class SdRadioButton extends SolidElement {
                 : this.disabled && this.checked
                   ? 'bg-neutral-500 text-white hover:cursor-not-allowed'
                   : 'bg-transparent text-primary border-primary hover:bg-primary-100 hover:border-primary-500 hover:text-primary-500 cursor-pointer',
-            this.showLabel && 'px-4',
+            this.hasSlotController.test('[default]') && 'px-4',
             this.hasFocus && 'focused-class',
             this.hasSlotController.test('[default]') && 'button--has-label',
             this.hasSlotController.test('icon') && 'button--has-icon flex gap-2',
@@ -140,10 +134,10 @@ export default class SdRadioButton extends SolidElement {
                 lg: 'text-xl'
               }[this.size]
             )}"
-            ?hidden=${this.hideIcon}
+            ?hidden=${!this.hasSlotController.test('icon')}
           ></slot>
-          ${this.showLabel
-            ? html`<slot part="label" class="button__label inline-flex relative items-center"></slot>`
+          ${this.hasSlotController.test('[default]')
+            ? html`<slot part="label" class="button__label inline-flex relative items-center whitespace-nowrap"></slot>`
             : null}
         </button>
       </div>
