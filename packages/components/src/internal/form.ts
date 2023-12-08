@@ -360,8 +360,7 @@ export class FormControlController implements ReactiveController {
    * event will be cancelled before being dispatched.
    */
   emitInvalidEvent(originalInvalidEvent?: Event) {
-    // TODO: Reviewer, do you agree with this?  This prevents us from having to preventDefault() on the original event in every form element component.
-    // We always want to prevent the original invalid event from bubbling so no browser validation messages are shown.
+    // We always want to prevent the original invalid event so no browser validation messages are shown.
     originalInvalidEvent?.preventDefault();
 
     const sdInvalidEvent = new CustomEvent<Record<PropertyKey, never>>('sd-invalid', {
