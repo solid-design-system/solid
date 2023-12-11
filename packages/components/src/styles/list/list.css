@@ -1,3 +1,26 @@
 .sd-list {
-  @apply list-disc;
+
+  @apply list-inside;
+
+  &--inverted {
+    @apply text-white;
+  }
+
+  &:is(ol) {
+    @apply list-decimal;
+  }
+
+  &:is(ul) {
+    @apply list-disc;
+
+    &.sd-list--icon { /* &--icon doesn't work -> Tailwind CSS doesn't directly support nested selectors.*/
+      @apply list-none;
+    }
+
+    &.sd-list--horizontal {
+      & > li {
+        @apply inline-block;
+      }
+    }
+  }
 }
