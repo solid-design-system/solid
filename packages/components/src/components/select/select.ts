@@ -13,7 +13,6 @@ import { waitForEvent } from '../../internal/event.js';
 import { watch } from '../../internal/watch.js';
 import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
-import formControlStyles from '../../styles/form-control.styles';
 import SdIcon from '../icon/icon';
 import SdPopup from '../popup/popup';
 import SdTag from '../tag/tag';
@@ -73,7 +72,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     'sd-tag': SdTag
   };
 
-  private readonly formControlController = new FormControlController(this, {
+  private readonly formControlController: FormControlController = new FormControlController(this, {
     assumeInteractionOn: ['sd-blur', 'sd-input']
   });
   private readonly hasSlotController = new HasSlotController(this, 'help-text', 'label');
@@ -1032,13 +1031,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
           <slot name="help-text">${this.helpText}</slot>
         </div>
       </div>
-      <div
-        id="error-message"
-        class="text-error text-sm mt-2 text-left"
-        part="error-message"
-        aria-live="polite"
-        ?hidden=${!this.showInvalidStyle}
-      ></div>
+      ${this.formControlController.renderErrorMessage(this.showInvalidStyle)}
     `;
   }
 
@@ -1047,7 +1040,6 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
    */
   static styles = [
     componentStyles,
-    formControlStyles,
     SolidElement.styles,
     css`
       :host {

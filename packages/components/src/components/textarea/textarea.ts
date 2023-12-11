@@ -7,8 +7,8 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { live } from 'lit/directives/live.js';
 import { property, query, state } from 'lit/decorators.js';
 import { watch } from '../../internal/watch.js';
+import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
-import formControlStyles from '../../styles/form-control.styles';
 import SolidElement from '../../internal/solid-element';
 import type { SolidFormControl } from '../../internal/solid-element';
 
@@ -37,7 +37,7 @@ import type { SolidFormControl } from '../../internal/solid-element';
  */
 @customElement('sd-textarea')
 export default class SdTextarea extends SolidElement implements SolidFormControl {
-  private readonly formControlController = new FormControlController(this);
+  private readonly formControlController: FormControlController = new FormControlController(this);
   private readonly hasSlotController = new HasSlotController(this, 'help-text', 'label');
 
   @query('.textarea__control') textarea: HTMLTextAreaElement;
@@ -442,13 +442,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
           ${this.helpText}
         </slot>
       </div>
-      <div
-        id="error-message"
-        class="text-error text-sm mt-2 text-left"
-        part="error-message"
-        aria-live="polite"
-        ?hidden=${!this.showInvalidStyle}
-      ></div>
+      ${this.formControlController.renderErrorMessage(this.showInvalidStyle)}
     `;
   }
 
@@ -456,10 +450,8 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
    * Inherits Tailwindclasses and includes additional styling.
    */
   static styles = [
-    // componentStyles,
-    formControlStyles,
+    componentStyles,
     SolidElement.styles,
-
     css`
       :host {
         display: block;

@@ -1,4 +1,4 @@
-import type { ReactiveController, ReactiveControllerHost } from 'lit';
+import { html, type ReactiveController, type ReactiveControllerHost } from 'lit';
 import type { SolidFormControl } from '../internal/solid-element';
 import type SdButton from '../components/button/button';
 
@@ -297,6 +297,16 @@ export class FormControlController implements ReactiveController {
   /** Returns the associated `<form>` element, if one exists. */
   getForm() {
     return this.form ?? null;
+  }
+  /** Returns a styled `<div>` element to display inline errors. */
+  renderErrorMessage(showInvalidStyle: boolean) {
+    return html`<div
+      id="error-message"
+      class="text-error text-sm mt-2 text-left"
+      part="error-message"
+      aria-live="polite"
+      ?hidden=${!showInvalidStyle}
+    ></div>`;
   }
 
   /** Resets the form, restoring all the control to their default value */

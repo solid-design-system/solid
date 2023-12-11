@@ -36,7 +36,7 @@ import type { SolidFormControl } from '../../internal/solid-element';
  */
 @customElement('sd-checkbox')
 export default class SdCheckbox extends SolidElement implements SolidFormControl {
-  private readonly formControlController = new FormControlController(this, {
+  private readonly formControlController: FormControlController = new FormControlController(this, {
     value: (control: SdCheckbox) => (control.checked ? control.value || 'on' : undefined),
     defaultValue: (control: SdCheckbox) => control.defaultChecked,
     setValue: (control: SdCheckbox, checked: boolean) => (control.checked = checked)
@@ -286,13 +286,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
           <slot></slot>
         </span>
       </label>
-      <div
-        id="error-message"
-        class="text-error text-sm mt-2 text-left"
-        part="error-message"
-        aria-live="polite"
-        ?hidden=${!this.showInvalidStyle}
-      ></div>
+      ${this.formControlController.renderErrorMessage(this.showInvalidStyle)}
     `;
   }
 

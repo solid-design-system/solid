@@ -33,7 +33,7 @@ import type { SolidFormControl } from '../../internal/solid-element';
  */
 @customElement('sd-switch')
 export default class SdSwitch extends SolidElement implements SolidFormControl {
-  private readonly formControlController = new FormControlController(this, {
+  private readonly formControlController: FormControlController = new FormControlController(this, {
     value: (control: SdSwitch) => (control.checked ? control.value || 'on' : undefined),
     defaultValue: (control: SdSwitch) => control.defaultChecked,
     setValue: (control: SdSwitch, checked: boolean) => (control.checked = checked)
@@ -247,13 +247,7 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
           <slot></slot>
         </span>
       </label>
-      <div
-        id="error-message"
-        class="text-error text-sm mt-2 text-left"
-        part="error-message"
-        aria-live="polite"
-        ?hidden=${!this.showInvalidStyle}
-      ></div>
+      ${this.formControlController.renderErrorMessage(this.showInvalidStyle)}
     `;
   }
 

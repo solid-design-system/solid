@@ -11,7 +11,6 @@ import { property, query, state } from 'lit/decorators.js';
 import { watch } from '../../internal/watch';
 import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
-import formControlStyles from '../../styles/form-control.styles';
 import SolidElement from '../../internal/solid-element';
 import type { SolidFormControl } from '../../internal/solid-element';
 
@@ -64,7 +63,7 @@ const isFirefox = isChromium ? false : navigator.userAgent.includes('Firefox');
 
 @customElement('sd-input')
 export default class SdInput extends SolidElement implements SolidFormControl {
-  protected readonly formControlController = new FormControlController(this);
+  protected readonly formControlController: FormControlController = new FormControlController(this);
   private readonly hasSlotController = new HasSlotController(
     this,
     'help-text',
@@ -666,13 +665,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
           ${this.helpText}
         </slot>
       </div>
-      <div
-        id="error-message"
-        class="text-error text-sm mt-2 text-left"
-        part="error-message"
-        aria-live="polite"
-        ?hidden=${!this.showInvalidStyle}
-      ></div>
+      ${this.formControlController.renderErrorMessage(this.showInvalidStyle)}
     `;
   }
 
@@ -681,9 +674,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
    */
   static styles = [
     componentStyles,
-    formControlStyles,
     SolidElement.styles,
-
     css`
       :host {
         box-sizing: border-box;
