@@ -826,7 +826,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
       <div
         part="form-control"
         class=${cx(
-          'form-control relative text-left',
+          'relative text-left',
           cursorStyles,
           this.size === 'sm' ? 'text-sm' : 'text-base',
 
