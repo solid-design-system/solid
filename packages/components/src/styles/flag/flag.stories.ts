@@ -76,7 +76,6 @@ export const FlagSamples = {
         #teaserWithContentPlaceholder::part(media) {
           flex-grow: 1;
         }
-
       </style>
       <div class="flex justify-between gap-8">
         <sd-teaser variant="white border-neutral-400" breakpoint="9999" inset class="flex-1">
