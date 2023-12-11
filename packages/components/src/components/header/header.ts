@@ -127,7 +127,7 @@ export default class SdHeader extends SolidElement {
         }
       }
 
-      :host([fixed]) [part='main'] {
+      [part='main'] {
         width: var(--sd-header-inner-width);
         max-width: var(--sd-header-inner-max-width);
         padding: var(--sd-header-padding, 12px 16px);

@@ -75,8 +75,8 @@ export default class SdCarousel extends SolidElement {
   @property({ type: Number, attribute: 'slides-per-move' }) slidesPerMove = 1;
 
   @query('slot:not([name])') defaultSlot: HTMLSlotElement;
-  @query('#scroll-container') scrollContainer: HTMLElement;
-  @query('[part^="pagination-"]') paginationContainer: HTMLElement;
+  @query('.carousel__slides') scrollContainer: HTMLElement;
+  @query('.carousel__pagination') paginationContainer: HTMLElement;
 
   // The index of the active slide
   @state() activeSlide = 0;
@@ -395,7 +395,7 @@ export default class SdCarousel extends SolidElement {
           id="scroll-container"
           part="scroll-container"
           class="${cx(
-            `mb-6
+            `carousel__slides mb-6
             grid max-h-full w-full items-center justify-items-center overflow-auto`,
             this.inverted ? 'focus-visible:focus-outline-inverted' : 'focus-visible:focus-outline',
             `overscroll-x-contain grid-flow-col auto-rows-[100%]
@@ -411,10 +411,11 @@ export default class SdCarousel extends SolidElement {
           <slot></slot>
         </div>
 
-        <div part="controls" class="w-full flex items-center justify-center relative">
-          <div part="navigation" class="flex items-center justify-center">
+        <div part="controls" class=${cx('w-full flex items-center justify-center relative')}>
+          <div part="navigation" class=${cx('carousel__navigation flex items-center justify-center')}>
             <button
               part="navigation-button navigation-button--previous"
+              id="carousel__navigation-button--previous"
               ?disabled=${!prevEnabled ? true : false}
               class=${cx(
                 '!mr-6 !rounded-sm sd-interactive',
@@ -428,7 +429,7 @@ export default class SdCarousel extends SolidElement {
             >
               <slot name="previous-icon">
                 <sd-icon
-                  class="h-6 w-6 rotate-90 grid place-items-center"
+                  class=${cx('h-6 w-6 rotate-90 grid place-items-center')}
                   library="system"
                   name="${isLtr ? 'chevron-down' : 'chevron-up'}"
                 ></sd-icon>
@@ -440,7 +441,7 @@ export default class SdCarousel extends SolidElement {
                   <div
                     part="pagination-dot"
                     role="tablist"
-                    class="flex wrap items-center gap-2"
+                    class="${cx('carousel__pagination dot flex wrap items-center gap-2')}"
                     aria-controls="scroll-container"
                   >
                     ${map(range(pagesCount), index => {
@@ -449,6 +450,7 @@ export default class SdCarousel extends SolidElement {
                         <button
                           part="pagination-item ${isActive ? 'pagination-item--active' : ''}"
                           class="${cx(
+                            'carousel__pagination-item',
                             'block cursor-pointer bg-none border-0 rounded-full',
                             isActive ? 'bg-accent' : '',
                             this.inverted ? 'focus-within:focus-outline-inverted' : 'focus-within:focus-outline'
@@ -475,7 +477,7 @@ export default class SdCarousel extends SolidElement {
                 `
               : html` <span
                   part="pagination-number"
-                  class="flex gap-0.5 cursor-default select-none"
+                  class="carousel__pagination number flex gap-0.5 cursor-default select-none"
                   aria-controls="scroll-container"
                 >
                   <span
@@ -497,6 +499,7 @@ export default class SdCarousel extends SolidElement {
 
             <button
               part="navigation-button navigation-button--next"
+              id="carousel__navigation-button--next"
               ?disabled=${!nextEnabled ? true : false}
               class=${cx(
                 '!ml-6 !rounded-sm sd-interactive ',
@@ -562,11 +565,11 @@ export default class SdCarousel extends SolidElement {
           '. pagination .';
       }
 
-      [part^='pagination-'] {
+      .carousel__pagination {
         grid-area: pagination;
       }
 
-      #scroll-container {
+      .carousel__slides {
         grid-area: slides;
         scrollbar-width: none;
         --slide-size: calc((100% - (var(--slides-per-page) - 1) * var(--slide-gap)) / var(--slides-per-page));
@@ -581,12 +584,12 @@ export default class SdCarousel extends SolidElement {
       }
 
       @media (prefers-reduced-motion) {
-        :where(#scroll-container) {
+        :where(.carousel__slides) {
           scroll-behavior: auto;
         }
       }
 
-      [part='navigation'] {
+      .carousel__navigation {
         grid-area: navigation;
       }
 
