@@ -40,7 +40,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
   private readonly formControlController: FormControlController = new FormControlController(this);
   private readonly hasSlotController = new HasSlotController(this, 'help-text', 'label');
 
-  @query('.textarea__control') textarea: HTMLTextAreaElement;
+  @query('#input') textarea: HTMLTextAreaElement;
   @query('#error-message') errorMessage: HTMLDivElement;
 
   @state() private hasFocus = false;
@@ -63,7 +63,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
   @property({ reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
 
   /** The textarea's label. If you need to display HTML, use the `label` slot instead. */
-  @property() label = '';
+  @property() label = 'Label';
 
   /** The textarea's help text. If you need to display HTML, use the `help-text` slot instead. */
   @property({ attribute: 'help-text' }) helpText = '';
@@ -314,11 +314,10 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
     };
 
     // States
-    const hasLabel = this.label ? true : !!slots['label'];
     const hasHelpText = this.helpText ? true : !!slots['helpText'];
 
-    // Hierarchy of input states:
-    const inputState = this.disabled
+    // Hierarchy of textarea states:
+    const textareaState = this.disabled
       ? 'disabled'
       : this.readonly
         ? 'readonly'
@@ -336,28 +335,19 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
 
     // Conditional Styles
     const textSize = this.size === 'sm' ? 'text-sm' : 'text-base';
+    const iconSizeMarginLeft = {
+      sm: 'text-base ml-1',
+      md: 'text-lg ml-2',
+      lg: 'text-xl ml-2'
+    }[this.size];
 
     return html`
-      <div
-        part="form-control"
-        class=${cx(
-          'form-control text-left',
-          hasLabel && 'form-control--has-label',
-          hasHelpText && 'form-control--has-help-text',
-          this.disabled && 'cursor-not-allowed'
-        )}
-      >
-        <label
-          part="form-control-label"
-          id="label"
-          class=${cx('form-control-label mb-2', hasLabel ? 'has-label inline-block' : 'hidden', textSize)}
-          for="input"
-          aria-hidden=${hasLabel ? 'false' : 'true'}
-        >
+      <div part="form-control" class="text-left">
+        <label part="form-control-label" id="label" class=${cx('mb-2 inline-block', textSize)} for="input">
           <slot name="label">${this.label}</slot>
         </label>
 
-        <div part="form-control-input" class="form-control-input relative w-full">
+        <div part="form-control-input" class=${cx('relative w-full', this.disabled && 'cursor-not-allowed')}>
           <div
             part="border"
             class=${cx(
@@ -371,13 +361,13 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
                 invalid: 'border-error',
                 valid: 'border-success',
                 default: 'border-neutral-800'
-              }[inputState]
+              }[textareaState]
             )}
           ></div>
           <div
             part="base"
             class=${cx(
-              'textarea px-4 flex flex-row items-center rounded-default textarea--resize-none',
+              'textarea px-4 flex items-top rounded-default bg-white group',
               {
                 sm: 'textarea-sm py-1',
                 md: 'textarea-md py-1',
@@ -392,18 +382,17 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
                 invalid: 'text-error',
                 valid: 'text-success',
                 default: 'text-black'
-              }[inputState],
+              }[textareaState],
               !this.disabled && !this.readonly ? 'hover:bg-neutral-200' : '',
-              this.readonly && 'bg-neutral-100',
-              this.showInvalidStyle && 'form-control-input--invalid',
-              !this.value && 'textarea--empty'
+              this.readonly && 'bg-neutral-100'
             )}
           >
             <textarea
               part="textarea"
               id="input"
               class=${cx(
-                'textarea__control flex-grow focus:outline-none bg-transparent placeholder-neutral-700"',
+                'flex-grow focus:outline-none bg-transparent placeholder-neutral-700 resize-none',
+                this.disabled && 'cursor-not-allowed',
                 textSize
               )}
               title=${this.title /* An empty title prevents browser validation tooltips from appearing on hover */}
@@ -429,9 +418,26 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
               @focus=${this.handleFocus}
               @blur=${this.handleBlur}
             ></textarea>
+            ${this.showInvalidStyle
+              ? html`
+                  <sd-icon
+                    class=${cx('text-error absolute right-4 bg-white group-hover:bg-neutral-200', iconSizeMarginLeft)}
+                    library="system"
+                    name="risk"
+                  ></sd-icon>
+                `
+              : ''}
+            ${this.showValidStyle
+              ? html`
+                  <sd-icon
+                    class=${cx('text-success absolute right-4 bg-white group-hover:bg-neutral-200', iconSizeMarginLeft)}
+                    library="system"
+                    name="confirm"
+                  ></sd-icon>
+                `
+              : ''}
           </div>
         </div>
-
         <slot
           name="help-text"
           part="form-control-help-text"
@@ -457,21 +463,12 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
         display: block;
       }
 
-      :host([required]) #label.has-label::after {
-        content: '*';
-        margin-left: 2px;
-      }
-
-      :host([disabled]) .textarea__control {
-        cursor: not-allowed;
+      :host([required]) #label::after {
+        content: ' *';
       }
 
       .no-scrollbar::-webkit-scrollbar {
         display: none;
-      }
-
-      .textarea--resize-none .textarea__control {
-        resize: none;
       }
     `
   ];

@@ -76,7 +76,6 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   private readonly localize = new LocalizeController(this);
 
   @query('#input') input: HTMLInputElement;
-
   @query('#error-message') errorMessage: HTMLDivElement;
 
   @state() private hasFocus = false;
@@ -121,7 +120,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   @property() placeholder = '';
 
   /** The input's label. If you need to display HTML, use the `label` slot instead. */
-  @property() label = '';
+  @property() label = 'Label';
 
   /** The input's help text. If you need to display HTML, use the `help-text` slot instead. */
   @property({ attribute: 'help-text' }) helpText = '';
@@ -434,7 +433,6 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     };
 
     // States
-    const hasLabel = this.label ? true : !!slots['label'];
     const hasHelpText = this.helpText ? true : !!slots['helpText'];
     const hasClearIcon = this.clearable && !this.readonly && (typeof this.value === 'number' || this.value.length > 0);
 
@@ -489,21 +487,12 @@ export default class SdInput extends SolidElement implements SolidFormControl {
 
     // Render
     return html`
-      <div
-        part="form-control"
-        class=${cx('form-control', hasLabel && 'form-control--has-label', this.disabled && 'pointer-events-none')}
-      >
-        <label
-          part="form-control-label"
-          id="label"
-          class=${cx('form-control-label mb-2', hasLabel ? 'has-label  inline-block' : 'hidden', textSize)}
-          for="input"
-          aria-hidden=${hasLabel ? 'false' : 'true'}
-        >
+      <div part="form-control" class=${cx(this.disabled && 'pointer-events-none')}>
+        <label part="form-control-label" id="label" class=${cx('mb-2 inline-block', textSize)} for="input">
           <slot name="label">${this.label}</slot>
         </label>
 
-        <div part="form-control-input" class="form-control-input relative w-full">
+        <div part="form-control-input" class="relative w-full">
           <div
             part="border"
             class=${cx('absolute w-full h-full pointer-events-none border rounded-default', borderColor)}
@@ -511,17 +500,13 @@ export default class SdInput extends SolidElement implements SolidFormControl {
           <div
             part="base"
             class=${cx(
-              'px-4 flex flex-row items-center rounded-default transition-all',
+              'px-4 flex flex-row items-center rounded-default transition-all bg-white',
               // Vertical Padding
               this.size === 'lg' ? 'py-2' : 'py-1',
               // States
               !this.disabled && !this.readonly ? 'hover:bg-neutral-200' : '',
               this.readonly && 'bg-neutral-100',
-              this.showInvalidStyle && 'form-control-input--invalid',
-              textColor,
-              !this.value && 'input--empty',
-              this.noSpinButtons && 'input--no-spin-buttons',
-              isFirefox && 'input--is-firefox'
+              textColor
             )}
           >
             ${slots['left']
@@ -688,9 +673,8 @@ export default class SdInput extends SolidElement implements SolidFormControl {
         display: block;
       }
 
-      :host([required]) #label.has-label::after {
-        content: '*';
-        margin-left: 2px;
+      :host([required]) #label::after {
+        content: ' *';
       }
 
       details summary::-webkit-details-marker {
