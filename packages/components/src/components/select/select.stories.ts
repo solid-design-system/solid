@@ -1,3 +1,4 @@
+/* eslint-disable lit/attribute-value-entities */
 import '../../solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
@@ -488,6 +489,59 @@ export const SampleForm = {
             const formValues = Object.fromEntries(formData);
 
             alert('Form submitted successfully with the following values: ' + JSON.stringify(formValues, null, 2));
+          }
+        }
+
+        document.querySelector('#testForm').addEventListener('submit', handleSubmit);
+      </script>
+    `;
+  }
+};
+
+/**
+ * Demonstrates a form containing all existing Solid form elements.
+ */
+
+export const SolidForm = {
+  name: 'Sample: Solid Form',
+  parameters: {
+    controls: {
+      include: []
+    }
+  },
+  render: () => {
+    return html`
+      <form action="" method="get" id="testForm" name="testForm" class="">
+        <h1 class="text-lg text-white bg-primary p-4">Solid Form</h1>
+        <div class="[&>:nth-child(even)]:bg-neutral-100 [&>*]:p-4">
+          <sd-checkbox form="testForm" name="field 1" required>Field 1</sd-checkbox>
+          <sd-input form="testForm" name="field 2" label="Field 2" required></sd-input>
+          <sd-select form="testForm" name="field 3" label="Field 3" required
+            ><sd-option value="option-1">Option 1</sd-option><sd-option value="option-2">Option 2</sd-option>
+            <sd-option value="option-3">Option 3</sd-option><sd-option value="option-4">Option 4</sd-option
+            ><sd-option value="option-5">Option 5</sd-option><sd-option value="option-6">Option 6</sd-option
+            ><sd-option value="option-7">Option 7</sd-option></sd-select
+          >
+          <sd-radio-group form="testForm" name="field 4" label="Field 4" required
+            ><sd-radio value="option-1">Option 1</sd-radio><sd-radio value="option-2">Option 2</sd-radio>
+            <sd-radio value="option-3">Option 3</sd-radio></sd-radio-group
+          >
+          <sd-switch form="testForm" name="field 5" required>Field 5</sd-switch>
+          <sd-textarea form="testForm" name="field 6" label="Field 6" required></sd-textarea>
+        </div>
+        <sd-button class="my-4" type="submit">Submit</sd-button>
+      </form>
+
+      <script>
+        function handleSubmit(event) {
+          const form = document.querySelector('#testForm');
+
+          const formData = new FormData(form);
+          const formValues = Object.fromEntries(formData);
+
+          if (form.reportValidity()) {
+            event.preventDefault(); // Prevent the default form submission behavior
+            alert('Form submitted with the following values: ' + JSON.stringify(formValues, null, 2));
           }
         }
 

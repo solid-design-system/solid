@@ -204,11 +204,11 @@ export class FormControlController implements ReactiveController {
     if (this.form && !this.form.noValidate && !disabled && !reportValidity(this.host)) {
       event.preventDefault();
       event.stopImmediatePropagation();
-    }
 
-    // Focus the first invalid element
-    const invalidElements: NodeListOf<HTMLFormElement> | undefined = this.form?.querySelectorAll('[data-invalid]');
-    if (invalidElements?.length) invalidElements[0].focus();
+      // Focus the first invalid element
+      const invalidElements: NodeListOf<HTMLFormElement> | undefined = this.form?.querySelectorAll('[data-invalid]');
+      if (invalidElements?.length) invalidElements[0].focus();
+    }
   };
 
   private handleFormReset = () => {

@@ -589,17 +589,13 @@ export const Validation = {
       <script>
         function handleSubmit(event) {
           const form = document.querySelector('#testForm');
-          const sdInputs = Array.from(document.querySelectorAll('sd-input'));
 
-          const isValid = sdInput => sdInput.checkValidity();
+          const formData = new FormData(form);
+          const formValues = Object.fromEntries(formData);
 
-          if (sdInputs.every(isValid)) {
+          if (form.reportValidity()) {
             event.preventDefault(); // Prevent the default form submission behavior
-
-            const formData = new FormData(form);
-            const formValues = Object.fromEntries(formData);
-
-            alert('Form submitted successfully with the following values: ' + JSON.stringify(formValues, null, 2));
+            alert('Form submitted with the following values: ' + JSON.stringify(formValues, null, 2));
           }
         }
 
