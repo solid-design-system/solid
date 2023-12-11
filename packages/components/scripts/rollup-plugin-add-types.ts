@@ -9,7 +9,6 @@
  * 3. Recursively processes each directory in the target directory, deleting orphaned .d.ts files and empty directories.
  */
 
-import { exec } from 'child_process';
 import fs from 'fs';
 import path from 'path';
 import ts from 'typescript';
@@ -75,7 +74,7 @@ export default function addTypesPlugin() {
 
         allDiagnostics.forEach(diagnostic => {
           if (diagnostic.file) {
-            const { line, character } = ts.getLineAndCharacterOfPosition(diagnostic.file, diagnostic.start);
+            const { line, character } = ts.getLineAndCharacterOfPosition(diagnostic.file, diagnostic.start!);
             const message = ts.flattenDiagnosticMessageText(diagnostic.messageText, '\n');
             console.log(`${diagnostic.file.fileName} (${line + 1},${character + 1}): ${message}`);
           } else {

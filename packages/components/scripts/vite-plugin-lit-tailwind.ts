@@ -3,7 +3,12 @@ import autoprefixer from 'autoprefixer';
 import postcss from 'postcss';
 import tailwindcss from 'tailwindcss';
 
-export default function litTailwindPlugin(options = {}) {
+interface LitTailwindPluginOptions {
+  include?: RegExp[] | string[];
+  exclude?: RegExp[] | string[];
+}
+
+export default function litTailwindPlugin(options: LitTailwindPluginOptions = {}) {
   // Default patterns
   const defaultInclude = [/\.ts$/, /\.js$/]; // Include .ts and .js files
   const defaultExclude = [/node_modules/]; // Exclude node_modules by default
@@ -12,14 +17,12 @@ export default function litTailwindPlugin(options = {}) {
   const includePatterns = options.include || defaultInclude;
   const excludePatterns = options.exclude || defaultExclude;
 
-  console.log('includePatterns', includePatterns);
-  console.log('excludePatterns', excludePatterns);
   // Create a filter using the specified include and exclude patterns
   const filter = createFilter(includePatterns, excludePatterns);
 
   return {
     name: 'lit-tailwind',
-    async transform(code, id) {
+    async transform(code: string, id: string) {
       if (!filter(id)) {
         return;
       }
@@ -40,14 +43,14 @@ export default function litTailwindPlugin(options = {}) {
 
           // Replace the original CSS in the code
           transformedCode = transformedCode.replace(fullMatch, `css\`${result}\``);
-        } catch (error) {
-          this.error(`PostCSS error: ${error}`);
+        } catch (error: unknown) {
+          console.error(`PostCSS error: ${error as string}`);
         }
       }
 
+      // eslint-disable-next-line consistent-return
       return {
-        code: transformedCode,
-        map: null // Provide source maps if necessary
+        code: transformedCode
       };
     }
   };

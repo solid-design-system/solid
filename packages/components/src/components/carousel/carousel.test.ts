@@ -18,9 +18,9 @@ describe('<sd-carousel>', () => {
     expect(el).to.exist;
     expect(el).to.have.attribute('role', 'region');
     expect(el).to.have.attribute('aria-label', 'Carousel');
-    expect(el.shadowRoot!.querySelector('.carousel__navigation')).to.exist;
-    expect(el.shadowRoot!.querySelector('.carousel__pagination')).to.exist;
-    expect(el.shadowRoot!.querySelector('.number')).to.exist;
+    expect(el.shadowRoot!.querySelector('[part="navigation"]')).to.exist;
+    expect(el.shadowRoot!.querySelector('[part="pagination-dot"], [part="pagination-number"]')).to.exist;
+    expect(el.shadowRoot!.querySelector('[part="pagination-number"]')).to.exist;
   });
 
   it('should render a carousel with dot variation', async () => {
@@ -37,9 +37,9 @@ describe('<sd-carousel>', () => {
     expect(el).to.exist;
     expect(el).to.have.attribute('role', 'region');
     expect(el).to.have.attribute('aria-label', 'Carousel');
-    expect(el.shadowRoot!.querySelector('.carousel__navigation')).to.exist;
-    expect(el.shadowRoot!.querySelector('.carousel__pagination')).to.exist;
-    expect(el.shadowRoot!.querySelector('.dot')).to.exist;
+    expect(el.shadowRoot!.querySelector('[part="navigation"]')).to.exist;
+    expect(el.shadowRoot!.querySelector('[part^="pagination-"]')).to.exist;
+    expect(el.shadowRoot!.querySelector('[part="pagination-dot"]')).to.exist;
   });
 
   it('should be scrollable along the x-axis', async () => {
@@ -176,8 +176,8 @@ describe('<sd-carousel>', () => {
       `);
       // Assert
       expect(el).to.exist;
-      expect(el.shadowRoot!.querySelector('.dot')).not.to.exist;
-      expect(el.shadowRoot!.querySelector('.number')).to.exist;
+      expect(el.shadowRoot!.querySelector('[part="pagination-dot"]')).not.to.exist;
+      expect(el.shadowRoot!.querySelector('[part="pagination-number"]')).to.exist;
     });
 
     it('should render dot pagination when variant is dot', async () => {
@@ -191,8 +191,8 @@ describe('<sd-carousel>', () => {
       `);
       // Assert
       expect(el).to.exist;
-      expect(el.shadowRoot!.querySelector('.number')).not.to.exist;
-      expect(el.shadowRoot!.querySelector('.dot')).to.exist;
+      expect(el.shadowRoot!.querySelector('[part="pagination-number"]')).not.to.exist;
+      expect(el.shadowRoot!.querySelector('[part="pagination-dot"]')).to.exist;
     });
     describe('and user clicks on a pagination button', () => {
       it('should scroll the carousel to the nth slide', async () => {
@@ -207,7 +207,7 @@ describe('<sd-carousel>', () => {
         sinon.stub(el, 'goToSlide');
         await el.updateComplete;
         // Act
-        const paginationItem = el.shadowRoot!.querySelectorAll('.carousel__pagination-item')[2] as HTMLElement;
+        const paginationItem = el.shadowRoot!.querySelectorAll('[part="pagination-item"]')[2] as HTMLElement;
         await clickOnElement(paginationItem);
         expect(el.goToSlide).to.have.been.calledWith(2);
       });
@@ -273,7 +273,7 @@ describe('<sd-carousel>', () => {
             <sd-carousel-item>Node 3</sd-carousel-item>
           </sd-carousel>
         `);
-        const nextButton: HTMLElement = el.shadowRoot!.querySelector('#carousel__navigation-button--next')!;
+        const nextButton: HTMLElement = el.shadowRoot!.querySelector('[part="navigation-button--next"]')!;
         sinon.stub(el, 'next');
         await el.updateComplete;
         // Act
@@ -292,7 +292,7 @@ describe('<sd-carousel>', () => {
               <sd-carousel-item>Node 3</sd-carousel-item>
             </sd-carousel>
           `);
-          const nextButton: HTMLElement = el.shadowRoot!.querySelector('#carousel__navigation-button--next')!;
+          const nextButton: HTMLElement = el.shadowRoot!.querySelector('[part="navigation-button--next"]')!;
           sinon.stub(el, 'next');
           el.goToSlide(2, 'auto');
           await oneEvent(el.scrollContainer, 'scrollend', false);
@@ -350,7 +350,7 @@ describe('<sd-carousel>', () => {
       await oneEvent(el.scrollContainer, 'scrollend', false);
       await el.updateComplete;
 
-      const previousButton: HTMLElement = el.shadowRoot!.querySelector('#carousel__navigation-button--previous')!;
+      const previousButton: HTMLElement = el.shadowRoot!.querySelector('[part="navigation-button--previous"]')!;
       sinon.stub(el, 'previous');
 
       await el.updateComplete;
@@ -373,7 +373,7 @@ describe('<sd-carousel>', () => {
             <sd-carousel-item>Node 3</sd-carousel-item>
           </sd-carousel>
         `);
-        const previousButton: HTMLElement = el.shadowRoot!.querySelector('#carousel__navigation-button--previous')!;
+        const previousButton: HTMLElement = el.shadowRoot!.querySelector('[part="navigation-button--previous"]')!;
         sinon.stub(el, 'previous');
         await el.updateComplete;
         // Act
@@ -393,7 +393,7 @@ describe('<sd-carousel>', () => {
               <sd-carousel-item>Node 3</sd-carousel-item>
             </sd-carousel>
           `);
-          const previousButton: HTMLElement = el.shadowRoot!.querySelector('#carousel__navigation-button--previous')!;
+          const previousButton: HTMLElement = el.shadowRoot!.querySelector('[part="navigation-button--previous"]')!;
           await el.updateComplete;
           // Act
           await clickOnElement(previousButton);
@@ -484,8 +484,8 @@ describe('<sd-carousel>', () => {
             <sd-carousel-item>Node 3</sd-carousel-item>
           </sd-carousel>
         `);
-        const pagination = el.shadowRoot!.querySelector('.carousel__pagination')!;
-        const navigation = el.shadowRoot!.querySelector('.carousel__navigation')!;
+        const pagination = el.shadowRoot!.querySelector('[part="pagination"]')!;
+        const navigation = el.shadowRoot!.querySelector('[part="navigation"]')!;
         await el.updateComplete;
 
         // Assert
@@ -493,13 +493,13 @@ describe('<sd-carousel>', () => {
         expect(el.scrollContainer).to.have.attribute('aria-atomic', 'true');
 
         expect(pagination).to.have.attribute('aria-controls', el.scrollContainer.id);
-        for (const paginationItem of pagination.querySelectorAll('.carousel__pagination-item')) {
+        for (const paginationItem of pagination.querySelectorAll('[part="pagination-item"]')) {
           expect(paginationItem).to.have.attribute('role', 'tab');
           expect(paginationItem).to.have.attribute('aria-selected');
           expect(paginationItem).to.have.attribute('aria-label');
         }
 
-        for (const navigationItem of navigation.querySelectorAll('.carousel__navigation-item')) {
+        for (const navigationItem of navigation.querySelectorAll('[part="navigation-button"]')) {
           expect(navigationItem).to.have.attribute('aria-controls', el.scrollContainer.id);
           expect(navigationItem).to.have.attribute('aria-disabled');
           expect(navigationItem).to.have.attribute('aria-label');
@@ -519,8 +519,8 @@ describe('<sd-carousel>', () => {
             <sd-carousel-item>Node 3</sd-carousel-item>
           </sd-carousel>
         `);
-        const pagination = el.shadowRoot!.querySelector('.carousel__pagination')!;
-        const navigation = el.shadowRoot!.querySelector('.carousel__navigation')!;
+        const pagination = el.shadowRoot!.querySelector('[part="pagination-dot"], [part="pagination-number"]')!;
+        const navigation = el.shadowRoot!.querySelector('[part="navigation"]')!;
         await el.updateComplete;
 
         // Assert
@@ -529,13 +529,13 @@ describe('<sd-carousel>', () => {
 
         expect(pagination).to.have.attribute('role', 'tablist');
         expect(pagination).to.have.attribute('aria-controls', el.scrollContainer.id);
-        for (const paginationItem of pagination.querySelectorAll('.carousel__pagination-item')) {
+        for (const paginationItem of pagination.querySelectorAll('[part="pagination-item"]')) {
           expect(paginationItem).to.have.attribute('role', 'tab');
           expect(paginationItem).to.have.attribute('aria-selected');
           expect(paginationItem).to.have.attribute('aria-label');
         }
 
-        for (const navigationItem of navigation.querySelectorAll('.carousel__navigation-item')) {
+        for (const navigationItem of navigation.querySelectorAll('[part="navigation-item"]')) {
           expect(navigationItem).to.have.attribute('aria-controls', el.scrollContainer.id);
           expect(navigationItem).to.have.attribute('aria-disabled');
           expect(navigationItem).to.have.attribute('aria-label');

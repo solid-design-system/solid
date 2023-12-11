@@ -362,8 +362,8 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   /** Displays the browser picker for an input element (only works if the browser supports it for the input type). */
   showPicker() {
     if ('showPicker' in HTMLInputElement.prototype) {
-      // @ts-expect-error - showPicker is only supported on date, time, and datetime-local inputs
-      this.input.showPicker();
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+      (this.input as any).showPicker();
     }
   }
 

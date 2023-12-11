@@ -76,7 +76,7 @@ export default class SdCarousel extends SolidElement {
 
   @query('slot:not([name])') defaultSlot: HTMLSlotElement;
   @query('#scroll-container') scrollContainer: HTMLElement;
-  @query('[part="^"]') paginationContainer: HTMLElement;
+  @query('[part^="pagination-"]') paginationContainer: HTMLElement;
 
   // The index of the active slide
   @state() activeSlide = 0;
@@ -562,8 +562,7 @@ export default class SdCarousel extends SolidElement {
           '. pagination .';
       }
 
-      [part='pagination-dot'],
-      [part='pagination-number'] {
+      [part^='pagination-'] {
         grid-area: pagination;
       }
 
