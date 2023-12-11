@@ -9,50 +9,6 @@ const { argTypes, parameters } = storybookDefaults('sd-select');
 const { generateTemplate } = storybookTemplate('sd-select');
 const { overrideArgs } = storybookHelpers('sd-select');
 
-interface SdSelectArgs {
-  '_optionsInDefaultSlot-prop': string;
-  'popup-prop': string;
-  'hasHover-prop': string;
-  'defaultValue-prop': string;
-  'size-attr': string;
-  'label-attr': string;
-  'placeholder-attr': string;
-  'help-text-attr': string;
-  'placement-attr': string;
-  'clearable-attr': string;
-  'disabled-attr': string;
-  'multiple-attr': string;
-  'useTags-attr': string;
-  'max-options-visible-attr': number;
-  'form-attr': string;
-  'name-attr': string;
-  'open-attr'?: string;
-  'value-attr': string;
-  'required-attr': string;
-  'hoist-attr': string;
-  'validity-prop': string;
-  'validationMessage-prop': string;
-  'default-slot': string;
-  'label-slot': string;
-  'help-text-slot': string;
-  'clear-icon-slot': string;
-  'expand-icon-slot': string;
-  'form-control-part': string;
-  'form-control-label-part': string;
-  'form-control-input-part': string;
-  'form-control-help-text-part': string;
-  'combobox-part': string;
-  'display-input-part': string;
-  'listbox-part': string;
-  'tags-part': string;
-  'tag-part': string;
-  'tag__base-part': string;
-  'tag__content-part': string;
-  'tag__removable-indicator-part': string;
-  'clear-button-part': string;
-  'expand-icon-part': string;
-}
-
 // Reusable Constants
 const twoOptionsConstant: ConstantDefinition = {
   type: 'slot',
@@ -113,7 +69,7 @@ export default {
  */
 
 export const Default = {
-  render: (args: SdSelectArgs) => {
+  render: (args: any) => {
     return html`<div class="h-[260px] w-[420px]">${generateTemplate({ args })}</div>`;
   }
 };
@@ -129,7 +85,7 @@ export const SizeMultiple = {
       exclude: ['open-attr']
     }
   },
-  render: (args: SdSelectArgs) => {
+  render: (args: { 'open-attr'?: string }) => {
     delete args['open-attr'];
 
     return html`<div class="h-[340px]">
@@ -170,7 +126,7 @@ export const DisabledMultiple = {
       exclude: ['open']
     }
   },
-  render: (args: SdSelectArgs) => {
+  render: (args: { 'open-attr'?: string }) => {
     delete args['open-attr'];
 
     return html`<div class="h-[340px] w-full">
@@ -217,7 +173,7 @@ export const ValidInvalid = {
       exclude: ['label', 'open-attr', 'required', 'default', 'useTags', 'multiple', 'max-options-visible']
     }
   },
-  render: (args: SdSelectArgs) => {
+  render: (args: { 'open-attr'?: string }) => {
     delete args['open-attr'];
 
     return html`<form class="h-[260px] w-full flex gap-4">
@@ -265,7 +221,7 @@ export const Slots = {
       exclude: ['open-attr']
     }
   },
-  render: (args: SdSelectArgs) => {
+  render: (args: { 'open-attr'?: string }) => {
     delete args['open-attr'];
 
     return html`
@@ -362,7 +318,7 @@ export const Parts = {
       ]
     }
   },
-  render: (args: SdSelectArgs) => {
+  render: (args: { 'open-attr'?: string }) => {
     delete args['open-attr'];
 
     return generateTemplate({
@@ -401,7 +357,7 @@ export const Mouseless = {
       exclude: ['open-attr', 'value', 'default']
     }
   },
-  render: (args: SdSelectArgs) => {
+  render: (args: { 'open-attr'?: string }) => {
     delete args['open-attr'];
 
     return html`<div class="mouseless h-[260px] w-full flex gap-4">
@@ -443,7 +399,7 @@ export const SampleGroupingOptions = {
       exclude: ['open-attr', 'default']
     }
   },
-  render: (args: SdSelectArgs) => {
+  render: (args: any) => {
     return html`<div class="h-[290px] w-[420px]">
       ${generateTemplate({
         constants: [
@@ -471,7 +427,7 @@ export const SampleForm = {
       exclude: ['open-attr', 'label', 'name', 'useTags', 'value', 'multiple', 'max-options-visible', 'default']
     }
   },
-  render: (args: SdSelectArgs) => {
+  render: (args: { 'open-attr'?: string }) => {
     delete args['open-attr'];
 
     const sharedConstants: ConstantDefinition[] = [
