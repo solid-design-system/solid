@@ -1,10 +1,8 @@
 import { css } from 'lit';
 import componentStyles from '../../styles/component.styles';
-import formControlStyles from '../../styles/form-control.styles';
 
 export default css`
   ${componentStyles}
-  ${formControlStyles}
 
   :host {
     --thumb-size: 20px;

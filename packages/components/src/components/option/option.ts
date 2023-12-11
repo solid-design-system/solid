@@ -7,7 +7,6 @@ import { property, query, state } from 'lit/decorators.js';
 import { watch } from '../../internal/watch';
 import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
-import formControlStyles from '../../styles/form-control.styles';
 import SolidElement from '../../internal/solid-element';
 
 /**
@@ -177,7 +176,6 @@ export default class SdOption extends SolidElement {
    */
   static styles = [
     componentStyles,
-    formControlStyles,
     SolidElement.styles,
     css`
       :host {
