@@ -203,7 +203,7 @@ export default class SdBrandshape extends SolidElement {
     SolidElement.styles,
     css`
       :host {
-        display: block;
+        @apply block;
       }
     `
   ];

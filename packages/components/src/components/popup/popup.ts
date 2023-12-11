@@ -486,8 +486,7 @@ export default class SdPopup extends SolidElement {
      */
         --arrow-size-diagonal: calc(var(--arrow-size) * 0.7071);
         --arrow-padding-offset: calc(var(--arrow-size-diagonal) - var(--arrow-size));
-
-        display: contents;
+        @apply contents;
       }
 
       [part='popup'] {

@@ -202,8 +202,8 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
             ? ' control--indeterminate'
             : ''}"
           class=${cx(
-            `relative flex flex-initial items-center justify-center border rounded-sm h-4 w-4 
-            peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 
+            `relative flex flex-initial items-center justify-center border rounded-sm h-4 w-4
+            peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2
             peer-focus-visible:outline-primary`,
             {
               sm: 'mt-[2px]',
@@ -254,11 +254,11 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
     SolidElement.styles,
     css`
       :host {
-        display: block;
+        @apply block;
       }
 
       :host(:focus-visible) {
-        outline: 0;
+        @apply outline-0;
       }
 
       :host([required]) #label::after {

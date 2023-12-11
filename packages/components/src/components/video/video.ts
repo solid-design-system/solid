@@ -156,30 +156,21 @@ export default class SdVideo extends SolidElement {
     SolidElement.styles,
     css`
       :host {
-        position: relative;
-        display: inline-block;
-        overflow: hidden;
+        @apply relative inline-block overflow-hidden;
       }
 
       ::slotted([slot='poster']),
       .play-pause-transition {
-        transition: opacity 300ms;
+        @apply transition-opacity ease-in-out duration-300;
       }
 
       ::slotted([slot='poster']) {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        z-index: 10;
+        @apply absolute left-0 top-0 w-full z-10;
       }
 
       #default-play-icon,
       ::slotted([slot='play-icon']) {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        translate: -50% -50%;
+        @apply absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2;
       }
     `
   ];

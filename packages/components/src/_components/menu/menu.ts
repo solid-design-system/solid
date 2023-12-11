@@ -1,6 +1,6 @@
 import { customElement } from '../../../src/internal/register-custom-element';
-import {query } from 'lit/decorators.js';
 import { html } from 'lit';
+import {query } from 'lit/decorators.js';
 import SolidElement from '../../internal/solid-element';
 import styles from './menu.styles';
 import type { CSSResultGroup } from 'lit';
@@ -32,6 +32,7 @@ export default class SdMenu extends SolidElement {
 
   private getAllItems() {
     return [...this.defaultSlot.assignedElements({ flatten: true })].filter((el: HTMLElement) => {
+      // @ts-expect-error - make TS happy
       if (el.inert || !this.isMenuItem(el)) {
         return false;
       }
@@ -43,7 +44,7 @@ export default class SdMenu extends SolidElement {
   private handleClick(event: MouseEvent) {
     const target = event.target as HTMLElement;
     const item = target.closest('sd-menu-item');
-
+    // @ts-expect-error - make TS happy
     if (!item || item.disabled || item.inert) {
       return;
     }

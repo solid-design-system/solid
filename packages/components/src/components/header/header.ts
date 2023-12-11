@@ -113,26 +113,21 @@ export default class SdHeader extends SolidElement {
     componentStyles,
     css`
       :host {
-        display: block;
+        @apply block;
       }
       :host([fixed]) {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
+        @apply fixed w-full left-0 top-0;
+        header::after {
+          content: '';
+          @apply absolute left-0 right-0 top-full h-2;
+          background: var(
+            --gradient-vertical-black-40-transparent,
+            linear-gradient(0deg, #18181800 50%, #18181866 100%)
+          );
+        }
       }
 
-      :host([fixed]) header::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 100%;
-        height: 8px;
-        background: var(--gradient-vertical-black-40-transparent, linear-gradient(0deg, #18181800 50%, #18181866 100%));
-      }
-
-      [part='main'] {
+      :host([fixed]) [part='main'] {
         width: var(--sd-header-inner-width);
         max-width: var(--sd-header-inner-max-width);
         padding: var(--sd-header-padding, 12px 16px);

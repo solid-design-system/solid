@@ -12,6 +12,7 @@
 import { exec } from 'child_process';
 import fs from 'fs';
 import path from 'path';
+import ts from 'typescript';
 
 export default function addTypesPlugin() {
   // Define the target directory
@@ -54,15 +55,41 @@ export default function addTypesPlugin() {
   return {
     name: 'addTypesPlugin',
     async writeBundle() {
-      await new Promise((resolve, reject) => {
-        exec('tsc --declaration --emitDeclarationOnly --project tsconfig.prod.json --outDir dist/package', error => {
-          if (error) {
-            reject(error);
+      try {
+        const configPath = ts.findConfigFile('./', ts.sys.fileExists, 'tsconfig.prod.json');
+        if (!configPath) throw new Error('Could not find a valid tsconfig.json.');
+
+        const configFile = ts.readConfigFile(configPath, ts.sys.readFile);
+        const parsedCommandLine = ts.parseJsonConfigFileContent(
+          configFile.config,
+          ts.sys,
+          path.dirname(configPath),
+          { declaration: true, emitDeclarationOnly: true, outDir: 'dist/package' },
+          configPath
+        );
+
+        const program = ts.createProgram(parsedCommandLine.fileNames, parsedCommandLine.options);
+        const emitResult = program.emit();
+
+        const allDiagnostics = ts.getPreEmitDiagnostics(program).concat(emitResult.diagnostics);
+
+        allDiagnostics.forEach(diagnostic => {
+          if (diagnostic.file) {
+            const { line, character } = ts.getLineAndCharacterOfPosition(diagnostic.file, diagnostic.start);
+            const message = ts.flattenDiagnosticMessageText(diagnostic.messageText, '\n');
+            console.log(`${diagnostic.file.fileName} (${line + 1},${character + 1}): ${message}`);
           } else {
-            resolve(null);
+            console.log(ts.flattenDiagnosticMessageText(diagnostic.messageText, '\n'));
           }
         });
-      });
+
+        if (emitResult.emitSkipped) {
+          throw new Error('TypeScript declaration generation failed.');
+        }
+      } catch (error) {
+        console.error(error);
+        // Handle or throw error
+      }
 
       // 2. Delete solid-components.d.ts and rename solid-components.lib.d.ts to solid-components.d.ts
       if (fs.existsSync(path.join(targetDir, 'solid-components.d.ts'))) {

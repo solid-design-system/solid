@@ -181,11 +181,7 @@ export default class SdOption extends SolidElement {
     SolidElement.styles,
     css`
       :host {
-        /* necessary to hide focus style in sd-select */
-        outline: none !important;
-        display: block;
-        position: relative;
-        width: 100%;
+        @apply block relative w-full !outline-none;
       }
     `
   ];

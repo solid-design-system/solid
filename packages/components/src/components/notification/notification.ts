@@ -293,7 +293,7 @@ export default class SdNotification extends SolidElement {
     SolidElement.styles,
     css`
       :host {
-        display: contents;
+        @apply contents;
       }
 
       #notification:hover #duration-indicator__elapsed {
