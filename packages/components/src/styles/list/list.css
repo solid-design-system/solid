@@ -7,11 +7,45 @@
   }
 
   &:is(ol) {
-    @apply list-decimal;
+    list-style-type: none;
+    counter-reset: item;
+    margin: 0;
+    padding: 0;
+
+    & > li {
+      display: table;
+      counter-increment: item;
+      margin-bottom: 0.6em;
+      counter-reset: item;
+
+      &:before {
+        content: counters(item, ".") ". ";
+        display: table-cell;
+        padding-right: 0.6em;
+      }
+
+      & > li:before {
+        content: counters(item, ".") " ";
+        background: green;
+      }
+
+      & > li > li:before {
+        content: counters(item, ".") " ";
+        background: red;
+      }
+    }
   }
 
   &:is(ul) {
     @apply list-disc;
+
+    & > li > ul {
+      list-style-type: '·';
+    }
+
+    & > li > ul > li > ul {
+      list-style-type: '-';
+    }
 
     &.sd-list--icon { /* &--icon doesn't work -> Tailwind CSS doesn't directly support nested selectors.*/
       @apply list-none;

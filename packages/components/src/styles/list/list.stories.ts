@@ -51,7 +51,15 @@ export const OrderedList = {
           colors: ['rgb(var(--sd-color-primary-100, 236 240 249))', 'rgb(var(--sd-color-primary, 0 53 142))']
         },
         templateContent: '<ol class="%CLASSES%">\n' +
-          '    <li>%SLOT%</li>\n' +
+          '    <li>%SLOT%' +
+          '        <ol>\n' +
+          '            <li>%SLOT%' +
+          '                <ol>\n' +
+          '                    <li>%SLOT%</li>\n' +
+          '                </ol>\n' +
+          '            </li>\n' +
+          '        </ol>\n' +
+          '    </li>\n' +
           '    <li>%SLOT%</li>\n' +
           '    <li>%SLOT% </li>\n' +
           '</ol>'
@@ -75,7 +83,15 @@ export const UnorderedList = {
           colors: ['rgb(var(--sd-color-primary-100, 236 240 249))', 'rgb(var(--sd-color-primary, 0 53 142))']
         },
         templateContent: '<ul class="%CLASSES%">\n' +
-          '    <li>%SLOT%</li>\n' +
+          '    <li>%SLOT%' +
+          '        <ul>\n' +
+          '            <li>%SLOT%' +
+          '                <ul>\n' +
+          '                    <li>%SLOT%</li>\n' +
+          '                </ul>\n' +
+          '            </li>\n' +
+          '        </ul>\n' +
+          '    </li>\n' +
           '    <li>%SLOT%</li>\n' +
           '    <li>%SLOT% </li>\n' +
           '</ul>'
