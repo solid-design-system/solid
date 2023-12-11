@@ -294,6 +294,20 @@ export class FormControlController implements ReactiveController {
     }
   }
 
+  /** Checks for the presence of the attributes 'data-user-valid' or 'data-user-invalid' on the host form element and updates its corresponding style state. */
+  updateValidityStyle() {
+    if (this.host.hasAttribute('data-user-valid') && this.host.checkValidity()) {
+      if (this.host.showValidStyle) this.host.showValidStyle = true;
+      this.host.showInvalidStyle = false;
+    } else if (this.host.hasAttribute('data-user-invalid') && !this.host.checkValidity()) {
+      if (this.host.showValidStyle) this.host.showValidStyle = false;
+      this.host.showInvalidStyle = true;
+    } else {
+      if (this.host.showValidStyle) this.host.showValidStyle = false;
+      this.host.showInvalidStyle = false;
+    }
+  }
+
   /** Returns the associated `<form>` element, if one exists. */
   getForm() {
     return this.form ?? null;

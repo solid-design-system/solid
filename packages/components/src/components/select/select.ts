@@ -98,8 +98,8 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   /**
    * Indicates whether or not the user input is valid after the user has interacted with the component. These states are activated when the attribute "data-user-valid" or "data-user-invalid" are set on the component via the form controller. They are different than the native input validity state which is always either `true` or `false`.
    */
-  @state() private showValidStyle = false;
-  @state() private showInvalidStyle = false;
+  @state() showValidStyle = false;
+  @state() showInvalidStyle = false;
 
   /** The default value of the form control. Primarily used for resetting the form control. */
   @defaultValue() defaultValue: string | string[] = '';
@@ -228,20 +228,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   }
 
   updated() {
-    this.updateValidityStyle(); // run after each update for immediate conditional styling
-  }
-
-  /** Checks for the presence of the attributes 'data-user-valid' or 'data-user-invalid' and updates the corresponding style state. */
-  private updateValidityStyle() {
-    if (this.hasAttribute('data-user-valid') && this.checkValidity()) {
-      this.showValidStyle = true;
-      this.showInvalidStyle = false;
-    }
-
-    if (this.hasAttribute('data-user-invalid') && !this.checkValidity()) {
-      this.showInvalidStyle = true;
-      this.showValidStyle = false;
-    }
+    this.formControlController.updateValidityStyle(); // run after each update for immediate conditional styling
   }
 
   private addOpenListeners() {

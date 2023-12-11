@@ -45,7 +45,7 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
   /**
    * Indicates whether or not the user input is valid after the user has interacted with the component. These states are activated when the attribute "data-user-valid" or "data-user-invalid" are set on the component via the form controller. They are different than the native input validity state which is always either `true` or `false`.
    */
-  @state() private showInvalidStyle = false;
+  @state() showInvalidStyle = false;
 
   /** The title of the switch adds a tooltip with title text. */
   @property() title = ''; // make reactive to pass through
@@ -85,18 +85,7 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
   }
 
   updated() {
-    this.updateValidityStyle(); // run after each update for immediate conditional styling
-  }
-
-  /** Checks for the presence of the attributes 'data-user-valid' or 'data-user-invalid' and updates the corresponding style state. */
-  private updateValidityStyle() {
-    if (this.hasAttribute('data-user-valid') && this.checkValidity()) {
-      this.showInvalidStyle = false;
-    }
-
-    if (this.hasAttribute('data-user-invalid') && !this.checkValidity()) {
-      this.showInvalidStyle = true;
-    }
+    this.formControlController.updateValidityStyle(); // run after each update for immediate conditional styling
   }
 
   private handleClick() {
