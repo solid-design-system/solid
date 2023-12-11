@@ -73,7 +73,7 @@ export const FlagSamples = {
   render: () => {
     return html`
       <div class="flex justify-between gap-8">
-        <sd-teaser variant="white border-neutral-400" breakpoint="9999" inset>
+        <sd-teaser variant="white border-neutral-400" breakpoint="9999" inset class="flex-1">
           <div slot="media" class="relative">
             <img class="aspect-video object-cover" src="./placeholders/generic.jpg" alt="A generic placeholder jpg" />
             <span class="absolute top-3 left-4 sd-chip sd-chip--white">chip name</span>
@@ -99,14 +99,12 @@ export const FlagSamples = {
           </div>
         </sd-teaser>
 
-        <sd-teaser variant="primary-100" breakpoint="9999" inset>
+        <sd-teaser variant="primary-100" breakpoint="9999" inset class="flex flex-1">
           <div slot="media" class="relative">
-            <img
-              class="aspect-video object-cover"
-              src="./placeholders/generic_neutral.jpg"
-              alt="A generic placeholder jpg"
-            />
-            <span class="absolute top-3 left-4 sd-chip">chip name</span>
+            <div class="flex justify-center">
+              <sd-icon name="content/picture" library="global-resources" color="primary" class="text-[5rem]"></sd-icon>
+            </div>
+            <span class="absolute top-3 left-4 sd-chip sd-chip--primary-300">chip name</span>
             <span class="absolute top-2 right-0 sd-flag sd-flag--neutral-500">flag name</span>
           </div>
           <div slot="meta" class="meta-info">
@@ -129,7 +127,7 @@ export const FlagSamples = {
           </div>
         </sd-teaser>
 
-        <sd-teaser variant="primary" breakpoint="9999" inset>
+        <sd-teaser variant="primary" breakpoint="9999" inset class="flex-1">
           <div slot="media" class="relative">
             <img class="aspect-video object-cover" src="./placeholders/generic.jpg" alt="A generic placeholder jpg" />
             <span class="absolute top-3 left-4 sd-chip sd-chip--white">chip name</span>
