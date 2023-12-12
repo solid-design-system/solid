@@ -204,9 +204,20 @@ export class FormControlController implements ReactiveController {
     // Validate the form and prevent submission if it's invalid
     if (this.form && !this.form.noValidate && !disabled && !reportValidity(this.host)) {
       event.preventDefault();
+      event.stopImmediatePropagation();
+
+      const invalidElements: NodeListOf<HTMLFormElement> | undefined = this.form?.querySelectorAll('[data-invalid]');
+
+      // Check for any radio groups, we need to dispatch the invalid event on them manually
+      const sdRadioGroups = Array.from(invalidElements).filter(
+        element => element.tagName.toLowerCase() === 'sd-radio-group'
+      );
+
+      sdRadioGroups.forEach(radioGroup => {
+        radioGroup.shadowRoot?.querySelector('input')?.dispatchEvent(new Event('invalid'));
+      });
 
       // Focus the first invalid element
-      const invalidElements: NodeListOf<HTMLFormElement> | undefined = this.form?.querySelectorAll('[data-invalid]');
       if (invalidElements?.length) invalidElements[0].focus();
     }
   };
