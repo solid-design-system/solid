@@ -198,7 +198,7 @@ export default class SdAccordion extends SolidElement {
     SolidElement.styles,
     css`
       :host {
-        display: block;
+        @apply block;
       }
     `
   ];

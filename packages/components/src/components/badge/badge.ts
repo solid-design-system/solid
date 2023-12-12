@@ -59,9 +59,7 @@ export default class SdBadge extends SolidElement {
     SolidElement.styles,
     css`
       :host {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
+        @apply inline-flex items-center justify-center;
       }
     `
   ];

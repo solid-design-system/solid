@@ -369,7 +369,8 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   /** Displays the browser picker for an input element (only works if the browser supports it for the input type). */
   showPicker() {
     if ('showPicker' in HTMLInputElement.prototype) {
-      this.input.showPicker();
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+      (this.input as any).showPicker();
     }
   }
 
@@ -645,15 +646,11 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     SolidElement.styles,
     css`
       :host {
-        box-sizing: border-box;
-        position: relative;
-        display: inline-block;
-        text-align: left;
-        width: 100%;
+        @apply box-border relative inline-block text-left w-full;
       }
 
       :host([vertical]) {
-        display: block;
+        @apply block;
       }
 
       :host([required]) #label::after {
@@ -677,27 +674,22 @@ export default class SdInput extends SolidElement implements SolidFormControl {
         -moz-appearance: textfield;
       }
 
-      /* Hides cross icon for search type. */
-      input[type='search']::-webkit-search-decoration,
-      input[type='search']::-webkit-search-cancel-button,
-      input[type='search']::-webkit-search-results-button,
-      input[type='search']::-webkit-search-results-decoration {
-        display: none;
-      }
-
       /* Hides clock icon for time type. */
       input[type='time']::-webkit-calendar-picker-indicator {
         background: none;
       }
 
+      details summary::-webkit-details-marker,
+      /* Hides cross icon for search type. */
+      input[type='search']::-webkit-search-decoration,
+      input[type='search']::-webkit-search-cancel-button,
+      input[type='search']::-webkit-search-results-button,
+      input[type='search']::-webkit-search-results-decoration,
       /* Hides calendar picker for date type. Does not work in Firefox! */
-      input[type='date']::-webkit-calendar-picker-indicator {
-        display: none;
-      }
-
+      input[type='date']::-webkit-calendar-picker-indicator,
       /* Hides calendar picker for datetime-local type. Does not work in Firefox! */
       input[type='datetime-local']::-webkit-calendar-picker-indicator {
-        display: none;
+        @apply hidden;
       }
     `
   ];

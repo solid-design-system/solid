@@ -443,7 +443,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
     SolidElement.styles,
     css`
       :host {
-        display: block;
+        @apply block;
       }
 
       :host([required]) #label::after {
@@ -451,7 +451,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
       }
 
       .no-scrollbar::-webkit-scrollbar {
-        display: none;
+        @apply hidden;
       }
     `
   ];

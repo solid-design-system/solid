@@ -8,6 +8,7 @@ import VitePluginCreateEmptyCemIfNotExisting from './scripts/vite-plugin-create-
 import VitePluginCustomElementsManifest from 'vite-plugin-cem';
 import VitePluginGetPlaywrightVersion from './scripts/vite-plugin-get-playwright-version';
 import VitePluginGetTailwindTheme from './scripts/vite-plugin-get-tailwind-theme';
+import VitePluginLitTailwind from './scripts/vite-plugin-lit-tailwind';
 import webTypesPlugin from './scripts/rollup-plugin-web-types';
 import type { defineConfig } from 'vite';
 
@@ -16,6 +17,10 @@ export default (({ command }: { command: string }) => {
   return {
     plugins: [
       // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+      VitePluginLitTailwind({
+        include: [/src\/components\/.*\.ts$/],
+        exclude: [/node_modules/]
+      }),
       VitePluginGetPlaywrightVersion(),
       VitePluginGetTailwindTheme(),
       VitePluginCreateEmptyCemIfNotExisting(),

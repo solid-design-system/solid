@@ -1,3 +1,36 @@
+# [@solid-design-system/components-v1.35.0](https://github.com/solid-design-system/solid/compare/components/1.34.0...components/1.35.0) (2023-12-12)
+
+
+### Features
+
+* ✨ improve CSS inside components via PostCSS ([#653](https://github.com/solid-design-system/solid/issues/653)) ([452ac1c](https://github.com/solid-design-system/solid/commit/452ac1c4ba1f37f304d056c033541779227ca406)), closes [#448](https://github.com/solid-design-system/solid/issues/448)
+
+### 📈 Stats
+* Bundle size (uncompressed): 248 KB (+2 KB / +1%)
+* Bundle size (gzipped): 61 KB (unchanged)
+
+# [@solid-design-system/components-v1.34.0](https://github.com/solid-design-system/solid/compare/components/1.33.1...components/1.34.0) (2023-12-12)
+
+
+### Features
+
+* ✨ add sd-flag ([#644](https://github.com/solid-design-system/solid/issues/644)) ([3c9a5dd](https://github.com/solid-design-system/solid/commit/3c9a5dd1386ab408a831f487c9edfd58ea84fa5a))
+
+### 📈 Stats
+* Bundle size (uncompressed): 246 KB (unchanged)
+* Bundle size (gzipped): 61 KB (unchanged)
+
+# [@solid-design-system/components-v1.33.1](https://github.com/solid-design-system/solid/compare/components/1.33.0...components/1.33.1) (2023-12-07)
+
+
+### Bug Fixes
+
+* improve TailwindCSS parser ([#643](https://github.com/solid-design-system/solid/issues/643)) ([d876249](https://github.com/solid-design-system/solid/commit/d8762493b3eceaa218665c98edef25d4531d3b04))
+
+### 📈 Stats
+* Bundle size (uncompressed): 246 KB (unchanged)
+* Bundle size (gzipped): 61 KB (unchanged)
+
 # [@solid-design-system/components-v1.33.0](https://github.com/solid-design-system/solid/compare/components/1.32.0...components/1.33.0) (2023-12-06)
 
 

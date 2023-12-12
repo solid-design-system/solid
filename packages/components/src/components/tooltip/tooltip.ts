@@ -292,7 +292,7 @@ export default class SdTooltip extends SolidElement {
       :host {
         --hide-delay: 0ms;
         --show-delay: 150ms;
-        display: contents;
+        @apply contents;
       }
 
       sd-popup {
@@ -301,9 +301,7 @@ export default class SdTooltip extends SolidElement {
       }
 
       sd-popup::part(popup) {
-        pointer-events: none;
-        z-index: 10;
-        box-shadow: 0px 1px 3px 0px rgb(81 81 81 / 75%);
+        @apply pointer-events-none z-10 shadow;
       }
 
       sd-popup::part(arrow) {
@@ -313,11 +311,11 @@ export default class SdTooltip extends SolidElement {
       }
 
       sd-popup[placement^='top']::part(popup) {
-        transform-origin: bottom;
+        @apply origin-bottom;
       }
 
       sd-popup[placement^='bottom']::part(popup) {
-        transform-origin: top;
+        @apply origin-top;
       }
 
       #tooltip {
@@ -325,7 +323,7 @@ export default class SdTooltip extends SolidElement {
       }
 
       ::slotted([slot='content']) {
-        overflow: auto;
+        @apply overflow-auto;
         max-width: var(--auto-size-available-width) !important;
         max-height: var(--auto-size-available-height) !important;
       }

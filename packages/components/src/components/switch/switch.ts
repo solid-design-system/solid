@@ -243,11 +243,11 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
     SolidElement.styles,
     css`
       :host {
-        display: block;
+        @apply block;
       }
 
       :host(:focus-visible) {
-        outline: 0;
+        @apply outline-none;
       }
 
       :host([required]) #label::after {
