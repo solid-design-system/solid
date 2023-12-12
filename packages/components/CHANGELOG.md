@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v1.34.0](https://github.com/solid-design-system/solid/compare/components/1.33.1...components/1.34.0) (2023-12-12)
+
+
+### Features
+
+* ✨ add sd-flag ([#644](https://github.com/solid-design-system/solid/issues/644)) ([3c9a5dd](https://github.com/solid-design-system/solid/commit/3c9a5dd1386ab408a831f487c9edfd58ea84fa5a))
+
+### 📈 Stats
+* Bundle size (uncompressed): 246 KB (unchanged)
+* Bundle size (gzipped): 61 KB (unchanged)
+
 # [@solid-design-system/components-v1.33.1](https://github.com/solid-design-system/solid/compare/components/1.33.0...components/1.33.1) (2023-12-07)
 
 
