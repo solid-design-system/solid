@@ -2,6 +2,7 @@ import { createFilter } from '@rollup/pluginutils';
 import autoprefixer from 'autoprefixer';
 import postcss from 'postcss';
 import tailwindcss from 'tailwindcss';
+import tailwindcssNesting from 'tailwindcss/nesting';
 
 interface LitTailwindPluginOptions {
   include?: RegExp[] | string[];
@@ -37,7 +38,7 @@ export default function litTailwindPlugin(options: LitTailwindPluginOptions = {}
 
         // Process the CSS with PostCSS
         try {
-          const result = await postcss([tailwindcss, autoprefixer])
+          const result = await postcss([tailwindcssNesting, tailwindcss, autoprefixer])
             .process(cssContent, { from: undefined })
             .then(result => result.css);
 

@@ -388,7 +388,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
     */
 
       ::slotted(sd-badge) {
-        @apply absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 pointer-events-none;
+        @apply absolute top-0 right-0 !translate-x-1/2 !-translate-y-1/2 pointer-events-none;
       }
 
       /**

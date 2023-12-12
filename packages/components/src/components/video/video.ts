@@ -170,7 +170,7 @@ export default class SdVideo extends SolidElement {
 
       #default-play-icon,
       ::slotted([slot='play-icon']) {
-        @apply absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2;
+        @apply absolute left-1/2 top-1/2 transform !-translate-x-1/2 !-translate-y-1/2;
       }
     `
   ];

@@ -355,7 +355,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
           <div
             part="base"
             class=${cx(
-              'textarea px-4 flex flex-row items-center rounded-default resize-none',
+              'textarea px-4 flex flex-row items-center rounded-default',
               {
                 sm: 'textarea-sm py-1',
                 md: 'textarea-md py-1',
@@ -381,7 +381,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
               part="textarea"
               id="input"
               class=${cx(
-                'flex-grow focus:outline-none bg-transparent placeholder-neutral-700"',
+                'flex-grow focus:outline-none bg-transparent placeholder-neutral-700 resize-none',
                 textSize,
                 this.disabled && 'cursor-not-allowed'
               )}
