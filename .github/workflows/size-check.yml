@@ -13,6 +13,7 @@ jobs:
     steps:
     - name: Fails in order to indicate that pull request needs to be marked as ready to review and run tests.
       run: exit 1
+
   file_size_check:
     runs-on: ubuntu-latest
     needs: [draft-check]

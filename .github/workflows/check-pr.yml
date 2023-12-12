@@ -12,6 +12,7 @@ jobs:
       steps:
       - name: Fails in order to indicate that pull request needs to be marked as ready to review and run tests.
         run: exit 1
+
     quality-gate:
         name: Install, verify and build
         runs-on: ubuntu-latest
