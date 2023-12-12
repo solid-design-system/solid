@@ -30,7 +30,8 @@ export default {
       value: `<sd-radio value="1">Radio 1</sd-radio><sd-radio value="2">Radio 2</sd-radio><sd-radio value="3">Radio 3</sd-radio>`
     },
     { type: 'attribute', name: 'name', value: 'radio-group' },
-    { type: 'attribute', name: 'value', value: '2' }
+    { type: 'attribute', name: 'value', value: '2' },
+    { type: 'attribute', name: 'boldLabel', value: true }
   ]),
   argTypes
 };
