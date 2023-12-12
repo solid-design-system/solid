@@ -6,7 +6,6 @@ import {
   validValidityState,
   valueMissingValidityState
 } from '../../internal/form';
-import { HasSlotController } from '../../internal/slot';
 import { property, query, state } from 'lit/decorators.js';
 import { watch } from '../../internal/watch';
 import componentStyles from '../../styles/component.styles';
@@ -46,7 +45,6 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
   static dependencies = { 'sd-button-group': SdButtonGroup };
 
   protected readonly formControlController: FormControlController = new FormControlController(this);
-  private readonly hasSlotController = new HasSlotController(this, 'label', 'error-text');
   private customValidityMessage = '';
   private validationTimeout: number;
 
@@ -56,9 +54,6 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
 
   @state() private hasButtonGroup = false;
   @state() defaultValue = '';
-
-  /** The radio groups's error text. Use to display an error message below the component. Please note that 'error-text' can only be used in conjunction with 'this.required'.  */
-  @state() private errorText = '';
 
   /**
    * Indicates whether or not the user input is valid after the user has interacted with the component. These states are activated when the attribute "data-user-valid" or "data-user-invalid" are set on the component via the form controller. They are different than the native input validity state which is always either `true` or `false`.
@@ -212,12 +207,12 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
     event.preventDefault();
   }
 
+  /** Move focus to the checked radio (or the first one if none are checked) */
   focus() {
     const radios = this.getAllRadios();
     const checked = radios.find(radio => radio.checked);
     const radioToFocus = checked || radios[0];
 
-    // Move focus to the checked radio (or the first one if none are checked) when clicking the label
     if (radioToFocus) {
       radioToFocus.focus();
     }
@@ -332,7 +327,6 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
   reportValidity(): boolean {
     const isValid = this.validity.valid;
 
-    this.errorText = this.customValidityMessage || isValid ? '' : this.validationInput.validationMessage;
     this.formControlController.setValidity(isValid);
     this.validationInput.hidden = true;
     clearTimeout(this.validationTimeout);
@@ -350,7 +344,6 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
   /** Sets a custom validation message. Pass an empty string to restore validity. */
   setCustomValidity(message = '') {
     this.customValidityMessage = message;
-    this.errorText = message;
     this.validationInput.setCustomValidity(message);
     this.formControlController.updateValidity();
   }

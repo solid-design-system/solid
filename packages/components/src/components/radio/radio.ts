@@ -117,10 +117,14 @@ export default class SdRadio extends SolidElement {
           part="${`${this.checked ? 'control--checked' : 'control--unchecked'}`}"
           class=${cx(
             'flex-initial shrink-0 relative inline-flex items-center justify-center border rounded-full bg-white h-4 w-4',
-            (this.disabled && 'border-neutral-500') ||
-              (this.invalid && 'border-error hover:border-error-400 group-hover:border-error-400') ||
-              (this.checked && 'border-accent hover:border-accent-550 group-hover:border-accent-550') ||
-              'border-neutral-800 hover:bg-neutral-200 group-hover:bg-neutral-200'
+            this.hasFocus && 'focus-outline',
+            this.disabled
+              ? 'border-neutral-500'
+              : this.invalid
+                ? 'border-error hover:border-error-400 group-hover:border-error-400'
+                : this.checked
+                  ? 'border-accent hover:border-accent-550 group-hover:border-accent-550'
+                  : 'border-neutral-800 hover:bg-neutral-200 group-hover:bg-neutral-200'
           )}
         >
           ${this.checked
@@ -129,10 +133,13 @@ export default class SdRadio extends SolidElement {
                   part="checked"
                   class=${cx(
                     'rounded-full inline-flex text-white border bg-accent h-2.5 w-2.5',
-                    (this.disabled && 'bg-neutral-500') ||
-                      (this.invalid && 'bg-error hover:bg-error-400 group-hover:bg-error-400') ||
-                      (this.checked && 'bg-accent hover:bg-accent-550 group-hover:bg-accent-550') ||
-                      'bg-neutral-800'
+                    this.disabled
+                      ? 'bg-neutral-500'
+                      : this.invalid
+                        ? 'bg-error hover:bg-error-400 group-hover:bg-error-400'
+                        : this.checked
+                          ? 'bg-accent hover:bg-accent-550 group-hover:bg-accent-550'
+                          : 'bg-neutral-800'
                   )}
                 ></span>
               `
@@ -143,7 +150,7 @@ export default class SdRadio extends SolidElement {
           part="label"
           class=${cx(
             'ml-2 select-none inline-block',
-            (this.disabled && 'text-neutral-500') || (this.invalid && 'text-error') || 'text-black'
+            this.disabled ? 'text-neutral-500' : this.invalid ? 'text-error' : 'text-black'
           )}
         >
         </slot>
@@ -163,13 +170,6 @@ export default class SdRadio extends SolidElement {
 
       :host(:focus-visible) {
         outline: 0;
-      }
-
-      /* Checked + focus */
-      :host(:focus-visible) [part='control--checked'],
-      :host(:focus-visible) [part='control--unchecked'] {
-        outline: 2px solid #00358e;
-        outline-offset: 2px;
       }
     `
   ];
