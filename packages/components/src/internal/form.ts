@@ -201,9 +201,9 @@ export class FormControlController implements ReactiveController {
       });
     }
 
+    // Validate the form and prevent submission if it's invalid
     if (this.form && !this.form.noValidate && !disabled && !reportValidity(this.host)) {
       event.preventDefault();
-      event.stopImmediatePropagation();
 
       // Focus the first invalid element
       const invalidElements: NodeListOf<HTMLFormElement> | undefined = this.form?.querySelectorAll('[data-invalid]');
