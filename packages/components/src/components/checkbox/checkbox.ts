@@ -94,10 +94,6 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
     this.formControlController.updateValidity();
   }
 
-  updated() {
-    this.formControlController.updateValidityStyle(); // run after each update for immediate conditional styling
-  }
-
   private handleClick() {
     this.checked = !this.checked;
     this.indeterminate = false;

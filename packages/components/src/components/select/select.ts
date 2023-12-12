@@ -227,10 +227,6 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     this.open = false;
   }
 
-  updated() {
-    this.formControlController.updateValidityStyle(); // run after each update for immediate conditional styling
-  }
-
   private addOpenListeners() {
     document.addEventListener('focusin', this.handleDocumentFocusIn);
     document.addEventListener('keydown', this.handleDocumentKeyDown);

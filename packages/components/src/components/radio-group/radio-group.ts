@@ -136,10 +136,6 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
     this.formControlController.updateValidity();
   }
 
-  updated() {
-    this.formControlController.updateValidityStyle(); // run after each update for immediate conditional styling
-  }
-
   private getAllRadios() {
     return [...this.querySelectorAll<SdRadio | SdRadioButton>('sd-radio, sd-radio-button')];
   }
@@ -371,7 +367,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
         <label
           part="form-control-label"
           id="label"
-          class=${cx('mb-2 p-0 leading-normal text-black', this.boldLabel && 'font-bold')}
+          class=${cx('mb-2 p-0 leading-normal text-black text-left flex', this.boldLabel && 'font-bold')}
           @click=${this.focus}
         >
           <slot name="label">${this.label}</slot>

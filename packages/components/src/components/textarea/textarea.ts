@@ -156,10 +156,6 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
     this.formControlController.updateValidity();
   }
 
-  updated() {
-    this.formControlController.updateValidityStyle(); // run after each update for immediate conditional styling
-  }
-
   disconnectedCallback() {
     super.disconnectedCallback();
   }

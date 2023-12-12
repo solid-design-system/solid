@@ -117,7 +117,6 @@ export default class SdRadio extends SolidElement {
           part="${`${this.checked ? 'control--checked' : 'control--unchecked'}`}"
           class=${cx(
             'flex-initial shrink-0 relative inline-flex items-center justify-center border rounded-full bg-white h-4 w-4',
-            this.hasFocus && 'focus-outline',
             this.disabled
               ? 'border-neutral-500'
               : this.invalid
@@ -170,6 +169,13 @@ export default class SdRadio extends SolidElement {
 
       :host(:focus-visible) {
         outline: 0;
+      }
+
+      /* Checked + focus */
+      :host(:focus-visible) [part='control--checked'],
+      :host(:focus-visible) [part='control--unchecked'] {
+        outline: 2px solid #00358e;
+        outline-offset: 2px;
       }
     `
   ];
