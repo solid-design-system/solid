@@ -3,7 +3,7 @@ name: Quality Gate
 on: pull_request
 
 jobs:
-    npm:
+    quality-gate:
         name: Install, verify and build
         runs-on: ubuntu-latest
         container:
@@ -29,3 +29,36 @@ jobs:
 
             - name: (monorepo) verify
               run: pnpm verify
+
+    # Check Chromatic for visual changes after all other checks have passed
+    chromatic-deployment-pr:
+        needs: [quality-gate]
+        runs-on: ubuntu-latest
+        steps:
+            # 👇 Version 2 of the action
+          - name: Checkout repository
+            uses: actions/checkout@v4
+            with:
+              fetch-depth: 0 # 👈 Required to retrieve git history
+          - uses: pnpm/action-setup@v2
+            with:
+              version: 8.6.2
+          # 👇 Install dependencies with the same package manager used in the project (replace it as needed), e.g. yarn, npm, pnpm
+          - name: Install dependencies
+            run: PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=true pnpm i
+          # 👇 Build storybook with pnpm
+          - name: Build storybook
+            run: cd packages/components && pnpm run build.chromatic
+          # 👇 Adds Chromatic as a step in the workflow
+          - name: Publish to Chromatic
+            uses: chromaui/action@v10
+            # Options required to the GitHub Chromatic Action
+            with:
+              # 👇 Chromatic projectToken, refer to the manage page to obtain it.
+              projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+              # Speedup the build by not waiting until everything is sent to Chromatic
+              exitOnceUploaded: true
+              # TurboSnap is an advanced Chromatic feature that speeds up builds for faster UI testing and review using Git and Webpack’s dependency graph
+              onlyChanged: true
+              # We need to manually build storybook with pnpm
+              storybookBuildDir: packages/components/dist/storybook
