@@ -1030,9 +1030,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     SolidElement.styles,
     css`
       :host {
-        display: block;
-        position: relative;
-        width: 100%;
+        @apply block relative w-full;
       }
 
       :host([required]) #label::after {
@@ -1040,22 +1038,19 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
       }
 
       sd-popup::part(popup) {
-        overflow-y: scroll;
+        @apply overflow-y-scroll;
       }
 
       sd-tag::part(base) {
-        border-radius: 4px;
-        padding-left: 4px;
-        padding-right: 4px;
+        @apply rounded-default px-1;
       }
 
       sd-tag[size='lg']::part(base) {
-        padding-left: 8px;
-        padding-right: 8px;
+        @apply px-2;
       }
 
       sd-tag[disabled='false']::part(base):hover {
-        background-color: rgb(var(--sd-color-primary-100, 236 240 249) / 1);
+        @apply bg-primary-100;
       }
     `
   ];

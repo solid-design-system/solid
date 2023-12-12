@@ -63,8 +63,9 @@ export default class SdAccordionGroup extends SolidElement {
     SolidElement.styles,
     css`
       :host {
-        display: block;
+        @apply block;
       }
+
       ::slotted(sd-accordion:not(:first-of-type)) {
         margin-top: -1px;
       }

@@ -40,7 +40,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
   private readonly formControlController = new FormControlController(this);
   private readonly hasSlotController = new HasSlotController(this, 'help-text', 'label');
 
-  @query('.textarea__control') textarea: HTMLTextAreaElement;
+  @query('[part=textarea]') textarea: HTMLTextAreaElement;
 
   @state() private hasFocus = false;
 
@@ -355,7 +355,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
           <div
             part="base"
             class=${cx(
-              'textarea px-4 flex flex-row items-center rounded-default textarea--resize-none',
+              'textarea px-4 flex flex-row items-center rounded-default',
               {
                 sm: 'textarea-sm py-1',
                 md: 'textarea-md py-1',
@@ -381,8 +381,9 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
               part="textarea"
               id="input"
               class=${cx(
-                'textarea__control flex-grow focus:outline-none bg-transparent placeholder-neutral-700"',
-                textSize
+                'flex-grow focus:outline-none bg-transparent placeholder-neutral-700 resize-none',
+                textSize,
+                this.disabled && 'cursor-not-allowed'
               )}
               title=${this.title /* An empty title prevents browser validation tooltips from appearing on hover */}
               name=${ifDefined(this.name)}
@@ -433,24 +434,16 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
 
     css`
       :host {
-        display: block;
+        @apply block;
       }
 
       :host([required]) #label.has-label::after {
         content: '*';
-        margin-left: 2px;
-      }
-
-      :host([disabled]) .textarea__control {
-        cursor: not-allowed;
+        @apply ml-0.5;
       }
 
       .no-scrollbar::-webkit-scrollbar {
-        display: none;
-      }
-
-      .textarea--resize-none .textarea__control {
-        resize: none;
+        @apply hidden;
       }
     `
   ];

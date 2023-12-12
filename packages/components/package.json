@@ -90,6 +90,7 @@
     "@open-wc/testing-helpers": "^3.0.0",
     "@remcovaes/web-test-runner-vite-plugin": "^1.2.0",
     "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/pluginutils": "^5.1.0",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/exec": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
