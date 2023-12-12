@@ -2,10 +2,17 @@ name: Quality Gate
 
 on: pull_request
 
-jobs:
+jobs: 
+    draft-check:
+      if: github.event.pull_request.draft == true
+      runs-on: ubuntu-18.04
+      steps:
+      - name: Fails in order to indicate that pull request needs to be marked as ready to review and run tests.
+        run: exit 1
     quality-gate:
         name: Install, verify and build
         runs-on: ubuntu-latest
+        needs: [draft-check]
         container:
             image: mcr.microsoft.com/playwright:v1.39.0-jammy
         steps:
