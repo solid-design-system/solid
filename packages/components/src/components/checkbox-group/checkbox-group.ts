@@ -143,14 +143,21 @@ export default class SdCheckboxGroup extends SolidElement {
       }
 
       :host([orientation='horizontal']) {
+        /* default */
         ::slotted(sd-checkbox) {
           @apply mr-6;
-          &:host([size='sm']) {
-            @apply mr-4;
-          }
         }
         ::slotted(sd-checkbox:last-of-type) {
           @apply mr-0;
+        }
+        /* sm */
+        &:host([size='sm']) {
+          ::slotted(sd-checkbox) {
+            @apply mr-4;
+          }
+          ::slotted(sd-checkbox:last-of-type) {
+            @apply mr-0;
+          }
         }
       }
     `

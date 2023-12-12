@@ -139,7 +139,7 @@ export default class SdLink extends SolidElement {
     css`
       ::slotted(sd-icon) {
         font-size: 1.25em;
-        @apply -mb-1;
+        margin-bottom: -0.25em;
       }
 
       /* In standalone mode, the icon sizes are fixed when a size is set */
