@@ -108,7 +108,6 @@ export class FormControlController implements ReactiveController {
   }
 
   hostUpdated() {
-    console.log('hostUpdated');
     const form = this.options.form(this.host);
 
     // Detach if the form no longer exists
