@@ -530,6 +530,7 @@ export const SolidForm = {
           <sd-textarea form="testForm" name="field 6" label="Field 6" required></sd-textarea>
         </div>
         <sd-button class="my-4" type="submit">Submit</sd-button>
+        <sd-button class="my-4" type="reset">Reset</sd-button>
       </form>
 
       <script>

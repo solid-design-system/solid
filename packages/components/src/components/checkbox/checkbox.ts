@@ -275,7 +275,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
           <slot></slot>
         </span>
       </label>
-      ${this.formControlController.renderErrorMessage(this.showInvalidStyle)}
+      ${this.formControlController.renderErrorMessage()}
     `;
   }
 

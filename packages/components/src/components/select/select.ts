@@ -1018,7 +1018,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
           <slot name="help-text">${this.helpText}</slot>
         </div>
       </div>
-      ${this.formControlController.renderErrorMessage(this.showInvalidStyle)}
+      ${this.formControlController.renderErrorMessage()}
     `;
   }
 

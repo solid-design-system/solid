@@ -313,13 +313,13 @@ export class FormControlController implements ReactiveController {
     return this.form ?? null;
   }
   /** Returns a styled `<div>` element to display inline errors. */
-  renderErrorMessage(showInvalidStyle: boolean) {
+  renderErrorMessage() {
     return html`<div
       id="error-message"
       class="text-error text-sm mt-2 text-left"
       part="error-message"
       aria-live="polite"
-      ?hidden=${!showInvalidStyle}
+      ?hidden=${!this.host.showInvalidStyle}
     ></div>`;
   }
 

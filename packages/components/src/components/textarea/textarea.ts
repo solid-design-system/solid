@@ -435,7 +435,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
           ${this.helpText}
         </slot>
       </div>
-      ${this.formControlController.renderErrorMessage(this.showInvalidStyle)}
+      ${this.formControlController.renderErrorMessage()}
     `;
   }
 

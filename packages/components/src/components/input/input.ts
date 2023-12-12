@@ -637,7 +637,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
           ${this.helpText}
         </slot>
       </div>
-      ${this.formControlController.renderErrorMessage(this.showInvalidStyle)}
+      ${this.formControlController.renderErrorMessage()}
     `;
   }
 

@@ -236,7 +236,7 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
           <slot></slot>
         </span>
       </label>
-      ${this.formControlController.renderErrorMessage(this.showInvalidStyle)}
+      ${this.formControlController.renderErrorMessage()}
     `;
   }
 
