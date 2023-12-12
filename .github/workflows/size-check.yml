@@ -9,7 +9,7 @@ jobs:
   draft-check:
     if: github.event.pull_request.draft == true
     name: Check if pull request is ready to review
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
     - name: Fails in order to indicate that pull request needs to be marked as ready to review and run tests.
       run: exit 1
