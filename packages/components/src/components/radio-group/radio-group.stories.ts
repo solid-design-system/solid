@@ -106,17 +106,21 @@ export const Disabled = {
 export const Invalid = {
   parameters: { controls: { exclude: ['size', 'value', 'required', 'invalid'] } },
   render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: { type: 'attribute', name: 'size' }
-      },
-      constants: [
-        { type: 'attribute', name: 'invalid', value: true },
-        { type: 'attribute', name: 'required', value: true },
-        { type: 'attribute', name: 'value', value: '' }
-      ],
-      args
-    });
+    return html`<form>
+      ${generateTemplate({
+        constants: [
+          { type: 'attribute', name: 'required', value: true },
+          { type: 'attribute', name: 'value', value: '' }
+        ],
+        args
+      })}
+      <sd-button style="margin-top: 16px" type="submit">Submit</sd-button>
+    </form>`;
+  },
+  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
+    const el = canvasElement.querySelector('sd-button');
+    await waitUntil(() => el?.shadowRoot?.querySelector('button'));
+    await userEvent.type(el!.shadowRoot!.querySelector('button')!, '{return}', { pointerEventsCheck: 0 });
   }
 };
 
