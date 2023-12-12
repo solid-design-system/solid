@@ -141,7 +141,7 @@
   - Use TailwindCSS (which are connected to design tokens) for all Solid components.
   - Convert BEM-style CSS to TailwindCSS utility classes where possible.
   - Utilize IDs or part selectors for any custom CSS needs.
-  - Use `@apply` inside `css` tagged template literals to generate CSS, but do not use arbitrary values like `mt-[var(--spacing-xxl)]` there (!), as this increases the bundle size of the main TailwindCSS file.
+  - Use `@apply` inside `css` tagged template literals to generate CSS, but do not use arbitrary values like `mt-[var(--spacing-xxl)]` there (!), as this increases the bundle size of the main TailwindCSS file. Add those custom values as plain CSS outside the `@apply` directive
 
 ### We Enforce Security
 
