@@ -64,7 +64,7 @@ export const Variants = {
 export const FlagSamples = {
   parameters: {
     controls: {
-      exclude: ['default', 'sd-flag--...', 'sd-chip--...']
+      disable: true
     },
     backgrounds: {
       default: 'white'
