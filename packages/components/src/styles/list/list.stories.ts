@@ -76,7 +76,7 @@ export const OrderedList = {
           alternate: 'x',
           colors: ['rgb(var(--sd-color-primary-100, 236 240 249))', 'rgb(var(--sd-color-primary, 0 53 142))']
         },
-        templateContent: '<ol class="%CLASSES%">%SLOT%</ol><ul class="%CLASSES%">%SLOT%</ul><ol>%SLOT%</ol><ul>%SLOT%</ul>'
+        templateContent: '<ol class="%CLASSES%">%SLOT%</ol>'
       }
     });
   }

@@ -1,51 +1,45 @@
-.sd-list{
-  & ol {
-    list-style-type: none;
-    counter-reset: item;
-    background: red;
+.sd-list {
+  &:is(ol) {
+    & ol {
+      list-style-type: none;
+      counter-reset: item;
+      background: red;
+    }
+
+    & li {
+      display: table;
+      counter-increment: item;
+      margin-bottom: 0.6em;
+      background: blue;
+    }
+
+    & li:before {
+      content: counters(item, '.') '. ';
+      display: table-cell;
+      padding-right: 0.6em;
+      background: fuchsia;
+    }
+
+    & li li {
+      margin: 0;
+    }
+
+    & li li:before {
+      content: counters(item, '.') ' ';
+      background: green;
+    }
   }
 
-  & li {
-    display: table;
-    counter-increment: item;
-    margin-bottom: 0.6em;
-    background: blue;
-  }
-
-  & li:before {
-    content: counters(item, ".") ". ";
-    display: table-cell;
-    padding-right: 0.6em;
-    background: fuchsia;
-  }
-
-  & li li {
-    margin: 0;
-  }
-
-  & li li:before {
-    content: counters(item, ".") " ";
-    background: green;
-  }
-
-
-  & ul {
+  &:is(ul) {
     @apply list-disc;
-    background: red;
+    background: maroon;
+
+    & > li > ul {
+      list-style-type: '·';
+    }
+
+    & > li > ul > li > ul {
+      list-style-type: '-';
+    }
   }
-
-
 }
-
-
-/*:is(ul) {*/
-
-/*  & li ul {*/
-/*    list-style-type: '·';*/
-/*  }*/
-
-/*  & li li ul {*/
-/*    list-style-type: '-';*/
-/*  }*/
-
-/*}*/
