@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v1.35.1](https://github.com/solid-design-system/solid/compare/components/1.35.0...components/1.35.1) (2023-12-13)
+
+
+### Bug Fixes
+
+* 🤔 sd-chip prevent text wrap ([#657](https://github.com/solid-design-system/solid/issues/657)) ([ebce6a8](https://github.com/solid-design-system/solid/commit/ebce6a85778cc1395f42fc3524d9203a077b9e05))
+
+### 📈 Stats
+* Bundle size (uncompressed): 248 KB (unchanged)
+* Bundle size (gzipped): 61 KB (unchanged)
+
 # [@solid-design-system/components-v1.35.0](https://github.com/solid-design-system/solid/compare/components/1.34.0...components/1.35.0) (2023-12-12)
 
 
