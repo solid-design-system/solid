@@ -1,4 +1,9 @@
 .sd-list {
+
+  &--inverted {
+    @apply text-white;
+  }
+
   &:is(ol) {
     & ol {
       list-style-type: none;
@@ -30,16 +35,26 @@
     }
   }
 
-  &:is(ul) {
+  &:is(ul):not(.sd-list--icon) {
     @apply list-disc;
     background: maroon;
 
-    & > li > ul {
+    & li ul {
       list-style-type: '·';
     }
 
-    & > li > ul > li > ul {
+    & li ul li ul {
       list-style-type: '-';
+    }
+  }
+
+  &:is(.sd-list--icon) {
+    @apply list-none;
+
+    &.sd-list--horizontal {
+      & li {
+        @apply inline-block;
+      }
     }
   }
 }

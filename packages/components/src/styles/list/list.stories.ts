@@ -123,13 +123,13 @@ export const IconList = {
   args: overrideArgs({
     type: 'slot', name: 'default', value:
       ` <li><sd-icon name="content/picture" library="global-resources" />Lorem Ipsum
-            <ul>
-                <li><sd-icon name="content/picture" library="global-resources" />Lorem Ipsum
-                    <ul>
-                        <li><sd-icon name="content/picture" library="global-resources" />Lorem Ipsum</li>
-                    </ul>
-                </li>
-            </ul>
+<!--            <ul>-->
+<!--                <li><sd-icon name="content/picture" library="global-resources" />Lorem Ipsum-->
+<!--                    <ul>-->
+<!--                        <li><sd-icon name="content/picture" library="global-resources" />Lorem Ipsum</li>-->
+<!--                    </ul>-->
+<!--                </li>-->
+<!--            </ul>-->
         </li>
         <li><sd-icon name="content/picture" library="global-resources" />Dolor sit</li>
         <li><sd-icon name="content/picture" library="global-resources" />Amet</li>`
@@ -151,40 +151,6 @@ export const IconList = {
           colors: ['rgb(var(--sd-color-primary-100, 236 240 249))', 'rgb(var(--sd-color-primary, 0 53 142))']
         },
         templateContent: '<ul class="%CLASSES%">%SLOT%</ul>'
-      }
-    });
-  }
-};
-
-export const MixedList = {
-  name: 'MixedList',
-  parameters: {controls: {exclude: ['default']}},
-  args: overrideArgs({
-    type: 'slot', name: 'default', value:
-      ` <li>Lorem Ipsum
-            <ul>
-                <li>Lorem Ipsum
-                    <ul>
-                        <li>Lorem Ipsum</li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-        <li>Dolor sit</li>
-        <li>Amet</li>`
-  }),
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        x: {type: 'attribute', name: 'sd-list--inverted', values: ['', 'sd-list--inverted']},
-      },
-      args,
-      options: {
-        templateBackgrounds: {
-          alternate: 'x',
-          colors: ['rgb(var(--sd-color-primary-100, 236 240 249))', 'rgb(var(--sd-color-primary, 0 53 142))']
-        },
-        templateContent: '<ol class="%CLASSES%">%SLOT%</ol>'
       }
     });
   }
