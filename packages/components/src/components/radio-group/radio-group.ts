@@ -64,7 +64,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
    * The radio group's label. Required for proper accessibility. If you need to display HTML, use the `label` slot
    * instead.
    */
-  @property() label = 'Label';
+  @property() label = '';
 
   /**
    * Quick way to make the group label bold. Bolding the group label is highly recommended for visual clarity between the label and radio options.

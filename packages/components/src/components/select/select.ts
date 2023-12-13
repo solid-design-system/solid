@@ -114,7 +114,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   @property({ reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
 
   /** The select's label. If you need to display HTML, use the `label` slot instead. */
-  @property() label = 'Label';
+  @property() label = '';
 
   /** Placeholder text to show as a hint when the select is empty. */
   @property() placeholder = this.localize.term('selectDefaultPlaceholder');

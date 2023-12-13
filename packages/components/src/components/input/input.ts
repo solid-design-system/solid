@@ -120,7 +120,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   @property() placeholder = '';
 
   /** The input's label. If you need to display HTML, use the `label` slot instead. */
-  @property() label = 'Label';
+  @property() label = '';
 
   /** The input's help text. If you need to display HTML, use the `help-text` slot instead. */
   @property({ attribute: 'help-text' }) helpText = '';

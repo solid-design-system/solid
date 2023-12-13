@@ -63,7 +63,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
   @property({ reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
 
   /** The textarea's label. If you need to display HTML, use the `label` slot instead. */
-  @property() label = 'Label';
+  @property() label = '';
 
   /** The textarea's help text. If you need to display HTML, use the `help-text` slot instead. */
   @property({ attribute: 'help-text' }) helpText = '';
