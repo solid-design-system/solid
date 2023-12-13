@@ -20,7 +20,7 @@ describe('<sd-input>', () => {
     expect(el.value).to.equal('');
     expect(el.defaultValue).to.equal('');
     expect(el.title).to.equal('');
-    expect(el.label).to.equal('Label');
+    expect(el.label).to.equal('');
     expect(el.helpText).to.equal('');
     expect(el.clearable).to.be.false;
     expect(el.passwordToggle).to.be.false;
