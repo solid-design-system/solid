@@ -232,17 +232,15 @@ export default class SdNavigationItem extends SolidElement {
 
     css`
       :host {
-        box-sizing: border-box;
-        position: relative;
-        display: inline-block;
+        @apply inline-block relative box-border;
       }
 
       :host([vertical]) {
-        display: block;
+        @apply block;
       }
 
       details summary::-webkit-details-marker {
-        display: none;
+        @apply hidden;
       }
     `
   ];

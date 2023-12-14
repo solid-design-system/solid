@@ -8,14 +8,11 @@ assignees: ''
 ---
 
 ## User Story
-As a [PERSONA] of the Solid Design System, I would like to [REQUIRE], as well as [FURTHER_REQUIREMENT],
-so that [PRODUCT_VALUE], and [FURTHER_PRODUCT_VALUE].
+As a [PERSONA] of the Solid Design System, I would like to [REQUIRE], as well as [FURTHER_REQUIREMENT], so that [PRODUCT_VALUE], and [FURTHER_PRODUCT_VALUE].
 
-## API
+## Documentation
 [LINK TO FIGMA]
 ## Hand-off
-[LINK TO FIGMA]
-## Documentation
 [LINK TO FIGMA]
 
 ### Components detailed requirements
@@ -29,15 +26,15 @@ so that [PRODUCT_VALUE], and [FURTHER_PRODUCT_VALUE].
 #### CSS-Properties
   - [ ] `name` - description
   - [ ] `name` - description
-#### Parts
+#### Parts (besides the shoelace parts)
   - [ ] `name` - description
   - [ ] `name` - description
 #### Slots
   - [ ] `name` - description
   - [ ] `name` - description
 #### Stories (besides the `default` story)
-  - [ ] name (description)
-  - [ ] name (description)
+  - [ ] `name` - (description)
+  - [ ] `name` - (description)
 #### Samples
   - [ ] `name` - description
   - [ ] `name` - description

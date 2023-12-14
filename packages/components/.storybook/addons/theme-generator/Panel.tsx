@@ -62,7 +62,7 @@ export const Panel: React.FC<PanelProps> = props => {
   return (
     <AddonPanel {...props}>
       <div style={{ padding: '20px' }}>
-        <h2>Soid Theme Generator</h2>
+        <h2>Solid Theme Generator</h2>
         {['primary', 'accent', 'neutral'].map(colorKey => (
           <div style={{ display: 'flex', alignItems: 'center', marginTop: '8px' }}>
             <label style={{ width: '60px', display: 'inline-block' }}>

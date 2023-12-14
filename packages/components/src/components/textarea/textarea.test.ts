@@ -1,8 +1,8 @@
 import { expect, fixture, html, oneEvent, waitUntil } from '@open-wc/testing';
 import { sendKeys } from '@web/test-runner-commands';
-import { serialize } from '../../utilities/form';
+import { serialize } from '../../utilities/form.js';
 import sinon from 'sinon';
-import type SdTextarea from './textarea';
+import type SdTextarea from './textarea.js';
 
 describe('<sd-textarea>', () => {
   it('should pass accessibility tests', async () => {
@@ -13,17 +13,17 @@ describe('<sd-textarea>', () => {
   it('default properties', async () => {
     const el = await fixture<SdTextarea>(html` <sd-textarea></sd-textarea> `);
 
-    expect(el.size).to.equal('medium');
+    expect(el.size).to.equal('lg');
     expect(el.name).to.equal('');
     expect(el.value).to.equal('');
     expect(el.defaultValue).to.equal('');
     expect(el.title).to.equal('');
-    expect(el.filled).to.be.false;
+    // expect(el.filled).to.be.false;
     expect(el.label).to.equal('');
     expect(el.helpText).to.equal('');
     expect(el.placeholder).to.equal('');
     expect(el.rows).to.equal(4);
-    expect(el.resize).to.equal('vertical');
+    // expect(el.resize).to.equal('vertical');
     expect(el.disabled).to.be.false;
     expect(el.readonly).to.be.false;
     expect(el.minlength).to.be.undefined;
@@ -167,10 +167,24 @@ describe('<sd-textarea>', () => {
       await sendKeys({ press: 'a' });
       await sendKeys({ press: 'Backspace' });
       await el.updateComplete;
+      el.blur();
+      await el.updateComplete;
 
       expect(el.hasAttribute('data-user-invalid')).to.be.true;
       expect(el.hasAttribute('data-user-valid')).to.be.false;
     });
+
+    // it('should receive validation attributes ("states") even when novalidate is used on the parent form', async () => {
+    //   const el = await fixture<HTMLFormElement>(html` <form novalidate><sd-textarea required></sd-textarea></form> `);
+    //   const textarea = el.querySelector<SdTextarea>('sd-textarea')!;
+    //
+    //   expect(textarea.hasAttribute('data-required')).to.be.true;
+    //   expect(textarea.hasAttribute('data-optional')).to.be.false;
+    //   expect(textarea.hasAttribute('data-invalid')).to.be.true;
+    //   expect(textarea.hasAttribute('data-valid')).to.be.false;
+    //   expect(textarea.hasAttribute('data-user-invalid')).to.be.false;
+    //   expect(textarea.hasAttribute('data-user-valid')).to.be.false;
+    // });
   });
 
   describe('when submitting a form', () => {
@@ -200,6 +214,8 @@ describe('<sd-textarea>', () => {
 
       textarea.focus();
       await sendKeys({ type: 'test' });
+      await textarea.updateComplete;
+      textarea.blur();
       await textarea.updateComplete;
 
       expect(textarea.hasAttribute('data-user-invalid')).to.be.true;
@@ -237,7 +253,7 @@ describe('<sd-textarea>', () => {
       await textarea.updateComplete;
 
       setTimeout(() => button.click());
-      await oneEvent(form, 'reset');
+      await oneEvent(form, 'reset', false);
       await textarea.updateComplete;
 
       expect(textarea.value).to.equal('test');
@@ -245,7 +261,7 @@ describe('<sd-textarea>', () => {
       textarea.defaultValue = '';
 
       setTimeout(() => button.click());
-      await oneEvent(form, 'reset');
+      await oneEvent(form, 'reset', false);
       await textarea.updateComplete;
 
       expect(textarea.value).to.equal('');

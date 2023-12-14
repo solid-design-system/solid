@@ -427,33 +427,39 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
     SolidElement.styles,
     css`
       :host {
-        display: block;
+        @apply block;
       }
 
-      :host([orientation='vertical']) ::slotted(sd-radio) {
-        margin-bottom: 8px;
-        display: flex;
+      :host([orientation='vertical']) {
+        ::slotted(sd-radio) {
+          @apply mb-2 flex;
+        }
+        ::slotted(sd-radio:last-of-type) {
+          @apply mb-0;
+        }
       }
-
-      :host([orientation='vertical']) ::slotted(sd-radio:last-of-type) {
-        margin-bottom: 0;
-      }
-
-      :host([orientation='horizontal']) ::slotted(sd-radio) {
-        margin-right: 24px;
-      }
-
-      :host([size='sm']):host([orientation='horizontal']) ::slotted(sd-radio) {
-        margin-right: 16px;
-      }
-
-      :host([orientation='horizontal']) ::slotted(sd-radio:last-of-type) {
-        margin-right: 0;
+      :host([orientation='horizontal']) {
+        /* default */
+        ::slotted(sd-radio) {
+          @apply mr-6;
+        }
+        ::slotted(sd-radio:last-of-type) {
+          @apply mr-0;
+        }
+        /* sm */
+        &:host([size='sm']) {
+          ::slotted(sd-radio) {
+            @apply mr-4;
+          }
+          ::slotted(sd-radio:last-of-type) {
+            @apply mr-0;
+          }
+        }
       }
 
       :host([required]) #label.has-label::after {
         content: '*';
-        margin-left: 2px;
+        @apply ml-0.5;
       }
     `
   ];

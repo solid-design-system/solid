@@ -1,3 +1,102 @@
+# [@solid-design-system/components-v1.35.1](https://github.com/solid-design-system/solid/compare/components/1.35.0...components/1.35.1) (2023-12-13)
+
+
+### Bug Fixes
+
+* 🤔 sd-chip prevent text wrap ([#657](https://github.com/solid-design-system/solid/issues/657)) ([ebce6a8](https://github.com/solid-design-system/solid/commit/ebce6a85778cc1395f42fc3524d9203a077b9e05))
+
+### 📈 Stats
+* Bundle size (uncompressed): 248 KB (unchanged)
+* Bundle size (gzipped): 61 KB (unchanged)
+
+# [@solid-design-system/components-v1.35.0](https://github.com/solid-design-system/solid/compare/components/1.34.0...components/1.35.0) (2023-12-12)
+
+
+### Features
+
+* ✨ improve CSS inside components via PostCSS ([#653](https://github.com/solid-design-system/solid/issues/653)) ([452ac1c](https://github.com/solid-design-system/solid/commit/452ac1c4ba1f37f304d056c033541779227ca406)), closes [#448](https://github.com/solid-design-system/solid/issues/448)
+
+### 📈 Stats
+* Bundle size (uncompressed): 248 KB (+2 KB / +1%)
+* Bundle size (gzipped): 61 KB (unchanged)
+
+# [@solid-design-system/components-v1.34.0](https://github.com/solid-design-system/solid/compare/components/1.33.1...components/1.34.0) (2023-12-12)
+
+
+### Features
+
+* ✨ add sd-flag ([#644](https://github.com/solid-design-system/solid/issues/644)) ([3c9a5dd](https://github.com/solid-design-system/solid/commit/3c9a5dd1386ab408a831f487c9edfd58ea84fa5a))
+
+### 📈 Stats
+* Bundle size (uncompressed): 246 KB (unchanged)
+* Bundle size (gzipped): 61 KB (unchanged)
+
+# [@solid-design-system/components-v1.33.1](https://github.com/solid-design-system/solid/compare/components/1.33.0...components/1.33.1) (2023-12-07)
+
+
+### Bug Fixes
+
+* improve TailwindCSS parser ([#643](https://github.com/solid-design-system/solid/issues/643)) ([d876249](https://github.com/solid-design-system/solid/commit/d8762493b3eceaa218665c98edef25d4531d3b04))
+
+### 📈 Stats
+* Bundle size (uncompressed): 246 KB (unchanged)
+* Bundle size (gzipped): 61 KB (unchanged)
+
+# [@solid-design-system/components-v1.33.0](https://github.com/solid-design-system/solid/compare/components/1.32.0...components/1.33.0) (2023-12-06)
+
+
+### Features
+
+* ✨ add sd-textarea ([#589](https://github.com/solid-design-system/solid/issues/589)) ([2bc32a9](https://github.com/solid-design-system/solid/commit/2bc32a917d57b37dd82e8cc6100702ca714f162d))
+
+### 📈 Stats
+* Bundle size (uncompressed): 246 KB (+7 KB / +3%)
+* Bundle size (gzipped): 61 KB (+1 KB / +2%)
+
+# [@solid-design-system/components-v1.32.0](https://github.com/solid-design-system/solid/compare/components/1.31.0...components/1.32.0) (2023-12-06)
+
+
+### Features
+
+* ✨ add sd-select [#258](https://github.com/solid-design-system/solid/issues/258) ([#634](https://github.com/solid-design-system/solid/issues/634)) ([02ec3b6](https://github.com/solid-design-system/solid/commit/02ec3b67be228ef7aec79ea0596297735c4ecdb8))
+
+### 📈 Stats
+* Bundle size (uncompressed): 239 KB (+22 KB / +10%)
+* Bundle size (gzipped): 60 KB (+5 KB / +9%)
+
+# [@solid-design-system/components-v1.31.0](https://github.com/solid-design-system/solid/compare/components/1.30.0...components/1.31.0) (2023-12-06)
+
+
+### Features
+
+* ✨ add sd-chip ([#637](https://github.com/solid-design-system/solid/issues/637)) ([b05a90c](https://github.com/solid-design-system/solid/commit/b05a90ce1b392331f3b5c8b1dd991424bf584e24))
+
+### 📈 Stats
+* Bundle size (uncompressed): 217 KB (unchanged)
+* Bundle size (gzipped): 55 KB (unchanged)
+
+# [@solid-design-system/components-v1.30.0](https://github.com/solid-design-system/solid/compare/components/1.29.0...components/1.30.0) (2023-12-05)
+
+
+### Features
+
+* ✨ add sd-container - CSS style ([#619](https://github.com/solid-design-system/solid/issues/619)) ([f8028cc](https://github.com/solid-design-system/solid/commit/f8028cc6568aa9954f8941b62c9246419363c2c6))
+
+### 📈 Stats
+* Bundle size (uncompressed): 217 KB (unchanged)
+* Bundle size (gzipped): 55 KB (unchanged)
+
+# [@solid-design-system/components-v1.29.0](https://github.com/solid-design-system/solid/compare/components/1.28.0...components/1.29.0) (2023-11-23)
+
+
+### Features
+
+* ✨ update tokens ([#591](https://github.com/solid-design-system/solid/issues/591)) ([2bfbf3e](https://github.com/solid-design-system/solid/commit/2bfbf3efe455faaa2365fef01b252ef507b450ca))
+
+### 📈 Stats
+* Bundle size (uncompressed): 217 KB (unchanged)
+* Bundle size (gzipped): 55 KB (unchanged)
+
 # [@solid-design-system/components-v1.28.0](https://github.com/solid-design-system/solid/compare/components/1.27.0...components/1.28.0) (2023-11-20)
 
 

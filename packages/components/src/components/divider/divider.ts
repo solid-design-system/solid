@@ -46,15 +46,15 @@ export default class SdDivider extends SolidElement {
     SolidElement.styles,
     css`
       :host {
-        margin: 0;
+        @apply m-0;
       }
 
       :host(sd-divider[orientation='horizontal']) {
-        display: block;
+        @apply block;
       }
 
       :host(sd-divider[orientation='vertical']) {
-        display: inline-block;
+        @apply inline-block;
       }
     `
   ];
