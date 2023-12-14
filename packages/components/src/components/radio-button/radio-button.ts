@@ -12,7 +12,7 @@ import SolidElement from '../../internal/solid-element';
  * @summary Radio buttons allow the user to select a single option from a group using a button-like control.
  * @documentation https://solid.union-investment.com/[storybook-link]/radio-button
  * @status stable
- * @since 1.0
+ * @since 1.36.0
  *
  * @slot - The radio button's label.
  * @slot icon - A presentational icon.
