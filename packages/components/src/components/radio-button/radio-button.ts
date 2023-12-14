@@ -150,62 +150,49 @@ export default class SdRadioButton extends SolidElement {
     componentStyles,
     css`
       :host {
-        display: block;
-        width: min-content;
+        @apply block w-min;
       }
 
       /* We use a hidden input so constraint validation errors work, since they don't appear to show when used with buttons. We can't actually hide it, though, otherwise the messages will be suppressed by the browser. */
       .hidden-input {
         all: unset;
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        outline: dotted 1px red;
-        opacity: 0;
-        z-index: -1;
+        @apply absolute inset-0 outline-dotted outline-1 outline-red-500 opacity-0 -z-10;
       }
 
       .lg-label {
-        height: 48px;
+        @apply h-12;
       }
 
       .lg-no-label {
-        height: 48px;
-        width: 48px;
+        @apply h-12 w-12;
       }
 
       .md-label {
-        height: 40px;
+        @apply h-10;
       }
 
       .md-no-label {
-        height: 40px;
-        width: 40px;
+        @apply h-10 w-10;
       }
 
       .sm-label {
-        height: 32px;
+        @apply h-8;
       }
 
       .sm-no-label {
-        height: 32px;
-        width: 32px;
+        @apply h-8 w-8;
       }
 
       :host(.sd-button-group__button--first:not(.sd-button-group__button--last)) button {
-        border-start-end-radius: 0;
-        border-end-end-radius: 0;
+        @apply rounded-r-none;
       }
 
       :host(.sd-button-group__button--inner) button {
-        border-radius: 0;
+        @apply rounded-none;
       }
 
       :host(.sd-button-group__button--last:not(.sd-button-group__button--first)) button {
-        border-start-start-radius: 0;
-        border-end-start-radius: 0;
+        @apply rounded-l-none;
       }
 
       /* All except the first */
@@ -215,13 +202,13 @@ export default class SdRadioButton extends SolidElement {
 
       /* Bump hovered, focused, and checked buttons up so their focus ring isn't clipped */
       :host(.sd-button-group__button--hover) {
-        z-index: 1;
+        @apply z-10;
       }
 
       /* Focus and checked are always on top */
       :host(.sd-button-group__button--focus),
       :host(.sd-button-group__button[checked]) {
-        z-index: 2;
+        @apply z-20;
       }
     `
   ];
