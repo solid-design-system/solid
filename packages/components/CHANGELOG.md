@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v1.36.0](https://github.com/solid-design-system/solid/compare/components/1.35.1...components/1.36.0) (2023-12-14)
+
+
+### Features
+
+* ✨ add sd-radio-button ([#622](https://github.com/solid-design-system/solid/issues/622)) ([273faa2](https://github.com/solid-design-system/solid/commit/273faa29b9297a289194e05444d996aba25e3534)), closes [#216](https://github.com/solid-design-system/solid/issues/216)
+
+### 📈 Stats
+* Bundle size (uncompressed): 253 KB (+5 KB / +2%)
+* Bundle size (gzipped): 62 KB (+1 KB / +2%)
+
 # [@solid-design-system/components-v1.35.1](https://github.com/solid-design-system/solid/compare/components/1.35.0...components/1.35.1) (2023-12-13)
 
 
