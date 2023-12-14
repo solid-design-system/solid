@@ -166,7 +166,7 @@ export const Parts = {
         }
       },
       args,
-      constants: [{ type: 'attribute', name: 'showLabel', value: true }]
+      constants: [{ type: 'slot', name: 'default', value: '<div>Label</div>' }]
     });
   }
 };
