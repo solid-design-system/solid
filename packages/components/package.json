@@ -45,7 +45,8 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/solid-design-system/solid.git"
+    "url": "git+https://github.com/solid-design-system/solid.git",
+    "directory": "packages/components"
   },
   "scripts": {
     "start": "echo '❌ Please use `pnpm dev` instead.'",
