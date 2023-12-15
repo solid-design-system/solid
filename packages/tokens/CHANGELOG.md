@@ -1,3 +1,10 @@
+# [@solid-design-system/tokens-v1.4.0](https://github.com/solid-design-system/solid/compare/tokens/1.3.0...tokens/1.4.0) (2023-12-15)
+
+
+### Features
+
+* ✨ add inline validation + improve initial validation ([#647](https://github.com/solid-design-system/solid/issues/647)) ([da78967](https://github.com/solid-design-system/solid/commit/da789673d8bbce64320e3102309d7fa434a83d9d)), closes [#631](https://github.com/solid-design-system/solid/issues/631) [#641](https://github.com/solid-design-system/solid/issues/641)
+
 # [@solid-design-system/tokens-v1.3.0](https://github.com/solid-design-system/solid/compare/tokens/1.2.2...tokens/1.3.0) (2023-11-23)
 
 
