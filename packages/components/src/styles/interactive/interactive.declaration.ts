@@ -3,7 +3,7 @@ import type { Style } from '../../declaration';
 export default {
   styleName: 'sd-interactive',
   summary: 'Generates basic styles for interactive elements.',
-  status: 'experimental',
+  status: 'stable',
   since: '1.11',
   attributes: [
     {
