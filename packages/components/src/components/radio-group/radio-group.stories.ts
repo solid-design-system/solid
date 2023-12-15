@@ -30,7 +30,8 @@ export default {
       value: `<sd-radio value="1">Radio 1</sd-radio><sd-radio value="2">Radio 2</sd-radio><sd-radio value="3">Radio 3</sd-radio>`
     },
     { type: 'attribute', name: 'name', value: 'radio-group' },
-    { type: 'attribute', name: 'value', value: '2' }
+    { type: 'attribute', name: 'value', value: '2' },
+    { type: 'attribute', name: 'boldLabel', value: true }
   ]),
   argTypes
 };
@@ -105,17 +106,21 @@ export const Disabled = {
 export const Invalid = {
   parameters: { controls: { exclude: ['size', 'value', 'required', 'invalid'] } },
   render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: { type: 'attribute', name: 'size' }
-      },
-      constants: [
-        { type: 'attribute', name: 'invalid', value: true },
-        { type: 'attribute', name: 'required', value: true },
-        { type: 'attribute', name: 'value', value: '' }
-      ],
-      args
-    });
+    return html`<form>
+      ${generateTemplate({
+        constants: [
+          { type: 'attribute', name: 'required', value: true },
+          { type: 'attribute', name: 'value', value: '' }
+        ],
+        args
+      })}
+      <sd-button style="margin-top: 16px" type="submit">Submit</sd-button>
+    </form>`;
+  },
+  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
+    const el = canvasElement.querySelector('sd-button');
+    await waitUntil(() => el?.shadowRoot?.querySelector('button'));
+    await userEvent.type(el!.shadowRoot!.querySelector('button')!, '{return}', { pointerEventsCheck: 0 });
   }
 };
 

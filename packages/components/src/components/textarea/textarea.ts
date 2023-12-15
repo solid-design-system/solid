@@ -7,8 +7,8 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { live } from 'lit/directives/live.js';
 import { property, query, state } from 'lit/decorators.js';
 import { watch } from '../../internal/watch.js';
+import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
-import formControlStyles from '../../styles/form-control.styles';
 import SolidElement from '../../internal/solid-element';
 import type { SolidFormControl } from '../../internal/solid-element';
 
@@ -37,12 +37,18 @@ import type { SolidFormControl } from '../../internal/solid-element';
  */
 @customElement('sd-textarea')
 export default class SdTextarea extends SolidElement implements SolidFormControl {
-  private readonly formControlController = new FormControlController(this);
+  private readonly formControlController: FormControlController = new FormControlController(this);
   private readonly hasSlotController = new HasSlotController(this, 'help-text', 'label');
 
-  @query('[part=textarea]') textarea: HTMLTextAreaElement;
+  @query('#input') textarea: HTMLTextAreaElement;
+  @query('#invalid-message') invalidMessage: HTMLDivElement;
 
   @state() private hasFocus = false;
+  /**
+   * Indicates whether or not the user input is valid after the user has interacted with the component. These states are activated when the attribute "data-user-valid" or "data-user-invalid" are set on the component via the form controller. They are different than the native input validity state which is always either `true` or `false`.
+   */
+  @state() showValidStyle = false;
+  @state() showInvalidStyle = false;
 
   /** An empty title prevents browser validation tooltips from appearing on hover */
   @property() title = ''; // make reactive to pass through
@@ -179,6 +185,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
   private handleInvalid(event: Event) {
     this.formControlController.setValidity(false);
     this.formControlController.emitInvalidEvent(event);
+    this.invalidMessage.textContent = (event.target as HTMLInputElement).validationMessage;
   }
 
   private setTextareaHeight() {
@@ -292,50 +299,45 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
     // States
     const hasLabel = this.label ? true : !!slots['label'];
     const hasHelpText = this.helpText ? true : !!slots['helpText'];
-    const hasValidationAttr = this.required || !!this.minlength || !!this.maxlength;
-    const isInvalid = hasValidationAttr && !this.checkValidity();
-    const isValid = hasValidationAttr && this.checkValidity();
-    // Hierarchy of input states:
-    const inputState = this.disabled
+
+    // Hierarchy of textarea states:
+    const textareaState = this.disabled
       ? 'disabled'
       : this.readonly
         ? 'readonly'
-        : this.hasFocus && isInvalid
+        : this.hasFocus && this.showInvalidStyle
           ? 'activeInvalid'
-          : this.hasFocus && isValid
+          : this.hasFocus && this.showValidStyle
             ? 'activeValid'
             : this.hasFocus
               ? 'active'
-              : isInvalid
+              : this.showInvalidStyle
                 ? 'invalid'
-                : isValid
+                : this.showValidStyle
                   ? 'valid'
                   : 'default';
 
     // Conditional Styles
     const textSize = this.size === 'sm' ? 'text-sm' : 'text-base';
+    const iconSizeMarginLeft = {
+      sm: 'text-base ml-1',
+      md: 'text-lg ml-2',
+      lg: 'text-xl ml-2'
+    }[this.size];
 
     return html`
-      <div
-        part="form-control"
-        class=${cx(
-          'form-control text-left',
-          hasLabel && 'form-control--has-label',
-          hasHelpText && 'form-control--has-help-text',
-          this.disabled && 'cursor-not-allowed'
-        )}
-      >
+      <div part="form-control" class="text-left">
         <label
           part="form-control-label"
           id="label"
-          class=${cx('form-control-label mb-2', hasLabel ? 'has-label inline-block' : 'hidden', textSize)}
+          class=${cx('mb-2', hasLabel ? 'inline-block' : 'hidden', textSize)}
           for="input"
           aria-hidden=${hasLabel ? 'false' : 'true'}
         >
           <slot name="label">${this.label}</slot>
         </label>
 
-        <div part="form-control-input" class="form-control-input relative w-full">
+        <div part="form-control-input" class=${cx('relative w-full', this.disabled && 'cursor-not-allowed')}>
           <div
             part="border"
             class=${cx(
@@ -349,13 +351,13 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
                 invalid: 'border-error',
                 valid: 'border-success',
                 default: 'border-neutral-800'
-              }[inputState]
+              }[textareaState]
             )}
           ></div>
           <div
             part="base"
             class=${cx(
-              'textarea px-4 flex flex-row items-center rounded-default',
+              'textarea px-4 flex items-top rounded-default bg-white group',
               {
                 sm: 'textarea-sm py-1',
                 md: 'textarea-md py-1',
@@ -370,11 +372,9 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
                 invalid: 'text-error',
                 valid: 'text-success',
                 default: 'text-black'
-              }[inputState],
+              }[textareaState],
               !this.disabled && !this.readonly ? 'hover:bg-neutral-200' : '',
-              this.readonly && 'bg-neutral-100',
-              isInvalid && 'form-control-input--invalid',
-              !this.value && 'textarea--empty'
+              this.readonly && 'bg-neutral-100'
             )}
           >
             <textarea
@@ -382,8 +382,8 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
               id="input"
               class=${cx(
                 'flex-grow focus:outline-none bg-transparent placeholder-neutral-700 resize-none',
-                textSize,
-                this.disabled && 'cursor-not-allowed'
+                this.disabled && 'cursor-not-allowed',
+                textSize
               )}
               title=${this.title /* An empty title prevents browser validation tooltips from appearing on hover */}
               name=${ifDefined(this.name)}
@@ -408,9 +408,26 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
               @focus=${this.handleFocus}
               @blur=${this.handleBlur}
             ></textarea>
+            ${this.showInvalidStyle
+              ? html`
+                  <sd-icon
+                    class=${cx('text-error absolute right-4 bg-white group-hover:bg-neutral-200', iconSizeMarginLeft)}
+                    library="system"
+                    name="risk"
+                  ></sd-icon>
+                `
+              : ''}
+            ${this.showValidStyle
+              ? html`
+                  <sd-icon
+                    class=${cx('text-success absolute right-4 bg-white group-hover:bg-neutral-200', iconSizeMarginLeft)}
+                    library="system"
+                    name="confirm"
+                  ></sd-icon>
+                `
+              : ''}
           </div>
         </div>
-
         <slot
           name="help-text"
           part="form-control-help-text"
@@ -421,6 +438,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
           ${this.helpText}
         </slot>
       </div>
+      ${this.formControlController.renderInvalidMessage()}
     `;
   }
 
@@ -428,18 +446,15 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
    * Inherits Tailwindclasses and includes additional styling.
    */
   static styles = [
-    // componentStyles,
-    formControlStyles,
+    componentStyles,
     SolidElement.styles,
-
     css`
       :host {
         @apply block;
       }
 
-      :host([required]) #label.has-label::after {
-        content: '*';
-        @apply ml-0.5;
+      :host([required]) #label::after {
+        content: ' *';
       }
 
       .no-scrollbar::-webkit-scrollbar {

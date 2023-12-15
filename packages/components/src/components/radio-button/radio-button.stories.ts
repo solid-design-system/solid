@@ -8,7 +8,7 @@ const { overrideArgs } = storybookHelpers('sd-radio-button');
 const { generateTemplate } = storybookTemplate('sd-radio-button');
 
 /**
- * The `sd-radio-button` is a type of a radio-group-item, same as the `sd-radio`. Radio button provides a button-style control for users to select one option from a group. They are specifically designed for integration within radio groups.
+ * The `sd-radio-button` is a type of a radio-group-item similar to `sd-radio` which can be slotted insde of an `sd-radio-group`.  Radio button provides a button-style control for users to select one option from a group. Unlike `sd-radio`, `sd-radio-button` does not have an invalid state and should always have a pre-selected option (default value).
  */
 
 export default {

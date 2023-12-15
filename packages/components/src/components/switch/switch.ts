@@ -4,7 +4,7 @@ import { defaultValue } from '../../internal/default-value';
 import { FormControlController } from '../../internal/form';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { live } from 'lit/directives/live.js';
-import { property, query } from 'lit/decorators.js';
+import { property, query, state } from 'lit/decorators.js';
 import { watch } from '../../internal/watch';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
@@ -33,13 +33,19 @@ import type { SolidFormControl } from '../../internal/solid-element';
  */
 @customElement('sd-switch')
 export default class SdSwitch extends SolidElement implements SolidFormControl {
-  private readonly formControlController = new FormControlController(this, {
+  private readonly formControlController: FormControlController = new FormControlController(this, {
     value: (control: SdSwitch) => (control.checked ? control.value || 'on' : undefined),
     defaultValue: (control: SdSwitch) => control.defaultChecked,
     setValue: (control: SdSwitch, checked: boolean) => (control.checked = checked)
   });
 
   @query('input') input: HTMLInputElement;
+  @query('#invalid-message') invalidMessage: HTMLDivElement;
+
+  /**
+   * Indicates whether or not the user input is valid after the user has interacted with the component. These states are activated when the attribute "data-user-valid" or "data-user-invalid" are set on the component via the form controller. They are different than the native input validity state which is always either `true` or `false`.
+   */
+  @state() showInvalidStyle = false;
 
   /** The title of the switch adds a tooltip with title text. */
   @property() title = ''; // make reactive to pass through
@@ -73,6 +79,7 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
   get validity() {
     return this.input.validity;
   }
+
   firstUpdated() {
     this.formControlController.updateValidity();
   }
@@ -93,6 +100,7 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
   private handleInvalid(event: Event) {
     this.formControlController.setValidity(false);
     this.formControlController.emitInvalidEvent(event);
+    this.invalidMessage.textContent = (event.target as HTMLInputElement).validationMessage;
   }
 
   private handleFocus() {
@@ -185,10 +193,15 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
             `relative flex flex-initial items-center justify-center border rounded-full h-4 w-8 transition-colors ease duration-100
             peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2
             peer-focus-visible:outline-primary`,
-            (this.disabled && this.checked && 'border-neutral-500 bg-neutral-500') ||
-              (this.disabled && 'border-neutral-500') ||
-              (this.checked && 'border-accent bg-accent hover:bg-accent-550 group-hover:bg-accent-550') ||
-              'border-neutral-800 bg-white hover:bg-neutral-200 group-hover:bg-neutral-200'
+            this.disabled && this.checked
+              ? 'border-neutral-500 bg-neutral-500'
+              : this.disabled
+                ? 'border-neutral-500'
+                : this.showInvalidStyle
+                  ? 'border-error bg-error hover:bg-error-400'
+                  : this.checked
+                    ? 'border-accent bg-accent hover:bg-accent-550 group-hover:bg-accent-550'
+                    : 'border-neutral-800 bg-white hover:bg-neutral-200 group-hover:bg-neutral-200'
           )}
         >
           <span
@@ -196,10 +209,15 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
             part="thumb"
             class=${cx(
               'w-2.5 h-2.5 rounded-full transition-transform ease-in-out duration-200',
-              (this.checked && 'translate-x-2 bg-white') ||
-                (this.disabled && this.checked && 'bg-white') ||
-                (this.disabled && '-translate-x-2 bg-neutral-500') ||
-                'bg-neutral-800 -translate-x-2'
+              this.disabled && this.checked
+                ? 'bg-white'
+                : this.disabled
+                  ? '-translate-x-2 bg-neutral-500'
+                  : this.showInvalidStyle
+                    ? 'bg-white -translate-x-2'
+                    : this.checked
+                      ? 'translate-x-2 bg-white'
+                      : 'bg-neutral-800 -translate-x-2'
             )}
           ></span>
         </span>
@@ -207,13 +225,14 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
           part="label"
           id="label"
           class=${cx(
-            'select-none inline-block ml-2 text-black',
-            (this.disabled && 'text-neutral-500') || 'text-neutral-800'
+            'select-none inline-block ml-2',
+            this.disabled ? 'text-neutral-500' : this.showInvalidStyle ? 'text-error' : 'text-black'
           )}
         >
           <slot></slot>
         </span>
       </label>
+      ${this.formControlController.renderInvalidMessage()}
     `;
   }
 
@@ -233,23 +252,6 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
 
       :host([required]) #label::after {
         content: ' *';
-      }
-
-      :host([data-user-invalid]) #label {
-        color: rgb(var(--sd-color-error, 204 25 55));
-      }
-
-      :host([data-user-invalid]) #control {
-        border-color: rgb(var(--sd-color-error, 204 25 55));
-        background-color: rgb(var(--sd-color-error, 204 25 55));
-      }
-
-      :host([data-user-invalid]) #thumb {
-        background-color: rgb(var(--sd-white, 255 255 255));
-      }
-
-      :host([data-user-invalid]) #input:hover ~ #control {
-        background-color: rgb(var(--sd-color-error-400, 172 25 56));
       }
     `
   ];

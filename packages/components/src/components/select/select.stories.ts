@@ -1,6 +1,8 @@
+/* eslint-disable lit/attribute-value-entities */
 import '../../solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
+import { userEvent } from '@storybook/testing-library';
 import { waitUntil } from '@open-wc/testing-helpers';
 import type { ConstantDefinition } from '../../../scripts/storybook/helper';
 
@@ -81,10 +83,12 @@ export const SizeMultiple = {
   name: 'Size x Multiple',
   parameters: {
     controls: {
-      include: []
+      exclude: ['open-attr']
     }
   },
-  render: () => {
+  render: (args: { 'open-attr'?: string }) => {
+    delete args['open-attr'];
+
     return html`<div class="h-[340px]">
       ${generateTemplate({
         options: {
@@ -106,7 +110,7 @@ export const SizeMultiple = {
           multipleConstant,
           { type: 'attribute', name: 'value', value: 'option-1 option-2 option-3 option-4' }
         ],
-        args: null
+        args
       })}
     </div>`;
   }
@@ -120,10 +124,12 @@ export const DisabledMultiple = {
   name: 'Disabled x Multiple',
   parameters: {
     controls: {
-      include: []
+      exclude: ['open']
     }
   },
-  render: () => {
+  render: (args: { 'open-attr'?: string }) => {
+    delete args['open-attr'];
+
     return html`<div class="h-[340px] w-full">
       ${generateTemplate({
         options: {
@@ -151,9 +157,58 @@ export const DisabledMultiple = {
             value: 'option-1 option-2 option-3 option-4'
           }
         ],
-        args: null
+        args
       })}
     </div>`;
+  }
+};
+
+/**
+ * `sd-select` with valid and invalid styles.
+ */
+
+export const ValidInvalid = {
+  name: 'Valid x Invalid',
+  parameters: {
+    controls: {
+      exclude: ['label', 'open-attr', 'required', 'default', 'useTags', 'multiple', 'max-options-visible']
+    }
+  },
+  render: (args: { 'open-attr'?: string }) => {
+    delete args['open-attr'];
+
+    return html`<form class="h-[260px] w-full flex gap-4">
+      ${generateTemplate({
+        options: {
+          classes: 'w-full [&>tbody>tr>td]:align-top'
+        },
+        axis: {
+          y: {
+            type: 'attribute',
+            name: 'useTags',
+            values: [false, true]
+          },
+          x: {
+            type: 'attribute',
+            name: 'value',
+            values: ['option-1 option-2', '']
+          }
+        },
+        constants: [
+          twoOptionsConstant,
+          labelConstant,
+          multipleConstant,
+          { type: 'attribute', name: 'required', value: true }
+        ],
+        args
+      })}
+      <sd-button class="hidden" type="submit">Submit</sd-button>
+    </form>`;
+  },
+  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
+    const el = canvasElement.querySelector('sd-button');
+    await waitUntil(() => el?.shadowRoot?.querySelector('button'));
+    await userEvent.type(el!.shadowRoot!.querySelector('button')!, '{return}', { pointerEventsCheck: 0 });
   }
 };
 
@@ -164,10 +219,12 @@ export const DisabledMultiple = {
 export const Slots = {
   parameters: {
     controls: {
-      include: []
+      exclude: ['open-attr']
     }
   },
-  render: (args: any) => {
+  render: (args: { 'open-attr'?: string }) => {
+    delete args['open-attr'];
+
     return html`
       ${['default', 'label', 'clear-icon', 'expand-icon', 'help-text'].map(slot =>
         generateTemplate({
@@ -242,10 +299,29 @@ const partsArr = [
 export const Parts = {
   parameters: {
     controls: {
-      include: []
+      exclude: [
+        'open-attr',
+        'form-control',
+        'form-control-label',
+        'form-control-input',
+        'form-control-help-text',
+        'combobox',
+        'display-input',
+        'listbox',
+        'tags',
+        'tag',
+        'tag__base',
+        'tag__content',
+        'tag__remove-button',
+        'tag__remove-button__base',
+        'clear-button',
+        'expand-icon'
+      ]
     }
   },
-  render: (args: any) => {
+  render: (args: { 'open-attr'?: string }) => {
+    delete args['open-attr'];
+
     return generateTemplate({
       axis: {
         y: {
@@ -279,35 +355,29 @@ export const Parts = {
 export const Mouseless = {
   parameters: {
     controls: {
-      include: []
+      exclude: ['open-attr', 'value', 'default']
     }
   },
-  render: () => {
-    const sharedConstants: ConstantDefinition[] = [
-      {
-        type: 'slot',
-        name: 'default',
-        value: '<sd-option value="option-1">Option 1</sd-option><sd-option value="option-2">Option 2</sd-option>'
-      }
-    ];
+  render: (args: { 'open-attr'?: string }) => {
+    delete args['open-attr'];
 
     return html`<div class="mouseless h-[260px] w-full flex gap-4">
       ${generateTemplate({
-        constants: [...sharedConstants, { type: 'attribute', name: 'label', value: 'Default' }],
-        args: null
+        constants: [twoOptionsConstant, { type: 'attribute', name: 'label', value: 'Default' }],
+        args
       })}
       ${generateTemplate({
-        constants: [...sharedConstants, multipleConstant, { type: 'attribute', name: 'label', value: 'Multiple' }],
-        args: null
+        constants: [twoOptionsConstant, multipleConstant, { type: 'attribute', name: 'label', value: 'Multiple' }],
+        args
       })}
       ${generateTemplate({
         constants: [
-          ...sharedConstants,
+          twoOptionsConstant,
           multipleConstant,
           { type: 'attribute', name: 'useTags', value: true },
           { type: 'attribute', name: 'label', value: 'Multiple w/ Tags' }
         ],
-        args: null
+        args
       })}
     </div>`;
   },
@@ -327,7 +397,7 @@ export const SampleGroupingOptions = {
   name: 'Sample: Grouping Options',
   parameters: {
     controls: {
-      include: []
+      exclude: ['open-attr', 'default']
     }
   },
   render: (args: any) => {
@@ -355,10 +425,12 @@ export const SampleForm = {
   name: 'Sample: Form',
   parameters: {
     controls: {
-      include: []
+      exclude: ['open-attr', 'label', 'name', 'useTags', 'value', 'multiple', 'max-options-visible', 'default']
     }
   },
-  render: () => {
+  render: (args: { 'open-attr'?: string }) => {
+    delete args['open-attr'];
+
     const sharedConstants: ConstantDefinition[] = [
       { type: 'attribute', name: 'form', value: 'testForm' },
       { type: 'attribute', name: 'clearable', value: true },
@@ -375,7 +447,7 @@ export const SampleForm = {
               { type: 'attribute', name: 'label', value: 'Required' },
               { type: 'attribute', name: 'name', value: 'required field' }
             ],
-            args: null
+            args
           })}
         </div>
         <div class="mb-6">
@@ -386,7 +458,7 @@ export const SampleForm = {
               { type: 'attribute', name: 'name', value: 'required multiple field' },
               multipleConstant
             ],
-            args: null
+            args
           })}
         </div>
         <div class="mb-8">
@@ -398,7 +470,7 @@ export const SampleForm = {
               multipleConstant,
               { type: 'attribute', name: 'useTags', value: true }
             ],
-            args: null
+            args
           })}
         </div>
         <sd-button type="submit">Submit</sd-button>
@@ -417,6 +489,65 @@ export const SampleForm = {
             const formValues = Object.fromEntries(formData);
 
             alert('Form submitted successfully with the following values: ' + JSON.stringify(formValues, null, 2));
+          }
+        }
+
+        document.querySelector('#testForm').addEventListener('submit', handleSubmit);
+      </script>
+    `;
+  }
+};
+
+/**
+ * Demonstrates a form containing all existing Solid form elements.
+ */
+
+export const SolidForm = {
+  name: 'Sample: Solid Form',
+  parameters: {
+    controls: {
+      include: []
+    }
+  },
+  render: () => {
+    return html`
+      <form action="" method="get" id="testForm" name="testForm" class="">
+        <h1 class="text-lg text-white bg-primary p-4">Solid Form</h1>
+        <div class="[&>:nth-child(even)]:bg-neutral-100 [&>*]:p-4">
+          <sd-checkbox form="testForm" name="field 1" required>Field 1</sd-checkbox>
+          <sd-input form="testForm" name="field 2" label="Field 2" required></sd-input>
+          <sd-select form="testForm" name="field 3" label="Field 3" required
+            ><sd-option value="option-1">Option 1</sd-option><sd-option value="option-2">Option 2</sd-option>
+            <sd-option value="option-3">Option 3</sd-option><sd-option value="option-4">Option 4</sd-option
+            ><sd-option value="option-5">Option 5</sd-option><sd-option value="option-6">Option 6</sd-option
+            ><sd-option value="option-7">Option 7</sd-option></sd-select
+          >
+          <sd-radio-group form="testForm" name="field 4" label="Field 4" required
+            ><sd-radio value="option-1">Option 1</sd-radio><sd-radio value="option-2">Option 2</sd-radio>
+            <sd-radio value="option-3">Option 3</sd-radio></sd-radio-group
+          >
+          <sd-radio-group value="option-1" form="testForm" name="field 5" label="Field 5" required
+            ><sd-radio-button value="option-1">Option 1</sd-radio-button
+            ><sd-radio-button value="option-2">Option 2</sd-radio-button>
+            <sd-radio-button value="option-3">Option 3</sd-radio-button></sd-radio-group
+          >
+          <sd-switch form="testForm" name="field 6" required>Field 6</sd-switch>
+          <sd-textarea form="testForm" name="field 7" label="Field 7" required></sd-textarea>
+        </div>
+        <sd-button class="my-4" type="submit">Submit</sd-button>
+        <sd-button class="my-4" type="reset">Reset</sd-button>
+      </form>
+
+      <script>
+        function handleSubmit(event) {
+          const form = document.querySelector('#testForm');
+
+          const formData = new FormData(form);
+          const formValues = Object.fromEntries(formData);
+
+          if (form.reportValidity()) {
+            event.preventDefault(); // Prevent the default form submission behavior
+            alert('Form submitted with the following values: ' + JSON.stringify(formValues, null, 2));
           }
         }
 
