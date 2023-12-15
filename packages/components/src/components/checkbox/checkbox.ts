@@ -43,7 +43,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
   });
 
   @query('input[type="checkbox"]') input: HTMLInputElement;
-  @query('#error-message') errorMessage: HTMLDivElement;
+  @query('#invalid-message') invalidMessage: HTMLDivElement;
 
   @property() title = ''; // make reactive to pass through
 
@@ -111,7 +111,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
   private handleInvalid(event: Event) {
     this.formControlController.setValidity(false);
     this.formControlController.emitInvalidEvent(event);
-    this.errorMessage.textContent = (event.target as HTMLInputElement).validationMessage;
+    this.invalidMessage.textContent = (event.target as HTMLInputElement).validationMessage;
   }
 
   private handleFocus() {
@@ -271,7 +271,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
           <slot></slot>
         </span>
       </label>
-      ${this.formControlController.renderErrorMessage()}
+      ${this.formControlController.renderInvalidMessage()}
     `;
   }
 

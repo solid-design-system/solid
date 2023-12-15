@@ -40,7 +40,7 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
   });
 
   @query('input') input: HTMLInputElement;
-  @query('#error-message') errorMessage: HTMLDivElement;
+  @query('#invalid-message') invalidMessage: HTMLDivElement;
 
   /**
    * Indicates whether or not the user input is valid after the user has interacted with the component. These states are activated when the attribute "data-user-valid" or "data-user-invalid" are set on the component via the form controller. They are different than the native input validity state which is always either `true` or `false`.
@@ -100,7 +100,7 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
   private handleInvalid(event: Event) {
     this.formControlController.setValidity(false);
     this.formControlController.emitInvalidEvent(event);
-    this.errorMessage.textContent = (event.target as HTMLInputElement).validationMessage;
+    this.invalidMessage.textContent = (event.target as HTMLInputElement).validationMessage;
   }
 
   private handleFocus() {
@@ -232,7 +232,7 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
           <slot></slot>
         </span>
       </label>
-      ${this.formControlController.renderErrorMessage()}
+      ${this.formControlController.renderInvalidMessage()}
     `;
   }
 

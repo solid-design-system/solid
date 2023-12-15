@@ -325,10 +325,10 @@ export class FormControlController implements ReactiveController {
   getForm() {
     return this.form ?? null;
   }
-  /** Returns a styled `<div>` element to display inline errors. */
-  renderErrorMessage() {
+  /** Returns a styled `<div>` element to display inline validation messages via its `textContent` property when a form element is invalid. */
+  renderInvalidMessage() {
     return html`<div
-      id="error-message"
+      id="invalid-message"
       class="text-error text-sm mt-2 text-left"
       part="error-message"
       aria-live="polite"

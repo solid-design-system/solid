@@ -76,7 +76,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   private readonly localize = new LocalizeController(this);
 
   @query('#input') input: HTMLInputElement;
-  @query('#error-message') errorMessage: HTMLDivElement;
+  @query('#invalid-message') invalidMessage: HTMLDivElement;
 
   @state() private hasFocus = false;
   /**
@@ -280,7 +280,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   private handleInvalid(event: Event) {
     this.formControlController.setValidity(false);
     this.formControlController.emitInvalidEvent(event);
-    this.errorMessage.textContent = (event.target as HTMLInputElement).validationMessage;
+    this.invalidMessage.textContent = (event.target as HTMLInputElement).validationMessage;
   }
 
   private handleKeyDown(event: KeyboardEvent) {
@@ -641,7 +641,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
           ${this.helpText}
         </slot>
       </div>
-      ${this.formControlController.renderErrorMessage()}
+      ${this.formControlController.renderInvalidMessage()}
     `;
   }
 

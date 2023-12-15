@@ -41,7 +41,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
   private readonly hasSlotController = new HasSlotController(this, 'help-text', 'label');
 
   @query('#input') textarea: HTMLTextAreaElement;
-  @query('#error-message') errorMessage: HTMLDivElement;
+  @query('#invalid-message') invalidMessage: HTMLDivElement;
 
   @state() private hasFocus = false;
   /**
@@ -185,7 +185,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
   private handleInvalid(event: Event) {
     this.formControlController.setValidity(false);
     this.formControlController.emitInvalidEvent(event);
-    this.errorMessage.textContent = (event.target as HTMLInputElement).validationMessage;
+    this.invalidMessage.textContent = (event.target as HTMLInputElement).validationMessage;
   }
 
   private setTextareaHeight() {
@@ -438,7 +438,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
           ${this.helpText}
         </slot>
       </div>
-      ${this.formControlController.renderErrorMessage()}
+      ${this.formControlController.renderInvalidMessage()}
     `;
   }
 

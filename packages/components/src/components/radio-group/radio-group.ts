@@ -51,7 +51,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
 
   @query('slot:not([name])') defaultSlot: HTMLSlotElement;
   @query('#validation-input') validationInput: HTMLInputElement;
-  @query('#error-message') errorMessage: HTMLDivElement;
+  @query('#invalid-message') invalidMessage: HTMLDivElement;
 
   @state() private hasButtonGroup = false;
   @state() defaultValue = '';
@@ -218,7 +218,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
   private handleInvalid(event: Event) {
     this.formControlController.setValidity(false);
     this.formControlController.emitInvalidEvent(event);
-    this.errorMessage.textContent = (event.target as HTMLInputElement).validationMessage;
+    this.invalidMessage.textContent = (event.target as HTMLInputElement).validationMessage;
   }
 
   private async syncRadioElements() {
@@ -416,7 +416,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
             : defaultSlot}
         </div>
       </fieldset>
-      ${this.formControlController.renderErrorMessage()}
+      ${this.formControlController.renderInvalidMessage()}
     `;
   }
 

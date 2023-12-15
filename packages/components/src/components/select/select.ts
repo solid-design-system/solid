@@ -87,7 +87,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   @query('[part="display-input"]') displayInput: HTMLInputElement;
   @query('.value-input') valueInput: HTMLInputElement;
   @query('[part="listbox"]') listbox: HTMLSlotElement;
-  @query('#error-message') errorMessage: HTMLDivElement;
+  @query('#invalid-message') invalidMessage: HTMLDivElement;
 
   @state() private hasFocus = false;
   @state() hasHover = false; // we need this because Safari doesn't honor :hover styles while dragging
@@ -612,7 +612,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   private handleInvalid(event: Event) {
     this.formControlController.setValidity(false);
     this.formControlController.emitInvalidEvent(event);
-    this.errorMessage.textContent = (event.target as HTMLInputElement).validationMessage;
+    this.invalidMessage.textContent = (event.target as HTMLInputElement).validationMessage;
   }
 
   private handleMouseEnter() {
@@ -1014,7 +1014,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
           <slot name="help-text">${this.helpText}</slot>
         </div>
       </div>
-      ${this.formControlController.renderErrorMessage()}
+      ${this.formControlController.renderInvalidMessage()}
     `;
   }
 
