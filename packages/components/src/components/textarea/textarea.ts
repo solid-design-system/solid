@@ -332,7 +332,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
           id="label"
           class=${cx('mb-2', hasLabel ? 'inline-block' : 'hidden', textSize)}
           for="input"
-          aria-hidden=${!hasLabel}
+          aria-hidden=${hasLabel ? 'false' : 'true'}
         >
           <slot name="label">${this.label}</slot>
         </label>

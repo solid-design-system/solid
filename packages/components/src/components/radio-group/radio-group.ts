@@ -380,7 +380,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
             this.boldLabel && 'font-bold'
           )}
           @click=${this.focus}
-          aria-hidden=${!hasLabel}
+          aria-hidden=${hasLabel ? 'false' : 'true'}
         >
           <slot name="label">${this.label}</slot>
         </label>
