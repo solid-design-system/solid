@@ -1,14 +1,15 @@
-import '../icon-button/icon-button';
+import '../button/button';
+import '../icon/icon';
 import { animateTo, stopAnimations } from '../../internal/animate';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from '../../../src/internal/register-custom-element';
-import {property, query } from 'lit/decorators.js';
 import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry';
 import { HasSlotController } from '../../internal/slot';
 import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { LocalizeController } from '../../utilities/localize';
 import { lockBodyScrolling, unlockBodyScrolling } from '../../internal/scroll';
+import { property, query } from 'lit/decorators.js';
 import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch';
 import Modal from '../../internal/modal';
@@ -261,10 +262,10 @@ export default class SdDialog extends SolidElement {
       <div
         part="base"
         class=${classMap({
-      dialog: true,
-      'dialog--open': this.open,
-      'dialog--has-footer': this.hasSlotController.test('footer')
-    })}
+          dialog: true,
+          'dialog--open': this.open,
+          'dialog--has-footer': this.hasSlotController.test('footer')
+        })}
       >
         <div part="overlay" class="dialog__overlay" @click=${() => this.requestClose('overlay')} tabindex="-1"></div>
 
@@ -279,26 +280,28 @@ export default class SdDialog extends SolidElement {
           tabindex="0"
         >
           ${!this.noHeader
-        ? html`
+            ? html`
                 <header part="header" class="dialog__header">
                   <h2 part="title" class="dialog__title" id="title">
                     <slot name="label"> ${this.label.length > 0 ? this.label : String.fromCharCode(65279)} </slot>
                   </h2>
                   <div part="header-actions" class="dialog__header-actions">
                     <slot name="header-actions"></slot>
-                    <sd-icon-button
+                    <sd-button
                       part="close-button"
+                      variant="secondary"
                       exportparts="base:close-button__base"
                       class="dialog__close"
                       name="x-lg"
-                      label=${this.localize.term('close')}
-                      library="system"
                       @click="${() => this.requestClose('close-button')}"
-                    ></sd-icon-button>
+                      size="sm"
+                      type="button"
+                      ><sd-icon library="global-resources" name="system/close" slot="icon-right"></sd-icon
+                    ></sd-button>
                   </div>
                 </header>
               `
-        : ''}
+            : ''}
 
           <slot part="body" class="dialog__body"></slot>
 
