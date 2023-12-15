@@ -526,8 +526,13 @@ export const SolidForm = {
             ><sd-radio value="option-1">Option 1</sd-radio><sd-radio value="option-2">Option 2</sd-radio>
             <sd-radio value="option-3">Option 3</sd-radio></sd-radio-group
           >
-          <sd-switch form="testForm" name="field 5" required>Field 5</sd-switch>
-          <sd-textarea form="testForm" name="field 6" label="Field 6" required></sd-textarea>
+          <sd-radio-group form="testForm" name="field 5" label="Field 5" required
+            ><sd-radio-button value="option-1">Option 1</sd-radio-button
+            ><sd-radio-button value="option-2">Option 2</sd-radio-button>
+            <sd-radio-button value="option-3">Option 3</sd-radio-button></sd-radio-group
+          >
+          <sd-switch form="testForm" name="field 6" required>Field 6</sd-switch>
+          <sd-textarea form="testForm" name="field 7" label="Field 7" required></sd-textarea>
         </div>
         <sd-button class="my-4" type="submit">Submit</sd-button>
         <sd-button class="my-4" type="reset">Reset</sd-button>
