@@ -360,7 +360,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
       <fieldset
         part="form-control"
         class=${cx(
-          'border-0 p-0 m-0',
+          'border-0 p-0 m-0 flex flex-col',
           {
             /* sizes, fonts */
             sm: 'text-sm',
@@ -376,7 +376,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
           id="label"
           class=${cx(
             'mb-2 p-0 leading-normal text-black text-left',
-            hasLabel ? 'flex' : 'hidden',
+            !hasLabel && 'hidden',
             this.boldLabel && 'font-bold'
           )}
           @click=${this.focus}
