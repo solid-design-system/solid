@@ -417,6 +417,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     };
 
     // States
+    const hasLabel = this.label ? true : !!slots['label'];
     const hasHelpText = this.helpText ? true : !!slots['helpText'];
     const hasClearIcon = this.clearable && !this.readonly && (typeof this.value === 'number' || this.value.length > 0);
 
@@ -472,7 +473,13 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     // Render
     return html`
       <div part="form-control" class=${cx(this.disabled && 'pointer-events-none')}>
-        <label part="form-control-label" id="label" class=${cx('mb-2 inline-block', textSize)} for="input">
+        <label
+          part="form-control-label"
+          id="label"
+          class=${cx('mb-2', hasLabel ? 'inline-block' : 'hidden', textSize)}
+          for="input"
+          aria-hidden=${!hasLabel}
+        >
           <slot name="label">${this.label}</slot>
         </label>
 
@@ -629,7 +636,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
           part="form-control-help-text"
           id="help-text"
           class=${cx('text-sm text-neutral-700', hasHelpText ? 'block' : 'hidden')}
-          aria-hidden=${hasHelpText ? 'false' : 'true'}
+          aria-hidden=${!hasHelpText}
         >
           ${this.helpText}
         </slot>

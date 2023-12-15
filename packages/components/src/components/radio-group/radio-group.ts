@@ -6,6 +6,7 @@ import {
   validValidityState,
   valueMissingValidityState
 } from '../../internal/form';
+import { HasSlotController } from '../../internal/slot';
 import { property, query, state } from 'lit/decorators.js';
 import { watch } from '../../internal/watch';
 import componentStyles from '../../styles/component.styles';
@@ -45,6 +46,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
   static dependencies = { 'sd-button-group': SdButtonGroup };
 
   protected readonly formControlController: FormControlController = new FormControlController(this);
+  private readonly hasSlotController = new HasSlotController(this, 'label', 'error-text');
   private customValidityMessage = '';
   private validationTimeout: number;
 
@@ -345,6 +347,9 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
   }
 
   render() {
+    const hasLabelSlot = this.hasSlotController.test('label');
+    const hasLabel = this.label ? true : !!hasLabelSlot;
+
     const defaultSlot = html`
       <slot @slotchange=${this.syncRadios} @click=${this.handleRadioClick} @keydown=${this.handleKeyDown}></slot>
     `;
@@ -367,8 +372,13 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
         <label
           part="form-control-label"
           id="label"
-          class=${cx('mb-2 p-0 leading-normal text-black text-left flex', this.boldLabel && 'font-bold')}
+          class=${cx(
+            'mb-2 p-0 leading-normal text-black text-left',
+            hasLabel ? 'flex' : 'hidden',
+            this.boldLabel && 'font-bold'
+          )}
           @click=${this.focus}
+          aria-hidden=${!hasLabel}
         >
           <slot name="label">${this.label}</slot>
         </label>

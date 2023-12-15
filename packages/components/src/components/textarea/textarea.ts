@@ -297,6 +297,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
     };
 
     // States
+    const hasLabel = this.label ? true : !!slots['label'];
     const hasHelpText = this.helpText ? true : !!slots['helpText'];
 
     // Hierarchy of textarea states:
@@ -326,7 +327,13 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
 
     return html`
       <div part="form-control" class="text-left">
-        <label part="form-control-label" id="label" class=${cx('mb-2 inline-block', textSize)} for="input">
+        <label
+          part="form-control-label"
+          id="label"
+          class=${cx('mb-2', hasLabel ? 'inline-block' : 'hidden', textSize)}
+          for="input"
+          aria-hidden=${!hasLabel}
+        >
           <slot name="label">${this.label}</slot>
         </label>
 
