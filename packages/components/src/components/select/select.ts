@@ -813,7 +813,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
           cursorStyles,
           this.size === 'sm' ? 'text-sm' : 'text-base',
 
-          this.open && 'z-10'
+          this.open && 'z-50'
         )}
       >
         <label
