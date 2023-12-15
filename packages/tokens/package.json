@@ -24,7 +24,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/solid-design-system/solid.git"
+    "url": "git+https://github.com/solid-design-system/solid.git",
+    "directory": "packages/tokens"
   },
   "license": "MIT",
   "devDependencies": {
