@@ -1,21 +1,20 @@
 import '../button/button';
 import '../icon/icon';
 import { animateTo, stopAnimations } from '../../internal/animate';
-import { classMap } from 'lit/directives/class-map.js';
+import { css, html } from 'lit';
 import { customElement } from '../../../src/internal/register-custom-element';
 import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry';
 import { HasSlotController } from '../../internal/slot';
-import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { LocalizeController } from '../../utilities/localize';
 import { lockBodyScrolling, unlockBodyScrolling } from '../../internal/scroll';
 import { property, query } from 'lit/decorators.js';
 import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch';
+import componentStyles from '../../styles/component.styles';
+import cx from 'classix';
 import Modal from '../../internal/modal';
 import SolidElement from '../../internal/solid-element';
-import styles from './dialog.styles';
-import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Dialogs, sometimes called "modals", appear above the page and require the user's immediate attention.
@@ -65,16 +64,14 @@ import type { CSSResultGroup } from 'lit';
  */
 @customElement('sd-dialog')
 export default class SdDialog extends SolidElement {
-  static styles: CSSResultGroup = styles;
-
   private readonly hasSlotController = new HasSlotController(this, 'footer');
   private readonly localize = new LocalizeController(this);
   private modal: Modal;
   private originalTrigger: HTMLElement | null;
 
-  @query('.dialog') dialog: HTMLElement;
-  @query('.dialog__panel') panel: HTMLElement;
-  @query('.dialog__overlay') overlay: HTMLElement;
+  @query('[part="base"]') dialog: HTMLElement;
+  @query('[part="panel"]') panel: HTMLElement;
+  @query('[part="overlay"]') overlay: HTMLElement;
 
   /**
    * Indicates whether or not the dialog is open. You can toggle this attribute to show and hide the dialog, or you can
@@ -261,17 +258,24 @@ export default class SdDialog extends SolidElement {
     return html`
       <div
         part="base"
-        class=${classMap({
-          dialog: true,
-          'dialog--open': this.open,
-          'dialog--has-footer': this.hasSlotController.test('footer')
-        })}
+        class=${cx(
+          'flex items-center justify-center fixed inset-0 z-dialog absolute',
+          this.hasSlotController.test('footer') && 'dialog--has-footer'
+        )}
       >
-        <div part="overlay" class="dialog__overlay" @click=${() => this.requestClose('overlay')} tabindex="-1"></div>
+        <div
+          part="overlay"
+          class="fixed inset-0 bg-neutral-800 opacity-90"
+          @click=${() => this.requestClose('overlay')}
+          tabindex="-1"
+        ></div>
 
         <div
           part="panel"
-          class="dialog__panel"
+          class=${cx(
+            'dialog__panel flex flex-col z-20 bg-white focus:outline-none w-[30rem] h-40 max-h-[80vh]',
+            this.open && 'flex opacity-100'
+          )}
           role="dialog"
           aria-modal="true"
           aria-hidden=${this.open ? 'false' : 'true'}
@@ -281,37 +285,84 @@ export default class SdDialog extends SolidElement {
         >
           ${!this.noHeader
             ? html`
-                <header part="header" class="dialog__header">
-                  <h2 part="title" class="dialog__title" id="title">
-                    <slot name="label"> ${this.label.length > 0 ? this.label : String.fromCharCode(65279)} </slot>
+                <header part="header" class="flex flex-[0_0_auto] relative">
+                  <h2 part="title" class="dialog__title flex-[1_1_auto] m-0" id="title">
+                    <slot name="label" class="sd-headline">
+                      ${this.label.length > 0 ? this.label : String.fromCharCode(65279)}
+                    </slot>
                   </h2>
-                  <div part="header-actions" class="dialog__header-actions">
+                  <div part="header-actions" class="dialog__header-actions shrink-0 flex flex-wrap justify-end py-0">
                     <slot name="header-actions"></slot>
                     <sd-button
                       part="close-button"
-                      variant="secondary"
+                      variant="tertiary"
                       exportparts="base:close-button__base"
-                      class="dialog__close"
+                      class="dialog__close absolute top-2 right-2"
                       name="x-lg"
                       @click="${() => this.requestClose('close-button')}"
-                      size="sm"
                       type="button"
-                      ><sd-icon library="global-resources" name="system/close" slot="icon-right"></sd-icon
+                      ><sd-icon name="system/close" library="global-resources" color="currentColor"></sd-icon
                     ></sd-button>
                   </div>
                 </header>
               `
             : ''}
 
-          <slot part="body" class="dialog__body"></slot>
+          <slot part="body" class=" flex-[1_1_auto] block overflow-auto"></slot>
 
-          <footer part="footer" class="dialog__footer">
+          <footer part="footer" class="dialog__footer flex-[0_0_auto] text-right">
             <slot name="footer"></slot>
           </footer>
         </div>
       </div>
     `;
   }
+
+  static styles = [
+    componentStyles,
+    SolidElement.styles,
+    componentStyles,
+    css`
+      :host {
+        --width: 31rem;
+        --header-spacing: var(--sd-spacing-large);
+        --body-spacing: var(--sd-spacing-large);
+        --footer-spacing: var(--sd-spacing-large);
+
+        display: contents;
+      }
+
+      .dialog__header-actions {
+        gap: var(--sd-spacing-2x-small);
+      }
+
+      .dialog__header-actions sd-icon-button,
+      .dialog__header-actions ::slotted(sd-icon-button) {
+        flex: 0 0 auto;
+        display: flex;
+        align-items: center;
+        font-size: var(--sd-font-size-medium);
+      }
+
+      .dialog__body {
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .dialog__footer ::slotted(sd-button:not(:first-of-type)) {
+        margin-inline-start: var(--sd-spacing-x-small);
+      }
+
+      .dialog:not(.dialog--has-footer) .dialog__footer {
+        display: none;
+      }
+
+      @media (forced-colors: active) {
+        .dialog__panel {
+          border: solid 1px var(--sd-color-neutral-0);
+        }
+      }
+    `
+  ];
 }
 
 setDefaultAnimation('dialog.show', {
