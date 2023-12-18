@@ -6,7 +6,6 @@
 
   &:is(ol) {
     & ol {
-      list-style-type: none;
       counter-reset: item;
       background: red;
     }
@@ -36,15 +35,16 @@
   }
 
   &:is(ul):not(.sd-list--icon) {
-    @apply list-disc;
-    background: maroon;
 
-    & li ul {
-      list-style-type: '·';
+    list-style-type: disc;
+    background: red;
+
+    & ul {
+        list-style-type: '·';
     }
 
-    & li ul li ul {
-      list-style-type: '-';
+    & ul ul {
+        list-style-type: '-';
     }
   }
 
