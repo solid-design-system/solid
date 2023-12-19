@@ -35,7 +35,7 @@
     }
 
     & li li {
-      @apply pl-4;
+      @apply pl-2;
     }
   }
 
@@ -55,8 +55,14 @@
     }
 
     &.sd-list--horizontal {
+      @apply flex;
+
       & li {
-        @apply inline-block;
+        @apply flex;
+      }
+
+      & li:not(:last-child) {
+        @apply mr-8;
       }
     }
   }

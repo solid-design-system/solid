@@ -160,9 +160,9 @@ export const HorizontalIconList = {
   args: overrideArgs({
     type: 'slot',
     name: 'default',
-    value: `<li><sd-icon name="content/picture" library="global-resources" ></sd-icon>Lorem Ipsum</li>
-        <li><sd-icon name="content/picture" library="global-resources" ></sd-icon>Lorem Ipsum</li>
-        <li><sd-icon name="content/picture" library="global-resources" ></sd-icon>Lorem Ipsum</li>`
+    value: `<li><sd-icon name="content/picture" library="global-resources" ></sd-icon>Lorem</li>
+        <li><sd-icon name="content/picture" library="global-resources" ></sd-icon>Lorem</li>
+        <li><sd-icon name="content/picture" library="global-resources" ></sd-icon>Lorem</li>`
   }),
   render: (args: any) => {
     return generateTemplate({
