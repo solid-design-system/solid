@@ -110,7 +110,7 @@ export default class SdTeaser extends SolidElement {
           class=${cx(
             !inset && this._orientation === 'vertical' && 'mb-4',
             !slots['teaser-has-media'] && 'hidden',
-            this.variant === 'white border-neutral-400' && this._orientation === 'vertical' && '-m-px'
+            this.variant === 'white border-neutral-400' && this._orientation === 'vertical' && 'm-[-1px]'
           )}
           part="media"
         >
@@ -162,10 +162,6 @@ export default class SdTeaser extends SolidElement {
 
       ::slotted([slot='headline']) {
         @apply font-bold !m-0 !text-lg;
-      }
-
-      .-m-px {
-        margin: -1px;
       }
     `
   ];
