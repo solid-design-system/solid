@@ -83,7 +83,8 @@ export const Inverted = {
 
 export const Inline = {
   parameters: { controls: { exclude: ['sd-headline--inline'] } },
-  render: (args: any) => {
+  render: (args: { [key: string]: any }) => {
+    const classes = args['sd-headline--inline'] ? 'sd-headline--inline' : '';
     return generateTemplate({
       axis: {
         y: [{ type: 'attribute', name: 'sd-headline--inline', values: [true, false] }]
@@ -91,9 +92,11 @@ export const Inline = {
       constants: {
         type: 'slot',
         name: 'default',
-        value: `
-        <sd-icon name="content/picture" library="global-resources"></sd-icon>
-        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</span>`
+        value: `<sd-icon name="content/picture" library="global-resources"></sd-icon>
+                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</span>`
+      },
+      options: {
+        templateContent: `<h4 class="${classes} %CLASSES%">%SLOT%</h4>`
       },
       args
     });
