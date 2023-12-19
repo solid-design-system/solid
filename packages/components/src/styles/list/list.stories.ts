@@ -125,27 +125,22 @@ export const IconList = {
   args: overrideArgs({
     type: 'slot',
     name: 'default',
-    value: ` <li><div><sd-icon name="content/picture" library="global-resources" />Lorem Ipsum</div>
-<!--            <ul>-->
-<!--                <li><sd-icon name="content/picture" library="global-resources" />Dolor sit-->
-<!--                    <ul>-->
-<!--                        <li><sd-icon name="content/picture" library="global-resources" />Amet</li>-->
-<!--                    </ul>-->
-<!--                </li>-->
-<!--            </ul>-->
+    value: ` <li><sd-icon name="content/picture" library="global-resources" ></sd-icon>Lorem Ipsum
+            <ul>
+                <li><sd-icon name="content/picture" library="global-resources" ></sd-icon>Dolor sit
+                    <ul>
+                        <li><sd-icon name="content/picture" library="global-resources" ></sd-icon>Amet</li>
+                    </ul>
+                </li>
+            </ul>
         </li>
-        <li><sd-icon name="content/picture" library="global-resources" />Lorem Ipsum</li>
-        <li><sd-icon name="content/picture" library="global-resources" />Lorem Ipsum</li>`
+        <li><sd-icon name="content/picture" library="global-resources" ></sd-icon>Lorem Ipsum</li>
+        <li><sd-icon name="content/picture" library="global-resources" ></sd-icon>Lorem Ipsum</li>`
   }),
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        x: { type: 'attribute', name: 'sd-list--inverted', values: ['', 'sd-list--inverted'] },
-        y: {
-          type: 'attribute',
-          name: 'variants',
-          values: ['sd-list--icon', 'sd-list--icon sd-list--horizontal']
-        }
+        x: { type: 'attribute', name: 'sd-list--inverted', values: ['', 'sd-list--inverted'] }
       },
       args,
       options: {
@@ -153,7 +148,34 @@ export const IconList = {
           alternate: 'x',
           colors: ['rgb(var(--sd-color-primary-100, 236 240 249))', 'rgb(var(--sd-color-primary, 0 53 142))']
         },
-        templateContent: '<ul class="%CLASSES%">%SLOT%</ul>'
+        templateContent: '<ul class="sd-list--icon %CLASSES%">%SLOT%</ul>'
+      }
+    });
+  }
+};
+
+export const HorizontalIconList = {
+  name: 'HorizontalIconList',
+  parameters: { controls: { exclude: ['default'] } },
+  args: overrideArgs({
+    type: 'slot',
+    name: 'default',
+    value: `<li><sd-icon name="content/picture" library="global-resources" ></sd-icon>Lorem Ipsum</li>
+        <li><sd-icon name="content/picture" library="global-resources" ></sd-icon>Lorem Ipsum</li>
+        <li><sd-icon name="content/picture" library="global-resources" ></sd-icon>Lorem Ipsum</li>`
+  }),
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        x: { type: 'attribute', name: 'sd-list--inverted', values: ['', 'sd-list--inverted'] }
+      },
+      args,
+      options: {
+        templateBackgrounds: {
+          alternate: 'x',
+          colors: ['rgb(var(--sd-color-primary-100, 236 240 249))', 'rgb(var(--sd-color-primary, 0 53 142))']
+        },
+        templateContent: '<ul class="sd-list--icon sd-list--horizontal %CLASSES%">%SLOT%</ul>'
       }
     });
   }
