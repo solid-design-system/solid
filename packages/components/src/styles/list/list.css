@@ -1,5 +1,4 @@
 .sd-list {
-
   &--inverted {
     @apply text-white;
   }
@@ -35,7 +34,6 @@
   }
 
   &:is(ul):not(.sd-list--icon) {
-
     @apply text-left list-disc;
 
     & ul {
@@ -52,7 +50,7 @@
   }
 
   &:is(.sd-list--icon) {
-    @apply list-none;
+    @apply list-none text-left;
 
     &.sd-list--horizontal {
       & li {
