@@ -52,6 +52,10 @@
   &:is(.sd-list--icon) {
     @apply list-none text-left;
 
+    & li li {
+      padding-left: 16px;
+    }
+
     &.sd-list--horizontal {
       & li {
         @apply inline-block;
