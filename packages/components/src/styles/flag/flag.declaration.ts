@@ -3,7 +3,7 @@ import type { Style } from '../../declaration';
 export default {
   styleName: 'sd-flag',
   summary: 'Generates basic styles for flag elements.',
-  status: 'experimental',
+  status: 'stable',
   since: '1.34.0',
   attributes: [
     {

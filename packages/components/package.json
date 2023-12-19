@@ -1,7 +1,7 @@
 {
   "name": "@solid-design-system/components",
   "description": "Solid Design System: Components",
-  "version": "1.35.1",
+  "version": "1.37.0",
   "homepage": "https://solid-design-system.fe.union-investment.de/x.x.x/storybook/",
   "author": {
     "name": "Union Investment"
@@ -45,7 +45,8 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/solid-design-system/solid.git"
+    "url": "git+https://github.com/solid-design-system/solid.git",
+    "directory": "packages/components"
   },
   "scripts": {
     "start": "echo '❌ Please use `pnpm dev` instead.'",
@@ -185,8 +186,8 @@
   "readme": "README.md",
   "meta": {
     "bundleSizeInKb": {
-      "uncompressed": 248,
-      "gzip": 61
+      "uncompressed": 253,
+      "gzip": 62
     }
   }
 }

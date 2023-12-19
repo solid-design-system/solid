@@ -18,12 +18,10 @@ describe('<sd-textarea>', () => {
     expect(el.value).to.equal('');
     expect(el.defaultValue).to.equal('');
     expect(el.title).to.equal('');
-    // expect(el.filled).to.be.false;
     expect(el.label).to.equal('');
     expect(el.helpText).to.equal('');
     expect(el.placeholder).to.equal('');
     expect(el.rows).to.equal(4);
-    // expect(el.resize).to.equal('vertical');
     expect(el.disabled).to.be.false;
     expect(el.readonly).to.be.false;
     expect(el.minlength).to.be.undefined;

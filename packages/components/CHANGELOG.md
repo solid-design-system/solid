@@ -1,3 +1,25 @@
+# [@solid-design-system/components-v1.37.0](https://github.com/solid-design-system/solid/compare/components/1.36.0...components/1.37.0) (2023-12-15)
+
+
+### Features
+
+* ✨ add inline validation + improve initial validation ([#647](https://github.com/solid-design-system/solid/issues/647)) ([da78967](https://github.com/solid-design-system/solid/commit/da789673d8bbce64320e3102309d7fa434a83d9d)), closes [#631](https://github.com/solid-design-system/solid/issues/631) [#641](https://github.com/solid-design-system/solid/issues/641)
+
+### 📈 Stats
+* Bundle size (uncompressed): 253 KB (unchanged)
+* Bundle size (gzipped): 62 KB (unchanged)
+
+# [@solid-design-system/components-v1.36.0](https://github.com/solid-design-system/solid/compare/components/1.35.1...components/1.36.0) (2023-12-14)
+
+
+### Features
+
+* ✨ add sd-radio-button ([#622](https://github.com/solid-design-system/solid/issues/622)) ([273faa2](https://github.com/solid-design-system/solid/commit/273faa29b9297a289194e05444d996aba25e3534)), closes [#216](https://github.com/solid-design-system/solid/issues/216)
+
+### 📈 Stats
+* Bundle size (uncompressed): 253 KB (+5 KB / +2%)
+* Bundle size (gzipped): 62 KB (+1 KB / +2%)
+
 # [@solid-design-system/components-v1.35.1](https://github.com/solid-design-system/solid/compare/components/1.35.0...components/1.35.1) (2023-12-13)
 
 

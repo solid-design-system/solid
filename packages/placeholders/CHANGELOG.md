@@ -1,3 +1,10 @@
+# [@solid-design-system/placeholders-v1.2.0](https://github.com/solid-design-system/solid/compare/placeholders/1.1.0...placeholders/1.2.0) (2023-12-15)
+
+
+### Features
+
+* ✨ add inline validation + improve initial validation ([#647](https://github.com/solid-design-system/solid/issues/647)) ([da78967](https://github.com/solid-design-system/solid/commit/da789673d8bbce64320e3102309d7fa434a83d9d)), closes [#631](https://github.com/solid-design-system/solid/issues/631) [#641](https://github.com/solid-design-system/solid/issues/641)
+
 # [@solid-design-system/placeholders-v1.1.0](https://github.com/solid-design-system/solid/compare/placeholders/1.0.1...placeholders/1.1.0) (2023-10-11)
 
 

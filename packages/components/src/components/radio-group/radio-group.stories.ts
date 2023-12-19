@@ -30,7 +30,8 @@ export default {
       value: `<sd-radio value="1">Radio 1</sd-radio><sd-radio value="2">Radio 2</sd-radio><sd-radio value="3">Radio 3</sd-radio>`
     },
     { type: 'attribute', name: 'name', value: 'radio-group' },
-    { type: 'attribute', name: 'value', value: '2' }
+    { type: 'attribute', name: 'value', value: '2' },
+    { type: 'attribute', name: 'boldLabel', value: true }
   ]),
   argTypes
 };
@@ -105,17 +106,21 @@ export const Disabled = {
 export const Invalid = {
   parameters: { controls: { exclude: ['size', 'value', 'required', 'invalid'] } },
   render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: { type: 'attribute', name: 'size' }
-      },
-      constants: [
-        { type: 'attribute', name: 'invalid', value: true },
-        { type: 'attribute', name: 'required', value: true },
-        { type: 'attribute', name: 'value', value: '' }
-      ],
-      args
-    });
+    return html`<form>
+      ${generateTemplate({
+        constants: [
+          { type: 'attribute', name: 'required', value: true },
+          { type: 'attribute', name: 'value', value: '' }
+        ],
+        args
+      })}
+      <sd-button style="margin-top: 16px" type="submit">Submit</sd-button>
+    </form>`;
+  },
+  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
+    const el = canvasElement.querySelector('sd-button');
+    await waitUntil(() => el?.shadowRoot?.querySelector('button'));
+    await userEvent.type(el!.shadowRoot!.querySelector('button')!, '{return}', { pointerEventsCheck: 0 });
   }
 };
 
@@ -181,5 +186,70 @@ export const Mouseless = {
         await userEvent.type(label, '{space}', { pointerEventsCheck: 0 });
       }
     }
+  }
+};
+
+/**
+ * This shows `sd-radio-group` using multiple `sd-radio-buttons` in it's default state.
+ */
+
+export const RadioButtons = {
+  parameters: { controls: { exclude: ['default', 'size', 'value', 'required', 'invalid', 'label', 'orientation'] } },
+  render: (args: any) => {
+    return generateTemplate({
+      args,
+      constants: [
+        {
+          type: 'slot',
+          name: 'default',
+          value:
+            '<sd-radio-button value="1" showLabel><sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon><div>Label</div></sd-radio-button><sd-radio-button value="2" showLabel><sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon><div>Label</div></sd-radio-button><sd-radio-button value="3" showLabel><sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon><div>Label</div></sd-radio-button>'
+        },
+        {
+          type: 'slot',
+          name: 'label',
+          value: ``
+        }
+      ]
+    });
+  }
+};
+
+/**
+ * `sd-radio-group` with multiple `sd-radio-buttons` is fully accessibile via keyboard.
+ */
+
+export const MouselessWithRadioButtons = {
+  parameters: { controls: { exclude: ['default', 'size', 'value', 'required', 'invalid', 'label', 'orientation'] } },
+  render: (args: any) => {
+    return html`<div class="mouseless">
+      ${generateTemplate({
+        args,
+        constants: [
+          {
+            type: 'slot',
+            name: 'default',
+            value:
+              '<sd-radio-button value="1"><sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon></sd-radio-button><sd-radio-button value="2"><sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon></sd-radio-button><sd-radio-button value="3"><sd-icon library="global-resources" name="system/picture" slot="icon"></sd-radio-button>'
+          },
+          {
+            type: 'attribute',
+            name: 'value',
+            value: `2`
+          },
+          {
+            type: 'slot',
+            name: 'label',
+            value: ``
+          }
+        ]
+      })}
+    </div>`;
+  },
+
+  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
+    const el = canvasElement.querySelectorAll('.mouseless sd-radio-button')[1];
+    await waitUntil(() => el?.shadowRoot?.querySelector('button'));
+    el?.shadowRoot?.querySelector('button')!.focus();
   }
 };

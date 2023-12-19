@@ -589,17 +589,13 @@ export const Validation = {
       <script>
         function handleSubmit(event) {
           const form = document.querySelector('#testForm');
-          const sdInputs = Array.from(document.querySelectorAll('sd-input'));
 
-          const isValid = sdInput => sdInput.checkValidity();
+          const formData = new FormData(form);
+          const formValues = Object.fromEntries(formData);
 
-          if (sdInputs.every(isValid)) {
+          if (form.reportValidity()) {
             event.preventDefault(); // Prevent the default form submission behavior
-
-            const formData = new FormData(form);
-            const formValues = Object.fromEntries(formData);
-
-            alert('Form submitted successfully with the following values: ' + JSON.stringify(formValues, null, 2));
+            alert('Form submitted with the following values: ' + JSON.stringify(formValues, null, 2));
           }
         }
 
@@ -739,6 +735,7 @@ export const Mouseless = {
  */
 
 export const Samples = {
+  name: 'Sample: Currency Stepper',
   parameters: {
     controls: {
       include: []
@@ -747,8 +744,7 @@ export const Samples = {
   render: () => {
     return html`
       <div class="w-[250px]">
-        <div class="mb-4 p-4 bg-neutral-300 text-sm font-bold w-full box-border">sd-input with currency stepper</div>
-        <sd-input id="stepperSampleInput" type="number" min="0"
+        <sd-input label="Currency Stepper" id="stepperSampleInput" type="number" min="0"
           ><span slot="right" class="text-sm inline-flex items-center"
             ><span class="text-neutral-700">EUR</span>
             <button
