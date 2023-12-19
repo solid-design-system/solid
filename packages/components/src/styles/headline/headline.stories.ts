@@ -48,7 +48,7 @@ export default {
 export const Default = {
   render: (args: any) => {
     return generateTemplate({
-      options: { templateContent: '<p class="%CLASSES%">%SLOT%</p>' },
+      options: { templateContent: '<h4 class="%CLASSES%">%SLOT%</h4>' },
       args
     });
   }
@@ -60,14 +60,17 @@ export const Default = {
 
 export const Inverted = {
   parameters: { controls: { exclude: ['sd-headline--inverted'] } },
-  render: (args: any) => {
+  render: (args: { [key: string]: any }) => {
+    // Determine if the inverted class should be applied
+    const invertedClass = args['sd-headline--inverted'] ? 'sd-headline--inverted' : '';
     return generateTemplate({
       axis: {
         y: [{ type: 'attribute', name: 'sd-headline--inverted', values: [false, true] }]
       },
       constants: { type: 'attribute', name: 'sd-headline--inverted', value: true },
       options: {
-        templateBackgrounds: { alternate: 'y', colors: ['transparent', 'rgb(var(--sd-color-primary, 0 53 142))'] }
+        templateBackgrounds: { alternate: 'y', colors: ['transparent', 'rgb(var(--sd-color-primary, 0 53 142))'] },
+        templateContent: `<h4 class="${invertedClass} %CLASSES%">%SLOT%</h4>`
       },
       args
     });
