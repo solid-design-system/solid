@@ -36,15 +36,18 @@
 
   &:is(ul):not(.sd-list--icon) {
 
-    list-style-type: disc;
-    background: red;
+    @apply text-left list-disc;
 
     & ul {
-        list-style-type: '·';
+      list-style-type: '·';
+    }
+
+    & li li {
+      padding-left: 16px;
     }
 
     & ul ul {
-        list-style-type: '-';
+      list-style-type: '-';
     }
   }
 
