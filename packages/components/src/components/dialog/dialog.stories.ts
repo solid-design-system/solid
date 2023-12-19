@@ -14,12 +14,12 @@ export default {
     {
       type: 'slot',
       name: 'default',
-      value: `<div class="slot slot--border slot--text h-full">Main slot</div>`
+      value: `<p class="sd-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie phasellus dui vel id. Velit in sed.</p>`
     },
     {
       type: 'slot',
-      name: 'label',
-      value: `<span slot="label" class="sd-headline sd-headline--size-3xl">Lorem Ipsum</span>`
+      name: 'headline',
+      value: `<h4 slot="headline" class="sd-headline sd-headline--size-3xl">Lorem Ipsum</h4>`
     },
     {
       type: 'slot',

@@ -5,7 +5,6 @@ import { css, html } from 'lit';
 import { customElement } from '../../../src/internal/register-custom-element';
 import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry';
 import { HasSlotController } from '../../internal/slot';
-import { ifDefined } from 'lit/directives/if-defined.js';
 import { LocalizeController } from '../../utilities/localize';
 import { lockBodyScrolling, unlockBodyScrolling } from '../../internal/scroll';
 import { property, query } from 'lit/decorators.js';
@@ -20,12 +19,13 @@ import SolidElement from '../../internal/solid-element';
  * @summary Dialogs, sometimes called "modals", appear above the page and require the user's immediate attention.
  * @documentation https://solid.union-investment.com/[storybook-link]/dialog
  * @status stable
- * @since 1.0
+ * @since 1.38.0
  *
- * @dependency sd-icon-button
+ * @dependency sd-button
+ * @dependency sd-icon
  *
  * @slot - The dialog's main content.
- * @slot label - The dialog's label. Alternatively, you can use the `label` attribute.
+ * @slot headline - The dialog's headline. Alternatively, you can use the `headline` attribute.
  * @slot header-actions - Optional actions to add to the header. Works best with `<sd-icon-button>`.
  * @slot footer - The dialog's footer, usually one or more buttons representing various options.
  *
@@ -77,19 +77,19 @@ export default class SdDialog extends SolidElement {
    * Indicates whether or not the dialog is open. You can toggle this attribute to show and hide the dialog, or you can
    * use the `show()` and `hide()` methods and this attribute will reflect the dialog's open state.
    */
-  @property({ type: Boolean, reflect: true }) open = false;
+  @property({ type: Boolean, reflect: true }) open = true;
 
   /**
-   * The dialog's label as displayed in the header. You should always include a relevant label even when using
-   * `no-header`, as it is required for proper accessibility. If you need to display HTML, use the `label` slot instead.
+   * The dialog's headline as displayed in the header. You should always include a relevant headline even when using
+   * `no-header`, as it is required for proper accessibility. If you need to display HTML, use the `headline` slot instead.
    */
-  @property({ reflect: true }) label = '';
+  @property({ reflect: true }) headline = '';
 
   /**
    * Disables the header. This will also remove the default close button, so please ensure you provide an easy,
    * accessible way for users to dismiss the dialog.
    */
-  @property({ attribute: 'no-header', type: Boolean, reflect: true }) noHeader = false;
+  @property({ attribute: 'no-close-button', type: Boolean, reflect: true }) noCloseButton = true;
 
   connectedCallback() {
     super.connectedCallback();
@@ -259,7 +259,7 @@ export default class SdDialog extends SolidElement {
       <div
         part="base"
         class=${cx(
-          'flex items-center justify-center fixed inset-0 z-dialog absolute',
+          'flex items-center justify-center fixed inset-0 z-dialog',
           this.hasSlotController.test('footer') && 'dialog--has-footer'
         )}
       >
@@ -273,44 +273,41 @@ export default class SdDialog extends SolidElement {
         <div
           part="panel"
           class=${cx(
-            'dialog__panel flex flex-col z-20 bg-white focus:outline-none w-[30rem] h-40 max-h-[80vh]',
+            'dialog__panel flex flex-col z-20 bg-white focus:outline-none w-[335px] sm:w-[662px] py-4 px-6 sm:py-8 sm:px-12 relative gap-6',
             this.open && 'flex opacity-100'
           )}
           role="dialog"
           aria-modal="true"
           aria-hidden=${this.open ? 'false' : 'true'}
-          aria-label=${ifDefined(this.noHeader ? this.label : undefined)}
-          aria-labelledby=${ifDefined(!this.noHeader ? 'title' : undefined)}
+          aria-label=${this.headline}
+          aria-labelledby="title"
           tabindex="0"
         >
-          ${!this.noHeader
-            ? html`
-                <header part="header" class="flex flex-[0_0_auto] relative">
-                  <h2 part="title" class="dialog__title flex-[1_1_auto] m-0" id="title">
-                    <slot name="label" class="sd-headline">
-                      ${this.label.length > 0 ? this.label : String.fromCharCode(65279)}
-                    </slot>
-                  </h2>
-                  <div part="header-actions" class="dialog__header-actions shrink-0 flex flex-wrap justify-end py-0">
-                    <slot name="header-actions"></slot>
-                    <sd-button
-                      part="close-button"
-                      variant="tertiary"
-                      exportparts="base:close-button__base"
-                      class="dialog__close absolute top-2 right-2"
-                      name="x-lg"
-                      @click="${() => this.requestClose('close-button')}"
-                      type="button"
-                      ><sd-icon name="system/close" library="global-resources" color="currentColor"></sd-icon
-                    ></sd-button>
-                  </div>
-                </header>
-              `
-            : ''}
+          <header part="header" class="flex flex-[0_0_auto]">
+            <h2 part="title" class="dialog__title flex-[1_1_auto] m-0" id="title">
+              <slot name="headline">
+                ${this.headline.length > 0
+                  ? // TODO: Fix sd-headline styles
+                    html`<h2 class="sd-headline sd-headline--size-3xl">${this.headline}</h2>`
+                  : String.fromCharCode(65279)}
+              </slot>
+            </h2>
 
-          <slot part="body" class=" flex-[1_1_auto] block overflow-auto"></slot>
+            <sd-button
+              part="close-button"
+              variant="tertiary"
+              exportparts="base:close-button__base"
+              class=${cx('dialog__close absolute top-2 right-2', this.noCloseButton && 'hidden')}
+              name="x-lg"
+              @click="${() => this.requestClose('close-button')}"
+              type="button"
+              ><sd-icon name="system/close" library="global-resources" color="currentColor"></sd-icon
+            ></sd-button>
+            ${console.log('this.noCloseButton ', this.noCloseButton)}
+          </header>
 
-          <footer part="footer" class="dialog__footer flex-[0_0_auto] text-right">
+          <slot part="body" class="flex-[1_1_auto] flex overflow-auto "></slot>
+          <footer part="footer" class="dialog__footer flex flex-[0_0_auto] ml-auto gap-4">
             <slot name="footer"></slot>
           </footer>
         </div>
@@ -328,8 +325,6 @@ export default class SdDialog extends SolidElement {
         --header-spacing: var(--sd-spacing-large);
         --body-spacing: var(--sd-spacing-large);
         --footer-spacing: var(--sd-spacing-large);
-
-        display: contents;
       }
 
       .dialog__header-actions {
