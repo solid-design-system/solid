@@ -47,7 +47,7 @@
     }
 
     & li {
-      @apply table-row;
+      @apply table-row items-center;
     }
 
     li > :first-child {
