@@ -220,24 +220,33 @@ describe('<sd-input>', () => {
       expect(input.hasAttribute('data-user-valid')).to.be.false;
     });
 
-    it('should render #invalid-message inside the component when setCustomValidity() is called with a non-empty value', async () => {
+    it('should render #invalid-message inside the component when setCustomValidity() and reportCustomValidity() is called with a non-empty value', async () => {
       const input = await fixture<HTMLFormElement>(html` <sd-input></sd-input> `);
 
       input.setCustomValidity('Invalid selection');
+      await input.updateComplete;
+
+      input.reportValidity();
       await input.updateComplete;
 
       expect(input.shadowRoot!.querySelector('[part~="invalid-message"]')).to.exist;
     });
 
-    it('should not render #invalid-message inside the component when setCustomValidity() is called with an empty value', async () => {
+    it('should not render #invalid-message inside the component when setCustomValidity() and reportCustomValidity() is called with an empty value', async () => {
       const input = await fixture<HTMLFormElement>(html` <sd-input></sd-input> `);
 
       input.setCustomValidity('Invalid selection');
       await input.updateComplete;
 
+      input.reportValidity();
+      await input.updateComplete;
+
       expect(input.shadowRoot!.querySelector('[part~="invalid-message"]')).to.exist;
 
       input.setCustomValidity('');
+      await input.updateComplete;
+
+      input.reportValidity();
       await input.updateComplete;
 
       expect(input.shadowRoot!.querySelector('[part~="invalid-message"]')).to.not.exist;
@@ -249,9 +258,15 @@ describe('<sd-input>', () => {
       input.setCustomValidity('Invalid selection');
       await input.updateComplete;
 
+      input.reportValidity();
+      await input.updateComplete;
+
       expect(input.shadowRoot!.querySelector('[part~="invalid-icon"]')).to.exist;
 
       input.setCustomValidity('');
+      await input.updateComplete;
+
+      input.reportValidity();
       await input.updateComplete;
 
       expect(input.shadowRoot!.querySelector('[part~="invalid-icon"]')).to.not.exist;
