@@ -718,6 +718,46 @@ export const Parts = {
  * `sd-input` is fully accessibile via keyboard.
  */
 
+export const setCustomValidity = {
+  render: () => {
+    return html`
+      <form id="validationForm" class="flex flex-col gap-2">
+        <sd-input id="customInput" label="Input"></sd-input>
+        <div>
+          <sd-button id="setErrorButton">Set error</sd-button>
+          <sd-button id="clearErrorButton" variant="secondary">Remove error</sd-button>
+        </div>
+      </form>
+      <script type="module">
+        // Wait for custom elements to be defined
+        await Promise.all([customElements.whenDefined('sd-input'), customElements.whenDefined('sd-button')]).then(
+          () => {
+            const form = document.getElementById('validationForm');
+            const input = document.getElementById('customInput');
+            const setErrorButton = document.getElementById('setErrorButton');
+            const clearErrorButton = document.getElementById('clearErrorButton');
+
+            setErrorButton.addEventListener('click', () => {
+              const errorMessage = \`Error set at \${new Date().toLocaleTimeString()}\`;
+              input.setCustomValidity(errorMessage);
+              input.reportValidity();
+            });
+
+            clearErrorButton.addEventListener('click', () => {
+              input.setCustomValidity(''); // Clear custom validity
+              input.reportValidity();
+            });
+          }
+        );
+      </script>
+    `;
+  }
+};
+
+/**
+ * `sd-input` is fully accessibile via keyboard.
+ */
+
 export const Mouseless = {
   render: (args: any) => {
     return html`<div class="mouseless w-[250px]">${generateTemplate({ args })}</div>`;

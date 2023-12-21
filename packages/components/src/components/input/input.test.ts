@@ -220,6 +220,43 @@ describe('<sd-input>', () => {
       expect(input.hasAttribute('data-user-valid')).to.be.false;
     });
 
+    it('should render #invalid-message inside the component when setCustomValidity() is called with a non-empty value', async () => {
+      const input = await fixture<HTMLFormElement>(html` <sd-input></sd-input> `);
+
+      input.setCustomValidity('Invalid selection');
+      await input.updateComplete;
+
+      expect(input.shadowRoot!.querySelector('[part~="invalid-message"]')).to.exist;
+    });
+
+    it('should not render #invalid-message inside the component when setCustomValidity() is called with an empty value', async () => {
+      const input = await fixture<HTMLFormElement>(html` <sd-input></sd-input> `);
+
+      input.setCustomValidity('Invalid selection');
+      await input.updateComplete;
+
+      expect(input.shadowRoot!.querySelector('[part~="invalid-message"]')).to.exist;
+
+      input.setCustomValidity('');
+      await input.updateComplete;
+
+      expect(input.shadowRoot!.querySelector('[part~="invalid-message"]')).to.not.exist;
+    });
+
+    it('should show sd-icon with name="confirm" when setCustomValidity() is called with an empty value', async () => {
+      const input = await fixture<HTMLFormElement>(html` <sd-input></sd-input> `);
+
+      input.setCustomValidity('Invalid selection');
+      await input.updateComplete;
+
+      expect(input.shadowRoot!.querySelector('[part~="invalid-icon"]')).to.exist;
+
+      input.setCustomValidity('');
+      await input.updateComplete;
+
+      expect(input.shadowRoot!.querySelector('[part~="invalid-icon"]')).to.not.exist;
+    });
+
     it('should be present in form data when using the form attribute and located outside of a <form>', async () => {
       const el = await fixture<HTMLFormElement>(html`
         <div>
