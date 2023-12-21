@@ -1,7 +1,7 @@
 import '../button/button';
 import '../icon/icon';
 import { animateTo, stopAnimations } from '../../internal/animate';
-import { css, html } from 'lit';
+import { css, html, unsafeCSS } from 'lit';
 import { customElement } from '../../../src/internal/register-custom-element';
 import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry';
 import { HasSlotController } from '../../internal/slot';
@@ -12,6 +12,7 @@ import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch';
 import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
+import HeadlineStyles from '../../styles/headline/headline.css?inline';
 import Modal from '../../internal/modal';
 import SolidElement from '../../internal/solid-element';
 
@@ -26,8 +27,7 @@ import SolidElement from '../../internal/solid-element';
  *
  * @slot - The dialog's main content.
  * @slot headline - The dialog's headline. Alternatively, you can use the `headline` attribute.
- * @slot header-actions - Optional actions to add to the header. Works best with `<sd-icon-button>`.
- * @slot footer - The dialog's footer, usually one or more buttons representing various options.
+ * @slot footer - The dialog's footer, usually one or more buttons representing various options. * @slot close-button - The dialog's close button. Works best with `<sd-button>` and `<sd-icon>`.
  *
  * @event sd-show - Emitted when the dialog opens.
  * @event sd-after-show - Emitted after the dialog opens and all animations are complete.
@@ -44,17 +44,12 @@ import SolidElement from '../../internal/solid-element';
  * @csspart overlay - The overlay that covers the screen behind the dialog.
  * @csspart panel - The dialog's panel (where the dialog and its content are rendered).
  * @csspart header - The dialog's header. This element wraps the title and header actions.
- * @csspart header-actions - Optional actions to add to the header. Works best with `<sd-icon-button>`.
  * @csspart title - The dialog's title.
- * @csspart close-button - The close button, an `<sd-icon-button>`.
- * @csspart close-button__base - The close button's exported `base` part.
+ * @csspart close-button - The close button, an `<sd-button>`.
  * @csspart body - The dialog's body.
  * @csspart footer - The dialog's footer.
  *
  * @cssproperty --width - The preferred width of the dialog. Note that the dialog will shrink to accommodate smaller screens.
- * @cssproperty --header-spacing - The amount of padding to use for the header.
- * @cssproperty --body-spacing - The amount of padding to use for the body.
- * @cssproperty --footer-spacing - The amount of padding to use for the footer.
  *
  * @animation dialog.show - The animation to use when showing the dialog.
  * @animation dialog.hide - The animation to use when hiding the dialog.
@@ -77,11 +72,10 @@ export default class SdDialog extends SolidElement {
    * Indicates whether or not the dialog is open. You can toggle this attribute to show and hide the dialog, or you can
    * use the `show()` and `hide()` methods and this attribute will reflect the dialog's open state.
    */
-  @property({ type: Boolean, reflect: true }) open = true;
+  @property({ type: Boolean, reflect: true }) open = false;
 
   /**
-   * The dialog's headline as displayed in the header. You should always include a relevant headline even when using
-   * `no-header`, as it is required for proper accessibility. If you need to display HTML, use the `headline` slot instead.
+   * The dialog's headline as displayed in the header. If you need to display HTML, use the `headline` slot instead.
    */
   @property({ reflect: true }) headline = '';
 
@@ -89,7 +83,7 @@ export default class SdDialog extends SolidElement {
    * Disables the header. This will also remove the default close button, so please ensure you provide an easy,
    * accessible way for users to dismiss the dialog.
    */
-  @property({ attribute: 'no-close-button', type: Boolean, reflect: true }) noCloseButton = true;
+  @property({ attribute: 'no-close-button', type: Boolean, reflect: true }) noCloseButton = false;
 
   connectedCallback() {
     super.connectedCallback();
@@ -273,7 +267,7 @@ export default class SdDialog extends SolidElement {
         <div
           part="panel"
           class=${cx(
-            'dialog__panel flex flex-col z-20 bg-white focus:outline-none w-[335px] sm:w-[662px] py-4 px-6 sm:py-8 sm:px-12 relative gap-6',
+            'dialog__panel flex flex-col z-20 bg-white focus:outline-none py-4 sm:py-8 relative gap-6',
             this.open && 'flex opacity-100'
           )}
           role="dialog"
@@ -283,31 +277,39 @@ export default class SdDialog extends SolidElement {
           aria-labelledby="title"
           tabindex="0"
         >
-          <header part="header" class="flex flex-[0_0_auto]">
-            <h2 part="title" class="dialog__title flex-[1_1_auto] m-0" id="title">
+          <header part="header" class="flex flex-grow-0 flex-shrink-0 basis-auto px-6 sm:px-12">
+            <h2 part="title" class="dialog__title flex-auto m-0" id="title">
               <slot name="headline">
                 ${this.headline.length > 0
-                  ? // TODO: Fix sd-headline styles
-                    html`<h2 class="sd-headline sd-headline--size-3xl">${this.headline}</h2>`
+                  ? html`<h4 class="sd-headline sd-headline--size-3xl">${this.headline}</h4>`
                   : String.fromCharCode(65279)}
               </slot>
             </h2>
 
-            <sd-button
-              part="close-button"
-              variant="tertiary"
-              exportparts="base:close-button__base"
-              class=${cx('dialog__close absolute top-2 right-2', this.noCloseButton && 'hidden')}
-              name="x-lg"
-              @click="${() => this.requestClose('close-button')}"
-              type="button"
-              ><sd-icon name="system/close" library="global-resources" color="currentColor"></sd-icon
-            ></sd-button>
-            ${console.log('this.noCloseButton ', this.noCloseButton)}
+            ${!this.noCloseButton
+              ? html`
+                  <sd-button
+                    part="close-button"
+                    variant="tertiary"
+                    exportparts="base:close-button__base"
+                    class=${cx('dialog__close absolute top-2 right-2')}
+                    name="x-lg"
+                    @click="${() => this.requestClose('close-button')}"
+                    type="button"
+                  >
+                    <sd-icon name="system/close" library="global-resources" color="currentColor"></sd-icon>
+                  </sd-button>
+                `
+              : ''}
           </header>
 
-          <slot part="body" class="flex-[1_1_auto] flex overflow-auto "></slot>
-          <footer part="footer" class="dialog__footer flex flex-[0_0_auto] ml-auto gap-4">
+          <main class="dialog__body flex-auto flex overflow-auto w-full px-6 sm:px-12">
+            <slot part="body"></slot>
+          </main>
+          <footer
+            part="footer"
+            class="dialog__footer flex flex-grow-0 flex-shrink-0 basis-auto ml-auto gap-4 px-6 sm:px-12"
+          >
             <slot name="footer"></slot>
           </footer>
         </div>
@@ -317,43 +319,29 @@ export default class SdDialog extends SolidElement {
 
   static styles = [
     componentStyles,
+    unsafeCSS(HeadlineStyles),
     SolidElement.styles,
-    componentStyles,
     css`
       :host {
-        --width: 31rem;
-        --header-spacing: var(--sd-spacing-large);
-        --body-spacing: var(--sd-spacing-large);
-        --footer-spacing: var(--sd-spacing-large);
+        --width: 662px;
       }
 
-      .dialog__header-actions {
-        gap: var(--sd-spacing-2x-small);
-      }
-
-      .dialog__header-actions sd-icon-button,
-      .dialog__header-actions ::slotted(sd-icon-button) {
-        flex: 0 0 auto;
-        display: flex;
-        align-items: center;
-        font-size: var(--sd-font-size-medium);
+      .dialog__panel {
+        width: var(--width);
+        max-height: 80vh;
       }
 
       .dialog__body {
         -webkit-overflow-scrolling: touch;
       }
 
-      .dialog__footer ::slotted(sd-button:not(:first-of-type)) {
-        margin-inline-start: var(--sd-spacing-x-small);
-      }
+      @media (max-width: 414px) {
+        :host {
+          --width: 335px;
+        }
 
-      .dialog:not(.dialog--has-footer) .dialog__footer {
-        display: none;
-      }
-
-      @media (forced-colors: active) {
-        .dialog__panel {
-          border: solid 1px var(--sd-color-neutral-0);
+        .dialog__footer {
+          @apply w-full;
         }
       }
     `
