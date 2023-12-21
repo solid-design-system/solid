@@ -107,12 +107,12 @@ export default class SdDialog extends SolidElement {
   }
 
   private requestClose(source: 'close-button' | 'keyboard' | 'overlay') {
-    const slRequestClose = this.emit('sd-request-close', {
+    const sdRequestClose = this.emit('sd-request-close', {
       cancelable: true,
       detail: { source }
     });
 
-    if (slRequestClose.defaultPrevented) {
+    if (sdRequestClose.defaultPrevented) {
       const animation = getAnimation(this, 'dialog.denyClose', { dir: this.localize.dir() });
       animateTo(this.panel, animation.keyframes, animation.options);
       return;

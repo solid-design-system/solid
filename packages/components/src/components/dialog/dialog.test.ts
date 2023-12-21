@@ -1,148 +1,167 @@
-// // cspell:dictionaries lorem-ipsum
-// import { expect, fixture, html, waitUntil } from '@open-wc/testing';
-// import { sendKeys } from '@web/test-runner-commands';
-// import sinon from 'sinon';
-// import type SdDialog from './dialog';
+// cspell:dictionaries lorem-ipsum
+import { expect, fixture, html, waitUntil } from '@open-wc/testing';
+import { sendKeys } from '@web/test-runner-commands';
+import sinon from 'sinon';
+import type SdDialog from './dialog';
 
-// describe('<sd-dialog>', () => {
-//   it('should be visible with the open attribute', async () => {
-//     const el = await fixture<SdDialog>(html`
-//       <sd-dialog open>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sd-dialog>
-//     `);
-//     const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
+describe('<sd-dialog>', () => {
+  it('should be visible with the open attribute', async () => {
+    const el = await fixture<SdDialog>(html`
+      <sd-dialog open>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sd-dialog>
+    `);
 
-//     expect(base.hidden).to.be.false;
-//   });
+    const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
 
-//   it('should not be visible without the open attribute', async () => {
-//     const el = await fixture<SdDialog>(
-//       html` <sd-dialog>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sd-dialog> `
-//     );
-//     const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
+    expect(base.hidden).to.be.false;
+  });
 
-//     expect(base.hidden).to.be.true;
-//   });
+  it('should not be visible without the open attribute', async () => {
+    const el = await fixture<SdDialog>(html`
+      <sd-dialog>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sd-dialog>
+    `);
+    const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
 
-//   it('should emit sd-show and sd-after-show when calling show()', async () => {
-//     const el = await fixture<SdDialog>(html`
-//       <sd-dialog>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sd-dialog>
-//     `);
-//     const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
-//     const showHandler = sinon.spy();
-//     const afterShowHandler = sinon.spy();
+    expect(base.hidden).to.be.true;
+  });
 
-//     el.addEventListener('sd-show', showHandler);
-//     el.addEventListener('sd-after-show', afterShowHandler);
-//     el.show();
+  it('should include a close button by default', async () => {
+    const el = await fixture<SdDialog>(html`
+      <sd-dialog open>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sd-dialog>
+    `);
+    const closeButton = el.shadowRoot!.querySelector<HTMLElement>('[part~="close-button"]')!;
 
-//     await waitUntil(() => showHandler.calledOnce);
-//     await waitUntil(() => afterShowHandler.calledOnce);
+    expect(closeButton).to.exist;
+  });
 
-//     expect(showHandler).to.have.been.calledOnce;
-//     expect(afterShowHandler).to.have.been.calledOnce;
-//     expect(base.hidden).to.be.false;
-//   });
+  it('should hide close button when no-close-button = true', async () => {
+    const el = await fixture<SdDialog>(html`
+      <sd-dialog open no-close-button>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sd-dialog>
+    `);
+    const closeButton = el.shadowRoot!.querySelector<HTMLElement>('[part~="close-button"]')!;
 
-//   it('should emit sd-hide and sd-after-hide when calling hide()', async () => {
-//     const el = await fixture<SdDialog>(html`
-//       <sd-dialog open>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sd-dialog>
-//     `);
-//     const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
-//     const hideHandler = sinon.spy();
-//     const afterHideHandler = sinon.spy();
+    expect(closeButton).not.to.exist;
+  });
 
-//     el.addEventListener('sd-hide', hideHandler);
-//     el.addEventListener('sd-after-hide', afterHideHandler);
-//     el.hide();
+  it('should emit sd-show and sd-after-show when calling show()', async () => {
+    const el = await fixture<SdDialog>(html`
+      <sd-dialog>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sd-dialog>
+    `);
+    const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
+    const showHandler = sinon.spy();
+    const afterShowHandler = sinon.spy();
 
-//     await waitUntil(() => hideHandler.calledOnce);
-//     await waitUntil(() => afterHideHandler.calledOnce);
+    el.addEventListener('sd-show', showHandler);
+    el.addEventListener('sd-after-show', afterShowHandler);
+    el.show();
 
-//     expect(hideHandler).to.have.been.calledOnce;
-//     expect(afterHideHandler).to.have.been.calledOnce;
-//     expect(base.hidden).to.be.true;
-//   });
+    await waitUntil(() => showHandler.calledOnce);
+    await waitUntil(() => afterShowHandler.calledOnce);
 
-//   it('should emit sd-show and sd-after-show when setting open = true', async () => {
-//     const el = await fixture<SdDialog>(html`
-//       <sd-dialog>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sd-dialog>
-//     `);
-//     const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
-//     const showHandler = sinon.spy();
-//     const afterShowHandler = sinon.spy();
+    expect(showHandler).to.have.been.calledOnce;
+    expect(afterShowHandler).to.have.been.calledOnce;
+    expect(base.hidden).to.be.false;
+  });
 
-//     el.addEventListener('sd-show', showHandler);
-//     el.addEventListener('sd-after-show', afterShowHandler);
-//     el.open = true;
+  it('should emit sd-hide and sd-after-hide when calling hide()', async () => {
+    const el = await fixture<SdDialog>(html`
+      <sd-dialog open>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sd-dialog>
+    `);
+    const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
+    const hideHandler = sinon.spy();
+    const afterHideHandler = sinon.spy();
 
-//     await waitUntil(() => showHandler.calledOnce);
-//     await waitUntil(() => afterShowHandler.calledOnce);
+    el.addEventListener('sd-hide', hideHandler);
+    el.addEventListener('sd-after-hide', afterHideHandler);
+    el.hide();
 
-//     expect(showHandler).to.have.been.calledOnce;
-//     expect(afterShowHandler).to.have.been.calledOnce;
-//     expect(base.hidden).to.be.false;
-//   });
+    await waitUntil(() => hideHandler.calledOnce);
+    await waitUntil(() => afterHideHandler.calledOnce);
 
-//   it('should emit sd-hide and sd-after-hide when setting open = false', async () => {
-//     const el = await fixture<SdDialog>(html`
-//       <sd-dialog open>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sd-dialog>
-//     `);
-//     const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
-//     const hideHandler = sinon.spy();
-//     const afterHideHandler = sinon.spy();
+    expect(hideHandler).to.have.been.calledOnce;
+    expect(afterHideHandler).to.have.been.calledOnce;
+    expect(base.hidden).to.be.true;
+  });
 
-//     el.addEventListener('sd-hide', hideHandler);
-//     el.addEventListener('sd-after-hide', afterHideHandler);
-//     el.open = false;
+  it('should emit sd-show and sd-after-show when setting open = true', async () => {
+    const el = await fixture<SdDialog>(html`
+      <sd-dialog>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sd-dialog>
+    `);
+    const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
+    const showHandler = sinon.spy();
+    const afterShowHandler = sinon.spy();
 
-//     await waitUntil(() => hideHandler.calledOnce);
-//     await waitUntil(() => afterHideHandler.calledOnce);
+    el.addEventListener('sd-show', showHandler);
+    el.addEventListener('sd-after-show', afterShowHandler);
+    el.open = true;
 
-//     expect(hideHandler).to.have.been.calledOnce;
-//     expect(afterHideHandler).to.have.been.calledOnce;
-//     expect(base.hidden).to.be.true;
-//   });
+    await waitUntil(() => showHandler.calledOnce);
+    await waitUntil(() => afterShowHandler.calledOnce);
 
-//   it('should not close when sd-request-close is prevented', async () => {
-//     const el = await fixture<SdDialog>(html`
-//       <sd-dialog open>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sd-dialog>
-//     `);
-//     const overlay = el.shadowRoot!.querySelector<HTMLElement>('[part~="overlay"]')!;
+    expect(showHandler).to.have.been.calledOnce;
+    expect(afterShowHandler).to.have.been.calledOnce;
+    expect(base.hidden).to.be.false;
+  });
 
-//     el.addEventListener('sd-request-close', event => {
-//       event.preventDefault();
-//     });
-//     overlay.click();
+  it('should emit sd-hide and sd-after-hide when setting open = false', async () => {
+    const el = await fixture<SdDialog>(html`
+      <sd-dialog open>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sd-dialog>
+    `);
+    const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
+    const hideHandler = sinon.spy();
+    const afterHideHandler = sinon.spy();
 
-//     expect(el.open).to.be.true;
-//   });
+    el.addEventListener('sd-hide', hideHandler);
+    el.addEventListener('sd-after-hide', afterHideHandler);
+    el.open = false;
 
-//   it('should allow initial focus to be set', async () => {
-//     const el = await fixture<SdDialog>(html` <sd-dialog><input /></sd-dialog> `);
-//     const input = el.querySelector('input')!;
-//     const initialFocusHandler = sinon.spy((event: Event) => {
-//       event.preventDefault();
-//       input.focus();
-//     });
+    await waitUntil(() => hideHandler.calledOnce);
+    await waitUntil(() => afterHideHandler.calledOnce);
 
-//     el.addEventListener('sd-initial-focus', initialFocusHandler);
-//     el.show();
+    expect(hideHandler).to.have.been.calledOnce;
+    expect(afterHideHandler).to.have.been.calledOnce;
+    expect(base.hidden).to.be.true;
+  });
 
-//     await waitUntil(() => initialFocusHandler.calledOnce);
+  it('should not close when sd-request-close is prevented', async () => {
+    const el = await fixture<SdDialog>(html`
+      <sd-dialog open>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sd-dialog>
+    `);
+    const overlay = el.shadowRoot!.querySelector<HTMLElement>('[part~="overlay"]')!;
 
-//     expect(initialFocusHandler).to.have.been.calledOnce;
-//     expect(document.activeElement).to.equal(input);
-//   });
+    el.addEventListener('sd-request-close', event => {
+      event.preventDefault();
+    });
+    overlay.click();
 
-//   it('should close when pressing Escape', async () => {
-//     const el = await fixture<SdDialog>(html` <sd-dialog open></sd-dialog> `);
-//     const hideHandler = sinon.spy();
+    expect(el.open).to.be.true;
+  });
 
-//     el.addEventListener('sd-hide', hideHandler);
+  it('should allow initial focus to be set', async () => {
+    const el = await fixture<SdDialog>(html` <sd-dialog><input /></sd-dialog> `);
+    const input = el.querySelector('input')!;
+    const initialFocusHandler = sinon.spy((event: Event) => {
+      event.preventDefault();
+      input.focus();
+    });
 
-//     await sendKeys({ press: 'Escape' });
-//     await waitUntil(() => hideHandler.calledOnce);
+    el.addEventListener('sd-initial-focus', initialFocusHandler);
+    el.show();
 
-//     expect(el.open).to.be.false;
-//   });
-// });
+    await waitUntil(() => initialFocusHandler.calledOnce);
+
+    expect(initialFocusHandler).to.have.been.calledOnce;
+    expect(document.activeElement).to.equal(input);
+  });
+
+  it('should close when pressing Escape', async () => {
+    const el = await fixture<SdDialog>(html` <sd-dialog open></sd-dialog> `);
+    const hideHandler = sinon.spy();
+
+    el.addEventListener('sd-hide', hideHandler);
+
+    await sendKeys({ press: 'Escape' });
+    await waitUntil(() => hideHandler.calledOnce);
+
+    expect(el.open).to.be.false;
+  });
+});
