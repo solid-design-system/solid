@@ -48,10 +48,10 @@
 
     & li {
       @apply table-row items-center;
-    }
 
-    li > :first-child {
-      @apply table-cell pr-2;
+      & > :first-child {
+        @apply table-cell pr-2;
+      }
     }
 
     &.sd-list--horizontal {
