@@ -267,7 +267,7 @@ export default class SdDialog extends SolidElement {
         <div
           part="panel"
           class=${cx(
-            'dialog__panel flex flex-col z-20 bg-white focus:outline-none py-4 sm:py-8 relative gap-6',
+            'flex flex-col z-20 bg-white focus:outline-none py-4 sm:py-8 relative gap-6',
             this.open && 'flex opacity-100'
           )}
           role="dialog"
@@ -278,7 +278,7 @@ export default class SdDialog extends SolidElement {
           tabindex="0"
         >
           <header part="header" class="flex flex-grow-0 flex-shrink-0 basis-auto px-6 sm:px-12">
-            <h2 part="title" class="dialog__title flex-auto m-0" id="title">
+            <h2 part="title" class="flex-auto m-0" id="title">
               <slot name="headline">
                 ${this.headline.length > 0
                   ? html`<h4 class="sd-headline sd-headline--size-3xl">${this.headline}</h4>`
@@ -292,7 +292,7 @@ export default class SdDialog extends SolidElement {
                     part="close-button"
                     variant="tertiary"
                     exportparts="base:close-button__base"
-                    class=${cx('dialog__close absolute top-2 right-2')}
+                    class=${cx('absolute top-2 right-2')}
                     name="x-lg"
                     @click="${() => this.requestClose('close-button')}"
                     type="button"
@@ -303,13 +303,10 @@ export default class SdDialog extends SolidElement {
               : ''}
           </header>
 
-          <main class="dialog__body flex-auto flex overflow-auto w-full px-6 sm:px-12">
-            <slot part="body"></slot>
+          <main part="body" class="flex flex-auto overflow-auto w-full px-6 sm:px-12">
+            <slot></slot>
           </main>
-          <footer
-            part="footer"
-            class="dialog__footer flex flex-grow-0 flex-shrink-0 basis-auto ml-auto gap-4 px-6 sm:px-12"
-          >
+          <footer part="footer" class="flex flex-grow-0 flex-shrink-0 basis-auto ml-auto gap-4 px-6 sm:px-12">
             <slot name="footer"></slot>
           </footer>
         </div>
@@ -326,12 +323,12 @@ export default class SdDialog extends SolidElement {
         --width: 662px;
       }
 
-      .dialog__panel {
+      [part='panel'] {
         width: var(--width);
         max-height: 80vh;
       }
 
-      .dialog__body {
+      [part='body'] {
         -webkit-overflow-scrolling: touch;
       }
 
@@ -339,8 +336,7 @@ export default class SdDialog extends SolidElement {
         :host {
           --width: 335px;
         }
-
-        .dialog__footer {
+        [part='footer'] {
           @apply w-full;
         }
       }
