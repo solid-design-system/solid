@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v1.37.1](https://github.com/solid-design-system/solid/compare/components/1.37.0...components/1.37.1) (2023-12-22)
+
+
+### Bug Fixes
+
+* 🤔 teaser variant 'white border-neutral-400', - no border around media slot ([#663](https://github.com/solid-design-system/solid/issues/663)) ([3b1dc2b](https://github.com/solid-design-system/solid/commit/3b1dc2b9f3c9083b2233ed663aee0f38d640216d))
+
+### 📈 Stats
+* Bundle size (uncompressed): 253 KB (unchanged)
+* Bundle size (gzipped): 62 KB (unchanged)
+
 # [@solid-design-system/components-v1.37.0](https://github.com/solid-design-system/solid/compare/components/1.36.0...components/1.37.0) (2023-12-15)
 
 
