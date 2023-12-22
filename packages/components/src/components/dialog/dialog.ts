@@ -80,8 +80,7 @@ export default class SdDialog extends SolidElement {
   @property({ reflect: true }) headline = '';
 
   /**
-   * Disables the header. This will also remove the default close button, so please ensure you provide an easy,
-   * accessible way for users to dismiss the dialog.
+   * This will remove the default close button. Please ensure you provide an easy, accessible way for users to dismiss the dialog.
    */
   @property({ attribute: 'no-close-button', type: Boolean, reflect: true }) noCloseButton = false;
 
