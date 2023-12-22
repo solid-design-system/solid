@@ -107,7 +107,11 @@ export default class SdTeaser extends SolidElement {
       >
         <div
           style=${this._orientation === 'horizontal' ? `width: var(--distribution-media, 100%);` : ''}
-          class=${cx(!inset && this._orientation === 'vertical' && 'mb-4', !slots['teaser-has-media'] && 'hidden')}
+          class=${cx(
+            !inset && this._orientation === 'vertical' && 'mb-4',
+            !slots['teaser-has-media'] && 'hidden',
+            this.variant === 'white border-neutral-400' && this._orientation === 'vertical' && 'mx-[-1px] mt-[-1px]'
+          )}
           part="media"
         >
           <slot name="media"></slot>
