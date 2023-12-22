@@ -43,7 +43,7 @@ export default {
 
 export const Default = {
   render: (args: any) => {
-    return html` <div style="width: auto; height: 40vh;">
+    return html` <div style="height: 40vh;">
       ${generateTemplate({
         args
       })}
@@ -57,7 +57,7 @@ export const Default = {
 
 export const NoCloseButton = {
   render: (args: any) => {
-    return html` <div style="width: auto; height: 40vh;">
+    return html` <div style="height: 40vh;">
       ${generateTemplate({
         args,
         constants: [
@@ -89,7 +89,7 @@ export const NoCloseButton = {
 
 export const Scrolling = {
   render: (args: any) => {
-    return html` <div style="width: auto; height: 40vh;">
+    return html` <div style="height: 40vh;">
       ${generateTemplate({
         args,
         constants: [
