@@ -52,6 +52,32 @@ export const Default = {
 };
 
 /**
+ *  The dialog's headline as displayed in the header. If you need to display HTML, use the `headline` slot instead.
+ */
+
+export const Headline = {
+  render: (args: any) => {
+    return html` <div style="height: 40vh;">
+      ${generateTemplate({
+        args,
+        constants: [
+          {
+            type: 'slot',
+            name: 'headline',
+            value: ''
+          },
+          {
+            type: 'attribute',
+            name: 'headline',
+            value: 'This headline is set via the headline attribute'
+          }
+        ]
+      })}
+    </div>`;
+  }
+};
+
+/**
  * This shows sd-dialog without a close button. However, you should always include a close button to comply with ARIA principles. If the close button is omitted, the close action has to be applied to one button in the footer slot.
  */
 
