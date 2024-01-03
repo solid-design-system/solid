@@ -382,3 +382,130 @@ export const Parts = {
     });
   }
 };
+
+export const Samples = {
+  parameters: {
+    controls: {
+      disable: true
+    },
+    backgrounds: {
+      default: 'white'
+    }
+  },
+  render: () => {
+    return html`
+      <style>
+        #teaserWithContentPlaceholder::part(media) {
+          flex-grow: 1;
+        }
+
+        sd-teaser:hover {
+          &::part(media) {
+            transition-property: opacity;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms;
+            transition-duration: 300ms;
+            opacity: 0.8;
+          }
+        }
+      </style>
+      <div class="flex justify-between gap-8">
+        <sd-teaser
+          variant="white border-neutral-400"
+          breakpoint="9999"
+          inset
+          class="flex-1"
+          href="https://www.google.com"
+          target="_blank"
+        >
+          <div slot="media" class="relative">
+            <img class="aspect-video object-cover" src="./placeholders/generic.jpg" alt="A generic placeholder jpg" />
+            <span class="absolute top-3 left-4 sd-chip sd-chip--white">chip name</span>
+            <span class="absolute top-2 right-0 sd-flag sd-flag--neutral-200">flag name</span>
+          </div>
+          <div slot="meta" class="meta-info">
+            <span class="meta-info-item">01.12.2013</span>
+            <span class="meta-info-item">| Author name</span>
+          </div>
+          <h3 slot="headline">Risus luctus sem a laoreet convallis nunc id quis fusce</h3>
+          <div class="flex flex-col gap-5">
+            <p>Lorem ipsum dolor sit amet.</p>
+            <a href="https://www.youtube.com" target="_blank" class="sd-link">Just an anchor</a>
+            <sd-link href="https://www.youtube.com" target="_blank" class="sd-link">A SD-link</sd-link>
+            <div class="flex-none">
+              <sd-button variant="primary" href="https://www.finanzagenda.de/" target="_blank">Some Link</sd-button>
+              <sd-button variant="primary" href="https://www.union-investment.de/" target="_blank"
+                >Other Link</sd-button
+              >
+            </div>
+          </div>
+        </sd-teaser>
+
+        <sd-teaser
+          id="teaserWithContentPlaceholder"
+          variant="primary-100"
+          breakpoint="9999"
+          inset
+          class="flex flex-1"
+          href="https://www.google.com"
+          target="_blank"
+        >
+          <div slot="media" class="relative flex items-center place-content-center h-full">
+            <sd-icon name="content/picture" library="global-resources" color="primary" class="text-[5rem]"></sd-icon>
+            <span class="absolute top-3 left-4 sd-chip sd-chip--primary-300">chip name</span>
+            <span class="absolute top-2 right-0 sd-flag sd-flag--neutral-500">flag name</span>
+          </div>
+          <div slot="meta" class="meta-info">
+            <span class="meta-info-item">01.12.2013</span>
+            <span class="meta-info-item">| Author name</span>
+          </div>
+          <h3 slot="headline">Risus luctus sem a laoreet convallis nunc id quis fusce</h3>
+          <div class="flex flex-col gap-5">
+            <p>Lorem ipsum dolor sit amet.</p>
+            <a href="https://www.youtube.com" target="_blank" class="sd-link">Just an anchor</a>
+            <sd-link href="https://www.youtube.com" target="_blank" class="sd-link">A SD-link</sd-link>
+            <div class="flex-none">
+              <sd-button variant="primary" href="https://www.finanzagenda.de/" target="_blank">Some Link</sd-button>
+              <sd-button variant="primary" href="https://www.union-investment.de/" target="_blank"
+                >Other Link</sd-button
+              >
+            </div>
+          </div>
+        </sd-teaser>
+
+        <sd-teaser
+          variant="primary"
+          breakpoint="9999"
+          inset
+          class="flex-1"
+          href="https://www.google.com"
+          target="_blank"
+        >
+          <div slot="media" class="relative">
+            <img class="aspect-video object-cover" src="./placeholders/generic.jpg" alt="A generic placeholder jpg" />
+            <span class="absolute top-3 left-4 sd-chip sd-chip--white">chip name</span>
+            <span class="absolute top-2 right-0 sd-flag sd-flag--neutral-200">flag name</span>
+          </div>
+          <div slot="meta" class="meta-info">
+            <span class="meta-info-item">01.12.2013</span>
+            <span class="meta-info-item">| Author name</span>
+          </div>
+          <h3 slot="headline">Risus luctus sem a laoreet convallis nunc id quis fusce</h3>
+          <div class="flex flex-col gap-5">
+            <p>Lorem ipsum dolor sit amet.</p>
+            <a href="https://www.youtube.com" target="_blank" class="sd-link">Just an anchor</a>
+            <sd-link href="https://www.youtube.com" target="_blank" class="sd-link" inverted>A SD-link</sd-link>
+            <div class="flex-none">
+              <sd-button variant="primary" inverted href="https://www.finanzagenda.de/" target="_blank"
+                >Some Link</sd-button
+              >
+              <sd-button variant="primary" inverted href="https://www.union-investment.de/" target="_blank"
+                >Other Link</sd-button
+              >
+            </div>
+          </div>
+        </sd-teaser>
+      </div>
+    `;
+  }
+};

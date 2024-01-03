@@ -1,11 +1,10 @@
-import { css, html } from 'lit';
+import { css, html, nothing } from 'lit';
 import { customElement } from '../../../src/internal/register-custom-element';
 import { HasSlotController } from '../../internal/slot';
 import { property, query, state } from 'lit/decorators.js';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 import type { PropertyValues } from 'lit';
-
 /**
  * @summary Teasers group information into flexible containers so users can browse a collection of related items and actions.
  * @documentation https://solid.union-investment.com/[storybook-link]/teaser
@@ -39,6 +38,12 @@ export default class SdTeaser extends SolidElement {
 
   /** The teaser's inner padding. This is always set in `white border-neutral-400`. */
   @property({ type: Boolean, reflect: true }) inset = false;
+
+  /** When not set, the teaser doesn't serve as a link. */
+  @property() href = '';
+
+  /** Tells the browser where to open the link. Only used when `href` is present. */
+  @property() target: '_blank' | '_parent' | '_self' | '_top';
 
   @query('[part="base"]') teaser: HTMLElement;
 
@@ -78,8 +83,32 @@ export default class SdTeaser extends SolidElement {
     this._orientation = this.offsetWidth >= this.breakpoint ? 'horizontal' : 'vertical';
   }
 
+  onCLick(e: MouseEvent) {
+    this.openLink(e);
+  }
+
+  onKeydown(e: KeyboardEvent) {
+    if (e.code === 'Enter') {
+      this.openLink(e);
+    }
+  }
+
+  openLink(e: MouseEvent | KeyboardEvent) {
+    if (this.href) {
+      const isAnchorElement = e.target instanceof HTMLAnchorElement;
+      const isButtonOrLink =
+        e.target instanceof HTMLElement && (e.target.matches('sd-button') || e.target.matches('sd-link'));
+
+      if (!isAnchorElement && !isButtonOrLink) {
+        window.open(this.href, this.target || '_self');
+      }
+    }
+  }
+
   render() {
     const inset = this.variant === 'white border-neutral-400' || this.inset;
+    const role = this.href ? 'link' : '';
+    const tabindex = this.href ? '0' : '';
 
     const slots = {
       'teaser-has-default': this.hasSlotController.test('[default]'),
@@ -101,9 +130,14 @@ export default class SdTeaser extends SolidElement {
           }[this.variant],
           this._orientation === 'vertical' && 'flex-col',
           this._orientation === 'horizontal' && 'flex-row gap-8',
-          this._orientation === 'horizontal' && inset && 'py-8 px-10'
+          this._orientation === 'horizontal' && inset && 'py-8 px-10',
+          this.href && 'cursor-pointer'
         )}
         part="base"
+        @click="${this.onCLick}"
+        @keydown="${this.onKeydown}"
+        role="${role || nothing}"
+        tabindex="${tabindex || nothing}"
       >
         <div
           style=${this._orientation === 'horizontal' ? `width: var(--distribution-media, 100%);` : ''}
