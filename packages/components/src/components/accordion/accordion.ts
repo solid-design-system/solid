@@ -32,6 +32,7 @@ import SolidElement from '../../internal/solid-element';
  * @csspart header - The header that wraps both the summary and the expand/collapse icon.
  * @csspart summary - The container that wraps the summary.
  * @csspart summary-icon - The container that wraps the expand/collapse icons.
+ * @csspart summary-border - The container that wraps the currently active accordions border.
  * @csspart content - The container that wraps the accordion content slot.
  * @csspart content__slot - The accordion content slot.
  *
@@ -165,6 +166,7 @@ export default class SdAccordion extends SolidElement {
           @keydown=${this.handleSummaryKeyDown}
         >
           <div
+            part="summary-border"
             class=${cx(
               !this.open && 'opacity-0',
               'w-1 bg-accent absolute left-0 transition-all h-[calc(100%-16px)] group-hover:h-full'
