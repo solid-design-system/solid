@@ -72,6 +72,16 @@ export const storybookDefaults = (customElementTag: string): any => {
         acc[event.name] = { control: false };
         return acc;
       }, {}),
+      //
+      ...manifest?.members
+        ?.filter(
+          (member: { kind: string; description: string; privacy: string }) =>
+            member.kind === 'method' && member.description && !(member?.privacy === 'private')
+        )
+        .reduce((acc: any, method: any) => {
+          acc[method.name] = { ...method, control: false, table: { category: 'Methods' } };
+          return acc;
+        }, {}),
       // Properties should show up but not be editable
       ...getProperties()?.reduce((acc: any, property: string) => {
         // Remove the existing one
