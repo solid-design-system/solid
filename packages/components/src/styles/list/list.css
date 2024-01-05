@@ -40,17 +40,19 @@
   }
 
   &:is(.sd-list--icon) {
-    @apply list-none text-left;
+    @apply list-none flex-col text-left;
 
     & ul {
-      @apply list-none table p-0;
+      @apply list-none p-0 ml-8;
     }
 
     & li {
-      @apply table-row items-center;
+      @apply pb-3;
+    }
 
+    & li {
       & > :first-child {
-        @apply table-cell pr-2;
+        @apply pr-2 text-2xl pb-3 align-middle bg-accent;
       }
     }
 
