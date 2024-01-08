@@ -383,7 +383,100 @@ export const Parts = {
   }
 };
 
-export const Samples = {
+/**
+ * ## Not clickable teaser
+ *
+ * This is the default state of the teaser. The teaser itself is not clickable, but links can be placed inside.
+ * There is no need for any extra steps, the teaser can be used as it is.
+ */
+
+export const SamplesNotClickable = {
+  name: 'Samples: Not clickable teaser',
+  parameters: {
+    controls: {
+      disable: true
+    },
+    backgrounds: {
+      default: 'white'
+    }
+  },
+  render: () => {
+    return html`
+      <style>
+        #teaserWithContentPlaceholder::part(media) {
+          flex-grow: 1;
+        }
+      </style>
+      <div class="flex justify-between gap-8">
+        <sd-teaser variant="primary" breakpoint="9999" inset class="flex-1">
+          <div slot="media" class="relative">
+            <img class="aspect-video object-cover" src="./placeholders/generic.jpg" alt="A generic placeholder jpg" />
+          </div>
+          <div slot="meta" class="meta-info">
+            <span class="meta-info-item">01.12.2013</span>
+            <span class="meta-info-item">| Author name</span>
+          </div>
+          <h3 slot="headline">Not clickable teaser</h3>
+          <div class="flex flex-col gap-5">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua.
+            </p>
+            <div class="flex-none">
+              <sd-button href="#" target="_blank" variant="primary" inverted>A SD-button</sd-button>
+              <sd-button href="#" target="_blank" variant="primary" inverted>A SD-button</sd-button>
+            </div>
+          </div>
+        </sd-teaser>
+        <sd-teaser variant="white border-neutral-400" breakpoint="9999" inset class="flex-1">
+          <div slot="media" class="relative">
+            <img class="aspect-video object-cover" src="./placeholders/generic.jpg" alt="A generic placeholder jpg" />
+          </div>
+          <div slot="meta" class="meta-info">
+            <span class="meta-info-item">01.12.2013</span>
+            <span class="meta-info-item">| Author name</span>
+          </div>
+          <h3 slot="headline">Not clickable teaser</h3>
+          <div class="flex flex-col gap-5">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua.
+            </p>
+            <div class="flex-none">
+              <sd-button href="#" target="_blank" variant="primary">Link</sd-button>
+              <sd-button href="#" target="_blank" variant="primary">Link</sd-button>
+            </div>
+          </div>
+        </sd-teaser>
+      </div>
+    `;
+  }
+};
+
+/**
+ * ## Clickable teaser
+ *
+ * If the teaser itself should be clickable and there are no other links inside, then wrap the teaser with an anchor tag.
+ * The button on the bottom of the teaser is not a link, it's just to make the interaction more obvious. According to
+ * the HTML spec, it is not allowed to have an anchor tag inside another anchor.
+ *
+ * To further highlight the interactive state of the teaser, the opacity of the media part can be reduced on hover.
+ *
+ * ```css
+ * sd-teaser.interactive:hover {
+ *   &::part(media) {
+ *     transition-property: opacity;
+ *     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+ *     transition-duration: 150ms;
+ *     transition-duration: 300ms;
+ *     opacity: 0.5;
+ *   }
+ * }
+ * ```
+ */
+
+export const SamplesClickable = {
+  name: 'Samples: Clickable teaser',
   parameters: {
     controls: {
       disable: true
@@ -399,113 +492,231 @@ export const Samples = {
           flex-grow: 1;
         }
 
-        sd-teaser:hover {
+        sd-teaser.interactive:hover {
           &::part(media) {
             transition-property: opacity;
             transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
             transition-duration: 150ms;
             transition-duration: 300ms;
-            opacity: 0.8;
+            opacity: 0.5;
+          }
+        }
+      </style>
+      <div class="flex justify-between gap-8">
+        <a href="#" target="_blank" class="flex-1">
+          <sd-teaser variant="primary" breakpoint="9999" inset class="interactive">
+            <div slot="media" class="relative">
+              <img class="aspect-video object-cover" src="./placeholders/generic.jpg" alt="A generic placeholder jpg" />
+            </div>
+            <div slot="meta" class="meta-info">
+              <span class="meta-info-item">01.12.2013</span>
+              <span class="meta-info-item">| Author name</span>
+            </div>
+            <h3 slot="headline">Clickable teaser</h3>
+            <div class="flex flex-col gap-5">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.
+              </p>
+              <div class="flex-none">
+                <sd-button variant="primary" inverted>More</sd-button>
+              </div>
+            </div>
+          </sd-teaser>
+        </a>
+
+        <a href="#" target="_blank" class="flex-1">
+          <sd-teaser variant="white border-neutral-400" breakpoint="9999" inset class="interactive">
+            <div slot="media" class="relative">
+              <img class="aspect-video object-cover" src="./placeholders/generic.jpg" alt="A generic placeholder jpg" />
+            </div>
+            <div slot="meta" class="meta-info">
+              <span class="meta-info-item">01.12.2013</span>
+              <span class="meta-info-item">| Author name</span>
+            </div>
+            <h3 slot="headline">Clickable teaser</h3>
+            <div class="flex flex-col gap-5">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.
+              </p>
+              <div class="flex-none">
+                <sd-button variant="primary">More</sd-button>
+              </div>
+            </div>
+          </sd-teaser>
+        </a>
+      </div>
+    `;
+  }
+};
+
+/**
+ * ## Clickable teaser with extra links
+ *
+ * If the teaser itself should be clickable and also provide external links inside, then add a `data-href` attribute
+ * to the teaser and a `data-target` attribute. You can then use the following or similar JavaScript to handle the
+ * click event.
+ *
+ * ```javascript
+ * document.addEventListener('DOMContentLoaded', () => {
+ *     function handleTeaserClick(e) {
+ *         // Exclude all clickable elements inside the teaser
+ *         if (e.target !== this && e.target.closest('sd-button, sd-link, a')) {
+ *         return;
+ *         }
+ *
+ *         const href = this.getAttribute('data-href');
+ *         const target = this.getAttribute('data-target');
+ *
+ *         if (href) {
+ *         const linkTarget = target === '_blank' ? '_blank' : '_self';
+ *         window.open(href, linkTarget);
+ *         }
+ *     }
+ *
+ *     // Select all sd-teaser elements with a data-href attribute
+ *     // and add click event listeners to these elements
+ *     document.querySelectorAll('sd-teaser[data-href]').forEach(teaser => {
+ *         teaser.addEventListener('click', handleTeaserClick);
+ *     });
+ * });
+ * ```
+ * To maintain the accessibility of the teaser, the `tabindex` attribute should be set and the `role` attribute
+ * must be set to `link`. Ensure that the tab order is correct and the teaser can be opened with the `Enter` key.
+ *
+ * To further highlight the interactive state of the teaser, the opacity of the media part can be reduced on hover.
+ *
+ * ```css
+ * sd-teaser.interactive:hover {
+ *   &::part(media) {
+ *     transition-property: opacity;
+ *     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+ *     transition-duration: 150ms;
+ *     transition-duration: 300ms;
+ *     opacity: 0.5;
+ *   }
+ * }
+ * ```
+ */
+
+export const SamplesClickableAndExtraLinks = {
+  name: 'Samples: Clickable teaser with extra links',
+  parameters: {
+    controls: {
+      disable: true
+    },
+    backgrounds: {
+      default: 'white'
+    }
+  },
+  render: () => {
+    return html`
+      <style>
+        #teaserWithContentPlaceholder::part(media) {
+          flex-grow: 1;
+        }
+
+        sd-teaser.interactive:hover {
+          &::part(media) {
+            transition-property: opacity;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms;
+            transition-duration: 300ms;
+            opacity: 0.5;
           }
         }
       </style>
       <div class="flex justify-between gap-8">
         <sd-teaser
-          variant="white border-neutral-400"
-          breakpoint="9999"
-          inset
-          class="flex-1"
-          href="https://www.google.com"
-          target="_blank"
-        >
-          <div slot="media" class="relative">
-            <img class="aspect-video object-cover" src="./placeholders/generic.jpg" alt="A generic placeholder jpg" />
-            <span class="absolute top-3 left-4 sd-chip sd-chip--white">chip name</span>
-            <span class="absolute top-2 right-0 sd-flag sd-flag--neutral-200">flag name</span>
-          </div>
-          <div slot="meta" class="meta-info">
-            <span class="meta-info-item">01.12.2013</span>
-            <span class="meta-info-item">| Author name</span>
-          </div>
-          <h3 slot="headline">Risus luctus sem a laoreet convallis nunc id quis fusce</h3>
-          <div class="flex flex-col gap-5">
-            <p>Lorem ipsum dolor sit amet.</p>
-            <a href="https://www.youtube.com" target="_blank" class="sd-link">Just an anchor</a>
-            <sd-link href="https://www.youtube.com" target="_blank" class="sd-link">A SD-link</sd-link>
-            <div class="flex-none">
-              <sd-button variant="primary" href="https://www.finanzagenda.de/" target="_blank">Some Link</sd-button>
-              <sd-button variant="primary" href="https://www.union-investment.de/" target="_blank"
-                >Other Link</sd-button
-              >
-            </div>
-          </div>
-        </sd-teaser>
-
-        <sd-teaser
-          id="teaserWithContentPlaceholder"
-          variant="primary-100"
-          breakpoint="9999"
-          inset
-          class="flex flex-1"
-          href="https://www.google.com"
-          target="_blank"
-        >
-          <div slot="media" class="relative flex items-center place-content-center h-full">
-            <sd-icon name="content/picture" library="global-resources" color="primary" class="text-[5rem]"></sd-icon>
-            <span class="absolute top-3 left-4 sd-chip sd-chip--primary-300">chip name</span>
-            <span class="absolute top-2 right-0 sd-flag sd-flag--neutral-500">flag name</span>
-          </div>
-          <div slot="meta" class="meta-info">
-            <span class="meta-info-item">01.12.2013</span>
-            <span class="meta-info-item">| Author name</span>
-          </div>
-          <h3 slot="headline">Risus luctus sem a laoreet convallis nunc id quis fusce</h3>
-          <div class="flex flex-col gap-5">
-            <p>Lorem ipsum dolor sit amet.</p>
-            <a href="https://www.youtube.com" target="_blank" class="sd-link">Just an anchor</a>
-            <sd-link href="https://www.youtube.com" target="_blank" class="sd-link">A SD-link</sd-link>
-            <div class="flex-none">
-              <sd-button variant="primary" href="https://www.finanzagenda.de/" target="_blank">Some Link</sd-button>
-              <sd-button variant="primary" href="https://www.union-investment.de/" target="_blank"
-                >Other Link</sd-button
-              >
-            </div>
-          </div>
-        </sd-teaser>
-
-        <sd-teaser
           variant="primary"
           breakpoint="9999"
           inset
-          class="flex-1"
-          href="https://www.google.com"
-          target="_blank"
+          class="flex-1 interactive cursor-pointer"
+          data-href="#"
+          data-target="_blank"
+          tabindex="0"
+          role="link"
         >
           <div slot="media" class="relative">
             <img class="aspect-video object-cover" src="./placeholders/generic.jpg" alt="A generic placeholder jpg" />
-            <span class="absolute top-3 left-4 sd-chip sd-chip--white">chip name</span>
-            <span class="absolute top-2 right-0 sd-flag sd-flag--neutral-200">flag name</span>
           </div>
           <div slot="meta" class="meta-info">
             <span class="meta-info-item">01.12.2013</span>
             <span class="meta-info-item">| Author name</span>
           </div>
-          <h3 slot="headline">Risus luctus sem a laoreet convallis nunc id quis fusce</h3>
+          <h3 slot="headline">Clickable teaser with extra links</h3>
           <div class="flex flex-col gap-5">
-            <p>Lorem ipsum dolor sit amet.</p>
-            <a href="https://www.youtube.com" target="_blank" class="sd-link">Just an anchor</a>
-            <sd-link href="https://www.youtube.com" target="_blank" class="sd-link" inverted>A SD-link</sd-link>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua.
+            </p>
+            <a href="https://www.finanzagenda.de/" target="_blank" class="sd-link">An anchor tag</a>
+            <sd-link href="https://www.finanzagenda.de/" target="_blank" class="sd-link" inverted>A SD-link</sd-link>
             <div class="flex-none">
-              <sd-button variant="primary" inverted href="https://www.finanzagenda.de/" target="_blank"
-                >Some Link</sd-button
+              <sd-button variant="primary" href="https://www.finanzagenda.de/" target="_blank" inverted
+                >A SD-button</sd-button
               >
-              <sd-button variant="primary" inverted href="https://www.union-investment.de/" target="_blank"
-                >Other Link</sd-button
-              >
+            </div>
+          </div>
+        </sd-teaser>
+
+        <sd-teaser
+          variant="white border-neutral-400"
+          breakpoint="9999"
+          inset
+          class="flex-1 interactive cursor-pointer"
+          data-href="#"
+          data-target="_blank"
+          tabindex="0"
+          role="link"
+        >
+          <div slot="media" class="relative">
+            <img class="aspect-video object-cover" src="./placeholders/generic.jpg" alt="A generic placeholder jpg" />
+          </div>
+          <div slot="meta" class="meta-info">
+            <span class="meta-info-item">01.12.2013</span>
+            <span class="meta-info-item">| Author name</span>
+          </div>
+          <h3 slot="headline">Clickable teaser with extra links</h3>
+          <div class="flex flex-col gap-5">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua.
+            </p>
+            <a href="https://www.finanzagenda.de/" target="_blank" class="sd-link">An anchor tag</a>
+            <sd-link href="https://www.finanzagenda.de/" target="_blank" class="sd-link">A SD-link</sd-link>
+            <div class="flex-none">
+              <sd-button variant="primary" href="https://www.finanzagenda.de/" target="_blank">A SD-button</sd-button>
             </div>
           </div>
         </sd-teaser>
       </div>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          function handleTeaserClick(e) {
+            // Exclude all clickable elements inside the teaser
+            if (e.target !== this && e.target.closest('sd-button, sd-link, a')) {
+              return;
+            }
+
+            const href = this.getAttribute('data-href');
+            const target = this.getAttribute('data-target');
+
+            if (href) {
+              const linkTarget = target === '_blank' ? '_blank' : '_self';
+              window.open(href, linkTarget);
+            }
+          }
+
+          // Select all sd-teaser elements with a data-href attribute
+          // and add click event listeners to these elements
+          document.querySelectorAll('sd-teaser[data-href]').forEach(teaser => {
+            teaser.addEventListener('click', handleTeaserClick);
+          });
+        });
+      </script>
     `;
   }
 };
