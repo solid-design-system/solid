@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v1.37.2](https://github.com/solid-design-system/solid/compare/components/1.37.1...components/1.37.2) (2024-01-08)
+
+
+### Bug Fixes
+
+* 🤔 add missing part for accordion-border ([#669](https://github.com/solid-design-system/solid/issues/669)) ([6c32704](https://github.com/solid-design-system/solid/commit/6c32704f38738fc69d81a2f714992cd6b06f2d22))
+
+### 📈 Stats
+* Bundle size (uncompressed): 253 KB (unchanged)
+* Bundle size (gzipped): 62 KB (unchanged)
+
 # [@solid-design-system/components-v1.37.1](https://github.com/solid-design-system/solid/compare/components/1.37.0...components/1.37.1) (2023-12-22)
 
 
