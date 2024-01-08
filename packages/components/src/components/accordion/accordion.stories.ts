@@ -130,7 +130,7 @@ export const Slots = {
 
 export const Parts = {
   parameters: {
-    controls: { exclude: ['base', 'header', 'summary', 'summary-icon', 'content', 'content__slot'] }
+    controls: { exclude: ['base', 'header', 'summary', 'summary-icon', 'summary-border', 'content', 'content__slot'] }
   },
   render: (args: any) => {
     return generateTemplate({
@@ -138,13 +138,16 @@ export const Parts = {
         y: {
           type: 'template',
           name: 'sd-accordion::part(...){outline: solid 2px red}',
-          values: ['base', 'header', 'summary', 'summary-icon', 'content', 'content__slot'].map(part => {
-            return {
-              title: part,
-              // Added an outline-offset to make the outline visible for content__slot
-              value: `<style>#part-${part} sd-accordion::part(${part}){outline: solid 2px red; outline-offset: -2px;}</style><div id="part-${part}">%TEMPLATE%</div>`
-            };
-          })
+          values: ['base', 'header', 'summary', 'summary-icon', 'summary-border', 'content', 'content__slot'].map(
+            part => {
+              const outlineOffset = part === 'summary-border' ? '' : 'outline-offset: -2px';
+              return {
+                title: part,
+                // Added an outline-offset to make the outline visible for content__slot
+                value: `<style>#part-${part} sd-accordion::part(${part}){outline: solid 2px red; ${outlineOffset};}</style><div id="part-${part}">%TEMPLATE%</div>`
+              };
+            }
+          )
         }
       },
       constants: [
