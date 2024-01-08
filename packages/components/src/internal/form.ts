@@ -242,6 +242,11 @@ export class FormControlController implements ReactiveController {
     }
   };
 
+  // This is used by `reportValidity` to show validity state styles and messages without manual user interaction
+  fakeUserInteraction = () => {
+    this.setUserInteracted(this.host, true);
+  };
+
   private reportFormValidity() {
     //
     // Solid form controls work hard to act like regular form controls. They support the Constraint Validation API
@@ -330,7 +335,7 @@ export class FormControlController implements ReactiveController {
     return html`<div
       id="invalid-message"
       class="text-error text-sm mt-2 text-left"
-      part="error-message"
+      part="invalid-message"
       aria-live="polite"
       ?hidden=${!this.host.showInvalidStyle}
     ></div>`;

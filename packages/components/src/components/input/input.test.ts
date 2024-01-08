@@ -201,7 +201,7 @@ describe('<sd-input>', () => {
     });
 
     it('should be invalid when setCustomValidity() is called with a non-empty value', async () => {
-      const input = await fixture<HTMLFormElement>(html` <sd-input></sd-input> `);
+      const input = await fixture<SdInput>(html` <sd-input></sd-input> `);
 
       input.setCustomValidity('Invalid selection');
       await input.updateComplete;
@@ -220,39 +220,42 @@ describe('<sd-input>', () => {
       expect(input.hasAttribute('data-user-valid')).to.be.false;
     });
 
-    it('should render #invalid-message inside the component when setCustomValidity() and reportCustomValidity() is called with a non-empty value', async () => {
-      const input = await fixture<HTMLFormElement>(html` <sd-input></sd-input> `);
+    it('should show invalid-message when calling reportCustomValidity with non-empty setCustomValidity() ', async () => {
+      const input = await fixture<SdInput>(html` <sd-input></sd-input> `);
 
       input.setCustomValidity('Invalid selection');
       await input.updateComplete;
 
       input.reportValidity();
       await input.updateComplete;
+      await input.updateComplete; // Currently there are two updates in the component
 
-      expect(input.shadowRoot!.querySelector('[part~="invalid-message"]')).to.exist;
+      expect(input.shadowRoot!.querySelector('#invalid-message')!.hasAttribute('hidden')).to.be.false;
     });
 
-    it('should not render #invalid-message inside the component when setCustomValidity() and reportCustomValidity() is called with an empty value', async () => {
-      const input = await fixture<HTMLFormElement>(html` <sd-input></sd-input> `);
+    it('should hide invalid-message when calling reportCustomValidity with empty setCustomValidity() ', async () => {
+      const input = await fixture<SdInput>(html` <sd-input></sd-input> `);
 
       input.setCustomValidity('Invalid selection');
       await input.updateComplete;
 
       input.reportValidity();
       await input.updateComplete;
+      await input.updateComplete; // Currently there are two updates in the component
 
-      expect(input.shadowRoot!.querySelector('[part~="invalid-message"]')).to.exist;
+      expect(input.shadowRoot!.querySelector('#invalid-message')!.hasAttribute('hidden')).to.be.false;
 
       input.setCustomValidity('');
       await input.updateComplete;
 
       input.reportValidity();
       await input.updateComplete;
+      await input.updateComplete; // Currently there are two updates in the component
 
-      expect(input.shadowRoot!.querySelector('[part~="invalid-message"]')).to.not.exist;
+      expect(input.shadowRoot!.querySelector('#invalid-message')!.hasAttribute('hidden')).to.be.true;
     });
 
-    it('should show sd-icon with name="confirm" when setCustomValidity() is called with an empty value', async () => {
+    it('should show correct icon when calling reportValidity()', async () => {
       const input = await fixture<HTMLFormElement>(html` <sd-input></sd-input> `);
 
       input.setCustomValidity('Invalid selection');
@@ -260,16 +263,20 @@ describe('<sd-input>', () => {
 
       input.reportValidity();
       await input.updateComplete;
+      await input.updateComplete; // Currently there are two updates in the component
 
       expect(input.shadowRoot!.querySelector('[part~="invalid-icon"]')).to.exist;
+      expect(input.shadowRoot!.querySelector('[part~="valid-icon"]')).to.not.exist;
 
       input.setCustomValidity('');
       await input.updateComplete;
 
       input.reportValidity();
       await input.updateComplete;
+      await input.updateComplete; // Currently there are two updates in the component
 
       expect(input.shadowRoot!.querySelector('[part~="invalid-icon"]')).to.not.exist;
+      expect(input.shadowRoot!.querySelector('[part~="valid-icon"]')).to.exist;
     });
 
     it('should be present in form data when using the form attribute and located outside of a <form>', async () => {
