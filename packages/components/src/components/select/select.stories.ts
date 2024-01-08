@@ -505,7 +505,9 @@ export const SampleForm = {
  */
 
 export const setCustomValidity = {
-  chromatic: { disableSnapshot: true },
+  parameters: {
+    chromatic: { disableSnapshot: true }
+  },
   render: () => {
     return html`
       <!-- block submit and show alert instead -->
