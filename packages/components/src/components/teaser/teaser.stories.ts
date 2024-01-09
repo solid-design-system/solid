@@ -652,7 +652,7 @@ export const SamplesClickableAndExtraLinks = {
           variant="primary"
           breakpoint="9999"
           inset
-          class="flex-1 interactive cursor-pointer"
+          class="flex-1 interactive hover:cursor-pointer"
           data-href="#"
           data-target="_blank"
           tabindex="0"
@@ -685,7 +685,7 @@ export const SamplesClickableAndExtraLinks = {
           variant="white border-neutral-400"
           breakpoint="9999"
           inset
-          class="flex-1 interactive cursor-pointer"
+          class="flex-1 interactive hover:cursor-pointer"
           data-href="#"
           data-target="_blank"
           tabindex="0"
