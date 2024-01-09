@@ -129,7 +129,8 @@ export const IconList = {
             <ul>
                 <li><sd-icon name="content/picture" library="global-resources" ></sd-icon>Dolor sit
                     <ul>
-                        <li><sd-icon name="content/picture" library="global-resources" ></sd-icon>Amet</li>
+                        <li><sd-icon name="content/picture" library="global-resources" ></sd-icon>Amet Amet Amet Amet Amet Amet</li>
+                        <li><sd-icon name="content/picture" library="global-resources" ></sd-icon>Amet Amet Amet Amet Amet Amet</li>
                     </ul>
                 </li>
             </ul>

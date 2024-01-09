@@ -24,7 +24,7 @@
   }
 
   &:is(ul):not(.sd-list--icon) {
-    @apply text-left list-disc;
+    @apply text-left list-disc pl-4;
 
     & ul {
       list-style-type: '·';
@@ -40,20 +40,10 @@
   }
 
   &:is(.sd-list--icon) {
-    @apply list-none flex-col text-left;
+    @apply list-none text-left;
 
     & ul {
-      @apply list-none p-0 ml-8;
-    }
-
-    & li {
-      @apply pb-3;
-    }
-
-    & li {
-      & > :first-child {
-        @apply pr-2 text-2xl pb-3 align-middle bg-accent;
-      }
+      @apply ml-8;
     }
 
     &.sd-list--horizontal {
