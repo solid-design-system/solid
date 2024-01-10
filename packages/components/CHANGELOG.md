@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v1.37.3](https://github.com/solid-design-system/solid/compare/components/1.37.2...components/1.37.3) (2024-01-10)
+
+
+### Bug Fixes
+
+* 🐛 make setCustomValidity() + reportValidity() work with inputs' inline errors ([#667](https://github.com/solid-design-system/solid/issues/667)) ([455f7f6](https://github.com/solid-design-system/solid/commit/455f7f685c7f0bf7f016e2575f18b77a71b4e7ce))
+
+### 📈 Stats
+* Bundle size (uncompressed): 254 KB (+1 KB / +0%)
+* Bundle size (gzipped): 62 KB (unchanged)
+
 # [@solid-design-system/components-v1.37.2](https://github.com/solid-design-system/solid/compare/components/1.37.1...components/1.37.2) (2024-01-08)
 
 
