@@ -331,6 +331,8 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
     this.validationInput.hidden = true;
     clearTimeout(this.validationTimeout);
 
+    this.formControlController.fakeUserInteraction();
+
     if (!isValid) {
       // Show the browser's constraint validation message
       this.validationInput.hidden = false;
