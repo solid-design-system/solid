@@ -39,11 +39,20 @@
     }
   }
 
-  &:is(.sd-list--icon) {
-    @apply list-none text-left;
+  &.sd-list--icon {
+    @apply text-left;
 
-    & ul {
-      @apply ml-8;
+    /* Safari removes list semantics of lists that don’t look like lists (list-style: none). The only way to remove list
+    styles without affecting semantics is to set list-style-type to an empty string.
+    https://www.matuzo.at/blog/2023/removing-list-styles-without-affecting-semantics */
+    list-style-type: '';
+
+    li {
+      @apply relative pt-3 pl-10;
+      sd-icon:first-of-type,
+      .sd-list--icon__icon:first-of-type {
+        @apply absolute left-0 top-2 text-[1.8em];
+      }
     }
 
     &.sd-list--horizontal {
