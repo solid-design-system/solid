@@ -62,7 +62,9 @@ export const storybookDefaults = (customElementTag: string): any => {
     const getProperties = () => {
       const fieldMembers = (manifest?.members as member[])?.filter(member => member.kind === 'field');
       const attributeNames = new Set(manifest?.attributes?.map((attr: { fieldName: string }) => attr.fieldName));
-      const result = fieldMembers?.filter(member => !attributeNames.has(member.name) && member?.privacy !== 'private');
+      const result = fieldMembers?.filter(
+        member => !attributeNames.has(member.name) && member?.privacy !== 'private' && member?.privacy !== 'protected'
+      );
       return result?.map(member => member.name);
     };
     return {
