@@ -153,6 +153,7 @@ If you are working on a style, follow the steps below:
 - PostCSS
 
 //TBD: Do we keep them and apply them even thought the nome does not come from the SOLID principles?
+
 ## SOLID Design Principles in Software Development
 
 [SOLID](https://www.freecodecamp.org/news/solid-design-principles-in-software-development/) is a set of five design principles that aid in designing robust, testable, extensible, and maintainable object-oriented software systems. Each principle addresses specific challenges in software development.
