@@ -4,14 +4,12 @@
 
 - [Contributing to Solid Components](#contributing-to-solid-components)
   - [Table of Contents](#table-of-contents)
-  - [Get Started](#get-started)
   - [What We Do for Our Users](#what-we-do-for-our-users)
     - [We Provide Flexibility](#we-provide-flexibility)
     - [We Avoid Breaking Changes](#we-avoid-breaking-changes)
     - [We Document Extensively and Consistently](#we-document-extensively-and-consistently)
     - [We Make Migration Easy](#we-make-migration-easy)
     - [We Ensure Icon Availability](#we-ensure-icon-availability)
-    - [We Stay Updated with Shoelace](#we-stay-updated-with-shoelace)
     - [We Emphasize Testing](#we-emphasize-testing)
     - [We Monitor Performance](#we-monitor-performance)
     - [We Ensure Accessibility](#we-ensure-accessibility)
@@ -31,14 +29,6 @@
     - [Standard Release from Main Branch](#standard-release-from-main-branch)
     - [Feature Branch Deployment](#feature-branch-deployment)
     - [Docs Deployment](#docs-deployment)
-
-## Get Started
-
-- Familiarize yourself with the [Principles of Solid Design System](https://solid-design-system.fe.union-investment.de/x.x.x/storybook/), which serves as a reference for design guidelines, components, and patterns used in this project. Adhering to these principles will help maintain consistency and a cohesive user experience.
-
-- Have a look at the [demo project](https://solid-design-system.github.io/solid-design-system-demo/) to get a better understanding of the design system and its components. You can even [install it locally and play around](https://github.com/solid-design-system/solid-design-system-demo) to explore its features and functionalities.
-
-- Solid Components follows a monorepo structure with packages (e. g. `components`) managed by `pnpm` (which is a replacement for `npm`). Linting and Formatting is centralized at root level. Packages have to be run individually (e.g. `cd packages/components && pnpm dev` to start development server). Run `pnpm verify` at the root directory periodically, particularly, before pushing changes when a pull request is already opened.
 
 ## What We Do for Our Users
 
@@ -70,9 +60,7 @@
 
 - **User Story**: As a developer, I want to be able to migrate from the Component Library to the Solid Design System without having to ask for help.
 - **Actions**:
-  - Provide migration guides for each new component in the Solid Design System, representing an old component from the Component Library.
-  - The migration guide should be placed in the `packages/components/src/docs/Migration` folder.
-  - The migration guide should base on the [migration guide template](./templates/migration-guide-template.mdx) and be named by the old component name (e.g.`ui-button.mdx`).
+  - Provide migration guides for each new component in the Solid Design System, representing an old component from the Component Library. See [Components](./DEVELOPER_STARTING_GUIDE.md#components) chapter (13.) for more details.
 
 ### We Ensure Icon Availability
 
@@ -82,17 +70,6 @@
   - Before doing so, [compress them and remove fills](https://jakearchibald.github.io/svgomg/) for consistency and ease of styling.
   - Minimize the attributes in the SVG tag. Usually only `xmlns`and `viewbox`are necessary.
   - You can then use `sd-icon` by specifying `library=“system”` and setting `name=“your-key”`.
-
-### We Stay Updated with [Shoelace](https://shoelace.style/)
-
-- **User Story**: As a developer, I want to get improvements for our components inline with the latest version of Shoelace, a component library that serves as the inspiration for Solid Components.
-- **Actions**:
-  - Keep track of Shoelace updates for accessibility and best practices.
-  - Integrate the latest component versions from Shoelace.
-- **Tips**:
-  - If the component is new, start with an earmarked Shoelace component that has been pre-prepared to use the `sd`prefix instead of the Shoelace `sl`prefix (the folder `packages/components/src/_components`contains Shoelace components that were copied and processed at the time of the repository inception).
-  - Check Shoelace for the latest version of whatever component you work on, the earmarked code may have changed.
-  - Reduce the Shoelace component to only the necessary UI properties specified by design (e.g. the commonly seen `pill` property is never needed in our context).
 
 ### We Emphasize Testing
 
@@ -104,7 +81,7 @@
   - Motto: “Test the behavior, not the implementation.” Write tests that verify your components meet the expected requirements and specifications, ensuring they function correctly from the user's perspective. Don’t get too tied up trying to test all the technical details.
   - Shoelace tests are included in the earmarked `/_components` folders, start with them and adapt as needed.
   - Write tests for any newly added functions and ask yourself if the Jest semantics represent a thorough analysis of the code.
-  - Look at the stories provided in the Shoelace docs as a guideline and adapt them to use the custom helpers in our repository: `packages/components/scripts/storybook/helper.ts` (e.g. we sometimes present multiple attributes side by side in a grid format using the `axis` key).
+  - Look at the stories provided in the Shoelace docs as a guideline and adapt them to use the custom helpers in our repository: `packages/components/scripts/storybook/helper.ts` (e.g. we sometimes present multiple attributes side by side in a grid format using the `axis` key). See [Storybook Stories](./DEVELOPER_STARTING_GUIDE.md#storybook-stories) for more details.
   - Use the existing stories for inspiration, the final result should read top to bottom and bring a complete outsider to your level of understanding.
 
 ### We Monitor Performance
@@ -215,7 +192,6 @@ Always perform a Squash and Merge when merging. This keeps the Git history clean
 ### Chromatic
 
 You can take a look at tests on Github. Users might be required to log in to [Chromatic](https://www.chromatic.com/). Make sure to login using your GitHub account to avoid any errors and access the checks related to the Pull Request.
-`
 
 ## Release Process
 
