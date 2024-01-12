@@ -37,6 +37,7 @@ jobs:
     chromatic-deployment-pr:
         name: Verify Chromatic
         needs: [quality-gate]
+        if: ${{!contains(github.event.pull_request.title, '[skip chromatic]')}}
         runs-on: ubuntu-latest
         steps:
             # 👇 Version 2 of the action
