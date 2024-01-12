@@ -18,11 +18,12 @@
     - [We Only Use TailwindCSS or "Solid Styles"](#we-only-use-tailwindcss-or-solid-styles)
     - [We Enforce Security](#we-enforce-security)
     - [We Track TODOs](#we-track-todos)
-  - [Git \& GitHub](#git--github)
+  - [Git + GitHub](#git--github)
     - [Referencing People](#referencing-people)
     - [Pull Requests](#pull-requests)
       - [Assignees and Reviewers](#assignees-and-reviewers)
       - [Commit Messages](#commit-messages)
+      - [Special commands/suffixes](#special-commandssuffixes)
       - [Squash and Merge Your Changes](#squash-and-merge-your-changes)
     - [Chromatic](#chromatic)
   - [Release Process](#release-process)
@@ -138,7 +139,7 @@
   - Code that requires a rework should not be commented out but completely removed from the code base.
   - If the code is essential for a future fix, please add it to a ticket that explains the problem.
 
-## Git & GitHub
+## Git + GitHub
 
 ### Referencing People
 
@@ -181,6 +182,22 @@ Commits with type 'perf' will be associated with a patch release.
 
 **Remark:** Always think from the perspective of the person using our packages/components – will the final distribution/bundle change? If so, then it's always `feat` `fix` or `perf` – if not, it's one of the others. Please reach out if you're unsure.
 
+#### Special commands/suffixes
+
+`[skip ci]`
+
+The `[skip ci]` command is a special command used in commit messages to prevent a CI (Continuous Integration) build from being triggered. This command is recognized by our GitHub Actions. You might use this command when you're making changes that don't affect the codebase, such as updating the README or other documentation, and you don't want to consume CI resources for these changes.
+
+However, using `[skip ci]` should be done with **_caution_**. If it's used inappropriately, it could lead to situations where code is merged without being properly tested, which could introduce bugs into the codebase. For example, if you mistakenly believe a code change won't affect the build and use `[skip ci]`, you might bypass important checks and tests that could catch issues.
+
+> Note: It's recommended to use `[skip ci]` sparingly and only when you're absolutely certain that your changes don't require a build or test run.
+
+`[skip chromatic]`
+
+Orientated at [GitHub's commit commands to skip workflows](https://docs.github.com/en/actions/managing-workflow-runs/skipping-workflow-runs), we added a special command to skip Chromatic actions in PRs and commits on main to save screenshots. This should be used with care, as it is only needed in cases where the visual appearance of the components is not affected. For example, when updating the README or the CI configuration.
+
+> Note: This command is only available for PRs and commits on main. It currently doesn't work for single commits on a PR.
+
 #### Squash and Merge Your Changes
 
 Always perform a Squash and Merge when merging. This keeps the Git history clean by combining your commits once you are done with a feature/component.
@@ -188,6 +205,7 @@ Always perform a Squash and Merge when merging. This keeps the Git history clean
 - Remember to include the appropriate prefix (e.g., feat: ✨) at the beginning of the squash message.
 - Please rewrite or delete your additional commit message, if it's really long.
 - Double-check if `[skip ci]` or similar was used anywhere as this may break our release flow.
+- Double-check if the PR title could be using a `[skip chromatic]` tag. See [Special command [skip chromatic]](#special-commandssuffixes) for more details.
 
 ### Chromatic
 
