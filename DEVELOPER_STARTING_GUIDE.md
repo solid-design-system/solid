@@ -2,21 +2,23 @@
 
 ## Table of Contents
 
-- [Get Started](#get-started)
-- [SOLID Library Concepts](#solid-library-concepts)
-  - [Web Components & CSS Styles](#web-components--css-styles)
-  - [Samples & Patterns](#samples--patterns)
-- [Shoelace](#shoelace)
-- [Storybook](#storybook)
-  - [Storybook Docs](#storybook-docs)
-  - [Storybook Stories](#storybook-stories)
-  - [Storybook Helpers](#storybook-helpers)
-- [Work Process](#work-process)
-  - [Components](#components)
-  - [Styles](#styles)
-- [Repository Overview](#repository-overview)
-- [Technologies](#technologies)
-- [SOLID Design Principles in Software Development](#solid-design-principles-in-software-development)
+- [Developer Starting Guide](#developer-starting-guide)
+  - [Table of Contents](#table-of-contents)
+  - [Get Started](#get-started)
+  - [SOLID Library Concepts](#solid-library-concepts)
+    - [Web **Components** \& CSS **Styles**](#web-components--css-styles)
+    - [Samples \& Patterns](#samples--patterns)
+  - [Shoelace](#shoelace)
+  - [Storybook](#storybook)
+    - [Storybook Docs](#storybook-docs)
+    - [Storybook Stories](#storybook-stories)
+    - [Storybook Helpers](#storybook-helpers)
+  - [Work Process](#work-process)
+    - [Components](#components)
+    - [Styles](#styles)
+  - [Repository Overview](#repository-overview)
+  - [Technologies](#technologies)
+  - [SOLID Design Principles in Software Development](#solid-design-principles-in-software-development)
 
 ## Get Started
 
@@ -150,6 +152,7 @@ If you are working on a style, follow the steps below:
 - Vite
 - PostCSS
 
+//TBD: Do we keep them and apply them even thought the nome does not come from the SOLID principles?
 ## SOLID Design Principles in Software Development
 
 [SOLID](https://www.freecodecamp.org/news/solid-design-principles-in-software-development/) is a set of five design principles that aid in designing robust, testable, extensible, and maintainable object-oriented software systems. Each principle addresses specific challenges in software development.
