@@ -8,7 +8,7 @@ jobs:
     quality-gate:
         name: Install, verify and build
         runs-on: ubuntu-latest
-        if: github.event.pull_request.draft == false
+        if: ${{ github.event.pull_request.draft == false && !contains(github.event.pull_request.title, '[skip chromatic]')}}
         container:
             image: mcr.microsoft.com/playwright:v1.40.1-jammy
         steps:
