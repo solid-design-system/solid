@@ -416,7 +416,11 @@ export const SamplesNotClickable = {
       <div class="flex justify-between gap-8">
         <sd-teaser variant="primary" breakpoint="9999" inset class="flex-1">
           <div slot="media" class="relative">
-            <img class="aspect-video object-cover" src="./placeholders/generic.jpg" alt="A generic placeholder jpg" />
+            <img
+              class="aspect-video object-cover"
+              src="./placeholders/coffeeshop.jpg"
+              alt="A group of people sitting in a coffee shop"
+            />
           </div>
           <div slot="meta" class="meta-info">
             <span class="meta-info-item">01.12.2013</span>
@@ -429,14 +433,17 @@ export const SamplesNotClickable = {
               dolore magna aliqua.
             </p>
             <div class="flex-none">
-              <sd-button href="#" target="_blank" variant="primary" inverted>A SD-button</sd-button>
-              <sd-button href="#" target="_blank" variant="primary" inverted>A SD-button</sd-button>
+              <sd-button href="#" target="_blank" variant="primary" inverted>Link</sd-button>
             </div>
           </div>
         </sd-teaser>
         <sd-teaser variant="white border-neutral-400" breakpoint="9999" inset class="flex-1">
           <div slot="media" class="relative">
-            <img class="aspect-video object-cover" src="./placeholders/generic.jpg" alt="A generic placeholder jpg" />
+            <img
+              class="aspect-video object-cover"
+              src="./placeholders/skyline.jpg"
+              alt="A skyline of a city by night"
+            />
           </div>
           <div slot="meta" class="meta-info">
             <span class="meta-info-item">01.12.2013</span>
@@ -449,7 +456,6 @@ export const SamplesNotClickable = {
               dolore magna aliqua.
             </p>
             <div class="flex-none">
-              <sd-button href="#" target="_blank" variant="primary">Link</sd-button>
               <sd-button href="#" target="_blank" variant="primary">Link</sd-button>
             </div>
           </div>
@@ -508,19 +514,19 @@ export const SamplesClickable = {
 
         sd-teaser.interactive:hover {
           &::part(media) {
-            transition-property: opacity;
-            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-            transition-duration: 150ms;
-            transition-duration: 300ms;
-            opacity: 0.5;
+            opacity: 0.7;
           }
         }
       </style>
       <div class="flex justify-between gap-8">
         <a href="#" target="_blank" class="flex-1">
-          <sd-teaser variant="primary" breakpoint="9999" inset class="interactive">
+          <sd-teaser variant="white border-neutral-400" breakpoint="9999" inset class="interactive">
             <div slot="media" class="relative">
-              <img class="aspect-video object-cover" src="./placeholders/generic.jpg" alt="A generic placeholder jpg" />
+              <img
+                class="aspect-video object-cover"
+                src="./placeholders/coffeeshop.jpg"
+                alt="A group of people sitting in a coffee shop"
+              />
             </div>
             <div slot="meta" class="meta-info">
               <span class="meta-info-item">01.12.2013</span>
@@ -542,7 +548,11 @@ export const SamplesClickable = {
         <a href="#" target="_blank" class="flex-1">
           <sd-teaser variant="white border-neutral-400" breakpoint="9999" inset class="interactive">
             <div slot="media" class="relative">
-              <img class="aspect-video object-cover" src="./placeholders/generic.jpg" alt="A generic placeholder jpg" />
+              <img
+                class="aspect-video object-cover"
+                src="./placeholders/skyline.jpg"
+                alt="A skyline of a city by night"
+              />
             </div>
             <div slot="meta" class="meta-info">
               <span class="meta-info-item">01.12.2013</span>
