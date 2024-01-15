@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v1.38.0](https://github.com/solid-design-system/solid/compare/components/1.37.3...components/1.38.0) (2024-01-15)
+
+
+### Features
+
+* ✨ add interactive teaser sample ([#670](https://github.com/solid-design-system/solid/issues/670)) ([d292cfe](https://github.com/solid-design-system/solid/commit/d292cfef1f63aa98e55b77ae6eabd455e42a7a9c))
+
+### 📈 Stats
+* Bundle size (uncompressed): 254 KB (unchanged)
+* Bundle size (gzipped): 62 KB (unchanged)
+
 # [@solid-design-system/components-v1.37.3](https://github.com/solid-design-system/solid/compare/components/1.37.2...components/1.37.3) (2024-01-10)
 
 
