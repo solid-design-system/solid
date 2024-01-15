@@ -15,9 +15,6 @@ export default {
   component: 'sd-list',
   parameters: {
     ...parameters,
-    backgrounds: {
-      default: 'primary-100'
-    },
     design: {
       type: 'figma',
       url: 'https://www.figma.com/file/DDSyYvf2q99RhiyDjy03s5/List?type=design&node-id=971-4578&mode=design&t=2UZo6NW6ErMA2G5X-0'
@@ -76,7 +73,7 @@ export const OrderedList = {
       options: {
         templateBackgrounds: {
           alternate: 'x',
-          colors: ['rgb(var(--sd-color-primary-100, 236 240 249))', 'rgb(var(--sd-color-primary, 0 53 142))']
+          colors: ['rgb(var(--sd-color-white, 255 255 255))', 'rgb(var(--sd-color-primary, 0 53 142))']
         },
         templateContent: '<ol class="%CLASSES%">%SLOT%</ol>'
       }
@@ -111,7 +108,7 @@ export const UnorderedList = {
       options: {
         templateBackgrounds: {
           alternate: 'x',
-          colors: ['rgb(var(--sd-color-primary-100, 236 240 249))', 'rgb(var(--sd-color-primary, 0 53 142))']
+          colors: ['rgb(var(--sd-color-white, 255 255 255))', 'rgb(var(--sd-color-primary, 0 53 142))']
         },
         templateContent: '<ul class="%CLASSES%">%SLOT%</ul>'
       }
@@ -147,7 +144,7 @@ export const IconList = {
       options: {
         templateBackgrounds: {
           alternate: 'x',
-          colors: ['rgb(var(--sd-color-primary-100, 236 240 249))', 'rgb(var(--sd-color-primary, 0 53 142))']
+          colors: ['rgb(var(--sd-color-white, 255 255 255))', 'rgb(var(--sd-color-primary, 0 53 142))']
         },
         templateContent: '<ul class="sd-list--icon %CLASSES%">%SLOT%</ul>'
       }
@@ -174,7 +171,7 @@ export const HorizontalIconList = {
       options: {
         templateBackgrounds: {
           alternate: 'x',
-          colors: ['rgb(var(--sd-color-primary-100, 236 240 249))', 'rgb(var(--sd-color-primary, 0 53 142))']
+          colors: ['rgb(var(--sd-color-white, 255 255 255))', 'rgb(var(--sd-color-primary, 0 53 142))']
         },
         templateContent: '<ul class="sd-list--icon sd-list--horizontal %CLASSES%">%SLOT%</ul>'
       }
