@@ -1041,7 +1041,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
       }
 
       sd-popup::part(popup) {
-        @apply overflow-y-scroll;
+        @apply overflow-y-scroll z-dropdown;
       }
 
       sd-tag::part(base) {
