@@ -7,7 +7,13 @@ const { overrideArgs } = storybookHelpers('sd-list');
 const { generateTemplate } = storybookTemplate('sd-list');
 
 /**
- *
+ * Use lists to make blocks of text easier to read and to divide information into manageable sections. <br>
+ * Text lists can be numbered, have bullet points, or be supplemented by content symbols. Text can be bolded or linked.
+ * <br>
+ * <b>Variants</b><br>
+ * <li>Unordered list group is used when there is no specific sequence or order to the items.</li>
+ * <li>Ordered list group is used when the items have a specific sequence or count.</li>
+ * <li>Icon list group is used when more illustration is needed.</li>
  */
 
 export default {
@@ -48,7 +54,7 @@ export const Default = {
 };
 
 export const OrderedList = {
-  name: 'OrderedList',
+  name: 'Ordered List',
   parameters: { controls: { exclude: ['default'] } },
   args: overrideArgs({
     type: 'slot',
@@ -84,7 +90,7 @@ export const OrderedList = {
 };
 
 export const UnorderedList = {
-  name: 'UnorderedList',
+  name: 'Unordered List',
   parameters: { controls: { exclude: ['default'] } },
   args: overrideArgs({
     type: 'slot',
@@ -120,7 +126,7 @@ export const UnorderedList = {
 };
 
 export const IconList = {
-  name: 'IconList',
+  name: 'Icon List',
   parameters: { controls: { exclude: ['default'] } },
   args: overrideArgs({
     type: 'slot',
@@ -156,7 +162,7 @@ export const IconList = {
 };
 
 export const HorizontalIconList = {
-  name: 'HorizontalIconList',
+  name: 'Horizontal Icon List',
   parameters: { controls: { exclude: ['default'] } },
   args: overrideArgs({
     type: 'slot',
