@@ -1,5 +1,5 @@
 .sd-list {
-  @apply text-left;
+  @apply text-left  py-4;
 
   &--inverted {
     @apply text-white;
@@ -34,8 +34,12 @@
   }
 
   &:is(ul):not(.sd-list--icon) {
-    @apply list-inside;
     list-style-type: '\2022';
+    @apply ml-4;
+
+    li {
+      @apply pl-2 -ml-2;
+    }
 
     & li:not(:first-child) {
       @apply pt-3;
