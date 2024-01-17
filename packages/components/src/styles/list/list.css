@@ -10,6 +10,10 @@
       counter-reset: item;
     }
 
+    & li:not(:first-child) {
+      @apply mt-3;
+    }
+
     & li {
       @apply table;
       counter-increment: item;
@@ -20,6 +24,10 @@
       content: counters(item, '.') '. ';
     }
 
+    & li li {
+      @apply mt-3;
+    }
+
     & li li:before {
       content: counters(item, '.') '. ';
     }
@@ -28,7 +36,6 @@
   &:is(ul):not(.sd-list--icon) {
     @apply list-inside;
     list-style-type: '\2022';
-
 
     & li:not(:first-child) {
       @apply pt-3;
