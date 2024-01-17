@@ -272,8 +272,7 @@ export const Slots = {
   `tag`,
   `tag__base`,
   `tag__content`,
-  `tag__remove-button`,
-  `tag__remove-button__base`,
+  `tag__removable-indicator`,
   `clear-button`, and
   `expand-icon` part selectors to customize the select component.
  */
@@ -290,8 +289,7 @@ const partsArr = [
   'tag',
   'tag__base',
   'tag__content',
-  'tag__remove-button',
-  'tag__remove-button__base',
+  'tag__removable-indicator',
   'clear-button',
   'expand-icon'
 ];
@@ -312,8 +310,7 @@ export const Parts = {
         'tag',
         'tag__base',
         'tag__content',
-        'tag__remove-button',
-        'tag__remove-button__base',
+        'tag__removable-indicator',
         'clear-button',
         'expand-icon'
       ]
@@ -324,13 +321,14 @@ export const Parts = {
 
     return generateTemplate({
       axis: {
+        x: { type: 'attribute', name: 'useTags' },
         y: {
           type: 'template',
           name: 'sd-select::part(...){outline: solid 2px red}',
           values: partsArr.map(part => {
             return {
               title: part,
-              value: `<style>#part-${part} sd-select::part(${part}){outline: solid 2px red}</style><div id="part-${part}">%TEMPLATE%</div>`
+              value: `<style>#part-${part} sd-select::part(${part}){outline: solid 2px red; outline-offset: 2px} ::part(popup__content){overflow-y: visible} ::part(tag__removable-indicator){display: block} ::part(tag__content){display: block}</style><div id="part-${part}">%TEMPLATE%</div>`
             };
           })
         }
