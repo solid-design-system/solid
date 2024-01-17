@@ -746,6 +746,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
 
   /** Checks for validity and shows the browser's validation message if the control is invalid. */
   reportValidity() {
+    this.formControlController.fakeUserInteraction();
     return this.valueInput.reportValidity();
   }
 
@@ -961,12 +962,18 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 : ''}
               ${this.showInvalidStyle
                 ? html`
-                    <sd-icon class=${cx('text-error', iconMarginLeft, iconSize)} library="system" name="risk"></sd-icon>
+                    <sd-icon
+                      part="invalid-icon"
+                      class=${cx('text-error', iconMarginLeft, iconSize)}
+                      library="system"
+                      name="risk"
+                    ></sd-icon>
                   `
                 : ''}
               ${this.showValidStyle
                 ? html`
                     <sd-icon
+                      part="valid-icon"
                       class=${cx('text-success', iconMarginLeft, iconSize)}
                       library="system"
                       name="confirm"

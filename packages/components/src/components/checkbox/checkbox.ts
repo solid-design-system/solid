@@ -159,6 +159,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
 
   /** Checks for validity and shows a validation message if the control is invalid. */
   reportValidity() {
+    this.formControlController.fakeUserInteraction();
     return this.input.reportValidity();
   }
 

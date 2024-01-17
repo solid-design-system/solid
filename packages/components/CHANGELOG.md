@@ -1,3 +1,47 @@
+# [@solid-design-system/components-v1.38.0](https://github.com/solid-design-system/solid/compare/components/1.37.3...components/1.38.0) (2024-01-15)
+
+
+### Features
+
+* ✨ add interactive teaser sample ([#670](https://github.com/solid-design-system/solid/issues/670)) ([d292cfe](https://github.com/solid-design-system/solid/commit/d292cfef1f63aa98e55b77ae6eabd455e42a7a9c))
+
+### 📈 Stats
+* Bundle size (uncompressed): 254 KB (unchanged)
+* Bundle size (gzipped): 62 KB (unchanged)
+
+# [@solid-design-system/components-v1.37.3](https://github.com/solid-design-system/solid/compare/components/1.37.2...components/1.37.3) (2024-01-10)
+
+
+### Bug Fixes
+
+* 🐛 make setCustomValidity() + reportValidity() work with inputs' inline errors ([#667](https://github.com/solid-design-system/solid/issues/667)) ([455f7f6](https://github.com/solid-design-system/solid/commit/455f7f685c7f0bf7f016e2575f18b77a71b4e7ce))
+
+### 📈 Stats
+* Bundle size (uncompressed): 254 KB (+1 KB / +0%)
+* Bundle size (gzipped): 62 KB (unchanged)
+
+# [@solid-design-system/components-v1.37.2](https://github.com/solid-design-system/solid/compare/components/1.37.1...components/1.37.2) (2024-01-08)
+
+
+### Bug Fixes
+
+* 🤔 add missing part for accordion-border ([#669](https://github.com/solid-design-system/solid/issues/669)) ([6c32704](https://github.com/solid-design-system/solid/commit/6c32704f38738fc69d81a2f714992cd6b06f2d22))
+
+### 📈 Stats
+* Bundle size (uncompressed): 253 KB (unchanged)
+* Bundle size (gzipped): 62 KB (unchanged)
+
+# [@solid-design-system/components-v1.37.1](https://github.com/solid-design-system/solid/compare/components/1.37.0...components/1.37.1) (2023-12-22)
+
+
+### Bug Fixes
+
+* 🤔 teaser variant 'white border-neutral-400', - no border around media slot ([#663](https://github.com/solid-design-system/solid/issues/663)) ([3b1dc2b](https://github.com/solid-design-system/solid/commit/3b1dc2b9f3c9083b2233ed663aee0f38d640216d))
+
+### 📈 Stats
+* Bundle size (uncompressed): 253 KB (unchanged)
+* Bundle size (gzipped): 62 KB (unchanged)
+
 # [@solid-design-system/components-v1.37.0](https://github.com/solid-design-system/solid/compare/components/1.36.0...components/1.37.0) (2023-12-15)
 
 

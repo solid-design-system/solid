@@ -5,7 +5,6 @@ import { property, query, state } from 'lit/decorators.js';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 import type { PropertyValues } from 'lit';
-
 /**
  * @summary Teasers group information into flexible containers so users can browse a collection of related items and actions.
  * @documentation https://solid.union-investment.com/[storybook-link]/teaser
@@ -107,7 +106,11 @@ export default class SdTeaser extends SolidElement {
       >
         <div
           style=${this._orientation === 'horizontal' ? `width: var(--distribution-media, 100%);` : ''}
-          class=${cx(!inset && this._orientation === 'vertical' && 'mb-4', !slots['teaser-has-media'] && 'hidden')}
+          class=${cx(
+            !inset && this._orientation === 'vertical' && 'mb-4',
+            !slots['teaser-has-media'] && 'hidden',
+            this.variant === 'white border-neutral-400' && this._orientation === 'vertical' && 'mx-[-1px] mt-[-1px]'
+          )}
           part="media"
         >
           <slot name="media"></slot>

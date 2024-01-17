@@ -59,6 +59,9 @@ const isFirefox = isChromium ? false : navigator.userAgent.includes('Firefox');
  * @csspart clear-button - The clear button.
  * @csspart password-toggle-button - The password toggle button.
  * @csspart right - The container that wraps the right.
+ * @csspart invalid-icon - The invalid icon.
+ * @csspart valid-icon - The valid icon.
+ * @csspart invalid-message - The invalid message.
  */
 
 @customElement('sd-input')
@@ -397,6 +400,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
 
   /** Checks for validity and shows the browser's validation message if the control is invalid. */
   reportValidity() {
+    this.formControlController.fakeUserInteraction();
     return this.input.reportValidity();
   }
 
@@ -609,7 +613,12 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               : ''}
             ${this.showInvalidStyle
               ? html`
-                  <sd-icon class=${cx('text-error', iconMarginLeft, iconSize)} library="system" name="risk"></sd-icon>
+                  <sd-icon
+                    part="invalid-icon"
+                    class=${cx('text-error', iconMarginLeft, iconSize)}
+                    library="system"
+                    name="risk"
+                  ></sd-icon>
                 `
               : ''}
             ${this.showValidStyle
@@ -618,6 +627,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                     class=${cx('text-success', iconMarginLeft, iconSize)}
                     library="system"
                     name="confirm"
+                    part="valid-icon"
                   ></sd-icon>
                 `
               : ''}

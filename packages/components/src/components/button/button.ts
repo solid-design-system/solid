@@ -55,7 +55,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
 
   @query('a, button') button: HTMLButtonElement | HTMLLinkElement;
   @queryAssignedElements({ selector: 'sd-icon' }) _iconsInDefaultSlot!: HTMLElement[];
-  @state() invalid = false;
+  @state() protected invalid = false;
   @property() title = ''; // make reactive to pass through
 
   /** The button's theme variant. */

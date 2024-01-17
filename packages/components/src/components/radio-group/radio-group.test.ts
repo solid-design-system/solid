@@ -155,6 +155,51 @@ describe('<sd-radio-group>', () => {
 
     expect(submitHandler).to.not.have.been.called;
   });
+
+  it('should show invalid-message when calling reportCustomValidity with non-empty setCustomValidity() ', async () => {
+    const input = await fixture<SdRadioGroup>(html`
+      <sd-radio-group value="1">
+        <sd-radio id="radio-1" name="a" value="1"></sd-radio>
+        <sd-radio id="radio-2" name="a" value="2"></sd-radio>
+      </sd-radio-group>
+    `);
+
+    input.setCustomValidity('Invalid selection');
+    await input.updateComplete;
+
+    input.reportValidity();
+    await input.updateComplete;
+    await input.updateComplete; // Currently there are two updates in the component
+
+    expect(input.shadowRoot!.querySelector('#invalid-message')!.hasAttribute('hidden')).to.be.false;
+  });
+
+  it('should hide invalid-message when calling reportCustomValidity with empty setCustomValidity() ', async () => {
+    const input = await fixture<SdRadioGroup>(html`
+      <sd-radio-group>
+        <sd-radio id="radio-1" name="a" value="1"></sd-radio>
+        <sd-radio id="radio-2" name="a" value="2"></sd-radio>
+      </sd-radio-group>
+    `);
+
+    input.setCustomValidity('Invalid selection');
+    await input.updateComplete;
+
+    input.reportValidity();
+    await input.updateComplete;
+    await input.updateComplete; // Currently there are two updates in the component
+
+    expect(input.shadowRoot!.querySelector('#invalid-message')!.hasAttribute('hidden')).to.be.false;
+
+    input.setCustomValidity('');
+    await input.updateComplete;
+
+    input.reportValidity();
+    await input.updateComplete;
+    await input.updateComplete; // Currently there are two updates in the component
+
+    expect(input.shadowRoot!.querySelector('#invalid-message')!.hasAttribute('hidden')).to.be.true;
+  });
 });
 
 describe('when resetting a form', () => {
