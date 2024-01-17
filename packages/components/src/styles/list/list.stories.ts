@@ -33,6 +33,7 @@ export const Default = {
                 <li>Dolor sit
                     <ul>
                         <li>Amet</li>
+                        <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
                     </ul>
                 </li>
             </ul>
@@ -57,6 +58,7 @@ export const OrderedList = {
                 <li>Dolor sit
                     <ol>
                         <li>Amet</li>
+                        <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
                     </ol>
                 </li>
             </ol>
@@ -92,6 +94,7 @@ export const UnorderedList = {
                 <li>Dolor sit
                     <ul>
                         <li>Amet</li>
+                        <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
                     </ul>
                 </li>
             </ul>
@@ -126,8 +129,8 @@ export const IconList = {
             <ul>
                 <li><sd-icon name="content/picture" library="global-resources" ></sd-icon>Dolor sit
                     <ul>
-                        <li><sd-icon name="content/picture" library="global-resources" ></sd-icon>Amet Amet Amet Amet Amet Amet</li>
-                        <li><sd-icon name="content/picture" library="global-resources" ></sd-icon>Amet Amet Amet Amet Amet Amet</li>
+                        <li><sd-icon name="content/picture" library="global-resources" ></sd-icon>Amet</li>
+                        <li><sd-icon name="content/picture" library="global-resources" ></sd-icon>Ut enim ad minim veniam, quis nostrud exercitation</li>
                     </ul>
                 </li>
             </ul>
