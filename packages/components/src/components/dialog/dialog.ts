@@ -27,7 +27,8 @@ import SolidElement from '../../internal/solid-element';
  *
  * @slot - The dialog's main content.
  * @slot headline - The dialog's headline. Alternatively, you can use the `headline` attribute.
- * @slot footer - The dialog's footer, usually one or more buttons representing various options. * @slot close-button - The dialog's close button. Works best with `<sd-button>` and `<sd-icon>`.
+ * @slot footer - The dialog's footer, usually one or more buttons representing various options. 
+ * @slot close-button - The dialog's close button. Works best with `<sd-button>` and `<sd-icon>`.
  *
  * @event sd-show - Emitted when the dialog opens.
  * @event sd-after-show - Emitted after the dialog opens and all animations are complete.
