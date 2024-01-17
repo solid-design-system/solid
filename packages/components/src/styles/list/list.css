@@ -51,12 +51,12 @@
 
     & ul {
       @apply ms-4;
-      list-style-type: '\0025AA';
+      list-style-type: '\002B1D';
     }
 
     & ul ul {
       @apply ms-4;
-      list-style-type: '\2043';
+      list-style-type: '\2010';
     }
   }
 
