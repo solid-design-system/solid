@@ -125,6 +125,10 @@ export const UnorderedList = {
   }
 };
 
+/**
+ * If using the icon list, you need to provide an icon within each list item. <br>
+ * Either the first <sd-icon> or the first element with the class 'sd-list--icon__icon' within the list item will be used as the icon.
+ */
 export const IconList = {
   name: 'Icon List',
   parameters: { controls: { exclude: ['default'] } },
@@ -161,6 +165,10 @@ export const IconList = {
   }
 };
 
+/**
+ * If using the horizontal icon list, you need to provide an icon within each list item. The horizontal list only supports one level of nesting. <br>
+ * Either the first <sd-icon> or the first element with the class 'sd-list--icon__icon' within the list item will be used as the icon.
+ */
 export const HorizontalIconList = {
   name: 'Horizontal Icon List',
   parameters: { controls: { exclude: ['default'] } },
