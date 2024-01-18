@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v1.38.2](https://github.com/solid-design-system/solid/compare/components/1.38.1...components/1.38.2) (2024-01-18)
+
+
+### Bug Fixes
+
+* 🤔 z-index in sd-select ([#685](https://github.com/solid-design-system/solid/issues/685)) ([8b98607](https://github.com/solid-design-system/solid/commit/8b986078f10a6512155632946dec8e5f039669b5)), closes [#534](https://github.com/solid-design-system/solid/issues/534)
+
+### 📈 Stats
+* Bundle size (uncompressed): 254 KB (unchanged)
+* Bundle size (gzipped): 62 KB (unchanged)
+
 # [@solid-design-system/components-v1.38.1](https://github.com/solid-design-system/solid/compare/components/1.38.0...components/1.38.1) (2024-01-18)
 
 
