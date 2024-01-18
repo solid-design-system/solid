@@ -6,10 +6,9 @@ export default {
   status: 'experimental',
   since: '1.33.1',
   attributes: [
-    // {
-    //   name: 'sd-chip--...',
-    //   options: ['primary-500', 'primary-300', 'white'],
-    //   description: ''
-    // }
+    {
+      name: 'sd-list--inverted',
+      description: 'Inverts the list text.'
+    }
   ]
 } satisfies Style;
