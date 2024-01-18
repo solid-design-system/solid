@@ -28,7 +28,7 @@ As a [PERSONA] of the Solid Design System, I would like to [REQUIRE], as well as
   - [ ] `name` - description
 #### Parts (besides the shoelace parts)
   - [ ] `name` - description
-  - [ ] `name` - description
+  - [ ] every other HTML element (depending on the HTML structure) => NOTE: if highlighting the parts in the `parts` story does not work out of the box, do not spend more effort on it but open a bug ticket to tackle it later.
 #### Slots
   - [ ] `name` - description
   - [ ] `name` - description
