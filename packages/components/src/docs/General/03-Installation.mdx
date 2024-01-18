@@ -86,12 +86,14 @@ Importing specific components creates a smaller bundle, enhancing load times and
 // unversioned e. g. <sd-button>
 import '@solid-design-system/components/unversioned'; // whole library
 import '@solid-design-system/components/unversioned/button/button'; // specific component
+import '@solid-design-system/components/dist/package/components/button/button'; // specific component in a Stencil / Webpack setup
 ```
 
 ```js
 // versioned e. g. <sd-1-1-0-button>
 import '@solid-design-system/components/versioned'; // whole library
 import '@solid-design-system/components/versioned/button/button'; // specific component
+import '@solid-design-system/components/dist/versioned-package/components/button/button'; // specific component in a Stencil / Webpack setup
 ```
 
 ### CDN
