@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v1.38.1](https://github.com/solid-design-system/solid/compare/components/1.38.0...components/1.38.1) (2024-01-18)
+
+
+### Bug Fixes
+
+* add missing navigation-item parts ([#693](https://github.com/solid-design-system/solid/issues/693)) ([34eb020](https://github.com/solid-design-system/solid/commit/34eb020f505101831df1118c16379ac707f4da36))
+
+### 📈 Stats
+* Bundle size (uncompressed): 254 KB (unchanged)
+* Bundle size (gzipped): 62 KB (unchanged)
+
 # [@solid-design-system/components-v1.38.0](https://github.com/solid-design-system/solid/compare/components/1.37.3...components/1.38.0) (2024-01-15)
 
 
