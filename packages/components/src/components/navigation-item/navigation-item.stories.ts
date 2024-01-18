@@ -327,7 +327,17 @@ export const Parts = {
         y: {
           type: 'template',
           name: 'sd-navigation-item::part(...){outline: solid 2px red}',
-          values: ['base', 'content', 'chevron', 'description', 'divider'].map(part => {
+          values: [
+            'base',
+            'content',
+            'content-area',
+            'content-container',
+            'chevron',
+            'description',
+            'divider',
+            'current-indicator',
+            'details'
+          ].map(part => {
             return {
               title: part,
               value: `<style>#part-${part} sd-navigation-item::part(${part}){outline: solid 2px red}</style><div id="part-${part}">%TEMPLATE%</div>`
@@ -365,6 +375,11 @@ export const Parts = {
           type: 'slot',
           name: 'main',
           value: '<sd-badge slot="main">888</sd-badge>'
+        },
+        {
+          type: 'slot',
+          name: 'children',
+          value: '<div slot="children" class="slot slot--border slot--background h-6"></div>'
         },
         descriptionSlotConstant
       ],
