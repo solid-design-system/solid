@@ -163,6 +163,41 @@ describe('<sd-checkbox>', () => {
       expect(checkbox.hasAttribute('data-user-valid')).to.be.false;
     });
 
+    it('should show invalid-message when calling reportCustomValidity with non-empty setCustomValidity() ', async () => {
+      const input = await fixture<SdCheckbox>(html` <sd-checkbox></sd-checkbox> `);
+
+      input.setCustomValidity('Invalid selection');
+      await input.updateComplete;
+
+      input.reportValidity();
+      await input.updateComplete;
+      await input.updateComplete; // Currently there are two updates in the component
+
+      expect(input.shadowRoot!.querySelector('#invalid-message')!.hasAttribute('hidden')).to.be.false;
+    });
+
+    it('should hide invalid-message when calling reportCustomValidity with empty setCustomValidity() ', async () => {
+      const input = await fixture<SdCheckbox>(html` <sd-checkbox></sd-checkbox> `);
+
+      input.setCustomValidity('Invalid selection');
+      await input.updateComplete;
+
+      input.reportValidity();
+      await input.updateComplete;
+      await input.updateComplete; // Currently there are two updates in the component
+
+      expect(input.shadowRoot!.querySelector('#invalid-message')!.hasAttribute('hidden')).to.be.false;
+
+      input.setCustomValidity('');
+      await input.updateComplete;
+
+      input.reportValidity();
+      await input.updateComplete;
+      await input.updateComplete; // Currently there are two updates in the component
+
+      expect(input.shadowRoot!.querySelector('#invalid-message')!.hasAttribute('hidden')).to.be.true;
+    });
+
     it('should be invalid when required and unchecked', async () => {
       const checkbox = await fixture<HTMLFormElement>(html` <sd-checkbox required></sd-checkbox> `);
       expect(checkbox.checkValidity()).to.be.false;

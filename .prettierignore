@@ -11,3 +11,4 @@ packages/tokens/src/tokens.json
 **/tsconfig.json
 **/pnpm-lock.yaml
 **/*hangelog.md*
+**/tokens.json

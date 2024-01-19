@@ -5,7 +5,6 @@ import { property, query, state } from 'lit/decorators.js';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 import type { PropertyValues } from 'lit';
-
 /**
  * @summary Teasers group information into flexible containers so users can browse a collection of related items and actions.
  * @documentation https://solid.union-investment.com/[storybook-link]/teaser
