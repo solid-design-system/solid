@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v1.38.3](https://github.com/solid-design-system/solid/compare/components/1.38.2...components/1.38.3) (2024-01-19)
+
+
+### Bug Fixes
+
+* 🤔 parts not marked (red border) in storybook in sd-select ([#690](https://github.com/solid-design-system/solid/issues/690)) ([d481213](https://github.com/solid-design-system/solid/commit/d481213f976c682c3bad844e5b1ed95ec5e6f0cf))
+
+### 📈 Stats
+* Bundle size (uncompressed): 254 KB (unchanged)
+* Bundle size (gzipped): 62 KB (unchanged)
+
 # [@solid-design-system/components-v1.38.2](https://github.com/solid-design-system/solid/compare/components/1.38.1...components/1.38.2) (2024-01-18)
 
 
