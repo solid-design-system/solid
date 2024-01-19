@@ -51,7 +51,7 @@ Alongside the documentation for Styles and Components, we also present Samples a
 
 The [Shoelace](https://shoelace.style/) web component library is our working inspiration. Components are copied directly from their [source code](https://github.com/shoelace-style/shoelace) and pasted in the `packages/components/src/_components` folder.
 
-_There may have been updates since the files there were copied to our repo!_
+_There may have been updates since the files there were copied to our repo!_ In those instances, copy the updated component folder from the Shoelace repository and use that as a starting point.
 
 Additionally we have taken things like the `FormControlController` directly from Shoelace and are slowly adapting them to our needs. If something is broken, missing, or working in an unexpected manner, there may be things that were missed / misconfigured / not yet addressed in our library.
 
@@ -122,7 +122,12 @@ If you are working on a component, follow the steps below:
 ### Styles
 
 If you are working on a style, follow the steps below:
-...
+1. Create new styles in the `packages/components/src/styles` folder.
+2. Set up a Storybook story alongside the styles, using a default story. This allows you to preview and iterate on the styles as you work.
+3. **Each style should have an accompanying declaration file.** This is for documenting the style and its attributes. Follow the structure of our existing styles for guidance (eg: [sd-meta](https://github.com/solid-design-system/solid/blob/main/packages/components/src/styles/meta/meta.declaration.ts)).
+4. Import your styles into the `packages/components/src/solid-styles.css` file. This step is crucial for enabling other Solid components to access the new styles.
+
+_ You can always refer to the existing components and styles to familiarize yourself with the workflow!_
 
 ## Repository Overview
 
