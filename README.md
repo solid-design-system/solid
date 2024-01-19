@@ -66,7 +66,6 @@ Then push with a commit message according to the development standards and creat
 
 After front-end's aproval, check if all tests are passed (quality gate, etc.), then hit Squash and Merge button, write a message (especially if there's any changes in token naming or deprecating note "BREAKING CHANGE: ..."
 
-
 ## License
 
 This repository is licensed under MIT, except the fonts, icons and images, which are licensed under their respective licenses. Read the [full license](./packages/components/LICENSE.md) for more information.
