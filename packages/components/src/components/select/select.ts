@@ -877,6 +877,9 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
             sync="width"
             auto-size="vertical"
             auto-size-padding="10"
+            exportparts="
+              popup:popup__content,
+            "
           >
             <div
               part="combobox"
