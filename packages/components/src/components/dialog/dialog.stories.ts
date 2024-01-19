@@ -1,11 +1,16 @@
 import '../../solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
+import { waitUntil } from '@open-wc/testing-helpers';
 import { withActions } from '@storybook/addon-actions/decorator';
 
 const { overrideArgs } = storybookHelpers('sd-dialog');
 const { argTypes, parameters } = storybookDefaults('sd-dialog');
 const { generateTemplate } = storybookTemplate('sd-dialog');
+
+/**
+ * **Disclaimer** : Controls for `sd-dialog` are unavailable on this Docs page due to a [Storybook bug](https://github.com/storybookjs/storybook/issues/11908). Please use the individual feature stories to access these controls.
+ */
 
 export default {
   title: 'Components/sd-dialog',
@@ -56,6 +61,9 @@ export const Default = {
  */
 
 export const Headline = {
+  parameters: {
+    controls: { exclude: ['headline'] }
+  },
   render: (args: any) => {
     return html` <div style="height: 40vh;">
       ${generateTemplate({
@@ -82,6 +90,9 @@ export const Headline = {
  */
 
 export const NoCloseButton = {
+  parameters: {
+    controls: { exclude: ['no-close-button'] }
+  },
   render: (args: any) => {
     return html` <div style="height: 40vh;">
       ${generateTemplate({
@@ -97,10 +108,10 @@ export const NoCloseButton = {
             name: 'footer',
             value: `<sd-button slot="footer" class="w-full">Close</sd-button>
             <script>
-                var dialog = document.querySelector('sd-dialog');
-                var closeButton = dialog.querySelector('sd-button[slot="footer"]');
+                const dialog = document.querySelector('sd-dialog');
+                const footer = dialog.querySelector('sd-button[slot="footer"]');
       
-                closeButton.addEventListener('click', () => dialog.hide());
+                footer.addEventListener('click', () => dialog.hide());
           </script>`
           }
         ]
@@ -122,7 +133,7 @@ export const Scrolling = {
           {
             type: 'slot',
             name: 'default',
-            value: `<div class="slot slot--border slot--text" style="height:150vh; width: 100%; padding: 0 1rem; justify-content:start;">Scroll down and give it a try! 👇</div>`
+            value: `<div class="slot slot--border slot--text" style="height:150vh; width: 100%; padding: 0 1rem; justify-content:start;">Scroll down and give it a try!</div>`
           }
         ]
       })}
@@ -207,18 +218,35 @@ export const PreventClosing = {
       >
 
       <script>
-        var dialog = document.querySelector('#prevent-closing');
-        var closeButton = dialog.querySelector('#close-button');
+        const preventClosingDialog = document.querySelector('#prevent-closing');
+        const closeButton = preventClosingDialog.querySelector('#close-button');
 
-        closeButton.addEventListener('click', () => dialog.hide());
+        closeButton.addEventListener('click', () => preventClosingDialog.hide());
 
         // Prevent the dialog from closing when the user clicks on the overlay
-        dialog.addEventListener('sd-request-close', event => {
+        preventClosingDialog.addEventListener('sd-request-close', event => {
           if (event.detail.source === 'overlay') {
             event.preventDefault();
           }
         });
       </script>
     `;
+  }
+};
+
+/**
+ * sd-dialog is fully accessibile via keyboard.
+ */
+
+export const Mouseless = {
+  render: (args: any) => {
+    return html`<div class="mouseless">${generateTemplate({ args })}</div>`;
+  },
+
+  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
+    const el = canvasElement.querySelector('.mouseless sd-dialog');
+    await waitUntil(() => el?.shadowRoot?.querySelector('sd-button'));
+
+    el?.shadowRoot?.querySelector<HTMLElement>('sd-button')!.focus();
   }
 };

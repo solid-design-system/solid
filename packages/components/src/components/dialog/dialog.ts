@@ -27,7 +27,7 @@ import SolidElement from '../../internal/solid-element';
  *
  * @slot - The dialog's main content.
  * @slot headline - The dialog's headline. Alternatively, you can use the `headline` attribute.
- * @slot footer - The dialog's footer, usually one or more buttons representing various options. 
+ * @slot footer - The dialog's footer, usually one or more buttons representing various options.
  * @slot close-button - The dialog's close button. Works best with `<sd-button>` and `<sd-icon>`.
  *
  * @event sd-show - Emitted when the dialog opens.
@@ -279,11 +279,9 @@ export default class SdDialog extends SolidElement {
         >
           <header part="header" class="flex flex-grow-0 flex-shrink-0 basis-auto px-6 sm:px-12">
             <h2 part="title" class="flex-auto m-0" id="title">
-              <slot name="headline">
-                ${this.headline.length > 0
-                  ? html`<h4 class="sd-headline sd-headline--size-3xl">${this.headline}</h4>`
-                  : String.fromCharCode(65279)}
-              </slot>
+              ${this.headline.length > 0
+                ? html`<h4 class="sd-headline sd-headline--size-3xl">${this.headline}</h4>`
+                : html`<slot name="headline"> </slot>`}
             </h2>
 
             ${!this.noCloseButton
