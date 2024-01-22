@@ -29,7 +29,7 @@ export default {
     {
       type: 'slot',
       name: 'headline',
-      value: `<h4 slot="headline" class="sd-headline sd-headline--size-3xl">Lorem Ipsum</h4>`
+      value: `<h4 slot="headline" class="sd-headline sd-headline--size-3xl leading-tight">Lorem Ipsum</h4>`
     },
     {
       type: 'slot',
@@ -200,7 +200,7 @@ export const SmallHeadline = {
  */
 
 export const PreventClosing = {
-  name: 'Sample: Prevening Closing',
+  name: 'Sample: Preventing Closing',
   parameters: {
     controls: {
       include: []

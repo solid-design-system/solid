@@ -259,7 +259,7 @@ export default class SdDialog extends SolidElement {
       >
         <div
           part="overlay"
-          class="fixed inset-0 bg-neutral-800 opacity-90"
+          class="fixed inset-0 bg-primary-800 opacity-90"
           @click=${() => this.requestClose('overlay')}
           tabindex="-1"
         ></div>
@@ -277,10 +277,10 @@ export default class SdDialog extends SolidElement {
           aria-labelledby="title"
           tabindex="0"
         >
-          <header part="header" class="flex flex-grow-0 flex-shrink-0 basis-auto px-6 sm:px-12">
+          <header part="header" class="flex flex-grow-0 flex-shrink-0 basis-auto px-6 sm:px-10">
             <h2 part="title" class="flex-auto m-0" id="title">
               ${this.headline.length > 0
-                ? html`<h4 class="sd-headline sd-headline--size-3xl">${this.headline}</h4>`
+                ? html`<h4 class="sd-headline sd-headline--size-3xl leading-tight">${this.headline}</h4>`
                 : html`<slot name="headline"> </slot>`}
             </h2>
 
@@ -301,10 +301,10 @@ export default class SdDialog extends SolidElement {
               : ''}
           </header>
 
-          <main part="body" class="flex flex-auto overflow-auto w-full px-6 sm:px-12">
+          <main part="body" class="flex flex-auto overflow-auto w-full px-6 sm:px-10">
             <slot></slot>
           </main>
-          <footer part="footer" class="flex flex-grow-0 flex-shrink-0 basis-auto ml-auto gap-4 px-6 sm:px-12">
+          <footer part="footer" class="flex flex-grow-0 flex-shrink-0 basis-auto ml-auto gap-4 px-6 sm:px-10">
             <slot name="footer"></slot>
           </footer>
         </div>
