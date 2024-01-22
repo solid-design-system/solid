@@ -5,6 +5,45 @@
     @apply border-r-[1px];
   }
 
+  &--shadow-bottom {
+
+    tr:first-child th {
+      position: relative;
+    }
+
+    & tr:first-child th:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -5px; /* Adjust the distance of the shadow from the header row */
+      height: 5px; /* Adjust the height of the shadow */
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), transparent);
+    }
+  }
+
+  &--shadow-right {
+
+    th, td {
+      position: relative;
+    }
+
+    th:first-child {
+      overflow: hidden;
+    }
+
+    & th:first-child:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      width: 5px; /* Adjust the width of the shadow as needed */
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.2), transparent);
+      border-style: none;
+    }
+  }
+
   &--bg {
     &-white {
       @apply bg-white;

@@ -117,7 +117,7 @@ export const Samples = {
       </style>
       <div class="story-wrapper">
         <div class="headline">Simple Table</div>
-        <table class="sd-table sample-table">
+        <table class="sd-table sample-table sd-table-cell--shadow-bottom">
           <thead>
             ${(() => {
               return html`<tr>
@@ -197,6 +197,35 @@ export const Samples = {
             })}
           </tbody>
         </table>
+
+        <div class="headline">Simple Table With Vertical Headers</div>
+        <table class="sd-table sample-table">
+
+          ${tableData.map((rowData, rowIndex) => {
+            return html`<tr class="sd-table-cell sd-table-cell--shadow-right">
+              ${rowData.map((cellData, columIndex) => {
+                if(columIndex === 0) {
+                  return html`<th
+                  class="sd-table-cell ${rowIndex % 2 === 0
+                    ? 'sd-table-cell--bg-white'
+                    : 'sd-table-cell--bg-primary-100'}"
+                >
+                  Header
+                </th>`;
+                }else {
+                  return html`<td
+                  class="sd-table-cell ${rowIndex % 2 === 0
+                    ? 'sd-table-cell--bg-white'
+                    : 'sd-table-cell--bg-primary-100'}"
+                >
+                  ${cellData}
+                </td>`;
+                }
+            })}
+            </tr>`;
+          })}
+        </table>
+
         <div class="headline">Simple Table, First Column Fixed</div>
         <div class="disclaimer">This sample will be provided soon.</div>
 
