@@ -877,6 +877,9 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
             sync="width"
             auto-size="vertical"
             auto-size-padding="10"
+            exportparts="
+              popup:popup__content,
+            "
           >
             <div
               part="combobox"
@@ -1041,7 +1044,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
       }
 
       sd-popup::part(popup) {
-        @apply overflow-y-scroll;
+        @apply overflow-y-scroll z-dropdown;
       }
 
       sd-tag::part(base) {

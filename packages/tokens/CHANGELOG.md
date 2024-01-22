@@ -1,3 +1,15 @@
+# [@solid-design-system/tokens-v2.0.0](https://github.com/solid-design-system/solid/compare/tokens/1.4.0...tokens/2.0.0) (2024-01-19)
+
+
+### Bug Fixes
+
+* change gradients ([#679](https://github.com/solid-design-system/solid/issues/679)) ([7885716](https://github.com/solid-design-system/solid/commit/788571607cc1f0aa459321c08eaca9b56e5900d9))
+
+
+### BREAKING CHANGES
+
+* The gradient names have been changed.
+
 # [@solid-design-system/tokens-v1.4.0](https://github.com/solid-design-system/solid/compare/tokens/1.3.0...tokens/1.4.0) (2023-12-15)
 
 
