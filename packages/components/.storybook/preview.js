@@ -110,6 +110,11 @@ export const parameters = {
         value: 'rgb(var(--sd-color-neutral-200, 242 242 242))'
       }
     ]
+  },
+  options: {
+    storySort: {
+      order: ['*', 'Legal']
+    }
   }
 };
 
