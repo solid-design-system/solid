@@ -76,7 +76,7 @@
     list-style-type: '';
 
     li {
-      @apply relative pt-3 pl-10;
+      @apply relative pt-4 pl-10;
 
       sd-icon:first-of-type,
       .sd-list--icon__icon:first-of-type {
