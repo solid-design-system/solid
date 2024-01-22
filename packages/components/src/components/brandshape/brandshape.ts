@@ -33,7 +33,7 @@ export default class SdBrandshape extends SolidElement {
   /** Defines which shapes of the brandshape should be displayed. */
   @property({ type: Array }) shapes: ('top' | 'middle' | 'bottom')[] = ['top', 'middle', 'bottom'];
 
-  @state() private componentBreakpoint: Breakpoints = 0;
+  @state() protected componentBreakpoint: Breakpoints = 0;
 
   private resizeObserver: ResizeObserver;
 

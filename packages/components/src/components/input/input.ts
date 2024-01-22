@@ -81,12 +81,12 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   @query('#input') input: HTMLInputElement;
   @query('#invalid-message') invalidMessage: HTMLDivElement;
 
-  @state() private hasFocus = false;
+  @state() protected hasFocus = false;
   /**
    * Indicates whether or not the user input is valid after the user has interacted with the component. These states are activated when the attribute "data-user-valid" or "data-user-invalid" are set on the component via the form controller. They are different than the native input validity state which is always either `true` or `false`.
    */
-  @state() private showValidStyle = false;
-  @state() private showInvalidStyle = false;
+  @state() protected showValidStyle = false;
+  @state() protected showInvalidStyle = false;
 
   /**
    * The type of input. Works the same as a native `<input>` element, but only a subset of types are supported. Defaults

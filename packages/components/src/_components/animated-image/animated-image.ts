@@ -32,8 +32,8 @@ export default class SdAnimatedImage extends SolidElement {
 
   @query('.animated-image__animated') animatedImage: HTMLImageElement;
 
-  @state() private frozenFrame: string;
-  @state() private isLoaded = false;
+  @state() protected frozenFrame: string;
+  @state() protected isLoaded = false;
 
   /** The path to the image to load. */
   @property() src: string;

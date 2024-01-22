@@ -55,8 +55,8 @@ export default class SdRange extends SolidElement implements SolidFormControl {
   @query('.range__control') input: HTMLInputElement;
   @query('.range__tooltip') output: HTMLOutputElement | null;
 
-  @state() private hasFocus = false;
-  @state() private hasTooltip = false;
+  @state() protected hasFocus = false;
+  @state() protected hasTooltip = false;
   @property() title = ''; // make reactive to pass through
 
   /** The name of the range, submitted as a name/value pair with form data. */

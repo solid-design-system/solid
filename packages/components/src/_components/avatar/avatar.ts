@@ -29,7 +29,7 @@ import type { CSSResultGroup } from 'lit';
 export default class SdAvatar extends SolidElement {
   static styles: CSSResultGroup = styles;
 
-  @state() private hasError = false;
+  @state() protected hasError = false;
 
   /** The image source to use for the avatar. */
   @property() image = '';

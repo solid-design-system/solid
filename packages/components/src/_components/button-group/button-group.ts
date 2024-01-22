@@ -1,6 +1,6 @@
 import { customElement } from '../../../src/internal/register-custom-element';
-import {property, query, state } from 'lit/decorators.js';
 import { html } from 'lit';
+import {property, query, state } from 'lit/decorators.js';
 import SolidElement from '../../internal/solid-element';
 import styles from './button-group.styles';
 import type { CSSResultGroup } from 'lit';
@@ -21,7 +21,7 @@ export default class SdButtonGroup extends SolidElement {
 
   @query('slot') defaultSlot: HTMLSlotElement;
 
-  @state() private disableRole = false;
+  @state() protected disableRole = false;
 
   /**
    * A label to use for the button group. This won't be displayed on the screen, but it will be announced by assistive

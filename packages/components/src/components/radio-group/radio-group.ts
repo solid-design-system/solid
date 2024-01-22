@@ -53,13 +53,13 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
   @query('#validation-input') validationInput: HTMLInputElement;
   @query('#invalid-message') invalidMessage: HTMLDivElement;
 
-  @state() private hasButtonGroup = false;
-  @state() private defaultValue = '';
+  @state() protected hasButtonGroup = false;
+  @state() protected defaultValue = '';
 
   /**
    * Indicates whether or not the user input is valid after the user has interacted with the component. These states are activated when the attribute "data-user-valid" or "data-user-invalid" are set on the component via the form controller. They are different than the native input validity state which is always either `true` or `false`.
    */
-  @state() private showInvalidStyle = false;
+  @state() protected showInvalidStyle = false;
 
   /**
    * The radio group's label. Required for proper accessibility. If you need to display HTML, use the `label` slot
