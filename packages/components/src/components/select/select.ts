@@ -90,7 +90,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   @query('#invalid-message') invalidMessage: HTMLDivElement;
 
   @state() private hasFocus = false;
-  @state() hasHover = false; // we need this because Safari doesn't honor :hover styles while dragging
+  @state() private hasHover = false; // we need this because Safari doesn't honor :hover styles while dragging
   /** When `multiple` is `true` and `useTags` is `false`, the displayLabel sets the text shown in the display input. We use the localized string "Options Selected (#)" by default. */
   @state() private displayLabel = '';
   @state() private currentOption: SdOption;
@@ -98,8 +98,8 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   /**
    * Indicates whether or not the user input is valid after the user has interacted with the component. These states are activated when the attribute "data-user-valid" or "data-user-invalid" are set on the component via the form controller. They are different than the native input validity state which is always either `true` or `false`.
    */
-  @state() showValidStyle = false;
-  @state() showInvalidStyle = false;
+  @state() private showValidStyle = false;
+  @state() private showInvalidStyle = false;
 
   /** The default value of the form control. Primarily used for resetting the form control. */
   @defaultValue() defaultValue: string | string[] = '';

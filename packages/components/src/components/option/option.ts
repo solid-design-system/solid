@@ -37,9 +37,9 @@ export default class SdOption extends SolidElement {
 
   @query('[part="base"]') defaultSlot: HTMLSlotElement;
 
-  @state() current = false; // the user has keyed into the option, but hasn't selected it yet (shows a highlight)
-  @state() selected = false; // the option is selected and has aria-selected="true"
-  @state() hasHover = false; // we need this because Safari doesn't honor :hover styles while dragging
+  @state() private current = false; // the user has keyed into the option, but hasn't selected it yet (shows a highlight)
+  @state() private selected = false; // the option is selected and has aria-selected="true"
+  @state() private hasHover = false; // we need this because Safari doesn't honor :hover styles while dragging
 
   /** The option's size is inherited automatically from the `size` attribute of the parent `sd-select`. */
   @property({ reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';

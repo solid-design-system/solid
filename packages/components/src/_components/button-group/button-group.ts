@@ -21,7 +21,7 @@ export default class SdButtonGroup extends SolidElement {
 
   @query('slot') defaultSlot: HTMLSlotElement;
 
-  @state() disableRole = false;
+  @state() private disableRole = false;
 
   /**
    * A label to use for the button group. This won't be displayed on the screen, but it will be announced by assistive

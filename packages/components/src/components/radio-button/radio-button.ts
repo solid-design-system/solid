@@ -33,7 +33,7 @@ export default class SdRadioButton extends SolidElement {
   @query('.button') input: HTMLInputElement;
   @query('.hidden-input') hiddenInput: HTMLInputElement;
 
-  @state() protected hasFocus = false;
+  @state() private hasFocus = false;
 
   /**
    * @internal The radio button's checked state. This is exposed as an "internal" attribute so we can reflect it, making

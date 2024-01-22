@@ -59,10 +59,10 @@ export default class SdTreeItem extends SolidElement {
 
   private readonly localize = new LocalizeController(this);
 
-  @state() indeterminate = false;
-  @state() isLeaf = false;
-  @state() loading = false;
-  @state() selectable = false;
+  @state() private indeterminate = false;
+  @state() private isLeaf = false;
+  @state() private loading = false;
+  @state() private selectable = false;
 
   /** Expands the tree item. */
   @property({ type: Boolean, reflect: true }) expanded = false;
