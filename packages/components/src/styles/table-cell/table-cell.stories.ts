@@ -138,7 +138,7 @@ export const Samples = {
           <table class="sd-table sample-table border-collapse w-full" >
             <thead>
               ${(() => {
-                return html`<tr class="sticky top-[-1px] bg-white">
+                return html`<tr class="sticky top-[-1px] sd-table-cell--bg-white">
                   ${headerData.map(cellData => {
                     return html`<th class="sd-table-cell">${cellData}</th>`;
                   })}
@@ -218,33 +218,33 @@ export const Samples = {
         </table>
 
         <div class="headline">Simple Table With Vertical Headers</div>
-        <table class="sd-table sample-table">
-
-          ${tableData.map((rowData, rowIndex) => {
-            return html`<tr class="sd-table-cell sd-table-cell--shadow-right">
-              ${rowData.map((cellData, columIndex) => {
-                if(columIndex === 0) {
-                  return html`<th
-                  class="sd-table-cell ${rowIndex % 2 === 0
-                    ? 'sd-table-cell--bg-white'
-                    : 'sd-table-cell--bg-primary-100'}"
-                >
-                  Header
-                </th>`;
-                }else {
-                  return html`<td
-                  class="sd-table-cell ${rowIndex % 2 === 0
-                    ? 'sd-table-cell--bg-white'
-                    : 'sd-table-cell--bg-primary-100'}"
-                >
-                  ${cellData}
-                </td>`;
-                }
+        <div id="horizontal-scrollable-table" class="overflow-x-scroll overflow-y-visible w-[600px] ml-4">
+          <table class="sd-table sample-table border-separate">
+            ${tableData.map((rowData, rowIndex) => {
+              return html`<tr class="sd-table-cell sd-table-cell--shadow-right">
+                ${rowData.map((cellData, columIndex) => {
+                  if(columIndex === 0) {
+                    return html`<th
+                    class="sd-table-cell absolute left-0 top-auto ${rowIndex % 2 === 0
+                      ? 'sd-table-cell--bg-white'
+                      : 'sd-table-cell--bg-primary-100'}"
+                  >
+                    Header
+                  </th>`;
+                  }else {
+                    return html`<td
+                    class="sd-table-cell text-nowrap whitespace-nowrap ${rowIndex % 2 === 0
+                      ? 'sd-table-cell--bg-white'
+                      : 'sd-table-cell--bg-primary-100'}"
+                  >
+                    ${cellData}
+                  </td>`;
+                  }
+              })}
+              </tr>`;
             })}
-            </tr>`;
-          })}
-        </table>
-
+          </table>
+        </div>
         <div class="headline">Simple Table, First Column Fixed</div>
         <div class="disclaimer">This sample will be provided soon.</div>
 

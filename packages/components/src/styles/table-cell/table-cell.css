@@ -24,12 +24,10 @@
 
   &--shadow-right {
 
-    th, td {
-      position: relative;
-    }
-
     th:first-child {
-      overflow: hidden;
+      position: sticky;
+      left: 0;
+      z-index: 2;
     }
 
     & th:first-child:before {
