@@ -75,12 +75,16 @@
     https://www.matuzo.at/blog/2023/removing-list-styles-without-affecting-semantics */
     list-style-type: '';
 
+    li:not(:last-of-type) {
+      @apply pb-1;
+    }
+
     li {
       @apply relative pt-4 pl-10;
 
       sd-icon:first-of-type,
       .sd-list--icon__icon:first-of-type {
-        @apply absolute left-0 top-2 text-3xl text-primary;
+        @apply absolute left-0 top-3 text-3xl text-primary;
       }
     }
 
