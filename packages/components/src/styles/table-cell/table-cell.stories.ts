@@ -117,17 +117,17 @@ export const Samples = {
       </style>
 
       <script>
-        document.addEventListener("DOMContentLoaded", (event) => {
-          console.log("DOM fully loaded and parsed");
+        document.addEventListener('DOMContentLoaded', event => {
+          console.log('DOM fully loaded and parsed');
           let scrollabeTable = document.getElementById('vertical-scrollable-table');
           let table = scrollabeTable.getElementsByTagName('table')[0];
 
-          scrollabeTable.addEventListener("scroll", (event) => {
-              if(scrollabeTable.scrollTop === 0) {
-                table.classList.remove('sd-table-cell--shadow-bottom');
-              } else {
-                table.classList.add('sd-table-cell--shadow-bottom');
-              }
+          scrollabeTable.addEventListener('scroll', event => {
+            if (scrollabeTable.scrollTop === 0) {
+              table.classList.remove('sd-table-cell--shadow-bottom');
+            } else {
+              table.classList.add('sd-table-cell--shadow-bottom');
+            }
           });
         });
       </script>
@@ -135,7 +135,7 @@ export const Samples = {
       <div class="story-wrapper">
         <div class="headline">Simple Table</div>
         <div id="vertical-scrollable-table" class="overflow-y-auto h-[200px]">
-          <table class="sd-table sample-table border-collapse w-full" >
+          <table class="sd-table sample-table border-collapse w-full">
             <thead>
               ${(() => {
                 return html`<tr class="sticky top-[-1px] sd-table-cell--bg-white">
@@ -217,30 +217,51 @@ export const Samples = {
           </tbody>
         </table>
 
+        <script>
+          document.addEventListener('DOMContentLoaded', event => {
+            console.log('DOM fully loaded and parsed');
+            let scrollabeTable = document.getElementById('horizontal-scrollable-table');
+            let tables = scrollabeTable.getElementsByTagName('tr');
+
+            console.log(tables);
+
+            scrollabeTable.addEventListener('scroll', event => {
+              if (scrollabeTable.scrollLeft === 0) {
+                for (let table of tables) {
+                  table.classList.remove('sd-table-cell--shadow-right');
+                }
+              } else {
+                for (let table of tables) {
+                  table.classList.add('sd-table-cell--shadow-right');
+                }
+              }
+            });
+          });
+        </script>
         <div class="headline">Simple Table With Vertical Headers</div>
-        <div id="horizontal-scrollable-table" class="overflow-x-scroll overflow-y-visible w-[600px] ml-4">
+        <div id="horizontal-scrollable-table" class="overflow-x-scroll overflow-y-visible w-[600px]">
           <table class="sd-table sample-table border-separate">
             ${tableData.map((rowData, rowIndex) => {
-              return html`<tr class="sd-table-cell sd-table-cell--shadow-right">
+              return html`<tr class="sd-table-cell">
                 ${rowData.map((cellData, columIndex) => {
-                  if(columIndex === 0) {
+                  if (columIndex === 0) {
                     return html`<th
-                    class="sd-table-cell absolute left-0 top-auto ${rowIndex % 2 === 0
-                      ? 'sd-table-cell--bg-white'
-                      : 'sd-table-cell--bg-primary-100'}"
-                  >
-                    Header
-                  </th>`;
-                  }else {
+                      class="sd-table-cell absolute left-0 top-auto sticky left-0 z-[2] ${rowIndex % 2 === 0
+                        ? 'sd-table-cell--bg-white'
+                        : 'sd-table-cell--bg-primary-100'}"
+                    >
+                      Header
+                    </th>`;
+                  } else {
                     return html`<td
-                    class="sd-table-cell text-nowrap whitespace-nowrap ${rowIndex % 2 === 0
-                      ? 'sd-table-cell--bg-white'
-                      : 'sd-table-cell--bg-primary-100'}"
-                  >
-                    ${cellData}
-                  </td>`;
+                      class="sd-table-cell text-nowrap whitespace-nowrap ${rowIndex % 2 === 0
+                        ? 'sd-table-cell--bg-white'
+                        : 'sd-table-cell--bg-primary-100'}"
+                    >
+                      ${cellData}
+                    </td>`;
                   }
-              })}
+                })}
               </tr>`;
             })}
           </table>

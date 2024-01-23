@@ -6,13 +6,12 @@
   }
 
   &--shadow-bottom {
-
     tr:first-child th {
       position: relative;
     }
 
     & tr:first-child th:after {
-      content: "";
+      content: '';
       position: absolute;
       left: 0;
       right: 0;
@@ -23,15 +22,14 @@
   }
 
   &--shadow-right {
-
-    th:first-child {
-      position: sticky;
-      left: 0;
-      z-index: 2;
-    }
+    /*th:first-child {*/
+    /*  position: sticky;*/
+    /*  left: 0;*/
+    /*  z-index: 2;*/
+    /*}*/
 
     & th:first-child:before {
-      content: "";
+      content: '';
       position: absolute;
       top: 0;
       bottom: 0;
