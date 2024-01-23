@@ -62,6 +62,44 @@ describe('<sd-textarea>', () => {
     expect(submitHandler).to.have.been.calledOnce;
   });
 
+  it('should show correct icon when calling reportValidity() with style-on-valid attribute', async () => {
+    const input = await fixture<HTMLFormElement>(html` <sd-textarea style-on-valid></sd-textarea> `);
+
+    input.setCustomValidity('Invalid selection');
+    await input.updateComplete;
+
+    input.reportValidity();
+    await input.updateComplete;
+    await input.updateComplete; // Currently there are two updates in the component
+
+    expect(input.shadowRoot!.querySelector('[part~="invalid-icon"]')).to.exist;
+    expect(input.shadowRoot!.querySelector('[part~="valid-icon"]')).to.not.exist;
+
+    input.setCustomValidity('');
+    await input.updateComplete;
+
+    input.reportValidity();
+    await input.updateComplete;
+    await input.updateComplete; // Currently there are two updates in the component
+
+    expect(input.shadowRoot!.querySelector('[part~="invalid-icon"]')).to.not.exist;
+    expect(input.shadowRoot!.querySelector('[part~="valid-icon"]')).to.exist;
+  });
+
+  it('should not show icon when calling reportValidity() without style-on-valid attribute', async () => {
+    const input = await fixture<HTMLFormElement>(html` <sd-textarea></sd-textarea> `);
+
+    input.setCustomValidity('');
+    await input.updateComplete;
+
+    input.reportValidity();
+    await input.updateComplete;
+    await input.updateComplete; // Currently there are two updates in the component
+
+    expect(input.shadowRoot!.querySelector('[part~="invalid-icon"]')).to.not.exist;
+    expect(input.shadowRoot!.querySelector('[part~="valid-icon"]')).to.not.exist;
+  });
+
   describe('when the value changes', () => {
     it('should emit sd-change and sd-input when the user types in the textarea', async () => {
       const el = await fixture<SdTextarea>(html` <sd-textarea></sd-textarea> `);
