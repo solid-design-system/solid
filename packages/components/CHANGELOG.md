@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v1.39.0](https://github.com/solid-design-system/solid/compare/components/1.38.3...components/1.39.0) (2024-01-23)
+
+
+### Features
+
+* ✨ add sd-list (CSS style) ([#677](https://github.com/solid-design-system/solid/issues/677)) ([0124cf2](https://github.com/solid-design-system/solid/commit/0124cf2caf87171f3c08d9887ba7a32a65fa21dd))
+
+### 📈 Stats
+* Bundle size (uncompressed): 254 KB (unchanged)
+* Bundle size (gzipped): 62 KB (unchanged)
+
 # [@solid-design-system/components-v1.38.3](https://github.com/solid-design-system/solid/compare/components/1.38.2...components/1.38.3) (2024-01-19)
 
 
