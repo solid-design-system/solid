@@ -1,0 +1,103 @@
+.sd-list {
+  @apply text-left  py-4;
+
+  &--inverted {
+    @apply text-white;
+  }
+
+  &:is(ol) {
+    & ol {
+      counter-reset: item;
+    }
+
+    & li:not(:first-child) {
+      @apply mt-3;
+    }
+
+    & li {
+      @apply table;
+      counter-increment: item;
+    }
+
+    & li:before {
+      @apply pr-2 table-cell;
+      content: counters(item, '.') '. ';
+    }
+
+    & li li {
+      @apply mt-3;
+    }
+
+    & li li:before {
+      content: counters(item, '.') '. ';
+    }
+  }
+
+  &:is(ul):not(.sd-list--icon) {
+    list-style-type: '\2022';
+    @apply ml-4;
+
+    li {
+      @apply pl-2 -ml-2;
+    }
+
+    & li:not(:first-child) {
+      @apply pt-3;
+    }
+
+    & li li {
+      @apply pt-3;
+    }
+
+    & ul {
+      @apply ms-4;
+      list-style-type: '\002B1D';
+    }
+
+    & ul ul {
+      @apply ms-4;
+      list-style-type: '\2010';
+    }
+  }
+
+  &--icon&--inverted {
+    li {
+      sd-icon:first-of-type,
+      .sd-list--icon__icon:first-of-type {
+        @apply text-white;
+      }
+    }
+  }
+
+  &--icon {
+    /* Safari removes list semantics of lists that don’t look like lists (list-style: none). The only way to remove list
+    styles without affecting semantics is to set list-style-type to an empty string.
+    https://www.matuzo.at/blog/2023/removing-list-styles-without-affecting-semantics */
+    list-style-type: '';
+
+    > li:first-of-type {
+      @apply pt-0;
+    }
+
+    li {
+      @apply relative leading-[32px] pt-3 pl-10;
+
+      sd-icon:first-of-type,
+      .sd-list--icon__icon:first-of-type {
+        @apply absolute left-0 text-3xl text-primary;
+      }
+    }
+
+    &.sd-list--horizontal {
+      @apply flex;
+
+      & li {
+        @apply flex;
+      }
+
+      & li:not(:last-child) {
+        @apply mr-8;
+      }
+    }
+  }
+}
