@@ -138,9 +138,9 @@ export const Samples = {
           <table class="sd-table sample-table border-collapse w-full" >
             <thead>
               ${(() => {
-                return html`<tr>
+                return html`<tr class="sticky top-[-1px] bg-white">
                   ${headerData.map(cellData => {
-                    return html`<th class="sd-table-cell sd-table-cell--bg-transparent sticky top-0">${cellData}</th>`;
+                    return html`<th class="sd-table-cell">${cellData}</th>`;
                   })}
                 </tr>`;
               })()}
