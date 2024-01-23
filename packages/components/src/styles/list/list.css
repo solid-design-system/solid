@@ -75,7 +75,7 @@
     https://www.matuzo.at/blog/2023/removing-list-styles-without-affecting-semantics */
     list-style-type: '';
 
-    > li:first-of-type{
+    > li:first-of-type {
       @apply pt-0;
     }
 
