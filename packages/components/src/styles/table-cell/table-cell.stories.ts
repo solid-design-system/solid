@@ -115,28 +115,47 @@ export const Samples = {
           margin-top: 72px;
         }
       </style>
+
+      <script>
+        document.addEventListener("DOMContentLoaded", (event) => {
+          console.log("DOM fully loaded and parsed");
+          let scrollabeTable = document.getElementById('vertical-scrollable-table');
+          let table = scrollabeTable.getElementsByTagName('table')[0];
+
+          scrollabeTable.addEventListener("scroll", (event) => {
+              if(scrollabeTable.scrollTop === 0) {
+                table.classList.remove('sd-table-cell--shadow-bottom');
+              } else {
+                table.classList.add('sd-table-cell--shadow-bottom');
+              }
+          });
+        });
+      </script>
+
       <div class="story-wrapper">
         <div class="headline">Simple Table</div>
-        <table class="sd-table sample-table sd-table-cell--shadow-bottom">
-          <thead>
-            ${(() => {
-              return html`<tr>
-                ${headerData.map(cellData => {
-                  return html`<th class="sd-table-cell sd-table-cell--bg-transparent">${cellData}</th>`;
-                })}
-              </tr>`;
-            })()}
-          </thead>
-          <tbody>
-            ${tableData.map(rowData => {
-              return html`<tr>
-                ${rowData.map(cellData => {
-                  return html`<td class="sd-table-cell sd-table-cell--bg-transparent">${cellData}</td>`;
-                })}
-              </tr>`;
-            })}
-          </tbody>
-        </table>
+        <div id="vertical-scrollable-table" class="overflow-y-auto h-[200px]">
+          <table class="sd-table sample-table border-collapse w-full" >
+            <thead>
+              ${(() => {
+                return html`<tr>
+                  ${headerData.map(cellData => {
+                    return html`<th class="sd-table-cell sd-table-cell--bg-transparent sticky top-0">${cellData}</th>`;
+                  })}
+                </tr>`;
+              })()}
+            </thead>
+            <tbody>
+              ${tableData.map(rowData => {
+                return html`<tr>
+                  ${rowData.map(cellData => {
+                    return html`<td class="sd-table-cell sd-table-cell--bg-transparent">${cellData}</td>`;
+                  })}
+                </tr>`;
+              })}
+            </tbody>
+          </table>
+        </div>
         <div class="headline">Simple Table With Vertical Lines</div>
         <table class="sd-table sample-table">
           <thead>
