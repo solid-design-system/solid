@@ -298,28 +298,26 @@ export const AdvancedSamples = {
 
       <div class="story-wrapper">
         <div class="headline">Fixed header with shadow table</div>
-        <div id="vertical-scrollable-table" class="overflow-y-auto h-[200px]">
-          <table class="sd-table sample-table border-collapse w-full">
-            <thead>
-              ${(() => {
-                return html`<tr class="sticky top-[-1px] sd-table-cell--bg-white">
-                  ${headerData.map(cellData => {
-                    return html`<th class="sd-table-cell relative">${cellData}</th>`;
-                  })}
-                </tr>`;
-              })()}
-            </thead>
-            <tbody>
-              ${tableData.map(rowData => {
-                return html`<tr>
-                  ${rowData.map(cellData => {
-                    return html`<td class="sd-table-cell sd-table-cell--bg-transparent">${cellData}</td>`;
-                  })}
-                </tr>`;
-              })}
-            </tbody>
-          </table>
-        </div>
+        <table id="vertical-scrollable-table" class="sd-table sample-table h-[200px] block relative overflow-y-scroll ">
+          <thead>
+            ${(() => {
+              return html`<tr>
+                ${headerData.map(cellData => {
+                  return html`<th class="sd-table-cell sd-table-cell--bg-white sticky top-0">${cellData}</th>`;
+                })}
+              </tr>`;
+            })()}
+          </thead>
+          <tbody>
+            ${tableData.map(rowData => {
+              return html`<tr>
+                ${rowData.map(cellData => {
+                  return html`<td class="sd-table-cell sd-table-cell--bg-transparent">${cellData}</td>`;
+                })}
+              </tr>`;
+            })}
+          </tbody>
+        </table>
 
         <script>
           document.addEventListener('DOMContentLoaded', event => {
