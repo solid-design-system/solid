@@ -11,9 +11,10 @@
       position: absolute;
       left: 0;
       right: 0;
-      bottom: 0;
+      bottom: -10px;
       height: 10px;
       background: linear-gradient(to bottom, rgba(24, 24, 24, 0.1), transparent);
+      transition: opacity 10s linear;
     }
   }
 
@@ -23,10 +24,10 @@
       position: absolute;
       top: 0;
       bottom: 0;
-      right: 0;
-      width: 10px; /* Adjust the width of the shadow as needed */
+      right: -10px;
+      width: 10px;
       background: linear-gradient(to right, rgba(24, 24, 24, 0.1), transparent);
-      border-style: none;
+      transition: opacity 0.3s ease;
     }
   }
 
