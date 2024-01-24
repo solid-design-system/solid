@@ -150,15 +150,17 @@ export const ExtendedFooter = {
   },
   render: () => {
     return html`
-      <sd-dialog open="" id="extended-footer"
-        ><p class="sd-paragraph">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie phasellus
-          dui vel id. Velit in sed.
-        </p>
-        <h4 slot="headline" class="sd-headline sd-headline--size-3xl">Lorem Ipsum</h4>
-        <sd-button slot="footer" class="w-full">Label</sd-button>
-        <sd-button variant="secondary" slot="footer" class="w-full">Label</sd-button></sd-dialog
-      >
+      <div style="height: 40vh;">
+        <sd-dialog open="" id="extended-footer"
+          ><p class="sd-paragraph">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
+            phasellus dui vel id. Velit in sed.
+          </p>
+          <h4 slot="headline" class="sd-headline sd-headline--size-3xl">Lorem Ipsum</h4>
+          <sd-button slot="footer" class="w-full">Label</sd-button>
+          <sd-button variant="secondary" slot="footer" class="w-full">Label</sd-button></sd-dialog
+        >
+      </div>
     `;
   }
 };
@@ -176,14 +178,16 @@ export const SmallHeadline = {
   },
   render: () => {
     return html`
-      <sd-dialog open="" id="small-headline"
-        ><p class="sd-paragraph">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie phasellus
-          dui vel id. Velit in sed.
-        </p>
-        <span slot="headline" class="font-bold">Lorem Ipsum</span>
-        <sd-button slot="footer" class="w-full">Label</sd-button></sd-dialog
-      >
+      <div style="height: 40vh;">
+        <sd-dialog open="" id="small-headline"
+          ><p class="sd-paragraph">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
+            phasellus dui vel id. Velit in sed.
+          </p>
+          <span slot="headline" class="font-bold">Lorem Ipsum</span>
+          <sd-button slot="footer" class="w-full">Label</sd-button></sd-dialog
+        >
+      </div>
     `;
   }
 };
@@ -204,14 +208,16 @@ export const PreventClosing = {
   },
   render: () => {
     return html`
-      <sd-dialog open="" id="prevent-closing"
-        ><p class="sd-paragraph">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie phasellus
-          dui vel id. Velit in sed.
-        </p>
-        <h4 slot="headline" class="sd-headline sd-headline--size-3xl">Lorem Ipsum</h4>
-        <sd-button slot="footer" class="w-full" id="close-button">Close</sd-button></sd-dialog
-      >
+      <div style="height: 40vh;">
+        <sd-dialog open="" id="prevent-closing"
+          ><p class="sd-paragraph">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
+            phasellus dui vel id. Velit in sed.
+          </p>
+          <h4 slot="headline" class="sd-headline sd-headline--size-3xl">Lorem Ipsum</h4>
+          <sd-button slot="footer" class="w-full" id="close-button">Close</sd-button></sd-dialog
+        >
+      </div>
 
       <script>
         const preventClosingDialog = document.querySelector('#prevent-closing');
@@ -236,7 +242,7 @@ export const PreventClosing = {
 
 export const Mouseless = {
   render: (args: any) => {
-    return html`<div class="mouseless">${generateTemplate({ args })}</div>`;
+    return html`<div class="mouseless" style="height: 40vh;">${generateTemplate({ args })}</div>`;
   },
 
   play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
