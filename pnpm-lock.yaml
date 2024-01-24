@@ -105,6 +105,9 @@ importers:
       '@semantic-release/git':
         specifier: ^10.0.1
         version: 10.0.1(semantic-release@19.0.5)
+      '@solid-design-system/theming':
+        specifier: workspace:*
+        version: link:../theming
       '@storybook/addon-essentials':
         specifier: ^7.5.3
         version: 7.5.3(react-dom@18.2.0)(react@18.2.0)
@@ -159,9 +162,6 @@ importers:
       cem-plugin-vs-code-custom-data-generator:
         specifier: ^1.4.2
         version: 1.4.2
-      chroma-js:
-        specifier: ^2.4.2
-        version: 2.4.2
       chromatic:
         specifier: ^10.0.0
         version: 10.0.0
@@ -260,6 +260,25 @@ importers:
         version: 4.2.1(typescript@5.3.3)(vite@5.0.0)
 
   packages/placeholders:
+    devDependencies:
+      '@semantic-release/changelog':
+        specifier: ^6.0.3
+        version: 6.0.3(semantic-release@19.0.5)
+      '@semantic-release/git':
+        specifier: ^10.0.1
+        version: 10.0.1(semantic-release@19.0.5)
+      semantic-release:
+        specifier: ^19.0.5
+        version: 19.0.5
+      semantic-release-monorepo:
+        specifier: ^7.0.5
+        version: 7.0.5(semantic-release@19.0.5)
+
+  packages/theming:
+    dependencies:
+      chroma-js:
+        specifier: ^2.4.2
+        version: 2.4.2
     devDependencies:
       '@semantic-release/changelog':
         specifier: ^6.0.3
@@ -6406,7 +6425,7 @@ packages:
 
   /chroma-js@2.4.2:
     resolution: {integrity: sha512-U9eDw6+wt7V8z5NncY2jJfZa+hUH8XEj8FQHgFJTrUFnJfXYf4Ml4adI2vXZOjqRDpFWtYVWypDfZwnJ+HIR4A==}
-    dev: true
+    dev: false
 
   /chromatic@10.0.0:
     resolution: {integrity: sha512-RLU/Y0FdYVnPJIhm/gG3CSJO1hKg2O/nvfutyWT88Tg2o4aIGqSrQKCBiAUAHKrQKpfF+9Dvn/oHRTPtRcinHA==}
