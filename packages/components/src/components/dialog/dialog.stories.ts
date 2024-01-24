@@ -8,10 +8,6 @@ const { overrideArgs } = storybookHelpers('sd-dialog');
 const { argTypes, parameters } = storybookDefaults('sd-dialog');
 const { generateTemplate } = storybookTemplate('sd-dialog');
 
-/**
- * **Disclaimer** : Controls for `sd-dialog` are unavailable on this Docs page due to a [Storybook bug](https://github.com/storybookjs/storybook/issues/11908). Please use the individual feature stories to access these controls.
- */
-
 export default {
   title: 'Components/sd-dialog',
   component: 'sd-dialog',
@@ -38,7 +34,7 @@ export default {
     }
   ]),
   argTypes,
-  parameters: { ...parameters, docs: { story: { inline: false, height: '500px' } } },
+  parameters: { ...parameters, docs: { story: { height: '500px' } } },
   decorators: [withActions] as any
 };
 
@@ -126,14 +122,14 @@ export const NoCloseButton = {
 
 export const Scrolling = {
   render: (args: any) => {
-    return html` <div style="height: 40vh;">
+    return html` <div style="height: 100vh;">
       ${generateTemplate({
         args,
         constants: [
           {
             type: 'slot',
             name: 'default',
-            value: `<div class="slot slot--border slot--text" style="height:150vh; width: 100%; padding: 0 1rem; justify-content:start;">Scroll down and give it a try!</div>`
+            value: `<div class="slot slot--border slot--background slot--text" style="height:150vh; width: 100%; padding: 0 1rem; justify-content:start;">Scroll down and give it a try!</div>`
           }
         ]
       })}

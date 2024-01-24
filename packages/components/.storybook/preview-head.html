@@ -112,7 +112,8 @@
   .mouseless,
   .mouseless:hover {
     cursor: none !important;
-    padding: 0.5rem; /* makes focus ring completely visible in Chromatic screenshots */
+    padding: 0.5rem;
+    /* makes focus ring completely visible in Chromatic screenshots */
   }
 
   .mouseless * {
@@ -121,5 +122,10 @@
 
   .sbdocs .sbdocs-content ol {
     list-style-type: decimal !important;
+  }
+
+  body.sd-scroll-lock {
+    padding-right: unset !important;
+    overflow: unset !important;
   }
 </style>
