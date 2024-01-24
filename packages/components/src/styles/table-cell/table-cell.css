@@ -11,9 +11,9 @@
       position: absolute;
       left: 0;
       right: 0;
-      bottom: -5px; /* Adjust the distance of the shadow from the header row */
-      height: 5px; /* Adjust the height of the shadow */
-      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), transparent);
+      bottom: 0;
+      height: 10px;
+      background: linear-gradient(to bottom, rgba(24, 24, 24, 0.1), transparent);
     }
   }
 
@@ -24,8 +24,8 @@
       top: 0;
       bottom: 0;
       right: 0;
-      width: 5px; /* Adjust the width of the shadow as needed */
-      background: linear-gradient(to right, rgba(0, 0, 0, 0.2), transparent);
+      width: 10px; /* Adjust the width of the shadow as needed */
+      background: linear-gradient(to right, rgba(24, 24, 24, 0.1), transparent);
       border-style: none;
     }
   }
