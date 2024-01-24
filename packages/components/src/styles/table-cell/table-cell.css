@@ -6,9 +6,9 @@
   }
 
   &--shadow-bottom {
-    tr:first-child th {
-      position: relative;
-    }
+    /*tr:first-child th {*/
+    /*  position: relative;*/
+    /*}*/
 
     & tr:first-child th:after {
       content: '';

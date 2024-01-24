@@ -299,7 +299,7 @@ export const AdvancedSamples = {
               ${(() => {
                 return html`<tr class="sticky top-[-1px] sd-table-cell--bg-white">
                   ${headerData.map(cellData => {
-                    return html`<th class="sd-table-cell">${cellData}</th>`;
+                    return html`<th class="sd-table-cell relative">${cellData}</th>`;
                   })}
                 </tr>`;
               })()}
