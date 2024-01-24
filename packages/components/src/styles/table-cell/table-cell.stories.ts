@@ -204,6 +204,7 @@ export const Samples = {
 };
 
 export const AdvancedSamples = {
+  name: 'Advanced Samples',
   parameters: {
     controls: {
       exclude: ['sd-table-cell--divider', 'sd-table-cell--bg-...']
@@ -278,21 +279,25 @@ export const AdvancedSamples = {
       <script>
         document.addEventListener('DOMContentLoaded', event => {
           console.log('DOM fully loaded and parsed');
-          let scrollabeTable = document.getElementById('vertical-scrollable-table');
-          let table = scrollabeTable.getElementsByTagName('table')[0];
+          let scrollableTable = document.getElementById('vertical-scrollable-table');
+          let tableHeaders = scrollableTable.getElementsByTagName('th');
 
-          scrollabeTable.addEventListener('scroll', event => {
-            if (scrollabeTable.scrollTop === 0) {
-              table.classList.remove('sd-table-cell--shadow-bottom');
+          scrollableTable.addEventListener('scroll', event => {
+            if (scrollableTable.scrollTop === 0) {
+              for (let tableHeader of tableHeaders) {
+                tableHeader.classList.remove('sd-table-cell--shadow-bottom');
+              }
             } else {
-              table.classList.add('sd-table-cell--shadow-bottom');
+              for (let tableHeader of tableHeaders) {
+                tableHeader.classList.add('sd-table-cell--shadow-bottom');
+              }
             }
           });
         });
       </script>
 
       <div class="story-wrapper">
-        <div class="headline">Simple Table</div>
+        <div class="headline">Fixed header with shadow table</div>
         <div id="vertical-scrollable-table" class="overflow-y-auto h-[200px]">
           <table class="sd-table sample-table border-collapse w-full">
             <thead>
@@ -319,25 +324,23 @@ export const AdvancedSamples = {
         <script>
           document.addEventListener('DOMContentLoaded', event => {
             console.log('DOM fully loaded and parsed');
-            let scrollabeTable = document.getElementById('horizontal-scrollable-table');
-            let tables = scrollabeTable.getElementsByTagName('tr');
+            let scrollableTable = document.getElementById('horizontal-scrollable-table');
+            let tableHeaders = scrollableTable.getElementsByTagName('th');
 
-            console.log(tables);
-
-            scrollabeTable.addEventListener('scroll', event => {
-              if (scrollabeTable.scrollLeft === 0) {
-                for (let table of tables) {
-                  table.classList.remove('sd-table-cell--shadow-right');
+            scrollableTable.addEventListener('scroll', event => {
+              if (scrollableTable.scrollLeft === 0) {
+                for (let tableHeader of tableHeaders) {
+                  tableHeader.classList.remove('sd-table-cell--shadow-right');
                 }
               } else {
-                for (let table of tables) {
-                  table.classList.add('sd-table-cell--shadow-right');
+                for (let tableHeader of tableHeaders) {
+                  tableHeader.classList.add('sd-table-cell--shadow-right');
                 }
               }
             });
           });
         </script>
-        <div class="headline">Simple Table With Vertical Headers</div>
+        <div class="headline">Fixed, vertical header with shadow table</div>
         <div id="horizontal-scrollable-table" class="overflow-x-scroll overflow-y-visible w-[600px]">
           <table class="sd-table sample-table border-separate">
             ${tableData.map((rowData, rowIndex) => {
