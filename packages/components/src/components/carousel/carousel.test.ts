@@ -569,7 +569,7 @@ describe('<sd-carousel>', () => {
         await oneEvent(el.scrollContainer, 'scrollend', false);
         await el.updateComplete;
 
-        // It takes a moment for the scrollend event to be fired
+        // It takes a moment for the scrollend event to be fired.
         await aTimeout(100);
 
         expect(el.scrollContainer).to.have.attribute('aria-busy', 'false');
