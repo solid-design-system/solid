@@ -123,6 +123,7 @@ If you are working on a component, follow the steps below:
 ### Styles
 
 If you are working on a style, follow the steps below:
+
 1. Create new styles in the `packages/components/src/styles` folder.
 2. Set up a Storybook story alongside the styles, using a default story. This allows you to preview and iterate on the styles as you work.
 3. **Each style should have an accompanying declaration file.** This is for documenting the style and its attributes. Follow the structure of our existing styles for guidance (eg: [sd-meta](https://github.com/solid-design-system/solid/blob/main/packages/components/src/styles/meta/meta.declaration.ts)).
@@ -157,7 +158,6 @@ _ You can always refer to the existing components and styles to familiarize your
 - Chromatic
 - Vite
 - PostCSS
-
 
 ## SOLID Design Principles in Software Development
 
