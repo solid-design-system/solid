@@ -63,7 +63,7 @@ We present the library in a [Storybook](https://storybook.js.org/) with the foll
 
 - **DOCS**: All .mdx documentation files.
 - **COMPONENTS**: Web Components built with Lit JS. Often more complex than Styles, and could feature reactivity, state, multiple slots, properties, and more.
-- **UTILITIES**:
+- **UTILITIES**: Web Components built with Lit JS, used as SDS-internal helper components. Technically necessary to build other components and generic enough to be used multiple times. Not officially part of the design system library and no respective component existing in Figma.
 - **STYLES**: These are standalone CSS files. They don't provide any logic and are often non-interactive.
 - **PATTERN**: Demonstrate how to combine several components to solve a specific problem.
 
@@ -110,12 +110,13 @@ If you are working on a component, follow the steps below:
 5. **Compare the old UI component to the newly adapted Shoelace component.** Refer to the [UI Component Library](https://component-library.dev.fe.union-investment.de/integration/storybook/index.html) to get an idea of what is being changed. This helps to see what is being lost or improved upon and should be summarized in the migration guide.
 6. **Keep the technical props and features of the Shoelace component that feel relevant.** It is easier to decide which ones can be removed at the end.
 7. **Convert the component styles to use a Tailwind first approach.** Shoelace does not use Tailwind and includes CSS files for every component. These should be carefully inspected and adapted. Work your way through the render() method of the component and remove CSS classes one by one, replacing them with a combination of Tailwind classes that implement our design. Keep in mind our designs may differ from the original styles applied by Shoelace, however, there are many small details (regarding `display`, `position`, or interaction states etc.) that should be carefully observed and adapted.
-8. **Implement any missing behavior.** Once the Shoelace component has been reduced and re-styled with Tailwind, add any missing functions that may be necessary to meet the component's requirements.
-9. **Write concise comments build up the auto-generated Storybook docs.** We rely primarily on the docs to communicate to the library users (developers). Write descriptive comments and organize properties semantically to the best of your ability.
-10. **Write concise Storybook stories to cover all visual scenarios.** See the Storybook section above for further information. All stories can furthermore be observed together in the docs.
-11. **Start with the jest tests from Shoelace.** Inside of `packages/components` you can test individual components with `pnpm test.component input` (where input is akin to the sd-input component). These will likely contain some misnamed properties or improper default values. Adapt them as needed to fit our use case.
-12. **Add any tests that are needed for new component behavior.** Motto: “Test the behavior, not the implementation.” Write tests that verify your components meet the expected requirements and specifications, ensuring they function correctly from the user's perspective. Don’t get too tied up trying to test all the technical details.
-13. **Author the full migration guide.** The migration guide should be placed in the `packages/components/src/docs/Migration` folder. The migration guide should be based on the migration guide template (`templates/migration-guide-template.mdx`) and be named by the old component name (e.g. ui-button.mdx).
+8. **Mobile First Approach.** We as design system do not consider in detail on which device our components will be used as we want to be as generic as possible. However, we still build our components following the Mobile First approach (eg. using mobile tokens as default).
+9. **Implement any missing behavior.** Once the Shoelace component has been reduced and re-styled with Tailwind, add any missing functions that may be necessary to meet the component's requirements.
+10. **Write concise comments build up the auto-generated Storybook docs.** We rely primarily on the docs to communicate to the library users (developers). Write descriptive comments and organize properties semantically to the best of your ability.
+11. **Write concise Storybook stories to cover all visual scenarios.** See the Storybook section above for further information. All stories can furthermore be observed together in the docs.
+12. **Start with the jest tests from Shoelace.** Inside of `packages/components` you can test individual components with `pnpm test.component input` (where input is akin to the sd-input component). These will likely contain some misnamed properties or improper default values. Adapt them as needed to fit our use case.
+13. **Add any tests that are needed for new component behavior.** Motto: “Test the behavior, not the implementation.” Write tests that verify your components meet the expected requirements and specifications, ensuring they function correctly from the user's perspective. Don’t get too tied up trying to test all the technical details.
+14. **Author the full migration guide.** The migration guide should be placed in the `packages/components/src/docs/Migration` folder. The migration guide should be based on the migration guide template (`templates/migration-guide-template.mdx`) and be named by the old component name (e.g. ui-button.mdx).
 
 **Run `pnpm verify` in the root directory before creating a PR.** This will check that all formatting, tests, and build processes are working correctly to allow the pipeline to run successfully.
 
@@ -157,34 +158,9 @@ _ You can always refer to the existing components and styles to familiarize your
 - Vite
 - PostCSS
 
-//TBD: Do we keep them and apply them even thought the nome does not come from the SOLID principles?
 
 ## SOLID Design Principles in Software Development
 
-[SOLID](https://www.freecodecamp.org/news/solid-design-principles-in-software-development/) is a set of five design principles that aid in designing robust, testable, extensible, and maintainable object-oriented software systems. Each principle addresses specific challenges in software development.
+After defining our own principles and decided for the name Solid Design System, we found the [SOLID Design Principles](https://www.freecodecamp.org/news/solid-design-principles-in-software-development/). A set of five design principles that aid in designing robust, testable, extensible, and maintainable object-oriented software systems. Each principle addresses specific challenges in software development.
 
-- **Single Responsibility Principle (SRP)**
-
-  - A class, module, or function should have only one reason to change, i.e., it should perform a single responsibility.
-  - Example: Separating classes for animal information, sound, and feeding.
-
-- **Open-Closed Principle (OCP)**
-
-  - Classes, modules, and functions should be open for extension but closed for modification.
-  - Example: Using abstraction to add new animal types without modifying existing code.
-
-- **Liskov Substitution Principle (LSP)**
-
-  - Child classes must be substitutable for their parent classes, ensuring seamless replacement.
-  - Example: Dog and Cat classes replacing the parent Animal class.
-
-- **Interface Segregation Principle (ISP)**
-
-  - Clients should not be forced to implement interfaces or methods they do not use.
-  - Example: Breaking down large interfaces into smaller, specific ones.
-
-- **Dependency Inversion Principle (DIP)**
-  - High-level modules should not depend on low-level modules; both should depend on abstractions.
-  - Example: Using abstractions to decouple high-level and low-level modules.
-
-Implementing SOLID principles leads to a large but maintainable codebase, enabling developers to make changes without causing major issues. These principles contribute to bug-free, flexible, scalable, and reusable software systems.
+These principles are not developed by us and the connection is more 'unintentional'. Nevertheless, the strong and deep connection between our principles and the ones mentioned above is definitely worth sharing here and we highly recommend to get familiar with them as well.
