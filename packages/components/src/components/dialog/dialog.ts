@@ -20,7 +20,7 @@ import SolidElement from '../../internal/solid-element';
  * @summary Dialogs, sometimes called "modals", appear above the page and require the user's immediate attention.
  * @documentation https://solid.union-investment.com/[storybook-link]/dialog
  * @status stable
- * @since 1.38.0
+ * @since 1.40.0
  *
  * @dependency sd-button
  * @dependency sd-icon
