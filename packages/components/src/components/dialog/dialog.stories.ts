@@ -8,6 +8,10 @@ const { overrideArgs } = storybookHelpers('sd-dialog');
 const { argTypes, parameters } = storybookDefaults('sd-dialog');
 const { generateTemplate } = storybookTemplate('sd-dialog');
 
+/**
+ * **Disclaimer** : Input-based controls for `sd-dialog` are unavailable on this Docs page due to a [Storybook bug](https://github.com/solid-design-system/solid/issues/702). Please use the individual feature stories to access these controls.
+ */
+
 export default {
   title: 'Components/sd-dialog',
   component: 'sd-dialog',
@@ -34,7 +38,7 @@ export default {
     }
   ]),
   argTypes,
-  parameters: { ...parameters, docs: { story: { height: '500px' } } },
+  parameters: { ...parameters, docs: { story: { inline: false, height: '500px' } } },
   decorators: [withActions] as any
 };
 
