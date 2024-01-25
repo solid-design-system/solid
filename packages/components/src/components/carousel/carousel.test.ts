@@ -1,5 +1,5 @@
+import { aTimeout, expect, fixture, html, oneEvent } from '@open-wc/testing';
 import { clickOnElement } from '../../internal/test.js';
-import { expect, fixture, html, oneEvent } from '@open-wc/testing';
 import sinon from 'sinon';
 import type SdCarousel from './carousel';
 
@@ -570,7 +570,7 @@ describe('<sd-carousel>', () => {
         await el.updateComplete;
 
         // It takes a moment for the scrollend event to be fired
-        await new Promise(resolve => setTimeout(resolve, 100));
+        await aTimeout(100);
 
         expect(el.scrollContainer).to.have.attribute('aria-busy', 'false');
       });
