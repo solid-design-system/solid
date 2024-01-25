@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v1.39.1](https://github.com/solid-design-system/solid/compare/components/1.39.0...components/1.39.1) (2024-01-25)
+
+
+### Bug Fixes
+
+* 🤔 re-integrate web-types generation ([#710](https://github.com/solid-design-system/solid/issues/710)) ([daea78c](https://github.com/solid-design-system/solid/commit/daea78cd4f505f11f551061e4eaf7125ef187eb2))
+
+### 📈 Stats
+* Bundle size (uncompressed): 254 KB (unchanged)
+* Bundle size (gzipped): 62 KB (unchanged)
+
 # [@solid-design-system/components-v1.39.0](https://github.com/solid-design-system/solid/compare/components/1.38.3...components/1.39.0) (2024-01-23)
 
 
