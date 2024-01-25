@@ -121,7 +121,9 @@ export const Samples = {
             ${(() => {
               return html`<tr>
                 ${headerData.map(cellData => {
-                  return html`<th class="sd-table-cell sd-table-cell--bg-white sd-table-cell--shadow-top">${cellData}</th>`;
+                  return html`<th class="sd-table-cell sd-table-cell--bg-white sd-table-cell--shadow-top">
+                    ${cellData}
+                  </th>`;
                 })}
               </tr>`;
             })()}
