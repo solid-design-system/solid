@@ -161,6 +161,6 @@ _ You can always refer to the existing components and styles to familiarize your
 
 ## SOLID Design Principles in Software Development
 
-After defining our own principles and decided for the name Solid Design System, we found the [SOLID Design Principles](https://www.freecodecamp.org/news/solid-design-principles-in-software-development/). A set of five design principles that aid in designing robust, testable, extensible, and maintainable object-oriented software systems. Each principle addresses specific challenges in software development.
+After defining our own principles and decided for the name Solid Design System, we realized the close connection to [SOLID Design Principles](https://www.freecodecamp.org/news/solid-design-principles-in-software-development/), a set of five design principles that aid in designing robust, testable, extensible, and maintainable object-oriented software systems. Each principle addresses specific challenges in software development.
 
 These principles are not developed by us and the connection is more 'unintentional'. Nevertheless, the strong and deep connection between our principles and the ones mentioned above is definitely worth sharing here and we highly recommend to get familiar with them as well.
