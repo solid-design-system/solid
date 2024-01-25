@@ -121,7 +121,7 @@ export const Samples = {
             ${(() => {
               return html`<tr>
                 ${headerData.map(cellData => {
-                  return html`<th class="sd-table-cell sd-table-cell--bg-transparent">${cellData}</th>`;
+                  return html`<th class="sd-table-cell sd-table-cell--bg-white sd-table-cell--shadow-top">${cellData}</th>`;
                 })}
               </tr>`;
             })()}
@@ -298,7 +298,7 @@ export const AdvancedSamples = {
 
       <div class="story-wrapper">
         <div class="headline">Fixed header with shadow table</div>
-        <table id="vertical-scrollable-table" class="sd-table sample-table h-[200px] block relative overflow-y-scroll ">
+        <table id="vertical-scrollable-table" class="sd-table sample-table h-[200px] block overflow-y-scroll ">
           <thead>
             ${(() => {
               return html`<tr>
@@ -340,7 +340,7 @@ export const AdvancedSamples = {
         </script>
         <div class="headline">Fixed, vertical header with shadow table</div>
         <div id="horizontal-scrollable-table" class="overflow-x-scroll overflow-y-visible w-[600px]">
-          <table class="sd-table sample-table border-separate">
+          <table class="sd-table sample-table">
             ${tableData.map((rowData, rowIndex) => {
               return html`<tr class="sd-table-cell">
                 ${rowData.map((cellData, columIndex) => {

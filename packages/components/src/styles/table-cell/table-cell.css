@@ -40,6 +40,30 @@
     }
   }
 
+  &--shadow-left {
+    &:first-child:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: -10px;
+      width: 10px;
+      background: linear-gradient(to left, rgba(24, 24, 24, 0.1), transparent);
+    }
+  }
+
+  &--shadow-top {
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: -10px;
+      height: 10px;
+      background: linear-gradient(to top, rgba(24, 24, 24, 0.1), transparent);
+    }
+  }
+
   &--bg {
     &-white {
       @apply bg-white;
