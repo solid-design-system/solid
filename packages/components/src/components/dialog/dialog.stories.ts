@@ -38,7 +38,7 @@ export default {
     }
   ]),
   argTypes,
-  parameters: { ...parameters, docs: { story: { inline: false, height: '500px' } } },
+  parameters: { ...parameters },
   decorators: [withActions] as any
 };
 
