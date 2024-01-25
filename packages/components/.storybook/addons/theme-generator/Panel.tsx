@@ -2,8 +2,8 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { AddonPanel, Form } from '@storybook/components';
 import { PARAM_KEY, PANEL_DEFAULTS } from './constants';
 import { useGlobals } from '@storybook/manager-api';
-import { calculateColorsAsCss } from '@solid-design-system/theming/src/color-calculation';
-import theme from '../../../../tokens/src/create-theme.cjs';
+// @ts-ignore
+import { calculateColorsAsCss } from '@solid-design-system/theming/color-calculation';
 
 const { Textarea, Button } = Form;
 
@@ -41,7 +41,7 @@ export const Panel: React.FC<PanelProps> = props => {
   };
 
   useEffect(() => {
-    setOutput(calculateColorsAsCss(colors, theme, useNormalizedLuminanceMap, useForcedShades));
+    setOutput(calculateColorsAsCss(colors, useNormalizedLuminanceMap, useForcedShades, undefined));
   }, [colors, useNormalizedLuminanceMap, useForcedShades]);
 
   useDebouncedEffect(

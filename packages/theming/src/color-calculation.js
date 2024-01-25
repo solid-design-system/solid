@@ -1,4 +1,5 @@
 import chroma from 'chroma-js';
+import tailwindTheme from '@solid-design-system/tokens/tailwind';
 
 const defaultLuminanceMap = {
   50: 0.95,
@@ -151,19 +152,18 @@ export const calculateColorsForType = (type, theme, colors, useNormalizedLuminan
  * The color scales are then transformed into CSS custom properties.
  *
  * @param {Object} colors - An object containing color definitions (e.g., primary, accent) with their respective hex values.
- * @param {Object} theme - The theme object containing color configurations. See @solid-design-system/tokens for more information.
  * @param {boolean} useNormalizedLuminanceMap - A boolean flag to determine whether to use a normalized luminance map or the calculated one.
  * @param {boolean} useForcedShades - A boolean flag to decide if forced shades should be applied.
+ * @param {Object} [theme] - Optional theme object containing color configurations. The following theme is used as a default @solid-design-system/tokens.
  * @returns {string} A string containing CSS custom properties for the defined color types and their shades.
  *
  * @example
  * // Example usage:
- * const theme = { accentColor: {...} };
  * const colors = { primary: '#ff5733', accent: '#33c3f0' };
- * const cssProperties = calculateColorsAsCss(colors, theme, true, false);
+ * const cssProperties = calculateColorsAsCss(colors, undefined, true, false);
  * console.log(cssProperties); // Outputs CSS custom properties as a string
  */
-export const calculateColorsAsCss = (colors, theme, useNormalizedLuminanceMap, useForcedShades) => {
+export const calculateColorsAsCss = (colors, useNormalizedLuminanceMap, useForcedShades, theme = tailwindTheme) => {
   let allTokens = ':root{\n  /* Copy & paste into your theme */\n';
 
   Object.keys(colors).forEach(type => {
