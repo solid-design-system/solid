@@ -2,7 +2,7 @@ import type { Renderer, PartialStoryFn as StoryFunction, StoryContext } from '@s
 import { useEffect, useGlobals } from '@storybook/preview-api';
 import { PARAM_KEY, PANEL_DEFAULTS } from './constants';
 // @ts-ignore - no types available
-import { calculateColorsAsCss } from '@solid-design-system/theming/color-calculation';
+import { calculateColorsAsCss } from '@solid-design-system/theming/src/color-calculation';
 
 export const withGlobals = (StoryFn: StoryFunction<Renderer>, context: StoryContext<Renderer>) => {
   const [globals] = useGlobals();
