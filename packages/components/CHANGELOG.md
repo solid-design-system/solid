@@ -1,3 +1,25 @@
+# [@solid-design-system/components-v2.0.0](https://github.com/solid-design-system/solid/compare/components/1.39.1...components/2.0.0) (2024-01-26)
+
+
+### Bug Fixes
+
+* remove automatic valid styling from form fields ([#703](https://github.com/solid-design-system/solid/issues/703)) ([eb08265](https://github.com/solid-design-system/solid/commit/eb08265c95627c9c4c8385cc8bb1c2dbd09f6e7a))
+
+
+### BREAKING CHANGES
+
+* Before this change `sd-input`, `sd-select` and
+`sd-textarea` immediately showed "valid styles" (success color +
+checkmark) immediately when an form field was valid. In most cases this
+isn't relevant, e. g. in search fields, app interfaces etc.
+With this change you now have to explicitly set the attribute
+`style-on-valid` on the mentioned components to show "valid styles", as
+soon as the component is valid.
+
+### 📈 Stats
+* Bundle size (uncompressed): 255 KB (+1 KB / +0%)
+* Bundle size (gzipped): 63 KB (+1 KB / +2%)
+
 # [@solid-design-system/components-v1.39.1](https://github.com/solid-design-system/solid/compare/components/1.39.0...components/1.39.1) (2024-01-25)
 
 
