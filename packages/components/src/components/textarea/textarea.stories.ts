@@ -139,7 +139,7 @@ export const Sizes = {
 };
 
 /**
- * Per default the input will indicate an error state when the input is invalid. Use the `style-on-valid` attribute to indicate a valid state as well.
+ * Per default the input will indicate an error state when the input is invalid. Use the `style-on-valid` attribute to opt-in the automatic indication of a valid state as well.
  */
 
 export const StyleOnValid = {
