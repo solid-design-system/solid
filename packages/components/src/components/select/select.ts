@@ -177,6 +177,9 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   /** The select's required attribute. */
   @property({ type: Boolean, reflect: true }) required = false;
 
+  /** Shows success styles if the validity of the input is valid. */
+  @property({ type: Boolean, reflect: true, attribute: 'style-on-valid' }) styleOnValid = false;
+
   /**
    * Enable this option to prevent the listbox from being clipped when the component is placed inside a container with
    * `overflow: auto|scroll`. Hoisting uses a fixed positioning strategy that works in many, but not all, scenarios.
@@ -785,13 +788,13 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
       ? 'disabled'
       : this.hasFocus && this.showInvalidStyle
         ? 'activeInvalid'
-        : this.hasFocus && this.showValidStyle
+        : this.hasFocus && this.styleOnValid && this.showValidStyle
           ? 'activeValid'
           : this.hasFocus || this.open
             ? 'active'
             : this.showInvalidStyle
               ? 'invalid'
-              : this.showValidStyle
+              : this.styleOnValid && this.showValidStyle
                 ? 'valid'
                 : 'default';
 
@@ -973,7 +976,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                     ></sd-icon>
                   `
                 : ''}
-              ${this.showValidStyle
+              ${this.styleOnValid && this.showValidStyle
                 ? html`
                     <sd-icon
                       part="valid-icon"

@@ -1,6 +1,7 @@
 import '../../solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
+import { userEvent } from '@storybook/testing-library';
 import { waitUntil } from '@open-wc/testing-helpers';
 import { withActions } from '@storybook/addon-actions/decorator';
 import type SdInput from './input';
@@ -232,6 +233,49 @@ export const Sizes = {
 };
 
 /**
+ * Per default the input will indicate an error state when the input is invalid. Use the `style-on-valid` attribute to indicate a valid state as well.
+ */
+
+export const StyleOnValid = {
+  parameters: {
+    controls: {
+      exclude: ['style-on-valid']
+    }
+  },
+  args: overrideArgs([
+    { type: 'attribute', name: 'value', value: 'valu' },
+    { type: 'attribute', name: 'label', value: 'Label' },
+    { type: 'attribute', name: 'help-text', value: 'help-text' },
+    { type: 'attribute', name: 'clearable', value: true },
+    {
+      type: 'slot',
+      name: 'right',
+      value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
+    }
+  ]),
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        y: { type: 'attribute', name: 'style-on-valid' }
+      },
+      args
+    });
+  },
+
+  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
+    const els = canvasElement.querySelectorAll('sd-input');
+
+    for (const el of els) {
+      await waitUntil(() => el?.shadowRoot?.querySelector('input'));
+      await userEvent.type(el.shadowRoot!.querySelector('input')!, 'e');
+    }
+
+    // tab to next element to loose focus
+    await userEvent.tab();
+  }
+};
+
+/**
  * Demonstrates the allowed input types.
  */
 
@@ -374,6 +418,24 @@ export const Validation = {
   render: (args: any) => {
     return html`
       <form action="" method="get" id="testForm" name="testForm" class="w-[370px]">
+        <div class="mb-2">
+          ${generateTemplate({
+            constants: [
+              { type: 'attribute', name: 'label', value: 'Indicate Valid State' },
+              { type: 'attribute', name: 'name', value: 'required field' },
+              { type: 'attribute', name: 'placeholder', value: '.*' },
+              { type: 'attribute', name: 'help-text', value: 'indicate on valid' },
+              { type: 'attribute', name: 'form', value: 'testForm' },
+              { type: 'attribute', name: 'style-on-valid', value: true },
+              {
+                type: 'slot',
+                name: 'right',
+                value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
+              }
+            ],
+            args
+          })}
+        </div>
         <div class="mb-2">
           ${generateTemplate({
             constants: [
@@ -728,7 +790,7 @@ export const setCustomValidity = {
     return html`
       <!-- block submit and show alert instead -->
       <form id="validationForm" class="flex flex-col gap-2">
-        <sd-input id="custom-input" label="Input"></sd-input>
+        <sd-input id="custom-input" label="Input" style-on-valid></sd-input>
         <div>
           <sd-button type="submit">Submit</sd-button>
           <sd-button id="error-button" variant="secondary">Set custom error</sd-button>

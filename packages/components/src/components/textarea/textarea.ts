@@ -114,6 +114,9 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
   /** Used to customize the label or icon of the Enter key on virtual keyboards. */
   @property() enterkeyhint: 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send';
 
+  /** Shows success styles if the validity of the input is valid. */
+  @property({ type: Boolean, reflect: true, attribute: 'style-on-valid' }) styleOnValid = false;
+
   /** Enables spell checking on the textarea. */
   @property({
     type: Boolean,
@@ -280,6 +283,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
 
   /** Checks for validity and shows the browser's validation message if the control is invalid. */
   reportValidity() {
+    this.formControlController.fakeUserInteraction();
     return this.textarea.reportValidity();
   }
 
@@ -307,13 +311,13 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
         ? 'readonly'
         : this.hasFocus && this.showInvalidStyle
           ? 'activeInvalid'
-          : this.hasFocus && this.showValidStyle
+          : this.hasFocus && this.styleOnValid && this.showValidStyle
             ? 'activeValid'
             : this.hasFocus
               ? 'active'
               : this.showInvalidStyle
                 ? 'invalid'
-                : this.showValidStyle
+                : this.styleOnValid && this.showValidStyle
                   ? 'valid'
                   : 'default';
 
@@ -414,15 +418,17 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
                     class=${cx('text-error absolute right-4 bg-white group-hover:bg-neutral-200', iconSizeMarginLeft)}
                     library="system"
                     name="risk"
+                    part="invalid-icon"
                   ></sd-icon>
                 `
               : ''}
-            ${this.showValidStyle
+            ${this.styleOnValid && this.showValidStyle
               ? html`
                   <sd-icon
                     class=${cx('text-success absolute right-4 bg-white group-hover:bg-neutral-200', iconSizeMarginLeft)}
                     library="system"
                     name="confirm"
+                    part="valid-icon"
                   ></sd-icon>
                 `
               : ''}
