@@ -89,12 +89,10 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   @query('[part="listbox"]') listbox: HTMLSlotElement;
   @query('#invalid-message') invalidMessage: HTMLDivElement;
 
-  /** When `multiple` is `true` and `useTags` is `false`, the displayLabel sets the text shown in the display input. We use the localized string "Options Selected (#)" by default.
-   * @internal
-   */
-  @state() private displayLabel = '';
   /** @internal*/
   @state() hasHover = false; // we need this because Safari doesn't honor :hover styles while dragging
+  /** When `multiple` is `true` and `useTags` is `false`, the displayLabel sets the text shown in the display input. We use the localized string "Options Selected (#)" by default. */
+  @state() private displayLabel = '';
   @state() private hasFocus = false;
   @state() private currentOption: SdOption;
   @state() private selectedOptions: SdOption[] = [];
