@@ -56,7 +56,7 @@ Any changes in the token set in Token Studio plugin must be in a new branch bran
 
 ![Screen Shot 2024-01-19 at 11 23 08](https://github.com/solid-design-system/solid/assets/118520877/82e1fd88-ce70-4de9-931b-764e228f0d22)
 
-Note: If the token is related to Figma native style i.e.: color, choose "create styles" so Figma style and token are in sync
+> Note: If the token is related to Figma native style i.e.: color, choose "create styles" so Figma style and token are in sync
 
 Then push with a commit message according to the development standards and create a PR ticket to hand over
 
