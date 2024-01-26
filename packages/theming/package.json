@@ -23,7 +23,8 @@
   "keywords": [],
   "homepage": "https://solid-design-system.fe.union-investment.de/x.x.x/storybook/",
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "author": "Union Investment",
   "license": "MIT",
