@@ -50,7 +50,7 @@ We welcome contributions from the community! If you'd like to contribute to any 
 
 ### Handling tokens (for maintainers)
 
-Any changes in the token set in Token Studio plugin must be in a new branch.
+Any changes in the token set in Token Studio plugin must be in a new branch branched from `main`.
 
 ![Screen Shot 2024-01-19 at 11 22 24](https://github.com/solid-design-system/solid/assets/118520877/4b7ce66c-a5c7-44f3-86d4-2ae0ab4a902b)
 
