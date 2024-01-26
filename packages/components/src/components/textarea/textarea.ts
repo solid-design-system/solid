@@ -46,8 +46,10 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
   @state() private hasFocus = false;
   /**
    * Indicates whether or not the user input is valid after the user has interacted with the component. These states are activated when the attribute "data-user-valid" or "data-user-invalid" are set on the component via the form controller. They are different than the native input validity state which is always either `true` or `false`.
+   * @internal
    */
   @state() showValidStyle = false;
+  /** @internal */
   @state() showInvalidStyle = false;
 
   /** An empty title prevents browser validation tooltips from appearing on hover */
