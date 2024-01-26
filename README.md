@@ -48,7 +48,7 @@ $ cd packages/components
 
 We welcome contributions from the community! If you'd like to contribute to any of the packages or improve the Solid Design System, please follow our [contribution guidelines](CONTRIBUTING.md) provided in this repository.
 
-### Handling tokens (for maintainers)
+### Handling tokens (for Figma maintainers ONLY)
 
 Any changes in the token set in Token Studio plugin must be in a new branch branched from `main`.
 
