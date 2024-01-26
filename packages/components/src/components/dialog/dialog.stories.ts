@@ -149,7 +149,7 @@ export const ExtendedFooter = {
   name: 'Sample: Extended Footer',
   parameters: {
     controls: {
-      include: []
+      disable: true
     }
   },
   render: () => {
@@ -177,7 +177,7 @@ export const SmallHeadline = {
   name: 'Sample: Small Headline',
   parameters: {
     controls: {
-      include: []
+      disable: true
     }
   },
   render: () => {
@@ -207,31 +207,67 @@ export const PreventClosing = {
   name: 'Sample: Preventing Closing',
   parameters: {
     controls: {
-      include: []
+      disable: true
     }
   },
   render: () => {
     return html`
       <div style="height: 40vh;">
-        <sd-dialog open="" id="prevent-closing"
-          ><p class="sd-paragraph">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
-            phasellus dui vel id. Velit in sed.
-          </p>
-          <h4 slot="headline" class="sd-headline sd-headline--size-3xl">Lorem Ipsum</h4>
+        <div class="flex gap-2">
+          <sd-button id="open-dialog">Open Dialog</sd-button>
+          <sd-button id="open-timed-dialog">Open Timed Dialog</sd-button>
+        </div>
+
+        <sd-dialog id="default" class="prevent-closing"
+          ><p class="sd-paragraph">This dialog will not close when you click on the overlay.</p>
+          <h4 slot="headline" class="sd-headline sd-headline--size-3xl">Dialog</h4>
           <sd-button slot="footer" class="w-full" id="close-button">Close</sd-button></sd-dialog
         >
+
+        <sd-dialog id="timed" class="prevent-closing" headline="Timed Dialog">
+          <div id="countdown">Closable in 5 seconds...</div>
+        </sd-dialog>
       </div>
 
       <script>
-        const preventClosingDialog = document.querySelector('#prevent-closing');
-        const closeButton = preventClosingDialog.querySelector('#close-button');
+        const openDialogButton = document.querySelector('#open-dialog');
+        const openTimedDialogButton = document.querySelector('#open-timed-dialog');
+        const countdownElement = document.querySelector('#countdown');
 
-        closeButton.addEventListener('click', () => preventClosingDialog.hide());
+        const defaultDialog = document.querySelector('#default');
+        const timedDialog = document.querySelector('#timed');
 
-        // Prevent the dialog from closing when the user clicks on the overlay
-        preventClosingDialog.addEventListener('sd-request-close', event => {
+        const closeButton = document.querySelector('#close-button');
+        let canCloseTimedDialog = false;
+
+        closeButton.addEventListener('click', () => defaultDialog.hide());
+        openDialogButton.addEventListener('click', () => defaultDialog.show());
+
+        openTimedDialogButton.addEventListener('click', () => {
+          timedDialog.show();
+          canCloseTimedDialog = false;
+          let counter = 5;
+          countdownElement.textContent = 'Closable in ' + counter + ' seconds...';
+
+          const interval = setInterval(() => {
+            counter--;
+            countdownElement.textContent = 'Closable in ' + counter + ' seconds...';
+            if (counter <= 0) {
+              clearInterval(interval);
+              canCloseTimedDialog = true;
+              countdownElement.textContent = 'You can now close the dialog.';
+            }
+          }, 1000);
+        });
+
+        defaultDialog.addEventListener('sd-request-close', event => {
           if (event.detail.source === 'overlay') {
+            event.preventDefault();
+          }
+        });
+
+        timedDialog.addEventListener('sd-request-close', event => {
+          if (!canCloseTimedDialog) {
             event.preventDefault();
           }
         });
