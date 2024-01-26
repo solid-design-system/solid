@@ -241,19 +241,24 @@ export const PreventClosing = {
           });
         </script>
 
-        <sd-dialog id="timed" headline="Timed Dialog">
+        <sd-dialog id="timed" headline="Timed Dialog" no-close-button>
           <div id="countdown">Closable in 5 seconds...</div>
+          <sd-button slot="footer" class="w-full" id="timed-close-button" disabled>Close</sd-button>
         </sd-dialog>
 
         <script>
           // Prevent closing the dialog for a certain amount of time
           const openTimedDialogButton = document.querySelector('#open-timed-dialog');
           const countdownElement = document.querySelector('#countdown');
+          const timedCloseButton = document.querySelector('#timed-close-button');
 
           const timedDialog = document.querySelector('#timed');
           let canCloseTimedDialog = false;
 
+          timedCloseButton.addEventListener('click', () => timedDialog.hide());
+
           openTimedDialogButton.addEventListener('click', () => {
+            timedCloseButton.disabled = true;
             timedDialog.show();
             canCloseTimedDialog = false;
             let counter = 5;
@@ -265,6 +270,7 @@ export const PreventClosing = {
               if (counter <= 0) {
                 clearInterval(interval);
                 canCloseTimedDialog = true;
+                timedCloseButton.disabled = false;
                 countdownElement.textContent = 'You can now close the dialog.';
               }
             }, 1000);
