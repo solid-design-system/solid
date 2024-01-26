@@ -218,60 +218,65 @@ export const PreventClosing = {
           <sd-button id="open-timed-dialog">Open Timed Dialog</sd-button>
         </div>
 
-        <sd-dialog id="default" class="prevent-closing"
+        <sd-dialog id="default-dialog"
           ><p class="sd-paragraph">This dialog will not close when you click on the overlay.</p>
           <h4 slot="headline" class="sd-headline sd-headline--size-3xl">Dialog</h4>
           <sd-button slot="footer" class="w-full" id="close-button">Close</sd-button></sd-dialog
         >
 
-        <sd-dialog id="timed" class="prevent-closing" headline="Timed Dialog">
+        <script>
+          // Prevent closing the dialog when clicking on the overlay
+          const openDialogButton = document.querySelector('#open-dialog');
+          const defaultDialog = document.querySelector('#default-dialog');
+
+          const closeButton = document.querySelector('#close-button');
+
+          closeButton.addEventListener('click', () => defaultDialog.hide());
+          openDialogButton.addEventListener('click', () => defaultDialog.show());
+
+          defaultDialog.addEventListener('sd-request-close', event => {
+            if (event.detail.source === 'overlay') {
+              event.preventDefault();
+            }
+          });
+        </script>
+
+        <sd-dialog id="timed" headline="Timed Dialog">
           <div id="countdown">Closable in 5 seconds...</div>
         </sd-dialog>
-      </div>
 
-      <script>
-        const openDialogButton = document.querySelector('#open-dialog');
-        const openTimedDialogButton = document.querySelector('#open-timed-dialog');
-        const countdownElement = document.querySelector('#countdown');
+        <script>
+          // Prevent closing the dialog for a certain amount of time
+          const openTimedDialogButton = document.querySelector('#open-timed-dialog');
+          const countdownElement = document.querySelector('#countdown');
 
-        const defaultDialog = document.querySelector('#default');
-        const timedDialog = document.querySelector('#timed');
+          const timedDialog = document.querySelector('#timed');
+          let canCloseTimedDialog = false;
 
-        const closeButton = document.querySelector('#close-button');
-        let canCloseTimedDialog = false;
-
-        closeButton.addEventListener('click', () => defaultDialog.hide());
-        openDialogButton.addEventListener('click', () => defaultDialog.show());
-
-        openTimedDialogButton.addEventListener('click', () => {
-          timedDialog.show();
-          canCloseTimedDialog = false;
-          let counter = 5;
-          countdownElement.textContent = 'Closable in ' + counter + ' seconds...';
-
-          const interval = setInterval(() => {
-            counter--;
+          openTimedDialogButton.addEventListener('click', () => {
+            timedDialog.show();
+            canCloseTimedDialog = false;
+            let counter = 5;
             countdownElement.textContent = 'Closable in ' + counter + ' seconds...';
-            if (counter <= 0) {
-              clearInterval(interval);
-              canCloseTimedDialog = true;
-              countdownElement.textContent = 'You can now close the dialog.';
+
+            const interval = setInterval(() => {
+              counter--;
+              countdownElement.textContent = 'Closable in ' + counter + ' seconds...';
+              if (counter <= 0) {
+                clearInterval(interval);
+                canCloseTimedDialog = true;
+                countdownElement.textContent = 'You can now close the dialog.';
+              }
+            }, 1000);
+          });
+
+          timedDialog.addEventListener('sd-request-close', event => {
+            if (!canCloseTimedDialog) {
+              event.preventDefault();
             }
-          }, 1000);
-        });
-
-        defaultDialog.addEventListener('sd-request-close', event => {
-          if (event.detail.source === 'overlay') {
-            event.preventDefault();
-          }
-        });
-
-        timedDialog.addEventListener('sd-request-close', event => {
-          if (!canCloseTimedDialog) {
-            event.preventDefault();
-          }
-        });
-      </script>
+          });
+        </script>
+      </div>
     `;
   }
 };
