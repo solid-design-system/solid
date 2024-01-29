@@ -3,8 +3,7 @@ import { AddonPanel, Form } from '@storybook/components';
 import { PARAM_KEY, PANEL_DEFAULTS } from './constants';
 import { useGlobals } from '@storybook/manager-api';
 import theme from '../../../../tokens/src/create-theme.cjs';
-// @ts-ignore - no types available
-import { calculateColorsAsCss } from '@solid-design-system/theming/color-calculation';
+import { calculateColorsAsCss } from '@solid-design-system/theming';
 
 const { Textarea, Button } = Form;
 

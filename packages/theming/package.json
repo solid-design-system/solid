@@ -2,15 +2,17 @@
   "name": "@solid-design-system/theming",
   "version": "1.0.0",
   "description": "This package provides a color calculation service for the Solid Design System.",
-  "main": "src/color-calculation.js",
+  "main": "./src/index.js",
   "scripts": {
+    "build.types": "tsc --project tsconfig.json",
     "release": "semantic-release  --tagFormat 'theming/${version}' -e semantic-release-monorepo",
     "release.dry": "semantic-release -d --tagFormat 'theming/${version}' -e semantic-release-monorepo"
   },
   "type": "module",
   "exports": {
-    "./color-calculation": "./src/color-calculation.js"
+    ".": "./src/index.js"
   },
+  "types": "./types/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/solid-design-system/solid.git",
@@ -19,7 +21,8 @@
   "keywords": [],
   "homepage": "https://solid-design-system.fe.union-investment.de/x.x.x/storybook/",
   "files": [
-    "src"
+    "src",
+    "types"
   ],
   "author": "Union Investment",
   "license": "MIT",
@@ -28,7 +31,8 @@
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "semantic-release": "^19.0.5",
-    "semantic-release-monorepo": "^7.0.5"
+    "semantic-release-monorepo": "^7.0.5",
+    "typescript": "5.3.3"
   },
   "release": {
     "branches": [
