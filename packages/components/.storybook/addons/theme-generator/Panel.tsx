@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { AddonPanel, Form } from '@storybook/components';
 import { PARAM_KEY, PANEL_DEFAULTS } from './constants';
 import { useGlobals } from '@storybook/manager-api';
+import theme from '../../../../tokens/src/create-theme.cjs';
 // @ts-ignore - no types available
 import { calculateColorsAsCss } from '@solid-design-system/theming/color-calculation';
 
@@ -41,7 +42,7 @@ export const Panel: React.FC<PanelProps> = props => {
   };
 
   useEffect(() => {
-    setOutput(calculateColorsAsCss(colors, useNormalizedLuminanceMap, useForcedShades, undefined));
+    setOutput(calculateColorsAsCss(colors, theme, useNormalizedLuminanceMap, useForcedShades));
   }, [colors, useNormalizedLuminanceMap, useForcedShades]);
 
   useDebouncedEffect(

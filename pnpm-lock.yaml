@@ -276,9 +276,6 @@ importers:
 
   packages/theming:
     dependencies:
-      '@solid-design-system/tokens':
-        specifier: workspace:*
-        version: link:../tokens
       chroma-js:
         specifier: ^2.4.2
         version: 2.4.2
@@ -289,9 +286,6 @@ importers:
       '@semantic-release/git':
         specifier: ^10.0.1
         version: 10.0.1(semantic-release@19.0.5)
-      esbuild:
-        specifier: 0.19.12
-        version: 0.19.12
       semantic-release:
         specifier: ^19.0.5
         version: 19.0.5
@@ -14261,6 +14255,7 @@ packages:
     resolution: {integrity: sha512-T9q82TJI9e/C1TAxYvfb16xO120tMVFZrGA3f9/P4424DNu6ypK103y0GPFVa17yotwSyZW5iYXgjYHkGrJW/g==}
     engines: {node: '>=0.8.0'}
     hasBin: true
+    requiresBuild: true
     dev: true
 
   /unbox-primitive@1.0.2:

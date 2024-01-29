@@ -1,6 +1,7 @@
 import type { Renderer, PartialStoryFn as StoryFunction, StoryContext } from '@storybook/types';
 import { useEffect, useGlobals } from '@storybook/preview-api';
 import { PARAM_KEY, PANEL_DEFAULTS } from './constants';
+import theme from 'tailwind-theme';
 // @ts-ignore - no types available
 import { calculateColorsAsCss } from '@solid-design-system/theming/color-calculation';
 
@@ -13,9 +14,9 @@ export const withGlobals = (StoryFn: StoryFunction<Renderer>, context: StoryCont
   const customThemeActive = globals[PARAM_KEY];
   let customTheme = calculateColorsAsCss(
     panelState?.colors || PANEL_DEFAULTS.colors,
+    theme
     panelState?.useNormalizedLuminanceMap || PANEL_DEFAULTS.useNormalizedLuminanceMap,
-    panelState?.useForcedShades || PANEL_DEFAULTS.useForcedShades,
-    undefined
+    panelState?.useForcedShades || PANEL_DEFAULTS.useForcedShades
   );
 
   const isInDocs = context.viewMode === 'docs';
