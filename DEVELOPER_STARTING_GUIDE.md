@@ -79,8 +79,7 @@ The [docs](https://storybook.js.org/addons/@storybook/addon-docs) serve as a qui
 - `@slot` decorators appear in the Storybook "SLOTS" section
 - `@csspart` decorators appear in the Storybook "CSS SHADOW PARTS" section
 - `@dependency` decorators appear in the Storybook "PROPERTIES" section under "dependencies".
-- `@state` decorators appear in the Storybook "PROPERTIES" section. These should generally be made private so they do not appear in the docs.
-  - If the state can not be made private, they should be marked with the JSDoc annotation `/** @internal */` so they do not appear in the docs.
+- `@state` decorators appear in the Storybook "PROPERTIES" section. These should generally be be marked with the JSDoc annotation `/** @internal */` so they do not appear in the docs.
 - `@event` decorators appear in the Storybook "EVENTS" section
 
 ### Storybook Stories

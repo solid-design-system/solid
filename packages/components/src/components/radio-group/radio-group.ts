@@ -53,7 +53,8 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
   @query('#validation-input') validationInput: HTMLInputElement;
   @query('#invalid-message') invalidMessage: HTMLDivElement;
 
-  @state() private hasButtonGroup = false;
+  /** @internal */
+  @state() hasButtonGroup = false;
   /** @internal */
   @state() defaultValue = '';
 

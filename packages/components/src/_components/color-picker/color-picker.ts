@@ -99,12 +99,19 @@ export default class SdColorPicker extends SolidElement implements SolidFormCont
   @query('[part~="preview"]') previewButton: HTMLButtonElement;
   @query('.color-dropdown') dropdown: SdDropdown;
 
-  @state() private isDraggingGridHandle = false;
-  @state() private isEmpty = false;
-  @state() private inputValue = '';
-  @state() private hue = 0;
-  @state() private saturation = 100;
-  @state() private brightness = 100;
+  /** @internal */
+  @state() isDraggingGridHandle = false;
+  /** @internal */
+  @state() isEmpty = false;
+  /** @internal */
+  @state() inputValue = '';
+  /** @internal */
+  @state() hue = 0;
+  /** @internal */
+  @state() saturation = 100;
+  /** @internal */
+  @state() brightness = 100;
+  /** @internal */
   @state() private alpha = 100;
 
   /**

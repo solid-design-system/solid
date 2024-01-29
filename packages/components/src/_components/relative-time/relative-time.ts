@@ -30,9 +30,12 @@ export default class SdRelativeTime extends SolidElement {
   private readonly localize = new LocalizeController(this);
   private updateTimeout: number;
 
-  @state() private isoTime = '';
-  @state() private relativeTime = '';
-  @state() private titleTime = '';
+  /** @internal */
+  @state() isoTime = '';
+  /** @internal */
+  @state() relativeTime = '';
+  /** @internal */
+  @state() titleTime = '';
 
   /**
    * The date from which to calculate time from. If not set, the current date and time will be used. When passing a
