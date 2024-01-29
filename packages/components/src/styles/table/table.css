@@ -5,11 +5,9 @@
   all: unset;
   @apply table border-collapse border-spacing-0;
 
-  thead tr:first-of-type {
-    @apply relative;
-  }
-
-  thead tr:first-of-type {
-    @apply relative;
+  thead, tfoot {
+    tr:first-of-type {
+      @apply relative;
+    }
   }
 }

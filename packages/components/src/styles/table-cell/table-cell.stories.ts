@@ -391,7 +391,7 @@ export const AdvancedSamples = {
           </tbody>
           <tfoot>
             ${(() => {
-              return html`<tr class="relative">
+              return html`<tr>
                 ${headerData.map(cellData => {
                   return html`<th
                     class="sd-table-cell sd-table-cell--bg-white sticky bottom-0 sd-table-cell--shadow-top sd-table-cell--shadow-active"
@@ -424,7 +424,7 @@ export const AdvancedSamples = {
         <div id="horizontal-scrollable-table" class="overflow-x-scroll overflow-y-visible w-[600px]">
           <table class="sd-table sample-table">
             ${tableData.map((rowData, rowIndex) => {
-              return html`<tr class="sd-table-cell">
+              return html`<tr>
                 ${rowData.map((cellData, columIndex) => {
                   if (columIndex === 0) {
                     return html`<th
@@ -472,7 +472,7 @@ export const AdvancedSamples = {
         <div id="horizontal-scrollable-table-2" class="overflow-x-scroll overflow-y-visible w-[600px]">
           <table class="sd-table sample-table">
             ${tableData.map((rowData, rowIndex) => {
-              return html`<tr class="sd-table-cell">
+              return html`<tr>
                 ${rowData.map((cellData, columIndex) => {
                   if (columIndex === 4) {
                     return html`<th
