@@ -277,33 +277,34 @@ export const AdvancedSamples = {
       </style>
 
       <script>
-        document.addEventListener('DOMContentLoaded', event => {
-          console.log('DOM fully loaded and parsed');
-          let scrollableTable = document.getElementById('vertical-scrollable-table');
-          let tableHeaders = scrollableTable.getElementsByTagName('th');
+        document.addEventListener('DOMContentLoaded', () => {
+          const scrollableTable = document.getElementById('vertical-scrollable-table');
+          const tableHeaders = scrollableTable.querySelectorAll('th');
 
-          scrollableTable.addEventListener('scroll', event => {
-            if (scrollableTable.scrollTop === 0) {
-              for (let tableHeader of tableHeaders) {
-                tableHeader.classList.remove('sd-table-cell--shadow-active');
+          scrollableTable.addEventListener('scroll', () => {
+            tableHeaders.forEach(header => {
+              if (scrollableTable.scrollTop === 0) {
+                header.classList.remove('sd-table-cell--shadow-active');
+              } else {
+                header.classList.add('sd-table-cell--shadow-active');
               }
-            } else {
-              for (let tableHeader of tableHeaders) {
-                tableHeader.classList.add('sd-table-cell--shadow-active');
-              }
-            }
+            });
           });
         });
       </script>
 
       <div class="story-wrapper">
-        <div class="headline">Fixed header with shadow table</div>
+        <div class="headline">Fixed, horizontal, top header with shadow table</div>
         <table id="vertical-scrollable-table" class="sd-table sample-table h-[200px] block overflow-y-scroll ">
           <thead>
             ${(() => {
               return html`<tr>
                 ${headerData.map(cellData => {
-                  return html`<th class="sd-table-cell sd-table-cell--bg-white sticky top-0 sd-table-cell--shadow-bottom">${cellData}</th>`;
+                  return html`<th
+                    class="sd-table-cell sd-table-cell--bg-white sticky top-0 sd-table-cell--shadow-bottom"
+                  >
+                    ${cellData}
+                  </th>`;
                 })}
               </tr>`;
             })()}
@@ -320,71 +321,66 @@ export const AdvancedSamples = {
         </table>
 
         <script>
-          document.addEventListener('DOMContentLoaded', event => {
-            console.log('DOM fully loaded and parsed');
-            let scrollableTable = document.getElementById('vertical-scrollable-table-2');
-            let tableHeaders = scrollableTable.getElementsByTagName('th');
-            const maxScrollY = scrollableTable.scrollHeight - scrollableTable.clientHeight;
+          document.addEventListener('DOMContentLoaded', () => {
+            const scrollableTable = document.getElementById('vertical-scrollable-table-2');
+            const tableHeaders = scrollableTable.querySelectorAll('th');
 
-            scrollableTable.addEventListener('scroll', event => {
-
-              console.log(maxScrollY + " - " +scrollableTable.scrollTop);
-
-              if (scrollableTable.scrollTop === maxScrollY) {
-                for (let tableHeader of tableHeaders) {
-                  tableHeader.classList.remove('sd-table-cell--shadow-active');
+            scrollableTable.addEventListener('scroll', () => {
+              tableHeaders.forEach(header => {
+                if (scrollableTable.scrollTop === (scrollableTable.scrollHeight - scrollableTable.clientHeight)) {
+                  header.classList.remove('sd-table-cell--shadow-active');
+                } else {
+                  header.classList.add('sd-table-cell--shadow-active');
                 }
-              } else {
-                for (let tableHeader of tableHeaders) {
-                  tableHeader.classList.add('sd-table-cell--shadow-active');
-                }
-              }
+              });
             });
           });
         </script>
 
-        <div class="headline">Fixed, bottom header with shadow table</div>
+        <div class="headline">Fixed, horizontal, bottom header with shadow table</div>
         <table id="vertical-scrollable-table-2" class="sd-table sample-table h-[200px] block overflow-y-scroll ">
           <tbody>
-          ${tableData.map(rowData => {
-            return html`<tr>
+            ${tableData.map(rowData => {
+              return html`<tr>
                 ${rowData.map(cellData => {
-              return html`<td class="sd-table-cell sd-table-cell--bg-transparent">${cellData}</td>`;
-            })}
+                  return html`<td class="sd-table-cell sd-table-cell--bg-transparent">${cellData}</td>`;
+                })}
               </tr>`;
-          })}
+            })}
           </tbody>
           <tfoot>
-          ${(() => {
-            return html`<tr class="relative">
+            ${(() => {
+              return html`<tr class="relative">
                 ${headerData.map(cellData => {
-              return html`<th class="sd-table-cell sd-table-cell--bg-white sticky bottom-0 sd-table-cell--shadow-top sd-table-cell--shadow-active">${cellData}</th>`;
-            })}
+                  return html`<th
+                    class="sd-table-cell sd-table-cell--bg-white sticky bottom-0 sd-table-cell--shadow-top sd-table-cell--shadow-active"
+                  >
+                    ${cellData}
+                  </th>`;
+                })}
               </tr>`;
-          })()}
+            })()}
           </tfoot>
         </table>
 
         <script>
-          document.addEventListener('DOMContentLoaded', event => {
-            console.log('DOM fully loaded and parsed');
-            let scrollableTable = document.getElementById('horizontal-scrollable-table');
-            let tableHeaders = scrollableTable.getElementsByTagName('th');
+          document.addEventListener('DOMContentLoaded', () => {
+            const scrollableTable = document.getElementById('horizontal-scrollable-table');
+            const tableHeaders = scrollableTable.querySelectorAll('th');
 
-            scrollableTable.addEventListener('scroll', event => {
-              if (scrollableTable.scrollLeft === 0) {
-                for (let tableHeader of tableHeaders) {
-                  tableHeader.classList.remove('sd-table-cell--shadow-active');
+            scrollableTable.addEventListener('scroll', () => {
+              tableHeaders.forEach(header => {
+                if (scrollableTable.scrollLeft === 0) {
+                  header.classList.remove('sd-table-cell--shadow-active');
+                } else {
+                  header.classList.add('sd-table-cell--shadow-active');
                 }
-              } else {
-                for (let tableHeader of tableHeaders) {
-                  tableHeader.classList.add('sd-table-cell--shadow-active');
-                }
-              }
+              });
             });
           });
+
         </script>
-        <div class="headline">Fixed, vertical header with shadow table</div>
+        <div class="headline">Fixed, vertical, left header with shadow table</div>
         <div id="horizontal-scrollable-table" class="overflow-x-scroll overflow-y-visible w-[600px]">
           <table class="sd-table sample-table">
             ${tableData.map((rowData, rowIndex) => {
@@ -392,7 +388,9 @@ export const AdvancedSamples = {
                 ${rowData.map((cellData, columIndex) => {
                   if (columIndex === 0) {
                     return html`<th
-                      class="sd-table-cell absolute left-0 top-auto sticky left-0 z-[2] sd-table-cell--shadow-right ${rowIndex % 2 === 0
+                      class="sd-table-cell absolute left-0 top-auto sticky left-0 z-[2] sd-table-cell--shadow-right ${rowIndex %
+                        2 ===
+                      0
                         ? 'sd-table-cell--bg-white'
                         : 'sd-table-cell--bg-primary-100'}"
                     >
@@ -414,24 +412,22 @@ export const AdvancedSamples = {
         </div>
 
         <script>
-          document.addEventListener('DOMContentLoaded', event => {
-            console.log('DOM fully loaded and parsed');
-            let scrollableTable = document.getElementById('horizontal-scrollable-table-2');
-            let tableHeaders = scrollableTable.getElementsByTagName('th');
+          document.addEventListener('DOMContentLoaded', () => {
+            const scrollableTable = document.getElementById('horizontal-scrollable-table-2');
+            const tableHeaders = scrollableTable.querySelectorAll('th');
             const maxScrollX = scrollableTable.scrollWidth - scrollableTable.clientWidth;
 
-            scrollableTable.addEventListener('scroll', event => {
-              if (scrollableTable.scrollLeft === maxScrollX) {
-                for (let tableHeader of tableHeaders) {
-                  tableHeader.classList.remove('sd-table-cell--shadow-active');
+            scrollableTable.addEventListener('scroll', () => {
+              tableHeaders.forEach(header => {
+                if (scrollableTable.scrollLeft === maxScrollX) {
+                  header.classList.remove('sd-table-cell--shadow-active');
+                } else {
+                  header.classList.add('sd-table-cell--shadow-active');
                 }
-              } else {
-                for (let tableHeader of tableHeaders) {
-                  tableHeader.classList.add('sd-table-cell--shadow-active');
-                }
-              }
+              });
             });
           });
+
         </script>
         <div class="headline">Fixed, vertical, right header with shadow table</div>
         <div id="horizontal-scrollable-table-2" class="overflow-x-scroll overflow-y-visible w-[600px]">
@@ -439,24 +435,26 @@ export const AdvancedSamples = {
             ${tableData.map((rowData, rowIndex) => {
               return html`<tr class="sd-table-cell">
                 ${rowData.map((cellData, columIndex) => {
-                if (columIndex === 4) {
-                  return html`<th
-                      class="sd-table-cell absolute left-0 top-auto sticky right-0 z-[2] sd-table-cell--shadow-left sd-table-cell--shadow-active ${rowIndex % 2 === 0
-                    ? 'sd-table-cell--bg-white'
-                    : 'sd-table-cell--bg-primary-100'}"
+                  if (columIndex === 4) {
+                    return html`<th
+                      class="sd-table-cell absolute left-0 top-auto sticky right-0 z-[2] sd-table-cell--shadow-left sd-table-cell--shadow-active ${rowIndex %
+                        2 ===
+                      0
+                        ? 'sd-table-cell--bg-white'
+                        : 'sd-table-cell--bg-primary-100'}"
                     >
                       Header
                     </th>`;
-                } else {
-                  return html`<td
+                  } else {
+                    return html`<td
                       class="sd-table-cell text-nowrap whitespace-nowrap ${rowIndex % 2 === 0
-                    ? 'sd-table-cell--bg-white'
-                    : 'sd-table-cell--bg-primary-100'}"
+                        ? 'sd-table-cell--bg-white'
+                        : 'sd-table-cell--bg-primary-100'}"
                     >
                       ${cellData}
                     </td>`;
-                }
-              })}
+                  }
+                })}
               </tr>`;
             })}
           </table>
