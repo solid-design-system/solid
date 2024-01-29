@@ -203,6 +203,47 @@ export const Samples = {
   }
 };
 
+/**
+ * These examples demonstrate the usage of sd-table-cell when the header is stick and a shadow is therefore shown.
+ *
+ * ```html
+ * <table id="vertical-scrollable-table" class="sd-table block overflow-y-scroll">
+ *   <thead>
+ *     <tr>
+ *       <th class="sd-table-cell sd-table-cell--bg-white sticky top-0 sd-table-cell--shadow-bottom">
+ *         Header
+ *       </th>;
+ *     </tr>;
+ *   </thead>
+ *   <tbody>
+ *     <tr>
+ *       <td class="sd-table-cell sd-table-cell--bg-transparent">
+ *         Lorem ipsum
+ *       </td>
+ *     </tr>
+ *   </tbody>
+ * </table>
+ * ```
+ *
+ * To make the bottom shadow visible, the following JavaScript code is required:
+ *
+ * ```js
+ * document.addEventListener('DOMContentLoaded', () => {
+ *   const scrollableTable = document.getElementById('vertical-scrollable-table');
+ *   const tableHeaders = scrollableTable.querySelectorAll('th');
+ *
+ *   scrollableTable.addEventListener('scroll', () => {
+ *     tableHeaders.forEach(header => {
+ *       if (scrollableTable.scrollTop === 0) {
+ *         header.classList.remove('sd-table-cell--shadow-active');
+ *       } else {
+ *         header.classList.add('sd-table-cell--shadow-active');
+ *       }
+ *     });
+ *   });
+ * });
+ * ```
+ */
 export const AdvancedSamples = {
   name: 'Advanced Samples',
   parameters: {
