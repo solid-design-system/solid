@@ -8,4 +8,8 @@
   thead tr:first-of-type {
     @apply relative;
   }
+
+  thead tr:first-of-type {
+    @apply relative;
+  }
 }

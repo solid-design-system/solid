@@ -5,12 +5,18 @@
     @apply border-r-[1px];
   }
 
-  &:after {
-    content: '';
-    @apply opacity-0 absolute pointer-events-none transition-opacity duration-1000;
-  }
+  /*&:after {*/
+  /*  content: '';*/
+  /*  @apply opacity-0 absolute pointer-events-none transition-opacity duration-1000;*/
+  /*}*/
 
   &--shadow-bottom {
+
+    &:after {
+      content: '';
+      @apply opacity-0 absolute pointer-events-none transition-opacity duration-1000;
+    }
+
     &.sd-table-cell--shadow-active:after {
       background: linear-gradient(to bottom, rgba(24, 24, 24, 0.1), transparent);
       bottom: -10px;
@@ -32,6 +38,12 @@
   }
 
   &--shadow-right {
+
+    &:after {
+      content: '';
+      @apply opacity-0 absolute pointer-events-none transition-opacity duration-1000;
+    }
+
     &.sd-table-cell--shadow-active:after {
       background: linear-gradient(to right, rgba(24, 24, 24, 0.1), transparent);
       top: 0;
@@ -57,12 +69,26 @@
   &--shadow-top {
     &:before {
       content: '';
-      position: absolute;
-      left: 0;
-      right: 0;
+      @apply opacity-0 absolute pointer-events-none transition-opacity duration-1000;
+    }
+
+    &.sd-table-cell--shadow-active:before {
+      background: linear-gradient(to top, rgba(24, 24, 24, 0.1), transparent);
       top: -10px;
       height: 10px;
-      background: linear-gradient(to top, rgba(24, 24, 24, 0.1), transparent);
+      @apply opacity-[100%] left-0 right-0;
+    }
+
+    /* fix that shows line on top of table-cell */
+    &:after {
+      @apply bg-neutral-400;
+      display: block;
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      width: 100%;
+      height: 1px;
+      left: 0;
     }
   }
 

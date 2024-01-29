@@ -322,6 +322,52 @@ export const AdvancedSamples = {
         <script>
           document.addEventListener('DOMContentLoaded', event => {
             console.log('DOM fully loaded and parsed');
+            let scrollableTable = document.getElementById('vertical-scrollable-table-2');
+            let tableHeaders = scrollableTable.getElementsByTagName('th');
+            const maxScrollY = scrollableTable.scrollHeight - scrollableTable.clientHeight;
+
+            scrollableTable.addEventListener('scroll', event => {
+
+              console.log(maxScrollY + " - " +scrollableTable.scrollTop);
+
+              if (scrollableTable.scrollTop === maxScrollY) {
+                for (let tableHeader of tableHeaders) {
+                  tableHeader.classList.remove('sd-table-cell--shadow-active');
+                }
+              } else {
+                for (let tableHeader of tableHeaders) {
+                  tableHeader.classList.add('sd-table-cell--shadow-active');
+                }
+              }
+            });
+          });
+        </script>
+
+        <div class="headline">Fixed, bottom header with shadow table</div>
+        <table id="vertical-scrollable-table-2" class="sd-table sample-table h-[200px] block overflow-y-scroll ">
+          <tbody>
+          ${tableData.map(rowData => {
+            return html`<tr>
+                ${rowData.map(cellData => {
+              return html`<td class="sd-table-cell sd-table-cell--bg-transparent">${cellData}</td>`;
+            })}
+              </tr>`;
+          })}
+          </tbody>
+          <tfoot>
+          ${(() => {
+            return html`<tr class="relative">
+                ${headerData.map(cellData => {
+              return html`<th class="sd-table-cell sd-table-cell--bg-white sticky bottom-0 sd-table-cell--shadow-top">${cellData}</th>`;
+            })}
+              </tr>`;
+          })()}
+          </tfoot>
+        </table>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', event => {
+            console.log('DOM fully loaded and parsed');
             let scrollableTable = document.getElementById('horizontal-scrollable-table');
             let tableHeaders = scrollableTable.getElementsByTagName('th');
 
