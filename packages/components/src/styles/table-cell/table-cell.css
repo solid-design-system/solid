@@ -6,58 +6,33 @@
   }
 
   &--shadow-bottom {
-
     &:after {
-      content: '';
-      bottom: -10px;
-      height: 10px;
-      background: linear-gradient(to bottom, rgba(24, 24, 24, 0.1), transparent);
-      @apply opacity-0 absolute pointer-events-none transition-opacity duration-1000 ease-out	left-0 right-0;
+      @apply opacity-0 absolute pointer-events-none transition-opacity duration-1000 ease-out	left-0 right-0 h-2.5 bottom-[-10px] content-[''] bg-gradient-to-b from-neutral-300 to-transparent;
     }
 
     &.sd-table-cell--shadow-active:after {
-      @apply opacity-[100%] ;
+      @apply opacity-[100%];
     }
 
     /* fix that shows line on top of table-cell */
     &:before {
-      @apply bg-neutral-400;
-      display: block;
-      content: '';
-      position: absolute;
-      top: -1px;
-      width: 100%;
-      height: 1px;
-      left: 0;
+      @apply bg-neutral-400 block content-[''] absolute top-[-1px] w-full h-[1px] left-0;
     }
   }
 
   &--shadow-right {
     &:after {
-      content: '';
-      background: linear-gradient(to right, rgba(24, 24, 24, 0.1), transparent);
-      top: 0;
-      bottom: 0;
-      right: -10px;
-      width: 10px;
-      @apply opacity-0 absolute pointer-events-none transition-opacity duration-1000;
+      @apply opacity-0 absolute pointer-events-none transition-opacity duration-1000 content-[''] bg-gradient-to-r from-neutral-300 to-transparent top-0 bottom-0 right-[-10px] w-2.5;
     }
 
     &.sd-table-cell--shadow-active:after {
-
       @apply opacity-[100%];
     }
   }
 
   &--shadow-left {
     &:before {
-      content: '';
-      background: linear-gradient(to left, rgba(24, 24, 24, 0.1), transparent);
-      top: 0;
-      bottom: 0;
-      left: -10px;
-      width: 10px;
-      @apply opacity-0 absolute pointer-events-none transition-opacity duration-1000;
+      @apply opacity-0 absolute pointer-events-none transition-opacity duration-1000 content-[''] bg-gradient-to-l from-neutral-300 to-transparent top-0 bottom-0 left-[-10px] w-2.5;
     }
 
     &.sd-table-cell--shadow-active:before {
@@ -67,28 +42,16 @@
 
   &--shadow-top {
     &:before {
-      content: '';
-      background: linear-gradient(to top, rgba(24, 24, 24, 0.1), transparent);
-      top: -10px;
-      height: 10px;
-      @apply opacity-0 absolute pointer-events-none transition-opacity duration-1000 left-0 right-0;
+      @apply opacity-0 absolute pointer-events-none transition-opacity duration-1000 left-0 right-0 content-[''] bg-gradient-to-t from-neutral-300 to-transparent top-[-10px] h-2.5;
     }
 
     &.sd-table-cell--shadow-active:before {
-
-      @apply opacity-[100%] ;
+      @apply opacity-[100%];
     }
 
     /* fix that shows line on top of table-cell */
     &:after {
-      @apply bg-neutral-400;
-      display: block;
-      content: '';
-      position: absolute;
-      bottom: -1px;
-      width: 100%;
-      height: 1px;
-      left: 0;
+      @apply bg-neutral-400 block content-[''] absolute bottom-[-1px] w-full h-[1px] left-0;
     }
   }
 
