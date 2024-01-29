@@ -189,8 +189,10 @@ describe('<sd-tab-group>', () => {
     const generateTabs = (n: number): HTMLTemplateResult[] => {
       const result: HTMLTemplateResult[] = [];
       for (let i = 0; i < n; i++) {
-        result.push(html`<sd-tab slot="nav" panel="tab-${i}">Tab ${i}</sd-tab>
-          <sd-tab-panel name="tab-${i}">Content of tab ${i}0</sd-tab-panel> `);
+        result.push(
+          html`<sd-tab slot="nav" panel="tab-${i}">Tab ${i}</sd-tab>
+            <sd-tab-panel name="tab-${i}">Content of tab ${i}0</sd-tab-panel> `
+        );
       }
       return result;
     };

@@ -1,7 +1,7 @@
 import { classMap } from 'lit/directives/class-map.js';
-import { customElement } from '../../../src/internal/register-custom-element';
-import {property } from 'lit/decorators.js';
+import { customElement } from '../../internal/register-custom-element';
 import { html } from 'lit';
+import { property } from 'lit/decorators.js';
 import { watch } from '../../internal/watch';
 import SolidElement from '../../internal/solid-element';
 import styles from './tab-panel.styles';
@@ -50,9 +50,9 @@ export default class SdTabPanel extends SolidElement {
       <slot
         part="base"
         class=${classMap({
-      'tab-panel': true,
-      'tab-panel--active': this.active
-    })}
+          'tab-panel': true,
+          'tab-panel--active': this.active
+        })}
       ></slot>
     `;
   }

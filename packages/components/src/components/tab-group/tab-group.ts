@@ -1,9 +1,8 @@
-import '../icon-button/icon-button';
 import { classMap } from 'lit/directives/class-map.js';
-import { customElement } from '../../../src/internal/register-custom-element';
-import {property, query, state } from 'lit/decorators.js';
+import { customElement } from '../../internal/register-custom-element';
 import { html } from 'lit';
 import { LocalizeController } from '../../utilities/localize';
+import { property, query, state } from 'lit/decorators.js';
 import { scrollIntoView } from '../../internal/scroll';
 import { watch } from '../../internal/watch';
 import SolidElement from '../../internal/solid-element';
@@ -18,7 +17,7 @@ import type SdTabPanel from '../tab-panel/tab-panel';
  * @status stable
  * @since 1.0
  *
- * @dependency sd-icon-button
+ * @dependency sd--button
  *
  * @slot - Used for grouping tab panels in the tab group. Must be `<sd-tab-panel>` elements.
  * @slot nav - Used for grouping tabs in the tab group. Must be `<sd-tab>` elements.
@@ -31,7 +30,7 @@ import type SdTabPanel from '../tab-panel/tab-panel';
  * @csspart tabs - The container that wraps the tabs.
  * @csspart active-tab-indicator - The line that highlights the currently selected tab.
  * @csspart body - The tab group's body where tab panels are slotted in.
- * @csspart scroll-button - The previous/next scroll buttons that show when tabs are scrollable, an `<sd-icon-button>`.
+ * @csspart scroll-button - The previous/next scroll buttons that show when tabs are scrollable, an `<sd-button>`.
  * @csspart scroll-button--start - The starting scroll button.
  * @csspart scroll-button--end - The ending scroll button.
  * @csspart scroll-button__base - The scroll button's exported `base` part.
@@ -71,6 +70,11 @@ export default class SdTabGroup extends SolidElement {
   @property({ attribute: 'no-scroll-controls', type: Boolean }) noScrollControls = false;
 
   connectedCallback() {
+    const whenAllDefined = Promise.all([
+      customElements.whenDefined('sd-tab'),
+      customElements.whenDefined('sd-tab-panel')
+    ]);
+
     super.connectedCallback();
 
     this.resizeObserver = new ResizeObserver(() => {
@@ -90,20 +94,24 @@ export default class SdTabGroup extends SolidElement {
       }
     });
 
+    // After the first update...
     this.updateComplete.then(() => {
       this.syncTabsAndPanels();
       this.mutationObserver.observe(this, { attributes: true, childList: true, subtree: true });
       this.resizeObserver.observe(this.nav);
 
-      // Set initial tab state when the tabs first become visible
-      const intersectionObserver = new IntersectionObserver((entries, observer) => {
-        if (entries[0].intersectionRatio > 0) {
-          this.setAriaLabels();
-          this.setActiveTab(this.getActiveTab() ?? this.tabs[0], { emitEvents: false });
-          observer.unobserve(entries[0].target);
-        }
+      // Wait for tabs and tab panels to be registered
+      whenAllDefined.then(() => {
+        // Set initial tab state when the tabs become visible
+        const intersectionObserver = new IntersectionObserver((entries, observer) => {
+          if (entries[0].intersectionRatio > 0) {
+            this.setAriaLabels();
+            this.setActiveTab(this.getActiveTab() ?? this.tabs[0], { emitEvents: false });
+            observer.unobserve(entries[0].target);
+          }
+        });
+        intersectionObserver.observe(this.tabGroup);
       });
-      intersectionObserver.observe(this.tabGroup);
     });
   }
 
@@ -112,7 +120,7 @@ export default class SdTabGroup extends SolidElement {
     this.resizeObserver.unobserve(this.nav);
   }
 
-  private getAllTabs(options: { includeDisabled: boolean; } = { includeDisabled: true }) {
+  private getAllTabs(options: { includeDisabled: boolean } = { includeDisabled: true }) {
     const slot = this.shadowRoot!.querySelector<HTMLSlotElement>('slot[name="nav"]')!;
 
     return [...(slot.assignedElements() as SdTab[])].filter(el => {
@@ -230,7 +238,7 @@ export default class SdTabGroup extends SolidElement {
     });
   }
 
-  private setActiveTab(tab: SdTab, options?: { emitEvents?: boolean; scrollBehavior?: 'auto' | 'smooth'; }) {
+  private setActiveTab(tab: SdTab, options?: { emitEvents?: boolean; scrollBehavior?: 'auto' | 'smooth' }) {
     options = {
       emitEvents: true,
       scrollBehavior: 'auto',
@@ -317,6 +325,9 @@ export default class SdTabGroup extends SolidElement {
     this.tabs = this.getAllTabs({ includeDisabled: false });
     this.panels = this.getAllPanels();
     this.syncIndicator();
+
+    // After updating, show or hide scroll controls as needed
+    this.updateComplete.then(() => this.updateScrollControls());
   }
 
   @watch('noScrollControls', { waitUntilFirstUpdate: true })
@@ -357,21 +368,21 @@ export default class SdTabGroup extends SolidElement {
       <div
         part="base"
         class=${classMap({
-      'tab-group': true,
-      'tab-group--top': this.placement === 'top',
-      'tab-group--bottom': this.placement === 'bottom',
-      'tab-group--start': this.placement === 'start',
-      'tab-group--end': this.placement === 'end',
-      'tab-group--rtl': this.localize.dir() === 'rtl',
-      'tab-group--has-scroll-controls': this.hasScrollControls
-    })}
+          'tab-group': true,
+          'tab-group--top': this.placement === 'top',
+          'tab-group--bottom': this.placement === 'bottom',
+          'tab-group--start': this.placement === 'start',
+          'tab-group--end': this.placement === 'end',
+          'tab-group--rtl': this.localize.dir() === 'rtl',
+          'tab-group--has-scroll-controls': this.hasScrollControls
+        })}
         @click=${this.handleClick}
         @keydown=${this.handleKeyDown}
       >
         <div class="tab-group__nav-container" part="nav">
           ${this.hasScrollControls
-        ? html`
-                <sd-icon-button
+            ? html`
+                <sd-button
                   part="scroll-button scroll-button--start"
                   exportparts="base:scroll-button__base"
                   class="tab-group__scroll-button tab-group__scroll-button--start"
@@ -379,9 +390,9 @@ export default class SdTabGroup extends SolidElement {
                   library="system"
                   label=${this.localize.term('scrollToStart')}
                   @click=${this.handleScrollToStart}
-                ></sd-icon-button>
+                ></sd-button>
               `
-        : ''}
+            : ''}
 
           <div class="tab-group__nav">
             <div part="tabs" class="tab-group__tabs" role="tablist">
@@ -391,18 +402,18 @@ export default class SdTabGroup extends SolidElement {
           </div>
 
           ${this.hasScrollControls
-        ? html`
-                <sd-icon-button
+            ? html`
+                <sd-button
                   part="scroll-button scroll-button--end"
                   exportparts="base:scroll-button__base"
                   class="tab-group__scroll-button tab-group__scroll-button--end"
-                  name=${isRtl ? 'chevron-left' : 'chevron-right'}
-                  library="system"
                   label=${this.localize.term('scrollToEnd')}
                   @click=${this.handleScrollToEnd}
-                ></sd-icon-button>
+                >
+                  <sd-icon library="system" name=${isRtl ? 'chevron-left' : 'chevron-right'}></sd-icon
+                ></sd-button>
               `
-        : ''}
+            : ''}
         </div>
 
         <slot part="body" class="tab-group__body" @slotchange=${this.syncTabsAndPanels}></slot>

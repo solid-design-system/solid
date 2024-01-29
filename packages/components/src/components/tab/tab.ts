@@ -1,13 +1,10 @@
-import '../icon-button/icon-button';
-import { classMap } from 'lit/directives/class-map.js';
-import { customElement } from '../../../src/internal/register-custom-element';
-import {property, query } from 'lit/decorators.js';
-import { html } from 'lit';
-import { LocalizeController } from '../../utilities/localize';
+import { css, html } from 'lit';
+import { customElement } from '../../internal/register-custom-element';
+import { property, query } from 'lit/decorators.js';
 import { watch } from '../../internal/watch';
+import componentStyles from '../../styles/component.styles';
+import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
-import styles from './tab.styles';
-import type { CSSResultGroup } from 'lit';
 
 let id = 0;
 
@@ -17,21 +14,17 @@ let id = 0;
  * @status stable
  * @since 1.0
  *
- * @dependency sd-icon-button
+ * @dependency sd-button
  *
  * @slot - The tab's label.
- *
- * @event sd-close - Emitted when the tab is closable and the close button is activated.
+ * @slot - left - Optional element (eg. icon) positioned to the left of the label.
  *
  * @csspart base - The component's base wrapper.
- * @csspart close-button - The close button, an `<sd-icon-button>`.
+ * @csspart close-button - The close button, an `<sd-button>`.
  * @csspart close-button__base - The close button's exported `base` part.
  */
 @customElement('sd-tab')
 export default class SdTab extends SolidElement {
-  static styles: CSSResultGroup = styles;
-  private readonly localize = new LocalizeController(this);
-
   private readonly attrId = ++id;
   private readonly componentId = `sd-tab-${this.attrId}`;
 
@@ -43,19 +36,12 @@ export default class SdTab extends SolidElement {
   /** Draws the tab in an active state. */
   @property({ type: Boolean, reflect: true }) active = false;
 
-  /** Makes the tab closable and shows a close button. */
-  @property({ type: Boolean }) closable = false;
-
   /** Disables the tab and prevents selection. */
   @property({ type: Boolean, reflect: true }) disabled = false;
 
   connectedCallback() {
     super.connectedCallback();
     this.setAttribute('role', 'tab');
-  }
-
-  private handleCloseClick() {
-    this.emit('sd-close');
   }
 
   @watch('active')
@@ -85,32 +71,55 @@ export default class SdTab extends SolidElement {
     return html`
       <div
         part="base"
-        class=${classMap({
-      tab: true,
-      'tab--active': this.active,
-      'tab--closable': this.closable,
-      'tab--disabled': this.disabled
-    })}
+        class=${cx(
+          'inline-flex items-center whitespace-nowrap user-select-none cursor-pointer',
+          this.disabled && 'opacity-50 cursor-not-allowed'
+        )}
         tabindex=${this.disabled ? '-1' : '0'}
       >
+        <slot name="left"></slot>
         <slot></slot>
-        ${this.closable
-        ? html`
-              <sd-icon-button
-                part="close-button"
-                exportparts="base:close-button__base"
-                name="x-lg"
-                library="system"
-                label=${this.localize.term('close')}
-                class="tab__close-button"
-                @click=${this.handleCloseClick}
-                tabindex="-1"
-              ></sd-icon-button>
-            `
-        : ''}
       </div>
     `;
   }
+
+  static styles = [
+    SolidElement.styles,
+    componentStyles,
+    css`
+      :host {
+        @apply inline-block;
+      }
+
+      .tab:hover:not(.tab--disabled) {
+        color: var(--sd-color-primary-600);
+      }
+
+      .tab:focus {
+        outline: none;
+      }
+
+      .tab:focus-visible:not(.tab--disabled) {
+        color: var(--sd-color-primary-600);
+      }
+
+      .tab:focus-visible {
+        outline: var(--sd-focus-ring);
+        outline-offset: calc(-1 * var(--sd-focus-ring-width) - var(--sd-focus-ring-offset));
+      }
+
+      .tab.tab--active:not(.tab--disabled) {
+        color: var(--sd-color-primary-600);
+      }
+
+      @media (forced-colors: active) {
+        .tab.tab--active:not(.tab--disabled) {
+          outline: solid 1px transparent;
+          outline-offset: -3px;
+        }
+      }
+    `
+  ];
 }
 
 declare global {
