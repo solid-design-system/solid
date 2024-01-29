@@ -347,6 +347,54 @@ export const Parts = {
 };
 
 /**
+ * Per default the select will indicate an error state when the input is invalid. Use the `style-on-valid` attribute to indicate a valid state as well.
+ */
+
+export const StyleOnValid = {
+  parameters: {
+    controls: {
+      exclude: ['open-attr']
+    }
+  },
+  render: (args: { 'open-attr'?: string }) => {
+    delete args['open-attr'];
+
+    return html`<div class="h-[340px]">
+      ${generateTemplate({
+        options: {
+          classes: 'w-full'
+        },
+        axis: {
+          x: {
+            type: 'attribute',
+            name: 'style-on-valid'
+          }
+        },
+        constants: [fiveOptionsConstant, { type: 'attribute', name: 'value', value: '' }],
+        args
+      })}
+    </div>`;
+  },
+
+  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
+    await Promise.all([customElements.whenDefined('sd-select'), customElements.whenDefined('sd-option')]).then(
+      async () => {
+        const els = canvasElement.querySelectorAll('sd-select');
+
+        for (const el of els) {
+          await waitUntil(() => el?.shadowRoot?.querySelector('input'));
+          await userEvent.click(el.shadowRoot!.querySelector('input')!);
+          await userEvent.click(el.querySelector('sd-option')!);
+        }
+
+        // tab to next element to loose focus
+        await userEvent.tab();
+      }
+    );
+  }
+};
+
+/**
  * `sd-select` is fully accessibile via keyboard.
  */
 
@@ -510,7 +558,7 @@ export const setCustomValidity = {
     return html`
       <!-- block submit and show alert instead -->
       <form id="validationForm" class="flex flex-col gap-2">
-        <sd-select id="custom-input">
+        <sd-select id="custom-input" style-on-valid>
           <sd-option value="option-1">Option 1</sd-option>
           <sd-option value="option-2">Option 2</sd-option>
           <sd-option value="option-3">Option 3</sd-option>

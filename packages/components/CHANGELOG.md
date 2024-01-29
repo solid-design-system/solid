@@ -1,3 +1,47 @@
+# [@solid-design-system/components-v2.0.0](https://github.com/solid-design-system/solid/compare/components/1.39.1...components/2.0.0) (2024-01-26)
+
+
+### Bug Fixes
+
+* remove automatic valid styling from form fields ([#703](https://github.com/solid-design-system/solid/issues/703)) ([eb08265](https://github.com/solid-design-system/solid/commit/eb08265c95627c9c4c8385cc8bb1c2dbd09f6e7a))
+
+
+### BREAKING CHANGES
+
+* Before this change `sd-input`, `sd-select` and
+`sd-textarea` immediately showed "valid styles" (success color +
+checkmark) immediately when an form field was valid. In most cases this
+isn't relevant, e. g. in search fields, app interfaces etc.
+With this change you now have to explicitly set the attribute
+`style-on-valid` on the mentioned components to show "valid styles", as
+soon as the component is valid.
+
+### 📈 Stats
+* Bundle size (uncompressed): 255 KB (+1 KB / +0%)
+* Bundle size (gzipped): 63 KB (+1 KB / +2%)
+
+# [@solid-design-system/components-v1.39.1](https://github.com/solid-design-system/solid/compare/components/1.39.0...components/1.39.1) (2024-01-25)
+
+
+### Bug Fixes
+
+* 🤔 re-integrate web-types generation ([#710](https://github.com/solid-design-system/solid/issues/710)) ([daea78c](https://github.com/solid-design-system/solid/commit/daea78cd4f505f11f551061e4eaf7125ef187eb2))
+
+### 📈 Stats
+* Bundle size (uncompressed): 254 KB (unchanged)
+* Bundle size (gzipped): 62 KB (unchanged)
+
+# [@solid-design-system/components-v1.39.0](https://github.com/solid-design-system/solid/compare/components/1.38.3...components/1.39.0) (2024-01-23)
+
+
+### Features
+
+* ✨ add sd-list (CSS style) ([#677](https://github.com/solid-design-system/solid/issues/677)) ([0124cf2](https://github.com/solid-design-system/solid/commit/0124cf2caf87171f3c08d9887ba7a32a65fa21dd))
+
+### 📈 Stats
+* Bundle size (uncompressed): 254 KB (unchanged)
+* Bundle size (gzipped): 62 KB (unchanged)
+
 # [@solid-design-system/components-v1.38.3](https://github.com/solid-design-system/solid/compare/components/1.38.2...components/1.38.3) (2024-01-19)
 
 

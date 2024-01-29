@@ -10,6 +10,7 @@
 @import './styles/container/container.css';
 @import './styles/chip/chip.css';
 @import './styles/flag/flag.css';
+@import './styles/list/list.css';
 
 /* Utility classes that can't be contained in a component and must be applied to the light DOM */
 @import './styles/_utility.css';

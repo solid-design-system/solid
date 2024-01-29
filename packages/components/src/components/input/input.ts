@@ -203,6 +203,9 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   /** Used to customize the label or icon of the Enter key on virtual keyboards. */
   @property() enterkeyhint: 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send';
 
+  /** Shows success styles if the validity of the input is valid. */
+  @property({ type: Boolean, reflect: true, attribute: 'style-on-valid' }) styleOnValid = false;
+
   /** Enables spell checking on the input. */
   @property({
     type: Boolean,
@@ -432,13 +435,13 @@ export default class SdInput extends SolidElement implements SolidFormControl {
         ? 'readonly'
         : this.hasFocus && this.showInvalidStyle
           ? 'activeInvalid'
-          : this.hasFocus && this.showValidStyle
+          : this.hasFocus && this.styleOnValid && this.showValidStyle
             ? 'activeValid'
             : this.hasFocus
               ? 'active'
               : this.showInvalidStyle
                 ? 'invalid'
-                : this.showValidStyle
+                : this.styleOnValid && this.showValidStyle
                   ? 'valid'
                   : 'default';
 
@@ -621,7 +624,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                   ></sd-icon>
                 `
               : ''}
-            ${this.showValidStyle
+            ${this.showValidStyle && this.styleOnValid
               ? html`
                   <sd-icon
                     class=${cx('text-success', iconMarginLeft, iconSize)}
