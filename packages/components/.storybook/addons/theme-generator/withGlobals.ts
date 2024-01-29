@@ -14,7 +14,7 @@ export const withGlobals = (StoryFn: StoryFunction<Renderer>, context: StoryCont
   const customThemeActive = globals[PARAM_KEY];
   let customTheme = calculateColorsAsCss(
     panelState?.colors || PANEL_DEFAULTS.colors,
-    theme
+    theme,
     panelState?.useNormalizedLuminanceMap || PANEL_DEFAULTS.useNormalizedLuminanceMap,
     panelState?.useForcedShades || PANEL_DEFAULTS.useForcedShades
   );
