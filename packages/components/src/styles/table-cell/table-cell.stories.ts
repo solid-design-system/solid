@@ -358,7 +358,7 @@ export const AdvancedSamples = {
           ${(() => {
             return html`<tr class="relative">
                 ${headerData.map(cellData => {
-              return html`<th class="sd-table-cell sd-table-cell--bg-white sticky bottom-0 sd-table-cell--shadow-top">${cellData}</th>`;
+              return html`<th class="sd-table-cell sd-table-cell--bg-white sticky bottom-0 sd-table-cell--shadow-top sd-table-cell--shadow-active">${cellData}</th>`;
             })}
               </tr>`;
           })()}
