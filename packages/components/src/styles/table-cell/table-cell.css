@@ -38,7 +38,6 @@
   }
 
   &--shadow-right {
-
     &:after {
       content: '';
       @apply opacity-0 absolute pointer-events-none transition-opacity duration-1000;
@@ -55,14 +54,18 @@
   }
 
   &--shadow-left {
-    &:first-child:before {
+    &:before {
       content: '';
-      position: absolute;
+      @apply opacity-0 absolute pointer-events-none transition-opacity duration-1000;
+    }
+
+    &.sd-table-cell--shadow-active:before {
+      background: linear-gradient(to left, rgba(24, 24, 24, 0.1), transparent);
       top: 0;
       bottom: 0;
       left: -10px;
       width: 10px;
-      background: linear-gradient(to left, rgba(24, 24, 24, 0.1), transparent);
+      @apply opacity-[100%];
     }
   }
 

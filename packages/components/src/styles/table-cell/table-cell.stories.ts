@@ -412,6 +412,55 @@ export const AdvancedSamples = {
             })}
           </table>
         </div>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', event => {
+            console.log('DOM fully loaded and parsed');
+            let scrollableTable = document.getElementById('horizontal-scrollable-table-2');
+            let tableHeaders = scrollableTable.getElementsByTagName('th');
+            const maxScrollX = scrollableTable.scrollWidth - scrollableTable.clientWidth;
+
+            scrollableTable.addEventListener('scroll', event => {
+              if (scrollableTable.scrollLeft === maxScrollX) {
+                for (let tableHeader of tableHeaders) {
+                  tableHeader.classList.remove('sd-table-cell--shadow-active');
+                }
+              } else {
+                for (let tableHeader of tableHeaders) {
+                  tableHeader.classList.add('sd-table-cell--shadow-active');
+                }
+              }
+            });
+          });
+        </script>
+        <div class="headline">Fixed, vertical, right header with shadow table</div>
+        <div id="horizontal-scrollable-table-2" class="overflow-x-scroll overflow-y-visible w-[600px]">
+          <table class="sd-table sample-table">
+            ${tableData.map((rowData, rowIndex) => {
+              return html`<tr class="sd-table-cell">
+                ${rowData.map((cellData, columIndex) => {
+                if (columIndex === 4) {
+                  return html`<th
+                      class="sd-table-cell absolute left-0 top-auto sticky right-0 z-[2] sd-table-cell--shadow-left sd-table-cell--shadow-active ${rowIndex % 2 === 0
+                    ? 'sd-table-cell--bg-white'
+                    : 'sd-table-cell--bg-primary-100'}"
+                    >
+                      Header
+                    </th>`;
+                } else {
+                  return html`<td
+                      class="sd-table-cell text-nowrap whitespace-nowrap ${rowIndex % 2 === 0
+                    ? 'sd-table-cell--bg-white'
+                    : 'sd-table-cell--bg-primary-100'}"
+                    >
+                      ${cellData}
+                    </td>`;
+                }
+              })}
+              </tr>`;
+            })}
+          </table>
+        </div>
       </div>
     `;
   }
