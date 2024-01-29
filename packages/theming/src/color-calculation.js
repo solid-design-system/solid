@@ -158,7 +158,7 @@ export const calculateColorsForType = (type, theme, colors, useNormalizedLuminan
  *
  * @example
  * // Example usage:
- * const colors = { primary: '#ff5733', accent: '#33c3f0' };
+ * const colors = { primary: '#ff5733', accent: '#33c3f0', ... };
  * const theme = { accentColor: {...}, backgroundColor: {...}, ...};
  * const cssProperties = calculateColorsAsCss(colors, theme, true, false);
  * console.log(cssProperties); // Outputs CSS custom properties as a string
@@ -167,7 +167,12 @@ export const calculateColorsAsCss = (colors, theme, useNormalizedLuminanceMap, u
   let allTokens = ':root{\n  /* Copy & paste into your theme */\n';
 
   Object.keys(colors).forEach(type => {
-    allTokens += calculateColorsForType(type, theme, colors, useNormalizedLuminanceMap, useForcedShades);
+    if (type === 'black' || type === 'white') {
+      // Add the color directly without generating shades
+      allTokens += `  --sd-color-${type}: ${colors[type]};\n`;
+    } else {
+      allTokens += calculateColorsForType(type, theme, colors, useNormalizedLuminanceMap, useForcedShades);
+    }
   });
 
   allTokens += '}';
