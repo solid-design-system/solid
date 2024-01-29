@@ -204,7 +204,7 @@ export const Samples = {
 };
 
 /**
- * These examples demonstrate the usage of sd-table-cell when the header is stick and a shadow is therefore shown.
+ * These examples demonstrate the usage of sd-table-cell when the header is sticky and a shadow is displayed.
  *
  * ```html
  * <table id="vertical-scrollable-table" class="sd-table block overflow-y-scroll">
