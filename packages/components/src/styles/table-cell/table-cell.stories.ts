@@ -285,11 +285,11 @@ export const AdvancedSamples = {
           scrollableTable.addEventListener('scroll', event => {
             if (scrollableTable.scrollTop === 0) {
               for (let tableHeader of tableHeaders) {
-                tableHeader.classList.remove('sd-table-cell--shadow-bottom');
+                tableHeader.classList.remove('sd-table-cell--shadow-active');
               }
             } else {
               for (let tableHeader of tableHeaders) {
-                tableHeader.classList.add('sd-table-cell--shadow-bottom');
+                tableHeader.classList.add('sd-table-cell--shadow-active');
               }
             }
           });
@@ -303,7 +303,7 @@ export const AdvancedSamples = {
             ${(() => {
               return html`<tr>
                 ${headerData.map(cellData => {
-                  return html`<th class="sd-table-cell sd-table-cell--bg-white sticky top-0">${cellData}</th>`;
+                  return html`<th class="sd-table-cell sd-table-cell--bg-white sticky top-0 sd-table-cell--shadow-bottom">${cellData}</th>`;
                 })}
               </tr>`;
             })()}
@@ -328,11 +328,11 @@ export const AdvancedSamples = {
             scrollableTable.addEventListener('scroll', event => {
               if (scrollableTable.scrollLeft === 0) {
                 for (let tableHeader of tableHeaders) {
-                  tableHeader.classList.remove('sd-table-cell--shadow-right');
+                  tableHeader.classList.remove('sd-table-cell--shadow-active');
                 }
               } else {
                 for (let tableHeader of tableHeaders) {
-                  tableHeader.classList.add('sd-table-cell--shadow-right');
+                  tableHeader.classList.add('sd-table-cell--shadow-active');
                 }
               }
             });
@@ -346,7 +346,7 @@ export const AdvancedSamples = {
                 ${rowData.map((cellData, columIndex) => {
                   if (columIndex === 0) {
                     return html`<th
-                      class="sd-table-cell absolute left-0 top-auto sticky left-0 z-[2] ${rowIndex % 2 === 0
+                      class="sd-table-cell absolute left-0 top-auto sticky left-0 z-[2] sd-table-cell--shadow-right ${rowIndex % 2 === 0
                         ? 'sd-table-cell--bg-white'
                         : 'sd-table-cell--bg-primary-100'}"
                     >
