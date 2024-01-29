@@ -327,7 +327,7 @@ export const AdvancedSamples = {
 
             scrollableTable.addEventListener('scroll', () => {
               tableHeaders.forEach(header => {
-                if (scrollableTable.scrollTop === (scrollableTable.scrollHeight - scrollableTable.clientHeight)) {
+                if (scrollableTable.scrollTop === scrollableTable.scrollHeight - scrollableTable.clientHeight) {
                   header.classList.remove('sd-table-cell--shadow-active');
                 } else {
                   header.classList.add('sd-table-cell--shadow-active');
@@ -378,7 +378,6 @@ export const AdvancedSamples = {
               });
             });
           });
-
         </script>
         <div class="headline">Fixed, vertical, left header with shadow table</div>
         <div id="horizontal-scrollable-table" class="overflow-x-scroll overflow-y-visible w-[600px]">
@@ -427,7 +426,6 @@ export const AdvancedSamples = {
               });
             });
           });
-
         </script>
         <div class="headline">Fixed, vertical, right header with shadow table</div>
         <div id="horizontal-scrollable-table-2" class="overflow-x-scroll overflow-y-visible w-[600px]">
