@@ -10,7 +10,6 @@
     }
   },
   "include": [
-    "./src/**/*.js" // Add a valid input file path here
+    "./src/**/*.js",
   ],
-  "exclude": []
 }
