@@ -169,7 +169,7 @@ export const calculateColorsAsCss = (colors, theme, useNormalizedLuminanceMap, u
   Object.keys(colors).forEach(type => {
     if (type === 'black' || type === 'white') {
       // Add the color directly without generating shades
-      allTokens += `  --sd-color-${type}: ${colors[type]};\n`;
+      allTokens += `  --sd-color-${type}: ${chroma(colors[type]).rgb().join(' ')};\n`;
     } else {
       allTokens += calculateColorsForType(type, theme, colors, useNormalizedLuminanceMap, useForcedShades);
     }
