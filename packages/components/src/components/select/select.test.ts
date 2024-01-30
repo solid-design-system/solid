@@ -424,9 +424,9 @@ describe('<sd-select>', () => {
       expect(input.shadowRoot!.querySelector('#invalid-message')!.hasAttribute('hidden')).to.be.true;
     });
 
-    it('should show correct icon when calling reportValidity()', async () => {
+    it('should show correct icon when calling reportValidity() with style-on-valid attribute', async () => {
       const input = await fixture<SdSelect>(html`
-        <sd-select name="a" value="option-1">
+        <sd-select name="a" value="option-1" style-on-valid>
           <sd-option value="option-1">Option 1</sd-option>
           <sd-option value="option-2">Option 2</sd-option>
           <sd-option value="option-3">Option 3</sd-option>

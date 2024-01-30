@@ -1,7 +1,7 @@
+import { aTimeout, expect, fixture, html, oneEvent } from '@open-wc/testing';
 import { clickOnElement } from '../../internal/test.js';
-import { expect, fixture, html, oneEvent } from '@open-wc/testing';
 import sinon from 'sinon';
-import type SdCarousel from './carousel.js';
+import type SdCarousel from './carousel';
 
 describe('<sd-carousel>', () => {
   it('should render a carousel with default configuration', async () => {
@@ -304,32 +304,31 @@ describe('<sd-carousel>', () => {
           expect(nextButton).to.have.attribute('aria-disabled', 'true');
           expect(el.next).not.to.have.been.called;
         });
-        // TODO: This test times out: https://github.com/solid-design-system/solid/issues/387
-        // describe('and `loop` attribute is provided', () => {
-        //   it('should scroll to the first slide', async () => {
-        //     // Arrange
-        //     const el = await fixture<SdCarousel>(html`
-        //       <sd-carousel variant="dot" loop>
-        //         <sd-carousel-item>Node 1</sd-carousel-item>
-        //         <sd-carousel-item>Node 2</sd-carousel-item>
-        //         <sd-carousel-item>Node 3</sd-carousel-item>
-        //       </sd-carousel>
-        //     `);
-        //     const nextButton: HTMLElement = el.shadowRoot!.querySelector('#carousel__navigation-button--next')!;
-        //     el.goToSlide(2, 'auto');
-        //     await oneEvent(el.scrollContainer, 'scrollend');
-        //     await el.updateComplete;
-        //     // Act
-        //     await clickOnElement(nextButton);
-        //     // wait first scroll to clone
-        //     await oneEvent(el.scrollContainer, 'scrollend');
-        //     // wait scroll to actual item
-        //     await oneEvent(el.scrollContainer, 'scrollend');
-        //     // Assert
-        //     expect(nextButton).to.have.attribute('aria-disabled', 'false');
-        //     expect(el.activeSlide).to.be.equal(0);
-        //   });
-        // });
+        describe('and `loop` attribute is provided', () => {
+          it('should scroll to the first slide', async () => {
+            // Arrange
+            const el = await fixture<SdCarousel>(html`
+              <sd-carousel variant="dot" loop>
+                <sd-carousel-item>Node 1</sd-carousel-item>
+                <sd-carousel-item>Node 2</sd-carousel-item>
+                <sd-carousel-item>Node 3</sd-carousel-item>
+              </sd-carousel>
+            `);
+            const nextButton: HTMLElement = el.shadowRoot!.querySelector('#carousel__navigation-button--next')!;
+            el.goToSlide(2, 'auto');
+            await oneEvent(el.scrollContainer, 'scrollend', false);
+            await el.updateComplete;
+            // Act
+            await clickOnElement(nextButton);
+            // wait first scroll to clone
+            await oneEvent(el.scrollContainer, 'scrollend', false);
+            // wait scroll to actual item
+            await oneEvent(el.scrollContainer, 'scrollend', false);
+            // Assert
+            expect(nextButton).to.have.attribute('aria-disabled', 'false');
+            expect(el.activeSlide).to.be.equal(0);
+          });
+        });
       });
     });
   });
@@ -545,34 +544,36 @@ describe('<sd-carousel>', () => {
       });
     });
 
-    // TODO: This test is failing for Chromium: https://github.com/solid-design-system/solid/issues/387
-    // describe('when scrolling', () => {
-    //   it('should update aria-busy attribute', async () => {
-    //     // Arrange
-    //     const el = await fixture<SdCarousel>(html`
-    //       <sd-carousel variant="dot">
-    //         <sd-carousel-item>Node 1</sd-carousel-item>
-    //         <sd-carousel-item>Node 2</sd-carousel-item>
-    //         <sd-carousel-item>Node 3</sd-carousel-item>
-    //       </sd-carousel>
-    //     `);
+    describe('when scrolling', () => {
+      it('should update aria-busy attribute', async () => {
+        // Arrange
+        const el = await fixture<SdCarousel>(html`
+          <sd-carousel variant="dot">
+            <sd-carousel-item>Node 1</sd-carousel-item>
+            <sd-carousel-item>Node 2</sd-carousel-item>
+            <sd-carousel-item>Node 3</sd-carousel-item>
+          </sd-carousel>
+        `);
 
-    //     await el.updateComplete;
+        await el.updateComplete;
 
-    //     expect(el.scrollContainer).to.have.attribute('aria-busy', 'false');
+        expect(el.scrollContainer).to.have.attribute('aria-busy', 'false');
 
-    //     // Act
-    //     el.goToSlide(2, 'smooth');
-    //     await oneEvent(el.scrollContainer, 'scroll');
-    //     await el.updateComplete;
+        // Act
+        el.goToSlide(2, 'smooth');
+        await oneEvent(el.scrollContainer, 'scroll', false);
+        await el.updateComplete;
+        // Assert
+        expect(el.scrollContainer).to.have.attribute('aria-busy', 'true');
 
-    //     // Assert
-    //     expect(el.scrollContainer).to.have.attribute('aria-busy', 'true');
+        await oneEvent(el.scrollContainer, 'scrollend', false);
+        await el.updateComplete;
 
-    //     await oneEvent(el.scrollContainer, 'scrollend');
-    //     await el.updateComplete;
-    //     expect(el.scrollContainer).to.have.attribute('aria-busy', 'false');
-    //   });
-    // });
+        // It takes a moment for the scrollend event to be fired.
+        await aTimeout(100);
+
+        expect(el.scrollContainer).to.have.attribute('aria-busy', 'false');
+      });
+    });
   });
 });

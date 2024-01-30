@@ -255,8 +255,8 @@ describe('<sd-input>', () => {
       expect(input.shadowRoot!.querySelector('#invalid-message')!.hasAttribute('hidden')).to.be.true;
     });
 
-    it('should show correct icon when calling reportValidity()', async () => {
-      const input = await fixture<HTMLFormElement>(html` <sd-input></sd-input> `);
+    it('should show correct icon when calling reportValidity() with style-on-valid attribute', async () => {
+      const input = await fixture<HTMLFormElement>(html` <sd-input style-on-valid></sd-input> `);
 
       input.setCustomValidity('Invalid selection');
       await input.updateComplete;
@@ -277,6 +277,20 @@ describe('<sd-input>', () => {
 
       expect(input.shadowRoot!.querySelector('[part~="invalid-icon"]')).to.not.exist;
       expect(input.shadowRoot!.querySelector('[part~="valid-icon"]')).to.exist;
+    });
+
+    it('should not show icon when calling reportValidity() without style-on-valid attribute', async () => {
+      const input = await fixture<HTMLFormElement>(html` <sd-input></sd-input> `);
+
+      input.setCustomValidity('');
+      await input.updateComplete;
+
+      input.reportValidity();
+      await input.updateComplete;
+      await input.updateComplete; // Currently there are two updates in the component
+
+      expect(input.shadowRoot!.querySelector('[part~="invalid-icon"]')).to.not.exist;
+      expect(input.shadowRoot!.querySelector('[part~="valid-icon"]')).to.not.exist;
     });
 
     it('should be present in form data when using the form attribute and located outside of a <form>', async () => {
