@@ -1,13 +1,12 @@
-import { classMap } from 'lit/directives/class-map.js';
+import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
-import { html } from 'lit';
 import { LocalizeController } from '../../utilities/localize';
 import { property, query, state } from 'lit/decorators.js';
 import { scrollIntoView } from '../../internal/scroll';
 import { watch } from '../../internal/watch';
+import componentStyles from '../../styles/component.styles';
+import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
-import styles from './tab-group.styles';
-import type { CSSResultGroup } from 'lit';
 import type SdTab from '../tab/tab';
 import type SdTabPanel from '../tab-panel/tab-panel';
 
@@ -41,7 +40,6 @@ import type SdTabPanel from '../tab-panel/tab-panel';
  */
 @customElement('sd-tab-group')
 export default class SdTabGroup extends SolidElement {
-  static styles: CSSResultGroup = styles;
   private readonly localize = new LocalizeController(this);
 
   private activeTab?: SdTab;
@@ -57,17 +55,14 @@ export default class SdTabGroup extends SolidElement {
 
   @state() private hasScrollControls = false;
 
-  /** The placement of the tabs. */
-  @property() placement: 'top' | 'bottom' | 'start' | 'end' = 'top';
+  /** When set to container, a border appears around the current tab. */
+  @property({ type: String, reflect: true }) variant: 'default' | 'container' = 'default';
 
   /**
    * When set to auto, navigating tabs with the arrow keys will instantly show the corresponding tab panel. When set to
    * manual, the tab will receive focus but will not show until the user presses spacebar or enter.
    */
   @property() activation: 'auto' | 'manual' = 'auto';
-
-  /** Disables the scroll arrows that appear when tabs overflow. */
-  @property({ attribute: 'no-scroll-controls', type: Boolean }) noScrollControls = false;
 
   connectedCallback() {
     const whenAllDefined = Promise.all([
@@ -183,15 +178,9 @@ export default class SdTabGroup extends SolidElement {
           index = 0;
         } else if (event.key === 'End') {
           index = this.tabs.length - 1;
-        } else if (
-          (['top', 'bottom'].includes(this.placement) && event.key === (isRtl ? 'ArrowRight' : 'ArrowLeft')) ||
-          (['start', 'end'].includes(this.placement) && event.key === 'ArrowUp')
-        ) {
+        } else if (event.key === (isRtl ? 'ArrowRight' : 'ArrowLeft') || event.key === 'ArrowUp') {
           index--;
-        } else if (
-          (['top', 'bottom'].includes(this.placement) && event.key === (isRtl ? 'ArrowLeft' : 'ArrowRight')) ||
-          (['start', 'end'].includes(this.placement) && event.key === 'ArrowDown')
-        ) {
+        } else if (event.key === (isRtl ? 'ArrowLeft' : 'ArrowRight') || event.key === 'ArrowDown') {
           index++;
         }
 
@@ -209,9 +198,7 @@ export default class SdTabGroup extends SolidElement {
           this.setActiveTab(this.tabs[index], { scrollBehavior: 'smooth' });
         }
 
-        if (['top', 'bottom'].includes(this.placement)) {
-          scrollIntoView(this.tabs[index], this.nav, 'horizontal');
-        }
+        scrollIntoView(this.tabs[index], this.nav, 'horizontal');
 
         event.preventDefault();
       }
@@ -254,9 +241,7 @@ export default class SdTabGroup extends SolidElement {
       this.panels.map(el => (el.active = el.name === this.activeTab?.panel));
       this.syncIndicator();
 
-      if (['top', 'bottom'].includes(this.placement)) {
-        scrollIntoView(this.activeTab, this.nav, 'horizontal', options.scrollBehavior);
-      }
+      scrollIntoView(this.activeTab, this.nav, 'horizontal', options.scrollBehavior);
 
       // Emit events
       if (options.emitEvents) {
@@ -288,7 +273,6 @@ export default class SdTabGroup extends SolidElement {
     }
 
     const width = currentTab.clientWidth;
-    const height = currentTab.clientHeight;
     const isRtl = this.localize.dir() === 'rtl';
 
     // We can't used offsetLeft/offsetTop here due to a shadow parent issue where neither can getBoundingClientRect
@@ -303,21 +287,9 @@ export default class SdTabGroup extends SolidElement {
       { left: 0, top: 0 }
     );
 
-    switch (this.placement) {
-      case 'top':
-      case 'bottom':
-        this.indicator.style.width = `${width}px`;
-        this.indicator.style.height = 'auto';
-        this.indicator.style.translate = isRtl ? `${-1 * offset.left}px` : `${offset.left}px`;
-        break;
-
-      case 'start':
-      case 'end':
-        this.indicator.style.width = 'auto';
-        this.indicator.style.height = `${height}px`;
-        this.indicator.style.translate = `0 ${offset.top}px`;
-        break;
-    }
+    this.indicator.style.width = `${width}px`;
+    this.indicator.style.height = 'auto';
+    this.indicator.style.translate = isRtl ? `${-1 * offset.left}px` : `${offset.left}px`;
   }
 
   // This stores tabs and panels so we can refer to a cache instead of calling querySelectorAll() multiple times.
@@ -330,14 +302,8 @@ export default class SdTabGroup extends SolidElement {
     this.updateComplete.then(() => this.updateScrollControls());
   }
 
-  @watch('noScrollControls', { waitUntilFirstUpdate: true })
-  updateScrollControls() {
-    if (this.noScrollControls) {
-      this.hasScrollControls = false;
-    } else {
-      this.hasScrollControls =
-        ['top', 'bottom'].includes(this.placement) && this.nav.scrollWidth > this.nav.clientWidth;
-    }
+  private updateScrollControls() {
+    this.hasScrollControls = this.nav.scrollWidth > this.nav.clientWidth;
   }
 
   @watch('placement', { waitUntilFirstUpdate: true })
@@ -367,15 +333,11 @@ export default class SdTabGroup extends SolidElement {
     return html`
       <div
         part="base"
-        class=${classMap({
-          'tab-group': true,
-          'tab-group--top': this.placement === 'top',
-          'tab-group--bottom': this.placement === 'bottom',
-          'tab-group--start': this.placement === 'start',
-          'tab-group--end': this.placement === 'end',
-          'tab-group--rtl': this.localize.dir() === 'rtl',
-          'tab-group--has-scroll-controls': this.hasScrollControls
-        })}
+        class=${cx(
+          'flex rounded-none',
+          this.localize.dir() === 'rtl' && 'tab-group--rtl',
+          this.hasScrollControls && 'tab-group--has-scroll-controls'
+        )}
         @click=${this.handleClick}
         @keydown=${this.handleKeyDown}
       >
@@ -385,18 +347,20 @@ export default class SdTabGroup extends SolidElement {
                 <sd-button
                   part="scroll-button scroll-button--start"
                   exportparts="base:scroll-button__base"
-                  class="tab-group__scroll-button tab-group__scroll-button--start"
-                  name=${isRtl ? 'chevron-right' : 'chevron-left'}
-                  library="system"
-                  label=${this.localize.term('scrollToStart')}
+                  class=${cx(
+                    'flex items-center justify-center absolute top-0 bottom-0 w-6',
+                    'tab-group__scroll-button--start'
+                  )}
                   @click=${this.handleScrollToStart}
-                ></sd-button>
+                >
+                  <sd-icon library="system" name=${isRtl ? 'chevron-right' : 'chevron-left'}></sd-icon>
+                </sd-button>
               `
             : ''}
 
           <div class="tab-group__nav">
-            <div part="tabs" class="tab-group__tabs" role="tablist">
-              <div part="active-tab-indicator" class="tab-group__indicator"></div>
+            <div part="tabs" class=${cx('flex relative')} role="tablist">
+              <div part="active-tab-indicator" class=${cx('absolute', 'tab-group__indicator')}></div>
               <slot name="nav" @slotchange=${this.syncTabsAndPanels}></slot>
             </div>
           </div>
@@ -407,7 +371,6 @@ export default class SdTabGroup extends SolidElement {
                   part="scroll-button scroll-button--end"
                   exportparts="base:scroll-button__base"
                   class="tab-group__scroll-button tab-group__scroll-button--end"
-                  label=${this.localize.term('scrollToEnd')}
                   @click=${this.handleScrollToEnd}
                 >
                   <sd-icon library="system" name=${isRtl ? 'chevron-left' : 'chevron-right'}></sd-icon
@@ -416,10 +379,99 @@ export default class SdTabGroup extends SolidElement {
             : ''}
         </div>
 
-        <slot part="body" class="tab-group__body" @slotchange=${this.syncTabsAndPanels}></slot>
+        <slot part="body" class=${cx('block overflow-auto')} @slotchange=${this.syncTabsAndPanels}></slot>
       </div>
     `;
   }
+
+  static styles = [
+    SolidElement.styles,
+    componentStyles,
+    css`
+      ${componentStyles}
+
+      :host {
+        --indicator-color: var(--sd-color-primary-600);
+        --track-color: var(--sd-color-neutral-200);
+        --track-width: 2px;
+
+        display: block;
+      }
+
+      .tab-group__indicator {
+        transition:
+          var(--sd-transition-fast) translate ease,
+          var(--sd-transition-fast) width ease;
+      }
+
+      .tab-group--has-scroll-controls .tab-group__nav-container {
+        position: relative;
+        padding: 0 var(--sd-spacing-x-large);
+      }
+
+      .tab-group__scroll-button--start {
+        left: 0;
+      }
+
+      .tab-group__scroll-button--end {
+        right: 0;
+      }
+
+      .tab-group--rtl .tab-group__scroll-button--start {
+        left: auto;
+        right: 0;
+      }
+
+      .tab-group--rtl .tab-group__scroll-button--end {
+        left: 0;
+        right: auto;
+      }
+
+      /* Top */
+
+      /* .tab-group--top {
+        flex-direction: column;
+      }
+
+      .tab-group--top .tab-group__nav-container {
+        order: 1;
+      } */
+      /* 
+      .tab-group--top .tab-group__nav {
+        display: flex;
+        overflow-x: auto; */
+
+      /* Hide scrollbar in Firefox */
+      /* scrollbar-width: none;
+      } */
+
+      /* Hide scrollbar in Chrome/Safari */
+      /* .tab-group--top .tab-group__nav::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+      }
+
+      .tab-group--top .tab-group__tabs {
+        flex: 1 1 auto;
+        position: relative;
+        flex-direction: row;
+        border-bottom: solid var(--track-width) var(--track-color);
+      }
+
+      .tab-group--top .tab-group__indicator {
+        bottom: calc(-1 * var(--track-width));
+        border-bottom: solid var(--track-width) var(--indicator-color);
+      }
+
+      .tab-group--top .tab-group__body {
+        order: 2;
+      }
+
+      .tab-group--top ::slotted(sd-tab-panel) {
+        --padding: var(--sd-spacing-medium) 0;
+      } */
+    `
+  ];
 }
 
 declare global {
