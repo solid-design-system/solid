@@ -1,3 +1,6 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+![NPM Version](https://img.shields.io/npm/v/%40solid-design-system%2Fplaceholders)
+
 # Placeholder Images
 
 This folder contains placeholder images for all projects at Union Investment.

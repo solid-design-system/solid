@@ -1,3 +1,6 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+![NPM Version](https://img.shields.io/npm/v/%40solid-design-system%2Ftokens)
+
 # Tokens
 
 The Solid Design System Tokens package provides a collection of design tokens for colors, typography and spacing. It ensures design consistency and collaboration between our designers and developers when building components for the Solid Design System.
