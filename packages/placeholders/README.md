@@ -13,12 +13,6 @@ You can find their respective photographer and source below:
 - [Skyline - Tobias Reich](https://unsplash.com/photos/FDBy4lkZycM)
 - [Workspace - Dan Dimmock](https://unsplash.com/photos/3mt71MKGjQ0)
 
-## License
-
-All above images are licensed under the [Unsplash License](https://unsplash.com/license).
-
-`generic.jpg` contains an icon by Union Investment and is therefore only to be used if usage is explicitly granted by Union Investment.
-
 ## Usage
 
 ```bash
