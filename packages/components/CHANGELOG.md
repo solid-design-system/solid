@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v2.2.0](https://github.com/solid-design-system/solid/compare/components/2.1.0...components/2.2.0) (2024-01-30)
+
+
+### Features
+
+* extract @solid-design-system/theming package ([#708](https://github.com/solid-design-system/solid/issues/708)) ([ce7f177](https://github.com/solid-design-system/solid/commit/ce7f177cfebd8ed9647d3d0d268fbfb900464892))
+
+### 📈 Stats
+* Bundle size (uncompressed): 263 KB (unchanged)
+* Bundle size (gzipped): 64 KB (unchanged)
+
 # [@solid-design-system/components-v2.1.0](https://github.com/solid-design-system/solid/compare/components/2.0.0...components/2.1.0) (2024-01-30)
 
 
