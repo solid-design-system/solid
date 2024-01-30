@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v2.1.0](https://github.com/solid-design-system/solid/compare/components/2.0.0...components/2.1.0) (2024-01-30)
+
+
+### Features
+
+* ✨ add sd-dialog ([#668](https://github.com/solid-design-system/solid/issues/668)) ([753b6d8](https://github.com/solid-design-system/solid/commit/753b6d89e4882c434d0fb42ee7a1ef57e5be42c9))
+
+### 📈 Stats
+* Bundle size (uncompressed): 263 KB (+8 KB / +3%)
+* Bundle size (gzipped): 64 KB (+1 KB / +2%)
+
 # [@solid-design-system/components-v2.0.0](https://github.com/solid-design-system/solid/compare/components/1.39.1...components/2.0.0) (2024-01-26)
 
 
