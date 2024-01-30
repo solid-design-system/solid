@@ -23,8 +23,7 @@ export default {
     {
       name: 'sd-table-cell--shadow-...',
       options: ['top', 'left', 'right', 'bottom'],
-      description:
-        'Applies the selected shadow to the table cell.'
+      description: 'Applies the selected shadow to the table cell.'
     }
   ]
 } satisfies Style;

@@ -31,7 +31,9 @@ export default {
 export const Default = {
   render: (args: any) => {
     return generateTemplate({
-      options: { templateContent: '<table class="sd-table"><tr class="relative"><td class="%CLASSES%">%SLOT%</td></tr></table>' },
+      options: {
+        templateContent: '<table class="sd-table"><tr class="relative"><td class="%CLASSES%">%SLOT%</td></tr></table>'
+      },
       args
     });
   }
