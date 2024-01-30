@@ -56,7 +56,7 @@ jobs:
             run: cd packages/components && pnpm run build.chromatic
           # 👇 Adds Chromatic as a step in the workflow
           - name: Publish to Chromatic
-            uses: chromaui/action@v10
+            uses: chromaui/action@latest
             # Options required to the GitHub Chromatic Action
             with:
               # 👇 Chromatic projectToken, refer to the manage page to obtain it.
@@ -64,6 +64,6 @@ jobs:
               # Speedup the build by not waiting until everything is sent to Chromatic
               exitOnceUploaded: true
               # TurboSnap is an advanced Chromatic feature that speeds up builds for faster UI testing and review using Git and Webpack’s dependency graph
-              onlyChanged: true
+              onlyChanged: false
               # We need to manually build storybook with pnpm
               storybookBuildDir: packages/components/dist/storybook
