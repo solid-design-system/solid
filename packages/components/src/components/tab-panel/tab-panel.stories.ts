@@ -1,19 +1,30 @@
 import '../../solid-components';
-import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
+import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 import { withActions } from '@storybook/addon-actions/decorator';
 
-const { argTypes, args, parameters } = storybookDefaults('sd-tab-panel');
+const { argTypes, parameters } = storybookDefaults('sd-tab-panel');
+const { overrideArgs } = storybookHelpers('sd-tab-panel');
 const { generateTemplate } = storybookTemplate('sd-tab-panel');
 
 export default {
   title: 'Components/sd-tab-panel',
   component: 'sd-tab-panel',
-  args,
+  args: overrideArgs([
+    {
+      type: 'slot',
+      name: 'default',
+      value: `<div class="slot slot--text slot--border">Default Slot</div>`
+    },
+    {
+      type: 'attribute',
+      name: 'active',
+      value: true
+    }
+  ]),
   argTypes,
-  parameters: {...parameters},
+  parameters: { ...parameters },
   decorators: [withActions] as any
 };
-
 
 /**
  * Default: This shows sd-tab-panel in its default state.
