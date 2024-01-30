@@ -20,18 +20,18 @@ const extractRGB = str => {
 };
 
 const calculateLuminanceMap = colorObject => {
-  let relevantColors = {
+  const relevantColors = {
     accent: { ...colorObject['accent'] },
     primary: { ...colorObject['primary'] },
     neutral: { ...colorObject['neutral'] }
   };
 
-  let luminanceMaps = {};
+  const luminanceMaps = {};
 
-  for (let colorType in relevantColors) {
-    let luminanceMap = {};
+  for (const colorType in relevantColors) {
+    const luminanceMap = {};
 
-    for (let scale in colorObject[colorType]) {
+    for (const scale in colorObject[colorType]) {
       const rgbStr = extractRGB(colorObject[colorType][scale]);
 
       // If we successfully extracted the RGB string
@@ -78,7 +78,7 @@ const adjustLuminanceMap = (color, luminanceMap, forcedShade) => {
   // Calculate the gradients for the linear adjustment
   const gradient = difference / (1000 - referenceShade);
 
-  let adjustedLuminanceMap = { ...luminanceMap }; // Clone the original map to avoid mutating it directly
+  const adjustedLuminanceMap = { ...luminanceMap }; // Clone the original map to avoid mutating it directly
 
   // Apply the linear function to adjust the luminance values
   Object.keys(adjustedLuminanceMap).forEach(key => {
@@ -145,11 +145,34 @@ export const calculateColorsForType = (type, theme, colors, useNormalizedLuminan
   return tokens;
 };
 
+/**
+ * Generates CSS custom properties (variables) for color themes based on the provided colors and theme configuration.
+ * This function calculates the luminance values for each color type (primary, accent, etc.) and creates a color scale.
+ * The color scales are then transformed into CSS custom properties.
+ *
+ * @param {Object} colors - An object containing color definitions (e.g., primary, accent) with their respective hex values.
+ * @param {Object} theme - Theme object containing color configurations. The @solid-design-system/tokens theme can be used as reference.
+ * @param {boolean} useNormalizedLuminanceMap - A boolean flag to determine whether to use a normalized luminance map or the calculated one.
+ * @param {boolean} useForcedShades - A boolean flag to decide if forced shades should be applied.
+ * @returns {string} A string containing CSS custom properties for the defined color types and their shades.
+ *
+ * @example
+ * // Example usage:
+ * const colors = { primary: '#ff5733', accent: '#33c3f0', ... };
+ * const theme = { accentColor: {...}, backgroundColor: {...}, ...};
+ * const cssProperties = calculateColorsAsCss(colors, theme, true, false);
+ * console.log(cssProperties); // Outputs CSS custom properties as a string
+ */
 export const calculateColorsAsCss = (colors, theme, useNormalizedLuminanceMap, useForcedShades) => {
   let allTokens = ':root{\n  /* Copy & paste into your theme */\n';
 
   Object.keys(colors).forEach(type => {
-    allTokens += calculateColorsForType(type, theme, colors, useNormalizedLuminanceMap, useForcedShades);
+    if (type === 'black' || type === 'white') {
+      // Add the color directly without generating shades
+      allTokens += `  --sd-color-${type}: ${colors[type]};\n`;
+    } else {
+      allTokens += calculateColorsForType(type, theme, colors, useNormalizedLuminanceMap, useForcedShades);
+    }
   });
 
   allTokens += '}';
