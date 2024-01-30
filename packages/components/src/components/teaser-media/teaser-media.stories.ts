@@ -111,6 +111,11 @@ export const SamplesNotClickable = {
             <span class="meta-info-item">| Author name</span>
           </div>
           <h3 slot="headline">Not clickable teaser</h3>
+          <div slot="expandable">
+            <p>Expandable: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua.
+            </p>
+          </div>
           <div class="flex flex-col gap-5">
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
@@ -121,52 +126,62 @@ export const SamplesNotClickable = {
             </div>
           </div>
         </sd-teaser-media>
-        <!--        <sd-teaser-media variant="white border-neutral-400" breakpoint="9999" inset class="flex-1">-->
-        <!--          <div slot="media" class="relative">-->
-        <!--            <img-->
-        <!--              class="aspect-video object-cover"-->
-        <!--              src="./placeholders/generic.jpg"-->
-        <!--              alt="A skyline of a city by night"-->
-        <!--            />-->
-        <!--          </div>-->
-        <!--          <div slot="meta" class="meta-info">-->
-        <!--            <span class="meta-info-item">01.12.2013</span>-->
-        <!--            <span class="meta-info-item">| Author name</span>-->
-        <!--          </div>-->
-        <!--          <h3 slot="headline">Not clickable teaser</h3>-->
-        <!--          <div class="flex flex-col gap-5">-->
-        <!--            <p>-->
-        <!--              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et-->
-        <!--              dolore magna aliqua.-->
-        <!--            </p>-->
-        <!--            <div class="flex-none">-->
-        <!--              <sd-button href="#" target="_blank" variant="primary">Link</sd-button>-->
-        <!--            </div>-->
-        <!--          </div>-->
-        <!--        </sd-teaser-media>-->
-        <!--        <sd-teaser-media variant="white border-neutral-400" breakpoint="9999" inset class="flex-1">-->
-        <!--          <div slot="media" class="relative">-->
-        <!--            <img-->
-        <!--              class="aspect-video object-cover"-->
-        <!--              src="./placeholders/generic.jpg"-->
-        <!--              alt="A skyline of a city by night"-->
-        <!--            />-->
-        <!--          </div>-->
-        <!--          <div slot="meta" class="meta-info">-->
-        <!--            <span class="meta-info-item">01.12.2013</span>-->
-        <!--            <span class="meta-info-item">| Author name</span>-->
-        <!--          </div>-->
-        <!--          <h3 slot="headline">Not clickable teaser</h3>-->
-        <!--          <div class="flex flex-col gap-5">-->
-        <!--            <p>-->
-        <!--              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et-->
-        <!--              dolore magna aliqua.-->
-        <!--            </p>-->
-        <!--            <div class="flex-none">-->
-        <!--              <sd-button href="#" target="_blank" variant="primary">Link</sd-button>-->
-        <!--            </div>-->
-        <!--          </div>-->
-        <!--        </sd-teaser-media>-->
+                <sd-teaser-media variant="white border-neutral-400" breakpoint="9999" inset class="flex-1">
+                  <div slot="media" class="relative">
+                    <img
+                      class="aspect-video object-cover"
+                      src="./placeholders/generic.jpg"
+                      alt="A skyline of a city by night"
+                    />
+                  </div>
+                  <div slot="meta" class="meta-info">
+                    <span class="meta-info-item">01.12.2013</span>
+                    <span class="meta-info-item">| Author name</span>
+                  </div>
+                  <h3 slot="headline">Not clickable teaser</h3>
+                  <div slot="expandable">
+                    <p>Expandable: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                      dolore magna aliqua.
+                    </p>
+                  </div>
+                  <div class="flex flex-col gap-5">
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                      dolore magna aliqua.
+                    </p>
+                    <div class="flex-none">
+                      <sd-button href="#" target="_blank" variant="primary">Link</sd-button>
+                    </div>
+                  </div>
+                </sd-teaser-media>
+                <sd-teaser-media variant="white border-neutral-400" breakpoint="9999" inset class="flex-1">
+                  <div slot="media" class="relative">
+                    <img
+                      class="aspect-video object-cover"
+                      src="./placeholders/generic.jpg"
+                      alt="A skyline of a city by night"
+                    />
+                  </div>
+                  <div slot="meta" class="meta-info">
+                    <span class="meta-info-item">01.12.2013</span>
+                    <span class="meta-info-item">| Author name</span>
+                  </div>
+                  <h3 slot="headline">Not clickable teaser</h3>
+                  <div slot="expandable">
+                    <p>Expandable: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                      dolore magna aliqua.
+                    </p>
+                  </div>
+                  <div class="flex flex-col gap-5">
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                      dolore magna aliqua.
+                    </p>
+                    <div class="flex-none">
+                      <sd-button href="#" target="_blank" variant="primary">Link</sd-button>
+                    </div>
+                  </div>
+                </sd-teaser-media>
       </div>
     `;
   }
