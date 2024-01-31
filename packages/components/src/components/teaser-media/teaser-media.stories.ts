@@ -77,8 +77,16 @@ export const Slots = {
   },
   render: (args: any) => {
     return html`
-      ${['default', 'media', 'meta', 'headline', 'expandable'].map(slot =>
-        generateTemplate({
+      ${['default', 'media', 'meta', 'headline', 'expandable'].map(slot => {
+        let value = `<div slot='${slot}' class="slot slot--border slot--background h-16"></div>`;
+
+        if (slot === 'default') {
+          value = `<div class="slot slot--border slot--background h-16"></div>`;
+        } else if (slot === 'media') {
+          value = `<div slot='${slot}' class="slot slot--border slot--background h-[577px]"></div>`;
+        }
+
+        return generateTemplate({
           axis: {
             x: {
               type: 'slot',
@@ -86,10 +94,7 @@ export const Slots = {
               title: 'slot=..',
               values: [
                 {
-                  value:
-                    slot === 'default'
-                      ? `<div class="slot slot--border slot--background h-16"></div>`
-                      : `<div slot='${slot}' class="slot slot--border slot--background h-16"></div>`,
+                  value: value,
                   title: slot
                 }
               ]
@@ -128,8 +133,8 @@ export const Slots = {
               value: '<div style="margin-bottom: 40px; width: 782px;">%TEMPLATE%</div>'
             }
           ]
-        })
-      )}
+        });
+      })}
     `;
   }
 };
