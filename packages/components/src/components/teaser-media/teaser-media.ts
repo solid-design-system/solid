@@ -36,7 +36,14 @@ export default class SdTeaserMedia extends SolidElement {
 
   @query('[part="base"]') teaserMedia: HTMLElement;
 
-  private readonly hasSlotController = new HasSlotController(this, '[default]', 'media', 'meta', 'headline', 'expandable');
+  private readonly hasSlotController = new HasSlotController(
+    this,
+    '[default]',
+    'media',
+    'meta',
+    'headline',
+    'expandable'
+  );
 
   connectedCallback() {
     super.connectedCallback();
@@ -96,16 +103,24 @@ export default class SdTeaserMedia extends SolidElement {
 
         <div class="absolute flex flex-col justify-end h-full w-full pb-4">
           <div class="flex-1 bg-gradient-to-t from-[#3730a3]/55"></div>
-          <div class="bg-gradient-to-t from-[#3730a3]/75 to-[#3730a3]/55">
+          <div
+            class=${cx(
+              {
+                white: 'bg-white opacity-[80%]',
+                'neutral-100': 'bg-neutral-100 opacity-[80%]',
+                primary: 'bg-primary text-white opacity-[80%]',
+                'primary-100': 'bg-primary-100 opacity-[80%]',
+                'gradient-white': 'bg-gradient-to-t from-white/75 to-white/55',
+                'gradient-dark': 'bg-gradient-to-t from-[#3730a3]/75 to-[#3730a3]/55 text-white'
+              }[this.variant]
+            )}
+          >
             <div class=${cx('flex-col text-left p-4')} part="content">
               <div part="meta" class=${cx('gap-2 mb-4', !slots['teaser-has-meta'] && 'hidden')}>
                 <slot name="meta"></slot>
               </div>
 
-              <div
-                part="headline"
-                class=${cx('text-lg font-bold m-0', this.variant === 'primary' ? 'text-white' : 'text-black')}
-              >
+              <div part="headline" class=${cx('text-lg font-bold m-0')}>
                 <slot name="headline"
                   >Always insert one semantically correct heading element here (e. g. &lt;h2&gt;)</slot
                 >
@@ -113,7 +128,7 @@ export default class SdTeaserMedia extends SolidElement {
 
               <div
                 id="expandable"
-                class="h-[0px] invisible opacity-0 md:[transition:_height_0.2s_linear,opacity_0.2s_linear_0.1s] hidden md:block"
+                class="h-[0px] invisible opacity-0 md:[transition:_height_0.2s_linear,opacity_0.2s_linear_0.1s] hidden md:block my-4"
                 part="expandable"
               >
                 <slot name="expandable"></slot>
