@@ -40,6 +40,4 @@ describe('<sd-teaser-media>', () => {
     expect(el.shadowRoot!.querySelector<HTMLElement>('[part~="main"]')?.classList.contains('hidden')).to.be.true;
     expect(el.shadowRoot!.querySelector<HTMLElement>('[part~="expandable"]')?.classList.contains('hidden')).to.be.true;
   });
-
-
 });
