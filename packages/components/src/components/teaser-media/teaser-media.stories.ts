@@ -214,7 +214,7 @@ export const SamplesNotClickable = {
           <div class="flex flex-col gap-5">
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             <div class="flex-none">
-              <sd-button href="#" target="_blank" variant="primary">Link</sd-button>
+              <sd-button href="#" target="_blank" variant="primary" inverted>Link</sd-button>
             </div>
           </div>
         </sd-teaser-media>
