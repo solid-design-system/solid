@@ -78,10 +78,16 @@ export default class SdCarousel extends SolidElement {
   @query('.carousel__slides') scrollContainer: HTMLElement;
   @query('.carousel__pagination') paginationContainer: HTMLElement;
 
-  // The index of the active slide
+  /**
+   * The index of the active slide
+   * @internal
+   */
   @state() activeSlide = 0;
 
-  // Boolean keeping track of the autoplay pause/play button
+  /**
+   * Boolean keeping track of the autoplay pause/play button
+   * @internal
+   */
   @state() pausedAutoplay = false;
 
   private autoplayController = new AutoplayController(this, () => this.next());

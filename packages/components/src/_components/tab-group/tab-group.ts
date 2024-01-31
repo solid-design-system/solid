@@ -56,7 +56,8 @@ export default class SdTabGroup extends SolidElement {
   @query('.tab-group__nav') nav: HTMLElement;
   @query('.tab-group__indicator') indicator: HTMLElement;
 
-  @state() private hasScrollControls = false;
+  /** @internal */
+  @state() hasScrollControls = false;
 
   /** The placement of the tabs. */
   @property() placement: 'top' | 'bottom' | 'start' | 'end' = 'top';

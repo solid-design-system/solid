@@ -21,7 +21,8 @@ let parser: DOMParser;
 
 @customElement('sd-icon')
 export default class SdIcon extends SolidElement {
-  @state() private svg = '';
+  /** @internal */
+  @state() svg = '';
 
   /** The name of the icon to draw. Available names depend on the icon library being used. */
   @property({ reflect: true }) name?: string;

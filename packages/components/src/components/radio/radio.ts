@@ -25,7 +25,9 @@ import SolidElement from '../../internal/solid-element';
  */
 @customElement('sd-radio')
 export default class SdRadio extends SolidElement {
-  /** A Boolean attribute which, if present, indicates that this radio button is the default check one in the group. */
+  /** A Boolean attribute which, if present, indicates that this radio button is the default check one in the group.
+   * @internal
+   */
   @state() checked = false;
   @state() protected hasFocus = false;
 

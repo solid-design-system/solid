@@ -41,7 +41,8 @@ export default class SdTeaser extends SolidElement {
 
   @query('[part="base"]') teaser: HTMLElement;
 
-  @state() private _orientation: 'vertical' | 'horizontal';
+  /** @internal */
+  @state() _orientation: 'vertical' | 'horizontal';
 
   private readonly hasSlotController = new HasSlotController(this, '[default]', 'media', 'meta', 'headline');
 
