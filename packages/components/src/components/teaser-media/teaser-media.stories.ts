@@ -97,37 +97,8 @@ export const SamplesNotClickable = {
           flex-grow: 1;
         }
       </style>
-      <div class="flex justify-between gap-8">
-        <sd-teaser-media variant="primary" breakpoint="9999" inset class="flex-1">
-          <div slot="media" class="relative">
-            <img
-              class="aspect-video object-cover"
-              src="./placeholders/generic.jpg"
-              alt="A group of people sitting in a coffee shop"
-            />
-          </div>
-          <div slot="meta" class="meta-info">
-            <span class="meta-info-item">01.12.2013</span>
-            <span class="meta-info-item">| Author name</span>
-          </div>
-          <h3 slot="headline">Not clickable teaser</h3>
-          <div slot="expandable">
-            <p>
-              Expandable: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-              labore et dolore magna aliqua.
-            </p>
-          </div>
-          <div class="flex flex-col gap-5">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua.
-            </p>
-            <div class="flex-none">
-              <sd-button href="#" target="_blank" variant="primary" inverted>Link</sd-button>
-            </div>
-          </div>
-        </sd-teaser-media>
-        <sd-teaser-media variant="gradient-dark" breakpoint="9999" inset class="flex-1">
+      <div class="flex flex-wrap gap-8">
+        <sd-teaser-media variant="gradient-dark" class="min-w-[435px]">
           <div slot="media" class="relative">
             <img
               class="aspect-video object-cover"
@@ -148,15 +119,14 @@ export const SamplesNotClickable = {
           </div>
           <div class="flex flex-col gap-5">
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </p>
             <div class="flex-none">
               <sd-button href="#" target="_blank" variant="primary">Link</sd-button>
             </div>
           </div>
         </sd-teaser-media>
-        <sd-teaser-media variant="white" breakpoint="9999" inset class="flex-1">
+        <sd-teaser-media variant="gradient-white" breakpoint="9999" class="min-w-[435px]">
           <div slot="media" class="relative">
             <img
               class="aspect-video object-cover"
@@ -172,6 +142,10 @@ export const SamplesNotClickable = {
           <div slot="expandable">
             <p>
               Expandable: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+              labore et dolore magna aliqua. Expandable: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+              labore et dolore magna aliqua. Expandable: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+              labore et dolore magna aliqua. Expandable: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+              labore et dolore magna aliqua. Expandable: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
               labore et dolore magna aliqua.
             </p>
           </div>
