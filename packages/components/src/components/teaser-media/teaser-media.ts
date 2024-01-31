@@ -105,11 +105,13 @@ export default class SdTeaserMedia extends SolidElement {
         </div>
 
         <div class="absolute flex flex-col justify-end h-full w-full pb-4">
-          <div class=${cx(
-            'flex-1',
-            this.variant === 'gradient-white' && 'bg-gradient-to-t from-white/75 to-55% opacity-[80%]',
-            this.variant === 'gradient-dark' && 'bg-gradient-to-t from-primary-800/75 to-55% opacity-[80%]',
-          )}></div>
+          <div
+            class=${cx(
+              'flex-1',
+              this.variant === 'gradient-white' && 'bg-gradient-to-t from-white/75 to-55% opacity-[80%]',
+              this.variant === 'gradient-dark' && 'bg-gradient-to-t from-primary-800/75 to-55% opacity-[80%]'
+            )}
+          ></div>
           <div
             class=${cx(
               {

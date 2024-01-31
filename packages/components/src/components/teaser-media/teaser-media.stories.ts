@@ -45,6 +45,95 @@ export const Default = {
   }
 };
 
+export const Variant = {
+  name: 'Variant',
+  parameters: { controls: { exclude: ['variant'] } },
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        y: { type: 'attribute', name: 'variant' }
+      },
+      args,
+      constants: [
+        {
+          type: 'template',
+          name: 'style',
+          value: '<div style="margin-bottom: 40px; width: 500px">%TEMPLATE%</div>'
+        },
+        {
+          type: 'slot',
+          name: 'media',
+          value:
+            '<img slot="media" class="aspect-video object-cover" src="./placeholders/generic.jpg" alt="A skyline of a city by night"/>'
+        }
+      ]
+    });
+  }
+};
+
+export const Slots = {
+  parameters: {
+    controls: { exclude: ['default', 'media', 'meta', 'headline', 'expandable'] }
+  },
+  render: (args: any) => {
+    return html`
+      ${['default', 'media', 'meta', 'headline', 'expandable'].map(slot =>
+        generateTemplate({
+          axis: {
+            x: {
+              type: 'slot',
+              name: slot,
+              title: 'slot=..',
+              values: [
+                {
+                  value:
+                    slot === 'default'
+                      ? `<div class="slot slot--border slot--background h-16"></div>`
+                      : `<div slot='${slot}' class="slot slot--border slot--background h-16"></div>`,
+                  title: slot
+                }
+              ]
+            }
+          },
+          args,
+          constants: [
+            {
+              type: 'slot',
+              name: 'media',
+              value: `<img slot='media' src='./placeholders/collaboration.jpg' alt='Test'/>`
+            },
+            {
+              type: 'slot',
+              name: 'meta',
+              value: `<slot slot='meta'>Teaser's Meta information</slot>`
+            },
+            {
+              type: 'slot',
+              name: 'default',
+              value: `<slot>Teaser's Main content</slot>`
+            },
+            {
+              type: 'slot',
+              name: 'headline',
+              value: `<slot slot='headline'>Teaser's Headline</slot>`
+            },
+            {
+              type: 'slot',
+              name: 'expandable',
+              value: `<slot slot='expandable'>Teaser's Expandable content</slot>`
+            },
+            {
+              type: 'template',
+              name: 'style',
+              value: '<div style="margin-bottom: 40px; width: 782px;">%TEMPLATE%</div>'
+            }
+          ]
+        })
+      )}
+    `;
+  }
+};
+
 export const Parts = {
   parameters: {
     controls: { exclude: ['base', 'media', 'content', 'meta', 'headline', 'main', 'expandable', 'variant'] }
@@ -118,9 +207,7 @@ export const SamplesNotClickable = {
             </p>
           </div>
           <div class="flex flex-col gap-5">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             <div class="flex-none">
               <sd-button href="#" target="_blank" variant="primary">Link</sd-button>
             </div>
@@ -142,11 +229,12 @@ export const SamplesNotClickable = {
           <div slot="expandable">
             <p>
               Expandable: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-              labore et dolore magna aliqua. Expandable: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-              labore et dolore magna aliqua. Expandable: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-              labore et dolore magna aliqua. Expandable: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-              labore et dolore magna aliqua. Expandable: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-              labore et dolore magna aliqua.
+              labore et dolore magna aliqua. Expandable: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Expandable: Lorem ipsum dolor sit amet,
+              consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Expandable: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+              labore et dolore magna aliqua. Expandable: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </p>
           </div>
           <div class="flex flex-col gap-5">
