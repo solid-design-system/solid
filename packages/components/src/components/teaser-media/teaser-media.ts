@@ -60,14 +60,17 @@ export default class SdTeaserMedia extends SolidElement {
   onHover() {
     if (this.shadowRoot) {
       const hiddenDiv = this.shadowRoot.getElementById('expandable')!;
-      hiddenDiv.setAttribute('style', 'height: 50px; visibility: visible; opacity: 1;');
+      hiddenDiv.setAttribute(
+        'style',
+        'height: auto; visibility: visible; opacity: 1; margin-top: 16px; margin-bottom: 16px;'
+      );
     }
   }
 
   onHoverEnd() {
     if (this.shadowRoot) {
       const hiddenDiv = this.shadowRoot.getElementById('expandable')!;
-      hiddenDiv.setAttribute('style', 'height: 0; visibility: invisible; opacity: 0;');
+      hiddenDiv.setAttribute('style', 'height: 0; visibility: invisible; opacity: 0; margin-top: 0; margin-bottom: 0;');
     }
   }
 
@@ -128,7 +131,7 @@ export default class SdTeaserMedia extends SolidElement {
 
               <div
                 id="expandable"
-                class="h-[0px] invisible opacity-0 md:[transition:_height_0.2s_linear,opacity_0.2s_linear_0.1s] hidden md:block my-4"
+                class="h-[0px] invisible opacity-0 md:[transition:_height_0.2s_linear,opacity_0.2s_linear_0.1s] hidden md:block"
                 part="expandable"
               >
                 <slot name="expandable"></slot>
