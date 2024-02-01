@@ -76,7 +76,7 @@ export const Variant = {
 };
 
 /**
- * Use the 'default', 'media', 'meta', 'expandable' and 'headline' slots to add content to the teaser. Please use h1-h6 tags for the headline slot.
+ * Use the 'default', 'media', 'meta', 'expandable' and 'headline' slots to add content to the teaser. Please make sure to use semantically correct headline tags for the `headline` slot to provide accessible content.
  */
 export const Slots = {
   parameters: {
