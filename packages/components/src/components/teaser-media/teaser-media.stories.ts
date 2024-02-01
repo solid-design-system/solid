@@ -218,7 +218,7 @@ export const SamplesNotClickable = {
             </div>
           </div>
         </sd-teaser-media>
-        <sd-teaser-media variant="gradient-white" breakpoint="9999" class="min-w-[435px]">
+        <sd-teaser-media variant="gradient-white" class="min-w-[435px]">
           <div slot="media" class="relative">
             <img
               class="aspect-video object-cover"

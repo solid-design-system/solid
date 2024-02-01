@@ -85,17 +85,7 @@ export default class SdTeaserMedia extends SolidElement {
 
     return html`
       <div
-        class=${cx(
-          'relative flex flex-col max-w-[862px]',
-          {
-            white: '',
-            'neutral-100': '',
-            primary: '',
-            'primary-100': '',
-            'gradient-white': '',
-            'gradient-dark': ''
-          }[this.variant]
-        )}
+        class="relative flex flex-col max-w-[862px] overflow-hidden"
         part="base"
         @mouseenter=${this.onHover}
         @mouseleave=${this.onHoverEnd}
@@ -107,20 +97,21 @@ export default class SdTeaserMedia extends SolidElement {
         <div class="absolute flex flex-col justify-end h-full w-full pb-4">
           <div
             class=${cx(
-              'flex-1',
-              this.variant === 'gradient-white' && 'bg-gradient-to-t from-white/75 to-55% opacity-[80%]',
-              this.variant === 'gradient-dark' && 'bg-gradient-to-t from-primary-800/75 to-55% opacity-[80%]'
+              'flex-1 opacity-[80%]',
+              this.variant === 'gradient-white' && 'bg-gradient-to-t from-white/75 to-55%',
+              this.variant === 'gradient-dark' && 'bg-gradient-to-t from-primary-800/75 to-55%'
             )}
           ></div>
           <div
             class=${cx(
+              'opacity-[80%]',
               {
-                white: 'bg-white opacity-[80%]',
-                'neutral-100': 'bg-neutral-100 opacity-[80%]',
-                primary: 'bg-primary text-white opacity-[80%]',
-                'primary-100': 'bg-primary-100 opacity-[80%]',
-                'gradient-white': 'bg-white/75 opacity-[80%]',
-                'gradient-dark': 'bg-primary-800/75 text-white opacity-[80%]'
+                white: 'bg-white ',
+                'neutral-100': 'bg-neutral-100',
+                primary: 'bg-primary text-white',
+                'primary-100': 'bg-primary-100',
+                'gradient-white': 'bg-white/75',
+                'gradient-dark': 'bg-primary-800/75 text-white'
               }[this.variant]
             )}
           >
@@ -137,7 +128,11 @@ export default class SdTeaserMedia extends SolidElement {
 
               <div
                 id="expandable"
-                class="h-[0px] invisible opacity-0 md:[transition:_height_0.2s_linear,opacity_0.1s_linear_0.1s] hidden md:block"
+                class=${cx(
+                  slots['teaser-has-default'] &&
+                    'h-[0px] invisible opacity-0 hidden md:[transition:_height_0.2s_linear,opacity_0.1s_linear_0.1s] md:block',
+                  !slots['teaser-has-default'] && 'hidden'
+                )}
                 part="expandable"
               >
                 <slot name="expandable"></slot>
