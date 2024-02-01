@@ -7,7 +7,7 @@
 
   &--shadow-bottom {
     &:after {
-      @apply opacity-0 absolute pointer-events-none transition-opacity duration-300 left-0 right-0 h-2.5 bottom-[-10px] content-[''] bg-gradient-to-b from-neutral-300 to-transparent;
+      @apply opacity-0 absolute pointer-events-none transition-opacity duration-300 left-0 right-0 h-2.5 bottom-[-10px] content-[''] bg-gradient-to-b from-[#000]/10 to-transparent;
     }
 
     &.sd-table-cell--shadow-active:after {
@@ -22,7 +22,7 @@
 
   &--shadow-right {
     &:after {
-      @apply opacity-0 absolute pointer-events-none transition-opacity duration-300 content-[''] bg-gradient-to-r from-neutral-300 to-transparent top-0 bottom-0 right-[-10px] w-2.5;
+      @apply opacity-0 absolute pointer-events-none transition-opacity duration-300 content-[''] bg-gradient-to-r from-[#000]/10 to-transparent top-0 bottom-0 right-[-10px] w-2.5;
     }
 
     &.sd-table-cell--shadow-active:after {
@@ -32,7 +32,7 @@
 
   &--shadow-left {
     &:before {
-      @apply opacity-0 absolute pointer-events-none transition-opacity duration-300 content-[''] bg-gradient-to-l from-neutral-300 to-transparent top-0 bottom-0 left-[-10px] w-2.5;
+      @apply opacity-0 absolute pointer-events-none transition-opacity duration-300 content-[''] bg-gradient-to-l from-[#000]/10 to-transparent top-0 bottom-0 left-[-10px] w-2.5;
     }
 
     &.sd-table-cell--shadow-active:before {
@@ -42,7 +42,7 @@
 
   &--shadow-top {
     &:before {
-      @apply opacity-0 absolute pointer-events-none transition-opacity duration-300 left-0 right-0 content-[''] bg-gradient-to-t from-neutral-300 to-transparent top-[-10px] h-2.5;
+      @apply opacity-0 absolute pointer-events-none transition-opacity duration-300 left-0 right-0 content-[''] bg-gradient-to-t from-[#000]/10 to-transparent top-[-10px] h-2.5;
     }
 
     &.sd-table-cell--shadow-active:before {
