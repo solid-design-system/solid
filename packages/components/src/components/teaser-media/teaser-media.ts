@@ -6,16 +6,16 @@ import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 import type { PropertyValues } from 'lit';
 /**
- * @summary //TODO
- * @documentation https://solid.union-investment.com/[storybook-link]/teaser-media //TODO
+ * @summary Teasers group information into flexible containers so users can browse a collection of related items and actions.
+ * @documentation https://solid-design-system.fe.union-investment.de/x.x.x/storybook/?path=/docs/components-sd-teaser-media--docs
  *
  * @status stable
- * @since 1.3 //TODO
+ * @since 2.1
  * *
  * @slot - An optional main content slot.
  * @slot media - An optional media slot.
  * @slot meta - An optional meta slot.
- * @slot expandable - An optional meta slot.
+ * @slot expandable - An optional expandable slot, <strong>not</strong> shown on small devices.
  * @slot headline - headline slot.
  *
  * @csspart base - The component's base wrapper.
@@ -23,10 +23,8 @@ import type { PropertyValues } from 'lit';
  * @csspart content - The container that wraps the content.
  * @csspart meta -  The container that wraps the meta.
  * @csspart headline - The container that wraps the headline.
+ * @csspart expandable - The container that wraps the expandable.
  * @csspart main - The container that wraps the main content.
- *
- * @cssproperty --distribution-media - The distribution ratio of the media.
- * @cssproperty --distribution-content - The distribution ratio of the content.
  */
 
 @customElement('sd-teaser-media')

@@ -45,6 +45,10 @@ export const Default = {
   }
 };
 
+/**
+ * Teaser-Media in all possible `variant`.
+ */
+
 export const Variant = {
   name: 'Variant',
   parameters: { controls: { exclude: ['variant'] } },
@@ -71,6 +75,9 @@ export const Variant = {
   }
 };
 
+/**
+ * Use the 'default', 'media', 'meta', 'expandable' and 'headline' slots to add content to the teaser. Please use h1-h6 tags for the headline slot.
+ */
 export const Slots = {
   parameters: {
     controls: { exclude: ['default', 'media', 'meta', 'headline', 'expandable'] }
@@ -174,8 +181,8 @@ export const Parts = {
   }
 };
 
-export const SamplesNotClickable = {
-  name: 'Samples: Not clickable teaser',
+export const Samples = {
+  name: 'Samples: Teaser-Media',
   parameters: {
     controls: {
       disable: true
@@ -204,13 +211,7 @@ export const SamplesNotClickable = {
             <span class="meta-info-item">01.12.2013</span>
             <span class="meta-info-item">| Author name</span>
           </div>
-          <h3 slot="headline">Not clickable teaser</h3>
-          <!-- <div slot="expandable">
-            <p>
-              Expandable: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-              labore et dolore magna aliqua.
-            </p>
-          </div> -->
+          <h3 slot="headline">Not expandable teaser-media</h3>
           <div class="flex flex-col gap-4">
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             <div class="flex-none">
@@ -230,7 +231,7 @@ export const SamplesNotClickable = {
             <span class="meta-info-item">01.12.2013</span>
             <span class="meta-info-item">| Author name</span>
           </div>
-          <h3 slot="headline">Not clickable teaser</h3>
+          <h3 slot="headline">Expandable teaser-media</h3>
           <div slot="expandable">
             <p>
               Expandable: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
