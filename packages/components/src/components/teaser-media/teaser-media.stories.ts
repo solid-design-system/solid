@@ -58,7 +58,7 @@ export const Variant = {
         {
           type: 'template',
           name: 'style',
-          value: '<div style="margin-bottom: 40px; width: 500px">%TEMPLATE%</div>'
+          value: '<div style="margin-bottom: 40px; width: 600px">%TEMPLATE%</div>'
         },
         {
           type: 'slot',
