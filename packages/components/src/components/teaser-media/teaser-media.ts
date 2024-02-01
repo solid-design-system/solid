@@ -58,7 +58,7 @@ export default class SdTeaserMedia extends SolidElement {
   }
 
   onHover() {
-    if (this.shadowRoot) {
+    if (this.hasSlotController.test('expandable') && this.shadowRoot) {
       const hiddenDiv = this.shadowRoot.getElementById('expandable')!;
       hiddenDiv.setAttribute(
         'style',

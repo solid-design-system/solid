@@ -205,13 +205,13 @@ export const SamplesNotClickable = {
             <span class="meta-info-item">| Author name</span>
           </div>
           <h3 slot="headline">Not clickable teaser</h3>
-          <div slot="expandable">
+          <!-- <div slot="expandable">
             <p>
               Expandable: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
               labore et dolore magna aliqua.
             </p>
-          </div>
-          <div class="flex flex-col gap-5">
+          </div> -->
+          <div class="flex flex-col gap-4">
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             <div class="flex-none">
               <sd-button href="#" target="_blank" variant="primary" inverted>Link</sd-button>
@@ -237,13 +237,16 @@ export const SamplesNotClickable = {
               labore et dolore magna aliqua.
             </p>
           </div>
-          <div class="flex flex-col gap-5">
+          <div class="flex flex-col gap-4">
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
               dolore magna aliqua.
             </p>
             <div class="flex-none">
               <sd-button href="#" target="_blank" variant="primary">Link</sd-button>
+            </div>
+            <div class="flex-none">
+              <p>@Copyright Lorem ipsum</p>
             </div>
           </div>
         </sd-teaser-media>
