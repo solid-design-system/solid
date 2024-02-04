@@ -12,16 +12,14 @@ let id = 0;
  * @summary Tabs are used inside [tab groups](/components/tab-group) to represent and activate [tab panels](/components/tab-panel).
  * @documentation https://solid.union-investment.com/[storybook-link]/tab
  * @status stable
- * @since 1.0
+ * @since 2.1.0
  *
  * @dependency sd-button
  *
  * @slot - The tab's label.
- * @slot - left - Optional element (eg. icon) positioned to the left of the label.
+ * @slot left - Optional element (eg. icon) positioned to the left of the label.
  *
  * @csspart base - The component's base wrapper.
- * @csspart close-button - The close button, an `<sd-button>`.
- * @csspart close-button__base - The close button's exported `base` part.
  */
 @customElement('sd-tab')
 export default class SdTab extends SolidElement {
@@ -72,13 +70,15 @@ export default class SdTab extends SolidElement {
       <div
         part="base"
         class=${cx(
-          'inline-flex items-center whitespace-nowrap user-select-none cursor-pointer',
-          this.disabled && 'opacity-50 cursor-not-allowed'
+          'inline-flex gap-2 w-20 h-12 px-3 leading-none items-center justify-center whitespace-nowrap select-none cursor-pointer focus-visible:outline-primary',
+          this.disabled ? 'opacity-50 !cursor-not-allowed !border-b-[1px] !border-neutral-400' : 'hover:bg-neutral-200',
+          this.active ? '' : ''
+          // this.active ? 'border-b-4 border-accent' : 'border-b-[1px] border-neutral-400'
         )}
         tabindex=${this.disabled ? '-1' : '0'}
       >
         <slot name="left"></slot>
-        <slot></slot>
+        <slot class=${cx(this.disabled ? 'text-neutral-500' : 'text-primary')}></slot>
       </div>
     `;
   }
@@ -89,34 +89,6 @@ export default class SdTab extends SolidElement {
     css`
       :host {
         @apply inline-block;
-      }
-
-      .tab:hover:not(.tab--disabled) {
-        color: var(--sd-color-primary-600);
-      }
-
-      .tab:focus {
-        outline: none;
-      }
-
-      .tab:focus-visible:not(.tab--disabled) {
-        color: var(--sd-color-primary-600);
-      }
-
-      .tab:focus-visible {
-        outline: var(--sd-focus-ring);
-        outline-offset: calc(-1 * var(--sd-focus-ring-width) - var(--sd-focus-ring-offset));
-      }
-
-      .tab.tab--active:not(.tab--disabled) {
-        color: var(--sd-color-primary-600);
-      }
-
-      @media (forced-colors: active) {
-        .tab.tab--active:not(.tab--disabled) {
-          outline: solid 1px transparent;
-          outline-offset: -3px;
-        }
       }
     `
   ];

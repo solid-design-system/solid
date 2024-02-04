@@ -1,4 +1,5 @@
-import { css, html } from 'lit';
+import { classMap } from 'lit/directives/class-map.js';
+import { css, html, unsafeCSS } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { LocalizeController } from '../../utilities/localize';
 import { property, query, state } from 'lit/decorators.js';
@@ -6,6 +7,7 @@ import { scrollIntoView } from '../../internal/scroll';
 import { watch } from '../../internal/watch';
 import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
+import InteractiveStyles from '../../styles/interactive/interactive.css?inline';
 import SolidElement from '../../internal/solid-element';
 import type SdTab from '../tab/tab';
 import type SdTabPanel from '../tab-panel/tab-panel';
@@ -14,9 +16,9 @@ import type SdTabPanel from '../tab-panel/tab-panel';
  * @summary Tab groups organize content into a container that shows one section at a time.
  * @documentation https://solid.union-investment.com/[storybook-link]/tab-group
  * @status stable
- * @since 1.0
+ * @since 2.1.0
  *
- * @dependency sd--button
+ * @dependency sd-button
  *
  * @slot - Used for grouping tab panels in the tab group. Must be `<sd-tab-panel>` elements.
  * @slot nav - Used for grouping tabs in the tab group. Must be `<sd-tab>` elements.
@@ -333,80 +335,107 @@ export default class SdTabGroup extends SolidElement {
     return html`
       <div
         part="base"
-        class=${cx(
-          'flex rounded-none',
-          this.localize.dir() === 'rtl' && 'tab-group--rtl',
-          this.hasScrollControls && 'tab-group--has-scroll-controls'
-        )}
+        class=${classMap({
+          'tab-group': true,
+          'tab-group--rtl': this.localize.dir() === 'rtl',
+          'tab-group--has-scroll-controls': this.hasScrollControls
+        })}
         @click=${this.handleClick}
         @keydown=${this.handleKeyDown}
       >
         <div class="tab-group__nav-container" part="nav">
           ${this.hasScrollControls
             ? html`
-                <sd-button
+                <button
                   part="scroll-button scroll-button--start"
                   exportparts="base:scroll-button__base"
-                  class=${cx(
-                    'flex items-center justify-center absolute top-0 bottom-0 w-6',
-                    'tab-group__scroll-button--start'
-                  )}
+                  class="tab-group__scroll-button tab-group__scroll-button--start"
                   @click=${this.handleScrollToStart}
                 >
-                  <sd-icon library="system" name=${isRtl ? 'chevron-right' : 'chevron-left'}></sd-icon>
-                </sd-button>
+                  <sd-icon
+                    library="system"
+                    name=${isRtl ? 'chevron-up' : 'chevron-down'}
+                    class=${cx('h-6 w-12 rotate-90 grid place-items-center')}
+                  ></sd-icon>
+                </button>
               `
             : ''}
 
           <div class="tab-group__nav">
-            <div part="tabs" class=${cx('flex relative')} role="tablist">
-              <div part="active-tab-indicator" class=${cx('absolute', 'tab-group__indicator')}></div>
+            <div part="tabs" class="tab-group__tabs" role="tablist">
+              <div part="active-tab-indicator" class="tab-group__indicator"></div>
               <slot name="nav" @slotchange=${this.syncTabsAndPanels}></slot>
             </div>
           </div>
 
           ${this.hasScrollControls
             ? html`
-                <sd-button
+                <button
                   part="scroll-button scroll-button--end"
                   exportparts="base:scroll-button__base"
                   class="tab-group__scroll-button tab-group__scroll-button--end"
                   @click=${this.handleScrollToEnd}
                 >
-                  <sd-icon library="system" name=${isRtl ? 'chevron-left' : 'chevron-right'}></sd-icon
-                ></sd-button>
+                  <sd-icon
+                    library="system"
+                    name=${isRtl ? 'chevron-down' : 'chevron-up'}
+                    class=${cx('h-6 w-12 rotate-90 grid place-items-center')}
+                  ></sd-icon>
+                </button>
               `
             : ''}
         </div>
 
-        <slot part="body" class=${cx('block overflow-auto')} @slotchange=${this.syncTabsAndPanels}></slot>
+        <slot part="body" class="tab-group__body" @slotchange=${this.syncTabsAndPanels}></slot>
       </div>
     `;
   }
 
   static styles = [
     SolidElement.styles,
+    unsafeCSS(InteractiveStyles),
     componentStyles,
     css`
-      ${componentStyles}
-
       :host {
-        --indicator-color: var(--sd-color-primary-600);
-        --track-color: var(--sd-color-neutral-200);
-        --track-width: 2px;
+        --indicator-color: rgb(45 157 0);
+        --track-color: rgb(174 174 174);
+        --track-width: 1px;
 
         display: block;
       }
 
+      .tab-group {
+        display: flex;
+        flex-direction: column;
+        border-radius: 0;
+      }
+
       .tab-group__indicator {
+        position: absolute;
         transition:
-          var(--sd-transition-fast) translate ease,
-          var(--sd-transition-fast) width ease;
+          200ms translate ease,
+          200ms width ease;
       }
 
       .tab-group--has-scroll-controls .tab-group__nav-container {
         position: relative;
-        padding: 0 var(--sd-spacing-x-large);
+        padding: 0 3rem;
+      }
+
+      .tab-group__body {
+        display: block;
+        overflow: auto;
+      }
+
+      .tab-group__scroll-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 48px;
+        border-bottom: solid 1px var(--track-color);
       }
 
       .tab-group__scroll-button--start {
@@ -427,49 +456,35 @@ export default class SdTabGroup extends SolidElement {
         right: auto;
       }
 
-      /* Top */
-
-      /* .tab-group--top {
-        flex-direction: column;
+      .tab-group__nav {
+        display: flex;
+        overflow-x: auto;
+        /* Hide scrollbar in Firefox */
+        scrollbar-width: none;
       }
 
-      .tab-group--top .tab-group__nav-container {
-        order: 1;
-      } */
-      /* 
-      .tab-group--top .tab-group__nav {
-        display: flex;
-        overflow-x: auto; */
-
-      /* Hide scrollbar in Firefox */
-      /* scrollbar-width: none;
-      } */
-
       /* Hide scrollbar in Chrome/Safari */
-      /* .tab-group--top .tab-group__nav::-webkit-scrollbar {
+      .tab-group__nav::-webkit-scrollbar {
         width: 0;
         height: 0;
       }
 
-      .tab-group--top .tab-group__tabs {
+      .tab-group__tabs {
+        display: flex;
         flex: 1 1 auto;
         position: relative;
         flex-direction: row;
         border-bottom: solid var(--track-width) var(--track-color);
       }
 
-      .tab-group--top .tab-group__indicator {
-        bottom: calc(-1 * var(--track-width));
-        border-bottom: solid var(--track-width) var(--indicator-color);
+      .tab-group__indicator {
+        bottom: 0;
+        border-bottom: solid 2px var(--indicator-color);
       }
 
-      .tab-group--top .tab-group__body {
-        order: 2;
+      ::slotted(sd-tab-panel) {
+        --padding: 1rem 0;
       }
-
-      .tab-group--top ::slotted(sd-tab-panel) {
-        --padding: var(--sd-spacing-medium) 0;
-      } */
     `
   ];
 }
