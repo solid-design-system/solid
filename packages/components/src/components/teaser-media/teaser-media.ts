@@ -1,5 +1,5 @@
 import { css, html } from 'lit';
-import { customElement } from '../../../src/internal/register-custom-element';
+import { customElement } from '../../internal/register-custom-element';
 import { HasSlotController } from '../../internal/slot';
 import { property, query } from 'lit/decorators.js';
 import cx from 'classix';
@@ -56,19 +56,35 @@ export default class SdTeaserMedia extends SolidElement {
   }
 
   onHover() {
-    if (this.hasSlotController.test('expandable') && this.shadowRoot) {
-      const hiddenDiv = this.shadowRoot.getElementById('expandable')!;
-      hiddenDiv.setAttribute(
-        'style',
-        'height: auto; visibility: visible; opacity: 1; margin-top: 16px; margin-bottom: 16px;'
-      );
+    if (this.shadowRoot) {
+      if (this.hasSlotController.test('expandable')) {
+        const hiddenDiv = this.shadowRoot.getElementById('expandable')!;
+        hiddenDiv.setAttribute(
+          'style',
+          'height: auto; visibility: visible; opacity: 1; margin-top: 16px; margin-bottom: 16px;'
+        );
+      }
+      if (!this.variant.startsWith('gradient')) {
+        const hiddenDiv = this.shadowRoot.getElementById('content-wrapper')!;
+        hiddenDiv.setAttribute('style', 'opacity: 90%');
+      }
     }
   }
 
   onHoverEnd() {
     if (this.shadowRoot) {
-      const hiddenDiv = this.shadowRoot.getElementById('expandable')!;
-      hiddenDiv.setAttribute('style', 'height: 0; visibility: invisible; opacity: 0; margin-top: 0; margin-bottom: 0;');
+      if (this.hasSlotController.test('expandable')) {
+        const hiddenDiv = this.shadowRoot.getElementById('expandable')!;
+        hiddenDiv.setAttribute(
+          'style',
+          'height: 0; visibility: invisible; opacity: 0; margin-top: 0; margin-bottom: 0;'
+        );
+      }
+
+      if (!this.variant.startsWith('gradient')) {
+        const hiddenDiv = this.shadowRoot.getElementById('content-wrapper')!;
+        hiddenDiv.setAttribute('style', 'opacity: 80%');
+      }
     }
   }
 
@@ -92,7 +108,7 @@ export default class SdTeaserMedia extends SolidElement {
           <slot name="media"></slot>
         </div>
 
-        <div class="absolute flex flex-col justify-end h-full w-full pb-4">
+        <div class="absolute flex flex-col justify-end h-full w-full pb-4 ">
           <div
             class=${cx(
               'flex-1 opacity-[80%]',
@@ -101,10 +117,11 @@ export default class SdTeaserMedia extends SolidElement {
             )}
           ></div>
           <div
+            id="content-wrapper"
             class=${cx(
               'opacity-[80%]',
               {
-                white: 'bg-white ',
+                white: 'bg-white',
                 'neutral-100': 'bg-neutral-100',
                 primary: 'bg-primary text-white',
                 'primary-100': 'bg-primary-100',

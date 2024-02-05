@@ -27,8 +27,8 @@ export default {
     },
     {
       type: 'slot',
-      name: 'expandable',
-      value: `<div slot="expandable" class="slot slot--border slot--text h-12">Expandable slot</div>`
+      name: 'headline',
+      value: `<div slot="headline" class="slot slot--border slot--text h-12">Headline slot</div>`
     }
   ]),
   argTypes,
@@ -175,6 +175,11 @@ export const Parts = {
           type: 'attribute',
           name: 'variant',
           value: 'white'
+        },
+        {
+          type: 'slot',
+          name: 'expandable',
+          value: `<div slot="expandable" class="slot slot--border slot--text h-12">Expandable slot</div>`
         }
       ]
     });
@@ -246,7 +251,7 @@ export const Samples = {
             <div class="flex-none">
               <sd-button href="#" target="_blank" variant="primary">Link</sd-button>
             </div>
-            <div class="flex-none">
+            <div class="flex-none text-sm">
               <p>@Copyright Lorem ipsum</p>
             </div>
           </div>
