@@ -57,24 +57,24 @@ export default class SdTeaserMedia extends SolidElement {
           <slot name="media"></slot>
         </div>
 
+        <!-- opacity should be replaced with a opacity token from the design system https://github.com/solid-design-system/solid/issues/731 -->
         <div class="absolute flex flex-col justify-end h-full w-full pb-4 ">
           <div
             class=${cx(
-              'flex-1 opacity-[80%]', // should be replaced with a opacity token from the design system https://github.com/solid-design-system/solid/issues/731
-              this.variant === 'gradient-white' && 'bg-gradient-to-t from-white/75 to-55%',
-              this.variant === 'gradient-dark' && 'bg-gradient-to-t from-primary-800/75 to-55%'
+              'flex-1',
+              this.variant === 'gradient-white' && 'bg-gradient-to-t from-white/[.8] to-55%',
+              this.variant === 'gradient-dark' && 'bg-gradient-to-t from-primary-800/[.55] to-55%'
             )}
           ></div>
           <div
             class=${cx(
-              'opacity-[80%]',
               {
-                white: 'bg-white group-hover:opacity-90',
-                'neutral-100': 'bg-neutral-100 group-hover:opacity-90',
-                primary: 'bg-primary text-white group-hover:opacity-90',
-                'primary-100': 'bg-primary-100 group-hover:opacity-90',
-                'gradient-white': 'bg-white/75',
-                'gradient-dark': 'bg-primary-800/75 text-white'
+                white: 'bg-white/[.8] group-hover:bg-white/90',
+                'neutral-100': 'bg-neutral-100/[.8] group-hover:bg-neutral-100/90',
+                primary: 'bg-primary/[.8] text-white group-hover:bg-primary/90',
+                'primary-100': 'bg-primary-100/[.8] group-hover:bg-primary-100/90',
+                'gradient-white': 'bg-gradient-to-t from-white/90 to-white/[.8]',
+                'gradient-dark': 'bg-gradient-to-t from-primary-800/75 to-primary-800/[.55]  text-white'
               }[this.variant]
             )}
           >
