@@ -91,6 +91,8 @@ export const Slots = {
           value = `<div class="slot slot--border slot--background h-16"></div>`;
         } else if (slot === 'media') {
           value = `<div slot='${slot}' class="slot slot--border slot--background h-[577px]"></div>`;
+        } else if (slot === 'expandable') {
+          value = `<div slot='${slot}' class="slot--border slot--background h-16 box-border flex flex-col items-center justify-center rounded-md"></div>`;
         }
 
         return generateTemplate({
@@ -179,7 +181,7 @@ export const Parts = {
         {
           type: 'slot',
           name: 'expandable',
-          value: `<div slot="expandable" class="slot slot--border slot--text h-12">Expandable slot</div>`
+          value: `<div slot="expandable" class="slot--border slot--text box-border flex flex-col items-center justify-center rounded-md"><p>Expandable slot</p></div>`
         }
       ]
     });
@@ -206,11 +208,7 @@ export const Samples = {
       <div class="flex flex-wrap gap-8">
         <sd-teaser-media variant="gradient-dark" class="min-w-[435px]">
           <div slot="media" class="relative">
-            <img
-              class="aspect-video object-cover"
-              src="./placeholders/generic.jpg"
-              alt="A skyline of a city by night"
-            />
+            <img class="aspect-video object-cover" src="./placeholders/architecture.jpg" alt="A skyline of a city" />
           </div>
           <div slot="meta" class="meta-info">
             <span class="meta-info-item">01.12.2013</span>
@@ -226,11 +224,7 @@ export const Samples = {
         </sd-teaser-media>
         <sd-teaser-media variant="gradient-white" class="min-w-[435px]">
           <div slot="media" class="relative">
-            <img
-              class="aspect-video object-cover"
-              src="./placeholders/generic.jpg"
-              alt="A skyline of a city by night"
-            />
+            <img class="aspect-video object-cover" src="./placeholders/architecture.jpg" alt="A skyline of a city" />
           </div>
           <div slot="meta" class="meta-info">
             <span class="meta-info-item">01.12.2013</span>

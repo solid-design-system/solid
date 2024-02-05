@@ -91,9 +91,9 @@ export default class SdTeaserMedia extends SolidElement {
 
               <div
                 class=${cx(
-                  slots['teaser-has-default'] &&
-                    'h-[0px] invisible opacity-0 hidden md:[transition:_height_0.2s_linear,opacity_0.1s_linear_0.1s] md:block group-hover:h-auto  group-hover:visible group-hover:opacity-100 group-hover:mt-4 group-hover:mb-4',
-                  !slots['teaser-has-default'] && 'hidden'
+                  'hidden',
+                  slots['teaser-has-expandable'] &&
+                    'h-[0px] invisible opacity-0 md:[transition:_height_0.2s_linear,opacity_0.1s_linear_0.1s] md:block md:group-hover:h-auto md:group-hover:my-4 md:group-hover:opacity-[100%] md:group-hover:visible'
                 )}
                 part="expandable"
               >
