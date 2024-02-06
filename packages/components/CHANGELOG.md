@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v2.3.0](https://github.com/solid-design-system/solid/compare/components/2.2.0...components/2.3.0) (2024-02-06)
+
+
+### Features
+
+* ✨add shadow variant for sd-table-cell  ([#704](https://github.com/solid-design-system/solid/issues/704)) ([a531933](https://github.com/solid-design-system/solid/commit/a5319331a3aefa30c4aec9cc9fe989987915ea3f))
+
+### 📈 Stats
+* Bundle size (uncompressed): 263 KB (unchanged)
+* Bundle size (gzipped): 64 KB (unchanged)
+
 # [@solid-design-system/components-v2.2.0](https://github.com/solid-design-system/solid/compare/components/2.1.0...components/2.2.0) (2024-01-30)
 
 
