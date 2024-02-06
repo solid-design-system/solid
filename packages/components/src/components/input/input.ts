@@ -132,7 +132,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   @property({ attribute: 'help-text' }) helpText = '';
 
   /** Adds a clear button when the input is not empty. */
-  @property({ type: Boolean }) clearable = false;
+  @property({ type: Boolean }) clearable = true;
 
   /** Disables the input. */
   @property({ type: Boolean, reflect: true }) disabled = false;
@@ -554,7 +554,6 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               @focus=${this.handleFocus}
               @blur=${this.handleBlur}
             />
-            <!-- TODO: substitute text-neutral-400 for text-neutral-500 when available! -->
             ${hasClearIcon
               ? html`
                   <button
@@ -630,7 +629,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
             ${this.showValidStyle && this.styleOnValid
               ? html`
                   <sd-icon
-                    class=${cx('text-success', iconMarginLeft, iconSize)}
+                    class=${cx('text-success flex-shrink-0', iconMarginLeft, iconSize)}
                     library="system"
                     name="confirm"
                     part="valid-icon"

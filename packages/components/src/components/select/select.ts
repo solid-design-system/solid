@@ -953,56 +953,57 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 @focus=${() => this.focus()}
                 @invalid=${this.handleInvalid}
               />
+              <div class=${cx('absolute right-2 flex justify-center items-center')}>
+                ${hasClearIcon
+                  ? html`
+                      <button
+                        part="clear-button"
+                        class=${cx('select__clear inline-flex', iconMarginLeft)}
+                        type="button"
+                        aria-label=${this.localize.term('clearEntry')}
+                        @mousedown=${this.handleClearMouseDown}
+                        @click=${this.handleClearClick}
+                        tabindex="-1"
+                      >
+                        <slot name="clear-icon">
+                          <sd-icon
+                            class=${cx('text-neutral-500', iconSize)}
+                            library="system"
+                            name="closing-round"
+                          ></sd-icon>
+                        </slot>
+                      </button>
+                    `
+                  : ''}
+                ${this.showInvalidStyle
+                  ? html`
+                      <sd-icon
+                        part="invalid-icon"
+                        class=${cx('text-error', iconMarginLeft, iconSize)}
+                        library="system"
+                        name="risk"
+                      ></sd-icon>
+                    `
+                  : ''}
+                ${this.styleOnValid && this.showValidStyle
+                  ? html`
+                      <sd-icon
+                        part="valid-icon"
+                        class=${cx('text-success', iconMarginLeft, iconSize)}
+                        library="system"
+                        name="confirm"
+                      ></sd-icon>
+                    `
+                  : ''}
 
-              ${hasClearIcon
-                ? html`
-                    <button
-                      part="clear-button"
-                      class=${cx('select__clear flex justify-center', iconMarginLeft)}
-                      type="button"
-                      aria-label=${this.localize.term('clearEntry')}
-                      @mousedown=${this.handleClearMouseDown}
-                      @click=${this.handleClearClick}
-                      tabindex="-1"
-                    >
-                      <slot name="clear-icon">
-                        <sd-icon
-                          class=${cx('text-neutral-500', iconSize)}
-                          library="system"
-                          name="closing-round"
-                        ></sd-icon>
-                      </slot>
-                    </button>
-                  `
-                : ''}
-              ${this.showInvalidStyle
-                ? html`
-                    <sd-icon
-                      part="invalid-icon"
-                      class=${cx('text-error', iconMarginLeft, iconSize)}
-                      library="system"
-                      name="risk"
-                    ></sd-icon>
-                  `
-                : ''}
-              ${this.styleOnValid && this.showValidStyle
-                ? html`
-                    <sd-icon
-                      part="valid-icon"
-                      class=${cx('text-success', iconMarginLeft, iconSize)}
-                      library="system"
-                      name="confirm"
-                    ></sd-icon>
-                  `
-                : ''}
-
-              <slot
-                name="expand-icon"
-                part="expand-icon"
-                class=${cx('inline-flex ml-2 transition-all', this.open ? 'rotate-180' : 'rotate-0', iconSize)}
-              >
-                <sd-icon name="chevron-down" part="chevron" library="system" color="currentColor"></sd-icon>
-              </slot>
+                <slot
+                  name="expand-icon"
+                  part="expand-icon"
+                  class=${cx('inline-flex transition-all', this.open ? 'rotate-180' : 'rotate-0', iconSize)}
+                >
+                  <sd-icon name="chevron-down" part="chevron" library="system" color="currentColor"></sd-icon>
+                </slot>
+              </div>
             </div>
 
             <div
