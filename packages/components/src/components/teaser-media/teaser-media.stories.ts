@@ -24,11 +24,6 @@ export default {
       type: 'slot',
       name: 'meta',
       value: `<div slot="meta" class="slot slot--border slot--text h-12">Meta slot</div>`
-    },
-    {
-      type: 'slot',
-      name: 'headline',
-      value: `<div slot="headline" class="slot slot--border slot--text h-12">Headline slot</div>`
     }
   ]),
   argTypes,
