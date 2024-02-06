@@ -15,6 +15,15 @@ export default {
       options: ['white', 'primary-100', 'neutral-100'],
       description:
         'Applies the selected background-color to the table cell. If not selected, a transparent background-color is used per default.'
+    },
+    {
+      name: 'sd-table-cell--shadow-active',
+      description: 'Displays the table shadow.'
+    },
+    {
+      name: 'sd-table-cell--shadow-...',
+      options: ['top', 'left', 'right', 'bottom'],
+      description: 'Applies the selected shadow to the table cell.'
     }
   ]
 } satisfies Style;
