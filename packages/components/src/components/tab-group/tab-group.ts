@@ -1,4 +1,3 @@
-import { classMap } from 'lit/directives/class-map.js';
 import { css, html, unsafeCSS } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { LocalizeController } from '../../utilities/localize';
@@ -50,15 +49,16 @@ export default class SdTabGroup extends SolidElement {
   private tabs: SdTab[] = [];
   private panels: SdTabPanel[] = [];
 
-  @query('.tab-group') tabGroup: HTMLElement;
-  @query('.tab-group__body') body: HTMLSlotElement;
+  @query('[part=base]') tabGroup: HTMLElement;
+  @query('[part=body]') body: HTMLSlotElement;
   @query('.tab-group__nav') nav: HTMLElement;
   @query('.tab-group__indicator') indicator: HTMLElement;
+  @query('.tab-group__indicator--background') indicatorBackground: HTMLElement;
 
   @state() private hasScrollControls = false;
 
   /** When set to container, a border appears around the current tab. */
-  @property({ type: String, reflect: true }) variant: 'default' | 'container' = 'default';
+  @property({ type: String, reflect: true }) variant: 'default' | 'container' = 'container';
 
   /**
    * When set to auto, navigating tabs with the arrow keys will instantly show the corresponding tab panel. When set to
@@ -274,7 +274,7 @@ export default class SdTabGroup extends SolidElement {
       return;
     }
 
-    const width = currentTab.clientWidth;
+    const width = this.variant === 'default' ? currentTab.clientWidth : currentTab.clientWidth / 2;
     const isRtl = this.localize.dir() === 'rtl';
 
     // We can't used offsetLeft/offsetTop here due to a shadow parent issue where neither can getBoundingClientRect
@@ -291,7 +291,13 @@ export default class SdTabGroup extends SolidElement {
 
     this.indicator.style.width = `${width}px`;
     this.indicator.style.height = 'auto';
-    this.indicator.style.translate = isRtl ? `${-1 * offset.left}px` : `${offset.left}px`;
+    this.indicator.style.translate = isRtl
+      ? `${-1 * offset.left + (this.variant === 'default' ? 0 : currentTab.clientWidth / 4)}px`
+      : `${offset.left + (this.variant === 'default' ? 0 : currentTab.clientWidth / 4)}px`;
+
+    this.indicatorBackground.style.width = `${currentTab.clientWidth}px`;
+    this.indicatorBackground.style.height = 'auto';
+    this.indicatorBackground.style.translate = isRtl ? `${-1 * offset.left}px` : `${offset.left}px`;
   }
 
   // This stores tabs and panels so we can refer to a cache instead of calling querySelectorAll() multiple times.
@@ -335,11 +341,12 @@ export default class SdTabGroup extends SolidElement {
     return html`
       <div
         part="base"
-        class=${classMap({
-          'tab-group': true,
-          'tab-group--rtl': this.localize.dir() === 'rtl',
-          'tab-group--has-scroll-controls': this.hasScrollControls
-        })}
+        class=${cx(
+          'flex flex-col rounded-none',
+          this.localize.dir() === 'rtl' && 'tab-group--rtl',
+          this.hasScrollControls && 'tab-group--has-scroll-controls',
+          this.variant === 'container' && 'tab-group--container'
+        )}
         @click=${this.handleClick}
         @keydown=${this.handleKeyDown}
       >
@@ -349,7 +356,9 @@ export default class SdTabGroup extends SolidElement {
                 <button
                   part="scroll-button scroll-button--start"
                   exportparts="base:scroll-button__base"
-                  class="tab-group__scroll-button tab-group__scroll-button--start"
+                  class=${cx(
+                    'tab-group__scroll-button tab-group__scroll-button--start sd-interactive flex items-center justify-center absolute top-0 bottom-0 left-0'
+                  )}
                   @click=${this.handleScrollToStart}
                 >
                   <sd-icon
@@ -361,9 +370,18 @@ export default class SdTabGroup extends SolidElement {
               `
             : ''}
 
-          <div class="tab-group__nav">
-            <div part="tabs" class="tab-group__tabs" role="tablist">
-              <div part="active-tab-indicator" class="tab-group__indicator"></div>
+          <div class="tab-group__nav flex overflow-x-auto">
+            <div part="tabs" class=${cx('tab-group__tabs flex flex-auto relative flex-row')} role="tablist">
+              <div
+                part="active-tab-indicator"
+                class=${cx('tab-group__indicator absolute bottom-0 transition-transform')}
+              ></div>
+              <div
+                class=${cx(
+                  'tab-group__indicator--background absolute bottom-0 transition-transform',
+                  this.variant !== 'container' && 'hidden'
+                )}
+              ></div>
               <slot name="nav" @slotchange=${this.syncTabsAndPanels}></slot>
             </div>
           </div>
@@ -373,7 +391,9 @@ export default class SdTabGroup extends SolidElement {
                 <button
                   part="scroll-button scroll-button--end"
                   exportparts="base:scroll-button__base"
-                  class="tab-group__scroll-button tab-group__scroll-button--end"
+                  class=${cx(
+                    'tab-group__scroll-button tab-group__scroll-button--end sd-interactive flex items-center justify-center absolute top-0 bottom-0 right-0'
+                  )}
                   @click=${this.handleScrollToEnd}
                 >
                   <sd-icon
@@ -386,7 +406,11 @@ export default class SdTabGroup extends SolidElement {
             : ''}
         </div>
 
-        <slot part="body" class="tab-group__body" @slotchange=${this.syncTabsAndPanels}></slot>
+        <slot
+          part="body"
+          class=${cx('tab-group__body block auto py-8 px-6')}
+          @slotchange=${this.syncTabsAndPanels}
+        ></slot>
       </div>
     `;
   }
@@ -401,89 +425,70 @@ export default class SdTabGroup extends SolidElement {
         --track-color: rgb(174 174 174);
         --track-width: 1px;
 
-        display: block;
-      }
-
-      .tab-group {
-        display: flex;
-        flex-direction: column;
-        border-radius: 0;
+        @apply block;
       }
 
       .tab-group__indicator {
-        position: absolute;
-        transition:
-          200ms translate ease,
-          200ms width ease;
+        border-bottom: solid calc(var(--track-width) * 2) var(--indicator-color);
+      }
+
+      .tab-group__indicator--background{
+        border-bottom: solid var(--track-width) white;
+        margin-left: 1px;
+        margin-bottom: -1px;
       }
 
       .tab-group--has-scroll-controls .tab-group__nav-container {
-        position: relative;
-        padding: 0 3rem;
-      }
-
-      .tab-group__body {
-        display: block;
-        overflow: auto;
+        @apply relative py-0 px-12;
       }
 
       .tab-group__scroll-button {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        width: 48px;
-        border-bottom: solid 1px var(--track-color);
-      }
-
-      .tab-group__scroll-button--start {
-        left: 0;
-      }
-
-      .tab-group__scroll-button--end {
-        right: 0;
+        border-bottom: solid var(--track-width) var(--track-color);
       }
 
       .tab-group--rtl .tab-group__scroll-button--start {
-        left: auto;
-        right: 0;
+        @apply left-auto right-0;
       }
 
       .tab-group--rtl .tab-group__scroll-button--end {
-        left: 0;
-        right: auto;
+        @apply right-auto left-0;
       }
 
       .tab-group__nav {
-        display: flex;
-        overflow-x: auto;
         /* Hide scrollbar in Firefox */
         scrollbar-width: none;
       }
 
       /* Hide scrollbar in Chrome/Safari */
       .tab-group__nav::-webkit-scrollbar {
-        width: 0;
-        height: 0;
+        @apply w-0 h-0;
       }
 
       .tab-group__tabs {
-        display: flex;
-        flex: 1 1 auto;
-        position: relative;
-        flex-direction: row;
         border-bottom: solid var(--track-width) var(--track-color);
       }
 
-      .tab-group__indicator {
-        bottom: 0;
-        border-bottom: solid 2px var(--indicator-color);
+      .tab-group__body {
+        border: solid var(--track-width) var(--track-color);
+        border-top: none;
       }
 
       ::slotted(sd-tab-panel) {
         --padding: 1rem 0;
+      }
+
+      .tab-group--container ::slotted(sd-tab) {
+        border-radius: 4px 4px 0 0 !important;
+      }
+
+      .tab-group--container ::slotted(sd-tab[active]) {
+        border: solid var(--track-width) var(--track-color) !important; 
+        border-bottom: none !important;
+        margin-bottom: -1px; */
+      }
+
+      .tab-group--container .tab-group__indicator {
+        transition: none;
       }
     `
   ];
