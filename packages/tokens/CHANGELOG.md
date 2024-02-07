@@ -1,3 +1,10 @@
+# [@solid-design-system/tokens-v2.1.0](https://github.com/solid-design-system/solid/compare/tokens/2.0.0...tokens/2.1.0) (2024-02-07)
+
+
+### Features
+
+* Add opacity tokens ([#732](https://github.com/solid-design-system/solid/issues/732)) ([daba617](https://github.com/solid-design-system/solid/commit/daba617a26039b01a75de5e0f2cfa250833222a7))
+
 # [@solid-design-system/tokens-v2.0.0](https://github.com/solid-design-system/solid/compare/tokens/1.4.0...tokens/2.0.0) (2024-01-19)
 
 
