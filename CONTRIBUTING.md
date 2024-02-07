@@ -18,6 +18,7 @@
     - [We Only Use TailwindCSS or "Solid Styles"](#we-only-use-tailwindcss-or-solid-styles)
     - [We Enforce Security](#we-enforce-security)
     - [We Track TODOs](#we-track-todos)
+    - [We Prepare Tickets for the Refinement](#we-prepare-tickets-for-the-refinement)
   - [Git + GitHub](#git--github)
     - [Referencing People](#referencing-people)
     - [Pull Requests](#pull-requests)
@@ -138,6 +139,18 @@
   - Comment out temporarily non-functional code (eg. tests that don't work under current conditions) along with a TODO.
   - Code that requires a rework should not be commented out but completely removed from the code base.
   - If the code is essential for a future fix, please add it to a ticket that explains the problem.
+
+### We Prepare Tickets for the Refinement
+
+- **User Story**: As a core-team member of the Solid Design System, I want to ensure a effective and efficient refinement process, by preparing each ticket with the necessary information during a weekly pre-refinement meeting.
+- **Actions**:
+  - Decide if the feature will be implemented or not.
+  - Define the scope of the feature.
+  - Define the development basis for the feature (shoelace component, new component, etc.).
+  - Define necessary changes to the Figma component to match the development basis.
+  - Add the necessary information to the ticket description in the way, that it is understandable (without context) and explicit for the whole team.
+  - Make sure all links are up to date.
+  - Note open questions to be answered during the implementation towards design OR development in the respective section in the ticket description.
 
 ## Git + GitHub
 
