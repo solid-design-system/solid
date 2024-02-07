@@ -23,6 +23,7 @@
     - [Pull Requests](#pull-requests)
       - [Assignees and Reviewers](#assignees-and-reviewers)
       - [Commit Messages](#commit-messages)
+      - [Review Comments](#review-comments)
       - [Special commands/suffixes](#special-commandssuffixes)
       - [Squash and Merge Your Changes](#squash-and-merge-your-changes)
     - [Chromatic](#chromatic)
@@ -181,6 +182,15 @@ Commits with type 'perf' will be associated with a patch release.
 ```
 
 **Remark:** Always think from the perspective of the person using our packages/components – will the final distribution/bundle change? If so, then it's always `feat` `fix` or `perf` – if not, it's one of the others. Please reach out if you're unsure.
+
+#### Review Comments
+
+The primary objective of this "rule-set" is to eliminate comments that lack any code-related context, thereby minimizing the workload for the PR author during feedback implementation.
+
+- Developers should restrict their feedback to inline comments during code reviews.
+- Comments pertaining to the UI should be included as inline comments in the relevant file (for instance, "your story is not functioning", should be placed as an inline comment in the review section of the component.stories.ts file).
+- Designers should exclusively use Chromatic for providing feedback on alterations.
+- General comments in the PR should be avoided as much as possible. If they are unavoidable, they should only include process-related information that doesn't require a response (for example, "Completed my UI-review, please re-assign to me once changes have been made").
 
 #### Special commands/suffixes
 
