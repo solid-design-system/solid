@@ -165,7 +165,7 @@ Assigning reviewers follows a few rules:
 
 1. **New Feature PRs:** All current members from the SDS team need to be assigned to the PR (@solid-design-system/current-sds-team).
 2. **Bug Fix or Docs PRs:** Minimum 1 developer from the SDS dev-core-team (@solid-design-system/core-development) needs to be assigned to the PR. Designers need to be added separately if visual changes are made.
-3. **CI/CD PRs:** Minimum 1 out of Özlem, Mario or Karl needs to be assigned to the PR.
+3. **CI/CD PRs:** Minimum 1 out of @yoezlem, @mariohamann or @karlbaumhauer needs to be assigned to the PR.
 
 #### Commit Messages
 
