@@ -182,10 +182,21 @@ export default class SdDropdown extends SolidElement {
       // If the dropdown is used within a shadow DOM, we need to obtain the activeElement within that shadowRoot,
       // otherwise `document.activeElement` will only return the name of the parent shadow DOM element.
       setTimeout(() => {
-        const activeElement =
+        let activeElement =
           this.containingElement?.getRootNode() instanceof ShadowRoot
             ? document.activeElement?.shadowRoot?.activeElement
             : document.activeElement;
+
+        // Quick fix for nested shadow roots https://github.com/solid-design-system/solid/issues/648
+        //
+        // Tabbing through the dropdown is generally an issue with the shoelace dropdown at the moment.
+        // Discussion has been started: https://github.com/shoelace-style/shoelace/discussions/1858
+        if (
+          document.activeElement?.shadowRoot?.activeElement?.shadowRoot?.activeElement?.getRootNode() instanceof
+          ShadowRoot
+        ) {
+          activeElement = document.activeElement?.shadowRoot?.activeElement?.shadowRoot?.activeElement;
+        }
 
         if (
           !this.containingElement ||
