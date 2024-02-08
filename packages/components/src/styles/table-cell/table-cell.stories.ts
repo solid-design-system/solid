@@ -85,8 +85,10 @@ export const Samples = {
       if (icons && headerCells) {
         headerCells.forEach((headerCell, index) => {
           //Change the sort icon and aria-sort attribute for the clicked column
+          const nextSort = sortingOptions[sortData[column]].nextSort;
+          sortTableByColumn(document.querySelector('[id*="sortableTable"]'), column, nextSort === 'descending');
+
           if (index === column) {
-            const nextSort = sortingOptions[sortData[column]].nextSort;
             const { iconName, ariaSort } = sortingOptions[nextSort];
 
             sortData[index] = nextSort;
@@ -104,6 +106,30 @@ export const Samples = {
             headerCell.removeAttribute('aria-sort');
           }
         });
+      }
+    };
+
+    const sortTableByColumn = (table: HTMLTableElement | null, column: number, descending: boolean) => {
+      if (table) {
+        const dirModifier = descending ? 1 : -1;
+        const tableBody = table.tBodies[0];
+        const rows = Array.from(tableBody.querySelectorAll('tr'));
+
+        // Sort each row
+        const sortedRows = rows.sort((a, b) => {
+          const firstCol = a.querySelector(`td:nth-child(${column + 1})`)?.textContent?.trim();
+          const secondCol = b.querySelector(`td:nth-child(${column + 1})`)?.textContent?.trim();
+
+          return firstCol > secondCol ? dirModifier : -1 * dirModifier;
+        });
+
+        // Remove all existing TRs from the table
+        while (tableBody.firstChild) {
+          tableBody.removeChild(tableBody.firstChild);
+        }
+
+        // Re-add the newly sorted rows
+        tableBody.append(...sortedRows);
       }
     };
 
@@ -274,7 +300,9 @@ export const Samples = {
             ${tableData.map(rowData => {
               return html`<tr>
                 ${rowData.map(cellData => {
-                  return html`<td class="sd-table-cell sd-table-cell--bg-transparent">${cellData}</td>`;
+                  return html`<td class="sd-table-cell sd-table-cell--bg-transparent">
+                    ${Math.floor(Math.random() * 10)}: ${cellData}
+                  </td>`;
                 })}
               </tr>`;
             })}
