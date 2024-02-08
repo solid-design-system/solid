@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v2.3.1](https://github.com/solid-design-system/solid/compare/components/2.3.0...components/2.3.1) (2024-02-08)
+
+
+### Bug Fixes
+
+* 🤔 sd-headline does not include a line-height style ([#734](https://github.com/solid-design-system/solid/issues/734)) ([42f7b32](https://github.com/solid-design-system/solid/commit/42f7b32c87f94b3cfeb015b9b2d0170315535bc8))
+
+### 📈 Stats
+* Bundle size (uncompressed): 263 KB (unchanged)
+* Bundle size (gzipped): 64 KB (unchanged)
+
 # [@solid-design-system/components-v2.3.0](https://github.com/solid-design-system/solid/compare/components/2.2.0...components/2.3.0) (2024-02-06)
 
 
