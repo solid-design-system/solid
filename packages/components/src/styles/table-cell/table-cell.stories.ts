@@ -120,7 +120,11 @@ export const Samples = {
           const firstCol = a.querySelector(`td:nth-child(${column + 1})`)?.textContent?.trim();
           const secondCol = b.querySelector(`td:nth-child(${column + 1})`)?.textContent?.trim();
 
-          return firstCol > secondCol ? dirModifier : -1 * dirModifier;
+          if (firstCol && secondCol) {
+            return firstCol > secondCol ? dirModifier : -1 * dirModifier;
+          }
+
+          return 0;
         });
 
         // Remove all existing TRs from the table
