@@ -32,4 +32,3 @@ Then push with a commit message according to the development standards and creat
 ![Screen Shot 2024-01-19 at 11 41 01](https://github.com/solid-design-system/solid/assets/118520877/56a27bce-5cd1-40ee-85b8-731196a66b66)
 
 After front-end's approval and all tests are passed (quality gate, Chromatic tests etc.) hit `Squash and Merge` button, write a message (especially if there's any changes in token naming or deprecating note "BREAKING CHANGE: ..."
-
