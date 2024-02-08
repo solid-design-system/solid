@@ -188,9 +188,6 @@ export default class SdDropdown extends SolidElement {
             : document.activeElement;
 
         // Quick fix for nested shadow roots https://github.com/solid-design-system/solid/issues/648
-        //
-        // Tabbing through the dropdown is generally an issue with the shoelace dropdown at the moment.
-        // Discussion has been started: https://github.com/shoelace-style/shoelace/discussions/1858
         if (
           document.activeElement?.shadowRoot?.activeElement?.shadowRoot?.activeElement?.getRootNode() instanceof
           ShadowRoot
