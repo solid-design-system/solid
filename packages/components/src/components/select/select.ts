@@ -61,6 +61,7 @@ import type SdOption from '../option/option';
  * @csspart tag__base - The tag's base part.
  * @csspart tag__content - The tag's content part.
  * @csspart tag__removable-indicator - The tag's remove button.
+ * @csspart right-controls - The container that wraps the clear and validation icons.
  * @csspart clear-button - The clear button.
  * @csspart expand-icon - The container that wraps the expand icon.
  */
@@ -914,7 +915,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 form=${this.form}
                 part="display-input"
                 class=${cx(
-                  'appearance-none outline-none flex-grow bg-transparent',
+                  'appearance-none outline-none flex-grow bg-transparent w-full',
                   cursorStyles,
                   this.multiple && this.useTags && this.value.length > 0 ? 'hidden' : ''
                 )}
@@ -953,57 +954,55 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 @focus=${() => this.focus()}
                 @invalid=${this.handleInvalid}
               />
-              <div class=${cx('absolute right-2 flex justify-center items-center')}>
-                ${hasClearIcon
-                  ? html`
-                      <button
-                        part="clear-button"
-                        class=${cx('select__clear inline-flex', iconMarginLeft)}
-                        type="button"
-                        aria-label=${this.localize.term('clearEntry')}
-                        @mousedown=${this.handleClearMouseDown}
-                        @click=${this.handleClearClick}
-                        tabindex="-1"
-                      >
-                        <slot name="clear-icon">
-                          <sd-icon
-                            class=${cx('text-neutral-500', iconSize)}
-                            library="system"
-                            name="closing-round"
-                          ></sd-icon>
-                        </slot>
-                      </button>
-                    `
-                  : ''}
-                ${this.showInvalidStyle
-                  ? html`
-                      <sd-icon
-                        part="invalid-icon"
-                        class=${cx('text-error', iconMarginLeft, iconSize)}
-                        library="system"
-                        name="risk"
-                      ></sd-icon>
-                    `
-                  : ''}
-                ${this.styleOnValid && this.showValidStyle
-                  ? html`
-                      <sd-icon
-                        part="valid-icon"
-                        class=${cx('text-success', iconMarginLeft, iconSize)}
-                        library="system"
-                        name="confirm"
-                      ></sd-icon>
-                    `
-                  : ''}
+              ${hasClearIcon
+                ? html`
+                    <button
+                      part="clear-button"
+                      class=${cx('select__clear inline-flex', iconMarginLeft)}
+                      type="button"
+                      aria-label=${this.localize.term('clearEntry')}
+                      @mousedown=${this.handleClearMouseDown}
+                      @click=${this.handleClearClick}
+                      tabindex="-1"
+                    >
+                      <slot name="clear-icon">
+                        <sd-icon
+                          class=${cx('text-neutral-500', iconSize)}
+                          library="system"
+                          name="closing-round"
+                        ></sd-icon>
+                      </slot>
+                    </button>
+                  `
+                : ''}
+              ${this.showInvalidStyle
+                ? html`
+                    <sd-icon
+                      part="invalid-icon"
+                      class=${cx('text-error', iconMarginLeft, iconSize)}
+                      library="system"
+                      name="risk"
+                    ></sd-icon>
+                  `
+                : ''}
+              ${this.styleOnValid && this.showValidStyle
+                ? html`
+                    <sd-icon
+                      part="valid-icon"
+                      class=${cx('text-success flex-shrink-0', iconMarginLeft, iconSize)}
+                      library="system"
+                      name="confirm"
+                    ></sd-icon>
+                  `
+                : ''}
 
-                <slot
-                  name="expand-icon"
-                  part="expand-icon"
-                  class=${cx('inline-flex transition-all', this.open ? 'rotate-180' : 'rotate-0', iconSize)}
-                >
-                  <sd-icon name="chevron-down" part="chevron" library="system" color="currentColor"></sd-icon>
-                </slot>
-              </div>
+              <slot
+                name="expand-icon"
+                part="expand-icon"
+                class=${cx('inline-flex transition-all', this.open ? 'rotate-180' : 'rotate-0', iconSize)}
+              >
+                <sd-icon name="chevron-down" part="chevron" library="system" color="currentColor"></sd-icon>
+              </slot>
             </div>
 
             <div

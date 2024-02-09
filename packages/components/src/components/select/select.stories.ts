@@ -290,6 +290,7 @@ const partsArr = [
   'tag__base',
   'tag__content',
   'tag__removable-indicator',
+  'right-controls',
   'clear-button',
   'expand-icon'
 ];
@@ -311,6 +312,7 @@ export const Parts = {
         'tag__base',
         'tag__content',
         'tag__removable-indicator',
+        'right-controls',
         'clear-button',
         'expand-icon'
       ]
