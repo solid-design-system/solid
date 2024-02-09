@@ -274,7 +274,7 @@ export const Samples = {
           </tbody>
         </table>
         <div class="headline">Sortable Table</div>
-        <table class="sd-table sample-table" id="sortableTable" .sortData=${sortData}>
+        <table class="sd-table sample-table" id="sortableTable" .sortData=${sortData} data-chromatic="ignore">
           <thead>
             ${(() => {
               return html`<tr>
@@ -498,11 +498,7 @@ export const AdvancedSamples = {
         </script>
 
         <div class="headline">Fixed, horizontal, bottom header with shadow table</div>
-        <table
-          id="vertical-scrollable-table-2"
-          class="sd-table sample-table h-[200px] block overflow-y-scroll "
-          data-chromatic="ignore"
-        >
+        <table id="vertical-scrollable-table-2" class="sd-table sample-table h-[200px] block overflow-y-scroll ">
           <tbody>
             ${tableData.map(rowData => {
               return html`<tr>
