@@ -9,7 +9,7 @@ import SolidElement from '../../internal/solid-element';
  * @documentation https://solid-design-system.fe.union-investment.de/x.x.x/storybook/?path=/docs/components-sd-teaser-media--docs
  *
  * @status stable
- * @since 2.1
+ * @since 2.3.2
  * *
  * @slot - An optional main content slot.
  * @slot media - An optional media slot.
@@ -62,8 +62,8 @@ export default class SdTeaserMedia extends SolidElement {
           <div
             class=${cx(
               'flex-1',
-              this.variant === 'gradient-white' && 'bg-gradient-to-t from-white/[.8] to-55%',
-              this.variant === 'gradient-dark' && 'bg-gradient-to-t from-primary-800/[.6] to-55%'
+              this.variant === 'gradient-white' && 'bg-gradient-to-t from-white/[.8] to-60%',
+              this.variant === 'gradient-dark' && 'bg-gradient-to-t from-primary-800/[.6] to-60%'
             )}
           ></div>
           <div

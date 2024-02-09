@@ -201,7 +201,7 @@ export const Samples = {
         }
       </style>
       <div class="flex flex-wrap gap-8">
-        <sd-teaser-media variant="gradient-dark" class="min-w-[435px]">
+        <sd-teaser-media variant="gradient-dark" class="min-w-[435px] max-w-4xl">
           <div slot="media" class="relative">
             <img class="aspect-video object-cover" src="./placeholders/architecture.jpg" alt="A skyline of a city" />
           </div>
@@ -217,7 +217,7 @@ export const Samples = {
             </div>
           </div>
         </sd-teaser-media>
-        <sd-teaser-media variant="gradient-white" class="min-w-[435px]">
+        <sd-teaser-media variant="gradient-white" class="min-w-[435px] max-w-4xl">
           <div slot="media" class="relative">
             <img class="aspect-video object-cover" src="./placeholders/architecture.jpg" alt="A skyline of a city" />
           </div>
