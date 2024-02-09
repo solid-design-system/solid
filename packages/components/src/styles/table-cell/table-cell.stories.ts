@@ -498,7 +498,11 @@ export const AdvancedSamples = {
         </script>
 
         <div class="headline">Fixed, horizontal, bottom header with shadow table</div>
-        <table id="vertical-scrollable-table-2" class="sd-table sample-table h-[200px] block overflow-y-scroll ">
+        <table
+          id="vertical-scrollable-table-2"
+          class="sd-table sample-table h-[200px] block overflow-y-scroll "
+          data-chromatic="ignore"
+        >
           <tbody>
             ${tableData.map(rowData => {
               return html`<tr>
