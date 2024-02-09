@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v2.4.1](https://github.com/solid-design-system/solid/compare/components/2.4.0...components/2.4.1) (2024-02-09)
+
+
+### Bug Fixes
+
+* add lang "de" to bundle ([#748](https://github.com/solid-design-system/solid/issues/748)) ([9cd5e4f](https://github.com/solid-design-system/solid/commit/9cd5e4f6fa4f6d7c48ab7c4c9e7a3e7958c44850))
+
+### 📈 Stats
+* Bundle size (uncompressed): 269 KB (+1 KB / +0%)
+* Bundle size (gzipped): 65 KB (unchanged)
+
 # [@solid-design-system/components-v2.4.0](https://github.com/solid-design-system/solid/compare/components/2.3.1...components/2.4.0) (2024-02-09)
 
 
