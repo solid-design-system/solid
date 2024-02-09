@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v2.4.0](https://github.com/solid-design-system/solid/compare/components/2.3.1...components/2.4.0) (2024-02-09)
+
+
+### Features
+
+* ✨ sd-media-teaser – add component ([#725](https://github.com/solid-design-system/solid/issues/725)) ([974a951](https://github.com/solid-design-system/solid/commit/974a9517e9056c180e7d5c791c5e1a785d8d6836))
+
+### 📈 Stats
+* Bundle size (uncompressed): 268 KB (+5 KB / +2%)
+* Bundle size (gzipped): 65 KB (+1 KB / +2%)
+
 # [@solid-design-system/components-v2.3.1](https://github.com/solid-design-system/solid/compare/components/2.3.0...components/2.3.1) (2024-02-08)
 
 
