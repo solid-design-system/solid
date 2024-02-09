@@ -274,7 +274,7 @@ export const Samples = {
           </tbody>
         </table>
         <div class="headline">Sortable Table</div>
-        <table class="sd-table sample-table" id="sortableTable" .sortData=${sortData}>
+        <table class="sd-table sample-table" id="sortableTable" .sortData=${sortData} data-chromatic="ignore">
           <thead>
             ${(() => {
               return html`<tr>
