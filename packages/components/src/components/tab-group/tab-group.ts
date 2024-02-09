@@ -432,7 +432,7 @@ export default class SdTabGroup extends SolidElement {
         border-bottom: solid calc(var(--track-width) * 2) var(--indicator-color);
       }
 
-      .tab-group__indicator--background{
+      .tab-group__indicator--background {
         border-bottom: solid var(--track-width) white;
         margin-left: 1px;
         margin-bottom: -1px;
@@ -468,7 +468,8 @@ export default class SdTabGroup extends SolidElement {
         border-bottom: solid var(--track-width) var(--track-color);
       }
 
-      .tab-group__body {
+      .tab-group--container .tab-group__body {
+        @apply border-t-0;
         border: solid var(--track-width) var(--track-color);
         border-top: none;
       }
@@ -482,9 +483,9 @@ export default class SdTabGroup extends SolidElement {
       }
 
       .tab-group--container ::slotted(sd-tab[active]) {
-        border: solid var(--track-width) var(--track-color) !important; 
+        border: solid var(--track-width) var(--track-color) !important;
         border-bottom: none !important;
-        margin-bottom: -1px; */
+        margin-bottom: -1px;
       }
 
       .tab-group--container .tab-group__indicator {
