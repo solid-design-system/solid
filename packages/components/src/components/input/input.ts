@@ -132,7 +132,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   @property({ attribute: 'help-text' }) helpText = '';
 
   /** Adds a clear button when the input is not empty. */
-  @property({ type: Boolean }) clearable = true;
+  @property({ type: Boolean }) clearable = false;
 
   /** Disables the input. */
   @property({ type: Boolean, reflect: true }) disabled = false;

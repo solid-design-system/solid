@@ -61,7 +61,6 @@ import type SdOption from '../option/option';
  * @csspart tag__base - The tag's base part.
  * @csspart tag__content - The tag's content part.
  * @csspart tag__removable-indicator - The tag's remove button.
- * @csspart right-controls - The container that wraps the clear and validation icons.
  * @csspart clear-button - The clear button.
  * @csspart expand-icon - The container that wraps the expand icon.
  */
@@ -958,7 +957,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 ? html`
                     <button
                       part="clear-button"
-                      class=${cx('select__clear inline-flex', iconMarginLeft)}
+                      class=${cx('select__clear flex justify-center', iconMarginLeft)}
                       type="button"
                       aria-label=${this.localize.term('clearEntry')}
                       @mousedown=${this.handleClearMouseDown}
@@ -999,7 +998,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
               <slot
                 name="expand-icon"
                 part="expand-icon"
-                class=${cx('inline-flex transition-all', this.open ? 'rotate-180' : 'rotate-0', iconSize)}
+                class=${cx('inline-flex ml-2 transition-all', this.open ? 'rotate-180' : 'rotate-0', iconSize)}
               >
                 <sd-icon name="chevron-down" part="chevron" library="system" color="currentColor"></sd-icon>
               </slot>
