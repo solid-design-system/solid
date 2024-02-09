@@ -9,7 +9,7 @@ import SolidElement from '../../internal/solid-element';
  * @documentation https://solid-design-system.fe.union-investment.de/x.x.x/storybook/?path=/docs/components-sd-teaser-media--docs
  *
  * @status stable
- * @since 2.3.2
+ * @since 2.4.0
  * *
  * @slot - An optional main content slot.
  * @slot media - An optional media slot.
