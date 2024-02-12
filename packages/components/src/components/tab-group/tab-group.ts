@@ -43,7 +43,7 @@ import type SdTabPanel from '../tab-panel/tab-panel';
 export default class SdTabGroup extends SolidElement {
   private readonly localize = new LocalizeController(this);
 
-  private activeTab?: SdTab;
+  @state() activeTab?: SdTab;
   private mutationObserver: MutationObserver;
   private resizeObserver: ResizeObserver;
   private tabs: SdTab[] = [];
@@ -58,7 +58,7 @@ export default class SdTabGroup extends SolidElement {
   @state() private hasScrollControls = false;
 
   /** When set to container, a border appears around the current tab. */
-  @property({ type: String, reflect: true }) variant: 'default' | 'container' = 'container';
+  @property({ type: String, reflect: true }) variant: 'default' | 'container' = 'default';
 
   /**
    * When set to auto, navigating tabs with the arrow keys will instantly show the corresponding tab panel. When set to
@@ -103,7 +103,7 @@ export default class SdTabGroup extends SolidElement {
         const intersectionObserver = new IntersectionObserver((entries, observer) => {
           if (entries[0].intersectionRatio > 0) {
             this.setAriaLabels();
-            this.setActiveTab(this.getActiveTab() ?? this.tabs[0], { emitEvents: false });
+            this.setActiveTab(this.activeTab ?? this.tabs[0], { emitEvents: false });
             observer.unobserve(entries[0].target);
           }
         });
@@ -129,10 +129,6 @@ export default class SdTabGroup extends SolidElement {
 
   private getAllPanels() {
     return [...this.body.assignedElements()].filter(el => el.tagName.toLowerCase() === 'sd-tab-panel') as [SdTabPanel];
-  }
-
-  private getActiveTab() {
-    return this.tabs.find(el => el.active);
   }
 
   private handleClick(event: MouseEvent) {
@@ -227,7 +223,7 @@ export default class SdTabGroup extends SolidElement {
     });
   }
 
-  private setActiveTab(tab: SdTab, options?: { emitEvents?: boolean; scrollBehavior?: 'auto' | 'smooth' }) {
+  setActiveTab(tab: SdTab, options?: { emitEvents?: boolean; scrollBehavior?: 'auto' | 'smooth' }) {
     options = {
       emitEvents: true,
       scrollBehavior: 'auto',
@@ -268,7 +264,7 @@ export default class SdTabGroup extends SolidElement {
   }
 
   private repositionIndicator() {
-    const currentTab = this.getActiveTab();
+    const currentTab = this.activeTab;
 
     if (!currentTab) {
       return;
@@ -316,7 +312,7 @@ export default class SdTabGroup extends SolidElement {
 
   @watch('placement', { waitUntilFirstUpdate: true })
   syncIndicator() {
-    const tab = this.getActiveTab();
+    const tab = this.activeTab;
 
     if (tab) {
       this.indicator.style.display = 'block';
@@ -372,13 +368,10 @@ export default class SdTabGroup extends SolidElement {
 
           <div class="tab-group__nav flex overflow-x-auto">
             <div part="tabs" class=${cx('tab-group__tabs flex flex-auto relative flex-row')} role="tablist">
-              <div
-                part="active-tab-indicator"
-                class=${cx('tab-group__indicator absolute bottom-0 transition-transform')}
-              ></div>
+              <div part="active-tab-indicator" class=${cx('tab-group__indicator absolute bottom-0')}></div>
               <div
                 class=${cx(
-                  'tab-group__indicator--background absolute bottom-0 transition-transform',
+                  'tab-group__indicator--background absolute bottom-0',
                   this.variant !== 'container' && 'hidden'
                 )}
               ></div>
@@ -430,6 +423,9 @@ export default class SdTabGroup extends SolidElement {
 
       .tab-group__indicator {
         border-bottom: solid calc(var(--track-width) * 2) var(--indicator-color);
+        transition:
+          200ms translate ease,
+          200ms width ease;
       }
 
       .tab-group__indicator--background {

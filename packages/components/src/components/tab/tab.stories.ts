@@ -1,4 +1,5 @@
 import '../../solid-components';
+import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 import { withActions } from '@storybook/addon-actions/decorator';
 
@@ -70,22 +71,26 @@ export const Disabled = {
 export const Sample = {
   name: 'Sample: Icon',
   render: () => {
-    return generateTemplate({
-      args: overrideArgs([
-        {
-          type: 'slot',
-          name: 'default',
-          value: `
-          
-           
-            <sd-icon slot="left" name="system/picture" library="global-resources" class="text-primary">
-            </sd-icon>
-       
-          
-            Tab
-            `
+    return html`
+      <style>
+        sd-tab-group::part(tabs) {
+          border-bottom: none;
         }
-      ])
-    });
+      </style>
+      <sd-tab-group>
+        <sd-tab slot="nav">
+          <sd-icon slot="left" name="system/picture" library="global-resources" class="text-primary"></sd-icon>
+          Tab
+        </sd-tab>
+
+        <sd-tab slot="nav">
+          <div class="relative">
+            <sd-icon slot="left" name="system/picture" library="global-resources" class="text-primary"></sd-icon>
+            <sd-badge class="absolute -top-0.5 -right-0.5" size="sm"></sd-badge>
+          </div>
+          Tab
+        </sd-tab>
+      </sd-tab-group>
+    `;
   }
 };
