@@ -439,6 +439,7 @@ export default class SdTabGroup extends SolidElement {
       }
 
       .tab-group__scroll-button {
+        @apply -outline-offset-4;
         border-bottom: solid var(--track-width) var(--track-color);
       }
 

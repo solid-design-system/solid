@@ -71,7 +71,7 @@ export default class SdTab extends SolidElement {
       <div
         part="base"
         class=${cx(
-          'inline-flex gap-2 w-20 h-12 px-3 leading-none items-center justify-center whitespace-nowrap select-none cursor-pointer focus-visible:outline-primary hover:bg-neutral-200',
+          'inline-flex gap-2 w-20 h-12 px-3 leading-none items-center justify-center whitespace-nowrap select-none cursor-pointer focus-visible:outline-primary hover:bg-neutral-200 -outline-offset-2',
           this.disabled && 'opacity-50 !cursor-not-allowed'
         )}
         tabindex=${this.disabled ? '-1' : '0'}
