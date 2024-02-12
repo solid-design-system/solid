@@ -26,7 +26,7 @@ export default class SdTab extends SolidElement {
   private readonly attrId = ++id;
   private readonly componentId = `sd-tab-${this.attrId}`;
 
-  @query('.tab') tab: HTMLElement;
+  @query('[part=base]') tab: HTMLElement;
 
   /** The name of the tab panel this tab is associated with. The panel must be located in the same tab group. */
   @property({ reflect: true }) panel = '';
@@ -54,6 +54,7 @@ export default class SdTab extends SolidElement {
 
   /** Sets focus to the tab. */
   focus(options?: FocusOptions) {
+    console.log('called from sd-tab', this.tab);
     this.tab.focus(options);
   }
 
@@ -70,12 +71,12 @@ export default class SdTab extends SolidElement {
       <div
         part="base"
         class=${cx(
-          'inline-flex gap-2 w-20 h-12 px-3 leading-none items-center justify-center whitespace-nowrap select-none cursor-pointer focus-visible:outline-primary',
-          this.disabled ? 'opacity-50 !cursor-not-allowed' : ''
+          'inline-flex gap-2 w-20 h-12 px-3 leading-none items-center justify-center whitespace-nowrap select-none cursor-pointer focus-visible:outline-primary hover:bg-neutral-200',
+          this.disabled && 'opacity-50 !cursor-not-allowed'
         )}
         tabindex=${this.disabled ? '-1' : '0'}
       >
-        <slot name="left"></slot>
+        <slot name="left" class="pr-2"></slot>
         <slot class=${cx(this.disabled ? 'text-neutral-500' : 'text-primary')}></slot>
       </div>
     `;
