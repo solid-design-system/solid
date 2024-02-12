@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v2.4.2](https://github.com/solid-design-system/solid/compare/components/2.4.1...components/2.4.2) (2024-02-12)
+
+
+### Bug Fixes
+
+* 🤔 sd-dropdown handle tab key event in deeper nested shadow root ([#742](https://github.com/solid-design-system/solid/issues/742)) ([74d796d](https://github.com/solid-design-system/solid/commit/74d796d210456a63a87bfb1b9c86f0a463f65651))
+
+### 📈 Stats
+* Bundle size (uncompressed): 270 KB (+1 KB / +0%)
+* Bundle size (gzipped): 65 KB (unchanged)
+
 # [@solid-design-system/components-v2.4.1](https://github.com/solid-design-system/solid/compare/components/2.4.0...components/2.4.1) (2024-02-09)
 
 
