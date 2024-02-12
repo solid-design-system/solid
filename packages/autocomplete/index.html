@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Autocomplete</title>
+    <script type="module">
+      import '../components/dist/components/umd/solid-components.js';
+    </script>
+  </head>
+  <body>
+    <sd-input id="autoComplete"></sd-input>
+    <script type="module">
+      import autoComplete from '/src/autoComplete.js';
+      await Promise.all([customElements.whenDefined('sd-input')]).then(() => {
+        const input = document.querySelector('sd-input').shadowRoot.querySelector('input');
+
+        const autoCompleteJS = new autoComplete({ // API Basic Configuration Object
+          placeHolder: 'Search for Food...',
+          data: {
+            src: ['Sauce - Thousand Island', 'Wild Boar - Tenderloin', 'Goat - Whole Cut']
+          },
+          resultItem: {
+            highlight: true
+          },
+          input
+        });
+
+        console.log(autoCompleteJS);
+      });
+    </script>
+  </body>
+</html>
