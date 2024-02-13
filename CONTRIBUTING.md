@@ -21,6 +21,7 @@
   - [Git + GitHub](#git--github)
     - [Referencing People](#referencing-people)
     - [Pull Requests](#pull-requests)
+      - [Feature-Check-In Meeting to Prepare Pull Requests](#feature-check-in-meeting-to-prepare-pull-requests)
       - [Assignees and Reviewers](#assignees-and-reviewers)
       - [Commit Messages](#commit-messages)
       - [Special commands/suffixes](#special-commandssuffixes)
@@ -146,6 +147,18 @@
 We don't mention the names of internal or external colleagues in issues or other documents hosted on GitHub, as our project is entirely public and can be accessed by anybody. Tagging/mentioning colleagues using their GitHub profiles is fine, as they decided to be visible on GitHub.
 
 ### Pull Requests
+
+#### Feature-Check-In Meeting to Prepare Pull Requests
+
+To enhance our review process, we introduced a "Feature-Check-In" meeting. This meeting aims to address conceptual and logical queries, resolve any miscommunication between development and design, and decrease the number of comments in a PR.
+
+The meeting adheres to a few straightforward rules:
+
+- The meeting is an **_optional_** tool to enhance PRs and should be utilized only when required, such as for large or complex new features, or a feature where certain questions were left open for implementation.
+- When a developer believes they have completed all they can and the feature is in a "presentable" state, a meeting should be scheduled with the development lead (@mariohamann) AND/OR design lead (@coraliefeil).
+- Unless absolutely necessary, the meeting should not exceed 30 minutes.
+- The outcomes of the meeting MUST be recorded in the ticket description.
+- Once the developer has incorporated the feedback/results into the code changes, a PR should be opened for all other team members to review the modifications.
 
 #### Assignees and Reviewers
 
