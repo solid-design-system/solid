@@ -9,24 +9,36 @@
     </script>
   </head>
   <body>
-    <sd-input id="autoComplete"></sd-input>
+    <sd-input label="Input with autosuggest" required></sd-input>
     <script type="module">
       import autoComplete from '/src/autoComplete.js';
-      await Promise.all([customElements.whenDefined('sd-input')]).then(() => {
-        const input = document.querySelector('sd-input').shadowRoot.querySelector('input');
+      await Promise.all([customElements.whenDefined('sd-input'), customElements.whenDefined('sd-popup')]).then(() => {
+        const sdInput = document.querySelector('sd-input');
+        const input = sdInput.shadowRoot.querySelector('input');
 
         const autoCompleteJS = new autoComplete({ // API Basic Configuration Object
           placeHolder: 'Search for Food...',
           data: {
             src: ['Sauce - Thousand Island', 'Wild Boar - Tenderloin', 'Goat - Whole Cut']
           },
-          resultItem: {
-            highlight: true
+          selector: () => {
+              return input; // Any valid selector
           },
-          input
+          resultsList: {
+            tag: "sd-popup",
+          },
+          wrapper: false,
+          resultItem: {
+            /* element: (item, data) => {
+              item.innerHTML = `
+              <sd-option>
+                ${data.match}
+              </sd-option>
+              `;
+            }, */
+            highlight: true
+          }
         });
-
-        console.log(autoCompleteJS);
       });
     </script>
   </body>
