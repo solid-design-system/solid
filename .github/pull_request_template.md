@@ -8,4 +8,3 @@
 - [ ] E2E tests (features, a11y, bug fixes) are created/updated
 - [ ] Stories (features, a11y) are created/updated
 - [ ] relevant tickets are linked
-- [ ] PR is assigned to project board
