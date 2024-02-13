@@ -2,8 +2,7 @@
   @apply relative;
 
   &::after {
-    @apply block absolute p-4 bottom-0 left-0 text-white font-bold w-full;
+    @apply block absolute p-4 bottom-0 left-0 text-white font-bold w-full content-[--copyright];
     text-shadow: 1px 1px 2px black;
-    content: var(--copyright, '');
   }
 }
