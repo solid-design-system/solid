@@ -330,11 +330,13 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   /** For autoComplete.js */
   private handleOpen() {
     this.shadowRoot?.querySelector('[part="border"]')?.classList.add('rounded-b-none');
+    this.shadowRoot?.querySelector('[part="form-control"]')?.classList.add('z-50');
   }
 
   /** For autoComplete.js */
   private handleClose() {
     this.shadowRoot?.querySelector('[part="border"]')?.classList.remove('rounded-b-none');
+    this.shadowRoot?.querySelector('[part="form-control"]')?.classList.remove('z-50');
   }
 
   /** For autoComplete.js */
@@ -509,7 +511,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
 
     // Render
     return html`
-      <div part="form-control" class=${cx(this.disabled && 'pointer-events-none', 'relative z-50')}>
+      <div part="form-control" class=${cx(this.disabled && 'pointer-events-none', 'relative')}>
         <label
           part="form-control-label"
           id="label"
@@ -753,6 +755,9 @@ export default class SdInput extends SolidElement implements SolidFormControl {
         li {
           @apply hover:bg-neutral-100 transition-all;
           list-style-type: '';
+          mark {
+            @apply font-bold bg-transparent;
+          }
 
           /* This recreates the styles of sd-option if the element doesn't contain a sd-option */
           &:not(:has(sd-option)) {
