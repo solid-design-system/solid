@@ -7,7 +7,7 @@ const { overrideArgs } = storybookHelpers('sd-copyright');
 const { generateTemplate } = storybookTemplate('sd-copyright');
 
 /**
- *
+ * Add a copyright at the bottom of a image.
  */
 export default {
   title: 'Styles/sd-copyright',

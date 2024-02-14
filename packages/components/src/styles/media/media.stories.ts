@@ -7,7 +7,7 @@ const { overrideArgs } = storybookHelpers('sd-media');
 const { generateTemplate } = storybookTemplate('sd-media');
 
 /**
- *
+ * Add a media caption to the bottom of an image.
  */
 export default {
   title: 'Styles/sd-media',

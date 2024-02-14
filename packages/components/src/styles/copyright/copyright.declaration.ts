@@ -5,11 +5,5 @@ export default {
   summary: 'Generates basic styles for copyright elements.',
   status: 'stable',
   since: '2.5.0',
-  attributes: [
-    // {
-    //   name: 'sd-copyright--...',
-    //   options: ['primary-500', 'primary-300', 'white'],
-    //   description: ''
-    // }
-  ]
+  attributes: []
 } satisfies Style;
