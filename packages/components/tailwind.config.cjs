@@ -65,6 +65,9 @@ module.exports = {
               });
             }
           });
+
+        // console.log(safeList);
+
         return safeList;
       })()
     : []
