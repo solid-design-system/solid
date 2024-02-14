@@ -21,8 +21,10 @@
   - [Git + GitHub](#git--github)
     - [Referencing People](#referencing-people)
     - [Pull Requests](#pull-requests)
+      - [Feature-Check-In Meeting to Prepare Pull Requests](#feature-check-in-meeting-to-prepare-pull-requests)
       - [Assignees and Reviewers](#assignees-and-reviewers)
       - [Commit Messages](#commit-messages)
+      - [Review Comments](#review-comments)
       - [Special commands/suffixes](#special-commandssuffixes)
       - [Squash and Merge Your Changes](#squash-and-merge-your-changes)
     - [Chromatic](#chromatic)
@@ -147,6 +149,18 @@ We don't mention the names of internal or external colleagues in issues or other
 
 ### Pull Requests
 
+#### Feature-Check-In Meeting to Prepare Pull Requests
+
+To enhance our review process, we introduced a "Feature-Check-In" meeting. This meeting aims to address conceptual and logical queries, resolve any miscommunication between development and design, and decrease the number of comments in a PR.
+
+The meeting adheres to a few straightforward rules:
+
+- The meeting is an **_optional_** tool to enhance PRs and should be utilized only when required, such as for large or complex new features, or a feature where certain questions were left open for implementation.
+- When a developer believes they have completed all they can and the feature is in a "presentable" state, a meeting should be scheduled with the development lead (@mariohamann) AND/OR design lead (@coraliefeil).
+- Unless absolutely necessary, the meeting should not exceed 30 minutes.
+- The outcomes of the meeting MUST be recorded in the ticket description.
+- Once the developer has incorporated the feedback/results into the code changes, a PR should be opened for all other team members to review the modifications.
+
 #### Assignees and Reviewers
 
 When opening a PR, please make sure all checkboxes under "Definition of reviewable" are checked.
@@ -165,7 +179,7 @@ Assigning reviewers follows a few rules:
 
 1. **New Feature PRs:** All current members from the SDS team need to be assigned to the PR (@solid-design-system/current-sds-team).
 2. **Bug Fix or Docs PRs:** Minimum 1 developer from the SDS dev-core-team (@solid-design-system/core-development) needs to be assigned to the PR. Designers need to be added separately if visual changes are made.
-3. **CI/CD PRs:** Minimum 1 out of Özlem, Mario or Karl needs to be assigned to the PR.
+3. **CI/CD PRs:** Minimum 1 out of @yoezlem, @mariohamann or @karlbaumhauer needs to be assigned to the PR.
 
 #### Commit Messages
 
@@ -181,6 +195,15 @@ Commits with type 'perf' will be associated with a patch release.
 ```
 
 **Remark:** Always think from the perspective of the person using our packages/components – will the final distribution/bundle change? If so, then it's always `feat` `fix` or `perf` – if not, it's one of the others. Please reach out if you're unsure.
+
+#### Review Comments
+
+The primary objective of this "rule-set" is to eliminate comments that lack any code-related context, thereby minimizing the workload for the PR author during feedback implementation.
+
+- Developers should restrict their feedback to inline comments during code reviews.
+- Comments pertaining to the UI should be included as inline comments in the relevant file (for instance, "your story is not functioning", should be placed as an inline comment in the review section of the component.stories.ts file).
+- Designers should exclusively use Chromatic for providing feedback on alterations.
+- General comments in the PR should be avoided as much as possible. If they are unavoidable, they should only include process-related information that doesn't require a response (for example, "Completed my UI-review, please re-assign to me once changes have been made").
 
 #### Special commands/suffixes
 

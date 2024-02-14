@@ -1,3 +1,6 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+![NPM Version](https://img.shields.io/npm/v/%40solid-design-system%2Ftokens)
+
 # Tokens
 
 The Solid Design System Tokens package provides a collection of design tokens for colors, typography and spacing. It ensures design consistency and collaboration between our designers and developers when building components for the Solid Design System.
@@ -6,7 +9,15 @@ Check out the [full documentation](https://solid-design-system.fe.union-investme
 
 ### Handling tokens (for Figma maintainers ONLY)
 
-Any changes in the token set in Token Studio plugin must be in a new branch branched from `main`.
+Any changes in the token set in Token Studio plugin must be in a new branch branched from `main`with these information:
+
+Branch Name:
+
+feat/title
+
+fix/title
+
+Description: closes #123 (Write ticket number if it exists, automatically closes linked ticket when merged)
 
 ![Screen Shot 2024-01-19 at 11 22 24](https://github.com/solid-design-system/solid/assets/118520877/4b7ce66c-a5c7-44f3-86d4-2ae0ab4a902b)
 

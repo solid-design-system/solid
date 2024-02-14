@@ -18,6 +18,9 @@ The placeholder package provides placeholder images that can be used alongside t
 
 The tokens package contains all the design tokens used in the Solid Design System.
 
+**4. Theming**
+The theming package provides a color calculation service for the Solid Design System.
+
 ## Quick Start
 
 To get started with the code steps, follow these instructions:

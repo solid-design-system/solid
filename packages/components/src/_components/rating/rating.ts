@@ -40,8 +40,10 @@ export default class SdRating extends SolidElement {
 
   @query('.rating') rating: HTMLElement;
 
-  @state() private hoverValue = 0;
-  @state() private isHovering = false;
+  /** @internal */
+  @state() hoverValue = 0;
+  /** @internal */
+  @state() isHovering = false;
 
   /** A label that describes the rating to assistive devices. */
   @property() label = '';

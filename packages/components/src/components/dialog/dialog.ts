@@ -1,33 +1,34 @@
-import '../icon-button/icon-button';
+import '../button/button';
+import '../icon/icon';
 import { animateTo, stopAnimations } from '../../internal/animate';
-import { classMap } from 'lit/directives/class-map.js';
+import { css, html, unsafeCSS } from 'lit';
 import { customElement } from '../../../src/internal/register-custom-element';
-import {property, query } from 'lit/decorators.js';
 import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry';
 import { HasSlotController } from '../../internal/slot';
-import { html } from 'lit';
-import { ifDefined } from 'lit/directives/if-defined.js';
 import { LocalizeController } from '../../utilities/localize';
 import { lockBodyScrolling, unlockBodyScrolling } from '../../internal/scroll';
+import { property, query } from 'lit/decorators.js';
 import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch';
+import componentStyles from '../../styles/component.styles';
+import cx from 'classix';
+import HeadlineStyles from '../../styles/headline/headline.css?inline';
 import Modal from '../../internal/modal';
 import SolidElement from '../../internal/solid-element';
-import styles from './dialog.styles';
-import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Dialogs, sometimes called "modals", appear above the page and require the user's immediate attention.
  * @documentation https://solid.union-investment.com/[storybook-link]/dialog
  * @status stable
- * @since 1.0
+ * @since 1.40.0
  *
- * @dependency sd-icon-button
+ * @dependency sd-button
+ * @dependency sd-icon
  *
  * @slot - The dialog's main content.
- * @slot label - The dialog's label. Alternatively, you can use the `label` attribute.
- * @slot header-actions - Optional actions to add to the header. Works best with `<sd-icon-button>`.
+ * @slot headline - The dialog's headline. Alternatively, you can use the `headline` attribute.
  * @slot footer - The dialog's footer, usually one or more buttons representing various options.
+ * @slot close-button - The dialog's close button. Works best with `<sd-button>` and `<sd-icon>`.
  *
  * @event sd-show - Emitted when the dialog opens.
  * @event sd-after-show - Emitted after the dialog opens and all animations are complete.
@@ -44,17 +45,12 @@ import type { CSSResultGroup } from 'lit';
  * @csspart overlay - The overlay that covers the screen behind the dialog.
  * @csspart panel - The dialog's panel (where the dialog and its content are rendered).
  * @csspart header - The dialog's header. This element wraps the title and header actions.
- * @csspart header-actions - Optional actions to add to the header. Works best with `<sd-icon-button>`.
  * @csspart title - The dialog's title.
- * @csspart close-button - The close button, an `<sd-icon-button>`.
- * @csspart close-button__base - The close button's exported `base` part.
+ * @csspart close-button - The close button, an `<sd-button>`.
  * @csspart body - The dialog's body.
  * @csspart footer - The dialog's footer.
  *
  * @cssproperty --width - The preferred width of the dialog. Note that the dialog will shrink to accommodate smaller screens.
- * @cssproperty --header-spacing - The amount of padding to use for the header.
- * @cssproperty --body-spacing - The amount of padding to use for the body.
- * @cssproperty --footer-spacing - The amount of padding to use for the footer.
  *
  * @animation dialog.show - The animation to use when showing the dialog.
  * @animation dialog.hide - The animation to use when hiding the dialog.
@@ -64,16 +60,14 @@ import type { CSSResultGroup } from 'lit';
  */
 @customElement('sd-dialog')
 export default class SdDialog extends SolidElement {
-  static styles: CSSResultGroup = styles;
-
   private readonly hasSlotController = new HasSlotController(this, 'footer');
   private readonly localize = new LocalizeController(this);
   private modal: Modal;
   private originalTrigger: HTMLElement | null;
 
-  @query('.dialog') dialog: HTMLElement;
-  @query('.dialog__panel') panel: HTMLElement;
-  @query('.dialog__overlay') overlay: HTMLElement;
+  @query('[part="base"]') dialog: HTMLElement;
+  @query('[part="panel"]') panel: HTMLElement;
+  @query('[part="overlay"]') overlay: HTMLElement;
 
   /**
    * Indicates whether or not the dialog is open. You can toggle this attribute to show and hide the dialog, or you can
@@ -82,16 +76,14 @@ export default class SdDialog extends SolidElement {
   @property({ type: Boolean, reflect: true }) open = false;
 
   /**
-   * The dialog's label as displayed in the header. You should always include a relevant label even when using
-   * `no-header`, as it is required for proper accessibility. If you need to display HTML, use the `label` slot instead.
+   * The dialog's headline as displayed in the header. If you need to display HTML, use the `headline` slot instead.
    */
-  @property({ reflect: true }) label = '';
+  @property({ reflect: true }) headline = '';
 
   /**
-   * Disables the header. This will also remove the default close button, so please ensure you provide an easy,
-   * accessible way for users to dismiss the dialog.
+   * This will remove the default close button. Please ensure you provide an easy, accessible way for users to dismiss the dialog.
    */
-  @property({ attribute: 'no-header', type: Boolean, reflect: true }) noHeader = false;
+  @property({ attribute: 'no-close-button', type: Boolean, reflect: true }) noCloseButton = false;
 
   connectedCallback() {
     super.connectedCallback();
@@ -115,12 +107,12 @@ export default class SdDialog extends SolidElement {
   }
 
   private requestClose(source: 'close-button' | 'keyboard' | 'overlay') {
-    const slRequestClose = this.emit('sd-request-close', {
+    const sdRequestClose = this.emit('sd-request-close', {
       cancelable: true,
       detail: { source }
     });
 
-    if (slRequestClose.defaultPrevented) {
+    if (sdRequestClose.defaultPrevented) {
       const animation = getAnimation(this, 'dialog.denyClose', { dir: this.localize.dir() });
       animateTo(this.panel, animation.keyframes, animation.options);
       return;
@@ -260,55 +252,94 @@ export default class SdDialog extends SolidElement {
     return html`
       <div
         part="base"
-        class=${classMap({
-      dialog: true,
-      'dialog--open': this.open,
-      'dialog--has-footer': this.hasSlotController.test('footer')
-    })}
+        class=${cx(
+          'flex items-center justify-center fixed inset-0 z-dialog',
+          this.hasSlotController.test('footer') && 'dialog--has-footer'
+        )}
       >
-        <div part="overlay" class="dialog__overlay" @click=${() => this.requestClose('overlay')} tabindex="-1"></div>
+        <div
+          part="overlay"
+          class="fixed inset-0 bg-primary-800 opacity-90"
+          @click=${() => this.requestClose('overlay')}
+          tabindex="-1"
+        ></div>
 
         <div
           part="panel"
-          class="dialog__panel"
+          class=${cx(
+            'flex flex-col z-20 bg-white focus:outline-none py-4 sm:py-8 relative gap-6',
+            this.open && 'flex opacity-100'
+          )}
           role="dialog"
           aria-modal="true"
           aria-hidden=${this.open ? 'false' : 'true'}
-          aria-label=${ifDefined(this.noHeader ? this.label : undefined)}
-          aria-labelledby=${ifDefined(!this.noHeader ? 'title' : undefined)}
+          aria-label=${this.headline}
+          aria-labelledby="title"
           tabindex="0"
         >
-          ${!this.noHeader
-        ? html`
-                <header part="header" class="dialog__header">
-                  <h2 part="title" class="dialog__title" id="title">
-                    <slot name="label"> ${this.label.length > 0 ? this.label : String.fromCharCode(65279)} </slot>
-                  </h2>
-                  <div part="header-actions" class="dialog__header-actions">
-                    <slot name="header-actions"></slot>
-                    <sd-icon-button
-                      part="close-button"
-                      exportparts="base:close-button__base"
-                      class="dialog__close"
-                      name="x-lg"
-                      label=${this.localize.term('close')}
-                      library="system"
-                      @click="${() => this.requestClose('close-button')}"
-                    ></sd-icon-button>
-                  </div>
-                </header>
-              `
-        : ''}
+          <header part="header" class="flex flex-grow-0 flex-shrink-0 basis-auto px-6 sm:px-10">
+            <h2 part="title" class="flex-auto m-0" id="title">
+              ${this.headline.length > 0
+                ? html`<h4 class="sd-headline sd-headline--size-3xl leading-tight">${this.headline}</h4>`
+                : html`<slot name="headline"> </slot>`}
+            </h2>
 
-          <slot part="body" class="dialog__body"></slot>
+            ${!this.noCloseButton
+              ? html`
+                  <sd-button
+                    part="close-button"
+                    variant="tertiary"
+                    exportparts="base:close-button__base"
+                    class=${cx('absolute top-2 right-2')}
+                    name="x-lg"
+                    @click="${() => this.requestClose('close-button')}"
+                    type="button"
+                  >
+                    <sd-icon name="system/close" library="global-resources" color="currentColor"></sd-icon>
+                  </sd-button>
+                `
+              : ''}
+          </header>
 
-          <footer part="footer" class="dialog__footer">
+          <main part="body" class="flex flex-auto overflow-auto w-full px-6 sm:px-10">
+            <slot></slot>
+          </main>
+          <footer part="footer" class="flex flex-grow-0 flex-shrink-0 basis-auto ml-auto gap-4 px-6 sm:px-10">
             <slot name="footer"></slot>
           </footer>
         </div>
       </div>
     `;
   }
+
+  static styles = [
+    componentStyles,
+    unsafeCSS(HeadlineStyles),
+    SolidElement.styles,
+    css`
+      :host {
+        --width: 662px;
+      }
+
+      [part='panel'] {
+        width: var(--width);
+        max-height: 80vh;
+      }
+
+      [part='body'] {
+        -webkit-overflow-scrolling: touch;
+      }
+
+      @media (max-width: 414px) {
+        :host {
+          --width: 335px;
+        }
+        [part='footer'] {
+          @apply w-full;
+        }
+      }
+    `
+  ];
 }
 
 setDefaultAnimation('dialog.show', {

@@ -5,6 +5,72 @@
     @apply border-r-[1px];
   }
 
+  &--shadow-top,
+  &--shadow-bottom,
+  &--shadow-left,
+  &--shadow-right {
+    &:after {
+      @apply opacity-0 absolute pointer-events-none transition-opacity duration-300 to-transparent from-[#000]/10 content-[''];
+    }
+  }
+
+  &--shadow-top,
+  &--shadow-bottom {
+    &:after {
+      @apply left-0 right-0 h-2.5;
+    }
+
+    /* fix that shows line on top of table-cell */
+    &:before {
+      @apply bg-neutral-400 block content-[''] absolute w-full h-[1px] left-0;
+    }
+  }
+
+  &--shadow-left,
+  &--shadow-right {
+    &:after {
+      @apply top-0 bottom-0 w-2.5;
+    }
+  }
+
+  &&--shadow-active:after {
+    @apply opacity-[100%];
+  }
+
+  &--shadow-top {
+    &:after {
+      @apply bg-gradient-to-t top-[-10px];
+    }
+
+    /* fix that shows line on top of table-cell */
+    &:before {
+      @apply bottom-[-1px];
+    }
+  }
+
+  &--shadow-bottom {
+    &:after {
+      @apply bg-gradient-to-b bottom-[-10px];
+    }
+
+    /* fix that shows line on top of table-cell */
+    &:before {
+      @apply top-[-1px];
+    }
+  }
+
+  &--shadow-left {
+    &:after {
+      @apply bg-gradient-to-l left-[-10px];
+    }
+  }
+
+  &--shadow-right {
+    &:after {
+      @apply bg-gradient-to-r right-[-10px];
+    }
+  }
+
   &--bg {
     &-white {
       @apply bg-white;

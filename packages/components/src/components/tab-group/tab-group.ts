@@ -54,7 +54,8 @@ export default class SdTabGroup extends SolidElement {
   @query('.tab-group__indicator') indicator: HTMLElement;
   @query('.tab-group__indicator--background') indicatorBackground: HTMLElement;
 
-  @state() private hasScrollControls = false;
+  /** @internal */
+  @state() hasScrollControls = false;
 
   /** When set to container, a border appears around the current tab. */
   @property({ type: String, reflect: true }) variant: 'default' | 'container' = 'default';

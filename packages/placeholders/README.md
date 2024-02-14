@@ -1,3 +1,6 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+![NPM Version](https://img.shields.io/npm/v/%40solid-design-system%2Fplaceholders)
+
 # Placeholder Images
 
 This folder contains placeholder images for all projects at Union Investment.
@@ -12,12 +15,6 @@ You can find their respective photographer and source below:
 - [Friends - Chewy](https://unsplash.com/photos/3cAMUE3YAO8)
 - [Skyline - Tobias Reich](https://unsplash.com/photos/FDBy4lkZycM)
 - [Workspace - Dan Dimmock](https://unsplash.com/photos/3mt71MKGjQ0)
-
-## License
-
-All above images are licensed under the [Unsplash License](https://unsplash.com/license).
-
-`generic.jpg` contains an icon by Union Investment and is therefore only to be used if usage is explicitly granted by Union Investment.
 
 ## Usage
 

@@ -9,18 +9,37 @@ describe('<sd-dialog>', () => {
     const el = await fixture<SdDialog>(html`
       <sd-dialog open>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sd-dialog>
     `);
+
     const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
 
     expect(base.hidden).to.be.false;
   });
 
   it('should not be visible without the open attribute', async () => {
-    const el = await fixture<SdDialog>(
-      html` <sd-dialog>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sd-dialog> `
-    );
+    const el = await fixture<SdDialog>(html`
+      <sd-dialog>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sd-dialog>
+    `);
     const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
 
     expect(base.hidden).to.be.true;
+  });
+
+  it('should include a close button by default', async () => {
+    const el = await fixture<SdDialog>(html`
+      <sd-dialog open>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sd-dialog>
+    `);
+    const closeButton = el.shadowRoot!.querySelector<HTMLElement>('[part~="close-button"]')!;
+
+    expect(closeButton).to.exist;
+  });
+
+  it('should hide close button when no-close-button = true', async () => {
+    const el = await fixture<SdDialog>(html`
+      <sd-dialog open no-close-button>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sd-dialog>
+    `);
+    const closeButton = el.shadowRoot!.querySelector<HTMLElement>('[part~="close-button"]')!;
+
+    expect(closeButton).not.to.exist;
   });
 
   it('should emit sd-show and sd-after-show when calling show()', async () => {
