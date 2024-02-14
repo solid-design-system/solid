@@ -9,6 +9,7 @@
   },
   "type": "module",
   "exports": {
+    "./*": "./src/*",
     "./images/*": "./src/images/*"
   },
   "repository": {
