@@ -1,5 +1,5 @@
 import { css } from 'lit';
-import { customElement } from 'lit/decorators/custom-element.js';
+import { customElement } from '../../internal/register-custom-element';
 import { HasSlotController } from '../../internal/slot';
 import { html, literal } from 'lit/static-html.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
