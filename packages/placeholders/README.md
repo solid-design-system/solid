@@ -14,7 +14,7 @@ The file `solid-faker` provides a class with several utility functions for gener
 import SolidFaker from '@solid-design-system/placeholders';
 
 // Create an instance with an optional seed value as the only argument
-const solidFakerInstance = new SolidFaker(123);
+const faker = new SolidFaker(123);
 
 // Set the seed to any other number to provide a different set of consistent results
 faker.seed(321);
