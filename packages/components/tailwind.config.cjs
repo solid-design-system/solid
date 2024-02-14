@@ -23,7 +23,12 @@ const includeStorybookStories = process.env.npm_lifecycle_event?.includes('story
 module.exports = {
   content: includeStorybookStories
     ? ['./src/**/*.ts']
-    : ['./src/components/**/*.ts', '!./src/components/**/*.stories.ts', '!./src/components/**/*.test.ts'],
+    : [
+        './src/components/**/*.ts',
+        './src/utilities/autocomplete-config.ts',
+        '!./src/components/**/*.stories.ts',
+        '!./src/components/**/*.test.ts'
+      ],
   theme,
   plugins: [
     require('@mariohamann/tailwindcss-var'),

@@ -927,7 +927,7 @@ export const AutoCompleteJs = {
         <sd-input id="highlight-example"><b slot="label">Example with highlighting</b></sd-input>
       </div>
       <script>
-        const config = ${autocompleteConfig};
+        const solidAutocompleteConfig = ${autocompleteConfig};
         console.log();
         const data = {
           src: [
@@ -1015,36 +1015,20 @@ export const AutoCompleteJs = {
           ]
         };
         Promise.all([customElements.whenDefined('sd-input'), customElements.whenDefined('sd-popup')]).then(() => {
-          const input = document.querySelector('#simple-example').shadowRoot.querySelector('input');
-
           const autoCompleteJS = new autoComplete({
+            ...solidAutocompleteConfig({ selector: '#simple-example' }),
             // API Basic Configuration Object
             placeHolder: 'Find funds...',
-            data,
-            selector: () => {
-              return input; // Any valid selector
-            },
-            resultsList: {
-              tag: 'sd-popup'
-            },
-            wrapper: false
+            data
           });
         });
 
         Promise.all([customElements.whenDefined('sd-input'), customElements.whenDefined('sd-popup')]).then(() => {
-          const input = document.querySelector('#highlight-example').shadowRoot.querySelector('input');
-
           const autoCompleteJS = new autoComplete({
+            ...solidAutocompleteConfig({ selector: '#highlight-example' }),
             // API Basic Configuration Object
-            placeHolder: 'Fonds finden...',
+            placeHolder: 'Find funds...',
             data,
-            selector: () => {
-              return input; // Any valid selector
-            },
-            resultsList: {
-              tag: 'sd-popup'
-            },
-            wrapper: false,
             resultItem: {
               highlight: true
             }
