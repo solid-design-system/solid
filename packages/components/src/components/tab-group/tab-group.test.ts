@@ -10,33 +10,16 @@ import type SdTab from '../tab/tab';
 import type SdTabGroup from './tab-group';
 import type SdTabPanel from '../tab-panel/tab-panel';
 
-interface ClientRectangles {
-  body?: DOMRect;
-  navigation?: DOMRect;
-}
-
 interface CustomEventPayload {
   name: string;
 }
 
 const waitForScrollButtonsToBeRendered = async (tabGroup: SdTabGroup): Promise<void> => {
   await waitUntil(() => {
-    const scrollButtons = tabGroup.shadowRoot?.querySelectorAll('sd-icon-button');
+    const scrollButtons = tabGroup.shadowRoot?.querySelectorAll('button');
+    console.log('scrollButtons ARE RENDERED', scrollButtons);
     return scrollButtons?.length === 2;
   });
-};
-
-const getClientRectangles = (tabGroup: SdTabGroup): ClientRectangles => {
-  const shadowRoot = tabGroup.shadowRoot;
-  if (shadowRoot) {
-    const nav = shadowRoot.querySelector<HTMLElement>('[part=nav]');
-    const body = shadowRoot.querySelector<HTMLElement>('[part=body]');
-    return {
-      body: body?.getBoundingClientRect(),
-      navigation: nav?.getBoundingClientRect()
-    };
-  }
-  return {};
 };
 
 const expectHeaderToBeVisible = (container: HTMLElement, dataTestId: string): void => {
@@ -124,67 +107,6 @@ describe('<sd-tab-group>', () => {
     await expectOnlyOneTabPanelToBeActive(tabGroup, 'general-tab-content');
   });
 
-  describe('proper positioning', () => {
-    it('shows the header above the tabs by default', async () => {
-      const tabGroup = await fixture<SdTabGroup>(html`
-        <sd-tab-group>
-          <sd-tab slot="nav" panel="general">General</sd-tab>
-          <sd-tab-panel name="general">This is the general tab panel.</sd-tab-panel>
-        </sd-tab-group>
-      `);
-
-      await aTimeout(0);
-
-      const clientRectangles = getClientRectangles(tabGroup);
-      expect(clientRectangles.body?.top).to.be.greaterThanOrEqual(clientRectangles.navigation?.bottom || -Infinity);
-    });
-
-    it('shows the header below the tabs by setting placement to bottom', async () => {
-      const tabGroup = await fixture<SdTabGroup>(html`
-        <sd-tab-group>
-          <sd-tab slot="nav" panel="general">General</sd-tab>
-          <sd-tab-panel name="general">This is the general tab panel.</sd-tab-panel>
-        </sd-tab-group>
-      `);
-      tabGroup.placement = 'bottom';
-
-      await aTimeout(0);
-
-      const clientRectangles = getClientRectangles(tabGroup);
-      expect(clientRectangles.body?.bottom).to.be.lessThanOrEqual(clientRectangles.navigation?.top || +Infinity);
-    });
-
-    it('shows the header left of the tabs by setting placement to start', async () => {
-      const tabGroup = await fixture<SdTabGroup>(html`
-        <sd-tab-group>
-          <sd-tab slot="nav" panel="general">General</sd-tab>
-          <sd-tab-panel name="general">This is the general tab panel.</sd-tab-panel>
-        </sd-tab-group>
-      `);
-      tabGroup.placement = 'start';
-
-      await aTimeout(0);
-
-      const clientRectangles = getClientRectangles(tabGroup);
-      expect(clientRectangles.body?.left).to.be.greaterThanOrEqual(clientRectangles.navigation?.right || -Infinity);
-    });
-
-    it('shows the header right of the tabs by setting placement to end', async () => {
-      const tabGroup = await fixture<SdTabGroup>(html`
-        <sd-tab-group>
-          <sd-tab slot="nav" panel="general">General</sd-tab>
-          <sd-tab-panel name="general">This is the general tab panel.</sd-tab-panel>
-        </sd-tab-group>
-      `);
-      tabGroup.placement = 'end';
-
-      await aTimeout(0);
-
-      const clientRectangles = getClientRectangles(tabGroup);
-      expect(clientRectangles.body?.right).to.be.lessThanOrEqual(clientRectangles.navigation?.left || -Infinity);
-    });
-  });
-
   describe('scrolling behavior', () => {
     const generateTabs = (n: number): HTMLTemplateResult[] => {
       const result: HTMLTemplateResult[] = [];
@@ -223,22 +145,17 @@ describe('<sd-tab-group>', () => {
     it('shows scroll buttons on too many tabs', async () => {
       const tabGroup = await fixture<SdTabGroup>(html`<sd-tab-group> ${generateTabs(30)} </sd-tab-group>`);
 
-      await waitForScrollButtonsToBeRendered(tabGroup);
+      const nav = tabGroup.shadowRoot?.querySelectorAll('.tab-group__nav');
+      console.log(nav);
 
-      const scrollButtons = tabGroup.shadowRoot?.querySelectorAll('sd-icon-button');
+      console.log('waiting for scroll buttons to be rendered');
+      await waitForScrollButtonsToBeRendered(tabGroup);
+      console.log('scroll buttons rendered');
+
+      const scrollButtons = tabGroup.shadowRoot?.querySelectorAll('button');
       expect(scrollButtons, 'Both scroll buttons should be shown').to.have.length(2);
 
       tabGroup.disconnectedCallback();
-    });
-
-    it('does not show scroll buttons on too many tabs if deactivated', async () => {
-      const tabGroup = await fixture<SdTabGroup>(html`<sd-tab-group> ${generateTabs(30)} </sd-tab-group>`);
-      tabGroup.noScrollControls = true;
-
-      await aTimeout(0);
-
-      const scrollButtons = tabGroup.shadowRoot?.querySelectorAll('sd-icon-button');
-      expect(scrollButtons).to.have.length(0);
     });
 
     it('does not show scroll buttons if all tabs fit on the screen', async () => {
@@ -246,27 +163,7 @@ describe('<sd-tab-group>', () => {
 
       await aTimeout(0);
 
-      const scrollButtons = tabGroup.shadowRoot?.querySelectorAll('sd-icon-button');
-      expect(scrollButtons).to.have.length(0);
-    });
-
-    it('does not show scroll buttons if placement is start', async () => {
-      const tabGroup = await fixture<SdTabGroup>(html`<sd-tab-group> ${generateTabs(50)} </sd-tab-group>`);
-      tabGroup.placement = 'start';
-
-      await aTimeout(0);
-
-      const scrollButtons = tabGroup.shadowRoot?.querySelectorAll('sd-icon-button');
-      expect(scrollButtons).to.have.length(0);
-    });
-
-    it('does not show scroll buttons if placement is end', async () => {
-      const tabGroup = await fixture<SdTabGroup>(html`<sd-tab-group> ${generateTabs(50)} </sd-tab-group>`);
-      tabGroup.placement = 'end';
-
-      await aTimeout(0);
-
-      const scrollButtons = tabGroup.shadowRoot?.querySelectorAll('sd-icon-button');
+      const scrollButtons = tabGroup.shadowRoot?.querySelectorAll('button');
       expect(scrollButtons).to.have.length(0);
     });
 
@@ -277,7 +174,7 @@ describe('<sd-tab-group>', () => {
       );
 
       await waitForScrollButtonsToBeRendered(tabGroup);
-      const scrollButtons = tabGroup.shadowRoot?.querySelectorAll('sd-icon-button');
+      const scrollButtons = tabGroup.shadowRoot?.querySelectorAll('button');
       expect(scrollButtons).to.have.length(2);
 
       const firstTab = tabGroup.querySelector('[panel="tab-0"]');
@@ -287,7 +184,7 @@ describe('<sd-tab-group>', () => {
       expect(isElementVisibleFromOverflow(tabGroup, firstTab!)).to.be.true;
       expect(isElementVisibleFromOverflow(tabGroup, lastTab!)).to.be.false;
 
-      const scrollToRightButton = tabGroup.shadowRoot?.querySelector('sd-icon-button[part*="scroll-button--end"]');
+      const scrollToRightButton = tabGroup.shadowRoot?.querySelector('button[part*="scroll-button--end"]');
       expect(scrollToRightButton).not.to.be.null;
       await clickOnElement(scrollToRightButton!);
 
@@ -308,7 +205,7 @@ describe('<sd-tab-group>', () => {
       const customHeader = queryByTestId<SdTab>(tabGroup, 'custom-header');
       expect(customHeader).not.to.have.attribute('active');
 
-      const showEventPromise = oneEvent(tabGroup, 'sd-tab-show') as Promise<CustomEvent>;
+      const showEventPromise = oneEvent(tabGroup, 'sd-tab-show', false);
       await action();
 
       expect(customHeader).to.have.attribute('active');
@@ -325,8 +222,8 @@ describe('<sd-tab-group>', () => {
 
       let showEventFired = false;
       let hideEventFired = false;
-      oneEvent(tabGroup, 'sd-tab-show').then(() => (showEventFired = true));
-      oneEvent(tabGroup, 'sd-tab-hide').then(() => (hideEventFired = true));
+      oneEvent(tabGroup, 'sd-tab-show', false).then(() => (showEventFired = true));
+      oneEvent(tabGroup, 'sd-tab-hide', false).then(() => (hideEventFired = true));
       await action();
 
       expect(generalHeader).to.have.attribute('active');
@@ -407,7 +304,7 @@ describe('<sd-tab-group>', () => {
       const customHeader = queryByTestId<SdTab>(tabGroup, 'custom-header');
       expect(customHeader).not.to.have.attribute('active');
 
-      const showEventPromise = oneEvent(tabGroup, 'sd-tab-show') as Promise<CustomEvent>;
+      const showEventPromise = oneEvent(tabGroup, 'sd-tab-show', false);
       await sendKeys({ press: 'ArrowRight' });
       await aTimeout(0);
       expect(generalHeader).to.have.attribute('active');

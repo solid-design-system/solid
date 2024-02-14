@@ -14,7 +14,7 @@ export default {
     {
       type: 'slot',
       name: 'default',
-      value: 'Tab'
+      value: `Tab`
     }
   ]),
   argTypes,
@@ -28,12 +28,12 @@ export default {
 
 export const Default = {
   render: (args: any) => {
-    return generateTemplate({ args });
+    return html`<sd-tab-group>${generateTemplate({ args })}</sd-tab-group>`;
   }
 };
 
 /**
- * Use the `active` attribute to toggle the active state.
+ * Use the `active` attribute to toggle the active state. Styling to indicate the active state is applied in the `sd-tab-group` component.
  */
 
 export const Active = {

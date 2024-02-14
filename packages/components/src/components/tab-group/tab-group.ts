@@ -17,7 +17,7 @@ import type SdTabPanel from '../tab-panel/tab-panel';
  * @status stable
  * @since 2.1.0
  *
- * @dependency sd-button
+
  *
  * @slot - Used for grouping tab panels in the tab group. Must be `<sd-tab-panel>` elements.
  * @slot nav - Used for grouping tabs in the tab group. Must be `<sd-tab>` elements.
@@ -30,7 +30,6 @@ import type SdTabPanel from '../tab-panel/tab-panel';
  * @csspart tabs - The container that wraps the tabs.
  * @csspart active-tab-indicator - The line that highlights the currently selected tab.
  * @csspart body - The tab group's body where tab panels are slotted in.
- * @csspart scroll-button - The previous/next scroll buttons that show when tabs are scrollable, an `<sd-button>`.
  * @csspart scroll-button--start - The starting scroll button.
  * @csspart scroll-button--end - The ending scroll button.
  * @csspart scroll-button__base - The scroll button's exported `base` part.
@@ -43,7 +42,7 @@ import type SdTabPanel from '../tab-panel/tab-panel';
 export default class SdTabGroup extends SolidElement {
   private readonly localize = new LocalizeController(this);
 
-  @state() activeTab?: SdTab;
+  private activeTab?: SdTab;
   private mutationObserver: MutationObserver;
   private resizeObserver: ResizeObserver;
   private tabs: SdTab[] = [];
@@ -223,6 +222,7 @@ export default class SdTabGroup extends SolidElement {
     });
   }
 
+  /** Sets the active tab and panel. */
   setActiveTab(tab: SdTab, options?: { emitEvents?: boolean; scrollBehavior?: 'auto' | 'smooth' }) {
     options = {
       emitEvents: true,
@@ -350,7 +350,7 @@ export default class SdTabGroup extends SolidElement {
           ${this.hasScrollControls
             ? html`
                 <button
-                  part="scroll-button scroll-button--start"
+                  part="scroll-button__base scroll-button--start"
                   exportparts="base:scroll-button__base"
                   class=${cx(
                     'tab-group__scroll-button tab-group__scroll-button--start sd-interactive flex items-center justify-center absolute top-0 bottom-0 left-0'
@@ -382,7 +382,7 @@ export default class SdTabGroup extends SolidElement {
           ${this.hasScrollControls
             ? html`
                 <button
-                  part="scroll-button scroll-button--end"
+                  part="scroll-button__base scroll-button--end"
                   exportparts="base:scroll-button__base"
                   class=${cx(
                     'tab-group__scroll-button tab-group__scroll-button--end sd-interactive flex items-center justify-center absolute top-0 bottom-0 right-0'

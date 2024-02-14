@@ -29,7 +29,7 @@ export default {
             `
   }),
   argTypes,
-  parameters: { ...parameters },
+  parameters: { ...parameters, docs: { story: { inline: false, height: '275px' } } },
   decorators: [withActions] as any
 };
 
@@ -48,7 +48,8 @@ export const Default = {
  */
 
 export const Variant = {
-  parameters: { controls: { exclude: 'variant' } },
+  parameters: { controls: { exclude: 'variant' }, docs: { story: { inline: false, height: '375px' } } },
+
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -188,18 +189,16 @@ export const Parts = {
     controls: {
       exclude: [
         'base',
-        'overlay',
-        'panel',
-        'header',
-        'header-content',
-        'title',
-        'close-button',
+        'nav',
+        'tabs',
         'body',
-        'footer',
-        '--width',
-        'contained'
+        'active-tab-indicator',
+        'scroll-button--start',
+        'scroll-button--end',
+        'scroll-button__base'
       ]
-    }
+    },
+    docs: { story: { inline: false, height: '3200px' } }
   },
   render: (args: any) => {
     return html`
@@ -207,8 +206,8 @@ export const Parts = {
         'base',
         'nav',
         'tabs',
+        'body',
         'active-tab-indicator',
-        'scroll-button',
         'scroll-button--start',
         'scroll-button--end',
         'scroll-button__base'
@@ -221,9 +220,7 @@ export const Parts = {
               values: [
                 {
                   title: part,
-                  value: `<style>#part-${part} sd-tab-group::part(${part}){outline: solid 2px red; ${
-                    part === 'base' ? '' : 'outline-offset: -2px'
-                  };}</style><div id="part-${part}">%TEMPLATE%</div>`
+                  value: `<style>#part-${part} sd-tab-group::part(${part}){outline: solid 2px red;outline-offset: -2px;}</style><div id="part-${part}">%TEMPLATE%</div>`
                 }
               ]
             }
@@ -416,6 +413,7 @@ export const SampleBold = {
  */
 
 export const SampleDeepLink = {
+  // parameters: { ...parameters, docs: { story: { inline: false, height: '3px' } } },
   name: 'Sample: Deep Link',
   render: () => {
     return html`

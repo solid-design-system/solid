@@ -19,6 +19,11 @@ export default {
       type: 'attribute',
       name: 'active',
       value: true
+    },
+    {
+      type: 'cssProperty',
+      name: '--padding',
+      value: '24px'
     }
   ]),
   argTypes,
