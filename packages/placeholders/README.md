@@ -10,15 +10,17 @@ This package provides placeholder texts and images.
 The file `solid-faker` provides a class with several utility functions for generating random / pseudo-random Lorem Ipsum style texts.
 
 ```
-// Import the included singleton instance which uses a default seed value of 123 for consistent results
-import { solidFaker } from '@solid-design-system/placeholders';
-
-// It is also possible to import the class itself, which then must be intantiated with an optional seed value as its only argument
+// Import the SolidFaker class
 import SolidFaker from '@solid-design-system/placeholders';
-const solidFakerInstance = new SolidFaker();
+
+// Create an instance with an optional seed value as the only argument
+const solidFakerInstance = new SolidFaker(123);
 
 // Set the seed to any other number to provide a different set of consistent results
 faker.seed(321);
+
+// Set the seed to undefined for random results on each invocation
+faker.seed();
 
 // Generate 5 random words (all lowercase)
 console.log(faker.words(5));
@@ -34,9 +36,6 @@ console.log(faker.sentences(3));
 
 // Generate 2 random paragraphs
 console.log(faker.paragraphs(2));
-
-// Optionally, set the seed to undefined for random results on each invocation
-faker.seed();
 ```
 
 ## Images
