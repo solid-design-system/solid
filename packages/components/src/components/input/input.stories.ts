@@ -1016,8 +1016,7 @@ export const AutoCompleteJs = {
         };
         Promise.all([customElements.whenDefined('sd-input'), customElements.whenDefined('sd-popup')]).then(() => {
           const autoCompleteJS = new autoComplete({
-            ...solidAutocompleteConfig({ selector: '#simple-example' }),
-            // API Basic Configuration Object
+            ...solidAutocompleteConfig('#simple-example'),
             placeHolder: 'Find funds...',
             data
           });
@@ -1025,7 +1024,7 @@ export const AutoCompleteJs = {
 
         Promise.all([customElements.whenDefined('sd-input'), customElements.whenDefined('sd-popup')]).then(() => {
           const autoCompleteJS = new autoComplete({
-            ...solidAutocompleteConfig({ selector: '#highlight-example' }),
+            ...solidAutocompleteConfig('#highlight-example'),
             // API Basic Configuration Object
             placeHolder: 'Find funds...',
             data,

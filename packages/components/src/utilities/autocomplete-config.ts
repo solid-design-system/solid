@@ -1,4 +1,10 @@
-export function autocompleteConfig({ selector }: { selector: HTMLUnknownElement | string }) {
+/**
+ * This function is a helper to quickly setup autocomplete.js for Solid components.
+ * Besides some needed defaults it adds additional styles and event listeners.
+ * @param selector - The selector to get the input element from the ShadowDOM.
+ * @returns The configuration object for autocomplete.js.
+ */
+export function autocompleteConfig(selector: HTMLUnknownElement | string) {
   const sdInput = !selector
     ? document.querySelector('#autoComplete')
     : typeof selector === 'string'
@@ -11,7 +17,7 @@ export function autocompleteConfig({ selector }: { selector: HTMLUnknownElement 
   const css = (string: TemplateStringsArray) => string[0];
 
   /** Setup elements and styles for autocomplete.js */
-  input.addEventListener('init', (e: Event) => {
+  input.addEventListener('init', () => {
     const popup = sdInput.shadowRoot?.querySelector('sd-popup');
     if (popup) {
       popup.setAttribute('active', 'true');
@@ -51,8 +57,9 @@ export function autocompleteConfig({ selector }: { selector: HTMLUnknownElement 
   });
 
   /** Bind the value to `sd-input` */
-  input.addEventListener('selection', (e: CustomEvent) => {
-    sdInput.value = event.detail.selection.value;
+  input.addEventListener('selection', (event: CustomEvent) => {
+    // eslint-disable-next-line
+    sdInput.value = event?.detail?.selection.value;
   });
 
   /** Open and close events to add styles to the input */
@@ -68,6 +75,11 @@ export function autocompleteConfig({ selector }: { selector: HTMLUnknownElement 
 
   return {
     selector: () => {
+      // For correct handling we need the input element inside the ShadowDOM
+      // Because of A11y this leads to the fact, that we need to push the popup into the ShadowDOM as well
+      // Unfortunately this hinders people to style things just from outside with their own stylesheets
+      // Experiments using resultsList.destination as destination and the whole sd-input as selector failed
+      // Maybe there could be a fix in the future for that
       return input;
     },
     resultsList: {
