@@ -310,7 +310,10 @@ export const Mouseless = {
 
   play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
     const el = canvasElement.querySelector('.mouseless sd-tab-group');
-    await waitUntil(() => el?.shadowRoot?.querySelector('button')?.focus());
+
+    await waitUntil(() => el?.shadowRoot?.querySelector('button'));
+
+    el?.shadowRoot?.querySelector('button')?.focus();
   }
 };
 
