@@ -163,7 +163,7 @@ const getSpacings = () => {
 };
 
 // Get all Object.entries(tokens['UI Semantic'].background and set them as background colors
-const getColors = (scope, cssVariableScope) => {
+const getColors = scope => {
   let result = {};
   const getColor = value => hexToRgb(resolveValue(value)).join(' ');
   if (scope) {
@@ -180,7 +180,7 @@ const getColors = (scope, cssVariableScope) => {
   } else {
     // The full color palette - especially used for documentation purposes
     Object.entries(tokens['UI Core'])
-      .filter(([colorName]) => ['blue', 'green', 'grey', 'black', 'white'].includes(colorName))
+      .filter(([colorName]) => ['blue', 'green', 'grey', 'black', 'white', 'red'].includes(colorName))
       .forEach(([colorName, shades]) => {
         if (colorName === 'black' || colorName === 'white') {
           result[sanitizeKey(colorName)] = `rgb(var(--sd-color-${sanitizeKey(sanitizeValue(colorName))}, ${getColor(
@@ -189,7 +189,7 @@ const getColors = (scope, cssVariableScope) => {
         } else {
           Object.entries(shades).forEach(([shadeName, { value, description }]) => {
             const name = `${
-              { blue: 'primary', green: 'accent', grey: 'neutral' }[colorName] || colorName
+              { blue: 'primary', green: 'accent', grey: 'neutral', red: 'error' }[colorName] || colorName
             }-${shadeName}`;
             result[sanitizeKey(name)] = `rgb(var(--sd-color-${sanitizeKey(sanitizeValue(name))}, ${getColor(
               value
@@ -199,7 +199,36 @@ const getColors = (scope, cssVariableScope) => {
       });
   }
 
+  result[sanitizeValue('success')] = `rgb(var(--sd-color-${sanitizeKey(sanitizeValue('success'))}, ${getColor(
+    '#25880E'
+  )}) / <alpha-value>) /* Used for success messages */`;
+
+  result[sanitizeValue('warning')] = `rgb(var(--sd-color-${sanitizeKey(sanitizeValue('warning'))}, ${getColor(
+    '#BB8D20'
+  )}) / <alpha-value>) /* Used for notifications */`;
+
+  result[sanitizeValue('risk-low')] = `rgb(var(--sd-color-${sanitizeKey(sanitizeValue('risk-low'))}, ${getColor(
+    '#017DC3'
+  )}) / <alpha-value>) /* Exclusively for marking fonds */`;
+
+  result[sanitizeValue('risk-moderate')] = `rgb(var(--sd-color-${sanitizeKey(
+    sanitizeValue('risk-moderate')
+  )}, ${getColor('#00A593')}) / <alpha-value>) /* Exclusively for marking fonds */`;
+
+  result[sanitizeValue('risk-increased')] = `rgb(var(--sd-color-${sanitizeKey(
+    sanitizeValue('risk-increased')
+  )}, ${getColor('#FFF000')}) / <alpha-value>) /* Exclusively for marking fonds */`;
+
+  result[sanitizeValue('risk-high')] = `rgb(var(--sd-color-${sanitizeKey(sanitizeValue('risk-high'))}, ${getColor(
+    '#FA9B1E'
+  )}) / <alpha-value>) /* Exclusively for marking fonds */`;
+
+  result[sanitizeValue('risk-veryhigh')] = `rgb(var(--sd-color-${sanitizeKey(
+    sanitizeValue('risk-veryhigh')
+  )}, ${getColor('#FF0000')}) / <alpha-value>) /* Exclusively for marking fonds */`;
+
   result = reformatColors(result);
+
   return {
     ...result,
     inherit: 'inherit',
@@ -266,6 +295,18 @@ const getZIndices = () => {
   return result;
 };
 
+const getRisks = () => {
+  const result = {
+    low: 'rgb(var(--sd-color-risk-low, 1 125 195) / <alpha-value>) /* Exclusively for marking fonds */',
+    moderate: 'rgb(var(--sd-color-risk-moderate, 0 165 147) / <alpha-value>) /* Exclusively for marking fonds */',
+    increased: 'rgb(var(--sd-color-risk-increased, 255 240 0) / <alpha-value>) /* Exclusively for marking fonds */',
+    high: 'rgb(var(--sd-color-risk-high, 250 155 30) / <alpha-value>) /* Exclusively for marking fonds */',
+    veryhigh: 'rgb(var(--sd-color-risk-veryhigh, 255 0 0) / <alpha-value>) /* Exclusively for marking fonds */'
+  };
+
+  return result;
+};
+
 /** @type {import('tailwindcss').Config} */
 const config = {
   theme: {
@@ -296,9 +337,12 @@ const config = {
     textColor: { ...getColors('text', 'text-color') },
     textDecorationColor: { ...getColors('text', 'text-color') },
     boxShadow: { ...getShadows() },
-    zIndex: { ...getZIndices() }
+    zIndex: { ...getZIndices() },
+    risk: { ...getRisks() }
   }
 };
 
 const theme = config['theme'];
 module.exports = theme;
+
+console.log(JSON.stringify(theme, null, 2));

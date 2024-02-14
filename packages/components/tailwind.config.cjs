@@ -22,7 +22,7 @@ const includeStorybookStories = process.env.npm_lifecycle_event?.includes('story
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: includeStorybookStories
-    ? ['./src/**/*.ts']
+    ? ['./src/**/*.ts', './src/**/*.mdx']
     : ['./src/components/**/*.ts', '!./src/components/**/*.stories.ts', '!./src/components/**/*.test.ts'],
   theme,
   plugins: [
@@ -32,5 +32,40 @@ module.exports = {
       addVariant('hover', '&:hover:not([disabled])');
       addVariant('active', '&:active:not([disabled])');
     })
-  ]
+  ],
+  safelist: includeStorybookStories
+    ? (() => {
+        const safeList = [];
+        const tokenNamesToTailwindClasses = {
+          spacing: 'w',
+          zIndex: 'z',
+          opacity: 'opacity',
+          fontSize: 'text',
+          fontWeight: 'font',
+          borderRadius: 'rounded',
+          boxShadow: 'shadow',
+          risk: 'fill-risk'
+          // Add more replacements as needed
+        };
+
+        Object.entries(theme)
+          .filter(([names]) => Object.keys(tokenNamesToTailwindClasses).includes(names))
+          .forEach(([key, value]) => {
+            // Check if the key needs replacement, and replace if found in the mapping table
+            key = tokenNamesToTailwindClasses[key] || key;
+            if (typeof value === 'object') {
+              Object.entries(value).forEach(([subKey, subValue]) => {
+                if (typeof subValue === 'object') {
+                  Object.keys(subValue).forEach(subSubKey => {
+                    safeList.push(`${key}-${subKey}-${subSubKey}`);
+                  });
+                } else {
+                  safeList.push(`${key}-${subKey}`);
+                }
+              });
+            }
+          });
+        return safeList;
+      })()
+    : []
 };
