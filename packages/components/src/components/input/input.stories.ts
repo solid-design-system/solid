@@ -1,5 +1,5 @@
-import '../../solid-components';
 import { html } from 'lit-html';
+import { autocompleteConfig as sdAutocompleteConfig } from '../../solid-components';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 import { userEvent } from '@storybook/testing-library';
 import { waitUntil } from '@open-wc/testing-helpers';
@@ -919,6 +919,7 @@ export const AutoCompleteJs = {
     }
   },
   render: (args: any) => {
+    const autocompleteConfig = sdAutocompleteConfig;
     return html`
       <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/autoComplete.min.js"></script>
       <div class="flex flex-col gap-6">
@@ -926,6 +927,8 @@ export const AutoCompleteJs = {
         <sd-input id="highlight-example"><b slot="label">Example with highlighting</b></sd-input>
       </div>
       <script>
+        const config = ${autocompleteConfig};
+        console.log();
         const data = {
           src: [
             'PrivatFonds: Kontrolliert pro',
