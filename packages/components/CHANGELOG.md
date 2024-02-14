@@ -1,3 +1,36 @@
+# [@solid-design-system/components-v2.4.1](https://github.com/solid-design-system/solid/compare/components/2.4.0...components/2.4.1) (2024-02-09)
+
+
+### Bug Fixes
+
+* add lang "de" to bundle ([#748](https://github.com/solid-design-system/solid/issues/748)) ([9cd5e4f](https://github.com/solid-design-system/solid/commit/9cd5e4f6fa4f6d7c48ab7c4c9e7a3e7958c44850))
+
+### 📈 Stats
+* Bundle size (uncompressed): 269 KB (+1 KB / +0%)
+* Bundle size (gzipped): 65 KB (unchanged)
+
+# [@solid-design-system/components-v2.4.0](https://github.com/solid-design-system/solid/compare/components/2.3.1...components/2.4.0) (2024-02-09)
+
+
+### Features
+
+* ✨ sd-media-teaser – add component ([#725](https://github.com/solid-design-system/solid/issues/725)) ([974a951](https://github.com/solid-design-system/solid/commit/974a9517e9056c180e7d5c791c5e1a785d8d6836))
+
+### 📈 Stats
+* Bundle size (uncompressed): 268 KB (+5 KB / +2%)
+* Bundle size (gzipped): 65 KB (+1 KB / +2%)
+
+# [@solid-design-system/components-v2.3.1](https://github.com/solid-design-system/solid/compare/components/2.3.0...components/2.3.1) (2024-02-08)
+
+
+### Bug Fixes
+
+* 🤔 sd-headline does not include a line-height style ([#734](https://github.com/solid-design-system/solid/issues/734)) ([42f7b32](https://github.com/solid-design-system/solid/commit/42f7b32c87f94b3cfeb015b9b2d0170315535bc8))
+
+### 📈 Stats
+* Bundle size (uncompressed): 263 KB (unchanged)
+* Bundle size (gzipped): 64 KB (unchanged)
+
 # [@solid-design-system/components-v2.3.0](https://github.com/solid-design-system/solid/compare/components/2.2.0...components/2.3.0) (2024-02-06)
 
 
