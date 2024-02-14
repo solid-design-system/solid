@@ -142,7 +142,7 @@
 
 ### We Prepare Tickets for the Refinement
 
-- **User Story**: As a `Product Team` member of the Solid Design System, I want to ensure a effective and efficient refinement process, by preparing each ticket with the necessary information during a weekly pre-refinement meeting.
+- **User Story**: As a `Product Team` (@solid-design-system/product-team) member of the Solid Design System, I want to ensure a effective and efficient refinement process, by preparing each ticket with the necessary information during a weekly pre-refinement meeting.
   > Note: To ensure an effective and efficient meeting, the following parties need to be attending: development-lead, design-lead, brand-lead, architecture-lead and product owner.
 - **Actions**:
   - Decide if the feature will be implemented or not.
