@@ -316,35 +316,6 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     this.passwordVisible = !this.passwordVisible;
   }
 
-  /** For autoComplete.js */
-  private handleInit() {
-    const popup = this.shadowRoot?.querySelector('sd-popup');
-    if (popup) {
-      popup.setAttribute('active', true);
-      popup.placement = 'bottom-start';
-      popup.anchor = this;
-      popup.sync = 'width';
-    }
-  }
-
-  /** For autoComplete.js */
-  private handleOpen() {
-    this.shadowRoot?.querySelector('[part="border"]')?.classList.add('rounded-b-none');
-    this.shadowRoot?.querySelector('[part="form-control"]')?.classList.add('z-50');
-  }
-
-  /** For autoComplete.js */
-  private handleClose() {
-    this.shadowRoot?.querySelector('[part="border"]')?.classList.remove('rounded-b-none');
-    this.shadowRoot?.querySelector('[part="form-control"]')?.classList.remove('z-50');
-  }
-
-  /** For autoComplete.js */
-  private handleSelection(event: CustomEvent) {
-    this.input.value = event.detail.selection.value;
-    this.handleInput();
-  }
-
   @watch('disabled', { waitUntilFirstUpdate: true })
   handleDisabledChange() {
     // Disabled form controls are always valid
@@ -511,7 +482,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
 
     // Render
     return html`
-      <div part="form-control" class=${cx(this.disabled && 'pointer-events-none', 'relative')}>
+      <div part="form-control" class=${cx(this.disabled && 'pointer-events-none')}>
         <label
           part="form-control-label"
           id="label"
@@ -582,10 +553,6 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               @keydown=${this.handleKeyDown}
               @focus=${this.handleFocus}
               @blur=${this.handleBlur}
-              @init=${this.handleInit}
-              @open=${this.handleOpen}
-              @close=${this.handleClose}
-              @selection=${this.handleSelection}
             />
             ${hasClearIcon
               ? html`
@@ -745,32 +712,6 @@ export default class SdInput extends SolidElement implements SolidFormControl {
       /* Hides calendar picker for datetime-local type. Does not work in Firefox! */
       input[type='datetime-local']::-webkit-calendar-picker-indicator {
         @apply hidden;
-      }
-
-      /** Styles for autosuggest */
-      sd-popup {
-        &::part(popup) {
-          @apply overflow-y-scroll z-dropdown border-2 border-t-0 border-primary bg-white rounded-b-default shadow px-2 py-3;
-        }
-        li {
-          @apply hover:bg-neutral-100 transition-all;
-          list-style-type: '';
-          mark {
-            @apply font-bold bg-transparent;
-          }
-
-          /* This recreates the styles of sd-option if the element doesn't contain a sd-option */
-          &:not(:has(sd-option)) {
-            @apply px-4 py-3 text-base cursor-pointer text-black;
-            &:hover {
-              @apply bg-neutral-200;
-            }
-          }
-
-          &[aria-selected='true'] {
-            @apply bg-neutral-200;
-          }
-        }
       }
     `
   ];
