@@ -103,6 +103,11 @@ module.exports = {
                 name: 'lit/decorators.js',
                 importNames: ['customElement'],
                 message: "Use import 'customElement' from '../../../src/internal/register-custom-element' instead."
+              },
+              {
+                name: 'lit/decorators/custom-element.js',
+                importNames: ['customElement'],
+                message: "Use import 'customElement' from '../../../src/internal/register-custom-element' instead."
               }
             ]
           }
