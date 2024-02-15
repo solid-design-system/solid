@@ -27,6 +27,7 @@ import type SdTabPanel from '../tab-panel/tab-panel';
  *
  * @csspart base - The component's base wrapper.
  * @csspart nav - The tab group's navigation container where tabs are slotted in.
+ * @csspart scroll-container - The container that wraps the tabs and active-tab-indicator.
  * @csspart tabs - The container that wraps the tabs.
  * @csspart active-tab-indicator - The line that highlights the currently selected tab.
  * @csspart body - The tab group's body where tab panels are slotted in.
@@ -50,8 +51,8 @@ export default class SdTabGroup extends SolidElement {
 
   @query('[part=base]') tabGroup: HTMLElement;
   @query('[part=body]') body: HTMLSlotElement;
-  @query('.tab-group__nav') nav: HTMLElement;
-  @query('.tab-group__indicator') indicator: HTMLElement;
+  @query('[part=scroll-container]') nav: HTMLElement;
+  @query('[part=active-tab-indicator]') indicator: HTMLElement;
   @query('.tab-group__indicator--background') indicatorBackground: HTMLElement;
 
   /** @internal */
@@ -342,19 +343,20 @@ export default class SdTabGroup extends SolidElement {
           'flex flex-col rounded-none',
           this.localize.dir() === 'rtl' && 'tab-group--rtl',
           this.hasScrollControls && 'tab-group--has-scroll-controls',
-          this.variant === 'container' && 'tab-group--container'
+          this.variant === 'container' && 'tab-group--container-variant'
         )}
         @click=${this.handleClick}
         @keydown=${this.handleKeyDown}
       >
-        <div class="tab-group__nav-container" part="nav">
+        <div part="nav">
           ${this.hasScrollControls
             ? html`
                 <button
                   part="scroll-button__base scroll-button--start"
                   exportparts="base:scroll-button__base"
                   class=${cx(
-                    'tab-group__scroll-button tab-group__scroll-button--start sd-interactive flex items-center justify-center absolute top-0 bottom-0 left-0'
+                    'sd-interactive flex items-center justify-center absolute top-0 bottom-0 left-0',
+                    this.variant === 'container' && 'border-b-[1px] border-neutral-500'
                   )}
                   @click=${this.handleScrollToStart}
                 >
@@ -367,9 +369,9 @@ export default class SdTabGroup extends SolidElement {
               `
             : ''}
 
-          <div class="tab-group__nav flex overflow-x-auto">
-            <div part="tabs" class=${cx('tab-group__tabs flex flex-auto relative flex-row')} role="tablist">
-              <div part="active-tab-indicator" class=${cx('tab-group__indicator absolute bottom-0')}></div>
+          <div part="scroll-container" class="flex overflow-x-auto">
+            <div part="tabs" class=${cx('flex flex-auto relative flex-row')} role="tablist">
+              <div part="active-tab-indicator" class=${cx('absolute bottom-0')}></div>
               <div
                 class=${cx(
                   'tab-group__indicator--background absolute bottom-0',
@@ -386,7 +388,8 @@ export default class SdTabGroup extends SolidElement {
                   part="scroll-button__base scroll-button--end"
                   exportparts="base:scroll-button__base"
                   class=${cx(
-                    'tab-group__scroll-button tab-group__scroll-button--end sd-interactive flex items-center justify-center absolute top-0 bottom-0 right-0'
+                    'sd-interactive flex items-center justify-center absolute top-0 bottom-0 right-0',
+                    this.variant === 'container' && 'border-b-[1px] border-neutral-500'
                   )}
                   @click=${this.handleScrollToEnd}
                 >
@@ -400,11 +403,7 @@ export default class SdTabGroup extends SolidElement {
             : ''}
         </div>
 
-        <slot
-          part="body"
-          class=${cx('tab-group__body block auto py-8 px-6')}
-          @slotchange=${this.syncTabsAndPanels}
-        ></slot>
+        <slot part="body" class=${cx('block auto py-8 px-6')} @slotchange=${this.syncTabsAndPanels}></slot>
       </div>
     `;
   }
@@ -422,11 +421,9 @@ export default class SdTabGroup extends SolidElement {
         @apply block;
       }
 
-      .tab-group__indicator {
-        border-bottom: solid calc(var(--track-width) * 2) var(--indicator-color);
-        transition:
-          200ms translate ease,
-          200ms width ease;
+      [part='active-tab-indicator'] {
+        border-bottom: solid calc(var(--track-width) * 4) var(--indicator-color);
+        margin-bottom: -1px;
       }
 
       .tab-group__indicator--background {
@@ -435,38 +432,38 @@ export default class SdTabGroup extends SolidElement {
         margin-bottom: -1px;
       }
 
-      .tab-group--has-scroll-controls .tab-group__nav-container {
+      .tab-group--has-scroll-controls [part='nav'] {
         @apply relative py-0 px-12;
       }
 
-      .tab-group__scroll-button {
+      [part='scroll-button__base'] {
         @apply -outline-offset-4;
         border-bottom: solid var(--track-width) var(--track-color);
       }
 
-      .tab-group--rtl .tab-group__scroll-button--start {
+      .tab-group--rtl [part='scroll-button--start'] {
         @apply left-auto right-0;
       }
 
-      .tab-group--rtl .tab-group__scroll-button--end {
+      .tab-group--rtl [part='scroll-button--end'] {
         @apply right-auto left-0;
       }
 
-      .tab-group__nav {
+      [part='scroll-container'] {
         /* Hide scrollbar in Firefox */
         scrollbar-width: none;
       }
 
       /* Hide scrollbar in Chrome/Safari */
-      .tab-group__nav::-webkit-scrollbar {
+      [part='scroll-container']::-webkit-scrollbar {
         @apply w-0 h-0;
       }
 
-      .tab-group__tabs {
+      [part='tabs'] {
         border-bottom: solid var(--track-width) var(--track-color);
       }
 
-      .tab-group--container .tab-group__body {
+      .tab-group--container-variant [part='body'] {
         @apply border-t-0;
         border: solid var(--track-width) var(--track-color);
         border-top: none;
@@ -476,17 +473,17 @@ export default class SdTabGroup extends SolidElement {
         --padding: 1rem 0;
       }
 
-      .tab-group--container ::slotted(sd-tab) {
+      .tab-group--container-variant ::slotted(sd-tab) {
         border-radius: 4px 4px 0 0 !important;
       }
 
-      .tab-group--container ::slotted(sd-tab[active]) {
+      .tab-group--container-variant ::slotted(sd-tab[active]) {
         border: solid var(--track-width) var(--track-color) !important;
         border-bottom: none !important;
         margin-bottom: -1px;
       }
 
-      .tab-group--container .tab-group__indicator {
+      .tab-group--container-variant [part='active-tab-indicator'] {
         transition: none;
       }
     `

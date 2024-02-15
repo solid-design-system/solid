@@ -60,7 +60,7 @@ export default class SdTabPanel extends SolidElement {
         @apply block;
       }
 
-      .tab-panel {
+      ::part(base) {
         padding: var(--padding);
       }
     `

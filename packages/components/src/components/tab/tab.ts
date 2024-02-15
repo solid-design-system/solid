@@ -87,7 +87,7 @@ export default class SdTab extends SolidElement {
     componentStyles,
     css`
       :host {
-        @apply inline-block;
+        @apply inline-block overflow-hidden;
       }
     `
   ];
