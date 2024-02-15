@@ -273,6 +273,9 @@ importers:
       semantic-release-monorepo:
         specifier: ^7.0.5
         version: 7.0.5(semantic-release@19.0.5)
+      typescript:
+        specifier: 5.3.3
+        version: 5.3.3
 
   packages/theming:
     dependencies:
