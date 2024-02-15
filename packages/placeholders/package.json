@@ -4,6 +4,7 @@
   "description": "This package provides license-free placeholder images for all projects at Union Investment.",
   "main": "src",
   "scripts": {
+    "build.types": "tsc --project tsconfig.json",
     "release": "semantic-release  --tagFormat 'placeholders/${version}' -e semantic-release-monorepo",
     "release.dry": "semantic-release -d --tagFormat 'placeholders/${version}' -e semantic-release-monorepo"
   },
@@ -27,7 +28,8 @@
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "semantic-release": "^19.0.5",
-    "semantic-release-monorepo": "^7.0.5"
+    "semantic-release-monorepo": "^7.0.5",
+    "typescript": "5.3.3"
   },
   "release": {
     "branches": [
