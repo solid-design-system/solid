@@ -20,6 +20,7 @@ let id = 0;
  * @slot left - Optional element (eg. icon) positioned to the left of the label.
  *
  * @csspart base - The component's base wrapper.
+ * @csspart active-tab-indicator - The active tab indicator.
  */
 @customElement('sd-tab')
 export default class SdTab extends SolidElement {
@@ -30,6 +31,9 @@ export default class SdTab extends SolidElement {
 
   /** The name of the tab panel this tab is associated with. The panel must be located in the same tab group. */
   @property({ reflect: true }) panel = '';
+
+  /** When set to container, a border appears around the current tab. */
+  @property({ type: String, reflect: true }) variant: 'default' | 'container' = 'default';
 
   /** Draws the tab in an active state. */
   @property({ type: Boolean, reflect: true }) active = false;
@@ -71,13 +75,24 @@ export default class SdTab extends SolidElement {
       <div
         part="base"
         class=${cx(
-          'inline-flex gap-2 w-20 h-12 px-3 leading-none items-center justify-center whitespace-nowrap select-none cursor-pointer focus-visible:outline-primary hover:bg-neutral-200 -outline-offset-2',
+          'inline-flex gap-2 w-20 h-12 px-3 leading-none items-center justify-center whitespace-nowrap select-none cursor-pointer hover:bg-neutral-200 hover:border-b hover:border-neutral-400 group relative focus-visible:focus-outline',
+          this.variant === 'container' && ' rounded-[4px_4px_0_0]',
+          this.variant === 'container' && this.active && 'tab--container-variant bg-white',
           this.disabled && 'opacity-50 !cursor-not-allowed'
         )}
         tabindex=${this.disabled ? '-1' : '0'}
       >
         <slot name="left" class="pr-2"></slot>
         <slot class=${cx(this.disabled ? 'text-neutral-500' : 'text-primary')}></slot>
+
+        <div
+          part="active-tab-indicator"
+          class=${cx(
+            !this.active && 'hidden',
+            'absolute bottom-0 h-1 bg-accent',
+            this.variant === 'default' ? 'w-full' : 'w-1/2 group-hover:w-full transition-all duration-200 ease-in-out'
+          )}
+        ></div>
       </div>
     `;
   }
@@ -87,7 +102,14 @@ export default class SdTab extends SolidElement {
     componentStyles,
     css`
       :host {
-        @apply inline-block overflow-hidden;
+        @apply box-border block;
+      }
+
+      .tab--container-variant::after {
+        content: '';
+        @apply absolute w-full h-full border border-neutral-400;
+        border-bottom: none;
+        border-radius: 4px 4px 0 0;
       }
     `
   ];

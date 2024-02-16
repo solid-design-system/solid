@@ -7,11 +7,15 @@ const { generateTemplate } = storybookTemplate('sd-tab-group');
 import { waitUntil } from '@open-wc/testing-helpers';
 import { withActions } from '@storybook/addon-actions/decorator';
 
-function generateTabsAndPanels(startIndex: number, endIndex: number): string {
+function generateTabsAndPanels(
+  startIndex: number,
+  endIndex: number,
+  variant: 'default' | 'container' = 'default'
+): string {
   let result = '';
   for (let i = startIndex; i <= endIndex; i++) {
     result += `
-      <sd-tab slot="nav" panel="tab-${i}">Tab ${i}</sd-tab>
+      <sd-tab slot="nav" panel="tab-${i}" variant=${variant}>Tab ${i}</sd-tab>
       <sd-tab-panel name="tab-${i}"><div class="slot slot--text slot--border"> Tab panel ${i}</div></sd-tab-panel>`;
   }
   return result;
@@ -41,23 +45,6 @@ export const Default = {
 };
 
 /**
- * Use the variant attribute to alternate between the `default` and `container` styles.
- */
-
-export const Variant = {
-  parameters: { controls: { exclude: 'variant' }, docs: { story: { inline: false, height: '375px' } } },
-
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        x: { type: 'attribute', name: 'variant' }
-      },
-      args
-    });
-  }
-};
-
-/**
  * The sd-tab-group becomes scrollable when there are more tabs than horizontal space allows.
  */
 
@@ -65,7 +52,7 @@ export const Scrollable = {
   args: overrideArgs({
     type: 'slot',
     name: 'default',
-    value: generateTabsAndPanels(1, 30)
+    value: generateTabsAndPanels(1, 30, 'container')
   }),
   render: (args: any) => {
     return generateTemplate({ args });
@@ -80,31 +67,13 @@ export const Parts = {
   }),
   parameters: {
     controls: {
-      exclude: [
-        'base',
-        'nav',
-        'tabs',
-        'body',
-        'active-tab-indicator',
-        'scroll-button--start',
-        'scroll-button--end',
-        'scroll-button__base'
-      ]
+      exclude: ['base', 'nav', 'tabs', 'body', 'scroll-button--start', 'scroll-button--end', 'scroll-button--base']
     },
     docs: { story: { inline: false, height: '3200px' } }
   },
   render: (args: any) => {
     return html`
-      ${[
-        'base',
-        'nav',
-        'tabs',
-        'body',
-        'active-tab-indicator',
-        'scroll-button--start',
-        'scroll-button--end',
-        'scroll-button__base'
-      ].map(part =>
+      ${['base', 'nav', 'tabs', 'body', 'scroll-button--start', 'scroll-button--end', 'scroll-button--base'].map(part =>
         generateTemplate({
           axis: {
             x: {
@@ -113,7 +82,9 @@ export const Parts = {
               values: [
                 {
                   title: part,
-                  value: `<style>#part-${part} sd-tab-group::part(${part}){outline: solid 2px red;outline-offset: -2px;}</style><div id="part-${part}">%TEMPLATE%</div>`
+                  value: `<style>#part-${part} sd-tab-group::part(${part}){outline: solid 2px red; ${
+                    part === 'tabs' && 'outline-offset:-2px;'
+                  }}</style><div id="part-${part}">%TEMPLATE%</div>`
                 }
               ]
             }
@@ -143,7 +114,7 @@ export const Mouseless = {
   args: overrideArgs({
     type: 'slot',
     name: 'default',
-    value: generateTabsAndPanels(1, 30)
+    value: generateTabsAndPanels(1, 30, 'container')
   }),
   render: (args: any) => {
     return html`<div class="mouseless">${generateTemplate({ args })}</div>`;
@@ -257,7 +228,6 @@ export const SampleBold = {
  */
 
 export const SampleDeepLink = {
-  // parameters: { ...parameters, docs: { story: { inline: false, height: '3px' } } },
   name: 'Sample: Deep Link',
   render: () => {
     return html`

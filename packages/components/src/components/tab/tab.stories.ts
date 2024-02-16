@@ -28,7 +28,7 @@ export default {
 
 export const Default = {
   render: (args: any) => {
-    return html`<sd-tab-group>${generateTemplate({ args })}</sd-tab-group>`;
+    return html`${generateTemplate({ args })}`;
   }
 };
 
@@ -42,6 +42,22 @@ export const Active = {
     return generateTemplate({
       axis: {
         y: { type: 'attribute', name: 'active' }
+      },
+      args
+    });
+  }
+};
+
+/**
+ * Use the variant attribute to alternate between the `default` and `container` styles.
+ */
+
+export const Variant = {
+  parameters: { controls: { exclude: ['variant'] } },
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        y: { type: 'attribute', name: 'variant' }
       },
       args
     });
@@ -86,7 +102,7 @@ export const Sample = {
         <sd-tab slot="nav">
           <div class="relative">
             <sd-icon slot="left" name="system/picture" library="global-resources" class="text-primary"></sd-icon>
-            <sd-badge class="absolute -top-0.5 -right-0.5" size="sm"></sd-badge>
+            <sd-badge class="absolute -top-0.5 -right-0.5" tabindex="-1" size="sm"></sd-badge>
           </div>
           Tab
         </sd-tab>
