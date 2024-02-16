@@ -1,3 +1,10 @@
+# [@solid-design-system/placeholders-v1.3.0](https://github.com/solid-design-system/solid/compare/placeholders/1.2.0...placeholders/1.3.0) (2024-02-16)
+
+
+### Features
+
+* ✨ extend placeholder package with placeholder texts ([#756](https://github.com/solid-design-system/solid/issues/756)) ([e363096](https://github.com/solid-design-system/solid/commit/e363096a6665b4af2eeaa872c214e79add9480c1)), closes [#392](https://github.com/solid-design-system/solid/issues/392)
+
 # [@solid-design-system/placeholders-v1.2.0](https://github.com/solid-design-system/solid/compare/placeholders/1.1.0...placeholders/1.2.0) (2023-12-15)
 
 
