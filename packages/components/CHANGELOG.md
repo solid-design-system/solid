@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v2.4.4](https://github.com/solid-design-system/solid/compare/components/2.4.3...components/2.4.4) (2024-02-16)
+
+
+### Bug Fixes
+
+* 🤔 min-width of input element does not match responsiveness of sd-select/sd-input  ([#733](https://github.com/solid-design-system/solid/issues/733)) ([ab0f940](https://github.com/solid-design-system/solid/commit/ab0f94074290e0a37c5498c4126bfbdf90001b81))
+
+### 📈 Stats
+* Bundle size (uncompressed): 269 KB (unchanged)
+* Bundle size (gzipped): 65 KB (unchanged)
+
 # [@solid-design-system/components-v2.4.3](https://github.com/solid-design-system/solid/compare/components/2.4.2...components/2.4.3) (2024-02-14)
 
 
