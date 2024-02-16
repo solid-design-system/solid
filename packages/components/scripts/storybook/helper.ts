@@ -449,8 +449,7 @@ export const storybookTemplate = (customElementTag: string) => {
                 html`<tr>
                   <th class="title" colspan=${(xAxis.values?.length || 0) + 3}><code>${options?.title}</code></th>
                 </tr>`}
-                ${xAxis &&
-                xAxis.values &&
+                ${xAxis?.values &&
                 html`
                   <tr>
                     ${showYLabel ? html`<td></td>` : ''} <td></td>
@@ -560,6 +559,8 @@ export const storybookUtilities = {
     }
     templateInnerHTML = templateInnerHTML
       .replace(/<style><\/style>/g, '')
+      .replace(/<!-- preview-ignore:start -->[\s\S]*?<!-- preview-ignore:end -->/g, '')
+      .replace(/\/\/ preview-ignore:start[\s\S]*?\/\/ preview-ignore:start/g, '')
       .replace(/<style>\n<\/style>/g, '')
       .replace(/<script>\s*component = document\.querySelector\('(.+?)'\);\s*<\/script>/g, '');
     // return templateInnerHTML;

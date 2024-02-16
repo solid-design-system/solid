@@ -5,11 +5,8 @@ export default {
   title: 'Pattern/autocomplete',
   component: 'Autocomplete',
   parameters: {
-    chromatic: { disableSnapshot: true },
-    design: {
-      type: 'figma',
-      url: 'https://www.figma.com/file/hER2N8wZXhiTrdlDXyrdUt/Quote?type=design&node-id=1001-4293&mode=design&t=Xywhix1rQMoatokH-0'
-    }
+    docs: { story: { inline: false, height: '400px' } },
+    chromatic: { disableSnapshot: true }
   }
 };
 
@@ -99,8 +96,7 @@ const mock = {
   ].sort()
 };
 
-export const AutoCompleteJs = {
-  name: 'autoComplete.js',
+export const Simple = {
   parameters: {
     controls: {
       exclude: ['autocomplete']
@@ -110,19 +106,14 @@ export const AutoCompleteJs = {
     const setupAutocomplete = solidAutocomplete;
     const data = mock;
     return html`
-      <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/autoComplete.min.js"></script>
       <div class="flex flex-col gap-6">
         <sd-input id="simple-example"><b slot="label">Simple</b></sd-input>
-        <sd-input id="highlight-example"><b slot="label">Highlight query</b></sd-input>
-        <sd-input id="show-all-on-click-example"><b slot="label">Show all items on click</b></sd-input>
-        <sd-input id="group-elements"><b slot="label">Group elements</b></sd-input>
-        <div class="h-40"></div>
       </div>
       <script>
+        // preview-ignore:start
         const setupAutocomplete = ${setupAutocomplete};
         const data = ${JSON.stringify(data)};
-
-        console.log(data);
+        // preview-ignore:start
 
         Promise.all([customElements.whenDefined('sd-input'), customElements.whenDefined('sd-popup')]).then(() => {
           /* Simple example */
@@ -132,7 +123,32 @@ export const AutoCompleteJs = {
             placeHolder: 'Find funds...',
             data
           });
+        });
+      </script>
+    `;
+  }
+};
 
+export const HighlightQuery = {
+  parameters: {
+    controls: {
+      exclude: ['autocomplete']
+    }
+  },
+  render: (args: any) => {
+    const setupAutocomplete = solidAutocomplete;
+    const data = mock;
+    return html`
+      <div class="flex flex-col gap-6">
+        <sd-input id="highlight-example"><b slot="label">Highlight query</b></sd-input>
+      </div>
+      <script>
+        // preview-ignore:start
+        const setupAutocomplete = ${setupAutocomplete};
+        const data = ${JSON.stringify(data)};
+        // preview-ignore:start
+
+        Promise.all([customElements.whenDefined('sd-input'), customElements.whenDefined('sd-popup')]).then(() => {
           /* Highlighting */
           const { config: highlightConfig } = setupAutocomplete('#highlight-example');
           new autoComplete({
@@ -144,7 +160,32 @@ export const AutoCompleteJs = {
               highlight: true
             }
           });
+        });
+      </script>
+    `;
+  }
+};
 
+export const OpenOnClick = {
+  parameters: {
+    controls: {
+      exclude: ['autocomplete']
+    }
+  },
+  render: (args: any) => {
+    const setupAutocomplete = solidAutocomplete;
+    const data = mock;
+    return html`
+      <div class="flex flex-col gap-6">
+        <sd-input id="show-all-on-click-example"><b slot="label">Show all items on click</b></sd-input>
+      </div>
+      <script>
+        // preview-ignore:start
+        const setupAutocomplete = ${setupAutocomplete};
+        const data = ${JSON.stringify(data)};
+        // preview-ignore:start
+
+        Promise.all([customElements.whenDefined('sd-input'), customElements.whenDefined('sd-popup')]).then(() => {
           /** Show all on click */
           const { config: showAllOnClickConfig } = setupAutocomplete('#show-all-on-click-example');
           const showAllOnClickExample = new autoComplete({
@@ -167,7 +208,32 @@ export const AutoCompleteJs = {
               highlight: true
             }
           });
+        });
+      </script>
+    `;
+  }
+};
 
+export const GroupElements = {
+  parameters: {
+    controls: {
+      exclude: ['autocomplete']
+    }
+  },
+  render: (args: any) => {
+    const setupAutocomplete = solidAutocomplete;
+    const data = mock;
+    return html`
+      <div class="flex flex-col gap-6">
+        <sd-input id="group-elements"><b slot="label">Group elements</b></sd-input>
+      </div>
+      <script>
+        // preview-ignore:start
+        const setupAutocomplete = ${setupAutocomplete};
+        const data = ${JSON.stringify(data)};
+        // preview-ignore:start
+
+        Promise.all([customElements.whenDefined('sd-input'), customElements.whenDefined('sd-popup')]).then(() => {
           /** Group elements by their first character */
           const { config: groupElementsConfig } = setupAutocomplete('#group-elements');
           const groupElementsAutocomplete = new autoComplete({
