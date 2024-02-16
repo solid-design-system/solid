@@ -87,7 +87,8 @@ export const parameters = {
   docs: {
     story: { inline: true },
     source: {
-      transform: code => storybookUtilities.codeOptimizer(code)
+      transform: code => storybookUtilities.codeOptimizer(code),
+      format: 'html'
     }
   },
   backgrounds: {

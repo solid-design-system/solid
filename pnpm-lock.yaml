@@ -177,9 +177,6 @@ importers:
       gzip-size:
         specifier: ^7.0.0
         version: 7.0.0
-      html-format:
-        specifier: ^1.1.2
-        version: 1.1.2
       jsonata:
         specifier: ^2.0.3
         version: 2.0.3
@@ -9105,10 +9102,6 @@ packages:
 
   /html-escaper@2.0.2:
     resolution: {integrity: sha512-H2iMtd0I4Mt5eYiapRdIDjp+XzelXQ0tFE4JS7YFwFevXXMmOp9myNrUvCg0D6ws8iqkRPBfKHgbwig1SmlLfg==}
-    dev: true
-
-  /html-format@1.1.2:
-    resolution: {integrity: sha512-5Y9SJxl5cKn2Oc2L7RV6M14xYUNIdxjcTzVGrqBeBDwL+yGpdAGrSSz9kakJqMvZn/yq8fDAuo9Z0CyQ/aThPw==}
     dev: true
 
   /html-minifier@4.0.0:

@@ -1,7 +1,6 @@
 import { classMap } from 'lit/directives/class-map.js';
 import { getWcStorybookHelpers } from '@mariohamann/wc-storybook-helpers';
 import { html, unsafeStatic } from 'lit/static-html.js';
-import format from 'html-format';
 import loadCustomElements from './fetch-cem';
 
 type ArgTypesDefinition = 'attribute' | 'property' | 'slot' | 'cssPart' | 'cssProperty';
@@ -560,10 +559,9 @@ export const storybookUtilities = {
     templateInnerHTML = templateInnerHTML
       .replace(/<style><\/style>/g, '')
       .replace(/<!-- preview-ignore:start -->[\s\S]*?<!-- preview-ignore:end -->/g, '')
-      .replace(/\/\/ preview-ignore:start[\s\S]*?\/\/ preview-ignore:start/g, '')
+      .replace(/\/\/ preview-ignore:start[\s\S]*?\/\/ preview-ignore:end/g, '')
       .replace(/<style>\n<\/style>/g, '')
       .replace(/<script>\s*component = document\.querySelector\('(.+?)'\);\s*<\/script>/g, '');
-    // return templateInnerHTML;
-    return format(templateInnerHTML);
+    return templateInnerHTML;
   }
 };
