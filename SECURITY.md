@@ -10,6 +10,7 @@ currently being supported with security updates.
 | > 1.18.0 | components   | :white_check_mark: |
 | > 1.0.x  | placeholders | :white_check_mark: |
 | > 1.2.1  | tokens       | :white_check_mark: |
+| > 1.0.0  | theming      | :white_check_mark: |
 
 ## Reporting a Vulnerability
 
