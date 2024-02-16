@@ -356,7 +356,7 @@ export default class SdTabGroup extends SolidElement {
       }
 
       .tab-group--has-scroll-controls [part='nav'] {
-        @apply relative py-1 px-12;
+        @apply relative py-0 px-12;
       }
 
       .tab-group--rtl [part='scroll-button--start'] {
