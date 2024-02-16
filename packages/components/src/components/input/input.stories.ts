@@ -1,5 +1,5 @@
 import { html } from 'lit-html';
-import { autocompleteConfig as sdAutocompleteConfig } from '../../solid-components';
+import { setupAutocomplete as solidAutocomplete } from '../../solid-components';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 import { userEvent } from '@storybook/testing-library';
 import { waitUntil } from '@open-wc/testing-helpers';
@@ -919,16 +919,17 @@ export const AutoCompleteJs = {
     }
   },
   render: (args: any) => {
-    const autocompleteConfig = sdAutocompleteConfig;
+    const setupAutocomplete = solidAutocomplete;
     return html`
       <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/autoComplete.min.js"></script>
       <div class="flex flex-col gap-6">
-        <sd-input id="simple-example"><b slot="label">Simple example for autoComplete.js</b></sd-input>
-        <sd-input id="highlight-example"><b slot="label">Example with highlighting</b></sd-input>
+        <sd-input id="simple-example"><b slot="label">Simple</b></sd-input>
+        <sd-input id="highlight-example"><b slot="label">Highlight query</b></sd-input>
+        <sd-input id="show-all-on-click-example"><b slot="label">Show all items on click</b></sd-input>
+        <sd-input id="group-elements"><b slot="label">Group elements</b></sd-input>
       </div>
       <script>
-        const solidAutocompleteConfig = ${autocompleteConfig};
-        console.log();
+        const setupSolidAutocomplete = ${setupAutocomplete};
         const data = {
           src: [
             'PrivatFonds: Kontrolliert pro',
@@ -1012,24 +1013,102 @@ export const AutoCompleteJs = {
             'VR Sachsen Global Union',
             'VR Westmünsterland Aktiv Nachhaltig',
             'Werte Fonds Münsterland Klima'
-          ]
+          ].sort()
         };
         Promise.all([customElements.whenDefined('sd-input'), customElements.whenDefined('sd-popup')]).then(() => {
-          const autoCompleteJS = new autoComplete({
-            ...solidAutocompleteConfig('#simple-example'),
+          /* Simple example */
+          const { config: simpleConfig } = setupSolidAutocomplete('#simple-example');
+          new autoComplete({
+            ...simpleConfig,
             placeHolder: 'Find funds...',
             data
           });
-        });
 
-        Promise.all([customElements.whenDefined('sd-input'), customElements.whenDefined('sd-popup')]).then(() => {
-          const autoCompleteJS = new autoComplete({
-            ...solidAutocompleteConfig('#highlight-example'),
+          /* Highlighting */
+          const { config: highlightConfig } = setupSolidAutocomplete('#highlight-example');
+          new autoComplete({
+            ...highlightConfig,
             // API Basic Configuration Object
             placeHolder: 'Find funds...',
             data,
             resultItem: {
               highlight: true
+            }
+          });
+
+          /** Show all on click */
+          const { config: showAllOnClickConfig } = setupSolidAutocomplete('#show-all-on-click-example');
+          const showAllOnClickExample = new autoComplete({
+            ...showAllOnClickConfig,
+            threshold: 0,
+            placeHolder: 'Find funds...',
+            data,
+            resultsList: {
+              ...showAllOnClickConfig.resultsList,
+              maxResults: undefined
+            },
+            events: {
+              input: {
+                focus(event) {
+                  showAllOnClickExample.start();
+                }
+              }
+            },
+            resultItem: {
+              highlight: true
+            }
+          });
+
+          /** Group elements by their first character */
+          const { config: groupElementsConfig } = setupSolidAutocomplete('#group-elements');
+          const groupElementsAutocomplete = new autoComplete({
+            ...groupElementsConfig,
+            placeHolder: 'Find funds...',
+            data: {
+              src: data.src,
+              filter: list => {
+                // Step 1: Add grouping information to the elements
+                let currentHeadline = '';
+                let showDivider = false;
+                // Here group elements by their first character
+                list.forEach(item => {
+                  let firstChar = item.value[0].toUpperCase();
+                  if (firstChar !== currentHeadline) {
+                    // Add headline information to the element
+                    item.headline = firstChar;
+                    item.divider = showDivider;
+                    currentHeadline = firstChar;
+                    // Show divider for all but the first headline
+                    showDivider = true;
+                  }
+                });
+                return list;
+              }
+            },
+            resultsList: {
+              ...groupElementsConfig.resultsList,
+              // unlimited elements
+              maxResults: undefined
+            },
+            resultItem: {
+              highlight: true,
+              element: (item, data) => {
+                // Step 2: Render the elements with the headline information
+                if (data.divider) {
+                  // Add a divider before the element
+                  const divider = document.createElement('sd-divider');
+                  item.parentNode.insertBefore(divider, item);
+                }
+                if (data.headline) {
+                  // Add a headline before the element
+                  const headline = document.createElement('h3');
+                  headline.innerHTML = data.headline;
+                  // Warning: The following classes need to be available in ShadowDOM
+                  headline.classList.add('px-4', 'py-2', 'font-bold', 'text-neutral-900', 'text-lg');
+                  item.parentNode.insertBefore(headline, item);
+                }
+                item.innerHTML = data.match;
+              }
             }
           });
         });

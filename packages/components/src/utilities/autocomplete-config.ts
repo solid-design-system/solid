@@ -4,14 +4,21 @@
  * @param selector - The selector to get the input element from the ShadowDOM.
  * @returns The configuration object for autocomplete.js.
  */
-export function autocompleteConfig(selector: HTMLUnknownElement | string) {
-  const sdInput = !selector
+export function setupAutocomplete(
+  selector: HTMLUnknownElement | string,
+  { setValueOnSelection, scrollSelectionIntoView } = {
+    setValueOnSelection: true,
+    scrollSelectionIntoView: true
+  }
+) {
+  // @ts-expect-error - We expect the input to be found
+  const sdInput: HTMLInputElement = !selector
     ? document.querySelector('#autoComplete')
     : typeof selector === 'string'
       ? document.querySelector(selector)
       : selector;
 
-  const input = sdInput!.shadowRoot!.querySelector('input');
+  const input = sdInput.shadowRoot!.querySelector('input')!;
 
   /* Helper to use PostCSS and Syntax highlighting */
   const css = (string: TemplateStringsArray) => string[0];
@@ -20,9 +27,11 @@ export function autocompleteConfig(selector: HTMLUnknownElement | string) {
   input.addEventListener('init', () => {
     const popup = sdInput.shadowRoot?.querySelector('sd-popup');
     if (popup) {
-      popup.setAttribute('active', 'true');
+      popup.active = true;
+      popup.autoSize = 'vertical';
+      popup.autoSizePadding = 16;
       popup.placement = 'bottom-start';
-      popup.anchor = sdInput;
+      popup.anchor = sdInput!;
       popup.sync = 'width';
     }
     const styles = css`
@@ -53,14 +62,16 @@ export function autocompleteConfig(selector: HTMLUnknownElement | string) {
     `;
     const styleSheet = new CSSStyleSheet();
     styleSheet.replaceSync(styles);
-    sdInput.shadowRoot.adoptedStyleSheets = [...sdInput.shadowRoot.adoptedStyleSheets, styleSheet];
+    sdInput.shadowRoot!.adoptedStyleSheets = [...sdInput.shadowRoot!.adoptedStyleSheets, styleSheet];
   });
 
-  /** Bind the value to `sd-input` */
-  input.addEventListener('selection', (event: CustomEvent) => {
-    // eslint-disable-next-line
-    sdInput.value = event?.detail?.selection.value;
-  });
+  if (setValueOnSelection) {
+    /** Bind the value to `sd-input` */
+    input.addEventListener('selection', (event: CustomEvent) => {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+      sdInput.value = event?.detail?.selection.value as string;
+    });
+  }
 
   /** Open and close events to add styles to the input */
   input.addEventListener('open', () => {
@@ -73,18 +84,29 @@ export function autocompleteConfig(selector: HTMLUnknownElement | string) {
     sdInput.shadowRoot?.querySelector('[part="form-control"]')?.classList.remove('z-50');
   });
 
+  /** Selected elements should also be in view */
+  if (scrollSelectionIntoView) {
+    input.addEventListener('navigate', () => {
+      // get element which has currently aria-selected
+      const selected = sdInput.shadowRoot!.querySelector('[aria-selected="true"]');
+      selected?.scrollIntoView({ block: 'nearest' });
+    });
+  }
+
   return {
-    selector: () => {
-      // For correct handling we need the input element inside the ShadowDOM
-      // Because of A11y this leads to the fact, that we need to push the popup into the ShadowDOM as well
-      // Unfortunately this hinders people to style things just from outside with their own stylesheets
-      // Experiments using resultsList.destination as destination and the whole sd-input as selector failed
-      // Maybe there could be a fix in the future for that
-      return input;
-    },
-    resultsList: {
-      tag: 'sd-popup'
-    },
-    wrapper: false
+    config: {
+      selector: () => {
+        // For correct handling we need the input element inside the ShadowDOM
+        // Because of A11y this leads to the fact, that we need to push the popup into the ShadowDOM as well
+        // Unfortunately this hinders people to style things just from outside with their own stylesheets
+        // Experiments using resultsList.destination as destination and the whole sd-input as selector failed
+        // Maybe there could be a fix in the future for that
+        return input;
+      },
+      resultsList: {
+        tag: 'sd-popup'
+      },
+      wrapper: false
+    }
   };
 }
