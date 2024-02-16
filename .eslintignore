@@ -7,3 +7,4 @@ packages/components/src/_components
 packages/components/scripts
 packages/components/custom-elements-manifest.config.ts
 packages/theming/types/
+packages/placeholders/types/
