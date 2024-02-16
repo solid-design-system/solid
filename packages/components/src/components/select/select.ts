@@ -914,7 +914,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 form=${this.form}
                 part="display-input"
                 class=${cx(
-                  'appearance-none outline-none flex-grow bg-transparent',
+                  'appearance-none outline-none flex-grow bg-transparent w-full',
                   cursorStyles,
                   this.multiple && this.useTags && this.value.length > 0 ? 'hidden' : ''
                 )}
@@ -953,7 +953,6 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 @focus=${() => this.focus()}
                 @invalid=${this.handleInvalid}
               />
-
               ${hasClearIcon
                 ? html`
                     <button
@@ -989,7 +988,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 ? html`
                     <sd-icon
                       part="valid-icon"
-                      class=${cx('text-success', iconMarginLeft, iconSize)}
+                      class=${cx('text-success flex-shrink-0', iconMarginLeft, iconSize)}
                       library="system"
                       name="confirm"
                     ></sd-icon>
