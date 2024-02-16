@@ -67,13 +67,13 @@ export const Parts = {
   }),
   parameters: {
     controls: {
-      exclude: ['base', 'nav', 'tabs', 'body', 'scroll-button--start', 'scroll-button--end', 'scroll-button--base']
+      exclude: ['base', 'nav', 'tabs', 'body', 'scroll-button--start', 'scroll-button--end']
     },
     docs: { story: { inline: false, height: '3200px' } }
   },
   render: (args: any) => {
     return html`
-      ${['base', 'nav', 'tabs', 'body', 'scroll-button--start', 'scroll-button--end', 'scroll-button--base'].map(part =>
+      ${['base', 'nav', 'tabs', 'body', 'scroll-button--start', 'scroll-button--end'].map(part =>
         generateTemplate({
           axis: {
             x: {

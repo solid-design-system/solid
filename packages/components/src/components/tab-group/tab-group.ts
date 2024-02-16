@@ -301,7 +301,9 @@ export default class SdTabGroup extends SolidElement {
                 <button
                   part="scroll-button--start"
                   exportparts="base:scroll-button__base"
-                  class=${cx('sd-interactive flex items-center justify-center absolute top-0 bottom-0 left-0')}
+                  class=${cx(
+                    'sd-interactive flex items-center justify-center absolute top-0 bottom-0 left-0 !outline-offset-0'
+                  )}
                   @click=${this.handleScrollToStart}
                 >
                   <sd-icon
@@ -313,7 +315,7 @@ export default class SdTabGroup extends SolidElement {
               `
             : ''}
 
-          <div part="scroll-container" class="flex overflow-x-auto overflow-y-visible">
+          <div part="scroll-container" class="flex overflow-x-auto">
             <div part="tabs" class=${cx('flex flex-auto relative flex-row')} role="tablist">
               <div part="" class="w-full h-[1px] bg-neutral-400 absolute bottom-0"></div>
               <slot name="nav" @slotchange=${this.syncTabsAndPanels}></slot>
@@ -324,8 +326,10 @@ export default class SdTabGroup extends SolidElement {
             ? html`
                 <button
                   part="scroll-button--end"
-                  exportparts="base:scroll-butto__base"
-                  class=${cx('sd-interactive flex items-center justify-center absolute top-0 bottom-0 right-0')}
+                  exportparts="base:scroll-button__base"
+                  class=${cx(
+                    'sd-interactive flex items-center justify-center absolute top-0 bottom-0 right-0 !outline-offset-0'
+                  )}
                   @click=${this.handleScrollToEnd}
                 >
                   <sd-icon
@@ -368,6 +372,7 @@ export default class SdTabGroup extends SolidElement {
       }
 
       [part='scroll-container'] {
+        @apply focus-visible:focus-outline !outline-offset-0;
         /* Hide scrollbar in Firefox */
         scrollbar-width: none;
       }
@@ -384,6 +389,7 @@ export default class SdTabGroup extends SolidElement {
 
       [part='scroll-button--start'],
       [part='scroll-button--end'] {
+        @apply z-10;
         border-bottom: var(--track-width) solid var(--track-color);
       }
 
