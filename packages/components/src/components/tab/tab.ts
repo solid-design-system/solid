@@ -58,7 +58,6 @@ export default class SdTab extends SolidElement {
 
   /** Sets focus to the tab. */
   focus(options?: FocusOptions) {
-    console.log('called from sd-tab', this.tab);
     this.tab.focus(options);
   }
 
