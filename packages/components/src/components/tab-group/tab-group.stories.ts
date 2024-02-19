@@ -4,6 +4,7 @@ import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../..
 const { argTypes, parameters } = storybookDefaults('sd-tab-group');
 const { overrideArgs } = storybookHelpers('sd-tab-group');
 const { generateTemplate } = storybookTemplate('sd-tab-group');
+import { userEvent } from '@storybook/testing-library';
 import { waitUntil } from '@open-wc/testing-helpers';
 import { withActions } from '@storybook/addon-actions/decorator';
 
@@ -124,8 +125,8 @@ export const Mouseless = {
     const el = canvasElement.querySelector('.mouseless sd-tab-group');
 
     await waitUntil(() => el?.shadowRoot?.querySelector('button'));
-
-    el?.shadowRoot?.querySelector('button')?.focus();
+    // We have to catch the event as otherwise Storybook will break
+    await userEvent.type(el!.shadowRoot!.querySelector('button')!, '{return}', { pointerEventsCheck: 0 });
   }
 };
 
