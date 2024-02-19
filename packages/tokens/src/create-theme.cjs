@@ -307,6 +307,24 @@ const getRisks = () => {
   return result;
 };
 
+const getAspectRatios = () => {
+  const result = {
+    square: '1 / 1',
+    '6/5': '6 / 5',
+    '5/4': '5 / 4',
+    '4/3': '4 / 3',
+    '3/2': '3 / 2',
+    '16/10': '16 / 10',
+    'golden-ratio': '1.6180339887498948482 / 1',
+    '2/1': '2 / 1',
+    '21/9': '21 / 9',
+    '3/4': '3 / 4',
+    '4/5': '4 / 5'
+  };
+
+  return result;
+};
+
 /** @type {import('tailwindcss').Config} */
 const config = {
   theme: {
@@ -338,7 +356,8 @@ const config = {
     textDecorationColor: { ...getColors('text', 'text-color') },
     boxShadow: { ...getShadows() },
     zIndex: { ...getZIndices() },
-    risk: { ...getRisks() }
+    risk: { ...getRisks() },
+    aspectRatio: { ...getAspectRatios() }
   }
 };
 

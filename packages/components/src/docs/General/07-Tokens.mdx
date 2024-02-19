@@ -179,10 +179,34 @@ They use shorthand RGB values (e. g. `108 194 84`) to allow setting opacity via 
             </div>
           </td>
           <td>
-            <div class={`bg-primary flex h-16 w-16 shadow-${token[0]}`}></div>
+            <div class={`bg-primary h-16 w-16 shadow-${token[0]}`}></div>
           </td>
         </tr>
       );
     })}
+  </tbody>
+</table>
+
+## Aspect ratios
+
+<table>
+  <tbody>
+    {Object.entries(theme.aspectRatio).map((token, i) => {
+
+      return (
+        <tr>
+          <td>
+            <div class="flex flex-col">
+              <div class="font-bold">--sd-aspect-ratio-{token[0]}</div>
+              <div>--sd-aspect-ratio-{token[1]}</div>
+            </div>
+          </td>
+          <td>
+            <img slot="media" class={`bg-primary w-32 aspect-${token[0]}`} src="./placeholders/generic.jpg" alt="A placeholder image"/>
+          </td>
+        </tr>
+      );
+    })}
+
   </tbody>
 </table>
