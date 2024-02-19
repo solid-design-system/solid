@@ -46,13 +46,11 @@ module.exports = {
           boxShadow: 'shadow',
           risk: 'fill-risk',
           aspectRatio: 'aspect'
-          // Add more replacements as needed
         };
 
         Object.entries(theme)
           .filter(([names]) => Object.keys(tokenNamesToTailwindClasses).includes(names))
           .forEach(([key, value]) => {
-            // Check if the key needs replacement, and replace if found in the mapping table
             key = tokenNamesToTailwindClasses[key] || key;
             if (typeof value === 'object') {
               Object.entries(value).forEach(([subKey, subValue]) => {
@@ -66,9 +64,6 @@ module.exports = {
               });
             }
           });
-
-        // console.log(safeList);
-
         return safeList;
       })()
     : []
