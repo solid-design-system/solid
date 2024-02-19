@@ -363,5 +363,3 @@ const config = {
 
 const theme = config['theme'];
 module.exports = theme;
-
-console.log(JSON.stringify(theme, null, 2));
