@@ -68,6 +68,11 @@ export default class SdTabGroup extends SolidElement {
       customElements.whenDefined('sd-tab-panel')
     ]);
 
+    // Add border around tab-panel if the first tab is a container. (Assumes all tabs are the same variant.)
+    if (this.variant === 'container') {
+      this.body.classList.add('tab-panel--border');
+    }
+
     super.connectedCallback();
 
     this.resizeObserver = new ResizeObserver(() => {
@@ -88,11 +93,6 @@ export default class SdTabGroup extends SolidElement {
 
     // After the first update...
     this.updateComplete.then(() => {
-      // Add border around tab-panel if the first tab is a container. (Assumes all tabs are the same variant.)
-      if (this.variant === 'container') {
-        this.body.classList.add('tab-panel--border');
-      }
-
       this.syncTabsAndPanels();
       this.mutationObserver.observe(this, { attributes: true, childList: true, subtree: true });
       this.resizeObserver.observe(this.nav);
