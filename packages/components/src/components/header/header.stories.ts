@@ -276,8 +276,7 @@ export const SampleB = {
             <!-- top-right-area start !-->
             <div class="flex gap-2 sm:gap-12 items-center">
               <div class="flex">
-                <img class='md:h-12 lg:h-[56px] hidden md:flex' src='images/logo-finanzagenda-lg.svg' alt='Logo'/>
-                <img class='h-12 lg:h-[56px] md:hidden' src='images/logo-finanzagenda-sm.svg' alt='Logo'/>
+                <div class='h-12 w-[120px] md:w-40 lg:h-[56px] lg:w-[200px] flex bg-neutral-100 items-center justify-center'>Partnerlogo</div>
               </div>
               <div class="flex lg:hidden">
                 <sd-navigation-item>
