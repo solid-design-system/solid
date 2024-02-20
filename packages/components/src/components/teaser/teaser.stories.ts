@@ -637,8 +637,8 @@ export const SamplesTeaserWithIcon = {
   }
 };
 
-export const SamplesTeaserWithIconHorizontal = {
-  name: 'Samples: Teaser with icon horizontal',
+export const SamplesHorizontalTeaserWithIcon = {
+  name: 'Samples: Horizontal teaser with icon',
   parameters: {
     controls: {
       disable: true
