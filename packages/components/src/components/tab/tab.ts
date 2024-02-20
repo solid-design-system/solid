@@ -32,7 +32,7 @@ export default class SdTab extends SolidElement {
   /** The name of the tab panel this tab is associated with. The panel must be located in the same tab group. */
   @property({ reflect: true }) panel = '';
 
-  /** When set to container, a border appears around the current tab. */
+  /** When set to container, a border appears around the current tab and tab-panel. */
   @property({ type: String, reflect: true }) variant: 'default' | 'container' = 'default';
 
   /** Draws the tab in an active state. */
@@ -74,7 +74,8 @@ export default class SdTab extends SolidElement {
       <div
         part="base"
         class=${cx(
-          'inline-flex gap-2 w-20 h-12 px-3 leading-none items-center justify-center whitespace-nowrap select-none cursor-pointer hover:bg-neutral-200 hover:border-b hover:border-neutral-400 group relative focus-visible:focus-outline outline-2 !-outline-offset-2',
+          'inline-flex gap-2 w-20 h-12 px-3 leading-none items-center justify-center whitespace-nowrap select-none cursor-pointer hover:bg-neutral-200 group relative focus-visible:focus-outline outline-2 !-outline-offset-2',
+          !this.active && 'hover:border-b hover:border-neutral-400',
           this.variant === 'container' && ' rounded-[4px_4px_0_0]',
           this.variant === 'container' && this.active && 'tab--container-variant bg-white',
           this.disabled && 'opacity-50 !cursor-not-allowed'

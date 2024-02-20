@@ -31,7 +31,7 @@ export default {
     value: generateTabsAndPanels(1, 5)
   }),
   argTypes,
-  parameters: { ...parameters, docs: { story: { inline: false, height: '275px' } } },
+  parameters: { ...parameters, docs: { story: { inline: false, height: '250px' } } },
   decorators: [withActions] as any
 };
 
@@ -46,35 +46,83 @@ export const Default = {
 };
 
 /**
+ * Default: This shows sd-tab-group in its default state.
+ */
+export const TabVariants = {
+  parameters: { ...parameters, docs: { story: { inline: false, height: '550px' } } },
+
+  render: (args: any) => {
+    return html`
+      ${generateTemplate({
+        axis: {
+          y: {
+            type: 'slot',
+            title: 'sd-tab[variant="..."]',
+            name: 'default',
+            values: [
+              { title: 'default', value: generateTabsAndPanels(1, 5) },
+              { title: 'container', value: generateTabsAndPanels(1, 5, 'container') }
+            ]
+          }
+        },
+        args
+      })}
+    `;
+  }
+};
+
+/**
  * The sd-tab-group becomes scrollable when there are more tabs than horizontal space allows.
  */
 
 export const Scrollable = {
-  args: overrideArgs({
-    type: 'slot',
-    name: 'default',
-    value: generateTabsAndPanels(1, 30, 'container')
-  }),
+  parameters: { ...parameters, docs: { story: { inline: false, height: '550px' } } },
+
   render: (args: any) => {
-    return generateTemplate({ args });
-  }
+    return html`
+      ${generateTemplate({
+        axis: {
+          y: {
+            type: 'slot',
+            name: 'default',
+            values: [
+              { title: 'default', value: generateTabsAndPanels(1, 10) },
+              { title: 'container', value: generateTabsAndPanels(1, 10, 'container') }
+            ]
+          }
+        },
+        args
+      })}
+    `;
+  },
+  decorators: [
+    (story: () => typeof html) => html`
+      <style>
+        td.template {
+          display: block !important;
+          width: 50%;
+        }
+      </style>
+      ${story()}
+    `
+  ]
 };
 
 export const Parts = {
   args: overrideArgs({
     type: 'slot',
     name: 'default',
-    value: generateTabsAndPanels(1, 30)
+    value: generateTabsAndPanels(1, 10)
   }),
   parameters: {
     controls: {
-      exclude: ['base', 'nav', 'tabs', 'body', 'scroll-button--start', 'scroll-button--end']
+      exclude: ['base', 'nav', 'tabs', 'separation', 'body', 'scroll-button--start', 'scroll-button--end']
     },
-    docs: { story: { inline: false, height: '3200px' } }
+    docs: { story: { inline: false, height: '2500px' } }
   },
   render: (args: any) => {
     return html`
-      ${['base', 'nav', 'tabs', 'body', 'scroll-button--start', 'scroll-button--end'].map(part =>
+      ${['base', 'nav', 'tabs', 'separation', 'body', 'scroll-button--start', 'scroll-button--end'].map(part =>
         generateTemplate({
           axis: {
             x: {
@@ -135,6 +183,7 @@ export const Mouseless = {
  */
 
 export const SampleCentered = {
+  parameters: { ...parameters, docs: { story: { inline: false, height: '550px' } } },
   name: 'Sample: Centered',
   render: () => {
     return html`
@@ -143,14 +192,28 @@ export const SampleCentered = {
           justify-content: center;
         }
       </style>
-
+      <div class="p-4 my-6 bg-neutral-200 text-left font-bold text-sm w-full box-border">Default Variant</div>
       <sd-tab-group>
         <sd-tab slot="nav" panel="tab-1">Tab 1</sd-tab>
         <sd-tab slot="nav" panel="tab-2">Tab 2</sd-tab>
         <sd-tab slot="nav" panel="tab-3" disabled>Tab 3</sd-tab>
         <sd-tab slot="nav" panel="tab-4">Tab 4</sd-tab>
         <sd-tab slot="nav" panel="tab-5">Tab 5</sd-tab>
+        <sd-tab-panel name="tab-1"><div class="slot slot--text slot--border">Tab panel 1</div></sd-tab-panel>
+        <sd-tab-panel name="tab-2"><div class="slot slot--text slot--border">Tab panel 2</div></sd-tab-panel>
+        <sd-tab-panel name="tab-3"><div class="slot slot--text slot--border">Tab panel 3</div></sd-tab-panel>
+        <sd-tab-panel name="tab-4"><div class="slot slot--text slot--border">Tab panel 4</div></sd-tab-panel>
+        <sd-tab-panel name="tab-5"><div class="slot slot--text slot--border">Tab panel 5</div></sd-tab-panel>
+      </sd-tab-group>
 
+      <div class="p-4 mb-6 bg-neutral-200 text-left font-bold text-sm w-full box-border">Container Variant</div>
+
+      <sd-tab-group>
+        <sd-tab slot="nav" variant="container" panel="tab-1">Tab 1</sd-tab>
+        <sd-tab slot="nav" variant="container" panel="tab-2">Tab 2</sd-tab>
+        <sd-tab slot="nav" variant="container" panel="tab-3" disabled>Tab 3</sd-tab>
+        <sd-tab slot="nav" variant="container" panel="tab-4">Tab 4</sd-tab>
+        <sd-tab slot="nav" variant="container" panel="tab-5">Tab 5</sd-tab>
         <sd-tab-panel name="tab-1"><div class="slot slot--text slot--border">Tab panel 1</div></sd-tab-panel>
         <sd-tab-panel name="tab-2"><div class="slot slot--text slot--border">Tab panel 2</div></sd-tab-panel>
         <sd-tab-panel name="tab-3"><div class="slot slot--text slot--border">Tab panel 3</div></sd-tab-panel>
@@ -170,25 +233,27 @@ export const SampleNoLine = {
   render: () => {
     return html`
       <style>
-        sd-tab-group::part(tabs),
-        sd-tab-group::part(scroll-button) {
+        sd-tab-group::part(separation) {
+          display: none;
+        }
+
+        sd-tab::part(base):hover {
+          border-bottom: none !important;
+        }
+
+        sd-tab-group::part(scroll-button--start),
+        sd-tab-group::part(scroll-button--end) {
           border-bottom: none;
         }
       </style>
 
-      <sd-tab-group>
-        <sd-tab slot="nav" panel="tab-1">Tab 1</sd-tab>
-        <sd-tab slot="nav" panel="tab-2">Tab 2</sd-tab>
-        <sd-tab slot="nav" panel="tab-3" disabled>Tab 3</sd-tab>
-        <sd-tab slot="nav" panel="tab-4">Tab 4</sd-tab>
-        <sd-tab slot="nav" panel="tab-5">Tab 5</sd-tab>
-
-        <sd-tab-panel name="tab-1"><div class="slot slot--text slot--border">Tab panel 1</div></sd-tab-panel>
-        <sd-tab-panel name="tab-2"><div class="slot slot--text slot--border">Tab panel 2</div></sd-tab-panel>
-        <sd-tab-panel name="tab-3"><div class="slot slot--text slot--border">Tab panel 3</div></sd-tab-panel>
-        <sd-tab-panel name="tab-4"><div class="slot slot--text slot--border">Tab panel 4</div></sd-tab-panel>
-        <sd-tab-panel name="tab-5"><div class="slot slot--text slot--border">Tab panel 5</div></sd-tab-panel>
-      </sd-tab-group>
+      ${generateTemplate({
+        args: overrideArgs({
+          type: 'slot',
+          name: 'default',
+          value: generateTabsAndPanels(1, 30)
+        })
+      })}
     `;
   }
 };
@@ -198,6 +263,7 @@ export const SampleNoLine = {
  */
 
 export const SampleBold = {
+  parameters: { ...parameters, docs: { story: { inline: false, height: '550px' } } },
   name: 'Sample: Bold',
   render: () => {
     return html`
@@ -206,6 +272,23 @@ export const SampleBold = {
           font-weight: bold;
         }
       </style>
+
+      <div class="p-4 mb-6 bg-neutral-200 text-left font-bold text-sm w-full box-border">Container Variant</div>
+      <sd-tab-group>
+        <sd-tab slot="nav" variant="container" panel="tab-1">Tab 1</sd-tab>
+        <sd-tab slot="nav" variant="container" panel="tab-2">Tab 2</sd-tab>
+        <sd-tab slot="nav" variant="container" panel="tab-3">Tab 3</sd-tab>
+        <sd-tab slot="nav" variant="container" panel="tab-4">Tab 4</sd-tab>
+        <sd-tab slot="nav" variant="container" panel="tab-5">Tab 5</sd-tab>
+
+        <sd-tab-panel name="tab-1"><div class="slot slot--text slot--border">Tab panel 1</div></sd-tab-panel>
+        <sd-tab-panel name="tab-2"><div class="slot slot--text slot--border">Tab panel 2</div></sd-tab-panel>
+        <sd-tab-panel name="tab-3"><div class="slot slot--text slot--border">Tab panel 3</div></sd-tab-panel>
+        <sd-tab-panel name="tab-4"><div class="slot slot--text slot--border">Tab panel 4</div></sd-tab-panel>
+        <sd-tab-panel name="tab-5"><div class="slot slot--text slot--border">Tab panel 5</div></sd-tab-panel>
+      </sd-tab-group>
+
+      <div class="p-4 my-6 bg-neutral-200 text-left font-bold text-sm w-full box-border">Default Variant</div>
 
       <sd-tab-group>
         <sd-tab slot="nav" panel="tab-1">Tab 1</sd-tab>

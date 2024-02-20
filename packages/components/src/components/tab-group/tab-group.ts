@@ -28,6 +28,7 @@ import type SdTabPanel from '../tab-panel/tab-panel';
  * @csspart nav - The tab group's navigation container where tabs are slotted in.
  * @csspart scroll-container - The container that wraps the tabs and active-tab-indicator.
  * @csspart tabs - The container that wraps the tabs.
+ * @csspart separation - The line that separates tabs from panels.
  * @csspart body - The tab group's body where tab panels are slotted in.
  * @csspart scroll-button--start - The starting scroll button.
  * @csspart scroll-button--end - The ending scroll button.
@@ -45,6 +46,8 @@ export default class SdTabGroup extends SolidElement {
   private resizeObserver: ResizeObserver;
   private tabs: SdTab[] = [];
   private panels: SdTabPanel[] = [];
+
+  private variant = 'default';
 
   @query('[part=base]') tabGroup: HTMLElement;
   @query('[part=body]') body: HTMLSlotElement;
@@ -85,6 +88,11 @@ export default class SdTabGroup extends SolidElement {
 
     // After the first update...
     this.updateComplete.then(() => {
+      // Add border around tab-panel if the first tab is a container. (Assumes all tabs are the same variant.)
+      if (this.variant === 'container') {
+        this.body.classList.add('tab-panel--border');
+      }
+
       this.syncTabsAndPanels();
       this.mutationObserver.observe(this, { attributes: true, childList: true, subtree: true });
       this.resizeObserver.observe(this.nav);
@@ -264,7 +272,7 @@ export default class SdTabGroup extends SolidElement {
     this.updateComplete.then(() => this.updateScrollControls());
 
     if (this.tabs.length !== 0 && this.tabs[0].variant === 'container') {
-      this.body.classList.add('tab-panel--border');
+      this.variant = 'container';
     }
   }
 
@@ -317,7 +325,7 @@ export default class SdTabGroup extends SolidElement {
 
           <div part="scroll-container" class="flex overflow-x-auto">
             <div part="tabs" class=${cx('flex flex-auto relative flex-row')} role="tablist">
-              <div part="" class="w-full h-[1px] bg-neutral-400 absolute bottom-0"></div>
+              <div part="separation" class="w-full h-[1px] bg-neutral-400 absolute bottom-0"></div>
               <slot name="nav" @slotchange=${this.syncTabsAndPanels}></slot>
             </div>
           </div>
