@@ -163,7 +163,7 @@ export const Mouseless = {
   args: overrideArgs({
     type: 'slot',
     name: 'default',
-    value: generateTabsAndPanels(1, 30, 'container')
+    value: generateTabsAndPanels(1, 35, 'container')
   }),
   render: (args: any) => {
     return html`<div class="mouseless">${generateTemplate({ args })}</div>`;
