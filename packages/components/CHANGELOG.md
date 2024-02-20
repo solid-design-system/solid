@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v2.4.5](https://github.com/solid-design-system/solid/compare/components/2.4.4...components/2.4.5) (2024-02-20)
+
+
+### Bug Fixes
+
+* 🤔 sd-video accessibility test [skip chromatic] ([#758](https://github.com/solid-design-system/solid/issues/758)) ([3c820b4](https://github.com/solid-design-system/solid/commit/3c820b408f15c2870533753dd22551ac2904b3b9))
+
+### 📈 Stats
+* Bundle size (uncompressed): 269 KB (unchanged)
+* Bundle size (gzipped): 65 KB (unchanged)
+
 # [@solid-design-system/components-v2.4.4](https://github.com/solid-design-system/solid/compare/components/2.4.3...components/2.4.4) (2024-02-16)
 
 
