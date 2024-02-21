@@ -273,21 +273,6 @@ export const SampleBold = {
         }
       </style>
 
-      <div class="p-4 mb-6 bg-neutral-200 text-left font-bold text-sm w-full box-border">Container Variant</div>
-      <sd-tab-group>
-        <sd-tab slot="nav" variant="container" panel="tab-1">Tab 1</sd-tab>
-        <sd-tab slot="nav" variant="container" panel="tab-2">Tab 2</sd-tab>
-        <sd-tab slot="nav" variant="container" panel="tab-3">Tab 3</sd-tab>
-        <sd-tab slot="nav" variant="container" panel="tab-4">Tab 4</sd-tab>
-        <sd-tab slot="nav" variant="container" panel="tab-5">Tab 5</sd-tab>
-
-        <sd-tab-panel name="tab-1"><div class="slot slot--text slot--border">Tab panel 1</div></sd-tab-panel>
-        <sd-tab-panel name="tab-2"><div class="slot slot--text slot--border">Tab panel 2</div></sd-tab-panel>
-        <sd-tab-panel name="tab-3"><div class="slot slot--text slot--border">Tab panel 3</div></sd-tab-panel>
-        <sd-tab-panel name="tab-4"><div class="slot slot--text slot--border">Tab panel 4</div></sd-tab-panel>
-        <sd-tab-panel name="tab-5"><div class="slot slot--text slot--border">Tab panel 5</div></sd-tab-panel>
-      </sd-tab-group>
-
       <div class="p-4 my-6 bg-neutral-200 text-left font-bold text-sm w-full box-border">Default Variant</div>
 
       <sd-tab-group>
@@ -296,6 +281,21 @@ export const SampleBold = {
         <sd-tab slot="nav" panel="tab-3">Tab 3</sd-tab>
         <sd-tab slot="nav" panel="tab-4">Tab 4</sd-tab>
         <sd-tab slot="nav" panel="tab-5">Tab 5</sd-tab>
+
+        <sd-tab-panel name="tab-1"><div class="slot slot--text slot--border">Tab panel 1</div></sd-tab-panel>
+        <sd-tab-panel name="tab-2"><div class="slot slot--text slot--border">Tab panel 2</div></sd-tab-panel>
+        <sd-tab-panel name="tab-3"><div class="slot slot--text slot--border">Tab panel 3</div></sd-tab-panel>
+        <sd-tab-panel name="tab-4"><div class="slot slot--text slot--border">Tab panel 4</div></sd-tab-panel>
+        <sd-tab-panel name="tab-5"><div class="slot slot--text slot--border">Tab panel 5</div></sd-tab-panel>
+      </sd-tab-group>
+
+      <div class="p-4 mb-6 bg-neutral-200 text-left font-bold text-sm w-full box-border">Container Variant</div>
+      <sd-tab-group>
+        <sd-tab slot="nav" variant="container" panel="tab-1">Tab 1</sd-tab>
+        <sd-tab slot="nav" variant="container" panel="tab-2">Tab 2</sd-tab>
+        <sd-tab slot="nav" variant="container" panel="tab-3">Tab 3</sd-tab>
+        <sd-tab slot="nav" variant="container" panel="tab-4">Tab 4</sd-tab>
+        <sd-tab slot="nav" variant="container" panel="tab-5">Tab 5</sd-tab>
 
         <sd-tab-panel name="tab-1"><div class="slot slot--text slot--border">Tab panel 1</div></sd-tab-panel>
         <sd-tab-panel name="tab-2"><div class="slot slot--text slot--border">Tab panel 2</div></sd-tab-panel>
