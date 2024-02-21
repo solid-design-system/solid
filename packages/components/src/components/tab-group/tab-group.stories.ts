@@ -49,7 +49,7 @@ export const Default = {
  * Default: This shows sd-tab-group in its default state.
  */
 export const TabVariants = {
-  parameters: { ...parameters, docs: { story: { inline: false, height: '550px' } } },
+  parameters: { ...parameters, docs: { story: { inline: false, height: '550px' } }, chromatic: { delay: 300 } },
 
   render: (args: any) => {
     return html`
@@ -76,7 +76,7 @@ export const TabVariants = {
  */
 
 export const Scrollable = {
-  parameters: { ...parameters, docs: { story: { inline: false, height: '550px' } } },
+  parameters: { ...parameters, docs: { story: { inline: false, height: '550px' } }, chromatic: { delay: 300 } },
 
   render: (args: any) => {
     return html`
@@ -163,7 +163,7 @@ export const Mouseless = {
   args: overrideArgs({
     type: 'slot',
     name: 'default',
-    value: generateTabsAndPanels(1, 30)
+    value: generateTabsAndPanels(1, 50)
   }),
   render: (args: any) => {
     return html`<div class="mouseless">${generateTemplate({ args })}</div>`;
@@ -183,7 +183,7 @@ export const Mouseless = {
  */
 
 export const SampleCentered = {
-  parameters: { ...parameters, docs: { story: { inline: false, height: '550px' } } },
+  parameters: { ...parameters, docs: { story: { inline: false, height: '550px' } }, chromatic: { delay: 300 } },
   name: 'Sample: Centered',
   render: () => {
     return html`
@@ -263,7 +263,7 @@ export const SampleNoLine = {
  */
 
 export const SampleBold = {
-  parameters: { ...parameters, docs: { story: { inline: false, height: '550px' } } },
+  parameters: { ...parameters, docs: { story: { inline: false, height: '550px' } }, chromatic: { delay: 300 } },
   name: 'Sample: Bold',
   render: () => {
     return html`

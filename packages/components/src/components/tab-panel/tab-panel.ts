@@ -43,7 +43,7 @@ export default class SdTabPanel extends SolidElement {
   }
 
   render() {
-    return html` <slot part="base" class=${cx('tab-panel block', this.active && 'tab-panel--active')}></slot> `;
+    return html` <slot part="base" class=${cx('block', this.active && 'tab-panel--active')}></slot> `;
   }
 
   static styles = [
