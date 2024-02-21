@@ -49,7 +49,7 @@ export const Default = {
  * Default: This shows sd-tab-group in its default state.
  */
 export const TabVariants = {
-  parameters: { ...parameters, docs: { story: { inline: false, height: '550px' } } },
+  parameters: { ...parameters, docs: { story: { inline: false, height: '550px' } }, chromatic: { delay: 10000 } },
 
   render: (args: any) => {
     return html`
