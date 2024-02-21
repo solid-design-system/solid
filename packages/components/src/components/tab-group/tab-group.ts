@@ -47,6 +47,8 @@ export default class SdTabGroup extends SolidElement {
   private tabs: SdTab[] = [];
   private panels: SdTabPanel[] = [];
 
+  private variant = 'default';
+
   @query('[part=base]') tabGroup: HTMLElement;
   @query('[part=body]') body: HTMLSlotElement;
   @query('[part=scroll-container]') nav: HTMLElement;
@@ -266,8 +268,7 @@ export default class SdTabGroup extends SolidElement {
     this.updateComplete.then(() => this.updateScrollControls());
 
     if (this.tabs.length !== 0 && this.tabs[0].variant === 'container') {
-      // Add border to the tab panel if the first tab is a container variant. Assumes all tabs are the same variant.
-      this.body.classList.add('tab-panel--border');
+      this.variant = 'container';
     }
   }
 
@@ -345,7 +346,11 @@ export default class SdTabGroup extends SolidElement {
             : ''}
         </div>
 
-        <slot part="body" class=${cx('block auto py-8 px-6')} @slotchange=${this.syncTabsAndPanels}></slot>
+        <slot
+          part="body"
+          class=${cx('block auto py-8 px-6', this.variant === 'container' && 'tab-panel--border')}
+          @slotchange=${this.syncTabsAndPanels}
+        ></slot>
       </div>
     `;
   }

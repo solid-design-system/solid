@@ -31,7 +31,7 @@ export default {
     value: generateTabsAndPanels(1, 5)
   }),
   argTypes,
-  parameters: { ...parameters, docs: { story: { inline: false, height: '250px' } }, chromatic: { delay: 15000 } },
+  parameters: { ...parameters, docs: { story: { inline: false, height: '250px' } } },
   decorators: [withActions] as any
 };
 
