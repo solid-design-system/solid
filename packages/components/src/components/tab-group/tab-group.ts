@@ -47,14 +47,15 @@ export default class SdTabGroup extends SolidElement {
   private tabs: SdTab[] = [];
   private panels: SdTabPanel[] = [];
 
-  private variant = 'default';
-
   @query('[part=base]') tabGroup: HTMLElement;
   @query('[part=body]') body: HTMLSlotElement;
   @query('[part=scroll-container]') nav: HTMLElement;
 
   /** @internal */
   @state() hasScrollControls = false;
+
+  /** @internal */
+  @state() variant = 'default';
 
   /**
    * When set to auto, navigating tabs with the arrow keys will instantly show the corresponding tab panel. When set to
