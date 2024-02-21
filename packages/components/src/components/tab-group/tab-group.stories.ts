@@ -46,7 +46,7 @@ export const Default = {
 };
 
 /**
- * Default: This shows sd-tab-group in its default state.
+ * The sd-tab-group shows an alternative style when tabs are of the `container` variant.
  */
 export const TabVariants = {
   parameters: { ...parameters, docs: { story: { inline: false, height: '550px' } }, chromatic: { delay: 10000 } },
