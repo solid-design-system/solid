@@ -127,6 +127,10 @@ export default class SdTabGroup extends SolidElement {
     return [...this.body.assignedElements()].filter(el => el.tagName.toLowerCase() === 'sd-tab-panel') as [SdTabPanel];
   }
 
+  private getActiveTab() {
+    return this.tabs.find(t => t.matches(':focus'));
+  }
+
   private handleClick(event: MouseEvent) {
     const target = event.target as HTMLElement;
     const tab = target.closest('sd-tab');
@@ -160,6 +164,24 @@ export default class SdTabGroup extends SolidElement {
       }
     }
 
+    // Scroll tab into view when tabbing forward
+    if (['Tab'].includes(event.key)) {
+      const index = this.tabs.indexOf(this.getActiveTab()!);
+
+      if (tab !== null) {
+        scrollIntoView(this.tabs[index + 1], this.nav, 'horizontal');
+      }
+    }
+
+    // Scroll tab into view when tabbing backward
+    if (['Shift', 'Tab'].includes(event.key)) {
+      const index = this.tabs.indexOf(this.getActiveTab()!);
+
+      if (tab !== null) {
+        scrollIntoView(this.tabs[index - 1], this.nav, 'horizontal');
+      }
+    }
+
     // Move focus left or right
     if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End'].includes(event.key)) {
       const activeEl = this.tabs.find(t => t.matches(':focus'));
@@ -187,7 +209,6 @@ export default class SdTabGroup extends SolidElement {
         }
 
         this.tabs[index].focus({ preventScroll: true });
-        // scrollIntoView(this.tabs[index], this.nav, 'horizontal', 'smooth');
 
         if (this.activation === 'auto') {
           this.setActiveTab(this.tabs[index], { scrollBehavior: 'smooth' });
