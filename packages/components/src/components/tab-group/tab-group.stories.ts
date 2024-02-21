@@ -31,7 +31,7 @@ export default {
     value: generateTabsAndPanels(1, 5)
   }),
   argTypes,
-  parameters: { ...parameters, docs: { story: { inline: false, height: '250px' } }, chromatic: { delay: 1000 } },
+  parameters: { ...parameters, docs: { story: { inline: false, height: '250px' } }, chromatic: { delay: 3000 } },
   decorators: [withActions] as any
 };
 
@@ -179,7 +179,7 @@ export const Mouseless = {
 };
 
 /**
- * As an option, users can justify the `sd-tab-group` to the center.
+ * As an option, users can justify the `sd-tab-group` to the center. To do this, set the `justify-content` property of the `tabs` part to `center`.
  */
 
 export const SampleCentered = {
@@ -290,13 +290,13 @@ export const SampleBold = {
       </sd-tab-group>
 
       <div class="p-4 mb-6 bg-neutral-200 text-left font-bold text-sm w-full box-border">Container Variant</div>
+
       <sd-tab-group>
         <sd-tab slot="nav" variant="container" panel="tab-1">Tab 1</sd-tab>
         <sd-tab slot="nav" variant="container" panel="tab-2">Tab 2</sd-tab>
-        <sd-tab slot="nav" variant="container" panel="tab-3">Tab 3</sd-tab>
+        <sd-tab slot="nav" variant="container" panel="tab-3" disabled>Tab 3</sd-tab>
         <sd-tab slot="nav" variant="container" panel="tab-4">Tab 4</sd-tab>
         <sd-tab slot="nav" variant="container" panel="tab-5">Tab 5</sd-tab>
-
         <sd-tab-panel name="tab-1"><div class="slot slot--text slot--border">Tab panel 1</div></sd-tab-panel>
         <sd-tab-panel name="tab-2"><div class="slot slot--text slot--border">Tab panel 2</div></sd-tab-panel>
         <sd-tab-panel name="tab-3"><div class="slot slot--text slot--border">Tab panel 3</div></sd-tab-panel>
