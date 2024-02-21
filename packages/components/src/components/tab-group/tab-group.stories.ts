@@ -31,7 +31,7 @@ export default {
     value: generateTabsAndPanels(1, 5)
   }),
   argTypes,
-  parameters: { ...parameters, docs: { story: { inline: false, height: '250px' } } },
+  parameters: { ...parameters, docs: { story: { inline: false, height: '250px' } }, chromatic: { delay: 1000 } },
   decorators: [withActions] as any
 };
 
@@ -49,7 +49,7 @@ export const Default = {
  * Default: This shows sd-tab-group in its default state.
  */
 export const TabVariants = {
-  parameters: { ...parameters, docs: { story: { inline: false, height: '550px' } }, chromatic: { delay: 300 } },
+  parameters: { ...parameters, docs: { story: { inline: false, height: '550px' } } },
 
   render: (args: any) => {
     return html`
@@ -76,7 +76,7 @@ export const TabVariants = {
  */
 
 export const Scrollable = {
-  parameters: { ...parameters, docs: { story: { inline: false, height: '550px' } }, chromatic: { delay: 300 } },
+  parameters: { ...parameters, docs: { story: { inline: false, height: '550px' } } },
 
   render: (args: any) => {
     return html`
@@ -183,7 +183,7 @@ export const Mouseless = {
  */
 
 export const SampleCentered = {
-  parameters: { ...parameters, docs: { story: { inline: false, height: '550px' } }, chromatic: { delay: 300 } },
+  parameters: { ...parameters, docs: { story: { inline: false, height: '550px' } } },
   name: 'Sample: Centered',
   render: () => {
     return html`
@@ -263,7 +263,7 @@ export const SampleNoLine = {
  */
 
 export const SampleBold = {
-  parameters: { ...parameters, docs: { story: { inline: false, height: '550px' } }, chromatic: { delay: 300 } },
+  parameters: { ...parameters, docs: { story: { inline: false, height: '550px' } } },
   name: 'Sample: Bold',
   render: () => {
     return html`

@@ -184,6 +184,7 @@ export default class SdTabGroup extends SolidElement {
         }
 
         this.tabs[index].focus({ preventScroll: true });
+        // scrollIntoView(this.tabs[index], this.nav, 'horizontal', 'smooth');
 
         if (this.activation === 'auto') {
           this.setActiveTab(this.tabs[index], { scrollBehavior: 'smooth' });
