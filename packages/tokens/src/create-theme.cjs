@@ -199,33 +199,43 @@ const getColors = scope => {
       });
   }
 
-  result[sanitizeValue('success')] = `rgb(var(--sd-color-${sanitizeKey(sanitizeValue('success'))}, ${getColor(
-    '#25880E'
-  )}) / <alpha-value>) /* Used for success messages */`;
+  const colorMappings = {
+    success: {
+      color: '#25880E',
+      comment: 'Used for success messages'
+    },
+    warning: {
+      color: '#BB8D20',
+      comment: 'Used for notifications'
+    },
+    'risk-low': {
+      color: '#017DC3',
+      comment: 'Exclusively for marking fonds'
+    },
+    'risk-moderate': {
+      color: '#00A593',
+      comment: 'Exclusively for marking fonds'
+    },
+    'risk-increased': {
+      color: '#FFF000',
+      comment: 'Exclusively for marking fonds'
+    },
+    'risk-high': {
+      color: '#FA9B1E',
+      comment: 'Exclusively for marking fonds'
+    },
+    'risk-veryhigh': {
+      color: '#FF0000',
+      comment: 'Exclusively for marking fonds'
+    }
+  };
 
-  result[sanitizeValue('warning')] = `rgb(var(--sd-color-${sanitizeKey(sanitizeValue('warning'))}, ${getColor(
-    '#BB8D20'
-  )}) / <alpha-value>) /* Used for notifications */`;
-
-  result[sanitizeValue('risk-low')] = `rgb(var(--sd-color-${sanitizeKey(sanitizeValue('risk-low'))}, ${getColor(
-    '#017DC3'
-  )}) / <alpha-value>) /* Exclusively for marking fonds */`;
-
-  result[sanitizeValue('risk-moderate')] = `rgb(var(--sd-color-${sanitizeKey(
-    sanitizeValue('risk-moderate')
-  )}, ${getColor('#00A593')}) / <alpha-value>) /* Exclusively for marking fonds */`;
-
-  result[sanitizeValue('risk-increased')] = `rgb(var(--sd-color-${sanitizeKey(
-    sanitizeValue('risk-increased')
-  )}, ${getColor('#FFF000')}) / <alpha-value>) /* Exclusively for marking fonds */`;
-
-  result[sanitizeValue('risk-high')] = `rgb(var(--sd-color-${sanitizeKey(sanitizeValue('risk-high'))}, ${getColor(
-    '#FA9B1E'
-  )}) / <alpha-value>) /* Exclusively for marking fonds */`;
-
-  result[sanitizeValue('risk-veryhigh')] = `rgb(var(--sd-color-${sanitizeKey(
-    sanitizeValue('risk-veryhigh')
-  )}, ${getColor('#FF0000')}) / <alpha-value>) /* Exclusively for marking fonds */`;
+  for (const [key, { color, comment }] of Object.entries(colorMappings)) {
+    // Construct the result using the key, color, and comment
+    result[sanitizeValue(key)] = `rgb(var(--sd-color-${sanitizeKey(sanitizeValue(key))}, ${getColor(
+      color
+    )}) / <alpha-value>) /* ${comment} */`;
+  }
 
   result = reformatColors(result);
 
