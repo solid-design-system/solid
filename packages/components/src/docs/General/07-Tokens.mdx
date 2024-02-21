@@ -23,6 +23,17 @@ They use shorthand RGB values (e. g. `108 194 84`) to allow setting opacity via 
   />
   <ColorItem title="Error" subtitle="--sd-color-error-{shade}" colors={theme.color.error} />
   <ColorItem
+    title="Risk"
+    subtitle="--sd-color-{color}"
+    colors={{
+      low: theme.color.risk.low,
+      moderate: theme.color.risk.moderate,
+      increased: theme.color.risk.increased,
+      high: theme.color.risk.high,
+      veryhigh: theme.color.risk.veryhigh
+    }}
+  />
+  <ColorItem
     title="Additional"
     subtitle="--sd-color-{color}"
     colors={{ black: theme.color.black, white: theme.color.white }}
@@ -103,31 +114,6 @@ They use shorthand RGB values (e. g. `108 194 84`) to allow setting opacity via 
           <td>
             <div class="font-bold">sd-z-index-{token[0]}</div>
             <div>sd-z-index-{token[1]}</div>
-          </td>
-        </tr>
-      );
-    })}
-  </tbody>
-</table>
-
-## Risk
-
-<table>
-  <tbody>
-    {Object.entries(theme.risk).map((token, i) => {
-      return (
-        <tr>
-          <td>
-            <div class="font-bold">sd-color-risk-{token[0]}</div>
-            <div>sd-color-risk-{token[1]}</div>
-          </td>
-          <td>
-            <svg class={`h-12 fill-risk-${token[0]}`} viewBox="0 0 451.827 451.827">
-              <path
-                d="M225.922,0C101.351,0,0.004,101.347,0.004,225.917s101.347,225.909,225.917,225.909
-                c124.554,0,225.901-101.347,225.901-225.909C451.823,101.347,350.476,0,225.922,0z"
-              />
-            </svg>
           </td>
         </tr>
       );

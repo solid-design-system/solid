@@ -44,7 +44,6 @@ module.exports = {
           fontWeight: 'font',
           borderRadius: 'rounded',
           boxShadow: 'shadow',
-          risk: 'fill-risk',
           aspectRatio: 'aspect'
         };
 
