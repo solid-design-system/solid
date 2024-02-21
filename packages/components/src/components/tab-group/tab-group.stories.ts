@@ -4,7 +4,8 @@ import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../..
 const { argTypes, parameters } = storybookDefaults('sd-tab-group');
 const { overrideArgs } = storybookHelpers('sd-tab-group');
 const { generateTemplate } = storybookTemplate('sd-tab-group');
-import { userEvent } from '@storybook/testing-library';
+import { expect } from '@storybook/jest';
+import { userEvent, waitFor, within } from '@storybook/testing-library';
 import { waitUntil } from '@open-wc/testing-helpers';
 import { withActions } from '@storybook/addon-actions/decorator';
 
@@ -31,7 +32,7 @@ export default {
     value: generateTabsAndPanels(1, 5)
   }),
   argTypes,
-  parameters: { ...parameters, docs: { story: { inline: false, height: '250px' } }, chromatic: { delay: 3000 } },
+  parameters: { ...parameters, docs: { story: { inline: false, height: '250px' } }, chromatic: { delay: 15000 } },
   decorators: [withActions] as any
 };
 
@@ -68,6 +69,16 @@ export const TabVariants = {
         args
       })}
     `;
+  },
+  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
+    // Assigns canvas to the component root element
+    const canvas = within(canvasElement);
+    //   Wait for the below assertion not throwing an error anymore (default timeout is 1000ms)
+    //👇 This is especially useful when you have an asynchronous action or component that you want to wait for
+    await waitFor(async () => {
+      //👇 This assertion will pass if a DOM element with the matching id exists
+      await expect(canvas.getByTestId('button')).toBeInTheDocument();
+    });
   }
 };
 

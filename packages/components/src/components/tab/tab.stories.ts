@@ -96,8 +96,6 @@ export const Sample = {
           border-bottom: none;
         }
       </style>
-      <div class="p-4 mb-6 bg-neutral-200 text-left font-bold text-sm w-full box-border">Default Variant</div>
-
       <sd-tab-group>
         <sd-tab slot="nav">
           <sd-icon slot="left" name="system/picture" library="global-resources" class="text-primary"></sd-icon>
@@ -111,26 +109,6 @@ export const Sample = {
           </div>
           Tab
         </sd-tab>
-      </sd-tab-group>
-
-      <div class="p-4 mb-6 bg-neutral-200 text-left font-bold text-sm w-full box-border">Container Variant</div>
-
-      <sd-tab-group>
-        <sd-tab slot="nav" variant="container" panel="tab-1">
-          <sd-icon slot="left" name="system/picture" library="global-resources" class="text-primary"></sd-icon>
-          Tab
-        </sd-tab>
-
-        <sd-tab slot="nav" variant="container" panel="tab-2">
-          <div class="relative">
-            <sd-icon slot="left" name="system/picture" library="global-resources" class="text-primary"></sd-icon>
-            <sd-badge class="absolute -top-0.5 -right-0.5" tabindex="-1" size="sm"></sd-badge>
-          </div>
-          Tab
-        </sd-tab>
-
-        <sd-tab-panel name="tab-1"><div class="slot slot--text slot--border">Tab panel 1</div></sd-tab-panel>
-        <sd-tab-panel name="tab-2"><div class="slot slot--text slot--border">Tab panel 2</div></sd-tab-panel>
       </sd-tab-group>
     `;
   }
