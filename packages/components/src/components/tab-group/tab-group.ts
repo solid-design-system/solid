@@ -313,22 +313,19 @@ export default class SdTabGroup extends SolidElement {
     return html`
       <div
         part="base"
-        class=${cx(
-          'flex flex-col rounded-none',
-          this.localize.dir() === 'rtl' && 'tab-group--rtl',
-          this.hasScrollControls && 'tab-group--has-scroll-controls'
-        )}
+        class=${cx('flex flex-col rounded-none')}
         @click=${this.handleClick}
         @keydown=${this.handleKeyDown}
       >
-        <div part="nav">
+        <div part="nav" class=${cx(this.hasScrollControls && 'relative py-0 px-12')}>
           ${this.hasScrollControls
             ? html`
                 <button
                   part="scroll-button--start"
                   exportparts="base:scroll-button__base"
                   class=${cx(
-                    'sd-interactive flex items-center justify-center absolute top-0 bottom-0 left-0 !outline-offset-0'
+                    'sd-interactive flex items-center justify-center absolute top-0 bottom-0 left-0 !outline-offset-0 border-b border-neutral-400 z-10',
+                    this.localize.dir() === 'rtl' && 'left-auto right-0'
                   )}
                   @click=${this.handleScrollToStart}
                 >
@@ -341,7 +338,7 @@ export default class SdTabGroup extends SolidElement {
               `
             : ''}
 
-          <div part="scroll-container" class="flex overflow-x-auto">
+          <div part="scroll-container" class="flex overflow-x-auto focus-visible:focus-outline !outline-offset-0">
             <div part="tabs" class=${cx('flex flex-auto relative flex-row')} role="tablist">
               <div part="separation" class="w-full h-[1px] bg-neutral-400 absolute bottom-0"></div>
               <slot name="nav" @slotchange=${this.syncTabsAndPanels}></slot>
@@ -354,7 +351,8 @@ export default class SdTabGroup extends SolidElement {
                   part="scroll-button--end"
                   exportparts="base:scroll-button__base"
                   class=${cx(
-                    'sd-interactive flex items-center justify-center absolute top-0 bottom-0 right-0 !outline-offset-0'
+                    'sd-interactive flex items-center justify-center absolute top-0 bottom-0 right-0 !outline-offset-0 border-b border-neutral-400 z-10',
+                    this.localize.dir() === 'rtl' && 'right-auto left-0'
                   )}
                   @click=${this.handleScrollToEnd}
                 >
@@ -370,7 +368,7 @@ export default class SdTabGroup extends SolidElement {
 
         <slot
           part="body"
-          class=${cx('block auto py-8 px-6', this.variant === 'container' && 'tab-panel--border')}
+          class=${cx('block auto py-8 px-6', this.variant === 'container' && 'border border-neutral-400 border-t-0')}
           @slotchange=${this.syncTabsAndPanels}
         ></slot>
       </div>
@@ -383,26 +381,10 @@ export default class SdTabGroup extends SolidElement {
     componentStyles,
     css`
       :host {
-        --track-color: #c3c3c3;
-        --track-width: 1px;
-
         @apply block box-border;
       }
 
-      .tab-group--has-scroll-controls [part='nav'] {
-        @apply relative py-0 px-12;
-      }
-
-      .tab-group--rtl [part='scroll-button--start'] {
-        @apply left-auto right-0;
-      }
-
-      .tab-group--rtl [part='scroll-button--end'] {
-        @apply right-auto left-0;
-      }
-
       [part='scroll-container'] {
-        @apply focus-visible:focus-outline !outline-offset-0;
         /* Hide scrollbar in Firefox */
         scrollbar-width: none;
       }
@@ -410,17 +392,6 @@ export default class SdTabGroup extends SolidElement {
       /* Hide scrollbar in Chrome/Safari */
       [part='scroll-container']::-webkit-scrollbar {
         @apply w-0 h-0;
-      }
-
-      .tab-panel--border {
-        border: solid var(--track-width) var(--track-color);
-        border-top: none;
-      }
-
-      [part='scroll-button--start'],
-      [part='scroll-button--end'] {
-        @apply z-10;
-        border-bottom: var(--track-width) solid var(--track-color);
       }
 
       ::slotted(sd-tab-panel) {
