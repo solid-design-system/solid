@@ -19,7 +19,7 @@ export default {
     {
       type: 'slot',
       name: 'default',
-      value: `<img src="./placeholders/generic.jpg" alt="A generic placeholder jpg" />`
+      value: `<img src="./placeholders/generic.jpg" alt="A generic placeholder jpg" class="aspect-video"/>`
     },
     {
       '--copyright': '© 2024 Solid Design System'
