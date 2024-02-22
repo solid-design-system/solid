@@ -109,11 +109,6 @@ export const Scrollable = {
 };
 
 export const Parts = {
-  args: overrideArgs({
-    type: 'slot',
-    name: 'default',
-    value: generateTabsAndPanels(1, 10)
-  }),
   parameters: {
     controls: {
       exclude: ['base', 'nav', 'tabs', 'separation', 'body', 'scroll-button--start', 'scroll-button--end']
