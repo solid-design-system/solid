@@ -41,7 +41,7 @@ export const Active = {
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        y: { type: 'attribute', name: 'active' }
+        y: { type: 'attribute', name: 'active', values: [false, true] }
       },
       args
     });
@@ -132,6 +132,7 @@ export const Parts = {
  */
 
 export const Sample = {
+  parameters: { controls: { exclude: ['active', 'variant'] } },
   name: 'Sample: Icon',
   render: (args: any) => {
     return generateTemplate({
@@ -157,7 +158,8 @@ export const Sample = {
           ]
         }
       },
-      args
+      args,
+      constants: { type: 'attribute', name: 'active', value: true }
     });
   }
 };
