@@ -133,3 +133,34 @@ export const CustomPadding = {
     });
   }
 };
+
+/**
+ * You can add a triangle indentation to the container using the `--triangle-` class appended with one of the following positions 'top', 'right', 'bottom', 'left' (e.g. `sd-container--triangle-top`).
+ */
+
+export const Triangle = {
+  parameters: {
+    controls: {
+      exclude: ['sd-container--triangle-...']
+    }
+  },
+  render: (args: any) => {
+    return html` ${generateTemplate({
+      axis: {
+        y: [
+          {
+            type: 'attribute',
+            name: 'sd-container--triangle',
+            values: [
+              'sd-container--triangle-top',
+              'sd-container--triangle-right',
+              'sd-container--triangle-bottom',
+              'sd-container--triangle-left'
+            ]
+          }
+        ]
+      },
+      args
+    })}`;
+  }
+};

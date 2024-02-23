@@ -1,5 +1,5 @@
 .sd-container {
-  @apply bg-neutral-100 px-10 py-8;
+  @apply bg-neutral-100 px-10 py-8 relative;
 
   &--variant-primary-100 {
     @apply bg-primary-100;
@@ -19,5 +19,21 @@
 
   &--padding-sm {
     @apply px-6 py-4;
+  }
+
+  &--triangle-top::before {
+    @apply absolute block left-[calc(50%-15px)] top-0 content-[''] border-solid border-transparent border-[15px] border-t-white;
+  }
+
+  &--triangle-right::before {
+    @apply absolute block top-[calc(50%-15px)] right-0 content-[''] border-solid border-transparent border-[15px] border-r-white;
+  }
+
+  &--triangle-bottom::before {
+    @apply absolute block left-[calc(50%-15px)] bottom-0 content-[''] border-solid border-transparent border-[15px] border-b-white;
+  }
+
+  &--triangle-left::before {
+    @apply absolute block top-[calc(50%-15px)] left-0 content-[''] border-solid border-transparent border-[15px] border-l-white;
   }
 }
