@@ -16,6 +16,12 @@ export default {
       name: 'sd-container--padding-...',
       options: ['sm'],
       description: 'Defines the padding of sd-container. This makes it adaptable to both small and large screens.'
+    },
+    {
+      name: 'sd-container--triangle-...',
+      options: ['top, right, bottom, left'],
+      description:
+        'Defines an optional triangle cut-out for sd-container. This allows for an indentation resembling an arrow on any side of the container. CSS Property `triangle-background` defines the background color of the cut-out.'
     }
   ]
 } satisfies Style;
