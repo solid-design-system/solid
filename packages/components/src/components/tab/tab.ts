@@ -21,7 +21,6 @@ let id = 0;
  *
  * @csspart base - The component's base wrapper.
  * @csspart active-tab-indicator - The active tab indicator.
- * @csspart active-container-border - The border applied for an active tab when the variant is set to container.
  */
 @customElement('sd-tab')
 export default class SdTab extends SolidElement {
@@ -78,7 +77,7 @@ export default class SdTab extends SolidElement {
           'inline-flex gap-2 w-20 h-12 px-3 leading-none items-center justify-center whitespace-nowrap select-none cursor-pointer hover:bg-neutral-200 group relative focus-visible:focus-outline outline-2 !-outline-offset-2',
           !this.active && 'hover:border-b hover:border-neutral-400',
           this.variant === 'container' && ' rounded-[4px_4px_0_0]',
-          this.variant === 'container' && this.active && 'bg-white',
+          this.variant === 'container' && this.active && 'tab--active-container-border bg-white',
           this.disabled && 'opacity-50 !cursor-not-allowed'
         )}
         tabindex=${this.disabled ? '-1' : '0'}
@@ -86,13 +85,6 @@ export default class SdTab extends SolidElement {
         <slot name="left" class="pr-2"></slot>
         <slot class=${cx(this.disabled ? 'text-neutral-500' : 'text-primary')}></slot>
 
-        <div
-          part="active-container-border"
-          class=${cx(
-            'absolute inset-[0]',
-            this.variant === 'container' && this.active && ' border border-neutral-400 border-b-0 rounded-[4px_4px_0_0]'
-          )}
-        ></div>
         <div
           part="active-tab-indicator"
           class=${cx(
@@ -111,6 +103,13 @@ export default class SdTab extends SolidElement {
     css`
       :host {
         @apply box-border block;
+      }
+
+      .tab--active-container-border::after {
+        content: '';
+        @apply absolute w-full h-full border border-neutral-400;
+        border-bottom: none;
+        border-radius: 4px 4px 0 0;
       }
     `
   ];
