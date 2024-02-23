@@ -161,9 +161,9 @@ export const ExtendedFooter = {
             phasellus dui vel id. Velit in sed.
           </p>
           <h4 slot="headline" class="sd-headline sd-headline--size-3xl">Lorem Ipsum</h4>
+          <sd-button variant="secondary" slot="footer" class="w-full">Label</sd-button>
           <sd-button slot="footer" class="w-full">Label</sd-button>
-          <sd-button variant="secondary" slot="footer" class="w-full">Label</sd-button></sd-dialog
-        >
+        </sd-dialog>
       </div>
     `;
   }
