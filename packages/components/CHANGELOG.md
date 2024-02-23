@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v2.5.0](https://github.com/solid-design-system/solid/compare/components/2.4.5...components/2.5.0) (2024-02-23)
+
+
+### Features
+
+* ✨ add sd-media + sd-copyright - CSS style ([#755](https://github.com/solid-design-system/solid/issues/755)) ([693af1f](https://github.com/solid-design-system/solid/commit/693af1fc8be7a2db0e2b795cf25aa86f707868ec))
+
+### 📈 Stats
+* Bundle size (uncompressed): 269 KB (unchanged)
+* Bundle size (gzipped): 65 KB (unchanged)
+
 # [@solid-design-system/components-v2.4.5](https://github.com/solid-design-system/solid/compare/components/2.4.4...components/2.4.5) (2024-02-20)
 
 
