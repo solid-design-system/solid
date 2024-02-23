@@ -1,0 +1,72 @@
+# Migration Guide: From `ui-tab-group` to `sd-tab-group`
+
+The new `sd-tab-group` is designed to replace the `ui-tab-group`. Instead of mainly providing content via attributes, the `sd-tab-group` component uses slots to allow for more flexibility and customization.
+
+## 💾 Slots
+
+### ✨ New Slots
+
+#### [default]
+
+Used for grouping tab panels in the tab group. Must be `<sd-tab-panel>` elements.
+
+### ❌ Removed Slots
+
+The following slots have been removed from the new sd-tab-group component:
+
+1. [panel]
+
+<hr />
+
+## ⚙️ Attributes
+
+### ✨ New Attributes
+
+#### [variant]
+
+When set to container, a border appears around the current tab.
+
+#### [activation]
+
+When set to auto, navigating tabs with the arrow keys will instantly show the corresponding tab panel. When set to manual, the tab will receive focus but will not show until the user presses spacebar or enter.
+
+### ❌ Removed Attributes
+
+The following attributes have been removed from the new sd-tab-group component:
+
+1. [panels]
+2. [tabs]
+
+<hr />
+
+## 🥳 Events
+
+### ✨ New Events
+
+#### [sd-tab-show]
+
+Emitted when a tab is shown.
+
+#### [sd-tab-hide]
+
+Emitted when a tab is hidden.
+
+### ❌ Removed Events:
+
+The following events have been removed from the new sd-tab-group component:
+
+1. [tabGroupIsReady]
+
+<hr />
+
+<hr />
+
+## 🧪 Methods
+
+### 🔄 Updated Methods
+
+#### [setActiveTab]
+
+`setActiveTab` replaces the old `makeNewTabActive`. It sets the active tab and panel.
+
+<hr />

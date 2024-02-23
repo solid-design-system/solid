@@ -1,11 +1,10 @@
-import { classMap } from 'lit/directives/class-map.js';
-import { customElement } from '../../../src/internal/register-custom-element';
-import {property } from 'lit/decorators.js';
-import { html } from 'lit';
+import { css, html } from 'lit';
+import { customElement } from '../../internal/register-custom-element';
+import { property } from 'lit/decorators.js';
 import { watch } from '../../internal/watch';
+import componentStyles from '../../styles/component.styles';
+import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
-import styles from './tab-panel.styles';
-import type { CSSResultGroup } from 'lit';
 
 let id = 0;
 
@@ -13,7 +12,7 @@ let id = 0;
  * @summary Tab panels are used inside [tab groups](/components/tab-group) to display tabbed content.
  * @documentation https://solid.union-investment.com/[storybook-link]/tab-panel
  * @status stable
- * @since 1.0
+ * @since 2.6.0
  *
  * @slot - The tab panel's content.
  *
@@ -23,8 +22,6 @@ let id = 0;
  */
 @customElement('sd-tab-panel')
 export default class SdTabPanel extends SolidElement {
-  static styles: CSSResultGroup = styles;
-
   private readonly attrId = ++id;
   private readonly componentId = `sd-tab-panel-${this.attrId}`;
 
@@ -46,16 +43,28 @@ export default class SdTabPanel extends SolidElement {
   }
 
   render() {
-    return html`
-      <slot
-        part="base"
-        class=${classMap({
-      'tab-panel': true,
-      'tab-panel--active': this.active
-    })}
-      ></slot>
-    `;
+    return html` <slot part="base" class=${cx('block', this.active && 'tab-panel--active')}></slot> `;
   }
+
+  static styles = [
+    SolidElement.styles,
+    componentStyles,
+    css`
+      :host {
+        --padding: 0;
+
+        @apply hidden;
+      }
+
+      :host([active]) {
+        @apply block;
+      }
+
+      ::part(base) {
+        padding: var(--padding);
+      }
+    `
+  ];
 }
 
 declare global {
