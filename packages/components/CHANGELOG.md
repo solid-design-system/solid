@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v2.6.0](https://github.com/solid-design-system/solid/compare/components/2.5.0...components/2.6.0) (2024-02-23)
+
+
+### Features
+
+* ✨ add sd-tab & sd-tab-group  ([#753](https://github.com/solid-design-system/solid/issues/753)) ([7d18eed](https://github.com/solid-design-system/solid/commit/7d18eed64147a7a045b13e5d5f35dc68ad5277e6))
+
+### 📈 Stats
+* Bundle size (uncompressed): 281 KB (+12 KB / +4%)
+* Bundle size (gzipped): 68 KB (+3 KB / +5%)
+
 # [@solid-design-system/components-v2.5.0](https://github.com/solid-design-system/solid/compare/components/2.4.5...components/2.5.0) (2024-02-23)
 
 
