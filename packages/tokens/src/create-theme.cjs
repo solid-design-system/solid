@@ -319,6 +319,7 @@ const getRisks = () => {
 
 const getAspectRatios = () => {
   const result = {
+    video: '16 / 9',
     square: '1 / 1',
     '6/5': '6 / 5',
     '5/4': '5 / 4',
