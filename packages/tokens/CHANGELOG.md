@@ -1,3 +1,10 @@
+# [@solid-design-system/tokens-v2.1.1](https://github.com/solid-design-system/solid/compare/tokens/2.1.0...tokens/2.1.1) (2024-02-26)
+
+
+### Bug Fixes
+
+* remove unneeded gradient horizontal ([#764](https://github.com/solid-design-system/solid/issues/764)) ([b131566](https://github.com/solid-design-system/solid/commit/b1315664ffdd4c524405792dbf87796b07da9fb9))
+
 # [@solid-design-system/tokens-v2.1.0](https://github.com/solid-design-system/solid/compare/tokens/2.0.0...tokens/2.1.0) (2024-02-07)
 
 
