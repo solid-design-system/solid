@@ -34,7 +34,8 @@ module.exports = {
     })
   ],
   safelist: includeStorybookStories
-    ? (() => {
+    ? // If we are in Storybook, we need to include more classes to show all the different tokens
+      (() => {
         const safeList = [];
         const tokenNamesToTailwindClasses = {
           spacing: 'w',
