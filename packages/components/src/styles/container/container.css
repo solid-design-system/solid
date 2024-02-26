@@ -38,4 +38,36 @@
   &--triangle-left::before {
     @apply absolute block top-[calc(50%-15px)] left-0 content-[''] border-solid border-transparent border-[15px] border-l-[var(--triangle-background)];
   }
+
+  &--triangle-top-border::after {
+    @apply absolute block left-[calc(50%-15px)] -top-[1px] content-[''] border-transparent border-solid border-[15px] border-t-[var(--triangle-background)];
+  }
+
+  &--triangle-top-border::before {
+    @apply absolute block left-[calc(50%-16px)] -top-[1px] content-[''] border-transparent border-solid border-[16px] border-t-neutral-400;
+  }
+
+  &--triangle-right-border::after {
+    @apply absolute block top-[calc(50%-15px)] -right-[1px] content-[''] border-transparent border-solid border-[15px] border-r-[var(--triangle-background)];
+  }
+
+  &--triangle-right-border::before {
+    @apply absolute block top-[calc(50%-16px)] -right-[1px] content-[''] border-transparent border-solid border-[16px] border-r-neutral-400;
+  }
+
+  &--triangle-bottom-border::after {
+    @apply absolute block left-[calc(50%-15px)] -bottom-[1px] content-[''] border-transparent border-solid border-[15px] border-b-[var(--triangle-background)];
+  }
+
+  &--triangle-bottom-border::before {
+    @apply absolute block left-[calc(50%-16px)] -bottom-[1px] content-[''] border-transparent border-solid border-[16px] border-b-neutral-400;
+  }
+
+  &--triangle-left-border::after {
+    @apply absolute block top-[calc(50%-15px)] -left-[1px] content-[''] border-transparent border-solid border-[15px] border-l-[var(--triangle-background)];
+  }
+
+  &--triangle-left-border::before {
+    @apply absolute block top-[calc(50%-16px)] -left-[1px] content-[''] border-transparent border-solid border-[16px] border-l-neutral-400;
+  }
 }
