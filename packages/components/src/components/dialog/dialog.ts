@@ -253,9 +253,9 @@ export default class SdDialog extends SolidElement {
       <div
         part="base"
         class=${cx(
-      'flex items-center justify-center fixed inset-0 z-dialog',
-      this.hasSlotController.test('footer') && 'dialog--has-footer'
-    )}
+          'flex items-center justify-center fixed inset-0 z-dialog',
+          this.hasSlotController.test('footer') && 'dialog--has-footer'
+        )}
       >
         <div
           part="overlay"
@@ -267,9 +267,9 @@ export default class SdDialog extends SolidElement {
         <div
           part="panel"
           class=${cx(
-      'flex flex-col z-20 bg-white focus:outline-none py-4 sm:py-8 relative gap-6',
-      this.open && 'flex opacity-100'
-    )}
+            'flex flex-col z-20 bg-white focus:outline-none py-4 sm:py-8 relative gap-6',
+            this.open && 'flex opacity-100'
+          )}
           role="dialog"
           aria-modal="true"
           aria-hidden=${this.open ? 'false' : 'true'}
@@ -280,12 +280,12 @@ export default class SdDialog extends SolidElement {
           <header part="header" class="flex flex-grow-0 flex-shrink-0 basis-auto px-6 sm:px-10">
             <h2 part="title" class="flex-auto m-0" id="title">
               ${this.headline.length > 0
-        ? html`<h4 class="sd-headline sd-headline--size-3xl leading-tight">${this.headline}</h4>`
-        : html`<slot name="headline"> </slot>`}
+                ? html`<h4 class="sd-headline sd-headline--size-3xl leading-tight">${this.headline}</h4>`
+                : html`<slot name="headline"> </slot>`}
             </h2>
 
             ${!this.noCloseButton
-        ? html`
+              ? html`
                   <sd-button
                     part="close-button"
                     variant="tertiary"
@@ -298,7 +298,7 @@ export default class SdDialog extends SolidElement {
                     <sd-icon name="system/close" library="global-resources" color="currentColor"></sd-icon>
                   </sd-button>
                 `
-        : ''}
+              : ''}
           </header>
 
           <main part="body" class="flex flex-auto overflow-auto w-full px-6 sm:px-10">
