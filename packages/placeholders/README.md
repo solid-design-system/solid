@@ -53,6 +53,14 @@ You can find their respective photographer and source below:
 - [Skyline - Tobias Reich](https://unsplash.com/photos/FDBy4lkZycM)
 - [Workspace - Dan Dimmock](https://unsplash.com/photos/3mt71MKGjQ0)
 
+## Videos
+
+The `src/videos` folder contains placeholder videos for all projects at Union Investment.
+
+You can find their respective videographer and source below:
+
+- [Gardening - Pavel Danilyuk](https://www.pexels.com/de-de/video/liebe-menschen-garten-zeitlupe-4625767/)
+
 ## Usage
 
 ```bash

@@ -11,7 +11,8 @@
   "type": "module",
   "exports": {
     "./*": "./src/*",
-    "./images/*": "./src/images/*"
+    "./images/*": "./src/images/*",
+    "./videos/*": "./src/videos/*"
   },
   "repository": {
     "type": "git",
