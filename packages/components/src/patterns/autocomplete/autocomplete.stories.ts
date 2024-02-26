@@ -106,7 +106,7 @@ export const Simple = {
     const setupAutocomplete = solidAutocomplete;
     const data = mock;
     return html`
-      <sd-input id="simple-example"><b slot="label">Simple</b></sd-input>
+      <sd-input id="simple-example" type="search"><b slot="label">Simple</b></sd-input>
       <script type="module">
         // preview-ignore:start
         const setupAutocomplete = ${setupAutocomplete};
@@ -137,7 +137,7 @@ export const HighlightQuery = {
     const setupAutocomplete = solidAutocomplete;
     const data = mock;
     return html`
-      <sd-input id="highlight-example"><b slot="label">Highlight query</b></sd-input>
+      <sd-input id="highlight-example" type="search"><b slot="label">Highlight query</b></sd-input>
       <script type="module">
         // preview-ignore:start
         const setupAutocomplete = ${setupAutocomplete};
@@ -172,7 +172,7 @@ export const OpenOnClick = {
     const setupAutocomplete = solidAutocomplete;
     const data = mock;
     return html`
-      <sd-input id="show-all-on-click-example"><b slot="label">Show all items on click</b></sd-input>
+      <sd-input id="show-all-on-click-example" type="search"><b slot="label">Show all items on click</b></sd-input>
       <script type="module">
         // preview-ignore:start
         const setupAutocomplete = ${setupAutocomplete};
@@ -218,7 +218,7 @@ export const GroupElements = {
     const setupAutocomplete = solidAutocomplete;
     const data = mock;
     return html`
-      <sd-input id="group-elements"><b slot="label">Group elements</b></sd-input>
+      <sd-input id="group-elements" type="search"><b slot="label">Group elements</b></sd-input>
       <script type="module">
         // preview-ignore:start
         const setupAutocomplete = ${setupAutocomplete};
