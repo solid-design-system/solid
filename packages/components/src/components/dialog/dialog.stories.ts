@@ -50,8 +50,8 @@ export const Default = {
   render: (args: any) => {
     return html` <div style="height: 40vh;">
       ${generateTemplate({
-        args
-      })}
+      args
+    })}
     </div>`;
   }
 };
@@ -67,20 +67,20 @@ export const Headline = {
   render: (args: any) => {
     return html` <div style="height: 40vh;">
       ${generateTemplate({
-        args,
-        constants: [
-          {
-            type: 'slot',
-            name: 'headline',
-            value: ''
-          },
-          {
-            type: 'attribute',
-            name: 'headline',
-            value: 'This headline is set via the headline attribute'
-          }
-        ]
-      })}
+      args,
+      constants: [
+        {
+          type: 'slot',
+          name: 'headline',
+          value: ''
+        },
+        {
+          type: 'attribute',
+          name: 'headline',
+          value: 'This headline is set via the headline attribute'
+        }
+      ]
+    })}
     </div>`;
   }
 };
@@ -96,26 +96,26 @@ export const NoCloseButton = {
   render: (args: any) => {
     return html` <div style="height: 40vh;">
       ${generateTemplate({
-        args,
-        constants: [
-          {
-            type: 'attribute',
-            name: 'no-close-button',
-            value: true
-          },
-          {
-            type: 'slot',
-            name: 'footer',
-            value: `<sd-button slot="footer" class="w-full">Close</sd-button>
+      args,
+      constants: [
+        {
+          type: 'attribute',
+          name: 'no-close-button',
+          value: true
+        },
+        {
+          type: 'slot',
+          name: 'footer',
+          value: `<sd-button slot="footer" class="w-full">Close</sd-button>
             <script>
                 const dialog = document.querySelector('sd-dialog');
                 const footer = dialog.querySelector('sd-button[slot="footer"]');
       
                 footer.addEventListener('click', () => dialog.hide());
           </script>`
-          }
-        ]
-      })}
+        }
+      ]
+    })}
     </div>`;
   }
 };
@@ -128,21 +128,35 @@ export const Scrolling = {
   render: (args: any) => {
     return html` <div style="height: 100vh;">
       ${generateTemplate({
-        args,
-        constants: [
-          {
-            type: 'slot',
-            name: 'default',
-            value: `<div class="slot slot--border slot--background slot--text" style="height:150vh; width: 100%; padding: 0 1rem; justify-content:start;">Scroll down and give it a try!</div>`
-          }
-        ]
-      })}
+      args,
+      constants: [
+        {
+          type: 'slot',
+          name: 'default',
+          value: `<div class="slot slot--border slot--background slot--text" style="height:150vh; width: 100%; padding: 0 1rem; justify-content:start;">Scroll down and give it a try!</div>`
+        }
+      ]
+    })}
     </div>`;
   }
 };
 
 /**
  *  This sample displays `sd-dialog` with two `sd-button` components in the footer slot. When incorporating multiple `sd-buttons`, it is recommended to use distinct button variants for clarity and consistency in user interactions.
+ * 
+ * You can use the CSS part `sd-dialog::part(footer)` to customize button layout based on your requirements. For instance, you may opt for columns instead of rows for mobile devices, and so on. To achieve that we used the additional style:
+ * 
+ * ```css
+ * 
+ *   @media (max-width: 414px) {
+          sd-dialog::part(footer){
+            flex-direction: column;
+ *   }
+ * }
+
+ * ```
+ * 
+ * 
  */
 
 export const ExtendedFooter = {
@@ -154,6 +168,16 @@ export const ExtendedFooter = {
   },
   render: () => {
     return html`
+
+      <style>
+        @media (max-width: 414px) {
+          sd-dialog::part(footer){
+            flex-direction: column;
+        }
+      }
+        
+        </style>
+
       <div style="height: 40vh;">
         <sd-dialog open="" id="extended-footer"
           ><p class="sd-paragraph">
