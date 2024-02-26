@@ -554,7 +554,8 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               @focus=${this.handleFocus}
               @blur=${this.handleBlur}
             />
-            ${hasClearIcon
+            <!-- TODO: substitute text-neutral-400 for text-neutral-500 when available! -->
+            ${hasClearIcon || this.type === 'search'
               ? html`
                   <button
                     part="clear-button"
