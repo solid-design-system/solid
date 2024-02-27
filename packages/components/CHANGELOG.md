@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v2.7.0](https://github.com/solid-design-system/solid/compare/components/2.6.0...components/2.7.0) (2024-02-27)
+
+
+### Features
+
+* ✨ add defined aspect ratios and additional colors ([#757](https://github.com/solid-design-system/solid/issues/757)) ([7cff6ad](https://github.com/solid-design-system/solid/commit/7cff6adb907cb29d361acf0b8c5de2ea5ed6f0a5))
+
+### 📈 Stats
+* Bundle size (uncompressed): 281 KB (unchanged)
+* Bundle size (gzipped): 68 KB (unchanged)
+
 # [@solid-design-system/components-v2.6.0](https://github.com/solid-design-system/solid/compare/components/2.5.0...components/2.6.0) (2024-02-23)
 
 
