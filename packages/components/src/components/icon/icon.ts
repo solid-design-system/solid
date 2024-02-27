@@ -21,7 +21,8 @@ let parser: DOMParser;
 
 @customElement('sd-icon')
 export default class SdIcon extends SolidElement {
-  @state() private svg = '';
+  /** @internal */
+  @state() svg = '';
 
   /** The name of the icon to draw. Available names depend on the icon library being used. */
   @property({ reflect: true }) name?: string;
@@ -134,24 +135,22 @@ export default class SdIcon extends SolidElement {
     componentStyles,
     css`
       :host {
-        display: inline-block;
         width: 1em;
         height: 1em;
         box-sizing: content-box !important;
+        @apply inline-block;
       }
 
       svg {
-        display: block;
-        height: 100%;
-        width: 100%;
+        @apply block w-full h-full;
       }
 
       :host([color='primary']) svg {
-        color: rgb(var(--sd-color-primary, 0 53 142) / var(--tw-text-opacity, 1)); // text-primary
+        @apply text-primary;
       }
 
       :host([color='white']) svg {
-        color: rgb(var(--sd-color-white, 255 255 255) / var(--tw-text-opacity, 1)); // text-white
+        @apply text-white;
       }
     `
   ];

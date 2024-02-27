@@ -62,4 +62,8 @@ export interface SolidFormControl extends SolidElement {
   checkValidity: () => boolean;
   reportValidity: () => boolean;
   setCustomValidity: (message: string) => void;
+
+  // Validation styles
+  showValidStyle?: boolean;
+  showInvalidStyle?: boolean;
 }

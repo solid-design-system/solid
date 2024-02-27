@@ -102,7 +102,7 @@ export default class SdCheckboxGroup extends SolidElement {
           part="form-control-label"
           id="label"
           class=${cx('mb-2 p-0 font-bold leading-normal text-black', hasLabel ? 'flex' : 'hidden')}
-          aria-hidden=${!hasLabel}
+          aria-hidden=${hasLabel ? 'false' : 'true'}
         >
           <slot name="label">${this.label}</slot>
         </label>
@@ -130,28 +130,35 @@ export default class SdCheckboxGroup extends SolidElement {
     SolidElement.styles,
     css`
       :host {
-        display: block;
+        @apply block;
       }
 
-      :host([orientation='vertical']) ::slotted(sd-checkbox) {
-        margin-bottom: 8px;
-        display: flex;
+      :host([orientation='vertical']) {
+        ::slotted(sd-checkbox) {
+          @apply mb-2 flex;
+        }
+        ::slotted(sd-checkbox:last-of-type) {
+          @apply mb-0;
+        }
       }
 
-      :host([orientation='vertical']) ::slotted(sd-checkbox:last-of-type) {
-        margin-bottom: 0;
-      }
-
-      :host([orientation='horizontal']) ::slotted(sd-checkbox) {
-        margin-right: 24px;
-      }
-
-      :host([size='sm']):host([orientation='horizontal']) ::slotted(sd-checkbox) {
-        margin-right: 16px;
-      }
-
-      :host([orientation='horizontal']) ::slotted(sd-checkbox:last-of-type) {
-        margin-right: 0;
+      :host([orientation='horizontal']) {
+        /* default */
+        ::slotted(sd-checkbox) {
+          @apply mr-6;
+        }
+        ::slotted(sd-checkbox:last-of-type) {
+          @apply mr-0;
+        }
+        /* sm */
+        &:host([size='sm']) {
+          ::slotted(sd-checkbox) {
+            @apply mr-4;
+          }
+          ::slotted(sd-checkbox:last-of-type) {
+            @apply mr-0;
+          }
+        }
       }
     `
   ];

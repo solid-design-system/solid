@@ -62,7 +62,9 @@ export const storybookDefaults = (customElementTag: string): any => {
     const getProperties = () => {
       const fieldMembers = (manifest?.members as member[])?.filter(member => member.kind === 'field');
       const attributeNames = new Set(manifest?.attributes?.map((attr: { fieldName: string }) => attr.fieldName));
-      const result = fieldMembers?.filter(member => !attributeNames.has(member.name) && member?.privacy !== 'private');
+      const result = fieldMembers?.filter(
+        member => !attributeNames.has(member.name) && member?.privacy !== 'private' && member?.privacy !== 'protected'
+      );
       return result?.map(member => member.name);
     };
     return {
@@ -72,6 +74,16 @@ export const storybookDefaults = (customElementTag: string): any => {
         acc[event.name] = { control: false };
         return acc;
       }, {}),
+      //
+      ...manifest?.members
+        ?.filter(
+          (member: { kind: string; description: string; privacy: string }) =>
+            member.kind === 'method' && member.description && !(member?.privacy === 'private')
+        )
+        .reduce((acc: any, method: any) => {
+          acc[method.name] = { ...method, control: false, table: { category: 'Methods' } };
+          return acc;
+        }, {}),
       // Properties should show up but not be editable
       ...getProperties()?.reduce((acc: any, property: string) => {
         // Remove the existing one

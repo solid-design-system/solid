@@ -3,7 +3,7 @@ import type { Style } from '../../declaration';
 export default {
   styleName: 'sd-meta',
   summary: 'meta information like file size, date or whatever needed.',
-  status: 'experimental',
+  status: 'stable',
   since: '1.7',
   attributes: [
     {

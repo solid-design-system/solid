@@ -27,7 +27,8 @@ export default class SdIconButton extends SolidElement {
 
   @query('.icon-button') button: HTMLButtonElement | HTMLLinkElement;
 
-  @state() private hasFocus = false;
+  /** @internal */
+  @state() hasFocus = false;
 
   /** The name of the icon to draw. Available names depend on the icon library being used. */
   @property() name?: string;

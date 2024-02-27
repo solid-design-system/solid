@@ -5,7 +5,6 @@ import { property, query, state } from 'lit/decorators.js';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 import type { PropertyValues } from 'lit';
-
 /**
  * @summary Teasers group information into flexible containers so users can browse a collection of related items and actions.
  * @documentation https://solid.union-investment.com/[storybook-link]/teaser
@@ -32,17 +31,18 @@ import type { PropertyValues } from 'lit';
 @customElement('sd-teaser')
 export default class SdTeaser extends SolidElement {
   @property({ reflect: true })
-  variant: 'white' | 'white border-neutral-300' | 'neutral-100' | 'primary' | 'primary-100' = 'white';
+  variant: 'white' | 'white border-neutral-400' | 'neutral-100' | 'primary' | 'primary-100' = 'white';
 
   /** Breakpoint where the teaser switches from `vertical` to `horizontal`. `0` is always `horizontal`, `9999` is always `vertical`. */
   @property({ reflect: true, type: Number }) breakpoint = 448;
 
-  /** The teaser's inner padding. This is always set in `white border-neutral-300`. */
+  /** The teaser's inner padding. This is always set in `white border-neutral-400`. */
   @property({ type: Boolean, reflect: true }) inset = false;
 
   @query('[part="base"]') teaser: HTMLElement;
 
-  @state() private _orientation: 'vertical' | 'horizontal';
+  /** @internal */
+  @state() _orientation: 'vertical' | 'horizontal';
 
   private readonly hasSlotController = new HasSlotController(this, '[default]', 'media', 'meta', 'headline');
 
@@ -79,7 +79,7 @@ export default class SdTeaser extends SolidElement {
   }
 
   render() {
-    const inset = this.variant === 'white border-neutral-300' || this.inset;
+    const inset = this.variant === 'white border-neutral-400' || this.inset;
 
     const slots = {
       'teaser-has-default': this.hasSlotController.test('[default]'),
@@ -94,7 +94,7 @@ export default class SdTeaser extends SolidElement {
           'flex',
           {
             white: 'bg-white',
-            'white border-neutral-300': 'bg-white border border-neutral-300',
+            'white border-neutral-400': 'bg-white border border-neutral-400',
             'neutral-100': 'bg-neutral-100',
             primary: 'bg-primary text-white',
             'primary-100': 'bg-primary-100'
@@ -107,7 +107,11 @@ export default class SdTeaser extends SolidElement {
       >
         <div
           style=${this._orientation === 'horizontal' ? `width: var(--distribution-media, 100%);` : ''}
-          class=${cx(!inset && this._orientation === 'vertical' && 'mb-4', !slots['teaser-has-media'] && 'hidden')}
+          class=${cx(
+            !inset && this._orientation === 'vertical' && 'mb-4',
+            !slots['teaser-has-media'] && 'hidden',
+            this.variant === 'white border-neutral-400' && this._orientation === 'vertical' && 'mx-[-1px] mt-[-1px]'
+          )}
           part="media"
         >
           <slot name="media"></slot>
@@ -149,17 +153,15 @@ export default class SdTeaser extends SolidElement {
     SolidElement.styles,
     css`
       :host {
-        display: block;
+        @apply block;
       }
 
       ::slotted(*) {
-        margin: 0;
+        @apply m-0;
       }
 
       ::slotted([slot='headline']) {
-        font-size: var(--sd-font-size-lg, 1.25rem) !important;
-        font-weight: bold;
-        margin: 0 !important;
+        @apply font-bold !m-0 !text-lg;
       }
     `
   ];

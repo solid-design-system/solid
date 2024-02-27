@@ -78,10 +78,16 @@ export default class SdCarousel extends SolidElement {
   @query('.carousel__slides') scrollContainer: HTMLElement;
   @query('.carousel__pagination') paginationContainer: HTMLElement;
 
-  // The index of the active slide
+  /**
+   * The index of the active slide
+   * @internal
+   */
   @state() activeSlide = 0;
 
-  // Boolean keeping track of the autoplay pause/play button
+  /**
+   * Boolean keeping track of the autoplay pause/play button
+   * @internal
+   */
   @state() pausedAutoplay = false;
 
   private autoplayController = new AutoplayController(this, () => this.next());
@@ -551,13 +557,12 @@ export default class SdCarousel extends SolidElement {
   static styles = [
     SolidElement.styles,
     unsafeCSS(InteractiveStyles),
+    componentStyles,
     css`
-      ${componentStyles}
       :host {
         --slide-gap: var(--sl-spacing-medium, 1rem);
         --scroll-hint: 0px;
-
-        display: flex;
+        @apply flex;
       }
 
       .carousel {
@@ -578,6 +583,10 @@ export default class SdCarousel extends SolidElement {
         column-gap: var(--slide-gap);
         scroll-padding-inline: var(--scroll-hint);
         padding-inline: var(--scroll-hint);
+
+        &::-webkit-scrollbar {
+          @apply hidden;
+        }
       }
 
       @media (prefers-reduced-motion) {
@@ -586,24 +595,12 @@ export default class SdCarousel extends SolidElement {
         }
       }
 
-      .carousel__slides--dragging,
-      .carousel__slides--dropping {
-        scroll-snap-type: unset;
-      }
-
-      .carousel__slides::-webkit-scrollbar {
-        display: none;
-      }
-
       .carousel__navigation {
         grid-area: navigation;
       }
 
       sd-button::part(label) {
-        display: flex;
-        flex: 1 1 auto;
-        align-items: center;
-        pointer-events: none;
+        @apply flex flex-auto items-center pointer-events-none;
       }
     `
   ];

@@ -1,19 +1,22 @@
 {
   "name": "@solid-design-system/placeholders",
-  "version": "1.1.0",
+  "version": "1.3.0",
   "description": "This package provides license-free placeholder images for all projects at Union Investment.",
   "main": "src",
   "scripts": {
+    "build.types": "tsc --project tsconfig.json",
     "release": "semantic-release  --tagFormat 'placeholders/${version}' -e semantic-release-monorepo",
     "release.dry": "semantic-release -d --tagFormat 'placeholders/${version}' -e semantic-release-monorepo"
   },
   "type": "module",
   "exports": {
+    "./*": "./src/*",
     "./images/*": "./src/images/*"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/solid-design-system/solid.git"
+    "url": "git+https://github.com/solid-design-system/solid.git",
+    "directory": "packages/placeholders"
   },
   "files": [
     "src"
@@ -25,7 +28,8 @@
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "semantic-release": "^19.0.5",
-    "semantic-release-monorepo": "^7.0.5"
+    "semantic-release-monorepo": "^7.0.5",
+    "typescript": "5.3.3"
   },
   "release": {
     "branches": [

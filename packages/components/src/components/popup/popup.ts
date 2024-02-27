@@ -14,6 +14,7 @@ import SolidElement from '../../internal/solid-element';
  *
  * @event sd-reposition - Emitted when the popup is repositioned. This event can fire a lot, so avoid putting expensive
  *  operations in your listener or consider debouncing it.
+ * @event sd-current-placement - Emitted when the popup's placement changes automatically based on screen limitations.
  *
  * @slot - The popup's content.
  * @slot anchor - The element the popup will be anchored to. If the anchor lives outside of the popup, you can use the
@@ -38,6 +39,7 @@ import SolidElement from '../../internal/solid-element';
 export default class SdPopup extends SolidElement {
   private anchorEl: HTMLElement | null;
   private cleanup: ReturnType<typeof autoUpdate> | undefined;
+  private mutationObserver: MutationObserver | null;
 
   /** A reference to the internal popup container. Useful for animating and styling the popup with JavaScript. */
   @query('[part="popup"]') popup: HTMLElement;
@@ -184,10 +186,18 @@ export default class SdPopup extends SolidElement {
     // Start the positioner after the first update
     await this.updateComplete;
     this.start();
+
+    // Set up the mutation observer
+    this.setupMutationObserver();
   }
 
   disconnectedCallback() {
     this.stop();
+
+    // Disconnect the mutation observer when the component is disconnected
+    if (this.mutationObserver) {
+      this.mutationObserver.disconnect();
+    }
   }
 
   async updated(changedProps: Map<string, unknown>) {
@@ -212,6 +222,27 @@ export default class SdPopup extends SolidElement {
       await this.updateComplete;
       this.reposition();
     }
+  }
+
+  private setupMutationObserver() {
+    // Create an observer instance
+    this.mutationObserver = new MutationObserver(mutations => this.handleCurrentPlacementChange(mutations));
+
+    // Configuration of the observer:
+    const config = { attributes: true };
+
+    // Start observing the target node for configured mutations
+    this.mutationObserver.observe(this, config);
+  }
+
+  private handleCurrentPlacementChange(mutations: MutationRecord[]) {
+    return mutations.forEach(mutation => {
+      // Check if the "data-current-placement" attribute changed
+      if (mutation.attributeName === 'data-current-placement') {
+        const currentPlacement = this.getAttribute('data-current-placement');
+        this.emit('sd-current-placement', { detail: currentPlacement });
+      }
+    });
   }
 
   private async handleAnchorChange() {
@@ -455,8 +486,7 @@ export default class SdPopup extends SolidElement {
      */
         --arrow-size-diagonal: calc(var(--arrow-size) * 0.7071);
         --arrow-padding-offset: calc(var(--arrow-size-diagonal) - var(--arrow-size));
-
-        display: contents;
+        @apply contents;
       }
 
       [part='popup'] {

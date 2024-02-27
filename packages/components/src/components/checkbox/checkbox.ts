@@ -5,7 +5,7 @@ import { defaultValue } from '../../internal/default-value';
 import { FormControlController } from '../../internal/form';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { live } from 'lit/directives/live.js';
-import { property, query } from 'lit/decorators.js';
+import { property, query, state } from 'lit/decorators.js';
 import { watch } from '../../internal/watch';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
@@ -36,13 +36,14 @@ import type { SolidFormControl } from '../../internal/solid-element';
  */
 @customElement('sd-checkbox')
 export default class SdCheckbox extends SolidElement implements SolidFormControl {
-  private readonly formControlController = new FormControlController(this, {
+  private readonly formControlController: FormControlController = new FormControlController(this, {
     value: (control: SdCheckbox) => (control.checked ? control.value || 'on' : undefined),
     defaultValue: (control: SdCheckbox) => control.defaultChecked,
     setValue: (control: SdCheckbox, checked: boolean) => (control.checked = checked)
   });
 
   @query('input[type="checkbox"]') input: HTMLInputElement;
+  @query('#invalid-message') invalidMessage: HTMLDivElement;
 
   @property() title = ''; // make reactive to pass through
 
@@ -80,6 +81,12 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
   /** Makes the checkbox a required field. */
   @property({ type: Boolean, reflect: true }) required = false;
 
+  /**
+   * Indicates whether or not the user input is valid after the user has interacted with the component. These states are activated when the attribute "data-user-valid" or "data-user-invalid" are set on the component via the form controller. They are different than the native input validity state which is always either `true` or `false`.
+   * @internal
+   */
+  @state() showInvalidStyle = false;
+
   /** Gets the validity state object */
   get validity() {
     return this.input.validity;
@@ -105,6 +112,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
   private handleInvalid(event: Event) {
     this.formControlController.setValidity(false);
     this.formControlController.emitInvalidEvent(event);
+    this.invalidMessage.textContent = (event.target as HTMLInputElement).validationMessage;
   }
 
   private handleFocus() {
@@ -152,6 +160,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
 
   /** Checks for validity and shows a validation message if the control is invalid. */
   reportValidity() {
+    this.formControlController.fakeUserInteraction();
     return this.input.reportValidity();
   }
 
@@ -165,6 +174,22 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
   }
 
   render() {
+    // Hierarchy of checkbox states:
+    const checkboxState =
+      this.disabled && this.indeterminate
+        ? 'disabledIndeterminate'
+        : this.disabled && this.checked
+          ? 'disabledChecked'
+          : this.disabled
+            ? 'disabled'
+            : this.showInvalidStyle && this.indeterminate
+              ? 'invalidIndeterminate'
+              : this.showInvalidStyle
+                ? 'invalid'
+                : this.checked || this.indeterminate
+                  ? 'filled'
+                  : 'default';
+
     return html`
       <label
         part="base"
@@ -202,19 +227,23 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
             ? ' control--indeterminate'
             : ''}"
           class=${cx(
-            `relative flex flex-initial items-center justify-center border rounded-sm h-4 w-4 
-            peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 
+            `relative flex flex-initial items-center justify-center border rounded-sm h-4 w-4
+            peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2
             peer-focus-visible:outline-primary`,
             {
               sm: 'mt-[2px]',
               lg: 'mt-[3px]'
             }[this.size],
-            (this.disabled && this.indeterminate && 'border-neutral-500 bg-neutral-500') ||
-              (this.disabled && this.checked && 'border-neutral-500 bg-neutral-500') ||
-              (this.disabled && 'border-neutral-500') ||
-              ((this.checked || this.indeterminate) &&
-                'border-accent hover:border-accent-550 group-hover:border-accent-550 bg-accent group-hover:bg-accent-550') ||
-              'border-neutral-800 hover:bg-neutral-200 group-hover:bg-neutral-200 bg-white'
+            {
+              disabledIndeterminate: 'border-neutral-500 bg-neutral-500',
+              disabledChecked: 'border-neutral-500 bg-neutral-500',
+              disabled: 'border-neutral-500',
+              invalidIndeterminate: 'border-error bg-error group-hover:bg-error-400',
+              invalid: 'border-error group-hover:bg-neutral-200',
+              filled:
+                'border-accent hover:border-accent-550 group-hover:border-accent-550 bg-accent group-hover:bg-accent-550',
+              default: 'border-neutral-800 hover:bg-neutral-200 group-hover:bg-neutral-200 bg-white'
+            }[checkboxState]
           )}
         >
           ${this.checked
@@ -237,13 +266,14 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
           part="label"
           id="label"
           class=${cx(
-            'select-none inline-block ml-2 text-black',
-            (this.disabled && 'text-neutral-500') || 'text-neutral-800'
+            'select-none inline-block ml-2',
+            this.disabled ? 'text-neutral-500' : this.showInvalidStyle ? 'text-error' : 'text-black'
           )}
         >
           <slot></slot>
         </span>
       </label>
+      ${this.formControlController.renderInvalidMessage()}
     `;
   }
 
@@ -254,27 +284,15 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
     SolidElement.styles,
     css`
       :host {
-        display: block;
+        @apply block;
       }
 
       :host(:focus-visible) {
-        outline: 0;
+        @apply outline-0;
       }
 
       :host([required]) #label::after {
         content: ' *';
-      }
-
-      :host([data-user-invalid]) #label {
-        color: rgb(var(--sd-color-error, 204 25 55));
-      }
-
-      :host([data-user-invalid]) #control {
-        border-color: rgb(var(--sd-color-error, 204 25 55));
-      }
-
-      :host([data-user-invalid]):host([indeterminate]) #control {
-        background-color: rgb(var(--sd-color-error, 204 25 55));
       }
     `
   ];

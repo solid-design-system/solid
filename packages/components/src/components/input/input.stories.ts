@@ -1,6 +1,7 @@
 import '../../solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
+import { userEvent } from '@storybook/testing-library';
 import { waitUntil } from '@open-wc/testing-helpers';
 import { withActions } from '@storybook/addon-actions/decorator';
 import type SdInput from './input';
@@ -232,6 +233,49 @@ export const Sizes = {
 };
 
 /**
+ * Per default the input will indicate an error state when the input is invalid. Use the `style-on-valid` attribute to indicate a valid state as well.
+ */
+
+export const StyleOnValid = {
+  parameters: {
+    controls: {
+      exclude: ['style-on-valid']
+    }
+  },
+  args: overrideArgs([
+    { type: 'attribute', name: 'value', value: 'valu' },
+    { type: 'attribute', name: 'label', value: 'Label' },
+    { type: 'attribute', name: 'help-text', value: 'help-text' },
+    { type: 'attribute', name: 'clearable', value: true },
+    {
+      type: 'slot',
+      name: 'right',
+      value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
+    }
+  ]),
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        y: { type: 'attribute', name: 'style-on-valid' }
+      },
+      args
+    });
+  },
+
+  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
+    const els = canvasElement.querySelectorAll('sd-input');
+
+    for (const el of els) {
+      await waitUntil(() => el?.shadowRoot?.querySelector('input'));
+      await userEvent.type(el.shadowRoot!.querySelector('input')!, 'e');
+    }
+
+    // tab to next element to loose focus
+    await userEvent.tab();
+  }
+};
+
+/**
  * Demonstrates the allowed input types.
  */
 
@@ -374,6 +418,24 @@ export const Validation = {
   render: (args: any) => {
     return html`
       <form action="" method="get" id="testForm" name="testForm" class="w-[370px]">
+        <div class="mb-2">
+          ${generateTemplate({
+            constants: [
+              { type: 'attribute', name: 'label', value: 'Indicate Valid State' },
+              { type: 'attribute', name: 'name', value: 'required field' },
+              { type: 'attribute', name: 'placeholder', value: '.*' },
+              { type: 'attribute', name: 'help-text', value: 'indicate on valid' },
+              { type: 'attribute', name: 'form', value: 'testForm' },
+              { type: 'attribute', name: 'style-on-valid', value: true },
+              {
+                type: 'slot',
+                name: 'right',
+                value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
+              }
+            ],
+            args
+          })}
+        </div>
         <div class="mb-2">
           ${generateTemplate({
             constants: [
@@ -589,17 +651,13 @@ export const Validation = {
       <script>
         function handleSubmit(event) {
           const form = document.querySelector('#testForm');
-          const sdInputs = Array.from(document.querySelectorAll('sd-input'));
 
-          const isValid = sdInput => sdInput.checkValidity();
+          const formData = new FormData(form);
+          const formValues = Object.fromEntries(formData);
 
-          if (sdInputs.every(isValid)) {
+          if (form.reportValidity()) {
             event.preventDefault(); // Prevent the default form submission behavior
-
-            const formData = new FormData(form);
-            const formValues = Object.fromEntries(formData);
-
-            alert('Form submitted successfully with the following values: ' + JSON.stringify(formValues, null, 2));
+            alert('Form submitted with the following values: ' + JSON.stringify(formValues, null, 2));
           }
         }
 
@@ -631,7 +689,7 @@ export const Slots = {
               values: [
                 {
                   value: `<div slot='${slot}' class="slot slot--border slot--background h-6 ${
-                    slot === 'label' || slot === 'help-text' ? 'w-18' : 'w-6'
+                    slot === 'label' || slot === 'help-text' ? 'w-20' : 'w-6'
                   }"></div>`,
                   title: slot
                 }
@@ -719,6 +777,66 @@ export const Parts = {
 };
 
 /**
+ * 1. You can use the `setCustomValidity` method to set a custom validation message. This will override any native validation messages.
+ * 2. Set an empty string to clear the custom validity and make the input valid.
+ * 3. To show the validation message, call the `reportValidity` method. Originally this would show a native validation bubble, but we show the error messages inline.
+ */
+
+export const setCustomValidity = {
+  parameters: {
+    chromatic: { disableSnapshot: true }
+  },
+  render: () => {
+    return html`
+      <!-- block submit and show alert instead -->
+      <form id="validationForm" class="flex flex-col gap-2">
+        <sd-input id="custom-input" label="Input" style-on-valid></sd-input>
+        <div>
+          <sd-button type="submit">Submit</sd-button>
+          <sd-button id="error-button" variant="secondary">Set custom error</sd-button>
+          <sd-button id="success-button" variant="secondary">Set success</sd-button>
+          <sd-button type="reset" variant="secondary">Reset</sd-button>
+        </div>
+      </form>
+      <script type="module">
+        // Wait for custom elements to be defined
+        await Promise.all([customElements.whenDefined('sd-input'), customElements.whenDefined('sd-button')]).then(
+          () => {
+            const form = document.getElementById('validationForm');
+            const input = document.getElementById('custom-input');
+            const setErrorButton = document.getElementById('error-button');
+            const setSuccessButton = document.getElementById('success-button');
+
+            // Initial error
+            const errorMessage = \`This is an initial custom error (\${new Date().toLocaleTimeString()})\`;
+            input.setCustomValidity(errorMessage);
+            input.reportValidity();
+
+            // Show error message
+            setErrorButton.addEventListener('click', () => {
+              const errorMessage = \`This is a new custom error (\${new Date().toLocaleTimeString()})\`;
+              input.setCustomValidity(errorMessage);
+              input.reportValidity();
+            });
+
+            // Show success message
+            setSuccessButton.addEventListener('click', () => {
+              input.setCustomValidity(''); // Clear custom validity
+              input.reportValidity();
+            });
+
+            form.addEventListener('submit', event => {
+              event.preventDefault();
+              alert('All fields are valid!');
+            });
+          }
+        );
+      </script>
+    `;
+  }
+};
+
+/**
  * `sd-input` is fully accessibile via keyboard.
  */
 
@@ -739,6 +857,7 @@ export const Mouseless = {
  */
 
 export const Samples = {
+  name: 'Sample: Currency Stepper',
   parameters: {
     controls: {
       include: []
@@ -747,8 +866,7 @@ export const Samples = {
   render: () => {
     return html`
       <div class="w-[250px]">
-        <div class="mb-4 p-4 bg-neutral-300 text-sm font-bold w-full box-border">sd-input with currency stepper</div>
-        <sd-input id="stepperSampleInput" type="number" min="0"
+        <sd-input label="Currency Stepper" id="stepperSampleInput" type="number" min="0"
           ><span slot="right" class="text-sm inline-flex items-center"
             ><span class="text-neutral-700">EUR</span>
             <button

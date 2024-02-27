@@ -1,5 +1,5 @@
 import { css } from 'lit';
-import { customElement } from 'lit/decorators/custom-element.js';
+import { customElement } from '../../internal/register-custom-element';
 import { HasSlotController } from '../../internal/slot';
 import { html, literal } from 'lit/static-html.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
@@ -23,6 +23,7 @@ import SolidElement from '../../internal/solid-element';
  * @slot children - Slot used to provide nested child navigation elements. If provided, details and summary elements will be used. A chevron will be shown on the right side regardless of the chevron property.
  *
  * @csspart base - The component's base wrapper including children.
+ * @csspart content-wrapper - The component's content wrapper.
  * @csspart content - The component's content excluding children.
  * @csspart chevron - The container that wraps the chevron.
  * @csspart description - The component's description area below its main content.
@@ -157,15 +158,17 @@ export default class SdNavigationItem extends SolidElement {
         tabindex=${this.disabled ? '-1' : '0'}
         @click=${isAccordion ? this.handleClickSummary : isButton ? this.handleClickButton : undefined}
       >
-        <div class=${cx(
-          'absolute w-full left-0 top-0 pointer-events-none transition-all duration-150',
-          this.vertical
-            ? 'border-l-4 h-[calc(100%-8px)] top-1 group-hover:h-full group-hover:top-0'
-            : 'border-b-4 h-full',
-          this.current ? 'border-accent' : 'border-transparent',
-          this.disabled && 'border-neutral-500'
+        <div
+        part="current-indicator"
+        class=${cx(
+          'absolute left-0 pointer-events-none transition-all duration-150',
+          this.vertical ? 'w-1 h-[calc(100%-8px)] top-1 group-hover:h-full group-hover:top-0' : 'h-1 w-full bottom-0',
+          this.current ? 'bg-accent' : 'bg-transparent',
+          this.disabled && 'bg-neutral-500'
         )}></div>
-        <span class=${cx(
+        <span
+        part="content-area"
+        class=${cx(
           'relative pt-3 inline-flex justify-between items-center',
           isAccordion ? 'grow' : 'w-full',
           slots['description'] ? 'pb-1' : horizontalPaddingBottom,
@@ -179,7 +182,7 @@ export default class SdNavigationItem extends SolidElement {
                 ></sd-divider>`
               : ''
           }
-          <span class="inline-flex items-center flex-auto">
+          <span part="content-container" class="inline-flex items-center flex-auto">
             <slot part="content" class='inline'></slot>
           </span>
           ${
@@ -217,7 +220,7 @@ export default class SdNavigationItem extends SolidElement {
     /* eslint-enable lit/binding-positions */
 
     return isAccordion
-      ? html`<details id="navigation-item-details" ?open=${this.open} class="relative flex">
+      ? html`<details part="details" id="navigation-item-details" ?open=${this.open} class="relative flex">
           ${root}<slot name="children"></slot>
         </details>`
       : html`${root}`;
@@ -232,17 +235,15 @@ export default class SdNavigationItem extends SolidElement {
 
     css`
       :host {
-        box-sizing: border-box;
-        position: relative;
-        display: inline-block;
+        @apply inline-block relative box-border;
       }
 
       :host([vertical]) {
-        display: block;
+        @apply block;
       }
 
       details summary::-webkit-details-marker {
-        display: none;
+        @apply hidden;
       }
     `
   ];

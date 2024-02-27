@@ -1,3 +1,5 @@
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md)
+
 # Solid Design System Monorepo
 
 Monorepo for Union Investment's Solid Design System.
@@ -15,6 +17,9 @@ The placeholder package provides placeholder images that can be used alongside t
 **3. Tokens**
 
 The tokens package contains all the design tokens used in the Solid Design System.
+
+**4. Theming**
+The theming package provides a color calculation service for the Solid Design System.
 
 ## Quick Start
 
@@ -40,6 +45,8 @@ $ pnpm verify        // run tests and builds in repo
 $ cd packages/components
   && pnpm dev        // start dev server
   && pnpm test       // run tests
+  && pnpm test.watch // run tests in watch mode
+  && pnpm test.component [component-name] // run tests for a specific component
 ```
 
 ## Contributing

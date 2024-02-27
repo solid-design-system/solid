@@ -85,9 +85,35 @@ registerIconLibrary('global-resources-overriden', {
 
 export const parameters = {
   docs: {
-    story: { inline: false },
+    story: { inline: true },
     source: {
       transform: code => storybookUtilities.codeOptimizer(code)
+    }
+  },
+  backgrounds: {
+    default: 'white',
+    values: [
+      {
+        name: 'white',
+        value: '#fff'
+      },
+      {
+        name: 'primary',
+        value: 'rgb(var(--sd-color-primary, 0 53 142))'
+      },
+      {
+        name: 'primary-100',
+        value: 'rgb(var(--sd-color-primary-100, 236 240 249))'
+      },
+      {
+        name: 'neutral-200',
+        value: 'rgb(var(--sd-color-neutral-200, 242 242 242))'
+      }
+    ]
+  },
+  options: {
+    storySort: {
+      order: ['*', 'Legal']
     }
   }
 };

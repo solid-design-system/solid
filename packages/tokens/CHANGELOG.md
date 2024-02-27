@@ -1,3 +1,50 @@
+# [@solid-design-system/tokens-v2.1.1](https://github.com/solid-design-system/solid/compare/tokens/2.1.0...tokens/2.1.1) (2024-02-26)
+
+
+### Bug Fixes
+
+* remove unneeded gradient horizontal ([#764](https://github.com/solid-design-system/solid/issues/764)) ([b131566](https://github.com/solid-design-system/solid/commit/b1315664ffdd4c524405792dbf87796b07da9fb9))
+
+# [@solid-design-system/tokens-v2.1.0](https://github.com/solid-design-system/solid/compare/tokens/2.0.0...tokens/2.1.0) (2024-02-07)
+
+
+### Features
+
+* Add opacity tokens ([#732](https://github.com/solid-design-system/solid/issues/732)) ([daba617](https://github.com/solid-design-system/solid/commit/daba617a26039b01a75de5e0f2cfa250833222a7))
+
+# [@solid-design-system/tokens-v2.0.0](https://github.com/solid-design-system/solid/compare/tokens/1.4.0...tokens/2.0.0) (2024-01-19)
+
+
+### Bug Fixes
+
+* change gradients ([#679](https://github.com/solid-design-system/solid/issues/679)) ([7885716](https://github.com/solid-design-system/solid/commit/788571607cc1f0aa459321c08eaca9b56e5900d9))
+
+
+### BREAKING CHANGES
+
+* The gradient names have been changed.
+
+# [@solid-design-system/tokens-v1.4.0](https://github.com/solid-design-system/solid/compare/tokens/1.3.0...tokens/1.4.0) (2023-12-15)
+
+
+### Features
+
+* ✨ add inline validation + improve initial validation ([#647](https://github.com/solid-design-system/solid/issues/647)) ([da78967](https://github.com/solid-design-system/solid/commit/da789673d8bbce64320e3102309d7fa434a83d9d)), closes [#631](https://github.com/solid-design-system/solid/issues/631) [#641](https://github.com/solid-design-system/solid/issues/641)
+
+# [@solid-design-system/tokens-v1.3.0](https://github.com/solid-design-system/solid/compare/tokens/1.2.2...tokens/1.3.0) (2023-11-23)
+
+
+### Features
+
+* ✨ update tokens ([#591](https://github.com/solid-design-system/solid/issues/591)) ([2bfbf3e](https://github.com/solid-design-system/solid/commit/2bfbf3efe455faaa2365fef01b252ef507b450ca))
+
+# [@solid-design-system/tokens-v1.2.2](https://github.com/solid-design-system/solid/compare/tokens/1.2.1...tokens/1.2.2) (2023-11-17)
+
+
+### Bug Fixes
+
+* 🤔 add z-index tokens  ([#576](https://github.com/solid-design-system/solid/issues/576)) ([bba9e50](https://github.com/solid-design-system/solid/commit/bba9e505cfe91122a10bad0d3d23d0b56b8a76b0))
+
 # [@solid-design-system/tokens-v1.2.1](https://github.com/solid-design-system/solid/compare/tokens/1.2.0...tokens/1.2.1) (2023-08-29)
 
 

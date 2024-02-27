@@ -1,0 +1,7 @@
+figure.sd-media {
+  @apply m-0;
+
+  figcaption {
+    @apply last:mt-3 text-black;
+  }
+}

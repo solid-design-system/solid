@@ -181,11 +181,17 @@ export default class SdDropdown extends SolidElement {
       //
       // If the dropdown is used within a shadow DOM, we need to obtain the activeElement within that shadowRoot,
       // otherwise `document.activeElement` will only return the name of the parent shadow DOM element.
+
+      // Quick fix for nested shadow roots https://github.com/solid-design-system/solid/issues/648
+      // Test case will be added https://github.com/solid-design-system/solid/issues/747
       setTimeout(() => {
         const activeElement =
-          this.containingElement?.getRootNode() instanceof ShadowRoot
-            ? document.activeElement?.shadowRoot?.activeElement
-            : document.activeElement;
+          document.activeElement?.shadowRoot?.activeElement?.shadowRoot?.activeElement?.getRootNode() instanceof
+          ShadowRoot
+            ? document.activeElement?.shadowRoot?.activeElement?.shadowRoot?.activeElement
+            : this.containingElement?.getRootNode() instanceof ShadowRoot
+              ? document.activeElement?.shadowRoot?.activeElement
+              : document.activeElement;
 
         if (
           !this.containingElement ||
@@ -451,27 +457,27 @@ export default class SdDropdown extends SolidElement {
     componentStyles,
     css`
       :host {
-        display: inline-block;
+        @apply inline-block;
       }
 
       #dropdown::part(popup) {
-        z-index: var(--sd-z-index-dropdown);
+        @apply z-dropdown;
       }
 
       #dropdown[data-current-placement^='top']::part(popup) {
-        transform-origin: bottom;
+        @apply origin-bottom;
       }
 
       #dropdown[data-current-placement^='bottom']::part(popup) {
-        transform-origin: top;
+        @apply origin-top;
       }
 
       #dropdown[data-current-placement^='left']::part(popup) {
-        transform-origin: right;
+        @apply origin-right;
       }
 
       #dropdown[data-current-placement^='right']::part(popup) {
-        transform-origin: left;
+        @apply origin-left;
       }
 
       /*
@@ -480,7 +486,7 @@ export default class SdDropdown extends SolidElement {
       * - it's not the trigger and the dropdown is not set to no-auto-size
       */
       :host(:not([no-auto-size])) ::slotted(*:not([slot='trigger'])) {
-        overflow: auto;
+        @apply overflow-auto;
         max-width: var(--auto-size-available-width) !important;
         max-height: var(--auto-size-available-height) !important;
       }

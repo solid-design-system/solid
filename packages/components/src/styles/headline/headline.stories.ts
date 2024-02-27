@@ -48,7 +48,7 @@ export default {
 export const Default = {
   render: (args: any) => {
     return generateTemplate({
-      options: { templateContent: '<p class="%CLASSES%">%SLOT%</p>' },
+      options: { templateContent: '<h4 class="%CLASSES%">%SLOT%</h4>' },
       args
     });
   }
@@ -67,7 +67,8 @@ export const Inverted = {
       },
       constants: { type: 'attribute', name: 'sd-headline--inverted', value: true },
       options: {
-        templateBackgrounds: { alternate: 'y', colors: ['transparent', 'rgb(var(--sd-color-primary, 0 53 142))'] }
+        templateContent: '<h4 class="%CLASSES%">%SLOT%</h4>',
+        templateBackgrounds: { alternate: 'y', colors: ['white', 'rgb(var(--sd-color-primary, 0 53 142))'] }
       },
       args
     });
@@ -88,9 +89,11 @@ export const Inline = {
       constants: {
         type: 'slot',
         name: 'default',
-        value: `
-        <sd-icon name="content/picture" library="global-resources"></sd-icon>
-        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</span>`
+        value: `<sd-icon name="content/picture" library="global-resources"></sd-icon>
+                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</span>`
+      },
+      options: {
+        templateContent: '<h4 class="%CLASSES%">%SLOT%</h4>'
       },
       args
     });
@@ -115,17 +118,15 @@ export const SizeXInverted = {
     }
   },
   render: (args: any) => {
-    return html` ${[
+    return html`${[
       {
         title: 'Without an sd-icon',
-        constant: `
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.`
+        constant: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.`
       },
       {
         title: 'With an sd-icon',
-        constant: `
-        <sd-icon name="content/picture" library="global-resources"></sd-icon>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.`
+        constant: `<sd-icon name="content/picture" library="global-resources"></sd-icon>
+                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.`
       }
     ].map(headline =>
       generateTemplate({
@@ -148,11 +149,12 @@ export const SizeXInverted = {
         constants: {
           type: 'slot',
           name: 'default',
-          value: `${headline.constant}`
+          value: headline.constant
         },
         options: {
-          templateBackgrounds: { alternate: 'x', colors: ['tranparent', 'rgb(var(--sd-color-primary, 0 53 142))'] },
-          title: `${headline.title}`
+          templateContent: '<h4 class="%CLASSES%">%SLOT%</h4>',
+          templateBackgrounds: { alternate: 'x', colors: ['transparent', 'rgb(var(--sd-color-primary, 0 53 142))'] },
+          title: headline.title
         },
         args
       })
@@ -167,13 +169,7 @@ export const SizeXInverted = {
 export const Samples = {
   parameters: {
     controls: {
-      exclude: [
-        'default',
-        'sd-headline--size-3xl',
-        'sd-headline--size-xl',
-        'sd-headline--size-lg',
-        'sd-headline--size-base'
-      ]
+      exclude: ['sd-headline--size-3xl', 'sd-headline--size-xl', 'sd-headline--size-lg', 'sd-headline--size-base']
     }
   },
   render: (args: any) => {
@@ -183,7 +179,6 @@ export const Samples = {
           display: inline-block;
           max-width: 1200px;
         }
-
         .headline {
           padding: 16px;
           background: #e0e0e0;
@@ -193,15 +188,12 @@ export const Samples = {
           width: 100%;
           box-sizing: border-box;
         }
-
         div:not(:first-of-type).headline {
           margin-top: 72px;
         }
       </style>
-
       <div class="story-wrapper">
         <div class="headline">sd-headline with sd-mark (no icon)</div>
-
         ${generateTemplate({
           axis: {
             x: [{ type: 'attribute', name: 'sd-headline--inverted', values: [false, true] }],
@@ -232,13 +224,15 @@ export const Samples = {
             }
           ],
           options: {
-            templateBackgrounds: { alternate: 'x', colors: ['tranparent', 'rgb(var(--sd-color-primary, 0 53 142))'] }
+            templateBackgrounds: {
+              alternate: 'x',
+              colors: ['transparent', 'rgb(var(--sd-color-primary, 0 53 142))']
+            },
+            templateContent: '<h4 class="%CLASSES%">%SLOT%</h4>'
           },
           args
         })}
-
         <div class="headline">sd-headline with sd-mark (icon included)</div>
-
         ${generateTemplate({
           axis: {
             x: [{ type: 'attribute', name: 'sd-headline--inverted', values: [false, true] }],
@@ -261,7 +255,7 @@ export const Samples = {
               type: 'slot',
               name: 'default',
               value: `<sd-icon name="content/picture" library="global-resources"></sd-icon>
-            Lorem ipsum <mark class="sd-mark">sic semper</mark>`
+              Lorem ipsum <mark class="sd-mark">sic semper</mark>`
             },
             {
               type: 'attribute',
@@ -270,7 +264,11 @@ export const Samples = {
             }
           ],
           options: {
-            templateBackgrounds: { alternate: 'x', colors: ['tranparent', 'rgb(var(--sd-color-primary, 0 53 142))'] }
+            templateBackgrounds: {
+              alternate: 'x',
+              colors: ['transparent', 'rgb(var(--sd-color-primary, 0 53 142))']
+            },
+            templateContent: '<h4 class="%CLASSES%">%SLOT%</h4>'
           },
           args
         })}

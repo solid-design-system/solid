@@ -8,8 +8,7 @@ assignees: ''
 ---
 
 ## User Story
-As a [PERSONA] of the Solid Design System, I would like to [REQUIRE], as well as [FURTHER_REQUIREMENT],
-so that [PRODUCT_VALUE], and [FURTHER_PRODUCT_VALUE].
+As a [PERSONA] of the Solid Design System, I would like to [REQUIRE], as well as [FURTHER_REQUIREMENT], so that [PRODUCT_VALUE], and [FURTHER_PRODUCT_VALUE].
 ### Suggested Solution
 
 ## Environment (GitHub Actions or Azure DevOps)

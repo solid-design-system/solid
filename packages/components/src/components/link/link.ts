@@ -141,14 +141,14 @@ export default class SdLink extends SolidElement {
         font-size: 1.25em;
         margin-bottom: -0.25em;
       }
-      /**
-       * In standalone mode, the icon sizes are fixed when a size is set
-       */
+
+      /* In standalone mode, the icon sizes are fixed when a size is set */
       :host([size='sm'][standalone]) ::slotted(sd-icon) {
-        font-size: 1rem;
+        @apply text-base;
       }
+
       :host([size='lg'][standalone]) ::slotted(sd-icon) {
-        font-size: 1.5rem;
+        @apply text-xl;
       }
     `
   ];

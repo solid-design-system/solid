@@ -1,11 +1,10 @@
+import { css, html } from 'lit';
 import { customElement } from '../../../src/internal/register-custom-element';
-import { html } from 'lit';
 import { property } from 'lit/decorators.js';
 import { requestInclude } from './request';
 import { watch } from '../../internal/watch';
+import componentStyles from '../../styles/component.styles';
 import SolidElement from '../../internal/solid-element';
-import styles from './include.styles';
-import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Includes give you the power to embed external HTML files into the page.
@@ -18,8 +17,6 @@ import type { CSSResultGroup } from 'lit';
  */
 @customElement('sd-include')
 export default class SdInclude extends SolidElement {
-  static styles: CSSResultGroup = styles;
-
   /**
    * The location of the HTML file to include. Be sure you trust the content you are including as it will be executed as
    * code and can result in XSS attacks.
@@ -74,6 +71,15 @@ export default class SdInclude extends SolidElement {
   render() {
     return html`<slot></slot>`;
   }
+
+  static styles = [
+    componentStyles,
+    css`
+      :host {
+        @apply block;
+      }
+    `
+  ];
 }
 
 declare global {

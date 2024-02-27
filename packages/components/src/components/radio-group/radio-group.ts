@@ -12,10 +12,10 @@ import { watch } from '../../internal/watch';
 import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
 import SdButtonGroup from '../../_components/button-group/button-group';
+import SdRadio from '../../components/radio/radio';
 import SolidElement from '../../internal/solid-element';
 import type { SolidFormControl } from '../../internal/solid-element';
-import type SdRadio from '../../components/radio/radio';
-import type SdRadioButton from '../../_components/radio-button/radio-button';
+import type SdRadioButton from '../../components/radio-button/radio-button';
 
 /**
  * @summary Radio groups are used to group multiple [radios](/components/radio) or [radio buttons](/components/radio-button) so they function as a single form control.
@@ -36,37 +36,45 @@ import type SdRadioButton from '../../_components/radio-button/radio-button';
  * @csspart form-control - The form control that wraps the label, input, and error text.
  * @csspart form-control-label - The label's wrapper.
  * @csspart form-control-input - The input's wrapper.
+ * @csspart button-group - The button group that wraps radio buttons.
+ * @csspart button-group__base - The button group's `base` part.
  */
 
-// TODO: integrate these parts into the component when radio-button-group is converted to a solid component: https://github.com/solid-design-system/solid/issues/216
-// @csspart button-group - The button group that wraps radio buttons.
-// @csspart button-group__base - The button group's `base` part.
 @customElement('sd-radio-group')
 export default class SdRadioGroup extends SolidElement implements SolidFormControl {
   static dependencies = { 'sd-button-group': SdButtonGroup };
 
-  protected readonly formControlController = new FormControlController(this);
+  protected readonly formControlController: FormControlController = new FormControlController(this);
   private readonly hasSlotController = new HasSlotController(this, 'label', 'error-text');
   private customValidityMessage = '';
   private validationTimeout: number;
 
   @query('slot:not([name])') defaultSlot: HTMLSlotElement;
   @query('#validation-input') validationInput: HTMLInputElement;
+  @query('#invalid-message') invalidMessage: HTMLDivElement;
 
-  @state() private hasButtonGroup = false;
+  /** @internal */
+  @state() hasButtonGroup = false;
+  /** @internal */
   @state() defaultValue = '';
 
-  /**  A Boolean attribute which, if present, marks the radio valid or invalid. Please note that 'invalid' can only be used in conjunction with 'this.required'.  */
-  @state() private invalid = false;
-
-  /** The radio groups's error text. Use to display an error message below the component. Please note that 'error-text' can only be used in conjunction with 'this.required' and 'this.invalid'.  */
-  @state() private errorText = '';
+  /**
+   * Indicates whether or not the user input is valid after the user has interacted with the component. These states are activated when the attribute "data-user-valid" or "data-user-invalid" are set on the component via the form controller. They are different than the native input validity state which is always either `true` or `false`.
+   * @internal
+   */
+  @state() showInvalidStyle = false;
 
   /**
    * The radio group's label. Required for proper accessibility. If you need to display HTML, use the `label` slot
    * instead.
    */
   @property() label = '';
+
+  /**
+   * Quick way to make the group label bold. Bolding the group label is highly recommended for visual clarity between the label and radio options.
+   * It is false by default for consistency among the other form elements which do not use bold labels by default.
+   */
+  @property({ type: Boolean, reflect: true }) boldLabel = false;
 
   /** The name of the radio group, submitted as a name/value pair with form data. */
   @property() name = 'option';
@@ -101,14 +109,11 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
     const hasCustomValidityMessage = this.customValidityMessage !== '';
 
     if (hasCustomValidityMessage) {
-      this.invalid = true;
       return customErrorValidityState;
     } else if (isRequiredAndEmpty) {
-      this.invalid = true;
       return valueMissingValidityState;
     }
 
-    this.invalid = false;
     return validValidityState;
   }
 
@@ -118,10 +123,8 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
     const hasCustomValidityMessage = this.customValidityMessage !== '';
 
     if (hasCustomValidityMessage) {
-      console.log('this.customValidityMessage', this.customValidityMessage);
       return this.customValidityMessage;
     } else if (isRequiredAndEmpty) {
-      console.log('this.validationInput.validationMessage', this.validationInput);
       return this.validationInput.validationMessage;
     }
 
@@ -204,12 +207,12 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
     event.preventDefault();
   }
 
-  private handleLabelClick() {
+  /** Move focus to the checked radio (or the first one if none are checked) */
+  focus() {
     const radios = this.getAllRadios();
     const checked = radios.find(radio => radio.checked);
     const radioToFocus = checked || radios[0];
 
-    // Move focus to the checked radio (or the first one if none are checked) when clicking the label
     if (radioToFocus) {
       radioToFocus.focus();
     }
@@ -218,6 +221,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
   private handleInvalid(event: Event) {
     this.formControlController.setValidity(false);
     this.formControlController.emitInvalidEvent(event);
+    this.invalidMessage.textContent = (event.target as HTMLInputElement).validationMessage;
   }
 
   private async syncRadioElements() {
@@ -230,7 +234,10 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
 
         radio.checked = radio.value === this.value;
         radio.size = this.size;
-        radio.invalid = this.invalid;
+
+        if (radio instanceof SdRadio) {
+          radio.invalid = this.showInvalidStyle;
+        }
       })
     );
 
@@ -288,7 +295,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
     this.syncRadios();
   }
 
-  @watch('invalid', { waitUntilFirstUpdate: true })
+  @watch('showInvalidStyle', { waitUntilFirstUpdate: true })
   handleInvalidChange() {
     this.syncRadios();
   }
@@ -320,14 +327,14 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
   }
 
   /** Checks for validity and shows the browser's validation message if the control is invalid. */
-  // TODO: https://github.com/solid-design-system/solid/issues/501
   reportValidity(): boolean {
     const isValid = this.validity.valid;
 
-    this.errorText = this.customValidityMessage || isValid ? '' : this.validationInput.validationMessage;
     this.formControlController.setValidity(isValid);
     this.validationInput.hidden = true;
     clearTimeout(this.validationTimeout);
+
+    this.formControlController.fakeUserInteraction();
 
     if (!isValid) {
       // Show the browser's constraint validation message
@@ -342,16 +349,14 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
   /** Sets a custom validation message. Pass an empty string to restore validity. */
   setCustomValidity(message = '') {
     this.customValidityMessage = message;
-    this.errorText = message;
     this.validationInput.setCustomValidity(message);
     this.formControlController.updateValidity();
   }
 
   render() {
     const hasLabelSlot = this.hasSlotController.test('label');
-    const hasErrorTextSlot = this.hasSlotController.test('error-text');
     const hasLabel = this.label ? true : !!hasLabelSlot;
-    const hasErrorText = this.errorText ? true : !!hasErrorTextSlot;
+
     const defaultSlot = html`
       <slot @slotchange=${this.syncRadios} @click=${this.handleRadioClick} @keydown=${this.handleKeyDown}></slot>
     `;
@@ -360,8 +365,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
       <fieldset
         part="form-control"
         class=${cx(
-          'border-0 p-0 m-0',
-          hasErrorText && 'text-error',
+          'border-0 p-0 m-0 flex flex-col',
           {
             /* sizes, fonts */
             sm: 'text-sm',
@@ -375,9 +379,13 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
         <label
           part="form-control-label"
           id="label"
-          class=${cx('mb-2 p-0 font-bold leading-normal text-black', hasLabel ? 'has-label flex' : 'hidden')}
-          aria-hidden=${!hasLabel}
-          @click=${this.handleLabelClick}
+          class=${cx(
+            'mb-2 p-0 leading-normal text-black text-left',
+            !hasLabel && 'hidden',
+            this.boldLabel && 'font-bold'
+          )}
+          @click=${this.focus}
+          aria-hidden=${hasLabel ? 'false' : 'true'}
         >
           <slot name="label">${this.label}</slot>
         </label>
@@ -385,8 +393,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
         <div
           part="form-control-input"
           class=${cx(
-            'form-control-input flex',
-            this.invalid && 'form-control-input--invalid text-error',
+            'flex',
             {
               vertical: 'flex-col',
               horizontal: 'flex-row'
@@ -394,7 +401,6 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
           )}
         >
           <div class="sr-only">
-            <div id="error-message" aria-live="assertive">${this.errorText}</div>
             <label>
               <input
                 id="validation-input"
@@ -406,9 +412,16 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
               />
             </label>
           </div>
-          ${defaultSlot}
+          ${this.hasButtonGroup
+            ? html`
+                <sd-button-group part="button-group" exportparts="base:button-group__base" role="presentation">
+                  ${defaultSlot}
+                </sd-button-group>
+              `
+            : defaultSlot}
         </div>
       </fieldset>
+      ${this.formControlController.renderInvalidMessage()}
     `;
   }
 
@@ -420,33 +433,38 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
     SolidElement.styles,
     css`
       :host {
-        display: block;
+        @apply block;
       }
 
-      :host([orientation='vertical']) ::slotted(sd-radio) {
-        margin-bottom: 8px;
-        display: flex;
+      :host([orientation='vertical']) {
+        ::slotted(sd-radio) {
+          @apply mb-2 flex;
+        }
+        ::slotted(sd-radio:last-of-type) {
+          @apply mb-0;
+        }
+      }
+      :host([orientation='horizontal']) {
+        /* default */
+        ::slotted(sd-radio) {
+          @apply mr-6;
+        }
+        ::slotted(sd-radio:last-of-type) {
+          @apply mr-0;
+        }
+        /* sm */
+        &:host([size='sm']) {
+          ::slotted(sd-radio) {
+            @apply mr-4;
+          }
+          ::slotted(sd-radio:last-of-type) {
+            @apply mr-0;
+          }
+        }
       }
 
-      :host([orientation='vertical']) ::slotted(sd-radio:last-of-type) {
-        margin-bottom: 0;
-      }
-
-      :host([orientation='horizontal']) ::slotted(sd-radio) {
-        margin-right: 24px;
-      }
-
-      :host([size='sm']):host([orientation='horizontal']) ::slotted(sd-radio) {
-        margin-right: 16px;
-      }
-
-      :host([orientation='horizontal']) ::slotted(sd-radio:last-of-type) {
-        margin-right: 0;
-      }
-
-      :host([required]) #label.has-label::after {
-        content: '*';
-        margin-left: 2px;
+      :host([required]) #label::after {
+        content: ' *';
       }
     `
   ];

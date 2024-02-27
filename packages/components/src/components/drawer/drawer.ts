@@ -348,12 +348,11 @@ export default class SdDrawer extends SolidElement {
 
   static styles = [
     SolidElement.styles,
+    componentStyles,
     css`
-      ${componentStyles}
       :host {
         --width: 25rem;
-
-        display: contents;
+        @apply contents;
       }
 
       :host([contained]) {
@@ -361,18 +360,16 @@ export default class SdDrawer extends SolidElement {
       }
 
       :host(:not([contained])) {
-        z-index: var(--sd-z-index-drawer);
+        @apply z-drawer;
       }
 
       [part='body'] {
         -webkit-overflow-scrolling: touch;
-        overflow-y: scroll;
+        @apply overflow-y-scroll;
         scrollbar-width: none; /* Firefox */
-      }
-
-      [part='body']::-webkit-scrollbar {
-        width: 0;
-        height: 0;
+        &::-webkit-scrollbar {
+          @apply w-0 h-0;
+        }
       }
     `
   ];

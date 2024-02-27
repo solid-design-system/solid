@@ -32,6 +32,7 @@ import SolidElement from '../../internal/solid-element';
  * @csspart header - The header that wraps both the summary and the expand/collapse icon.
  * @csspart summary - The container that wraps the summary.
  * @csspart summary-icon - The container that wraps the expand/collapse icons.
+ * @csspart summary-border - The container that wraps the currently active accordions border.
  * @csspart content - The container that wraps the accordion content slot.
  * @csspart content__slot - The accordion content slot.
  *
@@ -150,13 +151,12 @@ export default class SdAccordion extends SolidElement {
 
   render() {
     return html`
-      <div part="base" class="outline outline-1 outline-neutral-400 -outline-offset-1">
+      <div part="base" class="border-y-[1px] border-neutral-400">
         <header
           part="header"
           id="header"
           class=${cx(
-            'flex text-base gap-4 font-bold items-center cursor-pointer select-none px-4 py-3 focus-visible:focus-outline',
-            this.open ? 'bg-white text-accent hover:bg-neutral-200' : 'text-primary bg-neutral-100 hover:bg-neutral-200'
+            'flex text-base gap-4 font-bold items-center cursor-pointer select-none px-4 py-3 focus-visible:focus-outline text-primary hover:bg-neutral-200 relative group'
           )}
           role="button"
           aria-expanded=${this.open ? 'true' : 'false'}
@@ -165,6 +165,13 @@ export default class SdAccordion extends SolidElement {
           @click=${this.handleSummaryClick}
           @keydown=${this.handleSummaryKeyDown}
         >
+          <div
+            part="summary-border"
+            class=${cx(
+              !this.open && 'opacity-0',
+              'w-1 bg-accent absolute left-0 transition-all h-[calc(100%-16px)] group-hover:h-full'
+            )}
+          ></div>
           <slot name="summary" part="summary" class="flex flex-auto items-center text-left">${this.summary}</slot>
 
           <span
@@ -193,7 +200,7 @@ export default class SdAccordion extends SolidElement {
     SolidElement.styles,
     css`
       :host {
-        display: block;
+        @apply block;
       }
     `
   ];

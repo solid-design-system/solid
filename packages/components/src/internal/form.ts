@@ -1,4 +1,4 @@
-import type { ReactiveController, ReactiveControllerHost } from 'lit';
+import { html, type ReactiveController, type ReactiveControllerHost } from 'lit';
 import type { SolidFormControl } from '../internal/solid-element';
 import type SdButton from '../components/button/button';
 
@@ -123,6 +123,7 @@ export class FormControlController implements ReactiveController {
 
     if (this.host.hasUpdated) {
       this.setValidity(this.host?.validity!.valid);
+      this.updateValidityStyle();
     }
   }
 
@@ -201,9 +202,24 @@ export class FormControlController implements ReactiveController {
       });
     }
 
+    // Validate the form and prevent submission if it's invalid
     if (this.form && !this.form.noValidate && !disabled && !reportValidity(this.host)) {
       event.preventDefault();
       event.stopImmediatePropagation();
+
+      const invalidElements: NodeListOf<HTMLFormElement> | undefined = this.form?.querySelectorAll('[data-invalid]');
+
+      // Check for any radio groups, we need to dispatch the invalid event on them manually
+      const sdRadioGroups = Array.from(invalidElements).filter(
+        element => element.tagName.toLowerCase() === 'sd-radio-group'
+      );
+
+      sdRadioGroups.forEach(radioGroup => {
+        radioGroup.shadowRoot?.querySelector('input')?.dispatchEvent(new Event('invalid'));
+      });
+
+      // Focus the first invalid element
+      if (invalidElements?.length) invalidElements[0].focus();
     }
   };
 
@@ -224,6 +240,11 @@ export class FormControlController implements ReactiveController {
     if (emittedEvents.length === this.options.assumeInteractionOn.length) {
       this.setUserInteracted(this.host, true);
     }
+  };
+
+  // This is used by `reportValidity` to show validity state styles and messages without manual user interaction
+  fakeUserInteraction = () => {
+    this.setUserInteracted(this.host, true);
   };
 
   private reportFormValidity() {
@@ -290,9 +311,34 @@ export class FormControlController implements ReactiveController {
     }
   }
 
+  /** Checks for the presence of the attributes 'data-user-valid' or 'data-user-invalid' on the host form element and updates its corresponding style state. */
+  updateValidityStyle() {
+    if (this.host.hasAttribute('data-user-valid') && this.host.checkValidity()) {
+      // check for presence of showValidStyle attribute before mutating
+      if (this.host.showValidStyle !== undefined) this.host.showValidStyle = true;
+      this.host.showInvalidStyle = false;
+    } else if (this.host.hasAttribute('data-user-invalid') && !this.host.checkValidity()) {
+      if (this.host.showValidStyle !== undefined) this.host.showValidStyle = false;
+      this.host.showInvalidStyle = true;
+    } else {
+      if (this.host.showValidStyle !== undefined) this.host.showValidStyle = false;
+      this.host.showInvalidStyle = false;
+    }
+  }
+
   /** Returns the associated `<form>` element, if one exists. */
   getForm() {
     return this.form ?? null;
+  }
+  /** Returns a styled `<div>` element to display inline validation messages via its `textContent` property when a form element is invalid. */
+  renderInvalidMessage() {
+    return html`<div
+      id="invalid-message"
+      class="text-error text-sm mt-2 text-left"
+      part="invalid-message"
+      aria-live="polite"
+      ?hidden=${!this.host.showInvalidStyle}
+    ></div>`;
   }
 
   /** Resets the form, restoring all the control to their default value */
@@ -351,14 +397,15 @@ export class FormControlController implements ReactiveController {
   }
 
   /**
-   * Dispatches a non-bubbling, cancelable custom event of type `sl-invalid`.
-   * If the `sl-invalid` event will be cancelled then the original `invalid`
-   * event (which may have been passed as argument) will also be cancelled.
-   * If no original `invalid` event has been passed then the `sl-invalid`
+   * Dispatches a non-bubbling, cancelable custom event of type `sd-invalid`.
+   * If no original `invalid` event has been passed then the `sd-invalid`
    * event will be cancelled before being dispatched.
    */
   emitInvalidEvent(originalInvalidEvent?: Event) {
-    const slInvalidEvent = new CustomEvent<Record<PropertyKey, never>>('sd-invalid', {
+    // We always want to prevent the original invalid event so no browser validation messages are shown.
+    originalInvalidEvent?.preventDefault();
+
+    const sdInvalidEvent = new CustomEvent<Record<PropertyKey, never>>('sd-invalid', {
       bubbles: false,
       composed: false,
       cancelable: true,
@@ -366,11 +413,7 @@ export class FormControlController implements ReactiveController {
     });
 
     if (!originalInvalidEvent) {
-      slInvalidEvent.preventDefault();
-    }
-
-    if (!this.host.dispatchEvent(slInvalidEvent)) {
-      originalInvalidEvent?.preventDefault();
+      sdInvalidEvent.preventDefault();
     }
   }
 }

@@ -55,7 +55,10 @@ export default class SdButton extends SolidElement implements SolidFormControl {
 
   @query('a, button') button: HTMLButtonElement | HTMLLinkElement;
   @queryAssignedElements({ selector: 'sd-icon' }) _iconsInDefaultSlot!: HTMLElement[];
-  @state() invalid = false;
+
+  /** @internal */
+  @state() protected invalid = false;
+
   @property() title = ''; // make reactive to pass through
 
   /** The button's theme variant. */
@@ -374,10 +377,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
 
     css`
       :host {
-        display: inline-block;
-        position: relative;
-        width: auto;
-        cursor: pointer;
+        @apply inline-block cursor-pointer w-auto relative;
       }
 
       sd-spinner {
@@ -391,11 +391,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
     */
 
       ::slotted(sd-badge) {
-        position: absolute;
-        top: 0;
-        right: 0;
-        translate: 50% -50%;
-        pointer-events: none;
+        @apply absolute top-0 right-0 !translate-x-1/2 !-translate-y-1/2 pointer-events-none;
       }
 
       /**
@@ -406,61 +402,6 @@ export default class SdButton extends SolidElement implements SolidFormControl {
       sd-spinner {
         font-size: calc(var(--tw-varspacing) / 2);
       }
-
-      ///*
-      // * Button groups support a variety of button types (e.g. buttons with tooltips, buttons as dropdown triggers, etc.).
-      // * This means buttons aren't always direct descendants of the button group, thus we can't target them with the
-      // * ::slotted selector. To work around this, the button group component does some magic to add these special classes to
-      // * buttons and we style them here instead.
-      // */
-
-      // :host(.sd-button-group__button--first:not(.sd-button-group__button--last)) .button {
-      //   border-start-end-radius: 0;
-      //   border-end-end-radius: 0;
-      // }
-
-      // :host(.sd-button-group__button--inner) .button {
-      //   border-radius: 0;
-      // }
-
-      // :host(.sd-button-group__button--last:not(.sd-button-group__button--first)) .button {
-      //   border-start-start-radius: 0;
-      //   border-end-start-radius: 0;
-      // }
-
-      // /* All except the first */
-      // :host(.sd-button-group__button:not(.sd-button-group__button--first)) {
-      //   margin-inline-start: calc(-1 * var(--sd-input-border-width));
-      // }
-
-      // /* Add a visual separator between solid buttons */
-      // :host(
-      //     .sd-button-group__button:not(
-      //         .sd-button-group__button--first,
-      //         .sd-button-group__button--radio,
-      //         [variant='default']
-      //       ):not(:hover)
-      //   )
-      //   .button:after {
-      //   content: '';
-      //   position: absolute;
-      //   top: 0;
-      //   inset-inline-start: 0;
-      //   bottom: 0;
-      //   border-left: solid 1px rgb(128 128 128 / 33%);
-      //   mix-blend-mode: multiply;
-      // }
-
-      // /* Bump hovered, focused, and checked buttons up so their focus ring isn't clipped */
-      // :host(.sd-button-group__button--hover) {
-      //   z-index: 1;
-      // }
-
-      // /* Focus and checked are always on top */
-      // :host(.sd-button-group__button--focus),
-      // :host(.sd-button-group__button[checked]) {
-      //   z-index: 2;
-      // }
     `
   ];
 }

@@ -32,5 +32,6 @@
   "automergeType": "pr",
   "automergeStrategy": "squash",
   "automergeSchedule": ["after 10pm every weekday", "before 5am every weekday"],
-  "autoApprove": true
+  "autoApprove": true,
+  "rebaseWhen": "never"
 }

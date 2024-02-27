@@ -31,24 +31,17 @@ export default class SdCarouselItem extends SolidElement {
 
   static styles = [
     SolidElement.styles,
+    componentStyles,
     css`
-      ${componentStyles}
       :host {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        width: 100%;
-        height: 100%;
         aspect-ratio: var(--aspect-ratio);
         scroll-snap-align: start;
         scroll-snap-stop: always;
+        @apply flex flex-col items-center justify-center w-full h-full;
       }
 
       ::slotted(img) {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+        @apply w-full h-full object-cover;
       }
     `
   ];

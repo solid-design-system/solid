@@ -1,6 +1,6 @@
 {
   "name": "@solid-design-system/tokens",
-  "version": "1.2.1",
+  "version": "2.1.1",
   "description": "Solid Design System: Tokens",
   "main": "index.js",
   "scripts": {
@@ -24,7 +24,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/solid-design-system/solid.git"
+    "url": "git+https://github.com/solid-design-system/solid.git",
+    "directory": "packages/tokens"
   },
   "license": "MIT",
   "devDependencies": {

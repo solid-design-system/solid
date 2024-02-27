@@ -10,8 +10,9 @@ on:
       - main
 
 jobs:
-  chromatic-deployment:
+  chromatic-deployment-main:
     runs-on: ubuntu-latest
+    if: ${{ !contains(github.event.head_commit.message, '[skip chromatic]') }}
     steps:
         # 👇 Version 2 of the action
       - name: Checkout repository
@@ -29,7 +30,7 @@ jobs:
         run: cd packages/components && pnpm run build.chromatic
       # 👇 Adds Chromatic as a step in the workflow
       - name: Publish to Chromatic
-        uses: chromaui/action@v1
+        uses: chromaui/action@latest
         # Options required to the GitHub Chromatic Action
         with:
           # 👇 Chromatic projectToken, refer to the manage page to obtain it.

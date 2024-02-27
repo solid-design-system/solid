@@ -2,8 +2,8 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { AddonPanel, Form } from '@storybook/components';
 import { PARAM_KEY, PANEL_DEFAULTS } from './constants';
 import { useGlobals } from '@storybook/manager-api';
-import { calculateColorsAsCss } from './colorCalculations';
 import theme from '../../../../tokens/src/create-theme.cjs';
+import { calculateColorsAsCss } from '@solid-design-system/theming';
 
 const { Textarea, Button } = Form;
 
@@ -62,7 +62,7 @@ export const Panel: React.FC<PanelProps> = props => {
   return (
     <AddonPanel {...props}>
       <div style={{ padding: '20px' }}>
-        <h2>Soid Theme Generator</h2>
+        <h2>Solid Theme Generator</h2>
         {['primary', 'accent', 'neutral'].map(colorKey => (
           <div style={{ display: 'flex', alignItems: 'center', marginTop: '8px' }}>
             <label style={{ width: '60px', display: 'inline-block' }}>
