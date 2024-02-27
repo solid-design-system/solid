@@ -143,7 +143,7 @@ importers:
         version: 7.5.3(lit@3.0.2)(react-dom@18.2.0)(react@18.2.0)(typescript@5.3.3)(vite@5.0.0)
       '@types/mocha':
         specifier: ^10.0.4
-        version: 10.0.4
+        version: 10.0.6
       '@types/sinon':
         specifier: ^17.0.1
         version: 17.0.1
@@ -5352,8 +5352,8 @@ packages:
     resolution: {integrity: sha512-hov8bUuiLiyFPGyFPE1lwWhmzYbirOXQNNo40+y3zow8aFVTeyn3VWL0VFFfdNddA8S4Vf0Tc062rzyNr7Paag==}
     dev: true
 
-  /@types/mocha@10.0.4:
-    resolution: {integrity: sha512-xKU7bUjiFTIttpWaIZ9qvgg+22O1nmbA+HRxdlR+u6TWsGfmFdXrheJoK4fFxrHNVIOBDvDNKZG+LYBpMHpX3w==}
+  /@types/mocha@10.0.6:
+    resolution: {integrity: sha512-dJvrYWxP/UcXm36Qn36fxhUKu8A/xMRXVT2cliFF1Z7UA9liG5Psj3ezNSZw+5puH2czDXRLcXQxf8JbJt0ejg==}
     dev: true
 
   /@types/ms@0.7.34:
