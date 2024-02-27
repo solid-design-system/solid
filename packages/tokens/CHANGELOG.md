@@ -1,3 +1,10 @@
+# [@solid-design-system/tokens-v2.2.0](https://github.com/solid-design-system/solid/compare/tokens/2.1.1...tokens/2.2.0) (2024-02-27)
+
+
+### Features
+
+* ✨ add defined aspect ratios and additional colors ([#757](https://github.com/solid-design-system/solid/issues/757)) ([7cff6ad](https://github.com/solid-design-system/solid/commit/7cff6adb907cb29d361acf0b8c5de2ea5ed6f0a5))
+
 # [@solid-design-system/tokens-v2.1.1](https://github.com/solid-design-system/solid/compare/tokens/2.1.0...tokens/2.1.1) (2024-02-26)
 
 
