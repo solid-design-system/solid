@@ -184,7 +184,7 @@ export const TriangleBorder = {
             type: 'attribute',
             name: 'sd-container--triangle',
             values: [
-              'sd-container--triangle-top sd-container--triangle-top-border',
+              'sd-container--triangle-top-border',
               'sd-container--triangle-right-border',
               'sd-container--triangle-bottom-border',
               'sd-container--triangle-left-border'
