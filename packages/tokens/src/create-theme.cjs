@@ -163,7 +163,7 @@ const getSpacings = () => {
 };
 
 // Get all Object.entries(tokens['UI Semantic'].background and set them as background colors
-const getColors = (scope, cssVariableScope) => {
+const getColors = scope => {
   let result = {};
   const getColor = value => hexToRgb(resolveValue(value)).join(' ');
   if (scope) {
@@ -180,7 +180,7 @@ const getColors = (scope, cssVariableScope) => {
   } else {
     // The full color palette - especially used for documentation purposes
     Object.entries(tokens['UI Core'])
-      .filter(([colorName]) => ['blue', 'green', 'grey', 'black', 'white'].includes(colorName))
+      .filter(([colorName]) => ['blue', 'green', 'grey', 'black', 'white', 'red'].includes(colorName))
       .forEach(([colorName, shades]) => {
         if (colorName === 'black' || colorName === 'white') {
           result[sanitizeKey(colorName)] = `rgb(var(--sd-color-${sanitizeKey(sanitizeValue(colorName))}, ${getColor(
@@ -189,7 +189,7 @@ const getColors = (scope, cssVariableScope) => {
         } else {
           Object.entries(shades).forEach(([shadeName, { value, description }]) => {
             const name = `${
-              { blue: 'primary', green: 'accent', grey: 'neutral' }[colorName] || colorName
+              { blue: 'primary', green: 'accent', grey: 'neutral', red: 'error' }[colorName] || colorName
             }-${shadeName}`;
             result[sanitizeKey(name)] = `rgb(var(--sd-color-${sanitizeKey(sanitizeValue(name))}, ${getColor(
               value
@@ -199,7 +199,46 @@ const getColors = (scope, cssVariableScope) => {
       });
   }
 
+  const colorMappings = {
+    success: {
+      color: '#25880E',
+      comment: 'Used for success messages'
+    },
+    warning: {
+      color: '#BB8D20',
+      comment: 'Used for notifications'
+    },
+    'risk-low': {
+      color: '#017DC3',
+      comment: 'Exclusively for marking fonds'
+    },
+    'risk-moderate': {
+      color: '#00A593',
+      comment: 'Exclusively for marking fonds'
+    },
+    'risk-increased': {
+      color: '#FFF000',
+      comment: 'Exclusively for marking fonds'
+    },
+    'risk-high': {
+      color: '#FA9B1E',
+      comment: 'Exclusively for marking fonds'
+    },
+    'risk-veryhigh': {
+      color: '#FF0000',
+      comment: 'Exclusively for marking fonds'
+    }
+  };
+
+  for (const [key, { color, comment }] of Object.entries(colorMappings)) {
+    // Construct the result using the key, color, and comment
+    result[sanitizeValue(key)] = `rgb(var(--sd-color-${sanitizeKey(sanitizeValue(key))}, ${getColor(
+      color
+    )}) / <alpha-value>) /* ${comment} */`;
+  }
+
   result = reformatColors(result);
+
   return {
     ...result,
     inherit: 'inherit',
@@ -266,6 +305,37 @@ const getZIndices = () => {
   return result;
 };
 
+const getRisks = () => {
+  const result = {
+    low: 'rgb(var(--sd-color-risk-low, 1 125 195) / <alpha-value>) /* Exclusively for marking fonds */',
+    moderate: 'rgb(var(--sd-color-risk-moderate, 0 165 147) / <alpha-value>) /* Exclusively for marking fonds */',
+    increased: 'rgb(var(--sd-color-risk-increased, 255 240 0) / <alpha-value>) /* Exclusively for marking fonds */',
+    high: 'rgb(var(--sd-color-risk-high, 250 155 30) / <alpha-value>) /* Exclusively for marking fonds */',
+    veryhigh: 'rgb(var(--sd-color-risk-veryhigh, 255 0 0) / <alpha-value>) /* Exclusively for marking fonds */'
+  };
+
+  return result;
+};
+
+const getAspectRatios = () => {
+  const result = {
+    video: '16 / 9',
+    square: '1 / 1',
+    '6/5': '6 / 5',
+    '5/4': '5 / 4',
+    '4/3': '4 / 3',
+    '3/2': '3 / 2',
+    '16/10': '16 / 10',
+    'golden-ratio': '1.6180339887498948482 / 1',
+    '2/1': '2 / 1',
+    '21/9': '21 / 9',
+    '3/4': '3 / 4',
+    '4/5': '4 / 5'
+  };
+
+  return result;
+};
+
 /** @type {import('tailwindcss').Config} */
 const config = {
   theme: {
@@ -296,7 +366,9 @@ const config = {
     textColor: { ...getColors('text', 'text-color') },
     textDecorationColor: { ...getColors('text', 'text-color') },
     boxShadow: { ...getShadows() },
-    zIndex: { ...getZIndices() }
+    zIndex: { ...getZIndices() },
+    risk: { ...getRisks() },
+    aspectRatio: { ...getAspectRatios() }
   }
 };
 
