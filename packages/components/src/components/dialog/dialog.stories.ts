@@ -50,8 +50,8 @@ export const Default = {
   render: (args: any) => {
     return html` <div style="height: 40vh;">
       ${generateTemplate({
-      args
-    })}
+        args
+      })}
     </div>`;
   }
 };
@@ -67,20 +67,20 @@ export const Headline = {
   render: (args: any) => {
     return html` <div style="height: 40vh;">
       ${generateTemplate({
-      args,
-      constants: [
-        {
-          type: 'slot',
-          name: 'headline',
-          value: ''
-        },
-        {
-          type: 'attribute',
-          name: 'headline',
-          value: 'This headline is set via the headline attribute'
-        }
-      ]
-    })}
+        args,
+        constants: [
+          {
+            type: 'slot',
+            name: 'headline',
+            value: ''
+          },
+          {
+            type: 'attribute',
+            name: 'headline',
+            value: 'This headline is set via the headline attribute'
+          }
+        ]
+      })}
     </div>`;
   }
 };
@@ -96,26 +96,26 @@ export const NoCloseButton = {
   render: (args: any) => {
     return html` <div style="height: 40vh;">
       ${generateTemplate({
-      args,
-      constants: [
-        {
-          type: 'attribute',
-          name: 'no-close-button',
-          value: true
-        },
-        {
-          type: 'slot',
-          name: 'footer',
-          value: `<sd-button slot="footer" class="w-full">Close</sd-button>
+        args,
+        constants: [
+          {
+            type: 'attribute',
+            name: 'no-close-button',
+            value: true
+          },
+          {
+            type: 'slot',
+            name: 'footer',
+            value: `<sd-button slot="footer" class="w-full">Close</sd-button>
             <script>
                 const dialog = document.querySelector('sd-dialog');
                 const footer = dialog.querySelector('sd-button[slot="footer"]');
       
                 footer.addEventListener('click', () => dialog.hide());
           </script>`
-        }
-      ]
-    })}
+          }
+        ]
+      })}
     </div>`;
   }
 };
@@ -128,15 +128,15 @@ export const Scrolling = {
   render: (args: any) => {
     return html` <div style="height: 100vh;">
       ${generateTemplate({
-      args,
-      constants: [
-        {
-          type: 'slot',
-          name: 'default',
-          value: `<div class="slot slot--border slot--background slot--text" style="height:150vh; width: 100%; padding: 0 1rem; justify-content:start;">Scroll down and give it a try!</div>`
-        }
-      ]
-    })}
+        args,
+        constants: [
+          {
+            type: 'slot',
+            name: 'default',
+            value: `<div class="slot slot--border slot--background slot--text" style="height:150vh; width: 100%; padding: 0 1rem; justify-content:start;">Scroll down and give it a try!</div>`
+          }
+        ]
+      })}
     </div>`;
   }
 };
@@ -168,15 +168,13 @@ export const ExtendedFooter = {
   },
   render: () => {
     return html`
-
       <style>
         @media (max-width: 414px) {
-          sd-dialog::part(footer){
+          sd-dialog::part(footer) {
             flex-direction: column;
+          }
         }
-      }
-        
-        </style>
+      </style>
 
       <div style="height: 40vh;">
         <sd-dialog open="" id="extended-footer"
