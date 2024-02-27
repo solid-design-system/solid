@@ -19,7 +19,7 @@ export default {
     },
     {
       name: 'sd-container--triangle-...',
-      options: ['top, right, bottom, left'],
+      options: ['top', 'right', 'bottom', 'left'],
       description:
         'Defines an optional triangle cut-out for sd-container. This allows for an indentation resembling an arrow on any side of the container. CSS Property `triangle-background` defines the background color of the cut-out.'
     }

@@ -141,11 +141,12 @@ export const CustomPadding = {
 export const TrianglePosition = {
   parameters: {
     controls: {
-      exclude: ['sd-container--triangle-...']
+      exclude: ['sd-container--triangle-...', 'sd-container--variant-...']
     }
   },
   render: (args: any) => {
     return html` ${generateTemplate({
+      constants: [{ type: 'attribute', name: 'sd-container--variant-...', value: 'primary' }],
       axis: {
         y: [
           {
@@ -212,8 +213,6 @@ export const TriangleColor = {
   },
   render: (args: any) => {
     const { 'sd-container--padding-...-attr': paddingAttr } = args;
-
-    console.log(paddingAttr);
 
     return html`
       <div class="bg-primary p-4">
