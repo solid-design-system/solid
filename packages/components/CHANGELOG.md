@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v2.8.0](https://github.com/solid-design-system/solid/compare/components/2.7.0...components/2.8.0) (2024-02-28)
+
+
+### Features
+
+* ✨ add sd container triangle property ([#776](https://github.com/solid-design-system/solid/issues/776)) ([cce15b7](https://github.com/solid-design-system/solid/commit/cce15b7fc41ee2d5f81506af4846045b5baebd22)), closes [#737](https://github.com/solid-design-system/solid/issues/737)
+
+### 📈 Stats
+* Bundle size (uncompressed): 281 KB (unchanged)
+* Bundle size (gzipped): 68 KB (unchanged)
+
 # [@solid-design-system/components-v2.7.0](https://github.com/solid-design-system/solid/compare/components/2.6.0...components/2.7.0) (2024-02-27)
 
 
