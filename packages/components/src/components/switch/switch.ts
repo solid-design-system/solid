@@ -165,9 +165,9 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
       <label
         part="base"
         class=${cx(
-          'group flex items-center text-base leading-normal text-black cursor-pointer',
-          this.disabled && 'hover:cursor-not-allowed'
-        )}
+      'group flex items-center text-base leading-normal text-black cursor-pointer',
+      this.disabled && 'hover:cursor-not-allowed'
+    )}
       >
         <input
           id="input"
@@ -191,44 +191,44 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
           id="control"
           part="control ${this.checked ? ' control--checked' : 'control--unchecked'}"
           class=${cx(
-            `relative flex flex-initial items-center justify-center border rounded-full h-4 w-8 transition-colors ease duration-100
+      `relative flex flex-initial items-center justify-center border rounded-full h-4 w-8 transition-colors ease duration-100
             peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2
             peer-focus-visible:outline-primary`,
-            this.disabled && this.checked
-              ? 'border-neutral-500 bg-neutral-500'
-              : this.disabled
-                ? 'border-neutral-500'
-                : this.showInvalidStyle
-                  ? 'border-error bg-error hover:bg-error-400'
-                  : this.checked
-                    ? 'border-accent bg-accent hover:bg-accent-550 group-hover:bg-accent-550'
-                    : 'border-neutral-800 bg-white hover:bg-neutral-200 group-hover:bg-neutral-200'
-          )}
+      this.disabled && this.checked
+        ? 'border-neutral-500 bg-neutral-500'
+        : this.disabled
+          ? 'border-neutral-500'
+          : this.showInvalidStyle
+            ? 'border-error bg-error hover:bg-error-400'
+            : this.checked
+              ? 'border-accent bg-accent hover:bg-accent-550 group-hover:bg-accent-550'
+              : 'border-neutral-800 bg-white hover:bg-neutral-200 group-hover:bg-neutral-200'
+    )}
         >
           <span
             id="thumb"
             part="thumb"
             class=${cx(
-              'w-2.5 h-2.5 rounded-full transition-transform ease-in-out duration-200',
-              this.disabled && this.checked
-                ? 'bg-white'
-                : this.disabled
-                  ? '-translate-x-2 bg-neutral-500'
-                  : this.showInvalidStyle
-                    ? 'bg-white -translate-x-2'
-                    : this.checked
-                      ? 'translate-x-2 bg-white'
-                      : 'bg-neutral-800 -translate-x-2'
-            )}
+      'w-2.5 h-2.5 rounded-full transition-transform ease-in-out duration-200',
+      this.disabled && this.checked
+        ? 'bg-white'
+        : this.disabled
+          ? '-translate-x-2 bg-neutral-500'
+          : this.showInvalidStyle
+            ? 'bg-white -translate-x-2'
+            : this.checked
+              ? 'translate-x-2 bg-white'
+              : 'bg-neutral-800 -translate-x-2'
+    )}
           ></span>
         </span>
         <span
           part="label"
           id="label"
           class=${cx(
-            'select-none inline-block ml-2',
-            this.disabled ? 'text-neutral-500' : this.showInvalidStyle ? 'text-error' : 'text-black'
-          )}
+      'select-none inline-block ml-2',
+      this.disabled ? 'text-neutral-500' : this.showInvalidStyle ? 'text-error' : 'text-black'
+    )}
         >
           <slot></slot>
         </span>

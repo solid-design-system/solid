@@ -106,53 +106,53 @@ export default class SdRadio extends SolidElement {
       <span
         part="base"
         class=${cx(
-          'sd-radio group inline-flex items-start items-center text-base leading-normal text-black cursor-pointer align-middle',
-          this.disabled && 'hover:cursor-not-allowed',
-          {
-            /* sizes, fonts */
-            sm: 'small-size text-sm',
-            lg: 'text-base'
-          }[this.size]
-        )}
+      'sd-radio group inline-flex items-start items-center text-base leading-normal text-black cursor-pointer align-middle',
+      this.disabled && 'hover:cursor-not-allowed',
+      {
+        /* sizes, fonts */
+        sm: 'small-size text-sm',
+        lg: 'text-base'
+      }[this.size]
+    )}
       >
         <span
           part="${`${this.checked ? 'control--checked' : 'control--unchecked'}`}"
           class=${cx(
-            'flex-initial shrink-0 relative inline-flex items-center justify-center border rounded-full bg-white h-4 w-4',
-            this.disabled
-              ? 'border-neutral-500'
-              : this.invalid
-                ? 'border-error hover:border-error-400 group-hover:border-error-400'
-                : this.checked
-                  ? 'border-accent hover:border-accent-550 group-hover:border-accent-550'
-                  : 'border-neutral-800 hover:bg-neutral-200 group-hover:bg-neutral-200'
-          )}
+      'flex-initial shrink-0 relative inline-flex items-center justify-center border rounded-full bg-white h-4 w-4',
+      this.disabled
+        ? 'border-neutral-500'
+        : this.invalid
+          ? 'border-error hover:border-error-400 group-hover:border-error-400'
+          : this.checked
+            ? 'border-accent hover:border-accent-550 group-hover:border-accent-550'
+            : 'border-neutral-800 hover:bg-neutral-200 group-hover:bg-neutral-200'
+    )}
         >
           ${this.checked
-            ? html`
+        ? html`
                 <span
                   part="checked"
                   class=${cx(
-                    'rounded-full inline-flex text-white border bg-accent h-2.5 w-2.5',
-                    this.disabled
-                      ? 'bg-neutral-500'
-                      : this.invalid
-                        ? 'bg-error hover:bg-error-400 group-hover:bg-error-400'
-                        : this.checked
-                          ? 'bg-accent hover:bg-accent-550 group-hover:bg-accent-550'
-                          : 'bg-neutral-800'
-                  )}
+          'rounded-full inline-flex text-white border bg-accent h-2.5 w-2.5',
+          this.disabled
+            ? 'bg-neutral-500'
+            : this.invalid
+              ? 'bg-error hover:bg-error-400 group-hover:bg-error-400'
+              : this.checked
+                ? 'bg-accent hover:bg-accent-550 group-hover:bg-accent-550'
+                : 'bg-neutral-800'
+        )}
                 ></span>
               `
-            : ''}
+        : ''}
         </span>
 
         <slot
           part="label"
           class=${cx(
-            'ml-2 select-none inline-block',
-            this.disabled ? 'text-neutral-500' : this.invalid ? 'text-error' : 'text-black'
-          )}
+          'ml-2 select-none inline-block',
+          this.disabled ? 'text-neutral-500' : this.invalid ? 'text-error' : 'text-black'
+        )}
         >
         </slot>
       </span>
