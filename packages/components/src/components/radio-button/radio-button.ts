@@ -102,21 +102,21 @@ export default class SdRadioButton extends SolidElement {
           role="radio"
           aria-checked="${this.checked}"
           class="${cx(
-      'relative text-center border rounded-default transition-all ease-in-out duration-100 items-center justify-center focus-visible:focus-outline',
-      this.size === 'sm' ? 'text-sm' : 'text-base',
-      this.checked && !this.disabled
-        ? 'bg-primary border-primary text-white hover:bg-primary-500 hover:border-primary-500'
-        : this.disabled && !this.checked
-          ? 'border-neutral-500 text-neutral-500 hover:cursor-not-allowed'
-          : this.disabled && this.checked
-            ? 'bg-neutral-500 text-white hover:cursor-not-allowed'
-            : 'bg-transparent text-primary border-primary hover:bg-primary-100 hover:border-primary-500 hover:text-primary-500 cursor-pointer',
-      hasDefaultSlot && 'px-4',
-      this.hasFocus && 'focused-class',
-      hasDefaultSlot && 'button--has-label',
-      hasIconSlot && 'button--has-icon flex gap-2',
-      buttonSizeClass
-    )}"
+            'relative text-center border rounded-default transition-all ease-in-out duration-100 items-center justify-center focus-visible:focus-outline',
+            this.size === 'sm' ? 'text-sm' : 'text-base',
+            this.checked && !this.disabled
+              ? 'bg-primary border-primary text-white hover:bg-primary-500 hover:border-primary-500'
+              : this.disabled && !this.checked
+                ? 'border-neutral-500 text-neutral-500 hover:cursor-not-allowed'
+                : this.disabled && this.checked
+                  ? 'bg-neutral-500 text-white hover:cursor-not-allowed'
+                  : 'bg-transparent text-primary border-primary hover:bg-primary-100 hover:border-primary-500 hover:text-primary-500 cursor-pointer',
+            hasDefaultSlot && 'px-4',
+            this.hasFocus && 'focused-class',
+            hasDefaultSlot && 'button--has-label',
+            hasIconSlot && 'button--has-icon flex gap-2',
+            buttonSizeClass
+          )}"
           aria-disabled=${this.disabled}
           type="button"
           value=${ifDefined(this.value)}
@@ -129,18 +129,18 @@ export default class SdRadioButton extends SolidElement {
             name="icon"
             part="icon"
             class="${cx(
-      hasIconSlot && 'inline-flex relative items-center',
-      {
-        sm: 'text-base',
-        md: 'text-lg',
-        lg: 'text-xl'
-      }[this.size]
-    )}"
+              hasIconSlot && 'inline-flex relative items-center',
+              {
+                sm: 'text-base',
+                md: 'text-lg',
+                lg: 'text-xl'
+              }[this.size]
+            )}"
             ?hidden=${!hasIconSlot}
           ></slot>
           ${hasDefaultSlot
-        ? html`<slot part="label" class="button__label inline-flex relative items-center whitespace-nowrap"></slot>`
-        : null}
+            ? html`<slot part="label" class="button__label inline-flex relative items-center whitespace-nowrap"></slot>`
+            : null}
         </button>
       </div>
     `;

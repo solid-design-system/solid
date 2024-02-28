@@ -187,7 +187,7 @@ export default class SdDropdown extends SolidElement {
       setTimeout(() => {
         const activeElement =
           document.activeElement?.shadowRoot?.activeElement?.shadowRoot?.activeElement?.getRootNode() instanceof
-            ShadowRoot
+          ShadowRoot
             ? document.activeElement?.shadowRoot?.activeElement?.shadowRoot?.activeElement
             : this.containingElement?.getRootNode() instanceof ShadowRoot
               ? document.activeElement?.shadowRoot?.activeElement
@@ -441,10 +441,10 @@ export default class SdDropdown extends SolidElement {
         <slot
           part="panel"
           class=${cx(
-      'shadow bg-white',
-      this.open ? 'block pointer-events-auto' : 'pointer-events-none',
-      this.rounded && 'rounded-md'
-    )}
+            'shadow bg-white',
+            this.open ? 'block pointer-events-auto' : 'pointer-events-none',
+            this.rounded && 'rounded-md'
+          )}
           aria-hidden=${this.open ? 'false' : 'true'}
           aria-labelledby="dropdown"
         ></slot>

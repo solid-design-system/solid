@@ -822,12 +822,12 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
       <div
         part="form-control"
         class=${cx(
-      'relative text-left',
-      cursorStyles,
-      this.size === 'sm' ? 'text-sm' : 'text-base',
+          'relative text-left',
+          cursorStyles,
+          this.size === 'sm' ? 'text-sm' : 'text-base',
 
-      this.open && 'z-50'
-    )}
+          this.open && 'z-50'
+        )}
       >
         <label
           id="label"
@@ -842,46 +842,46 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
         <div
           part="form-control-input"
           class=${cx(
-      'relative w-full bg-white',
-      {
-        disabled: 'text-neutral-500',
-        readonly: 'text-black',
-        activeInvalid: 'text-error',
-        activeValid: 'text-success',
-        active: 'text-black',
-        invalid: 'text-error',
-        valid: 'text-success',
-        default: 'text-black'
-      }[selectState]
-    )}
+            'relative w-full bg-white',
+            {
+              disabled: 'text-neutral-500',
+              readonly: 'text-black',
+              activeInvalid: 'text-error',
+              activeValid: 'text-success',
+              active: 'text-black',
+              invalid: 'text-error',
+              valid: 'text-success',
+              default: 'text-black'
+            }[selectState]
+          )}
         >
           <div
             part="border"
             class=${cx(
-      'absolute top-0 w-full h-full pointer-events-none border rounded-default',
-      this.hasHover && 'bg-neutral-200',
-      {
-        disabled: 'border-neutral-500',
-        readonly: 'border-neutral-800',
-        activeInvalid: 'border-error border-2',
-        activeValid: 'border-success border-2',
-        active: 'border-primary border-2',
-        invalid: 'border-error',
-        valid: 'border-success',
-        default: 'border-neutral-800'
-      }[selectState],
-      this.open &&
-      (this.currentPlacement === 'bottom'
-        ? 'rounded-bl-none rounded-br-none'
-        : 'rounded-tl-none rounded-tr-none')
-    )}
+              'absolute top-0 w-full h-full pointer-events-none border rounded-default',
+              this.hasHover && 'bg-neutral-200',
+              {
+                disabled: 'border-neutral-500',
+                readonly: 'border-neutral-800',
+                activeInvalid: 'border-error border-2',
+                activeValid: 'border-success border-2',
+                active: 'border-primary border-2',
+                invalid: 'border-error',
+                valid: 'border-success',
+                default: 'border-neutral-800'
+              }[selectState],
+              this.open &&
+                (this.currentPlacement === 'bottom'
+                  ? 'rounded-bl-none rounded-br-none'
+                  : 'rounded-tl-none rounded-tr-none')
+            )}
           ></div>
           <sd-popup
             @sd-current-placement=${this.handleCurrentPlacement}
             class=${cx(
-      'inline-flex relative w-full',
-      this.currentPlacement === 'bottom' ? 'origin-top' : 'origin-bottom'
-    )}
+              'inline-flex relative w-full',
+              this.currentPlacement === 'bottom' ? 'origin-top' : 'origin-bottom'
+            )}
             placement=${this.placement}
             strategy=${this.hoist ? 'fixed' : 'absolute'}
             flip
@@ -896,13 +896,13 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
             <div
               part="combobox"
               class=${cx(
-      'relative w-full px-4 flex flex-row items-center rounded-default',
-      {
-        sm: 'py-1 min-h-[32px]',
-        md: 'py-1 min-h-[40px]',
-        lg: 'py-2 min-h-[48px]'
-      }[this.size]
-    )}
+                'relative w-full px-4 flex flex-row items-center rounded-default',
+                {
+                  sm: 'py-1 min-h-[32px]',
+                  md: 'py-1 min-h-[40px]',
+                  lg: 'py-2 min-h-[48px]'
+                }[this.size]
+              )}
               slot="anchor"
               @keydown=${this.handleComboboxKeyDown}
               @mousedown=${this.handleComboboxMouseDown}
@@ -914,10 +914,10 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 form=${this.form}
                 part="display-input"
                 class=${cx(
-      'appearance-none outline-none flex-grow bg-transparent w-full',
-      cursorStyles,
-      this.multiple && this.useTags && this.value.length > 0 ? 'hidden' : ''
-    )}
+                  'appearance-none outline-none flex-grow bg-transparent w-full',
+                  cursorStyles,
+                  this.multiple && this.useTags && this.value.length > 0 ? 'hidden' : ''
+                )}
                 type="text"
                 placeholder=${this.placeholder}
                 .disabled=${this.disabled}
@@ -939,8 +939,8 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
               />
 
               ${this.multiple && this.useTags
-        ? html`<div part="tags" class="flex-grow flex flex-wrap items-center gap-1">${this.tags}</div>`
-        : ''}
+                ? html`<div part="tags" class="flex-grow flex flex-wrap items-center gap-1">${this.tags}</div>`
+                : ''}
 
               <input
                 class=${cx('value-input absolute top-0 left-0 w-full h-full opacity-0 -z-10', cursorStyles)}
@@ -954,7 +954,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 @invalid=${this.handleInvalid}
               />
               ${hasClearIcon
-        ? html`
+                ? html`
                     <button
                       part="clear-button"
                       class=${cx('select__clear flex justify-center', iconMarginLeft)}
@@ -973,9 +973,9 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                       </slot>
                     </button>
                   `
-        : ''}
+                : ''}
               ${this.showInvalidStyle
-        ? html`
+                ? html`
                     <sd-icon
                       part="invalid-icon"
                       class=${cx('text-error', iconMarginLeft, iconSize)}
@@ -983,9 +983,9 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                       name="risk"
                     ></sd-icon>
                   `
-        : ''}
+                : ''}
               ${this.styleOnValid && this.showValidStyle
-        ? html`
+                ? html`
                     <sd-icon
                       part="valid-icon"
                       class=${cx('text-success flex-shrink-0', iconMarginLeft, iconSize)}
@@ -993,7 +993,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                       name="confirm"
                     ></sd-icon>
                   `
-        : ''}
+                : ''}
 
               <slot
                 name="expand-icon"
@@ -1012,11 +1012,11 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
               aria-labelledby="label"
               part="listbox"
               class=${cx(
-          'bg-white px-2 py-3 relative',
-          this.currentPlacement === 'bottom'
-            ? 'border-r-2 border-b-2 border-l-2 rounded-br-default rounded-bl-default'
-            : 'border-r-2 border-t-2 border-l-2 rounded-tr-default rounded-tl-default'
-        )}
+                'bg-white px-2 py-3 relative',
+                this.currentPlacement === 'bottom'
+                  ? 'border-r-2 border-b-2 border-l-2 rounded-br-default rounded-bl-default'
+                  : 'border-r-2 border-t-2 border-l-2 rounded-tr-default rounded-tl-default'
+              )}
               tabindex="-1"
               @mouseup=${this.handleOptionClick}
               @slotchange=${this.handleDefaultSlotChange}

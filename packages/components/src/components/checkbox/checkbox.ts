@@ -194,14 +194,14 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
       <label
         part="base"
         class=${cx(
-      'sd-checkbox group flex items-start text-base leading-normal text-black cursor-pointer',
-      this.disabled && 'hover:cursor-not-allowed',
-      {
-        /* sizes, fonts */
-        sm: 'text-sm',
-        lg: 'text-base'
-      }[this.size]
-    )}
+          'sd-checkbox group flex items-start text-base leading-normal text-black cursor-pointer',
+          this.disabled && 'hover:cursor-not-allowed',
+          {
+            /* sizes, fonts */
+            sm: 'text-sm',
+            lg: 'text-base'
+          }[this.size]
+        )}
       >
         <input
           class="peer absolute opacity-0 p-0 m-0 pointer-events-none"
@@ -224,35 +224,35 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
         <span
           id="control"
           part="control ${this.checked ? ' control--checked' : 'control--unchecked'} ${this.indeterminate
-        ? ' control--indeterminate'
-        : ''}"
+            ? ' control--indeterminate'
+            : ''}"
           class=${cx(
-          `relative flex flex-initial items-center justify-center border rounded-sm h-4 w-4
+            `relative flex flex-initial items-center justify-center border rounded-sm h-4 w-4
             peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2
             peer-focus-visible:outline-primary`,
-          {
-            sm: 'mt-[2px]',
-            lg: 'mt-[3px]'
-          }[this.size],
-          {
-            disabledIndeterminate: 'border-neutral-500 bg-neutral-500',
-            disabledChecked: 'border-neutral-500 bg-neutral-500',
-            disabled: 'border-neutral-500',
-            invalidIndeterminate: 'border-error bg-error group-hover:bg-error-400',
-            invalid: 'border-error group-hover:bg-neutral-200',
-            filled:
-              'border-accent hover:border-accent-550 group-hover:border-accent-550 bg-accent group-hover:bg-accent-550',
-            default: 'border-neutral-800 hover:bg-neutral-200 group-hover:bg-neutral-200 bg-white'
-          }[checkboxState]
-        )}
+            {
+              sm: 'mt-[2px]',
+              lg: 'mt-[3px]'
+            }[this.size],
+            {
+              disabledIndeterminate: 'border-neutral-500 bg-neutral-500',
+              disabledChecked: 'border-neutral-500 bg-neutral-500',
+              disabled: 'border-neutral-500',
+              invalidIndeterminate: 'border-error bg-error group-hover:bg-error-400',
+              invalid: 'border-error group-hover:bg-neutral-200',
+              filled:
+                'border-accent hover:border-accent-550 group-hover:border-accent-550 bg-accent group-hover:bg-accent-550',
+              default: 'border-neutral-800 hover:bg-neutral-200 group-hover:bg-neutral-200 bg-white'
+            }[checkboxState]
+          )}
         >
           ${this.checked
-        ? html`
+            ? html`
                 <sd-icon part="checked-icon" class="text-white w-3 h-3" library="system" name="status-hook"></sd-icon>
               `
-        : ''}
+            : ''}
           ${!this.checked && this.indeterminate
-        ? html`
+            ? html`
                 <sd-icon
                   part="indeterminate-icon"
                   class="text-white w-3 h-3"
@@ -260,15 +260,15 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
                   name="status-minus"
                 ></sd-icon>
               `
-        : ''}
+            : ''}
         </span>
         <span
           part="label"
           id="label"
           class=${cx(
-          'select-none inline-block ml-2',
-          this.disabled ? 'text-neutral-500' : this.showInvalidStyle ? 'text-error' : 'text-black'
-        )}
+            'select-none inline-block ml-2',
+            this.disabled ? 'text-neutral-500' : this.showInvalidStyle ? 'text-error' : 'text-black'
+          )}
         >
           <slot></slot>
         </span>

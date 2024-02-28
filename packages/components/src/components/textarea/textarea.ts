@@ -348,50 +348,50 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
           <div
             part="border"
             class=${cx(
-      'absolute w-full h-full pointer-events-none border rounded-default',
-      {
-        disabled: 'border-neutral-500',
-        readonly: 'border-neutral-800',
-        activeInvalid: 'border-error border-2',
-        activeValid: 'border-success border-2',
-        active: 'border-primary border-2',
-        invalid: 'border-error',
-        valid: 'border-success',
-        default: 'border-neutral-800'
-      }[textareaState]
-    )}
+              'absolute w-full h-full pointer-events-none border rounded-default',
+              {
+                disabled: 'border-neutral-500',
+                readonly: 'border-neutral-800',
+                activeInvalid: 'border-error border-2',
+                activeValid: 'border-success border-2',
+                active: 'border-primary border-2',
+                invalid: 'border-error',
+                valid: 'border-success',
+                default: 'border-neutral-800'
+              }[textareaState]
+            )}
           ></div>
           <div
             part="base"
             class=${cx(
-      'textarea px-4 flex items-top rounded-default bg-white group',
-      {
-        sm: 'textarea-sm py-1',
-        md: 'textarea-md py-1',
-        lg: 'textarea-lg py-2'
-      }[this.size],
-      {
-        disabled: 'text-neutral-500',
-        readonly: 'text-black',
-        activeInvalid: 'text-error',
-        activeValid: 'text-success',
-        active: 'text-black',
-        invalid: 'text-error',
-        valid: 'text-success',
-        default: 'text-black'
-      }[textareaState],
-      !this.disabled && !this.readonly ? 'hover:bg-neutral-200' : '',
-      this.readonly && 'bg-neutral-100'
-    )}
+              'textarea px-4 flex items-top rounded-default bg-white group',
+              {
+                sm: 'textarea-sm py-1',
+                md: 'textarea-md py-1',
+                lg: 'textarea-lg py-2'
+              }[this.size],
+              {
+                disabled: 'text-neutral-500',
+                readonly: 'text-black',
+                activeInvalid: 'text-error',
+                activeValid: 'text-success',
+                active: 'text-black',
+                invalid: 'text-error',
+                valid: 'text-success',
+                default: 'text-black'
+              }[textareaState],
+              !this.disabled && !this.readonly ? 'hover:bg-neutral-200' : '',
+              this.readonly && 'bg-neutral-100'
+            )}
           >
             <textarea
               part="textarea"
               id="input"
               class=${cx(
-      'flex-grow focus:outline-none bg-transparent placeholder-neutral-700 resize-none',
-      this.disabled && 'cursor-not-allowed',
-      textSize
-    )}
+                'flex-grow focus:outline-none bg-transparent placeholder-neutral-700 resize-none',
+                this.disabled && 'cursor-not-allowed',
+                textSize
+              )}
               title=${this.title /* An empty title prevents browser validation tooltips from appearing on hover */}
               name=${ifDefined(this.name)}
               .value=${live(this.value)}
@@ -416,7 +416,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
               @blur=${this.handleBlur}
             ></textarea>
             ${this.showInvalidStyle
-        ? html`
+              ? html`
                   <sd-icon
                     class=${cx('text-error absolute right-4 bg-white group-hover:bg-neutral-200', iconSizeMarginLeft)}
                     library="system"
@@ -424,9 +424,9 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
                     part="invalid-icon"
                   ></sd-icon>
                 `
-        : ''}
+              : ''}
             ${this.styleOnValid && this.showValidStyle
-        ? html`
+              ? html`
                   <sd-icon
                     class=${cx('text-success absolute right-4 bg-white group-hover:bg-neutral-200', iconSizeMarginLeft)}
                     library="system"
@@ -434,7 +434,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
                     part="valid-icon"
                   ></sd-icon>
                 `
-        : ''}
+              : ''}
           </div>
         </div>
         <slot
