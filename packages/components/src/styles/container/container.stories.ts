@@ -206,6 +206,7 @@ export const TriangleBorder = {
  */
 
 export const TriangleColor = {
+  name: 'Sample: Triangle Color',
   parameters: {
     controls: {
       exclude: ['sd-container--variant-...', 'sd-container--triangle-...']
