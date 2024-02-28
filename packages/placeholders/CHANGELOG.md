@@ -1,3 +1,10 @@
+# [@solid-design-system/placeholders-v1.4.0](https://github.com/solid-design-system/solid/compare/placeholders/1.3.0...placeholders/1.4.0) (2024-02-27)
+
+
+### Features
+
+* add placeholder video ([#781](https://github.com/solid-design-system/solid/issues/781)) ([4e91ed9](https://github.com/solid-design-system/solid/commit/4e91ed9c393688f7a99d5b7ae575b868baf68316))
+
 # [@solid-design-system/placeholders-v1.3.0](https://github.com/solid-design-system/solid/compare/placeholders/1.2.0...placeholders/1.3.0) (2024-02-16)
 
 
