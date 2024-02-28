@@ -54,19 +54,19 @@ export const TabVariants = {
   render: (args: any) => {
     return html`
       ${generateTemplate({
-      axis: {
-        y: {
-          type: 'slot',
-          title: 'sd-tab[variant="..."]',
-          name: 'default',
-          values: [
-            { title: 'default', value: generateTabsAndPanels(1, 5) },
-            { title: 'container', value: generateTabsAndPanels(1, 5, 'container') }
-          ]
-        }
-      },
-      args
-    })}
+        axis: {
+          y: {
+            type: 'slot',
+            title: 'sd-tab[variant="..."]',
+            name: 'default',
+            values: [
+              { title: 'default', value: generateTabsAndPanels(1, 5) },
+              { title: 'container', value: generateTabsAndPanels(1, 5, 'container') }
+            ]
+          }
+        },
+        args
+      })}
     `;
   }
 };
@@ -81,18 +81,18 @@ export const Scrollable = {
   render: (args: any) => {
     return html`
       ${generateTemplate({
-      axis: {
-        y: {
-          type: 'slot',
-          name: 'default',
-          values: [
-            { title: 'default', value: generateTabsAndPanels(1, 10) },
-            { title: 'container', value: generateTabsAndPanels(1, 10, 'container') }
-          ]
-        }
-      },
-      args
-    })}
+        axis: {
+          y: {
+            type: 'slot',
+            name: 'default',
+            values: [
+              { title: 'default', value: generateTabsAndPanels(1, 10) },
+              { title: 'container', value: generateTabsAndPanels(1, 10, 'container') }
+            ]
+          }
+        },
+        args
+      })}
     `;
   },
   decorators: [
@@ -118,33 +118,34 @@ export const Parts = {
   render: (args: any) => {
     return html`
       ${['base', 'nav', 'tabs', 'separation', 'body', 'scroll-button--start', 'scroll-button--end'].map(part =>
-      generateTemplate({
-        axis: {
-          x: {
-            type: 'template',
-            name: 'sd-tab-group::part(...){outline: solid 2px red}',
-            values: [
-              {
-                title: part,
-                value: `<style>#part-${part} sd-tab-group::part(${part}){outline: solid 2px red; ${part === 'tabs' && 'outline-offset:-2px;'
+        generateTemplate({
+          axis: {
+            x: {
+              type: 'template',
+              name: 'sd-tab-group::part(...){outline: solid 2px red}',
+              values: [
+                {
+                  title: part,
+                  value: `<style>#part-${part} sd-tab-group::part(${part}){outline: solid 2px red; ${
+                    part === 'tabs' && 'outline-offset:-2px;'
                   }}</style><div id="part-${part}">%TEMPLATE%</div>`
-              }
-            ]
-          }
-        },
-        constants: [
-          {
-            type: 'template',
-            name: 'width',
-            value: `
+                }
+              ]
+            }
+          },
+          constants: [
+            {
+              type: 'template',
+              name: 'width',
+              value: `
                 <div style="width: 600px; position: relative;">%TEMPLATE%
                 </div>
               `
-          }
-        ],
-        args
-      })
-    )}
+            }
+          ],
+          args
+        })
+      )}
     `;
   }
 };
@@ -242,12 +243,12 @@ export const SampleNoLine = {
       </style>
 
       ${generateTemplate({
-      args: overrideArgs({
-        type: 'slot',
-        name: 'default',
-        value: generateTabsAndPanels(1, 5)
-      })
-    })}
+        args: overrideArgs({
+          type: 'slot',
+          name: 'default',
+          value: generateTabsAndPanels(1, 5)
+        })
+      })}
     `;
   }
 };
