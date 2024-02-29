@@ -143,6 +143,20 @@ export const Scrolling = {
 
 /**
  *  This sample displays `sd-dialog` with two `sd-button` components in the footer slot. When incorporating multiple `sd-buttons`, it is recommended to use distinct button variants for clarity and consistency in user interactions.
+ * 
+ * You can use the CSS part `sd-dialog::part(footer)` to customize button layout based on your requirements. For instance, you may opt for columns instead of rows for mobile devices, and so on. To achieve that we used the additional style:
+ * 
+ * ```css
+ * 
+ *   @media (max-width: 414px) {
+          sd-dialog::part(footer){
+            flex-direction: column;
+ *   }
+ * }
+
+ * ```
+ * 
+ * 
  */
 
 export const ExtendedFooter = {
@@ -154,6 +168,14 @@ export const ExtendedFooter = {
   },
   render: () => {
     return html`
+      <style>
+        @media (max-width: 414px) {
+          sd-dialog::part(footer) {
+            flex-direction: column;
+          }
+        }
+      </style>
+
       <div style="height: 40vh;">
         <sd-dialog open="" id="extended-footer"
           ><p class="sd-paragraph">
@@ -161,9 +183,9 @@ export const ExtendedFooter = {
             phasellus dui vel id. Velit in sed.
           </p>
           <h4 slot="headline" class="sd-headline sd-headline--size-3xl">Lorem Ipsum</h4>
+          <sd-button variant="secondary" slot="footer" class="w-full">Label</sd-button>
           <sd-button slot="footer" class="w-full">Label</sd-button>
-          <sd-button variant="secondary" slot="footer" class="w-full">Label</sd-button></sd-dialog
-        >
+        </sd-dialog>
       </div>
     `;
   }

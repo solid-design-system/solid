@@ -246,7 +246,7 @@ export const SampleNoLine = {
         args: overrideArgs({
           type: 'slot',
           name: 'default',
-          value: generateTabsAndPanels(1, 30)
+          value: generateTabsAndPanels(1, 5)
         })
       })}
     `;
