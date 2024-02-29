@@ -10,7 +10,8 @@
   }
 
   &--variant-border-neutral-400 {
-    @apply border-[1px] border-neutral-400 bg-white;
+    @apply border-neutral-400 bg-white;
+    border-width: 1px;
   }
 
   &--variant-white {
@@ -27,20 +28,30 @@
   &--triangle-right::before,
   &--triangle-bottom::before,
   &--triangle-left::before {
-    @apply absolute block content-[''] border-solid border-transparent border-[14px];
+    @apply absolute block border-solid border-transparent;
+    border-width: 14px;
+    content: '';
   }
 
   &--triangle-top::before {
-    @apply left-[calc(50%-14px)] top-0 border-t-[var(--triangle-background)];
+    @apply top-0;
+    left: calc(50% - 14px);
+    border-top-color: var(--triangle-background);
   }
   &--triangle-right::before {
-    @apply top-[calc(50%-14px)] right-0 border-r-[var(--triangle-background)];
+    @apply right-0;
+    top: calc(50% - 14px);
+    border-right-color: var(--triangle-background);
   }
   &--triangle-bottom::before {
-    @apply left-[calc(50%-14px)] bottom-0 border-b-[var(--triangle-background)];
+    @apply bottom-0;
+    left: calc(50% - 14px);
+    border-bottom-color: var(--triangle-background);
   }
   &--triangle-left::before {
-    @apply top-[calc(50%-14px)] left-0 border-l-[var(--triangle-background)];
+    @apply left-0;
+    top: calc(50% - 14px);
+    border-left-color: var(--triangle-background);
   }
 
   &--triangle-top-border,
@@ -49,62 +60,71 @@
   &--triangle-left-border {
     &::after,
     &::before {
-      @apply absolute block content-[''] border-solid border-transparent;
+      @apply absolute block border-solid border-transparent;
+      content: '';
     }
     &::after {
-      @apply border-[14px];
+      border-width: 14px;
     }
     &::before {
-      @apply border-[15px];
+      border-width: 15px;
     }
   }
 
   &--triangle-top-border {
     &::after,
     &::before {
-      @apply -top-[1px];
+      top: -1px;
     }
     &::before {
-      @apply left-[calc(50%-15px)] border-t-neutral-400;
+      @apply border-t-neutral-400;
+      left: calc(50% - 15px);
     }
     &::after {
-      @apply left-[calc(50%-14px)] border-t-[var(--triangle-background)];
+      left: calc(50% - 14px);
+      border-top-color: var(--triangle-background);
     }
   }
   &--triangle-right-border {
     &::after,
     &::before {
-      @apply -right-[1px];
+      right: -1px;
     }
     &::before {
-      @apply top-[calc(50%-15px)] border-r-neutral-400;
+      @apply border-r-neutral-400;
+      top: calc(50% - 15px);
     }
     &::after {
-      @apply top-[calc(50%-14px)] border-r-[var(--triangle-background)];
+      top: calc(50% - 14px);
+      border-right-color: var(--triangle-background);
     }
   }
   &--triangle-bottom-border {
     &::after,
     &::before {
-      @apply -bottom-[1px];
+      bottom: -1px;
     }
     &::before {
-      @apply left-[calc(50%-15px)] border-b-neutral-400;
+      @apply border-b-neutral-400;
+      left: calc(50% - 15px);
     }
     &::after {
-      @apply left-[calc(50%-14px)] border-b-[var(--triangle-background)];
+      left: calc(50% - 14px);
+      border-bottom-color: var(--triangle-background);
     }
   }
   &--triangle-left-border {
     &::after,
     &::before {
-      @apply -left-[1px];
+      left: -1px;
     }
     &::before {
-      @apply top-[calc(50%-15px)] border-l-neutral-400;
+      @apply border-l-neutral-400;
+      top: calc(50% - 15px);
     }
     &::after {
-      @apply top-[calc(50%-14px)] border-l-[var(--triangle-background)];
+      top: calc(50% - 14px);
+      border-left-color: var(--triangle-background);
     }
   }
 }
