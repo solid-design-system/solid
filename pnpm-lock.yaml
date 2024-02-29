@@ -25,7 +25,7 @@ importers:
         version: 3.0.0(eslint@8.53.0)
       eslint-plugin-chai-friendly:
         specifier: ^0.7.2
-        version: 0.7.2(eslint@8.53.0)
+        version: 0.7.4(eslint@8.53.0)
       eslint-plugin-import:
         specifier: ^2.29.0
         version: 2.29.1(@typescript-eslint/parser@6.10.0)(eslint@8.53.0)
@@ -8184,8 +8184,8 @@ packages:
       eslint: 8.53.0
     dev: true
 
-  /eslint-plugin-chai-friendly@0.7.2(eslint@8.53.0):
-    resolution: {integrity: sha512-LOIfGx5sZZ5FwM1shr2GlYAWV9Omdi+1/3byuVagvQNoGUuU0iHhp7AfjA1uR+4dJ4Isfb4+FwBJgQajIw9iAg==}
+  /eslint-plugin-chai-friendly@0.7.4(eslint@8.53.0):
+    resolution: {integrity: sha512-PGPjJ8diYgX1mjLxGJqRop2rrGwZRKImoEOwUOgoIhg0p80MkTaqvmFLe5TF7/iagZHggasvIfQlUyHIhK/PYg==}
     engines: {node: '>=0.10.0'}
     peerDependencies:
       eslint: '>=3.0.0'
