@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v2.8.1](https://github.com/solid-design-system/solid/compare/components/2.8.0...components/2.8.1) (2024-02-29)
+
+
+### Bug Fixes
+
+* arbitrary values in container style ([#788](https://github.com/solid-design-system/solid/issues/788)) ([a184ca1](https://github.com/solid-design-system/solid/commit/a184ca117d9f6dab7b394db1ec48804632c7c5bb))
+
+### 📈 Stats
+* Bundle size (uncompressed): 281 KB (unchanged)
+* Bundle size (gzipped): 68 KB (unchanged)
+
 # [@solid-design-system/components-v2.8.0](https://github.com/solid-design-system/solid/compare/components/2.7.0...components/2.8.0) (2024-02-28)
 
 
