@@ -71,7 +71,7 @@ importers:
     devDependencies:
       '@custom-elements-manifest/analyzer':
         specifier: ^0.9.0
-        version: 0.9.0
+        version: 0.9.3
       '@geometricpanda/storybook-addon-badges':
         specifier: ^2.0.0
         version: 2.0.2(@storybook/blocks@7.5.3)(@storybook/components@7.6.17)(@storybook/core-events@7.6.17)(@storybook/manager-api@7.6.17)(@storybook/preview-api@7.6.17)(@storybook/theming@7.5.3)(@storybook/types@7.6.17)(react-dom@18.2.0)(react@18.2.0)
@@ -1681,8 +1681,8 @@ packages:
     dev: true
     optional: true
 
-  /@custom-elements-manifest/analyzer@0.9.0:
-    resolution: {integrity: sha512-aYCc+CmUamFG3FbHO2m1hz/qik61pgYIJkN986k2BPamQmgomST1ZnRngDjUSt6RmO8NrZydxUzg+AKdEaE4EA==}
+  /@custom-elements-manifest/analyzer@0.9.3:
+    resolution: {integrity: sha512-UBTKxgoRy9n99saVxYSAy/NqOie1dDk9dsyGVPulW4vAxs7MeOHEbJ1vLvc4RhYs2dHm1VQH1xh41DirMxsJnQ==}
     hasBin: true
     dependencies:
       '@custom-elements-manifest/find-dependencies': 0.0.5
@@ -4553,7 +4553,7 @@ packages:
       memoizerific: 1.11.3
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-      semver: 7.5.4
+      semver: 7.6.0
       store2: 2.14.2
       telejson: 7.2.0
       ts-dedent: 2.2.0
@@ -5562,14 +5562,14 @@ packages:
     resolution: {integrity: sha512-XVKH79pk4d3EHRhofete8eAnqto1e8mCRAqPV00KLNFzCWSe8sWmLnqKCqkPNARC6nksMaGrATnA5sPDRllMpQ==}
     engines: {node: '>=10.0.0'}
     dependencies:
-      semver: 7.5.4
+      semver: 7.6.0
     dev: true
 
   /@web/config-loader@0.3.0:
     resolution: {integrity: sha512-OOhltaFpMzt1dG66yPoXgGvjwaUxy2SrOXd+o6CjOEFfjeKBI9QoHlagUvYiLAcMZrGGGL+Rl+mdqH+GUji0vQ==}
     engines: {node: '>=18.0.0'}
     dependencies:
-      semver: 7.5.4
+      semver: 7.6.0
     dev: true
 
   /@web/dev-server-core@0.7.0:
@@ -5579,7 +5579,7 @@ packages:
       '@types/koa': 2.13.11
       '@types/ws': 7.4.7
       '@web/parse5-utils': 2.1.0
-      chokidar: 3.5.3
+      chokidar: 3.6.0
       clone: 2.1.2
       es-module-lexer: 1.4.1
       get-stream: 6.0.1
@@ -5691,7 +5691,7 @@ packages:
       '@types/istanbul-reports': 3.0.4
       '@web/browser-logs': 0.4.0
       '@web/dev-server-core': 0.7.0
-      chokidar: 3.5.3
+      chokidar: 3.6.0
       cli-cursor: 3.1.0
       co-body: 6.1.0
       convert-source-map: 2.0.0
@@ -6622,6 +6622,21 @@ packages:
 
   /chokidar@3.5.3:
     resolution: {integrity: sha512-Dr3sfKRP6oTcjf2JmUmFJfeVMvXBdegxB0iVQ5eb2V10uFJUCAS8OByZdVAyVb8xXNz3GjjTgj9kLWsZTqE6kw==}
+    engines: {node: '>= 8.10.0'}
+    dependencies:
+      anymatch: 3.1.3
+      braces: 3.0.2
+      glob-parent: 5.1.2
+      is-binary-path: 2.1.0
+      is-glob: 4.0.3
+      normalize-path: 3.0.0
+      readdirp: 3.6.0
+    optionalDependencies:
+      fsevents: 2.3.3
+    dev: true
+
+  /chokidar@3.6.0:
+    resolution: {integrity: sha512-7VT13fmjotKpGipCW9JEQAusEPE+Ei8nl6/g4FBAmIm0GOOLMua9NDDo/DWp0ZAxCr3cPq5ZpBqmPAQgDda2Pw==}
     engines: {node: '>= 8.10.0'}
     dependencies:
       anymatch: 3.1.3
@@ -10440,11 +10455,9 @@ packages:
       tslib: 2.6.2
     dev: true
 
-  /lru-cache@10.0.2:
-    resolution: {integrity: sha512-Yj9mA8fPiVgOUpByoTZO5pNrcl5Yk37FcSHsUINpAsaBIEZIuqcCclDZJCVxqQShDsmYX8QG63svJiTbOATZwg==}
+  /lru-cache@10.2.0:
+    resolution: {integrity: sha512-2bIM8x+VAf6JT4bKAljS1qUWgMsqZRPGJS6FSahIMPVvctcNhyVp7AJu7quxOW9jwkryBReKZY5tY5JYv2n/7Q==}
     engines: {node: 14 || >=16.14}
-    dependencies:
-      semver: 7.6.0
     dev: true
 
   /lru-cache@4.1.5:
@@ -11910,7 +11923,7 @@ packages:
     resolution: {integrity: sha512-MkhCqzzBEpPvxxQ71Md0b1Kk51W01lrYvlMzSUaIzNsODdd7mqhiimSZlr+VegAz5Z6Vzt9Xg2ttE//XBhH3EQ==}
     engines: {node: '>=16 || 14 >=14.17'}
     dependencies:
-      lru-cache: 10.0.2
+      lru-cache: 10.2.0
       minipass: 7.0.4
     dev: true
 
@@ -14464,7 +14477,7 @@ packages:
     resolution: {integrity: sha512-9ZdRwbh/4gcm1JTOkp9lAkIDrtOyOxgHmY7cjuwI8L/2RTikMcVG25GsZwNAgRuap3iDw2jeq7eoqtAsz5rW3A==}
     dependencies:
       acorn: 8.11.2
-      chokidar: 3.5.3
+      chokidar: 3.6.0
       webpack-sources: 3.2.3
       webpack-virtual-modules: 0.5.0
     dev: true
@@ -14656,7 +14669,7 @@ packages:
   /vite-plugin-cem@0.6.0(terser@5.24.0):
     resolution: {integrity: sha512-N/smao8l7TAJVVMRRye7R9muQvemR50IP7Q4lY9qioL319mKelTD83IJ9+OEDuIiPPBg8OFqh9CXFx9r7pHo+g==}
     dependencies:
-      '@custom-elements-manifest/analyzer': 0.9.0
+      '@custom-elements-manifest/analyzer': 0.9.3
       glob: 8.1.0
       typescript: 5.3.3
       vite: 5.0.2(terser@5.24.0)
