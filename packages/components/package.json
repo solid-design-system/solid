@@ -114,7 +114,7 @@
     "@web/test-runner-playwright": "^0.11.0",
     "autoprefixer": "^10.4.16",
     "cem-plugin-vs-code-custom-data-generator": "^1.4.2",
-    "chromatic": "^10.0.0",
+    "chromatic": "^11.0.0",
     "comment-parser": "^1.4.1",
     "cssnano": "^6.0.1",
     "globby": "^14.0.0",
