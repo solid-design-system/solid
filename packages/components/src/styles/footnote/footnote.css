@@ -1,0 +1,9 @@
+.sd-footnote {
+  @apply bg-primary;
+
+  &--number {
+  }
+
+  &--reset {
+  }
+}
