@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v2.8.2](https://github.com/solid-design-system/solid/compare/components/2.8.1...components/2.8.2) (2024-03-05)
+
+
+### Bug Fixes
+
+* 🤔 CTA button color  ([#810](https://github.com/solid-design-system/solid/issues/810)) ([52cf6dc](https://github.com/solid-design-system/solid/commit/52cf6dcf1919bfef85d2700fafd1cd6ec8a1e33f))
+
+### 📈 Stats
+* Bundle size (uncompressed): 281 KB (unchanged)
+* Bundle size (gzipped): 68 KB (unchanged)
+
 # [@solid-design-system/components-v2.8.1](https://github.com/solid-design-system/solid/compare/components/2.8.0...components/2.8.1) (2024-02-29)
 
 
