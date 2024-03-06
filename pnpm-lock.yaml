@@ -65,6 +65,9 @@ importers:
       classix:
         specifier: ^2.1.35
         version: 2.1.36
+      countup.js:
+        specifier: ^2.8.0
+        version: 2.8.0
       lit:
         specifier: ^3.0.2
         version: 3.0.2
@@ -7087,6 +7090,10 @@ packages:
       path-type: 4.0.0
       yaml: 1.10.2
     dev: true
+
+  /countup.js@2.8.0:
+    resolution: {integrity: sha512-f7xEhX0awl4NOElHulrl4XRfKoNH3rB+qfNSZZyjSZhaAoUk6elvhH+MNxMmlmuUJ2/QNTWPSA7U4mNtIAKljQ==}
+    dev: false
 
   /cross-fetch@4.0.0:
     resolution: {integrity: sha512-e4a5N8lVvuLgAWgnCrLr2PP0YyDOTHa9H/Rj54dirp61qXnNq46m82bRhNqIA5VccJtWBvPTFRV3TtvHUKPB1g==}
