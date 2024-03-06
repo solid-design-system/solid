@@ -41,7 +41,8 @@ export default {
   component: 'Autocomplete',
   parameters: {
     docs: { story: { inline: true, height: '400px' } },
-    chromatic: { disableSnapshot: true }
+    chromatic: { disableSnapshot: true },
+    excludeStories: /.Simple$/
   }
 };
 
@@ -131,6 +132,12 @@ const mock = {
   ].sort()
 };
 
+/**
+  This is the most basic example of the autoComplete.js library. It demonstrates how to set up the library with a simple input field and a list of data.
+  The search data is mocked and passed to the autoComplete instance, you can search for the following terms: Aktien, Nachhaltig, Union, Europa, ...
+
+  > Notice: This example is not working, check it out the one on top of this page.
+ */
 export const Simple = {
   parameters: {
     controls: {
@@ -162,6 +169,9 @@ export const Simple = {
   }
 };
 
+/**
+  This is e slightly more advanced example of the autoComplete.js library. It demonstrates how to highlight the query string in the results.
+ */
 export const HighlightQuery = {
   parameters: {
     controls: {
@@ -197,6 +207,9 @@ export const HighlightQuery = {
   }
 };
 
+/**
+  This example has the approach to show all the results when the input field is focused and filters the results as the user provides input.
+ */
 export const OpenOnClick = {
   parameters: {
     controls: {
@@ -243,6 +256,9 @@ export const OpenOnClick = {
   }
 };
 
+/**
+  This example demonstrates how to group elements in the results list by their first character. Also the searched term is highlighted in the results.
+ */
 export const GroupElements = {
   parameters: {
     controls: {
@@ -311,6 +327,52 @@ export const GroupElements = {
                 }
                 item.innerHTML = data.match;
               }
+            }
+          });
+        });
+      </script>
+    `;
+  }
+};
+
+export const SuggestionContainerHeight = {
+  parameters: {
+    controls: {
+      exclude: ['autocomplete']
+    }
+  },
+  render: (args: any) => {
+    const setupAutocomplete = solidAutocomplete;
+    const data = mock;
+    return html`
+      <sd-input id="show-all-on-click-example" type="search"><b slot="label">Show all items on click</b></sd-input>
+      <script type="module">
+        // preview-ignore:start
+        const setupAutocomplete = ${setupAutocomplete};
+        const data = ${JSON.stringify(data)};
+        // preview-ignore:end
+
+        Promise.all([customElements.whenDefined('sd-input'), customElements.whenDefined('sd-popup')]).then(() => {
+          /** Show all on click */
+          const { config: showAllOnClickConfig } = setupAutocomplete('#show-all-on-click-example');
+          const showAllOnClickExample = new autoComplete({
+            ...showAllOnClickConfig,
+            threshold: 0,
+            placeHolder: 'Find funds...',
+            data,
+            resultsList: {
+              ...showAllOnClickConfig.resultsList,
+              maxResults: undefined
+            },
+            events: {
+              input: {
+                focus(event) {
+                  showAllOnClickExample.start();
+                }
+              }
+            },
+            resultItem: {
+              highlight: true
             }
           });
         });
