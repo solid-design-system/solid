@@ -251,7 +251,7 @@ importers:
         version: 5.1.5(terser@5.24.0)
       vite-node:
         specifier: ^1.0.0
-        version: 1.0.1(terser@5.24.0)
+        version: 1.3.1(terser@5.24.0)
       vite-plugin-cem:
         specifier: ^0.6.0
         version: 0.6.0(terser@5.24.0)
@@ -8622,7 +8622,7 @@ packages:
       https-proxy-agent: 7.0.2
       mri: 1.2.0
       node-fetch-native: 1.4.1
-      pathe: 1.1.1
+      pathe: 1.1.2
       tar: 6.2.0
     transitivePeerDependencies:
       - supports-color
@@ -11748,8 +11748,8 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
-  /pathe@1.1.1:
-    resolution: {integrity: sha512-d+RQGp0MAYTIaDBIMmOfMwz3E+LOZnxx1HZd5R18mmCZY0QBlK0LDZfPc8FW8Ed2DlvsuE6PRjroDY+wg4+j/Q==}
+  /pathe@1.1.2:
+    resolution: {integrity: sha512-whLdWMYL2TwI08hn8/ZqAbrVemu0LNaNNJZX73O6qaIdCTfXutsLhMkjdENX0qhsQ9uIimo4/aQOmXkoon2nDQ==}
     dev: true
 
   /peek-stream@1.1.3:
@@ -14474,14 +14474,14 @@ packages:
       vfile-message: 3.1.4
     dev: true
 
-  /vite-node@1.0.1(terser@5.24.0):
-    resolution: {integrity: sha512-Y2Jnz4cr2azsOMMYuVPrQkp3KMnS/0WV8ezZjCy4hU7O5mUHCAVOnFmoEvs1nvix/4mYm74Len8bYRWZJMNP6g==}
+  /vite-node@1.3.1(terser@5.24.0):
+    resolution: {integrity: sha512-azbRrqRxlWTJEVbzInZCTchx0X69M/XPTCz4H+TLvlTcR/xH/3hkRqhOakT41fMJCMzXTu4UvegkZiEoJAWvng==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     dependencies:
       cac: 6.7.14
       debug: 4.3.4
-      pathe: 1.1.1
+      pathe: 1.1.2
       picocolors: 1.0.0
       vite: 5.1.5(terser@5.24.0)
     transitivePeerDependencies:
