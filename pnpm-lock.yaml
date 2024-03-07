@@ -140,7 +140,7 @@ importers:
         version: 7.5.3(lit@3.0.2)(react-dom@18.2.0)(react@18.2.0)
       '@storybook/web-components-vite':
         specifier: ^7.5.3
-        version: 7.5.3(lit@3.0.2)(react-dom@18.2.0)(react@18.2.0)(typescript@5.3.3)(vite@5.1.5)
+        version: 7.5.3(lit@3.0.2)(react-dom@18.2.0)(react@18.2.0)(typescript@5.4.2)(vite@5.1.5)
       '@types/mocha':
         specifier: ^10.0.4
         version: 10.0.6
@@ -149,7 +149,7 @@ importers:
         version: 17.0.3
       '@web/test-runner':
         specifier: ^0.18.0
-        version: 0.18.0(typescript@5.3.3)
+        version: 0.18.0(typescript@5.4.2)
       '@web/test-runner-commands':
         specifier: ^0.9.0
         version: 0.9.0
@@ -241,8 +241,8 @@ importers:
         specifier: ^5.24.0
         version: 5.24.0
       typescript:
-        specifier: 5.3.3
-        version: 5.3.3
+        specifier: 5.4.2
+        version: 5.4.2
       user-agent-data-types:
         specifier: ^0.4.2
         version: 0.4.2
@@ -257,7 +257,7 @@ importers:
         version: 0.6.0(terser@5.24.0)
       vite-tsconfig-paths:
         specifier: ^4.2.1
-        version: 4.2.1(typescript@5.3.3)(vite@5.1.5)
+        version: 4.2.1(typescript@5.4.2)(vite@5.1.5)
 
   packages/placeholders:
     devDependencies:
@@ -274,8 +274,8 @@ importers:
         specifier: ^7.0.5
         version: 7.0.8(semantic-release@19.0.5)
       typescript:
-        specifier: 5.3.3
-        version: 5.3.3
+        specifier: 5.4.2
+        version: 5.4.2
 
   packages/theming:
     dependencies:
@@ -296,8 +296,8 @@ importers:
         specifier: ^7.0.5
         version: 7.0.8(semantic-release@19.0.5)
       typescript:
-        specifier: 5.3.3
-        version: 5.3.3
+        specifier: 5.4.2
+        version: 5.4.2
 
   packages/tokens:
     devDependencies:
@@ -2680,7 +2680,7 @@ packages:
       config-chain: 1.1.13
     dev: true
 
-  /@puppeteer/browsers@1.4.6(typescript@5.3.3):
+  /@puppeteer/browsers@1.4.6(typescript@5.4.2):
     resolution: {integrity: sha512-x4BEjr2SjOPowNeiguzjozQbsc6h437ovD/wu+JpaenxVLm3jkgzHY2xOslMTp50HoTvQreMjiexiGQw1sqZlQ==}
     engines: {node: '>=16.3.0'}
     hasBin: true
@@ -2695,7 +2695,7 @@ packages:
       progress: 2.0.3
       proxy-agent: 6.3.0
       tar-fs: 3.0.4
-      typescript: 5.3.3
+      typescript: 5.4.2
       unbzip2-stream: 1.4.3
       yargs: 17.7.1
     transitivePeerDependencies:
@@ -3977,7 +3977,7 @@ packages:
       - supports-color
     dev: true
 
-  /@storybook/builder-vite@7.5.3(typescript@5.3.3)(vite@5.1.5):
+  /@storybook/builder-vite@7.5.3(typescript@5.4.2)(vite@5.1.5):
     resolution: {integrity: sha512-c104V3O75OCVnfZj0Jr70V09g0KSbPGvQK2Zh31omXGvakG8XrhWolYxkmjOcForJmAqsXnKs/nw3F75Gp853g==}
     peerDependencies:
       '@preact/preset-vite': '*'
@@ -4008,7 +4008,7 @@ packages:
       fs-extra: 11.1.1
       magic-string: 0.30.5
       rollup: 3.29.4
-      typescript: 5.3.3
+      typescript: 5.4.2
       vite: 5.1.5(terser@5.24.0)
     transitivePeerDependencies:
       - encoding
@@ -4576,14 +4576,14 @@ packages:
       file-system-cache: 2.3.0
     dev: true
 
-  /@storybook/web-components-vite@7.5.3(lit@3.0.2)(react-dom@18.2.0)(react@18.2.0)(typescript@5.3.3)(vite@5.1.5):
+  /@storybook/web-components-vite@7.5.3(lit@3.0.2)(react-dom@18.2.0)(react@18.2.0)(typescript@5.4.2)(vite@5.1.5):
     resolution: {integrity: sha512-DwVJX5wkeHIfuufBKiqm9FOTNjS1SnOV0xd2J3/7erhLzP1dC3CQtbGOhTe0cDsc0i/WjIcVF0l+NaOXnwKGVA==}
     engines: {node: ^14.18 || >=16}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
-      '@storybook/builder-vite': 7.5.3(typescript@5.3.3)(vite@5.1.5)
+      '@storybook/builder-vite': 7.5.3(typescript@5.4.2)(vite@5.1.5)
       '@storybook/core-server': 7.5.3
       '@storybook/node-logger': 7.5.3
       '@storybook/web-components': 7.5.3(lit@3.0.2)(react-dom@18.2.0)(react@18.2.0)
@@ -5485,7 +5485,7 @@ packages:
       parse5: 6.0.1
     dev: true
 
-  /@web/test-runner-chrome@0.15.0(typescript@5.3.3):
+  /@web/test-runner-chrome@0.15.0(typescript@5.4.2):
     resolution: {integrity: sha512-ZqkTJGQ57FDz3lWw+9CKfHuTV64S9GzBy5+0siSQulEVPfGiTzpksx9DohtA3BCLXdbEq4OHg40/XIQJomlc9w==}
     engines: {node: '>=18.0.0'}
     dependencies:
@@ -5493,7 +5493,7 @@ packages:
       '@web/test-runner-coverage-v8': 0.8.0
       async-mutex: 0.4.0
       chrome-launcher: 0.15.2
-      puppeteer-core: 20.9.0(typescript@5.3.3)
+      puppeteer-core: 20.9.0(typescript@5.4.2)
     transitivePeerDependencies:
       - bufferutil
       - encoding
@@ -5589,7 +5589,7 @@ packages:
       - utf-8-validate
     dev: true
 
-  /@web/test-runner@0.18.0(typescript@5.3.3):
+  /@web/test-runner@0.18.0(typescript@5.4.2):
     resolution: {integrity: sha512-aAlQrdSqwCie1mxuSK5kM0RYDJZL4Q0Hd5LeXn1on3OtHLtgztL4dZzzNSuAWablR2/Vuve3ChwDDxmYSTqXRg==}
     engines: {node: '>=18.0.0'}
     hasBin: true
@@ -5597,7 +5597,7 @@ packages:
       '@web/browser-logs': 0.4.0
       '@web/config-loader': 0.3.0
       '@web/dev-server': 0.4.0
-      '@web/test-runner-chrome': 0.15.0(typescript@5.3.3)
+      '@web/test-runner-chrome': 0.15.0(typescript@5.4.2)
       '@web/test-runner-commands': 0.9.0
       '@web/test-runner-core': 0.13.0
       '@web/test-runner-mocha': 0.9.0
@@ -12395,7 +12395,7 @@ packages:
       - utf-8-validate
     dev: true
 
-  /puppeteer-core@20.9.0(typescript@5.3.3):
+  /puppeteer-core@20.9.0(typescript@5.4.2):
     resolution: {integrity: sha512-H9fYZQzMTRrkboEfPmf7m3CLDN6JvbxXA3qTtS+dFt27tR+CsFHzPsT6pzp6lYL6bJbAPaR0HaPO6uSi+F94Pg==}
     engines: {node: '>=16.3.0'}
     peerDependencies:
@@ -12404,12 +12404,12 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@puppeteer/browsers': 1.4.6(typescript@5.3.3)
+      '@puppeteer/browsers': 1.4.6(typescript@5.4.2)
       chromium-bidi: 0.4.16(devtools-protocol@0.0.1147663)
       cross-fetch: 4.0.0
       debug: 4.3.4
       devtools-protocol: 0.0.1147663
-      typescript: 5.3.3
+      typescript: 5.4.2
       ws: 8.13.0
     transitivePeerDependencies:
       - bufferutil
@@ -13971,7 +13971,7 @@ packages:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
     dev: true
 
-  /tsconfck@2.1.2(typescript@5.3.3):
+  /tsconfck@2.1.2(typescript@5.4.2):
     resolution: {integrity: sha512-ghqN1b0puy3MhhviwO2kGF8SeMDNhEbnKxjK7h6+fvY9JAxqvXi8y5NAHSQv687OVboS2uZIByzGd45/YxrRHg==}
     engines: {node: ^14.13.1 || ^16 || >=18}
     hasBin: true
@@ -13981,7 +13981,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      typescript: 5.3.3
+      typescript: 5.4.2
     dev: true
 
   /tsconfig-paths@3.15.0:
@@ -14512,7 +14512,7 @@ packages:
       - terser
     dev: true
 
-  /vite-tsconfig-paths@4.2.1(typescript@5.3.3)(vite@5.1.5):
+  /vite-tsconfig-paths@4.2.1(typescript@5.4.2)(vite@5.1.5):
     resolution: {integrity: sha512-GNUI6ZgPqT3oervkvzU+qtys83+75N/OuDaQl7HmOqFTb0pjZsuARrRipsyJhJ3enqV8beI1xhGbToR4o78nSQ==}
     peerDependencies:
       vite: '*'
@@ -14522,7 +14522,7 @@ packages:
     dependencies:
       debug: 4.3.4
       globrex: 0.1.2
-      tsconfck: 2.1.2(typescript@5.3.3)
+      tsconfck: 2.1.2(typescript@5.4.2)
       vite: 5.1.5(terser@5.24.0)
     transitivePeerDependencies:
       - supports-color
