@@ -253,8 +253,8 @@ importers:
         specifier: ^1.0.0
         version: 1.3.1(terser@5.24.0)
       vite-plugin-cem:
-        specifier: ^0.6.0
-        version: 0.6.0(terser@5.24.0)
+        specifier: ^0.7.0
+        version: 0.7.0(terser@5.24.0)
       vite-tsconfig-paths:
         specifier: ^4.2.1
         version: 4.3.1(typescript@5.4.2)(vite@5.1.5)
@@ -14053,8 +14053,8 @@ packages:
       - terser
     dev: true
 
-  /vite-plugin-cem@0.6.0(terser@5.24.0):
-    resolution: {integrity: sha512-N/smao8l7TAJVVMRRye7R9muQvemR50IP7Q4lY9qioL319mKelTD83IJ9+OEDuIiPPBg8OFqh9CXFx9r7pHo+g==}
+  /vite-plugin-cem@0.7.0(terser@5.24.0):
+    resolution: {integrity: sha512-KGV/wjq+Fch1RKkA9I6vYleWf+8XBxJrG0EmsxeD/NqZ0gYDoqN2REmzUBoMJGpWSBGgDRkvyRpaiw8BLhtWsg==}
     dependencies:
       '@custom-elements-manifest/analyzer': 0.9.3
       glob: 8.1.0
