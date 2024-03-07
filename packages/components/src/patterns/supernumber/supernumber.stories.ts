@@ -1,4 +1,3 @@
-import '../../components/divider/divider';
 import '../../solid-components';
 import { html } from 'lit-html';
 
@@ -150,8 +149,6 @@ export const Size = {
           </script>
         </div>
       </section>
-
-      <sd-divider orientation="horizontal"></sd-divider>
 
       <section>
         <div class="sd-container sd-container--variant-white flex flex-col items-center">
