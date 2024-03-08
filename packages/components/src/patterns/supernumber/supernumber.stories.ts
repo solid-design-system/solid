@@ -35,8 +35,8 @@ export const Default = {
     </div>
 
     <script src="https://inorganik.github.io/countUp.js/dist/countUp.umd.js"></script>
-    <script>
-      var demo = new countUp.CountUp('countup', 500, { enableScrollSpy: true, duration: 3 });
+    <script type="module">
+      const demo = new countUp.CountUp('countup', 500, { enableScrollSpy: true, duration: 3 });
 
       if (!demo.error) {
         demo.start();
@@ -65,8 +65,8 @@ export const Prefix = {
     </div>
 
     <script src="https://inorganik.github.io/countUp.js/dist/countUp.umd.js"></script>
-    <script>
-      var prefixDemo = new countUp.CountUp('with-prefix', 1989, {
+    <script type="module">
+      const prefixDemo = new countUp.CountUp('with-prefix', 1989, {
         enableScrollSpy: true,
         duration: 3,
         prefix: 'Since ',
@@ -100,8 +100,8 @@ export const Suffix = {
     </div>
 
     <script src="https://inorganik.github.io/countUp.js/dist/countUp.umd.js"></script>
-    <script>
-      var suffixDemo = new countUp.CountUp('with-suffix', 1989, {
+    <script type="module">
+      const suffixDemo = new countUp.CountUp('with-suffix', 1989, {
         enableScrollSpy: true,
         duration: 3,
         suffix: ' years',
@@ -136,8 +136,8 @@ export const Size = {
           </p>
 
           <script src="https://inorganik.github.io/countUp.js/dist/countUp.umd.js"></script>
-          <script>
-            var lgDemo = new countUp.CountUp('lg', 200, {
+          <script type="module">
+            const lgDemo = new countUp.CountUp('lg', 200, {
               enableScrollSpy: true,
               duration: 3
             });
@@ -163,8 +163,8 @@ export const Size = {
           </p>
 
           <script src="https://inorganik.github.io/countUp.js/dist/countUp.umd.js"></script>
-          <script>
-            var mdDemo = new countUp.CountUp('md', 200, {
+          <script type="module">
+            const mdDemo = new countUp.CountUp('md', 200, {
               enableScrollSpy: true,
               duration: 3
             });
@@ -190,8 +190,8 @@ export const Size = {
           </p>
 
           <script src="https://inorganik.github.io/countUp.js/dist/countUp.umd.js"></script>
-          <script>
-            var smDemo = new countUp.CountUp('sm', 200, {
+          <script type="module">
+            const smDemo = new countUp.CountUp('sm', 200, {
               enableScrollSpy: true,
               duration: 3
             });
@@ -226,8 +226,8 @@ export const Inverted = {
     </div>
 
     <script src="https://inorganik.github.io/countUp.js/dist/countUp.umd.js"></script>
-    <script>
-      var invertedDemo = new countUp.CountUp('invertedDemo', 500, { enableScrollSpy: true, duration: 3 });
+    <script type="module">
+      const invertedDemo = new countUp.CountUp('invertedDemo', 500, { enableScrollSpy: true, duration: 3 });
 
       if (!invertedDemo.error) {
         invertedDemo.start();
@@ -256,8 +256,8 @@ export const Internationalization = {
     </div>
 
     <script src="https://inorganik.github.io/countUp.js/dist/countUp.umd.js"></script>
-    <script>
-      var i18nDemo = new countUp.CountUp('i18n', 5000.45, {
+    <script type="module">
+      const i18nDemo = new countUp.CountUp('i18n', 5000.45, {
         enableScrollSpy: true,
         duration: 3,
         decimalPlaces: 2,
