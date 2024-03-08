@@ -164,7 +164,7 @@ importers:
         version: 1.4.2
       chromatic:
         specifier: ^11.0.0
-        version: 11.0.4
+        version: 11.0.6
       comment-parser:
         specifier: ^1.4.1
         version: 1.4.1
@@ -6088,8 +6088,8 @@ packages:
     resolution: {integrity: sha512-U9eDw6+wt7V8z5NncY2jJfZa+hUH8XEj8FQHgFJTrUFnJfXYf4Ml4adI2vXZOjqRDpFWtYVWypDfZwnJ+HIR4A==}
     dev: false
 
-  /chromatic@11.0.4:
-    resolution: {integrity: sha512-v0ChtRee4FTX+YwoHHMG86rqMsJs5Y/aNsII+hHMacol3lXDhAwJkxw48B81LoTU+HumTPjqLaasdxMxrs4Z2w==}
+  /chromatic@11.0.6:
+    resolution: {integrity: sha512-wwJEHlml552yYGVFQuHXTR8TsZCGOhh3Q3F5IsoHFuGh04of12Xc5XyLF3bScD8lh7XKkbEYl3+Zc2j34C2q9w==}
     hasBin: true
     peerDependencies:
       '@chromatic-com/cypress': ^0.5.2 || ^1.0.0
