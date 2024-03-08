@@ -101,11 +101,10 @@ export const Suffix = {
 
     <script src="https://inorganik.github.io/countUp.js/dist/countUp.umd.js"></script>
     <script type="module">
-      const suffixDemo = new countUp.CountUp('with-suffix', 1989, {
+      const suffixDemo = new countUp.CountUp('with-suffix', 500, {
         enableScrollSpy: true,
         duration: 3,
-        suffix: ' years',
-        separator: ''
+        suffix: ' years'
       });
 
       if (!suffixDemo.error) {
