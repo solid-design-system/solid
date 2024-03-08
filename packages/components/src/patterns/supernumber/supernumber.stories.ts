@@ -15,6 +15,7 @@ export default {
 
 /**
  * Used to highlight and convey important key figures. The component consists of overline, number, subline and description. Supernumber is used as a subcomponent inside ui-container.
+ * countUp.js is used to animate the number. You can find more information about the library in the [countUp.js documentation](https://github.com/inorganik/CountUp.js)
  */
 
 export const Default = {
@@ -35,7 +36,7 @@ export const Default = {
 
     <script src="https://inorganik.github.io/countUp.js/dist/countUp.umd.js"></script>
     <script>
-      const demo = new countUp.CountUp('countup', 500, { enableScrollSpy: true, duration: 3 });
+      var demo = new countUp.CountUp('countup', 500, { enableScrollSpy: true, duration: 3 });
 
       if (!demo.error) {
         demo.start();
@@ -65,17 +66,17 @@ export const Prefix = {
 
     <script src="https://inorganik.github.io/countUp.js/dist/countUp.umd.js"></script>
     <script>
-      let demo1 = new countUp.CountUp('with-prefix', 1989, {
+      var prefixDemo = new countUp.CountUp('with-prefix', 1989, {
         enableScrollSpy: true,
         duration: 3,
         prefix: 'Since ',
         separator: ''
       });
 
-      if (!demo1.error) {
-        demo1.start();
+      if (!prefixDemo.error) {
+        prefixDemo.start();
       } else {
-        console.error(demo1.error);
+        console.error(prefixDemo.error);
       }
     </script>
   `
@@ -100,17 +101,17 @@ export const Suffix = {
 
     <script src="https://inorganik.github.io/countUp.js/dist/countUp.umd.js"></script>
     <script>
-      let demo2 = new countUp.CountUp('with-suffix', 1989, {
+      var suffixDemo = new countUp.CountUp('with-suffix', 1989, {
         enableScrollSpy: true,
         duration: 3,
         suffix: ' years',
         separator: ''
       });
 
-      if (!demo2.error) {
-        demo2.start();
+      if (!suffixDemo.error) {
+        suffixDemo.start();
       } else {
-        console.error(demo2.error);
+        console.error(suffixDemo.error);
       }
     </script>
   `
@@ -136,15 +137,15 @@ export const Size = {
 
           <script src="https://inorganik.github.io/countUp.js/dist/countUp.umd.js"></script>
           <script>
-            let demo3 = new countUp.CountUp('lg', 200, {
+            var lgDemo = new countUp.CountUp('lg', 200, {
               enableScrollSpy: true,
               duration: 3
             });
 
-            if (!demo3.error) {
-              demo3.start();
+            if (!lgDemo.error) {
+              lgDemo.start();
             } else {
-              console.error(demo3.error);
+              console.error(lgDemo.error);
             }
           </script>
         </div>
@@ -163,15 +164,15 @@ export const Size = {
 
           <script src="https://inorganik.github.io/countUp.js/dist/countUp.umd.js"></script>
           <script>
-            let demo4 = new countUp.CountUp('md', 200, {
+            var mdDemo = new countUp.CountUp('md', 200, {
               enableScrollSpy: true,
               duration: 3
             });
 
-            if (!demo4.error) {
-              demo4.start();
+            if (!mdDemo.error) {
+              mdDemo.start();
             } else {
-              console.error(demo4.error);
+              console.error(mdDemo.error);
             }
           </script>
         </div>
@@ -190,15 +191,15 @@ export const Size = {
 
           <script src="https://inorganik.github.io/countUp.js/dist/countUp.umd.js"></script>
           <script>
-            let demo5 = new countUp.CountUp('sm', 200, {
+            var smDemo = new countUp.CountUp('sm', 200, {
               enableScrollSpy: true,
               duration: 3
             });
 
-            if (!demo5.error) {
-              demo5.start();
+            if (!smDemo.error) {
+              smDemo.start();
             } else {
-              console.error(demo5.error);
+              console.error(smDemo.error);
             }
           </script>
         </div>
@@ -226,19 +227,19 @@ export const Inverted = {
 
     <script src="https://inorganik.github.io/countUp.js/dist/countUp.umd.js"></script>
     <script>
-      const demoInverted = new countUp.CountUp('invertedDemo', 500, { enableScrollSpy: true, duration: 3 });
+      var invertedDemo = new countUp.CountUp('invertedDemo', 500, { enableScrollSpy: true, duration: 3 });
 
-      if (!demoInverted.error) {
-        demoInverted.start();
+      if (!invertedDemo.error) {
+        invertedDemo.start();
       } else {
-        console.error(demoInverted.error);
+        console.error(invertedDemo.error);
       }
     </script>
   `
 };
 
 /**
- * Use the `numerals` option to display the supernumber in a different numeral system depending on your i18n needs.
+ * Use the `separator` and `decimal` options to format the supernumber according to your i18n needs. You can find advanced options (eg: custom numerals) in the [countUp.js documentation](https://github.com/inorganik/CountUp.js?tab=readme-ov-file#usage).
  */
 
 export const Internationalization = {
@@ -256,10 +257,12 @@ export const Internationalization = {
 
     <script src="https://inorganik.github.io/countUp.js/dist/countUp.umd.js"></script>
     <script>
-      const i18nDemo = new countUp.CountUp('i18n', 500, {
+      var i18nDemo = new countUp.CountUp('i18n', 5000.45, {
         enableScrollSpy: true,
         duration: 3,
-        numerals: ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩']
+        decimalPlaces: 2,
+        separator: '.',
+        decimal: ','
       });
 
       if (!i18nDemo.error) {
