@@ -1,7 +1,7 @@
 {
   "name": "@solid-design-system/components",
   "description": "Solid Design System: Components",
-  "version": "2.8.1",
+  "version": "2.8.2",
   "homepage": "https://solid-design-system.fe.union-investment.de/x.x.x/storybook/",
   "author": {
     "name": "Union Investment"
@@ -140,7 +140,7 @@
     "storybook-addon-designs": "6.3.1",
     "tailwindcss": "^3.3.5",
     "terser": "^5.24.0",
-    "typescript": "5.3.3",
+    "typescript": "5.4.2",
     "user-agent-data-types": "^0.4.2",
     "vite": "^5.0.0",
     "vite-node": "^1.0.0",

@@ -252,7 +252,7 @@ describe('<sd-select>', () => {
           <sd-option value="option-3">Option 3</sd-option>
         </sd-select>
       `);
-      const secondOption = el.querySelectorAll('sd-option')[1]!;
+      const secondOption = el.querySelectorAll('sd-option')[1];
 
       expect(el.checkValidity()).to.be.true;
       expect(el.hasAttribute('data-required')).to.be.true;
@@ -281,7 +281,7 @@ describe('<sd-select>', () => {
           <sd-option value="option-3">Option 3</sd-option>
         </sd-select>
       `);
-      const secondOption = el.querySelectorAll('sd-option')[1]!;
+      const secondOption = el.querySelectorAll('sd-option')[1];
 
       expect(el.hasAttribute('data-required')).to.be.true;
       expect(el.hasAttribute('data-optional')).to.be.false;
