@@ -168,6 +168,9 @@ importers:
       comment-parser:
         specifier: ^1.4.1
         version: 1.4.1
+      countup.js:
+        specifier: ^2.8.0
+        version: 2.8.0
       cssnano:
         specifier: ^6.0.1
         version: 6.1.0(postcss@8.4.35)
@@ -6516,6 +6519,10 @@ packages:
       parse-json: 5.2.0
       path-type: 4.0.0
       yaml: 1.10.2
+    dev: true
+
+  /countup.js@2.8.0:
+    resolution: {integrity: sha512-f7xEhX0awl4NOElHulrl4XRfKoNH3rB+qfNSZZyjSZhaAoUk6elvhH+MNxMmlmuUJ2/QNTWPSA7U4mNtIAKljQ==}
     dev: true
 
   /cross-fetch@4.0.0:
