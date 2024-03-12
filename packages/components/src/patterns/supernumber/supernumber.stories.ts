@@ -14,7 +14,7 @@ export default {
 };
 
 /**
- * Used to highlight and convey important key figures. The component consists of overline, number, subline and description. Supernumber is used as a subcomponent inside ui-container.
+ * Used to highlight and convey important key figures. The component consists of overline, number, subline and description. Supernumber is used as a subcomponent inside sd-container.
  * countUp.js is used to animate the number. You can find more information about the library in the [countUp.js documentation](https://github.com/inorganik/CountUp.js)
  */
 
