@@ -1,0 +1,145 @@
+# Migration Guide: `ui-container`
+
+The `ui-container` has been transformed and split up into to `sd-container` and `sd-brandshape`. Here you can find migration guides for both.
+
+# ui-container stylized="true" to sd-brandshape
+
+The new `sd-brandshape` is designed to replace the stylized variant of `ui-container` and uses slots to allow for more flexibility and customization.
+
+## 💾 Slots
+
+### ✨ New Slots
+
+#### [default]
+
+The content inside the brandshape.
+
+<hr />
+
+## ⚙️ Attributes
+
+### ✨ New Attributes
+
+#### [shapes]
+
+Defines which shapes of the brandshape should be displayed from `top`, `middle` and `bottom`.
+
+### 🔀 Updated Attributes
+
+#### [variant]
+
+Currently the color variants are reduced for the stylized container and it is in discussion whether more variants will be added in the future.
+
+### ❌ Removed Attributes
+
+The following attributes have been removed from the new sd-brandshape component:
+
+1. [fullWidth]
+2. [noPadding]
+3. [opaque]
+4. [stylized]
+
+<hr />
+
+## ✍️ CSS Variables
+
+### ❌ Removed CSS variables
+
+The following CSS variables have been removed from the new sd-brandshape component:
+
+1. [--component-container-outline-border-width]
+2. [--component-container-outline-color-background]
+3. [--component-container-outline-color-border]
+4. [--component-container-outline-color-font]
+5. [--component-container-primary-color]
+6. [--component-container-primary-color-background]
+7. [--component-container-primary-color-light]
+8. [--component-container-primary-color-light-background]
+9. [--component-container-secondary-color]
+10. [--component-container-secondary-color-background]
+11. [--component-container-white-color-background]
+12. [--component-container-white-color-font]
+
+<hr />
+
+## 🥳 Events
+
+### ❌ Removed Events:
+
+The following events have been removed from the new sd-brandshape component:
+
+1. [ready]
+
+<hr />
+
+# ui-container to sd-container
+
+The new `sd-container` is designed to replace the `ui-container` and uses slots to allow for more flexibility and customization.
+
+## 💾 Slots
+
+### ✨ New Slots
+
+#### [default]
+
+The content inside of the container.
+
+<hr />
+
+## ⚙️ Attributes
+
+### ✨ New Attributes
+
+#### [sd-container--triangle-...]
+
+Defines an optional triangle cut-out for sd-container with the following options: `default`, `top`, `right`, `bottom` or `left`. This allows for an indentation resembling an arrow on any side of the container.
+
+### 🔀 Updated Attributes
+
+#### [noPadding]
+
+The `noPadding` attribute has been replaced with the `sd-container--padding-...` attribute. The new `sd-container--padding-...` attribute can have the following options: `default` or `sm`.
+
+#### [variant]
+
+The `variant` attribute has been replaced with the `sd-container--variant-...` attribute. The `sd-container--variant-...` attribute can have the following options: `default`, `bg-primary-100`, `primary`, `border-neutral-400` or `white`.
+
+### ❌ Removed Attributes
+
+The following attributes have been removed from the new sd-container component:
+
+1. [opaque]
+2. [stylized]
+
+<hr />
+
+## ✍️ CSS Variables
+
+### ❌ Removed CSS variables
+
+The following CSS variables have been removed from the new sd-container component:
+
+1. [--component-container-outline-border-width]
+2. [--component-container-outline-color-background]
+3. [--component-container-outline-color-border]
+4. [--component-container-outline-color-font]
+5. [--component-container-primary-color]
+6. [--component-container-primary-color-background]
+7. [--component-container-primary-color-light]
+8. [--component-container-primary-color-light-background]
+9. [--component-container-secondary-color]
+10. [--component-container-secondary-color-background]
+11. [--component-container-white-color-background]
+12. [--component-container-white-color-font]
+
+<hr />
+
+## 🥳 Events
+
+### ❌ Removed Events:
+
+The following events have been removed from the new sd-container component:
+
+1. [ready]
+
+<hr />
