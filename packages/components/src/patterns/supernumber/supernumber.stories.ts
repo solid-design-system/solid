@@ -15,13 +15,9 @@ export default {
 
 /**
  * Used to highlight and convey important key figures. The component consists of overline, number, subline and description. Supernumber is used as a subcomponent inside sd-container.
- * countUp.js is used to animate the number. You can find more information about the library in the [countUp.js documentation](https://github.com/inorganik/CountUp.js)
  */
 
 export const Default = {
-  parameters: {
-    docs: { story: { inline: false, height: '350px' } }
-  },
   render: () => html`
     <div class="sd-container sd-container--variant-white flex flex-col items-center">
       <p class="sd-paragraph font-bold mb-2">Nisi eu excepteur anim esse</p>
@@ -37,14 +33,82 @@ export const Default = {
 };
 
 /**
- * Use the `prefix` option to add a prefix to the supernumber.
+ * The supernumber can be displayed in three different sizes: `lg`, `md` and `sm`. The size is determined by the font size of the number.
  */
 
-export const Prefix = {
+export const Size = {
+  render: () => html`
+    <div class="flex flex-col items-center gap-4">
+      <section>
+        <div class="sd-container sd-container--variant-white flex flex-col items-center">
+          <p class="sd-paragraph font-bold mb-2">Nisi eu excepteur anim esse</p>
+          <div class="text-[72px] text-primary leading-[86.4px]">XXX</div>
+          <p class="sd-paragraph font-bold my-4">Nisi eu excepteur anim esse</p>
+
+          <p class="sd-pararaph sd-paragraph--size-sm text-base text-center pt-2">
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmd tempor invit ut labore et
+            dolore magna aliquyam erat
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <div class="sd-container sd-container--variant-white flex flex-col items-center">
+          <p class="sd-paragraph font-bold mb-2">Nisi eu excepteur anim esse</p>
+          <div class="text-4xl text-primary leading-[48px]">XXX</div>
+          <p class="sd-paragraph font-bold my-4">Nisi eu excepteur anim esse</p>
+
+          <p class="sd-pararaph sd-paragraph--size-sm text-base text-center pt-2">
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmd tempor invit ut labore et
+            dolore magna aliquyam erat
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <div class="sd-container sd-container--variant-white flex flex-col items-center">
+          <p class="sd-paragraph font-bold mb-2">Nisi eu excepteur anim esse</p>
+          <div class="text-3xl text-primary leading-[38.4px]">XXX</div>
+          <p class="sd-paragraph font-bold my-4">Nisi eu excepteur anim esse</p>
+
+          <p class="sd-pararaph sd-paragraph--size-sm text-base text-center pt-2">
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmd tempor invit ut labore et
+            dolore magna aliquyam erat
+          </p>
+        </div>
+      </section>
+    </div>
+  `
+};
+
+/**
+ * The supernumber can be displayed as an inverted variant.
+ */
+
+export const Inverted = {
+  render: () => html`
+    <div class="sd-container sd-container--variant-primary flex flex-col items-center">
+      <p class="sd-paragraph sd-paragraph--inverted font-bold mb-2">Nisi eu excepteur anim esse</p>
+      <div class="text-[72px] text-white leading-[86.4px]">XXX</div>
+      <p class="sd-paragraph sd-paragraph--inverted font-bold my-4">Nisi eu excepteur anim esse</p>
+
+      <p class="sd-pararaph sd-paragraph--size-sm sd-paragraph--inverted text-base text-center pt-2">
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmd tempor invit ut labore et dolore
+        magna aliquyam erat
+      </p>
+    </div>
+  `
+};
+
+/**
+ * countUp.js can be used to animate the number. You can find more information about the library in the [countUp.js documentation](https://github.com/inorganik/CountUp.js).
+ */
+
+export const Animation = {
   render: () => html`
     <div class="sd-container sd-container--variant-white flex flex-col items-center">
       <p class="sd-paragraph font-bold mb-2">Nisi eu excepteur anim esse</p>
-      <div class="text-[72px] text-primary" id="with-prefix">0</div>
+      <div class="text-[72px] text-primary leading-[86.4px]" id="countup">0</div>
       <p class="sd-paragraph font-bold my-4">Nisi eu excepteur anim esse</p>
 
       <p class="sd-pararaph sd-paragraph--size-sm text-base text-center pt-2">
@@ -55,17 +119,50 @@ export const Prefix = {
 
     <script src="https://inorganik.github.io/countUp.js/dist/countUp.umd.js"></script>
     <script type="module">
-      const prefixDemo = new countUp.CountUp('with-prefix', 1989, {
+      const countup = new countUp.CountUp('countup', 500, {
+        enableScrollSpy: true,
+        duration: 3
+      });
+
+      if (!countup.error) {
+        countup.start();
+      } else {
+        console.error(countup.error);
+      }
+    </script>
+  `
+};
+
+/**
+ * Use the `prefix` option to add a prefix to the supernumber.
+ */
+
+export const AnimationPrefix = {
+  render: () => html`
+    <div class="sd-container sd-container--variant-white flex flex-col items-center">
+      <p class="sd-paragraph font-bold mb-2">Nisi eu excepteur anim esse</p>
+      <div class="text-[72px] text-primary leading-[86.4px]" id="with-prefix">0</div>
+      <p class="sd-paragraph font-bold my-4">Nisi eu excepteur anim esse</p>
+
+      <p class="sd-pararaph sd-paragraph--size-sm text-base text-center pt-2">
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmd tempor invit ut labore et dolore
+        magna aliquyam erat
+      </p>
+    </div>
+
+    <script src="https://inorganik.github.io/countUp.js/dist/countUp.umd.js"></script>
+    <script type="module">
+      const countup = new countUp.CountUp('with-prefix', 1989, {
         enableScrollSpy: true,
         duration: 3,
         prefix: 'Since ',
         separator: ''
       });
 
-      if (!prefixDemo.error) {
-        prefixDemo.start();
+      if (!countup.error) {
+        countup.start();
       } else {
-        console.error(prefixDemo.error);
+        console.error(countup.error);
       }
     </script>
   `
@@ -75,11 +172,11 @@ export const Prefix = {
  * Use the `suffix` option to add a suffix to the supernumber.
  */
 
-export const Suffix = {
+export const AnimationSuffix = {
   render: () => html`
     <div class="sd-container sd-container--variant-white flex flex-col items-center">
       <p class="sd-paragraph font-bold mb-2">Nisi eu excepteur anim esse</p>
-      <div class="text-[72px] text-primary" id="with-suffix">0</div>
+      <div class="text-[72px] text-primary leading-[86.4px]" id="with-suffix">0</div>
       <p class="sd-paragraph font-bold my-4">Nisi eu excepteur anim esse</p>
 
       <p class="sd-pararaph sd-paragraph--size-sm text-base text-center pt-2">
@@ -106,135 +203,14 @@ export const Suffix = {
 };
 
 /**
- * The supernumber can be displayed in three different sizes: `lg`, `md` and `sm`. The size is determined by the font size of the number.
- */
-
-export const Size = {
-  render: () => html`
-    <div class="flex flex-col items-center gap-4">
-      <section>
-        <div class="sd-container sd-container--variant-white flex flex-col items-center">
-          <p class="sd-paragraph font-bold mb-2">Nisi eu excepteur anim esse</p>
-          <div class="text-[72px] text-primary" id="lg">0</div>
-          <p class="sd-paragraph font-bold my-4">Nisi eu excepteur anim esse</p>
-
-          <p class="sd-pararaph sd-paragraph--size-sm text-base text-center pt-2">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmd tempor invit ut labore et
-            dolore magna aliquyam erat
-          </p>
-
-          <script src="https://inorganik.github.io/countUp.js/dist/countUp.umd.js"></script>
-          <script type="module">
-            const lgDemo = new countUp.CountUp('lg', 200, {
-              enableScrollSpy: true,
-              duration: 3
-            });
-
-            if (!lgDemo.error) {
-              lgDemo.start();
-            } else {
-              console.error(lgDemo.error);
-            }
-          </script>
-        </div>
-      </section>
-
-      <section>
-        <div class="sd-container sd-container--variant-white flex flex-col items-center">
-          <p class="sd-paragraph font-bold mb-2">Nisi eu excepteur anim esse</p>
-          <div class="text-4xl text-primary" id="md">0</div>
-          <p class="sd-paragraph font-bold my-4">Nisi eu excepteur anim esse</p>
-
-          <p class="sd-pararaph sd-paragraph--size-sm text-base text-center pt-2">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmd tempor invit ut labore et
-            dolore magna aliquyam erat
-          </p>
-
-          <script src="https://inorganik.github.io/countUp.js/dist/countUp.umd.js"></script>
-          <script type="module">
-            const mdDemo = new countUp.CountUp('md', 200, {
-              enableScrollSpy: true,
-              duration: 3
-            });
-
-            if (!mdDemo.error) {
-              mdDemo.start();
-            } else {
-              console.error(mdDemo.error);
-            }
-          </script>
-        </div>
-      </section>
-
-      <section>
-        <div class="sd-container sd-container--variant-white flex flex-col items-center">
-          <p class="sd-paragraph font-bold mb-2">Nisi eu excepteur anim esse</p>
-          <div class="text-3xl text-primary" id="sm">0</div>
-          <p class="sd-paragraph font-bold my-4">Nisi eu excepteur anim esse</p>
-
-          <p class="sd-pararaph sd-paragraph--size-sm text-base text-center pt-2">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmd tempor invit ut labore et
-            dolore magna aliquyam erat
-          </p>
-
-          <script src="https://inorganik.github.io/countUp.js/dist/countUp.umd.js"></script>
-          <script type="module">
-            const smDemo = new countUp.CountUp('sm', 200, {
-              enableScrollSpy: true,
-              duration: 3
-            });
-
-            if (!smDemo.error) {
-              smDemo.start();
-            } else {
-              console.error(smDemo.error);
-            }
-          </script>
-        </div>
-      </section>
-    </div>
-  `
-};
-
-/**
- * The supernumber can be displayed as an inverted variant.
- */
-
-export const Inverted = {
-  render: () => html`
-    <div class="sd-container sd-container--variant-primary flex flex-col items-center">
-      <p class="sd-paragraph sd-paragraph--inverted font-bold mb-2">Nisi eu excepteur anim esse</p>
-      <div class="text-[72px] text-white" id="invertedDemo">0</div>
-      <p class="sd-paragraph sd-paragraph--inverted font-bold my-4">Nisi eu excepteur anim esse</p>
-
-      <p class="sd-pararaph sd-paragraph--size-sm sd-paragraph--inverted text-center pt-2">
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmd tempor invit ut labore et dolore
-        magna aliquyam erat
-      </p>
-    </div>
-
-    <script src="https://inorganik.github.io/countUp.js/dist/countUp.umd.js"></script>
-    <script type="module">
-      const invertedDemo = new countUp.CountUp('invertedDemo', 500, { enableScrollSpy: true, duration: 3 });
-
-      if (!invertedDemo.error) {
-        invertedDemo.start();
-      } else {
-        console.error(invertedDemo.error);
-      }
-    </script>
-  `
-};
-
-/**
  * Use the `separator` and `decimal` options to format the supernumber according to your i18n needs. You can find advanced options (eg: custom numerals) in the [countUp.js documentation](https://github.com/inorganik/CountUp.js?tab=readme-ov-file#usage).
  */
 
-export const Internationalization = {
+export const AnimationInternationalization = {
   render: () => html`
     <div class="sd-container sd-container--variant-white flex flex-col items-center">
       <p class="sd-paragraph font-bold mb-2">Nisi eu excepteur anim esse</p>
-      <div class="text-[72px] text-primary" id="i18n">0</div>
+      <div class="text-[72px] text-primary leading-[86.4px]" id="i18n">0</div>
       <p class="sd-paragraph font-bold my-4">Nisi eu excepteur anim esse</p>
 
       <p class="sd-pararaph sd-paragraph--size-sm text-base text-center pt-2">
