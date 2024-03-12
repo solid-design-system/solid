@@ -25,25 +25,14 @@ export const Default = {
   render: () => html`
     <div class="sd-container sd-container--variant-white flex flex-col items-center">
       <p class="sd-paragraph font-bold mb-2">Nisi eu excepteur anim esse</p>
-      <div class="text-[72px] text-primary" id="countup">0</div>
+      <div class="text-[72px] text-primary leading-[86.4px]">XXX</div>
       <p class="sd-paragraph font-bold my-4">Nisi eu excepteur anim esse</p>
 
-      <p class="sd-pararaph sd-paragraph--size-sm text-center  pt-2">
+      <p class="sd-pararaph sd-paragraph--size-sm text-base text-center pt-2">
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmd tempor invit ut labore et dolore
         magna aliquyam erat
       </p>
     </div>
-
-    <script src="https://inorganik.github.io/countUp.js/dist/countUp.umd.js"></script>
-    <script type="module">
-      const demo = new countUp.CountUp('countup', 500, { enableScrollSpy: true, duration: 3 });
-
-      if (!demo.error) {
-        demo.start();
-      } else {
-        console.error(demo.error);
-      }
-    </script>
   `
 };
 
@@ -58,7 +47,7 @@ export const Prefix = {
       <div class="text-[72px] text-primary" id="with-prefix">0</div>
       <p class="sd-paragraph font-bold my-4">Nisi eu excepteur anim esse</p>
 
-      <p class="sd-pararaph sd-paragraph--size-sm text-center  pt-2">
+      <p class="sd-pararaph sd-paragraph--size-sm text-base text-center pt-2">
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmd tempor invit ut labore et dolore
         magna aliquyam erat
       </p>
@@ -93,7 +82,7 @@ export const Suffix = {
       <div class="text-[72px] text-primary" id="with-suffix">0</div>
       <p class="sd-paragraph font-bold my-4">Nisi eu excepteur anim esse</p>
 
-      <p class="sd-pararaph sd-paragraph--size-sm text-center  pt-2">
+      <p class="sd-pararaph sd-paragraph--size-sm text-base text-center pt-2">
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmd tempor invit ut labore et dolore
         magna aliquyam erat
       </p>
@@ -129,7 +118,7 @@ export const Size = {
           <div class="text-[72px] text-primary" id="lg">0</div>
           <p class="sd-paragraph font-bold my-4">Nisi eu excepteur anim esse</p>
 
-          <p class="sd-pararaph sd-paragraph--size-sm text-center  pt-2">
+          <p class="sd-pararaph sd-paragraph--size-sm text-base text-center pt-2">
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmd tempor invit ut labore et
             dolore magna aliquyam erat
           </p>
@@ -156,7 +145,7 @@ export const Size = {
           <div class="text-4xl text-primary" id="md">0</div>
           <p class="sd-paragraph font-bold my-4">Nisi eu excepteur anim esse</p>
 
-          <p class="sd-pararaph sd-paragraph--size-sm text-center  pt-2">
+          <p class="sd-pararaph sd-paragraph--size-sm text-base text-center pt-2">
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmd tempor invit ut labore et
             dolore magna aliquyam erat
           </p>
@@ -183,7 +172,7 @@ export const Size = {
           <div class="text-3xl text-primary" id="sm">0</div>
           <p class="sd-paragraph font-bold my-4">Nisi eu excepteur anim esse</p>
 
-          <p class="sd-pararaph sd-paragraph--size-sm text-center  pt-2">
+          <p class="sd-pararaph sd-paragraph--size-sm text-base text-center pt-2">
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmd tempor invit ut labore et
             dolore magna aliquyam erat
           </p>
@@ -218,7 +207,7 @@ export const Inverted = {
       <div class="text-[72px] text-white" id="invertedDemo">0</div>
       <p class="sd-paragraph sd-paragraph--inverted font-bold my-4">Nisi eu excepteur anim esse</p>
 
-      <p class="sd-pararaph sd-paragraph--size-sm sd-paragraph--inverted text-center  pt-2">
+      <p class="sd-pararaph sd-paragraph--size-sm sd-paragraph--inverted text-center pt-2">
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmd tempor invit ut labore et dolore
         magna aliquyam erat
       </p>
@@ -248,7 +237,7 @@ export const Internationalization = {
       <div class="text-[72px] text-primary" id="i18n">0</div>
       <p class="sd-paragraph font-bold my-4">Nisi eu excepteur anim esse</p>
 
-      <p class="sd-pararaph sd-paragraph--size-sm text-center pt-2">
+      <p class="sd-pararaph sd-paragraph--size-sm text-base text-center pt-2">
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmd tempor invit ut labore et dolore
         magna aliquyam erat
       </p>
