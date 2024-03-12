@@ -1,6 +1,6 @@
 {
   "name": "@solid-design-system/tokens",
-  "version": "2.2.0",
+  "version": "3.0.0",
   "description": "Solid Design System: Tokens",
   "main": "index.js",
   "scripts": {
