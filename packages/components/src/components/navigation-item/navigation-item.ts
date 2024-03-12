@@ -161,7 +161,7 @@ export default class SdNavigationItem extends SolidElement {
         part="current-indicator"
         class=${cx(
           'absolute left-0 pointer-events-none transition-all duration-150',
-          this.vertical ? 'w-1 h-[calc(100%-8px)] top-1 group-hover:h-full group-hover:top-0' : 'h-1 w-full bottom-0',
+          this.vertical ? 'w-1 h-[calc(100%-16px)] top-2 group-hover:h-full group-hover:top-0' : 'h-1 w-full bottom-0',
           this.current ? 'bg-accent' : 'bg-transparent',
           this.disabled && 'bg-neutral-500'
         )}></div>
