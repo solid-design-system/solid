@@ -248,7 +248,7 @@ export const Internationalization = {
       <div class="text-[72px] text-primary" id="i18n">0</div>
       <p class="sd-paragraph font-bold my-4">Nisi eu excepteur anim esse</p>
 
-      <p class="sd-pararaph sd-paragraph--size-sm text-center  pt-2">
+      <p class="sd-pararaph sd-paragraph--size-sm text-center pt-2">
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmd tempor invit ut labore et dolore
         magna aliquyam erat
       </p>
