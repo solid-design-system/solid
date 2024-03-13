@@ -117,9 +117,9 @@ export const Animation = {
       </p>
     </div>
 
-    <script src="https://inorganik.github.io/countUp.js/dist/countUp.umd.js"></script>
     <script type="module">
-      const countup = new countUp.CountUp('countup', 500, {
+      import { CountUp } from '/countup/countUp.min.js';
+      const countup = new CountUp('countup', 500, {
         enableScrollSpy: true,
         duration: 3
       });
@@ -150,9 +150,10 @@ export const AnimationPrefix = {
       </p>
     </div>
 
-    <script src="https://inorganik.github.io/countUp.js/dist/countUp.umd.js"></script>
     <script type="module">
-      const countup = new countUp.CountUp('with-prefix', 1989, {
+      import { CountUp } from '/countup/countUp.min.js';
+
+      const countup = new CountUp('with-prefix', 1989, {
         enableScrollSpy: true,
         duration: 3,
         prefix: 'Since ',
@@ -185,9 +186,10 @@ export const AnimationSuffix = {
       </p>
     </div>
 
-    <script src="https://inorganik.github.io/countUp.js/dist/countUp.umd.js"></script>
     <script type="module">
-      const suffixDemo = new countUp.CountUp('with-suffix', 500, {
+      import { CountUp } from '/countup/countUp.min.js';
+
+      const suffixDemo = new CountUp('with-suffix', 500, {
         enableScrollSpy: true,
         duration: 3,
         suffix: ' years'
@@ -219,9 +221,10 @@ export const AnimationInternationalization = {
       </p>
     </div>
 
-    <script src="https://inorganik.github.io/countUp.js/dist/countUp.umd.js"></script>
     <script type="module">
-      const i18nDemo = new countUp.CountUp('i18n', 5000.45, {
+      import { CountUp } from '/countup/countUp.min.js';
+
+      const i18nDemo = new CountUp('i18n', 5000.45, {
         enableScrollSpy: true,
         duration: 3,
         decimalPlaces: 2,
