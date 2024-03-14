@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v2.9.0](https://github.com/solid-design-system/solid/compare/components/2.8.2...components/2.9.0) (2024-03-14)
+
+
+### Features
+
+* ✨ add supernumber pattern  ([#845](https://github.com/solid-design-system/solid/issues/845)) ([5531774](https://github.com/solid-design-system/solid/commit/5531774e528e7875093d2ef02f37f2fbcff48262))
+
+### 📈 Stats
+* Bundle size (uncompressed): 281 KB (unchanged)
+* Bundle size (gzipped): 68 KB (unchanged)
+
 # [@solid-design-system/components-v2.8.2](https://github.com/solid-design-system/solid/compare/components/2.8.1...components/2.8.2) (2024-03-05)
 
 
