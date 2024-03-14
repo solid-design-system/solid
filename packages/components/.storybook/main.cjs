@@ -20,6 +20,10 @@ module.exports = {
     {
       from: '../../placeholders/src/images',
       to: '/placeholders'
+    },
+    {
+      from: '../node_modules/countup.js/dist',
+      to: '/countup'
     }
   ],
   framework: {
