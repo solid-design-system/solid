@@ -14,7 +14,7 @@ export default {
     {
       name: 'sd-footnote--reset',
       description:
-        'Resets the number of the footnote and starts counting from 1. This is useful when the footnote is used in a new context.'
+        'Resets the number of the footnote and starts counting from 1. This should be used at the beginning of a counting sequence and can be used again when starting a new context.'
     }
   ]
 } satisfies Style;

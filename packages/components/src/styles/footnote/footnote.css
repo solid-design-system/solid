@@ -1,9 +1,16 @@
 .sd-footnote {
-  @apply bg-primary;
-
-  &--number {
+  &--reset {
+    counter-reset: footnote;
   }
 
-  &--reset {
+  @apply text-neutral-700 text-sm flex gap-2;
+
+  &--number {
+    &::before {
+      counter-increment: footnote;
+      content: counter(footnote);
+    }
+
+    content: counter(footnote);
   }
 }
