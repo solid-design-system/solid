@@ -82,22 +82,27 @@ export const Reset = {
   render: () => {
     return html`<div class="sd-container flex flex-col gap-4">
     <p class="sd-footnote sd-footnote--number sd-footnote--reset">
-    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliq erat, sed diam voluptua.
-    </p>
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+          dolore magna aliq erat, sed diam voluptua.
+        </p>
 
-    <p class="sd-footnote sd-footnote--number">
-    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliq erat, sed diam voluptua.
-    </p>
+        <p class="sd-footnote sd-footnote--number">
+          Maecenas vel maximus nisi. Morbi feugiat venenatis diam ac efficitur. Nulla vehicula posuere facilisis.
+          Integer vel dolor efficitur, auctor leo id, interdum ipsum. Etiam nec porta dolor.
+        </p>
 
-    <p class="sd-footnote sd-footnote--number">
-    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliq erat, sed diam voluptua.
-    </p>
+        <p class="sd-footnote sd-footnote--number">
+          Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed et massa non
+          dolor porta viverra a sed lorem.
+        </p>
+
 
     <h4 class="sd-headline sd-headline--size-base">New Context</h4>
 
     <p class="sd-footnote sd-footnote--number sd-footnote--reset">
-    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliq erat, sed diam voluptua.
-    </p>
+          Vivamus erat libero, pellentesque ac velit a, vulputate congue neque. Vivamus non interdum leo, maximus
+          dignissim nibh. Suspendisse pretium tempor arcu.
+        </p>
 
     <p class="sd-footnote sd-footnote--number">
     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliq erat, sed diam voluptua.
@@ -123,18 +128,18 @@ export const Sample = {
         </p>
 
         <p class="sd-footnote sd-footnote--number">
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-          dolore magna aliq erat, sed diam voluptua.
+          Maecenas vel maximus nisi. Morbi feugiat venenatis diam ac efficitur. Nulla vehicula posuere facilisis.
+          Integer vel dolor efficitur, auctor leo id, interdum ipsum. Etiam nec porta dolor.
         </p>
 
         <p class="sd-footnote sd-footnote--number">
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-          dolore magna aliq erat, sed diam voluptua.
+          Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed et massa non
+          dolor porta viverra a sed lorem.
         </p>
 
         <p class="sd-footnote sd-footnote--number sd-footnote--reset">
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-          dolore magna aliq erat, sed diam voluptua.
+          Vivamus erat libero, pellentesque ac velit a, vulputate congue neque. Vivamus non interdum leo, maximus
+          dignissim nibh. Suspendisse pretium tempor arcu.
         </p>
 
         <p class="sd-footnote sd-footnote--number">
