@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v2.9.1](https://github.com/solid-design-system/solid/compare/components/2.9.0...components/2.9.1) (2024-03-14)
+
+
+### Bug Fixes
+
+* adjust vertical spacing of navigation-item#vertical ([#847](https://github.com/solid-design-system/solid/issues/847)) ([a482ab1](https://github.com/solid-design-system/solid/commit/a482ab136be355444df2614b82eb3e097a0462d7))
+
+### 📈 Stats
+* Bundle size (uncompressed): 281 KB (unchanged)
+* Bundle size (gzipped): 68 KB (unchanged)
+
 # [@solid-design-system/components-v2.9.0](https://github.com/solid-design-system/solid/compare/components/2.8.2...components/2.9.0) (2024-03-14)
 
 
