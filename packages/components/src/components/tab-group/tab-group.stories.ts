@@ -6,6 +6,7 @@ const { overrideArgs } = storybookHelpers('sd-tab-group');
 const { generateTemplate } = storybookTemplate('sd-tab-group');
 import { userEvent } from '@storybook/testing-library';
 import { waitUntil } from '@open-wc/testing-helpers';
+import { withActions } from '@storybook/addon-actions/decorator';
 
 function generateTabsAndPanels(
   startIndex: number,
@@ -29,7 +30,8 @@ export default {
     name: 'default',
     value: generateTabsAndPanels(1, 5)
   }),
-  argTypes
+  argTypes,
+  decorators: [withActions] as any
 };
 
 /**
