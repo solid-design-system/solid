@@ -30,7 +30,6 @@ export default {
     value: generateTabsAndPanels(1, 5)
   }),
   argTypes
-  // parameters: { ...parameters, docs: { story: { inline: false, height: '250px' } } },
 };
 
 /**
@@ -47,8 +46,6 @@ export const Default = {
  * The sd-tab-group shows an alternative style when tabs are of the `container` variant.
  */
 export const TabVariants = {
-  // parameters: { ...parameters, docs: { story: { inline: false, height: '550px' } }, chromatic: { delay: 10000 } },
-
   render: (args: any) => {
     return html`
       ${generateTemplate({
