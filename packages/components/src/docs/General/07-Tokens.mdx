@@ -48,14 +48,14 @@ They use shorthand RGB values (e. g. `108 194 84`) to allow setting opacity via 
     {Object.entries(theme.fontSize).map((token, i) => {
       const tokenToStyle = {};
       return (
-        <tr key={token}>
+        <tr>
           <td>
-            <div className="font-bold">sd-font-size-{token[0]}</div>
+            <div class="font-bold">sd-font-size-{token[0]}</div>
             <div>--sd-font-size-{token[1]}</div>
           </td>
           <td>
             <div
-              className={cx(
+              class={cx(
                 {
                   sm: '!text-sm',
                   base: '!text-base',
@@ -84,10 +84,10 @@ They use shorthand RGB values (e. g. `108 194 84`) to allow setting opacity via 
       return (
         <tr>
           <td>
-            <div className="font-bold">sd-font-size-{token[0]}</div>
+            <div class="font-bold">sd-font-weight-{token[0]}</div>
           </td>
           <td>
-            <div className={`font-${token[0]}`}>Lorem ipsum dolor</div>
+            <div class={`font-${token[0]}`}>Lorem ipsum dolor</div>
           </td>
         </tr>
       );
@@ -106,13 +106,13 @@ They use shorthand RGB values (e. g. `108 194 84`) to allow setting opacity via 
       return (
         <tr>
           <td>
-            <div className="flex flex-col">
-              <div className="font-bold">sd-spacing-{token[0]}</div>
+            <div class="flex flex-col">
+              <div class="font-bold">sd-spacing-{token[0]}</div>
               <div>sd-spacing-{token[1]}</div>
             </div>
           </td>
-          <td className="w-[calc(theme('spacing.40')+3rem)]">
-            <div className={`bg-primary flex h-10 w-${token[0]}`}></div>
+          <td class="w-[calc(theme('spacing.40')+3rem)]">
+            <div class={`bg-primary flex h-10 w-${token[0]}`}></div>
           </td>
         </tr>
       );
@@ -128,7 +128,7 @@ They use shorthand RGB values (e. g. `108 194 84`) to allow setting opacity via 
       return (
         <tr>
           <td>
-            <div className="font-bold">sd-z-index-{token[0]}</div>
+            <div class="font-bold">sd-z-index-{token[0]}</div>
             <div>sd-z-index-{token[1]}</div>
           </td>
         </tr>
@@ -145,18 +145,18 @@ They use shorthand RGB values (e. g. `108 194 84`) to allow setting opacity via 
       return (
         <tr>
           <td>
-            <div className="flex flex-col">
-              <div className="font-bold">sd-opacity-{token[0]}</div>
+            <div class="flex flex-col">
+              <div class="font-bold">sd-opacity-{token[0]}</div>
               <div>sd-opacity-{token[1]}</div>
             </div>
           </td>
           <td>
-            <div className={`flex flex-col w-32 opacity-${token[0]}`}>
+            <div class={`flex flex-col w-32 opacity-${token[0]}`}>
               {[...Array(4)].map((_, rowIndex) => (
-                <div className="flex w-full" key={rowIndex}>
+                <div class="flex w-full" key={rowIndex}>
                   {[...Array(10)].map((_, cellIndex) => (
                     <div
-                      className={`flex-1 h-4 ${rowIndex % 2 === cellIndex % 2 ? 'bg-white' : 'bg-primary'}`}
+                      class={`flex-1 h-4 ${rowIndex % 2 === cellIndex % 2 ? 'bg-white' : 'bg-primary'}`}
                       key={cellIndex}
                     />
                   ))}
@@ -178,13 +178,13 @@ They use shorthand RGB values (e. g. `108 194 84`) to allow setting opacity via 
       return (
         <tr>
           <td>
-            <div className="flex flex-col">
-              <div className="font-bold">--sd-shadow-{token[0]}</div>
+            <div class="flex flex-col">
+              <div class="font-bold">--sd-shadow-{token[0]}</div>
               <div>--sd-shadow-{token[1]}</div>
             </div>
           </td>
           <td>
-            <div className={`bg-primary h-16 w-16 shadow-${token[0]}`}></div>
+            <div class={`bg-primary h-16 w-16 shadow-${token[0]}`}></div>
           </td>
         </tr>
       );
@@ -201,13 +201,13 @@ They use shorthand RGB values (e. g. `108 194 84`) to allow setting opacity via 
       return (
         <tr>
           <td>
-            <div className="flex flex-col">
-              <div className="font-bold">--sd-aspect-ratio-{token[0]}</div>
+            <div class="flex flex-col">
+              <div class="font-bold">--sd-aspect-ratio-{token[0]}</div>
               <div>--sd-aspect-ratio-{token[1]}</div>
             </div>
           </td>
           <td>
-            <img slot="media" className={`bg-primary w-32 aspect-${token[0]}`} src="./placeholders/generic.jpg" alt="A placeholder image"/>
+            <img slot="media" class={`bg-primary w-32 aspect-${token[0]}`} src="./placeholders/generic.jpg" alt="A placeholder image"/>
           </td>
         </tr>
       );
