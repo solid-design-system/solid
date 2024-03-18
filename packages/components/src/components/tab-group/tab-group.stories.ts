@@ -6,7 +6,6 @@ const { overrideArgs } = storybookHelpers('sd-tab-group');
 const { generateTemplate } = storybookTemplate('sd-tab-group');
 import { userEvent } from '@storybook/testing-library';
 import { waitUntil } from '@open-wc/testing-helpers';
-import { withActions } from '@storybook/addon-actions/decorator';
 
 function generateTabsAndPanels(
   startIndex: number,
@@ -31,8 +30,17 @@ export default {
     value: generateTabsAndPanels(1, 5)
   }),
   argTypes,
-  parameters: { ...parameters, docs: { story: { inline: false, height: '250px' } } },
-  decorators: [withActions] as any
+  decorators: [
+    (story: () => typeof html) => html`
+      <style>
+        td.template {
+          display: block !important;
+          width: 500px;
+        }
+      </style>
+      ${story()}
+    `
+  ]
 };
 
 /**
@@ -49,8 +57,6 @@ export const Default = {
  * The sd-tab-group shows an alternative style when tabs are of the `container` variant.
  */
 export const TabVariants = {
-  parameters: { ...parameters, docs: { story: { inline: false, height: '550px' } }, chromatic: { delay: 10000 } },
-
   render: (args: any) => {
     return html`
       ${generateTemplate({
@@ -76,8 +82,6 @@ export const TabVariants = {
  */
 
 export const Scrollable = {
-  parameters: { ...parameters, docs: { story: { inline: false, height: '550px' } } },
-
   render: (args: any) => {
     return html`
       ${generateTemplate({
@@ -94,26 +98,14 @@ export const Scrollable = {
         args
       })}
     `;
-  },
-  decorators: [
-    (story: () => typeof html) => html`
-      <style>
-        td.template {
-          display: block !important;
-          width: 50%;
-        }
-      </style>
-      ${story()}
-    `
-  ]
+  }
 };
 
 export const Parts = {
   parameters: {
     controls: {
       exclude: ['base', 'nav', 'tabs', 'separation', 'body', 'scroll-button--start', 'scroll-button--end']
-    },
-    docs: { story: { inline: false, height: '2500px' } }
+    }
   },
   render: (args: any) => {
     return html`
@@ -141,6 +133,11 @@ export const Parts = {
                 <div style="width: 600px; position: relative;">%TEMPLATE%
                 </div>
               `
+            },
+            {
+              type: 'slot',
+              name: 'default',
+              value: generateTabsAndPanels(1, 30)
             }
           ],
           args
@@ -174,7 +171,15 @@ export const Mouseless = {
 };
 
 /**
- * As an option, users can justify the `sd-tab-group` to the center. To do this, set the `justify-content` property of the `tabs` part to `center`.
+ * As an option, users can justify the `sd-tab-group` to the center. To implement this sample, adjust the `tabs` CSS part as follows:
+ * 
+ * ```css
+ * 
+ *   sd-tab-group::part(tabs) {
+          justify-content: center;
+        }
+
+  * ```
  */
 
 export const SampleCentered = {
@@ -220,10 +225,28 @@ export const SampleCentered = {
 };
 
 /**
- * As an option, users can remove the line separating the tablist and the `sd-panel`.
+ * As an option, users can remove the line separating the tablist and the `sd-panel`. To implement this sample, apply the following adjustments to the `separation`, `base`, `scroll-button--start` and `scroll-button--end` CSS parts:
+ * 
+ * ```css
+ * 
+ * sd-tab-group::part(separation) {
+          display: none;
+        }
+
+        sd-tab::part(base):hover {
+          border-bottom: none !important;
+        }
+
+        sd-tab-group::part(scroll-button--start),
+        sd-tab-group::part(scroll-button--end) {
+          border-bottom: none;
+        }
+
+  * ```
  */
 
 export const SampleNoLine = {
+  parameters: { ...parameters, docs: { story: { inline: false, height: '250px' } } },
   name: 'Sample: No Line',
   render: () => {
     return html`
@@ -254,7 +277,13 @@ export const SampleNoLine = {
 };
 
 /**
- * Text can be bolded according to the users needs.
+ * Text can be bolded according to the users needs. To implement this sample, adjust the `base` CSS part as follows:
+ *   
+ * ```css
+        sd-tab::part(base) {
+          font-weight: bold;
+        }
+ * ```
  */
 
 export const SampleBold = {
