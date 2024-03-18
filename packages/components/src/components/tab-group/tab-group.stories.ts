@@ -6,7 +6,6 @@ const { overrideArgs } = storybookHelpers('sd-tab-group');
 const { generateTemplate } = storybookTemplate('sd-tab-group');
 import { userEvent } from '@storybook/testing-library';
 import { waitUntil } from '@open-wc/testing-helpers';
-import { withActions } from '@storybook/addon-actions/decorator';
 
 function generateTabsAndPanels(
   startIndex: number,
@@ -31,7 +30,17 @@ export default {
     value: generateTabsAndPanels(1, 5)
   }),
   argTypes,
-  decorators: [withActions] as any
+  decorators: [
+    (story: () => typeof html) => html`
+      <style>
+        td.template {
+          display: block !important;
+          width: 500px;
+        }
+      </style>
+      ${story()}
+    `
+  ]
 };
 
 /**
@@ -65,18 +74,7 @@ export const TabVariants = {
         args
       })}
     `;
-  },
-  decorators: [
-    (story: () => typeof html) => html`
-      <style>
-        td.template {
-          display: block !important;
-          width: 500px;
-        }
-      </style>
-      ${story()}
-    `
-  ]
+  }
 };
 
 /**
@@ -84,7 +82,6 @@ export const TabVariants = {
  */
 
 export const Scrollable = {
-  // parameters: { ...parameters, docs: { story: { inline: false, height: '550px' } } },
   render: (args: any) => {
     return html`
       ${generateTemplate({
