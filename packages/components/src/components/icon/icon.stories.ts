@@ -105,6 +105,33 @@ export const Default = {
 };
 
 /**
+ * Default icons refer to the official CDN by Union Investment which is fed by Celum.
+ */
+export const LibraryDefault = {
+  name: 'Library: default',
+  parameters: { controls: { exclude: ['name', 'library'] } },
+  render: (args: any) =>
+    generateTemplate({
+      axis: {
+        x: {
+          type: 'attribute',
+          name: 'color'
+        },
+        y: {
+          type: 'attribute',
+          name: 'name',
+          values: ['union-investment/content/baby']
+        }
+      },
+      constants: [{ type: 'attribute', name: 'library', value: '' }],
+      options: {
+        templateBackgrounds: { alternate: 'x', colors: ['white', 'white', 'rgb(var(--sd-color-primary, 0 53 142))'] }
+      },
+      args
+    })
+};
+
+/**
  * System icons are an integrated library of the Solid Components to ensure they're always available.
  * They are a subset of Union Investment's official icons. As these may change over time, we don't recommend using them directly.
  *
