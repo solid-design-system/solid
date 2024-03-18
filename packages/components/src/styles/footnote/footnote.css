@@ -9,9 +9,11 @@
     @apply flex gap-2;
 
     &::before {
-      font-size: 10px;
+      @apply w-5 leading-normal;
       counter-increment: footnote;
       content: counter(footnote);
+
+      font-size: 10px;
     }
   }
 }
