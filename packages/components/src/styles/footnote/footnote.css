@@ -3,14 +3,15 @@
     counter-reset: footnote;
   }
 
-  @apply text-neutral-700 text-sm flex gap-2;
+  @apply text-neutral-700 text-sm;
 
   &--number {
+    @apply flex gap-2;
+
     &::before {
+      font-size: 10px;
       counter-increment: footnote;
       content: counter(footnote);
     }
-
-    content: counter(footnote);
   }
 }
