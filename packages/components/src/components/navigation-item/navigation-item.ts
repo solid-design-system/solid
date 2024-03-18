@@ -139,12 +139,11 @@ export default class SdNavigationItem extends SolidElement {
       <${tag}
         part="base"
         class=${cx(
-          'hover:bg-neutral-200 group transition-all min-h-[48px] cursor-pointer relative focus-visible:focus-outline',
+          'px-4 hover:bg-neutral-200 group transition-all min-h-[48px] cursor-pointer relative focus-visible:focus-outline',
           { base: 'text-base', lg: 'text-lg', sm: 'text-[14px]' }[this.size],
           this.disabled ? 'text-neutral-500 pointer-events-none' : 'text-primary',
           isAccordion ? 'flex flex-col' : 'inline-block w-full',
-          this.divider && this.vertical && 'mt-[1px]',
-          this.vertical ? 'px-8' : 'px-4'
+          this.divider && this.vertical && 'mt-[1px]'
         )}
         aria-controls=${ifDefined(isAccordion ? 'navigation-item-details' : undefined)}
         aria-current=${ifDefined(this.current ? 'page' : undefined)}
@@ -162,7 +161,7 @@ export default class SdNavigationItem extends SolidElement {
         part="current-indicator"
         class=${cx(
           'absolute left-0 pointer-events-none transition-all duration-150',
-          this.vertical ? 'w-1 h-[calc(100%-8px)] top-1 group-hover:h-full group-hover:top-0' : 'h-1 w-full bottom-0',
+          this.vertical ? 'w-1 h-[calc(100%-16px)] top-2 group-hover:h-full group-hover:top-0' : 'h-1 w-full bottom-0',
           this.current ? 'bg-accent' : 'bg-transparent',
           this.disabled && 'bg-neutral-500'
         )}></div>
