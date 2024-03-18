@@ -71,7 +71,7 @@ export const TabVariants = {
       <style>
         td.template {
           display: block !important;
-          width: 100%;
+          width: 500px;
         }
       </style>
       ${story()}
@@ -84,6 +84,7 @@ export const TabVariants = {
  */
 
 export const Scrollable = {
+  // parameters: { ...parameters, docs: { story: { inline: false, height: '550px' } } },
   render: (args: any) => {
     return html`
       ${generateTemplate({
@@ -92,25 +93,15 @@ export const Scrollable = {
             type: 'slot',
             name: 'default',
             values: [
-              { title: 'default', value: generateTabsAndPanels(1, 30) },
-              { title: 'container', value: generateTabsAndPanels(1, 30, 'container') }
+              { title: 'default', value: generateTabsAndPanels(1, 10) },
+              { title: 'container', value: generateTabsAndPanels(1, 10, 'container') }
             ]
           }
         },
         args
       })}
     `;
-  },
-  decorators: [
-    (story: () => typeof html) => html`
-      <style>
-        td.template {
-          width: 500px;
-        }
-      </style>
-      ${story()}
-    `
-  ]
+  }
 };
 
 export const Parts = {
