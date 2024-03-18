@@ -254,7 +254,7 @@ importers:
         version: 5.1.6(terser@5.24.0)
       vite-node:
         specifier: ^1.0.0
-        version: 1.3.1(terser@5.24.0)
+        version: 1.4.0(terser@5.24.0)
       vite-plugin-cem:
         specifier: ^0.7.0
         version: 0.7.0(terser@5.24.0)
@@ -14179,8 +14179,8 @@ packages:
       vfile-message: 3.1.4
     dev: true
 
-  /vite-node@1.3.1(terser@5.24.0):
-    resolution: {integrity: sha512-azbRrqRxlWTJEVbzInZCTchx0X69M/XPTCz4H+TLvlTcR/xH/3hkRqhOakT41fMJCMzXTu4UvegkZiEoJAWvng==}
+  /vite-node@1.4.0(terser@5.24.0):
+    resolution: {integrity: sha512-VZDAseqjrHgNd4Kh8icYHWzTKSCZMhia7GyHfhtzLW33fZlG9SwsB6CEhgyVOWkJfJ2pFLrp/Gj1FSfAiqH9Lw==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     dependencies:
