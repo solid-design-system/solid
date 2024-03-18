@@ -13,6 +13,7 @@
       counter-increment: footnote;
       content: counter(footnote);
 
+      padding-top: 1px;
       font-size: 10px;
     }
   }
