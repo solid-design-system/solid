@@ -26,8 +26,7 @@
   },
   "lint-staged": {
     "*": [
-      "cd packages/components pnpm fix",
-      "pnpm format"
+      "pnpm fix"
     ]
   },
   "devDependencies": {
@@ -44,6 +43,12 @@
     "eslint-plugin-storybook": "^0.8.0",
     "eslint-plugin-wc": "^2.0.4",
     "husky": "^9.0.0",
+    "lint-staged": "^15.0.2",
     "prettier": "^3.0.3"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "tailwindcss@3.4.1": "patches/tailwindcss@3.4.1.patch"
+    }
   }
 }
