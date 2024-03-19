@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v2.9.2](https://github.com/solid-design-system/solid/compare/components/2.9.1...components/2.9.2) (2024-03-19)
+
+
+### Bug Fixes
+
+* remove font stack from components ([#876](https://github.com/solid-design-system/solid/issues/876)) ([68699cb](https://github.com/solid-design-system/solid/commit/68699cb270bad5d47ac62d1555f05059ce14734b))
+
+### 📈 Stats
+* Bundle size (uncompressed): 281 KB (unchanged)
+* Bundle size (gzipped): 68 KB (unchanged)
+
 # [@solid-design-system/components-v2.9.1](https://github.com/solid-design-system/solid/compare/components/2.9.0...components/2.9.1) (2024-03-14)
 
 
