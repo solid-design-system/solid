@@ -1,0 +1,17 @@
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+deleted file mode 100644
+index 3a37f414d69e4dd116b7527a4eba73b2204e35ea..0000000000000000000000000000000000000000
+diff --git a/lib/css/preflight.css b/lib/css/preflight.css
+index 3e4fa066386fad2b9be6207586182d8e69d4de71..434f3f61ad6372039ec491e67c296bc3561f0299 100644
+--- a/lib/css/preflight.css
++++ b/lib/css/preflight.css
+@@ -33,9 +33,6 @@ html,
+   -webkit-text-size-adjust: 100%; /* 2 */
+   -moz-tab-size: 4; /* 3 */
+   tab-size: 4; /* 3 */
+-  font-family: theme('fontFamily.sans', ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"); /* 4 */
+-  font-feature-settings: theme('fontFamily.sans[1].fontFeatureSettings', normal); /* 5 */
+-  font-variation-settings: theme('fontFamily.sans[1].fontVariationSettings', normal); /* 6 */
+   -webkit-tap-highlight-color: transparent; /* 7 */
+ }
+ 
