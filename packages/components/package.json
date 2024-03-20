@@ -120,7 +120,6 @@
     "cssnano": "^6.0.1",
     "globby": "^14.0.0",
     "gzip-size": "^7.0.0",
-    "html-format": "^1.1.2",
     "jsonata": "^2.0.3",
     "lit-html": "^3.0.2",
     "minify-html-literals": "^1.3.5",
