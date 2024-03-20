@@ -6,7 +6,7 @@
   },
   "tailwindCSS.experimental.classRegex": ["([a-zA-Z0-9\\-:]+)"],
   "editor.quickSuggestions": {
-    "strings": true
+    "source.fixAll.eslint": true
   },
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
