@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v2.9.3](https://github.com/solid-design-system/solid/compare/components/2.9.2...components/2.9.3) (2024-03-20)
+
+
+### Bug Fixes
+
+* 🤔 logo for the Sample B Story of the sd-header ([#879](https://github.com/solid-design-system/solid/issues/879)) ([41824fc](https://github.com/solid-design-system/solid/commit/41824fc4fdcec63d88bd09b27c7f0099be8d7566)), closes [#807](https://github.com/solid-design-system/solid/issues/807)
+
+### 📈 Stats
+* Bundle size (uncompressed): 281 KB (unchanged)
+* Bundle size (gzipped): 68 KB (unchanged)
+
 # [@solid-design-system/components-v2.9.2](https://github.com/solid-design-system/solid/compare/components/2.9.1...components/2.9.2) (2024-03-19)
 
 
