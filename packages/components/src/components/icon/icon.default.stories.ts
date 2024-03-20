@@ -1,6 +1,7 @@
 import '../../solid-components';
 import { storybookTemplate } from '../../../scripts/storybook/helper';
 // @ts-expect-error – dynamically loaded via Vite
+import { html } from 'lit';
 import iconsFromCdn from 'icons-from-cdn';
 
 const { generateTemplate } = storybookTemplate('sd-icon');
@@ -12,7 +13,16 @@ export default {
     controls: {
       disable: true
     }
-  }
+  },
+  // decorator to add <styles> to the story
+  decorators: [
+    (story: any) =>
+      html`${story()}<style>
+          sd-icon {
+            font-size: 1.5rem;
+          }
+        </style>`
+  ]
 };
 
 /**
