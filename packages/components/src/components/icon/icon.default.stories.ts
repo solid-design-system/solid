@@ -1,7 +1,7 @@
 import '../../solid-components';
+import { html } from 'lit';
 import { storybookTemplate } from '../../../scripts/storybook/helper';
 // @ts-expect-error – dynamically loaded via Vite
-import { html } from 'lit';
 import iconsFromCdn from 'icons-from-cdn';
 
 const { generateTemplate } = storybookTemplate('sd-icon');
