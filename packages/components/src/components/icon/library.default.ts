@@ -10,14 +10,10 @@ const defaultLibrary: IconLibrary = {
       greenFills: [] as unknown as NodeListOf<SVGElement>,
       greenStrokes: [] as unknown as NodeListOf<SVGElement>
     };
-    recoloredElements['currentColorFills'] = svg.querySelectorAll(
-      '[fill="rgb(var(--sd-color-primary, 0 53 142))"], [fill="#fff"]'
-    );
-    recoloredElements['currentColorStrokes'] = svg.querySelectorAll(
-      '[stroke="rgb(var(--sd-color-primary, 0 53 142))"], [stroke="#fff"]'
-    );
-    recoloredElements['greenFills'] = svg.querySelectorAll('[fill="#43b02a"]');
-    recoloredElements['greenStrokes'] = svg.querySelectorAll('[stroke="#43b02a"]');
+    recoloredElements['currentColorFills'] = svg.querySelectorAll('[fill="#00358e" i]');
+    recoloredElements['currentColorStrokes'] = svg.querySelectorAll('[stroke="#00358e" i]');
+    recoloredElements['greenFills'] = svg.querySelectorAll('[fill="#43b02a" i]');
+    recoloredElements['greenStrokes'] = svg.querySelectorAll('[stroke="#43b02a" i]');
 
     recoloredElements.currentColorFills.forEach(filledElement => {
       filledElement.setAttribute('fill', 'currentColor');

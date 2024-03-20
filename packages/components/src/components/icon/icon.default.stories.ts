@@ -1,0 +1,68 @@
+import '../../solid-components';
+import { storybookTemplate } from '../../../scripts/storybook/helper';
+import iconsFromCdn from 'icons-from-cdn';
+
+const { generateTemplate } = storybookTemplate('sd-icon');
+
+export default {
+  title: 'Components/sd-icon/default',
+  parameters: {
+    controls: {
+      disable: true
+    }
+  }
+};
+
+/**
+ * > Important: This list is only updated when Storybook is updated.
+ */
+
+export const LibraryDefaultContent = {
+  name: 'union-investment/content',
+  render: (args: any) =>
+    generateTemplate({
+      axis: {
+        x: {
+          type: 'attribute',
+          name: 'color'
+        },
+        y: {
+          type: 'attribute',
+          name: 'name',
+          values: (iconsFromCdn as { content: string[] }).content.map(icon => `union-investment/content/${icon}`)
+        }
+      },
+      constants: [{ type: 'attribute', name: 'library', value: '' }],
+      options: {
+        templateBackgrounds: { alternate: 'x', colors: ['white', 'white', 'rgb(var(--sd-color-primary, 0 53 142))'] }
+      },
+      args
+    })
+};
+
+/**
+ * > Important: This list is only updated when Storybook is updated.
+ */
+
+export const LibraryDefaultSystem = {
+  name: 'union-investment/system',
+  render: (args: any) =>
+    generateTemplate({
+      axis: {
+        x: {
+          type: 'attribute',
+          name: 'color'
+        },
+        y: {
+          type: 'attribute',
+          name: 'name',
+          values: (iconsFromCdn as { system: string[] }).system.map(icon => `union-investment/system/${icon}`)
+        }
+      },
+      constants: [{ type: 'attribute', name: 'library', value: '' }],
+      options: {
+        templateBackgrounds: { alternate: 'x', colors: ['white', 'white', 'rgb(var(--sd-color-primary, 0 53 142))'] }
+      },
+      args
+    })
+};

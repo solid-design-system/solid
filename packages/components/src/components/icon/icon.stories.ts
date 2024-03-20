@@ -1,5 +1,4 @@
 import '../../solid-components';
-import { icons } from './library.system';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 import { withActions } from '@storybook/addon-actions/decorator';
 
@@ -79,13 +78,7 @@ const { generateTemplate } = storybookTemplate('sd-icon');
 export default {
   title: 'Components/sd-icon',
   component: 'sd-icon',
-  args: overrideArgs(
-    [
-      { name: 'library', type: 'attribute', value: 'global-resources' },
-      { name: 'name', type: 'attribute', value: 'system/picture' }
-    ],
-    args
-  ),
+  args: overrideArgs([{ name: 'name', type: 'attribute', value: 'union-investment/content/image' }], args),
   argTypes,
   parameters: { ...parameters },
   decorators: [withActions] as any
@@ -106,10 +99,16 @@ export const Default = {
 
 /**
  * Default icons refer to the official CDN by Union Investment which is fed by Celum.
+ * They are automatically altered to support theming.
+ *
+ * Use the `name` attribute to select the correct icon, e. g. `union-investment/content/baby` to select a content icon in the union-investment folder.
  */
+
 export const LibraryDefault = {
-  name: 'Library: default',
-  parameters: { controls: { exclude: ['name', 'library'] } },
+  name: 'Library: Default',
+  parameters: {
+    controls: { exclude: ['name', 'library'] }
+  },
   render: (args: any) =>
     generateTemplate({
       axis: {
@@ -120,44 +119,10 @@ export const LibraryDefault = {
         y: {
           type: 'attribute',
           name: 'name',
-          values: ['union-investment/content/baby']
+          values: ['union-investment/content/image', 'union-investment/system/image']
         }
       },
       constants: [{ type: 'attribute', name: 'library', value: '' }],
-      options: {
-        templateBackgrounds: { alternate: 'x', colors: ['white', 'white', 'rgb(var(--sd-color-primary, 0 53 142))'] }
-      },
-      args
-    })
-};
-
-/**
- * System icons are an integrated library of the Solid Components to ensure they're always available.
- * They are a subset of Union Investment's official icons. As these may change over time, we don't recommend using them directly.
- *
- * The story below shows all available icons.
- */
-
-export const LibrarySystem = {
-  name: 'Library: system',
-  parameters: { controls: { exclude: ['name', 'library'] } },
-  render: (args: any) =>
-    generateTemplate({
-      axis: {
-        x: {
-          type: 'attribute',
-          name: 'color'
-        },
-        y: {
-          type: 'attribute',
-          name: 'name',
-          values: Object.keys(icons)
-        }
-      },
-      constants: [
-        { type: 'attribute', name: 'library', value: 'system' },
-        { type: 'attribute', name: 'name', value: 'check' }
-      ],
       options: {
         templateBackgrounds: { alternate: 'x', colors: ['white', 'white', 'rgb(var(--sd-color-primary, 0 53 142))'] }
       },
