@@ -2,7 +2,13 @@ import type { IconLibrary } from './library';
 
 const defaultLibrary: IconLibrary = {
   name: 'default',
-  resolver: name => `https://fe-celum-icons-prod.azureedge.net/${name}.svg`,
+  resolver: name => {
+    const path = name.split('/');
+    if (path[0] === 'content' || path[0] === 'system') {
+      name = 'union-investment/' + name;
+    }
+    return `https://fe-celum-icons-prod.azureedge.net/${name}.svg`;
+  },
   mutator: svg => {
     const recoloredElements = {
       currentColorFills: [] as unknown as NodeListOf<SVGElement>,

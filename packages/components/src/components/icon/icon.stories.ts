@@ -86,9 +86,6 @@ export default {
 
 /**
  * Default: This shows the sd-icon in its default state.
- *
- * > ❗️ We currently don't provide a default library, as this is blocked by external dependencies.
- * In future Updates of Solid Components this will be changed. Instead we're showing an icon from global resources.
  */
 
 export const Default = {
@@ -101,7 +98,8 @@ export const Default = {
  * Default icons refer to the official CDN by Union Investment which is fed by Celum.
  * They are automatically altered to support theming.
  *
- * Use the `name` attribute to select the correct icon, e. g. `union-investment/content/baby` to select a content icon in the union-investment folder.
+ * Use the `name` attribute to select the correct icon, e. g. `union-investment/content/{id}` to select the icon with the technicalId `{id}` in the `union-investment` folder.
+ * As `content` and `system` icons are the most common ones, you can omit the `union-investment` part and just use `content/{id}` or `system/{id}`.
  */
 
 export const LibraryDefault = {
@@ -120,7 +118,7 @@ export const LibraryDefault = {
         y: {
           type: 'attribute',
           name: 'name',
-          values: ['union-investment/content/image', 'union-investment/system/image']
+          values: ['content/image', 'union-investment/content/image', 'system/image', 'union-investment/system/image']
         }
       },
       constants: [{ type: 'attribute', name: 'library', value: '' }],
