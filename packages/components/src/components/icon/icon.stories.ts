@@ -1,4 +1,5 @@
 import '../../solid-components';
+import { icons } from './library.system';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 import { withActions } from '@storybook/addon-actions/decorator';
 
@@ -103,7 +104,7 @@ export const Default = {
  */
 
 export const LibraryDefault = {
-  name: 'Library: Default',
+  name: 'Library: default',
   parameters: {
     controls: { exclude: ['name', 'library'] },
     chromatic: { disableSnapshot: true }
@@ -122,6 +123,38 @@ export const LibraryDefault = {
         }
       },
       constants: [{ type: 'attribute', name: 'library', value: '' }],
+      options: {
+        templateBackgrounds: { alternate: 'x', colors: ['white', 'white', 'rgb(var(--sd-color-primary, 0 53 142))'] }
+      },
+      args
+    })
+}; /**
+ * System icons are an integrated library of the Solid Components to ensure they're always available.
+ * They are a subset of Union Investment's official icons. As these may change over time, we don't recommend using them directly.
+ *
+ * The story below shows all available icons.
+ */
+
+export const LibrarySystem = {
+  name: 'Library: system',
+  parameters: { controls: { exclude: ['name', 'library'] } },
+  render: (args: any) =>
+    generateTemplate({
+      axis: {
+        x: {
+          type: 'attribute',
+          name: 'color'
+        },
+        y: {
+          type: 'attribute',
+          name: 'name',
+          values: Object.keys(icons)
+        }
+      },
+      constants: [
+        { type: 'attribute', name: 'library', value: 'system' },
+        { type: 'attribute', name: 'name', value: 'check' }
+      ],
       options: {
         templateBackgrounds: { alternate: 'x', colors: ['white', 'white', 'rgb(var(--sd-color-primary, 0 53 142))'] }
       },
