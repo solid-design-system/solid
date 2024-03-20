@@ -6,6 +6,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import summaryPlugin from 'rollup-plugin-summary';
 import VitePluginCreateEmptyCemIfNotExisting from './scripts/vite-plugin-create-empty-cem-if-not-existing';
 import VitePluginCustomElementsManifest from 'vite-plugin-cem';
+import VitePluginFetchIconsFromCdn from './scripts/vite-plugin-fetch-icons-from-cdn';
 import VitePluginGetPlaywrightVersion from './scripts/vite-plugin-get-playwright-version';
 import VitePluginGetTailwindTheme from './scripts/vite-plugin-get-tailwind-theme';
 import VitePluginLitTailwind from './scripts/vite-plugin-lit-tailwind';
@@ -16,6 +17,7 @@ import type { defineConfig } from 'vite';
 export default (({ command }: { command: string }) => {
   return {
     plugins: [
+      VitePluginFetchIconsFromCdn(),
       // eslint-disable-next-line @typescript-eslint/no-unsafe-call
       VitePluginLitTailwind({
         include: [/src\/components\/.*\.ts$/],

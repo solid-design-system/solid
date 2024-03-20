@@ -1,5 +1,4 @@
 import '../../solid-components';
-import { icons } from './library.system';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 import { withActions } from '@storybook/addon-actions/decorator';
 
@@ -79,13 +78,7 @@ const { generateTemplate } = storybookTemplate('sd-icon');
 export default {
   title: 'Components/sd-icon',
   component: 'sd-icon',
-  args: overrideArgs(
-    [
-      { name: 'library', type: 'attribute', value: 'global-resources' },
-      { name: 'name', type: 'attribute', value: 'system/picture' }
-    ],
-    args
-  ),
+  args: overrideArgs([{ name: 'name', type: 'attribute', value: 'union-investment/content/image' }], args),
   argTypes,
   parameters: { ...parameters },
   decorators: [withActions] as any
@@ -93,9 +86,6 @@ export default {
 
 /**
  * Default: This shows the sd-icon in its default state.
- *
- * > ❗️ We currently don't provide a default library, as this is blocked by external dependencies.
- * In future Updates of Solid Components this will be changed. Instead we're showing an icon from global resources.
  */
 
 export const Default = {
@@ -105,15 +95,19 @@ export const Default = {
 };
 
 /**
- * System icons are an integrated library of the Solid Components to ensure they're always available.
- * They are a subset of Union Investment's official icons. As these may change over time, we don't recommend using them directly.
+ * Default icons refer to the official CDN by Union Investment which is fed by Celum.
+ * They are automatically altered to support theming.
  *
- * The story below shows all available icons.
+ * Use the `name` attribute to select the correct icon, e. g. `union-investment/content/{id}` to select the icon with the technicalId `{id}` in the `union-investment` folder.
+ * As `content` and `system` icons are the most common ones, you can omit the `union-investment` part and just use `content/{id}` or `system/{id}`.
  */
 
-export const LibrarySystem = {
-  name: 'Library: system',
-  parameters: { controls: { exclude: ['name', 'library'] } },
+export const LibraryDefault = {
+  name: 'Library: Default',
+  parameters: {
+    controls: { exclude: ['name', 'library'] },
+    chromatic: { disableSnapshot: true }
+  },
   render: (args: any) =>
     generateTemplate({
       axis: {
@@ -124,13 +118,10 @@ export const LibrarySystem = {
         y: {
           type: 'attribute',
           name: 'name',
-          values: Object.keys(icons)
+          values: ['content/image', 'union-investment/content/image', 'system/image', 'union-investment/system/image']
         }
       },
-      constants: [
-        { type: 'attribute', name: 'library', value: 'system' },
-        { type: 'attribute', name: 'name', value: 'check' }
-      ],
+      constants: [{ type: 'attribute', name: 'library', value: '' }],
       options: {
         templateBackgrounds: { alternate: 'x', colors: ['white', 'white', 'rgb(var(--sd-color-primary, 0 53 142))'] }
       },
