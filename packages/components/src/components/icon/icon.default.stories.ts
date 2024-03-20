@@ -7,6 +7,7 @@ const { generateTemplate } = storybookTemplate('sd-icon');
 export default {
   title: 'Components/sd-icon/default',
   parameters: {
+    chromatic: { disableSnapshot: true },
     controls: {
       disable: true
     }

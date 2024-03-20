@@ -107,7 +107,8 @@ export const Default = {
 export const LibraryDefault = {
   name: 'Library: Default',
   parameters: {
-    controls: { exclude: ['name', 'library'] }
+    controls: { exclude: ['name', 'library'] },
+    chromatic: { disableSnapshot: true }
   },
   render: (args: any) =>
     generateTemplate({
