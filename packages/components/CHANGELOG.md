@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v2.10.0](https://github.com/solid-design-system/solid/compare/components/2.9.3...components/2.10.0) (2024-03-20)
+
+
+### Features
+
+* add sd-icon default library which points to new CDN ([#873](https://github.com/solid-design-system/solid/issues/873)) ([e039c6d](https://github.com/solid-design-system/solid/commit/e039c6d040336e5c4bfd8a1cf5492ab234072b4a))
+
+### 📈 Stats
+* Bundle size (uncompressed): 282 KB (+1 KB / +0%)
+* Bundle size (gzipped): 68 KB (unchanged)
+
 # [@solid-design-system/components-v2.9.3](https://github.com/solid-design-system/solid/compare/components/2.9.2...components/2.9.3) (2024-03-20)
 
 
