@@ -1,18 +1,20 @@
 # Migration Guide: `ui-image`
 
-The ui-image has been transformed to `sd-media` and `sd-copyright`.
+The new `sd-media` and `sd-copyright` are designed to replace the `ui-image`. Rather than offering a complex component structure, they primarily focus on providing CSS styles.
 
-# ui-image to sd-media
+Media no longer requires the `ui-image` wrapper and instead can directly utilize the provided CSS classes.
 
-Instead of mainly providing content via attributes, the new `sd-media` component uses slots to allow for more flexibility and customization.
+## 🎨 CSS Classes
 
-## 💾 Slots
+### ✨ New CSS Classes
 
-### ✨ New Slots
+#### [sd-media]
 
-#### [default]
+The `sd-media` class is used to apply the basic styles to the media elements such as margin and default text color.
 
-Content of the element.
+#### [sd-copyright]
+
+The `sd-copyright` class is used to apply the basic styles to the copyright elements. It positions the element and defines padding, font size, color and text shadow.
 
 <hr />
 
@@ -20,7 +22,7 @@ Content of the element.
 
 ### ❌ Removed Attributes
 
-The following attributes have been removed from the new sd-media component:
+Since the new [sd-media] and [sd-copyright] are no longer components basically all attributes have been removed:
 
 1. [altText]
 2. [componentWidth]
@@ -48,7 +50,7 @@ The following attributes have been removed from the new sd-media component:
 
 ### ❌ Removed Events:
 
-The following events have been removed from the new sd-media component:
+The following events have been removed from the new components:
 
 1. [componentResized]
 
@@ -58,69 +60,7 @@ The following events have been removed from the new sd-media component:
 
 ### ❌ Removed Methods:
 
-The following methods have been removed from the new sd-media component:
-
-1. [onAfterResize]
-
-<hr />
-
-# ui-image to sd-copyright
-
-Instead of mainly providing content via attributes, the new `sd-copyright` component uses slots to allow for more flexibility and customization.
-
-## 💾 Slots
-
-### ✨ New Slots
-
-#### [default]
-
-Content of the element.
-
-<hr />
-
-## ⚙️ Attributes
-
-### ❌ Removed Attributes
-
-The following attributes have been removed from the new sd-copyright component:
-
-1. [altText]
-2. [componentWidth]
-3. [copyrightPosition]
-4. [copyrightText]
-5. [lazyLoading]
-6. [lightbox]
-7. [lightboxBackground]
-8. [maskPosition]
-9. [masked]
-10. [mouseoverText]
-11. [portrait]
-12. [positionX]
-13. [positionY]
-14. [ratio]
-15. [replace]
-16. [sizes]
-17. [src]
-18. [subText]
-19. [subTextHeadline]
-
-<hr />
-
-## 🥳 Events
-
-### ❌ Removed Events:
-
-The following events have been removed from the new sd-copyright component:
-
-1. [componentResized]
-
-<hr />
-
-## 🧪 Methods
-
-### ❌ Removed Methods:
-
-The following methods have been removed from the new sd-copyright component:
+The following methods have been removed from the new components:
 
 1. [onAfterResize]
 
