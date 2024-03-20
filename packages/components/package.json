@@ -1,7 +1,7 @@
 {
   "name": "@solid-design-system/components",
   "description": "Solid Design System: Components",
-  "version": "2.9.1",
+  "version": "2.9.2",
   "homepage": "https://solid-design-system.fe.union-investment.de/x.x.x/storybook/",
   "author": {
     "name": "Union Investment"
@@ -122,7 +122,6 @@
     "gzip-size": "^7.0.0",
     "html-format": "^1.1.2",
     "jsonata": "^2.0.3",
-    "lint-staged": "^15.0.2",
     "lit-html": "^3.0.2",
     "minify-html-literals": "^1.3.5",
     "normalize.css": "^8.0.1",
