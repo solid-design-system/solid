@@ -30,7 +30,7 @@
     "@semantic-release/git": "^10.0.1",
     "semantic-release": "^19.0.5",
     "semantic-release-monorepo": "^7.0.5",
-    "typescript": "5.4.2"
+    "typescript": "5.4.3"
   },
   "release": {
     "branches": [

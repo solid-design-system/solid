@@ -148,7 +148,7 @@ importers:
         version: 7.6.17(lit@3.1.2)(react-dom@18.2.0)(react@18.2.0)
       '@storybook/web-components-vite':
         specifier: ^7.5.3
-        version: 7.6.17(lit@3.1.2)(react-dom@18.2.0)(react@18.2.0)(typescript@5.4.2)(vite@5.1.6)
+        version: 7.6.17(lit@3.1.2)(react-dom@18.2.0)(react@18.2.0)(typescript@5.4.3)(vite@5.1.6)
       '@types/mocha':
         specifier: ^10.0.4
         version: 10.0.6
@@ -246,8 +246,8 @@ importers:
         specifier: ^5.24.0
         version: 5.24.0
       typescript:
-        specifier: 5.4.2
-        version: 5.4.2
+        specifier: 5.4.3
+        version: 5.4.3
       user-agent-data-types:
         specifier: ^0.4.2
         version: 0.4.2
@@ -262,7 +262,7 @@ importers:
         version: 0.7.0(terser@5.24.0)
       vite-tsconfig-paths:
         specifier: ^4.2.1
-        version: 4.3.2(typescript@5.4.2)(vite@5.1.6)
+        version: 4.3.2(typescript@5.4.3)(vite@5.1.6)
 
   packages/placeholders:
     devDependencies:
@@ -279,8 +279,8 @@ importers:
         specifier: ^7.0.5
         version: 7.0.8(semantic-release@19.0.5)
       typescript:
-        specifier: 5.4.2
-        version: 5.4.2
+        specifier: 5.4.3
+        version: 5.4.3
 
   packages/theming:
     dependencies:
@@ -301,8 +301,8 @@ importers:
         specifier: ^7.0.5
         version: 7.0.8(semantic-release@19.0.5)
       typescript:
-        specifier: 5.4.2
-        version: 5.4.2
+        specifier: 5.4.3
+        version: 5.4.3
 
   packages/tokens:
     devDependencies:
@@ -3780,7 +3780,7 @@ packages:
       - supports-color
     dev: true
 
-  /@storybook/builder-vite@7.6.17(typescript@5.4.2)(vite@5.1.6):
+  /@storybook/builder-vite@7.6.17(typescript@5.4.3)(vite@5.1.6):
     resolution: {integrity: sha512-2Q32qalI401EsKKr9Hkk8TAOcHEerqwsjCpQgTNJnCu6GgCVKoVUcb99oRbR9Vyg0xh+jb19XiWqqQujFtLYlQ==}
     peerDependencies:
       '@preact/preset-vite': '*'
@@ -3811,7 +3811,7 @@ packages:
       fs-extra: 11.2.0
       magic-string: 0.30.8
       rollup: 3.29.4
-      typescript: 5.4.2
+      typescript: 5.4.3
       vite: 5.1.6(terser@5.24.0)
     transitivePeerDependencies:
       - encoding
@@ -4237,11 +4237,11 @@ packages:
       file-system-cache: 2.3.0
     dev: true
 
-  /@storybook/web-components-vite@7.6.17(lit@3.1.2)(react-dom@18.2.0)(react@18.2.0)(typescript@5.4.2)(vite@5.1.6):
+  /@storybook/web-components-vite@7.6.17(lit@3.1.2)(react-dom@18.2.0)(react@18.2.0)(typescript@5.4.3)(vite@5.1.6):
     resolution: {integrity: sha512-luBXrRP1OS9QfB+Sw7hcP0cktqQmbF41+m2R/3C56DjBckoh8ojw0CUIpNIktkN4rS9cB/NUGHvaeZSWuDtuFw==}
     engines: {node: ^14.18 || >=16}
     dependencies:
-      '@storybook/builder-vite': 7.6.17(typescript@5.4.2)(vite@5.1.6)
+      '@storybook/builder-vite': 7.6.17(typescript@5.4.3)(vite@5.1.6)
       '@storybook/core-server': 7.6.17
       '@storybook/node-logger': 7.6.17
       '@storybook/web-components': 7.6.17(lit@3.1.2)(react-dom@18.2.0)(react@18.2.0)
@@ -13662,7 +13662,7 @@ packages:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
     dev: true
 
-  /tsconfck@3.0.3(typescript@5.4.2):
+  /tsconfck@3.0.3(typescript@5.4.3):
     resolution: {integrity: sha512-4t0noZX9t6GcPTfBAbIbbIU4pfpCwh0ueq3S4O/5qXI1VwK1outmxhe9dOiEWqMz3MW2LKgDTpqWV+37IWuVbA==}
     engines: {node: ^18 || >=20}
     hasBin: true
@@ -13672,7 +13672,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      typescript: 5.4.2
+      typescript: 5.4.3
     dev: true
 
   /tsconfig-paths@3.15.0:
@@ -13833,8 +13833,8 @@ packages:
     hasBin: true
     dev: true
 
-  /typescript@5.4.2:
-    resolution: {integrity: sha512-+2/g0Fds1ERlP6JsakQQDXjZdZMM+rqpamFZJEKh4kwTIn3iDkgKtby0CeNd5ATNZ4Ry1ax15TMx0W2V+miizQ==}
+  /typescript@5.4.3:
+    resolution: {integrity: sha512-KrPd3PKaCLr78MalgiwJnA25Nm8HAmdwN3mYUYZgG/wizIo9EainNVQI9/yDavtVFRN2h3k8uf3GLHuhDMgEHg==}
     engines: {node: '>=14.17'}
     hasBin: true
     dev: true
@@ -14218,7 +14218,7 @@ packages:
       - terser
     dev: true
 
-  /vite-tsconfig-paths@4.3.2(typescript@5.4.2)(vite@5.1.6):
+  /vite-tsconfig-paths@4.3.2(typescript@5.4.3)(vite@5.1.6):
     resolution: {integrity: sha512-0Vd/a6po6Q+86rPlntHye7F31zA2URZMbH8M3saAZ/xR9QoGN/L21bxEGfXdWmFdNkqPpRdxFT7nmNe12e9/uA==}
     peerDependencies:
       vite: '*'
@@ -14228,7 +14228,7 @@ packages:
     dependencies:
       debug: 4.3.4
       globrex: 0.1.2
-      tsconfck: 3.0.3(typescript@5.4.2)
+      tsconfck: 3.0.3(typescript@5.4.3)
       vite: 5.1.6(terser@5.24.0)
     transitivePeerDependencies:
       - supports-color
