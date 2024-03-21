@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v2.11.0](https://github.com/solid-design-system/solid/compare/components/2.10.0...components/2.11.0) (2024-03-21)
+
+
+### Features
+
+* ✨ add sd-footnote - CSS style ([#863](https://github.com/solid-design-system/solid/issues/863)) ([b82d764](https://github.com/solid-design-system/solid/commit/b82d764b379c13401e34d4cceb6c44ae9817fbea))
+
+### 📈 Stats
+* Bundle size (uncompressed): 282 KB (unchanged)
+* Bundle size (gzipped): 68 KB (unchanged)
+
 # [@solid-design-system/components-v2.10.0](https://github.com/solid-design-system/solid/compare/components/2.9.3...components/2.10.0) (2024-03-20)
 
 
