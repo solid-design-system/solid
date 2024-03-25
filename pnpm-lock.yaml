@@ -174,6 +174,9 @@ importers:
       cssnano:
         specifier: ^6.0.1
         version: 6.1.0(postcss@8.4.35)
+      flatpickr:
+        specifier: ^4.6.13
+        version: 4.6.13
       globby:
         specifier: ^14.0.0
         version: 14.0.1
@@ -261,6 +264,28 @@ importers:
       vite-tsconfig-paths:
         specifier: ^4.2.1
         version: 4.3.2(typescript@5.4.2)(vite@5.1.6)
+
+  packages/flatpickr:
+    dependencies:
+      '@solid-design-system/flatpickr':
+        specifier: ^1.0.0
+        version: 'link:'
+    devDependencies:
+      '@semantic-release/changelog':
+        specifier: ^6.0.3
+        version: 6.0.3(semantic-release@19.0.5)
+      '@semantic-release/git':
+        specifier: ^10.0.1
+        version: 10.0.1(semantic-release@19.0.5)
+      semantic-release:
+        specifier: ^19.0.5
+        version: 19.0.5
+      semantic-release-monorepo:
+        specifier: ^7.0.5
+        version: 7.0.8(semantic-release@19.0.5)
+      typescript:
+        specifier: 5.4.2
+        version: 5.4.2
 
   packages/placeholders:
     devDependencies:
@@ -3462,7 +3487,7 @@ packages:
       read-pkg: 5.2.0
       registry-auth-token: 5.0.2
       semantic-release: 19.0.5
-      semver: 7.5.4
+      semver: 7.6.0
       tempy: 1.0.1
     dev: true
 
@@ -7440,11 +7465,6 @@ packages:
       '@esbuild/win32-x64': 0.19.12
     dev: true
 
-  /escalade@3.1.1:
-    resolution: {integrity: sha512-k0er2gUkLf8O0zKJiAhmkTnJlTvINGv7ygDNPbeIsX/TJjGJZHuh9B2UxbsaEkmlEo9MfhrSzmhIlhRlI2GXnw==}
-    engines: {node: '>=6'}
-    dev: true
-
   /escalade@3.1.2:
     resolution: {integrity: sha512-ErCHMCae19vR8vQGe50xIsVomy19rg6gFu3+r3jkEO46suLMWBksvVyoGgQV+jOfl84ZSOSlmv6Gxa89PmTGmA==}
     engines: {node: '>=6'}
@@ -8115,6 +8135,10 @@ packages:
       flatted: 3.3.1
       keyv: 4.5.4
       rimraf: 3.0.2
+    dev: true
+
+  /flatpickr@4.6.13:
+    resolution: {integrity: sha512-97PMG/aywoYpB4IvbvUJi0RQi8vearvU0oov1WW3k0WZPBMrTQVqekSX5CjSG/M4Q3i6A/0FKXC7RyAoAUUSPw==}
     dev: true
 
   /flatted@3.3.1:
@@ -10889,7 +10913,7 @@ packages:
     dependencies:
       hosted-git-info: 4.1.0
       is-core-module: 2.13.1
-      semver: 7.5.4
+      semver: 7.6.0
       validate-npm-package-license: 3.0.4
     dev: true
 
@@ -14539,7 +14563,7 @@ packages:
     engines: {node: '>=12'}
     dependencies:
       cliui: 8.0.1
-      escalade: 3.1.1
+      escalade: 3.1.2
       get-caller-file: 2.0.5
       require-directory: 2.1.1
       string-width: 4.2.3

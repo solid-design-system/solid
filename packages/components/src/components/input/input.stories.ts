@@ -910,3 +910,37 @@ export const Samples = {
     `;
   }
 };
+
+/**
+ * Sample implementation of a date picker using flatpickr with custom styles.
+ */
+
+export const Flatpickr = {
+  name: 'Sample: Date Picker',
+  parameters: {
+    controls: {
+      include: []
+    }
+  },
+  render: () => {
+    return html`
+      <div>
+        <sd-input class="flatpickr flatpickr-input" placeholder="Enter date">
+          <sd-icon slot="right" class="text-primary" library="system" name="calendar"></sd-icon>
+        </sd-input>
+      </div>
+      <link rel="stylesheet" href="/flatpickr/style.css" />
+      <script type="module" src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+      <script type="module">
+        const input = document.querySelector('.flatpickr-input');
+        console.log(input);
+
+        flatpickr(input, {
+          allowInput: true,
+          dateFormat: 'd.m.Y'
+        });
+        console.log(flatpickr);
+      </script>
+    `;
+  }
+};

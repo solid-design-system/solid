@@ -66,5 +66,8 @@
                 }
             ]
         ]
+    },
+    "dependencies": {
+        "@solid-design-system/flatpickr": "^1.0.0"
     }
 }

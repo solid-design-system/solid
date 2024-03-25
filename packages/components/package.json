@@ -118,6 +118,7 @@
     "comment-parser": "^1.4.1",
     "countup.js": "^2.8.0",
     "cssnano": "^6.0.1",
+    "flatpickr": "^4.6.13",
     "globby": "^14.0.0",
     "gzip-size": "^7.0.0",
     "html-format": "^1.1.2",
