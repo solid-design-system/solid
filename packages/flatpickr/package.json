@@ -1,73 +1,73 @@
 {
-    "name": "@solid-design-system/flatpickr",
-    "version": "1.0.0",
-    "description": "This package provides the flatpickr theme and plugin for the Solid Design System.",
-    "main": "src",
-    "scripts": {
-        "build.types": "tsc --project tsconfig.json",
-        "release": "semantic-release  --tagFormat 'flatpickr/${version}' -e semantic-release-monorepo",
-        "release.dry": "semantic-release -d --tagFormat 'flatpickr/${version}' -e semantic-release-monorepo"
-    },
-    "type": "module",
-    "exports": {
-        "./*": "./src/*"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/solid-design-system/solid.git",
-        "directory": "packages/flatpickr"
-    },
-    "files": [
-        "src"
+  "name": "@solid-design-system/flatpickr",
+  "version": "1.0.0",
+  "description": "This package provides the flatpickr theme and plugin for the Solid Design System.",
+  "main": "src",
+  "scripts": {
+    "build.types": "tsc --project tsconfig.json",
+    "release": "semantic-release  --tagFormat 'flatpickr/${version}' -e semantic-release-monorepo",
+    "release.dry": "semantic-release -d --tagFormat 'flatpickr/${version}' -e semantic-release-monorepo"
+  },
+  "type": "module",
+  "exports": {
+    "./*": "./src/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/solid-design-system/solid.git",
+    "directory": "packages/flatpickr"
+  },
+  "files": [
+    "src"
+  ],
+  "author": "Union Investment",
+  "license": "MIT",
+  "readme": "README.md",
+  "devDependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "semantic-release": "^19.0.5",
+    "semantic-release-monorepo": "^7.0.5",
+    "typescript": "5.4.2"
+  },
+  "release": {
+    "branches": [
+      "main"
     ],
-    "author": "Union Investment",
-    "license": "MIT",
-    "readme": "README.md",
-    "devDependencies": {
-        "@semantic-release/changelog": "^6.0.3",
-        "@semantic-release/git": "^10.0.1",
-        "semantic-release": "^19.0.5",
-        "semantic-release-monorepo": "^7.0.5",
-        "typescript": "5.4.2"
-    },
-    "release": {
-        "branches": [
-            "main"
-        ],
-        "plugins": [
-            "@semantic-release/commit-analyzer",
-            "@semantic-release/release-notes-generator",
-            [
-                "@semantic-release/changelog",
-                {
-                    "changelogFile": "CHANGELOG.md"
-                }
-            ],
-            [
-                "@semantic-release/npm",
-                {
-                    "npmPublish": true
-                }
-            ],
-            [
-                "@semantic-release/git",
-                {
-                    "message": "chore(release/flatpickr): ${nextRelease.version} [skip actions]\n\n${nextRelease.notes}",
-                    "assets": [
-                        "CHANGELOG.md",
-                        "package.json"
-                    ]
-                }
-            ],
-            [
-                "@semantic-release/github",
-                {
-                    "successComment": false
-                }
-            ]
-        ]
-    },
-    "dependencies": {
-        "@solid-design-system/flatpickr": "^1.0.0"
-    }
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      [
+        "@semantic-release/changelog",
+        {
+          "changelogFile": "CHANGELOG.md"
+        }
+      ],
+      [
+        "@semantic-release/npm",
+        {
+          "npmPublish": true
+        }
+      ],
+      [
+        "@semantic-release/git",
+        {
+          "message": "chore(release/flatpickr): ${nextRelease.version} [skip actions]\n\n${nextRelease.notes}",
+          "assets": [
+            "CHANGELOG.md",
+            "package.json"
+          ]
+        }
+      ],
+      [
+        "@semantic-release/github",
+        {
+          "successComment": false
+        }
+      ]
+    ]
+  },
+  "dependencies": {
+    "@solid-design-system/flatpickr": "^1.0.0"
+  }
 }
