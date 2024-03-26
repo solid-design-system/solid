@@ -143,7 +143,7 @@
     "user-agent-data-types": "^0.4.2",
     "vite": "^5.0.0",
     "vite-node": "^1.0.0",
-    "vite-plugin-cem": "^0.7.0",
+    "vite-plugin-cem": "^0.8.0",
     "vite-tsconfig-paths": "^4.2.1"
   },
   "release": {
