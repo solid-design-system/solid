@@ -26,7 +26,7 @@ module.exports = {
       to: '/countup'
     },
     {
-      from: '../../flatpickr/src',
+      from: '../../flatpickr',
       to: '/flatpickr'
     }
   ],

@@ -916,7 +916,7 @@ export const Samples = {
  */
 
 export const Flatpickr = {
-  name: 'Sample: Date Picker',
+  name: 'Sample: Datepicker',
   parameters: {
     controls: {
       include: []
@@ -929,17 +929,49 @@ export const Flatpickr = {
           <sd-icon slot="right" class="text-primary" library="system" name="calendar"></sd-icon>
         </sd-input>
       </div>
-      <link rel="stylesheet" href="/flatpickr/style.css" />
+      <link rel="stylesheet" href="/flatpickr/dist/style.css" />
       <script type="module" src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
       <script type="module">
         const input = document.querySelector('.flatpickr-input');
-        console.log(input);
 
         flatpickr(input, {
           allowInput: true,
           dateFormat: 'd.m.Y'
         });
-        console.log(flatpickr);
+      </script>
+    `;
+  }
+};
+
+/**
+ * Sample implementation of a date picker using flatpickr with custom styles.
+ */
+
+export const FlatpickrRange = {
+  name: 'Sample: Ranged Datepicker',
+  parameters: {
+    controls: {
+      include: []
+    }
+  },
+  render: () => {
+    return html`
+      <div>
+        <sd-input class="flatpickr flatpickr-input" placeholder="Enter date">
+          <sd-icon slot="right" class="text-primary" library="system" name="calendar"></sd-icon>
+        </sd-input>
+      </div>
+      <link rel="stylesheet" href="/flatpickr/dist/style.css" />
+      <script type="module" src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+      <script type="module">
+        const input = document.querySelector('.flatpickr-input');
+        import solidPlugin from '/flatpickr/dist/solidPlugin.js';
+
+        flatpickr(input, {
+          allowInput: true,
+          dateFormat: 'd.m.Y',
+          plugins: [new solidPlugin()]
+        });
       </script>
     `;
   }
