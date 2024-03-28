@@ -3,8 +3,7 @@
 const theme = require('../tokens/src/create-theme.cjs');
 
 export default {
-  content: ["./src/*.css"],
+  content: ['./src/*.css'],
   theme,
-  plugins: [],
-}
-
+  plugins: []
+};
