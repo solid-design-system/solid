@@ -948,7 +948,7 @@ export const Flatpickr = {
  */
 
 export const FlatpickrRange = {
-  name: 'Sample: Ranged Datepicker',
+  name: 'Sample: Month Datepicker',
   parameters: {
     controls: {
       include: []
@@ -957,14 +957,14 @@ export const FlatpickrRange = {
   render: () => {
     return html`
       <div>
-        <sd-input class="flatpickr flatpickr-input" placeholder="Enter date">
+        <sd-input class="flatpickr month-input" placeholder="Enter date">
           <sd-icon slot="right" class="text-primary" library="system" name="calendar"></sd-icon>
         </sd-input>
       </div>
       <link rel="stylesheet" href="/flatpickr/dist/style.css" />
       <script type="module" src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
       <script type="module">
-        const input = document.querySelector('.flatpickr-input');
+        const input = document.querySelector('.month-input');
         import solidPlugin from '/flatpickr/dist/solidPlugin.js';
 
         flatpickr(input, {
