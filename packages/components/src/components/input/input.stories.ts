@@ -920,7 +920,8 @@ export const Flatpickr = {
   parameters: {
     controls: {
       include: []
-    }
+    },
+    docs: { story: { inline: false, height: '450px' } }
   },
   render: () => {
     return html`
@@ -947,12 +948,13 @@ export const Flatpickr = {
  * Sample implementation of a date picker using flatpickr with custom styles.
  */
 
-export const FlatpickrRange = {
+export const FlatpickrMonth = {
   name: 'Sample: Month Datepicker',
   parameters: {
     controls: {
       include: []
-    }
+    },
+    docs: { story: { inline: false, height: '350px' } }
   },
   render: () => {
     return html`
@@ -970,7 +972,42 @@ export const FlatpickrRange = {
         flatpickr(input, {
           allowInput: true,
           dateFormat: 'd.m.Y',
-          plugins: [new solidPlugin()]
+          plugins: [new solidPlugin({ shorthand: true })]
+        });
+      </script>
+    `;
+  }
+};
+
+/**
+ * Sample implementation of a date picker using flatpickr with custom styles.
+ */
+
+export const FlatpickrRange = {
+  name: 'Sample: Ranged Datepicker',
+  parameters: {
+    controls: {
+      include: []
+    },
+    docs: { story: { inline: false, height: '350px' } }
+  },
+  render: () => {
+    return html`
+      <div>
+        <sd-input class="flatpickr range-input" placeholder="Enter date">
+          <sd-icon slot="right" class="text-primary" library="system" name="calendar"></sd-icon>
+        </sd-input>
+      </div>
+      <link rel="stylesheet" href="/flatpickr/dist/style.css" />
+      <script type="module" src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+      <script type="module">
+        const input = document.querySelector('.range-input');
+        import solidPlugin from '/flatpickr/dist/solidPlugin.js';
+
+        flatpickr(input, {
+          allowInput: true,
+          dateFormat: 'd.m.Y',
+          plugins: []
         });
       </script>
     `;
