@@ -74,11 +74,11 @@ export default class SdTab extends SolidElement {
       <div
         part="base"
         class=${cx(
-          'inline-flex gap-2 min-w-max h-12 px-3 leading-none items-center justify-center whitespace-nowrap select-none cursor-pointer hover:bg-neutral-200 group relative focus-visible:focus-outline outline-2 !-outline-offset-2',
-          !this.active && 'hover:border-b hover:border-neutral-400',
+          'inline-flex gap-2 min-w-max h-12 px-3 leading-none items-center justify-center whitespace-nowrap select-none cursor-pointer group relative focus-visible:focus-outline outline-2 !-outline-offset-2',
+          !this.active && !this.disabled && 'tab--bottom-border',
           this.variant === 'container' && ' rounded-[4px_4px_0_0]',
           this.variant === 'container' && this.active && 'tab--active-container-border bg-white',
-          this.disabled && 'opacity-50 !cursor-not-allowed'
+          this.disabled ? 'opacity-50 !cursor-not-allowed' : 'hover:bg-neutral-200'
         )}
         tabindex=${this.disabled ? '-1' : '0'}
       >
@@ -110,6 +110,12 @@ export default class SdTab extends SolidElement {
         @apply absolute w-full h-full border border-neutral-400;
         border-bottom: none;
         border-radius: 4px 4px 0 0;
+      }
+
+      .tab--bottom-border::before {
+        content: '';
+        @apply absolute w-full bottom-0 border-b border-neutral-400 invisible hover:visible;
+        height: 1px;
       }
     `
   ];
