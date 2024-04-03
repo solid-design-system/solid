@@ -930,9 +930,9 @@ export const Flatpickr = {
           <sd-icon slot="right" class="text-primary" library="system" name="calendar"></sd-icon>
         </sd-input>
       </div>
-      <link rel="stylesheet" href="/flatpickr/dist/style.css" />
-      <script type="module" src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+      <link rel="stylesheet" href="/solidFlatpickr/dist/style.css" />
       <script type="module">
+        import '/flatpickr/flatpickr.min.js';
         const input = document.querySelector('.flatpickr-input');
 
         flatpickr(input, {
@@ -963,11 +963,11 @@ export const FlatpickrMonth = {
           <sd-icon slot="right" class="text-primary" library="system" name="calendar"></sd-icon>
         </sd-input>
       </div>
-      <link rel="stylesheet" href="/flatpickr/dist/style.css" />
-      <script type="module" src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+      <link rel="stylesheet" href="/solidFlatpickr/dist/style.css" />
       <script type="module">
+        import '/flatpickr/flatpickr.min.js';
         const input = document.querySelector('.month-input');
-        import solidPlugin from '/flatpickr/dist/solidPlugin.js';
+        import solidPlugin from '/solidFlatpickr/dist/solidPlugin.js';
 
         flatpickr(input, {
           allowInput: true,
@@ -993,21 +993,25 @@ export const FlatpickrRange = {
   },
   render: () => {
     return html`
-      <div>
+      <div class="flex gap-2">
         <sd-input class="flatpickr range-input" placeholder="Enter date">
           <sd-icon slot="right" class="text-primary" library="system" name="calendar"></sd-icon>
         </sd-input>
+        <sd-input class="flatpickr range-input" id="secondRangeInput" placeholder="Enter date">
+          <sd-icon slot="right" class="text-primary" library="system" name="calendar"></sd-icon>
+        </sd-input>
       </div>
-      <link rel="stylesheet" href="/flatpickr/dist/style.css" />
-      <script type="module" src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+      <link rel="stylesheet" href="/solidFlatpickr/dist/style.css" />
       <script type="module">
+        import '/flatpickr/flatpickr.min.js';
+        import '/flatpickr/plugins/rangePlugin.js';
         const input = document.querySelector('.range-input');
-        import solidPlugin from '/flatpickr/dist/solidPlugin.js';
+        import solidPlugin from '/solidFlatpickr/dist/solidPlugin.js';
 
         flatpickr(input, {
           allowInput: true,
           dateFormat: 'd.m.Y',
-          plugins: []
+          plugins: [new rangePlugin({ input: '#secondRangeInput' })]
         });
       </script>
     `;

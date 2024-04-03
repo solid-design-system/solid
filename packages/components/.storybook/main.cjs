@@ -27,6 +27,10 @@ module.exports = {
     },
     {
       from: '../../flatpickr',
+      to: '/solidFlatpickr'
+    },
+    {
+      from: '../node_modules/flatpickr/dist',
       to: '/flatpickr'
     }
   ],
