@@ -2,45 +2,79 @@ import { html } from 'lit-html';
 import { setupAutocomplete as solidAutocomplete } from '../../solid-components';
 
 /**
-## [autoComplete.js](https://tarekraafat.github.io/autoComplete.js/#/) Functionality:
-
-autoComplete.js is a lightweight and customizable JavaScript library for creating autocomplete functionality in web applications. Its primary functionality includes:
-1. **Autocomplete Suggestions**: autoComplete.js provides suggestions as users type into an input field, offering potential matches based on the input.
-2. **Keyboard Navigation**: It supports keyboard navigation for users to navigate through autocomplete suggestions using arrow keys or other specified keys.
-3. **Customization**: The library allows for extensive customization of the autocomplete behavior and appearance to suit the specific needs of the application. This includes styling options, event handling, and more.
-4. **Data Source**: autoComplete.js can fetch suggestions from various data sources, including local arrays, remote APIs, or dynamic data sets.
-5. **Accessibility**: The library aims to be accessible, providing keyboard support and other features to ensure users with disabilities can effectively use the autocomplete functionality.
-
-### Defaults:
-By default, autoComplete.js injects a popup element into the DOM to display autocomplete suggestions below or above the input field, depending on available space. It manages the positioning of this popup relative to the input field and handles interactions with it.
-
-### Available Settings:
-Some of the settings offered by autoComplete.js include:
-1. **Data Source Configuration**: Configuration options to specify the data source for autocomplete suggestions, such as local data arrays or remote APIs.
-2. **Appearance Customization**: Settings to customize the appearance of the autocomplete suggestions popup, including styling options for the suggestions and the popup container.
-3. **Behavior Customization**: Options to control the behavior of the autocomplete functionality, such as the minimum number of characters required before displaying suggestions, debounce delay for input events, and more.
-4. **Event Handling**: autoComplete.js provides event handlers for various interactions, such as selecting a suggestion, navigating through suggestions using the keyboard, or clearing the input field.
-
-Overall, autoComplete.js offers a versatile and feature-rich solution for implementing autocomplete functionality in web applications, with customizable settings to tailor the behavior and appearance according to specific requirements.
-
-## Why we provide a helper for [autoComplete.js](https://tarekraafat.github.io/autoComplete.js/#/) instead of a custom component :
-  In the case of the autocomplete feature, we encountered various challenges prompting us to opt for providing a helper for an existing lib, rather than developing a custom solution. This decision was driven by several factors, including:
-
-  - **Complexity Reduction**: Writing a custom autocomplete component from scratch can be complex, requiring handling of various edge cases, including keyboard navigation, input validation, and data fetching.
-  - **Accessibility (a11y)**: autoComplete.js provides robust accessibility features, particularly regarding keyboard navigation. When combined with our components, we can ensure the necessary level of accessibility is maintained across the user interface.
-  - **Keyboard Handling**: Handling keyboard interactions, such as navigating through autocomplete suggestions using arrow keys or selecting options using the Enter key, can be challenging to implement correctly. However, autoComplete.js offers built-in functionality to manage these interactions seamlessly.
-  - **Flexibility**: autoComplete.js likely offers a range of customization options, allowing you to tailor the autocomplete behavior and appearance to suit your specific needs.
-  - **Bundle Size**: Contrary to concerns about increased bundle size, the footprint of autoComplete.js is minimal. It's designed to be lightweight, ensuring that its inclusion does not significantly impact overall bundle size.
-  - **Design System Consistency**: By using a helper for autoComplete.js within your web component library, you can ensure consistency with your design system.
-
-  Therefore, integrating a helper for `autoComplete.js` emerged as the most viable approach to address these concerns effectively.
+ * ## [autoComplete.js](https://tarekraafat.github.io/autoComplete.js/#/) Functionality:
+ *
+ * autoComplete.js is a lightweight and customizable JavaScript library for creating autocomplete functionality in web applications. Its primary functionality includes:
+ * 1. **Autocomplete Suggestions**: autoComplete.js provides suggestions as users type into an input field, offering potential matches based on the input.
+ * 2. **Keyboard Navigation**: It supports keyboard navigation for users to navigate through autocomplete suggestions using arrow keys or other specified keys.
+ * 3. **Customization**: The library allows for extensive customization of the autocomplete behavior and appearance to suit the specific needs of the application. This includes styling options, event handling, and more.
+ * 4. **Data Source**: autoComplete.js can fetch suggestions from various data sources, including local arrays, remote APIs, or dynamic data sets.
+ * 5. **Accessibility**: The library aims to be accessible, providing keyboard support and other features to ensure users with disabilities can effectively use the autocomplete functionality.
+ *
+ * ### Defaults:
+ * By default, autoComplete.js injects a popup element into the DOM to display autocomplete suggestions below or above the input field, depending on available space. It manages the positioning of this popup relative to the input field and handles interactions with it.
+ *
+ * ### Available Settings:
+ * Some of the settings offered by autoComplete.js include:
+ * 1. **Data Source Configuration**: Configuration options to specify the data source for autocomplete suggestions, such as local data arrays or remote APIs.
+ * 2. **Appearance Customization**: Settings to customize the appearance of the autocomplete suggestions popup, including styling options for the suggestions and the popup container.
+ * 3. **Behavior Customization**: Options to control the behavior of the autocomplete functionality, such as the minimum number of characters required before displaying suggestions, debounce delay for input events, and more.
+ * 4. **Event Handling**: autoComplete.js provides event handlers for various interactions, such as selecting a suggestion, navigating through suggestions using the keyboard, or clearing the input field.
+ *
+ * Overall, autoComplete.js offers a versatile and feature-rich solution for implementing autocomplete functionality in web applications, with customizable settings to tailor the behavior and appearance according to specific requirements.
+ *
+ * ### How to import using ESM or UMD:
+ * #### ESM
+ * ```html
+ * <script type="module">
+ *   import { setupAutocomplete } from '@solid-design-system/unversioned';
+ *
+ *   Promise.all([customElements.whenDefined('sd-input'), customElements.whenDefined('sd-popup')]).then(() => {
+ *     const { config: simpleConfig } = setupAutocomplete('#simple-example');
+ *     new autoComplete({
+ *       ...simpleConfig,
+ *       placeHolder: 'Search',
+ *       data
+ *     });
+ *   });
+ * </script>
+ * ```
+ *
+ * #### UMD
+ * ```html
+ * <script src="https://solid-design-system.fe.union-investment.de/x.x.x/components/umd/solid-components.js"></script>
+ * <script>
+ *   const { setupAutocomplete } = window['Solid Components'];
+ *
+ *  Promise.all([customElements.whenDefined('sd-input'), customElements.whenDefined('sd-popup')]).then(() => {
+ *     const { config: simpleConfig } = setupAutocomplete('#simple-example');
+ *     new autoComplete({
+ *       ...simpleConfig,
+ *       placeHolder: 'Search',
+ *       data
+ *     });
+ *   });
+ * </script>
+ * ```
+ *
+ * ## Why we provide a helper for [autoComplete.js](https://tarekraafat.github.io/autoComplete.js/#/) instead of a custom component :
+ *   In the case of the autocomplete feature, we encountered various challenges prompting us to opt for providing a helper for an existing lib, rather than developing a custom solution. This decision was driven by several factors, including:
+ *
+ *   - **Complexity Reduction**: Writing a custom autocomplete component from scratch can be complex, requiring handling of various edge cases, including keyboard navigation, input validation, and data fetching.
+ *   - **Accessibility (a11y)**: autoComplete.js provides robust accessibility features, particularly regarding keyboard navigation. When combined with our components, we can ensure the necessary level of accessibility is maintained across the user interface.
+ *   - **Keyboard Handling**: Handling keyboard interactions, such as navigating through autocomplete suggestions using arrow keys or selecting options using the Enter key, can be challenging to implement correctly. However, autoComplete.js offers built-in functionality to manage these interactions seamlessly.
+ *   - **Flexibility**: autoComplete.js likely offers a range of customization options, allowing you to tailor the autocomplete behavior and appearance to suit your specific needs.
+ *   - **Bundle Size**: Contrary to concerns about increased bundle size, the footprint of autoComplete.js is minimal. It's designed to be lightweight, ensuring that its inclusion does not significantly impact overall bundle size.
+ *   - **Design System Consistency**: By using a helper for autoComplete.js within your web component library, you can ensure consistency with your design system.
+ *
+ *   Therefore, integrating a helper for `autoComplete.js` emerged as the most viable approach to address these concerns effectively.
  */
 
 export default {
   title: 'Pattern/autocomplete',
   component: 'Autocomplete',
   parameters: {
-    docs: { story: { inline: true, height: '400px' } },
+    docs: { story: { inline: false, height: '400px' } },
     chromatic: { disableSnapshot: true },
     excludeStories: /.Simple$/
   }
