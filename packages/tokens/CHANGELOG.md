@@ -1,3 +1,31 @@
+# [@solid-design-system/tokens-v3.0.0](https://github.com/solid-design-system/solid/compare/tokens/2.2.0...tokens/3.0.0) (2024-03-12)
+
+
+### Bug Fixes
+
+* adjusting vertical-transparent-white token + deprecating vertical-white-transparent ([#851](https://github.com/solid-design-system/solid/issues/851)) ([c90d0e3](https://github.com/solid-design-system/solid/commit/c90d0e3eee71ae2dd089e171200c2745c0262905))
+
+
+### BREAKING CHANGES
+
+* (!!)
+vertical-transparent-white token is adjusted
+vertical-white-transparent is deprecated
+
+# [@solid-design-system/tokens-v2.2.0](https://github.com/solid-design-system/solid/compare/tokens/2.1.1...tokens/2.2.0) (2024-02-27)
+
+
+### Features
+
+* ✨ add defined aspect ratios and additional colors ([#757](https://github.com/solid-design-system/solid/issues/757)) ([7cff6ad](https://github.com/solid-design-system/solid/commit/7cff6adb907cb29d361acf0b8c5de2ea5ed6f0a5))
+
+# [@solid-design-system/tokens-v2.1.1](https://github.com/solid-design-system/solid/compare/tokens/2.1.0...tokens/2.1.1) (2024-02-26)
+
+
+### Bug Fixes
+
+* remove unneeded gradient horizontal ([#764](https://github.com/solid-design-system/solid/issues/764)) ([b131566](https://github.com/solid-design-system/solid/commit/b1315664ffdd4c524405792dbf87796b07da9fb9))
+
 # [@solid-design-system/tokens-v2.1.0](https://github.com/solid-design-system/solid/compare/tokens/2.0.0...tokens/2.1.0) (2024-02-07)
 
 

@@ -18,6 +18,7 @@
     - [Styles](#styles)
   - [Repository Overview](#repository-overview)
   - [Technologies](#technologies)
+  - [Figma Library](#figma-library)
   - [SOLID Design Principles in Software Development](#solid-design-principles-in-software-development)
 
 ## Get Started
@@ -158,6 +159,12 @@ _ You can always refer to the existing components and styles to familiarize your
 - Chromatic
 - Vite
 - PostCSS
+
+## Figma Library
+
+In addition to Storybook, a [Figma library](https://www.figma.com/files/1075429990769806468/team/1144655844020560172) that serves as a reference for design guidelines, components and patterns used in this project, covers the design part of the SDS.
+
+In the onboarding for designers, we also provide an [overview](https://www.figma.com/file/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?type=design&node-id=7826-29847&mode=dev) on the figma file structure to better understand the design system and its components.
 
 ## SOLID Design Principles in Software Development
 

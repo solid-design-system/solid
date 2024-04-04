@@ -14,8 +14,8 @@ describe('when submitting a form', () => {
       </form>
     `);
     const button = form.querySelector('sd-button')!;
-    const checkbox = form.querySelectorAll('sd-checkbox')[1]!;
-    const checkbox2 = form.querySelectorAll('sd-checkbox')[2]!;
+    const checkbox = form.querySelectorAll('sd-checkbox')[1];
+    const checkbox2 = form.querySelectorAll('sd-checkbox')[2];
     const submitHandler = sinon.spy((event: SubmitEvent) => {
       formData = new FormData(form);
 

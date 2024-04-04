@@ -1,7 +1,6 @@
 import { classMap } from 'lit/directives/class-map.js';
 import { getWcStorybookHelpers } from '@mariohamann/wc-storybook-helpers';
 import { html, unsafeStatic } from 'lit/static-html.js';
-import format from 'html-format';
 import loadCustomElements from './fetch-cem';
 
 type ArgTypesDefinition = 'attribute' | 'property' | 'slot' | 'cssPart' | 'cssProperty';
@@ -449,8 +448,7 @@ export const storybookTemplate = (customElementTag: string) => {
                 html`<tr>
                   <th class="title" colspan=${(xAxis.values?.length || 0) + 3}><code>${options?.title}</code></th>
                 </tr>`}
-                ${xAxis &&
-                xAxis.values &&
+                ${xAxis?.values &&
                 html`
                   <tr>
                     ${showYLabel ? html`<td></td>` : ''} <td></td>
@@ -563,6 +561,6 @@ export const storybookUtilities = {
       .replace(/<style>\n<\/style>/g, '')
       .replace(/<script>\s*component = document\.querySelector\('(.+?)'\);\s*<\/script>/g, '');
     // return templateInnerHTML;
-    return format(templateInnerHTML);
+    return templateInnerHTML;
   }
 };

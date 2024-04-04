@@ -8,8 +8,7 @@
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "// prepare": "We don't want to start the prepare script for husky when we don't install the dev dependencies.",
-    "prepare": "node -e \"try { require('husky').install() } catch (e) {if (e.code !== 'MODULE_NOT_FOUND') throw e}\"",
+    "prepare": "node .husky/install.mjs",
     "verify": "pnpm format.verify && pnpm lint.verify && pnpm --recursive --if-present verify",
     "fix": "pnpm lint.fix && pnpm format.fix",
     "lint.fix": "eslint packages --max-warnings 0 --fix",
@@ -27,13 +26,12 @@
   },
   "lint-staged": {
     "*": [
-      "cd packages/components pnpm fix",
-      "pnpm format"
+      "pnpm fix"
     ]
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^6.10.0",
-    "@typescript-eslint/parser": "^6.10.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
     "eslint": "^8.53.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-chai-expect": "^3.0.0",
@@ -42,9 +40,15 @@
     "eslint-plugin-lit": "^1.10.1",
     "eslint-plugin-lit-a11y": "^4.1.1",
     "eslint-plugin-sort-imports-es6-autofix": "^0.6.0",
-    "eslint-plugin-storybook": "^0.6.15",
+    "eslint-plugin-storybook": "^0.8.0",
     "eslint-plugin-wc": "^2.0.4",
-    "husky": "^8.0.3",
+    "husky": "^9.0.0",
+    "lint-staged": "^15.0.2",
     "prettier": "^3.0.3"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "tailwindcss@3.4.1": "patches/tailwindcss@3.4.1.patch"
+    }
   }
 }

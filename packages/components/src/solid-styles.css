@@ -11,6 +11,9 @@
 @import './styles/chip/chip.css';
 @import './styles/flag/flag.css';
 @import './styles/list/list.css';
+@import './styles/copyright/copyright.css';
+@import './styles/media/media.css';
+@import './styles/footnote/footnote.css';
 
 /* Utility classes that can't be contained in a component and must be applied to the light DOM */
 @import './styles/_utility.css';

@@ -4,10 +4,6 @@ import { removeViteLogging, vitePlugin } from '@remcovaes/web-test-runner-vite-p
 
 const browsers = [playwrightLauncher({ product: 'chromium' }), playwrightLauncher({ product: 'webkit' })];
 
-if (!process.env.CI) {
-  browsers.push(playwrightLauncher({ product: 'firefox' }));
-}
-
 export default {
   rootDir: '.',
   files: 'src/components/**/*.test.ts', // "default" group

@@ -1,5 +1,5 @@
 .sd-container {
-  @apply bg-neutral-100 px-10 py-8;
+  @apply bg-neutral-100 px-10 py-8 relative;
 
   &--variant-primary-100 {
     @apply bg-primary-100;
@@ -10,7 +10,8 @@
   }
 
   &--variant-border-neutral-400 {
-    @apply border-[1px] border-neutral-400 bg-white;
+    @apply border-neutral-400 bg-white;
+    border-width: 1px;
   }
 
   &--variant-white {
@@ -19,5 +20,111 @@
 
   &--padding-sm {
     @apply px-6 py-4;
+  }
+
+  --triangle-background: white;
+
+  &--triangle-top::before,
+  &--triangle-right::before,
+  &--triangle-bottom::before,
+  &--triangle-left::before {
+    @apply absolute block border-solid border-transparent;
+    border-width: 14px;
+    content: '';
+  }
+
+  &--triangle-top::before {
+    @apply top-0;
+    left: calc(50% - 14px);
+    border-top-color: var(--triangle-background);
+  }
+  &--triangle-right::before {
+    @apply right-0;
+    top: calc(50% - 14px);
+    border-right-color: var(--triangle-background);
+  }
+  &--triangle-bottom::before {
+    @apply bottom-0;
+    left: calc(50% - 14px);
+    border-bottom-color: var(--triangle-background);
+  }
+  &--triangle-left::before {
+    @apply left-0;
+    top: calc(50% - 14px);
+    border-left-color: var(--triangle-background);
+  }
+
+  &--triangle-top-border,
+  &--triangle-right-border,
+  &--triangle-bottom-border,
+  &--triangle-left-border {
+    &::after,
+    &::before {
+      @apply absolute block border-solid border-transparent;
+      content: '';
+    }
+    &::after {
+      border-width: 14px;
+    }
+    &::before {
+      border-width: 15px;
+    }
+  }
+
+  &--triangle-top-border {
+    &::after,
+    &::before {
+      top: -1px;
+    }
+    &::before {
+      @apply border-t-neutral-400;
+      left: calc(50% - 15px);
+    }
+    &::after {
+      left: calc(50% - 14px);
+      border-top-color: var(--triangle-background);
+    }
+  }
+  &--triangle-right-border {
+    &::after,
+    &::before {
+      right: -1px;
+    }
+    &::before {
+      @apply border-r-neutral-400;
+      top: calc(50% - 15px);
+    }
+    &::after {
+      top: calc(50% - 14px);
+      border-right-color: var(--triangle-background);
+    }
+  }
+  &--triangle-bottom-border {
+    &::after,
+    &::before {
+      bottom: -1px;
+    }
+    &::before {
+      @apply border-b-neutral-400;
+      left: calc(50% - 15px);
+    }
+    &::after {
+      left: calc(50% - 14px);
+      border-bottom-color: var(--triangle-background);
+    }
+  }
+  &--triangle-left-border {
+    &::after,
+    &::before {
+      left: -1px;
+    }
+    &::before {
+      @apply border-l-neutral-400;
+      top: calc(50% - 15px);
+    }
+    &::after {
+      top: calc(50% - 14px);
+      border-left-color: var(--triangle-background);
+    }
   }
 }

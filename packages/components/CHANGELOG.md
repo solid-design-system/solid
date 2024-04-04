@@ -1,3 +1,146 @@
+# [@solid-design-system/components-v2.11.0](https://github.com/solid-design-system/solid/compare/components/2.10.0...components/2.11.0) (2024-03-21)
+
+
+### Features
+
+* ✨ add sd-footnote - CSS style ([#863](https://github.com/solid-design-system/solid/issues/863)) ([b82d764](https://github.com/solid-design-system/solid/commit/b82d764b379c13401e34d4cceb6c44ae9817fbea))
+
+### 📈 Stats
+* Bundle size (uncompressed): 282 KB (unchanged)
+* Bundle size (gzipped): 68 KB (unchanged)
+
+# [@solid-design-system/components-v2.10.0](https://github.com/solid-design-system/solid/compare/components/2.9.3...components/2.10.0) (2024-03-20)
+
+
+### Features
+
+* add sd-icon default library which points to new CDN ([#873](https://github.com/solid-design-system/solid/issues/873)) ([e039c6d](https://github.com/solid-design-system/solid/commit/e039c6d040336e5c4bfd8a1cf5492ab234072b4a))
+
+### 📈 Stats
+* Bundle size (uncompressed): 282 KB (+1 KB / +0%)
+* Bundle size (gzipped): 68 KB (unchanged)
+
+# [@solid-design-system/components-v2.9.3](https://github.com/solid-design-system/solid/compare/components/2.9.2...components/2.9.3) (2024-03-20)
+
+
+### Bug Fixes
+
+* 🤔 logo for the Sample B Story of the sd-header ([#879](https://github.com/solid-design-system/solid/issues/879)) ([41824fc](https://github.com/solid-design-system/solid/commit/41824fc4fdcec63d88bd09b27c7f0099be8d7566)), closes [#807](https://github.com/solid-design-system/solid/issues/807)
+
+### 📈 Stats
+* Bundle size (uncompressed): 281 KB (unchanged)
+* Bundle size (gzipped): 68 KB (unchanged)
+
+# [@solid-design-system/components-v2.9.2](https://github.com/solid-design-system/solid/compare/components/2.9.1...components/2.9.2) (2024-03-19)
+
+
+### Bug Fixes
+
+* remove font stack from components ([#876](https://github.com/solid-design-system/solid/issues/876)) ([68699cb](https://github.com/solid-design-system/solid/commit/68699cb270bad5d47ac62d1555f05059ce14734b))
+
+### 📈 Stats
+* Bundle size (uncompressed): 281 KB (unchanged)
+* Bundle size (gzipped): 68 KB (unchanged)
+
+# [@solid-design-system/components-v2.9.1](https://github.com/solid-design-system/solid/compare/components/2.9.0...components/2.9.1) (2024-03-14)
+
+
+### Bug Fixes
+
+* adjust vertical spacing of navigation-item#vertical ([#847](https://github.com/solid-design-system/solid/issues/847)) ([a482ab1](https://github.com/solid-design-system/solid/commit/a482ab136be355444df2614b82eb3e097a0462d7))
+
+### 📈 Stats
+* Bundle size (uncompressed): 281 KB (unchanged)
+* Bundle size (gzipped): 68 KB (unchanged)
+
+# [@solid-design-system/components-v2.9.0](https://github.com/solid-design-system/solid/compare/components/2.8.2...components/2.9.0) (2024-03-14)
+
+
+### Features
+
+* ✨ add supernumber pattern  ([#845](https://github.com/solid-design-system/solid/issues/845)) ([5531774](https://github.com/solid-design-system/solid/commit/5531774e528e7875093d2ef02f37f2fbcff48262))
+
+### 📈 Stats
+* Bundle size (uncompressed): 281 KB (unchanged)
+* Bundle size (gzipped): 68 KB (unchanged)
+
+# [@solid-design-system/components-v2.8.2](https://github.com/solid-design-system/solid/compare/components/2.8.1...components/2.8.2) (2024-03-05)
+
+
+### Bug Fixes
+
+* 🤔 CTA button color  ([#810](https://github.com/solid-design-system/solid/issues/810)) ([52cf6dc](https://github.com/solid-design-system/solid/commit/52cf6dcf1919bfef85d2700fafd1cd6ec8a1e33f))
+
+### 📈 Stats
+* Bundle size (uncompressed): 281 KB (unchanged)
+* Bundle size (gzipped): 68 KB (unchanged)
+
+# [@solid-design-system/components-v2.8.1](https://github.com/solid-design-system/solid/compare/components/2.8.0...components/2.8.1) (2024-02-29)
+
+
+### Bug Fixes
+
+* arbitrary values in container style ([#788](https://github.com/solid-design-system/solid/issues/788)) ([a184ca1](https://github.com/solid-design-system/solid/commit/a184ca117d9f6dab7b394db1ec48804632c7c5bb))
+
+### 📈 Stats
+* Bundle size (uncompressed): 281 KB (unchanged)
+* Bundle size (gzipped): 68 KB (unchanged)
+
+# [@solid-design-system/components-v2.8.0](https://github.com/solid-design-system/solid/compare/components/2.7.0...components/2.8.0) (2024-02-28)
+
+
+### Features
+
+* ✨ add sd container triangle property ([#776](https://github.com/solid-design-system/solid/issues/776)) ([cce15b7](https://github.com/solid-design-system/solid/commit/cce15b7fc41ee2d5f81506af4846045b5baebd22)), closes [#737](https://github.com/solid-design-system/solid/issues/737)
+
+### 📈 Stats
+* Bundle size (uncompressed): 281 KB (unchanged)
+* Bundle size (gzipped): 68 KB (unchanged)
+
+# [@solid-design-system/components-v2.7.0](https://github.com/solid-design-system/solid/compare/components/2.6.0...components/2.7.0) (2024-02-27)
+
+
+### Features
+
+* ✨ add defined aspect ratios and additional colors ([#757](https://github.com/solid-design-system/solid/issues/757)) ([7cff6ad](https://github.com/solid-design-system/solid/commit/7cff6adb907cb29d361acf0b8c5de2ea5ed6f0a5))
+
+### 📈 Stats
+* Bundle size (uncompressed): 281 KB (unchanged)
+* Bundle size (gzipped): 68 KB (unchanged)
+
+# [@solid-design-system/components-v2.6.0](https://github.com/solid-design-system/solid/compare/components/2.5.0...components/2.6.0) (2024-02-23)
+
+
+### Features
+
+* ✨ add sd-tab & sd-tab-group  ([#753](https://github.com/solid-design-system/solid/issues/753)) ([7d18eed](https://github.com/solid-design-system/solid/commit/7d18eed64147a7a045b13e5d5f35dc68ad5277e6))
+
+### 📈 Stats
+* Bundle size (uncompressed): 281 KB (+12 KB / +4%)
+* Bundle size (gzipped): 68 KB (+3 KB / +5%)
+
+# [@solid-design-system/components-v2.5.0](https://github.com/solid-design-system/solid/compare/components/2.4.5...components/2.5.0) (2024-02-23)
+
+
+### Features
+
+* ✨ add sd-media + sd-copyright - CSS style ([#755](https://github.com/solid-design-system/solid/issues/755)) ([693af1f](https://github.com/solid-design-system/solid/commit/693af1fc8be7a2db0e2b795cf25aa86f707868ec))
+
+### 📈 Stats
+* Bundle size (uncompressed): 269 KB (unchanged)
+* Bundle size (gzipped): 65 KB (unchanged)
+
+# [@solid-design-system/components-v2.4.5](https://github.com/solid-design-system/solid/compare/components/2.4.4...components/2.4.5) (2024-02-20)
+
+
+### Bug Fixes
+
+* 🤔 sd-video accessibility test [skip chromatic] ([#758](https://github.com/solid-design-system/solid/issues/758)) ([3c820b4](https://github.com/solid-design-system/solid/commit/3c820b408f15c2870533753dd22551ac2904b3b9))
+
+### 📈 Stats
+* Bundle size (uncompressed): 269 KB (unchanged)
+* Bundle size (gzipped): 65 KB (unchanged)
+
 # [@solid-design-system/components-v2.4.4](https://github.com/solid-design-system/solid/compare/components/2.4.3...components/2.4.4) (2024-02-16)
 
 
