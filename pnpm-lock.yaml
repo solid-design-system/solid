@@ -36,7 +36,7 @@ importers:
         version: 2.29.1(@typescript-eslint/parser@7.3.1)(eslint@8.57.0)
       eslint-plugin-lit:
         specifier: ^1.10.1
-        version: 1.10.1(eslint@8.57.0)
+        version: 1.11.0(eslint@8.57.0)
       eslint-plugin-lit-a11y:
         specifier: ^4.1.1
         version: 4.1.2(eslint@8.57.0)
@@ -7590,7 +7590,7 @@ packages:
       dom5: 3.0.1
       emoji-regex: 10.3.0
       eslint: 8.57.0
-      eslint-plugin-lit: 1.10.1(eslint@8.57.0)
+      eslint-plugin-lit: 1.11.0(eslint@8.57.0)
       eslint-rule-extender: 0.0.1
       language-tags: 1.0.9
       parse5: 7.1.2
@@ -7598,8 +7598,8 @@ packages:
       requireindex: 1.2.0
     dev: true
 
-  /eslint-plugin-lit@1.10.1(eslint@8.57.0):
-    resolution: {integrity: sha512-3eH++xFpe6efd+TN6B9kW1coULdPyK+3fMNws378nbYQ/HiWIz0+jVcsaGVs9BbLt6kVkDxZmUGF4Ivx3BatkA==}
+  /eslint-plugin-lit@1.11.0(eslint@8.57.0):
+    resolution: {integrity: sha512-jVqy2juQTAtOzj1ILf+ZW5GpDobXlSw0kvpP2zu2r8ZbW7KISt7ikj1Gw9DhNeirEU1UlSJR0VIWpdr4lzjayw==}
     engines: {node: '>= 12'}
     peerDependencies:
       eslint: '>= 5'
