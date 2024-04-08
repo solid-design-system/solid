@@ -932,12 +932,27 @@ export const Flatpickr = {
       </div>
       <link rel="stylesheet" href="/solidFlatpickr/dist/style.css" />
       <script type="module">
-        import '/flatpickr/flatpickr.min.js';
+        import '/flatpickr/flatpickr.js';
+        import solidFlatpickrPlugin from '/solidFlatpickr/dist/solid.js';
         const input = document.querySelector('.flatpickr-input');
 
-        flatpickr(input, {
+        let calendar = flatpickr(input, {
           allowInput: true,
-          dateFormat: 'd.m.Y'
+          dateFormat: 'd.m.Y',
+          plugins: [new solidFlatpickrPlugin()]
+        });
+
+        input.addEventListener('keydown', e => {
+          if (e.key === 'ArrowDown') {
+            const firstVisibleDay = document.querySelector('.flatpickr-day.today');
+            firstVisibleDay.focus();
+          }
+        });
+
+        input.addEventListener('keydown', e => {
+          if (e.key === 'Space') {
+            calendar.open();
+          }
         });
       </script>
     `;
@@ -945,7 +960,7 @@ export const Flatpickr = {
 };
 
 /**
- * Sample implementation of a date picker using flatpickr with custom styles.
+ * This sample demonstrates the usage of the monthSelect plugin for flatpickr.
  */
 
 export const FlatpickrMonth = {
@@ -959,20 +974,26 @@ export const FlatpickrMonth = {
   render: () => {
     return html`
       <div>
-        <sd-input class="flatpickr month-input" placeholder="Enter date">
+        <sd-input class="flatpickr-month-input" placeholder="Enter date" inputmode="text">
           <sd-icon slot="right" class="text-primary" library="system" name="calendar"></sd-icon>
         </sd-input>
       </div>
       <link rel="stylesheet" href="/solidFlatpickr/dist/style.css" />
       <script type="module">
         import '/flatpickr/flatpickr.min.js';
-        const input = document.querySelector('.month-input');
-        import solidPlugin from '/solidFlatpickr/dist/solidPlugin.js';
-
+        const input = document.querySelector('.flatpickr-month-input');
+        import '/flatpickr/plugins/monthSelect/index.js';
         flatpickr(input, {
           allowInput: true,
           dateFormat: 'd.m.Y',
-          plugins: [new solidPlugin({ shorthand: true })]
+          plugins: [new monthSelectPlugin({ shorthand: true })]
+        });
+
+        input.addEventListener('keydown', e => {
+          if (e.key === 'ArrowDown') {
+            const firstVisibleDay = document.querySelector('.flatpickr-monthSelect-month.today');
+            firstVisibleDay.focus();
+          }
         });
       </script>
     `;
@@ -980,7 +1001,7 @@ export const FlatpickrMonth = {
 };
 
 /**
- * Sample implementation of a date picker using flatpickr with custom styles.
+ * This sample demonstrates the usage of the range plugin for flatpickr.
  */
 
 export const FlatpickrRange = {
@@ -989,15 +1010,15 @@ export const FlatpickrRange = {
     controls: {
       include: []
     },
-    docs: { story: { inline: false, height: '350px' } }
+    docs: { story: { inline: false, height: '450px' } }
   },
   render: () => {
     return html`
       <div class="flex gap-2">
-        <sd-input class="flatpickr range-input" placeholder="Enter date">
+        <sd-input class="flatpickr-range-input" placeholder="Enter date">
           <sd-icon slot="right" class="text-primary" library="system" name="calendar"></sd-icon>
         </sd-input>
-        <sd-input class="flatpickr range-input" id="secondRangeInput" placeholder="Enter date">
+        <sd-input class="range-input" id="secondRangeInput" placeholder="Enter date">
           <sd-icon slot="right" class="text-primary" library="system" name="calendar"></sd-icon>
         </sd-input>
       </div>
@@ -1005,13 +1026,19 @@ export const FlatpickrRange = {
       <script type="module">
         import '/flatpickr/flatpickr.min.js';
         import '/flatpickr/plugins/rangePlugin.js';
-        const input = document.querySelector('.range-input');
-        import solidPlugin from '/solidFlatpickr/dist/solidPlugin.js';
+        const input = document.querySelector('.flatpickr-range-input');
 
         flatpickr(input, {
           allowInput: true,
           dateFormat: 'd.m.Y',
           plugins: [new rangePlugin({ input: '#secondRangeInput' })]
+        });
+
+        input.addEventListener('keydown', e => {
+          if (e.key === 'ArrowDown') {
+            const firstVisibleDay = document.querySelector('.flatpickr-day.today');
+            firstVisibleDay.focus();
+          }
         });
       </script>
     `;
