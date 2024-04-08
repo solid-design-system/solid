@@ -145,13 +145,13 @@ export const Sample = {
             {
               title: 'sd-icon',
               value: `
-              <sd-icon slot="left" name="system/picture" library="global-resources" class="text-primary"></sd-icon>`
+              <sd-icon slot="left" name="system/picture" library="global-resources"></sd-icon>`
             },
             {
               title: 'sd-icon + sd-badge',
               value: `
               <div class="relative">
-            <sd-icon slot="left" name="system/picture" library="global-resources" class="text-primary"></sd-icon>
+            <sd-icon slot="left" name="system/picture" library="global-resources"></sd-icon>
             <sd-badge class="absolute -top-0.5 -right-0.5" tabindex="-1" size="sm"></sd-badge>
          </div>`
             }

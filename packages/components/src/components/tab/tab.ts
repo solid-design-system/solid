@@ -82,7 +82,7 @@ export default class SdTab extends SolidElement {
         )}
         tabindex=${this.disabled ? '-1' : '0'}
       >
-        <slot name="left" class="pr-2"></slot>
+        <slot name="left" class=${cx('pr-2', this.disabled && 'text-neutral-500')}></slot>
         <slot class=${cx(this.disabled ? 'text-neutral-500' : 'text-primary')}></slot>
 
         <div
