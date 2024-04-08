@@ -930,22 +930,23 @@ export const Flatpickr = {
           <sd-icon slot="right" class="text-primary" library="system" name="calendar"></sd-icon>
         </sd-input>
       </div>
-      <link rel="stylesheet" href="/solidFlatpickr/dist/style.css" />
+
+      <link rel="stylesheet" href="/solidFlatpickr/dist/theme.css" />
+
       <script type="module">
         import '/flatpickr/flatpickr.js';
-        import solidFlatpickrPlugin from '/solidFlatpickr/dist/solid.js';
         const input = document.querySelector('.flatpickr-input');
 
         let calendar = flatpickr(input, {
           allowInput: true,
           dateFormat: 'd.m.Y',
-          plugins: [new solidFlatpickrPlugin()]
+          plugins: []
         });
 
         input.addEventListener('keydown', e => {
           if (e.key === 'ArrowDown') {
-            const firstVisibleDay = document.querySelector('.flatpickr-day.today');
-            firstVisibleDay.focus();
+            const currentDay = document.querySelector('.flatpickr-day.today');
+            currentDay.focus();
           }
         });
 
@@ -978,9 +979,12 @@ export const FlatpickrMonth = {
           <sd-icon slot="right" class="text-primary" library="system" name="calendar"></sd-icon>
         </sd-input>
       </div>
-      <link rel="stylesheet" href="/solidFlatpickr/dist/style.css" />
+
+      <link rel="stylesheet" href="/solidFlatpickr/dist/theme.css" />
+
       <script type="module">
         import '/flatpickr/flatpickr.min.js';
+
         const input = document.querySelector('.flatpickr-month-input');
         import '/flatpickr/plugins/monthSelect/index.js';
         flatpickr(input, {
@@ -991,8 +995,8 @@ export const FlatpickrMonth = {
 
         input.addEventListener('keydown', e => {
           if (e.key === 'ArrowDown') {
-            const firstVisibleDay = document.querySelector('.flatpickr-monthSelect-month.today');
-            firstVisibleDay.focus();
+            const currentMonth = document.querySelector('.flatpickr-monthSelect-month.today');
+            currentMonth.focus();
           }
         });
       </script>
@@ -1014,7 +1018,7 @@ export const FlatpickrRange = {
   },
   render: () => {
     return html`
-      <div class="flex gap-2">
+      <div class="flex w-40 gap-2">
         <sd-input class="flatpickr-range-input" placeholder="Enter date">
           <sd-icon slot="right" class="text-primary" library="system" name="calendar"></sd-icon>
         </sd-input>
@@ -1022,7 +1026,9 @@ export const FlatpickrRange = {
           <sd-icon slot="right" class="text-primary" library="system" name="calendar"></sd-icon>
         </sd-input>
       </div>
-      <link rel="stylesheet" href="/solidFlatpickr/dist/style.css" />
+
+      <link rel="stylesheet" href="/solidFlatpickr/dist/theme.css" />
+
       <script type="module">
         import '/flatpickr/flatpickr.min.js';
         import '/flatpickr/plugins/rangePlugin.js';
@@ -1036,8 +1042,8 @@ export const FlatpickrRange = {
 
         input.addEventListener('keydown', e => {
           if (e.key === 'ArrowDown') {
-            const firstVisibleDay = document.querySelector('.flatpickr-day.today');
-            firstVisibleDay.focus();
+            const currentDay = document.querySelector('.flatpickr-day.today');
+            currentDay.focus();
           }
         });
       </script>

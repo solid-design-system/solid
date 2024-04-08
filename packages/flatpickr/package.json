@@ -4,7 +4,7 @@
   "description": "This package provides the flatpickr theme and plugin for the Solid Design System.",
   "main": "src",
   "scripts": {
-    "dev": "npx tailwindcss -i ./src/input.css -o ./dist/style.css --watch",
+    "dev": "npx tailwindcss -i ./src/input.css -o ./dist/theme.css --watch",
     "build.types": "tsc --project tsconfig.json",
     "release": "semantic-release  --tagFormat 'flatpickr/${version}' -e semantic-release-monorepo",
     "release.dry": "semantic-release -d --tagFormat 'flatpickr/${version}' -e semantic-release-monorepo"

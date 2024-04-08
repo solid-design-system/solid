@@ -670,6 +670,11 @@ Used for primary-button background */;
   color: rgb(var(--sd-color-white, 255 255 255) / var(--tw-text-opacity)) /* Inverted text color */;
 }
 
+.outline-none {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
 .outline {
   outline-style: solid;
 }
@@ -1593,7 +1598,7 @@ Used for divider, teaser, container, ...  */;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   text-align: center;
-  width: 20%;
+  width: 33%;
 }
 
 .flatpickr-monthSelect-month.flatpickr-disabled {
@@ -1639,6 +1644,8 @@ Used for divider, teaser, container, ...  */;
 .flatpickr-monthSelect-month:hover,
 .flatpickr-monthSelect-month:focus {
   cursor: pointer;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
 }
 
 .flatpickr-monthSelect-theme-light .flatpickr-monthSelect-month.inRange,

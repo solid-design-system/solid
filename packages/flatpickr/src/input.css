@@ -811,7 +811,7 @@ span.flatpickr-weekday {
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   text-align: center;
-  width: 20%;
+  width: 33%;
 }
 
 .flatpickr-monthSelect-month.flatpickr-disabled {
@@ -849,7 +849,7 @@ span.flatpickr-weekday {
 .flatpickr-monthSelect-month.inRange.today,
 .flatpickr-monthSelect-month:hover,
 .flatpickr-monthSelect-month:focus {
-  cursor: pointer;
+  @apply outline-none cursor-pointer;
 }
 
 .flatpickr-monthSelect-theme-light .flatpickr-monthSelect-month.inRange,
