@@ -72,7 +72,7 @@ importers:
         version: 3.1.2
       classix:
         specifier: ^2.1.35
-        version: 2.1.36
+        version: 2.1.37
       lit:
         specifier: ^3.0.2
         version: 3.1.2
@@ -6233,8 +6233,8 @@ packages:
       consola: 3.2.3
     dev: true
 
-  /classix@2.1.36:
-    resolution: {integrity: sha512-1glwI9Ho7s/Z5vqCNLj3eYU+17A9KHjLREcmzJUmZS+GnXBgS1/or5fzqhB5b59jsPxazONrajM5d9hgJgnnlA==}
+  /classix@2.1.37:
+    resolution: {integrity: sha512-mTlsDSW/AHxHNggs+dNpI2kYGyK0tawAupR0B6vQYU9i8WTAoaa6bFGKIwwiHfmfCZdrsrtlCULic7p/9ZPuVQ==}
     dev: false
 
   /clean-css@4.2.4:
