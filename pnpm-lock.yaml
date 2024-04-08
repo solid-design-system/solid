@@ -258,8 +258,8 @@ importers:
         specifier: ^1.0.0
         version: 1.4.0(terser@5.30.3)
       vite-plugin-cem:
-        specifier: ^0.7.0
-        version: 0.7.0(terser@5.30.3)
+        specifier: ^0.8.0
+        version: 0.8.0(terser@5.30.3)
       vite-tsconfig-paths:
         specifier: ^4.2.1
         version: 4.3.2(typescript@5.4.4)(vite@5.2.8)
@@ -13835,12 +13835,6 @@ packages:
     hasBin: true
     dev: true
 
-  /typescript@5.3.3:
-    resolution: {integrity: sha512-pXWcraxM0uxAS+tN0AG/BF2TyqmHO014Z070UsJ+pFvYuRSq8KH8DmWpnbXe0pEPDHXZV3FcAbJkijJ5oNEnWw==}
-    engines: {node: '>=14.17'}
-    hasBin: true
-    dev: true
-
   /typescript@5.4.4:
     resolution: {integrity: sha512-dGE2Vv8cpVvw28v8HCPqyb08EzbBURxDpuhJvTrusShUfGnhHBafDsLdS1EhhxyL6BJQE+2cT3dDPAv+MQ6oLw==}
     engines: {node: '>=14.17'}
@@ -14203,12 +14197,12 @@ packages:
       - terser
     dev: true
 
-  /vite-plugin-cem@0.7.0(terser@5.30.3):
-    resolution: {integrity: sha512-KGV/wjq+Fch1RKkA9I6vYleWf+8XBxJrG0EmsxeD/NqZ0gYDoqN2REmzUBoMJGpWSBGgDRkvyRpaiw8BLhtWsg==}
+  /vite-plugin-cem@0.8.0(terser@5.30.3):
+    resolution: {integrity: sha512-mA5yx0kGoy+fnaGo+YmC8TduSX+mKo7W980AF7i12UGqkl80EaiF+ZpYgBvTnogp21/k3JwimVm17DYkdmgOyQ==}
     dependencies:
       '@custom-elements-manifest/analyzer': 0.9.4
       glob: 8.1.0
-      typescript: 5.3.3
+      typescript: 5.4.4
       vite: 5.2.8(terser@5.30.3)
     transitivePeerDependencies:
       - '@types/node'
