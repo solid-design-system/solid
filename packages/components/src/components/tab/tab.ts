@@ -90,7 +90,7 @@ export default class SdTab extends SolidElement {
           class=${cx(
             (!this.active || this.disabled) && 'hidden',
             'absolute bottom-0 h-1 bg-accent',
-            this.variant === 'default' ? 'w-full' : 'w-1/2 group-hover:w-full transition-all duration-200 ease-in-out'
+            this.variant === 'default' ? 'w-full' : 'w-3/4 group-hover:w-full transition-all duration-200 ease-in-out'
           )}
         ></div>
       </div>
