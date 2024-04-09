@@ -24,8 +24,12 @@ import SolidElement from '../../internal/solid-element';
  * @csspart content - The scrollable's main content.
  * @csspart button-left - The scrollable's left scroll button.
  * @csspart button-right - The scrollable's right scroll button.
- * @csspart button-top - The scrollable's up scroll button.
- * @csspart button-bottom - The scrollable's down scroll button.
+ * @csspart button-top - The scrollable's top scroll button.
+ * @csspart button-bottom - The scrollable's bottom scroll button.
+ * @csspart shadow-left - The scrollable's left shadow.
+ * @csspart shadow-right - The scrollable's right shadow.
+ * @csspart shadow-top - The scrollable's top shadow.
+ * @csspart shadow-bottom - The scrollable's bottom shadow.
  *
  * @cssproperty --gradient - Defines a custom color for the gradient.
  */
@@ -46,9 +50,6 @@ export default class SdScrollable extends SolidElement {
 
   /** Activates a shadow as optional visual scroll indicator */
   @property({ type: Boolean, reflect: true }) shadow = false;
-
-  /* Adds inset padding*/
-  @property({ type: Boolean, reflect: true }) inset = false;
 
   @state() private canScroll: Record<'left' | 'right' | 'up' | 'down', boolean> = {
     left: false,
@@ -152,8 +153,7 @@ export default class SdScrollable extends SolidElement {
         class=${cx(
           'scroll-container',
           isHorizontal ? 'horizontal-scroll' : 'vertical-scroll',
-          this.scrollbars ? 'show-scrollbars' : 'hide-scrollbars',
-          this.inset ? 'p-4' : ''
+          this.scrollbars ? 'show-scrollbars' : 'hide-scrollbars'
         )}
         @scroll=${this.updateScrollIndicatorVisibility}
       >
@@ -206,32 +206,31 @@ export default class SdScrollable extends SolidElement {
     componentStyles,
     css`
       :host {
-        display: block;
-        position: relative;
-        overflow: hidden;
         --gradient: rgba(255, 255, 255, 0) 0%, #fff 80%, #fff 100%;
+
+        @apply flex relative overflow-hidden;
       }
 
       .scroll-container {
-        overflow-x: auto;
-        overflow-y: auto;
-        width: 100%;
-        height: 100%;
+        @apply overflow-x-auto overflow-y-auto w-full h-full;
       }
 
       .horizontal-scroll {
-        overflow-x: scroll;
-        overflow-y: hidden;
-        white-space: nowrap;
-        display: flex;
-        align-items: center;
+        @apply overflow-x-scroll overflow-y-hidden whitespace-nowrap flex items-center;
       }
 
       .vertical-scroll {
-        overflow-y: scroll;
-        overflow-x: hidden;
-        display: flex;
-        justify-items: center;
+        @apply overflow-y-scroll overflow-x-hidden flex justify-items-center;
+      }
+
+      [part='scroll-container'] .hide-scrollbars {
+        /* Hide scrollbar in Firefox */
+        scrollbar-width: none;
+      }
+
+      /* Hide scrollbar in Chrome/Safari */
+      [part='scroll-container'] .hide-scrollbars::-webkit-scrollbar {
+        @apply w-0 h-0 bg-transparent;
       }
 
       .hide-scrollbars {
@@ -273,11 +272,7 @@ export default class SdScrollable extends SolidElement {
         width: 24px;
       }
       .scroll-button-container {
-        position: absolute;
-        z-index: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        @apply absolute z-10 flex items-center justify-center;
       }
 
       .button-left {

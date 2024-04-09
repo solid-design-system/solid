@@ -141,6 +141,23 @@ export const Scrolling = {
   }
 };
 
+export const ScrollingTest = {
+  render: (args: any) => {
+    return html` <div style="height: 100vh;">
+      ${generateTemplate({
+        args,
+        constants: [
+          {
+            type: 'slot',
+            name: 'default',
+            value: `<sd-scrollable orientation='vertical' scrollbars shadow class="w-full"><div class="slot slot--border slot--background slot--text" style="height:150vh; width: 100%; padding: 0 1rem; justify-content:start;">Scroll down and give it a try!</div></sd-scrollable>`
+          }
+        ]
+      })}
+    </div>`;
+  }
+};
+
 /**
  *  This sample displays `sd-dialog` with two `sd-button` components in the footer slot. When incorporating multiple `sd-buttons`, it is recommended to use distinct button variants for clarity and consistency in user interactions.
  * 

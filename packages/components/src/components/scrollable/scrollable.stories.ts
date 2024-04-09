@@ -1,43 +1,72 @@
 import '../../solid-components';
 import { html } from 'lit';
-import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
-import { withActions } from '@storybook/addon-actions/decorator';
+import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
+// import { withActions } from '@storybook/addon-actions/decorator';
 
-const { argTypes, args, parameters } = storybookDefaults('sd-scrollable');
-// const { overrideArgs } = storybookHelpers('sd-scrollable');
+const { argTypes } = storybookDefaults('sd-scrollable');
+const { overrideArgs } = storybookHelpers('sd-scrollable');
 const { generateTemplate } = storybookTemplate('sd-scrollable');
+
+// export default {
+//   title: 'Components/sd-scrollable',
+//   component: 'sd-scrollable',
+//   parameters: {
+//     ...parameters,
+//     design: {
+//       type: 'figma',
+//       url: 'https://www.figma.com/file/frKFVz9UBKAtsvErLKTeGj/Scrollable?type=design&node-id=0-1&mode=design&t=OeLPPGif39ASuNmf-0'
+//     }
+//   },
+//   args,
+//   argTypes,
+//   decorators: [withActions] as any
+// };
+// const longContent = `
+//   <div style="width: 277px; height: 80px; line-height: 1.6;">
+//     <p>This is a long scrollable content.</p>
+//     <p>It contains multiple paragraphs and lines.</p>
+//     <p>The content is intentionally long to trigger scrolling. You can scroll horizontally and vertically.</p>
+//     <p>The scrollable component will display shadows and buttons based on the props.</p>
+//     <p>Customize the content and attributes as needed.</p>
+//   </div>
+// `;
 
 export default {
   title: 'Components/sd-scrollable',
   component: 'sd-scrollable',
-  parameters: {
-    ...parameters,
-    design: {
-      type: 'figma',
-      url: 'https://www.figma.com/file/frKFVz9UBKAtsvErLKTeGj/Scrollable?type=design&node-id=0-1&mode=design&t=OeLPPGif39ASuNmf-0'
-    }
-  },
-  args,
+  args: overrideArgs({
+    type: 'slot',
+    name: 'default',
+    value: `
+    <div style="width: 277px; height: 80px; line-height: 1.6;">
+      <p>This is a long scrollable content.</p>
+      <p>It contains multiple paragraphs and lines.</p>
+      <p>The content is intentionally long to trigger scrolling. You can scroll horizontally and vertically.</p>
+      <p>The scrollable component will display shadows and buttons based on the props.</p>
+      <p>Customize the content and attributes as needed.</p>
+    </div>
+  `
+  }),
   argTypes,
-  decorators: [withActions] as any
+  decorators: [
+    (story: () => typeof html) => html`
+      <style>
+        td.template {
+          display: block !important;
+          width: 500px;
+        }
+      </style>
+      ${story()}
+    `
+  ]
 };
-const longContent = `
-  <div style="width: 277px; height: 80px; line-height: 1.6;">
-    <p>This is a long scrollable content.</p>
-    <p>It contains multiple paragraphs and lines.</p>
-    <p>The content is intentionally long to trigger scrolling. You can scroll horizontally and vertically.</p>
-    <p>The scrollable component will display shadows and buttons based on the props.</p>
-    <p>Customize the content and attributes as needed.</p>
-  </div>
-`;
 
 export const Default = {
   render: (args: any) => {
     return html`
       <div style="width: 277px; height: 80px;">
         ${generateTemplate({
-          args,
-          constants: [{ type: 'slot', name: 'default', value: longContent }]
+          args
         })}
       </div>
     `;
@@ -52,8 +81,8 @@ export const ButtonWithGradient = {
         ${generateTemplate({
           args,
           constants: [
-            { type: 'slot', name: 'default', value: longContent },
-            { type: 'attribute', name: 'buttons', value: 'true' }
+            // { type: 'slot', name: 'default', value: longContent },
+            { type: 'attribute', name: 'buttons', value: true }
           ]
         })}
       </div>
@@ -69,7 +98,7 @@ export const Shadow = {
         ${generateTemplate({
           args,
           constants: [
-            { type: 'slot', name: 'default', value: longContent },
+            // { type: 'slot', name: 'default', value: longContent },
             { type: 'attribute', name: 'shadow', value: 'true' }
           ]
         })}
@@ -86,7 +115,7 @@ export const Scrollbar = {
         ${generateTemplate({
           args,
           constants: [
-            { type: 'slot', name: 'default', value: longContent },
+            // { type: 'slot', name: 'default', value: longContent },
             { type: 'attribute', name: 'scrollbars', value: 'true' }
           ]
         })}
@@ -95,35 +124,27 @@ export const Scrollbar = {
   }
 };
 
-// export const Inset = {
-//   parameters: { controls: { exclude: ['inset'] } },
-//   render: (args: any) => {
-//     return generateTemplate({
-//       axis: {
-//         x: { type: 'attribute', name: 'inset', values: [false, true] }
-//       },
-//       args,
-//       constants: [{ type: 'slot', name: 'default', value: longContent }]
-//     });
-//   }
-// };
-
-// export const CustomIcon = {
-//   parameters: { controls: { exclude: ['scrollbars'] } },
-//   render: (args: any) => {
-//     return html`
-//       <div style="width: 277px; height: 80px;">
-//         ${generateTemplate({
-//           args,
-//           constants: [
-//             { type: 'slot', name: 'default', value: longContent },
-//             { type: 'attribute', name: 'scrollbars', value: 'true' }
-//           ]
-//         })}
-//       </div>
-//     `;
-//   }
-// };
+export const CustomIcon = {
+  parameters: { controls: { exclude: ['default', 'buttons'] } },
+  render: (args: any) => {
+    return html`
+      <div style="width: 277px; height: 80px;">
+        ${generateTemplate({
+          args,
+          constants: [
+            // { type: 'slot', name: 'default', value: longContent },
+            {
+              type: 'slot',
+              name: 'icon',
+              value: '<sd-icon library="global-resources" name="system/minus" slot="icon-left"></sd-icon>'
+            },
+            { type: 'attribute', name: 'buttons', value: 'true' }
+          ]
+        })}
+      </div>
+    `;
+  }
+};
 
 export const Parts = {
   parameters: {
@@ -145,11 +166,11 @@ export const Parts = {
       },
       constants: [
         { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' },
-        {
-          type: 'slot',
-          name: 'default',
-          value: longContent
-        },
+        // {
+        //   type: 'slot',
+        //   name: 'default',
+        //   value: longContent
+        // },
         { type: 'attribute', name: 'buttons', value: true },
         { type: 'attribute', name: 'shadows', value: true }
       ],
