@@ -33,10 +33,8 @@ import type SdTabPanel from '../tab-panel/tab-panel';
  * @csspart scroll-button--start - The starting scroll button.
  * @csspart scroll-button--end - The ending scroll button.
  * @csspart scroll-button__base - The scroll button's exported `base` part.
- *
- * @cssproperty --track-color - The color of the indicator's track (the line that separates tabs from panels).
- * @cssproperty --track-width - The width of the indicator's track (the line that separates tabs from panels).
- */
+ * 
+ * */
 @customElement('sd-tab-group')
 export default class SdTabGroup extends SolidElement {
   private readonly localize = new LocalizeController(this);

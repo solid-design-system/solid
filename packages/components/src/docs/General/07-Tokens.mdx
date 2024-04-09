@@ -1,7 +1,15 @@
+## Intro
+
+The Solid Design System includes two distinct token sets:
+
+- **UI Core Tokens:** This is where all the fundamental design values are stored. They should never be used directly.
+- **UI Semantic Tokens:** In this set, core tokens are referenced as aliases and come with specific usage contexts. It's essential to use tokens exclusively from the semantic token set.
+
 {/* Colors.mdx */}
 
 import { Meta, ColorPalette, ColorItem, Canvas, Typeset } from '@storybook/blocks';
 import theme from 'tailwind-theme';
+import cx from 'classix';
 
 <Meta title="Docs/General/Tokens" />
 
@@ -45,6 +53,7 @@ They use shorthand RGB values (e. g. `108 194 84`) to allow setting opacity via 
 <table>
   <tbody>
     {Object.entries(theme.fontSize).map((token, i) => {
+      const tokenToStyle = {};
       return (
         <tr>
           <td>
@@ -52,7 +61,21 @@ They use shorthand RGB values (e. g. `108 194 84`) to allow setting opacity via 
             <div>--sd-font-size-{token[1]}</div>
           </td>
           <td>
-            <div class={`!text-${token[0]}`}>Lorem ipsum dolor</div>
+            <div
+              class={cx(
+                {
+                  sm: '!text-sm',
+                  base: '!text-base',
+                  lg: '!text-lg',
+                  xl: '!text-xl',
+                  '2xl': '!text-2xl',
+                  '3xl': '!text-3xl',
+                  '4xl': '!text-4xl'
+                }[token[0]]
+              )}
+            >
+              Lorem ipsum dolor
+            </div>
           </td>
         </tr>
       );
@@ -68,7 +91,7 @@ They use shorthand RGB values (e. g. `108 194 84`) to allow setting opacity via 
       return (
         <tr>
           <td>
-            <div class="font-bold">sd-font-size-{token[0]}</div>
+            <div class="font-bold">sd-font-weight-{token[0]}</div>
           </td>
           <td>
             <div class={`font-${token[0]}`}>Lorem ipsum dolor</div>

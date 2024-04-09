@@ -1,3 +1,47 @@
+# [@solid-design-system/components-v2.11.0](https://github.com/solid-design-system/solid/compare/components/2.10.0...components/2.11.0) (2024-03-21)
+
+
+### Features
+
+* ✨ add sd-footnote - CSS style ([#863](https://github.com/solid-design-system/solid/issues/863)) ([b82d764](https://github.com/solid-design-system/solid/commit/b82d764b379c13401e34d4cceb6c44ae9817fbea))
+
+### 📈 Stats
+* Bundle size (uncompressed): 282 KB (unchanged)
+* Bundle size (gzipped): 68 KB (unchanged)
+
+# [@solid-design-system/components-v2.10.0](https://github.com/solid-design-system/solid/compare/components/2.9.3...components/2.10.0) (2024-03-20)
+
+
+### Features
+
+* add sd-icon default library which points to new CDN ([#873](https://github.com/solid-design-system/solid/issues/873)) ([e039c6d](https://github.com/solid-design-system/solid/commit/e039c6d040336e5c4bfd8a1cf5492ab234072b4a))
+
+### 📈 Stats
+* Bundle size (uncompressed): 282 KB (+1 KB / +0%)
+* Bundle size (gzipped): 68 KB (unchanged)
+
+# [@solid-design-system/components-v2.9.3](https://github.com/solid-design-system/solid/compare/components/2.9.2...components/2.9.3) (2024-03-20)
+
+
+### Bug Fixes
+
+* 🤔 logo for the Sample B Story of the sd-header ([#879](https://github.com/solid-design-system/solid/issues/879)) ([41824fc](https://github.com/solid-design-system/solid/commit/41824fc4fdcec63d88bd09b27c7f0099be8d7566)), closes [#807](https://github.com/solid-design-system/solid/issues/807)
+
+### 📈 Stats
+* Bundle size (uncompressed): 281 KB (unchanged)
+* Bundle size (gzipped): 68 KB (unchanged)
+
+# [@solid-design-system/components-v2.9.2](https://github.com/solid-design-system/solid/compare/components/2.9.1...components/2.9.2) (2024-03-19)
+
+
+### Bug Fixes
+
+* remove font stack from components ([#876](https://github.com/solid-design-system/solid/issues/876)) ([68699cb](https://github.com/solid-design-system/solid/commit/68699cb270bad5d47ac62d1555f05059ce14734b))
+
+### 📈 Stats
+* Bundle size (uncompressed): 281 KB (unchanged)
+* Bundle size (gzipped): 68 KB (unchanged)
+
 # [@solid-design-system/components-v2.9.1](https://github.com/solid-design-system/solid/compare/components/2.9.0...components/2.9.1) (2024-03-14)
 
 
