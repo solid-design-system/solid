@@ -233,12 +233,12 @@ export const SampleCentered = {
           display: none;
         }
 
-        sd-tab::part(base):hover {
-          border-bottom: none !important;
-        }
-
         sd-tab-group::part(scroll-button--start),
         sd-tab-group::part(scroll-button--end) {
+          border-bottom: none;
+        }
+
+        sd-tab::part(base):hover::before {
           border-bottom: none;
         }
 
@@ -255,12 +255,12 @@ export const SampleNoLine = {
           display: none;
         }
 
-        sd-tab::part(base):hover {
-          border-bottom: none !important;
-        }
-
         sd-tab-group::part(scroll-button--start),
         sd-tab-group::part(scroll-button--end) {
+          border-bottom: none;
+        }
+
+        sd-tab::part(base):hover::before {
           border-bottom: none;
         }
       </style>
