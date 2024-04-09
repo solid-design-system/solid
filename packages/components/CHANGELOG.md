@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v2.11.1](https://github.com/solid-design-system/solid/compare/components/2.11.0...components/2.11.1) (2024-04-09)
+
+
+### Bug Fixes
+
+* 🐛 remove TailwindCSS var from sd-copyright ([#907](https://github.com/solid-design-system/solid/issues/907)) ([a9f0f9a](https://github.com/solid-design-system/solid/commit/a9f0f9ab01b85e5ec59fc52009f50960a20e5df6))
+
+### 📈 Stats
+* Bundle size (uncompressed): 282 KB (unchanged)
+* Bundle size (gzipped): 68 KB (unchanged)
+
 # [@solid-design-system/components-v2.11.0](https://github.com/solid-design-system/solid/compare/components/2.10.0...components/2.11.0) (2024-03-21)
 
 
