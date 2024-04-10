@@ -912,9 +912,11 @@ export const Samples = {
 };
 
 /**
- * Sample implementation of a date picker using flatpickr with custom styles.
- */
+ This sample demonstrates a datepicker implemented using flatpickr. Click on the **Show code** button to see the JavaScript code responsible for generating the datepicker. You can also visit [here](https://flatpickr.js.org/getting-started/) for flatpickr documentation.
+ 
+ We've included a theme in @solid-design-system/flatpickr's dist folder in order to align the datepicker style with the design system. For the input fields, you will need to include an event listener to open the datepicker on keydown events. The arrow down key will focus on the current day in the datepicker.
 
+ **/
 export const Flatpickr = {
   name: 'Sample: Datepicker',
   parameters: {
@@ -961,7 +963,8 @@ export const Flatpickr = {
 };
 
 /**
- * This sample demonstrates the usage of the monthSelect plugin for flatpickr.
+ * This sample demonstrates the usage of the monthSelect plugin to extend flatpickr with a month picker. Click on the **Show code** button to see the JavaScript code responsible for generating the month picker. You can also visit [here](https://flatpickr.js.org/plugins/#monthselectplugin) for flatpickr documentation.
+  The monthpicker is also styled by the theme in @solid-design-system/flatpickr. The arrow down key will focus on the current month in the month picker. 
  */
 
 export const FlatpickrMonth = {
@@ -1005,7 +1008,10 @@ export const FlatpickrMonth = {
 };
 
 /**
- * This sample demonstrates the usage of the range plugin for flatpickr.
+**Disclaimer**: The range datepicker currently has several open issues. This includes [input fields prematurely closing](https://github.com/flatpickr/flatpickr/issues/2918) when the `sd-input` loses focus. We encourage developers to find alternative solutions should you wish to include this sample.
+
+This sample demonstrates the usage of the rangePlugin to extend flatpickr to enable us to select a range of dates. Click on the **Show code** button to see the JavaScript code responsible for generating the month picker. You can also visit [here](https://flatpickr.js.org/plugins/#rangeplugin-beta) for flatpickr documentation.
+  The range datepicker is also styled by the theme in @solid-design-system/flatpickr. The arrow down key will focus on the current day in the datepicker.
  */
 
 export const FlatpickrRange = {
