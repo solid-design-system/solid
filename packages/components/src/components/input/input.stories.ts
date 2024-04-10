@@ -1008,7 +1008,7 @@ export const FlatpickrMonth = {
 };
 
 /**
-**Disclaimer**: The range datepicker currently has several open issues. This includes [input fields prematurely closing](https://github.com/flatpickr/flatpickr/issues/2918) when the `sd-input` loses focus. We encourage developers to find alternative solutions should you wish to include this sample.
+**Disclaimer**: The range datepicker currently has several open issues. This includes [input fields prematurely closing](https://github.com/flatpickr/flatpickr/issues/2918) when the `sd-input` loses focus. We encourage developers to find alternative solutions should you wish to use this sample right now. Otherwise, you can keep track of this issue [here](https://github.com/solid-design-system/solid/issues/929).
 
 This sample demonstrates the usage of the rangePlugin to extend flatpickr to enable us to select a range of dates. Click on the **Show code** button to see the JavaScript code responsible for generating the month picker. You can also visit [here](https://flatpickr.js.org/plugins/#rangeplugin-beta) for flatpickr documentation.
   The range datepicker is also styled by the theme in @solid-design-system/flatpickr. The arrow down key will focus on the current day in the datepicker.
