@@ -32,7 +32,7 @@ import SolidElement from '../../internal/solid-element';
  * @csspart shadow-top - The scrollable's top shadow.
  * @csspart shadow-bottom - The scrollable's bottom shadow.
  *
- * @cssproperty --gradient - Defines a custom color for the gradient.
+ * @cssproperty --gradient-color - Defines a custom color for the gradient.
  */
 
 @customElement('sd-scrollable')
@@ -209,7 +209,7 @@ export default class SdScrollable extends SolidElement {
     componentStyles,
     css`
       :host {
-        --gradient: rgba(255, 255, 255, 0) 0%, #fff 80%, #fff 100%;
+        --gradient-color: rgba(255, 255, 255, 0) 0%, #fff 80%, #fff 100%;
 
         @apply flex relative overflow-hidden;
       }
@@ -283,7 +283,7 @@ export default class SdScrollable extends SolidElement {
         left: 0;
         height: 100%;
         width: 48px;
-        background: linear-gradient(270deg, var(--gradient));
+        background: linear-gradient(270deg, var(--gradient-color));
       }
 
       .button-right {
@@ -291,7 +291,7 @@ export default class SdScrollable extends SolidElement {
         right: 0;
         height: 100%;
         width: 48px;
-        background: linear-gradient(90deg, var(--gradient));
+        background: linear-gradient(90deg, var(--gradient-color));
       }
 
       .button-up {
@@ -299,7 +299,7 @@ export default class SdScrollable extends SolidElement {
         left: 0;
         width: 100%;
         height: 48px; /* Adjust the height as needed */
-        background: linear-gradient(0deg, var(--gradient));
+        background: linear-gradient(0deg, var(--gradient-color));
       }
 
       .button-down {
@@ -307,7 +307,7 @@ export default class SdScrollable extends SolidElement {
         left: 0;
         width: 100%;
         height: 48px; /* Adjust the height as needed */
-        background: linear-gradient(180deg, var(--gradient));
+        background: linear-gradient(180deg, var(--gradient-color));
       }
 
       .scroll-button {
