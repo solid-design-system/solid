@@ -1,7 +1,8 @@
 /*
 * Remove inherited styles from table before applying our styles.
 */
-.sd-table {
+.sd-table,
+.sd-prose table {
   all: unset;
   @apply table border-collapse border-spacing-0;
 

@@ -1,4 +1,5 @@
-.sd-paragraph {
+.sd-paragraph,
+.sd-prose p {
   @apply text-base font-normal leading-normal text-black;
 
   &--size-sm {

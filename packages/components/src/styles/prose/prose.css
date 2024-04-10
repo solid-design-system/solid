@@ -1,0 +1,54 @@
+/*
+* Remove inherited styles from table before applying our styles.
+*/
+.sd-prose {
+  /**
+   * Optimize for reading.
+   */
+  @apply max-w-[80ch];
+
+  /**
+   * Add spacings.
+   */
+  > *:not(:first-child) {
+    @apply mt-4;
+  }
+  p + p {
+    @apply mt-2;
+  }
+  h1 + p,
+  h2 + p,
+  h3 + p,
+  h4 + p {
+    @apply mt-4;
+  }
+  p:not(:first-child) {
+    @apply mt-2;
+  }
+  h1:not(:first-child),
+  h2:not(:first-child) {
+    @apply mt-8;
+  }
+  h3:not(:first-child),
+  h4:not(:first-child) {
+    @apply mt-6;
+  }
+
+  table {
+    @apply my-6;
+  }
+
+  /**
+   * Add styles for code blocks.
+   */
+  pre {
+    @apply overflow-auto;
+  }
+
+  /**
+   * Add styles for horizontal rules as these are only available as component.
+   */
+  hr {
+    @apply border-neutral-500 border-t h-0;
+  }
+}

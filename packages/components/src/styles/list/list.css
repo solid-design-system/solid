@@ -1,11 +1,14 @@
-.sd-list {
+.sd-list,
+.sd-prose ol,
+.sd-prose ul {
   @apply text-left  py-4;
 
   &--inverted {
     @apply text-white;
   }
 
-  &:is(ol) {
+  &:is(ol),
+  & ol {
     & ol {
       counter-reset: item;
     }
@@ -33,7 +36,8 @@
     }
   }
 
-  &:is(ul):not(.sd-list--icon) {
+  &:is(ul):not(.sd-list--icon),
+  & ul {
     list-style-type: '\2022';
     @apply ml-4;
 
@@ -59,7 +63,9 @@
       list-style-type: '\2010';
     }
   }
+}
 
+.sd-list {
   &--icon&--inverted {
     li {
       sd-icon:first-of-type,
@@ -92,7 +98,7 @@
       @apply flex;
 
       & li {
-        @apply flex;
+        @apply flex pt-0;
       }
 
       & li:not(:last-child) {
