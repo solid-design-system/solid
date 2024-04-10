@@ -2,7 +2,7 @@
   "name": "@solid-design-system/flatpickr",
   "version": "1.0.0",
   "description": "This package provides the flatpickr theme and plugin for the Solid Design System.",
-  "main": "src",
+  "main": "./src",
   "scripts": {
     "dev": "npx tailwindcss -i ./src/input.css -o ./dist/theme.css --watch",
     "build.types": "tsc --project tsconfig.json",

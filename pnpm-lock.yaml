@@ -267,31 +267,6 @@ importers:
         specifier: ^4.2.1
         version: 4.3.2(typescript@5.4.4)(vite@5.2.8)
 
-  packages/components/dist/storybook/solidFlatpickr:
-    dependencies:
-      '@solid-design-system/flatpickr':
-        specifier: ^1.0.0
-        version: link:../../../../flatpickr
-    devDependencies:
-      '@semantic-release/changelog':
-        specifier: ^6.0.3
-        version: 6.0.3(semantic-release@19.0.5)
-      '@semantic-release/git':
-        specifier: ^10.0.1
-        version: 10.0.1(semantic-release@19.0.5)
-      semantic-release:
-        specifier: ^19.0.5
-        version: 19.0.5
-      semantic-release-monorepo:
-        specifier: ^7.0.5
-        version: 7.0.8(semantic-release@19.0.5)
-      tailwindcss:
-        specifier: ^3.4.1
-        version: 3.4.1(patch_hash=wvll6shaj2gjxjxaqwbika4vli)
-      typescript:
-        specifier: 5.4.2
-        version: 5.4.2
-
   packages/flatpickr:
     dependencies:
       '@solid-design-system/flatpickr':
