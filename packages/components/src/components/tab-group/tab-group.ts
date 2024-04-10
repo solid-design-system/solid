@@ -306,7 +306,7 @@ export default class SdTabGroup extends SolidElement {
   }
 
   render() {
-    // const isRtl = this.localize.dir() === 'rtl';
+    const isRtl = this.localize.dir() === 'rtl';
 
     return html`
       <div
@@ -316,19 +316,52 @@ export default class SdTabGroup extends SolidElement {
         @keydown=${this.handleKeyDown}
       >
         <div part="nav" class=${cx(this.hasScrollControls && 'relative py-0 px-12')}>
-          <sd-scrollable
-            orientation="horizontal"
-            buttons
-            @button-start=${this.handleScrollToStart}
-            @button-end=${this.handleScrollToEnd}
-            class="scroll-container"
-            part="scroll-container"
-          >
+          ${this.hasScrollControls
+            ? html`
+                <button
+                  part="scroll-button--start"
+                  exportparts="base:scroll-button__base"
+                  class=${cx(
+                    'sd-interactive flex items-center justify-center absolute top-0 bottom-0 left-0 !outline-offset-0 border-b border-neutral-400 z-10',
+                    this.localize.dir() === 'rtl' && 'left-auto right-0'
+                  )}
+                  @click=${this.handleScrollToStart}
+                >
+                  <sd-icon
+                    library="system"
+                    name=${isRtl ? 'chevron-up' : 'chevron-down'}
+                    class=${cx('h-6 w-12 rotate-90 grid place-items-center')}
+                  ></sd-icon>
+                </button>
+              `
+            : ''}
+
+          <div part="scroll-container" class="flex overflow-x-auto focus-visible:focus-outline !outline-offset-0">
             <div part="tabs" class=${cx('flex flex-auto relative flex-row')} role="tablist">
               <div part="separation" class="w-full h-[1px] bg-neutral-400 absolute bottom-0"></div>
               <slot name="nav" @slotchange=${this.syncTabsAndPanels}></slot>
             </div>
-          </sd-scrollable>
+          </div>
+
+          ${this.hasScrollControls
+            ? html`
+                <button
+                  part="scroll-button--end"
+                  exportparts="base:scroll-button__base"
+                  class=${cx(
+                    'sd-interactive flex items-center justify-center absolute top-0 bottom-0 right-0 !outline-offset-0 border-b border-neutral-400 z-10',
+                    this.localize.dir() === 'rtl' && 'right-auto left-0'
+                  )}
+                  @click=${this.handleScrollToEnd}
+                >
+                  <sd-icon
+                    library="system"
+                    name=${isRtl ? 'chevron-down' : 'chevron-up'}
+                    class=${cx('h-6 w-12 rotate-90 grid place-items-center')}
+                  ></sd-icon>
+                </button>
+              `
+            : ''}
         </div>
 
         <slot
