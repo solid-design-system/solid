@@ -933,10 +933,10 @@ export const Flatpickr = {
         </sd-input>
       </div>
 
-      <link rel="stylesheet" href="/solidFlatpickr/dist/theme.css" />
+      <link rel="stylesheet" href="/solid-flatpickr/dist/theme.css" />
 
       <script type="module">
-        import '/flatpickr/flatpickr.js';
+        import '/flatpickr/flatpickr.min.js';
         const input = document.querySelector('.flatpickr-input');
 
         let calendar = flatpickr(input, {
@@ -983,7 +983,7 @@ export const FlatpickrMonth = {
         </sd-input>
       </div>
 
-      <link rel="stylesheet" href="/solidFlatpickr/dist/theme.css" />
+      <link rel="stylesheet" href="/solid-flatpickr/dist/theme.css" />
 
       <script type="module">
         import '/flatpickr/flatpickr.min.js';
@@ -1033,7 +1033,7 @@ export const FlatpickrRange = {
         </sd-input>
       </div>
 
-      <link rel="stylesheet" href="/solidFlatpickr/dist/theme.css" />
+      <link rel="stylesheet" href="/solid-flatpickr/dist/theme.css" />
 
       <script type="module">
         import '/flatpickr/flatpickr.min.js';
