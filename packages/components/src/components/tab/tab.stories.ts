@@ -85,12 +85,12 @@ export const Disabled = {
 export const Parts = {
   parameters: {
     controls: {
-      exclude: ['base', 'active-tab-indicator']
+      exclude: ['base', 'active-tab-indicator', 'bottom-border']
     }
   },
   render: (args: any) => {
     return html`
-      ${['base', 'active-tab-indicator'].map(part =>
+      ${['base', 'active-tab-indicator', 'bottom-border'].map(part =>
         generateTemplate({
           axis: {
             x: {

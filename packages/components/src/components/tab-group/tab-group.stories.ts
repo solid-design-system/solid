@@ -238,7 +238,7 @@ export const SampleCentered = {
           border-bottom: none;
         }
 
-        sd-tab::part(base):hover::before {
+         sd-tab::part(bottom-border) {
           border-bottom: none;
         }
 
@@ -260,7 +260,7 @@ export const SampleNoLine = {
           border-bottom: none;
         }
 
-        sd-tab::part(base):hover::before {
+        sd-tab::part(bottom-border) {
           border-bottom: none;
         }
       </style>

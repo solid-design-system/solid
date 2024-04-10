@@ -21,6 +21,7 @@ let id = 0;
  *
  * @csspart base - The component's base wrapper.
  * @csspart active-tab-indicator - The active tab indicator.
+ * @csspart bottom-border - The bottom border that appears when the tab is hovered.
  */
 @customElement('sd-tab')
 export default class SdTab extends SolidElement {
@@ -74,8 +75,7 @@ export default class SdTab extends SolidElement {
       <div
         part="base"
         class=${cx(
-          'inline-flex gap-2 min-w-max h-12 px-3 leading-none items-center justify-center whitespace-nowrap select-none cursor-pointer group relative focus-visible:focus-outline outline-2 !-outline-offset-2',
-          !this.active && !this.disabled && 'tab--bottom-border',
+          'inline-flex min-w-max h-12 px-3 leading-none items-center justify-center whitespace-nowrap select-none cursor-pointer group relative focus-visible:focus-outline outline-2 !-outline-offset-2',
           this.variant === 'container' && ' rounded-[4px_4px_0_0]',
           this.variant === 'container' && this.active && 'tab--active-container-border bg-white',
           this.disabled ? 'opacity-50 !cursor-not-allowed' : 'hover:bg-neutral-200'
@@ -91,6 +91,15 @@ export default class SdTab extends SolidElement {
             (!this.active || this.disabled) && 'hidden',
             'absolute bottom-0 h-1 bg-accent',
             this.variant === 'default' ? 'w-full' : 'w-3/4 group-hover:w-full transition-all duration-200 ease-in-out'
+          )}
+        ></div>
+
+        <div
+          part="bottom-border"
+          class=${cx(
+            !this.active &&
+              !this.disabled &&
+              'absolute w-full h-[1px] bottom-0 border-b border-neutral-400 invisible group-hover:visible'
           )}
         ></div>
       </div>
@@ -110,12 +119,6 @@ export default class SdTab extends SolidElement {
         @apply absolute w-full h-full border border-neutral-400;
         border-bottom: none;
         border-radius: 4px 4px 0 0;
-      }
-
-      .tab--bottom-border::before {
-        content: '';
-        @apply absolute w-full bottom-0 border-b border-neutral-400 invisible hover:visible;
-        height: 1px;
       }
     `
   ];
