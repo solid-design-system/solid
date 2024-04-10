@@ -18,7 +18,8 @@ import SolidElement from '../../internal/solid-element';
  * @event start - Emitted when the start of the scrollable is reached.
  *
  * @slot - The scrollable's content.
- * @slot icon - The scrollable's icon.
+ * @slot icon-start - The scrollable's start icon.
+ * @slot icon-end - The scrollable's end icon.
  *
  * @csspart base - The scrollable's base wrapper.
  * @csspart content - The scrollable's main content.
@@ -130,16 +131,6 @@ export default class SdScrollable extends SolidElement {
     }
   }
 
-  renderIcon(direction: 'up' | 'down') {
-    const iconName = direction === 'up' ? 'chevron-down' : 'chevron-up';
-    const rotationClass = this.orientation === 'horizontal' ? 'rotate-[90deg]' : '';
-    return html`
-      <slot name="icon">
-        <sd-icon library="system" name=${iconName} class=${rotationClass}></sd-icon>
-      </slot>
-    `;
-  }
-
   render() {
     const isHorizontal = this.orientation === 'horizontal';
     const showButtonStart = this.buttons && (isHorizontal ? this.canScroll.left : this.canScroll.up);
@@ -170,7 +161,13 @@ export default class SdScrollable extends SolidElement {
                 class=${cx('scroll-button sd-interactive rounded-md flex')}
                 @click=${() => this.handleScroll(isHorizontal ? 'left' : 'up')}
               >
-                ${this.renderIcon(isHorizontal ? 'up' : 'down')}
+                <slot name="icon-start">
+                  <sd-icon
+                    library="system"
+                    name="chevron-up"
+                    class=${cx(isHorizontal ? 'rotate-[-90deg]' : '')}
+                  ></sd-icon>
+                </slot>
               </button>
             </div>
           `
@@ -186,7 +183,13 @@ export default class SdScrollable extends SolidElement {
                 class=${cx('scroll-button sd-interactive rounded-md flex')}
                 @click=${() => this.handleScroll(isHorizontal ? 'right' : 'down')}
               >
-                ${this.renderIcon(isHorizontal ? 'down' : 'up')}
+                <slot name="icon-start">
+                  <sd-icon
+                    library="system"
+                    name="chevron-down"
+                    class=${cx(isHorizontal ? 'rotate-[-90deg]' : '')}
+                  ></sd-icon>
+                </slot>
               </button>
             </div>
           `

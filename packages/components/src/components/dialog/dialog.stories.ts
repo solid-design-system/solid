@@ -133,7 +133,7 @@ export const Scrolling = {
           {
             type: 'slot',
             name: 'default',
-            value: `<div class="slot slot--border slot--background slot--text" style="height:150vh; width: 100%; padding: 0 1rem; justify-content:start;">Scroll down and give it a try!</div>`
+            value: `<div class="slot slot--border slot--background slot--text" style="height:150vh; width: 100%; padding: 1rem; justify-content:start;">Scroll down and give it a try!</div>`
           }
         ]
       })}
