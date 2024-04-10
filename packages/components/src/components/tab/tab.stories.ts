@@ -90,7 +90,7 @@ export const Parts = {
   },
   render: (args: any) => {
     return html`
-      ${['base', 'active-tab-indicator', 'bottom-border'].map(part =>
+      ${['base', 'active-tab-indicator', 'hover-bottom-border'].map(part =>
         generateTemplate({
           axis: {
             x: {
@@ -104,7 +104,8 @@ export const Parts = {
                   }}</style><div id="part-${part}">%TEMPLATE%</div>`
                 }
               ]
-            }
+            },
+            y: { type: 'attribute', name: 'active', values: [false, true] }
           },
           constants: [
             {
@@ -114,11 +115,6 @@ export const Parts = {
                 <div style="width: 600px; position: relative;">%TEMPLATE%
                 </div>
               `
-            },
-            {
-              type: 'attribute',
-              name: 'active',
-              value: true
             }
           ],
           args

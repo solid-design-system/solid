@@ -21,7 +21,7 @@ let id = 0;
  *
  * @csspart base - The component's base wrapper.
  * @csspart active-tab-indicator - The active tab indicator.
- * @csspart bottom-border - The bottom border that appears when the tab is hovered.
+ * @csspart hover-bottom-border - The bottom border that appears when the tab is hovered.
  */
 @customElement('sd-tab')
 export default class SdTab extends SolidElement {
@@ -95,7 +95,7 @@ export default class SdTab extends SolidElement {
         ></div>
 
         <div
-          part="bottom-border"
+          part="hover-bottom-border"
           class=${cx(
             !this.active &&
               !this.disabled &&
