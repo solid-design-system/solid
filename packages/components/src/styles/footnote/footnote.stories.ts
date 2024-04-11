@@ -113,6 +113,26 @@ export const Reset = {
 };
 
 /**
+ * Use the `inverted` class to make a footnote with inverted colors.
+ */
+
+export const Inverted = {
+  parameters: { controls: { exclude: ['sd-footnote--inverted'] } },
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        y: [{ type: 'attribute', name: 'sd-footnote--inverted', values: [false, true] }]
+      },
+      constants: { type: 'attribute', name: 'sd-footnote--inverted', value: true },
+      options: {
+        templateBackgrounds: { alternate: 'y', colors: ['transparent', 'rgb(var(--sd-color-primary, 0 53 142))'] }
+      },
+      args
+    });
+  }
+};
+
+/**
  * This sample shows how to use the `--number` and `--reset` classes in combination. The `--number` class should be included in every footnote that needs a number. The `--reset` class should be included at the first `sd-footnote` to indicate that it's the first element. It can be used again later on to restart the counter from 1.
  */
 

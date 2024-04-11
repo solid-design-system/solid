@@ -1,3 +1,36 @@
+# [@solid-design-system/components-v2.11.3](https://github.com/solid-design-system/solid/compare/components/2.11.2...components/2.11.3) (2024-04-11)
+
+
+### Bug Fixes
+
+* 🤔 tabs do not grow with longer tab titles  ([#904](https://github.com/solid-design-system/solid/issues/904)) ([738e7c3](https://github.com/solid-design-system/solid/commit/738e7c3729d9d690029d79727dab124a27e7e9cc))
+
+### 📈 Stats
+* Bundle size (uncompressed): 282 KB (unchanged)
+* Bundle size (gzipped): 68 KB (unchanged)
+
+# [@solid-design-system/components-v2.11.2](https://github.com/solid-design-system/solid/compare/components/2.11.1...components/2.11.2) (2024-04-09)
+
+
+### Bug Fixes
+
+* 🐛  add inverted color to sd-footnote ([#926](https://github.com/solid-design-system/solid/issues/926)) ([658876f](https://github.com/solid-design-system/solid/commit/658876fb5918d43532988594e971892e5808c83c))
+
+### 📈 Stats
+* Bundle size (uncompressed): 282 KB (unchanged)
+* Bundle size (gzipped): 68 KB (unchanged)
+
+# [@solid-design-system/components-v2.11.1](https://github.com/solid-design-system/solid/compare/components/2.11.0...components/2.11.1) (2024-04-09)
+
+
+### Bug Fixes
+
+* 🐛 remove TailwindCSS var from sd-copyright ([#907](https://github.com/solid-design-system/solid/issues/907)) ([a9f0f9a](https://github.com/solid-design-system/solid/commit/a9f0f9ab01b85e5ec59fc52009f50960a20e5df6))
+
+### 📈 Stats
+* Bundle size (uncompressed): 282 KB (unchanged)
+* Bundle size (gzipped): 68 KB (unchanged)
+
 # [@solid-design-system/components-v2.11.0](https://github.com/solid-design-system/solid/compare/components/2.10.0...components/2.11.0) (2024-03-21)
 
 
