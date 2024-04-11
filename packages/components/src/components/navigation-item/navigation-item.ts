@@ -35,7 +35,7 @@ export default class SdNavigationItem extends SolidElement {
   private readonly hasSlotController = new HasSlotController(this, '[default]', 'description', 'children');
 
   /** The navigation item's href target. If provided, the navigation item will use an anchor tag otherwise it will use a button tag. The 'children' slot and accordion behavior will be ignored if an 'href' is provided. */
-  @property({ reflect: true }) href = '';
+  @property({ reflect: true }) href: string;
 
   /** Tells the browser where to open the link. Only used when `href` is defined. */
   @property() target: '_blank' | '_parent' | '_self' | '_top';
@@ -75,7 +75,7 @@ export default class SdNavigationItem extends SolidElement {
   }
 
   private isLink(): boolean {
-    return !!this.href;
+    return !!this.href && !this.hasSlotController.test('children');
   }
 
   private isAccordion(): boolean {
@@ -149,7 +149,7 @@ export default class SdNavigationItem extends SolidElement {
         aria-current=${ifDefined(this.current ? 'page' : undefined)}
         aria-disabled=${this.disabled}
         ?disabled=${ifDefined(isButton ? this.disabled : undefined)}
-        href=${ifDefined(this.href || undefined)}
+        href=${ifDefined(isLink ? this.href : undefined)}
         target=${ifDefined(isLink ? this.target : undefined)}
         download=${ifDefined(isLink ? this.download : undefined)}
         rel=${ifDefined(isLink && this.target ? 'noreferrer noopener' : undefined)}
