@@ -2,13 +2,13 @@
 .sd-prose th,
 .sd-table-cell {
   @apply bg-transparent border-solid border-neutral-400 border-y-[1px] border-x-0 text-black text-sm text-left p-4;
-
-  &:not(:last-child):not(.sd-table-cell) {
-    @apply border-r-[1px];
-  }
 }
 
 .sd-table-cell {
+  &:not(:last-child) {
+    @apply border-r-[1px];
+  }
+
   &--divider {
     @apply border-r-[1px];
   }
