@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v2.11.3](https://github.com/solid-design-system/solid/compare/components/2.11.2...components/2.11.3) (2024-04-11)
+
+
+### Bug Fixes
+
+* 🤔 tabs do not grow with longer tab titles  ([#904](https://github.com/solid-design-system/solid/issues/904)) ([738e7c3](https://github.com/solid-design-system/solid/commit/738e7c3729d9d690029d79727dab124a27e7e9cc))
+
+### 📈 Stats
+* Bundle size (uncompressed): 282 KB (unchanged)
+* Bundle size (gzipped): 68 KB (unchanged)
+
 # [@solid-design-system/components-v2.11.2](https://github.com/solid-design-system/solid/compare/components/2.11.1...components/2.11.2) (2024-04-09)
 
 
