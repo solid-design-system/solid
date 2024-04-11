@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v2.11.4](https://github.com/solid-design-system/solid/compare/components/2.11.3...components/2.11.4) (2024-04-11)
+
+
+### Bug Fixes
+
+* 🤔 change HTML tag from div to p ([#932](https://github.com/solid-design-system/solid/issues/932)) ([d7c15cd](https://github.com/solid-design-system/solid/commit/d7c15cddb542a2802af77385924c3b07213c8114))
+
+### 📈 Stats
+* Bundle size (uncompressed): 282 KB (unchanged)
+* Bundle size (gzipped): 68 KB (unchanged)
+
 # [@solid-design-system/components-v2.11.3](https://github.com/solid-design-system/solid/compare/components/2.11.2...components/2.11.3) (2024-04-11)
 
 
