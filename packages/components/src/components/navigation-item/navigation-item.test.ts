@@ -49,6 +49,11 @@ describe('<sd-navigation-item>', () => {
       expect(link).attribute('aria-current', 'page');
     });
 
+    it('should not render href on element itself if no href provided', async () => {
+      const el = await fixture<SdNavigationItem>(variants.button.default);
+      expect(el).not.to.have.attribute('href');
+    });
+
     // Events
     describe('when disabled', () => {
       it('passes accessibility test', async () => {
