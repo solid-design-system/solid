@@ -49,7 +49,7 @@ describe('<sd-navigation-item>', () => {
       expect(link).attribute('aria-current', 'page');
     });
 
-    it('should not render href on element itself', async () => {
+    it('should not render href on element itself if no href provided', async () => {
       const el = await fixture<SdNavigationItem>(variants.button.default);
       expect(el).not.to.have.attribute('href');
     });
@@ -219,12 +219,6 @@ describe('<sd-navigation-item>', () => {
 
       expect(clickHandler).to.have.been.calledOnce;
       expect(details).to.have.attribute('open');
-    });
-
-    it('should not render href on button element in ShadowDOM', async () => {
-      const el = await fixture<SdNavigationItem>(variants.accordion.default);
-      const button = el.shadowRoot!.querySelector('button');
-      expect(button).not.to.have.attribute('href');
     });
 
     it('emits "sd-hide" when clicking open HTML details element summary', async () => {

@@ -75,7 +75,7 @@ export default class SdNavigationItem extends SolidElement {
   }
 
   private isLink(): boolean {
-    return !!this.href && !this.hasSlotController.test('children');
+    return !!this.href;
   }
 
   private isAccordion(): boolean {
