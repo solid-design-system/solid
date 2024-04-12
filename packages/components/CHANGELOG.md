@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v2.11.5](https://github.com/solid-design-system/solid/compare/components/2.11.4...components/2.11.5) (2024-04-12)
+
+
+### Bug Fixes
+
+* 🐛 sd-navigation-item remove default href + href when children ([#934](https://github.com/solid-design-system/solid/issues/934)) ([554e9f7](https://github.com/solid-design-system/solid/commit/554e9f7ab9a43f6566017c68e7063cf6b5220bb7))
+
+### 📈 Stats
+* Bundle size (uncompressed): 282 KB (unchanged)
+* Bundle size (gzipped): 68 KB (unchanged)
+
 # [@solid-design-system/components-v2.11.4](https://github.com/solid-design-system/solid/compare/components/2.11.3...components/2.11.4) (2024-04-11)
 
 
