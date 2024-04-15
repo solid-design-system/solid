@@ -1000,7 +1000,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 part="expand-icon"
                 class=${cx('inline-flex ml-2 transition-all', this.open ? 'rotate-180' : 'rotate-0', iconSize)}
               >
-                <sd-icon name="chevron-down" part="chevron" library="system" color="currentColor"></sd-icon>
+                <sd-icon name="chevron-down" part="chevron" library="system" color="primary"></sd-icon>
               </slot>
             </div>
 
@@ -1012,7 +1012,8 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
               aria-labelledby="label"
               part="listbox"
               class=${cx(
-                'bg-white px-2 py-3 relative',
+                'bg-white px-2 py-3 relative border-primary',
+                this.open && 'shadow',
                 this.currentPlacement === 'bottom'
                   ? 'border-r-2 border-b-2 border-l-2 rounded-br-default rounded-bl-default'
                   : 'border-r-2 border-t-2 border-l-2 rounded-tr-default rounded-tl-default'
