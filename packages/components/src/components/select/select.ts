@@ -897,6 +897,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
               part="combobox"
               class=${cx(
                 'relative w-full px-4 flex flex-row items-center rounded-default',
+                this.open && 'shadow',
                 {
                   sm: 'py-1 min-h-[32px]',
                   md: 'py-1 min-h-[40px]',
