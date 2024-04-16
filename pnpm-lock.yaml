@@ -193,7 +193,7 @@ importers:
         version: 2.0.4
       lit-html:
         specifier: ^3.0.2
-        version: 3.1.2
+        version: 3.1.3
       minify-html-literals:
         specifier: ^1.3.5
         version: 1.3.5
@@ -2332,7 +2332,7 @@ packages:
     dependencies:
       '@open-wc/scoped-elements': 3.0.2
       lit: 3.1.2
-      lit-html: 3.1.2
+      lit-html: 3.1.3
     dev: true
 
   /@open-wc/testing@4.0.0:
@@ -9702,7 +9702,7 @@ packages:
     dependencies:
       '@lit-labs/ssr-dom-shim': 1.2.0
       '@lit/reactive-element': 2.0.4
-      lit-html: 3.1.2
+      lit-html: 3.1.3
 
   /lit-html@2.8.0:
     resolution: {integrity: sha512-o9t+MQM3P4y7M7yNzqAyjp7z+mQGa4NS4CxiyLqFPyFWyc4O+nodLrkrxSaCTrla6M5YOLaT3RpbbqjszB5g3Q==}
@@ -9710,8 +9710,8 @@ packages:
       '@types/trusted-types': 2.0.7
     dev: true
 
-  /lit-html@3.1.2:
-    resolution: {integrity: sha512-3OBZSUrPnAHoKJ9AMjRL/m01YJxQMf+TMHanNtTHG68ubjnZxK0RFl102DPzsw4mWnHibfZIBJm3LWCZ/LmMvg==}
+  /lit-html@3.1.3:
+    resolution: {integrity: sha512-FwIbqDD8O/8lM4vUZ4KvQZjPPNx7V1VhT7vmRB8RBAO0AU6wuTVdoXiu2CivVjEGdugvcbPNBLtPE1y0ifplHA==}
     dependencies:
       '@types/trusted-types': 2.0.7
 
@@ -9728,7 +9728,7 @@ packages:
     dependencies:
       '@lit/reactive-element': 2.0.4
       lit-element: 4.0.4
-      lit-html: 3.1.2
+      lit-html: 3.1.3
 
   /load-json-file@4.0.0:
     resolution: {integrity: sha512-Kx8hMakjX03tiGTLAIdJ+lL0htKnXjEZN6hk/tozf/WOuYGdZBJrZ+rCJRbVCugsjB3jMLn9746NsQIf5VjBMw==}
