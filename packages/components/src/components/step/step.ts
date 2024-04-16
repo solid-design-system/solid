@@ -11,13 +11,15 @@ import SolidElement from '../../internal/solid-element';
  * @since 2.6.0
  *
  *
- *
+ * @slot label - The step's label.
+ * @slot - The step's description.
+
 
  */
 @customElement('sd-step')
 export default class SdStep extends SolidElement {
   /** The step's size. */
-  @property({ reflect: true }) size: 'lg' | 'md' = 'lg';
+  @property({ reflect: true }) size: 'lg' | 'sm' = 'lg';
 
   /** Determines the orientation of the step. */
   @property({ reflect: true }) orientation: 'horizontal' | 'vertical' = 'horizontal';
@@ -28,31 +30,44 @@ export default class SdStep extends SolidElement {
   /** Removes the tail from the step. */
   @property({ reflect: true, type: Boolean, attribute: 'no-tail' }) noTail = false;
 
-  /**
-   * You should always include a relevant label even when using
-   * `no-header`, as it is required for proper accessibility.
-   */
-  @property({ attribute: 'label', reflect: true }) label = '';
-
-  @property({ attribute: 'description', reflect: true }) description = '';
-
   connectedCallback() {
     super.connectedCallback();
   }
 
   render() {
     return html`
-      <div
-        part="base"
-        class=${cx('border border-primary rounded-full aspect-square', this.size === 'lg' ? 'w-12' : 'w-8')}
-      >
-        <slot name="label"></slot>
-        <slot></slot>
+      <div part="base" class="flex flex-col">
+        <div class=${cx('flex shrink-0 gap-2', this.size === 'lg' ? 'ml-6' : 'ml-[1.8rem]')}>
+          <div
+            class=${cx(
+              'border border-primary rounded-full aspect-square circle grid place-items-center shrink-0',
+              this.size === 'lg' ? 'w-12' : 'w-8'
+            )}
+            part="circle"
+          >
+            1
+          </div>
+
+          <sd-divider class="w-full my-auto"></sd-divider>
+        </div>
+
+        <div class="w-24 text-center mt-4">
+          <div class="font-bold text-base"><slot name="label">Step name</slot></div>
+          <div class="text-sm"><slot>Lorem ipsum est dolor sit amet</slot></div>
+        </div>
       </div>
     `;
   }
 
-  static styles = [SolidElement.styles, componentStyles, css``];
+  static styles = [
+    SolidElement.styles,
+    componentStyles,
+    css`
+      :host {
+        @apply w-full;
+      }
+    `
+  ];
 }
 
 declare global {

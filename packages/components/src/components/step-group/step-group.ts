@@ -20,7 +20,19 @@ export default class SdStepGroup extends SolidElement {
   }
 
   render() {
-    return html` <div part="base" class=${cx('border border-primary rounded-full')}></div> `;
+    return html`
+      <div part="base" class=${cx('flex gap-4 w-full')}>
+        <sd-step size="lg" orientation="horizontal" state="waiting"
+          >Step name <span name="label">Lorem ipsum est dolor sit amet</span></sd-step
+        >
+        <sd-step size="lg" orientation="horizontal" state="waiting"
+          >Step name <span name="label">Lorem ipsum est dolor sit amet</span></sd-step
+        >
+        <sd-step size="lg" orientation="horizontal" state="waiting"
+          >Step name <span name="label">Lorem ipsum est dolor sit amet</span></sd-step
+        >
+      </div>
+    `;
   }
 
   static styles = [SolidElement.styles, componentStyles, css``];

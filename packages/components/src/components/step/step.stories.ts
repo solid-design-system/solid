@@ -15,6 +15,11 @@ export default {
       type: 'slot',
       name: 'default',
       value: 'Step name'
+    },
+    {
+      type: 'slot',
+      name: 'label',
+      value: '<span name="label">Lorem ipsum est dolor sit amet</span>'
     }
   ]),
   argTypes,
