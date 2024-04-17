@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v2.11.7](https://github.com/solid-design-system/solid/compare/components/2.11.6...components/2.11.7) (2024-04-17)
+
+
+### Bug Fixes
+
+* use system icon in dialog ([4519180](https://github.com/solid-design-system/solid/commit/4519180bcc2c5106567a1d0b19d4f9356f8bcc58)), closes [#895](https://github.com/solid-design-system/solid/issues/895)
+
+### 📈 Stats
+* Bundle size (uncompressed): 282 KB (unchanged)
+* Bundle size (gzipped): 68 KB (unchanged)
+
 # [@solid-design-system/components-v2.11.6](https://github.com/solid-design-system/solid/compare/components/2.11.5...components/2.11.6) (2024-04-17)
 
 
