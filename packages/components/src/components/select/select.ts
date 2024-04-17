@@ -999,9 +999,14 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
               <slot
                 name="expand-icon"
                 part="expand-icon"
-                class=${cx('inline-flex ml-2 transition-all', this.open ? 'rotate-180' : 'rotate-0', iconSize)}
+                class=${cx(
+                  'inline-flex ml-2 transition-all',
+                  this.open ? 'rotate-180' : 'rotate-0',
+                  this.disabled ? 'text-neutral-500' : 'text-primary',
+                  iconSize
+                )}
               >
-                <sd-icon name="chevron-down" part="chevron" library="system" color="primary"></sd-icon>
+                <sd-icon name="chevron-down" part="chevron" library="system" color="currentColor"></sd-icon>
               </slot>
             </div>
 
