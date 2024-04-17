@@ -942,6 +942,8 @@ export const Flatpickr = {
         let calendar = flatpickr(input, {
           allowInput: true,
           dateFormat: 'd.m.Y',
+          nextArrow: '<sd-icon name="chevron-up" library="system" color="currentColor"></sd-icon>',
+          prevArrow: '<sd-icon name="chevron-down" library="system" color="currentColor"></sd-icon>',
           plugins: []
         });
 
@@ -993,6 +995,8 @@ export const FlatpickrMonth = {
         flatpickr(input, {
           allowInput: true,
           dateFormat: 'd.m.Y',
+          nextArrow: '<sd-icon name="chevron-up" library="system" color="currentColor"></sd-icon>',
+          prevArrow: '<sd-icon name="chevron-down" library="system" color="currentColor"></sd-icon>',
           plugins: [new monthSelectPlugin({ shorthand: true })]
         });
 
@@ -1043,6 +1047,8 @@ export const FlatpickrRange = {
         flatpickr(input, {
           allowInput: true,
           dateFormat: 'd.m.Y',
+          nextArrow: '<sd-icon name="chevron-up" library="system" color="currentColor"></sd-icon>',
+          prevArrow: '<sd-icon name="chevron-down" library="system" color="currentColor"></sd-icon>',
           plugins: [new rangePlugin({ input: '#secondRangeInput' })]
         });
 
