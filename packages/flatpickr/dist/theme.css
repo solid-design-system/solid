@@ -1710,6 +1710,8 @@ Used for primary-button background */;
   background-color: rgb(var(--sd-color-primary-500, 70 109 175) / var(--tw-bg-opacity)) /* Used for hover interaction */;
 }
 
+/* Adapt sd-input border radius */
+
 body:has(.flatpickr-calendar.open) sd-input::part(border) {
   border-bottom-left-radius: 0;
 }
@@ -1717,6 +1719,8 @@ body:has(.flatpickr-calendar.open) sd-input::part(border) {
 body:has(.flatpickr-calendar.open.rangeMode) sd-input::part(border) {
   border-bottom-right-radius: 0;
 }
+
+/* Maintain focus styles on sd-input when flatpickr is open */
 
 body:has(.flatpickr-calendar.open) sd-input::part(border) {
   border-width: 2px;

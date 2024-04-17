@@ -903,6 +903,7 @@ span.flatpickr-weekday {
   @apply text-white bg-primary hover:bg-primary-500;
 }
 
+/* Adapt sd-input border radius */
 body:has(.flatpickr-calendar.open) sd-input::part(border) {
   border-bottom-left-radius: 0;
 }
@@ -911,6 +912,7 @@ body:has(.flatpickr-calendar.open.rangeMode) sd-input::part(border) {
   border-bottom-right-radius: 0;
 }
 
+/* Maintain focus styles on sd-input when flatpickr is open */
 body:has(.flatpickr-calendar.open) sd-input::part(border) {
   @apply border-2 border-primary;
 }
