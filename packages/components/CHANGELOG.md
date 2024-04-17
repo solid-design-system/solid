@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v2.11.6](https://github.com/solid-design-system/solid/compare/components/2.11.5...components/2.11.6) (2024-04-17)
+
+
+### Bug Fixes
+
+* 🤔 sd-button border-radius ([#949](https://github.com/solid-design-system/solid/issues/949)) ([de2e0be](https://github.com/solid-design-system/solid/commit/de2e0beb184e83eb5dec4138dfbd804d7832cc5d))
+
+### 📈 Stats
+* Bundle size (uncompressed): 282 KB (unchanged)
+* Bundle size (gzipped): 68 KB (unchanged)
+
 # [@solid-design-system/components-v2.11.5](https://github.com/solid-design-system/solid/compare/components/2.11.4...components/2.11.5) (2024-04-12)
 
 
