@@ -42,7 +42,7 @@ export default {
 };
 
 /**
- * Default: This shows sd-footnote in its default state.
+ * Default: This shows sd-footnote in its default state, used with a `ul` element.
  */
 
 export const Default = {
@@ -55,11 +55,11 @@ export const Default = {
 };
 
 /**
- * Use the `--number` class to display the footnote as a numbered list.
+ * Use the class with a `ol` element to display the footnotes as a numbered list.
  */
 
 export const Number = {
-  parameters: { controls: { exclude: ['sd-footnote--number'] } },
+  parameters: { controls: { include: [] } },
 
   render: (args: any) => {
     return generateTemplate({
@@ -102,7 +102,7 @@ export const Continue = {
 };
 
 /**
- * This sample shows how to use the `--number` and `--reset` classes in combination. The `--number` class should be included in every footnote that needs a number. The `--reset` class should be included at the first `sd-footnote` to indicate that it's the first element. It can be used again later on to restart the counter from 1.
+ * This sample shows how to use the `start` attribute to set the starting number of the list. This is a html standard attribute.
  */
 
 export const Sample = {
