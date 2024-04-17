@@ -92,7 +92,7 @@
       @apply flex;
 
       & li {
-        @apply flex;
+        @apply flex pt-0;
       }
 
       & li:not(:last-child) {
