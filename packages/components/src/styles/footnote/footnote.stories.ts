@@ -8,10 +8,14 @@ const { generateTemplate } = storybookTemplate('sd-footnote');
 
 /**
  * A footnote contains additional information/sources related to the content and usually appears at the bottom of a page or below the content it refers to.
+ *
+ * > ⛔ **Deprecated – will be removed in next major version**
+ * >
+ * > Use `sd-footnotes` instead.
  */
 
 export default {
-  title: 'Styles/sd-footnote',
+  title: 'Styles/sd-footnote ⛔',
   component: 'sd-footnote',
   parameters: {
     ...parameters,
