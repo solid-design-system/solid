@@ -37,7 +37,10 @@ export default class SdStep extends SolidElement {
   render() {
     return html`
       <div part="base" class="flex flex-col">
-        <div class=${cx('flex shrink-0 gap-2', this.size === 'lg' ? 'ml-6' : 'ml-[1.8rem]')}>
+        <div
+          part="circle"
+          class=${cx('flex shrink-0 gap-4 overflow-hidden', this.size === 'lg' ? 'translateLg' : 'translateSm')}
+        >
           <div
             class=${cx(
               'border border-primary rounded-full aspect-square circle grid place-items-center shrink-0',
@@ -48,7 +51,7 @@ export default class SdStep extends SolidElement {
             1
           </div>
 
-          <sd-divider class="w-full my-auto"></sd-divider>
+          ${this.noTail ? '' : html`<sd-divider class="w-full my-auto"></sd-divider>`}
         </div>
 
         <div class="w-24 text-center mt-4">
@@ -65,6 +68,14 @@ export default class SdStep extends SolidElement {
     css`
       :host {
         @apply w-full;
+      }
+
+      .translateLg {
+        transform: translateX(20px);
+      }
+
+      .translateSm {
+        transform: translateX(30px);
       }
     `
   ];
