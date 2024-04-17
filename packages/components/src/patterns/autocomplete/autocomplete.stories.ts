@@ -464,3 +464,43 @@ export const SuggestionContainerHeight = {
     `;
   }
 };
+
+/**
+ * This example demonstrates how to fetch results asynchronously from a remote server or API.
+ */
+export const Async = {
+  parameters: {
+    controls: {
+      exclude: ['autocomplete']
+    }
+  },
+  render: () => {
+    const setupAutocomplete = solidAutocomplete;
+    const data = mock;
+    return html`
+      <sd-input id="async-example" type="search"><b slot="label">Async result fetch</b></sd-input>
+      <script type="module">
+        // preview-ignore:start
+        const setupAutocomplete = ${setupAutocomplete};
+        const data = ${JSON.stringify(data)};
+        // preview-ignore:end
+
+        Promise.all([customElements.whenDefined('sd-input'), customElements.whenDefined('sd-popup')]).then(() => {
+          /* Simple example */
+          const { config: simpleConfig } = setupAutocomplete('#async-example');
+
+          new autoComplete({
+            ...simpleConfig,
+            data: {
+              src: async query => {
+                await new Promise(resolve => setTimeout(resolve, 1000));
+                return data.src.map(item => ({ item }));
+              },
+              keys: ['item']
+            }
+          });
+        });
+      </script>
+    `;
+  }
+};
