@@ -64,8 +64,7 @@ export const Number = {
   render: (args: any) => {
     return generateTemplate({
       options: {
-        templateContent:
-          '<div class="sd-container"><ol class="%CLASSES%">%SLOT%</ol><ol class="%CLASSES%" start="50">%SLOT%</ol></div?'
+        templateContent: '<div class="sd-container"><ol class="%CLASSES%">%SLOT%</ol></div?'
       },
       args
     });
@@ -111,8 +110,11 @@ export const Sample = {
   render: (args: any) => {
     return generateTemplate({
       options: {
-        templateContent:
-          '<div class="sd-container"><ol start="50" class="%CLASSES%">%SLOT%</ol><ol class="%CLASSES%" start="50">%SLOT%</ol></div?'
+        templateContent: `<div class="sd-container">
+        <ol start="50" class="%CLASSES%">%SLOT%</ol>
+        <ol start="150" class="%CLASSES%">%SLOT%</ol>
+        <ol class="%CLASSES%">%SLOT%</ol>
+      </div>`
       },
       args
     });
