@@ -966,7 +966,11 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                       tabindex="-1"
                     >
                       <slot name="clear-icon">
-                        <sd-icon class=${cx(iconSize)} library="system" name="closing-round"></sd-icon>
+                        <sd-icon
+                          class=${cx('text-neutral-500', iconSize)}
+                          library="system"
+                          name="closing-round"
+                        ></sd-icon>
                       </slot>
                     </button>
                   `
