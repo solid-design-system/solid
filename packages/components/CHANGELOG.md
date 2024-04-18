@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v2.11.8](https://github.com/solid-design-system/solid/compare/components/2.11.7...components/2.11.8) (2024-04-18)
+
+
+### Bug Fixes
+
+* 🤔 align horizontal list ([#957](https://github.com/solid-design-system/solid/issues/957)) ([03ca608](https://github.com/solid-design-system/solid/commit/03ca608d0f9968c71211d035130e9a9dcf2eab93))
+
+### 📈 Stats
+* Bundle size (uncompressed): 282 KB (unchanged)
+* Bundle size (gzipped): 68 KB (unchanged)
+
 # [@solid-design-system/components-v2.11.7](https://github.com/solid-design-system/solid/compare/components/2.11.6...components/2.11.7) (2024-04-17)
 
 
