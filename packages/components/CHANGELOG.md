@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v2.11.9](https://github.com/solid-design-system/solid/compare/components/2.11.8...components/2.11.9) (2024-04-18)
+
+
+### Bug Fixes
+
+* 🤔 sd-select - correct styling ([#951](https://github.com/solid-design-system/solid/issues/951)) ([3810a0a](https://github.com/solid-design-system/solid/commit/3810a0a3f761045d92cf64c486fce717a6f6cb27))
+
+### 📈 Stats
+* Bundle size (uncompressed): 282 KB (unchanged)
+* Bundle size (gzipped): 68 KB (unchanged)
+
 # [@solid-design-system/components-v2.11.8](https://github.com/solid-design-system/solid/compare/components/2.11.7...components/2.11.8) (2024-04-18)
 
 
