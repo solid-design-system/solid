@@ -1,5 +1,6 @@
 import 'normalize.css';
 import '../src/solid-styles.css';
+import '../../flatpickr/src/theme.css';
 import '../src/styles/tailwind.css';
 import { registerIconLibrary } from '../src/utilities/icon-library';
 import { storybookUtilities } from '../scripts/storybook/helper';

@@ -933,7 +933,8 @@ export const Flatpickr = {
         </sd-input>
       </div>
 
-      <link rel="stylesheet" href="/solid-flatpickr/dist/theme.css" />
+      <!-- Uncomment this line for external use.  -->
+      <!-- <link rel="stylesheet" href="/solid-flatpickr/dist/theme.css" /> -->
 
       <script type="module">
         import '/flatpickr/flatpickr.min.js';
@@ -985,7 +986,8 @@ export const FlatpickrMonth = {
         </sd-input>
       </div>
 
-      <link rel="stylesheet" href="/solid-flatpickr/dist/theme.css" />
+      <!-- Uncomment this line for external use.  -->
+      <!-- <link rel="stylesheet" href="/solid-flatpickr/dist/theme.css" /> -->
 
       <script type="module">
         import '/flatpickr/flatpickr.min.js';
@@ -1037,7 +1039,8 @@ export const FlatpickrRange = {
         </sd-input>
       </div>
 
-      <link rel="stylesheet" href="/solid-flatpickr/dist/theme.css" />
+      <!-- Uncomment this line for external use.  -->
+      <!-- <link rel="stylesheet" href="/solid-flatpickr/dist/theme.css" /> -->
 
       <script type="module">
         import '/flatpickr/flatpickr.min.js';
