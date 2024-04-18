@@ -36,27 +36,58 @@ export default class SdStep extends SolidElement {
 
   render() {
     return html`
-      <div part="base" class="flex flex-col">
+      <div
+        part="base"
+        class=${cx(
+          'flex overflow-hidden',
+          this.orientation === 'horizontal' ? ' flex-col w-full' : ' flex-row gap-8 items-stretch h-full w-min',
+          this.state === 'waiting' ? '!text-neutral-500 ' : ''
+        )}
+      >
         <div
           part="circle"
-          class=${cx('flex shrink-0 gap-4 overflow-hidden', this.size === 'lg' ? 'translateLg' : 'translateSm')}
+          class=${cx(
+            'flex shrink-0 gap-4 overflow-hidden',
+            this.orientation === 'horizontal' ? 'flex-row' : 'flex-col items-stretch',
+            this.orientation === 'horizontal'
+              ? this.size === 'lg'
+                ? 'translateLg'
+                : 'translateSm'
+              : this.size === 'lg'
+                ? 'mt-1'
+                : 'mt-3'
+          )}
         >
           <div
-            class=${cx(
-              'border border-primary rounded-full aspect-square circle grid place-items-center shrink-0',
-              this.size === 'lg' ? 'w-12' : 'w-8'
-            )}
             part="circle"
+            class=${cx(
+              'border rounded-full aspect-square circle flex items-center justify-center shrink-0 font-bold select-none',
+              this.size === 'lg' ? 'w-12' : 'w-8',
+              this.state === 'waiting' && 'border-neutral-500',
+              this.state === 'finished' && 'border-primary hover:bg-primary-100 hover:border-primary-500',
+              this.state === 'inProgress' && 'bg-accent border-none text-white'
+            )}
           >
-            1
+            ${this.state === 'finished'
+              ? html` <sd-icon name="confirm" library="system" color="primary"></sd-icon>`
+              : '1'}
           </div>
 
-          ${this.noTail ? '' : html`<sd-divider class="w-full my-auto"></sd-divider>`}
+          ${this.noTail
+            ? ''
+            : this.orientation === 'horizontal'
+              ? html` <sd-divider orientation="horizontal" class="w-full my-auto"></sd-divider> `
+              : html`<sd-divider
+                  orientation="vertical"
+                  class="flex-grow flex-shrink-0 basis-auto h-full w-[1px] mx-auto"
+                ></sd-divider> `}
         </div>
 
         <div class="w-24 text-center mt-4">
           <div class="font-bold text-base"><slot name="label">Step name</slot></div>
-          <div class="text-sm"><slot>Lorem ipsum est dolor sit amet</slot></div>
+          <div class="text-sm">
+            <slot>Lorem ipsum est dolor sit amet</slot>
+          </div>
         </div>
       </div>
     `;
@@ -65,9 +96,18 @@ export default class SdStep extends SolidElement {
   static styles = [
     SolidElement.styles,
     componentStyles,
+
     css`
       :host {
-        @apply w-full;
+        @apply flex-1;
+      }
+
+      [part='base']:not(:has(sd-divider)) {
+        @apply h-max;
+      }
+
+      :host([no-tail]) {
+        @apply flex-grow-0;
       }
 
       .translateLg {

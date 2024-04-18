@@ -32,6 +32,6 @@ export default {
 
 export const Default = {
   render: (args: any) => {
-    return html`${generateTemplate({ args })}`;
+    return html`<div class="h-screen">${generateTemplate({ args })}</div> `;
   }
 };

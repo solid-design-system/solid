@@ -10,18 +10,7 @@ const { generateTemplate } = storybookTemplate('sd-step');
 export default {
   title: 'Components/sd-step',
   component: 'sd-step',
-  args: overrideArgs([
-    {
-      type: 'slot',
-      name: 'default',
-      value: 'Step name'
-    },
-    {
-      type: 'slot',
-      name: 'label',
-      value: '<span name="label">Lorem ipsum est dolor sit amet</span>'
-    }
-  ]),
+  args: overrideArgs([]),
   argTypes,
   parameters: { ...parameters },
   decorators: [withActions] as any

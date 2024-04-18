@@ -21,13 +21,29 @@ export default class SdStepGroup extends SolidElement {
 
   render() {
     return html`
-      <div part="base" class=${cx('flex gap-4 w-full')}>
-        <slot></slot>
+      <div part="base" class=${cx('flex flex-col h-full justify-stretch gap-4')}>
+        <sd-step size="lg" orientation="vertical" state="waiting"
+          >Step name <span>Lorem ipsum est dolor sit amet</span></sd-step
+        >
+        <sd-step size="lg" orientation="vertical" state="inProgress"
+          >Step name <span>Lorem ipsum est dolor sit amet</span></sd-step
+        >
+        <sd-step size="lg" orientation="vertical" no-tail state="finished"
+          >Step name <span>Lorem ipsum est dolor sit amet</span></sd-step
+        >
       </div>
     `;
   }
 
-  static styles = [SolidElement.styles, componentStyles, css``];
+  static styles = [
+    SolidElement.styles,
+    componentStyles,
+    css`
+      :host {
+        @apply w-max;
+      }
+    `
+  ];
 }
 
 declare global {
