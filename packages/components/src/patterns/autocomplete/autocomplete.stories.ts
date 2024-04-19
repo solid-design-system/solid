@@ -27,6 +27,8 @@ import { setupAutocomplete as solidAutocomplete } from '../../solid-components';
  * #### ESM
  * ```html
  * <script type="module">
+ *   import '@tarekraafat/autocomplete.js';
+ *
  *   import { setupAutocomplete } from '@solid-design-system/unversioned';
  *
  *   Promise.all([customElements.whenDefined('sd-input'), customElements.whenDefined('sd-popup')]).then(() => {
@@ -44,6 +46,8 @@ import { setupAutocomplete as solidAutocomplete } from '../../solid-components';
  * ```html
  * <script src="https://solid-design-system.fe.union-investment.de/x.x.x/components/umd/solid-components.js"></script>
  * <script>
+ *   import '@tarekraafat/autocomplete.js';
+ *
  *   const { setupAutocomplete } = window['Solid Components'];
  *
  *  Promise.all([customElements.whenDefined('sd-input'), customElements.whenDefined('sd-popup')]).then(() => {
@@ -184,6 +188,8 @@ export const Simple = {
     return html`
       <sd-input id="simple-example" type="search"><b slot="label">Simple</b></sd-input>
       <script type="module">
+        import './autocomplete/autocomplete.min.js';
+
         // preview-ignore:start
         const setupAutocomplete = ${setupAutocomplete};
         const data = ${JSON.stringify(data)};
@@ -268,6 +274,8 @@ export const HighlightQuery = {
     return html`
       <sd-input id="highlight-example" type="search"><b slot="label">Highlight query</b></sd-input>
       <script type="module">
+        import './autocomplete/autocomplete.min.js';
+
         // preview-ignore:start
         const setupAutocomplete = ${setupAutocomplete};
         const data = ${JSON.stringify(data)};
@@ -306,6 +314,8 @@ export const OpenOnClick = {
     return html`
       <sd-input id="show-all-on-click-example" type="search"><b slot="label">Show all items on click</b></sd-input>
       <script type="module">
+        import './autocomplete/autocomplete.min.js';
+
         // preview-ignore:start
         const setupAutocomplete = ${setupAutocomplete};
         const data = ${JSON.stringify(data)};
@@ -355,6 +365,8 @@ export const GroupElements = {
     return html`
       <sd-input id="group-elements" type="search"><b slot="label">Group elements</b></sd-input>
       <script type="module">
+        import './autocomplete/autocomplete.min.js';
+
         // preview-ignore:start
         const setupAutocomplete = ${setupAutocomplete};
         const data = ${JSON.stringify(data)};
@@ -431,6 +443,8 @@ export const SuggestionContainerHeight = {
     return html`
       <sd-input id="show-all-on-click-example" type="search"><b slot="label">Show all items on click</b></sd-input>
       <script type="module">
+        import './autocomplete/autocomplete.min.js';
+
         // preview-ignore:start
         const setupAutocomplete = ${setupAutocomplete};
         const data = ${JSON.stringify(data)};
@@ -480,6 +494,8 @@ export const Async = {
     return html`
       <sd-input id="async-example" type="search"><b slot="label">Async result fetch</b></sd-input>
       <script type="module">
+        import './autocomplete/autocomplete.min.js';
+
         // preview-ignore:start
         const setupAutocomplete = ${setupAutocomplete};
         const data = ${JSON.stringify(data)};
