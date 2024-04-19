@@ -233,7 +233,7 @@ export const SampleCentered = {
           display: none;
         }
 
-         sd-tab::part(base):hover {
+        sd-tab::part(base):hover {
           border-bottom: none !important;
         }
 
@@ -241,6 +241,7 @@ export const SampleCentered = {
         sd-tab-group::part(scroll-button--end) {
           border-bottom: none;
         }
+        
   * ```
  */
 
