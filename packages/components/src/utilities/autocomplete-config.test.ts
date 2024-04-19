@@ -1,5 +1,6 @@
 import { expect, fixture, html } from '@open-wc/testing';
 import { setupAutocomplete } from './autocomplete-config';
+// @ts-expect-error - Import works, TS doesn't know the type
 import autoComplete from '@tarekraafat/autocomplete.js';
 import type SdInput from 'src/components/input/input';
 
