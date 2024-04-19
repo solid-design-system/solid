@@ -85,12 +85,12 @@ export const Disabled = {
 export const Parts = {
   parameters: {
     controls: {
-      exclude: ['base', 'active-tab-indicator']
+      exclude: ['base', 'active-tab-indicator', 'bottom-border']
     }
   },
   render: (args: any) => {
     return html`
-      ${['base', 'active-tab-indicator'].map(part =>
+      ${['base', 'active-tab-indicator', 'hover-bottom-border'].map(part =>
         generateTemplate({
           axis: {
             x: {
@@ -104,7 +104,8 @@ export const Parts = {
                   }}</style><div id="part-${part}">%TEMPLATE%</div>`
                 }
               ]
-            }
+            },
+            y: { type: 'attribute', name: 'active', values: [false, true] }
           },
           constants: [
             {
@@ -114,11 +115,6 @@ export const Parts = {
                 <div style="width: 600px; position: relative;">%TEMPLATE%
                 </div>
               `
-            },
-            {
-              type: 'attribute',
-              name: 'active',
-              value: true
             }
           ],
           args
@@ -145,13 +141,13 @@ export const Sample = {
             {
               title: 'sd-icon',
               value: `
-              <sd-icon slot="left" name="system/picture" library="global-resources" class="text-primary"></sd-icon>`
+              <sd-icon slot="left" name="system/picture" library="global-resources"></sd-icon>`
             },
             {
               title: 'sd-icon + sd-badge',
               value: `
               <div class="relative">
-            <sd-icon slot="left" name="system/picture" library="global-resources" class="text-primary"></sd-icon>
+            <sd-icon slot="left" name="system/picture" library="global-resources"></sd-icon>
             <sd-badge class="absolute -top-0.5 -right-0.5" tabindex="-1" size="sm"></sd-badge>
          </div>`
             }

@@ -17,4 +17,8 @@
       font-size: 10px;
     }
   }
+
+  &--inverted {
+    @apply text-white;
+  }
 }

@@ -1,3 +1,102 @@
+# [@solid-design-system/components-v2.11.9](https://github.com/solid-design-system/solid/compare/components/2.11.8...components/2.11.9) (2024-04-18)
+
+
+### Bug Fixes
+
+* 🤔 sd-select - correct styling ([#951](https://github.com/solid-design-system/solid/issues/951)) ([3810a0a](https://github.com/solid-design-system/solid/commit/3810a0a3f761045d92cf64c486fce717a6f6cb27))
+
+### 📈 Stats
+* Bundle size (uncompressed): 282 KB (unchanged)
+* Bundle size (gzipped): 68 KB (unchanged)
+
+# [@solid-design-system/components-v2.11.8](https://github.com/solid-design-system/solid/compare/components/2.11.7...components/2.11.8) (2024-04-18)
+
+
+### Bug Fixes
+
+* 🤔 align horizontal list ([#957](https://github.com/solid-design-system/solid/issues/957)) ([03ca608](https://github.com/solid-design-system/solid/commit/03ca608d0f9968c71211d035130e9a9dcf2eab93))
+
+### 📈 Stats
+* Bundle size (uncompressed): 282 KB (unchanged)
+* Bundle size (gzipped): 68 KB (unchanged)
+
+# [@solid-design-system/components-v2.11.7](https://github.com/solid-design-system/solid/compare/components/2.11.6...components/2.11.7) (2024-04-17)
+
+
+### Bug Fixes
+
+* use system icon in dialog ([4519180](https://github.com/solid-design-system/solid/commit/4519180bcc2c5106567a1d0b19d4f9356f8bcc58)), closes [#895](https://github.com/solid-design-system/solid/issues/895)
+
+### 📈 Stats
+* Bundle size (uncompressed): 282 KB (unchanged)
+* Bundle size (gzipped): 68 KB (unchanged)
+
+# [@solid-design-system/components-v2.11.6](https://github.com/solid-design-system/solid/compare/components/2.11.5...components/2.11.6) (2024-04-17)
+
+
+### Bug Fixes
+
+* 🤔 sd-button border-radius ([#949](https://github.com/solid-design-system/solid/issues/949)) ([de2e0be](https://github.com/solid-design-system/solid/commit/de2e0beb184e83eb5dec4138dfbd804d7832cc5d))
+
+### 📈 Stats
+* Bundle size (uncompressed): 282 KB (unchanged)
+* Bundle size (gzipped): 68 KB (unchanged)
+
+# [@solid-design-system/components-v2.11.5](https://github.com/solid-design-system/solid/compare/components/2.11.4...components/2.11.5) (2024-04-12)
+
+
+### Bug Fixes
+
+* 🐛 sd-navigation-item remove default href + href when children ([#934](https://github.com/solid-design-system/solid/issues/934)) ([554e9f7](https://github.com/solid-design-system/solid/commit/554e9f7ab9a43f6566017c68e7063cf6b5220bb7))
+
+### 📈 Stats
+* Bundle size (uncompressed): 282 KB (unchanged)
+* Bundle size (gzipped): 68 KB (unchanged)
+
+# [@solid-design-system/components-v2.11.4](https://github.com/solid-design-system/solid/compare/components/2.11.3...components/2.11.4) (2024-04-11)
+
+
+### Bug Fixes
+
+* 🤔 change HTML tag from div to p ([#932](https://github.com/solid-design-system/solid/issues/932)) ([d7c15cd](https://github.com/solid-design-system/solid/commit/d7c15cddb542a2802af77385924c3b07213c8114))
+
+### 📈 Stats
+* Bundle size (uncompressed): 282 KB (unchanged)
+* Bundle size (gzipped): 68 KB (unchanged)
+
+# [@solid-design-system/components-v2.11.3](https://github.com/solid-design-system/solid/compare/components/2.11.2...components/2.11.3) (2024-04-11)
+
+
+### Bug Fixes
+
+* 🤔 tabs do not grow with longer tab titles  ([#904](https://github.com/solid-design-system/solid/issues/904)) ([738e7c3](https://github.com/solid-design-system/solid/commit/738e7c3729d9d690029d79727dab124a27e7e9cc))
+
+### 📈 Stats
+* Bundle size (uncompressed): 282 KB (unchanged)
+* Bundle size (gzipped): 68 KB (unchanged)
+
+# [@solid-design-system/components-v2.11.2](https://github.com/solid-design-system/solid/compare/components/2.11.1...components/2.11.2) (2024-04-09)
+
+
+### Bug Fixes
+
+* 🐛  add inverted color to sd-footnote ([#926](https://github.com/solid-design-system/solid/issues/926)) ([658876f](https://github.com/solid-design-system/solid/commit/658876fb5918d43532988594e971892e5808c83c))
+
+### 📈 Stats
+* Bundle size (uncompressed): 282 KB (unchanged)
+* Bundle size (gzipped): 68 KB (unchanged)
+
+# [@solid-design-system/components-v2.11.1](https://github.com/solid-design-system/solid/compare/components/2.11.0...components/2.11.1) (2024-04-09)
+
+
+### Bug Fixes
+
+* 🐛 remove TailwindCSS var from sd-copyright ([#907](https://github.com/solid-design-system/solid/issues/907)) ([a9f0f9a](https://github.com/solid-design-system/solid/commit/a9f0f9ab01b85e5ec59fc52009f50960a20e5df6))
+
+### 📈 Stats
+* Bundle size (uncompressed): 282 KB (unchanged)
+* Bundle size (gzipped): 68 KB (unchanged)
+
 # [@solid-design-system/components-v2.11.0](https://github.com/solid-design-system/solid/compare/components/2.10.0...components/2.11.0) (2024-03-21)
 
 

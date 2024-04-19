@@ -897,6 +897,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
               part="combobox"
               class=${cx(
                 'relative w-full px-4 flex flex-row items-center rounded-default',
+                this.open && 'shadow',
                 {
                   sm: 'py-1 min-h-[32px]',
                   md: 'py-1 min-h-[40px]',
@@ -978,7 +979,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 ? html`
                     <sd-icon
                       part="invalid-icon"
-                      class=${cx('text-error', iconMarginLeft, iconSize)}
+                      class=${cx(iconMarginLeft, iconSize)}
                       library="system"
                       name="risk"
                     ></sd-icon>
@@ -988,7 +989,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 ? html`
                     <sd-icon
                       part="valid-icon"
-                      class=${cx('text-success flex-shrink-0', iconMarginLeft, iconSize)}
+                      class=${cx('flex-shrink-0', iconMarginLeft, iconSize)}
                       library="system"
                       name="confirm"
                     ></sd-icon>
@@ -998,7 +999,12 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
               <slot
                 name="expand-icon"
                 part="expand-icon"
-                class=${cx('inline-flex ml-2 transition-all', this.open ? 'rotate-180' : 'rotate-0', iconSize)}
+                class=${cx(
+                  'inline-flex ml-2 transition-all',
+                  this.open ? 'rotate-180' : 'rotate-0',
+                  this.disabled ? 'text-neutral-500' : 'text-primary',
+                  iconSize
+                )}
               >
                 <sd-icon name="chevron-down" part="chevron" library="system" color="currentColor"></sd-icon>
               </slot>
@@ -1012,7 +1018,8 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
               aria-labelledby="label"
               part="listbox"
               class=${cx(
-                'bg-white px-2 py-3 relative',
+                'bg-white px-2 py-3 relative border-primary',
+                this.open && 'shadow',
                 this.currentPlacement === 'bottom'
                   ? 'border-r-2 border-b-2 border-l-2 rounded-br-default rounded-bl-default'
                   : 'border-r-2 border-t-2 border-l-2 rounded-tr-default rounded-tl-default'
