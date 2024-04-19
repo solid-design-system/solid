@@ -8,6 +8,11 @@ const { overrideArgs } = storybookHelpers('sd-icon');
 const { generateTemplate } = storybookTemplate('sd-icon');
 
 /**
+ * ## Disclaimer
+ * The `sd-icon` component does not contain any icons itself. It only provides a technical way to implement and use icons from a specfic library (see below).
+ * All icons displayed here, are provided by the brand departement and requests towards the icons itself need to be addressed accordingly.
+ * In order not to depend on any external library, the SDS-Library includes a small stack of "built-in" icons (e.g. close, chevron etc), which are maintained by the SDS team.
+ *
  * ## Colors
  * Per default icons inherit their color from the current text color. Thus, you can set the color property on the <sd-icon> element or an ancestor to change the color.
  *
