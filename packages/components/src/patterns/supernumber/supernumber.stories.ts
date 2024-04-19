@@ -222,7 +222,7 @@ export const AnimationInternationalization = {
     </div>
 
     <script type="module">
-      import { CountUp } from '/countup/countUp.min.js';
+      import { CountUp } from './countup/countUp.min.js';
 
       const i18nDemo = new CountUp('i18n', 5000.45, {
         enableScrollSpy: true,
