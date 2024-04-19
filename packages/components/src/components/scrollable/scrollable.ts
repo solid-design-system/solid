@@ -154,7 +154,7 @@ export default class SdScrollable extends SolidElement {
             >
               <button
                 part="button-start"
-                class=${cx('scroll-button sd-interactive rounded-md flex')}
+                class=${cx('scroll-button sd-interactive rounded-md flex text-lg')}
                 @click=${() => this.handleScroll(isHorizontal ? 'left' : 'up')}
               >
                 <slot name="icon-start">
@@ -176,10 +176,10 @@ export default class SdScrollable extends SolidElement {
             >
               <button
                 part="button-end"
-                class=${cx('scroll-button sd-interactive rounded-md flex')}
+                class=${cx('scroll-button sd-interactive rounded-md flex text-lg')}
                 @click=${() => this.handleScroll(isHorizontal ? 'right' : 'down')}
               >
-                <slot name="icon-start">
+                <slot name="icon-end">
                   <sd-icon
                     library="system"
                     name="chevron-down"
@@ -237,15 +237,13 @@ export default class SdScrollable extends SolidElement {
         scrollbar-width: none; /* Firefox */
         -ms-overflow-style: none; /* IE 10+ */
         &::-webkit-scrollbar {
-          width: 0;
-          height: 0;
-          background: transparent; /* Chrome/Safari/Webkit */
+          @apply w-0 h-0 bg-transparent;
         }
       }
 
       /* Default state: scrollbar is transparent */
       .scroll-container::-webkit-scrollbar-thumb {
-        background: transparent;
+        @apply bg-transparent;
       }
 
       /* On hover: apply custom styles to the scrollbar thumb */
@@ -256,117 +254,79 @@ export default class SdScrollable extends SolidElement {
 
       /* Apply width and height to the scrollbar itself */
       :host([orientation='vertical']) .scroll-container::-webkit-scrollbar {
-        width: 4px;
+        @apply w-1;
       }
 
       :host([orientation='horizontal']) .scroll-container::-webkit-scrollbar {
-        height: 4px;
+        @apply h-1;
       }
 
       /* Apply specific dimensions to the scrollbar thumb */
       :host([orientation='vertical']) .scroll-container:hover::-webkit-scrollbar-thumb {
-        height: 24px;
+        @apply h-6;
       }
 
       :host([orientation='horizontal']) .scroll-container:hover::-webkit-scrollbar-thumb {
-        width: 24px;
+        @apply w-6;
       }
       .scroll-button-container {
         @apply absolute z-10 flex items-center justify-center;
       }
 
       .button-left {
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 48px;
+        @apply top-0 left-0 h-full w-12;
         background: linear-gradient(270deg, var(--gradient));
       }
 
       .button-right {
-        top: 0;
-        right: 0;
-        height: 100%;
-        width: 48px;
+        @apply top-0 right-0 h-full w-12;
         background: linear-gradient(90deg, var(--gradient));
       }
 
       .button-up {
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 48px;
+        @apply top-0 left-0 w-full h-12;
         background: linear-gradient(0deg, var(--gradient));
       }
 
       .button-down {
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 48px;
+        @apply bottom-0 left-0 w-full h-12;
         background: linear-gradient(180deg, var(--gradient));
       }
 
       .scroll-button {
-        position: relative;
-        padding: 0;
-        border: none;
-        background: none;
-        cursor: pointer;
-      }
-
-      .scroll-button[part='button-start'] {
-        justify-content: flex-start;
-      }
-
-      .scroll-button[part='button-end'] {
-        justify-content: flex-end;
+        @apply relative p-0 border-0 bg-transparent cursor-pointer w-10 h-10 flex items-center justify-center;
       }
 
       .scroll-shadow {
-        position: absolute;
-        z-index: 10;
-        pointer-events: none;
+        @apply absolute z-10 pointer-events-none;
       }
 
       .scroll-shadow.left {
-        top: 0;
-        left: 0;
-        width: 6px;
-        height: 100%;
+        @apply top-0 left-0 w-[6px] h-full;
         background: linear-gradient(270deg, rgba(24, 24, 24, 0) 50%, rgba(24, 24, 24, 0.4) 100%);
       }
 
       .scroll-shadow.right {
-        top: 0;
-        right: 0;
-        width: 6px;
-        height: 100%;
+        @apply top-0 right-0 w-[6px] h-full;
         background: linear-gradient(90deg, rgba(24, 24, 24, 0) 50%, rgba(24, 24, 24, 0.4) 100%);
       }
 
       .scroll-shadow.up {
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 6px;
+        @apply top-0 left-0 w-full h-[6px];
         background: linear-gradient(0deg, rgba(24, 24, 24, 0) 50%, rgba(24, 24, 24, 0.4) 100%);
       }
 
       .scroll-shadow.down {
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 6px;
+        @apply bottom-0 left-0 w-full h-[6px];
         background: linear-gradient(180deg, rgba(24, 24, 24, 0) 50%, rgba(24, 24, 24, 0.4) 100%);
       }
 
       .sd-icon--up {
-        align-self: flex-start;
+        @apply self-start;
       }
 
       .sd-icon--down {
-        align-self: flex-end;
+        @apply self-end;
       }
     `
   ];

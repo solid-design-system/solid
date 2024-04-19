@@ -137,12 +137,20 @@ export const Parts = {
         }
       },
       constants: [
-        { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' },
         { type: 'attribute', name: 'buttons', value: true },
-        { type: 'attribute', name: 'shadows', value: true }
+        { type: 'attribute', name: 'shadow', value: true }
       ],
       args
     });
+  },
+
+  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
+    const scrollables = canvasElement.querySelectorAll('sd-scrollable');
+    for (const el of scrollables) {
+      await waitUntil(() => el?.shadowRoot?.querySelector('button'));
+      el?.shadowRoot?.querySelector<HTMLElement>('button')!.click();
+      console.log('clicked');
+    }
   }
 };
 
