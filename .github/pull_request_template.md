@@ -1,12 +1,4 @@
----
-name: PR Template
-about: standard template for pull request in the solid design system
-title: '<PR-Title> [skip chromatic]'
-labels: ''
-assignees: ''
-
----
-
+<!-- ## Title: Please consider adding the [skip chromatic] flag to the PR title in case you dont need chromatic testing your changes. -->
 ## Description:
 <!-- *PR notes: Please describe the changes in this PR.* -->
 
