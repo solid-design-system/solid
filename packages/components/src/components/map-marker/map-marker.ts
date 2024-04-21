@@ -5,12 +5,20 @@ import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 import type { SVGTemplateResult } from 'lit';
 
-type MarkerVariant = 'cluster' | 'main' | 'place';
+// type MarkerVariant = 'cluster' | 'main' | 'place';
 
+/**
+ * @summary todo
+ * @documentation https://solid.union-investment.com/[storybook-link]/marker
+ * @status stable
+ * @since todo
+ *
+ * @slot - The marker's content.
+ */
 @customElement('sd-map-marker')
 export default class SdMapMarker extends SolidElement {
   /** The map-marker's variant. */
-  @property({ reflect: true }) variant: MarkerVariant = 'main';
+  @property({ reflect: true }) variant: 'cluster' | 'main' | 'place' = 'main';
 
   /** The map-marker's state. */
   @property({ reflect: true }) state: 'default' | 'hover' | 'active' = 'default';
@@ -19,7 +27,7 @@ export default class SdMapMarker extends SolidElement {
   @property({ type: Boolean, reflect: true }) animated = false;
 
   /** @internal */
-  readonly marker: { [key in MarkerVariant]: SVGTemplateResult } = {
+  readonly marker: { [key in 'cluster' | 'main' | 'place']: SVGTemplateResult } = {
     cluster: svg`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
       <circle cx="25" cy="25" opacity="1" r="20" />
       <circle cx="25" cy="25" opacity=".3" r="25" />
@@ -71,7 +79,7 @@ export default class SdMapMarker extends SolidElement {
           )}
         >
           <!-- <slot> <sd-icon name="content/image" color="primary"></sd-icon> </slot> -->
-          <slot>asdf</sd-icon> </slot>
+          <slot></slot>
         </div>
       </div>
     `;

@@ -3,7 +3,6 @@ import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../..
 import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-map-marker');
-const { overrideArgs } = storybookHelpers('sd-map-marker');
 const { generateTemplate } = storybookTemplate('sd-map-marker');
 
 export default {
@@ -12,7 +11,6 @@ export default {
   parameters: {
     ...parameters
   },
-  args: overrideArgs([{ type: 'slot', name: 'default', value: '8' }]),
   argTypes,
   decorators: [withActions] as any
 };
@@ -22,7 +20,95 @@ export default {
  */
 
 export const Default = {
+  parameters: { controls: { exclude: ['default'] } },
   render: (args: any) => {
     return generateTemplate({ args });
+  }
+};
+
+/**
+ * The marker in its 'Cluster' variant in all possible states.
+ */
+
+export const VariantCluster = {
+  name: 'Variant Cluster',
+  parameters: { controls: { exclude: ['state'] } },
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        x: { type: 'attribute', name: 'state' }
+      },
+      args,
+      constants: [
+        {
+          type: 'slot',
+          name: 'default',
+          value: '8'
+        },
+        {
+          type: 'attribute',
+          name: 'variant',
+          value: 'cluster'
+        }
+      ]
+    });
+  }
+};
+
+/**
+ * The marker in its 'Main' variant in all possible states.
+ */
+
+export const VariantMain = {
+  name: 'Variant Main',
+  parameters: { controls: { exclude: ['default', 'state'] } },
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        x: { type: 'attribute', name: 'state' }
+      },
+      args,
+      constants: [
+        {
+          type: 'slot',
+          name: 'default',
+          value: ''
+        },
+        {
+          type: 'attribute',
+          name: 'variant',
+          value: 'main'
+        }
+      ]
+    });
+  }
+};
+
+/**
+ * The marker in its 'Place' variant in all possible states.
+ */
+
+export const VariantPlace = {
+  name: 'Variant Place',
+  parameters: { controls: { exclude: ['default', 'state'] } },
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        x: { type: 'attribute', name: 'state' }
+      },
+      args,
+      constants: [
+        {
+          type: 'slot',
+          name: 'default',
+          value: '<sd-icon name="content/image" color="primary"></sd-icon>'
+        },
+        {
+          type: 'attribute',
+          name: 'variant',
+          value: 'place'
+        }
+      ]
+    });
   }
 };
