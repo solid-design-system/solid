@@ -112,3 +112,73 @@ export const VariantPlace = {
     });
   }
 };
+
+export const Slots = {
+  parameters: {
+    controls: { exclude: ['default', 'state'] }
+  },
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        x: {
+          type: 'slot',
+          name: 'default',
+          title: 'slot=...',
+          values: [
+            {
+              value: `<span class='slot slot--border slot--background'><sd-icon name="content/image" color="primary"></sd-icon></span>`,
+              title: 'default'
+            }
+          ]
+        }
+      },
+      constants: [
+        {
+          type: 'attribute',
+          name: 'variant',
+          value: 'place'
+        }
+      ],
+      args
+    });
+  }
+};
+
+export const Scale = {
+  parameters: {
+    controls: { exclude: ['default', 'state'] }
+  },
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        x: {
+          type: 'template',
+          name: 'asdfasdf',
+          values: [
+            {
+              title: '---map-marker-scaling: 1.5',
+              value: '<div style="---map-marker-scaling: 1.5">%TEMPLATE%</div>'
+            },
+            {
+              title: '--map-marker-scaling: 2',
+              value: '<div style="---map-marker-scaling: 2">%TEMPLATE%</div>'
+            }
+          ]
+        }
+      },
+      constants: [
+        {
+          type: 'slot',
+          name: 'default',
+          value: '<sd-icon name="content/image" color="primary"></sd-icon>'
+        },
+        {
+          type: 'attribute',
+          name: 'variant',
+          value: 'place'
+        }
+      ],
+      args
+    });
+  }
+};

@@ -14,6 +14,7 @@ import type { SVGTemplateResult } from 'lit';
  * @since todo
  *
  * @slot - The marker's content.
+ * @cssproperty --map-marker-scaling - todo
  */
 @customElement('sd-map-marker')
 export default class SdMapMarker extends SolidElement {
