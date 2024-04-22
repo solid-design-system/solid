@@ -61,6 +61,7 @@ export default class SdMapMarker extends SolidElement {
         <div
           class=${cx(
             'inline-flex',
+            this.animated && 'animate-bounce-once',
             this.variant === 'cluster' && this.state === 'hover' && 'scale-110 fill-primary-500',
             this.variant === 'main' && this.state === 'hover' && 'fill-accent-550',
             this.variant === 'main' && this.state === 'active' && 'fill-accent-700',
