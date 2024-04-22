@@ -36,7 +36,7 @@ export const VariantCluster = {
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        x: { type: 'attribute', name: 'state' }
+        x: { type: 'attribute', name: 'state', values: ['default', 'hover'] }
       },
       args,
       constants: [
