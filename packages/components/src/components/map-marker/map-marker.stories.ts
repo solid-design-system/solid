@@ -1,4 +1,5 @@
 import '../../solid-components';
+import { html } from 'lit-html';
 import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
 import { withActions } from '@storybook/addon-actions/decorator';
 
@@ -16,7 +17,7 @@ export default {
 };
 
 /**
- * This shows the badge in its default state.
+ * This shows the badge in its default state and variant.
  */
 
 export const Default = {
@@ -29,7 +30,6 @@ export const Default = {
 /**
  * The marker in its 'Cluster' variant in all possible states.
  */
-
 export const VariantCluster = {
   name: 'Variant Cluster',
   parameters: { controls: { exclude: ['state'] } },
@@ -58,7 +58,6 @@ export const VariantCluster = {
 /**
  * The marker in its 'Main' variant in all possible states.
  */
-
 export const VariantMain = {
   name: 'Variant Main',
   parameters: { controls: { exclude: ['default', 'state'] } },
@@ -87,7 +86,6 @@ export const VariantMain = {
 /**
  * The marker in its 'Place' variant in all possible states.
  */
-
 export const VariantPlace = {
   name: 'Variant Place',
   parameters: { controls: { exclude: ['default', 'state'] } },
@@ -113,37 +111,32 @@ export const VariantPlace = {
   }
 };
 
+/**
+ * Use the 'default' slot to add content to the marker.
+ */
 export const Slots = {
   parameters: {
     controls: { exclude: ['default', 'state'] }
   },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        x: {
-          type: 'slot',
-          name: 'default',
-          title: 'slot=...',
-          values: [
-            {
-              value: `<span class='slot slot--border slot--background'><sd-icon name="content/image" color="primary"></sd-icon></span>`,
-              title: 'default'
-            }
-          ]
-        }
-      },
-      constants: [
-        {
-          type: 'attribute',
-          name: 'variant',
-          value: 'place'
-        }
-      ],
-      args
-    });
+  render: () => {
+    return html`
+      <div class="flex gap-4 items-center">
+        <sd-map-marker variant="place">
+          <span class="slot slot--border slot--background">
+            <sd-icon name="content/image" color="primary"></sd-icon>
+          </span>
+        </sd-map-marker>
+        <sd-map-marker variant="cluster">
+          <span class="slot slot--border slot--background"> 8 </span>
+        </sd-map-marker>
+      </div>
+    `;
   }
 };
 
+/**
+ * Use the '--map-marker-scaling' css variable to scale the marker to your needs.
+ */
 export const Scale = {
   parameters: {
     controls: { exclude: ['default', 'state'] }
@@ -153,10 +146,10 @@ export const Scale = {
       axis: {
         x: {
           type: 'template',
-          name: 'asdfasdf',
+          name: 'marker-scaling',
           values: [
             {
-              title: '---map-marker-scaling: 1.5',
+              title: '--map-marker-scaling: 1.5',
               value: '<div style="--map-marker-scaling: 1.5">%TEMPLATE%</div>'
             },
             {
