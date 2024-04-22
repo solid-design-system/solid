@@ -36,3 +36,47 @@ export const Default = {
     return html`${generateTemplate({ args })}`;
   }
 };
+
+/**
+ * Use the orientation attribute to set the axis of a step.
+ */
+
+export const Orientation = {
+  parameters: { controls: { exclude: 'orientation' } },
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        y: { type: 'attribute', name: 'orientation' }
+      },
+      args,
+      constants: { type: 'attribute', name: 'state', value: 'finished' }
+    });
+  }
+};
+
+/**
+ * Use the orientation attribute to set the axis of a step.
+ */
+
+export const SizeXStatus = {
+  parameters: { controls: { exclude: ['size', 'state'] } },
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        y: { type: 'attribute', name: 'size' },
+        x: { type: 'attribute', name: 'state' }
+      },
+      args
+    });
+  },
+  decorators: [
+    (story: () => typeof html) => html`
+      <style>
+        td.template {
+          width: 33%;
+        }
+      </style>
+      ${story()}
+    `
+  ]
+};

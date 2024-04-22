@@ -14,11 +14,7 @@ export default {
     {
       type: 'slot',
       name: 'default',
-      value: `
-      <sd-step size="lg" orientation="horizontal" state="waiting">Step name <span name="label">Lorem ipsum est dolor sit amet</span></sd-step>
-      <sd-step size="lg" orientation="horizontal" state="waiting">Step name <span name="label">Lorem ipsum est dolor sit amet</span></sd-step>
-      <sd-step size="lg" orientation="horizontal" state="waiting">Step name <span name="label">Lorem ipsum est dolor sit amet</span></sd-step>
-      `
+      value: `<span>hi</span>`
     }
   ]),
   argTypes,

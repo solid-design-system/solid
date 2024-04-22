@@ -1,5 +1,6 @@
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
+import { property } from 'lit/decorators.js';
 import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
@@ -9,28 +10,28 @@ import SolidElement from '../../internal/solid-element';
  * @status stable
  * @since 2.6.0
  *
+ * 
+ *  * @slot - Used for grouping steps in the step group. Must be `<sd-step>` elements.
  *
  *
 
  */
 @customElement('sd-step-group')
 export default class SdStepGroup extends SolidElement {
+  /** The step-groups's size. */
+  @property({ reflect: true }) size: 'lg' | 'sm' = 'lg';
+
+  /** Determines the orientation of the step-group. */
+  @property({ reflect: true }) orientation: 'horizontal' | 'vertical' = 'horizontal';
+
   connectedCallback() {
     super.connectedCallback();
   }
 
   render() {
     return html`
-      <div part="base" class=${cx('flex flex-col h-full justify-stretch gap-4')}>
-        <sd-step size="lg" orientation="vertical" state="waiting"
-          >Step name <span>Lorem ipsum est dolor sit amet</span></sd-step
-        >
-        <sd-step size="lg" orientation="vertical" state="inProgress"
-          >Step name <span>Lorem ipsum est dolor sit amet</span></sd-step
-        >
-        <sd-step size="lg" orientation="vertical" no-tail state="finished"
-          >Step name <span>Lorem ipsum est dolor sit amet</span></sd-step
-        >
+      <div part="base" class=${cx('flex', this.orientation === 'horizontal' ? '' : ' flex-col h-full')}>
+        <slot></slot>
       </div>
     `;
   }
