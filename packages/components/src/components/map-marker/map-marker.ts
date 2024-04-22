@@ -1,20 +1,19 @@
-import { css, html, svg } from 'lit';
 import { customElement } from '../../../src/internal/register-custom-element';
+import { html, svg } from 'lit';
 import { property } from 'lit/decorators.js';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 import type { SVGTemplateResult } from 'lit';
 
-// type MarkerVariant = 'cluster' | 'main' | 'place';
-
 /**
- * @summary todo
- * @documentation https://solid.union-investment.com/[storybook-link]/marker
+ * @summary A marker identifies a location on google map
+ * @documentation https://solid.union-investment.com/[storybook-link]/components-sd-map-marker--docs
+ *
  * @status stable
- * @since todo
+ * @since 2.12
  *
  * @slot - The marker's content.
- * @cssproperty --map-marker-scaling - todo
+ * @cssproperty --map-marker-scaling - Scale the marker size.
  */
 @customElement('sd-map-marker')
 export default class SdMapMarker extends SolidElement {
@@ -51,11 +50,9 @@ export default class SdMapMarker extends SolidElement {
         tabindex="0"
         class=${cx(
           'flex justify-center w-[calc(theme(width.12)*var(--map-marker-scaling,1))] focus:outline-primary focus:outline-offset-2',
-          {
-            cluster: 'h-[calc(theme(height.12)*var(--map-marker-scaling,1))]',
-            main: 'h-[calc(theme(height.16)*var(--map-marker-scaling,1))]',
-            place: 'h-[calc(theme(height.16)*var(--map-marker-scaling,1))]'
-          }[this.variant]
+          this.variant === 'cluster'
+            ? 'h-[calc(theme(height.12)*var(--map-marker-scaling,1))]'
+            : 'h-[calc(theme(height.16)*var(--map-marker-scaling,1))]'
         )}
       >
         <div
@@ -70,7 +67,7 @@ export default class SdMapMarker extends SolidElement {
             this.variant === 'place' && this.state === 'active' && 'fill-primary-200',
             {
               cluster: 'fill-primary transition-all duration-200 ease-in-out hover:scale-110 hover:fill-primary-500',
-              main: 'fill-accent *:drop-shadow-md hover:fill-accent-550 active:fill-accent-700', //accent-700 missing in design tokens
+              main: 'fill-accent *:drop-shadow-md hover:fill-accent-550 active:fill-accent-700',
               place: 'hover:fill-primary-100 *:drop-shadow-md'
             }[this.variant]
           )}
@@ -87,20 +84,11 @@ export default class SdMapMarker extends SolidElement {
             }[this.variant]
           )}
         >
-          <!-- <slot> <sd-icon name="content/image" color="primary"></sd-icon> </slot> -->
           <slot></slot>
         </div>
       </div>
     `;
   }
-
-  static styles = [
-    SolidElement.styles,
-    css`
-      :host {
-      }
-    `
-  ];
 }
 
 declare global {
