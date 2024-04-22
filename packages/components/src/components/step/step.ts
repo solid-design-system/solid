@@ -30,6 +30,12 @@ export default class SdStep extends SolidElement {
   /** Removes the tail from the step. */
   @property({ reflect: true, type: Boolean, attribute: 'no-tail' }) noTail = false;
 
+  /** The step's label. */
+  @property() label = '';
+
+  /** The step's description. */
+  @property() description = '';
+
   connectedCallback() {
     super.connectedCallback();
   }
@@ -84,10 +90,8 @@ export default class SdStep extends SolidElement {
         </div>
 
         <div class="w-24 text-center mt-4">
-          <div class="font-bold text-base"><slot name="label">Step name</slot></div>
-          <div class="text-sm">
-            <slot>Lorem ipsum est dolor sit amet</slot>
-          </div>
+          <div class="font-bold text-base">${this.label === '' ? html`<slot name="label"></slot>` : this.label}</div>
+          <div class="text-sm">${this.description === '' ? html`<slot></slot>` : this.description}</div>
         </div>
       </div>
     `;
