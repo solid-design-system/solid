@@ -65,12 +65,13 @@ export default class SdMapMarker extends SolidElement {
             this.variant === 'cluster' && this.state === 'hover' && 'scale-110 fill-primary-500',
             this.variant === 'main' && this.state === 'hover' && 'fill-accent-550',
             this.variant === 'main' && this.state === 'active' && 'fill-accent-700',
+            this.variant === 'place' && this.state === 'default' && 'fill-white',
             this.variant === 'place' && this.state === 'hover' && 'fill-primary-100',
             this.variant === 'place' && this.state === 'active' && 'fill-primary-200',
             {
               cluster: 'fill-primary transition-all duration-200 ease-in-out hover:scale-110 hover:fill-primary-500',
               main: 'fill-accent *:drop-shadow-md hover:fill-accent-550 active:fill-accent-700', //accent-700 missing in design tokens
-              place: 'fill-white hover:fill-primary-100 *:drop-shadow-md'
+              place: 'hover:fill-primary-100 *:drop-shadow-md'
             }[this.variant]
           )}
         >

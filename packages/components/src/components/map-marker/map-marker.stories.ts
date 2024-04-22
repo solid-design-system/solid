@@ -157,11 +157,11 @@ export const Scale = {
           values: [
             {
               title: '---map-marker-scaling: 1.5',
-              value: '<div style="---map-marker-scaling: 1.5">%TEMPLATE%</div>'
+              value: '<div style="--map-marker-scaling: 1.5">%TEMPLATE%</div>'
             },
             {
               title: '--map-marker-scaling: 2',
-              value: '<div style="---map-marker-scaling: 2">%TEMPLATE%</div>'
+              value: '<div style="--map-marker-scaling: 2">%TEMPLATE%</div>'
             }
           ]
         }
