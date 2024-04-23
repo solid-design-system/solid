@@ -336,6 +336,10 @@ const getAspectRatios = () => {
   return result;
 };
 
+let fillColors = getColors('icon-fill', 'fill-color');
+fillColors['accent']['700'] =
+  'rgb(var(--sd-color-accent-700, 33 87 37) / <alpha-value>) /* Used for pressed interaction */';
+
 /** @type {import('tailwindcss').Config} */
 const config = {
   theme: {
@@ -347,7 +351,7 @@ const config = {
     boxShadowColor: { ...getColors('background', 'background-color') },
     caretColor: { ...getColors('text', 'text-color') },
     color: { ...getColors() },
-    fill: { ...getColors('icon-fill', 'fill-color') },
+    fill: { ...fillColors },
     fontFamily: {},
     fontSize: { ...getCoreTokensByType('fontSizes', 'font-size') },
     fontStyle: {},
