@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v2.12.0](https://github.com/solid-design-system/solid/compare/components/2.11.9...components/2.12.0) (2024-04-23)
+
+
+### Features
+
+* ✨ add sd-map-marker ([#974](https://github.com/solid-design-system/solid/issues/974)) ([101ed22](https://github.com/solid-design-system/solid/commit/101ed2255b90f8be1fd8fd5ed36a95f1a3a948ca))
+
+### 📈 Stats
+* Bundle size (uncompressed): 288 KB (+6 KB / +2%)
+* Bundle size (gzipped): 69 KB (+1 KB / +1%)
+
 # [@solid-design-system/components-v2.11.9](https://github.com/solid-design-system/solid/compare/components/2.11.8...components/2.11.9) (2024-04-18)
 
 
