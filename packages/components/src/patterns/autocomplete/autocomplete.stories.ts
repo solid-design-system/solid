@@ -225,6 +225,8 @@ export const TeaserResultItem = {
     return html`
       <sd-input id="teaser-result-item" type="search"><b slot="label">Teaser result item</b></sd-input>
       <script type="module">
+        import './autocomplete/autoComplete.min.js';
+
         // preview-ignore:start
         const setupAutocomplete = ${setupAutocomplete};
         const data = ${JSON.stringify(data)};
