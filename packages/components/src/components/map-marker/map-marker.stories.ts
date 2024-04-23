@@ -126,6 +126,11 @@ export const Slots = {
             <sd-icon name="content/image" color="primary"></sd-icon>
           </span>
         </sd-map-marker>
+        <sd-map-marker variant="place">
+          <span class="slot slot--border slot--background">
+            <img class="" src="images/logo-unioninvestment-sm.svg" alt="Logo" />
+          </span>
+        </sd-map-marker>
         <sd-map-marker variant="cluster">
           <span class="slot slot--border slot--background"> 8 </span>
         </sd-map-marker>
