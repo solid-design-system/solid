@@ -1,3 +1,10 @@
+# [@solid-design-system/tokens-v3.1.0](https://github.com/solid-design-system/solid/compare/tokens/3.0.0...tokens/3.1.0) (2024-04-23)
+
+
+### Features
+
+* ✨ add sd-map-marker ([#974](https://github.com/solid-design-system/solid/issues/974)) ([101ed22](https://github.com/solid-design-system/solid/commit/101ed2255b90f8be1fd8fd5ed36a95f1a3a948ca))
+
 # [@solid-design-system/tokens-v3.0.0](https://github.com/solid-design-system/solid/compare/tokens/2.2.0...tokens/3.0.0) (2024-03-12)
 
 
