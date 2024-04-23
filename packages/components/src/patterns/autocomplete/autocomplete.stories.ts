@@ -188,7 +188,7 @@ export const Simple = {
     return html`
       <sd-input id="simple-example" type="search"><b slot="label">Simple</b></sd-input>
       <script type="module">
-        import './autocomplete/autocomplete.min.js';
+        import './autocomplete/autoComplete.min.js';
 
         // preview-ignore:start
         const setupAutocomplete = ${setupAutocomplete};
@@ -274,7 +274,7 @@ export const HighlightQuery = {
     return html`
       <sd-input id="highlight-example" type="search"><b slot="label">Highlight query</b></sd-input>
       <script type="module">
-        import './autocomplete/autocomplete.min.js';
+        import './autocomplete/autoComplete.min.js';
 
         // preview-ignore:start
         const setupAutocomplete = ${setupAutocomplete};
@@ -314,7 +314,7 @@ export const OpenOnClick = {
     return html`
       <sd-input id="show-all-on-click-example" type="search"><b slot="label">Show all items on click</b></sd-input>
       <script type="module">
-        import './autocomplete/autocomplete.min.js';
+        import './autocomplete/autoComplete.min.js';
 
         // preview-ignore:start
         const setupAutocomplete = ${setupAutocomplete};
@@ -365,7 +365,7 @@ export const GroupElements = {
     return html`
       <sd-input id="group-elements" type="search"><b slot="label">Group elements</b></sd-input>
       <script type="module">
-        import './autocomplete/autocomplete.min.js';
+        import './autocomplete/autoComplete.min.js';
 
         // preview-ignore:start
         const setupAutocomplete = ${setupAutocomplete};
@@ -443,7 +443,7 @@ export const SuggestionContainerHeight = {
     return html`
       <sd-input id="show-all-on-click-example" type="search"><b slot="label">Show all items on click</b></sd-input>
       <script type="module">
-        import './autocomplete/autocomplete.min.js';
+        import './autocomplete/autoComplete.min.js';
 
         // preview-ignore:start
         const setupAutocomplete = ${setupAutocomplete};
@@ -494,7 +494,7 @@ export const Async = {
     return html`
       <sd-input id="async-example" type="search"><b slot="label">Async result fetch</b></sd-input>
       <script type="module">
-        import './autocomplete/autocomplete.min.js';
+        import './autocomplete/autoComplete.min.js';
 
         // preview-ignore:start
         const setupAutocomplete = ${setupAutocomplete};
