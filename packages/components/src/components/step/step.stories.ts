@@ -14,7 +14,7 @@ export default {
     {
       type: 'slot',
       name: 'default',
-      value: `<span>Lorem ipsum est dolor sit amet</span>`
+      value: `Lorem ipsum est dolor sit amet`
     },
     {
       type: 'slot',
@@ -48,8 +48,7 @@ export const Orientation = {
       axis: {
         y: { type: 'attribute', name: 'orientation' }
       },
-      args,
-      constants: { type: 'attribute', name: 'state', value: 'finished' }
+      args
     });
   }
 };
@@ -59,7 +58,7 @@ export const Orientation = {
  */
 
 export const SizeXStatus = {
-  parameters: { controls: { exclude: ['size', 'state'] } },
+  parameters: { controls: { exclude: ['size', 'state'] }, docs: { story: { inline: false, height: '500px' } } },
   render: (args: any) => {
     return generateTemplate({
       axis: {

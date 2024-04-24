@@ -8,7 +8,7 @@ import SolidElement from '../../internal/solid-element';
  * @summary Steps are used inside [step groups](/components/step-group) to represent and activate [tab panels](/components/tab-panel).
  * @documentation https://solid.union-investment.com/[storybook-link]/step
  * @status stable
- * @since 2.6.0
+ * @since 2.13.0
  *
  *
  * @slot label - The step's label.
