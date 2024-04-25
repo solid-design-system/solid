@@ -22,9 +22,11 @@ As a [PERSONA] of the Solid Design System, I would like to [REQUIRE], as well as
 | <ul><li>[ ] </li></ul>  | `--name-` | `type` | `default` | description |
 | <ul><li>[ ] </li></ul>  | `--name-` | `type1` / `type2` | `default` | description |
 
-#### Stories (besides the `default` story)
-  - [ ] `name` - (description)
-  - [ ] `name` - (description)
+#### Stories
+  - [ ] `default` - shows the components default state
+  - [ ] `slots` - shows the components slots
+  - [ ] `parts` - shows the components parts
+  - [ ] `name` - description
 #### Samples
   - [ ] `name` - description
   - [ ] `name` - description
