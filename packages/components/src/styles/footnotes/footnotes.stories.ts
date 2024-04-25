@@ -48,23 +48,23 @@ export default {
 export const Default = {
   render: (args: any) => {
     return generateTemplate({
-      options: { templateContent: '<div class="sd-container"><ul class="%CLASSES%">%SLOT%</ul></div?' },
+      options: { templateContent: '<div class="sd-container"><ol class="%CLASSES%">%SLOT%</ol></div?' },
       args
     });
   }
 };
 
 /**
- * Use the class with a `ol` element to display the footnotes as a numbered list.
+ * Use the class with a `ul` element to display the footnotes as an unordered list.
  */
 
-export const Number = {
+export const UnorderedLists = {
   parameters: { controls: { include: [] } },
 
   render: (args: any) => {
     return generateTemplate({
       options: {
-        templateContent: '<div class="sd-container"><ol class="%CLASSES%">%SLOT%</ol></div?'
+        templateContent: '<div class="sd-container"><ul class="%CLASSES%">%SLOT%</ul></div?'
       },
       args
     });
