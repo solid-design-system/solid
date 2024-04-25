@@ -15,18 +15,18 @@ export default {
       type: 'slot',
       name: 'default',
       value: `
-        <sd-step size="lg" orientation="horizontal" state="waiting">
-          <span slot="label">Step name</span>
+        <sd-step size="lg" orientation="horizontal" state="finished">
+          <p slot="label">Lorem ipsum dolor sit</p>
           Lorem ipsum est dolor sit amet
         </sd-step>
 
         <sd-step size="lg" orientation="horizontal" state="inProgress">
-          <span slot="label">Step name</span>
+          <p slot="label">Exercitation ullamco laboris</p>
           Lorem ipsum est dolor sit amet
         </sd-step>
 
-        <sd-step size="lg" orientation="horizontal" state="finished">
-          <span slot="label">Step name</span>
+        <sd-step size="lg" orientation="horizontal" state="waiting">
+          <p slot="label">Reprehenderit qui in e name</p>
           Lorem ipsum est dolor sit amet
         </sd-step>`
     }
@@ -47,10 +47,11 @@ export const Default = {
 };
 
 /**
- * Default: This shows sd-step-group in its default state.
+ * This sample shows how to set the active step programmatically.
  */
 
 export const SetActiveStep = {
+  name: 'Sample: Set Active Step',
   parameters: { docs: { story: { inline: false, height: '200px' } } },
 
   render: (args: any) => {

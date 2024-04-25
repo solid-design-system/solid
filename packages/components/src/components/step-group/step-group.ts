@@ -21,8 +21,6 @@ import type SdStep from '../step/step';
  */
 @customElement('sd-step-group')
 export default class SdStepGroup extends SolidElement {
-  /** The step-group's steps. */
-  /** @internal */
   private steps: SdStep[] = [];
 
   @query('[part=body]') body: HTMLSlotElement;
@@ -42,15 +40,32 @@ export default class SdStepGroup extends SolidElement {
       // Remove the tail from the last step
       this.steps[this.steps.length - 1].noTail = true;
 
-      this.setAttributes();
+      this.steps.forEach((step, index) => {
+        // Initialize the step attributes
+        step.number = index + 1;
+        step.size = this.size;
+        step.orientation = this.orientation;
+
+        // Set the active step on click
+        step.addEventListener('click', () => {
+          if (step.state === 'finished') {
+            this.setActiveStep(index);
+          }
+        });
+      });
     });
   }
 
-  /** @internal */
-  @watch(['size', 'orientation'], { waitUntilFirstUpdate: true })
-  setAttributes() {
+  @watch('size', { waitUntilFirstUpdate: true })
+  updateSize() {
     this.steps.forEach(step => {
       step.size = this.size;
+    });
+  }
+
+  @watch('orientation', { waitUntilFirstUpdate: true })
+  updateOrientation() {
+    this.steps.forEach(step => {
       step.orientation = this.orientation;
     });
   }
@@ -64,9 +79,13 @@ export default class SdStepGroup extends SolidElement {
    * @param index The index of the step to set as active.
    */
   setActiveStep(index: number) {
-    this.steps.forEach((step, i) => {
-      step.state = i === index ? 'inProgress' : i < index ? 'finished' : 'waiting';
-    });
+    if (index >= 0 && index < this.steps.length) {
+      this.steps.forEach((step, i) => {
+        step.state = i === index ? 'inProgress' : i < index ? 'finished' : 'waiting';
+      });
+    } else {
+      throw new Error('Invalid Index Number');
+    }
   }
 
   render() {

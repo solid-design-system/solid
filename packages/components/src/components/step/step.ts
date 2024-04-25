@@ -1,8 +1,9 @@
-import { css, html } from 'lit';
+import { css, html, unsafeCSS } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { property } from 'lit/decorators.js';
 import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
+import ParagraphStyles from '../../styles/paragraph/paragraph.css?inline';
 import SolidElement from '../../internal/solid-element';
 /**
  * @summary Steps are used inside [step groups](/components/step-group) to represent and activate [tab panels](/components/tab-panel).
@@ -36,6 +37,9 @@ export default class SdStep extends SolidElement {
   /** The step's description. */
   @property() description = '';
 
+  /** The step's number in a step-group */
+  @property({ type: Number }) number = 1;
+
   connectedCallback() {
     super.connectedCallback();
   }
@@ -45,15 +49,15 @@ export default class SdStep extends SolidElement {
       <div
         part="base"
         class=${cx(
-          'flex overflow-hidden',
+          'flex overflow-hidden pt-1',
           this.orientation === 'horizontal' ? ' flex-col w-full' : ' flex-row gap-8 items-stretch h-full w-min',
           this.state === 'waiting' ? '!text-neutral-500 ' : ''
         )}
       >
         <div
-          part="circle"
           class=${cx(
-            'flex shrink-0 gap-4 overflow-hidden',
+            'flex shrink-0 gap-4',
+
             this.orientation === 'horizontal' ? 'flex-row' : 'flex-col items-stretch',
             this.orientation === 'horizontal'
               ? this.size === 'lg'
@@ -64,10 +68,13 @@ export default class SdStep extends SolidElement {
                 : 'mt-3'
           )}
         >
-          <div
+          <button
             part="circle"
+            ?disabled=${this.state === 'waiting'}
+            tabindex=${this.state === 'finished' ? '0' : '-1'}
             class=${cx(
               'border rounded-full aspect-square circle flex items-center justify-center shrink-0 font-bold select-none',
+              this.state === 'finished' ? 'focus-visible:focus-outline' : 'focus-visible:outline-none',
               this.size === 'lg' ? 'w-12' : 'w-8',
               this.state === 'waiting' && 'border-neutral-500',
               this.state === 'finished' && 'border-primary hover:bg-primary-100 hover:border-primary-500',
@@ -76,8 +83,8 @@ export default class SdStep extends SolidElement {
           >
             ${this.state === 'finished'
               ? html` <sd-icon name="confirm" library="system" color="primary"></sd-icon>`
-              : '1'}
-          </div>
+              : this.number}
+          </button>
 
           ${this.noTail
             ? ''
@@ -89,9 +96,13 @@ export default class SdStep extends SolidElement {
                 ></sd-divider> `}
         </div>
 
-        <div class="w-24 text-center mt-4">
-          <div class="font-bold text-base">${this.label === '' ? html`<slot name="label"></slot>` : this.label}</div>
-          <div class="text-sm">${this.description === '' ? html`<slot></slot>` : this.description}</div>
+        <div class="w-24 text-center mt-4 break-words">
+          <div class="!font-bold sd-paragraph">
+            ${this.label === '' ? html`<slot name="label"></slot>` : this.label}
+          </div>
+          <div class="sd-paragraph sd-paragraph--size-sm">
+            ${this.description === '' ? html`<slot></slot>` : this.description}
+          </div>
         </div>
       </div>
     `;
@@ -100,6 +111,7 @@ export default class SdStep extends SolidElement {
   static styles = [
     SolidElement.styles,
     componentStyles,
+    unsafeCSS(ParagraphStyles),
 
     css`
       :host {
