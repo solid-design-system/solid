@@ -1,5 +1,5 @@
 .sd-footnotes {
-  @apply text-neutral-700 text-sm text-left;
+  @apply text-neutral-700 text-sm text-left p-0 my-0;
 
   &:is(ol) {
     li {
