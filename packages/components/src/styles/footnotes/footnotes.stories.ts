@@ -72,35 +72,6 @@ export const Number = {
 };
 
 /**
- * Use the `--continue` class to continue the footnote numbering from the previous footnote between different lists.
- *
- * > This only works inside the same ShadowDOM/LightDOM context.
- */
-
-export const Continue = {
-  parameters: { controls: { include: [] } },
-
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: [{ type: 'attribute', name: 'sd-footnotes--continue', values: [false, true] }]
-      },
-      options: {
-        templateContent: `<div class="sd-container space-y-4">
-          <h2 class="sd-headline sd-headline--size-lg">First list</h2>
-          <ol class="%CLASSES%">%SLOT%</ol>
-          <h2 class="sd-headline sd-headline--size-lg">Second list</h2>
-          <ol class="%CLASSES%">%SLOT%</ol>
-          <h2 class="sd-headline sd-headline--size-lg">Third list</h2>
-          <ol class="%CLASSES%">%SLOT%</ol>
-        </div>`
-      },
-      args
-    });
-  }
-};
-
-/**
  * This sample shows how to use the `start` attribute to set the starting number of the list. This is a html standard attribute.
  */
 

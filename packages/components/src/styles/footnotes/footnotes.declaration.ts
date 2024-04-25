@@ -5,12 +5,6 @@ export default {
   summary:
     'A footnote contains additional information/sources related to the content and usually appears at the bottom of a page or below the content it refers to.',
   status: 'stable',
-  since: '2.9.0',
-  attributes: [
-    {
-      name: 'sd-footnote--continue',
-      description:
-        'This attribute to continue the footnote numbering from the previous footnote between different lists.'
-    }
-  ]
+  since: '2.13.0',
+  attributes: []
 } satisfies Style;

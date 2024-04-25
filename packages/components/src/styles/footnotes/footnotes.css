@@ -13,15 +13,6 @@
         font-size: 10px;
       }
     }
-    &.sd-footnotes--continue {
-      counter-increment: footnotes-continue 0;
-      li {
-        counter-increment: footnotes-continue;
-        &::before {
-          content: counter(footnotes-continue);
-        }
-      }
-    }
   }
 
   &:is(ul) {
