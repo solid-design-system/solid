@@ -8,14 +8,25 @@ const { argTypes, parameters } = storybookDefaults('sd-scrollable');
 const { overrideArgs } = storybookHelpers('sd-scrollable');
 const { generateTemplate } = storybookTemplate('sd-scrollable');
 
+const defaultSlotContent = `
+  <div class="slot slot--border slot--text items-start" style="height:max-content; width:max-content; padding: 1rem; justify-content:start;">
+    <p>Scroll and give it a try!</p>
+    <br/>
+    <p>This is a long scrollable content.</p>
+    <p>It contains multiple paragraphs and lines.</p>
+    <p>The content is intentionally long to trigger scrolling. You can scroll horizontally and vertically.</p>
+    <p>The scrollable component will display shadows and buttons based on the props.</p>
+    <p>Customize the content and attributes as needed.</p>
+  </div>
+`;
+
 export default {
   title: 'Components/sd-scrollable',
   component: 'sd-scrollable',
   args: overrideArgs({
     type: 'slot',
     name: 'default',
-    value:
-      '<div class="slot slot--border slot--background slot--text items-start" style="height:max-content; padding: 1rem; justify-content:start;"><p>Scroll and give it a try!</p><br/><p>This is a long scrollable content.</p><p>It contains multiple paragraphs and lines.</p><p>The content is intentionally long to trigger scrolling. You can scroll horizontally and vertically.</p><p>The scrollable component will display shadows and buttons based on the props.</p><p>Customize the content and attributes as needed.</p></div>'
+    value: defaultSlotContent
   }),
   argTypes,
   parameters: { ...parameters },
@@ -24,22 +35,22 @@ export default {
     (story: any) =>
       html`<style>
           sd-scrollable {
-            height: 183px;
             width: 277px;
           }</style
         >${story()}`
   ] as unknown
 };
 
+const renderTemplate = (args: any, constants: any[] = []) => {
+  return generateTemplate({
+    args,
+    constants
+  });
+};
+
 export const Default = {
   render: (args: any) => {
-    return html`
-      <div>
-        ${generateTemplate({
-          args
-        })}
-      </div>
-    `;
+    return html` <div>${renderTemplate(args)}</div> `;
   }
 };
 
@@ -48,24 +59,18 @@ export const ButtonWithGradient = {
   render: (args: any) => {
     return html`
       <div style="width: 277px; height: 120px;">
-        ${generateTemplate({
-          args,
-          constants: [{ type: 'attribute', name: 'buttons', value: true }]
-        })}
+        ${renderTemplate(args, [{ type: 'attribute', name: 'buttons', value: true }])}
       </div>
     `;
   }
 };
 
 export const Shadow = {
-  parameters: { controls: { exclude: ['shadow'] } },
+  parameters: { controls: { exclude: ['shadows'] } },
   render: (args: any) => {
     return html`
       <div style="width: 277px; height: 120px;">
-        ${generateTemplate({
-          args,
-          constants: [{ type: 'attribute', name: 'shadow', value: 'true' }]
-        })}
+        ${renderTemplate(args, [{ type: 'attribute', name: 'shadows', value: 'true' }])}
       </div>
     `;
   }
@@ -76,43 +81,41 @@ export const Scrollbar = {
   render: (args: any) => {
     return html`
       <div style="width: 277px; height: 120px;">
-        ${generateTemplate({
-          args,
-          constants: [{ type: 'attribute', name: 'scrollbars', value: 'true' }]
-        })}
+        ${renderTemplate(args, [{ type: 'attribute', name: 'scrollbars', value: 'true' }])}
       </div>
     `;
   }
 };
 
 export const CustomIcon = {
-  parameters: { controls: { exclude: ['default', 'buttons'] } },
+  parameters: {
+    controls: {
+      exclude: ['default', 'buttons', 'icon-start', 'icon-end']
+    }
+  },
   render: () => {
     return html`
       <div style="width: 277px; height: 120px;">
-        ${generateTemplate({
-          args: overrideArgs(
-            {
-              type: 'slot',
-              name: 'icon-start',
-              value: '<sd-icon library="global-resources" name="system/minus"></sd-icon>'
-            },
-            {
-              type: 'slot',
-              name: 'icon-end',
-              value: '<sd-icon library="global-resources" name="system/minus"></sd-icon>'
-            }
-          ),
-          constants: [
-            { type: 'attribute', name: 'buttons', value: 'true' },
-            {
-              type: 'slot',
-              name: 'default',
-              value:
-                '<div class="slot slot--border slot--background slot--text items-start" style="height:max-content; padding: 1rem; justify-content:start;"><p>Scroll and give it a try!</p><br/><p>This is a long scrollable content.</p><p>It contains multiple paragraphs and lines.</p><p>The content is intentionally long to trigger scrolling. You can scroll horizontally and vertically.</p><p>The scrollable component will display shadows and buttons based on the props.</p><p>Customize the content and attributes as needed.</p></div>'
-            }
-          ]
-        })}
+        <sd-scrollable buttons>
+          <div
+            class="slot slot--border slot--text items-start"
+            style="height:max-content; width:max-content; padding: 1rem; justify-content:start;"
+          >
+            <p>Scroll and give it a try!</p>
+            <br />
+            <p>This is a long scrollable content.</p>
+            <p>It contains multiple paragraphs and lines.</p>
+            <p>The content is intentionally long to trigger scrolling. You can scroll horizontally and vertically.</p>
+            <p>The scrollable component will display shadows and buttons based on the props.</p>
+            <p>Customize the content and attributes as needed.</p>
+          </div>
+          <div slot="icon-start">
+            <sd-icon library="global-resources" name="system/picture"></sd-icon>
+          </div>
+          <div slot="icon-end">
+            <sd-icon library="global-resources" name="system/picture"></sd-icon>
+          </div>
+        </sd-scrollable>
       </div>
     `;
   }
@@ -120,25 +123,27 @@ export const CustomIcon = {
 
 export const Parts = {
   parameters: {
-    controls: { exclude: ['base', 'content', 'button-start', 'button-end', 'shadow-start', 'shadow-end'] }
+    controls: {
+      exclude: ['base', 'button-start', 'button-end', 'shadow-right', 'shadow-left', 'shadow-top', 'shadow-bottom']
+    }
   },
   render: (args: any) => {
+    const parts = ['base', 'button-start', 'button-end', 'shadow-right', 'shadow-left', 'shadow-top', 'shadow-bottom'];
+
     return generateTemplate({
       axis: {
         y: {
           type: 'template',
           name: 'sd-scrollable::part(...){outline: solid 2px red}',
-          values: ['base', 'content', 'button-start', 'button-end', 'shadow-start', 'shadow-end'].map(part => {
-            return {
-              title: part,
-              value: `<style>#part-${part} sd-scrollable::part(${part}){outline: solid 2px red;} #part-${part} .${part}{outline: solid 2px red;}</style><div id='part-${part}'>%TEMPLATE%</div>`
-            };
-          })
+          values: parts.map(part => ({
+            title: part,
+            value: `<style>#part-${part} sd-scrollable::part(${part}){outline: solid 2px red;} #part-${part} .${part}{outline: solid 2px red;}</style><div id='part-${part}'>%TEMPLATE%</div>`
+          }))
         }
       },
       constants: [
         { type: 'attribute', name: 'buttons', value: true },
-        { type: 'attribute', name: 'shadow', value: true }
+        { type: 'attribute', name: 'shadows', value: true }
       ],
       args
     });
@@ -157,7 +162,7 @@ export const Parts = {
 export const Mouseless = {
   render: (args: any) => {
     return html`<div class="mouseless">
-      ${generateTemplate({ args, constants: [{ type: 'attribute', name: 'buttons', value: true }] })}
+      ${renderTemplate(args, [{ type: 'attribute', name: 'buttons', value: true }])}
     </div>`;
   },
 

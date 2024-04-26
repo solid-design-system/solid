@@ -12,21 +12,24 @@ import SolidElement from '../../internal/solid-element';
  * @status stable
  * @since 1.0
  *
- * @event button-end - Emitted when the end button is clicked.
- * @event button-start - Emitted when the start button is clicked.
- * @event end - Emitted when the end of the scrollable is reached.
- * @event start - Emitted when the start of the scrollable is reached.
- *
  * @slot - The scrollable's content.
  * @slot icon-start - The scrollable's start icon.
  * @slot icon-end - The scrollable's end icon.
  *
+ * @event button-left - Emitted when the left button is clicked.
+ * @event button-right - Emitted when the right button is clicked.
+ * @event button-up - Emitted when the top button is clicked.
+ * @event button-down - Emitted when the bottom button is clicked.
+ * @event end - Emitted when the end of the scrollable is reached.
+ * @event start - Emitted when the start of the scrollable is reached.
+ *
  * @csspart base - The scrollable's base wrapper.
- * @csspart content - The scrollable's main content.
  * @csspart button-start - The scrollable's start scroll button.
  * @csspart button-end - The scrollable's end scroll button.
- * @csspart shadow-start - The scrollable's start shadow.
- * @csspart shadow-end - The scrollable's end shadow.
+ * @csspart shadow-left - The scrollable's left shadow.
+ * @csspart shadow-right - The scrollable's right shadow.
+ * @csspart shadow-top - The scrollable's top shadow.
+ * @csspart shadow-bottom - The scrollable's bottom shadow.
  *
  * @cssproperty --gradient-color - Defines a custom color for the gradient.
  */
@@ -34,19 +37,22 @@ import SolidElement from '../../internal/solid-element';
 @customElement('sd-scrollable')
 export default class SdScrollable extends SolidElement {
   /** Defines the scroll orientation */
-  @property({ type: String }) orientation: 'horizontal' | 'vertical' = 'horizontal';
+  @property({ type: String, reflect: true }) orientation: 'horizontal' | 'vertical' | 'auto' = 'horizontal';
 
   /** Activates scroll buttons */
   @property({ type: Boolean, reflect: true }) buttons = false;
 
   /** The amount in px to be scrolled when clicking the buttons. */
-  @property({ type: Number }) scrollStep: number = 150;
+  @property({ type: Number, reflect: true }) scrollStep = 150;
 
   /** Activates browser scrollbars */
   @property({ type: Boolean, reflect: true }) scrollbars = false;
 
   /** Activates a shadow as optional visual scroll indicator */
-  @property({ type: Boolean, reflect: true }) shadow = false;
+  @property({ type: Boolean, reflect: true }) shadows = false;
+
+  /** Adds inset padding */
+  @property({ type: Boolean, reflect: true }) inset = false;
 
   @state() private canScroll: Record<'left' | 'right' | 'up' | 'down', boolean> = {
     left: false,
@@ -55,11 +61,16 @@ export default class SdScrollable extends SolidElement {
     down: false
   };
 
+  @state() private isScrollHorizontalEnabled: boolean = false;
+  @state() private isScrollVerticalEnabled: boolean = false;
+
   private resizeObserver: ResizeObserver;
   private scrollContainer: HTMLElement | null = null;
 
   connectedCallback() {
     super.connectedCallback();
+    this.updateScrollEnabledFlags();
+
     this.resizeObserver = new ResizeObserver(() => {
       this.updateScrollIndicatorVisibility();
     });
@@ -81,9 +92,16 @@ export default class SdScrollable extends SolidElement {
 
   updated(changedProperties: Map<string, unknown>) {
     super.updated(changedProperties);
-    if (changedProperties.has('buttons') || changedProperties.has('shadow') || changedProperties.has('orientation')) {
+    if (changedProperties.has('orientation') || changedProperties.has('buttons') || changedProperties.has('shadows')) {
+      this.updateScrollEnabledFlags();
       this.updateScrollIndicatorVisibility();
     }
+  }
+
+  private updateScrollEnabledFlags() {
+    const dir = this.orientation;
+    this.isScrollHorizontalEnabled = dir === 'horizontal' || dir === 'auto';
+    this.isScrollVerticalEnabled = dir === 'vertical' || dir === 'auto';
   }
 
   private get container(): HTMLElement | null {
@@ -93,10 +111,12 @@ export default class SdScrollable extends SolidElement {
   updateScrollIndicatorVisibility() {
     const container = this.container;
     if (container) {
-      const canScrollLeft = container.scrollLeft > 0;
-      const canScrollRight = container.scrollLeft + container.clientWidth < container.scrollWidth - 1;
-      const canScrollUp = container.scrollTop > 0;
-      const canScrollDown = container.scrollTop + container.clientHeight < container.scrollHeight - 1;
+      const canScrollLeft = this.isScrollHorizontalEnabled && container.scrollLeft > 0;
+      const canScrollRight =
+        this.isScrollHorizontalEnabled && container.scrollLeft + container.clientWidth < container.scrollWidth - 1;
+      const canScrollUp = this.isScrollVerticalEnabled && container.scrollTop > 0;
+      const canScrollDown =
+        this.isScrollVerticalEnabled && container.scrollTop + container.clientHeight < container.scrollHeight - 1;
 
       this.canScroll = {
         left: canScrollLeft,
@@ -116,11 +136,10 @@ export default class SdScrollable extends SolidElement {
 
   handleScroll(direction: 'left' | 'right' | 'up' | 'down') {
     if (this.scrollContainer) {
-      const isHorizontal = this.orientation === 'horizontal';
       const scrollAmount = direction === 'left' || direction === 'up' ? -this.scrollStep : this.scrollStep;
       const scrollOptions: ScrollToOptions = {
         behavior: 'smooth',
-        [isHorizontal ? 'left' : 'top']: scrollAmount
+        [direction === 'left' || direction === 'right' ? 'left' : 'top']: scrollAmount
       };
       this.scrollContainer.scrollBy(scrollOptions);
       this.dispatchEvent(new CustomEvent(`button-${direction}`));
@@ -128,73 +147,81 @@ export default class SdScrollable extends SolidElement {
   }
 
   render() {
-    const isHorizontal = this.orientation === 'horizontal';
-    const showButtonStart = this.buttons && (isHorizontal ? this.canScroll.left : this.canScroll.up);
-    const showButtonEnd = this.buttons && (isHorizontal ? this.canScroll.right : this.canScroll.down);
-    const showShadowStart = this.shadow && (isHorizontal ? this.canScroll.left : this.canScroll.up);
-    const showShadowEnd = this.shadow && (isHorizontal ? this.canScroll.right : this.canScroll.down);
+    const scrollButtonClasses =
+      'relative p-0 border-0 bg-transparent cursor-pointer w-5 h-5 flex items-center justify-center sd-interactive rounded-md flex text-lg';
+    const scrollShadowClasses = 'scroll-shadow absolute z-10 pointer-events-none';
 
     return html`
       <div
         part="base"
         class=${cx(
-          'scroll-container',
-          isHorizontal ? 'horizontal-scroll' : 'vertical-scroll',
-          this.scrollbars ? 'show-scrollbars' : 'hide-scrollbars'
+          'scroll-container flex overflow-hidden w-full h-full',
+          this.orientation === 'horizontal' &&
+            'scroll-horizontal flex-row whitespace-nowrap items-center overflow-x-scroll overflow-y-hidden',
+          this.orientation === 'vertical' && 'scroll-vertical justify-items-center overflow-y-scroll overflow-x-hidden',
+          this.orientation === 'auto' && 'overflow-x-scroll overflow-y-scroll',
+          this.scrollbars ? 'show-scrollbars' : 'hide-scrollbars',
+          this.inset ? 'p-4' : ''
         )}
         @scroll=${this.updateScrollIndicatorVisibility}
       >
         <slot></slot>
       </div>
-      ${showButtonStart
+      ${this.buttons && this.isScrollHorizontalEnabled && this.canScroll.left
         ? html`
-            <div
-              part="button-start-container"
-              class=${cx('scroll-button-container', isHorizontal ? 'button-left' : 'button-up')}
-            >
-              <button
-                part="button-start"
-                class=${cx('scroll-button sd-interactive rounded-md flex text-lg')}
-                @click=${() => this.handleScroll(isHorizontal ? 'left' : 'up')}
-              >
+            <div class="button-left absolute z-10 flex items-center justify-center top-0 left-0 h-full w-8">
+              <button part="button-start" class=${cx(scrollButtonClasses)} @click=${() => this.handleScroll('left')}>
                 <slot name="icon-start">
-                  <sd-icon
-                    library="system"
-                    name="chevron-up"
-                    class=${cx(isHorizontal ? 'rotate-[-90deg]' : '')}
-                  ></sd-icon>
+                  <sd-icon library="system" name="chevron-up" class="rotate-[-90deg]"></sd-icon>
                 </slot>
               </button>
             </div>
           `
         : null}
-      ${showButtonEnd
+      ${this.buttons && this.isScrollVerticalEnabled && this.canScroll.up
         ? html`
-            <div
-              part="button-end-container"
-              class=${cx('scroll-button-container', isHorizontal ? 'button-right' : 'button-down')}
-            >
-              <button
-                part="button-end"
-                class=${cx('scroll-button sd-interactive rounded-md flex text-lg')}
-                @click=${() => this.handleScroll(isHorizontal ? 'right' : 'down')}
-              >
-                <slot name="icon-end">
-                  <sd-icon
-                    library="system"
-                    name="chevron-down"
-                    class=${cx(isHorizontal ? 'rotate-[-90deg]' : '')}
-                  ></sd-icon>
+            <div class="button-top absolute z-10 flex items-center justify-center top-0 left-0 w-full h-8">
+              <button part="button-start" class=${cx(scrollButtonClasses)} @click=${() => this.handleScroll('up')}>
+                <slot name="icon-start">
+                  <sd-icon library="system" name="chevron-up"></sd-icon>
                 </slot>
               </button>
             </div>
           `
         : null}
-      ${showShadowStart
-        ? html`<div part="shadow-start" class=${cx('scroll-shadow', isHorizontal ? 'left' : 'up')}></div>`
+      ${this.buttons && this.isScrollHorizontalEnabled && this.canScroll.right
+        ? html`
+            <div class="button-right absolute z-10 flex items-center justify-center top-0 right-0 h-full w-8">
+              <button part="button-end" class=${cx(scrollButtonClasses)} @click=${() => this.handleScroll('right')}>
+                <slot name="icon-end">
+                  <sd-icon library="system" name="chevron-down" class="rotate-[-90deg]"></sd-icon>
+                </slot>
+              </button>
+            </div>
+          `
         : null}
-      ${showShadowEnd
-        ? html`<div part="shadow-end" class=${cx('scroll-shadow', isHorizontal ? 'right' : 'down')}></div>`
+      ${this.buttons && this.isScrollVerticalEnabled && this.canScroll.down
+        ? html`
+            <div class="button-down absolute z-10 flex items-center justify-center bottom-0 left-0 w-full h-8">
+              <button part="button-end" class=${cx(scrollButtonClasses)} @click=${() => this.handleScroll('down')}>
+                <slot name="icon-end">
+                  <sd-icon library="system" name="chevron-down"></sd-icon>
+                </slot>
+              </button>
+            </div>
+          `
+        : null}
+      ${this.shadows && this.isScrollHorizontalEnabled && this.canScroll.left
+        ? html`<div part="shadow-left" class="${scrollShadowClasses} left top-0 left-0 w-[6px] h-full"></div>`
+        : null}
+      ${this.shadows && this.isScrollHorizontalEnabled && this.canScroll.right
+        ? html`<div part="shadow-right" class="${scrollShadowClasses} right top-0 right-0 w-[6px] h-full"></div>`
+        : null}
+      ${this.shadows && this.isScrollVerticalEnabled && this.canScroll.up
+        ? html`<div part="shadow-top" class="${scrollShadowClasses} top top-0 left-0 w-full h-[6px]"></div>`
+        : null}
+      ${this.shadows && this.isScrollVerticalEnabled && this.canScroll.down
+        ? html`<div part="shadow-bottom" class="${scrollShadowClasses} bottom bottom-0 left-0 w-full h-[6px]"></div>`
         : null}
     `;
   }
@@ -209,28 +236,6 @@ export default class SdScrollable extends SolidElement {
         --gradient: var(--gradient-color) 0%, #fff 80%, #fff 100%;
 
         @apply flex relative overflow-hidden;
-      }
-
-      .scroll-container {
-        @apply overflow-x-auto overflow-y-auto w-full h-full;
-      }
-
-      .horizontal-scroll {
-        @apply overflow-x-scroll overflow-y-hidden whitespace-nowrap flex items-center;
-      }
-
-      .vertical-scroll {
-        @apply overflow-y-scroll overflow-x-hidden flex justify-items-center;
-      }
-
-      [part='scroll-container'] .hide-scrollbars {
-        /* Hide scrollbar in Firefox */
-        scrollbar-width: none;
-      }
-
-      /* Hide scrollbar in Chrome/Safari */
-      [part='scroll-container'] .hide-scrollbars::-webkit-scrollbar {
-        @apply w-0 h-0 bg-transparent;
       }
 
       .hide-scrollbars {
@@ -249,79 +254,51 @@ export default class SdScrollable extends SolidElement {
       /* On hover: apply custom styles to the scrollbar thumb */
       .scroll-container:hover::-webkit-scrollbar-thumb {
         background: var(--background-neutral-400, #c3c3c3);
-        border-radius: 2px;
+        @apply rounded-sm;
       }
 
       /* Apply width and height to the scrollbar itself */
-      :host([orientation='vertical']) .scroll-container::-webkit-scrollbar {
-        @apply w-1;
-      }
-
-      :host([orientation='horizontal']) .scroll-container::-webkit-scrollbar {
-        @apply h-1;
-      }
-
-      /* Apply specific dimensions to the scrollbar thumb */
-      :host([orientation='vertical']) .scroll-container:hover::-webkit-scrollbar-thumb {
-        @apply h-6;
-      }
-
-      :host([orientation='horizontal']) .scroll-container:hover::-webkit-scrollbar-thumb {
-        @apply w-6;
-      }
-      .scroll-button-container {
-        @apply absolute z-10 flex items-center justify-center;
+      .scroll-container::-webkit-scrollbar {
+        @apply w-1 h-1;
       }
 
       .button-left {
-        @apply top-0 left-0 h-full w-12;
         background: linear-gradient(270deg, var(--gradient));
       }
 
       .button-right {
-        @apply top-0 right-0 h-full w-12;
         background: linear-gradient(90deg, var(--gradient));
       }
 
-      .button-up {
-        @apply top-0 left-0 w-full h-12;
+      .button-top {
         background: linear-gradient(0deg, var(--gradient));
       }
 
       .button-down {
-        @apply bottom-0 left-0 w-full h-12;
         background: linear-gradient(180deg, var(--gradient));
       }
 
-      .scroll-button {
-        @apply relative p-0 border-0 bg-transparent cursor-pointer w-10 h-10 flex items-center justify-center;
-      }
-
-      .scroll-shadow {
-        @apply absolute z-10 pointer-events-none;
-      }
-
       .scroll-shadow.left {
-        @apply top-0 left-0 w-[6px] h-full;
         background: linear-gradient(270deg, rgba(24, 24, 24, 0) 50%, rgba(24, 24, 24, 0.4) 100%);
       }
 
       .scroll-shadow.right {
-        @apply top-0 right-0 w-[6px] h-full;
         background: linear-gradient(90deg, rgba(24, 24, 24, 0) 50%, rgba(24, 24, 24, 0.4) 100%);
       }
 
-      .scroll-shadow.up {
-        @apply top-0 left-0 w-full h-[6px];
+      .scroll-shadow.top {
         background: linear-gradient(0deg, rgba(24, 24, 24, 0) 50%, rgba(24, 24, 24, 0.4) 100%);
       }
 
-      .scroll-shadow.down {
-        @apply bottom-0 left-0 w-full h-[6px];
+      .scroll-shadow.bottom {
         background: linear-gradient(180deg, rgba(24, 24, 24, 0) 50%, rgba(24, 24, 24, 0.4) 100%);
       }
 
-      .sd-icon--up {
+      .scroll-shadow.bottom {
+        background: linear-gradient(180deg, rgba(24, 24, 24, 0) 50%, rgba(24, 24, 24, 0.4) 100%);
+      }
+
+      .sd-icon--top {
         @apply self-start;
       }
 

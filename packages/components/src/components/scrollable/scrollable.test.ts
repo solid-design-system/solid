@@ -14,7 +14,7 @@ describe('<sd-scrollable>', () => {
     expect(el.buttons).to.be.false;
     expect(el.scrollStep).to.equal(150);
     expect(el.scrollbars).to.be.false;
-    expect(el.shadow).to.be.false;
+    expect(el.shadows).to.be.false;
   });
 
   it('should show scroll button when buttons attribute is set', async () => {
@@ -35,9 +35,9 @@ describe('<sd-scrollable>', () => {
     expect(buttonEnd).to.exist;
   });
 
-  it('should show scroll shadows when shadow attribute is set', async () => {
+  it('should show scroll shadow when shadow attribute is set', async () => {
     const el = await fixture<SdScrollable>(html`
-      <sd-scrollable style="height: 183px; width: 277px;" shadow>
+      <sd-scrollable style="height: 183px; width: 277px;" shadows>
         <div style="width: 200px; height: 80px;">
           <p>This is a long scrollable content.</p>
           <p>It contains multiple paragraphs and lines.</p>
@@ -48,15 +48,15 @@ describe('<sd-scrollable>', () => {
       </sd-scrollable>
     `);
 
-    const shadowEnd = el.shadowRoot!.querySelector<HTMLElement>('[part~="shadow-end"]')!;
+    const shadowRight = el.shadowRoot!.querySelector<HTMLElement>('[part~="shadow-right"]')!;
 
-    expect(shadowEnd).to.exist;
+    expect(shadowRight).to.exist;
   });
 
-  it('should emit button-end event when end button is clicked', async () => {
+  it('should emit button-right event when right button is clicked', async () => {
     const el = await fixture<SdScrollable>(html`
       <sd-scrollable style="height: 183px; width: 277px;" buttons>
-        <div style="width: 200px; height: 80px;">
+        <div style="width: 400px; height: 300px;">
           <p>This is a long scrollable content.</p>
           <p>It contains multiple paragraphs and lines.</p>
           <p>The content is intentionally long to trigger scrolling. You can scroll horizontally and vertically.</p>
@@ -66,19 +66,19 @@ describe('<sd-scrollable>', () => {
       </sd-scrollable>
     `);
 
-    const buttonEnd = el.shadowRoot!.querySelector<HTMLElement>('[part~="button-end"]')!;
-    const buttonEndHandler = sinon.spy();
+    const buttonRight = el.shadowRoot!.querySelector<HTMLElement>('[part~="button-end"]')!;
+    const buttonRightHandler = sinon.spy();
 
-    el.addEventListener('button-end', buttonEndHandler);
-    buttonEnd.click();
+    el.addEventListener('button-right', buttonRightHandler);
+    buttonRight.click();
 
-    // expect(buttonEndHandler).to.have.been.calledOnce;
+    expect(buttonRightHandler).to.have.been.calledOnce;
   });
 
-  it('should emit start event when scrolled to the start', async () => {
+  it('should emit button-down event when bottom button is clicked', async () => {
     const el = await fixture<SdScrollable>(html`
-      <sd-scrollable style="height: 183px; width: 277px;">
-        <div style="width: 200px; height: 80px;">
+      <sd-scrollable style="height: 183px; width: 277px;" buttons orientation="vertical">
+        <div style="width: 400px; height: 300px;">
           <p>This is a long scrollable content.</p>
           <p>It contains multiple paragraphs and lines.</p>
           <p>The content is intentionally long to trigger scrolling. You can scroll horizontally and vertically.</p>
@@ -88,20 +88,19 @@ describe('<sd-scrollable>', () => {
       </sd-scrollable>
     `);
 
-    const scrollContainer = el.shadowRoot!.querySelector<HTMLElement>('.scroll-container')!;
-    const startHandler = sinon.spy();
+    const buttonDown = el.shadowRoot!.querySelector<HTMLElement>('[part~="button-end"]')!;
+    const buttonDownHandler = sinon.spy();
 
-    el.addEventListener('start', startHandler);
-    scrollContainer.scrollLeft = 0;
-    scrollContainer.dispatchEvent(new Event('scroll'));
+    el.addEventListener('button-down', buttonDownHandler);
+    buttonDown.click();
 
-    // expect(startHandler).to.have.been.calledOnce;
+    expect(buttonDownHandler).to.have.been.calledOnce;
   });
 
   it('should emit end event when scrolled to the end', async () => {
     const el = await fixture<SdScrollable>(html`
       <sd-scrollable style="height: 183px; width: 277px;">
-        <div style="width: 200px; height: 80px;">
+        <div style="width: 400px; height: 300px;">
           <p>This is a long scrollable content.</p>
           <p>It contains multiple paragraphs and lines.</p>
           <p>The content is intentionally long to trigger scrolling. You can scroll horizontally and vertically.</p>
@@ -115,9 +114,26 @@ describe('<sd-scrollable>', () => {
     const endHandler = sinon.spy();
 
     el.addEventListener('end', endHandler);
-    scrollContainer.scrollLeft = scrollContainer.scrollWidth;
-    scrollContainer.dispatchEvent(new Event('scroll'));
+    scrollContainer.dispatchEvent(new CustomEvent('scroll', { detail: { scrollLeft: scrollContainer.scrollWidth } }));
 
-    // expect(endHandler).to.have.been.calledOnce;
+    expect(endHandler).to.have.been.calledOnce;
+  });
+
+  it('should apply inset padding when inset attribute is set', async () => {
+    const el = await fixture<SdScrollable>(html`
+      <sd-scrollable style="height: 183px; width: 277px;" inset>
+        <div style="width: 400px; height: 300px;">
+          <p>This is a long scrollable content.</p>
+          <p>It contains multiple paragraphs and lines.</p>
+          <p>The content is intentionally long to trigger scrolling. You can scroll horizontally and vertically.</p>
+          <p>The scrollable component will display shadows and buttons based on the props.</p>
+          <p>Customize the content and attributes as needed.</p>
+        </div>
+      </sd-scrollable>
+    `);
+
+    const scrollContainer = el.shadowRoot!.querySelector<HTMLElement>('.scroll-container')!;
+
+    expect(scrollContainer.classList.contains('p-4')).to.be.true;
   });
 });
