@@ -1,0 +1,70 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Docs/General/FAQ" />
+
+## General Questions
+
+### What is the Solid Design System?
+The Solid Design System by Union Investment establishes a robust framework for their digital presence, offering a comprehensive array of design elements and guidelines. Including navigation items, buttons, and more, it serves as an invaluable tool for designers and developers working on Union Investment’s digital offerings. Providing atomic-level components, it forms the foundational elements for ensuring uniform and seamless user interfaces across their digital products. Unlike full designs, these components enable the creation of customized interfaces while upholding visual consistency and usability standards.
+
+### What do I get from the Solid Design System
+In accordance with the principles of the Atomic Design Methodology, we furnish atoms and molecules for constructing organisms, templates, and ultimately, pages. Each element in our Solid Design System adheres to WCAG 2.2 criteria, prioritizing accessibility, and we strive to maintain their lightweight nature.
+
+### How should I be using the Solid Design System and why?
+Considering the query above, our components, styles, samples, and patterns are designed to be applicable across various web contexts, ensuring the creation of fully accessible, design standards-compliant, and lightweight websites or applications.
+
+### What are the 3 core principles of the Solid Design System?
+Solid Components, as part of the Solid Design System, serving as a robust foundation for a digital presence, built upon three core principles:
+1. 🌟 Usable & consistent
+2. 🧩 Reusable & flexible
+3. 🛠️ Maintainable & reliable
+Visit our [introduction page](https://solid-design-system.fe.union-investment.de/x.x.x/storybook/index.html?path=/docs/docs-general-introduction--docs#principles) for more details.
+
+### How do components, styles, samples, and patterns differ in our library?
+In our library, we offer four distinct types of elements:
+1. Components: These are lightweight [web components](https://developer.mozilla.org/en-US/docs/Web/API/Web_Components) constructed with lit-element.
+2. Styles: These are even lighter CSS classes that can be applied to any HTML element.
+3. Samples: These are practical demonstrations showcasing the usage of our components and styles within specific contexts.
+4. Patterns: These are predefined use-cases designed to address specific design requirements without the need for a dedicated component.
+Visit our [introduction page](https://solid-design-system.fe.union-investment.de/x.x.x/storybook/index.html?path=/docs/docs-general-introduction--docs#structure) for more details.
+
+### Which browsers are supported?
+TBA
+
+### How can I submit a feature request or report a bug?
+To do so, navigate to the issue section on GitHub and utilize our provided issue templates. Whether you're suggesting a new feature or reporting a bug, these templates offer placeholders and designated content sections where you can input the necessary information. Please ensure to include as many detailed specifics as possible when submitting your request or bug report.
+
+### Is there an endpoint to the development of the Solid Design System?
+No, the Solid Design System is an ongoing endeavor, much like the ever-evolving nature of the web itself. We are committed to continually refining and expanding its features, ensuring it remains aligned with the latest standards and technologies.
+
+### Is there a roadmap for upcoming features?
+Sure. You can explore our project board for a detailed overview of our [roadmap](https://github.com/orgs/solid-design-system/projects/1/views/48).
+
+### What we do and what we don't do?
+- ✅ Provide guidance and support with components, styles, samples and patterns
+- ✅ Create, update and maintain our components, styles, samples and patterns
+- ✅ Write documentation about the system’s elements’ behaviours and interactions
+- tba
+
+- ❌ Screen designs
+- ❌ Prototype flows
+- ❌ Specify your product's rules
+- ❌ Maintain business area libraries
+- tba
+
+### Does the use of the Solid Design System guarantee my website's accessibility?
+No, while our components, styles, samples, and patterns are crafted to fulfill WCAG 2.2 specifications independently, they do not ensure complete web accessibility on their own. Our offerings constitute only a portion of your website or application. Your usage, content, and overall structure play significant roles in achieving full accessibility. We aim to provide flexibility while encouraging you to consider these aspects to deliver a fully accessible experience.
+
+### Who is working on the Solid Design System?
+The Solid Design System team, consisting of Product Owner, Brand Designer, UX Designers, Developers and Architects ....
+
+### How do I reach out to the Solid Design System team?
+For any inquiries specific to the library, feel free to open an [issue](https://github.com/solid-design-system/solid/issues) or initiate a [discussion](https://github.com/solid-design-system/solid/discussions) on GitHub. If you need to directly contact the core team, you can also reach us at sds@union-investment.de.
+
+## Technical questions:
+
+### Why do we rely on basic HTML standards?
+We rely on basic HTML standards because they provide a solid foundation for web development, ensuring compatibility across different browsers and devices. HTML standards define the structure and semantics of web content, which is crucial for accessibility and search engine optimization. By adhering to these standards, we promote consistency, reliability, and interoperability in web development, ultimately enhancing user experience and facilitating collaboration within the web community.
+
+### Can I contribute to the Solid Design System and how?
+Absolutely! We welcome contributions from the community as the Solid Design System is an open-source project. To get started, please review our [Contributing Guide](https://solid-design-system.fe.union-investment.de/x.x.x/storybook/index.html?path=/docs/docs-general-contributing--docs#contributing-to-solid-components) carefully. Additionally, make sure to familiarize yourself with our [Code of Conduct](https://github.com/solid-design-system/solid?tab=coc-ov-file) and our [Developer Starting Guide](https://github.com/solid-design-system/solid/blob/main/DEVELOPER_STARTING_GUIDE.md). These resources will provide you with the necessary information and guidelines for contributing effectively to our project.
