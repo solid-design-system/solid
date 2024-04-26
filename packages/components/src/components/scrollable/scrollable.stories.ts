@@ -29,6 +29,16 @@ export default {
     value: defaultSlotContent
   }),
   argTypes,
+  constants: [
+    {
+      type: 'template',
+      name: 'size',
+      value: `
+    <div style="width: 277px; height: 120px;">%TEMPLATE%
+    </div>
+  `
+    }
+  ],
   parameters: { ...parameters },
   decorators: [
     withActions,
@@ -41,49 +51,39 @@ export default {
   ] as unknown
 };
 
-const renderTemplate = (args: any, constants: any[] = []) => {
-  return generateTemplate({
-    args,
-    constants
-  });
-};
-
 export const Default = {
   render: (args: any) => {
-    return html` <div>${renderTemplate(args)}</div> `;
+    return generateTemplate({ args });
   }
 };
 
 export const ButtonWithGradient = {
   parameters: { controls: { exclude: ['buttons'] } },
   render: (args: any) => {
-    return html`
-      <div style="width: 277px; height: 120px;">
-        ${renderTemplate(args, [{ type: 'attribute', name: 'buttons', value: true }])}
-      </div>
-    `;
+    return generateTemplate({
+      args,
+      constants: [{ type: 'attribute', name: 'buttons', value: true }]
+    });
   }
 };
 
 export const Shadow = {
   parameters: { controls: { exclude: ['shadows'] } },
   render: (args: any) => {
-    return html`
-      <div style="width: 277px; height: 120px;">
-        ${renderTemplate(args, [{ type: 'attribute', name: 'shadows', value: 'true' }])}
-      </div>
-    `;
+    return generateTemplate({
+      args,
+      constants: [{ type: 'attribute', name: 'shadows', value: 'true' }]
+    });
   }
 };
 
 export const Scrollbar = {
   parameters: { controls: { exclude: ['scrollbars'] } },
   render: (args: any) => {
-    return html`
-      <div style="width: 277px; height: 120px;">
-        ${renderTemplate(args, [{ type: 'attribute', name: 'scrollbars', value: 'true' }])}
-      </div>
-    `;
+    return generateTemplate({
+      args,
+      constants: [{ type: 'attribute', name: 'scrollbars', value: 'true' }]
+    });
   }
 };
 
@@ -161,13 +161,17 @@ export const Parts = {
 
 export const Mouseless = {
   render: (args: any) => {
-    return html`<div class="mouseless">
-      ${renderTemplate(args, [{ type: 'attribute', name: 'buttons', value: true }])}
-    </div>`;
+    return generateTemplate({
+      args,
+      constants: [
+        { type: 'attribute', name: 'class', value: 'mouseless' },
+        { type: 'attribute', name: 'buttons', value: true }
+      ]
+    });
   },
 
   play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
-    const el = canvasElement.querySelector('.mouseless sd-scrollable');
+    const el = canvasElement.querySelector('.mouseless');
     await waitUntil(() => el?.shadowRoot?.querySelector('button'));
 
     el?.shadowRoot?.querySelector<HTMLElement>('button')!.focus();
