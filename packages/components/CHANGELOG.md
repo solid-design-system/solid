@@ -1,3 +1,25 @@
+# [@solid-design-system/components-v3.0.0](https://github.com/solid-design-system/solid/compare/components/2.12.0...components/3.0.0) (2024-04-26)
+
+
+### Features
+
+* ✨ sd-footnotes ([#958](https://github.com/solid-design-system/solid/issues/958)) ([f53f185](https://github.com/solid-design-system/solid/commit/f53f1853654d536fe8ed88e4c2d8054837d63f8a))
+
+
+### BREAKING CHANGES
+
+* The `sd-footnote` component has been deprecated and
+removed from the library.
+
+This PR shows adds `sd-footnotes`. As as a replacement for
+`sd-footnote`, it provides the possibility to use footnotes in
+combination with lists, which actually would be better in terms of DX
+and A11y.
+
+### 📈 Stats
+* Bundle size (uncompressed): 288 KB (unchanged)
+* Bundle size (gzipped): 69 KB (unchanged)
+
 # [@solid-design-system/components-v2.12.0](https://github.com/solid-design-system/solid/compare/components/2.11.9...components/2.12.0) (2024-04-23)
 
 
