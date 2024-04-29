@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v3.0.1](https://github.com/solid-design-system/solid/compare/components/3.0.0...components/3.0.1) (2024-04-29)
+
+
+### Bug Fixes
+
+* exclude event names from versioning ([#995](https://github.com/solid-design-system/solid/issues/995)) ([f72aff2](https://github.com/solid-design-system/solid/commit/f72aff2029cf9e2f67deb30796ed08017f018c27))
+
+### 📈 Stats
+* Bundle size (uncompressed): 288 KB (unchanged)
+* Bundle size (gzipped): 69 KB (unchanged)
+
 # [@solid-design-system/components-v3.0.0](https://github.com/solid-design-system/solid/compare/components/2.12.0...components/3.0.0) (2024-04-26)
 
 
