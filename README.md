@@ -46,7 +46,7 @@ $ cd packages/components
   && pnpm dev        // start dev server
   && pnpm test       // run tests
   && pnpm test.watch // run tests in watch mode
-  && pnpm test.component [component-name] // run tests for a specific component
+  && pnpm test.single [test-file-name] // run a specific test file
 ```
 
 ## Contributing

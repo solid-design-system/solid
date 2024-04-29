@@ -12,5 +12,6 @@ Object.keys(modules).forEach(module => {
 
 export * from './utilities/icon-library';
 export * from './utilities/localize';
+export * from './utilities/autocomplete-config';
 // export * from './utilities/animation';
 // export * from './utilities/base-path';

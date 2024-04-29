@@ -20,7 +20,7 @@ export default (({ command }: { command: string }) => {
       VitePluginFetchIconsFromCdn(),
       // eslint-disable-next-line @typescript-eslint/no-unsafe-call
       VitePluginLitTailwind({
-        include: [/src\/components\/.*\.ts$/],
+        include: [/src\/components\/.*\.ts$/, /src\/utilities\/autocomplete-config.ts/],
         exclude: [/node_modules/]
       }),
       VitePluginGetPlaywrightVersion(),
