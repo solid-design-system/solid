@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v3.1.0](https://github.com/solid-design-system/solid/compare/components/3.0.1...components/3.1.0) (2024-04-29)
+
+
+### Features
+
+* ✨ add autocomplete pattern + helper ([#962](https://github.com/solid-design-system/solid/issues/962)) ([8b4bdeb](https://github.com/solid-design-system/solid/commit/8b4bdeb72b86cf5e9ce12f2c463907cb5402db5e)), closes [#269](https://github.com/solid-design-system/solid/issues/269)
+
+### 📈 Stats
+* Bundle size (uncompressed): 292 KB (+4 KB / +1%)
+* Bundle size (gzipped): 70 KB (+1 KB / +1%)
+
 # [@solid-design-system/components-v3.0.1](https://github.com/solid-design-system/solid/compare/components/3.0.0...components/3.0.1) (2024-04-29)
 
 
