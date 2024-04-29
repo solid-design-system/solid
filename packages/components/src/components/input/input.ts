@@ -76,7 +76,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     'message',
     'placeholder'
   );
-  private readonly localize = new LocalizeController(this);
+  public localize = new LocalizeController(this);
 
   @query('#input') input: HTMLInputElement;
   @query('#invalid-message') invalidMessage: HTMLDivElement;
