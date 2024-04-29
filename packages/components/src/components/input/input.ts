@@ -619,7 +619,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               : ''}
             ${this.type === 'search'
               ? html`
-                  <button class="flex items-center" type="button">
+                  <button class="flex items-center" type="button" tabindex="-1">
                     <sd-icon
                       class=${cx(iconColor, iconMarginLeft, iconSize)}
                       library="system"

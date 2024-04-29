@@ -420,7 +420,7 @@ export const GroupElements = {
                   const headline = document.createElement('h3');
                   headline.innerHTML = data.headline;
                   // Warning: The following classes need to be available in ShadowDOM
-                  headline.classList.add('px-4', 'py-2', 'font-bold', 'text-neutral-900', 'text-lg');
+                  headline.classList.add('px-4', 'py-2', 'font-bold', 'text-neutral-900', 'text-base');
                   item.parentNode.insertBefore(headline, item);
                 }
                 item.innerHTML = data.match;
