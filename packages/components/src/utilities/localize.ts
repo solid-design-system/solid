@@ -37,7 +37,7 @@ export class LocalizeController extends DefaultLocalizationController<Translatio
   }
 
   private parseInstanceTranslations() {
-    const customLocalizationAttr = this.host.getAttribute('custom-localization');
+    const customLocalizationAttr = this.host.dataset.localization;
     if (customLocalizationAttr) {
       try {
         this.instanceTranslations = JSON.parse(customLocalizationAttr) as Partial<Translation>;
