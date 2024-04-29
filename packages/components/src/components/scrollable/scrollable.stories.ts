@@ -29,16 +29,6 @@ export default {
     value: defaultSlotContent
   }),
   argTypes,
-  constants: [
-    {
-      type: 'template',
-      name: 'size',
-      value: `
-    <div style="width: 277px; height: 120px;">%TEMPLATE%
-    </div>
-  `
-    }
-  ],
   parameters: { ...parameters },
   decorators: [
     withActions,
@@ -46,6 +36,7 @@ export default {
       html`<style>
           sd-scrollable {
             width: 277px;
+            height: 188px;
           }</style
         >${story()}`
   ] as unknown
