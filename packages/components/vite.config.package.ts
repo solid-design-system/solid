@@ -40,7 +40,7 @@ export default (() => {
         },
         plugins: [
           VitePluginLitTailwind({
-            include: [/src\/components\/.*\.ts$/]
+            include: [/src\/components\/.*\.ts$/, /src\/utilities\/autocomplete-config.ts/]
           }),
           // Resolve bare module specifiers to relative paths
           resolve({
