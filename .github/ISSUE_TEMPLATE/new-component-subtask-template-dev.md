@@ -19,8 +19,8 @@ This tasks describes the Figma implementation for: EPIC_TASK
 - [ ] Item dependencies have been identified and documented
 
 ## DoD
-- [ ] Brand approval (if neccessary)
-- [ ] Figma documentation file incl. hand-off has been created/updated (if applicable)
-- [ ] Tokens have been applied/updated (if applicable)
-- [ ] Crosslinks are created/updated
-- [ ] Implementation works successfully on `figma` branch
+- [ ] Documentation has been created/updated (if applicable)
+- [ ] Migration Guide has been created/updated (if applicable)
+- [ ] Relevant E2E tests (Features, A11y, Bug fixes) are created/updated
+- [ ] Relevant stories (Features, A11y) are created/updated
+- [ ] Implementation works successfully on `feature` branch
