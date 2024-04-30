@@ -1,7 +1,7 @@
 ---
 name: Development Subtask
 about: Development Subtask Template
-title: 'feat: ✨ [SUBTASK_DESCRIPTION]'
+title: 'feat[dev]: ✨ [SUBTASK_DESCRIPTION]'
 labels: '🔧 code, Subtask'
 assignees: ''
 
