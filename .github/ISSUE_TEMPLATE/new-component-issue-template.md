@@ -46,8 +46,8 @@ As a [PERSONA] of the Solid Design System, I would like to [REQUIRE], as well as
 - [ ] Question2
 
 ## Subtasks
-- [ ] Design_implemntation_task
-- [ ] Development_implemntation_task
+- [ ] Design_implementation_task
+- [ ] Development_implementation_task
 - [ ] Design_release_task
 
 ## DoR
