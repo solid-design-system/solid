@@ -1,8 +1,8 @@
 ---
-name: Feature Issue Design Subtask
-about: Feature Issue Design Subtask Template
-title: 'feat: ✨ [FEATURE_NAME]'
-labels: '🎨 figma Subtask'
+name: Design Subtask
+about: Design Subtask Template
+title: 'feat: ✨ [SUBTASK_DESCRIPTION]'
+labels: '🎨 figma, Subtask'
 assignees: ''
 
 ---

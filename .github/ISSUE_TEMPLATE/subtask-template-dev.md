@@ -1,8 +1,8 @@
 ---
-name: New Component Issue Development Subtask
-about: New Component Issue Development Subtask Template
-title: 'feat: ✨ add sd-[COMPONENT_NAME]'
-labels: '🔧 code Subtask'
+name: Development Subtask
+about: Development Subtask Template
+title: 'feat: ✨ [SUBTASK_DESCRIPTION]'
+labels: '🔧 code, Subtask'
 assignees: ''
 
 ---
