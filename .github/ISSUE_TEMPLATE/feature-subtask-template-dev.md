@@ -1,7 +1,7 @@
 ---
 name: Feature Issue Development Subtask
 about: Feature Issue Development Subtask Template
-title: 'feat: ✨ add [FEATURE]'
+title: 'feat: ✨ [FEATURE_NAME]'
 labels: '🔧 code Subtask'
 assignees: ''
 
