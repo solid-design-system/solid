@@ -1,9 +1,9 @@
 ---
-name: New Style Component Issue Development
-about: New Style Component Issue Template for Development
+name: New Style Component Issue
+about: New Style Component Issue Template
 title: 'feat: ✨ add sd-[COMPONENT_NAME] - CSS style'
-labels: '🔧 code, style-components'
-assignees: ''
+labels: '🙌 Epic, style-components'
+assignees: 'yoezlem'
 
 ---
 
@@ -35,14 +35,16 @@ As a [PERSONA] of the Solid Design System, I would like to [REQUIRE], as well as
 - [ ] Question1
 - [ ] Question2
 
+## Subtasks
+- [ ] Design_implementation_task
+- [ ] Development_implementation_task
+- [ ] Design_release_task
+
 ## DoR
 - [ ] Item has business value
-- [ ] Item has been estimated by the team
+- [ ] Item all subtasks have been estimated by the team
 - [ ] Item is clear and well-defined
 - [ ] Item dependencies have been identified
 
 ## DoD
-- [ ] Documentation has been created/updated (if applicable)
-- [ ] Migration Guide has been created/updated (if applicable)
-- [ ] Relevant stories (Features, A11y) are created/updated
-- [ ] Implementation works successfully on `feature` branch
+- [ ] All subtasks have been closed
