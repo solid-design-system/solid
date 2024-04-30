@@ -2,7 +2,7 @@
 name: New Component Issue Development
 about: New Component Issue Template for Development
 title: 'feat: ✨ add sd-[COMPONENT_NAME]'
-labels: '🔧 code'
+labels: '🙌 Epic'
 assignees: ''
 
 ---
@@ -44,6 +44,11 @@ As a [PERSONA] of the Solid Design System, I would like to [REQUIRE], as well as
 ### Open Questions towards design
 - [ ] Question1
 - [ ] Question2
+
+## Subtasks
+- [ ] Design_implemntation_task
+- [ ] Development_implemntation_task
+- [ ] Design_release_task
 
 ## DoR
 - [ ] Item has business value
