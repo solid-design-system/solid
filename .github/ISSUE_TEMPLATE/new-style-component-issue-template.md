@@ -1,8 +1,8 @@
 ---
-name: New Style Component Issue Development
-about: New Style Component Issue Template for Development
+name: New Style Component Issue
+about: New Style Component Issue Template
 title: 'feat: ✨ add sd-[COMPONENT_NAME] - CSS style'
-labels: '🔧 code, style-components'
+labels: '🙌 Epic, style-components'
 assignees: ''
 
 ---
@@ -34,6 +34,11 @@ As a [PERSONA] of the Solid Design System, I would like to [REQUIRE], as well as
 ### Open Questions towards design
 - [ ] Question1
 - [ ] Question2
+
+## Subtasks
+- [ ] Design_implemntation_task
+- [ ] Development_implemntation_task
+- [ ] Design_release_task
 
 ## DoR
 - [ ] Item has business value
