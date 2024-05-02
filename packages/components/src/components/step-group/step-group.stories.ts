@@ -1,6 +1,7 @@
 import '../../solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
+import { waitUntil } from '@open-wc/testing-helpers';
 import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-step-group');
@@ -84,5 +85,55 @@ export const SetActiveStep = {
         });
       </script>
     `;
+  }
+};
+
+/**
+ * Use the 'base' and 'body' parts to style the step-group.
+ */
+export const Parts = {
+  parameters: {
+    controls: {
+      exclude: ['base', 'body']
+    }
+  },
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        x: { type: 'attribute', name: 'orientation' },
+        y: {
+          type: 'template',
+          name: 'sd-step-group::part(...){outline: solid 2px red}',
+          values: ['base', 'body'].map(part => {
+            return {
+              title: part,
+              value: `<style>#part-${part} sd-step-group::part(${part}){outline: solid 2px red; outline-offset: -2px;}</style><div id="part-${part}">%TEMPLATE%</div>`
+            };
+          })
+        }
+      },
+      args
+    });
+  }
+};
+
+/**
+ * sd-steps are fully accessibile via keyboard.
+ */
+
+export const Mouseless = {
+  render: (args: any) => {
+    return html`<div class="mouseless">
+      ${generateTemplate({
+        args
+      })}
+    </div>`;
+  },
+
+  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
+    const el = canvasElement.querySelector('.mouseless sd-step-group');
+    await waitUntil(() => el?.querySelector('sd-step')?.shadowRoot?.querySelector('button'));
+
+    el?.querySelector('sd-step')?.shadowRoot?.querySelector('button')!.focus();
   }
 };

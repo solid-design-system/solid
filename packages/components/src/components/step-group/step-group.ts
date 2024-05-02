@@ -32,7 +32,7 @@ export default class SdStepGroup extends SolidElement {
   @property({ reflect: true }) orientation: 'horizontal' | 'vertical' = 'horizontal';
 
   /** The active step in the step-group. */
-  @property({ type: Number }) activeStep = 0;
+  @property({ type: Number, reflect: true }) activeStep = 0;
 
   connectedCallback() {
     super.connectedCallback();

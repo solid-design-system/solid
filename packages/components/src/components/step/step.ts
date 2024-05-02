@@ -49,7 +49,7 @@ export default class SdStep extends SolidElement {
   @property() description = '';
 
   /** The step's number in a step-group */
-  @property({ type: Number }) number = 1;
+  @property({ type: Number, reflect: true }) number = 1;
 
   /** When set, the underlying button will be rendered as an `<a>` with this `href` instead of a `<button>`. */
   @property() href = '';
@@ -73,7 +73,7 @@ export default class SdStep extends SolidElement {
         part="base"
         class=${cx(
           'flex overflow-hidden pt-1',
-          this.orientation === 'horizontal' ? ' flex-col w-full' : ' flex-row gap-8 items-stretch h-full w-min',
+          this.orientation === 'horizontal' ? 'flex-col w-full' : 'flex-row gap-8 items-stretch h-full w-min',
           this.state === 'waiting' ? '!text-neutral-500 ' : ''
         )}
       >
@@ -98,6 +98,7 @@ export default class SdStep extends SolidElement {
             ?disabled=${this.state !== 'finished'}
             tabindex=${this.state === 'finished' ? '0' : '-1'}
             href=${ifDefined(isLink ? this.href : undefined)}
+            aria-label=${this.state === 'finished' && 'Step completed'}
             class=${cx(
               'border rounded-full aspect-square circle flex items-center justify-center shrink-0 font-bold select-none',
               this.state === 'finished' ? 'focus-visible:focus-outline' : 'focus-visible:outline-none',
@@ -128,7 +129,7 @@ export default class SdStep extends SolidElement {
         </div>
 
         <div part="text-container" class="w-24 text-center mt-4 break-words">
-          <div part="label " class="!font-bold sd-paragraph">
+          <div part="label" class="!font-bold sd-paragraph">
             ${this.label === '' ? html`<slot name="label"></slot>` : this.label}
           </div>
           <div part="description" class="sd-paragraph sd-paragraph--size-sm">
