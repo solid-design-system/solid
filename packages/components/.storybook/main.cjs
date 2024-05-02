@@ -24,6 +24,10 @@ module.exports = {
     {
       from: '../node_modules/countup.js/dist',
       to: '/countup'
+    },
+    {
+      from: '../node_modules/@tarekraafat/autocomplete.js/dist',
+      to: '/autocomplete'
     }
   ],
   framework: {

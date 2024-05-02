@@ -118,7 +118,7 @@ export const Animation = {
     </div>
 
     <script type="module">
-      import { CountUp } from '/countup/countUp.min.js';
+      import { CountUp } from './countup/countUp.min.js';
       const countup = new CountUp('countup', 500, {
         enableScrollSpy: true,
         duration: 3
@@ -151,7 +151,7 @@ export const AnimationPrefix = {
     </div>
 
     <script type="module">
-      import { CountUp } from '/countup/countUp.min.js';
+      import { CountUp } from './countup/countUp.min.js';
 
       const countup = new CountUp('with-prefix', 1989, {
         enableScrollSpy: true,
@@ -187,7 +187,7 @@ export const AnimationSuffix = {
     </div>
 
     <script type="module">
-      import { CountUp } from '/countup/countUp.min.js';
+      import { CountUp } from './countup/countUp.min.js';
 
       const suffixDemo = new CountUp('with-suffix', 500, {
         enableScrollSpy: true,
@@ -222,7 +222,7 @@ export const AnimationInternationalization = {
     </div>
 
     <script type="module">
-      import { CountUp } from '/countup/countUp.min.js';
+      import { CountUp } from './countup/countUp.min.js';
 
       const i18nDemo = new CountUp('i18n', 5000.45, {
         enableScrollSpy: true,

@@ -1,7 +1,7 @@
 {
   "name": "@solid-design-system/components",
   "description": "Solid Design System: Components",
-  "version": "2.11.2",
+  "version": "3.1.0",
   "homepage": "https://solid-design-system.fe.union-investment.de/x.x.x/storybook/",
   "author": {
     "name": "Union Investment"
@@ -67,7 +67,7 @@
     "plop": "plop --plopfile scripts/plop/plopfile.js",
     "test": "pnpm build/components && web-test-runner --group default",
     "test.verify": "web-test-runner --group default",
-    "test.component": "web-test-runner -- --watch --group",
+    "test.single": "web-test-runner -- --watch --group",
     "test.watch": "web-test-runner --watch --group default",
     "storybook": "storybook dev -p 6999",
     "chromatic": "npx chromatic -b build.chromatic",
@@ -107,6 +107,7 @@
     "@storybook/theming": "^8.0.0",
     "@storybook/web-components": "^8.0.0",
     "@storybook/web-components-vite": "^8.0.0",
+    "@tarekraafat/autocomplete.js": "^10.2.7",
     "@types/mocha": "^10.0.4",
     "@types/sinon": "^17.0.1",
     "@web/test-runner": "^0.18.0",
@@ -139,7 +140,7 @@
     "storybook-addon-designs": "6.3.1",
     "tailwindcss": "^3.3.5",
     "terser": "^5.24.0",
-    "typescript": "5.4.4",
+    "typescript": "5.4.5",
     "user-agent-data-types": "^0.4.2",
     "vite": "^5.0.0",
     "vite-node": "^1.0.0",
@@ -186,8 +187,8 @@
   "readme": "README.md",
   "meta": {
     "bundleSizeInKb": {
-      "uncompressed": 282,
-      "gzip": 68
+      "uncompressed": 292,
+      "gzip": 70
     }
   }
 }
