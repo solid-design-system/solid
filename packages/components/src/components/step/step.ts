@@ -37,15 +37,15 @@ export default class SdStep extends SolidElement {
   @property({ reflect: true }) orientation: 'horizontal' | 'vertical' = 'horizontal';
 
   /** Determines the state of the step. */
-  @property({ reflect: true }) state: 'waiting' | 'finished' | 'inProgress' = 'waiting';
+  @property({ reflect: true }) state: 'waiting' | 'inProgress' | 'finished' = 'waiting';
 
   /** Removes the tail from the step. */
   @property({ reflect: true, type: Boolean, attribute: 'no-tail' }) noTail = false;
 
-  /** The step's label. */
+  /** The step's label overwriting the `label` slot. Use the `label` slot for complex label content. */
   @property() label = '';
 
-  /** The step's description. */
+  /** The step's description overwriting the `description` slot. Use the `description` slot for complex description content. */
   @property() description = '';
 
   /** The step's number in a step-group */
