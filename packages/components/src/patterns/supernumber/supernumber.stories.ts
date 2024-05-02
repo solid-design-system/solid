@@ -14,14 +14,76 @@ export default {
 };
 
 /**
- * Used to highlight and convey important key figures. The component consists of overline, number, subline and description. Supernumber is used as a subcomponent inside sd-container.
+ * Used to highlight and convey important key figures. The pattern consists of overline, number, subline and description. Supernumber is used as a subcomponent inside sd-container.
+ *
+ * Supernumbers are preferably entered in the form of numbers, but can also be entered in the form of text in order to fulfill certain use cases.
  */
 
 export const Default = {
   render: () => html`
-    <div class="sd-container sd-container--variant-white flex flex-col items-center">
+    <div class="sd-container sd-container--variant-white flex flex-col items-center text-center">
+      <div class="text-[72px] text-primary leading-[86.4px]">XXX</div>
+    </div>
+  `
+};
+
+/**
+ * The supernumber can be displayed with description. The description is displayed below the number, or (if exists) suffix.
+ */
+
+export const Description = {
+  name: 'Description (optional)',
+  render: () => html`
+    <div class="sd-container sd-container--variant-white flex flex-col items-center text-center">
+      <div class="text-[72px] text-primary leading-[86.4px]">XXX</div>
+      <p class="sd-pararaph sd-paragraph--size-sm text-base text-center pt-2">
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmd tempor invit ut labore et dolore
+        magna aliquyam erat
+      </p>
+    </div>
+  `
+};
+
+/**
+ * The supernumber can be displayed with a prefix. The overline is displayed above the number.
+ */
+
+export const Overline = {
+  name: 'Overline (optional)',
+  render: () => html`
+    <div class="sd-container sd-container--variant-white flex flex-col items-center text-center">
       <p class="sd-paragraph font-bold mb-2">Nisi eu excepteur anim esse</p>
       <div class="text-[72px] text-primary leading-[86.4px]">XXX</div>
+    </div>
+  `
+};
+
+/**
+ * The supernumber can be displayed with a Subline. The subline is displayed below the number.
+ */
+
+export const Subline = {
+  name: 'Subline (optional)',
+  render: () => html`
+    <div class="sd-container sd-container--variant-white flex flex-col items-center text-center">
+      <div class="text-[72px] text-primary leading-[86.4px]">XXX</div>
+      <p class="sd-paragraph font-bold my-4">Nisi eu excepteur anim esse</p>
+    </div>
+  `
+};
+
+/**
+ * This is a sample of the supernumber with an overline, subline & description.
+ */
+
+export const PrefixSuffix = {
+  name: 'Overline, Subline & Description (optional)',
+  render: () => html`
+    <div class="sd-container sd-container--variant-white flex flex-col items-center text-center">
+      <p class="sd-paragraph font-bold mb-2">Nisi eu excepteur anim esse</p>
+
+      <div class="text-[72px] text-primary leading-[86.4px]">XXX</div>
+
       <p class="sd-paragraph font-bold my-4">Nisi eu excepteur anim esse</p>
 
       <p class="sd-pararaph sd-paragraph--size-sm text-base text-center pt-2">
@@ -33,17 +95,15 @@ export const Default = {
 };
 
 /**
- * The supernumber can be displayed in three different sizes: `lg`, `md` and `sm`. The size is determined by the font size of the number.
+ * The supernumber can be displayed in three different sizes: `lg`, `md` and `sm`. The size is determined by the font size of the number. As a general guideline, use `md` when the pattern is smaller than 400px. Use `sm` when the pattern is smaller than 300px.
  */
 
 export const Size = {
   render: () => html`
     <div class="flex flex-col items-center gap-4">
       <section>
-        <div class="sd-container sd-container--variant-white flex flex-col items-center">
-          <p class="sd-paragraph font-bold mb-2">Nisi eu excepteur anim esse</p>
+        <div class="sd-container sd-container--variant-white flex flex-col items-center text-center">
           <div class="text-[72px] text-primary leading-[86.4px]">XXX</div>
-          <p class="sd-paragraph font-bold my-4">Nisi eu excepteur anim esse</p>
 
           <p class="sd-pararaph sd-paragraph--size-sm text-base text-center pt-2">
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmd tempor invit ut labore et
@@ -53,10 +113,8 @@ export const Size = {
       </section>
 
       <section>
-        <div class="sd-container sd-container--variant-white flex flex-col items-center">
-          <p class="sd-paragraph font-bold mb-2">Nisi eu excepteur anim esse</p>
+        <div class="sd-container sd-container--variant-white flex flex-col items-center text-center">
           <div class="text-4xl text-primary leading-[48px]">XXX</div>
-          <p class="sd-paragraph font-bold my-4">Nisi eu excepteur anim esse</p>
 
           <p class="sd-pararaph sd-paragraph--size-sm text-base text-center pt-2">
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmd tempor invit ut labore et
@@ -66,10 +124,8 @@ export const Size = {
       </section>
 
       <section>
-        <div class="sd-container sd-container--variant-white flex flex-col items-center">
-          <p class="sd-paragraph font-bold mb-2">Nisi eu excepteur anim esse</p>
+        <div class="sd-container sd-container--variant-white flex flex-col items-center text-center">
           <div class="text-3xl text-primary leading-[38.4px]">XXX</div>
-          <p class="sd-paragraph font-bold my-4">Nisi eu excepteur anim esse</p>
 
           <p class="sd-pararaph sd-paragraph--size-sm text-base text-center pt-2">
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmd tempor invit ut labore et
@@ -87,10 +143,8 @@ export const Size = {
 
 export const Inverted = {
   render: () => html`
-    <div class="sd-container sd-container--variant-primary flex flex-col items-center">
-      <p class="sd-paragraph sd-paragraph--inverted font-bold mb-2">Nisi eu excepteur anim esse</p>
+    <div class="sd-container sd-container--variant-primary flex flex-col items-center text-center">
       <div class="text-[72px] text-white leading-[86.4px]">XXX</div>
-      <p class="sd-paragraph sd-paragraph--inverted font-bold my-4">Nisi eu excepteur anim esse</p>
 
       <p class="sd-pararaph sd-paragraph--size-sm sd-paragraph--inverted text-base text-center pt-2">
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmd tempor invit ut labore et dolore
@@ -101,15 +155,14 @@ export const Inverted = {
 };
 
 /**
- * countUp.js can be used to animate the number. You can find more information about the library in the [countUp.js documentation](https://github.com/inorganik/CountUp.js).
+ * This is a sample of how countUp.js can be used to animate the number. You can find more information about the library in the [countUp.js documentation](https://github.com/inorganik/CountUp.js).
  */
 
 export const Animation = {
+  name: 'Sample: Animation',
   render: () => html`
-    <div class="sd-container sd-container--variant-white flex flex-col items-center">
-      <p class="sd-paragraph font-bold mb-2">Nisi eu excepteur anim esse</p>
+    <div class="sd-container sd-container--variant-white flex flex-col items-center text-center">
       <div class="text-[72px] text-primary leading-[86.4px]" id="countup">0</div>
-      <p class="sd-paragraph font-bold my-4">Nisi eu excepteur anim esse</p>
 
       <p class="sd-pararaph sd-paragraph--size-sm text-base text-center pt-2">
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmd tempor invit ut labore et dolore
@@ -134,15 +187,14 @@ export const Animation = {
 };
 
 /**
- * Use the `prefix` option to add a prefix to the supernumber.
+ * Use the `prefix` option of `countUp.js` to add a prefix to the supernumber. Open the 'show code' section to see the script.
  */
 
 export const AnimationPrefix = {
+  name: 'Sample: Animation Prefix (optional)',
   render: () => html`
-    <div class="sd-container sd-container--variant-white flex flex-col items-center">
-      <p class="sd-paragraph font-bold mb-2">Nisi eu excepteur anim esse</p>
+    <div class="sd-container sd-container--variant-white flex flex-col items-center text-center">
       <div class="text-[72px] text-primary leading-[86.4px]" id="with-prefix">0</div>
-      <p class="sd-paragraph font-bold my-4">Nisi eu excepteur anim esse</p>
 
       <p class="sd-pararaph sd-paragraph--size-sm text-base text-center pt-2">
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmd tempor invit ut labore et dolore
@@ -170,15 +222,14 @@ export const AnimationPrefix = {
 };
 
 /**
- * Use the `suffix` option to add a suffix to the supernumber.
+ * Use the `suffix` option of `countUp.js` to add a suffix to the supernumber. Open the 'show code' section to see the script.
  */
 
 export const AnimationSuffix = {
+  name: 'Sample: Animation Suffix (optional)',
   render: () => html`
-    <div class="sd-container sd-container--variant-white flex flex-col items-center">
-      <p class="sd-paragraph font-bold mb-2">Nisi eu excepteur anim esse</p>
+    <div class="sd-container sd-container--variant-white flex flex-col items-center text-center">
       <div class="text-[72px] text-primary leading-[86.4px]" id="with-suffix">0</div>
-      <p class="sd-paragraph font-bold my-4">Nisi eu excepteur anim esse</p>
 
       <p class="sd-pararaph sd-paragraph--size-sm text-base text-center pt-2">
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmd tempor invit ut labore et dolore
@@ -209,11 +260,10 @@ export const AnimationSuffix = {
  */
 
 export const AnimationInternationalization = {
+  name: 'Sample: Animation Internationalization',
   render: () => html`
-    <div class="sd-container sd-container--variant-white flex flex-col items-center">
-      <p class="sd-paragraph font-bold mb-2">Nisi eu excepteur anim esse</p>
+    <div class="sd-container sd-container--variant-white flex flex-col items-center text-center">
       <div class="text-[72px] text-primary leading-[86.4px]" id="i18n">0</div>
-      <p class="sd-paragraph font-bold my-4">Nisi eu excepteur anim esse</p>
 
       <p class="sd-pararaph sd-paragraph--size-sm text-base text-center pt-2">
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmd tempor invit ut labore et dolore
