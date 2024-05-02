@@ -152,17 +152,13 @@ export const Parts = {
 
 export const Mouseless = {
   render: (args: any) => {
-    return generateTemplate({
-      args,
-      constants: [
-        { type: 'attribute', name: 'class', value: 'mouseless' },
-        { type: 'attribute', name: 'buttons', value: true }
-      ]
-    });
+    return html`<div class="mouseless">
+      ${generateTemplate({ args, constants: [{ type: 'attribute', name: 'buttons', value: true }] })}
+    </div>`;
   },
 
   play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
-    const el = canvasElement.querySelector('.mouseless');
+    const el = canvasElement.querySelector('.mouseless sd-scrollable');
     await waitUntil(() => el?.shadowRoot?.querySelector('button'));
 
     el?.shadowRoot?.querySelector<HTMLElement>('button')!.focus();
