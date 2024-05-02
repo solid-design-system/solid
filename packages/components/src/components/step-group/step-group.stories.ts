@@ -52,41 +52,35 @@ export const Default = {
 
 export const SetActiveStep = {
   name: 'Sample: Set Active Step',
-  parameters: { docs: { story: { inline: false, height: '200px' } } },
-
-  render: (args: any) => {
+  render: () => {
     return html`
-      <div class="flex gap-8">
-        <div class="flex flex-col gap-4 mt-8">
-          <h4 class="sd-headline sd-headline--size-base">Select the step you want to set as active:</h4>
+      <sd-step-group id="set-active" size="lg" orientation="horizontal" activestep="0">
+        <sd-step size="lg" orientation="horizontal" state="finished">
+          <p slot="label">Lorem ipsum dolor sit</p>
+          Lorem ipsum est dolor sit amet
+        </sd-step>
 
-          <div class="flex gap-4">
-            <sd-button class="w-min" size="sm" id="step-1">1</sd-button>
-            <sd-button class="w-min" size="sm" id="step-2">2</sd-button>
-            <sd-button class="w-min" size="sm" id="step-3">3</sd-button>
-          </div>
-        </div>
+        <sd-step size="lg" orientation="horizontal" state="inProgress">
+          <p slot="label">Exercitation ullamco laboris</p>
+          Lorem ipsum est dolor sit amet
+        </sd-step>
 
-        <div class="w-full">${generateTemplate({ args })}</div>
-      </div>
+        <sd-step size="lg" orientation="horizontal" state="waiting">
+          <p slot="label">Reprehenderit qui in e name</p>
+          Lorem ipsum est dolor sit amet
+        </sd-step>
+      </sd-step-group>
+
+      <sd-button class="w-min mt-8" size="sm" id="next">Next</sd-button>
 
       <script type="module">
-        const btn1 = document.querySelector('sd-button#step-1');
-        const btn2 = document.querySelector('sd-button#step-2');
-        const btn3 = document.querySelector('sd-button#step-3');
+        const stepGroup = document.querySelector('sd-step-group#set-active');
+        stepGroup.setActiveStep(1);
 
-        const stepGroup = document.querySelector('sd-step-group');
+        const nextBtn = document.querySelector('sd-button#next');
 
-        btn1.addEventListener('click', () => {
-          stepGroup.setActiveStep(0);
-        });
-
-        btn2.addEventListener('click', () => {
-          stepGroup.setActiveStep(1);
-        });
-
-        btn3.addEventListener('click', () => {
-          stepGroup.setActiveStep(2);
+        nextBtn.addEventListener('click', () => {
+          stepGroup.setActiveStep(stepGroup.activeStep + 1);
         });
       </script>
     `;

@@ -8,16 +8,16 @@ import SolidElement from '../../internal/solid-element';
 import type SdStep from '../step/step';
 
 /**
- * @summary Tabs are used inside [tab groups](/components/tab-group) to represent and activate [tab panels](/components/tab-panel).
- * @documentation https://solid.union-investment.com/[storybook-link]/tab-group
+ * @summary Used as navigation bar that guides users through the steps of a process or task.
+ * @documentation https://solid.union-investment.com/[storybook-link]/step-group
  * @status stable
- * @since 2.13.0
+ * @since 3.2.0
  *
- * 
+ *
  * @slot - Used for grouping steps in the step group. Must be `<sd-step>` elements.
  *
- *
-
+ * @csspart base - The component's base wrapper.
+ * @csspart body - The container that wraps the steps.
  */
 @customElement('sd-step-group')
 export default class SdStepGroup extends SolidElement {
@@ -30,6 +30,9 @@ export default class SdStepGroup extends SolidElement {
 
   /** Determines the orientation of the step-group. */
   @property({ reflect: true }) orientation: 'horizontal' | 'vertical' = 'horizontal';
+
+  /** The active step in the step-group. */
+  @property({ type: Number }) activeStep = 0;
 
   connectedCallback() {
     super.connectedCallback();
@@ -80,11 +83,11 @@ export default class SdStepGroup extends SolidElement {
    */
   setActiveStep(index: number) {
     if (index >= 0 && index < this.steps.length) {
+      this.activeStep = index;
+
       this.steps.forEach((step, i) => {
         step.state = i === index ? 'inProgress' : i < index ? 'finished' : 'waiting';
       });
-    } else {
-      throw new Error('Invalid Index Number');
     }
   }
 

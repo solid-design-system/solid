@@ -1,6 +1,8 @@
 import '../../solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
+import { userEvent } from '@storybook/testing-library';
+import { waitUntil } from '@open-wc/testing-helpers';
 import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-step');
@@ -58,7 +60,7 @@ export const Orientation = {
  */
 
 export const SizeXStatus = {
-  parameters: { controls: { exclude: ['size', 'state'] }, docs: { story: { inline: false, height: '500px' } } },
+  parameters: { controls: { exclude: ['size', 'state'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -78,4 +80,91 @@ export const SizeXStatus = {
       ${story()}
     `
   ]
+};
+
+/**
+ * Use the 'base', 'circle-and-tail-container','circle', 'label', 'description', 'text-container', 'label' and 'description' parts to style the step.
+ */
+export const Parts = {
+  parameters: {
+    controls: {
+      exclude: [
+        'base',
+        'circle-and-tail-container',
+        'circle',
+        'tail',
+        'label',
+        'description',
+        'text-container',
+        'label',
+        'description'
+      ]
+    }
+  },
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        x: { type: 'attribute', name: 'state' },
+        y: {
+          type: 'template',
+          name: 'sd-step::part(...){outline: solid 2px red}',
+          values: [
+            'base',
+            'circle-and-tail-container',
+            'circle',
+            'tail',
+            'label',
+            'description',
+            'text-container',
+            'label',
+            'description'
+          ].map(part => {
+            return {
+              title: part,
+              value: `<style>#part-${part} sd-step::part(${part}){outline: solid 2px red; outline-offset: -2px;}</style><div id="part-${part}">%TEMPLATE%</div>`
+            };
+          })
+        }
+      },
+      args
+    });
+  },
+  decorators: [
+    (story: () => typeof html) => html`
+      <style>
+        td.template {
+          width: 33%;
+        }
+      </style>
+      ${story()}
+    `
+  ]
+};
+
+/**
+ * sd-steps are fully accessibile via keyboard.
+ */
+
+export const Mouseless = {
+  render: (args: any) => {
+    return html`<div class="mouseless">
+      ${generateTemplate({
+        args,
+        constants: [
+          {
+            type: 'attribute',
+            name: 'state',
+            value: 'finished'
+          }
+        ]
+      })}
+    </div>`;
+  },
+
+  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
+    const el = canvasElement.querySelector('.mouseless sd-step');
+    await waitUntil(() => el?.shadowRoot?.querySelector('button'));
+    // We have to catch the event as otherwise Storybook will break
+    await userEvent.type(el!.shadowRoot!.querySelector('button')!, '{return}', { pointerEventsCheck: 0 });
+  }
 };

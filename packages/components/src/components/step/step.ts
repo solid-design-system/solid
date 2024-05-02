@@ -1,21 +1,32 @@
-import { css, html, unsafeCSS } from 'lit';
+import { css, unsafeCSS } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
+import { html, literal } from 'lit/static-html.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { property } from 'lit/decorators.js';
 import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
 import ParagraphStyles from '../../styles/paragraph/paragraph.css?inline';
 import SolidElement from '../../internal/solid-element';
 /**
- * @summary Steps are used inside [step groups](/components/step-group) to represent and activate [tab panels](/components/tab-panel).
+ * @summary Steps are used inside [step groups](/components/step-group) to guide users through the steps of a process or task..
  * @documentation https://solid.union-investment.com/[storybook-link]/step
  * @status stable
- * @since 2.13.0
+ * @since 3.2.0
  *
+ * @dependency sd-icon
+ * @dependency sd-divider
  *
- * @slot label - The step's label.
  * @slot - The step's description.
-
-
+ * @slot label - The step's label.
+ *
+ *
+ * @csspart base - The component's base wrapper.
+ * @csspart circle-and-tail-container - The container that wraps the step's circle and tail.
+ * @csspart circle - The circle that marks the step's state.
+ * @csspart tail - The step's tail.
+ * @csspart text-container - The container that wraps the step's label and description.
+ * @csspart label - The step's label.
+ * @csspart description - The step's description.
  */
 @customElement('sd-step')
 export default class SdStep extends SolidElement {
@@ -40,11 +51,23 @@ export default class SdStep extends SolidElement {
   /** The step's number in a step-group */
   @property({ type: Number }) number = 1;
 
+  /** When set, the underlying button will be rendered as an `<a>` with this `href` instead of a `<button>`. */
+  @property() href = '';
+
   connectedCallback() {
     super.connectedCallback();
   }
 
+  private isLink() {
+    return this.href ? true : false;
+  }
+
   render() {
+    const isLink = this.isLink();
+    const tag = isLink ? literal`a` : literal`button`;
+
+    /* eslint-disable lit/no-invalid-html */
+    /* eslint-disable lit/binding-positions */
     return html`
       <div
         part="base"
@@ -55,6 +78,7 @@ export default class SdStep extends SolidElement {
         )}
       >
         <div
+          part="circle-and-tail-container"
           class=${cx(
             'flex shrink-0 gap-4',
 
@@ -68,10 +92,12 @@ export default class SdStep extends SolidElement {
                 : 'mt-3'
           )}
         >
-          <button
+          
+          <${tag}
             part="circle"
-            ?disabled=${this.state === 'waiting'}
+            ?disabled=${this.state !== 'finished'}
             tabindex=${this.state === 'finished' ? '0' : '-1'}
+            href=${ifDefined(isLink ? this.href : undefined)}
             class=${cx(
               'border rounded-full aspect-square circle flex items-center justify-center shrink-0 font-bold select-none',
               this.state === 'finished' ? 'focus-visible:focus-outline' : 'focus-visible:outline-none',
@@ -81,26 +107,31 @@ export default class SdStep extends SolidElement {
               this.state === 'inProgress' && 'bg-accent border-none text-white'
             )}
           >
-            ${this.state === 'finished'
-              ? html` <sd-icon name="confirm" library="system" color="primary"></sd-icon>`
-              : this.number}
-          </button>
+            ${
+              this.state === 'finished'
+                ? html` <sd-icon name="confirm" library="system" color="primary"></sd-icon>`
+                : this.number
+            }
+          </${tag}>
 
-          ${this.noTail
-            ? ''
-            : this.orientation === 'horizontal'
-              ? html` <sd-divider orientation="horizontal" class="w-full my-auto"></sd-divider> `
-              : html`<sd-divider
-                  orientation="vertical"
-                  class="flex-grow flex-shrink-0 basis-auto h-full w-[1px] mx-auto"
-                ></sd-divider> `}
+          ${
+            this.noTail
+              ? ''
+              : this.orientation === 'horizontal'
+                ? html` <sd-divider part="tail" orientation="horizontal" class="w-full my-auto"></sd-divider> `
+                : html`<sd-divider
+                    part="tail"
+                    orientation="vertical"
+                    class="flex-grow flex-shrink-0 basis-auto h-full w-[1px] mx-auto"
+                  ></sd-divider> `
+          }
         </div>
 
-        <div class="w-24 text-center mt-4 break-words">
-          <div class="!font-bold sd-paragraph">
+        <div part="text-container" class="w-24 text-center mt-4 break-words">
+          <div part="label " class="!font-bold sd-paragraph">
             ${this.label === '' ? html`<slot name="label"></slot>` : this.label}
           </div>
-          <div class="sd-paragraph sd-paragraph--size-sm">
+          <div part="description" class="sd-paragraph sd-paragraph--size-sm">
             ${this.description === '' ? html`<slot></slot>` : this.description}
           </div>
         </div>
