@@ -16,7 +16,7 @@ describe('<sd-step-group>', () => {
     expect(el).to.exist;
     expect(el).to.have.attribute('size', 'lg');
     expect(el).to.have.attribute('orientation', 'horizontal');
-    expect(el).to.have.attribute('activeStep', '0');
+    expect(el).to.have.attribute('active-step', '0');
   });
 
   describe('Configuration', () => {
