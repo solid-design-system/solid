@@ -1,0 +1,61 @@
+# Migration Guide: From `[ui-progress-step]` to `[sd-step]`
+
+The new `[sd-step]` is designed to replace the `[ui-progress-step]`. Instead of mainly providing content via attributes, the `[sd-step]` component uses slots to allow for more flexibility and customization.
+
+## 💾 Slots
+
+### ✨ New Slots
+
+#### [default]
+
+The step's description.
+
+#### [label]
+
+The step's label.
+
+<hr />
+
+## ⚙️ Attributes
+
+### ✨ New Attributes
+
+#### [size]
+
+The step's size.
+
+#### [orientation]
+
+Determines the orientation of the step.
+
+#### [state]
+
+Determines the state of the step.
+
+#### [no-tail]
+
+Removes the tail from the step.
+
+#### [description]
+
+The step's description.
+
+#### [href]
+
+When set, the underlying button will be rendered as an `<a>` with this `href` instead of a `<button>`.
+
+#### [description]
+
+The step's description.
+
+### ❌ Removed Attributes
+
+The following attributes have been removed from the new [sd-step] component:
+
+1. [active]
+2. [cornered]
+3. [done]
+4. [ellipsis]
+5. [variant]
+
+<hr />

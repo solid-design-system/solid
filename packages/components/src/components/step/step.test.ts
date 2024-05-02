@@ -10,7 +10,7 @@ describe('<sd-step>', () => {
     expect(el).to.exist;
     expect(el).to.have.attribute('state', 'waiting');
     expect(el).to.have.attribute('orientation', 'horizontal');
-    expect(el).to.have.attribute('number', '1');
+    expect(el).to.have.attribute('step-index', '1');
     expect(el).to.have.attribute('size', 'lg');
   });
 

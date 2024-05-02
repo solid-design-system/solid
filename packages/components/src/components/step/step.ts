@@ -49,7 +49,7 @@ export default class SdStep extends SolidElement {
   @property() description = '';
 
   /** The step's number in a step-group */
-  @property({ type: Number, reflect: true }) number = 1;
+  @property({ type: Number, reflect: true, attribute: 'step-index' }) StepIndex = 1;
 
   /** When set, the underlying button will be rendered as an `<a>` with this `href` instead of a `<button>`. */
   @property() href = '';
@@ -111,7 +111,7 @@ export default class SdStep extends SolidElement {
             ${
               this.state === 'finished'
                 ? html` <sd-icon name="confirm" library="system" color="primary"></sd-icon>`
-                : this.number
+                : this.StepIndex
             }
           </${tag}>
 
