@@ -59,7 +59,7 @@ export const Overline = {
 };
 
 /**
- * The supernumber can be displayed with a Subline. The subline is displayed below the number.
+ * The supernumber can be displayed with a subline. The subline is displayed below the number.
  */
 
 export const Subline = {
