@@ -19,7 +19,11 @@ module.exports = {
     './assets',
     {
       from: '../../placeholders/src/images',
-      to: '/placeholders'
+      to: '/placeholders/images'
+    },
+    {
+      from: '../../placeholders/src/videos',
+      to: '/placeholders/videos'
     },
     {
       from: '../node_modules/countup.js/dist',

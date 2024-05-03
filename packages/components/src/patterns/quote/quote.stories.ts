@@ -16,7 +16,7 @@ export default {
 const img = (hidden = false) => html`
   <img
     class="w-16 h-16 rounded-full overflow-hidden object-cover ${hidden ? 'hidden' : ''}"
-    src="./placeholders/family.jpg"
+    src="./placeholders/images/family.jpg"
     alt="A caring father, balancing one child on his shoulder and gently cradling another in his arms."
   />
 `;
