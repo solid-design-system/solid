@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v3.2.0](https://github.com/solid-design-system/solid/compare/components/3.1.0...components/3.2.0) (2024-05-06)
+
+
+### Features
+
+* ✨add placeholder video ([#1032](https://github.com/solid-design-system/solid/issues/1032)) ([0bf4597](https://github.com/solid-design-system/solid/commit/0bf459788f02bc27b7a3f3515d47b20da3f51f67))
+
+### 📈 Stats
+* Bundle size (uncompressed): 292 KB (unchanged)
+* Bundle size (gzipped): 70 KB (unchanged)
+
 # [@solid-design-system/components-v3.1.0](https://github.com/solid-design-system/solid/compare/components/3.0.1...components/3.1.0) (2024-04-29)
 
 

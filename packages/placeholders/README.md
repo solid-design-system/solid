@@ -75,14 +75,18 @@ To integrate the images in this package into your Storybook you need to add the 
   staticDirs: [
     {
       from: '../node_modules/@solid-design-system/placeholders/src/images',
-      to: '/placeholders',
+      to: '/placeholders/images',
+    },
+    {
+      from: '../node_modules/@solid-design-system/placeholders/src/videos',
+      to: '/placeholders/videos',
     },
   ],
 ```
 
-After adding this package to the `staticDirs` of your Storybook the `src/images` folder will be included in your `storybook` build folder under the subfolder `storybook/placeholders`.
+After adding this package to the `staticDirs` of your Storybook the `src/images` folder will be included in your `storybook` build folder under the subfolder `storybook/placeholders/images`.
 To reference a image in your story you can follow this example:
 
 ```js
-'./placeholders/collaboration.jpg';
+'./placeholders/images/collaboration.jpg';
 ```
