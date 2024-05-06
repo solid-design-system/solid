@@ -435,7 +435,7 @@ export const GroupElements = {
 
 /**
  * This example demonstrates how to customize the appearance of the autocomplete suggestions popup by setting a custom `max-height`.
- * There are two parts promoted (`autocomplete-list`, `autocomplete-popup`) and you can use the first one to set the max-height.
+ * There are two additional parts added (`listbox`, `popup`) and you can use the first one to set the `max-height`.
  */
 export const SuggestionContainerHeight = {
   parameters: {
