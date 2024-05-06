@@ -316,7 +316,7 @@ export const Slots = {
             {
               type: 'slot',
               name: 'media',
-              value: `<img slot='media' src='./placeholders/collaboration.jpg' alt='Test' style="width:100%; height: 100%;"/>`
+              value: `<img slot='media' src='./placeholders/images/collaboration.jpg' alt='Test' style="width:100%; height: 100%;"/>`
             },
             {
               type: 'slot',
@@ -418,7 +418,7 @@ export const SamplesNotClickable = {
           <div slot="media" class="relative">
             <img
               class="aspect-video object-cover"
-              src="./placeholders/coffeeshop.jpg"
+              src="./placeholders/images/coffeeshop.jpg"
               alt="A group of people sitting in a coffee shop"
             />
           </div>
@@ -441,7 +441,7 @@ export const SamplesNotClickable = {
           <div slot="media" class="relative">
             <img
               class="aspect-video object-cover"
-              src="./placeholders/skyline.jpg"
+              src="./placeholders/images/skyline.jpg"
               alt="A skyline of a city by night"
             />
           </div>
@@ -524,7 +524,7 @@ export const SamplesClickable = {
             <div slot="media" class="relative">
               <img
                 class="aspect-video object-cover"
-                src="./placeholders/coffeeshop.jpg"
+                src="./placeholders/images/coffeeshop.jpg"
                 alt="A group of people sitting in a coffee shop"
               />
             </div>
@@ -550,7 +550,7 @@ export const SamplesClickable = {
             <div slot="media" class="relative">
               <img
                 class="aspect-video object-cover"
-                src="./placeholders/skyline.jpg"
+                src="./placeholders/images/skyline.jpg"
                 alt="A skyline of a city by night"
               />
             </div>

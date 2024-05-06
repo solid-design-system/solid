@@ -80,7 +80,11 @@ export const FlagSamples = {
       <div class="flex justify-between gap-8">
         <sd-teaser variant="white border-neutral-400" breakpoint="9999" inset class="flex-1">
           <div slot="media" class="relative">
-            <img class="aspect-video object-cover" src="./placeholders/generic.jpg" alt="A generic placeholder jpg" />
+            <img
+              class="aspect-video object-cover"
+              src="./placeholders/images/generic.jpg"
+              alt="A generic placeholder jpg"
+            />
             <span class="absolute top-3 left-4 sd-chip sd-chip--white">chip name</span>
             <span class="absolute top-2 right-0 sd-flag sd-flag--neutral-200">flag name</span>
           </div>
@@ -132,7 +136,11 @@ export const FlagSamples = {
 
         <sd-teaser variant="primary" breakpoint="9999" inset class="flex-1">
           <div slot="media" class="relative">
-            <img class="aspect-video object-cover" src="./placeholders/generic.jpg" alt="A generic placeholder jpg" />
+            <img
+              class="aspect-video object-cover"
+              src="./placeholders/images/generic.jpg"
+              alt="A generic placeholder jpg"
+            />
             <span class="absolute top-3 left-4 sd-chip sd-chip--white">chip name</span>
             <span class="absolute top-2 right-0 sd-flag sd-flag--neutral-200">flag name</span>
           </div>
