@@ -112,7 +112,12 @@ export default class SdStep extends SolidElement {
           >
             ${
               this.state === 'finished'
-                ? html` <sd-icon name="confirm" library="system" color="primary"></sd-icon>`
+                ? html` <sd-icon
+                    name="status-hook"
+                    library="system"
+                    color="primary"
+                    class=${cx(this.size === 'lg' ? 'text-lg' : 'text-sm')}
+                  ></sd-icon>`
                 : this.StepIndex
             }
           </${tag}>

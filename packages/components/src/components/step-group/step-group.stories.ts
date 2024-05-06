@@ -131,7 +131,7 @@ export const SetActiveStep = {
   name: 'Sample: Set Active Step',
   render: () => {
     return html`
-      <sd-step-group id="set-active" size="lg" orientation="horizontal" activestep="0">
+      <sd-step-group id="set-active" size="lg" orientation="horizontal" active-step="0">
         <sd-step size="lg" orientation="horizontal" state="finished">
           <p slot="label">Lorem ipsum dolor sit</p>
           Lorem ipsum est dolor sit amet
