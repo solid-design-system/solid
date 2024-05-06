@@ -25,9 +25,14 @@ export function setupAutocomplete(
 
   /** Setup elements and styles for autocomplete.js */
   input.addEventListener('init', () => {
-    const popup = sdInput.shadowRoot?.querySelector('sd-popup');
+    const ul = sdInput.shadowRoot?.querySelector('ul');
+    ul?.setAttribute('part', 'listbox');
+    const popup = document.createElement('sd-popup');
+    popup.appendChild(ul!);
+    sdInput.shadowRoot?.appendChild(popup);
+    popup?.setAttribute('exportparts', 'popup__content');
     if (popup) {
-      popup.active = true;
+      popup.active = false;
       popup.autoSize = 'vertical';
       popup.autoSizePadding = 16;
       popup.placement = 'bottom-start';
@@ -75,11 +80,13 @@ export function setupAutocomplete(
 
   /** Open and close events to add styles to the input */
   input.addEventListener('open', () => {
+    sdInput.shadowRoot?.querySelector('sd-popup')?.setAttribute('active', 'true');
     sdInput.shadowRoot?.querySelector('[part="border"]')?.classList.add('rounded-b-none');
     sdInput.shadowRoot?.querySelector('[part="form-control"]')?.classList.add('z-50');
   });
 
   input.addEventListener('close', () => {
+    sdInput.shadowRoot?.querySelector('sd-popup')?.removeAttribute('active');
     sdInput.shadowRoot?.querySelector('[part="border"]')?.classList.remove('rounded-b-none');
     sdInput.shadowRoot?.querySelector('[part="form-control"]')?.classList.remove('z-50');
   });
@@ -104,7 +111,7 @@ export function setupAutocomplete(
         return input;
       },
       resultsList: {
-        tag: 'sd-popup'
+        tag: 'ul'
       },
       wrapper: false
     }
