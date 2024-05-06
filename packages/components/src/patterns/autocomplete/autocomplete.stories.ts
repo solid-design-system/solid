@@ -447,9 +447,9 @@ export const SuggestionContainerHeight = {
     const setupAutocomplete = solidAutocomplete;
     const data = mock;
     return html`
-      <sd-input id="show-all-on-click-example" type="search"><b slot="label">Max-height for list</b></sd-input>
+      <sd-input id="container-height" type="search"><b slot="label">Max-height for list</b></sd-input>
       <style>
-        sd-input#show-all-on-click-example::part(autocomplete-list) {
+        sd-input#container-height::part(listbox) {
           max-height: 110px;
         }
       </style>
@@ -463,7 +463,7 @@ export const SuggestionContainerHeight = {
 
         Promise.all([customElements.whenDefined('sd-input'), customElements.whenDefined('sd-popup')]).then(() => {
           /** Show all on click */
-          const { config: showAllOnClickConfig } = setupAutocomplete('#show-all-on-click-example');
+          const { config: showAllOnClickConfig } = setupAutocomplete('#container-height');
           const showAllOnClickExample = new autoComplete({
             ...showAllOnClickConfig,
             threshold: 0,

@@ -26,11 +26,11 @@ export function setupAutocomplete(
   /** Setup elements and styles for autocomplete.js */
   input.addEventListener('init', () => {
     const ul = sdInput.shadowRoot?.querySelector('ul');
-    ul?.setAttribute('part', 'autocomplete-list');
+    ul?.setAttribute('part', 'listbox');
     const popup = document.createElement('sd-popup');
     popup.appendChild(ul!);
     sdInput.shadowRoot?.appendChild(popup);
-    popup?.setAttribute('part', 'autocomplete-popup');
+    popup?.setAttribute('exportparts', 'popup__content');
     if (popup) {
       popup.active = false;
       popup.autoSize = 'vertical';
