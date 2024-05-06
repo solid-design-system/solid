@@ -76,7 +76,8 @@ export default class SdStep extends SolidElement {
           this.orientation === 'horizontal'
             ? 'flex-col w-full'
             : 'flex-row gap-4 items-stretch h-full w-min overflow-hidden',
-          this.state === 'waiting' ? '!text-neutral-500 ' : ''
+          this.state === 'waiting' ? '!text-neutral-500 ' : '',
+          this.state === 'finished' && 'group'
         )}
       >
         <div
@@ -102,11 +103,11 @@ export default class SdStep extends SolidElement {
             href=${ifDefined(isLink ? this.href : undefined)}
             aria-label=${this.state === 'finished' && 'Step completed'}
             class=${cx(
-              'border rounded-full aspect-square circle flex items-center justify-center shrink-0 font-bold select-none group',
+              'border rounded-full aspect-square circle flex items-center justify-center shrink-0 font-bold select-none',
               this.state === 'finished' ? 'focus-visible:focus-outline' : 'focus-visible:outline-none',
               this.size === 'lg' ? 'w-12' : 'w-8',
               this.state === 'waiting' && 'border-neutral-400',
-              this.state === 'finished' && 'border-primary hover:bg-primary-100 hover:border-primary-500',
+              this.state === 'finished' && 'border-primary group-hover:bg-primary-100 group-hover:border-primary-500',
               this.state === 'inProgress' && 'bg-accent border-none text-white'
             )}
           >
@@ -144,7 +145,7 @@ export default class SdStep extends SolidElement {
         </div>
 
         <div part="text-container" class=${cx('w-24 mt-4 break-words flex flex-col gap-2', this.orientation === 'horizontal' ? 'text-center' : 'text-left', this.state === 'waiting' && '!text-neutral-500')}>
-          <div part="label" class=${cx('!font-bold sd-paragraph', this.state === 'waiting' && '!text-neutral-500', this.state === 'finished' && '!text-primary hover:!text-primary-500')}>
+          <div part="label" class=${cx('!font-bold sd-paragraph', this.state === 'waiting' && '!text-neutral-500', this.state === 'finished' && '!text-primary group-hover:!text-primary-500')}>
             ${this.label === '' ? html`<slot name="label"></slot>` : this.label}
           </div>
           <div part="description" class=${cx('sd-paragraph sd-paragraph--size-sm', this.state === 'waiting' && '!text-neutral-500')}>
@@ -182,7 +183,7 @@ export default class SdStep extends SolidElement {
       }
 
       .tail-to-primary::part(main) {
-        @apply !border-primary;
+        @apply !border-primary group-hover:!border-primary-500;
       }
 
       sd-divider::part(main) {
