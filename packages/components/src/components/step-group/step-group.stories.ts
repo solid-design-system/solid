@@ -48,6 +48,32 @@ export const Default = {
 };
 
 /**
+ * Use the orientation attribute to set the axis of a step-group.
+ */
+
+export const Orientation = {
+  parameters: { controls: { exclude: 'orientation' } },
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        y: { type: 'attribute', name: 'orientation' }
+      },
+      args
+    });
+  },
+  decorators: [
+    (story: () => typeof html) => html`
+      <style>
+        td.template {
+          width: 100%;
+        }
+      </style>
+      ${story()}
+    `
+  ]
+};
+
+/**
  * Use the 'base' and 'body' parts to style the step-group.
  */
 export const Parts = {

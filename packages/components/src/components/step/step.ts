@@ -72,15 +72,17 @@ export default class SdStep extends SolidElement {
       <div
         part="base"
         class=${cx(
-          'flex overflow-hidden pt-1',
-          this.orientation === 'horizontal' ? 'flex-col w-full' : 'flex-row gap-8 items-stretch h-full w-min',
+          'flex pt-1',
+          this.orientation === 'horizontal'
+            ? 'flex-col w-full'
+            : 'flex-row gap-8 items-stretch h-full w-min overflow-hidden',
           this.state === 'waiting' ? '!text-neutral-500 ' : ''
         )}
       >
         <div
           part="circle-and-tail-container"
           class=${cx(
-            'flex shrink-0 gap-4',
+            'flex shrink-0 gap-2',
 
             this.orientation === 'horizontal' ? 'flex-row' : 'flex-col items-stretch',
             this.orientation === 'horizontal'
@@ -119,20 +121,29 @@ export default class SdStep extends SolidElement {
             this.noTail
               ? ''
               : this.orientation === 'horizontal'
-                ? html` <sd-divider part="tail" orientation="horizontal" class="w-full my-auto"></sd-divider> `
+                ? html`
+                    <sd-divider
+                      part="tail"
+                      orientation="horizontal"
+                      class=${cx('w-full my-auto mr-2', this.state === 'finished' && 'tail-to-primary')}
+                    ></sd-divider>
+                  `
                 : html`<sd-divider
                     part="tail"
                     orientation="vertical"
-                    class="flex-grow flex-shrink-0 basis-auto h-full w-[1px] mx-auto"
+                    class=${cx(
+                      'flex-grow flex-shrink-0 basis-auto h-full w-[1px] mx-auto',
+                      this.state === 'finished' && 'tail-to-primary'
+                    )}
                   ></sd-divider> `
           }
         </div>
 
-        <div part="text-container" class="w-24 text-center mt-4 break-words">
-          <div part="label" class="!font-bold sd-paragraph">
+        <div part="text-container" class=${cx('w-24 mt-4 break-words flex flex-col gap-2', this.orientation === 'horizontal' ? 'text-center' : 'text-left', this.state === 'waiting' && '!text-neutral-500')}>
+          <div part="label" class=${cx('!font-bold sd-paragraph', this.state === 'waiting' && '!text-neutral-500', this.state === 'finished' && '!text-primary')}>
             ${this.label === '' ? html`<slot name="label"></slot>` : this.label}
           </div>
-          <div part="description" class="sd-paragraph sd-paragraph--size-sm">
+          <div part="description" class=${cx('sd-paragraph sd-paragraph--size-sm', this.state === 'waiting' && '!text-neutral-500')}>
             ${this.description === '' ? html`<slot></slot>` : this.description}
           </div>
         </div>
@@ -164,6 +175,10 @@ export default class SdStep extends SolidElement {
 
       .translateSm {
         transform: translateX(30px);
+      }
+
+      .tail-to-primary::part(main) {
+        @apply !border-primary;
       }
     `
   ];
