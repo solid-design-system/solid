@@ -128,6 +128,11 @@ export const Mouseless = {
  */
 
 export const SetActiveStep = {
+  parameters: {
+    controls: {
+      include: []
+    }
+  },
   name: 'Sample: Set Active Step',
   render: () => {
     return html`

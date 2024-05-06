@@ -75,7 +75,7 @@ export default class SdStep extends SolidElement {
           'flex pt-1',
           this.orientation === 'horizontal'
             ? 'flex-col w-full'
-            : 'flex-row gap-8 items-stretch h-full w-min overflow-hidden',
+            : 'flex-row gap-4 items-stretch h-full w-min overflow-hidden',
           this.state === 'waiting' ? '!text-neutral-500 ' : ''
         )}
       >
@@ -102,10 +102,10 @@ export default class SdStep extends SolidElement {
             href=${ifDefined(isLink ? this.href : undefined)}
             aria-label=${this.state === 'finished' && 'Step completed'}
             class=${cx(
-              'border rounded-full aspect-square circle flex items-center justify-center shrink-0 font-bold select-none',
+              'border rounded-full aspect-square circle flex items-center justify-center shrink-0 font-bold select-none group',
               this.state === 'finished' ? 'focus-visible:focus-outline' : 'focus-visible:outline-none',
               this.size === 'lg' ? 'w-12' : 'w-8',
-              this.state === 'waiting' && 'border-neutral-500',
+              this.state === 'waiting' && 'border-neutral-400',
               this.state === 'finished' && 'border-primary hover:bg-primary-100 hover:border-primary-500',
               this.state === 'inProgress' && 'bg-accent border-none text-white'
             )}
@@ -115,8 +115,7 @@ export default class SdStep extends SolidElement {
                 ? html` <sd-icon
                     name="status-hook"
                     library="system"
-                    color="primary"
-                    class=${cx(this.size === 'lg' ? 'text-lg' : 'text-sm')}
+                    class=${cx('text-primary group-hover:text-primary-500', this.size === 'lg' ? 'text-lg' : 'text-sm')}
                   ></sd-icon>`
                 : this.StepIndex
             }
@@ -145,7 +144,7 @@ export default class SdStep extends SolidElement {
         </div>
 
         <div part="text-container" class=${cx('w-24 mt-4 break-words flex flex-col gap-2', this.orientation === 'horizontal' ? 'text-center' : 'text-left', this.state === 'waiting' && '!text-neutral-500')}>
-          <div part="label" class=${cx('!font-bold sd-paragraph', this.state === 'waiting' && '!text-neutral-500', this.state === 'finished' && '!text-primary')}>
+          <div part="label" class=${cx('!font-bold sd-paragraph', this.state === 'waiting' && '!text-neutral-500', this.state === 'finished' && '!text-primary hover:!text-primary-500')}>
             ${this.label === '' ? html`<slot name="label"></slot>` : this.label}
           </div>
           <div part="description" class=${cx('sd-paragraph sd-paragraph--size-sm', this.state === 'waiting' && '!text-neutral-500')}>
@@ -175,15 +174,19 @@ export default class SdStep extends SolidElement {
       }
 
       .translateLg {
-        transform: translateX(20px);
+        transform: translateX(24px);
       }
 
       .translateSm {
-        transform: translateX(30px);
+        transform: translateX(32px);
       }
 
       .tail-to-primary::part(main) {
         @apply !border-primary;
+      }
+
+      sd-divider::part(main) {
+        @apply !border-neutral-400;
       }
     `
   ];
