@@ -433,6 +433,10 @@ export const GroupElements = {
   }
 };
 
+/**
+ * This example demonstrates how to customize the appearance of the autocomplete suggestions popup by setting a custom `max-height`.
+ * There are two parts promoted (`autocomplete-list`, `autocomplete-popup`) and you can use the first one to set the max-height.
+ */
 export const SuggestionContainerHeight = {
   parameters: {
     controls: {
@@ -443,7 +447,12 @@ export const SuggestionContainerHeight = {
     const setupAutocomplete = solidAutocomplete;
     const data = mock;
     return html`
-      <sd-input id="show-all-on-click-example" type="search"><b slot="label">Show all items on click</b></sd-input>
+      <sd-input id="show-all-on-click-example" type="search"><b slot="label">Max-height for list</b></sd-input>
+      <style>
+        sd-input#show-all-on-click-example::part(autocomplete-list) {
+          max-height: 110px;
+        }
+      </style>
       <script type="module">
         import './autocomplete/autoComplete.min.js';
 
