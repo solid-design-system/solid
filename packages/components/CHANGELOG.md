@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v3.3.0](https://github.com/solid-design-system/solid/compare/components/3.2.0...components/3.3.0) (2024-05-06)
+
+
+### Features
+
+* ✨ optimize `autocomplete-config` to allow max-height for listbox ([#1043](https://github.com/solid-design-system/solid/issues/1043)) ([3802b3e](https://github.com/solid-design-system/solid/commit/3802b3e22d85821273bfcac82e3ed8dfe966109b))
+
+### 📈 Stats
+* Bundle size (uncompressed): 292 KB (unchanged)
+* Bundle size (gzipped): 70 KB (unchanged)
+
 # [@solid-design-system/components-v3.2.0](https://github.com/solid-design-system/solid/compare/components/3.1.0...components/3.2.0) (2024-05-06)
 
 
