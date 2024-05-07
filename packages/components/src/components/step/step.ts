@@ -161,7 +161,7 @@ export default class SdStep extends SolidElement {
             ${this.label === '' ? html`<slot name="label"></slot>` : this.label}
           </div>
           <div part="description" class=${cx('sd-paragraph sd-paragraph--size-sm', this.state === 'waiting' && '!text-neutral-500')}>
-            ${this.description === '' ? html`<slot></slot>` : this.description}
+          ${this.description || html`<slot></slot>`}
           </div>
         </div>
       </div>
