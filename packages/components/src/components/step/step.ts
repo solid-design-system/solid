@@ -18,6 +18,8 @@ import SolidElement from '../../internal/solid-element';
  *
  * @slot - The step's description.
  * @slot label - The step's label.
+ * @slot index - The step's index.
+ * @slot complete-icon - The icon that indicates a completed step.
  *
  * @event sd-blur - Emitted when the button loses focus.
  * @event sd-focus - Emitted when the button gains focus.
@@ -125,12 +127,17 @@ export default class SdStep extends SolidElement {
           >
             ${
               this.state === 'finished'
-                ? html` <sd-icon
-                    name="status-hook"
-                    library="system"
-                    class=${cx('text-primary group-hover:text-primary-500', this.size === 'lg' ? 'text-lg' : 'text-sm')}
-                  ></sd-icon>`
-                : this.index
+                ? html`<slot name="complete-icon">
+                    <sd-icon
+                      name="status-hook"
+                      library="system"
+                      class=${cx(
+                        'text-primary group-hover:text-primary-500',
+                        this.size === 'lg' ? 'text-lg' : 'text-sm'
+                      )}
+                    ></sd-icon
+                  ></slot>`
+                : html`<slot name="index">${this.index} </slot>`
             }
           </${tag}>
 
