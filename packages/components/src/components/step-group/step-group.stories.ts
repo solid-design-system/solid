@@ -156,8 +156,7 @@ export const SetActiveStep = {
       <sd-button class="w-min mt-8" size="sm" id="next">Next</sd-button>
 
       <script type="module">
-        const stepGroup = document.querySelector('sd-step-group#set-active');
-        stepGroup.setActiveStep(1);
+        const stepGroup = await document.querySelector('sd-step-group#set-active');
 
         const nextBtn = document.querySelector('sd-button#next');
 

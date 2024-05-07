@@ -43,11 +43,17 @@ export default class SdStepGroup extends SolidElement {
       // Remove the tail from the last step
       this.steps[this.steps.length - 1].noTail = true;
 
+      let activeStep;
+
       this.steps.forEach((step, index) => {
         // Initialize the step attributes
         step.index = index + 1;
         step.size = this.size;
         step.orientation = this.orientation;
+
+        if (step.state === 'inProgress') {
+          activeStep = index;
+        }
 
         // Set the active step on click
         step.addEventListener('click', () => {
@@ -56,6 +62,8 @@ export default class SdStepGroup extends SolidElement {
           }
         });
       });
+
+      this.setActiveStep(activeStep || this.activeStep);
     });
   }
 
