@@ -45,6 +45,16 @@ describe('<sd-icon>', () => {
       },
       mutator: (svg: SVGElement) => svg.setAttribute('fill', 'currentColor')
     });
+
+    registerIconLibraryForTest('test-string-library', {
+      resolver: (name: keyof typeof testLibraryIcons) => {
+        if (name in testLibraryIcons) {
+          return testLibraryIcons[name];
+        }
+        return '';
+      },
+      mutator: (svg: SVGElement) => svg.setAttribute('fill', 'currentColor')
+    });
   });
 
   describe('defaults ', () => {
@@ -107,6 +117,21 @@ describe('<sd-icon>', () => {
 
       expect(el.shadowRoot?.querySelector('svg')).to.exist;
       expect(el.shadowRoot?.querySelector('svg')?.getAttribute('id')).to.equal(fakeId);
+    });
+  });
+
+  describe('when a SVG string is provided', () => {
+    it('it is rendered', async () => {
+      const el = await fixture<SdIcon>(html`<sd-icon library="test-string-library"></sd-icon>`);
+      const listener = oneEvent(el, 'sd-load', false);
+
+      el.name = 'test-icon1';
+      await listener;
+      await elementUpdated(el);
+
+      const svg = el.shadowRoot?.querySelector('svg');
+      expect(svg).to.exist;
+      expect(svg?.id).to.equal('test-icon1');
     });
   });
 

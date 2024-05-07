@@ -17,7 +17,6 @@ interface CustomEventPayload {
 const waitForScrollButtonsToBeRendered = async (tabGroup: SdTabGroup): Promise<void> => {
   await waitUntil(() => {
     const scrollButtons = tabGroup.shadowRoot?.querySelectorAll('button');
-    console.log('scrollButtons ARE RENDERED', scrollButtons);
     return scrollButtons?.length === 2;
   });
 };
