@@ -19,6 +19,8 @@ import SolidElement from '../../internal/solid-element';
  * @slot - The step's description.
  * @slot label - The step's label.
  *
+ * @event sd-blur - Emitted when the button loses focus.
+ * @event sd-focus - Emitted when the button gains focus.
  *
  * @csspart base - The component's base wrapper.
  * @csspart circle-and-tail-container - The container that wraps the step's circle and tail.
@@ -62,6 +64,14 @@ export default class SdStep extends SolidElement {
     return this.href ? true : false;
   }
 
+  private handleBlur() {
+    this.emit('sd-blur');
+  }
+
+  private handleFocus() {
+    this.emit('sd-focus');
+  }
+
   render() {
     const isLink = this.isLink();
     const tag = isLink ? literal`a` : literal`button`;
@@ -79,6 +89,8 @@ export default class SdStep extends SolidElement {
           this.state === 'waiting' ? '!text-neutral-500 ' : '',
           this.state === 'finished' && 'group'
         )}
+        @focus=${this.handleFocus}
+        @blur=${this.handleBlur}
       >
         <div
           part="circle-and-tail-container"
