@@ -45,7 +45,7 @@ export default class SdStepGroup extends SolidElement {
 
       this.steps.forEach((step, index) => {
         // Initialize the step attributes
-        step.StepIndex = index + 1;
+        step.index = index + 1;
         step.size = this.size;
         step.orientation = this.orientation;
 

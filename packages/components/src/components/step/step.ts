@@ -51,7 +51,7 @@ export default class SdStep extends SolidElement {
   @property() description = '';
 
   /** The step's number in a step-group */
-  @property({ type: Number, reflect: true, attribute: 'step-index' }) StepIndex = 1;
+  @property({ type: Number, reflect: true, attribute: 'index' }) index = 1;
 
   /** When set, the underlying button will be rendered as an `<a>` with this `href` instead of a `<button>`. */
   @property() href = '';
@@ -130,7 +130,7 @@ export default class SdStep extends SolidElement {
                     library="system"
                     class=${cx('text-primary group-hover:text-primary-500', this.size === 'lg' ? 'text-lg' : 'text-sm')}
                   ></sd-icon>`
-                : this.StepIndex
+                : this.index
             }
           </${tag}>
 
