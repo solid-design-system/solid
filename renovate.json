@@ -9,10 +9,12 @@
   "timezone": "Europe/Berlin",
   "rebaseWhen": "never",
   "vulnerabilityAlerts": {
+  "enabled": true,
     "labels": [
       "npm dependencies, renovate, security"
     ],
     "automerge": true
   },
+  "osvVulnerabilityAlerts": true,
   "commitMessagePrefix": "chore(security deps): "
 }
