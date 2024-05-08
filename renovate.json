@@ -7,28 +7,12 @@
   ],
   "schedule": "before 5am every weekday",
   "timezone": "Europe/Berlin",
-  "matchUpdateTypes": [
-    "security"
-  ],
-  "lockFileMaintenance": {
-    "enabled": true,
-    "automerge": true,
-    "automergeType": "pr",
-    "matchUpdateTypes": [
-      "security"
-    ]
-  },
-  "major": {
-    "automerge": false
-  },
-  "prConcurrentLimit": 10,
-  "automergeType": "pr",
-  "automergeStrategy": "squash",
-  "automergeSchedule": [
-    "after 10pm every weekday",
-    "before 5am every weekday"
-  ],
-  "autoApprove": true,
   "rebaseWhen": "never",
+  "vulnerabilityAlerts": {
+    "labels": [
+      "npm dependencies, renovate, security"
+    ],
+    "automerge": true
+  },
   "commitMessagePrefix": "chore(security deps): "
 }
