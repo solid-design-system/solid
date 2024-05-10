@@ -558,6 +558,8 @@ export const storybookUtilities = {
     }
     templateInnerHTML = templateInnerHTML
       .replace(/<style><\/style>/g, '')
+      .replace(/<!-- preview-ignore:start -->[\s\S]*?<!-- preview-ignore:end -->/g, '')
+      .replace(/\/\/ preview-ignore:start[\s\S]*?\/\/ preview-ignore:end/g, '')
       .replace(/<style>\n<\/style>/g, '')
       .replace(/<script>\s*component = document\.querySelector\('(.+?)'\);\s*<\/script>/g, '');
     // return templateInnerHTML;

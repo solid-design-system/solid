@@ -1,3 +1,17 @@
+# [@solid-design-system/tokens-v4.0.0](https://github.com/solid-design-system/solid/compare/tokens/3.1.0...tokens/4.0.0) (2024-04-30)
+
+
+### Bug Fixes
+
+* removing shadow-md token ([#963](https://github.com/solid-design-system/solid/issues/963)) ([c811e74](https://github.com/solid-design-system/solid/commit/c811e749a89cfba87ca83953ce71ee2227d38683)), closes [#573](https://github.com/solid-design-system/solid/issues/573)
+
+
+### BREAKING CHANGES
+
+* remove `shadow-md` token
+
+following
+
 # [@solid-design-system/tokens-v3.1.0](https://github.com/solid-design-system/solid/compare/tokens/3.0.0...tokens/3.1.0) (2024-04-23)
 
 

@@ -16,7 +16,7 @@ export default {
 const img = (hidden = false) => html`
   <img
     class="w-16 h-16 rounded-full overflow-hidden object-cover ${hidden ? 'hidden' : ''}"
-    src="./placeholders/family.jpg"
+    src="./placeholders/images/family.jpg"
     alt="A caring father, balancing one child on his shoulder and gently cradling another in his arms."
   />
 `;
@@ -96,8 +96,8 @@ export const Size = {
 };
 
 /**
- * This version, called 'inverted', maintains the flexibility of the quote component. It primarily
- * focuses on changing all text within the component to white, ensuring readability and adaptability
+ * This version, called 'inverted', maintains the flexibility of the quote pattern. It primarily
+ * focuses on changing all text within the pattern to white, ensuring readability and adaptability
  * for various branding requirements.
  */
 
@@ -148,7 +148,7 @@ export const Inverted = {
 
 /**
  * The `variant` version of this quote provides additional flexibility by allowing you to toggle
- * the avatar image on or off. This enables you to use the component with or without a user image,
+ * the avatar image on or off. This enables you to use the pattern with or without a user image,
  * catering to your design needs.
  */
 

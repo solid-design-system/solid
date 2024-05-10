@@ -62,7 +62,8 @@ function versionComponents(source, destination) {
         let fileContent = fs.readFileSync(filePath, 'utf-8');
 
         components.forEach(componentName => {
-          const regex = new RegExp(`(?!--)sd-${componentName}`, 'g');
+          // Events and CSS Variables should not be versioned
+          const regex = new RegExp(`(?<!this.emit\\(")(?!--)sd-${componentName}`, 'g');
           fileContent = fileContent.replace(regex, `sd-${currentVersion}-${componentName}`);
         });
 

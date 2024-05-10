@@ -3,35 +3,12 @@
   "extends": ["config:base", "schedule:daily", ":disableRateLimiting"],
   "schedule": "before 5am every weekday",
   "timezone": "Europe/Berlin",
-  "packageRules": [
-    {
-      "matchUpdateTypes": ["minor", "patch"],
-      "matchCurrentVersion": ">= 1.0.0",
-      "automerge": true
-    },
-    {
-      "matchDepNames": ["node", "pnpm"],
-      "enabled": false
-    },
-    {
-      "matchPackagePrefixes": ["@types/"],
-      "automerge": true,
-      "major": {
-        "automerge": false
-      }
-    }
-  ],
-  "lockFileMaintenance": {
+  "rebaseWhen": "never",
+  "vulnerabilityAlerts": {
     "enabled": true,
-    "automerge": false
+    "labels": ["npm dependencies, renovate, security"],
+    "automerge": true
   },
-  "major": {
-    "automerge": false
-  },
-  "prConcurrentLimit": 10,
-  "automergeType": "pr",
-  "automergeStrategy": "squash",
-  "automergeSchedule": ["after 10pm every weekday", "before 5am every weekday"],
-  "autoApprove": true,
-  "rebaseWhen": "never"
+  "osvVulnerabilityAlerts": true,
+  "commitMessagePrefix": "chore(security deps): "
 }

@@ -1,3 +1,47 @@
+# [@solid-design-system/components-v3.3.0](https://github.com/solid-design-system/solid/compare/components/3.2.0...components/3.3.0) (2024-05-06)
+
+
+### Features
+
+* ✨ optimize `autocomplete-config` to allow max-height for listbox ([#1043](https://github.com/solid-design-system/solid/issues/1043)) ([3802b3e](https://github.com/solid-design-system/solid/commit/3802b3e22d85821273bfcac82e3ed8dfe966109b))
+
+### 📈 Stats
+* Bundle size (uncompressed): 292 KB (unchanged)
+* Bundle size (gzipped): 70 KB (unchanged)
+
+# [@solid-design-system/components-v3.2.0](https://github.com/solid-design-system/solid/compare/components/3.1.0...components/3.2.0) (2024-05-06)
+
+
+### Features
+
+* ✨add placeholder video ([#1032](https://github.com/solid-design-system/solid/issues/1032)) ([0bf4597](https://github.com/solid-design-system/solid/commit/0bf459788f02bc27b7a3f3515d47b20da3f51f67))
+
+### 📈 Stats
+* Bundle size (uncompressed): 292 KB (unchanged)
+* Bundle size (gzipped): 70 KB (unchanged)
+
+# [@solid-design-system/components-v3.1.0](https://github.com/solid-design-system/solid/compare/components/3.0.1...components/3.1.0) (2024-04-29)
+
+
+### Features
+
+* ✨ add autocomplete pattern + helper ([#962](https://github.com/solid-design-system/solid/issues/962)) ([8b4bdeb](https://github.com/solid-design-system/solid/commit/8b4bdeb72b86cf5e9ce12f2c463907cb5402db5e)), closes [#269](https://github.com/solid-design-system/solid/issues/269)
+
+### 📈 Stats
+* Bundle size (uncompressed): 292 KB (+4 KB / +1%)
+* Bundle size (gzipped): 70 KB (+1 KB / +1%)
+
+# [@solid-design-system/components-v3.0.1](https://github.com/solid-design-system/solid/compare/components/3.0.0...components/3.0.1) (2024-04-29)
+
+
+### Bug Fixes
+
+* exclude event names from versioning ([#995](https://github.com/solid-design-system/solid/issues/995)) ([f72aff2](https://github.com/solid-design-system/solid/commit/f72aff2029cf9e2f67deb30796ed08017f018c27))
+
+### 📈 Stats
+* Bundle size (uncompressed): 288 KB (unchanged)
+* Bundle size (gzipped): 69 KB (unchanged)
+
 # [@solid-design-system/components-v3.0.0](https://github.com/solid-design-system/solid/compare/components/2.12.0...components/3.0.0) (2024-04-26)
 
 

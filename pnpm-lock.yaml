@@ -149,6 +149,9 @@ importers:
       '@storybook/web-components-vite':
         specifier: ^8.0.0
         version: 8.0.6(lit@3.1.2)(react-dom@18.2.0)(react@18.2.0)(typescript@5.4.5)(vite@5.2.8)
+      '@tarekraafat/autocomplete.js':
+        specifier: ^10.2.7
+        version: 10.2.7
       '@types/mocha':
         specifier: ^10.0.4
         version: 10.0.6
@@ -9865,7 +9868,13 @@ snapshots:
       - react-dom
       - supports-color
 
-  '@testing-library/dom@9.3.3':
+  /@tarekraafat/autocomplete.js@10.2.7:
+    resolution: {integrity: sha512-iE+dnXI8/LrTaSORrnNdSyXg/bFCbCpz/R5GUdB3ioW+9PVEhglxNcSDQNeCXtrbRG0kOBFUd4unEiwcmqyn8A==}
+    dev: true
+
+  /@testing-library/dom@9.3.3:
+    resolution: {integrity: sha512-fB0R+fa3AUqbLHWyxXa2kGVtf1Fe1ZZFr0Zp6AIbIAzXb2mKbEXl+PCQNUOaq5lbTab5tfctfXRNsWXxa2f7Aw==}
+    engines: {node: '>=14'}
     dependencies:
       '@babel/code-frame': 7.22.13
       '@babel/runtime': 7.23.2
