@@ -118,7 +118,7 @@
     "chromatic": "^11.0.0",
     "comment-parser": "^1.4.1",
     "countup.js": "^2.8.0",
-    "cssnano": "^6.0.1",
+    "cssnano": "^7.0.0",
     "globby": "^14.0.0",
     "gzip-size": "^7.0.0",
     "jsonata": "^2.0.3",
