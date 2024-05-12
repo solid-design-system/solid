@@ -133,7 +133,7 @@
     "react-dom": "^18.2.0",
     "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-summary": "^2.0.0",
-    "semantic-release": "^19.0.5",
+    "semantic-release": "^23.0.0",
     "semantic-release-monorepo": "^7.0.5",
     "sinon": "^17.0.1",
     "storybook": "^8.0.0",
