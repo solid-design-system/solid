@@ -3,17 +3,17 @@ import type SdInput from "src/components/input/input";
 /**
  * This function is a helper to quickly setup autocomplete.js for Solid components.
  * Besides some needed defaults it adds additional styles and event listeners.
- * @param selector - The selector to get the input element from the ShadowDOM, defaults to '#autoComplete'.
+ * @param sdInputSelector - Reference to `sd-input` element instance or selector to the element, defaults to `#autoComplete`.
  * @returns The configuration object for autocomplete.js.
  */
 export function setupAutocomplete(
-  selector: HTMLUnknownElement | string = '#autoComplete',
+  sdInputSelector: HTMLUnknownElement | string = '#autoComplete',
   { setValueOnSelection, scrollSelectionIntoView } = {
     setValueOnSelection: true,
     scrollSelectionIntoView: true
   }
 ) {
-  const sdInput: SdInput = getAndVerifySdInputElement(selector);
+  const sdInput: SdInput = getAndVerifySdInputElement(sdInputSelector);
 
   const input = sdInput.shadowRoot!.querySelector('input')!;
 
