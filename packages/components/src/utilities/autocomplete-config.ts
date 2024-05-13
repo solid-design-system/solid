@@ -83,13 +83,13 @@ export function setupAutocomplete(
 
   /** Open and close events to add styles to the input */
   input.addEventListener('open', () => {
-    sdInputShadowRoot.querySelector('sd-popup')?.setAttribute('active', 'true');
+    sdPopup.setAttribute('active', 'true');
     sdInputShadowRoot.querySelector('[part="border"]')?.classList.add('rounded-b-none');
     sdInputShadowRoot.querySelector('[part="form-control"]')?.classList.add('z-50');
   });
 
   input.addEventListener('close', () => {
-    sdInputShadowRoot.querySelector('sd-popup')?.removeAttribute('active');
+    sdPopup.removeAttribute('active');
     sdInputShadowRoot.querySelector('[part="border"]')?.classList.remove('rounded-b-none');
     sdInputShadowRoot.querySelector('[part="form-control"]')?.classList.remove('z-50');
   });
