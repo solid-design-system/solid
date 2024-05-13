@@ -195,9 +195,8 @@ export const Simple = {
         // preview-ignore:end
 
         Promise.all([customElements.whenDefined('sd-input'), customElements.whenDefined('sd-popup')]).then(() => {
-          /* Simple example */
           const { config: simpleConfig } = setupAutocomplete('#simple-input', '#simple-popup');
-          new autoComplete({
+          const simpleAutocomplete = new autoComplete({
             ...simpleConfig,
             placeHolder: 'Find funds...',
             data
@@ -211,7 +210,7 @@ export const Simple = {
 /**
   Customize the resultsList by using a custom element for the resultItem.
  */
-export const TeaserResultItem = {
+export const CustomResultItem = {
   parameters: {
     controls: {
       exclude: ['autocomplete']
@@ -221,8 +220,8 @@ export const TeaserResultItem = {
     const setupAutocomplete = solidAutocomplete;
     const data = mock;
     return html`
-      <sd-input id="teaser-result-item-input" type="search"><b slot="label">Teaser result item</b></sd-input>
-      <sd-popup id="teaser-result-item-popup"></sd-popup>
+      <sd-input id="custom-result-item-input" type="search"><b slot="label">Custom result item</b></sd-input>
+      <sd-popup id="custom-result-item-popup"></sd-popup>
       <script type="module">
         import './autocomplete/autoComplete.min.js';
 
@@ -232,10 +231,9 @@ export const TeaserResultItem = {
         // preview-ignore:end
 
         Promise.all([customElements.whenDefined('sd-input'), customElements.whenDefined('sd-popup')]).then(() => {
-          /* Simple example */
-          const { config: simpleConfig } = setupAutocomplete('#teaser-result-item-input', '#teaser-result-item-popup');
-          new autoComplete({
-            ...simpleConfig,
+          const { config: baseConfig } = setupAutocomplete('#custom-result-item-input', '#custom-result-item-popup');
+          const teaserResultItemAutocomplete = new autoComplete({
+            ...baseConfig,
             placeHolder: 'Find funds...',
             resultsList: {
               tag: 'sd-popup',
@@ -284,11 +282,9 @@ export const HighlightQuery = {
         // preview-ignore:end
 
         Promise.all([customElements.whenDefined('sd-input'), customElements.whenDefined('sd-popup')]).then(() => {
-          /* Highlighting */
-          const { config: highlightConfig } = setupAutocomplete('#highlight-input', '#highlight-popup');
-          new autoComplete({
-            ...highlightConfig,
-            // API Basic Configuration Object
+          const { config: baseConfig } = setupAutocomplete('#highlight-input', '#highlight-popup');
+          const highlightAutocomplete = new autoComplete({
+            ...baseConfig,
             placeHolder: 'Find funds...',
             data,
             resultItem: {
@@ -325,27 +321,23 @@ export const OpenOnClick = {
         // preview-ignore:end
 
         Promise.all([customElements.whenDefined('sd-input'), customElements.whenDefined('sd-popup')]).then(() => {
-          /** Show all on click */
-          const { config: showAllOnClickConfig } = setupAutocomplete('#show-all-on-click-input', '#show-all-on-click-popup');
-          const showAllOnClickExample = new autoComplete({
-            ...showAllOnClickConfig,
+          const { config: baseConfig } = setupAutocomplete('#show-all-on-click-input', '#show-all-on-click-popup');
+          const showAllOnClickAutocomplete = new autoComplete({
+            ...baseConfig,
             threshold: 0,
             placeHolder: 'Find funds...',
             data,
             resultsList: {
-              ...showAllOnClickConfig.resultsList,
+              ...baseConfig.resultsList,
               maxResults: undefined
             },
             events: {
               input: {
                 focus(event) {
-                  showAllOnClickExample.start();
+                  showAllOnClickAutocomplete.start();
                 }
               }
             },
-            resultItem: {
-              highlight: true
-            }
           });
         });
       </script>
@@ -377,10 +369,9 @@ export const GroupElements = {
         // preview-ignore:end
 
         Promise.all([customElements.whenDefined('sd-input'), customElements.whenDefined('sd-popup')]).then(() => {
-          /** Group elements by their first character */
-          const { config: groupElementsConfig } = setupAutocomplete('#group-elements-input', '#group-elements-popup');
+          const { config: baseConfig } = setupAutocomplete('#group-elements-input', '#group-elements-popup');
           const groupElementsAutocomplete = new autoComplete({
-            ...groupElementsConfig,
+            ...baseConfig,
             placeHolder: 'Find funds...',
             data: {
               src: data.src,
@@ -404,7 +395,7 @@ export const GroupElements = {
               }
             },
             resultsList: {
-              ...groupElementsConfig.resultsList,
+              ...baseConfig.resultsList,
               // unlimited elements
               maxResults: undefined
             },
@@ -465,27 +456,16 @@ export const SuggestionContainerHeight = {
         // preview-ignore:end
 
         Promise.all([customElements.whenDefined('sd-input'), customElements.whenDefined('sd-popup')]).then(() => {
-          /** Show all on click */
-          const { config: showAllOnClickConfig } = setupAutocomplete('#container-height-input', '#container-height-popup');
-          const showAllOnClickExample = new autoComplete({
-            ...showAllOnClickConfig,
+          const { config: baseConfig } = setupAutocomplete('#container-height-input', '#container-height-popup');
+          const containerHeightAutocomplete = new autoComplete({
+            ...baseConfig,
             threshold: 0,
             placeHolder: 'Find funds...',
             data,
             resultsList: {
-              ...showAllOnClickConfig.resultsList,
+              ...baseConfig.resultsList,
               maxResults: undefined
             },
-            events: {
-              input: {
-                focus(event) {
-                  showAllOnClickExample.start();
-                }
-              }
-            },
-            resultItem: {
-              highlight: true
-            }
           });
         });
       </script>
@@ -507,8 +487,8 @@ export const SuggestionContainerHeight = {
  *     const setupAutocomplete = solidAutocomplete;
  *     const data = mock;
  *     return html`
- *       <sd-input id="async-example-input" type="search"><b slot="label">Async result fetch</b></sd-input>
- *       <sd-popup id="async-example-popup"></sd-popup>
+ *       <sd-input id="async-input" type="search"><b slot="label">Async result fetch</b></sd-input>
+ *       <sd-popup id="async-popup"></sd-popup>
  *       <script type="module">
  *         import './autocomplete/autoComplete.min.js';
  *
@@ -518,11 +498,9 @@ export const SuggestionContainerHeight = {
  *         // preview-ignore:end
  *
  *         Promise.all([customElements.whenDefined('sd-input'), customElements.whenDefined('sd-popup')]).then(() => {
- *           // Simple example
- *           const { config: simpleConfig } = setupAutocomplete('#async-example-input', '#async-example-popup');
- *
- *           new autoComplete({
- *             ...simpleConfig,
+ *           const { config: baseConfig } = setupAutocomplete('#async-input', '#async-popup');
+ *           const asyncAutocomplete = new autoComplete({
+ *             ...baseConfig,
  *             data: {
  *               src: async query => {
  *                 await new Promise(resolve => setTimeout(resolve, 1000));
