@@ -41,7 +41,7 @@ export default class SdStep extends SolidElement {
   @property({ reflect: true }) orientation: 'horizontal' | 'vertical' = 'horizontal';
 
   /** Determines the state of the step. */
-  @property({ reflect: true }) state: 'waiting' | 'inProgress' | 'finished' = 'waiting';
+  @property({ reflect: true }) state: 'disabled' | 'current' | 'default' = 'default';
 
   /** Removes the tail from the step. */
   @property({ reflect: true, type: Boolean, attribute: 'no-tail' }) noTail = false;
@@ -88,8 +88,7 @@ export default class SdStep extends SolidElement {
           this.orientation === 'horizontal'
             ? 'flex-col w-full'
             : 'flex-row gap-4 items-stretch h-full w-min overflow-hidden',
-          this.state === 'waiting' ? '!text-neutral-500 ' : '',
-          this.state === 'finished' && 'group'
+          this.state === 'default' && 'group'
         )}
         @focus=${this.handleFocus}
         @blur=${this.handleBlur}
@@ -112,21 +111,21 @@ export default class SdStep extends SolidElement {
           
           <${tag}
             part="circle"
-            ?disabled=${this.state !== 'finished'}
-            tabindex=${this.state === 'finished' ? '0' : '-1'}
+            ?disabled=${this.state !== 'default'}
+            tabindex=${this.state === 'default' ? '0' : '-1'}
             href=${ifDefined(isLink ? this.href : undefined)}
-            aria-label=${this.state === 'finished' && 'Step completed'}
+            aria-label=${this.state === 'default' && 'Step completed'}
             class=${cx(
               'border rounded-full aspect-square circle flex items-center justify-center shrink-0 font-bold select-none',
-              this.state === 'finished' ? 'focus-visible:focus-outline' : 'focus-visible:outline-none',
+              this.state === 'default' ? 'focus-visible:focus-outline' : 'focus-visible:outline-none',
               this.size === 'lg' ? 'w-12' : 'w-8',
-              this.state === 'waiting' && 'border-neutral-400',
-              this.state === 'finished' && 'border-primary group-hover:bg-primary-100 group-hover:border-primary-500',
-              this.state === 'inProgress' && 'bg-accent border-none text-white'
+              this.state === 'disabled' && 'border-neutral-400 text-neutral-500',
+              this.state === 'default' && 'border-primary group-hover:bg-primary-100 group-hover:border-primary-500',
+              this.state === 'current' && 'bg-accent border-none text-white'
             )}
           >
             ${
-              this.state === 'finished'
+              this.state === 'default'
                 ? html`<slot name="complete-icon">
                     <sd-icon
                       name="status-hook"
@@ -149,7 +148,7 @@ export default class SdStep extends SolidElement {
                     <sd-divider
                       part="tail"
                       orientation="horizontal"
-                      class=${cx('w-full my-auto mr-2', this.state === 'finished' && 'tail-to-primary')}
+                      class=${cx('w-full my-auto mr-2', this.state === 'default' && 'tail-to-primary')}
                     ></sd-divider>
                   `
                 : html`<sd-divider
@@ -157,17 +156,17 @@ export default class SdStep extends SolidElement {
                     orientation="vertical"
                     class=${cx(
                       'flex-grow flex-shrink-0 basis-auto h-full w-[1px] mx-auto',
-                      this.state === 'finished' && 'tail-to-primary'
+                      this.state === 'default' && 'tail-to-primary'
                     )}
                   ></sd-divider> `
           }
         </div>
 
-        <div part="text-container" class=${cx('w-24 mt-4 break-words flex flex-col gap-2', this.orientation === 'horizontal' ? 'text-center' : 'text-left', this.state === 'waiting' && '!text-neutral-500')}>
-          <div part="label" class=${cx('!font-bold sd-paragraph', this.state === 'waiting' && '!text-neutral-500', this.state === 'finished' && '!text-primary group-hover:!text-primary-500')}>
-            ${this.label === '' ? html`<slot name="label"></slot>` : this.label}
+        <div part="text-container" class=${cx('w-24 mt-4 break-words flex flex-col gap-2', this.orientation === 'horizontal' ? 'text-center' : 'text-left', this.state === 'disabled' && '!text-neutral-500')}>
+          <div part="label" class=${cx('!font-bold sd-paragraph', this.state === 'disabled' && '!text-neutral-500', this.state === 'default' && '!text-primary group-hover:!text-primary-500')}>
+            <slot name="label">${this.label}</slot>
           </div>
-          <div part="description" class=${cx('sd-paragraph sd-paragraph--size-sm', this.state === 'waiting' && '!text-neutral-500')}>
+          <div part="description" class=${cx('sd-paragraph sd-paragraph--size-sm', this.state === 'disabled' && '!text-neutral-500')}>
           ${this.description || html`<slot></slot>`}
           </div>
         </div>

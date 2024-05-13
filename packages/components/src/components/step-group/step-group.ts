@@ -34,6 +34,9 @@ export default class SdStepGroup extends SolidElement {
   /** The active step in the step-group. */
   @property({ type: Number, reflect: true, attribute: 'active-step' }) activeStep = 0;
 
+  /** Determines if the step-group is interactive. */
+  @property({ type: Boolean, reflect: true }) interactive = false;
+
   connectedCallback() {
     super.connectedCallback();
 
@@ -51,16 +54,11 @@ export default class SdStepGroup extends SolidElement {
         step.size = this.size;
         step.orientation = this.orientation;
 
-        if (step.state === 'inProgress') {
+        if (!this.interactive) {
+          step.state = 'default';
+        } else if (step.state === 'current') {
           activeStep = index;
         }
-
-        // Set the active step on click
-        step.addEventListener('click', () => {
-          if (step.state === 'finished') {
-            this.setActiveStep(index);
-          }
-        });
       });
 
       this.setActiveStep(activeStep || this.activeStep);
@@ -90,11 +88,11 @@ export default class SdStepGroup extends SolidElement {
    * @param index The index of the step to set as active.
    */
   setActiveStep(index: number) {
-    if (index >= 0 && index < this.steps.length) {
+    if (index >= 0 && index < this.steps.length && this.interactive) {
       this.activeStep = index;
 
       this.steps.forEach((step, i) => {
-        step.state = i === index ? 'inProgress' : i < index ? 'finished' : 'waiting';
+        step.state = i === index ? 'current' : i < index ? 'default' : 'disabled';
       });
     }
   }

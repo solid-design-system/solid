@@ -8,37 +8,37 @@ describe('<sd-step>', () => {
 
     // Assert
     expect(el).to.exist;
-    expect(el).to.have.attribute('state', 'waiting');
+    expect(el).to.have.attribute('state', 'disabled');
     expect(el).to.have.attribute('orientation', 'horizontal');
     expect(el).to.have.attribute('index', '1');
     expect(el).to.have.attribute('size', 'lg');
   });
 
   describe('Accessibility', () => {
-    describe('when state `waiting` is used', () => {
+    describe('when state `disabled` is used', () => {
       it('should pass accessibility tests', async () => {
         // Arrange
-        const el = await fixture<SdStep>(html` <sd-step state="waiting"> </sd-step> `);
+        const el = await fixture<SdStep>(html` <sd-step state="disabled"> </sd-step> `);
 
         // Assert
         await expect(el).to.be.accessible();
       });
     });
 
-    describe('when state `inProgress` is used', () => {
+    describe('when state `current` is used', () => {
       it('should pass accessibility tests', async () => {
         // Arrange
-        const el = await fixture<SdStep>(html` <sd-step state="inProgress"> </sd-step> `);
+        const el = await fixture<SdStep>(html` <sd-step state="current"> </sd-step> `);
 
         // Assert
         await expect(el).to.be.accessible();
       });
     });
 
-    describe('when state `finished` is used', () => {
+    describe('when state `default` is used', () => {
       it('should pass accessibility tests', async () => {
         // Arrange
-        const el = await fixture<SdStep>(html` <sd-step state="finished"> </sd-step> `);
+        const el = await fixture<SdStep>(html` <sd-step state="default"> </sd-step> `);
 
         // Assert
         await expect(el).to.be.accessible();

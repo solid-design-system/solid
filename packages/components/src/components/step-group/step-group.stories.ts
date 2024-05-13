@@ -16,17 +16,17 @@ export default {
       type: 'slot',
       name: 'default',
       value: `
-        <sd-step size="lg" orientation="horizontal" state="finished">
+        <sd-step size="lg" orientation="horizontal" state="default">
           <p slot="label">Lorem ipsum dolor sit</p>
           Lorem ipsum est dolor sit amet
         </sd-step>
 
-        <sd-step size="lg" orientation="horizontal" state="inProgress">
+        <sd-step size="lg" orientation="horizontal" state="current">
           <p slot="label">Exercitation ullamco laboris</p>
           Lorem ipsum est dolor sit amet
         </sd-step>
 
-        <sd-step size="lg" orientation="horizontal" state="waiting">
+        <sd-step size="lg" orientation="horizontal" state="disabled">
           <p slot="label">Reprehenderit qui in e name</p>
           Lorem ipsum est dolor sit amet
         </sd-step>`
@@ -137,31 +137,37 @@ export const SetActiveStep = {
   render: () => {
     return html`
       <sd-step-group id="set-active" size="lg" orientation="horizontal" active-step="0">
-        <sd-step size="lg" orientation="horizontal" state="finished">
+        <sd-step size="lg" orientation="horizontal" state="default">
           <p slot="label">Lorem ipsum dolor sit</p>
           Lorem ipsum est dolor sit amet
         </sd-step>
 
-        <sd-step size="lg" orientation="horizontal" state="inProgress">
+        <sd-step size="lg" orientation="horizontal" state="current">
           <p slot="label">Exercitation ullamco laboris</p>
           Lorem ipsum est dolor sit amet
         </sd-step>
 
-        <sd-step size="lg" orientation="horizontal" state="waiting">
+        <sd-step size="lg" orientation="horizontal" state="disabled">
           <p slot="label">Reprehenderit qui in e name</p>
           Lorem ipsum est dolor sit amet
         </sd-step>
       </sd-step-group>
 
-      <sd-button class="w-min mt-8" size="sm" id="next">Next</sd-button>
+      <sd-button class="w-20 mt-8" size="sm" id="previous">Previous</sd-button>
+      <sd-button class="w-20 mt-8" size="sm" id="next">Next</sd-button>
 
       <script type="module">
         const stepGroup = await document.querySelector('sd-step-group#set-active');
 
         const nextBtn = document.querySelector('sd-button#next');
+        const prevBtn = document.querySelector('sd-button#previous');
 
         nextBtn.addEventListener('click', () => {
           stepGroup.setActiveStep(stepGroup.activeStep + 1);
+        });
+
+        prevBtn.addEventListener('click', () => {
+          stepGroup.setActiveStep(stepGroup.activeStep - 1);
         });
       </script>
     `;
