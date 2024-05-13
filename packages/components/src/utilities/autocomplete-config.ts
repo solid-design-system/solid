@@ -80,8 +80,10 @@ export function setupAutocomplete(
 
     // `ul` is created by autocomplete.js, see `resultsList`
     const ul = sdInputShadowRoot.querySelector('ul');
-    ul?.setAttribute('part', 'listbox');
-    sdPopup.appendChild(ul!);
+    if (ul) {
+      ul.setAttribute('part', 'listbox');
+      sdPopup.appendChild(ul);
+    }
 
     const styles = css`
       .sd-autocomplete__popup {
