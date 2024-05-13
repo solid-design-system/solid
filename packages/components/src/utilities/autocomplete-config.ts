@@ -23,8 +23,8 @@ export function setupAutocomplete(
     scrollSelectionIntoView: true
   }
 ) {
-  const sdInput: SdInput = getAndVerifySdInputElement(sdInputSelector);
-  const sdPopup: SdPopup = getAndVerifySdPopupElement(sdPopupSelector);
+  const sdInput: SdInput = getAndVerifySdElement<SdInput>('input', sdInputSelector);
+  const sdPopup: SdPopup = getAndVerifySdElement<SdPopup>('popup', sdPopupSelector);
 
   const sdInputShadowRoot: ShadowRoot = getAndVerifyShadowRoot(sdInput);
 
@@ -127,29 +127,29 @@ export function setupAutocomplete(
 }
 
 
-const getAndVerifySdInputElement = (elementOrSelector: HTMLUnknownElement | string) : SdInput => {
+/**
+ * Verifies the element is an `sd-SOMETHING` element and returns it.
+ * 
+ * @param T - i.e. `SdInput`, `SdButton`, `SdAccordionGroup`, etc.
+ * @param name - i.e. `input`, `button`, `accordion-group`, etc.
+ * @param elementOrSelector - element reference or string to be used for `document.querySelector()`
+ * 
+ * @throws Error if the provided element or selector does not resolve to an `sd-SOMETHING` element.
+ * 
+ * @remarks For brevity, comments assume `name === 'input'` and `T === SdInput`. 
+ */
+const getAndVerifySdElement = <T extends HTMLElement>(name:string, elementOrSelector: HTMLUnknownElement | string) : T => {
   const candidate: HTMLUnknownElement | null = typeof elementOrSelector === 'string'
     ? document.querySelector(elementOrSelector)
     : elementOrSelector;
   
   // Verify `candidate` resolves to `sd-input` or `sd-1-2-3-input`.
   // Avoid using `candidate instanceof SdInput` as this would check against _this package's_ `SdInput` class, returning `false` if `sd-input` was imported from somewhere else (i.e. CDN, another bundle)
-  if (!candidate?.tagName.startsWith('SD-') || !candidate.tagName.endsWith('-INPUT')) {
-    throw new Error(`The provided element or selector "${JSON.stringify(elementOrSelector)}" does not resolve to an sd-input element.`);
+  if (!candidate?.tagName.startsWith('SD-') || !candidate.tagName.endsWith(`-${name.toUpperCase()}`)) {
+    throw new Error(`The provided element or selector "${JSON.stringify(elementOrSelector)}" does not resolve to an sd-${name} element.`);
   }
   // We're now reasonably certain that we're dealing with an `sd-input`
-  return candidate as SdInput;
-}
-
-const getAndVerifySdPopupElement = (elementOrSelector: HTMLUnknownElement | string) : SdPopup => {
-  const candidate: HTMLUnknownElement | null = typeof elementOrSelector === 'string'
-    ? document.querySelector(elementOrSelector)
-    : elementOrSelector;
-  
-  if (!candidate?.tagName.startsWith('SD-') || !candidate.tagName.endsWith('-POPUP')) {
-    throw new Error(`The provided element or selector "${JSON.stringify(elementOrSelector)}" does not resolve to an sd-popup element.`);
-  }
-  return candidate as SdPopup;
+  return candidate as T;
 }
 
 const getAndVerifyShadowRoot = (element: HTMLElement) : ShadowRoot => {
