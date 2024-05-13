@@ -32,7 +32,7 @@ import { setupAutocomplete as solidAutocomplete } from '../../solid-components';
  *   import { setupAutocomplete } from '@solid-design-system/unversioned';
  *
  *   Promise.all([customElements.whenDefined('sd-input'), customElements.whenDefined('sd-popup')]).then(() => {
- *     const { config: simpleConfig } = setupAutocomplete('#simple-example');
+ *     const { config: simpleConfig } = setupAutocomplete('#my-sd-input', '#my-sd-popup');
  *     new autoComplete({
  *       ...simpleConfig,
  *       placeHolder: 'Search',
@@ -51,7 +51,7 @@ import { setupAutocomplete as solidAutocomplete } from '../../solid-components';
  *   const { setupAutocomplete } = window['Solid Components'];
  *
  *  Promise.all([customElements.whenDefined('sd-input'), customElements.whenDefined('sd-popup')]).then(() => {
- *     const { config: simpleConfig } = setupAutocomplete('#simple-example');
+ *     const { config: simpleConfig } = setupAutocomplete('#my-sd-input', '#my-sd-popup');
  *     new autoComplete({
  *       ...simpleConfig,
  *       placeHolder: 'Search',
@@ -173,8 +173,6 @@ const mock = {
 /**
   This is the most basic example of the autoComplete.js library. It demonstrates how to set up the library with a simple input field and a list of data.
   The search data is mocked and passed to the autoComplete instance, you can search for the following terms: Aktien, Nachhaltig, Union, Europa, ...
-
-  > Notice: This example is not working, check it out the one on top of this page.
  */
 export const Simple = {
   parameters: {
@@ -186,7 +184,8 @@ export const Simple = {
     const setupAutocomplete = solidAutocomplete;
     const data = mock;
     return html`
-      <sd-input id="simple-example" type="search"><b slot="label">Simple</b></sd-input>
+      <sd-input id="simple-input" type="search"><b slot="label">Simple</b></sd-input>
+      <sd-popup id="simple-popup"></sd-popup>
       <script type="module">
         import './autocomplete/autoComplete.min.js';
 
@@ -197,7 +196,7 @@ export const Simple = {
 
         Promise.all([customElements.whenDefined('sd-input'), customElements.whenDefined('sd-popup')]).then(() => {
           /* Simple example */
-          const { config: simpleConfig } = setupAutocomplete('#simple-example');
+          const { config: simpleConfig } = setupAutocomplete('#simple-input', '#simple-popup');
           new autoComplete({
             ...simpleConfig,
             placeHolder: 'Find funds...',
@@ -210,8 +209,7 @@ export const Simple = {
 };
 
 /**
-  This is an example of how to customize the resultsList. It demonstrates how to change the resultItem to a custom element.
-  The search data is mocked and passed to the autoComplete instance, you can search for the following terms: Aktien, Nachhaltig, Union, Europa, ...
+  Customize the resultsList by using a custom element for the resultItem.
  */
 export const TeaserResultItem = {
   parameters: {
@@ -223,7 +221,8 @@ export const TeaserResultItem = {
     const setupAutocomplete = solidAutocomplete;
     const data = mock;
     return html`
-      <sd-input id="teaser-result-item" type="search"><b slot="label">Teaser result item</b></sd-input>
+      <sd-input id="teaser-result-item-input" type="search"><b slot="label">Teaser result item</b></sd-input>
+      <sd-popup id="teaser-result-item-popup"></sd-popup>
       <script type="module">
         import './autocomplete/autoComplete.min.js';
 
@@ -234,7 +233,7 @@ export const TeaserResultItem = {
 
         Promise.all([customElements.whenDefined('sd-input'), customElements.whenDefined('sd-popup')]).then(() => {
           /* Simple example */
-          const { config: simpleConfig } = setupAutocomplete('#teaser-result-item');
+          const { config: simpleConfig } = setupAutocomplete('#teaser-result-item-input', '#teaser-result-item-popup');
           new autoComplete({
             ...simpleConfig,
             placeHolder: 'Find funds...',
@@ -262,7 +261,7 @@ export const TeaserResultItem = {
 };
 
 /**
-  This is e slightly more advanced example of the autoComplete.js library. It demonstrates how to highlight the query string in the results.
+  Highlight the first occurence of the query string in each result.
  */
 export const HighlightQuery = {
   parameters: {
@@ -274,7 +273,8 @@ export const HighlightQuery = {
     const setupAutocomplete = solidAutocomplete;
     const data = mock;
     return html`
-      <sd-input id="highlight-example" type="search"><b slot="label">Highlight query</b></sd-input>
+      <sd-input id="highlight-input" type="search"><b slot="label">Highlight query</b></sd-input>
+      <sd-popup id="highlight-popup"></sd-popup>
       <script type="module">
         import './autocomplete/autoComplete.min.js';
 
@@ -285,7 +285,7 @@ export const HighlightQuery = {
 
         Promise.all([customElements.whenDefined('sd-input'), customElements.whenDefined('sd-popup')]).then(() => {
           /* Highlighting */
-          const { config: highlightConfig } = setupAutocomplete('#highlight-example');
+          const { config: highlightConfig } = setupAutocomplete('#highlight-input', '#highlight-popup');
           new autoComplete({
             ...highlightConfig,
             // API Basic Configuration Object
@@ -302,7 +302,7 @@ export const HighlightQuery = {
 };
 
 /**
-  This example has the approach to show all the results when the input field is focused and filters the results as the user provides input.
+  Show all results when the input field receives focus.
  */
 export const OpenOnClick = {
   parameters: {
@@ -314,7 +314,8 @@ export const OpenOnClick = {
     const setupAutocomplete = solidAutocomplete;
     const data = mock;
     return html`
-      <sd-input id="show-all-on-click-example" type="search"><b slot="label">Show all items on click</b></sd-input>
+      <sd-input id="show-all-on-click-input" type="search"><b slot="label">Show all items on click</b></sd-input>
+      <sd-popup id="show-all-on-click-popup"></sd-popup>
       <script type="module">
         import './autocomplete/autoComplete.min.js';
 
@@ -325,7 +326,7 @@ export const OpenOnClick = {
 
         Promise.all([customElements.whenDefined('sd-input'), customElements.whenDefined('sd-popup')]).then(() => {
           /** Show all on click */
-          const { config: showAllOnClickConfig } = setupAutocomplete('#show-all-on-click-example');
+          const { config: showAllOnClickConfig } = setupAutocomplete('#show-all-on-click-input', '#show-all-on-click-popup');
           const showAllOnClickExample = new autoComplete({
             ...showAllOnClickConfig,
             threshold: 0,
@@ -353,7 +354,7 @@ export const OpenOnClick = {
 };
 
 /**
-  This example demonstrates how to group elements in the results list by their first character. Also the searched term is highlighted in the results.
+  Group elements in the results list by their first character. Also the searched term is highlighted in the results.
  */
 export const GroupElements = {
   parameters: {
@@ -365,7 +366,8 @@ export const GroupElements = {
     const setupAutocomplete = solidAutocomplete;
     const data = mock;
     return html`
-      <sd-input id="group-elements" type="search"><b slot="label">Group elements</b></sd-input>
+      <sd-input id="group-elements-input" type="search"><b slot="label">Group elements</b></sd-input>
+      <sd-popup id="group-elements-popup"></sd-popup>
       <script type="module">
         import './autocomplete/autoComplete.min.js';
 
@@ -376,7 +378,7 @@ export const GroupElements = {
 
         Promise.all([customElements.whenDefined('sd-input'), customElements.whenDefined('sd-popup')]).then(() => {
           /** Group elements by their first character */
-          const { config: groupElementsConfig } = setupAutocomplete('#group-elements');
+          const { config: groupElementsConfig } = setupAutocomplete('#group-elements-input', '#group-elements-popup');
           const groupElementsAutocomplete = new autoComplete({
             ...groupElementsConfig,
             placeHolder: 'Find funds...',
@@ -434,7 +436,7 @@ export const GroupElements = {
 };
 
 /**
- * This example demonstrates how to customize the appearance of the autocomplete suggestions popup by setting a custom `max-height`.
+ * Customize the appearance of the autocomplete suggestions popup by setting a custom `max-height`.
  * There are two additional parts added (`listbox`, `popup`) and you can use the first one to set the `max-height`.
  */
 export const SuggestionContainerHeight = {
@@ -447,7 +449,8 @@ export const SuggestionContainerHeight = {
     const setupAutocomplete = solidAutocomplete;
     const data = mock;
     return html`
-      <sd-input id="container-height" type="search"><b slot="label">Max-height for list</b></sd-input>
+      <sd-input id="container-height-input" type="search"><b slot="label">Max-height for list</b></sd-input>
+      <sd-popup id="container-height-popup"></sd-popup>
       <style>
         sd-input#container-height::part(listbox) {
           max-height: 110px;
@@ -463,7 +466,7 @@ export const SuggestionContainerHeight = {
 
         Promise.all([customElements.whenDefined('sd-input'), customElements.whenDefined('sd-popup')]).then(() => {
           /** Show all on click */
-          const { config: showAllOnClickConfig } = setupAutocomplete('#container-height');
+          const { config: showAllOnClickConfig } = setupAutocomplete('#container-height-input', '#container-height-popup');
           const showAllOnClickExample = new autoComplete({
             ...showAllOnClickConfig,
             threshold: 0,
@@ -491,7 +494,7 @@ export const SuggestionContainerHeight = {
 };
 
 /**
- * This example demonstrates how to fetch results asynchronously from a remote server or API.
+ * Fetch results asynchronously from a remote server or API.
  * TODO - docs: 📚 add async autocomplete sample #980
  *
  * export const Async = {
@@ -504,7 +507,8 @@ export const SuggestionContainerHeight = {
  *     const setupAutocomplete = solidAutocomplete;
  *     const data = mock;
  *     return html`
- *       <sd-input id="async-example" type="search"><b slot="label">Async result fetch</b></sd-input>
+ *       <sd-input id="async-example-input" type="search"><b slot="label">Async result fetch</b></sd-input>
+ *       <sd-popup id="async-example-popup"></sd-popup>
  *       <script type="module">
  *         import './autocomplete/autoComplete.min.js';
  *
@@ -515,7 +519,7 @@ export const SuggestionContainerHeight = {
  *
  *         Promise.all([customElements.whenDefined('sd-input'), customElements.whenDefined('sd-popup')]).then(() => {
  *           // Simple example
- *           const { config: simpleConfig } = setupAutocomplete('#async-example');
+ *           const { config: simpleConfig } = setupAutocomplete('#async-example-input', '#async-example-popup');
  *
  *           new autoComplete({
  *             ...simpleConfig,

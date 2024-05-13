@@ -1,19 +1,23 @@
 import type SdInput from "src/components/input/input";
+import type SdPopup from "src/components/popup/popup";
 
 /**
  * This function is a helper to quickly setup autocomplete.js for Solid components.
  * Besides some needed defaults it adds additional styles and event listeners.
- * @param sdInputSelector - Reference to `sd-input` element instance or selector to the element, defaults to `#autoComplete`.
+ * @param sdInputSelector - Reference to `sd-input` element or selector to the element, defaults to `#autoCompleteInput`.
+ * @param sdPopupSelector - Reference to `sd-popup` element or selector to the element, defaults to `#autoCompletePopup`.
  * @returns The configuration object for autocomplete.js.
  */
 export function setupAutocomplete(
-  sdInputSelector: HTMLUnknownElement | string = '#autoComplete',
+  sdInputSelector: HTMLUnknownElement | string = '#autoCompleteInput',
+  sdPopupSelector: HTMLUnknownElement | string = '#autoCompletePopup',
   { setValueOnSelection, scrollSelectionIntoView } = {
     setValueOnSelection: true,
     scrollSelectionIntoView: true
   }
 ) {
   const sdInput: SdInput = getAndVerifySdInputElement(sdInputSelector);
+  const sdPopup: SdPopup = getAndVerifySdPopupElement(sdPopupSelector);
 
   const input = sdInput.shadowRoot!.querySelector('input')!;
 
@@ -24,18 +28,18 @@ export function setupAutocomplete(
   input.addEventListener('init', () => {
     const ul = sdInput.shadowRoot?.querySelector('ul');
     ul?.setAttribute('part', 'listbox');
-    const popup = document.createElement('sd-popup');
-    popup.appendChild(ul!);
-    sdInput.shadowRoot?.appendChild(popup);
-    popup?.setAttribute('exportparts', 'popup__content');
-    if (popup) {
-      popup.active = false;
-      popup.autoSize = 'vertical';
-      popup.autoSizePadding = 16;
-      popup.placement = 'bottom-start';
-      popup.anchor = sdInput!;
-      popup.sync = 'width';
-    }
+    sdPopup.appendChild(ul!);
+
+    sdInput.shadowRoot?.appendChild(sdPopup);
+
+    sdPopup.setAttribute('exportparts', 'popup__content');
+    sdPopup.active = false;
+    sdPopup.autoSize = 'vertical';
+    sdPopup.autoSizePadding = 16;
+    sdPopup.placement = 'bottom-start';
+    sdPopup.anchor = sdInput;
+    sdPopup.sync = 'width';
+
     const styles = css`
       sd-popup {
         &::part(popup) {
@@ -117,15 +121,26 @@ export function setupAutocomplete(
 
 
 const getAndVerifySdInputElement = (elementOrSelector: HTMLUnknownElement | string) : SdInput => {
-  const sdInputCandidate: HTMLUnknownElement | null = typeof elementOrSelector === 'string'
+  const candidate: HTMLUnknownElement | null = typeof elementOrSelector === 'string'
     ? document.querySelector(elementOrSelector)
     : elementOrSelector;
   
-  // Verify `sdInput` resolves to `sd-input` or `sd-1-2-3-input`.
-  // Avoid using `sdInput instanceof SdInput` as this would check against _this package's_ `SdInput` class, returning `false` if `sd-input` was imported from somewhere else (i.e. CDN, another bundle)
-  if (!sdInputCandidate?.tagName.startsWith('SD-') || !sdInputCandidate.tagName.endsWith('-INPUT')) {
+  // Verify `candidate` resolves to `sd-input` or `sd-1-2-3-input`.
+  // Avoid using `candidate instanceof SdInput` as this would check against _this package's_ `SdInput` class, returning `false` if `sd-input` was imported from somewhere else (i.e. CDN, another bundle)
+  if (!candidate?.tagName.startsWith('SD-') || !candidate.tagName.endsWith('-INPUT')) {
     throw new Error(`The provided element or selector "${JSON.stringify(elementOrSelector)}" does not resolve to an sd-input element.`);
   }
   // We're now reasonably certain that we're dealing with an `sd-input`
-  return sdInputCandidate as SdInput;
+  return candidate as SdInput;
+}
+
+const getAndVerifySdPopupElement = (elementOrSelector: HTMLUnknownElement | string) : SdPopup => {
+  const candidate: HTMLUnknownElement | null = typeof elementOrSelector === 'string'
+    ? document.querySelector(elementOrSelector)
+    : elementOrSelector;
+  
+  if (!candidate?.tagName.startsWith('SD-') || !candidate.tagName.endsWith('-POPUP')) {
+    throw new Error(`The provided element or selector "${JSON.stringify(elementOrSelector)}" does not resolve to an sd-popup element.`);
+  }
+  return candidate as SdPopup;
 }
