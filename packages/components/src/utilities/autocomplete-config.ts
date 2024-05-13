@@ -19,18 +19,20 @@ export function setupAutocomplete(
   const sdInput: SdInput = getAndVerifySdInputElement(sdInputSelector);
   const sdPopup: SdPopup = getAndVerifySdPopupElement(sdPopupSelector);
 
-  const input = sdInput.shadowRoot!.querySelector('input')!;
+  const sdInputShadowRoot: ShadowRoot = getAndVerifyShadowRoot(sdInput);
+
+  const input = sdInputShadowRoot.querySelector('input')!;
 
   /* Helper to use PostCSS and Syntax highlighting */
   const css = (string: TemplateStringsArray) => string[0];
 
   /** Setup elements and styles for autocomplete.js */
   input.addEventListener('init', () => {
-    const ul = sdInput.shadowRoot?.querySelector('ul');
+    const ul = sdInputShadowRoot.querySelector('ul');
     ul?.setAttribute('part', 'listbox');
     sdPopup.appendChild(ul!);
 
-    sdInput.shadowRoot?.appendChild(sdPopup);
+    sdInputShadowRoot.appendChild(sdPopup);
 
     sdPopup.setAttribute('exportparts', 'popup__content');
     sdPopup.active = false;
@@ -68,7 +70,7 @@ export function setupAutocomplete(
     `;
     const styleSheet = new CSSStyleSheet();
     styleSheet.replaceSync(styles);
-    sdInput.shadowRoot!.adoptedStyleSheets = [...sdInput.shadowRoot!.adoptedStyleSheets, styleSheet];
+    sdInputShadowRoot.adoptedStyleSheets = [...sdInputShadowRoot.adoptedStyleSheets, styleSheet];
   });
 
   if (setValueOnSelection) {
@@ -81,22 +83,22 @@ export function setupAutocomplete(
 
   /** Open and close events to add styles to the input */
   input.addEventListener('open', () => {
-    sdInput.shadowRoot?.querySelector('sd-popup')?.setAttribute('active', 'true');
-    sdInput.shadowRoot?.querySelector('[part="border"]')?.classList.add('rounded-b-none');
-    sdInput.shadowRoot?.querySelector('[part="form-control"]')?.classList.add('z-50');
+    sdInputShadowRoot.querySelector('sd-popup')?.setAttribute('active', 'true');
+    sdInputShadowRoot.querySelector('[part="border"]')?.classList.add('rounded-b-none');
+    sdInputShadowRoot.querySelector('[part="form-control"]')?.classList.add('z-50');
   });
 
   input.addEventListener('close', () => {
-    sdInput.shadowRoot?.querySelector('sd-popup')?.removeAttribute('active');
-    sdInput.shadowRoot?.querySelector('[part="border"]')?.classList.remove('rounded-b-none');
-    sdInput.shadowRoot?.querySelector('[part="form-control"]')?.classList.remove('z-50');
+    sdInputShadowRoot.querySelector('sd-popup')?.removeAttribute('active');
+    sdInputShadowRoot.querySelector('[part="border"]')?.classList.remove('rounded-b-none');
+    sdInputShadowRoot.querySelector('[part="form-control"]')?.classList.remove('z-50');
   });
 
   /** Selected elements should also be in view */
   if (scrollSelectionIntoView) {
     input.addEventListener('navigate', () => {
       // get element which has currently aria-selected
-      const selected = sdInput.shadowRoot!.querySelector('[aria-selected="true"]');
+      const selected = sdInputShadowRoot.querySelector('[aria-selected="true"]');
       selected?.scrollIntoView({ block: 'nearest' });
     });
   }
@@ -143,4 +145,11 @@ const getAndVerifySdPopupElement = (elementOrSelector: HTMLUnknownElement | stri
     throw new Error(`The provided element or selector "${JSON.stringify(elementOrSelector)}" does not resolve to an sd-popup element.`);
   }
   return candidate as SdPopup;
+}
+
+const getAndVerifyShadowRoot = (element: HTMLElement) : ShadowRoot => {
+  if (!element.shadowRoot) {
+    throw new Error(`The provided element does not have a shadowRoot.`);
+  }
+  return element.shadowRoot;
 }
