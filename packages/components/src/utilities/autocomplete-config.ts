@@ -1,22 +1,20 @@
 /**
  * This function is a helper to quickly setup autocomplete.js for Solid components.
  * Besides some needed defaults it adds additional styles and event listeners.
- * @param selector - The selector to get the input element from the ShadowDOM.
+ * @param selector - The selector to get the input element from the ShadowDOM, defaults to '#autoComplete'.
  * @returns The configuration object for autocomplete.js.
  */
 export function setupAutocomplete(
-  selector: HTMLUnknownElement | string,
+  selector: HTMLUnknownElement | string = '#autoComplete',
   { setValueOnSelection, scrollSelectionIntoView } = {
     setValueOnSelection: true,
     scrollSelectionIntoView: true
   }
 ) {
   // @ts-expect-error - We expect the input to be found
-  const sdInput: HTMLInputElement = !selector
-    ? document.querySelector('#autoComplete')
-    : typeof selector === 'string'
-      ? document.querySelector(selector)
-      : selector;
+  const sdInput: HTMLInputElement = typeof selector === 'string'
+    ? document.querySelector(selector)
+    : selector;
 
   const input = sdInput.shadowRoot!.querySelector('input')!;
 
