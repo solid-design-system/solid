@@ -35,6 +35,7 @@ export function setupAutocomplete(
     sdInputShadowRoot.appendChild(sdPopup);
 
     sdPopup.setAttribute('exportparts', 'popup__content');
+    sdPopup.classList.add('sd-autocomplete__popup');
     sdPopup.active = false;
     sdPopup.autoSize = 'vertical';
     sdPopup.autoSizePadding = 16;
@@ -43,7 +44,7 @@ export function setupAutocomplete(
     sdPopup.sync = 'width';
 
     const styles = css`
-      sd-popup {
+      .sd-autocomplete__popup {
         &::part(popup) {
           @apply overflow-y-scroll z-dropdown border-2 border-t-0 border-primary bg-white rounded-b-default shadow px-2 py-3;
         }
