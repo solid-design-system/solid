@@ -6,13 +6,20 @@ import type SdPopup from "src/components/popup/popup";
  * Besides some needed defaults it adds additional styles and event listeners.
  * @param sdInputSelector - Reference to `sd-input` element or selector to the element, defaults to `#autoCompleteInput`.
  * @param sdPopupSelector - Reference to `sd-popup` element or selector to the element, defaults to `#autoCompletePopup`.
+ * @param setValueOnSelection - If `true` the value of `sd-input` will be updated to reflect the current selection. Default: `true`.
+ * @param scrollSelectionIntoView - If `true` the selected element will be scrolled into view. Default: `true`.
  * @returns The configuration object for autocomplete.js.
  */
 export function setupAutocomplete(
   sdInputSelector: HTMLUnknownElement | string = '#autoCompleteInput',
   sdPopupSelector: HTMLUnknownElement | string = '#autoCompletePopup',
-  { setValueOnSelection, scrollSelectionIntoView } = {
+  {
+    setValueOnSelection,
+    scrollSelectionIntoView,
+  } = {
+    /** Bind the value to `sd-input` */
     setValueOnSelection: true,
+    /** Selected elements should also be in view */
     scrollSelectionIntoView: true
   }
 ) {
@@ -28,10 +35,6 @@ export function setupAutocomplete(
 
   /** Setup elements and styles for autocomplete.js */
   input.addEventListener('init', () => {
-    const ul = sdInputShadowRoot.querySelector('ul');
-    ul?.setAttribute('part', 'listbox');
-    sdPopup.appendChild(ul!);
-
     sdInputShadowRoot.appendChild(sdPopup);
 
     sdPopup.setAttribute('exportparts', 'popup__content');
@@ -42,6 +45,11 @@ export function setupAutocomplete(
     sdPopup.placement = 'bottom-start';
     sdPopup.anchor = sdInput;
     sdPopup.sync = 'width';
+
+    // `ul` is created by autocomplete.js, see `resultsList`
+    const ul = sdInputShadowRoot.querySelector('ul');
+    ul?.setAttribute('part', 'listbox');
+    sdPopup.appendChild(ul!);
 
     const styles = css`
       .sd-autocomplete__popup {
@@ -74,15 +82,6 @@ export function setupAutocomplete(
     sdInputShadowRoot.adoptedStyleSheets = [...sdInputShadowRoot.adoptedStyleSheets, styleSheet];
   });
 
-  if (setValueOnSelection) {
-    /** Bind the value to `sd-input` */
-    input.addEventListener('selection', (event: CustomEvent) => {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-      sdInput.value = event?.detail?.selection.value as string;
-    });
-  }
-
-  /** Open and close events to add styles to the input */
   input.addEventListener('open', () => {
     sdPopup.setAttribute('active', 'true');
     sdInputShadowRoot.querySelector('[part="border"]')?.classList.add('rounded-b-none');
@@ -95,10 +94,15 @@ export function setupAutocomplete(
     sdInputShadowRoot.querySelector('[part="form-control"]')?.classList.remove('z-50');
   });
 
-  /** Selected elements should also be in view */
+  if (setValueOnSelection) {
+    input.addEventListener('selection', (event: CustomEvent) => {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+      sdInput.value = event?.detail?.selection.value as string;
+    });
+  }
+
   if (scrollSelectionIntoView) {
     input.addEventListener('navigate', () => {
-      // get element which has currently aria-selected
       const selected = sdInputShadowRoot.querySelector('[aria-selected="true"]');
       selected?.scrollIntoView({ block: 'nearest' });
     });
