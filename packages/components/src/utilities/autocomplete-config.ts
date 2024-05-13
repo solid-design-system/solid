@@ -13,17 +13,7 @@ export function setupAutocomplete(
     scrollSelectionIntoView: true
   }
 ) {
-  const sdInputCandidate: HTMLUnknownElement | null = typeof selector === 'string'
-    ? document.querySelector(selector)
-    : selector;
-  
-  // Verify `sdInput` resolves to `sd-input` or `sd-1-2-3-input`.
-  // Avoid using `sdInput instanceof SdInput` as this would check against _this package's_ `SdInput` class, returning `false` if `sd-input` was imported from somewhere else (i.e. CDN, another bundle)
-  if (!sdInputCandidate?.tagName.startsWith('SD-') || !sdInputCandidate.tagName.endsWith('-INPUT')) {
-    throw new Error(`The provided element or selector "${JSON.stringify(selector)}" does not resolve to an sd-input element.`);
-  }
-  // We're now reasonably certain that we're dealing with an `sd-input`
-  const sdInput: SdInput = sdInputCandidate as SdInput;
+  const sdInput: SdInput = getAndVerifySdInputElement(selector);
 
   const input = sdInput.shadowRoot!.querySelector('input')!;
 
@@ -123,4 +113,19 @@ export function setupAutocomplete(
       wrapper: false
     }
   };
+}
+
+
+const getAndVerifySdInputElement = (elementOrSelector: HTMLUnknownElement | string) : SdInput => {
+  const sdInputCandidate: HTMLUnknownElement | null = typeof elementOrSelector === 'string'
+    ? document.querySelector(elementOrSelector)
+    : elementOrSelector;
+  
+  // Verify `sdInput` resolves to `sd-input` or `sd-1-2-3-input`.
+  // Avoid using `sdInput instanceof SdInput` as this would check against _this package's_ `SdInput` class, returning `false` if `sd-input` was imported from somewhere else (i.e. CDN, another bundle)
+  if (!sdInputCandidate?.tagName.startsWith('SD-') || !sdInputCandidate.tagName.endsWith('-INPUT')) {
+    throw new Error(`The provided element or selector "${JSON.stringify(elementOrSelector)}" does not resolve to an sd-input element.`);
+  }
+  // We're now reasonably certain that we're dealing with an `sd-input`
+  return sdInputCandidate as SdInput;
 }
