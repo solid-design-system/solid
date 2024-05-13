@@ -1,3 +1,5 @@
+import type SdInput from "src/components/input/input";
+
 /**
  * This function is a helper to quickly setup autocomplete.js for Solid components.
  * Besides some needed defaults it adds additional styles and event listeners.
@@ -11,10 +13,17 @@ export function setupAutocomplete(
     scrollSelectionIntoView: true
   }
 ) {
-  // @ts-expect-error - We expect the input to be found
-  const sdInput: HTMLInputElement = typeof selector === 'string'
+  const sdInputCandidate: HTMLUnknownElement | null = typeof selector === 'string'
     ? document.querySelector(selector)
     : selector;
+  
+  // Verify `sdInput` resolves to `sd-input` or `sd-1-2-3-input`.
+  // Avoid using `sdInput instanceof SdInput` as this would check against _this package's_ `SdInput` class, returning `false` if `sd-input` was imported from somewhere else (i.e. CDN, another bundle)
+  if (!sdInputCandidate?.tagName.startsWith('SD-') || !sdInputCandidate.tagName.endsWith('-INPUT')) {
+    throw new Error(`The provided element or selector "${JSON.stringify(selector)}" does not resolve to an sd-input element.`);
+  }
+  // We're now reasonably certain that we're dealing with an `sd-input`
+  const sdInput: SdInput = sdInputCandidate as SdInput;
 
   const input = sdInput.shadowRoot!.querySelector('input')!;
 
