@@ -236,7 +236,7 @@ export const CustomResultItem = {
             ...baseConfig,
             placeHolder: 'Find funds...',
             resultsList: {
-              tag: 'sd-popup',
+              // tag: 'sd-popup', // Do NOT specify, will cause sd-popup passed to setupAutocomplete to be overriden!
               maxResults: 3
             },
             resultItem: {
