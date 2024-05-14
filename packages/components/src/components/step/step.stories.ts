@@ -147,18 +147,7 @@ export const Parts = {
 
 export const Mouseless = {
   render: (args: any) => {
-    return html`<div class="mouseless">
-      ${generateTemplate({
-        args,
-        constants: [
-          {
-            type: 'attribute',
-            name: 'state',
-            value: 'finished'
-          }
-        ]
-      })}
-    </div>`;
+    return html`<div class="mouseless">${generateTemplate({ args })}</div>`;
   },
 
   play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
