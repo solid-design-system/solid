@@ -34,8 +34,8 @@ export default class SdStepGroup extends SolidElement {
   /** The active step in the step-group. */
   @property({ type: Number, reflect: true, attribute: 'active-step' }) activeStep = 0;
 
-  /** Determines if the step-group is interactive. */
-  @property({ type: Boolean, reflect: true }) interactive = false;
+  /** Determines if the step-group is not interactive. */
+  @property({ type: Boolean, reflect: true, attribute: 'not-interactive' }) notInteractive = false;
 
   connectedCallback() {
     super.connectedCallback();
@@ -54,8 +54,9 @@ export default class SdStepGroup extends SolidElement {
         step.size = this.size;
         step.orientation = this.orientation;
 
-        if (!this.interactive) {
+        if (this.notInteractive) {
           step.state = 'default';
+          step.notInteractive = true;
         } else if (step.state === 'current') {
           activeStep = index;
         }
@@ -88,7 +89,7 @@ export default class SdStepGroup extends SolidElement {
    * @param index The index of the step to set as active.
    */
   setActiveStep(index: number) {
-    if (index >= 0 && index < this.steps.length && this.interactive) {
+    if (index >= 0 && index < this.steps.length && !this.notInteractive) {
       this.activeStep = index;
 
       this.steps.forEach((step, i) => {
@@ -99,7 +100,11 @@ export default class SdStepGroup extends SolidElement {
 
   render() {
     return html`
-      <div part="base" class=${cx('flex', this.orientation === 'vertical' && 'flex-col h-full')}>
+      <div
+        part="base"
+        role="${!this.notInteractive ? 'navigation' : 'group'}"
+        class=${cx('flex', this.orientation === 'vertical' && 'flex-col h-full')}
+      >
         <slot part="body"></slot>
       </div>
     `;

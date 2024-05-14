@@ -30,6 +30,11 @@ export default {
           <p slot="label">Reprehenderit qui in e name</p>
           Lorem ipsum est dolor sit amet
         </sd-step>`
+    },
+    {
+      type: 'attribute',
+      name: 'active-step',
+      value: `1`
     }
   ]),
   argTypes,
@@ -57,6 +62,32 @@ export const Orientation = {
     return generateTemplate({
       axis: {
         y: { type: 'attribute', name: 'orientation' }
+      },
+      args
+    });
+  },
+  decorators: [
+    (story: () => typeof html) => html`
+      <style>
+        td.template {
+          width: 100%;
+        }
+      </style>
+      ${story()}
+    `
+  ]
+};
+
+/**
+ * Use the not-interactive attribute to create a non-interactive step group.
+ */
+
+export const notInteractive = {
+  parameters: { controls: { exclude: 'not-interactive' } },
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        y: { type: 'attribute', name: 'not-interactive' }
       },
       args
     });
@@ -170,6 +201,42 @@ export const SetActiveStep = {
           stepGroup.setActiveStep(stepGroup.activeStep - 1);
         });
       </script>
+    `;
+  }
+};
+
+/**
+ * This sample shows how to use the not-interactive attribute with custom icons.
+ */
+
+export const SampleNotInteractive = {
+  parameters: {
+    controls: {
+      include: []
+    }
+  },
+  name: 'Sample: Not Interactive',
+  render: () => {
+    return html`
+      <sd-step-group size="lg" orientation="horizontal" active-step="0" not-interactive>
+        <sd-step size="lg" orientation="horizontal" state="default">
+          <p slot="label">Lorem ipsum dolor sit</p>
+          Lorem ipsum est dolor sit amet
+          <sd-icon name="calendar" slot="step-icon" library="system"></sd-icon>
+        </sd-step>
+
+        <sd-step size="lg" orientation="horizontal" state="current">
+          <p slot="label">Exercitation ullamco laboris</p>
+          Lorem ipsum est dolor sit amet
+          <sd-icon name="eye" slot="step-icon" library="system"></sd-icon>
+        </sd-step>
+
+        <sd-step size="lg" orientation="horizontal" state="disabled">
+          <p slot="label">Reprehenderit qui in e name</p>
+          Lorem ipsum est dolor sit amet
+          <sd-icon name="calendar" slot="step-icon" library="system"></sd-icon>
+        </sd-step>
+      </sd-step-group>
     `;
   }
 };

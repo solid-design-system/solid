@@ -19,7 +19,7 @@ import SolidElement from '../../internal/solid-element';
  * @slot - The step's description.
  * @slot label - The step's label.
  * @slot index - The step's index.
- * @slot complete-icon - The icon that indicates a completed step.
+ * @slot step-icon - The icon used in a default step.
  *
  * @event sd-blur - Emitted when the button loses focus.
  * @event sd-focus - Emitted when the button gains focus.
@@ -45,6 +45,9 @@ export default class SdStep extends SolidElement {
 
   /** Removes the tail from the step. */
   @property({ reflect: true, type: Boolean, attribute: 'no-tail' }) noTail = false;
+
+  /** Determines if the step is not interactive. */
+  @property({ type: Boolean, reflect: true, attribute: 'not-interactive' }) notInteractive = false;
 
   /** The step's label overwriting the `label` slot. Use the `label` slot for complex label content. */
   @property() label = '';
@@ -76,7 +79,7 @@ export default class SdStep extends SolidElement {
 
   render() {
     const isLink = this.isLink();
-    const tag = isLink ? literal`a` : literal`button`;
+    const tag = this.notInteractive ? literal`div` : isLink ? literal`a` : literal`button`;
 
     /* eslint-disable lit/no-invalid-html */
     /* eslint-disable lit/binding-positions */
@@ -88,7 +91,7 @@ export default class SdStep extends SolidElement {
           this.orientation === 'horizontal'
             ? 'flex-col w-full'
             : 'flex-row gap-4 items-stretch h-full w-min overflow-hidden',
-          this.state === 'default' && 'group'
+          this.state === 'default' && !this.notInteractive && 'group'
         )}
         @focus=${this.handleFocus}
         @blur=${this.handleBlur}
@@ -114,7 +117,7 @@ export default class SdStep extends SolidElement {
             ?disabled=${this.state !== 'default'}
             tabindex=${this.state === 'default' ? '0' : '-1'}
             href=${ifDefined(isLink ? this.href : undefined)}
-            aria-label=${this.state === 'default' && 'Step completed'}
+            aria-current=${this.state === 'current' ? 'step' : undefined}
             class=${cx(
               'border rounded-full aspect-square circle flex items-center justify-center shrink-0 font-bold select-none',
               this.state === 'default' ? 'focus-visible:focus-outline' : 'focus-visible:outline-none',
@@ -126,15 +129,14 @@ export default class SdStep extends SolidElement {
           >
             ${
               this.state === 'default'
-                ? html`<slot name="complete-icon">
-                    <sd-icon
-                      name="status-hook"
-                      library="system"
-                      class=${cx(
-                        'text-primary group-hover:text-primary-500',
-                        this.size === 'lg' ? 'text-lg' : 'text-sm'
-                      )}
-                    ></sd-icon
+                ? html`<slot
+                    name="step-icon"
+                    class=${cx(
+                      'text-primary group-hover:text-primary-500 group-hover:fill-primary-500',
+                      this.size === 'lg' ? 'text-lg' : 'text-sm'
+                    )}
+                  >
+                    <sd-icon name="status-hook" library="system"></sd-icon
                   ></slot>`
                 : html`<slot name="index">${this.index} </slot>`
             }
