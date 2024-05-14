@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v3.3.1](https://github.com/solid-design-system/solid/compare/components/3.3.0...components/3.3.1) (2024-05-14)
+
+
+### Bug Fixes
+
+* 🤔 remove placeholder for fixed column sample ([#1045](https://github.com/solid-design-system/solid/issues/1045)) ([d75d6b7](https://github.com/solid-design-system/solid/commit/d75d6b7c6075883e3c194a4a07ff185c050a9a24))
+
+### 📈 Stats
+* Bundle size (uncompressed): 292 KB (unchanged)
+* Bundle size (gzipped): 70 KB (unchanged)
+
 # [@solid-design-system/components-v3.3.0](https://github.com/solid-design-system/solid/compare/components/3.2.0...components/3.3.0) (2024-05-06)
 
 
