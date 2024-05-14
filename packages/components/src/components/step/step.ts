@@ -164,7 +164,7 @@ export default class SdStep extends SolidElement {
           }
         </div>
 
-        <div part="text-container" class=${cx('w-24 mt-4 break-words flex flex-col gap-2', this.orientation === 'horizontal' ? 'text-center' : 'text-left', this.state === 'disabled' && '!text-neutral-500')}>
+        <div part="text-container" class=${cx('w-40 mt-4 break-words flex flex-col gap-2', this.orientation === 'horizontal' ? 'text-center' : 'text-left', this.state === 'disabled' && '!text-neutral-500')}>
           <div part="label" class=${cx('!font-bold sd-paragraph', this.state === 'disabled' && '!text-neutral-500', this.state === 'default' && '!text-primary group-hover:!text-primary-500')}>
             <slot name="label">${this.label}</slot>
           </div>
@@ -195,11 +195,11 @@ export default class SdStep extends SolidElement {
       }
 
       .translateLg {
-        transform: translateX(24px);
+        transform: translateX(55px);
       }
 
       .translateSm {
-        transform: translateX(32px);
+        transform: translateX(64px);
       }
 
       .tail-to-primary::part(main) {
