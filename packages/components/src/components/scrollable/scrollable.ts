@@ -164,7 +164,7 @@ export default class SdScrollable extends SolidElement {
       <div
         part="base"
         class=${cx(
-          'scroll-container flex overflow-hidden',
+          'scroll-container flex overflow-hidden flex-1',
           this.orientation === 'horizontal' &&
             'scroll-horizontal flex-row whitespace-nowrap items-center overflow-x-scroll overflow-y-hidden',
           this.orientation === 'vertical' && 'scroll-vertical justify-items-center overflow-y-scroll overflow-x-hidden',
@@ -174,7 +174,7 @@ export default class SdScrollable extends SolidElement {
         )}
         @scroll=${this.updateScrollIndicatorVisibility}
       >
-        <div part="scroll-content" class="inline-block">
+        <div part="scroll-content" class="flex-1">
           <slot></slot>
         </div>
       </div>
