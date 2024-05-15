@@ -115,11 +115,35 @@ export const CustomIcon = {
 export const Parts = {
   parameters: {
     controls: {
-      exclude: ['base', 'button-start', 'button-end', 'shadow-right', 'shadow-left', 'shadow-top', 'shadow-bottom']
+      exclude: [
+        'base',
+        'button-start',
+        'button-end',
+        'button-right',
+        'button-left',
+        'button-top',
+        'button-bottom',
+        'shadow-right',
+        'shadow-left',
+        'shadow-top',
+        'shadow-bottom'
+      ]
     }
   },
   render: (args: any) => {
-    const parts = ['base', 'button-start', 'button-end', 'shadow-right', 'shadow-left', 'shadow-top', 'shadow-bottom'];
+    const parts = [
+      'base',
+      'button-start',
+      'button-end',
+      'button-right',
+      'button-left',
+      'button-top',
+      'button-bottom',
+      'shadow-right',
+      'shadow-left',
+      'shadow-top',
+      'shadow-bottom'
+    ];
 
     return generateTemplate({
       axis: {
@@ -145,7 +169,6 @@ export const Parts = {
     for (const el of scrollables) {
       await waitUntil(() => el?.shadowRoot?.querySelector('button'));
       el?.shadowRoot?.querySelector<HTMLElement>('button')!.click();
-      console.log('clicked');
     }
   }
 };
