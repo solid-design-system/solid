@@ -1,20 +1,7 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:base",
-    "schedule:daily",
-    ":disableRateLimiting"
-  ],
-  "schedule": "before 5am every weekday",
+  "extends": ["schedule:daily", ":disableRateLimiting", "security:only-security-updates"],
   "timezone": "Europe/Berlin",
   "rebaseWhen": "never",
-  "vulnerabilityAlerts": {
-  "enabled": true,
-    "labels": [
-      "npm dependencies, renovate, security"
-    ],
-    "automerge": true
-  },
-  "osvVulnerabilityAlerts": true,
   "commitMessagePrefix": "chore(security deps): "
 }
