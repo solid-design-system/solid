@@ -135,7 +135,7 @@
     "rollup-plugin-summary": "^2.0.0",
     "semantic-release": "^19.0.5",
     "semantic-release-monorepo": "^7.0.5",
-    "sinon": "^17.0.1",
+    "sinon": "^18.0.0",
     "storybook": "^8.0.0",
     "storybook-addon-designs": "6.3.1",
     "tailwindcss": "^3.3.5",
