@@ -1,3 +1,36 @@
+# [@solid-design-system/components-v3.3.1](https://github.com/solid-design-system/solid/compare/components/3.3.0...components/3.3.1) (2024-05-14)
+
+
+### Bug Fixes
+
+* 🤔 remove placeholder for fixed column sample ([#1045](https://github.com/solid-design-system/solid/issues/1045)) ([d75d6b7](https://github.com/solid-design-system/solid/commit/d75d6b7c6075883e3c194a4a07ff185c050a9a24))
+
+### 📈 Stats
+* Bundle size (uncompressed): 292 KB (unchanged)
+* Bundle size (gzipped): 70 KB (unchanged)
+
+# [@solid-design-system/components-v3.3.0](https://github.com/solid-design-system/solid/compare/components/3.2.0...components/3.3.0) (2024-05-06)
+
+
+### Features
+
+* ✨ optimize `autocomplete-config` to allow max-height for listbox ([#1043](https://github.com/solid-design-system/solid/issues/1043)) ([3802b3e](https://github.com/solid-design-system/solid/commit/3802b3e22d85821273bfcac82e3ed8dfe966109b))
+
+### 📈 Stats
+* Bundle size (uncompressed): 292 KB (unchanged)
+* Bundle size (gzipped): 70 KB (unchanged)
+
+# [@solid-design-system/components-v3.2.0](https://github.com/solid-design-system/solid/compare/components/3.1.0...components/3.2.0) (2024-05-06)
+
+
+### Features
+
+* ✨add placeholder video ([#1032](https://github.com/solid-design-system/solid/issues/1032)) ([0bf4597](https://github.com/solid-design-system/solid/commit/0bf459788f02bc27b7a3f3515d47b20da3f51f67))
+
+### 📈 Stats
+* Bundle size (uncompressed): 292 KB (unchanged)
+* Bundle size (gzipped): 70 KB (unchanged)
+
 # [@solid-design-system/components-v3.1.0](https://github.com/solid-design-system/solid/compare/components/3.0.1...components/3.1.0) (2024-04-29)
 
 

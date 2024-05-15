@@ -25,7 +25,7 @@ export const Default = {
       options: {
         templateContent: `
           <figure class="%CLASSES% max-w-xl p-4">
-              <img src="./placeholders/generic.jpg" alt="A generic placeholder jpg" class="aspect-video object-cover"/>
+              <img src="./placeholders/images/generic.jpg" alt="A generic placeholder jpg" class="aspect-video object-cover"/>
             <figcaption>%SLOT%</figcaption>
           </figure>
       `
@@ -47,7 +47,7 @@ export const MediaSample = {
         templateContent: `
           <figure class="%CLASSES% max-w-xl p-4">
             <div class="sd-copyright" style="--copyright: '© 2024 Solid Design System';">
-              <img src="./placeholders/generic.jpg" alt="A generic placeholder jpg" class="aspect-video object-cover"/>
+              <img src="./placeholders/images/generic.jpg" alt="A generic placeholder jpg" class="aspect-video object-cover"/>
             </div>
             <figcaption>%SLOT%</figcaption>
           </figure>

@@ -312,8 +312,6 @@ export const Samples = {
             })}
           </tbody>
         </table>
-        <div class="headline">Simple Table, First Column Fixed</div>
-        <div class="disclaimer">This sample will be provided soon.</div>
 
         <div class="headline">Multi Select Table</div>
         <div class="disclaimer">This sample will be provided soon.</div>

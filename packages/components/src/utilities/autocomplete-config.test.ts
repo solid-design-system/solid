@@ -98,7 +98,6 @@ describe('sd-input', () => {
         <sd-input id="autocomplete" type="search"></sd-input>
       `);
 
-      // Promise.all([customElements.whenDefined('sd-input'), customElements.whenDefined('sd-popup')]).then(() => {
       // Tests run differently when served as ESM vs. bundled
       // Here we are checking for the existence of the Solid Components global
       // to determine which mode we are in.
@@ -118,7 +117,7 @@ describe('sd-input', () => {
         mock
       });
 
-      expect(autoCompleteJS.resultsList.tag).to.equal('sd-popup');
+      expect(autoCompleteJS.resultsList.tag).to.equal('ul');
       expect(autoCompleteJS.resultsList.maxResults).to.equal(5);
       expect(autoCompleteJS.resultItem.tag).to.equal('li');
       /* eslint-enable */
