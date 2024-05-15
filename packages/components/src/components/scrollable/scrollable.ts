@@ -24,6 +24,7 @@ import SolidElement from '../../internal/solid-element';
  * @event start - Emitted when the start of the scrollable is reached.
  *
  * @csspart base - The scrollable's base wrapper.
+ * @csspart scroll-content - The scrollable's content.
  * @csspart button-start - The scrollable's start scroll button.
  * @csspart button-end - The scrollable's end scroll button.
  * @csspart button-left - The scrollable's left scroll button.
@@ -159,17 +160,19 @@ export default class SdScrollable extends SolidElement {
       <div
         part="base"
         class=${cx(
-          'scroll-container flex overflow-hidden w-full h-full',
+          'scroll-container flex overflow-hidden',
           this.orientation === 'horizontal' &&
             'scroll-horizontal flex-row whitespace-nowrap items-center overflow-x-scroll overflow-y-hidden',
           this.orientation === 'vertical' && 'scroll-vertical justify-items-center overflow-y-scroll overflow-x-hidden',
-          this.orientation === 'auto' && 'overflow-x-scroll overflow-y-scroll',
+          this.orientation === 'auto' && 'scroll-auto overflow-auto',
           this.scrollbars ? 'show-scrollbars' : 'hide-scrollbars',
           this.inset ? 'p-4' : ''
         )}
         @scroll=${this.updateScrollIndicatorVisibility}
       >
-        <slot></slot>
+        <div part="scroll-content" class="inline-block">
+          <slot></slot>
+        </div>
       </div>
       ${this.buttons
         ? html`
@@ -326,6 +329,10 @@ export default class SdScrollable extends SolidElement {
       /* Apply width and height to the scrollbar itself */
       .scroll-container::-webkit-scrollbar {
         @apply w-1 h-1;
+      }
+
+      .scroll-auto {
+        overflow: auto;
       }
 
       [part='button-left'] {

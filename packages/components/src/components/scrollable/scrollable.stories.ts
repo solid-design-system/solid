@@ -117,6 +117,7 @@ export const Parts = {
     controls: {
       exclude: [
         'base',
+        'scroll-content',
         'button-start',
         'button-end',
         'button-right',
@@ -133,6 +134,7 @@ export const Parts = {
   render: (args: any) => {
     const parts = [
       'base',
+      'scroll-content',
       'button-start',
       'button-end',
       'button-right',
@@ -157,6 +159,7 @@ export const Parts = {
         }
       },
       constants: [
+        { type: 'attribute', name: 'orientation', value: 'auto' },
         { type: 'attribute', name: 'buttons', value: true },
         { type: 'attribute', name: 'shadows', value: true }
       ],
