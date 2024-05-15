@@ -48,7 +48,7 @@ export default class SdScrollable extends SolidElement {
   @property({ type: Boolean, reflect: true }) buttons = false;
 
   /** The amount in px to be scrolled when clicking the buttons. */
-  @property({ type: Number, reflect: true }) scrollStep = 150;
+  @property({ type: Number, reflect: true }) step = 150;
 
   /** Activates browser scrollbars */
   @property({ type: Boolean, reflect: true }) scrollbars = false;
@@ -140,15 +140,19 @@ export default class SdScrollable extends SolidElement {
   }
 
   handleScroll(direction: 'left' | 'right' | 'up' | 'down') {
-    if (this.scrollContainer) {
-      const scrollAmount = direction === 'left' || direction === 'up' ? -this.scrollStep : this.scrollStep;
-      const scrollOptions: ScrollToOptions = {
-        behavior: 'smooth',
-        [direction === 'left' || direction === 'right' ? 'left' : 'top']: scrollAmount
-      };
-      this.scrollContainer.scrollBy(scrollOptions);
-      this.dispatchEvent(new CustomEvent(`button-${direction}`));
-    }
+    const scrollAmount = direction === 'left' || direction === 'up' ? -this.step : this.step;
+    const scrollDirection = direction === 'left' || direction === 'right' ? 'left' : 'top';
+
+    const scrollOptions: ScrollToOptions = {
+      behavior: 'smooth'
+    };
+    scrollOptions[scrollDirection] = scrollAmount;
+
+    this.scrollContainer?.scrollBy(scrollOptions);
+
+    // Dispatching custom event
+    const eventName = `button-${direction}`;
+    this.dispatchEvent(new CustomEvent(eventName, { bubbles: true, composed: true }));
   }
 
   render() {

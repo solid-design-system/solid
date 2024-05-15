@@ -12,7 +12,7 @@ describe('<sd-scrollable>', () => {
 
     expect(el.orientation).to.equal('horizontal');
     expect(el.buttons).to.be.false;
-    expect(el.scrollStep).to.equal(150);
+    expect(el.step).to.equal(150);
     expect(el.scrollbars).to.be.false;
     expect(el.shadows).to.be.false;
   });

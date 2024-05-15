@@ -86,28 +86,26 @@ export const CustomIcon = {
   },
   render: () => {
     return html`
-      <div style="width: 277px; height: 120px;">
-        <sd-scrollable buttons>
-          <div
-            class="slot slot--border slot--text items-start"
-            style="height:max-content; width:max-content; padding: 1rem; justify-content:start;"
-          >
-            <p>Scroll and give it a try!</p>
-            <br />
-            <p>This is a long scrollable content.</p>
-            <p>It contains multiple paragraphs and lines.</p>
-            <p>The content is intentionally long to trigger scrolling. You can scroll horizontally and vertically.</p>
-            <p>The scrollable component will display shadows and buttons based on the props.</p>
-            <p>Customize the content and attributes as needed.</p>
-          </div>
-          <div slot="icon-start">
-            <sd-icon library="global-resources" name="system/picture"></sd-icon>
-          </div>
-          <div slot="icon-end">
-            <sd-icon library="global-resources" name="system/picture"></sd-icon>
-          </div>
-        </sd-scrollable>
-      </div>
+      <sd-scrollable buttons>
+        <div
+          class="slot slot--border slot--text items-start"
+          style="height:max-content; width:max-content; padding: 1rem; justify-content:start;"
+        >
+          <p>Scroll and give it a try!</p>
+          <br />
+          <p>This is a long scrollable content.</p>
+          <p>It contains multiple paragraphs and lines.</p>
+          <p>The content is intentionally long to trigger scrolling. You can scroll horizontally and vertically.</p>
+          <p>The scrollable component will display shadows and buttons based on the props.</p>
+          <p>Customize the content and attributes as needed.</p>
+        </div>
+        <div slot="icon-start">
+          <sd-icon library="global-resources" name="system/picture"></sd-icon>
+        </div>
+        <div slot="icon-end">
+          <sd-icon library="global-resources" name="system/picture"></sd-icon>
+        </div>
+      </sd-scrollable>
     `;
   }
 };
