@@ -1,5 +1,5 @@
 import '../../solid-components';
-// import { html } from 'lit-html';
+import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 // import { userEvent } from '@storybook/testing-library';
 // import { waitUntil } from '@open-wc/testing-helpers';
@@ -38,12 +38,86 @@ export const Inverted = {
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        x: { type: 'attribute', name: 'inverted' }
+        y: { type: 'attribute', name: 'inverted' }
       },
       args,
       options: {
-        templateBackgrounds: { alternate: 'x', colors: ['rgb(var(--sd-color-primary, 0 53 142))', 'white'] }
+        templateBackgrounds: { alternate: 'y', colors: ['rgb(var(--sd-color-primary, 0 53 142))', 'white'] }
       }
     });
+  }
+};
+
+/**
+ * Expandable can be used with background options of white, neutral-100 and primary-100. If inverted, can be used with primary. The default slot can be used with 2 variants for alternate expandable experiences: lead text and paragraph.
+ */
+export const Samples = {
+  render: (args: any) => {
+    return html`
+      <style>
+        .background-sample {
+          padding: 16px;
+          margin-bottom: 32px;
+          width: 100%;
+          box-sizing: border-box;
+        }
+      </style>
+      <div class="p-4 mb-8 bg-neutral-100 text-left text-[14px] font-bold box-border">Background white</div>
+      <div class="background-sample" style="background-color: white;">
+        ${generateTemplate({
+          args: { ...args, style: 'background-color: white;' }
+        })}
+      </div>
+      <div class="w-full p-4 mb-8 bg-neutral-100 text-left text-[14px] font-bold box-border">
+        Background neutral-100
+      </div>
+      <div class="background-sample" style="background-color: rgb(var(--sd-color-neutral-100, 246 246 246));">
+        ${generateTemplate({
+          args: { ...args, style: 'background-color: rgb(var(--sd-color-neutral-100, 246 246 246));' }
+        })}
+      </div>
+      <div class="w-full p-4 mb-8 bg-neutral-100 text-left text-[14px] font-bold box-border">
+        Background primary-100
+      </div>
+      <div class="background-sample" style="background-color: rgb(var(--sd-color-primary-100, 236 240 249));">
+        ${generateTemplate({
+          args: { ...args, style: 'background-color: rgb(var(--sd-color-primary-100, 236 240 249));' }
+        })}
+      </div>
+      <div class="w-full p-4 mb-8 bg-neutral-100 text-left text-[14px] font-bold box-border">
+        Background primary, inverted
+      </div>
+      <div class="background-sample" style="background-color: rgb(var(--sd-color-primary, 0 53 142));">
+        ${generateTemplate({
+          args: { ...args, inverted: true, style: 'background-color: rgb(var(--sd-color-primary, 0 53 142));' }
+        })}
+      </div>
+      <div class="w-full p-4 mb-8 bg-neutral-100 text-left text-[14px] font-bold box-border">Lead Text Example</div>
+      <div class="background-sample">
+        ${generateTemplate({
+          args: overrideArgs([
+            {
+              type: 'slot',
+              name: 'default',
+              value:
+                '<div class="sd-leadtext">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique. Facilisis commodo integer hendrerit tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique. Facilisis commodo integer hendrerit tortor.</div>'
+            }
+          ])
+        })}
+      </div>
+      <div class="w-full p-4 mb-8 bg-neutral-100 text-left text-[14px] font-bold box-border">Paragraph Example</div>
+      <div class="background-sample">
+        ${generateTemplate({
+          args: overrideArgs([
+            {
+              type: 'slot',
+              name: 'default',
+              value:
+                '<div class="sd-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique. Facilisis commodo integer hendrerit tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique. Facilisis commodo integer hendrerit tortor.</div>'
+            }
+          ])
+        })}
+      </div>
+    `;
   }
 };

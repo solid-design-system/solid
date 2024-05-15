@@ -14,15 +14,13 @@ import SolidElement from '../../internal/solid-element';
  * @dependency sd-icon
  *
  * @slot - Content of the expandable
- * @slot toggle-open - Content of the toggle when the expandable is open
- * @slot toggle-closed - Content of the toggle when the expandable is closed
  *
  * @event sd-show - Emitted when the expandable opens.
  * @event sd-after-show - Emitted after the expandable opens and all animations are complete.
  * @event sd-hide - Emitted when the expandable closes.
  * @event sd-after-hide - Emitted after the expandable closes and all animations are complete.
  *
- * @part toggle - Part of the expandable responsible for the expansion of the component
+ * @csspart
  *
  * @cssproperty --ui-animation-bezier - Animation curve used for open and close animation
  * @cssproperty --component-expandable-max-block-size - Different value for initial visible block (default: 90px)
