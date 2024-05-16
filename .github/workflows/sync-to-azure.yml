@@ -24,7 +24,7 @@ jobs:
     if: needs.check-env.outputs.azure-key == 'true'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.1.1
+      - uses: actions/checkout@v4.1.6
 
       - name: Extract branch name
         shell: bash
