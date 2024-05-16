@@ -1,8 +1,8 @@
 import '../../solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-// import { userEvent } from '@storybook/testing-library';
-// import { waitUntil } from '@open-wc/testing-helpers';
+import { userEvent } from '@storybook/testing-library';
+import { waitUntil } from '@open-wc/testing-helpers';
 // import cx from 'classix';
 
 const { argTypes, parameters } = storybookDefaults('sd-expandable');
@@ -63,37 +63,37 @@ export const Samples = {
         }
       </style>
       <div class="p-4 mb-8 bg-neutral-100 text-left text-[14px] font-bold box-border">Background white</div>
-      <div class="background-sample" style="background-color: white;">
+      <div class="background-sample">
         ${generateTemplate({
-          args: { ...args, style: 'background-color: white;' }
+          args: { ...args }
         })}
       </div>
       <div class="w-full p-4 mb-8 bg-neutral-100 text-left text-[14px] font-bold box-border">
         Background neutral-100
       </div>
-      <div class="background-sample" style="background-color: rgb(var(--sd-color-neutral-100, 246 246 246));">
+      <div class="background-sample bg-neutral-100">
         ${generateTemplate({
-          args: { ...args, style: 'background-color: rgb(var(--sd-color-neutral-100, 246 246 246));' }
+          args: { ...args }
         })}
       </div>
       <div class="w-full p-4 mb-8 bg-neutral-100 text-left text-[14px] font-bold box-border">
         Background primary-100
       </div>
-      <div class="background-sample" style="background-color: rgb(var(--sd-color-primary-100, 236 240 249));">
+      <div class="background-sample bg-primary-100">
         ${generateTemplate({
-          args: { ...args, style: 'background-color: rgb(var(--sd-color-primary-100, 236 240 249));' }
+          args: { ...args }
         })}
       </div>
       <div class="w-full p-4 mb-8 bg-neutral-100 text-left text-[14px] font-bold box-border">
         Background primary, inverted
       </div>
-      <div class="background-sample" style="background-color: rgb(var(--sd-color-primary, 0 53 142));">
+      <div class="background-sample bg-primary">
         ${generateTemplate({
-          args: { ...args, inverted: true, style: 'background-color: rgb(var(--sd-color-primary, 0 53 142));' }
+          args: { ...args, inverted: true }
         })}
       </div>
       <div class="w-full p-4 mb-8 bg-neutral-100 text-left text-[14px] font-bold box-border">Lead Text Example</div>
-      <div class="background-sample">
+      <div class="background-sample bg-neutral-100 ">
         ${generateTemplate({
           args: overrideArgs([
             {
@@ -101,12 +101,17 @@ export const Samples = {
               name: 'default',
               value:
                 '<div class="sd-leadtext">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique. Facilisis commodo integer hendrerit tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique. Facilisis commodo integer hendrerit tortor.</div>'
+            },
+            {
+              type: 'attribute',
+              name: 'variant',
+              value: 'leadtext'
             }
           ])
         })}
       </div>
       <div class="w-full p-4 mb-8 bg-neutral-100 text-left text-[14px] font-bold box-border">Paragraph Example</div>
-      <div class="background-sample">
+      <div class="background-sample bg-neutral-100 ">
         ${generateTemplate({
           args: overrideArgs([
             {
@@ -119,5 +124,21 @@ export const Samples = {
         })}
       </div>
     `;
+  }
+};
+
+/**
+ * sd-expandable is fully accessibile via keyboard.
+ */
+
+export const Mouseless = {
+  render: (args: any) => {
+    return html`<div class="mouseless">${generateTemplate({ args })}</div>`;
+  },
+
+  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
+    const el = canvasElement.querySelector('.mouseless sd-expandable');
+    await waitUntil(() => el?.shadowRoot?.querySelector('button'));
+    await userEvent.type(el!.shadowRoot!.querySelector('button')!, '{space}', { pointerEventsCheck: 0 });
   }
 };

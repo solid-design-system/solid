@@ -20,9 +20,8 @@ import SolidElement from '../../internal/solid-element';
  * @event sd-hide - Emitted when the expandable closes.
  * @event sd-after-hide - Emitted after the expandable closes and all animations are complete.
  *
- * @csspart
+ * @csspart content
  *
- * @cssproperty --ui-animation-bezier - Animation curve used for open and close animation
  * @cssproperty --component-expandable-max-block-size - Different value for initial visible block (default: 90px)
  */
 @customElement('sd-expandable')
@@ -36,6 +35,9 @@ export default class SdExpandable extends SolidElement {
 
   /** Inverts the expandable and sets the primary color background. */
   @property({ type: Boolean, reflect: true }) inverted = false;
+
+  /** Controls the height of the gradient depending on if it is used with `paragraph` or `leadtext`. */
+  @property({ reflect: true }) variant: 'paragraph' | 'leadtext' = 'paragraph';
 
   private updateMaxHeight() {
     const scrollHeight = this.shrinker?.scrollHeight.toString();
@@ -62,17 +64,24 @@ export default class SdExpandable extends SolidElement {
 
   render() {
     return html`
-      <div class="content">
+      <div part="content" class="content overflow-hidden relative">
         <div class="shrinker">
           <slot></slot>
         </div>
       </div>
-      <button part="toggle" class=${cx('toggle', this.inverted && 'toggle--inverted')} @click=${this.onToggleClick}>
+      <button
+        part="toggle"
+        class=${cx(
+          'toggle focus-visible:outline-offset-0 block m-0 p-0 w-full overflow-visible bg-transparent text-current font-inherit leading-inherit align-middle cursor-pointer',
+          !this.inverted ? 'focus-visible:focus-outline' : 'focus-visible:focus-outline-inverted'
+        )}
+        @click=${this.onToggleClick}
+      >
         ${this.open
           ? html`
               <slot name="toggle-open">
-                <div class="default-content">
-                  <sd-link size="lg" href="#" onclick="return false;" ?inverted=${this.inverted}
+                <div class="default-content flex items-center justify-center w-full">
+                  <sd-link size="lg" href="#" onclick="return false;" ?inverted=${this.inverted} tabindex="-1"
                     >Show less <sd-icon library="system" name="chevron-up" slot="icon-left"></sd-icon
                   ></sd-link>
                 </div>
@@ -80,8 +89,8 @@ export default class SdExpandable extends SolidElement {
             `
           : html`
               <slot name="toggle-closed">
-                <div class="default-content">
-                  <sd-link size="lg" href="#" onclick="return false;" ?inverted=${this.inverted}
+                <div class="default-content flex items-center justify-center w-full">
+                  <sd-link size="lg" href="#" onclick="return false;" ?inverted=${this.inverted} tabindex="-1"
                     >Show more <sd-icon library="system" name="chevron-down" slot="icon-left"></sd-icon
                   ></sd-link>
                 </div>
@@ -96,48 +105,15 @@ export default class SdExpandable extends SolidElement {
     componentStyles,
     css`
       :host {
-        display: block;
+        @apply block;
+      }
+
+      .toggle::-moz-focus-inner {
+        @apply border-none p-0;
       }
 
       .content {
         max-block-size: var(--component-expandable-max-block-size, 90px);
-        transition: max-block-size calc(0.5ms * var(--max-height, 1000))
-          var(--ui-animation-bezier, cubic-bezier(0.4, 0.03, 0.4, 0.97));
-        overflow: hidden;
-        position: relative;
-      }
-
-      .toggle {
-        border: none;
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        overflow: visible;
-        background: transparent;
-        color: var(--skin-color-text, #333);
-        font: inherit;
-        line-height: inherit;
-        -webkit-font-smoothing: inherit;
-        -moz-osx-font-smoothing: inherit;
-        appearance: none;
-        cursor: pointer;
-        margin-block-start: 15px;
-      }
-
-      .toggle::-moz-focus-inner {
-        border: 0;
-        padding: 0;
-      }
-
-      .toggle--inverted {
-        color: white;
-      }
-
-      .default-content {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        inline-size: 100%;
       }
 
       :host([open]) .content {
@@ -145,23 +121,23 @@ export default class SdExpandable extends SolidElement {
       }
 
       :host(:not([open])) .content::after {
-        background: linear-gradient(
-          to top,
-          #fff 0%,
-          rgba(255, 255, 255, 0.8) 40%,
-          rgba(255, 255, 255, 0.5) 80%,
-          rgba(255, 255, 255, 0) 100%
-        );
-        bottom: 0;
-        left: 0;
+        @apply absolute bottom-0 left-0 block w-full h-6;
         content: ' ';
-        block-size: 23px;
-        position: absolute;
-        inline-size: 100%;
+        background: var(
+          --gradient-vertical-transparent-white,
+          linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 80%, rgba(255, 255, 255, 1) 100%)
+        );
+      }
+
+      :host([variant='leadtext']) .content::after {
+        @apply h-8;
       }
 
       :host([inverted]:not([open])) .content::after {
-        background: linear-gradient(180deg, rgba(0, 53, 142, 0) 40%, rgba(0, 53, 142, 0.75) 100%);
+        background: var(
+          --gradient-vertical-transparent-primary,
+          linear-gradient(180deg, rgba(0, 53, 142, 0) 0%, rgba(0, 53, 142, 1) 80%, rgba(0, 53, 142, 1) 100%)
+        );
       }
     `
   ];
