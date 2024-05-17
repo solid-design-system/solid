@@ -55,9 +55,10 @@ export default class SdStepGroup extends SolidElement {
         step.orientation = this.orientation;
 
         if (this.notInteractive) {
-          step.state = 'default';
+          step.current = false;
+          step.disabled = false;
           step.notInteractive = true;
-        } else if (step.state === 'current') {
+        } else if (step.current) {
           activeStep = index;
         }
       });
@@ -93,7 +94,24 @@ export default class SdStepGroup extends SolidElement {
       this.activeStep = index;
 
       this.steps.forEach((step, i) => {
-        step.state = i === index ? 'current' : i < index ? 'default' : 'disabled';
+        if (i === index) {
+          step.current = true;
+        } else if (i > index) {
+          step.disabled = true;
+        } else {
+          step.current = false;
+        }
+      });
+    }
+  }
+
+  @watch('notInteractive')
+  handleInteractivityChange() {
+    if (this.notInteractive) {
+      this.steps.forEach(step => {
+        step.current = false;
+        step.disabled = false;
+        step.notInteractive = true;
       });
     }
   }

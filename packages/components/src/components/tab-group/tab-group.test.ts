@@ -17,7 +17,6 @@ interface CustomEventPayload {
 const waitForScrollButtonsToBeRendered = async (tabGroup: SdTabGroup): Promise<void> => {
   await waitUntil(() => {
     const scrollButtons = tabGroup.shadowRoot?.querySelectorAll('button');
-    console.log('scrollButtons ARE RENDERED', scrollButtons);
     return scrollButtons?.length === 2;
   });
 };
@@ -145,12 +144,7 @@ describe('<sd-tab-group>', () => {
     it('shows scroll buttons on too many tabs', async () => {
       const tabGroup = await fixture<SdTabGroup>(html`<sd-tab-group> ${generateTabs(30)} </sd-tab-group>`);
 
-      const nav = tabGroup.shadowRoot?.querySelectorAll('.tab-group__nav');
-      console.log(nav);
-
-      console.log('waiting for scroll buttons to be rendered');
       await waitForScrollButtonsToBeRendered(tabGroup);
-      console.log('scroll buttons rendered');
 
       const scrollButtons = tabGroup.shadowRoot?.querySelectorAll('button');
       expect(scrollButtons, 'Both scroll buttons should be shown').to.have.length(2);

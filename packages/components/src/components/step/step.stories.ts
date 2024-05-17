@@ -56,16 +56,15 @@ export const Orientation = {
 };
 
 /**
- * Use the orientation attribute to set the axis of a step.
+ * Use the size attribute to set size of the circle in a step.
  */
 
-export const SizeXStatus = {
-  parameters: { controls: { exclude: ['size', 'state'] } },
+export const Size = {
+  parameters: { controls: { exclude: ['size'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        y: { type: 'attribute', name: 'size' },
-        x: { type: 'attribute', name: 'state' }
+        y: { type: 'attribute', name: 'size' }
       },
       args
     });
@@ -83,47 +82,28 @@ export const SizeXStatus = {
 };
 
 /**
- * Use the 'base', 'circle-and-tail-container','circle', 'label', 'description', 'text-container', 'label' and 'description' parts to style the step.
+ * Use the 'base', 'circle-and-tail-container','circle', 'text-container', 'label' and 'description' parts to style the step.
  */
 export const Parts = {
   parameters: {
     controls: {
-      exclude: [
-        'base',
-        'circle-and-tail-container',
-        'circle',
-        'tail',
-        'label',
-        'description',
-        'text-container',
-        'label',
-        'description'
-      ]
+      exclude: ['base', 'circle-and-tail-container', 'circle', 'tail', 'label', 'description', 'text-container']
     }
   },
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        x: { type: 'attribute', name: 'state' },
         y: {
           type: 'template',
           name: 'sd-step::part(...){outline: solid 2px red}',
-          values: [
-            'base',
-            'circle-and-tail-container',
-            'circle',
-            'tail',
-            'label',
-            'description',
-            'text-container',
-            'label',
-            'description'
-          ].map(part => {
-            return {
-              title: part,
-              value: `<style>#part-${part} sd-step::part(${part}){outline: solid 2px red; outline-offset: -2px;}</style><div id="part-${part}">%TEMPLATE%</div>`
-            };
-          })
+          values: ['base', 'circle-and-tail-container', 'circle', 'tail', 'label', 'description', 'text-container'].map(
+            part => {
+              return {
+                title: part,
+                value: `<style>#part-${part} sd-step::part(${part}){outline: solid 2px red; outline-offset: -2px;}</style><div id="part-${part}">%TEMPLATE%</div>`
+              };
+            }
+          )
         }
       },
       args

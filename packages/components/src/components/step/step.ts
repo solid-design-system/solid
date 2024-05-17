@@ -3,6 +3,7 @@ import { customElement } from '../../internal/register-custom-element';
 import { html, literal } from 'lit/static-html.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { property } from 'lit/decorators.js';
+import { watch } from '../../internal/watch';
 import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
 import ParagraphStyles from '../../styles/paragraph/paragraph.css?inline';
@@ -40,8 +41,11 @@ export default class SdStep extends SolidElement {
   /** Determines the orientation of the step. */
   @property({ reflect: true }) orientation: 'horizontal' | 'vertical' = 'horizontal';
 
-  /** Determines the state of the step. */
-  @property({ reflect: true }) state: 'disabled' | 'current' | 'default' = 'default';
+  /** Sets the step to a disabled state. */
+  @property({ type: Boolean, reflect: true }) disabled = false;
+
+  /** Sets the step to an active state. */
+  @property({ type: Boolean, reflect: true }) current = false;
 
   /** Removes the tail from the step. */
   @property({ reflect: true, type: Boolean, attribute: 'no-tail' }) noTail = false;
@@ -77,6 +81,28 @@ export default class SdStep extends SolidElement {
     this.emit('sd-focus');
   }
 
+  @watch('current')
+  handleCurrentChange() {
+    if (this.current) {
+      this.disabled = false;
+    }
+  }
+
+  @watch('disabled')
+  handleDisabledChange() {
+    if (this.disabled) {
+      this.current = false;
+    }
+  }
+
+  @watch('notInteractive')
+  handleInteractivityChange() {
+    if (this.notInteractive) {
+      this.current = false;
+      this.disabled = false;
+    }
+  }
+
   render() {
     const isLink = this.isLink();
     const tag = this.notInteractive ? literal`div` : isLink ? literal`a` : literal`button`;
@@ -91,7 +117,7 @@ export default class SdStep extends SolidElement {
           this.orientation === 'horizontal'
             ? 'flex-col w-full'
             : 'flex-row gap-4 items-stretch h-full w-min overflow-hidden',
-          this.state === 'default' && !this.notInteractive && 'group'
+          !this.disabled && !this.current && !this.notInteractive && 'group'
         )}
         @focus=${this.handleFocus}
         @blur=${this.handleBlur}
@@ -114,21 +140,24 @@ export default class SdStep extends SolidElement {
           
           <${tag}
             part="circle"
-            ?disabled=${this.state !== 'default'}
-            tabindex=${this.state === 'default' ? '0' : '-1'}
+            ?disabled=${this.disabled}
+            tabindex=${!this.disabled && !this.current ? '0' : '-1'}
             href=${ifDefined(isLink ? this.href : undefined)}
-            aria-current=${this.state === 'current' ? 'step' : undefined}
+            aria-current=${this.current ? 'step' : undefined}
+            aria-label='Step ${this.index}'
             class=${cx(
               'border rounded-full aspect-square circle flex items-center justify-center shrink-0 font-bold select-none',
-              this.state === 'default' ? 'focus-visible:focus-outline' : 'focus-visible:outline-none',
+              !this.disabled && !this.current ? 'focus-visible:focus-outline' : 'focus-visible:outline-none',
               this.size === 'lg' ? 'w-12' : 'w-8',
-              this.state === 'disabled' && 'border-neutral-400 text-neutral-500',
-              this.state === 'default' && 'border-primary group-hover:bg-primary-100 group-hover:border-primary-500',
-              this.state === 'current' && 'bg-accent border-none text-white'
+              this.disabled && 'border-neutral-400 text-neutral-500',
+              !this.disabled &&
+                !this.current &&
+                'border-primary group-hover:bg-primary-100 group-hover:border-primary-500',
+              this.current && 'bg-accent border-none text-white'
             )}
           >
             ${
-              this.state === 'default'
+              !this.disabled && !this.current
                 ? html`<slot
                     name="step-icon"
                     class=${cx(
@@ -150,7 +179,7 @@ export default class SdStep extends SolidElement {
                     <sd-divider
                       part="tail"
                       orientation="horizontal"
-                      class=${cx('w-full my-auto mr-2', this.state === 'default' && 'tail-to-primary')}
+                      class=${cx('w-full my-auto mr-2', !this.disabled && !this.current && 'tail-to-primary')}
                     ></sd-divider>
                   `
                 : html`<sd-divider
@@ -158,17 +187,17 @@ export default class SdStep extends SolidElement {
                     orientation="vertical"
                     class=${cx(
                       'flex-grow flex-shrink-0 basis-auto h-full w-[1px] mx-auto',
-                      this.state === 'default' && 'tail-to-primary'
+                      !this.disabled && !this.current && 'tail-to-primary'
                     )}
                   ></sd-divider> `
           }
         </div>
 
-        <div part="text-container" class=${cx('w-40 mt-4 break-words flex flex-col gap-2', this.orientation === 'horizontal' ? 'text-center' : 'text-left', this.state === 'disabled' && '!text-neutral-500')}>
-          <div part="label" class=${cx('!font-bold sd-paragraph', this.state === 'disabled' && '!text-neutral-500', this.state === 'default' && '!text-primary group-hover:!text-primary-500')}>
+        <div part="text-container" class=${cx('mt-4 mr-4 break-words flex flex-col gap-2', this.orientation === 'horizontal' ? 'text-center w-40' : 'w-max text-left', this.disabled && '!text-neutral-500')}>
+          <div part="label" class=${cx('!font-bold sd-paragraph', this.disabled && '!text-neutral-500', !this.disabled && !this.current && '!text-primary group-hover:!text-primary-500')}>
             <slot name="label">${this.label}</slot>
           </div>
-          <div part="description" class=${cx('sd-paragraph sd-paragraph--size-sm', this.state === 'disabled' && '!text-neutral-500')}>
+          <div part="description" class=${cx('sd-paragraph sd-paragraph--size-sm', this.disabled && '!text-neutral-500')}>
           ${this.description || html`<slot></slot>`}
           </div>
         </div>
