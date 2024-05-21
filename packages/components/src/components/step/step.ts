@@ -153,6 +153,7 @@ export default class SdStep extends SolidElement {
               !this.disabled &&
                 !this.current &&
                 'border-primary group-hover:bg-primary-100 group-hover:border-primary-500',
+              !this.notInteractive && 'group-hover:cursor-pointer',
               this.current && 'bg-accent border-none text-white'
             )}
           >
@@ -165,7 +166,7 @@ export default class SdStep extends SolidElement {
                       this.size === 'lg' ? 'text-lg' : 'text-sm'
                     )}
                   >
-                    <sd-icon name="status-hook" library="system"></sd-icon
+                    <sd-icon name="status-check" library="system"></sd-icon
                   ></slot>`
                 : html`<slot name="index">${this.index} </slot>`
             }
@@ -194,7 +195,7 @@ export default class SdStep extends SolidElement {
         </div>
 
         <div part="text-container" class=${cx('mt-4 mr-4 break-words flex flex-col gap-2', this.orientation === 'horizontal' ? 'text-center w-40' : 'w-max text-left', this.disabled && '!text-neutral-500')}>
-          <div part="label" class=${cx('!font-bold sd-paragraph', this.disabled && '!text-neutral-500', !this.disabled && !this.current && '!text-primary group-hover:!text-primary-500')}>
+          <div part="label" class=${cx('!font-bold sd-paragraph', this.disabled && '!text-neutral-500', !this.disabled && !this.current && '!text-primary group-hover:!text-primary-500 group-hover:cursor-pointer')}>
             <slot name="label">${this.label}</slot>
           </div>
           <div part="description" class=${cx('sd-paragraph sd-paragraph--size-sm', this.disabled && '!text-neutral-500')}>

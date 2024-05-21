@@ -15,11 +15,6 @@ export default {
   args: overrideArgs([
     {
       type: 'slot',
-      name: 'default',
-      value: `Lorem ipsum est dolor sit amet`
-    },
-    {
-      type: 'slot',
       name: 'label',
       value: `<span slot="label">Step name</span>`
     }
@@ -56,29 +51,60 @@ export const Orientation = {
 };
 
 /**
- * Use the size attribute to set size of the circle in a step.
+ * Use the `default` slot to set a description for the step. Alternatively, you can use the `description` attribute.
  */
 
-export const Size = {
-  parameters: { controls: { exclude: ['size'] } },
-  render: (args: any) => {
+export const Description = {
+  render: () => {
     return generateTemplate({
-      axis: {
-        y: { type: 'attribute', name: 'size' }
-      },
-      args
-    });
-  },
-  decorators: [
-    (story: () => typeof html) => html`
-      <style>
-        td.template {
-          width: 33%;
+      args: overrideArgs([
+        {
+          type: 'slot',
+          name: 'default',
+          value: `Lorem ipsum est dolor sit amet`
+        },
+        {
+          type: 'slot',
+          name: 'label',
+          value: `<span slot="label">Step name</span>`
         }
-      </style>
-      ${story()}
-    `
-  ]
+      ])
+    });
+  }
+};
+
+/**
+ * Use the `description` and `label` attributes to set the respective text on the step. These are used as alternatives to using the `default` and `label` slots.
+ */
+
+export const DescriptionAndLabelUsingAttributes = {
+  name: 'Description and Label (using attributes)',
+  render: () => {
+    return generateTemplate({
+      args: overrideArgs([
+        {
+          type: 'slot',
+          name: 'default',
+          value: ``
+        },
+        {
+          type: 'slot',
+          name: 'label',
+          value: ``
+        },
+        {
+          type: 'attribute',
+          name: 'label',
+          value: `This label was set using the "label" attribute.`
+        },
+        {
+          type: 'attribute',
+          name: 'description',
+          value: `This description was set using "description" attribute.`
+        }
+      ])
+    });
+  }
 };
 
 /**
@@ -90,7 +116,7 @@ export const Parts = {
       exclude: ['base', 'circle-and-tail-container', 'circle', 'tail', 'label', 'description', 'text-container']
     }
   },
-  render: (args: any) => {
+  render: () => {
     return generateTemplate({
       axis: {
         y: {
@@ -106,7 +132,18 @@ export const Parts = {
           )
         }
       },
-      args
+      args: overrideArgs([
+        {
+          type: 'slot',
+          name: 'default',
+          value: `Lorem ipsum est dolor sit amet`
+        },
+        {
+          type: 'slot',
+          name: 'label',
+          value: `<span slot="label">Step name</span>`
+        }
+      ])
     });
   },
   decorators: [
@@ -119,6 +156,57 @@ export const Parts = {
       ${story()}
     `
   ]
+};
+
+/**
+ * Use the 'default', 'label', 'index', 'step-icon' slots to add content to the step..
+ */
+
+export const Slots = {
+  parameters: {
+    controls: { exclude: ['default', 'label', 'index', 'step-icon'] }
+  },
+  render: () => {
+    return html`
+      ${['default', 'label', 'index', 'step-icon'].map(slot =>
+        generateTemplate({
+          axis: {
+            y: {
+              type: 'slot',
+              name: slot,
+              title: 'slot=..',
+              values: [
+                {
+                  value:
+                    slot === 'default'
+                      ? `<div class="slot slot--border slot--background h-12"></div>`
+                      : `<div slot='${slot}' class="slot slot--border slot--background h-12"></div>`,
+                  title: slot
+                }
+              ]
+            }
+          },
+          args: overrideArgs([
+            {
+              type: 'attribute',
+              name: 'current',
+              value: true
+            },
+            {
+              type: 'slot',
+              name: 'default',
+              value: `Lorem ipsum est dolor sit amet`
+            },
+            {
+              type: 'slot',
+              name: 'label',
+              value: `<span slot="label">Step name</span>`
+            }
+          ])
+        })
+      )}
+    `;
+  }
 };
 
 /**

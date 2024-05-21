@@ -18,17 +18,14 @@ export default {
       value: `
         <sd-step size="lg" orientation="horizontal" state="default">
           <p slot="label">Lorem ipsum dolor sit</p>
-          Lorem ipsum est dolor sit amet
         </sd-step>
 
         <sd-step size="lg" orientation="horizontal" state="current">
           <p slot="label">Exercitation ullamco laboris</p>
-          Lorem ipsum est dolor sit amet
         </sd-step>
 
         <sd-step size="lg" orientation="horizontal" state="disabled">
           <p slot="label">Reprehenderit qui in e name</p>
-          Lorem ipsum est dolor sit amet
         </sd-step>`
     },
     {
@@ -48,7 +45,7 @@ export default {
 
 export const Default = {
   render: (args: any) => {
-    return html`${generateTemplate({ args })}`;
+    return html`<div style="height:250px">${generateTemplate({ args })}</div>`;
   }
 };
 
@@ -71,6 +68,7 @@ export const Orientation = {
       <style>
         td.template {
           width: 100%;
+          height: 250px;
         }
       </style>
       ${story()}
@@ -113,7 +111,7 @@ export const Parts = {
       exclude: ['base', 'body']
     }
   },
-  render: (args: any) => {
+  render: () => {
     return generateTemplate({
       axis: {
         x: { type: 'attribute', name: 'orientation' },
@@ -123,12 +121,37 @@ export const Parts = {
           values: ['base', 'body'].map(part => {
             return {
               title: part,
-              value: `<style>#part-${part} sd-step-group::part(${part}){outline: solid 2px red; outline-offset: -2px;}</style><div id="part-${part}">%TEMPLATE%</div>`
+              value: `<style>#part-${part} sd-step-group::part(${part}){outline: solid 2px red; outline-offset: 0px;}</style><div id="part-${part}">%TEMPLATE%</div>`
             };
           })
         }
       },
-      args
+      args: overrideArgs([
+        {
+          type: 'slot',
+          name: 'default',
+          value: `
+            <sd-step size="lg" orientation="horizontal" state="default">
+              <p slot="label">Lorem ipsum dolor sit</p>
+              Lorem ipsum est dolor sit amet
+            </sd-step>
+    
+            <sd-step size="lg" orientation="horizontal" state="current">
+              <p slot="label">Exercitation ullamco laboris</p>
+              Lorem ipsum est dolor sit amet
+            </sd-step>
+    
+            <sd-step size="lg" orientation="horizontal" state="disabled">
+              <p slot="label">Reprehenderit qui in e name</p>
+              Lorem ipsum est dolor sit amet
+            </sd-step>`
+        },
+        {
+          type: 'attribute',
+          name: 'active-step',
+          value: `1`
+        }
+      ])
     });
   }
 };
@@ -168,19 +191,16 @@ export const SetActiveStep = {
   render: () => {
     return html`
       <sd-step-group id="set-active" size="lg" orientation="horizontal" active-step="0">
-        <sd-step size="lg" orientation="horizontal" state="default">
+        <sd-step size="lg" orientation="horizontal">
           <p slot="label">Lorem ipsum dolor sit</p>
-          Lorem ipsum est dolor sit amet
         </sd-step>
 
-        <sd-step size="lg" orientation="horizontal" state="current">
+        <sd-step size="lg" orientation="horizontal">
           <p slot="label">Exercitation ullamco laboris</p>
-          Lorem ipsum est dolor sit amet
         </sd-step>
 
-        <sd-step size="lg" orientation="horizontal" state="disabled">
+        <sd-step size="lg" orientation="horizontal">
           <p slot="label">Reprehenderit qui in e name</p>
-          Lorem ipsum est dolor sit amet
         </sd-step>
       </sd-step-group>
 
@@ -219,21 +239,18 @@ export const SampleNotInteractive = {
   render: () => {
     return html`
       <sd-step-group size="lg" orientation="horizontal" active-step="0" not-interactive>
-        <sd-step size="lg" orientation="horizontal" state="default">
+        <sd-step size="lg" orientation="horizontal">
           <p slot="label">Lorem ipsum dolor sit</p>
-          Lorem ipsum est dolor sit amet
           <sd-icon name="calendar" slot="step-icon" library="system"></sd-icon>
         </sd-step>
 
-        <sd-step size="lg" orientation="horizontal" state="current">
+        <sd-step size="lg" orientation="horizontal">
           <p slot="label">Exercitation ullamco laboris</p>
-          Lorem ipsum est dolor sit amet
           <sd-icon name="eye" slot="step-icon" library="system"></sd-icon>
         </sd-step>
 
-        <sd-step size="lg" orientation="horizontal" state="disabled">
+        <sd-step size="lg" orientation="horizontal">
           <p slot="label">Reprehenderit qui in e name</p>
-          Lorem ipsum est dolor sit amet
           <sd-icon name="calendar" slot="step-icon" library="system"></sd-icon>
         </sd-step>
       </sd-step-group>
