@@ -8,34 +8,24 @@
   @apply max-w-[80ch];
 
   /**
-   * Add spacings.
+   * Add default spacings
    */
   > *:not(:first-child) {
-    @apply mt-8;
-  }
-  p + p {
     @apply mt-4;
-  }
-  h1 + p,
-  h2 + p,
-  h3 + p,
-  h4 + p {
-    @apply mt-4;
-  }
-  p:not(:first-child) {
-    @apply mt-2;
-  }
-  h1:not(:first-child),
-  h2:not(:first-child) {
-    @apply mt-8;
-  }
-  h3:not(:first-child),
-  h4:not(:first-child) {
-    @apply mt-6;
   }
 
-  table {
-    @apply my-6;
+  > *:first-child {
+    @apply mt-0;
+  }
+
+  > :is(h1, h2, h3, h4, h5):not(#\9) + :is(h1, h2, h3, h4, h5) {
+    /* :not(#\9) is a hack to raise specifity, see https://stackoverflow.com/a/61781795 */
+    @apply mt-2;
+  }
+
+  > :is(ul, ol) {
+    /* ul and ol have padding that has to be reset */
+    @apply py-0;
   }
 
   /**
