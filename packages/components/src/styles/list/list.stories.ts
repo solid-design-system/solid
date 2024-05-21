@@ -67,9 +67,24 @@ export const OrderedList = {
                         <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
                     </ol>
                 </li>
+                <li>Dolor sit
+                    <ol>
+                        <li>Amet</li>
+                        <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
+                    </ol>
+                </li>
             </ol>
         </li>
-        <li>Lorem Ipsum</li>
+        <li>Lorem Ipsum
+            <ol>
+                <li>Dolor sit
+                    <ol>
+                        <li>Amet</li>
+                        <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
+                    </ol>
+                </li>
+            </ol>
+        </li>
         <li>Lorem Ipsum</li>`
   }),
   render: (args: any) => {
@@ -83,7 +98,7 @@ export const OrderedList = {
           alternate: 'x',
           colors: ['rgb(var(--sd-color-white, 255 255 255))', 'rgb(var(--sd-color-primary, 0 53 142))']
         },
-        templateContent: '<ol class="%CLASSES%">%SLOT%</ol>'
+        templateContent: '<ol class="%CLASSES%">%SLOT%</ol><ol class="%CLASSES%">%SLOT%</ol>'
       }
     });
   }
@@ -104,8 +119,16 @@ export const UnorderedList = {
                     </ul>
                 </li>
             </ul>
+        </li><li>Lorem Ipsum
+            <ul>
+                <li>Dolor sit
+                    <ul>
+                        <li>Amet</li>
+                        <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
+                    </ul>
+                </li>
+            </ul>
         </li>
-        <li>Lorem Ipsum</li>
         <li>Lorem Ipsum</li>`
   }),
   render: (args: any) => {
@@ -191,6 +214,126 @@ export const HorizontalIconList = {
           colors: ['rgb(var(--sd-color-white, 255 255 255))', 'rgb(var(--sd-color-primary, 0 53 142))']
         },
         templateContent: '<ul class="sd-list--icon sd-list--horizontal %CLASSES%">%SLOT%</ul>'
+      }
+    });
+  }
+};
+
+/**
+ * MISSING
+ */
+export const MixedLists = {
+  name: 'Mixed Lists',
+  parameters: { controls: { exclude: ['default'] } },
+  args: overrideArgs({
+    type: 'slot',
+    name: 'default',
+    value: `<li>Lorem Ipsum
+            <ul>
+                <li>Dolor sit
+                    <ul>
+                        <li>Amet</li>
+                        <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>`
+  }),
+  render: (args: any) => {
+    return generateTemplate({
+      args,
+      options: {
+        templateContent: `
+        <h2 class="sd-headline">Ordered List</h2>
+        <ol class="%CLASSES%">
+          <li>Lorem Ipsum
+            <ul>
+                <li>Dolor sit
+                    <ul>
+                        <li>Amet</li>
+                        <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
+                    </ul>
+                </li>
+              </ul>
+          </li>
+          <li>Lorem Ipsum
+            <ul>
+                <li>Dolor sit
+                    <ol>
+                        <li>Amet</li>
+                        <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
+                    </ol>
+                </li>
+                <li>Dolor sit
+                    <ol>
+                        <li>Amet</li>
+                        <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
+                    </ol>
+                </li>
+              </ul>
+          </li>
+        </ol>
+        <h2 class="sd-headline">Unordered List</h2>
+        <ul class="%CLASSES%">
+          <li>Lorem Ipsum
+            <ol>
+                <li>Dolor sit
+                    <ul>
+                        <li>Amet</li>
+                        <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
+                    </ul>
+                </li>
+                <li>Dolor sit
+                    <ol>
+                        <li>Amet</li>
+                        <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
+                    </ol>
+                </li>
+              </ol>
+          </li>
+          <li>Lorem Ipsum
+            <ol>
+                <li>Dolor sit
+                    <ul>
+                        <li>Amet</li>
+                        <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
+                    </ul>
+                </li>
+              </ol>
+          </li>
+          <li>Lorem Ipsum
+            <ul>
+                <li>Dolor sit
+                    <ol>
+                        <li>Amet</li>
+                        <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
+                    </ol>
+                </li>
+                <li>Dolor sit
+                    <ol>
+                        <li>Amet</li>
+                        <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
+                    </ol>
+                </li>
+              </ul>
+          </li>
+          <li>Lorem Ipsum
+            <ul>
+                <li>Dolor sit
+                    <ol>
+                        <li>Amet</li>
+                        <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
+                    </ol>
+                </li>
+                <li>Dolor sit
+                    <ol>
+                        <li>Amet</li>
+                        <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
+                    </ol>
+                </li>
+              </ul>
+          </li>
+        </ul>`
       }
     });
   }

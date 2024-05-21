@@ -23,7 +23,7 @@
     @apply mt-2;
   }
 
-  > :is(ul, ol) {
+  > :is(ul, ol):not(#\9) {
     /* ul and ol have padding that has to be reset */
     @apply py-0;
   }
