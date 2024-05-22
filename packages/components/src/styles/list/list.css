@@ -1,4 +1,4 @@
-.sd-list,
+.sd-list:not(.sd-list--icon),
 .sd-prose > :is(ol, ul) {
   @apply text-left py-4;
 
@@ -36,43 +36,38 @@
   }
 
   /* Styling */
-  &:is(ol),
-  ol {
-    > li {
-      @apply table;
-      &:before {
-        @apply pr-2 table-cell;
-      }
+  li {
+    @apply table;
+    &:before {
+      @apply pr-2 table-cell;
     }
   }
 
-  &:is(ul):not(.sd-list--icon),
+  &:is(ul),
   ul {
-    list-style-type: '\2022';
-    @apply ml-4;
-    & ul {
-      @apply ml-4;
-      list-style-type: '\002B1D';
-    }
-
-    & ul ul {
-      @apply ml-4;
-      list-style-type: '\2010';
-    }
+    list-style-type: '';
   }
 
-  &:is(ul):not(.sd-list--icon),
-  & ul {
-    list-style-type: '\2022';
-    @apply ml-4;
-
-    li {
-      @apply pl-2 -ml-2;
+  &:is(ul):not(.sd-list--icon) > li,
+  ul > li {
+    &:before {
+      content: '\2022';
+    }
+    > ul > li {
+      &:before {
+        content: '\002B1D';
+      }
+      > ul > li {
+        &:before {
+          content: '\2010';
+        }
+      }
     }
   }
 }
 
 .sd-list--icon {
+  @apply text-left py-4;
   li {
     sd-icon:first-of-type,
     .sd-list--icon__icon:first-of-type {
@@ -91,8 +86,8 @@
   li {
     @apply relative leading-[32px] pt-3 pl-10;
 
-    sd-icon:first-of-type,
-    .sd-list--icon__icon:first-of-type {
+    > sd-icon:first-of-type,
+    > .sd-list--icon__icon:first-of-type {
       @apply absolute left-0 text-3xl text-primary;
     }
   }
@@ -112,4 +107,9 @@
 
 .sd-list--inverted {
   @apply text-white;
+
+  li > sd-icon:first-of-type,
+  li > .sd-list--icon__icon:first-of-type {
+    @apply text-white;
+  }
 }
