@@ -554,6 +554,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               @focus=${this.handleFocus}
               @blur=${this.handleBlur}
             />
+            <!-- TODO: substitute text-neutral-400 for text-neutral-500 when available! -->
             ${hasClearIcon
               ? html`
                   <button
@@ -614,6 +615,17 @@ export default class SdInput extends SolidElement implements SolidFormControl {
             ${this.type === 'time'
               ? html`
                   <sd-icon class=${cx(iconColor, iconMarginLeft, iconSize)} library="system" name="clock"></sd-icon>
+                `
+              : ''}
+            ${this.type === 'search'
+              ? html`
+                  <button class="flex items-center" type="button" tabindex="-1">
+                    <sd-icon
+                      class=${cx(iconColor, iconMarginLeft, iconSize)}
+                      library="system"
+                      name="magnifying-glass"
+                    ></sd-icon>
+                  </button>
                 `
               : ''}
             ${this.showInvalidStyle

@@ -94,11 +94,9 @@
 
   &.sd-list--horizontal {
     @apply flex;
-
     & li {
       @apply flex pt-0;
     }
-
     & li:not(:last-child) {
       @apply mr-8;
     }

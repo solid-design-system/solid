@@ -19,6 +19,7 @@
     - [We Enforce Security](#we-enforce-security)
     - [We Track TODOs](#we-track-todos)
     - [We Prepare Tickets for the Refinement](#we-prepare-tickets-for-the-refinement)
+    - [We track our velocity and productivity](#we-track-our-velocity-and-productivity)
   - [Git + GitHub](#git--github)
     - [Referencing People](#referencing-people)
     - [Pull Requests](#pull-requests)
@@ -154,6 +155,18 @@
   - Add the necessary information to the ticket description in the way, that it is understandable (without context) and explicit for the whole team.
   - Make sure all links are up to date.
   - Note open questions to be answered during the implementation towards design OR development in the respective section in the ticket description.
+
+### We track our velocity and productivity
+
+- **User Story**: As a team member, I want to be able to track velocity and productivity, which allows me to accurately measure our progress in each iteration, enable better forecasting and identification of potential bottlenecks.
+- **Actions**:
+  - We estimate our tickets as part of the DoR.
+  - We use story points in exchange to t-shirt sizes (xs: 2 SP, sm: 3 SP, md: 5 SP, lg: 8 SP, xl: 13 SP)
+  - We use a small ruleset when estimating with story points:
+    - 1 story point (SP) is designated for exceptionally small tasks requiring only one discipline (either development or design); if both are necessary, the story automatically has a minimum of 2 SP.
+    - We cap each iteration at a maximum of 70 SP.
+    - When a team member adds a new ticket, an equivalent amount of story points must be removed, ensuring the team's focus remains intact and providing clear expectations for external stakeholders regarding our iterations.
+    - Stories exceeding 13 story points must be broken down into smaller, more manageable pieces.
 
 ## Git + GitHub
 

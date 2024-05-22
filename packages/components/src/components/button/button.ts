@@ -259,7 +259,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
       class=${cx(
         `font-md leading-[calc(var(--tw-varspacing)-2px)] no-underline
         w-full h-varspacing whitespace-nowrap align-middle inline-flex items-stretch justify-center
-        border transition-colors duration-200 ease-in-out rounded-md
+        border transition-colors duration-200 ease-in-out rounded-default
         select-none cursor-[inherit]`,
         !this.inverted ? 'focus-visible:focus-outline' : 'focus-visible:focus-outline-inverted',
         this.loading && 'relative cursor-wait',

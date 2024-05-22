@@ -1,6 +1,6 @@
 {
   "name": "@solid-design-system/placeholders",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "This package provides license-free placeholder images for all projects at Union Investment.",
   "main": "src",
   "scripts": {
@@ -30,7 +30,7 @@
     "@semantic-release/git": "^10.0.1",
     "semantic-release": "^19.0.5",
     "semantic-release-monorepo": "^7.0.5",
-    "typescript": "5.4.2"
+    "typescript": "5.4.5"
   },
   "release": {
     "branches": [

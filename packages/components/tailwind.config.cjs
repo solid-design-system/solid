@@ -9,10 +9,22 @@ theme.extend = {
     grow: {
       '0%': { width: '0%' },
       '100%': { width: '100%' }
+    },
+    'bounce-once': {
+      '0%': { transform: 'translateY(0)' },
+      '15%': { transform: 'translateY(-9px)' },
+      '25%': { transform: 'translateY(-12px)' },
+      '40%': { transform: 'translateY(-4px)' },
+      '50%': { transform: 'translateY(0)' },
+      '65%': { transform: 'translateY(-4px)' },
+      '75%': { transform: 'translateY(-6px)' },
+      '90%': { transform: 'translateY(-2px)' },
+      '100%': { transform: 'translateY(0)' }
     }
   },
   animation: {
-    grow: 'grow linear'
+    grow: 'grow linear',
+    'bounce-once': 'bounce-once 0.6s ease-in-out'
   }
 };
 

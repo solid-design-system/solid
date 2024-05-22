@@ -1,0 +1,25 @@
+.sd-footnotes {
+  @apply text-neutral-700 text-sm text-left p-0 my-0;
+
+  &:is(ol) {
+    li {
+      counter-increment: list-item;
+      @apply flex gap-2;
+
+      &::before {
+        @apply w-5 leading-normal;
+        content: counter(list-item);
+        padding-top: 1px;
+        font-size: 10px;
+      }
+    }
+  }
+
+  &:is(ul) {
+    list-style: '';
+  }
+
+  &--inverted {
+    @apply text-white;
+  }
+}
