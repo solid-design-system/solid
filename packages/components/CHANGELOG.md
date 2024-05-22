@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v3.4.0](https://github.com/solid-design-system/solid/compare/components/3.3.1...components/3.4.0) (2024-05-22)
+
+
+### Features
+
+* ✨ add sd-scrollable ([#966](https://github.com/solid-design-system/solid/issues/966)) ([3d7bcad](https://github.com/solid-design-system/solid/commit/3d7bcad9416da3013c45d120a0196f29fa17986e)), closes [#289](https://github.com/solid-design-system/solid/issues/289)
+
+### 📈 Stats
+* Bundle size (uncompressed): 299 KB (+7 KB / +2%)
+* Bundle size (gzipped): 72 KB (+2 KB / +3%)
+
 # [@solid-design-system/components-v3.3.1](https://github.com/solid-design-system/solid/compare/components/3.3.0...components/3.3.1) (2024-05-14)
 
 
