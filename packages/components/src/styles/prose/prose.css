@@ -5,7 +5,7 @@
   /**
    * Optimize for reading.
    */
-  @apply max-w-[80ch];
+  @apply max-w-[80ch] text-left;
 
   /**
    * Add default spacings
@@ -29,16 +29,54 @@
   }
 
   /**
-   * Add styles for code blocks.
+   * Add styles for elements that are not based on existing CSS styles
    */
+
+  hr {
+    @apply border-neutral-500 border-t h-0;
+  }
+
   pre {
     @apply overflow-auto;
   }
 
+  blockquote {
+    &,
+    & > * {
+      @apply text-xl;
+    }
+    &:has(*) *:first-child,
+    &:not(:has(*)) {
+      &::before {
+        content: open-quote;
+        display: inline;
+      }
+      &::after {
+        content: close-quote;
+        display: inline;
+      }
+    }
+  }
+
+  code {
+    &:before {
+      content: '`';
+    }
+    &:after {
+      content: '`';
+    }
+  }
+
   /**
-   * Add styles for horizontal rules as these are only available as component.
-   */
-  hr {
-    @apply border-neutral-500 border-t h-0;
+    * Inverted styles
+    */
+  &--inverted {
+    hr {
+      @apply border-white;
+    }
+
+    pre {
+      @apply text-white;
+    }
   }
 }

@@ -5,5 +5,10 @@ export default {
   summary: 'Prose',
   status: 'stable',
   since: '1.13',
-  attributes: []
+  attributes: [
+    {
+      name: 'sd-prose--inverted',
+      description: 'Inverts the content, but not tables.'
+    }
+  ]
 } satisfies Style;

@@ -105,7 +105,8 @@
   }
 }
 
-.sd-list--inverted {
+.sd-list--inverted,
+.sd-prose--inverted > :is(ol, ul) {
   @apply text-white;
 
   li > sd-icon:first-of-type,

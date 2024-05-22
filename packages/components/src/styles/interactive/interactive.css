@@ -1,24 +1,31 @@
+.sd-prose a,
 .sd-interactive {
   &--reset {
     all: unset;
     outline: revert;
   }
 
-  @apply no-underline cursor-pointer text-primary hover:text-primary-500 active:text-primary-800 transition-colors;
+  @apply cursor-pointer text-primary hover:text-primary-500 active:text-primary-800 transition-colors underline;
+
+  &:is(.sd-interactive) {
+    @apply no-underline;
+  }
 
   &:focus-visible {
     @apply outline outline-2 outline-offset-2 outline-primary;
   }
 
-  &--inverted {
-    @apply text-white hover:text-primary-200 active:text-primary-400;
-    &:focus-visible {
-      @apply outline outline-2 outline-offset-2 outline-white;
-    }
-  }
-
   &--disabled,
-  &[disabled] {
+  &[disabled],
+  &[href=''] {
     @apply cursor-not-allowed text-neutral-600 hover:text-neutral-600 active:text-neutral-600;
+  }
+}
+
+.sd-prose--inverted a,
+.sd-interactive--inverted {
+  @apply text-white hover:text-primary-200 active:text-primary-400;
+  &:focus-visible {
+    @apply outline outline-2 outline-offset-2 outline-white;
   }
 }

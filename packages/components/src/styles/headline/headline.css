@@ -1,9 +1,5 @@
 .sd-headline,
-.sd-prose h1,
-.sd-prose h2,
-.sd-prose h3,
-.sd-prose h4,
-.sd-prose h5 {
+.sd-prose :is(h1, h2, h3, h4, h5) {
   @apply flex font-bold text-primary;
 
   sd-icon {
@@ -19,7 +15,7 @@
     }
   }
 
-  &--size-3xl,
+  &.sd-headline--size-3xl,
   &:is(h2) {
     @apply text-2xl sm:text-3xl gap-4 leading-tight;
 
@@ -28,12 +24,10 @@
     }
   }
 
-  &--size-xl,
-  &--size-lg,
-  &--size-base,
-  &:is(h3),
-  &:is(h4),
-  &:is(h5) {
+  &.sd-headline--size-xl,
+  &.sd-headline--size-lg,
+  &.sd-headline--size-base,
+  &:is(h3, h4, h5) {
     @apply text-black gap-2;
 
     sd-icon {
@@ -41,7 +35,7 @@
     }
   }
 
-  &--size-xl,
+  &.sd-headline--size-xl,
   &:is(h3) {
     @apply text-xl;
 
@@ -50,14 +44,13 @@
     }
   }
 
-  &--size-lg,
-  &--size-base,
-  &:is(h4),
-  &:is(h5) {
+  &.sd-headline--size-lg,
+  &.sd-headline--size-base,
+  &:is(h4, h5) {
     @apply leading-normal;
   }
 
-  &--size-lg,
+  &.sd-headline--size-lg,
   &:is(h4) {
     @apply text-lg;
 
@@ -66,9 +59,9 @@
     }
   }
 
-  &--size-base,
+  &.sd-headline--size-base,
   &:is(h5) {
-    @apply text-base text-black;
+    @apply text-base;
 
     sd-icon {
       @apply -mt-1;
@@ -80,29 +73,23 @@
   }
 }
 
-.sd-prose h1,
-.sd-prose h2,
-.sd-prose h3,
-.sd-prose h4,
-.sd-prose h5,
-.sd-headline--inline {
+.sd-headline--inline,
+.sd-prose :is(h1, h2, h3, h4, h5) {
   @apply inline-block;
 
   sd-icon {
     @apply align-middle mr-2 -mt-1;
   }
 
-  &.sd-headline--size-xl,
-  &.sd-headline--size-lg,
-  &.sd-headline--size-base {
+  &:is(.sd-headline--size-xl, .sd-headline--size-lg, .sd-headline--size-base) {
     sd-icon {
       @apply mr-0.5;
     }
   }
 }
 
-.sd-prose--inverted,
-.sd-headline--inverted {
+.sd-headline--inverted,
+.sd-prose--inverted :is(h1, h2, h3, h4, h5):not(#\9) {
   @apply text-white;
 
   sd-icon {

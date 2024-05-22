@@ -5,8 +5,9 @@
   &--size-sm {
     @apply text-sm font-normal leading-normal text-black;
   }
+}
 
-  &--inverted {
-    @apply text-white;
-  }
+.sd-paragraph--inverted,
+.sd-prose--inverted p {
+  @apply text-white;
 }
