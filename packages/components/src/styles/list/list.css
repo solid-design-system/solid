@@ -11,65 +11,52 @@
     @apply pt-4;
   }
 
+  /* Counter handling for ordered lists. */
   &:is(ol),
   ol {
     & > li {
       counter-increment: item;
+      &:before {
+        content: counters(item, '.') '. ';
+      }
     }
   }
 
+  /* Add second level */
   &:is(ol),
   &:is(ol) > li > ol,
   ol > li > ol {
     counter-reset: item;
   }
 
+  /* Ordered lists inside unordered lists. */
   &:is(ul) > li > ol,
   ul > li > ol {
     counter-set: item 0;
   }
 
+  /* Styling */
   &:is(ol),
   ol {
     > li {
       @apply table;
       &:before {
         @apply pr-2 table-cell;
-        content: counters(item, '.') '. ';
-      }
-    }
-
-    > li > ol {
-      > li {
-        @apply table;
-        &:before {
-          @apply pr-2 table-cell;
-          content: counters(item, '.') '. ';
-        }
-        > ol {
-          > li {
-            @apply table;
-            &:before {
-              @apply pr-2 table-cell;
-              content: counters(item, '.') '. ';
-            }
-          }
-        }
       }
     }
   }
 
   &:is(ul):not(.sd-list--icon),
-  &:is(ol) ul {
+  ul {
     list-style-type: '\2022';
     @apply ml-4;
     & ul {
-      @apply ms-4;
+      @apply ml-4;
       list-style-type: '\002B1D';
     }
 
     & ul ul {
-      @apply ms-4;
+      @apply ml-4;
       list-style-type: '\2010';
     }
   }
