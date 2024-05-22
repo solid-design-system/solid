@@ -73,8 +73,7 @@
   }
 }
 
-.sd-headline--inline,
-.sd-prose :is(h1, h2, h3, h4, h5) {
+.sd-headline--inline {
   @apply inline-block;
 
   sd-icon {

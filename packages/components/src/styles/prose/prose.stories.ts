@@ -351,3 +351,359 @@ export const Inverted = {
     });
   }
 };
+
+export const Samples = {
+  render: () => {
+    return html`
+      <div class="flex flex-col gap-32">
+        <!-- sd-prose/sample-h1 -->
+        <div class="sd-prose">
+          <h1>H1 Nisi eu excepteur anim esse</h1>
+        </div>
+        <!-- sd-prose/sample-h2 -->
+        <div class="sd-prose">
+          <h2>H2 Nisi eu excepteur anim esse</h2>
+        </div>
+        <!-- sd-prose/sample-h3 -->
+        <div class="sd-prose">
+          <h3>H3 Nisi eu excepteur anim esse</h3>
+        </div>
+        <!-- sd-prose/sample-h4 -->
+        <div class="sd-prose">
+          <h4>H4 Nisi eu excepteur anim esse</h4>
+        </div>
+        <!-- sd-prose/sample-h5 -->
+        <div class="sd-prose">
+          <h5>H5 Nisi eu excepteur anim esse</h5>
+        </div>
+        <!-- sd-prose/sample-paragraph -->
+        <div class="sd-prose">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
+            phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique.
+            Facilisis commodo integer hendrerit tortor.
+          </p>
+        </div>
+        <!-- sd-prose/sample-paragraph-strong -->
+        <div class="sd-prose">
+          <p><strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</strong></p>
+        </div>
+        <!-- sd-prose/sample-inline-link -->
+        <div class="sd-prose">
+          <a href="#">Inline link</a>
+        </div>
+        <!-- sd-prose/sample-inline-link-strong -->
+        <div class="sd-prose">
+          <a href="#"><strong>Inline link</strong></a>
+        </div>
+        <!-- sd-prose/sample-list-unordered -->
+        <div class="sd-prose">
+          <ul>
+            <li>Unordered list level 1</li>
+            <li>Unordered list level 1</li>
+            <li>Unordered list level 1</li>
+          </ul>
+        </div>
+        <!-- sd-prose/sample-list-ordered -->
+        <div class="sd-prose">
+          <ol>
+            <li>Ordered list level 1</li>
+            <li>Ordered list level 1</li>
+            <li>Ordered list level 1</li>
+          </ol>
+        </div>
+        <!-- sd-prose/sample-list-ordered-nested -->
+        <div class="sd-prose">
+          <ol>
+            <li>
+              Ordered list level 1
+              <ol>
+                <li>Ordered list level 2</li>
+                <li>Ordered list level 2</li>
+              </ol>
+            </li>
+            <li>
+              Ordered list level 1
+              <ol>
+                <li>Ordered list level 2</li>
+                <li>Ordered list level 2</li>
+                <li>Ordered list level 2</li>
+              </ol>
+            </li>
+          </ol>
+        </div>
+        <!-- sd-prose/sample-media -->
+        <div class="sd-prose">
+          <figure>
+            <img src="./placeholders/generic.jpg" alt="A generic placeholder jpg" class="aspect-video object-cover" />
+            <figcaption>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula.</figcaption>
+          </figure>
+        </div>
+        <!-- sd-prose/sample-quote -->
+        <div class="sd-prose">
+          <blockquote>
+            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</p>
+          </blockquote>
+        </div>
+        <!-- sd-prose/sample-table -->
+        <div class="sd-prose">
+          <table>
+            <thead>
+              <tr>
+                <th>Header</th>
+                <th>Header</th>
+                <th>Header</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Cell content</td>
+                <td>Cell content</td>
+                <td>Cell content</td>
+              </tr>
+              <tr>
+                <td>Cell content</td>
+                <td>Cell content</td>
+                <td>Cell content</td>
+              </tr>
+              <tr>
+                <td>Cell content</td>
+                <td>Cell content</td>
+                <td>Cell content</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- sd-prose/sample-divider -->
+        <div class="sd-prose"><hr /></div>
+        <!-- sd-prose/sample-h2-h3 -->
+        <div class="sd-prose">
+          <h2>H2 Nisi eu excepteur anim esse</h2>
+          <h3>H3 Nisi eu excepteur anim esse lorem ipsum sic semper</h3>
+        </div>
+        <!-- sd-prose/sample-h3-h4 -->
+        <div class="sd-prose">
+          <h3>H3 Nisi eu excepteur anim esse</h3>
+          <h4>H4 Nisi eu excepteur anim esse</h4>
+        </div>
+        <!-- sd-prose/sample-h4-h5 -->
+        <div class="sd-prose">
+          <h4>H4 Nisi eu excepteur anim esse</h4>
+          <h5>H5 Nisi eu excepteur anim esse</h5>
+        </div>
+        <!-- sd-prose/sample-h2-paragraph -->
+        <div class="sd-prose">
+          <h2>H2 Nisi eu excepteur anim esse</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
+            phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique.
+            Facilisis commodo integer hendrerit tortor.
+          </p>
+        </div>
+        <!-- sd-prose/sample-h2-paragraph-h3-paragraph -->
+        <div class="sd-prose">
+          <h2>H2 Nisi eu excepteur anim esse</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
+            phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique.
+            Facilisis commodo integer hendrerit tortor.
+          </p>
+          <h3>H3 Nisi eu excepteur anim esse</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
+            phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique.
+            Facilisis commodo integer hendrerit tortor.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
+            phasellusnon orci <a href="#">inline link goes here</a> pe dui vel id. Velit in sed non orci pellentesque
+            vivamus nunc. At non tortor, sit neque tristique. Facilisis commodo integer hendrerit tortor.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
+            phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique.
+            Facilisis commodo integer hendrerit tortor.
+          </p>
+        </div>
+        <!-- sd-prose/sample-paragraph-group -->
+        <div class="sd-prose">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
+            phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique.
+            Facilisis commodo integer hendrerit tortor.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
+            phasellusnon orci <a href="#">inline link goes here</a> pe dui vel id. Velit in sed non orci pellentesque
+            vivamus nunc. At non tortor, sit neque tristique. Facilisis commodo integer hendrerit tortor.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
+            phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique.
+            Facilisis commodo integer hendrerit tortor.
+          </p>
+        </div>
+        <!-- sd-prose/sample-image-caption-paragraph -->
+        <div class="sd-prose">
+          <figure>
+            <img src="./placeholders/generic.jpg" alt="A generic placeholder jpg" class="aspect-video object-cover" />
+            <figcaption>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula.</figcaption>
+          </figure>
+          <p>
+            <strong>DD. Month Year – </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo
+            ullamcorper odio tempor molestie phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At
+            non tortor, sit neque tristique. Facilisis commodo integer hendrerit tortor.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
+            phasellusnon orci <a href="#">inline link goes here</a> pe dui vel id. Velit in sed non orci pellentesque
+            vivamus nunc. At non tortor, sit neque tristique. Facilisis commodo integer hendrerit tortor.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
+            phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique.
+            Facilisis commodo integer hendrerit tortor.
+          </p>
+        </div>
+        <!-- sd-prose/sample-h2-paragraph-h3-paragraph-quote -->
+        <div class="sd-prose">
+          <h2>H2 Nisi eu excepteur anim esse</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
+            phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique.
+            Facilisis commodo integer hendrerit tortor.
+          </p>
+          <h3>H3 Nisi eu excepteur anim esse</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
+            phasellusnon orci <a href="#">inline link goes here</a> pe dui vel id. Velit in sed non orci pellentesque
+            vivamus nunc. At non tortor, sit neque tristique. Facilisis commodo integer hendrerit tortor.
+          </p>
+          <blockquote>
+            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</p>
+          </blockquote>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
+            phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique.
+            Facilisis commodo integer hendrerit tortor.
+          </p>
+        </div>
+        <!-- sd-prose/sample-h2-paragraph-h3-paragraph-table -->
+        <div class="sd-prose">
+          <h2>H2 Nisi eu excepteur anim esse</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
+            phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique.
+            Facilisis commodo integer hendrerit tortor.
+          </p>
+          <h3>H3 Nisi eu excepteur anim esse</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
+            phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique.
+            Facilisis commodo integer hendrerit tortor.
+          </p>
+          <table>
+            <thead>
+              <tr>
+                <th>Header</th>
+                <th>Header</th>
+                <th>Header</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Cell content</td>
+                <td>Cell content</td>
+                <td>Cell content</td>
+              </tr>
+              <tr>
+                <td>Cell content</td>
+                <td>Cell content</td>
+                <td>Cell content</td>
+              </tr>
+              <tr>
+                <td>Cell content</td>
+                <td>Cell content</td>
+                <td>Cell content</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+        <!-- sd-prose/sample-h2-p-h3-h4-p-divider -->
+        <div class="sd-prose">
+          <h2>H2 Nisi eu excepteur anim esse</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
+            phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique.
+            Facilisis commodo integer hendrerit tortor.
+          </p>
+          <h3>H3 Nisi eu excepteur anim esse</h3>
+          <h4>H4 Nisi eu excepteur anim esse</h4>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
+            phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique.
+            Facilisis commodo integer hendrerit tortor.
+          </p>
+          <hr />
+          <p>Lorem: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+        <!-- sd-prose/sample-h2-p-h3-h4-p-h5-p-h5-p -->
+        <div class="sd-prose">
+          <h2>H2 Nisi eu excepteur anim esse</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
+            phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique.
+            Facilisis commodo integer hendrerit tortor.
+          </p>
+          <h3>H3 Nisi eu excepteur anim esse</h3>
+          <h4>H4 Nisi eu excepteur anim esse</h4>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
+            phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique.
+            Facilisis commodo integer hendrerit tortor.
+          </p>
+          <h5>H5 Nisi eu excepteur anim esse</h5>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
+            phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique.
+            Facilisis commodo integer hendrerit tortor.
+          </p>
+          <h5>H5 Nisi eu excepteur anim esse</h5>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
+            phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique.
+            Facilisis commodo integer hendrerit tortor.
+          </p>
+        </div>
+        <!-- sd-prose/sample-h2-p-h3-p-h4-p-h5-p -->
+        <div class="sd-prose">
+          <h2>H2 Nisi eu excepteur anim esse</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
+            phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique.
+            Facilisis commodo integer hendrerit tortor.
+          </p>
+          <h3>H3 Nisi eu excepteur anim esse</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
+            phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique.
+            Facilisis commodo integer hendrerit tortor.
+          </p>
+          <h4>H4 Nisi eu excepteur anim esse</h4>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
+            phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique.
+            Facilisis commodo integer hendrerit tortor.
+          </p>
+          <h5>H5 Nisi eu excepteur anim esse</h5>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
+            phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique.
+            Facilisis commodo integer hendrerit tortor.
+          </p>
+        </div>
+      </div>
+    `;
+  }
+};
