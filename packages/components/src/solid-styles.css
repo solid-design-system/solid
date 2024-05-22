@@ -13,7 +13,7 @@
 @import './styles/list/list.css';
 @import './styles/copyright/copyright.css';
 @import './styles/media/media.css';
-@import './styles/footnote/footnotes.css';
+@import './styles/footnotes/footnotes.css';
 @import './styles/prose/prose.css';
 
 /* Utility classes that can't be contained in a component and must be applied to the light DOM */
