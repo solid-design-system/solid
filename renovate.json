@@ -1,7 +1,14 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["schedule:daily", ":disableRateLimiting", "security:only-security-updates"],
-  "timezone": "Europe/Berlin",
-  "rebaseWhen": "never",
+  "extends": ["config:base"],
+  "packageRules": [
+    {
+      "enabled": false,
+      "matchPackagePatterns": ["*"]
+    }
+  ],
+  "vulnerabilityAlerts": {
+    "enabled": true
+  },
+  "osvVulnerabilityAlerts": true,
   "commitMessagePrefix": "chore(security deps): "
 }
