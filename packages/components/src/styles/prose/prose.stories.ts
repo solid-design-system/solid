@@ -5,6 +5,7 @@ const { argTypes, parameters } = storybookDefaults('sd-prose');
 const { overrideArgs } = storybookHelpers('sd-prose');
 const { generateTemplate } = storybookTemplate('sd-prose');
 
+// HTML helper to get syntax highlighting and formatting in the template string
 const html = String.raw;
 
 /**
@@ -388,7 +389,7 @@ export const Samples = {
         <div class="sd-prose">
           <p><strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</strong></p>
         </div>
-        <!-- sd-prose/sample-inline-link -->
+        <!-- sd-prose/sample-inline -->
         <div class="sd-prose">
           <a href="#">Inline link</a>
         </div>
@@ -435,7 +436,11 @@ export const Samples = {
         <!-- sd-prose/sample-media -->
         <div class="sd-prose">
           <figure>
-            <img src="./placeholders/generic.jpg" alt="A generic placeholder jpg" class="aspect-video object-cover" />
+            <img
+              src="./placeholders/images/generic.jpg"
+              alt="A generic placeholder jpg"
+              class="aspect-video object-cover"
+            />
             <figcaption>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula.</figcaption>
           </figure>
         </div>
@@ -546,7 +551,11 @@ export const Samples = {
         <!-- sd-prose/sample-image-caption-paragraph -->
         <div class="sd-prose">
           <figure>
-            <img src="./placeholders/generic.jpg" alt="A generic placeholder jpg" class="aspect-video object-cover" />
+            <img
+              src="./placeholders/images/generic.jpg"
+              alt="A generic placeholder jpg"
+              class="aspect-video object-cover"
+            />
             <figcaption>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula.</figcaption>
           </figure>
           <p>

@@ -58,15 +58,6 @@
     }
   }
 
-  code {
-    &:before {
-      content: '`';
-    }
-    &:after {
-      content: '`';
-    }
-  }
-
   /**
     * Inverted styles
     */
