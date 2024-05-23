@@ -5,10 +5,6 @@
 }
 
 .sd-table-cell {
-  &:not(:last-child) {
-    @apply border-r-[1px];
-  }
-
   &--divider {
     @apply border-r-[1px];
   }
