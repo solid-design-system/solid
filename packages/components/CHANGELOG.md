@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v3.5.0](https://github.com/solid-design-system/solid/compare/components/3.4.0...components/3.5.0) (2024-05-24)
+
+
+### Features
+
+* ✨ add sd-step & sd-step-group  ([#1007](https://github.com/solid-design-system/solid/issues/1007)) ([d42c66f](https://github.com/solid-design-system/solid/commit/d42c66fec184306c1f7cc9c127f54b20fe17d5bf))
+
+### 📈 Stats
+* Bundle size (uncompressed): 309 KB (+10 KB / +3%)
+* Bundle size (gzipped): 74 KB (+2 KB / +3%)
+
 # [@solid-design-system/components-v3.4.0](https://github.com/solid-design-system/solid/compare/components/3.3.1...components/3.4.0) (2024-05-22)
 
 
