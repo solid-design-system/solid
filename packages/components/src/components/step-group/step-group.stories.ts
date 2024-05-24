@@ -182,11 +182,7 @@ export const Mouseless = {
  */
 
 export const SetActiveStep = {
-  parameters: {
-    controls: {
-      include: []
-    }
-  },
+  parameters: { controls: { include: [] } },
   name: 'Sample: Set Active Step',
   render: () => {
     return html`
@@ -230,11 +226,7 @@ export const SetActiveStep = {
  */
 
 export const SampleNotInteractive = {
-  parameters: {
-    controls: {
-      include: []
-    }
-  },
+  parameters: { controls: { include: [] } },
   name: 'Sample: Not Interactive',
   render: () => {
     return html`
