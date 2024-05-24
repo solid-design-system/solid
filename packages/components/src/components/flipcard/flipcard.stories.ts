@@ -13,21 +13,35 @@ export default {
   args: overrideArgs([
     {
       type: 'slot',
-      name: 'headline-icon',
-      value: `<sd-icon name="content/picture" library="global-resources"></sd-icon>`
+      name: 'front',
+      value: `  <div slot="front"><h4
+      class='sd-headline sd-headline--inline sd-headline--size-lg sd-headline--inverted'
+      >
+        <sd-icon name="content/picture" library="global-resources"></sd-icon>
+        Nisi eu excepteur anim esse
+      </h4>
+  
+      <p class='sd-paragraph text-left sd-paragraph--inverted'>
+        Lorem ipsum dolor sit amet per niente da faremmasds nonnummy dolore lorem ipsum dolor sit amet consectuer
+      </p>
+  
+      <sd-link size="inherit" href="#" inverted>Link</sd-link></div> `
     },
     {
       type: 'slot',
-      name: 'default',
-      value: `
+      name: 'back',
+      value: `   <div slot="back"><h4
+      class='sd-headline sd-headline--inline sd-headline--size-lg sd-headline--inverted'
+    >
+      <sd-icon name="content/picture" library="global-resources"></sd-icon>
       Nisi eu excepteur anim esse
-       `
-    },
-    {
-      type: 'slot',
-      name: 'description',
-      value: `<p slot="description">Lorem ipsum dolor sit amet per niente da faremmasds nonnummy dolore lorem ipsum dolor sit amet
-      consectuer.</p>`
+    </h4>
+
+    <p class='sd-paragraph  text-left sd-paragraph--inverted'>
+      Lorem ipsum dolor sit amet per niente da faremmasds nonnummy dolore lorem ipsum dolor sit amet consectuer
+    </p>
+
+    <sd-link size="inherit" href="#" inverted>Link</sd-link></div>`
     }
   ]),
 
