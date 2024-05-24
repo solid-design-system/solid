@@ -224,7 +224,8 @@ export const SetActiveStep = {
 };
 
 /**
- * This sample shows how to use the not-interactive attribute with custom icons.
+ * This sample shows how to use the not-interactive attribute with content icons. The border-radius of an sd-step is larger when the not-interactive attribute is set to `true`.
+ * The size of the icon is recommended to be 48px for the 'lg' size and 32px for the 'sm' size. The size can be set using font-size.
  */
 
 export const SampleNotInteractive = {
@@ -232,20 +233,49 @@ export const SampleNotInteractive = {
   name: 'Sample: Not Interactive',
   render: () => {
     return html`
+      <style>
+        .headline {
+          padding: 16px;
+          background: #e0e0e0;
+          text-align: left;
+          font-size: 14px;
+          font-weight: bold;
+          width: 100%;
+          box-sizing: border-box;
+        }
+      </style>
+      <div class="headline">size = 'lg'</div>
       <sd-step-group size="lg" orientation="horizontal" not-interactive>
-        <sd-step size="lg" orientation="horizontal">
+        <sd-step orientation="horizontal">
           <p slot="label">Lorem ipsum dolor sit</p>
           <sd-icon class="text-[48px]" name="content/image" slot="circle-content"></sd-icon>
         </sd-step>
 
-        <sd-step size="lg" orientation="horizontal">
+        <sd-step orientation="horizontal">
           <p slot="label">Exercitation ullamco laboris</p>
           <sd-icon class="text-[48px]" name="content/image" slot="circle-content"></sd-icon>
         </sd-step>
 
-        <sd-step size="lg" orientation="horizontal">
+        <sd-step orientation="horizontal">
           <p slot="label">Reprehenderit qui in e name</p>
           <sd-icon class="text-[48px]" name="content/image" slot="circle-content"></sd-icon>
+        </sd-step>
+      </sd-step-group>
+      <div class="headline">size = 'sm'</div>
+      <sd-step-group size="sm" orientation="horizontal" not-interactive>
+        <sd-step orientation="horizontal">
+          <p slot="label">Lorem ipsum dolor sit</p>
+          <sd-icon class="text-3xl" name="content/image" slot="circle-content"></sd-icon>
+        </sd-step>
+
+        <sd-step orientation="horizontal">
+          <p slot="label">Exercitation ullamco laboris</p>
+          <sd-icon class="text-3xl" name="content/image" slot="circle-content"></sd-icon>
+        </sd-step>
+
+        <sd-step orientation="horizontal">
+          <p slot="label">Reprehenderit qui in e name</p>
+          <sd-icon class="text-3xl" name="content/image" slot="circle-content"></sd-icon>
         </sd-step>
       </sd-step-group>
     `;
