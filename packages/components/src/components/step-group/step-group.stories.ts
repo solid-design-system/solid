@@ -81,11 +81,13 @@ export const Orientation = {
  */
 
 export const notInteractive = {
+  name: 'Not Interactive X Size',
   parameters: { controls: { exclude: 'not-interactive' } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        y: { type: 'attribute', name: 'not-interactive' }
+        x: { type: 'attribute', name: 'not-interactive' },
+        y: { type: 'attribute', name: 'size' }
       },
       args
     });
@@ -233,17 +235,17 @@ export const SampleNotInteractive = {
       <sd-step-group size="lg" orientation="horizontal" not-interactive>
         <sd-step size="lg" orientation="horizontal">
           <p slot="label">Lorem ipsum dolor sit</p>
-          <sd-icon class="text-3xl" name="content/clock-round" slot="circle-content"></sd-icon>
+          <sd-icon class="text-[48px]" name="content/image" slot="circle-content"></sd-icon>
         </sd-step>
 
         <sd-step size="lg" orientation="horizontal">
           <p slot="label">Exercitation ullamco laboris</p>
-          <sd-icon class="text-3xl" name="content/vodcast" slot="circle-content"></sd-icon>
+          <sd-icon class="text-[48px]" name="content/image" slot="circle-content"></sd-icon>
         </sd-step>
 
         <sd-step size="lg" orientation="horizontal">
           <p slot="label">Reprehenderit qui in e name</p>
-          <sd-icon class="text-3xl" name="content/grandmother" slot="circle-content"></sd-icon>
+          <sd-icon class="text-[48px]" name="content/image" slot="circle-content"></sd-icon>
         </sd-step>
       </sd-step-group>
     `;
