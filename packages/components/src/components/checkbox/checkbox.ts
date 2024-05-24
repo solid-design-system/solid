@@ -248,7 +248,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
         >
           ${this.checked
             ? html`
-                <sd-icon part="checked-icon" class="text-white w-3 h-3" library="system" name="status-hook"></sd-icon>
+                <sd-icon part="checked-icon" class="text-white w-3 h-3" library="system" name="status-check"></sd-icon>
               `
             : ''}
           ${!this.checked && this.indeterminate
