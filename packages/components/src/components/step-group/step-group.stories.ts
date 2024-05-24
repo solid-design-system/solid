@@ -238,20 +238,20 @@ export const SampleNotInteractive = {
   name: 'Sample: Not Interactive',
   render: () => {
     return html`
-      <sd-step-group size="lg" orientation="horizontal" active-step="0" not-interactive>
+      <sd-step-group size="lg" orientation="horizontal" not-interactive>
         <sd-step size="lg" orientation="horizontal">
           <p slot="label">Lorem ipsum dolor sit</p>
-          <sd-icon name="calendar" slot="step-icon" library="system"></sd-icon>
+          <sd-icon class="text-3xl" name="content/clock-round" slot="circle-content"></sd-icon>
         </sd-step>
 
         <sd-step size="lg" orientation="horizontal">
           <p slot="label">Exercitation ullamco laboris</p>
-          <sd-icon name="eye" slot="step-icon" library="system"></sd-icon>
+          <sd-icon class="text-3xl" name="content/vodcast" slot="circle-content"></sd-icon>
         </sd-step>
 
         <sd-step size="lg" orientation="horizontal">
           <p slot="label">Reprehenderit qui in e name</p>
-          <sd-icon name="calendar" slot="step-icon" library="system"></sd-icon>
+          <sd-icon class="text-3xl" name="content/grandmother" slot="circle-content"></sd-icon>
         </sd-step>
       </sd-step-group>
     `;

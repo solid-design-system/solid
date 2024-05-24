@@ -159,16 +159,16 @@ export const Parts = {
 };
 
 /**
- * Use the 'default', 'label', 'index', 'step-icon' slots to add content to the step..
+ * Use the 'default', 'label', 'index', 'circle-content' slots to add content to the step..
  */
 
 export const Slots = {
   parameters: {
-    controls: { exclude: ['default', 'label', 'index', 'step-icon'] }
+    controls: { exclude: ['default', 'label', 'index', 'circle-content'] }
   },
   render: () => {
     return html`
-      ${['default', 'label', 'index', 'step-icon'].map(slot =>
+      ${['default', 'label', 'index', 'circle-content'].map(slot =>
         generateTemplate({
           axis: {
             y: {

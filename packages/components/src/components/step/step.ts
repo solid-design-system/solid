@@ -20,7 +20,7 @@ import SolidElement from '../../internal/solid-element';
  * @slot - The step's description.
  * @slot label - The step's label.
  * @slot index - The step's index.
- * @slot step-icon - The icon used in a default step.
+ * @slot circle-content - The step's circle content.
  *
  * @event sd-blur - Emitted when the button loses focus.
  * @event sd-focus - Emitted when the button gains focus.
@@ -152,24 +152,30 @@ export default class SdStep extends SolidElement {
               this.disabled && 'border-neutral-400 text-neutral-500',
               !this.disabled &&
                 !this.current &&
+                !this.notInteractive &&
                 'border-primary group-hover:bg-primary-100 group-hover:border-primary-500',
-              !this.notInteractive && 'group-hover:cursor-pointer',
+              this.notInteractive ? 'border-neutral-400' : 'group-hover:cursor-pointer',
               this.current && 'bg-accent border-none text-white'
             )}
           >
-            ${
-              !this.disabled && !this.current
-                ? html`<slot
-                    name="step-icon"
+        <slot
+                    name="circle-content"
                     class=${cx(
-                      'text-primary group-hover:text-primary-500 group-hover:fill-primary-500',
+                      !this.disabled &&
+                        !this.current &&
+                        !this.notInteractive &&
+                        'text-primary group-hover:text-primary-500 group-hover:fill-primary-500',
+                      this.notInteractive && 'text-primary',
                       this.size === 'lg' ? 'text-lg' : 'text-sm'
                     )}
                   >
-                    <sd-icon name="status-check" library="system"></sd-icon
-                  ></slot>`
-                : html`<slot name="index">${this.index} </slot>`
-            }
+
+                  ${
+                    !this.disabled && !this.current && !this.notInteractive
+                      ? html` <sd-icon name="status-check" library="system"></sd-icon>`
+                      : html`${this.index}`
+                  }
+                  </slot>
           </${tag}>
 
           ${
@@ -180,7 +186,10 @@ export default class SdStep extends SolidElement {
                     <sd-divider
                       part="tail"
                       orientation="horizontal"
-                      class=${cx('w-full my-auto mr-2', !this.disabled && !this.current && 'tail-to-primary')}
+                      class=${cx(
+                        'w-full my-auto mr-2',
+                        !this.disabled && !this.current && !this.notInteractive && 'tail-to-primary'
+                      )}
                     ></sd-divider>
                   `
                 : html`<sd-divider
@@ -188,7 +197,7 @@ export default class SdStep extends SolidElement {
                     orientation="vertical"
                     class=${cx(
                       'flex-grow flex-shrink-0 basis-auto h-full w-[1px] mx-auto',
-                      !this.disabled && !this.current && 'tail-to-primary'
+                      !this.disabled && !this.current && !this.notInteractive && 'tail-to-primary'
                     )}
                   ></sd-divider> `
           }
