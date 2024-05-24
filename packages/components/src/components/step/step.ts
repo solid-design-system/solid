@@ -20,7 +20,7 @@ import SolidElement from '../../internal/solid-element';
  * @slot - The step's description.
  * @slot label - The step's label.
  * @slot index - The step's index.
- * @slot circle-content - The step's circle content.
+ * @slot circle-content - The content inside a step circle. This could be an icon or a number.
  *
  * @event sd-blur - Emitted when the button loses focus.
  * @event sd-focus - Emitted when the button gains focus.
