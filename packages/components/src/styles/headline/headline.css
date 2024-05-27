@@ -88,7 +88,7 @@
 }
 
 .sd-headline--inverted:not(#\9),
-.sd-prose--inverted :is(h1, h2, h3, h4, h5):not(.sd-headline) {
+.sd-prose--inverted :is(h1, h2, h3, h4, h5):not(.sd-headline):not(#\9) {
   @apply text-white;
 
   sd-icon {

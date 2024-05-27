@@ -31,8 +31,8 @@ const content = html`<h1>Solid Prose</h1>
   <p>
     By default, Tailwind removes all of the default browser styling from paragraphs, headings, lists and more. This ends
     up being really useful for building application UIs because you spend less time undoing user-agent styles, but when
-    you <em>really are</em> just trying to style some content that came from a rich-text editor in a CMS or a markdown
-    file, it can be surprising and unintuitive.
+    you really are just trying to style some content that came from a rich-text editor in a CMS or a markdown file, it
+    can be surprising and unintuitive.
   </p>
   <p>We get lots of complaints about it actually, with people regularly asking us things like:</p>
   <blockquote>
@@ -43,12 +43,12 @@ const content = html`<h1>Solid Prose</h1>
   <p>
     We hear you, but we're not convinced that simply disabling our base styles is what you really want. You don't want
     to have to remove annoying margins every time you use a <code>p</code> element in a piece of your dashboard UI. And
-    I doubt you really want your blog posts to use the user-agent styles either — you want them to look
-    <em>awesome</em>, not awful.
+    I doubt you really want your blog posts to use the user-agent styles either — you want them to look awesome, not
+    awful.
   </p>
   <p>
-    The <code>@tailwindcss/typography</code> plugin is our attempt to give you what you <em>actually</em> want, without
-    any of the downsides of doing something stupid like disabling our base styles.
+    The <code>@tailwindcss/typography</code> plugin is our attempt to give you what you actually want, without any of
+    the downsides of doing something stupid like disabling our base styles.
   </p>
   <p>
     It adds a new <code>prose</code> class that you can slap on any block of vanilla HTML content and turn it into a
@@ -77,7 +77,7 @@ const content = html`<h1>Solid Prose</h1>
   <p>
     What follows from here is just a bunch of absolute nonsense I've written to dogfood the plugin itself. It includes
     every sensible typographic element I could think of, like <strong>bold text</strong>, unordered lists, ordered
-    lists, code blocks, block quotes, <em>and even italics</em>.
+    lists, code blocks, block quotes, and even italics.
   </p>
   <p>It's important to cover all of these use cases for a few reasons:</p>
   <ol>
@@ -96,10 +96,7 @@ const content = html`<h1>Solid Prose</h1>
   </blockquote>
   <p>It's probably important that images look okay here by default as well:</p>
   <figure>
-    <img
-      src="https://images.unsplash.com/photo-1556740758-90de374c12ad?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1000&amp;q=80"
-      alt=""
-    />
+    <img src="./placeholders/images/generic.jpg" alt="" />
     <figcaption>
       Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin
       literature from 45 BC, making it over 2000 years old.
@@ -126,7 +123,7 @@ const content = html`<h1>Solid Prose</h1>
   </p>
   <ul>
     <li>
-      <p><strong>I often do this thing where list items have headings.</strong></p>
+      <p>I often do this thing where list items have headings.</p>
       <p>
         For some reason I think this looks cool which is unfortunate because it's pretty annoying to get the styles
         right.
@@ -138,7 +135,7 @@ const content = html`<h1>Solid Prose</h1>
       </p>
     </li>
     <li>
-      <p><strong>Since this is a list, I need at least two items.</strong></p>
+      <p>Since this is a list, I need at least two items.</p>
       <p>
         I explained what I'm doing already in the previous list item, but a list wouldn't be a list if it only had one
         item, and we really want this to look realistic. That's why I've added this second list item so I actually have
@@ -146,7 +143,7 @@ const content = html`<h1>Solid Prose</h1>
       </p>
     </li>
     <li>
-      <p><strong>It's not a bad idea to add a third item either.</strong></p>
+      <p>It's not a bad idea to add a third item either.</p>
       <p>
         I think it probably would've been fine to just use two items but three is definitely not worse, and since I seem
         to be having no trouble making up arbitrary things to type, I might as well include it.
@@ -161,7 +158,7 @@ const content = html`<h1>Solid Prose</h1>
   <p>
     I think most people are going to use <a href="https://highlightjs.org/">highlight.js</a> or
     <a href="https://prismjs.com/">Prism</a> or something if they want to style their code blocks but it wouldn't hurt
-    to make them look <em>okay</em> out of the box, even with no syntax highlighting.
+    to make them look okay out of the box, even with no syntax highlighting.
   </p>
   <p>Here's what a default <code>tailwind.config.js</code> file looks like at the time of writing:</p>
   <pre><code class="language-js">module.exports = {
@@ -181,7 +178,7 @@ const content = html`<h1>Solid Prose</h1>
   </p>
   <ol>
     <li>
-      <strong>Nested lists are rarely a good idea.</strong>
+      Nested lists are rarely a good idea.
       <ul>
         <li>
           You might feel like you are being really "organized" or something but you are just creating a gross shape on
@@ -192,7 +189,7 @@ const content = html`<h1>Solid Prose</h1>
       </ul>
     </li>
     <li>
-      <strong>Since we need to have more items, here's another one.</strong>
+      Since we need to have more items, here's another one.
       <ul>
         <li>I'm not sure if we'll bother styling more than two levels deep.</li>
         <li>Two is already too much, three is guaranteed to be a bad idea.</li>
@@ -200,7 +197,7 @@ const content = html`<h1>Solid Prose</h1>
       </ul>
     </li>
     <li>
-      <strong>Two items isn't really a list, three is good though.</strong>
+      Two items isn't really a list, three is good though.
       <ul>
         <li>Again please don't nest lists if you want people to actually read your content.</li>
         <li>Nobody wants to look at this.</li>
@@ -215,7 +212,7 @@ const content = html`<h1>Solid Prose</h1>
   </p>
   <ul>
     <li>
-      <p><strong>For example, here's another nested list.</strong></p>
+      <p>For example, here's another nested list.</p>
       <p>But this time with a second paragraph.</p>
       <ul>
         <li>These list items won't have <code>&lt;p&gt;</code> tags</li>
@@ -223,7 +220,7 @@ const content = html`<h1>Solid Prose</h1>
       </ul>
     </li>
     <li>
-      <p><strong>But in this second top-level list item, they will.</strong></p>
+      <p>But in this second top-level list item, they will.</p>
       <p>This is especially annoying because of the spacing on this paragraph.</p>
       <ul>
         <li>
@@ -287,15 +284,10 @@ const content = html`<h1>Solid Prose</h1>
     <code>&lt;span&gt;</code> elements or tell you the good news about <code>@tailwindcss/typography</code>.
   </p>
   <h3>Sometimes I even use <code>code</code> in headings</h3>
-  <p>
-    Even though it's probably a bad idea, and historically I've had a hard time making it look good. This
-    <em>"wrap the code blocks in backticks"</em> trick works pretty well though really.
-  </p>
+  <p>Even though it's probably a bad idea, and historically I've had a hard time making it look good.</p>
   <p>
     Another thing I've done in the past is put a <code>code</code> tag inside of a link, like if I wanted to tell you
-    about the <a href="https://github.com/tailwindcss/docs"><code>tailwindcss/docs</code></a> repository. I don't love
-    that there is an underline below the backticks but it is absolutely not worth the madness it would require to avoid
-    it.
+    about the <a href="https://github.com/tailwindcss/docs"><code>tailwindcss/docs</code></a> repository.
   </p>
   <h4>We haven't used an <code>h4</code> yet</h4>
   <h5>And a <code>h5</code>neither</h5>
@@ -306,8 +298,8 @@ const content = html`<h1>Solid Prose</h1>
   </p>
   <p>
     We don't style <code>h6</code> at all out of the box because <code>h5</code> elements are already so small that they
-    are the same size as the body copy. What are we supposed to do with an <code>h5</code>, make it
-    <em>smaller</em> than the body copy? No thanks.
+    are the same size as the body copy. What are we supposed to do with an <code>h5</code>, make it smaller than the
+    body copy? No thanks.
   </p>
   <h3>We still need to think about stacked headings though.</h3>
   <h4>Let's make sure we don't screw that up with <code>h4</code> elements, either.</h4>
