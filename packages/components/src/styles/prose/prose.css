@@ -28,6 +28,10 @@
     @apply py-0;
   }
 
+  > *:not(:is(h1, h2, h3, h4, h5)) + :is(h1, h2, h3, h4, h5):not(#\9) {
+    @apply mt-8;
+  }
+
   /**
    * Add styles for elements that are not based on existing CSS styles
    */

@@ -96,7 +96,7 @@ const content = html`<h1>Solid Prose</h1>
   </blockquote>
   <p>It's probably important that images look okay here by default as well:</p>
   <figure>
-    <img src="./placeholders/images/generic.jpg" alt="" />
+    <img src="./placeholders/images/architecture.jpg" alt="" />
     <figcaption>
       Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin
       literature from 45 BC, making it over 2000 years old.
@@ -336,6 +336,11 @@ export const Inverted = {
       },
       options: {
         templateContent: html` <div class="p-4">
+          <style>
+            .sd-prose--inverted table {
+              opacity: 0;
+            }
+          </style>
           <div class="%CLASSES%">${args['default-slot'] || content}</div>
         </div>`,
         templateBackgrounds: { alternate: 'x', colors: ['white', 'rgb(var(--sd-color-primary, 0 53 142))'] }

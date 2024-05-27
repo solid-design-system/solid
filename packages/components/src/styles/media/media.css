@@ -6,3 +6,10 @@ figure.sd-media {
     @apply last:mt-3 text-neutral-700;
   }
 }
+
+.sd-prose--inverted figure,
+figure.sd-media--inverted {
+  figcaption {
+    @apply text-primary-400;
+  }
+}
