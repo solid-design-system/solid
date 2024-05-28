@@ -441,6 +441,19 @@ export const Samples = {
             <figcaption>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula.</figcaption>
           </figure>
         </div>
+        <!-- sd-prose/sample-image-p -->
+        <div class="sd-prose">
+          <img
+            src="./placeholders/images/generic.jpg"
+            alt="A generic placeholder jpg"
+            class="aspect-video object-cover"
+          />
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
+            phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique.
+            Facilisis commodo integer hendrerit tortor.
+          </p>
+        </div>
         <!-- sd-prose/sample-quote -->
         <div class="sd-prose">
           <blockquote>

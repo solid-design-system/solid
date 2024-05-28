@@ -14,10 +14,16 @@
     @apply mt-4;
   }
 
+  /**
+    * First element has no margin-top
+    */
   > *:first-child {
     @apply mt-0;
   }
 
+  /**
+    * headings after a heading have a smaller margin-top
+    */
   > :is(h1, h2, h3, h4, h5):not(#\9) + :is(h1, h2, h3, h4, h5) {
     /* :not(#\9) is a hack to raise specifity, see https://stackoverflow.com/a/61781795 */
     @apply mt-2;
@@ -28,8 +34,19 @@
     @apply py-0;
   }
 
+  /**
+    * Headlines after other non-headlines have a larger margin-top
+    */
   > *:not(:is(h1, h2, h3, h4, h5)) + :is(h1, h2, h3, h4, h5):not(#\9) {
     @apply mt-8;
+  }
+
+  /**
+    * Images and figures lead to a bigger margin-top for the next element
+    */
+  > figure + *:not(#\9),
+  > img + *:not(#\9) {
+    @apply mt-6;
   }
 
   /**
