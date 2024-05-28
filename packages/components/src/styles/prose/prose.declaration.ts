@@ -9,6 +9,10 @@ export default {
     {
       name: 'sd-prose--inverted',
       description: 'Inverts the content, but not tables.'
+    },
+    {
+      name: 'sd-prose--full-width',
+      description: 'Overrides the 80ch max-width and makes the prose full width.'
     }
   ]
 } satisfies Style;

@@ -29,11 +29,6 @@
     @apply mt-2;
   }
 
-  > :is(ul, ol):not(#\9) {
-    /* ul and ol have padding that has to be reset */
-    @apply py-0;
-  }
-
   /**
     * Headlines after other non-headlines have a larger margin-top
     */
@@ -80,6 +75,14 @@
   }
 
   /**
+    * Fixes for other elements
+    */
+  > :is(ul, ol):not(#\9) {
+    /* ul and ol have padding that has to be reset */
+    @apply py-0;
+  }
+
+  /**
     * Inverted styles
     */
   &--inverted {
@@ -90,5 +93,12 @@
     pre {
       @apply text-white;
     }
+  }
+
+  /**
+    * Full width styles
+    */
+  &--full-width {
+    max-width: unset;
   }
 }
