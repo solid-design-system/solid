@@ -4,7 +4,7 @@ export default {
   styleName: 'sd-prose',
   summary: 'Prose',
   status: 'stable',
-  since: '1.13',
+  since: '3.6.0',
   attributes: [
     {
       name: 'sd-prose--inverted',
