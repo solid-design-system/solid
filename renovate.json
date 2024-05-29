@@ -1,14 +1,14 @@
 {
-  "extends": ["config:base"],
-  "packageRules": [
-    {
-      "enabled": false,
-      "matchPackagePatterns": ["*"]
-    }
-  ],
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended", ":dependencyDashboardApproval"],
   "vulnerabilityAlerts": {
-    "enabled": true
+    "autoApprove": true,
+    "automerge": true,
+    "automergeStrategy": "squash",
+    "automergeType": "pr"
   },
+  "draftPR": true,
+  "rebaseWhen": "never",
   "osvVulnerabilityAlerts": true,
   "commitMessagePrefix": "chore(security deps): "
 }
