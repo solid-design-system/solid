@@ -1,11 +1,13 @@
-.sd-paragraph {
+.sd-paragraph,
+.sd-prose p {
   @apply text-base font-normal leading-normal text-black;
 
   &--size-sm {
     @apply text-sm font-normal leading-normal text-black;
   }
+}
 
-  &--inverted {
-    @apply text-white;
-  }
+.sd-paragraph--inverted,
+.sd-prose--inverted p {
+  @apply text-white;
 }
