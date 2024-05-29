@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v3.6.0](https://github.com/solid-design-system/solid/compare/components/3.5.0...components/3.6.0) (2024-05-29)
+
+
+### Features
+
+* add sd-prose and fix sd-list ([b82d60f](https://github.com/solid-design-system/solid/commit/b82d60f2bf87e54479c7731145d87e93c2e983db))
+
+### 📈 Stats
+* Bundle size (uncompressed): 314 KB (+5 KB / +2%)
+* Bundle size (gzipped): 75 KB (+1 KB / +1%)
+
 # [@solid-design-system/components-v3.5.0](https://github.com/solid-design-system/solid/compare/components/3.4.0...components/3.5.0) (2024-05-24)
 
 
