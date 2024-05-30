@@ -88,12 +88,12 @@ export default class SdFlipcard extends SolidElement {
 
   render() {
     return html`
-      <div part="base" class=${cx('flip-card', this.ratio === '3:4' ? 'aspect-3/4' : 'aspect-video')}>
+      <div part="base" class=${cx('flip-card relative', this.ratio === '3:4' ? 'aspect-3/4' : 'aspect-video')}>
         <div
           part="front"
           tabindex="0"
           class=${cx(
-            'flip-card__side flip-card__side--front hover',
+            'flip-card__side flip-card__side--front hover overflow-hidden drop-shadow-md',
             'flex focus-visible:focus-outline',
             'absolute top-0 left-0 w-full h-full justify-end text-left',
             this.frontVariant === 'primary' && 'bg-primary',
@@ -160,7 +160,7 @@ export default class SdFlipcard extends SolidElement {
           part="back"
           tabindex="0"
           class=${cx(
-            'flip-card__side flip-card__side--back hover',
+            'flip-card__side flip-card__side--back hover overflow-hidden drop-shadow-md',
             'flex focus-visible:focus-outline',
             'absolute top-0 left-0 w-full h-full justify-end text-left',
             this.backVariant === 'primary' && 'bg-primary',
@@ -234,24 +234,28 @@ export default class SdFlipcard extends SolidElement {
     SolidElement.styles,
     css`
       :host {
-        display: block;
+        @apply block;
         --name: '';
       }
 
       .flip-card {
-        position: relative;
         perspective: 100rem;
       }
       .flip-card__side {
         transition: transform 1000ms ease;
         backface-visibility: hidden;
-        overflow: hidden;
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
       }
-      .flip-card__side--front {
-      }
+
       .flip-card__side--back {
         transform: rotateY(180deg);
+      }
+
+      .clicked--front {
+        transform: rotateY(-180deg);
+      }
+
+      .clicked--back {
+        transform: rotateY(0);
       }
 
       @media (hover: hover) and (pointer: fine) {
@@ -261,14 +265,6 @@ export default class SdFlipcard extends SolidElement {
         .flip-card:hover .flip-card__side--back.hover {
           transform: rotateY(0);
         }
-      }
-
-      .clicked--front {
-        transform: rotateY(-180deg);
-      }
-
-      .clicked--back {
-        transform: rotateY(0);
       }
     `
   ];
