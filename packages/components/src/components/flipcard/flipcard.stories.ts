@@ -150,6 +150,9 @@ export const Slots = {
   }
 };
 
+/**
+ * Use the `base`, `front`, `back`, `frontSlotContainer`, `backSlotContainer`, `mediaFront`, `mediaBack`, `frontSecondaryGradient` and `backSecondaryGradient` parts to style the flipcard.
+ */
 export const Parts = {
   parameters: {
     controls: {
