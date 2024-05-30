@@ -10,5 +10,5 @@
   "draftPR": true,
   "rebaseWhen": "never",
   "osvVulnerabilityAlerts": true,
-  "commitMessagePrefix": "chore(security deps): "
+  "commitMessagePrefix": "chore(deps): "
 }
