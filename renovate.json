@@ -5,8 +5,7 @@
     "autoApprove": true,
     "automerge": true,
     "automergeStrategy": "squash",
-    "automergeType": "pr",
-    "commitMessagePrefix": "chore(security deps): "
+    "automergeType": "pr"
   },
   "draftPR": true,
   "rebaseWhen": "never",
