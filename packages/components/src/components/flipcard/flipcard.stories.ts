@@ -64,33 +64,6 @@ export const Default = {
 };
 
 /**
- * The sd-flipcard can be displayed in 3:4 or 16:9 aspect ratio.
- */
-
-export const Ratio = {
-  parameters: { controls: { exclude: ['ratio'] } },
-  render: (args: any) =>
-    generateTemplate({
-      axis: {
-        x: {
-          type: 'attribute',
-          name: 'ratio'
-        }
-      },
-      args
-    }),
-  decorators: [
-    (story: any) =>
-      html`<style>
-          td.template {
-            width: 50%;
-          }
-        </style>
-        ${story()}`
-  ] as unknown
-};
-
-/**
  * The sd-flipcard can be displayed in several ways using the `frontVariant` and `backVariant` attributes. This example shows the usage `frontVariant` attribute.
  */
 
@@ -113,6 +86,54 @@ export const Variants = {
         }
       ]
     })
+};
+
+/**
+ * Use the `front`, `back`, `mediaFront` and `mediaBack` slots to add content to the flipcard.
+ */
+export const Slots = {
+  parameters: {
+    controls: { exclude: ['front', 'back', 'mediaFront', 'mediaBack'] }
+  },
+  render: (args: any) => {
+    return html`
+      ${['front', 'back', 'mediaFront', 'mediaBack'].map(slot => {
+        return generateTemplate({
+          axis: {
+            x: {
+              type: 'slot',
+              name: slot,
+              title: 'slot=..',
+              values: [
+                {
+                  value: `<div slot='${slot}' class="slot slot--border slot--background w-full h-full"></div>`,
+                  title: slot
+                }
+              ]
+            }
+          },
+          args,
+          constants: [
+            {
+              type: 'template',
+              name: 'style',
+              value: '<div style="margin-bottom: 40px; width: 300px">%TEMPLATE%</div>'
+            },
+            {
+              type: 'attribute',
+              name: 'frontVariant',
+              value: 'gradient-dark-top'
+            },
+            {
+              type: 'attribute',
+              name: 'backVariant',
+              value: 'gradient-dark-bottom'
+            }
+          ]
+        });
+      })}
+    `;
+  }
 };
 
 export const Parts = {
