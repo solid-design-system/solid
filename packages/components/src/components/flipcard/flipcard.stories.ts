@@ -9,19 +9,6 @@ const { argTypes, parameters } = storybookDefaults('sd-flipcard');
 const { generateTemplate } = storybookTemplate('sd-flipcard');
 const { overrideArgs } = storybookHelpers('sd-flipcard');
 
-// <div slot="front"><h4
-// class='sd-headline sd-headline--inline sd-headline--size-lg sd-headline--inverted'
-// >
-//   <sd-icon name="content/picture" library="global-resources"></sd-icon>
-//   Nisi eu excepteur anim esse
-// </h4>
-
-// <p class='sd-paragraph text-left sd-paragraph--inverted'>
-//   Lorem ipsum dolor sit amet per niente da faremmasds nonnummy dolore lorem ipsum dolor sit amet consectuer
-// </p>
-
-// <sd-link size="inherit" href="#" inverted>Link</sd-link></div>
-
 export default {
   title: 'Components/sd-flipcard',
   component: 'sd-flipcard',
@@ -86,6 +73,33 @@ export const Variants = {
         }
       ]
     })
+};
+
+/**
+ * The sd-flipcard can be displayed in 3:4 or 16:9 aspect ratio.
+ */
+
+export const Ratio = {
+  parameters: { controls: { exclude: ['ratio'] } },
+  render: (args: any) =>
+    generateTemplate({
+      axis: {
+        x: {
+          type: 'attribute',
+          name: 'ratio'
+        }
+      },
+      args
+    }),
+  decorators: [
+    (story: any) =>
+      html`<style>
+          td.template {
+            width: 50%;
+          }
+        </style>
+        ${story()}`
+  ] as unknown
 };
 
 /**
@@ -216,5 +230,43 @@ export const Mouseless = {
     await userEvent.type(el!.shadowRoot!.querySelector('.flip-card__side--front')!, '{return}', {
       pointerEventsCheck: 0
     });
+  }
+};
+
+/**
+ * Here is a sample of the `sd-flipcard` with custom content in the `front` and `back` slots.
+ */
+
+export const Sample = {
+  render: () => {
+    return html`
+      <sd-flipcard style="width:350px;">
+        <div slot="front">
+          <h4 class="sd-headline sd-headline--inline sd-headline--size-lg sd-headline--inverted">
+            <sd-icon name="content/picture" library="global-resources"></sd-icon>
+            Nisi eu excepteur anim esse
+          </h4>
+
+          <p class="sd-paragraph text-left sd-paragraph--inverted">
+            Lorem ipsum dolor sit amet per niente da faremmasds nonnummy dolore lorem ipsum dolor sit amet consectuer
+          </p>
+
+          <sd-link size="inherit" href="#" inverted>Link</sd-link>
+        </div>
+
+        <div slot="back">
+          <h4 class="sd-headline sd-headline--inline sd-headline--size-lg">
+            <sd-icon name="content/picture" library="global-resources"></sd-icon>
+            Nisi eu excepteur anim esse
+          </h4>
+
+          <p class="sd-paragraph text-left">
+            Lorem ipsum dolor sit amet per niente da faremmasds nonnummy dolore lorem ipsum dolor sit amet consectuer
+          </p>
+
+          <sd-link size="inherit" href="#">Link</sd-link>
+        </div>
+      </sd-flipcard>
+    `;
   }
 };
