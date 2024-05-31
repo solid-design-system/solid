@@ -9,5 +9,5 @@
   },
   "draftPR": true,
   "rebaseWhen": "never",
-  "osvVulnerabilityAlerts": true,
+  "osvVulnerabilityAlerts": true
 }
