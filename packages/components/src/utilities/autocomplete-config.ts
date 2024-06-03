@@ -1,5 +1,5 @@
-import type SdInput from "src/components/input/input";
-import type SdPopup from "src/components/popup/popup";
+import type SdInput from "../components/input/input";
+import type SdPopup from "../components/popup/popup";
 
 /**
  * This function is a helper to quickly setup autocomplete.js for Solid components.
