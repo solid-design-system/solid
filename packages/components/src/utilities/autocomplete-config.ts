@@ -1,5 +1,16 @@
-import type SdInput from "../components/input/input";
-import type SdPopup from "../components/popup/popup";
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+// @ts-nocheck
+
+// import type SdInput from "../components/input/input";
+// import type SdPopup from "../components/popup/popup";
+
+type SdInput = any;
+type SdPopup = any;
 
 /**
  * This function is a helper to quickly setup autocomplete.js for Solid components.
@@ -58,7 +69,8 @@ export function setupAutocomplete(
   const sdInput: SdInput = getAndVerifySdElement<SdInput>('input', sdInputSelector);
   const sdPopup: SdPopup = getAndVerifySdElement<SdPopup>('popup', sdPopupSelector);
 
-  const sdInputShadowRoot: ShadowRoot = getAndVerifyShadowRoot(sdInput);
+  // const sdInputShadowRoot: ShadowRoot = getAndVerifyShadowRoot(sdInput);
+  const sdInputShadowRoot: ShadowRoot = getAndVerifyShadowRoot(sdInput as HTMLElement);
 
   const input = sdInputShadowRoot.querySelector('input')!;
 
