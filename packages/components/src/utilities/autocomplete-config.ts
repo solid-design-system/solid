@@ -69,8 +69,10 @@ export function setupAutocomplete(
   input.addEventListener('init', () => {
     sdInputShadowRoot.appendChild(sdPopup);
 
-    sdPopup.setAttribute('exportparts', 'popup__content');
+    sdInput.classList.add('sd-autocomplete__input');
+    
     sdPopup.classList.add('sd-autocomplete__popup');
+    sdPopup.setAttribute('exportparts', 'popup__content');
     sdPopup.active = false;
     sdPopup.autoSize = 'vertical';
     sdPopup.autoSizePadding = 16;
@@ -86,6 +88,14 @@ export function setupAutocomplete(
     }
 
     const styles = css`
+      .sd-autocomplete__input[active] {
+        &::part(border) {
+          @apply rounded-b-none;
+        }
+        &::part(form-control) {
+          @apply z-50;
+        }
+      }
       .sd-autocomplete__popup {
         &::part(popup) {
           @apply overflow-y-scroll z-dropdown border-2 border-t-0 border-primary bg-white rounded-b-default shadow px-2 py-3;
@@ -117,15 +127,13 @@ export function setupAutocomplete(
   });
 
   input.addEventListener('open', () => {
+    sdInput.setAttribute('active', 'true');
     sdPopup.setAttribute('active', 'true');
-    sdInputShadowRoot.querySelector('[part="border"]')?.classList.add('rounded-b-none');
-    sdInputShadowRoot.querySelector('[part="form-control"]')?.classList.add('z-50');
   });
 
   input.addEventListener('close', () => {
+    sdInput.removeAttribute('active');
     sdPopup.removeAttribute('active');
-    sdInputShadowRoot.querySelector('[part="border"]')?.classList.remove('rounded-b-none');
-    sdInputShadowRoot.querySelector('[part="form-control"]')?.classList.remove('z-50');
   });
 
   if (setValueOnSelection) {
@@ -145,8 +153,8 @@ export function setupAutocomplete(
   return {
     config: {
       selector: () => {
-        // For correct handling we need the input element inside the ShadowDOM
-        // Because of A11y this leads to the fact, that we need to push the popup into the ShadowDOM as well
+        // For correct handling we need the input element inside the ShadowDOM.
+        // A11y requires to then also push the popup into the ShadowDOM as well.
         // Unfortunately this hinders people to style things just from outside with their own stylesheets
         // Experiments using resultsList.destination as destination and the whole sd-input as selector failed
         // Maybe there could be a fix in the future for that
