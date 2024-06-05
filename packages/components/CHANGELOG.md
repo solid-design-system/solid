@@ -1,3 +1,47 @@
+# [@solid-design-system/components-v3.6.0](https://github.com/solid-design-system/solid/compare/components/3.5.0...components/3.6.0) (2024-05-29)
+
+
+### Features
+
+* add sd-prose and fix sd-list ([b82d60f](https://github.com/solid-design-system/solid/commit/b82d60f2bf87e54479c7731145d87e93c2e983db))
+
+### 📈 Stats
+* Bundle size (uncompressed): 314 KB (+5 KB / +2%)
+* Bundle size (gzipped): 75 KB (+1 KB / +1%)
+
+# [@solid-design-system/components-v3.5.0](https://github.com/solid-design-system/solid/compare/components/3.4.0...components/3.5.0) (2024-05-24)
+
+
+### Features
+
+* ✨ add sd-step & sd-step-group  ([#1007](https://github.com/solid-design-system/solid/issues/1007)) ([d42c66f](https://github.com/solid-design-system/solid/commit/d42c66fec184306c1f7cc9c127f54b20fe17d5bf))
+
+### 📈 Stats
+* Bundle size (uncompressed): 309 KB (+10 KB / +3%)
+* Bundle size (gzipped): 74 KB (+2 KB / +3%)
+
+# [@solid-design-system/components-v3.4.0](https://github.com/solid-design-system/solid/compare/components/3.3.1...components/3.4.0) (2024-05-22)
+
+
+### Features
+
+* ✨ add sd-scrollable ([#966](https://github.com/solid-design-system/solid/issues/966)) ([3d7bcad](https://github.com/solid-design-system/solid/commit/3d7bcad9416da3013c45d120a0196f29fa17986e)), closes [#289](https://github.com/solid-design-system/solid/issues/289)
+
+### 📈 Stats
+* Bundle size (uncompressed): 299 KB (+7 KB / +2%)
+* Bundle size (gzipped): 72 KB (+2 KB / +3%)
+
+# [@solid-design-system/components-v3.3.1](https://github.com/solid-design-system/solid/compare/components/3.3.0...components/3.3.1) (2024-05-14)
+
+
+### Bug Fixes
+
+* 🤔 remove placeholder for fixed column sample ([#1045](https://github.com/solid-design-system/solid/issues/1045)) ([d75d6b7](https://github.com/solid-design-system/solid/commit/d75d6b7c6075883e3c194a4a07ff185c050a9a24))
+
+### 📈 Stats
+* Bundle size (uncompressed): 292 KB (unchanged)
+* Bundle size (gzipped): 70 KB (unchanged)
+
 # [@solid-design-system/components-v3.3.0](https://github.com/solid-design-system/solid/compare/components/3.2.0...components/3.3.0) (2024-05-06)
 
 

@@ -643,7 +643,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                   <sd-icon
                     class=${cx('text-success flex-shrink-0', iconMarginLeft, iconSize)}
                     library="system"
-                    name="confirm"
+                    name="status-check"
                     part="valid-icon"
                   ></sd-icon>
                 `
