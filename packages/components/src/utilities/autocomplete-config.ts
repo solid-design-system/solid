@@ -41,7 +41,9 @@ export function setupAutocomplete(
     
     // Verify `candidate` resolves to `sd-input` or `sd-1-2-3-input`.
     // Avoid using `candidate instanceof SdInput` as this would check against _this package's_ `SdInput` class, returning `false` if `sd-input` was imported from somewhere else (i.e. CDN, another bundle)
-    if (!candidate?.tagName.startsWith('SD-') || !candidate.tagName.endsWith(`-${name.toUpperCase()}`)) {
+    const tagStartsWithSD = candidate?.tagName.startsWith('SD-');
+    const tagEndsWithName = candidate?.tagName.endsWith(`-${name.toUpperCase()}`);
+    if (!tagStartsWithSD || !tagEndsWithName) {
       throw new Error(`The provided element or selector "${JSON.stringify(elementOrSelector)}" does not resolve to an sd-${name} element.`);
     }
     // We're now reasonably certain that we're dealing with an `sd-input`
@@ -65,8 +67,7 @@ export function setupAutocomplete(
   /* Helper to use PostCSS and Syntax highlighting */
   const css = (string: TemplateStringsArray) => string[0];
 
-  /** Setup elements and styles for autocomplete.js */
-  input.addEventListener('init', () => {
+  const setupElementsAndStyles = () => {
     sdInputShadowRoot.appendChild(sdPopup);
 
     sdInput.classList.add('sd-autocomplete__input');
@@ -124,6 +125,10 @@ export function setupAutocomplete(
     const styleSheet = new CSSStyleSheet();
     styleSheet.replaceSync(styles);
     sdInputShadowRoot.adoptedStyleSheets = [...sdInputShadowRoot.adoptedStyleSheets, styleSheet];
+  };
+
+  input.addEventListener('init', () => {
+    setupElementsAndStyles();
   });
 
   input.addEventListener('open', () => {
@@ -136,19 +141,17 @@ export function setupAutocomplete(
     sdPopup.removeAttribute('active');
   });
 
-  if (setValueOnSelection) {
-    input.addEventListener('selection', (event: CustomEvent) => {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-      sdInput.value = event?.detail?.selection.value as string;
-    });
-  }
-
-  if (scrollSelectionIntoView) {
-    input.addEventListener('navigate', () => {
-      const selected = sdInputShadowRoot.querySelector('[aria-selected="true"]');
-      selected?.scrollIntoView({ block: 'nearest' });
-    });
-  }
+  input.addEventListener('selection', (event: CustomEvent) => {
+    if (!setValueOnSelection) return;
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    sdInput.value = event?.detail?.selection.value as string;
+  });
+  
+  input.addEventListener('navigate', () => {
+    if (!scrollSelectionIntoView) return;
+    const selected = sdInputShadowRoot.querySelector('[aria-selected="true"]');
+    selected?.scrollIntoView({ block: 'nearest' });
+  });
 
   return {
     config: {
