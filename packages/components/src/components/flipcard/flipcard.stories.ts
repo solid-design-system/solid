@@ -1,7 +1,6 @@
 import '../../solid-components';
 import { html } from 'lit';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { userEvent } from '@storybook/testing-library';
 import { waitUntil } from '@open-wc/testing-helpers';
 import { withActions } from '@storybook/addon-actions/decorator';
 
@@ -227,10 +226,7 @@ export const Mouseless = {
 
     await waitUntil(() => el?.shadowRoot?.querySelector('.flip-card__side--front'));
 
-    // We have to catch the event as otherwise Storybook will break
-    await userEvent.type(el!.shadowRoot!.querySelector('.flip-card__side--front')!, '{return}', {
-      pointerEventsCheck: 0
-    });
+    el?.shadowRoot?.querySelector<HTMLElement>('.flip-card__side--front')!.focus();
   }
 };
 
