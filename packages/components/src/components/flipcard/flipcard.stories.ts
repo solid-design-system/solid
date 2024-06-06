@@ -15,12 +15,12 @@ export default {
     {
       type: 'slot',
       name: 'front',
-      value: `<p slot="front">Lorem ipsum dolor sit amet per niente da faremmasds nonnummy dolore lorem ipsum dolor sit amet consectuer</p>`
+      value: `<p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>`
     },
     {
       type: 'slot',
       name: 'back',
-      value: `<p slot="back">Lorem ipsum dolor sit amet per niente da faremmasds nonnummy dolore lorem ipsum dolor sit amet consectuer</p>`
+      value: `<p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>`
     },
     {
       type: 'slot',
@@ -75,31 +75,6 @@ export const Variants = {
 };
 
 /**
- * The sd-flipcard can be displayed in 3:4 or 16:9 aspect ratio.
- */
-
-export const Ratio = {
-  parameters: { controls: { exclude: ['ratio'] } },
-  render: (args: any) =>
-    generateTemplate({
-      axis: {
-        x: {
-          type: 'attribute',
-          name: 'ratio'
-        }
-      },
-      args,
-      constants: [
-        {
-          type: 'template',
-          name: 'style',
-          value: '<div style="margin-bottom: 40px; width: 300px">%TEMPLATE%</div>'
-        }
-      ]
-    })
-};
-
-/**
  * Use the `front`, `back`, `mediaFront` and `mediaBack` slots to add content to the flipcard.
  */
 export const Slots = {
@@ -117,7 +92,7 @@ export const Slots = {
               title: 'slot=..',
               values: [
                 {
-                  value: `<div slot='${slot}' class="slot slot--border slot--background w-full h-full"></div>`,
+                  value: `<div slot='${slot}' class="slot slot--border slot--background min-h-12 w-full h-full"></div>`,
                   title: slot
                 }
               ]
@@ -237,8 +212,8 @@ export const Mouseless = {
 export const Sample = {
   render: () => {
     return html`
-      <sd-flipcard style="width:350px;">
-        <div slot="front">
+      <sd-flipcard>
+        <div class="py-4 px-6" slot="front">
           <h4 class="sd-headline sd-headline--inline sd-headline--size-lg sd-headline--inverted">
             <sd-icon name="content/picture" library="global-resources"></sd-icon>
             Nisi eu excepteur anim esse
@@ -251,7 +226,7 @@ export const Sample = {
           <sd-link size="inherit" href="#" inverted>Link</sd-link>
         </div>
 
-        <div slot="back">
+        <div class="py-4 px-6" slot="back">
           <h4 class="sd-headline sd-headline--inline sd-headline--size-lg">
             <sd-icon name="content/picture" library="global-resources"></sd-icon>
             Nisi eu excepteur anim esse

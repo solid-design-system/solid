@@ -55,9 +55,6 @@ export default class SdFlipcard extends SolidElement {
     | 'gradient-dark-top'
     | 'gradient-dark-bottom' = 'primary-100';
 
-  /** Determines the ratio for the layout of the flipcard. */
-  @property({ type: String, reflect: true }) ratio: '3:4' | '16:9' = '3:4';
-
   connectedCallback() {
     super.connectedCallback();
   }
@@ -90,7 +87,7 @@ export default class SdFlipcard extends SolidElement {
 
   render() {
     return html`
-      <div part="base" class=${cx('flip-card relative', this.ratio === '3:4' ? 'aspect-3/4' : 'aspect-video')}>
+      <div part="base" class=${cx('flip-card relative aspect-3/4')}>
         <div
           part="front"
           tabindex="0"
@@ -120,7 +117,7 @@ export default class SdFlipcard extends SolidElement {
           <div
             part="frontSlotContainer"
             class=${cx(
-              'py-4 px-6 flex mt-auto',
+              'flex mt-auto',
               {
                 primary: 'text-white',
                 'primary-100': 'text-black',
@@ -187,7 +184,7 @@ export default class SdFlipcard extends SolidElement {
           <div
             part="backSlotContainer"
             class=${cx(
-              'py-4 px-6 flex mt-auto',
+              'flex mt-auto',
               {
                 primary: 'text-white',
                 'primary-100': 'text-black',
@@ -238,10 +235,12 @@ export default class SdFlipcard extends SolidElement {
       :host {
         @apply block;
         --name: '';
+        --height: 480px;
       }
 
       .flip-card {
         perspective: 100rem;
+        height: var(--height);
       }
       .flip-card__side {
         transition: transform 1000ms ease;
