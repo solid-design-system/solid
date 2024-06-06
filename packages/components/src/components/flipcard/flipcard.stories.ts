@@ -45,7 +45,7 @@ export default {
 
 export const Default = {
   render: (args: any) => {
-    return html`<div style="width:300px">${generateTemplate({ args })}</div>`;
+    return generateTemplate({ args });
   }
 };
 
