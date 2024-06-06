@@ -7,9 +7,8 @@ import type { ReactiveControllerHost } from 'lit';
 /**
  * This controller extends the default localization controller and adds support for instance-specific translations.
  *
- * It works by parsing the `custom-localization` attribute, which should be a JSON object containing translations.
+ * It works by reactively parsing `data-custom-localization`, which should be a JSON object containing translations.
  * As an alternative, you can also set translations programmatically using the `setCustomLocalization` method.
- * The `custom-localization` attribute is not reactive, so you'll need to call `setCustomLocalization` to update translations.
  */
 export class LocalizeController extends DefaultLocalizationController<Translation> {
   private _instanceTranslations: Partial<Translation> | null = null;
@@ -29,18 +28,22 @@ export class LocalizeController extends DefaultLocalizationController<Translatio
 
   override hostConnected() {
     super.hostConnected();
-    this.parseInstanceTranslations();
+    this.setCustomLocalizationFromData();
+    new MutationObserver(() => this.setCustomLocalizationFromData()).observe(this.host, {
+      attributes: true,
+      attributeFilter: ['data-custom-localization']
+    });
   }
 
   override hostDisconnected() {
     super.hostDisconnected();
   }
 
-  private parseInstanceTranslations() {
-    const customLocalizationAttr = this.host.dataset.localization;
-    if (customLocalizationAttr) {
+  private setCustomLocalizationFromData() {
+    const dataCustomLocalization = this.host.dataset.customLocalization;
+    if (dataCustomLocalization) {
       try {
-        this.instanceTranslations = JSON.parse(customLocalizationAttr) as Partial<Translation>;
+        this.setCustomLocalization(JSON.parse(dataCustomLocalization) as Partial<Translation>);
       } catch (error) {
         console.error('Error parsing custom-localization attribute:', error);
       }

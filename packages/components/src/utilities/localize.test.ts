@@ -23,13 +23,29 @@ describe('<sd-carousel>', () => {
 
   it('should apply custom localization from data-attribute', async () => {
     const select = await fixture<SdSelect>(html`
-      <sd-select lang="de" value="option-1" clearable data-localization='{"clearEntry": "Reset!!"}'
+      <sd-select lang="de" value="option-1" clearable data-custom-localization='{"clearEntry": "Reset!!"}'
         ><sd-option value="option-1">Option 1</sd-option></sd-select
       >
     `);
     expect(select.shadowRoot!.querySelector('button[part="clear-button"]')!.getAttribute('aria-label')).to.equal(
       'Reset!!'
     );
+  });
+
+  it('should reactively apply custom localization from data-attribute', async () => {
+    const select = await fixture<SdSelect>(html`
+      <sd-select lang="de" value="option-1" clearable data-custom-localization='{"clearEntry": "Reset!!"}'
+        ><sd-option value="option-1">Option 1</sd-option></sd-select
+      >
+    `);
+
+    select.setAttribute('data-custom-localization', '{"clearEntry": "Updated!!"}');
+
+    await waitFor(() => {
+      expect(select.shadowRoot!.querySelector('button[part="clear-button"]')!.getAttribute('aria-label')).to.equal(
+        'Updated!!'
+      );
+    });
   });
 
   it('should apply custom localization from setCustomLocalization', async () => {
