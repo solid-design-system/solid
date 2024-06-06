@@ -66,12 +66,14 @@ export default class SdFlipcard extends SolidElement {
     this.front.classList.add('clicked--front');
     this.back.classList.add('clicked--back');
     this.emit('sd-flip-front');
+    this.back.focus();
   }
 
   private flipBack() {
     this.front.classList.remove('clicked--front');
     this.back.classList.remove('clicked--back');
     this.emit('sd-flip-back');
+    this.front.focus();
   }
 
   private handleFrontKeydown(event: KeyboardEvent) {
