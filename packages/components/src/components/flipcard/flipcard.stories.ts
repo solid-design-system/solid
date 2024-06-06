@@ -68,7 +68,7 @@ export const Variants = {
         {
           type: 'template',
           name: 'style',
-          value: '<div style="margin-bottom: 40px; width: 300px">%TEMPLATE%</div>'
+          value: '<div style="margin-bottom: 40px">%TEMPLATE%</div>'
         }
       ]
     })
@@ -103,7 +103,7 @@ export const Slots = {
             {
               type: 'template',
               name: 'style',
-              value: '<div style="margin-bottom: 40px; width: 300px">%TEMPLATE%</div>'
+              value: '<div style="margin-bottom: 40px;">%TEMPLATE%</div>'
             },
             {
               type: 'attribute',
@@ -170,7 +170,7 @@ export const Parts = {
         {
           type: 'template',
           name: 'style',
-          value: '<div style="margin-bottom: 40px; width: 300px">%TEMPLATE%</div>'
+          value: '<div style="margin-bottom: 40px;">%TEMPLATE%</div>'
         },
         {
           type: 'attribute',
@@ -193,7 +193,7 @@ export const Parts = {
 
 export const Mouseless = {
   render: (args: any) => {
-    return html`<div class="mouseless" style="width:300px">${generateTemplate({ args })}</div>`;
+    return html`<div class="mouseless">${generateTemplate({ args })}</div>`;
   },
 
   play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
