@@ -89,17 +89,15 @@ export const Ratio = {
           name: 'ratio'
         }
       },
-      args
-    }),
-  decorators: [
-    (story: any) =>
-      html`<style>
-          td.template {
-            width: 50%;
-          }
-        </style>
-        ${story()}`
-  ] as unknown
+      args,
+      constants: [
+        {
+          type: 'template',
+          name: 'style',
+          value: '<div style="margin-bottom: 40px; width: 300px">%TEMPLATE%</div>'
+        }
+      ]
+    })
 };
 
 /**
@@ -207,7 +205,7 @@ export const Parts = {
         },
         {
           type: 'attribute',
-          name: 'darkVariant',
+          name: 'backVariant',
           value: 'gradient-dark-bottom'
         }
       ]
