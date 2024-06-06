@@ -75,13 +75,13 @@ export default class SdFlipcard extends SolidElement {
   }
 
   private handleFrontKeydown(event: KeyboardEvent) {
-    if (event.code === 'Enter' || event.code === 'Space') {
+    if (event.code === 'Enter') {
       this.flipFront();
     }
   }
 
   private handleBackKeydown(event: KeyboardEvent) {
-    if (event.code === 'Enter' || event.code === 'Space') {
+    if (event.code === 'Enter') {
       this.flipBack();
     }
   }
