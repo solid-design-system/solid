@@ -75,6 +75,31 @@ export const Variants = {
 };
 
 /**
+ * Use the `activation` attribute to determine the activation type of the flipcard. There are two options: `click-only` and `hover-and-click`.
+ */
+
+export const Activation = {
+  parameters: { controls: { exclude: ['activation'] } },
+  render: (args: any) =>
+    generateTemplate({
+      axis: {
+        x: {
+          type: 'attribute',
+          name: 'activation'
+        }
+      },
+      args,
+      constants: [
+        {
+          type: 'template',
+          name: 'style',
+          value: '<div style="margin-bottom: 40px">%TEMPLATE%</div>'
+        }
+      ]
+    })
+};
+
+/**
  * Use the `front`, `back`, `mediaFront` and `mediaBack` slots to add content to the flipcard.
  */
 export const Slots = {
@@ -212,7 +237,7 @@ export const Mouseless = {
 export const Sample = {
   render: () => {
     return html`
-      <sd-flipcard>
+      <sd-flipcard activation="click-only">
         <div class="py-4 px-6" slot="front">
           <h4 class="sd-headline sd-headline--inline sd-headline--size-lg sd-headline--inverted">
             <sd-icon name="content/picture" library="global-resources"></sd-icon>

@@ -30,11 +30,17 @@ import SolidElement from '../../internal/solid-element';
  * @cssparts backSecondaryGradient - The container that wraps the secondary gradient of the back side.
  *
  * @cssproperties --name - Description of the flipcard.
+ * @cssproperties --height - Use this property to set the height of the flipcard.
  */
 @customElement('sd-flipcard')
 export default class SdFlipcard extends SolidElement {
   @query('[part="back"]') back: HTMLElement;
   @query('[part="front"]') front: HTMLElement;
+
+  /**
+   * Determines the activation type of the flipcard.
+   */
+  @property() activation: 'click-only' | 'hover-and-click' = 'hover-and-click';
 
   /** Determines the variant of the front face of the flipcard. */
   @property({ type: String, reflect: true })
@@ -91,14 +97,15 @@ export default class SdFlipcard extends SolidElement {
 
   render() {
     return html`
-      <div part="base" class=${cx('flip-card relative aspect-3/4')}>
+      <div part="base" class=${cx('flip-card relative h-full w-full')}>
         <div
           part="front"
           tabindex="0"
           class=${cx(
-            'flip-card__side flip-card__side--front hover overflow-hidden drop-shadow-md',
+            'flip-card__side flip-card__side--front overflow-hidden drop-shadow-md',
             'flex focus-visible:focus-outline',
             'absolute top-0 left-0 w-full h-full justify-end text-left',
+            this.activation === 'hover-and-click' && 'hover',
             this.frontVariant === 'primary' && 'bg-primary',
             this.frontVariant === 'primary-100' && 'bg-primary-100',
             this.frontVariant === 'gradient-dark-bottom' || this.frontVariant === 'gradient-light-bottom'
@@ -163,9 +170,10 @@ export default class SdFlipcard extends SolidElement {
           part="back"
           tabindex="0"
           class=${cx(
-            'flip-card__side flip-card__side--back hover overflow-hidden drop-shadow-md',
+            'flip-card__side flip-card__side--back overflow-hidden drop-shadow-md',
             'flex focus-visible:focus-outline',
             'absolute top-0 left-0 w-full h-full justify-end text-left',
+            this.activation === 'hover-and-click' && 'hover',
             this.backVariant === 'primary' && 'bg-primary',
             this.backVariant === 'primary-100' && 'bg-primary-100',
             this.backVariant === 'gradient-dark-bottom' || this.backVariant === 'gradient-light-bottom'
@@ -237,14 +245,14 @@ export default class SdFlipcard extends SolidElement {
     SolidElement.styles,
     css`
       :host {
-        @apply block;
+        @apply block aspect-3/4;
         --name: '';
         --height: 480px;
+        height: var(--height);
       }
 
       .flip-card {
         perspective: 100rem;
-        height: var(--height);
       }
       .flip-card__side {
         transition: transform 1000ms ease;
