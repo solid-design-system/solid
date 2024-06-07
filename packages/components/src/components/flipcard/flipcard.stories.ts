@@ -235,9 +235,49 @@ export const Mouseless = {
  */
 
 export const Sample = {
+  name: 'Sample: Custom Content',
   render: () => {
     return html`
       <sd-flipcard activation="click-only">
+        <div class="py-4 px-6" slot="front">
+          <h4 class="sd-headline sd-headline--inline sd-headline--size-lg sd-headline--inverted">
+            <sd-icon name="content/picture" library="global-resources"></sd-icon>
+            Nisi eu excepteur anim esse
+          </h4>
+
+          <p class="sd-paragraph text-left sd-paragraph--inverted">
+            Lorem ipsum dolor sit amet per niente da faremmasds nonnummy dolore lorem ipsum dolor sit amet consectuer
+          </p>
+
+          <sd-link size="inherit" href="#" inverted>Link</sd-link>
+        </div>
+
+        <div class="py-4 px-6" slot="back">
+          <h4 class="sd-headline sd-headline--inline sd-headline--size-lg">
+            <sd-icon name="content/picture" library="global-resources"></sd-icon>
+            Nisi eu excepteur anim esse
+          </h4>
+
+          <p class="sd-paragraph text-left">
+            Lorem ipsum dolor sit amet per niente da faremmasds nonnummy dolore lorem ipsum dolor sit amet consectuer
+          </p>
+
+          <sd-link size="inherit" href="#">Link</sd-link>
+        </div>
+      </sd-flipcard>
+    `;
+  }
+};
+
+/**
+ * You can set a custom aspect ratio (eg: 16:9) for the `sd-flipcard` using plain CSS.
+ */
+
+export const AspectRatio = {
+  name: 'Sample: Aspect Ratio',
+  render: () => {
+    return html`
+      <sd-flipcard style="aspect-ratio:16/9;">
         <div class="py-4 px-6" slot="front">
           <h4 class="sd-headline sd-headline--inline sd-headline--size-lg sd-headline--inverted">
             <sd-icon name="content/picture" library="global-resources"></sd-icon>
