@@ -40,7 +40,7 @@ export default class SdFlipcard extends SolidElement {
   /**
    * Determines the activation type of the flipcard.
    */
-  @property() activation: 'click-only' | 'hover-and-click' = 'hover-and-click';
+  @property({ reflect: true }) activation: 'click-only' | 'click-and-hover' = 'click-and-hover';
 
   /** Determines the variant of the front face of the flipcard. */
   @property({ type: String, reflect: true })
@@ -105,7 +105,7 @@ export default class SdFlipcard extends SolidElement {
             'flip-card__side flip-card__side--front overflow-hidden drop-shadow-md',
             'flex focus-visible:focus-outline',
             'absolute top-0 left-0 w-full h-full justify-end text-left',
-            this.activation === 'hover-and-click' && 'hover',
+            this.activation === 'click-and-hover' && 'hover',
             this.frontVariant === 'primary' && 'bg-primary',
             this.frontVariant === 'primary-100' && 'bg-primary-100',
             this.frontVariant === 'gradient-dark-bottom' || this.frontVariant === 'gradient-light-bottom'
@@ -173,7 +173,7 @@ export default class SdFlipcard extends SolidElement {
             'flip-card__side flip-card__side--back overflow-hidden drop-shadow-md',
             'flex focus-visible:focus-outline',
             'absolute top-0 left-0 w-full h-full justify-end text-left',
-            this.activation === 'hover-and-click' && 'hover',
+            this.activation === 'click-and-hover' && 'hover',
             this.backVariant === 'primary' && 'bg-primary',
             this.backVariant === 'primary-100' && 'bg-primary-100',
             this.backVariant === 'gradient-dark-bottom' || this.backVariant === 'gradient-light-bottom'
