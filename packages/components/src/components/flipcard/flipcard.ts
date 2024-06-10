@@ -29,8 +29,8 @@ import SolidElement from '../../internal/solid-element';
  * @cssparts frontSecondaryGradient - The container that wraps the secondary gradient of the front side.
  * @cssparts backSecondaryGradient - The container that wraps the secondary gradient of the back side.
  *
- * @cssproperties --name - Description of the flipcard.
- * @cssproperties --height - Use this property to set the height of the flipcard.
+ * @cssproperty --name - Description of the flipcard.
+ * @cssproperty --height - Use this property to set the height of the flipcard.
  */
 
 @customElement('sd-flipcard')
@@ -108,7 +108,7 @@ export default class SdFlipcard extends SolidElement {
           part="front"
           tabindex="0"
           class=${cx(
-            'flip-card__side flip-card__side--front overflow-hidden drop-shadow-md',
+            'flip-card__side flip-card__side--front overflow-hidden drop-shadow-md transition-transform duration-1000 ease-in-out',
             'flex focus-visible:focus-outline',
             'absolute top-0 left-0 w-full h-full justify-end text-left',
             this.activation === 'click-and-hover' && 'hover',
@@ -177,7 +177,7 @@ export default class SdFlipcard extends SolidElement {
           part="back"
           tabindex="0"
           class=${cx(
-            'flip-card__side flip-card__side--back overflow-hidden drop-shadow-md',
+            'flip-card__side flip-card__side--back overflow-hidden drop-shadow-md transition-transform duration-1000 ease-in-out',
             'flex focus-visible:focus-outline',
             'absolute top-0 left-0 w-full h-full justify-end text-left',
             this.activation === 'click-and-hover' && 'hover',
@@ -263,7 +263,6 @@ export default class SdFlipcard extends SolidElement {
         perspective: 100rem;
       }
       .flip-card__side {
-        transition: transform 1000ms ease;
         backface-visibility: hidden;
       }
 

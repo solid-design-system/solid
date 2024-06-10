@@ -32,6 +32,10 @@ An optional media slot which can be as a background. Dependent from gradient var
 
 Determines the activation type of the flipcard. Options include `click-only` and `click-and-hover`. Default is `click-and-hover`. 'click-only' is generally used for flipcards that include a button or other interactive element.
 
+#### [flipDirection]
+
+Determines the direction of the flip animation. Options include `horizontal` and `vertical`. Default is `horizontal`.
+
 #### [frontVariant]
 
 Determines the style variant of the front face of the flipcard.
@@ -40,24 +44,30 @@ Determines the style variant of the front face of the flipcard.
 
 Determines the style variant of the back face of the flipcard.
 
-### 🔀 Updated Attributes
-
-#### [1st_updated_attribute]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-#### [2nd_updated_attribute]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit \*/}
-
 ### ❌ Removed Attributes
 
 The following attributes have been removed from the new [sd-flipcard] component:
 
-1. [1st_removed_attribute]
-   - [brief reasoning for removal]
-2. [2nd_removed_attribute]
-   - [brief reasoning for removal]
+1. [back]
+   - The back interface has been removed in favor of the `back` slot.
+2. [front]
+   - The front interface has been removed in favor of the `front` slot.
+3. [content-alignment]
+   - The content-alignment attribute has been removed. This funcationality can be replicated with the use the `front` and `back` CSS parts to align content.
+4. [front-color]
+   - The front-color attribute has been removed. Use the `frontVariant` attribute to set the style variant of the front face of the flipcard.
+5. [gradient]
+   - The gradient attribute has been removed. Use the `frontVariant` and `backVariant` attributes to set the style variant of the front and back faces of the flipcard.
+6. [ratio]
+   - The ratio attribute has been removed. Use the `base` CSS part to set custom aspect ratio of the flipcard. See this [sample](https://solid-design-system.fe.union-investment.de/x.x.x/storybook/?path=/docs/components-sd-flipcard--docs#sample%3A%20aspect%20ratio) for more information.
+7. [transition-delay]
+   - The transition-delay attribute has been removed in favor of a standard 1000ms delay. Use the `front` and `back` CSS parts to set custom transition duration of the flipcard.
+8. [image-focal-point-x]
+9. [image-focal-point-y]
+10. [replace]
+11. [sizes]
+12. [utility-front]
+13. [utility-back]
 
 <hr />
 
@@ -65,30 +75,13 @@ The following attributes have been removed from the new [sd-flipcard] component:
 
 ### ✨ New CSS Variables
 
-#### [1st_new_CSS_variable]
+#### [name]
 
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
+Description of the flipcard.
 
-#### [2nd_new_CSS_variable]
+#### [height]
 
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-### 🔀 Updated CSS variables
-
-#### [1st_updated_CSS_variable]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-#### [2nd_updated_CSS_variable]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-### ❌ Removed CSS variables
-
-The following CSS variables have been removed from the new [sd-flipcard] component:
-
-1. [1st_removed_CSS_variable]
-2. [2nd_removed_CSS_variable]
+Use this property to set the height of the flipcard.
 
 <hr />
 
@@ -96,101 +89,19 @@ The following CSS variables have been removed from the new [sd-flipcard] compone
 
 ### ✨ New Events
 
-#### [1st_new_event]
+#### [sd-flip-front]
 
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
+This event is emitted when the front of the flipcard is clicked.
 
-#### [2nd_new_event]
+#### [sd-flip-back]
 
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-### 🔄 Updated Events
-
-#### [1st_updated_event]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-#### [2nd_updated_event]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
+This event is emitted when the back of the flipcard is clicked.
 
 ### ❌ Removed Events:
 
 The following events have been removed from the new [sd-flipcard] component:
 
-1. [1st_removed_event]
-2. [2nd_removed_event]
+1. [flashcardFlip]
+   - The flashcardFlip event has been removed. Use the `sd-flip-front` and `sd-flip-back` events instead.
 
 <hr />
-
-## 🦻 Event Listeners
-
-### ✨ New Event Listeners
-
-#### [1st_new_event_listener]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-#### [2nd_new_event_listener]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-### 🔄 Updated Event Listeners
-
-#### [1st_updated_event_listener]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-#### [2nd_updated_event_listener]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-### ❌ Removed Event Listeners:
-
-The following event listeners have been removed from the new [sd-flipcard] component:
-
-1. [1st_removed_event_listeners]
-2. [2nd_removed_event_listeners]
-
-<hr />
-
-## 🧪 Methods
-
-### ✨ New Methods
-
-#### [1st_new_method]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-#### [2nd_new_method]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-### 🔄 Updated Methods
-
-#### [1st_updated_method]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-#### [2nd_updated_method]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-### ❌ Removed Methods:
-
-The following methods have been removed from the new [sd-flipcard] component:
-
-1. [1st_removed_method]
-2. [2nd_removed_method]
-
-<hr />
-
-## 💪 Additional Changes
-
-### [1st_additional_change]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-### [2nd_additional_change]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
