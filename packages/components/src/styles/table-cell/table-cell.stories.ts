@@ -545,7 +545,7 @@ export const AdvancedSamples = {
                 ${rowData.map((cellData, columIndex) => {
                   if (columIndex === 0) {
                     return html`<th
-                      class="sd-table-cell absolute left-0 top-auto sticky left-0 z-[2] sd-table-cell--shadow-right ${rowIndex %
+                      class="sd-table-cell top-auto sticky left-0 z-[2] bg-clip-padding sd-table-cell--shadow-right ${rowIndex %
                         2 ===
                       0
                         ? 'sd-table-cell--bg-white'
@@ -593,7 +593,7 @@ export const AdvancedSamples = {
                 ${rowData.map((cellData, columIndex) => {
                   if (columIndex === 4) {
                     return html`<th
-                      class="sd-table-cell absolute left-0 top-auto sticky right-0 z-[2] sd-table-cell--shadow-left sd-table-cell--shadow-active ${rowIndex %
+                      class="sd-table-cell left-0 top-auto sticky right-0 z-[2] sd-table-cell--shadow-left sd-table-cell--shadow-active ${rowIndex %
                         2 ===
                       0
                         ? 'sd-table-cell--bg-white'
