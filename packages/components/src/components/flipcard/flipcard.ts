@@ -32,6 +32,7 @@ import SolidElement from '../../internal/solid-element';
  * @cssproperties --name - Description of the flipcard.
  * @cssproperties --height - Use this property to set the height of the flipcard.
  */
+
 @customElement('sd-flipcard')
 export default class SdFlipcard extends SolidElement {
   @query('[part="back"]') back: HTMLElement;
@@ -41,6 +42,11 @@ export default class SdFlipcard extends SolidElement {
    * Determines the activation type of the flipcard.
    */
   @property({ reflect: true }) activation: 'click-only' | 'click-and-hover' = 'click-and-hover';
+
+  /**
+   * Allows the flipcard to flip vertically or horizontally.
+   */
+  @property({ reflect: true, attribute: 'flip-direction' }) flipDirection: 'horizontal' | 'vertical' = 'horizontal';
 
   /** Determines the variant of the front face of the flipcard. */
   @property({ type: String, reflect: true })
@@ -110,7 +116,8 @@ export default class SdFlipcard extends SolidElement {
             this.frontVariant === 'primary-100' && 'bg-primary-100',
             this.frontVariant === 'gradient-dark-bottom' || this.frontVariant === 'gradient-light-bottom'
               ? 'flex-col-reverse'
-              : 'flex-col'
+              : 'flex-col',
+            this.flipDirection === 'vertical' && 'vertical'
           )}
           @click=${this.flipFront}
           @keydown=${this.handleFrontKeydown}
@@ -178,7 +185,8 @@ export default class SdFlipcard extends SolidElement {
             this.backVariant === 'primary-100' && 'bg-primary-100',
             this.backVariant === 'gradient-dark-bottom' || this.backVariant === 'gradient-light-bottom'
               ? 'flex-col-reverse'
-              : 'flex-col'
+              : 'flex-col',
+            this.flipDirection === 'vertical' && 'vertical'
           )}
           @click=${this.flipBack}
           @keydown=${this.handleBackKeydown}
@@ -271,12 +279,31 @@ export default class SdFlipcard extends SolidElement {
         transform: rotateY(0);
       }
 
+      .flip-card__side--back.vertical {
+        transform: rotateX(180deg);
+      }
+
+      .clicked--front.vertical {
+        transform: rotateX(-180deg);
+      }
+
+      .clicked--back.vertical {
+        transform: rotateX(0);
+      }
+
       @media (hover: hover) and (pointer: fine) {
         .flip-card:hover .flip-card__side--front.hover {
           transform: rotateY(-180deg);
         }
         .flip-card:hover .flip-card__side--back.hover {
           transform: rotateY(0);
+        }
+
+        .flip-card:hover .flip-card__side--front.hover.vertical {
+          transform: rotateX(-180deg);
+        }
+        .flip-card:hover .flip-card__side--back.hover.vertical {
+          transform: rotateX(0);
         }
       }
     `

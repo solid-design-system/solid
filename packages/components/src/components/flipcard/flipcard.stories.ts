@@ -100,6 +100,31 @@ export const Activation = {
 };
 
 /**
+ * Use the `flip-direction` attribute to determine the direction of the flipcard. There are two options: `horizontal` and `vertical`.
+ */
+
+export const flipDirection = {
+  parameters: { controls: { exclude: ['flip-direction'] } },
+  render: (args: any) =>
+    generateTemplate({
+      axis: {
+        x: {
+          type: 'attribute',
+          name: 'flip-direction'
+        }
+      },
+      args,
+      constants: [
+        {
+          type: 'template',
+          name: 'style',
+          value: '<div style="margin-bottom: 40px">%TEMPLATE%</div>'
+        }
+      ]
+    })
+};
+
+/**
  * Use the `front`, `back`, `mediaFront` and `mediaBack` slots to add content to the flipcard.
  */
 export const Slots = {
@@ -231,7 +256,7 @@ export const Mouseless = {
 };
 
 /**
- * Here is a sample of the `sd-flipcard` with custom content in the `front` and `back` slots.
+ * Here is a sample of the `sd-flipcard` with custom content in the `front` and `back` slots. The activation is set to `click-only` in order allow the user to click on links/buttons inside the flipcard.
  */
 
 export const Sample = {
