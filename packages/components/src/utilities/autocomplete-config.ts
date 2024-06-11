@@ -1,7 +1,7 @@
-import type SdInput from "../components/input/input";
-import type SdPopup from "../components/popup/popup";
+import type SdInput from '../components/input/input';
+import type SdPopup from '../components/popup/popup';
 
-import { getAndVerifySdElement, getAndVerifyShadowRoot } from "./autocomplete-config.utils";
+import { getAndVerifySdElement, getAndVerifyShadowRoot } from './autocomplete-config.utils';
 
 /**
  * This function is a helper to quickly setup autocomplete.js for Solid components.
@@ -15,10 +15,7 @@ import { getAndVerifySdElement, getAndVerifyShadowRoot } from "./autocomplete-co
 export function setupAutocomplete(
   sdInputSelector: HTMLUnknownElement | string = '#autoCompleteInput',
   sdPopupSelector: HTMLUnknownElement | string = '#autoCompletePopup',
-  {
-    setValueOnSelection,
-    scrollSelectionIntoView,
-  } = {
+  { setValueOnSelection, scrollSelectionIntoView } = {
     /** Bind the value to `sd-input` */
     setValueOnSelection: true,
     /** Selected elements should also be in view */
@@ -39,7 +36,7 @@ export function setupAutocomplete(
     sdInputShadowRoot.appendChild(sdPopup);
 
     sdInput.classList.add('sd-autocomplete__input');
-    
+
     sdPopup.classList.add('sd-autocomplete__popup');
     sdPopup.setAttribute('exportparts', 'popup__content');
     sdPopup.active = false;
@@ -114,7 +111,7 @@ export function setupAutocomplete(
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     sdInput.value = event?.detail?.selection.value as string;
   });
-  
+
   input.addEventListener('navigate', () => {
     if (!scrollSelectionIntoView) return;
     const selected = sdInputShadowRoot.querySelector('[aria-selected="true"]');

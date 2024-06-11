@@ -230,7 +230,11 @@ export const CustomResultItem = {
         const data = ${JSON.stringify(data)};
         // preview-ignore:end
 
-        Promise.all([customElements.whenDefined('sd-input'), customElements.whenDefined('sd-popup'), customElements.whenDefined('sd-teaser')]).then(() => {
+        Promise.all([
+          customElements.whenDefined('sd-input'),
+          customElements.whenDefined('sd-popup'),
+          customElements.whenDefined('sd-teaser')
+        ]).then(() => {
           const { config: baseConfig } = setupAutocomplete('#custom-result-item-input', '#custom-result-item-popup');
           const teaserResultItemAutocomplete = new autoComplete({
             ...baseConfig,
@@ -337,7 +341,7 @@ export const OpenOnClick = {
                   showAllOnClickAutocomplete.start();
                 }
               }
-            },
+            }
           });
         });
       </script>
@@ -465,7 +469,7 @@ export const SuggestionContainerHeight = {
             resultsList: {
               ...baseConfig.resultsList,
               maxResults: undefined
-            },
+            }
           });
         });
       </script>
