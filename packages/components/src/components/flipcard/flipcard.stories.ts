@@ -312,8 +312,6 @@ export const AspectRatio = {
           <p class="sd-paragraph text-left sd-paragraph--inverted">
             Lorem ipsum dolor sit amet per niente da faremmasds nonnummy dolore lorem ipsum dolor sit amet consectuer
           </p>
-
-          <sd-link size="inherit" href="#" inverted>Link</sd-link>
         </div>
 
         <div class="py-4 px-6" slot="back">

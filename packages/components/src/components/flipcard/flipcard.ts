@@ -108,7 +108,7 @@ export default class SdFlipcard extends SolidElement {
           part="front"
           tabindex="0"
           class=${cx(
-            'flip-card__side flip-card__side--front overflow-hidden drop-shadow-md transition-transform duration-1000 ease-in-out',
+            'flip-card__side flip-card__side--front overflow-hidden transition-transform duration-1000 ease-in-out',
             'flex focus-visible:focus-outline',
             'absolute top-0 left-0 w-full h-full justify-end text-left',
             this.activation === 'click-and-hover' && 'hover',
@@ -177,7 +177,7 @@ export default class SdFlipcard extends SolidElement {
           part="back"
           tabindex="0"
           class=${cx(
-            'flip-card__side flip-card__side--back overflow-hidden drop-shadow-md transition-transform duration-1000 ease-in-out',
+            'flip-card__side flip-card__side--back overflow-hidden transition-transform duration-1000 ease-in-out',
             'flex focus-visible:focus-outline',
             'absolute top-0 left-0 w-full h-full justify-end text-left',
             this.activation === 'click-and-hover' && 'hover',
