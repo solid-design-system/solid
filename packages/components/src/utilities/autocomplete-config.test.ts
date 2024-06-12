@@ -2,7 +2,6 @@ import { expect, fixture, html } from '@open-wc/testing';
 import { setupAutocomplete } from './autocomplete-config';
 // @ts-expect-error - Import works, TS doesn't know the type
 import autoComplete from '@tarekraafat/autocomplete.js';
-import type SdInput from 'src/components/input/input';
 
 const mock = {
   src: [
@@ -90,60 +89,47 @@ const mock = {
   ].sort()
 };
 
-describe('sd-input', () => {
-  describe('defaults ', () => {
-    it('default properties', async () => {
-      await fixture<SdInput>(html`
+// Tests run differently when served as ESM vs Bundle.
+// Here we are checking for the existence of the Solid Components global to determine which mode we are in.
+const getSetupAutocomplete = () => {
+  //     ESM                  Bundle
+  return setupAutocomplete || (window as any)['Solid Components']['setupAutocomplete'] /* eslint-disable-line */
+};
+
+describe('sd-autocomplete', () => {
+  describe('defaults', () => {
+    beforeEach(async() => {
+      await fixture(html`
         <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/autoComplete.min.js"></script>
-        <sd-input id="autocomplete" type="search"></sd-input>
+        <sd-input id="autoCompleteInput" type="search"></sd-input>
+        <sd-popup id="autoCompletePopup"></sd-popup> 
       `);
+    })
 
-      // Tests run differently when served as ESM vs. bundled
-      // Here we are checking for the existence of the Solid Components global
-      // to determine which mode we are in.
+    it('default properties', () => {
+      const setupAutocompleteForTest = getSetupAutocomplete();
 
-      /* eslint-disable */
-      let registerAutocompleteForTest;
-      if ((window as any)['Solid Components']) {
-        registerAutocompleteForTest = (window as any)['Solid Components']['setupAutocomplete']; // Bundle Mode
-      } else {
-        registerAutocompleteForTest = setupAutocomplete; // ES Module Mode
-      }
+      const { config: simpleConfig } = setupAutocompleteForTest();
 
-      const { config: simpleConfig } = registerAutocompleteForTest();
-
+      /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */
       const autoCompleteJS = new autoComplete({
         ...simpleConfig,
         mock
       });
 
+      /* eslint-disable @typescript-eslint/no-unsafe-member-access */
       expect(autoCompleteJS.resultsList.tag).to.equal('ul');
       expect(autoCompleteJS.resultsList.maxResults).to.equal(5);
       expect(autoCompleteJS.resultItem.tag).to.equal('li');
-      /* eslint-enable */
+      /* eslint-enable @typescript-eslint/no-unsafe-member-access */
     });
 
-    it('custom properties', async () => {
-      await fixture<SdInput>(html`
-        <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/autoComplete.min.js"></script>
-        <sd-input id="autocomplete" type="search"></sd-input>
-      `);
+    it('custom properties', () => {
+      const setupAutocompleteForTest = getSetupAutocomplete();
 
-      // Promise.all([customElements.whenDefined('sd-input'), customElements.whenDefined('sd-popup')]).then(() => {
-      // Tests run differently when served as ESM vs. bundled
-      // Here we are checking for the existence of the Solid Components global
-      // to determine which mode we are in.
-
-      /* eslint-disable */
-      let registerAutocompleteForTest;
-      if ((window as any)['Solid Components']) {
-        registerAutocompleteForTest = (window as any)['Solid Components']['setupAutocomplete']; // Bundle Mode
-      } else {
-        registerAutocompleteForTest = setupAutocomplete; // ES Module Mode
-      }
-
-      const { config: simpleConfig } = registerAutocompleteForTest();
-
+      const { config: simpleConfig } = setupAutocompleteForTest();
+      
+      /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */
       const autoCompleteJS = new autoComplete({
         ...simpleConfig,
         placeHolder: 'Placeholder',
@@ -157,11 +143,85 @@ describe('sd-input', () => {
         mock
       });
 
+      /* eslint-disable @typescript-eslint/no-unsafe-member-access */
       expect(autoCompleteJS.resultsList.tag).to.equal('ul');
       expect(autoCompleteJS.resultsList.maxResults).to.equal(3);
       expect(autoCompleteJS.resultItem.tag).to.equal('sd-teaser');
       expect(autoCompleteJS.placeHolder).to.equal('Placeholder');
-      /* eslint-enable */
+      /* eslint-enable @typescript-eslint/no-unsafe-member-access */
     });
   });
+
+  describe('versioned components', () => {
+    beforeEach(async() => {
+      await fixture(html`
+        <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/autoComplete.min.js"></script>
+        <script src="https://solid-design-system.fe.union-investment.de/3.6.0/versioned-components/es/input.js" type="module"></script>
+        <script src="https://solid-design-system.fe.union-investment.de/3.6.0/versioned-components/es/popup.js" type="module"></script>
+        <sd-3-6-0-input id="autoCompleteInput" class="customInputSelector" type="search"></sd-3-6-0-input>
+        <sd-3-6-0-popup id="autoCompletePopup" class="customPopupSelector"></sd-3-6-0-popup>
+      `);
+    })
+
+    it('setup with default selector', () => {
+      // eslint-disable-next-line chai-expect/no-inner-literal
+      expect(true).to.equal(true);
+
+      const setupAutocompleteForTest = getSetupAutocomplete();
+
+      const { config: simpleConfig } = setupAutocompleteForTest();
+
+      /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */
+      const autoCompleteJS = new autoComplete({
+        ...simpleConfig,
+        mock
+      });
+
+      /* eslint-disable @typescript-eslint/no-unsafe-member-access */
+      expect(autoCompleteJS.resultsList.tag).to.equal('ul');
+      expect(autoCompleteJS.resultsList.maxResults).to.equal(5);
+      expect(autoCompleteJS.resultItem.tag).to.equal('li');
+      /* eslint-enable  @typescript-eslint/no-unsafe-member-access */
+    });
+
+    it('setup with custom ID as selector', () => {
+      const setupAutocompleteForTest = getSetupAutocomplete();
+    
+      const { config: simpleConfig } = setupAutocompleteForTest('.customInputSelector', '.customPopupSelector');
+
+      /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */
+      const autoCompleteJS = new autoComplete({
+        ...simpleConfig,
+        mock
+      });
+
+      /* eslint-disable @typescript-eslint/no-unsafe-member-access */
+      expect(autoCompleteJS.resultsList.tag).to.equal('ul');
+      expect(autoCompleteJS.resultsList.maxResults).to.equal(5);
+      expect(autoCompleteJS.resultItem.tag).to.equal('li');
+      /* eslint-enable  @typescript-eslint/no-unsafe-member-access */
+    });
+
+    it('setup with element instance', () => {
+      const setupAutocompleteForTest = getSetupAutocomplete();
+    
+      const sdInput = document.getElementById('autoCompleteInput') as HTMLUnknownElement;
+      const sdPopup = document.getElementById('autoCompletePopup') as HTMLUnknownElement;
+
+      const { config: simpleConfig } = setupAutocompleteForTest(sdInput, sdPopup);
+      
+      /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */
+      const autoCompleteJS = new autoComplete({
+        ...simpleConfig,
+        mock
+      });
+
+      /* eslint-disable @typescript-eslint/no-unsafe-member-access */
+      expect(autoCompleteJS.resultsList.tag).to.equal('ul');
+      expect(autoCompleteJS.resultsList.maxResults).to.equal(5);
+      expect(autoCompleteJS.resultItem.tag).to.equal('li');
+      /* eslint-enable  @typescript-eslint/no-unsafe-member-access */
+    });
+  });
+
 });

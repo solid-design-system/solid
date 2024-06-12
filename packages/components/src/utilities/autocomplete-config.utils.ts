@@ -22,7 +22,7 @@ export const getAndVerifySdElement = <T extends HTMLElement>(
   const tagEndsWithName = candidate?.tagName.endsWith(`-${name.toUpperCase()}`);
   if (!tagStartsWithSD || !tagEndsWithName) {
     throw new Error(
-      `The provided element or selector "${JSON.stringify(elementOrSelector)}" does not resolve to an sd-${name} element.`
+      `The provided element or selector '${JSON.stringify(elementOrSelector)}' does not resolve to an sd-${name} element.`
     );
   }
   // We're now reasonably certain that we're dealing with an `sd-input`
@@ -31,7 +31,7 @@ export const getAndVerifySdElement = <T extends HTMLElement>(
 
 export const getAndVerifyShadowRoot = (element: HTMLElement): ShadowRoot => {
   if (!element.shadowRoot) {
-    throw new Error(`The provided element does not have a shadowRoot.`);
+    throw new Error(`The provided element '${element.tagName}' does not have a shadowRoot: ${JSON.stringify(element)}`);
   }
   return element.shadowRoot;
 };
