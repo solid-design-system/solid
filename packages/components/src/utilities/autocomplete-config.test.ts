@@ -1,7 +1,12 @@
-import { expect, fixture, html } from '@open-wc/testing';
+import { expect, fixture } from '@open-wc/testing';
 import { setupAutocomplete } from './autocomplete-config';
 // @ts-expect-error - Import works, TS doesn't know the type
 import autoComplete from '@tarekraafat/autocomplete.js';
+
+import {html, unsafeStatic} from 'lit/static-html.js';
+
+import SdVersionedInput from '../../dist/versioned-package/components/input/input';
+import SdVersionedPopup from '../../dist/versioned-package/components/popup/popup';
 
 const mock = {
   src: [
@@ -154,19 +159,21 @@ describe('sd-autocomplete', () => {
 
   describe('versioned components', () => {
     beforeEach(async() => {
+      const sdVersionedInput = new SdVersionedInput();
+      const inputTagName = sdVersionedInput.tagName;
+      const sdVersionedPopup = new SdVersionedPopup();
+      const popupTagName = sdVersionedPopup.tagName;
+      
+      /* eslint-disable lit/binding-positions, lit/no-invalid-html */
       await fixture(html`
         <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/autoComplete.min.js"></script>
-        <script src="https://solid-design-system.fe.union-investment.de/3.6.0/versioned-components/es/input.js" type="module"></script>
-        <script src="https://solid-design-system.fe.union-investment.de/3.6.0/versioned-components/es/popup.js" type="module"></script>
-        <sd-3-6-0-input id="autoCompleteInput" class="customInputSelector" type="search"></sd-3-6-0-input>
-        <sd-3-6-0-popup id="autoCompletePopup" class="customPopupSelector"></sd-3-6-0-popup>
+        <${unsafeStatic(inputTagName)} id="autoCompleteInput" class="customInputSelector" type="search"></${unsafeStatic(inputTagName)}>
+        <${unsafeStatic(popupTagName)} id="autoCompletePopup" class="customPopupSelector"></${unsafeStatic(popupTagName)}>
       `);
+      /* eslint-enable lit/binding-positions, lit/no-invalid-html */
     })
 
     it('setup with default selector', () => {
-      // eslint-disable-next-line chai-expect/no-inner-literal
-      expect(true).to.equal(true);
-
       const setupAutocompleteForTest = getSetupAutocomplete();
 
       const { config: simpleConfig } = setupAutocompleteForTest();
