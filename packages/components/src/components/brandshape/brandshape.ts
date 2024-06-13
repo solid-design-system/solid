@@ -15,6 +15,7 @@ type Breakpoints = 0 | 414 | 640;
  * @since 1.4
  *
  * @slot - The content inside the brandshape.
+ * @slot image - The image slot for the 'image' variant.
  *
  * @csspart base - The component's base wrapper.
  * @csspart content - Middle content wrapper.
@@ -28,7 +29,13 @@ export default class SdBrandshape extends SolidElement {
   @query('[part=base]') containerElem: HTMLElement;
 
   /** The brandshape's theme variant. */
-  @property({ type: String }) variant: 'neutral-100' | 'primary' | 'white' = 'primary';
+  @property({ type: String }) variant:
+    | 'neutral-100'
+    | 'primary'
+    | 'white'
+    | 'border-primary'
+    | 'border-white'
+    | 'image' = 'primary';
 
   /** Defines which shapes of the brandshape should be displayed. */
   @property({ type: Array }) shapes: ('top' | 'middle' | 'bottom')[] = ['top', 'middle', 'bottom'];
@@ -146,7 +153,10 @@ export default class SdBrandshape extends SolidElement {
             {
               'neutral-100': 'bg-neutral-100',
               primary: 'bg-primary',
-              white: 'bg-white'
+              white: 'bg-white',
+              'border-white': 'bg-transparent',
+              'border-primary': 'bg-transparent',
+              image: 'bg-transparent'
             }[this.variant],
             'w-full block absolute h-full top-0 left-0 z-0'
           )}
@@ -171,7 +181,10 @@ export default class SdBrandshape extends SolidElement {
         {
           'neutral-100': 'bg-neutral-100',
           primary: 'bg-primary',
-          white: 'bg-white'
+          white: 'bg-white',
+          'border-white': 'bg-transparent',
+          'border-primary': 'bg-transparent',
+          image: 'bg-transparent'
         }[this.variant],
         { top: 'bottom-0', bottom: 'top-0' }[position],
         'block absolute left-0 w-full h-[1px]'
@@ -179,21 +192,66 @@ export default class SdBrandshape extends SolidElement {
     ></div>`;
   }
 
+  private renderSkewedBorder(): TemplateResult {
+    return html`
+      <div
+        class="${cx(
+          this.variant === 'border-primary' ? 'container--outline-primary' : '',
+          this.variant === 'border-white' ? 'container--outline-white' : '',
+          'container--stylized'
+        )}"
+      >
+        ${this.shapes.includes('top') ? this.renderTopBrandshape() : ''}
+        ${this.shapes.includes('middle') ? this.renderMiddleBrandshape() : ''}
+        ${this.shapes.includes('bottom') ? this.renderBottomBrandshape() : ''}
+      </div>
+    `;
+  }
+
+  private renderSkewedImage(): TemplateResult {
+    return html`
+      <div class="container--stylized">
+        <div class="image-wrapper">
+          <slot name="image"><img src="./placeholders/images/generic.jpg" alt="Generic" /></slot>
+        </div>
+        ${this.shapes.includes('top') ? this.renderTopBrandshape() : ''}
+        ${this.shapes.includes('middle') ? this.renderMiddleBrandshape() : ''}
+        ${this.shapes.includes('bottom') ? this.renderBottomBrandshape() : ''}
+      </div>
+    `;
+  }
+
+  private renderShapes(): TemplateResult {
+    return html`
+      ${this.shapes.includes('top') ? this.renderTopBrandshape() : ''}
+      ${this.shapes.includes('middle') ? this.renderMiddleBrandshape() : ''}
+      ${this.shapes.includes('bottom') ? this.renderBottomBrandshape() : ''}
+    `;
+  }
+
   render() {
-    return html`<div
-      class=${cx(
-        {
-          'neutral-100': 'fill-neutral-100',
-          primary: 'fill-primary',
-          white: 'fill-white'
-        }[this.variant]
-      )}
-      part="base"
-    >
-      ${this.shapes.includes('top') ? this.renderTopBrandshape() : null}
-      ${this.shapes.includes('middle') ? this.renderMiddleBrandshape() : null}
-      ${this.shapes.includes('bottom') ? this.renderBottomBrandshape() : null}
-    </div>`;
+    const isBorderVariant = this.variant.startsWith('border-');
+    const isImageVariant = this.variant === 'image';
+
+    return html`
+      <div
+        class="${cx(
+          {
+            'neutral-100': 'fill-neutral-100',
+            primary: 'fill-primary',
+            white: 'fill-white',
+            'border-white': 'fill-transparent',
+            'border-primary': 'fill-transparent',
+            image: 'fill-transparent'
+          }[this.variant]
+        )}"
+        part="base"
+      >
+        ${isBorderVariant ? this.renderSkewedBorder() : ''} ${isImageVariant ? this.renderSkewedImage() : ''}
+        ${!isBorderVariant && !isImageVariant ? this.renderShapes() : ''}
+        <slot></slot>
+      </div>
+    `;
   }
 
   /**
@@ -205,6 +263,82 @@ export default class SdBrandshape extends SolidElement {
     css`
       :host {
         @apply block;
+      }
+
+      .container--stylized {
+        background-color: transparent;
+        padding: 40px 0;
+        position: relative;
+        z-index: 1;
+        border-width: 0;
+      }
+
+      .container--stylized::before {
+        background-color: var(--internal-color-background, white);
+        color: var(--internal-color, black);
+        border-color: var(--internal-border-color, black);
+        border-width: var(--internal-border-width, 0);
+        border-style: solid;
+        border-radius: 0 60px;
+        bottom: 0;
+        content: '';
+        left: 0;
+        margin-bottom: calc(21.256% / 2);
+        margin-top: calc(21.256% / 2);
+        position: absolute;
+        right: 0;
+        top: 0;
+        transform: skewY(-11deg);
+        z-index: -1;
+      }
+
+      .container--outline-primary::before {
+        --internal-color-background: none;
+        --internal-border-color: var(--sd-color-primary, blue);
+        --internal-border-width: 2px;
+      }
+
+      .container--outline-white::before {
+        --internal-color-background: none;
+        --internal-border-color: var(--sd-color-white, white);
+        --internal-border-width: 2px;
+      }
+
+      .image-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        margin-bottom: calc(21.256% / 2);
+        margin-top: calc(21.256% / 2);
+        z-index: 2;
+        overflow: hidden;
+        border-radius: 0 60px;
+        transform: skewY(-11deg);
+      }
+
+      slot[name='image']::slotted(img) {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transform: skewY(11deg);
+        transform-origin: top left;
+      }
+
+      /* Responsive border-radius */
+      @media (min-width: 414px) {
+        .container--stylized::before,
+        .image-wrapper {
+          border-radius: 0 72px;
+        }
+      }
+
+      @media (min-width: 640px) {
+        .container--stylized::before,
+        .image-wrapper {
+          border-radius: 0 84px;
+        }
       }
     `
   ];
