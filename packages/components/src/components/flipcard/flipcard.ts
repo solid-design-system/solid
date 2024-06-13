@@ -135,7 +135,7 @@ export default class SdFlipcard extends SolidElement {
           <div
             part="frontSlotContainer"
             class=${cx(
-              'flex mt-auto',
+              'flex',
               {
                 primary: 'text-white',
                 'primary-100': 'text-black',
@@ -160,14 +160,14 @@ export default class SdFlipcard extends SolidElement {
           <div
             part="frontSecondaryGradient"
             class=${cx(
-              'flex-1',
+              'h-1/2',
               {
-                primary: '',
-                'primary-100': '',
-                'gradient-light-top': 'bg-gradient-to-b from-white/60 to-40%',
-                'gradient-light-bottom': 'bg-gradient-to-t from-white/60 to-40%',
-                'gradient-dark-top': 'bg-gradient-to-b from-primary-800/60 to-40%',
-                'gradient-dark-bottom': 'bg-gradient-to-t  from-primary-800/60 to-40%'
+                primary: 'mb-auto',
+                'primary-100': 'mb-auto',
+                'gradient-light-top': 'bg-gradient-to-b from-white/60 to-40% mb-auto',
+                'gradient-light-bottom': 'bg-gradient-to-t from-white/60 to-40% mt-auto',
+                'gradient-dark-top': 'bg-gradient-to-b from-primary-800/60 to-40% mb-auto',
+                'gradient-dark-bottom': 'bg-gradient-to-t  from-primary-800/60 to-40% mt-auto'
               }[this.frontVariant]
             )}
           ></div>
@@ -204,7 +204,7 @@ export default class SdFlipcard extends SolidElement {
           <div
             part="backSlotContainer"
             class=${cx(
-              'flex mt-auto',
+              'flex',
               {
                 primary: 'text-white',
                 'primary-100': 'text-black',
@@ -229,14 +229,14 @@ export default class SdFlipcard extends SolidElement {
           <div
             part="backSecondaryGradient"
             class=${cx(
-              'flex-1',
+              'h-1/2',
               {
-                primary: '',
-                'primary-100': '',
-                'gradient-light-top': 'bg-gradient-to-b from-white/60 to-40%',
-                'gradient-light-bottom': 'bg-gradient-to-t from-white/60 to-40%',
-                'gradient-dark-top': 'bg-gradient-to-b from-primary-800/60 to-40%',
-                'gradient-dark-bottom': 'bg-gradient-to-t  from-primary-800/60 to-40%'
+                primary: 'mb-auto',
+                'primary-100': 'mb-auto',
+                'gradient-light-top': 'bg-gradient-to-b from-white/60 to-40% mb-auto',
+                'gradient-light-bottom': 'bg-gradient-to-t from-white/60 to-40% mt-auto',
+                'gradient-dark-top': 'bg-gradient-to-b from-primary-800/60 to-40% mb-auto',
+                'gradient-dark-bottom': 'bg-gradient-to-t  from-primary-800/60 to-40% mt-auto'
               }[this.backVariant]
             )}
           ></div>
