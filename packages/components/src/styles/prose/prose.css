@@ -1,0 +1,104 @@
+/*
+* Remove inherited styles from table before applying our styles.
+*/
+.sd-prose {
+  /**
+   * Optimize for reading.
+   */
+  @apply max-w-[80ch] text-left;
+
+  /**
+   * Add default spacings
+   */
+  > *:not(:first-child) {
+    @apply mt-4;
+  }
+
+  /**
+    * First element has no margin-top
+    */
+  > *:first-child {
+    @apply mt-0;
+  }
+
+  /**
+    * headings after a heading have a smaller margin-top
+    */
+  > :is(h1, h2, h3, h4, h5):not(#\9) + :is(h1, h2, h3, h4, h5) {
+    /* :not(#\9) is a hack to raise specifity, see https://stackoverflow.com/a/61781795 */
+    @apply mt-2;
+  }
+
+  /**
+    * Headlines after other non-headlines have a larger margin-top
+    */
+  > *:not(:is(h1, h2, h3, h4, h5)) + :is(h1, h2, h3, h4, h5):not(#\9) {
+    @apply mt-8;
+  }
+
+  /**
+    * Images and figures lead to a bigger margin-top for the next element
+    */
+  > figure + *:not(#\9),
+  > img + *:not(#\9) {
+    @apply mt-6;
+  }
+
+  /**
+   * Add styles for elements that are not based on existing CSS styles
+   */
+
+  hr {
+    @apply border-neutral-500 border-t h-0;
+  }
+
+  pre {
+    @apply overflow-auto;
+  }
+
+  blockquote {
+    &,
+    & > * {
+      @apply text-xl;
+    }
+    &:has(*) *:first-child,
+    &:not(:has(*)) {
+      &::before {
+        content: open-quote;
+        display: inline;
+      }
+      &::after {
+        content: close-quote;
+        display: inline;
+      }
+    }
+  }
+
+  /**
+    * Fixes for other elements
+    */
+  > :is(ul, ol):not(#\9) {
+    /* ul and ol have padding that has to be reset */
+    @apply py-0;
+  }
+
+  /**
+    * Inverted styles
+    */
+  &--inverted {
+    hr {
+      @apply border-white;
+    }
+
+    pre {
+      @apply text-white;
+    }
+  }
+
+  /**
+    * Full width styles
+    */
+  &--full-width {
+    max-width: unset;
+  }
+}

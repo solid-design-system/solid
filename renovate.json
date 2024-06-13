@@ -1,7 +1,13 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["schedule:daily", ":disableRateLimiting", "security:only-security-updates"],
-  "timezone": "Europe/Berlin",
+  "extends": ["config:recommended", ":dependencyDashboardApproval"],
+  "vulnerabilityAlerts": {
+    "autoApprove": true,
+    "automerge": true,
+    "automergeStrategy": "squash",
+    "automergeType": "pr"
+  },
+  "draftPR": true,
   "rebaseWhen": "never",
-  "commitMessagePrefix": "chore(security deps): "
+  "osvVulnerabilityAlerts": true
 }

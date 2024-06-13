@@ -5,5 +5,10 @@ export default {
   summary: 'Generates basic styles for media elements.',
   status: 'stable',
   since: '2.5.0',
-  attributes: []
+  attributes: [
+    {
+      name: 'sd-media--inverted',
+      description: 'Inverts the figcaption text.'
+    }
+  ]
 } satisfies Style;

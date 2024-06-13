@@ -135,7 +135,7 @@ export const LibraryDefault = {
     })
 }; /**
  * System icons are an integrated library of the Solid Components to ensure they're always available.
- * They are a subset of Union Investment's official icons. As these may change over time, we don't recommend using them directly.
+ * They are a subset of Union Investment's official icons. As these may change over time, system icons should NOT be used directly.
  *
  * The story below shows all available icons.
  */

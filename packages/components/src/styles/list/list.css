@@ -1,103 +1,114 @@
-.sd-list {
-  @apply text-left  py-4;
+.sd-list:not(.sd-list--icon),
+.sd-prose > :is(ol, ul) {
+  @apply text-left py-4;
 
-  &--inverted {
-    @apply text-white;
+  li:not(:first-child) {
+    @apply mt-3;
   }
 
-  &:is(ol) {
-    & ol {
-      counter-reset: item;
-    }
+  ol,
+  ul {
+    @apply pt-3;
+  }
 
-    & li:not(:first-child) {
-      @apply mt-3;
-    }
-
-    & li {
-      @apply table;
+  /* Counter handling for ordered lists. */
+  &:is(ol),
+  ol {
+    & > li {
       counter-increment: item;
-    }
-
-    & li:before {
-      @apply pr-2 table-cell;
-      content: counters(item, '.') '. ';
-    }
-
-    & li li {
-      @apply mt-3;
-    }
-
-    & li li:before {
-      content: counters(item, '.') '. ';
-    }
-  }
-
-  &:is(ul):not(.sd-list--icon) {
-    list-style-type: '\2022';
-    @apply ml-4;
-
-    li {
-      @apply pl-2 -ml-2;
-    }
-
-    & li:not(:first-child) {
-      @apply pt-3;
-    }
-
-    & li li {
-      @apply pt-3;
-    }
-
-    & ul {
-      @apply ms-4;
-      list-style-type: '\002B1D';
-    }
-
-    & ul ul {
-      @apply ms-4;
-      list-style-type: '\2010';
-    }
-  }
-
-  &--icon&--inverted {
-    li {
-      sd-icon:first-of-type,
-      .sd-list--icon__icon:first-of-type {
-        @apply text-white;
+      &:before {
+        content: counters(item, '.') '. ';
       }
     }
   }
 
-  &--icon {
-    /* Safari removes list semantics of lists that don’t look like lists (list-style: none). The only way to remove list
+  /* Add second level */
+  &:is(ol),
+  &:is(ol) > li > ol,
+  ol > li > ol {
+    counter-reset: item;
+  }
+
+  /* Ordered lists inside unordered lists. */
+  &:is(ul) > li > ol,
+  ul > li > ol {
+    counter-set: item 0;
+  }
+
+  /* Styling */
+  li {
+    @apply table;
+    &:before {
+      @apply pr-2 table-cell;
+    }
+  }
+
+  &:is(ul),
+  ul {
+    list-style-type: '';
+  }
+
+  &:is(ul):not(.sd-list--icon) > li,
+  ul > li {
+    &:before {
+      content: '\2022';
+    }
+    > ul > li {
+      &:before {
+        content: '\002B1D';
+      }
+      > ul > li {
+        &:before {
+          content: '\2010';
+        }
+      }
+    }
+  }
+}
+
+.sd-list--icon {
+  @apply text-left py-4;
+  li {
+    sd-icon:first-of-type,
+    .sd-list--icon__icon:first-of-type {
+      @apply text-white;
+    }
+  }
+  /* Safari removes list semantics of lists that don’t look like lists (list-style: none). The only way to remove list
     styles without affecting semantics is to set list-style-type to an empty string.
     https://www.matuzo.at/blog/2023/removing-list-styles-without-affecting-semantics */
-    list-style-type: '';
+  list-style-type: '';
 
-    > li:first-of-type {
-      @apply pt-0;
+  > li:first-of-type {
+    @apply pt-0;
+  }
+
+  li {
+    @apply relative leading-[32px] pt-3 pl-10;
+
+    > sd-icon:first-of-type,
+    > .sd-list--icon__icon:first-of-type {
+      @apply absolute left-0 text-3xl text-primary;
     }
+  }
 
-    li {
-      @apply relative leading-[32px] pt-3 pl-10;
-
-      sd-icon:first-of-type,
-      .sd-list--icon__icon:first-of-type {
-        @apply absolute left-0 text-3xl text-primary;
-      }
+  &.sd-list--horizontal {
+    @apply flex;
+    & li {
+      @apply flex pt-0;
     }
-
-    &.sd-list--horizontal {
-      @apply flex;
-
-      & li {
-        @apply flex pt-0;
-      }
-
-      & li:not(:last-child) {
-        @apply mr-8;
-      }
+    & li:not(:last-child) {
+      @apply mr-8;
     }
+  }
+}
+
+.sd-list--inverted,
+.sd-prose--inverted > :is(ol, ul) {
+  @apply text-white;
+
+  li > sd-icon:first-of-type,
+  li > .sd-list--icon__icon:first-of-type {
+    @apply text-white;
   }
 }
