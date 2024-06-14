@@ -1,46 +1,68 @@
+import type SdInput from '../components/input/input';
+import type SdPopup from '../components/popup/popup';
+
+import { getAndVerifySdElement, getAndVerifyShadowRoot } from './autocomplete-config.utils';
+
 /**
  * This function is a helper to quickly setup autocomplete.js for Solid components.
  * Besides some needed defaults it adds additional styles and event listeners.
- * @param selector - The selector to get the input element from the ShadowDOM.
+ * @param sdInputSelector - Reference to `sd-input` element or selector to the element, defaults to `#autoCompleteInput`.
+ * @param sdPopupSelector - Reference to `sd-popup` element or selector to the element, defaults to `#autoCompletePopup`.
+ * @param setValueOnSelection - If `true` the value of `sd-input` will be updated to reflect the current selection. Default: `true`.
+ * @param scrollSelectionIntoView - If `true` the selected element will be scrolled into view. Default: `true`.
  * @returns The configuration object for autocomplete.js.
  */
 export function setupAutocomplete(
-  selector: HTMLUnknownElement | string,
+  sdInputSelector: HTMLUnknownElement | string = '#autoCompleteInput',
+  sdPopupSelector: HTMLUnknownElement | string = '#autoCompletePopup',
   { setValueOnSelection, scrollSelectionIntoView } = {
+    /** Bind the value to `sd-input` */
     setValueOnSelection: true,
+    /** Selected elements should also be in view */
     scrollSelectionIntoView: true
   }
 ) {
-  // @ts-expect-error - We expect the input to be found
-  const sdInput: HTMLInputElement = !selector
-    ? document.querySelector('#autoComplete')
-    : typeof selector === 'string'
-      ? document.querySelector(selector)
-      : selector;
+  const sdInput: SdInput = getAndVerifySdElement<SdInput>('input', sdInputSelector);
+  const sdPopup: SdPopup = getAndVerifySdElement<SdPopup>('popup', sdPopupSelector);
 
-  const input = sdInput.shadowRoot!.querySelector('input')!;
+  const sdInputShadowRoot: ShadowRoot = getAndVerifyShadowRoot(sdInput);
+
+  const input = sdInputShadowRoot.querySelector('input')!;
 
   /* Helper to use PostCSS and Syntax highlighting */
   const css = (string: TemplateStringsArray) => string[0];
 
-  /** Setup elements and styles for autocomplete.js */
-  input.addEventListener('init', () => {
-    const ul = sdInput.shadowRoot?.querySelector('ul');
-    ul?.setAttribute('part', 'listbox');
-    const popup = document.createElement('sd-popup');
-    popup.appendChild(ul!);
-    sdInput.shadowRoot?.appendChild(popup);
-    popup?.setAttribute('exportparts', 'popup__content');
-    if (popup) {
-      popup.active = false;
-      popup.autoSize = 'vertical';
-      popup.autoSizePadding = 16;
-      popup.placement = 'bottom-start';
-      popup.anchor = sdInput!;
-      popup.sync = 'width';
+  const setupElementsAndStyles = () => {
+    sdInputShadowRoot.appendChild(sdPopup);
+
+    sdInput.classList.add('sd-autocomplete__input');
+
+    sdPopup.classList.add('sd-autocomplete__popup');
+    sdPopup.setAttribute('exportparts', 'popup__content');
+    sdPopup.active = false;
+    sdPopup.autoSize = 'vertical';
+    sdPopup.autoSizePadding = 16;
+    sdPopup.placement = 'bottom-start';
+    sdPopup.anchor = sdInput;
+    sdPopup.sync = 'width';
+
+    // `ul` is created by autocomplete.js, see `resultsList`
+    const ul = sdInputShadowRoot.querySelector('ul');
+    if (ul) {
+      ul.setAttribute('part', 'listbox');
+      sdPopup.appendChild(ul);
     }
+
     const styles = css`
-      sd-popup {
+      .sd-autocomplete__input[active] {
+        &::part(border) {
+          @apply rounded-b-none;
+        }
+        &::part(form-control) {
+          @apply z-50;
+        }
+      }
+      .sd-autocomplete__popup {
         &::part(popup) {
           @apply overflow-y-scroll z-dropdown border-2 border-t-0 border-primary bg-white rounded-b-default shadow px-2 py-3;
         }
@@ -67,44 +89,40 @@ export function setupAutocomplete(
     `;
     const styleSheet = new CSSStyleSheet();
     styleSheet.replaceSync(styles);
-    sdInput.shadowRoot!.adoptedStyleSheets = [...sdInput.shadowRoot!.adoptedStyleSheets, styleSheet];
+    sdInputShadowRoot.adoptedStyleSheets = [...sdInputShadowRoot.adoptedStyleSheets, styleSheet];
+  };
+
+  input.addEventListener('init', () => {
+    setupElementsAndStyles();
   });
 
-  if (setValueOnSelection) {
-    /** Bind the value to `sd-input` */
-    input.addEventListener('selection', (event: CustomEvent) => {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-      sdInput.value = event?.detail?.selection.value as string;
-    });
-  }
-
-  /** Open and close events to add styles to the input */
   input.addEventListener('open', () => {
-    sdInput.shadowRoot?.querySelector('sd-popup')?.setAttribute('active', 'true');
-    sdInput.shadowRoot?.querySelector('[part="border"]')?.classList.add('rounded-b-none');
-    sdInput.shadowRoot?.querySelector('[part="form-control"]')?.classList.add('z-50');
+    sdInput.setAttribute('active', 'true');
+    sdPopup.setAttribute('active', 'true');
   });
 
   input.addEventListener('close', () => {
-    sdInput.shadowRoot?.querySelector('sd-popup')?.removeAttribute('active');
-    sdInput.shadowRoot?.querySelector('[part="border"]')?.classList.remove('rounded-b-none');
-    sdInput.shadowRoot?.querySelector('[part="form-control"]')?.classList.remove('z-50');
+    sdInput.removeAttribute('active');
+    sdPopup.removeAttribute('active');
   });
 
-  /** Selected elements should also be in view */
-  if (scrollSelectionIntoView) {
-    input.addEventListener('navigate', () => {
-      // get element which has currently aria-selected
-      const selected = sdInput.shadowRoot!.querySelector('[aria-selected="true"]');
-      selected?.scrollIntoView({ block: 'nearest' });
-    });
-  }
+  input.addEventListener('selection', (event: CustomEvent) => {
+    if (!setValueOnSelection) return;
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    sdInput.value = event?.detail?.selection.value as string;
+  });
+
+  input.addEventListener('navigate', () => {
+    if (!scrollSelectionIntoView) return;
+    const selected = sdInputShadowRoot.querySelector('[aria-selected="true"]');
+    selected?.scrollIntoView({ block: 'nearest' });
+  });
 
   return {
     config: {
       selector: () => {
-        // For correct handling we need the input element inside the ShadowDOM
-        // Because of A11y this leads to the fact, that we need to push the popup into the ShadowDOM as well
+        // For correct handling we need the input element inside the ShadowDOM.
+        // A11y requires to then also push the popup into the ShadowDOM as well.
         // Unfortunately this hinders people to style things just from outside with their own stylesheets
         // Experiments using resultsList.destination as destination and the whole sd-input as selector failed
         // Maybe there could be a fix in the future for that
