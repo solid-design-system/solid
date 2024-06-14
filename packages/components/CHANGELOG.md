@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v3.7.0](https://github.com/solid-design-system/solid/compare/components/3.6.0...components/3.7.0) (2024-06-14)
+
+
+### Features
+
+* ✨ add custom localization (closes [#852](https://github.com/solid-design-system/solid/issues/852)) ([#997](https://github.com/solid-design-system/solid/issues/997)) ([e4e881f](https://github.com/solid-design-system/solid/commit/e4e881f7447cadfd648f69f5f469464f09573e18))
+
+### 📈 Stats
+* Bundle size (uncompressed): 314 KB (unchanged)
+* Bundle size (gzipped): 75 KB (unchanged)
+
 # [@solid-design-system/components-v3.6.0](https://github.com/solid-design-system/solid/compare/components/3.5.0...components/3.6.0) (2024-05-29)
 
 
