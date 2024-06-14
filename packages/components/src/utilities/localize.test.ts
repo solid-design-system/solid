@@ -71,13 +71,6 @@ describe('<sd-carousel>', () => {
     expect(select.shadowRoot!.querySelector('input')!.value).to.equal('Options Selected (2)');
   });
 
-  /*
-    numOptionsSelected: num => {
-    if (num === 0) return '';
-    return `Optionen ausgewählt (${num})`;
-  },
-  */
-
   it('should apply custom localization with a function', async () => {
     const select = await fixture<SdSelect>(html`
       <sd-select name="a" value="option-2 option-3" multiple>
