@@ -26,10 +26,10 @@ export default class SdQuickfact extends SolidElement {
   render() {
     return html`
       <details class="flex items-center">
-        <summary class="flex flex-col items-center text-center">
+        <summary class="flex flex-col gap-4 items-center text-center">
           <sd-icon class="h-24 w-24" name="content/image" color="primary"></sd-icon>
           <p class="sd-display sd-display--size-4xl">Lorem Ipsum</p>
-          <div class="sd-leadtext sd-leadtext--size-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+          <div class="sd-leadtext">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
         </summary>
         <slot></slot>
       </details>

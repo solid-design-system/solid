@@ -3,6 +3,7 @@ import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../..
 const { argTypes, parameters } = storybookDefaults('sd-quickfact');
 const { overrideArgs } = storybookHelpers('sd-quickfact');
 const { generateTemplate } = storybookTemplate('sd-quickfact');
+import { html } from 'lit';
 import { withActions } from '@storybook/addon-actions/decorator';
 
 export default {
@@ -23,6 +24,6 @@ export default {
 
 export const Default = {
   render: (args: any) => {
-    return generateTemplate({ args });
+    return html`<div class="w-[500px]">${generateTemplate({ args })}</div>`;
   }
 };
