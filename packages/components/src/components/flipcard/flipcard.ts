@@ -264,6 +264,7 @@ export default class SdFlipcard extends SolidElement {
       .flip-card {
         perspective: 100rem;
       }
+
       .flip-card__side {
         backface-visibility: hidden;
       }
@@ -300,6 +301,7 @@ export default class SdFlipcard extends SolidElement {
         .flip-card:hover .flip-card__side--front.hover {
           transform: rotateY(-180deg);
         }
+
         .flip-card:hover .flip-card__side--back.hover {
           transform: rotateY(0);
         }
@@ -307,6 +309,7 @@ export default class SdFlipcard extends SolidElement {
         .flip-card:hover .flip-card__side--front.hover.vertical {
           transform: rotateX(-180deg);
         }
+
         .flip-card:hover .flip-card__side--back.hover.vertical {
           transform: rotateX(0);
         }
