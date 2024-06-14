@@ -57,7 +57,7 @@ export default class SdTreeItem extends SolidElement {
     return node instanceof Element && node.getAttribute('role') === 'treeitem';
   }
 
-  private readonly localize = new LocalizeController(this);
+  public localize = new LocalizeController(this);
 
   @state() indeterminate = false;
   @state() isLeaf = false;

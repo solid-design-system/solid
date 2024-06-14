@@ -96,7 +96,7 @@ export default class SdCarousel extends SolidElement {
   private intersectionObserver: IntersectionObserver; // determines which slide is displayed
   // A map containing the state of all the slides
   private readonly intersectionObserverEntries = new Map<Element, IntersectionObserverEntry>();
-  private readonly localize = new LocalizeController(this);
+  public localize = new LocalizeController(this);
   private mutationObserver: MutationObserver;
 
   connectedCallback(): void {

@@ -63,7 +63,7 @@ import SolidElement from '../../internal/solid-element';
 @customElement('sd-drawer')
 export default class SdDrawer extends SolidElement {
   private readonly hasSlotController = new HasSlotController(this, 'footer');
-  private readonly localize = new LocalizeController(this);
+  public localize = new LocalizeController(this);
   private modal = new Modal(this);
   private originalTrigger: HTMLElement | null;
 

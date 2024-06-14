@@ -43,7 +43,7 @@ import SolidElement from '../../internal/solid-element';
 export default class SdAccordion extends SolidElement {
   // static styles: CSSResultGroup = styles;
 
-  private readonly localize = new LocalizeController(this);
+  public localize = new LocalizeController(this);
 
   @query('[part="base"]') accordion: HTMLElement;
   @query('[part="header"]') header: HTMLElement;
