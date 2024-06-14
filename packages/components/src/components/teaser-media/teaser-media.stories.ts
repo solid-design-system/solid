@@ -63,7 +63,7 @@ export const Variant = {
           type: 'slot',
           name: 'media',
           value:
-            '<img slot="media" class="aspect-video object-cover" src="./placeholders/generic.jpg" alt="A skyline of a city by night"/>'
+            '<img slot="media" class="aspect-video object-cover" src="./placeholders/images/generic.jpg" alt="A skyline of a city by night"/>'
         }
       ]
     });
@@ -109,7 +109,7 @@ export const Slots = {
             {
               type: 'slot',
               name: 'media',
-              value: `<img slot='media' src='./placeholders/collaboration.jpg' alt='Test'/>`
+              value: `<img slot='media' src='./placeholders/images/collaboration.jpg' alt='Test'/>`
             },
             {
               type: 'slot',
@@ -203,7 +203,11 @@ export const Samples = {
       <div class="flex flex-wrap gap-8">
         <sd-teaser-media variant="gradient-dark" class="min-w-[435px] max-w-4xl">
           <div slot="media" class="relative">
-            <img class="aspect-video object-cover" src="./placeholders/architecture.jpg" alt="A skyline of a city" />
+            <img
+              class="aspect-video object-cover"
+              src="./placeholders/images/architecture.jpg"
+              alt="A skyline of a city"
+            />
           </div>
           <div slot="meta" class="meta-info">
             <span class="meta-info-item">01.12.2013</span>
@@ -219,7 +223,11 @@ export const Samples = {
         </sd-teaser-media>
         <sd-teaser-media variant="gradient-white" class="min-w-[435px] max-w-4xl">
           <div slot="media" class="relative">
-            <img class="aspect-video object-cover" src="./placeholders/architecture.jpg" alt="A skyline of a city" />
+            <img
+              class="aspect-video object-cover"
+              src="./placeholders/images/architecture.jpg"
+              alt="A skyline of a city"
+            />
           </div>
           <div slot="meta" class="meta-info">
             <span class="meta-info-item">01.12.2013</span>

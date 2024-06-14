@@ -13,17 +13,18 @@ const videoConstant: ConstantDefinition = {
   type: 'slot',
   name: 'default',
   value:
-    '<video controls id="video-example" class="w-[854px] aspect-video"><source src="http://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4" />Your browser does not support the video tag.</video>'
+    '<video controls id="video-example" class="w-[854px] aspect-video"><source src="./placeholders/videos/ui-placeholder-video.mp4" type="video/mp4" />Your browser does not support the video tag.</video>'
 };
 const imageConstant: ConstantDefinition = {
   type: 'slot',
   name: 'default',
-  value: '<img class="w-[400px] aspect-video object-cover" src="./placeholders/generic.jpg" />'
+  value: '<img class="w-[400px] aspect-video object-cover" src="./placeholders/images/generic.jpg" />'
 };
 const posterConstant: ConstantDefinition = {
   type: 'slot',
   name: 'poster',
-  value: '<img slot="poster" alt="poster" class="w-[854px] aspect-video cover" src="./placeholders/architecture.jpg" />'
+  value:
+    '<img slot="poster" alt="poster" class="w-[854px] aspect-video cover" src="./placeholders/images/architecture.jpg" />'
 };
 const iconConstant: ConstantDefinition = {
   type: 'slot',

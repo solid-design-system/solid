@@ -1,3 +1,17 @@
+# [@solid-design-system/placeholders-v1.6.0](https://github.com/solid-design-system/solid/compare/placeholders/1.5.0...placeholders/1.6.0) (2024-05-24)
+
+
+### Features
+
+* ✨ add sd-step & sd-step-group  ([#1007](https://github.com/solid-design-system/solid/issues/1007)) ([d42c66f](https://github.com/solid-design-system/solid/commit/d42c66fec184306c1f7cc9c127f54b20fe17d5bf))
+
+# [@solid-design-system/placeholders-v1.5.0](https://github.com/solid-design-system/solid/compare/placeholders/1.4.0...placeholders/1.5.0) (2024-05-06)
+
+
+### Features
+
+* ✨add placeholder video ([#1032](https://github.com/solid-design-system/solid/issues/1032)) ([0bf4597](https://github.com/solid-design-system/solid/commit/0bf459788f02bc27b7a3f3515d47b20da3f51f67))
+
 # [@solid-design-system/placeholders-v1.4.0](https://github.com/solid-design-system/solid/compare/placeholders/1.3.0...placeholders/1.4.0) (2024-02-27)
 
 

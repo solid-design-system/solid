@@ -1,6 +1,10 @@
+.sd-prose td,
+.sd-prose th,
 .sd-table-cell {
   @apply bg-transparent border-solid border-neutral-400 border-y-[1px] border-x-0 text-black text-sm text-left p-4;
+}
 
+.sd-table-cell {
   &--divider {
     @apply border-r-[1px];
   }
