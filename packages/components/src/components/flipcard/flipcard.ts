@@ -88,6 +88,7 @@ export default class SdFlipcard extends SolidElement {
   private handleFrontKeydown(event: KeyboardEvent) {
     if (event.code === 'Enter' || event.code === 'Space') {
       event.preventDefault();
+      console.log('front keydown', event.code);
 
       this.flipFront();
     }
@@ -96,6 +97,7 @@ export default class SdFlipcard extends SolidElement {
   private handleBackKeydown(event: KeyboardEvent) {
     if (event.code === 'Enter' || event.code === 'Space') {
       event.preventDefault();
+      console.log('back keydown', event.code);
 
       this.flipBack();
     }
@@ -160,7 +162,7 @@ export default class SdFlipcard extends SolidElement {
           <div
             part="frontSecondaryGradient"
             class=${cx(
-              'h-1/2',
+              'flip-card__gradient',
               {
                 primary: 'mb-auto',
                 'primary-100': 'mb-auto',
@@ -229,7 +231,7 @@ export default class SdFlipcard extends SolidElement {
           <div
             part="backSecondaryGradient"
             class=${cx(
-              'h-1/2',
+              'flip-card__gradient',
               {
                 primary: 'mb-auto',
                 'primary-100': 'mb-auto',
@@ -288,6 +290,10 @@ export default class SdFlipcard extends SolidElement {
 
       .clicked--back.vertical {
         transform: rotateX(0);
+      }
+
+      .flip-card__gradient {
+        flex: 0.4 1 0;
       }
 
       @media (hover: hover) and (pointer: fine) {

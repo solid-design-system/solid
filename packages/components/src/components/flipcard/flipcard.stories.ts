@@ -265,7 +265,7 @@ export const Sample = {
     return html`
       <sd-flipcard activation="click-only">
         <div class="py-4 px-6" slot="front">
-          <h4 class="sd-headline sd-headline--inline sd-headline--size-lg sd-headline--inverted">
+          <h4 class="sd-headline sd-headline--inline sd-headline--size-lg sd-headline--inverted mb-2">
             <sd-icon name="content/picture" library="global-resources"></sd-icon>
             Nisi eu excepteur anim esse
           </h4>
@@ -273,17 +273,15 @@ export const Sample = {
           <p class="sd-paragraph text-left sd-paragraph--inverted">
             Lorem ipsum dolor sit amet per niente da faremmasds nonnummy dolore lorem ipsum dolor sit amet consectuer
           </p>
-
-          <sd-link size="inherit" href="#" inverted>Link</sd-link>
         </div>
 
         <div class="py-4 px-6" slot="back">
-          <h4 class="sd-headline sd-headline--inline sd-headline--size-lg">
+          <h4 class="sd-headline sd-headline--inline sd-headline--size-lg mb-2">
             <sd-icon name="content/picture" library="global-resources"></sd-icon>
             Nisi eu excepteur anim esse
           </h4>
 
-          <p class="sd-paragraph text-left">
+          <p class="sd-paragraph text-left mb-4">
             Lorem ipsum dolor sit amet per niente da faremmasds nonnummy dolore lorem ipsum dolor sit amet consectuer
           </p>
 
@@ -304,7 +302,7 @@ export const AspectRatio = {
     return html`
       <sd-flipcard style="aspect-ratio:16/9;">
         <div class="py-4 px-6" slot="front">
-          <h4 class="sd-headline sd-headline--inline sd-headline--size-lg sd-headline--inverted">
+          <h4 class="sd-headline sd-headline--inline sd-headline--size-lg sd-headline--inverted mb-2">
             <sd-icon name="content/picture" library="global-resources"></sd-icon>
             Nisi eu excepteur anim esse
           </h4>
@@ -315,16 +313,16 @@ export const AspectRatio = {
         </div>
 
         <div class="py-4 px-6" slot="back">
-          <h4 class="sd-headline sd-headline--inline sd-headline--size-lg">
+          <h4 class="sd-headline sd-headline--inline sd-headline--size-lg mb-2">
             <sd-icon name="content/picture" library="global-resources"></sd-icon>
             Nisi eu excepteur anim esse
           </h4>
 
-          <p class="sd-paragraph text-left">
+          <p class="sd-paragraph text-left mb-4">
             Lorem ipsum dolor sit amet per niente da faremmasds nonnummy dolore lorem ipsum dolor sit amet consectuer
           </p>
 
-          <sd-link size="inherit" href="#">Link</sd-link>
+          <sd-link size="inherit" href="#" tabindex="0">Link</sd-link>
         </div>
       </sd-flipcard>
     `;
