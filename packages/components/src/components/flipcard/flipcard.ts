@@ -86,18 +86,20 @@ export default class SdFlipcard extends SolidElement {
   }
 
   private handleFrontKeydown(event: KeyboardEvent) {
-    if (event.code === 'Enter' || event.code === 'Space') {
+    console.log(event.target, this.front, this.front === event.target);
+    console.log('handleFrontKeydown');
+    console.log(this.back === event.target, event.type, event.view, event.ctrlKey);
+
+    if (event.code === 'Enter' && this.front === event.target) {
       event.preventDefault();
-      console.log('front keydown', event.code);
 
       this.flipFront();
     }
   }
 
   private handleBackKeydown(event: KeyboardEvent) {
-    if (event.code === 'Enter' || event.code === 'Space') {
+    if (event.code === 'Enter' && this.back === event.target) {
       event.preventDefault();
-      console.log('back keydown', event.code);
 
       this.flipBack();
     }

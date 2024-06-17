@@ -285,7 +285,7 @@ export const Sample = {
             Lorem ipsum dolor sit amet per niente da faremmasds nonnummy dolore lorem ipsum dolor sit amet consectuer
           </p>
 
-          <sd-link size="inherit" href="#">Link</sd-link>
+          <sd-link size="inherit" href="#" target="_blank">Link</sd-link>
         </div>
       </sd-flipcard>
     `;
@@ -322,7 +322,7 @@ export const AspectRatio = {
             Lorem ipsum dolor sit amet per niente da faremmasds nonnummy dolore lorem ipsum dolor sit amet consectuer
           </p>
 
-          <sd-link size="inherit" href="#" tabindex="0">Link</sd-link>
+          <sd-link size="inherit" href="#" target="_blank">Link</sd-link>
         </div>
       </sd-flipcard>
     `;
