@@ -19,12 +19,20 @@
       "import": "./dist/package/components/*",
       "types": "./dist/package/solid-components.d.ts"
     },
+    "./unversioned-utilities/*": {
+      "import": "./dist/package/utilities/*",
+      "types": "./dist/package/solid-components.d.ts"
+    },
     "./versioned": {
       "types": "./dist/versioned-package/solid-components.d.ts",
       "import": "./dist/versioned-package/solid-components.js"
     },
     "./versioned/*": {
       "import": "./dist/versioned-package/components/*",
+      "types": "./dist/versioned-package/solid-components.d.ts"
+    },
+    "./versioned-utilities/*": {
+      "import": "./dist/versioned-package/utilities/*",
       "types": "./dist/versioned-package/solid-components.d.ts"
     },
     "./unversioned-styles": {

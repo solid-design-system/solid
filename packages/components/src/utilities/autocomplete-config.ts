@@ -1,3 +1,5 @@
+import '../components/popup/popup';
+
 /**
  * This function is a helper to quickly setup autocomplete.js for Solid components.
  * Besides some needed defaults it adds additional styles and event listeners.
