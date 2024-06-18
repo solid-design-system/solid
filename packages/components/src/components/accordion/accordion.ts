@@ -151,7 +151,7 @@ export default class SdAccordion extends SolidElement {
 
   render() {
     return html`
-      <div part="base" class="border-y-[1px] border-neutral-400">
+      <div part="base" class="border-spacing-y-0.25 border-neutral-400">
         <header
           part="header"
           id="header"
