@@ -85,18 +85,32 @@ export default class SdFlipcard extends SolidElement {
     this.front.focus();
   }
 
+  private handleFrontClick(event: PointerEvent) {
+    const eventNode = event.target as HTMLElement;
+
+    // Prevent flipping when clicking on interactive elements
+    if (eventNode.getAttribute('onclick') === null && eventNode.getAttribute('href') === null) {
+      this.flipFront();
+    }
+  }
+
+  private handleBackClick(event: PointerEvent) {
+    const eventNode = event.target as HTMLElement;
+
+    // Prevent flipping when clicking on interactive elements
+    if (eventNode.getAttribute('onclick') === null && eventNode.getAttribute('href') === null) {
+      this.flipBack();
+    }
+  }
+
   private handleFrontKeydown(event: KeyboardEvent) {
     if (event.code === 'Enter' && this.front === event.target) {
-      event.preventDefault();
-
       this.flipFront();
     }
   }
 
   private handleBackKeydown(event: KeyboardEvent) {
     if (event.code === 'Enter' && this.back === event.target) {
-      event.preventDefault();
-
       this.flipBack();
     }
   }
@@ -119,7 +133,7 @@ export default class SdFlipcard extends SolidElement {
               : 'flex-col',
             this.flipDirection === 'vertical' && 'vertical'
           )}
-          @click=${this.flipFront}
+          @click=${this.handleFrontClick}
           @keydown=${this.handleFrontKeydown}
         >
           <div
@@ -188,7 +202,7 @@ export default class SdFlipcard extends SolidElement {
               : 'flex-col',
             this.flipDirection === 'vertical' && 'vertical'
           )}
-          @click=${this.flipBack}
+          @click=${this.handleBackClick}
           @keydown=${this.handleBackKeydown}
         >
           <div
