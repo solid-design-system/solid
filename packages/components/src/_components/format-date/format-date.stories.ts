@@ -10,10 +10,9 @@ export default {
   component: 'sd-format-date',
   args,
   argTypes,
-  parameters: {...parameters},
+  parameters: { ...parameters },
   decorators: [withActions] as any
 };
-
 
 /**
  * Default: This shows sd-format-date in its default state.

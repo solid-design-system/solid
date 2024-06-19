@@ -10,10 +10,9 @@ export default {
   component: 'sd-tree',
   args,
   argTypes,
-  parameters: {...parameters},
+  parameters: { ...parameters },
   decorators: [withActions] as any
 };
-
 
 /**
  * Default: This shows sd-tree in its default state.

@@ -10,10 +10,9 @@ export default {
   component: 'sd-animation',
   args,
   argTypes,
-  parameters: {...parameters},
+  parameters: { ...parameters },
   decorators: [withActions] as any
 };
-
 
 /**
  * Default: This shows sd-animation in its default state.

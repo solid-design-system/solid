@@ -10,10 +10,9 @@ export default {
   component: 'sd-progress-bar',
   args,
   argTypes,
-  parameters: {...parameters},
+  parameters: { ...parameters },
   decorators: [withActions] as any
 };
-
 
 /**
  * Default: This shows sd-progress-bar in its default state.

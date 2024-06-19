@@ -10,10 +10,9 @@ export default {
   component: 'sd-mutation-observer',
   args,
   argTypes,
-  parameters: {...parameters},
+  parameters: { ...parameters },
   decorators: [withActions] as any
 };
-
 
 /**
  * Default: This shows sd-mutation-observer in its default state.

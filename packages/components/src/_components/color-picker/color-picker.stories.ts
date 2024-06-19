@@ -10,10 +10,9 @@ export default {
   component: 'sd-color-picker',
   args,
   argTypes,
-  parameters: {...parameters},
+  parameters: { ...parameters },
   decorators: [withActions] as any
 };
-
 
 /**
  * Default: This shows sd-color-picker in its default state.

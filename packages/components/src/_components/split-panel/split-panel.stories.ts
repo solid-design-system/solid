@@ -10,10 +10,9 @@ export default {
   component: 'sd-split-panel',
   args,
   argTypes,
-  parameters: {...parameters},
+  parameters: { ...parameters },
   decorators: [withActions] as any
 };
-
 
 /**
  * Default: This shows sd-split-panel in its default state.
