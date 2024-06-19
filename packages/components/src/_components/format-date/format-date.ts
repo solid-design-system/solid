@@ -12,7 +12,7 @@ import SolidElement from '../../internal/solid-element';
  */
 @customElement('sd-format-date')
 export default class SdFormatDate extends SolidElement {
-  private readonly localize = new LocalizeController(this);
+  public localize = new LocalizeController(this);
 
   /**
    * The date/time to format. If not set, the current date and time will be used. When passing a string, it's strongly

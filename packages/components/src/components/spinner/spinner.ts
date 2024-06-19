@@ -17,7 +17,7 @@ export default class SdSpinner extends SolidElement {
    */
   @property({ reflect: true }) color: 'primary' | 'white' | 'currentColor' = 'currentColor';
 
-  private readonly localize = new LocalizeController(this);
+  public localize = new LocalizeController(this);
 
   render() {
     return html`

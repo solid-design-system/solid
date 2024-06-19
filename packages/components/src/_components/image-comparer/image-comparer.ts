@@ -39,7 +39,7 @@ import type { CSSResultGroup } from 'lit';
 export default class SdImageComparer extends SolidElement {
   static styles: CSSResultGroup = styles;
 
-  private readonly localize = new LocalizeController(this);
+  public localize = new LocalizeController(this);
 
   @query('.image-comparer') base: HTMLElement;
   @query('.image-comparer__handle') handle: HTMLElement;

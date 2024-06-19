@@ -36,7 +36,7 @@ import type { CSSResultGroup } from 'lit';
 export default class SdRating extends SolidElement {
   static styles: CSSResultGroup = styles;
 
-  private readonly localize = new LocalizeController(this);
+  public localize = new LocalizeController(this);
 
   @query('.rating') rating: HTMLElement;
 
