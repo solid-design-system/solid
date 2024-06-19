@@ -30,21 +30,21 @@
     ]
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^7.0.0",
-    "@typescript-eslint/parser": "^7.0.0",
-    "eslint": "^8.53.0",
-    "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-chai-expect": "^3.0.0",
-    "eslint-plugin-chai-friendly": "^0.7.2",
-    "eslint-plugin-import": "^2.29.0",
-    "eslint-plugin-lit": "^1.10.1",
-    "eslint-plugin-lit-a11y": "^4.1.1",
+    "@typescript-eslint/eslint-plugin": "^7.13.1",
+    "@typescript-eslint/parser": "^7.13.1",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-chai-expect": "^3.1.0",
+    "eslint-plugin-chai-friendly": "^1.0.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-lit": "^1.14.0",
+    "eslint-plugin-lit-a11y": "^4.1.2",
     "eslint-plugin-sort-imports-es6-autofix": "^0.6.0",
     "eslint-plugin-storybook": "^0.8.0",
-    "eslint-plugin-wc": "^2.0.4",
-    "husky": "^9.0.0",
-    "lint-staged": "^15.0.2",
-    "prettier": "^3.0.3"
+    "eslint-plugin-wc": "^2.1.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.7",
+    "prettier": "^3.3.2"
   },
   "pnpm": {
     "patchedDependencies": {

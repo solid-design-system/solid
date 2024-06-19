@@ -10,10 +10,9 @@ export default {
   component: 'sd-qr-code',
   args,
   argTypes,
-  parameters: {...parameters},
+  parameters: { ...parameters },
   decorators: [withActions] as any
 };
-
 
 /**
  * Default: This shows sd-qr-code in its default state.

@@ -10,10 +10,9 @@ export default {
   component: 'sd-icon-button',
   args,
   argTypes,
-  parameters: {...parameters},
+  parameters: { ...parameters },
   decorators: [withActions] as any
 };
-
 
 /**
  * Default: This shows sd-icon-button in its default state.

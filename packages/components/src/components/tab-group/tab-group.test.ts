@@ -199,7 +199,7 @@ describe('<sd-tab-group>', () => {
       const customHeader = queryByTestId<SdTab>(tabGroup, 'custom-header');
       expect(customHeader).not.to.have.attribute('active');
 
-      const showEventPromise = oneEvent(tabGroup, 'sd-tab-show', false);
+      const showEventPromise = oneEvent(tabGroup, 'sd-tab-show');
       await action();
 
       expect(customHeader).to.have.attribute('active');
@@ -216,8 +216,8 @@ describe('<sd-tab-group>', () => {
 
       let showEventFired = false;
       let hideEventFired = false;
-      oneEvent(tabGroup, 'sd-tab-show', false).then(() => (showEventFired = true));
-      oneEvent(tabGroup, 'sd-tab-hide', false).then(() => (hideEventFired = true));
+      oneEvent(tabGroup, 'sd-tab-show').then(() => (showEventFired = true));
+      oneEvent(tabGroup, 'sd-tab-hide').then(() => (hideEventFired = true));
       await action();
 
       expect(generalHeader).to.have.attribute('active');
@@ -298,7 +298,7 @@ describe('<sd-tab-group>', () => {
       const customHeader = queryByTestId<SdTab>(tabGroup, 'custom-header');
       expect(customHeader).not.to.have.attribute('active');
 
-      const showEventPromise = oneEvent(tabGroup, 'sd-tab-show', false);
+      const showEventPromise = oneEvent(tabGroup, 'sd-tab-show');
       await sendKeys({ press: 'ArrowRight' });
       await aTimeout(0);
       expect(generalHeader).to.have.attribute('active');

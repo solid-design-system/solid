@@ -49,7 +49,7 @@ export default class SdRange extends SolidElement implements SolidFormControl {
 
   private readonly formControlController = new FormControlController(this);
   private readonly hasSlotController = new HasSlotController(this, 'help-text', 'label');
-  private readonly localize = new LocalizeController(this);
+  public localize = new LocalizeController(this);
   private resizeObserver: ResizeObserver;
 
   @query('.range__control') input: HTMLInputElement;

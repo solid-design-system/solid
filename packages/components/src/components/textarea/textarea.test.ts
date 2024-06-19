@@ -289,7 +289,7 @@ describe('<sd-textarea>', () => {
       await textarea.updateComplete;
 
       setTimeout(() => button.click());
-      await oneEvent(form, 'reset', false);
+      await oneEvent(form, 'reset');
       await textarea.updateComplete;
 
       expect(textarea.value).to.equal('test');
@@ -297,7 +297,7 @@ describe('<sd-textarea>', () => {
       textarea.defaultValue = '';
 
       setTimeout(() => button.click());
-      await oneEvent(form, 'reset', false);
+      await oneEvent(form, 'reset');
       await textarea.updateComplete;
 
       expect(textarea.value).to.equal('');

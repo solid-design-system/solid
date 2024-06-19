@@ -10,10 +10,9 @@ export default {
   component: 'sd-button-group',
   args,
   argTypes,
-  parameters: {...parameters},
+  parameters: { ...parameters },
   decorators: [withActions] as any
 };
-
 
 /**
  * Default: This shows sd-button-group in its default state.

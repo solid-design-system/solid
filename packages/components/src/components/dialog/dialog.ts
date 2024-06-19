@@ -61,7 +61,7 @@ import SolidElement from '../../internal/solid-element';
 @customElement('sd-dialog')
 export default class SdDialog extends SolidElement {
   private readonly hasSlotController = new HasSlotController(this, 'footer');
-  private readonly localize = new LocalizeController(this);
+  public localize = new LocalizeController(this);
   private modal: Modal;
   private originalTrigger: HTMLElement | null;
 

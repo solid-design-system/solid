@@ -4,7 +4,7 @@ import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../..
 const { argTypes, parameters } = storybookDefaults('sd-tab-group');
 const { overrideArgs } = storybookHelpers('sd-tab-group');
 const { generateTemplate } = storybookTemplate('sd-tab-group');
-import { userEvent } from '@storybook/testing-library';
+import { userEvent } from '@storybook/test';
 import { waitUntil } from '@open-wc/testing-helpers';
 
 function generateTabsAndPanels(

@@ -10,10 +10,9 @@ export default {
   component: 'sd-menu',
   args,
   argTypes,
-  parameters: {...parameters},
+  parameters: { ...parameters },
   decorators: [withActions] as any
 };
-
 
 /**
  * Default: This shows sd-menu in its default state.

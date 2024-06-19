@@ -10,10 +10,9 @@ export default {
   component: 'sd-resize-observer',
   args,
   argTypes,
-  parameters: {...parameters},
+  parameters: { ...parameters },
   decorators: [withActions] as any
 };
-
 
 /**
  * Default: This shows sd-resize-observer in its default state.

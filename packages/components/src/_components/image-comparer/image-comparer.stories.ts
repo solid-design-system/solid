@@ -10,10 +10,9 @@ export default {
   component: 'sd-image-comparer',
   args,
   argTypes,
-  parameters: {...parameters},
+  parameters: { ...parameters },
   decorators: [withActions] as any
 };
-
 
 /**
  * Default: This shows sd-image-comparer in its default state.

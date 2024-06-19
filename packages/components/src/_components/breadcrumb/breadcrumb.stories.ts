@@ -10,10 +10,9 @@ export default {
   component: 'sd-breadcrumb',
   args,
   argTypes,
-  parameters: {...parameters},
+  parameters: { ...parameters },
   decorators: [withActions] as any
 };
-
 
 /**
  * Default: This shows sd-breadcrumb in its default state.

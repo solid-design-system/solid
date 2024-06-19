@@ -10,10 +10,9 @@ export default {
   component: 'sd-menu-label',
   args,
   argTypes,
-  parameters: {...parameters},
+  parameters: { ...parameters },
   decorators: [withActions] as any
 };
-
 
 /**
  * Default: This shows sd-menu-label in its default state.

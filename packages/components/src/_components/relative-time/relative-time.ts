@@ -27,7 +27,7 @@ const availableUnits: UnitConfig[] = [
  */
 @customElement('sd-relative-time')
 export default class SdRelativeTime extends SolidElement {
-  private readonly localize = new LocalizeController(this);
+  public localize = new LocalizeController(this);
   private updateTimeout: number;
 
   /** @internal */
