@@ -10,10 +10,9 @@ export default {
   component: 'sd-format-number',
   args,
   argTypes,
-  parameters: {...parameters},
+  parameters: { ...parameters },
   decorators: [withActions] as any
 };
-
 
 /**
  * Default: This shows sd-format-number in its default state.

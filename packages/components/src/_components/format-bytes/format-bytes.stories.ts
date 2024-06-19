@@ -10,10 +10,9 @@ export default {
   component: 'sd-format-bytes',
   args,
   argTypes,
-  parameters: {...parameters},
+  parameters: { ...parameters },
   decorators: [withActions] as any
 };
-
 
 /**
  * Default: This shows sd-format-bytes in its default state.
