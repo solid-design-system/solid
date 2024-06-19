@@ -34,10 +34,10 @@ const expectHideAndAfterHideToBeEmittedInCorrectOrder = async (
   notification: SdNotification,
   action: () => void | Promise<void>
 ) => {
-  const hidePromise = oneEvent(notification, 'sd-hide', false);
-  const afterHidePromise = oneEvent(notification, 'sd-after-hide', false);
+  const hidePromise = oneEvent(notification, 'sd-hide');
+  const afterHidePromise = oneEvent(notification, 'sd-after-hide');
   let afterHideHappened = false;
-  oneEvent(notification, 'sd-after-hide', false).then(() => (afterHideHappened = true));
+  oneEvent(notification, 'sd-after-hide').then(() => (afterHideHappened = true));
 
   action();
 
@@ -52,10 +52,10 @@ const expectShowAndAfterShowToBeEmittedInCorrectOrder = async (
   notification: SdNotification,
   action: () => void | Promise<void>
 ) => {
-  const showPromise = oneEvent(notification, 'sd-show', false);
-  const afterShowPromise = oneEvent(notification, 'sd-after-show', false);
+  const showPromise = oneEvent(notification, 'sd-show');
+  const afterShowPromise = oneEvent(notification, 'sd-after-show');
   let afterShowHappened = false;
-  oneEvent(notification, 'sd-after-show', false).then(() => (afterShowHappened = true));
+  oneEvent(notification, 'sd-after-show').then(() => (afterShowHappened = true));
 
   action();
 
@@ -194,13 +194,13 @@ describe('<sd-notification>', () => {
       const notification = await fixture<SdNotification>(
         html`<sd-notification closable>I am a notification</sd-notification>`
       );
-      const afterShowEvent = oneEvent(notification, 'sd-after-show', false);
+      const afterShowEvent = oneEvent(notification, 'sd-after-show');
       let toastPromiseResolved = false;
       notification.toast().then(() => (toastPromiseResolved = true));
       await afterShowEvent;
       expect(toastPromiseResolved).to.be.false;
 
-      const closePromise = oneEvent(notification, 'sd-after-hide', false);
+      const closePromise = oneEvent(notification, 'sd-after-hide');
       const closeButton = getCloseButton(notification);
 
       await clickOnElement(closeButton!);
@@ -222,13 +222,13 @@ describe('<sd-notification>', () => {
     };
 
     const openToast = async (notification: SdNotification): Promise<void> => {
-      const openPromise = oneEvent(notification, 'sd-after-show', false);
+      const openPromise = oneEvent(notification, 'sd-after-show');
       notification.toast();
       await openPromise;
     };
 
     const closeToast = async (notification: SdNotification): Promise<void> => {
-      const closePromise = oneEvent(notification, 'sd-after-hide', false);
+      const closePromise = oneEvent(notification, 'sd-after-hide');
       const closeButton = getCloseButton(notification);
       await clickOnElement(closeButton!);
       await closePromise;
@@ -312,7 +312,7 @@ describe('<sd-notification>', () => {
 
       clock.tick(1000);
 
-      const afterShowPromise = oneEvent(notification, 'sd-after-show', false);
+      const afterShowPromise = oneEvent(notification, 'sd-after-show');
       notification.show();
       await afterShowPromise;
 
