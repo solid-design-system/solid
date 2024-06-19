@@ -10,10 +10,9 @@ export default {
   component: 'sd-skeleton',
   args,
   argTypes,
-  parameters: {...parameters},
+  parameters: { ...parameters },
   decorators: [withActions] as any
 };
-
 
 /**
  * Default: This shows sd-skeleton in its default state.

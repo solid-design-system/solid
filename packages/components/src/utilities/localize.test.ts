@@ -1,5 +1,5 @@
 import { expect, fixture, html } from '@open-wc/testing';
-import { waitFor } from '@storybook/testing-library';
+import { waitFor } from '@storybook/test';
 import type SdSelect from 'src/components/select/select';
 
 describe('<sd-carousel>', () => {
