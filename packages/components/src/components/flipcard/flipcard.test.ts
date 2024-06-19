@@ -1,5 +1,5 @@
 import { expect, fixture, html, waitUntil } from '@open-wc/testing';
-import { userEvent } from '@storybook/testing-library';
+import { userEvent } from '@storybook/test';
 import sinon from 'sinon';
 import type SdFlipcard from './flipcard';
 
