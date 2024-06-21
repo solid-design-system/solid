@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v3.7.1](https://github.com/solid-design-system/solid/compare/components/3.7.0...components/3.7.1) (2024-06-21)
+
+
+### Bug Fixes
+
+* add utilities to exports ([#1156](https://github.com/solid-design-system/solid/issues/1156)) ([137da8c](https://github.com/solid-design-system/solid/commit/137da8c164bff15db18d293f1af3356a891ff9e3))
+
+### 📈 Stats
+* Bundle size (uncompressed): 314 KB (unchanged)
+* Bundle size (gzipped): 75 KB (unchanged)
+
 # [@solid-design-system/components-v3.7.0](https://github.com/solid-design-system/solid/compare/components/3.6.0...components/3.7.0) (2024-06-14)
 
 
