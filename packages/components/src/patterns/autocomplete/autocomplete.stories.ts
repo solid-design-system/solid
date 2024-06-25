@@ -29,7 +29,7 @@ import { setupAutocomplete as solidAutocomplete } from '../../solid-components';
  * <script type="module">
  *   import '@tarekraafat/autocomplete.js';
  *
- *   import { setupAutocomplete } from '@solid-design-system/unversioned';
+ *   import { setupAutocomplete } from '@solid-design-system/unversioned-utilities/autocomplete-config';
  *
  *   Promise.all([customElements.whenDefined('sd-input'), customElements.whenDefined('sd-popup')]).then(() => {
  *     const { config: simpleConfig } = setupAutocomplete('#simple-example');
