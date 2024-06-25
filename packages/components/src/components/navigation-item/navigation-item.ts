@@ -143,7 +143,7 @@ export default class SdNavigationItem extends SolidElement {
           { base: 'text-base', lg: 'text-lg', sm: 'text-[14px]' }[this.size],
           this.disabled ? 'text-neutral-500 pointer-events-none' : 'text-primary',
           isAccordion ? 'flex flex-col' : 'inline-block w-full',
-          this.divider && this.vertical && 'mt-[1px]'
+          this.divider && this.vertical && 'mt-0.25'
         )}
         aria-controls=${ifDefined(isAccordion ? 'navigation-item-details' : undefined)}
         aria-current=${ifDefined(this.current ? 'page' : undefined)}
@@ -177,7 +177,7 @@ export default class SdNavigationItem extends SolidElement {
             this.divider && this.vertical
               ? html`<sd-divider
                   part="divider"
-                  class=${cx('w-full transition-all absolute -top-[1px] left-0', this.calculatePaddingX())}
+                  class=${cx('w-full transition-all absolute -top-0.25 left-0', this.calculatePaddingX())}
                 ></sd-divider>`
               : ''
           }
