@@ -201,9 +201,7 @@ export default class SdBrandshape extends SolidElement {
           'container--stylized'
         )}"
       >
-        ${this.shapes.includes('top') ? this.renderTopBrandshape() : ''}
-        ${this.shapes.includes('middle') ? this.renderMiddleBrandshape() : ''}
-        ${this.shapes.includes('bottom') ? this.renderBottomBrandshape() : ''}
+        ${this.renderTopBrandshape()} ${this.renderMiddleBrandshape()} ${this.renderBottomBrandshape()}
       </div>
     `;
   }
@@ -214,9 +212,7 @@ export default class SdBrandshape extends SolidElement {
         <div class="image-wrapper">
           <slot name="image"><img src="./placeholders/images/generic.jpg" alt="Generic" /></slot>
         </div>
-        ${this.shapes.includes('top') ? this.renderTopBrandshape() : ''}
-        ${this.shapes.includes('middle') ? this.renderMiddleBrandshape() : ''}
-        ${this.shapes.includes('bottom') ? this.renderBottomBrandshape() : ''}
+        ${this.renderTopBrandshape()} ${this.renderMiddleBrandshape()} ${this.renderBottomBrandshape()}
       </div>
     `;
   }
@@ -294,7 +290,7 @@ export default class SdBrandshape extends SolidElement {
 
       .container--outline-primary::before {
         --internal-color-background: none;
-        --internal-border-color: var(--sd-color-primary, blue);
+        --internal-border-color: rgb(var(--sd-color-primary, 0 53 142));
         --internal-border-width: 2px;
       }
 
@@ -309,7 +305,7 @@ export default class SdBrandshape extends SolidElement {
         top: 0;
         left: 0;
         width: 100%;
-        height: 100%;
+        height: calc(100% - 42.512%);
         margin-bottom: calc(21.256% / 2);
         margin-top: calc(21.256% / 2);
         z-index: 2;
