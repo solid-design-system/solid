@@ -14,6 +14,7 @@ export default {
     name: 'default',
     value: `<div class="slot slot--border slot--text h-12">Default slot</div>`
   }),
+
   argTypes,
   parameters: { ...parameters },
   decorators: [withActions] as any
