@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v3.7.2](https://github.com/solid-design-system/solid/compare/components/3.7.1...components/3.7.2) (2024-06-27)
+
+
+### Bug Fixes
+
+* fix accent color in icons ([#1182](https://github.com/solid-design-system/solid/issues/1182)) ([c4b74da](https://github.com/solid-design-system/solid/commit/c4b74da7edfd198d2bb8ebc7d7afeda98d5daf1d))
+
+### 📈 Stats
+* Bundle size (uncompressed): 314 KB (unchanged)
+* Bundle size (gzipped): 75 KB (unchanged)
+
 # [@solid-design-system/components-v3.7.1](https://github.com/solid-design-system/solid/compare/components/3.7.0...components/3.7.1) (2024-06-21)
 
 
