@@ -24,12 +24,12 @@ export default {
     },
     {
       type: 'slot',
-      name: 'front-media',
+      name: 'media-front',
       value: `<img slot='media-front' class="object-cover h-full w-full" src='./placeholders/images/generic.jpg' alt='Generic'/>`
     },
     {
       type: 'slot',
-      name: 'back-media',
+      name: 'media-back',
       value: `<img slot='media-back' class="object-cover h-full w-full" src='./placeholders/images/generic.jpg' alt='Generic'/>`
     }
   ]),
