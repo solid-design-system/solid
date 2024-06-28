@@ -65,26 +65,47 @@ export default class SdQuickfact extends SolidElement {
           this.open = e.newState === 'open' ? true : false;
         }}
       >
-        <summary class="flex flex-row sm:flex-col gap-4 items-center text-center">
+        <summary class="flex flex-row sm:flex-col gap-4 mb-3 sm:mb-8 items-center text-center">
           <slot name="icon"
             ><sd-icon class="h-12 w-12 sm:h-24 sm:w-24" name="content/image" color="primary"></sd-icon
           ></slot>
-
-          <div class="flex flex-col sm:gap-4 text-left sm:text-center">
-            <p class="text-base font-normal leading-normal text-black sm:text-3xl sm:leading-tight">Lorem Ipsum</p>
-            <div class="text-base font-normal leading-normal text-black sm:text-xl">Con sectetur adipiscing elit</div>
+          <div
+            class=${cx(
+              'flex flex-col sm:gap-4 text-left sm:text-center',
+              this.defaultSlotIsFilled ? 'text-primary' : 'text-black'
+            )}
+          >
+            <p class="text-base font-normal leading-normal  sm:text-3xl sm:leading-tight">Lorem Ipsum</p>
+            <div class="text-base font-normal leading-normal sm:text-xl">Con sectetur adipiscing elit</div>
           </div>
 
           <button
             part="icon-button"
-            class=${(cx('h-6 w-6 grid place-items-center'), !this.defaultSlotIsFilled && 'hidden')}
+            class=${cx(
+              'ml-auto self-start sm:mx-auto text-primary transition-transform duration-300 ease-in-out',
+              !this.defaultSlotIsFilled && 'hidden',
+              this.open && 'rotate-180'
+            )}
             @click=${() => {
               this.open = !this.open;
             }}
           >
-            <slot name="next-icon">
+            <slot name="expand-icon">
               <sd-icon
-                class=${cx('h-6 w-6 grid place-items-center transition-transform', this.open && 'rotate-180')}
+                class=${cx(
+                  'h-6 w-6 sm:h-12 sm:w-12 grid place-items-center transition-transform',
+                  this.open && 'hidden'
+                )}
+                library="system"
+                name="chevron-down"
+              ></sd-icon>
+            </slot>
+            <slot name="collapse-icon">
+              <sd-icon
+                class=${cx(
+                  'h-6 w-6 sm:h-12 sm:w-12 grid place-items-center transition-transform',
+                  !this.open && 'hidden'
+                )}
                 library="system"
                 name="chevron-down"
               ></sd-icon>
