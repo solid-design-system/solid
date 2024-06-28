@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v3.7.3](https://github.com/solid-design-system/solid/compare/components/3.7.2...components/3.7.3) (2024-06-28)
+
+
+### Bug Fixes
+
+* add missing Tailwind classes for autcomplete config ([fa984da](https://github.com/solid-design-system/solid/commit/fa984daf650fc655d1c4a1ade4e924440fdfc3a3))
+
+### 📈 Stats
+* Bundle size (uncompressed): 315 KB (+1 KB / +0%)
+* Bundle size (gzipped): 75 KB (unchanged)
+
 # [@solid-design-system/components-v3.7.2](https://github.com/solid-design-system/solid/compare/components/3.7.1...components/3.7.2) (2024-06-27)
 
 
