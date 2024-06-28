@@ -25,12 +25,12 @@ export default {
     {
       type: 'slot',
       name: 'front-media',
-      value: `<img slot='front-media' class="object-cover h-full w-full" src='./placeholders/images/generic.jpg' alt='Generic'/>`
+      value: `<img slot='media-front' class="object-cover h-full w-full" src='./placeholders/images/generic.jpg' alt='Generic'/>`
     },
     {
       type: 'slot',
       name: 'back-media',
-      value: `<img slot='back-media' class="object-cover h-full w-full" src='./placeholders/images/generic.jpg' alt='Generic'/>`
+      value: `<img slot='media-back' class="object-cover h-full w-full" src='./placeholders/images/generic.jpg' alt='Generic'/>`
     }
   ]),
 
