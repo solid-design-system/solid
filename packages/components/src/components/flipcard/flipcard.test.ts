@@ -12,15 +12,15 @@ describe('<sd-flipcard>', () => {
   it('should generate proper defaults', async () => {
     const el = await fixture<SdFlipcard>(html`<sd-flipcard></sd-flipcard>`);
 
-    expect(el.activation).to.equal('click-and-hover');
-    expect(el.frontVariant).to.equal('primary');
-    expect(el.backVariant).to.equal('primary-100');
+    expect(el.activation).to.equal('click hover');
+    expect(el.frontVariant).to.equal('empty');
+    expect(el.backVariant).to.equal('empty');
   });
 
   it('should allow custom activation', async () => {
-    const el = await fixture<SdFlipcard>(html`<sd-flipcard activation="click-only"></sd-flipcard>`);
+    const el = await fixture<SdFlipcard>(html`<sd-flipcard activation="click"></sd-flipcard>`);
 
-    expect(el.activation).to.equal('click-only');
+    expect(el.activation).to.equal('click');
   });
 
   describe('when a flip is triggered', () => {

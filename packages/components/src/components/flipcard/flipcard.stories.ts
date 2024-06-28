@@ -50,17 +50,17 @@ export const Default = {
 };
 
 /**
- * The sd-flipcard can be displayed in several ways using the `frontVariant` and `backVariant` attributes. This example shows the usage `frontVariant` attribute.
+ * The sd-flipcard can be displayed in several ways using the `front-variant` and `back-variant` attributes. This example shows the usage `front-variant` attribute.
  */
 
 export const Variants = {
-  parameters: { controls: { exclude: ['frontVariant'] } },
+  parameters: { controls: { exclude: ['front-variant'] } },
   render: (args: any) =>
     generateTemplate({
       axis: {
         y: {
           type: 'attribute',
-          name: 'frontVariant'
+          name: 'front-variant'
         }
       },
       args,
@@ -157,12 +157,12 @@ export const Slots = {
             },
             {
               type: 'attribute',
-              name: 'frontVariant',
+              name: 'front-variant',
               value: 'gradient-dark-top'
             },
             {
               type: 'attribute',
-              name: 'backVariant',
+              name: 'back-variant',
               value: 'gradient-dark-bottom'
             }
           ]
@@ -224,12 +224,12 @@ export const Parts = {
         },
         {
           type: 'attribute',
-          name: 'frontVariant',
+          name: 'front-variant',
           value: 'gradient-dark-top'
         },
         {
           type: 'attribute',
-          name: 'backVariant',
+          name: 'back-variant',
           value: 'gradient-dark-bottom'
         }
       ]
@@ -263,7 +263,7 @@ export const Sample = {
   name: 'Sample: Custom Content',
   render: () => {
     return html`
-      <sd-flipcard activation="click-only" frontVariant="primary" backVariant="primary-100">
+      <sd-flipcard activation="click" front-variant="primary" back-variant="primary-100">
         <div class="py-4 px-6" slot="front">
           <h4 class="sd-headline sd-headline--inline sd-headline--size-lg sd-headline--inverted mb-2">
             <sd-icon name="content/picture" library="global-resources"></sd-icon>
@@ -300,7 +300,7 @@ export const AspectRatio = {
   name: 'Sample: Aspect Ratio',
   render: () => {
     return html`
-      <sd-flipcard style="aspect-ratio:16/9;" frontVariant="primary" backVariant="primary-100">
+      <sd-flipcard style="aspect-ratio:16/9;" front-variant="primary" back-variant="primary-100">
         <div class="py-4 px-6" slot="front">
           <h4 class="sd-headline sd-headline--inline sd-headline--size-lg sd-headline--inverted mb-2">
             <sd-icon name="content/picture" library="global-resources"></sd-icon>

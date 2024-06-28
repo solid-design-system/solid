@@ -41,7 +41,7 @@ export default class SdFlipcard extends SolidElement {
   /**
    * Determines the activation type of the flipcard.
    */
-  @property({ reflect: true }) activation: 'click-only' | 'click-and-hover' = 'click-and-hover';
+  @property({ reflect: true }) activation: 'click' | 'click hover' = 'click hover';
 
   /**
    * Allows the flipcard to flip vertically or horizontally.
@@ -49,7 +49,7 @@ export default class SdFlipcard extends SolidElement {
   @property({ reflect: true, attribute: 'flip-direction' }) flipDirection: 'horizontal' | 'vertical' = 'horizontal';
 
   /** Determines the variant of the front face of the flipcard. */
-  @property({ type: String, reflect: true })
+  @property({ type: String, reflect: true, attribute: 'front-variant' })
   frontVariant:
     | 'empty'
     | 'primary'
@@ -60,7 +60,7 @@ export default class SdFlipcard extends SolidElement {
     | 'gradient-dark-bottom' = 'empty';
 
   /** Determines the variant of the back face of the flipcard. */
-  @property({ type: String, reflect: true }) backVariant:
+  @property({ type: String, reflect: true, attribute: 'back-variant' }) backVariant:
     | 'empty'
     | 'primary'
     | 'primary-100'
@@ -127,7 +127,7 @@ export default class SdFlipcard extends SolidElement {
             'flip-card__side flip-card__side--front overflow-hidden transition-transform duration-1000 ease-in-out',
             'flex focus-visible:focus-outline',
             'absolute top-0 left-0 w-full h-full justify-end text-left',
-            this.activation === 'click-and-hover' && 'hover',
+            this.activation === 'click hover' && 'hover',
             this.frontVariant === 'primary' && 'bg-primary',
             this.frontVariant === 'primary-100' && 'bg-primary-100',
             this.frontVariant === 'gradient-dark-bottom' || this.frontVariant === 'gradient-light-bottom'
@@ -199,7 +199,7 @@ export default class SdFlipcard extends SolidElement {
             'flip-card__side flip-card__side--back overflow-hidden transition-transform duration-1000 ease-in-out',
             'flex focus-visible:focus-outline',
             'absolute top-0 left-0 w-full h-full justify-end text-left',
-            this.activation === 'click-and-hover' && 'hover',
+            this.activation === 'click hover' && 'hover',
             this.backVariant === 'primary' && 'bg-primary',
             this.backVariant === 'primary-100' && 'bg-primary-100',
             this.backVariant === 'gradient-dark-bottom' || this.backVariant === 'gradient-light-bottom'
