@@ -24,13 +24,13 @@ export default {
     },
     {
       type: 'slot',
-      name: 'mediaFront',
-      value: `<img slot='mediaFront' class="object-cover h-full w-full" src='./placeholders/images/generic.jpg' alt='Generic'/>`
+      name: 'front-media',
+      value: `<img slot='front-media' class="object-cover h-full w-full" src='./placeholders/images/generic.jpg' alt='Generic'/>`
     },
     {
       type: 'slot',
-      name: 'mediaBack',
-      value: `<img slot='mediaBack' class="object-cover h-full w-full" src='./placeholders/images/generic.jpg' alt='Generic'/>`
+      name: 'back-media',
+      value: `<img slot='back-media' class="object-cover h-full w-full" src='./placeholders/images/generic.jpg' alt='Generic'/>`
     }
   ]),
 
@@ -125,15 +125,15 @@ export const flipDirection = {
 };
 
 /**
- * Use the `front`, `back`, `mediaFront` and `mediaBack` slots to add content to the flipcard.
+ * Use the `front`, `back`, `front-media` and `back-media` slots to add content to the flipcard.
  */
 export const Slots = {
   parameters: {
-    controls: { exclude: ['front', 'back', 'mediaFront', 'mediaBack'] }
+    controls: { exclude: ['front', 'back', 'front-media', 'back-media'] }
   },
   render: (args: any) => {
     return html`
-      ${['front', 'back', 'mediaFront', 'mediaBack'].map(slot => {
+      ${['front', 'back', 'front-media', 'back-media'].map(slot => {
         return generateTemplate({
           axis: {
             x: {
@@ -173,7 +173,7 @@ export const Slots = {
 };
 
 /**
- * Use the `base`, `front`, `back`, `frontSlotContainer`, `backSlotContainer`, `mediaFront`, `mediaBack`, `frontSecondaryGradient` and `backSecondaryGradient` parts to style the flipcard.
+ * Use the `base`, `front`, `back`, `front-slot-container`, `back-slot-container`, `front-media`, `back-media`, `front-secondary-gradient` and `back-secondary-gradient` parts to style the flipcard.
  */
 export const Parts = {
   parameters: {
@@ -182,12 +182,12 @@ export const Parts = {
         'base',
         'front',
         'back',
-        'frontSlotContainer',
-        'backSlotContainer',
-        'mediaFront',
-        'mediaBack',
-        'frontSecondaryGradient',
-        'backSecondaryGradient'
+        'front-slot-container',
+        'back-slot-container',
+        'front-media',
+        'back-media',
+        'front-secondary-gradient',
+        'back-secondary-gradient'
       ]
     }
   },
@@ -201,12 +201,12 @@ export const Parts = {
             'base',
             'front',
             'back',
-            'frontSlotContainer',
-            'backSlotContainer',
-            'mediaFront',
-            'mediaBack',
-            'frontSecondaryGradient',
-            'backSecondaryGradient'
+            'front-slot-container',
+            'back-slot-container',
+            'front-media',
+            'back-media',
+            'front-secondary-gradient',
+            'back-secondary-gradient'
           ].map(part => {
             return {
               title: part,

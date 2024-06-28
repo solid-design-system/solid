@@ -16,18 +16,18 @@ import SolidElement from '../../internal/solid-element';
  *
  * @slot front - The front face of the flipcard.
  * @slot back - The back face of the flipcard.
- * @slot mediaFront - An optional media slot which can be as a background. Dependent from gradient variant.
- * @slot mediaBack - An optional media slot which can be as a background. Dependent from gradient variant.
+ * @slot media-front - An optional media slot which can be as a background. Dependent from gradient variant.
+ * @slot media-back - An optional media slot which can be as a background. Dependent from gradient variant.
  *
- * @cssparts base - The component's base wrapper.
- * @cssparts front - The container that wraps the front-side of the flipcard.
- * @cssparts back - The container that wraps the back-side of the flipcard.
- * @cssparts frontSlotContainer - The container that wraps the front slot.
- * @cssparts backSlotContainer - The container that wraps the back slot.
- * @cssparts mediaFront - The container that wraps the mediaFront slot.
- * @cssparts mediaBack - The container that wraps the mediaBack slot.
- * @cssparts frontSecondaryGradient - The container that wraps the secondary gradient of the front side.
- * @cssparts backSecondaryGradient - The container that wraps the secondary gradient of the back side.
+ * @csspart base - The component's base wrapper.
+ * @csspart front - The container that wraps the front-side of the flipcard.
+ * @csspart back - The container that wraps the back-side of the flipcard.
+ * @csspart front-slot-container - The container that wraps the front slot.
+ * @csspart back-slot-container - The container that wraps the back slot.
+ * @csspart media-front - The container that wraps the media-front slot.
+ * @csspart media-back - The container that wraps the media-back slot.
+ * @csspart front-secondary-gradient - The container that wraps the secondary gradient of the front side.
+ * @csspart back-secondary-gradient - The container that wraps the secondary gradient of the back side.
  *
  * @cssproperty --name - Description of the flipcard.
  * @cssproperty --height - Use this property to set the height of the flipcard.
@@ -35,8 +35,8 @@ import SolidElement from '../../internal/solid-element';
 
 @customElement('sd-flipcard')
 export default class SdFlipcard extends SolidElement {
-  @query('[part="back"]') back: HTMLElement;
   @query('[part="front"]') front: HTMLElement;
+  @query('[part="back"]') back: HTMLElement;
 
   /**
    * Determines the activation type of the flipcard.
@@ -139,17 +139,17 @@ export default class SdFlipcard extends SolidElement {
           @keydown=${this.handleFrontKeydown}
         >
           <div
-            part="mediaFront"
+            part="media-front"
             class=${cx(
               'absolute h-full w-full -z-20',
               (this.frontVariant === 'primary' || this.frontVariant === 'primary-100') && 'hidden'
             )}
           >
-            <slot name="mediaFront"></slot>
+            <slot name="media-front"></slot>
           </div>
 
           <div
-            part="frontSlotContainer"
+            part="front-slot-container"
             class=${cx(
               'flex',
               {
@@ -176,7 +176,7 @@ export default class SdFlipcard extends SolidElement {
           </div>
 
           <div
-            part="frontSecondaryGradient"
+            part="front-secondary-gradient"
             class=${cx(
               'flip-card__gradient',
               {
@@ -211,17 +211,17 @@ export default class SdFlipcard extends SolidElement {
           @keydown=${this.handleBackKeydown}
         >
           <div
-            part="mediaBack"
+            part="media-back"
             class=${cx(
               'absolute h-full w-full -z-20',
               (this.backVariant === 'primary' || this.backVariant === 'primary-100') && 'hidden'
             )}
           >
-            <slot name="mediaBack"></slot>
+            <slot name="media-back"></slot>
           </div>
 
           <div
-            part="backSlotContainer"
+            part="back-slot-container"
             class=${cx(
               'flex',
               {
@@ -248,7 +248,7 @@ export default class SdFlipcard extends SolidElement {
           </div>
 
           <div
-            part="backSecondaryGradient"
+            part="back-secondary-gradient"
             class=${cx(
               'flip-card__gradient',
               {
