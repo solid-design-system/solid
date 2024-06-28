@@ -263,7 +263,7 @@ export const Sample = {
   name: 'Sample: Custom Content',
   render: () => {
     return html`
-      <sd-flipcard activation="click-only">
+      <sd-flipcard activation="click-only" frontVariant="primary" backVariant="primary-100">
         <div class="py-4 px-6" slot="front">
           <h4 class="sd-headline sd-headline--inline sd-headline--size-lg sd-headline--inverted mb-2">
             <sd-icon name="content/picture" library="global-resources"></sd-icon>
@@ -300,7 +300,7 @@ export const AspectRatio = {
   name: 'Sample: Aspect Ratio',
   render: () => {
     return html`
-      <sd-flipcard style="aspect-ratio:16/9;">
+      <sd-flipcard style="aspect-ratio:16/9;" frontVariant="primary" backVariant="primary-100">
         <div class="py-4 px-6" slot="front">
           <h4 class="sd-headline sd-headline--inline sd-headline--size-lg sd-headline--inverted mb-2">
             <sd-icon name="content/picture" library="global-resources"></sd-icon>
