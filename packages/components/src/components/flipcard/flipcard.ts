@@ -51,21 +51,23 @@ export default class SdFlipcard extends SolidElement {
   /** Determines the variant of the front face of the flipcard. */
   @property({ type: String, reflect: true })
   frontVariant:
+    | 'empty'
     | 'primary'
     | 'primary-100'
     | 'gradient-light-top'
     | 'gradient-light-bottom'
     | 'gradient-dark-top'
-    | 'gradient-dark-bottom' = 'primary';
+    | 'gradient-dark-bottom' = 'empty';
 
   /** Determines the variant of the back face of the flipcard. */
   @property({ type: String, reflect: true }) backVariant:
+    | 'empty'
     | 'primary'
     | 'primary-100'
     | 'gradient-light-top'
     | 'gradient-light-bottom'
     | 'gradient-dark-top'
-    | 'gradient-dark-bottom' = 'primary-100';
+    | 'gradient-dark-bottom' = 'empty';
 
   connectedCallback() {
     super.connectedCallback();
@@ -151,6 +153,7 @@ export default class SdFlipcard extends SolidElement {
             class=${cx(
               'flex',
               {
+                empty: 'text-black',
                 primary: 'text-white',
                 'primary-100': 'text-black',
                 'gradient-light-top': 'text-black',
@@ -159,6 +162,7 @@ export default class SdFlipcard extends SolidElement {
                 'gradient-dark-bottom': 'text-white'
               }[this.frontVariant],
               {
+                empty: '',
                 primary: '',
                 'primary-100': '',
                 'gradient-light-top': 'bg-gradient-to-b from-white/75 to-white/60',
@@ -176,6 +180,7 @@ export default class SdFlipcard extends SolidElement {
             class=${cx(
               'flip-card__gradient',
               {
+                empty: 'mb-auto',
                 primary: 'mb-auto',
                 'primary-100': 'mb-auto',
                 'gradient-light-top': 'bg-gradient-to-b from-white/60 to-40% mb-auto',
@@ -220,6 +225,7 @@ export default class SdFlipcard extends SolidElement {
             class=${cx(
               'flex',
               {
+                empty: 'text-black',
                 primary: 'text-white',
                 'primary-100': 'text-black',
                 'gradient-light-top': 'text-black',
@@ -228,6 +234,7 @@ export default class SdFlipcard extends SolidElement {
                 'gradient-dark-bottom': 'text-white'
               }[this.backVariant],
               {
+                empty: '',
                 primary: '',
                 'primary-100': '',
                 'gradient-light-top': 'bg-gradient-to-b from-white/75 to-white/60',
@@ -245,6 +252,7 @@ export default class SdFlipcard extends SolidElement {
             class=${cx(
               'flip-card__gradient',
               {
+                empty: 'mb-auto',
                 primary: 'mb-auto',
                 'primary-100': 'mb-auto',
                 'gradient-light-top': 'bg-gradient-to-b from-white/60 to-40% mb-auto',
