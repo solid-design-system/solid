@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v3.8.0](https://github.com/solid-design-system/solid/compare/components/3.7.3...components/3.8.0) (2024-07-01)
+
+
+### Features
+
+* ✨ add sd-flipcard ([#1121](https://github.com/solid-design-system/solid/issues/1121)) ([ffd126f](https://github.com/solid-design-system/solid/commit/ffd126ff24307a79719d569d0d9fa3a2c9b54c07))
+
+### 📈 Stats
+* Bundle size (uncompressed): 322 KB (+7 KB / +2%)
+* Bundle size (gzipped): 76 KB (+1 KB / +1%)
+
 # [@solid-design-system/components-v3.7.3](https://github.com/solid-design-system/solid/compare/components/3.7.2...components/3.7.3) (2024-06-28)
 
 
