@@ -198,7 +198,7 @@ export default class SdBrandshape extends SolidElement {
         class="${cx(
           this.variant === 'border-primary' ? 'container--outline-primary' : '',
           this.variant === 'border-white' ? 'container--outline-white' : '',
-          'container--stylized'
+          'container--stylized bg-transparent py-10 relative z-10 border-0;'
         )}"
       >
         ${this.renderTopBrandshape()} ${this.renderMiddleBrandshape()} ${this.renderBottomBrandshape()}
@@ -208,7 +208,7 @@ export default class SdBrandshape extends SolidElement {
 
   private renderSkewedImage(): TemplateResult {
     return html`
-      <div class="container--stylized">
+      <div class="container--stylized bg-transparent py-10 relative z-10 border-0;">
         <div class="image-wrapper">
           <slot name="image"><img src="./placeholders/images/generic.jpg" alt="Generic" /></slot>
         </div>
@@ -261,31 +261,17 @@ export default class SdBrandshape extends SolidElement {
         @apply block;
       }
 
-      .container--stylized {
-        background-color: transparent;
-        padding: 40px 0;
-        position: relative;
-        z-index: 1;
-        border-width: 0;
-      }
-
       .container--stylized::before {
+        @apply absolute top-0 bottom-0 right-0 left-0 border-solid inset-0 z-[-1];
+        content: '';
         background-color: var(--internal-color-background, white);
         color: var(--internal-color, black);
         border-color: var(--internal-border-color, black);
         border-width: var(--internal-border-width, 0);
-        border-style: solid;
         border-radius: 0 60px;
-        bottom: 0;
-        content: '';
-        left: 0;
         margin-bottom: calc(21.256% / 2);
         margin-top: calc(21.256% / 2);
-        position: absolute;
-        right: 0;
-        top: 0;
         transform: skewY(-11deg);
-        z-index: -1;
       }
 
       .container--outline-primary::before {
@@ -301,25 +287,17 @@ export default class SdBrandshape extends SolidElement {
       }
 
       .image-wrapper {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: calc(100% - 42.512%);
+        @apply absolute top-0 left-0 w-full z-10 overflow-hidden;
+        height: -webkit-fill-available;
         margin-bottom: calc(21.256% / 2);
         margin-top: calc(21.256% / 2);
-        z-index: 2;
-        overflow: hidden;
         border-radius: 0 60px;
         transform: skewY(-11deg);
       }
 
       slot[name='image']::slotted(img) {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+        @apply w-full h-full object-cover origin-top-left;
         transform: skewY(11deg);
-        transform-origin: top left;
       }
 
       /* Responsive border-radius */
