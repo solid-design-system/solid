@@ -23,6 +23,18 @@ describe('<sd-flipcard>', () => {
     expect(el.activation).to.equal('click');
   });
 
+  it('should flip on hover', async () => {
+    const el = await fixture<SdFlipcard>(html`<sd-flipcard></sd-flipcard>`);
+
+    expect(el.shadowRoot!.querySelector('.flip-card__side--front')).to.have.class('hover');
+  });
+
+  it('should not flip on hover', async () => {
+    const el = await fixture<SdFlipcard>(html`<sd-flipcard activation="click"></sd-flipcard>`);
+
+    expect(el.shadowRoot!.querySelector('.flip-card__side--front')).to.not.have.class('hover');
+  });
+
   describe('when a flip is triggered', () => {
     it('should emit sd-flip-front and sd-flip-back', async () => {
       const el = await fixture<SdFlipcard>(html`<sd-flipcard></sd-flipcard>`);
