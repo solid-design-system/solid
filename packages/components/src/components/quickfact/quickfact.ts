@@ -1,12 +1,11 @@
 import '../icon/icon';
-import { css, html, unsafeCSS } from 'lit';
+import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { property, query, state } from 'lit/decorators.js';
+import { waitForEvent } from 'src/internal/event';
+import { watch } from 'src/internal/watch';
 import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
-import DisplayStyles from '../../styles/display/display.css?inline';
-import LeadtextStyles from '../../styles/leadtext/leadtext.css?inline';
-import ParagraphStyles from '../../styles/paragraph/paragraph.css?inline';
 import SolidElement from '../../internal/solid-element';
 
 /**
@@ -19,9 +18,26 @@ import SolidElement from '../../internal/solid-element';
  *
  * @slot - This element has a slot for additional content.
  * @slot icon - The quickfact's icon. Only content-icons should be used here.
+ * @slot summary - The quickfact's summary.
+ * @slot expand-icon - The icon that indicates the quickfact is closed.
+ * @slot collapse-icon - The icon that indicates the quickfact is open.
  *
- * @cssparts base - The component's base wrapper.
- * @cssparts icon-button - The button that toggles the quickfact.
+ * @event sd-show - Emitted when the quickfact opens.
+ * @event sd-after-show - Emitted after the quickfact opens and all animations are complete.
+ * @event sd-hide - Emitted when the quickfact closes.
+ * @event sd-after-hide - Emitted after the quickfact closes and all animations are complete.
+ *
+ * @csspart base - The base container of the quickfact.
+ * @csspart summary-container - The container of the quickfact's summary.
+ * @csspart button - The button that toggles the quickfact's open state.
+ * @csspart icon - The quickfact's icon.
+ * @csspart summary - The quickfact's summary.
+ * @csspart expand-icon - The icon that indicates the quickfact is closed.
+ * @csspart collapse-icon - The icon that indicates the quickfact is open.
+ * @csspart content - The quickfact's content.
+ *
+ * @cssproperty --name - The description of the quickfact.
+ *
  */
 @customElement('sd-quickfact')
 export default class SdQuickfact extends SolidElement {
@@ -39,19 +55,34 @@ export default class SdQuickfact extends SolidElement {
   }
 
   /**
-   * Boolean keeping track of the autoplay pause/play button
+   * Boolean keeping track of whether the default slot is filled or not.
    * @internal
    */
   @state() defaultSlotIsFilled = false;
 
-  public show() {
+  async show() {
     this.open = true;
     this.base.setAttribute('open', '');
+    return waitForEvent(this, 'sd-after-show');
   }
 
-  public hide() {
+  async hide() {
     this.open = false;
     this.base.removeAttribute('open');
+    return waitForEvent(this, 'sd-after-hide');
+  }
+
+  @watch('open', { waitUntilFirstUpdate: true })
+  handleOpenChange() {
+    if (this.open) {
+      this.emit('sd-show');
+      this.show();
+      this.emit('sd-after-show');
+    } else {
+      this.emit('sd-hide');
+      this.hide();
+      this.emit('sd-after-hide');
+    }
   }
 
   render() {
@@ -65,22 +96,22 @@ export default class SdQuickfact extends SolidElement {
           this.open = e.newState === 'open' ? true : false;
         }}
       >
-        <summary class="flex flex-row sm:flex-col gap-4 mb-3 sm:mb-8 items-center text-center">
+        <summary part="summary-container" class="flex flex-row sm:flex-col gap-4 mb-3 sm:mb-8 items-center text-center">
           <slot name="icon"
             ><sd-icon class="h-12 w-12 sm:h-24 sm:w-24" name="content/image" color="primary"></sd-icon
           ></slot>
-          <div
+
+          <slot
             class=${cx(
               'flex flex-col sm:gap-4 text-left sm:text-center',
               this.defaultSlotIsFilled ? 'text-primary' : 'text-black'
             )}
+            name="summary"
           >
-            <p class="text-base font-normal leading-normal  sm:text-3xl sm:leading-tight">Lorem Ipsum</p>
-            <div class="text-base font-normal leading-normal sm:text-xl">Con sectetur adipiscing elit</div>
-          </div>
+          </slot>
 
           <button
-            part="icon-button"
+            part="button"
             class=${cx(
               'ml-auto self-start sm:mx-auto text-primary transition-transform duration-300 ease-in-out',
               !this.defaultSlotIsFilled && 'hidden',
@@ -113,6 +144,7 @@ export default class SdQuickfact extends SolidElement {
           </button>
         </summary>
         <slot
+          part="content"
           @slotchange=${() => {
             this.defaultSlotIsFilled = this.defaultSlot.assignedElements().length > 0;
           }}
@@ -127,9 +159,6 @@ export default class SdQuickfact extends SolidElement {
   static styles = [
     componentStyles,
     SolidElement.styles,
-    unsafeCSS(LeadtextStyles),
-    unsafeCSS(DisplayStyles),
-    unsafeCSS(ParagraphStyles),
     css`
       :host {
         --name: '';
