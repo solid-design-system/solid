@@ -11,7 +11,7 @@ import SolidElement from '../../internal/solid-element';
  * @status stable
  * @since 1.0
  *
- * @cssparts base - The component's base wrapper.
+ * @csspart base - The component's base wrapper.
  */
 @customElement('sd-divider')
 export default class SdDivider extends SolidElement {
