@@ -30,10 +30,6 @@ import SolidElement from '../../internal/solid-element';
  * @csspart base - The base container of the quickfact.
  * @csspart summary-container - The container of the quickfact's summary.
  * @csspart button - The button that toggles the quickfact's open state.
- * @csspart icon - The quickfact's icon.
- * @csspart summary - The quickfact's summary.
- * @csspart expand-icon - The icon that indicates the quickfact is closed.
- * @csspart collapse-icon - The icon that indicates the quickfact is open.
  * @csspart content - The quickfact's content.
  *
  * @cssproperty --name - The description of the quickfact.
@@ -42,7 +38,6 @@ import SolidElement from '../../internal/solid-element';
 @customElement('sd-quickfact')
 export default class SdQuickfact extends SolidElement {
   @query('[part~="base"]') base: HTMLBodyElement;
-
   @query('slot:not([name])') defaultSlot: HTMLSlotElement;
 
   /**
@@ -89,7 +84,7 @@ export default class SdQuickfact extends SolidElement {
     return html`
       <details
         part="base"
-        class="flex items-center"
+        class="flex items-center focus-visible:focus-outline"
         ?open=${this.open}
         @toggle=${(e: ToggleEvent) => {
           // Update the 'open' property based on the 'open' attribute of the <details> element
@@ -113,7 +108,7 @@ export default class SdQuickfact extends SolidElement {
           <button
             part="button"
             class=${cx(
-              'ml-auto self-start sm:mx-auto text-primary transition-transform duration-300 ease-in-out',
+              'ml-auto self-start sm:mx-auto text-primary transition-transform duration-300 ease-in-out focus-visible:focus-outline',
               !this.defaultSlotIsFilled && 'hidden',
               this.open && 'rotate-180'
             )}
@@ -143,12 +138,13 @@ export default class SdQuickfact extends SolidElement {
             </slot>
           </button>
         </summary>
-        <slot
-          part="content"
-          @slotchange=${() => {
-            this.defaultSlotIsFilled = this.defaultSlot.assignedElements().length > 0;
-          }}
-        ></slot>
+        <div part="content">
+          <slot
+            @slotchange=${() => {
+              this.defaultSlotIsFilled = this.defaultSlot.assignedElements().length > 0;
+            }}
+          ></slot>
+        </div>
       </details>
     `;
   }
@@ -162,6 +158,7 @@ export default class SdQuickfact extends SolidElement {
     css`
       :host {
         --name: '';
+        @apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary;
       }
     `
   ];
