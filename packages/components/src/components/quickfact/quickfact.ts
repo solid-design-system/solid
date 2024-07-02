@@ -85,14 +85,17 @@ export default class SdQuickfact extends SolidElement {
     return html`
       <details
         part="base"
-        class="flex items-center focus-visible:focus-outline"
+        class="flex items-center"
         ?open=${this.open}
         @toggle=${(e: ToggleEvent) => {
           // Update the 'open' property based on the 'open' attribute of the <details> element
           this.open = e.newState === 'open' ? true : false;
         }}
       >
-        <summary part="summary-container" class="flex flex-row sm:flex-col gap-4 mb-3 sm:mb-8 items-center text-center">
+        <summary
+          part="summary-container"
+          class="flex flex-row sm:flex-col gap-4 mb-3 sm:mb-8 items-center text-center focus-visible:!focus-outline"
+        >
           <slot name="icon"
             ><sd-icon class="h-12 w-12 sm:h-24 sm:w-24" name="content/image" color="primary"></sd-icon
           ></slot>
@@ -109,7 +112,7 @@ export default class SdQuickfact extends SolidElement {
           <button
             part="button"
             class=${cx(
-              'ml-auto self-start sm:mx-auto text-primary transition-transform duration-300 ease-in-out',
+              'ml-auto self-start sm:mx-auto text-primary transition-transform duration-300 ease-in-out focus-visible:!focus-outline',
               !this.defaultSlotIsFilled && 'hidden',
               this.open && 'rotate-180'
             )}
