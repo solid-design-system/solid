@@ -493,7 +493,7 @@ describe('<sd-select>', () => {
         resetButton.click();
         clickOnElement(resetButton);
       });
-      await oneEvent(form, 'reset');
+      await oneEvent(form, 'reset', false);
       await select.updateComplete;
       expect(select.value).to.equal('option-1');
     });
@@ -513,7 +513,7 @@ describe('<sd-select>', () => {
     expect(displayInput.value).to.equal('Option 1');
 
     option.textContent = 'updated';
-    await oneEvent(option, 'slotchange');
+    await oneEvent(option, 'slotchange', false);
     await el.updateComplete;
 
     expect(displayInput.value).to.equal('updated');

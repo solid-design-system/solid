@@ -203,7 +203,7 @@ describe('<sd-switch>', () => {
       await sdSwitch.updateComplete;
       setTimeout(() => button.click());
 
-      await oneEvent(form, 'reset');
+      await oneEvent(form, 'reset', false);
       await sdSwitch.updateComplete;
 
       expect(sdSwitch.checked).to.true;
@@ -211,7 +211,7 @@ describe('<sd-switch>', () => {
       sdSwitch.defaultChecked = false;
 
       setTimeout(() => button.click());
-      await oneEvent(form, 'reset');
+      await oneEvent(form, 'reset', false);
       await sdSwitch.updateComplete;
 
       expect(sdSwitch.checked).to.false;

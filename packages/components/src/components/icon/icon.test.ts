@@ -59,7 +59,7 @@ describe('<sd-icon>', () => {
 
     it('renders pre-loaded system icons and emits sd-load event', async () => {
       const el = await fixture<SdIcon>(html` <sd-icon library="system"></sd-icon> `);
-      const listener = oneEvent(el, 'sd-load');
+      const listener = oneEvent(el, 'sd-load', false);
 
       el.name = 'chevron-down';
       const ev = await listener;
@@ -99,7 +99,7 @@ describe('<sd-icon>', () => {
       const fakeId = 'test-src';
       const el = await fixture<SdIcon>(html` <sd-icon></sd-icon> `);
 
-      const listener = oneEvent(el, 'sd-load');
+      const listener = oneEvent(el, 'sd-load', false);
       el.src = `data:image/svg+xml,${encodeURIComponent(`<svg id="${fakeId}"></svg>`)}`;
 
       await listener;
@@ -113,7 +113,7 @@ describe('<sd-icon>', () => {
   describe('new library', () => {
     it('renders icons from the new library and emits sd-load event', async () => {
       const el = await fixture<SdIcon>(html` <sd-icon library="test-library"></sd-icon> `);
-      const listener = oneEvent(el, 'sd-load');
+      const listener = oneEvent(el, 'sd-load', false);
 
       el.name = 'test-icon1';
       const ev = await listener;
@@ -142,7 +142,7 @@ describe('<sd-icon>', () => {
 
     it('emits sd-error when the file cant be retrieved', async () => {
       const el = await fixture<SdIcon>(html` <sd-icon library="test-library"></sd-icon> `);
-      const listener = oneEvent(el, 'sd-error');
+      const listener = oneEvent(el, 'sd-error', false);
 
       el.name = 'bad-request';
       const ev = await listener;
@@ -154,7 +154,7 @@ describe('<sd-icon>', () => {
 
     it("emits sd-error when there isn't an svg element in the registered icon", async () => {
       const el = await fixture<SdIcon>(html` <sd-icon library="test-library"></sd-icon> `);
-      const listener = oneEvent(el, 'sd-error');
+      const listener = oneEvent(el, 'sd-error', false);
 
       el.name = 'bad-icon';
       const ev = await listener;

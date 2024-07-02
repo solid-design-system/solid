@@ -239,7 +239,7 @@ describe('<sd-checkbox>', () => {
       await checkbox.updateComplete;
       setTimeout(() => button.click());
 
-      await oneEvent(form, 'reset');
+      await oneEvent(form, 'reset', false);
       await checkbox.updateComplete;
 
       expect(checkbox.checked).to.true;
@@ -247,7 +247,7 @@ describe('<sd-checkbox>', () => {
       checkbox.defaultChecked = false;
 
       setTimeout(() => button.click());
-      await oneEvent(form, 'reset');
+      await oneEvent(form, 'reset', false);
       await checkbox.updateComplete;
 
       expect(checkbox.checked).to.false;

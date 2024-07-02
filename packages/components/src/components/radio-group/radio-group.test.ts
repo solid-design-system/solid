@@ -220,7 +220,7 @@ describe('when resetting a form', () => {
     await radioGroup.updateComplete;
     setTimeout(() => button.click());
 
-    await oneEvent(form, 'reset');
+    await oneEvent(form, 'reset', false);
     await radioGroup.updateComplete;
 
     expect(radioGroup.value).to.equal('1');
@@ -308,7 +308,7 @@ describe('when the value changes', () => {
     `);
     const radio = radioGroup.querySelector<SdRadio>('#radio-1')!;
     setTimeout(() => radio.click());
-    const event = await oneEvent(radioGroup, 'sd-change');
+    const event = await oneEvent(radioGroup, 'sd-change', false);
     expect(event.target).to.equal(radioGroup);
     expect(radioGroup.value).to.equal('1');
   });
@@ -323,7 +323,7 @@ describe('when the value changes', () => {
     const radio = radioGroup.querySelector<SdRadio>('#radio-1')!;
     radio.focus();
     setTimeout(() => sendKeys({ press: ' ' }));
-    const event = await oneEvent(radioGroup, 'sd-change');
+    const event = await oneEvent(radioGroup, 'sd-change', false);
     expect(event.target).to.equal(radioGroup);
     expect(radioGroup.value).to.equal('1');
   });
