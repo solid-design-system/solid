@@ -89,41 +89,50 @@ export default class SdIcon extends SolidElement {
   @watch(['name', 'src', 'library'])
   async setIcon() {
     const library = getIconLibrary(this.library);
-    const url = this.getUrl();
+    const iconData = this.name && library ? library.resolver(this.name) : this.src;
 
-    // Create an instance of the DOM parser. We do it here instead of top-level to support SSR while maintaining a
-    // single parser instance for optimal performance.
-    if (!parser) {
-      parser = new DOMParser();
+    if (!iconData) {
+      this.svg = '';
+      this.emit('sd-error');
+      return;
     }
 
-    if (url) {
+    if (iconData.trim().startsWith('<svg')) {
+      this.updateSvg(iconData);
+    } else {
       try {
-        const file = await requestIcon(url);
-        if (url !== this.getUrl()) {
-          // If the url has changed while fetching the icon, ignore this request
-        } else if (file.ok) {
-          const doc = parser.parseFromString(file.svg, 'text/html');
-          const svgEl = doc.body.querySelector('svg');
-
-          if (svgEl !== null) {
-            library?.mutator?.(svgEl);
-            this.svg = svgEl.outerHTML;
-            this.emit('sd-load');
-          } else {
-            this.svg = '';
-            this.emit('sd-error');
-          }
+        const file = await requestIcon(iconData);
+        if (iconData !== this.getUrl()) {
+          return;
+        }
+        if (file.ok) {
+          this.updateSvg(file.svg);
         } else {
           this.svg = '';
           this.emit('sd-error');
         }
       } catch {
+        this.svg = '';
         this.emit('sd-error');
       }
-    } else if (this.svg.length > 0) {
-      // If we can't resolve a URL and an icon was previously set, remove it
+    }
+  }
+
+  private updateSvg(svgMarkup: string) {
+    if (!parser) {
+      parser = new DOMParser();
+    }
+    const doc = parser.parseFromString(svgMarkup, 'text/html');
+    const svgEl = doc.body.querySelector('svg');
+
+    if (svgEl) {
+      const library = getIconLibrary(this.library);
+      library?.mutator?.(svgEl);
+      this.svg = svgEl.outerHTML;
+      this.emit('sd-load');
+    } else {
       this.svg = '';
+      this.emit('sd-error');
     }
   }
 
