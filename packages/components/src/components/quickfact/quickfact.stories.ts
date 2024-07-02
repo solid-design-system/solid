@@ -8,7 +8,7 @@ import '../../styles/leadtext/leadtext.css';
 import '../../styles/paragraph/paragraph.css';
 import { html } from 'lit';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
-import { userEvent } from '@storybook/testing-library';
+import { userEvent } from '@storybook/test';
 import { waitUntil } from '@open-wc/testing-helpers';
 import { withActions } from '@storybook/addon-actions/decorator';
 
