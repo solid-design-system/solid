@@ -1,11 +1,12 @@
 import '../icon/icon';
-import { css, html } from 'lit';
+import { css, html, unsafeCSS } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { property, query, state } from 'lit/decorators.js';
 import { waitForEvent } from 'src/internal/event';
 import { watch } from 'src/internal/watch';
 import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
+import interactiveStyles from 'src/styles/interactive/interactive.css?inline';
 import SolidElement from '../../internal/solid-element';
 
 /**
@@ -108,7 +109,7 @@ export default class SdQuickfact extends SolidElement {
           <button
             part="button"
             class=${cx(
-              'ml-auto self-start sm:mx-auto text-primary transition-transform duration-300 ease-in-out focus-visible:focus-outline',
+              'ml-auto self-start sm:mx-auto text-primary transition-transform duration-300 ease-in-out',
               !this.defaultSlotIsFilled && 'hidden',
               this.open && 'rotate-180'
             )}
@@ -116,26 +117,25 @@ export default class SdQuickfact extends SolidElement {
               this.open = !this.open;
             }}
           >
-            <slot name="expand-icon">
-              <sd-icon
-                class=${cx(
-                  'h-6 w-6 sm:h-12 sm:w-12 grid place-items-center transition-transform',
-                  this.open && 'hidden'
-                )}
-                library="system"
-                name="chevron-down"
-              ></sd-icon>
-            </slot>
-            <slot name="collapse-icon">
-              <sd-icon
-                class=${cx(
-                  'h-6 w-6 sm:h-12 sm:w-12 grid place-items-center transition-transform',
-                  !this.open && 'hidden'
-                )}
-                library="system"
-                name="chevron-down"
-              ></sd-icon>
-            </slot>
+            <div class=${cx(this.open && 'hidden')}>
+              <slot name="expand-icon">
+                <sd-icon
+                  class=${cx('h-6 w-6 sm:h-12 sm:w-12 grid place-items-center transition-transform')}
+                  library="system"
+                  name="chevron-down"
+                ></sd-icon>
+              </slot>
+            </div>
+
+            <div class=${cx(!this.open && 'hidden')}>
+              <slot name="collapse-icon">
+                <sd-icon
+                  class=${cx('h-6 w-6 sm:h-12 sm:w-12 grid place-items-center transition-transform')}
+                  library="system"
+                  name="chevron-down"
+                ></sd-icon>
+              </slot>
+            </div>
           </button>
         </summary>
         <div part="content">
@@ -155,10 +155,10 @@ export default class SdQuickfact extends SolidElement {
   static styles = [
     componentStyles,
     SolidElement.styles,
+    unsafeCSS(interactiveStyles),
     css`
       :host {
         --name: '';
-        @apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary;
       }
     `
   ];

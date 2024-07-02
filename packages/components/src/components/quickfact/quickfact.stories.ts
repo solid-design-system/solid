@@ -148,7 +148,14 @@ export const Slots = {
               ]
             }
           },
-          args
+          args,
+          constants: [
+            {
+              type: 'attribute',
+              name: 'open',
+              value: true
+            }
+          ]
         })
       )}
     `;
@@ -180,38 +187,54 @@ export const Sample = {
   name: 'Sample: Grouping',
   render: () => {
     return html`
-      <style>
-        .grouping-sample sd-quickfact::part(content) {
-          position: absolute;
-          width: 100%;
-          left: 0;
-        }
-      </style>
+      <div>
+        <style>
+          .grouping-sample sd-quickfact::part(content) {
+            position: absolute;
+            width: 100%;
+            left: 0;
+          }
+        </style>
 
-      <div class="grouping-sample w-full flex relative justify-between">
-        <sd-quickfact class="">
-          <div class="slot slot--border slot--text h-12">Default slot</div>
-          <div slot="summary">
-            <p class="text-base font-normal leading-normal sm:text-3xl sm:leading-tight">Lorem Ipsum</p>
-            <div class="text-base font-normal leading-normal sm:text-xl">Con sectetur adipiscing elit</div>
-          </div>
-        </sd-quickfact>
+        <div class="grouping-sample w-full flex relative justify-between">
+          <sd-quickfact class="first">
+            <div class="slot slot--border slot--text h-12">Quickfact 1</div>
+            <div slot="summary">
+              <p class="text-base font-normal leading-normal sm:text-3xl sm:leading-tight">Lorem Ipsum</p>
+              <div class="text-base font-normal leading-normal sm:text-xl">Con sectetur adipiscing elit</div>
+            </div>
+          </sd-quickfact>
 
-        <sd-quickfact>
-          <div class="slot slot--border slot--text h-12">Default slot</div>
-          <div slot="summary">
-            <p class="text-base font-normal leading-normal sm:text-3xl sm:leading-tight">Lorem Ipsum</p>
-            <div class="text-base font-normal leading-normal sm:text-xl">Con sectetur adipiscing elit</div>
-          </div>
-        </sd-quickfact>
+          <sd-quickfact class="second">
+            <div class="slot slot--border slot--text h-12">Quickfact 2</div>
+            <div slot="summary">
+              <p class="text-base font-normal leading-normal sm:text-3xl sm:leading-tight">Lorem Ipsum</p>
+              <div class="text-base font-normal leading-normal sm:text-xl">Con sectetur adipiscing elit</div>
+            </div>
+          </sd-quickfact>
 
-        <sd-quickfact>
-          <div class="slot slot--border slot--text h-12">Default slot</div>
-          <div slot="summary">
-            <p class="text-base font-normal leading-normal sm:text-3xl sm:leading-tight">Lorem Ipsum</p>
-            <div class="text-base font-normal leading-normal sm:text-xl">Con sectetur adipiscing elit</div>
-          </div>
-        </sd-quickfact>
+          <sd-quickfact class="third">
+            <div class="slot slot--border slot--text h-12">Quickfact 3</div>
+            <div slot="summary">
+              <p class="text-base font-normal leading-normal sm:text-3xl sm:leading-tight">Lorem Ipsum</p>
+              <div class="text-base font-normal leading-normal sm:text-xl">Con sectetur adipiscing elit</div>
+            </div>
+          </sd-quickfact>
+        </div>
+        <script type="module">
+          // Closes all other quickfacts when one is opened
+          const quickfacts = document.querySelectorAll('sd-quickfact');
+
+          quickfacts.forEach(quickfact => {
+            quickfact.addEventListener('sd-show', () => {
+              quickfacts.forEach(qf => {
+                if (qf !== quickfact) {
+                  qf.hide();
+                }
+              });
+            });
+          });
+        </script>
       </div>
     `;
   }
