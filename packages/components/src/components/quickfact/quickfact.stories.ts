@@ -48,6 +48,7 @@ export const Default = {
  */
 
 export const OpenXContent = {
+  name: 'Open x Content',
   render: (args: any) => {
     return generateTemplate({
       axis: {
