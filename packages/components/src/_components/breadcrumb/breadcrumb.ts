@@ -25,7 +25,7 @@ import type SdBreadcrumbItem from '../breadcrumb-item/breadcrumb-item';
 export default class SdBreadcrumb extends SolidElement {
   static styles: CSSResultGroup = styles;
 
-  private readonly localize = new LocalizeController(this);
+  public localize = new LocalizeController(this);
   private separatorDir = this.localize.dir();
 
   @query('slot') defaultSlot: HTMLSlotElement;

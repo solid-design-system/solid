@@ -23,7 +23,7 @@ import SolidElement from '../../internal/solid-element';
  */
 @customElement('{{ tag }}')
 export default class {{ properCase tag }} extends SolidElement {
-  private readonly localize = new LocalizeController(this);
+  public localize = new LocalizeController(this);
 
   /** An example attribute. */
   @property() attr = 'example';

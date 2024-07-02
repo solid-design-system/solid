@@ -33,11 +33,11 @@ import type SdTabPanel from '../tab-panel/tab-panel';
  * @csspart scroll-button--start - The starting scroll button.
  * @csspart scroll-button--end - The ending scroll button.
  * @csspart scroll-button__base - The scroll button's exported `base` part.
- * 
+ *
  * */
 @customElement('sd-tab-group')
 export default class SdTabGroup extends SolidElement {
-  private readonly localize = new LocalizeController(this);
+  public localize = new LocalizeController(this);
 
   private activeTab?: SdTab;
   private mutationObserver: MutationObserver;
@@ -338,7 +338,7 @@ export default class SdTabGroup extends SolidElement {
 
           <div part="scroll-container" class="flex overflow-x-auto focus-visible:focus-outline !outline-offset-0">
             <div part="tabs" class=${cx('flex flex-auto relative flex-row')} role="tablist">
-              <div part="separation" class="w-full h-[1px] bg-neutral-400 absolute bottom-0"></div>
+              <div part="separation" class="w-full h-0.25 bg-neutral-400 absolute bottom-0"></div>
               <slot name="nav" @slotchange=${this.syncTabsAndPanels}></slot>
             </div>
           </div>

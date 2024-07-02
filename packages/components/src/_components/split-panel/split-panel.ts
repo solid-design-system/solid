@@ -38,7 +38,7 @@ export default class SdSplitPanel extends SolidElement {
   static styles: CSSResultGroup = styles;
 
   private cachedPositionInPixels: number;
-  private readonly localize = new LocalizeController(this);
+  public localize = new LocalizeController(this);
   private resizeObserver: ResizeObserver;
   private size: number;
 

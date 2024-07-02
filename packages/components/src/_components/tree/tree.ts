@@ -89,7 +89,7 @@ export default class SdTree extends SolidElement {
   // automatically updated when the underlying document is changed.
   //
   private lastFocusedItem: SdTreeItem;
-  private readonly localize = new LocalizeController(this);
+  public localize = new LocalizeController(this);
   private mutationObserver: MutationObserver;
 
   async connectedCallback() {

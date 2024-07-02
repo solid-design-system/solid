@@ -10,10 +10,9 @@ export default {
   component: 'sd-relative-time',
   args,
   argTypes,
-  parameters: {...parameters},
+  parameters: { ...parameters },
   decorators: [withActions] as any
 };
-
 
 /**
  * Default: This shows sd-relative-time in its default state.

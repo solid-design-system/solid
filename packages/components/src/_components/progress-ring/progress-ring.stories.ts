@@ -10,10 +10,9 @@ export default {
   component: 'sd-progress-ring',
   args,
   argTypes,
-  parameters: {...parameters},
+  parameters: { ...parameters },
   decorators: [withActions] as any
 };
-
 
 /**
  * Default: This shows sd-progress-ring in its default state.

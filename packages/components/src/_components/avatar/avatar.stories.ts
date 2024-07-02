@@ -13,7 +13,6 @@ export default {
   decorators: [withActions] as any
 };
 
-
 /**
  * Default: This shows sd-avatar in its default state.
  */

@@ -11,7 +11,7 @@ import SolidElement from '../../internal/solid-element';
  */
 @customElement('sd-format-number')
 export default class SdFormatNumber extends SolidElement {
-  private readonly localize = new LocalizeController(this);
+  public localize = new LocalizeController(this);
 
   /** The number to format. */
   @property({ type: Number }) value = 0;

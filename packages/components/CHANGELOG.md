@@ -1,3 +1,58 @@
+# [@solid-design-system/components-v3.8.0](https://github.com/solid-design-system/solid/compare/components/3.7.3...components/3.8.0) (2024-07-01)
+
+
+### Features
+
+* ✨ add sd-flipcard ([#1121](https://github.com/solid-design-system/solid/issues/1121)) ([ffd126f](https://github.com/solid-design-system/solid/commit/ffd126ff24307a79719d569d0d9fa3a2c9b54c07))
+
+### 📈 Stats
+* Bundle size (uncompressed): 322 KB (+7 KB / +2%)
+* Bundle size (gzipped): 76 KB (+1 KB / +1%)
+
+# [@solid-design-system/components-v3.7.3](https://github.com/solid-design-system/solid/compare/components/3.7.2...components/3.7.3) (2024-06-28)
+
+
+### Bug Fixes
+
+* add missing Tailwind classes for autcomplete config ([fa984da](https://github.com/solid-design-system/solid/commit/fa984daf650fc655d1c4a1ade4e924440fdfc3a3))
+
+### 📈 Stats
+* Bundle size (uncompressed): 315 KB (+1 KB / +0%)
+* Bundle size (gzipped): 75 KB (unchanged)
+
+# [@solid-design-system/components-v3.7.2](https://github.com/solid-design-system/solid/compare/components/3.7.1...components/3.7.2) (2024-06-27)
+
+
+### Bug Fixes
+
+* fix accent color in icons ([#1182](https://github.com/solid-design-system/solid/issues/1182)) ([c4b74da](https://github.com/solid-design-system/solid/commit/c4b74da7edfd198d2bb8ebc7d7afeda98d5daf1d))
+
+### 📈 Stats
+* Bundle size (uncompressed): 314 KB (unchanged)
+* Bundle size (gzipped): 75 KB (unchanged)
+
+# [@solid-design-system/components-v3.7.1](https://github.com/solid-design-system/solid/compare/components/3.7.0...components/3.7.1) (2024-06-21)
+
+
+### Bug Fixes
+
+* add utilities to exports ([#1156](https://github.com/solid-design-system/solid/issues/1156)) ([137da8c](https://github.com/solid-design-system/solid/commit/137da8c164bff15db18d293f1af3356a891ff9e3))
+
+### 📈 Stats
+* Bundle size (uncompressed): 314 KB (unchanged)
+* Bundle size (gzipped): 75 KB (unchanged)
+
+# [@solid-design-system/components-v3.7.0](https://github.com/solid-design-system/solid/compare/components/3.6.0...components/3.7.0) (2024-06-14)
+
+
+### Features
+
+* ✨ add custom localization (closes [#852](https://github.com/solid-design-system/solid/issues/852)) ([#997](https://github.com/solid-design-system/solid/issues/997)) ([e4e881f](https://github.com/solid-design-system/solid/commit/e4e881f7447cadfd648f69f5f469464f09573e18))
+
+### 📈 Stats
+* Bundle size (uncompressed): 314 KB (unchanged)
+* Bundle size (gzipped): 75 KB (unchanged)
+
 # [@solid-design-system/components-v3.6.0](https://github.com/solid-design-system/solid/compare/components/3.5.0...components/3.6.0) (2024-05-29)
 
 

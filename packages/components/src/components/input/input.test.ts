@@ -324,7 +324,7 @@ describe('<sd-input>', () => {
       await input.updateComplete;
 
       setTimeout(() => button.click());
-      await oneEvent(form, 'reset', false);
+      await oneEvent(form, 'reset');
       await input.updateComplete;
 
       expect(input.value).to.equal('test');
@@ -332,7 +332,7 @@ describe('<sd-input>', () => {
       input.defaultValue = '';
 
       setTimeout(() => button.click());
-      await oneEvent(form, 'reset', false);
+      await oneEvent(form, 'reset');
       await input.updateComplete;
 
       expect(input.value).to.equal('');

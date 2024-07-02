@@ -10,10 +10,9 @@ export default {
   component: 'sd-range',
   args,
   argTypes,
-  parameters: {...parameters},
+  parameters: { ...parameters },
   decorators: [withActions] as any
 };
-
 
 /**
  * Default: This shows sd-range in its default state.

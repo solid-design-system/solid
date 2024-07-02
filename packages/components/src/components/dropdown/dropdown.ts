@@ -46,7 +46,7 @@ export default class SdDropdown extends SolidElement {
   @query('[part=trigger]') trigger: HTMLSlotElement;
   @query('[part=panel]') panel: HTMLSlotElement;
 
-  private readonly localize = new LocalizeController(this);
+  public localize = new LocalizeController(this);
 
   /**
    * Indicates whether or not the dropdown is open. You can toggle this attribute to show and hide the dropdown, or you
