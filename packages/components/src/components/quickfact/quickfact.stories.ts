@@ -53,7 +53,7 @@ export const OpenXContent = {
       axis: {
         y: {
           type: 'slot',
-          name: 'default slot',
+          name: 'default',
           values: [
             {
               title: 'with content',
@@ -115,7 +115,14 @@ export const Parts = {
           })
         }
       },
-      args
+      args,
+      constants: [
+        {
+          type: 'attribute',
+          name: 'open',
+          value: true
+        }
+      ]
     });
   }
 };
@@ -180,7 +187,7 @@ export const Mouseless = {
 };
 
 /**
- * This shows a group of sd-quickfacts.
+ * This sample shows how to group sd-quickfacts together. It also includes a script that closes all other quickfacts when one is opened. Additionally, it uses the `content` CSS part to position the default slot to cover the entire width of the group.
  */
 
 export const Sample = {

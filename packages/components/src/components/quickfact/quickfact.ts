@@ -2,11 +2,11 @@ import '../icon/icon';
 import { css, html, unsafeCSS } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { property, query, state } from 'lit/decorators.js';
-import { waitForEvent } from 'src/internal/event';
-import { watch } from 'src/internal/watch';
+import { waitForEvent } from '../../internal/event';
+import { watch } from '../../internal/watch';
 import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
-import interactiveStyles from 'src/styles/interactive/interactive.css?inline';
+import InteractiveStyles from '../../styles/interactive/interactive.css?inline';
 import SolidElement from '../../internal/solid-element';
 
 /**
@@ -155,7 +155,7 @@ export default class SdQuickfact extends SolidElement {
   static styles = [
     componentStyles,
     SolidElement.styles,
-    unsafeCSS(interactiveStyles),
+    unsafeCSS(InteractiveStyles),
     css`
       :host {
         --name: '';
