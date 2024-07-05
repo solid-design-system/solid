@@ -29,7 +29,11 @@ const translation: Translation = {
   selectDefaultPlaceholder: 'Bitte auswählen',
   showPassword: 'Passwort anzeigen',
   slideNum: slide => `Folie ${slide}`,
-  toggleColorFormat: 'Farbformat umschalten'
+  toggleColorFormat: 'Farbformat umschalten',
+  audioPlayer: 'Audio-Player',
+  playAudio: 'Audio abspielen',
+  pauseAudio: 'Audio pausieren',
+  mute: 'Stummschalten'
 };
 
 registerTranslation(translation);
