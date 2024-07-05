@@ -12,7 +12,8 @@
   "exports": {
     "./*": "./src/*",
     "./images/*": "./src/images/*",
-    "./videos/*": "./src/videos/*"
+    "./videos/*": "./src/videos/*",
+    "./audio/*": "./src/audio/*"
   },
   "repository": {
     "type": "git",
