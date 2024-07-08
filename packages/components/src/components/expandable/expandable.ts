@@ -27,6 +27,7 @@ import SolidElement from '../../internal/solid-element';
 @customElement('sd-expandable')
 export default class SdExpandable extends SolidElement {
   @query('.shrinker') shrinker: HTMLElement;
+  @query('details') details: HTMLDetailsElement;
 
   /**
    * Used to check whether the component is expanded or not.
@@ -48,6 +49,7 @@ export default class SdExpandable extends SolidElement {
   private onToggleClick() {
     this.updateMaxHeight();
     this.open = !this.open;
+    this.details.open = this.open;
 
     if (this.open) {
       this.emit('sd-show');
@@ -64,11 +66,12 @@ export default class SdExpandable extends SolidElement {
 
   render() {
     return html`
-      <div part="content" class="content overflow-hidden relative">
-        <div class="shrinker">
+      <details>
+        <summary aria-hidden="true" class="cursor-pointer summary"><slot name="clone"></slot></summary>
+        <div part="content" class="content shrinker overflow-hidden relative">
           <slot></slot>
         </div>
-      </div>
+      </details>
       <button
         part="toggle"
         class=${cx(
@@ -100,16 +103,55 @@ export default class SdExpandable extends SolidElement {
     `;
   }
 
+  firstUpdated() {
+    this.cloneContentToLightDOM();
+  }
+
+  cloneContentToLightDOM() {
+    const slot = document.createElement('div');
+    slot.setAttribute('slot', 'clone');
+
+    const nodes = Array.from(this.childNodes);
+    nodes.forEach(node => {
+      const clone = node.cloneNode(true);
+      slot.appendChild(clone);
+    });
+
+    this.appendChild(slot);
+  }
+
   static styles = [
     SolidElement.styles,
     componentStyles,
     css`
       :host {
-        @apply block;
+        @apply block relative w-full;
+        display: inline-block;
       }
 
       .toggle::-moz-focus-inner {
         @apply border-none p-0;
+      }
+
+      details > summary {
+        list-style: none;
+      }
+
+      details > summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .summary {
+        max-block-size: var(--component-expandable-max-block-size, 90px);
+        overflow: hidden;
+      }
+
+      :host([open]) .summary {
+        max-block-size: var(--max-height-pixel, 1000vh);
+      }
+
+      details[open] .summary {
+        display: none;
       }
 
       .content {
@@ -138,6 +180,39 @@ export default class SdExpandable extends SolidElement {
           --gradient-vertical-transparent-primary,
           linear-gradient(180deg, rgba(0, 53, 142, 0) 0%, rgba(0, 53, 142, 1) 80%, rgba(0, 53, 142, 1) 100%)
         );
+      }
+
+      details[open] .flip-card-front {
+        transform: rotateY(180deg);
+      }
+
+      details[open] .flip-card-back {
+        transform: rotateY(0deg);
+      }
+
+      .flip-card-front,
+      .flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        transition: transform 0.6s;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .flip-card-front {
+        background-color: #f0f0f0;
+        transform: rotateY(0deg);
+      }
+
+      .flip-card-back {
+        background-color: #fff;
+        transform: rotateY(-180deg);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       }
     `
   ];
