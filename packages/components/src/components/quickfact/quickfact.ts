@@ -23,22 +23,24 @@ export default class SdQuickfact extends SdAccordion {
 
       [part='base'] {
         border: 0;
-        padding: var(--sd-spacing-6, 1.5rem);
       }
 
       [part='header'] {
-        display: flex;
-        flex-direction: row;
+        @apply flex flex-row hover:bg-transparent;
       }
 
       @media (min-width: 640px) {
         [part='header'] {
           flex-direction: column;
         }
+
+        [part='base'] {
+          padding: var(--sd-spacing-6, 1.5rem);
+        }
       }
 
       [part='summary'] {
-        text-align: center;
+        text-align: left;
         font-size: var(--sd-font-size-base, 1rem);
         font-weight: var(--sd-font-weight-normal, 400);
         line-height: var(--sd-line-height-normal, 1.5);
@@ -48,6 +50,7 @@ export default class SdQuickfact extends SdAccordion {
         [part='summary'] {
           font-size: var(--sd-font-size-3xl, 2rem);
           line-height: var(--sd-line-height-tight, 1.25);
+          text-align: center;
         }
       }
 

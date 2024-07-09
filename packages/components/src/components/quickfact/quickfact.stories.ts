@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import '../../solid-components';
 import { html } from 'lit-html';
+import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 import { userEvent } from '@storybook/test';
 import { waitUntil } from '@open-wc/testing-helpers';
@@ -16,9 +17,10 @@ export default {
   args: overrideArgs([
     { type: 'slot', name: 'default', value: '<div class="slot slot--border slot--text h-16">Default slot</div>' },
     {
-      type: 'attribute',
+      type: 'slot',
       name: 'summary',
-      value: `Quickfact`
+      value: `<div slot="summary"> <p class="text-base font-normal leading-normal  sm:text-3xl sm:leading-tight">Lorem Ipsum</p>
+            <div class="text-base font-normal leading-normal sm:text-xl">Con sectetur adipiscing elit</div></div>`
     },
     {
       type: 'slot',
@@ -61,6 +63,23 @@ export const States = {
       args,
       constants: { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' }
     });
+  }
+};
+
+/**
+ * This shows sd-quickfact in a mobile view. **Please navigate to the `Mobile` story** (you are now on the `Docs` page) to accurately view this behavior.
+
+ */
+
+export const Mobile = {
+  render: (args: any) => {
+    return generateTemplate({ args });
+  },
+  parameters: {
+    viewport: {
+      viewports: INITIAL_VIEWPORTS,
+      defaultViewport: 'iphone6'
+    }
   }
 };
 
@@ -187,5 +206,64 @@ export const Mouseless = {
     const el = canvasElement.querySelector('.mouseless sd-quickfact');
     await waitUntil(() => el?.shadowRoot?.querySelector('header'));
     await userEvent.type(el!.shadowRoot!.querySelector('header')!, '{space}', { pointerEventsCheck: 0 });
+  }
+};
+
+export const Sample = {
+  name: 'Sample: Grouping',
+  render: () => {
+    return html`
+      <div>
+        <style>
+          @media (min-width: 640px) {
+            .grouping-sample {
+              flex-direction: row;
+            }
+
+            .grouping-sample sd-quickfact::part(content) {
+              position: absolute;
+              width: 100%;
+              left: 0;
+            }
+          }
+        </style>
+        <div class="grouping-sample w-full flex flex-col relative justify-between">
+          <sd-quickfact class="first">
+            <div class="slot slot--border slot--text h-12">Quickfact 1</div>
+            <div slot="summary">
+              <p class="text-base font-normal leading-normal sm:text-3xl sm:leading-tight">Lorem Ipsum</p>
+              <div class="text-base font-normal leading-normal sm:text-xl">Con sectetur adipiscing elit</div>
+            </div>
+          </sd-quickfact>
+          <sd-quickfact class="second">
+            <div class="slot slot--border slot--text h-12">Quickfact 2</div>
+            <div slot="summary">
+              <p class="text-base font-normal leading-normal sm:text-3xl sm:leading-tight">Lorem Ipsum</p>
+              <div class="text-base font-normal leading-normal sm:text-xl">Con sectetur adipiscing elit</div>
+            </div>
+          </sd-quickfact>
+          <sd-quickfact class="third">
+            <div class="slot slot--border slot--text h-12">Quickfact 3</div>
+            <div slot="summary">
+              <p class="text-base font-normal leading-normal sm:text-3xl sm:leading-tight">Lorem Ipsum</p>
+              <div class="text-base font-normal leading-normal sm:text-xl">Con sectetur adipiscing elit</div>
+            </div>
+          </sd-quickfact>
+        </div>
+        <script type="module">
+          // Closes all other quickfacts when one is opened
+          const quickfacts = document.querySelectorAll('sd-quickfact');
+          quickfacts.forEach(quickfact => {
+            quickfact.addEventListener('sd-show', () => {
+              quickfacts.forEach(qf => {
+                if (qf !== quickfact) {
+                  qf.hide();
+                }
+              });
+            });
+          });
+        </script>
+      </div>
+    `;
   }
 };
