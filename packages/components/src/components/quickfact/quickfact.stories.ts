@@ -229,21 +229,32 @@ export const Sample = {
         </style>
         <div class="grouping-sample w-full flex flex-col relative justify-between">
           <sd-quickfact class="first">
+            <sd-icon name="content/image" color="primary" aria-hidden="true" library="default" slot="icon"></sd-icon>
+
             <div class="slot slot--border slot--text h-12">Quickfact 1</div>
+
             <div slot="summary">
               <p class="text-base font-normal leading-normal sm:text-3xl sm:leading-tight">Lorem Ipsum</p>
               <div class="text-base font-normal leading-normal sm:text-xl">Con sectetur adipiscing elit</div>
             </div>
           </sd-quickfact>
+
           <sd-quickfact class="second">
+            <sd-icon name="content/image" color="primary" aria-hidden="true" library="default" slot="icon"></sd-icon>
+
             <div class="slot slot--border slot--text h-12">Quickfact 2</div>
+
             <div slot="summary">
               <p class="text-base font-normal leading-normal sm:text-3xl sm:leading-tight">Lorem Ipsum</p>
               <div class="text-base font-normal leading-normal sm:text-xl">Con sectetur adipiscing elit</div>
             </div>
           </sd-quickfact>
+
           <sd-quickfact class="third">
+            <sd-icon name="content/image" color="primary" aria-hidden="true" library="default" slot="icon"></sd-icon>
+
             <div class="slot slot--border slot--text h-12">Quickfact 3</div>
+
             <div slot="summary">
               <p class="text-base font-normal leading-normal sm:text-3xl sm:leading-tight">Lorem Ipsum</p>
               <div class="text-base font-normal leading-normal sm:text-xl">Con sectetur adipiscing elit</div>
