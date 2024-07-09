@@ -261,10 +261,19 @@ export default class SdBrandshape extends SolidElement {
         @apply block;
       }
 
+      .container--outline-primary::before {
+        --internal-border-color: rgb(var(--sd-color-primary, 0 53 142));
+        --internal-border-width: 2px;
+      }
+
+      .container--outline-white::before {
+        --internal-border-color: var(--sd-color-white, white);
+        --internal-border-width: 2px;
+      }
+
       .container--stylized::before {
         @apply absolute top-0 bottom-0 right-0 left-0 border-solid inset-0 z-[-1];
         content: '';
-        background-color: var(--internal-color-background, white);
         color: var(--internal-color, black);
         border-color: var(--internal-border-color, black);
         border-width: var(--internal-border-width, 0);
@@ -272,18 +281,6 @@ export default class SdBrandshape extends SolidElement {
         margin-bottom: calc(21.256% / 2);
         margin-top: calc(21.256% / 2);
         transform: skewY(-11deg);
-      }
-
-      .container--outline-primary::before {
-        --internal-color-background: none;
-        --internal-border-color: rgb(var(--sd-color-primary, 0 53 142));
-        --internal-border-width: 2px;
-      }
-
-      .container--outline-white::before {
-        --internal-color-background: none;
-        --internal-border-color: var(--sd-color-white, white);
-        --internal-border-width: 2px;
       }
 
       .image-wrapper {
