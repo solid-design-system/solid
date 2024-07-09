@@ -8,7 +8,7 @@ import SdAccordion from '../accordion/accordion';
  * @summary Accordion shows a brief summary and expands to show additional content.
  * @documentation https://solid.union-investment.com/[storybook-link]/quickfact
  * @status stable
- * @since 1.1
+ * @since 3.9.0
  *
  * @dependency sd-icon sd-accordion
  */
