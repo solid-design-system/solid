@@ -10,7 +10,8 @@ jobs:
   file_size_check:
     runs-on: ubuntu-latest
     permissions:
-      pull-requests: write
+      checks: write
+      contents: read
     if: github.event.pull_request.draft == false
     steps:
       - name: Checkout
