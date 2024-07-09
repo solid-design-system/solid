@@ -210,7 +210,7 @@ export default class SdBrandshape extends SolidElement {
     return html`
       <div class="container--stylized bg-transparent py-10 relative z-10 border-0;">
         <div class="image-wrapper">
-          <slot name="image"><img src="./placeholders/images/generic.jpg" alt="Generic" /></slot>
+          <slot name="image"></slot>
         </div>
         ${this.renderTopBrandshape()} ${this.renderMiddleBrandshape()} ${this.renderBottomBrandshape()}
       </div>
