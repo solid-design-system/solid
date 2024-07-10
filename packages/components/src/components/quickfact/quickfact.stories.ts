@@ -243,14 +243,16 @@ export const Sample = {
             }
           }
         </style>
-        <div class="grouping-sample w-full flex flex-col relative justify-between">
-          <sd-quickfact class="first">
+        <div class="grouping-sample w-full flex flex-col flex-wrap relative justify-between">
+          <sd-quickfact class="first max-w-40">
             <sd-icon name="content/image" color="primary" aria-hidden="true" library="default" slot="icon"></sd-icon>
 
             <div class="slot slot--border slot--text h-12">Quickfact 1</div>
 
             <div slot="summary">
-              <p class="text-base font-normal leading-normal sm:text-3xl sm:leading-tight">Lorem Ipsum</p>
+              <p class="text-base font-normal leading-normal sm:text-3xl sm:leading-tight">
+                Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
+              </p>
               <div class="text-base font-normal leading-normal sm:text-xl">Con sectetur adipiscing elit</div>
             </div>
           </sd-quickfact>
@@ -276,19 +278,56 @@ export const Sample = {
               <div class="text-base font-normal leading-normal sm:text-xl">Con sectetur adipiscing elit</div>
             </div>
           </sd-quickfact>
+
+          <sd-quickfact class="fourth">
+            <sd-icon name="content/image" color="primary" aria-hidden="true" library="default" slot="icon"></sd-icon>
+
+            <div class="slot slot--border slot--text h-12">Quickfact 2</div>
+
+            <div slot="summary">
+              <p class="text-base font-normal leading-normal sm:text-3xl sm:leading-tight">Lorem Ipsum</p>
+              <div class="text-base font-normal leading-normal sm:text-xl">Con sectetur adipiscing elit</div>
+            </div>
+          </sd-quickfact>
+
+          <sd-quickfact class="fifth">
+            <sd-icon name="content/image" color="primary" aria-hidden="true" library="default" slot="icon"></sd-icon>
+
+            <div class="slot slot--border slot--text h-12">Quickfact 3</div>
+
+            <div slot="summary">
+              <p class="text-base font-normal leading-normal sm:text-3xl sm:leading-tight">Lorem Ipsum</p>
+              <div class="text-base font-normal leading-normal sm:text-xl">Con sectetur adipiscing elit</div>
+            </div>
+          </sd-quickfact>
         </div>
         <script type="module">
-          const quickfacts = document.querySelectorAll('sd-quickfact');
+          // Wait for custom elements to be defined
+          await Promise.all([customElements.whenDefined('sd-quickfact')]).then(() => {
+            const quickfacts = document.querySelectorAll('sd-quickfact');
+            const summaries = [];
 
-          // Closes all other quickfacts when one is opened
-          quickfacts.forEach(quickfact => {
-            quickfact.addEventListener('sd-show', () => {
-              quickfacts.forEach(qf => {
-                if (qf !== quickfact) {
-                  qf.hide();
-                }
+            // Closes all other quickfacts when one is opened
+            quickfacts.forEach(quickfact => {
+              quickfact.addEventListener('sd-show', () => {
+                quickfacts.forEach(qf => {
+                  if (qf !== quickfact) {
+                    qf.hide();
+                  }
+                });
               });
+
+              summaries.push(quickfact.shadowRoot.querySelector('[part~="summary"]'));
             });
+
+            const maxHeight = Math.max(...Array.from(summaries).map(summary => summary.clientHeight));
+            const heightAsString = maxHeight.toString() + 'px';
+            console.log(heightAsString);
+
+            summaries.forEach(summary => {
+              summary.style.height = heightAsString;
+            });
+            // set the sumary heights to heightAsString
           });
         </script>
       </div>
