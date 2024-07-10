@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v3.8.1](https://github.com/solid-design-system/solid/compare/components/3.8.0...components/3.8.1) (2024-07-10)
+
+
+### Bug Fixes
+
+* fix jumping text in navigation item ([#1197](https://github.com/solid-design-system/solid/issues/1197)) ([c421b28](https://github.com/solid-design-system/solid/commit/c421b2829c1849ac17f4649b21acad60d83027a5))
+
+### 📈 Stats
+* Bundle size (uncompressed): 322 KB (unchanged)
+* Bundle size (gzipped): 76 KB (unchanged)
+
 # [@solid-design-system/components-v3.8.0](https://github.com/solid-design-system/solid/compare/components/3.7.3...components/3.8.0) (2024-07-01)
 
 
