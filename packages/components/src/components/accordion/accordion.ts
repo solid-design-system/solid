@@ -150,6 +150,36 @@ export default class SdAccordion extends SolidElement {
     return waitForEvent(this, 'sd-after-hide');
   }
 
+  /** @internal */
+  RenderSummary = () => {
+    return html` <slot name="summary" part="summary" class="flex flex-auto items-center text-left"
+      >${this.summary}</slot
+    >`;
+  };
+
+  /** @internal */
+  RenderDefaultSlot = () => {
+    return html`<div part="content" id="content" class="overflow-hidden">
+      <slot part="content__slot" class="block px-4 py-6" role="region" aria-labelledby="header"></slot>
+    </div>`;
+  };
+
+  /** @internal */
+  RenderSummaryIcons = () => {
+    return html` <span
+      part="summary-icon"
+      class=${cx(
+        'flex flex-grow-0 flex-shrink-0 flex-auto items-center transition-all ease-in-out duration-300 text-xl',
+        this.open && 'rotate-180'
+      )}
+      ><slot name="expand-icon" class=${cx(this.open && 'hidden')}>
+        <sd-icon library="system" name="chevron-down"></sd-icon>
+      </slot>
+      <slot name="collapse-icon" class=${cx(!this.open && 'hidden')}>
+        <sd-icon library="system" name="chevron-down"></sd-icon> </slot
+    ></span>`;
+  };
+
   render() {
     return html`
       <div part="base" class="border-y border-neutral-400">
@@ -176,26 +206,9 @@ export default class SdAccordion extends SolidElement {
           <div part="icon" class="flex flex-grow-0 flex-shrink-0 flex-auto items-center text-xl">
             <slot name="icon"></slot>
           </div>
-          <slot name="summary" part="summary" class="flex flex-auto items-center text-left">${this.summary}</slot>
-
-          <span
-            part="summary-icon"
-            class=${cx(
-              'flex flex-grow-0 flex-shrink-0 flex-auto items-center transition-all ease-in-out duration-300 text-xl',
-              this.open && 'rotate-180'
-            )}
-          >
-            <slot name="expand-icon" class=${cx(this.open && 'hidden')}>
-              <sd-icon library="system" name="chevron-down"></sd-icon>
-            </slot>
-            <slot name="collapse-icon" class=${cx(!this.open && 'hidden')}>
-              <sd-icon library="system" name="chevron-down"></sd-icon>
-            </slot>
-          </span>
+          ${this.RenderSummary()} ${this.RenderSummaryIcons()}
         </header>
-        <div part="content" id="content" class="overflow-hidden">
-          <slot part="content__slot" class="block px-4 py-6" role="region" aria-labelledby="header"></slot>
-        </div>
+        ${this.RenderDefaultSlot()}
       </div>
     `;
   }

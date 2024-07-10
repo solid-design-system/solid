@@ -67,6 +67,22 @@ export const States = {
 };
 
 /**
+ * An quickfact item can either be collapsed or open.
+ */
+export const notInteractive = {
+  parameters: { controls: { exclude: 'not-interactive' } },
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        y: { type: 'attribute', name: 'not-interactive' }
+      },
+      args,
+      constants: { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' }
+    });
+  }
+};
+
+/**
  * This shows sd-quickfact in a mobile view. **Please navigate to the `Mobile` story** (you are now on the `Docs` page) to accurately view this behavior.
 
  */
@@ -262,8 +278,9 @@ export const Sample = {
           </sd-quickfact>
         </div>
         <script type="module">
-          // Closes all other quickfacts when one is opened
           const quickfacts = document.querySelectorAll('sd-quickfact');
+
+          // Closes all other quickfacts when one is opened
           quickfacts.forEach(quickfact => {
             quickfact.addEventListener('sd-show', () => {
               quickfacts.forEach(qf => {

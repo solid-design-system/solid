@@ -1,7 +1,9 @@
 import '../icon/icon';
-import { css } from 'lit';
+import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
+import { property } from 'lit/decorators.js';
 import { setDefaultAnimation } from '../../utilities/animation-registry';
+import cx from 'classix';
 import SdAccordion from '../accordion/accordion';
 
 /**
@@ -14,6 +16,47 @@ import SdAccordion from '../accordion/accordion';
  */
 @customElement('sd-quickfact')
 export default class SdQuickfact extends SdAccordion {
+  /**
+   * Determines if the quickfact is not interactive. When set to `true`, the quickfact will not expand or collapse.
+   */
+  @property({ type: Boolean, reflect: true, attribute: 'not-interactive' }) notInteractive = false;
+
+  /** @internal */
+  RenderSummary = () => {
+    return html`
+      <slot
+        name="summary"
+        part="summary"
+        class=${cx('flex flex-auto items-center text-left', this.notInteractive ? 'text-black' : 'text-primary')}
+        >${this.summary}</slot
+      >
+    `;
+  };
+
+  /** @internal */
+  RenderSummaryIcons = () => {
+    return html` <span
+      part="summary-icon"
+      class=${cx(
+        'flex flex-grow-0 flex-shrink-0 flex-auto items-center transition-all ease-in-out duration-300 text-xl',
+        this.open && 'rotate-180',
+        this.notInteractive && 'hidden'
+      )}
+      ><slot name="expand-icon" class=${cx(this.open && 'hidden')}>
+        <sd-icon library="system" name="chevron-down"></sd-icon>
+      </slot>
+      <slot name="collapse-icon" class=${cx(!this.open && 'hidden')}>
+        <sd-icon library="system" name="chevron-down"></sd-icon> </slot
+    ></span>`;
+  };
+
+  /** @internal */
+  RenderDefaultSlot = () => {
+    return html` <div part="content" id="content" class=${cx('overflow-hidden', this.notInteractive && 'hidden')}>
+      <slot part="content__slot" class="block px-4 py-6" role="region" aria-labelledby="header"></slot>
+    </div>`;
+  };
+
   static styles = [
     SdAccordion.styles,
     css`
@@ -71,7 +114,7 @@ export default class SdQuickfact extends SdAccordion {
       }
 
       [part='summary-border'] {
-        display: none;
+        @apply hidden;
       }
     `
   ];
