@@ -2,14 +2,13 @@
 import '../../solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { userEvent } from '@storybook/test';
-import { waitUntil } from '@open-wc/testing-helpers';
 import { withActions } from '@storybook/addon-actions/decorator';
 const { argTypes, parameters } = storybookDefaults('sd-button');
 const { overrideArgs } = storybookHelpers('sd-button');
 const { generateTemplate } = storybookTemplate('sd-button'); // Replace with your custom element tag
 
 export default {
+  tags: ['!dev'],
   title: 'Components/sd-button',
   component: 'sd-button',
   parameters: {
@@ -17,6 +16,12 @@ export default {
     design: {
       type: 'figma',
       url: 'https://www.figma.com/file/fPGhgNZv98U4H69Gu2tlWi/Button?type=design&node-id=13-18&t=jDLqFEdY7ZlOJurc-4'
+    },
+    docs: {
+      description: {
+        component:
+          'Buttons perform various functions (e.g. download, link) or activate other functions (e.g. filter). All buttons can be displayed with or without an icon. On small devices, the buttons are streched to full width.'
+      }
     }
   },
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Default' }),
@@ -25,7 +30,7 @@ export default {
 };
 
 /**
- * Default: This shows sd-button in its default state.
+ * Allows users to perform actions with a single click.
  */
 
 export const Default = {
@@ -35,345 +40,115 @@ export const Default = {
 };
 
 /**
- * The button in all possible combinations of `variant` and `size`.
+ * There are a number of button `variant`s available. Be sure to select the right one for the action you want to make available.
+ *
+ * - `primary` (default): Use the primary button for the most important actions in your interface, such as submitting a form, confirming a decision, or progressing to the next step in a process.
+ * - `secondary`: Not all functions must have primary actions, sometimes the actions are subordinate to the content and all are equally important.
+ * - `tertiary`: Use tertiary buttons for actions like accessing additional options, providing supplemental information, or performing less critical tasks.
+ * - `cta` (Call to Action): The call-to-action button is only used once on a page (main conversion of the page).
  */
 
-export const VariantAndSize = {
-  name: 'Variant × Size',
-  parameters: { controls: { exclude: ['variant', 'size'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        x: { type: 'attribute', name: 'variant' },
-        y: { type: 'attribute', name: 'size' }
-      },
-      args
-    });
-  }
-};
-
-/**
- * The button in all possible combinations of `variant` and `inverted`.
- */
-
-export const VariantAndInverted = {
-  name: 'Variant × Inverted',
-  parameters: { controls: { exclude: ['variant', 'inverted'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        x: { type: 'attribute', name: 'variant' },
-        y: { type: 'attribute', name: 'inverted', values: [false, true] }
-      },
-      args,
-      options: {
-        templateBackgrounds: { alternate: 'y', colors: ['white', 'rgb(var(--sd-color-primary, 0 53 142))'] }
-      }
-    });
-  }
-};
-
-/**
- * Use the `loading` attribute to make a button busy. The width will remain the same as before, preventing adjacent elements from moving around. Clicks will be suppressed until the loading state is removed.
- */
-
-export const Loading = {
-  parameters: { controls: { exclude: ['variant', 'size', 'disabled', 'loading', 'inverted'] } },
-  render: (args: any) => {
-    return html`${generateTemplate({
-      axis: {
-        x: [
-          { type: 'attribute', name: 'variant' },
-          { type: 'attribute', name: 'size' }
-        ],
-        y: { type: 'attribute', name: 'inverted', values: [false, true] }
-      },
-      constants: [
-        { type: 'attribute', name: 'loading', value: true },
-        { type: 'slot', name: 'default', value: 'Loading' }
-      ],
-      args,
-      options: {
-        title: 'disabled=false',
-        templateBackgrounds: { alternate: 'y', colors: ['white', 'rgb(var(--sd-color-primary, 0 53 142))'] }
-      }
-    })}
-    ${generateTemplate({
-      axis: {
-        x: [{ type: 'attribute', name: 'variant' }],
-        y: { type: 'attribute', name: 'inverted', values: [false, true] }
-      },
-      constants: [
-        { type: 'attribute', name: 'loading', value: true },
-        { type: 'attribute', name: 'disabled', value: true },
-        { type: 'slot', name: 'default', value: 'Loading' }
-      ],
-      args,
-      options: {
-        title: 'disabled=true',
-        templateBackgrounds: { alternate: 'y', colors: ['white', 'rgb(var(--sd-color-primary, 0 53 142))'] }
-      }
-    })}`;
-  }
-};
-
-/**
- * Use the `inverted` attribute to make a button with inverted colors.
- */
-
-export const Inverted = {
-  parameters: { controls: { exclude: ['variant', 'disabled', 'loading'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        x: [
-          { type: 'attribute', name: 'variant' },
-          { type: 'attribute', name: 'disabled' },
-          { type: 'attribute', name: 'loading' }
-        ]
-      },
-      constants: { type: 'attribute', name: 'inverted', value: true },
-      options: { templateBackground: 'rgb(var(--sd-color-primary, 0 53 142))' },
-      args
-    });
-  }
-};
-
-/**
- * Use the `disabled` attribute to disable a button. Clicks will be suppressed until the disabled state is removed.
- */
-
-export const Disabled = {
-  parameters: { controls: { exclude: ['variant', 'size', 'disabled', 'loading', 'inverted'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        x: [
-          { type: 'attribute', name: 'variant' },
-          { type: 'attribute', name: 'size' },
-          { type: 'attribute', name: 'loading' }
-        ],
-        y: { type: 'attribute', name: 'inverted', values: [false, true] }
-      },
-      constants: { type: 'attribute', name: 'disabled', value: true },
-      args,
-      options: {
-        templateBackgrounds: { alternate: 'y', colors: ['white', 'rgb(var(--sd-color-primary, 0 53 142))'] }
-      }
-    });
-  }
-};
-
-/**
- * Use the `icon-left` and `icon-right` slots to add icons.
- */
-
-export const IconSlots = {
-  parameters: { controls: { exclude: ['size', 'default', 'icon-left', 'icon-right'] } },
-  render: (args: any) => {
+export const Variants = {
+  render: () => {
     return html`
-      ${['sm', 'md', 'lg'].map(size =>
-        // We have to compare different types of icons: "square", "wide" and "tall" ones.
-        generateTemplate({
-          axis: {
-            x: {
-              type: 'slot',
-              name: 'icon-right',
-              values: [
-                { value: '', title: '–' },
-                {
-                  value: '<sd-icon library="global-resources" name="system/picture" slot="icon-right"></sd-icon>',
-                  title: 'system/picture'
-                },
-                {
-                  value:
-                    '<sd-icon library="global-resources" name="system/multi-functions" slot="icon-right"></sd-icon>',
-                  title: 'system/multi-functions'
-                },
-                {
-                  value: '<sd-icon library="global-resources" name="system/minus" slot="icon-right"></sd-icon>',
-                  title: 'system/minus'
-                }
-              ]
-            },
-            y: {
-              type: 'slot',
-              name: 'icon-left',
-              values: [
-                { value: '', title: '–' },
-                {
-                  value: '<sd-icon library="global-resources" name="system/picture" slot="icon-left"></sd-icon>',
-                  title: 'system/picture'
-                },
-                {
-                  value:
-                    '<sd-icon library="global-resources" name="system/multi-functions" slot="icon-left"></sd-icon>',
-                  title: 'system/multi-functions'
-                },
-                {
-                  value: '<sd-icon library="global-resources" name="system/minus" slot="icon-left"></sd-icon>',
-                  title: 'system/minus'
-                }
-              ]
-            }
-          },
-          constants: [{ type: 'attribute', name: 'size', value: size }],
-          args,
-          options: { title: `size="${size}"` }
-        })
-      )}
+      <div class="flex gap-12">
+        <sd-button variant="primary">Primary</sd-button>
+        <sd-button variant="secondary">Secondary</sd-button>
+        <sd-button variant="tertiary">Tertiary</sd-button>
+        <sd-button variant="cta">CTA</sd-button>
+      </div>
     `;
   }
 };
 
 /**
- * When inserting an `<sd-icon>` into the default slot, the button will be rendered as an icon-only button.
+ * The default button `size` is `lg`. In tight spaces, consider using the `md` button size as an alternative. For very tight spaces, opt for the `sm` button size.
  */
-
-export const IconOnly = {
-  name: 'Icon Only',
-  parameters: { controls: { exclude: ['size', 'inverted'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        x: { type: 'attribute', name: 'size' }
-      },
-      constants: {
-        type: 'slot',
-        name: 'default',
-        value: '<sd-icon library="global-resources" name="system/picture"></sd-icon>'
-      },
-      args
-    });
-  }
-};
-
-/**
- * Use the `base`, `label`, `icon-left` and `icon-right` part selectors to customize the button.
- */
-
-export const Parts = {
-  parameters: {
-    controls: { exclude: ['base', 'label', 'icon-left', 'icon-right'] }
-  },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: {
-          type: 'template',
-          name: 'sd-button::part(...){outline: solid 2px red}',
-          values: ['base', 'label', 'icon-left', 'icon-right'].map(part => {
-            return {
-              title: part,
-              value: `<style>#part-${part} sd-button::part(${part}){outline: solid 2px red}</style><div id="part-${part}">%TEMPLATE%</div>`
-            };
-          })
-        }
-      },
-      constants: [
-        {
-          type: 'slot',
-          name: 'icon-right',
-          value: '<sd-icon library="global-resources" name="system/picture" slot="icon-right"></sd-icon>'
-        },
-        {
-          type: 'slot',
-          name: 'icon-left',
-          value: '<sd-icon library="global-resources" name="system/picture" slot="icon-left"></sd-icon>'
-        }
-      ],
-      args
-    });
-  }
-};
-
-/**
- * sd-buttons are fully accessibile via keyboard.
- */
-
-export const Mouseless = {
-  render: (args: any) => {
-    return html`<div class="mouseless">${generateTemplate({ args })}</div>`;
-  },
-
-  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
-    const el = canvasElement.querySelector('.mouseless sd-button');
-    await waitUntil(() => el?.shadowRoot?.querySelector('button'));
-    // We have to catch the event as otherwise Storybook will break
-    await userEvent.type(el!.shadowRoot!.querySelector('button')!, '{return}', { pointerEventsCheck: 0 });
-  }
-};
-
-/**
- * Here are some examples of sd-button working with sd-badge.
- */
-export const Samples = {
+export const Size = {
   render: () => {
-    const iconLeft = html`<sd-icon slot="icon-left" library="global-resources" name="system/picture"></sd-icon>`;
-    const iconOnly = html`<sd-icon library="global-resources" name="system/picture"></sd-icon>`;
-
     return html`
-      <style>
-        .story-wrapper {
-          display: inline-block;
-          max-width: 1200px;
+      <div class="flex gap-12">
+        <sd-button size="lg">Large</sd-button>
+        <sd-button size="md">Medium</sd-button>
+        <sd-button size="sm">Small</sd-button>
+      </div>
+    `;
+  }
+};
+
+/**
+ * All button variants can have a `loading` state.
+ */
+
+export const Loading = {
+  render: () => {
+    return html`
+      <div class="flex gap-12">
+        <sd-button variant="primary" loading>Loading</sd-button>
+        <sd-button variant="secondary" loading>Loading</sd-button>
+        <sd-button variant="tertiary" loading>Loading</sd-button>
+        <sd-button variant="cta" loading>Loading</sd-button>
+      </div>
+    `;
+  }
+};
+
+/**
+ * All button variants can be disabled.
+ */
+
+export const Disabled = {
+  render: () => {
+    return html`
+      <div class="flex gap-12">
+        <sd-button variant="primary" disabled>Disabled</sd-button>
+        <sd-button variant="secondary" disabled>Disabled</sd-button>
+        <sd-button variant="tertiary" disabled>Disabled</sd-button>
+        <sd-button variant="cta" disabled>Disabled</sd-button>
+      </div>
+    `;
+  }
+};
+
+/**
+ * Buttons can be inverted when used on primary background.
+ */
+
+export const Inverted = {
+  render: () => {
+    return html`
+      <div class="flex gap-12">
+        <sd-button variant="primary" inverted>Inverted</sd-button>
+        <sd-button variant="secondary" inverted>Inverted</sd-button>
+        <sd-button variant="tertiary" inverted>Inverted</sd-button>
+        <sd-button variant="cta" inverted>Inverted</sd-button>
+      </div>
+    `;
+  },
+  parameters: {
+    backgrounds: {
+      default: 'primary',
+      values: [
+        {
+          name: 'primary',
+          value: 'rgb(var(--sd-color-primary, 0 53 142))'
         }
-        .headline {
-          padding: 16px;
-          background: #e0e0e0;
-          text-align: left;
-          font-size: 14px;
-          font-weight: bold;
-          width: 100%;
-          box-sizing: border-box;
-        }
-        div:not(:first-of-type).headline {
-          margin-top: 72px;
-        }
-      </style>
-      <div class="story-wrapper">
-        <div class="headline">sd-button with sd-badge</div>
-        <div class="flex flex-col justify-around gap-8 h-40 w-min m-4">
-          <section class="flex p-4 gap-10 items-center">
-            <sd-button>Label <sd-badge>8</sd-badge></sd-button>
-            <sd-button>Label <sd-badge variant="success">999+</sd-badge></sd-button>
-            <sd-button variant="secondary" size="md"> ${iconLeft}Label<sd-badge>8</sd-badge></sd-button>
-            <sd-button variant="secondary" size="md"
-              >${iconOnly}<sd-badge variant="success" size="md">8</sd-badge></sd-button
-            >
+      ]
+    }
+  }
+};
 
-            <sd-button variant="tertiary" size="md">
-              ${iconOnly}
-              <sd-badge class="mt-2.5 mr-2.5" variant="error" size="md">8</sd-badge>
-            </sd-button>
+/**
+ * Use the `icon-left` or `icon-right` slot to add a system icon.
+ */
 
-            <sd-button variant="tertiary" size="md">
-              ${iconOnly}
-              <sd-badge class="mt-[0.75rem] mr-[0.75rem]" size="sm"></sd-badge>
-            </sd-button>
-          </section>
-
-          <section class="flex p-4 gap-10 bg-primary items-center">
-            <sd-button inverted>Label <sd-badge inverted>8</sd-badge></sd-button>
-            <sd-button inverted>Label <sd-badge inverted variant="success">999+</sd-badge></sd-button>
-            <sd-button inverted variant="secondary" size="md">
-              ${iconLeft}Label<sd-badge inverted>8</sd-badge></sd-button
-            >
-            <sd-button inverted variant="secondary" size="md"
-              >${iconOnly}<sd-badge inverted variant="success" size="md">8</sd-badge></sd-button
-            >
-
-            <sd-button inverted variant="tertiary" size="md">
-              ${iconOnly}
-              <sd-badge inverted class="mt-2.5 mr-2.5" variant="error" size="md">8</sd-badge>
-            </sd-button>
-
-            <sd-button inverted variant="tertiary" size="md">
-              ${iconOnly}
-              <sd-badge inverted class="mt-[0.75rem] mr-[0.75rem]" size="sm"></sd-badge>
-            </sd-button>
-          </section>
-        </div>
+export const Icon = {
+  render: () => {
+    return html`
+      <div class="flex gap-12">
+        <sd-button>Icon left<sd-icon name="system/image" slot="icon-left"></sd-icon></sd-button>
+        <sd-button>Icon right<sd-icon name="system/image" slot="icon-right"></sd-icon></sd-button>
+        <sd-button><sd-icon name="system/image"></sd-icon></sd-button>
       </div>
     `;
   }
