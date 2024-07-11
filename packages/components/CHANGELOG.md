@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v3.9.0](https://github.com/solid-design-system/solid/compare/components/3.8.1...components/3.9.0) (2024-07-11)
+
+
+### Features
+
+* ✨ implement new brandshape variants ([#1180](https://github.com/solid-design-system/solid/issues/1180)) ([aa47c64](https://github.com/solid-design-system/solid/commit/aa47c6485208bc435e033f7b92deb92d1fa541bc))
+
+### 📈 Stats
+* Bundle size (uncompressed): 325 KB (+3 KB / +1%)
+* Bundle size (gzipped): 77 KB (+1 KB / +1%)
+
 # [@solid-design-system/components-v3.8.1](https://github.com/solid-design-system/solid/compare/components/3.8.0...components/3.8.1) (2024-07-10)
 
 
