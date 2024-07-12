@@ -2,7 +2,7 @@
 name: Simple Dev Feature Issue
 about: Simple Feature Issue Template for Development
 title: 'feat[dev]: ✨ [FEATURE_NAME]'
-labels: ''
+labels: '🔧 code'
 assignees: ''
 
 ---
