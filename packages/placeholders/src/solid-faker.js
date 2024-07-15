@@ -12,6 +12,7 @@ export default class SolidFaker {
      * @type {number|undefined}
      */
     this.seedValue = seedValue;
+    this.originalSeed = seedValue; // Store the original seed
     /**
      * Array containing Lorem Ipsum words.
      * @type {string[]}
@@ -95,6 +96,7 @@ export default class SolidFaker {
    */
   seed(seed) {
     this.seedValue = seed !== undefined ? seed : Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
+    this.originalSeed = this.seedValue; // Update the original seed
   }
 
   /**
@@ -109,7 +111,8 @@ export default class SolidFaker {
       // Math.sin() generates a sine value between -1 and 1 based on the seed value
       // Multiply by 10000 to scale the value for better distribution
       // Use modulo to ensure the index stays within the range of the loremIpsumWords array length
-      return Math.floor(Math.abs(Math.sin(this.seedValue++) * 10000) % this.loremIpsumWords.length);
+      const x = Math.sin(this.seedValue++) * 10000;
+      return Math.floor((x - Math.floor(x)) * this.loremIpsumWords.length);
     }
 
     // If no seed value is defined, generate a random index normally
@@ -125,6 +128,9 @@ export default class SolidFaker {
    * @returns {string} - Random words joined together.
    */
   words(numWords, capitalizeType = 0) {
+    if (this.originalSeed !== undefined) {
+      this.seedValue = this.originalSeed; // Reset seed to original for consistent output
+    }
     const result = [];
     for (let i = 0; i < numWords; i++) {
       const randomIndex = this.getRandomIndex();
@@ -143,6 +149,9 @@ export default class SolidFaker {
    * @returns {string} - Random sentences joined together.
    */
   sentences(numSentences) {
+    if (this.originalSeed !== undefined) {
+      this.seedValue = this.originalSeed; // Reset seed to original for consistent output
+    }
     const result = [];
     for (let i = 0; i < numSentences; i++) {
       const numWords = Math.floor(Math.random() * 10) + 5; // Random number of words per sentence (5 to 14)
@@ -158,6 +167,9 @@ export default class SolidFaker {
    * @returns {string} - Random paragraphs joined together.
    */
   paragraphs(numParagraphs) {
+    if (this.originalSeed !== undefined) {
+      this.seedValue = this.originalSeed; // Reset seed to original for consistent output
+    }
     const result = [];
     for (let i = 0; i < numParagraphs; i++) {
       const numSentences = Math.floor(Math.random() * 5) + 3; // Random number of sentences per paragraph (3 to 7)
