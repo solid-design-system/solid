@@ -1,7 +1,9 @@
 import { classMap } from 'lit/directives/class-map.js';
 import { getWcStorybookHelpers } from '@mariohamann/wc-storybook-helpers';
 import { html, unsafeStatic } from 'lit/static-html.js';
+import { sentenceCase } from 'change-case';
 import loadCustomElements from './fetch-cem';
+import storyBookPreviewConfig from '../../.storybook/preview.js';
 
 type ArgTypesDefinition = 'attribute' | 'property' | 'slot' | 'cssPart' | 'cssProperty';
 
@@ -564,5 +566,95 @@ export const storybookUtilities = {
       .replace(/<script>\s*component = document\.querySelector\('(.+?)'\);\s*<\/script>/g, '');
     // return templateInnerHTML;
     return templateInnerHTML;
+  },
+
+  /**
+   * Creates a bundled story for non-interactive stories, which does a chromatic screenshot
+   *
+   * @param stories - all non-interactive stories which should be bundled
+   * @param options - When numeric, this is used as the height of the iframe. Options object otherwise
+   * @returns the bundled story
+   *
+   * @example Simple usage. Will use 150 Pixels as height
+   * ```
+   * generateScreenshotStory({
+   *   story1,
+   *   story2,
+   * });
+   * ```
+   *
+   * @example Using another height
+   * ```
+   * generateScreenshotStory({
+   *   story1,
+   *   story2,
+   * }, 300);
+   * ```
+   *
+   * @example Configuring an after render call and custom height
+   * ```
+   * generateScreenshotStory({
+   *   story1,
+   *   story2,
+   * }, {
+   *   afterRender: html`I will be available as html!`,
+   *   heightPx: 300,
+   * });
+   * ```
+   *
+   * @example Adding a custom option for chromatics configuration
+   * // @see  For this example, see https://docs.chromatic.com/docs/delay/
+   * generateScreenshotStory({
+   *   story1,
+   *   story2,
+   * }, {
+   *   additionalChromaticOptions: {
+   *     delay: 500,
+   *   }
+   * });
+   * ```
+   */
+  generateScreenshotStory: (
+    stories: { [key: string]: StoryObj },
+    options: string | screenshotStoryOptions = 'auto'
+  ): StoryObj => {
+    const usedOptions = !isNaN(options as number)
+      ? ({ heightPx: options } as screenshotStoryOptions)
+      : (options as screenshotStoryOptions);
+
+    const { afterRender = '', additionalChromaticOptions = {}, height = 'auto', styleHeading = {} } = usedOptions;
+    const additionalStylesHeading = Object.entries(styleHeading)
+      .map(([key, value]) => `${key}: ${value};`)
+      .join(' ');
+
+    return {
+      parameters: {
+        chromatic: {
+          ...storyBookPreviewConfig?.parameters?.chromatic,
+          ...additionalChromaticOptions,
+          disableSnapshot: false
+        },
+        docs: {
+          disable: true
+        }
+      },
+      render: (args, context) => html`
+        ${Object.entries(stories).map(([storyName, story]) => {
+          const name = story.name ?? sentenceCase(storyName);
+          return html`
+            <div style="height: ${height}; margin: 4rem">
+              <h3
+                data-chromatic="ignore"
+                style="margin-top: 6rem; margin-bottom: 1rem; font-size: 1.25rem; font-weight: bold; ${additionalStylesHeading}"
+              >
+                ${name}
+              </h3>
+              ${story.render?.(args, context)}
+            </div>
+          `;
+        })}
+        ${afterRender}
+      `
+    };
   }
 };

@@ -1,20 +1,27 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import '../../solid-components';
 import { html } from 'lit-html';
-import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
+import {
+  storybookDefaults,
+  storybookHelpers,
+  storybookTemplate,
+  storybookUtilities
+} from '../../../scripts/storybook/helper';
 import { userEvent } from '@storybook/test';
 import { waitUntil } from '@open-wc/testing-helpers';
 import { withActions } from '@storybook/addon-actions/decorator';
 const { argTypes, parameters } = storybookDefaults('sd-button');
 const { overrideArgs } = storybookHelpers('sd-button');
 const { generateTemplate } = storybookTemplate('sd-button'); // Replace with your custom element tag
+const { generateScreenshotStory } = storybookUtilities;
 
 export default {
-  title: 'Components/sd-button/Tests',
+  title: 'Components/sd-button/Test',
   component: 'sd-button',
-  tags: ['!autodocs', '!dev'],
+  tags: ['!autodocs'],
   parameters: {
     ...parameters,
+    controls: { include: [] },
     design: {
       type: 'figma',
       url: 'https://www.figma.com/file/fPGhgNZv98U4H69Gu2tlWi/Button?type=design&node-id=13-18&t=jDLqFEdY7ZlOJurc-4'
@@ -25,23 +32,15 @@ export default {
   decorators: [withActions] as any
 };
 
-/**
- * Default: This shows sd-button in its default state.
- */
-
 export const Default = {
+  name: 'Default',
   render: (args: any) => {
     return generateTemplate({ args });
   }
 };
 
-/**
- * The button in all possible combinations of `variant` and `size`.
- */
-
 export const VariantAndSize = {
   name: 'Variant × Size',
-  parameters: { controls: { exclude: ['variant', 'size'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -53,13 +52,8 @@ export const VariantAndSize = {
   }
 };
 
-/**
- * The button in all possible combinations of `variant` and `inverted`.
- */
-
 export const VariantAndInverted = {
   name: 'Variant × Inverted',
-  parameters: { controls: { exclude: ['variant', 'inverted'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -74,12 +68,8 @@ export const VariantAndInverted = {
   }
 };
 
-/**
- * Use the `loading` attribute to make a button busy. The width will remain the same as before, preventing adjacent elements from moving around. Clicks will be suppressed until the loading state is removed.
- */
-
 export const Loading = {
-  parameters: { controls: { exclude: ['variant', 'size', 'disabled', 'loading', 'inverted'] } },
+  name: 'Loading',
   render: (args: any) => {
     return html`${generateTemplate({
       axis: {
@@ -118,12 +108,8 @@ export const Loading = {
   }
 };
 
-/**
- * Use the `inverted` attribute to make a button with inverted colors.
- */
-
 export const Inverted = {
-  parameters: { controls: { exclude: ['variant', 'disabled', 'loading'] } },
+  name: 'Inverted',
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -140,12 +126,8 @@ export const Inverted = {
   }
 };
 
-/**
- * Use the `disabled` attribute to disable a button. Clicks will be suppressed until the disabled state is removed.
- */
-
 export const Disabled = {
-  parameters: { controls: { exclude: ['variant', 'size', 'disabled', 'loading', 'inverted'] } },
+  name: 'Disabled',
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -165,12 +147,8 @@ export const Disabled = {
   }
 };
 
-/**
- * Use the `icon-left` and `icon-right` slots to add icons.
- */
-
 export const IconSlots = {
-  parameters: { controls: { exclude: ['size', 'default', 'icon-left', 'icon-right'] } },
+  name: 'Icon Slots',
   render: (args: any) => {
     return html`
       ${['sm', 'md', 'lg'].map(size =>
@@ -227,13 +205,8 @@ export const IconSlots = {
   }
 };
 
-/**
- * When inserting an `<sd-icon>` into the default slot, the button will be rendered as an icon-only button.
- */
-
 export const IconOnly = {
   name: 'Icon Only',
-  parameters: { controls: { exclude: ['size', 'inverted'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -249,14 +222,8 @@ export const IconOnly = {
   }
 };
 
-/**
- * Use the `base`, `label`, `icon-left` and `icon-right` part selectors to customize the button.
- */
-
 export const Parts = {
-  parameters: {
-    controls: { exclude: ['base', 'label', 'icon-left', 'icon-right'] }
-  },
+  name: 'Parts (Debug)',
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -288,11 +255,8 @@ export const Parts = {
   }
 };
 
-/**
- * sd-buttons are fully accessibile via keyboard.
- */
-
 export const Mouseless = {
+  name: 'Mouseless',
   render: (args: any) => {
     return html`<div class="mouseless">${generateTemplate({ args })}</div>`;
   },
@@ -304,3 +268,16 @@ export const Mouseless = {
     await userEvent.type(el!.shadowRoot!.querySelector('button')!, '{return}', { pointerEventsCheck: 0 });
   }
 };
+
+export const Screenshots = generateScreenshotStory([
+  Default,
+  VariantAndSize,
+  VariantAndInverted,
+  Loading,
+  Inverted,
+  Disabled,
+  IconSlots,
+  IconOnly,
+  Parts,
+  Mouseless
+]);

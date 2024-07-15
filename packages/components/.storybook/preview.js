@@ -4,6 +4,48 @@ import '../src/styles/tailwind.css';
 import { registerIconLibrary } from '../src/utilities/icon-library';
 import { storybookUtilities } from '../scripts/storybook/helper';
 
+const preview = {
+  decorators: [],
+  parameters: {
+    chromatic: {
+      disableSnapshot: true
+    },
+    docs: {
+      story: { inline: true },
+      toc: true,
+      source: { transform: code => storybookUtilities.codeOptimizer(code), format: 'html' }
+    },
+    backgrounds: {
+      default: 'white',
+      values: [
+        {
+          name: 'white',
+          value: '#fff'
+        },
+        {
+          name: 'primary',
+          value: 'rgb(var(--sd-color-primary, 0 53 142))'
+        },
+        {
+          name: 'primary-100',
+          value: 'rgb(var(--sd-color-primary-100, 236 240 249))'
+        },
+        {
+          name: 'neutral-200',
+          value: 'rgb(var(--sd-color-neutral-200, 242 242 242))'
+        }
+      ]
+    },
+    options: {
+      storySort: {
+        order: ['*', 'Legal']
+      }
+    }
+  }
+};
+
+export default preview;
+
 /**
  * This registers iconLibraries for the sd-icon component
  */
@@ -82,40 +124,6 @@ registerIconLibrary('global-resources-overriden', {
   // We need currentColor as the main color for the icons
   mutator: svg => svg.setAttribute('fill', 'currentColor')
 });
-
-export const parameters = {
-  docs: {
-    story: { inline: true },
-    toc: true,
-    source: { transform: code => storybookUtilities.codeOptimizer(code), format: 'html' }
-  },
-  backgrounds: {
-    default: 'white',
-    values: [
-      {
-        name: 'white',
-        value: '#fff'
-      },
-      {
-        name: 'primary',
-        value: 'rgb(var(--sd-color-primary, 0 53 142))'
-      },
-      {
-        name: 'primary-100',
-        value: 'rgb(var(--sd-color-primary-100, 236 240 249))'
-      },
-      {
-        name: 'neutral-200',
-        value: 'rgb(var(--sd-color-neutral-200, 242 242 242))'
-      }
-    ]
-  },
-  options: {
-    storySort: {
-      order: ['*', 'Legal']
-    }
-  }
-};
 
 /**
  * This mocks the fetch API to return a mocked HTML response

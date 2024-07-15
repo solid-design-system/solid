@@ -20,7 +20,7 @@ export default {
     docs: {
       description: {
         component:
-          'Buttons perform various functions (e.g. download, link) or activate other functions (e.g. filter). All buttons can be displayed with or without an icon. On small devices, the buttons are streched to full width.'
+          '<p><b>Allows users to perform actions with a single click.</b></p><p>Buttons perform various functions (e.g. download, link) or activate other functions (e.g. filter). All buttons can be displayed with or without an icon. On small devices, the buttons are streched to full width.</p>'
       }
     }
   },
@@ -28,10 +28,6 @@ export default {
   argTypes,
   decorators: [withActions] as any
 };
-
-/**
- * Allows users to perform actions with a single click.
- */
 
 export const Default = {
   render: (args: any) => {
