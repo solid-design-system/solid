@@ -128,4 +128,12 @@
     padding-right: unset !important;
     overflow: unset !important;
   }
+
+  /**
+    * Optimize autodocs for templates
+    */
+  [id^='anchor--templates-'].sb-anchor:first-of-type,
+  [id^='anchor--templates-'].sb-anchor:first-of-type + h2 {
+    display: none;
+  }
 </style>
