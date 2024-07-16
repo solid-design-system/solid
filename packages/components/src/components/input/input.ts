@@ -554,7 +554,6 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               @focus=${this.handleFocus}
               @blur=${this.handleBlur}
             />
-            <!-- TODO: substitute text-neutral-400 for text-neutral-500 when available! -->
             ${hasClearIcon
               ? html`
                   <button
@@ -567,7 +566,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                   >
                     <slot name="clear-icon">
                       <sd-icon
-                        class=${cx('text-neutral-500', iconSize)}
+                        class=${cx('text-neutral-800', iconSize)}
                         library="system"
                         name="closing-round"
                       ></sd-icon>
