@@ -295,6 +295,8 @@ export const Sample = {
             const summaries = [];
             let summaryHeights = [];
 
+            const entries = {};
+
             // Closes all other quickfacts when one is opened
             quickfacts.forEach(quickfact => {
               quickfact.addEventListener('sd-show', () => {
@@ -305,55 +307,43 @@ export const Sample = {
                 });
               });
 
-              // summaries.push(quickfact.shadowRoot.querySelector('[part~="summary"]'));
+              summaries.push(quickfact.shadowRoot.querySelector('[part~="summary"]'));
             });
 
-            const maxHeight = Math.max(...Array.from(summaries).map(summary => summary.clientHeight));
-            let summaryHeights = Array.from(summaries).map(summary => summary.clientHeight);
+            /**  const maxHeight = Math.max(...Array.from(summaries).map(summary => summary.clientHeight));
+             let summaryHeights = Array.from(summaries).map(summary => summary.clientHeight);
 
 
-            summaries.forEach(summary => {
-              summary.style.height = heightAsString;
-            });
-
+             summaries.forEach(summary => {
+               summary.style.height = heightAsString;
+             });*/
             const grid = document.querySelector('.grouping-sample');
             const gridComputedStyle = window.getComputedStyle(grid);
 
             // get number of grid rows
-            const gridRowCount = gridComputedStyle.getPropertyValue('grid-template-rows').split(' ').length;
+            const numberOfRows = gridComputedStyle.getPropertyValue('grid-template-rows').split(' ').length;
 
             // get number of grid columns
             const numberOfColumns = gridComputedStyle.getPropertyValue('grid-template-columns').split(' ').length;
 
-            console.log(gridRowCount, numberOfColumns);
+            let rowTemp = 1;
+            let colTemp = 1;
 
+            let positions = [];
+            while (colTemp <= numberOfColumns) {
+              while (rowTemp <= numberOfRows) {
+                positions.push({ row: rowTemp, column: colTemp });
+                rowTemp++;
+              }
+              rowTemp = 1;
+              colTemp++;
+            }
 
+            quickfacts.forEach((quickfact, index) => {
+              entries[index] = { quickfact: quickfact, position: positions[index] };
+            });
 
-            function getHeadlineHeights(rowLength: number): number[][] {
-              let summaryHeights = Array.from(summaries).map(summary => summary.clientHeight);
-
-            return quickfacts
-              .map((e) => e.shadowRoot.querySelector('.headline').offsetHeight)
-              .reduce((aggr, current, i) => {
-                aggr[(i - (i % rowLength)) / rowLength] = [
-                  ...(aggr[(i - (i % rowLength)) / rowLength] || []),
-                  current,
-                ];
-                return aggr;
-              }, []);
-          }
-
-
-            function getMaxHeadlineHeightForRow(rowIndex: number) {
-            return Math.max(getHeadlineHeights(numberOfColumns)[rowIndex]);
-          }
-
-            function getRowForQuickfact(quickfact): number {
-            return (
-              (quickfacts.indexOf(quickfact) -
-                (quickfacts.indexOf(quickfact) % numberOfColumns)) / numberOfColumns
-            );
-          }
+            console.log(entries);
           });
         </script>
       </div>
