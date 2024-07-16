@@ -227,7 +227,7 @@ export const Mouseless = {
 
 export const Sample = {
   name: 'Sample: Grouping',
-  parameters: { ...parameters, docs: { story: { inline: false, height: '250px' } } },
+  parameters: { ...parameters, docs: { story: { inline: false, height: '1000px' } } },
   render: () => {
     return html`
       <div>
@@ -286,34 +286,14 @@ export const Sample = {
               <div class="text-base font-normal leading-normal sm:text-xl">coocoo</div>
             </div>
           </sd-quickfact>
-
-          <sd-quickfact class="fourth">
-            <sd-icon name="content/image" color="primary" aria-hidden="true" library="default" slot="icon"></sd-icon>
-
-            <div class="slot slot--border slot--text h-12">Quickfact 4</div>
-
-            <div slot="summary">
-              <p class="text-base font-normal leading-normal sm:text-3xl sm:leading-tight">Lorem Ipsum</p>
-              <div class="text-base font-normal leading-normal sm:text-xl">Con sectetur adipiscing elit</div>
-            </div>
-          </sd-quickfact>
-
-          <sd-quickfact class="fifth">
-            <sd-icon name="content/image" color="primary" aria-hidden="true" library="default" slot="icon"></sd-icon>
-
-            <div class="slot slot--border slot--text h-12">Quickfact 5</div>
-
-            <div slot="summary">
-              <p class="text-base font-normal leading-normal sm:text-3xl sm:leading-tight">Lorem Ipsum</p>
-              <div class="text-base font-normal leading-normal sm:text-xl">Con sectetur adipiscing elit</div>
-            </div>
-          </sd-quickfact>
         </div>
         <script type="module">
           // Wait for custom elements to be defined
           await Promise.all([customElements.whenDefined('sd-quickfact')]).then(() => {
             const quickfacts = document.querySelectorAll('sd-quickfact');
+            let rows = 0;
             const summaries = [];
+            let summaryHeights = [];
 
             // Closes all other quickfacts when one is opened
             quickfacts.forEach(quickfact => {
@@ -325,16 +305,55 @@ export const Sample = {
                 });
               });
 
-              summaries.push(quickfact.shadowRoot.querySelector('[part~="summary"]'));
+              // summaries.push(quickfact.shadowRoot.querySelector('[part~="summary"]'));
             });
 
-            /**  const maxHeight = Math.max(...Array.from(summaries).map(summary => summary.clientHeight));
-            const heightAsString = maxHeight.toString() + 'px';
+            const maxHeight = Math.max(...Array.from(summaries).map(summary => summary.clientHeight));
+            let summaryHeights = Array.from(summaries).map(summary => summary.clientHeight);
 
 
             summaries.forEach(summary => {
               summary.style.height = heightAsString;
-            }); */
+            });
+
+            const grid = document.querySelector('.grouping-sample');
+            const gridComputedStyle = window.getComputedStyle(grid);
+
+            // get number of grid rows
+            const gridRowCount = gridComputedStyle.getPropertyValue('grid-template-rows').split(' ').length;
+
+            // get number of grid columns
+            const numberOfColumns = gridComputedStyle.getPropertyValue('grid-template-columns').split(' ').length;
+
+            console.log(gridRowCount, numberOfColumns);
+
+
+
+            function getHeadlineHeights(rowLength: number): number[][] {
+              let summaryHeights = Array.from(summaries).map(summary => summary.clientHeight);
+
+            return quickfacts
+              .map((e) => e.shadowRoot.querySelector('.headline').offsetHeight)
+              .reduce((aggr, current, i) => {
+                aggr[(i - (i % rowLength)) / rowLength] = [
+                  ...(aggr[(i - (i % rowLength)) / rowLength] || []),
+                  current,
+                ];
+                return aggr;
+              }, []);
+          }
+
+
+            function getMaxHeadlineHeightForRow(rowIndex: number) {
+            return Math.max(getHeadlineHeights(numberOfColumns)[rowIndex]);
+          }
+
+            function getRowForQuickfact(quickfact): number {
+            return (
+              (quickfacts.indexOf(quickfact) -
+                (quickfacts.indexOf(quickfact) % numberOfColumns)) / numberOfColumns
+            );
+          }
           });
         </script>
       </div>
