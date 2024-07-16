@@ -234,25 +234,32 @@ export const Sample = {
         <style>
           @media (min-width: 640px) {
             .grouping-sample {
-              flex-direction: row;
+              display: grid;
+              grid-template-columns: repeat(auto-fill, 300px);
+              gap: 1rem;
+              justify-content: space-evenly;
+              justify-items: center;
+              align-content: space-evenly;
+              align-items: center;
             }
 
             .grouping-sample sd-quickfact::part(content) {
               position: absolute;
               width: 100%;
               left: 0;
+              top: 100%;
             }
           }
         </style>
-        <div class="grouping-sample w-full flex flex-col flex-wrap relative justify-between">
-          <sd-quickfact class="first max-w-[50%]">
+        <div class="grouping-sample relative">
+          <sd-quickfact class="first">
             <sd-icon name="content/image" color="primary" aria-hidden="true" library="default" slot="icon"></sd-icon>
 
             <div class="slot slot--border slot--text h-12">Quickfact 1</div>
 
             <div slot="summary">
               <p class="text-base font-normal leading-normal sm:text-3xl sm:leading-tight">
-                Con sectetur adipiscing elit Con sectetur adipiscing elit Con sectetur adipiscing elit
+                Con sectetur adipiscing elit Con sectetur
               </p>
               <div class="text-base font-normal leading-normal sm:text-xl">Con sectetur adipiscing elit</div>
             </div>
@@ -276,14 +283,14 @@ export const Sample = {
 
             <div slot="summary">
               <p class="text-base font-normal leading-normal sm:text-3xl sm:leading-tight">Lorem Ipsum</p>
-              <div class="text-base font-normal leading-normal sm:text-xl">c</div>
+              <div class="text-base font-normal leading-normal sm:text-xl">coocoo</div>
             </div>
           </sd-quickfact>
 
           <sd-quickfact class="fourth">
             <sd-icon name="content/image" color="primary" aria-hidden="true" library="default" slot="icon"></sd-icon>
 
-            <div class="slot slot--border slot--text h-12">Quickfact 2</div>
+            <div class="slot slot--border slot--text h-12">Quickfact 4</div>
 
             <div slot="summary">
               <p class="text-base font-normal leading-normal sm:text-3xl sm:leading-tight">Lorem Ipsum</p>
@@ -294,7 +301,7 @@ export const Sample = {
           <sd-quickfact class="fifth">
             <sd-icon name="content/image" color="primary" aria-hidden="true" library="default" slot="icon"></sd-icon>
 
-            <div class="slot slot--border slot--text h-12">Quickfact 3</div>
+            <div class="slot slot--border slot--text h-12">Quickfact 5</div>
 
             <div slot="summary">
               <p class="text-base font-normal leading-normal sm:text-3xl sm:leading-tight">Lorem Ipsum</p>
@@ -321,17 +328,13 @@ export const Sample = {
               summaries.push(quickfact.shadowRoot.querySelector('[part~="summary"]'));
             });
 
-            const maxHeight = Math.max(...Array.from(summaries).map(summary => summary.clientHeight));
+            /**  const maxHeight = Math.max(...Array.from(summaries).map(summary => summary.clientHeight));
             const heightAsString = maxHeight.toString() + 'px';
-            console.log(heightAsString);
+
 
             summaries.forEach(summary => {
               summary.style.height = heightAsString;
-            });
-
-            // find the number of rows and columns in grouping-sample
-            const groupingSample = document.querySelector('.grouping-sample');
-            const rows = groupingSample.childElementCount;
+            }); */
           });
         </script>
       </div>
