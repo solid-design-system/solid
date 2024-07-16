@@ -12,6 +12,10 @@ import SdAccordion from '../accordion/accordion';
  * @status stable
  * @since 3.9.0
  *
+ * @slot icon - Optional icon to show in the header. Works best with `<sd-icon>`.
+ *
+ * @csspart icon - The container that wraps the icon.
+ *
  * @dependency sd-icon sd-accordion
  */
 @customElement('sd-quickfact')
@@ -54,6 +58,13 @@ export default class SdQuickfact extends SdAccordion {
   RenderDefaultSlot = () => {
     return html` <div part="content" id="content" class=${cx('overflow-hidden', this.notInteractive && 'hidden')}>
       <slot part="content__slot" class="block px-4 py-6" role="region" aria-labelledby="header"></slot>
+    </div>`;
+  };
+
+  /** @internal */
+  RenderQuickfactIcon = () => {
+    return html` <div part="icon" class="flex flex-grow-0 flex-shrink-0 flex-auto items-center text-xl">
+      <slot name="icon"></slot>
     </div>`;
   };
 

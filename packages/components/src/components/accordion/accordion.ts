@@ -22,7 +22,6 @@ import SolidElement from '../../internal/solid-element';
  * @slot summary - The accordion summary. Alternatively, you can use the `summary` attribute.
  * @slot expand-icon - Optional expand icon to use instead of the default. Works best with `<sd-icon>`.
  * @slot collapse-icon - Optional collapse icon to use instead of the default. Works best with `<sd-icon>`.
- * @slot icon - Optional icon to show in the header. Works best with `<sd-icon>`.
  *
  * @event sd-show - Emitted when the accordion opens.
  * @event sd-after-show - Emitted after the accordion opens and all animations are complete.
@@ -158,6 +157,11 @@ export default class SdAccordion extends SolidElement {
   };
 
   /** @internal */
+  RenderQuickfactIcon = () => {
+    return html``;
+  };
+
+  /** @internal */
   RenderDefaultSlot = () => {
     return html`<div part="content" id="content" class="overflow-hidden">
       <slot part="content__slot" class="block px-4 py-6" role="region" aria-labelledby="header"></slot>
@@ -203,10 +207,7 @@ export default class SdAccordion extends SolidElement {
               'w-1 bg-accent absolute left-0 transition-all h-[calc(100%-16px)] group-hover:h-full'
             )}
           ></div>
-          <div part="icon" class="flex flex-grow-0 flex-shrink-0 flex-auto items-center text-xl">
-            <slot name="icon"></slot>
-          </div>
-          ${this.RenderSummary()} ${this.RenderSummaryIcons()}
+          ${this.RenderQuickfactIcon()} ${this.RenderSummary()} ${this.RenderSummaryIcons()}
         </header>
         ${this.RenderDefaultSlot()}
       </div>

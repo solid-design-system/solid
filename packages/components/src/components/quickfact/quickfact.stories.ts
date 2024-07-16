@@ -227,6 +227,7 @@ export const Mouseless = {
 
 export const Sample = {
   name: 'Sample: Grouping',
+  parameters: { ...parameters, docs: { story: { inline: false, height: '250px' } } },
   render: () => {
     return html`
       <div>
@@ -244,14 +245,14 @@ export const Sample = {
           }
         </style>
         <div class="grouping-sample w-full flex flex-col flex-wrap relative justify-between">
-          <sd-quickfact class="first max-w-40">
+          <sd-quickfact class="first max-w-[50%]">
             <sd-icon name="content/image" color="primary" aria-hidden="true" library="default" slot="icon"></sd-icon>
 
             <div class="slot slot--border slot--text h-12">Quickfact 1</div>
 
             <div slot="summary">
               <p class="text-base font-normal leading-normal sm:text-3xl sm:leading-tight">
-                Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
+                Con sectetur adipiscing elit Con sectetur adipiscing elit Con sectetur adipiscing elit
               </p>
               <div class="text-base font-normal leading-normal sm:text-xl">Con sectetur adipiscing elit</div>
             </div>
@@ -275,7 +276,7 @@ export const Sample = {
 
             <div slot="summary">
               <p class="text-base font-normal leading-normal sm:text-3xl sm:leading-tight">Lorem Ipsum</p>
-              <div class="text-base font-normal leading-normal sm:text-xl">Con sectetur adipiscing elit</div>
+              <div class="text-base font-normal leading-normal sm:text-xl">c</div>
             </div>
           </sd-quickfact>
 
@@ -327,7 +328,10 @@ export const Sample = {
             summaries.forEach(summary => {
               summary.style.height = heightAsString;
             });
-            // set the sumary heights to heightAsString
+
+            // find the number of rows and columns in grouping-sample
+            const groupingSample = document.querySelector('.grouping-sample');
+            const rows = groupingSample.childElementCount;
           });
         </script>
       </div>
