@@ -11,6 +11,12 @@ const { argTypes, parameters } = storybookDefaults('sd-quickfact');
 const { overrideArgs } = storybookHelpers('sd-quickfact');
 const { generateTemplate } = storybookTemplate('sd-quickfact');
 
+/**
+ *
+ *  **Disclaimer:** Due to a bug with Storybook Controls, the `not-interactive` attribute controls might not behave as expected. Please refresh the page if you wish to reset the controls.
+ *
+ *  You can follow this issue here: https://github.com/storybookjs/storybook/issues/28634
+ */
 export default {
   title: 'Components/sd-quickfact',
   component: 'sd-quickfact',
