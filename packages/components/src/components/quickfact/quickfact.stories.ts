@@ -225,6 +225,9 @@ export const Mouseless = {
   }
 };
 
+/**
+ * This is a sample of how to group sd-quickfacts in a grid layout. Additional JavaScript is used to enable closing all other quickfacts when one is opened and to equalize the height of all summaries in a row. Please view the "see code" section to see the implementation.
+ */
 export const Sample = {
   name: 'Sample: Grouping',
   parameters: { ...parameters, docs: { story: { inline: false, height: '1000px' } } },
@@ -259,7 +262,7 @@ export const Sample = {
 
             <div slot="summary">
               <p class="text-base font-normal leading-normal sm:text-3xl sm:leading-tight">
-                Con sectetur adipiscing elit Con sectetur
+                Sed do eiusmod tempor incididunt
               </p>
               <div class="text-base font-normal leading-normal sm:text-xl">Con sectetur adipiscing elit</div>
             </div>
@@ -283,7 +286,7 @@ export const Sample = {
 
             <div slot="summary">
               <p class="text-base font-normal leading-normal sm:text-3xl sm:leading-tight">Lorem Ipsum</p>
-              <div class="text-base font-normal leading-normal sm:text-xl">coocoo</div>
+              <div class="text-base font-normal leading-normal sm:text-xl">Ut enim ad minim veniam</div>
             </div>
           </sd-quickfact>
         </div>
@@ -291,14 +294,9 @@ export const Sample = {
           // Wait for custom elements to be defined
           await Promise.all([customElements.whenDefined('sd-quickfact')]).then(() => {
             const quickfacts = document.querySelectorAll('sd-quickfact');
-            let rows = 0;
-            const summaries = [];
-            let summaryHeights = [];
-
-            const entries = {};
 
             // Closes all other quickfacts when one is opened
-            quickfacts.forEach(quickfact => {
+            quickfacts.forEach((quickfact, index) => {
               quickfact.addEventListener('sd-show', () => {
                 quickfacts.forEach(qf => {
                   if (qf !== quickfact) {
@@ -306,44 +304,78 @@ export const Sample = {
                   }
                 });
               });
-
-              summaries.push(quickfact.shadowRoot.querySelector('[part~="summary"]'));
             });
 
-            /**  const maxHeight = Math.max(...Array.from(summaries).map(summary => summary.clientHeight));
-             let summaryHeights = Array.from(summaries).map(summary => summary.clientHeight);
+            function getPositions() {
+              const grid = document.querySelector('.grouping-sample');
+              const gridComputedStyle = window.getComputedStyle(grid);
 
+              const numberOfRows = gridComputedStyle.getPropertyValue('grid-template-rows').split(' ').length;
 
-             summaries.forEach(summary => {
-               summary.style.height = heightAsString;
-             });*/
-            const grid = document.querySelector('.grouping-sample');
-            const gridComputedStyle = window.getComputedStyle(grid);
+              const numberOfColumns = gridComputedStyle.getPropertyValue('grid-template-columns').split(' ').length;
+              const positions = [];
 
-            // get number of grid rows
-            const numberOfRows = gridComputedStyle.getPropertyValue('grid-template-rows').split(' ').length;
-
-            // get number of grid columns
-            const numberOfColumns = gridComputedStyle.getPropertyValue('grid-template-columns').split(' ').length;
-
-            let rowTemp = 1;
-            let colTemp = 1;
-
-            let positions = [];
-            while (colTemp <= numberOfColumns) {
-              while (rowTemp <= numberOfRows) {
-                positions.push({ row: rowTemp, column: colTemp });
-                rowTemp++;
+              for (let row = 1; row <= numberOfRows; row++) {
+                for (let col = 1; col <= numberOfColumns; col++) {
+                  positions.push({ row, column: col });
+                }
               }
-              rowTemp = 1;
-              colTemp++;
+
+              return { numberOfRows, numberOfColumns, positions };
             }
 
-            quickfacts.forEach((quickfact, index) => {
-              entries[index] = { quickfact: quickfact, position: positions[index] };
-            });
+            // Create a grid map with quickfact and position
+            function createGridMap() {
+              const gridMap = {};
 
-            console.log(entries);
+              const { numberOfRows, numberOfColumns, positions } = getPositions();
+
+              quickfacts.forEach((quickfact, index) => {
+                gridMap[index] = { quickfact: quickfact, position: positions[index] };
+              });
+
+              return { gridMap, numberOfRows, numberOfColumns };
+            }
+
+            // Resets the height of all summaries to auto. This is useful when the window is resized to mobile view.
+            function resetHeights() {
+              quickfacts.forEach(quickfact => {
+                quickfact.shadowRoot.querySelector('[part~="summary"]').style.setProperty('height', 'auto');
+              });
+            }
+
+            function equalizeHeights() {
+              if (window.innerWidth < 640) {
+                resetHeights();
+                return;
+              }
+              const { gridMap, numberOfRows, numberOfColumns } = createGridMap();
+
+              for (let x = 1; x <= numberOfRows; x++) {
+                const summariesOnRow = [];
+
+                for (const value of Object.values(gridMap)) {
+                  if (value.position.row === x) {
+                    summariesOnRow.push(value.quickfact.shadowRoot.querySelector('[part~="summary"]'));
+                  }
+                }
+
+                // Reset height to auto to get the actual height of the element
+                summariesOnRow.forEach(summary => {
+                  summary.style.setProperty('height', 'auto');
+                });
+
+                const maxHeight = Math.max(...Array.from(summariesOnRow).map(summary => summary.clientHeight));
+
+                summariesOnRow.forEach((summary, index) => {
+                  summary.style.setProperty('height', maxHeight + 'px');
+                });
+              }
+            }
+
+            equalizeHeights();
+
+            window.addEventListener('resize', equalizeHeights);
           });
         </script>
       </div>
