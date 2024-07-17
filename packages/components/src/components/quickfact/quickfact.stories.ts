@@ -261,9 +261,7 @@ export const Sample = {
             <div class="slot slot--border slot--text h-12">Quickfact 1</div>
 
             <div slot="summary">
-              <p class="text-base font-normal leading-normal sm:text-3xl sm:leading-tight">
-                Sed do eiusmod tempor incididunt
-              </p>
+              <p class="text-base font-normal leading-normal sm:text-3xl sm:leading-tight">Sed do eiusmod</p>
               <div class="text-base font-normal leading-normal sm:text-xl">Con sectetur adipiscing elit</div>
             </div>
           </sd-quickfact>
@@ -275,7 +273,7 @@ export const Sample = {
 
             <div slot="summary">
               <p class="text-base font-normal leading-normal sm:text-3xl sm:leading-tight">Lorem Ipsum</p>
-              <div class="text-base font-normal leading-normal sm:text-xl">Con sectetur adipiscing elit</div>
+              <div class="text-base font-normal leading-normal sm:text-xl">Con sectetur</div>
             </div>
           </sd-quickfact>
 
@@ -286,7 +284,28 @@ export const Sample = {
 
             <div slot="summary">
               <p class="text-base font-normal leading-normal sm:text-3xl sm:leading-tight">Lorem Ipsum</p>
-              <div class="text-base font-normal leading-normal sm:text-xl">Ut enim ad minim veniam</div>
+              <div class="text-base font-normal leading-normal sm:text-xl">Ut enim ad</div>
+            </div>
+          </sd-quickfact>
+          <sd-quickfact class="fourth">
+            <sd-icon name="content/image" color="primary" aria-hidden="true" library="default" slot="icon"></sd-icon>
+
+            <div class="slot slot--border slot--text h-12">Quickfact 4</div>
+
+            <div slot="summary">
+              <p class="text-base font-normal leading-normal sm:text-3xl sm:leading-tight">Lorem Ipsum</p>
+              <div class="text-base font-normal leading-normal sm:text-xl">Con sectetur</div>
+            </div>
+          </sd-quickfact>
+
+          <sd-quickfact class="fifth">
+            <sd-icon name="content/image" color="primary" aria-hidden="true" library="default" slot="icon"></sd-icon>
+
+            <div class="slot slot--border slot--text h-12">Quickfact 5</div>
+
+            <div slot="summary">
+              <p class="text-base font-normal leading-normal sm:text-3xl sm:leading-tight">Lorem Ipsum</p>
+              <div class="text-base font-normal leading-normal sm:text-xl">Ut enim ad</div>
             </div>
           </sd-quickfact>
         </div>
