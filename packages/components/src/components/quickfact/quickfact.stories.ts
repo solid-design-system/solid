@@ -40,6 +40,7 @@ export default {
 
 /**
  * Accordion shows a brief summary and expands to show additional content.
+ * Due to a bug with Storybook Controls, the `not-interactive` attribute controls might not behave as expected. Please refresh the page if you wish to reset the controls. You can follow this issue here: https://github.com/storybookjs/storybook/issues/28634
  */
 
 export const Default = {
