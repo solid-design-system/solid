@@ -226,11 +226,11 @@ export const Mouseless = {
 };
 
 /**
- * This is a sample of how to group sd-quickfacts in a grid layout. Additional JavaScript is used to enable closing all other quickfacts when one is opened and to equalize the height of all summaries in a row. Please view the "see code" section to see the implementation.
+ * This is a sample of how to group sd-quickfacts in a grid layout. Additional JavaScript is used to enable closing all other quickfacts when one is opened and to equalize the height of all summaries in a row. Open the "Show code" section to see the detailed implementation.
  */
 export const Sample = {
   name: 'Sample: Grouping',
-  parameters: { ...parameters, docs: { story: { inline: false, height: '1000px' } } },
+  parameters: { ...parameters, docs: { story: { inline: false, height: '800px' } } },
   render: () => {
     return html`
       <div>
@@ -351,6 +351,7 @@ export const Sample = {
               }
               const { gridMap, numberOfRows, numberOfColumns } = createGridMap();
 
+              // Equalize heights of summaries on the same row
               for (let x = 1; x <= numberOfRows; x++) {
                 const summariesOnRow = [];
 
