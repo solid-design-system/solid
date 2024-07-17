@@ -7,5 +7,22 @@ describe('<sd-quickfact>', () => {
       const el = await fixture<SdQuickfact>(html`<sd-quickfact></sd-quickfact>`);
       await expect(el).to.be.accessible();
     });
+
+    it('is interactive by default', async () => {
+      const el = await fixture<SdQuickfact>(html`<sd-quickfact></sd-quickfact>`);
+      expect(el.notInteractive).to.be.false;
+      const summary = el.shadowRoot!.querySelector('slot[name="summary"]')!;
+
+      expect(summary.classList.contains('text-primary')).to.be.true;
+    });
+  });
+
+  describe('notInteractive', () => {
+    it('reflects the attribute', async () => {
+      const el = await fixture<SdQuickfact>(html`<sd-quickfact not-interactive></sd-quickfact>`);
+
+      const summary = el.shadowRoot!.querySelector('slot[name="summary"]')!;
+      expect(summary.classList.contains('text-black')).to.be.true;
+    });
   });
 });
