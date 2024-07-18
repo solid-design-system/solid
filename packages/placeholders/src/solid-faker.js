@@ -116,6 +116,9 @@ export default class SolidFaker {
    * @returns {string} - Random words joined together.
    */
   words(numWords, capitalizeType = 0) {
+    if (this.originalSeed !== undefined) {
+      this.seedValue = this.originalSeed; // Reset seed to original for consistent output
+    }
     const result = [];
     for (let i = 0; i < numWords; i++) {
       const randomIndex = this.getRandomIndex();

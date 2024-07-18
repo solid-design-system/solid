@@ -1,3 +1,10 @@
+# [@solid-design-system/placeholders-v1.6.1](https://github.com/solid-design-system/solid/compare/placeholders/1.6.0...placeholders/1.6.1) (2024-07-16)
+
+
+### Bug Fixes
+
+* solid faker seed ([#1210](https://github.com/solid-design-system/solid/issues/1210)) [skip chromatic] ([6c3b3f7](https://github.com/solid-design-system/solid/commit/6c3b3f7ef620c71021b4d84aa9227283507441c5))
+
 # [@solid-design-system/placeholders-v1.6.0](https://github.com/solid-design-system/solid/compare/placeholders/1.5.0...placeholders/1.6.0) (2024-05-24)
 
 
