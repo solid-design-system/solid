@@ -31,7 +31,10 @@ export default class SdQuickfact extends SdAccordion {
       <slot
         name="summary"
         part="summary"
-        class=${cx('flex flex-auto items-center text-left', this.notInteractive ? 'text-black' : 'text-primary')}
+        class=${cx(
+          'flex flex-auto items-center text-left text-base leading-normal font-normal sm:leading-tight sm:text-3xl sm:text-center',
+          this.notInteractive ? 'text-black' : 'text-primary'
+        )}
         >${this.summary}</slot
       >
     `;
@@ -42,7 +45,7 @@ export default class SdQuickfact extends SdAccordion {
     return html` <span
       part="summary-icon"
       class=${cx(
-        'flex flex-grow-0 flex-shrink-0 flex-auto items-center transition-all ease-in-out duration-300 text-xl',
+        'flex flex-grow-0 flex-shrink-0 flex-auto items-center transition-all ease-in-out duration-300 text-xl sm:text-3xl',
         this.open && 'rotate-180',
         this.notInteractive && 'hidden'
       )}
@@ -63,7 +66,7 @@ export default class SdQuickfact extends SdAccordion {
 
   /** @internal */
   RenderOptionalIcon = () => {
-    return html` <div part="icon" class="flex flex-grow-0 flex-shrink-0 flex-auto items-center text-xl">
+    return html` <div part="icon" class="flex flex-grow-0 flex-shrink-0 flex-auto items-center">
       <slot name="icon"></slot>
     </div>`;
   };
@@ -93,21 +96,6 @@ export default class SdQuickfact extends SdAccordion {
         }
       }
 
-      [part='summary'] {
-        text-align: left;
-        font-size: var(--sd-font-size-base, 1rem);
-        font-weight: var(--sd-font-weight-normal, 400);
-        line-height: var(--sd-line-height-normal, 1.5);
-      }
-
-      @media (min-width: 640px) {
-        [part='summary'] {
-          font-size: var(--sd-font-size-3xl, 2rem);
-          line-height: var(--sd-line-height-tight, 1.25);
-          text-align: center;
-        }
-      }
-
       [part='icon'] {
         font-size: var(--sd-spacing-12, 3rem);
       }
@@ -115,12 +103,6 @@ export default class SdQuickfact extends SdAccordion {
       @media (min-width: 640px) {
         [part='icon'] {
           font-size: var(--sd-spacing-24, 6rem);
-        }
-      }
-
-      @media (min-width: 640px) {
-        [part='summary-icon'] {
-          font-size: var(--sd-font-size-3xl, 2rem);
         }
       }
 
