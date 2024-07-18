@@ -62,7 +62,7 @@ export default class SdQuickfact extends SdAccordion {
   };
 
   /** @internal */
-  RenderQuickfactIcon = () => {
+  RenderOptionalIcon = () => {
     return html` <div part="icon" class="flex flex-grow-0 flex-shrink-0 flex-auto items-center text-xl">
       <slot name="icon"></slot>
     </div>`;

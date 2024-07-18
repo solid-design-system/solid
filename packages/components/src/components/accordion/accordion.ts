@@ -157,7 +157,7 @@ export default class SdAccordion extends SolidElement {
   };
 
   /** @internal */
-  RenderQuickfactIcon = () => {
+  RenderOptionalIcon = () => {
     return html``;
   };
 
@@ -207,7 +207,7 @@ export default class SdAccordion extends SolidElement {
               'w-1 bg-accent absolute left-0 transition-all h-[calc(100%-16px)] group-hover:h-full'
             )}
           ></div>
-          ${this.RenderQuickfactIcon()} ${this.RenderSummary()} ${this.RenderSummaryIcons()}
+          ${this.RenderOptionalIcon()} ${this.RenderSummary()} ${this.RenderSummaryIcons()}
         </header>
         ${this.RenderDefaultSlot()}
       </div>
