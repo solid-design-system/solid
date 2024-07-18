@@ -5,6 +5,7 @@
   "main": "src",
   "scripts": {
     "build.types": "tsc --project tsconfig.json",
+    "test": "node src/solid-faker.test.js",
     "release": "semantic-release  --tagFormat 'placeholders/${version}' -e semantic-release-monorepo",
     "release.dry": "semantic-release -d --tagFormat 'placeholders/${version}' -e semantic-release-monorepo"
   },
