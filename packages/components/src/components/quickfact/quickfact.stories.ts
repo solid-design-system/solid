@@ -58,7 +58,7 @@ export const Default = {
 };
 
 /**
- * An quickfact item can either be collapsed or open.
+ * A quickfact item can either be collapsed or open.
  */
 export const States = {
   parameters: { controls: { exclude: 'open' } },
