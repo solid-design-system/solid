@@ -104,6 +104,13 @@ export default class SolidFaker {
     return Math.floor((x - Math.floor(x)) * this.loremIpsumWords.length);
   }
 
+  /**
+   * Generates a random integer between the specified minimum and maximum values.
+   *
+   * @param {number} min - The minimum value of the range (inclusive).
+   * @param {number} max - The maximum value of the range (inclusive).
+   * @returns {number} The randomly generated integer.
+   */
   getRandomInt(min, max) {
     return Math.floor(Math.abs(Math.sin(this.seedValue++)) * (max - min + 1)) + min;
   }
