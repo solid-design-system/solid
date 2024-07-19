@@ -26,7 +26,7 @@ export default {
       type: 'slot',
       name: 'summary',
       value: `<div slot="summary" class="flex flex-col sm:gap-4"> <p class="text-base font-normal leading-normal  sm:text-3xl sm:leading-tight">Lorem Ipsum</p>
-            <div class="text-base font-normal leading-normal sm:text-xl">Lorem ipsum dolor sit amet.</div></div>`
+            <div class="text-base font-normal leading-normal sm:text-xl">Con sectetur adipiscing elit</div></div>`
     },
     {
       type: 'slot',

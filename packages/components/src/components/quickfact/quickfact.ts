@@ -60,7 +60,7 @@ export default class SdQuickfact extends SdAccordion {
   /** @internal */
   RenderDefaultSlot = () => {
     return html` <div part="content" id="content" class=${cx('overflow-hidden', this.notInteractive && 'hidden')}>
-      <slot part="content__slot" class="block px-4 py-6" role="region" aria-labelledby="header"></slot>
+      <slot part="content__slot" class="block" role="region" aria-labelledby="header"></slot>
     </div>`;
   };
 
@@ -83,12 +83,12 @@ export default class SdQuickfact extends SdAccordion {
       }
 
       [part='header'] {
-        @apply flex flex-row hover:bg-transparent gap-3;
+        @apply flex flex-row hover:bg-transparent gap-3 pb-3;
       }
 
       @media (min-width: 640px) {
         [part='header'] {
-          @apply flex-col gap-4;
+          @apply flex-col gap-4 pb-8;
         }
 
         [part='base'] {
