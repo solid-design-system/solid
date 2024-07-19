@@ -1,6 +1,7 @@
 import { css, html } from 'lit';
 import { customElement } from '../../../src/internal/register-custom-element';
 import { property, query } from 'lit/decorators.js';
+import { watch } from '../../internal/watch.js';
 import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
@@ -47,6 +48,7 @@ export default class SdExpandable extends SolidElement {
   }
 
   private onToggleClick() {
+    console.log('onToggleClick');
     this.updateMaxHeight();
     this.open = !this.open;
     this.details.open = this.open;
@@ -62,6 +64,11 @@ export default class SdExpandable extends SolidElement {
         this.emit('sd-after-hide');
       });
     }
+  }
+
+  @watch('open', { waitUntilFirstUpdate: true })
+  onOpenChange() {
+    this.details.setAttribute('open', this.open.toString());
   }
 
   render() {
@@ -105,6 +112,9 @@ export default class SdExpandable extends SolidElement {
 
   firstUpdated() {
     this.cloneContentToLightDOM();
+
+    // Set the initial state of the details element
+    this.details.setAttribute('open', this.open.toString());
   }
 
   cloneContentToLightDOM() {
