@@ -32,7 +32,7 @@ export default class SdQuickfact extends SdAccordion {
         name="summary"
         part="summary"
         class=${cx(
-          'flex flex-auto items-center text-left text-base leading-normal font-normal sm:leading-tight sm:text-3xl sm:text-center sm:mb-2',
+          'flex flex-auto items-center text-left text-base leading-normal font-normal sm:leading-tight sm:text-3xl sm:text-center',
           this.notInteractive ? 'text-black' : 'text-primary'
         )}
         >${this.summary}</slot
@@ -45,7 +45,7 @@ export default class SdQuickfact extends SdAccordion {
     return html` <span
       part="summary-icon"
       class=${cx(
-        'flex flex-grow-0 flex-shrink-0 flex-auto items-center transition-all ease-in-out duration-300 text-xl sm:text-4xl',
+        'flex flex-grow-0 flex-shrink-0 flex-auto self-start sm:self-center transition-all ease-in-out duration-300 text-xl sm:text-4xl sm:mt-2',
         this.open && 'rotate-180',
         this.notInteractive && 'hidden'
       )}
@@ -83,12 +83,12 @@ export default class SdQuickfact extends SdAccordion {
       }
 
       [part='header'] {
-        @apply flex flex-row hover:bg-transparent;
+        @apply flex flex-row hover:bg-transparent gap-3;
       }
 
       @media (min-width: 640px) {
         [part='header'] {
-          flex-direction: column;
+          @apply flex-col gap-4;
         }
 
         [part='base'] {
