@@ -74,7 +74,9 @@ export default class SdExpandable extends SolidElement {
   render() {
     return html`
       <details>
-        <summary aria-hidden="true" class="cursor-pointer summary"><slot name="clone"></slot></summary>
+        <summary aria-hidden="true" class="cursor-pointer overflow-hidden list-none">
+          <slot name="clone"></slot>
+        </summary>
         <div part="content" class="content shrinker overflow-hidden relative">
           <slot></slot>
         </div>
@@ -135,33 +137,24 @@ export default class SdExpandable extends SolidElement {
     componentStyles,
     css`
       :host {
-        @apply block relative w-full;
-        display: inline-block;
+        @apply inline-block relative w-full;
       }
 
       .toggle::-moz-focus-inner {
         @apply border-none p-0;
       }
 
-      details > summary {
-        list-style: none;
+      details > summary::-webkit-details-marker,
+      details[open] summary {
+        @apply hidden;
       }
 
-      details > summary::-webkit-details-marker {
-        display: none;
-      }
-
-      .summary {
+      summary {
         max-block-size: var(--component-expandable-max-block-size, 90px);
-        overflow: hidden;
       }
 
-      :host([open]) .summary {
+      :host([open]) summary {
         max-block-size: var(--max-height-pixel, 1000vh);
-      }
-
-      details[open] .summary {
-        display: none;
       }
 
       .content {
@@ -190,39 +183,6 @@ export default class SdExpandable extends SolidElement {
           --gradient-vertical-transparent-primary,
           linear-gradient(180deg, rgba(0, 53, 142, 0) 0%, rgba(0, 53, 142, 1) 80%, rgba(0, 53, 142, 1) 100%)
         );
-      }
-
-      details[open] .flip-card-front {
-        transform: rotateY(180deg);
-      }
-
-      details[open] .flip-card-back {
-        transform: rotateY(0deg);
-      }
-
-      .flip-card-front,
-      .flip-card-back {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        backface-visibility: hidden;
-        transition: transform 0.6s;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      }
-
-      .flip-card-front {
-        background-color: #f0f0f0;
-        transform: rotateY(0deg);
-      }
-
-      .flip-card-back {
-        background-color: #fff;
-        transform: rotateY(-180deg);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       }
     `
   ];
