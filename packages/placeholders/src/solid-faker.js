@@ -8,12 +8,6 @@ export default class SolidFaker {
    */
   constructor(seedValue) {
     /**
-     * Seed value for consistent randomness.
-     * @type {number|undefined}
-     */
-    this.seedValue = seedValue;
-    this.originalSeed = seedValue; // Store the original seed
-    /**
      * Array containing Lorem Ipsum words.
      * @type {string[]}
      */
@@ -88,15 +82,12 @@ export default class SolidFaker {
       'est',
       'laborum'
     ];
-  }
 
-  /**
-   * Set a seed value for consistent randomness on each invocation.
-   * @param {number} seed - Seed value for consistent randomness.
-   */
-  seed(seed) {
-    this.seedValue = seed !== undefined ? seed : Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
-    this.originalSeed = this.seedValue; // Update the original seed
+    /**
+     * Seed value for consistent randomness.
+     * @type {number|undefined}
+     */
+    this.seedValue = seedValue || Math.floor(Math.random() * this.loremIpsumWords.length);
   }
 
   /**
@@ -104,20 +95,24 @@ export default class SolidFaker {
    * @returns {number} - Random index.
    */
   getRandomIndex() {
-    if (this.seedValue !== undefined) {
-      // If a seed value is defined, use it for consistent randomness
-      // Generate a random index using a mathematical function based on the seed value
-      // Math.abs() is used to ensure a positive value
-      // Math.sin() generates a sine value between -1 and 1 based on the seed value
-      // Multiply by 10000 to scale the value for better distribution
-      // Use modulo to ensure the index stays within the range of the loremIpsumWords array length
-      const x = Math.sin(this.seedValue++) * 10000;
-      return Math.floor((x - Math.floor(x)) * this.loremIpsumWords.length);
-    }
+    // If a seed value is defined, use it for consistent randomness
+    // Generate a random index using a mathematical function based on the seed value
+    // Math.abs() is used to ensure a positive value
+    // Math.sin() generates a sine value between -1 and 1 based on the seed value
+    // Ensure the index stays within the range of the loremIpsumWords array length
+    const x = Math.abs(Math.sin(this.seedValue++));
+    return Math.floor((x - Math.floor(x)) * this.loremIpsumWords.length);
+  }
 
-    // If no seed value is defined, generate a random index normally
-    // Generate a random index between 0 and the length of the loremIpsumWords array
-    return Math.floor(Math.random() * this.loremIpsumWords.length);
+  /**
+   * Generates a random integer between the specified minimum and maximum values.
+   *
+   * @param {number} min - The minimum value of the range (inclusive).
+   * @param {number} max - The maximum value of the range (inclusive).
+   * @returns {number} The randomly generated integer.
+   */
+  getRandomInt(min, max) {
+    return Math.floor(Math.abs(Math.sin(this.seedValue++)) * (max - min + 1)) + min;
   }
 
   /**
@@ -145,38 +140,27 @@ export default class SolidFaker {
 
   /**
    * Generate a random number of sentences.
-   * @param {number} numSentences - Number of sentences to generate.
+   * @param {number} sentencesCount - Number of sentences to generate.
    * @returns {string} - Random sentences joined together.
    */
-  sentences(numSentences) {
-    if (this.originalSeed !== undefined) {
-      this.seedValue = this.originalSeed; // Reset seed to original for consistent output
+  sentences(sentencesCount) {
+    const sentence = [];
+    for (let i = 0; i < sentencesCount; i++) {
+      sentence.push(this.words(this.getRandomInt(3, 7), 1));
     }
-    const result = [];
-    for (let i = 0; i < numSentences; i++) {
-      const numWords = Math.floor(Math.random() * 10) + 5; // Random number of words per sentence (5 to 14)
-      const sentence = this.words(numWords, 1); // Capitalize first word
-      result.push(sentence);
-    }
-    return result.join('. ');
+    return sentence.join('. ') + '.';
   }
 
   /**
    * Generate a random number of paragraphs.
-   * @param {number} numParagraphs - Number of paragraphs to generate.
+   * @param {number} paragraphsCount - Number of paragraphs to generate.
    * @returns {string} - Random paragraphs joined together.
    */
-  paragraphs(numParagraphs) {
-    if (this.originalSeed !== undefined) {
-      this.seedValue = this.originalSeed; // Reset seed to original for consistent output
+  paragraphs(paragraphsCount) {
+    const paragraph = [];
+    for (let i = 0; i < paragraphsCount; i++) {
+      paragraph.push(this.sentences(this.getRandomInt(3, 7)));
     }
-    const result = [];
-    for (let i = 0; i < numParagraphs; i++) {
-      const numSentences = Math.floor(Math.random() * 5) + 3; // Random number of sentences per paragraph (3 to 7)
-      let paragraph = this.sentences(numSentences);
-      paragraph = paragraph.charAt(0).toUpperCase() + paragraph.slice(1); // Capitalize first letter
-      result.push(paragraph);
-    }
-    return result.join('\n\n');
+    return paragraph.join('\n\n');
   }
 }
