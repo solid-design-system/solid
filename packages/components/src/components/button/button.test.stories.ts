@@ -16,7 +16,7 @@ const { generateTemplate } = storybookTemplate('sd-button'); // Replace with you
 const { generateScreenshotStory } = storybookUtilities;
 
 export default {
-  title: 'Components/sd-button/Test',
+  title: 'Components/sd-button/Screenshot Tests',
   component: 'sd-button',
   tags: ['!autodocs'],
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Default' }),
@@ -265,7 +265,7 @@ export const Mouseless = {
   }
 };
 
-export const Screenshots = generateScreenshotStory([
+export const Combination = generateScreenshotStory([
   Default,
   VariantAndSize,
   VariantAndInverted,
