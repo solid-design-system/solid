@@ -454,10 +454,10 @@ export default class SdInput extends SolidElement implements SolidFormControl {
       disabled: 'text-neutral-500',
       readonly: 'text-black',
       activeInvalid: 'text-error',
-      activeValid: 'text-success',
+      activeValid: 'text-black',
       active: 'text-black',
       invalid: 'text-error',
-      valid: 'text-success',
+      valid: 'text-black',
       default: 'text-black'
     }[inputState];
 
