@@ -7,6 +7,14 @@ const { argTypes, parameters } = storybookDefaults('sd-button');
 const { overrideArgs } = storybookHelpers('sd-button');
 const { generateTemplate } = storybookTemplate('sd-button'); // Replace with your custom element tag
 
+/**
+ * **Allows users to perform actions with a single click.**
+ *
+ * Buttons perform various functions (e.g. download, link) or activate other functions (e.g. filter). All buttons can be displayed with or without an icon. On small devices, the buttons are streched to full width.
+ *
+ * **Related templates**:
+ * - [Button with Badge](?path=/docs/templates-button-with-badge--docs)
+ */
 export default {
   tags: ['!dev'],
   title: 'Components/sd-button',
@@ -16,12 +24,6 @@ export default {
     design: {
       type: 'figma',
       url: 'https://www.figma.com/file/fPGhgNZv98U4H69Gu2tlWi/Button?type=design&node-id=13-18&t=jDLqFEdY7ZlOJurc-4'
-    },
-    docs: {
-      description: {
-        component:
-          '<p><b>Allows users to perform actions with a single click.</b></p><p>Buttons perform various functions (e.g. download, link) or activate other functions (e.g. filter). All buttons can be displayed with or without an icon. On small devices, the buttons are streched to full width.</p>'
-      }
     }
   },
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Default' }),
@@ -36,7 +38,7 @@ export const Default = {
 };
 
 /**
- * There are a number of button `variant`s available. Be sure to select the right one for the action you want to make available.
+ * Use the `variant` attribute to set the button’s variant.TBe sure to select the right one for the action you want to make available.
  *
  * - `primary` (default): Use the primary button for the most important actions in your interface, such as submitting a form, confirming a decision, or progressing to the next step in a process.
  * - `secondary`: Not all functions must have primary actions, sometimes the actions are subordinate to the content and all are equally important.
@@ -58,7 +60,7 @@ export const Variants = {
 };
 
 /**
- * The default button `size` is `lg`. In tight spaces, consider using the `md` button size as an alternative. For very tight spaces, opt for the `sm` button size.
+ * Use the `size` attribute attribute to change a button’s size. The default is`lg`. In tight spaces, consider using `md` or even `sm`.
  */
 export const Size = {
   render: () => {
@@ -73,7 +75,7 @@ export const Size = {
 };
 
 /**
- * All button variants can have a `loading` state.
+ * Use the `loading` attribute to make a button busy. The width will remain the same as before, preventing adjacent elements from moving around.
  */
 
 export const Loading = {
@@ -90,7 +92,7 @@ export const Loading = {
 };
 
 /**
- * All button variants can be disabled.
+ * Use the `disabled` attribute to disable buttons.
  */
 
 export const Disabled = {
@@ -107,7 +109,7 @@ export const Disabled = {
 };
 
 /**
- * Buttons can be inverted when used on primary background.
+ * Use the `inverted` attribute when buttons are used on primary background.
  */
 
 export const Inverted = {
@@ -135,7 +137,7 @@ export const Inverted = {
 };
 
 /**
- * Use the `icon-left` or `icon-right` slot to add a system icon.
+ * Use the `icon-left` or `icon-right` slot to add system icons.
  */
 
 export const Icon = {
