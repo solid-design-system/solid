@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v3.10.0](https://github.com/solid-design-system/solid/compare/components/3.9.0...components/3.10.0) (2024-07-26)
+
+
+### Features
+
+* 🎸 adding min and max posibility for date type of input ([#1215](https://github.com/solid-design-system/solid/issues/1215)) ([cf625a0](https://github.com/solid-design-system/solid/commit/cf625a0fd880a24eaa8869ad65d82fec8add4afa))
+
+### 📈 Stats
+* Bundle size (uncompressed): 325 KB (unchanged)
+* Bundle size (gzipped): 77 KB (unchanged)
+
 # [@solid-design-system/components-v3.9.0](https://github.com/solid-design-system/solid/compare/components/3.8.1...components/3.9.0) (2024-07-11)
 
 
