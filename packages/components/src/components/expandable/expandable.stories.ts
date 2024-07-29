@@ -138,6 +138,6 @@ export const Mouseless = {
   play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
     const el = canvasElement.querySelector('.mouseless sd-expandable');
     await waitUntil(() => el!.shadowRoot!.querySelector('button'));
-    await userEvent.type(el!.shadowRoot!.querySelector('button')!, '{space}', { pointerEventsCheck: 0 });
+    await userEvent.type(el!.shadowRoot!.querySelector('button')!, '{return}', { pointerEventsCheck: 0 });
   }
 };
