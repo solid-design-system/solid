@@ -57,6 +57,7 @@ jobs:
           BRANCH_NAME=${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}}
           tar -czf deployment/archives/${BRANCH_NAME}.tar -C deployment/storybook/${BRANCH_NAME} .
 
+
       - name: Download and unpack existing archives
         run: |
           BRANCH_NAME=${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}}
@@ -64,9 +65,9 @@ jobs:
           for branch in $(git branch -r | grep -v '\->' | sed 's/origin\///'); do
             if [ "${branch}" != "${BRANCH_NAME}" ]; then
               echo "Checking for existing archive for branch: ${branch}"
-              if curl --head --fail -s https://https://solid-design-system.github.io/solid/archives/${branch}.tar; then
+              if curl --head --fail -s https://solid-design-system.github.io/solid/archives/${branch}.tar; then
                 echo "Downloading archive for branch: ${branch}"
-                curl -L -o deployment/archives/${branch}.tar https://https://solid-design-system.github.io/solid/archives/${branch}.tar
+                curl -L -o deployment/archives/${branch}.tar https://solid-design-system.github.io/solid/archives/${branch}.tar
                 mkdir -p deployment/${branch}
                 tar -xzf deployment/archives/${branch}.tar -C deployment/${branch}
               else
@@ -74,6 +75,15 @@ jobs:
               fi
             fi
           done
+
+      - name: Generate index file
+        run: |
+          echo "<html><body><h1>Deployed Branches</h1><ul>" > deployment/index.html
+          for archive in deployment/archives/*.tar; do
+            branch_name=$(basename $archive .tar)
+            echo "<li><a href='/${branch_name}/'>${branch_name}</a></li>" >> deployment/index.html
+          done
+          echo "</ul></body></html>" >> deployment/index.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
