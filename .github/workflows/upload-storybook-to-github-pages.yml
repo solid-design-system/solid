@@ -48,8 +48,32 @@ jobs:
       - name: Prepare deployment directory
         run: |
           BRANCH_NAME=${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}}
+          mkdir -p deployment/archives
           mkdir -p deployment/${BRANCH_NAME}
           cp -r packages/components/dist/storybook/* deployment/${BRANCH_NAME}/
+
+      - name: Create archive
+        run: |
+          BRANCH_NAME=${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}}
+          tar -czf deployment/archives/${BRANCH_NAME}.tar -C deployment/storybook/${BRANCH_NAME} .
+
+      - name: Download and unpack existing archives
+        run: |
+          BRANCH_NAME=${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}}
+          mkdir -p deployment/archives
+          for branch in $(git branch -r | grep -v '\->' | sed 's/origin\///'); do
+            if [ "${branch}" != "${BRANCH_NAME}" ]; then
+              echo "Checking for existing archive for branch: ${branch}"
+              if curl --head --fail -s https://https://solid-design-system.github.io/solid/archives/${branch}.tar; then
+                echo "Downloading archive for branch: ${branch}"
+                curl -L -o deployment/archives/${branch}.tar https://https://solid-design-system.github.io/solid/archives/${branch}.tar
+                mkdir -p deployment/${branch}
+                tar -xzf deployment/archives/${branch}.tar -C deployment/${branch}
+              else
+                echo "Branch ${branch} was not deployed to GitHub Pages"
+              fi
+            fi
+          done
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
