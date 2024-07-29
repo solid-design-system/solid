@@ -64,7 +64,6 @@ export default class SdAccordion extends SolidElement {
   }
 
   private handleSummaryClick() {
-    this.header.focus();
     if (this.open) {
       this.hide();
     } else {
