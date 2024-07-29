@@ -55,8 +55,7 @@ jobs:
       - name: Create archive
         run: |
           BRANCH_NAME=${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}}
-          tar -czf deployment/archives/${BRANCH_NAME}.tar -C deployment/storybook/${BRANCH_NAME} .
-
+          tar -czf deployment/archives/${BRANCH_NAME}.tar -C deployment/${BRANCH_NAME} .
 
       - name: Download and unpack existing archives
         run: |
