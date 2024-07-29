@@ -21,7 +21,7 @@ import SolidElement from '../../internal/solid-element';
  * @event sd-hide - Emitted when the expandable closes.
  * @event sd-after-hide - Emitted after the expandable closes and all animations are complete.
  *
- * @csspart content
+ * @csspart content - The content of the expandable.
  *
  * @cssproperty --component-expandable-max-block-size - Different value for initial visible block (default: 90px)
  */
@@ -48,11 +48,12 @@ export default class SdExpandable extends SolidElement {
   }
 
   private onToggleClick() {
-    console.log('onToggleClick');
     this.updateMaxHeight();
     this.open = !this.open;
-    this.details.open = this.open;
+  }
 
+  @watch('open', { waitUntilFirstUpdate: true })
+  onOpenChange() {
     if (this.open) {
       this.emit('sd-show');
       this.updateComplete.then(() => {
@@ -64,10 +65,7 @@ export default class SdExpandable extends SolidElement {
         this.emit('sd-after-hide');
       });
     }
-  }
 
-  @watch('open', { waitUntilFirstUpdate: true })
-  onOpenChange() {
     this.details.setAttribute('open', this.open.toString());
   }
 

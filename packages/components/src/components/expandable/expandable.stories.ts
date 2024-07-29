@@ -2,7 +2,7 @@ import '../../solid-components';
 import { html } from 'lit';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 import { userEvent } from '@storybook/testing-library';
-import { waitUntil } from '@open-wc/testing';
+import { waitUntil } from '@open-wc/testing-helpers';
 
 const { argTypes, parameters } = storybookDefaults('sd-expandable');
 const { overrideArgs } = storybookHelpers('sd-expandable');
