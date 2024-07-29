@@ -47,29 +47,30 @@ jobs:
 
       - name: Prepare deployment directory
         run: |
-          BRANCH_NAME=${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}}
+          BRANCH_NAME=$(echo ${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}} | tr '/' '_')
           mkdir -p deployment/archives
           mkdir -p deployment/${BRANCH_NAME}
           cp -r packages/components/dist/storybook/* deployment/${BRANCH_NAME}/
 
       - name: Create archive
         run: |
-          BRANCH_NAME=${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}}
+          BRANCH_NAME=$(echo ${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}} | tr '/' '_')
           mkdir -p deployment/archives
           tar -czf deployment/archives/${BRANCH_NAME}.tar -C deployment/${BRANCH_NAME} .
 
       - name: Download and unpack existing archives
         run: |
-          BRANCH_NAME=${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}}
+          BRANCH_NAME=$(echo ${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}} | tr '/' '_')
           mkdir -p deployment/archives
           for branch in $(git branch -r | grep -v '\->' | sed 's/origin\///'); do
-            if [ "${branch}" != "${BRANCH_NAME}" ]; then
+            safe_branch=$(echo ${branch} | tr '/' '_')
+            if [ "${safe_branch}" != "${BRANCH_NAME}" ]; then
               echo "Checking for existing archive for branch: ${branch}"
-              if curl --head --fail -s https://solid-design-system.github.io/solid/archives/${branch}.tar; then
+              if curl --head --fail -s https://solid-design-system.github.io/solid/archives/${safe_branch}.tar; then
                 echo "Downloading archive for branch: ${branch}"
-                curl -L -o deployment/archives/${branch}.tar https://solid-design-system.github.io/solid/archives/${branch}.tar
-                mkdir -p deployment/${branch}
-                tar -xzf deployment/archives/${branch}.tar -C deployment/${branch}
+                curl -L -o deployment/archives/${safe_branch}.tar https://solid-design-system.github.io/solid/archives/${safe_branch}.tar
+                mkdir -p deployment/${safe_branch}
+                tar -xzf deployment/archives/${safe_branch}.tar -C deployment/${safe_branch}
               else
                 echo "Branch ${branch} was not deployed to GitHub Pages"
               fi
@@ -83,3 +84,14 @@ jobs:
             branch_name=$(basename $archive .tar)
             echo "<li><a href='/${branch_name}/'>${branch_name}</a></li>" >> deployment/index.html
           done
+          echo "</ul></body></html>" >> deployment/index.html
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Upload the deployment directory
+          path: 'deployment'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
