@@ -82,7 +82,7 @@ jobs:
           echo "<html><body><h1>Deployed Branches</h1><ul>" > deployment/index.html
           for archive in deployment/archives/*.tar; do
             branch_name=$(basename $archive .tar)
-            echo "<li><a href='/${branch_name}/'>${branch_name}</a></li>" >> deployment/index.html
+            echo "<li><a href='./${branch_name}/'>${branch_name}</a></li>" >> deployment/index.html
           done
           echo "</ul></body></html>" >> deployment/index.html
 
