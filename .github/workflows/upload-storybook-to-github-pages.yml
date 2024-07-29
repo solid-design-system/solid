@@ -47,8 +47,9 @@ jobs:
 
       - name: Prepare deployment directory
         run: |
-          mkdir -p deployment/${GITHUB_REF_NAME}
-          cp -r packages/components/dist/storybook/* deployment/${GITHUB_REF_NAME}/
+          BRANCH_NAME=${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}}
+          mkdir -p deployment/${BRANCH_NAME}
+          cp -r packages/components/dist/storybook/* deployment/${BRANCH_NAME}/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
