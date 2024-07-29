@@ -55,6 +55,7 @@ jobs:
       - name: Create archive
         run: |
           BRANCH_NAME=${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}}
+          mkdir -p deployment/archives
           tar -czf deployment/archives/${BRANCH_NAME}.tar -C deployment/${BRANCH_NAME} .
 
       - name: Download and unpack existing archives
@@ -82,14 +83,3 @@ jobs:
             branch_name=$(basename $archive .tar)
             echo "<li><a href='/${branch_name}/'>${branch_name}</a></li>" >> deployment/index.html
           done
-          echo "</ul></body></html>" >> deployment/index.html
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          # Upload the deployment directory
-          path: 'deployment'
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
