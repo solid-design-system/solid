@@ -1,21 +1,33 @@
-.sd-headline {
-  @apply flex text-3xl font-bold sm:text-4xl text-primary gap-4 leading-tight;
+.sd-headline,
+.sd-prose :is(h1, h2, h3, h4, h5) {
+  @apply flex font-bold text-primary;
 
   sd-icon {
     @apply text-[3rem] text-primary shrink-0 sm:mt-2;
   }
 
-  &--size-3xl {
-    @apply text-2xl sm:text-3xl;
+  &.sd-headline,
+  &:is(h1):not(.sd-headline) {
+    @apply text-3xl sm:text-4xl gap-4 leading-tight;
 
     sd-icon {
       @apply -mt-1 sm:mt-0;
     }
   }
 
-  &--size-xl,
-  &--size-lg,
-  &--size-base {
+  &.sd-headline--size-3xl,
+  &:is(h2):not(.sd-headline) {
+    @apply text-2xl sm:text-3xl gap-4 leading-tight;
+
+    sd-icon {
+      @apply -mt-1 sm:mt-0;
+    }
+  }
+
+  &.sd-headline--size-xl,
+  &.sd-headline--size-lg,
+  &.sd-headline--size-base,
+  &:is(h3, h4, h5):not(.sd-headline) {
     @apply text-black gap-2;
 
     sd-icon {
@@ -23,7 +35,8 @@
     }
   }
 
-  &--size-xl {
+  &.sd-headline--size-xl,
+  &:is(h3):not(.sd-headline) {
     @apply text-xl;
 
     sd-icon {
@@ -31,12 +44,14 @@
     }
   }
 
-  &--size-lg,
-  &--size-base {
+  &.sd-headline--size-lg,
+  &.sd-headline--size-base,
+  &:is(h4, h5):not(.sd-headline) {
     @apply leading-normal;
   }
 
-  &--size-lg {
+  &.sd-headline--size-lg,
+  &:is(h4) {
     @apply text-lg;
 
     sd-icon {
@@ -44,8 +59,9 @@
     }
   }
 
-  &--size-base {
-    @apply text-base text-black;
+  &.sd-headline--size-base,
+  &:is(h5):not(.sd-headline) {
+    @apply text-base;
 
     sd-icon {
       @apply -mt-1;
@@ -55,28 +71,27 @@
       @apply text-inherit;
     }
   }
+}
 
-  &--inverted {
-    @apply text-white;
+.sd-headline--inline {
+  @apply inline-block;
 
-    sd-icon {
-      @apply text-white;
-    }
+  sd-icon {
+    @apply align-middle mr-2 -mt-1;
   }
 
-  &--inline {
-    @apply inline;
-
+  &:is(.sd-headline--size-xl, .sd-headline--size-lg, .sd-headline--size-base) {
     sd-icon {
-      @apply align-middle mr-2 -mt-1;
+      @apply mr-0.5;
     }
   }
 }
 
-.sd-headline--inline.sd-headline--size-xl,
-.sd-headline--inline.sd-headline--size-lg,
-.sd-headline--inline.sd-headline--size-base {
+.sd-headline--inverted:not(#\9),
+.sd-prose--inverted :is(h1, h2, h3, h4, h5):not(.sd-headline):not(#\9) {
+  @apply text-white;
+
   sd-icon {
-    @apply mr-0.5;
+    @apply text-white;
   }
 }

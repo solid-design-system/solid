@@ -81,6 +81,39 @@ describe('<sd-input>', () => {
     });
   });
 
+  describe('value min & max', () => {
+    it('should react with data-valid attribute on input field when date value is within min-max range of date', async () => {
+      const el = await fixture<SdInput>(html`
+        <sd-input type="date" value="2024-06-10" min="2023-06-10" max="2025-06-10" spellcheck></sd-input>
+      `);
+      expect(el.hasAttribute('data-valid')).to.be.true;
+    });
+
+    it('should react with data-invalid attribute on input field when date value is greater then set maximum', async () => {
+      const el = await fixture<SdInput>(html`
+        <sd-input type="date" value="2025-06-10" max="2024-06-10" spellcheck></sd-input>
+      `);
+      expect(el.hasAttribute('data-invalid')).to.be.true;
+    });
+
+    it('should react with data-invalid attribute on input field when date value is lower then set minimum', async () => {
+      const el = await fixture<SdInput>(html`
+        <sd-input type="date" value="2023-06-10" min="2024-06-10" spellcheck></sd-input>
+      `);
+      expect(el.hasAttribute('data-invalid')).to.be.true;
+    });
+
+    it('should react on value within/out of range form number', async () => {
+      const el = await fixture<SdInput>(html` <sd-input type="number" min="5" spellcheck></sd-input> `);
+      el.valueAsNumber = 6;
+      expect(el.checkValidity()).to.be.true;
+
+      el.valueAsNumber = 4;
+      await el.updateComplete;
+      expect(el.checkValidity()).to.be.false;
+    });
+  });
+
   it('should focus the input when clicking on the label', async () => {
     const el = await fixture<SdInput>(html` <sd-input label="Name"></sd-input> `);
     const label = el.shadowRoot!.querySelector('[part~="form-control-label"]')!;
@@ -324,7 +357,7 @@ describe('<sd-input>', () => {
       await input.updateComplete;
 
       setTimeout(() => button.click());
-      await oneEvent(form, 'reset', false);
+      await oneEvent(form, 'reset');
       await input.updateComplete;
 
       expect(input.value).to.equal('test');
@@ -332,7 +365,7 @@ describe('<sd-input>', () => {
       input.defaultValue = '';
 
       setTimeout(() => button.click());
-      await oneEvent(form, 'reset', false);
+      await oneEvent(form, 'reset');
       await input.updateComplete;
 
       expect(input.value).to.equal('');

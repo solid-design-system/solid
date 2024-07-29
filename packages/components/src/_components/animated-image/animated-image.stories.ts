@@ -10,10 +10,9 @@ export default {
   component: 'sd-animated-image',
   args,
   argTypes,
-  parameters: {...parameters},
+  parameters: { ...parameters },
   decorators: [withActions] as any
 };
-
 
 /**
  * Default: This shows sd-animated-image in its default state.

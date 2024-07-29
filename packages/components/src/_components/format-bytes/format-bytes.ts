@@ -11,7 +11,7 @@ import SolidElement from '../../internal/solid-element';
  */
 @customElement('sd-format-bytes')
 export default class SdFormatBytes extends SolidElement {
-  private readonly localize = new LocalizeController(this);
+  public localize = new LocalizeController(this);
 
   /** The number to format in bytes. */
   @property({ type: Number }) value = 0;

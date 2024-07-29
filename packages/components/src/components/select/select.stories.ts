@@ -2,7 +2,7 @@
 import '../../solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { userEvent } from '@storybook/testing-library';
+import { userEvent } from '@storybook/test';
 import { waitUntil } from '@open-wc/testing-helpers';
 import type { ConstantDefinition } from '../../../scripts/storybook/helper';
 

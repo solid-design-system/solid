@@ -48,7 +48,7 @@ const toastStackBottomCenter = Object.assign(document.createElement('div'), {
 @customElement('sd-notification')
 export default class SdNotification extends SolidElement {
   private autoHideTimeout: number;
-  private readonly localize = new LocalizeController(this);
+  public localize = new LocalizeController(this);
 
   @query('[part~="base"]') base: HTMLElement;
 

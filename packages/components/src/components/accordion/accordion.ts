@@ -43,7 +43,7 @@ import SolidElement from '../../internal/solid-element';
 export default class SdAccordion extends SolidElement {
   // static styles: CSSResultGroup = styles;
 
-  private readonly localize = new LocalizeController(this);
+  public localize = new LocalizeController(this);
 
   @query('[part="base"]') accordion: HTMLElement;
   @query('[part="header"]') header: HTMLElement;
@@ -151,7 +151,7 @@ export default class SdAccordion extends SolidElement {
 
   render() {
     return html`
-      <div part="base" class="border-y-[1px] border-neutral-400">
+      <div part="base" class="border-y border-neutral-400">
         <header
           part="header"
           id="header"

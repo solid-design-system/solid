@@ -16,6 +16,7 @@
   - [Work Process](#work-process)
     - [Components](#components)
     - [Styles](#styles)
+    - [Security Updates](#security-updates)
   - [Repository Overview](#repository-overview)
   - [Technologies](#technologies)
   - [Figma Library](#figma-library)
@@ -131,6 +132,11 @@ If you are working on a style, follow the steps below:
 4. Import your styles into the `packages/components/src/solid-styles.css` file. This step is crucial for enabling other Solid components to access the new styles.
 
 _ You can always refer to the existing components and styles to familiarize yourself with the workflow!_
+
+### Security Updates
+
+In our security workflow, Renovate (GitHub App) automatically identifies and updates security issues in our project dependencies.
+Renovate also creates a “Dependency Dashboard” ticket to track all found updates. During each iteration, we plan and assign the dashboard ticket to a specific team member. The assigned team member has to update the described packages by runing `pnpm update all`, creating a corresponding PR, and finally closing the ticket. This process ensures efficient handling of security updates while maintaining clear accountability within the team.
 
 ## Repository Overview
 

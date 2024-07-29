@@ -10,10 +10,9 @@ export default {
   component: 'sd-visually-hidden',
   args,
   argTypes,
-  parameters: {...parameters},
+  parameters: { ...parameters },
   decorators: [withActions] as any
 };
-
 
 /**
  * Default: This shows sd-visually-hidden in its default state.

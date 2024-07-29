@@ -76,7 +76,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     assumeInteractionOn: ['sd-blur', 'sd-input']
   });
   private readonly hasSlotController = new HasSlotController(this, 'help-text', 'label');
-  private readonly localize = new LocalizeController(this);
+  public localize = new LocalizeController(this);
   private typeToSelectString = '';
   private typeToSelectTimeout: number;
 
@@ -991,7 +991,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                       part="valid-icon"
                       class=${cx('flex-shrink-0', iconMarginLeft, iconSize)}
                       library="system"
-                      name="confirm"
+                      name="status-check"
                     ></sd-icon>
                   `
                 : ''}

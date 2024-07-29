@@ -76,7 +76,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     'message',
     'placeholder'
   );
-  private readonly localize = new LocalizeController(this);
+  public localize = new LocalizeController(this);
 
   @query('#input') input: HTMLInputElement;
   @query('#invalid-message') invalidMessage: HTMLDivElement;
@@ -156,10 +156,10 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   @property({ type: Number }) maxlength: number;
 
   /** The input's minimum value. Only applies to date and number input types. */
-  @property({ type: Number }) min: number;
+  @property() min: number | string;
 
   /** The input's maximum value. Only applies to date and number input types. */
-  @property({ type: Number }) max: number;
+  @property() max: number | string;
 
   /**
    * By default, form controls are associated with the nearest containing `<form>` element. This attribute allows you
@@ -643,7 +643,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                   <sd-icon
                     class=${cx('text-success flex-shrink-0', iconMarginLeft, iconSize)}
                     library="system"
-                    name="confirm"
+                    name="status-check"
                     part="valid-icon"
                   ></sd-icon>
                 `

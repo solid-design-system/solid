@@ -430,7 +430,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
                   <sd-icon
                     class=${cx('text-success absolute right-4 bg-white group-hover:bg-neutral-200', iconSizeMarginLeft)}
                     library="system"
-                    name="confirm"
+                    name="status-check"
                     part="valid-icon"
                   ></sd-icon>
                 `

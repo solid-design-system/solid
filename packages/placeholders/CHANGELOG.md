@@ -1,3 +1,31 @@
+# [@solid-design-system/placeholders-v1.6.2](https://github.com/solid-design-system/solid/compare/placeholders/1.6.1...placeholders/1.6.2) (2024-07-23)
+
+
+### Bug Fixes
+
+* solid faker seed for paragraphs and sentences ([#1213](https://github.com/solid-design-system/solid/issues/1213)) [skip chromatic] ([57b87ed](https://github.com/solid-design-system/solid/commit/57b87edc35ac7af1abcd74f92d53aa475a4d5ea0))
+
+# [@solid-design-system/placeholders-v1.6.1](https://github.com/solid-design-system/solid/compare/placeholders/1.6.0...placeholders/1.6.1) (2024-07-16)
+
+
+### Bug Fixes
+
+* solid faker seed ([#1210](https://github.com/solid-design-system/solid/issues/1210)) [skip chromatic] ([6c3b3f7](https://github.com/solid-design-system/solid/commit/6c3b3f7ef620c71021b4d84aa9227283507441c5))
+
+# [@solid-design-system/placeholders-v1.6.0](https://github.com/solid-design-system/solid/compare/placeholders/1.5.0...placeholders/1.6.0) (2024-05-24)
+
+
+### Features
+
+* ✨ add sd-step & sd-step-group  ([#1007](https://github.com/solid-design-system/solid/issues/1007)) ([d42c66f](https://github.com/solid-design-system/solid/commit/d42c66fec184306c1f7cc9c127f54b20fe17d5bf))
+
+# [@solid-design-system/placeholders-v1.5.0](https://github.com/solid-design-system/solid/compare/placeholders/1.4.0...placeholders/1.5.0) (2024-05-06)
+
+
+### Features
+
+* ✨add placeholder video ([#1032](https://github.com/solid-design-system/solid/issues/1032)) ([0bf4597](https://github.com/solid-design-system/solid/commit/0bf459788f02bc27b7a3f3515d47b20da3f51f67))
+
 # [@solid-design-system/placeholders-v1.4.0](https://github.com/solid-design-system/solid/compare/placeholders/1.3.0...placeholders/1.4.0) (2024-02-27)
 
 

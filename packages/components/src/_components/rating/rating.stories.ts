@@ -10,10 +10,9 @@ export default {
   component: 'sd-rating',
   args,
   argTypes,
-  parameters: {...parameters},
+  parameters: { ...parameters },
   decorators: [withActions] as any
 };
-
 
 /**
  * Default: This shows sd-rating in its default state.

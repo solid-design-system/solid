@@ -29,7 +29,7 @@ import type { CSSResultGroup } from 'lit';
 @customElement('sd-progress-bar')
 export default class SdProgressBar extends SolidElement {
   static styles: CSSResultGroup = styles;
-  private readonly localize = new LocalizeController(this);
+  public localize = new LocalizeController(this);
 
   /** The current progress as a percentage, 0 to 100. */
   @property({ type: Number, reflect: true }) value = 0;

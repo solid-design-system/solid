@@ -1,7 +1,7 @@
 import '../../solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { userEvent } from '@storybook/testing-library';
+import { userEvent } from '@storybook/test';
 import { waitUntil } from '@open-wc/testing-helpers';
 const { argTypes, parameters } = storybookDefaults('sd-checkbox');
 const { generateTemplate } = storybookTemplate('sd-checkbox');

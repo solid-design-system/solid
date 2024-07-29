@@ -17,7 +17,6 @@ interface CustomEventPayload {
 const waitForScrollButtonsToBeRendered = async (tabGroup: SdTabGroup): Promise<void> => {
   await waitUntil(() => {
     const scrollButtons = tabGroup.shadowRoot?.querySelectorAll('button');
-    console.log('scrollButtons ARE RENDERED', scrollButtons);
     return scrollButtons?.length === 2;
   });
 };
@@ -145,12 +144,7 @@ describe('<sd-tab-group>', () => {
     it('shows scroll buttons on too many tabs', async () => {
       const tabGroup = await fixture<SdTabGroup>(html`<sd-tab-group> ${generateTabs(30)} </sd-tab-group>`);
 
-      const nav = tabGroup.shadowRoot?.querySelectorAll('.tab-group__nav');
-      console.log(nav);
-
-      console.log('waiting for scroll buttons to be rendered');
       await waitForScrollButtonsToBeRendered(tabGroup);
-      console.log('scroll buttons rendered');
 
       const scrollButtons = tabGroup.shadowRoot?.querySelectorAll('button');
       expect(scrollButtons, 'Both scroll buttons should be shown').to.have.length(2);
@@ -205,7 +199,7 @@ describe('<sd-tab-group>', () => {
       const customHeader = queryByTestId<SdTab>(tabGroup, 'custom-header');
       expect(customHeader).not.to.have.attribute('active');
 
-      const showEventPromise = oneEvent(tabGroup, 'sd-tab-show', false);
+      const showEventPromise = oneEvent(tabGroup, 'sd-tab-show');
       await action();
 
       expect(customHeader).to.have.attribute('active');
@@ -222,8 +216,8 @@ describe('<sd-tab-group>', () => {
 
       let showEventFired = false;
       let hideEventFired = false;
-      oneEvent(tabGroup, 'sd-tab-show', false).then(() => (showEventFired = true));
-      oneEvent(tabGroup, 'sd-tab-hide', false).then(() => (hideEventFired = true));
+      oneEvent(tabGroup, 'sd-tab-show').then(() => (showEventFired = true));
+      oneEvent(tabGroup, 'sd-tab-hide').then(() => (hideEventFired = true));
       await action();
 
       expect(generalHeader).to.have.attribute('active');
@@ -304,7 +298,7 @@ describe('<sd-tab-group>', () => {
       const customHeader = queryByTestId<SdTab>(tabGroup, 'custom-header');
       expect(customHeader).not.to.have.attribute('active');
 
-      const showEventPromise = oneEvent(tabGroup, 'sd-tab-show', false);
+      const showEventPromise = oneEvent(tabGroup, 'sd-tab-show');
       await sendKeys({ press: 'ArrowRight' });
       await aTimeout(0);
       expect(generalHeader).to.have.attribute('active');

@@ -93,7 +93,7 @@ export default class SdColorPicker extends SolidElement implements SolidFormCont
 
   private readonly formControlController = new FormControlController(this);
   private isSafeValue = false;
-  private readonly localize = new LocalizeController(this);
+  public localize = new LocalizeController(this);
 
   @query('[part~="input"]') input: SdInput;
   @query('[part~="preview"]') previewButton: HTMLButtonElement;

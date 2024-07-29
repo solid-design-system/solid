@@ -43,7 +43,7 @@ import type SdPopup from '../popup/popup';
 @customElement('sd-tooltip')
 export default class SdTooltip extends SolidElement {
   private hoverTimeout: number;
-  private readonly localize = new LocalizeController(this);
+  public localize = new LocalizeController(this);
 
   @query('slot:not([name])') defaultSlot: HTMLSlotElement;
   @query('#tooltip') body: HTMLElement;

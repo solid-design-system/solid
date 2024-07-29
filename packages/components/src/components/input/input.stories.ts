@@ -1,7 +1,7 @@
 import '../../solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { userEvent } from '@storybook/testing-library';
+import { userEvent } from '@storybook/test';
 import { waitUntil } from '@open-wc/testing-helpers';
 import { withActions } from '@storybook/addon-actions/decorator';
 import type SdInput from './input';
@@ -26,6 +26,26 @@ export default {
         'The type of input. Works the same as a native `<input>` element, but only a subset of types are supported. ',
       control: 'select',
       options: ['date', 'datetime-local', 'email', 'number', 'password', 'search', 'tel', 'text', 'time', 'url', 'text']
+    },
+    'min-attr': {
+      name: 'min',
+      table: {
+        category: 'attributes',
+        defaultValue: ''
+      },
+      description:
+        "The input's minimum value. Only applies to date and number input types. String format for date  is yyyy-mm-dd",
+      control: 'text'
+    },
+    'max-attr': {
+      name: 'max',
+      table: {
+        category: 'attributes',
+        defaultValue: ''
+      },
+      description:
+        "The input's maximum value. Only applies to date and number input types. String format for date  is yyyy-mm-dd",
+      control: 'text'
     }
   },
   parameters: {

@@ -1,3 +1,157 @@
+# [@solid-design-system/components-v3.10.0](https://github.com/solid-design-system/solid/compare/components/3.9.0...components/3.10.0) (2024-07-26)
+
+
+### Features
+
+* 🎸 adding min and max posibility for date type of input ([#1215](https://github.com/solid-design-system/solid/issues/1215)) ([cf625a0](https://github.com/solid-design-system/solid/commit/cf625a0fd880a24eaa8869ad65d82fec8add4afa))
+
+### 📈 Stats
+* Bundle size (uncompressed): 325 KB (unchanged)
+* Bundle size (gzipped): 77 KB (unchanged)
+
+# [@solid-design-system/components-v3.9.0](https://github.com/solid-design-system/solid/compare/components/3.8.1...components/3.9.0) (2024-07-11)
+
+
+### Features
+
+* ✨ implement new brandshape variants ([#1180](https://github.com/solid-design-system/solid/issues/1180)) ([aa47c64](https://github.com/solid-design-system/solid/commit/aa47c6485208bc435e033f7b92deb92d1fa541bc))
+
+### 📈 Stats
+* Bundle size (uncompressed): 325 KB (+3 KB / +1%)
+* Bundle size (gzipped): 77 KB (+1 KB / +1%)
+
+# [@solid-design-system/components-v3.8.1](https://github.com/solid-design-system/solid/compare/components/3.8.0...components/3.8.1) (2024-07-10)
+
+
+### Bug Fixes
+
+* fix jumping text in navigation item ([#1197](https://github.com/solid-design-system/solid/issues/1197)) ([c421b28](https://github.com/solid-design-system/solid/commit/c421b2829c1849ac17f4649b21acad60d83027a5))
+
+### 📈 Stats
+* Bundle size (uncompressed): 322 KB (unchanged)
+* Bundle size (gzipped): 76 KB (unchanged)
+
+# [@solid-design-system/components-v3.8.0](https://github.com/solid-design-system/solid/compare/components/3.7.3...components/3.8.0) (2024-07-01)
+
+
+### Features
+
+* ✨ add sd-flipcard ([#1121](https://github.com/solid-design-system/solid/issues/1121)) ([ffd126f](https://github.com/solid-design-system/solid/commit/ffd126ff24307a79719d569d0d9fa3a2c9b54c07))
+
+### 📈 Stats
+* Bundle size (uncompressed): 322 KB (+7 KB / +2%)
+* Bundle size (gzipped): 76 KB (+1 KB / +1%)
+
+# [@solid-design-system/components-v3.7.3](https://github.com/solid-design-system/solid/compare/components/3.7.2...components/3.7.3) (2024-06-28)
+
+
+### Bug Fixes
+
+* add missing Tailwind classes for autcomplete config ([fa984da](https://github.com/solid-design-system/solid/commit/fa984daf650fc655d1c4a1ade4e924440fdfc3a3))
+
+### 📈 Stats
+* Bundle size (uncompressed): 315 KB (+1 KB / +0%)
+* Bundle size (gzipped): 75 KB (unchanged)
+
+# [@solid-design-system/components-v3.7.2](https://github.com/solid-design-system/solid/compare/components/3.7.1...components/3.7.2) (2024-06-27)
+
+
+### Bug Fixes
+
+* fix accent color in icons ([#1182](https://github.com/solid-design-system/solid/issues/1182)) ([c4b74da](https://github.com/solid-design-system/solid/commit/c4b74da7edfd198d2bb8ebc7d7afeda98d5daf1d))
+
+### 📈 Stats
+* Bundle size (uncompressed): 314 KB (unchanged)
+* Bundle size (gzipped): 75 KB (unchanged)
+
+# [@solid-design-system/components-v3.7.1](https://github.com/solid-design-system/solid/compare/components/3.7.0...components/3.7.1) (2024-06-21)
+
+
+### Bug Fixes
+
+* add utilities to exports ([#1156](https://github.com/solid-design-system/solid/issues/1156)) ([137da8c](https://github.com/solid-design-system/solid/commit/137da8c164bff15db18d293f1af3356a891ff9e3))
+
+### 📈 Stats
+* Bundle size (uncompressed): 314 KB (unchanged)
+* Bundle size (gzipped): 75 KB (unchanged)
+
+# [@solid-design-system/components-v3.7.0](https://github.com/solid-design-system/solid/compare/components/3.6.0...components/3.7.0) (2024-06-14)
+
+
+### Features
+
+* ✨ add custom localization (closes [#852](https://github.com/solid-design-system/solid/issues/852)) ([#997](https://github.com/solid-design-system/solid/issues/997)) ([e4e881f](https://github.com/solid-design-system/solid/commit/e4e881f7447cadfd648f69f5f469464f09573e18))
+
+### 📈 Stats
+* Bundle size (uncompressed): 314 KB (unchanged)
+* Bundle size (gzipped): 75 KB (unchanged)
+
+# [@solid-design-system/components-v3.6.0](https://github.com/solid-design-system/solid/compare/components/3.5.0...components/3.6.0) (2024-05-29)
+
+
+### Features
+
+* add sd-prose and fix sd-list ([b82d60f](https://github.com/solid-design-system/solid/commit/b82d60f2bf87e54479c7731145d87e93c2e983db))
+
+### 📈 Stats
+* Bundle size (uncompressed): 314 KB (+5 KB / +2%)
+* Bundle size (gzipped): 75 KB (+1 KB / +1%)
+
+# [@solid-design-system/components-v3.5.0](https://github.com/solid-design-system/solid/compare/components/3.4.0...components/3.5.0) (2024-05-24)
+
+
+### Features
+
+* ✨ add sd-step & sd-step-group  ([#1007](https://github.com/solid-design-system/solid/issues/1007)) ([d42c66f](https://github.com/solid-design-system/solid/commit/d42c66fec184306c1f7cc9c127f54b20fe17d5bf))
+
+### 📈 Stats
+* Bundle size (uncompressed): 309 KB (+10 KB / +3%)
+* Bundle size (gzipped): 74 KB (+2 KB / +3%)
+
+# [@solid-design-system/components-v3.4.0](https://github.com/solid-design-system/solid/compare/components/3.3.1...components/3.4.0) (2024-05-22)
+
+
+### Features
+
+* ✨ add sd-scrollable ([#966](https://github.com/solid-design-system/solid/issues/966)) ([3d7bcad](https://github.com/solid-design-system/solid/commit/3d7bcad9416da3013c45d120a0196f29fa17986e)), closes [#289](https://github.com/solid-design-system/solid/issues/289)
+
+### 📈 Stats
+* Bundle size (uncompressed): 299 KB (+7 KB / +2%)
+* Bundle size (gzipped): 72 KB (+2 KB / +3%)
+
+# [@solid-design-system/components-v3.3.1](https://github.com/solid-design-system/solid/compare/components/3.3.0...components/3.3.1) (2024-05-14)
+
+
+### Bug Fixes
+
+* 🤔 remove placeholder for fixed column sample ([#1045](https://github.com/solid-design-system/solid/issues/1045)) ([d75d6b7](https://github.com/solid-design-system/solid/commit/d75d6b7c6075883e3c194a4a07ff185c050a9a24))
+
+### 📈 Stats
+* Bundle size (uncompressed): 292 KB (unchanged)
+* Bundle size (gzipped): 70 KB (unchanged)
+
+# [@solid-design-system/components-v3.3.0](https://github.com/solid-design-system/solid/compare/components/3.2.0...components/3.3.0) (2024-05-06)
+
+
+### Features
+
+* ✨ optimize `autocomplete-config` to allow max-height for listbox ([#1043](https://github.com/solid-design-system/solid/issues/1043)) ([3802b3e](https://github.com/solid-design-system/solid/commit/3802b3e22d85821273bfcac82e3ed8dfe966109b))
+
+### 📈 Stats
+* Bundle size (uncompressed): 292 KB (unchanged)
+* Bundle size (gzipped): 70 KB (unchanged)
+
+# [@solid-design-system/components-v3.2.0](https://github.com/solid-design-system/solid/compare/components/3.1.0...components/3.2.0) (2024-05-06)
+
+
+### Features
+
+* ✨add placeholder video ([#1032](https://github.com/solid-design-system/solid/issues/1032)) ([0bf4597](https://github.com/solid-design-system/solid/commit/0bf459788f02bc27b7a3f3515d47b20da3f51f67))
+
+### 📈 Stats
+* Bundle size (uncompressed): 292 KB (unchanged)
+* Bundle size (gzipped): 70 KB (unchanged)
+
 # [@solid-design-system/components-v3.1.0](https://github.com/solid-design-system/solid/compare/components/3.0.1...components/3.1.0) (2024-04-29)
 
 

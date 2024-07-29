@@ -99,7 +99,7 @@ export default class SdTab extends SolidElement {
           class=${cx(
             !this.active &&
               !this.disabled &&
-              'absolute w-full h-[1px] bottom-0 border-b border-neutral-400 invisible group-hover:visible'
+              'absolute w-full h-0.25 bottom-0 border-b border-neutral-400 invisible group-hover:visible'
           )}
         ></div>
       </div>

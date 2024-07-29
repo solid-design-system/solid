@@ -16,12 +16,6 @@ import SolidFaker from '@solid-design-system/placeholders';
 // Create an instance with an optional seed value as the only argument
 const faker = new SolidFaker(123);
 
-// Set the seed to any other number to provide a different set of consistent results
-faker.seed(321);
-
-// Set the seed to undefined for random results on each invocation
-faker.seed();
-
 // Generate 5 random words (all lowercase)
 console.log(faker.words(5));
 
@@ -75,14 +69,18 @@ To integrate the images in this package into your Storybook you need to add the 
   staticDirs: [
     {
       from: '../node_modules/@solid-design-system/placeholders/src/images',
-      to: '/placeholders',
+      to: '/placeholders/images',
+    },
+    {
+      from: '../node_modules/@solid-design-system/placeholders/src/videos',
+      to: '/placeholders/videos',
     },
   ],
 ```
 
-After adding this package to the `staticDirs` of your Storybook the `src/images` folder will be included in your `storybook` build folder under the subfolder `storybook/placeholders`.
+After adding this package to the `staticDirs` of your Storybook the `src/images` folder will be included in your `storybook` build folder under the subfolder `storybook/placeholders/images`.
 To reference a image in your story you can follow this example:
 
 ```js
-'./placeholders/collaboration.jpg';
+'./placeholders/images/collaboration.jpg';
 ```

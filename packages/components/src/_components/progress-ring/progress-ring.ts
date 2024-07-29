@@ -28,7 +28,7 @@ import type { CSSResultGroup } from 'lit';
 export default class SdProgressRing extends SolidElement {
   static styles: CSSResultGroup = styles;
 
-  private readonly localize = new LocalizeController(this);
+  public localize = new LocalizeController(this);
 
   @query('.progress-ring__indicator') indicator: SVGCircleElement;
 

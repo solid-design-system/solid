@@ -2,7 +2,6 @@ import '../icon/icon';
 import { css, html } from 'lit';
 import { customElement } from '../../../src/internal/register-custom-element';
 import { HasSlotController } from '../../internal/slot';
-import { LocalizeController } from '../../utilities/localize';
 import { property, query, state } from 'lit/decorators.js';
 import { watch } from '../../internal/watch';
 import componentStyles from '../../styles/component.styles';
@@ -32,8 +31,6 @@ export default class SdOption extends SolidElement {
   private readonly hasSlotController = new HasSlotController(this, 'default', 'left', 'right');
 
   private cachedTextLabel: string;
-  // @ts-expect-error - Controller is currently unused
-  private readonly localize = new LocalizeController(this);
 
   @query('[part="base"]') defaultSlot: HTMLSlotElement;
 
@@ -170,7 +167,7 @@ export default class SdOption extends SolidElement {
                       part="checked-icon"
                       class="text-white w-3 h-3"
                       library="system"
-                      name="status-hook"
+                      name="status-check"
                     ></sd-icon>
                   `
                 : ''}

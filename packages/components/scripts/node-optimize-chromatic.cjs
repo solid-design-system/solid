@@ -11,8 +11,17 @@ fs.readdir(directoryPath, (err, files) => {
   }
 
   files.forEach(file => {
-    if (file.startsWith('solid-element-') && file.endsWith('.js')) {
-      matchedFiles.push(file);
+    if (
+      (file.startsWith('solid-element-') && file.endsWith('.js')) ||
+      (file.startsWith('solid-components-') && file.endsWith('.js'))
+    ) {
+      if (
+        fs
+          .readFileSync(path.join(directoryPath, file), 'utf8')
+          .includes('.animate-spin{animation:spin 1s linear infinite}') === true
+      ) {
+        matchedFiles.push(file);
+      }
     }
   });
 
@@ -45,7 +54,6 @@ fs.readdir(directoryPath, (err, files) => {
         });
       } else {
         console.error('File does not contain the required string.');
-        process.exit(1);
       }
     });
   } else if (matchedFiles.length > 1) {

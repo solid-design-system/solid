@@ -10,10 +10,9 @@ export default {
   component: 'sd-card',
   args,
   argTypes,
-  parameters: {...parameters},
+  parameters: { ...parameters },
   decorators: [withActions] as any
 };
-
 
 /**
  * Default: This shows sd-card in its default state.
