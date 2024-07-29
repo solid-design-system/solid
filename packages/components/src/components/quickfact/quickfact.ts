@@ -33,7 +33,7 @@ export default class SdQuickfact extends SdAccordion {
         part="summary"
         class=${cx(
           'flex flex-auto items-center text-left text-base leading-normal font-normal sm:leading-tight sm:text-3xl sm:text-center',
-          this.notInteractive ? 'text-black' : 'text-primary'
+          this.notInteractive ? 'text-black cursor-default' : 'text-primary'
         )}
         >${this.summary}</slot
       >
@@ -66,7 +66,10 @@ export default class SdQuickfact extends SdAccordion {
 
   /** @internal */
   RenderOptionalIcon = () => {
-    return html` <div part="icon" class="flex flex-grow-0 flex-shrink-0 flex-auto items-center">
+    return html` <div
+      part="icon"
+      class=${(cx('flex flex-grow-0 flex-shrink-0 flex-auto items-center'), this.notInteractive && 'cursor-default')}
+    >
       <slot name="icon"></slot>
     </div>`;
   };
