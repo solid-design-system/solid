@@ -23,7 +23,7 @@ import type SdDrawer from '../drawer/drawer';
  * @slot - The default slot.
  * @slot play-icon - The play icon.
  * @slot pause-icon - The pause icon.
- * @slot transcript - The transcript icon.
+ * @slot transcript - The transcript.
  *
  * @csspart base - The component's base wrapper.
  * @csspart audio-controls - The audio controls.
@@ -73,6 +73,8 @@ export default class SdAudio extends SolidElement {
 
   @state() volume: number = 1;
 
+  @state() hasTranscript: boolean = false;
+
   @query('.audio-player__seek-slider') seekSlider: HTMLInputElement;
 
   @query('.audio-player__volume-slider') volumeSlider: HTMLInputElement;
@@ -95,6 +97,7 @@ export default class SdAudio extends SolidElement {
     this.handleSeekChangeKeydown = this.handleSeekChangeKeydown.bind(this);
     this.handleVolumeChange = this.handleVolumeChange.bind(this);
     this.handleVolumeChangeKeydown = this.handleVolumeChangeKeydown.bind(this);
+    this.updateTranscript = this.updateTranscript.bind(this);
   }
 
   firstUpdated() {
@@ -254,6 +257,10 @@ export default class SdAudio extends SolidElement {
       ${this.inverted ? 'var(--bg-primary-400)' : 'var(--bg-neutral-400)'} ${volumePercentage}%)`;
   }
 
+  private updateTranscript() {
+    this.hasTranscript = true;
+  }
+
   private showTranscript() {
     this.emit('sd-transcript-click');
     this.drawer.open = true;
@@ -392,19 +399,21 @@ export default class SdAudio extends SolidElement {
       </button>
 
       <div class="flex items-center justify-self-end">
-        <sd-icon
-          name="transcript"
-          library="system"
-          class=${cx(
-            'mr-6 w-6 h-6 hover:cursor-pointer hover:text-primary-500',
-            this.inverted
-              ? 'text-white focus-visible:focus-outline-inverted'
-              : 'text-primary focus-visible:focus-outline'
-          )}
-          tabindex="0"
-          @click=${this.showTranscript}
-          @keydown=${this.showTranscriptKeydown}
-        ></sd-icon>
+        ${this.hasTranscript
+          ? html` <sd-icon
+              name="transcript"
+              library="system"
+              class=${cx(
+                'mr-6 w-6 h-6 hover:cursor-pointer hover:text-primary-500',
+                this.inverted
+                  ? 'text-white focus-visible:focus-outline-inverted'
+                  : 'text-primary focus-visible:focus-outline'
+              )}
+              tabindex="0"
+              @click=${this.showTranscript}
+              @keydown=${this.showTranscriptKeydown}
+            ></sd-icon>`
+          : null}
 
         <div class="audio-player__volume-container flex items-center" part="volume">
           <sd-icon
@@ -417,7 +426,7 @@ export default class SdAudio extends SolidElement {
             name=${this.isMuted ? 'mute' : 'volume'}
             library="system"
             aria-label=${this.localize.term('mute')}
-            tabindex="0"
+            tabindex="-1"
             @click=${this.muteAudio}
             @keydown=${this.muteAudioKeydown}
           ></sd-icon>
@@ -431,6 +440,7 @@ export default class SdAudio extends SolidElement {
             max="100"
             value=${this.volume * 100}
             tabindex="0"
+            label="Volume"
             @click=${this.handleVolumeChange}
             @keydown=${this.handleVolumeChangeKeydown}
           />
@@ -472,7 +482,7 @@ export default class SdAudio extends SolidElement {
         aria-label=${this.localize.term('audioPlayer')}
         part="base"
       >
-        <slot name="default" @slotchange="${this.updateDuration}"> </slot>
+        <slot name="default" @slotchange="${this.updateDuration}"></slot>
 
         ${!this.animated || (this.animated && this.reversedLayout) ? renderAudioControls : null}
 
@@ -503,9 +513,11 @@ export default class SdAudio extends SolidElement {
           />
         </div>
 
-        <sd-drawer slot="transcript">
-          <slot></slot>
-        </sd-drawer>
+        <slot name="transcript" @slotchange="${this.updateTranscript}">
+          <sd-drawer>
+            <slot></slot>
+          </sd-drawer>
+        </slot>
 
         ${!this.hideTimestamps && (!this.animated || !this.reversedLayout) ? renderTimestamps : null}
       </div>
