@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v3.10.2](https://github.com/solid-design-system/solid/compare/components/3.10.1...components/3.10.2) (2024-07-30)
+
+
+### Bug Fixes
+
+* [#1193](https://github.com/solid-design-system/solid/issues/1193) correct clear button color in sd-icon and sd-select ([#1217](https://github.com/solid-design-system/solid/issues/1217)) ([0fa1fd2](https://github.com/solid-design-system/solid/commit/0fa1fd24aabf3c9c73802ba5b0afe33c7ce7058e))
+
+### 📈 Stats
+* Bundle size (uncompressed): 325 KB (unchanged)
+* Bundle size (gzipped): 77 KB (unchanged)
+
 # [@solid-design-system/components-v3.10.1](https://github.com/solid-design-system/solid/compare/components/3.10.0...components/3.10.1) (2024-07-30)
 
 
