@@ -290,3 +290,77 @@ export const Mouseless = {
     `;
   }
 };
+
+export const SamplesTeaser = {
+  name: 'Samples: sd-audio with sd-teaser',
+  parameters: {
+    controls: {
+      disable: true
+    }
+  },
+  render: () => {
+    return html`
+      <style>
+        sd-teaser {
+          --distribution-media: 30%;
+        }
+      </style>
+      <div>
+        <div class="px-12 pt-12">
+          <sd-teaser variant="default">
+            <div slot="media" class="relative">
+              <img
+                class="aspect-square object-cover"
+                src="./placeholders/images/coffeeshop.jpg"
+                alt="A group of people sitting in a coffee shop"
+              />
+            </div>
+            <div slot="meta" class="meta-info">
+              <span class="meta-info-item">Meta information</span>
+            </div>
+            <h3 slot="headline">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore
+            </h3>
+            <div class="flex flex-col gap-5">
+              <p>Lorem ipsum dolor sit amet</p>
+            </div>
+          </sd-teaser>
+        </div>
+        <div id="sd-audio-example">
+          <sd-audio reversedLayout="true">
+            <audio id="audio-example" slot="default" src="./placeholders/audio/sds-song.mp3" preload="metadata"></audio>
+          </sd-audio>
+        </div>
+      </div>
+      ${audioElementScript}
+    `;
+  }
+};
+
+export const SamplesHeadline = {
+  name: 'Samples: sd-audio with sd-headline',
+  parameters: {
+    controls: {
+      disable: true
+    }
+  },
+  render: () => {
+    return html`
+      <style></style>
+      <div>
+        <div class="px-12 pt-12">
+          <h4 class="sd-headline sd-headline--size-xl flex justify-center">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+          </h4>
+        </div>
+        <div id="sd-audio-example">
+          <sd-audio>
+            <audio id="audio-example" slot="default" src="./placeholders/audio/sds-song.mp3" preload="metadata"></audio>
+          </sd-audio>
+        </div>
+      </div>
+      ${audioElementScript}
+    `;
+  }
+};
