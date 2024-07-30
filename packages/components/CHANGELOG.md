@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v3.10.1](https://github.com/solid-design-system/solid/compare/components/3.10.0...components/3.10.1) (2024-07-30)
+
+
+### Bug Fixes
+
+* sd-tooltip self closing with click focus trigger (close [#1211](https://github.com/solid-design-system/solid/issues/1211)) ([#1220](https://github.com/solid-design-system/solid/issues/1220)) ([6377696](https://github.com/solid-design-system/solid/commit/637769600df9f42d1a986df48f8c56f5e9b5881d))
+
+### 📈 Stats
+* Bundle size (uncompressed): 325 KB (unchanged)
+* Bundle size (gzipped): 77 KB (unchanged)
+
 # [@solid-design-system/components-v3.10.0](https://github.com/solid-design-system/solid/compare/components/3.9.0...components/3.10.0) (2024-07-26)
 
 
