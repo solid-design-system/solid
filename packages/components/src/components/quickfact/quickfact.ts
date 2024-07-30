@@ -86,7 +86,7 @@ export default class SdQuickfact extends SdAccordion {
       }
 
       [part='header'] {
-        @apply flex flex-row hover:bg-transparent gap-3 pb-3;
+        @apply flex flex-row hover:bg-transparent gap-3 pb-3 pt-0 px-0;
       }
 
       @media (min-width: 640px) {
