@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import '../../solid-components';
-import { html } from 'lit-html';
+import { html, render } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 import { userEvent } from '@storybook/test';
 import { waitUntil } from '@open-wc/testing-helpers';
@@ -11,10 +11,11 @@ const { generateTemplate } = storybookTemplate('sd-link');
 const { overrideArgs } = storybookHelpers('sd-link');
 
 export default {
+  tags: ['!dev'],
   title: 'Components/sd-link',
   component: 'sd-link',
   args: overrideArgs([
-    { type: 'slot', name: 'default', value: 'Link' },
+    { type: 'slot', name: 'default', value: 'Default' },
     { type: 'attribute', name: 'href', value: '#' }
   ]),
   argTypes,
@@ -32,297 +33,121 @@ export const Default = {
 };
 
 /**
- * Unset `href` to make the link disabled.
+ * The `size` attribute can be used to adjust the size of the link. By default it is set to `inherit` but can be changed to `lg` or `sm`.
  */
 
-export const InvertedAndDisabled = {
-  name: 'Disabled × Inverted',
-  parameters: { controls: { exclude: ['size', 'default', 'href', 'inverted'] } },
-  render: (args: any) =>
-    generateTemplate({
-      axis: {
-        x: {
-          type: 'attribute',
-          name: 'href',
-          values: ['#link', { value: '', title: '–' }]
-        },
-        y: {
-          type: 'attribute',
-          name: 'inverted',
-          values: [false, true]
-        }
-      },
-      args,
-      options: {
-        templateBackgrounds: { alternate: 'y', colors: ['white', 'rgb(var(--sd-color-primary, 0 53 142))'] }
-      }
-    })
+export const Sizes = {
+  name: 'Sizes',
+  render: () => html`
+    <div class="flex gap-12">
+      <sd-link href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/" size="lg">Large</sd-link>
+      <sd-link href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/" size="sm">Small</sd-link>
+    </div>
+  `
 };
 
 /**
- * You can make links bold by setting `<b>` tags around the text in the main slot.
+ * The `inverted` attribute can be used to invert the link's colors and use it in dark backgrounds.
  */
 
-export const BoldInMainSlot = {
-  name: 'Bold',
-  parameters: { controls: { exclude: ['default'] } },
-  render: (args: any) =>
-    generateTemplate({
-      axis: {
-        x: {
-          type: 'slot',
-          name: 'default',
-          title: 'main-slot',
-          values: ['Link', '<b>Link</b>']
-        }
-      },
-      args,
-      options: {
-        templateBackgrounds: { alternate: 'y', colors: ['white', 'rgb(var(--sd-color-primary, 0 53 142))'] }
-      }
-    })
+export const Inverted = {
+  name: 'Inverted',
+  render: () => html`
+    <div class="flex gap-12 bg-primary p-4">
+      <sd-link href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/" inverted>Inverted</sd-link>
+    </div>
+  `
 };
 
 /**
- * Use the `icon-left` and `icon-right` slots to add icons. They automatically adapt the size.
+ * The `disabled` attribute can be used to disable the link.
+ * To disable the link, the `href` attribute has to be removed.
  */
 
-export const SizeAndIconSlots = {
-  name: 'Size × Icon Slots',
-  parameters: { controls: { exclude: ['default', 'icon-left', 'size', 'icon-right', 'standalone'] } },
-  render: (args: any) => {
-    return html`
-      ${[false, true].map(standalone =>
-        generateTemplate({
-          axis: {
-            x: {
-              // To make the story creation easier, we put everything in the default slot.
-              type: 'slot',
-              name: 'default',
-              title: 'slot="icon-..."',
-              values: [
-                { value: 'Link', title: '–' },
-                {
-                  value: 'Link<sd-icon library="global-resources" name="system/picture" slot="icon-left"></sd-icon>',
-                  title: 'left'
-                },
-                {
-                  value: 'Link<sd-icon library="global-resources" name="system/picture" slot="icon-right"></sd-icon>',
-                  title: 'right'
-                }
-              ]
-            },
-            y: { type: 'attribute', name: 'size' }
-          },
-          options: { title: `standalone="${standalone ? 'true' : 'false'}"` },
-          constants: { type: 'attribute', name: 'standalone', value: standalone },
-          args
-        })
-      )}
-    `;
-  }
+export const Disabled = {
+  name: 'Disabled',
+  render: () => html`
+    <div class="flex gap-12">
+      <sd-link disabled>Disabled</sd-link>
+    </div>
+  `
 };
 
 /**
- * Icons automatically adapt to the link's invertedness.
+ * The `standalone` attribute can be used to control the layout of the icon and text within the component.
+ * If true, the icon and text will be displayed side by side, each occupying its own column.
+ * If false or not provided, the icon will be displayed inline within the text.
  */
 
-export const InvertedAndIconSlots = {
-  name: 'Inverted × Icon Slots',
-  parameters: { controls: { exclude: ['inverted', 'default', 'icon-left', 'icon-right'] } },
-  render: (args: any) =>
-    generateTemplate({
-      axis: {
-        // To make the story creation easier, we put everything in the default slot.
-        x: {
-          type: 'slot',
-          name: 'default',
-          title: 'slot="icon-..."',
-          values: [
-            { value: 'Link', title: '–' },
-            {
-              value: 'Link<sd-icon library="global-resources" name="system/picture" slot="icon-left"></sd-icon>',
-              title: 'left'
-            },
-            {
-              value: 'Link<sd-icon library="global-resources" name="system/picture" slot="icon-right"></sd-icon>',
-              title: 'right'
-            }
-          ]
-        },
-        y: {
-          type: 'attribute',
-          name: 'inverted',
-          values: [false, true]
-        }
-      },
-      args,
-      options: {
-        templateBackgrounds: { alternate: 'y', colors: ['white', 'rgb(var(--sd-color-primary, 0 53 142))'] }
-      }
-    })
+export const Standalone = {
+  name: 'Standalone',
+  render: () => html`
+    <div class="flex gap-12">
+      <sd-link href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/" standalone>
+        <sd-icon library="global-resources" name="system/picture" slot="icon-left"></sd-icon>
+        Standalone
+      </sd-link>
+
+      <sd-link href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/">
+        <sd-icon library="global-resources" name="system/picture" slot="icon-left"></sd-icon>
+        Without Standalone
+      </sd-link>
+    </div>
+  `
 };
 
 /**
- * This `standalone` attribute controls the layout of the icon and text within the component.
- * - If true, the icon and text will be displayed side by side, each occupying its own column.
- * - If false or not provided, the icon will be displayed inline within the text.
+ * Use the `icon-left` and `icon-right` slots to add icons to each side of the link. They automatically adapt the size.
  */
 
-export const StandaloneAndIconSlots = {
-  name: 'Standalone × Icon Slots',
-  parameters: { controls: { exclude: ['icon-right', 'icon-left', 'main', 'standalone', 'default'] } },
-  render: (args: any) => {
-    return html`
-      ${[false, true].map(surroundingContent =>
-        // To make the story creation easier, we put everything in the default slot.
-        generateTemplate({
-          axis: {
-            x: {
-              type: 'slot',
-              name: 'default',
-              title: 'icon-...',
-              values: [
-                { value: 'Magna ex ex elit cupidatat non esse.', title: '–' },
-                {
-                  value:
-                    '<sd-icon library="global-resources" name="system/picture" slot="icon-left"></sd-icon>Magna ex ex elit cupidatat non esse.',
-                  title: 'left'
-                },
-                {
-                  value:
-                    'Magna ex ex elit cupidatat non esse.<sd-icon library="global-resources" name="system/picture" slot="icon-right"></sd-icon>',
-                  title: 'right'
-                }
-              ]
-            },
-            y: {
-              type: 'attribute',
-              name: 'standalone',
-              values: [false, true]
-            }
-          },
-          constants: [
-            {
-              type: 'template',
-              name: 'default-template',
-              value: `<div style="font-size: 16px; text-align: left; width: 200px; word-break: break-all;">${
-                surroundingContent ? 'Qui do.' : ''
-              }%TEMPLATE%${surroundingContent ? 'Eiusmod minim excepteur.</div>' : ''}`
-            }
-          ],
-          args,
-          options: {
-            title: surroundingContent ? 'example with surrounding content' : 'example without surrounding content'
-          }
-        })
-      )}
-    `;
-  }
+export const SlottedIcons = {
+  name: 'Slotted Icons',
+  render: () => html`
+    <div class="flex gap-12">
+      <sd-link href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/" standalone>
+        <sd-icon library="global-resources" name="system/picture" slot="icon-left"></sd-icon>
+        Slotted Icon Left
+      </sd-link>
+
+      <sd-link href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/" standalone>
+        Slotted Icon Right
+        <sd-icon library="global-resources" name="system/picture" slot="icon-right"></sd-icon>
+      </sd-link>
+    </div>
+  `
 };
 
 /**
- * Use the part selector to align the icon within the component.
+ * Example of a combination of attributes (`size`, `standalone`, `href`) and slots (`icon-right` and `icon-left`) rendered in a list.
  */
 
-export const IconAlignment = {
-  parameters: {
-    controls: { exclude: ['icon-right', 'default', 'standalone', 'base'] }
-  },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: {
-          type: 'template',
-          name: 'sd-link::part(base){align-items: ...;}',
-          values: ['start', 'center', 'end'].map(alignIcon => {
-            return {
-              value: `<style>#align-icon-${alignIcon} sd-link::part(base){align-items: ${alignIcon};}</style><div id="align-icon-${alignIcon}">%TEMPLATE%</div>`,
-              title: alignIcon
-            };
-          })
-        }
-      },
-      constants: [
-        {
-          type: 'template',
-          name: 'constant-template',
-          value: '<style>div[id^=align-icon-]{text-align: left; width: 300px;}</style>'
-        },
-        {
-          type: 'slot',
-          name: 'icon-right',
-          value: '<sd-icon library="global-resources" name="system/arrow-right" slot="icon-right"></sd-icon>'
-        },
-        {
-          type: 'slot',
-          name: 'default',
-          value: 'In dolore consectetur do excepteur tempor occaecat magna anim esse sit dolor mollit est voluptate.'
-        },
-        {
-          type: 'attribute',
-          name: 'standalone',
-          value: true
-        }
-      ],
-      args
-    });
-  }
-};
-
-/**
- * Use the `base`, `label`, `icon-left` and `icon-right` part selectors to customize the button.
- */
-
-export const Parts = {
-  parameters: {
-    controls: { exclude: ['base', 'label', 'icon-left', 'icon-right'] }
-  },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: {
-          type: 'template',
-          name: 'sd-link::part(...){outline: solid 2px red}',
-          values: ['base', 'label', 'icon-left', 'icon-right'].map(part => {
-            return {
-              title: part,
-              value: `<style>#part-${part} sd-link::part(${part}){outline: solid 2px red}</style><div id="part-${part}">%TEMPLATE%</div>`
-            };
-          })
-        }
-      },
-      constants: [
-        {
-          type: 'slot',
-          name: 'icon-right',
-          value: '<sd-icon library="global-resources" name="system/picture" slot="icon-right"></sd-icon>'
-        },
-        {
-          type: 'slot',
-          name: 'icon-left',
-          value: '<sd-icon library="global-resources" name="system/picture" slot="icon-left"></sd-icon>'
-        }
-      ],
-      args
-    });
-  }
-};
-
-/**
- * sd-links are fully accessibile via keyboard.
- */
-
-export const Mouseless = {
-  render: (args: any) => {
-    return html`<div class="mouseless">${generateTemplate({ args })}</div>`;
-  },
-
-  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
-    const el = canvasElement.querySelector('.mouseless sd-link');
-    await waitUntil(() => el?.shadowRoot?.querySelector('a'));
-    // We have to catch the event as otherwise Storybook will break
-    el!.addEventListener('click', e => e.preventDefault());
-    await userEvent.type(el!.shadowRoot!.querySelector('a')!, '{return}', { pointerEventsCheck: 0 });
-  }
+export const LinksInList = {
+  name: 'Links in List',
+  render: () => html`
+    <div class="bg-primary-100 p-8">
+      <h2 class="sd-headline sd-headline--size-2xl mb-8">You might be interested in this:</h2>
+      <ul class="link-list">
+        <li class="mb-5">
+          <sd-link
+            href="https://institutional.union-investment.de/startseite-de/reporting/Rund-um-unsere-Fonds/Fonds-im-Ueberblick/downloads.html?action=viewFondsDownloadOf&isin=LU0249047092&kundenkreis=1&legalcheck_9eae9aca-e270-4ab2-a21e-8468081acb69=3f8f3069-86d9-4c6e-baf4-ed746380e81f"
+            size="lg"
+            standalone
+          >
+            Commodities-Invest
+            <sd-icon library="system" name="chevron-up" class="rotate-90" slot="icon-left"></sd-icon>
+          </sd-link>
+        </li>
+        <li>
+          <sd-link
+            href="https://institutional.union-investment.de/themen-und-analysen/rohstoffmaerkte-werden-gruen"
+            size="lg"
+            standalone
+          >
+            Rohstoffmärkte werden grün
+            <sd-icon library="system" name="chevron-up" class="rotate-90" slot="icon-left"></sd-icon>
+          </sd-link>
+        </li>
+      </ul>
+    </div>
+  `
 };
