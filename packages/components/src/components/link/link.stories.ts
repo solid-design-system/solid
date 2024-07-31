@@ -1,9 +1,7 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import '../../solid-components';
-import { html, render } from 'lit-html';
+import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { userEvent } from '@storybook/test';
-import { waitUntil } from '@open-wc/testing-helpers';
 import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes } = storybookDefaults('sd-link');
@@ -129,7 +127,7 @@ export const LinksInList = {
       <ul class="link-list">
         <li class="mb-5">
           <sd-link
-            href="https://institutional.union-investment.de/startseite-de/reporting/Rund-um-unsere-Fonds/Fonds-im-Ueberblick/downloads.html?action=viewFondsDownloadOf&isin=LU0249047092&kundenkreis=1&legalcheck_9eae9aca-e270-4ab2-a21e-8468081acb69=3f8f3069-86d9-4c6e-baf4-ed746380e81f"
+            href="https://institutional.union-investment.de/reporting/rund-um-unsere-fonds/fonds-im-ueberblick"
             size="lg"
             standalone
           >
