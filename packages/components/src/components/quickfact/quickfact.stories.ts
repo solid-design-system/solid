@@ -13,7 +13,7 @@ const { generateTemplate } = storybookTemplate('sd-quickfact');
 
 /**
  *
- *  **Disclaimer:** Due to a bug with Storybook Controls, the `not-interactive` attribute controls might not behave as expected. Please refresh the page if you wish to reset the controls.
+ *  **Disclaimer:** Due to a bug with Storybook Controls, the `expandable` attribute controls might not behave as expected. Please refresh the page if you wish to reset the controls.
  *
  *  You can follow this issue here: https://github.com/storybookjs/storybook/issues/28634
  */
@@ -44,11 +44,6 @@ export default {
   parameters: { ...parameters }
 };
 
-/**
- * Accordion shows a brief summary and expands to show additional content.
- * Due to a bug with Storybook Controls, the `not-interactive` attribute controls might not behave as expected. Please refresh the page if you wish to reset the controls. You can follow this issue here: https://github.com/storybookjs/storybook/issues/28634
- */
-
 export const Default = {
   render: (args: any) => {
     return generateTemplate({
@@ -68,7 +63,10 @@ export const States = {
         y: { type: 'attribute', name: 'open' }
       },
       args,
-      constants: { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' }
+      constants: [
+        { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' },
+        { type: 'attribute', name: 'expandable', value: 'true' }
+      ]
     });
   }
 };
@@ -76,12 +74,12 @@ export const States = {
 /**
  * A quickfact item can either be collapsed or open.
  */
-export const notInteractive = {
-  parameters: { controls: { exclude: 'not-interactive' } },
+export const expandable = {
+  parameters: { controls: { exclude: 'expandable' } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        y: { type: 'attribute', name: 'not-interactive' }
+        y: { type: 'attribute', name: 'expandable' }
       },
       args,
       constants: { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' }
@@ -96,7 +94,10 @@ export const notInteractive = {
 
 export const Mobile = {
   render: (args: any) => {
-    return generateTemplate({ args });
+    return generateTemplate({
+      args,
+      constants: { type: 'attribute', name: 'expandable', value: 'true' }
+    });
   },
   parameters: {
     viewport: {
@@ -130,7 +131,8 @@ export const SummaryLength = {
       args,
       constants: [
         { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' },
-        { type: 'slot', name: 'summary', value: '<div slot="summary" class="slot slot--text">Test</div>`' }
+        { type: 'slot', name: 'summary', value: '<div slot="summary" class="slot slot--text">Test</div>`' },
+        { type: 'attribute', name: 'expandable', value: 'true' }
       ]
     });
   }
@@ -176,7 +178,8 @@ export const Slots = {
           },
           constants: [
             { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' },
-            { type: 'attribute', name: 'open', value: slot === 'collapse-icon' || slot === 'default' ? true : false }
+            { type: 'attribute', name: 'open', value: slot === 'collapse-icon' || slot === 'default' ? true : false },
+            { type: 'attribute', name: 'expandable', value: 'true' }
           ],
           args: overrideArgs({ type: 'slot', name: 'default', value: '' }, args)
         })
@@ -209,7 +212,8 @@ export const Parts = {
       },
       constants: [
         { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' },
-        { type: 'attribute', name: 'open', value: true }
+        { type: 'attribute', name: 'open', value: true },
+        { type: 'attribute', name: 'expandable', value: 'true' }
       ],
       args
     });
@@ -222,7 +226,9 @@ export const Parts = {
 
 export const Mouseless = {
   render: (args: any) => {
-    return html`<div class="mouseless">${generateTemplate({ args })}</div>`;
+    return html`<div class="mouseless">
+      ${generateTemplate({ args, constants: { type: 'attribute', name: 'expandable', value: 'true' } })}
+    </div>`;
   },
 
   play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
@@ -262,7 +268,7 @@ export const Sample = {
           }
         </style>
         <div class="grouping-sample relative">
-          <sd-quickfact class="first">
+          <sd-quickfact expandable class="first">
             <sd-icon name="content/image" color="primary" aria-hidden="true" library="default" slot="icon"></sd-icon>
 
             <div class="slot slot--border slot--text h-12">Quickfact 1</div>
@@ -273,7 +279,7 @@ export const Sample = {
             </div>
           </sd-quickfact>
 
-          <sd-quickfact class="second">
+          <sd-quickfact expandable class="second">
             <sd-icon name="content/image" color="primary" aria-hidden="true" library="default" slot="icon"></sd-icon>
 
             <div class="slot slot--border slot--text h-12">Quickfact 2</div>
@@ -284,7 +290,7 @@ export const Sample = {
             </div>
           </sd-quickfact>
 
-          <sd-quickfact class="third">
+          <sd-quickfact expandable class="third">
             <sd-icon name="content/image" color="primary" aria-hidden="true" library="default" slot="icon"></sd-icon>
 
             <div class="slot slot--border slot--text h-12">Quickfact 3</div>
@@ -294,7 +300,7 @@ export const Sample = {
               <div class="text-base font-normal leading-normal sm:text-xl">Ut enim ad</div>
             </div>
           </sd-quickfact>
-          <sd-quickfact class="fourth">
+          <sd-quickfact expandable class="fourth">
             <sd-icon name="content/image" color="primary" aria-hidden="true" library="default" slot="icon"></sd-icon>
 
             <div class="slot slot--border slot--text h-12">Quickfact 4</div>

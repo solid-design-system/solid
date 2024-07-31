@@ -10,16 +10,16 @@ describe('<sd-quickfact>', () => {
 
     it('is interactive by default', async () => {
       const el = await fixture<SdQuickfact>(html`<sd-quickfact></sd-quickfact>`);
-      expect(el.notInteractive).to.be.false;
+      expect(el.expandable).to.be.false;
       const summary = el.shadowRoot!.querySelector('slot[name="summary"]')!;
 
       expect(summary.classList.contains('text-primary')).to.be.true;
     });
   });
 
-  describe('notInteractive', () => {
+  describe('expandable', () => {
     it('reflects the attribute', async () => {
-      const el = await fixture<SdQuickfact>(html`<sd-quickfact not-interactive></sd-quickfact>`);
+      const el = await fixture<SdQuickfact>(html`<sd-quickfact expandable></sd-quickfact>`);
 
       const summary = el.shadowRoot!.querySelector('slot[name="summary"]')!;
       expect(summary.classList.contains('text-black')).to.be.true;
