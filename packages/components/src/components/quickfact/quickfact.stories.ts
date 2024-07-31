@@ -131,8 +131,7 @@ export const SummaryLength = {
       args,
       constants: [
         { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' },
-        { type: 'slot', name: 'summary', value: '<div slot="summary" class="slot slot--text">Test</div>`' },
-        { type: 'attribute', name: 'expandable', value: 'true' }
+        { type: 'slot', name: 'summary', value: '<div slot="summary" class="slot slot--text">Test</div>`' }
       ]
     });
   }
