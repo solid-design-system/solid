@@ -43,7 +43,7 @@ export default class SdExpandable extends SolidElement {
   /** Inverts the expandable and sets the primary color background. */
   @property({ type: Boolean, reflect: true }) inverted = false;
 
-  /** Controls the height of the gradient depending on if it is used with `paragraph` or `leadtext`. */
+  /** Sets the height of the gradient to 24px for paragraph and 32px for leadtext. */
   @property({ reflect: true }) variant: 'paragraph' | 'leadtext' = 'paragraph';
 
   private updateMaxHeight() {
