@@ -10,6 +10,7 @@ const { generateTemplate } = storybookTemplate('sd-accordion');
 export default {
   title: 'Components/sd-accordion',
   component: 'sd-accordion',
+  tags: ['!dev'],
   args: overrideArgs([
     { type: 'slot', name: 'default', value: '<div class="slot slot--border slot--text h-16">Default slot</div>' },
     { type: 'attribute', name: 'summary', value: 'Default' }
@@ -31,7 +32,7 @@ export const Default = {
 };
 
 /**
- * The attribute `open` can be used to set the initial state of the accordion.
+ * Use the attribute `open` to set the initial state of the accordion.
  */
 
 export const Open = {
@@ -45,7 +46,7 @@ export const Open = {
 };
 
 /**
- * The `summary` can be used to provide the text in the accordion header.
+ * Use `summary` to provide the text in the accordion header.
  */
 
 export const Summary = {
@@ -58,7 +59,7 @@ export const Summary = {
 };
 
 /**
- * If you need to use custom html in the summary, you should use the `summary` slot.
+ * The `summary` slot allows you to use custom html in the summary.
  */
 
 export const SlottedSummary = {
