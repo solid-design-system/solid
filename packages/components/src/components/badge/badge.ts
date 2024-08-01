@@ -17,11 +17,11 @@ import SolidElement from '../../internal/solid-element';
  */
 @customElement('sd-badge')
 export default class SdBadge extends SolidElement {
-  /** The badge's theme variant. */
-  @property({ reflect: true }) variant: 'default' | 'success' | 'error' = 'default';
-
   /** The badge's size. */
   @property({ reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
+
+  /** The badge's theme variant. */
+  @property({ reflect: true }) variant: 'default' | 'success' | 'error' = 'default';
 
   /** Inverts the badge. */
   @property({ type: Boolean, reflect: true }) inverted = false;
