@@ -112,7 +112,7 @@ export default class SdExpandable extends SolidElement {
       <button
         part="toggle"
         class=${cx(
-          'sd-interactive sd-interactive--reset !h-full !justify-center !w-full !text-base !flex !items-center !underline !toggle',
+          'sd-interactive sd-interactive--reset !h-full !justify-center !w-full !text-base !flex !items-center !underline !underline-offset-2 !toggle',
           this.inverted && 'sd-interactive--inverted',
           !this.inverted ? '!focus-visible:focus-outline' : '!focus-visible:focus-outline-inverted'
         )}
