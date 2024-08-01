@@ -7,6 +7,12 @@ const { argTypes, parameters } = storybookDefaults('sd-accordion');
 const { overrideArgs } = storybookHelpers('sd-accordion');
 const { generateTemplate } = storybookTemplate('sd-accordion');
 
+/**
+ *
+ * Accordions show a brief summary and expand to display additional content.
+ *
+ */
+
 export default {
   title: 'Components/sd-accordion',
   component: 'sd-accordion',
