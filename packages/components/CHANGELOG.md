@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v3.10.3](https://github.com/solid-design-system/solid/compare/components/3.10.2...components/3.10.3) (2024-08-01)
+
+
+### Bug Fixes
+
+* missing border sd-container variant-border-neutral-400 ([#1229](https://github.com/solid-design-system/solid/issues/1229)) ([94e8b15](https://github.com/solid-design-system/solid/commit/94e8b15eb533b5313e29080036cb5cad2fc389e5)), closes [#1228](https://github.com/solid-design-system/solid/issues/1228)
+
+### 📈 Stats
+* Bundle size (uncompressed): 325 KB (unchanged)
+* Bundle size (gzipped): 77 KB (unchanged)
+
 # [@solid-design-system/components-v3.10.2](https://github.com/solid-design-system/solid/compare/components/3.10.1...components/3.10.2) (2024-07-30)
 
 
