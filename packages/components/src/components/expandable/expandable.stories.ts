@@ -52,29 +52,31 @@ export const Inverted = {
  */
 export const Slots = {
   parameters: {
-    controls: { exclude: ['toggle-open', 'toggle-closed'] }
+    controls: { exclude: ['default', 'toggle-open', 'toggle-closed'] }
   },
   render: (args: any) => {
     return html`
-      ${['toggle-open', 'toggle-closed'].map(slot => {
-        return generateTemplate({
+      ${['default', 'toggle-open', 'toggle-closed'].map(slot =>
+        generateTemplate({
           axis: {
             x: {
               type: 'slot',
               name: slot,
-              title: 'slot=..',
+              title: 'slot=...',
               values: [
                 {
-                  value: `<div slot='${slot}' class="slot slot--border slot--background min-h-12 w-full h-full"></div>`,
+                  value:
+                    slot === 'default'
+                      ? `<div class="slot slot--border slot--background slot--text h-full">Default slot</div>`
+                      : `<div slot='${slot}' class="slot slot--border slot--background slot--text h-12"></div>`,
                   title: slot
                 }
               ]
             }
           },
-          args,
-          constants: { type: 'attribute', name: 'open', value: [true, false] }
-        });
-      })}
+          args
+        })
+      )}
     `;
   }
 };
@@ -85,7 +87,7 @@ export const Slots = {
 export const Parts = {
   parameters: {
     controls: {
-      exclude: ['content', 'toggle']
+      exclude: ['open', 'content', 'toggle']
     }
   },
   render: (args: any) => {
