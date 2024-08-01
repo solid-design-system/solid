@@ -1,6 +1,7 @@
 import { css, html } from 'lit';
 import { customElement } from '../../../src/internal/register-custom-element';
 import { property, query } from 'lit/decorators.js';
+import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch.js';
 import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
@@ -15,7 +16,6 @@ import SolidElement from '../../internal/solid-element';
  * @dependency sd-icon
  *
  * @slot - Content of the expandable
- * @slot clone - Hidden slot to clone the content to the light DOM
  * @slot toggle-open - Content of the toggle button when the expandable is open
  * @slot toggle-closed - Content of the toggle button when the expandable is closed
  *
@@ -40,7 +40,7 @@ export default class SdExpandable extends SolidElement {
    */
   @property({ type: Boolean, reflect: true }) open = false;
 
-  /** Inverts the expandable and sets the primary color background. */
+  /** Inverts the expandable and sets the color of the gradient to primary. */
   @property({ type: Boolean, reflect: true }) inverted = false;
 
   /** Sets the height of the gradient to 24px for paragraph and 32px for leadtext. */
@@ -72,6 +72,24 @@ export default class SdExpandable extends SolidElement {
     }
 
     this.details.setAttribute('open', this.open.toString());
+  }
+
+  /** Shows the exapanded content. */
+  async show() {
+    if (this.open) {
+      return undefined;
+    }
+    this.open = true;
+    return waitForEvent(this, 'sd-after-show');
+  }
+
+  /** Hides the expanded content */
+  async hide() {
+    if (!this.open) {
+      return undefined;
+    }
+    this.open = false;
+    return waitForEvent(this, 'sd-after-hide');
   }
 
   render() {

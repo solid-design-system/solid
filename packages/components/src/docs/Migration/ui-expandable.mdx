@@ -2,65 +2,17 @@
 
 The new `sd-expandable` is designed to replace the `ui-expandable`. Instead of mainly providing content via attributes, the `sd-expandable` component uses slots to allow for more flexibility and customization.
 
-## 💾 Slots
-
-### ✨ New Slots
-
-#### [1st_new_slot]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-#### [2nd_new_slot]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-### 🔀 Updated Slots
-
-#### [1st_updated_slot]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-#### [2nd_updated_slot]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-### ❌ Removed Slots
-
-The following slots have been removed from the new sd-expandable component:
-
-1. [1st_removed_slot]
-2. [2nd_removed_slot]
-
-<hr />
-
 ## ⚙️ Attributes
 
 ### ✨ New Attributes
 
-#### [1st_new_attribute]
+#### [inverted]
 
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
+Inverts the expandable and sets the color of the gradient to primary.
 
-#### [2nd_new_attribute]
+#### [variant]
 
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-### 🔀 Updated Attributes
-
-#### [1st_updated_attribute]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-#### [2nd_updated_attribute]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-### ❌ Removed Attributes
-
-The following attributes have been removed from the new sd-expandable component:
-
-1. [1st_removed_attribute]
-2. [2nd_removed_attribute]
+Sets the height of the gradient to 24px for paragraph and 32px for leadtext.
 
 <hr />
 
@@ -68,30 +20,19 @@ The following attributes have been removed from the new sd-expandable component:
 
 ### ✨ New CSS Variables
 
-#### [1st_new_CSS_variable]
+#### [--gradient-color-start]
 
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
+Start color of the gradient. The starting gradient should ideally have an opacity of 0 (default: rgba(255, 255, 255, 0))
 
-#### [2nd_new_CSS_variable]
+#### [--gradient-color-end]
 
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-### 🔀 Updated CSS variables
-
-#### [1st_updated_CSS_variable]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-#### [2nd_updated_CSS_variable]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
+End color of the gradient. The ending gradient should ideally have an opacity of 1 (default: rgba(255, 255, 255, 1))
 
 ### ❌ Removed CSS variables
 
 The following CSS variables have been removed from the new sd-expandable component:
 
-1. [1st_removed_CSS_variable]
-2. [2nd_removed_CSS_variable]
+1. [--ui-animation-bezier]
 
 <hr />
 
@@ -99,61 +40,21 @@ The following CSS variables have been removed from the new sd-expandable compone
 
 ### ✨ New Events
 
-#### [1st_new_event]
+#### [sd-show]
 
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
+Fires when the expandable is shown.
 
-#### [2nd_new_event]
+#### [sd-after-show]
 
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
+Fires after the expandable is shown.
 
-### 🔄 Updated Events
+#### [sd-hide]
 
-#### [1st_updated_event]
+Fires when the expandable is hidden.
 
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
+#### [sd-after-hide]
 
-#### [2nd_updated_event]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-### ❌ Removed Events:
-
-The following events have been removed from the new sd-expandable component:
-
-1. [1st_removed_event]
-2. [2nd_removed_event]
-
-<hr />
-
-## 🦻 Event Listeners
-
-### ✨ New Event Listeners
-
-#### [1st_new_event_listener]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-#### [2nd_new_event_listener]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-### 🔄 Updated Event Listeners
-
-#### [1st_updated_event_listener]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-#### [2nd_updated_event_listener]
-
-Lorem_ipsum_dolor_sit_amet_consectetur_adipisicing_elit
-
-### ❌ Removed Event Listeners:
-
-The following event listeners have been removed from the new sd-expandable component:
-
-1. [1st_removed_event_listeners]
-2. [2nd_removed_event_listeners]
+Fires after the expandable is hidden.
 
 <hr />
 

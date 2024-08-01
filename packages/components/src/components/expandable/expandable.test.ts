@@ -43,7 +43,7 @@ describe('<sd-expandable>', () => {
     el.addEventListener('sd-show', showHandler);
     el.addEventListener('sd-after-show', afterShowHandler);
 
-    el.open = true; // Programmatically open the expandable
+    el.show(); // Programmatically open the expandable
     await el.updateComplete;
 
     await waitUntil(() => showHandler.calledOnce);
@@ -67,7 +67,7 @@ describe('<sd-expandable>', () => {
 
     el.addEventListener('sd-hide', hideHandler);
     el.addEventListener('sd-after-hide', afterHideHandler);
-    el.open = false; // Programmatically close the expandable
+    el.hide(); // Programmatically close the expandable
 
     await waitUntil(() => hideHandler.calledOnce);
     await waitUntil(() => afterHideHandler.calledOnce);
