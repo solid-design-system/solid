@@ -33,6 +33,7 @@ export default {
  */
 
 export const Default = {
+  name: 'Default',
   render: (args: any) => {
     return generateTemplate({
       args
@@ -44,6 +45,7 @@ export const Default = {
  * An accordion item can either be collapsed or open.
  */
 export const States = {
+  name: 'States',
   parameters: { controls: { exclude: 'open' } },
   render: (args: any) => {
     return generateTemplate({
@@ -60,6 +62,7 @@ export const States = {
  * The summary can have multiple lines.
  */
 export const SummaryLength = {
+  name: 'Summary Length',
   parameters: { controls: { exclude: 'summary' } },
   render: (args: any) => {
     return generateTemplate({
@@ -98,6 +101,7 @@ export const SummaryLength = {
  */
 
 export const Slots = {
+  name: 'Slots',
   parameters: {
     controls: { exclude: ['expand-icon', 'collapse-icon', 'default', 'summary'] }
   },
@@ -136,6 +140,7 @@ export const Slots = {
 };
 
 export const Parts = {
+  name: 'Parts',
   parameters: {
     controls: { exclude: ['base', 'header', 'summary', 'summary-icon', 'summary-border', 'content', 'content__slot'] }
   },
@@ -171,6 +176,7 @@ export const Parts = {
  */
 
 export const Mouseless = {
+  name: 'Mouseless',
   render: (args: any) => {
     return html`<div class="mouseless">${generateTemplate({ args })}</div>`;
   },
