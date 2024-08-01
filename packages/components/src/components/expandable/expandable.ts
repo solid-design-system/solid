@@ -32,7 +32,7 @@ import SolidElement from '../../internal/solid-element';
  */
 @customElement('sd-expandable')
 export default class SdExpandable extends SolidElement {
-  @query('.shrinker') shrinker: HTMLElement;
+  @query('.content-preview') contentPreview: HTMLElement;
   @query('details') details: HTMLDetailsElement;
 
   /**
@@ -47,7 +47,7 @@ export default class SdExpandable extends SolidElement {
   @property({ reflect: true }) variant: 'paragraph' | 'leadtext' = 'paragraph';
 
   private updateMaxHeight() {
-    const scrollHeight = this.shrinker?.scrollHeight.toString();
+    const scrollHeight = this.contentPreview?.scrollHeight.toString();
     this.style.setProperty('--max-height-pixel', `${scrollHeight}px`);
     this.style.setProperty('--max-height', scrollHeight);
   }
@@ -80,7 +80,7 @@ export default class SdExpandable extends SolidElement {
         <summary aria-hidden="true" class="cursor-pointer overflow-hidden list-none">
           <slot name="clone"></slot>
         </summary>
-        <div part="content" class="content shrinker overflow-hidden relative">
+        <div part="content" class="content content-preview overflow-hidden relative">
           <slot></slot>
         </div>
       </details>
@@ -96,7 +96,13 @@ export default class SdExpandable extends SolidElement {
           ? html`
               <slot name="toggle-open">
                 <div class="default-content flex items-center justify-center w-full">
-                  <sd-link size="lg" href="#" onclick="return false;" ?inverted=${this.inverted} tabindex="-1"
+                  <sd-link
+                    size="lg"
+                    href="#"
+                    onclick="return false;"
+                    ?inverted=${this.inverted}
+                    tabindex="-1"
+                    standalone
                     >Show less <sd-icon library="system" name="chevron-up" slot="icon-left"></sd-icon
                   ></sd-link>
                 </div>
@@ -105,7 +111,13 @@ export default class SdExpandable extends SolidElement {
           : html`
               <slot name="toggle-closed">
                 <div class="default-content flex items-center justify-center w-full">
-                  <sd-link size="lg" href="#" onclick="return false;" ?inverted=${this.inverted} tabindex="-1"
+                  <sd-link
+                    size="lg"
+                    href="#"
+                    onclick="return false;"
+                    ?inverted=${this.inverted}
+                    tabindex="-1"
+                    standalone
                     >Show more <sd-icon library="system" name="chevron-down" slot="icon-left"></sd-icon
                   ></sd-link>
                 </div>
@@ -142,6 +154,8 @@ export default class SdExpandable extends SolidElement {
       :host {
         --gradient-color-start: rgba(255, 255, 255, 0);
         --gradient-color-end: rgba(255, 255, 255, 1);
+        --component-expandable-max-block-size: 90px;
+
         --gradient: var(--gradient-color-start) 0%, var(--gradient-color-end) 80%, var(--gradient-color-end) 100%;
 
         @apply inline-block relative w-full;
