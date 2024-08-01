@@ -48,7 +48,9 @@ export const Inverted = {
 };
 
 /**
- * Expandable can be used with background options of white, neutral-100 and primary-100. If inverted, can be used with primary. The default slot can be used with 2 variants for alternate expandable experiences: lead text and paragraph.
+ * Expandable can be used with background options of white, neutral-100 and primary-100. When using these options, use the `--gradient-color-start` and `--gradient-color-end` CSS variables to align the gradient colors.
+ *
+ * The inverted attribute can be used when the background is primary. The default slot can be used with 2 variants for alternate expandable experiences: lead text and paragraph.
  */
 export const Samples = {
   render: (args: any) => {
@@ -72,7 +74,19 @@ export const Samples = {
       </div>
       <div class="background-sample bg-neutral-100">
         ${generateTemplate({
-          args: { ...args }
+          args: { ...args },
+          constants: [
+            {
+              type: 'cssProperty',
+              name: '--gradient-color-start',
+              value: 'rgba(246, 246, 246, 0)'
+            },
+            {
+              type: 'cssProperty',
+              name: '--gradient-color-end',
+              value: 'rgba(246, 246, 246, 1)'
+            }
+          ]
         })}
       </div>
       <div class="w-full p-4 mb-8 bg-neutral-100 text-left text-[14px] font-bold box-border">
@@ -80,7 +94,19 @@ export const Samples = {
       </div>
       <div class="background-sample bg-primary-100">
         ${generateTemplate({
-          args: { ...args }
+          args: { ...args },
+          constants: [
+            {
+              type: 'cssProperty',
+              name: '--gradient-color-start',
+              value: 'rgba(236, 240, 249, 0)'
+            },
+            {
+              type: 'cssProperty',
+              name: '--gradient-color-end',
+              value: 'rgba(236, 240, 249, 1)'
+            }
+          ]
         })}
       </div>
       <div class="w-full p-4 mb-8 bg-neutral-100 text-left text-[14px] font-bold box-border">
@@ -105,6 +131,16 @@ export const Samples = {
               type: 'attribute',
               name: 'variant',
               value: 'leadtext'
+            },
+            {
+              type: 'cssProperty',
+              name: '--gradient-color-start',
+              value: 'rgba(246, 246, 246, 0)'
+            },
+            {
+              type: 'cssProperty',
+              name: '--gradient-color-end',
+              value: 'rgba(246, 246, 246, 1)'
             }
           ])
         })}
@@ -118,6 +154,16 @@ export const Samples = {
               name: 'default',
               value:
                 '<div class="sd-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique. Facilisis commodo integer hendrerit tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique. Facilisis commodo integer hendrerit tortor.</div>'
+            },
+            {
+              type: 'cssProperty',
+              name: '--gradient-color-start',
+              value: 'rgba(246, 246, 246, 0)'
+            },
+            {
+              type: 'cssProperty',
+              name: '--gradient-color-end',
+              value: 'rgba(246, 246, 246, 1)'
             }
           ])
         })}

@@ -15,6 +15,9 @@ import SolidElement from '../../internal/solid-element';
  * @dependency sd-icon
  *
  * @slot - Content of the expandable
+ * @slot clone - Hidden slot to clone the content to the light DOM
+ * @slot toggle-open - Content of the toggle button when the expandable is open
+ * @slot toggle-closed - Content of the toggle button when the expandable is closed
  *
  * @event sd-show - Emitted when the expandable opens.
  * @event sd-after-show - Emitted after the expandable opens and all animations are complete.
@@ -23,6 +26,8 @@ import SolidElement from '../../internal/solid-element';
  *
  * @csspart content - The content of the expandable.
  *
+ * @cssproperty --gradient-color-start - Start color of the gradient. Set the opacity to 0 (default: rgba(255, 255, 255, 0))
+ * @cssproperty --gradient-color-end - End color of the gradient. Set the opacity to 1 (default: rgba(255, 255, 255, 1))
  * @cssproperty --component-expandable-max-block-size - Different value for initial visible block (default: 90px)
  */
 @customElement('sd-expandable')
@@ -135,6 +140,10 @@ export default class SdExpandable extends SolidElement {
     componentStyles,
     css`
       :host {
+        --gradient-color-start: rgba(255, 255, 255, 0);
+        --gradient-color-end: rgba(255, 255, 255, 1);
+        --gradient: var(--gradient-color-start) 0%, var(--gradient-color-end) 80%, var(--gradient-color-end) 100%;
+
         @apply inline-block relative w-full;
       }
 
@@ -166,10 +175,8 @@ export default class SdExpandable extends SolidElement {
       :host(:not([open])) .content::after {
         @apply absolute bottom-0 left-0 block w-full h-6;
         content: ' ';
-        background: var(
-          --gradient-vertical-transparent-white,
-          linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 80%, rgba(255, 255, 255, 1) 100%)
-        );
+
+        background: linear-gradient(180deg, var(--gradient));
       }
 
       :host([variant='leadtext']) .content::after {
