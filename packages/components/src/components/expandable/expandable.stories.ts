@@ -65,9 +65,7 @@ export const Slots = {
               title: 'slot=..',
               values: [
                 {
-                  value: `<div slot='${slot}'
-                   class="slot slot--border slot--background min-h-12 min-w-12 w-full h-full"
-                ></div>`,
+                  value: `<div slot='${slot}' class="slot slot--border slot--background min-h-12 w-full h-full"></div>`,
                   title: slot
                 }
               ]
