@@ -2,9 +2,6 @@
 import '../../solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { userEvent } from '@storybook/test';
-import { waitUntil } from '@open-wc/testing-helpers';
-import cx from 'classix';
 
 const { argTypes, parameters } = storybookDefaults('sd-accordion');
 const { overrideArgs } = storybookHelpers('sd-accordion');
@@ -15,7 +12,7 @@ export default {
   component: 'sd-accordion',
   args: overrideArgs([
     { type: 'slot', name: 'default', value: '<div class="slot slot--border slot--text h-16">Default slot</div>' },
-    { type: 'attribute', name: 'summary', value: 'Accordion' }
+    { type: 'attribute', name: 'summary', value: 'Default' }
   ]),
   argTypes,
   parameters: { ...parameters }
@@ -34,54 +31,52 @@ export const Default = {
 };
 
 /**
- * An accordion item can either be collapsed or open.
+ * The attribute `open` can be used to set the initial state of the accordion.
  */
-export const States = {
-  parameters: { controls: { exclude: 'open' } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: { type: 'attribute', name: 'open' }
-      },
-      args,
-      constants: { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' }
-    });
-  }
+
+export const Open = {
+  name: 'Open',
+  render: () => html`
+    <div class="grid grid-cols-2 gap-12">
+      <sd-accordion open summary="Open">Accordion starts open</sd-accordion>
+      <sd-accordion summary="Closed"> Accordion starts closed </sd-accordion>
+    </div>
+  `
 };
 
 /**
- * The summary can have multiple lines.
+ * The `summary` can be used to provide the text in the accordion header.
  */
-export const SummaryLength = {
-  parameters: { controls: { exclude: 'summary' } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: {
-          type: 'slot',
-          name: 'summary',
-          values: [
-            { value: '<slot slot="summary">Lorem ipsum.</slot>', title: 'short' },
-            {
-              value:
-                '<slot slot="summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</slot>',
-              title: 'long'
-            }
-          ]
-        }
-      },
-      args,
-      constants: [
-        { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' },
-        { type: 'slot', name: 'summary', value: '<div slot="summary" class="slot slot--text">Test</div>`' }
-      ]
-    });
-  }
+
+export const Summary = {
+  name: 'Summary',
+  render: () => html`
+    <div class="grid grid-cols-2">
+      <sd-accordion summary="Summary">Content for summary example</sd-accordion>
+    </div>
+  `
 };
 
 /**
- * Use the expand-icon and collapse-icon slots to change the expand and collapse icons, respectively.
- * To disable the animation, override the rotate property on the summary-icon part as shown below:
+ * If you need to use custom html in the summary, you should use the `summary` slot.
+ */
+
+export const SlottedSummary = {
+  name: 'Slotted Summary',
+  render: () => html`
+    <div class="grid grid-cols-2">
+      <sd-accordion>
+        <div slot="summary"><h4>Custom summary</h4></div>
+        Content for custom summary example
+      </sd-accordion>
+    </div>
+  `
+};
+
+/**
+ * Use the `expand-icon` and `collapse-icon` slots to change the expand and collapse icons, respectively.
+ *
+ * To disable the animation, override the rotate property on the `summary-icon` part as shown below:
  *
  * ```
  * sd-accordion.custom-icons::part(summary-icon) {
@@ -90,87 +85,15 @@ export const SummaryLength = {
  * ```
  */
 
-export const Slots = {
-  parameters: {
-    controls: { exclude: ['expand-icon', 'collapse-icon', 'default', 'summary'] }
-  },
-  render: (args: any) => {
-    return html`
-      ${['default', 'summary', 'expand-icon', 'collapse-icon'].map(slot =>
-        generateTemplate({
-          axis: {
-            x: {
-              type: 'slot',
-              name: slot,
-              title: 'slot=...',
-              values: [
-                {
-                  value:
-                    slot === 'default'
-                      ? `<div class="slot slot--border slot--background slot--text h-16">Default slot</div>`
-                      : `<div slot='${slot}' class="${cx(
-                          'slot slot--border slot--background h-6',
-                          slot === 'summary' ? 'w-[100%]' : 'w-6'
-                        )}"></div>`,
-                  title: slot
-                }
-              ]
-            }
-          },
-          constants: [
-            { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' },
-            { type: 'attribute', name: 'open', value: slot === 'collapse-icon' || slot === 'default' ? true : false }
-          ],
-          args: overrideArgs({ type: 'slot', name: 'default', value: '' }, args)
-        })
-      )}
-    `;
-  }
-};
-
-export const Parts = {
-  parameters: {
-    controls: { exclude: ['base', 'header', 'summary', 'summary-icon', 'summary-border', 'content', 'content__slot'] }
-  },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: {
-          type: 'template',
-          name: 'sd-accordion::part(...){outline: solid 2px red}',
-          values: ['base', 'header', 'summary', 'summary-icon', 'summary-border', 'content', 'content__slot'].map(
-            part => {
-              const outlineOffset = part === 'summary-border' ? '' : 'outline-offset: -2px';
-              return {
-                title: part,
-                // Added an outline-offset to make the outline visible for content__slot
-                value: `<style>#part-${part} sd-accordion::part(${part}){outline: solid 2px red; ${outlineOffset};}</style><div id="part-${part}">%TEMPLATE%</div>`
-              };
-            }
-          )
-        }
-      },
-      constants: [
-        { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' },
-        { type: 'attribute', name: 'open', value: true }
-      ],
-      args
-    });
-  }
-};
-
-/**
- * sd-accordions are fully accessibile via keyboard.
- */
-
-export const Mouseless = {
-  render: (args: any) => {
-    return html`<div class="mouseless">${generateTemplate({ args })}</div>`;
-  },
-
-  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
-    const el = canvasElement.querySelector('.mouseless sd-accordion');
-    await waitUntil(() => el?.shadowRoot?.querySelector('header'));
-    await userEvent.type(el!.shadowRoot!.querySelector('header')!, '{space}', { pointerEventsCheck: 0 });
-  }
+export const SlottedIcons = {
+  name: 'Slotted Icons',
+  render: () => html`
+    <div class="grid grid-cols-2">
+      <sd-accordion summary="Slotted icons summary">
+        <sd-icon slot="expand-icon" library="system" name="eye"></sd-icon>
+        <sd-icon slot="collapse-icon" library="system" name="eye-crossed-out"></sd-icon>
+        Content for custom icons example
+      </sd-accordion>
+    </div>
+  `
 };
