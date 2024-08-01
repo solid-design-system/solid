@@ -48,6 +48,84 @@ export const Inverted = {
 };
 
 /**
+ * Use the `default`, `toggle-open` and `toggle-closed` slots to add content to the expandable.
+ */
+export const Slots = {
+  parameters: {
+    controls: { exclude: ['toggle-open', 'toggle-closed'] }
+  },
+  render: (args: any) => {
+    return html`
+      ${['toggle-open', 'toggle-closed'].map(slot => {
+        return generateTemplate({
+          axis: {
+            x: {
+              type: 'slot',
+              name: slot,
+              title: 'slot=..',
+              values: [
+                {
+                  value: `<div slot='${slot}'
+                   class="slot slot--border slot--background min-h-12 min-w-12 w-full h-full"
+                ></div>`,
+                  title: slot
+                }
+              ]
+            }
+          },
+          args,
+          constants: { type: 'attribute', name: 'open', value: [true, false] }
+        });
+      })}
+    `;
+  }
+};
+
+/**
+ * Use the `content` and `toggle` parts to style the expandable.
+ */
+export const Parts = {
+  parameters: {
+    controls: {
+      exclude: ['content', 'toggle']
+    }
+  },
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        y: {
+          type: 'template',
+          name: 'sd-expandable::part(...){outline: solid 2px red}',
+          values: ['content', 'toggle'].map(part => {
+            return {
+              title: part,
+              value: `<style>#part-${part} sd-expandable::part(${part}){outline: solid 2px red; outline-offset: -2px;}</style><div id="part-${part}">%TEMPLATE%</div>`
+            };
+          })
+        }
+      },
+      args
+    });
+  }
+};
+
+/**
+ * sd-expandable is fully accessibile via keyboard.
+ */
+
+export const Mouseless = {
+  render: (args: any) => {
+    return html`<div class="mouseless">${generateTemplate({ args })}</div>`;
+  },
+
+  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
+    const el = canvasElement.querySelector('.mouseless sd-expandable');
+    await waitUntil(() => el?.shadowRoot?.querySelector('button'));
+    await userEvent.type(el!.shadowRoot!.querySelector('button')!, '{return}', { pointerEventsCheck: 0 });
+  }
+};
+
+/**
  * Expandable can be used with background options of white, neutral-100 and primary-100. When using these options, use the `--gradient-color-start` and `--gradient-color-end` CSS variables to align the gradient colors.
  *
  * The inverted attribute can be used when the background is primary. The default slot can be used with 2 variants for alternate expandable experiences: lead text and paragraph.
@@ -169,21 +247,5 @@ export const Samples = {
         })}
       </div>
     `;
-  }
-};
-
-/**
- * sd-expandable is fully accessibile via keyboard.
- */
-
-export const Mouseless = {
-  render: (args: any) => {
-    return html`<div class="mouseless">${generateTemplate({ args })}</div>`;
-  },
-
-  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
-    const el = canvasElement.querySelector('.mouseless sd-expandable');
-    await waitUntil(() => el?.shadowRoot?.querySelector('button'));
-    await userEvent.type(el!.shadowRoot!.querySelector('button')!, '{return}', { pointerEventsCheck: 0 });
   }
 };

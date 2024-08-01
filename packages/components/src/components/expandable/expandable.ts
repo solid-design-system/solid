@@ -25,6 +25,7 @@ import SolidElement from '../../internal/solid-element';
  * @event sd-after-hide - Emitted after the expandable closes and all animations are complete.
  *
  * @csspart content - The content of the expandable.
+ * @csspart toggle - The toggle button of the expandable.
  *
  * @cssproperty --gradient-color-start - Start color of the gradient. Set the opacity to 0 (default: rgba(255, 255, 255, 0))
  * @cssproperty --gradient-color-end - End color of the gradient. Set the opacity to 1 (default: rgba(255, 255, 255, 1))
@@ -74,21 +75,23 @@ export default class SdExpandable extends SolidElement {
     this.details.setAttribute('open', this.open.toString());
   }
 
-  /** Shows the exapanded content. */
+  /** Opens the expandable */
   async show() {
     if (this.open) {
       return undefined;
     }
-    this.open = true;
+
+    this.onToggleClick();
     return waitForEvent(this, 'sd-after-show');
   }
 
-  /** Hides the expanded content */
+  /** Closes the expandable */
   async hide() {
     if (!this.open) {
       return undefined;
     }
-    this.open = false;
+
+    this.onToggleClick();
     return waitForEvent(this, 'sd-after-hide');
   }
 
