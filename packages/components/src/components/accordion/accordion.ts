@@ -155,6 +155,7 @@ export default class SdAccordion extends SolidElement {
     >`;
   };
 
+  // This method is overloaded in sd-quickfact to render the icon. It is not used in sd-accordion.
   /** @internal */
   RenderOptionalIcon = () => {
     return html``;
