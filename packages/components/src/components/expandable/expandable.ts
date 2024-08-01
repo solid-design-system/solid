@@ -1,5 +1,6 @@
 import { css, html } from 'lit';
 import { customElement } from '../../../src/internal/register-custom-element';
+import { LocalizeController } from '../../utilities/localize.js';
 import { property, query } from 'lit/decorators.js';
 import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch.js';
@@ -46,6 +47,8 @@ export default class SdExpandable extends SolidElement {
 
   /** Sets the height of the gradient to 24px for paragraph and 32px for leadtext. */
   @property({ reflect: true }) variant: 'paragraph' | 'leadtext' = 'paragraph';
+
+  public localize = new LocalizeController(this);
 
   private updateMaxHeight() {
     const scrollHeight = this.contentPreview?.scrollHeight.toString();
@@ -124,7 +127,8 @@ export default class SdExpandable extends SolidElement {
                     ?inverted=${this.inverted}
                     tabindex="-1"
                     standalone
-                    >Show less <sd-icon library="system" name="chevron-up" slot="icon-left"></sd-icon
+                    >${this.localize.term('showLess')}
+                    <sd-icon library="system" name="chevron-up" slot="icon-left"></sd-icon
                   ></sd-link>
                 </div>
               </slot>
@@ -139,7 +143,8 @@ export default class SdExpandable extends SolidElement {
                     ?inverted=${this.inverted}
                     tabindex="-1"
                     standalone
-                    >Show more <sd-icon library="system" name="chevron-down" slot="icon-left"></sd-icon
+                    >${this.localize.term('showMore')}
+                    <sd-icon library="system" name="chevron-down" slot="icon-left"></sd-icon
                   ></sd-link>
                 </div>
               </slot>
