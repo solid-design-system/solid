@@ -31,11 +31,11 @@ export const Default = {
 };
 
 /**
- * The `size` attribute can be used to adjust the size of the link. By default it is set to `inherit` but can be changed to `lg` or `sm`.
+ * Use the `size` attribute to adjust the size of the link. By default it is set to `inherit` but can be changed to `lg` or `sm`.
  */
 
-export const Sizes = {
-  name: 'Sizes',
+export const Size = {
+  name: 'Size',
   render: () => html`
     <div class="flex gap-12">
       <sd-link href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/" size="lg">Large</sd-link>
@@ -45,7 +45,7 @@ export const Sizes = {
 };
 
 /**
- * The `inverted` attribute can be used to invert the link's colors and use it in dark backgrounds.
+ * Use the `inverted` attribute when displayed on primary background.
  */
 
 export const Inverted = {
@@ -58,21 +58,7 @@ export const Inverted = {
 };
 
 /**
- * The `disabled` attribute can be used to disable the link.
- * To disable the link, the `href` attribute has to be removed.
- */
-
-export const Disabled = {
-  name: 'Disabled',
-  render: () => html`
-    <div class="flex gap-12">
-      <sd-link disabled>Disabled</sd-link>
-    </div>
-  `
-};
-
-/**
- * The `standalone` attribute can be used to control the layout of the icon and text within the component.
+ * Use the `standalone` attribute to control the layout of the icon and text within the component.
  * If true, the icon and text will be displayed side by side, each occupying its own column.
  * If false or not provided, the icon will be displayed inline within the text.
  */
@@ -90,6 +76,20 @@ export const Standalone = {
         <sd-icon library="global-resources" name="system/picture" slot="icon-left"></sd-icon>
         Without Standalone
       </sd-link>
+    </div>
+  `
+};
+
+/**
+ * Remove the `href` to disable the link.
+ */
+
+export const Disabled = {
+  name: 'Disabled',
+  render: () => html`
+    <div class="flex gap-12">
+      <sd-link href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/">Enabled</sd-link>
+      <sd-link>Disabled</sd-link>
     </div>
   `
 };
@@ -116,32 +116,42 @@ export const SlottedIcons = {
 };
 
 /**
- * Example of a combination of attributes (`size`, `standalone`, `href`) and slots (`icon-right` and `icon-left`) rendered in a list.
+ * Link list example.
  */
 
-export const LinksInList = {
-  name: 'Links in List',
+export const Sample = {
+  name: 'Sample',
   render: () => html`
     <div class="bg-primary-100 p-8">
-      <h2 class="sd-headline sd-headline--size-2xl mb-8">You might be interested in this:</h2>
+      <h2 class="sd-headline sd-headline--size-lg mb-8">You might be interested in this:</h2>
       <ul class="link-list">
         <li class="mb-5">
           <sd-link
-            href="https://institutional.union-investment.de/reporting/rund-um-unsere-fonds/fonds-im-ueberblick"
+            href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/?path=/docs/docs-general-introduction--docs"
             size="lg"
             standalone
           >
-            Commodities-Invest
+            Corporate bonds
+            <sd-icon library="system" name="chevron-up" class="rotate-90" slot="icon-left"></sd-icon>
+          </sd-link>
+        </li>
+        <li class="mb-5">
+          <sd-link
+            href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/?path=/docs/docs-general-introduction--docs"
+            size="lg"
+            standalone
+          >
+            Covered Bonds
             <sd-icon library="system" name="chevron-up" class="rotate-90" slot="icon-left"></sd-icon>
           </sd-link>
         </li>
         <li>
           <sd-link
-            href="https://institutional.union-investment.de/themen-und-analysen/rohstoffmaerkte-werden-gruen"
+            href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/?path=/docs/docs-general-introduction--docs"
             size="lg"
             standalone
           >
-            Rohstoffmärkte werden grün
+            Careful selection is crucial for success
             <sd-icon library="system" name="chevron-up" class="rotate-90" slot="icon-left"></sd-icon>
           </sd-link>
         </li>
