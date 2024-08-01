@@ -1,0 +1,105 @@
+# Migration Guide: From `[ui-audio-player]` to `[sd-audio]`
+
+The new `[sd-audio]` is designed to replace the `[ui-audio-player]`. Instead of mainly providing content via attributes, the `[sd-audio]` component uses slots to allow for more flexibility and customization.
+
+## 💾 Slots
+
+### ✨ New Slots
+
+#### [play-icon]
+
+Slot for the play icon.
+
+#### [pause-icon]
+
+Slot for the pause icon.
+
+#### [transcript]
+
+Slot for the transcript.
+
+### 🔀 Updated Slots
+
+#### [default]
+
+The default slot is now used to pass the audio element.
+
+## ⚙️ Attributes
+
+### ✨ New Attributes
+
+#### [reversedLayout]
+
+Reverts the order of the audio controls and timestamps.
+
+#### [hideTimestamps]
+
+Shows or hides the timestamps.
+
+#### [variant]
+
+Sets the variant of the audio player. Possible values are **white** and **minimal**, **neutral** and **primary**. Default value is **white**.
+
+### 🔀 Updated Attributes
+
+#### [isPlaying]
+
+`started` as been replaced by `isPlaying` attribute. The default value is **false**.
+
+#### [currentTime]
+
+#### [duration]
+
+`durationDisplayed` has been replaced by `duration` attribute.
+
+### ❌ Removed Attributes
+
+The following attributes have been removed from the new [ui-audio-player] component:
+
+1. [preload]
+
+- The new component is designed as only a wrapper for the audio element, so the preload attribute is not needed.
+
+2. [src]
+
+- This attribute is no longer needed as the audio element is now passed as a slot.
+
+<hr />
+
+## ✍️ CSS Variables
+
+### ✨ New CSS Variables
+
+#### [--bg-primary]
+
+The primary background color for the seek and volume sliders.
+
+### 🔀 Updated CSS variables
+
+#### [--bg-primary-400]
+
+The primary background color for the seek and volume sliders background.
+
+#### [--bg-white]
+
+The white background color for the seek and volume sliders when inverted prop is true.
+
+## 🥳 Events
+
+### ✨ New Events
+
+#### [sd-playback-start]
+
+Emitted when the audio playback starts.
+
+#### [sd-playback-end]
+
+Emitted when the audio playback ends.
+
+#### [sd-playback-mute]
+
+Emitted when the audio is muted. Now includes more detailed information about the mute state.
+
+#### [sd-playback-speed]
+
+Emitted when the playback speed is changed. Now includes the new speed value.
