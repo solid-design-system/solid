@@ -165,7 +165,6 @@ export default class SdExpandable extends SolidElement {
         --gradient-color-end: rgba(255, 255, 255, 1);
         --component-expandable-max-block-size: 90px;
         --gradient-height: 24px;
-
         --gradient: var(--gradient-color-start) 0%, var(--gradient-color-end) 80%, var(--gradient-color-end) 100%;
 
         @apply inline-block relative w-full;
@@ -181,7 +180,7 @@ export default class SdExpandable extends SolidElement {
       }
 
       summary {
-        max-block-size: var(--component-expandable-max-block-size, 90px);
+        max-block-size: var(--component-expandable-max-block-size);
       }
 
       :host([open]) summary {
@@ -189,7 +188,7 @@ export default class SdExpandable extends SolidElement {
       }
 
       .content {
-        max-block-size: var(--component-expandable-max-block-size, 90px);
+        max-block-size: var(--component-expandable-max-block-size);
       }
 
       :host([open]) .content {
@@ -200,7 +199,7 @@ export default class SdExpandable extends SolidElement {
         @apply absolute bottom-0 left-0 block w-full;
         content: ' ';
 
-        height: var(--gradient-height, 24px);
+        height: var(--gradient-height);
         background: linear-gradient(180deg, var(--gradient));
       }
 
