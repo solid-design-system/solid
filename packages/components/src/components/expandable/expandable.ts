@@ -112,36 +112,23 @@ export default class SdExpandable extends SolidElement {
       <button
         part="toggle"
         class=${cx(
-          'toggle focus-visible:outline-offset-0 block m-0 p-0 w-full overflow-visible bg-transparent text-current font-inherit leading-inherit align-middle cursor-pointer',
-          !this.inverted ? 'focus-visible:focus-outline' : 'focus-visible:focus-outline-inverted'
+          'sd-interactive sd-interactive--reset !h-full !justify-center !w-full !text-base !flex !items-center !underline !toggle',
+          this.inverted && 'sd-interactive--inverted',
+          !this.inverted ? '!focus-visible:focus-outline' : '!focus-visible:focus-outline-inverted'
         )}
         @click=${this.onToggleClick}
       >
         ${this.open
           ? html`
               <slot name="toggle-open">
-                <button
-                  class=${cx(
-                    'sd-interactive sd-interactive--reset !h-full !justify-center !w-full !text-base !flex !items-center !underline',
-                    this.inverted && 'sd-interactive--inverted'
-                  )}
-                >
-                  <sd-icon class="mr-2 text-xl" library="system" name="chevron-up"></sd-icon>
-                  ${this.localize.term('showLess')}
-                </button>
+                <sd-icon class="mr-2 text-xl" library="system" name="chevron-up"></sd-icon>
+                ${this.localize.term('showLess')}
               </slot>
             `
           : html`
               <slot name="toggle-closed">
-                <button
-                  class=${cx(
-                    'sd-interactive sd-interactive--reset !h-full !justify-center !w-full !text-base !flex !items-center !underline',
-                    this.inverted && 'sd-interactive--inverted'
-                  )}
-                >
-                  <sd-icon class="mr-2 text-xl" library="system" name="chevron-down"></sd-icon>
-                  ${this.localize.term('showMore')}
-                </button>
+                <sd-icon class="mr-2 text-xl" library="system" name="chevron-down"></sd-icon>
+                ${this.localize.term('showMore')}
               </slot>
             `}
       </button>

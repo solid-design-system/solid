@@ -3,6 +3,18 @@ import sinon from 'sinon';
 import type SdExpandable from './expandable';
 
 describe('<sd-expandable>', () => {
+  it('should be accessible', async () => {
+    const el = await fixture<SdExpandable>(html`
+      <sd-expandable>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat.
+      </sd-expandable>
+    `);
+
+    await expect(el).to.be.accessible();
+  });
+
   it('should be visible when the open attribute is set', async () => {
     const el = await fixture<SdExpandable>(html`
       <sd-expandable open>
