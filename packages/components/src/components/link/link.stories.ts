@@ -8,6 +8,12 @@ const { argTypes } = storybookDefaults('sd-link');
 const { generateTemplate } = storybookTemplate('sd-link');
 const { overrideArgs } = storybookHelpers('sd-link');
 
+/**
+ *
+ * This component is used to display links and can also be used to perform actions like downloading files.
+ *
+ */
+
 export default {
   tags: ['!dev'],
   title: 'Components/sd-link',
