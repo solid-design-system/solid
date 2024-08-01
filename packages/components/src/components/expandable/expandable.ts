@@ -1,4 +1,4 @@
-import { css, html } from 'lit';
+import { css, html, unsafeCSS } from 'lit';
 import { customElement } from '../../../src/internal/register-custom-element';
 import { LocalizeController } from '../../utilities/localize.js';
 import { property, query } from 'lit/decorators.js';
@@ -6,6 +6,7 @@ import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch.js';
 import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
+import InteractiveStyles from '../../styles/interactive/interactive.css?inline';
 import SolidElement from '../../internal/solid-element';
 
 /**
@@ -27,9 +28,12 @@ import SolidElement from '../../internal/solid-element';
  *
  * @csspart content - The content of the expandable.
  * @csspart toggle - The toggle button of the expandable.
+ * @csspart summary - The summary of the expandable.
+ * @csspart details - The details element of the expandable.
  *
  * @cssproperty --gradient-color-start - Start color of the gradient. Set the opacity to 0 (default: rgba(255, 255, 255, 0))
  * @cssproperty --gradient-color-end - End color of the gradient. Set the opacity to 1 (default: rgba(255, 255, 255, 1))
+ * @cssproperty --gradient-height - Height of the gradient (default: 24px)
  * @cssproperty --component-expandable-max-block-size - Different value for initial visible block (default: 90px)
  */
 @customElement('sd-expandable')
@@ -44,9 +48,6 @@ export default class SdExpandable extends SolidElement {
 
   /** Inverts the expandable and sets the color of the gradient to primary. */
   @property({ type: Boolean, reflect: true }) inverted = false;
-
-  /** Sets the height of the gradient to 24px for paragraph and 32px for leadtext. */
-  @property({ reflect: true }) variant: 'paragraph' | 'leadtext' = 'paragraph';
 
   public localize = new LocalizeController(this);
 
@@ -100,8 +101,8 @@ export default class SdExpandable extends SolidElement {
 
   render() {
     return html`
-      <details>
-        <summary aria-hidden="true" class="cursor-pointer overflow-hidden list-none">
+      <details part="details">
+        <summary part="summary" aria-hidden="true" class="cursor-pointer overflow-hidden list-none">
           <slot name="clone"></slot>
         </summary>
         <div part="content" class="content content-preview overflow-hidden relative">
@@ -119,34 +120,28 @@ export default class SdExpandable extends SolidElement {
         ${this.open
           ? html`
               <slot name="toggle-open">
-                <div class="default-content flex items-center justify-center w-full">
-                  <sd-link
-                    size="lg"
-                    href="#"
-                    onclick="return false;"
-                    ?inverted=${this.inverted}
-                    tabindex="-1"
-                    standalone
-                    >${this.localize.term('showLess')}
-                    <sd-icon library="system" name="chevron-up" slot="icon-left"></sd-icon
-                  ></sd-link>
-                </div>
+                <button
+                  class=${cx(
+                    'sd-interactive sd-interactive--reset !h-full !justify-center !w-full !text-base !flex !items-center !underline',
+                    this.inverted && 'sd-interactive--inverted'
+                  )}
+                >
+                  <sd-icon class="mr-2 text-xl" library="system" name="chevron-up"></sd-icon>
+                  ${this.localize.term('showLess')}
+                </button>
               </slot>
             `
           : html`
               <slot name="toggle-closed">
-                <div class="default-content flex items-center justify-center w-full">
-                  <sd-link
-                    size="lg"
-                    href="#"
-                    onclick="return false;"
-                    ?inverted=${this.inverted}
-                    tabindex="-1"
-                    standalone
-                    >${this.localize.term('showMore')}
-                    <sd-icon library="system" name="chevron-down" slot="icon-left"></sd-icon
-                  ></sd-link>
-                </div>
+                <button
+                  class=${cx(
+                    'sd-interactive sd-interactive--reset !h-full !justify-center !w-full !text-base !flex !items-center !underline',
+                    this.inverted && 'sd-interactive--inverted'
+                  )}
+                >
+                  <sd-icon class="mr-2 text-xl" library="system" name="chevron-down"></sd-icon>
+                  ${this.localize.term('showMore')}
+                </button>
               </slot>
             `}
       </button>
@@ -175,12 +170,14 @@ export default class SdExpandable extends SolidElement {
 
   static styles = [
     SolidElement.styles,
+    unsafeCSS(InteractiveStyles),
     componentStyles,
     css`
       :host {
         --gradient-color-start: rgba(255, 255, 255, 0);
         --gradient-color-end: rgba(255, 255, 255, 1);
         --component-expandable-max-block-size: 90px;
+        --gradient-height: 24px;
 
         --gradient: var(--gradient-color-start) 0%, var(--gradient-color-end) 80%, var(--gradient-color-end) 100%;
 
@@ -213,14 +210,11 @@ export default class SdExpandable extends SolidElement {
       }
 
       :host(:not([open])) .content::after {
-        @apply absolute bottom-0 left-0 block w-full h-6;
+        @apply absolute bottom-0 left-0 block w-full;
         content: ' ';
 
+        height: var(--gradient-height, 24px);
         background: linear-gradient(180deg, var(--gradient));
-      }
-
-      :host([variant='leadtext']) .content::after {
-        @apply h-8;
       }
 
       :host([inverted]:not([open])) .content::after {

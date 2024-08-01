@@ -82,12 +82,12 @@ export const Slots = {
 };
 
 /**
- * Use the `content` and `toggle` parts to style the expandable.
+ * Use the `content`, `toggle`, `summary` and `details` parts to style the expandable.
  */
 export const Parts = {
   parameters: {
     controls: {
-      exclude: ['open', 'content', 'toggle']
+      exclude: ['open', 'content', 'toggle', 'summary', 'details']
     }
   },
   render: (args: any) => {
@@ -96,7 +96,7 @@ export const Parts = {
         y: {
           type: 'template',
           name: 'sd-expandable::part(...){outline: solid 2px red}',
-          values: ['content', 'toggle'].map(part => {
+          values: ['content', 'toggle', 'summary', 'details'].map(part => {
             return {
               title: part,
               value: `<style>#part-${part} sd-expandable::part(${part}){outline: solid 2px red; outline-offset: -2px;}</style><div id="part-${part}">%TEMPLATE%</div>`
