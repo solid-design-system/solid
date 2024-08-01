@@ -6,6 +6,12 @@ const { argTypes, parameters } = storybookDefaults('sd-tag');
 const { generateTemplate } = storybookTemplate('sd-tag');
 const { overrideArgs } = storybookHelpers('sd-tag');
 
+/**
+ *
+ *  Tags are used to categorize or label content. They can be used to filter or search for content.
+ *
+ */
+
 export default {
   tags: ['!dev'],
   title: 'Components/sd-tag',
