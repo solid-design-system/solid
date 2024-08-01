@@ -26,18 +26,6 @@ export const Default = {
 };
 
 /**
- * The tag with the `selected` attribute.
- */
-
-export const Selected = {
-  render: () => html`
-    <div class="flex gap-12">
-      <sd-tag selected>Selected</sd-tag>
-    </div>
-  `
-};
-
-/**
  * Use the `size` attribute to change the tag size. The default size is `lg`.
  */
 
@@ -51,29 +39,25 @@ export const Size = {
 };
 
 /**
- * Use the `removable` attribute to include the removability indicator.
+ * Use the `selected` attribute to enable the selected state.
+ */
+
+export const Selected = {
+  render: () => html`
+    <div class="flex gap-12">
+      <sd-tag selected>Selected</sd-tag>
+    </div>
+  `
+};
+
+/**
+ * Use the `removable` attribute to include the removability indicator and make the tag removable from the UI.
  */
 
 export const Removable = {
   render: () => html`
     <div class="flex gap-12">
       <sd-tag removable>Removable</sd-tag>
-    </div>
-  `
-};
-
-/**
- * Use the `removable-indicator` slot to change the removability indicator. By default a close icon is used.
- */
-
-export const RemovableIndicatorSlot = {
-  render: () => html`
-    <div class="flex gap-12">
-      <sd-tag removable>Default</sd-tag>
-      <sd-tag removable>
-        Custom
-        <sd-icon slot="removable-indicator" library="system" name="eye" label="remove"></sd-icon>
-      </sd-tag>
     </div>
   `
 };
@@ -101,6 +85,7 @@ export const Disabled = {
  */
 
 export const WithALink = {
+  name: 'With a link',
   render: () => html`
     <div class="flex gap-12">
       <sd-tag>Default</sd-tag>
