@@ -70,7 +70,9 @@ export const Summary = {
       >
 
       <sd-accordion>
-        <div slot="summary"><h4>Custom slot</h4></div>
+        <div slot="summary">
+          <h4>I don't have a telephone number with a German area code. Can I still register?</h4>
+        </div>
         <div class="slot slot--border slot--background slot--text h-16">Default slot</div>
       </sd-accordion>
     </div>
