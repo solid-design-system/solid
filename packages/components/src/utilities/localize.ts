@@ -95,4 +95,6 @@ export interface Translation extends DefaultTranslation {
   showPassword: string;
   slideNum: (slide: number) => string;
   toggleColorFormat: string;
+  showMore: string;
+  showLess: string;
 }

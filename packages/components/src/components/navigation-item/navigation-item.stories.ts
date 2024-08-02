@@ -197,6 +197,42 @@ export const VerticalAndCurrent = {
 };
 
 /**
+ * `href` can be used to create a link.
+ */
+
+export const VerticalAndLink = {
+  name: 'Vertical × Link',
+  parameters: {
+    controls: {
+      exclude: [
+        'vertical',
+        'href',
+        'indented',
+        'relaxed',
+        'divider',
+        'open',
+        'current',
+        'description',
+        'children',
+        'sd-show',
+        'sd-hide'
+      ]
+    }
+  },
+  render: (args: any) => {
+    return html`
+      ${generateTemplate({
+        axis: {
+          x: { type: 'attribute', name: 'href', values: ['', '#'] },
+          y: { type: 'attribute', name: 'vertical' }
+        },
+        args
+      })}
+    `;
+  }
+};
+
+/**
  * Displays chevron property behaviors.  Vertical Button / Link variants show right facing chevron dependent on property.  Accordion variant always show up / down chevron to reflect open state.
  */
 
