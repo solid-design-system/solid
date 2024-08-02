@@ -6,6 +6,9 @@ const { generateTemplate } = storybookTemplate('sd-carousel-item');
 
 /**
  * A carousel item represents a slide within a carousel.
+ *
+ * **Related templates**:
+ * - [Carousel with Images](?path=/docs/templates-carousel-with-images--docs)
  */
 
 export default {
