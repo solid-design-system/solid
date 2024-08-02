@@ -13,7 +13,7 @@ import SolidElement from '../../internal/solid-element';
  * @summary Expandable shows a brief summary and expands to show additional content.
  * @documentation https://solid.union-investment.com/[storybook-link]/expandable
  * @status stable
- * @since 1.1
+ * @since 3.11.0
  *
  * @dependency sd-icon
  *
