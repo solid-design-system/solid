@@ -94,11 +94,17 @@ export const AsLink = {
   name: 'As link',
   render: () => html`
     <div class="flex gap-12">
-      <sd-tag>Default</sd-tag>
       <sd-tag
         href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/?path=/docs/docs-general-introduction--docs"
-        target="_blank"
         >Link</sd-tag
+      ><sd-tag
+        href="https://union-investment.com"
+        target="_blank"
+        >New Window</sd-tag
+      ><sd-tag
+        href="./placeholders/src/images/collaboration.jpg"
+        download
+        >Download</sd-tag
       >
     </div>
   `
