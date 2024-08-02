@@ -1,15 +1,18 @@
 import '../../solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { userEvent } from '@storybook/test';
-import { waitUntil } from '@open-wc/testing-helpers';
 const { argTypes, parameters } = storybookDefaults('sd-checkbox');
 const { generateTemplate } = storybookTemplate('sd-checkbox');
 const { overrideArgs } = storybookHelpers('sd-checkbox');
 
+/**
+ * Checkboxes allow the user to toggle an option on or off.
+ */
+
 export default {
   title: 'Components/sd-checkbox',
   component: 'sd-checkbox',
+  tags: ['!dev'],
   args: overrideArgs([{ type: 'slot', name: 'default', value: 'Default Slot' }]),
   argTypes,
   parameters: {
@@ -32,68 +35,59 @@ export const Default = {
 };
 
 /**
- * Use the disabled attribute to disable an input checkbox. Clicks will be suppressed until the disabled state is removed
- */
-
-export const DisabledAndSize = {
-  name: 'Disabled × Size',
-  parameters: { controls: { exclude: ['disabled', 'size', 'default'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        x: {
-          type: 'attribute',
-          name: 'disabled',
-          values: [false, true]
-        },
-        y: [
-          {
-            type: 'attribute',
-            name: 'size',
-            values: ['lg', 'sm']
-          }
-        ]
-      },
-      constants: { type: 'attribute', name: 'disabled', value: true },
-      args
-    });
-  }
-};
-
-/**
  * Use the `size` attribute to change the size of the input checkbox. This attribute affects the font-size within the element, while the element itself remains the same size.
  */
 
 export const Size = {
-  parameters: { controls: { exclude: ['size'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        x: {
-          type: 'attribute',
-          name: 'size',
-          values: ['lg', 'sm']
-        }
-      },
-      args
-    });
-  }
+  name: 'Size',
+  render: () => html`
+    <div class="flex gap-12">
+      <sd-checkbox size="lg">Large</sd-checkbox>
+      <sd-checkbox size="sm">Small</sd-checkbox>
+    </div>
+  `
 };
 
-export const MultipleLines = {
-  parameters: { controls: { exclude: ['size'] } },
-  render: () => {
-    return generateTemplate({
-      axis: {
-        x: {
-          type: 'attribute',
-          name: 'size',
-          values: ['lg', 'sm']
-        }
-      },
-      args: overrideArgs([{ type: 'slot', name: 'default', value: 'Default Slot<br />Second Line' }])
-    });
-  }
+/**
+ * Use the `disabled` attribute to disable an input checkbox. Clicks will be suppressed until the disabled state is removed
+ */
+
+export const Disabled = {
+  name: 'Disabled',
+  render: () => html`
+    <div class="flex gap-12">
+      <sd-checkbox>Enabled</sd-checkbox>
+      <sd-checkbox disabled>Disabled</sd-checkbox>
+    </div>
+  `
+};
+
+/**
+ * Use the `checked` attribute to activate the checkbox.
+ */
+
+export const Checked = {
+  name: 'Checked',
+  render: () => html`
+    <div class="flex gap-12">
+      <sd-checkbox>Unchecked</sd-checkbox>
+      <sd-checkbox checked>Checked</sd-checkbox>
+    </div>
+  `
+};
+
+/**
+ * Use the `indeterminate` attribute to make the checkbox indeterminate.
+ */
+
+export const Indeterminate = {
+  name: 'Indeterminate',
+  render: () => html`
+    <div class="flex gap-12">
+      <sd-checkbox>Unchecked</sd-checkbox>
+      <sd-checkbox indeterminate>Indeterminate</sd-checkbox>
+    </div>
+  `
 };
 
 /**
@@ -101,64 +95,13 @@ export const MultipleLines = {
  */
 
 export const Required = {
-  parameters: { controls: { exclude: ['required'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        x: [{ type: 'attribute', name: 'size', values: ['lg', 'sm'] }],
-        y: { type: 'attribute', name: 'required' }
-      },
-      args
-    });
-  }
-};
-
-export const Checked = {
-  parameters: { controls: { exclude: ['checked'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        x: {
-          type: 'attribute',
-          name: 'disabled',
-          values: [false, true]
-        },
-        y: [
-          {
-            type: 'attribute',
-            name: 'size',
-            values: ['lg', 'sm']
-          }
-        ]
-      },
-      constants: { type: 'attribute', name: 'checked', value: true },
-      args
-    });
-  }
-};
-
-export const Indeterminate = {
-  parameters: { controls: { exclude: ['indeterminate'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        x: {
-          type: 'attribute',
-          name: 'disabled',
-          values: [false, true]
-        },
-        y: [
-          {
-            type: 'attribute',
-            name: 'size',
-            values: ['lg', 'sm']
-          }
-        ]
-      },
-      constants: { type: 'attribute', name: 'indeterminate', value: true },
-      args
-    });
-  }
+  name: 'Required',
+  render: () => html`
+    <div class="flex gap-12">
+      <sd-checkbox>Not required</sd-checkbox>
+      <sd-checkbox required>Required</sd-checkbox>
+    </div>
+  `
 };
 
 /**
@@ -166,138 +109,17 @@ export const Indeterminate = {
  */
 
 export const Invalid = {
-  parameters: { controls: { exclude: ['required'] } },
-  render: (args: any) => {
-    return html`
-      <form>
-        ${generateTemplate({
-          args,
-          constants: [{ type: 'attribute', name: 'required', value: true }]
-        })}
-        <sd-button style="margin-top: 16px" type="submit">Submit</sd-button>
-      </form>
-    `;
-  },
-  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
-    const el = canvasElement.querySelector('sd-button');
-    await waitUntil(() => el?.shadowRoot?.querySelector('button'));
-    await userEvent.type(el!.shadowRoot!.querySelector('button')!, '{return}', { pointerEventsCheck: 0 });
-  }
+  name: 'Invalid',
+  render: () => html`
+    <form>
+      <sd-checkbox required>Checkbox</sd-checkbox>
+      <sd-button style="margin-top: 16px" type="submit">Submit</sd-button>
+    </form>
+  `
 };
-
-export const IndeterminateInvalid = {
-  parameters: { controls: { exclude: ['required', 'indeterminate'] } },
-  render: (args: any) => {
-    return html`
-      <form>
-        ${generateTemplate({
-          args,
-          constants: [
-            { type: 'attribute', name: 'required', value: true },
-            { type: 'attribute', name: 'indeterminate', value: true }
-          ]
-        })}
-        <sd-button style="margin-top: 16px" type="submit">Submit</sd-button>
-      </form>
-    `;
-  },
-  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
-    const el = canvasElement.querySelector('sd-button');
-    await waitUntil(() => el?.shadowRoot?.querySelector('button'));
-    await userEvent.type(el!.shadowRoot!.querySelector('button')!, '{return}', { pointerEventsCheck: 0 });
-  }
-};
-
-/**
- * Use the `base`, `control--unchecked`, `control--checked`, `checked` and `label` part selectors to customize the checkbox.
- */
-export const Parts = {
-  parameters: {
-    controls: {
-      exclude: [
-        'base',
-        'control',
-        'control--unchecked',
-        'control--checked',
-        'checked-icon',
-        'control--indeterminate',
-        'indeterminate-icon',
-        'label',
-        'title',
-        'name',
-        'value',
-        'size',
-        'disabled',
-        'checked',
-        'indeterminate',
-        'form',
-        'required',
-        'default'
-      ]
-    }
-  },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: {
-          type: 'template',
-          name: 'sd-checkbox::part(...){outline: solid 2px red}',
-          values: [
-            'base',
-            'control',
-            'control--unchecked',
-            'control--checked',
-            'checked-icon',
-            'control--indeterminate',
-            'indeterminate-icon',
-            'label'
-          ].map(part => {
-            return {
-              title: part,
-              value: `
-                <style>
-                    #part-${part} sd-checkbox::part(${part}){outline: solid 2px red};
-                    .hidden {display: none}
-                </style>
-                <div id="part-${part}">${checkboxTemplate(part)}</div>
-                <div class="hidden">%TEMPLATE%</div>
-              `
-            };
-          })
-        }
-      },
-      args
-    });
-  }
-};
-
-const checkboxTemplate = (part: string) => {
-  switch (part) {
-    case 'control--checked':
-      return `<sd-checkbox checked>Default Slot</sd-checkbox>`;
-    case 'checked-icon':
-      return `<sd-checkbox checked>Default Slot</sd-checkbox>`;
-    case 'control--indeterminate':
-      return `<sd-checkbox indeterminate>Default Slot</sd-checkbox>`;
-    case 'indeterminate-icon':
-      return `<sd-checkbox indeterminate>Default Slot</sd-checkbox>`;
-    case 'form-control-error-text':
-      return `<sd-checkbox error-text="Error message" invalid>Default Slot</sd-checkbox>`;
-    default:
-      return `<sd-checkbox>Default Slot</sd-checkbox>`;
-  }
-};
-
-/**
- * 1. You can use the `setCustomValidity` method to set a custom validation message. This will override any native validation messages.
- * 2. Set an empty string to clear the custom validity and make the input valid.
- * 3. To show the validation message, call the `reportValidity` method. Originally this would show a native validation bubble, but we show the error messages inline.
- */
 
 export const setCustomValidity = {
-  parameters: {
-    chromatic: { disableSnapshot: true }
-  },
+  name: 'setCustomValidity',
   render: () => {
     return html`
       <!-- block submit and show alert instead -->
