@@ -87,13 +87,21 @@ export const Variants = {
       axis: {
         y: {
           type: 'attribute',
-          name: 'variant'
+          name: 'variant',
+          values: ['neutral-100', 'primary', 'white', 'border-primary', 'border-white', 'image']
         }
       },
       options: {
         templateBackgrounds: {
           alternate: 'y',
-          colors: ['white', 'white', 'rgb(var(--sd-color-primary, 0 53 142))']
+          colors: [
+            'white',
+            'white',
+            'rgb(var(--sd-color-primary, 0 53 142))',
+            'white',
+            'rgb(var(--sd-color-primary, 0 53 142))',
+            'white'
+          ]
         }
       },
       args,

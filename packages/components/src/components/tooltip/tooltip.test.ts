@@ -158,4 +158,61 @@ describe('<sd-tooltip>', () => {
 
     expect(getComputedStyle(popup.popup).pointerEvents).to.equal('none');
   });
+
+  it('should toggle the tooltip when clicking the trigger', async () => {
+    const el = await fixture<SdTooltip>(html`
+      <sd-tooltip content="This is a tooltip">
+        <sd-button>Click Me</sd-button>
+      </sd-tooltip>
+    `);
+
+    const button = el.querySelector('sd-button')!;
+    const body = el.shadowRoot!.querySelector<HTMLElement>('[part~="body"]')!;
+
+    // tooltip starts hidden
+    expect(body.hidden).to.be.true;
+
+    button.click();
+    await waitUntil(() => !body.hidden);
+
+    // tooltip is visible after clicking the button
+    expect(body.hidden).to.be.false;
+
+    button.click();
+    await waitUntil(() => body.hidden);
+
+    // tooltip is hidden again after clicking the button a second time
+    expect(body.hidden).to.be.true;
+  });
+
+  it('should ignore click event if focus is triggered first', async () => {
+    const el = await fixture<SdTooltip>(html`
+      <sd-tooltip content="This is a tooltip" trigger="click focus">
+        <sd-button>Click or Focus Me</sd-button>
+      </sd-tooltip>
+    `);
+
+    const button = el.querySelector('sd-button')!;
+    const body = el.shadowRoot!.querySelector<HTMLElement>('[part~="body"]')!;
+
+    const showSpy = sinon.spy(el, 'show');
+    const hideSpy = sinon.spy(el, 'hide');
+
+    button.focus();
+    await waitUntil(() => showSpy.calledOnce);
+
+    // tooltip is visible after focusing
+    expect(body.hidden).to.be.false;
+
+    button.click();
+    await waitUntil(() => hideSpy.notCalled);
+
+    // button click is ignored because focus was triggered first
+    expect(body.hidden).to.be.false;
+    expect(showSpy.calledOnce).to.be.true;
+    expect(hideSpy.notCalled).to.be.true;
+
+    showSpy.restore();
+    hideSpy.restore();
+  });
 });

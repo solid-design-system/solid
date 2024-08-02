@@ -1,3 +1,17 @@
+# [@solid-design-system/placeholders-v1.6.2](https://github.com/solid-design-system/solid/compare/placeholders/1.6.1...placeholders/1.6.2) (2024-07-23)
+
+
+### Bug Fixes
+
+* solid faker seed for paragraphs and sentences ([#1213](https://github.com/solid-design-system/solid/issues/1213)) [skip chromatic] ([57b87ed](https://github.com/solid-design-system/solid/commit/57b87edc35ac7af1abcd74f92d53aa475a4d5ea0))
+
+# [@solid-design-system/placeholders-v1.6.1](https://github.com/solid-design-system/solid/compare/placeholders/1.6.0...placeholders/1.6.1) (2024-07-16)
+
+
+### Bug Fixes
+
+* solid faker seed ([#1210](https://github.com/solid-design-system/solid/issues/1210)) [skip chromatic] ([6c3b3f7](https://github.com/solid-design-system/solid/commit/6c3b3f7ef620c71021b4d84aa9227283507441c5))
+
 # [@solid-design-system/placeholders-v1.6.0](https://github.com/solid-design-system/solid/compare/placeholders/1.5.0...placeholders/1.6.0) (2024-05-24)
 
 
