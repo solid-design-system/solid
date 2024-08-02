@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v3.11.0](https://github.com/solid-design-system/solid/compare/components/3.10.3...components/3.11.0) (2024-08-02)
+
+
+### Features
+
+* add sd-expandable ([#1214](https://github.com/solid-design-system/solid/issues/1214)) ([3668556](https://github.com/solid-design-system/solid/commit/36685568b549e17f903ce3861013d65a08cb8259))
+
+### 📈 Stats
+* Bundle size (uncompressed): 329 KB (+4 KB / +1%)
+* Bundle size (gzipped): 78 KB (+1 KB / +1%)
+
 # [@solid-design-system/components-v3.10.3](https://github.com/solid-design-system/solid/compare/components/3.10.2...components/3.10.3) (2024-08-01)
 
 
