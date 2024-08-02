@@ -47,8 +47,8 @@ export interface SolidFormControl extends SolidElement {
 
   // Standard validation attributes
   pattern?: string;
-  min?: number | Date;
-  max?: number | Date;
+  min?: number | Date | string;
+  max?: number | Date | string;
   step?: number | 'any';
   required?: boolean;
   minlength?: number;

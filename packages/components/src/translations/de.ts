@@ -29,7 +29,9 @@ const translation: Translation = {
   selectDefaultPlaceholder: 'Bitte auswählen',
   showPassword: 'Passwort anzeigen',
   slideNum: slide => `Folie ${slide}`,
-  toggleColorFormat: 'Farbformat umschalten'
+  toggleColorFormat: 'Farbformat umschalten',
+  showMore: 'Mehr anzeigen',
+  showLess: 'Weniger anzeigen'
 };
 
 registerTranslation(translation);
