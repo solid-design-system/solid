@@ -38,50 +38,46 @@ export const Default = {
 };
 
 /**
- * Use the attribute `open` to set the initial state of the accordion.
+ * Use the attribute `open` to set the state of the accordion.
  */
 
 export const Open = {
   name: 'Open',
   render: () => html`
     <div class="grid grid-cols-2 gap-12">
-      <sd-accordion open summary="Open">Accordion starts open</sd-accordion>
-      <sd-accordion summary="Closed"> Accordion starts closed </sd-accordion>
+      <sd-accordion open summary="Open"
+        ><div class="slot slot--border slot--background slot--text h-16">Default slot</div></sd-accordion
+      >
+      <sd-accordion summary="Closed"
+        ><div class="slot slot--border slot--background slot--text h-16">Default slot</div></sd-accordion
+      >
     </div>
   `
 };
 
 /**
  * Use `summary` to provide the text in the accordion header.
+ *
+ * __Hint:__ The `summary` slot allows you to use custom html in the summary.
  */
 
 export const Summary = {
   name: 'Summary',
   render: () => html`
-    <div class="grid grid-cols-2">
-      <sd-accordion summary="Summary">Content for summary example</sd-accordion>
-    </div>
-  `
-};
+    <div class="grid grid-cols-2 gap-12">
+      <sd-accordion summary="Default"
+        ><div class="slot slot--border slot--background slot--text h-16">Default slot</div></sd-accordion
+      >
 
-/**
- * The `summary` slot allows you to use custom html in the summary.
- */
-
-export const SlottedSummary = {
-  name: 'Slotted Summary',
-  render: () => html`
-    <div class="grid grid-cols-2">
       <sd-accordion>
-        <div slot="summary"><h4>Custom summary</h4></div>
-        Content for custom summary example
+        <div slot="summary"><h4>Custom slot</h4></div>
+        <div class="slot slot--border slot--background slot--text h-16">Default slot</div>
       </sd-accordion>
     </div>
   `
 };
 
 /**
- * Use the `expand-icon` and `collapse-icon` slots to change the expand and collapse icons, respectively.
  *
  * To disable the animation, override the rotate property on the `summary-icon` part as shown below:
  *
@@ -92,14 +88,12 @@ export const SlottedSummary = {
  * ```
  */
 
-export const SlottedIcons = {
-  name: 'Slotted Icons',
+export const WithoutAnimation = {
+  name: 'Without Animation',
   render: () => html`
     <div class="grid grid-cols-2">
-      <sd-accordion summary="Slotted icons summary">
-        <sd-icon slot="expand-icon" library="system" name="eye"></sd-icon>
-        <sd-icon slot="collapse-icon" library="system" name="eye-crossed-out"></sd-icon>
-        Content for custom icons example
+      <sd-accordion summary="Without animation">
+        <div class="slot slot--border slot--background slot--text h-16">Default slot</div>
       </sd-accordion>
     </div>
   `
