@@ -1,10 +1,11 @@
 {
   "name": "@solid-design-system/placeholders",
-  "version": "1.6.0",
+  "version": "1.6.2",
   "description": "This package provides license-free placeholder images for all projects at Union Investment.",
   "main": "src",
   "scripts": {
     "build.types": "tsc --project tsconfig.json",
+    "test": "node src/solid-faker.test.js",
     "release": "semantic-release  --tagFormat 'placeholders/${version}' -e semantic-release-monorepo",
     "release.dry": "semantic-release -d --tagFormat 'placeholders/${version}' -e semantic-release-monorepo"
   },

@@ -143,7 +143,8 @@ export default class SdNavigationItem extends SolidElement {
           { base: 'text-base', lg: 'text-lg', sm: 'text-[14px]' }[this.size],
           this.disabled ? 'text-neutral-500 pointer-events-none' : 'text-primary',
           isAccordion ? 'flex flex-col' : 'inline-block w-full',
-          this.divider && this.vertical && 'mt-0.25'
+          this.divider && this.vertical && 'mt-0.25',
+          !this.vertical && 'inline-flex items-center'
         )}
         aria-controls=${ifDefined(isAccordion ? 'navigation-item-details' : undefined)}
         aria-current=${ifDefined(this.current ? 'page' : undefined)}

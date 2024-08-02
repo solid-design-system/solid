@@ -1,0 +1,100 @@
+name: Deploy Storybook to GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 8.6.2
+          run_install: false
+
+      - name: Install dependencies
+        run: pnpm i
+
+      - name: Build storybook
+        run: cd packages/components && pnpm run build/storybook
+
+      - name: Prepare deployment directory
+        run: |
+          BRANCH_NAME=$(echo ${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}} | tr '/' '_')
+          mkdir -p deployment/archives
+          mkdir -p deployment/${BRANCH_NAME}
+          cp -r packages/components/dist/storybook/* deployment/${BRANCH_NAME}/
+
+      - name: Create archive
+        run: |
+          BRANCH_NAME=$(echo ${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}} | tr '/' '_')
+          mkdir -p deployment/archives
+          tar -czf deployment/archives/${BRANCH_NAME}.tar -C deployment/${BRANCH_NAME} .
+
+      - name: Download and unpack existing archives
+        run: |
+          BRANCH_NAME=$(echo ${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}} | tr '/' '_')
+          mkdir -p deployment/archives
+          git fetch --all
+          for branch in $(git branch -r | grep -v '\->' | sed 's/origin\///'); do
+            safe_branch=$(echo ${branch} | tr '/' '_')
+            if [ "${safe_branch}" != "${BRANCH_NAME}" ]; then
+              echo "Checking for existing archive for branch: ${branch}"
+              if curl --head --fail -s https://solid-design-system.github.io/solid/archives/${safe_branch}.tar; then
+                echo "Downloading archive for branch: ${branch}"
+                curl -L -o deployment/archives/${safe_branch}.tar https://solid-design-system.github.io/solid/archives/${safe_branch}.tar
+                mkdir -p deployment/${safe_branch}
+                tar -xzf deployment/archives/${safe_branch}.tar -C deployment/${safe_branch}
+              else
+                echo "Branch ${branch} was not deployed to GitHub Pages"
+              fi
+            fi
+          done
+
+      - name: Generate index file
+        run: |
+          echo "<html><body><h1>Deployed Branches</h1><ul>" > deployment/index.html
+          for archive in deployment/archives/*.tar; do
+            branch_name=$(basename $archive .tar)
+            echo "<li><a href='./${branch_name}/'>${branch_name}</a></li>" >> deployment/index.html
+          done
+          echo "</ul></body></html>" >> deployment/index.html
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Upload the deployment directory
+          path: 'deployment'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
