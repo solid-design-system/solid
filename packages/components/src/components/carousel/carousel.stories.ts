@@ -2,14 +2,21 @@
 import '../../solid-components';
 import { html } from 'lit';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { waitUntil } from '@open-wc/testing-helpers';
 
 const { argTypes, parameters } = storybookDefaults('sd-carousel');
 const { overrideArgs } = storybookHelpers('sd-carousel');
 const { generateTemplate } = storybookTemplate('sd-carousel');
 
+/**
+ * Carousels display an arbitrary number of content slides along a horizontal axis.
+ *
+ * **Related templates**:
+ * - [Carousel with Images](?path=/docs/templates-carousel-with-images--docs)
+ */
+
 export default {
   title: 'Components/sd-carousel',
+  tags: ['!dev'],
   component: 'sd-carousel',
   args: overrideArgs([
     {
@@ -54,36 +61,60 @@ export const Default = {
  */
 
 export const Variant = {
-  parameters: { controls: { exclude: 'variant' } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: { type: 'attribute', name: 'variant', values: ['dot', 'number'] }
-      },
-      args
-    });
-  }
+  name: 'Variant',
+  render: () => html`
+    <div class="flex gap-12">
+      <div>
+        <sd-carousel variant="dot">
+          <sd-carousel-item>
+            <div class="slot slot--border slot--text h-16">Default slot 1</div>
+          </sd-carousel-item>
+          <sd-carousel-item>
+            <div class="slot slot--border slot--text h-16">Default slot 2</div>
+          </sd-carousel-item>
+          <sd-carousel-item>
+            <div class="slot slot--border slot--text h-16">Default slot 3</div>
+          </sd-carousel-item>
+        <sd-carousel>
+      </div>
+      <div>
+        <sd-carousel variant="number">
+          <sd-carousel-item>
+            <div class="slot slot--border slot--text h-16">Default slot 1</div>
+          </sd-carousel-item>
+          <sd-carousel-item>
+            <div class="slot slot--border slot--text h-16">Default slot 2</div>
+          </sd-carousel-item>
+          <sd-carousel-item>
+            <div class="slot slot--border slot--text h-16">Default slot 3</div>
+          </sd-carousel-item>
+        <sd-carousel>
+      </div>
+    </div>
+  `
 };
 
 /**
- * Use the `inverted` attribute to make a carousel with inverted colors.
+ * Use the `inverted` attribute when displayed on primary background.
  */
 
 export const Inverted = {
-  parameters: { controls: { exclude: ['inverted', 'variant'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        x: { type: 'attribute', name: 'variant' },
-        y: { type: 'attribute', name: 'inverted' }
-      },
-      args,
-      constants: [{ type: 'attribute', name: 'autoplay', value: true }],
-      options: {
-        templateBackgrounds: { alternate: 'y', colors: ['rgb(var(--sd-color-primary, 0 53 142))', 'white'] }
-      }
-    });
-  }
+  name: 'Inverted',
+  render: () => html`
+    <div class="bg-primary p-8">
+      <sd-carousel inverted>
+        <sd-carousel-item>
+          <div class="slot slot--border slot--text h-16">Default slot 1</div>
+        </sd-carousel-item>
+        <sd-carousel-item>
+          <div class="slot slot--border slot--text h-16">Default slot 2</div>
+        </sd-carousel-item>
+        <sd-carousel-item>
+          <div class="slot slot--border slot--text h-16">Default slot 3</div>
+        </sd-carousel-item>
+      <sd-carousel>
+    </div>
+  `
 };
 
 /**
@@ -91,15 +122,22 @@ export const Inverted = {
  */
 
 export const Loop = {
-  parameters: { controls: { exclude: 'loop' } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: { type: 'attribute', name: 'loop' }
-      },
-      args
-    });
-  }
+  name: 'Loop',
+  render: () => html`
+    <div>
+      <sd-carousel loop>
+        <sd-carousel-item>
+          <div class="slot slot--border slot--text h-16">Default slot 1</div>
+        </sd-carousel-item>
+        <sd-carousel-item>
+          <div class="slot slot--border slot--text h-16">Default slot 2</div>
+        </sd-carousel-item>
+        <sd-carousel-item>
+          <div class="slot slot--border slot--text h-16">Default slot 3</div>
+        </sd-carousel-item>
+      <sd-carousel>
+    </div>
+  `
 };
 
 /**
@@ -107,19 +145,22 @@ export const Loop = {
  */
 
 export const Autoplay = {
-  parameters: { controls: { exclude: 'autoplay' } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: { type: 'attribute', name: 'autoplay' }
-      },
-      constants: [
-        { type: 'attribute', name: 'variant', value: 'dot' },
-        { type: 'attribute', name: 'loop', value: 'true' }
-      ],
-      args
-    });
-  }
+  name: 'Autoplay',
+  render: () => html`
+    <div>
+      <sd-carousel autoplay>
+        <sd-carousel-item>
+          <div class="slot slot--border slot--text h-16">Default slot 1</div>
+        </sd-carousel-item>
+        <sd-carousel-item>
+          <div class="slot slot--border slot--text h-16">Default slot 2</div>
+        </sd-carousel-item>
+        <sd-carousel-item>
+          <div class="slot slot--border slot--text h-16">Default slot 3</div>
+        </sd-carousel-item>
+      <sd-carousel>
+    </div>
+  `
 };
 
 /**
@@ -127,16 +168,28 @@ export const Autoplay = {
  */
 
 export const SlidesPerPage = {
-  parameters: { controls: { exclude: 'slides-per-page' } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: { type: 'attribute', name: 'slides-per-page', values: [1, 2, 3] }
-      },
-      constants: [{ type: 'attribute', name: 'variant', value: 'dot' }],
-      args
-    });
-  }
+  name: 'Slides Per Page',
+  render: () => html`
+    <div>
+      <sd-carousel slides-per-page='2' variant="dot">
+        <sd-carousel-item>
+          <div class="slot slot--border slot--text h-16">Default slot 1</div>
+        </sd-carousel-item>
+        <sd-carousel-item>
+          <div class="slot slot--border slot--text h-16">Default slot 2</div>
+        </sd-carousel-item>
+        <sd-carousel-item>
+          <div class="slot slot--border slot--text h-16">Default slot 3</div>
+        </sd-carousel-item>
+        <sd-carousel-item>
+          <div class="slot slot--border slot--text h-16">Default slot 4</div>
+        </sd-carousel-item>
+        <sd-carousel-item>
+          <div class="slot slot--border slot--text h-16">Default slot 5</div>
+        </sd-carousel-item>
+      <sd-carousel>
+    </div>
+  `
 };
 
 /**
@@ -147,103 +200,29 @@ export const SlidesPerPage = {
  */
 
 export const SlidesPerMove = {
-  parameters: { controls: { exclude: 'slides-per-move' } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: { type: 'attribute', name: 'slides-per-move', values: [2] }
-      },
-      constants: [
-        { type: 'attribute', name: 'loop', value: 'true' },
-        { type: 'attribute', name: 'slides-per-page', value: 2 },
-        {
-          type: 'slot',
-          name: 'default',
-          value: `
-            <sd-carousel-item><div class="slot slot--border slot--text h-16">Default slot 1</div></sd-carousel-item>
-            <sd-carousel-item><div class="slot slot--border slot--text h-16">Default slot 2</div></sd-carousel-item>
-            <sd-carousel-item><div class="slot slot--border slot--text h-16">Default slot 3</div></sd-carousel-item>
-            <sd-carousel-item><div class="slot slot--border slot--text h-16">Default slot 4</div></sd-carousel-item>
-            <sd-carousel-item><div class="slot slot--border slot--text h-16">Default slot 5</div></sd-carousel-item>
-            <sd-carousel-item><div class="slot slot--border slot--text h-16">Default slot 6</div></sd-carousel-item>`
-        }
-      ],
-      args
-    });
-  }
-};
-
-export const Parts = {
-  parameters: {
-    controls: {
-      exclude: [
-        'base',
-        'scroll-container',
-        'controls',
-        'pagination-dot',
-        'pagination-number',
-        'pagination-item',
-        'pagination-item--active',
-        'navigation',
-        'navigation-button',
-        'navigation-button--previous',
-        'navigation-button--next',
-        'autoplay-controls',
-        'variant',
-        'autoplay'
-      ]
-    }
-  },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        x: { type: 'attribute', name: 'variant' },
-        y: {
-          type: 'template',
-          name: 'sd-carousel::part(...){outline: solid 2px red}',
-          values: [
-            'base',
-            'scroll-container',
-            'controls',
-            'pagination-dot',
-            'pagination-number',
-            'pagination-item',
-            'pagination-item--active',
-            'navigation',
-            'navigation-button',
-            'navigation-button--previous',
-            'navigation-button--next',
-            'autoplay-controls'
-          ].map(part => {
-            return {
-              title: part,
-              value: `<style>#part-${part} sd-carousel::part(${part}){outline: solid 2px red}</style><div id="part-${part}">%TEMPLATE%</div>`
-            };
-          })
-        }
-      },
-      constants: [
-        { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' },
-        { type: 'attribute', name: 'autoplay', value: true }
-      ],
-      args
-    });
-  }
-};
-
-/**
- * sd-carousel are fully accessibile via keyboard.
- */
-
-export const Mouseless = {
-  render: (args: any) => {
-    return html`<div class="mouseless">${generateTemplate({ args })}</div>`;
-  },
-
-  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
-    const el = canvasElement.querySelector('.mouseless sd-carousel');
-    await waitUntil(() => el?.shadowRoot?.querySelector('#scroll-container'));
-
-    el?.shadowRoot?.querySelector<HTMLElement>('#scroll-container')!.focus();
-  }
+  name: 'Slides Per Move',
+  render: () => html`
+    <div>
+      <sd-carousel slides-per-page="2" slides-per-move='2' variant="dot">
+        <sd-carousel-item>
+          <div class="slot slot--border slot--text h-16">Default slot 1</div>
+        </sd-carousel-item>
+        <sd-carousel-item>
+          <div class="slot slot--border slot--text h-16">Default slot 2</div>
+        </sd-carousel-item>
+        <sd-carousel-item>
+          <div class="slot slot--border slot--text h-16">Default slot 3</div>
+        </sd-carousel-item>
+        <sd-carousel-item>
+          <div class="slot slot--border slot--text h-16">Default slot 4</div>
+        </sd-carousel-item>
+        <sd-carousel-item>
+          <div class="slot slot--border slot--text h-16">Default slot 5</div>
+        </sd-carousel-item>
+        <sd-carousel-item>
+          <div class="slot slot--border slot--text h-16">Default slot 6</div>
+        </sd-carousel-item>
+      <sd-carousel>
+    </div>
+  `
 };
