@@ -9,10 +9,11 @@ const { generateTemplate } = storybookTemplate('sd-badge');
 
 /**
  *
- * The badge can be used to display a number or status. It can be used in combination with other components to draw attention to specific information.
+ * Visual indicator of a quantity related to a particular element. Often displayed next to an icon or label.
  *
  * **Related templates**:
  * - [Button with Badge](?path=/docs/templates-button-with-badge--docs)
+ *
  */
 
 export default {
@@ -43,7 +44,7 @@ export const Default = {
 };
 
 /**
- * Use the `size` attribute to set the badge’s size. The default size is `md` but you can also use `sm` and `lg`.
+ * Use the `size` attribute to set the badge’s size.
  */
 
 export const Size = {
@@ -58,16 +59,19 @@ export const Size = {
 };
 
 /**
- * Use the `variant` attribute to set the badge’s variant. The default variant is `default` but you can also use `success` and `error`.
+ * Use the `variant` attribute to set the badge’s variant.
+ *
+ * - `default`: Use the default variant for standard notifications.
+ * - `success` and `error`: Alternative color options such as green or red are used to draw more attention to specific notifications.
  */
 
 export const Variant = {
   name: 'Variant',
   render: () => html`
     <div class="flex gap-12">
-      <sd-badge variant="default">Default</sd-badge>
-      <sd-badge variant="success">Success</sd-badge>
-      <sd-badge variant="error">Error</sd-badge>
+      <sd-badge variant="default">8</sd-badge>
+      <sd-badge variant="success">8</sd-badge>
+      <sd-badge variant="error">8</sd-badge>
     </div>
   `
 };
@@ -80,7 +84,9 @@ export const Inverted = {
   name: 'Inverted',
   render: () => html`
     <div class="flex gap-12 bg-primary p-4">
-      <sd-badge inverted>Inverted</sd-badge>
+      <sd-badge inverted>8</sd-badge>
+      <sd-badge variant="success" inverted>8</sd-badge>
+      <sd-badge variant="error" inverted>8</sd-badge>
     </div>
   `
 };

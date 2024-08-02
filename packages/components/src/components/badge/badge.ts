@@ -20,7 +20,7 @@ export default class SdBadge extends SolidElement {
   /** The badge's size. */
   @property({ reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
 
-  /** The badge's theme variant. */
+  /** The badge's variant. */
   @property({ reflect: true }) variant: 'default' | 'success' | 'error' = 'default';
 
   /** Inverts the badge. */
