@@ -43,6 +43,10 @@ import type SdPopup from '../popup/popup';
 @customElement('sd-tooltip')
 export default class SdTooltip extends SolidElement {
   private hoverTimeout: number;
+
+  // Flag to handle the case where a click event is triggered after a focus event
+  private isFocusTriggered: boolean = false;
+
   public localize = new LocalizeController(this);
 
   @query('slot:not([name])') defaultSlot: HTMLSlotElement;
@@ -129,6 +133,12 @@ export default class SdTooltip extends SolidElement {
 
   private handleClick() {
     if (this.hasTrigger('click')) {
+      if (this.isFocusTriggered) {
+        this.isFocusTriggered = false;
+        // Ignore click event if focus is triggered first
+        return;
+      }
+
       if (this.open) {
         this.hide();
       } else {
@@ -139,6 +149,7 @@ export default class SdTooltip extends SolidElement {
 
   private handleFocus() {
     if (this.hasTrigger('focus')) {
+      this.isFocusTriggered = true;
       this.show();
     }
   }

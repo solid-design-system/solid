@@ -10,7 +10,7 @@
   }
 
   &--variant-border-neutral-400 {
-    @apply border-neutral-400 bg-white;
+    @apply border-neutral-400 bg-white border-solid;
     border-width: 1px;
   }
 

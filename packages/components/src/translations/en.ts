@@ -29,7 +29,9 @@ const translation: Translation = {
   nextSlide: 'Next slide',
   previousSlide: 'Previous slide',
   goToSlide: (slide, count) => `Go to slide ${slide} of ${count}`,
-  slideNum: num => `Slide ${num}`
+  slideNum: num => `Slide ${num}`,
+  showMore: 'Show more',
+  showLess: 'Show less'
 };
 
 registerTranslation(translation);
