@@ -12,6 +12,8 @@ const { overrideArgs } = storybookHelpers('sd-link');
  *
  * This component is used to display links and can also be used to perform actions like downloading files.
  *
+ *  **Related templates**:
+ * - [Link List](?path=/docs/templates-link-list--docs)
  */
 
 export default {
@@ -44,6 +46,7 @@ export const Size = {
   name: 'Size',
   render: () => html`
     <div class="flex gap-12">
+      <sd-link href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/">Inherit</sd-link>
       <sd-link href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/" size="lg">Large</sd-link>
       <sd-link href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/" size="sm">Small</sd-link>
     </div>
@@ -73,15 +76,27 @@ export const Standalone = {
   name: 'Standalone',
   render: () => html`
     <div class="flex gap-12">
-      <sd-link href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/" standalone>
-        <sd-icon library="global-resources" name="system/picture" slot="icon-left"></sd-icon>
-        Standalone
-      </sd-link>
+      <div class="prose">
+        <ul>
+          <li>
+            <sd-link href="http://union-investment.com" standalone>
+              <sd-icon library="global-resources" name="system/home" slot="icon-left"></sd-icon>
+              Union Investment
+            </sd-link>
+          </li>
+          <li>
+            <sd-link href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/" standalone>
+              <sd-icon library="global-resources" name="system/pen" slot="icon-left"></sd-icon>
+              Solid Design System
+            </sd-link>
+          </li>
+        </ul>
 
-      <sd-link href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/">
-        <sd-icon library="global-resources" name="system/picture" slot="icon-left"></sd-icon>
-        Without Standalone
-      </sd-link>
+        <p>
+          While the list above shows <code>standalone</code> links, we now will link to the
+          <sd-link href="https://cd.union-investment.de">CD Toolbox</sd-link> inside a paragraph.
+        </p>
+      </div>
     </div>
   `
 };
@@ -96,6 +111,25 @@ export const Disabled = {
     <div class="flex gap-12">
       <sd-link href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/">Enabled</sd-link>
       <sd-link>Disabled</sd-link>
+    </div>
+  `
+};
+
+/**
+ * Use the `href` attribute to render the link.
+ *
+ * The `target` attribute can be used to specify where to open the link.
+ */
+
+export const AsLink = {
+  name: 'As link',
+  render: () => html`
+    <div class="flex gap-12">
+      <sd-link
+        href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/?path=/docs/docs-general-introduction--docs"
+        >Link</sd-link
+      ><sd-link href="https://union-investment.com" target="_blank">New Window</sd-link
+      ><sd-link href="./placeholders/src/images/collaboration.jpg" download>Download</sd-link>
     </div>
   `
 };
@@ -117,51 +151,6 @@ export const SlottedIcons = {
         Slotted Icon Right
         <sd-icon library="global-resources" name="system/picture" slot="icon-right"></sd-icon>
       </sd-link>
-    </div>
-  `
-};
-
-/**
- * Link list example.
- */
-
-export const Sample = {
-  name: 'Sample',
-  render: () => html`
-    <div class="bg-primary-100 p-8">
-      <h2 class="sd-headline sd-headline--size-lg mb-8">You might be interested in this:</h2>
-      <ul class="link-list">
-        <li class="mb-5">
-          <sd-link
-            href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/?path=/docs/docs-general-introduction--docs"
-            size="lg"
-            standalone
-          >
-            Corporate bonds
-            <sd-icon library="system" name="chevron-up" class="rotate-90" slot="icon-left"></sd-icon>
-          </sd-link>
-        </li>
-        <li class="mb-5">
-          <sd-link
-            href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/?path=/docs/docs-general-introduction--docs"
-            size="lg"
-            standalone
-          >
-            Covered Bonds
-            <sd-icon library="system" name="chevron-up" class="rotate-90" slot="icon-left"></sd-icon>
-          </sd-link>
-        </li>
-        <li>
-          <sd-link
-            href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/?path=/docs/docs-general-introduction--docs"
-            size="lg"
-            standalone
-          >
-            Careful selection is crucial for success
-            <sd-icon library="system" name="chevron-up" class="rotate-90" slot="icon-left"></sd-icon>
-          </sd-link>
-        </li>
-      </ul>
     </div>
   `
 };
