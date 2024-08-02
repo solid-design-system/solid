@@ -90,8 +90,8 @@ export const Disabled = {
  * The `target` attribute can be used to specify where to open the link.
  */
 
-export const WithALink = {
-  name: 'With a link',
+export const AsLink = {
+  name: 'As link',
   render: () => html`
     <div class="flex gap-12">
       <sd-tag>Default</sd-tag>
