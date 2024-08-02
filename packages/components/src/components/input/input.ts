@@ -156,10 +156,10 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   @property({ type: Number }) maxlength: number;
 
   /** The input's minimum value. Only applies to date and number input types. */
-  @property({ type: Number }) min: number;
+  @property() min: number | string;
 
   /** The input's maximum value. Only applies to date and number input types. */
-  @property({ type: Number }) max: number;
+  @property() max: number | string;
 
   /**
    * By default, form controls are associated with the nearest containing `<form>` element. This attribute allows you
@@ -454,10 +454,10 @@ export default class SdInput extends SolidElement implements SolidFormControl {
       disabled: 'text-neutral-500',
       readonly: 'text-black',
       activeInvalid: 'text-error',
-      activeValid: 'text-success',
+      activeValid: 'text-black',
       active: 'text-black',
       invalid: 'text-error',
-      valid: 'text-success',
+      valid: 'text-black',
       default: 'text-black'
     }[inputState];
 
@@ -554,7 +554,6 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               @focus=${this.handleFocus}
               @blur=${this.handleBlur}
             />
-            <!-- TODO: substitute text-neutral-400 for text-neutral-500 when available! -->
             ${hasClearIcon
               ? html`
                   <button
@@ -567,7 +566,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                   >
                     <slot name="clear-icon">
                       <sd-icon
-                        class=${cx('text-neutral-500', iconSize)}
+                        class=${cx('icon-fill-neutral-800', iconSize)}
                         library="system"
                         name="closing-round"
                       ></sd-icon>
