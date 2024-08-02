@@ -18,6 +18,11 @@ export default {
       name: 'default',
       value: '<div class="slot slot--border slot--text h-8 w-full">Default slot</div>'
     },
+    {
+      type: 'slot',
+      name: 'image',
+      value: `<img slot="image" style="transform:translateY(-30%);" src="./placeholders/images/generic.jpg" alt="Generic" />`
+    },
     { type: 'attribute', name: 'shapes', value: '["top", "middle", "bottom"]' }
   ]),
   argTypes: {
@@ -79,13 +84,21 @@ export const Variants = {
       axis: {
         y: {
           type: 'attribute',
-          name: 'variant'
+          name: 'variant',
+          values: ['neutral-100', 'primary', 'white', 'border-primary', 'border-white', 'image']
         }
       },
       options: {
         templateBackgrounds: {
           alternate: 'y',
-          colors: ['white', 'white', 'rgb(var(--sd-color-primary, 0 53 142))']
+          colors: [
+            'white',
+            'white',
+            'rgb(var(--sd-color-primary, 0 53 142))',
+            'white',
+            'rgb(var(--sd-color-primary, 0 53 142))',
+            'white'
+          ]
         }
       },
       args,
@@ -149,6 +162,30 @@ export const Parts = {
       },
       args,
       constants: increaseColumnWidth()
+    });
+  }
+};
+
+/**
+ * When using the 'image' variant, use the transform property to adjust the image position. In this example, the image is moved up and skewed to fit the brandshape.
+ */
+export const Sample = {
+  name: 'Sample: Positioning Image Variant',
+  render: () => {
+    return generateTemplate({
+      args: overrideArgs([
+        {
+          type: 'attribute',
+          name: 'variant',
+          value: 'image'
+        },
+        {
+          type: 'slot',
+          name: 'image',
+          value: `<img slot="image" style="transform:translateY(-50%) skewY(11deg)" src="./placeholders/images/coins.jpg" alt="collaboration" />`
+        },
+        { type: 'attribute', name: 'shapes', value: '["top", "middle", "bottom"]' }
+      ])
     });
   }
 };

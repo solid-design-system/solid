@@ -14,6 +14,10 @@ The new `sd-brandshape` is designed to replace the stylized variant of `ui-conta
 
 The content inside the brandshape.
 
+#### [image]
+
+The background image in the `image` variant.
+
 <hr />
 
 ## ⚙️ Attributes
@@ -22,13 +26,13 @@ The content inside the brandshape.
 
 #### [shapes]
 
-Defines which shapes of the brandshape should be displayed from `top`, `middle` and `bottom`.
+Defines which shapes of the brandshape should be displayed from `top`, `middle` and `bottom`. This is only applicable for the `neutral-100`,`primary` and `white` and cannot be adjusted in other variants.
 
 ### 🔀 Updated Attributes
 
 #### [variant]
 
-Currently the color variants are reduced for the stylized container and it is in discussion whether more variants will be added in the future.
+The `variant` attribute has been updated to reflect the change to a dedicated sd-brandshape component. The following variants are available in sd-brandshape: `neutral-100`,`primary`,`white`,`border-primary`,`border-white`,`image`. Use `border-primary` for border, border-primary and border-accent, and use `border-white` for border-inverted.
 
 ### ❌ Removed Attributes
 
