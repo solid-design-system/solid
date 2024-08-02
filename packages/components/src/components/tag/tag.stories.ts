@@ -63,19 +63,19 @@ export const Selected = {
 export const Removable = {
   render: () => html`
     <div id="tags-removable" class="flex gap-12">
+      <sd-tag size="lg" removable>Removable <span class="sr-only">large tag</span></sd-tag>
       <sd-tag size="sm" removable>Removable <span class="sr-only">small tag</span></sd-tag>
-      <sd-tag size="large" removable>Removable <span class="sr-only">large tag</span></sd-tag>
     </div>
-    
-<script>
-  const tag = document.querySelector('#tags-removable');
 
-  div.addEventListener('sd-remove', event => {
-    const tag = event.target;
-    tag.style.opacity = '0';
-    setTimeout(() => (tag.style.opacity = '1'), 2000);
-  });
-</script>
+    <script>
+      const tag = document.querySelector('#tags-removable');
+
+      tag.addEventListener('sd-remove', event => {
+        const tag = event.target;
+        tag.style.opacity = '0';
+        setTimeout(() => (tag.style.opacity = '1'), 2000);
+      });
+    </script>
   `
 };
 
@@ -108,15 +108,8 @@ export const AsLink = {
       <sd-tag
         href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/?path=/docs/docs-general-introduction--docs"
         >Link</sd-tag
-      ><sd-tag
-        href="https://union-investment.com"
-        target="_blank"
-        >New Window</sd-tag
-      ><sd-tag
-        href="./placeholders/src/images/collaboration.jpg"
-        download
-        >Download</sd-tag
-      >
+      ><sd-tag href="https://union-investment.com" target="_blank">New Window</sd-tag
+      ><sd-tag href="./placeholders/src/images/collaboration.jpg" download>Download</sd-tag>
     </div>
   `
 };
@@ -128,11 +121,7 @@ export const AsLink = {
 export const Download = {
   render: () => html`
     <div class="flex gap-12">
-      <sd-tag
-        href="./placeholders/src/images/collaboration.jpg"
-        download
-        >Download</sd-tag
-      >
+      <sd-tag href="./placeholders/src/images/collaboration.jpg" download>Download</sd-tag>
     </div>
   `
 };
