@@ -273,7 +273,7 @@ export const Chevron = {
  */
 
 export const IndentedRelaxed = {
-  name: 'Indented × Relaxed',
+  name: 'Indented x Relaxed',
   parameters: {
     controls: {
       exclude: ['vertical', 'chevron', 'indented', 'sd-show', 'sd-hide']
@@ -460,5 +460,41 @@ export const Mouseless = {
     await waitUntil(() => el?.shadowRoot?.querySelector('button'));
 
     el?.shadowRoot?.querySelector('button')?.focus();
+  }
+};
+
+export const separated = {
+  render: () => {
+    return generateTemplate({
+      args: overrideArgs([
+        defaultSlotConstant,
+        {
+          type: 'attribute',
+          name: 'vertical',
+          value: true
+        },
+        {
+          type: 'attribute',
+          name: 'separated',
+          value: true
+        },
+        {
+          type: 'attribute',
+          name: 'href',
+          value: 'https://www.union-investment.de/'
+        },
+        {
+          type: 'attribute',
+          name: 'chevron',
+          value: true
+        },
+        {
+          type: 'slot',
+          name: 'children',
+          value: '<div slot="children" class="slot slot--border slot--background h-6"></div>'
+        },
+        childrenSlotConstant
+      ])
+    });
   }
 };

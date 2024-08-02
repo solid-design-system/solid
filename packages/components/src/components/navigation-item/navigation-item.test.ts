@@ -1,4 +1,5 @@
 import { expect, fixture, html, waitUntil } from '@open-wc/testing';
+import { it } from 'mocha';
 import sinon from 'sinon';
 import type SdNavigationItem from './navigation-item';
 
@@ -104,7 +105,7 @@ describe('<sd-navigation-item>', () => {
   // Test overriding link variant
   describe('when given an "href" property', () => {
     // Render
-    it('only renders an anchor element, regardless of children', async () => {
+    it('only renders an anchor element regardless of children', async () => {
       const el = await fixture<SdNavigationItem>(variants.link.children);
 
       expect(el).to.exist;
@@ -293,6 +294,31 @@ describe('<sd-navigation-item>', () => {
 
         expect(hideHandler.calledOnce).to.be.false;
       });
+    });
+  });
+
+  // Test separate variant
+  describe('when given a value for the "children" slot, an "href" property and "separate" property is true', () => {
+    it('renders a div with slot closed and a link in a separate div', async () => {
+      const el = await fixture<SdNavigationItem>(
+        html`<sd-navigation-item href="#" separate>${defaultSlot}${childrenSlot}</sd-navigation-item>`
+      );
+
+      expect(el).to.exist;
+      expect(el.shadowRoot!.querySelector('a')).to.exist;
+      expect(el.shadowRoot!.querySelector('button')).to.exist;
+      expect(el.shadowRoot!.querySelector('summary')).to.not.exist;
+      expect(el.shadowRoot!.querySelector('details')).to.not.exist;
+      expect(el.shadowRoot!.querySelector('div[slot="children"]')).to.exist;
+      expect(el.shadowRoot!.querySelector('div[slot="children"] a')).to.exist;
+    });
+
+    //Accessibility
+    it('passes accessibility test', async () => {
+      const el = await fixture<SdNavigationItem>(
+        html`<sd-navigation-item href="#" separate>${defaultSlot}${childrenSlot}</sd-navigation-item>`
+      );
+      await expect(el).to.be.accessible();
     });
   });
 });
