@@ -112,7 +112,7 @@ export const Download = {
   render: () => html`
     <div class="flex gap-12">
       <sd-tag
-        href="https://github.com/solid-design-system/solid/blob/main/packages/placeholders/src/images/collaboration.jpg"
+        href="./placeholders/src/images/collaboration.jpg"
         download
         >Download</sd-tag
       >
