@@ -10,7 +10,7 @@ const { generateTemplate } = storybookTemplate('sd-brandshape');
 
 /**
  *
- * This component is used to create a brand box with a background and create a visual separation in the UI.
+ * Creates a container with brand character and visually emphasizes the content.
  *
  */
 
@@ -79,10 +79,6 @@ export const Variant = {
 
 /**
  * The different shapes of the brandshape. By default, all shapes are displayed but it's possible to display only specific shapes by utilizing the `shapes` attribute.
- *
- * Options are `top`, `middle` and `bottom`.
- *
- * `bottom` shape cannot display any content.
  */
 export const Shapes = {
   name: 'Shapes',
