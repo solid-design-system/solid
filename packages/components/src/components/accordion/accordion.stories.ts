@@ -81,25 +81,3 @@ export const Summary = {
     </div>
   `
 };
-
-/**
- *
- * To disable the animation, override the rotate property on the `summary-icon` part as shown below:
- *
- * ```
- * sd-accordion.custom-icons::part(summary-icon) {
- *   rotate: none;
- * }
- * ```
- */
-
-export const WithoutAnimation = {
-  name: 'Without Animation',
-  render: () => html`
-    <div class="grid grid-cols-2">
-      <sd-accordion summary="Without animation">
-        <div class="slot slot--border slot--background slot--text h-16">Default slot</div>
-      </sd-accordion>
-    </div>
-  `
-};
