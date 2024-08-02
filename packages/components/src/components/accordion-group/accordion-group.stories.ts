@@ -10,6 +10,9 @@ const { generateTemplate } = storybookTemplate('sd-accordion-group');
  *
  * Accordion groups are used to group multiple accordions together.
  *
+ *  **Related templates**:
+ * - [Accordion Group](?path=/docs/templates-accordion-group--docs)
+ *
  */
 
 export default {
@@ -46,42 +49,17 @@ export const CloseOthers = {
   name: 'One accordion open at a time',
   render: () => html`
     <sd-accordion-group close-others>
-      <sd-accordion summary="Accordion 1">Sample content</sd-accordion
-      ><sd-accordion summary="Accordion 2">Sample content</sd-accordion
-      ><sd-accordion summary="Accordion 3">Sample content</sd-accordion>
-    </sd-accordion-group>
-  `
-};
-
-export const SampleWithWhiteBackground = {
-  name: 'Sample with white background',
-  render: () => html`
-    <sd-accordion-group class="bg-white p-8">
-      <sd-accordion summary="Accordion 1">Sample content</sd-accordion
-      ><sd-accordion summary="Accordion 2">Sample content</sd-accordion
-      ><sd-accordion summary="Accordion 3">Sample content</sd-accordion>
-    </sd-accordion-group>
-  `
-};
-
-export const SampleWithNeutralBackground = {
-  name: 'Sample with neutral background',
-  render: () => html`
-    <sd-accordion-group class="bg-neutral-100 p-8">
-      <sd-accordion summary="Accordion 1">Sample content</sd-accordion
-      ><sd-accordion summary="Accordion 2">Sample content</sd-accordion
-      ><sd-accordion summary="Accordion 3">Sample content</sd-accordion>
-    </sd-accordion-group>
-  `
-};
-
-export const SampleWithPrimaryBackground = {
-  name: 'Sample with primary background',
-  render: () => html`
-    <sd-accordion-group class="bg-primary-100 p-8">
-      <sd-accordion summary="Accordion 1">Sample content</sd-accordion
-      ><sd-accordion summary="Accordion 2">Sample content</sd-accordion
-      ><sd-accordion summary="Accordion 3">Sample content</sd-accordion>
+      <sd-accordion summary="Accordion 1">
+        <div class="slot slot--border slot--background slot--text h-16">Default slot</div> </sd-accordion
+      ><sd-accordion summary="Accordion 2"
+        >A dolore mollitia qui dolorum possimus. Natus quos ea nihil ullam. Vel molestias nesciunt. Error autem
+        tempora.</sd-accordion
+      ><sd-accordion summary="Accordion 3"
+        >A dolore mollitia qui dolorum possimus. Natus quos ea nihil ullam. Vel molestias nesciunt. Error autem tempora.
+        A dolore mollitia qui dolorum possimus. Natus quos ea nihil ullam. Vel molestias nesciunt. Error autem tempora.
+        A dolore mollitia qui dolorum possimus. Natus quos ea nihil ullam. Vel molestias nesciunt. Error autem
+        tempora.</sd-accordion
+      >
     </sd-accordion-group>
   `
 };
