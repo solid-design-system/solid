@@ -57,7 +57,7 @@ export const Selected = {
 };
 
 /**
- * Use the `removable` attribute to include the removability indicator and make the tag removable from the UI.
+ * Use the `removable` attribute to include the removability indicator.
  */
 
 export const Removable = {
