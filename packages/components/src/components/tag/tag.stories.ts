@@ -62,9 +62,20 @@ export const Selected = {
 
 export const Removable = {
   render: () => html`
-    <div class="flex gap-12">
-      <sd-tag removable>Removable</sd-tag>
+    <div id="tags-removable" class="flex gap-12">
+      <sd-tag size="sm" removable>Removable <span class="sr-only">small tag</span></sd-tag>
+      <sd-tag size="large" removable>Removable <span class="sr-only">large tag</span></sd-tag>
     </div>
+    
+<script>
+  const tag = document.querySelector('#tags-removable');
+
+  div.addEventListener('sd-remove', event => {
+    const tag = event.target;
+    tag.style.opacity = '0';
+    setTimeout(() => (tag.style.opacity = '1'), 2000);
+  });
+</script>
   `
 };
 
