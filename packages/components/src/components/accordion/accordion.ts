@@ -63,7 +63,7 @@ export default class SdAccordion extends SolidElement {
     this.body.style.height = this.open ? 'auto' : '0';
   }
 
-  private handleSummaryClick() {
+  protected handleSummaryClick() {
     if (this.open) {
       this.hide();
     } else {
@@ -71,7 +71,7 @@ export default class SdAccordion extends SolidElement {
     }
   }
 
-  private handleSummaryKeyDown(event: KeyboardEvent) {
+  protected handleSummaryKeyDown(event: KeyboardEvent) {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
 
@@ -184,33 +184,35 @@ export default class SdAccordion extends SolidElement {
     ></span>`;
   };
 
+  /** @internal */
+  RenderHeader = () => {
+    return html`<header
+      part="header"
+      id="header"
+      class=${cx(
+        'flex text-base gap-4 font-bold items-center cursor-pointer select-none px-4 py-3 focus-visible:focus-outline text-primary hover:bg-neutral-200 relative group'
+      )}
+      aria-label="header"
+      aria-expanded=${this.open ? 'true' : 'false'}
+      aria-controls="content"
+      tabindex="0"
+      @click=${this.handleSummaryClick}
+      @keydown=${this.handleSummaryKeyDown}
+    >
+      <div
+        part="summary-border"
+        class=${cx(
+          !this.open && 'opacity-0',
+          'w-1 bg-accent absolute left-0 transition-all h-[calc(100%-16px)] group-hover:h-full'
+        )}
+      ></div>
+      ${this.RenderOptionalIcon()} ${this.RenderSummary()} ${this.RenderSummaryIcons()}
+    </header>`;
+  };
+
   render() {
     return html`
-      <div part="base" class="border-y border-neutral-400">
-        <header
-          part="header"
-          id="header"
-          class=${cx(
-            'flex text-base gap-4 font-bold items-center cursor-pointer select-none px-4 py-3 focus-visible:focus-outline text-primary hover:bg-neutral-200 relative group'
-          )}
-          aria-label="header"
-          aria-expanded=${this.open ? 'true' : 'false'}
-          aria-controls="content"
-          tabindex="0"
-          @click=${this.handleSummaryClick}
-          @keydown=${this.handleSummaryKeyDown}
-        >
-          <div
-            part="summary-border"
-            class=${cx(
-              !this.open && 'opacity-0',
-              'w-1 bg-accent absolute left-0 transition-all h-[calc(100%-16px)] group-hover:h-full'
-            )}
-          ></div>
-          ${this.RenderOptionalIcon()} ${this.RenderSummary()} ${this.RenderSummaryIcons()}
-        </header>
-        ${this.RenderDefaultSlot()}
-      </div>
+      <div part="base" class="border-y border-neutral-400">${this.RenderHeader()} ${this.RenderDefaultSlot()}</div>
     `;
   }
 

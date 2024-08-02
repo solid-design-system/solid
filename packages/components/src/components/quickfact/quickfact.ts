@@ -26,6 +26,32 @@ export default class SdQuickfact extends SdAccordion {
   @property({ type: Boolean, reflect: true }) expandable = false;
 
   /** @internal */
+  RenderHeader = () => {
+    return html`<header
+      part="header"
+      id="header"
+      class=${cx(
+        'flex text-base gap-4 font-bold items-center cursor-pointer select-none px-4 py-3 focus-visible:focus-outline text-primary hover:bg-neutral-200 relative group'
+      )}
+      aria-label="header"
+      aria-expanded=${this.open ? 'true' : 'false'}
+      aria-controls="content"
+      tabindex=${this.expandable ? '0' : '-1'}
+      @click=${this.handleSummaryClick}
+      @keydown=${this.handleSummaryKeyDown}
+    >
+      <div
+        part="summary-border"
+        class=${cx(
+          !this.open && 'opacity-0',
+          'w-1 bg-accent absolute left-0 transition-all h-[calc(100%-16px)] group-hover:h-full'
+        )}
+      ></div>
+      ${this.RenderOptionalIcon()} ${this.RenderSummary()} ${this.RenderSummaryIcons()}
+    </header>`;
+  };
+
+  /** @internal */
   RenderSummary = () => {
     return html`
       <slot
