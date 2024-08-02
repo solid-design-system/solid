@@ -74,7 +74,7 @@ export const States = {
 /**
  * A quickfact item can either be collapsed or open.
  */
-export const expandable = {
+export const Expandable = {
   parameters: { controls: { exclude: 'expandable' } },
   render: (args: any) => {
     return generateTemplate({
