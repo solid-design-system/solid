@@ -10,7 +10,7 @@ import SdAccordion from '../accordion/accordion';
  * @summary Accordion shows a brief summary and expands to show additional content.
  * @documentation https://solid.union-investment.com/[storybook-link]/quickfact
  * @status stable
- * @since 3.9.0
+ * @since 3.12.0
  *
  * @slot icon - Optional icon to show in the header. Works best with `<sd-icon>`.
  *
