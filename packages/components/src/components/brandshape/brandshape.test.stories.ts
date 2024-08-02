@@ -25,6 +25,11 @@ export default {
       name: 'default',
       value: '<div class="slot slot--border slot--text h-8 w-full">Default slot</div>'
     },
+    {
+      type: 'slot',
+      name: 'image',
+      value: `<img slot="image" style="transform:translateY(-30%);" src="./placeholders/images/generic.jpg" alt="Generic" />`
+    },
     { type: 'attribute', name: 'shapes', value: '["top", "middle", "bottom"]' }
   ]),
   argTypes: {
@@ -49,7 +54,6 @@ const increaseColumnWidth = (): ConstantDefinition => {
  * Default: This shows sd-brandshape in its default state.
  */
 export const Default = {
-  name: 'Default',
   render: (args: any) => {
     return generateTemplate({ args });
   }
@@ -146,7 +150,6 @@ export const Breakpoints = {
  * Use the `base`, `content`, `shape-top`, `shape-middle` or `shape-bottom` part selectors to customize the brandshape.
  */
 export const Parts = {
-  name: 'Parts',
   parameters: {
     controls: { exclude: ['base', 'content', 'shape-top', 'shape-middle', 'shape-bottom'] }
   },
@@ -166,6 +169,30 @@ export const Parts = {
       },
       args,
       constants: increaseColumnWidth()
+    });
+  }
+};
+
+/**
+ * When using the 'image' variant, use the transform property to adjust the image position. In this example, the image is moved up and skewed to fit the brandshape.
+ */
+export const Sample = {
+  name: 'Sample: Positioning Image Variant',
+  render: () => {
+    return generateTemplate({
+      args: overrideArgs([
+        {
+          type: 'attribute',
+          name: 'variant',
+          value: 'image'
+        },
+        {
+          type: 'slot',
+          name: 'image',
+          value: `<img slot="image" style="transform:translateY(-50%) skewY(11deg)" src="./placeholders/images/coins.jpg" alt="collaboration" />`
+        },
+        { type: 'attribute', name: 'shapes', value: '["top", "middle", "bottom"]' }
+      ])
     });
   }
 };

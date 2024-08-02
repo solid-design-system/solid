@@ -62,28 +62,44 @@ export const Variant = {
     <div class="mb-5">
       <sd-brandshape variant="primary">
         <p class="sd-headline sd-headline--lg text-white">Primary Variant Example</p>
-        <p class="text-white">Example content text</p>
       </sd-brandshape>
     </div>
 
     <div class="mb-5">
       <sd-brandshape variant="neutral-100">
         <p class="sd-headline sd-headline--lg">Neutral-100 Variant Example</p>
-        <p>Example content text</p>
       </sd-brandshape>
     </div>
 
     <div class="bg-primary">
       <sd-brandshape variant="white">
         <p class="sd-headline sd-headline--lg">White Variant Example</p>
-        <p>Example content text</p>
+      </sd-brandshape>
+    </div>
+
+    <div>
+      <sd-brandshape variant="border-primary">
+        <p class="sd-headline sd-headline--lg">Border Primary Variant Example</p>
+      </sd-brandshape>
+    </div>
+
+    <div class="bg-primary">
+      <sd-brandshape variant="border-white">
+        <p class="sd-headline sd-headline--lg text-white">Border White Variant Example</p>
+      </sd-brandshape>
+    </div>
+
+    <div>
+      <sd-brandshape variant="image">
+        <p class="sd-headline sd-headline--lg">Image Variant Example</p>
+        <img slot="image" style="transform:translateY(-30%);" src="./placeholders/images/generic.jpg" alt="Generic" />
       </sd-brandshape>
     </div>
   `
 };
 
 /**
- * The different shapes of the brandshape. By default, all shapes are displayed but it's possible to display only specific shapes by utilizing the `shapes` attribute.
+ * By default, all shapes are displayed but it's possible to display only specific shapes by utilizing the `shapes` attribute.
  */
 export const Shapes = {
   name: 'Shapes',
@@ -112,28 +128,4 @@ export const Shapes = {
       </sd-brandshape>
     </div>
   `
-};
-
-/**
- * When using the 'image' variant, use the transform property to adjust the image position. In this example, the image is moved up and skewed to fit the brandshape.
- */
-export const Sample = {
-  name: 'Sample: Positioning Image Variant',
-  render: () => {
-    return generateTemplate({
-      args: overrideArgs([
-        {
-          type: 'attribute',
-          name: 'variant',
-          value: 'image'
-        },
-        {
-          type: 'slot',
-          name: 'image',
-          value: `<img slot="image" style="transform:translateY(-50%) skewY(11deg)" src="./placeholders/images/coins.jpg" alt="collaboration" />`
-        },
-        { type: 'attribute', name: 'shapes', value: '["top", "middle", "bottom"]' }
-      ])
-    });
-  }
 };
