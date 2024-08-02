@@ -37,7 +37,7 @@ export const Default = {
 };
 
 /**
- * Use the `size` attribute to adjust the size of the link. By default it is set to `inherit` but can be changed to `lg` or `sm`.
+ * Use the `size` attribute to adjust the size of the link. By default it is set to `inherit` to adapt to the surrounding text but can be explicitly changed to `lg` or `sm`.
  */
 
 export const Size = {
