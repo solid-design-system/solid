@@ -85,6 +85,12 @@ export default class SdCarousel extends SolidElement {
   @state() activeSlide = 0;
 
   /**
+   * The current page of the carousel
+   * @internal
+   */
+  @state() currentPage = 1;
+
+  /**
    * Boolean keeping track of the autoplay pause/play button
    * @internal
    */
@@ -142,11 +148,11 @@ export default class SdCarousel extends SolidElement {
   }
 
   private getPageCount() {
-    return Math.ceil(this.getSlides().length / this.slidesPerPage);
+    return Math.ceil((this.getSlides().length - this.slidesPerPage) / this.slidesPerMove) + 1;
   }
 
   private getCurrentPage() {
-    return Math.ceil(this.activeSlide / this.slidesPerPage);
+    return this.currentPage;
   }
 
   private getSlides({ excludeClones = true }: { excludeClones?: boolean } = {}) {
@@ -289,6 +295,11 @@ export default class SdCarousel extends SolidElement {
 
   @watch('activeSlide')
   handelSlideChange() {
+    this.currentPage =
+      Math.ceil((this.getSlides().length - this.slidesPerPage) / this.slidesPerMove) -
+      Math.ceil((this.getSlides().length - this.slidesPerPage - this.activeSlide) / this.slidesPerMove) +
+      1;
+
     const slides = this.getSlides();
     slides.forEach((slide, i) => {
       slide.classList.toggle('--is-active', i === this.activeSlide);
@@ -304,6 +315,14 @@ export default class SdCarousel extends SolidElement {
       });
     }
   }
+
+  // static getTheCurrentPage(activeSlide: number, slidesPerPage: number, slidesPerMove: number, totalSlides: number) {
+  //   return null;
+  // }
+
+  // static getTheTotalPages(slides: number, slidesPerPage: number, slidesPerMove: number, totalSlides: number) {
+  //   return null;
+  // }
 
   @watch('slidesPerMove')
   handleSlidesPerMoveChange() {
@@ -334,6 +353,7 @@ export default class SdCarousel extends SolidElement {
    * @param behavior - The behavior used for scrolling.
    */
   previous(behavior: ScrollBehavior = 'smooth') {
+    console.log('previous');
     let previousIndex = this.activeSlide || this.activeSlide - this.slidesPerMove;
     let canSnap = false;
 
@@ -342,7 +362,13 @@ export default class SdCarousel extends SolidElement {
       canSnap = Math.abs(previousIndex - this.slidesPerMove) % this.slidesPerMove === 0;
     }
 
-    this.goToSlide(previousIndex, behavior);
+    if (this.currentPage - 1 === 0 && this.loop) {
+      // this.currentPage = this.getPageCount();
+      this.goToSlide(this.activeSlide - this.slidesPerPage, behavior);
+    } else {
+      // this.currentPage -= 1;
+      this.goToSlide(previousIndex, behavior);
+    }
   }
 
   /**
@@ -351,7 +377,21 @@ export default class SdCarousel extends SolidElement {
    * @param behavior - The behavior used for scrolling.
    */
   next(behavior: ScrollBehavior = 'smooth') {
-    this.goToSlide(this.activeSlide + this.slidesPerMove, behavior);
+    console.log('next');
+
+    if (this.currentPage + 1 > this.getPageCount() && this.loop) {
+      // this.currentPage = 1;
+      this.nextTillFirst(behavior);
+    } else {
+      // this.currentPage += 1;
+      this.goToSlide(this.activeSlide + this.slidesPerMove, behavior);
+    }
+  }
+
+  nextTillFirst(behavior: ScrollBehavior = 'smooth') {
+    while (this.activeSlide !== 0) {
+      this.goToSlide(this.activeSlide + 1, behavior);
+    }
   }
 
   /**
@@ -391,8 +431,8 @@ export default class SdCarousel extends SolidElement {
     const { scrollController, slidesPerPage } = this;
     const pagesCount = this.getPageCount();
     const currentPage = this.getCurrentPage();
-    const prevEnabled = this.loop || currentPage > 0;
-    const nextEnabled = this.loop || currentPage < pagesCount - 1;
+    const prevEnabled = this.loop || currentPage > 1;
+    const nextEnabled = this.loop || currentPage < pagesCount;
     const isLtr = this.localize.dir() === 'ltr';
 
     return html`
@@ -489,7 +529,7 @@ export default class SdCarousel extends SolidElement {
                   <span
                     part="pagination-item"
                     class=${cx('w-5 text-center border-b-2 border-accent', this.inverted ? 'text-white' : 'text-black')}
-                    >${currentPage + 1}</span
+                    >${currentPage}</span
                   >
                   <span
                     part="pagination-divider"

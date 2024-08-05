@@ -1,9 +1,16 @@
 import { aTimeout, expect, fixture, html, oneEvent } from '@open-wc/testing';
 import { clickOnElement } from '../../internal/test.js';
+import SdCarousel from './carousel';
 import sinon from 'sinon';
-import type SdCarousel from './carousel';
 
 describe('<sd-carousel>', () => {
+  it('should calculate the current page correctly', () => {
+    expect(SdCarousel.getTheCurrentPage(1, 4, 4, 12)).to.be.equal(1);
+    expect(SdCarousel.getTheCurrentPage(2, 4, 4, 12)).to.be.equal(1);
+    expect(SdCarousel.getTheCurrentPage(3, 4, 4, 12)).to.be.equal(1);
+    expect(SdCarousel.getTheCurrentPage(4, 4, 4, 12)).to.be.equal(2);
+  });
+
   it('should render a carousel with default configuration', async () => {
     // Arrange
     const el = await fixture<SdCarousel>(html`
@@ -273,7 +280,7 @@ describe('<sd-carousel>', () => {
             <sd-carousel-item>Node 3</sd-carousel-item>
           </sd-carousel>
         `);
-        const nextButton: HTMLElement = el.shadowRoot!.querySelector('#carousel__navigation-button--next')!;
+        const nextButton: HTMLElement = el.shadowRoot!.querySelector('#carousel__navigation-button--next');
         sinon.stub(el, 'next');
         await el.updateComplete;
         // Act
@@ -292,7 +299,7 @@ describe('<sd-carousel>', () => {
               <sd-carousel-item>Node 3</sd-carousel-item>
             </sd-carousel>
           `);
-          const nextButton: HTMLElement = el.shadowRoot!.querySelector('#carousel__navigation-button--next')!;
+          const nextButton: HTMLElement = el.shadowRoot!.querySelector('#carousel__navigation-button--next');
           sinon.stub(el, 'next');
           el.goToSlide(2, 'auto');
           await oneEvent(el.scrollContainer, 'scrollend');
@@ -314,7 +321,7 @@ describe('<sd-carousel>', () => {
                 <sd-carousel-item>Node 3</sd-carousel-item>
               </sd-carousel>
             `);
-            const nextButton: HTMLElement = el.shadowRoot!.querySelector('#carousel__navigation-button--next')!;
+            const nextButton: HTMLElement = el.shadowRoot!.querySelector('#carousel__navigation-button--next');
             el.goToSlide(2, 'auto');
             await oneEvent(el.scrollContainer, 'scrollend');
             await el.updateComplete;
@@ -349,7 +356,7 @@ describe('<sd-carousel>', () => {
       await oneEvent(el.scrollContainer, 'scrollend');
       await el.updateComplete;
 
-      const previousButton: HTMLElement = el.shadowRoot!.querySelector('#carousel__navigation-button--previous')!;
+      const previousButton: HTMLElement = el.shadowRoot!.querySelector('#carousel__navigation-button--previous');
       sinon.stub(el, 'previous');
 
       await el.updateComplete;
@@ -372,7 +379,7 @@ describe('<sd-carousel>', () => {
             <sd-carousel-item>Node 3</sd-carousel-item>
           </sd-carousel>
         `);
-        const previousButton: HTMLElement = el.shadowRoot!.querySelector('#carousel__navigation-button--previous')!;
+        const previousButton: HTMLElement = el.shadowRoot!.querySelector('#carousel__navigation-button--previous');
         sinon.stub(el, 'previous');
         await el.updateComplete;
         // Act
@@ -392,7 +399,7 @@ describe('<sd-carousel>', () => {
               <sd-carousel-item>Node 3</sd-carousel-item>
             </sd-carousel>
           `);
-          const previousButton: HTMLElement = el.shadowRoot!.querySelector('#carousel__navigation-button--previous')!;
+          const previousButton: HTMLElement = el.shadowRoot!.querySelector('#carousel__navigation-button--previous');
           await el.updateComplete;
           // Act
           await clickOnElement(previousButton);
