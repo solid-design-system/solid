@@ -121,7 +121,7 @@ export default class SdNavigationItem extends SolidElement {
     return '';
   }
 
-  private get rootTag() {
+  private get tag() {
     if (this.isAccordion() && !this.isLink()) {
       return literal`summary`;
     }
@@ -151,7 +151,7 @@ export default class SdNavigationItem extends SolidElement {
     /* eslint-disable lit/no-invalid-html */
     /* eslint-disable lit/binding-positions */
     const root = html`
-      <${this.rootTag}
+      <${this.tag}
         part="base"
         class=${cx(
           'cursor-pointer relative focus-visible:focus-outline',
@@ -263,7 +263,7 @@ export default class SdNavigationItem extends SolidElement {
               ></slot>`
             : ''
         }
-      </${this.rootTag}>
+      </${this.tag}>
     `;
     /* eslint-enable lit/no-invalid-html */
     /* eslint-enable lit/binding-positions */
