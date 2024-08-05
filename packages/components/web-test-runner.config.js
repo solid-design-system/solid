@@ -4,10 +4,14 @@ import { removeViteLogging, vitePlugin } from '@remcovaes/web-test-runner-vite-p
 
 const browsers = [playwrightLauncher({ product: 'chromium' }), playwrightLauncher({ product: 'webkit' })];
 
+const ciConfig = process.env.CI ? { concurrenty: 1 } : {};
+
 export default {
   rootDir: '.',
   files: ['src/components/**/*.test.ts', 'src/utilities/**/*.test.ts'], // "default" group
   concurrentBrowsers: 1,
+  // Check if we are on CI and set concurrency to 1 to avoid
+  // running tests in parallel
   nodeResolve: true,
   testFramework: {
     config: {
@@ -49,5 +53,6 @@ export default {
       name: groupName,
       files: path
     };
-  })
+  }),
+  ...ciConfig
 };
