@@ -1,4 +1,4 @@
-import { css } from 'lit';
+import { css, unsafeCSS } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { HasSlotController } from '../../internal/slot';
 import { html, literal } from 'lit/static-html.js';
@@ -6,6 +6,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { property } from 'lit/decorators.js';
 import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
+import InteractiveStyles from '../../styles/interactive/interactive.css?inline';
 import SolidElement from '../../internal/solid-element';
 
 /**
@@ -217,11 +218,10 @@ export default class SdNavigationItem extends SolidElement {
           ${
             (this.chevron || slots['children']) && this.vertical
               ? this.separated
-                ? html`<sd-button
-                    variant="tertiary"
+                ? html`<button
                     type="button"
-                    role="button"
                     title="chevron-down-button"
+                    class="sd-interactive sd-interactive--reset"
                     @click=${this.handleClickSummary}
                   >
                     <sd-icon
@@ -235,7 +235,7 @@ export default class SdNavigationItem extends SolidElement {
                         isAccordion || this.separated ? (this.open ? 'rotate-180' : 'rotate-0') : 'rotate-[270deg]'
                       )}
                     ></sd-icon>
-                  </sd-button>`
+                  </button>`
                 : html` <sd-icon
                     name="chevron-down"
                     part="chevron"
@@ -294,7 +294,7 @@ export default class SdNavigationItem extends SolidElement {
   static styles = [
     componentStyles,
     SolidElement.styles,
-
+    unsafeCSS(InteractiveStyles),
     css`
       :host {
         @apply inline-block relative box-border;
