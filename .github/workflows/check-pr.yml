@@ -10,7 +10,7 @@ jobs:
         runs-on: ubuntu-22.04
         if: github.event.pull_request.draft == false
         container:
-            image: mcr.microsoft.com/playwright:v1.45.1-noble
+            image: mcr.microsoft.com/playwright:v1.44.1-jammy
         steps:
             - name: Checkout
               uses: actions/checkout@v4
@@ -74,7 +74,7 @@ jobs:
       runs-on: ubuntu-22.04
       if: github.event.pull_request.draft == false
       container:
-          image: mcr.microsoft.com/playwright:v1.45.1-noble
+          image: mcr.microsoft.com/playwright:v1.44.1-jammy
       steps:
           - name: Checkout
             uses: actions/checkout@v4
