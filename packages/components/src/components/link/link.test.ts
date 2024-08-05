@@ -65,4 +65,21 @@ describe('<sd-link>', () => {
       expect(clickHandler).to.have.been.calledOnce;
     });
   });
+  describe('download attribute', () => {
+    it('should be set on the <a> tag when a value is provided', async () => {
+      const el = await fixture<SdLink>(html` <sd-link href="#" download="file.txt">Default Slot</sd-link> `);
+      const a = el.shadowRoot!.querySelector('a')!;
+      expect(a).to.have.attribute('download', 'file.txt');
+    });
+    it('should not be set on the <a> tag when no value is provided', async () => {
+      const el = await fixture<SdLink>(html` <sd-link href="#">Default Slot</sd-link> `);
+      const a = el.shadowRoot!.querySelector('a')!;
+      expect(a).to.not.have.attribute('download');
+    });
+    it('should set the download attribute with empty string when no value is provided', async () => {
+      const el = await fixture<SdLink>(html` <sd-link href="#" download="">Default Slot</sd-link> `);
+      const a = el.shadowRoot!.querySelector('a')!;
+      expect(a).to.have.attribute('download', '');
+    });
+  });
 });

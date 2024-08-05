@@ -93,7 +93,7 @@ export default class SdLink extends SolidElement {
       )}
       href=${ifDefined(this.href || undefined)}
       target=${ifDefined(this.target || undefined)}
-      download=${ifDefined(this.download || undefined)}
+      download=${ifDefined(this.download)}
       rel=${ifDefined(this.target ? 'noreferrer noopener' : undefined)}
       aria-disabled=${!this.href ? 'true' : 'false'}
       tabindex=${!this.href ? '-1' : '0'}
