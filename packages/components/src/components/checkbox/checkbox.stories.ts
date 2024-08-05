@@ -84,7 +84,6 @@ export const Indeterminate = {
   name: 'Indeterminate',
   render: () => html`
     <div class="flex gap-12">
-      <sd-checkbox>Unchecked</sd-checkbox>
       <sd-checkbox indeterminate>Indeterminate</sd-checkbox>
     </div>
   `
@@ -116,56 +115,4 @@ export const Invalid = {
       <sd-button style="margin-top: 16px" type="submit">Submit</sd-button>
     </form>
   `
-};
-
-export const setCustomValidity = {
-  name: 'setCustomValidity',
-  render: () => {
-    return html`
-      <!-- block submit and show alert instead -->
-      <form id="validationForm" class="flex flex-col gap-2">
-        <sd-checkbox id="custom-input">Checkbox</sd-checkbox>
-        <div>
-          <sd-button type="submit">Submit</sd-button>
-          <sd-button id="error-button" variant="secondary">Set custom error</sd-button>
-          <sd-button id="success-button" variant="secondary">Set success</sd-button>
-          <sd-button type="reset" variant="secondary">Reset</sd-button>
-        </div>
-      </form>
-      <script type="module">
-        // Wait for custom elements to be defined
-        await Promise.all([customElements.whenDefined('sd-checkbox'), customElements.whenDefined('sd-button')]).then(
-          () => {
-            const form = document.getElementById('validationForm');
-            const input = document.getElementById('custom-input');
-            const setErrorButton = document.getElementById('error-button');
-            const setSuccessButton = document.getElementById('success-button');
-
-            // Initial error
-            const errorMessage = \`This is an initial custom error (\${new Date().toLocaleTimeString()})\`;
-            input.setCustomValidity(errorMessage);
-            input.reportValidity();
-
-            // Show error message
-            setErrorButton.addEventListener('click', () => {
-              const errorMessage = \`This is a new custom error (\${new Date().toLocaleTimeString()})\`;
-              input.setCustomValidity(errorMessage);
-              input.reportValidity();
-            });
-
-            // Show success message
-            setSuccessButton.addEventListener('click', () => {
-              input.setCustomValidity(''); // Clear custom validity
-              input.reportValidity();
-            });
-
-            form.addEventListener('submit', event => {
-              event.preventDefault();
-              alert('All fields are valid!');
-            });
-          }
-        );
-      </script>
-    `;
-  }
 };
