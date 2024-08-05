@@ -7,10 +7,10 @@ on:
 jobs:
     linting-and-formatting:
         name: Linting and Formatting
-        runs-on: ubuntu-latest
+        runs-on: ubuntu-22.04
         if: github.event.pull_request.draft == false
         container:
-            image: mcr.microsoft.com/playwright:v1.44.1-jammy
+            image: mcr.microsoft.com/playwright:v1.45.1-noble
         steps:
             - name: Checkout
               uses: actions/checkout@v4
@@ -71,10 +71,10 @@ jobs:
     quality-gate:
       name: Install, verify and build
       needs: [linting-and-formatting]
-      runs-on: ubuntu-latest
+      runs-on: ubuntu-22.04
       if: github.event.pull_request.draft == false
       container:
-          image: mcr.microsoft.com/playwright:v1.44.1-jammy
+          image: mcr.microsoft.com/playwright:v1.45.1-noble
       steps:
           - name: Checkout
             uses: actions/checkout@v4
