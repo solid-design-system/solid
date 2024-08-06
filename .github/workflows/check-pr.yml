@@ -30,8 +30,11 @@ jobs:
             - name: Install dependencies
               run: pnpm i
 
-            - name: verify lint and format
-              run: pnpm lint.verify && pnpm format.verify
+            - name: verify lint, format and not-components
+              run: pnpm lint.verify && pnpm format.verify && pnpm ts.verify && pnpm --recursive --if-present --filter="\!components" verify
+            
+            - name: verify components without tests
+              run : cd packages/components && pnpm ts.verify && pnpm build && echo '✅ Build verified' && node ./scripts/node-optimize-chromatic.cjs && echo '✅ Chromatic optimization verified'
 
     # Check Chromatic for visual changes after all other checks have passed
     chromatic-deployment-pr:
@@ -69,7 +72,7 @@ jobs:
             storybookBuildDir: packages/components/dist/storybook
 
     quality-gate:
-      name: Install, verify and build
+      name: Test components (do locally if failing)
       needs: [linting-and-formatting]
       runs-on: ubuntu-latest
       if: github.event.pull_request.draft == false
@@ -94,5 +97,5 @@ jobs:
           - name: Install dependencies
             run: pnpm i
 
-          - name: (monorepo) verify
-            run: pnpm verify
+          - name: Components test
+            run: cd packages/components && pnpm test.verify

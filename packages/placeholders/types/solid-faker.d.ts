@@ -8,25 +8,28 @@ export default class SolidFaker {
    */
   constructor(seedValue: number);
   /**
-   * Seed value for consistent randomness.
-   * @type {number|undefined}
-   */
-  seedValue: number | undefined;
-  /**
    * Array containing Lorem Ipsum words.
    * @type {string[]}
    */
   loremIpsumWords: string[];
   /**
-   * Set a seed value for consistent randomness on each invocation.
-   * @param {number} seed - Seed value for consistent randomness.
+   * Seed value for consistent randomness.
+   * @type {number|undefined}
    */
-  seed(seed: number): void;
+  seedValue: number | undefined;
   /**
    * Generate a random index for selecting a word from loremIpsumWords array.
    * @returns {number} - Random index.
    */
   getRandomIndex(): number;
+  /**
+   * Generates a random integer between the specified minimum and maximum values.
+   *
+   * @param {number} min - The minimum value of the range (inclusive).
+   * @param {number} max - The maximum value of the range (inclusive).
+   * @returns {number} The randomly generated integer.
+   */
+  getRandomInt(min: number, max: number): number;
   /**
    * Generate a random number of words.
    * @param {number} numWords - Number of words to generate.
@@ -37,14 +40,14 @@ export default class SolidFaker {
   words(numWords: number, capitalizeType?: number): string;
   /**
    * Generate a random number of sentences.
-   * @param {number} numSentences - Number of sentences to generate.
+   * @param {number} sentencesCount - Number of sentences to generate.
    * @returns {string} - Random sentences joined together.
    */
-  sentences(numSentences: number): string;
+  sentences(sentencesCount: number): string;
   /**
    * Generate a random number of paragraphs.
-   * @param {number} numParagraphs - Number of paragraphs to generate.
+   * @param {number} paragraphsCount - Number of paragraphs to generate.
    * @returns {string} - Random paragraphs joined together.
    */
-  paragraphs(numParagraphs: number): string;
+  paragraphs(paragraphsCount: number): string;
 }
