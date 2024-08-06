@@ -48,12 +48,8 @@ export const Open = {
   name: 'Open',
   render: () => html`
     <div class="grid grid-cols-2 gap-12">
-      <sd-accordion open summary="Open"
-        ><div class="slot slot--border slot--background slot--text h-16">Default slot</div></sd-accordion
-      >
-      <sd-accordion summary="Closed"
-        ><div class="slot slot--border slot--background slot--text h-16">Default slot</div></sd-accordion
-      >
+      <sd-accordion open summary="Open"><p>This text is immediately visible.</p></sd-accordion>
+      <sd-accordion summary="Closed"><p>This text is not immediately visible.</p></sd-accordion>
     </div>
   `
 };
@@ -67,17 +63,15 @@ export const Open = {
 export const Summary = {
   name: 'Summary',
   render: () => html`
-    <div class="grid grid-cols-2 gap-12">
-      <sd-accordion summary="Default"
-        ><div class="slot slot--border slot--background slot--text h-16">Default slot</div></sd-accordion
-      >
-
-      <sd-accordion>
-        <div slot="summary">
-          <h4>I don't have a telephone number with a German area code. Can I still register?</h4>
-        </div>
-        <div class="slot slot--border slot--background slot--text h-16">Default slot</div>
-      </sd-accordion>
-    </div>
+    <sd-accordion>
+      <div slot="summary">
+        <h4>Shareholder structure</h4>
+      </div>
+      <p>
+        Union Investment is the dedicated asset manager within the German cooperative financial network. All
+        shareholders are also part of the network, which ensures a stable and long-term ownership structure. This allows
+        us to maintain a sustainable business model and develop strong, long-term client relationships.
+      </p>
+    </sd-accordion>
   `
 };
