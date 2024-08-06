@@ -21,12 +21,7 @@ export default {
         <sd-carousel-item><div class="slot slot--border slot--text h-16">Default slot 2</div></sd-carousel-item>
         <sd-carousel-item><div class="slot slot--border slot--text h-16">Default slot 3</div></sd-carousel-item>
         <sd-carousel-item><div class="slot slot--border slot--text h-16">Default slot 4</div></sd-carousel-item>
-        <sd-carousel-item><div class="slot slot--border slot--text h-16">Default slot 5</div></sd-carousel-item>
-        <sd-carousel-item><div class="slot slot--border slot--text h-16">Default slot 6</div></sd-carousel-item>
-        <sd-carousel-item><div class="slot slot--border slot--text h-16">Default slot 7</div></sd-carousel-item>
-        <sd-carousel-item><div class="slot slot--border slot--text h-16">Default slot 8</div></sd-carousel-item>
-        <sd-carousel-item><div class="slot slot--border slot--text h-16">Default slot 9</div></sd-carousel-item>
-        <sd-carousel-item><div class="slot slot--border slot--text h-16">Default slot 10</div></sd-carousel-item>`
+        <sd-carousel-item><div class="slot slot--border slot--text h-16">Default slot 5</div></sd-carousel-item>`
     }
   ]),
   argTypes,
