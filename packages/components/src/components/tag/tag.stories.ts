@@ -98,7 +98,9 @@ export const Disabled = {
 /**
  * Use the `href` attribute to render the tag as a link. By default a tag is rendered as a button.
  *
- * The `target` attribute can be used to specify where to open the link.
+ * Use the `target` attribute can to specify where to open the link.
+ *
+ * Use the `download` attribute to tell the browser to download the linked file as this filename.
  */
 
 export const AsLink = {
@@ -109,19 +111,7 @@ export const AsLink = {
         href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/?path=/docs/docs-general-introduction--docs"
         >Link</sd-tag
       ><sd-tag href="https://union-investment.com" target="_blank">New Window</sd-tag
-      ><sd-tag href="./placeholders/src/images/collaboration.jpg" download>Download</sd-tag>
-    </div>
-  `
-};
-
-/**
- * Use the `download` attribute to tell the browser to download the linked file as this filename. Only used when href is present.
- */
-
-export const Download = {
-  render: () => html`
-    <div class="flex gap-12">
-      <sd-tag href="./placeholders/src/images/collaboration.jpg" download>Download</sd-tag>
+      ><sd-tag href="./placeholders/images/coffeeshop.jpg" download="">Download</sd-tag>
     </div>
   `
 };
