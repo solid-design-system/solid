@@ -1,12 +1,18 @@
 import '../../solid-components';
+import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
 const { argTypes, parameters } = storybookDefaults('sd-radio');
 const { generateTemplate } = storybookTemplate('sd-radio');
 const { overrideArgs } = storybookHelpers('sd-radio');
 
+/**
+ * Allows the user to select a single option from a group.
+ */
+
 export default {
   title: 'Components/sd-radio',
+  tags: ['!dev'],
   component: 'sd-radio',
   args: overrideArgs([{ type: 'slot', name: 'default', value: 'Default Slot' }]),
   argTypes,
@@ -18,35 +24,9 @@ export default {
  */
 
 export const Default = {
+  name: 'Default',
   render: (args: any) => {
     return generateTemplate({ args });
-  }
-};
-
-/**
- * Use the disabled attribute to disable a input radio. Clicks will be suppressed until the disabled state is removed
- */
-
-export const DisabledAndSize = {
-  name: 'Disabled × Size',
-  parameters: { controls: { exclude: ['disabled', 'size', 'default'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        x: {
-          type: 'attribute',
-          name: 'disabled',
-          values: [false, true]
-        },
-        y: {
-          type: 'attribute',
-          name: 'size',
-          values: ['lg', 'sm']
-        }
-      },
-      constants: { type: 'attribute', name: 'disabled', value: true },
-      args
-    });
   }
 };
 
@@ -55,15 +35,13 @@ export const DisabledAndSize = {
  */
 
 export const Size = {
-  parameters: { controls: { exclude: ['size'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        x: { type: 'attribute', name: 'size' }
-      },
-      args
-    });
-  }
+  name: 'Size',
+  render: () => html`
+    <div class="flex gap-12">
+      <sd-radio value="1" size="lg">Large</sd-radio>
+      <sd-radio value="2" size="sm">Small</sd-radio>
+    </div>
+  `
 };
 
 /**
@@ -71,53 +49,23 @@ export const Size = {
  */
 
 export const Invalid = {
-  parameters: { controls: { exclude: ['invalid'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: [
-          { type: 'attribute', name: 'size' },
-          { type: 'attribute', name: 'disabled' }
-        ]
-      },
-      constants: { type: 'attribute', name: 'invalid', value: true },
-      args
-    });
-  }
+  name: 'Invalid',
+  render: () => html`
+    <div class="flex gap-12">
+      <sd-radio value="1" invalid>Invalid</sd-radio>
+    </div>
+  `
 };
 
 /**
- * Use the `base`, `control--unchecked`, `control--checked`, `checked` and `label` part selectors to customize the radio.
+ * Use the `disabled` attribute to disable a input radio.
  */
-export const Parts = {
-  parameters: {
-    controls: { exclude: ['base', 'control--unchecked', 'control--checked', 'checked', 'label'] }
-  },
-  render: (args: any) => {
-    return generateTemplate({
-      constants: { type: 'attribute', name: 'value', value: '1' },
-      axis: {
-        y: {
-          type: 'template',
-          name: 'sd-radio::part(...){outline: solid 2px red}',
-          values: ['base', 'control--unchecked', 'control--checked', 'checked', 'label'].map(part => {
-            return {
-              title: part,
-              value: `
-                <style>#part-${part} sd-radio::part(${part}){outline: solid 2px red}</style>
-                <div id="part-${part}">
-                ${
-                  !part.includes('unchecked')
-                    ? '<sd-radio-group value="1">%TEMPLATE%</sd-radio-group>'
-                    : '<sd-radio-group>%TEMPLATE%</sd-radio-group>'
-                }
-                </div>
-              `
-            };
-          })
-        }
-      },
-      args
-    });
-  }
+
+export const Disabled = {
+  name: 'Disabled',
+  render: () => html`
+    <div class="flex gap-12">
+      <sd-radio value="1" disabled>Disabled</sd-radio>
+    </div>
+  `
 };
