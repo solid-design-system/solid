@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v3.11.1](https://github.com/solid-design-system/solid/compare/components/3.11.0...components/3.11.1) (2024-08-05)
+
+
+### Bug Fixes
+
+* pass empty download attr to "a" tag in sd-link ([#1234](https://github.com/solid-design-system/solid/issues/1234)) ([0ec5939](https://github.com/solid-design-system/solid/commit/0ec5939d744ef784d5d5d7e8908092d026d62576))
+
+### 📈 Stats
+* Bundle size (uncompressed): 329 KB (unchanged)
+* Bundle size (gzipped): 78 KB (unchanged)
+
 # [@solid-design-system/components-v3.11.0](https://github.com/solid-design-system/solid/compare/components/3.10.3...components/3.11.0) (2024-08-02)
 
 
