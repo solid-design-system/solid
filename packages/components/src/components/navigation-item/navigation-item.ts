@@ -204,7 +204,8 @@ export default class SdNavigationItem extends SolidElement {
               this.separated
                 ? html`<a
                     class=${cx(
-                      'w-full inline-flex items-center px-4 cursor-pointer relative focus-visible:focus-outline hover:bg-neutral-200 group transition-all min-h-[48px]'
+                      'w-full inline-flex items-center px-4 cursor-pointer relative focus-visible:focus-outline hover:bg-neutral-200 group transition-all min-h-[48px]',
+                      !slots['description'] && 'py-4'
                     )}
                     href=${ifDefined(isLink ? this.href : undefined)}
                     target=${ifDefined(isLink ? this.target : undefined)}
