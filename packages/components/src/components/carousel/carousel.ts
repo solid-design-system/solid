@@ -511,7 +511,7 @@ export default class SdCarousel extends SolidElement {
                     aria-controls="scroll-container"
                   >
                     ${map(range(pagesCount), index => {
-                      const isActive = index === currentPage;
+                      const isActive = index + 1 === currentPage;
                       return html`
                         <button
                           part="pagination-item ${isActive ? 'pagination-item--active' : ''}"
@@ -549,7 +549,7 @@ export default class SdCarousel extends SolidElement {
                   <span
                     part="pagination-item"
                     class=${cx('w-5 text-center border-b-2 border-accent', this.inverted ? 'text-white' : 'text-black')}
-                    >${currentPage + 1}</span
+                    >${currentPage}</span
                   >
                   <span
                     part="pagination-divider"
