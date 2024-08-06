@@ -76,7 +76,7 @@ export const Standalone = {
   name: 'Standalone',
   render: () => html`
     <div class="flex gap-12">
-      <div class="prose">
+      <div class="sd-prose">
         <ul>
           <li>
             <sd-link href="http://union-investment.com" standalone>
@@ -116,9 +116,11 @@ export const Disabled = {
 };
 
 /**
- * Use the `href` attribute to render the link.
+ * Use the `href` attribute to enable the link.
  *
- * The `target` attribute can be used to specify where to open the link.
+ * Use the `target` attribute to specify where to open the link.
+ *
+ * Use the `download` attribute to tell the browser to download the linked file as this filename.
  */
 
 export const AsLink = {
