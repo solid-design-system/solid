@@ -54,7 +54,10 @@ export const Slots = {
         </div>
 
         <div class="px-8 py-4">
-          <sd-tag removable>Tag</sd-tag>
+          <sd-tag removable>
+            <div slot="removable-indicator" class="slot slot--background h-4 w-4 bg-error"></div>
+            Tag
+          </sd-tag>
         </div>
       </div>
 
@@ -76,7 +79,10 @@ export const Slots = {
         </div>
 
         <div class="px-8 py-4">
-          <sd-tag selected removable>Tag</sd-tag>
+          <sd-tag selected removable>
+            <div slot="removable-indicator" class="slot h-4 w-4 bg-error"></div>
+            Tag
+          </sd-tag>
         </div>
       </div> `
 };
