@@ -7,11 +7,12 @@ const { overrideArgs } = storybookHelpers('sd-container');
 const { generateTemplate } = storybookTemplate('sd-container');
 
 /**
- * Container lets users delimit and highlight a piece of content. The user has no interaction with it, it is merely a visual element that influences the flow of the page.
+ * Allows users delimit and highlight a piece of content. The user has no interaction with it, it is merely a visual element that influences the flow of the page.
  */
 
 export default {
   title: 'Styles/sd-container',
+  tags: ['!dev'],
   component: 'sd-container',
   parameters: {
     ...parameters,
@@ -38,10 +39,6 @@ export default {
   ]
 };
 
-/**
- * Default: This shows sd-container in its default state.
- */
-
 export const Default = {
   render: (args: any) => {
     return generateTemplate({
@@ -52,67 +49,49 @@ export const Default = {
 };
 
 /**
- * Use the 5 color variants for alternate container experiences.
+ * Offers 5 color variants for alternate experiences:
+ *- `neutral-100 `
+ *- `primary-100`
+ *- `primary-500`
+ *- `border-neutral-400`
+ *- `white`
  */
 
 export const Variants = {
-  parameters: {
-    controls: {
-      exclude: ['sd-container--variant-...']
-    }
-  },
-  render: (args: any) => {
-    return html` ${generateTemplate({
-      axis: {
-        y: [
-          {
-            type: 'attribute',
-            name: 'sd-container--variant',
-            values: [
-              'default',
-              'sd-container--variant-primary-100',
-              'sd-container--variant-primary',
-              'sd-container--variant-border-neutral-400',
-              'sd-container--variant-white'
-            ]
-          }
-        ]
-      },
-      options: {
-        templateBackgrounds: {
-          alternate: 'y',
-          colors: ['tranparent', 'tranparent', 'tranparent', 'transparent', 'rgb(var(--sd-color-primary, 0 53 142))']
-        }
-      },
-      args
-    })}`;
-  }
+  name: 'Variants',
+  render: () =>
+    html`<div class="grid grid-cols-2 gap-4">
+      <div class="sd-container default">
+        <div class="slot slot--border slot--text h-12">Default slot</div>
+      </div>
+
+      <div class="sd-container sd-container--variant-primary-100">
+        <div class="slot slot--border slot--text h-12">Default slot</div>
+      </div>
+
+      <div class="sd-container sd-container--variant-primary">
+        <div class="slot slot--border slot--text h-12">Default slot</div>
+      </div>
+
+      <div class="sd-container sd-container--variant-border-neutral-400">
+        <div class="slot slot--border slot--text h-12">Default slot</div>
+      </div>
+
+      <div class="sd-container sd-container--variant-white">
+        <div class="slot slot--border slot--text h-12">Default slot</div>
+      </div>
+    </div>`
 };
 
 /**
- * Use the `--padding-sm` class to adapt the container to smaller component widths.
+ * Use the `padding-sm` class to adapt the container to smaller component widths.
  */
 
 export const Padding = {
-  parameters: {
-    controls: {
-      exclude: ['sd-container--padding-...']
-    }
-  },
-  render: (args: any) => {
-    return html` ${generateTemplate({
-      axis: {
-        y: [
-          {
-            type: 'attribute',
-            name: 'sd-container--padding',
-            values: ['default', 'sd-container--padding-sm']
-          }
-        ]
-      },
-      args
-    })}`;
-  }
+  render: () =>
+    html`<div class="sd-container sd-container--padding-sm">
+      <div class="slot slot--border slot--text h-12">Default slot</div>
+    </div>`
 };
 
 /**
@@ -120,50 +99,39 @@ export const Padding = {
  */
 
 export const CustomPadding = {
-  parameters: {
-    controls: {
-      exclude: ['sd-container--padding-...']
-    }
-  },
-
-  render: (args: any) => {
-    return generateTemplate({
-      options: { templateContent: '<div class="%CLASSES%" style="padding:4rem;">%SLOT%</div>' },
-      args
-    });
-  }
+  render: () =>
+    html`<div class="sd-container" style="padding:4rem;">
+      <div class="slot slot--border slot--text h-12">Default slot</div>
+    </div>`
 };
 
 /**
- * You can add a triangle indentation to the container using the `--triangle-` class appended with one of the following positions 'top', 'right', 'bottom', 'left' (e.g. `sd-container--triangle-top`).
+ * You can add a triangle indentation to the container using the `triangle-class` appended with one of the following positions 'top', 'right', 'bottom', 'left' (e.g. sd-container--triangle-top).
+ *
+ * - A triangle can be shown to draw attention.
+ * - Triangle position can be `top`, `bottom`, `left` or `right`.
+ * - Default background option is white and can be overridden if desired.
  */
 
 export const TrianglePosition = {
-  parameters: {
-    controls: {
-      exclude: ['sd-container--triangle-...', 'sd-container--variant-...']
-    }
-  },
-  render: (args: any) => {
-    return html` ${generateTemplate({
-      constants: [{ type: 'attribute', name: 'sd-container--variant-...', value: 'primary' }],
-      axis: {
-        y: [
-          {
-            type: 'attribute',
-            name: 'sd-container--triangle',
-            values: [
-              'sd-container--triangle-top',
-              'sd-container--triangle-right',
-              'sd-container--triangle-bottom',
-              'sd-container--triangle-left'
-            ]
-          }
-        ]
-      },
-      args
-    })}`;
-  }
+  render: () =>
+    html`<div class="grid grid-cols-2 gap-4">
+      <div class="sd-container sd-container--variant-primary sd-container--triangle-top">
+        <div class="slot slot--border slot--text h-12">Default slot</div>
+      </div>
+
+      <div class="sd-container sd-container--variant-primary sd-container--triangle-right">
+        <div class="slot slot--border slot--text h-12">Default slot</div>
+      </div>
+
+      <div class="sd-container sd-container--variant-primary sd-container--triangle-bottom">
+        <div class="slot slot--border slot--text h-12">Default slot</div>
+      </div>
+
+      <div class="sd-container sd-container--variant-primary sd-container--triangle-left">
+        <div class="slot slot--border slot--text h-12">Default slot</div>
+      </div>
+    </div>`
 };
 
 /**
@@ -171,59 +139,22 @@ export const TrianglePosition = {
  */
 
 export const TriangleBorder = {
-  parameters: {
-    controls: {
-      exclude: ['sd-container--variant-...', 'sd-container--triangle-...']
-    }
-  },
-  render: (args: any) => {
-    return html` ${generateTemplate({
-      constants: [{ type: 'attribute', name: 'sd-container--variant-...', value: 'border-neutral-400' }],
-      axis: {
-        y: [
-          {
-            type: 'attribute',
-            name: 'sd-container--triangle',
-            values: [
-              'sd-container--triangle-top-border',
-              'sd-container--triangle-right-border',
-              'sd-container--triangle-bottom-border',
-              'sd-container--triangle-left-border'
-            ]
-          }
-        ]
-      },
-      args
-    })}`;
-  }
-};
-
-/**
- * You can set the color of the triangle cut-out using the `--triangle-background` CSS property. CSS variables can be set either with an inline style: `style="--triangle-background: rgb(var(--sd-color-primary-600, 0 53 142) / 1);"` or a custom class:
- * `.custom-sd-container {
-    --triangle-background: rgb(var(--sd-color-primary-600, 0 53 142) / 1);
-  }`
- */
-
-export const TriangleColor = {
-  name: 'Sample: Triangle Color',
-  parameters: {
-    controls: {
-      exclude: ['sd-container--variant-...', 'sd-container--triangle-...']
-    }
-  },
-  render: (args: any) => {
-    const { 'sd-container--padding-...-attr': paddingAttr } = args;
-
-    return html`
-      <div class="bg-primary p-4">
-        <div
-          class=${`sd-container sd-container--variant-white sd-container--triangle-top sd-container--padding-${paddingAttr}`}
-          style="--triangle-background: rgb(var(--sd-color-primary-600, 0 53 142) / 1);"
-        >
-          <div class="slot slot--border slot--text h-12">Default slot</div>
-        </div>
+  render: () =>
+    html`<div class="grid grid-cols-2 gap-4">
+      <div class="sd-container sd-container--variant-border-neutral-400 sd-container--triangle-top-border">
+        <div class="slot slot--border slot--text h-12">Default slot</div>
       </div>
-    `;
-  }
+
+      <div class="sd-container sd-container--variant-border-neutral-400 sd-container--triangle-right-border">
+        <div class="slot slot--border slot--text h-12">Default slot</div>
+      </div>
+
+      <div class="sd-container sd-container--variant-border-neutral-400 sd-container--triangle-bottom-border">
+        <div class="slot slot--border slot--text h-12">Default slot</div>
+      </div>
+
+      <div class="sd-container sd-container--variant-border-neutral-400 sd-container--triangle-left-border">
+        <div class="slot slot--border slot--text h-12">Default slot</div>
+      </div>
+    </div>`
 };
