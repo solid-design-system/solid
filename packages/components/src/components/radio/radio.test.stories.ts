@@ -32,7 +32,7 @@ export const Default = {
 };
 
 /**
- * Use the disabled attribute to disable a input radio. Clicks will be suppressed until the disabled state is removed
+ * Use the size attribute to set the input radio desired size and the disabled attribute to disable the element. Clicks will be suppressed until the disabled state is removed
  */
 
 export const DisabledAndSize = {
