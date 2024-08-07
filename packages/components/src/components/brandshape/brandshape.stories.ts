@@ -12,6 +12,8 @@ const { generateTemplate } = storybookTemplate('sd-brandshape');
  *
  * Creates a container with brand character and visually emphasizes the content.
  *
+ *  * **Related templates**:
+ * - [Brand](?path=/docs/templates)
  */
 
 export default {
@@ -61,37 +63,37 @@ export const Variant = {
   render: () => html`
     <div class="mb-5">
       <sd-brandshape variant="primary">
-        <p class="sd-headline sd-headline--lg text-white">Primary Variant Example</p>
+        <p class="sd-headline sd-headline--lg text-white">Primary Variant</p>
       </sd-brandshape>
     </div>
 
     <div class="mb-5">
       <sd-brandshape variant="neutral-100">
-        <p class="sd-headline sd-headline--lg">Neutral-100 Variant Example</p>
+        <p class="sd-headline sd-headline--lg">Neutral-100 Variant</p>
       </sd-brandshape>
     </div>
 
     <div class="bg-primary">
       <sd-brandshape variant="white">
-        <p class="sd-headline sd-headline--lg">White Variant Example</p>
+        <p class="sd-headline sd-headline--lg">White Variant</p>
       </sd-brandshape>
     </div>
 
     <div>
       <sd-brandshape variant="border-primary">
-        <p class="sd-headline sd-headline--lg">Border Primary Variant Example</p>
+        <p class="sd-headline sd-headline--lg">Border Primary Variant</p>
       </sd-brandshape>
     </div>
 
     <div class="bg-primary">
       <sd-brandshape variant="border-white">
-        <p class="sd-headline sd-headline--lg text-white">Border White Variant Example</p>
+        <p class="sd-headline sd-headline--lg text-white">Border White Variant</p>
       </sd-brandshape>
     </div>
 
     <div>
       <sd-brandshape variant="image">
-        <p class="sd-headline sd-headline--lg">Image Variant Example</p>
+        <p class="sd-headline sd-headline--lg">Image Variant</p>
         <img slot="image" style="transform:translateY(-30%);" src="./placeholders/images/generic.jpg" alt="Generic" />
       </sd-brandshape>
     </div>
@@ -106,25 +108,25 @@ export const Shapes = {
   render: () => html`
     <div class="mb-5">
       <sd-brandshape shapes='["top", "middle", "bottom"]'>
-        <p class="text-white">All Shapes Example</p>
+        <p class="text-white">All Shapes</p>
       </sd-brandshape>
     </div>
 
     <div class="mb-5">
       <sd-brandshape shapes='["top"]'>
-        <p class="text-white">Top Shape Example</p>
+        <p class="text-white">Top Shape</p>
       </sd-brandshape>
     </div>
 
     <div class="mb-5">
       <sd-brandshape shapes='["top", "middle"]'>
-        <p class="text-white">Top and Middle Shape Example</p>
+        <p class="text-white">Top and Middle Shape</p>
       </sd-brandshape>
     </div>
 
     <div class="mb-5">
       <sd-brandshape shapes='["middle", "bottom"]'>
-        <p class="text-white">Middle and Bottom Shape Example</p>
+        <p class="text-white">Middle and Bottom Shape</p>
       </sd-brandshape>
     </div>
   `
