@@ -13,6 +13,9 @@ const { generateTemplate } = storybookTemplate('sd-accordion-group');
  *  **Related templates**:
  * - [Accordion Group](?path=/docs/templates-accordion-group--docs)
  *
+ *  **Related components**:
+ * - [sd-accordion](?path=/docs/components-sd-accordion--docs)
+ *
  */
 
 export default {
@@ -42,11 +45,11 @@ export const Default = {
 };
 
 /**
- * Use 'close-others' attribute to only have one accordion open at a time.
+ * Use the 'close-others' attribute to only have one accordion open at a time.
  */
 
 export const CloseOthers = {
-  name: 'One accordion open at a time',
+  name: 'Close Others',
   render: () => html`
     <sd-accordion-group close-others>
       <sd-accordion summary="Accordion 1">
