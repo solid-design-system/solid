@@ -28,10 +28,6 @@ export default {
   parameters: { ...parameters }
 };
 
-/**
- * Accordion shows a brief summary and expands to show additional content.
- */
-
 export const Default = {
   name: 'Default',
   render: (args: any) => {
