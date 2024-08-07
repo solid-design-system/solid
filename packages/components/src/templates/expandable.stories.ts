@@ -15,7 +15,7 @@ export default {
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',
-      url: '#'
+      url: 'https://www.figma.com/design/owNwnmTLTH7rDD4kOyGJK9/Expandable?node-id=0-1&t=8M0kKNRUhCykqrGj-0'
     }
   }
 };

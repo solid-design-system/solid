@@ -19,6 +19,9 @@ export default {
 
 /**
  * Expandable shows a brief summary and expands to show additional content.
+ *
+ *  **Related templates**:
+ * - [Expandable](?path=/docs/templates-expandable--docs)
  */
 export const Default = {
   name: 'Default',
