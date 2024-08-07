@@ -65,7 +65,7 @@ export const Standalone = {
         </ul>
 
         <p>
-          While the list above shows <code>standalone</code> links, we now will link to the
+          While the list above shows standalone links, we now will link to the
           <sd-link href="https://cd.union-investment.de">CD Toolbox</sd-link> inside a paragraph.
         </p>
       </div>
@@ -74,7 +74,7 @@ export const Standalone = {
 };
 
 /**
- * Use the `size` attribute to adjust the size of the link. By default it is set to `inherit` to adapt to the surrounding text but can be explicitly changed to `lg` or `sm`.
+ * Use the `size` attribute to adjust the size of the link. By default it is set to `inherit` to adapt to the surrounding text but can be changed to `lg` or `sm`.
  */
 
 export const Size = {
