@@ -8,8 +8,10 @@ const { overrideArgs } = storybookHelpers('sd-tag');
 
 /**
  *
- *  Tags are used to categorize or label content. They can be used to filter or search for content.
+ *  Used to categorize or label content. Can also be used to filter or search for content.
  *
+ *  **Related templates**:
+ * - [Tags](?path=/docs/templates-tags--docs)
  */
 
 export default {
