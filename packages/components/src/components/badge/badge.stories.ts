@@ -44,6 +44,24 @@ export const Default = {
 };
 
 /**
+ * Use the `variant` attribute to set the badge’s variant.
+ *
+ * - `default`: Utilized for standard emphasis.
+ * - `success` and `error`: Alternative color options like green or red are employed to highlight specific notifications, without implying any semantic meaning.
+ */
+
+export const Variant = {
+  name: 'Variant',
+  render: () => html`
+    <div class="flex gap-12">
+      <sd-badge variant="default">8</sd-badge>
+      <sd-badge variant="success">8</sd-badge>
+      <sd-badge variant="error">8</sd-badge>
+    </div>
+  `
+};
+
+/**
  * Use the `size` attribute to set the badge’s size.
  */
 
@@ -59,24 +77,6 @@ export const Size = {
 };
 
 /**
- * Use the `variant` attribute to set the badge’s variant.
- *
- * - `default`: Use the default variant for standard notifications.
- * - `success` and `error`: Alternative color options such as green or red are used to draw more attention to specific notifications.
- */
-
-export const Variant = {
-  name: 'Variant',
-  render: () => html`
-    <div class="flex gap-12">
-      <sd-badge variant="default">8</sd-badge>
-      <sd-badge variant="success">8</sd-badge>
-      <sd-badge variant="error">8</sd-badge>
-    </div>
-  `
-};
-
-/**
  * Use the `inverted` attribute when displayed on primary background.
  */
 
@@ -87,6 +87,24 @@ export const Inverted = {
       <sd-badge inverted>8</sd-badge>
       <sd-badge variant="success" inverted>8</sd-badge>
       <sd-badge variant="error" inverted>8</sd-badge>
+    </div>
+  `
+};
+
+/**
+ * The max value is defined by the application.
+ *
+ * A `+` should be used to show overflow.
+ */
+
+export const Overflow = {
+  name: 'Overflow',
+  render: () => html`
+    <div class="flex gap-12 p-4">
+      <sd-badge>99</sd-badge>
+      <sd-badge>99+</sd-badge>
+      <sd-badge>999</sd-badge>
+      <sd-badge>999+</sd-badge>
     </div>
   `
 };
