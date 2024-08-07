@@ -45,7 +45,7 @@ export const Default = {
 };
 
 /**
- * Use the 'close-others' attribute to only have one accordion open at a time.
+ * Use the 'close-others' attribute to only display one accordion open at a time.
  */
 
 export const CloseOthers = {
