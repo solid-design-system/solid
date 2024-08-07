@@ -9,7 +9,7 @@ const { generateTemplate } = storybookTemplate('sd-accordion');
 
 /**
  *
- * Accordions show a brief summary and expand to display additional content.
+ * Shows a brief summary and expands to display additional content.
  *
  *  **Related templates**:
  * - [Accordion Group](?path=/docs/templates-accordion-group--docs)
@@ -57,7 +57,7 @@ export const Open = {
 /**
  * Use `summary` to provide the text in the accordion header.
  *
- * __Hint:__ The `summary` slot allows you to use custom html in the summary.
+ * __Hint:__ The `summary` slot allows you to use custom html.
  */
 
 export const Summary = {
