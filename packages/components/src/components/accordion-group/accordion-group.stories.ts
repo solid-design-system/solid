@@ -13,6 +13,7 @@ const { generateTemplate } = storybookTemplate('sd-accordion-group');
  *  **Related templates**:
  * - [Accordion Group](?path=/docs/templates-accordion-group--docs)
  *
+ *
  *  **Related components**:
  * - [sd-accordion](?path=/docs/components-sd-accordion--docs)
  *
