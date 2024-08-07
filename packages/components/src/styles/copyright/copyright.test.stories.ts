@@ -1,16 +1,15 @@
 import '../../solid-components';
-import { html } from 'lit-html';
-import { storybookDefaults, storybookHelpers } from '../../../scripts/storybook/helper';
+import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
 const { argTypes, parameters } = storybookDefaults('sd-copyright');
 const { overrideArgs } = storybookHelpers('sd-copyright');
+const { generateTemplate } = storybookTemplate('sd-copyright');
 
 /**
  * Add a copyright at the bottom of a image.
  */
 export default {
-  title: 'Styles/sd-copyright',
-  tags: ['!dev'],
+  title: 'Styles/sd-copyright/Screenshot Test',
   component: 'sd-copyright',
   parameters: {
     ...parameters
@@ -29,9 +28,17 @@ export default {
 };
 
 export const Default = {
-  name: 'Default',
-  render: () =>
-    html`<div class="sd-copyright max-w-xl" style="--copyright: '© 2024 Solid Design System';">
-      <img src="./placeholders/images/generic.jpg" alt="A generic placeholder jpg" class="aspect-video object-cover" />
-    </div>`
+  parameters: {
+    controls: {
+      disable: true
+    }
+  },
+  render: (args: { [k: string]: any }) => {
+    return generateTemplate({
+      options: {
+        templateContent: `<div class="%CLASSES% max-w-xl" style="--copyright: '${args['--copyright']}';">%SLOT%</div>`
+      },
+      args
+    });
+  }
 };
