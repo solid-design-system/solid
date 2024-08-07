@@ -28,19 +28,11 @@ export default {
   decorators: [withActions] as any
 };
 
-/**
- * Default: This shows sd-link in its default state.
- */
-
 export const Default = {
   render: (args: any) => {
     return generateTemplate({ args });
   }
 };
-
-/**
- * Unset `href` to make the link disabled.
- */
 
 export const InvertedAndDisabled = {
   name: 'Disabled × Inverted',
@@ -66,10 +58,6 @@ export const InvertedAndDisabled = {
     })
 };
 
-/**
- * You can make links bold by setting `<b>` tags around the text in the main slot.
- */
-
 export const BoldInMainSlot = {
   name: 'Bold',
   parameters: { controls: { exclude: ['default'] } },
@@ -89,10 +77,6 @@ export const BoldInMainSlot = {
       }
     })
 };
-
-/**
- * Use the `icon-left` and `icon-right` slots to add icons. They automatically adapt the size.
- */
 
 export const SizeAndIconSlots = {
   name: 'Size × Icon Slots',
@@ -130,10 +114,6 @@ export const SizeAndIconSlots = {
   }
 };
 
-/**
- * Icons automatically adapt to the link's invertedness.
- */
-
 export const InvertedAndIconSlots = {
   name: 'Inverted × Icon Slots',
   parameters: { controls: { exclude: ['inverted', 'default', 'icon-left', 'icon-right'] } },
@@ -169,12 +149,6 @@ export const InvertedAndIconSlots = {
       }
     })
 };
-
-/**
- * This `standalone` attribute controls the layout of the icon and text within the component.
- * - If true, the icon and text will be displayed side by side, each occupying its own column.
- * - If false or not provided, the icon will be displayed inline within the text.
- */
 
 export const StandaloneAndIconSlots = {
   name: 'Standalone × Icon Slots',
@@ -228,10 +202,6 @@ export const StandaloneAndIconSlots = {
   }
 };
 
-/**
- * Use the part selector to align the icon within the component.
- */
-
 export const IconAlignment = {
   parameters: {
     controls: { exclude: ['icon-right', 'default', 'standalone', 'base'] }
@@ -277,10 +247,6 @@ export const IconAlignment = {
   }
 };
 
-/**
- * Use the `base`, `label`, `icon-left` and `icon-right` part selectors to customize the button.
- */
-
 export const Parts = {
   parameters: {
     controls: { exclude: ['base', 'label', 'icon-left', 'icon-right'] }
@@ -315,10 +281,6 @@ export const Parts = {
     });
   }
 };
-
-/**
- * sd-links are fully accessibile via keyboard.
- */
 
 export const Mouseless = {
   render: (args: any) => {

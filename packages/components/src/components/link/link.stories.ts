@@ -10,7 +10,7 @@ const { overrideArgs } = storybookHelpers('sd-link');
 
 /**
  *
- * This component is used to display links and can also be used to perform actions like downloading files.
+ * Allows users to navigate to another location or perform actions like e.g. downloading files.
  *
  *  **Related templates**:
  * - [Link List](?path=/docs/templates-link-list--docs)
@@ -36,34 +36,6 @@ export const Default = {
   render: (args: any) => {
     return generateTemplate({ args });
   }
-};
-
-/**
- * Use the `size` attribute to adjust the size of the link. By default it is set to `inherit` to adapt to the surrounding text but can be explicitly changed to `lg` or `sm`.
- */
-
-export const Size = {
-  name: 'Size',
-  render: () => html`
-    <div class="flex gap-12">
-      <sd-link href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/">Inherit</sd-link>
-      <sd-link href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/" size="lg">Large</sd-link>
-      <sd-link href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/" size="sm">Small</sd-link>
-    </div>
-  `
-};
-
-/**
- * Use the `inverted` attribute when displayed on primary background.
- */
-
-export const Inverted = {
-  name: 'Inverted',
-  render: () => html`
-    <div class="flex gap-12 bg-primary p-4">
-      <sd-link href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/" inverted>Inverted</sd-link>
-    </div>
-  `
 };
 
 /**
@@ -97,6 +69,34 @@ export const Standalone = {
           <sd-link href="https://cd.union-investment.de">CD Toolbox</sd-link> inside a paragraph.
         </p>
       </div>
+    </div>
+  `
+};
+
+/**
+ * Use the `size` attribute to adjust the size of the link. By default it is set to `inherit` to adapt to the surrounding text but can be explicitly changed to `lg` or `sm`.
+ */
+
+export const Size = {
+  name: 'Size',
+  render: () => html`
+    <div class="flex gap-12">
+      <sd-link href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/">Inherit</sd-link>
+      <sd-link href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/" size="lg">Large</sd-link>
+      <sd-link href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/" size="sm">Small</sd-link>
+    </div>
+  `
+};
+
+/**
+ * Use the `inverted` attribute when displayed on primary background.
+ */
+
+export const Inverted = {
+  name: 'Inverted',
+  render: () => html`
+    <div class="flex gap-12 bg-primary p-4">
+      <sd-link href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/" inverted>Inverted</sd-link>
     </div>
   `
 };
@@ -137,20 +137,20 @@ export const AsLink = {
 };
 
 /**
- * Use the `icon-left` and `icon-right` slots to add icons to each side of the link. They automatically adapt the size.
+ * Use the icon-left and icon-right slots to add system icons to each side of the link. They automatically adapt the size.
  */
 
-export const SlottedIcons = {
-  name: 'Slotted Icons',
+export const Icon = {
+  name: 'Icon',
   render: () => html`
     <div class="flex gap-12">
       <sd-link href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/" standalone>
         <sd-icon library="global-resources" name="system/picture" slot="icon-left"></sd-icon>
-        Slotted Icon Left
+        Icon Left
       </sd-link>
 
       <sd-link href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/" standalone>
-        Slotted Icon Right
+        Icon Right
         <sd-icon library="global-resources" name="system/picture" slot="icon-right"></sd-icon>
       </sd-link>
     </div>
