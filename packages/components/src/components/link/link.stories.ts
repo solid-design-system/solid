@@ -109,7 +109,6 @@ export const Disabled = {
   name: 'Disabled',
   render: () => html`
     <div class="flex gap-12">
-      <sd-link href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/">Enabled</sd-link>
       <sd-link>Disabled</sd-link>
     </div>
   `
