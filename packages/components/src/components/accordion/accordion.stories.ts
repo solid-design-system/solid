@@ -14,6 +14,9 @@ const { generateTemplate } = storybookTemplate('sd-accordion');
  *  **Related templates**:
  * - [Accordion Group](?path=/docs/templates-accordion-group--docs)
  *
+ *  **Related components**:
+ * - [sd-accordion-group](?path=/docs/components-sd-accordion-group--docs)
+ *
  */
 
 export default {
