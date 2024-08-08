@@ -54,8 +54,15 @@ export const Slots = {
         </div>
 
         <div class="px-8 py-4">
-          <sd-tag removable>
-            <div slot="removable-indicator" class="slot slot--background h-4 w-4 bg-error"></div>
+          <sd-tag size="lg">
+            <div class="h-4 w-4 bg-risk-veryhigh border-primary-800 border-[1px]"></div>
+            Tag
+          </sd-tag>
+        </div>
+
+        <div class="px-8 py-4">
+          <sd-tag size="sm">
+            <div class="h-3 w-3 bg-risk-veryhigh border-primary-800 border-[1px]"></div>
             Tag
           </sd-tag>
         </div>
@@ -79,8 +86,15 @@ export const Slots = {
         </div>
 
         <div class="px-8 py-4">
-          <sd-tag selected removable>
-            <div slot="removable-indicator" class="slot h-4 w-4 bg-error"></div>
+          <sd-tag selected>
+            <div class="h-4 w-4 bg-risk-veryhigh border-white border-[1px]"></div>
+            Tag
+          </sd-tag>
+        </div>
+
+        <div class="px-8 py-4">
+          <sd-tag selected size="sm">
+            <div class="h-3 w-3 bg-risk-veryhigh border-white border-[1px]"></div>
             Tag
           </sd-tag>
         </div>
