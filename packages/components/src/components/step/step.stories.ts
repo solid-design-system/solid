@@ -1,8 +1,17 @@
 import '../../solid-components';
 import { html } from 'lit-html';
+import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
+import { withActions } from '@storybook/addon-actions/decorator';
+
+const { argTypes, parameters } = storybookDefaults('sd-step');
+const { overrideArgs } = storybookHelpers('sd-step');
+const { generateTemplate } = storybookTemplate('sd-step');
 
 /**
  * Used to determine a step in a process or task.
+ *
+ * **Related templates:**
+ * - [sd-step-group](?path=/docs/templates-sd-step-group--docs)
  *
  * **Related components:**
  * - [sd-step-group](?path=/docs/components-sd-step-group--docs)
@@ -10,7 +19,17 @@ import { html } from 'lit-html';
 export default {
   title: 'Components/sd-step',
   tags: ['!dev'],
-  component: 'sd-step'
+  component: 'sd-step',
+  args: overrideArgs([
+    {
+      type: 'slot',
+      name: 'label',
+      value: `<span slot="label">Step name</span>`
+    }
+  ]),
+  argTypes,
+  parameters: { ...parameters },
+  decorators: [withActions] as any
 };
 
 /**
@@ -19,13 +38,9 @@ export default {
 
 export const Default = {
   name: 'Default',
-  render: () =>
-    html`<div class="w-min">
-      <sd-step>
-        <span slot="label">Step name</span>
-        <div>Suscipit repellendus sapiente</div>
-      </sd-step>
-    </div>`
+  render: (args: any) => {
+    return html`${generateTemplate({ args })}`;
+  }
 };
 
 /**
@@ -177,31 +192,4 @@ export const DescriptionAndLabelUsingAttributes = {
       <sd-step label="Label as attribute" description="Description as attribute"></sd-step>
     </div>
   `
-  // name: 'Description and Label (using attributes)',
-  // render: () => {
-  //   return generateTemplate({
-  //     args: overrideArgs([
-  //       {
-  //         type: 'slot',
-  //         name: 'default',
-  //         value: ``
-  //       },
-  //       {
-  //         type: 'slot',
-  //         name: 'label',
-  //         value: ``
-  //       },
-  //       {
-  //         type: 'attribute',
-  //         name: 'label',
-  //         value: `This label was set using the "label" attribute.`
-  //       },
-  //       {
-  //         type: 'attribute',
-  //         name: 'description',
-  //         value: `This description was set using "description" attribute.`
-  //       }
-  //     ])
-  //   });
-  // }
 };
