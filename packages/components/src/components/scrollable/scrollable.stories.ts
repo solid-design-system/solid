@@ -1,10 +1,11 @@
 import '../../solid-components';
 import { html } from 'lit';
-import { storybookDefaults, storybookHelpers } from '../../../scripts/storybook/helper';
+import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-scrollable');
 const { overrideArgs } = storybookHelpers('sd-scrollable');
+const { generateTemplate } = storybookTemplate('sd-scrollable');
 
 const defaultSlotContent = `
   <div class="slot slot--border slot--text items-start" style="height:max-content; width:max-content; padding: 1rem; justify-content:start;">
@@ -47,19 +48,9 @@ export default {
 
 export const Default = {
   name: 'Default',
-  render: () => html`
-    <sd-scrollable orientation="horizontal">
-      <div class="slot slot--border slot--text items-start h-max w-max p-4">
-        <p>Scroll horizontally</p>
-        <br />
-        <p>This is a long scrollable content.</p>
-        <p>It contains multiple paragraphs and lines.</p>
-        <p>The content is intentionally long to trigger scrolling. You can scroll horizontally and vertically.</p>
-        <p>The scrollable component will display shadows and buttons based on the props.</p>
-        <p>Customize the content and attributes as needed.</p>
-      </div>
-    </sd-scrollable>
-  `
+  render: (args: any) => {
+    return generateTemplate({ args });
+  }
 };
 
 /**
