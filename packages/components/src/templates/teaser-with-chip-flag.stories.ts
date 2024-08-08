@@ -3,6 +3,9 @@ import { html } from 'lit-html';
 
 /**
  * Examples of usage of the components together.
+ *
+ * ```
+ * ```
  */
 
 export default {
@@ -15,12 +18,6 @@ export default {
       url: 'https://www.figma.com/design/IUiRoK2jiW8ydM77uiY2RX/Chip?node-id=0-1&t=AZrPY5M4MtrvP04v-0'
     }
   }
-};
-
-export const Default = {
-  render: () =>
-    html`<div class="sd-chip">Lorem ipsum</div>
-      <span class="sd-flag">flag name</span> `
 };
 
 export const TeaserWithChipAndFlag = {
