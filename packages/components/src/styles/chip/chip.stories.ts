@@ -21,7 +21,8 @@ export default {
   parameters: {
     ...parameters,
     backgrounds: {
-      default: 'neutral-100'
+      default: 'neutral-100',
+      values: [{ name: 'neutral-100', value: 'var(--bg-neutral-100)' }]
     }
   },
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Lorem Ipsum' }),
@@ -46,7 +47,7 @@ export const Default = {
 export const Variants = {
   name: 'Variants',
   render: () =>
-    html` <div class="flex gap-12 bg-neutral-100 p-4">
+    html` <div class="flex gap-12 bg-neutral-100 p-8">
       <div class="sd-chip sd-chip--primary-200">primary-200</div>
       <div class="sd-chip sd-chip--primary-300">primary-300</div>
       <div class="sd-chip sd-chip--primary-500">primary-500</div>

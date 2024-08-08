@@ -2,12 +2,12 @@ import '../solid-components';
 import { html } from 'lit-html';
 
 /**
- * Examples of usage of the component.
+ * Examples of usage of the components together.
  */
 
 export default {
   tags: ['!dev'],
-  title: 'Templates/Chip',
+  title: 'Templates/Teaser with Chip and Flag',
   parameters: {
     chromatic: { disableSnapshot: true },
     design: {
