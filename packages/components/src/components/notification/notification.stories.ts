@@ -23,7 +23,7 @@ export default {
     {
       type: 'slot',
       name: 'default',
-      value: `<div class="flex items-center h-6">Lorem ipsum dolor sit.</div>`
+      value: `<div class="slot slot--border slot--text">Default slot</div>`
     },
     {
       type: 'attribute',
@@ -90,7 +90,7 @@ export const Closable = {
   render: () =>
     html` <sd-notification id="closable-example" variant="info" open closable>Lorem ipsum dolor sit</sd-notification>
       <script>
-        const closableNotification = document.querySelector('#closable-example');
+        var closableNotification = document.querySelector('#closable-example');
         closableNotification.addEventListener('click', () => {
           setTimeout(() => {
             notification.open = true;
@@ -111,7 +111,7 @@ export const Duration = {
       Notification will self close after 5 seconds
     </sd-notification>
     <script>
-      const notificationDuration = document.querySelector('#duration-example');
+      var notificationDuration = document.querySelector('#duration-example');
       notificationDuration.addEventListener('sd-after-hide', () => {
         setTimeout(() => {
           notificationDuration.open = true;
@@ -132,7 +132,7 @@ export const DurationIndicator = {
       >Notification will self close after 5 seconds</sd-notification
     >
     <script>
-      const durationIndicator = document.querySelector('#duration-indicator');
+      var durationIndicator = document.querySelector('#duration-indicator');
       durationIndicator.addEventListener('sd-after-hide', () => {
         setTimeout(() => {
           durationIndicator.open = true;
