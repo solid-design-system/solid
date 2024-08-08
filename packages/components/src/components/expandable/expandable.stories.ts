@@ -6,6 +6,12 @@ const { argTypes, parameters } = storybookDefaults('sd-expandable');
 const { overrideArgs } = storybookHelpers('sd-expandable');
 const { generateTemplate } = storybookTemplate('sd-expandable');
 
+/**
+ * Helps to reduce visible content by concealing part of it, with an option for users to reveal more as needed.
+ *
+ *  **Related templates**:
+ * - [Expandable](?path=/docs/templates-expandable--docs)
+ */
 export default {
   title: 'Components/sd-expandable',
   component: 'sd-expandable',
@@ -17,12 +23,6 @@ export default {
   parameters: { ...parameters }
 };
 
-/**
- * Expandable shows a brief summary and expands to show additional content.
- *
- *  **Related templates**:
- * - [Expandable](?path=/docs/templates-expandable--docs)
- */
 export const Default = {
   name: 'Default',
   render: (args: any) => {
@@ -33,13 +33,44 @@ export const Default = {
 };
 
 /**
- * Use the inverted attribute to make an expandable with inverted colors.
+ * Use the attribute `open` to set the state of the expandable.
+ */
+
+export const Open = {
+  name: 'Open',
+  render: () =>
+    html`<div class="grid grid-cols-2 gap-12">
+      <sd-expandable>
+        <div class="sd-paragraph h-16">
+          Between 50 and 60 per cent of global economic output depends on functioning ecosystems and the associated
+          natural services. This emphasises the high economic importance of the topic and the need to address the
+          associated risks and take them into account in the investment process. In the biodiversity guideline, we
+          describe the relevance of the topic and Union Investment's approach as a long-term investor.
+        </div> </sd-expandable
+      ><sd-expandable open="true">
+        <div class="sd-paragraph h-32">
+          Between 50 and 60 per cent of global economic output depends on functioning ecosystems and the associated
+          natural services. This emphasises the high economic importance of the topic and the need to address the
+          associated risks and take them into account in the investment process. In the biodiversity guideline, we
+          describe the relevance of the topic and Union Investment's approach as a long-term investor.
+        </div>
+      </sd-expandable>
+    </div>`
+};
+
+/**
+ * Use the `inverted` attribute when displayed on primary background.
  */
 export const Inverted = {
   name: 'Inverted',
   render: () => {
     return html` <sd-expandable inverted="">
-      <div class="slot slot--border slot--text h-16">Default slot</div>
+      <span class="h-16 text-white">
+        Between 50 and 60 per cent of global economic output depends on functioning ecosystems and the associated
+        natural services. This emphasises the high economic importance of the topic and the need to address the
+        associated risks and take them into account in the investment process. In the biodiversity guideline, we
+        describe the relevance of the topic and Union Investment's approach as a long-term investor.
+      </span>
     </sd-expandable>`;
   },
   parameters: {
