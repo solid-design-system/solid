@@ -25,11 +25,11 @@ export default class SdStepGroup extends SolidElement {
 
   @query('[part=body]') body: HTMLSlotElement;
 
-  /** The step-groups's size. */
-  @property({ reflect: true }) size: 'lg' | 'sm' = 'lg';
-
   /** Determines the orientation of the step-group. */
   @property({ reflect: true }) orientation: 'horizontal' | 'vertical' = 'horizontal';
+
+  /** The step-groups's size. */
+  @property({ reflect: true }) size: 'lg' | 'sm' = 'lg';
 
   /** The active step in the step-group. */
   @property({ type: Number, reflect: true, attribute: 'active-step' }) activeStep = 0;
