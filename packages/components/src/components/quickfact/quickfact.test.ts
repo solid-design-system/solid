@@ -1,3 +1,4 @@
+import './quickfact';
 import { expect, fixture, html } from '@open-wc/testing';
 import type SdQuickfact from './quickfact';
 
@@ -8,12 +9,12 @@ describe('<sd-quickfact>', () => {
       await expect(el).to.be.accessible();
     });
 
-    it('is interactive by default', async () => {
+    it('is not interactive by default', async () => {
       const el = await fixture<SdQuickfact>(html`<sd-quickfact></sd-quickfact>`);
       expect(el.expandable).to.be.false;
       const summary = el.shadowRoot!.querySelector('slot[name="summary"]')!;
 
-      expect(summary.classList.contains('text-primary')).to.be.true;
+      expect(summary.classList.contains('text-primary')).to.be.false;
     });
   });
 
@@ -22,7 +23,7 @@ describe('<sd-quickfact>', () => {
       const el = await fixture<SdQuickfact>(html`<sd-quickfact expandable></sd-quickfact>`);
 
       const summary = el.shadowRoot!.querySelector('slot[name="summary"]')!;
-      expect(summary.classList.contains('text-black')).to.be.true;
+      expect(summary.classList.contains('text-primary')).to.be.true;
     });
   });
 });
