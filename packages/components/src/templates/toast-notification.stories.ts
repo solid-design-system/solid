@@ -74,10 +74,6 @@ export const ToastNotification = {
         });
       </script>
     `;
-  },
-  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
-    const button = canvasElement.querySelector('#top-right');
-    await userEvent.click(button!);
   }
 };
 
@@ -146,9 +142,5 @@ export const ToastBottomCenter = {
         });
       </script>
     `;
-  },
-  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
-    const button = canvasElement.querySelector('#bottom-center');
-    await userEvent.click(button!);
   }
 };
