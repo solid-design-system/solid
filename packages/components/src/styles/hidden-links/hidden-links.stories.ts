@@ -10,13 +10,18 @@ const { generateTemplate } = storybookTemplate('sd-hidden-links');
 const html = String.raw;
 
 /**
- * Text
+ * Hidden links can be used to show links only for keyboard users.
  */
 
 export default {
   title: 'Styles/sd-hidden-links',
   component: 'sd-hidden-links',
-  parameters,
+  parameters: {
+    ...parameters,
+    chromatic: {
+      disableSnapshot: true
+    }
+  },
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Lorem Ipsum' }),
   argTypes
 };
@@ -170,6 +175,11 @@ export const TitleForMultipleLinks = {
  * Use the `sd-hidden-links--debug` modifier to always show the links for debugging purposes.
  */
 export const Debug = {
+  parameters: {
+    chromatic: {
+      disableSnapshot: true
+    }
+  },
   render: () =>
     html`<div class="relative bg-primary-100 w-full h-[256px] p-8">
       <div class="sd-hidden-links sd-hidden-links--multiple sd-hidden-links--debug">
