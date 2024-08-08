@@ -250,19 +250,20 @@ export const Sample = {
           @media (min-width: 640px) {
             .grouping-sample {
               display: grid;
-              grid-template-columns: repeat(auto-fill, 300px);
+              grid-template-columns: repeat(auto-fit, 300px);
+              grid-auto-flow: dense;
               gap: 1rem;
-              justify-content: space-evenly;
+              justify-content: space-around;
               justify-items: center;
-              align-content: space-evenly;
+              align-content: space-around;
               align-items: center;
+              width: 100%;
             }
 
             .grouping-sample sd-quickfact::part(content) {
               position: absolute;
               width: 100%;
               left: 0;
-              top: 100%;
             }
           }
         </style>
@@ -270,7 +271,7 @@ export const Sample = {
           <sd-quickfact expandable class="first">
             <sd-icon name="content/image" color="primary" aria-hidden="true" library="default" slot="icon"></sd-icon>
 
-            <div class="slot slot--border slot--text h-12">Quickfact 1</div>
+            <div class="slot slot--border slot--text h-24">Quickfact 1</div>
 
             <div slot="summary">
               <p class="text-base font-normal leading-normal sm:text-3xl sm:leading-tight">Sed do eiusmod</p>
@@ -281,7 +282,7 @@ export const Sample = {
           <sd-quickfact expandable class="second">
             <sd-icon name="content/image" color="primary" aria-hidden="true" library="default" slot="icon"></sd-icon>
 
-            <div class="slot slot--border slot--text h-12">Quickfact 2</div>
+            <div class="slot slot--border slot--text h-24">Quickfact 2</div>
 
             <div slot="summary">
               <p class="text-base font-normal leading-normal sm:text-3xl sm:leading-tight">Lorem Ipsum</p>
@@ -292,7 +293,7 @@ export const Sample = {
           <sd-quickfact expandable class="third">
             <sd-icon name="content/image" color="primary" aria-hidden="true" library="default" slot="icon"></sd-icon>
 
-            <div class="slot slot--border slot--text h-12">Quickfact 3</div>
+            <div class="slot slot--border slot--text h-24">Quickfact 3</div>
 
             <div slot="summary">
               <p class="text-base font-normal leading-normal sm:text-3xl sm:leading-tight">Lorem Ipsum</p>
@@ -321,6 +322,27 @@ export const Sample = {
                 quickfacts.forEach(qf => {
                   if (qf !== quickfact) {
                     qf.hide();
+                  }
+                });
+              });
+
+              quickfact.addEventListener('sd-after-show', () => {
+                // Find the height of the content and set the margin bottom of the quickfacts in this row to the same value
+                const content = quickfact.shadowRoot.querySelector('[part~="content"]');
+                const contentHeight = content.clientHeight;
+                const row = getRow(quickfact);
+
+                quickfacts.forEach(qf => {
+                  if (getRow(qf) === row) {
+                    qf.style.marginBottom = contentHeight + 'px';
+                  }
+                });
+              });
+
+              quickfact.addEventListener('sd-hide', () => {
+                quickfacts.forEach(qf => {
+                  if (getRow(qf) === getRow(quickfact)) {
+                    qf.style.marginBottom = '0px';
                   }
                 });
               });
@@ -355,6 +377,17 @@ export const Sample = {
               });
 
               return { gridMap, numberOfRows, numberOfColumns };
+            }
+
+            // Take a quickfact as input and return the row of the quickfact in the grid
+            function getRow(quickfact) {
+              const { gridMap, numberOfRows, numberOfColumns } = createGridMap();
+
+              for (const [key, value] of Object.entries(gridMap)) {
+                if (value.quickfact === quickfact) {
+                  return value.position.row;
+                }
+              }
             }
 
             // Resets the height of all summaries to auto. This is useful when the window is resized to mobile view.
