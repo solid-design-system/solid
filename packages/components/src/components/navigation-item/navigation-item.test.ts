@@ -208,7 +208,7 @@ describe('<sd-navigation-item>', () => {
     // Events
     it('emits "sd-show" event when clicking closed HTML details element summary', async () => {
       const el = await fixture<SdNavigationItem>(variants.accordion.default);
-      console.log(el.shadowRoot);
+
       const details = el.shadowRoot!.querySelector('details');
       const summary = el.shadowRoot!.querySelector('summary');
       const clickHandler = sinon.spy();
