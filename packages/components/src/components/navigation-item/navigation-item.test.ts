@@ -208,6 +208,7 @@ describe('<sd-navigation-item>', () => {
     // Events
     it('emits "sd-show" event when clicking closed HTML details element summary', async () => {
       const el = await fixture<SdNavigationItem>(variants.accordion.default);
+      console.log(el.shadowRoot);
       const details = el.shadowRoot!.querySelector('details');
       const summary = el.shadowRoot!.querySelector('summary');
       const clickHandler = sinon.spy();
@@ -296,27 +297,26 @@ describe('<sd-navigation-item>', () => {
     });
   });
 
-  // // Test separate variant
-  // describe('when given a value for the "children" slot, an "href" property and "separate" property is true', () => {
-  //   it('renders a div with an open slot and a link in separate divs', async () => {
-  //     console.log('here');
-  //     // const el = await fixture<SdNavigationItem>(variants.link.children);
-  //     // console.log(el);
+  // Test separate variant
+  describe('when given a value for the "children" slot, an "href" property and "separate" property is true', () => {
+    it('renders a div with an open slot and a link in separate div', async () => {
+      const el = await fixture<SdNavigationItem>(
+        html`<sd-navigation-item separated href="#" vertical chevron>Navigation</sd-navigation-item>`
+      );
 
-  //     // console.log(el.shadowRoot);
-  //     // expect(el).to.exist;
-  //     // expect(el.shadowRoot!.querySelector('a')).to.not.exist;
-  //     // expect(el.shadowRoot!.querySelector('button')).to.exist;
-  //     // expect(el.shadowRoot!.querySelector('summary')).to.not.exist;
-  //     // expect(el.shadowRoot!.querySelector('details')).to.not.exist;
-  //   });
+      expect(el).to.exist;
+      expect(el.shadowRoot!.querySelector('a')).to.exist;
+      expect(el.shadowRoot!.querySelector('button')).to.exist;
+      expect(el.shadowRoot!.querySelector('summary')).to.not.exist;
+      expect(el.shadowRoot!.querySelector('details')).to.not.exist;
+    });
 
-  //   //Accessibility
-  //   it('passes accessibility test', async () => {
-  //     const el = await fixture<SdNavigationItem>(
-  //       html`<sd-navigation-item href="#" separated>${defaultSlot}${childrenSlot}</sd-navigation-item>`
-  //     );
-  //     await expect(el).to.be.accessible();
-  //   });
-  // });
+    //Accessibility
+    it('passes accessibility test', async () => {
+      const el = await fixture<SdNavigationItem>(
+        html`<sd-navigation-item href="#" separated>${defaultSlot}${childrenSlot}</sd-navigation-item>`
+      );
+      await expect(el).to.be.accessible();
+    });
+  });
 });
