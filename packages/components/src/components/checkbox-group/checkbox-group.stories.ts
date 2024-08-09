@@ -43,31 +43,42 @@ export const Default = {
 };
 
 /**
- * Use the `size` attribute to change the size of all checkboxes in the group.
+ * Use the `size` attribute to change the size.
  */
 
 export const Size = {
   name: 'Size',
   render: () => html`
     <div class="flex gap-12">
-      <div>
-        <div class="flex gap-4">
-          <sd-checkbox-group size="lg">
-            <sd-checkbox value="1">Option 1</sd-checkbox>
-            <sd-checkbox value="2">Option 2</sd-checkbox>
-            <sd-checkbox value="3">Option 3</sd-checkbox>
-          </sd-checkbox-group>
-        </div>
-      </div>
-      <div>
-        <div class="flex flex-col gap-4">
-          <sd-checkbox-group size="sm">
-            <sd-checkbox value="1">Option 1</sd-checkbox>
-            <sd-checkbox value="2">Option 2</sd-checkbox>
-            <sd-checkbox value="3">Option 3</sd-checkbox>
-          </sd-checkbox-group>
-        </div>
-      </div>
+      <sd-checkbox-group size="lg">
+        <sd-checkbox value="1">Option 1</sd-checkbox>
+        <sd-checkbox value="2">Option 2</sd-checkbox>
+        <sd-checkbox value="3">Option 3</sd-checkbox>
+      </sd-checkbox-group>
+
+      <sd-checkbox-group size="sm">
+        <sd-checkbox value="1">Option 1</sd-checkbox>
+        <sd-checkbox value="2">Option 2</sd-checkbox>
+        <sd-checkbox value="3">Option 3</sd-checkbox>
+      </sd-checkbox-group>
+    </div>
+  `
+};
+
+/**
+ * Use the `label` attribute to add a label on top.
+ */
+
+export const Label = {
+  name: 'Label',
+  render: () => html`
+    <div class="flex gap-12">
+      <sd-checkbox-group orientation="vertical">
+        <label slot="label">Vertical Group</label>
+        <sd-checkbox value="1">Option 1</sd-checkbox>
+        <sd-checkbox value="2">Option 2</sd-checkbox>
+        <sd-checkbox value="3">Option 3</sd-checkbox>
+      </sd-checkbox-group>
     </div>
   `
 };
@@ -80,24 +91,18 @@ export const Orientation = {
   name: 'Orientation',
   render: () => html`
     <div class="flex gap-12">
-      <div>
-        <div class="flex gap-4">
-          <sd-checkbox-group orientation="horizontal">
-            <sd-checkbox value="1">Option 1</sd-checkbox>
-            <sd-checkbox value="2">Option 2</sd-checkbox>
-            <sd-checkbox value="3">Option 3</sd-checkbox>
-          </sd-checkbox-group>
-        </div>
-      </div>
-      <div>
-        <div class="flex flex-col gap-4">
-          <sd-checkbox-group orientation="vertical">
-            <sd-checkbox value="1">Option 1</sd-checkbox>
-            <sd-checkbox value="2">Option 2</sd-checkbox>
-            <sd-checkbox value="3">Option 3</sd-checkbox>
-          </sd-checkbox-group>
-        </div>
-      </div>
+      <sd-checkbox-group orientation="vertical">
+        <label slot="label">Vertical Group</label>
+        <sd-checkbox value="1">Option 1</sd-checkbox>
+        <sd-checkbox value="2">Option 2</sd-checkbox>
+        <sd-checkbox value="3">Option 3</sd-checkbox>
+      </sd-checkbox-group>
+      <sd-checkbox-group orientation="horizontal">
+        <label slot="label">Horizontal Group</label>
+        <sd-checkbox value="1">Option 1</sd-checkbox>
+        <sd-checkbox value="2">Option 2</sd-checkbox>
+        <sd-checkbox value="3">Option 3</sd-checkbox>
+      </sd-checkbox-group>
     </div>
   `
 };
