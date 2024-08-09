@@ -8,7 +8,11 @@ const { overrideArgs } = storybookHelpers('sd-carousel');
 const { generateTemplate } = storybookTemplate('sd-carousel');
 
 /**
- * Carousels display an arbitrary number of content slides along a horizontal axis.
+ * Displays an arbitrary number of content slides along a horizontal axis.
+ *
+ * On touch devices, the slides can be moved by swiping.
+ *
+ * **Accessibility:** Chevron buttons are still displayed on touch devices to enable alternative interaction that complies with accessibility requirements.
  *
  * **Related templates**:
  * - [Carousel with Images](?path=/docs/templates-carousel-with-images--docs)
@@ -58,6 +62,9 @@ export const Default = {
 
 /**
  * Use the `variant` attribute to select the pagination format.
+ *
+ * - `Number` variant (default): can be used for all use cases.
+ * - `Dot` variant: can only be used for up to 5 items total.
  */
 
 export const Variant = {
@@ -164,11 +171,11 @@ export const Autoplay = {
 };
 
 /**
- * Use the `slides-per-page` attribute to set the number of slides that would be shown at a given time.
+ * Use the `slides-per-page` attribute to set the number of slides displayed at once.
  */
 
 export const SlidesPerPage = {
-  name: 'Slides Per Page',
+  name: 'Slides per Page',
   render: () => html`
     <div>
       <sd-carousel slides-per-page='2' variant="dot">
@@ -193,14 +200,18 @@ export const SlidesPerPage = {
 };
 
 /**
- * Use `slides-per-move` to set how many slides the carousel advances when scrolling. This is useful when specifying a `slides-per-page` greater than one. By setting `slides-per-move` to the same value as `slides-per-page`, the carousel will advance by one page at a time.<br>
- * <b>Note:</b><br>
- * <li> The number of slides should be divisible by the number of `slides-per-page` to maintain consistent scroll behavior.</li>
- * <li>Variations between `slides-per-move` and `slides-per-page` can lead to unexpected scrolling behavior. Keep your intended UX in mind when adjusting these values.</li>
+ * Use the `slides-per-move` attribute to configure the number of slides the carousel scrolls through at a time.
+ *
+ *
+ * **Note:**
+ *
+ *
+ * - The number of slides should be divisible by the number of `slides-per-page` to maintain consistent scroll behavior.
+ * - Variations between `slides-per-move` and `slides-per-page` can lead to unexpected scrolling behavior. Keep your intended UX in mind when adjusting these values.
  */
 
 export const SlidesPerMove = {
-  name: 'Slides Per Move',
+  name: 'Slides per Move',
   render: () => html`
     <div>
       <sd-carousel slides-per-page="2" slides-per-move='2' variant="dot">

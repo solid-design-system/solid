@@ -75,7 +75,7 @@ export const Variant = {
 };
 
 /**
- * Use the `inverted` attribute to make a carousel with inverted colors.
+ * Use the `inverted` attribute when displayed on primary background.
  */
 
 export const Inverted = {
