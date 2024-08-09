@@ -6,14 +6,14 @@ const { generateTemplate } = storybookTemplate('sd-checkbox');
 const { overrideArgs } = storybookHelpers('sd-checkbox');
 
 /**
- * Checkboxes allow the user to toggle an option on or off.
+ * Allows users to toggle an option on or off.
  */
 
 export default {
   title: 'Components/sd-checkbox',
   component: 'sd-checkbox',
   tags: ['!dev'],
-  args: overrideArgs([{ type: 'slot', name: 'default', value: 'Default Slot' }]),
+  args: overrideArgs([{ type: 'slot', name: 'default', value: 'Checkbox' }]),
   argTypes,
   parameters: {
     ...parameters,
@@ -56,7 +56,6 @@ export const Disabled = {
   name: 'Disabled',
   render: () => html`
     <div class="flex gap-12">
-      <sd-checkbox>Enabled</sd-checkbox>
       <sd-checkbox disabled>Disabled</sd-checkbox>
     </div>
   `
@@ -70,7 +69,6 @@ export const Checked = {
   name: 'Checked',
   render: () => html`
     <div class="flex gap-12">
-      <sd-checkbox>Unchecked</sd-checkbox>
       <sd-checkbox checked>Checked</sd-checkbox>
     </div>
   `
@@ -97,7 +95,6 @@ export const Required = {
   name: 'Required',
   render: () => html`
     <div class="flex gap-12">
-      <sd-checkbox>Not required</sd-checkbox>
       <sd-checkbox required>Required</sd-checkbox>
     </div>
   `
@@ -105,6 +102,8 @@ export const Required = {
 
 /**
  * Test invalid state inside a form.
+ *
+ * For an invalid checkbox an error-text underneath (or if used in a group underneath the checkbox-group) is mandatory.
  */
 
 export const Invalid = {
