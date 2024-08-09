@@ -5,7 +5,7 @@ const { overrideArgs } = storybookHelpers('sd-carousel-item');
 const { generateTemplate } = storybookTemplate('sd-carousel-item');
 
 /**
- * A carousel item represents a slide within a carousel.
+ * Represents a slide within a carousel.
  *
  * **Related templates**:
  * - [Carousel with Images](?path=/docs/templates-carousel-with-images--docs)
