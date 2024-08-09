@@ -36,7 +36,7 @@ export default class SdQuickfact extends SdAccordion {
             'text-base font-bold items-center focus-visible:focus-outline text-primary relative group flex flex-row hover:bg-transparent gap-3 pb-3 pt-0 px-0 sm:flex-col sm:gap-4 sm:pb-8',
             this.expandable && 'cursor-pointer select-none'
           )}
-          aria-label=${ifDefined(this.expandable ? 'header' : undefined)}
+          role=${ifDefined(this.expandable ? 'button' : undefined)}
           aria-expanded=${ifDefined(this.expandable ? (this.open ? 'true' : 'false') : undefined)}
           aria-controls=${ifDefined(this.expandable ? 'content' : undefined)}
           tabindex=${this.expandable ? '0' : '-1'}
