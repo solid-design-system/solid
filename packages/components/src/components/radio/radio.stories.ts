@@ -14,7 +14,7 @@ export default {
   title: 'Components/sd-radio',
   tags: ['!dev'],
   component: 'sd-radio',
-  args: overrideArgs([{ type: 'slot', name: 'default', value: 'Default Slot' }]),
+  args: overrideArgs([{ type: 'slot', name: 'default', value: 'Radio' }]),
   argTypes,
   parameters: { ...parameters }
 };
@@ -31,7 +31,7 @@ export const Default = {
 };
 
 /**
- * Use the `size` attribute to change the size of the input radio. This attribute affects the font-size within the element, while the element itself remains the same size.
+ * Use the `size` attribute to change the size of the input radio. This attribute affects the font-size within the element, while the element itself remains the same size. The default is `lg`. In tight spaces, consider using `sm`.
  */
 
 export const Size = {
@@ -45,7 +45,7 @@ export const Size = {
 };
 
 /**
- * Use the `invalid` attribute to mark the element is not in a format or a value the application will accept.
+ * Use the `invalid` attribute to mark that the element is not in a format or a value the application will accept.
  */
 
 export const Invalid = {
