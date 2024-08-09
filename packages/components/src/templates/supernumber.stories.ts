@@ -1,9 +1,9 @@
-import '../../solid-components';
+import '../solid-components';
 import { html } from 'lit-html';
 
 export default {
-  title: 'Pattern/supernumber',
-  component: 'Supernumber',
+  tags: ['!dev'],
+  title: 'Templates/Supernumber',
   parameters: {
     chromatic: { disableSnapshot: true },
     design: {

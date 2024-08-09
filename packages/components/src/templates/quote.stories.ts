@@ -1,9 +1,9 @@
-import '../../solid-components';
+import '../solid-components';
 import { html } from 'lit-html';
 
 export default {
-  title: 'Pattern/quote',
-  component: 'Quote',
+  tags: ['!dev'],
+  title: 'Templates/Quote',
   parameters: {
     chromatic: { disableSnapshot: true },
     design: {

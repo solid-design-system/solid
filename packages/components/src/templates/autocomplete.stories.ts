@@ -1,5 +1,5 @@
 import { html } from 'lit-html';
-import { setupAutocomplete as solidAutocomplete } from '../../solid-components';
+import { setupAutocomplete as solidAutocomplete } from '../solid-components';
 
 /**
  * ## [autoComplete.js](https://tarekraafat.github.io/autoComplete.js/#/) Functionality:
@@ -75,8 +75,8 @@ import { setupAutocomplete as solidAutocomplete } from '../../solid-components';
  */
 
 export default {
-  title: 'Pattern/autocomplete',
-  component: 'Autocomplete',
+  tags: ['!dev'],
+  title: 'Templates/Autocomplete',
   parameters: {
     docs: { story: { inline: false, height: '400px' } },
     chromatic: { disableSnapshot: true },
@@ -173,8 +173,6 @@ const mock = {
 /**
   This is the most basic example of the autoComplete.js library. It demonstrates how to set up the library with a simple input field and a list of data.
   The search data is mocked and passed to the autoComplete instance, you can search for the following terms: Aktien, Nachhaltig, Union, Europa, ...
-
-  > Notice: This example is not working, check it out the one on top of this page.
  */
 export const Simple = {
   parameters: {

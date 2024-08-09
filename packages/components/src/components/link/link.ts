@@ -30,14 +30,14 @@ export default class SdLink extends SolidElement {
 
   @query('a') button: HTMLButtonElement | HTMLLinkElement;
 
+  /** Control the layout of icon and text within the component and the component's positioning. */
+  @property({ type: Boolean, reflect: true }) standalone = false;
+
   /** The link's size. */
   @property({ reflect: true }) size: 'inherit' | 'lg' | 'sm' = 'inherit';
 
   /** Inverts the link. */
   @property({ type: Boolean, reflect: true }) inverted = false;
-
-  /** Control the layout of icon and text within the component and the component's positioning. */
-  @property({ type: Boolean, reflect: true }) standalone = false;
 
   /** When not set, the link will render as disabled. */
   @property() href = '';
