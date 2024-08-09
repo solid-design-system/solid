@@ -6,7 +6,7 @@ const { generateTemplate } = storybookTemplate('sd-drawer');
 const { overrideArgs } = storybookHelpers('sd-drawer');
 
 /**
- * Used to slide in from a container to expose additional options and information.
+ * A panel that slides out from the side of the screen which contains a set of information or actions.
  */
 
 export default {
@@ -72,6 +72,9 @@ export const Open = {
 
 /**
  * Use the `placement` attribute to change the position of the drawer.
+ *
+ * - `start`: The drawer will be positioned on the left side of the screen.
+ * - `end`: The drawer will be positioned on the right side of the screen.
  */
 export const Placement = {
   name: 'Placement',
