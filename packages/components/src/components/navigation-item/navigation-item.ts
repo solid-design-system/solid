@@ -278,7 +278,7 @@ export default class SdNavigationItem extends SolidElement {
         part="details"
         id="navigation-item-details"
         ?open=${this.open}
-        class="relative flex flex-col px-4"
+        class="relative flex flex-col"
         tabindex="-1"
       >
         ${root}${this.open ? html`<slot name="children"></slot>` : ''}
