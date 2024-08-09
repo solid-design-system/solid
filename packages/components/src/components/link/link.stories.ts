@@ -136,7 +136,7 @@ export const AsLink = {
 };
 
 /**
- * Use the icon-left and icon-right slots to add system icons to each side of the link. They automatically adapt the size.
+ * Use the `icon-left` and `icon-right` slots to add system icons to each side of the link. They automatically adapt the size.
  */
 
 export const Icon = {
