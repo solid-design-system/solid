@@ -9,7 +9,7 @@ const { generateTemplate } = storybookTemplate('sd-dialog');
 
 /**
  *
- * `sd-dialog` is a modal dialog component that can be used to display information, ask for user input, or confirm actions.
+ * Appears over other content. It requires an interaction from the user before they can return to whatever is underneath.
  *
  *  **Related templates**:
  * - [Dialog with scrollable content](?path=/docs/templates-dialog-with-scrollable-content--docs)
