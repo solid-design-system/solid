@@ -82,7 +82,7 @@ export const Variant = {
           <sd-carousel-item>
             <div class="slot slot--border slot--text h-16">Default slot 3</div>
           </sd-carousel-item>
-        <sd-carousel>
+        </sd-carousel>
       </div>
       <div>
         <sd-carousel variant="number">
@@ -95,7 +95,7 @@ export const Variant = {
           <sd-carousel-item>
             <div class="slot slot--border slot--text h-16">Default slot 3</div>
           </sd-carousel-item>
-        <sd-carousel>
+        </sd-carousel>
       </div>
     </div>
   `
@@ -119,7 +119,7 @@ export const Inverted = {
         <sd-carousel-item>
           <div class="slot slot--border slot--text h-16">Default slot 3</div>
         </sd-carousel-item>
-      <sd-carousel>
+      </sd-carousel>
     </div>
   `
 };
@@ -142,7 +142,7 @@ export const Loop = {
         <sd-carousel-item>
           <div class="slot slot--border slot--text h-16">Default slot 3</div>
         </sd-carousel-item>
-      <sd-carousel>
+      </sd-carousel>
     </div>
   `
 };
@@ -165,7 +165,7 @@ export const Autoplay = {
         <sd-carousel-item>
           <div class="slot slot--border slot--text h-16">Default slot 3</div>
         </sd-carousel-item>
-      <sd-carousel>
+      </sd-carousel>
     </div>
   `
 };
@@ -178,7 +178,7 @@ export const SlidesPerPage = {
   name: 'Slides per Page',
   render: () => html`
     <div>
-      <sd-carousel slides-per-page='2' variant="dot">
+      <sd-carousel slides-per-page="2" variant="dot">
         <sd-carousel-item>
           <div class="slot slot--border slot--text h-16">Default slot 1</div>
         </sd-carousel-item>
@@ -194,7 +194,7 @@ export const SlidesPerPage = {
         <sd-carousel-item>
           <div class="slot slot--border slot--text h-16">Default slot 5</div>
         </sd-carousel-item>
-      <sd-carousel>
+      </sd-carousel>
     </div>
   `
 };
@@ -214,7 +214,7 @@ export const SlidesPerMove = {
   name: 'Slides per Move',
   render: () => html`
     <div>
-      <sd-carousel slides-per-page="2" slides-per-move='2' variant="dot">
+      <sd-carousel slides-per-page="2" slides-per-move="2" variant="dot">
         <sd-carousel-item>
           <div class="slot slot--border slot--text h-16">Default slot 1</div>
         </sd-carousel-item>
@@ -233,7 +233,7 @@ export const SlidesPerMove = {
         <sd-carousel-item>
           <div class="slot slot--border slot--text h-16">Default slot 6</div>
         </sd-carousel-item>
-      <sd-carousel>
+      </sd-carousel>
     </div>
   `
 };
