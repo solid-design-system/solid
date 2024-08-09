@@ -44,20 +44,20 @@ export default class SdScrollable extends SolidElement {
   /** Defines the scroll orientation */
   @property({ type: String, reflect: true }) orientation: 'horizontal' | 'vertical' | 'auto' = 'horizontal';
 
-  /** Activates scroll buttons */
-  @property({ type: Boolean, reflect: true }) buttons = false;
-
-  /** The amount in px to be scrolled when clicking the buttons. */
-  @property({ type: Number, reflect: true }) step = 150;
-
   /** Activates browser scrollbars */
   @property({ type: Boolean, reflect: true }) scrollbars = false;
+
+  /** Activates scroll buttons */
+  @property({ type: Boolean, reflect: true }) buttons = false;
 
   /** Activates a shadow as optional visual scroll indicator */
   @property({ type: Boolean, reflect: true }) shadows = false;
 
   /** Adds inset padding */
   @property({ type: Boolean, reflect: true }) inset = false;
+
+  /** The amount in px to be scrolled when clicking the buttons. */
+  @property({ type: Number, reflect: true }) step = 150;
 
   @state() private canScroll: Record<'left' | 'right' | 'up' | 'down', boolean> = {
     left: false,
