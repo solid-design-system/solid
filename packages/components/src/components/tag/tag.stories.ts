@@ -65,8 +65,7 @@ export const Selected = {
 export const Removable = {
   render: () => html`
     <div id="tags-removable" class="flex gap-12">
-      <sd-tag size="lg" removable>Removable <span class="sr-only">large tag</span></sd-tag>
-      <sd-tag size="sm" removable>Removable <span class="sr-only">small tag</span></sd-tag>
+      <sd-tag size="lg" removable>Removable</sd-tag>
     </div>
 
     <script>
