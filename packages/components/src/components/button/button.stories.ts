@@ -26,7 +26,7 @@ export default {
       url: 'https://www.figma.com/file/fPGhgNZv98U4H69Gu2tlWi/Button?type=design&node-id=13-18&t=jDLqFEdY7ZlOJurc-4'
     }
   },
-  args: overrideArgs({ type: 'slot', name: 'default', value: 'Default' }),
+  args: overrideArgs({ type: 'slot', name: 'default', value: 'Button' }),
   argTypes,
   decorators: [withActions] as any
 };
@@ -109,7 +109,7 @@ export const Disabled = {
 };
 
 /**
- * Use the `inverted` attribute when buttons are used on primary background.
+ * Use the `inverted` attribute when displayed on primary background.
  */
 
 export const Inverted = {
