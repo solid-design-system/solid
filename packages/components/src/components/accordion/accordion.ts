@@ -148,71 +148,47 @@ export default class SdAccordion extends SolidElement {
     return waitForEvent(this, 'sd-after-hide');
   }
 
-  /** @internal */
-  RenderSummary = () => {
-    return html` <slot name="summary" part="summary" class="flex flex-auto items-center text-left"
-      >${this.summary}</slot
-    >`;
-  };
-
-  // This method is overloaded in sd-quickfact to render the icon. It is not used in sd-accordion.
-  /** @internal */
-  RenderOptionalIcon = () => {
-    return html``;
-  };
-
-  /** @internal */
-  RenderDefaultSlot = () => {
-    return html`<div part="content" id="content" class="overflow-hidden">
-      <slot part="content__slot" class="block px-4 py-6" role="region" aria-labelledby="header"></slot>
-    </div>`;
-  };
-
-  /** @internal */
-  RenderSummaryIcons = () => {
-    return html` <span
-      part="summary-icon"
-      class=${cx(
-        'flex flex-grow-0 flex-shrink-0 flex-auto items-center transition-all ease-in-out duration-300 text-xl',
-        this.open && 'rotate-180'
-      )}
-      ><slot name="expand-icon" class=${cx(this.open && 'hidden')}>
-        <sd-icon library="system" name="chevron-down"></sd-icon>
-      </slot>
-      <slot name="collapse-icon" class=${cx(!this.open && 'hidden')}>
-        <sd-icon library="system" name="chevron-down"></sd-icon> </slot
-    ></span>`;
-  };
-
-  /** @internal */
-  RenderHeader = () => {
-    return html`<header
-      part="header"
-      id="header"
-      class=${cx(
-        'flex text-base gap-4 font-bold items-center cursor-pointer select-none px-4 py-3 focus-visible:focus-outline text-primary hover:bg-neutral-200 relative group'
-      )}
-      aria-label="header"
-      aria-expanded=${this.open ? 'true' : 'false'}
-      aria-controls="content"
-      tabindex="0"
-      @click=${this.handleSummaryClick}
-      @keydown=${this.handleSummaryKeyDown}
-    >
-      <div
-        part="summary-border"
-        class=${cx(
-          !this.open && 'opacity-0',
-          'w-1 bg-accent absolute left-0 transition-all h-[calc(100%-16px)] group-hover:h-full'
-        )}
-      ></div>
-      ${this.RenderOptionalIcon()} ${this.RenderSummary()} ${this.RenderSummaryIcons()}
-    </header>`;
-  };
-
   render() {
     return html`
-      <div part="base" class="border-y border-neutral-400">${this.RenderHeader()} ${this.RenderDefaultSlot()}</div>
+      <div part="base" class="border-y border-neutral-400">
+        <header
+          part="header"
+          id="header"
+          class=${cx(
+            'flex text-base gap-4 font-bold items-center cursor-pointer select-none px-4 py-3 focus-visible:focus-outline text-primary hover:bg-neutral-200 relative group'
+          )}
+          aria-label="header"
+          aria-expanded=${this.open ? 'true' : 'false'}
+          aria-controls="content"
+          tabindex="0"
+          @click=${this.handleSummaryClick}
+          @keydown=${this.handleSummaryKeyDown}
+        >
+          <div
+            part="summary-border"
+            class=${cx(
+              !this.open && 'opacity-0',
+              'w-1 bg-accent absolute left-0 transition-all h-[calc(100%-16px)] group-hover:h-full'
+            )}
+          ></div>
+          <slot name="summary" part="summary" class="flex flex-auto items-center text-left">${this.summary}</slot>
+          <span
+            part="summary-icon"
+            class=${cx(
+              'flex flex-grow-0 flex-shrink-0 flex-auto items-center transition-all ease-in-out duration-300 text-xl',
+              this.open && 'rotate-180'
+            )}
+            ><slot name="expand-icon" class=${cx(this.open && 'hidden')}>
+              <sd-icon library="system" name="chevron-down"></sd-icon>
+            </slot>
+            <slot name="collapse-icon" class=${cx(!this.open && 'hidden')}>
+              <sd-icon library="system" name="chevron-down"></sd-icon> </slot
+          ></span>
+        </header>
+        <div part="content" id="content" class="overflow-hidden">
+          <slot part="content__slot" class="block px-4 py-6" role="region" aria-labelledby="header"></slot>
+        </div>
+      </div>
     `;
   }
 
