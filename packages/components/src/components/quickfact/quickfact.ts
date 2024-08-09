@@ -31,7 +31,8 @@ export default class SdQuickfact extends SdAccordion {
       part="header"
       id="header"
       class=${cx(
-        'flex text-base gap-4 font-bold items-center cursor-pointer select-none px-4 py-3 focus-visible:focus-outline text-primary hover:bg-neutral-200 relative group'
+        'flex text-base gap-4 font-bold items-center select-none px-4 py-3 focus-visible:focus-outline text-primary hover:bg-neutral-200 relative group',
+        this.expandable && 'cursor-pointer'
       )}
       aria-label="header"
       aria-expanded=${this.open ? 'true' : 'false'}
