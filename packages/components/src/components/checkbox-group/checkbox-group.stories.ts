@@ -66,7 +66,7 @@ export const Size = {
 };
 
 /**
- * Use the `label` attribute to add a label on top.
+ * Use the `label`attribute to add a label on top.
  */
 
 export const Label = {
