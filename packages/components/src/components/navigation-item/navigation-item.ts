@@ -73,15 +73,15 @@ export default class SdNavigationItem extends SolidElement {
 
   @property({ type: Boolean, reflect: true }) separated = false;
 
-  private isButton(): boolean {
+  private get isButton(): boolean {
     return !this.href && !this.hasSlotController.test('children');
   }
 
-  private isLink(): boolean {
+  private get isLink(): boolean {
     return !!this.href;
   }
 
-  private isAccordion(): boolean {
+  private get isAccordion(): boolean {
     return !this.href && this.hasSlotController.test('children');
   }
 
@@ -115,7 +115,7 @@ export default class SdNavigationItem extends SolidElement {
     this.emit('sd-show', { cancelable: true });
   }
 
-  private calculatePaddingX(): string {
+  private get calculatePaddingX(): string {
     if (this.relaxed && this.indented) return 'pl-8 pr-4';
     if (this.relaxed) return 'px-4';
     if (this.indented) return 'pl-4';
@@ -123,22 +123,22 @@ export default class SdNavigationItem extends SolidElement {
   }
 
   private get tag() {
-    if (this.isAccordion() && !this.isLink()) {
+    if (this.isAccordion && !this.isLink) {
       return literal`summary`;
     }
     if (this.separated) {
       return literal`div`;
     }
-    if (this.isLink()) {
+    if (this.isLink) {
       return literal`a`;
     }
     return literal`button`;
   }
 
   render() {
-    const isLink = this.isLink();
-    const isButton = this.isButton();
-    const isAccordion = this.isAccordion();
+    const isLink = this.isLink;
+    const isButton = this.isButton;
+    const isAccordion = this.isAccordion;
 
     const slots = {
       label: this.hasSlotController.test('[default]'),
@@ -171,9 +171,9 @@ export default class SdNavigationItem extends SolidElement {
         target=${ifDefined(isLink ? this.target : undefined)}
         download=${ifDefined(isLink ? this.download : undefined)}
         rel=${ifDefined(isLink && this.target ? 'noreferrer noopener' : undefined)}
-        role=${!this.separated ? (isLink ? 'link' : 'button') : 'null'}
+        role=${isLink ? 'link' : 'button'}
         tabindex=${this.disabled || this.separated ? '-1' : '0'}
-        @click=${!this.separated ? (isAccordion ? this.handleClickSummary : isButton ? this.handleClickButton : undefined) : undefined}
+        @click=${this.separated ? undefined : isAccordion ? this.handleClickSummary : isButton ? this.handleClickButton : undefined}
       >
         <div
         part="current-indicator"
@@ -189,13 +189,13 @@ export default class SdNavigationItem extends SolidElement {
           'relative pt-3 inline-flex justify-between items-center',
           isAccordion ? 'grow' : 'w-full',
           slots['description'] || this.separated ? 'pb-1' : horizontalPaddingBottom,
-          this.calculatePaddingX()
+          this.calculatePaddingX
         )}>
           ${
             this.divider && this.vertical
               ? html`<sd-divider
                   part="divider"
-                  class=${cx('w-full transition-all absolute -top-0.25 left-0', this.calculatePaddingX())}
+                  class=${cx('w-full transition-all absolute -top-0.25 left-0', this.calculatePaddingX)}
                 ></sd-divider>`
               : ''
           }
@@ -230,7 +230,6 @@ export default class SdNavigationItem extends SolidElement {
                       part="chevron"
                       library="system"
                       color="currentColor"
-                      tabindex="-1"
                       class=${cx(
                         'h-6 w-6 transition-all',
                         isAccordion || this.separated ? (this.open ? 'rotate-180' : 'rotate-0') : 'rotate-[270deg]'
@@ -258,7 +257,7 @@ export default class SdNavigationItem extends SolidElement {
                 class=${cx(
                   'inline-block text-sm text-left text-black',
                   isAccordion || this.separated ? 'grow' : 'w-full',
-                  this.separated ? 'px-4' : this.calculatePaddingX(),
+                  this.separated ? 'px-4' : this.calculatePaddingX,
                   horizontalPaddingBottom
                 )}
               ></slot>`

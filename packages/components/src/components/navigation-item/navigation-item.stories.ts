@@ -273,7 +273,7 @@ export const Chevron = {
  */
 
 export const IndentedRelaxed = {
-  name: 'Indented x Relaxed',
+  name: 'Indented × Relaxed',
   parameters: {
     controls: {
       exclude: ['vertical', 'chevron', 'indented', 'sd-show', 'sd-hide']
