@@ -1,15 +1,22 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import '../../solid-components';
 
+import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import type { ConstantDefinition } from '../../../scripts/storybook/helper';
 
 const { argTypes, parameters } = storybookDefaults('sd-brandshape');
 const { overrideArgs } = storybookHelpers('sd-brandshape');
 const { generateTemplate } = storybookTemplate('sd-brandshape');
 
+/**
+ *
+ * Creates a container with brand character and visually emphasizes the content.
+ *
+ */
+
 export default {
   title: 'Components/sd-brandshape',
+  tags: ['!dev'],
   component: 'sd-brandshape',
   parameters: { ...parameters },
   args: overrideArgs([
@@ -35,157 +42,78 @@ export default {
   }
 };
 
-const increaseColumnWidth = (): ConstantDefinition => {
-  return {
-    type: 'template',
-    name: 'width',
-    value: `<div style="min-width: 300px; max-width: 600px; width: 100vw;">%TEMPLATE%</div>`
-  };
-};
-
 /**
  * Default: This shows sd-brandshape in its default state.
  */
 export const Default = {
+  name: 'Default',
   render: (args: any) => {
     return generateTemplate({ args });
   }
 };
 
 /**
- *  The different shapes of the brandshape.
+ * Use the `variant` attribute to display the brandshape with different background colors.
+ */
+
+export const Variant = {
+  name: 'Variant',
+  render: () => html`
+    <div class="space-y-5">
+      <sd-brandshape variant="primary">
+        <p class="sd-headline sd-headline--lg text-white">Primary Variant</p>
+      </sd-brandshape>
+
+      <sd-brandshape variant="neutral-100">
+        <p class="sd-headline sd-headline--lg">Neutral-100 Variant</p>
+      </sd-brandshape>
+
+      <div class="bg-primary">
+        <sd-brandshape variant="white">
+          <p class="sd-headline sd-headline--lg">White Variant</p>
+        </sd-brandshape>
+      </div>
+
+      <sd-brandshape variant="border-primary">
+        <p class="sd-headline sd-headline--lg">Border Primary Variant</p>
+      </sd-brandshape>
+
+      <div class="bg-primary">
+        <sd-brandshape variant="border-white">
+          <p class="sd-headline sd-headline--lg text-white">Border White Variant</p>
+        </sd-brandshape>
+      </div>
+
+      <sd-brandshape variant="image">
+        <p class="sd-headline sd-headline--lg">Image Variant</p>
+        <img slot="image" style="transform:translateY(-30%);" src="./placeholders/images/generic.jpg" alt="Generic" />
+      </sd-brandshape>
+    </div>
+  `
+};
+
+/**
+ * Use the `shapes` attribute to only display specific parts of the brandshape.
  */
 export const Shapes = {
   name: 'Shapes',
-  parameters: { controls: { exclude: ['shapes'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: {
-          type: 'attribute',
-          name: 'shapes',
-          values: ['["top", "middle", "bottom"]', '["top", "middle"]', '["middle", "bottom"]', '["top"]']
-        }
-      },
-      args,
-      constants: increaseColumnWidth()
-    });
-  }
-};
+  render: () => html`
+    <div class="space-y-5">
+      <sd-brandshape shapes='["top", "middle", "bottom"]'>
+        <p class="text-white">All Shapes</p>
+      </sd-brandshape>
 
-/**
- *  The different variants of the brandshape.
- */
-export const Variants = {
-  name: 'Variants',
-  parameters: { controls: { exclude: ['variant'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: {
-          type: 'attribute',
-          name: 'variant',
-          values: ['neutral-100', 'primary', 'white', 'border-primary', 'border-white', 'image']
-        }
-      },
-      options: {
-        templateBackgrounds: {
-          alternate: 'y',
-          colors: [
-            'white',
-            'white',
-            'rgb(var(--sd-color-primary, 0 53 142))',
-            'white',
-            'rgb(var(--sd-color-primary, 0 53 142))',
-            'white'
-          ]
-        }
-      },
-      args,
-      constants: increaseColumnWidth()
-    });
-  }
-};
+      <sd-brandshape shapes='["top"]'>
+        <p class="text-white">Top Shape</p>
+      </sd-brandshape>
 
-/**
- * The different breakpoints of the brandshape.
- */
-export const Breakpoints = {
-  name: 'Breakpoints',
-  render: (args: any) => {
-    const getSize = (breakpoint: string): string => {
-      const breakpoints: { [key: string]: string } = {
-        '≤ 414px': '414px',
-        '> 414px': '415px',
-        '> 640px': '641px'
-      };
-      return breakpoints[breakpoint] || '100%';
-    };
-    return generateTemplate({
-      axis: {
-        y: {
-          type: 'template',
-          name: 'query width = ...',
-          values: ['≤ 414px', '> 414px', '> 640px'].map(breakpoint => {
-            return {
-              title: breakpoint,
-              value: `<div style="width: ${getSize(breakpoint)}">%TEMPLATE%</div>`
-            };
-          })
-        }
-      },
-      args
-    });
-  }
-};
+      <sd-brandshape shapes='["top", "middle"]'>
+        <p class="text-white">Top and Middle Shape</p>
+      </sd-brandshape>
 
-/**
- * Use the `base`, `content`, `shape-top`, `shape-middle` or `shape-bottom` part selectors to customize the brandshape.
- */
-export const Parts = {
-  parameters: {
-    controls: { exclude: ['base', 'content', 'shape-top', 'shape-middle', 'shape-bottom'] }
-  },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: {
-          type: 'template',
-          name: 'sd-brandshape::part(...){outline: solid 2px red}',
-          values: ['base', 'content', 'shape-top', 'shape-middle', 'shape-bottom'].map(part => {
-            return {
-              title: part,
-              value: `<style>#part-${part} sd-brandshape::part(${part}){outline: solid 2px red}</style><div id="part-${part}">%TEMPLATE%</div>`
-            };
-          })
-        }
-      },
-      args,
-      constants: increaseColumnWidth()
-    });
-  }
-};
-
-/**
- * When using the 'image' variant, use the transform property to adjust the image position. In this example, the image is moved up and skewed to fit the brandshape.
- */
-export const Sample = {
-  name: 'Sample: Positioning Image Variant',
-  render: () => {
-    return generateTemplate({
-      args: overrideArgs([
-        {
-          type: 'attribute',
-          name: 'variant',
-          value: 'image'
-        },
-        {
-          type: 'slot',
-          name: 'image',
-          value: `<img slot="image" style="transform:translateY(-50%) skewY(11deg)" src="./placeholders/images/coins.jpg" alt="collaboration" />`
-        },
-        { type: 'attribute', name: 'shapes', value: '["top", "middle", "bottom"]' }
-      ])
-    });
-  }
+      <sd-brandshape shapes='["middle", "bottom"]'>
+        <p class="text-white">Middle and Bottom Shape</p>
+      </sd-brandshape>
+    </div>
+  `
 };
