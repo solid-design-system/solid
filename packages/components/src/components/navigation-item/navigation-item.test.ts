@@ -104,7 +104,7 @@ describe('<sd-navigation-item>', () => {
   // Test overriding link variant
   describe('when given an "href" property', () => {
     // Render
-    it('only renders an anchor element, regardless of children', async () => {
+    it('only renders an anchor element regardless of children', async () => {
       const el = await fixture<SdNavigationItem>(variants.link.children);
 
       expect(el).to.exist;
@@ -208,6 +208,7 @@ describe('<sd-navigation-item>', () => {
     // Events
     it('emits "sd-show" event when clicking closed HTML details element summary', async () => {
       const el = await fixture<SdNavigationItem>(variants.accordion.default);
+
       const details = el.shadowRoot!.querySelector('details');
       const summary = el.shadowRoot!.querySelector('summary');
       const clickHandler = sinon.spy();
@@ -293,6 +294,43 @@ describe('<sd-navigation-item>', () => {
 
         expect(hideHandler.calledOnce).to.be.false;
       });
+    });
+  });
+
+  // Test separate variant
+  describe('when given a value for the "children" slot, an "href" property and "separate" property is true', () => {
+    it('renders an accordion with a link simultaneously', async () => {
+      const el = await fixture<SdNavigationItem>(
+        html`<sd-navigation-item separated href="#" vertical chevron>Navigation</sd-navigation-item>`
+      );
+
+      expect(el).to.exist;
+      expect(el.shadowRoot!.querySelector('a')).to.exist;
+      expect(el.shadowRoot!.querySelector('button')).to.exist;
+      expect(el.shadowRoot!.querySelector('summary')).to.not.exist;
+      expect(el.shadowRoot!.querySelector('details')).to.not.exist;
+    });
+
+    it('renders an open accordion with children slot and a link simultaneously', async () => {
+      const el = await fixture<SdNavigationItem>(
+        html`<sd-navigation-item separated href="#" vertical chevron open
+          >Navigation${childrenSlot}</sd-navigation-item
+        >`
+      );
+
+      expect(el).to.exist;
+      expect(el.shadowRoot!.querySelector('a')).to.exist;
+      expect(el.shadowRoot!.querySelector('button')).to.exist;
+      expect(el.shadowRoot!.querySelector('summary')).to.not.exist;
+      expect(el.shadowRoot!.querySelector('details')).to.not.exist;
+    });
+
+    //Accessibility
+    it('passes accessibility test', async () => {
+      const el = await fixture<SdNavigationItem>(
+        html`<sd-navigation-item href="#" separated>${defaultSlot}${childrenSlot}</sd-navigation-item>`
+      );
+      await expect(el).to.be.accessible();
     });
   });
 });
