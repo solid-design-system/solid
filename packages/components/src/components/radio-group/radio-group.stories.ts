@@ -55,7 +55,7 @@ export const Default = {
 };
 
 /**
- * Use the `size` attribute to set the size of the radio buttons.
+ * Use the `size` attribute to set the size of the radio buttons. The default is `lg`. In tight spaces, consider using `sm`.
  */
 
 export const Size = {
@@ -66,21 +66,24 @@ export const Size = {
         <sd-radio value="1">Radio 1</sd-radio>
         <sd-radio value="2">Radio 2</sd-radio>
         <sd-radio value="3">Radio 3</sd-radio>
-        <label slot="label">Large</label>
+        <label slot="label">Large Group</label>
       </sd-radio-group>
 
       <sd-radio-group name="radio-group" size="sm">
         <sd-radio value="1">Radio 1</sd-radio>
         <sd-radio value="2">Radio 2</sd-radio>
         <sd-radio value="3">Radio 3</sd-radio>
-        <label slot="label">Small</label>
+        <label slot="label">Small Group</label>
       </sd-radio-group>
     </div>
   `
 };
 
 /**
- * Use the `required` attribute to mark the element as required.
+ * Use the `required` attribute to mark the element as required. This can be used for form validation purposes.
+ *
+ *
+ * **Accessibility:** To ensure screen-reader compatibility, consider including a statement such as "Fields marked with an asterisk (*) are required" at the start of the form.
  */
 
 export const Required = {
@@ -91,7 +94,7 @@ export const Required = {
         <sd-radio value="1">Radio 1</sd-radio>
         <sd-radio value="2">Radio 2</sd-radio>
         <sd-radio value="3">Radio 3</sd-radio>
-        <label slot="label">Group</label>
+        <label slot="label">Required Group</label>
       </sd-radio-group>
     </div>
   `
@@ -109,14 +112,14 @@ export const Orientation = {
         <sd-radio value="1">Radio 1</sd-radio>
         <sd-radio value="2">Radio 2</sd-radio>
         <sd-radio value="3">Radio 3</sd-radio>
-        <label slot="label">Group</label>
+        <label slot="label">Vertical Group</label>
       </sd-radio-group>
 
       <sd-radio-group name="radio-group" orientation="horizontal">
         <sd-radio value="1">Radio 1</sd-radio>
         <sd-radio value="2">Radio 2</sd-radio>
         <sd-radio value="3">Radio 3</sd-radio>
-        <label slot="label">Group</label>
+        <label slot="label">Horizontal Group</label>
       </sd-radio-group>
     </div>
   `
@@ -134,7 +137,7 @@ export const BoldLabel = {
         <sd-radio value="1">Radio 1</sd-radio>
         <sd-radio value="2">Radio 2</sd-radio>
         <sd-radio value="3">Radio 3</sd-radio>
-        <label slot="label">Group Label</label>
+        <label slot="label">Bold Label Group</label>
       </sd-radio-group>
     </div>
   `
