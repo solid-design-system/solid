@@ -1,6 +1,7 @@
 import '../icon/icon';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
+import { ifDefined } from 'lit-html/directives/if-defined';
 import { property } from 'lit/decorators.js';
 import { setDefaultAnimation } from '../../utilities/animation-registry';
 import cx from 'classix';
@@ -31,23 +32,16 @@ export default class SdQuickfact extends SdAccordion {
       part="header"
       id="header"
       class=${cx(
-        'flex text-base gap-4 font-bold items-center select-none px-4 py-3 focus-visible:focus-outline text-primary hover:bg-neutral-200 relative group',
+        'text-base font-bold items-center select-none focus-visible:focus-outline text-primary relative group flex flex-row hover:bg-transparent gap-3 pb-3 pt-0 px-0 sm:flex-col sm:gap-4 sm:pb-8',
         this.expandable && 'cursor-pointer'
       )}
-      aria-label="header"
-      aria-expanded=${this.open ? 'true' : 'false'}
-      aria-controls="content"
+      aria-label=${ifDefined(this.expandable ? 'header' : undefined)}
+      aria-expanded=${ifDefined(this.expandable ? (this.open ? 'true' : 'false') : undefined)}
+      aria-controls=${ifDefined(this.expandable ? 'content' : undefined)}
       tabindex=${this.expandable ? '0' : '-1'}
-      @click=${this.handleSummaryClick}
-      @keydown=${this.handleSummaryKeyDown}
+      @click=${this.expandable ? this.handleSummaryClick : null}
+      @keydown=${this.expandable ? this.handleSummaryKeyDown : null}
     >
-      <div
-        part="summary-border"
-        class=${cx(
-          !this.open && 'opacity-0',
-          'w-1 bg-accent absolute left-0 transition-all h-[calc(100%-16px)] group-hover:h-full'
-        )}
-      ></div>
       ${this.RenderOptionalIcon()} ${this.RenderSummary()} ${this.RenderSummaryIcons()}
     </header>`;
   };
@@ -112,15 +106,7 @@ export default class SdQuickfact extends SdAccordion {
         border: 0;
       }
 
-      [part='header'] {
-        @apply flex flex-row hover:bg-transparent gap-3 pb-3 pt-0 px-0;
-      }
-
       @media (min-width: 640px) {
-        [part='header'] {
-          @apply flex-col gap-4 pb-8;
-        }
-
         [part='base'] {
           padding: var(--sd-spacing-6, 1.5rem);
         }
@@ -138,10 +124,6 @@ export default class SdQuickfact extends SdAccordion {
         [part='icon'] {
           font-size: var(--sd-spacing-24, 6rem);
         }
-      }
-
-      [part='summary-border'] {
-        @apply hidden;
       }
     `
   ];
