@@ -274,13 +274,7 @@ export default class SdNavigationItem extends SolidElement {
       </details>`;
     }
     if (this.separated) {
-      return html`<div
-        part="details"
-        id="navigation-item-details"
-        ?open=${this.open}
-        class="relative flex flex-col"
-        tabindex="-1"
-      >
+      return html`<div part="details" id="navigation-item-details" class="relative flex flex-col">
         ${root}${this.open ? html`<slot name="children"></slot>` : ''}
       </div>`;
     }
