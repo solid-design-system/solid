@@ -123,20 +123,4 @@ export const Required = {
   `
 };
 
-/**
- * Use the `boldlabel` attribute to set the group label to bold.
- */
-
-export const BoldLabel = {
-  name: 'Bold Label',
-  render: () => html`
-    <div class="flex gap-12">
-      <sd-radio-group name="radio-group" boldlabel>
-        <sd-radio value="1">Radio 1</sd-radio>
-        <sd-radio value="2">Radio 2</sd-radio>
-        <sd-radio value="3">Radio 3</sd-radio>
-        <label slot="label">Bold Label Group</label>
-      </sd-radio-group>
-    </div>
-  `
-};
+// TODO: add setCustomValidation example
