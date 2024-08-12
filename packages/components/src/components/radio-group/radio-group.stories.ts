@@ -55,7 +55,7 @@ export const Default = {
 };
 
 /**
- * Use the `size` attribute to set the size of the radio buttons. The default is `lg`. In tight spaces, consider using `sm`.
+ * Use the `size` attribute to change the size.
  */
 
 export const Size = {
@@ -66,35 +66,12 @@ export const Size = {
         <sd-radio value="1">Radio 1</sd-radio>
         <sd-radio value="2">Radio 2</sd-radio>
         <sd-radio value="3">Radio 3</sd-radio>
-        <label slot="label">Large Group</label>
       </sd-radio-group>
 
       <sd-radio-group name="radio-group" size="sm">
         <sd-radio value="1">Radio 1</sd-radio>
         <sd-radio value="2">Radio 2</sd-radio>
         <sd-radio value="3">Radio 3</sd-radio>
-        <label slot="label">Small Group</label>
-      </sd-radio-group>
-    </div>
-  `
-};
-
-/**
- * Use the `required` attribute to mark the element as required. This can be used for form validation purposes.
- *
- *
- * **Accessibility:** To ensure screen-reader compatibility, consider including a statement such as "Fields marked with an asterisk (*) are required" at the start of the form.
- */
-
-export const Required = {
-  name: 'Required',
-  render: () => html`
-    <div class="flex gap-12">
-      <sd-radio-group name="radio-group" required>
-        <sd-radio value="1">Radio 1</sd-radio>
-        <sd-radio value="2">Radio 2</sd-radio>
-        <sd-radio value="3">Radio 3</sd-radio>
-        <label slot="label">Required Group</label>
       </sd-radio-group>
     </div>
   `
@@ -120,6 +97,27 @@ export const Orientation = {
         <sd-radio value="2">Radio 2</sd-radio>
         <sd-radio value="3">Radio 3</sd-radio>
         <label slot="label">Horizontal Group</label>
+      </sd-radio-group>
+    </div>
+  `
+};
+
+/**
+ * Use the `required` attribute to mark the element as required. This can be used for form validation purposes.
+ *
+ *
+ * **Accessibility:** To ensure screen-reader compatibility, consider including a statement such as "Fields marked with an asterisk (*) are required" at the start of the form.
+ */
+
+export const Required = {
+  name: 'Required',
+  render: () => html`
+    <div class="flex gap-12">
+      <sd-radio-group name="radio-group" required boldlabel>
+        <sd-radio value="1">Radio 1</sd-radio>
+        <sd-radio value="2">Radio 2</sd-radio>
+        <sd-radio value="3">Radio 3</sd-radio>
+        <label slot="label">Required Group</label>
       </sd-radio-group>
     </div>
   `
