@@ -214,10 +214,13 @@ export default class SdCarousel extends SolidElement {
   }
 
   private handleScrollEnd() {
+    console.log('handleScrollEnd');
     const slides = this.getSlides();
     const entries = [...this.intersectionObserverEntries.values()];
+    console.log(slides, entries);
 
     const firstIntersecting: IntersectionObserverEntry | undefined = entries.find(entry => entry.isIntersecting);
+    console.log('first intersecting', firstIntersecting?.target);
 
     if (this.loop && firstIntersecting?.target.hasAttribute('data-clone')) {
       const clonePosition = Number(firstIntersecting.target.getAttribute('data-clone'));
@@ -231,6 +234,7 @@ export default class SdCarousel extends SolidElement {
     // Activate the first intersecting slide
     if (firstIntersecting) {
       this.activeSlide = slides.indexOf(firstIntersecting.target as SdCarouselItem);
+      console.log(this.activeSlide);
     }
   }
 
@@ -260,6 +264,7 @@ export default class SdCarousel extends SolidElement {
   @watch('loop', { waitUntilFirstUpdate: true })
   @watch('slidesPerPage', { waitUntilFirstUpdate: true })
   initializeSlides() {
+    console.log('initializeSlides');
     const slides = this.getSlides();
     const intersectionObserver = this.intersectionObserver;
 
@@ -307,6 +312,7 @@ export default class SdCarousel extends SolidElement {
 
   @watch('activeSlide')
   handelSlideChange() {
+    console.log('handleSlideChange');
     this.currentPage = SdCarousel.getCurrentPage(
       this.getSlides().length,
       this.activeSlide,
@@ -335,7 +341,8 @@ export default class SdCarousel extends SolidElement {
   }
 
   @watch('slidesPerMove')
-  handleSlidesPerMoveChange() {
+  async handleSlidesPerMoveChange() {
+    console.log('handleSlidePerMoveChange');
     const slides = this.getSlides({ excludeClones: false });
 
     const slidesPerMove = this.slidesPerMove;
@@ -348,7 +355,10 @@ export default class SdCarousel extends SolidElement {
       }
     });
 
-    this.nextTillFirst();
+    console.log(this.activeSlide, this.currentPage);
+    // this.handleScrollEnd();
+    await this.updateComplete;
+    this.handleScrollEnd();
   }
 
   @watch('autoplay')
@@ -416,6 +426,8 @@ export default class SdCarousel extends SolidElement {
    * @param behavior - The behavior used for scrolling.
    */
   goToSlide(index: number, behavior: ScrollBehavior = 'smooth') {
+    console.log('goToSlide');
+    console.log('index', index);
     const { slidesPerPage, loop, scrollContainer } = this;
 
     const slides = this.getSlides();
@@ -427,12 +439,20 @@ export default class SdCarousel extends SolidElement {
     const newActiveSlide = (index + slides.length) % slides.length;
     this.activeSlide = newActiveSlide;
 
+    console.log('current slide:', this.slides[this.activeSlide]);
+
+    console.log('newActiveSlide', newActiveSlide);
+
     // Get the index of the next slide. For looping carousel it adds `slidesPerPage`
     // to normalize the starting index in order to ignore the first nth clones.
-    const nextSlideIndex = clamp(index + (loop ? slidesPerPage : 0), 0, slidesWithClones.length);
+    const nextSlideIndex = clamp(index + (loop ? slidesPerPage : 0), 0, slidesWithClones.length + 1);
     const nextSlide = slidesWithClones[nextSlideIndex];
 
+    console.log('nextSlideIndex', nextSlideIndex);
+    console.log('nextSlide', nextSlide);
+
     const scrollContainerRect = scrollContainer.getBoundingClientRect();
+
     const nextSlideRect = nextSlide.getBoundingClientRect();
 
     scrollContainer.scrollTo({
