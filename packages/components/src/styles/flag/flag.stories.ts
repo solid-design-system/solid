@@ -7,6 +7,9 @@ const { overrideArgs } = storybookHelpers('sd-flag');
 
 /**
  * A small, non-interactive label the represents a category.
+ *
+ * **Related templates**:
+ * - [Teaser with Chip and Flag](?path=/docs/templates-teaser-with-chip-and-flag--docs)
  */
 
 export default {
@@ -29,7 +32,7 @@ export const Default = {
 };
 
 /**
- * Offers 4 color variants for alternate experiences:
+ * Use the variant `classes` for alternative appearances:
  * - neutral-200 (default): use the class `sd-flag--neutral-200`
  * - neutral-300: use the class `sd-flag--neutral-300`
  * - neutral-500: use the class `sd-flag--neutral-500`
