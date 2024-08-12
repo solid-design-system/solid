@@ -29,6 +29,7 @@ export default {
 };
 
 export const Default = {
+  name: 'Default',
   render: (args: any) => {
     return generateTemplate({ args });
   }
@@ -203,6 +204,7 @@ export const StandaloneAndIconSlots = {
 };
 
 export const IconAlignment = {
+  name: 'Icon Alignment',
   parameters: {
     controls: { exclude: ['icon-right', 'default', 'standalone', 'base'] }
   },
@@ -248,6 +250,7 @@ export const IconAlignment = {
 };
 
 export const Parts = {
+  name: 'Parts',
   parameters: {
     controls: { exclude: ['base', 'label', 'icon-left', 'icon-right'] }
   },
@@ -283,6 +286,7 @@ export const Parts = {
 };
 
 export const Mouseless = {
+  name: 'Mouseless',
   render: (args: any) => {
     return html`<div class="mouseless">${generateTemplate({ args })}</div>`;
   },
