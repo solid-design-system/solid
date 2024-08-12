@@ -8,7 +8,10 @@ const { generateTemplate } = storybookTemplate('sd-dropdown');
 const { overrideArgs } = storybookHelpers('sd-dropdown');
 
 /**
- * `sd-dropdown` displays a list of actions or options in a panel when activated.
+ * Displays a list of actions or options in a panel when activated.
+ *
+ * **Related templates:**
+ * - [Dropdown](?path=/docs/templates-sd-dropdown--docs)
  */
 
 export default {
@@ -74,10 +77,18 @@ export default {
           #anchor--components-sd-dropdown .innerZoomElementWrapper,
           #anchor--components-sd-dropdown--rounded .innerZoomElementWrapper,
           #anchor--components-sd-dropdown--placement .innerZoomElementWrapper,
+          #anchor--components-sd-dropdown--placement .innerZoomElementWrapper,
           #anchor--components-sd-dropdown--distance .innerZoomElementWrapper,
           #anchor--components-sd-dropdown--stay-open .innerZoomElementWrapper,
-          #anchor--components-sd-dropdown--skidding .innerZoomElementWrapper {
+          #anchor--components-sd-dropdown--skidding .innerZoomElementWrapper,
+          #anchor--components-sd-dropdown--no-flip .innerZoomElementWrapper {
             min-height: 150px;
+          }
+          #anchor--components-sd-dropdown--placement .innerZoomElementWrapper {
+            margin-top: 25px;
+          }
+          #anchor--components-sd-dropdown--no-auto-size .innerZoomElementWrapper {
+            min-height: 250px;
           }</style
         >${story()}`
   ] as unknown
@@ -95,7 +106,7 @@ export const Default = {
         constants: {
           type: 'slot',
           name: 'default',
-          value: '<div class="example"></div>'
+          value: '<div class="example slot slot--border slot--background"></div>'
         },
         args
       })}
@@ -185,9 +196,9 @@ export const StayOpen = {
   render: () => html`
     <sd-dropdown stay-open-on-select>
       <div class="example">
-        <sd-link href="#">Link 1</sd-link>
-        <sd-link href="#">Link 2</sd-link>
-        <sd-link href="#">Link 3</sd-link>
+        <sd-checkbox>Checkbox 1</sd-checkbox>
+        <sd-checkbox>Checkbox 2</sd-checkbox>
+        <sd-checkbox>Checkbox 3</sd-checkbox>
       </div>
       <sd-button slot="trigger">Trigger</sd-button>
     </sd-dropdown>
@@ -201,7 +212,7 @@ export const StayOpen = {
 export const Distance = {
   name: 'Distance',
   render: () => html`
-    <sd-dropdown open distance="10">
+    <sd-dropdown open distance="8">
       <div class="slot slot--border slot--background w-52 h-12">Default Slot</div>
       <sd-button slot="trigger">Trigger</sd-button>
     </sd-dropdown>
@@ -209,7 +220,7 @@ export const Distance = {
 };
 
 /**
- * Use the `skidding` attribute to to offset the panel away from its trigger.
+ * Use the `skidding` attribute to offset the panel away from its trigger.
  */
 
 export const Skidding = {
