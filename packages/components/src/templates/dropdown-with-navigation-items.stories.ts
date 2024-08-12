@@ -28,6 +28,9 @@ export const Default = {
       sd-dropdown[open] sd-navigation-item::part(chevron) {
         transform: rotate(180deg);
       }
+      .list-with-icons sd-navigation-item::part(base) {
+        padding: 0;
+      }
     </style>
     <div class="flex gap-12">
       <sd-dropdown no-auto-size>
@@ -52,7 +55,7 @@ export const Default = {
         </div>
       </sd-dropdown>
 
-      <sd-dropdown no-auto-size>
+      <sd-dropdown no-auto-size class="list-with-icons">
         <sd-navigation-item slot="trigger" vertical chevron>Trigger </sd-navigation-item>
         <div class="flex flex-col p-4">
           <h4 class="sd-headline sd-headline--size-base">Nisi eu excepteur anim esse</h4>
@@ -60,19 +63,19 @@ export const Default = {
             <sd-icon name="system/image" library="default"></sd-icon>
             Navigation
           </sd-navigation-item>
-          <sd-navigation-item href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/">
+          <sd-navigation-item
+            divider
+            vertical
+            href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/"
+          >
             <sd-icon name="system/image" library="default"></sd-icon>
             Navigation
           </sd-navigation-item>
-          <sd-navigation-item href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/">
-            <sd-icon name="system/image" library="default"></sd-icon>
-            Navigation
-          </sd-navigation-item>
-          <sd-navigation-item href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/">
-            <sd-icon name="system/image" library="default"></sd-icon>
-            Navigation
-          </sd-navigation-item>
-          <sd-navigation-item href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/">
+          <sd-navigation-item
+            divider
+            vertical
+            href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/"
+          >
             <sd-icon name="system/image" library="default"></sd-icon>
             Navigation
           </sd-navigation-item>
