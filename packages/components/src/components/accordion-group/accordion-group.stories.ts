@@ -8,7 +8,7 @@ const { generateTemplate } = storybookTemplate('sd-accordion-group');
 
 /**
  *
- * Accordion groups are used to group multiple accordions together.
+ * Used to group multiple accordions together.
  *
  *  **Related templates**:
  * - [Accordion Group](?path=/docs/templates-accordion-group--docs)
