@@ -38,24 +38,32 @@ export const Default = {
 
 export const Open = {
   name: 'Open',
-  render: () =>
-    html`<div class="grid grid-cols-2 gap-12">
+  render: () => {
+    return html`<div class="grid grid-cols-2 gap-12">
       <sd-expandable>
-        <div class="sd-paragraph h-16">
+        <div class="sd-paragraph h-full">
           Between 50 and 60 per cent of global economic output depends on functioning ecosystems and the associated
           natural services. This emphasises the high economic importance of the topic and the need to address the
           associated risks and take them into account in the investment process. In the biodiversity guideline, we
           describe the relevance of the topic and Union Investment's approach as a long-term investor.
         </div> </sd-expandable
       ><sd-expandable open="true">
-        <div class="sd-paragraph h-32">
+        <div class="sd-paragraph h-full">
           Between 50 and 60 per cent of global economic output depends on functioning ecosystems and the associated
           natural services. This emphasises the high economic importance of the topic and the need to address the
           associated risks and take them into account in the investment process. In the biodiversity guideline, we
           describe the relevance of the topic and Union Investment's approach as a long-term investor.
         </div>
       </sd-expandable>
-    </div>`
+    </div>`;
+  },
+  parameters: {
+    docs: {
+      story: {
+        height: '350px'
+      }
+    }
+  }
 };
 
 /**
