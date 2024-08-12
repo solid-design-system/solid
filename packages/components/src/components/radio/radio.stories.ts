@@ -45,19 +45,6 @@ export const Size = {
 };
 
 /**
- * Use the `invalid` attribute to mark that the element is not in a format or a value the application will accept.
- */
-
-export const Invalid = {
-  name: 'Invalid',
-  render: () => html`
-    <div class="flex gap-12">
-      <sd-radio value="1" invalid>Invalid</sd-radio>
-    </div>
-  `
-};
-
-/**
  * Use the `disabled` attribute to disable a input radio.
  */
 
@@ -66,6 +53,19 @@ export const Disabled = {
   render: () => html`
     <div class="flex gap-12">
       <sd-radio value="1" disabled>Disabled</sd-radio>
+    </div>
+  `
+};
+
+/**
+ * For an invalid radio-group (since radios always come in groups) an error-text underneath the group is mandatory.
+ */
+
+export const Invalid = {
+  name: 'Invalid',
+  render: () => html`
+    <div class="flex gap-12">
+      <sd-radio value="1" invalid>Invalid</sd-radio>
     </div>
   `
 };
