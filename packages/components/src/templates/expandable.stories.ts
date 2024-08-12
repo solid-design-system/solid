@@ -1,13 +1,6 @@
 import '../solid-components';
 import { html } from 'lit-html';
 
-/**
- * Examples of the `sd-expandable` component in different backgrounds or with different variants.
- * Can be used with background options of `white`, `neutral-100` and `primary-100`.
- * When using these options, use the `--gradient-color-start` and `--gradient-color-end` CSS variables to align the gradient colors.
- *
- */
-
 export default {
   tags: ['!dev'],
   title: 'Templates/Expandable',
@@ -19,107 +12,99 @@ export default {
     }
   }
 };
+
 /**
- * Using`white` background.
- *
+ * - `white`
+ * - `neutral-100`
+ * - `primary-100`
+ * - `primary (if inverted)`
  */
-export const Default = {
-  name: 'Expandable in white background',
-  render: () => html`
-    <div class="background-sample">
-      <sd-expandable>
-        <div class="slot slot--border slot--text h-16">Default slot</div>
-      </sd-expandable>
-    </div>
-  `
+
+export const BackgroundOptions = {
+  name: 'Background options',
+  render: () =>
+    html`<div class="flex flex-col gap-4">
+      <div class="background-sample">
+        <sd-expandable>
+          <div class="sd-paragraph h-full">
+            For us, diversity equals strength. By taking the views and experiences of a wide range of people into
+            account, we provide room for creative solutions and ensure that we are equipped for the future. A diverse
+            and inclusive working environment is important to us. We benefit from the perspectives of different genders,
+            age groups, educational levels and backgrounds, thus guaranteeing that we are successful together.
+          </div>
+        </sd-expandable>
+      </div>
+      <div class="background-sample bg-neutral-100 p-4">
+        <sd-expandable
+          style="--gradient-color-start: rgba(246, 246, 246, 0);--gradient-color-end: rgba(246, 246, 246, 1)"
+        >
+          <div class="sd-paragraph h-full">
+            For us, diversity equals strength. By taking the views and experiences of a wide range of people into
+            account, we provide room for creative solutions and ensure that we are equipped for the future. A diverse
+            and inclusive working environment is important to us. We benefit from the perspectives of different genders,
+            age groups, educational levels and backgrounds, thus guaranteeing that we are successful together.
+          </div>
+        </sd-expandable>
+      </div>
+      <div class="background-sample bg-primary-100 p-4">
+        <sd-expandable
+          style="--gradient-color-start: rgba(236, 240, 249, 0);--gradient-color-end: rgba(236, 240, 249, 1)"
+        >
+          <div class="sd-paragraph h-full">
+            For us, diversity equals strength. By taking the views and experiences of a wide range of people into
+            account, we provide room for creative solutions and ensure that we are equipped for the future. A diverse
+            and inclusive working environment is important to us. We benefit from the perspectives of different genders,
+            age groups, educational levels and backgrounds, thus guaranteeing that we are successful together.
+          </div>
+        </sd-expandable>
+      </div>
+      <div class="background-sample bg-primary p-4">
+        <sd-expandable inverted>
+          <div class="sd-paragraph h-full ext-white">
+            For us, diversity equals strength. By taking the views and experiences of a wide range of people into
+            account, we provide room for creative solutions and ensure that we are equipped for the future. A diverse
+            and inclusive working environment is important to us. We benefit from the perspectives of different genders,
+            age groups, educational levels and backgrounds, thus guaranteeing that we are successful together.
+          </div>
+        </sd-expandable>
+      </div>
+    </div> `
 };
 
 /**
- * Using `neutral-100` background.
+ * - `lead text` (default)
+ * - `paragraph`
  */
 
-export const ExpandableWithNeutralBackground = {
-  name: 'Expandable in neutral background',
+export const FontStyleOptions = {
+  name: 'Font style options',
   render: () =>
-    html` <div class="background-sample bg-neutral-100 p-4">
-      <sd-expandable
-        style="--gradient-color-start: rgba(246, 246, 246, 0);--gradient-color-end: rgba(246, 246, 246, 1)"
-      >
-        <div class="slot slot--border slot--text h-16">Default slot</div>
-      </sd-expandable>
-    </div>`
-};
-
-/**
- * Using `primary-100` background.
- */
-
-export const ExpandableWithPrimaryBackground = {
-  name: 'Expandable in primary background',
-  render: () =>
-    html`<div class="background-sample bg-primary-100 p-4">
-      <sd-expandable
-        style="--gradient-color-start: rgba(236, 240, 249, 0);--gradient-color-end: rgba(236, 240, 249, 1)"
-      >
-        <div class="slot slot--border slot--text h-16">Default slot</div>
-      </sd-expandable>
-    </div>`
-};
-
-/**
- * Using `primary-100` background with inverted colors.
- */
-
-export const ExpandableWithPrimaryInvertedBackground = {
-  name: 'Expandable in primary background, inverted',
-  render: () =>
-    html`<div class="background-sample bg-primary p-4">
-      <sd-expandable inverted>
-        <div class="slot slot--border slot--text h-16">Default slot</div>
-      </sd-expandable>
-    </div>`
-};
-
-/**
- * The default slot can be used with `lead text` for alternate expandable experiences.
- */
-
-export const ExpandableWithLeadText = {
-  name: 'Expandable with lead text',
-  render: () =>
-    html`<div class="background-sample bg-neutral-100 p-4">
-      <sd-expandable
-        style="--gradient-color-start: rgba(246, 246, 246, 0);--gradient-color-end: rgba(246, 246, 246, 1)"
-      >
-        <div class="sd-leadtext">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie phasellus
-          dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique. Facilisis
-          commodo integer hendrerit tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo
-          ullamcorper odio tempor molestie phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non
-          tortor, sit neque tristique. Facilisis commodo integer hendrerit tortor.
-        </div>
-      </sd-expandable>
-    </div>`
-};
-
-/**
- * The default slot can be used with `paragraph` for alternate expandable experiences.
- */
-
-export const ExpandableWithParagraph = {
-  name: 'Expandable with paragraph',
-  render: () =>
-    html`<div class="background-sample bg-neutral-100 p-4">
-      <sd-expandable
-        style="--gradient-color-start: rgba(246, 246, 246, 0);--gradient-color-end: rgba(246, 246, 246, 1)"
-      >
-        <div class="sd-paragraph">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie phasellus
-          dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique. Facilisis
-          commodo integer hendrerit tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo
-          ullamcorper odio tempor molestie phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non
-          tortor, sit neque tristique. Facilisis commodo integer hendrerit tortor.
-        </div>
-      </sd-expandable>
+    html`<div class="flex flex-col gap-4">
+      <div class="background-sample bg-neutral-100 p-4">
+        <sd-expandable
+          style="--gradient-color-start: rgba(246, 246, 246, 0);--gradient-color-end: rgba(246, 246, 246, 1)"
+        >
+          <div class="sd-leadtext">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
+            phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique.
+            Facilisis commodo integer hendrerit tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh
+            justo ullamcorper odio tempor molestie phasellus dui vel id. Velit in sed non orci pellentesque vivamus
+            nunc. At non tortor, sit neque tristique. Facilisis commodo integer hendrerit tortor.
+          </div>
+        </sd-expandable>
+      </div>
+      <div class="background-sample bg-neutral-100 p-4">
+        <sd-expandable
+          style="--gradient-color-start: rgba(246, 246, 246, 0);--gradient-color-end: rgba(246, 246, 246, 1)"
+        >
+          <div class="sd-paragraph">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
+            phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique.
+            Facilisis commodo integer hendrerit tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh
+            justo ullamcorper odio tempor molestie phasellus dui vel id. Velit in sed non orci pellentesque vivamus
+            nunc. At non tortor, sit neque tristique. Facilisis commodo integer hendrerit tortor.
+          </div>
+        </sd-expandable>
+      </div>
     </div>`
 };
