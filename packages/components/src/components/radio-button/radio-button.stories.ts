@@ -8,7 +8,13 @@ const { overrideArgs } = storybookHelpers('sd-radio-button');
 const { generateTemplate } = storybookTemplate('sd-radio-button');
 
 /**
- * It's a type of a radio-group-item similar to `sd-radio` which can be slotted inside of an `sd-radio-group`. Provides a button-style control for users to select one option from a group. Unlike `sd-radio`, `sd-radio-button` does not have an invalid state and should always have a pre-selected option (default value).
+ * Used to switch between different options or views by selecting one option from a group.
+ *
+ * Similar to `sd-radio` and can be slotted inside of an `sd-radio-group`. It does not have an invalid state and should always have a pre-selected option (default value).
+ *
+ * **Related components:**
+ * - [sd-radio](?path=/docs/components-sd-radio--default--docs)
+ * - [sd-radio-group](?path=/docs/components-sd-radio-group--default--docs)
  */
 
 export default {
@@ -39,7 +45,7 @@ export const Default = {
 };
 
 /**
- * Use the `size` attribute to change the size of the input radio.
+ * Use the `size` attribute to change the size.
  */
 
 export const Size = {
@@ -60,25 +66,6 @@ export const Size = {
 };
 
 /**
- * Use the `disabled` attribute to disable an input radio.
- */
-
-export const Disabled = {
-  name: 'Disabled',
-  render: () => html`
-    <div class="flex gap-12">
-      <sd-radio-button disabled>
-        <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-      </sd-radio-button>
-      <sd-radio-button showLabel disabled>
-        <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-        <div>Label</div>
-      </sd-radio-button>
-    </div>
-  `
-};
-
-/**
  * Use the `checked` attribute to set the state of the radio button to checked.
  */
 
@@ -88,10 +75,6 @@ export const Checked = {
     <div class="flex gap-12">
       <sd-radio-button checked>
         <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-      </sd-radio-button>
-      <sd-radio-button showLabel checked>
-        <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-        <div>Label</div>
       </sd-radio-button>
     </div>
   `
@@ -112,6 +95,40 @@ export const Label = {
       <sd-radio-button showLabel>
         <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
         <div>Label</div>
+      </sd-radio-button>
+    </div>
+  `
+};
+
+/**
+ * Use the `icon` slot to add system icons.
+ */
+
+export const Icon = {
+  name: 'Icon',
+  render: () => html`
+    <div class="flex gap-12">
+      <sd-radio-button>
+        <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+      </sd-radio-button>
+      <sd-radio-button showLabel>
+        <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+        <div>Label</div>
+      </sd-radio-button>
+    </div>
+  `
+};
+
+/**
+ * Use the `disabled` attribute to disable an input radio button.
+ */
+
+export const Disabled = {
+  name: 'Disabled',
+  render: () => html`
+    <div class="flex gap-12">
+      <sd-radio-button disabled>
+        <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
       </sd-radio-button>
     </div>
   `
