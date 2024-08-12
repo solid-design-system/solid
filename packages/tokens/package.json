@@ -4,7 +4,7 @@
   "description": "Solid Design System: Tokens",
   "main": "index.js",
   "scripts": {
-    "build": "node scripts/build.mjs",
+    "build": "node scripts/build.mjs && echo '✅ Build verified'",
     "verify": "pnpm build",
     "postversion": "pnpm build",
     "release": "semantic-release  --tagFormat 'tokens/${version}' -e semantic-release-monorepo",

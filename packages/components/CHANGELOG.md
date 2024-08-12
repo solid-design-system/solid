@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v3.12.0](https://github.com/solid-design-system/solid/compare/components/3.11.1...components/3.12.0) (2024-08-09)
+
+
+### Features
+
+* add quickfact ([#1189](https://github.com/solid-design-system/solid/issues/1189)) ([fc2de27](https://github.com/solid-design-system/solid/commit/fc2de277c58f217170ff39759313ad21d7a3391d))
+
+### 📈 Stats
+* Bundle size (uncompressed): 333 KB (+4 KB / +1%)
+* Bundle size (gzipped): 78 KB (unchanged)
+
 # [@solid-design-system/components-v3.11.1](https://github.com/solid-design-system/solid/compare/components/3.11.0...components/3.11.1) (2024-08-05)
 
 
