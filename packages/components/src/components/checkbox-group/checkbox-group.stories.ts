@@ -66,24 +66,6 @@ export const Size = {
 };
 
 /**
- * Use the `label`attribute to add a label on top.
- */
-
-export const Label = {
-  name: 'Label',
-  render: () => html`
-    <div class="flex gap-12">
-      <sd-checkbox-group orientation="vertical">
-        <label slot="label">Group Group</label>
-        <sd-checkbox value="1">Option 1</sd-checkbox>
-        <sd-checkbox value="2">Option 2</sd-checkbox>
-        <sd-checkbox value="3">Option 3</sd-checkbox>
-      </sd-checkbox-group>
-    </div>
-  `
-};
-
-/**
  * Use the `orientation` attribute to change the layout of the checkboxes.
  */
 
@@ -97,6 +79,24 @@ export const Orientation = {
         <sd-checkbox value="3">Option 3</sd-checkbox>
       </sd-checkbox-group>
       <sd-checkbox-group orientation="horizontal">
+        <sd-checkbox value="1">Option 1</sd-checkbox>
+        <sd-checkbox value="2">Option 2</sd-checkbox>
+        <sd-checkbox value="3">Option 3</sd-checkbox>
+      </sd-checkbox-group>
+    </div>
+  `
+};
+
+/**
+ * Use the `label`attribute to add a label on top.
+ */
+
+export const Label = {
+  name: 'Label',
+  render: () => html`
+    <div class="flex gap-12">
+      <sd-checkbox-group orientation="vertical">
+        <label slot="label">Group Group</label>
         <sd-checkbox value="1">Option 1</sd-checkbox>
         <sd-checkbox value="2">Option 2</sd-checkbox>
         <sd-checkbox value="3">Option 3</sd-checkbox>
