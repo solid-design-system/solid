@@ -54,8 +54,8 @@ export const Default = {
 /**
  * You can set the component's size with `width` (horizontal) or `height` (vertical) via CSS or inline-styles.
  */
-export const Sizes = {
-  name: 'Sizes',
+export const Size = {
+  name: 'Size',
   render: () => {
     return html` <div class="flex items-center gap-12">
       <div class="size-sm">
