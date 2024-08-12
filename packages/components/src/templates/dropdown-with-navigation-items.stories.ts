@@ -28,7 +28,7 @@ export const Default = {
       sd-dropdown[open] sd-navigation-item::part(chevron) {
         transform: rotate(180deg);
       }
-      .list-with-icons sd-navigation-item::part(base) {
+      .list-with-icons sd-navigation-item:not([slot='trigger'])::part(base) {
         padding: 0;
       }
     </style>
