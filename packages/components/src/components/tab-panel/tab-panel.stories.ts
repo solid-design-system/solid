@@ -7,6 +7,18 @@ const { argTypes, parameters } = storybookDefaults('sd-tab-panel');
 const { overrideArgs } = storybookHelpers('sd-tab-panel');
 const { generateTemplate } = storybookTemplate('sd-tab-panel');
 
+/**
+ * Used inside `sd-tab-group` to display tabbed content.
+ *
+ * **Related templates:**
+ * - [Tabs](?path=/docs/templates-tabs--docs)
+ *
+ *
+ *  **Related components:**
+ * - [sd-tab-group](?path=/docs/components-sd-tab-group--docs)
+ * - [sd-tab](?path=/docs/components-sd-tab--docs)
+ */
+
 export default {
   title: 'Components/sd-tab-panel',
   tags: ['!dev'],

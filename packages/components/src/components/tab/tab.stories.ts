@@ -9,6 +9,14 @@ const { generateTemplate } = storybookTemplate('sd-tab');
 
 /**
  * Used inside `sd-tab-group` to represent and activate tab panels.
+ *
+ * **Related templates:**
+ * - [Tabs](?path=/docs/templates-tabs--docs)
+ *
+ *
+ * **Related components:**
+ * - [sd-tab-group](?path=/docs/components-sd-tab-group--docs)
+ * - [sd-tab-panel](?path=/docs/components-sd-tab-panel--docs)
  */
 
 export default {
