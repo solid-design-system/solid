@@ -70,24 +70,15 @@ export const Open = {
 export const Inverted = {
   name: 'Inverted',
   render: () => {
-    return html` <sd-expandable inverted="">
-      <span class="h-16 text-white">
-        Between 50 and 60 per cent of global economic output depends on functioning ecosystems and the associated
-        natural services. This emphasises the high economic importance of the topic and the need to address the
-        associated risks and take them into account in the investment process. In the biodiversity guideline, we
-        describe the relevance of the topic and Union Investment's approach as a long-term investor.
-      </span>
-    </sd-expandable>`;
-  },
-  parameters: {
-    backgrounds: {
-      default: 'primary',
-      values: [
-        {
-          name: 'primary',
-          value: 'rgb(var(--sd-color-primary, 0 53 142))'
-        }
-      ]
-    }
+    return html`<div class="bg-primary p-8">
+      <sd-expandable inverted="">
+        <span class="h-16 text-white">
+          Between 50 and 60 per cent of global economic output depends on functioning ecosystems and the associated
+          natural services. This emphasises the high economic importance of the topic and the need to address the
+          associated risks and take them into account in the investment process. In the biodiversity guideline, we
+          describe the relevance of the topic and Union Investment's approach as a long-term investor.
+        </span>
+      </sd-expandable>
+    </div>`;
   }
 };
