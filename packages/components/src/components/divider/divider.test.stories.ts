@@ -50,6 +50,7 @@ export default {
  */
 
 export const Default = {
+  name: 'Default',
   render: (args: any) => {
     return generateTemplate({ args });
   }
@@ -60,6 +61,7 @@ export const Default = {
  */
 
 export const Orientation = {
+  name: 'Orientation',
   parameters: { controls: { exclude: 'orientation' } },
   render: (args: any) => {
     return generateTemplate({
@@ -76,6 +78,7 @@ export const Orientation = {
  */
 
 export const Inverted = {
+  name: 'Inverted',
   parameters: { controls: { exclude: 'inverted' } },
   render: (args: any) => {
     return generateTemplate({
@@ -95,6 +98,7 @@ export const Inverted = {
  */
 
 export const Sizes = {
+  name: 'Sizes',
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -131,6 +135,7 @@ export const Sizes = {
  */
 
 export const Parts = {
+  name: 'Parts',
   render: (args: any) => {
     return generateTemplate({
       axis: {
