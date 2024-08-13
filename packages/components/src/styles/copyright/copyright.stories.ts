@@ -6,7 +6,7 @@ const { argTypes, parameters } = storybookDefaults('sd-copyright');
 const { overrideArgs } = storybookHelpers('sd-copyright');
 
 /**
- * Add a copyright at the bottom of a image.
+ * Can be displayed at the bottom of an image for example.
  */
 export default {
   title: 'Styles/sd-copyright',

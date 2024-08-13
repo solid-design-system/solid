@@ -10,6 +10,7 @@ const { generateTemplate } = storybookTemplate('sd-copyright');
  */
 export default {
   title: 'Styles/sd-copyright/Screenshot Test',
+  tags: ['!autodocs'],
   component: 'sd-copyright',
   parameters: {
     ...parameters
