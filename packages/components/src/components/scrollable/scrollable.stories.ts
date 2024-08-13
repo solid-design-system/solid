@@ -62,7 +62,7 @@ export const Orientation = {
   render: () => html`
     <div class="flex gap-12">
       <sd-scrollable orientation="horizontal">
-        <div class="slot slot--border text-sm items-start h-max w-max p-4">
+        <div class="text-sm items-start h-max w-max p-4">
           <p>Scroll horizontally</p>
           <br />
           <p>This is a long scrollable content.</p>
@@ -74,7 +74,7 @@ export const Orientation = {
       </sd-scrollable>
 
       <sd-scrollable orientation="vertical">
-        <div class="slot slot--border items-start h-max p-4 text-sm justify-start">
+        <div class="items-start h-max p-4 text-sm justify-start">
           <p>Scroll vertically</p>
           <br />
           <p>This is a long scrollable content.</p>
@@ -95,31 +95,17 @@ export const Orientation = {
 export const Scrollbar = {
   name: 'Browser Scrollbar',
   render: () => html`
-    <div class="flex gap-12">
-      <sd-scrollable orientation="horizontal" buttons scrollbars>
-        <div class="slot slot--border text-sm items-start h-max w-max p-4">
-          <p>Scroll horizontally</p>
-          <br />
-          <p>This is a long scrollable content.</p>
-          <p>It contains multiple paragraphs and lines.</p>
-          <p>The content is intentionally long to trigger scrolling. You can scroll horizontally and vertically.</p>
-          <p>The scrollable component will display shadows and buttons based on the props.</p>
-          <p>Customize the content and attributes as needed.</p>
-        </div>
-      </sd-scrollable>
-
-      <sd-scrollable orientation="vertical" buttons scrollbars>
-        <div class="slot slot--border items-start h-max p-4 text-sm justify-start">
-          <p>Scroll vertically</p>
-          <br />
-          <p>This is a long scrollable content.</p>
-          <p>It contains multiple paragraphs and lines.</p>
-          <p>The content is intentionally long to trigger scrolling. You can scroll horizontally and vertically.</p>
-          <p>The scrollable component will display shadows and buttons based on the props.</p>
-          <p>Customize the content and attributes as needed.</p>
-        </div>
-      </sd-scrollable>
-    </div>
+    <sd-scrollable orientation="vertical" buttons scrollbars>
+      <div class="items-start h-max p-4 text-sm justify-start">
+        <p>Scroll vertically</p>
+        <br />
+        <p>This is a long scrollable content.</p>
+        <p>It contains multiple paragraphs and lines.</p>
+        <p>The content is intentionally long to trigger scrolling. You can scroll horizontally and vertically.</p>
+        <p>The scrollable component will display shadows and buttons based on the props.</p>
+        <p>Customize the content and attributes as needed.</p>
+      </div>
+    </sd-scrollable>
   `
 };
 
@@ -130,31 +116,17 @@ export const Scrollbar = {
 export const Buttons = {
   name: 'Buttons',
   render: () => html`
-    <div class="flex gap-12">
-      <sd-scrollable orientation="horizontal" buttons>
-        <div class="slot slot--border text-sm items-start h-max w-max p-4">
-          <p>Scroll horizontally</p>
-          <br />
-          <p>This is a long scrollable content.</p>
-          <p>It contains multiple paragraphs and lines.</p>
-          <p>The content is intentionally long to trigger scrolling. You can scroll horizontally and vertically.</p>
-          <p>The scrollable component will display shadows and buttons based on the props.</p>
-          <p>Customize the content and attributes as needed.</p>
-        </div>
-      </sd-scrollable>
-
-      <sd-scrollable orientation="vertical" buttons>
-        <div class="slot slot--border items-start h-max p-4 text-sm justify-start">
-          <p>Scroll vertically</p>
-          <br />
-          <p>This is a long scrollable content.</p>
-          <p>It contains multiple paragraphs and lines.</p>
-          <p>The content is intentionally long to trigger scrolling. You can scroll horizontally and vertically.</p>
-          <p>The scrollable component will display shadows and buttons based on the props.</p>
-          <p>Customize the content and attributes as needed.</p>
-        </div>
-      </sd-scrollable>
-    </div>
+    <sd-scrollable orientation="vertical" buttons>
+      <div class="items-start h-max p-4 text-sm justify-start">
+        <p>Scroll vertically</p>
+        <br />
+        <p>This is a long scrollable content.</p>
+        <p>It contains multiple paragraphs and lines.</p>
+        <p>The content is intentionally long to trigger scrolling. You can scroll horizontally and vertically.</p>
+        <p>The scrollable component will display shadows and buttons based on the props.</p>
+        <p>Customize the content and attributes as needed.</p>
+      </div>
+    </sd-scrollable>
   `
 };
 
@@ -165,31 +137,17 @@ export const Buttons = {
 export const Shadows = {
   name: 'Shadows',
   render: () => html`
-    <div class="flex gap-12">
-      <sd-scrollable orientation="horizontal" shadows>
-        <div class="slot slot--border text-sm items-start h-max w-max p-4">
-          <p>Scroll horizontally</p>
-          <br />
-          <p>This is a long scrollable content.</p>
-          <p>It contains multiple paragraphs and lines.</p>
-          <p>The content is intentionally long to trigger scrolling. You can scroll horizontally and vertically.</p>
-          <p>The scrollable component will display shadows and buttons based on the props.</p>
-          <p>Customize the content and attributes as needed.</p>
-        </div>
-      </sd-scrollable>
-
-      <sd-scrollable orientation="vertical" shadows>
-        <div class="slot slot--border items-start h-max p-4 text-sm justify-start">
-          <p>Scroll vertically</p>
-          <br />
-          <p>This is a long scrollable content.</p>
-          <p>It contains multiple paragraphs and lines.</p>
-          <p>The content is intentionally long to trigger scrolling. You can scroll horizontally and vertically.</p>
-          <p>The scrollable component will display shadows and buttons based on the props.</p>
-          <p>Customize the content and attributes as needed.</p>
-        </div>
-      </sd-scrollable>
-    </div>
+    <sd-scrollable orientation="vertical" shadows>
+      <div class="items-start h-max p-4 text-sm justify-start">
+        <p>Scroll vertically</p>
+        <br />
+        <p>This is a long scrollable content.</p>
+        <p>It contains multiple paragraphs and lines.</p>
+        <p>The content is intentionally long to trigger scrolling. You can scroll horizontally and vertically.</p>
+        <p>The scrollable component will display shadows and buttons based on the props.</p>
+        <p>Customize the content and attributes as needed.</p>
+      </div>
+    </sd-scrollable>
   `
 };
 
@@ -200,31 +158,17 @@ export const Shadows = {
 export const Inset = {
   name: 'Inset',
   render: () => html`
-    <div class="flex gap-12">
-      <sd-scrollable orientation="horizontal" inset>
-        <div class="slot slot--border text-sm items-start h-max w-max p-4">
-          <p>Scroll horizontally</p>
-          <br />
-          <p>This is a long scrollable content.</p>
-          <p>It contains multiple paragraphs and lines.</p>
-          <p>The content is intentionally long to trigger scrolling. You can scroll horizontally and vertically.</p>
-          <p>The scrollable component will display shadows and buttons based on the props.</p>
-          <p>Customize the content and attributes as needed.</p>
-        </div>
-      </sd-scrollable>
-
-      <sd-scrollable orientation="vertical" inset>
-        <div class="slot slot--border items-start h-max p-4 text-sm justify-start">
-          <p>Scroll vertically</p>
-          <br />
-          <p>This is a long scrollable content.</p>
-          <p>It contains multiple paragraphs and lines.</p>
-          <p>The content is intentionally long to trigger scrolling. You can scroll horizontally and vertically.</p>
-          <p>The scrollable component will display shadows and buttons based on the props.</p>
-          <p>Customize the content and attributes as needed.</p>
-        </div>
-      </sd-scrollable>
-    </div>
+    <sd-scrollable orientation="vertical" inset>
+      <div class="items-start h-max p-4 text-sm justify-start">
+        <p>Scroll vertically</p>
+        <br />
+        <p>This is a long scrollable content.</p>
+        <p>It contains multiple paragraphs and lines.</p>
+        <p>The content is intentionally long to trigger scrolling. You can scroll horizontally and vertically.</p>
+        <p>The scrollable component will display shadows and buttons based on the props.</p>
+        <p>Customize the content and attributes as needed.</p>
+      </div>
+    </sd-scrollable>
   `
 };
 
@@ -234,30 +178,16 @@ export const Inset = {
 export const Step = {
   name: 'Step',
   render: () => html`
-    <div class="flex gap-12">
-      <sd-scrollable orientation="horizontal" buttons step="50">
-        <div class="slot slot--border text-sm items-start h-max w-max p-4">
-          <p>Scroll horizontally</p>
-          <br />
-          <p>This is a long scrollable content.</p>
-          <p>It contains multiple paragraphs and lines.</p>
-          <p>The content is intentionally long to trigger scrolling. You can scroll horizontally and vertically.</p>
-          <p>The scrollable component will display shadows and buttons based on the props.</p>
-          <p>Customize the content and attributes as needed.</p>
-        </div>
-      </sd-scrollable>
-
-      <sd-scrollable orientation="vertical" buttons step="50">
-        <div class="slot slot--border items-start h-max p-4 text-sm justify-start">
-          <p>Scroll vertically</p>
-          <br />
-          <p>This is a long scrollable content.</p>
-          <p>It contains multiple paragraphs and lines.</p>
-          <p>The content is intentionally long to trigger scrolling. You can scroll horizontally and vertically.</p>
-          <p>The scrollable component will display shadows and buttons based on the props.</p>
-          <p>Customize the content and attributes as needed.</p>
-        </div>
-      </sd-scrollable>
-    </div>
+    <sd-scrollable orientation="vertical" buttons step="50">
+      <div class="items-start h-max p-4 text-sm justify-start">
+        <p>Scroll vertically</p>
+        <br />
+        <p>This is a long scrollable content.</p>
+        <p>It contains multiple paragraphs and lines.</p>
+        <p>The content is intentionally long to trigger scrolling. You can scroll horizontally and vertically.</p>
+        <p>The scrollable component will display shadows and buttons based on the props.</p>
+        <p>Customize the content and attributes as needed.</p>
+      </div>
+    </sd-scrollable>
   `
 };
