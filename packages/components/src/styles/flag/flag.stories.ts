@@ -32,7 +32,7 @@ export const Default = {
 };
 
 /**
- * Use the variant `classes` for alternative appearances:
+ * Use the `classes` variant for alternative appearances:
  * - neutral-200 (default): use the class `sd-flag--neutral-200`
  * - neutral-300: use the class `sd-flag--neutral-300`
  * - neutral-500: use the class `sd-flag--neutral-500`
