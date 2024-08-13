@@ -1,5 +1,4 @@
 import '../../solid-components';
-import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 import { withActions } from '@storybook/addon-actions/decorator';
 
@@ -8,8 +7,8 @@ const { overrideArgs } = storybookHelpers('sd-tab-panel');
 const { generateTemplate } = storybookTemplate('sd-tab-panel');
 
 export default {
-  title: 'Components/sd-tab-panel',
-  tags: ['!dev'],
+  title: 'Components/sd-tab-panel/Screenshot Tests',
+  tags: ['!autodocs'],
   component: 'sd-tab-panel',
   args: overrideArgs([
     {
@@ -42,19 +41,4 @@ export const Default = {
   render: (args: any) => {
     return generateTemplate({ args });
   }
-};
-
-/**
- * Use the `active` attribute to set the state to open.
- */
-
-export const Open = {
-  name: 'Open',
-  render: () => html`
-    <sd-tab-panel active>
-      <p class="sd-paragraph">
-        Nisi facilis doloremque odit ipsam impedit. Aspernatur maiores expedita. Aut voluptates unde dolores quisquam.
-      </p>
-    </sd-tab-panel>
-  `
 };
