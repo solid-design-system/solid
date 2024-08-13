@@ -7,7 +7,7 @@ const defaultLibrary: IconLibrary = {
     if (path[0] === 'content' || path[0] === 'system') {
       name = 'union-investment/' + name;
     }
-    return `https://fe-celum-icons-prod.azureedge.net/${name}.svg`;
+    return `https://celum-icons.fe.union-investment.de/${name}.svg`;
   },
   mutator: svg => {
     const recoloredElements = {
