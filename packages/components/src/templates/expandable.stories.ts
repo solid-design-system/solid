@@ -60,7 +60,7 @@ export const BackgroundOptions = {
       </div>
       <div class="background-sample bg-primary p-4">
         <sd-expandable inverted>
-          <div class="sd-paragraph h-full ext-white">
+          <div class="sd-paragraph h-full text-white">
             For us, diversity equals strength. By taking the views and experiences of a wide range of people into
             account, we provide room for creative solutions and ensure that we are equipped for the future. A diverse
             and inclusive working environment is important to us. We benefit from the perspectives of different genders,
@@ -72,8 +72,8 @@ export const BackgroundOptions = {
 };
 
 /**
- * - `lead text` (default)
- * - `paragraph`
+ * - `leadtext` (default): use the class `sd-leadtext`
+ * - `paragraph`: use the class `sd-paragraph`
  */
 
 export const FontStyleOptions = {
