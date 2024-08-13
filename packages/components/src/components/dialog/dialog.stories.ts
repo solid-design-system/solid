@@ -29,17 +29,17 @@ export default {
     {
       type: 'slot',
       name: 'default',
-      value: `<p class="sd-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie phasellus dui vel id. Velit in sed.</p>`
+      value: `<div class="slot slot--border slot--text h-16">Default slot</div>`
     },
     {
       type: 'slot',
       name: 'headline',
-      value: `<h4 slot="headline" class="sd-headline sd-headline--size-3xl leading-tight">Lorem Ipsum</h4>`
+      value: `<div slot="headline" class="slot slot--border slot--text h-16">Headline slot</div>`
     },
     {
       type: 'slot',
       name: 'footer',
-      value: `<sd-button slot="footer" class="w-full">Label</sd-button>`
+      value: `<div slot="footer" class="slot slot--border slot--text h-16">Footer slot</div>`
     }
   ]),
   argTypes,
@@ -68,13 +68,14 @@ export const Default = {
 export const Open = {
   name: 'Open',
   render: () => html`
-    <div class="flex gap-12 h-[40vh]">
-      <div>
-        <sd-dialog id="dialog" open>
-          <div slot="headline" class="slot slot--border slot--text h-16">Headline slot</div>
-          <div class="slot slot--border slot--text h-16">Default slot</div>
-        </sd-dialog>
-      </div>
+    <div class="h-[40vh]">
+      <sd-dialog id="dialog" open>
+        <h4 slot="headline" class="sd-headline sd-headline-3xl">Lorem ipsum</h4>
+        <p class="sd-paragraph">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie phasellus
+          dui vel id. Velit in sed
+        </p>
+      </sd-dialog>
     </div>
   `
 };
@@ -86,12 +87,13 @@ export const Open = {
 export const Headline = {
   name: 'Headline',
   render: () => html`
-    <div class="flex gap-12 h-[40vh]">
-      <div>
-        <sd-dialog id="dialog" open headline="Headline example">
-          <div class="slot slot--border slot--text h-16">Default slot</div>
-        </sd-dialog>
-      </div>
+    <div class="h-[40vh]">
+      <sd-dialog id="dialog" open headline="Lorem ipsum">
+        <p class="sd-paragraph">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie phasellus
+          dui vel id. Velit in sed
+        </p>
+      </sd-dialog>
     </div>
   `
 };
@@ -104,13 +106,14 @@ export const Headline = {
 export const NoCloseButton = {
   name: 'No Close Button',
   render: () => html`
-    <div class="flex gap-12 h-[40vh]">
-      <div>
-        <sd-dialog id="dialog" open no-close-button>
-          <div class="slot slot--border slot--text h-16">Default slot</div>
-          <sd-button slot="footer" class="w-full">Close</sd-button>
-        </sd-dialog>
-      </div>
+    <div class="h-[40vh]">
+      <sd-dialog id="dialog" open no-close-button>
+        <p class="sd-paragraph">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie phasellus
+          dui vel id. Velit in sed
+        </p>
+        <sd-button slot="footer" class="w-full">Close</sd-button>
+      </sd-dialog>
     </div>
   `
 };
