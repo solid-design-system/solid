@@ -29,7 +29,7 @@ export const Default = {
     </div>`
 };
 /**
- * Use the variant `classes` for alternative appearances:
+ * Use the `classes` variant for alternative appearances:
  * - `--primary-200` (default): use the class `sd-chip--primary-200`
  * - `--primary-300`: use the class `sd-chip--primary-300`
  * - `--primary-500`: use the class `sd-chip--primary-500`
