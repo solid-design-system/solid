@@ -1,11 +1,17 @@
 import '../../solid-components';
 
 import { FlagSamples } from '../flag/flag.stories';
-import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
+import {
+  storybookDefaults,
+  storybookHelpers,
+  storybookTemplate,
+  storybookUtilities
+} from '../../../scripts/storybook/helper';
 
 const { argTypes, parameters } = storybookDefaults('sd-chip');
 const { overrideArgs } = storybookHelpers('sd-chip');
 const { generateTemplate } = storybookTemplate('sd-chip');
+const { generateScreenshotStory } = storybookUtilities;
 
 /**
  * A small, non-interactive label the represents a status, property or meta-data.
@@ -32,6 +38,7 @@ export default {
 };
 
 export const Default = {
+  name: 'Default',
   render: (args: any) => {
     return generateTemplate({
       options: { templateContent: '<span class="%CLASSES%">%SLOT%</span>' },
@@ -41,6 +48,7 @@ export const Default = {
 };
 
 export const Variants = {
+  name: 'Variants',
   parameters: { controls: { exclude: ['default', 'sd-chip--...'] } },
   render: (args: any) => {
     return generateTemplate({
@@ -59,3 +67,5 @@ export const Variants = {
 };
 
 export const ChipSamples = FlagSamples;
+
+export const Combination = generateScreenshotStory([Default, Variants, ChipSamples]);
