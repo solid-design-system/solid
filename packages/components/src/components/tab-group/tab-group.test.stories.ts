@@ -1,11 +1,17 @@
 import '../../solid-components';
 import { html } from 'lit-html';
-import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
+import {
+  storybookDefaults,
+  storybookHelpers,
+  storybookTemplate,
+  storybookUtilities
+} from '../../../scripts/storybook/helper';
 const { argTypes, parameters } = storybookDefaults('sd-tab-group');
 const { overrideArgs } = storybookHelpers('sd-tab-group');
 const { generateTemplate } = storybookTemplate('sd-tab-group');
 import { userEvent } from '@storybook/test';
 import { waitUntil } from '@open-wc/testing-helpers';
+const { generateScreenshotStory } = storybookUtilities;
 
 function generateTabsAndPanels(
   startIndex: number,
@@ -21,20 +27,9 @@ function generateTabsAndPanels(
   return result;
 }
 
-/**
- * Organizes content into a container that shows one section at a time.
- *
- * **Related templates:**
- * - [Tabs](?path=/docs/templates-tabs--docs)
- *
- * **Related components:**
- * - [sd-tab](?path=/docs/components-sd-tab--docs)
- * - [sd-tab-panel](?path=/docs/components-sd-tab-panel--docs)
- */
-
 export default {
-  title: 'Components/sd-tab-group',
-  tags: ['!dev'],
+  title: 'Components/sd-tab-group/Screenshot Tests',
+  tags: ['!autodocs'],
   component: 'sd-tab-group',
   args: overrideArgs({
     type: 'slot',
@@ -60,6 +55,7 @@ export default {
  */
 
 export const Default = {
+  name: 'Default',
   render: (args: any) => {
     return generateTemplate({ args });
   }
@@ -69,52 +65,25 @@ export const Default = {
  * The sd-tab-group shows an alternative style when tabs are of the `container` variant.
  */
 export const TabVariants = {
-  render: () => html`
-    <div class="flex gap-12">
-      <div class="w-1/2">
-        <div class="p-4 bg-neutral-200 text-left font-bold text-sm w-full box-border">Default Variant</div>
-        <sd-tab-group>
-          <sd-tab slot="nav" panel="tab-1">Tab 1</sd-tab>
-          <sd-tab slot="nav" panel="tab-2">Tab 2</sd-tab>
-          <sd-tab slot="nav" panel="tab-3" disabled>Tab 3</sd-tab>
-          <sd-tab slot="nav" panel="tab-4">Tab 4</sd-tab>
-          <sd-tab slot="nav" panel="tab-5">Tab 5</sd-tab>
-          <sd-tab-panel name="tab-1"><div class="slot slot--text slot--border">Tab panel 1</div></sd-tab-panel>
-          <sd-tab-panel name="tab-2"><div class="slot slot--text slot--border">Tab panel 2</div></sd-tab-panel>
-          <sd-tab-panel name="tab-3"><div class="slot slot--text slot--border">Tab panel 3</div></sd-tab-panel>
-          <sd-tab-panel name="tab-4"><div class="slot slot--text slot--border">Tab panel 4</div></sd-tab-panel>
-          <sd-tab-panel name="tab-5"><div class="slot slot--text slot--border">Tab panel 5</div></sd-tab-panel>
-        </sd-tab-group>
-      </div>
-
-      <div class="w-1/2">
-        <div class="p-4 bg-neutral-200 text-left font-bold text-sm w-full box-border">Container Variant</div>
-        <sd-tab-group>
-          <sd-tab slot="nav" variant="container" panel="tab-1">Tab 1</sd-tab>
-          <sd-tab slot="nav" variant="container" panel="tab-2">Tab 2</sd-tab>
-          <sd-tab slot="nav" variant="container" panel="tab-3" disabled>Tab 3</sd-tab>
-          <sd-tab slot="nav" variant="container" panel="tab-4">Tab 4</sd-tab>
-          <sd-tab slot="nav" variant="container" panel="tab-5">Tab 5</sd-tab>
-    </div>
-  `
-  // render: (args: any) => {
-  //   return html`
-  //     ${generateTemplate({
-  //       axis: {
-  //         y: {
-  //           type: 'slot',
-  //           title: 'sd-tab[variant="..."]',
-  //           name: 'default',
-  //           values: [
-  //             { title: 'default', value: generateTabsAndPanels(1, 5) },
-  //             { title: 'container', value: generateTabsAndPanels(1, 5, 'container') }
-  //           ]
-  //         }
-  //       },
-  //       args
-  //     })}
-  //   `;
-  // }
+  name: 'Tab Variants',
+  render: (args: any) => {
+    return html`
+      ${generateTemplate({
+        axis: {
+          y: {
+            type: 'slot',
+            title: 'sd-tab[variant="..."]',
+            name: 'default',
+            values: [
+              { title: 'default', value: generateTabsAndPanels(1, 5) },
+              { title: 'container', value: generateTabsAndPanels(1, 5, 'container') }
+            ]
+          }
+        },
+        args
+      })}
+    `;
+  }
 };
 
 /**
@@ -122,6 +91,7 @@ export const TabVariants = {
  */
 
 export const Scrollable = {
+  name: 'Scrollable',
   render: (args: any) => {
     return html`
       ${generateTemplate({
@@ -142,6 +112,7 @@ export const Scrollable = {
 };
 
 export const Parts = {
+  name: 'Parts',
   parameters: {
     controls: {
       exclude: ['base', 'nav', 'tabs', 'separation', 'body', 'scroll-button--start', 'scroll-button--end']
@@ -192,6 +163,7 @@ export const Parts = {
  */
 
 export const Mouseless = {
+  name: 'Mouseless',
   args: overrideArgs({
     type: 'slot',
     name: 'default',
@@ -223,8 +195,8 @@ export const Mouseless = {
  */
 
 export const SampleCentered = {
-  parameters: { ...parameters, docs: { story: { inline: false, height: '550px' } } },
   name: 'Sample: Centered',
+  parameters: { ...parameters, docs: { story: { inline: false, height: '550px' } } },
   render: () => {
     return html`
       <style>
@@ -286,8 +258,8 @@ export const SampleCentered = {
  */
 
 export const SampleNoLine = {
-  parameters: { ...parameters, docs: { story: { inline: false, height: '250px' } } },
   name: 'Sample: No Line',
+  parameters: { ...parameters, docs: { story: { inline: false, height: '250px' } } },
   render: () => {
     return html`
       <style>
@@ -327,8 +299,8 @@ export const SampleNoLine = {
  */
 
 export const SampleBold = {
-  parameters: { ...parameters, docs: { story: { inline: false, height: '550px' } } },
   name: 'Sample: Bold',
+  parameters: { ...parameters, docs: { story: { inline: false, height: '550px' } } },
   render: () => {
     return html`
       <style>
@@ -408,3 +380,15 @@ export const SampleDeepLink = {
     `;
   }
 };
+
+export const Combination = generateScreenshotStory([
+  Default,
+  TabVariants,
+  Scrollable,
+  Parts,
+  Mouseless,
+  SampleCentered,
+  SampleNoLine,
+  SampleBold,
+  SampleDeepLink
+]);
