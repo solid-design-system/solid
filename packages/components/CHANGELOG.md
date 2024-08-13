@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v3.13.0](https://github.com/solid-design-system/solid/compare/components/3.12.0...components/3.13.0) (2024-08-13)
+
+
+### Features
+
+* update celum icons url ([#1281](https://github.com/solid-design-system/solid/issues/1281)) ([6a2899b](https://github.com/solid-design-system/solid/commit/6a2899bb6272be3cb802c6d0675558fff0903fca))
+
+### 📈 Stats
+* Bundle size (uncompressed): 333 KB (unchanged)
+* Bundle size (gzipped): 78 KB (unchanged)
+
 # [@solid-design-system/components-v3.12.0](https://github.com/solid-design-system/solid/compare/components/3.11.1...components/3.12.0) (2024-08-09)
 
 
