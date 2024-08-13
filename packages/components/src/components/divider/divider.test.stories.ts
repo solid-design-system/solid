@@ -1,10 +1,16 @@
 import '../../solid-components';
 import { html } from 'lit';
-import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
+import {
+  storybookDefaults,
+  storybookHelpers,
+  storybookTemplate,
+  storybookUtilities
+} from '../../../scripts/storybook/helper';
 
 const { argTypes, parameters } = storybookDefaults('sd-divider');
 const { generateTemplate } = storybookTemplate('sd-divider');
 const { overrideArgs } = storybookHelpers('sd-divider');
+const { generateScreenshotStory } = storybookUtilities;
 
 export default {
   title: 'Components/sd-divider/Screenshot Tests',
@@ -143,3 +149,5 @@ export const Parts = {
     });
   }
 };
+
+export const Combination = generateScreenshotStory([Default, Orientation, Inverted, Sizes, Parts]);
