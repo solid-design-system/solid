@@ -62,9 +62,13 @@ export const Open = {
   render: () => html`
     <div style="width: auto; height: 40vh; position: relative;">
       <sd-drawer open label="example">
-        <div slot="header" class="slot slot--border slot--text h-12">Header slot</div>
-        <div class="slot slot--border slot--text h-full">Main slot</div>
-        <div slot="footer" class="slot slot--border slot--text h-12">Footer slot</div>
+        <h4 slot="header" class="sd-headline sd-headline-xl">Lorem ipsum</h4>
+        <p class="sd-paragraph">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie phasellus
+          dui vel id. Velit in sed
+        </p>
+
+        <sd-button slot="footer">Lorem</sd-button>
       </sd-drawer>
     </div>
   `
@@ -81,9 +85,13 @@ export const Placement = {
   render: () => html`
     <div style="width: auto; height: 40vh; position: relative;">
       <sd-drawer open placement="start">
-        <div slot="header" class="slot slot--border slot--text h-12">Header slot</div>
-        <div class="slot slot--border slot--text h-full">Main slot</div>
-        <div slot="footer" class="slot slot--border slot--text h-12">Footer slot</div>
+        <h4 slot="header" class="sd-headline sd-headline-xl">Lorem ipsum</h4>
+        <p class="sd-paragraph">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie phasellus
+          dui vel id. Velit in sed
+        </p>
+
+        <sd-button slot="footer">Lorem</sd-button>
       </sd-drawer>
     </div>
   `
@@ -97,8 +105,12 @@ export const NoHeader = {
   render: () => html`
     <div style="width: auto; height: 40vh; position: relative;">
       <sd-drawer open no-header>
-        <div class="slot slot--border slot--text h-full">Main slot</div>
-        <div slot="footer" class="slot slot--border slot--text h-12">Footer slot</div>
+        <p class="sd-paragraph">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie phasellus
+          dui vel id. Velit in sed
+        </p>
+
+        <sd-button slot="footer">Lorem</sd-button>
       </sd-drawer>
     </div>
   `
