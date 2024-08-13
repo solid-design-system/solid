@@ -1,13 +1,19 @@
 import '../../solid-components';
 import { html } from 'lit';
 
-import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
+import {
+  storybookDefaults,
+  storybookHelpers,
+  storybookTemplate,
+  storybookUtilities
+} from '../../../scripts/storybook/helper';
 import { userEvent } from '@storybook/test';
 import { waitUntil } from '@open-wc/testing-helpers';
 
 const { argTypes, parameters } = storybookDefaults('sd-expandable');
 const { overrideArgs } = storybookHelpers('sd-expandable');
 const { generateTemplate } = storybookTemplate('sd-expandable');
+const { generateScreenshotStory } = storybookUtilities;
 
 export default {
   title: 'Components/sd-expandable/Screenshot Tests',
@@ -24,6 +30,7 @@ export default {
  * Expandable shows a brief summary and expands to show additional content.
  */
 export const Default = {
+  name: 'Default',
   render: (args: any) => {
     return generateTemplate({
       args
@@ -35,6 +42,7 @@ export const Default = {
  * Use the inverted attribute to make an expandable with inverted colors.
  */
 export const Inverted = {
+  name: 'Inverted',
   parameters: { controls: { exclude: 'inverted' } },
   render: (args: any) => {
     return generateTemplate({
@@ -53,6 +61,7 @@ export const Inverted = {
  * Use the `default`, `toggle-open` and `toggle-closed` slots to add content to the expandable.
  */
 export const Slots = {
+  name: 'Slots',
   parameters: {
     controls: { exclude: ['default', 'toggle-open', 'toggle-closed'] }
   },
@@ -87,6 +96,7 @@ export const Slots = {
  * Use the `content`, `toggle`, `summary` and `details` parts to style the expandable.
  */
 export const Parts = {
+  name: 'Parts',
   parameters: {
     controls: {
       exclude: ['open', 'content', 'toggle', 'summary', 'details']
@@ -116,6 +126,7 @@ export const Parts = {
  */
 
 export const Mouseless = {
+  name: 'Mouseless',
   render: (args: any) => {
     return html`<div class="mouseless">${generateTemplate({ args })}</div>`;
   },
@@ -133,6 +144,7 @@ export const Mouseless = {
  * The inverted attribute can be used when the background is primary. The default slot can be used with 2 variants for alternate expandable experiences: lead text and paragraph.
  */
 export const Samples = {
+  name: 'Samples',
   render: (args: any) => {
     return html`
       <style>
@@ -251,3 +263,5 @@ export const Samples = {
     `;
   }
 };
+
+export const Combination = generateScreenshotStory([Default, Inverted, Slots, Parts, Samples, Mouseless]);
