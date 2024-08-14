@@ -1,12 +1,20 @@
 /* eslint-disable lit/attribute-value-entities */
 import '../../solid-components';
 import { html } from 'lit-html';
-import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
+import {
+  storybookDefaults,
+  storybookHelpers,
+  storybookTemplate,
+  storybookUtilities
+} from '../../../scripts/storybook/helper';
+import { userEvent } from '@storybook/test';
+import { waitUntil } from '@open-wc/testing-helpers';
 import type { ConstantDefinition } from '../../../scripts/storybook/helper';
 
 const { argTypes, parameters } = storybookDefaults('sd-select');
 const { generateTemplate } = storybookTemplate('sd-select');
 const { overrideArgs } = storybookHelpers('sd-select');
+const { generateScreenshotStory } = storybookUtilities;
 
 // Reusable Constants
 const twoOptionsConstant: ConstantDefinition = {
@@ -20,15 +28,21 @@ const threeOptionsConstant: ConstantDefinition = {
   value:
     '<sd-option value="option-1">Option 1</sd-option><sd-option value="option-2">Option 2</sd-option><sd-option value="option-3">Option 3</sd-option>'
 };
+const fiveOptionsConstant: ConstantDefinition = {
+  type: 'slot',
+  name: 'default',
+  value:
+    '<sd-option value="option-1">Option 1</sd-option><sd-option value="option-2">Option 2</sd-option><sd-option value="option-3">Option 3</sd-option><sd-option value="option-4">Option 4</sd-option><sd-option value="option-5">Option 5</sd-option>'
+};
+const clearableConstant: ConstantDefinition = { type: 'attribute', name: 'clearable', value: true };
 const multipleConstant: ConstantDefinition = { type: 'attribute', name: 'multiple', value: true };
+const helpTextConstant: ConstantDefinition = { type: 'attribute', name: 'help-text', value: 'help-text' };
 const labelConstant: ConstantDefinition = { type: 'attribute', name: 'label', value: 'Label' };
 
-/**
- * Used to choose items from a menu of predefined options.
- */
+// Stories
 export default {
-  title: 'Components/sd-select',
-  tags: ['!dev'],
+  title: 'Components/sd-select/Screenshot Tests',
+  tags: ['!autodocs'],
   component: 'sd-select',
   args: overrideArgs([
     threeOptionsConstant,
@@ -63,232 +77,374 @@ export default {
  */
 
 export const Default = {
+  name: 'Default',
   render: (args: any) => {
-    return html`<div class="h-[260px] w-[500px]">${generateTemplate({ args })}</div>`;
+    return html`<div class="h-[260px] w-[420px]">${generateTemplate({ args })}</div>`;
   }
 };
 
 /**
- * Use the `open` attribute the state of the select to open.
+ * Use the `size` attribute to change a select’s size. It will cascade to slotted `sd-option` elements.
  */
 
-export const Open = {
-  name: 'Open',
-  render: () => html`
-    <div class="w-[500px] h-[300px]">
-      <sd-select
-        class="open-example"
-        size="lg"
-        label="Label"
-        placeholder="Please Select"
-        placement="bottom"
-        max-options-visible="3"
-        open
-      >
-        <sd-option value="option-1">Option 1</sd-option>
-        <sd-option value="option-2">Option 2</sd-option>
-        <sd-option value="option-3">Option 3</sd-option>
-      </sd-select>
-    </div>
-    <!-- Script is only used for demo purposes -->
-    <script>
-      const openSelectExample = document.querySelector('.open-example');
-      setTimeout(() => {
-        openSelectExample.open = true;
-      }, 500);
-    </script>
-  `
+export const SizeMultiple = {
+  name: 'Size x Multiple',
+  parameters: {
+    controls: {
+      exclude: ['open-attr']
+    }
+  },
+  render: (args: { 'open-attr'?: string }) => {
+    delete args['open-attr'];
+
+    return html`<div class="h-[340px]">
+      ${generateTemplate({
+        options: {
+          classes: 'w-full'
+        },
+        axis: {
+          x: {
+            type: 'attribute',
+            name: 'size'
+          },
+          y: {
+            type: 'attribute',
+            name: 'useTags',
+            values: [false, true]
+          }
+        },
+        constants: [
+          fiveOptionsConstant,
+          multipleConstant,
+          { type: 'attribute', name: 'value', value: 'option-1 option-2 option-3 option-4' }
+        ],
+        args
+      })}
+    </div>`;
+  }
 };
 
 /**
- * Use the `size` attribute the size. It will cascade to slotted `sd-option` elements.
+ * To allow multiple options to be selected, use the `multiple` attribute. It’s a good practice to use `clearable` when this option is enabled. To use the checkbox with tags variant, set the `useTags` variant to `true`.  To set multiple values at once, set value to a space-delimited list of values.  The preferred placement of the select’s listbox can be set with the `placement` attribute. Note that the actual position may vary to ensure the panel remains in the viewport. Valid placements are `top` and `bottom`.
  */
 
-export const Size = {
-  name: 'Size',
-  render: () => html`
-    <div class="flex gap-12 h-[300px]">
-      <sd-select
-        size="lg"
-        label="Label"
-        placeholder="Please Select"
-        placement="bottom"
-        multiple=""
-        max-options-visible="3"
-        value="option-1 option-2 option-3 option-4"
-      >
-        <sd-option value="option-1">Option 1</sd-option>
-        <sd-option value="option-2">Option 2</sd-option>
-        <sd-option value="option-3">Option 3</sd-option>
-        <sd-option value="option-4">Option 4</sd-option>
-        <sd-option value="option-5">Option 5</sd-option>
-      </sd-select>
+export const DisabledMultiple = {
+  name: 'Disabled x Multiple',
+  parameters: {
+    controls: {
+      exclude: ['open']
+    }
+  },
+  render: (args: { 'open-attr'?: string }) => {
+    delete args['open-attr'];
 
-      <sd-select
-        size="md"
-        label="Label"
-        placeholder="Please Select"
-        placement="bottom"
-        multiple=""
-        max-options-visible="3"
-        value="option-1 option-2 option-3 option-4"
-      >
-        <sd-option value="option-1">Option 1</sd-option>
-        <sd-option value="option-2">Option 2</sd-option>
-        <sd-option value="option-3">Option 3</sd-option>
-        <sd-option value="option-4">Option 4</sd-option>
-        <sd-option value="option-5">Option 5</sd-option>
-      </sd-select>
-
-      <sd-select
-        size="sm"
-        label="Label"
-        placeholder="Please Select"
-        placement="bottom"
-        multiple=""
-        max-options-visible="3"
-        value="option-1 option-2 option-3 option-4"
-      >
-        <sd-option value="option-1">Option 1</sd-option>
-        <sd-option value="option-2">Option 2</sd-option>
-        <sd-option value="option-3">Option 3</sd-option>
-        <sd-option value="option-4">Option 4</sd-option>
-        <sd-option value="option-5">Option 5</sd-option>
-      </sd-select>
-    </div>
-  `
+    return html`<div class="h-[340px] w-full">
+      ${generateTemplate({
+        options: {
+          classes: 'w-full [&>tbody>tr>td]:w-[50%]'
+        },
+        axis: {
+          y: {
+            type: 'attribute',
+            name: 'useTags',
+            values: [false, true]
+          },
+          x: {
+            type: 'attribute',
+            name: 'disabled',
+            values: [false, true]
+          }
+        },
+        constants: [
+          clearableConstant,
+          multipleConstant,
+          fiveOptionsConstant,
+          {
+            type: 'attribute',
+            name: 'value',
+            value: 'option-1 option-2 option-3 option-4'
+          }
+        ],
+        args
+      })}
+    </div>`;
+  }
 };
 
 /**
- * Use the `placement` attribute to define where the select panel should appear.
+ * `sd-select` with valid and invalid styles.
  */
 
-export const Placement = {
-  name: 'Placement',
-  render: () => html`
-    <div class="flex items-center gap-12 h-[500px]">
-      <sd-select
-        class="self-baseline"
-        size="lg"
-        label="Label"
-        placeholder="Please Select"
-        placement="bottom"
-        multiple=""
-        max-options-visible="3"
-        value="option-1 option-2 option-3 option-4"
-      >
-        <sd-option value="option-1">Option 1</sd-option>
-        <sd-option value="option-2">Option 2</sd-option>
-        <sd-option value="option-3">Option 3</sd-option>
-        <sd-option value="option-4">Option 4</sd-option>
-        <sd-option value="option-5">Option 5</sd-option>
-      </sd-select>
+export const ValidInvalid = {
+  name: 'Valid x Invalid',
+  parameters: {
+    controls: {
+      exclude: ['label', 'open-attr', 'required', 'default', 'useTags', 'multiple', 'max-options-visible']
+    }
+  },
+  render: (args: { 'open-attr'?: string }) => {
+    delete args['open-attr'];
 
-      <sd-select
-        size="lg"
-        label="Label"
-        placeholder="Please Select"
-        placement="top"
-        multiple=""
-        max-options-visible="3"
-        value="option-1 option-2 option-3 option-4"
-      >
-        <sd-option value="option-1">Option 1</sd-option>
-        <sd-option value="option-2">Option 2</sd-option>
-        <sd-option value="option-3">Option 3</sd-option>
-        <sd-option value="option-4">Option 4</sd-option>
-        <sd-option value="option-5">Option 5</sd-option>
-      </sd-select>
-    </div>
-  `
+    return html`<form class="h-[260px] w-full flex gap-4">
+      ${generateTemplate({
+        options: {
+          classes: 'w-full [&>tbody>tr>td]:align-top'
+        },
+        axis: {
+          y: {
+            type: 'attribute',
+            name: 'useTags',
+            values: [false, true]
+          },
+          x: {
+            type: 'attribute',
+            name: 'value',
+            values: ['option-1 option-2', '']
+          }
+        },
+        constants: [
+          twoOptionsConstant,
+          labelConstant,
+          multipleConstant,
+          { type: 'attribute', name: 'required', value: true }
+        ],
+        args
+      })}
+      <sd-button class="hidden" type="submit">Submit</sd-button>
+    </form>`;
+  },
+  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
+    const el = canvasElement.querySelector('sd-button');
+    await waitUntil(() => el?.shadowRoot?.querySelector('button'));
+    await userEvent.type(el!.shadowRoot!.querySelector('button')!, '{return}', { pointerEventsCheck: 0 });
+  }
 };
 
 /**
- * Use the `clearable` attribute to allow the user to clear the selected value.
+ * Shows available slots. The `label` and `help-text` slots will overwrite their corresponding attributes.
  */
 
-export const Clearable = {
-  name: 'Clearable',
-  render: () => html`
-    <div class="w-[300px]">
-      <sd-select
-        size="lg"
-        label="Label"
-        placeholder="Please Select"
-        placement="bottom"
-        multiple=""
-        max-options-visible="3"
-        clearable=""
-        value="option-1 option-2 option-3 option-4"
-      >
-        <sd-option value="option-1">Option 1</sd-option>
-        <sd-option value="option-2">Option 2</sd-option>
-        <sd-option value="option-3">Option 3</sd-option>
-        <sd-option value="option-4">Option 4</sd-option>
-        <sd-option value="option-5">Option 5</sd-option>
-      </sd-select>
-    </div>
-  `
+export const Slots = {
+  name: 'Slots',
+  parameters: {
+    controls: {
+      exclude: ['open-attr']
+    }
+  },
+  render: (args: { 'open-attr'?: string }) => {
+    delete args['open-attr'];
+
+    return html`
+      ${['default', 'label', 'clear-icon', 'expand-icon', 'help-text'].map(slot =>
+        generateTemplate({
+          axis: {
+            x: {
+              type: 'slot',
+              name: slot,
+              title: 'slot=...',
+              values: [
+                {
+                  value:
+                    slot === 'default'
+                      ? `<div class="slot slot--border slot--background h-8 w-full"></div>`
+                      : `<div slot='${slot}' class="slot slot--border slot--background h-6 ${
+                          slot === 'label' || slot === 'help-text' ? 'w-20' : 'w-6'
+                        }"></div>`,
+                  title: slot
+                }
+              ]
+            }
+          },
+          constants: [
+            { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' },
+            clearableConstant,
+            labelConstant,
+            helpTextConstant,
+            twoOptionsConstant
+          ],
+          args
+        })
+      )}
+    `;
+  }
 };
 
 /**
- * Use the `disabled` attribute to disable the select.
+ * Use the `form-control`,
+  `form-control-label`,
+  `form-control-input`,
+  `form-control-help-text`,
+  `combobox`,
+  `display-input`,
+  `listbox`,
+  `tags`,
+  `tag`,
+  `tag__base`,
+  `tag__content`,
+  `tag__removable-indicator`,
+  `clear-button`, and
+  `expand-icon` part selectors to customize the select component.
  */
 
-export const Disabled = {
-  name: 'Disabled',
-  render: () => html`
-    <div class="w-[500px]">
-      <sd-select
-        size="lg"
-        label="Label"
-        placeholder="Please Select"
-        placement="bottom"
-        clearable=""
-        disabled=""
-        multiple=""
-        usetags=""
-        max-options-visible="3"
-        value="option-1 option-2 option-3 option-4"
-      >
-        <sd-option value="option-1">Option 1</sd-option>
-        <sd-option value="option-2">Option 2</sd-option>
-        <sd-option value="option-3">Option 3</sd-option>
-        <sd-option value="option-4">Option 4</sd-option>
-        <sd-option value="option-5">Option 5</sd-option>
-      </sd-select>
-    </div>
-  `
+const partsArr = [
+  'form-control',
+  'form-control-label',
+  'form-control-input',
+  'form-control-help-text',
+  'combobox',
+  'display-input',
+  'listbox',
+  'tags',
+  'tag',
+  'tag__base',
+  'tag__content',
+  'tag__removable-indicator',
+  'clear-button',
+  'expand-icon'
+];
+
+export const Parts = {
+  name: 'Parts',
+  parameters: {
+    controls: {
+      exclude: [
+        'open-attr',
+        'form-control',
+        'form-control-label',
+        'form-control-input',
+        'form-control-help-text',
+        'combobox',
+        'display-input',
+        'listbox',
+        'tags',
+        'tag',
+        'tag__base',
+        'tag__content',
+        'tag__removable-indicator',
+        'clear-button',
+        'expand-icon'
+      ]
+    }
+  },
+  render: (args: { 'open-attr'?: string }) => {
+    delete args['open-attr'];
+
+    return generateTemplate({
+      axis: {
+        x: { type: 'attribute', name: 'useTags' },
+        y: {
+          type: 'template',
+          name: 'sd-select::part(...){outline: solid 2px red}',
+          values: partsArr.map(part => {
+            return {
+              title: part,
+              value: `<style>#part-${part} sd-select::part(${part}){outline: solid 2px red; outline-offset: 2px} ::part(popup__content){overflow-y: visible} ::part(tag__removable-indicator){display: block} ::part(tag__content){display: block}</style><div id="part-${part}">%TEMPLATE%</div>`
+            };
+          })
+        }
+      },
+      constants: [
+        { type: 'attribute', name: 'useTags', value: true },
+        { type: 'attribute', name: 'value', value: 'option-1 option-2' },
+        clearableConstant,
+        helpTextConstant,
+        labelConstant,
+        multipleConstant
+      ],
+      args
+    });
+  }
 };
 
 /**
- * Use the `required` attribute to make the select required.
+ * Per default the select will indicate an error state when the input is invalid. Use the `style-on-valid` attribute to indicate a valid state as well.
  */
 
-export const Required = {
-  name: 'Required',
-  render: () => html`
-    <div class="w-[500px] h-[300px]">
-      <sd-select
-        size="lg"
-        label="Label"
-        placeholder="Please Select"
-        placement="bottom"
-        clearable=""
-        multiple=""
-        usetags=""
-        max-options-visible="3"
-        value=""
-        required=""
-      >
-        <sd-option value="option-1">Option 1</sd-option>
-        <sd-option value="option-2">Option 2</sd-option>
-        <sd-option value="option-3">Option 3</sd-option>
-        <sd-option value="option-4">Option 4</sd-option>
-        <sd-option value="option-5">Option 5</sd-option>
-      </sd-select>
-    </div>
-  `
+export const StyleOnValid = {
+  name: 'Style on Valid',
+  parameters: {
+    controls: {
+      exclude: ['open-attr']
+    }
+  },
+  render: (args: { 'open-attr'?: string }) => {
+    delete args['open-attr'];
+
+    return html`<div class="h-[340px]">
+      ${generateTemplate({
+        options: {
+          classes: 'w-full'
+        },
+        axis: {
+          x: {
+            type: 'attribute',
+            name: 'style-on-valid'
+          }
+        },
+        constants: [fiveOptionsConstant, { type: 'attribute', name: 'value', value: '' }],
+        args
+      })}
+    </div>`;
+  },
+
+  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
+    await Promise.all([customElements.whenDefined('sd-select'), customElements.whenDefined('sd-option')]).then(
+      async () => {
+        const els = canvasElement.querySelectorAll('sd-select');
+
+        for (const el of els) {
+          await waitUntil(() => el?.shadowRoot?.querySelector('input'));
+          await userEvent.click(el.shadowRoot!.querySelector('input')!);
+          await userEvent.click(el.querySelector('sd-option')!);
+        }
+
+        // tab to next element to loose focus
+        await userEvent.tab();
+      }
+    );
+  }
+};
+
+/**
+ * `sd-select` is fully accessibile via keyboard.
+ */
+
+export const Mouseless = {
+  name: 'Mouseless',
+  parameters: {
+    controls: {
+      exclude: ['open-attr', 'value', 'default']
+    }
+  },
+  render: (args: { 'open-attr'?: string }) => {
+    delete args['open-attr'];
+
+    return html`<div class="mouseless h-[260px] w-full flex gap-4">
+      ${generateTemplate({
+        constants: [twoOptionsConstant, { type: 'attribute', name: 'label', value: 'Default' }],
+        args
+      })}
+      ${generateTemplate({
+        constants: [twoOptionsConstant, multipleConstant, { type: 'attribute', name: 'label', value: 'Multiple' }],
+        args
+      })}
+      ${generateTemplate({
+        constants: [
+          twoOptionsConstant,
+          multipleConstant,
+          { type: 'attribute', name: 'useTags', value: true },
+          { type: 'attribute', name: 'label', value: 'Multiple w/ Tags' }
+        ],
+        args
+      })}
+    </div>`;
+  },
+
+  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
+    const el = canvasElement.querySelector('.mouseless sd-select');
+    await waitUntil(() => el?.shadowRoot?.querySelector('input'));
+    el?.shadowRoot?.querySelector('input')!.focus();
+  }
 };
 
 /**
@@ -407,6 +563,7 @@ export const SampleForm = {
  */
 
 export const setCustomValidity = {
+  name: 'setCustomValidity',
   parameters: {
     chromatic: { disableSnapshot: true }
   },
@@ -524,3 +681,18 @@ export const SolidForm = {
     `;
   }
 };
+
+export const Combination = generateScreenshotStory([
+  Default,
+  SizeMultiple,
+  DisabledMultiple,
+  ValidInvalid,
+  Slots,
+  Parts,
+  StyleOnValid,
+  Mouseless,
+  SampleGroupingOptions,
+  SampleForm,
+  setCustomValidity,
+  SolidForm
+]);
