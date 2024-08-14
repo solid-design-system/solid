@@ -26,9 +26,9 @@ export const Default = {
 
 /**
  * Offers 4 `color` variants for alternate experiences:
- * - `primary` (default): used on light backgrounds
+ * - `currentColor` (default): used to inherit the color from the parent element
+ * - `primary`: used on light backgrounds
  * - `white`: used on primary backgrounds
- * - `currentColor`: used to inherit the color from the parent element
  */
 
 export const Variants = {
@@ -36,14 +36,14 @@ export const Variants = {
   parameters: { controls: { exclude: 'color' } },
   render: () =>
     html` <div class="flex flex-row items-center gap-12">
+      <div class="bg-neutral-100 p-4">
+        <sd-spinner color="currentColor"></sd-spinner>
+      </div>
       <div class="p-4">
         <sd-spinner color="primary"></sd-spinner>
       </div>
       <div class="bg-primary p-4">
         <sd-spinner color="white"></sd-spinner>
-      </div>
-      <div class="bg-neutral-100 p-4">
-        <sd-spinner color="currentColor"></sd-spinner>
       </div>
     </div>`
 };
