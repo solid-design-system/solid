@@ -9,6 +9,7 @@ const { overrideArgs } = storybookHelpers('sd-flag');
  * A small, non-interactive label the represents a category.
  *
  * **Related templates**:
+ * - [Flag](?path=/docs/templates-flag--docs)
  * - [Teaser with Chip and Flag](?path=/docs/templates-teaser-with-chip-and-flag--docs)
  */
 
@@ -28,6 +29,7 @@ export default {
 };
 
 export const Default = {
+  name: 'Default',
   render: () => html` <div class="sd-flag">Default</div> `
 };
 
