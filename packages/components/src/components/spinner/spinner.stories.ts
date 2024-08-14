@@ -6,7 +6,7 @@ import { withActions } from '@storybook/addon-actions/decorator';
 const { argTypes, args, parameters } = storybookDefaults('sd-spinner');
 
 /**
- * A visual indicator with a looping animation that shows loading is in process in the background.
+ * Visual indicator with a looping animation that shows loading is in process.
  */
 
 export default {
@@ -21,16 +21,14 @@ export default {
 
 export const Default = {
   name: 'Default',
-  render: () => html`<sd-spinner color="currentColor"></sd-spinner>`
+  render: () => html`<sd-spinner></sd-spinner>`
 };
 
 /**
  * Offers 4 `color` variants for alternate experiences:
- * - `primary` (default): is the default color on light backgrounds
- * - `neutral-500`: is only used for disabled buttons
- * - `neutral-600`: is only used for inverted disabled buttons
- * - `white`: is used on primary backgrounds and for inverted buttons
- * - `currentColor`: is used to inherit the color from the parent element
+ * - `primary` (default): used on light backgrounds
+ * - `white`: used on primary backgrounds
+ * - `currentColor`: used to inherit the color from the parent element
  */
 
 export const Variants = {
@@ -40,12 +38,6 @@ export const Variants = {
     html` <div class="flex flex-row items-center gap-12">
       <div class="p-4">
         <sd-spinner color="primary"></sd-spinner>
-      </div>
-      <div class="p-4 text-neutral-500">
-        <sd-spinner color="currentColor"></sd-spinner>
-      </div>
-      <div class="p-4 text-neutral-600">
-        <sd-spinner color="currentColor"></sd-spinner>
       </div>
       <div class="bg-primary p-4">
         <sd-spinner color="white"></sd-spinner>
@@ -57,9 +49,7 @@ export const Variants = {
 };
 
 /**
- * Spinner has no size properties. It can scale proportionally.
- *
- * Use the `font-size` in css to scale the spinner.
+ * Use the `font-size` in css to scale the spinner proportionally.
  */
 
 export const Size = {
@@ -67,9 +57,6 @@ export const Size = {
   render: () =>
     html`<div class="flex flex-row gap-12">
       <div style="font-size: inherit">
-        <sd-spinner color="currentColor"></sd-spinner>
-      </div>
-      <div style="font-size: 1rem">
         <sd-spinner color="currentColor"></sd-spinner>
       </div>
       <div style="font-size: 2rem">
