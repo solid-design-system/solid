@@ -11,8 +11,12 @@ const { generateTemplate } = storybookTemplate('sd-dialog');
  *
  * Appears over other content. It requires an interaction from the user before they can return to whatever is underneath.
  *
+ * - Use the `headline` slot to add a headline.
+ * - Use the `default` slot to add main content. <br /> Default slot is always scrollable.
+ * - Use the `footer` slot to add action elements. <br /> Footer slot is always fixed.
+ *
  *  **Related templates**:
- * - [Dialog with scrollable content](?path=/docs/templates-dialog-with-scrollable-content--docs)
+ * - [Dialog samples](?path=/docs/templates-dialog-samples--docs)
  *
  */
 
@@ -29,7 +33,7 @@ export default {
     {
       type: 'slot',
       name: 'default',
-      value: `<div class="slot slot--border slot--text h-16">Default slot</div>`
+      value: `<div class="slot slot--border slot--text h-16 w-full">Default slot</div>`
     },
     {
       type: 'slot',
@@ -39,7 +43,7 @@ export default {
     {
       type: 'slot',
       name: 'footer',
-      value: `<div slot="footer" class="slot slot--border slot--text h-16">Footer slot</div>`
+      value: `<div slot="footer" class="slot slot--border slot--text h-16 w-full">Footer slot</div>`
     }
   ]),
   argTypes,
@@ -88,11 +92,12 @@ export const Headline = {
   name: 'Headline',
   render: () => html`
     <div class="h-[40vh]">
-      <sd-dialog id="dialog" open headline="Lorem ipsum">
+      <sd-dialog id="dialog" open headline="Headline">
         <p class="sd-paragraph">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie phasellus
           dui vel id. Velit in sed
         </p>
+        <sd-button slot="footer">Button</sd-button>
       </sd-dialog>
     </div>
   `
@@ -100,6 +105,7 @@ export const Headline = {
 
 /**
  * Use the `no-close-button` attribute to hide the close button in the dialog.
+ *
  * However, you should always include a close button to comply with ARIA principles. If the close button is omitted, the close action has to be applied to one button in the footer slot.
  */
 
@@ -107,12 +113,12 @@ export const NoCloseButton = {
   name: 'No Close Button',
   render: () => html`
     <div class="h-[40vh]">
-      <sd-dialog id="dialog" open no-close-button>
+      <sd-dialog id="dialog" headline="Headline" open no-close-button>
         <p class="sd-paragraph">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie phasellus
           dui vel id. Velit in sed
         </p>
-        <sd-button slot="footer" class="w-full">Close</sd-button>
+        <sd-button slot="footer">Button</sd-button>
       </sd-dialog>
     </div>
   `
