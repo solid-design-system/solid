@@ -205,7 +205,7 @@ export default class SdNavigationItem extends SolidElement {
               this.separated
                 ? html`<a
                     class=${cx(
-                      'w-full inline-flex items-center px-4 cursor-pointer relative focus-visible:focus-outline hover:bg-neutral-200 group transition-all min-h-[48px]',
+                      'mr-4 w-full inline-flex items-center pl-4 cursor-pointer relative focus-visible:focus-outline hover:bg-neutral-200 group transition-all min-h-[48px]',
                       !slots['description'] && 'py-4'
                     )}
                     href=${ifDefined(isLink ? this.href : undefined)}
@@ -232,7 +232,7 @@ export default class SdNavigationItem extends SolidElement {
                       library="system"
                       color="currentColor"
                       class=${cx(
-                        'h-6 w-6 transition-all',
+                        'mr-4 h-6 w-6 transition-all',
                         isAccordion || this.separated ? (this.open ? 'rotate-180' : 'rotate-0') : 'rotate-[270deg]'
                       )}
                     ></sd-icon>
