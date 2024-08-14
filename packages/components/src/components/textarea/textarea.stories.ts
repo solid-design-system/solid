@@ -1,16 +1,18 @@
 import '../../solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { userEvent } from '@storybook/test';
-import { waitUntil } from '@open-wc/testing-helpers';
 import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, args, parameters } = storybookDefaults('sd-textarea');
 const { generateTemplate } = storybookTemplate('sd-textarea');
 const { overrideArgs } = storybookHelpers('sd-textarea');
 
+/**
+ * Collect data from the user and allow multiple lines of text.
+ */
 export default {
   title: 'Components/sd-textarea',
+  tags: ['!dev'],
   component: 'sd-textarea',
   args,
   argTypes: {
@@ -30,155 +32,234 @@ export default {
  * This shows sd-textarea in its default state.
  */
 export const Default = {
+  name: 'Default',
   args: overrideArgs([
     { type: 'attribute', name: 'label', value: 'Label' },
     { type: 'attribute', name: 'value', value: 'value' },
     { type: 'attribute', name: 'help-text', value: 'help-text' }
   ]),
   render: (args: any) => {
-    return html`<div class="w-[250px]">${generateTemplate({ args })}</div> `;
+    return html`<div class="w-[500px]">${generateTemplate({ args })}</div> `;
   }
+};
+
+/**
+ * Use the `size` attribute to change the size.
+ */
+
+export const Size = {
+  name: 'Size',
+  render: () => html`
+    <div class="flex gap-12">
+      <sd-textarea value="value" size="lg" label="Label" help-text="help-text" rows="4" spellcheck=""></sd-textarea>
+
+      <sd-textarea value="value" size="md" label="Label" help-text="help-text" rows="4" spellcheck=""></sd-textarea>
+
+      <sd-textarea value="value" size="sm" label="Label" help-text="help-text" rows="4" spellcheck=""></sd-textarea>
+    </div>
+  `
+};
+
+/**
+ * Use the `help-text` slot to add help text.
+ */
+
+export const HelpText = {
+  name: 'Help Text',
+  render: () => html`
+    <div class="w-[500px]">
+      <sd-textarea
+        size="lg"
+        label="Label"
+        help-text="Help text example"
+        placeholder="Placeholder"
+        rows="4"
+      ></sd-textarea>
+    </div>
+  `
 };
 
 /**
  * Use the `placeholder` attribute to add a placeholder.
  */
 
-export const Placeholders = {
-  args: overrideArgs([
-    { type: 'attribute', name: 'label', value: 'Label' },
-    { type: 'attribute', name: 'placeholder', value: 'Placeholder' },
-    { type: 'attribute', name: 'help-text', value: 'help-text' }
-  ]),
-  render: (args: any) => {
-    return html`
-      <div class="w-[250px]">
-        ${generateTemplate({
-          args
-        })}
-      </div>
-    `;
-  }
+export const Placeholder = {
+  name: 'Placeholder',
+  render: () => html`
+    <div class="w-[500px]">
+      <sd-textarea
+        size="lg"
+        label="Label"
+        help-text="help-text"
+        placeholder="Placeholder example"
+        rows="4"
+        spellcheck=""
+      ></sd-textarea>
+    </div>
+  `
 };
 
 /**
- * Use the disabled attribute to disable a textarea. All interaction is disabled and no events will be fired.
+ * Use the `rows` attribute to set the number of rows.
+ */
+
+export const Rows = {
+  name: 'Rows',
+  render: () => html`
+    <div class="flex gap-12">
+      <sd-textarea
+        size="lg"
+        label="Label"
+        help-text="help-text"
+        placeholder="Placeholder example"
+        rows="4"
+        spellcheck=""
+      ></sd-textarea>
+
+      <sd-textarea
+        size="lg"
+        label="Label"
+        help-text="help-text"
+        placeholder="Placeholder example"
+        rows="8"
+        spellcheck=""
+      ></sd-textarea>
+
+      <sd-textarea
+        size="lg"
+        label="Label"
+        help-text="help-text"
+        placeholder="Placeholder example"
+        rows="12"
+        spellcheck=""
+      ></sd-textarea>
+    </div>
+  `
+};
+
+/**
+ * Use the `disabled` attribute to disable the textarea.
  */
 export const Disabled = {
-  parameters: {
-    controls: {
-      exclude: ['disabled']
-    }
-  },
-  args: overrideArgs([
-    { type: 'attribute', name: 'value', value: 'value' },
-    { type: 'attribute', name: 'label', value: 'Label' },
-    { type: 'attribute', name: 'help-text', value: 'help-text' }
-  ]),
-  render: (args: any) => {
-    return html`
-      <div class="w-[250px]">
-        ${generateTemplate({
-          constants: [{ type: 'attribute', name: 'disabled', value: true }],
-          args
-        })}
-      </div>
-    `;
-  }
+  name: 'Disabled',
+  render: () => html`
+    <div class="w-[500px]">
+      <sd-textarea
+        size="lg"
+        label="Label"
+        help-text="help-text"
+        placeholder="Placeholder"
+        rows="4"
+        spellcheck=""
+        disabled
+      ></sd-textarea>
+    </div>
+  `
 };
 
 /**
- * Use the readonly attribute to render a textarea as readonly.  Interaction is enabled, but the textarea cannot be edited.  Events will be fired.
+ * Use the `readonly` attribute to render a textarea as readonly.
+ *
+ * Interaction is enabled, but the textarea cannot be edited.
+ * Events will be fired.
  */
 export const Readonly = {
-  parameters: {
-    controls: {
-      exclude: ['readonly']
-    }
-  },
-  args: overrideArgs([
-    { type: 'attribute', name: 'value', value: 'value' },
-    { type: 'attribute', name: 'label', value: 'Label' },
-    { type: 'attribute', name: 'help-text', value: 'help-text' }
-  ]),
-  render: (args: any) => {
-    return html`
-      <div class="w-[250px]">
-        ${generateTemplate({
-          constants: [{ type: 'attribute', name: 'readonly', value: true }],
-          args
-        })}
-      </div>
-    `;
-  }
+  name: 'Readonly',
+  render: () => html`
+    <div class="w-[500px]">
+      <sd-textarea
+        value="value"
+        size="lg"
+        label="Label"
+        help-text="help-text"
+        rows="4"
+        readonly=""
+        spellcheck=""
+      ></sd-textarea>
+    </div>
+  `
 };
 
 /**
- * This shows sd-textarea in its various sizes.
+ * Use the `required` attribute to mark the textarea as required.
  */
-
-export const Sizes = {
-  parameters: {
-    controls: {
-      exclude: ['size']
-    }
-  },
-  args: overrideArgs([
-    { type: 'attribute', name: 'value', value: 'value' },
-    { type: 'attribute', name: 'label', value: 'Label' },
-    { type: 'attribute', name: 'help-text', value: 'help-text' }
-  ]),
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: { type: 'attribute', name: 'size' }
-      },
-      args
-    });
-  }
+export const Required = {
+  name: 'Required',
+  render: () => html`
+    <div class="w-[500px]">
+      <sd-textarea
+        value="value"
+        size="lg"
+        label="Label"
+        help-text="help-text"
+        rows="4"
+        required=""
+        spellcheck=""
+      ></sd-textarea>
+    </div>
+  `
 };
 
 /**
- * Per default the input will indicate an error state when the input is invalid. Use the `style-on-valid` attribute to opt-in the automatic indication of a valid state as well.
+ * Use the `minlength` attribute to set a minimum length for the textarea to be valid.
+ */
+export const MinLength = {
+  name: 'Min Length',
+  render: () => html`
+    <div class="w-[500px]">
+      <sd-textarea
+        value=""
+        size="lg"
+        label="Label"
+        help-text="Please type at least 5 characters"
+        rows="4"
+        spellcheck=""
+        minlength="5"
+      ></sd-textarea>
+    </div>
+  `
+};
+
+/**
+ * Use the `maxlength` attribute to set a maximum length for the textarea to be valid.
+ */
+export const MaxLength = {
+  name: 'Max Length',
+  render: () => html`
+    <div class="w-[500px]">
+      <sd-textarea
+        value=""
+        size="lg"
+        label="Label"
+        help-text="You are limited to a maximum of 5 characters"
+        rows="4"
+        spellcheck=""
+        maxlength="5"
+      ></sd-textarea>
+    </div>
+  `
+};
+
+/**
+ * Use the `style-on-valid` attribute to opt-in the automatic indication of a valid state.
  */
 
 export const StyleOnValid = {
-  parameters: {
-    controls: {
-      exclude: ['style-on-valid']
-    }
-  },
-  args: overrideArgs([
-    { type: 'attribute', name: 'value', value: 'valu' },
-    { type: 'attribute', name: 'label', value: 'Label' },
-    { type: 'attribute', name: 'help-text', value: 'help-text' },
-    { type: 'attribute', name: 'clearable', value: true },
-    {
-      type: 'slot',
-      name: 'right',
-      value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
-    }
-  ]),
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: { type: 'attribute', name: 'style-on-valid' }
-      },
-      args
-    });
-  },
-
-  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
-    const els = canvasElement.querySelectorAll('sd-textarea');
-
-    for (const el of els) {
-      await waitUntil(() => el?.shadowRoot?.querySelector('textarea'));
-      await userEvent.type(el.shadowRoot!.querySelector('textarea')!, 'e');
-    }
-
-    // tab to next element to loose focus
-    await userEvent.tab();
-  }
+  name: 'Style on Valid',
+  render: () => html`
+    <div class="w-[500px]">
+      <sd-textarea
+        value="value"
+        size="lg"
+        label="Label"
+        help-text="help-text"
+        rows="4"
+        style-on-valid=""
+        spellcheck=""
+        minlength="5"
+      ></sd-textarea>
+    </div>
+  `
 };
 
 /**
@@ -186,81 +267,56 @@ export const StyleOnValid = {
  */
 
 export const Validation = {
-  parameters: {
-    controls: {
-      include: ['clearable', 'disabled']
-    }
-  },
-  render: (args: any) => {
-    return html`
-      <form action="" method="get" id="testForm" name="testForm" class="w-[370px]">
-        <div class="mb-2">
-          ${generateTemplate({
-            constants: [
-              { type: 'attribute', name: 'label', value: 'Required' },
-              { type: 'attribute', name: 'name', value: 'required field' },
-              { type: 'attribute', name: 'placeholder', value: '.*' },
-              { type: 'attribute', name: 'help-text', value: 'textarea must be filled' },
-              { type: 'attribute', name: 'form', value: 'testForm' },
-              { type: 'attribute', name: 'required', value: true },
-              { type: 'attribute', name: 'style-on-valid', value: true }
-            ],
-            args
-          })}
-        </div>
-        <div class="mb-2">
-          ${generateTemplate({
-            constants: [
-              { type: 'attribute', name: 'label', value: 'Min Length' },
-              { type: 'attribute', name: 'name', value: 'min length field' },
-              { type: 'attribute', name: 'placeholder', value: '^.{3,}$' },
-              { type: 'attribute', name: 'help-text', value: 'value must meet minlength' },
-              { type: 'attribute', name: 'form', value: 'testForm' },
-              { type: 'attribute', name: 'required', value: true },
-              { type: 'attribute', name: 'minlength', value: 3 },
-              { type: 'attribute', name: 'style-on-valid', value: true }
-            ],
-            args
-          })}
-        </div>
-        <div class="mb-2">
-          ${generateTemplate({
-            constants: [
-              { type: 'attribute', name: 'label', value: 'Max Length' },
-              { type: 'attribute', name: 'name', value: 'max length field' },
-              { type: 'attribute', name: 'placeholder', value: '^.{0,3}$' },
-              { type: 'attribute', name: 'help-text', value: 'value cannot exceed maxlength' },
-              { type: 'attribute', name: 'form', value: 'testForm' },
-              { type: 'attribute', name: 'required', value: true },
-              { type: 'attribute', name: 'maxlength', value: 3 },
-              { type: 'attribute', name: 'style-on-valid', value: true }
-            ],
-            args
-          })}
-        </div>
-        <sd-button type="submit">Submit</sd-button>
-      </form>
-      <script>
-        function handleSubmit(event) {
-          const form = document.querySelector('#testForm');
-          const sdTextarea = Array.from(document.querySelectorAll('sd-textarea'));
-
-          const isValid = sdTextarea => sdTextarea.checkValidity();
-
-          if (sdTextarea.every(isValid)) {
-            event.preventDefault(); // Prevent the default form submission behavior
-
-            const formData = new FormData(form);
-            const formValues = Object.fromEntries(formData);
-
-            alert('Form submitted successfully with the following values: ' + JSON.stringify(formValues, null, 2));
-          }
-        }
-
-        document.querySelector('#testForm').addEventListener('submit', handleSubmit);
-      </script>
-    `;
-  }
+  name: 'Validation',
+  render: () => html`
+    <form action="" method="get" id="testForm" name="testForm" class="w-[500px]">
+      <div class="mb-2">
+        <sd-textarea
+          name="required field"
+          size="lg"
+          label="Required"
+          help-text="textarea must be filled"
+          placeholder=".*"
+          rows="4"
+          form="testForm"
+          required=""
+          style-on-valid=""
+          spellcheck=""
+        ></sd-textarea>
+      </div>
+      <div class="mb-2">
+        <sd-textarea
+          name="min length field"
+          size="lg"
+          label="Min Length"
+          help-text="value must meet minlength"
+          placeholder="^.{3,}$"
+          rows="4"
+          form="testForm"
+          required=""
+          minlength="3"
+          style-on-valid=""
+          spellcheck=""
+        ></sd-textarea>
+      </div>
+      <div class="mb-2">
+        <sd-textarea
+          name="max length field"
+          size="lg"
+          label="Max Length"
+          help-text="value cannot exceed maxlength"
+          placeholder="^.{0,3}$"
+          rows="4"
+          form="testForm"
+          required=""
+          maxlength="3"
+          style-on-valid=""
+          spellcheck=""
+        ></sd-textarea>
+      </div>
+      <sd-button type="submit">Submit</sd-button>
+    </form>
+  `
 };
 
 /**
@@ -276,7 +332,7 @@ export const setCustomValidity = {
   render: () => {
     return html`
       <!-- block submit and show alert instead -->
-      <form id="validationForm" class="flex flex-col gap-2">
+      <form id="validationForm" class="flex flex-col gap-2 w-[500px]">
         <sd-textarea id="custom-input" label="Input" style-on-valid></sd-textarea>
         <div>
           <sd-button type="submit">Submit</sd-button>
@@ -320,110 +376,5 @@ export const setCustomValidity = {
         );
       </script>
     `;
-  }
-};
-
-/**
- * Shows available slots. The `label` and `help-text` slots will overwrite their corresponding attributes.
- */
-
-export const Slots = {
-  parameters: {
-    controls: {
-      exclude: ['label', 'help-text', 'value']
-    }
-  },
-  render: (args: any) => {
-    return html`
-      ${['label', 'help-text'].map(slot =>
-        generateTemplate({
-          axis: {
-            x: {
-              type: 'slot',
-              name: slot,
-              title: 'slot=...',
-              values: [
-                {
-                  value: `<div slot='${slot}' class="slot slot--border slot--background h-6 ${
-                    slot === 'label' || slot === 'help-text' ? 'w-20' : 'w-6'
-                  }"></div>`,
-                  title: slot
-                }
-              ]
-            }
-          },
-          constants: [
-            { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' },
-            { type: 'attribute', name: 'value', value: 'value' },
-            { type: 'attribute', name: 'label', value: 'Label' },
-            { type: 'attribute', name: 'help-text', value: 'help-text' }
-          ],
-          args
-        })
-      )}
-    `;
-  }
-};
-
-/**
- * Use the `form-control`, `form-control-label`, `form-control-input`, `form-control-help-text`, `base`, `border`, and `textarea` part selectors to customize the input.
- */
-
-export const Parts = {
-  parameters: {
-    controls: {
-      exclude: ['label', 'help-text', 'value']
-    }
-  },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: {
-          type: 'template',
-          name: 'sd-textarea::part(...){outline: solid 2px red}',
-          values: [
-            'form-control',
-            'form-control-label',
-            'form-control-input',
-            'form-control-help-text',
-            'base',
-            'border',
-            'textarea'
-          ].map(part => {
-            return {
-              title: part,
-              value: `<style>#part-${part} sd-textarea::part(${part}){outline: solid 2px red}</style><div id="part-${part}">%TEMPLATE%</div>`
-            };
-          })
-        }
-      },
-      constants: [
-        { type: 'attribute', name: 'value', value: 'value' },
-        { type: 'attribute', name: 'label', value: 'Label' },
-        { type: 'attribute', name: 'help-text', value: 'help-text' }
-      ],
-      args
-    });
-  }
-};
-
-/**
- * `sd-textarea` is fully accessibile via keyboard.
- */
-
-export const Mouseless = {
-  args: overrideArgs([
-    { type: 'attribute', name: 'label', value: 'Label' },
-    { type: 'attribute', name: 'value', value: 'value' },
-    { type: 'attribute', name: 'help-text', value: 'help-text' }
-  ]),
-  render: (args: any) => {
-    return html`<div class="mouseless w-[250px]">${generateTemplate({ args })}</div>`;
-  },
-
-  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
-    const el = canvasElement.querySelector('.mouseless sd-textarea');
-    await waitUntil(() => el?.shadowRoot?.querySelector('textarea'));
-    el?.shadowRoot?.querySelector('textarea')!.focus();
   }
 };
