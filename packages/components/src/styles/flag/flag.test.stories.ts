@@ -1,11 +1,17 @@
 import '../../solid-components';
 import { html } from 'lit';
 
-import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
+import {
+  storybookDefaults,
+  storybookHelpers,
+  storybookTemplate,
+  storybookUtilities
+} from '../../../scripts/storybook/helper';
 
 const { argTypes, parameters } = storybookDefaults('sd-flag');
 const { overrideArgs } = storybookHelpers('sd-flag');
 const { generateTemplate } = storybookTemplate('sd-flag');
+const { generateScreenshotStory } = storybookUtilities;
 
 /**
  * A small, non-interactive label the represents a category.
@@ -36,6 +42,7 @@ export default {
 };
 
 export const Default = {
+  name: 'Default',
   render: (args: any) => {
     return generateTemplate({
       options: { templateContent: '<span class="%CLASSES%">%SLOT%</span>' },
@@ -45,6 +52,7 @@ export const Default = {
 };
 
 export const Variants = {
+  name: 'Variants',
   parameters: { controls: { exclude: ['default', 'sd-flag--...'] } },
   render: (args: any) => {
     return generateTemplate({
@@ -63,6 +71,7 @@ export const Variants = {
 };
 
 export const FlagSamples = {
+  name: 'Samples',
   parameters: {
     controls: {
       disable: true
@@ -168,3 +177,5 @@ export const FlagSamples = {
     `;
   }
 };
+
+export const Combination = generateScreenshotStory([Default, Variants, FlagSamples]);
