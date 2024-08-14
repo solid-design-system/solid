@@ -43,7 +43,7 @@ export const Default = {
 export const Variants = {
   name: 'Variants',
   render: () =>
-    html`<div class="flex flex-row gap-4 bg-neutral-100">
+    html`<div class="flex flex-row gap-4">
       <sd-option size="lg">Option</sd-option>
       <sd-option size="lg" checkbox="">Option</sd-option>
     </div>`
@@ -60,7 +60,7 @@ export const Variants = {
 export const Size = {
   name: 'Size',
   render: () =>
-    html` <div class="flex flex-col gap-4 bg-neutral-100">
+    html` <div class="flex flex-col gap-4">
       <div class="flex flex-row gap-4">
         <sd-option size="lg">Option</sd-option>
         <sd-option size="md">Option</sd-option>

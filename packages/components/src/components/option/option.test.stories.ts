@@ -1,11 +1,17 @@
 import '../../solid-components';
 import { html } from 'lit-html';
-import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
+import {
+  storybookDefaults,
+  storybookHelpers,
+  storybookTemplate,
+  storybookUtilities
+} from '../../../scripts/storybook/helper';
 import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-option');
 const { generateTemplate } = storybookTemplate('sd-option');
 const { overrideArgs } = storybookHelpers('sd-option');
+const { generateScreenshotStory } = storybookUtilities;
 
 /**
  * Options define the selectable items within various form controls such as `sd-select`
@@ -26,6 +32,7 @@ export default {
  */
 
 export const Default = {
+  name: 'Default',
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Option' }),
   render: (args: any) => {
     return generateTemplate({
@@ -90,6 +97,7 @@ export const SizeCheckbox = {
  */
 
 export const Slots = {
+  name: 'Slots',
   parameters: {
     controls: {
       exclude: ['default', 'left', 'right']
@@ -141,6 +149,7 @@ export const Slots = {
  */
 
 export const Parts = {
+  name: 'Parts',
   parameters: {
     controls: {
       exclude: ['base', 'label', 'left', 'right']
@@ -181,3 +190,5 @@ export const Parts = {
     });
   }
 };
+
+export const Combination = generateScreenshotStory([Default, DisabledCheckbox, SizeCheckbox, Slots, Parts]);
