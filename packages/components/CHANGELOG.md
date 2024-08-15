@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v3.14.0](https://github.com/solid-design-system/solid/compare/components/3.13.0...components/3.14.0) (2024-08-15)
+
+
+### Features
+
+* ✨ enable usage of link with children on sd-navigation-item ([#1236](https://github.com/solid-design-system/solid/issues/1236)) ([35b4770](https://github.com/solid-design-system/solid/commit/35b477077135886f966aa90c81dea96d2b55163c))
+
+### 📈 Stats
+* Bundle size (uncompressed): 334 KB (+1 KB / +0%)
+* Bundle size (gzipped): 78 KB (unchanged)
+
 # [@solid-design-system/components-v3.13.0](https://github.com/solid-design-system/solid/compare/components/3.12.0...components/3.13.0) (2024-08-13)
 
 
