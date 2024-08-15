@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v3.14.1](https://github.com/solid-design-system/solid/compare/components/3.14.0...components/3.14.1) (2024-08-15)
+
+
+### Bug Fixes
+
+* 🤔 sd-carousel - numbered variant - show total clicks ([#1247](https://github.com/solid-design-system/solid/issues/1247)) ([7f22b7f](https://github.com/solid-design-system/solid/commit/7f22b7f89ec6423d33e42b80aaac8706b093906d))
+
+### 📈 Stats
+* Bundle size (uncompressed): 335 KB (+1 KB / +0%)
+* Bundle size (gzipped): 79 KB (+1 KB / +1%)
+
 # [@solid-design-system/components-v3.14.0](https://github.com/solid-design-system/solid/compare/components/3.13.0...components/3.14.0) (2024-08-15)
 
 
