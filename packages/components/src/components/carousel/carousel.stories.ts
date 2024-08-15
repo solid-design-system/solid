@@ -155,7 +155,6 @@ export const SlidesPerMove = {
         y: { type: 'attribute', name: 'slides-per-move', values: [2] }
       },
       constants: [
-        { type: 'attribute', name: 'loop', value: 'true' },
         { type: 'attribute', name: 'slides-per-page', value: 2 },
         {
           type: 'slot',
