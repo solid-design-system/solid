@@ -299,6 +299,47 @@ export const IndentedRelaxed = {
 };
 
 /**
+ * With `separated` attribute, the navigation item will have more that only one action. It is possible to use it as a link and an accordion simultaneously.
+ *
+ * It needs a children slot and an href.
+ */
+export const separated = {
+  render: () => {
+    return generateTemplate({
+      args: overrideArgs([
+        defaultSlotConstant,
+        {
+          type: 'attribute',
+          name: 'vertical',
+          value: true
+        },
+        {
+          type: 'attribute',
+          name: 'separated',
+          value: true
+        },
+        {
+          type: 'attribute',
+          name: 'href',
+          value: 'https://www.union-investment.de/'
+        },
+        {
+          type: 'attribute',
+          name: 'chevron',
+          value: true
+        },
+        {
+          type: 'slot',
+          name: 'children',
+          value: '<div slot="children" class="slot slot--border slot--background h-6"></div>'
+        },
+        childrenSlotConstant
+      ])
+    });
+  }
+};
+
+/**
  * Shows available slots.  `description`is only used when `vertical`is true.
  */
 
@@ -431,7 +472,7 @@ export const Parts = {
 export const Mouseless = {
   render: (args: any) => {
     return html`<div class="mouseless">
-      ${['Button', 'Link', 'Accordion'].map(title => {
+      ${['Button', 'Link', 'Accordion', 'Separated'].map(title => {
         const constants: ConstantDefinition[] = [
           { type: 'attribute', name: 'vertical', value: true },
           { type: 'attribute', name: 'chevron', value: true },
@@ -445,6 +486,12 @@ export const Mouseless = {
         if (title === 'Link')
           constants.push({ type: 'attribute', name: 'href', value: 'https://www.union-investment.de/' });
         if (title === 'Accordion') constants.push(childrenSlotConstant);
+        if (title === 'Separated')
+          constants.push(
+            { type: 'attribute', name: 'separated', value: true },
+            { type: 'attribute', name: 'href', value: 'https://www.union-investment.de/' },
+            childrenSlotConstant
+          );
 
         return generateTemplate({
           args,
