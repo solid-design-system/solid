@@ -10,7 +10,9 @@ const { generateTemplate } = storybookTemplate('sd-hidden-links');
 const html = String.raw;
 
 /**
- * Hidden links can be used to show links only for keyboard users.
+ * Can be used to show links only for keyboard users.
+ *
+ * - Per default the hidden links are optimized for a single <sd-button>.
  */
 
 export default {
@@ -38,7 +40,7 @@ export const Default = {
   render: (args: any) => {
     return generateTemplate({
       options: {
-        templateContent: html`<div class="relative bg-primary-100 w-full h-[256px] p-8">
+        templateContent: html`<div class="relative bg-white w-full h-[256px] p-8">
           <div class="%CLASSES%">%SLOT%</div>
           <p>Tab into this area to show a single button.</p>
         </div>`
@@ -91,10 +93,8 @@ export const SurroundingContent = {
           }
         }
       </style>
-      <div class="z-20 sd-hidden-links sd-hidden-links--multiple">
-        <sd-navigation-item href="#">Suche</sd-navigation-item>
-        <sd-navigation-item href="#">Inhalt</sd-navigation-item>
-        <sd-navigation-item href="#">Fußbereich</sd-navigation-item>
+      <div class="z-20 sd-hidden-links">
+        <sd-button href="#">Skip to content</sd-button>
       </div>
       <sd-header class="z-10" fixed>
         <div class="flex justify-between items-center">
@@ -109,7 +109,7 @@ export const SurroundingContent = {
 };
 
 /**
- * You can "stack" multiple `sd-hidden-links` by adding multiple of them to the same parent. This is recommended for 2 links.
+ * "Stack" multiple `sd-hidden-links` by adding multiple of them to the same parent. (Recommended for 2 links)
  */
 export const StackLinks = {
   render: () =>
@@ -121,7 +121,7 @@ export const StackLinks = {
 };
 
 /**
- * Use the `sd-hidden-links--multiple` modifier to show mutiple `<sd-navigation-item>` elements. This is recommended for >2 links.
+ * Use the sd-hidden-links--multiple modifier to show mutiple `sd-navigation-item` elements. (Recommended for >2 links)
  */
 export const MultipleLinks = {
   render: () =>
@@ -140,7 +140,7 @@ export const MultipleLinks = {
  */
 export const TitleForMultipleLinks = {
   render: () =>
-    html`<div class="relative bg-primary-100 w-full h-[256px] p-8" lang="de">
+    html`<div class="relative bg-white w-full h-[256px] p-8" lang="de">
         <div class="sd-hidden-links sd-hidden-links--multiple">
           <sd-navigation-item href="#">Suche</sd-navigation-item>
           <sd-navigation-item href="#">Inhalt</sd-navigation-item>
@@ -148,7 +148,7 @@ export const TitleForMultipleLinks = {
         </div>
         <p>Hier wird eine deutsche Überschrift erscheinen.</p>
       </div>
-      <div class="relative bg-neutral-200 w-full h-[256px] p-8">
+      <div class="relative bg-white w-full h-[256px] p-8">
         <div class="sd-hidden-links sd-hidden-links--multiple" lang="en">
           <sd-navigation-item href="#">Search</sd-navigation-item>
           <sd-navigation-item href="#">Content</sd-navigation-item>
@@ -156,7 +156,7 @@ export const TitleForMultipleLinks = {
         </div>
         <p>Here you will see an English title.</p>
       </div>
-      <div class="relative bg-primary-100 w-full h-[256px] p-8">
+      <div class="relative bg-white w-full h-[256px] p-8">
         <style>
           #hidden-link-with-custom-title {
             --sd-hidden-links-title: 'Jump very fast to';
@@ -181,7 +181,7 @@ export const Debug = {
     }
   },
   render: () =>
-    html`<div class="relative bg-primary-100 w-full h-[256px] p-8">
+    html`<div class="relative bg-white w-full h-[256px] p-8">
       <div class="sd-hidden-links sd-hidden-links--multiple sd-hidden-links--debug">
         <sd-navigation-item href="#">Search</sd-navigation-item>
         <sd-navigation-item href="#">Content</sd-navigation-item>
