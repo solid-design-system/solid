@@ -99,4 +99,6 @@ export interface Translation extends DefaultTranslation {
   playAudio: string;
   pauseAudio: string;
   mute: string;
+  showMore: string;
+  showLess: string;
 }

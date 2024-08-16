@@ -16,12 +16,6 @@ import SolidFaker from '@solid-design-system/placeholders';
 // Create an instance with an optional seed value as the only argument
 const faker = new SolidFaker(123);
 
-// Set the seed to any other number to provide a different set of consistent results
-faker.seed(321);
-
-// Set the seed to undefined for random results on each invocation
-faker.seed();
-
 // Generate 5 random words (all lowercase)
 console.log(faker.words(5));
 

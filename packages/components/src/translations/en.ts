@@ -33,7 +33,9 @@ const translation: Translation = {
   audioPlayer: 'Audio Player',
   playAudio: 'Play Audio',
   pauseAudio: 'Pause Audio',
-  mute: 'Mute'
+  mute: 'Mute',
+  showMore: 'Show more',
+  showLess: 'Show less'
 };
 
 registerTranslation(translation);

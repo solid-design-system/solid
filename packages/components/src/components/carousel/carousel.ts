@@ -85,6 +85,12 @@ export default class SdCarousel extends SolidElement {
   @state() activeSlide = 0;
 
   /**
+   * The current page of the carousel
+   * @internal
+   */
+  @state() currentPage = 1;
+
+  /**
    * Boolean keeping track of the autoplay pause/play button
    * @internal
    */
@@ -141,12 +147,24 @@ export default class SdCarousel extends SolidElement {
     this.mutationObserver.observe(this, { childList: true, subtree: false });
   }
 
-  private getPageCount() {
-    return Math.ceil(this.getSlides().length / this.slidesPerPage);
+  static getPageCount(totalSlides: number, slidesPerPage: number, slidesPerMove: number) {
+    return Math.ceil((totalSlides - slidesPerPage) / slidesPerMove) + 1 > 0
+      ? Math.ceil((totalSlides - slidesPerPage) / slidesPerMove) + 1
+      : // Returns 1 if the total number of slides is less than the number of slides per page
+        1;
   }
 
-  private getCurrentPage() {
-    return Math.ceil(this.activeSlide / this.slidesPerPage);
+  static getCurrentPage(
+    totalSlides: number,
+    activeSlide: number,
+    slidesPerPage: number,
+    slidesPerMove: number
+  ): number {
+    return (
+      Math.ceil((totalSlides - slidesPerPage) / slidesPerMove) -
+      Math.ceil((totalSlides - slidesPerPage - activeSlide) / slidesPerMove) +
+      1
+    );
   }
 
   private getSlides({ excludeClones = true }: { excludeClones?: boolean } = {}) {
@@ -289,6 +307,13 @@ export default class SdCarousel extends SolidElement {
 
   @watch('activeSlide')
   handelSlideChange() {
+    this.currentPage = SdCarousel.getCurrentPage(
+      this.getSlides().length,
+      this.activeSlide,
+      this.slidesPerPage,
+      this.slidesPerMove
+    );
+
     const slides = this.getSlides();
     slides.forEach((slide, i) => {
       slide.classList.toggle('--is-active', i === this.activeSlide);
@@ -302,6 +327,10 @@ export default class SdCarousel extends SolidElement {
           slide: slides[this.activeSlide]
         }
       });
+    }
+
+    if (this.currentPage > SdCarousel.getPageCount(this.getSlides().length, this.slidesPerPage, this.slidesPerMove)) {
+      this.nextTillFirst();
     }
   }
 
@@ -318,6 +347,8 @@ export default class SdCarousel extends SolidElement {
         slide.style.setProperty('scroll-snap-align', 'none');
       }
     });
+
+    // this.handleScrollEnd();
   }
 
   @watch('autoplay')
@@ -342,7 +373,11 @@ export default class SdCarousel extends SolidElement {
       canSnap = Math.abs(previousIndex - this.slidesPerMove) % this.slidesPerMove === 0;
     }
 
-    this.goToSlide(previousIndex, behavior);
+    if (this.currentPage - 1 === 0 && this.loop) {
+      this.goToSlide(this.activeSlide - this.slidesPerPage, behavior);
+    } else {
+      this.goToSlide(previousIndex, behavior);
+    }
   }
 
   /**
@@ -351,7 +386,27 @@ export default class SdCarousel extends SolidElement {
    * @param behavior - The behavior used for scrolling.
    */
   next(behavior: ScrollBehavior = 'smooth') {
-    this.goToSlide(this.activeSlide + this.slidesPerMove, behavior);
+    if (
+      this.currentPage + 1 > SdCarousel.getPageCount(this.getSlides().length, this.slidesPerPage, this.slidesPerMove) &&
+      this.loop
+    ) {
+      this.nextTillFirst(behavior);
+    } else {
+      this.goToSlide(this.activeSlide + this.slidesPerMove, behavior);
+    }
+  }
+
+  nextTillFirst(behavior: ScrollBehavior = 'smooth') {
+    while (this.activeSlide !== 0) {
+      this.goToSlide(this.activeSlide + 1, behavior);
+    }
+
+    this.currentPage = SdCarousel.getCurrentPage(
+      this.getSlides().length,
+      this.activeSlide,
+      this.slidesPerPage,
+      this.slidesPerMove
+    );
   }
 
   /**
@@ -374,10 +429,11 @@ export default class SdCarousel extends SolidElement {
 
     // Get the index of the next slide. For looping carousel it adds `slidesPerPage`
     // to normalize the starting index in order to ignore the first nth clones.
-    const nextSlideIndex = clamp(index + (loop ? slidesPerPage : 0), 0, slidesWithClones.length - 1);
+    const nextSlideIndex = clamp(index + (loop ? slidesPerPage : 0), 0, slidesWithClones.length + 1);
     const nextSlide = slidesWithClones[nextSlideIndex];
 
     const scrollContainerRect = scrollContainer.getBoundingClientRect();
+
     const nextSlideRect = nextSlide.getBoundingClientRect();
 
     scrollContainer.scrollTo({
@@ -389,10 +445,15 @@ export default class SdCarousel extends SolidElement {
 
   render() {
     const { scrollController, slidesPerPage } = this;
-    const pagesCount = this.getPageCount();
-    const currentPage = this.getCurrentPage();
-    const prevEnabled = this.loop || currentPage > 0;
-    const nextEnabled = this.loop || currentPage < pagesCount - 1;
+    const pagesCount = SdCarousel.getPageCount(this.getSlides().length, this.slidesPerPage, this.slidesPerMove);
+    const currentPage = SdCarousel.getCurrentPage(
+      this.getSlides().length,
+      this.activeSlide,
+      this.slidesPerPage,
+      this.slidesPerMove
+    );
+    const prevEnabled = this.loop || currentPage > 1;
+    const nextEnabled = this.loop || currentPage < pagesCount;
     const isLtr = this.localize.dir() === 'ltr';
 
     return html`
@@ -451,7 +512,7 @@ export default class SdCarousel extends SolidElement {
                     aria-controls="scroll-container"
                   >
                     ${map(range(pagesCount), index => {
-                      const isActive = index === currentPage;
+                      const isActive = index + 1 === currentPage;
                       return html`
                         <button
                           part="pagination-item ${isActive ? 'pagination-item--active' : ''}"
@@ -489,7 +550,7 @@ export default class SdCarousel extends SolidElement {
                   <span
                     part="pagination-item"
                     class=${cx('w-5 text-center border-b-2 border-accent', this.inverted ? 'text-white' : 'text-black')}
-                    >${currentPage + 1}</span
+                    >${currentPage}</span
                   >
                   <span
                     part="pagination-divider"
@@ -517,7 +578,6 @@ export default class SdCarousel extends SolidElement {
               aria-disabled="${nextEnabled ? 'false' : 'true'}"
               @click=${nextEnabled
                 ? () => {
-                    console.log('click-next');
                     this.next();
                   }
                 : null}

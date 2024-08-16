@@ -1,0 +1,42 @@
+# Migration Guide: From `[ui-richtext]` to `[sd-prose]`
+
+The new `[sd-prose]` is designed to replace the `[ui-richtext]`. Rather than offering a complex component structure, they primarily focus on providing CSS styles to enrich the text content.
+
+## 💾 Slots
+
+### ❌ Removed Slots
+
+The following slots have been removed from the new [sd-prose] style:
+
+1. [default]
+   - As the new [sd-prose] is a CSS utility class, it does not require a slot.
+
+<hr />
+
+## ⚙️ Attributes
+
+### ❌ Removed Attributes
+
+The following attributes have been removed as the [sd-prose] is a CSS utility class:
+
+1. [columns]
+2. [component-width]
+   - use [sd-prose--full-width] to span the full width of the container and override the default 80ch max-width.
+3. [floating]
+4. [variant]
+
+<hr />
+
+## 🎨 CSS Classes
+
+### ✨ New CSS Classes
+
+#### [sd-prose--inverted]
+
+This class inverts the text color of the prose element.
+
+#### [sd-prose--full-width]
+
+This class sets the prose element to span the full width of the container.
+
+<hr />
