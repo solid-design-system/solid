@@ -25,7 +25,7 @@ export const Default = {
 };
 
 /**
- * Offers 4 `color` variants for alternate experiences:
+ * Offers `color` variants for alternate experiences:
  * - `currentColor` (default): used to inherit the color from the parent element
  * - `primary`: used on light backgrounds
  * - `white`: used on primary backgrounds
