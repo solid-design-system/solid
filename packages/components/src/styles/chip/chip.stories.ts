@@ -6,7 +6,7 @@ const { argTypes } = storybookDefaults('sd-chip');
 const { overrideArgs } = storybookHelpers('sd-chip');
 
 /**
- * A small, non-interactive label the represents a status, property or meta-data.
+ * A small, non-interactive label that represents a status, property or meta-data.
  *
  *  **Related templates**:
  * - [Chip](?path=/docs/templates-chip--docs)

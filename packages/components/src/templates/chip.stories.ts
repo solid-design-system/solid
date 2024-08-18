@@ -17,10 +17,10 @@ export default {
  * ### Background Options
  *
  * Recommended combinations:
- * - `primary-200`: on background.white
- * - `primary-300`: on background.primary-100
- * - `primary-500`: on background.primary
- * - `white`: on background image
+ * - `primary-200`: on white background use the class `sd-chip--primary-200`
+ * - `primary-300`: on primary-100 background use the class `sd-chip--primary-300`
+ * - `primary-500`: on primary background use the class `sd-chip--primary-500`
+ * - `white`: on background image use the class `sd-chip--white`
  */
 
 export const BackgroundOptions = {
