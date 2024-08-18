@@ -30,7 +30,7 @@ export const Default = {
  * Use the variant “classes” for alternative appearances:
  *- `neutral-100` (default): use the class `sd-container--variant-neutral-100`
  *- `primary-100`: use the class `sd-container--variant-primary-100`
- *- `primary-500`: use the class `sd-container--variant-primary-500`
+ *- `primary`: use the class `sd-container--variant-primary`
  *- `border-neutral-400`: use the class `sd-container--border-neutral-400`
  *- `white`: use the class `sd-container--variant-white`:`
  */
