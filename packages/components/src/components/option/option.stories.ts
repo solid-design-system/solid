@@ -8,7 +8,7 @@ const { generateTemplate } = storybookTemplate('sd-option');
 const { overrideArgs } = storybookHelpers('sd-option');
 
 /**
- * Define the selectable items within various form controls such as `sd-select`
+ * Define the selectable items within various form controls such as `sd-select` `sd-input/sample-autocomplete`
  */
 
 export default {
@@ -20,10 +20,6 @@ export default {
   parameters: { ...parameters },
   decorators: [withActions] as any
 };
-
-/**
- * Default: This shows sd-option in its default state.
- */
 
 export const Default = {
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Option' }),
@@ -37,7 +33,7 @@ export const Default = {
 /**
  * There's 2 `variants` for alternative use:
  * - `default`
- * - `checkbox`: Use the `checkbox` attribute to prefix a styled checkbox. Enabled automatically when using `sd-select` with attribute `checklist` set to `true`.
+ * - `checkbox`: Enabled automatically when using `sd-select` with attribute `checklist` set to `true`.
  */
 
 export const Variants = {
