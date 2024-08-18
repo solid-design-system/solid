@@ -1,13 +1,11 @@
 import '../../solid-components';
 import { html } from 'lit-html';
-import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
+import { storybookDefaults } from '../../../scripts/storybook/helper';
 
 const { argTypes, parameters } = storybookDefaults('sd-container');
-const { overrideArgs } = storybookHelpers('sd-container');
-const { generateTemplate } = storybookTemplate('sd-container');
 
 /**
- * Allows users delimit and highlight a piece of content. The user has no interaction with it, it is merely a visual element that influences the flow of the page.
+ * Used to enclose and highlight specific parts of content on a page.
  */
 
 export default {
@@ -21,40 +19,20 @@ export default {
       url: 'https://www.figma.com/file/ffdz9zO1CISlr8aHCZ7Bzp/Container?type=design&node-id=0-1&mode=design&t=pa9I1YKCYZQxj9Ob-0'
     }
   },
-  args: overrideArgs({
-    type: 'slot',
-    name: 'default',
-    value: '<div class="slot slot--border slot--text h-12">Default slot</div>'
-  }),
-  argTypes,
-  decorators: [
-    (story: () => typeof html) => html`
-      <style>
-        td.template {
-          width: 70%;
-        }
-      </style>
-      ${story()}
-    `
-  ]
+  argTypes
 };
 
 export const Default = {
-  render: (args: any) => {
-    return generateTemplate({
-      options: { templateContent: '<div class="%CLASSES%">%SLOT%</div>' },
-      args
-    });
-  }
+  render: () => html` <div class="slot slot--border slot--text h-12">Default slot</div>`
 };
 
 /**
- * Offers 5 color variants for alternate experiences:
- *- `neutral-100 `
- *- `primary-100`
- *- `primary-500`
- *- `border-neutral-400`
- *- `white`
+ * Use the variant “classes” for alternative appearances:
+ *- `neutral-100` (default): use the class `sd-container--variant-neutral-100`
+ *- `primary-100`: use the class `sd-container--variant-primary-100`
+ *- `primary-500`: use the class `sd-container--variant-primary-500`
+ *- `border-neutral-400`: use the class `sd-container--border-neutral-400`
+ *- `white`: use the class `sd-container--variant-white`:`
  */
 
 export const Variants = {
