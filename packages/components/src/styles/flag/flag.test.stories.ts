@@ -13,16 +13,6 @@ const { overrideArgs } = storybookHelpers('sd-flag');
 const { generateTemplate } = storybookTemplate('sd-flag');
 const { generateScreenshotStory } = storybookUtilities;
 
-/**
- * A small, non-interactive label the represents a category.
- *
- * <b>Variants</b><br>
- * <li>--neutral-200 is the default variant</li>
- * <li>--neutral-500</li>
- * <li>--neutral-300</li>
- * <li>--white</li>
- */
-
 export default {
   title: 'Styles/sd-flag/Screenshot Test',
   tags: ['!autodocs'],

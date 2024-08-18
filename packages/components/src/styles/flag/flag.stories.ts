@@ -6,7 +6,7 @@ const { argTypes, parameters } = storybookDefaults('sd-flag');
 const { overrideArgs } = storybookHelpers('sd-flag');
 
 /**
- * A small, non-interactive label the represents a category.
+ * A small, non-interactive label that represents a category.
  *
  * **Related templates**:
  * - [Flag](?path=/docs/templates-flag--docs)
@@ -34,7 +34,7 @@ export const Default = {
 };
 
 /**
- * Use the `classes` variant for alternative appearances:
+ * Use the variant `classes` for alternative appearances:
  * - neutral-200 (default): use the class `sd-flag--neutral-200`
  * - neutral-300: use the class `sd-flag--neutral-300`
  * - neutral-500: use the class `sd-flag--neutral-500`
