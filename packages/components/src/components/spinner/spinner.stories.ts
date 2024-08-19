@@ -1,9 +1,9 @@
 import '../../solid-components';
 import { html } from 'lit-html';
-import { storybookDefaults } from '../../../scripts/storybook/helper';
-import { withActions } from '@storybook/addon-actions/decorator';
+import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
 
 const { argTypes, args, parameters } = storybookDefaults('sd-spinner');
+const { generateTemplate } = storybookTemplate('sd-spinner');
 
 /**
  * Visual indicator with a looping animation that shows loading is in process.
@@ -15,13 +15,13 @@ export default {
   tags: ['!dev'],
   args,
   argTypes,
-  parameters: { ...parameters },
-  decorators: [withActions] as any
+  parameters
 };
 
 export const Default = {
-  name: 'Default',
-  render: () => html`<sd-spinner></sd-spinner>`
+  render: (args: any) => {
+    return generateTemplate({ args });
+  }
 };
 
 /**
@@ -32,8 +32,6 @@ export const Default = {
  */
 
 export const Variants = {
-  name: 'Variants',
-  parameters: { controls: { exclude: 'color' } },
   render: () =>
     html` <div class="flex flex-row items-center gap-12">
       <div class="bg-neutral-100 p-4">
@@ -53,7 +51,6 @@ export const Variants = {
  */
 
 export const Size = {
-  name: 'Size',
   render: () =>
     html`<div class="flex flex-row gap-12">
       <div style="font-size: inherit">
