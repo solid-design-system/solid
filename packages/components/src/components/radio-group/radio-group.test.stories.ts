@@ -135,24 +135,6 @@ export const Invalid = {
 };
 
 /**
- * Use the `required` attribute to mark the element as required. This can be used for form validation purposes.
- */
-
-export const Required = {
-  name: 'Required',
-  parameters: { controls: { exclude: ['required'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        x: [{ type: 'attribute', name: 'size' }],
-        y: { type: 'attribute', name: 'required' }
-      },
-      args
-    });
-  }
-};
-
-/**
  * Use the `form-control`, `form-control-label` and `form-control-input` part selectors to customize the radio-group.
  */
 export const Parts = {
