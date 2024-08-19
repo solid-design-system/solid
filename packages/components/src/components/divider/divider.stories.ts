@@ -15,7 +15,20 @@ export default {
   component: 'sd-divider',
   args,
   argTypes,
-  parameters
+  parameters,
+  decorators: [
+    (story: () => typeof html) => html`
+      <style>
+        sd-divider[orientation='vertical'] {
+          height: 120px;
+        }
+        sd-divider[orientation='horizontal'] {
+          width: 120px;
+        }
+      </style>
+      ${story()}
+    `
+  ]
 };
 
 export const Default = {
