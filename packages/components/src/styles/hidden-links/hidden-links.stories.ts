@@ -80,7 +80,7 @@ export const SurroundingContent = {
 
         @media (min-width: 1025px) {
           :root {
-            --sd-header-padding: 24px 32px 0 32px;
+            --sd-header-padding: 24px 32px;
           }
           sd-header {
             height: 140px;
@@ -89,7 +89,7 @@ export const SurroundingContent = {
 
         @media (min-width: 1440px) {
           :root {
-            --sd-header-padding: 24px 48px 0 48px;
+            --sd-header-padding: 24px 48px;
           }
         }
       </style>
@@ -121,7 +121,7 @@ export const StackLinks = {
 };
 
 /**
- * Use the sd-hidden-links--multiple modifier to show mutiple `sd-navigation-item` elements. (Recommended for >2 links)
+ * Use the `sd-hidden-links--multiple` modifier to show mutiple `sd-navigation-item` elements. (Recommended for >2 links)
  */
 export const MultipleLinks = {
   render: () =>
