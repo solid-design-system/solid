@@ -1,16 +1,16 @@
 import '../../solid-components';
 import { html } from 'lit';
-import { storybookDefaults, storybookHelpers } from '../../../scripts/storybook/helper';
+import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
 const { argTypes, parameters } = storybookDefaults('sd-flag');
 const { overrideArgs } = storybookHelpers('sd-flag');
+const { generateTemplate } = storybookTemplate('sd-flag');
 
 /**
  * A small, non-interactive label that represents a category.
  *
  * **Related templates**:
  * - [Flag](?path=/docs/templates-flag--docs)
- * - [Teaser with Chip and Flag](?path=/docs/templates-teaser-with-chip-and-flag--docs)
  */
 
 export default {
@@ -24,25 +24,28 @@ export default {
       url: 'https://www.figma.com/file/vQ57OHDm26QE1gtZKtfb6L/Flag?type=design&node-id=804-717&mode=design&t=bdhcOj9ub57hEPZl-0'
     }
   },
-  args: overrideArgs([{ type: 'slot', name: 'default', value: 'Lorem Ipsum' }]),
+  args: overrideArgs([{ type: 'slot', name: 'default', value: 'Flag' }]),
   argTypes
 };
 
 export const Default = {
-  name: 'Default',
-  render: () => html` <div class="sd-flag">Default</div> `
+  render: (args: any) => {
+    return generateTemplate({
+      options: { templateContent: '<span class="%CLASSES%">%SLOT%</span>' },
+      args
+    });
+  }
 };
 
 /**
  * Use the variant `classes` for alternative appearances:
- * - neutral-200 (default): use the class `sd-flag--neutral-200`
- * - neutral-300: use the class `sd-flag--neutral-300`
- * - neutral-500: use the class `sd-flag--neutral-500`
- * - white: use the class `sd-flag--white`
+ * - neutral-200 (default)
+ * - neutral-300
+ * - neutral-500
+ * - white
  */
 
 export const Variants = {
-  name: 'Variants',
   render: () =>
     html` <div class="flex gap-4 bg-neutral-100 p-8">
       <div class="sd-flag sd-flag--neutral-200">Default</div>
