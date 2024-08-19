@@ -37,7 +37,7 @@ export default {
       value: `<sd-radio value="1">Radio 1</sd-radio><sd-radio value="2">Radio 2</sd-radio><sd-radio value="3">Radio 3</sd-radio>`
     },
     { type: 'attribute', name: 'name', value: 'radio-group' },
-    { type: 'attribute', name: 'value', value: '2' },
+    { type: 'attribute', name: 'value', value: '1' },
     { type: 'attribute', name: 'boldLabel', value: true }
   ]),
   argTypes
@@ -62,13 +62,13 @@ export const Size = {
   name: 'Size',
   render: () => html`
     <div class="flex gap-12">
-      <sd-radio-group name="radio-group" size="lg">
+      <sd-radio-group name="radio-group" size="lg" value="1">
         <sd-radio value="1">Radio 1</sd-radio>
         <sd-radio value="2">Radio 2</sd-radio>
         <sd-radio value="3">Radio 3</sd-radio>
       </sd-radio-group>
 
-      <sd-radio-group name="radio-group" size="sm">
+      <sd-radio-group name="radio-group" size="sm" value="1">
         <sd-radio value="1">Radio 1</sd-radio>
         <sd-radio value="2">Radio 2</sd-radio>
         <sd-radio value="3">Radio 3</sd-radio>
@@ -85,14 +85,14 @@ export const Orientation = {
   name: 'Orientation',
   render: () => html`
     <div class="flex gap-12">
-      <sd-radio-group name="radio-group" orientation="vertical">
+      <sd-radio-group name="radio-group" orientation="vertical" value="1">
         <sd-radio value="1">Radio 1</sd-radio>
         <sd-radio value="2">Radio 2</sd-radio>
         <sd-radio value="3">Radio 3</sd-radio>
         <label slot="label">Vertical Group</label>
       </sd-radio-group>
 
-      <sd-radio-group name="radio-group" orientation="horizontal">
+      <sd-radio-group name="radio-group" orientation="horizontal" value="1">
         <sd-radio value="1">Radio 1</sd-radio>
         <sd-radio value="2">Radio 2</sd-radio>
         <sd-radio value="3">Radio 3</sd-radio>
