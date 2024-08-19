@@ -1,8 +1,10 @@
 import '../../solid-components';
 import { html } from 'lit-html';
-import { storybookDefaults } from '../../../scripts/storybook/helper';
+import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
 const { argTypes, parameters } = storybookDefaults('sd-container');
+const { overrideArgs } = storybookHelpers('sd-container');
+const { generateTemplate } = storybookTemplate('sd-container');
 
 /**
  * Used to enclose and highlight specific parts of content on a page.
@@ -12,6 +14,11 @@ export default {
   title: 'Styles/sd-container',
   tags: ['!dev'],
   component: 'sd-container',
+  args: overrideArgs({
+    type: 'slot',
+    name: 'default',
+    value: '<div class="slot slot--border slot--text h-12">Default slot</div>'
+  }),
   parameters: {
     ...parameters,
     design: {
@@ -23,20 +30,21 @@ export default {
 };
 
 export const Default = {
-  render: () => html` <div class="slot slot--border slot--text h-12">Default slot</div>`
+  render: (args: any) => {
+    return generateTemplate({ args });
+  }
 };
 
 /**
- * Use the variant “classes” for alternative appearances:
+ * Use the variant `classes` for alternative appearances:
  *- `neutral-100` (default): use the class `sd-container--variant-neutral-100`
  *- `primary-100`: use the class `sd-container--variant-primary-100`
  *- `primary`: use the class `sd-container--variant-primary`
  *- `border-neutral-400`: use the class `sd-container--border-neutral-400`
- *- `white`: use the class `sd-container--variant-white`:`
+ *- `white`: use the class `sd-container--variant-white`
  */
 
 export const Variants = {
-  name: 'Variants',
   render: () =>
     html`<div class="grid grid-cols-2 gap-4">
       <div class="sd-container default">
