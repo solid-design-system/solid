@@ -11,15 +11,13 @@ const { generateTemplate } = storybookTemplate('sd-chip');
  *
  *  **Related templates**:
  * - [Chip](?path=/docs/templates-chip--docs)
- * - [Teaser with Chip and Flag](?path=/docs/templates-teaser-with-chip-and-flag--docs)
- *
  */
 
 export default {
   title: 'Styles/sd-chip',
   component: 'sd-chip',
   tags: ['!dev'],
-  args: overrideArgs({ type: 'slot', name: 'default', value: 'Lorem Ipsum' }),
+  args: overrideArgs({ type: 'slot', name: 'default', value: 'Chip' }),
   argTypes
 };
 
