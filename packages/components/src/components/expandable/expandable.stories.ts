@@ -20,7 +20,7 @@ export default {
     { type: 'slot', name: 'default', value: '<div class="slot slot--border slot--text h-16">Default slot</div>' }
   ]),
   argTypes,
-  parameters: { ...parameters }
+  parameters
 };
 
 export const Default = {
@@ -37,7 +37,6 @@ export const Default = {
  */
 
 export const Open = {
-  name: 'Open',
   render: () => {
     return html`<div class="flex flex-col gap-12">
       <sd-expandable class="sd-prose sd-prose--full-width">
@@ -68,7 +67,6 @@ export const Open = {
  * Use the `inverted` attribute when displayed on primary background.
  */
 export const Inverted = {
-  name: 'Inverted',
   render: () => {
     return html`<div class="bg-primary p-8">
       <sd-expandable inverted class="sd-prose sd-prose--full-width sd-prose--inverted">
