@@ -49,7 +49,7 @@ export const Variants = {
 };
 
 /**
- * Use the `font-size` in css to scale the spinner proportionally.
+ * Use the `font-size` in CSS to scale the spinner proportionally.
  */
 
 export const Size = {
