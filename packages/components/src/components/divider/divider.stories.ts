@@ -1,9 +1,9 @@
 import '../../solid-components';
 import { html } from 'lit';
-import { storybookDefaults, storybookHelpers } from '../../../scripts/storybook/helper';
+import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, parameters } = storybookDefaults('sd-divider');
-const { overrideArgs } = storybookHelpers('sd-divider');
+const { args, argTypes, parameters } = storybookDefaults('sd-divider');
+const { generateTemplate } = storybookTemplate('sd-divider');
 
 /**
  * Used to separate content or sections from each other and make the content easier to read for the user.
@@ -13,14 +13,16 @@ export default {
   title: 'Components/sd-divider',
   tags: ['!dev'],
   component: 'sd-divider',
-  args: overrideArgs([{ type: 'slot', name: 'default', value: 'Default Slot' }]),
+  args,
   argTypes,
   parameters: { ...parameters }
 };
 
 export const Default = {
   name: 'Default',
-  render: () => html`<sd-divider orientation="horizontal" class="w-[120px]"></sd-divider>`
+  render: (args: any) => {
+    return generateTemplate({ args });
+  }
 };
 
 /**
