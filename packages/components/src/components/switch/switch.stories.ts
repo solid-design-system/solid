@@ -1,9 +1,10 @@
 import '../../solid-components';
 import { html } from 'lit-html';
-import { storybookDefaults, storybookHelpers } from '../../../scripts/storybook/helper';
+import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
 const { argTypes, parameters } = storybookDefaults('sd-switch');
 const { overrideArgs } = storybookHelpers('sd-switch');
+const { generateTemplate } = storybookTemplate('sd-switch');
 
 /**
  * Gives control over a feature or option that can be turned on or off
@@ -25,8 +26,9 @@ export default {
 };
 
 export const Default = {
-  name: 'Default',
-  render: () => html`<sd-switch>Default Slot</sd-switch>`
+  render: (args: any) => {
+    return generateTemplate({ args });
+  }
 };
 
 /**
@@ -34,7 +36,7 @@ export const Default = {
  */
 
 export const Checked = {
-  render: () => html`<sd-switch disabled="" checked="">Default Slot</sd-switch>`
+  render: () => html`<sd-switch checked>Default Slot</sd-switch>`
 };
 
 /**
@@ -42,7 +44,7 @@ export const Checked = {
  * */
 
 export const Required = {
-  render: () => html`<sd-switch required="">Default Slot</sd-switch>`
+  render: () => html`<sd-switch required>Default Slot</sd-switch>`
 };
 
 /**
@@ -50,7 +52,7 @@ export const Required = {
  */
 
 export const Disabled = {
-  render: () => html`<sd-switch disabled="">Default Slot</sd-switch>`
+  render: () => html`<sd-switch disabled>Default Slot</sd-switch>`
 };
 
 /**
@@ -60,7 +62,7 @@ export const Disabled = {
 export const Invalid = {
   render: () =>
     html` <form>
-      <sd-switch required="">Default Slot</sd-switch>
+      <sd-switch required>Default Slot</sd-switch>
       <sd-button style="margin-top: 16px" type="submit">Submit</sd-button>
     </form>`
 };
