@@ -1,6 +1,11 @@
 import '../../solid-components';
 import { html } from 'lit-html';
-import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
+import {
+  storybookDefaults,
+  storybookHelpers,
+  storybookTemplate,
+  storybookUtilities
+} from '../../../scripts/storybook/helper';
 import { userEvent } from '@storybook/test';
 import { waitUntil } from '@open-wc/testing-helpers';
 import { withActions } from '@storybook/addon-actions/decorator';
@@ -9,11 +14,12 @@ import type SdInput from './input';
 const { argTypes, args, parameters } = storybookDefaults('sd-input');
 const { generateTemplate } = storybookTemplate('sd-input');
 const { overrideArgs } = storybookHelpers('sd-input');
+const { generateScreenshotStory } = storybookUtilities;
 
 export default {
-  tags: ['!dev'],
-  title: 'Components/sd-input',
+  title: 'Components/sd-input/Screenshot Tests',
   component: 'sd-input',
+  tags: ['!autodocs'],
   args,
   argTypes: {
     ...argTypes,
@@ -64,6 +70,7 @@ export default {
  */
 
 export const Default = {
+  name: 'Default',
   render: (args: any) => {
     return html`<div class="w-[250px]">${generateTemplate({ args })}</div> `;
   }
@@ -74,6 +81,7 @@ export const Default = {
  */
 
 export const Labels = {
+  name: 'Label',
   args: overrideArgs([{ type: 'attribute', name: 'label', value: 'Label' }]),
   render: (args: any) => {
     return html`
@@ -112,6 +120,7 @@ export const HelpText = {
  */
 
 export const Placeholders = {
+  name: 'Placeholders',
   args: overrideArgs([{ type: 'attribute', name: 'placeholder', value: 'Type something' }]),
   render: (args: any) => {
     return html`
@@ -129,6 +138,7 @@ export const Placeholders = {
  */
 
 export const Clearable = {
+  name: 'Clearable',
   args: overrideArgs([{ type: 'attribute', name: 'clearable', value: true }]),
   render: (args: any) => {
     return html`
@@ -146,6 +156,7 @@ export const Clearable = {
  */
 
 export const TogglePassword = {
+  name: 'Toggle Password',
   name: 'Toggle Password',
   parameters: {
     controls: {
@@ -173,6 +184,7 @@ export const TogglePassword = {
  */
 
 export const Disabled = {
+  name: 'Disabled',
   parameters: {
     controls: {
       exclude: ['disabled']
@@ -200,6 +212,7 @@ export const Disabled = {
  */
 
 export const Readonly = {
+  name: 'Readonly',
   parameters: {
     controls: {
       exclude: ['readonly']
@@ -227,6 +240,7 @@ export const Readonly = {
  */
 
 export const Sizes = {
+  name: 'Sizes',
   parameters: {
     controls: {
       exclude: ['size']
@@ -258,6 +272,7 @@ export const Sizes = {
  */
 
 export const StyleOnValid = {
+  name: 'Style on Valid',
   parameters: {
     controls: {
       exclude: ['style-on-valid']
@@ -301,6 +316,7 @@ export const StyleOnValid = {
  */
 
 export const Types = {
+  name: 'Types',
   parameters: {
     controls: {
       include: ['size', 'disabled', 'clearable', 'readonly']
@@ -431,6 +447,7 @@ export const Types = {
  */
 
 export const Validation = {
+  name: 'Validation',
   parameters: {
     controls: {
       include: ['clearable', 'disabled']
@@ -693,6 +710,7 @@ export const Validation = {
  */
 
 export const Slots = {
+  name: 'Slots',
   parameters: {
     controls: {
       exclude: ['label', 'left', 'right', 'clear-icon', 'help-text', 'clearable', 'value']
@@ -746,6 +764,7 @@ export const Slots = {
  */
 
 export const Parts = {
+  name: 'Parts',
   parameters: {
     controls: {
       exclude: ['label', 'left', 'right', 'clear-icon', 'help-text', 'clearable', 'value']
@@ -804,6 +823,7 @@ export const Parts = {
  */
 
 export const setCustomValidity = {
+  name: 'setCustomValidity',
   parameters: {
     chromatic: { disableSnapshot: true }
   },
@@ -862,6 +882,7 @@ export const setCustomValidity = {
  */
 
 export const Mouseless = {
+  name: 'Mouseless',
   render: (args: any) => {
     return html`<div class="mouseless w-[250px]">${generateTemplate({ args })}</div>`;
   },
@@ -931,3 +952,23 @@ export const Samples = {
     `;
   }
 };
+
+export const Combination = generateScreenshotStory([
+  Default,
+  Labels,
+  HelpText,
+  Placeholders,
+  Clearable,
+  TogglePassword,
+  Disabled,
+  Readonly,
+  Sizes,
+  StyleOnValid,
+  Types,
+  Validation,
+  Slots,
+  Parts,
+  setCustomValidity,
+  Mouseless,
+  Samples
+]);
