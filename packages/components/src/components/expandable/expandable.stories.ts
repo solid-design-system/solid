@@ -10,7 +10,7 @@ const { generateTemplate } = storybookTemplate('sd-expandable');
  * Helps to reduce visible content by concealing part of it, with an option for users to reveal more as needed.
  *
  *  **Related templates**:
- * - [Expandable](?path=/docs/templates-expandable-with-different-backgrounds-and-text-styles--docs)
+ * - [Expandable with Different Backgrounds and Text Styles](?path=/docs/templates-expandable-with-different-backgrounds-and-text-styles--docs)
  */
 export default {
   title: 'Components/sd-expandable',
