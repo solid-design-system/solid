@@ -15,11 +15,10 @@ export default {
   component: 'sd-divider',
   args,
   argTypes,
-  parameters: { ...parameters }
+  parameters
 };
 
 export const Default = {
-  name: 'Default',
   render: (args: any) => {
     return generateTemplate({ args });
   }
@@ -29,13 +28,12 @@ export const Default = {
  * Set the component's size with width (horizontal) or height (vertical) via CSS or inline-styles
  */
 export const Size = {
-  name: 'Size',
   render: () => {
     return html` <div class="flex items-center gap-12">
-      <sd-divider orientation="horizontal" class="w-[50px]"></sd-divider>
-      <sd-divider orientation="horizontal" class="w-[150px]"></sd-divider>
-      <sd-divider orientation="vertical" class="h-[50px]"></sd-divider>
-      <sd-divider orientation="vertical" class="h-[150px]"></sd-divider>
+      <sd-divider orientation="horizontal" style="width: 50px"></sd-divider>
+      <sd-divider orientation="horizontal" style="width: 120px"></sd-divider>
+      <sd-divider orientation="vertical" style="height: 50px"></sd-divider>
+      <sd-divider orientation="vertical" style="height: 120px"></sd-divider>
     </div>`;
   }
 };
@@ -44,11 +42,10 @@ export const Size = {
  * Use the `orientation` attribute to set the axis of a divider.
  */
 export const Orientation = {
-  name: 'Orientation',
   render: () => html`
     <div class="flex items-center gap-12">
-      <sd-divider orientation="horizontal" class="w-[120px]"></sd-divider>
-      <sd-divider orientation="vertical" class="h-[120px]"></sd-divider>
+      <sd-divider orientation="horizontal" style="width: 120px"></sd-divider>
+      <sd-divider orientation="vertical" style="height: 120px"></sd-divider>
     </div>
   `
 };
@@ -58,11 +55,10 @@ export const Orientation = {
  */
 
 export const Inverted = {
-  name: 'Inverted',
   render: () => {
     return html`
       <div class="flex items-center gap-12 bg-primary p-8">
-        <sd-divider orientation="horizontal" class="w-[120px]" inverted></sd-divider>
+        <sd-divider orientation="horizontal" style="width: 120px" inverted></sd-divider>
       </div>
     `;
   }
