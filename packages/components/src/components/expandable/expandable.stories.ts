@@ -40,16 +40,16 @@ export const Open = {
   name: 'Open',
   render: () => {
     return html`<div class="flex flex-col gap-12">
-      <sd-expandable>
-        <div class="sd-paragraph">
+      <sd-expandable class="sd-prose sd-prose--full-width">
+        <p>
           Between 50 and 60 per cent of global economic output depends on functioning ecosystems and the associated
           natural services. This emphasises the high economic importance of the topic and the need to address the
           associated risks and take them into account in the investment process. In the biodiversity guideline, we
           describe the relevance of the topic and Union Investment's approach as a long-term investor.
-        </div>
+        </p>
       </sd-expandable>
-      <sd-expandable open="true">
-        <div class="sd-paragraph">
+      <sd-expandable open class="sd-prose sd-prose--full-width">
+        <p>
           Between 50 and 60 per cent of global economic output depends on functioning ecosystems and the associated
           natural services. This emphasises the high economic importance of the topic and the need to address the
           associated risks and take them into account in the investment process. In the biodiversity guideline, we
@@ -58,7 +58,7 @@ export const Open = {
           emphasises the high economic importance of the topic and the need to address the associated risks and take
           them into account in the investment process. In the biodiversity guideline, we describe the relevance of the
           topic and Union Investment's approach as a long-term investor.
-        </div>
+        </p>
       </sd-expandable>
     </div>`;
   }
@@ -71,13 +71,13 @@ export const Inverted = {
   name: 'Inverted',
   render: () => {
     return html`<div class="bg-primary p-8">
-      <sd-expandable inverted="">
-        <span class="h-16 text-white">
+      <sd-expandable inverted class="sd-prose sd-prose--full-width sd-prose--inverted">
+        <p>
           Between 50 and 60 per cent of global economic output depends on functioning ecosystems and the associated
           natural services. This emphasises the high economic importance of the topic and the need to address the
           associated risks and take them into account in the investment process. In the biodiversity guideline, we
           describe the relevance of the topic and Union Investment's approach as a long-term investor.
-        </span>
+        </p>
       </sd-expandable>
     </div>`;
   }
