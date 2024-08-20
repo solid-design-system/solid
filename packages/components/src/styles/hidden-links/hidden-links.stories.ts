@@ -51,7 +51,7 @@ export const Default = {
 };
 
 /**
- * The style appends its position in regard of the parent container's position. It can be used with any element.
+ * The style appends its position relative to the position of the parent container and adds some default padding. It can be used on any element, and the padding is easily overridden via CSS.
  */
 export const SurroundingContent = {
   render: () => {
@@ -113,7 +113,7 @@ export const SurroundingContent = {
  */
 export const StackLinks = {
   render: () =>
-    html`<div class="relative bg-primary-100 w-full h-[256px] p-8">
+    html`<div class="relative bg-white w-full h-[256px] p-8">
       <div class="sd-hidden-links"><sd-button href="#">Skip to Search</sd-button></div>
       <div class="sd-hidden-links"><sd-button href="#">Skip to Content</sd-button></div>
       <p>Tab through this area to see buttons one after another.</p>
@@ -125,7 +125,7 @@ export const StackLinks = {
  */
 export const MultipleLinks = {
   render: () =>
-    html`<div class="relative bg-primary-100 w-full h-[256px] p-8">
+    html`<div class="relative bg-white w-full h-[256px] p-8">
       <div class="sd-hidden-links sd-hidden-links--multiple">
         <sd-navigation-item href="#">Search</sd-navigation-item>
         <sd-navigation-item href="#">Content</sd-navigation-item>
