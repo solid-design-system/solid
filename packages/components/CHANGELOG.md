@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v3.15.0](https://github.com/solid-design-system/solid/compare/components/3.14.1...components/3.15.0) (2024-08-20)
+
+
+### Features
+
+* ✨ add style sd-hidden-links ([#1261](https://github.com/solid-design-system/solid/issues/1261)) ([afbb92d](https://github.com/solid-design-system/solid/commit/afbb92da7f29f55a553685ac02c34b19c8a3b855))
+
+### 📈 Stats
+* Bundle size (uncompressed): 335 KB (unchanged)
+* Bundle size (gzipped): 79 KB (unchanged)
+
 # [@solid-design-system/components-v3.14.1](https://github.com/solid-design-system/solid/compare/components/3.14.0...components/3.14.1) (2024-08-15)
 
 
