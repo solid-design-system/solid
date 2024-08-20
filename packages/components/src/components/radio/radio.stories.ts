@@ -31,7 +31,7 @@ export const Default = {
 };
 
 /**
- * Use the `size` attribute to change the size of the input radio. This attribute affects the font-size within the element, while the element itself remains the same size. The default is `lg`. In tight spaces, consider using `sm`.
+ * Use the `size` attribute to change the size of the input radio. This attribute affects the font-size within the element, while the element itself remains the same size.
  */
 
 export const Size = {
