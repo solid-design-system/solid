@@ -25,10 +25,10 @@ export default {
  * ### Background Options
  *
  * Recommended combinations:
- * - `neutral-200`: on white background
- * - `neutral-300`: on neutral-100 background
- * - `neutral-500`: on primary-100 background
- * - `white`: on background primary and image
+ * - `neutral-200` on white background
+ * - `neutral-300` on neutral-100 background
+ * - `neutral-500` on primary-100 background
+ * - `white` on primary and image backgrounds
  */
 export const BackgroundOptions = {
   name: 'Background Options',

@@ -38,11 +38,11 @@ export const Default = {
 };
 
 /**
- * Use the variant `classes` for alternative appearances:
- * - neutral-200 (default)
- * - neutral-300
- * - neutral-500
- * - white
+ * Use `sd-flag` modifiers for alternative appearances:
+ * - `--neutral-200` (default)
+ * - `--neutral-300`
+ * - `--neutral-500`
+ * - `--white`
  */
 
 export const Variants = {
