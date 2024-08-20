@@ -256,7 +256,6 @@ export const Combination = generateScreenshotStory([
   Orientation,
   Disabled,
   Invalid,
-  Required,
   Parts,
   Mouseless,
   RadioButtons,
