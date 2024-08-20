@@ -55,33 +55,16 @@ export const Default = {
 };
 
 /**
- * Use the `label` attribute to add a label on top.
+ * Use the `label` attribute to add a label on top. You can use the optional `boldLabel` attribute to make the label bold.
  */
 
 export const Label = {
   name: 'Label',
   render: () => html`
-    <sd-radio-group name="radio-group" value="1">
+    <sd-radio-group name="radio-group" value="1" label="Group Label" boldLabel>
       <sd-radio value="1">Radio 1</sd-radio>
       <sd-radio value="2">Radio 2</sd-radio>
       <sd-radio value="3">Radio 3</sd-radio>
-      <label slot="label">Group Label</label>
-    </sd-radio-group>
-  `
-};
-
-/**
- * Use the `boldLabel` attribute to make the label bold.
- */
-
-export const BoldLabel = {
-  name: 'Bold Label',
-  render: () => html`
-    <sd-radio-group name="radio-group" value="1" boldlabel>
-      <sd-radio value="1">Radio 1</sd-radio>
-      <sd-radio value="2">Radio 2</sd-radio>
-      <sd-radio value="3">Radio 3</sd-radio>
-      <label slot="label">Bold Label</label>
     </sd-radio-group>
   `
 };
