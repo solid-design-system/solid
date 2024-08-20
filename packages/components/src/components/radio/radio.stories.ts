@@ -58,7 +58,7 @@ export const Disabled = {
 };
 
 /**
- * For an invalid radio-group (since radios always come in groups) an error-text underneath the group is mandatory.
+ * The `invalid` attribute marks the radio as invalid. For an invalid radio-group (since radios always come in groups) an error-text underneath the group is mandatory.
  */
 
 export const Invalid = {
