@@ -30,7 +30,7 @@ export const Default = {
   }
 };
 /**
- * Use the `classes` variant for alternative appearances:
+ * Use `sd-chip` modifiers for alternative appearances:
  * - `--primary-200` (default)
  * - `--primary-300`
  * - `--primary-500`
