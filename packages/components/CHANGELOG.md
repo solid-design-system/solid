@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v3.16.0](https://github.com/solid-design-system/solid/compare/components/3.15.0...components/3.16.0) (2024-08-21)
+
+
+### Features
+
+* use new default green for ui icons ([#1301](https://github.com/solid-design-system/solid/issues/1301)) ([5498431](https://github.com/solid-design-system/solid/commit/54984315561114898466b46fdc7e09cabad09ce6))
+
+### 📈 Stats
+* Bundle size (uncompressed): 335 KB (unchanged)
+* Bundle size (gzipped): 79 KB (unchanged)
+
 # [@solid-design-system/components-v3.15.0](https://github.com/solid-design-system/solid/compare/components/3.14.1...components/3.15.0) (2024-08-20)
 
 
