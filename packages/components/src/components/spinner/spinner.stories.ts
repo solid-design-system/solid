@@ -34,7 +34,7 @@ export const Default = {
 export const Variants = {
   render: () =>
     html` <div class="flex flex-row items-center gap-12">
-      <div class="bg-neutral-100 p-4">
+      <div class="p-4">
         <sd-spinner color="currentColor"></sd-spinner>
       </div>
       <div class="p-4">
@@ -54,13 +54,13 @@ export const Size = {
   render: () =>
     html`<div class="flex flex-row gap-12">
       <div style="font-size: inherit">
-        <sd-spinner color="currentColor"></sd-spinner>
+        <sd-spinner color="primary "></sd-spinner>
       </div>
       <div style="font-size: 2rem">
-        <sd-spinner color="currentColor"></sd-spinner>
+        <sd-spinner color="primary "></sd-spinner>
       </div>
       <div style="font-size: 4rem">
-        <sd-spinner color="currentColor"></sd-spinner>
+        <sd-spinner color="primary "></sd-spinner>
       </div>
     </div>`
 };
