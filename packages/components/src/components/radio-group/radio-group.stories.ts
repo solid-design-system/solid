@@ -175,6 +175,34 @@ export const Disabled = {
 };
 
 /**
+ * The component gets the `invalid` state when the form is not valid.
+ */
+
+export const Invalid = {
+  name: 'Invalid',
+  render: () => html`
+    <form id="invalid-form" class="flex flex-col gap-8">
+      <sd-radio-group name="radio-group" id="invalid-radio" required boldlabel>
+        <sd-radio value="1">Radio 1</sd-radio>
+        <sd-radio value="2">Radio 2</sd-radio>
+        <sd-radio value="3">Radio 3</sd-radio>
+        <label slot="label">Invalid Group</label>
+      </sd-radio-group>
+    </form>
+
+    <script type="module">
+      // Wait for custom elements to be defined
+      await Promise.all([customElements.whenDefined('sd-radio-group'), customElements.whenDefined('sd-button')]).then(
+        () => {
+          const input = document.getElementById('invalid-radio');
+          input.reportValidity();
+        }
+      );
+    </script>
+  `
+};
+
+/**
  * 1. You can use the `setCustomValidity` method to set a custom validation message. This will override any native validation messages.
  * 2. Set an empty string to clear the custom validity and make the input valid.
  * 3. To show the validation message, call the `reportValidity` method. Originally this would show a native validation bubble, but we show the error messages inline.
@@ -187,8 +215,8 @@ export const setCustomValidity = {
       <!-- block submit and show alert instead -->
       <form id="validationForm" class="flex flex-col gap-2">
         <sd-radio-group id="custom-input">
-          <sd-radio id="radio-1" name="a" value="1">1</sd-radio>
-          <sd-radio id="radio-2" name="a" value="2">2</sd-radio>
+          <sd-radio id="radio-1" value="1">1</sd-radio>
+          <sd-radio id="radio-2" value="2">2</sd-radio>
         </sd-radio-group>
         <div>
           <sd-button type="submit">Submit</sd-button>
