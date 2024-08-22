@@ -2,7 +2,6 @@ import '../../solid-components';
 import { html } from 'lit';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 import { waitUntil } from '@open-wc/testing-helpers';
-import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-flipcard');
 const { generateTemplate } = storybookTemplate('sd-flipcard');
