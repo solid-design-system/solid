@@ -60,9 +60,15 @@ export const Required = {
  */
 
 export const Invalid = {
-  render: () =>
-    html` <form>
-      <sd-switch required>Invalid</sd-switch>
-      <sd-button style="margin-top: 16px" type="submit">Submit</sd-button>
-    </form>`
+  render: () => html`
+    <form id="invalid-form">
+      <sd-switch required id="invalid-switch">Invalid</sd-switch>
+    </form>
+    <script type="module">
+      await Promise.all([customElements.whenDefined('sd-switch').then(() => {
+        const switch = document.getElementById('invalid-switch');
+        switch.reportValidity();
+      })]);
+    </script>
+  `
 };
