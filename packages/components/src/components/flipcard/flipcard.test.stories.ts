@@ -1,16 +1,22 @@
 import '../../solid-components';
 import { html } from 'lit';
-import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
+import {
+  storybookDefaults,
+  storybookHelpers,
+  storybookTemplate,
+  storybookUtilities
+} from '../../../scripts/storybook/helper';
 import { waitUntil } from '@open-wc/testing-helpers';
 import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-flipcard');
 const { generateTemplate } = storybookTemplate('sd-flipcard');
 const { overrideArgs } = storybookHelpers('sd-flipcard');
+const { generateScreenshotStory } = storybookUtilities;
 
 export default {
-  title: 'Components/sd-flipcard',
-  tags: ['!dev'],
+  title: 'Components/sd-flipcard/Screenshot Tests',
+  tags: ['!autodocs'],
   component: 'sd-flipcard',
   args: overrideArgs([
     {
@@ -34,79 +40,47 @@ export default {
       value: `<img slot='media-back' class="object-cover h-full w-full" src='./placeholders/images/generic.jpg' alt='Generic'/>`
     }
   ]),
+
   argTypes,
-  parameters
+
+  parameters: { ...parameters },
+  decorators: [withActions] as any
 };
 /**
  * This shows sd-flipcard in its default state.
  */
 
 export const Default = {
+  name: 'Default',
   render: (args: any) => {
     return generateTemplate({ args });
   }
 };
 
 /**
- * Use the `variant` attribute to set the color variant for front or back.
- *
- * - primary
- * - neutral-100
- * - gradient-light-top
- * - gradient-light-bottom
- * - gradient-dark-top
- * - gradient-dark-bottom
+ * The sd-flipcard can be displayed in several ways using the `front-variant` and `back-variant` attributes. This example shows the usage `front-variant` attribute.
  */
 
 export const Variants = {
-  render: () =>
-    html` <div>
-      <div style="margin-bottom: 40px">
-        <sd-flipcard
-          activation="click hover"
-          flip-direction="horizontal"
-          front-variant="primary"
-          back-variant="primary"
-        >
-          <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
-          <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
-          <img
-            slot="media-front"
-            class="object-cover h-full w-full"
-            src="./placeholders/images/generic.jpg"
-            alt="Generic"
-          />
-          <img
-            slot="media-back"
-            class="object-cover h-full w-full"
-            src="./placeholders/images/generic.jpg"
-            alt="Generic"
-          />
-        </sd-flipcard>
-      </div>
-      <sd-flipcard
-      activation="click hover"
-      flip-direction="horizontal"
-      front-variant="primary-100"
-      back-variant="primary-100"
-    >
-      <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
-      <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
-      <img
-        slot="media-front"
-        class="object-cover h-full w-full"
-        src="./placeholders/images/generic.jpg"
-        alt="Generic"
-      />
-      <img
-        slot="media-back"
-        class="object-cover h-full w-full"
-        src="./placeholders/images/generic.jpg"
-        alt="Generic"
-      />
-    </sd-flipcard>
-  </div>
-    </div>`
+  name: 'Variants',
+  parameters: { controls: { exclude: ['front-variant'] } },
+  render: (args: any) =>
+    generateTemplate({
+      axis: {
+        y: {
+          type: 'attribute',
+          name: 'front-variant'
+        }
+      },
+      args,
+      constants: [
+        {
+          type: 'template',
+          name: 'style',
+          value: '<div style="margin-bottom: 40px">%TEMPLATE%</div>'
+        }
+      ]
+    })
 };
 
 /**
@@ -114,6 +88,7 @@ export const Variants = {
  */
 
 export const Activation = {
+  name: 'Activation',
   parameters: { controls: { exclude: ['activation'] } },
   render: (args: any) =>
     generateTemplate({
@@ -139,6 +114,7 @@ export const Activation = {
  */
 
 export const flipDirection = {
+  name: 'Flip Direction',
   parameters: { controls: { exclude: ['flip-direction'] } },
   render: (args: any) =>
     generateTemplate({
@@ -163,6 +139,7 @@ export const flipDirection = {
  * Use the `front`, `back`, `front-media` and `back-media` slots to add content to the flipcard.
  */
 export const Slots = {
+  name: 'Slots',
   parameters: {
     controls: { exclude: ['front', 'back', 'front-media', 'back-media'] }
   },
@@ -211,6 +188,7 @@ export const Slots = {
  * Use the `base`, `front`, `back`, `front-slot-container`, `back-slot-container`, `front-media`, `back-media`, `front-secondary-gradient` and `back-secondary-gradient` parts to style the flipcard.
  */
 export const Parts = {
+  name: 'Parts',
   parameters: {
     controls: {
       exclude: [
@@ -277,6 +255,7 @@ export const Parts = {
  */
 
 export const Mouseless = {
+  name: 'Mouseless',
   render: (args: any) => {
     return html`<div class="mouseless">${generateTemplate({ args })}</div>`;
   },
@@ -363,3 +342,15 @@ export const AspectRatio = {
     `;
   }
 };
+
+export const Combination = generateScreenshotStory([
+  Default,
+  Variants,
+  Activation,
+  flipDirection,
+  Slots,
+  Parts,
+  Mouseless,
+  Sample,
+  AspectRatio
+]);
