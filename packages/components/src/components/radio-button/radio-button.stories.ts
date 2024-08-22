@@ -15,6 +15,9 @@ const { generateTemplate } = storybookTemplate('sd-radio-button');
  * **Related components:**
  * - [sd-radio](?path=/docs/components-sd-radio--default--docs)
  * - [sd-radio-group](?path=/docs/components-sd-radio-group--default--docs)
+ *
+ * **Related templates:**
+ * - [Radio Button Group](?path=/docs/templates-radio-button-group--docs)
  */
 
 export default {
@@ -81,18 +84,18 @@ export const Checked = {
 };
 
 /**
- * Use the `show-label` attribute to display the label of the radio button.
+ * Use the `default` slot to add a label.
  */
 
 export const Label = {
   name: 'Label',
   render: () => html`
     <div class="flex gap-12">
-      <sd-radio-button showLabel>
+      <sd-radio-button>
         <div>Label</div>
       </sd-radio-button>
 
-      <sd-radio-button showLabel>
+      <sd-radio-button>
         <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
         <div>Label</div>
       </sd-radio-button>
@@ -111,7 +114,7 @@ export const Icon = {
       <sd-radio-button>
         <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
       </sd-radio-button>
-      <sd-radio-button showLabel>
+      <sd-radio-button>
         <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
         <div>Label</div>
       </sd-radio-button>
