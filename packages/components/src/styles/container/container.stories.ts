@@ -81,7 +81,7 @@ export const Padding = {
 };
 
 /**
- * You can override the default padding values by setting your desired values as a style.
+ * You can override the default padding values via CSS.
  */
 
 export const CustomPadding = {
