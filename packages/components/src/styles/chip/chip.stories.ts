@@ -1,36 +1,24 @@
 import '../../solid-components';
-
+import { html } from 'lit';
 import { FlagSamples } from '../flag/flag.test.stories';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, parameters } = storybookDefaults('sd-chip');
+const { argTypes } = storybookDefaults('sd-chip');
 const { overrideArgs } = storybookHelpers('sd-chip');
 const { generateTemplate } = storybookTemplate('sd-chip');
 
 /**
- * A small, non-interactive label the represents a status, property or meta-data.
+ * A small, non-interactive label that represents a status, property or meta-data.
  *
- * <b>Variants</b><br>
- * <li>--primary-200 is the default variant</li>
- * <li>--primary-500</li>
- * <li>--primary-300</li>
- * <li>--white</li>
+ *  **Related templates**:
+ * - [Chip](?path=/docs/templates-chip--docs)
  */
 
 export default {
   title: 'Styles/sd-chip',
   component: 'sd-chip',
-  parameters: {
-    ...parameters,
-    backgrounds: {
-      default: 'neutral-200'
-    },
-    design: {
-      type: 'figma',
-      url: 'https://www.figma.com/file/IUiRoK2jiW8ydM77uiY2RX/Chip?type=design&mode=design&t=cioeESUO1sJ6UIu8-0'
-    }
-  },
-  args: overrideArgs({ type: 'slot', name: 'default', value: 'Lorem Ipsum' }),
+  tags: ['!dev'],
+  args: overrideArgs({ type: 'slot', name: 'default', value: 'Chip' }),
   argTypes
 };
 
@@ -42,23 +30,19 @@ export const Default = {
     });
   }
 };
-
+/**
+ * Use `sd-chip` modifiers for alternative appearances:
+ * - `--primary-200` (default)
+ * - `--primary-300`
+ * - `--primary-500`
+ * - `--white`
+ */
 export const Variants = {
-  parameters: { controls: { exclude: ['default', 'sd-chip--...'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: [
-          {
-            type: 'attribute',
-            name: 'sd-chip',
-            values: ['sd-chip--primary-500', 'sd-chip--primary-300', 'sd-chip--primary-200', 'sd-chip--white']
-          }
-        ]
-      },
-      args
-    });
-  }
+  render: () =>
+    html` <div class="flex gap-12 bg-neutral-100 p-8">
+      <div class="sd-chip sd-chip--primary-200">primary-200</div>
+      <div class="sd-chip sd-chip--primary-300">primary-300</div>
+      <div class="sd-chip sd-chip--primary-500">primary-500</div>
+      <div class="sd-chip sd-chip--white">white</div>
+    </div>`
 };
-
-export const ChipSamples = FlagSamples;
