@@ -47,7 +47,7 @@ export const Default = {
 export const Variants = {
   render: () =>
     html`<div class="grid grid-cols-2 gap-4">
-      <div class="sd-container default">
+      <div class="sd-container sd-container--variant-neutral-100">
         <div class="slot slot--border slot--text h-12">Default slot</div>
       </div>
 
