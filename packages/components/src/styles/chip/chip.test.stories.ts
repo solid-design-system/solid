@@ -1,6 +1,6 @@
 import '../../solid-components';
 
-import { FlagSamples } from '../flag/flag.stories';
+import { FlagSamples } from '../flag/flag.test.stories';
 import {
   storybookDefaults,
   storybookHelpers,
