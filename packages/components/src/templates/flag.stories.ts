@@ -2,9 +2,6 @@ import '../solid-components';
 import { html } from 'lit-html';
 
 /**
- * Flags should be used to label categories (e.g. article).
- * Preferred position is upper right hand side on top of e.g. an image without padding-right.
- *
  * ```
  * ```
  */
