@@ -144,3 +144,20 @@ export const TriangleBorder = {
       </div>
     </div>`
 };
+
+/**
+ * Use the CSS property `--triangle-background` to set the triangle cut-out color.
+ */
+
+export const TriangleColor = {
+  name: 'Triangle Color',
+  render: () =>
+    html`<div class="bg-primary p-4">
+      <div
+        style="--triangle-background: rgb(var(--sd-color-primary-600, 0 53 142) / 1);"
+        class="sd-container sd-container--variant-white sd-container--triangle-top sd-container--padding-"
+      >
+        <div class="slot slot--border slot--text h-12">Default slot</div>
+      </div>
+    </div>`
+};
