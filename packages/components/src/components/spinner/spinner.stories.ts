@@ -26,7 +26,7 @@ export const Default = {
 
 /**
  * Offers `color` variants for alternate experiences:
- * - `currentColor` (default): used to inherit the color from the parent element
+ * - `currentColor` (default): used to inherit the `text-color` from the parent element
  * - `primary`: used on light backgrounds
  * - `white`: used on primary backgrounds
  */
