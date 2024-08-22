@@ -56,7 +56,7 @@ export const Required = {
 };
 
 /**
- * The component gets `invalid` attribute when the form is invalid
+ * The component gets `invalid` state when the form is not valid.
  */
 
 export const Invalid = {
