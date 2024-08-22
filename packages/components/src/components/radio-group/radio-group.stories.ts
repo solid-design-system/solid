@@ -78,7 +78,7 @@ export const Size = {
 };
 
 /**
- * Use the `label` attribute to add a label on top. You can use the optional `boldLabel` attribute to make the label bold.
+ * Use the `label` attribute to add a label on top. Include the 'boldLabel' attribute to make the label bold. (This is required for accessibility.)
  */
 
 export const Label = {
@@ -182,9 +182,6 @@ export const Disabled = {
 
 export const setCustomValidity = {
   name: 'Custom Validation',
-  parameters: {
-    chromatic: { disableSnapshot: true }
-  },
   render: () => {
     return html`
       <!-- block submit and show alert instead -->
