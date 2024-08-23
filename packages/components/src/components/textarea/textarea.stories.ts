@@ -64,32 +64,11 @@ export const Rows = {
   name: 'Rows',
   render: () => html`
     <div class="flex gap-12">
-      <sd-textarea
-        size="lg"
-        label="Label"
-        help-text="help-text"
-        placeholder="Placeholder example"
-        rows="4"
-        spellcheck
-      ></sd-textarea>
+      <sd-textarea size="lg" label="Label" rows="4" spellcheck></sd-textarea>
 
-      <sd-textarea
-        size="lg"
-        label="Label"
-        help-text="help-text"
-        placeholder="Placeholder example"
-        rows="8"
-        spellcheck
-      ></sd-textarea>
+      <sd-textarea size="lg" label="Label" rows="8" spellcheck></sd-textarea>
 
-      <sd-textarea
-        size="lg"
-        label="Label"
-        help-text="help-text"
-        placeholder="Placeholder example"
-        rows="12"
-        spellcheck
-      ></sd-textarea>
+      <sd-textarea size="lg" label="Label" rows="12" spellcheck></sd-textarea>
     </div>
   `
 };
@@ -174,15 +153,7 @@ export const Required = {
   name: 'Required',
   render: () => html`
     <div class="w-[500px]">
-      <sd-textarea
-        value="value"
-        size="lg"
-        label="Required"
-        help-text=""
-        rows="4"
-        required=""
-        spellcheck=""
-      ></sd-textarea>
+      <sd-textarea size="lg" label="Required" help-text="" rows="4" required spellcheck></sd-textarea>
     </div>
   `
 };

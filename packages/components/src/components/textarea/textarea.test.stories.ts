@@ -213,7 +213,6 @@ export const Validation = {
             constants: [
               { type: 'attribute', name: 'label', value: 'Required' },
               { type: 'attribute', name: 'name', value: 'required field' },
-              { type: 'attribute', name: 'placeholder', value: '.*' },
               { type: 'attribute', name: 'help-text', value: 'textarea must be filled' },
               { type: 'attribute', name: 'form', value: 'testForm' },
               { type: 'attribute', name: 'required', value: true },
@@ -227,7 +226,6 @@ export const Validation = {
             constants: [
               { type: 'attribute', name: 'label', value: 'Min Length' },
               { type: 'attribute', name: 'name', value: 'min length field' },
-              { type: 'attribute', name: 'placeholder', value: '^.{3,}$' },
               { type: 'attribute', name: 'help-text', value: 'value must meet minlength' },
               { type: 'attribute', name: 'form', value: 'testForm' },
               { type: 'attribute', name: 'required', value: true },
@@ -242,7 +240,6 @@ export const Validation = {
             constants: [
               { type: 'attribute', name: 'label', value: 'Max Length' },
               { type: 'attribute', name: 'name', value: 'max length field' },
-              { type: 'attribute', name: 'placeholder', value: '^.{0,3}$' },
               { type: 'attribute', name: 'help-text', value: 'value cannot exceed maxlength' },
               { type: 'attribute', name: 'form', value: 'testForm' },
               { type: 'attribute', name: 'required', value: true },
