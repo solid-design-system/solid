@@ -1,8 +1,10 @@
 import '../../solid-components';
 import { html } from 'lit';
-import { storybookDefaults } from '../../../scripts/storybook/helper';
+import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
 const { argTypes, parameters } = storybookDefaults('sd-teaser-media');
+const { overrideArgs } = storybookHelpers('sd-teaser-media');
+const { generateTemplate } = storybookTemplate('sd-teaser-media');
 
 /**
  * Flexible containers that group related items and link to further content.
@@ -14,18 +16,36 @@ export default {
   tags: ['!dev'],
   title: 'Components/sd-teaser-media',
   component: 'sd-teaser-media',
+  args: overrideArgs([
+    {
+      type: 'slot',
+      name: 'default',
+      value: `<div class="slot slot--border slot--text h-12">Main slot</div>`
+    },
+    {
+      type: 'slot',
+      name: 'media',
+      value: `<img slot="media" src="./placeholders/images/generic.jpg" class="aspect-video object-cover" alt="Test"/>`
+    },
+    {
+      type: 'slot',
+      name: 'meta',
+      value: `<div slot="meta" class="slot slot--border slot--text h-12">Meta slot</div>`
+    },
+    {
+      type: 'slot',
+      name: 'headline',
+      value: `<div slot="headline" class="h-12">Headline Media Teaser</div>`
+    }
+  ]),
   argTypes,
   parameters
 };
 
 export const Default = {
-  name: 'Default',
-  render: () =>
-    html`<sd-teaser-media variant="white">
-      <div class="slot slot--border slot--text h-12">Main slot</div>
-      <div slot="media" class="slot slot--border slot--text h-[384px]">Media slot</div>
-      <div slot="meta" class="slot slot--border slot--text h-12">Meta slot</div>
-    </sd-teaser-media>`
+  render: (args: any) => {
+    return generateTemplate({ args });
+  }
 };
 
 /**
@@ -43,11 +63,7 @@ export const Variant = {
   render: () => html`
     <div style="margin-bottom: 40px; width: 600px">
       <sd-teaser-media variant="white">
-        <img slot="media" src="./placeholders/images/collaboration.jpg" alt="Test" />
-        <div slot="meta">
-          <span class="meta-info-item text-sm">01.12.2013</span>
-          <span class="meta-info-item text-sm">| Author name</span>
-        </div>
+        <img slot="media" src="./placeholders/images/generic.jpg" class="aspect-video object-cover" alt="Test" />
         <h3 slot="headline">Headline Media Teaser (white – default)</h3>
         <div class="flex flex-col gap-4">
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -60,11 +76,7 @@ export const Variant = {
 
     <div style="margin-bottom: 40px; width: 600px">
       <sd-teaser-media variant="gradient-dark">
-        <img slot="media" src="./placeholders/images/collaboration.jpg" alt="Test" />
-        <div slot="meta">
-          <span class="meta-info-item text-sm">01.12.2013</span>
-          <span class="meta-info-item text-sm">| Author name</span>
-        </div>
+        <img slot="media" src="./placeholders/images/generic.jpg" class="aspect-video object-cover" alt="Test" />
         <h3 slot="headline">Headline Media Teaser (gradient-dark)</h3>
         <div class="flex flex-col gap-4">
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -77,11 +89,7 @@ export const Variant = {
 
     <div style="margin-bottom: 40px; width: 600px">
       <sd-teaser-media variant="gradient-white">
-        <img slot="media" src="./placeholders/images/collaboration.jpg" alt="Test" />
-        <div slot="meta">
-          <span class="meta-info-item text-sm">01.12.2013</span>
-          <span class="meta-info-item text-sm">| Author name</span>
-        </div>
+        <img slot="media" src="./placeholders/images/generic.jpg" class="aspect-video object-cover" alt="Test" />
         <h3 slot="headline">Headline Media Teaser (gradient-white)</h3>
         <div class="flex flex-col gap-4">
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -94,11 +102,7 @@ export const Variant = {
 
     <div style="margin-bottom: 40px; width: 600px">
       <sd-teaser-media variant="primary">
-        <img slot="media" src="./placeholders/images/collaboration.jpg" alt="Test" />
-        <div slot="meta">
-          <span class="meta-info-item text-sm">01.12.2013</span>
-          <span class="meta-info-item text-sm">| Author name</span>
-        </div>
+        <img slot="media" src="./placeholders/images/generic.jpg" class="aspect-video object-cover" alt="Test" />
         <h3 slot="headline">Headline Media Teaser (primary)</h3>
         <div class="flex flex-col gap-4">
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -111,11 +115,7 @@ export const Variant = {
 
     <div style="margin-bottom: 40px; width: 600px">
       <sd-teaser-media variant="primary-100">
-        <img slot="media" src="./placeholders/images/collaboration.jpg" alt="Test" />
-        <div slot="meta">
-          <span class="meta-info-item text-sm">01.12.2013</span>
-          <span class="meta-info-item text-sm">| Author name</span>
-        </div>
+        <img slot="media" src="./placeholders/images/generic.jpg" class="aspect-video object-cover" alt="Test" />
         <h3 slot="headline">Headline Media Teaser (primary-100)</h3>
         <div class="flex flex-col gap-4">
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -128,11 +128,7 @@ export const Variant = {
 
     <div style="margin-bottom: 40px; width: 600px">
       <sd-teaser-media variant="neutral-100">
-        <img slot="media" src="./placeholders/images/collaboration.jpg" alt="Test" />
-        <div slot="meta">
-          <span class="meta-info-item text-sm">01.12.2013</span>
-          <span class="meta-info-item text-sm">| Author name</span>
-        </div>
+        <img slot="media" src="./placeholders/images/generic.jpg" class="aspect-video object-cover" alt="Test" />
         <h3 slot="headline">Headline Media Teaser (neutral-100)</h3>
         <div class="flex flex-col gap-4">
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
