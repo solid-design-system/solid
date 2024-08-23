@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v3.16.1](https://github.com/solid-design-system/solid/compare/components/3.16.0...components/3.16.1) (2024-08-23)
+
+
+### Bug Fixes
+
+* neutral-100 should apply on readonly textarea ([#1303](https://github.com/solid-design-system/solid/issues/1303)) ([f736f17](https://github.com/solid-design-system/solid/commit/f736f17e689175bd24839b2826bfe4bd7b73781d))
+
+### 📈 Stats
+* Bundle size (uncompressed): 335 KB (unchanged)
+* Bundle size (gzipped): 79 KB (unchanged)
+
 # [@solid-design-system/components-v3.16.0](https://github.com/solid-design-system/solid/compare/components/3.15.0...components/3.16.0) (2024-08-21)
 
 
