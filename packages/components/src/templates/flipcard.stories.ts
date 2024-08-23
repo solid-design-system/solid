@@ -44,8 +44,8 @@ export const Default = {
       <img
         slot="media-front"
         class="object-cover h-full w-full"
-        src="https://realestate.union-investment.us/.imaging/mte/union-investment/480/dam/uir-microsite-us/startseite/LondonHouse_UIR21650010_3x4_640x853.jpg/jcr:content/LondonHouse_UIR21650010_3x4_640x853.jpg"
-        alt="Generic"
+        src="./placeholders/images/collaboration.jpg"
+        alt="Test"
       />
     </sd-flipcard>
   `

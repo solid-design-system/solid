@@ -8,6 +8,11 @@ const { overrideArgs } = storybookHelpers('sd-flipcard');
 
 /**
  * Displays content on one side and reveals additional information when flipped.
+ *
+ * `Accessibility Hint`: Front flipcards should not contain any action items. If an action is necessary, consider placing it on the back of the card (once flipped) or in a separate area.
+ *
+ * **Related templates**:
+ * - [Flipcard](?path=/docs/templates-flipcard--docs)
  */
 export default {
   title: 'Components/sd-flipcard',
@@ -202,15 +207,15 @@ export const Variants = {
 
 /**
  * Use the `activation` attribute to determine the activation type of the flipcard.
- * - `hover-and-click` (default)
- * - `click-only`: Can be used for having links/buttons inside
+ * - `click hover` (default)
+ * - `click`
  */
 
 export const Activation = {
   render: () =>
     html` <div class="grid grid-cols-2">
       <div style="margin-bottom: 40px">
-        <sd-flipcard activation="click" flip-direction="horizontal" front-variant="empty" back-variant="empty">
+        <sd-flipcard activation="click hover" flip-direction="horizontal" front-variant="empty" back-variant="empty">
           <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
           <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
           <img
@@ -229,7 +234,7 @@ export const Activation = {
       </div>
 
       <div style="margin-bottom: 40px">
-        <sd-flipcard activation="click hover" flip-direction="horizontal" front-variant="empty" back-variant="empty">
+        <sd-flipcard activation="click" flip-direction="horizontal" front-variant="empty" back-variant="empty">
           <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
           <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
           <img
