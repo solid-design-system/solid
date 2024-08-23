@@ -1,6 +1,5 @@
 import '../../solid-components';
 import { html } from 'lit';
-import { FlagSamples } from '../flag/flag.test.stories';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
 const { argTypes } = storybookDefaults('sd-chip');
