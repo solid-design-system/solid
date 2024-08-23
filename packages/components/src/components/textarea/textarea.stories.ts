@@ -57,32 +57,6 @@ export const Size = {
 };
 
 /**
- * Use the `help-text` slot to add help text.
- */
-
-export const HelpText = {
-  name: 'Help Text',
-  render: () => html`
-    <div class="w-[500px]">
-      <sd-textarea size="lg" label="Label" help-text="Help text example" rows="4"></sd-textarea>
-    </div>
-  `
-};
-
-/**
- * Use the `placeholder` attribute to add a placeholder.
- */
-
-export const Placeholder = {
-  name: 'Placeholder',
-  render: () => html`
-    <div class="w-[500px]">
-      <sd-textarea size="lg" label="Label" placeholder="Placeholder example" rows="4" spellcheck></sd-textarea>
-    </div>
-  `
-};
-
-/**
  * Use the `rows` attribute to set the number of rows.
  */
 
@@ -121,6 +95,32 @@ export const Rows = {
 };
 
 /**
+ * Use the`label`attribute to give the input an accessible label.
+ */
+
+export const Label = {
+  name: 'Label',
+  render: () => html`
+    <div class="w-[500px]">
+      <sd-textarea size="lg" label="Label" rows="4" spellcheck></sd-textarea>
+    </div>
+  `
+};
+
+/**
+ * Use the `placeholder` attribute to add a placeholder.
+ */
+
+export const Placeholder = {
+  name: 'Placeholder',
+  render: () => html`
+    <div class="w-[500px]">
+      <sd-textarea size="lg" label="Label" placeholder="Placeholder example" rows="4" spellcheck></sd-textarea>
+    </div>
+  `
+};
+
+/**
  * Use the `disabled` attribute to disable the textarea.
  */
 export const Disabled = {
@@ -150,6 +150,19 @@ export const Readonly = {
         readonly
         spellcheck
       ></sd-textarea>
+    </div>
+  `
+};
+
+/**
+ * Use the `help-text` slot to add help text.
+ */
+
+export const HelpText = {
+  name: 'Help Text',
+  render: () => html`
+    <div class="w-[500px]">
+      <sd-textarea size="lg" label="Label" help-text="Help text example" rows="4"></sd-textarea>
     </div>
   `
 };
