@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v3.17.0](https://github.com/solid-design-system/solid/compare/components/3.16.1...components/3.17.0) (2024-08-23)
+
+
+### Features
+
+* ✨ make sd-prose work better with sd-leadtext ([#1305](https://github.com/solid-design-system/solid/issues/1305)) ([8f3e8ca](https://github.com/solid-design-system/solid/commit/8f3e8ca71960c80fe613c1db39d7083b22aee220))
+
+### 📈 Stats
+* Bundle size (uncompressed): 335 KB (unchanged)
+* Bundle size (gzipped): 79 KB (unchanged)
+
 # [@solid-design-system/components-v3.16.1](https://github.com/solid-design-system/solid/compare/components/3.16.0...components/3.16.1) (2024-08-23)
 
 
