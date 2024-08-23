@@ -1,0 +1,52 @@
+import '../solid-components';
+import { html } from 'lit-html';
+
+/**
+ * Example on how to use flipcard component.
+ *
+ * ```
+ * ```
+ */
+
+export default {
+  tags: ['!dev'],
+  title: 'Templates/Flipcard',
+  parameters: {
+    chromatic: { disableSnapshot: true },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/JZZL5QPXQVKVGt4CHBlNlz/Flipcard?node-id=0-1&t=XvDIhzw6GGTNxYbz-0'
+    }
+  }
+};
+
+export const Default = {
+  name: 'Flipcard',
+  render: () => html`
+    <sd-flipcard
+      activation="click hover"
+      flip-direction="horizontal"
+      front-variant="gradient-dark-bottom"
+      back-variant="primary"
+    >
+      <h5 slot="front" class="sd-headline sd-headline--inverted sd-headline--size-xl p-5">
+        We are invested in over USD 6 Billion of Assets under Management
+      </h5>
+      <div slot="back" class="w-full sd-prose sd-prose--inverted p-5">
+        <h3>Our quality portfolio</h3>
+        <p>
+          Together with our local partners we manage a real estate portfolio of approx. USD 6 billion, which represents
+          about 15% of the total global portfolio and spans over more than 35 properties. In the US, we have properties
+          in New York, San Francisco, Washington D.C., Chicago and other major US cities. In Latin America we are
+          currently invested in office buildings in Mexico-City.
+        </p>
+      </div>
+      <img
+        slot="media-front"
+        class="object-cover h-full w-full"
+        src="https://realestate.union-investment.us/.imaging/mte/union-investment/480/dam/uir-microsite-us/startseite/LondonHouse_UIR21650010_3x4_640x853.jpg/jcr:content/LondonHouse_UIR21650010_3x4_640x853.jpg"
+        alt="Generic"
+      />
+    </sd-flipcard>
+  `
+};
