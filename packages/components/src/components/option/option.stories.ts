@@ -7,7 +7,7 @@ const { generateTemplate } = storybookTemplate('sd-option');
 const { overrideArgs } = storybookHelpers('sd-option');
 
 /**
- * Define the selectable items within various form controls such as `sd-select` `sd-input/sample-autocomplete`
+ * Defines selectable items within various form controls such as select.
  */
 
 export default {
@@ -29,7 +29,7 @@ export const Default = {
 };
 
 /**
- * There's 2 `variants` for alternative use:
+ * Use the `variant` attribute to set the option’s variant.
  * - `default`
  * - `checkbox`: Enabled automatically when using `sd-select` with attribute `checklist` set to `true`.
  */
@@ -43,11 +43,8 @@ export const Variants = {
 };
 
 /**
- * Use the `size` attribute to change a select’s size.
+ * Use the `size` attribute to change the option’s size.
  * This will be inherited automatically from the size attribute of the parent `sd-select`.
- * - `Large` is the default size.
- * - `Medium` can be used as an alternative in tight spaces.
- * - `Small` is an alternative size for use in very tight spaces.
  */
 
 export const Size = {
