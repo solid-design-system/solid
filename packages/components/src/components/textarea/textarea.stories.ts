@@ -33,11 +33,7 @@ export default {
  */
 export const Default = {
   name: 'Default',
-  args: overrideArgs([
-    { type: 'attribute', name: 'label', value: 'Label' },
-    { type: 'attribute', name: 'value', value: 'value' },
-    { type: 'attribute', name: 'help-text', value: 'help-text' }
-  ]),
+  args: overrideArgs([{ type: 'attribute', name: 'label', value: 'Label' }]),
   render: (args: any) => {
     return html`<div class="w-[500px]">${generateTemplate({ args })}</div> `;
   }
@@ -51,11 +47,11 @@ export const Size = {
   name: 'Size',
   render: () => html`
     <div class="flex gap-12">
-      <sd-textarea value="value" size="lg" label="Label" help-text="help-text" rows="4" spellcheck=""></sd-textarea>
+      <sd-textarea value="Large" size="lg" label="Label" rows="4" spellcheck></sd-textarea>
 
-      <sd-textarea value="value" size="md" label="Label" help-text="help-text" rows="4" spellcheck=""></sd-textarea>
+      <sd-textarea value="Medium" size="md" label="Label" rows="4" spellcheck></sd-textarea>
 
-      <sd-textarea value="value" size="sm" label="Label" help-text="help-text" rows="4" spellcheck=""></sd-textarea>
+      <sd-textarea value="Small" size="sm" label="Label" rows="4" spellcheck></sd-textarea>
     </div>
   `
 };
@@ -68,13 +64,7 @@ export const HelpText = {
   name: 'Help Text',
   render: () => html`
     <div class="w-[500px]">
-      <sd-textarea
-        size="lg"
-        label="Label"
-        help-text="Help text example"
-        placeholder="Placeholder"
-        rows="4"
-      ></sd-textarea>
+      <sd-textarea size="lg" label="Label" help-text="Help text example" rows="4"></sd-textarea>
     </div>
   `
 };
@@ -87,14 +77,7 @@ export const Placeholder = {
   name: 'Placeholder',
   render: () => html`
     <div class="w-[500px]">
-      <sd-textarea
-        size="lg"
-        label="Label"
-        help-text="help-text"
-        placeholder="Placeholder example"
-        rows="4"
-        spellcheck=""
-      ></sd-textarea>
+      <sd-textarea size="lg" label="Label" placeholder="Placeholder example" rows="4" spellcheck></sd-textarea>
     </div>
   `
 };
@@ -113,7 +96,7 @@ export const Rows = {
         help-text="help-text"
         placeholder="Placeholder example"
         rows="4"
-        spellcheck=""
+        spellcheck
       ></sd-textarea>
 
       <sd-textarea
@@ -122,7 +105,7 @@ export const Rows = {
         help-text="help-text"
         placeholder="Placeholder example"
         rows="8"
-        spellcheck=""
+        spellcheck
       ></sd-textarea>
 
       <sd-textarea
@@ -131,7 +114,7 @@ export const Rows = {
         help-text="help-text"
         placeholder="Placeholder example"
         rows="12"
-        spellcheck=""
+        spellcheck
       ></sd-textarea>
     </div>
   `
@@ -144,15 +127,7 @@ export const Disabled = {
   name: 'Disabled',
   render: () => html`
     <div class="w-[500px]">
-      <sd-textarea
-        size="lg"
-        label="Label"
-        help-text="help-text"
-        placeholder="Placeholder"
-        rows="4"
-        spellcheck=""
-        disabled
-      ></sd-textarea>
+      <sd-textarea size="lg" label="Label" placeholder="Input test disabled" rows="4" spellcheck disabled></sd-textarea>
     </div>
   `
 };
@@ -171,10 +146,9 @@ export const Readonly = {
         value="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod."
         size="lg"
         label="Label"
-        help-text=""
         rows="4"
-        readonly=""
-        spellcheck=""
+        readonly
+        spellcheck
       ></sd-textarea>
     </div>
   `
@@ -254,8 +228,8 @@ export const StyleOnValid = {
         label="Label"
         help-text="help-text"
         rows="4"
-        style-on-valid=""
-        spellcheck=""
+        style-on-valid
+        spellcheck
         minlength="5"
       ></sd-textarea>
     </div>
