@@ -8,7 +8,7 @@ const { generateTemplate } = storybookTemplate('sd-textarea');
 const { overrideArgs } = storybookHelpers('sd-textarea');
 
 /**
- * Collect data from the user and allow multiple lines of text.
+ * Allows users to input and edit multiple lines of text.
  */
 export default {
   title: 'Components/sd-textarea',
@@ -164,14 +164,14 @@ export const Disabled = {
  * Events will be fired.
  */
 export const Readonly = {
-  name: 'Readonly',
+  name: 'Read only',
   render: () => html`
     <div class="w-[500px]">
       <sd-textarea
-        value="value"
+        value="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod."
         size="lg"
         label="Label"
-        help-text="help-text"
+        help-text=""
         rows="4"
         readonly=""
         spellcheck=""
@@ -190,8 +190,8 @@ export const Required = {
       <sd-textarea
         value="value"
         size="lg"
-        label="Label"
-        help-text="help-text"
+        label="Required"
+        help-text=""
         rows="4"
         required=""
         spellcheck=""
@@ -317,64 +317,4 @@ export const Validation = {
       <sd-button type="submit">Submit</sd-button>
     </form>
   `
-};
-
-/**
- * 1. You can use the `setCustomValidity` method to set a custom validation message. This will override any native validation messages.
- * 2. Set an empty string to clear the custom validity and make the input valid.
- * 3. To show the validation message, call the `reportValidity` method. Originally this would show a native validation bubble, but we show the error messages inline.
- */
-
-export const setCustomValidity = {
-  parameters: {
-    chromatic: { disableSnapshot: true }
-  },
-  render: () => {
-    return html`
-      <!-- block submit and show alert instead -->
-      <form id="validationForm" class="flex flex-col gap-2 w-[500px]">
-        <sd-textarea id="custom-input" label="Input" style-on-valid></sd-textarea>
-        <div>
-          <sd-button type="submit">Submit</sd-button>
-          <sd-button id="error-button" variant="secondary">Set custom error</sd-button>
-          <sd-button id="success-button" variant="secondary">Set success</sd-button>
-          <sd-button type="reset" variant="secondary">Reset</sd-button>
-        </div>
-      </form>
-      <script type="module">
-        // Wait for custom elements to be defined
-        await Promise.all([customElements.whenDefined('sd-input'), customElements.whenDefined('sd-button')]).then(
-          () => {
-            const form = document.getElementById('validationForm');
-            const input = document.getElementById('custom-input');
-            const setErrorButton = document.getElementById('error-button');
-            const setSuccessButton = document.getElementById('success-button');
-
-            // Initial error
-            const errorMessage = \`This is an initial custom error (\${new Date().toLocaleTimeString()})\`;
-            input.setCustomValidity(errorMessage);
-            input.reportValidity();
-
-            // Show error message
-            setErrorButton.addEventListener('click', () => {
-              const errorMessage = \`This is a new custom error (\${new Date().toLocaleTimeString()})\`;
-              input.setCustomValidity(errorMessage);
-              input.reportValidity();
-            });
-
-            // Show success message
-            setSuccessButton.addEventListener('click', () => {
-              input.setCustomValidity(''); // Clear custom validity
-              input.reportValidity();
-            });
-
-            form.addEventListener('submit', event => {
-              event.preventDefault();
-              alert('All fields are valid!');
-            });
-          }
-        );
-      </script>
-    `;
-  }
 };
