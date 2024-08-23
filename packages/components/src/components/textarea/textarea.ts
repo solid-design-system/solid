@@ -364,7 +364,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
           <div
             part="base"
             class=${cx(
-              'textarea px-4 flex items-top rounded-default bg-white group',
+              'textarea px-4 flex items-top rounded-default group',
               {
                 sm: 'textarea-sm py-1',
                 md: 'textarea-md py-1',
@@ -381,7 +381,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
                 default: 'text-black'
               }[textareaState],
               !this.disabled && !this.readonly ? 'hover:bg-neutral-200' : '',
-              this.readonly && 'bg-neutral-100'
+              this.readonly ? 'bg-neutral-100' : 'bg-white'
             )}
           >
             <textarea
