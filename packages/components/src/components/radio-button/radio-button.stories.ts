@@ -29,6 +29,11 @@ export default {
       type: 'slot',
       name: 'icon',
       value: '<sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>'
+    },
+    {
+      type: 'slot',
+      name: 'default',
+      value: 'Label'
     }
   ]),
   argTypes,
@@ -43,96 +48,96 @@ export default {
 export const Default = {
   name: 'Default',
   render: (args: any) => {
-    return generateTemplate({ args });
+    return html`<sd-radio-group> ${generateTemplate({ args })} ${generateTemplate({ args })} </sd-radio-group> `;
   }
 };
 
-/**
- * Use the `size` attribute to change the size.
- */
+// /**
+//  * Use the `size` attribute to change the size.
+//  */
 
-export const Size = {
-  name: 'Size',
-  render: () => html`
-    <div class="flex gap-12 items-center">
-      <sd-radio-button size="lg">
-        <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-      </sd-radio-button>
-      <sd-radio-button size="md">
-        <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-      </sd-radio-button>
-      <sd-radio-button size="sm">
-        <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-      </sd-radio-button>
-    </div>
-  `
-};
+// export const Size = {
+//   name: 'Size',
+//   render: () => html`
+//     <div class="flex gap-12 items-center">
+//       <sd-radio-button size="lg">
+//         <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+//       </sd-radio-button>
+//       <sd-radio-button size="md">
+//         <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+//       </sd-radio-button>
+//       <sd-radio-button size="sm">
+//         <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+//       </sd-radio-button>
+//     </div>
+//   `
+// };
 
-/**
- * Use the `checked` attribute to set the state of the radio button to checked.
- */
+// /**
+//  * Use the `checked` attribute to set the state of the radio button to checked.
+//  */
 
-export const Checked = {
-  name: 'Checked',
-  render: () => html`
-    <div class="flex gap-12">
-      <sd-radio-button checked>
-        <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-      </sd-radio-button>
-    </div>
-  `
-};
+// export const Checked = {
+//   name: 'Checked',
+//   render: () => html`
+//     <div class="flex gap-12">
+//       <sd-radio-button checked>
+//         <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+//       </sd-radio-button>
+//     </div>
+//   `
+// };
 
-/**
- * Use the `default` slot to add a label.
- */
+// /**
+//  * Use the `default` slot to add a label.
+//  */
 
-export const Label = {
-  name: 'Label',
-  render: () => html`
-    <div class="flex gap-12">
-      <sd-radio-button>
-        <div>Label</div>
-      </sd-radio-button>
+// export const Label = {
+//   name: 'Label',
+//   render: () => html`
+//     <div class="flex gap-12">
+//       <sd-radio-button>
+//         <div>Label</div>
+//       </sd-radio-button>
 
-      <sd-radio-button>
-        <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-        <div>Label</div>
-      </sd-radio-button>
-    </div>
-  `
-};
+//       <sd-radio-button>
+//         <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+//         <div>Label</div>
+//       </sd-radio-button>
+//     </div>
+//   `
+// };
 
-/**
- * Use the `icon` slot to add system icons.
- */
+// /**
+//  * Use the `icon` slot to add system icons.
+//  */
 
-export const Icon = {
-  name: 'Icon',
-  render: () => html`
-    <div class="flex gap-12">
-      <sd-radio-button>
-        <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-      </sd-radio-button>
-      <sd-radio-button>
-        <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-        <div>Label</div>
-      </sd-radio-button>
-    </div>
-  `
-};
+// export const Icon = {
+//   name: 'Icon',
+//   render: () => html`
+//     <div class="flex gap-12">
+//       <sd-radio-button>
+//         <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+//       </sd-radio-button>
+//       <sd-radio-button>
+//         <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+//         <div>Label</div>
+//       </sd-radio-button>
+//     </div>
+//   `
+// };
 
-/**
- * Use the `disabled` attribute to disable an input radio button.
- */
+// /**
+//  * Use the `disabled` attribute to disable an input radio button.
+//  */
 
-export const Disabled = {
-  name: 'Disabled',
-  render: () => html`
-    <div class="flex gap-12">
-      <sd-radio-button disabled>
-        <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-      </sd-radio-button>
-    </div>
-  `
-};
+// export const Disabled = {
+//   name: 'Disabled',
+//   render: () => html`
+//     <div class="flex gap-12">
+//       <sd-radio-button disabled>
+//         <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+//       </sd-radio-button>
+//     </div>
+//   `
+// };
