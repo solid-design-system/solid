@@ -1,11 +1,16 @@
-const tsconfigPaths = require('vite-tsconfig-paths');
-module.exports = {
+import storybookEnvPackageVersions from '../scripts/storybook/env-package-versions';
+import tsconfigPaths from 'vite-tsconfig-paths';
+
+export default {
   stories: [
     '../src/**/*.mdx',
     '../src/components/**/*.stories.@(js|jsx|ts|tsx)',
     '../src/styles/**/*.stories.@(js|jsx|ts|tsx)',
     '../src/patterns/**/*.stories.@(js|jsx|ts|tsx)'
   ],
+  env: storybookEnvPackageVersions({
+    packagePaths: ['../components', '../tokens', '../placeholders']
+  }),
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
@@ -39,9 +44,9 @@ module.exports = {
     options: {}
   },
   async viteFinal(config) {
-    if (config.build === undefined) config.build = {}; // fallback if build is not defined
+    if (!config.build) config.build = {}; // fallback if build is not defined
     config.build.target = 'esnext'; // to allow top level await
-    config.plugins = [...config.plugins, tsconfigPaths.default()];
+    config.plugins = [...config.plugins, tsconfigPaths()];
     return config;
   },
   docs: {
