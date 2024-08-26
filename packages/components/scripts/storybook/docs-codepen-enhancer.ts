@@ -84,7 +84,7 @@ body {
   font-family: 'Frutiger Neue';
   font-style: normal;
   font-weight: 400;
-  src: url('https: //global-resources.fe.union-investment.de/latest/fonts/frutiger-neue/FrutigerNeuefuerUIWebW05-Bk.woff2')
+  src: url('https://solid-design-system.fe.union-investment.de/${packageVersions['@solid-design-system/components']}/storybook/fonts/FrutigerNeuefuerUIWebW05-Bk.woff2')
     format('woff2');
 }
 
@@ -92,7 +92,7 @@ body {
   font-family: 'Frutiger Neue';
   font-style: italic;
   font-weight: 400;
-  src: url('https: //global-resources.fe.union-investment.de/latest/fonts/frutiger-neue/FrutigerNeuefuerUIWebW05-BkIt.woff2')
+  src: url('https://solid-design-system.fe.union-investment.de/${packageVersions['@solid-design-system/components']}/storybook/fonts/FrutigerNeuefuerUIWebW05-BkIt.woff2')
     format('woff2');
 }
 
@@ -100,7 +100,7 @@ body {
   font-family: 'Frutiger Neue';
   font-style: normal;
   font-weight: 600;
-  src: url('https: //global-resources.fe.union-investment.de/latest/fonts/frutiger-neue/FrutigerNeuefuerUIWebW05-Bd.woff2')
+  src: url('https://solid-design-system.fe.union-investment.de/${packageVersions['@solid-design-system/components']}/storybook/fonts/FrutigerNeuefuerUIWebW05-Bd.woff2')
     format('woff2');
 }
 
@@ -108,7 +108,7 @@ body {
   font-family: 'Frutiger Neue';
   font-style: italic;
   font-weight: 600;
-  src: url('https: //global-resources.fe.union-investment.de/latest/fonts/frutiger-neue/FrutigerNeuefuerUIWebW05-BdIt.woff2')
+  src: url('https://solid-design-system.fe.union-investment.de/${packageVersions['@solid-design-system/components']}/storybook/fonts/FrutigerNeuefuerUIWebW05-BdIt.woff2')
     format('woff2');
 }
 
@@ -129,7 +129,7 @@ body {
           description: '',
           editors: 1110,
           head: '<meta name="viewport" content="width=device-width">',
-          html: code,
+          html: code.replace(/\n\s*\n/g, '\n'), // Regex removes empty lines
           js: `/* See https://solid-design-system.fe.union-investment.de/${packageVersions['@solid-design-system/components']}/storybook/?path=/docs/docs-general-installation--docs */
 import "https://solid-design-system.fe.union-investment.de/${packageVersions['@solid-design-system/components']}/components/umd/solid-components.js";
 
