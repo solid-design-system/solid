@@ -101,7 +101,7 @@ export const Required = {
 };
 
 /**
- * Test invalid state inside a form.
+ * The component gets `invalid` state when the form is not valid.
  *
  * For an invalid checkbox an error-text underneath (or if used in a group underneath the checkbox-group) is mandatory.
  */
@@ -110,8 +110,17 @@ export const Invalid = {
   name: 'Invalid',
   render: () => html`
     <form>
-      <sd-checkbox required>Checkbox</sd-checkbox>
-      <sd-button style="margin-top: 16px" type="submit">Submit</sd-button>
+      <sd-checkbox id="checkbox-example" required>Invalid</sd-checkbox>
+      <sd-button id="button-example" style="margin-top: 16px" type="submit">Submit</sd-button>
     </form>
+    <script>
+      var checkbox = document.querySelector('#checkbox-example');
+      var button = document.querySelector('#button-example');
+
+      setTimeout(() => {
+        button.click();
+        checkbox.setCustomValidity('Error-text');
+      }, 500);
+    </script>
   `
 };
