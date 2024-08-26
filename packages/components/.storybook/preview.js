@@ -3,6 +3,7 @@ import '../src/solid-styles.css';
 import '../src/styles/tailwind.css';
 import { registerIconLibrary } from '../src/utilities/icon-library';
 import { storybookUtilities } from '../scripts/storybook/helper';
+import docsCodepenEnhancer from '../scripts/storybook/docs-codepen-enhancer';
 
 /**
  * This registers iconLibraries for the sd-icon component
@@ -88,7 +89,7 @@ export const parameters = {
     story: { inline: true },
     toc: true,
     source: {
-      transform: code => {
+      transform: (code, storyContent) => {
         let output = code;
 
         // This fixes the usage of self built html`` string literals
@@ -101,7 +102,9 @@ export const parameters = {
             .replace(/&#039;/g, "'");
         }
 
-        return storybookUtilities.codeOptimizer(output);
+        output = storybookUtilities.codeOptimizer(output);
+
+        return docsCodepenEnhancer(output, storyContent);
       },
       format: 'html'
     }
