@@ -26,7 +26,37 @@ export default {
 export const Default = {
   name: 'Default',
   render: (args: any) => {
-    return generateTemplate({ args });
+    return html`
+      <sd-radio-group label="Radio Group" boldLabel>
+        ${generateTemplate({
+          args: overrideArgs(
+            [
+              { type: 'attribute', name: 'value', value: 1 },
+              { type: 'slot', name: 'default', value: 'Radio 1' }
+            ],
+            args
+          )
+        })}
+        ${generateTemplate({
+          args: overrideArgs(
+            [
+              { type: 'attribute', name: 'value', value: 2 },
+              { type: 'slot', name: 'default', value: 'Radio 2' }
+            ],
+            args
+          )
+        })}
+        ${generateTemplate({
+          args: overrideArgs(
+            [
+              { type: 'attribute', name: 'value', value: 3 },
+              { type: 'slot', name: 'default', value: 'Radio 3' }
+            ],
+            args
+          )
+        })}
+      </sd-radio-group>
+    `;
   }
 };
 
@@ -38,8 +68,14 @@ export const Size = {
   name: 'Size',
   render: () => html`
     <div class="flex gap-12">
-      <sd-radio value="1" size="lg">Large</sd-radio>
-      <sd-radio value="2" size="sm">Small</sd-radio>
+      <sd-radio-group label="Large Radios" boldLabel>
+        <sd-radio value="1" size="lg">Radio 1</sd-radio>
+        <sd-radio value="2" size="lg">Radio 2</sd-radio>
+      </sd-radio-group>
+      <sd-radio-group size="sm" label="Small Radios" boldLabel>
+        <sd-radio value="1" size="sm">Radio 1</sd-radio>
+        <sd-radio value="2" size="sm">Radio 2</sd-radio>
+      </sd-radio-group>
     </div>
   `
 };
@@ -52,7 +88,11 @@ export const Disabled = {
   name: 'Disabled',
   render: () => html`
     <div class="flex gap-12">
-      <sd-radio value="1" disabled>Disabled</sd-radio>
+      <sd-radio-group label="Group Label" boldLabel>
+        <sd-radio value="1">Radio 1</sd-radio>
+        <sd-radio value="2" disabled>Radio 2</sd-radio>
+        <sd-radio value="3">Radio 3</sd-radio>
+      </sd-radio-group>
     </div>
   `
 };
@@ -64,8 +104,22 @@ export const Disabled = {
 export const Invalid = {
   name: 'Invalid',
   render: () => html`
-    <div class="flex gap-12">
-      <sd-radio value="1" invalid>Invalid</sd-radio>
-    </div>
+    <form id="invalid-form" class="flex flex-col gap-8">
+      <sd-radio-group name="radio-group" id="invalid-radio" required boldlabel>
+        <sd-radio value="1">Radio 1</sd-radio>
+        <sd-radio value="2">Radio 2</sd-radio>
+        <sd-radio value="3">Radio 3</sd-radio>
+        <label slot="label">Invalid Group</label>
+      </sd-radio-group>
+    </form>
+    <script type="module">
+      // Wait for custom elements to be defined
+      await Promise.all([customElements.whenDefined('sd-radio-group'), customElements.whenDefined('sd-button')]).then(
+        () => {
+          const input = document.getElementById('invalid-radio');
+          input.reportValidity();
+        }
+      );
+    </script>
   `
 };
