@@ -63,78 +63,60 @@ export const Variant = {
   render: () => html`
     <div style="margin-bottom: 40px; width: 600px">
       <sd-teaser-media variant="white">
-        <img slot="media" src="./placeholders/images/generic.jpg" class="aspect-video object-cover" alt="Test" />
+        <img slot="media" src="./placeholders/images/architecture.jpg" class="aspect-video object-cover" alt="Test" />
         <h3 slot="headline">Headline Media Teaser (white – default)</h3>
         <div class="flex flex-col gap-4">
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          <div class="flex-none">
-            <sd-button href="#" target="_blank" variant="primary">Label</sd-button>
-          </div>
         </div>
       </sd-teaser-media>
     </div>
 
     <div style="margin-bottom: 40px; width: 600px">
       <sd-teaser-media variant="gradient-dark">
-        <img slot="media" src="./placeholders/images/generic.jpg" class="aspect-video object-cover" alt="Test" />
+        <img slot="media" src="./placeholders/images/architecture.jpg" class="aspect-video object-cover" alt="Test" />
         <h3 slot="headline">Headline Media Teaser (gradient-dark)</h3>
         <div class="flex flex-col gap-4">
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          <div class="flex-none">
-            <sd-button href="#" target="_blank" variant="primary" inverted>Label</sd-button>
-          </div>
         </div>
       </sd-teaser-media>
     </div>
 
     <div style="margin-bottom: 40px; width: 600px">
       <sd-teaser-media variant="gradient-white">
-        <img slot="media" src="./placeholders/images/generic.jpg" class="aspect-video object-cover" alt="Test" />
+        <img slot="media" src="./placeholders/images/architecture.jpg" class="aspect-video object-cover" alt="Test" />
         <h3 slot="headline">Headline Media Teaser (gradient-white)</h3>
         <div class="flex flex-col gap-4">
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          <div class="flex-none">
-            <sd-button href="#" target="_blank" variant="primary">Label</sd-button>
-          </div>
         </div>
       </sd-teaser-media>
     </div>
 
     <div style="margin-bottom: 40px; width: 600px">
       <sd-teaser-media variant="primary">
-        <img slot="media" src="./placeholders/images/generic.jpg" class="aspect-video object-cover" alt="Test" />
+        <img slot="media" src="./placeholders/images/architecture.jpg" class="aspect-video object-cover" alt="Test" />
         <h3 slot="headline">Headline Media Teaser (primary)</h3>
         <div class="flex flex-col gap-4">
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          <div class="flex-none">
-            <sd-button href="#" target="_blank" variant="primary" inverted>Label</sd-button>
-          </div>
         </div>
       </sd-teaser-media>
     </div>
 
     <div style="margin-bottom: 40px; width: 600px">
       <sd-teaser-media variant="primary-100">
-        <img slot="media" src="./placeholders/images/generic.jpg" class="aspect-video object-cover" alt="Test" />
+        <img slot="media" src="./placeholders/images/architecture.jpg" class="aspect-video object-cover" alt="Test" />
         <h3 slot="headline">Headline Media Teaser (primary-100)</h3>
         <div class="flex flex-col gap-4">
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          <div class="flex-none">
-            <sd-button href="#" target="_blank" variant="primary">Label</sd-button>
-          </div>
         </div>
       </sd-teaser-media>
     </div>
 
     <div style="margin-bottom: 40px; width: 600px">
       <sd-teaser-media variant="neutral-100">
-        <img slot="media" src="./placeholders/images/generic.jpg" class="aspect-video object-cover" alt="Test" />
+        <img slot="media" src="./placeholders/images/architecture.jpg" class="aspect-video object-cover" alt="Test" />
         <h3 slot="headline">Headline Media Teaser (neutral-100)</h3>
         <div class="flex flex-col gap-4">
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          <div class="flex-none">
-            <sd-button href="#" target="_blank" variant="primary">Label</sd-button>
-          </div>
         </div>
       </sd-teaser-media>
     </div>
