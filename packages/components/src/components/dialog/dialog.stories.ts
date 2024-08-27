@@ -16,7 +16,7 @@ const { generateTemplate } = storybookTemplate('sd-dialog');
  * - Use the `footer` slot to add action elements. <br /> Footer slot is always fixed.
  *
  *  **Related templates**:
- * - [Dialog samples](?path=/docs/templates-dialog--docs)
+ * - [Dialog](?path=/docs/templates-dialog--docs)
  *
  */
 
@@ -76,8 +76,8 @@ export const Open = {
       <sd-dialog id="dialog" open>
         <h4 slot="headline" class="sd-headline sd-headline-3xl">Lorem ipsum</h4>
         <p class="sd-paragraph">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie phasellus
-          dui vel id. Velit in sed
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+          dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam.
         </p>
         <sd-button slot="footer">Button</sd-button>
       </sd-dialog>
@@ -95,8 +95,8 @@ export const Headline = {
     <div class="h-[40vh]">
       <sd-dialog id="dialog" open headline="Headline">
         <p class="sd-paragraph">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie phasellus
-          dui vel id. Velit in sed
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+          dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam.
         </p>
         <sd-button slot="footer">Button</sd-button>
       </sd-dialog>
@@ -116,8 +116,8 @@ export const NoCloseButton = {
     <div class="h-[40vh]">
       <sd-dialog id="dialog" headline="Headline" open no-close-button>
         <p class="sd-paragraph">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie phasellus
-          dui vel id. Velit in sed
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+          dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam.
         </p>
         <sd-button slot="footer">Button</sd-button>
       </sd-dialog>
