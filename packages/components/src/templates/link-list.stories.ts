@@ -8,9 +8,6 @@ export default {
 
 /**
  * This example shows a list of links inside a container.
- *
- * ```
- * ```
  */
 
 export const Default = {

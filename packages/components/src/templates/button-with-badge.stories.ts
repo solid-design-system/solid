@@ -14,9 +14,6 @@ export default {
 };
 /**
  * Examples of sd-button working with sd-badge:
- *
- * ```
- * ```
  */
 export const Default = {
   render: () => html`
