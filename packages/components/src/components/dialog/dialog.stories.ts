@@ -16,7 +16,7 @@ const { generateTemplate } = storybookTemplate('sd-dialog');
  * - Use the `footer` slot to add action elements. <br /> Footer slot is always fixed.
  *
  *  **Related templates**:
- * - [Dialog samples](?path=/docs/templates-dialog-samples--docs)
+ * - [Dialog samples](?path=/docs/templates-dialog--docs)
  *
  */
 
@@ -79,6 +79,7 @@ export const Open = {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie phasellus
           dui vel id. Velit in sed
         </p>
+        <sd-button slot="footer">Button</sd-button>
       </sd-dialog>
     </div>
   `
