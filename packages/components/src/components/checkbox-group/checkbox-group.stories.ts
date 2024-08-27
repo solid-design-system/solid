@@ -8,6 +8,9 @@ const { overrideArgs } = storybookHelpers('sd-checkbox-group');
 
 /**
  * Allows users to select multiple options from a list of options.
+ *
+ * **Related templates:**
+ * - [Checkbox Group](?path=/docs/checkbox-group--docs)
  */
 
 export default {
@@ -51,15 +54,15 @@ export const Size = {
   render: () => html`
     <div class="flex gap-12">
       <sd-checkbox-group size="lg">
-        <sd-checkbox value="1">Option 1</sd-checkbox>
-        <sd-checkbox value="2">Option 2</sd-checkbox>
-        <sd-checkbox value="3">Option 3</sd-checkbox>
+        <sd-checkbox value="1">Checkbox 1</sd-checkbox>
+        <sd-checkbox value="2">Checkbox 2</sd-checkbox>
+        <sd-checkbox value="3">Checkbox 3</sd-checkbox>
       </sd-checkbox-group>
 
       <sd-checkbox-group size="sm">
-        <sd-checkbox value="1">Option 1</sd-checkbox>
-        <sd-checkbox value="2">Option 2</sd-checkbox>
-        <sd-checkbox value="3">Option 3</sd-checkbox>
+        <sd-checkbox value="1">Checkbox 1</sd-checkbox>
+        <sd-checkbox value="2">Checkbox 2</sd-checkbox>
+        <sd-checkbox value="3">Checkbox 3</sd-checkbox>
       </sd-checkbox-group>
     </div>
   `
@@ -74,14 +77,14 @@ export const Orientation = {
   render: () => html`
     <div class="flex gap-12">
       <sd-checkbox-group orientation="vertical">
-        <sd-checkbox value="1">Option 1</sd-checkbox>
-        <sd-checkbox value="2">Option 2</sd-checkbox>
-        <sd-checkbox value="3">Option 3</sd-checkbox>
+        <sd-checkbox value="1">Checkbox 1</sd-checkbox>
+        <sd-checkbox value="2">Checkbox 2</sd-checkbox>
+        <sd-checkbox value="3">Checkbox 3</sd-checkbox>
       </sd-checkbox-group>
       <sd-checkbox-group orientation="horizontal">
-        <sd-checkbox value="1">Option 1</sd-checkbox>
-        <sd-checkbox value="2">Option 2</sd-checkbox>
-        <sd-checkbox value="3">Option 3</sd-checkbox>
+        <sd-checkbox value="1">Checkbox 1</sd-checkbox>
+        <sd-checkbox value="2">Checkbox 2</sd-checkbox>
+        <sd-checkbox value="3">Checkbox 3</sd-checkbox>
       </sd-checkbox-group>
     </div>
   `
@@ -97,9 +100,9 @@ export const Label = {
     <div class="flex gap-12">
       <sd-checkbox-group orientation="vertical">
         <label slot="label">Group Group</label>
-        <sd-checkbox value="1">Option 1</sd-checkbox>
-        <sd-checkbox value="2">Option 2</sd-checkbox>
-        <sd-checkbox value="3">Option 3</sd-checkbox>
+        <sd-checkbox value="1">Checkbox 1</sd-checkbox>
+        <sd-checkbox value="2">Checkbox 2</sd-checkbox>
+        <sd-checkbox value="3">Checkbox 3</sd-checkbox>
       </sd-checkbox-group>
     </div>
   `
