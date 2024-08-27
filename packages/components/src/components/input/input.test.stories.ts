@@ -398,7 +398,7 @@ export const Types = {
               { type: 'attribute', name: 'type', value: 'tel' },
               { type: 'attribute', name: 'label', value: 'Tel' },
               { type: 'attribute', name: 'placeholder', value: '+49 1234 567891' },
-              { type: 'attribute', name: 'help-text', value: 'validate with tel format' }
+              { type: 'attribute', name: 'help-text', value: 'Shows optimized keyboard on touch devices or similar' }
             ],
             args
           })}
