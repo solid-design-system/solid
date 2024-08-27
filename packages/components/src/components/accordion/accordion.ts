@@ -63,8 +63,7 @@ export default class SdAccordion extends SolidElement {
     this.body.style.height = this.open ? 'auto' : '0';
   }
 
-  private handleSummaryClick() {
-    this.header.focus();
+  protected handleSummaryClick() {
     if (this.open) {
       this.hide();
     } else {
@@ -72,7 +71,7 @@ export default class SdAccordion extends SolidElement {
     }
   }
 
-  private handleSummaryKeyDown(event: KeyboardEvent) {
+  protected handleSummaryKeyDown(event: KeyboardEvent) {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
 
@@ -173,21 +172,18 @@ export default class SdAccordion extends SolidElement {
             )}
           ></div>
           <slot name="summary" part="summary" class="flex flex-auto items-center text-left">${this.summary}</slot>
-
           <span
             part="summary-icon"
             class=${cx(
               'flex flex-grow-0 flex-shrink-0 flex-auto items-center transition-all ease-in-out duration-300 text-xl',
               this.open && 'rotate-180'
             )}
-          >
-            <slot name="expand-icon" class=${cx(this.open && 'hidden')}>
+            ><slot name="expand-icon" class=${cx(this.open && 'hidden')}>
               <sd-icon library="system" name="chevron-down"></sd-icon>
             </slot>
             <slot name="collapse-icon" class=${cx(!this.open && 'hidden')}>
-              <sd-icon library="system" name="chevron-down"></sd-icon>
-            </slot>
-          </span>
+              <sd-icon library="system" name="chevron-down"></sd-icon> </slot
+          ></span>
         </header>
         <div part="content" id="content" class="overflow-hidden">
           <slot part="content__slot" class="block px-4 py-6" role="region" aria-labelledby="header"></slot>

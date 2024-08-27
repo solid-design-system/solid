@@ -30,14 +30,14 @@ export default class SdLink extends SolidElement {
 
   @query('a') button: HTMLButtonElement | HTMLLinkElement;
 
+  /** Control the layout of icon and text within the component and the component's positioning. */
+  @property({ type: Boolean, reflect: true }) standalone = false;
+
   /** The link's size. */
   @property({ reflect: true }) size: 'inherit' | 'lg' | 'sm' = 'inherit';
 
   /** Inverts the link. */
   @property({ type: Boolean, reflect: true }) inverted = false;
-
-  /** Control the layout of icon and text within the component and the component's positioning. */
-  @property({ type: Boolean, reflect: true }) standalone = false;
 
   /** When not set, the link will render as disabled. */
   @property() href = '';
@@ -93,7 +93,7 @@ export default class SdLink extends SolidElement {
       )}
       href=${ifDefined(this.href || undefined)}
       target=${ifDefined(this.target || undefined)}
-      download=${ifDefined(this.download || undefined)}
+      download=${ifDefined(this.download)}
       rel=${ifDefined(this.target ? 'noreferrer noopener' : undefined)}
       aria-disabled=${!this.href ? 'true' : 'false'}
       tabindex=${!this.href ? '-1' : '0'}

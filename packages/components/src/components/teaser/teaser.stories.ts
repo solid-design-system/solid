@@ -47,15 +47,13 @@ export const Default = {
 };
 
 /**
- * The header and main slot are both obligatory.
- * - Headers can be used to display titles and should always contain a `<h*>` element.
- * - The default slot can display any content.
+ * Use the `variant` attribute to use the appropriate teaser for your context.
  */
 
-export const HeaderAndMainSlot = {
+export const Variant = {
   render: () => html`
-    <sd-teaser>
-      <h3 slot="headline">Simple teaser</h3>
+    <sd-teaser variant="white border-neutral-400">
+      <h3 slot="headline">Teaser with border</h3>
       <p>
         Quis ut ex cupidatat proident cillum ullamco ea aute ad laborum aliqua incididunt sint ipsum. Elit enim
         reprehenderit aliquip officia in minim. Eu ipsum pariatur dolor. Do ex in cupidatat anim aliqua sint voluptate
@@ -67,13 +65,15 @@ export const HeaderAndMainSlot = {
 };
 
 /**
- * Use the `variant` attribute to use the appropriate teaser for your context.
+ * The header and main slot are both obligatory.
+ * - Headers can be used to display titles and should always contain a `<h*>` element.
+ * - The default slot can display any content.
  */
 
-export const Variant = {
+export const HeaderAndMainSlot = {
   render: () => html`
-    <sd-teaser variant="white border-neutral-400">
-      <h3 slot="headline">Teaser with border</h3>
+    <sd-teaser>
+      <h3 slot="headline">Simple teaser</h3>
       <p>
         Quis ut ex cupidatat proident cillum ullamco ea aute ad laborum aliqua incididunt sint ipsum. Elit enim
         reprehenderit aliquip officia in minim. Eu ipsum pariatur dolor. Do ex in cupidatat anim aliqua sint voluptate
