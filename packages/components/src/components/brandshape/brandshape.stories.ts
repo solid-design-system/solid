@@ -75,6 +75,11 @@ export const Variant = {
         <div class="slot slot--border slot--text h-8 w-full">Default slot</div>
       </sd-brandshape>
 
+      <sd-brandshape variant="image">
+        <div class="slot slot--border slot--text h-8 w-full">Default slot</div>
+        <img slot="image" style="transform:translateY(-30%);" src="./placeholders/images/generic.jpg" alt="Generic" />
+      </sd-brandshape>
+
       <div class="bg-primary">
         <sd-brandshape variant="white">
           <div class="slot slot--border slot--text h-8 w-full">Default slot</div>
@@ -82,11 +87,6 @@ export const Variant = {
 
         <sd-brandshape variant="border-white">
           <div class="slot slot--border slot--text h-8 w-full">Default slot</div>
-        </sd-brandshape>
-
-        <sd-brandshape variant="image">
-          <div class="slot slot--border slot--text h-8 w-full">Default slot</div>
-          <img slot="image" style="transform:translateY(-30%);" src="./placeholders/images/generic.jpg" alt="Generic" />
         </sd-brandshape>
       </div>
     </div>
@@ -119,4 +119,4 @@ export const Shapes = {
   `
 };
 
-// TODO: Add copyright story once it's implemented.
+// TODO: Add copyright story once it's implemented. (issue: https://github.com/solid-design-system/solid/issues/1319)
