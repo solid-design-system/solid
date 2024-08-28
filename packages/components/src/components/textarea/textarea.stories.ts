@@ -75,6 +75,8 @@ export const Rows = {
 
 /**
  * Use the`label`attribute to give the input an accessible label.
+ *
+ *  For labels that contain HTML, use the `label` slot.
  */
 
 export const Label = {
@@ -106,7 +108,7 @@ export const Disabled = {
   name: 'Disabled',
   render: () => html`
     <div class="w-[500px]">
-      <sd-textarea size="lg" label="Label" placeholder="Input test disabled" rows="4" spellcheck disabled></sd-textarea>
+      <sd-textarea size="lg" label="Label" placeholder="Input text disabled" rows="4" spellcheck disabled></sd-textarea>
     </div>
   `
 };
@@ -122,7 +124,7 @@ export const Readonly = {
   render: () => html`
     <div class="w-[500px]">
       <sd-textarea
-        value="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod."
+        value="Read only example Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod."
         size="lg"
         label="Label"
         rows="4"
@@ -147,7 +149,7 @@ export const HelpText = {
 };
 
 /**
- * Use the `required` attribute to mark the textarea as required.
+ * Use the ”required” attribute to mark the element as required. This can be used for form validation purposes.
  */
 export const Required = {
   name: 'Required',
@@ -207,7 +209,7 @@ export const StyleOnValid = {
   render: () => html`
     <div class="w-[500px]">
       <sd-textarea
-        value="value"
+        value=""
         size="lg"
         label="Label"
         help-text="help-text"
