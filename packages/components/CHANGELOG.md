@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v3.17.1](https://github.com/solid-design-system/solid/compare/components/3.17.0...components/3.17.1) (2024-08-28)
+
+
+### Bug Fixes
+
+* add missing labels for close buttons ([#1321](https://github.com/solid-design-system/solid/issues/1321)) ([60b973d](https://github.com/solid-design-system/solid/commit/60b973ddbc5220051966bf9c00ca59810f2ada29))
+
+### 📈 Stats
+* Bundle size (uncompressed): 335 KB (unchanged)
+* Bundle size (gzipped): 79 KB (unchanged)
+
 # [@solid-design-system/components-v3.17.0](https://github.com/solid-design-system/solid/compare/components/3.16.1...components/3.17.0) (2024-08-23)
 
 
