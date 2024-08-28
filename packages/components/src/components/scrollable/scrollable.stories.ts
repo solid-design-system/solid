@@ -158,7 +158,7 @@ export const Shadows = {
 export const Inset = {
   name: 'Inset',
   render: () => html`
-    <sd-scrollable orientation="vertical" inset>
+    <sd-scrollable orientation="vertical" shadows inset>
       <div class="items-start h-max p-4 text-sm justify-start">
         <p>
           Union Investment has extended its lease with Converse, the footwear and apparel brand known for its deep
