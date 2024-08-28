@@ -18,7 +18,7 @@ export default {
     {
       type: 'slot',
       name: 'default',
-      value: `<div class="slot slot--border slot--text h-full">Main slot</div>`
+      value: `<div class="slot slot--border slot--text h-full">Default slot</div>`
     },
     {
       type: 'slot',
@@ -284,7 +284,7 @@ export const Slots = {
                 {
                   value:
                     slot === 'default'
-                      ? `<div class="slot slot--border slot--background slot--text h-full">Main slot</div>`
+                      ? `<div class="slot slot--border slot--background slot--text h-full">Default slot</div>`
                       : `<div slot='${slot}' class="${cx(
                           'slot slot--border slot--background slot--text h-12',
                           slot === 'header' ? 'w-[140px]' : 'w-auto'

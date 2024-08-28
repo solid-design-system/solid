@@ -7,18 +7,20 @@ const { overrideArgs } = storybookHelpers('sd-drawer');
 
 /**
  * A panel that slides out from the side of the screen which contains a set of information or actions.
+ *
+ * **Related templates:**
+ * - [Drawer with navigation](?path=/docs/templates-drawer-with-navigation--docs)
  */
 
 export default {
   title: 'Components/sd-drawer',
   component: 'sd-drawer',
   tags: ['!dev'],
-
   args: overrideArgs([
     {
       type: 'slot',
       name: 'default',
-      value: `<div class="slot slot--border slot--text h-full">Main slot</div>`
+      value: `<div class="slot slot--border slot--text h-full">Default slot</div>`
     },
     {
       type: 'slot',
@@ -37,7 +39,18 @@ export default {
   parameters: {
     ...parameters,
     controls: { exclude: ['contained'] }
-  }
+  },
+  decorators: [
+    (story: any) => html`
+      <style>
+        sd-drawer::part(overlay) {
+          background-color: #051530;
+          opacity: 0.9;
+        }
+      </style>
+      ${story()}
+    `
+  ] as unknown
 };
 
 /**
@@ -61,7 +74,7 @@ export const Open = {
   name: 'Open',
   render: () => html`
     <div style="width: auto; height: 40vh; position: relative;">
-      <sd-drawer open label="example">
+      <sd-drawer open label="example" placement="start">
         <h4 slot="header" class="sd-headline sd-headline-xl">Lorem ipsum</h4>
         <p class="sd-paragraph">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie phasellus
@@ -85,13 +98,12 @@ export const Placement = {
   render: () => html`
     <div style="width: auto; height: 40vh; position: relative;">
       <sd-drawer open placement="start">
-        <h4 slot="header" class="sd-headline sd-headline-xl">Lorem ipsum</h4>
-        <p class="sd-paragraph">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie phasellus
-          dui vel id. Velit in sed
-        </p>
-
-        <sd-button slot="footer">Lorem</sd-button>
+        <sd-input slot="header" type="search" size="lg" placeholder="Search"></sd-input>
+        <div class="slot slot--border slot--text h-full">Default slot</div>
+        <div slot="footer" class="flex flex-col w-full gap-4">
+          <sd-button variant="primary">Primary Action</sd-button>
+          <sd-button variant="secondary">Secondary Action</sd-button>
+        </div>
       </sd-drawer>
     </div>
   `
@@ -104,13 +116,9 @@ export const NoHeader = {
   name: 'No Header',
   render: () => html`
     <div style="width: auto; height: 40vh; position: relative;">
-      <sd-drawer open no-header>
-        <p class="sd-paragraph">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie phasellus
-          dui vel id. Velit in sed
-        </p>
-
-        <sd-button slot="footer">Lorem</sd-button>
+      <sd-drawer open no-header placement="start">
+        <div class="slot slot--border slot--text h-full">Default slot</div>
+        <div slot="footer" class="slot slot--border slot--text h-full">Footer slot</div>
       </sd-drawer>
     </div>
   `
