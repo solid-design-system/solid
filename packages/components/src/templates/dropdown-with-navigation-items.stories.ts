@@ -11,7 +11,7 @@ export default {
 
 /**
  *
- * This is an example of dropdowns with a list of navigation items.
+ * This is an example of a dropdown.
  *
  * ```
  * ```
@@ -22,65 +22,30 @@ export const Default = {
       #anchor--templates-dropdown-with-navigation-items--default .innerZoomElementWrapper {
         min-height: 500px;
       }
-      sd-navigation-item::part(chevron) {
-        transform: rotate(0deg);
-      }
-      sd-dropdown[open] sd-navigation-item::part(chevron) {
-        transform: rotate(180deg);
-      }
-      .list-with-icons sd-navigation-item:not([slot='trigger'])::part(base) {
-        padding: 0;
-      }
     </style>
-    <div class="flex gap-12">
-      <sd-dropdown no-auto-size>
-        <sd-navigation-item slot="trigger" vertical chevron>Trigger </sd-navigation-item>
-        <div class="flex flex-col p-4">
-          <h4 class="sd-headline sd-headline--size-base">Nisi eu excepteur anim esse</h4>
-          <sd-navigation-item href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/"
-            >Navigation</sd-navigation-item
-          >
-          <sd-navigation-item href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/"
-            >Navigation</sd-navigation-item
-          >
-          <sd-navigation-item href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/"
-            >Navigation</sd-navigation-item
-          >
-          <sd-navigation-item href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/"
-            >Navigation</sd-navigation-item
-          >
-          <sd-navigation-item href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/"
-            >Navigation</sd-navigation-item
-          >
-        </div>
-      </sd-dropdown>
 
-      <sd-dropdown no-auto-size class="list-with-icons">
-        <sd-navigation-item slot="trigger" vertical chevron>Trigger </sd-navigation-item>
-        <div class="flex flex-col p-4">
-          <h4 class="sd-headline sd-headline--size-base">Nisi eu excepteur anim esse</h4>
-          <sd-navigation-item href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/">
-            <sd-icon name="system/image" library="default"></sd-icon>
-            Navigation
-          </sd-navigation-item>
-          <sd-navigation-item
-            divider
-            vertical
-            href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/"
-          >
-            <sd-icon name="system/image" library="default"></sd-icon>
-            Navigation
-          </sd-navigation-item>
-          <sd-navigation-item
-            divider
-            vertical
-            href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/"
-          >
-            <sd-icon name="system/image" library="default"></sd-icon>
-            Navigation
-          </sd-navigation-item>
-        </div>
-      </sd-dropdown>
-    </div>
+    <sd-dropdown open>
+      <sd-navigation-item slot="trigger" vertical>
+        <sd-icon name="system/globe" class="h-6 w-6"></sd-icon>
+      </sd-navigation-item>
+      <div class="flex flex-col p-4">
+        <h4 class="sd-headline sd-headline--size-base p-4">Please select a country</h4>
+        <sd-navigation-item class="font-bold" href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/"
+          >Austria</sd-navigation-item
+        >
+        <sd-navigation-item class="font-bold" href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/"
+          >Denmark</sd-navigation-item
+        >
+        <sd-navigation-item class="font-bold" href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/"
+          >Finland</sd-navigation-item
+        >
+        <sd-navigation-item class="font-bold" href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/"
+          >France</sd-navigation-item
+        >
+        <sd-navigation-item class="font-bold" href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/"
+          >Germany</sd-navigation-item
+        >
+      </div>
+    </sd-dropdown>
   `
 };
