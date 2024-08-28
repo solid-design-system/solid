@@ -26,7 +26,7 @@ export default {
       url: 'https://www.figma.com/file/fPGhgNZv98U4H69Gu2tlWi/Button?type=design&node-id=13-18&t=jDLqFEdY7ZlOJurc-4'
     }
   },
-  args: overrideArgs({ type: 'slot', name: 'default', value: 'Default' }),
+  args: overrideArgs({ type: 'slot', name: 'default', value: 'Button' }),
   argTypes,
   decorators: [withActions] as any
 };
@@ -38,7 +38,7 @@ export const Default = {
 };
 
 /**
- * Use the `variant` attribute to set the button’s variant.TBe sure to select the right one for the action you want to make available.
+ * Use the `variant` attribute to set the button’s variant. Be sure to select the right one for the action you want to make available.
  *
  * - `primary` (default): Use the primary button for the most important actions in your interface, such as submitting a form, confirming a decision, or progressing to the next step in a process.
  * - `secondary`: Not all functions must have primary actions, sometimes the actions are subordinate to the content and all are equally important.
@@ -60,7 +60,7 @@ export const Variants = {
 };
 
 /**
- * Use the `size` attribute attribute to change a button’s size. The default is`lg`. In tight spaces, consider using `md` or even `sm`.
+ * Use the `size` attribute to change a button’s size. The default is `lg`. In tight spaces, consider using `md` or even `sm`.
  */
 export const Size = {
   render: () => {
@@ -109,7 +109,7 @@ export const Disabled = {
 };
 
 /**
- * Use the `inverted` attribute when buttons are used on primary background.
+ * Use the `inverted` attribute when displayed on primary background.
  */
 
 export const Inverted = {
