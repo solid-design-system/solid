@@ -19,19 +19,24 @@ export default {
 
 export const Default = {
   name: 'Dialog with Button Group',
-  parameters: {
-    viewport: {
-      defaultViewport: 'iphone6'
-    }
-  },
   render: () => html`
-    <div class="h-[40vh]">
+    <!-- TODO: remove once this bugfix is addressed: https://github.com/solid-design-system/solid/issues/1325 -->
+    <style>
+      @media (min-width: 414px) {
+        sd-dialog::part(footer) {
+          width: 100%;
+          margin: 0;
+        }
+      }
+    </style>
+
+    <div class="h-[750px]">
       <sd-dialog id="dialog" open>
         <h4 slot="headline" class="sd-headline sd-headline--size-3xl">Cancel your subscription?</h4>
         <p class="sd-paragraph">Your subscription will be canceled immediately. You can resubscribe at any time.</p>
-        <div slot="footer" class="flex justify-end w-full space-x-2">
-          <sd-button variant="secondary" size="lg" type="button"> Maybe later </sd-button>
-          <sd-button variant="primary" size="lg" type="button"> Cancel </sd-button>
+        <div slot="footer" class="flex flex-col sm:flex-row justify-end w-full gap-2">
+          <sd-button class="w-full sm:w-auto" variant="secondary" size="lg" type="button"> Maybe later </sd-button>
+          <sd-button class="w-full sm:w-auto" variant="primary" size="lg" type="button"> Cancel </sd-button>
         </div>
       </sd-dialog>
     </div>
@@ -41,11 +46,17 @@ export const Default = {
 export const Scrollable = {
   name: 'Dialog with scrollable content',
   render: () => html`
-    <div class="h-[40vh]">
+    <style>
+      sd-button::part(icon-left) {
+        justify-content: end;
+      }
+    </style>
+
+    <div class="min-h-[750px]">
       <sd-dialog id="dialog" open no-close-button>
         <h4 slot="headline" class="sd-headline sd-headline--size-3xl">Terms of use</h4>
         <sd-scrollable orientation="vertical" step="150" shadows>
-          <div class="items-start justify-start h-[200px] space-y-5">
+          <div class="items-start justify-start h-[300px] lg:h-[480px] space-y-5">
             <h4 class="sd-headline sd-headline--size-lg">Important notices to our investors</h4>
             <p class="sd-paragraph">
               By accepting this document, you accept the following restrictions as binding on you:
@@ -133,16 +144,16 @@ export const Scrollable = {
             </p>
           </div>
         </sd-scrollable>
-        <div slot="footer" class="flex justify-end w-full space-x-2">
-          <sd-button variant="primary" size="lg" type="button"> Accept terms of use </sd-button>
-          <sd-button variant="secondary" size="lg" type="button">
-            <sd-icon name="system/download" slot="icon-left"></sd-icon>
-            Download PDF
-          </sd-button>
+        <div slot="footer" class="flex flex-col md:flex-row justify-end w-full gap-2">
           <sd-button variant="secondary" size="lg" type="button">
             <sd-icon name="system/log-out" slot="icon-left"></sd-icon>
             Exit portal
           </sd-button>
+          <sd-button variant="secondary" size="lg" type="button">
+            <sd-icon name="system/download" slot="icon-left"></sd-icon>
+            Download PDF
+          </sd-button>
+          <sd-button variant="primary" size="lg" type="button"> Accept terms of use </sd-button>
         </div>
       </sd-dialog>
     </div>
