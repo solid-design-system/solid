@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v3.17.2](https://github.com/solid-design-system/solid/compare/components/3.17.1...components/3.17.2) (2024-08-28)
+
+
+### Bug Fixes
+
+* correct readonly background styles for sd-input ([#1323](https://github.com/solid-design-system/solid/issues/1323)) ([5aba0f1](https://github.com/solid-design-system/solid/commit/5aba0f1998e1b62c319c90245b804c42691759cd))
+
+### 📈 Stats
+* Bundle size (uncompressed): 335 KB (unchanged)
+* Bundle size (gzipped): 79 KB (unchanged)
+
 # [@solid-design-system/components-v3.17.1](https://github.com/solid-design-system/solid/compare/components/3.17.0...components/3.17.1) (2024-08-28)
 
 
