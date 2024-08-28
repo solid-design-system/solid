@@ -62,26 +62,26 @@ export const Orientation = {
   render: () => html`
     <div class="flex gap-12">
       <sd-scrollable orientation="horizontal">
-        <div class="text-sm items-start h-max w-max p-4">
-          <p>Scroll horizontally</p>
-          <br />
-          <p>This is a long scrollable content.</p>
-          <p>It contains multiple paragraphs and lines.</p>
-          <p>The content is intentionally long to trigger scrolling. You can scroll horizontally and vertically.</p>
-          <p>The scrollable component will display shadows and buttons based on the props.</p>
-          <p>Customize the content and attributes as needed.</p>
+        <div class="text-sm self-start h-max w-min p-4">
+          <p>
+            Union Investment has extended its lease with Converse, the footwear and apparel brand known for its deep
+            connection to youth culture, at 1 Lovejoy Wharf in Boston. The contract for around 20,000 sqm of
+            state-of-the-art office space was renewed long-term. The building has been part of the UniImmo: Global
+            open-ended real estate fund portfolio since 2016 and is the global headquarters of the lifestyle brand,
+            which has been part of NIKE, Inc. since 2003.
+          </p>
         </div>
       </sd-scrollable>
 
       <sd-scrollable orientation="vertical">
-        <div class="items-start h-max p-4 text-sm justify-start">
-          <p>Scroll vertically</p>
-          <br />
-          <p>This is a long scrollable content.</p>
-          <p>It contains multiple paragraphs and lines.</p>
-          <p>The content is intentionally long to trigger scrolling. You can scroll horizontally and vertically.</p>
-          <p>The scrollable component will display shadows and buttons based on the props.</p>
-          <p>Customize the content and attributes as needed.</p>
+        <div class="self-start h-max p-4 text-sm justify-start">
+          <p>
+            Union Investment has extended its lease with Converse, the footwear and apparel brand known for its deep
+            connection to youth culture, at 1 Lovejoy Wharf in Boston. The contract for around 20,000 sqm of
+            state-of-the-art office space was renewed long-term. The building has been part of the UniImmo: Global
+            open-ended real estate fund portfolio since 2016 and is the global headquarters of the lifestyle brand,
+            which has been part of NIKE, Inc. since 2003.
+          </p>
         </div>
       </sd-scrollable>
     </div>
@@ -97,13 +97,13 @@ export const Scrollbar = {
   render: () => html`
     <sd-scrollable orientation="vertical" buttons scrollbars>
       <div class="items-start h-max p-4 text-sm justify-start">
-        <p>Scroll vertically</p>
-        <br />
-        <p>This is a long scrollable content.</p>
-        <p>It contains multiple paragraphs and lines.</p>
-        <p>The content is intentionally long to trigger scrolling. You can scroll horizontally and vertically.</p>
-        <p>The scrollable component will display shadows and buttons based on the props.</p>
-        <p>Customize the content and attributes as needed.</p>
+        <p>
+          Union Investment has extended its lease with Converse, the footwear and apparel brand known for its deep
+          connection to youth culture, at 1 Lovejoy Wharf in Boston. The contract for around 20,000 sqm of
+          state-of-the-art office space was renewed long-term. The building has been part of the UniImmo: Global
+          open-ended real estate fund portfolio since 2016 and is the global headquarters of the lifestyle brand, which
+          has been part of NIKE, Inc. since 2003.
+        </p>
       </div>
     </sd-scrollable>
   `
@@ -118,13 +118,13 @@ export const Buttons = {
   render: () => html`
     <sd-scrollable orientation="vertical" buttons>
       <div class="items-start h-max p-4 text-sm justify-start">
-        <p>Scroll vertically</p>
-        <br />
-        <p>This is a long scrollable content.</p>
-        <p>It contains multiple paragraphs and lines.</p>
-        <p>The content is intentionally long to trigger scrolling. You can scroll horizontally and vertically.</p>
-        <p>The scrollable component will display shadows and buttons based on the props.</p>
-        <p>Customize the content and attributes as needed.</p>
+        <p>
+          Union Investment has extended its lease with Converse, the footwear and apparel brand known for its deep
+          connection to youth culture, at 1 Lovejoy Wharf in Boston. The contract for around 20,000 sqm of
+          state-of-the-art office space was renewed long-term. The building has been part of the UniImmo: Global
+          open-ended real estate fund portfolio since 2016 and is the global headquarters of the lifestyle brand, which
+          has been part of NIKE, Inc. since 2003.
+        </p>
       </div>
     </sd-scrollable>
   `
@@ -139,13 +139,13 @@ export const Shadows = {
   render: () => html`
     <sd-scrollable orientation="vertical" shadows>
       <div class="items-start h-max p-4 text-sm justify-start">
-        <p>Scroll vertically</p>
-        <br />
-        <p>This is a long scrollable content.</p>
-        <p>It contains multiple paragraphs and lines.</p>
-        <p>The content is intentionally long to trigger scrolling. You can scroll horizontally and vertically.</p>
-        <p>The scrollable component will display shadows and buttons based on the props.</p>
-        <p>Customize the content and attributes as needed.</p>
+        <p>
+          Union Investment has extended its lease with Converse, the footwear and apparel brand known for its deep
+          connection to youth culture, at 1 Lovejoy Wharf in Boston. The contract for around 20,000 sqm of
+          state-of-the-art office space was renewed long-term. The building has been part of the UniImmo: Global
+          open-ended real estate fund portfolio since 2016 and is the global headquarters of the lifestyle brand, which
+          has been part of NIKE, Inc. since 2003.
+        </p>
       </div>
     </sd-scrollable>
   `
@@ -160,13 +160,13 @@ export const Inset = {
   render: () => html`
     <sd-scrollable orientation="vertical" inset>
       <div class="items-start h-max p-4 text-sm justify-start">
-        <p>Scroll vertically</p>
-        <br />
-        <p>This is a long scrollable content.</p>
-        <p>It contains multiple paragraphs and lines.</p>
-        <p>The content is intentionally long to trigger scrolling. You can scroll horizontally and vertically.</p>
-        <p>The scrollable component will display shadows and buttons based on the props.</p>
-        <p>Customize the content and attributes as needed.</p>
+        <p>
+          Union Investment has extended its lease with Converse, the footwear and apparel brand known for its deep
+          connection to youth culture, at 1 Lovejoy Wharf in Boston. The contract for around 20,000 sqm of
+          state-of-the-art office space was renewed long-term. The building has been part of the UniImmo: Global
+          open-ended real estate fund portfolio since 2016 and is the global headquarters of the lifestyle brand, which
+          has been part of NIKE, Inc. since 2003.
+        </p>
       </div>
     </sd-scrollable>
   `
@@ -180,13 +180,13 @@ export const Step = {
   render: () => html`
     <sd-scrollable orientation="vertical" buttons step="50">
       <div class="items-start h-max p-4 text-sm justify-start">
-        <p>Scroll vertically</p>
-        <br />
-        <p>This is a long scrollable content.</p>
-        <p>It contains multiple paragraphs and lines.</p>
-        <p>The content is intentionally long to trigger scrolling. You can scroll horizontally and vertically.</p>
-        <p>The scrollable component will display shadows and buttons based on the props.</p>
-        <p>Customize the content and attributes as needed.</p>
+        <p>
+          Union Investment has extended its lease with Converse, the footwear and apparel brand known for its deep
+          connection to youth culture, at 1 Lovejoy Wharf in Boston. The contract for around 20,000 sqm of
+          state-of-the-art office space was renewed long-term. The building has been part of the UniImmo: Global
+          open-ended real estate fund portfolio since 2016 and is the global headquarters of the lifestyle brand, which
+          has been part of NIKE, Inc. since 2003.
+        </p>
       </div>
     </sd-scrollable>
   `
