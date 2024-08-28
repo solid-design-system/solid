@@ -62,7 +62,7 @@ export const Orientation = {
   render: () => html`
     <div class="flex gap-12">
       <sd-scrollable orientation="horizontal">
-        <div class="text-sm self-start h-max w-min p-4">
+        <div class="text-sm self-start h-max w-[500px] whitespace-normal p-4">
           <p>
             Union Investment has extended its lease with Converse, the footwear and apparel brand known for its deep
             connection to youth culture, at 1 Lovejoy Wharf in Boston. The contract for around 20,000 sqm of
