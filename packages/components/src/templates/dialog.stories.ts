@@ -12,13 +12,15 @@ export default {
     }
   },
   decorators: [
-    (story: any) =>
-      html` <style>
-          #anchor--templates-dialog--default .innerZoomElementWrapper,
-          #anchor--templates-dialog--scrollable .innerZoomElementWrapper {
-            min-height: 750px;
-          }</style
-        >${story()}`
+    (story: any) => html`
+      <style>
+        #anchor--templates-dialog--default .innerZoomElementWrapper,
+        #anchor--templates-dialog--scrollable .innerZoomElementWrapper {
+          min-height: 750px;
+        }
+      </style>
+      ${story()}
+    `
   ] as unknown
 };
 
