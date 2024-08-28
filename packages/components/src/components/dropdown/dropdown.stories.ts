@@ -22,12 +22,12 @@ export default {
     {
       type: 'slot',
       name: 'trigger',
-      value: '<sd-button slot="trigger" style="position: relative">Trigger</sd-button>'
+      value: '<sd-navigation-item slot="trigger" style="position: relative">Dropdown</sd-navigation-item>'
     },
     {
       type: 'slot',
       name: 'default',
-      value: '<div class="slot slot--border slot--background"></div>'
+      value: '<div class="slot slot--border slot--text">Default Slot</div>'
     },
     {
       type: 'attribute',
@@ -75,6 +75,7 @@ export default {
             overflow: auto;
           }
           #anchor--components-sd-dropdown .innerZoomElementWrapper,
+          #anchor--components-sd-dropdown--open .innerZoomElementWrapper,
           #anchor--components-sd-dropdown--rounded .innerZoomElementWrapper,
           #anchor--components-sd-dropdown--placement .innerZoomElementWrapper,
           #anchor--components-sd-dropdown--placement .innerZoomElementWrapper,
@@ -106,7 +107,7 @@ export const Default = {
         constants: {
           type: 'slot',
           name: 'default',
-          value: '<div class="example slot slot--border slot--background"></div>'
+          value: '<div class="slot slot--border slot--text p-4 w-[300px]">Default Slot</div>'
         },
         args
       })}
@@ -122,8 +123,8 @@ export const Open = {
   name: 'Open',
   render: () => html`
     <sd-dropdown open>
-      <div class="slot slot--border slot--background w-52 h-12">Default Slot</div>
-      <sd-button slot="trigger">Trigger</sd-button>
+      <div class="slot slot--border slot--text p-4 w-[300px]">Default Slot</div>
+      <sd-button slot="trigger" variant="secondary">Trigger</sd-button>
     </sd-dropdown>
   `
 };
@@ -135,9 +136,11 @@ export const Open = {
 export const Rounded = {
   name: 'Rounded',
   render: () => html`
-    <sd-dropdown open rounded>
-      <div class="slot slot--border slot--background w-52 h-12">Default Slot</div>
-      <sd-button slot="trigger">Trigger</sd-button>
+    <sd-dropdown open rounded distance="4">
+      <div class="slot slot--border slot--text p-4 w-[300px]">Default Slot</div>
+      <sd-button slot="trigger" variant="secondary">
+        <sd-icon name="system/more-functions" class="h-6 w-6"></sd-icon>
+      </sd-button>
     </sd-dropdown>
   `
 };
@@ -149,41 +152,17 @@ export const Rounded = {
 export const Placement = {
   name: 'Placement',
   render: () => html`
-    <div class="grid grid-cols-4 gap-12">
-      <sd-dropdown open placement="top">
-        <div class="slot slot--border slot--background w-52 h-12">Default Slot</div>
-        <sd-button slot="trigger">Top</sd-button>
+    <div class="grid grid-cols-2 gap-32">
+      <sd-dropdown open placement="bottom-start">
+        <div class="slot slot--border slot--text p-4 w-[300px]">Default slot</div>
+        <sd-button slot="trigger">Bottom start</sd-button>
       </sd-dropdown>
 
-      <sd-dropdown open placement="bottom">
-        <div class="slot slot--border slot--background w-52 h-12">Default Slot</div>
-        <sd-button slot="trigger">Bottom</sd-button>
-      </sd-dropdown>
-
-      <sd-dropdown open placement="left">
-        <div class="slot slot--border slot--background w-52 h-12">Default Slot</div>
-        <sd-button slot="trigger">Left</sd-button>
-      </sd-dropdown>
-
-      <sd-dropdown open placement="right">
-        <div class="slot slot--border slot--background w-52 h-12">Default Slot</div>
-        <sd-button slot="trigger">Right</sd-button>
+      <sd-dropdown open placement="bottom-end">
+        <div class="slot slot--border slot--text p-4 w-[300px]">Default slot</div>
+        <sd-button slot="trigger">Bottom End</sd-button>
       </sd-dropdown>
     </div>
-  `
-};
-
-/**
- * Use the `disabled` attribute to disable the dropdown.
- */
-
-export const Disabled = {
-  name: 'Disabled',
-  render: () => html`
-    <sd-dropdown disabled>
-      <div class="slot slot--border slot--background w-52 h-12">Default Slot</div>
-      <sd-button slot="trigger">Trigger</sd-button>
-    </sd-dropdown>
   `
 };
 
@@ -206,6 +185,20 @@ export const StayOpen = {
 };
 
 /**
+ * Use the `disabled` attribute to disable the dropdown.
+ */
+
+export const Disabled = {
+  name: 'Disabled',
+  render: () => html`
+    <sd-dropdown disabled>
+      <div class="slot slot--border slot--text p-4 w-[300px]">Default Slot</div>
+      <sd-button slot="trigger">Trigger</sd-button>
+    </sd-dropdown>
+  `
+};
+
+/**
  * Use the `distance` attribute to set the distance between the dropdown panel and the trigger.
  */
 
@@ -213,7 +206,7 @@ export const Distance = {
   name: 'Distance',
   render: () => html`
     <sd-dropdown open distance="8">
-      <div class="slot slot--border slot--background w-52 h-12">Default Slot</div>
+      <div class="slot slot--border slot--text p-4 w-[300px]">Default Slot</div>
       <sd-button slot="trigger">Trigger</sd-button>
     </sd-dropdown>
   `
@@ -228,7 +221,7 @@ export const Skidding = {
   parameters: { controls: { exclude: ['placement'] } },
   render: () => html`
     <sd-dropdown open skidding="20" placement="bottom">
-      <div class="slot slot--border slot--background w-52 h-12">Default Slot</div>
+      <div class="slot slot--border slot--text p-4 w-[300px]">Default Slot</div>
       <sd-button slot="trigger">Trigger</sd-button>
     </sd-dropdown>
   `
@@ -256,7 +249,7 @@ export const NoFlip = {
   name: 'No Flip',
   render: () => html`
     <sd-dropdown no-flip open>
-      <div class="slot slot--border slot--background w-52 h-12">Default Slot</div>
+      <div class="slot slot--border slot--text p-4 w-[300px]">Default Slot</div>
       <sd-button slot="trigger">Trigger</sd-button>
     </sd-dropdown>
   `
