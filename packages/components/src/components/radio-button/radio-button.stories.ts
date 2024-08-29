@@ -29,11 +29,6 @@ export default {
       type: 'slot',
       name: 'default',
       value: 'Label'
-    },
-    {
-      type: 'attribute',
-      name: 'value',
-      value: 1
     }
   ]),
   argTypes,
