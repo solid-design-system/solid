@@ -1,5 +1,5 @@
 import '../../solid-components';
-
+import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
 const { argTypes, parameters } = storybookDefaults('sd-display');
@@ -7,16 +7,12 @@ const { overrideArgs } = storybookHelpers('sd-display');
 const { generateTemplate } = storybookTemplate('sd-display');
 
 /**
- * Display provides larger text sizes that are not used as headlines. <br>
- * <br>
- * The different sizes allow for a more versatile styling of text elements. Display text should not be used as substitute for headlines.<br>
- * <br>
- * <b>Sizes</b>
- * <li>xl is the default size.</li>
+ * Provides larger text sizes that are not used as headlines.
  */
 
 export default {
   title: 'Styles/sd-display',
+  tags: ['!dev'],
   component: 'sd-display',
   parameters: {
     ...parameters,
@@ -29,10 +25,6 @@ export default {
   argTypes
 };
 
-/**
- * Default: This shows sd-display in its default state.
- */
-
 export const Default = {
   render: (args: any) => {
     return generateTemplate({
@@ -43,21 +35,28 @@ export const Default = {
 };
 
 /**
- * Use the `inverted` class to make a display with inverted colors.
+ * Use the `sd-display--size-` class to set the display’s size:
+ * - `sd-display--size-default`
+ * - `sd-display--size-3xl`
+ * - `sd-display--size-4xl`
+ */
+
+export const Size = {
+  render: () => html`
+    <div class="flex flex-col gap-6">
+      <div class="sd-display sd-display--size-default">Default</div>
+      <div class="sd-display sd-display--size-3xl">3xl</div>
+      <div class="sd-display sd-display--size-4xl">4xl</div>
+    </div>
+  `
+};
+
+/**
+ * Use the `sd-display--inverted` class to make a display with inverted colors.
  */
 
 export const Inverted = {
-  parameters: { controls: { exclude: ['sd-display--inverted'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: [{ type: 'attribute', name: 'sd-display--inverted', values: [false, true] }]
-      },
-      constants: { type: 'attribute', name: 'sd-display--inverted', value: true },
-      options: {
-        templateBackgrounds: { alternate: 'y', colors: ['transparent', 'rgb(var(--sd-color-primary, 0 53 142))'] }
-      },
-      args
-    });
+  render: () => {
+    return html`<div class="p-4 bg-primary"><div class="sd-display sd-display--inverted">Inverted</div></div>`;
   }
 };
