@@ -25,7 +25,7 @@ export default {
       type: 'slot',
       name: 'default',
       value:
-        '<li>Lorem ipsum dolor sit amet.</li><li>Sed diam nonumy eirmod tempor invidunt ut labore.</li><li>Dolore magna aliq erat, sed diam voluptua.</li>'
+        '<li>Lorem ipsum dolor sit amet.</li><li>Sed diam nonumy eirmod tempor invidunt ut labore. Sed diam nonumy eirmod tempor invidunt ut labore. Sed diam nonumy eirmod tempor invidunt ut labore. Sed diam nonumy eirmod tempor invidunt ut labore. Sed diam nonumy eirmod tempor invidunt ut labore.</li><li>Dolore magna aliq erat, sed diam voluptua.</li>'
     }
   ]),
   argTypes,
