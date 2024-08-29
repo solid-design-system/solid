@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v3.17.3](https://github.com/solid-design-system/solid/compare/components/3.17.2...components/3.17.3) (2024-08-29)
+
+
+### Bug Fixes
+
+* 🤔 add missing neutral-500 border on disabled+checked sd-radio-buttons ([#1330](https://github.com/solid-design-system/solid/issues/1330)) ([d00025c](https://github.com/solid-design-system/solid/commit/d00025cce2204c066a9309cc777e88811f4de478))
+
+### 📈 Stats
+* Bundle size (uncompressed): 335 KB (unchanged)
+* Bundle size (gzipped): 79 KB (unchanged)
+
 # [@solid-design-system/components-v3.17.2](https://github.com/solid-design-system/solid/compare/components/3.17.1...components/3.17.2) (2024-08-28)
 
 
