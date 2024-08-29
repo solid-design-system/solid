@@ -1,42 +1,19 @@
 import '../../solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { waitUntil } from '@open-wc/testing-helpers';
-import { withActions } from '@storybook/addon-actions/decorator';
-import cx from 'classix';
-import type { ConstantDefinition } from '../../../scripts/storybook/helper';
+
 const { overrideArgs } = storybookHelpers('sd-navigation-item');
 const { argTypes, parameters } = storybookDefaults('sd-navigation-item');
 const { generateTemplate } = storybookTemplate('sd-navigation-item');
 
-// Reusable Constants
-const defaultSlotConstant: ConstantDefinition = {
-  type: 'slot',
-  name: 'default',
-  value: '<span>Navigation</span>'
-};
-
-const descriptionSlotConstant: ConstantDefinition = {
-  type: 'slot',
-  name: 'description',
-  value: '<p slot="description">Lorem ipsum dolor sit amet.</p>'
-};
-
-const childrenSlotConstant: ConstantDefinition = {
-  type: 'slot',
-  name: 'children',
-  value:
-    '<sd-navigation-item vertical indented slot="children">Sub Navigation 1</sd-navigation-item><sd-navigation-item vertical indented slot="children">Sub Navigation 2</sd-navigation-item><sd-navigation-item vertical indented slot="children">Sub Navigation 3</sd-navigation-item>'
-};
-
 // Stories
 export default {
+  tags: ['!dev'],
   title: 'Components/sd-navigation-item',
   component: 'sd-navigation-item',
   args: overrideArgs([{ type: 'slot', name: 'default', value: 'Navigation' }]),
   argTypes,
-  parameters: { ...parameters },
-  decorators: [withActions] as any
+  parameters: parameters
 };
 
 /**
@@ -50,415 +27,128 @@ export const Default = {
 };
 
 /**
- * The `sd-navigation-item` using bold text.
+ * Use the `size` attribute to change the font size of the navigation item.
+ * - `sm`
+ * - `base` (default)
+ * - `lg`
  */
 
-export const Bold = {
-  render: (args: any) =>
-    generateTemplate({
-      args,
-      axis: { x: { type: 'slot', name: 'default', values: ['Navigation', '<b>Navigation</b>'] } }
-    })
+export const Size = {
+  render: () => html`
+    <div class="flex flex-col gap-6">
+      <sd-navigation-item size="sm">Small</sd-navigation-item>
+      <sd-navigation-item>Default</sd-navigation-item>
+      <sd-navigation-item size="lg">Large</sd-navigation-item>
+    </div>
+  `
 };
 
 /**
- * There are 3 variants determined by the `href` and `vertical` properties in addition to the `children` slot.  Each variant has 3 size options to define text size.
+ * Use the attribute `href` to change the navigation item to a link.
+ * - `href` attribute - The URL to navigate to.
+ * - `target` attribute - The target of the link. Can assume the values `_blank`, `_parent`, `_self`, or `_top`.
+ * - `download` attribute - The filename to download the link as.
  */
 
-export const Variants = {
-  name: 'Variant × Size',
-  parameters: {
-    controls: {
-      exclude: ['href', 'target', 'download', 'size', 'vertical', 'indented', 'relaxed', 'open', 'children']
-    }
-  },
-  render: (args: any) => {
-    return html`
-      ${generateTemplate({
-        axis: {
-          x: { type: 'attribute', name: 'vertical' },
-          y: { type: 'attribute', name: 'size' }
-        },
-        args,
-        options: {
-          title: 'Button'
-        }
-      })}
-      ${generateTemplate({
-        axis: {
-          x: { type: 'attribute', name: 'vertical' },
-          y: { type: 'attribute', name: 'size' }
-        },
-        args,
-        options: { title: 'Link (href="https://www.union-investment.de/")' },
-        constants: { type: 'attribute', name: 'href', value: 'https://www.union-investment.de/' }
-      })}
-      ${generateTemplate({
-        axis: {
-          x: { type: 'attribute', name: 'vertical', values: [true] },
-          y: { type: 'attribute', name: 'size', values: ['base'] }
-        },
-        args,
-        options: {
-          title: 'Accordion'
-        },
-        constants: [
-          childrenSlotConstant,
-          { type: 'attribute', name: 'vertical', value: true },
-          {
-            type: 'slot',
-            name: 'default',
-            value: '<div style="width: 245px; text-align: left;">Navigation</div>'
-          }
-        ]
-      })}
-    `;
-  }
+export const Link = {
+  render: () => html`
+    <sd-navigation-item href="https://www.union-investment.de/" target="_blank">Link</sd-navigation-item>
+  `
 };
 
 /**
- * The navigation element when `disabled` is true.
+ * Add `children` slot to the navigation item to create an accordion.
+ * - Must have the `vertical` attribute.
+ * - A `chevron` will be added regardless of the `chevron` attribute.
+ * - The `open` attribute can be used to control the open state of the accordion.
  */
-
-export const Disabled = {
-  parameters: {
-    controls: { exclude: ['disabled', 'vertical', 'current'] }
-  },
-  render: (args: any) => {
-    return html`
-      ${generateTemplate({
-        axis: {
-          y: { type: 'attribute', name: 'current' }
-        },
-        options: {
-          title: 'Horizontal'
-        },
-        constants: [
-          { type: 'attribute', name: 'disabled', value: true },
-          { type: 'attribute', name: 'vertical', value: false },
-          descriptionSlotConstant
-        ],
-        args
-      })}
-      ${generateTemplate({
-        axis: {
-          x: { type: 'attribute', name: 'chevron' },
-          y: { type: 'attribute', name: 'current' }
-        },
-        options: {
-          title: 'Vertical'
-        },
-        constants: [
-          { type: 'attribute', name: 'disabled', value: true },
-          { type: 'attribute', name: 'vertical', value: true },
-          descriptionSlotConstant
-        ],
-        args
-      })}
-    `;
-  }
+export const Accordion = {
+  render: () =>
+    html`<sd-navigation-item vertical>
+      <div style="width: 245px; text-align: left;">Accordion</div>
+      <sd-navigation-item vertical indented slot="children"> Sub Navigation 1 </sd-navigation-item>
+      <sd-navigation-item vertical indented slot="children"> Sub Navigation 2 </sd-navigation-item>
+      <sd-navigation-item vertical indented slot="children"> Sub Navigation 3 </sd-navigation-item>
+    </sd-navigation-item>`
 };
 
 /**
- * When `vertical` is false, `sd-navigation-item` will render as a `<button>` or link `<a>` if given an `href`.
- * Horizontal variants have a reduced API and ignore the excluded properties.
+ * Use the attribute `vertical` to change the orientation of the navigation item.
  */
 
-export const VerticalAndCurrent = {
-  name: 'Vertical × Current',
-  parameters: {
-    controls: {
-      exclude: [
-        'vertical',
-        'chevron',
-        'indented',
-        'relaxed',
-        'divider',
-        'open',
-        'current',
-        'description',
-        'children',
-        'sd-show',
-        'sd-hide'
-      ]
-    }
-  },
-  render: (args: any) => {
-    return html`
-      ${generateTemplate({
-        axis: {
-          x: { type: 'attribute', name: 'vertical' },
-          y: { type: 'attribute', name: 'current' }
-        },
-        args
-      })}
-    `;
-  }
+export const Vertical = {
+  render: () =>
+    html` <sd-navigation-item vertical>Vertical</sd-navigation-item
+      ><sd-navigation-item>Non-Vertical</sd-navigation-item>`
 };
 
 /**
- * `href` can be used to create a link.
+ * Use the `divider` attribute to add a divider above the navigation item.
+ * - Only works with `vertical` attribute.
  */
 
-export const VerticalAndLink = {
-  name: 'Vertical × Link',
-  parameters: {
-    controls: {
-      exclude: [
-        'vertical',
-        'href',
-        'indented',
-        'relaxed',
-        'divider',
-        'open',
-        'current',
-        'description',
-        'children',
-        'sd-show',
-        'sd-hide'
-      ]
-    }
-  },
-  render: (args: any) => {
-    return html`
-      ${generateTemplate({
-        axis: {
-          x: { type: 'attribute', name: 'href', values: ['', '#'] },
-          y: { type: 'attribute', name: 'vertical' }
-        },
-        args
-      })}
-    `;
-  }
+export const Divider = {
+  render: () => html` <sd-navigation-item vertical divider>Link</sd-navigation-item> `
 };
 
 /**
- * Displays chevron property behaviors.  Vertical Button / Link variants show right facing chevron dependent on property.  Accordion variant always show up / down chevron to reflect open state.
+ * Use the `chevron` attribute to add a chevron to the navigation item.
+ * - Only works with `vertical` attribute.
+ * - `Button` and `Link` variants show right facing chevron dependent on property.
+ * - `Accordion` variant always show up / down chevron to reflect open state.
  */
 
 export const Chevron = {
-  parameters: { controls: { exclude: [] } },
-  render: (args: any) => {
-    return html`${['Button', 'Link', 'Accordion'].map(title => {
-      const constants: ConstantDefinition[] = [
-        { type: 'attribute', name: 'vertical', value: true },
-        { type: 'attribute', name: 'href', value: title === 'Link' ? 'https://www.union-investment.de/' : '' },
-        {
-          type: 'slot',
-          name: 'default',
-          value: '<div style="width: 245px; text-align: left;">Navigation</div>'
-        }
-      ];
-
-      if (title === 'Accordion') {
-        constants.push(childrenSlotConstant);
-      }
-
-      return generateTemplate({
-        args,
-        axis: {
-          y: { type: 'attribute', name: 'chevron' }
-        },
-        options: {
-          title
-        },
-        constants
-      });
-    })}`;
-  }
+  render: () => html` <sd-navigation-item vertical chevron>Chevron</sd-navigation-item>`
 };
 
 /**
- * When `indented` is true, padding is added to the left side.  When `relaxed` is true, padding is added to both sides.
+ * Use the `description` to provide a description for the navigation item.
+ * - Only works with `vertical` attribute.
  */
 
-export const IndentedRelaxed = {
-  name: 'Indented × Relaxed',
-  parameters: {
-    controls: {
-      exclude: ['vertical', 'chevron', 'indented', 'sd-show', 'sd-hide']
-    }
-  },
-  render: (args: any) => {
-    return html`
-      ${generateTemplate({
-        axis: {
-          x: { type: 'attribute', name: 'indented' },
-          y: { type: 'attribute', name: 'relaxed' }
-        },
-        constants: [
-          { type: 'attribute', name: 'divider', value: true },
-          { type: 'attribute', name: 'current', value: true },
-          { type: 'attribute', name: 'vertical', value: true },
-          { type: 'attribute', name: 'chevron', value: true }
-        ],
-        args
-      })}
-    `;
-  }
+export const Description = {
+  render: () =>
+    html` <sd-navigation-item vertical>
+      With a description
+      <p slot="description">Lorem ipsum dolor sit amet.</p>
+    </sd-navigation-item>`
 };
 
 /**
- * Shows available slots.  `description`is only used when `vertical`is true.
+ * Use `indented` attribute to add padding to the left side.
+ * - Only works with `vertical` attribute.
  */
 
-export const Slots = {
-  parameters: {
-    controls: { exclude: [] }
-  },
-  render: (args: any) => {
-    return html`
-      ${['default', 'description', 'children'].map(slot =>
-        generateTemplate({
-          axis: {
-            x: {
-              type: 'slot',
-              name: slot,
-              title: 'slot=...',
-              values: [
-                {
-                  value:
-                    slot === 'default'
-                      ? `<div class="slot slot--border slot--background h-8 w-[100px]"></div>`
-                      : `<div slot='${slot}' class="${cx(
-                          'slot slot--border slot--background h-6',
-                          slot === 'description' || slot === 'children' ? 'w-full' : 'w-6'
-                        )}"></div>`,
-                  title: slot
-                }
-              ]
-            }
-          },
-          constants: [
-            { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' },
-            {
-              type: 'attribute',
-              name: 'vertical',
-              value: true
-            },
-            { type: 'attribute', name: 'chevron', value: true },
-            {
-              type: 'attribute',
-              name: 'open',
-              value: true
-            },
-            defaultSlotConstant,
-            descriptionSlotConstant
-          ],
-          args: overrideArgs({ type: 'slot', name: 'default', value: '' }, args)
-        })
-      )}
-    `;
-  }
+export const Indented = {
+  render: () => html`<sd-navigation-item vertical indented>Indented</sd-navigation-item>`
 };
 
 /**
- * Use the `base`, `content`, `chevron`, and `description` part selectors to customize the navigation item.
+ * Use `relaxed` attribute to add padding to both sides.
+ * - Only works with `vertical` attribute.
  */
 
-export const Parts = {
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: {
-          type: 'template',
-          name: 'sd-navigation-item::part(...){outline: solid 2px red}',
-          values: [
-            'base',
-            'content',
-            'content-area',
-            'content-container',
-            'chevron',
-            'description',
-            'divider',
-            'current-indicator',
-            'details'
-          ].map(part => {
-            return {
-              title: part,
-              value: `<style>#part-${part} sd-navigation-item::part(${part}){outline: solid 2px red}</style><div id="part-${part}">%TEMPLATE%</div>`
-            };
-          })
-        }
-      },
-      constants: [
-        {
-          type: 'attribute',
-          name: 'vertical',
-          value: true
-        },
-        {
-          type: 'attribute',
-          name: 'divider',
-          value: true
-        },
-        {
-          type: 'attribute',
-          name: 'chevron',
-          value: true
-        },
-        {
-          type: 'slot',
-          name: 'icon-right',
-          value: '<sd-icon library="global-resources" name="system/picture" slot="icon-right"></sd-icon>'
-        },
-        {
-          type: 'slot',
-          name: 'icon-left',
-          value: '<sd-icon library="global-resources" name="system/picture" slot="icon-left"></sd-icon>'
-        },
-        {
-          type: 'slot',
-          name: 'main',
-          value: '<sd-badge slot="main">888</sd-badge>'
-        },
-        {
-          type: 'slot',
-          name: 'children',
-          value: '<div slot="children" class="slot slot--border slot--background h-6"></div>'
-        },
-        descriptionSlotConstant
-      ],
-      args
-    });
-  }
+export const Relaxed = {
+  render: () => html`<sd-navigation-item vertical relaxed>Relaxed</sd-navigation-item>`
 };
 
 /**
- * `sd-navigation-item` is fully accessibile via keyboard in all variants. Tab through the story to try each variant.
+ * Use the `current` attribute to change the navigation item to a current state.
  */
 
-export const Mouseless = {
-  render: (args: any) => {
-    return html`<div class="mouseless">
-      ${['Button', 'Link', 'Accordion'].map(title => {
-        const constants: ConstantDefinition[] = [
-          { type: 'attribute', name: 'vertical', value: true },
-          { type: 'attribute', name: 'chevron', value: true },
-          {
-            type: 'slot',
-            name: 'default',
-            value: '<div style="width: 245px; text-align: left;">Navigation</div>'
-          }
-        ];
+export const Current = {
+  render: () =>
+    html`<div class="flex flex-col gap-6">
+      <sd-navigation-item class="w-[100px]" current>Current</sd-navigation-item
+      ><sd-navigation-item vertical current>Vertical Current</sd-navigation-item>
+    </div>`
+};
 
-        if (title === 'Link')
-          constants.push({ type: 'attribute', name: 'href', value: 'https://www.union-investment.de/' });
-        if (title === 'Accordion') constants.push(childrenSlotConstant);
+/**
+ * Use the `disabled` attribute to disable the navigation item.
+ */
 
-        return generateTemplate({
-          args,
-          constants,
-          options: { title }
-        });
-      })}
-    </div>`;
-  },
-
-  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
-    const el = canvasElement.querySelector('.mouseless sd-navigation-item');
-    await waitUntil(() => el?.shadowRoot?.querySelector('button'));
-
-    el?.shadowRoot?.querySelector('button')?.focus();
-  }
+export const Disabled = {
+  render: () => html` <sd-navigation-item disabled>Disabled</sd-navigation-item> `
 };
