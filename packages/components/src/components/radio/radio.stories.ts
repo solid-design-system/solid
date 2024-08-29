@@ -27,7 +27,7 @@ export const Default = {
   name: 'Default',
   render: (args: any) => {
     return html`
-      <sd-radio-group label="Radio Group" boldLabel value="1">
+      <sd-radio-group label="Group Label" boldLabel value="1">
         ${generateTemplate({
           args: overrideArgs(
             [
@@ -68,13 +68,15 @@ export const Size = {
   name: 'Size',
   render: () => html`
     <div class="flex gap-12">
-      <sd-radio-group size="lg" label="Large" boldLabel>
+      <sd-radio-group size="lg" value="1">
         <sd-radio value="1">Radio 1</sd-radio>
         <sd-radio value="2">Radio 2</sd-radio>
+        <sd-radio value="3">Radio 3</sd-radio>
       </sd-radio-group>
-      <sd-radio-group size="sm" label="Small" boldLabel>
+      <sd-radio-group size="sm" value="1">
         <sd-radio value="1">Radio 1</sd-radio>
         <sd-radio value="2">Radio 2</sd-radio>
+        <sd-radio value="3">Radio 3</sd-radio>
       </sd-radio-group>
     </div>
   `
@@ -88,7 +90,7 @@ export const Disabled = {
   name: 'Disabled',
   render: () => html`
     <div class="flex gap-12">
-      <sd-radio-group label="Group Label" boldLabel>
+      <sd-radio-group label="Disabled Radio in Group" boldLabel value="1">
         <sd-radio value="1">Radio 1</sd-radio>
         <sd-radio value="2" disabled>Radio 2</sd-radio>
         <sd-radio value="3">Radio 3</sd-radio>
