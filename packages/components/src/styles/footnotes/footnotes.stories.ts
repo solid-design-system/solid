@@ -25,7 +25,7 @@ export default {
       type: 'slot',
       name: 'default',
       value:
-        '<li>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</li><li>Sed diam nonumy eirmod tempor invidunt ut labore.</li><li>Dolore magna aliq erat, sed diam voluptua.</li>'
+        '<li>Lorem ipsum dolor sit amet.</li><li>Sed diam nonumy eirmod tempor invidunt ut labore.</li><li>Dolore magna aliq erat, sed diam voluptua.</li>'
     }
   ]),
   argTypes,
@@ -48,7 +48,7 @@ export default {
 export const Default = {
   render: (args: any) => {
     return generateTemplate({
-      options: { templateContent: '<div class="sd-container"><ol class="%CLASSES%">%SLOT%</ol></div?' },
+      options: { templateContent: '<div class="sd-container"><ol class="%CLASSES%">%SLOT%</ol></div>' },
       args
     });
   }
@@ -64,7 +64,7 @@ export const UnorderedLists = {
   render: (args: any) => {
     return generateTemplate({
       options: {
-        templateContent: '<div class="sd-container"><ul class="%CLASSES%">%SLOT%</ul></div?'
+        templateContent: '<div class="sd-container"><ul class="%CLASSES%">%SLOT%</ul></div>'
       },
       args
     });
