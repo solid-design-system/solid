@@ -66,12 +66,7 @@ export const Invalid = {
       <sd-button id="invalid-button" class="hidden" type="submit"></sd-button>
     </form>
     <script type="module">
-      // Wait for custom elements to be defined
       await Promise.all([customElements.whenDefined('sd-switch')]).then(() => {
-        // This part is not working.
-        // const switch = document.getElementById('invalid-switch');
-        // switch.reportValidity();
-
         const button = document.getElementById('invalid-button');
         button.click();
       });
