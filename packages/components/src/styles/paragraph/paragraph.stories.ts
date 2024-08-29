@@ -1,5 +1,5 @@
 import '../../solid-components';
-
+import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
 const { argTypes, parameters } = storybookDefaults('sd-paragraph');
@@ -7,14 +7,12 @@ const { overrideArgs } = storybookHelpers('sd-paragraph');
 const { generateTemplate } = storybookTemplate('sd-paragraph');
 
 /**
- * A paragraph is used to display blocks of text. It uses the base font size and can contain bold and/or link styles.<br>
- * <br>
- * <b>Sizes</b>
- * <li>lg is the default paragraph size.</li>
- * <li>sm can be used as an alternative for tighter spaces.</li>
+ * Used to display blocks of text.
+ * It uses the base font size and can contain bold and/or link styles.
  */
 
 export default {
+  tags: ['!dev'],
   title: 'Styles/sd-paragraph',
   component: 'sd-paragraph',
   parameters: {
@@ -42,21 +40,40 @@ export const Default = {
 };
 
 /**
+ * Use the `sd-paragraph--size-` class to set the size:
+ * - `sd-paragraph--size-default`
+ * - `sd-paragraph--size-sm`
+ */
+
+export const Size = {
+  render: () => html`
+    <div class="flex flex-col gap-6">
+      <p class="sd-paragraph">
+        Large Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
+        phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique.
+        Facilisis commodo integer hendrerit tortor.
+      </p>
+      <p class="sd-paragraph sd-paragraph--size-sm">
+        Large Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
+        phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique.
+        Facilisis commodo integer hendrerit tortor.
+      </p>
+    </div>
+  `
+};
+
+/**
  * Use the `inverted` class to make a paragraph with inverted colors.
  */
 
 export const Inverted = {
-  parameters: { controls: { exclude: ['sd-paragraph--inverted'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: [{ type: 'attribute', name: 'sd-paragraph--inverted', values: [false, true] }]
-      },
-      constants: { type: 'attribute', name: 'sd-paragraph--inverted', value: true },
-      options: {
-        templateBackgrounds: { alternate: 'y', colors: ['transparent', 'rgb(var(--sd-color-primary, 0 53 142))'] }
-      },
-      args
-    });
-  }
+  render: () => html`
+    <div class="p-4 bg-primary">
+      <p class="sd-paragraph sd-paragraph--inverted">
+        Large Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
+        phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique.
+        Facilisis commodo integer hendrerit tortor.
+      </p>
+    </div>
+  `
 };
