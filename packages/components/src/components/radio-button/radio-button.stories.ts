@@ -3,7 +3,7 @@ import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 import { withActions } from '@storybook/addon-actions/decorator';
 
-const { args, argTypes, parameters } = storybookDefaults('sd-radio-button');
+const { argTypes, parameters } = storybookDefaults('sd-radio-button');
 const { overrideArgs } = storybookHelpers('sd-radio-button');
 const { generateTemplate } = storybookTemplate('sd-radio-button');
 
@@ -24,7 +24,18 @@ export default {
   title: 'Components/sd-radio-button',
   tags: ['!dev'],
   component: 'sd-radio-button',
-  args,
+  args: overrideArgs([
+    {
+      type: 'slot',
+      name: 'default',
+      value: 'Label'
+    },
+    {
+      type: 'attribute',
+      name: 'value',
+      value: 1
+    }
+  ]),
   argTypes,
   parameters: { ...parameters },
   decorators: [withActions] as any
@@ -37,52 +48,7 @@ export default {
 export const Default = {
   name: 'Default',
   render: (args: any) => {
-    return html`<sd-radio-group>
-      ${generateTemplate({
-        args: overrideArgs(
-          [
-            {
-              type: 'slot',
-              name: 'icon',
-              value: '<sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>'
-            },
-            {
-              type: 'slot',
-              name: 'default',
-              value: 'Label'
-            },
-            {
-              type: 'attribute',
-              name: 'value',
-              value: 1
-            }
-          ],
-          args
-        )
-      })}
-      ${generateTemplate({
-        args: overrideArgs(
-          [
-            {
-              type: 'slot',
-              name: 'icon',
-              value: '<sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>'
-            },
-            {
-              type: 'slot',
-              name: 'default',
-              value: 'Label'
-            },
-            {
-              type: 'attribute',
-              name: 'value',
-              value: 2
-            }
-          ],
-          args
-        )
-      })}
-    </sd-radio-group> `;
+    return generateTemplate({ args });
   }
 };
 
@@ -93,16 +59,51 @@ export const Default = {
 export const Size = {
   name: 'Size',
   render: () => html`
-    <div class="flex gap-12 items-center">
-      <sd-radio-button size="lg">
-        <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-      </sd-radio-button>
-      <sd-radio-button size="md">
-        <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-      </sd-radio-button>
-      <sd-radio-button size="sm">
-        <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-      </sd-radio-button>
+    <div class="flex flex-col gap-12 items-center">
+      <sd-radio-group value="1" size="lg">
+        <sd-radio-button value="1">
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          Option 1
+        </sd-radio-button>
+        <sd-radio-button value="2">
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          Option 2
+        </sd-radio-button>
+        <sd-radio-button value="3">
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          Option 3
+        </sd-radio-button>
+      </sd-radio-group>
+
+      <sd-radio-group value="1">
+        <sd-radio-button value="1" size="md">
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          Option 1
+        </sd-radio-button>
+        <sd-radio-button value="2" size="md">
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          Option 2
+        </sd-radio-button>
+        <sd-radio-button value="3" size="md">
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          Option 3
+        </sd-radio-button>
+      </sd-radio-group>
+
+      <sd-radio-group value="1" size="sm">
+        <sd-radio-button value="1">
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          Option 1
+        </sd-radio-button>
+        <sd-radio-button value="2">
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          Option 2
+        </sd-radio-button>
+        <sd-radio-button value="3">
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          Option 3
+        </sd-radio-button>
+      </sd-radio-group>
     </div>
   `
 };
@@ -115,9 +116,20 @@ export const Checked = {
   name: 'Checked',
   render: () => html`
     <div class="flex gap-12">
-      <sd-radio-button checked>
-        <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-      </sd-radio-button>
+      <sd-radio-group value="1">
+        <sd-radio-button value="1">
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          Checked
+        </sd-radio-button>
+        <sd-radio-button value="2">
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          Unchecked
+        </sd-radio-button>
+        <sd-radio-button value="3">
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          Unchecked
+        </sd-radio-button>
+      </sd-radio-group>
     </div>
   `
 };
@@ -130,14 +142,19 @@ export const Label = {
   name: 'Label',
   render: () => html`
     <div class="flex gap-12">
-      <sd-radio-button>
-        <div>Label</div>
-      </sd-radio-button>
+      <sd-radio-group value="1">
+        <sd-radio-button value="1">
+          <div>Label</div>
+        </sd-radio-button>
 
-      <sd-radio-button>
-        <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-        <div>Label</div>
-      </sd-radio-button>
+        <sd-radio-button value="2">
+          <div>Label</div>
+        </sd-radio-button>
+
+        <sd-radio-button value="3">
+          <div>Label</div>
+        </sd-radio-button>
+      </sd-radio-group>
     </div>
   `
 };
@@ -150,13 +167,17 @@ export const Icon = {
   name: 'Icon',
   render: () => html`
     <div class="flex gap-12">
-      <sd-radio-button>
-        <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-      </sd-radio-button>
-      <sd-radio-button>
-        <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-        <div>Label</div>
-      </sd-radio-button>
+      <sd-radio-group value="1">
+        <sd-radio-button value="1">
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+        </sd-radio-button>
+        <sd-radio-button value="2">
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+        </sd-radio-button>
+        <sd-radio-button value="3">
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+        </sd-radio-button>
+      </sd-radio-group>
     </div>
   `
 };
@@ -169,9 +190,20 @@ export const Disabled = {
   name: 'Disabled',
   render: () => html`
     <div class="flex gap-12">
-      <sd-radio-button disabled>
-        <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-      </sd-radio-button>
+      <sd-radio-group value="1">
+        <sd-radio-button value="1" disabled>
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          Disabled
+        </sd-radio-button>
+        <sd-radio-button value="2" disabled>
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          Disabled
+        </sd-radio-button>
+        <sd-radio-button value="3" disabled>
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          Disabled
+        </sd-radio-button>
+      </sd-radio-group>
     </div>
   `
 };
