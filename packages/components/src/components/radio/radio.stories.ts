@@ -26,37 +26,7 @@ export default {
 export const Default = {
   name: 'Default',
   render: (args: any) => {
-    return html`
-      <sd-radio-group label="Group Label" boldLabel value="1">
-        ${generateTemplate({
-          args: overrideArgs(
-            [
-              { type: 'attribute', name: 'value', value: 1 },
-              { type: 'slot', name: 'default', value: 'Radio 1' }
-            ],
-            args
-          )
-        })}
-        ${generateTemplate({
-          args: overrideArgs(
-            [
-              { type: 'attribute', name: 'value', value: 2 },
-              { type: 'slot', name: 'default', value: 'Radio 2' }
-            ],
-            args
-          )
-        })}
-        ${generateTemplate({
-          args: overrideArgs(
-            [
-              { type: 'attribute', name: 'value', value: 3 },
-              { type: 'slot', name: 'default', value: 'Radio 3' }
-            ],
-            args
-          )
-        })}
-      </sd-radio-group>
-    `;
+    return generateTemplate({ args });
   }
 };
 
