@@ -6,7 +6,10 @@ const { overrideArgs } = storybookHelpers('sd-navigation-item');
 const { argTypes, parameters } = storybookDefaults('sd-navigation-item');
 const { generateTemplate } = storybookTemplate('sd-navigation-item');
 
-// Stories
+/**
+ * Facilitates seamless page transitions and helps users orient themselves within the application.
+ */
+
 export default {
   tags: ['!dev'],
   title: 'Components/sd-navigation-item',
@@ -16,10 +19,6 @@ export default {
   parameters: parameters
 };
 
-/**
- * The `sd-navigation-item` in its default state as a horizontally oriented button.
- */
-
 export const Default = {
   render: (args: any) => {
     return generateTemplate({ args });
@@ -27,10 +26,22 @@ export const Default = {
 };
 
 /**
+ * Use the `vertical` attribute to change the orientation of the navigation item.
+ * - default: horizontal navigation for headers
+ * - vertical: vertical navigation for e.g. drawers
+ */
+
+export const Orientation = {
+  render: () =>
+    html`<sd-navigation-item>Horizontal Navigation</sd-navigation-item>
+      <sd-navigation-item vertical>Vertical Navigation</sd-navigation-item>`
+};
+
+/**
  * Use the `size` attribute to change the font size of the navigation item.
- * - `sm`
+ * - `sm`: used for 3rd level navigation
  * - `base` (default)
- * - `lg`
+ * - `lg`: used for 2nd level navigation
  */
 
 export const Size = {
@@ -57,29 +68,23 @@ export const Link = {
 };
 
 /**
- * Add `children` slot to the navigation item to create an accordion.
- * - Must have the `vertical` attribute.
- * - A `chevron` will be added regardless of the `chevron` attribute.
- * - The `open` attribute can be used to control the open state of the accordion.
+ * Use the `current` attribute to change the navigation item to a current state.
  */
-export const Accordion = {
+
+export const Current = {
   render: () =>
-    html`<sd-navigation-item vertical>
-      <div style="width: 245px; text-align: left;">Accordion</div>
-      <sd-navigation-item vertical indented slot="children"> Sub Navigation 1 </sd-navigation-item>
-      <sd-navigation-item vertical indented slot="children"> Sub Navigation 2 </sd-navigation-item>
-      <sd-navigation-item vertical indented slot="children"> Sub Navigation 3 </sd-navigation-item>
-    </sd-navigation-item>`
+    html`<div class="flex flex-col gap-6">
+      <sd-navigation-item class="w-[174px]" current>Current Horizontal</sd-navigation-item
+      ><sd-navigation-item vertical current>Current Vertical</sd-navigation-item>
+    </div>`
 };
 
 /**
- * Use the attribute `vertical` to change the orientation of the navigation item.
+ * Use the `disabled` attribute to disable the navigation item.
  */
 
-export const Vertical = {
-  render: () =>
-    html` <sd-navigation-item vertical>Vertical</sd-navigation-item
-      ><sd-navigation-item>Non-Vertical</sd-navigation-item>`
+export const Disabled = {
+  render: () => html` <sd-navigation-item disabled>Disabled Navigation</sd-navigation-item> `
 };
 
 /**
@@ -88,7 +93,7 @@ export const Vertical = {
  */
 
 export const Divider = {
-  render: () => html` <sd-navigation-item vertical divider>Link</sd-navigation-item> `
+  render: () => html` <sd-navigation-item vertical divider>Vertical Navigation with Divider</sd-navigation-item> `
 };
 
 /**
@@ -99,7 +104,23 @@ export const Divider = {
  */
 
 export const Chevron = {
-  render: () => html` <sd-navigation-item vertical chevron>Chevron</sd-navigation-item>`
+  render: () => html` <sd-navigation-item vertical chevron>Vertical Navigation with Chevron</sd-navigation-item>`
+};
+
+/**
+ * Add `children` slot to the navigation item to create an accordion.
+ * - Only works with `vertical` attribute.
+ * - A `chevron` will be added regardless of the `chevron` attribute.
+ * - The `open` attribute can be used to control the open state of the accordion.
+ */
+export const Accordion = {
+  render: () =>
+    html`<sd-navigation-item vertical>
+      <div style="width: 245px; text-align: left;">Vertical Navigation with Accordion</div>
+      <sd-navigation-item vertical indented slot="children"> Sub Navigation 1 </sd-navigation-item>
+      <sd-navigation-item vertical indented slot="children"> Sub Navigation 2 </sd-navigation-item>
+      <sd-navigation-item vertical indented slot="children"> Sub Navigation 3 </sd-navigation-item>
+    </sd-navigation-item>`
 };
 
 /**
@@ -110,8 +131,8 @@ export const Chevron = {
 export const Description = {
   render: () =>
     html` <sd-navigation-item vertical>
-      With a description
-      <p slot="description">Lorem ipsum dolor sit amet.</p>
+      Vertical Navigation with Description
+      <p slot="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullam.</p>
     </sd-navigation-item>`
 };
 
@@ -121,7 +142,10 @@ export const Description = {
  */
 
 export const Indented = {
-  render: () => html`<sd-navigation-item vertical indented>Indented</sd-navigation-item>`
+  render: () =>
+    html`<div class="w-[400px]">
+      <sd-navigation-item vertical indented divider>Indented Navigation</sd-navigation-item>
+    </div>`
 };
 
 /**
@@ -130,25 +154,8 @@ export const Indented = {
  */
 
 export const Relaxed = {
-  render: () => html`<sd-navigation-item vertical relaxed>Relaxed</sd-navigation-item>`
-};
-
-/**
- * Use the `current` attribute to change the navigation item to a current state.
- */
-
-export const Current = {
   render: () =>
-    html`<div class="flex flex-col gap-6">
-      <sd-navigation-item class="w-[100px]" current>Current</sd-navigation-item
-      ><sd-navigation-item vertical current>Vertical Current</sd-navigation-item>
+    html`<div class="w-[400px]">
+      <sd-navigation-item vertical relaxed divider>Relaxed Navigation</sd-navigation-item>
     </div>`
-};
-
-/**
- * Use the `disabled` attribute to disable the navigation item.
- */
-
-export const Disabled = {
-  render: () => html` <sd-navigation-item disabled>Disabled</sd-navigation-item> `
 };
