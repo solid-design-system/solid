@@ -149,7 +149,7 @@ export const Scrollable = {
         </div>
       </sd-scrollable>
       <div slot="footer" class="flex flex-col md:flex-row justify-end w-full gap-2">
-        <sd-button variant="secondary" size="lg" type="button">
+        <sd-button variant="secondary" size="lg" type="button" aria-label="Close">
           <sd-icon name="system/log-out" slot="icon-left"></sd-icon>
           Exit portal
         </sd-button>
