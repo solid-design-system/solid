@@ -1,5 +1,5 @@
 import '../../solid-components';
-
+import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
 const { argTypes, parameters } = storybookDefaults('sd-meta');
@@ -7,15 +7,12 @@ const { overrideArgs } = storybookHelpers('sd-meta');
 const { generateTemplate } = storybookTemplate('sd-meta');
 
 /**
- * List of meta information like file size, date or whatever needed. Seperated by pipes.<br>
- * <br>
- * <b>Sizes</b><br>
- * <li>lg is the default size.</li>
- * <li>sm can be used as an alternative in tight spaces.</li>
+ * List of meta information like file size, date or whatever needed. Seperated by pipes.
  */
 
 export default {
   title: 'Styles/sd-meta',
+  tags: ['!dev'],
   component: 'sd-meta',
   parameters: {
     ...parameters,
@@ -28,10 +25,6 @@ export default {
   argTypes
 };
 
-/**
- * Default: This shows sd-meta in its default state.
- */
-
 export const Default = {
   render: (args: any) => {
     return generateTemplate({
@@ -42,61 +35,44 @@ export const Default = {
 };
 
 /**
- * The sd-meta in all possible combinations of `variant` and `size`.
+ * Use `sd-meta` classes for alternative sizes:
+ * - Default: Large is the default size.
+ * - `sd-meta--size-sm`: Small can be used as an alternative in tight spaces.
  */
 
-export const LightAndSize = {
-  name: 'Light × Size',
-  parameters: { controls: { exclude: ['sd-meta--light', 'sd-meta--size-...'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        x: { type: 'attribute', name: 'sd-meta--light' },
-        y: { type: 'attribute', name: 'sd-meta--size-...' }
-      },
-      args
-    });
-  }
+export const Size = {
+  render: () =>
+    html`<div class="flex flex-row gap-12">
+      <time class="sd-meta" datetime="2023-08-11">Default</time>
+      <time class="sd-meta sd-meta--size-sm" datetime="2023-08-11">Small</time>
+    </div>`
 };
 
 /**
- * The sd-meta in all possible combinations of `light` and `inverted`.
+ * Use the `sd-meta--light` class to display a different color.
  */
 
-export const LightAndInverted = {
-  name: 'Light × Inverted',
-  parameters: { controls: { exclude: ['sd-meta--light', 'sd-meta--inverted'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        x: { type: 'attribute', name: 'sd-meta--light' },
-        y: { type: 'attribute', name: 'sd-meta--inverted', values: [false, true] }
-      },
-      args,
-      options: {
-        templateBackgrounds: { alternate: 'y', colors: ['white', 'rgb(var(--sd-color-primary, 0 53 142))'] }
-      }
-    });
-  }
+export const Light = {
+  render: () =>
+    html`<div class="flex flex-row gap-12">
+      <time class="sd-meta" datetime="2023-08-11">Default</time>
+      <time class="sd-meta sd-meta--light" datetime="2023-08-11">Light</time>
+    </div>`
 };
 
 /**
- * The sd-meta with pipe.
+ * Use the `sd-meta--pipe` class to separate meta information with a pipe.
  */
-
 export const Pipe = {
-  parameters: { controls: { exclude: ['sd-meta--pipe', 'sd-meta--light', 'sd-meta--inverted'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        x: { type: 'attribute', name: 'sd-meta--light' },
-        y: { type: 'attribute', name: 'sd-meta--inverted', values: [false, true] }
-      },
-      constants: { type: 'attribute', name: 'sd-meta--pipe', value: true },
-      options: {
-        templateBackgrounds: { alternate: 'y', colors: ['transparent', 'rgb(var(--sd-color-primary, 0 53 142))'] }
-      },
-      args
-    });
-  }
+  render: () => html` <time class="sd-meta sd-meta--pipe" datetime="2023-08-11">With Pipe</time>`
+};
+
+/**
+ * Use the `sd-meta--inverted` to make information with inverted color.
+ */
+export const Inverted = {
+  render: () =>
+    html` <div class="p-4 bg-primary">
+      <time class="sd-meta sd-meta--inverted" datetime="2023-08-11">Inverted</time>
+    </div>`
 };
