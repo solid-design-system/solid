@@ -24,16 +24,30 @@ export default {
 };
 
 export const Default = {
-  name: 'Drawer with Navigation item Template',
+  name: 'Tablet Navigation - Level 1',
   render: () => html`
     <style>
       sd-navigation-item::part(content) {
         display: flex;
         align-items: center;
       }
+
+      sd-drawer::part(panel) {
+        border-top: 2px solid #e9e9e9;
+        border-right: 2px solid #e9e9e9;
+      }
+
+      sd-drawer::part(overlay) {
+        background-color: #051530;
+      }
+
+      sd-drawer::part(body),
+      sd-drawer::part(footer) {
+        padding: 0;
+      }
     </style>
 
-    <sd-drawer open placement="start">
+    <sd-drawer open placement="end">
       <nav>
         <sd-navigation-item vertical current><b>Home page</b></sd-navigation-item>
         <sd-navigation-item vertical chevron divider>About Us</sd-navigation-item>
