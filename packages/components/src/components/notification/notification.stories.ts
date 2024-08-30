@@ -12,7 +12,7 @@ const { overrideArgs } = storybookHelpers('sd-notification');
  * Used to communicate important information or status to the user. Notifications can be displayed inline or as a toast / toast stack.
  *
  *  **Related templates**:
- * - [Notifications](?path=/docs/templates-notifications--docs)
+ * - [Notification](?path=/docs/templates-notification--docs)
  */
 
 export default {
@@ -70,10 +70,10 @@ export const Default = {
 export const Variants = {
   name: 'Variants',
   render: () => html`
-    <sd-notification variant="info" open>Lorem ipsum dolor sit</sd-notification>
-    <sd-notification variant="success" open>Lorem ipsum dolor sit</sd-notification>
-    <sd-notification variant="error" open>Lorem ipsum dolor sit</sd-notification>
-    <sd-notification variant="warning" open>Lorem ipsum dolor sit</sd-notification>
+    <sd-notification variant="info" open>Info Lorem ipsum dolor sit</sd-notification>
+    <sd-notification variant="success" open>Success Lorem ipsum dolor sit</sd-notification>
+    <sd-notification variant="error" open>Error Lorem ipsum dolor sit</sd-notification>
+    <sd-notification variant="warning" open>Warning Lorem ipsum dolor sit</sd-notification>
   `
 };
 

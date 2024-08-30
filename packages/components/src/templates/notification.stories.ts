@@ -4,7 +4,7 @@ import '../solid-components';
 import { html } from 'lit';
 
 export default {
-  title: 'Templates/Notifications',
+  title: 'Templates/Notification',
   tags: ['!dev'],
   parameters: {
     chromatic: { disableSnapshot: true }
@@ -25,26 +25,47 @@ export const InfoNotification = {
 
       <sd-notification class="info-variant" variant="info" open>
         Editing is restricted
-        <sd-button variant="secondary">Request to edit</sd-button>
+        <sd-button variant="secondary" class="mr-4">Request to edit</sd-button>
       </sd-notification>
     `;
   }
 };
 
-export const InfoNotificationInline = {
-  name: 'Info Notification Inline',
+export const InfoToastNotification = {
+  name: 'Info Toast Notification',
   render: (_args: Record<string, any>) => {
     return html`
-      <style>
-        sd-notification.inline-variant::part(content) {
-          width: auto;
-        }
-      </style>
+      <sd-button
+        variant="secondary"
+        data-notification-type="info"
+        data-notification-position="bottom-center"
+        class="w-24 toast-button"
+      >
+        Show toast
+      </sd-button>
 
-      <sd-notification class="inline-variant" variant="info" open closable>
-        Event deleted
-        <sd-button class="ml-4" variant="secondary">Undo</sd-button>
-      </sd-notification>
+      <script>
+        var button = document.querySelector('.toast-button');
+
+        const notifyBottomCenter = (variant = 'info') => {
+          const notification = Object.assign(document.createElement('sd-notification'), {
+            closable: true,
+            variant: variant,
+            toastStack: 'bottom-center',
+            duration: Infinity,
+            innerHTML: 'Event deleted <sd-button class="ml-4" variant="secondary" size="sm">Undo</sd-button>'
+          });
+
+          notification.style.width = '250px';
+
+          document.body.append(notification);
+          return notification.toast();
+        };
+
+        button.addEventListener('click', () => {
+          notifyBottomCenter(button.getAttribute('data-notification-type'));
+        });
+      </script>
     `;
   }
 };
@@ -74,7 +95,9 @@ export const ErrorNotification = {
   render: (_args: Record<string, any>) => {
     return html`
       <sd-notification variant="error" open closable>
-        <p class="sd-paragraph">A problem occurred while submitting your data. <sd-link>More information</sd-link></p>
+        <p class="sd-paragraph">
+          A problem occurred while submitting your data. <sd-link size="inherit" href="#">More information</sd-link>
+        </p>
       </sd-notification>
     `;
   }
