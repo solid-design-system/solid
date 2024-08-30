@@ -9,8 +9,12 @@ const { generateTemplate } = storybookTemplate('sd-teaser-media');
 /**
  * Flexible containers that group related items and link to further content.
  *
+ * **Related components**:
+ * - [Teaser](?path=/docs/components-teaser--docs)
+ *
  * **Related templates**:
  * - [Teaser Media](?path=/docs/templates-teaser-media--docs)
+ * - [Teaser](?path=/docs/templates-teaser--docs)
  */
 export default {
   tags: ['!dev'],
@@ -117,6 +121,79 @@ export const Variant = {
         <h3 slot="headline">Headline Media Teaser (neutral-100)</h3>
         <div class="flex flex-col gap-4">
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+      </sd-teaser-media>
+    </div>
+  `
+};
+
+/**
+ * Use the `default` slot to display main information and/or action elements below the headline.
+ * Use the `media` slot to add an image to the teaser.
+ * Use the `headline` slot to display titles. It should always contain a <h*> element.
+ */
+export const DefaultMediaAndHeadlineSlot = {
+  name: 'Default Media and Headline Slot',
+  render: () => html`
+    <div style="margin-bottom: 40px; width: 600px">
+      <sd-teaser-media>
+        <img slot="media" src="./placeholders/images/architecture.jpg" class="aspect-video object-cover" alt="Test" />
+        <h3 slot="headline">Headline Media Teaser</h3>
+        <div class="flex flex-col gap-4">
+          <div slot="default" class="slot slot--border slot--text h-12">Default slot</div>
+        </div>
+      </sd-teaser-media>
+    </div>
+  `
+};
+
+/**
+ * Use the `meta` slot to show content above the headline.
+ */
+
+export const MetaSlot = {
+  render: () => html`
+    <div style="margin-bottom: 40px; width: 600px">
+      <sd-teaser-media>
+        <div slot="meta" class="slot slot--border slot--text h-12">Meta slot</div>
+        <img slot="media" src="./placeholders/images/architecture.jpg" class="aspect-video object-cover" alt="Test" />
+        <h3 slot="headline">Headline Media Teaser</h3>
+      </sd-teaser-media>
+    </div>
+  `
+};
+
+/**
+ * Use the `expandable` slot to add content that only shows up on hover.
+ *
+ * Note: Expandable slot content cannot contain any action since it is not shown on mobile devices due to hover interaction.
+ */
+
+export const ExpandableSlot = {
+  render: () => html`
+    <div style="margin-bottom: 40px; width: 600px">
+      <sd-teaser-media>
+        <img slot="media" src="./placeholders/images/architecture.jpg" class="aspect-video object-cover" alt="Test" />
+        <h3 slot="headline">Headline Media Teaser</h3>
+        <div slot="expandable" class="slot slot--border slot--text h-12">Expandable slot</div>
+      </sd-teaser-media>
+    </div>
+  `
+};
+
+/**
+ * `Copyright` can be shown at the bottom of the default slot.
+ */
+
+export const Copyright = {
+  name: 'Copyright (Optional)',
+  render: () => html`
+    <div style="margin-bottom: 40px; width: 600px">
+      <sd-teaser-media>
+        <img slot="media" src="./placeholders/images/architecture.jpg" class="aspect-video object-cover" alt="Test" />
+        <h3 slot="headline">Headline Media Teaser</h3>
+        <div class="flex flex-col sd-copyright" style="--copyright: '© Union Investment 2024'">
+          <div slot="default" class="h-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
         </div>
       </sd-teaser-media>
     </div>
