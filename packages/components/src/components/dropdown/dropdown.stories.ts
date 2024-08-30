@@ -193,7 +193,7 @@ export const Disabled = {
   render: () => html`
     <sd-dropdown disabled>
       <div class="slot slot--border slot--text p-4 w-[300px]">Default Slot</div>
-      <sd-button slot="trigger">Trigger</sd-button>
+      <sd-button slot="trigger" disabled>Trigger</sd-button>
     </sd-dropdown>
   `
 };
@@ -235,7 +235,9 @@ export const NoAutoSize = {
   name: 'No Auto Size',
   render: () => html`
     <sd-dropdown no-auto-size open>
-      <div class="slot slot--border slot--background" style="height: 110vh; width: 120px;">Scroll down</div>
+      <div class="slot slot--border slot--background flex justify-start" style="height: 110vh; width: 120px;">
+        Scroll down
+      </div>
       <sd-button slot="trigger">Trigger</sd-button>
     </sd-dropdown>
   `
