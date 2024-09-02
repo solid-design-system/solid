@@ -10,7 +10,7 @@ const { generateTemplate } = storybookTemplate('sd-teaser-media');
  * Flexible containers that group related items and link to further content.
  *
  * **Related components**:
- * - [Teaser](?path=/docs/components-teaser--docs)
+ * - [sd-teaser](?path=/docs/components-teaser--docs)
  *
  * **Related templates**:
  * - [Teaser Media](?path=/docs/templates-teaser-media--docs)
@@ -24,7 +24,7 @@ export default {
     {
       type: 'slot',
       name: 'default',
-      value: `<div class="slot slot--border slot--text h-12">Main slot</div>`
+      value: `<div class="slot slot--border slot--text h-12">Default slot</div>`
     },
     {
       type: 'slot',
@@ -55,11 +55,11 @@ export const Default = {
 /**
  * Use the `variant` attribute to set the color variant:
  * - `white (default)`
- * - `gradient-dark`
- * - `gradient-white`
  * - `primary`
  * - `primary-100`
  * - `neutral-100`
+ * - `gradient-dark`
+ * - `gradient-white`
  */
 
 export const Variant = {
@@ -69,26 +69,6 @@ export const Variant = {
       <sd-teaser-media variant="white">
         <img slot="media" src="./placeholders/images/architecture.jpg" class="aspect-video object-cover" alt="Test" />
         <h3 slot="headline">Headline Media Teaser (white – default)</h3>
-        <div class="flex flex-col gap-4">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </div>
-      </sd-teaser-media>
-    </div>
-
-    <div style="margin-bottom: 40px; width: 600px">
-      <sd-teaser-media variant="gradient-dark">
-        <img slot="media" src="./placeholders/images/architecture.jpg" class="aspect-video object-cover" alt="Test" />
-        <h3 slot="headline">Headline Media Teaser (gradient-dark)</h3>
-        <div class="flex flex-col gap-4">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </div>
-      </sd-teaser-media>
-    </div>
-
-    <div style="margin-bottom: 40px; width: 600px">
-      <sd-teaser-media variant="gradient-white">
-        <img slot="media" src="./placeholders/images/architecture.jpg" class="aspect-video object-cover" alt="Test" />
-        <h3 slot="headline">Headline Media Teaser (gradient-white)</h3>
         <div class="flex flex-col gap-4">
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
@@ -124,16 +104,36 @@ export const Variant = {
         </div>
       </sd-teaser-media>
     </div>
+
+    <div style="margin-bottom: 40px; width: 600px">
+      <sd-teaser-media variant="gradient-dark">
+        <img slot="media" src="./placeholders/images/architecture.jpg" class="aspect-video object-cover" alt="Test" />
+        <h3 slot="headline">Headline Media Teaser (gradient-dark)</h3>
+        <div class="flex flex-col gap-4">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+      </sd-teaser-media>
+    </div>
+
+    <div style="margin-bottom: 40px; width: 600px">
+      <sd-teaser-media variant="gradient-white">
+        <img slot="media" src="./placeholders/images/architecture.jpg" class="aspect-video object-cover" alt="Test" />
+        <h3 slot="headline">Headline Media Teaser (gradient-white)</h3>
+        <div class="flex flex-col gap-4">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+      </sd-teaser-media>
+    </div>
   `
 };
 
 /**
- * Use the `default` slot to display main information and/or action elements below the headline.
- * Use the `media` slot to add an image to the teaser.
- * Use the `headline` slot to display titles. It should always contain a <h*> element.
+ * - Use the `default` slot to display main information and/or action elements below the headline.
+ * - Use the `media` slot to add an image to the teaser.
+ * - Use the `headline` slot to display titles. It should always contain a <h*> element.
  */
 export const DefaultMediaAndHeadlineSlot = {
-  name: 'Default Media and Headline Slot',
+  name: 'Default, Media and Headline Slot',
   render: () => html`
     <div style="margin-bottom: 40px; width: 600px">
       <sd-teaser-media>
@@ -192,7 +192,7 @@ export const Copyright = {
       <sd-teaser-media>
         <img slot="media" src="./placeholders/images/architecture.jpg" class="aspect-video object-cover" alt="Test" />
         <h3 slot="headline">Headline Media Teaser</h3>
-        <div class="flex flex-col sd-copyright" style="--copyright: '© Union Investment 2024'">
+        <div class="flex flex-col sd-copyright p-0" style="--copyright: '© Union Investment 2024'">
           <div slot="default" class="h-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
         </div>
       </sd-teaser-media>
