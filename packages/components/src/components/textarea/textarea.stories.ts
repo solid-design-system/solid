@@ -201,24 +201,61 @@ export const MaxLength = {
 };
 
 /**
- * Use the `style-on-valid` attribute to opt-in the automatic indication of a valid state.
+ * The component gets `valid` state when the input is valid. Use the `style-on-valid` attribute to automatically indicate and show a valid state.
  */
 
-export const StyleOnValid = {
-  name: 'Style on Valid',
+export const Valid = {
   render: () => html`
-    <div class="w-[500px]">
+    <form class="w-[500px]">
       <sd-textarea
+        id="valid-textarea"
+        value="Input text here"
+        size="lg"
+        label="Label"
+        style-on-valid
+        spellcheck
+      ></sd-textarea>
+    </form>
+    <script type="module">
+      await Promise.all([customElements.whenDefined('sd-textarea'), customElements.whenDefined('sd-button')]).then(
+        () => {
+          const input = document.getElementById('valid-textarea');
+
+          input.setCustomValidity(''); // Clear custom validity
+          input.reportValidity();
+        }
+      );
+    </script>
+  `
+};
+
+/**
+ * The component gets `invalid` state when the form is not valid.
+ */
+export const Invalid = {
+  render: () => html`
+    <form class="w-[500px]">
+      <sd-textarea
+        id="invalid-textarea"
         value=""
         size="lg"
         label="Label"
-        help-text="help-text"
         rows="4"
+        placeholder="Placeholder"
         style-on-valid
         spellcheck
-        minlength="5"
       ></sd-textarea>
-    </div>
+    </form>
+    <script type="module">
+      await Promise.all([customElements.whenDefined('sd-textarea'), customElements.whenDefined('sd-button')]).then(
+        () => {
+          const input = document.getElementById('invalid-textarea');
+
+          input.setCustomValidity('Error message');
+          input.reportValidity();
+        }
+      );
+    </script>
   `
 };
 
@@ -227,7 +264,7 @@ export const StyleOnValid = {
  */
 
 export const Validation = {
-  name: 'Validation',
+  name: 'Validation Options',
   render: () => html`
     <form action="" method="get" id="testForm" name="testForm" class="w-[500px]">
       <div class="mb-2">
