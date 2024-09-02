@@ -114,15 +114,15 @@ export const Checked = {
       <sd-radio-group value="1">
         <sd-radio-button value="1">
           <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-          Checked
+          Option 1
         </sd-radio-button>
         <sd-radio-button value="2">
           <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-          Unchecked
+          Option 2
         </sd-radio-button>
         <sd-radio-button value="3">
           <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-          Unchecked
+          Option 3
         </sd-radio-button>
       </sd-radio-group>
     </div>
