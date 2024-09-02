@@ -75,13 +75,15 @@ export const Open = {
   render: () => html`
     <div style="width: auto; height: 40vh; position: relative;">
       <sd-drawer open label="example" placement="start">
-        <h4 slot="header" class="sd-headline sd-headline-xl">Lorem ipsum</h4>
-        <p class="sd-paragraph">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie phasellus
-          dui vel id. Velit in sed
-        </p>
-
-        <sd-button slot="footer">Lorem</sd-button>
+        <sd-button slot="header" variant="tertiary">
+          <sd-icon slot="icon-left" name="system/arrow-left"></sd-icon>
+          Back
+        </sd-button>
+        <div class="slot slot--border slot--text h-full">Default slot</div>
+        <div slot="footer" class="flex flex-col w-full gap-4">
+          <sd-button variant="primary">Primary Action</sd-button>
+          <sd-button variant="secondary">Secondary Action</sd-button>
+        </div>
       </sd-drawer>
     </div>
   `
