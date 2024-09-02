@@ -54,7 +54,7 @@ export const Default = {
 export const Size = {
   name: 'Size',
   render: () => html`
-    <div class="flex flex-col gap-12 items-center">
+    <div class="flex flex-col gap-12">
       <sd-radio-group value="1" size="lg">
         <sd-radio-button value="1">
           <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
