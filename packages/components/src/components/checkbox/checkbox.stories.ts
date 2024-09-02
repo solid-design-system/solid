@@ -6,10 +6,13 @@ const { generateTemplate } = storybookTemplate('sd-checkbox');
 const { overrideArgs } = storybookHelpers('sd-checkbox');
 
 /**
- * Allows users to toggle an option on or off.
+ * Used to toggle an option on or off.
  *
  * **Related templates:**
- * - [Checkbox Group](?path=/docs/checkbox-group--docs)
+ * - [Checkbox (Group)](?path=/docs/templates-checkbox-group--docs)
+ *
+ * **Related components:**
+ * - [sd-checkbox-group](?path=/docs/components-sd-checkbox-group--docs)
  */
 
 export default {
