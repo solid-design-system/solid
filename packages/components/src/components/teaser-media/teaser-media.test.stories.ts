@@ -20,7 +20,7 @@ export default {
     {
       type: 'slot',
       name: 'default',
-      value: `<div class="slot slot--border slot--text h-12">Main slot</div>`
+      value: `<div class="slot slot--border slot--text h-12">Default slot</div>`
     },
     {
       type: 'slot',
