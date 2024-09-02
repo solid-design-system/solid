@@ -17,7 +17,7 @@ export default {
  */
 
 export const Default = {
-  name: 'Brandshape Template',
+  name: 'Brandshape',
   render: () =>
     html`<sd-brandshape variant="border-primary">
       <h4 class="sd-headline sd-headline--3xl mb-4">

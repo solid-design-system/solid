@@ -13,7 +13,7 @@ const { generateTemplate } = storybookTemplate('sd-brandshape');
  * Creates a container with brand character and visually emphasizes the content.
  *
  * **Related templates:**
- * - [Brandshape Template](?path=/story/templates-brandshape-template--docs)
+ * - [Brandshape](?path=/story/templates-brandshape--docs)
  *
  */
 
@@ -63,11 +63,11 @@ export const Variant = {
   name: 'Variant',
   render: () => html`
     <div class="space-y-5">
-      <sd-brandshape variant="neutral-100">
+      <sd-brandshape variant="primary">
         <div class="slot slot--border slot--text h-8 w-full">Default slot</div>
       </sd-brandshape>
 
-      <sd-brandshape variant="primary">
+      <sd-brandshape variant="neutral-100">
         <div class="slot slot--border slot--text h-8 w-full">Default slot</div>
       </sd-brandshape>
 
