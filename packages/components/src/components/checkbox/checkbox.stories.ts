@@ -7,6 +7,9 @@ const { overrideArgs } = storybookHelpers('sd-checkbox');
 
 /**
  * Allows users to toggle an option on or off.
+ *
+ * **Related templates:**
+ * - [Checkbox Group](?path=/docs/checkbox-group--docs)
  */
 
 export default {
@@ -118,12 +121,12 @@ export const Invalid = {
       var form = document.querySelector('#form-example');
 
       setTimeout(() => {
-        checkbox.setCustomValidity('error-text');
+        checkbox.setCustomValidity('Error-text');
         form.reportValidity();
       }, 500);
 
       checkbox.addEventListener('sd-change', () => {
-        checkbox.checked ? checkbox.setCustomValidity('') : checkbox.setCustomValidity('error-text');
+        checkbox.checked ? checkbox.setCustomValidity('') : checkbox.setCustomValidity('Error-text');
       });
     </script>
   `
