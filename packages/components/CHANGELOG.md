@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v3.17.4](https://github.com/solid-design-system/solid/compare/components/3.17.3...components/3.17.4) (2024-09-02)
+
+
+### Bug Fixes
+
+* incorrect indent of sd-footnotes  ([#1328](https://github.com/solid-design-system/solid/issues/1328)) ([646f455](https://github.com/solid-design-system/solid/commit/646f455d6c79815a7bd7af0366a84dfd29fc3883))
+
+### 📈 Stats
+* Bundle size (uncompressed): 335 KB (unchanged)
+* Bundle size (gzipped): 79 KB (unchanged)
+
 # [@solid-design-system/components-v3.17.3](https://github.com/solid-design-system/solid/compare/components/3.17.2...components/3.17.3) (2024-08-29)
 
 
