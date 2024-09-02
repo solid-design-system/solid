@@ -109,18 +109,22 @@ export const Required = {
 export const Invalid = {
   name: 'Invalid',
   render: () => html`
-    <form>
+    <form id="form-example">
       <sd-checkbox id="checkbox-example" required>Invalid</sd-checkbox>
-      <sd-button id="button-example" style="margin-top: 16px" type="submit">Submit</sd-button>
+      <sd-button class="mt-4" type="submit">Submit</sd-button>
     </form>
     <script>
       var checkbox = document.querySelector('#checkbox-example');
-      var button = document.querySelector('#button-example');
+      var form = document.querySelector('#form-example');
 
       setTimeout(() => {
-        button.click();
-        checkbox.setCustomValidity('Error-text');
+        checkbox.setCustomValidity('error-text');
+        form.reportValidity();
       }, 500);
+
+      checkbox.addEventListener('sd-change', () => {
+        checkbox.checked ? checkbox.setCustomValidity('') : checkbox.setCustomValidity('error-text');
+      });
     </script>
   `
 };
