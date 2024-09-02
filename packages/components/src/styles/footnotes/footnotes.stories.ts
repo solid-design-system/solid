@@ -25,7 +25,7 @@ export default {
       type: 'slot',
       name: 'default',
       value: `<li>Lorem ipsum dolor sit amet.</li>
-<li>Elit aliqua labore qui eu mollit officia ullamco exercitation ut veniam laboris ad elit adipisicing elit. Cupidatat enim nostrud aliquip labore elit sit fugiat veniam.</li>
+<li>Elit aliqua labore qui eu mollit officia ullamco exercitation ut veniam laboris ad elit adipisicing elit. Cupidatat enim nostrud aliquip labore elit sit fugiat veniam. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</li>
 <li>Officia ipsum cillum id sint officia commodo laboris ullamco nulla veniam ut. Cupidatat deserunt amet aliquip dolore nostrud amet veniam ad nostrud do dolore culpa.</li>`
     }
   ]),
