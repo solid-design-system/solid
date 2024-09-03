@@ -39,7 +39,7 @@ export const InfoToastNotification = {
         variant="secondary"
         data-notification-type="info"
         data-notification-position="bottom-center"
-        class="w-24 toast-button"
+        class="toast-button"
       >
         Show toast
       </sd-button>
@@ -47,7 +47,7 @@ export const InfoToastNotification = {
       <script>
         var button = document.querySelector('.toast-button');
 
-        const notifyBottomCenter = (variant = 'info') => {
+        function notifyBottomCenter(variant = 'info') {
           const notification = Object.assign(document.createElement('sd-notification'), {
             closable: true,
             variant: variant,
@@ -60,7 +60,7 @@ export const InfoToastNotification = {
 
           document.body.append(notification);
           return notification.toast();
-        };
+        }
 
         button.addEventListener('click', () => {
           notifyBottomCenter(button.getAttribute('data-notification-type'));

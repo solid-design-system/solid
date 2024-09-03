@@ -70,10 +70,17 @@ export const Default = {
 export const Variants = {
   name: 'Variants',
   render: () => html`
-    <sd-notification variant="info" open>Info Lorem ipsum dolor sit</sd-notification>
-    <sd-notification variant="success" open>Success Lorem ipsum dolor sit</sd-notification>
-    <sd-notification variant="error" open>Error Lorem ipsum dolor sit</sd-notification>
-    <sd-notification variant="warning" open>Warning Lorem ipsum dolor sit</sd-notification>
+    <style>
+      .notification-list > sd-notification::part(base) {
+        margin: 0;
+      }
+    </style>
+    <div class="flex flex-col gap-12 notification-list">
+      <sd-notification variant="info" open>Info Lorem ipsum dolor sit</sd-notification>
+      <sd-notification variant="success" open>Success Lorem ipsum dolor sit</sd-notification>
+      <sd-notification variant="error" open>Error Lorem ipsum dolor sit</sd-notification>
+      <sd-notification variant="warning" open>Warning Lorem ipsum dolor sit</sd-notification>
+    </div>
   `
 };
 
