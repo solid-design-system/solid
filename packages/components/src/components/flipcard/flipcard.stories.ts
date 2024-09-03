@@ -206,6 +206,63 @@ export const Variants = {
 };
 
 /**
+ * Use the CSS property `aspect-ratio` to set the aspect ratio of the flipcard.
+ * - 3:4 ratio (default)
+ * - 16:9 ratio
+ */
+
+export const AspectRatios = {
+  render: () =>
+    html` <div>
+      <sd-flipcard
+        activation="click hover"
+        flip-direction="horizontal"
+        front-variant="primary-100"
+        back-variant="primary-100"
+        style="aspect-ratio:3/4;"
+        class="mb-12"
+      >
+        <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
+        <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
+        <img
+          slot="media-front"
+          class="object-cover h-full w-full"
+          src="./placeholders/images/generic.jpg"
+          alt="Generic"
+        />
+        <img
+          slot="media-back"
+          class="object-cover h-full w-full"
+          src="./placeholders/images/generic.jpg"
+          alt="Generic"
+        />
+      </sd-flipcard>
+      <sd-flipcard
+        activation="click hover"
+        flip-direction="horizontal"
+        front-variant="primary-100"
+        back-variant="primary-100"
+        style="aspect-ratio:16/9;"
+      >
+        <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
+        <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
+        <img
+          slot="media-front"
+          class="object-cover h-full w-full"
+          src="./placeholders/images/generic.jpg"
+          alt="Generic"
+        />
+        <img
+          slot="media-back"
+          class="object-cover h-full w-full"
+          src="./placeholders/images/generic.jpg"
+          alt="Generic"
+        />
+      </sd-flipcard>
+    </div>`
+};
+
+/**
  * Use the `activation` attribute to determine the activation type of the flipcard.
  * - `click hover` (default)
  * - `click`
@@ -299,40 +356,5 @@ export const flipDirection = {
           />
         </sd-flipcard>
       </div>
-    </div>`
-};
-
-/**
- * Use the CSS property `aspect-ratio` to set the aspect ratio of the flipcard.
- * - 3:4 ratio (default)
- * - 16:9 ratio
- */
-
-export const AspectRatio = {
-  name: 'Aspect Ratio',
-  render: () =>
-    html` <div class="flex items-center">
-      <sd-flipcard
-        activation="click hover"
-        flip-direction="horizontal"
-        front-variant="empty"
-        back-variant="empty"
-        style="aspect-ratio:16/9;"
-      >
-        <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
-        <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
-        <img
-          slot="media-front"
-          class="object-cover h-full w-full"
-          src="./placeholders/images/generic.jpg"
-          alt="Generic"
-        />
-        <img
-          slot="media-back"
-          class="object-cover h-full w-full"
-          src="./placeholders/images/generic.jpg"
-          alt="Generic"
-        />
-      </sd-flipcard>
     </div>`
 };
