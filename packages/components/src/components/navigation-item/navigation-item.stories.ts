@@ -7,7 +7,7 @@ const { argTypes, parameters } = storybookDefaults('sd-navigation-item');
 const { generateTemplate } = storybookTemplate('sd-navigation-item');
 
 /**
- * Facilitates seamless page transitions and helps users orient themselves within the application.
+ * Used to facilitate seamless page transitions and helps users orient themselves within the application.
  */
 
 export default {
