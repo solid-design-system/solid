@@ -9,7 +9,7 @@ const { overrideArgs } = storybookHelpers('sd-flipcard');
 /**
  * Displays content on one side and reveals additional information when flipped.
  *
- * `Accessibility Hint`: Front flipcards should not contain any action items. If an action is necessary, consider placing it on the back of the card (once flipped) or in a separate area.
+ * **Accessibility Hint**: Front flipcards should not contain any action items. If an action is necessary, consider placing it on the back of the card (once flipped) or in a separate area.
  *
  * **Related templates**:
  * - [Flipcard](?path=/docs/templates-flipcard--docs)
