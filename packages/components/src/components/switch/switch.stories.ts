@@ -56,7 +56,9 @@ export const Required = {
 };
 
 /**
- * The component gets `invalid` state when the form is not valid. For an invalid switch an error-text underneath is mandatory.
+ * The component gets `invalid` state when the form is not valid. 
+ *
+ * For an invalid switch an error-text underneath is mandatory.
  */
 
 export const Invalid = {
