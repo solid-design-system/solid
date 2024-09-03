@@ -63,7 +63,7 @@ export const Size = {
 };
 
 /**
- * Use the `inverted` class to make a leadtext with inverted colors.
+ * Use the `inverted` class when displayed on primary background.
  */
 
 export const Inverted = {
