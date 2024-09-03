@@ -15,7 +15,7 @@ const { overrideArgs } = storybookHelpers('sd-header');
  *
  *
  *  **Related components**
- * - [sd-navigation-item](?path=/docs/components-sd-navigation-item--default)
+ * - [sd-navigation-item](?path=/docs/components-sd-navigation-item--docs)
  */
 
 export default {
