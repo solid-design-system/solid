@@ -15,6 +15,7 @@ const { generateTemplate } = storybookTemplate('sd-dialog');
  * - Use the `default` slot to add main content. <br /> Default slot is always scrollable.
  * - Use the `footer` slot to add action elements. <br /> Footer slot is always fixed.
  *
+ *
  *  **Related templates**:
  * - [Dialog](?path=/docs/templates-dialog--docs)
  *
@@ -119,7 +120,7 @@ export const NoCloseButton = {
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
           dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam.
         </p>
-        <sd-button class="close-button" slot="footer">Close</sd-button>
+        <sd-button class="close-button" slot="footer" variant="primary">Accept Terms and Conditions</sd-button>
       </sd-dialog>
     </div>
 
