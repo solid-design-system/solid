@@ -161,46 +161,6 @@ export const Required = {
 };
 
 /**
- * Use the `minlength` attribute to set a minimum length for the textarea to be valid.
- */
-export const MinLength = {
-  name: 'Min Length',
-  render: () => html`
-    <div class="w-[500px]">
-      <sd-textarea
-        value=""
-        size="lg"
-        label="Label"
-        help-text="Please type at least 5 characters"
-        rows="4"
-        spellcheck=""
-        minlength="5"
-      ></sd-textarea>
-    </div>
-  `
-};
-
-/**
- * Use the `maxlength` attribute to set a maximum length for the textarea to be valid.
- */
-export const MaxLength = {
-  name: 'Max Length',
-  render: () => html`
-    <div class="w-[500px]">
-      <sd-textarea
-        value=""
-        size="lg"
-        label="Label"
-        help-text="You are limited to a maximum of 5 characters"
-        rows="4"
-        spellcheck=""
-        maxlength="5"
-      ></sd-textarea>
-    </div>
-  `
-};
-
-/**
  * The component gets `valid` state when the input is valid. Use the `style-on-valid` attribute to automatically indicate and show a valid state.
  */
 
@@ -256,6 +216,46 @@ export const Invalid = {
         }
       );
     </script>
+  `
+};
+
+/**
+ * Use the `minlength` attribute to set a minimum length for the textarea to be valid.
+ */
+export const MinLength = {
+  name: 'Min Length',
+  render: () => html`
+    <div class="w-[500px]">
+      <sd-textarea
+        value=""
+        size="lg"
+        label="Label"
+        help-text="Please type at least 5 characters"
+        rows="4"
+        spellcheck=""
+        minlength="5"
+      ></sd-textarea>
+    </div>
+  `
+};
+
+/**
+ * Use the `maxlength` attribute to set a maximum length for the textarea to be valid.
+ */
+export const MaxLength = {
+  name: 'Max Length',
+  render: () => html`
+    <div class="w-[500px]">
+      <sd-textarea
+        value=""
+        size="lg"
+        label="Label"
+        help-text="You are limited to a maximum of 5 characters"
+        rows="4"
+        spellcheck=""
+        maxlength="5"
+      ></sd-textarea>
+    </div>
   `
 };
 
