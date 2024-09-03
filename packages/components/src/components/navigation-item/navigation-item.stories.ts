@@ -8,6 +8,9 @@ const { generateTemplate } = storybookTemplate('sd-navigation-item');
 
 /**
  * Used to facilitate seamless page transitions and helps users orient themselves within the application.
+ *
+ * **Related templates**:
+ * - [Dropdown with Navigation Items](?path=/docs/templates-dropdown-with-navigation-items--docs)
  */
 
 export default {
@@ -116,7 +119,7 @@ export const Chevron = {
 export const Accordion = {
   render: () =>
     html`<sd-navigation-item vertical>
-      <div style="width: 245px; text-align: left;">Vertical Navigation with Accordion</div>
+      <div style="text-align: left;">Vertical Navigation with Accordion</div>
       <sd-navigation-item vertical indented slot="children"> Sub Navigation 1 </sd-navigation-item>
       <sd-navigation-item vertical indented slot="children"> Sub Navigation 2 </sd-navigation-item>
       <sd-navigation-item vertical indented slot="children"> Sub Navigation 3 </sd-navigation-item>
@@ -143,7 +146,7 @@ export const Description = {
 
 export const Indented = {
   render: () =>
-    html`<div class="w-[400px]">
+    html`<div>
       <sd-navigation-item vertical indented divider>Indented Navigation</sd-navigation-item>
     </div>`
 };
