@@ -7,7 +7,7 @@ const { generateTemplate } = storybookTemplate('sd-radio');
 const { overrideArgs } = storybookHelpers('sd-radio');
 
 /**
- * Allows the user to select a single option from a group.
+ * Used to allow the user to select a single option from a group.
  */
 
 export default {
