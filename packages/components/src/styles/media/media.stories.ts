@@ -7,7 +7,7 @@ const { overrideArgs } = storybookHelpers('sd-media');
 const { generateTemplate } = storybookTemplate('sd-media');
 
 /**
- * Used as an image or a video preview that can be displayed.
+ * Used to display an image or a video preview.
  */
 export default {
   title: 'Styles/sd-media',
@@ -37,7 +37,7 @@ export const Default = {
 };
 
 /**
- * Use the `sd-media--inverted` class to invert the color of the caption.
+ * Use the `sd-media--inverted` class when displayed on primary background.
  */
 
 export const Inverted = {
