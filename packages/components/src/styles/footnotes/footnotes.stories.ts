@@ -7,11 +7,12 @@ const { overrideArgs } = storybookHelpers('sd-footnotes');
 const { generateTemplate } = storybookTemplate('sd-footnotes');
 
 /**
- * A footnote contains additional information/sources related to the content and usually appears at the bottom of a page or below the content it refers to.
+ * Used to add additional information/sources related to the content and usually appears at the bottom of a page or below the content it refers to.
  */
 
 export default {
   title: 'Styles/sd-footnotes',
+  tags: ['!dev'],
   component: 'sd-footnotes',
   parameters: {
     ...parameters,
@@ -41,10 +42,6 @@ export default {
   ]
 };
 
-/**
- * Default: This shows sd-footnote in its default state, used with a `ul` element.
- */
-
 export const Default = {
   render: (args: any) => {
     return generateTemplate({
@@ -55,39 +52,42 @@ export const Default = {
 };
 
 /**
- * Use the class with a `ul` element to display the footnotes as an unordered list.
+ * Use the alternative html elements for alternative appearances:
+ *
+ * - unnumbered: use a `ul` element to create an unnumbered list.
+ * - numbered: use an `ol` element to create a numbered list.
+ * Usually start with "1", use the html `start` attribute to set the starting number of the list.
  */
 
-export const UnorderedLists = {
-  parameters: { controls: { include: [] } },
-
-  render: (args: any) => {
-    return generateTemplate({
-      options: {
-        templateContent: '<div class="sd-container"><ul class="%CLASSES%">%SLOT%</ul></div?'
-      },
-      args
-    });
-  }
+export const Variants = {
+  render: () => html`
+    <div class="flex flex-col gap-12">
+      <ul class="sd-footnotes">
+        <li>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</li>
+        <li>Sed diam nonumy eirmod tempor invidunt ut labore.</li>
+        <li>Dolore magna aliq erat, sed diam voluptua.</li>
+      </ul>
+      <ol start="150" class="sd-footnotes">
+        <li>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</li>
+        <li>Sed diam nonumy eirmod tempor invidunt ut labore.</li>
+        <li>Dolore magna aliq erat, sed diam voluptua.</li>
+      </ol>
+    </div>
+  `
 };
 
 /**
- * This sample shows how to use the `start` attribute to set the starting number of the list. This is a html standard attribute.
+ * Use the `sd-footnotes--inverted` class to invert the color of the footnotes.
  */
 
-export const Sample = {
-  parameters: { controls: { include: [] } },
-  name: 'Sample: Set start',
-  render: (args: any) => {
-    return generateTemplate({
-      options: {
-        templateContent: `<div class="sd-container">
-        <ol start="50" class="%CLASSES%">%SLOT%</ol>
-        <ol start="150" class="%CLASSES%">%SLOT%</ol>
-        <ol class="%CLASSES%">%SLOT%</ol>
-      </div>`
-      },
-      args
-    });
-  }
+export const Inverted = {
+  render: () => html`
+    <div class="sd-container sd-container--variant-primary">
+      <ol class="sd-footnotes sd-footnotes--inverted">
+        <li>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</li>
+        <li>Sed diam nonumy eirmod tempor invidunt ut labore.</li>
+        <li>Dolore magna aliq erat, sed diam voluptua.</li>
+      </ol>
+    </div>
+  `
 };
