@@ -28,7 +28,7 @@ export const Default = {
       <sd-navigation-item slot="trigger" vertical>
         <sd-icon name="system/globe" class="h-6 w-6"></sd-icon>
       </sd-navigation-item>
-      <div class="flex flex-col p-4">
+      <div class="flex flex-col p-2">
         <h4 class="sd-headline sd-headline--size-base p-4">Please select a country</h4>
         <sd-navigation-item class="font-bold" href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/"
           >Austria</sd-navigation-item
