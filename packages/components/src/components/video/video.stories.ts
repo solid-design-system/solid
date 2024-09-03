@@ -7,7 +7,7 @@ const { argTypes, args, parameters } = storybookDefaults('sd-video');
 const { generateTemplate } = storybookTemplate('sd-video');
 
 /**
- * Used for embedding and controlling videos.
+ * Used to embed and control videos. 
  */
 
 export default {
