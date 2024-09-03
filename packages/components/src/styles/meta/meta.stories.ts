@@ -7,7 +7,9 @@ const { overrideArgs } = storybookHelpers('sd-meta');
 const { generateTemplate } = storybookTemplate('sd-meta');
 
 /**
- * List of meta information like file size, date or whatever needed. Seperated by pipes.
+ * Used to display meta information like file size, date or whatever needed.
+ *
+ * Seperated by pipes.
  */
 
 export default {
@@ -35,28 +37,47 @@ export const Default = {
 };
 
 /**
- * Use `sd-meta` classes for alternative sizes:
- * - Default: Large is the default size.
+ * Meta can be used in 2 colors alternatives:
+ *
+ * - black (default)
+ * - `sd-meta--light`: neutral-700
+ */
+
+export const Variants = {
+  render: () =>
+    html`<div class="flex flex-row gap-12">
+      <time class="sd-meta" datetime="2023-08-11">Black</time>
+      <time class="sd-meta sd-meta--light" datetime="2023-08-11">Neutral-700</time>
+    </div>`
+};
+
+/**
+ * Use `sd-meta` modifiers for alternative appearances:
+ *
+ * - Large is the default size.
  * - `sd-meta--size-sm`: Small can be used as an alternative in tight spaces.
  */
 
 export const Size = {
   render: () =>
     html`<div class="flex flex-row gap-12">
-      <time class="sd-meta" datetime="2023-08-11">Default</time>
-      <time class="sd-meta sd-meta--size-sm" datetime="2023-08-11">Small</time>
+      <time class="sd-meta sd-meta--pipe" datetime="2023-08-11">Large</time>
+      <time class="sd-meta sd-meta--size-sm sd-meta--pipe" datetime="2023-08-11">Small</time>
     </div>`
 };
 
 /**
- * Use the `sd-meta--light` class to display a different color.
+ * Use the `sd-meta--inverted` to make information with inverted color.
+ *
+ * Once inverted meta can be used in 2 colors alternatives:
+ * - white (default)
+ * - `sd-meta--light`: primary-400
  */
-
-export const Light = {
+export const Inverted = {
   render: () =>
-    html`<div class="flex flex-row gap-12">
-      <time class="sd-meta" datetime="2023-08-11">Default</time>
-      <time class="sd-meta sd-meta--light" datetime="2023-08-11">Light</time>
+    html` <div class="p-4 bg-primary flex flex-row gap-12">
+      <time class="sd-meta sd-meta--inverted" datetime="2023-08-11">White</time>
+      <time class="sd-meta sd-meta--inverted sd-meta--light" datetime="2023-08-11">Primary-400</time>
     </div>`
 };
 
@@ -64,15 +85,9 @@ export const Light = {
  * Use the `sd-meta--pipe` class to separate meta information with a pipe.
  */
 export const Pipe = {
-  render: () => html` <time class="sd-meta sd-meta--pipe" datetime="2023-08-11">With Pipe</time>`
-};
-
-/**
- * Use the `sd-meta--inverted` to make information with inverted color.
- */
-export const Inverted = {
   render: () =>
-    html` <div class="p-4 bg-primary">
-      <time class="sd-meta sd-meta--inverted" datetime="2023-08-11">Inverted</time>
-    </div>`
+    html`<time class="sd-meta sd-meta--pipe" datetime="2023-08-11">With Pipe</time>
+      <time class="sd-meta sd-meta--pipe" datetime="2023-08-11">With Pipe</time>
+      <time class="sd-meta" datetime="2023-08-11">With Pipe</time>
+      <time class="sd-meta ml-12" datetime="2023-08-11">Without Pipe</time>`
 };
