@@ -127,7 +127,7 @@ export const MediaWithCopyright = {
   name: 'Copyright (Optional)',
   render: () => html`
     <figure class="sd-media max-w-xl p-4">
-      <div class="sd-copyright" style="--copyright: '© 2024 Solid Design System';">
+      <div class="sd-copyright" style="--copyright: '© Union Investment 2024'">
         <img
           src="./placeholders/images/architecture.jpg"
           alt="A generic placeholder jpg"

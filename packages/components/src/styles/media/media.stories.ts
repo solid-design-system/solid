@@ -49,7 +49,7 @@ export const Inverted = {
           alt="A generic placeholder jpg"
           class="aspect-video object-cover"
         />
-        <figcaption>Inverted</figcaption>
+        <figcaption>Inverted description</figcaption>
       </figure>
     </div>
   `
