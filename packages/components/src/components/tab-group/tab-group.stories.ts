@@ -20,7 +20,7 @@ function generateTabsAndPanels(
 }
 
 /**
- * Organizes content into a container that shows one section at a time.
+ * Used to organize content into a container that shows one section at a time.
  *
  * **Related templates:**
  * - [Tabs](?path=/docs/templates-tabs--docs)

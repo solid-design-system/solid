@@ -85,7 +85,7 @@ export const Disabled = {
 };
 
 /**
- * Use the `l` slot to add system icons.
+ * Use the `left` slot to add system icons.
  */
 export const WithIcon = {
   name: 'With Icon',
