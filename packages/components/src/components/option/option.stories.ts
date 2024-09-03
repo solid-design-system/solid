@@ -39,8 +39,6 @@ export const Default = {
  * - `default`
  * - `checkbox`: Enabled automatically when using `sd-select` with attribute `checklist` set to `true`.
  *
- * **Hint:**
- * Option can only be selected when utilized in sd-select.
  */
 
 export const Variants = {
@@ -87,9 +85,9 @@ export const Size = {
         placement="bottom"
         max-options-visible="3"
       >
-        <sd-option value="option-1" size="lg">Large Option 1</sd-option>
-        <sd-option value="option-2" size="lg">Large Option 2</sd-option>
-        <sd-option value="option-3" size="lg">Large Option 3</sd-option>
+        <sd-option value="option-1" size="lg">Option 1</sd-option>
+        <sd-option value="option-2" size="lg">Option 2</sd-option>
+        <sd-option value="option-3" size="lg">Option 3</sd-option>
       </sd-select>
       <sd-select
         class="h-[260px] w-[220px]"
@@ -97,10 +95,11 @@ export const Size = {
         placeholder="Please Select"
         placement="bottom"
         max-options-visible="3"
+        size="md"
       >
-        <sd-option value="option-1" size="md">Medium Option 1</sd-option>
-        <sd-option value="option-2" size="md">Medium Option 2</sd-option>
-        <sd-option value="option-3" size="md">Medium Option 3</sd-option>
+        <sd-option value="option-1" size="md">Option 1</sd-option>
+        <sd-option value="option-2" size="md">Option 2</sd-option>
+        <sd-option value="option-3" size="md">Option 3</sd-option>
       </sd-select>
       <sd-select
         class="h-[260px] w-[220px]"
@@ -108,10 +107,11 @@ export const Size = {
         placeholder="Please Select"
         placement="bottom"
         max-options-visible="3"
+        size="sm"
       >
-        <sd-option value="option-1" size="sm">Small Option 1</sd-option>
-        <sd-option value="option-2" size="sm">Small Option 2</sd-option>
-        <sd-option value="option-3" size="sm">Small Option 3</sd-option>
+        <sd-option value="option-1" size="sm">Option 1</sd-option>
+        <sd-option value="option-2" size="sm">Option 2</sd-option>
+        <sd-option value="option-3" size="sm">Option 3</sd-option>
       </sd-select>
     </div>`
 };
@@ -124,17 +124,19 @@ export const Selected = {
   render: () =>
     html`<div class="flex flex-row gap-12">
       <sd-select
-        class="h-[160px] w-[420px]"
+        class="h-[260px] w-[420px]"
         label="Selected option"
         placeholder="Please Select"
         placement="bottom"
         size="lg"
         max-options-visible="3"
       >
-        <sd-option value="option-1">Selected Option</sd-option>
+        <sd-option value="option-1">Option 1</sd-option>
+        <sd-option value="option-2">Option 2</sd-option>
+        <sd-option value="option-3">Option 3</sd-option>
       </sd-select>
       <sd-select
-        class="h-[160px] w-[420px]"
+        class="h-[260px] w-[420px]"
         label="Multiple selected option"
         placeholder="Please Select"
         placement="bottom"
@@ -142,7 +144,9 @@ export const Selected = {
         max-options-visible="3"
         multiple
       >
-        <sd-option value="option-1" checkbox>Selected Checkbox Option</sd-option>
+        <sd-option value="option-1" checkbox>Checkbox Option 1</sd-option>
+        <sd-option value="option-2" checkbox>Checkbox Option 2</sd-option>
+        <sd-option value="option-3" checkbox>Checkbox Option 3</sd-option>
       </sd-select>
     </div>`
 };
