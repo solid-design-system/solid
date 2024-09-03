@@ -7,7 +7,7 @@ const { overrideArgs } = storybookHelpers('sd-display');
 const { generateTemplate } = storybookTemplate('sd-display');
 
 /**
- * Provides larger text sizes that are not used as headlines.
+ * Used to provide larger text sizes that are not used as headlines.
  */
 
 export default {
