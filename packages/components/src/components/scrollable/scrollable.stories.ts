@@ -20,7 +20,7 @@ const defaultSlotContent = `
 `;
 
 /**
- * Container for creating scrollable areas in the UI.
+ * Used as a container to create scrollable sections within the user interface.
  */
 
 export default {
