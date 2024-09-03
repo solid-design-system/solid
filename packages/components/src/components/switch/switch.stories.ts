@@ -7,7 +7,7 @@ const { overrideArgs } = storybookHelpers('sd-switch');
 const { generateTemplate } = storybookTemplate('sd-switch');
 
 /**
- * Gives control over a feature or option that can be turned on or off.
+ * Used to give control over a feature or option that can be turned on or off.
  */
 
 export default {
