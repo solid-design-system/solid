@@ -8,6 +8,11 @@ const { overrideArgs } = storybookHelpers('sd-radio');
 
 /**
  * Used to allow the user to select a single option from a group.
+ *
+ *  **Related components**:
+ * - [sd-radio-group](?path=/docs/components-sd-radio-group--docs)
+ * - [sd-radio-button](?path=/docs/components-sd-radio-button--docs)
+ *
  */
 
 export default {
@@ -70,7 +75,7 @@ export const Disabled = {
 };
 
 /**
- * The `invalid` attribute marks the radio as invalid. 
+ * The `invalid` attribute marks the radio as invalid.
  *
  * For an invalid radio-group (since radios always come in groups) an error-text underneath the group is mandatory.
  */
