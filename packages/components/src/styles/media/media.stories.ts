@@ -7,7 +7,7 @@ const { overrideArgs } = storybookHelpers('sd-media');
 const { generateTemplate } = storybookTemplate('sd-media');
 
 /**
- * Add a media caption to the bottom of an image.
+ * Used as an image or a video preview that can be displayed.
  */
 export default {
   title: 'Styles/sd-media',
@@ -42,7 +42,7 @@ export const Default = {
 
 export const Inverted = {
   render: () => html`
-    <div class="p-4 bg-primary">
+    <div class="p-4 bg-primary max-w-xl">
       <figure class="sd-media sd-media--inverted max-w-xl p-4">
         <img
           src="./placeholders/images/architecture.jpg"
