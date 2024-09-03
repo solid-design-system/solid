@@ -7,7 +7,7 @@ const { argTypes, args, parameters } = storybookDefaults('sd-video');
 const { generateTemplate } = storybookTemplate('sd-video');
 
 /**
- * Used to embed and control videos. 
+ * Used to embed and control videos.
  */
 
 export default {
@@ -33,6 +33,29 @@ export const Default = {
 };
 
 /**
+ * Use in combination with a viewer component (e. g. from Moving Image) or a bare `<video>`-Tag.
+ *
+ * Use the `poster` slot to add a preview image.
+ */
+
+export const VideoElementWithPosterSlot = {
+  render: () => html`
+    <sd-video>
+      <video controls="" id="video-example" class="w-[854px] aspect-video">
+        <source src="./placeholders/videos/ui-placeholder-video.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <img
+        slot="poster"
+        alt="poster"
+        class="w-[854px] aspect-video cover"
+        src="./placeholders/images/architecture.jpg"
+      />
+    </sd-video>
+  `
+};
+
+/**
  * Use the attribute `playing` to hide the play icon and the overlay.
  */
 
@@ -52,28 +75,6 @@ export const Overlay = {
   render: () => html`
     <sd-video overlay>
       <img alt="Test" class="w-[854px] aspect-video cover" src="./placeholders/images/architecture.jpg" />
-    </sd-video>
-  `
-};
-
-/**
- * Use in combination with a viewer component (e. g. from Moving Image) or a bare `<video>`-Tag. <br/>
- * Use the `poster` slot to add a preview image.
- */
-
-export const VideoElementWithPosterSlot = {
-  render: () => html`
-    <sd-video>
-      <video controls="" id="video-example" class="w-[854px] aspect-video">
-        <source src="./placeholders/videos/ui-placeholder-video.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-      <img
-        slot="poster"
-        alt="poster"
-        class="w-[854px] aspect-video cover"
-        src="./placeholders/images/architecture.jpg"
-      />
     </sd-video>
   `
 };
