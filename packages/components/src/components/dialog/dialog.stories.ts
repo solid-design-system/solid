@@ -9,7 +9,7 @@ const { generateTemplate } = storybookTemplate('sd-dialog');
 
 /**
  *
- * Appears over other content. It requires an interaction from the user before they can return to whatever is underneath.
+ * Used over other content. It requires an interaction from the user before they can return to whatever is underneath.
  *
  * - Use the `headline` slot to add a headline.
  * - Use the `default` slot to add main content. <br /> Default slot is always scrollable.
