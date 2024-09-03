@@ -35,7 +35,7 @@ export const Default = {
 };
 
 /**
- * Use the `sd-display--size-` class to set the display’s size:
+ * Use `sd-display` modifiers for alternative appearances.
  * - `sd-display--size-default`
  * - `sd-display--size-3xl`
  * - `sd-display--size-4xl`
@@ -44,9 +44,9 @@ export const Default = {
 export const Size = {
   render: () => html`
     <div class="flex flex-col gap-6">
-      <div class="sd-display sd-display--size-default">Lorem ipsum</div>
-      <div class="sd-display sd-display--size-3xl">Lorem ipsum</div>
       <div class="sd-display sd-display--size-4xl">Lorem ipsum</div>
+      <div class="sd-display sd-display--size-3xl">Lorem ipsum</div>
+      <div class="sd-display sd-display--size-default">Lorem ipsum</div>
     </div>
   `
 };
