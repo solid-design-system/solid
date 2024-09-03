@@ -8,7 +8,7 @@ const { generateTemplate } = storybookTemplate('sd-textarea');
 const { overrideArgs } = storybookHelpers('sd-textarea');
 
 /**
- * Allows users to input and edit multiple lines of text.
+ * Used to allow users to input and edit multiple lines of text.
  */
 export default {
   title: 'Components/sd-textarea',
