@@ -64,13 +64,11 @@ export const Size = {
 export const Disabled = {
   name: 'Disabled',
   render: () => html`
-    <div class="flex gap-12">
-      <sd-radio-group label="Disabled Radio in Group" boldLabel value="1">
-        <sd-radio value="1">Radio 1</sd-radio>
-        <sd-radio value="2" disabled>Radio 2</sd-radio>
-        <sd-radio value="3">Radio 3</sd-radio>
-      </sd-radio-group>
-    </div>
+    <sd-radio-group label="Disabled Radio in Group" boldLabel value="1">
+      <sd-radio value="1">Radio 1</sd-radio>
+      <sd-radio value="2" disabled>Radio 2</sd-radio>
+      <sd-radio value="3">Radio 3</sd-radio>
+    </sd-radio-group>
   `
 };
 
