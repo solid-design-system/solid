@@ -189,10 +189,10 @@ export const Copyright = {
   name: 'Copyright (Optional)',
   render: () => html`
     <div style="margin-bottom: 40px; width: 600px">
-      <sd-teaser-media>
+      <sd-teaser-media variant="gradient-dark">
         <img slot="media" src="./placeholders/images/architecture.jpg" class="aspect-video object-cover" alt="Test" />
         <h3 slot="headline">Headline Media Teaser</h3>
-        <div class="flex flex-col sd-copyright p-0" style="--copyright: '© Union Investment 2024'">
+        <div class="flex flex-col sd-copyright" style="--copyright: '© Union Investment 2024'">
           <div slot="default" class="h-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
         </div>
       </sd-teaser-media>
