@@ -7,7 +7,7 @@ const { overrideArgs } = storybookHelpers('sd-teaser-media');
 const { generateTemplate } = storybookTemplate('sd-teaser-media');
 
 /**
- * Flexible containers that group related items and link to further content.
+ * Used as a flexible container that groups related items and links them to further content.
  *
  * **Related components**:
  * - [sd-teaser](?path=/docs/components-teaser--docs)
