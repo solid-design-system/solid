@@ -136,7 +136,7 @@ export const DefaultMediaAndHeadlineSlot = {
   name: 'Default, Media and Headline Slot',
   render: () => html`
     <div style="margin-bottom: 40px; width: 600px">
-      <sd-teaser-media>
+      <sd-teaser-media variant="gradient-dark">
         <img slot="media" src="./placeholders/images/architecture.jpg" class="aspect-video object-cover" alt="Test" />
         <h3 slot="headline">Headline Media Teaser</h3>
         <div class="flex flex-col gap-4">
@@ -154,7 +154,7 @@ export const DefaultMediaAndHeadlineSlot = {
 export const MetaSlot = {
   render: () => html`
     <div style="margin-bottom: 40px; width: 600px">
-      <sd-teaser-media>
+      <sd-teaser-media variant="gradient-dark">
         <div slot="meta" class="slot slot--border slot--text h-12">Meta slot</div>
         <img slot="media" src="./placeholders/images/architecture.jpg" class="aspect-video object-cover" alt="Test" />
         <h3 slot="headline">Headline Media Teaser</h3>
@@ -172,7 +172,7 @@ export const MetaSlot = {
 export const ExpandableSlot = {
   render: () => html`
     <div style="margin-bottom: 40px; width: 600px">
-      <sd-teaser-media>
+      <sd-teaser-media variant="gradient-dark">
         <img slot="media" src="./placeholders/images/architecture.jpg" class="aspect-video object-cover" alt="Test" />
         <h3 slot="headline">Headline Media Teaser</h3>
         <div slot="expandable" class="slot slot--border slot--text h-12">Expandable slot</div>
@@ -188,11 +188,29 @@ export const ExpandableSlot = {
 export const Copyright = {
   name: 'Copyright (Optional)',
   render: () => html`
+    <style>
+      .sd-copyright::after {
+        padding: 0;
+      }
+      .gradient-white.sd-copyright::after {
+        color: #000000;
+        text-shadow: none;
+      }
+    </style>
     <div style="margin-bottom: 40px; width: 600px">
       <sd-teaser-media variant="gradient-dark">
         <img slot="media" src="./placeholders/images/architecture.jpg" class="aspect-video object-cover" alt="Test" />
         <h3 slot="headline">Headline Media Teaser</h3>
         <div class="flex flex-col sd-copyright" style="--copyright: '© Union Investment 2024'">
+          <div slot="default" class="h-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+        </div>
+      </sd-teaser-media>
+    </div>
+    <div style="margin-bottom: 40px; width: 600px">
+      <sd-teaser-media variant="gradient-white">
+        <img slot="media" src="./placeholders/images/architecture.jpg" class="aspect-video object-cover" alt="Test" />
+        <h3 slot="headline">Headline Media Teaser</h3>
+        <div class="flex flex-col sd-copyright gradient-white" style="--copyright: '© Union Investment 2024'">
           <div slot="default" class="h-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
         </div>
       </sd-teaser-media>
