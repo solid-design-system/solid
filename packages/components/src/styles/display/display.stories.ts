@@ -57,6 +57,6 @@ export const Size = {
 
 export const Inverted = {
   render: () => {
-    return html`<div class="p-4 bg-primary"><div class="sd-display sd-display--inverted">Inverted</div></div>`;
+    return html`<div class="p-4 bg-primary"><div class="sd-display sd-display--inverted">Lorem Ipsum</div></div>`;
   }
 };
