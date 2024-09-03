@@ -129,7 +129,46 @@ export const Accordion = {
 /**
  * Use the `description` to provide a description for the navigation item.
  * - Only works with `vertical` attribute.
+ *
+ * With `separated` attribute, the navigation item will have more that only one action. It is possible to use it as a link and an accordion simultaneously.
+ *
+ * It needs a children slot and an href.
  */
+export const separated = {
+  render: () => {
+    return generateTemplate({
+      args: overrideArgs([
+        defaultSlotConstant,
+        {
+          type: 'attribute',
+          name: 'vertical',
+          value: true
+        },
+        {
+          type: 'attribute',
+          name: 'separated',
+          value: true
+        },
+        {
+          type: 'attribute',
+          name: 'href',
+          value: 'https://www.union-investment.de/'
+        },
+        {
+          type: 'attribute',
+          name: 'chevron',
+          value: true
+        },
+        {
+          type: 'slot',
+          name: 'children',
+          value: '<div slot="children" class="slot slot--border slot--background h-6"></div>'
+        },
+        childrenSlotConstant
+      ])
+    });
+  }
+};
 
 export const Description = {
   render: () =>
