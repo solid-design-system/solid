@@ -46,7 +46,10 @@ export const Default = {
 };
 
 /**
- * Use the `variant` attribute to display different styles.
+ * Use the `variant` attribute to display to change the appearance.
+ *
+ * - `default`: Can be used independently or within components, often for full-page content.
+ * - `container`: Highlighted tab and content linked to a background container, typically for specific sections like sub-pages or teasers.
  */
 
 export const Variant = {
@@ -78,29 +81,18 @@ export const Active = {
  */
 export const Disabled = {
   name: 'Disabled',
-  render: () => html`
-    <div class="flex gap-12">
-      <sd-tab disabled>Default</sd-tab>
-    </div>
-  `
+  render: () => html` <sd-tab disabled>Disabled</sd-tab> `
 };
 
 /**
- * Use the `left` slot include an element (eg. icon) positioned to the left of the label.
+ * Use the `l` slot to add system icons.
  */
 export const WithIcon = {
   name: 'With Icon',
   render: () => html`
-    <div class="flex gap-12">
-      <sd-tab>
-        <sd-icon slot="left" name="system/picture" library="global-resources"></sd-icon>
-        Tab
-      </sd-tab>
-
-      <sd-tab variant="container" active>
-        <sd-icon slot="left" name="system/picture" library="global-resources"></sd-icon>
-        Tab
-      </sd-tab>
-    </div>
+    <sd-tab>
+      <sd-icon slot="left" name="system/picture" library="global-resources"></sd-icon>
+      Tab
+    </sd-tab>
   `
 };
