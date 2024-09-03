@@ -155,7 +155,7 @@ export const Required = {
   name: 'Required',
   render: () => html`
     <div class="w-[500px]">
-      <sd-textarea size="lg" label="Required" help-text="" rows="4" required spellcheck></sd-textarea>
+      <sd-textarea size="lg" label="Required" rows="4" required spellcheck></sd-textarea>
     </div>
   `
 };
