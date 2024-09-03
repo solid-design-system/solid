@@ -13,7 +13,7 @@ const { generateTemplate } = storybookTemplate('sd-media');
 const { generateScreenshotStory } = storybookUtilities;
 
 /**
- * Add a media caption to the bottom of an image.
+ * Used to display an image or a video preview.
  */
 export default {
   title: 'Styles/sd-media/Screenshot Tests',
