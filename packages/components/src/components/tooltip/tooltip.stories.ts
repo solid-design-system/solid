@@ -8,7 +8,7 @@ const { overrideArgs } = storybookHelpers('sd-tooltip');
 const { generateTemplate } = storybookTemplate('sd-tooltip');
 
 /**
- * Used to display additional information based on a specific action.
+ * Used as a floating and non-actionable text label that explains an element or function of the user interface.
  */
 export default {
   title: 'Components/sd-tooltip',
