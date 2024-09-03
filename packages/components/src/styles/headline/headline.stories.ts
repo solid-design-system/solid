@@ -8,6 +8,9 @@ const { generateTemplate } = storybookTemplate('sd-headline');
 
 /**
  * Used as a vital element for displaying content hierarchy and to improve accessibility.
+ *
+ *  **Related templates**:
+ * - [Headline with Mark](?path=/docs/templates-headline-with-mark--docs)
  */
 
 export default {
