@@ -72,8 +72,8 @@ export const Orientation = {
         </div>
       </sd-scrollable>
 
-      <sd-scrollable orientation="vertical">
-        <div class="self-start h-max p-4 text-sm justify-start">
+      <sd-scrollable orientation="vertical" style="height:135px;">
+        <div class="self-start p-4 text-sm justify-start">
           <p>
             Union Investment has extended its lease with Converse, the footwear and apparel brand known for its deep
             connection to youth culture, at 1 Lovejoy Wharf in Boston. The contract for around 20,000 sqm of
