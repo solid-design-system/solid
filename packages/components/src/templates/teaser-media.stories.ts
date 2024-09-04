@@ -12,7 +12,7 @@ export default {
 /**
  *
  * - Aligment: Teaser content can be center aligned if desired.
- * - Paddings: Can be changed as desired.
+ * - Padding: Can be changed as desired.
  * - Headline size: Can be changed as desired.
  *
  * ```
