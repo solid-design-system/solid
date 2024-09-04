@@ -10,11 +10,11 @@ const { generateTemplate } = storybookTemplate('sd-step-group');
 /**
  * Used as navigation bar that guides users through the steps of a process or task
  *
- * **Related templates:**
- * - [sd-step-group](?path=/docs/templates-step-group--docs)
- *
- * **Related components:**
+ * **Related Components:**
  * - [sd-step](?path=/docs/components-step--docs)
+ *
+ * **Related Templates:**
+ * - [sd-step-group](?path=/docs/templates-step-group--docs)
  */
 export default {
   title: 'Components/sd-step-group',
