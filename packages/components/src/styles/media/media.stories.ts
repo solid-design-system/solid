@@ -8,6 +8,9 @@ const { generateTemplate } = storybookTemplate('sd-media');
 
 /**
  * Used to display an image or a video preview.
+ *
+ *  * **Related templates**:
+ * - [Media](?path=/docs/templates-media--docs)
  */
 export default {
   title: 'Styles/sd-media',
@@ -42,8 +45,8 @@ export const Default = {
 
 export const Inverted = {
   render: () => html`
-    <div class="p-4 bg-primary max-w-xl">
-      <figure class="sd-media sd-media--inverted max-w-xl p-4">
+    <div class="p-4 bg-primary">
+      <figure class="sd-media sd-media--inverted p-4">
         <img
           src="./placeholders/images/architecture.jpg"
           alt="A generic placeholder jpg"
