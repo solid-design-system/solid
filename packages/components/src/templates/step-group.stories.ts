@@ -19,7 +19,7 @@ export const SetActiveStep = {
   render: () => html`
     <sd-step-group id="set-active" size="lg" orientation="horizontal" active-step="0">
       <sd-step size="lg" orientation="horizontal">
-        <p slot="label">Lorem ipsum dolor sit</p>
+        <p slot="label">Step 1</p>
       </sd-step>
 
       <sd-step size="lg" orientation="horizontal">
