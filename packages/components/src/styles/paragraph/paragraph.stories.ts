@@ -22,7 +22,12 @@ export default {
       url: 'https://www.figma.com/file/SkTc8tXPNPjZlxvXXJ6vTt/Paragraph?type=design&node-id=1701-741&mode=design&t=FsmhHop5U1y6FbYg-0'
     }
   },
-  args: overrideArgs({ type: 'slot', name: 'default', value: 'Lorem Ipsum' }),
+  args: overrideArgs({
+    type: 'slot',
+    name: 'default',
+    value:
+      'Large Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique. Facilisis commodo integer hendrerit tortor.'
+  }),
   argTypes
 };
 
@@ -40,9 +45,7 @@ export const Default = {
 };
 
 /**
- * Use the `sd-paragraph--size-` class to set the size:
- * - `sd-paragraph--size-default`
- * - `sd-paragraph--size-sm`
+ * Use the `sd-paragraph--size-sm` class to set a smaller font size.
  */
 
 export const Size = {
