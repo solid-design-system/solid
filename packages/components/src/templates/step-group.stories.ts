@@ -14,39 +14,44 @@ export default {
  * ```
  * ```
  */
-export const SetActiveStep = {
-  name: 'Sample: Set Active Step',
+export const NonInteractiveStepGroup = {
   render: () => html`
-    <sd-step-group id="set-active" size="lg" orientation="horizontal" active-step="0">
-      <sd-step size="lg" orientation="horizontal">
-        <p slot="label">Step 1</p>
+    <sd-step-group size="lg" orientation="horizontal" active-step="0" not-interactive>
+      <sd-step size="lg" orientation="horizontal" state="default">
+        <div slot="label">Make an appointment</div>
       </sd-step>
 
-      <sd-step size="lg" orientation="horizontal">
-        <p slot="label">Step 2</p>
+      <sd-step size="lg" orientation="horizontal" state="current">
+        <span slot="label">Select funds for savings plan</span>
       </sd-step>
 
-      <sd-step size="lg" orientation="horizontal">
-        <p slot="label">Step 3</p>
+      <sd-step size="lg" orientation="horizontal" state="disabled">
+        <span slot="label">Open a securities account</span>
       </sd-step>
     </sd-step-group>
+  `
+};
 
-    <sd-button class="w-20 mt-8" size="sm" id="previous">Previous</sd-button>
-    <sd-button class="w-20 mt-8" size="sm" id="next">Next</sd-button>
+export const NonInteractiveStepGroupWithIcon = {
+  render: () => html`
+    <sd-step-group size="lg" orientation="horizontal" active-step="0" not-interactive>
+      <sd-step size="lg" orientation="horizontal" state="default">
+        <sd-icon slot="circle-content" name="content/calendar" class="h-12 w-12"></sd-icon>
+        <div slot="label">Make an appointment</div>
+        <div slot="description">Lorem ipsum est dolor sit amet</div>
+      </sd-step>
 
-    <script type="module">
-      const stepGroup = await document.querySelector('sd-step-group#set-active');
+      <sd-step size="lg" orientation="horizontal" state="current">
+        <sd-icon slot="circle-content" name="content/chess-piece" class="h-12 w-12"></sd-icon>
+        <span slot="label">Select funds for savings plan</span>
+        <div slot="description">Lorem ipsum est dolor sit amet</div>
+      </sd-step>
 
-      const nextBtn = document.querySelector('sd-button#next');
-      const prevBtn = document.querySelector('sd-button#previous');
-
-      nextBtn.addEventListener('click', () => {
-        stepGroup.setActiveStep(stepGroup.activeStep + 1);
-      });
-
-      prevBtn.addEventListener('click', () => {
-        stepGroup.setActiveStep(stepGroup.activeStep - 1);
-      });
-    </script>
+      <sd-step size="lg" orientation="horizontal" state="disabled">
+        <sd-icon slot="circle-content" name="content/certificate" class="h-12 w-12"></sd-icon>
+        <span slot="label">Open a securities account</span>
+        <div slot="description">Lorem ipsum est dolor sit amet</div>
+      </sd-step>
+    </sd-step-group>
   `
 };
