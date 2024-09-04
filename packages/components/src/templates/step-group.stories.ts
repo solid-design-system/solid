@@ -23,7 +23,7 @@ export const SetActiveStep = {
       </sd-step>
 
       <sd-step size="lg" orientation="horizontal">
-        <p slot="label">Exercitation ullamco laboris</p>
+        <p slot="label">Step 2</p>
       </sd-step>
 
       <sd-step size="lg" orientation="horizontal">
