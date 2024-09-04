@@ -1,5 +1,5 @@
 import '../../solid-components';
-
+import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
 const { argTypes, parameters } = storybookDefaults('sd-mark');
@@ -7,11 +7,14 @@ const { overrideArgs } = storybookHelpers('sd-mark');
 const { generateTemplate } = storybookTemplate('sd-mark');
 
 /**
- * Highlight text sections in the accent color. Use the <mark> tag for regular fonts-sizes at 24px and above, and use bold fonts at 18.67px.
+ * Used to highlight text sections in the accent color.
+ *
+ * Use the `<mark>` html element with the class `sd-mark` for regular fonts-sizes at 24px and above, and use bold fonts at 18.67px.
  */
 
 export default {
   title: 'Styles/sd-mark',
+  tags: ['!dev'],
   component: 'sd-mark',
   parameters: {
     ...parameters,
@@ -24,10 +27,6 @@ export default {
   argTypes
 };
 
-/**
- * Default: This shows sd-mark in its default state.
- */
-
 export const Default = {
   render: (args: any) => {
     return generateTemplate({
@@ -38,23 +37,19 @@ export const Default = {
 };
 
 /**
- * Examples: This shows how sd-mark looks in different contexts.
+ * Use with other elements such as `sd-display` or `sd-leadtext`.
  */
 
 export const Examples = {
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: {
-          type: 'template',
-          name: 'sd-mark',
-          values: ['sd-display', 'sd-leadtext'].map(style => {
-            return { value: `<p class="${style}">%TEMPLATE%</p>`, title: style };
-          })
-        }
-      },
-      options: { templateContent: 'Lorem <mark class="%CLASSES%">Ipsum</mark>' },
-      args
-    });
-  }
+  render: () => html`
+    <p class="sd-display">
+      Lorem
+      <mark class="sd-mark">Ipsum</mark>
+    </p>
+
+    <p class="sd-leadtext">
+      Lorem
+      <mark class="sd-mark">Ipsum</mark>
+    </p>
+  `
 };
