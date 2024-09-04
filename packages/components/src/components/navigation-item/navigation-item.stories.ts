@@ -150,7 +150,9 @@ export const Description = {
   render: () =>
     html` <sd-navigation-item vertical>
       Vertical Navigation with Description
-      <p slot="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullam.</p>
+      <p slot="description" class="sd-paragraph">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullam.
+      </p>
     </sd-navigation-item>`
 };
 
