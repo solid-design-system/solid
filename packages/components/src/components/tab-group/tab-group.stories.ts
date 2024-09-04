@@ -22,12 +22,13 @@ function generateTabsAndPanels(
 /**
  * Used to organize content into a container that shows one section at a time.
  *
- * **Related templates:**
- * - [Tabs](?path=/docs/templates-tabs--docs)
- *
  * **Related components:**
  * - [sd-tab](?path=/docs/components-sd-tab--docs)
  * - [sd-tab-panel](?path=/docs/components-sd-tab-panel--docs)
+ *
+ *
+ * **Related templates:**
+ * - [Tabs](?path=/docs/templates-tabs--docs)
  */
 
 export default {
@@ -70,28 +71,50 @@ export const Default = {
  * - `manual`: Requires user interaction to show the corresponding tab panel.
  */
 export const Activation = {
-  name: 'Activation',
   render: () => html`
-    <sd-tab-group activation="manual">
+    <sd-tab-group activation="auto">
       <sd-tab slot="nav" panel="tab-1" variant="default">Tab 1</sd-tab>
       <sd-tab-panel name="tab-1">
-        <div>Provident illo neque vel ex. Inventore perspiciatis delectus nisi doloremque soluta inventore.</div>
+        <div>Auto provident illo neque vel ex. Inventore perspiciatis delectus nisi doloremque soluta inventore.</div>
       </sd-tab-panel>
       <sd-tab slot="nav" panel="tab-2" variant="default">Tab 2</sd-tab>
       <sd-tab-panel name="tab-2">
-        <div>Provident illo neque vel ex.</div>
+        <div>Auto provident illo neque vel ex.</div>
       </sd-tab-panel>
       <sd-tab slot="nav" panel="tab-3" variant="default">Tab 3</sd-tab>
       <sd-tab-panel name="tab-3">
-        <div>Provident illo neque vel ex. Inventore perspiciatis delectus nisi doloremque soluta inventore.</div>
+        <div>Auto provident illo neque vel ex. Inventore perspiciatis delectus nisi doloremque soluta inventore.</div>
       </sd-tab-panel>
       <sd-tab slot="nav" panel="tab-4" variant="default">Tab 4</sd-tab>
       <sd-tab-panel name="tab-4">
-        <div>Inventore perspiciatis delectus nisi doloremque soluta inventore.</div>
+        <div>Auto Inventore perspiciatis delectus nisi doloremque soluta inventore.</div>
       </sd-tab-panel>
       <sd-tab slot="nav" panel="tab-5" variant="default">Tab 5</sd-tab>
       <sd-tab-panel name="tab-5">
-        <div>Provident nisi doloremque soluta inventore.</div>
+        <div>Auto provident nisi doloremque soluta inventore.</div>
+      </sd-tab-panel>
+    </sd-tab-group>
+
+    <sd-tab-group activation="manual">
+      <sd-tab slot="nav" panel="tab-1" variant="default">Tab 1</sd-tab>
+      <sd-tab-panel name="tab-1">
+        <div>Manual provident illo neque vel ex. Inventore perspiciatis delectus nisi doloremque soluta inventore.</div>
+      </sd-tab-panel>
+      <sd-tab slot="nav" panel="tab-2" variant="default">Tab 2</sd-tab>
+      <sd-tab-panel name="tab-2">
+        <div>Manual provident illo neque vel ex.</div>
+      </sd-tab-panel>
+      <sd-tab slot="nav" panel="tab-3" variant="default">Tab 3</sd-tab>
+      <sd-tab-panel name="tab-3">
+        <div>Manual provident illo neque vel ex. Inventore perspiciatis delectus nisi doloremque soluta inventore.</div>
+      </sd-tab-panel>
+      <sd-tab slot="nav" panel="tab-4" variant="default">Tab 4</sd-tab>
+      <sd-tab-panel name="tab-4">
+        <div>Manual Inventore perspiciatis delectus nisi doloremque soluta inventore.</div>
+      </sd-tab-panel>
+      <sd-tab slot="nav" panel="tab-5" variant="default">Tab 5</sd-tab>
+      <sd-tab-panel name="tab-5">
+        <div>Manual provident nisi doloremque soluta inventore.</div>
       </sd-tab-panel>
     </sd-tab-group>
   `

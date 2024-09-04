@@ -10,13 +10,12 @@ const { generateTemplate } = storybookTemplate('sd-tab');
 /**
  * Used inside `sd-tab-group` to represent and activate tab panels.
  *
- * **Related templates:**
- * - [Tabs](?path=/docs/templates-tabs--docs)
- *
- *
  * **Related components:**
  * - [sd-tab-group](?path=/docs/components-sd-tab-group--docs)
  * - [sd-tab-panel](?path=/docs/components-sd-tab-panel--docs)
+ *
+ * **Related templates:**
+ * - [Tabs](?path=/docs/templates-tabs--docs)
  */
 
 export default {
@@ -53,7 +52,6 @@ export const Default = {
  */
 
 export const Variant = {
-  name: 'Variant',
   render: () => html`
     <div class="flex gap-12">
       <sd-tab variant="default">Default</sd-tab>
@@ -67,7 +65,6 @@ export const Variant = {
  */
 
 export const Active = {
-  name: 'Active',
   render: () => html`
     <div class="flex gap-12">
       <sd-tab active>Default</sd-tab>
@@ -80,19 +77,17 @@ export const Active = {
  * Use the `disabled` attribute to disable a tab.
  */
 export const Disabled = {
-  name: 'Disabled',
   render: () => html` <sd-tab disabled>Disabled</sd-tab> `
 };
 
 /**
  * Use the `left` slot to add system icons.
  */
-export const WithIcon = {
-  name: 'With Icon',
+export const Icon = {
   render: () => html`
     <sd-tab>
       <sd-icon slot="left" name="system/picture" library="global-resources"></sd-icon>
-      Tab
+      Default
     </sd-tab>
   `
 };

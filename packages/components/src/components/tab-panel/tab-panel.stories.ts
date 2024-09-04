@@ -53,7 +53,6 @@ export default {
  */
 
 export const Default = {
-  name: 'Default',
   render: (args: any) => {
     return generateTemplate({ args });
   }
@@ -64,7 +63,6 @@ export const Default = {
  */
 
 export const Open = {
-  name: 'Open',
   render: () => html`
     <sd-tab-panel active>
       <p class="sd-paragraph">
