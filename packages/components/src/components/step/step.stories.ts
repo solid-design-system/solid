@@ -10,11 +10,15 @@ const { generateTemplate } = storybookTemplate('sd-step');
 /**
  * Used to determine a step in a process or task.
  *
- * **Related templates:**
- * - [sd-step-group](?path=/docs/templates-sd-step-group--docs)
+ * Use the `default` slot to set a description for the step. Alternatively, you can use the `description` attribute.
+ * Use the `circle-content` slot to add a content-icon in a non-interactive step.
  *
  * **Related components:**
  * - [sd-step-group](?path=/docs/components-sd-step-group--docs)
+ *
+ * **Related templates:**
+ * - [sd-step-group](?path=/docs/templates-sd-step-group--docs)
+ *
  */
 export default {
   title: 'Components/sd-step',
@@ -29,7 +33,15 @@ export default {
   ]),
   argTypes,
   parameters: { ...parameters },
-  decorators: [withActions] as any
+  decorators: [
+    withActions,
+    (story: any) =>
+      html`<style>
+          #story--components-sd-step--default--primary {
+            width: min-content;
+          }</style
+        >${story()}`
+  ] as unknown
 };
 
 /**
@@ -53,11 +65,9 @@ export const Size = {
     <div class="flex gap-12 w-min">
       <sd-step size="lg">
         <span slot="label">Large</span>
-        <div>Suscipit repellendus sapiente</div>
       </sd-step>
       <sd-step size="sm">
         <span slot="label">Small</span>
-        <div>Suscipit repellendus sapiente</div>
       </sd-step>
     </div>
   `
@@ -70,30 +80,12 @@ export const Size = {
 export const Orientation = {
   name: 'Orientation',
   render: () => html`
-    <div class="flex gap-12 w-min">
-      <sd-step orientation="vertical">
-        <span slot="label">Step name</span>
-        <div>Suscipit repellendus sapiente</div>
-      </sd-step>
+    <div class="flex gap-24 w-min">
       <sd-step orientation="horizontal">
         <span slot="label">Step name</span>
-        <div>Suscipit repellendus sapiente</div>
       </sd-step>
-    </div>
-  `
-};
-
-/**
- * Use the `disabled` attribute to disable a step.
- */
-
-export const Disabled = {
-  name: 'Disabled',
-  render: () => html`
-    <div class="flex gap-12 w-min">
-      <sd-step disabled>
-        <span slot="label">Disabled</span>
-        <div>Suscipit repellendus sapiente</div>
+      <sd-step orientation="vertical">
+        <span slot="label">Step name</span>
       </sd-step>
     </div>
   `
@@ -106,10 +98,24 @@ export const Disabled = {
 export const Current = {
   name: 'Current',
   render: () => html`
-    <div class="flex gap-12 w-min">
+    <div class="w-min">
       <sd-step current>
         <span slot="label">Current</span>
-        <div>Suscipit repellendus sapiente</div>
+      </sd-step>
+    </div>
+  `
+};
+
+/**
+ * Use the `disabled` attribute to disable a step.
+ */
+
+export const Disabled = {
+  name: 'Disabled',
+  render: () => html`
+    <div class="w-min">
+      <sd-step disabled>
+        <span slot="label">Disabled</span>
       </sd-step>
     </div>
   `
@@ -122,12 +128,11 @@ export const Current = {
 export const AsLink = {
   name: 'As Link',
   render: () => html`
-    <div class="flex gap-12 w-min">
+    <div class="w-min">
       <sd-step
         href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/?path=/docs/docs-general-introduction--docs"
       >
         <span slot="label">Step name</span>
-        <div>Suscipit repellendus sapiente</div>
       </sd-step>
     </div>
   `
@@ -140,10 +145,9 @@ export const AsLink = {
 export const NoTail = {
   name: 'No Tail',
   render: () => html`
-    <div class="flex gap-12 w-min">
+    <div class="w-min">
       <sd-step no-tail>
         <span slot="label">Step name</span>
-        <div>Suscipit repellendus sapiente</div>
       </sd-step>
     </div>
   `
@@ -156,10 +160,24 @@ export const NoTail = {
 export const NotInteractive = {
   name: 'Not Interactive',
   render: () => html`
-    <div class="flex gap-12 w-min">
+    <div class="w-min">
       <sd-step not-interactive>
         <span slot="label">Step name</span>
-        <div>Suscipit repellendus sapiente</div>
+      </sd-step>
+    </div>
+  `
+};
+
+/**
+ * Use the `circle-content` slot to add a content-icon in a non-interactive step.
+ */
+
+export const Icon = {
+  name: 'Icon',
+  render: () => html`
+    <div class="w-min">
+      <sd-step not-interactive>
+        <sd-icon slot="circle-content" name="content/image" class="h-12 w-12"></sd-icon>
       </sd-step>
     </div>
   `
@@ -172,10 +190,10 @@ export const NotInteractive = {
 export const Description = {
   name: 'Description',
   render: () => html`
-    <div class="flex gap-12 w-min">
+    <div class="w-min">
       <sd-step>
         <span slot="label">Step name</span>
-        <div class="slot slot--border slot--text h-16">Default slot</div>
+        <p class="sd-paragraph">Description lorem ipsum sic semper</p>
       </sd-step>
     </div>
   `
@@ -188,7 +206,7 @@ export const Description = {
 export const DescriptionAndLabelUsingAttributes = {
   name: 'Description and Label (using attributes)',
   render: () => html`
-    <div class="flex gap-12 w-min">
+    <div class="w-min">
       <sd-step label="Label as attribute" description="Description as attribute"></sd-step>
     </div>
   `
