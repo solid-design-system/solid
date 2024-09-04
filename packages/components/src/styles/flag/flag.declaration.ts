@@ -8,7 +8,7 @@ export default {
   attributes: [
     {
       name: 'sd-flag--...',
-      options: ['neutral-500', 'neutral-300', 'white'],
+      options: ['neutral-300', 'neutral-500', 'white'],
       description: ''
     }
   ]
