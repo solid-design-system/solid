@@ -1,11 +1,41 @@
 import { classMap } from 'lit/directives/class-map.js';
 import { getWcStorybookHelpers } from '@mariohamann/wc-storybook-helpers';
 import { html, unsafeStatic } from 'lit/static-html.js';
+// @ts-ignore
 import { sentenceCase } from 'change-case';
 import loadCustomElements from './fetch-cem';
+// @ts-ignore
 import storyBookPreviewConfig from '../../.storybook/preview.js';
+import type { TemplateResult } from 'lit';
+import { Parameters, StoryObj } from '@storybook/web-components';
 
 type ArgTypesDefinition = 'attribute' | 'property' | 'slot' | 'cssPart' | 'cssProperty';
+
+/**
+ * Parameters for the generateScreenshotStory function
+ * It accepts either
+ */
+type screenshotStoryOptions = {
+  /**
+   * String or lit template that should be included directly after all stories
+   */
+  afterRender?: '' | TemplateResult;
+
+  /**
+   * Use this to set additional options for chromatic
+   */
+  additionalChromaticOptions?: Parameters;
+
+  /**
+   * The height of the drawn container
+   */
+  height?: string;
+
+  /**
+   * The style of the drawn container
+   */
+  styleHeading?: Record<string, string>;
+};
 
 interface AxisDefinition {
   type: ArgTypesDefinition | 'template';
@@ -615,7 +645,7 @@ export const storybookUtilities = {
    * ```
    */
   generateScreenshotStory: (
-    stories: { [key: string]: StoryObj },
+    stories: { name: string; render: (args: any) => TemplateResult }[],
     options: string | screenshotStoryOptions = 'auto'
   ): StoryObj => {
     const usedOptions = !isNaN(options as number)
@@ -638,7 +668,7 @@ export const storybookUtilities = {
           disable: true
         }
       },
-      render: (args, context) => html`
+      render: (args: any) => html`
         ${Object.entries(stories).map(([storyName, story]) => {
           const name = story.name ?? sentenceCase(storyName);
           return html`
@@ -649,7 +679,7 @@ export const storybookUtilities = {
               >
                 ${name}
               </h3>
-              ${story.render?.(args, context)}
+              ${story.render?.(args)}
             </div>
           `;
         })}

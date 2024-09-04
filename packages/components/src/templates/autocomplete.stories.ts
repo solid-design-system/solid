@@ -208,58 +208,6 @@ export const Simple = {
 };
 
 /**
-  This is an example of how to customize the resultsList. It demonstrates how to change the resultItem to a custom element.
-  The search data is mocked and passed to the autoComplete instance, you can search for the following terms: Aktien, Nachhaltig, Union, Europa, ...
- */
-export const TeaserResultItem = {
-  parameters: {
-    controls: {
-      exclude: ['autocomplete']
-    }
-  },
-  render: () => {
-    const setupAutocomplete = solidAutocomplete;
-    const data = mock;
-    return html`
-      <sd-input id="teaser-result-item" type="search"><b slot="label">Teaser result item</b></sd-input>
-      <script type="module">
-        import './autocomplete/autoComplete.min.js';
-
-        // preview-ignore:start
-        const setupAutocomplete = ${setupAutocomplete};
-        const data = ${JSON.stringify(data)};
-        // preview-ignore:end
-
-        Promise.all([customElements.whenDefined('sd-input'), customElements.whenDefined('sd-popup')]).then(() => {
-          /* Simple example */
-          const { config: simpleConfig } = setupAutocomplete('#teaser-result-item');
-          new autoComplete({
-            ...simpleConfig,
-            placeHolder: 'Find funds...',
-            resultsList: {
-              tag: 'sd-popup',
-              maxResults: 3
-            },
-            resultItem: {
-              tag: 'sd-teaser',
-              element: (item, data) => {
-                let headline = document.createElement('h3');
-                item.setAttribute('variant', 'white border-neutral-400');
-                item.innerHTML = 'Lorem ipsum';
-                headline.setAttribute('slot', 'headline');
-                headline.innerHTML = data.match;
-                item.appendChild(headline);
-              }
-            },
-            data
-          });
-        });
-      </script>
-    `;
-  }
-};
-
-/**
   This is e slightly more advanced example of the autoComplete.js library. It demonstrates how to highlight the query string in the results.
  */
 export const HighlightQuery = {

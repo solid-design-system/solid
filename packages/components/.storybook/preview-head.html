@@ -132,12 +132,13 @@
   /**
     * Optimize autodocs for templates
     */
-  [id^='anchor--templates-'].sb-anchor:first-of-type,
-  [id^='anchor--templates-'].sb-anchor:first-of-type + h2 {
-    display: none;
-  }
-
+  .sbdocs-title + [id^='anchor--templates-'].sb-anchor,
+  h1.sbdocs-title + [id^='anchor--templates-'].sb-anchor + h2,
+  [id^='anchor--templates-'].sb-anchor > .sbdocs > .sb-bar,
   h2#stories + [id^='anchor--components-'].sb-anchor {
     display: none;
+  }
+  [id^='anchor--templates-'].sb-anchor > .sbdocs {
+    padding: 0;
   }
 </style>
