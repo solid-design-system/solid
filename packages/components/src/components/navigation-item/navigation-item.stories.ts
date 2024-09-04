@@ -119,7 +119,7 @@ export const Chevron = {
 export const Accordion = {
   render: () =>
     html`<sd-navigation-item vertical>
-      <div style="text-align: left;">Vertical Navigation with Accordion</div>
+      <div>Vertical Navigation with Accordion</div>
       <sd-navigation-item vertical indented slot="children"> Sub Navigation 1 </sd-navigation-item>
       <sd-navigation-item vertical indented slot="children"> Sub Navigation 2 </sd-navigation-item>
       <sd-navigation-item vertical indented slot="children"> Sub Navigation 3 </sd-navigation-item>
@@ -135,7 +135,7 @@ export const Accordion = {
 export const separated = {
   render: () =>
     html`<sd-navigation-item href="https://www.union-investment.de/" target="_blank" vertical separated>
-      <div style="text-align: left;">Vertical Navigation Separated</div>
+      <div>Vertical Navigation Separated</div>
       <sd-navigation-item vertical indented slot="children"> Sub Navigation 1 </sd-navigation-item>
       <sd-navigation-item vertical indented slot="children"> Sub Navigation 2 </sd-navigation-item>
       <sd-navigation-item vertical indented slot="children"> Sub Navigation 3 </sd-navigation-item>
