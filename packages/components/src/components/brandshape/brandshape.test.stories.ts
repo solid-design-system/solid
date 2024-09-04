@@ -54,6 +54,7 @@ const increaseColumnWidth = (): ConstantDefinition => {
  * Default: This shows sd-brandshape in its default state.
  */
 export const Default = {
+  name: 'Default',
   render: (args: any) => {
     return generateTemplate({ args });
   }
@@ -150,6 +151,7 @@ export const Breakpoints = {
  * Use the `base`, `content`, `shape-top`, `shape-middle` or `shape-bottom` part selectors to customize the brandshape.
  */
 export const Parts = {
+  name: 'Parts',
   parameters: {
     controls: { exclude: ['base', 'content', 'shape-top', 'shape-middle', 'shape-bottom'] }
   },
@@ -197,10 +199,4 @@ export const Sample = {
   }
 };
 
-export const Combination = generateScreenshotStory({
-  Default,
-  Shapes,
-  Variants,
-  Breakpoints,
-  Parts
-});
+export const Combination = generateScreenshotStory([Default, Shapes, Variants, Breakpoints, Parts]);
