@@ -22,41 +22,39 @@ export default {
 export const Default = {
   render: () =>
     html` <style>
-        #part-content sd-teaser-media::part(content) {
-          padding: 60px;
+        .sd-headline {
+          justify-content: center;
         }
       </style>
-      <div class="flex flex-wrap gap-8 w-[600px]">
-        <div id="part-content">
-          <sd-teaser-media variant="gradient-dark" class="min-w-[435px] max-w-4xl">
-            <div slot="media" class="relative">
-              <img src="./placeholders/images/coffeeshop.jpg" alt="A skyline of a city" />
-            </div>
-            <h1 slot="headline" class="text-center text-4xl">Gender</h1>
-            <div slot="expandable" class="text-center">
-              <p>We are actively promoting gender equality.</p>
-            </div>
-          </sd-teaser-media>
-        </div>
+      <div class="flex flex-col gap-8">
+        <sd-teaser-media variant="gradient-dark" class="min-w-[435px] max-w-4xl">
+          <div slot="media" class="relative">
+            <img src="./placeholders/images/coffeeshop.jpg" alt="A group of people sitting in a coffee shop" />
+          </div>
+          <h1 slot="headline" class="sd-headline sd-headline--inverted">Gender</h1>
+          <div slot="expandable" class="text-center">
+            <p class="sd-paragraph sd-paragraph--inverted">We are actively promoting gender equality.</p>
+          </div>
+        </sd-teaser-media>
+
         <sd-teaser-media variant="gradient-dark" class="min-w-[435px] max-w-4xl">
           <div slot="media" class="relative">
             <img
               class="aspect-video object-cover"
               src="./placeholders/images/coffeeshop.jpg"
-              alt="A skyline of a city"
+              alt="A group of people sitting in a coffee shop"
             />
           </div>
           <div slot="meta" class="meta-info">
-            <span class="meta-info-item">August 2024</span>
-            <span class="meta-info-item">| Olaf Janßen</span>
+            <span class="meta-info-item">August 2024 | Olaf Janßen</span>
           </div>
           <h6 slot="headline">Market turnaround in sight</h6>
-          <div class="flex flex-col gap-4">
-            <p>
+          <div>
+            <p class="sd-paragraph sd-paragraph--inverted mb-4">
               After a long wait for good news, real estate investors are now seeing the first signs of a recovery on the
               European commercial real estate markets.
             </p>
-            <div class="flex-none">
+            <div>
               <sd-button href="#" target="_blank" variant="primary" inverted>Research view</sd-button>
             </div>
           </div>
@@ -67,12 +65,12 @@ export const Default = {
 export const TeaserMediaWithLink = {
   name: 'Teaser Media with Link Template',
   render: () => html`
-    <div style="margin-bottom: 40px; width: 546px">
-      <sd-teaser-media variant="primary">
-        <img slot="media" src="./placeholders/images/coffeeshop.jpg" alt="Test" />
+    <div style="flex flex-col gap-12">
+      <sd-teaser-media variant="primary" class="max-w-[546px]">
+        <img slot="media" src="./placeholders/images/coffeeshop.jpg" alt="A group of people sitting in a coffee shop" />
         <h3 slot="headline">Your contact person</h3>
         <div class="flex flex-col gap-4">
-          <p>
+          <p class="sd-paragraph sd-paragraph--inverted">
             If you have any questions or would like to obtain further information, please find your dedicated contact
             below.
           </p>
@@ -81,14 +79,12 @@ export const TeaserMediaWithLink = {
           </div>
         </div>
       </sd-teaser-media>
-    </div>
 
-    <div style="margin-bottom: 40px; width: 546px">
-      <sd-teaser-media variant="neutral-100">
-        <img slot="media" src="./placeholders/images/coffeeshop.jpg" alt="Test" />
+      <sd-teaser-media variant="neutral-100" class="max-w-[546px]">
+        <img slot="media" src="./placeholders/images/coffeeshop.jpg" alt="A group of people sitting in a coffee shop" />
         <h3 slot="headline">USA or Europe? It depends on the mix</h3>
         <div class="flex flex-col gap-4">
-          <p>
+          <p class="sd-paragraph">
             A positive growth environment, the tech boom and government investment incentives show this: The USA is
             ahead of the eurozone in many respects. Moritz Bauer, Head of Investment Strategy at Union Investment,
             explains why investors should nevertheless also keep an eye on European investments.
@@ -97,7 +93,7 @@ export const TeaserMediaWithLink = {
             <span class="meta-info-item">12.06.2024</span>
           </div>
           <div class="flex-none">
-            <sd-button href="#" target="_blank" variant="primary">Read only</sd-button>
+            <sd-button href="#" target="_blank" variant="primary">Read now</sd-button>
           </div>
         </div>
       </sd-teaser-media>

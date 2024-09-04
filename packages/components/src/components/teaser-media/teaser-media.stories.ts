@@ -66,7 +66,7 @@ export const Variant = {
   name: 'Variant',
   render: () => html`
     <div class="flex flex-col gap-12">
-      <sd-teaser-media variant="white" class="w-[600px]">
+      <sd-teaser-media variant="white" class="max-w-[600px]">
         <img
           slot="media"
           src="./placeholders/images/architecture.jpg"
@@ -74,12 +74,10 @@ export const Variant = {
           alt="Generic alt"
         />
         <h3 slot="headline">Headline Media Teaser (white – default)</h3>
-        <div class="flex flex-col gap-4">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </div>
+        <p class="sd-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       </sd-teaser-media>
 
-      <sd-teaser-media variant="primary" class="w-[600px]">
+      <sd-teaser-media variant="primary" class="max-w-[600px]">
         <img
           slot="media"
           src="./placeholders/images/architecture.jpg"
@@ -87,12 +85,10 @@ export const Variant = {
           alt="Generic alt"
         />
         <h3 slot="headline">Headline Media Teaser (primary)</h3>
-        <div class="flex flex-col gap-4">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </div>
+        <p class="sd-paragraph sd-paragraph--inverted">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       </sd-teaser-media>
 
-      <sd-teaser-media variant="primary-100" class="w-[600px]">
+      <sd-teaser-media variant="primary-100" class="max-w-[600px]">
         <img
           slot="media"
           src="./placeholders/images/architecture.jpg"
@@ -100,12 +96,10 @@ export const Variant = {
           alt="Generic alt"
         />
         <h3 slot="headline">Headline Media Teaser (primary-100)</h3>
-        <div class="flex flex-col gap-4">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </div>
+        <p class="sd-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       </sd-teaser-media>
 
-      <sd-teaser-media variant="neutral-100" class="w-[600px]">
+      <sd-teaser-media variant="neutral-100" class="max-w-[600px]">
         <img
           slot="media"
           src="./placeholders/images/architecture.jpg"
@@ -113,12 +107,10 @@ export const Variant = {
           alt="Generic alt"
         />
         <h3 slot="headline">Headline Media Teaser (neutral-100)</h3>
-        <div class="flex flex-col gap-4">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </div>
+        <p class="sd-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       </sd-teaser-media>
 
-      <sd-teaser-media variant="gradient-dark" class="w-[600px]">
+      <sd-teaser-media variant="gradient-dark" class="max-w-[600px]">
         <img
           slot="media"
           src="./placeholders/images/architecture.jpg"
@@ -126,12 +118,10 @@ export const Variant = {
           alt="Generic alt"
         />
         <h3 slot="headline">Headline Media Teaser (gradient-dark)</h3>
-        <div class="flex flex-col gap-4">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </div>
+        <p class="sd-paragraph sd-paragraph--inverted">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       </sd-teaser-media>
 
-      <sd-teaser-media variant="gradient-white" class="w-[600px]">
+      <sd-teaser-media variant="gradient-white" class="max-w-[600px]">
         <img
           slot="media"
           src="./placeholders/images/architecture.jpg"
@@ -139,9 +129,7 @@ export const Variant = {
           alt="Generic alt"
         />
         <h3 slot="headline">Headline Media Teaser (gradient-white)</h3>
-        <div class="flex flex-col gap-4">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </div>
+        <p class="sd-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       </sd-teaser-media>
     </div>
   `
@@ -155,7 +143,7 @@ export const Variant = {
 export const DefaultMediaAndHeadlineSlot = {
   name: 'Default, Media and Headline Slot',
   render: () => html`
-    <sd-teaser-media variant="gradient-dark" class="w-[600px]">
+    <sd-teaser-media variant="gradient-dark" class="max-w-[600px]">
       <img
         slot="media"
         src="./placeholders/images/architecture.jpg"
@@ -176,7 +164,7 @@ export const DefaultMediaAndHeadlineSlot = {
 
 export const MetaSlot = {
   render: () => html`
-    <sd-teaser-media variant="gradient-dark" class="w-[600px]">
+    <sd-teaser-media variant="gradient-dark" class="max-w-[600px]">
       <div slot="meta" class="slot slot--border slot--text h-12">Meta slot</div>
       <img
         slot="media"
@@ -197,7 +185,7 @@ export const MetaSlot = {
 
 export const ExpandableSlot = {
   render: () => html`
-    <sd-teaser-media variant="gradient-dark" class="w-[600px]">
+    <sd-teaser-media variant="gradient-dark" class="max-w-[600px]">
       <img
         slot="media"
         src="./placeholders/images/architecture.jpg"
@@ -227,7 +215,7 @@ export const Copyright = {
       }
     </style>
     <div class="flex flex-col gap-12">
-      <sd-teaser-media variant="gradient-dark" class="w-[600px]">
+      <sd-teaser-media variant="gradient-dark" class="max-w-[600px]">
         <img
           slot="media"
           src="./placeholders/images/architecture.jpg"
@@ -239,7 +227,7 @@ export const Copyright = {
           <div slot="default" class="h-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
         </div>
       </sd-teaser-media>
-      <sd-teaser-media variant="gradient-white" class="w-[600px]">
+      <sd-teaser-media variant="gradient-white" class="max-w-[600px]">
         <img
           slot="media"
           src="./placeholders/images/architecture.jpg"
