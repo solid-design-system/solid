@@ -29,7 +29,7 @@ export default {
     {
       type: 'slot',
       name: 'media',
-      value: `<img slot="media" src="./placeholders/images/generic.jpg" class="aspect-video object-cover" alt="Test"/>`
+      value: `<img slot="media" src="./placeholders/images/generic.jpg" class="aspect-video object-cover" alt="Generic alt"/>`
     },
     {
       type: 'slot',
