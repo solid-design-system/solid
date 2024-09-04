@@ -43,26 +43,13 @@ export const Default = {
 
 export const Variants = {
   render: () =>
-    html`<div class="flex flex-row gap-12">
-      <sd-select
-        class="h-[260px] w-[420px]"
-        label="Default"
-        placeholder="Please Select"
-        placement="bottom"
-        max-options-visible="3"
-      >
+    html`<div class="flex flex-row gap-12 h-[260px]">
+      <sd-select label="Default" placeholder="Please Select" placement="bottom" max-options-visible="3">
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
         <sd-option value="option-3">Option 3</sd-option>
       </sd-select>
-      <sd-select
-        class="h-[160px] w-[420px]"
-        label="Checkbox"
-        placeholder="Please Select"
-        placement="bottom"
-        max-options-visible="3"
-        multiple
-      >
+      <sd-select label="Checkbox" placeholder="Please Select" placement="bottom" max-options-visible="3" multiple>
         <sd-option value="option-1" checkbox>Checkbox Option 1</sd-option>
         <sd-option value="option-2" checkbox>Checkbox Option 2</sd-option>
         <sd-option value="option-3" checkbox>Checkbox Option 3</sd-option>
@@ -77,38 +64,18 @@ export const Variants = {
 
 export const Size = {
   render: () =>
-    html` <div class="flex flex-row justify-between">
-      <sd-select
-        class="h-[260px] w-[220px]"
-        label="Large"
-        placeholder="Please Select"
-        placement="bottom"
-        max-options-visible="3"
-      >
+    html` <div class="flex flex-row gap-4 h-[260px]">
+      <sd-select label="Large" placeholder="Please Select" placement="bottom" max-options-visible="3">
         <sd-option value="option-1" size="lg">Option 1</sd-option>
         <sd-option value="option-2" size="lg">Option 2</sd-option>
         <sd-option value="option-3" size="lg">Option 3</sd-option>
       </sd-select>
-      <sd-select
-        class="h-[260px] w-[220px]"
-        label="Medium"
-        placeholder="Please Select"
-        placement="bottom"
-        max-options-visible="3"
-        size="md"
-      >
+      <sd-select label="Medium" placeholder="Please Select" placement="bottom" max-options-visible="3" size="md">
         <sd-option value="option-1" size="md">Option 1</sd-option>
         <sd-option value="option-2" size="md">Option 2</sd-option>
         <sd-option value="option-3" size="md">Option 3</sd-option>
       </sd-select>
-      <sd-select
-        class="h-[260px] w-[220px]"
-        label="Small"
-        placeholder="Please Select"
-        placement="bottom"
-        max-options-visible="3"
-        size="sm"
-      >
+      <sd-select label="Small" placeholder="Please Select" placement="bottom" max-options-visible="3" size="sm">
         <sd-option value="option-1" size="sm">Option 1</sd-option>
         <sd-option value="option-2" size="sm">Option 2</sd-option>
         <sd-option value="option-3" size="sm">Option 3</sd-option>
@@ -122,9 +89,8 @@ export const Size = {
 
 export const Selected = {
   render: () =>
-    html`<div class="flex flex-row gap-12">
+    html`<div class="flex flex-row gap-12 h-[260px]">
       <sd-select
-        class="h-[260px] w-[420px]"
         label="Selected option"
         placeholder="Please Select"
         placement="bottom"
@@ -136,7 +102,6 @@ export const Selected = {
         <sd-option value="option-3">Option 3</sd-option>
       </sd-select>
       <sd-select
-        class="h-[260px] w-[420px]"
         label="Multiple selected option"
         placeholder="Please Select"
         placement="bottom"
@@ -157,20 +122,13 @@ export const Selected = {
 
 export const Disabled = {
   render: () =>
-    html`<div class="flex flex-row gap-12">
-      <sd-select
-        class="h-[260px] w-[420px]"
-        label="Disabled Options"
-        placeholder="Please Select"
-        placement="bottom"
-        max-options-visible="3"
-      >
+    html`<div class="flex flex-row gap-12 h-[260px]">
+      <sd-select label="Disabled Options" placeholder="Please Select" placement="bottom" max-options-visible="3">
         <sd-option value="option-1" disabled>Disabled Option 1</sd-option>
         <sd-option value="option-2" disabled>Disabled Option 2</sd-option>
         <sd-option value="option-3" disabled>Disabled Option 3</sd-option>
       </sd-select>
       <sd-select
-        class="h-[160px] w-[420px]"
         label="Disabled Checkbox Options"
         placeholder="Please Select"
         placement="bottom"
