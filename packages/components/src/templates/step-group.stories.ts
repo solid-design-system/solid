@@ -27,7 +27,7 @@ export const SetActiveStep = {
       </sd-step>
 
       <sd-step size="lg" orientation="horizontal">
-        <p slot="label">Reprehenderit qui in e name</p>
+        <p slot="label">Step 3</p>
       </sd-step>
     </sd-step-group>
 
