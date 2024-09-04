@@ -152,7 +152,8 @@ export const Parts = {
                 <style>
                     #part-${part} sd-switch::part(${part}){outline: solid 2px red};
                     .hidden {display: none}
-                </style>               
+                </style>
+                
                 <div id="part-${part}">${
                   part.includes('control--checked')
                     ? '<sd-switch checked>Default Slot</sd-switch>'
