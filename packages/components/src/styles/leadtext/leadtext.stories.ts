@@ -10,7 +10,7 @@ const { generateTemplate } = storybookTemplate('sd-leadtext');
  * Used for text that should be highlighted and a focal point of the page.
  *
  * **Related templates**:
- *  * - [Headline, Display and Leadtext with Mark](?path=/docs/templates-headline-display-and-leadtext-with-mark--docs)
+ * - [Headline, Display and Leadtext with Mark](?path=/docs/templates-headline-display-and-leadtext-with-mark--docs)
  */
 
 export default {
