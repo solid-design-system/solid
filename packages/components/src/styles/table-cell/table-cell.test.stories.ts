@@ -1,9 +1,16 @@
 import '../../solid-components';
-import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
+
+import {
+  storybookDefaults,
+  storybookHelpers,
+  storybookTemplate,
+  storybookUtilities
+} from '../../../scripts/storybook/helper';
 
 const { argTypes, parameters } = storybookDefaults('sd-table-cell');
 const { overrideArgs } = storybookHelpers('sd-table-cell');
 const { generateTemplate } = storybookTemplate('sd-table-cell');
+const { generateScreenshotStory } = storybookUtilities;
 
 /**
  * The `sd-table-cell` component offers basic styling for table cells.
@@ -11,8 +18,8 @@ const { generateTemplate } = storybookTemplate('sd-table-cell');
  */
 
 export default {
-  title: 'Styles/sd-table-cell',
-  tags: ['!dev'],
+  title: 'Styles/sd-table-cell/Screenshot Tests',
+  tags: ['!autodocs'],
   component: 'sd-table-cell',
   parameters: {
     ...parameters
@@ -29,6 +36,7 @@ export default {
  */
 
 export const Default = {
+  name: 'Default',
   render: (args: any) => {
     return generateTemplate({
       options: {
@@ -38,3 +46,5 @@ export const Default = {
     });
   }
 };
+
+export const Combination = generateScreenshotStory([Default]);
