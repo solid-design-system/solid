@@ -38,19 +38,19 @@ export const NonInteractiveStepGroupWithIcon = {
       <sd-step size="lg" orientation="horizontal" state="default">
         <sd-icon slot="circle-content" name="content/calendar" class="h-12 w-12"></sd-icon>
         <div slot="label">1. Make an appointment</div>
-        <div slot="description">Lorem ipsum est dolor sit amet</div>
+        <p class="sd-paragraph">Get advice from our partner banks and find the right plan for you.</p>
       </sd-step>
 
       <sd-step size="lg" orientation="horizontal" state="current">
         <sd-icon slot="circle-content" name="content/chess-piece" class="h-12 w-12"></sd-icon>
         <span slot="label">2. Select funds for savings plan</span>
-        <div slot="description">Lorem ipsum est dolor sit amet</div>
+        <p class="sd-paragraph">Choose the right fund for your plan from a wide range of funds.</p>
       </sd-step>
 
       <sd-step size="lg" orientation="horizontal" state="disabled">
         <sd-icon slot="circle-content" name="content/certificate" class="h-12 w-12"></sd-icon>
         <span slot="label">3. Open a securities account</span>
-        <div slot="description">Lorem ipsum est dolor sit amet</div>
+        <p class="sd-paragraph">Open your own securities account together with your bank advisor.</p>
       </sd-step>
     </sd-step-group>
   `
