@@ -151,9 +151,7 @@ export const DefaultMediaAndHeadlineSlot = {
         alt="Generic alt"
       />
       <h3 slot="headline">Headline Media Teaser</h3>
-      <div class="flex flex-col gap-4">
-        <div slot="default" class="slot slot--border slot--text h-12">Default slot</div>
-      </div>
+      <div class="slot slot--border slot--text h-12">Default slot</div>
     </sd-teaser-media>
   `
 };

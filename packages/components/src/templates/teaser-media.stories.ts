@@ -74,7 +74,7 @@ export const TeaserMediaWithLink = {
             If you have any questions or would like to obtain further information, please find your dedicated contact
             below.
           </p>
-          <div class="flex-none">
+          <div>
             <sd-button href="#" target="_blank" variant="cta">Feel free to contact us</sd-button>
           </div>
         </div>
@@ -92,7 +92,7 @@ export const TeaserMediaWithLink = {
           <div slot="meta" class="meta-info">
             <span class="meta-info-item">12.06.2024</span>
           </div>
-          <div class="flex-none">
+          <div>
             <sd-button href="#" target="_blank" variant="primary">Read now</sd-button>
           </div>
         </div>
