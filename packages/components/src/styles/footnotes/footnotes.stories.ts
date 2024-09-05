@@ -9,7 +9,7 @@ const { generateTemplate } = storybookTemplate('sd-footnotes');
 /**
  * Used to add additional information/sources related to the content.
  *
- *  * **Related templates**:
+ * **Related templates**:
  * - [Footnotes set start](?path=/docs/templates-footnotes-set-start--docs)
  */
 
@@ -48,7 +48,7 @@ export default {
 export const Default = {
   render: (args: any) => {
     return generateTemplate({
-      options: { templateContent: '<div class="sd-container"><ol class="%CLASSES%">%SLOT%</ol></div?' },
+      options: { templateContent: '<ol class="%CLASSES%">%SLOT%</ol>' },
       args
     });
   }
@@ -57,8 +57,7 @@ export const Default = {
 /**
  * Use the standard html list elements for alternative appearances:
  *
- * - ordered: use an `ol` element to create a numbered list.
- * Use the html `start` attribute to set the starting number of the list, the default value is '1'.
+ * - ordered: use an `ol` element to create a numbered list.<br />Use the html `start` attribute to set the starting number of the list, the default value is '1'.
  * - unordered: use an `ul` element to create an unnumbered list.
  */
 
@@ -80,7 +79,7 @@ export const Variants = {
 };
 
 /**
- * Use the `sd-footnotes--inverted` class to invert the color of the footnotes.
+ * Use the `sd-footnotes--inverted` class when displayed on primary background.
  */
 
 export const Inverted = {
