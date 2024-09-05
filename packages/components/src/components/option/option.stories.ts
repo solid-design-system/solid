@@ -124,9 +124,9 @@ export const Disabled = {
   render: () =>
     html`<div class="flex flex-row gap-12 h-[260px]">
       <sd-select label="Disabled Options" placeholder="Please Select" placement="bottom" max-options-visible="3">
-        <sd-option value="option-1" disabled>Disabled Option 1</sd-option>
-        <sd-option value="option-2" disabled>Disabled Option 2</sd-option>
-        <sd-option value="option-3" disabled>Disabled Option 3</sd-option>
+        <sd-option value="option-1" disabled>Option 1</sd-option>
+        <sd-option value="option-2" disabled>Option 2</sd-option>
+        <sd-option value="option-3" disabled>Option 3</sd-option>
       </sd-select>
       <sd-select
         label="Disabled Checkbox Options"
@@ -135,9 +135,9 @@ export const Disabled = {
         max-options-visible="3"
         multiple
       >
-        <sd-option value="option-1" disabled checkbox>Disabled Checkbox Option 1</sd-option>
-        <sd-option value="option-2" disabled checkbox>Disabled Checkbox Option 2</sd-option>
-        <sd-option value="option-3" disabled checkbox>Disabled Checkbox Option 3</sd-option>
+        <sd-option value="option-1" disabled checkbox>Checkbox Option 1</sd-option>
+        <sd-option value="option-2" disabled checkbox>Checkbox Option 2</sd-option>
+        <sd-option value="option-3" disabled checkbox>Checkbox Option 3</sd-option>
       </sd-select>
     </div>`
 };
