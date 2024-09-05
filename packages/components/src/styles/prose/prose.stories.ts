@@ -9,7 +9,7 @@ const { generateTemplate } = storybookTemplate('sd-prose');
 const html = String.raw;
 
 /**
- * Used to provides a set of `prose` classes to choose from in a richtext-editor.
+ * Used to provide a set of `prose` classes to choose from in a richtext-editor.
  */
 
 export default {
