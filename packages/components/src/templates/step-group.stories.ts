@@ -37,19 +37,19 @@ export const NonInteractiveStepGroupWithIcon = {
     <sd-step-group size="lg" orientation="horizontal" active-step="0" not-interactive>
       <sd-step size="lg" orientation="horizontal" state="default">
         <sd-icon slot="circle-content" name="content/calendar" class="h-12 w-12"></sd-icon>
-        <div slot="label">Make an appointment</div>
+        <div slot="label">1. Make an appointment</div>
         <div slot="description">Lorem ipsum est dolor sit amet</div>
       </sd-step>
 
       <sd-step size="lg" orientation="horizontal" state="current">
         <sd-icon slot="circle-content" name="content/chess-piece" class="h-12 w-12"></sd-icon>
-        <span slot="label">Select funds for savings plan</span>
+        <span slot="label">2. Select funds for savings plan</span>
         <div slot="description">Lorem ipsum est dolor sit amet</div>
       </sd-step>
 
       <sd-step size="lg" orientation="horizontal" state="disabled">
         <sd-icon slot="circle-content" name="content/certificate" class="h-12 w-12"></sd-icon>
-        <span slot="label">Open a securities account</span>
+        <span slot="label">3. Open a securities account</span>
         <div slot="description">Lorem ipsum est dolor sit amet</div>
       </sd-step>
     </sd-step-group>

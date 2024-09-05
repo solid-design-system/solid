@@ -66,8 +66,8 @@ export const Default = {
 export const Size = {
   name: 'Size',
   render: () => html`
-    <div class="space-y-5">
-      <sd-step-group size="lg" orientation="horizontal" active-step="1">
+    <div class="flex flex-col space-y-12">
+      <sd-step-group size="lg" orientation="horizontal" active-step="1" class="w-full">
         <sd-step size="lg" orientation="horizontal" state="default">
           <p slot="label">Step 1</p>
         </sd-step>
@@ -81,7 +81,7 @@ export const Size = {
         </sd-step>
       </sd-step-group>
 
-      <sd-step-group size="sm" orientation="horizontal" active-step="1">
+      <sd-step-group size="sm" orientation="horizontal" active-step="1" class="w-full">
         <sd-step size="sm" orientation="horizontal" state="default">
           <p slot="label">Step 1</p>
         </sd-step>
@@ -105,8 +105,8 @@ export const Size = {
 export const Orientation = {
   name: 'Orientation',
   render: () => html`
-    <div class="space-y-5">
-      <sd-step-group size="lg" orientation="horizontal" active-step="1">
+    <div class="flex flex-col space-y-12">
+      <sd-step-group size="lg" orientation="horizontal" active-step="1" class="w-full">
         <sd-step size="lg" orientation="horizontal" state="default">
           <p slot="label">Step 1</p>
         </sd-step>
@@ -120,8 +120,8 @@ export const Orientation = {
         </sd-step>
       </sd-step-group>
 
-      <div class="flex gap-12 h-[20vh] pl-[56px]">
-        <sd-step-group size="lg" orientation="vertical" active-step="1">
+      <div class="flex h-[20em] pl-[56px]">
+        <sd-step-group size="lg" orientation="vertical" active-step="1" class="w-full">
           <sd-step size="lg" orientation="vertical" state="default">
             <p slot="label">Step 1</p>
           </sd-step>
