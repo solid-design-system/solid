@@ -14,7 +14,11 @@ export default {
   tags: ['!dev'],
   component: 'sd-map-marker',
   parameters: {
-    ...parameters
+    ...parameters,
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2544-17460&node-type=FRAME&m=dev'
+    }
   },
   argTypes,
   decorators: [withActions] as any
