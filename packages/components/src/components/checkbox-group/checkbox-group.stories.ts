@@ -7,7 +7,7 @@ const { generateTemplate } = storybookTemplate('sd-checkbox-group');
 const { overrideArgs } = storybookHelpers('sd-checkbox-group');
 
 /**
- * Allows users to select multiple options from a list of options.
+ * Used to select multiple options from a list of options.
  *
  * **Related templates:**
  * - [Checkbox (Group)](?path=/docs/templates-checkbox-group--docs)
