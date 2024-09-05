@@ -42,8 +42,7 @@ export const Default = {
 export const Reset = {
   render: () => html`
     <div class="flex flex-row gap-12">
-      <button type="button" class="sd-interactive">Lorem Ipsum</button>
-      <button class="sd-interactive sd-interactive--reset">Lorem Ipsum</button>
+      <button class="sd-interactive sd-interactive--reset">Reset</button>
     </div>
   `
 };
@@ -57,13 +56,13 @@ export const Reset = {
 export const Inverted = {
   render: () => html`
     <div class="bg-primary p-4">
-      <button class="sd-interactive sd-interactive--inverted sd-interactive--reset">Lorem Ipsum</button>
+      <button class="sd-interactive sd-interactive--inverted sd-interactive--reset">Inverted</button>
     </div>
   `
 };
 
 /**
- * Use the `sd-interactive--disabled` class to make an interactive element look disabled.
+ * Use the `sd-interactive--disabled` class to disabled an interactive element.
  *
  * This works as well when setting an `disabled` attribute on the element.
  */
@@ -71,8 +70,7 @@ export const Inverted = {
 export const Disabled = {
   render: () => html`
     <div class="flex flex-row gap-12">
-      <button class="sd-interactive sd-interactive--reset">Lorem Ipsum</button>
-      <button class="sd-interactive sd-interactive--disabled sd-interactive--reset">Lorem Ipsum</button>
+      <button class="sd-interactive sd-interactive--disabled sd-interactive--reset">Disabled</button>
     </div>
   `
 };
