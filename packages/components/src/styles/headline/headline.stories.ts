@@ -81,7 +81,7 @@ export const Inverted = {
 };
 
 /**
- * Use the `sd-headline--inline` class to maintain inline positioning when used together with an Icon or other components.
+ * Use the `sd-headline--inline` class to maintain inline positioning when used together with an icon or other components.
  */
 export const Inline = {
   render: () => html`
