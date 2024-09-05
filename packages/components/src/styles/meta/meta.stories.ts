@@ -37,7 +37,7 @@ export const Default = {
 /**
  * Use `sd-meta` modifiers for alternative appearances.
  *
- * - black (default)
+ * - Black is the default
  * - `sd-meta--light`: Neutral-700 can be used to deemphasize text content
  */
 
@@ -52,8 +52,8 @@ export const Variants = {
 /**
  * Use `sd-meta` modifiers for alternative appearances.
  *
- * - large (default)
- * - `sd-meta--size-sm`: Small can be used as an alternative in tight spaces.
+ * - Large is the default size
+ * - `sd-meta--size-sm`: Small can be used as an alternative in tight spaces
  */
 
 export const Size = {
@@ -67,8 +67,7 @@ export const Size = {
 /**
  * Use the `sd-meta--inverted` class when displayed on primary background.
  *
- * Once inverted meta can be used in 2 colors alternatives:
- * - white (default)
+ * - White is the default
  * - `sd-meta--light`: Primary-400 can be used to deemphasize text content
  */
 export const Inverted = {
