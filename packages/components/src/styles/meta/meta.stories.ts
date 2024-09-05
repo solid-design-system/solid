@@ -7,9 +7,7 @@ const { overrideArgs } = storybookHelpers('sd-meta');
 const { generateTemplate } = storybookTemplate('sd-meta');
 
 /**
- * Used to display meta information like file size, date or whatever needed.
- *
- * Separated by pipes.
+ * Used to display meta information like file size, date or other.
  */
 
 export default {
@@ -23,61 +21,61 @@ export default {
       url: 'https://www.figma.com/file/Um1B3fI5fvdFVJv6LO7kZG/Meta-Information?type=design&node-id=0-1&mode=design&t=I2fDQn7HjSc75K1V-0'
     }
   },
-  args: overrideArgs({ type: 'slot', name: 'default', value: '11. August 2023' }),
+  args: overrideArgs({ type: 'slot', name: 'default', value: 'Meta information' }),
   argTypes
 };
 
 export const Default = {
   render: (args: any) => {
     return generateTemplate({
-      options: { templateContent: '<time class="%CLASSES%" datetime="2023-08-11">%SLOT%</time>' },
+      options: { templateContent: '<span class="%CLASSES%">%SLOT%</span>' },
       args
     });
   }
 };
 
 /**
- * Meta can be used in 2 colors alternatives:
+ * Use `sd-meta` modifiers for alternative appearances.
  *
  * - black (default)
- * - `sd-meta--light`: neutral-700
+ * - `sd-meta--light`: Neutral-700 can be used to deemphasize text content
  */
 
 export const Variants = {
   render: () =>
     html`<div class="flex flex-row gap-12">
-      <time class="sd-meta" datetime="2023-08-11">Black</time>
-      <time class="sd-meta sd-meta--light" datetime="2023-08-11">Neutral-700</time>
+      <span class="sd-meta">Black</span>
+      <span class="sd-meta sd-meta--light">Neutral-700</span>
     </div>`
 };
 
 /**
- * Use `sd-meta` modifiers for alternative appearances:
+ * Use `sd-meta` modifiers for alternative appearances.
  *
- * - Large is the default size.
+ * - large (default)
  * - `sd-meta--size-sm`: Small can be used as an alternative in tight spaces.
  */
 
 export const Size = {
   render: () =>
     html`<div class="flex flex-row gap-12">
-      <time class="sd-meta sd-meta--pipe" datetime="2023-08-11">Large</time>
-      <time class="sd-meta sd-meta--size-sm sd-meta--pipe" datetime="2023-08-11">Small</time>
+      <span class="sd-meta">Large</span>
+      <span class="sd-meta sd-meta--size-sm">Small</span>
     </div>`
 };
 
 /**
- * Use the `sd-meta--inverted` to make information with inverted color.
+ * Use the `sd-meta--inverted` class when displayed on primary background.
  *
  * Once inverted meta can be used in 2 colors alternatives:
  * - white (default)
- * - `sd-meta--light`: primary-400
+ * - `sd-meta--light`: Primary-400 can be used to deemphasize text content
  */
 export const Inverted = {
   render: () =>
     html` <div class="p-4 bg-primary flex flex-row gap-12">
-      <time class="sd-meta sd-meta--inverted" datetime="2023-08-11">White</time>
-      <time class="sd-meta sd-meta--inverted sd-meta--light" datetime="2023-08-11">Primary-400</time>
+      <span class="sd-meta sd-meta--inverted">White</span>
+      <span class="sd-meta sd-meta--inverted sd-meta--light">Primary-400</span>
     </div>`
 };
 
@@ -86,8 +84,7 @@ export const Inverted = {
  */
 export const Pipe = {
   render: () =>
-    html`<time class="sd-meta sd-meta--pipe" datetime="2023-08-11">With Pipe</time>
-      <time class="sd-meta sd-meta--pipe" datetime="2023-08-11">With Pipe</time>
-      <time class="sd-meta" datetime="2023-08-11">With Pipe</time>
-      <time class="sd-meta ml-12" datetime="2023-08-11">Without Pipe</time>`
+    html`<span class="sd-meta sd-meta--pipe">With Pipe</span>
+      <span class="sd-meta sd-meta--pipe">With Pipe</span>
+      <span class="sd-meta">With Pipe</span>`
 };
