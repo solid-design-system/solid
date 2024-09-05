@@ -39,14 +39,12 @@ export default {
             justify-content: center;
           }
 
+          #anchor--components-sd-tooltip--size .innerZoomElementWrapper,
+          #anchor--components-sd-tooltip--placement .innerZoomElementWrapper,
+          #anchor--components-sd-tooltip--trigger .innerZoomElementWrapper,
+          #anchor--components-sd-tooltip--hoist .innerZoomElementWrapper,
           .template-height {
             height: 110px;
-          }
-          .placement-story td.template,
-          #story--components-sd-tooltip--skidding td.template,
-          #story--components-sd-tooltip--distance td.template {
-            position: relative;
-            overflow: auto;
           }
         </style>
         ${story()}`
@@ -71,27 +69,55 @@ export const Default = {
  * Use the `size` attribute to set the size.
  */
 export const Size = {
-  name: 'Size',
   render: () => html`
     <div class="flex items-center gap-12">
-      <sd-tooltip content="Lorem ipsum" placement="top" size="lg" trigger="click focus"></sd-tooltip>
-      <sd-tooltip content="Lorem ipsum" placement="top" size="sm" trigger="click focus"></sd-tooltip>
+      <sd-tooltip content="Lorem ipsum" placement="bottom" size="lg" trigger="click focus"></sd-tooltip>
+      <sd-tooltip content="Lorem ipsum" placement="bottom" size="sm" trigger="click focus"></sd-tooltip>
     </div>
   `
 };
 
 /**
  * Use the `placement` attribute to set the placement.
+ *
+ * - `top`: displays tooltip above the trigger element
+ * - `top-start`: displays tooltip above the trigger element and aligns arrow to the start of the tooltip container
+ * - `top-end`: displays tooltip above the trigger element and aligns arrow to the end of the tooltip container
+ * - `bottom`: displays tooltip below the trigger element
+ * - `bottom-start`: displays tooltip below the trigger element and aligns arrow to the start of the tooltip container
+ * - `bottom-end`: displays tooltip below the trigger element and aligns arrow to the end of the tooltip container
  */
 export const Placement = {
-  name: 'Placement',
-  render: () => html` <sd-tooltip content="Lorem ipsum" placement="top" size="lg" trigger="click focus"></sd-tooltip> `
+  render: () => html`
+    <sd-tooltip content="Lorem ipsum" placement="bottom" size="lg" trigger="click focus"></sd-tooltip>
+  `
 };
 
 /**
  * Use the `disabled` attribute to disable the tooltip.
  */
 export const Disabled = {
-  name: 'Disabled',
   render: () => html` <sd-tooltip content="Lorem ipsum" placement="top" size="lg" disabled></sd-tooltip> `
+};
+
+/**
+ * Use the `trigger` attribute to control how the tooltip is triggered.
+ *
+ * - `click`: displays the tooltip when the trigger element is clicked
+ * - `hover`: displays the tooltip when the trigger element is hovered
+ * - `focus`: displays the tooltip when the trigger element is focused
+ * - `manual`: displays the tooltip when the `open` attribute is set to `true`
+ */
+export const Trigger = {
+  render: () => html` <sd-tooltip content="Lorem ipsum" placement="bottom" size="lg"></sd-tooltip> `
+};
+
+/**
+ * Use the `hoist` attribute to prevent the tooltip from being clipped when it's placed inside a container with `overflow: auto | hidden | scroll`.
+ */
+export const Hoist = {
+  render: () =>
+    html` <div class="flex items-end overflow-scroll h-[15em] w-16">
+      <sd-tooltip content="Lorem ipsum" placement="top" size="lg"></sd-tooltip>
+    </div>`
 };
