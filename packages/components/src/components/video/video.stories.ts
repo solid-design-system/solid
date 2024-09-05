@@ -8,6 +8,9 @@ const { generateTemplate } = storybookTemplate('sd-video');
 
 /**
  * Used to embed and control videos.
+ *
+ * **Related templates**:
+ * - [Video with Description and Copyright](?path=/docs/templates-video-with-description-and-copyright--docs)
  */
 
 export default {
@@ -62,7 +65,7 @@ export const VideoElementWithPosterSlot = {
 export const Playing = {
   render: () => html`
     <sd-video playing>
-      <img alt="Test" class="w-[854px] aspect-video cover" src="./placeholders/images/architecture.jpg" />
+      <img alt="Generic Alt" class="w-[854px] aspect-video cover" src="./placeholders/images/architecture.jpg" />
     </sd-video>
   `
 };
@@ -74,7 +77,7 @@ export const Playing = {
 export const Overlay = {
   render: () => html`
     <sd-video overlay>
-      <img alt="Test" class="w-[854px] aspect-video cover" src="./placeholders/images/architecture.jpg" />
+      <img alt="Generic Alt" class="w-[854px] aspect-video cover" src="./placeholders/images/architecture.jpg" />
     </sd-video>
   `
 };
