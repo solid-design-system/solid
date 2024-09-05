@@ -9,7 +9,7 @@ const { generateTemplate } = storybookTemplate('sd-meta');
 /**
  * Used to display meta information like file size, date or whatever needed.
  *
- * Seperated by pipes.
+ * Separated by pipes.
  */
 
 export default {
