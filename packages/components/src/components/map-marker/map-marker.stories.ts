@@ -25,7 +25,6 @@ export default {
  */
 
 export const Default = {
-  name: 'Default',
   parameters: { controls: { exclude: ['default'] } },
   render: (args: any) => {
     return generateTemplate({ args });
@@ -40,7 +39,6 @@ export const Default = {
  * - `cluster`: A variant that is used to show multiple locations on the map.
  */
 export const Variant = {
-  name: 'Variant',
   render: () => html`
     <div class="flex items-center gap-12">
       <sd-map-marker></sd-map-marker>
@@ -60,7 +58,6 @@ export const Variant = {
  * - `active`: The state when the marker is active.
  */
 export const State = {
-  name: 'State',
   render: () => html`
     <div class="flex gap-12">
       <div class="flex flex-col space-y-5">
@@ -94,7 +91,6 @@ export const State = {
  * Use the `animated` attribute to animate the marker.
  */
 export const Animated = {
-  name: 'Animated',
   render: () => html`
     <sd-map-marker class="animated-example" variant="main" state="default" animated=""></sd-map-marker>
     <script>
@@ -110,7 +106,6 @@ export const Animated = {
  * Use the default slot to include content in the marker.
  */
 export const Slot = {
-  name: 'Slot',
   render: () => html`
     <div class="flex gap-4 items-center">
       <sd-map-marker variant="place">
