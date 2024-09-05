@@ -103,7 +103,7 @@ export const Ratios = {
 };
 
 /**
- * `Description` can be shown at the bottom.
+ * Use the html `figcaption` element to add a description.
  */
 export const MediaWithDescription = {
   name: 'Description (Optional)',
