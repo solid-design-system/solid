@@ -8,19 +8,12 @@ const { argTypes, parameters } = storybookDefaults('sd-select');
 const { generateTemplate } = storybookTemplate('sd-select');
 const { overrideArgs } = storybookHelpers('sd-select');
 
-// Reusable Constants
-const twoOptionsConstant: ConstantDefinition = {
-  type: 'slot',
-  name: 'default',
-  value: '<sd-option value="option-1">Option 1</sd-option><sd-option value="option-2">Option 2</sd-option>'
-};
 const threeOptionsConstant: ConstantDefinition = {
   type: 'slot',
   name: 'default',
   value:
     '<sd-option value="option-1">Option 1</sd-option><sd-option value="option-2">Option 2</sd-option><sd-option value="option-3">Option 3</sd-option>'
 };
-const multipleConstant: ConstantDefinition = { type: 'attribute', name: 'multiple', value: true };
 const labelConstant: ConstantDefinition = { type: 'attribute', name: 'label', value: 'Label' };
 
 /**
@@ -69,54 +62,13 @@ export const Default = {
 };
 
 /**
- * Use the `open` attribute the state of the select to open.
- */
-
-export const Open = {
-  name: 'Open',
-  render: () => html`
-    <div class="w-[500px] h-[300px]">
-      <sd-select
-        class="open-example"
-        size="lg"
-        label="Label"
-        placeholder="Please Select"
-        placement="bottom"
-        max-options-visible="3"
-        open
-      >
-        <sd-option value="option-1">Option 1</sd-option>
-        <sd-option value="option-2">Option 2</sd-option>
-        <sd-option value="option-3">Option 3</sd-option>
-      </sd-select>
-    </div>
-    <!-- Script is only used for demo purposes -->
-    <script>
-      const openSelectExample = document.querySelector('.open-example');
-      setTimeout(() => {
-        openSelectExample.open = true;
-      }, 500);
-    </script>
-  `
-};
-
-/**
  * Use the `size` attribute the size. It will cascade to slotted `sd-option` elements.
  */
 
 export const Size = {
-  name: 'Size',
   render: () => html`
-    <div class="flex gap-12 h-[300px]">
-      <sd-select
-        size="lg"
-        label="Label"
-        placeholder="Please Select"
-        placement="bottom"
-        multiple=""
-        max-options-visible="3"
-        value="option-1 option-2 option-3 option-4"
-      >
+    <div class="flex gap-12 h-[500px]">
+      <sd-select size="lg" label="Label" placement="bottom" value="">
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
         <sd-option value="option-3">Option 3</sd-option>
@@ -124,15 +76,7 @@ export const Size = {
         <sd-option value="option-5">Option 5</sd-option>
       </sd-select>
 
-      <sd-select
-        size="md"
-        label="Label"
-        placeholder="Please Select"
-        placement="bottom"
-        multiple=""
-        max-options-visible="3"
-        value="option-1 option-2 option-3 option-4"
-      >
+      <sd-select size="md" label="Label" placement="bottom" value="">
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
         <sd-option value="option-3">Option 3</sd-option>
@@ -140,15 +84,7 @@ export const Size = {
         <sd-option value="option-5">Option 5</sd-option>
       </sd-select>
 
-      <sd-select
-        size="sm"
-        label="Label"
-        placeholder="Please Select"
-        placement="bottom"
-        multiple=""
-        max-options-visible="3"
-        value="option-1 option-2 option-3 option-4"
-      >
+      <sd-select size="sm" label="Label" placement="bottom" value="">
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
         <sd-option value="option-3">Option 3</sd-option>
@@ -164,19 +100,9 @@ export const Size = {
  */
 
 export const Placement = {
-  name: 'Placement',
   render: () => html`
     <div class="flex items-center gap-12 h-[500px]">
-      <sd-select
-        class="self-baseline"
-        size="lg"
-        label="Label"
-        placeholder="Please Select"
-        placement="bottom"
-        multiple=""
-        max-options-visible="3"
-        value="option-1 option-2 option-3 option-4"
-      >
+      <sd-select class="self-baseline" size="lg" label="Label" placement="bottom" value="">
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
         <sd-option value="option-3">Option 3</sd-option>
@@ -184,15 +110,7 @@ export const Placement = {
         <sd-option value="option-5">Option 5</sd-option>
       </sd-select>
 
-      <sd-select
-        size="lg"
-        label="Label"
-        placeholder="Please Select"
-        placement="top"
-        multiple=""
-        max-options-visible="3"
-        value="option-1 option-2 option-3 option-4"
-      >
+      <sd-select size="lg" label="Label" placement="top" value="">
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
         <sd-option value="option-3">Option 3</sd-option>
@@ -204,23 +122,68 @@ export const Placement = {
 };
 
 /**
- * Use the `clearable` attribute to allow the user to clear the selected value.
+ * Use the `label` slot to add a label with custom markup.
+ */
+
+export const Label = {
+  render: () => html`
+    <div class="w-[300px] h-[500px]">
+      <sd-select size="lg" label="Label" placement="bottom" value="">
+        <div slot="label">Label</div>
+        <sd-option value="option-1">Option 1</sd-option>
+        <sd-option value="option-2">Option 2</sd-option>
+        <sd-option value="option-3">Option 3</sd-option>
+        <sd-option value="option-4">Option 4</sd-option>
+        <sd-option value="option-5">Option 5</sd-option>
+      </sd-select>
+    </div>
+  `
+};
+
+/**
+ * Use the `placeholder` attribute to show a placeholder when no option is selected.
+ */
+
+export const Placeholder = {
+  render: () => html`
+    <div class="w-[300px] h-[500px]">
+      <sd-select size="lg" label="Label" placeholder="Please Select" placement="bottom" value="">
+        <sd-option value="option-1">Option 1</sd-option>
+        <sd-option value="option-2">Option 2</sd-option>
+        <sd-option value="option-3">Option 3</sd-option>
+        <sd-option value="option-4">Option 4</sd-option>
+        <sd-option value="option-5">Option 5</sd-option>
+      </sd-select>
+    </div>
+  `
+};
+
+/**
+ * Use the `help-text` attribute to provide additional context or instructions.
+ */
+
+export const HelpText = {
+  render: () => html`
+    <div class="w-[300px] h-[500px]">
+      <sd-select size="lg" label="Label" placement="bottom" value="" help-text="Please select an option from the list.">
+        <sd-option value="option-1">Option 1</sd-option>
+        <sd-option value="option-2">Option 2</sd-option>
+        <sd-option value="option-3">Option 3</sd-option>
+        <sd-option value="option-4">Option 4</sd-option>
+        <sd-option value="option-5">Option 5</sd-option>
+      </sd-select>
+    </div>
+  `
+};
+
+/**
+ * Use the `clearable` attribute to add a clear button that removes the selected value.
  */
 
 export const Clearable = {
-  name: 'Clearable',
   render: () => html`
-    <div class="w-[300px]">
-      <sd-select
-        size="lg"
-        label="Label"
-        placeholder="Please Select"
-        placement="bottom"
-        multiple=""
-        max-options-visible="3"
-        clearable=""
-        value="option-1 option-2 option-3 option-4"
-      >
+    <div class="w-[300px] h-[500px]">
+      <sd-select size="lg" label="Label" placement="bottom" clearable="" value="option-1">
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
         <sd-option value="option-3">Option 3</sd-option>
@@ -236,20 +199,74 @@ export const Clearable = {
  */
 
 export const Disabled = {
-  name: 'Disabled',
   render: () => html`
-    <div class="w-[500px]">
+    <div class="w-[300px]">
+      <sd-select size="lg" label="Label" placement="bottom" value="" disabled>
+        <sd-option value="option-1">Option 1</sd-option>
+        <sd-option value="option-2">Option 2</sd-option>
+        <sd-option value="option-3">Option 3</sd-option>
+        <sd-option value="option-4">Option 4</sd-option>
+        <sd-option value="option-5">Option 5</sd-option>
+      </sd-select>
+    </div>
+  `
+};
+
+/**
+ * Use the `multiple` attribute to allow multiple options to be selected.
+ */
+
+export const Multiple = {
+  render: () => html`
+    <div class="w-[300px] h-[500px]">
+      <sd-select size="lg" label="Label" placement="bottom" multiple="" value="option-1 option-2">
+        <sd-option value="option-1">Option 1</sd-option>
+        <sd-option value="option-2">Option 2</sd-option>
+        <sd-option value="option-3">Option 3</sd-option>
+        <sd-option value="option-4">Option 4</sd-option>
+        <sd-option value="option-5">Option 5</sd-option>
+      </sd-select>
+    </div>
+  `
+};
+
+/**
+ * Use the `useTags` attribute to display selected options as tags using the `sd-tag` component.
+ *
+ * **Hint:** it requires the `multiple` attribute to be set.
+ */
+
+export const useTags = {
+  render: () => html`
+    <div class="w-[300px] h-[500px]">
+      <sd-select size="lg" label="Label" placement="bottom" multiple="" value="option-1 option-2" useTags>
+        <sd-option value="option-1">Option 1</sd-option>
+        <sd-option value="option-2">Option 2</sd-option>
+        <sd-option value="option-3">Option 3</sd-option>
+        <sd-option value="option-4">Option 4</sd-option>
+        <sd-option value="option-5">Option 5</sd-option>
+      </sd-select>
+    </div>
+  `
+};
+
+/**
+ * Use the `max-options-visible` attribute to define the maximum number of selected options that will be visible.
+ *
+ * **Hint:** it requires the `multiple` and `useTags` attributes to be set.<br />After the maximum number of options is reached, the select will display a message indicating how many more options are selected.<br />To remove the limit, set the attribute to `0`.
+ */
+
+export const MaxOptionsVisible = {
+  render: () => html`
+    <div class="w-[300px] h-[500px]">
       <sd-select
         size="lg"
         label="Label"
-        placeholder="Please Select"
         placement="bottom"
-        clearable=""
-        disabled=""
         multiple=""
-        usetags=""
-        max-options-visible="3"
-        value="option-1 option-2 option-3 option-4"
+        value="option-1 option-2 option-3"
+        useTags
+        max-options-visible="2"
       >
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
@@ -266,21 +283,9 @@ export const Disabled = {
  */
 
 export const Required = {
-  name: 'Required',
   render: () => html`
     <div class="w-[500px] h-[300px]">
-      <sd-select
-        size="lg"
-        label="Label"
-        placeholder="Please Select"
-        placement="bottom"
-        clearable=""
-        multiple=""
-        usetags=""
-        max-options-visible="3"
-        value=""
-        required=""
-      >
+      <sd-select size="lg" label="Label" placeholder="Please Select" placement="bottom" value="" required="">
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
         <sd-option value="option-3">Option 3</sd-option>
@@ -292,235 +297,26 @@ export const Required = {
 };
 
 /**
- * Use `<sl-divider>` to group listbox items visually. You can also use `<small>` to provide labels, but they won’t be announced by most assistive devices.
+ * Use the `style-on-valid` attribute to apply styles when the select is valid.
  */
 
-export const SampleGroupingOptions = {
-  name: 'Sample: Grouping Options',
-  parameters: {
-    controls: {
-      exclude: ['open-attr', 'default']
-    }
-  },
-  render: (args: any) => {
-    return html`<div class="h-[290px] w-[420px]">
-      ${generateTemplate({
-        constants: [
-          {
-            type: 'slot',
-            name: 'default',
-            value:
-              '<div class="text-black px-4 font-bold">Nisi eu excepteur anim esse</div><sd-option value="option-1">Option 1</sd-option><sd-option value="option-2">Option 2</sd-option><sd-divider class="mb-2"></sd-divider><div class="text-black px-4 font-bold">Nisi eu excepteur anim esse</div><sd-option value="option-3">Option 3</sd-option>'
-          }
-        ],
-        args
-      })}
-    </div>`;
-  }
-};
-
-/**
- * Demonstrates the form behavior with validation styles when the `required` attribute is set to `true`.
- */
-
-export const SampleForm = {
-  name: 'Sample: Form',
-  parameters: {
-    controls: {
-      exclude: ['open-attr', 'label', 'name', 'useTags', 'value', 'multiple', 'max-options-visible', 'default']
-    }
-  },
-  render: (args: { 'open-attr'?: string }) => {
-    delete args['open-attr'];
-
-    const sharedConstants: ConstantDefinition[] = [
-      { type: 'attribute', name: 'form', value: 'testForm' },
-      { type: 'attribute', name: 'clearable', value: true },
-      { type: 'attribute', name: 'required', value: true },
-      twoOptionsConstant
-    ];
-
-    return html`
-      <form action="" method="get" id="testForm" name="testForm" class="w-[370px]">
-        <div class="mb-6">
-          ${generateTemplate({
-            constants: [
-              ...sharedConstants,
-              { type: 'attribute', name: 'label', value: 'Required' },
-              { type: 'attribute', name: 'name', value: 'required field' }
-            ],
-            args
-          })}
-        </div>
-        <div class="mb-6">
-          ${generateTemplate({
-            constants: [
-              ...sharedConstants,
-              { type: 'attribute', name: 'label', value: 'Required Multiple' },
-              { type: 'attribute', name: 'name', value: 'required multiple field' },
-              multipleConstant
-            ],
-            args
-          })}
-        </div>
-        <div class="mb-8">
-          ${generateTemplate({
-            constants: [
-              ...sharedConstants,
-              { type: 'attribute', name: 'label', value: 'Required Multiple w/ Tags' },
-              { type: 'attribute', name: 'name', value: 'required multiple tags field' },
-              multipleConstant,
-              { type: 'attribute', name: 'useTags', value: true }
-            ],
-            args
-          })}
-        </div>
-        <sd-button type="submit">Submit</sd-button>
-      </form>
-      <script>
-        function handleSubmit(event) {
-          const form = document.querySelector('#testForm');
-          const sdSelects = Array.from(document.querySelectorAll('sd-select'));
-
-          const isValid = sdSelect => sdSelect.checkValidity();
-
-          if (sdSelects.every(isValid)) {
-            event.preventDefault(); // Prevent the default form submission behavior
-
-            const formData = new FormData(form);
-            const formValues = Object.fromEntries(formData);
-
-            alert('Form submitted successfully with the following values: ' + JSON.stringify(formValues, null, 2));
-          }
-        }
-
-        document.querySelector('#testForm').addEventListener('submit', handleSubmit);
-      </script>
-    `;
-  }
-};
-
-/**
- * 1. You can use the `setCustomValidity` method to set a custom validation message. This will override any native validation messages.
- * 2. Set an empty string to clear the custom validity and make the input valid.
- * 3. To show the validation message, call the `reportValidity` method. Originally this would show a native validation bubble, but we show the error messages inline.
- */
-
-export const setCustomValidity = {
-  parameters: {
-    chromatic: { disableSnapshot: true }
-  },
-  render: () => {
-    return html`
-      <!-- block submit and show alert instead -->
-      <form id="validationForm" class="flex flex-col gap-2">
-        <sd-select id="custom-input" style-on-valid>
-          <sd-option value="option-1">Option 1</sd-option>
-          <sd-option value="option-2">Option 2</sd-option>
-          <sd-option value="option-3">Option 3</sd-option>
-        </sd-select>
-        <div>
-          <sd-button type="submit">Submit</sd-button>
-          <sd-button id="error-button" variant="secondary">Set custom error</sd-button>
-          <sd-button id="success-button" variant="secondary">Set success</sd-button>
-          <sd-button type="reset" variant="secondary">Reset</sd-button>
-        </div>
-      </form>
-      <script type="module">
-        // Wait for custom elements to be defined
-        await Promise.all([
-          customElements.whenDefined('sd-select'),
-          customElements.whenDefined('sd-button'),
-          customElements.whenDefined('sd-option')
-        ]).then(() => {
-          const form = document.getElementById('validationForm');
-          const input = document.getElementById('custom-input');
-          const setErrorButton = document.getElementById('error-button');
-          const setSuccessButton = document.getElementById('success-button');
-
-          // Initial error
-          const errorMessage = \`This is an initial custom error (\${new Date().toLocaleTimeString()})\`;
-          input.setCustomValidity(errorMessage);
-          input.reportValidity();
-
-          // Show error message
-          setErrorButton.addEventListener('click', () => {
-            const errorMessage = \`This is a new custom error (\${new Date().toLocaleTimeString()})\`;
-            input.setCustomValidity(errorMessage);
-            input.reportValidity();
-          });
-
-          // Show success message
-          setSuccessButton.addEventListener('click', () => {
-            input.setCustomValidity(''); // Clear custom validity
-            input.reportValidity();
-          });
-
-          form.addEventListener('submit', event => {
-            event.preventDefault();
-            alert('All fields are valid!');
-          });
-        });
-      </script>
-    `;
-  }
-};
-
-/**
- * Demonstrates a form containing all existing Solid form elements.
- */
-
-export const SolidForm = {
-  name: 'Sample: Solid Form',
-  parameters: {
-    controls: {
-      include: []
-    }
-  },
-  render: () => {
-    return html`
-      <form action="" method="get" id="testForm" name="testForm" class="">
-        <h1 class="text-lg text-white bg-primary p-4">Solid Form</h1>
-        <div class="[&>:nth-child(even)]:bg-neutral-100 [&>*]:p-4">
-          <sd-checkbox form="testForm" name="field 1" required>Field 1</sd-checkbox>
-          <sd-input form="testForm" name="field 2" label="Field 2" required></sd-input>
-          <sd-select form="testForm" name="field 3" label="Field 3" required
-            ><sd-option value="option-1">Option 1</sd-option><sd-option value="option-2">Option 2</sd-option>
-            <sd-option value="option-3">Option 3</sd-option><sd-option value="option-4">Option 4</sd-option
-            ><sd-option value="option-5">Option 5</sd-option><sd-option value="option-6">Option 6</sd-option
-            ><sd-option value="option-7">Option 7</sd-option></sd-select
-          >
-          <sd-radio-group form="testForm" name="field 4" label="Field 4" required
-            ><sd-radio value="option-1">Option 1</sd-radio><sd-radio value="option-2">Option 2</sd-radio>
-            <sd-radio value="option-3">Option 3</sd-radio></sd-radio-group
-          >
-          <sd-radio-group value="option-1" form="testForm" name="field 5" label="Field 5" required
-            ><sd-radio-button value="option-1">Option 1</sd-radio-button
-            ><sd-radio-button value="option-2">Option 2</sd-radio-button>
-            <sd-radio-button value="option-3">Option 3</sd-radio-button></sd-radio-group
-          >
-          <sd-switch form="testForm" name="field 6" required>Field 6</sd-switch>
-          <sd-textarea form="testForm" name="field 7" label="Field 7" required></sd-textarea>
-        </div>
-        <sd-button class="my-4" type="submit">Submit</sd-button>
-        <sd-button class="my-4" type="reset">Reset</sd-button>
-      </form>
-
-      <script>
-        function handleSubmit(event) {
-          const form = document.querySelector('#testForm');
-
-          const formData = new FormData(form);
-          const formValues = Object.fromEntries(formData);
-
-          if (form.reportValidity()) {
-            event.preventDefault(); // Prevent the default form submission behavior
-            alert('Form submitted with the following values: ' + JSON.stringify(formValues, null, 2));
-          }
-        }
-
-        document.querySelector('#testForm').addEventListener('submit', handleSubmit);
-      </script>
-    `;
-  }
+export const StyleOnValid = {
+  render: () => html`
+    <div class="w-[500px] h-[300px]">
+      <sd-select
+        size="lg"
+        placement="bottom"
+        label="Label"
+        placeholder="Please Select"
+        style-on-valid=""
+        value=""
+        required=""
+        clearable=""
+      >
+        <sd-option class="option" value="option-1">Option 1</sd-option>
+        <sd-option class="option" value="option-2">Option 2</sd-option>
+        <sd-option class="option" value="option-3">Option 3</sd-option>
+      </sd-select>
+    </div>
+  `
 };

@@ -121,6 +121,12 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   /** The select's size. */
   @property({ reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
 
+  /**
+   * The preferred placement of the select's menu. Note that the actual placement may vary as needed to keep the listbox
+   * inside of the viewport.
+   */
+  @property({ reflect: true }) placement: 'top' | 'bottom' = 'bottom';
+
   /** The select's label. If you need to display HTML, use the `label` slot instead. */
   @property() label = '';
 
@@ -129,12 +135,6 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
 
   /** The select's help text. If you need to display HTML, use the `help-text` slot instead. */
   @property({ attribute: 'help-text' }) helpText = '';
-
-  /**
-   * The preferred placement of the select's menu. Note that the actual placement may vary as needed to keep the listbox
-   * inside of the viewport.
-   */
-  @property({ reflect: true }) placement: 'top' | 'bottom' = 'bottom';
 
   /**
    * The actual current placement of the select's menu sourced from `sd-popup`.
