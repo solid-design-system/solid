@@ -66,7 +66,10 @@ export const Default = {
 };
 
 /**
- * Use the `size` attribute to set the size.
+ * Use the `size` attribute to change the tooltip trigger size.
+ *
+ * - `large` is the default tooltip trigger size.
+ * - `small` can be used as an alternative.
  */
 export const Size = {
   render: () => html`
