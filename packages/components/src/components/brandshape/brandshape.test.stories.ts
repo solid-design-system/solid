@@ -199,4 +199,4 @@ export const Sample = {
   }
 };
 
-export const Combination = generateScreenshotStory([Default, Shapes, Variants, Breakpoints, Parts]);
+export const Combination = generateScreenshotStory([Default, Shapes, Variants, Breakpoints, Parts, Sample]);
