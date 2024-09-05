@@ -42,7 +42,7 @@ export const Default = {
 export const Variant = {
   name: 'Variant',
   render: () => html`
-    <div class="flex gap-12">
+    <div class="flex items-center gap-12">
       <sd-map-marker></sd-map-marker>
       <sd-map-marker variant="place">
         <sd-icon name="content/image" color="primary"></sd-icon>
