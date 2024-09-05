@@ -197,8 +197,7 @@ export const Variants = {
 export const AspectRatios = {
   parameters: { ...parameters, docs: { story: { inline: false, height: '1050px' } } },
   render: () =>
-    html` <div>
-      <sd-flipcard
+    html` <sd-flipcard
         activation="click hover"
         flip-direction="horizontal"
         front-variant="primary-100"
@@ -242,8 +241,7 @@ export const AspectRatios = {
           src="./placeholders/images/generic.jpg"
           alt="Generic Alt"
         />
-      </sd-flipcard>
-    </div>`
+      </sd-flipcard>`
 };
 
 /**
