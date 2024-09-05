@@ -31,10 +31,6 @@ export default {
   argTypes
 };
 
-/**
- * Default: This shows sd-paragraph in its default state.
- */
-
 export const Default = {
   render: (args: any) => {
     return generateTemplate({
@@ -45,7 +41,10 @@ export const Default = {
 };
 
 /**
- * Use the `sd-paragraph--size-sm` class to set a smaller font size.
+ * Use `sd-paragraph` modifiers for alternative appearances.
+ *
+ * - Large is the default paragraph size
+ * - `sd-paragraph--size-sm`: Small can be used as an alternative
  */
 
 export const Size = {
@@ -66,7 +65,7 @@ export const Size = {
 };
 
 /**
- * Use the `inverted` class to make a paragraph with inverted colors.
+ * Use the `sd-paragraph--inverted` class when displayed on primary background.
  */
 
 export const Inverted = {
