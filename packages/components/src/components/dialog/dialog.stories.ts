@@ -108,7 +108,7 @@ export const Headline = {
 /**
  * Use the `no-close-button` attribute to hide the close button in the dialog.
  *
- * However, you should always include a close button to comply with ARIA principles. If the close button is omitted, the close action has to be applied to one button in the footer slot.
+ * You should always include an action button that allows users to close the dialog.
  */
 
 export const NoCloseButton = {
@@ -120,7 +120,7 @@ export const NoCloseButton = {
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
           dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam.
         </p>
-        <sd-button class="close-button" slot="footer" variant="primary">Accept Terms and Conditions</sd-button>
+        <sd-button class="close-button" slot="footer" variant="primary">Button</sd-button>
       </sd-dialog>
     </div>
 
