@@ -8,7 +8,7 @@ const { overrideArgs } = storybookHelpers('sd-interactive');
 const { generateTemplate } = storybookTemplate('sd-interactive');
 
 /**
- * Used in interactive elements as a "quartery" button that has no paddings and no background. Its interaction states mirror those of sd-link’s.
+ * Used in interactive elements as a "quartery" button that has no paddings and no background. 
  *
  *  * **Related templates**:
  * - [Interactive](?path=/docs/templates-interactive--docs)
