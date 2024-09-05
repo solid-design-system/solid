@@ -130,7 +130,7 @@ export const Accordion = {
  *
  * Use the `separated` attribute, to have more that only one action. It is possible to use it as a link and an accordion simultaneously.
  *
- * - It needs a `children slot` and an `href` attribute. `target` and `download` attribute are optional.
+ * - It needs a `children slot` and an `href` attribute. `target` and `download` attributes are optional.
  */
 export const separated = {
   render: () =>
