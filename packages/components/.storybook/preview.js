@@ -4,7 +4,7 @@ import '../src/styles/tailwind.css';
 import { registerIconLibrary } from '../src/utilities/icon-library';
 import { storybookUtilities } from '../scripts/storybook/helper';
 
-const preview = {
+export const preview = {
   decorators: [],
   parameters: {
     chromatic: {
@@ -13,7 +13,24 @@ const preview = {
     docs: {
       story: { inline: true },
       toc: true,
-      source: { transform: code => storybookUtilities.codeOptimizer(code), format: 'html' }
+      source: {
+        transform: code => {
+          let output = code;
+
+          // This fixes the usage of self built html`` string literals
+          if (output.trim().startsWith('&lt;')) {
+            output = output
+              .replace(/&lt;/g, '<')
+              .replace(/&gt;/g, '>')
+              .replace(/&amp;/g, '&')
+              .replace(/&quot;/g, '"')
+              .replace(/&#039;/g, "'");
+          }
+
+          return storybookUtilities.codeOptimizer(output);
+        },
+        format: 'html'
+      }
     },
     backgrounds: {
       default: 'white',

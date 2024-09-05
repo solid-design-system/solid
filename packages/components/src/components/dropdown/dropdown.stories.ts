@@ -1,27 +1,33 @@
 import '../../solid-components';
 import { html } from 'lit';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { userEvent } from '@storybook/test';
-import { waitUntil } from '@open-wc/testing-helpers';
 import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-dropdown');
 const { generateTemplate } = storybookTemplate('sd-dropdown');
 const { overrideArgs } = storybookHelpers('sd-dropdown');
 
+/**
+ * Used to display a list of actions or options in a panel when activated.
+ *
+ * **Related templates:**
+ * - [Dropdown with navigation items](?path=/docs/templates-dropdown-with-navigation-items--docs)
+ */
+
 export default {
   title: 'Components/sd-dropdown',
   component: 'sd-dropdown',
+  tags: ['!dev'],
   args: overrideArgs([
     {
       type: 'slot',
       name: 'trigger',
-      value: '<sd-button slot="trigger" style="position: relative">Trigger</sd-button>'
+      value: '<sd-navigation-item slot="trigger" style="position: relative">Dropdown</sd-navigation-item>'
     },
     {
       type: 'slot',
       name: 'default',
-      value: '<div class="slot slot--border slot--background"></div>'
+      value: '<div class="slot slot--border slot--text">Default slot</div>'
     },
     {
       type: 'attribute',
@@ -35,10 +41,6 @@ export default {
     withActions,
     (story: any) =>
       html`<style>
-          div.slot {
-            width: 24px;
-            height: 24px;
-          }
           sd-dropdown:not([rounded]) sd-button::part(base),
           sd-dropdown:not([rounded]) .slot {
             border-radius: 0;
@@ -72,10 +74,22 @@ export default {
             position: relative;
             overflow: auto;
           }
-          #anchor--components-sd-dropdown--no-auto-size .innerZoomElementWrapper,
+          #anchor--components-sd-dropdown .innerZoomElementWrapper,
+          #anchor--components-sd-dropdown--open .innerZoomElementWrapper,
           #anchor--components-sd-dropdown--rounded .innerZoomElementWrapper,
-          #anchor--components-sd-dropdown--slots .innerZoomElementWrapper {
-            min-height: 350px;
+          #anchor--components-sd-dropdown--placement .innerZoomElementWrapper,
+          #anchor--components-sd-dropdown--placement .innerZoomElementWrapper,
+          #anchor--components-sd-dropdown--distance .innerZoomElementWrapper,
+          #anchor--components-sd-dropdown--stay-open .innerZoomElementWrapper,
+          #anchor--components-sd-dropdown--skidding .innerZoomElementWrapper,
+          #anchor--components-sd-dropdown--no-flip .innerZoomElementWrapper {
+            min-height: 150px;
+          }
+          #anchor--components-sd-dropdown--placement .innerZoomElementWrapper {
+            margin-top: 25px;
+          }
+          #anchor--components-sd-dropdown--no-auto-size .innerZoomElementWrapper {
+            min-height: 250px;
           }</style
         >${story()}`
   ] as unknown
@@ -86,13 +100,14 @@ export default {
  */
 
 export const Default = {
+  name: 'Default',
   render: (args: any) => {
     return html`<div style="height: 200px; overflow: hidden;">
       ${generateTemplate({
         constants: {
           type: 'slot',
           name: 'default',
-          value: '<div class="example"></div>'
+          value: '<div class="slot slot--border slot--text p-4 w-[300px]">Default slot</div>'
         },
         args
       })}
@@ -101,260 +116,143 @@ export const Default = {
 };
 
 /**
- * For round triggers (like e. g. default `sd-buttons`), set the `rounded` attribute. This sets a rounding on the dropdown and automatically adds a minimal distance of 1px between the trigger and the panel.
+ * Use the `open` attribute to toggle the visibility of the dropdown.
+ */
+
+export const Open = {
+  name: 'Open',
+  render: () => html`
+    <sd-dropdown open>
+      <div class="slot slot--border slot--text p-4 w-[300px]">Default slot</div>
+      <sd-button slot="trigger" variant="secondary">Trigger</sd-button>
+    </sd-dropdown>
+  `
+};
+
+/**
+ * Use the `rounded` attribute to set a border-radius on the dropdown panel and trigger button.
  */
 
 export const Rounded = {
-  parameters: { controls: { exclude: ['rounded', 'default'] } },
-  render: (args: any) =>
-    generateTemplate({
-      axis: {
-        x: {
-          type: 'attribute',
-          name: 'rounded'
-        }
-      },
-      constants: {
-        type: 'slot',
-        name: 'default',
-        value: '<div class="example"></div>'
-      },
-      args
-    })
+  name: 'Rounded',
+  render: () => html`
+    <sd-dropdown open rounded distance="4">
+      <div class="slot slot--border slot--text p-4 w-[300px]">Default slot</div>
+      <sd-button slot="trigger" variant="secondary">
+        <sd-icon name="system/more-functions" class="h-6 w-6"></sd-icon>
+      </sd-button>
+    </sd-dropdown>
+  `
 };
 
 /**
- * The dropdown automatically adjusts its size to fit the screen. The content gets scrollable then. To disable this behavior, set the `no-auto-size` attribute.
- * Note: `no-flip` is activated here.
- */
-
-export const NoAutoSize = {
-  parameters: { controls: { exclude: ['default', 'no-flip', 'no-auto-size'] } },
-  render: (args: any) =>
-    generateTemplate({
-      axis: {
-        x: {
-          type: 'attribute',
-          name: 'no-auto-size'
-        }
-      },
-      constants: [
-        {
-          type: 'slot',
-          name: 'default',
-          value:
-            '<div style="width: 120px;"><div style="height: 110vh; padding: 12px;"><div  class="slot slot--border slot--text slot--background" style="height: 100%; width: auto;">Scroll down<br><br>⬇️</div></div></div>'
-        },
-        {
-          type: 'attribute',
-          name: 'no-flip',
-          value: true
-        }
-      ],
-      args
-    })
-};
-
-/**
- * The dropdown automatically flips its position to stay most visible in the viewport. To disable this behavior, set the `no-flip` attribute.
- */
-
-export const NoFlip = {
-  parameters: { controls: { exclude: ['no-flip', 'default'] } },
-  render: (args: any) =>
-    generateTemplate({
-      axis: {
-        x: {
-          type: 'attribute',
-          name: 'no-flip'
-        }
-      },
-      constants: {
-        type: 'slot',
-        name: 'default',
-        value: '<div class="example"></div>'
-      },
-      args
-    })
-};
-
-/**
- * The preferred placement of the dropdown can be set with the `placement` attribute.
- * Note that the actual position may vary to ensure the panel remains in the viewport.
+ * Use the `placement` attribute to set the position of the dropdown panel relative to the trigger.
  */
 
 export const Placement = {
-  parameters: { controls: { exclude: ['placement'] } },
-  render: (args: any) => {
-    return html`<div class="placement-story">
-      ${['top', 'bottom', 'left', 'right'].map(value =>
-        generateTemplate({
-          axis: {
-            x: {
-              type: 'attribute',
-              name: 'placement',
-              values: [value, `${value}-start`, `${value}-end`]
-            }
-          },
-          args,
-          constants: [
-            {
-              type: 'template',
-              name: 'placement',
-              value: `<div class="template-placement">%TEMPLATE%</div>`
-            },
-            {
-              type: 'attribute',
-              name: 'no-flip',
-              value: true
-            }
-          ]
-        })
-      )}
-    </div> `;
-  }
+  name: 'Placement',
+  render: () => html`
+    <div class="grid grid-cols-2 gap-32">
+      <sd-dropdown open placement="bottom-start">
+        <div class="slot slot--border slot--text p-4 w-[300px]">Default slot</div>
+        <sd-button slot="trigger">bottom-start</sd-button>
+      </sd-dropdown>
+
+      <sd-dropdown open placement="bottom-end">
+        <div class="slot slot--border slot--text p-4 w-[300px]">Default slot</div>
+        <sd-button slot="trigger">bottom-end</sd-button>
+      </sd-dropdown>
+    </div>
+  `
 };
 
 /**
- * The distance from the panel to the trigger can be customized using the `distance` attribute. This value is specified in pixels.
- * Have in mind, that the default distance depends on whether the dropdown is rounded or not.
+ * Use the `stay-open-on-select` attribute to keep the dropdown open after an item has been selected.
+ */
+
+export const StayOpen = {
+  name: 'Stay Open on Select',
+  render: () => html`
+    <sd-dropdown stay-open-on-select>
+      <div class="example">
+        <sd-checkbox>Checkbox 1</sd-checkbox>
+        <sd-checkbox>Checkbox 2</sd-checkbox>
+        <sd-checkbox>Checkbox 3</sd-checkbox>
+      </div>
+      <sd-button slot="trigger">Trigger</sd-button>
+    </sd-dropdown>
+  `
+};
+
+/**
+ * Use the `disabled` attribute to disable the dropdown.
+ */
+
+export const Disabled = {
+  name: 'Disabled',
+  render: () => html`
+    <sd-dropdown disabled>
+      <div class="slot slot--border slot--text p-4 w-[300px]">Default slot</div>
+      <sd-button slot="trigger" disabled>Trigger</sd-button>
+    </sd-dropdown>
+  `
+};
+
+/**
+ * Use the `distance` attribute to set the distance between the dropdown panel and the trigger.
  */
 
 export const Distance = {
-  parameters: { controls: { exclude: ['rounded', 'distance', 'open', 'placement'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: {
-          type: 'attribute',
-          name: 'rounded'
-        },
-        x: {
-          type: 'attribute',
-          name: 'distance',
-          values: [{ value: undefined, title: '(default)' }, '0', '10']
-        }
-      },
-      constants: [
-        {
-          type: 'attribute',
-          name: 'placement',
-          value: 'bottom'
-        },
-        {
-          type: 'attribute',
-          name: 'open',
-          value: true
-        }
-      ],
-      args
-    });
-  }
+  name: 'Distance',
+  render: () => html`
+    <sd-dropdown open distance="8">
+      <div class="slot slot--border slot--text p-4 w-[300px]">Default slot</div>
+      <sd-button slot="trigger">Trigger</sd-button>
+    </sd-dropdown>
+  `
 };
 
 /**
- * The offset of the panel along the trigger can be customized using the `skidding` attribute. This value is specified in pixels.
+ * Use the `skidding` attribute to offset the panel away from its trigger.
  */
 
 export const Skidding = {
+  name: 'Skidding',
   parameters: { controls: { exclude: ['placement'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: {
-          type: 'attribute',
-          name: 'placement',
-          values: ['bottom', 'right']
-        },
-        x: {
-          type: 'attribute',
-          name: 'skidding',
-          values: ['0', '-20', '20']
-        }
-      },
-      args
-    });
-  }
+  render: () => html`
+    <sd-dropdown open skidding="20" placement="bottom">
+      <div class="slot slot--border slot--text p-4 w-[300px]">Default slot</div>
+      <sd-button slot="trigger">Trigger</sd-button>
+    </sd-dropdown>
+  `
 };
 
 /**
- * Use the `default` slot to place the content of the dropdown.
- * Use the `trigger` slot to place a trigger like e. g. a button.
+ * Use the `no-auto-size` attribute to prevent the dropdown from automatically adjusting its size.
  */
-export const Slots = {
-  parameters: {
-    controls: { exclude: ['size'] }
-  },
-  decorators: [
-    (story: any) =>
-      html`<style>
-          .slot-highlight {
-            outline: purple 1px dashed;
-          }</style
-        >${story()}`
-  ],
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        x: {
-          type: 'slot',
-          name: 'default',
-          title: 'slot=...',
-          values: [
-            {
-              value: `<div class="slot slot--border slot--background example"></div><sd-button slot="trigger">Trigger</sd-button>`,
-              title: 'default'
-            },
-            {
-              value: `<div class="slot slot--text example"></div><sd-button class="slot slot--border slot--background" slot="trigger">Trigger</sd-button><div class="slot-overlay"  slot="trigger"></div>`,
-              title: 'trigger'
-            }
-          ]
-        }
-      },
-      constants: [{ type: 'slot', name: 'trigger', value: '' }],
-      args
-    });
-  }
+
+export const NoAutoSize = {
+  name: 'No Auto Size',
+  render: () => html`
+    <sd-dropdown no-auto-size open>
+      <div class="slot slot--border slot--background flex justify-start" style="height: 110vh; width: 120px;">
+        Scroll down
+      </div>
+      <sd-button slot="trigger">Trigger</sd-button>
+    </sd-dropdown>
+  `
 };
 
 /**
- * sd-dropdowns and their content are fully accessibile via keyboard.
+ * Use the `no-flip` attribute to prevent the dropdown from flipping its position when it would be cut off.
  */
 
-export const Mouseless = {
-  parameters: {
-    controls: {
-      exclude: ['rounded', 'open']
-    }
-  },
-  render: (args: any) => {
-    return html`<div class="mouseless">
-      ${generateTemplate({
-        args,
-        constants: [
-          {
-            type: 'slot',
-            name: 'default',
-            value:
-              '<div class="example"><sd-link href="#">Link 1</sd-link><sd-link href="#">Link 2</sd-link><sd-link href="#">Link 3</sd-link></div>'
-          },
-          {
-            type: 'attribute',
-            name: 'open',
-            value: false
-          }
-        ]
-      })}
-    </div>`;
-  },
-  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
-    const trigger = canvasElement.querySelector('.mouseless sd-button');
-    const dropdown = canvasElement.querySelector('.mouseless sd-dropdown');
-    await waitUntil(() => dropdown?.shadowRoot?.querySelector('#dropdown'));
-    await waitUntil(() => trigger?.shadowRoot?.querySelector('button'));
-    await waitUntil(() => dropdown?.shadowRoot?.querySelector('sd-popup:not([active])'));
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    await userEvent.type(trigger!.shadowRoot!.querySelector('button')!, '{return}', { pointerEventsCheck: 0 });
-  }
+export const NoFlip = {
+  name: 'No Flip',
+  render: () => html`
+    <sd-dropdown no-flip open>
+      <div class="slot slot--border slot--text p-4 w-[300px]">Default slot</div>
+      <sd-button slot="trigger">Trigger</sd-button>
+    </sd-dropdown>
+  `
 };
