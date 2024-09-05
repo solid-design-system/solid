@@ -52,26 +52,31 @@ export const Default = {
 };
 
 /**
- * Use the alternative html elements for alternative appearances:
+ * Use the standard html list elements for alternative appearances:
  *
- * - unnumbered: use a `ul` element to create an unnumbered list.
  * - numbered: use an `ol` element to create a numbered list.
- * Usually start with "1", use the html `start` attribute to set the starting number of the list.
+ * The html `start` attribute to set the starting number of the list, the default value is '1'.
+ * - unnumbered: use an `ul` element to create an unnumbered list.
  */
 
 export const Variants = {
   render: () => html`
     <div class="flex flex-col gap-12">
-      <ul class="sd-footnotes">
+      <ol class="sd-footnotes">
         <li>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</li>
         <li>Sed diam nonumy eirmod tempor invidunt ut labore.</li>
         <li>Dolore magna aliq erat, sed diam voluptua.</li>
-      </ul>
+      </ol>
       <ol start="150" class="sd-footnotes">
         <li>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</li>
         <li>Sed diam nonumy eirmod tempor invidunt ut labore.</li>
         <li>Dolore magna aliq erat, sed diam voluptua.</li>
       </ol>
+      <ul class="sd-footnotes">
+        <li>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</li>
+        <li>Sed diam nonumy eirmod tempor invidunt ut labore.</li>
+        <li>Dolore magna aliq erat, sed diam voluptua.</li>
+      </ul>
     </div>
   `
 };
