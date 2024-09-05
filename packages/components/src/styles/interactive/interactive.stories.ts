@@ -36,18 +36,6 @@ export const Default = {
 };
 
 /**
- * Use the `sd-interactive--reset` class to reset the default browser styles of e. g. a button.
- */
-
-export const Reset = {
-  render: () => html`
-    <div class="flex flex-row gap-12">
-      <button class="sd-interactive sd-interactive--reset">Reset</button>
-    </div>
-  `
-};
-
-/**
  * Use the `sd-interactive--inverted` class when displayed on primary background.
  *
  * On darker backgrounds text/white inverted colour will substitute primary.
@@ -68,9 +56,13 @@ export const Inverted = {
  */
 
 export const Disabled = {
-  render: () => html`
-    <div class="flex flex-row gap-12">
-      <button class="sd-interactive sd-interactive--disabled sd-interactive--reset">Disabled</button>
-    </div>
-  `
+  render: () => html` <button class="sd-interactive sd-interactive--disabled sd-interactive--reset">Disabled</button> `
+};
+
+/**
+ * Use the `sd-interactive--reset` class to reset the default browser styles of e. g. a button.
+ */
+
+export const Reset = {
+  render: () => html` <button class="sd-interactive sd-interactive--reset">Reset</button> `
 };
