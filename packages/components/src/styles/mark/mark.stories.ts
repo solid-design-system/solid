@@ -10,6 +10,9 @@ const { generateTemplate } = storybookTemplate('sd-mark');
  * Used to highlight text sections in the accent color.
  *
  * Use the `<mark>` html element with the class `sd-mark` for regular fonts-sizes at 24px and above, and use bold fonts at 18.67px.
+ *
+ * **Related Templates**:
+ *  * - [Headline, Display and Leadtext with Mark](?path=/docs/templates-headline-display-and-leadtext-with-mark--docs)
  */
 
 export default {
@@ -34,22 +37,4 @@ export const Default = {
       args
     });
   }
-};
-
-/**
- * Use with other elements such as `sd-display` or `sd-leadtext`.
- */
-
-export const Examples = {
-  render: () => html`
-    <p class="sd-display">
-      Lorem
-      <mark class="sd-mark">Ipsum</mark>
-    </p>
-
-    <p class="sd-leadtext">
-      Lorem
-      <mark class="sd-mark">Ipsum</mark>
-    </p>
-  `
 };
