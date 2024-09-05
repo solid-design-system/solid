@@ -26,8 +26,18 @@ export default {
   args: overrideArgs({
     type: 'slot',
     name: 'default',
-    value:
-      '<ul class="sd-list"><li>Unordered list level 1<ul><li>Unordered list level 2<ul><li>Unordered list level 3</li></ul></li></ul></li><li>Unordered list level 1</li><li>Unordered list level 1</li></ul>'
+    value: `<ul class="sd-list">
+        <li>Unordered list level 1
+          <ul>
+            <li>Unordered list level 2
+              <ul>
+               <li>Unordered list level 3</li>
+              </ul>
+            </li>
+          </ul>
+        </li><li>Unordered list level 1</li>
+        <li>Unordered list level 1</li>
+      </ul>`
   }),
   argTypes
 };
@@ -146,20 +156,36 @@ export const Levels = {
  */
 export const Orientation = {
   render: () =>
-    html` <ul class="sd-list--icon sd-list--horizontal sd-list">
-      <li>
-        <sd-icon name="content/picture" library="global-resources"></sd-icon>
-        Unordered list
-      </li>
-      <li>
-        <sd-icon name="content/picture" library="global-resources"></sd-icon>
-        Unordered list
-      </li>
-      <li>
-        <sd-icon name="content/picture" library="global-resources"></sd-icon>
-        Unordered list
-      </li>
-    </ul>`
+    html`<div class="flex flex-row justify-around items-center">
+      <ul class="sd-list--icon sd-list">
+        <li>
+          <sd-icon name="content/picture" library="global-resources"></sd-icon>
+          Vertical list
+        </li>
+        <li>
+          <sd-icon name="content/picture" library="global-resources"></sd-icon>
+          Vertical list
+        </li>
+        <li>
+          <sd-icon name="content/picture" library="global-resources"></sd-icon>
+          Vertical list
+        </li>
+      </ul>
+      <ul class="sd-list--icon sd-list--horizontal sd-list">
+        <li>
+          <sd-icon name="content/picture" library="global-resources"></sd-icon>
+          Horizontal list
+        </li>
+        <li>
+          <sd-icon name="content/picture" library="global-resources"></sd-icon>
+          Horizontal list
+        </li>
+        <li>
+          <sd-icon name="content/picture" library="global-resources"></sd-icon>
+          Horizontal list
+        </li>
+      </ul>
+    </div>`
 };
 
 export const Weights = {
