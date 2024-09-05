@@ -9,11 +9,12 @@ const { overrideArgs } = storybookHelpers('sd-checkbox-group');
 /**
  * Used to select multiple options from a list of options.
  *
- * **Related templates:**
- * - [Checkbox (Group)](?path=/docs/templates-checkbox-group--docs)
- *
  * **Related components:**
  * - [sd-checkbox](?path=/docs/components-checkbox--docs)
+ *
+ *
+ * **Related templates:**
+ * - [Checkbox (Group)](?path=/docs/templates-checkbox-group--docs)
  */
 
 export default {
