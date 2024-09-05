@@ -17,7 +17,7 @@ const { generateTemplate } = storybookTemplate('sd-step');
  * - [sd-step-group](?path=/docs/components-sd-step-group--docs)
  *
  * **Related templates:**
- * - [sd-step-group](?path=/docs/templates-sd-step-group--docs)
+ * - [Step Group](?path=/docs/templates-sd-step-group--docs)
  *
  */
 export default {
@@ -29,18 +29,25 @@ export default {
       type: 'slot',
       name: 'label',
       value: `<span slot="label">Step name</span>`
+    },
+    {
+      type: 'slot',
+      name: 'default',
+      value: `<div class="slot slot--border slot--text h-12">Default Slot</div>`
     }
   ]),
   argTypes,
   parameters: { ...parameters },
   decorators: [
     withActions,
-    (story: any) =>
-      html`<style>
-          #story--components-sd-step--default--primary {
-            width: min-content;
-          }</style
-        >${story()}`
+    (story: any) => html`
+      <style>
+        #story--components-sd-step--default--primary {
+          width: min-content;
+        }
+      </style>
+      ${story()}
+    `
   ] as unknown
 };
 
@@ -80,12 +87,12 @@ export const Size = {
 export const Orientation = {
   name: 'Orientation',
   render: () => html`
-    <div class="flex items-center gap-24 w-min">
+    <div class="flex gap-24 w-min">
       <sd-step orientation="horizontal">
-        <span slot="label">Step name</span>
+        <span slot="label">Horizontal</span>
       </sd-step>
       <sd-step orientation="vertical">
-        <span slot="label">Step name</span>
+        <span slot="label">Vertical</span>
       </sd-step>
     </div>
   `
@@ -178,6 +185,7 @@ export const Icon = {
     <div class="w-min">
       <sd-step not-interactive>
         <sd-icon slot="circle-content" name="content/image" class="h-12 w-12"></sd-icon>
+        <span slot="label">Step name</span>
       </sd-step>
     </div>
   `
