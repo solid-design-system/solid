@@ -44,7 +44,7 @@ export const Default = {
     <sd-dialog id="dialog" open>
       <h4 slot="headline" class="sd-headline sd-headline--size-3xl">Cancel your subscription?</h4>
       <p class="sd-paragraph">Your subscription will be canceled immediately. You can resubscribe at any time.</p>
-      <div slot="footer" class="flex flex-col sm:flex-row justify-end w-full gap-2">
+      <div slot="footer" class="flex flex-col-reverse sm:flex-row justify-end w-full gap-2">
         <sd-button class="w-full sm:w-auto" variant="secondary" size="lg" type="button"> Maybe later </sd-button>
         <sd-button class="w-full sm:w-auto" variant="primary" size="lg" type="button"> Cancel </sd-button>
       </div>
@@ -148,7 +148,7 @@ export const Scrollable = {
           </p>
         </div>
       </sd-scrollable>
-      <div slot="footer" class="flex flex-col md:flex-row justify-end w-full gap-2">
+      <div slot="footer" class="flex flex-col-reverse md:flex-row justify-end w-full gap-2">
         <sd-button variant="secondary" size="lg" type="button" aria-label="Close">
           <sd-icon name="system/log-out" slot="icon-left"></sd-icon>
           Exit portal
