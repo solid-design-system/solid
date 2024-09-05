@@ -71,7 +71,7 @@ export const Playing = {
 };
 
 /**
- * Use the attribute `overlay` to show a dark overlay. Only used when `playing` is `false`.
+ * Use the `overlay` attribute to show a dark overlay. Only used when `playing` is `false`.
  */
 
 export const Overlay = {
