@@ -55,7 +55,7 @@ export const Size = {
 };
 
 /**
- * Use the `sd-display--inverted` class to make a display with inverted colors.
+ * Use the `sd-display--inverted` class when displayed on primary background.
  */
 
 export const Inverted = {
