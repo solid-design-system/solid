@@ -80,7 +80,7 @@ export const Size = {
 export const Orientation = {
   name: 'Orientation',
   render: () => html`
-    <div class="flex gap-24 w-min">
+    <div class="flex items-center gap-24 w-min">
       <sd-step orientation="horizontal">
         <span slot="label">Step name</span>
       </sd-step>
