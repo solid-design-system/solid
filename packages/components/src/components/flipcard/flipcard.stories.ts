@@ -63,145 +63,128 @@ export const Default = {
 
 export const Variants = {
   render: () =>
-    html` <div class="grid grid-cols-2">
-      <div style="margin-bottom: 40px">
-        <sd-flipcard
-          activation="click hover"
-          flip-direction="horizontal"
-          front-variant="primary"
-          back-variant="primary"
-        >
-          <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
-          <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
-          <img
-            slot="media-front"
-            class="object-cover h-full w-full"
-            src="./placeholders/images/generic.jpg"
-            alt="Generic"
-          />
-          <img
-            slot="media-back"
-            class="object-cover h-full w-full"
-            src="./placeholders/images/generic.jpg"
-            alt="Generic"
-          />
-        </sd-flipcard>
-      </div>
-      <div style="margin-bottom: 40px">
-        <sd-flipcard
-          activation="click hover"
-          flip-direction="horizontal"
-          front-variant="primary-100"
-          back-variant="primary-100"
-        >
-          <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
-          <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
-          <img
-            slot="media-front"
-            class="object-cover h-full w-full"
-            src="./placeholders/images/generic.jpg"
-            alt="Generic"
-          />
-          <img
-            slot="media-back"
-            class="object-cover h-full w-full"
-            src="./placeholders/images/generic.jpg"
-            alt="Generic"
-          />
-        </sd-flipcard>
-      </div>
-      <div style="margin-bottom: 40px">
-        <sd-flipcard
-          activation="click hover"
-          flip-direction="horizontal"
-          front-variant="gradient-light-top"
-          back-variant="gradient-light-top"
-        >
-          <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
-          <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
-          <img
-            slot="media-front"
-            class="object-cover h-full w-full"
-            src="./placeholders/images/generic.jpg"
-            alt="Generic"
-          />
-          <img
-            slot="media-back"
-            class="object-cover h-full w-full"
-            src="./placeholders/images/generic.jpg"
-            alt="Generic"
-          />
-        </sd-flipcard>
-      </div>
-      <div style="margin-bottom: 40px">
-        <sd-flipcard
-          activation="click hover"
-          flip-direction="horizontal"
-          front-variant="gradient-light-bottom"
-          back-variant="gradient-light-bottom"
-        >
-          <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
-          <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
-          <img
-            slot="media-front"
-            class="object-cover h-full w-full"
-            src="./placeholders/images/generic.jpg"
-            alt="Generic"
-          />
-          <img
-            slot="media-back"
-            class="object-cover h-full w-full"
-            src="./placeholders/images/generic.jpg"
-            alt="Generic"
-          />
-        </sd-flipcard>
-      </div>
-      <div style="margin-bottom: 40px">
-        <sd-flipcard
-          activation="click hover"
-          flip-direction="horizontal"
-          front-variant="gradient-dark-top"
-          back-variant="gradient-dark-top"
-        >
-          <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
-          <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
-          <img
-            slot="media-front"
-            class="object-cover h-full w-full"
-            src="./placeholders/images/generic.jpg"
-            alt="Generic"
-          />
-          <img
-            slot="media-back"
-            class="object-cover h-full w-full"
-            src="./placeholders/images/generic.jpg"
-            alt="Generic"
-          />
-        </sd-flipcard>
-      </div>
-      <div style="margin-bottom: 40px">
-        <sd-flipcard
-          activation="click hover"
-          flip-direction="horizontal"
-          front-variant="gradient-dark-bottom"
-          back-variant="gradient-dark-bottom"
-        >
-          <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
-          <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
-          <img
-            slot="media-front"
-            class="object-cover h-full w-full"
-            src="./placeholders/images/generic.jpg"
-            alt="Generic"
-          />
-          <img
-            slot="media-back"
-            class="object-cover h-full w-full"
-            src="./placeholders/images/generic.jpg"
-            alt="Generic"
-          />
-        </sd-flipcard>
-      </div>
+    html` <div class="grid grid-cols-2 gap-8">
+      <sd-flipcard activation="click hover" flip-direction="horizontal" front-variant="primary" back-variant="primary">
+        <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
+        <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
+        <img
+          slot="media-front"
+          class="object-cover h-full w-full"
+          src="./placeholders/images/generic.jpg"
+          alt="Generic Alt"
+        />
+        <img
+          slot="media-back"
+          class="object-cover h-full w-full"
+          src="./placeholders/images/generic.jpg"
+          alt="Generic Alt"
+        />
+      </sd-flipcard>
+      <sd-flipcard
+        activation="click hover"
+        flip-direction="horizontal"
+        front-variant="primary-100"
+        back-variant="primary-100"
+      >
+        <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
+        <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
+        <img
+          slot="media-front"
+          class="object-cover h-full w-full"
+          src="./placeholders/images/generic.jpg"
+          alt="Generic Alt"
+        />
+        <img
+          slot="media-back"
+          class="object-cover h-full w-full"
+          src="./placeholders/images/generic.jpg"
+          alt="Generic Alt"
+        />
+      </sd-flipcard>
+      <sd-flipcard
+        activation="click hover"
+        flip-direction="horizontal"
+        front-variant="gradient-light-top"
+        back-variant="gradient-light-top"
+      >
+        <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
+        <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
+        <img
+          slot="media-front"
+          class="object-cover h-full w-full"
+          src="./placeholders/images/generic.jpg"
+          alt="Generic Alt"
+        />
+        <img
+          slot="media-back"
+          class="object-cover h-full w-full"
+          src="./placeholders/images/generic.jpg"
+          alt="Generic Alt"
+        />
+      </sd-flipcard>
+      <sd-flipcard
+        activation="click hover"
+        flip-direction="horizontal"
+        front-variant="gradient-light-bottom"
+        back-variant="gradient-light-bottom"
+      >
+        <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
+        <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
+        <img
+          slot="media-front"
+          class="object-cover h-full w-full"
+          src="./placeholders/images/generic.jpg"
+          alt="Generic Alt"
+        />
+        <img
+          slot="media-back"
+          class="object-cover h-full w-full"
+          src="./placeholders/images/generic.jpg"
+          alt="Generic Alt"
+        />
+      </sd-flipcard>
+      <sd-flipcard
+        activation="click hover"
+        flip-direction="horizontal"
+        front-variant="gradient-dark-top"
+        back-variant="gradient-dark-top"
+      >
+        <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
+        <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
+        <img
+          slot="media-front"
+          class="object-cover h-full w-full"
+          src="./placeholders/images/generic.jpg"
+          alt="Generic Alt"
+        />
+        <img
+          slot="media-back"
+          class="object-cover h-full w-full"
+          src="./placeholders/images/generic.jpg"
+          alt="Generic Alt"
+        />
+      </sd-flipcard>
+      <sd-flipcard
+        activation="click hover"
+        flip-direction="horizontal"
+        front-variant="gradient-dark-bottom"
+        back-variant="gradient-dark-bottom"
+      >
+        <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
+        <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
+        <img
+          slot="media-front"
+          class="object-cover h-full w-full"
+          src="./placeholders/images/generic.jpg"
+          alt="Generic Alt"
+        />
+        <img
+          slot="media-back"
+          class="object-cover h-full w-full"
+          src="./placeholders/images/generic.jpg"
+          alt="Generic Alt"
+        />
+      </sd-flipcard>
     </div>`
 };
 
@@ -212,6 +195,7 @@ export const Variants = {
  */
 
 export const AspectRatios = {
+  parameters: { ...parameters, docs: { story: { inline: false, height: '1050px' } } },
   render: () =>
     html` <div>
       <sd-flipcard
@@ -228,13 +212,13 @@ export const AspectRatios = {
           slot="media-front"
           class="object-cover h-full w-full"
           src="./placeholders/images/generic.jpg"
-          alt="Generic"
+          alt="Generic Alt"
         />
         <img
           slot="media-back"
           class="object-cover h-full w-full"
           src="./placeholders/images/generic.jpg"
-          alt="Generic"
+          alt="Generic Alt"
         />
       </sd-flipcard>
       <sd-flipcard
@@ -250,13 +234,13 @@ export const AspectRatios = {
           slot="media-front"
           class="object-cover h-full w-full"
           src="./placeholders/images/generic.jpg"
-          alt="Generic"
+          alt="Generic Alt"
         />
         <img
           slot="media-back"
           class="object-cover h-full w-full"
           src="./placeholders/images/generic.jpg"
-          alt="Generic"
+          alt="Generic Alt"
         />
       </sd-flipcard>
     </div>`
@@ -270,44 +254,39 @@ export const AspectRatios = {
 
 export const Activation = {
   render: () =>
-    html` <div class="grid grid-cols-2">
-      <div style="margin-bottom: 40px">
-        <sd-flipcard activation="click hover" flip-direction="horizontal" front-variant="empty" back-variant="empty">
-          <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
-          <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
-          <img
-            slot="media-front"
-            class="object-cover h-full w-full"
-            src="./placeholders/images/generic.jpg"
-            alt="Generic"
-          />
-          <img
-            slot="media-back"
-            class="object-cover h-full w-full"
-            src="./placeholders/images/generic.jpg"
-            alt="Generic"
-          />
-        </sd-flipcard>
-      </div>
-
-      <div style="margin-bottom: 40px">
-        <sd-flipcard activation="click" flip-direction="horizontal" front-variant="empty" back-variant="empty">
-          <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
-          <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
-          <img
-            slot="media-front"
-            class="object-cover h-full w-full"
-            src="./placeholders/images/generic.jpg"
-            alt="Generic"
-          />
-          <img
-            slot="media-back"
-            class="object-cover h-full w-full"
-            src="./placeholders/images/generic.jpg"
-            alt="Generic"
-          />
-        </sd-flipcard>
-      </div>
+    html` <div class="grid grid-cols-2 gap-8">
+      <sd-flipcard activation="click hover" flip-direction="horizontal" front-variant="empty" back-variant="empty">
+        <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
+        <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
+        <img
+          slot="media-front"
+          class="object-cover h-full w-full"
+          src="./placeholders/images/generic.jpg"
+          alt="Generic Alt"
+        />
+        <img
+          slot="media-back"
+          class="object-cover h-full w-full"
+          src="./placeholders/images/generic.jpg"
+          alt="Generic Alt"
+        />
+      </sd-flipcard>
+      <sd-flipcard activation="click" flip-direction="horizontal" front-variant="empty" back-variant="empty">
+        <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
+        <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
+        <img
+          slot="media-front"
+          class="object-cover h-full w-full"
+          src="./placeholders/images/generic.jpg"
+          alt="Generic Alt"
+        />
+        <img
+          slot="media-back"
+          class="object-cover h-full w-full"
+          src="./placeholders/images/generic.jpg"
+          alt="Generic Alt"
+        />
+      </sd-flipcard>
     </div>`
 };
 
@@ -319,42 +298,38 @@ export const Activation = {
 
 export const flipDirection = {
   render: () =>
-    html`<div class="grid grid-cols-2">
-      <div style="margin-bottom: 40px">
-        <sd-flipcard activation="click hover" flip-direction="horizontal" front-variant="empty" back-variant="empty">
-          <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
-          <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
-          <img
-            slot="media-front"
-            class="object-cover h-full w-full"
-            src="./placeholders/images/generic.jpg"
-            alt="Generic"
-          />
-          <img
-            slot="media-back"
-            class="object-cover h-full w-full"
-            src="./placeholders/images/generic.jpg"
-            alt="Generic"
-          />
-        </sd-flipcard>
-      </div>
-      <div style="margin-bottom: 40px">
-        <sd-flipcard activation="click hover" flip-direction="vertical" front-variant="empty" back-variant="empty">
-          <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
-          <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
-          <img
-            slot="media-front"
-            class="object-cover h-full w-full"
-            src="./placeholders/images/generic.jpg"
-            alt="Generic"
-          />
-          <img
-            slot="media-back"
-            class="object-cover h-full w-full"
-            src="./placeholders/images/generic.jpg"
-            alt="Generic"
-          />
-        </sd-flipcard>
-      </div>
+    html`<div class="grid grid-cols-2 gap-8">
+      <sd-flipcard activation="click hover" flip-direction="horizontal" front-variant="empty" back-variant="empty">
+        <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
+        <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
+        <img
+          slot="media-front"
+          class="object-cover h-full w-full"
+          src="./placeholders/images/generic.jpg"
+          alt="Generic Alt"
+        />
+        <img
+          slot="media-back"
+          class="object-cover h-full w-full"
+          src="./placeholders/images/generic.jpg"
+          alt="Generic Alt"
+        />
+      </sd-flipcard>
+      <sd-flipcard activation="click hover" flip-direction="vertical" front-variant="empty" back-variant="empty">
+        <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
+        <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
+        <img
+          slot="media-front"
+          class="object-cover h-full w-full"
+          src="./placeholders/images/generic.jpg"
+          alt="Generic Alt"
+        />
+        <img
+          slot="media-back"
+          class="object-cover h-full w-full"
+          src="./placeholders/images/generic.jpg"
+          alt="Generic Alt"
+        />
+      </sd-flipcard>
     </div>`
 };

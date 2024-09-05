@@ -34,7 +34,7 @@ export const Default = {
       </h5>
       <div slot="back" class="w-full sd-prose sd-prose--inverted p-5">
         <h3>Our quality portfolio</h3>
-        <p>
+        <p class="sd-paragraph">
           Together with our local partners we manage a real estate portfolio of approx. USD 6 billion, which represents
           about 15% of the total global portfolio and spans over more than 35 properties. In the US, we have properties
           in New York, San Francisco, Washington D.C., Chicago and other major US cities. In Latin America we are
@@ -45,7 +45,7 @@ export const Default = {
         slot="media-front"
         class="object-cover h-full w-full"
         src="./placeholders/images/collaboration.jpg"
-        alt="Test"
+        alt="Generic Alt"
       />
     </sd-flipcard>
   `
