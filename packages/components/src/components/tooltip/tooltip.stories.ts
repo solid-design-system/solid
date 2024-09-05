@@ -73,7 +73,7 @@ export const Default = {
 export const Size = {
   name: 'Size',
   render: () => html`
-    <div class="flex gap-12">
+    <div class="flex items-center gap-12">
       <sd-tooltip content="Lorem ipsum" placement="top" size="lg" trigger="click focus"></sd-tooltip>
       <sd-tooltip content="Lorem ipsum" placement="top" size="sm" trigger="click focus"></sd-tooltip>
     </div>
