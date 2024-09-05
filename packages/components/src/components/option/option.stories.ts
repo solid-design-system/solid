@@ -7,7 +7,7 @@ const { generateTemplate } = storybookTemplate('sd-option');
 const { overrideArgs } = storybookHelpers('sd-option');
 
 /**
- * Defines selectable items within various form controls such as select.
+ * Used to define selectable items within various form controls such as select.
  *
  * **Related Components**:
  * - [sd-select](?path=/docs/components-sd-select--docs)
