@@ -3,6 +3,8 @@ import { html } from 'lit-html';
 
 /**
  * Example of different variants of the headline with a mark.
+ *
+ * `Green accent color`: minium font size of 18.67px.
  */
 
 export default {

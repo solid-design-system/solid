@@ -7,7 +7,7 @@ const { overrideArgs } = storybookHelpers('sd-headline');
 const { generateTemplate } = storybookTemplate('sd-headline');
 
 /**
- * Used as a vital element for displaying content hierarchy and to improve accessibility.
+ * Used as a crucial element for displaying content hierarchy and to enhance accessibility.
  *
  *  **Related templates**:
  * - [Headline with Mark](?path=/docs/templates-headline-with-mark--docs)
@@ -48,7 +48,7 @@ export const Default = {
 };
 
 /**
- * Use `sd-headline` modifiers to change the visual size of the HTML element.
+ * Use `sd-headline` modifiers for alternative appearances.
  *
  * - `sd-headline--size-4xl` (default)
  * - `sd-headline--size-3xl`
@@ -88,11 +88,11 @@ export const Inline = {
     <div class="flex flex-col gap-12">
       <h4 class="sd-headline">
         <sd-icon name="content/picture" library="global-resources"></sd-icon>
-        <span> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua. </span>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.
       </h4>
       <h4 class="sd-headline sd-headline--inline">
         <sd-icon name="content/picture" library="global-resources"></sd-icon>
-        <span> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua. </span>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.
       </h4>
     </div>
   `
