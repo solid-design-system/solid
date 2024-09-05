@@ -7,7 +7,10 @@ const { overrideArgs } = storybookHelpers('sd-footnotes');
 const { generateTemplate } = storybookTemplate('sd-footnotes');
 
 /**
- * Used to add additional information/sources related to the content and usually appears at the bottom of a page or below the content it refers to.
+ * Used to add additional information/sources related to the content.
+ *
+ *  * **Related templates**:
+ * - [Footnotes set start](?path=/docs/templates-footnotes-set-start--docs)
  */
 
 export default {
@@ -54,20 +57,15 @@ export const Default = {
 /**
  * Use the standard html list elements for alternative appearances:
  *
- * - numbered: use an `ol` element to create a numbered list.
- * The html `start` attribute to set the starting number of the list, the default value is '1'.
- * - unnumbered: use an `ul` element to create an unnumbered list.
+ * - ordered: use an `ol` element to create a numbered list.
+ * Use the html `start` attribute to set the starting number of the list, the default value is '1'.
+ * - unordered: use an `ul` element to create an unnumbered list.
  */
 
 export const Variants = {
   render: () => html`
     <div class="flex flex-col gap-12">
       <ol class="sd-footnotes">
-        <li>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</li>
-        <li>Sed diam nonumy eirmod tempor invidunt ut labore.</li>
-        <li>Dolore magna aliq erat, sed diam voluptua.</li>
-      </ol>
-      <ol start="150" class="sd-footnotes">
         <li>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</li>
         <li>Sed diam nonumy eirmod tempor invidunt ut labore.</li>
         <li>Dolore magna aliq erat, sed diam voluptua.</li>
