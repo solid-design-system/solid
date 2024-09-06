@@ -112,7 +112,7 @@ export const Disabled = {
  * - `manual`: displays the tooltip when the `open` attribute is set to `true`
  */
 export const Trigger = {
-  render: () => html` <sd-tooltip content="Lorem ipsum" placement="bottom" size="lg"></sd-tooltip> `
+  render: () => html` <sd-tooltip content="Lorem ipsum" placement="bottom" size="lg" trigger="click"></sd-tooltip> `
 };
 
 /**
