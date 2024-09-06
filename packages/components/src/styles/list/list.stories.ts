@@ -208,7 +208,7 @@ export const Weights = {
 };
 
 /**
- * Use the `sd-list--inverted` class when displayed on primary background.
+ * Use the `&--inverted` class when displayed on primary background.
  */
 export const Inverted = {
   render: () =>
