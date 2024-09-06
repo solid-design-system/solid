@@ -65,7 +65,7 @@ export const Size = {
 };
 
 /**
- * Use the `sd-paragraph--inverted` class when displayed on primary background.
+ * Use the `&--inverted` class when displayed on primary background.
  */
 
 export const Inverted = {
