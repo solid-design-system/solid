@@ -225,7 +225,7 @@ export const AspectRatios = {
         flip-direction="horizontal"
         front-variant="primary-100"
         back-variant="primary-100"
-        style="aspect-ratio:16/9;"
+        style="aspect-ratio:16/9"
       >
         <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
         <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
