@@ -132,7 +132,7 @@ export const Accordion = {
  *
  * - It needs a `children slot` and an `href` attribute. `target` and `download` attributes are optional.
  */
-export const separated = {
+export const Separated = {
   render: () =>
     html`<sd-navigation-item href="https://www.union-investment.de/" target="_blank" vertical separated>
       <div>Vertical Navigation Separated</div>
