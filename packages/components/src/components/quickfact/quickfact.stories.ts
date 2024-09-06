@@ -65,7 +65,7 @@ export const Expandable = {
 };
 
 /**
- * Use the `open` attribute to set the quickfact item to open by default.
+ * Use the `open` attribute to set the state of the quickfact.
  */
 export const Open = {
   render: () => html`
