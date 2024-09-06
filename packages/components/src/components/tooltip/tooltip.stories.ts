@@ -97,7 +97,7 @@ export const Placement = {
 };
 
 /**
- * Use the `disabled` attribute to disable the tooltip.
+ * Use the `disabled` attribute to disable the tooltip trigger.
  */
 export const Disabled = {
   render: () => html` <sd-tooltip content="Lorem ipsum" placement="top" size="lg" disabled></sd-tooltip> `
