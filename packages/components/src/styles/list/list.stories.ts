@@ -10,6 +10,9 @@ const { generateTemplate } = storybookTemplate('sd-list');
  * Used to make blocks of text easier to read and to divide information into manageable sections.
  *
  * Text lists can be numbered, have bullet points, or be supplemented by content symbols. Text can be bolded or linked.
+ *
+ * **Related templates**:
+ * - [Link with weights](?path=/docs/templates-list-with-weights--docs)
  */
 
 export default {
@@ -53,7 +56,7 @@ export const Default = {
  *
  * - `Unordered list group`: use the class `sd-list` when there is no specific sequence or order to the items
  * - `Ordered list group`: use the class `sd-list` when the items have a specific sequence or count
- * - `Icon list group`: use the class `sd-list--icon` when more illustration is needed
+ * - `Icon list group`: used when a content icon is needed to illustrate the text content
  */
 
 export const Variants = {
@@ -152,7 +155,7 @@ export const Levels = {
 };
 
 /**
- * Use `sd-list--horizontal` modifiers to set horizontal orientations for Icon list groups.
+ * Use the `&--horizontal` class to set the axis of the list displaying content icons to horizontal.
  */
 export const Orientation = {
   render: () =>
@@ -186,25 +189,6 @@ export const Orientation = {
         </li>
       </ul>
     </div>`
-};
-
-export const Weights = {
-  render: () =>
-    html`<ul class="sd-list">
-      <li>
-        <b>Unordered list level 1</b>
-        <ul>
-          <li>
-            Unordered list level 2
-            <ul>
-              <li>Unordered list level 3</li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-      <li><b>Unordered list level 1</b></li>
-      <li><b>Unordered list level 1</b></li>
-    </ul>`
 };
 
 /**
