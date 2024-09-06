@@ -36,7 +36,7 @@ export const Default = {
 };
 
 /**
- * Use the `sd-interactive--inverted` class when displayed on primary background.
+ * Use the `&--inverted` class when displayed on primary background.
  *
  * On darker backgrounds text/white inverted colour will substitute primary.
  */
