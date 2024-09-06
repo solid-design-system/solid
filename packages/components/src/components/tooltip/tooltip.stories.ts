@@ -46,6 +46,11 @@ export default {
           .template-height {
             height: 110px;
           }
+
+          #anchor--components-sd-tooltip--placement .innerZoomElementWrapper {
+            padding: 50px 0;
+            height: 300px;
+          }
         </style>
         ${story()}`
   ] as unknown
@@ -83,16 +88,35 @@ export const Size = {
 /**
  * Use the `placement` attribute to set the placement.
  *
- * - `top`: displays tooltip above the trigger element
  * - `top-start`: displays tooltip above the trigger element and aligns arrow to the start of the tooltip container
+ * - `top`: displays tooltip above the trigger element
  * - `top-end`: displays tooltip above the trigger element and aligns arrow to the end of the tooltip container
- * - `bottom`: displays tooltip below the trigger element
  * - `bottom-start`: displays tooltip below the trigger element and aligns arrow to the start of the tooltip container
+ * - `bottom`: displays tooltip below the trigger element
  * - `bottom-end`: displays tooltip below the trigger element and aligns arrow to the end of the tooltip container
  */
 export const Placement = {
   render: () => html`
-    <sd-tooltip content="Lorem ipsum" placement="bottom" size="lg" trigger="click focus"></sd-tooltip>
+    <div class="grid grid-cols-3 gap-12">
+      <div>
+        <sd-tooltip content="Lorem ipsum" placement="top-start" open size="lg" trigger="click focus"></sd-tooltip>
+      </div>
+      <div>
+        <sd-tooltip content="Lorem ipsum" placement="top" open size="lg" trigger="click focus"></sd-tooltip>
+      </div>
+      <div>
+        <sd-tooltip content="Lorem ipsum" placement="top-end" open size="lg" trigger="click focus"></sd-tooltip>
+      </div>
+      <div>
+        <sd-tooltip content="Lorem ipsum" placement="bottom-start" open size="lg" trigger="click focus"></sd-tooltip>
+      </div>
+      <div>
+        <sd-tooltip content="Lorem ipsum" placement="bottom" open size="lg" trigger="click focus"></sd-tooltip>
+      </div>
+      <div>
+        <sd-tooltip content="Lorem ipsum" placement="bottom-end" open size="lg" trigger="click focus"></sd-tooltip>
+      </div>
+    </div>
   `
 };
 
