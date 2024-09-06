@@ -33,7 +33,7 @@ export const Default = {
         We are invested in over USD 6 Billion of Assets under Management
       </h5>
       <div slot="back" class="w-full sd-prose sd-prose--inverted p-5">
-        <h3>Our quality portfolio</h3>
+        <h3 class="sd-headline sd-headline--size-lg sd-headline--inverted">Our quality portfolio</h3>
         <p class="sd-paragraph">
           Together with our local partners we manage a real estate portfolio of approx. USD 6 billion, which represents
           about 15% of the total global portfolio and spans over more than 35 properties. In the US, we have properties
