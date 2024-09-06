@@ -79,7 +79,7 @@ export const Variants = {
 };
 
 /**
- * Use the `sd-footnotes--inverted` class when displayed on primary background.
+ * Use the `&--inverted` class when displayed on primary background.
  */
 
 export const Inverted = {
