@@ -56,7 +56,7 @@ export const Size = {
 };
 
 /**
- * Use the `sd-display--inverted` class when displayed on primary background.
+ * Use the `&--inverted` class when displayed on primary background.
  */
 
 export const Inverted = {
