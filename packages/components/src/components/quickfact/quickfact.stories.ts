@@ -10,7 +10,7 @@ const { generateTemplate } = storybookTemplate('sd-quickfact');
 
 /**
  *
- *  Used to display a quick fact item with an optional summary section.
+ *  Used to present information in a an expandable and more dynamic way.
  *
  *  **Related templates:**
  * - [Quickfact Grouping](?path=/docs/templates-quickfact-grouping--docs)
