@@ -3,14 +3,26 @@ import { html } from 'lit-html';
 
 export default {
   tags: ['!dev'],
-  title: 'Templates/Quickfact Grouping'
+  title: 'Templates/Quickfact'
+};
+
+export const Default = {
+  render: () => html`
+    <sd-quickfact expandable summary="Partnership">
+      <sd-icon name="content/handshake" color="primary" aria-hidden="true" library="default" slot="icon"></sd-icon>
+      <p class="sd-leadtext text-center">
+        Union Investment is part of the Volksbanken Raiffeisenbanken cooperative financial network. The cooperative
+        model is based on a simple idea: when people join forces, they are much stronger together: "What one cannot do
+        alone, many can".
+      </p>
+    </sd-quickfact>
+  `
 };
 
 /**
- * This is a sample of how to group sd-quickfacts in a grid layout. Additional JavaScript is used to enable closing all other quickfacts when one is opened and to equalize the height of all summaries in a row. Open the "Show code" section to see the detailed implementation.
+ * This sample shows how to group “sd-quickfacts”.<br /> Additional JavaScript is used to enable closing all other quickfacts when one is opened and to equalize the height of all summaries in a row. Open the "Show code" section to see the detailed implementation.
  */
-
-export const Default = {
+export const Grouping = {
   render: () =>
     html`<div>
       <style>
@@ -27,7 +39,7 @@ export const Default = {
             width: 100%;
           }
 
-          .grouping-sample sd-quickfact::part(content) {
+          .grouping-sample sd-quickfact.fact::part(content) {
             position: absolute;
             width: 100%;
             left: 0;
@@ -35,18 +47,18 @@ export const Default = {
         }
       </style>
       <div class="grouping-sample relative">
-        <sd-quickfact expandable class="first">
+        <sd-quickfact expandable class="first fact">
           <sd-icon name="content/image" color="primary" aria-hidden="true" library="default" slot="icon"></sd-icon>
 
           <div class="slot slot--border slot--text h-12">Quickfact 1</div>
 
           <div slot="summary">
             <p class="text-base font-normal leading-normal sm:text-3xl sm:leading-tight">Sed do eiusmod</p>
-            <div class="text-base font-normal leading-normal sm:text-xl">Con sectetur adipiscing elit</div>
+            <div class="text-base font-normal leading-normal sm:text-xl">Con sectetur adipis</div>
           </div>
         </sd-quickfact>
 
-        <sd-quickfact expandable class="second">
+        <sd-quickfact expandable class="second fact">
           <sd-icon name="content/image" color="primary" aria-hidden="true" library="default" slot="icon"></sd-icon>
 
           <div class="slot slot--border slot--text h-12">Quickfact 2</div>
@@ -57,7 +69,7 @@ export const Default = {
           </div>
         </sd-quickfact>
 
-        <sd-quickfact expandable class="third">
+        <sd-quickfact expandable class="third fact">
           <sd-icon name="content/image" color="primary" aria-hidden="true" library="default" slot="icon"></sd-icon>
 
           <div class="slot slot--border slot--text h-12">Quickfact 3</div>
@@ -67,7 +79,7 @@ export const Default = {
             <div class="text-base font-normal leading-normal sm:text-xl">Ut enim ad</div>
           </div>
         </sd-quickfact>
-        <sd-quickfact expandable class="fourth">
+        <sd-quickfact expandable class="fourth fact">
           <sd-icon name="content/image" color="primary" aria-hidden="true" library="default" slot="icon"></sd-icon>
 
           <div class="slot slot--border slot--text h-12">Quickfact 4</div>

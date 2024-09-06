@@ -13,7 +13,7 @@ const { generateTemplate } = storybookTemplate('sd-quickfact');
  *  Used to present information in a an expandable and more dynamic way.
  *
  *  **Related templates:**
- * - [Quickfact Grouping](?path=/docs/templates-quickfact-grouping--docs)
+ * - [Quickfact](?path=/docs/templates-quickfact--docs)
  *
  *
  *  **Disclaimer:** Due to a bug with Storybook Controls, the `expandable` attribute controls might not behave as expected. Please refresh the page if you wish to reset the controls.
@@ -69,24 +69,32 @@ export const Expandable = {
  */
 export const Open = {
   render: () => html`
-    <sd-quickfact expandable="" open summary="Lorem Ipsum">
-      <sd-icon name="content/image" color="primary" aria-hidden="true" library="default" slot="icon"></sd-icon>
-      <div class="slot slot--border slot--text h-16">Default slot</div>
-    </sd-quickfact>
+    <div class="flex flex-col gap-12">
+      <sd-quickfact expandable="" open summary="Open">
+        <sd-icon name="content/image" color="primary" aria-hidden="true" library="default" slot="icon"></sd-icon>
+        <div class="slot slot--border slot--text h-16">Default slot</div>
+      </sd-quickfact>
+
+      <sd-quickfact expandable="" summary="Closed">
+        <sd-icon name="content/image" color="primary" aria-hidden="true" library="default" slot="icon"></sd-icon>
+        <div class="slot slot--border slot--text h-16">Default slot</div>
+      </sd-quickfact>
+    </div>
   `
 };
 
 /**
- * Use the `summary` to provide the text in the accordion quickfact.
-Hint: The summary slot allows you to use custom html.
+ * Use the `summary` attribute to provide the text in the accordion quickfact.
+ *
+ * **Hint:** The summary slot allows you to use custom html.
  */
 export const Summary = {
   render: () => html`
-    <sd-quickfact expandable="">
+    <sd-quickfact>
       <sd-icon name="content/image" color="primary" aria-hidden="true" library="default" slot="icon"></sd-icon>
       <div slot="summary" class="flex flex-col sm:gap-4">
-        <p class="text-base font-normal leading-normal sm:text-4xl sm:leading-tight">Lorem Ipsum</p>
-        <div class="text-base font-normal leading-normal sm:text-xl">Con sectetur adipiscing elit</div>
+        <p class="text-base font-normal leading-normal sm:text-4xl sm:leading-tight">Summary Lorem Ipsum</p>
+        <div class="text-base font-normal leading-normal sm:text-xl">Description</div>
       </div>
       <div class="slot slot--border slot--text h-16">Default slot</div>
     </sd-quickfact>
