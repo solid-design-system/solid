@@ -40,7 +40,7 @@ export const Default = {
 };
 
 /**
- * Use the `&--inverted` class when displayed on primary background.
+ * Use the `&--inverted` class when displayed on primary background if description is added.
  */
 
 export const Inverted = {
