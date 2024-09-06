@@ -65,7 +65,7 @@ export const Size = {
 };
 
 /**
- * Use the `sd-meta--inverted` class when displayed on primary background.
+ * Use the `&--inverted` class when displayed on primary background.
  *
  * - White is the default
  * - `sd-meta--light`: Primary-400 can be used to deemphasize text content
