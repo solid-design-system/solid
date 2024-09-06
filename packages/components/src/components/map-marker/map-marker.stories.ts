@@ -8,13 +8,20 @@ const { generateTemplate } = storybookTemplate('sd-map-marker');
 
 /**
  * Used to show a location or a cluster of locations on a map.
+ *
+ * **Related templates:**
+ * - [Map Marker with Image](?path=/docs/templates-map-marker-with-image--docs)
  */
 export default {
   title: 'Components/sd-map-marker',
   tags: ['!dev'],
   component: 'sd-map-marker',
   parameters: {
-    ...parameters
+    ...parameters,
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2544-17460&node-type=FRAME&m=dev'
+    }
   },
   argTypes,
   decorators: [withActions] as any
@@ -81,7 +88,6 @@ export const State = {
       <div class="flex flex-col space-y-5">
         <sd-map-marker state="default" variant="cluster"> 8 </sd-map-marker>
         <sd-map-marker state="hover" variant="cluster"> 8 </sd-map-marker>
-        <sd-map-marker state="active" variant="cluster"> 8 </sd-map-marker>
       </div>
     </div>
   `
@@ -107,20 +113,8 @@ export const Animated = {
  */
 export const Slot = {
   render: () => html`
-    <div class="flex gap-4 items-center">
-      <sd-map-marker variant="place">
-        <span class="slot slot--border slot--background">
-          <sd-icon name="content/image" color="primary"></sd-icon>
-        </span>
-      </sd-map-marker>
-      <sd-map-marker variant="place">
-        <span class="slot slot--border slot--background">
-          <img class="" src="images/logo-unioninvestment-sm.svg" alt="Logo" />
-        </span>
-      </sd-map-marker>
-      <sd-map-marker variant="cluster">
-        <span class="slot slot--border slot--background">8</span>
-      </sd-map-marker>
-    </div>
+    <sd-map-marker variant="place" class="slot-example">
+      <span class="slot slot--border h-8 w-8 -mt-4"></span>
+    </sd-map-marker>
   `
 };
