@@ -25,6 +25,6 @@ export default {
 export const MapMarkerWithImage = {
   render: () =>
     html`<sd-map-marker state="default" variant="place">
-      <sd-icon name="content/image" color="primary"></sd-icon>
+      <img src="./placeholders/images/bild.png" alt="The Bild logo" class="h-8 w-8 -mt-4" />
     </sd-map-marker>`
 };
