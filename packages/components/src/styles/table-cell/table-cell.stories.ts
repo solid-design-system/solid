@@ -87,7 +87,7 @@ export const Variants = {
 };
 
 /**
- * As an option vertical dividers can be toggled by selecting divider.
+ * Use the `&--divider` class to toggle vertical dividers.
  */
 
 export const Divider = {
