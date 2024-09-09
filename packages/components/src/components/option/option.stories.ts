@@ -1,28 +1,29 @@
 import '../../solid-components';
-import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { withActions } from '@storybook/addon-actions/decorator';
-const { overrideArgs } = storybookHelpers('sd-option');
 import { html } from 'lit-html';
+import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
 const { argTypes, parameters } = storybookDefaults('sd-option');
 const { generateTemplate } = storybookTemplate('sd-option');
+const { overrideArgs } = storybookHelpers('sd-option');
 
 /**
- * Options define the selectable items within various form controls such as `sd-select`
+ * Used to define selectable items within various form controls such as select.
+ *
+ * **Related Components**:
+ * - [sd-select](?path=/docs/components-sd-select--docs)
+ *
+ * **Related templates**:
+ * - [Autocomplete](?path=/docs/templates-autocomplete--docs)
  */
 
 export default {
   title: 'Components/sd-option',
+  tags: ['!dev'],
   component: 'sd-option',
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Option' }),
   argTypes,
-  parameters: { ...parameters },
-  decorators: [withActions] as any
+  parameters
 };
-
-/**
- * Default: This shows sd-option in its default state.
- */
 
 export const Default = {
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Option' }),
@@ -34,149 +35,109 @@ export const Default = {
 };
 
 /**
- * Use the `disabled` attribute to disable an option. Clicks will be suppressed until the disabled state is removed. Use the `checkbox` attribute to prefix a styled checkbox. Enabled automatically when using `sd-select` with attribute `checklist` set to `true`.
+ * Use the `variant` attribute to set the option’s variant.
+ * - `default`
+ * - `checkbox`: Enabled automatically when using `sd-select` with attribute `checklist` set to `true`.
+ *
  */
 
-export const DisabledCheckbox = {
-  name: 'Disabled x Checkbox',
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        x: {
-          type: 'attribute',
-          name: 'disabled',
-          values: [false, true]
-        },
-        y: {
-          type: 'attribute',
-          name: 'checkbox',
-          values: [false, true]
-        }
-      },
-      constants: { type: 'attribute', name: 'disabled', value: true },
-      args
-    });
-  }
+export const Variants = {
+  render: () =>
+    html`<div class="flex flex-row gap-12 h-[260px]">
+      <sd-select label="Default" placeholder="Please Select" placement="bottom" max-options-visible="3">
+        <sd-option value="option-1">Option 1</sd-option>
+        <sd-option value="option-2">Option 2</sd-option>
+        <sd-option value="option-3">Option 3</sd-option>
+      </sd-select>
+      <sd-select label="Checkbox" placeholder="Please Select" placement="bottom" max-options-visible="3" multiple>
+        <sd-option value="option-1" checkbox>Checkbox Option 1</sd-option>
+        <sd-option value="option-2" checkbox>Checkbox Option 2</sd-option>
+        <sd-option value="option-3" checkbox>Checkbox Option 3</sd-option>
+      </sd-select>
+    </div>`
 };
 
 /**
- * Use the `size` attribute to change a select’s size. This will be inherited automatically from the `size` attribute of the parent `sd-select`.
+ * Use the `size` attribute to change the option’s size.
+ * This will be inherited automatically from the size attribute of the parent `sd-select`.
  */
 
-export const SizeCheckbox = {
-  name: 'Size x Checkbox',
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        x: {
-          type: 'attribute',
-          name: 'size'
-        },
-        y: {
-          type: 'attribute',
-          name: 'checkbox',
-          values: [false, true]
-        }
-      },
-      constants: { type: 'attribute', name: 'checkbox', value: true },
-      args
-    });
-  }
+export const Size = {
+  render: () =>
+    html` <div class="flex flex-row gap-4 h-[260px]">
+      <sd-select label="Large" placeholder="Please Select" placement="bottom" max-options-visible="3">
+        <sd-option value="option-1" size="lg">Option 1</sd-option>
+        <sd-option value="option-2" size="lg">Option 2</sd-option>
+        <sd-option value="option-3" size="lg">Option 3</sd-option>
+      </sd-select>
+      <sd-select label="Medium" placeholder="Please Select" placement="bottom" max-options-visible="3" size="md">
+        <sd-option value="option-1" size="md">Option 1</sd-option>
+        <sd-option value="option-2" size="md">Option 2</sd-option>
+        <sd-option value="option-3" size="md">Option 3</sd-option>
+      </sd-select>
+      <sd-select label="Small" placeholder="Please Select" placement="bottom" max-options-visible="3" size="sm">
+        <sd-option value="option-1" size="sm">Option 1</sd-option>
+        <sd-option value="option-2" size="sm">Option 2</sd-option>
+        <sd-option value="option-3" size="sm">Option 3</sd-option>
+      </sd-select>
+    </div>`
 };
 
 /**
- * Shows available slots.
+ * Parent component `sd-select` controls state of `sd-option`.
  */
 
-export const Slots = {
-  parameters: {
-    controls: {
-      exclude: ['default', 'left', 'right']
-    }
-  },
-  render: (args: any) => {
-    return html`
-      ${['default', 'left', 'right'].map(slot =>
-        generateTemplate({
-          axis: {
-            x: {
-              type: 'slot',
-              name: slot,
-              title: 'slot=...',
-              values: [
-                {
-                  value:
-                    slot === 'default'
-                      ? `<div class="slot slot--border slot--background h-8 w-[100px]"></div>`
-                      : `<div slot='${slot}' class="slot slot--border slot--background h-6 ${
-                          slot === 'default' ? 'w-18' : 'w-6'
-                        }"></div>`,
-                  title: slot
-                }
-              ]
-            }
-          },
-          constants: [
-            {
-              type: 'slot',
-              name: 'left',
-              value: '<sd-icon slot="left" library="global-resources" name="system/picture"></sd-icon>'
-            },
-            {
-              type: 'slot',
-              name: 'right',
-              value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
-            }
-          ],
-          args
-        })
-      )}
-    `;
-  }
+export const Selected = {
+  render: () =>
+    html`<div class="flex flex-row gap-12 h-[260px]">
+      <sd-select
+        label="Selected option"
+        placeholder="Please Select"
+        placement="bottom"
+        size="lg"
+        max-options-visible="3"
+      >
+        <sd-option value="option-1">Option 1</sd-option>
+        <sd-option value="option-2">Option 2</sd-option>
+        <sd-option value="option-3">Option 3</sd-option>
+      </sd-select>
+      <sd-select
+        label="Multiple selected option"
+        placeholder="Please Select"
+        placement="bottom"
+        size="lg"
+        max-options-visible="3"
+        multiple
+      >
+        <sd-option value="option-1" checkbox>Checkbox Option 1</sd-option>
+        <sd-option value="option-2" checkbox>Checkbox Option 2</sd-option>
+        <sd-option value="option-3" checkbox>Checkbox Option 3</sd-option>
+      </sd-select>
+    </div>`
 };
 
 /**
- * Use the `base`, `label`, `left`, `right` part selectors to customize the option.
+ * Use the `disabled` attribute to disable an option.
  */
 
-export const Parts = {
-  parameters: {
-    controls: {
-      exclude: ['base', 'label', 'left', 'right']
-    }
-  },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: {
-          type: 'template',
-          name: 'sd-option::part(...){outline: solid 2px red}',
-          values: ['base', 'label', 'left', 'right'].map(part => {
-            return {
-              title: part,
-              value: `<style>#part-${part} sd-option::part(${part}){outline: solid 2px red}</style><div id="part-${part}">%TEMPLATE%</div>`
-            };
-          })
-        }
-      },
-      constants: [
-        {
-          type: 'slot',
-          name: 'left',
-          value: '<sd-icon slot="left" library="global-resources" name="system/picture"></sd-icon>'
-        },
-        {
-          type: 'slot',
-          name: 'default',
-          value: 'Option'
-        },
-        {
-          type: 'slot',
-          name: 'right',
-          value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
-        }
-      ],
-      args
-    });
-  }
+export const Disabled = {
+  render: () =>
+    html`<div class="flex flex-row gap-12 h-[260px]">
+      <sd-select label="Disabled Options" placeholder="Please Select" placement="bottom" max-options-visible="3">
+        <sd-option value="option-1" disabled>Option 1</sd-option>
+        <sd-option value="option-2" disabled>Option 2</sd-option>
+        <sd-option value="option-3" disabled>Option 3</sd-option>
+      </sd-select>
+      <sd-select
+        label="Disabled Checkbox Options"
+        placeholder="Please Select"
+        placement="bottom"
+        max-options-visible="3"
+        multiple
+      >
+        <sd-option value="option-1" disabled checkbox>Checkbox Option 1</sd-option>
+        <sd-option value="option-2" disabled checkbox>Checkbox Option 2</sd-option>
+        <sd-option value="option-3" disabled checkbox>Checkbox Option 3</sd-option>
+      </sd-select>
+    </div>`
 };
