@@ -42,7 +42,7 @@ export const Default = {
 
  * - `sd-display--size-4xl`: 4xl can be used as an alternative
 * - `sd-display--size-3xl`: 3xl can be used as an alternative
- * - Extra large is the default display size
+ * - xl is the default display size
  */
 
 export const Size = {
