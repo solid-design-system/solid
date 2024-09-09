@@ -41,7 +41,7 @@ export const Default = {
 };
 
 /**
- * Use `sd-paragraph` modifiers for alternative appearances.
+ * Use the `&--size-*`classes for alternative appearances.
  *
  * - Large is the default paragraph size
  * - `sd-paragraph--size-sm`: Small can be used as an alternative
