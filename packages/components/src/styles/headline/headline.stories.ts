@@ -48,7 +48,7 @@ export const Default = {
 };
 
 /**
- * Use `&--size-*` modifiers for alternative appearances.
+ * Use the `&--size-*` classes for alternative appearances.
  *
  * - `sd-headline--size-4xl` (default)
  * - `sd-headline--size-3xl`
