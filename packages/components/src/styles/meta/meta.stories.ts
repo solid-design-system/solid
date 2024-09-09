@@ -50,7 +50,7 @@ export const Variants = {
 };
 
 /**
- * Use `sd-meta` modifiers for alternative appearances.
+ * Use `&--size` modifiers for alternative appearances.
  *
  * - Large is the default size
  * - `sd-meta--size-sm`: Small can be used as an alternative in tight spaces
@@ -79,7 +79,7 @@ export const Inverted = {
 };
 
 /**
- * Use the `sd-meta--pipe` class to separate meta information with a pipe.
+ * Use the `&--pipe` class to separate meta information with a pipe.
  */
 export const Pipe = {
   render: () =>
