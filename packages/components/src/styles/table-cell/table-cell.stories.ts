@@ -41,7 +41,7 @@ export const Default = {
 };
 
 /**
- * Choose from these color variants for alternate table experiences.
+ * Use the `&--bg-*` class for alternative appearances.
  *
  * - `sd-table-cell--bg-transparent`
  * - `sd-table-cell--bg-white`
