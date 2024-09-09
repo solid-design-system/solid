@@ -19,7 +19,7 @@ export default {
   parameters: {
     ...parameters
   },
-  args: overrideArgs({ type: 'slot', name: 'default', value: 'Default' }),
+  args: overrideArgs({ type: 'slot', name: 'default', value: '' }),
   argTypes
 };
 

@@ -10,103 +10,9 @@ export default {
 };
 
 /**
- * Users can choose more ratios for different needs using the class `aspect-[ratio]`.
- */
-export const Ratios = {
-  render: () =>
-    html`<div class="grid grid-cols-2 items-end gap-12">
-      <figure class="sd-media">
-        <img
-          src="./placeholders/images/generic.jpg"
-          alt="A generic placeholder jpg"
-          class="aspect-[16/9] object-cover"
-        />
-      </figure>
-      <figure class="sd-media">
-        <img
-          src="./placeholders/images/generic.jpg"
-          alt="A generic placeholder jpg"
-          class="aspect-[16/10] object-cover"
-        />
-      </figure>
-      <figure class="sd-media">
-        <img
-          src="./placeholders/images/generic.jpg"
-          alt="A generic placeholder jpg"
-          class="aspect-[1/1] object-cover"
-        />
-      </figure>
-      <figure class="sd-media">
-        <img
-          src="./placeholders/images/generic.jpg"
-          alt="A generic placeholder jpg"
-          class="aspect-[21/9] object-cover"
-        />
-      </figure>
-      <figure class="sd-media">
-        <img
-          src="./placeholders/images/generic.jpg"
-          alt="A generic placeholder jpg"
-          class="aspect-[2/1] object-cover"
-        />
-      </figure>
-      <figure class="sd-media">
-        <img
-          src="./placeholders/images/generic.jpg"
-          alt="A generic placeholder jpg"
-          class="aspect-[3/2] object-cover"
-        />
-      </figure>
-      <figure class="sd-media">
-        <img
-          src="./placeholders/images/generic.jpg"
-          alt="A generic placeholder jpg"
-          class="aspect-[3/4] object-cover"
-        />
-      </figure>
-      <figure class="sd-media">
-        <img
-          src="./placeholders/images/generic.jpg"
-          alt="A generic placeholder jpg"
-          class="aspect-[4/3] object-cover"
-        />
-      </figure>
-      <figure class="sd-media">
-        <img
-          src="./placeholders/images/generic.jpg"
-          alt="A generic placeholder jpg"
-          class="aspect-[4/5] object-cover"
-        />
-      </figure>
-      <figure class="sd-media">
-        <img
-          src="./placeholders/images/generic.jpg"
-          alt="A generic placeholder jpg"
-          class="aspect-[5/4] object-cover"
-        />
-      </figure>
-      <figure class="sd-media">
-        <img
-          src="./placeholders/images/generic.jpg"
-          alt="A generic placeholder jpg"
-          class="aspect-[6/5] object-cover"
-        />
-      </figure>
-      <figure class="sd-media">
-        <img
-          src="./placeholders/images/generic.jpg"
-          alt="A generic placeholder jpg"
-          class="aspect-[1.618/1] object-cover"
-        />
-      </figure>
-    </div>`
-};
-
-/**
  * Use the html `figcaption` element to add a description.
  */
-export const MediaWithDescription = {
-  name: 'Description (Optional)',
+export const Description = {
   render: () => html`
     <figure class="sd-media p-4">
       <img
@@ -123,8 +29,7 @@ export const MediaWithDescription = {
  * `Copyright` can be shown at the bottom of the default slot.
  */
 
-export const MediaWithCopyright = {
-  name: 'Copyright (Optional)',
+export const Copyright = {
   render: () => html`
     <figure class="sd-media p-4">
       <div class="sd-copyright" style="--copyright: '© Union Investment 2024'">
