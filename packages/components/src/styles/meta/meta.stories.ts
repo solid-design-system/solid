@@ -50,9 +50,9 @@ export const Variants = {
 };
 
 /**
- * Use `&--size` modifiers for alternative appearances.
+ * Use `&--size-*` class for alternative appearances.
  *
- * - Large is the default size
+ * - lg is the default size
  * - `sd-meta--size-sm`: Small can be used as an alternative in tight spaces
  */
 
