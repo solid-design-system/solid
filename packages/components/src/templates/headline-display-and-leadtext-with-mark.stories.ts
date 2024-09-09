@@ -17,34 +17,20 @@ export default {
 export const HeadlineWithMark = {
   render: () =>
     html`<div class="flex flex-col gap-8">
-      <div class="flex flex-col">
-        <h4 class="sd-headline sd-headline--inline">
-          Lorem ipsum
-          <mark class="sd-mark">sic semper</mark>
-        </h4>
-        <h4 class="sd-headline sd-headline--inline sd-headline--size-xl mt-4">
-          Lorem ipsum
-          <mark class="sd-mark">sic semper</mark>
-        </h4>
-        <h4 class="sd-headline sd-headline--inline sd-headline--size-base mt-4">
-          Lorem ipsum
-          <mark class="sd-mark">sic semper</mark>
-        </h4>
-      </div>
-      <div class="bg-primary p-4 flex flex-col">
-        <h4 class="sd-headline sd-headline--inline sd-headline--inverted">
-          Lorem ipsum
-          <mark class="sd-mark">sic semper</mark>
-        </h4>
-        <h4 class="sd-headline sd-headline--inline sd-headline--inverted sd-headline--size-xl mt-4">
-          Lorem ipsum
-          <mark class="sd-mark">sic semper</mark>
-        </h4>
-        <h4 class="sd-headline sd-headline--inline sd-headline--inverted sd-headline--size-base mt-4">
-          Lorem ipsum
-          <mark class="sd-mark">sic semper</mark>
-        </h4>
-      </div>
+      <h4 class="sd-headline">
+        <sd-icon name="content/skyscrapers" color="primary" aria-hidden="true" library="default"></sd-icon>
+        <span>Real estate investments <mark class="sd-mark">in the Americas</mark></span>
+      </h4>
+      <h4 class="sd-headline">
+        <span>Real estate investments <mark class="sd-mark">in the Americas</mark></span>
+      </h4>
+      <h4 class="sd-headline sd-headline--size-3xl">
+        <span>Real estate investments <mark class="sd-mark">in the Americas</mark></span>
+      </h4>
+      <h4 class="sd-headline sd-headline--size-xl">
+        <sd-icon name="content/skyscrapers" color="primary" aria-hidden="true" library="default"></sd-icon>
+        <span>Real estate investments <mark class="sd-mark">in the Americas</mark></span>
+      </h4>
     </div>`
 };
 

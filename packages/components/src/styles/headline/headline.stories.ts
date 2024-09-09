@@ -48,7 +48,7 @@ export const Default = {
 };
 
 /**
- * Use `sd-headline` modifiers for alternative appearances.
+ * Use `&--size` modifiers for alternative appearances.
  *
  * - `sd-headline--size-4xl` (default)
  * - `sd-headline--size-3xl`
@@ -81,7 +81,7 @@ export const Inverted = {
 };
 
 /**
- * Use the `sd-headline--inline` class to maintain inline positioning when used together with an icon or other components.
+ * Use the `&--inline` class to maintain inline positioning when used together with an icon or other components.
  */
 export const Inline = {
   render: () => html`
