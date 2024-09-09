@@ -21,7 +21,6 @@ export default {
 };
 
 export const Default = {
-  name: 'Flipcard',
   render: () => html`
     <sd-flipcard
       activation="click hover"
@@ -29,7 +28,7 @@ export const Default = {
       front-variant="gradient-dark-bottom"
       back-variant="primary"
     >
-      <h5 slot="front" class="sd-headline sd-headline--inverted sd-headline--size-xl p-5">
+      <h5 slot="front" class="sd-headline sd-headline--inverted sd-headline--size-lg p-5">
         We are invested in over USD 6 Billion of Assets under Management
       </h5>
       <div slot="back" class="w-full sd-prose sd-prose--inverted p-5">
@@ -44,7 +43,7 @@ export const Default = {
       <img
         slot="media-front"
         class="object-cover h-full w-full"
-        src="./placeholders/images/collaboration.jpg"
+        src="./placeholders/images/londonHouse.jpg"
         alt="Generic Alt"
       />
     </sd-flipcard>
