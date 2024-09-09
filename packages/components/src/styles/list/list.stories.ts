@@ -12,7 +12,8 @@ const { generateTemplate } = storybookTemplate('sd-list');
  * Text lists can be numbered, have bullet points, or be supplemented by content symbols. Text can be bolded or linked.
  *
  * **Related templates**:
- * - [Link with weights](?path=/docs/templates-list-with-weights--docs)
+ * - [List with Bolded Text](?path=/docs/templates-list-with-bolded-text--docs)
+ * - [Link list](?path=/docs/templates-link-list--docs)
  */
 
 export default {
