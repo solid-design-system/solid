@@ -41,7 +41,7 @@ export const Default = {
 };
 
 /**
- * Use the `&--bg-*` class for alternative appearances.
+ * Use the `&--bg-*` class for alternative appearances.
  *
  * - `sd-table-cell--bg-transparent`
  * - `sd-table-cell--bg-white`
@@ -52,36 +52,16 @@ export const Default = {
 export const Variants = {
   render: () => {
     return html`
-      <div class="flex gap-4">
-        <table class="sd-table">
-          <tbody>
-            <tr class="relative">
-              <td class="sd-table-cell sd-table-cell--bg-transparent">bg-transparent</td>
-            </tr>
-          </tbody>
-        </table>
-        <table class="sd-table">
-          <tbody>
-            <tr class="relative">
-              <td class="sd-table-cell sd-table-cell--bg-white">bg-white</td>
-            </tr>
-          </tbody>
-        </table>
-        <table class="sd-table">
-          <tbody>
-            <tr class="relative">
-              <td class="sd-table-cell sd-table-cell--bg-primary-100">bg-primary-100</td>
-            </tr>
-          </tbody>
-        </table>
-        <table class="sd-table">
-          <tbody>
-            <tr class="relative">
-              <td class="sd-table-cell sd-table-cell--bg-neutral-100">bg-neutral-100</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <table class="sd-table">
+        <tbody>
+          <tr class="relative">
+            <td class="sd-table-cell sd-table-cell--bg-transparent">bg-transparent</td>
+            <td class="sd-table-cell sd-table-cell--bg-white">bg-white</td>
+            <td class="sd-table-cell sd-table-cell--bg-primary-100">bg-primary-100</td>
+            <td class="sd-table-cell sd-table-cell--bg-neutral-100">bg-neutral-100</td>
+          </tr>
+        </tbody>
+      </table>
     `;
   }
 };
@@ -99,16 +79,13 @@ export const Divider = {
             <td class="font-bold sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Header</td>
           </tr>
         </thead>
-        <tbody>
-          <tr class="relative">
-            <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Cell content</td>
-          </tr>
-        </tbody>
-        <tbody>
-          <tr class="relative">
-            <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Cell content</td>
-          </tr>
-        </tbody>
+        <tr class="relative">
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Cell content</td>
+        </tr>
+
+        <tr class="relative">
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Cell content</td>
+        </tr>
       </table>
     `;
   }
