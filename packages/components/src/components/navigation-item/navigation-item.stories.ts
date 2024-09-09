@@ -71,7 +71,7 @@ export const Link = {
 };
 
 /**
- * Use the `current` attribute to change the navigation item to a current state.
+ * Use the `current` attribute to change the navigation item to a current state and and make it bold.
  */
 
 export const Current = {
