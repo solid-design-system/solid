@@ -1,4 +1,5 @@
 import '../../solid-components';
+import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
 const { argTypes, parameters } = storybookDefaults('sd-table-cell');
