@@ -68,28 +68,28 @@ export const Default = {
 export const Size = {
   render: () => html`
     <div class="flex gap-12 h-[500px]">
-      <sd-select size="lg" label="Label" placement="bottom" value="">
-        <sd-option value="option-1">Option 1</sd-option>
-        <sd-option value="option-2">Option 2</sd-option>
-        <sd-option value="option-3">Option 3</sd-option>
-        <sd-option value="option-4">Option 4</sd-option>
-        <sd-option value="option-5">Option 5</sd-option>
+      <sd-select size="lg" label="Large" placement="bottom" value="" class="test">
+        <sd-option value="option-1" size="lg">Option 1</sd-option>
+        <sd-option value="option-2" size="lg">Option 2</sd-option>
+        <sd-option value="option-3" size="lg">Option 3</sd-option>
+        <sd-option value="option-4" size="lg">Option 4</sd-option>
+        <sd-option value="option-5" size="lg">Option 5</sd-option>
       </sd-select>
 
-      <sd-select size="md" label="Label" placement="bottom" value="">
-        <sd-option value="option-1">Option 1</sd-option>
-        <sd-option value="option-2">Option 2</sd-option>
-        <sd-option value="option-3">Option 3</sd-option>
-        <sd-option value="option-4">Option 4</sd-option>
-        <sd-option value="option-5">Option 5</sd-option>
+      <sd-select size="md" label="Medium" placement="bottom" value="" class="test">
+        <sd-option value="option-1" size="md">Option 1</sd-option>
+        <sd-option value="option-2" size="md">Option 2</sd-option>
+        <sd-option value="option-3" size="md">Option 3</sd-option>
+        <sd-option value="option-4" size="md">Option 4</sd-option>
+        <sd-option value="option-5" size="md">Option 5</sd-option>
       </sd-select>
 
-      <sd-select size="sm" label="Label" placement="bottom" value="">
-        <sd-option value="option-1">Option 1</sd-option>
-        <sd-option value="option-2">Option 2</sd-option>
-        <sd-option value="option-3">Option 3</sd-option>
-        <sd-option value="option-4">Option 4</sd-option>
-        <sd-option value="option-5">Option 5</sd-option>
+      <sd-select size="sm" label="Small" placement="bottom" value="">
+        <sd-option value="option-1" size="sm">Option 1</sd-option>
+        <sd-option value="option-2" size="sm">Option 2</sd-option>
+        <sd-option value="option-3" size="sm">Option 3</sd-option>
+        <sd-option value="option-4" size="sm">Option 4</sd-option>
+        <sd-option value="option-5" size="sm">Option 5</sd-option>
       </sd-select>
     </div>
   `
@@ -122,14 +122,13 @@ export const Placement = {
 };
 
 /**
- * Use the `label` slot to add a label with custom markup.
+ * Use the `label` attribute to provide an accessible label for the select element.<br />Use the `label` slot to add custom markup.
  */
 
 export const Label = {
   render: () => html`
     <div class="w-[300px] h-[500px]">
       <sd-select size="lg" label="Label" placement="bottom" value="">
-        <div slot="label">Label</div>
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
         <sd-option value="option-3">Option 3</sd-option>
@@ -147,7 +146,25 @@ export const Label = {
 export const Placeholder = {
   render: () => html`
     <div class="w-[300px] h-[500px]">
-      <sd-select size="lg" label="Label" placeholder="Please Select" placement="bottom" value="">
+      <sd-select size="lg" label="Label" placeholder="Please example" placement="bottom" value="">
+        <sd-option value="option-1">Option 1</sd-option>
+        <sd-option value="option-2">Option 2</sd-option>
+        <sd-option value="option-3">Option 3</sd-option>
+        <sd-option value="option-4">Option 4</sd-option>
+        <sd-option value="option-5">Option 5</sd-option>
+      </sd-select>
+    </div>
+  `
+};
+
+/**
+ * Use the `disabled` attribute to disable the select.
+ */
+
+export const Disabled = {
+  render: () => html`
+    <div class="w-[300px]">
+      <sd-select size="lg" label="Label" placeholder="Disabled" placement="bottom" value="" disabled>
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
         <sd-option value="option-3">Option 3</sd-option>
@@ -184,24 +201,6 @@ export const Clearable = {
   render: () => html`
     <div class="w-[300px] h-[500px]">
       <sd-select size="lg" label="Label" placement="bottom" clearable="" value="option-1">
-        <sd-option value="option-1">Option 1</sd-option>
-        <sd-option value="option-2">Option 2</sd-option>
-        <sd-option value="option-3">Option 3</sd-option>
-        <sd-option value="option-4">Option 4</sd-option>
-        <sd-option value="option-5">Option 5</sd-option>
-      </sd-select>
-    </div>
-  `
-};
-
-/**
- * Use the `disabled` attribute to disable the select.
- */
-
-export const Disabled = {
-  render: () => html`
-    <div class="w-[300px]">
-      <sd-select size="lg" label="Label" placement="bottom" value="" disabled>
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
         <sd-option value="option-3">Option 3</sd-option>
@@ -279,7 +278,7 @@ export const MaxOptionsVisible = {
 };
 
 /**
- * Use the `required` attribute to make the select required.
+ * Use the `required` attribute to mark the element as required. This can be used for form validation purposes.
  */
 
 export const Required = {
@@ -297,10 +296,44 @@ export const Required = {
 };
 
 /**
- * Use the `style-on-valid` attribute to apply styles when the select is valid.
+ * The component gets `valid` state when the input is valid.<br />Use the `style-on-valid` attribute to automatically indicate and show a valid state.
  */
 
-export const StyleOnValid = {
+export const Valid = {
+  render: () => html`
+    <div class="w-[500px] h-[300px]">
+      <sd-select
+        size="lg"
+        placement="bottom"
+        label="Label"
+        placeholder="Please Select"
+        style-on-valid=""
+        value="option-1"
+        required=""
+        clearable=""
+        class="valid-example"
+      >
+        <sd-option class="option" value="option-1">Option 1</sd-option>
+        <sd-option class="option" value="option-2">Option 2</sd-option>
+        <sd-option class="option" value="option-3">Option 3</sd-option>
+      </sd-select>
+    </div>
+
+    <script>
+      var validSelect = document.querySelector('.valid-example');
+      setTimeout(() => {
+        validSelect.checkValidity();
+        validSelect.reportValidity();
+      }, 500);
+    </script>
+  `
+};
+
+/**
+ * The component gets `invalid` state when the form is not valid.
+ */
+
+export const Invalid = {
   render: () => html`
     <div class="w-[500px] h-[300px]">
       <sd-select
@@ -312,11 +345,21 @@ export const StyleOnValid = {
         value=""
         required=""
         clearable=""
+        class="invalid-example"
       >
         <sd-option class="option" value="option-1">Option 1</sd-option>
         <sd-option class="option" value="option-2">Option 2</sd-option>
         <sd-option class="option" value="option-3">Option 3</sd-option>
       </sd-select>
     </div>
+
+    <script>
+      var invalidSelect = document.querySelector('.invalid-example');
+      setTimeout(() => {
+        invalidSelect.checkValidity();
+        invalidSelect.reportValidity();
+        invalidSelect.setCustomValidity('Error text');
+      }, 500);
+    </script>
   `
 };
