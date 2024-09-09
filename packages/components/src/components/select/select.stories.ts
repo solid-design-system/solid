@@ -18,6 +18,9 @@ const labelConstant: ConstantDefinition = { type: 'attribute', name: 'label', va
 
 /**
  * Used to choose items from a menu of predefined options.
+ *
+ * **Related templates:**
+ * - [Select Grouping](?path=/docs/templates-select-grouping--docs)
  */
 export default {
   title: 'Components/sd-select',
@@ -57,7 +60,7 @@ export default {
 
 export const Default = {
   render: (args: any) => {
-    return html`<div class="h-[260px] w-[500px]">${generateTemplate({ args })}</div>`;
+    return html`<div class="h-[260px] w-[400px]">${generateTemplate({ args })}</div>`;
   }
 };
 
@@ -127,7 +130,7 @@ export const Placement = {
 
 export const Label = {
   render: () => html`
-    <div class="w-[300px] h-[500px]">
+    <div class="w-[400px] h-[500px]">
       <sd-select size="lg" label="Label" placement="bottom" value="">
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
@@ -145,7 +148,7 @@ export const Label = {
 
 export const Placeholder = {
   render: () => html`
-    <div class="w-[300px] h-[500px]">
+    <div class="w-[400px] h-[500px]">
       <sd-select size="lg" label="Label" placeholder="Please example" placement="bottom" value="">
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
@@ -163,7 +166,7 @@ export const Placeholder = {
 
 export const Disabled = {
   render: () => html`
-    <div class="w-[300px]">
+    <div class="w-[400px]">
       <sd-select size="lg" label="Label" placeholder="Disabled" placement="bottom" value="" disabled>
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
@@ -181,7 +184,7 @@ export const Disabled = {
 
 export const HelpText = {
   render: () => html`
-    <div class="w-[300px] h-[500px]">
+    <div class="w-[400px] h-[500px]">
       <sd-select size="lg" label="Label" placement="bottom" value="" help-text="Please select an option from the list.">
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
@@ -199,7 +202,7 @@ export const HelpText = {
 
 export const Clearable = {
   render: () => html`
-    <div class="w-[300px] h-[500px]">
+    <div class="w-[400px] h-[500px]">
       <sd-select size="lg" label="Label" placement="bottom" clearable="" value="option-1">
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
@@ -217,7 +220,7 @@ export const Clearable = {
 
 export const Multiple = {
   render: () => html`
-    <div class="w-[300px] h-[500px]">
+    <div class="w-[400px] h-[500px]">
       <sd-select size="lg" label="Label" placement="bottom" multiple="" value="option-1 option-2">
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
@@ -237,7 +240,7 @@ export const Multiple = {
 
 export const useTags = {
   render: () => html`
-    <div class="w-[300px] h-[500px]">
+    <div class="w-[400px] h-[500px]">
       <sd-select size="lg" label="Label" placement="bottom" multiple="" value="option-1 option-2" useTags>
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
@@ -257,7 +260,7 @@ export const useTags = {
 
 export const MaxOptionsVisible = {
   render: () => html`
-    <div class="w-[300px] h-[500px]">
+    <div class="w-[400px] h-[500px]">
       <sd-select
         size="lg"
         label="Label"
@@ -283,7 +286,7 @@ export const MaxOptionsVisible = {
 
 export const Required = {
   render: () => html`
-    <div class="w-[500px] h-[300px]">
+    <div class="w-[400px] h-[400px]">
       <sd-select size="lg" label="Label" placeholder="Please Select" placement="bottom" value="" required="">
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
@@ -301,7 +304,12 @@ export const Required = {
 
 export const Valid = {
   render: () => html`
-    <div class="w-[500px] h-[300px]">
+    <style>
+      sd-select.valid-example::part(form-control-input) {
+        color: #181818;
+      }
+    </style>
+    <div class="w-[400px] h-[400px]">
       <sd-select
         size="lg"
         placement="bottom"
@@ -310,17 +318,17 @@ export const Valid = {
         style-on-valid=""
         value="option-1"
         required=""
-        clearable=""
         class="valid-example"
       >
         <sd-option class="option" value="option-1">Option 1</sd-option>
         <sd-option class="option" value="option-2">Option 2</sd-option>
-        <sd-option class="option" value="option-3">Option 3</sd-option>
+        <sd-option class="option" value="option-3">Option 12</sd-option>
       </sd-select>
     </div>
 
     <script>
       var validSelect = document.querySelector('.valid-example');
+      var options = validSelect.querySelectorAll('.option');
       setTimeout(() => {
         validSelect.checkValidity();
         validSelect.reportValidity();
@@ -335,7 +343,7 @@ export const Valid = {
 
 export const Invalid = {
   render: () => html`
-    <div class="w-[500px] h-[300px]">
+    <div class="w-[400px] h-[300px]">
       <sd-select
         size="lg"
         placement="bottom"
