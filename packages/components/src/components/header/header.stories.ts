@@ -8,14 +8,14 @@ const { generateTemplate } = storybookTemplate('sd-header');
 const { overrideArgs } = storybookHelpers('sd-header');
 
 /**
- * Provides a container for the main navigation of a website.
- *
- *  **Related templates**
- * - [Header Sample](?path=/docs/templates-header--docs)
- *
+ * Used as a container for the main navigation of a website.<br />Appears at the top of all pages of a website or application containing logo and main navigation and if applicable sub-brand logo and meta navigation.
  *
  *  **Related components**
  * - [sd-navigation-item](?path=/docs/components-sd-navigation-item--docs)
+ *
+ *
+ *  **Related templates**
+ * - [Header Sample](?path=/docs/templates-header--docs)
  */
 
 export default {
@@ -46,8 +46,9 @@ export default {
               display: flex;
               gap: 48px;
             }
-          }</style
-        >${story()}`
+          }
+        </style>
+        ${story()}`
   ] as unknown
 };
 
@@ -77,9 +78,6 @@ export const Fixed = {
       <sd-header fixed>
         <div class="slot slot--border slot--text">Default slot</div>
       </sd-header>
-      <div class="bg-neutral-100 p-8" style="margin-top: var(--sd-header-calculated-height)">
-        This element automatically sets its position depending on the height of the header.
-      </div>
     </div>
   `
 };
