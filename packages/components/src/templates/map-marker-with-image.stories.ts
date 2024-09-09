@@ -14,15 +14,13 @@ export default {
 };
 
 /**
- * The default version of a `quote` pattern showcases a quote in an appealing layout,
- * accompanied by an image of the speaker, along with their name and job description.
- * This adds context and personality to the quote, making it more engaging and relatable.
+ * This example shows a map marker with an image.
  *
  * ```
  * ```
  */
 
-export const MapMarkerWithImage = {
+export const Default = {
   render: () =>
     html`<sd-map-marker state="default" variant="place">
       <img src="./placeholders/images/bild.png" alt="The Bild logo" class="h-8 w-8 -mt-4" />

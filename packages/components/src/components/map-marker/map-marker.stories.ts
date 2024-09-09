@@ -52,7 +52,7 @@ export const Variant = {
       <sd-map-marker variant="place">
         <sd-icon name="content/image" color="primary"></sd-icon>
       </sd-map-marker>
-      <sd-map-marker variant="cluster"> 8 </sd-map-marker>
+      <sd-map-marker variant="cluster"> 88 </sd-map-marker>
     </div>
   `
 };
@@ -86,8 +86,8 @@ export const State = {
       </div>
 
       <div class="flex flex-col space-y-5">
-        <sd-map-marker state="default" variant="cluster"> 8 </sd-map-marker>
-        <sd-map-marker state="hover" variant="cluster"> 8 </sd-map-marker>
+        <sd-map-marker state="default" variant="cluster"> 88 </sd-map-marker>
+        <sd-map-marker state="hover" variant="cluster"> 88 </sd-map-marker>
       </div>
     </div>
   `
@@ -109,7 +109,7 @@ export const Animated = {
 };
 
 /**
- * Use the default slot to include content in the marker.
+ * Use the `default` slot to include content in the marker.
  */
 export const Slot = {
   render: () => html`
