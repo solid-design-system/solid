@@ -9,65 +9,38 @@ export default {
   }
 };
 
-/**
- *
- * - Aligment: Teaser content can be center aligned if desired.
- * - Padding: Can be changed as desired.
- * - Headline size: Can be changed as desired.
- *
- * ```
- * ```
- */
-
-export const Default = {
-  render: () =>
-    html` <style>
-        .sd-headline {
-          justify-content: center;
-        }
-      </style>
-      <div class="flex flex-col gap-8">
-        <sd-teaser-media variant="gradient-dark" class="min-w-[435px] max-w-4xl">
-          <div slot="media" class="relative">
-            <img src="./placeholders/images/coffeeshop.jpg" alt="A group of people sitting in a coffee shop" />
-          </div>
-          <h1 slot="headline" class="sd-headline sd-headline--inverted">Gender</h1>
-          <div slot="expandable" class="text-center">
-            <p class="sd-paragraph sd-paragraph--inverted">We are actively promoting gender equality.</p>
-          </div>
-        </sd-teaser-media>
-
-        <sd-teaser-media variant="gradient-dark" class="min-w-[435px] max-w-4xl">
-          <div slot="media" class="relative">
-            <img
-              class="aspect-video object-cover"
-              src="./placeholders/images/coffeeshop.jpg"
-              alt="A group of people sitting in a coffee shop"
-            />
-          </div>
-          <div slot="meta" class="meta-info">
-            <span class="meta-info-item">August 2024 | Olaf Janßen</span>
-          </div>
-          <h6 slot="headline">Market turnaround in sight</h6>
-          <div>
-            <p class="sd-paragraph sd-paragraph--inverted mb-4">
-              After a long wait for good news, real estate investors are now seeing the first signs of a recovery on the
-              European commercial real estate markets.
-            </p>
-            <div>
-              <sd-button href="#" target="_blank" variant="primary" inverted>Research view</sd-button>
-            </div>
-          </div>
-        </sd-teaser-media>
-      </div>`
-};
-
 export const TeaserMediaWithLink = {
-  name: 'Teaser Media with Link Template',
-  render: () => html`
-    <div style="flex flex-col gap-12">
-      <sd-teaser-media variant="primary" class="max-w-[546px]">
-        <img slot="media" src="./placeholders/images/coffeeshop.jpg" alt="A group of people sitting in a coffee shop" />
+  render: () =>
+    html` <div class="flex flex-col gap-12">
+      <sd-teaser-media variant="gradient-dark">
+        <div slot="media" class="relative">
+          <img
+            class="w-full aspect-ratio object-fill"
+            src="./placeholders/images/skyscraper.jpg"
+            alt="A tall glass skyscraper viewed from below"
+          />
+        </div>
+        <div slot="meta" class="meta-info">
+          <span class="meta-info-item">August 2024 | Olaf Janßen</span>
+        </div>
+        <h6 slot="headline">Market turnaround in sight</h6>
+        <div>
+          <p class="sd-paragraph sd-paragraph--inverted mb-4">
+            After a long wait for good news, real estate investors are now seeing the first signs of a recovery on the
+            European commercial real estate markets.
+          </p>
+          <div>
+            <sd-button href="#" target="_blank" variant="primary" inverted>Research view</sd-button>
+          </div>
+        </div>
+      </sd-teaser-media>
+      <sd-teaser-media variant="primary">
+        <img
+          slot="media"
+          class="w-full object-fill"
+          src="./placeholders/images/meeting.jpg"
+          alt="Three people in a business meeting talking to each other"
+        />
         <h3 slot="headline">Your contact person</h3>
         <div class="flex flex-col gap-4">
           <p class="sd-paragraph sd-paragraph--inverted">
@@ -79,9 +52,13 @@ export const TeaserMediaWithLink = {
           </div>
         </div>
       </sd-teaser-media>
-
-      <sd-teaser-media variant="neutral-100" class="max-w-[546px]">
-        <img slot="media" src="./placeholders/images/coffeeshop.jpg" alt="A group of people sitting in a coffee shop" />
+      <sd-teaser-media variant="neutral-100">
+        <img
+          slot="media"
+          class="w-full aspect-ratio object-fill"
+          src="./placeholders/images/flags.jpg"
+          alt="The U.S. and EU flags placed together"
+        />
         <h3 slot="headline">USA or Europe? It depends on the mix</h3>
         <div class="flex flex-col gap-4">
           <p class="sd-paragraph">
@@ -97,6 +74,32 @@ export const TeaserMediaWithLink = {
           </div>
         </div>
       </sd-teaser-media>
-    </div>
-  `
+    </div>`
+};
+
+/**
+ * - Aligment: Teaser contents can be center aligned if desired.
+ * - Paddings: Can be changed as desired.
+ * - Headline size: Can be changed as desired.
+ */
+export const TeaserMediaOverrides = {
+  render: () =>
+    html`<style>
+        .sd-headline {
+          justify-content: center;
+        }
+      </style>
+      <sd-teaser-media variant="gradient-dark">
+        <div slot="media" class="relative">
+          <img
+            class="w-full aspect-ratio object-fill"
+            src="./placeholders/images/coffeebreak.jpg"
+            alt="Two people sitting at a table, having a coffee in an office"
+          />
+        </div>
+        <h1 slot="headline" class="sd-headline sd-headline--inverted text-4xl">Gender</h1>
+        <div slot="expandable" class="text-center">
+          <p class="sd-paragraph sd-paragraph--inverted text-xl pb-24">We are actively promoting gender equality.</p>
+        </div>
+      </sd-teaser-media> `
 };

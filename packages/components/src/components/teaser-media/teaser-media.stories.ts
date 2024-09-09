@@ -201,7 +201,6 @@ export const ExpandableSlot = {
  */
 
 export const Copyright = {
-  name: 'Copyright (Optional)',
   render: () => html`
     <style>
       .sd-copyright::after {
