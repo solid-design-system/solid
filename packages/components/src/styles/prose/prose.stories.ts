@@ -17,7 +17,11 @@ export default {
   tags: ['!dev'],
   component: 'sd-prose',
   parameters: {
-    ...parameters
+    ...parameters,
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=3255-5589&t=VCN0oU7WM1KOC3Zk-4'
+    }
   },
   args: overrideArgs({
     type: 'slot',
@@ -156,7 +160,7 @@ export const StylingOptions = {
 };
 
 /**
- * Use the `sd-prose--full-width` class to make the prose full width.
+ * Use the `&--full-width` class to make the prose full width.
  */
 export const FullWidth = {
   render: () =>
