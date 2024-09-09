@@ -41,7 +41,6 @@ export default {
 
           #anchor--components-sd-tooltip--size .innerZoomElementWrapper,
           #anchor--components-sd-tooltip--placement .innerZoomElementWrapper,
-          #anchor--components-sd-tooltip--trigger .innerZoomElementWrapper,
           #anchor--components-sd-tooltip--hoist .innerZoomElementWrapper,
           .template-height {
             height: 110px;
@@ -49,7 +48,16 @@ export default {
 
           #anchor--components-sd-tooltip--placement .innerZoomElementWrapper {
             padding: 50px 0;
-            height: 300px;
+            height: 400px;
+          }
+
+          #anchor--components-sd-tooltip--trigger .innerZoomElementWrapper {
+            padding: 50px 0;
+            height: 200px;
+          }
+
+          #anchor--components-sd-tooltip--hoist .innerZoomElementWrapper {
+            height: 150px;
           }
         </style>
         ${story()}`
@@ -97,24 +105,42 @@ export const Size = {
  */
 export const Placement = {
   render: () => html`
-    <div class="grid grid-cols-3 gap-12">
+    <div class="grid md:grid-cols-3 gap-24">
       <div>
-        <sd-tooltip content="Lorem ipsum" placement="top-start" open size="lg" trigger="click focus"></sd-tooltip>
+        <sd-tooltip
+          content="Top Start Positioning"
+          placement="top-start"
+          open
+          size="lg"
+          trigger="click focus"
+        ></sd-tooltip>
       </div>
       <div>
-        <sd-tooltip content="Lorem ipsum" placement="top" open size="lg" trigger="click focus"></sd-tooltip>
+        <sd-tooltip content="Top Positioning" placement="top" open size="lg" trigger="click focus"></sd-tooltip>
       </div>
       <div>
-        <sd-tooltip content="Lorem ipsum" placement="top-end" open size="lg" trigger="click focus"></sd-tooltip>
+        <sd-tooltip content="Top End Positioning" placement="top-end" open size="lg" trigger="click focus"></sd-tooltip>
       </div>
       <div>
-        <sd-tooltip content="Lorem ipsum" placement="bottom-start" open size="lg" trigger="click focus"></sd-tooltip>
+        <sd-tooltip
+          content="Bottom Start Positioning"
+          placement="bottom-start"
+          open
+          size="lg"
+          trigger="click focus"
+        ></sd-tooltip>
       </div>
       <div>
-        <sd-tooltip content="Lorem ipsum" placement="bottom" open size="lg" trigger="click focus"></sd-tooltip>
+        <sd-tooltip content="Bottom Positioning" placement="bottom" open size="lg" trigger="click focus"></sd-tooltip>
       </div>
       <div>
-        <sd-tooltip content="Lorem ipsum" placement="bottom-end" open size="lg" trigger="click focus"></sd-tooltip>
+        <sd-tooltip
+          content="Bottom End Positioning"
+          placement="bottom-end"
+          open
+          size="lg"
+          trigger="click focus"
+        ></sd-tooltip>
       </div>
     </div>
   `
@@ -136,7 +162,7 @@ export const Disabled = {
  * - `manual`: displays the tooltip when the `open` attribute is set to `true`
  */
 export const Trigger = {
-  render: () => html` <sd-tooltip content="Lorem ipsum" placement="bottom" size="lg" trigger="click"></sd-tooltip> `
+  render: () => html` <sd-tooltip content="Lorem ipsum" placement="top-start" size="lg" trigger="click"></sd-tooltip> `
 };
 
 /**
@@ -144,7 +170,7 @@ export const Trigger = {
  */
 export const Hoist = {
   render: () =>
-    html` <div class="flex items-end overflow-scroll h-[15em] w-16">
-      <sd-tooltip content="Lorem ipsum" placement="top" size="lg"></sd-tooltip>
+    html` <div class="flex items-end overflow-scroll h-[5em] w-16">
+      <sd-tooltip content="Lorem ipsum" placement="bottom-start" size="lg"></sd-tooltip>
     </div>`
 };
