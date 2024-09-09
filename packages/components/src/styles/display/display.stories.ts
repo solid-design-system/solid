@@ -38,10 +38,10 @@ export const Default = {
 };
 
 /**
- * Use `sd-display` modifiers for alternative appearances.
+ * Use the `&--size-*` classes for alternative appearances.
 
  * - `sd-display--size-4xl`: 4xl can be used as an alternative
-* - `sd-display--size-3xl`: 3xl can be used as an alternative
+ * - `sd-display--size-3xl`: 3xl can be used as an alternative
  * - xl is the default display size
  */
 
