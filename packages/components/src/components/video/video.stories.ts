@@ -59,7 +59,7 @@ export const VideoElementWithPosterSlot = {
 };
 
 /**
- * Use the `playing` attribute to hide the play icon and the overlay.
+ * Use the `playing` attribute to hide the play icon and the overlay.
  */
 
 export const Playing = {
