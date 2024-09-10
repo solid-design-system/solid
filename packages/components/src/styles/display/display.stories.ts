@@ -10,7 +10,7 @@ const { generateTemplate } = storybookTemplate('sd-display');
  * Used to provide larger text sizes that are not used as headlines.
  *
  * **Related templates**:
- * - [Mark template](?path=/docs/templates-mark--docs)
+ * - [Display with Mark](?path=/docs/templates-mark--docs)
  */
 
 export default {
