@@ -3,17 +3,17 @@ import { html } from 'lit-html';
 
 export default {
   tags: ['!dev'],
-  title: 'Templates/Select Grouping',
+  title: 'Templates/Select',
   parameters: {
     chromatic: { disableSnapshot: true }
   }
 };
 
 /**
- * Example of a `sd-select` with grouping options.
  *
- * ```
- * ```
+ * - Label: Additionally a label can be shown for each option group.
+ * - Divider: Use `sd-divider` to group option items visually.
+ * - Accessibility hint: group labels will be neglected by most assistive devices.
  */
 
 export const Default = {
@@ -38,6 +38,21 @@ export const Default = {
         <sd-divider class="mb-2"></sd-divider>
         <div class="text-black px-4 font-bold">Australia</div>
         <sd-option value="option-4">Australia</sd-option>
+      </sd-select>
+    </div>`
+};
+
+export const SelectWithTooltip = {
+  render: () =>
+    html`<div class="w-[400px] h-[500px] flex gap-12 mt-12">
+      <sd-select size="lg" placement="bottom" label="Access Role" placeholder="Please Select" value="">
+        <div slot="label" class="flex items-center">
+          <label class="text-black font-bold mr-2">Access Role</label>
+          <sd-tooltip content="Lorem ipsum sic semper" placement="top" trigger="hover" size="sm"></sd-tooltip>
+        </div>
+        <sd-option value="option-1">Viewer</sd-option>
+        <sd-option value="option-2">Editor</sd-option>
+        <sd-option value="option-3">Owner</sd-option>
       </sd-select>
     </div>`
 };
