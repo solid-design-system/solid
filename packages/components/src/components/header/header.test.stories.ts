@@ -41,8 +41,9 @@ export default {
               display: flex;
               gap: 48px;
             }
-          }</style
-        >${story()}`
+          }
+        </style>
+        ${story()}`
   ] as unknown
 };
 
@@ -193,8 +194,8 @@ export const SampleA = {
 
 /* Sample Header lg – variant A - 01 */
 export const SampleAMd = {
-  name: '↳ Tablet',
   ...SampleA,
+  name: '↳ Tablet',
   parameters: {
     viewport: { defaultViewport: 'tablet' },
     controls: {
@@ -205,8 +206,8 @@ export const SampleAMd = {
 
 /* Sample Header sm - variant A - 01 */
 export const SampleASm = {
-  name: '↳ Small mobile',
   ...SampleA,
+  name: '↳ Small mobile',
   parameters: {
     viewport: { defaultViewport: 'mobile1' },
     controls: {
