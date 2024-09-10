@@ -10,7 +10,7 @@ const { generateTemplate } = storybookTemplate('sd-headline');
  * Used as a crucial element for displaying content hierarchy and to enhance accessibility.
  *
  * **Related templates**:
- * - [Headline, Display and Leadtext with Mark](?path=/docs/templates-headline-display-and-leadtext-with-mark--docs)
+ * - [Mark template](?path=/docs/templates-mark--docs)
  */
 
 export default {

@@ -8,7 +8,7 @@ import { html } from 'lit-html';
 
 export default {
   tags: ['!dev'],
-  title: 'Templates/Headline, Display and Leadtext with Mark',
+  title: 'Templates/Mark',
   parameters: {
     chromatic: { disableSnapshot: true }
   }
@@ -35,23 +35,15 @@ export const HeadlineWithMark = {
 };
 
 export const DisplayWithMark = {
-  render: () => html`
-    <div class="flex flex-col gap-8">
-      <p class="sd-display">Lorem <mark class="sd-mark">Ipsum</mark></p>
-      <div class="bg-primary p-4">
-        <p class="sd-display sd-display--inverted">Lorem <mark class="sd-mark">Ipsum</mark></p>
-      </div>
-    </div>
-  `
+  render: () => html` <p class="sd-display">Lorem <mark class="sd-mark">Ipsum</mark></p> `
 };
 
 export const LeadtextWithMark = {
   render: () => html`
-    <div class="flex flex-col gap-8">
-      <p class="sd-leadtext">Lorem <mark class="sd-mark">Ipsum</mark></p>
-      <div class="bg-primary p-4">
-        <p class="sd-leadtext sd-leadtext--inverted">Lorem <mark class="sd-mark">Ipsum</mark></p>
-      </div>
-    </div>
+    <p class="sd-leadtext sd-leadtext--size-lg">
+      We are an active German asset manager based in Frankfurt/Main, offering a comprehensive range of investment
+      solutions across various asset classes and regions.
+      <mark class="sd-mark">Union Investment was founded in 1956.</mark>
+    </p>
   `
 };
