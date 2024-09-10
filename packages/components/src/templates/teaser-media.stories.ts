@@ -15,7 +15,7 @@ export const TeaserMediaWithLink = {
       <sd-teaser-media variant="gradient-dark">
         <div slot="media" class="relative">
           <img
-            class="w-full aspect-ratio object-fill"
+            class="w-full aspect-ratio "
             src="./placeholders/images/skyscraper.jpg"
             alt="A tall glass skyscraper viewed from below"
           />
@@ -37,11 +37,11 @@ export const TeaserMediaWithLink = {
       <sd-teaser-media variant="primary">
         <img
           slot="media"
-          class="w-full object-fill"
+          class="w-full"
           src="./placeholders/images/meeting.jpg"
           alt="Three people in a business meeting talking to each other"
         />
-        <h3 slot="headline">Your contact person</h3>
+        <h3 slot="headline" class="sd-headline sd-headline--inverted">Your contact person</h3>
         <div class="flex flex-col gap-4">
           <p class="sd-paragraph sd-paragraph--inverted">
             If you have any questions or would like to obtain further information, please find your dedicated contact
@@ -55,11 +55,11 @@ export const TeaserMediaWithLink = {
       <sd-teaser-media variant="neutral-100">
         <img
           slot="media"
-          class="w-full aspect-ratio object-fill"
+          class="w-full aspect-ratio"
           src="./placeholders/images/flags.jpg"
           alt="The U.S. and EU flags placed together"
         />
-        <h3 slot="headline">USA or Europe? It depends on the mix</h3>
+        <h3 slot="headline" class="sd-headline sd-headline--size-base">USA or Europe? It depends on the mix</h3>
         <div class="flex flex-col gap-4">
           <p class="sd-paragraph">
             A positive growth environment, the tech boom and government investment incentives show this: The USA is
@@ -85,19 +85,19 @@ export const TeaserMediaWithLink = {
 export const TeaserMediaOverrides = {
   render: () =>
     html`<style>
-        .sd-headline {
+        .media-overrides .sd-headline {
           justify-content: center;
         }
       </style>
-      <sd-teaser-media variant="gradient-dark">
+      <sd-teaser-media variant="gradient-dark" class="media-overrides">
         <div slot="media" class="relative">
           <img
-            class="w-full aspect-ratio object-fill"
+            class="w-full aspect-ratio"
             src="./placeholders/images/coffeebreak.jpg"
             alt="Two people sitting at a table, having a coffee in an office"
           />
         </div>
-        <h1 slot="headline" class="sd-headline sd-headline--inverted text-4xl">Gender</h1>
+        <h3 slot="headline" class="sd-headline sd-headline--inverted">Gender</h3>
         <div slot="expandable" class="text-center">
           <p class="sd-paragraph sd-paragraph--inverted text-xl pb-24">We are actively promoting gender equality.</p>
         </div>
