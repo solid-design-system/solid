@@ -6,33 +6,45 @@ const { argTypes, parameters } = storybookDefaults('sd-teaser-media');
 const { overrideArgs } = storybookHelpers('sd-teaser-media');
 const { generateTemplate } = storybookTemplate('sd-teaser-media');
 
+/**
+ * Used as a flexible container that groups related items and links them to further content.
+ *
+ * **Related components**:
+ * - [sd-teaser](?path=/docs/components-teaser--docs)
+ *
+ * **Related templates**:
+ * - [Teaser Media](?path=/docs/templates-teaser-media--docs)
+ * - [Teaser](?path=/docs/templates-teaser--docs)
+ */
 export default {
+  tags: ['!dev'],
   title: 'Components/sd-teaser-media',
   component: 'sd-teaser-media',
   args: overrideArgs([
     {
       type: 'slot',
       name: 'default',
-      value: `<div class="slot slot--border slot--text h-12">Main slot</div>`
+      value: `<div class="slot slot--border slot--text h-12">Default slot</div>`
     },
     {
       type: 'slot',
       name: 'media',
-      value: `<div slot="media" class="slot slot--border slot--text h-[384px]">Media slot</div>`
+      value: `<img slot="media" src="./placeholders/images/generic.jpg" class="aspect-video object-cover" alt="Generic alt"/>`
     },
     {
       type: 'slot',
       name: 'meta',
       value: `<div slot="meta" class="slot slot--border slot--text h-12">Meta slot</div>`
+    },
+    {
+      type: 'slot',
+      name: 'headline',
+      value: `<div slot="headline" class="h-12">Headline Media Teaser</div>`
     }
   ]),
   argTypes,
   parameters
 };
-
-/**
- * This shows sd-teaser-media in its default state.
- */
 
 export const Default = {
   render: (args: any) => {
@@ -41,219 +53,189 @@ export const Default = {
 };
 
 /**
- * Teaser-Media in all possible `variant`.
+ * Use the `variant` attribute to set the color variant:
+ * - `white (default)`
+ * - `primary`
+ * - `primary-100`
+ * - `neutral-100`
+ * - `gradient-dark`
+ * - `gradient-white`
  */
 
 export const Variant = {
   name: 'Variant',
-  parameters: { controls: { exclude: ['variant'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: { type: 'attribute', name: 'variant' }
-      },
-      args,
-      constants: [
-        {
-          type: 'template',
-          name: 'style',
-          value: '<div style="margin-bottom: 40px; width: 600px">%TEMPLATE%</div>'
-        },
-        {
-          type: 'slot',
-          name: 'media',
-          value:
-            '<img slot="media" class="aspect-video object-cover" src="./placeholders/images/generic.jpg" alt="A skyline of a city by night"/>'
-        }
-      ]
-    });
-  }
+  render: () => html`
+    <div class="flex flex-col gap-12">
+      <sd-teaser-media variant="white" class="max-w-[600px]">
+        <img
+          slot="media"
+          src="./placeholders/images/architecture.jpg"
+          class="aspect-video object-cover"
+          alt="Generic alt"
+        />
+        <h3 slot="headline">Headline Media Teaser (white – default)</h3>
+        <p class="sd-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </sd-teaser-media>
+
+      <sd-teaser-media variant="primary" class="max-w-[600px]">
+        <img
+          slot="media"
+          src="./placeholders/images/architecture.jpg"
+          class="aspect-video object-cover"
+          alt="Generic alt"
+        />
+        <h3 slot="headline">Headline Media Teaser (primary)</h3>
+        <p class="sd-paragraph sd-paragraph--inverted">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </sd-teaser-media>
+
+      <sd-teaser-media variant="primary-100" class="max-w-[600px]">
+        <img
+          slot="media"
+          src="./placeholders/images/architecture.jpg"
+          class="aspect-video object-cover"
+          alt="Generic alt"
+        />
+        <h3 slot="headline">Headline Media Teaser (primary-100)</h3>
+        <p class="sd-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </sd-teaser-media>
+
+      <sd-teaser-media variant="neutral-100" class="max-w-[600px]">
+        <img
+          slot="media"
+          src="./placeholders/images/architecture.jpg"
+          class="aspect-video object-cover"
+          alt="Generic alt"
+        />
+        <h3 slot="headline">Headline Media Teaser (neutral-100)</h3>
+        <p class="sd-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </sd-teaser-media>
+
+      <sd-teaser-media variant="gradient-dark" class="max-w-[600px]">
+        <img
+          slot="media"
+          src="./placeholders/images/architecture.jpg"
+          class="aspect-video object-cover"
+          alt="Generic alt"
+        />
+        <h3 slot="headline">Headline Media Teaser (gradient-dark)</h3>
+        <p class="sd-paragraph sd-paragraph--inverted">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </sd-teaser-media>
+
+      <sd-teaser-media variant="gradient-white" class="max-w-[600px]">
+        <img
+          slot="media"
+          src="./placeholders/images/architecture.jpg"
+          class="aspect-video object-cover"
+          alt="Generic alt"
+        />
+        <h3 slot="headline">Headline Media Teaser (gradient-white)</h3>
+        <p class="sd-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </sd-teaser-media>
+    </div>
+  `
 };
 
 /**
- * Use the 'default', 'media', 'meta', 'expandable' and 'headline' slots to add content to the teaser. Please make sure to use semantically correct headline tags for the `headline` slot to provide accessible content.
+ * - Use the `default` slot to display main information and/or action elements below the headline.
+ * - Use the `media` slot to add an image to the teaser.
+ * - Use the `headline` slot to display titles. It should always contain a <h*> element.
  */
-export const Slots = {
-  parameters: {
-    controls: { exclude: ['default', 'media', 'meta', 'headline', 'expandable'] }
-  },
-  render: (args: any) => {
-    return html`
-      ${['default', 'media', 'meta', 'headline', 'expandable'].map(slot => {
-        let value = `<div slot='${slot}' class="slot slot--border slot--background h-16"></div>`;
-
-        if (slot === 'default') {
-          value = `<div class="slot slot--border slot--background h-16"></div>`;
-        } else if (slot === 'media') {
-          value = `<div slot='${slot}' class="slot slot--border slot--background h-[577px]"></div>`;
-        } else if (slot === 'expandable') {
-          value = `<div slot='${slot}' class="slot--border slot--background h-16 box-border flex flex-col items-center justify-center rounded-md"></div>`;
-        }
-
-        return generateTemplate({
-          axis: {
-            x: {
-              type: 'slot',
-              name: slot,
-              title: 'slot=..',
-              values: [
-                {
-                  value: value,
-                  title: slot
-                }
-              ]
-            }
-          },
-          args,
-          constants: [
-            {
-              type: 'slot',
-              name: 'media',
-              value: `<img slot='media' src='./placeholders/images/collaboration.jpg' alt='Test'/>`
-            },
-            {
-              type: 'slot',
-              name: 'meta',
-              value: `<slot slot='meta'>Teaser's Meta information</slot>`
-            },
-            {
-              type: 'slot',
-              name: 'default',
-              value: `<slot>Teaser's Main content</slot>`
-            },
-            {
-              type: 'slot',
-              name: 'headline',
-              value: `<slot slot='headline'>Teaser's Headline</slot>`
-            },
-            {
-              type: 'slot',
-              name: 'expandable',
-              value: `<slot slot='expandable'>Teaser's Expandable content</slot>`
-            },
-            {
-              type: 'template',
-              name: 'style',
-              value: '<div style="margin-bottom: 40px; width: 782px;">%TEMPLATE%</div>'
-            }
-          ]
-        });
-      })}
-    `;
-  }
+export const DefaultMediaAndHeadlineSlot = {
+  name: 'Default, Media and Headline Slot',
+  render: () => html`
+    <sd-teaser-media variant="gradient-dark" class="max-w-[600px]">
+      <img
+        slot="media"
+        src="./placeholders/images/architecture.jpg"
+        class="aspect-video object-cover"
+        alt="Generic alt"
+      />
+      <h3 slot="headline">Headline Media Teaser</h3>
+      <div class="slot slot--border slot--text h-12">Default slot</div>
+    </sd-teaser-media>
+  `
 };
 
-export const Parts = {
-  parameters: {
-    controls: { exclude: ['base', 'media', 'content', 'meta', 'headline', 'main', 'expandable', 'variant'] }
-  },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: {
-          type: 'template',
-          name: 'sd-teaser-media::part(...){outline: solid 2px red}',
-          values: ['base', 'media', 'content', 'meta', 'headline', 'main', 'expandable'].map(part => {
-            return {
-              title: part,
-              value: `<style>#part-${part} sd-teaser-media::part(${part}){outline: solid 2px red}</style><div id="part-${part}">%TEMPLATE%</div>`
-            };
-          })
-        }
-      },
-      args,
-      constants: [
-        {
-          type: 'template',
-          name: 'style',
-          value: '<div style="margin-bottom: 40px; width: 500px">%TEMPLATE%</div>'
-        },
-        {
-          type: 'attribute',
-          name: 'variant',
-          value: 'white'
-        },
-        {
-          type: 'slot',
-          name: 'expandable',
-          value: `<div slot="expandable" class="slot--border slot--text box-border flex flex-col items-center justify-center rounded-md"><p>Expandable slot</p></div>`
-        }
-      ]
-    });
-  }
+/**
+ * Use the `meta` slot to show content above the headline.
+ */
+
+export const MetaSlot = {
+  render: () => html`
+    <sd-teaser-media variant="gradient-dark" class="max-w-[600px]">
+      <div slot="meta" class="slot slot--border slot--text h-12">Meta slot</div>
+      <img
+        slot="media"
+        src="./placeholders/images/architecture.jpg"
+        class="aspect-video object-cover"
+        alt="Generic alt"
+      />
+      <h3 slot="headline">Headline Media Teaser</h3>
+    </sd-teaser-media>
+  `
 };
 
-export const Samples = {
-  name: 'Samples: Teaser-Media',
-  parameters: {
-    controls: {
-      disable: true
-    },
-    backgrounds: {
-      default: 'white'
-    }
-  },
-  render: () => {
-    return html`
-      <style>
-        #teaserWithContentPlaceholder::part(media) {
-          flex-grow: 1;
-        }
-      </style>
-      <div class="flex flex-wrap gap-8">
-        <sd-teaser-media variant="gradient-dark" class="min-w-[435px] max-w-4xl">
-          <div slot="media" class="relative">
-            <img
-              class="aspect-video object-cover"
-              src="./placeholders/images/architecture.jpg"
-              alt="A skyline of a city"
-            />
-          </div>
-          <div slot="meta" class="meta-info">
-            <span class="meta-info-item">01.12.2013</span>
-            <span class="meta-info-item">| Author name</span>
-          </div>
-          <h3 slot="headline">Not expandable teaser-media</h3>
-          <div class="flex flex-col gap-4">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <div class="flex-none">
-              <sd-button href="#" target="_blank" variant="primary" inverted>Link</sd-button>
-            </div>
-          </div>
-        </sd-teaser-media>
-        <sd-teaser-media variant="gradient-white" class="min-w-[435px] max-w-4xl">
-          <div slot="media" class="relative">
-            <img
-              class="aspect-video object-cover"
-              src="./placeholders/images/architecture.jpg"
-              alt="A skyline of a city"
-            />
-          </div>
-          <div slot="meta" class="meta-info">
-            <span class="meta-info-item">01.12.2013</span>
-            <span class="meta-info-item">| Author name</span>
-          </div>
-          <h3 slot="headline">Expandable teaser-media</h3>
-          <div slot="expandable">
-            <p>
-              Expandable: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-              labore et dolore magna aliqua.
-            </p>
-          </div>
-          <div class="flex flex-col gap-4">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua.
-            </p>
-            <div class="flex-none">
-              <sd-button href="#" target="_blank" variant="primary">Link</sd-button>
-            </div>
-            <div class="flex-none text-sm">
-              <p>@Copyright Lorem ipsum</p>
-            </div>
-          </div>
-        </sd-teaser-media>
-      </div>
-    `;
-  }
+/**
+ * Use the `expandable` slot to add content that only shows up on hover.
+ *
+ * Note: Expandable slot content cannot contain any action since it is not shown on mobile devices due to hover interaction.
+ */
+
+export const ExpandableSlot = {
+  render: () => html`
+    <sd-teaser-media variant="gradient-dark" class="max-w-[600px]">
+      <img
+        slot="media"
+        src="./placeholders/images/architecture.jpg"
+        class="aspect-video object-cover"
+        alt="Generic alt"
+      />
+      <h3 slot="headline">Headline Media Teaser</h3>
+      <div slot="expandable" class="slot slot--border slot--text h-12">Expandable slot</div>
+    </sd-teaser-media>
+  `
+};
+
+/**
+ * `Copyright` can be shown at the bottom of the default slot.
+ */
+
+export const Copyright = {
+  render: () => html`
+    <style>
+      .sd-copyright::after {
+        padding: 0;
+      }
+      .gradient-white.sd-copyright::after {
+        color: #000000;
+        text-shadow: none;
+      }
+    </style>
+    <div class="flex flex-col gap-12">
+      <sd-teaser-media variant="gradient-dark" class="max-w-[600px]">
+        <img
+          slot="media"
+          src="./placeholders/images/architecture.jpg"
+          class="aspect-video object-cover"
+          alt="Generic alt"
+        />
+        <h3 slot="headline">Headline Media Teaser</h3>
+        <div class="flex flex-col sd-copyright" style="--copyright: '© Union Investment 2024'">
+          <div slot="default" class="h-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+        </div>
+      </sd-teaser-media>
+      <sd-teaser-media variant="gradient-white" class="max-w-[600px]">
+        <img
+          slot="media"
+          src="./placeholders/images/architecture.jpg"
+          class="aspect-video object-cover"
+          alt="Generic alt"
+        />
+        <h3 slot="headline">Headline Media Teaser</h3>
+        <div class="flex flex-col sd-copyright gradient-white" style="--copyright: '© Union Investment 2024'">
+          <div slot="default" class="h-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+        </div>
+      </sd-teaser-media>
+    </div>
+  `
 };
