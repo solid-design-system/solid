@@ -15,7 +15,7 @@ const { overrideArgs } = storybookHelpers('sd-header');
  *
  *
  *  **Related templates**
- * - [Header Sample](?path=/docs/templates-header--docs)
+ * - [Header](?path=/docs/templates-header--docs)
  */
 
 export default {
