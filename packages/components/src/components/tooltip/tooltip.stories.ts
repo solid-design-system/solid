@@ -9,6 +9,9 @@ const { generateTemplate } = storybookTemplate('sd-tooltip');
 
 /**
  * Used as a floating and non-actionable text label that explains an element or function of the user interface.
+ *
+ *  **Related templates:**
+ * - [Select with tooltip](?path=/docs/templates-select--docs#select%20with%20tooltip)
  */
 export default {
   title: 'Components/sd-tooltip',
