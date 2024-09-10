@@ -11,7 +11,7 @@ const { generateTemplate } = storybookTemplate('sd-mark');
  * Use the `<mark>` html element with the class `sd-mark` for regular fonts-sizes at 24px and above, and use bold fonts at 18.67px.
  *
  * **Related Templates**:
- * - [Headline, Display and Leadtext with Mark](?path=/docs/templates-headline-display-and-leadtext-with-mark--docs)
+ * - [Mark](?path=/docs/templates-mark--docs)
  */
 
 export default {

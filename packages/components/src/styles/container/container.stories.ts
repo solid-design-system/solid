@@ -36,7 +36,7 @@ export const Default = {
 };
 
 /**
- * Use the variant `classes` for alternative appearances:
+ * Use the `&--variant-*` classes for alternative appearances:
  *- `neutral-100` (default): use the class `sd-container--variant-neutral-100`
  *- `primary-100`: use the class `sd-container--variant-primary-100`
  *- `primary`: use the class `sd-container--variant-primary`
@@ -70,7 +70,7 @@ export const Variants = {
 };
 
 /**
- * Use the `padding-sm` class to adapt the container to smaller component widths.
+ * Use the `&--padding-sm` class to adapt the container to smaller component widths.
  */
 
 export const Padding = {
@@ -92,7 +92,7 @@ export const CustomPadding = {
 };
 
 /**
- * You can add a triangle indentation to the container using the `triangle-class` appended with one of the following positions 'top', 'right', 'bottom', 'left' (e.g. sd-container--triangle-top).
+ * You can add a triangle indentation to the container using the `&--triangle-*` appended with one of the following positions 'top', 'right', 'bottom', 'left' (e.g. sd-container--triangle-top).
  *
  * - A triangle can be shown to draw attention.
  * - Triangle position can be `top`, `bottom`, `left` or `right`.
@@ -121,7 +121,12 @@ export const TrianglePosition = {
 };
 
 /**
- * For the `sd-container--variant-border-neutral-400`, an alternate set of classes must be used to create a triangle with a border.
+ * For the `sd-container--variant-border-neutral-400`, use the `&--triangle-*-border` set of classes to create a triangle with a border:
+ *
+ * - `triangle-top-border`
+ * - `triangle-right-border`
+ * - `triangle-bottom-border`
+ * - `triangle-left-border`
  */
 
 export const TriangleBorder = {
@@ -155,7 +160,7 @@ export const TriangleColor = {
     html`<div class="bg-primary p-4">
       <div
         style="--triangle-background: rgb(var(--sd-color-primary-600, 0 53 142) / 1);"
-        class="sd-container sd-container--variant-white sd-container--triangle-top sd-container--padding-"
+        class="sd-container sd-container--variant-white sd-container--triangle-top sd-container--padding-sm"
       >
         <div class="slot slot--border slot--text h-12">Default slot</div>
       </div>

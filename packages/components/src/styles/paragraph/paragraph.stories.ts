@@ -43,8 +43,8 @@ export const Default = {
 /**
  * Use the `&--size-*`classes for alternative appearances.
  *
- * - Large is the default paragraph size
- * - `sd-paragraph--size-sm`: Small can be used as an alternative
+ * - lg is the default paragraph size
+ * - `sd-paragraph--size-sm`: sm can be used as an alternative
  */
 
 export const Size = {

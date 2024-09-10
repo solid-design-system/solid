@@ -7,13 +7,13 @@ import { html } from 'lit-html';
 
 export default {
   tags: ['!dev'],
-  title: 'Templates/Footnotes Set Start',
+  title: 'Templates/Footnotes',
   parameters: {
     chromatic: { disableSnapshot: true }
   }
 };
 
-export const Default = {
+export const FootnotesSetStart = {
   render: () => html`
     <ol start="50" class="sd-footnotes">
       <li>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</li>
