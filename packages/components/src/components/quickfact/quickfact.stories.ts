@@ -25,9 +25,6 @@ export default {
   component: 'sd-quickfact',
   tags: ['!dev'],
   args: overrideArgs([
-    { type: 'attribute', name: 'expandable', value: true },
-    { type: 'attribute', name: 'open', value: true },
-    { type: 'slot', name: 'default', value: '<div class="slot slot--border slot--text h-16">Default slot</div>' },
     {
       type: 'slot',
       name: 'summary',
