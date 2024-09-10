@@ -150,7 +150,7 @@ export const Label = {
 export const Placeholder = {
   render: () => html`
     <div class="w-[400px] h-[500px]">
-      <sd-select size="lg" label="Label" placeholder="Please example" placement="bottom" value="">
+      <sd-select size="lg" label="Label" placeholder="Placeholder example" placement="bottom" value="">
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
         <sd-option value="option-3">Option 3</sd-option>
@@ -288,7 +288,7 @@ export const MaxOptionsVisible = {
 export const Required = {
   render: () => html`
     <div class="w-[400px] h-[400px]">
-      <sd-select size="lg" label="Label" placeholder="Please Select" placement="bottom" value="" required="">
+      <sd-select size="lg" label="Required" placeholder="Please Select" placement="bottom" value="" required="">
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
         <sd-option value="option-3">Option 3</sd-option>
@@ -318,7 +318,6 @@ export const Valid = {
         placeholder="Please Select"
         style-on-valid=""
         value="option-1"
-        required=""
         class="valid-example"
       >
         <sd-option class="option" value="option-1">Option 1</sd-option>
