@@ -326,8 +326,8 @@ export const SampleB = {
 
 /* Sample Header lg – variant B */
 export const SampleBMd = {
-  name: '↳ Tablet',
   ...SampleB,
+  name: '↳ Tablet',
   parameters: {
     viewport: { defaultViewport: 'tablet' },
     controls: {
