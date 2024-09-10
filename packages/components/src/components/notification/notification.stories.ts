@@ -3,21 +3,27 @@
 import '../../solid-components';
 import { html } from 'lit';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { userEvent } from '@storybook/test';
-import { waitUntil } from '@open-wc/testing-helpers';
 
 const { argTypes, parameters } = storybookDefaults('sd-notification');
 const { generateTemplate } = storybookTemplate('sd-notification');
 const { overrideArgs } = storybookHelpers('sd-notification');
 
+/**
+ * Used to communicate important information or status to the user. Notifications can be displayed inline or as a toast / toast stack.
+ *
+ *  **Related templates**:
+ * - [Notification](?path=/docs/templates-notification--docs)
+ */
+
 export default {
   title: 'Components/sd-notification',
+  tags: ['!dev'],
   component: 'sd-notification',
   args: overrideArgs([
     {
       type: 'slot',
       name: 'default',
-      value: `<div class="flex items-center h-6">Lorem ipsum dolor sit.</div>`
+      value: `<div class="slot slot--border slot--text">Default slot</div>`
     },
     {
       type: 'attribute',
@@ -44,6 +50,7 @@ export default {
  */
 
 export const Default = {
+  name: 'Default',
   render: (args: any) => {
     return generateTemplate({
       args
@@ -53,19 +60,37 @@ export const Default = {
 
 /**
  * Use the `variant` attribute to change the theme of the notification.
+ *
+ * - `info`: suitable for notifications, conveying neutral information about an action.
+ * - `success`: imply a successful or positive outcome of an action.
+ * - `error`: indicate a destructive and irreversible outcome of an action.
+ * - `warning`: alert for possible issues or significant changes that must be considered.
  */
 
 export const Variants = {
-  parameters: { controls: { exclude: ['variant', 'open'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: { type: 'attribute', name: 'variant' }
-      },
-      args,
-      constants: { type: 'attribute', name: 'open', value: true }
-    });
-  }
+  name: 'Variants',
+  render: () => html`
+    <style>
+      .notification-list > sd-notification::part(base) {
+        margin: 0;
+      }
+    </style>
+    <div class="flex flex-col gap-12 notification-list">
+      <sd-notification variant="info" open>Info Lorem ipsum dolor sit</sd-notification>
+      <sd-notification variant="success" open>Success Lorem ipsum dolor sit</sd-notification>
+      <sd-notification variant="error" open>Error Lorem ipsum dolor sit</sd-notification>
+      <sd-notification variant="warning" open>Warning Lorem ipsum dolor sit</sd-notification>
+    </div>
+  `
+};
+
+/**
+ * Use the `open` attribute to toggle the visibility of the notification.
+ */
+
+export const Open = {
+  name: 'Open',
+  render: () => html` <sd-notification variant="info" open>Lorem ipsum dolor sit</sd-notification> `
 };
 
 /**
@@ -73,16 +98,17 @@ export const Variants = {
  */
 
 export const Closable = {
-  parameters: { controls: { exclude: ['closable', 'open'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: { type: 'attribute', name: 'closable' }
-      },
-      args,
-      constants: { type: 'attribute', name: 'open', value: true }
-    });
-  }
+  name: 'Closable',
+  render: () =>
+    html` <sd-notification id="closable-example" variant="info" open closable>Lorem ipsum dolor sit</sd-notification>
+      <script>
+        var closableNotification = document.querySelector('#closable-example');
+        closableNotification.addEventListener('click', () => {
+          setTimeout(() => {
+            notification.open = true;
+          }, 3000);
+        });
+      </script>`
 };
 
 /**
@@ -90,16 +116,21 @@ export const Closable = {
  */
 
 export const Duration = {
-  parameters: { controls: { exclude: ['duration'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: { type: 'attribute', name: 'duration', values: [Infinity, 5000] }
-      },
-      args,
-      constants: { type: 'attribute', name: 'open', value: true }
-    });
-  }
+  name: 'Duration',
+  render: () => html`
+    <sd-notification variant="info" open duration="Infinity">Notification will stay open (Infinity)</sd-notification>
+    <sd-notification id="duration-example" variant="info" open duration="5000">
+      Notification will self close after 5 seconds
+    </sd-notification>
+    <script>
+      var notificationDuration = document.querySelector('#duration-example');
+      notificationDuration.addEventListener('sd-after-hide', () => {
+        setTimeout(() => {
+          notificationDuration.open = true;
+        }, 3000);
+      });
+    </script>
+  `
 };
 
 /**
@@ -107,31 +138,27 @@ export const Duration = {
  */
 
 export const DurationIndicator = {
-  parameters: { controls: { exclude: ['duration', 'duration-indicator', 'open'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: { type: 'attribute', name: 'duration-indicator', values: [true] }
-      },
-      args,
-      constants: [
-        { type: 'attribute', name: 'duration', value: 10000 },
-        { type: 'attribute', name: 'open', value: true }
-      ]
-    });
-  }
+  name: 'Duration Indicator',
+  render: () => html`
+    <sd-notification id="duration-indicator" variant="info" open duration-indicator duration="5000"
+      >Notification will self close after 5 seconds</sd-notification
+    >
+    <script>
+      var durationIndicator = document.querySelector('#duration-indicator');
+      durationIndicator.addEventListener('sd-after-hide', () => {
+        setTimeout(() => {
+          durationIndicator.open = true;
+        }, 3000);
+      });
+    </script>
+  `
 };
 
 /**
  * Display a toast notification at the top-right of the screen by using the `toast` method. Click on the **Show code** button to see the JavaScript code responsible for generating the toast notification. The default position is `top-right`.
  */
 export const ToastNotification = {
-  parameters: {
-    controls: {
-      exclude: ['open', 'closable', 'variant', 'toast-stack', 'duration', 'duration-indicator', 'default-slot']
-    }
-  },
-  name: 'Toast Notification (Default)',
+  name: 'Toast Notification',
   render: (_args: Record<string, any>) => {
     return html`
       <div class="flex gap-2">
@@ -189,10 +216,6 @@ export const ToastNotification = {
         });
       </script>
     `;
-  },
-  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
-    const button = canvasElement.querySelector('#top-right');
-    await userEvent.click(button!);
   }
 };
 
@@ -200,11 +223,6 @@ export const ToastNotification = {
  * Display a toast notification positioned at the bottom-center of the screen by setting the `toastStack` attribute to `bottom-center`. Click on the **Show code** button to see the JavaScript code responsible for generating the toast notification.
  */
 export const ToastBottomCenter = {
-  parameters: {
-    controls: {
-      exclude: ['open', 'closable', 'variant', 'toast-stack', 'duration', 'duration-indicator']
-    }
-  },
   name: 'Toast Notification (Bottom Center)',
   render: (_args: Record<string, any>) => {
     return html`
@@ -266,85 +284,5 @@ export const ToastBottomCenter = {
         });
       </script>
     `;
-  },
-  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
-    const button = canvasElement.querySelector('#bottom-center');
-    await userEvent.click(button!);
-  }
-};
-
-/**
- * Use the `base`, `icon`, `content`, `message`, `duration-indicator__elapsed`, `duration-indicator__total` and `close-button`, part selectors to customize the notification.
- */
-
-export const Parts = {
-  parameters: {
-    controls: {
-      exclude: [
-        'base',
-        'icon',
-        'content',
-        'message',
-        'duration-indicator__elapsed',
-        'duration-indicator__total',
-        'close-button'
-      ]
-    }
-  },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: {
-          type: 'template',
-          name: 'sd-notification::part(...){outline: solid 2px red}',
-          values: [
-            'base',
-            'icon',
-            'content',
-            'message',
-            'duration-indicator__elapsed',
-            'duration-indicator__total',
-            'close-button'
-          ].map(part => {
-            return {
-              title: part,
-              value: `<style>#part-${part} sd-notification::part(${part}){border: solid 2px red; z-index: 2;}</style><div id="part-${part}">%TEMPLATE%</div>`
-            };
-          })
-        }
-      },
-      args,
-      constants: [
-        { type: 'attribute', name: 'duration', value: Infinity },
-        { type: 'attribute', name: 'duration-indicator', value: true },
-        { type: 'attribute', name: 'closable', value: true },
-        { type: 'attribute', name: 'open', value: true }
-      ]
-    });
-  }
-};
-
-/**
- * sd-notifications are fully accessibile via keyboard.
- */
-
-export const Mouseless = {
-  render: (args: any) => {
-    return html`<div class="mouseless">
-      ${generateTemplate({
-        args,
-        constants: [
-          { type: 'attribute', name: 'closable', value: true },
-          { type: 'attribute', name: 'open', value: true }
-        ]
-      })}
-    </div>`;
-  },
-
-  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
-    const el = canvasElement.querySelector('.mouseless sd-notification');
-    await waitUntil(() => el?.shadowRoot?.querySelector('sd-button'));
-
-    el?.shadowRoot?.querySelector('sd-button')?.focus();
   }
 };
