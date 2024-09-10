@@ -50,7 +50,7 @@ export const Inverted = {
 };
 
 /**
- * Use the `&--disabled` class to disabled an interactive element.
+ * Use the `&--disabled` class to disable an interactive element.
  *
  * This works as well when setting an `disabled` attribute on the element.
  */
