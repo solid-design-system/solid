@@ -84,7 +84,7 @@ export const Open = {
 };
 
 /**
- * Use the `summary` attribute to provide the text in the accordion quickfact.
+ * Use the `summary` attribute to provide the text in the quickfact.
  *
  * **Hint:** The summary slot allows you to use custom html.
  */

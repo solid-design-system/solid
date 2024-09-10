@@ -8,13 +8,27 @@ export default {
 
 export const Default = {
   render: () => html`
-    <sd-quickfact expandable summary="Partnership">
+    <style>
+      sd-quickfact::part(header) {
+        align-items: flex-start;
+      }
+
+      @media (min-width: 640px) {
+        sd-quickfact::part(header) {
+          align-items: center;
+        }
+      }
+    </style>
+    <sd-quickfact>
       <sd-icon name="content/handshake" color="primary" aria-hidden="true" library="default" slot="icon"></sd-icon>
-      <p class="sd-leadtext text-center">
-        Union Investment is part of the Volksbanken Raiffeisenbanken cooperative financial network. The cooperative
-        model is based on a simple idea: when people join forces, they are much stronger together: "What one cannot do
-        alone, many can".
-      </p>
+      <div slot="summary" class="space-y-4">
+        <p class="text-base font-normal leading-normal sm:text-xl md:text-3xl sm:leading-tight">Partnership</p>
+        <p class="text-base font-normal leading-normal sm:text-lg md:text-xl">
+          Union Investment is part of the Volksbanken Raiffeisenbanken cooperative financial network. The cooperative
+          model is based on a simple idea: when people join forces, they are much stronger together: "What one cannot do
+          alone, many can".
+        </p>
+      </div>
     </sd-quickfact>
   `
 };
@@ -28,10 +42,8 @@ export const Grouping = {
       <style>
         @media (min-width: 640px) {
           .grouping-sample {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, 300px);
-            grid-auto-flow: dense;
-            gap: 1rem;
+            display: flex;
+            flex-direction: row;
             justify-content: space-around;
             justify-items: center;
             align-content: space-around;
@@ -53,8 +65,12 @@ export const Grouping = {
           <div class="slot slot--border slot--text h-12">Quickfact 1</div>
 
           <div slot="summary">
-            <p class="text-base font-normal leading-normal sm:text-3xl sm:leading-tight">Sed do eiusmod</p>
-            <div class="text-base font-normal leading-normal sm:text-xl">Con sectetur adipis</div>
+            <p class="text-base font-normal leading-normal sm:text-xl md:text-3xl sm:leading-tight">
+              Lorem ipsum in medias
+            </p>
+            <div class="text-base font-normal leading-normal sm:text-lg md:text-xl">
+              Con sectetur adipiscing elit magna cum laude perfides
+            </div>
           </div>
         </sd-quickfact>
 
@@ -64,8 +80,12 @@ export const Grouping = {
           <div class="slot slot--border slot--text h-12">Quickfact 2</div>
 
           <div slot="summary">
-            <p class="text-base font-normal leading-normal sm:text-3xl sm:leading-tight">Lorem Ipsum</p>
-            <div class="text-base font-normal leading-normal sm:text-xl">Con sectetur</div>
+            <p class="text-base font-normal leading-normal sm:text-xl md:text-3xl sm:leading-tight">
+              Lorem ipsum in medias
+            </p>
+            <div class="text-base font-normal leading-normal sm:text-lg md:text-xl">
+              Con sectetur adipiscing elit magna cum laude perfides
+            </div>
           </div>
         </sd-quickfact>
 
@@ -75,25 +95,19 @@ export const Grouping = {
           <div class="slot slot--border slot--text h-12">Quickfact 3</div>
 
           <div slot="summary">
-            <p class="text-base font-normal leading-normal sm:text-3xl sm:leading-tight">Lorem Ipsum</p>
-            <div class="text-base font-normal leading-normal sm:text-xl">Ut enim ad</div>
-          </div>
-        </sd-quickfact>
-        <sd-quickfact expandable class="fourth fact">
-          <sd-icon name="content/image" color="primary" aria-hidden="true" library="default" slot="icon"></sd-icon>
-
-          <div class="slot slot--border slot--text h-12">Quickfact 4</div>
-
-          <div slot="summary">
-            <p class="text-base font-normal leading-normal sm:text-3xl sm:leading-tight">Ut labore et</p>
-            <div class="text-base font-normal leading-normal sm:text-xl">Con sectetur</div>
+            <p class="text-base font-normal leading-normal sm:text-xl md:text-3xl sm:leading-tight">
+              Lorem ipsum in medias
+            </p>
+            <div class="text-base font-normal leading-normal sm:text-lg md:text-xl">
+              Con sectetur adipiscing elit magna cum laude perfides
+            </div>
           </div>
         </sd-quickfact>
       </div>
       <script type="module">
         // Wait for custom elements to be defined
         await Promise.all([customElements.whenDefined('sd-quickfact')]).then(() => {
-          const quickfacts = document.querySelectorAll('sd-quickfact');
+          var quickfacts = document.querySelectorAll('sd-quickfact');
           let activeRow = null;
 
           // Closes all other quickfacts when one is opened
@@ -107,7 +121,7 @@ export const Grouping = {
 
               activeRow = getRow(quickfact);
 
-              const height = getQuickfactContentHeight(quickfact);
+              let height = getQuickfactContentHeight(quickfact);
 
               quickfacts.forEach(qf => {
                 if (getRow(qf) === activeRow) {
@@ -126,7 +140,7 @@ export const Grouping = {
           });
 
           function getQuickfactContentHeight(quickfact) {
-            const content = quickfact.shadowRoot.querySelector('[part~="content"]');
+            let content = quickfact.shadowRoot.querySelector('[part~="content"]');
 
             // store original styles
             const originalStyles = {
@@ -141,7 +155,7 @@ export const Grouping = {
             content.style.setProperty('position', 'absolute');
             content.style.setProperty('height', 'auto');
 
-            const height = content.clientHeight;
+            let height = content.clientHeight;
 
             // restore original styles
             content.style.setProperty('visibility', originalStyles.visibility);
@@ -153,13 +167,13 @@ export const Grouping = {
           }
 
           function getPositions() {
-            const grid = document.querySelector('.grouping-sample');
-            const gridComputedStyle = window.getComputedStyle(grid);
+            let grid = document.querySelector('.grouping-sample');
+            let gridComputedStyle = window.getComputedStyle(grid);
 
-            const numberOfRows = gridComputedStyle.getPropertyValue('grid-template-rows').split(' ').length;
+            let numberOfRows = gridComputedStyle.getPropertyValue('grid-template-rows').split(' ').length;
 
-            const numberOfColumns = gridComputedStyle.getPropertyValue('grid-template-columns').split(' ').length;
-            const positions = [];
+            let numberOfColumns = gridComputedStyle.getPropertyValue('grid-template-columns').split(' ').length;
+            let positions = [];
 
             for (let row = 1; row <= numberOfRows; row++) {
               for (let col = 1; col <= numberOfColumns; col++) {
@@ -172,9 +186,9 @@ export const Grouping = {
 
           // Create a grid map with quickfact and position
           function createGridMap() {
-            const gridMap = {};
+            let gridMap = {};
 
-            const { numberOfRows, numberOfColumns, positions } = getPositions();
+            let { numberOfRows, numberOfColumns, positions } = getPositions();
 
             quickfacts.forEach((quickfact, index) => {
               gridMap[index] = { quickfact: quickfact, position: positions[index] };
@@ -185,11 +199,11 @@ export const Grouping = {
 
           // Take a quickfact as input and return the row of the quickfact in the grid
           function getRow(quickfact) {
-            const { gridMap, numberOfRows, numberOfColumns } = createGridMap();
+            let { gridMap, numberOfRows, numberOfColumns } = createGridMap();
 
-            for (const [key, value] of Object.entries(gridMap)) {
-              if (value.quickfact === quickfact) {
-                return value.position.row;
+            for (let [key, value] of Object.entries(gridMap)) {
+              if (value?.quickfact === quickfact) {
+                return value?.position?.row;
               }
             }
           }
@@ -206,14 +220,14 @@ export const Grouping = {
               resetHeights();
               return;
             }
-            const { gridMap, numberOfRows, numberOfColumns } = createGridMap();
+            let { gridMap, numberOfRows, numberOfColumns } = createGridMap();
 
             // Equalize heights of summaries on the same row
             for (let x = 1; x <= numberOfRows; x++) {
-              const summariesOnRow = [];
+              let summariesOnRow = [];
 
-              for (const value of Object.values(gridMap)) {
-                if (value.position.row === x) {
+              for (let value of Object.values(gridMap)) {
+                if (value?.position?.row === x) {
                   summariesOnRow.push(value.quickfact.shadowRoot.querySelector('[part~="summary"]'));
                 }
               }
@@ -223,7 +237,7 @@ export const Grouping = {
                 summary.style.setProperty('height', 'auto');
               });
 
-              const maxHeight = Math.max(...Array.from(summariesOnRow).map(summary => summary.clientHeight));
+              let maxHeight = Math.max(...Array.from(summariesOnRow).map(summary => summary.clientHeight));
 
               summariesOnRow.forEach((summary, index) => {
                 summary.style.setProperty('height', maxHeight + 'px');
