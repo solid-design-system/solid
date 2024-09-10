@@ -24,12 +24,6 @@ import type SdCheckbox from '../checkbox/checkbox';
 export default class SdCheckboxGroup extends SolidElement {
   private readonly hasSlotController = new HasSlotController(this, 'label');
 
-  /**
-   * The checkbox group's label. Required for proper accessibility. If you need to display HTML, use the `label` slot
-   * instead.
-   */
-  @property() label = '';
-
   /** The checkbox group's size. This size will be applied to the label, all child checkboxes. */
   @property({ reflect: true }) size: 'lg' | 'sm' = 'lg';
 
@@ -40,6 +34,12 @@ export default class SdCheckboxGroup extends SolidElement {
    * flexibility in how the component is displayed based on your specific design needs.
    */
   @property({ reflect: true }) orientation: 'horizontal' | 'vertical' = 'vertical';
+
+  /**
+   * The checkbox group's label. Required for proper accessibility. If you need to display HTML, use the `label` slot
+   * instead.
+   */
+  @property() label = '';
 
   private getAllCheckboxes() {
     return [...this.querySelectorAll<SdCheckbox>('sd-checkbox')];
