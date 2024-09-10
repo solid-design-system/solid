@@ -14,7 +14,6 @@ export default {
 };
 
 /**
- * This example shows a map marker with an image.
  *
  * ```
  * ```
