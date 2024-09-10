@@ -53,6 +53,9 @@ export default class SdTooltip extends SolidElement {
   @query('#tooltip') body: HTMLElement;
   @query('sd-popup') popup: SdPopup;
 
+  /** Sets the size of the default trigger icon. */
+  @property() size: 'lg' | 'sm' = 'lg';
+
   /** The tooltip's content. If you need to display HTML, use the `content` slot instead. */
   @property() content = '';
 
@@ -62,9 +65,6 @@ export default class SdTooltip extends SolidElement {
    */
   @property({ reflect: true }) placement: 'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end' =
     'top';
-
-  /** Sets the size of the default trigger icon. */
-  @property() size: 'lg' | 'sm' = 'lg';
 
   /** Disables the tooltip so it won't show when triggered. */
   @property({ type: Boolean, reflect: true }) disabled = false;
