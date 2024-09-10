@@ -118,7 +118,7 @@ export const StylingOptions = {
         />
         <figcaption>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula</figcaption>
       </figure>
-      <table class="sd-table" style="width: 100%">
+      <table class="sd-table">
         <thead>
           <tr>
             <th class="sd-table-cell">Header</th>
@@ -164,7 +164,8 @@ export const StylingOptions = {
  */
 export const FullWidth = {
   render: () =>
-    html` <div class="sd-prose mb-8">
+    html` <div class="flex flex-col space-y-8">
+      <div class="sd-prose">
         <h4>Default width</h4>
         <p class="sd-paragraph">
           Large Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
@@ -179,7 +180,8 @@ export const FullWidth = {
           phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique.
           Facilisis commodo integer hendrerit tortor.
         </p>
-      </div>`
+      </div>
+    </div>`
 };
 
 /**
