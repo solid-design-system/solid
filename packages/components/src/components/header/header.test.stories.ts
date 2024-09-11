@@ -218,6 +218,7 @@ export const SampleASm = {
 
 /* Sample Header responsive – variant B */
 export const SampleB = {
+  name: 'Sample B',
   parameters: {
     controls: {
       exclude: ['default']
