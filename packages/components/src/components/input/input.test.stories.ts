@@ -157,7 +157,6 @@ export const Clearable = {
 
 export const TogglePassword = {
   name: 'Toggle Password',
-  name: 'Toggle Password',
   parameters: {
     controls: {
       exclude: ['password-toggle']

@@ -7,6 +7,9 @@ const { generateTemplate } = storybookTemplate('sd-input');
 
 /**
  * Used to allow users to enter text. It can be displayed in several ways, depending on the type.
+ *
+ * **Related templates**:
+ * - [Autocomplete](?path=/docs/templates-autocomplete--docs)
  */
 
 export default {
