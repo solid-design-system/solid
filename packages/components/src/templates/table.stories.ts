@@ -524,7 +524,7 @@ export const AdvancedSamples = {
                         2 ===
                       0
                         ? 'sd-table-cell--bg-white'
-                        : 'sd-table-cell--bg-primary-100'}"
+                        : 'sd-table-cell--bg-neutral-100'}"
                     >
                       Header
                     </th>`;
