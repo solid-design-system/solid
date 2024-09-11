@@ -24,7 +24,7 @@ export default {
 };
 
 const content = html`<h1>Solid Prose</h1>
-  <p>
+  <p class="sd-leadtext">
     Until now, trying to style an article, document, or blog post with Tailwind has been a tedious task that required a
     keen eye for typography and a lot of complex custom CSS.
   </p>
@@ -385,6 +385,14 @@ export const Samples = {
         <!-- sd-prose/sample-paragraph-strong -->
         <div class="sd-prose">
           <p><strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</strong></p>
+        </div>
+        <!-- sd-prose/sample-leadtext -->
+        <div class="sd-prose">
+          <p class="sd-leadtext">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+        <!-- sd-prose/sample-leadtext-size-lg -->
+        <div class="sd-prose">
+          <p class="sd-leadtext sd-leadtext--size-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
         <!-- sd-prose/sample-inline -->
         <div class="sd-prose">

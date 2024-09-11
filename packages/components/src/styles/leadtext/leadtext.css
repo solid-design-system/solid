@@ -1,11 +1,13 @@
+.sd-prose > .sd-leadtext,
 .sd-leadtext {
   @apply text-xl font-normal leading-normal text-black;
 
   &--size-lg {
     @apply text-lg font-normal leading-normal text-black;
   }
+}
 
-  &--inverted {
-    @apply text-white;
-  }
+.sd-prose--inverted > .sd-leadtext,
+.sd-leadtext--inverted {
+  @apply text-white;
 }

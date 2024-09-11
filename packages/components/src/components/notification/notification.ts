@@ -261,10 +261,14 @@ export default class SdNotification extends SolidElement {
                   variant="tertiary"
                   part="close-button"
                   class="ml-auto flex flex-[0_0_auto] items-stretch"
-                  label=${this.localize.term('close')}
                   @click=${this.handleCloseClick}
                 >
-                  <sd-icon name="close" library="system" color="currentColor"></sd-icon>
+                  <sd-icon
+                    label=${this.localize.term('close')}
+                    name="close"
+                    library="system"
+                    color="currentColor"
+                  ></sd-icon>
                 </sd-button>
               `
             : ''}

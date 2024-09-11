@@ -295,7 +295,12 @@ export default class SdDialog extends SolidElement {
                     @click="${() => this.requestClose('close-button')}"
                     type="button"
                   >
-                    <sd-icon name="close" library="system" color="currentColor"></sd-icon>
+                    <sd-icon
+                      label=${this.localize.term('close')}
+                      name="close"
+                      library="system"
+                      color="currentColor"
+                    ></sd-icon>
                   </sd-button>
                 `
               : ''}
