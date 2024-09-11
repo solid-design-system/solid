@@ -275,17 +275,11 @@ export const Required = {
 export const Valid = {
   render: () =>
     html`<form id="valid-form">
-        <sd-input
-          id="valid-input"
-          class="w-[250px] valid-input"
-          label="Label"
-          style-on-valid
-          value="Input text here"
-        ></sd-input>
+        <sd-input id="valid-input" class="w-[250px]" label="Label" style-on-valid value="Input text here"></sd-input>
       </form>
       <script type="module">
         await Promise.all([customElements.whenDefined('sd-input')]).then(() => {
-          const input = document.querySelector('.valid-input');
+          const input = document.getElementById('valid-input');
           input.setCustomValidity(''); // Clear custom validity
           input.reportValidity();
         });
@@ -298,10 +292,10 @@ export const Valid = {
 
 export const Invalid = {
   render: () =>
-    html`<form id="valid-form">
+    html`<form id="invalid-form">
         <sd-input
-          id="valid-input"
-          class="w-[250px] valid-input"
+          id="invalid-input"
+          class="w-[250px]"
           label="Label"
           style-on-valid
           placeholder="Placeholder"
@@ -309,7 +303,7 @@ export const Invalid = {
       </form>
       <script type="module">
         await Promise.all([customElements.whenDefined('sd-input')]).then(() => {
-          const input = document.querySelector('.valid-input');
+          const input = document.getElementById('invalid-input');
           input.setCustomValidity('Error message');
           input.reportValidity();
         });
