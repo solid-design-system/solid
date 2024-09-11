@@ -15,7 +15,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 
 export default {
   tags: ['!dev'],
-  title: 'Templates/Table cell',
+  title: 'Templates/Table',
   parameters: {
     chromatic: { disableSnapshot: true }
   }
