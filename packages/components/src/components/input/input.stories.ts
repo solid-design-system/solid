@@ -6,7 +6,7 @@ const { argTypes, args, parameters } = storybookDefaults('sd-input');
 const { generateTemplate } = storybookTemplate('sd-input');
 
 /**
- * Allows users to enter text. It can be displayed in several ways, depending on the type attribute.
+ * Used to allow users to enter text. It can be displayed in several ways, depending on the type.
  */
 
 export default {
@@ -23,10 +23,6 @@ export default {
     }
   }
 };
-
-/**
- * This shows sd-input in its default state.
- */
 
 export const Default = {
   render: (args: any) => {
@@ -49,9 +45,9 @@ export const Size = {
 };
 
 /**
- * Use the `label` attribute to give the input an accessible label.
+ * Use the `label` attribute to provide an accessible label for the input element.
  *
- * For labels that contain HTML, use the `label` slot instead.
+ * Use the `label` slot to add custom markup.
  */
 
 export const Label = {
@@ -253,10 +249,6 @@ export const Type = {
 };
 
 /**
- *
- */
-
-/**
  * Use the `required` attribute to mark the element as required. This can be used for form validation purposes.
  */
 
@@ -287,7 +279,7 @@ export const Valid = {
 };
 
 /**
- * The component gets `invalid` state when the form is invalid.
+ * The component gets `invalid` state when the form is not valid.
  */
 
 export const Invalid = {
@@ -317,6 +309,50 @@ export const Pattern = {
   render: () => html`
     <div class="w-[250px]">
       <sd-input label="Pattern" pattern="[A-Za-z]{3,}" help-text="[A-Za-z]{3,}" required></sd-input>
+    </div>
+  `
+};
+
+/**
+ * Use the `minlength` attribute to set the minimum length of the input to be valid.
+ */
+export const MinLength = {
+  render: () => html`
+    <div class="w-[250px]">
+      <sd-input label="Minlength" minlength="5" help-text="minlength=5" required></sd-input>
+    </div>
+  `
+};
+
+/**
+ * Use the `maxlength` attribute to set the maximum length of the input to be valid.
+ */
+export const MaxLength = {
+  render: () => html`
+    <div class="w-[250px]">
+      <sd-input label="Maxlength" maxlength="5" help-text="maxlength=5" required></sd-input>
+    </div>
+  `
+};
+
+/**
+ * Use the `min` attribute to set the minimum number value of the input to be valid.
+ */
+export const Min = {
+  render: () => html`
+    <div class="w-[250px]">
+      <sd-input label="Min" type="number" min="1000" help-text="min=1000" required></sd-input>
+    </div>
+  `
+};
+
+/**
+ * Use the `max` attribute to set the maximum number value of the input to be valid.
+ */
+export const Max = {
+  render: () => html`
+    <div class="w-[250px]">
+      <sd-input label="Max" type="number" max="5000" help-text="max=5000" required></sd-input>
     </div>
   `
 };
