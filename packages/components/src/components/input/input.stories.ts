@@ -152,7 +152,7 @@ export const Clearable = {
 };
 
 /**
- * Add the `password-toggle` attribute to add a toggle button that will show the password when activated.
+ * Use the `password-toggle` attribute to add a toggle button that will show the password when activated.
  * - Note: Only works with `type=password`.
  */
 
@@ -170,86 +170,69 @@ export const TogglePassword = {
 export const Type = {
   render: () =>
     html` <div class="grid grid-cols-2 gap-12 content-end">
-      <div class="mb-2">
-        <sd-input type="text" placeholder=".*" label="Text" help-text="default type" spellcheck></sd-input>
-      </div>
-      <div class="mb-2">
-        <sd-input
-          type="search"
-          placeholder="^d{1,3}$"
-          label="Search"
-          help-text="use search format"
-          spellcheck
-        ></sd-input>
-      </div>
-      <div class="mb-2">
-        <sd-input
-          type="date"
-          placeholder="someone@example.com"
-          label="Date"
-          help-text="value is restricted to date format"
-          spellcheck
-        ></sd-input>
-      </div>
-      <div class="mb-2">
-        <sd-input
-          type="datetime-local"
-          placeholder="someone@example.com"
-          label="Date Time"
-          help-text="value is restricted to datetime format"
-          spellcheck
-        ></sd-input>
-      </div>
-      <div class="mb-2">
-        <sd-input type="time" label="Time" help-text="value is restricted to time format" spellcheck></sd-input>
-      </div>
-      <div class="mb-2">
-        <sd-input
-          type="number"
-          placeholder="^d{1,3}$"
-          label="Number"
-          help-text="value is restricted to numbers"
-          spellcheck
-        ></sd-input>
-      </div>
-      <div class="mb-2">
-        <sd-input
-          type="email"
-          placeholder="someone@example.com"
-          label="Email"
-          help-text="validate with email address format"
-          spellcheck
-        ></sd-input>
-      </div>
-      <div class="mb-2">
-        <sd-input
-          type="tel"
-          placeholder="+49 1234 567891"
-          label="Tel"
-          help-text="Shows optimized keyboard on touch devices or similar"
-          spellcheck
-        ></sd-input>
-      </div>
-      <div class="mb-2">
-        <sd-input
-          type="password"
-          placeholder=".*"
-          label="Password"
-          help-text="use password display format"
-          password-toggle
-          spellcheck
-        ></sd-input>
-      </div>
-      <div class="mb-2">
-        <sd-input
-          type="url"
-          placeholder="https://www.union-investment.de/"
-          label="URL"
-          help-text="validate with url format"
-          name="url field"
-          spellcheck
-        ></sd-input>
-      </div>
+      <sd-input type="text" placeholder=".*" label="Text" help-text="default type" spellcheck></sd-input>
+
+      <sd-input type="search" placeholder="^d{1,3}$" label="Search" help-text="use search format" spellcheck></sd-input>
+
+      <sd-input
+        type="date"
+        placeholder="someone@example.com"
+        label="Date"
+        help-text="value is restricted to date format"
+        spellcheck
+      ></sd-input>
+
+      <sd-input
+        type="datetime-local"
+        placeholder="someone@example.com"
+        label="Date Time"
+        help-text="value is restricted to datetime format"
+        spellcheck
+      ></sd-input>
+
+      <sd-input type="time" label="Time" help-text="value is restricted to time format" spellcheck></sd-input>
+
+      <sd-input
+        type="number"
+        placeholder="^d{1,3}$"
+        label="Number"
+        help-text="value is restricted to numbers"
+        spellcheck
+      ></sd-input>
+
+      <sd-input
+        type="email"
+        placeholder="someone@example.com"
+        label="Email"
+        help-text="validate with email address format"
+        spellcheck
+      ></sd-input>
+
+      <sd-input
+        type="tel"
+        placeholder="+49 1234 567891"
+        label="Tel"
+        help-text="Shows optimized keyboard on touch devices or similar"
+        spellcheck
+      ></sd-input>
+
+      <sd-input
+        type="password"
+        placeholder=".*"
+        label="Password"
+        help-text="use password display format"
+        password-toggle
+        spellcheck
+      ></sd-input>
+
+      <sd-input
+        type="url"
+        placeholder="https://www.union-investment.de/"
+        label="URL"
+        help-text="validate with url format"
+        name="url field"
+        spellcheck
+      ></sd-input>
     </div>`
 };
 
