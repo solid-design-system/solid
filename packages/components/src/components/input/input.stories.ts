@@ -1,9 +1,10 @@
 import '../../solid-components';
 import { html } from 'lit-html';
-import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
+import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, args, parameters } = storybookDefaults('sd-input');
+const { argTypes, parameters } = storybookDefaults('sd-input');
 const { generateTemplate } = storybookTemplate('sd-input');
+const { overrideArgs } = storybookHelpers('sd-input');
 
 /**
  * Used to allow users to enter text. It can be displayed in several ways, depending on the type.
@@ -16,7 +17,11 @@ export default {
   tags: ['!dev'],
   title: 'Components/sd-input',
   component: 'sd-input',
-  args,
+  args: overrideArgs({
+    type: 'attribute',
+    name: 'label',
+    value: 'Label'
+  }),
   argTypes,
   parameters: {
     ...parameters,
@@ -86,26 +91,23 @@ export const Value = {
 };
 
 /**
- * Use the `inputmode` attribute Tells the browser what type of data will be entered by the user, allowing it to display the appropriate virtual keyboard on supportive devices.
-
-'none'
-'text'
-'decimal'
-'numeric'
-'tel'
-'search'
-'email'
-'url'
- */
-
-/**
  * Use the `disabled` attribute to disable the input.
+ *
+ *  Use the `inputmode` attribute tells the browser what type of data will be entered by the user, allowing it to display the appropriate virtual keyboard on supportive devices.
+ * - `none`
+ * - `text`
+ * - `decimal`
+ * - `numeric`
+ * - `tel`
+ * - `search`
+ * - `email`
+ * - `url`
  */
 
 export const Disabled = {
   render: () =>
     html`<div class="w-[250px]">
-      <sd-input label="Label" placeholder="Input text disabled" disabled></sd-input>
+      <sd-input label="Label" value="Input text disabled" disabled></sd-input>
     </div>`
 };
 
