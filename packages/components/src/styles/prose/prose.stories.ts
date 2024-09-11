@@ -61,7 +61,7 @@ export const Default = {
  * - `<figcaption>`: Image description
  * - `<table>`: Table
  *
- * ### Spacing
+ * **Spacing**
  *
  * Certain combinations have a specific vertical spacing in between:
  * - Headlines after any other element than a headline have a spacing of 32px to the top instead of 16px.
