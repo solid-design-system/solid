@@ -74,9 +74,7 @@ export const Rows = {
 };
 
 /**
- * Use the`label`attribute to give the input an accessible label.
- *
- *  For labels that contain HTML, use the `label` slot.
+ * Use the `label` attribute to provide an accessible label for the textarea element.<br />Use the `label` slot to add custom markup.
  */
 
 export const Label = {
