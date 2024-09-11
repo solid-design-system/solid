@@ -9,8 +9,12 @@ const { generateTemplate } = storybookTemplate('sd-table');
 /**
  * Used to reset the styles of a table to predefined values. To style table cells use the `sd-table-cell` component.
  *
- * **Related components**:
+ * **Related Components**:
  * - [sd-table-cell](?path=/docs/styles-sd-table-cell--docs)
+ *
+ *
+ * **Related Templates**:
+ * - [Table](?path=/docs/templates-table--docs)
  */
 
 export default {
@@ -28,10 +32,52 @@ export default {
   argTypes
 };
 
+const table = `
+  <div class="flex gap-12">
+    <table class="border-separate border">
+      <thead>
+        <tr>
+          <th class="border">Lorem ipsum</th>
+          <th class="border">Lorem ipsum</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="border">%SLOT%</td>
+          <td class="border">%SLOT%</td>
+        </tr>
+        <tr>
+          <td class="border">%SLOT%</td>
+          <td class="border">%SLOT%</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="%CLASSES%">
+      <thead>
+        <tr>
+          <th>Lorem ipsum</th>
+          <th>Lorem ipsum</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>%SLOT%</td>
+          <td>%SLOT%</td>
+        </tr>
+        <tr>
+          <td>%SLOT%</td>
+          <td>%SLOT%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+`;
+
 export const Default = {
   render: (args: any) => {
     return generateTemplate({
-      options: { templateContent: '<table class="%CLASSES% w-full"><tr><td>%SLOT%</td></tr></table>' },
+      options: { templateContent: `${table}` },
       args
     });
   }
