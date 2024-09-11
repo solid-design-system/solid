@@ -147,7 +147,7 @@ export const HelpText = {
 export const Clearable = {
   render: () =>
     html`<div class="w-[250px]">
-      <sd-input label="Clearable" clearable spellcheck value="Input Text"></sd-input>
+      <sd-input label="Clearable" clearable spellcheck value="Input text"></sd-input>
     </div>`
 };
 
