@@ -141,7 +141,7 @@ export const HelpText = {
 };
 
 /**
- * Add the `clearable` attribute to add a clear button when the input has content.
+ * Use the `clearable` attribute to add a clear button when the input has content.
  */
 
 export const Clearable = {
