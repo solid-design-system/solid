@@ -72,7 +72,7 @@ export const Default = {
 export const Size = {
   render: () => html`
     <div class="flex gap-12 h-[500px]">
-      <sd-select size="lg" label="Large" placement="bottom" value="" class="test">
+      <sd-select size="lg" label="Label" placeholder="Large" placement="bottom" value="" class="test">
         <sd-option value="option-1" size="lg">Option 1</sd-option>
         <sd-option value="option-2" size="lg">Option 2</sd-option>
         <sd-option value="option-3" size="lg">Option 3</sd-option>
@@ -80,7 +80,7 @@ export const Size = {
         <sd-option value="option-5" size="lg">Option 5</sd-option>
       </sd-select>
 
-      <sd-select size="md" label="Medium" placement="bottom" value="" class="test">
+      <sd-select size="md" label="Label" placeholder="Medium" placement="bottom" value="" class="test">
         <sd-option value="option-1" size="md">Option 1</sd-option>
         <sd-option value="option-2" size="md">Option 2</sd-option>
         <sd-option value="option-3" size="md">Option 3</sd-option>
@@ -88,7 +88,7 @@ export const Size = {
         <sd-option value="option-5" size="md">Option 5</sd-option>
       </sd-select>
 
-      <sd-select size="sm" label="Small" placement="bottom" value="">
+      <sd-select size="sm" label="Label" placeholder="Small" placement="bottom" value="">
         <sd-option value="option-1" size="sm">Option 1</sd-option>
         <sd-option value="option-2" size="sm">Option 2</sd-option>
         <sd-option value="option-3" size="sm">Option 3</sd-option>
@@ -306,7 +306,7 @@ export const Required = {
 export const Valid = {
   render: () => html`
     <style>
-      sd-select.valid-example::part(form-control-input) {
+      sd-select.valid-example::part(display-input) {
         color: #181818;
       }
     </style>
