@@ -2,6 +2,14 @@ import '../solid-components';
 import { html } from 'lit-html';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
+export default {
+  tags: ['!dev'],
+  title: 'Templates/Table',
+  parameters: {
+    chromatic: { disableSnapshot: true }
+  }
+};
+
 /**
  * The `sd-table-cell` component offers basic styling for table cells.
  * It is designed to be used in conjunction with the `sd-table` component.
@@ -12,14 +20,6 @@ import { ifDefined } from 'lit/directives/if-defined.js';
  * The data generation and table sorting logic should not be used in production environments.
  *
  */
-
-export default {
-  tags: ['!dev'],
-  title: 'Templates/Table',
-  parameters: {
-    chromatic: { disableSnapshot: true }
-  }
-};
 
 export const Default = {
   parameters: {
@@ -532,7 +532,7 @@ export const AdvancedSamples = {
                     return html`<td
                       class="sd-table-cell text-nowrap whitespace-nowrap ${rowIndex % 2 === 0
                         ? 'sd-table-cell--bg-white'
-                        : 'sd-table-cell--bg-primary-100'}"
+                        : 'sd-table-cell--bg-neutral-100'}"
                     >
                       ${cellData}
                     </td>`;
