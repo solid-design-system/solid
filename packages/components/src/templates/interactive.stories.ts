@@ -6,8 +6,8 @@ import { html } from 'lit-html';
  *
  * - Label only
  * - Icon only
- * - Left icon with Label
- * - Label with Right icon
+ * - Left icon with label
+ * - Label with right icon
  */
 
 export default {

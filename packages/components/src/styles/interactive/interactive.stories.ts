@@ -8,7 +8,7 @@ const { overrideArgs } = storybookHelpers('sd-interactive');
 const { generateTemplate } = storybookTemplate('sd-interactive');
 
 /**
- * Used in interactive elements as a "quaternary" button that has no paddings and no background.
+ * Used in interactive elements as a "quartery" button that has no paddings and no background.
  *
  *  **Related templates**:
  * - [Interactive](?path=/docs/templates-interactive--docs)
@@ -37,8 +37,6 @@ export const Default = {
 
 /**
  * Use the `&--inverted` class when displayed on primary background.
- *
- * On darker backgrounds text/white inverted colour will substitute primary.
  */
 
 export const Inverted = {
