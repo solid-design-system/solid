@@ -1,0 +1,21 @@
+:lang(en) {
+  --sd-hidden-links-title: 'Jump to';
+}
+
+:lang(de) {
+  --sd-hidden-links-title: 'Springe zu';
+}
+
+.sd-hidden-links {
+  &:not(:focus-within):not(.sd-hidden-links--debug) {
+    @apply sr-only;
+  }
+  @apply absolute top-6 left-6;
+  &--multiple {
+    @apply bg-white shadow flex flex-col px-2 py-4;
+    &:before {
+      @apply font-bold px-4 py-2;
+      content: var(--sd-hidden-links-title);
+    }
+  }
+}

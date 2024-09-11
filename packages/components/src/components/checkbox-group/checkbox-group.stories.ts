@@ -1,16 +1,26 @@
 import '../../solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { userEvent } from '@storybook/test';
-import { waitUntil } from '@open-wc/testing-helpers';
 
 const { argTypes, parameters } = storybookDefaults('sd-checkbox-group');
 const { generateTemplate } = storybookTemplate('sd-checkbox-group');
 const { overrideArgs } = storybookHelpers('sd-checkbox-group');
 
+/**
+ * Used to select multiple options from a list of options.
+ *
+ * **Related components:**
+ * - [sd-checkbox](?path=/docs/components-checkbox--docs)
+ *
+ *
+ * **Related templates:**
+ * - [Checkbox (Group)](?path=/docs/templates-checkbox-group--docs)
+ */
+
 export default {
   title: 'Components/sd-checkbox-group',
   component: 'sd-checkbox-group',
+  tags: ['!dev'],
   args: overrideArgs([
     { type: 'slot', name: 'label', value: `<label slot="label">Group Label</label>` },
     {
@@ -40,102 +50,64 @@ export const Default = {
 };
 
 /**
- * The sd-checkbox in all possible combinations of `orientation` and `size`.
+ * Use the `size` attribute to change the size.
+ */
+
+export const Size = {
+  name: 'Size',
+  render: () => html`
+    <div class="flex gap-12">
+      <sd-checkbox-group size="lg">
+        <sd-checkbox value="1">Checkbox 1</sd-checkbox>
+        <sd-checkbox value="2">Checkbox 2</sd-checkbox>
+        <sd-checkbox value="3">Checkbox 3</sd-checkbox>
+      </sd-checkbox-group>
+
+      <sd-checkbox-group size="sm">
+        <sd-checkbox value="1">Checkbox 1</sd-checkbox>
+        <sd-checkbox value="2">Checkbox 2</sd-checkbox>
+        <sd-checkbox value="3">Checkbox 3</sd-checkbox>
+      </sd-checkbox-group>
+    </div>
+  `
+};
+
+/**
+ * Use the `orientation` attribute to change the layout of the checkboxes.
  */
 
 export const Orientation = {
-  parameters: { controls: { exclude: ['orientation', 'size', 'default'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        x: { type: 'attribute', name: 'orientation' },
-        y: { type: 'attribute', name: 'size' }
-      },
-      args
-    });
-  }
+  name: 'Orientation',
+  render: () => html`
+    <div class="flex gap-12">
+      <sd-checkbox-group orientation="vertical">
+        <sd-checkbox value="1">Checkbox 1</sd-checkbox>
+        <sd-checkbox value="2">Checkbox 2</sd-checkbox>
+        <sd-checkbox value="3">Checkbox 3</sd-checkbox>
+      </sd-checkbox-group>
+      <sd-checkbox-group orientation="horizontal">
+        <sd-checkbox value="1">Checkbox 1</sd-checkbox>
+        <sd-checkbox value="2">Checkbox 2</sd-checkbox>
+        <sd-checkbox value="3">Checkbox 3</sd-checkbox>
+      </sd-checkbox-group>
+    </div>
+  `
 };
 
 /**
- * Use the disabled attribute to disable an input checkbox. Clicks will be suppressed until the disabled state is removed
+ * Use the `label`attribute to add a label on top.
  */
 
-export const Disabled = {
-  name: 'Disabled x Size',
-  parameters: { controls: { exclude: ['size', 'default'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        x: [
-          {
-            type: 'slot',
-            name: 'default',
-            title: 'disabled',
-            values: [
-              {
-                value:
-                  '<sd-checkbox value="1" disabled>Option 1</sd-checkbox><sd-checkbox value="2">Option 2</sd-checkbox><sd-checkbox value="3">Option 3</sd-checkbox>',
-                title: 'true'
-              },
-              {
-                value:
-                  '<sd-checkbox value="1">Option 1</sd-checkbox><sd-checkbox value="2">Option 2</sd-checkbox><sd-checkbox value="3">Option 3</sd-checkbox>',
-                title: 'false'
-              }
-            ]
-          }
-        ],
-        y: { type: 'attribute', name: 'size' }
-      },
-      args
-    });
-  }
-};
-
-/**
- * Use the `form-control`, `form-control-label` and `form-control-input` part selectors to customize the checkbox-group.
- */
-export const Parts = {
-  parameters: {
-    controls: { exclude: ['form-control', 'form-control-label', 'form-control-input'] }
-  },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: {
-          type: 'template',
-          name: 'sd-checkbox-group::part(...){outline: solid 2px red}',
-          values: ['form-control', 'form-control-label', 'form-control-input'].map(part => {
-            return {
-              title: part,
-              value: `<style>#part-${part} sd-checkbox-group::part(${part}){outline: solid 2px red}</style><div id="part-${part}">%TEMPLATE%</div>`
-            };
-          })
-        }
-      },
-      constants: [{ type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' }],
-      args
-    });
-  }
-};
-
-/**
- * sd-checkbox-group is fully accessibile via keyboard.
- */
-export const Mouseless = {
-  render: (args: any) => {
-    return html`<div class="mouseless">${generateTemplate({ args })}</div>`;
-  },
-
-  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
-    const el = canvasElement.querySelector('.mouseless sd-checkbox-group');
-    await waitUntil(() => el?.shadowRoot?.querySelector('label'));
-
-    if (el?.shadowRoot) {
-      const label = el.shadowRoot.querySelector('label');
-      if (label) {
-        await userEvent.type(label, '{space}', { pointerEventsCheck: 0 });
-      }
-    }
-  }
+export const Label = {
+  name: 'Label',
+  render: () => html`
+    <div class="flex gap-12">
+      <sd-checkbox-group orientation="vertical">
+        <label slot="label">Group Label</label>
+        <sd-checkbox value="1">Checkbox 1</sd-checkbox>
+        <sd-checkbox value="2">Checkbox 2</sd-checkbox>
+        <sd-checkbox value="3">Checkbox 3</sd-checkbox>
+      </sd-checkbox-group>
+    </div>
+  `
 };
