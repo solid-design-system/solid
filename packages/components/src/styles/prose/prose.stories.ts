@@ -96,7 +96,7 @@ export const StylingOptions = {
       <blockquote>Blockquote - Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</blockquote>
       <sd-divider></sd-divider>
       <sd-link href="https://www.union-investment.de/">Inline link</sd-link>
-      <sd-link href="https://www.union-investment.de/"><b>Inline link strong</b></sd-link>
+      <sd-link href="https://www.union-investment.de/"><strong>Inline link strong</strong></sd-link>
       <ul>
         <li>
           Unordered list level 1
