@@ -56,8 +56,8 @@ const table = `
     <table class="%CLASSES%">
       <thead>
         <tr>
-          <th>Lorem ipsum</th>
-          <th>Lorem ipsum</th>
+          <th class="text-left">Lorem ipsum</th>
+          <th class="text-left">Lorem ipsum</th>
         </tr>
       </thead>
       <tbody>
