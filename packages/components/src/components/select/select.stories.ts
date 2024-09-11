@@ -21,7 +21,7 @@ const labelConstant: ConstantDefinition = { type: 'attribute', name: 'label', va
  *
  * **Related templates:**
  * - [Select Grouping](?path=/docs/templates-select--docs)
- * - [Select with tooltip](?path=/docs/templates-select--docs#select%20with%20tooltip)
+ * - [Select with Tooltip](?path=/docs/templates-select--docs#select%20with%20tooltip)
  */
 export default {
   title: 'Components/sd-select',
@@ -126,13 +126,22 @@ export const Placement = {
 };
 
 /**
- * Use the `label` attribute to provide an accessible label for the select element.<br />Use the `label` slot to add custom markup.
+ * Use the `label` attribute to give the select element an accessible label.<br />For labels that contain HTML, use the `label` slot instead.
  */
 
 export const Label = {
   render: () => html`
-    <div class="w-[400px] h-[500px]">
-      <sd-select size="lg" label="Label" placement="bottom" value="">
+    <div class="flex gap-12 h-[500px]">
+      <sd-select size="lg" label="Label Attribute" placement="bottom" value="">
+        <sd-option value="option-1">Option 1</sd-option>
+        <sd-option value="option-2">Option 2</sd-option>
+        <sd-option value="option-3">Option 3</sd-option>
+        <sd-option value="option-4">Option 4</sd-option>
+        <sd-option value="option-5">Option 5</sd-option>
+      </sd-select>
+
+      <sd-select size="lg" placement="bottom" value="">
+        <div slot="label" class="text-lg">Label Slot</div>
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
         <sd-option value="option-3">Option 3</sd-option>
@@ -185,8 +194,17 @@ export const Disabled = {
 
 export const HelpText = {
   render: () => html`
-    <div class="w-[400px] h-[500px]">
-      <sd-select size="lg" label="Label" placement="bottom" value="" help-text="Please select an option from the list.">
+    <div class="flex gap-12 h-[500px]">
+      <sd-select size="lg" label="Label" placement="bottom" value="" help-text="Help text Attribute">
+        <sd-option value="option-1">Option 1</sd-option>
+        <sd-option value="option-2">Option 2</sd-option>
+        <sd-option value="option-3">Option 3</sd-option>
+        <sd-option value="option-4">Option 4</sd-option>
+        <sd-option value="option-5">Option 5</sd-option>
+      </sd-select>
+
+      <sd-select size="lg" label="Label" placement="bottom" value="">
+        <div slot="help-text" class="text-lg">Help text Slot</div>
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
         <sd-option value="option-3">Option 3</sd-option>
