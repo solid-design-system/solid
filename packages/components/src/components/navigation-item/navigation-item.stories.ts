@@ -29,7 +29,7 @@ export const Default = {
 };
 
 /**
- * Use the `vertical` attribute to change the orientation of the navigation item.
+ * Use the `vertical` attribute to set the axis of the navigation-item.
  * - default: horizontal navigation for headers
  * - vertical: vertical navigation for e.g. drawers
  */
