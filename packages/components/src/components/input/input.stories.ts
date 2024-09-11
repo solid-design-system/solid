@@ -70,7 +70,7 @@ export const Label = {
 };
 
 /**
- *Use the `placeholder` attribute to add a placeholder.
+ * Use the `placeholder` attribute to add a placeholder.
  */
 export const Placeholder = {
   render: () => html`
