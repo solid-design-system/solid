@@ -9,7 +9,9 @@ const { generateTemplate } = storybookTemplate('sd-prose');
 const html = String.raw;
 
 /**
- * Used to provide a set of `prose` classes to choose from in a richtext-editor.
+ * Used as a set of `prose` classes to choose from in a richtext-editor.
+ *
+ * The set of style classes enables users to create visually engaging and dynamic content by incorporating various text styles, formatting options, and image embeds.
  */
 
 export default {
@@ -52,13 +54,12 @@ export const Default = {
  * - `<sd-leadtext>`: Leadtext
  * - `<blockquote>`: Quote
  * - `<hr>`: Divider
- * - `<a href >`: Link (text only - no icon before/after)
+ * - `<a href>`: Inline Link (text only - no icon before/after)
+ * - `<a href> <strong>`: Inline Link bold (text only - no icon before/after)
  * - `<ul> <li> / <ol> <li>`: List (unordered/ordered)
  * - `<figure>`: Image (full-width only – no text wrapping)
  * - `<figcaption>`: Image description
  * - `<table>`: Table
- *
- * The set of style classes enables users to create visually engaging and dynamic content by incorporating various text styles, formatting options, and image embeds.
  *
  * ### Spacing
  *
@@ -72,29 +73,30 @@ export const Default = {
 export const StylingOptions = {
   render: () => html`
     <div class="sd-prose sd-prose--full-width flex flex-col gap-8">
-      <h1 class="sd-headline">H1 Nisi eu excepteur anim esse</h1>
-      <h2 class="sd-headline sd-headline--size-3xl">H2 Nisi eu excepteur anim esse</h2>
-      <h3 class="sd-headline sd-headline--size-xl">H3 Nisi eu excepteur anim esse</h3>
-      <h4 class="sd-headline sd-headline--size-lg">H4 Nisi eu excepteur anim esse</h4>
-      <h5 class="sd-headline sd-headline--size-base">H5 Nisi eu excepteur anim esse</h5>
+      <h1 class="sd-headline">H1 - Nisi eu excepteur anim esse</h1>
+      <h2 class="sd-headline sd-headline--size-3xl">H2 - Nisi eu excepteur anim esse</h2>
+      <h3 class="sd-headline sd-headline--size-xl">H3 - Nisi eu excepteur anim esse</h3>
+      <h4 class="sd-headline sd-headline--size-lg">H4 - Nisi eu excepteur anim esse</h4>
+      <h5 class="sd-headline sd-headline--size-base">H5 - Nisi eu excepteur anim esse</h5>
       <p class="sd-paragraph">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie phasellus
-        dui vel id.
+        Paragraph - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
+        phasellus dui vel id.
       </p>
       <p class="sd-paragraph">
         <b
-          >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
-          phasellus dui vel id.</b
+          >Paragraph Bold - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor
+          molestie phasellus dui vel id.</b
         >
       </p>
       <p class="sd-leadtext">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie phasellus
-        dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique. Facilisis
-        commodo integer hendrerit tortor.
+        Leadtext - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
+        phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique.
+        Facilisis commodo integer hendrerit tortor.
       </p>
-      <blockquote>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</blockquote>
+      <blockquote>Blockquote - Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</blockquote>
       <sd-divider></sd-divider>
-      <sd-link href="https://www.union-investment.de/">Link</sd-link>
+      <sd-link href="https://www.union-investment.de/">Inline link</sd-link>
+      <sd-link href="https://www.union-investment.de/"><b>Inline link strong</b></sd-link>
       <ul>
         <li>
           Unordered list level 1
@@ -116,7 +118,9 @@ export const StylingOptions = {
           alt="A generic placeholder jpg"
           class="aspect-video object-cover"
         />
-        <figcaption>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula</figcaption>
+        <figcaption>
+          Figcaption - Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula
+        </figcaption>
       </figure>
       <table class="sd-table">
         <thead>
