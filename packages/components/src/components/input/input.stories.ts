@@ -107,7 +107,7 @@ export const Value = {
 export const Disabled = {
   render: () =>
     html`<div class="w-[250px]">
-      <sd-input label="Label" value="Input text disabled" disabled></sd-input>
+      <sd-input label="Label" value="Disabled" disabled></sd-input>
     </div>`
 };
 
