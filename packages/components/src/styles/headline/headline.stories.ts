@@ -70,8 +70,6 @@ export const Sizes = {
 
 /**
  * Use the `&--inverted` class when displayed on primary background.
- *
- * On darker backgrounds text/white inverted colour will substitute black.
  */
 export const Inverted = {
   render: () =>
