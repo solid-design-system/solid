@@ -55,7 +55,7 @@ export const Size = {
 /**
  * Use the `label` attribute to provide an accessible label for the input element.
  *
- * Use the `label` slot to add custom markup.
+ * For labels that contain HTML, use the `label` slot instead.
  */
 
 export const Label = {
