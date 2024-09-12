@@ -92,16 +92,6 @@ export const Value = {
 
 /**
  * Use the `disabled` attribute to disable the input.
- *
- *  Use the `inputmode` attribute which tells the browser what type of data will be entered by the user, allowing it to display the appropriate virtual keyboard on supportive devices.
- * - `none`
- * - `text`
- * - `decimal`
- * - `numeric`
- * - `tel`
- * - `search`
- * - `email`
- * - `url`
  */
 
 export const Disabled = {
