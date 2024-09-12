@@ -10,14 +10,16 @@ const { generateTemplate } = storybookTemplate('sd-hidden-links');
 const html = String.raw;
 
 /**
- * Can be used to show links only for keyboard users.
+ * Used to show links only for keyboard users.
  *
- * - Per default the hidden links are optimized for a single <sd-button>.
+ * **Related components**:
+ * - [Navigation Item](?path=/docs/components-navigation-item--docs)
  */
 
 export default {
   title: 'Styles/sd-hidden-links',
   component: 'sd-hidden-links',
+  tags: ['!dev'],
   parameters: {
     ...parameters,
     chromatic: {
@@ -28,9 +30,6 @@ export default {
   argTypes
 };
 
-/**
- * Per default the hidden links are optimized for a single `<sd-button>`.
- */
 export const Default = {
   args: overrideArgs({
     type: 'slot',
@@ -48,6 +47,77 @@ export const Default = {
       args
     });
   }
+};
+
+/**
+ * "Stack" multiple `sd-hidden-links` by adding multiple of them to the same parent.
+ *
+ * **Hint:**
+ * Recommended for 2 or more links.
+ */
+export const StackLinks = {
+  render: () =>
+    html`<div class="relative bg-white w-full h-[256px] p-8">
+      <div class="sd-hidden-links"><sd-button href="#">Skip to Search</sd-button></div>
+      <div class="sd-hidden-links"><sd-button href="#">Skip to Content</sd-button></div>
+      <p>Tab through this area to see buttons one after another.</p>
+    </div>`
+};
+
+/**
+ * Use the `&--multiple` class to show mutiple `sd-navigation-item` elements.
+ *
+ * **Hint:**
+ * Recommended for 2 or more links.
+ */
+export const MultipleLinks = {
+  render: () =>
+    html`<div class="relative bg-white w-full h-[256px] p-8">
+      <div class="sd-hidden-links sd-hidden-links--multiple">
+        <sd-navigation-item href="#">Search</sd-navigation-item>
+        <sd-navigation-item href="#">Content</sd-navigation-item>
+        <sd-navigation-item href="#">Footer</sd-navigation-item>
+      </div>
+      <p>Tab through this area to see multiple links.</p>
+    </div>`
+};
+
+/**
+ * Use the `--sd-hidden-links-title` CSS variable to set a title for multiple links.
+ *
+ * German and English are set by default in regard of the document's or elements `lang` attribute.
+ */
+export const TitleForMultipleLinks = {
+  render: () =>
+    html`<div class="relative bg-white w-full h-[256px] p-8" lang="de">
+        <div class="sd-hidden-links sd-hidden-links--multiple">
+          <sd-navigation-item href="#">Suche</sd-navigation-item>
+          <sd-navigation-item href="#">Inhalt</sd-navigation-item>
+          <sd-navigation-item href="#">Fußbereich</sd-navigation-item>
+        </div>
+        <p>Hier wird eine deutsche Überschrift erscheinen.</p>
+      </div>
+      <div class="relative bg-white w-full h-[256px] p-8">
+        <div class="sd-hidden-links sd-hidden-links--multiple" lang="en">
+          <sd-navigation-item href="#">Search</sd-navigation-item>
+          <sd-navigation-item href="#">Content</sd-navigation-item>
+          <sd-navigation-item href="#">Footer</sd-navigation-item>
+        </div>
+        <p>Here you will see an English title.</p>
+      </div>
+      <div class="relative bg-white w-full h-[256px] p-8">
+        <style>
+          #hidden-link-with-custom-title {
+            --sd-hidden-links-title: 'Jump very fast to';
+          }
+        </style>
+        <div id="hidden-link-with-custom-title" class="sd-hidden-links sd-hidden-links--multiple">
+          <sd-navigation-item href="#">Search</sd-navigation-item>
+          <sd-navigation-item href="#">Content</sd-navigation-item>
+          <sd-navigation-item href="#">Footer</sd-navigation-item>
+        </div>
+        <p>Here you will see a custom title.</p>
+      </div>`
 };
 
 /**
@@ -109,70 +179,7 @@ export const SurroundingContent = {
 };
 
 /**
- * "Stack" multiple `sd-hidden-links` by adding multiple of them to the same parent. (Recommended for 2 links)
- */
-export const StackLinks = {
-  render: () =>
-    html`<div class="relative bg-white w-full h-[256px] p-8">
-      <div class="sd-hidden-links"><sd-button href="#">Skip to Search</sd-button></div>
-      <div class="sd-hidden-links"><sd-button href="#">Skip to Content</sd-button></div>
-      <p>Tab through this area to see buttons one after another.</p>
-    </div>`
-};
-
-/**
- * Use the `sd-hidden-links--multiple` modifier to show mutiple `sd-navigation-item` elements. (Recommended for >2 links)
- */
-export const MultipleLinks = {
-  render: () =>
-    html`<div class="relative bg-white w-full h-[256px] p-8">
-      <div class="sd-hidden-links sd-hidden-links--multiple">
-        <sd-navigation-item href="#">Search</sd-navigation-item>
-        <sd-navigation-item href="#">Content</sd-navigation-item>
-        <sd-navigation-item href="#">Footer</sd-navigation-item>
-      </div>
-      <p>Tab through this area to see multiple links.</p>
-    </div>`
-};
-
-/**
- * Use the `--sd-hidden-links-title` CSS variable to set a title for multiple links. German and English are set by default in regard of the document's or elements `lang` attribute.
- */
-export const TitleForMultipleLinks = {
-  render: () =>
-    html`<div class="relative bg-white w-full h-[256px] p-8" lang="de">
-        <div class="sd-hidden-links sd-hidden-links--multiple">
-          <sd-navigation-item href="#">Suche</sd-navigation-item>
-          <sd-navigation-item href="#">Inhalt</sd-navigation-item>
-          <sd-navigation-item href="#">Fußbereich</sd-navigation-item>
-        </div>
-        <p>Hier wird eine deutsche Überschrift erscheinen.</p>
-      </div>
-      <div class="relative bg-white w-full h-[256px] p-8">
-        <div class="sd-hidden-links sd-hidden-links--multiple" lang="en">
-          <sd-navigation-item href="#">Search</sd-navigation-item>
-          <sd-navigation-item href="#">Content</sd-navigation-item>
-          <sd-navigation-item href="#">Footer</sd-navigation-item>
-        </div>
-        <p>Here you will see an English title.</p>
-      </div>
-      <div class="relative bg-white w-full h-[256px] p-8">
-        <style>
-          #hidden-link-with-custom-title {
-            --sd-hidden-links-title: 'Jump very fast to';
-          }
-        </style>
-        <div id="hidden-link-with-custom-title" class="sd-hidden-links sd-hidden-links--multiple">
-          <sd-navigation-item href="#">Search</sd-navigation-item>
-          <sd-navigation-item href="#">Content</sd-navigation-item>
-          <sd-navigation-item href="#">Footer</sd-navigation-item>
-        </div>
-        <p>Here you will see a custom title.</p>
-      </div>`
-};
-
-/**
- * Use the `sd-hidden-links--debug` modifier to always show the links for debugging purposes.
+ * Use the `&--debug` class to always show the links for debugging purposes.
  */
 export const Debug = {
   parameters: {
