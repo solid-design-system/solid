@@ -48,6 +48,8 @@ export const Default = {
 };
 
 /**
+ * Use the `sd-prose` to set a style for a group of elements.
+ *
  * - `<h1>`: H1, hidden in cms-modules to make sure H1 is only used once on a page
  * - `<h2>, <h3>, <h4> and <h5>`: H2, H3, H4 and H5
  * - `<p> and <p> <strong>`: Paragraph and Paragraph bold
@@ -83,10 +85,10 @@ export const StylingOptions = {
         phasellus dui vel id.
       </p>
       <p class="sd-paragraph">
-        <b
-          >Paragraph Bold - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor
-          molestie phasellus dui vel id.</b
-        >
+        <strong>
+          Paragraph Bold - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor
+          molestie phasellus dui vel id.
+        </strong>
       </p>
       <p class="sd-leadtext">
         Leadtext - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
