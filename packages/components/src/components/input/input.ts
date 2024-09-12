@@ -501,12 +501,12 @@ export default class SdInput extends SolidElement implements SolidFormControl {
           <div
             part="base"
             class=${cx(
-              'px-4 flex flex-row items-center rounded-default transition-all bg-white',
+              'px-4 flex flex-row items-center rounded-default transition-all',
               // Vertical Padding
               this.size === 'lg' ? 'py-2' : 'py-1',
               // States
               !this.disabled && !this.readonly ? 'hover:bg-neutral-200' : '',
-              this.readonly && 'bg-neutral-100',
+              this.readonly ? 'bg-neutral-100' : 'bg-white',
               textColor
             )}
           >

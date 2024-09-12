@@ -52,6 +52,9 @@ export default class SdNotification extends SolidElement {
 
   @query('[part~="base"]') base: HTMLElement;
 
+  /** The sd-notification's theme. */
+  @property({ reflect: true }) variant: 'info' | 'success' | 'error' | 'warning' = 'info';
+
   /**
    * Indicates whether or not sd-notification is open. You can toggle this attribute to show and hide the notification, or you can
    * use the `show()` and `hide()` methods and this attribute will reflect the notifications's open state.
@@ -60,12 +63,6 @@ export default class SdNotification extends SolidElement {
 
   /** Enables a close button that allows the user to dismiss the notification. */
   @property({ type: Boolean, reflect: true }) closable = false;
-
-  /** The sd-notification's theme. */
-  @property({ reflect: true }) variant: 'info' | 'success' | 'error' | 'warning' = 'info';
-
-  /** The position of the toasted sd-notification. */
-  @property({ reflect: true, attribute: 'toast-stack' }) toastStack: 'top-right' | 'bottom-center' = 'top-right';
 
   /**
    * The length of time, in milliseconds, the sd-notification will show before closing itself. If the user interacts with
@@ -76,6 +73,9 @@ export default class SdNotification extends SolidElement {
 
   /** Enables an animation that visualizes the duration of a notification. */
   @property({ type: Boolean, reflect: true, attribute: 'duration-indicator' }) durationIndicator = false;
+
+  /** The position of the toasted sd-notification. */
+  @property({ reflect: true, attribute: 'toast-stack' }) toastStack: 'top-right' | 'bottom-center' = 'top-right';
 
   private remainingDuration = this.duration;
   private startTime = Date.now();
@@ -261,10 +261,14 @@ export default class SdNotification extends SolidElement {
                   variant="tertiary"
                   part="close-button"
                   class="ml-auto flex flex-[0_0_auto] items-stretch"
-                  label=${this.localize.term('close')}
                   @click=${this.handleCloseClick}
                 >
-                  <sd-icon name="close" library="system" color="currentColor"></sd-icon>
+                  <sd-icon
+                    label=${this.localize.term('close')}
+                    name="close"
+                    library="system"
+                    color="currentColor"
+                  ></sd-icon>
                 </sd-button>
               `
             : ''}

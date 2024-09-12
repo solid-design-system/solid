@@ -7,7 +7,7 @@
       @apply flex gap-2;
 
       &::before {
-        @apply w-5 leading-normal;
+        @apply w-5 leading-normal shrink-0;
         content: counter(list-item);
         padding-top: 1px;
         font-size: 10px;

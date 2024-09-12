@@ -7,7 +7,7 @@ const defaultLibrary: IconLibrary = {
     if (path[0] === 'content' || path[0] === 'system') {
       name = 'union-investment/' + name;
     }
-    return `https://fe-celum-icons-prod.azureedge.net/${name}.svg`;
+    return `https://celum-icons.fe.union-investment.de/${name}.svg`;
   },
   mutator: svg => {
     const recoloredElements = {
@@ -18,8 +18,8 @@ const defaultLibrary: IconLibrary = {
     };
     recoloredElements['currentColorFills'] = svg.querySelectorAll('[fill="#00358e" i]');
     recoloredElements['currentColorStrokes'] = svg.querySelectorAll('[stroke="#00358e" i]');
-    recoloredElements['greenFills'] = svg.querySelectorAll('[fill="#43b02a" i]');
-    recoloredElements['greenStrokes'] = svg.querySelectorAll('[stroke="#43b02a" i]');
+    recoloredElements['greenFills'] = svg.querySelectorAll('[fill="#2d9d00" i]');
+    recoloredElements['greenStrokes'] = svg.querySelectorAll('[stroke="#2d9d00" i]');
 
     recoloredElements.currentColorFills.forEach(filledElement => {
       filledElement.setAttribute('fill', 'currentColor');

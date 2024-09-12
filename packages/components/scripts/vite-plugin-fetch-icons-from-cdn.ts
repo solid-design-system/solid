@@ -8,8 +8,8 @@ import type { Plugin } from 'vite';
 
 async function fetchIconsJson() {
   try {
-    const contentUrl = 'https://fe-celum-icons-prod.azureedge.net/union-investment/content.json';
-    const systemUrl = 'https://fe-celum-icons-prod.azureedge.net/union-investment/system.json';
+    const contentUrl = 'https://celum-icons.fe.union-investment.de/union-investment/content.json';
+    const systemUrl = 'https://celum-icons.fe.union-investment.de/union-investment/system.json';
 
     const [contentResponse, systemResponse] = await Promise.all([fetch(contentUrl), fetch(systemUrl)]);
 
