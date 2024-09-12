@@ -3,7 +3,8 @@ import { html } from 'lit-html';
 import type SdInput from '../components/input/input';
 
 /**
- * Use the html `start` attribute to set the starting number of the list. The default value is '1'.
+ * ```
+ * ```
  */
 
 export default {
