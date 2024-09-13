@@ -46,10 +46,10 @@ export const Default = {
 /**
  * Use the `&--bg-*`class for alternative appearances.
  *
- * - `sd-table-cell--bg-transparent` (default)
- * - `sd-table-cell--bg-white`
- * - `sd-table-cell--bg-primary-100`
- * - `sd-table-cell--bg-neutral-100`
+ * - `transparent` (default)
+ * - `white`
+ * - `primary-100`
+ * - `neutral-100`
  */
 
 export const Variants = {
@@ -118,10 +118,10 @@ export const Divider = {
 /**
  * Use `&--shadow-*` to add a shadow to columns or rows. This is especially useful when the table is scrollable with sticky headers.
  *
- * - `sd-table-cell--shadow-right`
- * - `sd-table-cell--shadow-left`
- * - `sd-table-cell--shadow-bottom`
- * - `sd-table-cell--shadow-top`
+ * - `right`
+ * - `left`
+ * - `bottom`
+ * - `top`
  */
 
 export const Shadow = {
