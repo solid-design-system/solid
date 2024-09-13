@@ -6,7 +6,7 @@ const { overrideArgs } = storybookHelpers('sd-copyright');
 const { generateTemplate } = storybookTemplate('sd-copyright');
 
 /**
- * Use the CSS property `--copyright` and the class `sd-copyright` in the parent of any element to set a copyright text.
+ * Used to be displayed at the bottom of an image for example.
  */
 export default {
   title: 'Styles/sd-copyright',
