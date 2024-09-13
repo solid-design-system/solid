@@ -74,16 +74,17 @@ export const Rows = {
 };
 
 /**
- * Use the`label`attribute to give the input an accessible label.
- *
- *  For labels that contain HTML, use the `label` slot.
+ * Use the `label` attribute to provide an accessible label for the textarea element.<br />Use the `label` slot to add custom markup.
  */
 
 export const Label = {
   name: 'Label',
   render: () => html`
-    <div class="w-[500px]">
-      <sd-textarea size="lg" label="Label" rows="4" spellcheck></sd-textarea>
+    <div class="flex gap-12">
+      <sd-textarea size="lg" label="Label Attribute" rows="4" spellcheck class="w-full"></sd-textarea>
+      <sd-textarea size="lg" rows="4" spellcheck class="w-full">
+        <div slot="label" class="text-lg">Label Slot</div>
+      </sd-textarea>
     </div>
   `
 };
@@ -142,8 +143,11 @@ export const Readonly = {
 export const HelpText = {
   name: 'Help Text',
   render: () => html`
-    <div class="w-[500px]">
-      <sd-textarea size="lg" label="Label" help-text="Help text example" rows="4"></sd-textarea>
+    <div class="flex gap-12">
+      <sd-textarea size="lg" label="Label" help-text="Help text Attribute" rows="4" class="w-full"></sd-textarea>
+      <sd-textarea size="lg" label="Label" rows="4" spellcheck class="w-full">
+        <div slot="help-text" class="text-lg">Help text Slot</div>
+      </sd-textarea>
     </div>
   `
 };
