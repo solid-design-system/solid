@@ -39,9 +39,9 @@ export const Default = {
   render: (args: any) => {
     return generateTemplate({
       options: {
-        templateContent: html`<div class="relative bg-white w-full h-[256px] p-8">
+        templateContent: html`<div class="relative bg-white w-full h-[256px] p-8 flex">
           <div class="%CLASSES%">%SLOT%</div>
-          <p>Tab into this area to show a single button.</p>
+          <p class="self-center">Tab into this area to show a single button.</p>
         </div>`
       },
       args
@@ -57,10 +57,10 @@ export const Default = {
  */
 export const StackLinks = {
   render: () =>
-    html`<div class="relative bg-white w-full h-[256px] p-8">
+    html`<div class="relative bg-white w-full h-[256px] p-8 flex">
       <div class="sd-hidden-links"><sd-button href="#">Skip to Search</sd-button></div>
       <div class="sd-hidden-links"><sd-button href="#">Skip to Content</sd-button></div>
-      <p>Tab through this area to see buttons one after another.</p>
+      <p class="self-center">Tab through this area to see buttons one after another.</p>
     </div>`
 };
 
@@ -72,13 +72,13 @@ export const StackLinks = {
  */
 export const MultipleLinks = {
   render: () =>
-    html`<div class="relative bg-white w-full h-[256px] p-8">
+    html`<div class="relative bg-white w-full h-[256px] p-8 flex">
       <div class="sd-hidden-links sd-hidden-links--multiple">
         <sd-navigation-item href="#">Search</sd-navigation-item>
         <sd-navigation-item href="#">Content</sd-navigation-item>
         <sd-navigation-item href="#">Footer</sd-navigation-item>
       </div>
-      <p>Tab through this area to see multiple links.</p>
+      <p class="self-center">Tab through this area to see multiple links.</p>
     </div>`
 };
 
@@ -89,23 +89,23 @@ export const MultipleLinks = {
  */
 export const TitleForMultipleLinks = {
   render: () =>
-    html`<div class="relative bg-white w-full h-[256px] p-8" lang="de">
+    html`<div class="relative bg-white w-full h-[256px] p-8 flex" lang="de">
         <div class="sd-hidden-links sd-hidden-links--multiple">
           <sd-navigation-item href="#">Versteckter Link 1</sd-navigation-item>
           <sd-navigation-item href="#">Versteckter Link 2</sd-navigation-item>
           <sd-navigation-item href="#">Versteckter Link 3</sd-navigation-item>
         </div>
-        <p>Hier wird eine deutsche Überschrift erscheinen.</p>
+        <p class="self-center">Hier wird eine deutsche Überschrift erscheinen.</p>
       </div>
-      <div class="relative bg-white w-full h-[256px] p-8">
+      <div class="relative bg-white w-full h-[256px] p-8 flex">
         <div class="sd-hidden-links sd-hidden-links--multiple" lang="en">
           <sd-navigation-item href="#">Hidden Link 1</sd-navigation-item>
           <sd-navigation-item href="#">Hidden Link 2</sd-navigation-item>
           <sd-navigation-item href="#">Hidden Link 3</sd-navigation-item>
         </div>
-        <p>Here you will see an English title.</p>
+        <p class="self-center">Here you will see an English title.</p>
       </div>
-      <div class="relative bg-white w-full h-[256px] p-8">
+      <div class="relative bg-white w-full h-[256px] p-8 flex">
         <style>
           #hidden-link-with-custom-title {
             --sd-hidden-links-title: 'Jump very fast to';
@@ -116,7 +116,7 @@ export const TitleForMultipleLinks = {
           <sd-navigation-item href="#">Hidden Link 2</sd-navigation-item>
           <sd-navigation-item href="#">Hidden Link 3</sd-navigation-item>
         </div>
-        <p>Here you will see a custom title.</p>
+        <p class="self-center">Here you will see a custom title.</p>
       </div>`
 };
 
