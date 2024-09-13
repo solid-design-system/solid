@@ -150,9 +150,9 @@ export const MultipleLinks = {
       options: {
         templateContent: html`<div class="relative bg-white w-full h-[256px] p-8">
       <div class="sd-hidden-links sd-hidden-links--multiple">
-        <sd-navigation-item href="#">Hidden Link 2</sd-navigation-item>
-        <sd-navigation-item href="#">Hidden Link 1</sd-navigation-item>
-        <sd-navigation-item href="#">Hidden Link 3</sd-navigation-item>
+        <sd-navigation-item href="#">Search</sd-navigation-item>
+        <sd-navigation-item href="#">Content</sd-navigation-item>
+        <sd-navigation-item href="#">Footer</sd-navigation-item>
       </div>
       <p>Tab through this area to see multiple links.</p>
     </div>
@@ -173,17 +173,17 @@ export const TitleForMultipleLinks = {
       options: {
         templateContent: html`<div class="relative bg-white w-full h-[256px] p-8" lang="de">
             <div class="sd-hidden-links sd-hidden-links--multiple">
-              <sd-navigation-item href="#">Versteckter Link 1</sd-navigation-item>
-              <sd-navigation-item href="#">Versteckter Link 2</sd-navigation-item>
-              <sd-navigation-item href="#">Versteckter Link 3</sd-navigation-item>
+              <sd-navigation-item href="#">Suche</sd-navigation-item>
+              <sd-navigation-item href="#">Inhalt</sd-navigation-item>
+              <sd-navigation-item href="#">Fußbereich</sd-navigation-item>
             </div>
             <p>Hier wird eine deutsche Überschrift erscheinen.</p>
           </div>
           <div class="relative bg-white w-full h-[256px] p-8">
             <div class="sd-hidden-links sd-hidden-links--multiple" lang="en">
-              <sd-navigation-item href="#">Hidden Link 1</sd-navigation-item>
-              <sd-navigation-item href="#">Hidden Link 2</sd-navigation-item>
-              <sd-navigation-item href="#">Hidden Link 3</sd-navigation-item>
+              <sd-navigation-item href="#">Search</sd-navigation-item>
+              <sd-navigation-item href="#">Content</sd-navigation-item>
+              <sd-navigation-item href="#">Footer</sd-navigation-item>
             </div>
             <p>Here you will see an English title.</p>
           </div>
@@ -194,9 +194,9 @@ export const TitleForMultipleLinks = {
               }
             </style>
             <div id="hidden-link-with-custom-title" class="sd-hidden-links sd-hidden-links--multiple">
-              <sd-navigation-item href="#">Hidden Link 1</sd-navigation-item>
-              <sd-navigation-item href="#">Hidden Link 2</sd-navigation-item>
-              <sd-navigation-item href="#">Hidden Link 3</sd-navigation-item>
+              <sd-navigation-item href="#">Search</sd-navigation-item>
+              <sd-navigation-item href="#">Content</sd-navigation-item>
+              <sd-navigation-item href="#">Footer</sd-navigation-item>
             </div>
             <p>Here you will see a custom title.</p>
           </div>`
