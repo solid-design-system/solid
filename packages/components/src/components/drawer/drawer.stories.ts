@@ -6,7 +6,7 @@ const { generateTemplate } = storybookTemplate('sd-drawer');
 const { overrideArgs } = storybookHelpers('sd-drawer');
 
 /**
- * A panel that slides out from the side of the screen which contains a set of information or actions.
+ * Used as a panel that slides out from the side of the screen which contains a set of information or actions.
  *
  * **Related templates:**
  * - [Drawer with navigation](?path=/docs/templates-drawer-with-navigation--docs)
