@@ -9,7 +9,7 @@ const { generateTemplate } = storybookTemplate('sd-badge');
 
 /**
  *
- * Visual indicator of a quantity related to a particular element. Often displayed next to an icon or label.
+ * Used to visual indicate a quantity related to a particular element. Often displayed next to an icon or label.
  *
  * **Related templates**:
  * - [Button with Badge](?path=/docs/templates-button-with-badge--docs)
