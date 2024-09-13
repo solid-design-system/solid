@@ -7,7 +7,7 @@ const { overrideArgs } = storybookHelpers('sd-flag');
 const { generateTemplate } = storybookTemplate('sd-flag');
 
 /**
- * A small, non-interactive label that represents a category.
+ * Used as a small, non-interactive label that represents a category.
  *
  * **Related templates**:
  * - [Flag](?path=/docs/templates-flag--docs)
