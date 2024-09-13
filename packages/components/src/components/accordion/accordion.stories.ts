@@ -9,7 +9,7 @@ const { generateTemplate } = storybookTemplate('sd-accordion');
 
 /**
  *
- * Shows a brief summary and expands to display additional content.
+ * Used to show a brief summary and expands to display additional content.
  *
  *  **Related templates**:
  * - [Accordion Group](?path=/docs/templates-accordion-group--docs)
