@@ -27,7 +27,7 @@ export default {
 };
 
 /**
- * Expandable shows a brief summary and expands to show additional content.
+ * Used to show a brief summary and expands to show additional content
  */
 export const Default = {
   name: 'Default',
