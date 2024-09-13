@@ -3,7 +3,13 @@ import { html } from 'lit-html';
 
 export default {
   tags: ['!dev'],
-  title: 'Templates/Link List'
+  title: 'Templates/Link List',
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2636-24351&t=7RxABd1ABtGBguGB-4'
+    }
+  }
 };
 
 /**
