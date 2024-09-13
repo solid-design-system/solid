@@ -5,7 +5,11 @@ export default {
   tags: ['!dev'],
   title: 'Templates/Tags',
   parameters: {
-    chromatic: { disableSnapshot: true }
+    chromatic: { disableSnapshot: true },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=3274-20467&t=ilrs806pHHSfnwKM-4'
+    }
   }
 };
 

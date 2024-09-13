@@ -17,7 +17,11 @@ export default {
   tags: ['!dev'],
   component: 'sd-media',
   parameters: {
-    ...parameters
+    ...parameters,
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2784-16896&t=4wQWPA7fIC0v9u7i-4'
+    }
   },
   args: overrideArgs({ type: 'slot', name: 'default', value: '' }),
   argTypes

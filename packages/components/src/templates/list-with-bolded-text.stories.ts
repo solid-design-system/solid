@@ -5,7 +5,11 @@ export default {
   tags: ['!dev'],
   title: 'Templates/List with Bolded Text',
   parameters: {
-    chromatic: { disableSnapshot: true }
+    chromatic: { disableSnapshot: true },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=3498-5634&t=JCsisVFNkWSlhSSN-4'
+    }
   }
 };
 

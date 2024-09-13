@@ -21,7 +21,7 @@ export default {
     ...parameters,
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/file/2b3TvrfxawUSvpnQEqSowL/Display?type=design&node-id=954-4198&mode=design&t=JogAvP1YEInWjWEF-0'
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2705-24820&t=yS054qhxgjorbMDv-4'
     }
   },
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Lorem Ipsum' }),

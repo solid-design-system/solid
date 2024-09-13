@@ -22,6 +22,10 @@ export default {
     ...parameters,
     chromatic: {
       disableSnapshot: true
+    },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=3806-2666&t=yS054qhxgjorbMDv-4'
     }
   },
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Lorem Ipsum' }),

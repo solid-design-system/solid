@@ -21,7 +21,7 @@ export default {
     ...parameters,
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/file/vQ57OHDm26QE1gtZKtfb6L/Flag?type=design&node-id=804-717&mode=design&t=bdhcOj9ub57hEPZl-0'
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2106-34451&t=ohgrgpEVGgKzqMzU-4'
     }
   },
   args: overrideArgs([{ type: 'slot', name: 'default', value: 'Flag' }]),

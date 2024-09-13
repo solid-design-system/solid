@@ -5,6 +5,10 @@ export default {
   tags: ['!dev'],
   title: 'Templates/Brandshape Template',
   parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=3121-11350&t=JCsisVFNkWSlhSSN-4'
+    },
     chromatic: { disableSnapshot: true }
   }
 };

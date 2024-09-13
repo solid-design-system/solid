@@ -22,7 +22,7 @@ export default {
     ...parameters,
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=3255-5589&t=VCN0oU7WM1KOC3Zk-4'
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=3255-5589&t=RUQynf95RznZRsmc-4'
     }
   },
   args: overrideArgs({

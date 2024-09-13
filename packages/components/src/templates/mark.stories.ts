@@ -10,7 +10,11 @@ export default {
   tags: ['!dev'],
   title: 'Templates/Mark',
   parameters: {
-    chromatic: { disableSnapshot: true }
+    chromatic: { disableSnapshot: true },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=3607-5390&t=JCsisVFNkWSlhSSN-4'
+    }
   }
 };
 

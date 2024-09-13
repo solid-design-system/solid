@@ -21,7 +21,7 @@ export default {
     ...parameters,
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/file/1Dc7fiQU12U6f7SFgsHjQE/Headline?type=design&node-id=0-1&mode=design&t=lkfrp1PXc280seHQ-0'
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=3162-7669&t=ohgrgpEVGgKzqMzU-4'
     }
   },
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Nisi eu excepteur anim esse' }),

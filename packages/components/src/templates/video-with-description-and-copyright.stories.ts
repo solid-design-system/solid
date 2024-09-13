@@ -5,7 +5,11 @@ export default {
   tags: ['!dev'],
   title: 'Templates/Video with Description and Copyright',
   parameters: {
-    chromatic: { disableSnapshot: true }
+    chromatic: { disableSnapshot: true },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2535-30009&t=lJxrBJPRziV74fnu-4'
+    }
   }
 };
 

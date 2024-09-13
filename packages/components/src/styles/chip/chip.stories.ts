@@ -2,7 +2,7 @@ import '../../solid-components';
 import { html } from 'lit';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes } = storybookDefaults('sd-chip');
+const { argTypes, parameters } = storybookDefaults('sd-chip');
 const { overrideArgs } = storybookHelpers('sd-chip');
 const { generateTemplate } = storybookTemplate('sd-chip');
 
@@ -18,6 +18,13 @@ export default {
   component: 'sd-chip',
   tags: ['!dev'],
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Chip' }),
+  parameters: {
+    ...parameters,
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2106-26033&t=yS054qhxgjorbMDv-4'
+    }
+  },
   argTypes
 };
 

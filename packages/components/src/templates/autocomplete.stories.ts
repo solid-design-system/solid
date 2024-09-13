@@ -79,6 +79,10 @@ export default {
   title: 'Templates/Autocomplete',
   parameters: {
     docs: { story: { inline: false, height: '400px' } },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2858-511&t=uTI8bz6LT5ZxlxSd-4'
+    },
     chromatic: { disableSnapshot: true },
     excludeStories: /.Simple$/
   }
