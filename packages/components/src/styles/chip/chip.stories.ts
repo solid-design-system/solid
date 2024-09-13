@@ -7,7 +7,7 @@ const { overrideArgs } = storybookHelpers('sd-chip');
 const { generateTemplate } = storybookTemplate('sd-chip');
 
 /**
- * A small, non-interactive label that represents a status, property or meta-data.
+ * Used as a small, non-interactive label that represents a status, property or meta-data.
  *
  *  **Related templates**:
  * - [Chip](?path=/docs/templates-chip--docs)
