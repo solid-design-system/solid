@@ -50,7 +50,7 @@ export const Default = {
 };
 
 /**
- * "Stack" multiple `sd-hidden-links` by adding multiple of them to the same parent.
+ * Stack multiple `sd-hidden-links` by adding multiple of them to the same parent.
  *
  * **Hint:**
  * Recommended for 2 or more links.
