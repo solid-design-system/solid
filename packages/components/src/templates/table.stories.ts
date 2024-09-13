@@ -333,3 +333,25 @@ export const sortableTable = {
     </table>
   `
 };
+
+/**
+ *
+ * Table with Fixed Top Header Row and Shadow
+ *
+ * ### Table with Fixed Top Header Row and Shadow
+ */
+export const advancedTables = {
+  render: () =>
+    html` <table id="vertical-scrollable-table" class="sd-table block overflow-y-scroll">
+      <thead>
+        <tr>
+          <th class="sd-table-cell sd-table-cell--bg-white sticky top-0 sd-table-cell--shadow-bottom">Header</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Lorem ipsum</td>
+        </tr>
+      </tbody>
+    </table>`
+};
