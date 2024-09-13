@@ -13,7 +13,7 @@ const html = String.raw;
  * Used to show links only for keyboard users.
  *
  * **Related components**:
- * - [Navigation Item](?path=/docs/components-navigation-item--docs)
+ * - [Dropdown with Navigation Items](?path=/docs/components-navigation-item--docs)
  */
 
 export default {
