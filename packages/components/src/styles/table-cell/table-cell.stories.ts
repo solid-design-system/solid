@@ -96,7 +96,7 @@ export const Variants = {
 export const Divider = {
   render: () => {
     return html`
-      <table class="sd-table">
+      <table class="sd-table w-[325px]">
         <thead>
           <tr>
             <td class="font-bold sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Header</td>
