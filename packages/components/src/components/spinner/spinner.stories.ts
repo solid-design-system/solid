@@ -6,7 +6,7 @@ const { argTypes, args, parameters } = storybookDefaults('sd-spinner');
 const { generateTemplate } = storybookTemplate('sd-spinner');
 
 /**
- * Visual indicator with a looping animation that shows loading is in process.
+ * Used as a visual indicator with a looping animation that shows loading is in process.
  */
 
 export default {
