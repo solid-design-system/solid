@@ -1,5 +1,6 @@
 import '../solid-components';
 import { html } from 'lit-html';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 /**
  * The `sd-table-cell` component offers basic styling for table cells.
@@ -238,100 +239,129 @@ export const simpleTableAlternatingColors = {
 };
 
 export const sortableTable = {
-  render: () => html`
-    <table class="sd-table sample-table" id="sortableTable" data-chromatic="ignore">
-      <thead>
-        <tr>
-          <th class="sd-table-cell sd-table-cell--bg-transparent sortable" id="sortableHeader-0" aria-sort="ascending">
-            <button class="text-primary hover:bg-neutral-200 transition-all">
-              Header
-              <sd-icon
-                library="global-resources"
-                class="text-[12px]"
-                id="sortIcon-0"
-                name="system/sort-down-filled"
-              ></sd-icon>
-            </button>
-          </th>
-          <th class="sd-table-cell sd-table-cell--bg-transparent sortable" id="sortableHeader-1">
-            <button class="text-primary hover:bg-neutral-200 transition-all">
-              Header
-              <sd-icon library="global-resources" class="text-[12px]" id="sortIcon-1" name="system/sort-down"></sd-icon>
-            </button>
-          </th>
-          <th class="sd-table-cell sd-table-cell--bg-transparent sortable" id="sortableHeader-2">
-            <button class="text-primary hover:bg-neutral-200 transition-all">
-              Header
-              <sd-icon library="global-resources" class="text-[12px]" id="sortIcon-2" name="system/sort-down"></sd-icon>
-            </button>
-          </th>
-          <th class="sd-table-cell sd-table-cell--bg-transparent sortable" id="sortableHeader-3">
-            <button class="text-primary hover:bg-neutral-200 transition-all">
-              Header
-              <sd-icon library="global-resources" class="text-[12px]" id="sortIcon-3" name="system/sort-down"></sd-icon>
-            </button>
-          </th>
-          <th class="sd-table-cell sd-table-cell--bg-transparent sortable" id="sortableHeader-4">
-            <button class="text-primary hover:bg-neutral-200 transition-all">
-              Header
-              <sd-icon library="global-resources" class="text-[12px]" id="sortIcon-4" name="system/sort-down"></sd-icon>
-            </button>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">0: Lorem ipsum dolor sit amet.</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">9: Lorem ipsum dolor sit amet.</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">3: Lorem ipsum dolor sit amet.</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">1: Lorem ipsum dolor sit amet.</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">1: Lorem ipsum dolor sit amet.</td>
-        </tr>
-        <tr>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">7: Lorem ipsum dolor sit amet.</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">3: Lorem ipsum dolor sit amet.</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">1: Lorem ipsum dolor sit amet.</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">4: Lorem ipsum dolor sit amet.</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">1: Lorem ipsum dolor sit amet.</td>
-        </tr>
-        <tr>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">7: Lorem ipsum dolor sit amet.</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">5: Lorem ipsum dolor sit amet.</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">7: Lorem ipsum dolor sit amet.</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">2: Lorem ipsum dolor sit amet.</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">0: Lorem ipsum dolor sit amet.</td>
-        </tr>
-        <tr>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">4: Lorem ipsum dolor sit amet.</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">3: Lorem ipsum dolor sit amet.</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">8: Lorem ipsum dolor sit amet.</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">0: Lorem ipsum dolor sit amet.</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">5: Lorem ipsum dolor sit amet.</td>
-        </tr>
-        <tr>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">9: Lorem ipsum dolor sit amet.</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">0: Lorem ipsum dolor sit amet.</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">7: Lorem ipsum dolor sit amet.</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">7: Lorem ipsum dolor sit amet.</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">5: Lorem ipsum dolor sit amet.</td>
-        </tr>
-        <tr>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">2: Lorem ipsum dolor sit amet.</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">5: Lorem ipsum dolor sit amet.</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">3: Lorem ipsum dolor sit amet.</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">1: Lorem ipsum dolor sit amet.</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">5: Lorem ipsum dolor sit amet.</td>
-        </tr>
-        <tr>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">0: Lorem ipsum dolor sit amet.</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">2: Lorem ipsum dolor sit amet.</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">1: Lorem ipsum dolor sit amet.</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">5: Lorem ipsum dolor sit amet.</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">6: Lorem ipsum dolor sit amet.</td>
-        </tr>
-      </tbody>
-    </table>
-  `
+  render: (args: Record<string, any>) => {
+    // Initalize table data
+    const tableRowCount = 7;
+    const tableColumnCount = 5;
+    const headerData = Array.from({ length: tableColumnCount }, () => 'Header');
+    const tableData = Array.from({ length: tableRowCount }, () =>
+      Array.from({ length: tableColumnCount }, () => {
+        return args['default-slot'] ?? 'Lorem ipsum dolor sit amet.';
+      })
+    );
+    const sortData: ('ascending' | 'descending' | 'none')[] = Array.from({ length: tableColumnCount }, (_v, i) =>
+      i === 0 ? 'ascending' : 'none'
+    );
+
+    // Function to exchange the sort icons and set the aria-sort attribute in the sortable table after a click on a table header
+    const sortTable = (column: number) => {
+      const sortingOptions: {
+        [key: string]: {
+          nextSort: 'ascending' | 'descending' | 'none';
+          iconName: string;
+          ariaSort: string | undefined;
+        };
+      } = {
+        none: { nextSort: 'ascending', iconName: 'system/sort-up', ariaSort: undefined },
+        ascending: { nextSort: 'descending', iconName: 'system/sort-up-filled', ariaSort: 'ascending' },
+        descending: { nextSort: 'none', iconName: 'system/sort-down-filled', ariaSort: 'descending' }
+      };
+      const icons = document.querySelectorAll('[id*="sortIcon"]');
+      const headerCells = document.querySelectorAll('[id*="sortableHeader"]');
+
+      if (icons && headerCells) {
+        headerCells.forEach((headerCell, index) => {
+          //Change the sort icon and aria-sort attribute for the clicked column
+          const nextSort = sortingOptions[sortData[column]].nextSort;
+          sortTableByColumn(document.querySelector('[id*="sortableTable"]'), column, nextSort === 'descending');
+
+          if (index === column) {
+            const { iconName, ariaSort } = sortingOptions[nextSort];
+
+            sortData[index] = nextSort;
+            icons[index].setAttribute('name', iconName);
+            ariaSort !== undefined
+              ? headerCell.setAttribute('aria-sort', ariaSort)
+              : headerCell.removeAttribute('aria-sort');
+          }
+          //Reset the sort icon and remove the aria-sort attribute for all other columns
+          else {
+            const { iconName } = sortingOptions['none'];
+
+            sortData[index] = 'none';
+            icons[index].setAttribute('name', iconName);
+            headerCell.removeAttribute('aria-sort');
+          }
+        });
+      }
+    };
+
+    const sortTableByColumn = (table: HTMLTableElement | null, column: number, descending: boolean) => {
+      if (table) {
+        const dirModifier = descending ? 1 : -1;
+        const tableBody = table.tBodies[0];
+        const rows = Array.from(tableBody.querySelectorAll('tr'));
+
+        // Sort each row
+        const sortedRows = rows.sort((a, b) => {
+          const firstCol = a.querySelector(`td:nth-child(${column + 1})`)?.textContent?.trim();
+          const secondCol = b.querySelector(`td:nth-child(${column + 1})`)?.textContent?.trim();
+
+          if (firstCol && secondCol) {
+            return firstCol > secondCol ? dirModifier : -1 * dirModifier;
+          }
+
+          return 0;
+        });
+
+        // Remove all existing TRs from the table
+        while (tableBody.firstChild) {
+          tableBody.removeChild(tableBody.firstChild);
+        }
+
+        // Re-add the newly sorted rows
+        tableBody.append(...sortedRows);
+      }
+    };
+
+    return html`
+      <table class="sd-table sample-table" id="sortableTable" .sortData=${sortData} data-chromatic="ignore">
+        <thead>
+          ${(() => {
+            return html`<tr>
+              ${headerData.map((cellData, columnIndex) => {
+                return html`<th
+                  class="sd-table-cell sd-table-cell--bg-transparent sortable"
+                  id="sortableHeader-${columnIndex}"
+                  aria-sort=${ifDefined(sortData[columnIndex] === 'none' ? undefined : 'ascending')}
+                >
+                  <button class="sd-interactive" @click="${() => sortTable(columnIndex)}">
+                    ${cellData}<sd-icon
+                      id="sortIcon-${columnIndex}"
+                      library="global-resources"
+                      name=${sortData[columnIndex] === 'none' ? 'system/sort-down' : 'system/sort-down-filled'}
+                      class="text-[12px]"
+                    ></sd-icon>
+                  </button>
+                </th>`;
+              })}
+            </tr>`;
+          })()}
+        </thead>
+        <tbody>
+          ${tableData.map(rowData => {
+            return html`<tr>
+              ${rowData.map(cellData => {
+                return html`<td class="sd-table-cell sd-table-cell--bg-transparent">
+                  ${Math.floor(Math.random() * 10)}: ${cellData}
+                </td>`;
+              })}
+            </tr>`;
+          })}
+        </tbody>
+      </table>
+    `;
+  }
 };
 
 /**
