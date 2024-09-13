@@ -7,7 +7,7 @@ const { overrideArgs } = storybookHelpers('sd-teaser');
 const { generateTemplate } = storybookTemplate('sd-teaser');
 
 /**
- * Teasers can be used to group related subjects in a container.
+ * Used to group related subjects in a container.
  *
  * **Related templates**:
  * - [Teaser with Icon](?path=/docs/templates-teaser-with-icon--docs)
