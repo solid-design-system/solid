@@ -26,7 +26,7 @@ export default {
       disableSnapshot: true
     }
   },
-  args: overrideArgs({ type: 'slot', name: 'default', value: 'Lorem Ipsum' }),
+  args: overrideArgs({ type: 'slot', name: 'default', value: 'Hidden Links' }),
   argTypes
 };
 
@@ -74,9 +74,9 @@ export const MultipleLinks = {
   render: () =>
     html`<div class="relative bg-white w-full h-[256px] p-8 flex">
       <div class="sd-hidden-links sd-hidden-links--multiple">
-        <sd-navigation-item href="#">Search</sd-navigation-item>
-        <sd-navigation-item href="#">Content</sd-navigation-item>
-        <sd-navigation-item href="#">Footer</sd-navigation-item>
+        <sd-navigation-item href="#">Hidden Link 1</sd-navigation-item>
+        <sd-navigation-item href="#">Hidden Link 2</sd-navigation-item>
+        <sd-navigation-item href="#">Hidden Link 3</sd-navigation-item>
       </div>
       <p class="self-center">Tab through this area to see multiple links.</p>
     </div>`
