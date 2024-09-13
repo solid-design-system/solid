@@ -1,66 +1,37 @@
 import '../../solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { userEvent } from '@storybook/test';
-import { waitUntil } from '@open-wc/testing-helpers';
-import { withActions } from '@storybook/addon-actions/decorator';
-import type SdInput from './input';
 
-const { argTypes, args, parameters } = storybookDefaults('sd-input');
+const { argTypes, parameters } = storybookDefaults('sd-input');
 const { generateTemplate } = storybookTemplate('sd-input');
 const { overrideArgs } = storybookHelpers('sd-input');
 
+/**
+ * Used to allow users to enter text. It can be displayed in several ways, depending on the type.
+ *
+ * **Related templates**:
+ * - [Autocomplete](?path=/docs/templates-autocomplete--docs)
+ * - [Input](?path=/docs/templates-input--docs)
+ */
+
 export default {
+  tags: ['!dev'],
   title: 'Components/sd-input',
   component: 'sd-input',
-  args,
-  argTypes: {
-    ...argTypes,
-    'type-attr': {
-      name: 'type',
-      table: {
-        category: 'attributes',
-        defaultValue: 'text'
-      },
-      description:
-        'The type of input. Works the same as a native `<input>` element, but only a subset of types are supported. ',
-      control: 'select',
-      options: ['date', 'datetime-local', 'email', 'number', 'password', 'search', 'tel', 'text', 'time', 'url', 'text']
-    },
-    'min-attr': {
-      name: 'min',
-      table: {
-        category: 'attributes',
-        defaultValue: ''
-      },
-      description:
-        "The input's minimum value. Only applies to date and number input types. String format for date  is yyyy-mm-dd",
-      control: 'text'
-    },
-    'max-attr': {
-      name: 'max',
-      table: {
-        category: 'attributes',
-        defaultValue: ''
-      },
-      description:
-        "The input's maximum value. Only applies to date and number input types. String format for date  is yyyy-mm-dd",
-      control: 'text'
-    }
-  },
+  args: overrideArgs({
+    type: 'attribute',
+    name: 'label',
+    value: 'Label'
+  }),
+  argTypes,
   parameters: {
     ...parameters,
     design: {
       type: 'figma',
       url: 'https://www.figma.com/file/xSIeTnyfW2T21Uw5JgdZOg/Input?node-id=0%3A1&mode=dev'
     }
-  },
-  decorators: [withActions] as any
+  }
 };
-
-/**
- * This shows sd-input in its default state.
- */
 
 export const Default = {
   render: (args: any) => {
@@ -69,864 +40,298 @@ export const Default = {
 };
 
 /**
- * Use the `label` attribute to give the input an accessible label. For labels that contain HTML, use the `label` slot instead.
+ * Use the `size` attribute to change the size.
  */
 
-export const Labels = {
-  args: overrideArgs([{ type: 'attribute', name: 'label', value: 'Label' }]),
-  render: (args: any) => {
-    return html`
-      <div class="w-[250px]">
-        ${generateTemplate({
-          args
-        })}
-      </div>
-    `;
-  }
+export const Size = {
+  render: () => html`
+    <div class="grid grid-cols-2 gap-12 content-end">
+      <sd-input size="lg" label="Label" placeholder="Large"></sd-input>
+      <sd-input size="md" label="Label" placeholder="Medium"></sd-input>
+      <sd-input size="sm" label="Label" placeholder="Small"></sd-input>
+    </div>
+  `
 };
 
 /**
- * Add descriptive help text to an input with the `help-text` attribute. For help texts that contain HTML, use the `help-text` slot instead.
+ * Use the `label` attribute to provide an accessible label for the input element.
+ *
+ * For labels that contain HTML, use the `label` slot instead.
  */
 
-export const HelpText = {
-  name: 'Help Text',
-  args: overrideArgs([
-    { type: 'attribute', name: 'label', value: 'Nickname' },
-    { type: 'attribute', name: 'help-text', value: 'How would you like to be called?' }
-  ]),
-  render: (args: any) => {
-    return html`
-      <div class="w-[250px]">
-        ${generateTemplate({
-          args
-        })}
-      </div>
-    `;
-  }
+export const Label = {
+  render: () => html`
+    <div class="flex flex-row gap-12 items-baseline">
+      <sd-input label="Label Attribute" spellcheck></sd-input>
+      <sd-input spellcheck>
+        <div slot="label" class="text-lg">Label Slot</div>
+      </sd-input>
+    </div>
+  `
 };
 
 /**
  * Use the `placeholder` attribute to add a placeholder.
  */
-
-export const Placeholders = {
-  args: overrideArgs([{ type: 'attribute', name: 'placeholder', value: 'Type something' }]),
-  render: (args: any) => {
-    return html`
-      <div class="w-[250px]">
-        ${generateTemplate({
-          args
-        })}
-      </div>
-    `;
-  }
+export const Placeholder = {
+  render: () => html`
+    <div class="w-[250px]">
+      <sd-input placeholder="Placeholder example" spellcheck></sd-input>
+    </div>
+  `
 };
 
 /**
- * Add the `clearable` attribute to add a clear button when the input has content.
+ * Use the `value` attribute to set the value.
  */
-
-export const Clearable = {
-  args: overrideArgs([{ type: 'attribute', name: 'clearable', value: true }]),
-  render: (args: any) => {
-    return html`
-      <div class="w-[250px]">
-        ${generateTemplate({
-          args
-        })}
-      </div>
-    `;
-  }
+export const Value = {
+  render: () =>
+    html` <div class="w-[250px]">
+      <sd-input value="Value example"></sd-input>
+    </div>`
 };
 
 /**
- * Add the `password-toggle` attribute to add a toggle button that will show the password when activated. Only works with `type="password"`.
- */
-
-export const TogglePassword = {
-  name: 'Toggle Password',
-  parameters: {
-    controls: {
-      exclude: ['password-toggle']
-    }
-  },
-  args: overrideArgs([{ type: 'attribute', name: 'type', value: 'password' }]),
-  render: (args: any) => {
-    return html`
-      <div class="w-[250px]">
-        ${generateTemplate({
-          args,
-          constants: [
-            { type: 'attribute', name: 'password-toggle', value: true },
-            { type: 'attribute', name: 'label', value: 'Password' }
-          ]
-        })}
-      </div>
-    `;
-  }
-};
-
-/**
- * Use the disabled attribute to disable an input. All interaction is disabled and no events will be fired.
+ * Use the `disabled` attribute to disable the input.
  */
 
 export const Disabled = {
-  parameters: {
-    controls: {
-      exclude: ['disabled']
-    }
-  },
-  args: overrideArgs([
-    { type: 'attribute', name: 'value', value: 'value' },
-    { type: 'attribute', name: 'label', value: 'Label' },
-    { type: 'attribute', name: 'help-text', value: 'help-text' }
-  ]),
-  render: (args: any) => {
-    return html`
-      <div class="w-[250px]">
-        ${generateTemplate({
-          constants: [{ type: 'attribute', name: 'disabled', value: true }],
-          args
-        })}
-      </div>
-    `;
-  }
+  render: () =>
+    html`<div class="w-[250px]">
+      <sd-input label="Label" value="Disabled" disabled></sd-input>
+    </div>`
 };
 
 /**
- * Use the readonly attribute to render an input as readonly.  Interaction is enabled, but the input cannot be edited.  Events will be fired.
+ * Use the `read-only` attribute to render an input as read only.
+ *
+ * Interaction is enabled, but the textarea cannot be edited. Events will be fired.
  */
-
-export const Readonly = {
-  parameters: {
-    controls: {
-      exclude: ['readonly']
-    }
-  },
-  args: overrideArgs([
-    { type: 'attribute', name: 'value', value: 'value' },
-    { type: 'attribute', name: 'label', value: 'Label' },
-    { type: 'attribute', name: 'help-text', value: 'help-text' }
-  ]),
-  render: (args: any) => {
-    return html`
-      <div class="w-[250px]">
-        ${generateTemplate({
-          constants: [{ type: 'attribute', name: 'readonly', value: true }],
-          args
-        })}
-      </div>
-    `;
-  }
+export const ReadOnly = {
+  render: () =>
+    html`<div class="w-[250px]">
+      <sd-input label="Label" placeholder="Read only example" readonly></sd-input>
+    </div>`
 };
 
 /**
- * This shows sd-input in its various sizes.
+ * Use the `help-text` attribute to add a descriptive “help text”. For help texts that contain HTML, use the `help-text` slot instead.
  */
 
-export const Sizes = {
-  parameters: {
-    controls: {
-      exclude: ['size']
-    }
-  },
-  args: overrideArgs([
-    { type: 'attribute', name: 'value', value: 'value' },
-    { type: 'attribute', name: 'label', value: 'Label' },
-    { type: 'attribute', name: 'help-text', value: 'help-text' },
-    { type: 'attribute', name: 'clearable', value: true },
-    {
-      type: 'slot',
-      name: 'right',
-      value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
-    }
-  ]),
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: { type: 'attribute', name: 'size' }
-      },
-      args
-    });
-  }
-};
-
-/**
- * Per default the input will indicate an error state when the input is invalid. Use the `style-on-valid` attribute to indicate a valid state as well.
- */
-
-export const StyleOnValid = {
-  parameters: {
-    controls: {
-      exclude: ['style-on-valid']
-    }
-  },
-  args: overrideArgs([
-    { type: 'attribute', name: 'value', value: 'valu' },
-    { type: 'attribute', name: 'label', value: 'Label' },
-    { type: 'attribute', name: 'help-text', value: 'help-text' },
-    { type: 'attribute', name: 'clearable', value: true },
-    {
-      type: 'slot',
-      name: 'right',
-      value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
-    }
-  ]),
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: { type: 'attribute', name: 'style-on-valid' }
-      },
-      args
-    });
-  },
-
-  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
-    const els = canvasElement.querySelectorAll('sd-input');
-
-    for (const el of els) {
-      await waitUntil(() => el?.shadowRoot?.querySelector('input'));
-      await userEvent.type(el.shadowRoot!.querySelector('input')!, 'e');
-    }
-
-    // tab to next element to loose focus
-    await userEvent.tab();
-  }
-};
-
-/**
- * Demonstrates the allowed input types.
- */
-
-export const Types = {
-  parameters: {
-    controls: {
-      include: ['size', 'disabled', 'clearable', 'readonly']
-    }
-  },
-  render: (args: any) => {
-    return html`
-      <div class="w-[370px]">
-        <div class="mb-2">
-          ${generateTemplate({
-            constants: [
-              { type: 'attribute', name: 'type', value: 'date' },
-              { type: 'attribute', name: 'label', value: 'Date' },
-              { type: 'attribute', name: 'placeholder', value: 'someone@example.com' },
-              { type: 'attribute', name: 'help-text', value: 'value is restricted to date format' }
-            ],
-            args
-          })}
-        </div>
-        <div class="mb-2">
-          ${generateTemplate({
-            constants: [
-              { type: 'attribute', name: 'type', value: 'datetime-local' },
-              { type: 'attribute', name: 'label', value: 'Date Time' },
-              { type: 'attribute', name: 'placeholder', value: 'someone@example.com' },
-              { type: 'attribute', name: 'help-text', value: 'value is restricted to datetime format' }
-            ],
-            args
-          })}
-        </div>
-        <div class="mb-2">
-          ${generateTemplate({
-            constants: [
-              { type: 'attribute', name: 'type', value: 'email' },
-              { type: 'attribute', name: 'label', value: 'Email' },
-              { type: 'attribute', name: 'placeholder', value: 'someone@example.com' },
-              { type: 'attribute', name: 'help-text', value: 'validate with email address format' }
-            ],
-            args
-          })}
-        </div>
-        <div class="mb-2">
-          ${generateTemplate({
-            constants: [
-              { type: 'attribute', name: 'type', value: 'number' },
-              { type: 'attribute', name: 'label', value: 'Number' },
-              { type: 'attribute', name: 'placeholder', value: '^d{1,3}$' },
-              { type: 'attribute', name: 'help-text', value: 'value is restricted to numbers' }
-            ],
-            args
-          })}
-        </div>
-        <div class="mb-2">
-          ${generateTemplate({
-            constants: [
-              { type: 'attribute', name: 'type', value: 'password' },
-              { type: 'attribute', name: 'label', value: 'Password' },
-              { type: 'attribute', name: 'password-toggle', value: true },
-              { type: 'attribute', name: 'placeholder', value: '.*' },
-              { type: 'attribute', name: 'help-text', value: 'use password display format' }
-            ],
-            args
-          })}
-        </div>
-        <div class="mb-2">
-          ${generateTemplate({
-            constants: [
-              { type: 'attribute', name: 'type', value: 'search' },
-              { type: 'attribute', name: 'label', value: 'Search' },
-              { type: 'attribute', name: 'placeholder', value: '^d{1,3}$' },
-              { type: 'attribute', name: 'help-text', value: 'use search format' }
-            ],
-            args
-          })}
-        </div>
-        <div class="mb-2">
-          ${generateTemplate({
-            constants: [
-              { type: 'attribute', name: 'type', value: 'tel' },
-              { type: 'attribute', name: 'label', value: 'Tel' },
-              { type: 'attribute', name: 'placeholder', value: '+49 1234 567891' },
-              { type: 'attribute', name: 'help-text', value: 'validate with tel format' }
-            ],
-            args
-          })}
-        </div>
-        <div class="mb-2">
-          ${generateTemplate({
-            constants: [
-              { type: 'attribute', name: 'type', value: 'text' },
-              { type: 'attribute', name: 'label', value: 'Text' },
-              { type: 'attribute', name: 'placeholder', value: '.*' },
-              { type: 'attribute', name: 'help-text', value: 'default type' }
-            ],
-            args
-          })}
-        </div>
-        <div class="mb-2">
-          ${generateTemplate({
-            constants: [
-              { type: 'attribute', name: 'type', value: 'time' },
-              { type: 'attribute', name: 'label', value: 'Time' },
-              { type: 'attribute', name: 'placeholder', value: '' },
-              { type: 'attribute', name: 'help-text', value: 'value is restricted to time format' }
-            ],
-            args
-          })}
-        </div>
-        <div class="mb-2">
-          ${generateTemplate({
-            constants: [
-              { type: 'attribute', name: 'type', value: 'url' },
-              { type: 'attribute', name: 'label', value: 'URL' },
-              { type: 'attribute', name: 'name', value: 'url field' },
-              { type: 'attribute', name: 'placeholder', value: 'https://www.union-investment.de/' },
-              { type: 'attribute', name: 'help-text', value: 'validate with url format' }
-            ],
-            args
-          })}
-        </div>
-      </div>
-    `;
-  }
-};
-
-/**
- * Demonstrates the various validation options extended from the native input element in addition to error and success styles.
- */
-
-export const Validation = {
-  parameters: {
-    controls: {
-      include: ['clearable', 'disabled']
-    }
-  },
-  render: (args: any) => {
-    return html`
-      <form action="" method="get" id="testForm" name="testForm" class="w-[370px]">
-        <div class="mb-2">
-          ${generateTemplate({
-            constants: [
-              { type: 'attribute', name: 'label', value: 'Indicate Valid State' },
-              { type: 'attribute', name: 'name', value: 'required field' },
-              { type: 'attribute', name: 'placeholder', value: '.*' },
-              { type: 'attribute', name: 'help-text', value: 'indicate on valid' },
-              { type: 'attribute', name: 'form', value: 'testForm' },
-              { type: 'attribute', name: 'style-on-valid', value: true },
-              {
-                type: 'slot',
-                name: 'right',
-                value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
-              }
-            ],
-            args
-          })}
-        </div>
-        <div class="mb-2">
-          ${generateTemplate({
-            constants: [
-              { type: 'attribute', name: 'label', value: 'Required' },
-              { type: 'attribute', name: 'name', value: 'required field' },
-              { type: 'attribute', name: 'placeholder', value: '.*' },
-              { type: 'attribute', name: 'help-text', value: 'input must be filled' },
-              { type: 'attribute', name: 'form', value: 'testForm' },
-              { type: 'attribute', name: 'required', value: true },
-              {
-                type: 'slot',
-                name: 'right',
-                value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
-              }
-            ],
-            args
-          })}
-        </div>
-        <div class="mb-2">
-          ${generateTemplate({
-            constants: [
-              { type: 'attribute', name: 'label', value: 'Pattern' },
-              { type: 'attribute', name: 'name', value: 'pattern field' },
-              { type: 'attribute', name: 'placeholder', value: '[A-Za-z]{3,}' },
-              { type: 'attribute', name: 'help-text', value: 'input must match pattern' },
-              { type: 'attribute', name: 'form', value: 'testForm' },
-              { type: 'attribute', name: 'required', value: true },
-              { type: 'attribute', name: 'pattern', value: '[A-Za-z]{3,}' },
-              {
-                type: 'slot',
-                name: 'right',
-                value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
-              }
-            ],
-            args
-          })}
-        </div>
-        <div class="mb-2">
-          ${generateTemplate({
-            constants: [
-              { type: 'attribute', name: 'label', value: 'Min Length' },
-              { type: 'attribute', name: 'name', value: 'min length field' },
-              { type: 'attribute', name: 'placeholder', value: '^.{3,}$' },
-              { type: 'attribute', name: 'help-text', value: 'value must meet minlength' },
-              { type: 'attribute', name: 'form', value: 'testForm' },
-              { type: 'attribute', name: 'required', value: true },
-              { type: 'attribute', name: 'minlength', value: 3 },
-              {
-                type: 'slot',
-                name: 'right',
-                value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
-              }
-            ],
-            args
-          })}
-        </div>
-        <div class="mb-2">
-          ${generateTemplate({
-            constants: [
-              { type: 'attribute', name: 'label', value: 'Max Length' },
-              { type: 'attribute', name: 'name', value: 'max length field' },
-              { type: 'attribute', name: 'placeholder', value: '^.{0,3}$' },
-              { type: 'attribute', name: 'help-text', value: 'value cannot exceed maxlength' },
-              { type: 'attribute', name: 'form', value: 'testForm' },
-              { type: 'attribute', name: 'required', value: true },
-              { type: 'attribute', name: 'maxlength', value: 3 },
-              {
-                type: 'slot',
-                name: 'right',
-                value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
-              }
-            ],
-            args
-          })}
-        </div>
-        <div class="mb-2">
-          ${generateTemplate({
-            constants: [
-              { type: 'attribute', name: 'type', value: 'number' },
-              { type: 'attribute', name: 'label', value: 'Min' },
-              { type: 'attribute', name: 'name', value: 'min field' },
-              { type: 'attribute', name: 'placeholder', value: '^d{1,3}$' },
-              { type: 'attribute', name: 'help-text', value: 'numeric value must be greater than min' },
-              { type: 'attribute', name: 'form', value: 'testForm' },
-              { type: 'attribute', name: 'required', value: true },
-              { type: 'attribute', name: 'min', value: 3 },
-              {
-                type: 'slot',
-                name: 'right',
-                value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
-              }
-            ],
-            args
-          })}
-        </div>
-        <div class="mb-2">
-          ${generateTemplate({
-            constants: [
-              { type: 'attribute', name: 'type', value: 'number' },
-              { type: 'attribute', name: 'label', value: 'Max' },
-              { type: 'attribute', name: 'name', value: 'max field' },
-              { type: 'attribute', name: 'placeholder', value: '^d{1,3}$' },
-              { type: 'attribute', name: 'help-text', value: 'numeric value must not exceed max' },
-              { type: 'attribute', name: 'form', value: 'testForm' },
-              { type: 'attribute', name: 'required', value: true },
-              { type: 'attribute', name: 'max', value: 3 },
-              {
-                type: 'slot',
-                name: 'right',
-                value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
-              }
-            ],
-            args
-          })}
-        </div>
-        <div class="mb-2">
-          ${generateTemplate({
-            constants: [
-              { type: 'attribute', name: 'type', value: 'email' },
-              { type: 'attribute', name: 'label', value: 'Email' },
-              { type: 'attribute', name: 'name', value: 'email field' },
-              { type: 'attribute', name: 'placeholder', value: 'someone@example.com' },
-              { type: 'attribute', name: 'help-text', value: 'value must match email address format' },
-              { type: 'attribute', name: 'form', value: 'testForm' },
-              { type: 'attribute', name: 'required', value: true },
-              {
-                type: 'slot',
-                name: 'right',
-                value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
-              }
-            ],
-            args
-          })}
-        </div>
-        <div class="mb-2">
-          ${generateTemplate({
-            constants: [
-              { type: 'attribute', name: 'type', value: 'date' },
-              { type: 'attribute', name: 'label', value: 'Date' },
-              { type: 'attribute', name: 'name', value: 'date field' },
-              { type: 'attribute', name: 'placeholder', value: 'someone@example.com' },
-              { type: 'attribute', name: 'help-text', value: 'value is restricted to date format' },
-              { type: 'attribute', name: 'form', value: 'testForm' },
-              { type: 'attribute', name: 'required', value: true },
-              {
-                type: 'slot',
-                name: 'right',
-                value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
-              }
-            ],
-            args
-          })}
-        </div>
-        <div class="mb-2">
-          ${generateTemplate({
-            constants: [
-              { type: 'attribute', name: 'type', value: 'datetime-local' },
-              { type: 'attribute', name: 'label', value: 'Date Time' },
-              { type: 'attribute', name: 'name', value: 'datetime field' },
-              { type: 'attribute', name: 'placeholder', value: 'someone@example.com' },
-              { type: 'attribute', name: 'help-text', value: 'value is restricted to datetime format' },
-              { type: 'attribute', name: 'form', value: 'testForm' },
-              { type: 'attribute', name: 'required', value: true },
-              {
-                type: 'slot',
-                name: 'right',
-                value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
-              }
-            ],
-            args
-          })}
-        </div>
-        <div class="mb-2">
-          ${generateTemplate({
-            constants: [
-              { type: 'attribute', name: 'type', value: 'time' },
-              { type: 'attribute', name: 'label', value: 'Time' },
-              { type: 'attribute', name: 'name', value: 'time field' },
-              { type: 'attribute', name: 'placeholder', value: '' },
-              { type: 'attribute', name: 'help-text', value: 'value is restricted to time format' },
-              { type: 'attribute', name: 'form', value: 'testForm' },
-              { type: 'attribute', name: 'required', value: true },
-              {
-                type: 'slot',
-                name: 'right',
-                value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
-              }
-            ],
-            args
-          })}
-        </div>
-        <div class="mb-2">
-          ${generateTemplate({
-            constants: [
-              { type: 'attribute', name: 'type', value: 'url' },
-              { type: 'attribute', name: 'label', value: 'URL' },
-              { type: 'attribute', name: 'name', value: 'url field' },
-              { type: 'attribute', name: 'placeholder', value: 'https://www.union-investment.de/' },
-              { type: 'attribute', name: 'help-text', value: 'value must match url format' },
-              { type: 'attribute', name: 'form', value: 'testForm' },
-              { type: 'attribute', name: 'required', value: true },
-              {
-                type: 'slot',
-                name: 'right',
-                value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
-              }
-            ],
-            args
-          })}
-        </div>
-        <sd-button type="submit">Submit</sd-button>
-      </form>
-      <script>
-        function handleSubmit(event) {
-          const form = document.querySelector('#testForm');
-
-          const formData = new FormData(form);
-          const formValues = Object.fromEntries(formData);
-
-          if (form.reportValidity()) {
-            event.preventDefault(); // Prevent the default form submission behavior
-            alert('Form submitted with the following values: ' + JSON.stringify(formValues, null, 2));
-          }
-        }
-
-        document.querySelector('#testForm').addEventListener('submit', handleSubmit);
-      </script>
-    `;
-  }
-};
-
-/**
- * Shows available slots. The `label` and `help-text` slots will overwrite their corresponding attributes.
- */
-
-export const Slots = {
-  parameters: {
-    controls: {
-      exclude: ['label', 'left', 'right', 'clear-icon', 'help-text', 'clearable', 'value']
-    }
-  },
-  render: (args: any) => {
-    return html`
-      ${['label', 'left', 'right', 'clear-icon', 'help-text'].map(slot =>
-        generateTemplate({
-          axis: {
-            x: {
-              type: 'slot',
-              name: slot,
-              title: 'slot=...',
-              values: [
-                {
-                  value: `<div slot='${slot}' class="slot slot--border slot--background h-6 ${
-                    slot === 'label' || slot === 'help-text' ? 'w-20' : 'w-6'
-                  }"></div>`,
-                  title: slot
-                }
-              ]
-            }
-          },
-          constants: [
-            { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' },
-            { type: 'attribute', name: 'clearable', value: true },
-            { type: 'attribute', name: 'value', value: 'value' },
-            { type: 'attribute', name: 'label', value: 'Label' },
-            { type: 'attribute', name: 'help-text', value: 'help-text' },
-            {
-              type: 'slot',
-              name: 'left',
-              value: '<sd-icon slot="left" library="global-resources" name="system/picture"></sd-icon>'
-            },
-            {
-              type: 'slot',
-              name: 'right',
-              value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
-            }
-          ],
-          args
-        })
-      )}
-    `;
-  }
-};
-
-/**
- * Use the `form-control`, `form-control-label`, `form-control-input`, `form-control-help-text`, `base`, `border`, `input`, `left`, `clear-button`, and `right` part selectors to customize the input.
- */
-
-export const Parts = {
-  parameters: {
-    controls: {
-      exclude: ['label', 'left', 'right', 'clear-icon', 'help-text', 'clearable', 'value']
-    }
-  },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: {
-          type: 'template',
-          name: 'sd-input::part(...){outline: solid 2px red}',
-          values: [
-            'form-control',
-            'form-control-label',
-            'form-control-input',
-            'form-control-help-text',
-            'base',
-            'border',
-            'input',
-            'left',
-            'clear-button',
-            'right'
-          ].map(part => {
-            return {
-              title: part,
-              value: `<style>#part-${part} sd-input::part(${part}){outline: solid 2px red}</style><div id="part-${part}">%TEMPLATE%</div>`
-            };
-          })
-        }
-      },
-      constants: [
-        { type: 'attribute', name: 'clearable', value: true },
-        { type: 'attribute', name: 'value', value: 'value' },
-        { type: 'attribute', name: 'label', value: 'Label' },
-        { type: 'attribute', name: 'help-text', value: 'help-text' },
-        {
-          type: 'slot',
-          name: 'left',
-          value: '<sd-icon slot="left" library="global-resources" name="system/picture"></sd-icon>'
-        },
-        {
-          type: 'slot',
-          name: 'right',
-          value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
-        }
-      ],
-      args
-    });
-  }
-};
-
-/**
- * 1. You can use the `setCustomValidity` method to set a custom validation message. This will override any native validation messages.
- * 2. Set an empty string to clear the custom validity and make the input valid.
- * 3. To show the validation message, call the `reportValidity` method. Originally this would show a native validation bubble, but we show the error messages inline.
- */
-
-export const setCustomValidity = {
-  parameters: {
-    chromatic: { disableSnapshot: true }
-  },
+export const HelpText = {
   render: () => {
     return html`
-      <!-- block submit and show alert instead -->
-      <form id="validationForm" class="flex flex-col gap-2">
-        <sd-input id="custom-input" label="Input" style-on-valid></sd-input>
-        <div>
-          <sd-button type="submit">Submit</sd-button>
-          <sd-button id="error-button" variant="secondary">Set custom error</sd-button>
-          <sd-button id="success-button" variant="secondary">Set success</sd-button>
-          <sd-button type="reset" variant="secondary">Reset</sd-button>
-        </div>
-      </form>
-      <script type="module">
-        // Wait for custom elements to be defined
-        await Promise.all([customElements.whenDefined('sd-input'), customElements.whenDefined('sd-button')]).then(
-          () => {
-            const form = document.getElementById('validationForm');
-            const input = document.getElementById('custom-input');
-            const setErrorButton = document.getElementById('error-button');
-            const setSuccessButton = document.getElementById('success-button');
-
-            // Initial error
-            const errorMessage = \`This is an initial custom error (\${new Date().toLocaleTimeString()})\`;
-            input.setCustomValidity(errorMessage);
-            input.reportValidity();
-
-            // Show error message
-            setErrorButton.addEventListener('click', () => {
-              const errorMessage = \`This is a new custom error (\${new Date().toLocaleTimeString()})\`;
-              input.setCustomValidity(errorMessage);
-              input.reportValidity();
-            });
-
-            // Show success message
-            setSuccessButton.addEventListener('click', () => {
-              input.setCustomValidity(''); // Clear custom validity
-              input.reportValidity();
-            });
-
-            form.addEventListener('submit', event => {
-              event.preventDefault();
-              alert('All fields are valid!');
-            });
-          }
-        );
-      </script>
-    `;
-  }
-};
-
-/**
- * `sd-input` is fully accessibile via keyboard.
- */
-
-export const Mouseless = {
-  render: (args: any) => {
-    return html`<div class="mouseless w-[250px]">${generateTemplate({ args })}</div>`;
-  },
-
-  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
-    const el = canvasElement.querySelector('.mouseless sd-input');
-    await waitUntil(() => el?.shadowRoot?.querySelector('input'));
-    el?.shadowRoot?.querySelector('input')!.focus();
-  }
-};
-
-/**
- * Sample implementation of a currency stepper.
- */
-
-export const Samples = {
-  name: 'Sample: Currency Stepper',
-  parameters: {
-    controls: {
-      include: []
-    }
-  },
-  render: () => {
-    return html`
-      <div class="w-[250px]">
-        <sd-input label="Currency Stepper" id="stepperSampleInput" type="number" min="0"
-          ><span slot="right" class="text-sm inline-flex items-center"
-            ><span class="text-neutral-700">EUR</span>
-            <button
-              disabled
-              id="stepDownButton"
-              @click=${() => {
-                const inputEl: SdInput = document.querySelector('#stepperSampleInput')!;
-                const stepDownButton: HTMLButtonElement = document.querySelector('#stepDownButton')!;
-                const numericValue = parseInt(inputEl.value, 10);
-                const stepDownValue = numericValue - 1;
-
-                if (stepDownValue <= 0) {
-                  stepDownButton.disabled = true;
-                  inputEl.value = '0.00';
-                } else {
-                  inputEl.stepDown();
-                  // Adjust input value to 2 decimals (currency)
-                  inputEl.value = String(parseInt(inputEl.value, 10).toFixed(2));
-                }
-              }}
-              class="ml-4 scale-[1.714] inline-flex items-center sd-interactive"
-            >
-              <sd-icon library="global-resources" name="system/minus-round"></sd-icon>
-            </button>
-            <button
-              id="stepUpButton"
-              @click=${() => {
-                const inputEl: SdInput = document.querySelector('#stepperSampleInput')!;
-                const stepDownButton: HTMLButtonElement = document.querySelector('#stepDownButton')!;
-                stepDownButton.disabled = false;
-                inputEl.stepUp();
-                // Adjust input value to 2 decimals (currency)
-                inputEl.value = String(parseInt(inputEl.value, 10).toFixed(2));
-              }}
-              class="ml-4 scale-[1.714] inline-flex items-center sd-interactive"
-            >
-              <sd-icon library="global-resources" name="system/plus-round"></sd-icon></button
-          ></span>
+      <div class="flex flex-rows gap-12">
+        <sd-input label="Label" help-text="Help text Attribute"></sd-input>
+        <sd-input label="Label">
+          <div slot="help-text" class="text-lg">Help text Slot</div>
         </sd-input>
       </div>
     `;
   }
+};
+
+/**
+ * Use the `clearable` attribute to add a clear button when the input has content.
+ */
+
+export const Clearable = {
+  render: () =>
+    html`<div class="w-[250px]">
+      <sd-input label="Clearable" clearable spellcheck value="Input text"></sd-input>
+    </div>`
+};
+
+/**
+ * Use the `password-toggle` attribute to add a toggle button that will show the password when activated.
+ * - Note: Only works with `type=password`.
+ */
+
+export const TogglePassword = {
+  render: () =>
+    html`<div class="w-[250px]">
+      <sd-input type="password" label="Toggle Password" password-toggle spellcheck></sd-input>
+    </div>`
+};
+
+/**
+ * Use the `type` attribute to control the type of input the browser renders.
+ */
+
+export const Type = {
+  render: () =>
+    html` <div class="grid grid-cols-2 gap-12 content-end">
+      <sd-input type="text" placeholder=".*" label="Text" help-text="default type" spellcheck></sd-input>
+
+      <sd-input type="search" placeholder="^d{1,3}$" label="Search" help-text="use search format" spellcheck></sd-input>
+
+      <sd-input
+        type="date"
+        placeholder="someone@example.com"
+        label="Date"
+        help-text="value is restricted to date format"
+        spellcheck
+      ></sd-input>
+
+      <sd-input
+        type="datetime-local"
+        placeholder="someone@example.com"
+        label="Date Time"
+        help-text="value is restricted to datetime format"
+        spellcheck
+      ></sd-input>
+
+      <sd-input type="time" label="Time" help-text="value is restricted to time format" spellcheck></sd-input>
+
+      <sd-input
+        type="number"
+        placeholder="^d{1,3}$"
+        label="Number"
+        help-text="value is restricted to numbers"
+        spellcheck
+      ></sd-input>
+
+      <sd-input
+        type="email"
+        placeholder="someone@example.com"
+        label="Email"
+        help-text="validate with email address format"
+        spellcheck
+      ></sd-input>
+
+      <sd-input
+        type="tel"
+        placeholder="+49 1234 567891"
+        label="Tel"
+        help-text="Shows optimized keyboard on touch devices or similar"
+        spellcheck
+      ></sd-input>
+
+      <sd-input
+        type="password"
+        placeholder=".*"
+        label="Password"
+        help-text="use password display format"
+        password-toggle
+        spellcheck
+      ></sd-input>
+
+      <sd-input
+        type="url"
+        placeholder="https://www.union-investment.de/"
+        label="URL"
+        help-text="validate with url format"
+        name="url field"
+        spellcheck
+      ></sd-input>
+    </div>`
+};
+
+/**
+ * Use the `required` attribute to mark the element as required. This can be used for form validation purposes.
+ */
+
+export const Required = {
+  render: () =>
+    html`<div class="w-[250px]">
+      <sd-input label="Label" required></sd-input>
+    </div>`
+};
+
+/**
+ * The component gets `valid` state when the input is valid.
+ * Use the `style-on-valid` attribute to automatically indicate and show a valid state.
+ */
+
+export const Valid = {
+  render: () =>
+    html`<form id="valid-form">
+        <sd-input id="valid-input" class="w-[250px]" label="Label" style-on-valid value="Input text here"></sd-input>
+      </form>
+      <script type="module">
+        await Promise.all([customElements.whenDefined('sd-input')]).then(() => {
+          const input = document.getElementById('valid-input');
+          input.setCustomValidity(''); // Clear custom validity
+          input.reportValidity();
+        });
+      </script>`
+};
+
+/**
+ * The component gets `invalid` state when the form is not valid.
+ */
+
+export const Invalid = {
+  render: () =>
+    html`<form id="invalid-form">
+        <sd-input
+          id="invalid-input"
+          class="w-[250px]"
+          label="Label"
+          style-on-valid
+          placeholder="Placeholder"
+        ></sd-input>
+      </form>
+      <script type="module">
+        await Promise.all([customElements.whenDefined('sd-input')]).then(() => {
+          const input = document.getElementById('invalid-input');
+          input.setCustomValidity('Error message');
+          input.reportValidity();
+        });
+      </script>`
+};
+
+/**
+ * Use the `pattern` attribute to use a regular expression to validate the input.
+ */
+export const Pattern = {
+  render: () => html`
+    <div class="w-[250px]">
+      <sd-input label="Pattern" pattern="[A-Za-z]{3,}" help-text="[A-Za-z]{3,}" required></sd-input>
+    </div>
+  `
+};
+
+/**
+ * Use the `minlength` attribute to set the minimum length of the input to be valid.
+ */
+export const MinLength = {
+  render: () => html`
+    <div class="w-[250px]">
+      <sd-input label="Minlength" minlength="5" help-text="minlength=5" required></sd-input>
+    </div>
+  `
+};
+
+/**
+ * Use the `maxlength` attribute to set the maximum length of the input to be valid.
+ */
+export const MaxLength = {
+  render: () => html`
+    <div class="w-[250px]">
+      <sd-input label="Maxlength" maxlength="5" help-text="maxlength=5" required></sd-input>
+    </div>
+  `
+};
+
+/**
+ * Use the `min` attribute to set the minimum number value of the input to be valid.
+ */
+export const Min = {
+  render: () => html`
+    <div class="w-[250px]">
+      <sd-input label="Min" type="number" min="1000" help-text="min=1000" required></sd-input>
+    </div>
+  `
+};
+
+/**
+ * Use the `max` attribute to set the maximum number value of the input to be valid.
+ */
+export const Max = {
+  render: () => html`
+    <div class="w-[250px]">
+      <sd-input label="Max" type="number" max="5000" help-text="max=5000" required></sd-input>
+    </div>
+  `
 };
