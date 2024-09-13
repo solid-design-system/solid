@@ -21,7 +21,13 @@ export default {
   component: 'sd-radio',
   args: overrideArgs([{ type: 'slot', name: 'default', value: 'Radio' }]),
   argTypes,
-  parameters: { ...parameters }
+  parameters: {
+    ...parameters,
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2213-9389&node-type=section&t=5PpAC3TA3kYF7ufX-0'
+    }
+  }
 };
 
 /**

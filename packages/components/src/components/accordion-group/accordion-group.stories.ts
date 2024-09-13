@@ -29,7 +29,13 @@ export default {
       '<sd-accordion summary="Accordion 1"><div class="slot slot--border slot--text h-16">Default slot</div></sd-accordion><sd-accordion summary="Accordion 2"><div class="slot slot--border slot--text h-16">Default slot</div></sd-accordion><sd-accordion summary="Accordion 3"><div class="slot slot--border slot--text h-16">Default slot</div></sd-accordion>'
   },
   argTypes,
-  parameters: { ...parameters }
+  parameters: {
+    ...parameters,
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2100-1420&node-type=section&t=5PpAC3TA3kYF7ufX-0'
+    }
+  }
 };
 
 /**

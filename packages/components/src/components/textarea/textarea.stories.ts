@@ -22,7 +22,7 @@ export default {
     ...parameters,
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/file/07Bzd23A0QSrSWiXy6w2uM/Text-Area?node-id=1010%3A1736&mode=dev'
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2619-19544&node-type=section&t=5PpAC3TA3kYF7ufX-0'
     }
   },
   decorators: [withActions] as any

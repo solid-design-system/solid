@@ -23,7 +23,7 @@ export default {
     ...parameters,
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/file/fPGhgNZv98U4H69Gu2tlWi/Button?type=design&node-id=13-18&t=jDLqFEdY7ZlOJurc-4'
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=25-9809&node-type=section&t=5PpAC3TA3kYF7ufX-0'
     }
   },
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Button' }),

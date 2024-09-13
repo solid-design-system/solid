@@ -20,7 +20,13 @@ export default {
     { type: 'slot', name: 'default', value: '<div class="slot slot--border slot--text h-16">Default slot</div>' }
   ]),
   argTypes,
-  parameters
+  parameters: {
+    ...parameters,
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2056-20823&node-type=section&t=5PpAC3TA3kYF7ufX-0'
+    }
+  }
 };
 
 export const Default = {

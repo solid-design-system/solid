@@ -38,7 +38,11 @@ export default {
   argTypes,
   parameters: {
     ...parameters,
-    controls: { exclude: ['contained'] }
+    controls: { exclude: ['contained'] },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2223-8225&node-type=section&t=5PpAC3TA3kYF7ufX-0'
+    }
   },
   decorators: [
     (story: any) => html`

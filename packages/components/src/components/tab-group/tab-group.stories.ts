@@ -1,7 +1,7 @@
 import '../../solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-const { argTypes } = storybookDefaults('sd-tab-group');
+const { argTypes, parameters } = storybookDefaults('sd-tab-group');
 const { overrideArgs } = storybookHelpers('sd-tab-group');
 const { generateTemplate } = storybookTemplate('sd-tab-group');
 
@@ -41,6 +41,13 @@ export default {
     value: generateTabsAndPanels(1, 5)
   }),
   argTypes,
+  parameters: {
+    ...parameters,
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=3060-29110&node-type=section&t=5PpAC3TA3kYF7ufX-0'
+    }
+  },
   decorators: [
     (story: () => typeof html) => html`
       <style>
