@@ -10,7 +10,7 @@ const { overrideArgs } = storybookHelpers('sd-link');
 
 /**
  *
- * Allows users to navigate to another location or perform actions like e.g. downloading files.
+ * Used to allow users to navigate to another location or perform actions like e.g. downloading files. 
  *
  *  **Related templates**:
  * - [Link List](?path=/docs/templates-link-list--docs)
