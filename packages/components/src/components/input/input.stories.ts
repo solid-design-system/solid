@@ -11,7 +11,7 @@ const { overrideArgs } = storybookHelpers('sd-input');
  *
  * **Related templates**:
  * - [Autocomplete](?path=/docs/templates-autocomplete--docs)
- * - [Input with Currency Stepper](?path=/docs/templates-input-with-currency-stepper--docs)
+ * - [Input](?path=/docs/templates-input--docs)
  */
 
 export default {

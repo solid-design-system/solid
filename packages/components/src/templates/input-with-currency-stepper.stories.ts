@@ -9,13 +9,18 @@ import type SdInput from '../components/input/input';
 
 export default {
   tags: ['!dev'],
-  title: 'Templates/Input with Currency Stepper',
+  title: 'Templates/Input',
   parameters: {
     chromatic: { disableSnapshot: true }
   }
 };
 
-export const Default = {
+/**
+ * ### Input with Currency Stepper
+ */
+
+export const InputWithCurrencyStepper = {
+  name: 'Input with Currency Stepper',
   render: () =>
     html`<div class="w-[250px]">
       <sd-input label="Currency Stepper" id="stepperSampleInput" type="number" min="0"
