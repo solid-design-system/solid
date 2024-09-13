@@ -8,7 +8,7 @@ const { overrideArgs } = storybookHelpers('sd-carousel');
 const { generateTemplate } = storybookTemplate('sd-carousel');
 
 /**
- * Displays an arbitrary number of content slides along a horizontal axis.
+ * Used to display an arbitrary number of content slides along a horizontal axis.
  *
  * On touch devices, the slides can be moved by swiping.
  *
