@@ -10,7 +10,7 @@ const { generateTemplate } = storybookTemplate('sd-brandshape');
 
 /**
  *
- * Creates a container with brand character and visually emphasizes the content.
+ * Used as a container with brand character that visually emphasizes the content.
  *
  * **Related templates:**
  * - [Brandshape](?path=/story/templates-brandshape--docs)
