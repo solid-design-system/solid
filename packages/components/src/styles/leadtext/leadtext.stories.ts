@@ -10,7 +10,7 @@ const { generateTemplate } = storybookTemplate('sd-leadtext');
  * Used for text that should be highlighted and a focal point of the page.
  *
  * **Related templates**:
- * - [Headline, Display and Leadtext with Mark](?path=/docs/templates-headline-display-and-leadtext-with-mark--docs)
+ * - [Leadtext with Mark](?path=/docs/templates-mark--docs)
  */
 
 export default {
@@ -43,9 +43,9 @@ export const Default = {
 };
 
 /**
- * Use `sd-leadtext` modifiers for alternative appearances:
- * -  Extra Large is the default leadtext size
- * - `sd-leadtext--size-lg`: Large can be used as an alternative
+ * Use the `&--size-lg` class for alternative appearances:
+ * -  xl is the default leadtext size
+ * - `sd-leadtext--size-lg`: lg can be used as an alternative
  */
 
 export const Size = {
@@ -66,7 +66,7 @@ export const Size = {
 };
 
 /**
- * Use the `inverted` class when displayed on primary background.
+ * Use the `&--inverted` class when displayed on primary background.
  */
 
 export const Inverted = {

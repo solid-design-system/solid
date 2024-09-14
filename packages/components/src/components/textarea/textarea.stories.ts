@@ -153,7 +153,7 @@ export const HelpText = {
 };
 
 /**
- * Use the ”required” attribute to mark the element as required. This can be used for form validation purposes.
+ * Use the `required` attribute to mark the element as required. This can be used for form validation purposes.
  */
 export const Required = {
   name: 'Required',

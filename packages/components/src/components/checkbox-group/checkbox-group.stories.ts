@@ -73,7 +73,7 @@ export const Size = {
 };
 
 /**
- * Use the `orientation` attribute to change the layout of the checkboxes.
+ * Use the `orientation` attribute to set the axis of the checkboxes.
  */
 
 export const Orientation = {

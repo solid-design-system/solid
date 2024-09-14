@@ -93,7 +93,7 @@ export const Label = {
 };
 
 /**
- * Use the `orientation` attribute to set the orientation of the radio buttons.
+ * Use the `orientation` attribute to set the axis of the radio buttons.
  */
 
 export const Orientation = {

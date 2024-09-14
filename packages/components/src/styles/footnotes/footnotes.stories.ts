@@ -10,7 +10,7 @@ const { generateTemplate } = storybookTemplate('sd-footnotes');
  * Used to add additional information/sources related to the content.
  *
  * **Related templates**:
- * - [Footnotes set start](?path=/docs/templates-footnotes-set-start--docs)
+ * - [Footnotes](?path=/docs/templates-footnotes--docs)
  */
 
 export default {

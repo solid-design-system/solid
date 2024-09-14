@@ -53,7 +53,7 @@ export const Variants = {
  * Use `&--size-*` class for alternative appearances.
  *
  * - lg is the default size
- * - `sd-meta--size-sm`: Small can be used as an alternative in tight spaces
+ * - `sd-meta--size-sm`: sm can be used as an alternative in tight spaces
  */
 
 export const Size = {
