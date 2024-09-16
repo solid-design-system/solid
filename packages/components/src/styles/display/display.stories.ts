@@ -1,5 +1,5 @@
 import '../../solid-components';
-
+import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
 const { argTypes, parameters } = storybookDefaults('sd-display');
@@ -7,31 +7,26 @@ const { overrideArgs } = storybookHelpers('sd-display');
 const { generateTemplate } = storybookTemplate('sd-display');
 
 /**
- * Display provides larger text sizes that are not used as headlines. <br>
- * <br>
- * The different sizes allow for a more versatile styling of text elements. Display text should not be used as substitute for headlines.<br>
- * <br>
- * <b>Sizes</b>
- * <li>xl is the default size.</li>
+ * Used to provide larger text sizes that are not used as headlines.
+ *
+ * **Related templates**:
+ * - [Display with Mark](?path=/docs/templates-mark--docs)
  */
 
 export default {
   title: 'Styles/sd-display',
+  tags: ['!dev'],
   component: 'sd-display',
   parameters: {
     ...parameters,
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/file/2b3TvrfxawUSvpnQEqSowL/Display?type=design&node-id=954-4198&mode=design&t=JogAvP1YEInWjWEF-0'
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2705-24820&t=yS054qhxgjorbMDv-4'
     }
   },
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Lorem Ipsum' }),
   argTypes
 };
-
-/**
- * Default: This shows sd-display in its default state.
- */
 
 export const Default = {
   render: (args: any) => {
@@ -43,21 +38,31 @@ export const Default = {
 };
 
 /**
- * Use the `inverted` class to make a display with inverted colors.
+ * Use the `&--size-*` classes for alternative appearances.
+
+ * - `sd-display--size-4xl`: 4xl can be used as an alternative
+ * - `sd-display--size-3xl`: 3xl can be used as an alternative
+ * - xl is the default display size
+ */
+
+export const Size = {
+  render: () => html`
+    <div class="flex flex-col gap-6">
+      <div class="sd-display sd-display--size-4xl">Lorem ipsum</div>
+      <div class="sd-display sd-display--size-3xl">Lorem ipsum</div>
+      <div class="sd-display">Lorem ipsum</div>
+    </div>
+  `
+};
+
+/**
+ * Use the `&--inverted` class when displayed on primary background.
  */
 
 export const Inverted = {
-  parameters: { controls: { exclude: ['sd-display--inverted'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: [{ type: 'attribute', name: 'sd-display--inverted', values: [false, true] }]
-      },
-      constants: { type: 'attribute', name: 'sd-display--inverted', value: true },
-      options: {
-        templateBackgrounds: { alternate: 'y', colors: ['transparent', 'rgb(var(--sd-color-primary, 0 53 142))'] }
-      },
-      args
-    });
+  render: () => {
+    return html` <div class="p-4 bg-primary">
+      <div class="sd-display sd-display--inverted">Lorem Ipsum</div>
+    </div>`;
   }
 };

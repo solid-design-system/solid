@@ -1,4 +1,5 @@
 import '../../solid-components';
+import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 import { withActions } from '@storybook/addon-actions/decorator';
 
@@ -6,14 +7,24 @@ const { argTypes, parameters } = storybookDefaults('sd-badge');
 const { overrideArgs } = storybookHelpers('sd-badge');
 const { generateTemplate } = storybookTemplate('sd-badge');
 
+/**
+ *
+ * Used to visual indicate a quantity related to a particular element. Often displayed next to an icon or label.
+ *
+ * **Related templates**:
+ * - [Button with Badge](?path=/docs/templates-button-with-badge--docs)
+ *
+ */
+
 export default {
   title: 'Components/sd-badge',
   component: 'sd-badge',
+  tags: ['!dev'],
   parameters: {
     ...parameters,
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/file/frKFVz9UBKAtsvErLKTeGj/Badge?type=design&node-id=0-1&mode=design&t=OeLPPGif39ASuNmf-0'
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2116-4927&node-type=section&t=5PpAC3TA3kYF7ufX-0'
     }
   },
   args: overrideArgs([{ type: 'slot', name: 'default', value: '8' }]),
@@ -26,110 +37,74 @@ export default {
  */
 
 export const Default = {
+  name: 'Default',
   render: (args: any) => {
     return generateTemplate({ args });
   }
 };
 
 /**
- * The badge in all possible combinations of `variant` and `size`.
- */
-
-export const VariantAndSize = {
-  name: 'Variant × Size',
-  parameters: { controls: { exclude: ['variant', 'size'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        x: { type: 'attribute', name: 'variant' },
-        y: { type: 'attribute', name: 'size' }
-      },
-      args
-    });
-  }
-};
-
-/**
- * The badge in all possible combinations of `variant` and `inverted`.
- */
-
-export const VariantAndInverted = {
-  name: 'Variant × Inverted',
-  parameters: { controls: { exclude: ['variant', 'inverted'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        x: { type: 'attribute', name: 'variant' },
-        y: { type: 'attribute', name: 'inverted', values: [false, true] }
-      },
-      args,
-      options: {
-        templateBackgrounds: {
-          alternate: 'y',
-          colors: ['', 'rgb(var(--sd-color-primary, 0 53 142))']
-        }
-      }
-    });
-  }
-};
-
-/**
- * Use the `default` slot to add content to the badge.
+ * Use the `variant` attribute to set the badge’s variant.
  *
- * If you add icons to the slot, please make sure to account for accessibility by providing an alt-text.
+ * - `default`: Utilized for standard emphasis.
+ * - `success` and `error`: Alternative color options like green or red are employed to highlight specific notifications, without implying any semantic meaning.
  */
-export const Slots = {
-  parameters: {
-    controls: { exclude: ['size'] }
-  },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        x: {
-          type: 'slot',
-          name: 'default',
-          title: 'slot=...',
-          values: [
-            {
-              value: `<span class='slot slot--border slot--background'>8</span>`,
-              title: 'default'
-            }
-          ]
-        }
-      },
-      constants: [{ type: 'template', name: 'width', value: '<div style="width: 100px">%TEMPLATE%</div>' }],
-      args
-    });
-  }
+
+export const Variant = {
+  name: 'Variant',
+  render: () => html`
+    <div class="flex gap-12">
+      <sd-badge variant="default">8</sd-badge>
+      <sd-badge variant="success">8</sd-badge>
+      <sd-badge variant="error">8</sd-badge>
+    </div>
+  `
 };
 
 /**
- * Use the `base` and `content` part selectors to customize the badge.
+ * Use the `size` attribute to set the badge’s size.
  */
 
-export const Parts = {
-  parameters: {
-    controls: { exclude: ['base', 'content', 'size'] }
-  },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: {
-          type: 'template',
-          name: 'sd-badge::part(...){outline: solid 1.5px red}',
-          values: ['base', 'content'].map(part => {
-            return {
-              title: part,
-              value: `<style>#part-${part} sd-badge::part(${part}){outline: solid 1.5px red; margin-bottom: 0;}</style><div id="part-${part}">%TEMPLATE%</div>`
-            };
-          })
-        }
-      },
-      constants: [
-        { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' },
-        { type: 'slot', name: 'default', value: '<span class="content">8</span>' }
-      ],
-      args
-    });
-  }
+export const Size = {
+  name: 'Size',
+  render: () => html`
+    <div class="flex gap-12">
+      <sd-badge size="sm">8</sd-badge>
+      <sd-badge size="md">8</sd-badge>
+      <sd-badge size="lg">8</sd-badge>
+    </div>
+  `
+};
+
+/**
+ * Use the `inverted` attribute when displayed on primary background.
+ */
+
+export const Inverted = {
+  name: 'Inverted',
+  render: () => html`
+    <div class="flex gap-12 bg-primary p-4">
+      <sd-badge inverted>8</sd-badge>
+      <sd-badge variant="success" inverted>8</sd-badge>
+      <sd-badge variant="error" inverted>8</sd-badge>
+    </div>
+  `
+};
+
+/**
+ * The max value is defined by the application.
+ *
+ * A `+` should be used to show overflow.
+ */
+
+export const Overflow = {
+  name: 'Overflow',
+  render: () => html`
+    <div class="flex gap-12 p-4">
+      <sd-badge>99</sd-badge>
+      <sd-badge>99+</sd-badge>
+      <sd-badge>999</sd-badge>
+      <sd-badge>999+</sd-badge>
+    </div>
+  `
 };

@@ -6,7 +6,7 @@ export default {
     '../src/**/*.mdx',
     '../src/components/**/*.stories.@(js|jsx|ts|tsx)',
     '../src/styles/**/*.stories.@(js|jsx|ts|tsx)',
-    '../src/patterns/**/*.stories.@(js|jsx|ts|tsx)'
+    '../src/templates/**/*.stories.@(js|jsx|ts|tsx)'
   ],
   env: storybookEnvPackageVersions({
     packagePaths: ['../components', '../tokens', '../placeholders']

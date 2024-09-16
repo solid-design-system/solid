@@ -35,6 +35,12 @@ import SolidElement from '../../internal/solid-element';
 export default class SdNavigationItem extends SolidElement {
   private readonly hasSlotController = new HasSlotController(this, '[default]', 'description', 'children');
 
+  /** The navigation item's orientation. If false, properties below this point are not used. */
+  @property({ type: Boolean, reflect: true }) vertical = false;
+
+  /** The navigation item's font size. */
+  @property({ reflect: true }) size: 'base' | 'lg' | 'sm' = 'base';
+
   /** The navigation item's href target. If provided, the navigation item will use an anchor tag otherwise it will use a button tag. The 'children' slot and accordion behavior will be ignored if an 'href' is provided. */
   @property({ reflect: true }) href: string;
 
@@ -50,23 +56,17 @@ export default class SdNavigationItem extends SolidElement {
   /** Disables the navigation item. */
   @property({ type: Boolean, reflect: true }) disabled = false;
 
-  /** The navigation item's font size. */
-  @property({ reflect: true }) size: 'base' | 'lg' | 'sm' = 'base';
-
-  /** The navigation item's orientation. If false, properties below this point are not used. */
-  @property({ type: Boolean, reflect: true }) vertical = false;
-
   /** Appends a chevron to the right side of a navigation item. Only used if `vertical` is true. */
   @property({ type: Boolean, reflect: true }) chevron = false;
-
-  /** Adds additional padding to navigation item's left side. Only used if `vertical` is true. */
-  @property({ type: Boolean, reflect: true }) indented = false;
 
   /** Adds additional padding to navigation item's left and right sides. Only used if `vertical` is true. */
   @property({ type: Boolean, reflect: true }) relaxed = false;
 
   /** Adds additional padding to navigation item's left and right sides. Only used if `vertical` is true. */
   @property({ type: Boolean, reflect: true }) divider = false;
+
+  /** Adds additional padding to navigation item's left side. Only used if `vertical` is true. */
+  @property({ type: Boolean, reflect: true }) indented = false;
 
   /** Reflects HTML details element state and allows control from parent. Only used if `vertical` is true, no `href`is undefined, and `children` is defined. */
   @property({ type: Boolean, reflect: true }) open = false;

@@ -6,11 +6,22 @@ import { withActions } from '@storybook/addon-actions/decorator';
 const { argTypes, parameters } = storybookDefaults('sd-map-marker');
 const { generateTemplate } = storybookTemplate('sd-map-marker');
 
+/**
+ * Used to show a location or a cluster of locations on a map.
+ *
+ * **Related templates:**
+ * - [Map Marker with Image](?path=/docs/templates-map-marker-with-image--docs)
+ */
 export default {
   title: 'Components/sd-map-marker',
+  tags: ['!dev'],
   component: 'sd-map-marker',
   parameters: {
-    ...parameters
+    ...parameters,
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2544-17460&node-type=FRAME&m=dev'
+    }
   },
   argTypes,
   decorators: [withActions] as any
@@ -28,155 +39,82 @@ export const Default = {
 };
 
 /**
- * The marker in its 'Cluster' variant in all possible states.
+ * Use the `variant` attribute to change the appearance of the marker.
+ *
+ * - `main`: The default variant.
+ * - `place`: A variant that is used to show a location on the map.
+ * - `cluster`: A variant that is used to show multiple locations on the map.
  */
-export const VariantCluster = {
-  name: 'Variant Cluster',
-  parameters: { controls: { exclude: ['state'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        x: { type: 'attribute', name: 'state', values: ['default', 'hover'] }
-      },
-      args,
-      constants: [
-        {
-          type: 'slot',
-          name: 'default',
-          value: '8'
-        },
-        {
-          type: 'attribute',
-          name: 'variant',
-          value: 'cluster'
-        }
-      ]
-    });
-  }
+export const Variant = {
+  render: () => html`
+    <div class="flex items-center gap-12">
+      <sd-map-marker></sd-map-marker>
+      <sd-map-marker variant="place">
+        <sd-icon name="content/image" color="primary"></sd-icon>
+      </sd-map-marker>
+      <sd-map-marker variant="cluster"> 88 </sd-map-marker>
+    </div>
+  `
 };
 
 /**
- * The marker in its 'Main' variant in all possible states.
+ * Use the `state` attribute to change the appearance of the marker.
+ *
+ * - `default`: The default state.
+ * - `hover`: The state when the marker is hovered.
+ * - `active`: The state when the marker is active.
  */
-export const VariantMain = {
-  name: 'Variant Main',
-  parameters: { controls: { exclude: ['default', 'state'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        x: { type: 'attribute', name: 'state' }
-      },
-      args,
-      constants: [
-        {
-          type: 'slot',
-          name: 'default',
-          value: ''
-        },
-        {
-          type: 'attribute',
-          name: 'variant',
-          value: 'main'
-        }
-      ]
-    });
-  }
-};
+export const State = {
+  render: () => html`
+    <div class="flex gap-12">
+      <div class="flex flex-col space-y-5">
+        <sd-map-marker state="default"></sd-map-marker>
+        <sd-map-marker state="hover"></sd-map-marker>
+        <sd-map-marker state="active"></sd-map-marker>
+      </div>
 
-/**
- * The marker in its 'Place' variant in all possible states.
- */
-export const VariantPlace = {
-  name: 'Variant Place',
-  parameters: { controls: { exclude: ['default', 'state'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        x: { type: 'attribute', name: 'state' }
-      },
-      args,
-      constants: [
-        {
-          type: 'slot',
-          name: 'default',
-          value: '<sd-icon name="content/image" color="primary"></sd-icon>'
-        },
-        {
-          type: 'attribute',
-          name: 'variant',
-          value: 'place'
-        }
-      ]
-    });
-  }
-};
-
-/**
- * Use the 'default' slot to add content to the marker.
- */
-export const Slots = {
-  parameters: {
-    controls: { exclude: ['default', 'state'] }
-  },
-  render: () => {
-    return html`
-      <div class="flex gap-4 items-center">
-        <sd-map-marker variant="place">
-          <span class="slot slot--border slot--background">
-            <sd-icon name="content/image" color="primary"></sd-icon>
-          </span>
+      <div class="flex flex-col space-y-5">
+        <sd-map-marker state="default" variant="place">
+          <sd-icon name="content/image" color="primary"></sd-icon>
         </sd-map-marker>
-        <sd-map-marker variant="place">
-          <span class="slot slot--border slot--background">
-            <img class="" src="images/logo-unioninvestment-sm.svg" alt="Logo" />
-          </span>
+        <sd-map-marker state="hover" variant="place">
+          <sd-icon name="content/image" color="primary"></sd-icon>
         </sd-map-marker>
-        <sd-map-marker variant="cluster">
-          <span class="slot slot--border slot--background"> 8 </span>
+        <sd-map-marker state="active" variant="place">
+          <sd-icon name="content/image" color="primary"></sd-icon>
         </sd-map-marker>
       </div>
-    `;
-  }
+
+      <div class="flex flex-col space-y-5">
+        <sd-map-marker state="default" variant="cluster"> 88 </sd-map-marker>
+        <sd-map-marker state="hover" variant="cluster"> 88 </sd-map-marker>
+      </div>
+    </div>
+  `
 };
 
 /**
- * Use the '--map-marker-scaling' css variable to scale the marker to your needs.
+ * Use the `animated` attribute to animate the marker.
  */
-export const Scale = {
-  parameters: {
-    controls: { exclude: ['default', 'state'] }
-  },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        x: {
-          type: 'template',
-          name: 'marker-scaling',
-          values: [
-            {
-              title: '--map-marker-scaling: 1.5',
-              value: '<div style="--map-marker-scaling: 1.5">%TEMPLATE%</div>'
-            },
-            {
-              title: '--map-marker-scaling: 2',
-              value: '<div style="--map-marker-scaling: 2">%TEMPLATE%</div>'
-            }
-          ]
-        }
-      },
-      constants: [
-        {
-          type: 'slot',
-          name: 'default',
-          value: '<sd-icon name="content/image" color="primary"></sd-icon>'
-        },
-        {
-          type: 'attribute',
-          name: 'variant',
-          value: 'place'
-        }
-      ],
-      args
-    });
-  }
+export const Animated = {
+  render: () => html`
+    <sd-map-marker class="animated-example" variant="main" state="default" animated=""></sd-map-marker>
+    <script>
+      const marker = document.querySelector('.animated-example');
+      setInterval(() => {
+        marker.animated = !marker.animated;
+      }, 2000);
+    </script>
+  `
+};
+
+/**
+ * Use the `default` slot to include content in the marker.
+ */
+export const Slot = {
+  render: () => html`
+    <sd-map-marker variant="place" class="slot-example">
+      <span class="slot slot--border h-8 w-8 -mt-4"></span>
+    </sd-map-marker>
+  `
 };

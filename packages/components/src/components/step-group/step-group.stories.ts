@@ -1,15 +1,24 @@
 import '../../solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { waitUntil } from '@open-wc/testing-helpers';
 import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-step-group');
 const { overrideArgs } = storybookHelpers('sd-step-group');
 const { generateTemplate } = storybookTemplate('sd-step-group');
 
+/**
+ * Used as navigation bar that guides users through the steps of a process or task
+ *
+ * **Related Components:**
+ * - [sd-step](?path=/docs/components-step--docs)
+ *
+ * **Related Templates:**
+ * - [Step Group](?path=/docs/templates-step-group--docs)
+ */
 export default {
   title: 'Components/sd-step-group',
+  tags: ['!dev'],
   component: 'sd-step-group',
   args: overrideArgs([
     {
@@ -17,15 +26,15 @@ export default {
       name: 'default',
       value: `
         <sd-step size="lg" orientation="horizontal" state="default">
-          <p slot="label">Lorem ipsum dolor sit</p>
+          <p slot="label">Step 1</p>
         </sd-step>
 
         <sd-step size="lg" orientation="horizontal" state="current">
-          <p slot="label">Exercitation ullamco laboris</p>
+          <p slot="label">Step 2</p>
         </sd-step>
 
         <sd-step size="lg" orientation="horizontal" state="disabled">
-          <p slot="label">Reprehenderit qui in e name</p>
+          <p slot="label">Step 3</p>
         </sd-step>`
     },
     {
@@ -35,7 +44,13 @@ export default {
     }
   ]),
   argTypes,
-  parameters: { ...parameters },
+  parameters: {
+    ...parameters,
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=3274-23489&node-type=section&t=5PpAC3TA3kYF7ufX-0'
+    }
+  },
   decorators: [withActions] as any
 };
 
@@ -44,240 +59,160 @@ export default {
  */
 
 export const Default = {
+  name: 'Default',
   render: (args: any) => {
     return html`<div style="height:250px">${generateTemplate({ args })}</div>`;
   }
 };
 
 /**
- * Use the orientation attribute to set the axis of a step-group.
+ * Use the `size` attribute to set the size of the step-group.
+ */
+
+export const Size = {
+  name: 'Size',
+  render: () => html`
+    <div class="flex flex-col space-y-12">
+      <sd-step-group size="lg" orientation="horizontal" active-step="1" class="w-full">
+        <sd-step size="lg" orientation="horizontal" state="default">
+          <p slot="label">Step 1</p>
+        </sd-step>
+
+        <sd-step size="lg" orientation="horizontal" state="current">
+          <p slot="label">Step 2</p>
+        </sd-step>
+
+        <sd-step size="lg" orientation="horizontal" state="disabled">
+          <p slot="label">Step 3</p>
+        </sd-step>
+      </sd-step-group>
+
+      <sd-step-group size="sm" orientation="horizontal" active-step="1" class="w-full">
+        <sd-step size="sm" orientation="horizontal" state="default">
+          <p slot="label">Step 1</p>
+        </sd-step>
+
+        <sd-step size="sm" orientation="horizontal" state="current">
+          <p slot="label">Step 2</p>
+        </sd-step>
+
+        <sd-step size="sm" orientation="horizontal" state="disabled">
+          <p slot="label">Step 3</p>
+        </sd-step>
+      </sd-step-group>
+    </div>
+  `
+};
+
+/**
+ * Use the `orientation` attribute to set the axis of a step-group.
  */
 
 export const Orientation = {
-  parameters: { controls: { exclude: 'orientation' } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: { type: 'attribute', name: 'orientation' }
-      },
-      args
-    });
-  },
-  decorators: [
-    (story: () => typeof html) => html`
-      <style>
-        td.template {
-          width: 100%;
-          height: 250px;
-        }
-      </style>
-      ${story()}
-    `
-  ]
+  name: 'Orientation',
+  render: () => html`
+    <div class="flex flex-col space-y-12">
+      <sd-step-group size="lg" orientation="horizontal" active-step="1" class="w-full">
+        <sd-step size="lg" orientation="horizontal" state="default">
+          <p slot="label">Step 1</p>
+        </sd-step>
+
+        <sd-step size="lg" orientation="horizontal" state="current">
+          <p slot="label">Step 2</p>
+        </sd-step>
+
+        <sd-step size="lg" orientation="horizontal" state="disabled">
+          <p slot="label">Step 3</p>
+        </sd-step>
+      </sd-step-group>
+
+      <div class="flex h-[20em] pl-[56px]">
+        <sd-step-group size="lg" orientation="vertical" active-step="1" class="w-full">
+          <sd-step size="lg" orientation="vertical" state="default">
+            <p slot="label">Step 1</p>
+          </sd-step>
+
+          <sd-step size="lg" orientation="vertical" state="current">
+            <p slot="label">Step 2</p>
+          </sd-step>
+
+          <sd-step size="lg" orientation="vertical" state="disabled">
+            <p slot="label">Step 3</p>
+          </sd-step>
+        </sd-step-group>
+      </div>
+    </div>
+  `
 };
 
 /**
- * Use the not-interactive attribute to create a non-interactive step group.
+ * Use the `active-step` attribute to set the current step.
+ */
+
+export const ActiveStep = {
+  name: 'Active Step',
+  render: () => html`
+    <sd-step-group size="lg" orientation="horizontal" active-step="0">
+      <sd-step size="lg" orientation="horizontal" state="default">
+        <p slot="label">Step 1</p>
+      </sd-step>
+
+      <sd-step size="lg" orientation="horizontal" state="current">
+        <p slot="label">Step 2</p>
+      </sd-step>
+
+      <sd-step size="lg" orientation="horizontal" state="disabled">
+        <p slot="label">Step 3</p>
+      </sd-step>
+    </sd-step-group>
+  `
+};
+
+/**
+ * Use the `not-interactive` attribute to create a non-interactive step group.
  */
 
 export const notInteractive = {
-  name: 'Not Interactive X Size',
-  parameters: { controls: { exclude: 'not-interactive' } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        x: { type: 'attribute', name: 'not-interactive' },
-        y: { type: 'attribute', name: 'size' }
-      },
-      args
-    });
-  },
-  decorators: [
-    (story: () => typeof html) => html`
-      <style>
-        td.template {
-          width: 100%;
-        }
-      </style>
-      ${story()}
-    `
-  ]
+  name: 'Not Interactive',
+  render: () => html`
+    <sd-step-group size="lg" orientation="horizontal" active-step="0" not-interactive>
+      <sd-step size="lg" orientation="horizontal" state="default">
+        <div slot="label">Label</div>
+      </sd-step>
+
+      <sd-step size="lg" orientation="horizontal" state="current">
+        <span slot="label">Label</span>
+      </sd-step>
+
+      <sd-step size="lg" orientation="horizontal" state="disabled">
+        <span slot="label">Label</span>
+      </sd-step>
+    </sd-step-group>
+  `
 };
 
 /**
- * Use the 'base' and 'body' parts to style the step-group.
- */
-export const Parts = {
-  parameters: {
-    controls: {
-      exclude: ['base', 'body']
-    }
-  },
-  render: () => {
-    return generateTemplate({
-      axis: {
-        x: { type: 'attribute', name: 'orientation' },
-        y: {
-          type: 'template',
-          name: 'sd-step-group::part(...){outline: solid 2px red}',
-          values: ['base', 'body'].map(part => {
-            return {
-              title: part,
-              value: `<style>#part-${part} sd-step-group::part(${part}){outline: solid 2px red; outline-offset: 0px;}</style><div id="part-${part}">%TEMPLATE%</div>`
-            };
-          })
-        }
-      },
-      args: overrideArgs([
-        {
-          type: 'slot',
-          name: 'default',
-          value: `
-            <sd-step size="lg" orientation="horizontal" state="default">
-              <p slot="label">Lorem ipsum dolor sit</p>
-              Lorem ipsum est dolor sit amet
-            </sd-step>
-    
-            <sd-step size="lg" orientation="horizontal" state="current">
-              <p slot="label">Exercitation ullamco laboris</p>
-              Lorem ipsum est dolor sit amet
-            </sd-step>
-    
-            <sd-step size="lg" orientation="horizontal" state="disabled">
-              <p slot="label">Reprehenderit qui in e name</p>
-              Lorem ipsum est dolor sit amet
-            </sd-step>`
-        },
-        {
-          type: 'attribute',
-          name: 'active-step',
-          value: `1`
-        }
-      ])
-    });
-  }
-};
-
-/**
- * sd-steps are fully accessibile via keyboard.
+ * Use the `default`slot to add a content-icon.
  */
 
-export const Mouseless = {
-  render: (args: any) => {
-    return html`<div class="mouseless">
-      ${generateTemplate({
-        args
-      })}
-    </div>`;
-  },
+export const Icon = {
+  name: 'Icon',
+  render: () => html`
+    <sd-step-group size="lg" orientation="horizontal" active-step="0" not-interactive>
+      <sd-step size="lg" orientation="horizontal" state="default" not-interactive>
+        <sd-icon slot="circle-content" name="content/image" class="h-12 w-12"></sd-icon>
+        <div slot="label">Label</div>
+      </sd-step>
 
-  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
-    const el = canvasElement.querySelector('.mouseless sd-step-group');
-    await waitUntil(() => el?.querySelector('sd-step')?.shadowRoot?.querySelector('button'));
+      <sd-step size="lg" orientation="horizontal" state="default" not-interactive>
+        <sd-icon slot="circle-content" name="content/image" class="h-12 w-12"></sd-icon>
+        <div slot="label">Label</div>
+      </sd-step>
 
-    el?.querySelector('sd-step')?.shadowRoot?.querySelector('button')!.focus();
-  }
-};
-
-/**
- * This sample shows how to set the active step programmatically.
- */
-
-export const SetActiveStep = {
-  parameters: { controls: { include: [] } },
-  name: 'Sample: Set Active Step',
-  render: () => {
-    return html`
-      <sd-step-group id="set-active" size="lg" orientation="horizontal" active-step="0">
-        <sd-step size="lg" orientation="horizontal">
-          <p slot="label">Lorem ipsum dolor sit</p>
-        </sd-step>
-
-        <sd-step size="lg" orientation="horizontal">
-          <p slot="label">Exercitation ullamco laboris</p>
-        </sd-step>
-
-        <sd-step size="lg" orientation="horizontal">
-          <p slot="label">Reprehenderit qui in e name</p>
-        </sd-step>
-      </sd-step-group>
-
-      <sd-button class="w-20 mt-8" size="sm" id="previous">Previous</sd-button>
-      <sd-button class="w-20 mt-8" size="sm" id="next">Next</sd-button>
-
-      <script type="module">
-        const stepGroup = await document.querySelector('sd-step-group#set-active');
-
-        const nextBtn = document.querySelector('sd-button#next');
-        const prevBtn = document.querySelector('sd-button#previous');
-
-        nextBtn.addEventListener('click', () => {
-          stepGroup.setActiveStep(stepGroup.activeStep + 1);
-        });
-
-        prevBtn.addEventListener('click', () => {
-          stepGroup.setActiveStep(stepGroup.activeStep - 1);
-        });
-      </script>
-    `;
-  }
-};
-
-/**
- * This sample shows how to use the not-interactive attribute with content icons. The border-radius of an sd-step is larger when the not-interactive attribute is set to `true`.
- * The size of the icon is recommended to be 48px for the 'lg' size and 32px for the 'sm' size. The size can be set using font-size.
- */
-
-export const SampleNotInteractive = {
-  parameters: { controls: { include: [] } },
-  name: 'Sample: Not Interactive',
-  render: () => {
-    return html`
-      <style>
-        .headline {
-          padding: 16px;
-          background: #e0e0e0;
-          text-align: left;
-          font-size: 14px;
-          font-weight: bold;
-          width: 100%;
-          box-sizing: border-box;
-        }
-      </style>
-      <div class="headline">size = 'lg'</div>
-      <sd-step-group size="lg" orientation="horizontal" not-interactive>
-        <sd-step orientation="horizontal">
-          <p slot="label">Lorem ipsum dolor sit</p>
-          <sd-icon class="text-[48px]" name="content/image" slot="circle-content"></sd-icon>
-        </sd-step>
-
-        <sd-step orientation="horizontal">
-          <p slot="label">Exercitation ullamco laboris</p>
-          <sd-icon class="text-[48px]" name="content/image" slot="circle-content"></sd-icon>
-        </sd-step>
-
-        <sd-step orientation="horizontal">
-          <p slot="label">Reprehenderit qui in e name</p>
-          <sd-icon class="text-[48px]" name="content/image" slot="circle-content"></sd-icon>
-        </sd-step>
-      </sd-step-group>
-      <div class="headline">size = 'sm'</div>
-      <sd-step-group size="sm" orientation="horizontal" not-interactive>
-        <sd-step orientation="horizontal">
-          <p slot="label">Lorem ipsum dolor sit</p>
-          <sd-icon class="text-3xl" name="content/image" slot="circle-content"></sd-icon>
-        </sd-step>
-
-        <sd-step orientation="horizontal">
-          <p slot="label">Exercitation ullamco laboris</p>
-          <sd-icon class="text-3xl" name="content/image" slot="circle-content"></sd-icon>
-        </sd-step>
-
-        <sd-step orientation="horizontal">
-          <p slot="label">Reprehenderit qui in e name</p>
-          <sd-icon class="text-3xl" name="content/image" slot="circle-content"></sd-icon>
-        </sd-step>
-      </sd-step-group>
-    `;
-  }
+      <sd-step size="lg" orientation="horizontal" state="default" not-interactive>
+        <sd-icon slot="circle-content" name="content/image" class="h-12 w-12"></sd-icon>
+        <div slot="label">Label</div>
+      </sd-step>
+    </sd-step-group>
+  `
 };

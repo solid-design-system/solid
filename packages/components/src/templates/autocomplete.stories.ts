@@ -1,5 +1,5 @@
 import { html } from 'lit-html';
-import { setupAutocomplete as solidAutocomplete } from '../../solid-components';
+import { setupAutocomplete as solidAutocomplete } from '../solid-components';
 
 /**
  * ## [autoComplete.js](https://tarekraafat.github.io/autoComplete.js/#/) Functionality:
@@ -75,10 +75,14 @@ import { setupAutocomplete as solidAutocomplete } from '../../solid-components';
  */
 
 export default {
-  title: 'Pattern/autocomplete',
-  component: 'Autocomplete',
+  tags: ['!dev'],
+  title: 'Templates/Autocomplete',
   parameters: {
     docs: { story: { inline: false, height: '400px' } },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2858-511&t=uTI8bz6LT5ZxlxSd-4'
+    },
     chromatic: { disableSnapshot: true },
     excludeStories: /.Simple$/
   }
@@ -173,8 +177,6 @@ const mock = {
 /**
   This is the most basic example of the autoComplete.js library. It demonstrates how to set up the library with a simple input field and a list of data.
   The search data is mocked and passed to the autoComplete instance, you can search for the following terms: Aktien, Nachhaltig, Union, Europa, ...
-
-  > Notice: This example is not working, check it out the one on top of this page.
  */
 export const Simple = {
   parameters: {
@@ -201,58 +203,6 @@ export const Simple = {
           new autoComplete({
             ...simpleConfig,
             placeHolder: 'Find funds...',
-            data
-          });
-        });
-      </script>
-    `;
-  }
-};
-
-/**
-  This is an example of how to customize the resultsList. It demonstrates how to change the resultItem to a custom element.
-  The search data is mocked and passed to the autoComplete instance, you can search for the following terms: Aktien, Nachhaltig, Union, Europa, ...
- */
-export const TeaserResultItem = {
-  parameters: {
-    controls: {
-      exclude: ['autocomplete']
-    }
-  },
-  render: () => {
-    const setupAutocomplete = solidAutocomplete;
-    const data = mock;
-    return html`
-      <sd-input id="teaser-result-item" type="search"><b slot="label">Teaser result item</b></sd-input>
-      <script type="module">
-        import './autocomplete/autoComplete.min.js';
-
-        // preview-ignore:start
-        const setupAutocomplete = ${setupAutocomplete};
-        const data = ${JSON.stringify(data)};
-        // preview-ignore:end
-
-        Promise.all([customElements.whenDefined('sd-input'), customElements.whenDefined('sd-popup')]).then(() => {
-          /* Simple example */
-          const { config: simpleConfig } = setupAutocomplete('#teaser-result-item');
-          new autoComplete({
-            ...simpleConfig,
-            placeHolder: 'Find funds...',
-            resultsList: {
-              tag: 'sd-popup',
-              maxResults: 3
-            },
-            resultItem: {
-              tag: 'sd-teaser',
-              element: (item, data) => {
-                let headline = document.createElement('h3');
-                item.setAttribute('variant', 'white border-neutral-400');
-                item.innerHTML = 'Lorem ipsum';
-                headline.setAttribute('slot', 'headline');
-                headline.innerHTML = data.match;
-                item.appendChild(headline);
-              }
-            },
             data
           });
         });

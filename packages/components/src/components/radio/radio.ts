@@ -34,14 +34,14 @@ export default class SdRadio extends SolidElement {
   /** The radio's size. */
   @property({ reflect: true }) size: 'lg' | 'sm' = 'lg';
 
-  /**  A Boolean attribute which, if present, marks the radio Button valid or invalid  */
-  @property({ type: Boolean, reflect: true }) invalid = false;
-
   /** A Boolean attribute which, if present, disables the radio. */
   @property({ type: Boolean, reflect: true }) disabled = false;
 
   /** The radio's value. When selected, the radio group will receive this value. */
   @property() value: string;
+
+  /**  A Boolean attribute which, if present, marks the radio Button valid or invalid  */
+  @property({ type: Boolean, reflect: true }) invalid = false;
 
   connectedCallback() {
     super.connectedCallback();

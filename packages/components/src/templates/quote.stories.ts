@@ -1,14 +1,14 @@
-import '../../solid-components';
+import '../solid-components';
 import { html } from 'lit-html';
 
 export default {
-  title: 'Pattern/quote',
-  component: 'Quote',
+  tags: ['!dev'],
+  title: 'Templates/Quote',
   parameters: {
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/file/hER2N8wZXhiTrdlDXyrdUt/Quote?type=design&node-id=1001-4293&mode=design&t=Xywhix1rQMoatokH-0'
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=3733-14276&t=JCsisVFNkWSlhSSN-4'
     }
   }
 };

@@ -1,14 +1,14 @@
-import '../../solid-components';
+import '../solid-components';
 import { html } from 'lit-html';
 
 export default {
-  title: 'Pattern/supernumber',
-  component: 'Supernumber',
+  tags: ['!dev'],
+  title: 'Templates/Supernumber',
   parameters: {
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/file/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?type=design&node-id=1663-16481&mode=design&t=4Vn3XDKjLjm0AT1X-0'
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=3724-4897&t=ilrs806pHHSfnwKM-4'
     }
   }
 };

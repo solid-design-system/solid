@@ -4,8 +4,16 @@ const { argTypes, parameters } = storybookDefaults('sd-carousel-item');
 const { overrideArgs } = storybookHelpers('sd-carousel-item');
 const { generateTemplate } = storybookTemplate('sd-carousel-item');
 
+/**
+ * Represents a slide within a carousel.
+ *
+ * **Related templates**:
+ * - [Carousel with Images](?path=/docs/templates-carousel-with-images--docs)
+ */
+
 export default {
   title: 'Components/sd-carousel-item',
+  tags: ['!dev'],
   component: 'sd-carousel-item',
   args: overrideArgs([
     {
@@ -15,7 +23,13 @@ export default {
     }
   ]),
   argTypes,
-  parameters: { ...parameters }
+  parameters: {
+    ...parameters,
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2233-2414&node-type=section&t=5PpAC3TA3kYF7ufX-0'
+    }
+  }
 };
 
 /**
