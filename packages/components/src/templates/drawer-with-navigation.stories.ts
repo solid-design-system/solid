@@ -3,11 +3,12 @@ import { html } from 'lit-html';
 
 /**
  * This example shows a drawer containing a navigation list.
+ *
  */
 
 export default {
   tags: ['!dev'],
-  title: 'Templates/Drawer with navigation',
+  title: 'Templates/Drawer',
   parameters: {
     design: {
       type: 'figma',
@@ -18,7 +19,7 @@ export default {
   decorators: [
     (story: any) =>
       html` <style>
-          #anchor--templates-drawer-with-navigation--default .innerZoomElementWrapper {
+          #anchor--templates-drawer--default .innerZoomElementWrapper {
             background-color: #ecf0f9;
             min-height: 750px;
           }
@@ -27,6 +28,10 @@ export default {
   ] as unknown
 };
 
+/**
+ * ```
+ * ```
+ */
 export const Default = {
   name: 'Tablet Navigation - Level 1',
   render: () => html`

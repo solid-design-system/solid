@@ -3,9 +3,6 @@ import { html } from 'lit-html';
 
 /**
  * Example on how to use flipcard component.
- *
- * ```
- * ```
  */
 
 export default {
@@ -19,6 +16,11 @@ export default {
     }
   }
 };
+
+/**
+ * ```
+ * ```
+ */
 
 export const Default = {
   render: () => html`

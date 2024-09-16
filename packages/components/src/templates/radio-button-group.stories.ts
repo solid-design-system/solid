@@ -1,6 +1,11 @@
 import '../solid-components';
 import { html } from 'lit-html';
 
+/**
+ * ```
+ * ```
+ */
+
 export default {
   tags: ['!dev'],
   title: 'Templates/Radio Button Group',
@@ -15,9 +20,6 @@ export default {
 
 /**
  * This shows sd-radio-group composed of sd-radio-buttons.
- *
- * ```
- * ```
  */
 export const Default = {
   name: 'Radio Button Group',

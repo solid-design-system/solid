@@ -1,6 +1,11 @@
 import '../solid-components';
 import { html } from 'lit-html';
 
+/**
+ * ```
+ * ```
+ */
+
 export default {
   tags: ['!dev'],
   title: 'Templates/Expandable with Different Text Styles',
@@ -17,9 +22,6 @@ export default {
  * Examples of the `sd-expandable` with different typography classes on the element itself:
  * - `sd-leadtext`
  * - `sd-prose`
- *
- * ```
- * ```
  */
 
 export const TextStyles = {
