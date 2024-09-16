@@ -38,7 +38,7 @@ export const Default = {
   render: (args: { [k: string]: any }) => {
     return generateTemplate({
       options: {
-        templateContent: html` <div ${args['sd-prose--inverted-attr'] === true ? 'class="bg-primary p-4"' : ''}>
+        templateContent: html` <div class=${args['sd-prose--inverted-attr'] === true ? 'bg-primary p-4' : ''}>
           <div class="%CLASSES%">${args['default-slot']}</div>
         </div>`
       },

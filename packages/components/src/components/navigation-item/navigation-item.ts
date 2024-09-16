@@ -56,22 +56,22 @@ export default class SdNavigationItem extends SolidElement {
   /** Disables the navigation item. */
   @property({ type: Boolean, reflect: true }) disabled = false;
 
+  /** Appends a chevron to the right side of a navigation item. Only used if `vertical` is true. */
+  @property({ type: Boolean, reflect: true }) chevron = false;
+
+  /** Adds additional padding to navigation item's left and right sides. Only used if `vertical` is true. */
+  @property({ type: Boolean, reflect: true }) relaxed = false;
+
   /** Adds additional padding to navigation item's left and right sides. Only used if `vertical` is true. */
   @property({ type: Boolean, reflect: true }) divider = false;
 
-  /** Appends a chevron to the right side of a navigation item. Only used if `vertical` is true. */
-  @property({ type: Boolean, reflect: true }) chevron = false;
+  /** Adds additional padding to navigation item's left side. Only used if `vertical` is true. */
+  @property({ type: Boolean, reflect: true }) indented = false;
 
   /** Reflects HTML details element state and allows control from parent. Only used if `vertical` is true, no `href`is undefined, and `children` is defined. */
   @property({ type: Boolean, reflect: true }) open = false;
 
   @property({ type: Boolean, reflect: true }) separated = false;
-
-  /** Adds additional padding to navigation item's left side. Only used if `vertical` is true. */
-  @property({ type: Boolean, reflect: true }) indented = false;
-
-  /** Adds additional padding to navigation item's left and right sides. Only used if `vertical` is true. */
-  @property({ type: Boolean, reflect: true }) relaxed = false;
 
   private get isButton(): boolean {
     return !this.href && !this.hasSlotController.test('children');
