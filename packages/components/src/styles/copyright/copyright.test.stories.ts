@@ -9,7 +9,7 @@ const { generateTemplate } = storybookTemplate('sd-copyright');
  * Add a copyright at the bottom of a image.
  */
 export default {
-  title: 'Styles/sd-copyright/Screenshot Test',
+  title: 'Styles/sd-copyright/Screenshots: sd-copyright',
   tags: ['!autodocs'],
   component: 'sd-copyright',
   parameters: {

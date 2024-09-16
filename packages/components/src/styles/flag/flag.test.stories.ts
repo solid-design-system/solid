@@ -13,7 +13,7 @@ const { generateTemplate } = storybookTemplate('sd-flag');
 const { generateScreenshotStory } = storybookUtilities;
 
 export default {
-  title: 'Styles/sd-flag/Screenshot Test',
+  title: 'Styles/sd-flag/Screenshots: sd-flag',
   tags: ['!autodocs'],
   component: 'sd-flag',
   parameters: {
