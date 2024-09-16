@@ -967,7 +967,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 ? html`
                     <sd-icon
                       part="invalid-icon"
-                      class=${cx(iconMarginLeft, iconSize)}
+                      class=${cx(iconMarginLeft, iconSize, 'text-error')}
                       library="system"
                       name="risk"
                     ></sd-icon>

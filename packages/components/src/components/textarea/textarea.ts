@@ -372,7 +372,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
               }[this.size],
               !this.disabled && !this.readonly ? 'hover:bg-neutral-200' : '',
               this.readonly ? 'bg-neutral-100' : 'bg-white',
-              textareaState === 'disabled' ? 'bg-neutral-500' : 'text-black'
+              textareaState === 'disabled' ? 'text-neutral-500' : 'text-black'
             )}
           >
             <textarea
