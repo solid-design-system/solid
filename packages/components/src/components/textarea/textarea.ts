@@ -370,18 +370,9 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
                 md: 'textarea-md py-1',
                 lg: 'textarea-lg py-2'
               }[this.size],
-              {
-                disabled: 'text-neutral-500',
-                readonly: 'text-black',
-                activeInvalid: 'text-error',
-                activeValid: 'text-success',
-                active: 'text-black',
-                invalid: 'text-error',
-                valid: 'text-success',
-                default: 'text-black'
-              }[textareaState],
               !this.disabled && !this.readonly ? 'hover:bg-neutral-200' : '',
-              this.readonly ? 'bg-neutral-100' : 'bg-white'
+              this.readonly ? 'bg-neutral-100' : 'bg-white',
+              textareaState === 'disabled' ? 'bg-neutral-500' : 'text-black'
             )}
           >
             <textarea

@@ -841,19 +841,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
 
         <div
           part="form-control-input"
-          class=${cx(
-            'relative w-full bg-white',
-            {
-              disabled: 'text-neutral-500',
-              readonly: 'text-black',
-              activeInvalid: 'text-error',
-              activeValid: 'text-success',
-              active: 'text-black',
-              invalid: 'text-error',
-              valid: 'text-success',
-              default: 'text-black'
-            }[selectState]
-          )}
+          class=${cx('relative w-full bg-white', selectState === 'disabled' ? 'text-neutral-500' : 'text-black')}
         >
           <div
             part="border"
