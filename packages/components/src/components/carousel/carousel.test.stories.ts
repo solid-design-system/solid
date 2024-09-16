@@ -265,11 +265,9 @@ export const Mouseless = {
 };
 
 export const Combination = generateScreenshotStory([
-  Default,
   Variant,
   Inverted,
   Loop,
-  Autoplay,
   SlidesPerPage,
   SlidesPerMove,
   Parts,

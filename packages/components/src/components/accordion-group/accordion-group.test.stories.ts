@@ -10,7 +10,7 @@ const { generateTemplate } = storybookTemplate('sd-accordion-group');
 const { generateScreenshotStory } = storybookUtilities;
 
 export default {
-  title: 'Components/sd-accordion-group/Screenshot',
+  title: 'Components/sd-accordion-group/Screenshots: sd-accordion-group',
   component: 'sd-accordion-group',
   tags: ['!autodocs'],
   args: {
