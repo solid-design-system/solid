@@ -11,12 +11,11 @@ const { generateTemplate } = storybookTemplate('sd-accordion');
  *
  * Used to show a brief summary and expands to display additional content.
  *
- *  **Related templates**:
- * - [Accordion Group](?path=/docs/templates-accordion-group--docs)
- *
- *
- *  **Related components**:
+ * **Related components**:
  * - [sd-accordion-group](?path=/docs/components-sd-accordion-group--docs)
+ *
+ * **Related templates**:
+ * - [Accordion Group](?path=/docs/templates-accordion-group--docs)
  *
  */
 
@@ -26,7 +25,7 @@ export default {
   tags: ['!dev'],
   args: overrideArgs([
     { type: 'slot', name: 'default', value: '<div class="slot slot--border slot--text h-16">Default slot</div>' },
-    { type: 'attribute', name: 'summary', value: 'Default' }
+    { type: 'attribute', name: 'summary', value: 'Accordion' }
   ]),
   argTypes,
   parameters: {
@@ -51,7 +50,7 @@ export const Default = {
 };
 
 /**
- * Use the attribute `open` to set the state of the accordion.
+ * Use the `open` attribute to set the state of the accordion.
  */
 
 export const Open = {

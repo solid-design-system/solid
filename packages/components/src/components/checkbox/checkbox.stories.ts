@@ -8,11 +8,12 @@ const { overrideArgs } = storybookHelpers('sd-checkbox');
 /**
  * Used to toggle an option on or off.
  *
- * **Related templates:**
- * - [Checkbox (Group)](?path=/docs/templates-checkbox-group--docs)
- *
  * **Related components:**
  * - [sd-checkbox-group](?path=/docs/components-sd-checkbox-group--docs)
+ *
+ * **Related templates:**
+ * - [Checkbox Group](?path=/docs/templates-checkbox-group--docs)
+ *
  */
 
 export default {
@@ -41,7 +42,11 @@ export const Default = {
 };
 
 /**
- * Use the `size` attribute to change the size of the input checkbox. This attribute affects the font-size within the element, while the element itself remains the same size.
+ * Use the `size` attribute to change the size of the input checkbox:
+ * - `lg` (default)
+ * - `sm`
+ *
+ * This attribute affects the font-size within the element, while the element itself remains the same size.
  */
 
 export const Size = {
@@ -55,7 +60,7 @@ export const Size = {
 };
 
 /**
- * Use the `disabled` attribute to disable an input checkbox. Clicks will be suppressed until the disabled state is removed
+ * Use the `disabled` attribute to disable an input checkbox. Clicks will be suppressed until the disabled state is removed.
  */
 
 export const Disabled = {
@@ -117,7 +122,7 @@ export const Invalid = {
   render: () => html`
     <form id="form-example">
       <sd-checkbox id="checkbox-example" required>Invalid</sd-checkbox>
-      <sd-button class="mt-4" type="submit">Submit</sd-button>
+      <sd-button class="mt-4 hidden" type="submit">Submit</sd-button>
     </form>
     <script>
       var checkbox = document.querySelector('#checkbox-example');

@@ -7,7 +7,7 @@ import { html } from 'lit-html';
 
 export default {
   tags: ['!dev'],
-  title: 'Templates/Accordion Group on Different Backgrounds',
+  title: 'Templates/Accordion Group',
   parameters: {
     chromatic: { disableSnapshot: true },
     design: {

@@ -3,7 +3,7 @@ import { html } from 'lit-html';
 
 export default {
   tags: ['!dev'],
-  title: 'Templates/Brandshape Template',
+  title: 'Templates/Brandshape',
   parameters: {
     design: {
       type: 'figma',

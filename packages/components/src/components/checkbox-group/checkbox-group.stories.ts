@@ -12,9 +12,8 @@ const { overrideArgs } = storybookHelpers('sd-checkbox-group');
  * **Related components:**
  * - [sd-checkbox](?path=/docs/components-checkbox--docs)
  *
- *
  * **Related templates:**
- * - [Checkbox (Group)](?path=/docs/templates-checkbox-group--docs)
+ * - [Checkbox Group](?path=/docs/templates-checkbox-group--docs)
  */
 
 export default {
@@ -39,10 +38,6 @@ export default {
   }
 };
 
-/**
- * Default: This shows sd-checkbox-group in its default state.
- */
-
 export const Default = {
   render: (args: any) => {
     return generateTemplate({ args });
@@ -50,7 +45,10 @@ export const Default = {
 };
 
 /**
- * Use the `size` attribute to change the size.
+ * Use the `size` attribute to change the size:
+ *
+ * - `lg` (default)
+ * - `sm`
  */
 
 export const Size = {
@@ -73,7 +71,10 @@ export const Size = {
 };
 
 /**
- * Use the `orientation` attribute to set the axis of the checkboxes.
+ * Use the `orientation` attribute to set the axis of the checkboxes:
+ *
+ * - `vertical` (default)
+ * - `horizontal`
  */
 
 export const Orientation = {
@@ -95,7 +96,7 @@ export const Orientation = {
 };
 
 /**
- * Use the `label`attribute to add a label on top.
+ * Use the `label` attribute to add a label on top.
  */
 
 export const Label = {
