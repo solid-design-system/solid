@@ -116,7 +116,7 @@ export const Divider = {
 };
 
 /**
- * Use `&--shadow-*` to add a shadow to columns or rows. This is especially useful when the table is scrollable with sticky headers.
+ * Use &--shadow-* to add a shadow to columns or rows when the table is scrollable with sticky headers.
  *
  * - `right`
  * - `left`

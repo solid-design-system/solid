@@ -522,6 +522,20 @@ export const TableFixedBottom = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
           </tr>
+          <tr>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
+          </tr>
+          <tr>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
+          </tr>
         </tbody>
         <tfoot>
           <tr>
@@ -590,6 +604,8 @@ export const TableFixedLeft = {
             <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
             <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
             <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
+            <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
+            <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
           </tr>
           <tr>
             <th
@@ -597,6 +613,8 @@ export const TableFixedLeft = {
             >
               Header
             </th>
+            <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-primary-100">Cell content</td>
+            <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-primary-100">Cell content</td>
             <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-primary-100">Cell content</td>
             <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-primary-100">Cell content</td>
             <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-primary-100">Cell content</td>
@@ -614,6 +632,8 @@ export const TableFixedLeft = {
             <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
             <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
             <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
+            <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
+            <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
           </tr>
           <tr>
             <th
@@ -621,6 +641,8 @@ export const TableFixedLeft = {
             >
               Header
             </th>
+            <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-primary-100">Cell content</td>
+            <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-primary-100">Cell content</td>
             <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-primary-100">Cell content</td>
             <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-primary-100">Cell content</td>
             <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-primary-100">Cell content</td>
@@ -638,6 +660,8 @@ export const TableFixedLeft = {
             <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
             <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
             <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
+            <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
+            <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
           </tr>
           <tr>
             <th
@@ -650,6 +674,8 @@ export const TableFixedLeft = {
             <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-primary-100">Cell content</td>
             <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-primary-100">Cell content</td>
             <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-primary-100">Cell content</td>
+            <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-primary-100">Cell content</td>
+            <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-primary-100">Cell content</td>
           </tr>
           <tr>
             <th
@@ -657,6 +683,8 @@ export const TableFixedLeft = {
             >
               Header
             </th>
+            <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
+            <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
             <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
             <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
             <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
@@ -690,15 +718,17 @@ export const TableFixedRight = {
             });
           });
         </script>
-        <div id="horizontal-scrollable-table-2" class="overflow-x-scroll overflow-y-visible [600px]">
+        <div id="horizontal-scrollable-table-2" class="overflow-x-scroll overflow-y-visible w-[600px]">
           <table class="sd-table sample-table">
             <tr>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap">Cell content</td>
-              <th class="sd-table-cell left-0 top-auto sticky right-0 z-[2] sd-table-cell--shadow-left sd-table-cell--shadow-active">
+              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
+              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
+              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
+              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
+              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
+              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
+              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
+              <th class="sd-table-cell left-0 top-auto sticky right-0 z-[2] sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-white">
               Header
             </th>
             </tr>
@@ -708,24 +738,6 @@ export const TableFixedRight = {
               <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-neutral-100">Cell content</td>
               <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-neutral-100">Cell content</td>
               <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-neutral-100">Cell content</td>
-              <th class="sd-table-cell left-0 top-auto sticky right-0 z-[2] sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-neutral-100">
-                Header
-              </th>
-            </tr>
-            <tr>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap">Cell content</td>
-              <th class="sd-table-cell left-0 top-auto sticky right-0 z-[2] sd-table-cell--shadow-left sd-table-cell--shadow-active">
-                Header
-              </th>
-            </tr>
-            <tr>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-neutral-100">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-neutral-100">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-neutral-100">Cell content</td>
               <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-neutral-100">Cell content</td>
               <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-neutral-100">Cell content</td>
               <th class="sd-table-cell left-0 top-auto sticky right-0 z-[2] sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-neutral-100">
@@ -733,16 +745,20 @@ export const TableFixedRight = {
               </th>
             </tr>
             <tr>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap">Cell content</td>
-              <th class="sd-table-cell left-0 top-auto sticky right-0 z-[2] sd-table-cell--shadow-left sd-table-cell--shadow-active">
+              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
+              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
+              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
+              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
+              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
+              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
+              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
+              <th class="sd-table-cell left-0 top-auto sticky right-0 z-[2] sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-white">
                 Header
               </th>
             </tr>
             <tr>
+              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-neutral-100">Cell content</td>
+              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-neutral-100">Cell content</td>
               <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-neutral-100">Cell content</td>
               <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-neutral-100">Cell content</td>
               <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-neutral-100">Cell content</td>
@@ -753,12 +769,38 @@ export const TableFixedRight = {
               </th>
             </tr>
             <tr>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap">Cell content</td>
-              <th class="sd-table-cell left-0 top-auto sticky right-0 z-[2] sd-table-cell--shadow-left sd-table-cell--shadow-active">
+              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
+              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
+              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
+              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
+              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
+              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
+              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
+              <th class="sd-table-cell left-0 top-auto sticky right-0 z-[2] sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-white">
+                Header
+              </th>
+            </tr>
+            <tr>
+              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-neutral-100">Cell content</td>
+              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-neutral-100">Cell content</td>
+              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-neutral-100">Cell content</td>
+              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-neutral-100">Cell content</td>
+              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-neutral-100">Cell content</td>
+              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-neutral-100">Cell content</td>
+              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-neutral-100">Cell content</td>
+              <th class="sd-table-cell left-0 top-auto sticky right-0 z-[2] sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-neutral-100">
+                Header
+              </th>
+            </tr>
+            <tr>
+              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
+              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
+              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
+              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
+              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
+              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
+              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
+              <th class="sd-table-cell left-0 top-auto sticky right-0 z-[2] sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-white">
                 Header
               </th>
             </tr>
