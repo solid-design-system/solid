@@ -15,7 +15,7 @@ export default {
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/design/JZZL5QPXQVKVGt4CHBlNlz/Flipcard?node-id=0-1&t=XvDIhzw6GGTNxYbz-0'
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2724-2988&t=JCsisVFNkWSlhSSN-4'
     }
   }
 };

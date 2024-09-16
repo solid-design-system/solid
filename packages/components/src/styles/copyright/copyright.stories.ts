@@ -13,7 +13,11 @@ export default {
   tags: ['!dev'],
   component: 'sd-copyright',
   parameters: {
-    ...parameters
+    ...parameters,
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2113-30804&t=yS054qhxgjorbMDv-4'
+    }
   },
   args: overrideArgs(
     {

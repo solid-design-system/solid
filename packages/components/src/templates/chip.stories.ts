@@ -8,7 +8,7 @@ export default {
     chromatic: { disableSnapshot: true },
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/design/IUiRoK2jiW8ydM77uiY2RX/Chip?node-id=0-1&t=AZrPY5M4MtrvP04v-0'
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=3039-8274&t=JCsisVFNkWSlhSSN-4'
     }
   }
 };

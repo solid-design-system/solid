@@ -3,6 +3,12 @@ import { html } from 'lit-html';
 
 export default {
   tags: ['!dev'],
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=3649-9742&t=JCsisVFNkWSlhSSN-4'
+    }
+  },
   title: 'Templates/Quickfact'
 };
 

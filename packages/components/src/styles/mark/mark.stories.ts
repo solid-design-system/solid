@@ -19,11 +19,7 @@ export default {
   tags: ['!dev'],
   component: 'sd-mark',
   parameters: {
-    ...parameters,
-    design: {
-      type: 'figma',
-      url: ''
-    }
+    parameters
   },
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Lorem Ipsum' }),
   argTypes

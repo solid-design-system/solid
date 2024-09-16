@@ -18,7 +18,7 @@ export default {
     ...parameters,
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/file/Um1B3fI5fvdFVJv6LO7kZG/Meta-Information?type=design&node-id=0-1&mode=design&t=I2fDQn7HjSc75K1V-0'
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2706-33514&t=yS054qhxgjorbMDv-4'
     }
   },
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Meta information' }),

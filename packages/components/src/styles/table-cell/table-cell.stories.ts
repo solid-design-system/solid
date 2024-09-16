@@ -16,7 +16,11 @@ export default {
   title: 'Styles/sd-table-cell',
   component: 'sd-table-cell',
   parameters: {
-    ...parameters
+    ...parameters,
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2751-1280&t=uTI8bz6LT5ZxlxSd-4'
+    }
   },
   args: overrideArgs([
     { type: 'slot', name: 'default', value: 'Lorem ipsum dolor sit amet.' },

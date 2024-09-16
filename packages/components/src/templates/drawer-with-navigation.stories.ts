@@ -9,6 +9,10 @@ export default {
   tags: ['!dev'],
   title: 'Templates/Drawer with navigation',
   parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=3000-10344&t=JCsisVFNkWSlhSSN-4'
+    },
     chromatic: { disableSnapshot: true }
   },
   decorators: [

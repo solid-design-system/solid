@@ -44,7 +44,13 @@ export default {
     }
   ]),
   argTypes,
-  parameters: { ...parameters },
+  parameters: {
+    ...parameters,
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=3274-23489&node-type=section&t=5PpAC3TA3kYF7ufX-0'
+    }
+  },
   decorators: [withActions] as any
 };
 

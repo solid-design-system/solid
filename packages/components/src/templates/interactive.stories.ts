@@ -14,7 +14,11 @@ export default {
   tags: ['!dev'],
   title: 'Templates/Interactive',
   parameters: {
-    chromatic: { disableSnapshot: true }
+    chromatic: { disableSnapshot: true },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=3387-10058&t=7RxABd1ABtGBguGB-4'
+    }
   }
 };
 

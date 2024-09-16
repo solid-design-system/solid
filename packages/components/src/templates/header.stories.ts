@@ -3,6 +3,12 @@ import { html } from 'lit-html';
 
 export default {
   tags: ['!dev'],
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=3502-218572&t=JCsisVFNkWSlhSSN-4'
+    }
+  },
   title: 'Templates/Header'
 };
 /**

@@ -4,7 +4,7 @@ import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 import { withActions } from '@storybook/addon-actions/decorator';
 
-const { argTypes } = storybookDefaults('sd-link');
+const { argTypes, parameters } = storybookDefaults('sd-link');
 const { generateTemplate } = storybookTemplate('sd-link');
 const { overrideArgs } = storybookHelpers('sd-link');
 
@@ -25,6 +25,13 @@ export default {
     { type: 'attribute', name: 'href', value: '#' }
   ]),
   argTypes,
+  parameters: {
+    ...parameters,
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2009-2177&node-type=section&t=5PpAC3TA3kYF7ufX-0'
+    }
+  },
   decorators: [withActions] as any
 };
 

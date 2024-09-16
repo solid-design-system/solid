@@ -21,7 +21,13 @@ export default {
   title: 'Components/sd-brandshape',
   tags: ['!dev'],
   component: 'sd-brandshape',
-  parameters: { ...parameters },
+  parameters: {
+    ...parameters,
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2059-1578&node-type=section&t=5PpAC3TA3kYF7ufX-0'
+    }
+  },
   args: overrideArgs([
     {
       type: 'slot',

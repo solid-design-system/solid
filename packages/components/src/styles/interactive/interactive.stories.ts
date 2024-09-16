@@ -18,7 +18,13 @@ export default {
   title: 'Styles/sd-interactive',
   tags: ['!dev'],
   component: 'sd-interactive',
-  parameters: parameters,
+  parameters: {
+    ...parameters,
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=3173-12771&t=yS054qhxgjorbMDv-4'
+    }
+  },
   args: overrideArgs([
     { type: 'slot', name: 'default', value: 'Lorem Ipsum' },
     { type: 'attribute', name: 'sd-interactive--reset', value: true }

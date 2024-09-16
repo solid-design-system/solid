@@ -33,7 +33,13 @@ export default {
     value: defaultSlotContent
   }),
   argTypes,
-  parameters: { ...parameters },
+  parameters: {
+    ...parameters,
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2269-30131&node-type=section&t=5PpAC3TA3kYF7ufX-0'
+    }
+  },
   decorators: [
     withActions,
     (story: any) =>
