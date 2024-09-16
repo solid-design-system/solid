@@ -17,7 +17,7 @@ const { overrideArgs } = storybookHelpers('sd-link');
 const { generateScreenshotStory } = storybookUtilities;
 
 export default {
-  title: 'Components/sd-link/Screenshot Tests',
+  title: 'Components/sd-link/Screenshots: sd-link',
   component: 'sd-link',
   tags: ['!autodocs'],
   args: overrideArgs([

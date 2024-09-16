@@ -14,7 +14,7 @@ const { overrideArgs } = storybookHelpers('sd-header');
 const { generateScreenshotStory } = storybookUtilities;
 
 export default {
-  title: 'Components/sd-header/Screenshot Tests',
+  title: 'Components/sd-header/Screenshots: sd-header',
   tags: ['!autodocs'],
   component: 'sd-header',
   args: overrideArgs([

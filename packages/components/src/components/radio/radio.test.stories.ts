@@ -12,7 +12,7 @@ const { overrideArgs } = storybookHelpers('sd-radio');
 const { generateScreenshotStory } = storybookUtilities;
 
 export default {
-  title: 'Components/sd-radio/Screenshot Tests',
+  title: 'Components/sd-radio/Screenshots: sd-radio',
   tags: ['!autodocs'],
   component: 'sd-radio',
   args: overrideArgs([{ type: 'slot', name: 'default', value: 'Default Slot' }]),

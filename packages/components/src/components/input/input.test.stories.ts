@@ -17,7 +17,7 @@ const { overrideArgs } = storybookHelpers('sd-input');
 const { generateScreenshotStory } = storybookUtilities;
 
 export default {
-  title: 'Components/sd-input/Screenshot Tests',
+  title: 'Components/sd-input/Screenshots: sd-input',
   component: 'sd-input',
   tags: ['!autodocs'],
   args,

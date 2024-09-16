@@ -14,7 +14,7 @@ const { generateTemplate } = storybookTemplate('sd-tab');
 const { generateScreenshotStory } = storybookUtilities;
 
 export default {
-  title: 'Components/sd-tab/Screenshot Tests',
+  title: 'Components/sd-tab/Screenshots: sd-tab',
   tags: ['!autodocs'],
   component: 'sd-tab',
   args: overrideArgs([

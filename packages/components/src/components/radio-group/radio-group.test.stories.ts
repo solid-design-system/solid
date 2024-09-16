@@ -15,7 +15,7 @@ const { overrideArgs } = storybookHelpers('sd-radio-group');
 const { generateScreenshotStory } = storybookUtilities;
 
 export default {
-  title: 'Components/sd-radio-group/Screenshot Tests',
+  title: 'Components/sd-radio-group/Screenshots: sd-radio-group',
   tags: ['!autodocs'],
   component: 'sd-radio-group',
   parameters: {

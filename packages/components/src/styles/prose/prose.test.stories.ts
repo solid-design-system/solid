@@ -1,15 +1,9 @@
 import '../../solid-components';
-import {
-  storybookDefaults,
-  storybookHelpers,
-  storybookTemplate,
-  storybookUtilities
-} from '../../../scripts/storybook/helper';
+import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
 const { argTypes, parameters } = storybookDefaults('sd-prose');
 const { overrideArgs } = storybookHelpers('sd-prose');
 const { generateTemplate } = storybookTemplate('sd-prose');
-const { generateScreenshotStory } = storybookUtilities;
 
 // HTML helper to get syntax highlighting and formatting in the template string
 const html = String.raw;
@@ -19,7 +13,7 @@ const html = String.raw;
  */
 
 export default {
-  title: 'Styles/sd-prose/Screenshot Tests',
+  title: 'Styles/sd-prose/Screenshots: sd-prose',
   tags: ['!autodocs'],
   component: 'sd-prose',
   parameters: {
@@ -696,6 +690,7 @@ export const Default = {
 };
 
 export const Inverted = {
+  chromatic: { disableSnapshot: false }, // We have to explicitly enable snapshots for these stories as it fails otherwise because it would be too big
   name: 'Inverted',
   render: (args: { [k: string]: any }) => {
     return generateTemplate({
@@ -719,6 +714,7 @@ export const Inverted = {
 };
 
 export const Samples = {
+  chromatic: { disableSnapshot: false }, // We have to explicitly enable snapshots for these stories as it fails otherwise because it would be too big
   name: 'Samples',
   render: (args: { [k: string]: any }) => {
     return generateTemplate({
@@ -729,5 +725,3 @@ export const Samples = {
     });
   }
 };
-
-export const Combination = generateScreenshotStory([Default, Inverted, Samples]);

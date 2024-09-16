@@ -9,7 +9,7 @@ const { generateTemplate } = storybookTemplate('sd-spinner');
 const { generateScreenshotStory } = storybookUtilities;
 
 export default {
-  title: 'Components/sd-spinner/Screenshot Tests',
+  title: 'Components/sd-spinner/Screenshots: sd-spinner',
   component: 'sd-spinner',
   tags: ['!autodocs'],
   args,

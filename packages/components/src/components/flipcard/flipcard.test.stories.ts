@@ -15,7 +15,7 @@ const { overrideArgs } = storybookHelpers('sd-flipcard');
 const { generateScreenshotStory } = storybookUtilities;
 
 export default {
-  title: 'Components/sd-flipcard/Screenshot Tests',
+  title: 'Components/sd-flipcard/Screenshots: sd-flipcard',
   tags: ['!autodocs'],
   component: 'sd-flipcard',
   args: overrideArgs([

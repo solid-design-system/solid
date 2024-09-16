@@ -20,7 +20,7 @@ const { generateScreenshotStory } = storybookUtilities;
  */
 
 export default {
-  title: 'Styles/sd-paragraph/Screenshot Tests',
+  title: 'Styles/sd-paragraph/Screenshots: sd-paragraph',
   tags: ['!autodocs'],
   component: 'sd-paragraph',
   parameters: {

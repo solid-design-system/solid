@@ -16,7 +16,7 @@ const { overrideArgs } = storybookHelpers('sd-textarea');
 const { generateScreenshotStory } = storybookUtilities;
 
 export default {
-  title: 'Components/sd-textarea/Screenshot Tests',
+  title: 'Components/sd-textarea/Screenshots: sd-textarea',
   tags: ['!autodocs'],
   component: 'sd-textarea',
   args,

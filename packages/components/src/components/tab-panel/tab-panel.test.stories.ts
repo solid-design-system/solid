@@ -7,7 +7,7 @@ const { overrideArgs } = storybookHelpers('sd-tab-panel');
 const { generateTemplate } = storybookTemplate('sd-tab-panel');
 
 export default {
-  title: 'Components/sd-tab-panel/Screenshot Tests',
+  title: 'Components/sd-tab-panel/Screenshots: sd-tab-panel',
   tags: ['!autodocs'],
   component: 'sd-tab-panel',
   args: overrideArgs([

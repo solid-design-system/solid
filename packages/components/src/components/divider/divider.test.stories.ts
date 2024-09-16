@@ -13,7 +13,7 @@ const { overrideArgs } = storybookHelpers('sd-divider');
 const { generateScreenshotStory } = storybookUtilities;
 
 export default {
-  title: 'Components/sd-divider/Screenshot Tests',
+  title: 'Components/sd-divider/Screenshots: sd-divider',
   tags: ['!autodocs'],
   component: 'sd-divider',
   args: overrideArgs([{ type: 'slot', name: 'default', value: 'Default Slot' }]),

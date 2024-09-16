@@ -16,7 +16,7 @@ const { overrideArgs } = storybookHelpers('sd-dropdown');
 const { generateScreenshotStory } = storybookUtilities;
 
 export default {
-  title: 'Components/sd-dropdown/Screenshot Tests',
+  title: 'Components/sd-dropdown/Screenshots: sd-dropdown',
   tags: ['!autodocs'],
   component: 'sd-dropdown',
   args: overrideArgs([

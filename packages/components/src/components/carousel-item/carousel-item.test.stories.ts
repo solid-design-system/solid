@@ -5,7 +5,7 @@ const { overrideArgs } = storybookHelpers('sd-carousel-item');
 const { generateTemplate } = storybookTemplate('sd-carousel-item');
 
 export default {
-  title: 'Components/sd-carousel-item/Screenshot Tests',
+  title: 'Components/sd-carousel-item/Screenshots: sd-carousel-item',
   tags: ['!autodocs'],
   component: 'sd-carousel-item',
   args: overrideArgs([

@@ -13,7 +13,7 @@ const { generateTemplate } = storybookTemplate('sd-badge');
 const { generateScreenshotStory } = storybookUtilities;
 
 export default {
-  title: 'Components/sd-badge/Screenshot Tests',
+  title: 'Components/sd-badge/Screenshots: sd-badge',
   component: 'sd-badge',
   tags: ['!autodocs'],
   parameters: {

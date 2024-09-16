@@ -10,7 +10,7 @@ const { generateTemplate } = storybookTemplate('sd-table');
  */
 
 export default {
-  title: 'Styles/sd-table/Screenshot Tests',
+  title: 'Styles/sd-table/Screenshot: sd-table',
   tags: ['!autodocs'],
   component: 'sd-table',
   parameters: {

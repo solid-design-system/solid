@@ -16,7 +16,7 @@ const { generateScreenshotStory } = storybookUtilities;
  * Used to display an image or a video preview.
  */
 export default {
-  title: 'Styles/sd-media/Screenshot Tests',
+  title: 'Styles/sd-media/Screenshots: sd-media',
   tags: ['!autodocs'],
   component: 'sd-media',
   parameters: {

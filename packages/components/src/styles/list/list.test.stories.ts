@@ -26,7 +26,7 @@ const html = String.raw;
  */
 
 export default {
-  title: 'Styles/sd-list/Screenshot Tests',
+  title: 'Styles/sd-list/Screenshots: sd-list',
   tags: ['!autodocs'],
   component: 'sd-list',
   parameters: {

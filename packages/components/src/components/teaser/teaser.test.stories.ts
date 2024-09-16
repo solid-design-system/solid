@@ -13,7 +13,7 @@ const { generateTemplate } = storybookTemplate('sd-teaser');
 const { generateScreenshotStory } = storybookUtilities;
 
 export default {
-  title: 'Components/sd-teaser/Screenshot Tests',
+  title: 'Components/sd-teaser/Screenshots: sd-teaser',
   component: 'sd-teaser',
   tags: ['!autodocs'],
   args: overrideArgs([

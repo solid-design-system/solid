@@ -17,7 +17,7 @@ const { generateScreenshotStory } = storybookUtilities;
  */
 
 export default {
-  title: 'Styles/sd-footnotes/Screenshot Tests',
+  title: 'Styles/sd-footnotes/Screenshots: sd-footnotes',
   tags: ['!autodocs'],
   component: 'sd-footnotes',
   parameters: {

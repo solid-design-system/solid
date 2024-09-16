@@ -21,7 +21,7 @@ const { generateScreenshotStory } = storybookUtilities;
  */
 
 export default {
-  title: 'Styles/sd-display/Screenshot Tests',
+  title: 'Styles/sd-display/Screenshots: sd-display',
   tags: ['!autodocs'],
   component: 'sd-display',
   parameters: {

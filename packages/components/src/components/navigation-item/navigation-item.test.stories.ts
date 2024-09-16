@@ -38,7 +38,7 @@ const childrenSlotConstant: ConstantDefinition = {
 
 // Stories
 export default {
-  title: 'Components/sd-navigation-item/Screenshot Tests',
+  title: 'Components/sd-navigation-item/Screenshots: sd-navigation-item',
   component: 'sd-navigation-item',
   tags: ['!autodocs'],
   args: overrideArgs([{ type: 'slot', name: 'default', value: 'Navigation' }]),

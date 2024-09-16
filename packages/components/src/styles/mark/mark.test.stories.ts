@@ -17,7 +17,7 @@ const { generateScreenshotStory } = storybookUtilities;
  */
 
 export default {
-  title: 'Styles/sd-mark/Screenshot Tests',
+  title: 'Styles/sd-mark/Screenshots: sd-mark',
   tags: ['!autodocs'],
   component: 'sd-mark',
   parameters: {

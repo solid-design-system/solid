@@ -17,7 +17,7 @@ const { overrideArgs } = storybookHelpers('sd-notification');
 const { generateScreenshotStory } = storybookUtilities;
 
 export default {
-  title: 'Components/sd-notification/Screenshot Tests',
+  title: 'Components/sd-notification/Screenshots: sd-notification',
   tags: ['!autodocs'],
   component: 'sd-notification',
   args: overrideArgs([

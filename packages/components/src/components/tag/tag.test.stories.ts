@@ -16,7 +16,7 @@ const { overrideArgs } = storybookHelpers('sd-tag');
 const { generateScreenshotStory } = storybookUtilities;
 
 export default {
-  title: 'Components/sd-tag/Screenshot Tests',
+  title: 'Components/sd-tag/Screenshots: sd-tag',
   component: 'sd-tag',
   tags: ['!autodocs'],
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Tag' }),

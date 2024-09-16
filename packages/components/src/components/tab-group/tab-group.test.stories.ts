@@ -28,7 +28,7 @@ function generateTabsAndPanels(
 }
 
 export default {
-  title: 'Components/sd-tab-group/Screenshot Tests',
+  title: 'Components/sd-tab-group/Screenshots: sd-tab-group',
   tags: ['!autodocs'],
   component: 'sd-tab-group',
   args: overrideArgs({

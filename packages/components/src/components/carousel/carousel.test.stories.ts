@@ -15,7 +15,7 @@ const { generateTemplate } = storybookTemplate('sd-carousel');
 const { generateScreenshotStory } = storybookUtilities;
 
 export default {
-  title: 'Components/sd-carousel/Screenshot Tests',
+  title: 'Components/sd-carousel/Screenshots: sd-carousel',
   tags: ['!autodocs'],
   component: 'sd-carousel',
   args: overrideArgs([
@@ -23,11 +23,11 @@ export default {
       type: 'slot',
       name: 'default',
       value: `
-        <sd-carousel-item><div class="slot slot--border slot--text h-16">Default slot 1</div></sd-carousel-item>
-        <sd-carousel-item><div class="slot slot--border slot--text h-16">Default slot 2</div></sd-carousel-item>
-        <sd-carousel-item><div class="slot slot--border slot--text h-16">Default slot 3</div></sd-carousel-item>
-        <sd-carousel-item><div class="slot slot--border slot--text h-16">Default slot 4</div></sd-carousel-item>
-        <sd-carousel-item><div class="slot slot--border slot--text h-16">Default slot 5</div></sd-carousel-item>`
+        <sd-carousel-item><div class="slot slot--border slot--text h-12">Default slot 1</div></sd-carousel-item>
+        <sd-carousel-item><div class="slot slot--border slot--text h-12">Default slot 2</div></sd-carousel-item>
+        <sd-carousel-item><div class="slot slot--border slot--text h-12">Default slot 3</div></sd-carousel-item>
+        <sd-carousel-item><div class="slot slot--border slot--text h-12">Default slot 4</div></sd-carousel-item>
+        <sd-carousel-item><div class="slot slot--border slot--text h-12">Default slot 5</div></sd-carousel-item>`
     }
   ]),
   argTypes,
@@ -174,12 +174,12 @@ export const SlidesPerMove = {
           type: 'slot',
           name: 'default',
           value: `
-            <sd-carousel-item><div class="slot slot--border slot--text h-16">Default slot 1</div></sd-carousel-item>
-            <sd-carousel-item><div class="slot slot--border slot--text h-16">Default slot 2</div></sd-carousel-item>
-            <sd-carousel-item><div class="slot slot--border slot--text h-16">Default slot 3</div></sd-carousel-item>
-            <sd-carousel-item><div class="slot slot--border slot--text h-16">Default slot 4</div></sd-carousel-item>
-            <sd-carousel-item><div class="slot slot--border slot--text h-16">Default slot 5</div></sd-carousel-item>
-            <sd-carousel-item><div class="slot slot--border slot--text h-16">Default slot 6</div></sd-carousel-item>`
+            <sd-carousel-item><div class="slot slot--border slot--text h-12">Default slot 1</div></sd-carousel-item>
+            <sd-carousel-item><div class="slot slot--border slot--text h-12">Default slot 2</div></sd-carousel-item>
+            <sd-carousel-item><div class="slot slot--border slot--text h-12">Default slot 3</div></sd-carousel-item>
+            <sd-carousel-item><div class="slot slot--border slot--text h-12">Default slot 4</div></sd-carousel-item>
+            <sd-carousel-item><div class="slot slot--border slot--text h-12">Default slot 5</div></sd-carousel-item>
+            <sd-carousel-item><div class="slot slot--border slot--text h-12">Default slot 6</div></sd-carousel-item>`
         }
       ],
       args

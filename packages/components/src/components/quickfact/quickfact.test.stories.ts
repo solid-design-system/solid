@@ -25,7 +25,7 @@ const { generateScreenshotStory } = storybookUtilities;
  *  You can follow this issue here: https://github.com/storybookjs/storybook/issues/28634
  */
 export default {
-  title: 'Components/sd-quickfact/Screenshot Tests',
+  title: 'Components/sd-quickfact/Screenshots: sd-quickfact',
   tags: ['!autodocs'],
   component: 'sd-quickfact',
   args: overrideArgs([

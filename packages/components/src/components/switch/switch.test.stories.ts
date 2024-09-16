@@ -15,7 +15,7 @@ const { overrideArgs } = storybookHelpers('sd-switch');
 const { generateScreenshotStory } = storybookUtilities;
 
 export default {
-  title: 'Components/sd-switch/Screenshot Tests',
+  title: 'Components/sd-switch/Screenshots: sd-switch',
   component: 'sd-switch',
   tags: ['!autodocs'],
   args: overrideArgs([{ type: 'slot', name: 'default', value: 'Default Slot' }]),
@@ -167,7 +167,7 @@ export const Parts = {
                     #part-${part} sd-switch::part(${part}){outline: solid 2px red};
                     .hidden {display: none}
                 </style>
-                
+
                 <div id="part-${part}">${
                   part.includes('control--checked')
                     ? '<sd-switch checked>Default Slot</sd-switch>'

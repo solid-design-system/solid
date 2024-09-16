@@ -15,7 +15,7 @@ const { overrideArgs } = storybookHelpers('sd-checkbox-group');
 const { generateScreenshotStory } = storybookUtilities;
 
 export default {
-  title: 'Components/sd-checkbox-group/Screenshot Tests',
+  title: 'Components/sd-checkbox-group/Screenshots: sd-checkbox-group',
   tags: ['!autodocs'],
   component: 'sd-checkbox-group',
   args: overrideArgs([

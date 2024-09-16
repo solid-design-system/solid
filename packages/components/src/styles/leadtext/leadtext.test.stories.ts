@@ -21,7 +21,7 @@ const { generateScreenshotStory } = storybookUtilities;
  */
 
 export default {
-  title: 'Styles/sd-leadtext/Screenshot Tests',
+  title: 'Styles/sd-leadtext/Screenshots: sd-leadtext',
   tags: ['!autodocs'],
   component: 'sd-leadtext',
   parameters: {

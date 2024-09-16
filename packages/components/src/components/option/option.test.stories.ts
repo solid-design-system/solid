@@ -18,7 +18,7 @@ const { generateScreenshotStory } = storybookUtilities;
  */
 
 export default {
-  title: 'Components/sd-option/Screenshot Tests',
+  title: 'Components/sd-option/Screenshots: sd-option',
   tags: ['!autodocs'],
   component: 'sd-option',
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Option' }),

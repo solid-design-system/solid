@@ -16,7 +16,7 @@ const { generateTemplate } = storybookTemplate('sd-expandable');
 const { generateScreenshotStory } = storybookUtilities;
 
 export default {
-  title: 'Components/sd-expandable/Screenshot Tests',
+  title: 'Components/sd-expandable/Screenshots: sd-expandable',
   tags: ['!autodocs'],
   component: 'sd-expandable',
   args: overrideArgs([

@@ -8,7 +8,7 @@ const { generateTemplate } = storybookTemplate('sd-map-marker');
 const { generateScreenshotStory } = storybookUtilities;
 
 export default {
-  title: 'Components/sd-map-marker/Screenshot Tests',
+  title: 'Components/sd-map-marker/Screenshots: sd-map-marker',
   tags: ['!autodocs'],
   component: 'sd-map-marker',
   parameters: {

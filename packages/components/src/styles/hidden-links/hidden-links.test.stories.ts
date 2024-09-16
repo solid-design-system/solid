@@ -21,7 +21,7 @@ const html = String.raw;
  */
 
 export default {
-  title: 'Styles/sd-hidden-links/Screenshot Tests',
+  title: 'Styles/sd-hidden-links/Screenshots: sd-hidden-links',
   component: 'sd-hidden-links',
   tags: ['!autodocs'],
   argTypes,

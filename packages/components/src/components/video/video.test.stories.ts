@@ -34,7 +34,7 @@ const iconConstant: ConstantDefinition = {
 };
 
 export default {
-  title: 'Components/sd-video/Screenshot Tests',
+  title: 'Components/sd-video/Screenshots: sd-video',
   component: 'sd-video',
   tags: ['!autodocs'],
   args,

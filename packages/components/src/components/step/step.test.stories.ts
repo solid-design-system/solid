@@ -16,7 +16,7 @@ const { generateTemplate } = storybookTemplate('sd-step');
 const { generateScreenshotStory } = storybookUtilities;
 
 export default {
-  title: 'Components/sd-step/Screenshot Tests',
+  title: 'Components/sd-step/Screenshots: sd-step',
   tags: ['!autodocs'],
   component: 'sd-step',
   args: overrideArgs([

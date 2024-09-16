@@ -15,7 +15,7 @@ const { generateTemplate } = storybookTemplate('sd-brandshape');
 const { generateScreenshotStory } = storybookUtilities;
 
 export default {
-  title: 'Components/sd-brandshape/Screenshot Tests',
+  title: 'Components/sd-brandshape/Screenshots: sd-brandshape',
   component: 'sd-brandshape',
   tags: ['!autodocs'],
   parameters: { ...parameters },

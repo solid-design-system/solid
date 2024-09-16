@@ -17,7 +17,7 @@ const { generateTemplate } = storybookTemplate('sd-accordion');
 const { generateScreenshotStory } = storybookUtilities;
 
 export default {
-  title: 'Components/sd-accordion/Screenshot Tests',
+  title: 'Components/sd-accordion/Screenshots: sd-accordion',
   component: 'sd-accordion',
   tags: ['!autodocs'],
   args: overrideArgs([

@@ -10,7 +10,7 @@ const { generateTemplate } = storybookTemplate('sd-drawer');
 const { overrideArgs } = storybookHelpers('sd-drawer');
 
 export default {
-  title: 'Components/sd-drawer/Screenshot Tests',
+  title: 'Components/sd-drawer/Screenshots: sd-drawer',
   tags: ['!autodocs'],
   component: 'sd-drawer',
 
