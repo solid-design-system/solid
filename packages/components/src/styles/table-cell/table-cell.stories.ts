@@ -7,7 +7,7 @@ const { overrideArgs } = storybookHelpers('sd-table-cell');
 const { generateTemplate } = storybookTemplate('sd-table-cell');
 
 /**
- * Used to organize and structured content, scanning, comparing, and analyzing the data.
+ * Used to organize and structure content, scanning, comparing, and analyzing the data.
  *
  * Offers basic styling for table cells. It is designed to be used in conjunction with the ”sd-table” component.
  *
