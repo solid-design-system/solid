@@ -146,7 +146,7 @@ export const Icon = {
       <div class="flex gap-12">
         <sd-button>Icon left<sd-icon name="system/image" slot="icon-left"></sd-icon></sd-button>
         <sd-button>Icon right<sd-icon name="system/image" slot="icon-right"></sd-icon></sd-button>
-        <sd-button><sd-icon name="system/image"></sd-icon></sd-button>
+        <sd-button><sd-icon name="system/image" label="Icon only"></sd-icon></sd-button>
       </div>
     `;
   }
