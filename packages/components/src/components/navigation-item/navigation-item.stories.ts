@@ -9,8 +9,11 @@ const { generateTemplate } = storybookTemplate('sd-navigation-item');
 /**
  * Used to facilitate seamless page transitions and helps users orient themselves within the application.
  *
+ * **Related components**:
+ * - [sd-header](?path=/docs/components-sd-header--docs)
+ *
  * **Related templates**:
- * - [Dropdown with Navigation Items](?path=/docs/templates-dropdown-with-navigation-items--docs)
+ * - [Dropdown with Navigation Items](?path=/docs/templates-dropdown--docs#dropdown-with-navigation-items)
  */
 
 export default {
@@ -35,22 +38,10 @@ export const Default = {
 };
 
 /**
- * Use the `vertical` attribute to set the axis of the navigation-item.
- * - default: horizontal navigation for headers
- * - vertical: vertical navigation for e.g. drawers
- */
-
-export const Orientation = {
-  render: () =>
-    html`<sd-navigation-item>Horizontal Navigation</sd-navigation-item>
-      <sd-navigation-item vertical>Vertical Navigation</sd-navigation-item>`
-};
-
-/**
- * Use the `size` attribute to change the font size of the navigation item.
- * - `sm`: used for 3rd level navigation
+ * Use the `size` attribute to change the font size of the navigation item:
+ * - `sm`: Used for 3rd level navigation
  * - `base` (default)
- * - `lg`: used for 2nd level navigation
+ * - `lg`: Used for 2nd level navigation
  */
 
 export const Size = {
@@ -64,20 +55,30 @@ export const Size = {
 };
 
 /**
- * Use the attribute `href` to change the navigation item to a link.
- * - `href` attribute - The URL to navigate to.
- * - `target` attribute - The target of the link. Can assume the values `_blank`, `_parent`, `_self`, or `_top`.
- * - `download` attribute - The filename to download the link as.
+ * Use the `vertical` attribute to set the axis of the navigation-item.
  */
 
-export const Link = {
+export const Orientation = {
+  render: () =>
+    html`<sd-navigation-item>Horizontal Navigation</sd-navigation-item>
+      <sd-navigation-item vertical>Vertical Navigation</sd-navigation-item>`
+};
+
+/**
+ * - Use the `href`attribute to change the navigation item to a link. Allows to set the URL to navigate to.
+ * - Use the `target` attribute to specify where to open the link. Can assume the values `_blank`, `_parent`, `_self`, or `_top`.
+ * - Use the `download` attribute to tell the browser to download the linked file as this filename.
+ */
+
+export const AsLink = {
+  name: 'As link',
   render: () => html`
     <sd-navigation-item href="https://www.union-investment.de/" target="_blank">Link</sd-navigation-item>
   `
 };
 
 /**
- * Use the `current` attribute to change the navigation item to a current state and and make it bold.
+ * Use the `current` attribute to change the navigation item to a current state and make it bold.
  */
 
 export const Current = {
@@ -136,7 +137,8 @@ export const Accordion = {
  *
  * Use the `separated` attribute, to have more that only one action. It is possible to use it as a link and an accordion simultaneously.
  *
- * - It needs a `children slot` and an `href` attribute. `target` and `download` attributes are optional.
+ * - Only works with a `children slot` and an `href` attribute.
+ * - `target` and `download` attributes are optional.
  */
 export const Separated = {
   render: () =>
@@ -149,7 +151,7 @@ export const Separated = {
 };
 
 /**
- * Use the `description` to provide a description for the navigation item.
+ * Use the `description` slot to provide a description for the navigation item.
  * - Only works with `vertical` attribute.
  */
 export const Description = {
