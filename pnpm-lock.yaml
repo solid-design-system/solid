@@ -82,7 +82,7 @@ importers:
         version: 0.9.4
       '@geometricpanda/storybook-addon-badges':
         specifier: ^2.0.0
-        version: 2.0.2(@storybook/blocks@8.1.10)(@storybook/components@7.6.19)(@storybook/core-events@7.6.17)(@storybook/manager-api@7.6.17)(@storybook/preview-api@7.6.17)(@storybook/theming@8.1.10)(@storybook/types@7.6.17)(react-dom@18.3.1)(react@18.3.1)
+        version: 2.0.2(@storybook/blocks@8.1.10)(@storybook/components@7.6.19)(@storybook/core-events@7.6.19)(@storybook/manager-api@7.6.17)(@storybook/preview-api@7.6.17)(@storybook/theming@8.1.10)(@storybook/types@7.6.19)(react-dom@18.3.1)(react@18.3.1)
       '@mariohamann/tailwindcss-var':
         specifier: github:mariohamann/tailwindcss-var
         version: github.com/mariohamann/tailwindcss-var/671cedc8890c64d3a54173513f5cb9d6dea4aaf1(tailwindcss@3.4.1)
@@ -170,6 +170,9 @@ importers:
       cem-plugin-vs-code-custom-data-generator:
         specifier: ^1.4.2
         version: 1.4.2
+      change-case:
+        specifier: ^5.4.4
+        version: 5.4.4
       chromatic:
         specifier: ^11.5.4
         version: 11.5.4
@@ -2468,7 +2471,7 @@ packages:
   /@floating-ui/utils@0.2.2:
     resolution: {integrity: sha512-J4yDIIthosAsRZ5CPYP/jQvUAQtlZTTD/4suA08/FEnlxqW3sKS9iAhgsa9VYLZ6vDHn/ixJgIqRQPotoBjxIw==}
 
-  /@geometricpanda/storybook-addon-badges@2.0.2(@storybook/blocks@8.1.10)(@storybook/components@7.6.19)(@storybook/core-events@7.6.17)(@storybook/manager-api@7.6.17)(@storybook/preview-api@7.6.17)(@storybook/theming@8.1.10)(@storybook/types@7.6.17)(react-dom@18.3.1)(react@18.3.1):
+  /@geometricpanda/storybook-addon-badges@2.0.2(@storybook/blocks@8.1.10)(@storybook/components@7.6.19)(@storybook/core-events@7.6.19)(@storybook/manager-api@7.6.17)(@storybook/preview-api@7.6.17)(@storybook/theming@8.1.10)(@storybook/types@7.6.19)(react-dom@18.3.1)(react@18.3.1):
     resolution: {integrity: sha512-RlJvQcSSXwwrN+ABc+2s1UDatWSUsba9TPX/TyNVyobuZZPvu+Bx1d2HVDCIVtXwhlrSvgVB2yr+nVa18edOgw==}
     peerDependencies:
       '@storybook/blocks': ^7.0.0
@@ -2488,11 +2491,11 @@ packages:
     dependencies:
       '@storybook/blocks': 8.1.10(@types/react@18.2.64)(prettier@3.3.2)(react-dom@18.3.1)(react@18.3.1)
       '@storybook/components': 7.6.19(@types/react@18.2.64)(react-dom@18.3.1)(react@18.3.1)
-      '@storybook/core-events': 7.6.17
+      '@storybook/core-events': 7.6.19
       '@storybook/manager-api': 7.6.17(react-dom@18.3.1)(react@18.3.1)
       '@storybook/preview-api': 7.6.17
       '@storybook/theming': 8.1.10(react-dom@18.3.1)(react@18.3.1)
-      '@storybook/types': 7.6.17
+      '@storybook/types': 7.6.19
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
     dev: true
@@ -6735,6 +6738,10 @@ packages:
       sentence-case: 3.0.4
       snake-case: 3.0.4
       tslib: 2.6.2
+    dev: true
+
+  /change-case@5.4.4:
+    resolution: {integrity: sha512-HRQyTk2/YPEkt9TnUPbOpr64Uw3KOicFWPVBb+xiHvd6eBx/qPr9xqfBFDT8P2vWsvvz4jbEkfDe71W3VyNu2w==}
     dev: true
 
   /character-entities@2.0.2:

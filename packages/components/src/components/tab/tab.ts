@@ -30,9 +30,6 @@ export default class SdTab extends SolidElement {
 
   @query('[part=base]') tab: HTMLElement;
 
-  /** The name of the tab panel this tab is associated with. The panel must be located in the same tab group. */
-  @property({ reflect: true }) panel = '';
-
   /** When set to container, a border appears around the current tab and tab-panel. */
   @property({ type: String, reflect: true }) variant: 'default' | 'container' = 'default';
 
@@ -41,6 +38,9 @@ export default class SdTab extends SolidElement {
 
   /** Disables the tab and prevents selection. */
   @property({ type: Boolean, reflect: true }) disabled = false;
+
+  /** The name of the tab panel this tab is associated with. The panel must be located in the same tab group. */
+  @property({ reflect: true }) panel = '';
 
   connectedCallback() {
     super.connectedCallback();

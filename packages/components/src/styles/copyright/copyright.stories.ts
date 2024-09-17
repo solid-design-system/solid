@@ -1,5 +1,4 @@
 import '../../solid-components';
-
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
 const { argTypes, parameters } = storybookDefaults('sd-copyright');
@@ -7,13 +6,18 @@ const { overrideArgs } = storybookHelpers('sd-copyright');
 const { generateTemplate } = storybookTemplate('sd-copyright');
 
 /**
- * Add a copyright at the bottom of a image.
+ * Used to be displayed at the bottom of an image for example.
  */
 export default {
   title: 'Styles/sd-copyright',
+  tags: ['!dev'],
   component: 'sd-copyright',
   parameters: {
-    ...parameters
+    ...parameters,
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2113-30804&t=yS054qhxgjorbMDv-4'
+    }
   },
   args: overrideArgs(
     {

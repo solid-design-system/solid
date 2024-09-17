@@ -18,8 +18,8 @@ const defaultLibrary: IconLibrary = {
     };
     recoloredElements['currentColorFills'] = svg.querySelectorAll('[fill="#00358e" i]');
     recoloredElements['currentColorStrokes'] = svg.querySelectorAll('[stroke="#00358e" i]');
-    recoloredElements['greenFills'] = svg.querySelectorAll('[fill="#43b02a" i]');
-    recoloredElements['greenStrokes'] = svg.querySelectorAll('[stroke="#43b02a" i]');
+    recoloredElements['greenFills'] = svg.querySelectorAll('[fill="#2d9d00" i]');
+    recoloredElements['greenStrokes'] = svg.querySelectorAll('[stroke="#2d9d00" i]');
 
     recoloredElements.currentColorFills.forEach(filledElement => {
       filledElement.setAttribute('fill', 'currentColor');

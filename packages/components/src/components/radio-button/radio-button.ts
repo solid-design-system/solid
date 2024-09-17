@@ -35,6 +35,12 @@ export default class SdRadioButton extends SolidElement {
 
   @state() protected hasFocus = false;
 
+  /** The radio button's size. */
+  @property({ reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
+
+  /** Disables the radio button. */
+  @property({ type: Boolean, reflect: true }) disabled = false;
+
   /**
    * @internal The radio button's checked state. This is exposed as an "internal" attribute so we can reflect it, making
    * it easier to style in button groups.
@@ -43,12 +49,6 @@ export default class SdRadioButton extends SolidElement {
 
   /** The radio's value. When selected, the radio group will receive this value. */
   @property() value: string;
-
-  /** Disables the radio button. */
-  @property({ type: Boolean, reflect: true }) disabled = false;
-
-  /** The radio button's size. */
-  @property({ reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
 
   connectedCallback() {
     super.connectedCallback();
@@ -109,7 +109,7 @@ export default class SdRadioButton extends SolidElement {
               : this.disabled && !this.checked
                 ? 'border-neutral-500 text-neutral-500 hover:cursor-not-allowed'
                 : this.disabled && this.checked
-                  ? 'bg-neutral-500 text-white hover:cursor-not-allowed'
+                  ? 'bg-neutral-500 border-neutral-500 text-white hover:cursor-not-allowed'
                   : 'bg-transparent text-primary border-primary hover:bg-primary-100 hover:border-primary-500 hover:text-primary-500 cursor-pointer',
             hasDefaultSlot && 'px-4',
             this.hasFocus && 'focused-class',

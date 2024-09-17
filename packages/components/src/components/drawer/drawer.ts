@@ -329,7 +329,7 @@ export default class SdDrawer extends SolidElement {
                       size="lg"
                       part="close-button"
                       @click=${() => this.requestClose('close-button')}
-                      ><sd-icon name="close" library="system"></sd-icon
+                      ><sd-icon label=${this.localize.term('close')} name="close" library="system"></sd-icon
                     ></sd-button>
                   </div>
                 </header>

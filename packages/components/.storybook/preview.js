@@ -3,6 +3,68 @@ import '../src/solid-styles.css';
 import '../src/styles/tailwind.css';
 import { registerIconLibrary } from '../src/utilities/icon-library';
 import { storybookUtilities } from '../scripts/storybook/helper';
+import docsCodepenEnhancer from '../scripts/storybook/docs-codepen-enhancer';
+
+export const preview = {
+  decorators: [],
+  parameters: {
+    chromatic: {
+      disableSnapshot: true
+    },
+    docs: {
+      story: { inline: true },
+      toc: true,
+      source: {
+        transform: (code, storyContent) => {
+          let output = code;
+
+          // This fixes the usage of self built html`` string literals
+          if (output.trim().startsWith('&lt;')) {
+            output = output
+              .replace(/&lt;/g, '<')
+              .replace(/&gt;/g, '>')
+              .replace(/&amp;/g, '&')
+              .replace(/&quot;/g, '"')
+              .replace(/&#039;/g, "'");
+          }
+
+          output = storybookUtilities.codeOptimizer(output);
+
+          return docsCodepenEnhancer(output, storyContent);
+        },
+        format: 'html'
+      }
+    },
+    backgrounds: {
+      default: 'white',
+      values: [
+        {
+          name: 'white',
+          value: '#fff'
+        },
+        {
+          name: 'primary',
+          value: 'rgb(var(--sd-color-primary, 0 53 142))'
+        },
+        {
+          name: 'primary-100',
+          value: 'rgb(var(--sd-color-primary-100, 236 240 249))'
+        },
+        {
+          name: 'neutral-200',
+          value: 'rgb(var(--sd-color-neutral-200, 242 242 242))'
+        }
+      ]
+    },
+    options: {
+      storySort: {
+        order: ['*', 'Legal']
+      }
+    }
+  }
+};
+
+export default preview;
 
 /**
  * This registers iconLibraries for the sd-icon component
@@ -41,11 +103,11 @@ registerIconLibrary('global-resources', {
     });
 
     recoloredElements.greenFills.forEach(filledElement => {
-      filledElement.setAttribute('fill', 'rgb(var(--sd-color-accent, 67 176 42) / var(--tw-bg-opacity, 1))');
+      filledElement.setAttribute('fill', 'rgb(var(--sd-color-accent, 45 157 0) / var(--tw-bg-opacity, 1))');
     });
 
     recoloredElements.greenStrokes.forEach(strokedElement => {
-      strokedElement.setAttribute('stroke', 'rgb(var(--sd-color-accent, 67 176 42) / var(--tw-bg-opacity, 1))');
+      strokedElement.setAttribute('stroke', 'rgb(var(--sd-color-accent, 45 157 0) / var(--tw-bg-opacity, 1))');
     });
     return svg;
   }
@@ -88,7 +150,7 @@ export const parameters = {
     story: { inline: true },
     toc: true,
     source: {
-      transform: code => {
+      transform: (code, storyContent) => {
         let output = code;
 
         // This fixes the usage of self built html`` string literals
@@ -101,7 +163,9 @@ export const parameters = {
             .replace(/&#039;/g, "'");
         }
 
-        return storybookUtilities.codeOptimizer(output);
+        output = storybookUtilities.codeOptimizer(output);
+
+        return docsCodepenEnhancer(output, storyContent);
       },
       format: 'html'
     }

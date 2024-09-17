@@ -1,5 +1,5 @@
 import '../../solid-components';
-
+import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
 const { argTypes, parameters } = storybookDefaults('sd-meta');
@@ -7,96 +7,83 @@ const { overrideArgs } = storybookHelpers('sd-meta');
 const { generateTemplate } = storybookTemplate('sd-meta');
 
 /**
- * List of meta information like file size, date or whatever needed. Seperated by pipes.<br>
- * <br>
- * <b>Sizes</b><br>
- * <li>lg is the default size.</li>
- * <li>sm can be used as an alternative in tight spaces.</li>
+ * Used to display meta information like file size, date or other.
  */
 
 export default {
   title: 'Styles/sd-meta',
+  tags: ['!dev'],
   component: 'sd-meta',
   parameters: {
     ...parameters,
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/file/Um1B3fI5fvdFVJv6LO7kZG/Meta-Information?type=design&node-id=0-1&mode=design&t=I2fDQn7HjSc75K1V-0'
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2706-33514&t=yS054qhxgjorbMDv-4'
     }
   },
-  args: overrideArgs({ type: 'slot', name: 'default', value: '11. August 2023' }),
+  args: overrideArgs({ type: 'slot', name: 'default', value: 'Meta information' }),
   argTypes
 };
-
-/**
- * Default: This shows sd-meta in its default state.
- */
 
 export const Default = {
   render: (args: any) => {
     return generateTemplate({
-      options: { templateContent: '<time class="%CLASSES%" datetime="2023-08-11">%SLOT%</time>' },
+      options: { templateContent: '<span class="%CLASSES%">%SLOT%</span>' },
       args
     });
   }
 };
 
 /**
- * The sd-meta in all possible combinations of `variant` and `size`.
+ * Use `sd-meta` modifiers for alternative appearances.
+ *
+ * - Black is the default
+ * - `sd-meta--light`: Neutral-700 can be used to deemphasize text content
  */
 
-export const LightAndSize = {
-  name: 'Light × Size',
-  parameters: { controls: { exclude: ['sd-meta--light', 'sd-meta--size-...'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        x: { type: 'attribute', name: 'sd-meta--light' },
-        y: { type: 'attribute', name: 'sd-meta--size-...' }
-      },
-      args
-    });
-  }
+export const Variants = {
+  render: () =>
+    html`<div class="flex flex-row gap-12">
+      <span class="sd-meta">Black</span>
+      <span class="sd-meta sd-meta--light">Neutral-700</span>
+    </div>`
 };
 
 /**
- * The sd-meta in all possible combinations of `light` and `inverted`.
+ * Use `&--size-*` class for alternative appearances.
+ *
+ * - lg is the default size
+ * - `sd-meta--size-sm`: sm can be used as an alternative in tight spaces
  */
 
-export const LightAndInverted = {
-  name: 'Light × Inverted',
-  parameters: { controls: { exclude: ['sd-meta--light', 'sd-meta--inverted'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        x: { type: 'attribute', name: 'sd-meta--light' },
-        y: { type: 'attribute', name: 'sd-meta--inverted', values: [false, true] }
-      },
-      args,
-      options: {
-        templateBackgrounds: { alternate: 'y', colors: ['white', 'rgb(var(--sd-color-primary, 0 53 142))'] }
-      }
-    });
-  }
+export const Size = {
+  render: () =>
+    html`<div class="flex flex-row gap-12">
+      <span class="sd-meta">Large</span>
+      <span class="sd-meta sd-meta--size-sm">Small</span>
+    </div>`
 };
 
 /**
- * The sd-meta with pipe.
+ * Use the `&--inverted` class when displayed on primary background.
+ *
+ * - White is the default
+ * - `sd-meta--light`: Primary-400 can be used to deemphasize text content
  */
+export const Inverted = {
+  render: () =>
+    html` <div class="p-4 bg-primary flex flex-row gap-12">
+      <span class="sd-meta sd-meta--inverted">White</span>
+      <span class="sd-meta sd-meta--inverted sd-meta--light">Primary-400</span>
+    </div>`
+};
 
+/**
+ * Use the `&--pipe` class to separate meta information with a pipe.
+ */
 export const Pipe = {
-  parameters: { controls: { exclude: ['sd-meta--pipe', 'sd-meta--light', 'sd-meta--inverted'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        x: { type: 'attribute', name: 'sd-meta--light' },
-        y: { type: 'attribute', name: 'sd-meta--inverted', values: [false, true] }
-      },
-      constants: { type: 'attribute', name: 'sd-meta--pipe', value: true },
-      options: {
-        templateBackgrounds: { alternate: 'y', colors: ['transparent', 'rgb(var(--sd-color-primary, 0 53 142))'] }
-      },
-      args
-    });
-  }
+  render: () =>
+    html`<span class="sd-meta sd-meta--pipe">With Pipe</span>
+      <span class="sd-meta sd-meta--pipe">With Pipe</span>
+      <span class="sd-meta">With Pipe</span>`
 };

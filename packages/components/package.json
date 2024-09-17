@@ -1,7 +1,7 @@
 {
   "name": "@solid-design-system/components",
   "description": "Solid Design System: Components",
-  "version": "3.14.1",
+  "version": "3.17.4",
   "homepage": "https://solid-design-system.fe.union-investment.de/x.x.x/storybook/",
   "author": {
     "name": "Union Investment"
@@ -122,6 +122,7 @@
     "@web/test-runner-playwright": "^0.11.0",
     "autoprefixer": "^10.4.16",
     "cem-plugin-vs-code-custom-data-generator": "^1.4.2",
+    "change-case": "^5.4.4",
     "chromatic": "^11.5.4",
     "comment-parser": "^1.4.1",
     "countup.js": "^2.8.0",

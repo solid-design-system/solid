@@ -1,5 +1,5 @@
 import '../../solid-components';
-
+import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
 const { argTypes, parameters } = storybookDefaults('sd-leadtext');
@@ -7,30 +7,31 @@ const { overrideArgs } = storybookHelpers('sd-leadtext');
 const { generateTemplate } = storybookTemplate('sd-leadtext');
 
 /**
- * Leadtext is used for text that should be highlighted and a focal point of the page. <br>
- * <br>
- * <b>Sizes</b><br>
- * <li>xl is the default size.</li>
- * <li>lg can be used as an alternative to xl.</li>
+ * Used for text that should be highlighted and a focal point of the page.
+ *
+ * **Related templates**:
+ * - [Leadtext with Mark](?path=/docs/templates-mark--docs)
  */
 
 export default {
   title: 'Styles/sd-leadtext',
+  tags: ['!dev'],
   component: 'sd-leadtext',
   parameters: {
     ...parameters,
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/file/G2kppjBPXzyQt6dFfGSPu2/Leadtext?type=design&node-id=755-5226&mode=design&t=8SvX76woqAGDbqn3-0'
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2706-32946&t=4wQWPA7fIC0v9u7i-4'
     }
   },
-  args: overrideArgs({ type: 'slot', name: 'default', value: 'Lorem Ipsum' }),
+  args: overrideArgs({
+    type: 'slot',
+    name: 'default',
+    value:
+      'Large Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique. Facilisis commodo integer hendrerit tortor.'
+  }),
   argTypes
 };
-
-/**
- * Default: This shows sd-leadtext in its default state.
- */
 
 export const Default = {
   render: (args: any) => {
@@ -42,21 +43,40 @@ export const Default = {
 };
 
 /**
- * Use the `inverted` class to make a leadtext with inverted colors.
+ * Use the `&--size-lg` class for alternative appearances:
+ * -  xl is the default leadtext size
+ * - `sd-leadtext--size-lg`: lg can be used as an alternative
+ */
+
+export const Size = {
+  render: () => html`
+    <div class="flex flex-col gap-6">
+      <div class="sd-leadtext">
+        Large Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
+        phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique.
+        Facilisis commodo integer hendrerit tortor.
+      </div>
+      <div class="sd-leadtext sd-leadtext--size-lg">
+        Large Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
+        phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique.
+        Facilisis commodo integer hendrerit tortor.
+      </div>
+    </div>
+  `
+};
+
+/**
+ * Use the `&--inverted` class when displayed on primary background.
  */
 
 export const Inverted = {
-  parameters: { controls: { exclude: ['sd-leadtext--inverted'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: [{ type: 'attribute', name: 'sd-leadtext--inverted', values: [false, true] }]
-      },
-      constants: { type: 'attribute', name: 'sd-leadtext--inverted', value: true },
-      options: {
-        templateBackgrounds: { alternate: 'y', colors: ['transparent', 'rgb(var(--sd-color-primary, 0 53 142))'] }
-      },
-      args
-    });
-  }
+  render: () => html`
+    <div class="bg-primary p-4">
+      <div class="sd-leadtext sd-leadtext--inverted">
+        Large Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
+        phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique.
+        Facilisis commodo integer hendrerit tortor.
+      </div>
+    </div>
+  `
 };

@@ -4,8 +4,6 @@ import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../..
 const { argTypes, parameters } = storybookDefaults('sd-tab-group');
 const { overrideArgs } = storybookHelpers('sd-tab-group');
 const { generateTemplate } = storybookTemplate('sd-tab-group');
-import { userEvent } from '@storybook/test';
-import { waitUntil } from '@open-wc/testing-helpers';
 
 function generateTabsAndPanels(
   startIndex: number,
@@ -21,8 +19,21 @@ function generateTabsAndPanels(
   return result;
 }
 
+/**
+ * Used to organize content into a container that shows one section at a time.
+ *
+ * **Related components:**
+ * - [sd-tab](?path=/docs/components-sd-tab--docs)
+ * - [sd-tab-panel](?path=/docs/components-sd-tab-panel--docs)
+ *
+ *
+ * **Related templates:**
+ * - [Tabs](?path=/docs/templates-tabs--docs)
+ */
+
 export default {
   title: 'Components/sd-tab-group',
+  tags: ['!dev'],
   component: 'sd-tab-group',
   args: overrideArgs({
     type: 'slot',
@@ -30,6 +41,13 @@ export default {
     value: generateTabsAndPanels(1, 5)
   }),
   argTypes,
+  parameters: {
+    ...parameters,
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=3060-29110&node-type=section&t=5PpAC3TA3kYF7ufX-0'
+    }
+  },
   decorators: [
     (story: () => typeof html) => html`
       <style>
@@ -54,317 +72,57 @@ export const Default = {
 };
 
 /**
- * The sd-tab-group shows an alternative style when tabs are of the `container` variant.
+ * Use the `activation` attribute to define how the tab panel is shown when the user interacts with it.
+ *
+ * - `auto`: Automatically shows the corresponding tab panel.
+ * - `manual`: Requires user interaction to show the corresponding tab panel.
  */
-export const TabVariants = {
-  render: (args: any) => {
-    return html`
-      ${generateTemplate({
-        axis: {
-          y: {
-            type: 'slot',
-            title: 'sd-tab[variant="..."]',
-            name: 'default',
-            values: [
-              { title: 'default', value: generateTabsAndPanels(1, 5) },
-              { title: 'container', value: generateTabsAndPanels(1, 5, 'container') }
-            ]
-          }
-        },
-        args
-      })}
-    `;
-  }
-};
+export const Activation = {
+  render: () => html`
+    <sd-tab-group activation="auto">
+      <sd-tab slot="nav" panel="tab-1" variant="default">Tab 1</sd-tab>
+      <sd-tab-panel name="tab-1">
+        <div>Auto provident illo neque vel ex. Inventore perspiciatis delectus nisi doloremque soluta inventore.</div>
+      </sd-tab-panel>
+      <sd-tab slot="nav" panel="tab-2" variant="default">Tab 2</sd-tab>
+      <sd-tab-panel name="tab-2">
+        <div>Auto provident illo neque vel ex.</div>
+      </sd-tab-panel>
+      <sd-tab slot="nav" panel="tab-3" variant="default">Tab 3</sd-tab>
+      <sd-tab-panel name="tab-3">
+        <div>Auto provident illo neque vel ex. Inventore perspiciatis delectus nisi doloremque soluta inventore.</div>
+      </sd-tab-panel>
+      <sd-tab slot="nav" panel="tab-4" variant="default">Tab 4</sd-tab>
+      <sd-tab-panel name="tab-4">
+        <div>Auto Inventore perspiciatis delectus nisi doloremque soluta inventore.</div>
+      </sd-tab-panel>
+      <sd-tab slot="nav" panel="tab-5" variant="default">Tab 5</sd-tab>
+      <sd-tab-panel name="tab-5">
+        <div>Auto provident nisi doloremque soluta inventore.</div>
+      </sd-tab-panel>
+    </sd-tab-group>
 
-/**
- * The sd-tab-group becomes scrollable when there are more tabs than horizontal space allows.
- */
-
-export const Scrollable = {
-  render: (args: any) => {
-    return html`
-      ${generateTemplate({
-        axis: {
-          y: {
-            type: 'slot',
-            name: 'default',
-            values: [
-              { title: 'default', value: generateTabsAndPanels(1, 10) },
-              { title: 'container', value: generateTabsAndPanels(1, 10, 'container') }
-            ]
-          }
-        },
-        args
-      })}
-    `;
-  }
-};
-
-export const Parts = {
-  parameters: {
-    controls: {
-      exclude: ['base', 'nav', 'tabs', 'separation', 'body', 'scroll-button--start', 'scroll-button--end']
-    }
-  },
-  render: (args: any) => {
-    return html`
-      ${['base', 'nav', 'tabs', 'separation', 'body', 'scroll-button--start', 'scroll-button--end'].map(part =>
-        generateTemplate({
-          axis: {
-            x: {
-              type: 'template',
-              name: 'sd-tab-group::part(...){outline: solid 2px red}',
-              values: [
-                {
-                  title: part,
-                  value: `<style>#part-${part} sd-tab-group::part(${part}){outline: solid 2px red; ${
-                    part === 'tabs' && 'outline-offset:-2px;'
-                  }}</style><div id="part-${part}">%TEMPLATE%</div>`
-                }
-              ]
-            }
-          },
-          constants: [
-            {
-              type: 'template',
-              name: 'width',
-              value: `
-                <div style="width: 600px; position: relative;">%TEMPLATE%
-                </div>
-              `
-            },
-            {
-              type: 'slot',
-              name: 'default',
-              value: generateTabsAndPanels(1, 30)
-            }
-          ],
-          args
-        })
-      )}
-    `;
-  }
-};
-
-/**
- * `sd-tab-group` is fully accessibile via keyboard.
- */
-
-export const Mouseless = {
-  args: overrideArgs({
-    type: 'slot',
-    name: 'default',
-    value: generateTabsAndPanels(1, 50)
-  }),
-  render: (args: any) => {
-    return html`<div class="mouseless">${generateTemplate({ args })}</div>`;
-  },
-
-  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
-    const el = canvasElement.querySelector('.mouseless sd-tab-group');
-
-    await waitUntil(() => el?.shadowRoot?.querySelector('button'));
-    // We have to catch the event as otherwise Storybook will break
-    await userEvent.type(el!.shadowRoot!.querySelector('button')!, '{return}', { pointerEventsCheck: 0 });
-  }
-};
-
-/**
- * As an option, users can justify the `sd-tab-group` to the center. To implement this sample, adjust the `tabs` CSS part as follows:
- * 
- * ```css
- * 
- *   sd-tab-group::part(tabs) {
-          justify-content: center;
-        }
-
-  * ```
- */
-
-export const SampleCentered = {
-  parameters: { ...parameters, docs: { story: { inline: false, height: '550px' } } },
-  name: 'Sample: Centered',
-  render: () => {
-    return html`
-      <style>
-        sd-tab-group::part(tabs) {
-          justify-content: center;
-        }
-      </style>
-      <div class="p-4 my-6 bg-neutral-200 text-left font-bold text-sm w-full box-border">Default Variant</div>
-      <sd-tab-group>
-        <sd-tab slot="nav" panel="tab-1">Tab 1</sd-tab>
-        <sd-tab slot="nav" panel="tab-2">Tab 2</sd-tab>
-        <sd-tab slot="nav" panel="tab-3" disabled>Tab 3</sd-tab>
-        <sd-tab slot="nav" panel="tab-4">Tab 4</sd-tab>
-        <sd-tab slot="nav" panel="tab-5">Tab 5</sd-tab>
-        <sd-tab-panel name="tab-1"><div class="slot slot--text slot--border">Tab panel 1</div></sd-tab-panel>
-        <sd-tab-panel name="tab-2"><div class="slot slot--text slot--border">Tab panel 2</div></sd-tab-panel>
-        <sd-tab-panel name="tab-3"><div class="slot slot--text slot--border">Tab panel 3</div></sd-tab-panel>
-        <sd-tab-panel name="tab-4"><div class="slot slot--text slot--border">Tab panel 4</div></sd-tab-panel>
-        <sd-tab-panel name="tab-5"><div class="slot slot--text slot--border">Tab panel 5</div></sd-tab-panel>
-      </sd-tab-group>
-
-      <div class="p-4 mb-6 bg-neutral-200 text-left font-bold text-sm w-full box-border">Container Variant</div>
-
-      <sd-tab-group>
-        <sd-tab slot="nav" variant="container" panel="tab-1">Tab 1</sd-tab>
-        <sd-tab slot="nav" variant="container" panel="tab-2">Tab 2</sd-tab>
-        <sd-tab slot="nav" variant="container" panel="tab-3" disabled>Tab 3</sd-tab>
-        <sd-tab slot="nav" variant="container" panel="tab-4">Tab 4</sd-tab>
-        <sd-tab slot="nav" variant="container" panel="tab-5">Tab 5</sd-tab>
-        <sd-tab-panel name="tab-1"><div class="slot slot--text slot--border">Tab panel 1</div></sd-tab-panel>
-        <sd-tab-panel name="tab-2"><div class="slot slot--text slot--border">Tab panel 2</div></sd-tab-panel>
-        <sd-tab-panel name="tab-3"><div class="slot slot--text slot--border">Tab panel 3</div></sd-tab-panel>
-        <sd-tab-panel name="tab-4"><div class="slot slot--text slot--border">Tab panel 4</div></sd-tab-panel>
-        <sd-tab-panel name="tab-5"><div class="slot slot--text slot--border">Tab panel 5</div></sd-tab-panel>
-      </sd-tab-group>
-    `;
-  }
-};
-
-/**
- * As an option, users can remove the line separating the tablist and the `sd-panel`. To implement this sample, apply the following adjustments to the `separation`, `base`, `scroll-button--start` and `scroll-button--end` CSS parts:
- * 
- * ```css
- * 
- * sd-tab-group::part(separation) {
-          display: none;
-        }
-
-        sd-tab-group::part(scroll-button--start),
-        sd-tab-group::part(scroll-button--end) {
-          border-bottom: none;
-        }
-
-         sd-tab::part(bottom-border) {
-          border-bottom: none;
-        }
-
-  * ```
- */
-
-export const SampleNoLine = {
-  parameters: { ...parameters, docs: { story: { inline: false, height: '250px' } } },
-  name: 'Sample: No Line',
-  render: () => {
-    return html`
-      <style>
-        sd-tab-group::part(separation) {
-          display: none;
-        }
-
-        sd-tab-group::part(scroll-button--start),
-        sd-tab-group::part(scroll-button--end) {
-          border-bottom: none;
-        }
-
-        sd-tab::part(bottom-border) {
-          border-bottom: none;
-        }
-      </style>
-
-      ${generateTemplate({
-        args: overrideArgs({
-          type: 'slot',
-          name: 'default',
-          value: generateTabsAndPanels(1, 5)
-        })
-      })}
-    `;
-  }
-};
-
-/**
- * Text can be bolded according to the users needs. To implement this sample, adjust the `base` CSS part as follows:
- *   
- * ```css
-        sd-tab::part(base) {
-          font-weight: bold;
-        }
- * ```
- */
-
-export const SampleBold = {
-  parameters: { ...parameters, docs: { story: { inline: false, height: '550px' } } },
-  name: 'Sample: Bold',
-  render: () => {
-    return html`
-      <style>
-        sd-tab::part(base) {
-          font-weight: bold;
-        }
-      </style>
-
-      <div class="p-4 my-6 bg-neutral-200 text-left font-bold text-sm w-full box-border">Default Variant</div>
-
-      <sd-tab-group>
-        <sd-tab slot="nav" panel="tab-1">Tab 1</sd-tab>
-        <sd-tab slot="nav" panel="tab-2">Tab 2</sd-tab>
-        <sd-tab slot="nav" panel="tab-3">Tab 3</sd-tab>
-        <sd-tab slot="nav" panel="tab-4">Tab 4</sd-tab>
-        <sd-tab slot="nav" panel="tab-5">Tab 5</sd-tab>
-
-        <sd-tab-panel name="tab-1"><div class="slot slot--text slot--border">Tab panel 1</div></sd-tab-panel>
-        <sd-tab-panel name="tab-2"><div class="slot slot--text slot--border">Tab panel 2</div></sd-tab-panel>
-        <sd-tab-panel name="tab-3"><div class="slot slot--text slot--border">Tab panel 3</div></sd-tab-panel>
-        <sd-tab-panel name="tab-4"><div class="slot slot--text slot--border">Tab panel 4</div></sd-tab-panel>
-        <sd-tab-panel name="tab-5"><div class="slot slot--text slot--border">Tab panel 5</div></sd-tab-panel>
-      </sd-tab-group>
-
-      <div class="p-4 mb-6 bg-neutral-200 text-left font-bold text-sm w-full box-border">Container Variant</div>
-
-      <sd-tab-group>
-        <sd-tab slot="nav" variant="container" panel="tab-1">Tab 1</sd-tab>
-        <sd-tab slot="nav" variant="container" panel="tab-2">Tab 2</sd-tab>
-        <sd-tab slot="nav" variant="container" panel="tab-3" disabled>Tab 3</sd-tab>
-        <sd-tab slot="nav" variant="container" panel="tab-4">Tab 4</sd-tab>
-        <sd-tab slot="nav" variant="container" panel="tab-5">Tab 5</sd-tab>
-        <sd-tab-panel name="tab-1"><div class="slot slot--text slot--border">Tab panel 1</div></sd-tab-panel>
-        <sd-tab-panel name="tab-2"><div class="slot slot--text slot--border">Tab panel 2</div></sd-tab-panel>
-        <sd-tab-panel name="tab-3"><div class="slot slot--text slot--border">Tab panel 3</div></sd-tab-panel>
-        <sd-tab-panel name="tab-4"><div class="slot slot--text slot--border">Tab panel 4</div></sd-tab-panel>
-        <sd-tab-panel name="tab-5"><div class="slot slot--text slot--border">Tab panel 5</div></sd-tab-panel>
-      </sd-tab-group>
-    `;
-  }
-};
-
-/**
- * Users can set-up buttons to open a specific tab from outside the `sd-tab-group`.
- */
-
-export const SampleDeepLink = {
-  name: 'Sample: Deep Link',
-  render: () => {
-    return html`
-      <sd-tab-group id="deep-link-tab-group">
-        <sd-tab slot="nav" panel="tab-1">Tab 1</sd-tab>
-        <sd-tab slot="nav" panel="tab-2">Tab 2</sd-tab>
-        <sd-tab slot="nav" panel="tab-3">Tab 3</sd-tab>
-        <sd-tab slot="nav" panel="tab-4">Tab 4</sd-tab>
-        <sd-tab slot="nav" panel="tab-5">Tab 5</sd-tab>
-
-        <sd-tab-panel name="tab-1"><div class="slot slot--text slot--border">Tab panel 1</div></sd-tab-panel>
-        <sd-tab-panel name="tab-2"><div class="slot slot--text slot--border">Tab panel 2</div></sd-tab-panel>
-        <sd-tab-panel name="tab-3"><div class="slot slot--text slot--border">Tab panel 3</div></sd-tab-panel>
-        <sd-tab-panel name="tab-4"><div class="slot slot--text slot--border">Tab panel 4</div></sd-tab-panel>
-        <sd-tab-panel name="tab-5"><div class="slot slot--text slot--border">Tab panel 5</div></sd-tab-panel>
-      </sd-tab-group>
-
-      <sd-button id="deep-link-btn"> Open Panel 5 </sd-button>
-
-      <script type="module">
-        const btn = document.getElementById('deep-link-btn');
-        const sdTabGroup = document.getElementById('deep-link-tab-group');
-
-        const nextActivePanel = document.querySelector('sd-tab[panel="tab-5"]');
-
-        btn.addEventListener('click', () => {
-          sdTabGroup.setActiveTab(nextActivePanel);
-        });
-      </script>
-    `;
-  }
+    <sd-tab-group activation="manual">
+      <sd-tab slot="nav" panel="tab-1" variant="default">Tab 1</sd-tab>
+      <sd-tab-panel name="tab-1">
+        <div>Manual provident illo neque vel ex. Inventore perspiciatis delectus nisi doloremque soluta inventore.</div>
+      </sd-tab-panel>
+      <sd-tab slot="nav" panel="tab-2" variant="default">Tab 2</sd-tab>
+      <sd-tab-panel name="tab-2">
+        <div>Manual provident illo neque vel ex.</div>
+      </sd-tab-panel>
+      <sd-tab slot="nav" panel="tab-3" variant="default">Tab 3</sd-tab>
+      <sd-tab-panel name="tab-3">
+        <div>Manual provident illo neque vel ex. Inventore perspiciatis delectus nisi doloremque soluta inventore.</div>
+      </sd-tab-panel>
+      <sd-tab slot="nav" panel="tab-4" variant="default">Tab 4</sd-tab>
+      <sd-tab-panel name="tab-4">
+        <div>Manual Inventore perspiciatis delectus nisi doloremque soluta inventore.</div>
+      </sd-tab-panel>
+      <sd-tab slot="nav" panel="tab-5" variant="default">Tab 5</sd-tab>
+      <sd-tab-panel name="tab-5">
+        <div>Manual provident nisi doloremque soluta inventore.</div>
+      </sd-tab-panel>
+    </sd-tab-group>
+  `
 };

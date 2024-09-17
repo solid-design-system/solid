@@ -8,21 +8,37 @@ const { overrideArgs } = storybookHelpers('sd-radio-button');
 const { generateTemplate } = storybookTemplate('sd-radio-button');
 
 /**
- * The `sd-radio-button` is a type of a radio-group-item similar to `sd-radio` which can be slotted insde of an `sd-radio-group`.  Radio button provides a button-style control for users to select one option from a group. Unlike `sd-radio`, `sd-radio-button` does not have an invalid state and should always have a pre-selected option (default value).
+ * Used to switch between different options or views by selecting one option from a group.
+ *
+ * Similar to `sd-radio`, it has to be slotted inside of an `sd-radio-group`. It does not have an invalid state and should always have a pre-selected option (default value).
+ *
+ * **Related components:**
+ * - [sd-radio](?path=/docs/components-sd-radio--default--docs)
+ * - [sd-radio-group](?path=/docs/components-sd-radio-group--default--docs)
+ *
+ * **Related templates:**
+ * - [Radio Button Group](?path=/docs/templates-radio-button-group--docs)
  */
 
 export default {
   title: 'Components/sd-radio-button',
+  tags: ['!dev'],
   component: 'sd-radio-button',
   args: overrideArgs([
     {
       type: 'slot',
-      name: 'icon',
-      value: '<sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>'
+      name: 'default',
+      value: 'Label'
     }
   ]),
   argTypes,
-  parameters: { ...parameters },
+  parameters: {
+    ...parameters,
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2269-23138&node-type=section&t=5PpAC3TA3kYF7ufX-0'
+    }
+  },
   decorators: [withActions] as any
 };
 
@@ -31,142 +47,164 @@ export default {
  */
 
 export const Default = {
+  name: 'Default',
   render: (args: any) => {
     return generateTemplate({ args });
   }
 };
 
 /**
- * Use the `size` attribute to change the size of the input radio. This attribute affects the font-size within the element, while the element itself remains the same size.
+ * Use the `size` attribute to change the size.
  */
 
 export const Size = {
-  parameters: { controls: { exclude: ['size'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: { type: 'attribute', name: 'size' }
-      },
-      args
-    });
-  }
+  name: 'Size',
+  render: () => html`
+    <div class="flex flex-col gap-12">
+      <sd-radio-group value="1" size="lg">
+        <sd-radio-button value="1">
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          Option 1
+        </sd-radio-button>
+        <sd-radio-button value="2">
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          Option 2
+        </sd-radio-button>
+        <sd-radio-button value="3">
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          Option 3
+        </sd-radio-button>
+      </sd-radio-group>
+
+      <sd-radio-group value="1">
+        <sd-radio-button value="1" size="md">
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          Option 1
+        </sd-radio-button>
+        <sd-radio-button value="2" size="md">
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          Option 2
+        </sd-radio-button>
+        <sd-radio-button value="3" size="md">
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          Option 3
+        </sd-radio-button>
+      </sd-radio-group>
+
+      <sd-radio-group value="1" size="sm">
+        <sd-radio-button value="1">
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          Option 1
+        </sd-radio-button>
+        <sd-radio-button value="2">
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          Option 2
+        </sd-radio-button>
+        <sd-radio-button value="3">
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          Option 3
+        </sd-radio-button>
+      </sd-radio-group>
+    </div>
+  `
 };
 
 /**
- * Use the show-label attribute to show the label of the radio button.
+ * Use the `checked` attribute to set the state of the radio button to checked.
  */
 
-export const LabelAndSize = {
-  name: 'Label × Size',
-  parameters: { controls: { exclude: ['icon', 'default', 'size'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: {
-          type: 'attribute',
-          name: 'size',
-          values: ['lg', 'md', 'sm']
-        }
-      },
-      args,
-      constants: [{ type: 'slot', name: 'default', value: '<div>Label</div>' }]
-    });
-  }
+export const Checked = {
+  name: 'Checked',
+  render: () => html`
+    <div class="flex gap-12">
+      <sd-radio-group value="1">
+        <sd-radio-button value="1">
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          Option 1
+        </sd-radio-button>
+        <sd-radio-button value="2">
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          Option 2
+        </sd-radio-button>
+        <sd-radio-button value="3">
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          Option 3
+        </sd-radio-button>
+      </sd-radio-group>
+    </div>
+  `
 };
 
 /**
- * Label only
+ * Use the `default` slot to add a label.
  */
 
-export const LabelOnly = {
-  name: 'Label only',
-  parameters: { controls: { exclude: ['icon', 'default'] } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: {
-          type: 'attribute',
-          name: 'size',
-          values: ['lg', 'md', 'sm']
-        }
-      },
-      constants: [
-        { type: 'slot', name: 'default', value: '<div>Label</div>' },
-        {
-          type: 'slot',
-          name: 'icon',
-          value: ''
-        }
-      ],
-      args
-    });
-  }
+export const Label = {
+  name: 'Label',
+  render: () => html`
+    <div class="flex gap-12">
+      <sd-radio-group value="1">
+        <sd-radio-button value="1">
+          <div>Label</div>
+        </sd-radio-button>
+
+        <sd-radio-button value="2">
+          <div>Label</div>
+        </sd-radio-button>
+
+        <sd-radio-button value="3">
+          <div>Label</div>
+        </sd-radio-button>
+      </sd-radio-group>
+    </div>
+  `
 };
 
 /**
- * Use the disabled attribute to disable an input radio. Clicks will be suppressed until the disabled state is removed. `Checked` is an "internal" attribute but is shown here as an example of all possible combinations.
+ * Use the `icon` slot to add system icons.
  */
 
-export const DisabledAndChecked = {
-  name: 'Disabled × Checked',
-  parameters: { controls: { exclude: ['disabled', 'checked', 'default'] } },
-  render: () => {
-    return html`
-      <div class="flex flex-col gap-4 w-[260px] p-4">
-        <sd-radio-button showLabel>
+export const Icon = {
+  name: 'Icon',
+  render: () => html`
+    <div class="flex gap-12">
+      <sd-radio-group value="1">
+        <sd-radio-button value="1">
           <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-          <slot>Default</slot>
         </sd-radio-button>
-        <sd-radio-button disabled showLabel>
+        <sd-radio-button value="2">
           <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-          <slot>Disabled</slot>
         </sd-radio-button>
-        <sd-radio-button checked showLabel>
+        <sd-radio-button value="3">
           <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-          <slot>Checked</slot>
         </sd-radio-button>
-        <sd-radio-button checked disabled showLabel>
-          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-          <slot class="whitespace-nowrap">Disabled and Checked</slot>
-        </sd-radio-button>
-      </div>
-    `;
-  }
+      </sd-radio-group>
+    </div>
+  `
 };
 
 /**
- * Use the `base`, `button`, `button--checked`, `icon` and `label` part selectors to customize the radio-button.
+ * Use the `disabled` attribute to disable an input radio button.
  */
-export const Parts = {
-  parameters: {
-    controls: { exclude: ['base', 'button', 'button--checked', 'default', 'icon', 'label'] }
-  },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: {
-          type: 'template',
-          name: 'sd-radio-button::part(...){outline: solid 2px red,}',
-          values: ['base', 'button', 'button--checked', 'icon', 'label'].map(part => {
-            return {
-              title: part,
-              value: `
-              <style>#part-${part} sd-radio-button::part(${part}){outline: solid 2px red}</style>
-              <div id="part-${part}">
-                %TEMPLATE%
-                ${
-                  part === 'button--checked'
-                    ? `<script>document.querySelector("#part-${part} sd-radio-button").checked = true;</script>`
-                    : ''
-                }
-              </div>
-            `
-            };
-          })
-        }
-      },
-      args,
-      constants: [{ type: 'slot', name: 'default', value: '<div>Label</div>' }]
-    });
-  }
+
+export const Disabled = {
+  name: 'Disabled',
+  render: () => html`
+    <div class="flex gap-12">
+      <sd-radio-group value="1">
+        <sd-radio-button value="1" disabled>
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          Disabled
+        </sd-radio-button>
+        <sd-radio-button value="2" disabled>
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          Disabled
+        </sd-radio-button>
+        <sd-radio-button value="3" disabled>
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          Disabled
+        </sd-radio-button>
+      </sd-radio-group>
+    </div>
+  `
 };

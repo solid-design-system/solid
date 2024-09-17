@@ -8,7 +8,7 @@ export default {
   attributes: [
     {
       name: 'sd-chip--...',
-      options: ['primary-500', 'primary-300', 'white'],
+      options: ['primary-300', 'primary-500', 'white'],
       description: ''
     }
   ]

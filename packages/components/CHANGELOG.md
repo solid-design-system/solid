@@ -1,3 +1,91 @@
+# [@solid-design-system/components-v3.17.4](https://github.com/solid-design-system/solid/compare/components/3.17.3...components/3.17.4) (2024-09-02)
+
+
+### Bug Fixes
+
+* incorrect indent of sd-footnotes  ([#1328](https://github.com/solid-design-system/solid/issues/1328)) ([646f455](https://github.com/solid-design-system/solid/commit/646f455d6c79815a7bd7af0366a84dfd29fc3883))
+
+### 📈 Stats
+* Bundle size (uncompressed): 335 KB (unchanged)
+* Bundle size (gzipped): 79 KB (unchanged)
+
+# [@solid-design-system/components-v3.17.3](https://github.com/solid-design-system/solid/compare/components/3.17.2...components/3.17.3) (2024-08-29)
+
+
+### Bug Fixes
+
+* 🤔 add missing neutral-500 border on disabled+checked sd-radio-buttons ([#1330](https://github.com/solid-design-system/solid/issues/1330)) ([d00025c](https://github.com/solid-design-system/solid/commit/d00025cce2204c066a9309cc777e88811f4de478))
+
+### 📈 Stats
+* Bundle size (uncompressed): 335 KB (unchanged)
+* Bundle size (gzipped): 79 KB (unchanged)
+
+# [@solid-design-system/components-v3.17.2](https://github.com/solid-design-system/solid/compare/components/3.17.1...components/3.17.2) (2024-08-28)
+
+
+### Bug Fixes
+
+* correct readonly background styles for sd-input ([#1323](https://github.com/solid-design-system/solid/issues/1323)) ([5aba0f1](https://github.com/solid-design-system/solid/commit/5aba0f1998e1b62c319c90245b804c42691759cd))
+
+### 📈 Stats
+* Bundle size (uncompressed): 335 KB (unchanged)
+* Bundle size (gzipped): 79 KB (unchanged)
+
+# [@solid-design-system/components-v3.17.1](https://github.com/solid-design-system/solid/compare/components/3.17.0...components/3.17.1) (2024-08-28)
+
+
+### Bug Fixes
+
+* add missing labels for close buttons ([#1321](https://github.com/solid-design-system/solid/issues/1321)) ([60b973d](https://github.com/solid-design-system/solid/commit/60b973ddbc5220051966bf9c00ca59810f2ada29))
+
+### 📈 Stats
+* Bundle size (uncompressed): 335 KB (unchanged)
+* Bundle size (gzipped): 79 KB (unchanged)
+
+# [@solid-design-system/components-v3.17.0](https://github.com/solid-design-system/solid/compare/components/3.16.1...components/3.17.0) (2024-08-23)
+
+
+### Features
+
+* ✨ make sd-prose work better with sd-leadtext ([#1305](https://github.com/solid-design-system/solid/issues/1305)) ([8f3e8ca](https://github.com/solid-design-system/solid/commit/8f3e8ca71960c80fe613c1db39d7083b22aee220))
+
+### 📈 Stats
+* Bundle size (uncompressed): 335 KB (unchanged)
+* Bundle size (gzipped): 79 KB (unchanged)
+
+# [@solid-design-system/components-v3.16.1](https://github.com/solid-design-system/solid/compare/components/3.16.0...components/3.16.1) (2024-08-23)
+
+
+### Bug Fixes
+
+* neutral-100 should apply on readonly textarea ([#1303](https://github.com/solid-design-system/solid/issues/1303)) ([f736f17](https://github.com/solid-design-system/solid/commit/f736f17e689175bd24839b2826bfe4bd7b73781d))
+
+### 📈 Stats
+* Bundle size (uncompressed): 335 KB (unchanged)
+* Bundle size (gzipped): 79 KB (unchanged)
+
+# [@solid-design-system/components-v3.16.0](https://github.com/solid-design-system/solid/compare/components/3.15.0...components/3.16.0) (2024-08-21)
+
+
+### Features
+
+* use new default green for ui icons ([#1301](https://github.com/solid-design-system/solid/issues/1301)) ([5498431](https://github.com/solid-design-system/solid/commit/54984315561114898466b46fdc7e09cabad09ce6))
+
+### 📈 Stats
+* Bundle size (uncompressed): 335 KB (unchanged)
+* Bundle size (gzipped): 79 KB (unchanged)
+
+# [@solid-design-system/components-v3.15.0](https://github.com/solid-design-system/solid/compare/components/3.14.1...components/3.15.0) (2024-08-20)
+
+
+### Features
+
+* ✨ add style sd-hidden-links ([#1261](https://github.com/solid-design-system/solid/issues/1261)) ([afbb92d](https://github.com/solid-design-system/solid/commit/afbb92da7f29f55a553685ac02c34b19c8a3b855))
+
+### 📈 Stats
+* Bundle size (uncompressed): 335 KB (unchanged)
+* Bundle size (gzipped): 79 KB (unchanged)
+
 # [@solid-design-system/components-v3.14.1](https://github.com/solid-design-system/solid/compare/components/3.14.0...components/3.14.1) (2024-08-15)
 
 

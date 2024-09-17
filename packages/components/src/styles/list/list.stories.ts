@@ -1,398 +1,216 @@
 import '../../solid-components';
-
+import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
 const { argTypes, parameters } = storybookDefaults('sd-list');
 const { overrideArgs } = storybookHelpers('sd-list');
 const { generateTemplate } = storybookTemplate('sd-list');
 
-// HTML helper to get syntax highlighting and formatting in the template string
-const html = String.raw;
-
 /**
- * Use lists to make blocks of text easier to read and to divide information into manageable sections. <br>
+ * Used to make blocks of text easier to read and to divide information into manageable sections.
+ *
  * Text lists can be numbered, have bullet points, or be supplemented by content symbols. Text can be bolded or linked.
- * <br>
- * <b>Variants</b><br>
- * <li>Unordered list group is used when there is no specific sequence or order to the items.</li>
- * <li>Ordered list group is used when the items have a specific sequence or count.</li>
- * <li>Icon list group is used when more illustration is needed.</li>
+ *
+ * **Related templates**:
+ * - [List with Bolded Text](?path=/docs/templates-list-with-bolded-text--docs)
+ * - [Link list](?path=/docs/templates-link-list--docs)
  */
 
 export default {
   title: 'Styles/sd-list',
+  tags: ['!dev'],
   component: 'sd-list',
   parameters: {
     ...parameters,
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/file/DDSyYvf2q99RhiyDjy03s5/List?type=design&node-id=971-4578&mode=design&t=2UZo6NW6ErMA2G5X-0'
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=3249-11293&t=4wQWPA7fIC0v9u7i-4'
     }
   },
-  args: overrideArgs({ type: 'slot', name: 'default', value: 'Lorem Ipsum' }),
+  args: overrideArgs({
+    type: 'slot',
+    name: 'default',
+    value: `<ul class="sd-list">
+        <li>Unordered list level 1
+          <ul>
+            <li>Unordered list level 2
+              <ul>
+               <li>Unordered list level 3</li>
+              </ul>
+            </li>
+          </ul>
+        </li><li>Unordered list level 1</li>
+        <li>Unordered list level 1</li>
+      </ul>`
+  }),
   argTypes
 };
 
 export const Default = {
-  args: overrideArgs({
-    type: 'slot',
-    name: 'default',
-    value: html`<li>
-      Lorem Ipsum
-      <ul>
+  render: (args: any) => {
+    return generateTemplate({ args });
+  }
+};
+
+/**
+ * Use `sd-list` modifiers for alternative appearances.
+ *
+ * - `Unordered list group`: use the class `sd-list` when there is no specific sequence or order to the items
+ * - `Ordered list group`: use the class `sd-list` when the items have a specific sequence or count
+ * - `Icon list group`: used when a content icon is needed to illustrate the text content
+ */
+
+export const Variants = {
+  render: () =>
+    html`<div class="grid grid-cols-3 gap-12">
+      <ul class="sd-list">
+        <li>Unordered list</li>
+        <li>Unordered list</li>
+        <li>Unordered list</li>
+      </ul>
+      <ol class="sd-list">
+        <li>Ordered list</li>
+        <li>Ordered list</li>
+        <li>Ordered list</li>
+      </ol>
+      <ul class="sd-list--icon sd-list">
         <li>
-          Dolor sit
-          <ul>
-            <li>Amet</li>
-            <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
-          </ul>
+          <sd-icon name="content/picture" library="global-resources"></sd-icon>
+          Icon list
+        </li>
+        <li>
+          <sd-icon name="content/picture" library="global-resources"></sd-icon>
+          Icon list
+        </li>
+        <li>
+          <sd-icon name="content/picture" library="global-resources"></sd-icon>
+          Icon list
         </li>
       </ul>
-    </li>`
-  }),
-  render: (args: any) => {
-    return generateTemplate({
-      options: {
-        templateContent: html`<ul class="%CLASSES%">
-          %SLOT%
-        </ul>`
-      },
-      args
-    });
-  }
-};
-
-export const OrderedList = {
-  name: 'Ordered List',
-  parameters: { controls: { exclude: ['default'] } },
-  args: overrideArgs({
-    type: 'slot',
-    name: 'default',
-    value: html`<li>
-        Lorem Ipsum
-        <ol>
-          <li>
-            Dolor sit
-            <ol>
-              <li>Amet</li>
-              <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
-            </ol>
-          </li>
-          <li>
-            Dolor sit
-            <ol>
-              <li>Amet</li>
-              <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
-            </ol>
-          </li>
-        </ol>
-      </li>
-      <li>
-        Lorem Ipsum
-        <ol>
-          <li>
-            Dolor sit
-            <ol>
-              <li>Amet</li>
-              <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
-            </ol>
-          </li>
-        </ol>
-      </li>
-      <li>Lorem Ipsum</li>`
-  }),
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        x: { type: 'attribute', name: 'sd-list--inverted', values: ['', 'sd-list--inverted'] }
-      },
-      args,
-      options: {
-        templateBackgrounds: {
-          alternate: 'x',
-          colors: ['rgb(var(--sd-color-white, 255 255 255))', 'rgb(var(--sd-color-primary, 0 53 142))']
-        },
-        templateContent: html`<ol class="%CLASSES%">
-          %SLOT%
-        </ol>`
-      }
-    });
-  }
-};
-
-export const UnorderedList = {
-  name: 'Unordered List',
-  parameters: { controls: { exclude: ['default'] } },
-  args: overrideArgs({
-    type: 'slot',
-    name: 'default',
-    value: html`<li>
-        Lorem Ipsum
-        <ul>
-          <li>
-            Dulor sit
-            <ul>
-              <li>Amet</li>
-              <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
-            </ul>
-          </li>
-          <li>
-            Dulor sit
-            <ul>
-              <li>Amet</li>
-              <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-      <li>
-        Lorem Ipsum
-        <ul>
-          <li>
-            Dulor sit
-            <ul>
-              <li>Amet</li>
-              <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-      <li>Lorem Ipsum</li>`
-  }),
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        x: { type: 'attribute', name: 'sd-list--inverted', values: ['', 'sd-list--inverted'] }
-      },
-      args,
-      options: {
-        templateBackgrounds: {
-          alternate: 'x',
-          colors: ['rgb(var(--sd-color-white, 255 255 255))', 'rgb(var(--sd-color-primary, 0 53 142))']
-        },
-        templateContent: html`<ul class="%CLASSES%">
-          %SLOT%
-        </ul>`
-      }
-    });
-  }
+    </div>`
 };
 
 /**
- * If using the icon list, you need to provide an icon within each list item. <br>
- * Either the first <sd-icon> or the first element with the class 'sd-list--icon__icon' within the list item will be used as the icon.
+ * List items can be nested up to 3 levels.
  */
-export const IconList = {
-  name: 'Icon List',
-  parameters: { controls: { exclude: ['default'] } },
-  args: overrideArgs({
-    type: 'slot',
-    name: 'default',
-    value: html`<li>
-        <sd-icon name="content/picture" library="global-resources"></sd-icon>Lorem Ipsum
-        <ul>
-          <li>
-            <sd-icon name="content/picture" library="global-resources"></sd-icon>Dolor sit
-            <ul>
-              <li><sd-icon name="content/picture" library="global-resources"></sd-icon>Amet</li>
-              <li>
-                <sd-icon name="content/picture" library="global-resources"></sd-icon>Ut enim ad minim veniam, quis
-                nostrud exercitation
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-      <li><sd-icon name="content/picture" library="global-resources"></sd-icon>Lorem Ipsum</li>
-      <li><sd-icon name="content/picture" library="global-resources"></sd-icon>Lorem Ipsum</li>`
-  }),
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        x: { type: 'attribute', name: 'sd-list--inverted', values: ['', 'sd-list--inverted'] }
-      },
-      args,
-      options: {
-        templateBackgrounds: {
-          alternate: 'x',
-          colors: ['rgb(var(--sd-color-white, 255 255 255))', 'rgb(var(--sd-color-primary, 0 53 142))']
-        },
-        templateContent: html`<ul class="sd-list--icon %CLASSES%">
-          %SLOT%
-        </ul>`
-      }
-    });
-  }
-};
-
-/**
- * If using the horizontal icon list, you need to provide an icon within each list item. The horizontal list only supports one level of nesting. <br>
- * Either the first <sd-icon> or the first element with the class 'sd-list--icon__icon' within the list item will be used as the icon.
- */
-export const HorizontalIconList = {
-  name: 'Horizontal Icon List',
-  parameters: { controls: { exclude: ['default'] } },
-  args: overrideArgs({
-    type: 'slot',
-    name: 'default',
-    value: html`<li><sd-icon name="content/picture" library="global-resources"></sd-icon>Lorem</li>
-      <li><sd-icon name="content/picture" library="global-resources"></sd-icon>Lorem</li>
-      <li><sd-icon name="content/picture" library="global-resources"></sd-icon>Lorem</li>`
-  }),
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        x: { type: 'attribute', name: 'sd-list--inverted', values: ['', 'sd-list--inverted'] }
-      },
-      args,
-      options: {
-        templateBackgrounds: {
-          alternate: 'x',
-          colors: ['rgb(var(--sd-color-white, 255 255 255))', 'rgb(var(--sd-color-primary, 0 53 142))']
-        },
-        templateContent: html`<ul class="sd-list--icon sd-list--horizontal %CLASSES%">
-          %SLOT%
-        </ul>`
-      }
-    });
-  }
-};
-
-/**
- * This example shows a mixed list of ordered and unordered lists with multiple levels of nesting.
- */
-export const MixedLists = {
-  name: 'Mixed Lists',
-  parameters: { controls: { exclude: ['default'] } },
-  render: (args: any) => {
-    const preset = (type: string) =>
-      html`<preset-type class="sd-list">
+export const Levels = {
+  render: () =>
+    html`<div class="grid grid-cols-2 gap-12">
+      <ul class="sd-list">
         <li>
-          Lorem Ipsum
-          <ol>
+          Unordered list level 1
+          <ul>
             <li>
-              Dolor sit
+              Unordered list level 2
               <ul>
-                <li>Amet</li>
-                <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
+                <li>Unordered list level 3</li>
               </ul>
             </li>
+          </ul>
+        </li>
+        <li>Unordered list level 1</li>
+        <li>Unordered list level 1</li>
+      </ul>
+      <ol class="sd-list">
+        <li>
+          Ordered list level 1
+          <ol>
             <li>
-              Dolor sit
+              Ordered list level 2
               <ol>
-                <li>Amet</li>
-                <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
-              </ol>
-            </li>
-            <li>
-              Dolor sit
-              <ol>
-                <li>Amet</li>
-                <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
-                <li>Quis nostrud exercitation</li>
+                <li>Ordered list level 3</li>
               </ol>
             </li>
           </ol>
         </li>
+        <li>Ordered list level 1</li>
+        <li>Ordered list level 1</li>
+      </ol>
+      <ul class="sd-list--icon sd-list">
         <li>
-          Lorem Ipsum
-          <ol>
+          <sd-icon name="content/picture" library="global-resources"></sd-icon>
+          Unordered list level 1
+          <ul class="sd-list--icon sd-list">
             <li>
-              Dolor sit
-              <ul>
-                <li>Amet</li>
-                <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
-              </ul>
-            </li>
-            <li>
-              Dolor sit
-              <ul>
-                <li>Amet</li>
-                <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
-              </ul>
-            </li>
-          </ol>
-        </li>
-        <li>
-          Lorem Ipsum
-          <ul>
-            <li>
-              Dolor sit
-              <ol>
-                <li>Amet</li>
-                <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
-                <li>Duis amet cupidatat incididunt ipsum veniam sunt esse et et</li>
+              <sd-icon name="content/picture" library="global-resources"></sd-icon>
+              Unordered list level 2
+              <ul class="sd-list--icon sd-list">
                 <li>
-                  Dolor sit
-                  <ol>
-                    <li>Amet</li>
-                    <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
-                    <li>
-                      Dolor sit
-                      <ol>
-                        <li>Amet</li>
-                        <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
-                        <li>Quis nostrud exercitation</li>
-                      </ol>
-                    </li>
-                    <li>Quis nostrud exercitation</li>
-                  </ol>
+                  <sd-icon name="content/picture" library="global-resources"></sd-icon>
+                  Unordered list level 3
                 </li>
-              </ol>
-            </li>
-            <li>
-              Dolor sit
-              <ol>
-                <li>Amet</li>
-                <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
-              </ol>
+              </ul>
             </li>
           </ul>
         </li>
         <li>
-          Lorem Ipsum
-          <ul>
-            <li>
-              Dolor sit
-              <ol>
-                <li>Amet</li>
-                <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
-              </ol>
-            </li>
-            <li>
-              Dolor sit
-              <ol>
-                <li>Amet</li>
-                <li>
-                  Ut enim ad minim veniam, quis nostrud exercitation
-                  <ul>
-                    <li>
-                      Dolor sit
-                      <ul>
-                        <li>Amet</li>
-                        <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-                <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
-              </ol>
-            </li>
-          </ul>
+          <sd-icon name="content/picture" library="global-resources"></sd-icon>
+          Unordered list level 1
         </li>
-      </preset-type>`.replaceAll('preset-type', type);
-    return generateTemplate({
-      axis: {
-        x: {
-          type: 'slot',
-          name: 'default',
-          values: [
-            { title: 'ul', value: preset('ul') },
-            { title: 'ol', value: preset('ol') }
-          ]
-        }
-      },
-      args
-    });
-  }
+        <li>
+          <sd-icon name="content/picture" library="global-resources"></sd-icon>
+          Unordered list level 1
+        </li>
+      </ul>
+    </div>`
+};
+
+/**
+ * Use the `&--horizontal` class to set the axis of the list displaying content icons to horizontal.
+ */
+export const Orientation = {
+  render: () =>
+    html`<div class="flex flex-row justify-around items-center">
+      <ul class="sd-list--icon sd-list">
+        <li>
+          <sd-icon name="content/picture" library="global-resources"></sd-icon>
+          Vertical list
+        </li>
+        <li>
+          <sd-icon name="content/picture" library="global-resources"></sd-icon>
+          Vertical list
+        </li>
+        <li>
+          <sd-icon name="content/picture" library="global-resources"></sd-icon>
+          Vertical list
+        </li>
+      </ul>
+      <ul class="sd-list--icon sd-list--horizontal sd-list">
+        <li>
+          <sd-icon name="content/picture" library="global-resources"></sd-icon>
+          Horizontal list
+        </li>
+        <li>
+          <sd-icon name="content/picture" library="global-resources"></sd-icon>
+          Horizontal list
+        </li>
+        <li>
+          <sd-icon name="content/picture" library="global-resources"></sd-icon>
+          Horizontal list
+        </li>
+      </ul>
+    </div>`
+};
+
+/**
+ * Use the `&--inverted` class when displayed on primary background.
+ */
+export const Inverted = {
+  render: () =>
+    html`<div class="bg-primary p-4">
+      <ul class="sd-list--icon sd-list sd-list--inverted">
+        <li>
+          <sd-icon name="content/picture" library="global-resources"></sd-icon>
+          Icon list inverted
+        </li>
+        <li>
+          <sd-icon name="content/picture" library="global-resources"></sd-icon>
+          Icon list inverted
+        </li>
+        <li>
+          <sd-icon name="content/picture" library="global-resources"></sd-icon>
+          Icon list inverted
+        </li>
+      </ul>
+    </div>`
 };
