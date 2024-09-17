@@ -10,8 +10,8 @@ const { overrideArgs } = storybookHelpers('sd-input');
  * Used to allow users to enter text. It can be displayed in several ways, depending on the type.
  *
  * **Related templates**:
- * - [Autocomplete](?path=/docs/templates-autocomplete--docs)
  * - [Input](?path=/docs/templates-input--docs)
+ * - [Autocomplete](?path=/docs/templates-autocomplete--docs)
  */
 
 export default {
@@ -40,7 +40,11 @@ export const Default = {
 };
 
 /**
- * Use the `size` attribute to change the size.
+ * Use the `size` attribute to change the size:
+ *
+ * - `lg` (default)
+ * - `md`
+ * - `sm`
  */
 
 export const Size = {
@@ -54,7 +58,7 @@ export const Size = {
 };
 
 /**
- * Use the `label` attribute to provide an accessible label for the input element.
+ * Use the `label` attribute to give the input an accessible label.
  *
  * For labels that contain HTML, use the `label` slot instead.
  */

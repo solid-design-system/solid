@@ -15,7 +15,7 @@ const { generateTemplate } = storybookTemplate('sd-carousel');
  * **Accessibility:** Chevron buttons are still displayed on touch devices to enable alternative interaction that complies with accessibility requirements.
  *
  * **Related templates**:
- * - [Carousel with Images](?path=/docs/templates-carousel-with-images--docs)
+ * - [Carousel](?path=/docs/templates-carousel--docs)
  */
 
 export default {

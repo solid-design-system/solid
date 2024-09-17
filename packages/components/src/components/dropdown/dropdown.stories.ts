@@ -11,7 +11,7 @@ const { overrideArgs } = storybookHelpers('sd-dropdown');
  * Used to display a list of actions or options in a panel when activated.
  *
  * **Related templates:**
- * - [Dropdown with navigation items](?path=/docs/templates-dropdown-with-navigation-items--docs)
+ * - [Dropdown with Navigation Items](?path=/docs/templates-dropdown--docs#dropdown-with-navigation-items)
  */
 
 export default {
@@ -96,14 +96,11 @@ export default {
           }
           #anchor--components-sd-dropdown--no-auto-size .innerZoomElementWrapper {
             min-height: 250px;
-          }</style
-        >${story()}`
+          }
+        </style>
+        ${story()}`
   ] as unknown
 };
-
-/**
- * Default: This shows sd-dropdown in its default state.
- */
 
 export const Default = {
   name: 'Default',
@@ -152,7 +149,12 @@ export const Rounded = {
 };
 
 /**
- * Use the `placement` attribute to set the position of the dropdown panel relative to the trigger.
+ * Use the `placement` attribute to set the position of the dropdown panel relative to the trigger:
+ *
+ * - top: `top`, `top-start` and `top-end`
+ * - bottom: `bottom`, `bottom-start` and `bottom-end`
+ * - right: `right`, `right-start` and `right-end`
+ * - left: `left`, `left-start` and `left-end`
  */
 
 export const Placement = {

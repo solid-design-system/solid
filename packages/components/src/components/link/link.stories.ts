@@ -13,7 +13,7 @@ const { overrideArgs } = storybookHelpers('sd-link');
  * Used to allow users to navigate to another location or perform actions like e.g. downloading files.
  *
  *  **Related templates**:
- * - [Link List](?path=/docs/templates-link-list--docs)
+ * - [Link](?path=/docs/templates-link--docs)
  */
 
 export default {
@@ -21,7 +21,7 @@ export default {
   title: 'Components/sd-link',
   component: 'sd-link',
   args: overrideArgs([
-    { type: 'slot', name: 'default', value: 'Default' },
+    { type: 'slot', name: 'default', value: 'Link' },
     { type: 'attribute', name: 'href', value: '#' }
   ]),
   argTypes,
