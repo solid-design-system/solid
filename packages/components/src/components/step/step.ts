@@ -127,7 +127,7 @@ export default class SdStep extends SolidElement {
           class=${cx(
             'flex shrink-0 gap-2',
             this.noTail && 'w-max',
-            this.orientation === 'horizontal' ? 'flex-row' : 'flex-col items-stretch h-full',
+            this.orientation === 'horizontal' ? 'flex-row' : 'flex-col items-stretch',
             this.orientation === 'horizontal'
               ? this.size === 'lg'
                 ? 'translateLg'
