@@ -3,7 +3,7 @@ import type { Style } from '../../declaration';
 export default {
   styleName: 'sd-list',
   summary: 'Generates basic styles for list elements.',
-  status: 'experimental',
+  status: 'stable',
   since: '1.33.1',
   attributes: [
     {

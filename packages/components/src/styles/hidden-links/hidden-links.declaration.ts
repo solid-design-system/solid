@@ -3,7 +3,7 @@ import type { Style } from '../../declaration';
 export default {
   styleName: 'sd-hidden-links',
   summary: 'Hidden links can be used to show links only for keyboard users.',
-  status: 'experimental',
+  status: 'stable',
   since: '3.12.0',
   attributes: [
     {
