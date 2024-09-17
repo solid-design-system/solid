@@ -127,7 +127,7 @@ export default class SdStep extends SolidElement {
           class=${cx(
             'flex shrink-0 gap-2',
             this.noTail && 'w-max',
-            this.orientation === 'horizontal' ? 'flex-row' : 'flex-col items-stretch',
+            this.orientation === 'horizontal' ? 'flex-row' : 'flex-col items-stretch h-full',
             this.orientation === 'horizontal'
               ? this.size === 'lg'
                 ? 'translateLg'
@@ -137,7 +137,7 @@ export default class SdStep extends SolidElement {
                 : 'mt-3'
           )}
         >
-          
+
           <${tag}
             part="circle"
             ?disabled=${this.disabled}
@@ -181,25 +181,19 @@ export default class SdStep extends SolidElement {
           ${
             this.noTail
               ? ''
-              : this.orientation === 'horizontal'
-                ? html`
-                    <sd-divider
-                      part="tail"
-                      orientation="horizontal"
-                      class=${cx(
-                        'w-full my-auto mr-2',
-                        !this.disabled && !this.current && !this.notInteractive && 'tail-to-primary'
-                      )}
-                    ></sd-divider>
-                  `
-                : html`<sd-divider
+              : html`
+                  <div
                     part="tail"
-                    orientation="vertical"
                     class=${cx(
-                      'flex-grow flex-shrink-0 basis-auto h-full w-[1px] mx-auto',
-                      !this.disabled && !this.current && !this.notInteractive && 'tail-to-primary'
+                      this.orientation === 'horizontal'
+                        ? 'border-t w-full my-auto mr-2'
+                        : 'border-l flex-grow flex-shrink-0 basis-auto h-full w-[1px] mx-auto',
+                      !this.disabled && !this.current && !this.notInteractive
+                        ? ' border-primary group-hover:border-primary-500'
+                        : 'border-neutral-400'
                     )}
-                  ></sd-divider> `
+                  ></div>
+                `
           }
         </div>
 
@@ -225,10 +219,6 @@ export default class SdStep extends SolidElement {
         @apply flex-1;
       }
 
-      [part='base']:not(:has(sd-divider)) {
-        @apply h-max;
-      }
-
       :host([no-tail]) {
         @apply flex-grow-0;
       }
@@ -239,14 +229,6 @@ export default class SdStep extends SolidElement {
 
       .translateSm {
         transform: translateX(64px);
-      }
-
-      .tail-to-primary::part(main) {
-        @apply !border-primary group-hover:!border-primary-500;
-      }
-
-      sd-divider::part(main) {
-        @apply !border-neutral-400;
       }
     `
   ];
