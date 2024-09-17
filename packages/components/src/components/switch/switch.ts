@@ -244,7 +244,7 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
     SolidElement.styles,
     css`
       :host {
-        @apply block;
+        @apply block w-max;
       }
 
       :host(:focus-visible) {

@@ -166,7 +166,7 @@ export default class SdRadio extends SolidElement {
     SolidElement.styles,
     css`
       :host {
-        @apply block;
+        @apply block w-max;
       }
 
       :host(:focus-visible) {
