@@ -841,19 +841,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
 
         <div
           part="form-control-input"
-          class=${cx(
-            'relative w-full bg-white',
-            {
-              disabled: 'text-neutral-500',
-              readonly: 'text-black',
-              activeInvalid: 'text-error',
-              activeValid: 'text-success',
-              active: 'text-black',
-              invalid: 'text-error',
-              valid: 'text-success',
-              default: 'text-black'
-            }[selectState]
-          )}
+          class=${cx('relative w-full bg-white', selectState === 'disabled' ? 'text-neutral-500' : 'text-black')}
         >
           <div
             part="border"
@@ -979,7 +967,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 ? html`
                     <sd-icon
                       part="invalid-icon"
-                      class=${cx(iconMarginLeft, iconSize)}
+                      class=${cx(iconMarginLeft, iconSize, 'text-error')}
                       library="system"
                       name="risk"
                     ></sd-icon>
@@ -989,7 +977,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 ? html`
                     <sd-icon
                       part="valid-icon"
-                      class=${cx('flex-shrink-0', iconMarginLeft, iconSize)}
+                      class=${cx('flex-shrink-0 text-success', iconMarginLeft, iconSize)}
                       library="system"
                       name="status-check"
                     ></sd-icon>

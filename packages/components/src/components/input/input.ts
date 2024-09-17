@@ -450,16 +450,6 @@ export default class SdInput extends SolidElement implements SolidFormControl {
 
     // Conditional Styles
     const textSize = this.size === 'sm' ? 'text-sm' : 'text-base';
-    const textColor = {
-      disabled: 'text-neutral-500',
-      readonly: 'text-black',
-      activeInvalid: 'text-error',
-      activeValid: 'text-black',
-      active: 'text-black',
-      invalid: 'text-error',
-      valid: 'text-black',
-      default: 'text-black'
-    }[inputState];
 
     const borderColor = {
       disabled: 'border-neutral-500',
@@ -507,7 +497,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               // States
               !this.disabled && !this.readonly ? 'hover:bg-neutral-200' : '',
               this.readonly ? 'bg-neutral-100' : 'bg-white',
-              textColor
+              inputState === 'disabled' ? 'text-neutral-500' : 'text-black'
             )}
           >
             ${slots['left']
