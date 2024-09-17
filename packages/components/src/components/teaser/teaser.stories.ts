@@ -10,8 +10,7 @@ const { generateTemplate } = storybookTemplate('sd-teaser');
  * Used to group related subjects in a container.
  *
  * **Related templates**:
- * - [Teaser with Icon](?path=/docs/templates-teaser-with-icon--docs)
- * - [Teaser with Link](?path=/docs/templates-teaser-with-link--docs)
+ * - [Teaser](?path=/docs/templates-teaser--docs)
  */
 export default {
   tags: ['!dev'],

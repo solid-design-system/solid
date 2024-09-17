@@ -8,7 +8,7 @@ import { html } from 'lit-html';
 
 export default {
   tags: ['!dev'],
-  title: 'Templates/Video with Description and Copyright',
+  title: 'Templates/Video',
   parameters: {
     chromatic: { disableSnapshot: true },
     design: {

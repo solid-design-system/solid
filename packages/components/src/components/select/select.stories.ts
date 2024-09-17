@@ -20,8 +20,7 @@ const labelConstant: ConstantDefinition = { type: 'attribute', name: 'label', va
  * Used to choose items from a menu of predefined options.
  *
  * **Related templates:**
- * - [Select Grouping](?path=/docs/templates-select--docs)
- * - [Select with Tooltip](?path=/docs/templates-select--docs#select%20with%20tooltip)
+ * - [Select](?path=/docs/templates-select--docs)
  */
 export default {
   title: 'Components/sd-select',

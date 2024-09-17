@@ -8,7 +8,7 @@ import { html } from 'lit-html';
 
 export default {
   tags: ['!dev'],
-  title: 'Templates/Teaser with Icon',
+  title: 'Templates/Teaser Two',
   parameters: {
     chromatic: { disableSnapshot: true },
     design: {

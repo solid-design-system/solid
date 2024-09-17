@@ -10,7 +10,7 @@ const { generateTemplate } = storybookTemplate('sd-video');
  * Used to embed and control videos.
  *
  * **Related templates**:
- * - [Video with Description and Copyright](?path=/docs/templates-video-with-description-and-copyright--docs)
+ * - [Video](?path=/docs/templates-video--docs)
  */
 
 export default {

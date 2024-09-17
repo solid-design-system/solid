@@ -8,7 +8,7 @@ import { html } from 'lit-html';
 
 export default {
   tags: ['!dev'],
-  title: 'Templates/List with Bolded Text',
+  title: 'Templates/List',
   parameters: {
     chromatic: { disableSnapshot: true },
     design: {
@@ -19,10 +19,10 @@ export default {
 };
 
 /**
- * ```
- * ```
+ * ### List with Bolded Text
  */
 export const Default = {
+  name: 'List with Bolded Text',
   render: () =>
     html`<ul class="sd-list">
       <li>

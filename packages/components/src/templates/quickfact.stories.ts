@@ -18,6 +18,7 @@ export default {
 };
 
 export const Default = {
+  name: 'Quickfact with Description',
   render: () => html`
     <style>
       sd-quickfact::part(header) {

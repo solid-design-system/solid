@@ -21,8 +21,7 @@ export default {
  * Example of a brandshape with the variant `border-primary`.
  */
 
-export const Default = {
-  name: 'Brandshape',
+export const Brandshape = {
   render: () =>
     html`<sd-brandshape variant="border-primary">
       <h4 class="sd-headline sd-headline--3xl mb-4">

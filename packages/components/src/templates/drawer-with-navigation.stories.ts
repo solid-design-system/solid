@@ -3,7 +3,6 @@ import { html } from 'lit-html';
 
 /**
  * This example shows a drawer containing a navigation list.
- *
  */
 
 export default {
@@ -29,8 +28,7 @@ export default {
 };
 
 /**
- * ```
- * ```
+ * ### Tablet Navigation - Level 1
  */
 export const Default = {
   name: 'Tablet Navigation - Level 1',

@@ -20,7 +20,8 @@ export default {
 };
 
 /**
- * ### Input with Currency Stepper
+ * ```
+ * ```
  */
 
 export const InputWithCurrencyStepper = {

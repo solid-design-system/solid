@@ -8,7 +8,7 @@ import { html } from 'lit-html';
 
 export default {
   tags: ['!dev'],
-  title: 'Templates/Expandable with Different Text Styles',
+  title: 'Templates/Expandable',
   parameters: {
     chromatic: { disableSnapshot: true },
     design: {
@@ -19,6 +19,8 @@ export default {
 };
 
 /**
+ * ### Text Styles
+ *
  * Examples of the `sd-expandable` with different typography classes on the element itself:
  * - `sd-leadtext`
  * - `sd-prose`

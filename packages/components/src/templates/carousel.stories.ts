@@ -7,7 +7,7 @@ import { html } from 'lit-html';
  */
 export default {
   tags: ['!dev'],
-  title: 'Templates/Carousel with Images',
+  title: 'Templates/Carousel',
   parameters: {
     chromatic: { disableSnapshot: true },
     design: {
@@ -17,8 +17,8 @@ export default {
   }
 };
 
-export const Default = {
-  name: 'Default',
+export const CarouselWithImages = {
+  name: 'Carousel with Images',
   render: () => html`
     <sd-carousel>
       <sd-carousel-item>
