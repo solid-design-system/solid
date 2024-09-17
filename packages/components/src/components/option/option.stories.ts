@@ -41,30 +41,12 @@ export const Default = {
 };
 
 /**
- * Use the `variant` attribute to set the option’s variant.
- * - `default`
- * - `checkbox`: Enabled automatically when using `sd-select` with attribute `checklist` set to `true`.
+ * Use the `size` attribute to change the option’s size:
  *
- */
-
-export const Variants = {
-  render: () =>
-    html`<div class="flex flex-row gap-12 h-[260px]">
-      <sd-select label="Default" placeholder="Please Select" placement="bottom" max-options-visible="3">
-        <sd-option value="option-1">Option 1</sd-option>
-        <sd-option value="option-2">Option 2</sd-option>
-        <sd-option value="option-3">Option 3</sd-option>
-      </sd-select>
-      <sd-select label="Checkbox" placeholder="Please Select" placement="bottom" max-options-visible="3" multiple>
-        <sd-option value="option-1" checkbox>Checkbox Option 1</sd-option>
-        <sd-option value="option-2" checkbox>Checkbox Option 2</sd-option>
-        <sd-option value="option-3" checkbox>Checkbox Option 3</sd-option>
-      </sd-select>
-    </div>`
-};
-
-/**
- * Use the `size` attribute to change the option’s size.
+ * - `lg` (default)
+ * - `md`
+ * - `sm`
+ *
  * This will be inherited automatically from the size attribute of the parent `sd-select`.
  */
 
@@ -87,6 +69,30 @@ export const Size = {
         <sd-option value="option-3" size="sm">Option 3</sd-option>
       </sd-select>
     </div>`
+};
+
+/**
+ * Use the `checkbox` attribute to make it a checkbox.
+ *
+ * - Enabled automatically when using `sd-select` with attribute `checklist` set to `true`.
+ */
+
+export const Checkbox = {
+  render: () =>
+    html`<div class="h-[260px]">
+      <sd-select
+        class="max-w-[300px]"
+        label="Checkbox"
+        placeholder="Please Select"
+        placement="bottom"
+        max-options-visible="3"
+        multiple
+      >
+        <sd-option value="option-1" checkbox>Checkbox Option 1</sd-option>
+        <sd-option value="option-2" checkbox>Checkbox Option 2</sd-option>
+        <sd-option value="option-3" checkbox>Checkbox Option 3</sd-option>
+      </sd-select>
+    </div> `
 };
 
 /**

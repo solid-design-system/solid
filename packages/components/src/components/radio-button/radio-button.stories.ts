@@ -28,7 +28,7 @@ export default {
     {
       type: 'slot',
       name: 'default',
-      value: 'Label'
+      value: 'Radio Button'
     }
   ]),
   argTypes,
@@ -42,10 +42,6 @@ export default {
   decorators: [withActions] as any
 };
 
-/**
- * Default: This shows sd-radio-button in its default state.
- */
-
 export const Default = {
   name: 'Default',
   render: (args: any) => {
@@ -54,7 +50,11 @@ export const Default = {
 };
 
 /**
- * Use the `size` attribute to change the size.
+ * Use the `size` attribute to change the size:
+ *
+ * - `lg` (default)
+ * - `md`
+ * - `sm`
  */
 
 export const Size = {
@@ -64,45 +64,45 @@ export const Size = {
       <sd-radio-group value="1" size="lg">
         <sd-radio-button value="1">
           <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-          Option 1
+          Large
         </sd-radio-button>
         <sd-radio-button value="2">
           <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-          Option 2
+          Large
         </sd-radio-button>
         <sd-radio-button value="3">
           <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-          Option 3
+          Large
         </sd-radio-button>
       </sd-radio-group>
 
       <sd-radio-group value="1">
         <sd-radio-button value="1" size="md">
           <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-          Option 1
+          Medium
         </sd-radio-button>
         <sd-radio-button value="2" size="md">
           <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-          Option 2
+          Medium
         </sd-radio-button>
         <sd-radio-button value="3" size="md">
           <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-          Option 3
+          Medium
         </sd-radio-button>
       </sd-radio-group>
 
       <sd-radio-group value="1" size="sm">
         <sd-radio-button value="1">
           <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-          Option 1
+          Small
         </sd-radio-button>
         <sd-radio-button value="2">
           <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-          Option 2
+          Small
         </sd-radio-button>
         <sd-radio-button value="3">
           <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-          Option 3
+          Small
         </sd-radio-button>
       </sd-radio-group>
     </div>
@@ -120,15 +120,15 @@ export const Checked = {
       <sd-radio-group value="1">
         <sd-radio-button value="1">
           <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-          Option 1
+          Checked
         </sd-radio-button>
         <sd-radio-button value="2">
           <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-          Option 2
+          Checked
         </sd-radio-button>
         <sd-radio-button value="3">
           <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-          Option 3
+          Checked
         </sd-radio-button>
       </sd-radio-group>
     </div>
@@ -192,17 +192,17 @@ export const Disabled = {
   render: () => html`
     <div class="flex gap-12">
       <sd-radio-group value="1">
-        <sd-radio-button value="1" disabled>
+        <sd-radio-button value="1">
           <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-          Disabled
+          Active
         </sd-radio-button>
         <sd-radio-button value="2" disabled>
           <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
           Disabled
         </sd-radio-button>
-        <sd-radio-button value="3" disabled>
+        <sd-radio-button value="3">
           <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-          Disabled
+          Active
         </sd-radio-button>
       </sd-radio-group>
     </div>

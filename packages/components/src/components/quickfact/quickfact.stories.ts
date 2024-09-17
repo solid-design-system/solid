@@ -10,7 +10,7 @@ const { generateTemplate } = storybookTemplate('sd-quickfact');
 
 /**
  *
- *  Used to present information in a an expandable and more dynamic way.
+ *  Used to present information in an expandable and more dynamic way.
  *
  *  **Related templates:**
  * - [Quickfact](?path=/docs/templates-quickfact--docs)
@@ -89,14 +89,14 @@ export const Open = {
 /**
  * Use the `summary` attribute to provide the text in the quickfact.
  *
- * **Hint:** The summary slot allows you to use custom html.
+ * For summaries that contain HTML, use the summary slot instead.
  */
 export const Summary = {
   render: () => html`
     <sd-quickfact>
       <sd-icon name="content/image" color="primary" aria-hidden="true" library="default" slot="icon"></sd-icon>
       <div slot="summary" class="flex flex-col sm:gap-4">
-        <p class="text-base font-normal leading-normal sm:text-4xl sm:leading-tight">Summary Lorem Ipsum</p>
+        <p class="text-base font-normal leading-normal sm:text-4xl sm:leading-tight">Summary</p>
         <div class="text-base font-normal leading-normal sm:text-xl">Description</div>
       </div>
       <div class="slot slot--border slot--text h-16">Default slot</div>
