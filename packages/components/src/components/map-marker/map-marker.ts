@@ -32,13 +32,7 @@ export default class SdMapMarker extends SolidElement {
       <circle cx="25" cy="25" opacity="1" r="20" />
       <circle cx="25" cy="25" opacity=".3" r="25" />
     </svg>`,
-    main: svg`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 75">
-      <path
-        fill-rule="evenodd"
-        d="M51 49A29 29 0 0 0 30 0 29 29 0 0 0 9 49l21 22 21-22ZM40 28a10 10 0 1 1-20 0 10 10 0 0 1 20 0Z"
-        clip-rule="evenodd"
-      />
-    </svg>`,
+    main: svg`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 75"><path d="M51 49A29 29 0 0 0 30 0 29 29 0 0 0 9 49l21 22 21-22Z"/><circle cx="30" cy="28" r="10" fill="#fff"/></svg>`,
     place: svg`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 75">
       <path fill-rule="evenodd" d="M51 49A29 29 0 0 0 30 0 29 29 0 0 0 9 49l21 22 21-22Z" clip-rule="evenodd" />
     </svg>`
