@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v3.17.6](https://github.com/solid-design-system/solid/compare/components/3.17.5...components/3.17.6) (2024-09-17)
+
+
+### Bug Fixes
+
+* 🤔 reduce clickable area to label length in sd-switch, sd-radio and sd-checkbox  ([#1392](https://github.com/solid-design-system/solid/issues/1392)) ([ed9c816](https://github.com/solid-design-system/solid/commit/ed9c8166acf532efbda6bd602068c8c61fd95753))
+
+### 📈 Stats
+* Bundle size (uncompressed): 334 KB (unchanged)
+* Bundle size (gzipped): 79 KB (+1 KB / +1%)
+
 # [@solid-design-system/components-v3.17.5](https://github.com/solid-design-system/solid/compare/components/3.17.4...components/3.17.5) (2024-09-17)
 
 
