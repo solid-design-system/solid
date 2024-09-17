@@ -284,7 +284,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
     SolidElement.styles,
     css`
       :host {
-        @apply block;
+        @apply block w-max;
       }
 
       :host(:focus-visible) {
