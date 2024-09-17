@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v3.17.5](https://github.com/solid-design-system/solid/compare/components/3.17.4...components/3.17.5) (2024-09-17)
+
+
+### Bug Fixes
+
+* 🤔 correct colors in form field validation  ([#1381](https://github.com/solid-design-system/solid/issues/1381)) ([c587094](https://github.com/solid-design-system/solid/commit/c587094d67b90e033189e0dc00406dd97df3afde))
+
+### 📈 Stats
+* Bundle size (uncompressed): 334 KB (-1 KB / 0%)
+* Bundle size (gzipped): 78 KB (-1 KB / -1%)
+
 # [@solid-design-system/components-v3.17.4](https://github.com/solid-design-system/solid/compare/components/3.17.3...components/3.17.4) (2024-09-02)
 
 
