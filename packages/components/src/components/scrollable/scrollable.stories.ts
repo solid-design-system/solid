@@ -60,7 +60,10 @@ export const Default = {
 };
 
 /**
- * Use the `orientation` attribute to set the scroll direction of the component.
+ * Use the `orientation` attribute to set the scroll direction of the component:
+ * - `horizontal` (default)
+ * - `vertical`
+ * - `auto`
  */
 
 export const Orientation = {

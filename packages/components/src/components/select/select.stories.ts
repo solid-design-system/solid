@@ -19,6 +19,9 @@ const labelConstant: ConstantDefinition = { type: 'attribute', name: 'label', va
 /**
  * Used to choose items from a menu of predefined options.
  *
+ * **Related components:**
+ * - [sd-option](?path=/docs/components-sd-option--docs)
+ *
  * **Related templates:**
  * - [Select](?path=/docs/templates-select--docs)
  */
@@ -54,10 +57,6 @@ export default {
   }
 };
 
-/**
- * This shows sd-select in its default state.
- */
-
 export const Default = {
   render: (args: any) => {
     return html`<div class="h-[260px] w-[400px]">${generateTemplate({ args })}</div>`;
@@ -65,7 +64,10 @@ export const Default = {
 };
 
 /**
- * Use the `size` attribute the size. It will cascade to slotted `sd-option` elements.
+ * Use the `size` attribute to change the size. It will cascade to slotted `sd-option` elements:
+ * - `lg` (default)
+ * - `md`
+ * - `sm`
  */
 
 export const Size = {
@@ -99,7 +101,9 @@ export const Size = {
 };
 
 /**
- * Use the `placement` attribute to define where the select panel should appear.
+ * Use the `placement` attribute to define where the select panel should appear:
+ * - `bottom` (default)
+ * - `top`
  */
 
 export const Placement = {
@@ -189,6 +193,8 @@ export const Disabled = {
 
 /**
  * Use the `help-text` attribute to provide additional context or instructions.
+ *
+ * For help texts that contain HTML, use the `help-text` slot instead.
  */
 
 export const HelpText = {
@@ -253,7 +259,7 @@ export const Multiple = {
 /**
  * Use the `useTags` attribute to display selected options as tags using the `sd-tag` component.
  *
- * **Hint:** it requires the `multiple` attribute to be set.
+ * - It requires the `multiple` attribute to be set.
  */
 
 export const useTags = {
@@ -273,7 +279,9 @@ export const useTags = {
 /**
  * Use the `max-options-visible` attribute to define the maximum number of selected options that will be visible.
  *
- * **Hint:** it requires the `multiple` and `useTags` attributes to be set.<br />After the maximum number of options is reached, the select will display a message indicating how many more options are selected.<br />To remove the limit, set the attribute to `0`.
+ * **Hint:** it requires the `multiple` and `useTags` attributes to be set.<br />
+ * Once the maximum number of options is reached, the selection will display a message indicating how many additional options have been selected.<br />
+ * To remove the limit, set the attribute to `0`.
  */
 
 export const MaxOptionsVisible = {

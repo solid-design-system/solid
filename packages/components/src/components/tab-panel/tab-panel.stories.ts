@@ -13,13 +13,12 @@ const { generateTemplate } = storybookTemplate('sd-tab-panel');
  *
  * Use the `default` slot to add content.
  *
- * **Related templates:**
- * - [Tabs](?path=/docs/templates-tabs--docs)
- *
- *
- *  **Related components:**
- * - [sd-tab-group](?path=/docs/components-sd-tab-group--docs)
+ * **Related components:**
  * - [sd-tab](?path=/docs/components-sd-tab--docs)
+ * - [sd-tab-group](?path=/docs/components-sd-tab-group--docs)
+ *
+ * **Related templates:**
+ * - [Tab](?path=/docs/templates-tab--docs)
  */
 
 export default {

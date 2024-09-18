@@ -28,7 +28,7 @@ function generateTabsAndPanels(
  *
  *
  * **Related templates:**
- * - [Tabs](?path=/docs/templates-tabs--docs)
+ * - [Tab](?path=/docs/templates-tab--docs)
  */
 
 export default {
@@ -72,10 +72,10 @@ export const Default = {
 };
 
 /**
- * Use the `activation` attribute to define how the tab panel is shown when the user interacts with it.
+ * Use the `activation` attribute to define how the tab panel is shown when the user interacts with it:
  *
- * - `auto`: Automatically shows the corresponding tab panel.
- * - `manual`: Requires user interaction to show the corresponding tab panel.
+ * - `auto`: Automatically shows the corresponding tab panel
+ * - `manual`: Requires user interaction to show the corresponding tab panel
  */
 export const Activation = {
   render: () => html`

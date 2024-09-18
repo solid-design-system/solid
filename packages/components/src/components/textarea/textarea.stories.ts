@@ -28,9 +28,6 @@ export default {
   decorators: [withActions] as any
 };
 
-/**
- * This shows sd-textarea in its default state.
- */
 export const Default = {
   name: 'Default',
   args: overrideArgs([{ type: 'attribute', name: 'label', value: 'Label' }]),
@@ -40,7 +37,10 @@ export const Default = {
 };
 
 /**
- * Use the `size` attribute to change the size.
+ * Use the `size` attribute to change the size:
+ * - 'lg' (default)
+ * - 'md'
+ * - 'sm'
  */
 
 export const Size = {
@@ -74,7 +74,9 @@ export const Rows = {
 };
 
 /**
- * Use the `label` attribute to provide an accessible label for the textarea element.<br />Use the `label` slot to add custom markup.
+ * Use the `label` attribute to provide an accessible label for the textarea element.
+ *
+ * For labels that contain HTML, use the `label` slot instead.
  */
 
 export const Label = {
@@ -137,7 +139,9 @@ export const Readonly = {
 };
 
 /**
- * Use the `help-text` slot to add help text.
+ * UUse the `help-text` attribute to provide an accessible help text for the textarea element.
+ *
+ * For help texts that contain HTML, use the `help-text` slot instead.
  */
 
 export const HelpText = {

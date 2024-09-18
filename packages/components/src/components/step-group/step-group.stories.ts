@@ -11,7 +11,7 @@ const { generateTemplate } = storybookTemplate('sd-step-group');
  * Used as navigation bar that guides users through the steps of a process or task
  *
  * **Related Components:**
- * - [sd-step](?path=/docs/components-step--docs)
+ * - [sd-step](?path=/docs/components-sd-step--docs)
  *
  * **Related Templates:**
  * - [Step Group](?path=/docs/templates-step-group--docs)
@@ -54,10 +54,6 @@ export default {
   decorators: [withActions] as any
 };
 
-/**
- * Default: This shows sd-step-group in its default state.
- */
-
 export const Default = {
   name: 'Default',
   render: (args: any) => {
@@ -66,7 +62,10 @@ export const Default = {
 };
 
 /**
- * Use the `size` attribute to set the size of the step-group.
+ * Use the `size` attribute to set the size of the step-group:
+ *
+ * - `lg`(default)
+ * - `sm`
  */
 
 export const Size = {
@@ -105,7 +104,10 @@ export const Size = {
 };
 
 /**
- * Use the `orientation` attribute to set the axis of a step-group.
+ * Use the `orientation` attribute to set the axis of a step-group:
+ *
+ * - `horizontal`(default)
+ * - `vertical`
  */
 
 export const Orientation = {

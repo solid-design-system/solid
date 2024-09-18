@@ -40,7 +40,7 @@ export const Checked = {
 };
 
 /**
- * Use the `disabled` attribute to disable an input switch. Clicks will be suppressed until the disabled state is removed.
+ * Use the `disabled` attribute to disable the switch.. Clicks will be suppressed until the disabled state is removed.
  */
 
 export const Disabled = {
@@ -48,7 +48,7 @@ export const Disabled = {
 };
 
 /**
- * Use the `required` attribute to mark the element as required. This can be used for form validation purposes.
+ * Use the `required` attribute to mark the switch as required. This can be used for form validation purposes.
  * */
 
 export const Required = {

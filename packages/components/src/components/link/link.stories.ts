@@ -61,11 +61,9 @@ export const Size = {
 };
 
 /**
- * Use the `href` attribute to enable the link.
- *
- * Use the `target` attribute to specify where to open the link.
- *
- * Use the `download` attribute to tell the browser to download the linked file as this filename.
+ * - Use the `href` attribute to enable the link.
+ * - Use the `target` attribute to specify where to open the link.
+ * - Use the `download` attribute to tell the browser to download the linked file as this filename.
  */
 
 export const AsLink = {
