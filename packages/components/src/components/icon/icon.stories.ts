@@ -219,7 +219,6 @@ export const IconLibraries = {
 
             // We need currentColor as the main color for the icons
             mutator: svg => {
-              console.log(svg, 'hello');
               const recoloredElements = {};
               recoloredElements['currentColorFills'] = svg.querySelectorAll('[fill="#00358e"], [fill="#fff"]');
               recoloredElements['currentColorStrokes'] = svg.querySelectorAll('[stroke="#00358e"], [stroke="#fff"]');
