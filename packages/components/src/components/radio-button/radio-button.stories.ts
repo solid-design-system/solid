@@ -120,15 +120,15 @@ export const Checked = {
       <sd-radio-group value="1">
         <sd-radio-button value="1">
           <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-          Checked
+          Label
         </sd-radio-button>
         <sd-radio-button value="2">
           <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-          Checked
+          Label
         </sd-radio-button>
         <sd-radio-button value="3">
           <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-          Checked
+          Label
         </sd-radio-button>
       </sd-radio-group>
     </div>
@@ -194,15 +194,15 @@ export const Disabled = {
       <sd-radio-group value="1">
         <sd-radio-button value="1">
           <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-          Active
+          Label
         </sd-radio-button>
         <sd-radio-button value="2" disabled>
           <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-          Disabled
+          Label
         </sd-radio-button>
         <sd-radio-button value="3">
           <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-          Active
+          Label
         </sd-radio-button>
       </sd-radio-group>
     </div>
