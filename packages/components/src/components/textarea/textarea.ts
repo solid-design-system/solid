@@ -333,7 +333,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
     }[this.size];
 
     return html`
-      <div part="form-control" class="text-left">
+      <div part="form-control" class="flex flex-col h-full text-left">
         <label
           part="form-control-label"
           id="label"
@@ -344,7 +344,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
           <slot name="label">${this.label}</slot>
         </label>
 
-        <div part="form-control-input" class=${cx('relative w-full', this.disabled && 'cursor-not-allowed')}>
+        <div part="form-control-input" class=${cx('relative h-full w-full', this.disabled && 'cursor-not-allowed')}>
           <div
             part="border"
             class=${cx(
@@ -364,7 +364,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
           <div
             part="base"
             class=${cx(
-              'textarea px-4 flex items-top rounded-default group',
+              'textarea h-full px-4 flex items-top rounded-default group',
               {
                 sm: 'textarea-sm py-1',
                 md: 'textarea-md py-1',
@@ -450,7 +450,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
     SolidElement.styles,
     css`
       :host {
-        @apply block;
+        @apply block h-full;
       }
 
       :host([required]) #label::after {
