@@ -20,9 +20,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.PAT_RELEASE_KARL }}
         with:
             types: |
-                fix
-                feat
-                docs
+                fix: 🤔
+                fix(deps):
+                feat: ✨
+                docs: 📚
                 chore
                 ci
                 perf
