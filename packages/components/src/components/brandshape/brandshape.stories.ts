@@ -37,7 +37,7 @@ export default {
     {
       type: 'slot',
       name: 'image',
-      value: `<img slot="image" style="transform:translateY(-30%);" src="./placeholders/images/generic.jpg" alt="Generic" />`
+      value: `<img slot="image" style="transform: translateY(-40%) skewY(11deg);" src="./placeholders/images/generic.jpg" alt="Generic" />`
     },
     { type: 'attribute', name: 'shapes', value: '["top", "middle", "bottom"]' }
   ]),
@@ -83,7 +83,12 @@ export const Variant = {
 
       <sd-brandshape variant="image">
         <div class="slot slot--border slot--text h-8 w-full">Default slot</div>
-        <img slot="image" style="transform:translateY(-30%);" src="./placeholders/images/generic.jpg" alt="Generic" />
+        <img
+          slot="image"
+          style="transform: translateY(-40%) skewY(11deg);"
+          src="./placeholders/images/generic.jpg"
+          alt="Generic"
+        />
       </sd-brandshape>
 
       <div class="bg-primary">
