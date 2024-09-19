@@ -322,7 +322,7 @@ export const sortableTable = {
     };
 
     return html`
-      <table class="sd-table sample-table w-full" id="sortableTable" .sortData=${sortData} data-chromatic="ignore">
+      <table class="sd-table sample-table w-full" id="sortableTable" .sortData=${sortData}>
         <thead>
           ${(() => {
             return html`<tr>
