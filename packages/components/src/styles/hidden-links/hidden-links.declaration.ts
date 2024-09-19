@@ -4,7 +4,7 @@ export default {
   styleName: 'sd-hidden-links',
   summary: 'Hidden links can be used to show links only for keyboard users.',
   status: 'stable',
-  since: '3.12.0',
+  since: '3.15.0',
   attributes: [
     {
       name: 'sd-hidden-links--multiple',
