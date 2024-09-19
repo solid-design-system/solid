@@ -99,7 +99,8 @@ export const Disabled = {
 
 /**
  * Use the `divider` attribute to add a divider above the navigation item.
- * - Only works with `vertical` attribute.
+ *
+ *__Hint:__ Only works with `vertical` attribute.
  */
 
 export const Divider = {
@@ -108,6 +109,8 @@ export const Divider = {
 
 /**
  * Use the `chevron` attribute to add a chevron to the navigation item.
+ *
+ * __Hints:__
  * - Only works with `vertical` attribute.
  * - `Button` and `Link` variants show right facing chevron dependent on property.
  * - `Accordion` variant always show up / down chevron to reflect open state.
@@ -119,6 +122,8 @@ export const Chevron = {
 
 /**
  * Add `children` slot to the navigation item to create an accordion.
+ *
+ * __Hints:__
  * - Only works with `vertical` attribute.
  * - A `chevron` will be added regardless of the `chevron` attribute.
  * - The `open` attribute can be used to control the open state of the accordion.
@@ -137,6 +142,7 @@ export const Accordion = {
  *
  * Use the `separated` attribute, to have more that only one action. It is possible to use it as a link and an accordion simultaneously.
  *
+ * __Hints:__
  * - Only works with a `children slot` and an `href` attribute.
  * - `target` and `download` attributes are optional.
  */
@@ -152,7 +158,8 @@ export const Separated = {
 
 /**
  * Use the `description` slot to provide a description for the navigation item.
- * - Only works with `vertical` attribute.
+ *
+ * __Hint:__ Only works with `vertical` attribute.
  */
 export const Description = {
   render: () =>
@@ -166,7 +173,8 @@ export const Description = {
 
 /**
  * Use `indented` attribute to add padding to the left side.
- * - Only works with `vertical` attribute.
+ *
+ * __Hint:__ Only works with `vertical` attribute.
  */
 
 export const Indented = {
@@ -178,7 +186,8 @@ export const Indented = {
 
 /**
  * Use `relaxed` attribute to add padding to both sides.
- * - Only works with `vertical` attribute.
+ *
+ * __Hint:__ Only works with `vertical` attribute.
  */
 
 export const Relaxed = {

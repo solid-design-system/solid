@@ -74,7 +74,7 @@ export const Size = {
 /**
  * Use the `checkbox` attribute to make it a checkbox.
  *
- * - Enabled automatically when using `sd-select` with attribute `checklist` set to `true`.
+ * Enabled automatically when using `sd-select` with attribute `checklist` set to `true`.
  */
 
 export const Checkbox = {

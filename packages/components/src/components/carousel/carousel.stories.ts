@@ -208,7 +208,7 @@ export const SlidesPerPage = {
  *
  * This is useful when specifying a `slides-per-page` greater than one. By setting `slides-per-move` to the same value as `slides-per-page`, the carousel will advance by one page at a time.
  *
- * __Note:__
+ * __Hints:__
  *
  * - The number of slides should be divisible by the number of `slides-per-page` to maintain consistent scroll behavior.
  * - Variations between `slides-per-move` and `slides-per-page` can lead to unexpected scrolling behavior. Keep your intended UX in mind when adjusting these values.

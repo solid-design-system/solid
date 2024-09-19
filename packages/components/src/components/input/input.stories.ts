@@ -148,7 +148,8 @@ export const Clearable = {
 
 /**
  * Use the `password-toggle` attribute to add a toggle button that will show the password when activated.
- * - Note: Only works with `type=password`.
+ *
+ * __Hint:__ Only works with `type=password`.
  */
 
 export const TogglePassword = {

@@ -129,7 +129,9 @@ export const Placement = {
 };
 
 /**
- * Use the `label` attribute to give the select element an accessible label.<br />For labels that contain HTML, use the `label` slot instead.
+ * Use the `label` attribute to give the select element an accessible label.
+ *
+ * For labels that contain HTML, use the `label` slot instead.
  */
 
 export const Label = {
@@ -259,7 +261,7 @@ export const Multiple = {
 /**
  * Use the `useTags` attribute to display selected options as tags using the `sd-tag` component.
  *
- * - It requires the `multiple` attribute to be set.
+ *__Hint:__ It requires the `multiple` attribute to be set.
  */
 
 export const useTags = {
@@ -279,7 +281,7 @@ export const useTags = {
 /**
  * Use the `max-options-visible` attribute to define the maximum number of selected options that will be visible.
  *
- * **Hint:** it requires the `multiple` and `useTags` attributes to be set.<br />
+ *__Hint:__ It requires the `multiple` and `useTags` attributes to be set.<br />
  * Once the maximum number of options is reached, the selection will display a message indicating how many additional options have been selected.<br />
  * To remove the limit, set the attribute to `0`.
  */
@@ -325,7 +327,9 @@ export const Required = {
 };
 
 /**
- * The component gets `valid` state when the input is valid.<br />Use the `style-on-valid` attribute to automatically indicate and show a valid state.
+ * The component gets `valid` state when the input is valid.
+ *
+ * Use the `style-on-valid` attribute to automatically indicate and show a valid state.
  */
 
 export const Valid = {

@@ -114,7 +114,7 @@ export const Headline = {
 /**
  * Use the `no-close-button` attribute to hide the close button in the dialog.
  *
- * You should always include an action button that allows users to close the dialog.
+ * __Hint:__ You should always include an action button that allows users to close the dialog.
  */
 
 export const NoCloseButton = {
