@@ -40,17 +40,17 @@ export const Default = {
 /**
  * Use the `&--size-*` classes for alternative appearances.
 
- * - `sd-display--size-4xl`: 4xl can be used as an alternative
+ * - `sd-display`: 4xl is the default display size
  * - `sd-display--size-3xl`: 3xl can be used as an alternative
- * - xl is the default display size
+ * - `sd-display--size-xl`: xl can be used as an alternative
  */
 
 export const Size = {
   render: () => html`
     <div class="flex flex-col gap-6">
-      <div class="sd-display sd-display--size-4xl">Lorem ipsum</div>
-      <div class="sd-display sd-display--size-3xl">Lorem ipsum</div>
       <div class="sd-display">Lorem ipsum</div>
+      <div class="sd-display sd-display--size-3xl">Lorem ipsum</div>
+      <div class="sd-display sd-display--size-xl">Lorem ipsum</div>
     </div>
   `
 };
