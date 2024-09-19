@@ -9,7 +9,7 @@ const { generateTemplate } = storybookTemplate('sd-media');
 /**
  * Used to display an image or a video preview.
  *
- *  * **Related templates**:
+ * **Related templates**:
  * - [Media](?path=/docs/templates-media--docs)
  */
 export default {
@@ -44,7 +44,7 @@ export const Default = {
 };
 
 /**
- * Use the `&--inverted` class when displayed on primary background if description is added.
+ * Use the `sd-media--inverted` class when displayed on primary background if description is added.
  */
 
 export const Inverted = {

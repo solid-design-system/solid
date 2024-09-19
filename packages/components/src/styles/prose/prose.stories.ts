@@ -48,7 +48,7 @@ export const Default = {
 };
 
 /**
- * Use the `sd-prose` to set a style for a group of elements.
+ * Use the `sd-prose` to set a style for a group of elements:
  *
  * - `<h1>`: H1, hidden in cms-modules to make sure H1 is only used once on a page
  * - `<h2>, <h3>, <h4> and <h5>`: H2, H3, H4 and H5
@@ -166,7 +166,7 @@ export const StylingOptions = {
 };
 
 /**
- * Use the `&--full-width` class to make the prose full width.
+ * Use the `sd-prose--full-width` class to make the prose full width.
  */
 export const FullWidth = {
   render: () =>
@@ -191,7 +191,7 @@ export const FullWidth = {
 };
 
 /**
- * Use the `&--inverted` class when displayed on primary background.
+ * Use the `sd-prose--inverted` class when displayed on primary background.
  */
 export const Inverted = {
   render: () => html`

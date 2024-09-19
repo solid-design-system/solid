@@ -7,6 +7,12 @@ const { generateTemplate } = storybookTemplate('sd-copyright');
 
 /**
  * Used to be displayed at the bottom of an image for example.
+ *
+ * Use the `--copyright` CSS property and the class `sd-copyright` in the parent of any element to set a copyright text.
+ *
+ * ** Related template:**
+ * - [Media with Copyright](?path=/docs/templates-media--docs#copyright)
+ * - [Video with Copyright](?path=/docs/templates-video--docs#video%20element%20with%20copyright)
  */
 export default {
   title: 'Styles/sd-copyright',

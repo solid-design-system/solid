@@ -12,8 +12,8 @@ const { generateTemplate } = storybookTemplate('sd-list');
  * Text lists can be numbered, have bullet points, or be supplemented by content symbols. Text can be bolded or linked.
  *
  * **Related templates**:
- * - [List with Bolded Text](?path=/docs/templates-list-with-bolded-text--docs)
- * - [Link list](?path=/docs/templates-link-list--docs)
+ * - [List](?path=/docs/templates-list--docs)
+ * - [Link list](?path=/docs/templates-link--docs&globals=backgrounds.value:transparent#link-list)
  */
 
 export default {
@@ -53,11 +53,11 @@ export const Default = {
 };
 
 /**
- * Use `sd-list` modifiers for alternative appearances.
+ * Use `sd-list` modifiers for alternative appearances:
  *
- * - `Unordered list group`: use the class `sd-list` when there is no specific sequence or order to the items
- * - `Ordered list group`: use the class `sd-list` when the items have a specific sequence or count
- * - `Icon list group`: used when a content icon is needed to illustrate the text content
+ * - `ul` standard html list element to create an unnumbered list
+ * - `ol` standard html list element to create a numbered list
+ * - `sd-list--icon` class to create an icon list
  */
 
 export const Variants = {
@@ -156,7 +156,7 @@ export const Levels = {
 };
 
 /**
- * Use the `&--horizontal` class to set the axis of the list displaying content icons to horizontal.
+ * Use the `sd-list--horizontal` class to set the axis of the list displaying content icons to horizontal.
  */
 export const Orientation = {
   render: () =>
@@ -193,7 +193,7 @@ export const Orientation = {
 };
 
 /**
- * Use the `&--inverted` class when displayed on primary background.
+ * Use the `sd-list--inverted` class when displayed on primary background.
  */
 export const Inverted = {
   render: () =>
