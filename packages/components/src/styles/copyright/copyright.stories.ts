@@ -1,4 +1,5 @@
 import '../../solid-components';
+import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
 const { argTypes, parameters } = storybookDefaults('sd-copyright');
@@ -46,4 +47,34 @@ export const Default = {
       args
     });
   }
+};
+
+/**
+ * Use the `&--variant-*` classes for alternative appearances:
+ * - `horizontal` is the default copyright variant
+ * - `vertical`: use the class `sd-copyright--variant-vertical`
+ */
+
+export const Variants = {
+  render: () =>
+    html`<div class="grid grid-cols-2 gap-4">
+      <div class="sd-copyright max-w-xl" style="--copyright: '© 2024 Solid Design System';">
+        <img
+          src="./placeholders/images/generic.jpg"
+          alt="A generic placeholder jpg"
+          class="aspect-video object-cover"
+        />
+      </div>
+
+      <div
+        class="sd-copyright sd-copyright--variant-vertical max-w-xl"
+        style="--copyright: '© 2024 Solid Design System';"
+      >
+        <img
+          src="./placeholders/images/generic.jpg"
+          alt="A generic placeholder jpg"
+          class="aspect-video object-cover"
+        />
+      </div>
+    </div>`
 };
