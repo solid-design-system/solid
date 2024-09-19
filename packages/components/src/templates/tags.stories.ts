@@ -1,6 +1,10 @@
 import '../solid-components';
 import { html } from 'lit-html';
 
+/**
+ * ```
+ * ```
+ */
 export default {
   tags: ['!dev'],
   title: 'Templates/Tags',
@@ -18,7 +22,6 @@ export default {
  * - neutral-100
  * - primary-100
  */
-
 export const Default = {
   name: 'Background options',
   render: () =>

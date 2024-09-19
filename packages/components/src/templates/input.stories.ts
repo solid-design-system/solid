@@ -6,7 +6,6 @@ import type SdInput from '../components/input/input';
  * ```
  * ```
  */
-
 export default {
   tags: ['!dev'],
   title: 'Templates/Input',
@@ -22,7 +21,6 @@ export default {
 /**
  * ### Input with Currency Stepper
  */
-
 export const InputWithCurrencyStepper = {
   name: 'Input with Currency Stepper',
   render: () =>

@@ -1,6 +1,10 @@
 import '../solid-components';
 import { html } from 'lit-html';
 
+/**
+ * ```
+ * ```
+ */
 export default {
   tags: ['!dev'],
   title: 'Templates/Link List',
@@ -15,7 +19,6 @@ export default {
 /**
  * This example shows a list of links inside a container.
  */
-
 export const Default = {
   render: () =>
     html`<div class="bg-primary-100 p-8">

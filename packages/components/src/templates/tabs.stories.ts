@@ -1,6 +1,10 @@
 import '../solid-components';
 import { html } from 'lit-html';
 
+/**
+ * ```
+ * ```
+ */
 export default {
   tags: ['!dev'],
   title: 'Templates/Tabs',
@@ -16,7 +20,6 @@ export default {
 /**
  * Example of `sd-tab-group` with different variants.
  */
-
 export const Default = {
   name: 'Tabs Variants',
   render: () =>

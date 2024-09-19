@@ -4,7 +4,6 @@ import { html } from 'lit-html';
 /**
  * Use the html `start` attribute to set the starting number of the list. The default value is '1'.
  */
-
 export default {
   tags: ['!dev'],
   title: 'Templates/Footnotes',
@@ -13,6 +12,10 @@ export default {
   }
 };
 
+/**
+ * ```
+ * ```
+ */
 export const FootnotesSetStart = {
   render: () => html`
     <ol start="50" class="sd-footnotes">

@@ -1,6 +1,10 @@
 import '../solid-components';
 import { html } from 'lit-html';
 
+/**
+ * ```
+ * ```
+ */
 export default {
   tags: ['!dev'],
   title: 'Templates/Map Marker with Image',
@@ -14,11 +18,9 @@ export default {
 };
 
 /**
- *
  * ```
  * ```
  */
-
 export const Default = {
   render: () =>
     html`<sd-map-marker state="default" variant="place">

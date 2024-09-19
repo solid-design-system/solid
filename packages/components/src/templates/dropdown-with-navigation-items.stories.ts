@@ -1,6 +1,10 @@
 import '../solid-components';
 import { html } from 'lit-html';
 
+/**
+ * ```
+ * ```
+ */
 export default {
   tags: ['!dev'],
   title: 'Templates/Dropdown with navigation items',
@@ -14,11 +18,7 @@ export default {
 };
 
 /**
- *
  * This is an example of a dropdown.
- *
- * ```
- * ```
  */
 export const Default = {
   render: () => html`

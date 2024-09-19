@@ -5,7 +5,6 @@ import { html } from 'lit-html';
  * **Accessibility:**
  * For the green accent color in the mark, ensure a minimum font size of 18.67 pixels when bolded and 24 pixels when in regular weight.
  */
-
 export default {
   tags: ['!dev'],
   title: 'Templates/Mark',

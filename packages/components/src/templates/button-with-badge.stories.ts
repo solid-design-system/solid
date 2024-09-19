@@ -1,6 +1,10 @@
 import '../solid-components';
 import { html } from 'lit-html';
 
+/**
+ * ```
+ * ```
+ */
 export default {
   tags: ['!dev'],
   title: 'Templates/Button with Badge',
@@ -12,6 +16,7 @@ export default {
     }
   }
 };
+
 /**
  * Examples of sd-button working with sd-badge:
  */

@@ -1,6 +1,10 @@
 import '../solid-components';
 import { html } from 'lit-html';
 
+/**
+ * ```
+ * ```
+ */
 export default {
   tags: ['!dev'],
   title: 'Templates/Brandshape Template',
@@ -15,11 +19,7 @@ export default {
 
 /**
  * Example of a brandshape with the variant `border-primary`.
- *
- * ```
- * ```
  */
-
 export const Default = {
   name: 'Brandshape',
   render: () =>
