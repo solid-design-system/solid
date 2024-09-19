@@ -6,4 +6,14 @@
     content: var(--copyright);
     text-shadow: 0 1px 3px #515151bf;
   }
+
+  &--variant {
+    &-vertical {
+      &::after {
+        @apply pl-2;
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+      }
+    }
+  }
 }
