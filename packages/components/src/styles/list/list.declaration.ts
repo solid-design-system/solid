@@ -4,7 +4,7 @@ export default {
   styleName: 'sd-list',
   summary: 'Generates basic styles for list elements.',
   status: 'stable',
-  since: '1.33.1',
+  since: '1.39.0',
   attributes: [
     {
       name: 'sd-list--inverted',
