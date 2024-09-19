@@ -10,7 +10,7 @@
   &--variant {
     &-vertical {
       &::after {
-        @apply pl-2;
+        @apply pt-2 pb-0 pr-1 pl-0 w-max;
         writing-mode: vertical-rl;
         transform: rotate(180deg);
       }
