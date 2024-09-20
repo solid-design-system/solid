@@ -422,6 +422,21 @@ export const Parts = {
 };
 
 /**
+ * This shows sd-textarea takes the full height of the parent container.
+ */
+export const ResponsiveHeight = {
+  name: 'Responsive Height',
+  args: overrideArgs([
+    { type: 'attribute', name: 'label', value: 'Label' },
+    { type: 'attribute', name: 'value', value: 'value' },
+    { type: 'attribute', name: 'help-text', value: 'help-text' }
+  ]),
+  render: (args: any) => {
+    return html`<div class="w-[250px] h-[500px]">${generateTemplate({ args })}</div> `;
+  }
+};
+
+/**
  * `sd-textarea` is fully accessibile via keyboard.
  */
 
