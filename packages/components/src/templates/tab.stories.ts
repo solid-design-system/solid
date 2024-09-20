@@ -7,7 +7,7 @@ import { html } from 'lit-html';
  */
 export default {
   tags: ['!dev'],
-  title: 'Templates/Tabs',
+  title: 'Templates/Tab',
   parameters: {
     chromatic: { disableSnapshot: true },
     design: {

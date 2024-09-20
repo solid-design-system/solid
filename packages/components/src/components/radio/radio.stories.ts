@@ -30,10 +30,6 @@ export default {
   }
 };
 
-/**
- * Default: This shows sd-radio in its default state.
- */
-
 export const Default = {
   name: 'Default',
   render: (args: any) => {
@@ -42,9 +38,11 @@ export const Default = {
 };
 
 /**
- * Use the `size` attribute to change the size of the input radio. This attribute affects the font-size within the element, while the element itself remains the same size.
+ * Use the `size` attribute to change the size of the input radio. This attribute affects the font-size within the element, while the element itself remains the same size:
+ *
+ * - `lg` (default)
+ * - `sm`
  */
-
 export const Size = {
   name: 'Size',
   render: () => html`
@@ -64,9 +62,8 @@ export const Size = {
 };
 
 /**
- * Use the `disabled` attribute to disable a input radio.
+ * Use the `disabled` attribute to disable an input radio.
  */
-
 export const Disabled = {
   name: 'Disabled',
   render: () => html`
@@ -79,11 +76,10 @@ export const Disabled = {
 };
 
 /**
- * The `invalid` attribute marks the radio as invalid.
+ * The component gets “invalid” state when the form is not valid.
  *
  * For an invalid radio-group (since radios always come in groups) an error-text underneath the group is mandatory.
  */
-
 export const Invalid = {
   name: 'Invalid',
   render: () => html`

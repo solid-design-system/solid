@@ -10,10 +10,11 @@ const { generateTemplate } = storybookTemplate('sd-teaser-media');
  * Used as a flexible container that groups related items and links them to further content.
  *
  * **Related components**:
- * - [sd-teaser](?path=/docs/components-teaser--docs)
+ * - [sd-teaser](?path=/docs/components-sd-teaser--docs)
  *
  * **Related templates**:
- * - [Teaser Media](?path=/docs/templates-teaser-media--docs)
+ * - [Teaser with Icon](?path=/docs/templates-teaser-with-icon--docs)
+ * - [Teaser with Link](?path=/docs/templates-teaser-with-link--docs)
  * - [Teaser](?path=/docs/templates-teaser--docs)
  */
 export default {
@@ -184,7 +185,7 @@ export const MetaSlot = {
 /**
  * Use the `expandable` slot to add content that only shows up on hover.
  *
- * Note: Expandable slot content cannot contain any action since it is not shown on mobile devices due to hover interaction.
+ * **Accessibility Hint:** Expandable slot content cannot contain any action since it is not shown on mobile devices due to hover interaction.
  */
 
 export const ExpandableSlot = {

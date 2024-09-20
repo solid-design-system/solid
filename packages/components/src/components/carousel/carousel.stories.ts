@@ -12,7 +12,7 @@ const { generateTemplate } = storybookTemplate('sd-carousel');
  *
  * On touch devices, the slides can be moved by swiping.
  *
- * **Accessibility:** Chevron buttons are still displayed on touch devices to enable alternative interaction that complies with accessibility requirements.
+ * **Accessibility Hint:** Chevron buttons are still displayed on touch devices to enable alternative interaction that complies with accessibility requirements.
  *
  *
  * **Related Components**:
@@ -31,7 +31,6 @@ export default {
       type: 'slot',
       name: 'default',
       value: `
-
         <sd-carousel-item><div class="slot slot--border slot--text h-16">Default slot 1</div></sd-carousel-item>
         <sd-carousel-item><div class="slot slot--border slot--text h-16">Default slot 2</div></sd-carousel-item>
         <sd-carousel-item><div class="slot slot--border slot--text h-16">Default slot 3</div></sd-carousel-item>
@@ -59,10 +58,6 @@ export default {
   ]
 };
 
-/**
- * This shows sd-carousel in its default state.
- */
-
 export const Default = {
   render: (args: any) => {
     return generateTemplate({
@@ -72,14 +67,13 @@ export const Default = {
 };
 
 /**
- * Use the `variant` attribute to select the pagination format.
+ * Use the `variant` attribute to select the pagination format:
  *
- * - `Number` variant (default): can be used for all use cases.
- * - `Dot` variant: can only be used for up to 5 items total.
+ * - `Number` (default): can be used for all use cases
+ * - `Dot`: can only be used for up to 5 items total
  */
 
 export const Variant = {
-  name: 'Variant',
   render: () => html`
     <div class="flex gap-12">
       <div>
@@ -117,7 +111,6 @@ export const Variant = {
  */
 
 export const Inverted = {
-  name: 'Inverted',
   render: () => html`
     <div class="bg-primary p-8">
       <sd-carousel inverted>
@@ -136,11 +129,10 @@ export const Inverted = {
 };
 
 /**
- * Use the `loop` attribute to enable/disable the looping of your slides.
+ * Use the `loop` attribute to enable the looping of your slides.
  */
 
 export const Loop = {
-  name: 'Loop',
   render: () => html`
     <div>
       <sd-carousel loop>
@@ -163,7 +155,6 @@ export const Loop = {
  */
 
 export const Autoplay = {
-  name: 'Autoplay',
   render: () => html`
     <div>
       <sd-carousel autoplay>
@@ -189,7 +180,7 @@ export const SlidesPerPage = {
   name: 'Slides per Page',
   render: () => html`
     <div>
-      <sd-carousel slides-per-page="2" variant="dot">
+      <sd-carousel slides-per-page="2">
         <sd-carousel-item>
           <div class="slot slot--border slot--text h-16">Default slot 1</div>
         </sd-carousel-item>
@@ -213,9 +204,9 @@ export const SlidesPerPage = {
 /**
  * Use the `slides-per-move` attribute to configure the number of slides the carousel scrolls through at a time.
  *
+ * This is useful when specifying a `slides-per-page` greater than one. By setting `slides-per-move` to the same value as `slides-per-page`, the carousel will advance by one page at a time.
  *
- * **Note:**
- *
+ * __Hints:__
  *
  * - The number of slides should be divisible by the number of `slides-per-page` to maintain consistent scroll behavior.
  * - Variations between `slides-per-move` and `slides-per-page` can lead to unexpected scrolling behavior. Keep your intended UX in mind when adjusting these values.
@@ -225,7 +216,7 @@ export const SlidesPerMove = {
   name: 'Slides per Move',
   render: () => html`
     <div>
-      <sd-carousel slides-per-page="2" slides-per-move="2" variant="dot">
+      <sd-carousel slides-per-page="2" slides-per-move="2">
         <sd-carousel-item>
           <div class="slot slot--border slot--text h-16">Default slot 1</div>
         </sd-carousel-item>

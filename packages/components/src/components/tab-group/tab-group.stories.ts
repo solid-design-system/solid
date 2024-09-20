@@ -26,9 +26,8 @@ function generateTabsAndPanels(
  * - [sd-tab](?path=/docs/components-sd-tab--docs)
  * - [sd-tab-panel](?path=/docs/components-sd-tab-panel--docs)
  *
- *
  * **Related templates:**
- * - [Tabs](?path=/docs/templates-tabs--docs)
+ * - [Tab](?path=/docs/templates-tab--docs)
  */
 
 export default {
@@ -61,10 +60,6 @@ export default {
   ]
 };
 
-/**
- * Default: This shows sd-tab-group in its default state.
- */
-
 export const Default = {
   render: (args: any) => {
     return generateTemplate({ args });
@@ -72,10 +67,10 @@ export const Default = {
 };
 
 /**
- * Use the `activation` attribute to define how the tab panel is shown when the user interacts with it.
+ * Use the `activation` attribute to define how the tab panel is shown when the user interacts with it:
  *
- * - `auto`: Automatically shows the corresponding tab panel.
- * - `manual`: Requires user interaction to show the corresponding tab panel.
+ * - `auto`: Automatically shows the corresponding tab panel
+ * - `manual`: Requires user interaction to show the corresponding tab panel
  */
 export const Activation = {
   render: () => html`

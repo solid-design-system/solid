@@ -32,10 +32,6 @@ export default {
   decorators: [withActions] as any
 };
 
-/**
- * This shows the badge in its default state.
- */
-
 export const Default = {
   name: 'Default',
   render: (args: any) => {
@@ -44,12 +40,11 @@ export const Default = {
 };
 
 /**
- * Use the `variant` attribute to set the badge’s variant.
+ * Use the `variant` attribute to set the badge’s variant:
  *
- * - `default`: Utilized for standard emphasis.
- * - `success` and `error`: Alternative color options like green or red are employed to highlight specific notifications, without implying any semantic meaning.
+ * - `default`: Utilized for standard emphasis
+ * - `success` and `error`: Alternative color options like green or red are employed to highlight specific notifications, without implying any semantic meaning
  */
-
 export const Variant = {
   name: 'Variant',
   render: () => html`

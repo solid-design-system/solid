@@ -8,11 +8,11 @@ const { overrideArgs } = storybookHelpers('sd-checkbox');
 /**
  * Used to toggle an option on or off.
  *
- * **Related templates:**
- * - [Checkbox (Group)](?path=/docs/templates-checkbox-group--docs)
- *
  * **Related components:**
  * - [sd-checkbox-group](?path=/docs/components-sd-checkbox-group--docs)
+ *
+ * **Related templates:**
+ * - [Checkbox Group](?path=/docs/templates-checkbox-group--docs)
  */
 
 export default {
@@ -30,10 +30,6 @@ export default {
   }
 };
 
-/**
- * Default: This shows sd-checkbox in its default state.
- */
-
 export const Default = {
   render: (args: any) => {
     return generateTemplate({ args });
@@ -41,9 +37,12 @@ export const Default = {
 };
 
 /**
- * Use the `size` attribute to change the size of the input checkbox. This attribute affects the font-size within the element, while the element itself remains the same size.
+ * Use the `size` attribute to change the size of the input checkbox:
+ * - `lg` (default)
+ * - `sm`
+ *
+ * This attribute affects the font-size within the element, while the element itself remains the same size.
  */
-
 export const Size = {
   name: 'Size',
   render: () => html`
@@ -55,9 +54,8 @@ export const Size = {
 };
 
 /**
- * Use the `disabled` attribute to disable an input checkbox. Clicks will be suppressed until the disabled state is removed
+ * Use the `disabled` attribute to disable an input checkbox. Clicks will be suppressed until the disabled state is removed.
  */
-
 export const Disabled = {
   name: 'Disabled',
   render: () => html`
@@ -70,7 +68,6 @@ export const Disabled = {
 /**
  * Use the `checked` attribute to activate the checkbox.
  */
-
 export const Checked = {
   name: 'Checked',
   render: () => html`
@@ -83,7 +80,6 @@ export const Checked = {
 /**
  * Use the `indeterminate` attribute to make the checkbox indeterminate.
  */
-
 export const Indeterminate = {
   name: 'Indeterminate',
   render: () => html`
@@ -96,7 +92,6 @@ export const Indeterminate = {
 /**
  * Use the `required` attribute to mark the element as required. This can be used for form validation purposes.
  */
-
 export const Required = {
   name: 'Required',
   render: () => html`
@@ -117,7 +112,7 @@ export const Invalid = {
   render: () => html`
     <form id="form-example">
       <sd-checkbox id="checkbox-example" required>Invalid</sd-checkbox>
-      <sd-button class="mt-4" type="submit">Submit</sd-button>
+      <sd-button class="mt-4" type="submit" hidden>Submit</sd-button>
     </form>
     <script>
       var checkbox = document.querySelector('#checkbox-example');

@@ -12,6 +12,9 @@ const { overrideArgs } = storybookHelpers('sd-radio-group');
  *  **Related components**:
  * - [sd-radio](?path=/docs/components-sd-radio--docs)
  * - [sd-radio-button](?path=/docs/components-sd-radio-button--docs)
+ *
+ * **Related templates**:
+ * - [Radio Button Group](?path=/docs/templates-radio-button-group--docs)
  */
 
 export default {
@@ -43,10 +46,6 @@ export default {
   argTypes
 };
 
-/**
- * Default: This shows sd-radio-group in its default state.
- */
-
 export const Default = {
   name: 'Default',
   render: (args: any) => {
@@ -55,9 +54,11 @@ export const Default = {
 };
 
 /**
- * Use the `size` attribute to change the size.
+ * Use the `size` attribute to change the size:
+ *
+ * - `lg` (default)
+ * - `sm`
  */
-
 export const Size = {
   name: 'Size',
   render: () => html`
@@ -78,9 +79,10 @@ export const Size = {
 };
 
 /**
- * Use the `label` attribute to add a label on top. Include the 'boldLabel' attribute to make the label bold. (This is required for accessibility.)
+ * Use the `label` attribute to add a label on top.
+ *
+ * **Accessibility Hint**: It is required to include the 'boldLabel' attribute to make the label bold.
  */
-
 export const Label = {
   name: 'Label',
   render: () => html`
@@ -93,7 +95,10 @@ export const Label = {
 };
 
 /**
- * Use the `orientation` attribute to set the axis of the radio buttons.
+ * Use the `orientation` attribute to set the axis of the radio buttons:
+ *
+ * - `vertical` (default)
+ * - `horizontal`
  */
 
 export const Orientation = {
@@ -119,7 +124,7 @@ export const Orientation = {
  * Use the `required` attribute to mark the element as required. This can be used for form validation purposes.
  *
  *
- * **Accessibility:** To ensure screen-reader compatibility, consider including a statement such as "Fields marked with an asterisk (*) are required" at the start of the form.
+ * **Accessibility Hint:** To ensure screen-reader compatibility, consider including a statement such as "Fields marked with an asterisk (*) are required" at the start of the form.
  */
 
 export const Required = {
@@ -156,7 +161,7 @@ export const Required = {
 };
 
 /**
- * Use the `disabled` attribute to disable the radio group.
+ * Use the `disabled` attribute to disable an input radio. Clicks will be suppressed until the disabled state is removed.
  */
 
 export const Disabled = {
@@ -174,6 +179,8 @@ export const Disabled = {
 
 /**
  * The component gets the `invalid` state when the form is not valid.
+ *
+ * For an invalid radio-group (since radios always come in groups) an error-text underneath the group is mandatory.
  */
 
 export const Invalid = {
@@ -183,7 +190,6 @@ export const Invalid = {
       <sd-radio-group name="radio-group" id="invalid-radio" required boldlabel>
         <sd-radio value="1">Radio 1</sd-radio>
         <sd-radio value="2">Radio 2</sd-radio>
-        <sd-radio value="3">Radio 3</sd-radio>
         <label slot="label">Invalid Group</label>
       </sd-radio-group>
     </form>

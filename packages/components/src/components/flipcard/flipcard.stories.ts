@@ -7,9 +7,10 @@ const { generateTemplate } = storybookTemplate('sd-flipcard');
 const { overrideArgs } = storybookHelpers('sd-flipcard');
 
 /**
- * Used to display content on one side and reveals additional information when flipped.
+ * Used to display content on one side and reveal additional information when flipped.
  *
- * **Accessibility Hint**: Front flipcards should not contain any action items. If an action is necessary, consider placing it on the back of the card (once flipped) or in a separate area.
+ * **Accessibility Hint**:
+ * Front flipcards should not contain any action items. If an action is necessary, consider placing it on the back of the card (once flipped) or in a separate area.
  *
  * **Related templates**:
  * - [Flipcard](?path=/docs/templates-flipcard--docs)
@@ -57,16 +58,16 @@ export const Default = {
 };
 
 /**
- * Use the `variant` attribute to set the color variant for front or back.
+ * Use the `variant` attribute to set the color variant for front or back:
+ *
  * - empty (default)
  * - primary
- * - neutral-100
+ * - primary-100
  * - gradient-light-top
  * - gradient-light-bottom
  * - gradient-dark-top
  * - gradient-dark-bottom
  */
-
 export const Variants = {
   render: () =>
     html` <div class="grid grid-cols-2 gap-8">
@@ -195,7 +196,7 @@ export const Variants = {
 };
 
 /**
- * Use the CSS property `aspect-ratio` to set the aspect ratio of the flipcard.
+ * Use the CSS property `aspect-ratio` to set the aspect ratio of the flipcard:
  * - 3:4 ratio (default)
  * - 16:9 ratio
  */
@@ -251,7 +252,7 @@ export const AspectRatios = {
 };
 
 /**
- * Use the `activation` attribute to determine the activation type of the flipcard.
+ * Use the `activation` attribute to determine the activation type of the flipcard:
  * - `click hover` (default)
  * - `click`
  */
@@ -295,7 +296,7 @@ export const Activation = {
 };
 
 /**
- * Use the `flip-direction` attribute to determine the direction of the flipcard
+ * Use the `flip-direction` attribute to determine the direction of the flipcard:
  * - horizontal (default)
  * - vertical
  */
