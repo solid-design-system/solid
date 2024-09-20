@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v3.17.8](https://github.com/solid-design-system/solid/compare/components/3.17.7...components/3.17.8) (2024-09-20)
+
+
+### Bug Fixes
+
+* 🤔 update experimental status ([#1396](https://github.com/solid-design-system/solid/issues/1396)) ([d3201d4](https://github.com/solid-design-system/solid/commit/d3201d47939c33556d342e175e24b011132989fb))
+
+### 📈 Stats
+* Bundle size (uncompressed): 334 KB (unchanged)
+* Bundle size (gzipped): 79 KB (unchanged)
+
 # [@solid-design-system/components-v3.17.7](https://github.com/solid-design-system/solid/compare/components/3.17.6...components/3.17.7) (2024-09-20)
 
 
