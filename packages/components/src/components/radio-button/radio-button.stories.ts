@@ -15,9 +15,6 @@ const { generateTemplate } = storybookTemplate('sd-radio-button');
  * **Related components:**
  * - [sd-radio](?path=/docs/components-sd-radio--docs)
  * - [sd-radio-group](?path=/docs/components-sd-radio-group--docs)
- *
- * **Related templates:**
- * - [Radio Button Group](?path=/docs/templates-radio-button-group--docs)
  */
 
 export default {

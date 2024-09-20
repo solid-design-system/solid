@@ -13,6 +13,7 @@ const { generateTemplate } = storybookTemplate('sd-copyright');
  * ** Related template:**
  * - [Media with Copyright](?path=/docs/templates-media--docs#copyright)
  * - [Video with Copyright](?path=/docs/templates-video--docs#video%20element%20with%20copyright)
+ * - [Teaser Media with Copyright](?path=/docs/templates-teaser-media--docs#teaser%20media%20with%20copyright)
  */
 export default {
   title: 'Styles/sd-copyright',

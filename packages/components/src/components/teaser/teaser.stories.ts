@@ -64,15 +64,38 @@ export const Default = {
 
 export const Variant = {
   render: () => html`
-    <sd-teaser variant="white border-neutral-400">
-      <h3 slot="headline">Teaser with border</h3>
-      <p>
-        Quis ut ex cupidatat proident cillum ullamco ea aute ad laborum aliqua incididunt sint ipsum. Elit enim
-        reprehenderit aliquip officia in minim. Eu ipsum pariatur dolor. Do ex in cupidatat anim aliqua sint voluptate
-        sunt nulla incididunt. Cupidatat officia reprehenderit est cupidatat et id officia ut. Exercitation id pariatur
-        elit occaecat ad Lorem nisi sunt pariatur do aute aliqua magna irure incididunt.
-      </p>
-    </sd-teaser>
+    <div class="grid grid-cols-2 gap-12">
+      <sd-teaser variant="white" inset>
+        <h3 slot="headline">Teaser with white background</h3>
+        <p class="sd-paragraph">
+          Lorem ipsum dolor sit amet, consetetur sadi pscing elitr, sed diam nonumy eirmod tempor.
+        </p>
+      </sd-teaser>
+      <sd-teaser variant="white border-neutral-400">
+        <h3 slot="headline">Teaser with white background and border neutral-400</h3>
+        <p class="sd-paragraph">
+          Lorem ipsum dolor sit amet, consetetur sadi pscing elitr, sed diam nonumy eirmod tempor.
+        </p>
+      </sd-teaser>
+      <sd-teaser variant="neutral-100" inset>
+        <h3 slot="headline">Teaser with neutral-100 background</h3>
+        <p class="sd-paragraph">
+          Lorem ipsum dolor sit amet, consetetur sadi pscing elitr, sed diam nonumy eirmod tempor.
+        </p>
+      </sd-teaser>
+      <sd-teaser variant="primary-100" inset>
+        <h3 slot="headline">Teaser with primary-100 background</h3>
+        <p class="sd-paragraph">
+          Lorem ipsum dolor sit amet, consetetur sadi pscing elitr, sed diam nonumy eirmod tempor.
+        </p>
+      </sd-teaser>
+      <sd-teaser variant="primary" inset>
+        <h3 slot="headline">Teaser with primary background</h3>
+        <p class="sd-paragraph sd-paragraph--inverted">
+          Lorem ipsum dolor sit amet, consetetur sadi pscing elitr, sed diam nonumy eirmod tempor.
+        </p>
+      </sd-teaser>
+    </div>
   `
 };
 
@@ -86,31 +109,11 @@ export const DefaultAndHeadlineSlot = {
   name: 'Default and Headline Slot',
   render: () => html`
     <sd-teaser>
-      <h3 slot="headline">Simple teaser</h3>
+      <h3 slot="headline">Lorem ipsum sic semper</h3>
       <p>
         Quis ut ex cupidatat proident cillum ullamco ea aute ad laborum aliqua incididunt sint ipsum. Elit enim
         reprehenderit aliquip officia in minim. Eu ipsum pariatur dolor. Do ex in cupidatat anim aliqua sint voluptate
-        sunt nulla incididunt. Cupidatat officia reprehenderit est cupidatat et id officia ut. Exercitation id pariatur
-        elit occaecat ad Lorem nisi sunt pariatur do aute aliqua magna irure incididunt.
-      </p>
-    </sd-teaser>
-  `
-};
-
-/**
- * The meta slot can be used to display additional information.
- */
-
-export const MetaSlot = {
-  render: () => html`
-    <sd-teaser>
-      <h3 slot="headline">Teaser with Meta</h3>
-      <time slot="meta" class="sd-meta" datetime="2023-08-11">11. August 2023</time>
-      <p>
-        Quis ut ex cupidatat proident cillum ullamco ea aute ad laborum aliqua incididunt sint ipsum. Elit enim
-        reprehenderit aliquip officia in minim. Eu ipsum pariatur dolor. Do ex in cupidatat anim aliqua sint voluptate
-        sunt nulla incididunt. Cupidatat officia reprehenderit est cupidatat et id officia ut. Exercitation id pariatur
-        elit occaecat ad Lorem nisi sunt pariatur do aute aliqua magna irure incididunt.
+        sunt nulla incididunt.
       </p>
     </sd-teaser>
   `
@@ -123,13 +126,33 @@ export const MetaSlot = {
 export const MediaSlot = {
   render: () => html`
     <sd-teaser>
-      <h3 slot="headline">Eu ut ad exercitation magna</h3>
-      <img slot="media" src="./placeholders/images/collaboration.jpg" alt="Test" style="width:100%; height: auto;" />
+      <h3 slot="headline">Lorem ipsum sic semper</h3>
+      <img slot="media" src="./placeholders/images/architecture.jpg" alt="Test" style="width:100%; height: auto;" />
       <p>
         Quis ut ex cupidatat proident cillum ullamco ea aute ad laborum aliqua incididunt sint ipsum. Elit enim
         reprehenderit aliquip officia in minim. Eu ipsum pariatur dolor. Do ex in cupidatat anim aliqua sint voluptate
-        sunt nulla incididunt. Cupidatat officia reprehenderit est cupidatat et id officia ut. Exercitation id pariatur
-        elit occaecat ad Lorem nisi sunt pariatur do aute aliqua magna irure incididunt.
+        sunt nulla incididunt.
+      </p>
+    </sd-teaser>
+  `
+};
+
+/**
+ * The meta slot can be used to display additional information.
+ */
+
+export const MetaSlot = {
+  render: () => html`
+    <sd-teaser>
+      <h3 slot="headline">Lorem ipsum sic semper</h3>
+      <div slot="meta">
+        <time class="sd-meta sd-meta--pipe" datetime="2023-01-01">01.01.2023</time>
+        <span class="sd-meta">Author name</span>
+      </div>
+      <p>
+        Quis ut ex cupidatat proident cillum ullamco ea aute ad laborum aliqua incididunt sint ipsum. Elit enim
+        reprehenderit aliquip officia in minim. Eu ipsum pariatur dolor. Do ex in cupidatat anim aliqua sint voluptate
+        sunt nulla incididunt.
       </p>
     </sd-teaser>
   `
@@ -142,12 +165,11 @@ export const MediaSlot = {
 export const Inset = {
   render: () => html`
     <sd-teaser inset variant="primary-100">
-      <h3 slot="headline">Inset teaser</h3>
+      <h3 slot="headline">Teaser with inset Padding</h3>
       <p>
         Quis ut ex cupidatat proident cillum ullamco ea aute ad laborum aliqua incididunt sint ipsum. Elit enim
         reprehenderit aliquip officia in minim. Eu ipsum pariatur dolor. Do ex in cupidatat anim aliqua sint voluptate
-        sunt nulla incididunt. Cupidatat officia reprehenderit est cupidatat et id officia ut. Exercitation id pariatur
-        elit occaecat ad Lorem nisi sunt pariatur do aute aliqua magna irure incididunt.
+        sunt nulla incididunt.
       </p>
     </sd-teaser>
   `
@@ -168,8 +190,7 @@ export const Breakpoint = {
         <p>
           Quis ut ex cupidatat proident cillum ullamco ea aute ad laborum aliqua incididunt sint ipsum. Elit enim
           reprehenderit aliquip officia in minim. Eu ipsum pariatur dolor. Do ex in cupidatat anim aliqua sint voluptate
-          sunt nulla incididunt. Cupidatat officia reprehenderit est cupidatat et id officia ut. Exercitation id
-          pariatur elit occaecat ad Lorem nisi sunt pariatur do aute aliqua magna irure incididunt.
+          sunt nulla incididunt.
         </p>
       </sd-teaser>
 
@@ -179,8 +200,7 @@ export const Breakpoint = {
         <p>
           Quis ut ex cupidatat proident cillum ullamco ea aute ad laborum aliqua incididunt sint ipsum. Elit enim
           reprehenderit aliquip officia in minim. Eu ipsum pariatur dolor. Do ex in cupidatat anim aliqua sint voluptate
-          sunt nulla incididunt. Cupidatat officia reprehenderit est cupidatat et id officia ut. Exercitation id
-          pariatur elit occaecat ad Lorem nisi sunt pariatur do aute aliqua magna irure incididunt.
+          sunt nulla incididunt.
         </p>
       </sd-teaser>
     </div>
@@ -194,13 +214,12 @@ export const Breakpoint = {
 export const Distribution = {
   render: () => html`
     <sd-teaser style="--distribution-media: 30%; --distribution-content: 70%;">
-      <h3 slot="headline">Eu ut ad exercitation magna</h3>
-      <img slot="media" src="./placeholders/images/collaboration.jpg" alt="Test" style="width:100%; height: auto;" />
+      <h3 slot="headline">Lorem ipsum sic semper</h3>
+      <img slot="media" src="./placeholders/images/architecture.jpg" alt="Test" style="width:100%; height: auto;" />
       <p>
         Quis ut ex cupidatat proident cillum ullamco ea aute ad laborum aliqua incididunt sint ipsum. Elit enim
         reprehenderit aliquip officia in minim. Eu ipsum pariatur dolor. Do ex in cupidatat anim aliqua sint voluptate
-        sunt nulla incididunt. Cupidatat officia reprehenderit est cupidatat et id officia ut. Exercitation id pariatur
-        elit occaecat ad Lorem nisi sunt pariatur do aute aliqua magna irure incididunt.
+        sunt nulla incididunt.
       </p>
     </sd-teaser>
   `
