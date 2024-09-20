@@ -50,9 +50,9 @@ export const Default = {
 };
 
 /**
- * Use the `&--variant-*` classes for alternative appearances:
- * - `horizontal` is the default copyright variant
- * - `vertical`: use the class `sd-copyright--variant-vertical`
+ * Use the `&--orientation-*` classes for alternative appearances:
+ * - `horizontal` is the default copyright orientation
+ * - `vertical`: use the class `sd-copyright--orientation-vertical`
  */
 
 export const Variants = {
@@ -67,7 +67,7 @@ export const Variants = {
       </div>
 
       <div
-        class="sd-copyright sd-copyright--variant-vertical max-w-xl"
+        class="sd-copyright sd-copyright--orientation-vertical max-w-xl"
         style="--copyright: '© 2024 Solid Design System';"
       >
         <img

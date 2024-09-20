@@ -7,9 +7,9 @@ export default {
   since: '2.5.0',
   attributes: [
     {
-      name: 'sd-copyright--variant-...',
+      name: 'sd-copyright--orientation-...',
       options: ['vertical'],
-      description: 'The copyrights vertical variant.'
+      description: 'The copyrights vertical orientation.'
     }
   ]
 } satisfies Style;
