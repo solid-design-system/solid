@@ -6,7 +6,7 @@ import { html } from 'lit-html';
  */
 export default {
   tags: ['!dev'],
-  title: 'Templates/Drawer with navigation',
+  title: 'Templates/Drawer',
   parameters: {
     design: {
       type: 'figma',
@@ -27,8 +27,7 @@ export default {
 };
 
 /**
- * ```
- * ```
+ * ### Tablet Navigation - Level 1
  */
 export const Default = {
   name: 'Tablet Navigation - Level 1',

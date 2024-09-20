@@ -2,7 +2,8 @@ import '../solid-components';
 import { html } from 'lit-html';
 
 /**
- * Use the html `start` attribute to set the starting number of the list. The default value is '1'.
+ * ```
+ * ```
  */
 export default {
   tags: ['!dev'],
@@ -13,8 +14,7 @@ export default {
 };
 
 /**
- * ```
- * ```
+ * Use the html `start` attribute to set the starting number of the list. The default value is '1'.
  */
 export const FootnotesSetStart = {
   render: () => html`

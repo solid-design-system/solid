@@ -2,12 +2,8 @@ import '../solid-components';
 import { html } from 'lit-html';
 
 /**
- * Examples of the `sd-interactive` class:
- *
- * - Label only
- * - Icon only
- * - Left icon with label
- * - Label with right icon
+ * ```
+ * ```
  */
 export default {
   tags: ['!dev'],
@@ -22,8 +18,12 @@ export default {
 };
 
 /**
- * ```
- * ```
+ * Examples of the `sd-interactive` class:
+ *
+ * - Label only
+ * - Icon only
+ * - Left icon with label
+ * - Label with right icon
  */
 export const Examples = {
   render: () => html`
