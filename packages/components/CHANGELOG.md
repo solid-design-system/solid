@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v3.17.7](https://github.com/solid-design-system/solid/compare/components/3.17.6...components/3.17.7) (2024-09-20)
+
+
+### Bug Fixes
+
+* 🤔 sd-footnotes inverted variant color ([#1409](https://github.com/solid-design-system/solid/issues/1409)) ([c4d9813](https://github.com/solid-design-system/solid/commit/c4d9813cd7a8f7ed6311c6096ea334d55ed77f31))
+
+### 📈 Stats
+* Bundle size (uncompressed): 334 KB (unchanged)
+* Bundle size (gzipped): 79 KB (unchanged)
+
 # [@solid-design-system/components-v3.17.6](https://github.com/solid-design-system/solid/compare/components/3.17.5...components/3.17.6) (2024-09-17)
 
 
