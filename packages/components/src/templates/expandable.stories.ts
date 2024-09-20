@@ -28,24 +28,18 @@ export default {
 export const TextStyles = {
   render: () =>
     html`<div class="flex flex-col gap-4">
-      <div class="bg-neutral-100 p-4">
-        <sd-expandable
-          class="sd-leadtext"
-          style="--gradient-color-start: rgb(var(--sd-color-neutral-100, 246 246 246) / 0);--gradient-color-end: rgb(var(--sd-color-neutral-100, 246 246 246) / 1)"
-        >
-          <p>
-            Global economic growth continues to be an important support factor for the capital markets. The US economy
-            in particular is running like a well-oiled machine. This is unlikely to change much in the coming quarters.
-            Our economists expect real economic output to increase by 2.7 per cent in 2024 as a whole. Unlike in
-            previous months, they also expect the economic outlook to improve in other regions, above all in the
-            eurozone. Here, gross domestic product (GDP) is expected to grow by 0.6 per cent over the course of the
-            year. Germany brings up the rear with GDP growth forecast to be only slightly above zero. As the economies
-            of China and Japan are stabilising at the same time, the global economy is expected to grow by 2.9% in 2024,
-            slightly more than in the previous year. The growth gap between the most important regions is therefore
-            closing somewhat.
-          </p>
-        </sd-expandable>
-      </div>
+      <sd-expandable class="sd-leadtext">
+        <p>
+          Global economic growth continues to be an important support factor for the capital markets. The US economy in
+          particular is running like a well-oiled machine. This is unlikely to change much in the coming quarters. Our
+          economists expect real economic output to increase by 2.7 per cent in 2024 as a whole. Unlike in previous
+          months, they also expect the economic outlook to improve in other regions, above all in the eurozone. Here,
+          gross domestic product (GDP) is expected to grow by 0.6 per cent over the course of the year. Germany brings
+          up the rear with GDP growth forecast to be only slightly above zero. As the economies of China and Japan are
+          stabilising at the same time, the global economy is expected to grow by 2.9% in 2024, slightly more than in
+          the previous year. The growth gap between the most important regions is therefore closing somewhat.
+        </p>
+      </sd-expandable>
       <div class="bg-neutral-100 p-4">
         <sd-expandable
           class="sd-prose sd-prose--full-width"

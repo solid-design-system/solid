@@ -30,8 +30,7 @@ export const CarouselWithImages = {
       <sd-carousel-item>
         <img src="./placeholders/images/workspace.jpg" alt="workspace" class="aspect-video" />
       </sd-carousel-item>
-      <sd-carousel> </sd-carousel
-    ></sd-carousel>
+    </sd-carousel>
   `
 };
 
@@ -48,7 +47,6 @@ export const LoopAndAutoplay = {
       <sd-carousel-item>
         <img src="./placeholders/images/family.jpg" alt="family" class="aspect-video" />
       </sd-carousel-item>
-      <sd-carousel> </sd-carousel
-    ></sd-carousel>
+    </sd-carousel>
   `
 };
