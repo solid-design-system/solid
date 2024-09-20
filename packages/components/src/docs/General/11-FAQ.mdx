@@ -78,12 +78,43 @@ import 'https://solid-design-system.fe.union-investment.de/x.x.x/components/es/a
 
 <sd-accordion>
   <h3 className="text-base sb-unstyled" slot="summary">
-    {' '}
-    Which browsers are supported?
+    What is the suggested workflow between Design and DEV in the project-specific teams? 
   </h3>
   <span className="sb-unstyled">
-    Currently the we provide auomatic VRT in Chrome and manually test our components with MS Edge, Safari and Firefox. A
-    more detailed browser matrix is in progress and will be added here soon.
+    A collaborative workflow between design and development teams is crucial for the success of any project. We recommend the following steps:
+
+    1. Initial Alignment: Begin with a kick-off meeting to ensure both designers and developers understand Solid DS and its capabilities.
+    2. Design Phase: Designers build prototypes based on Solid DS components, customising them whenever necessary while collaborating with developers to ensure feasibility. They also make all the relevant accessibility comments for later hand-off.
+    3. Hand-off Process: Designers provide detailed documentation and conduct design review sessions to ensure developers understand the specifications and rationale.
+    4. Development Phase: Maintain close communication, with regular check-ins and iterative testing to ensure designs are implemented accurately.
+    5. Final Review: Conduct a joint review to verify that the project meets design specifications and functions as intended.
+    6. Post-Launch: Keep a feedback loop for continuous improvement in future features and projects.
+
+  </span>
+</sd-accordion>
+
+<sd-accordion>
+  <h3 className="text-base sb-unstyled" slot="summary">
+    Are there any tutorials or guides available for beginners?
+  </h3>
+  <span className="sb-unstyled">
+    Yes, we offer comprehensive tutorials and guides for beginners to help them get started with the design system.
+    These resources cover from basic usage to advanced techniques, providing a smooth onboarding experience for new
+    users. Visit our <a href="https://www.figma.com/files/1075429990769806468/project/96753329">Trainings space</a> in
+    Figma to access these tutorials. Like the design system, this is a space in continuous growth and we will keep
+    adding new trainings and updating the existing ones to sharpen any edges of the overall interaction with Solid DS.
+  </span>
+</sd-accordion>
+
+<sd-accordion>
+  <h3 className="text-base sb-unstyled" slot="summary">
+    Can I download assets or code snippets directly from the documentation?
+  </h3>
+  <span className="sb-unstyled">
+    You can access and download design assets directly from our Figma documentation. This includes UI components, icons,
+    and other design elements that you can use in your projects. For code snippets, you can visit our Storybook. It
+    provides interactive examples of our components along with the corresponding code snippets, which you can easily
+    copy and integrate into your codebase.
   </span>
 </sd-accordion>
 
@@ -101,12 +132,48 @@ import 'https://solid-design-system.fe.union-investment.de/x.x.x/components/es/a
 
 <sd-accordion>
   <h3 className="text-base sb-unstyled" slot="summary">
+    Do I need to create a project-specific component library?
+  </h3>
+  <span className="sb-unstyled">
+    Your project structure should leverage the Solid Design System’s components, styles, samples, and patterns as
+    foundational elements. While it’s not mandatory to create a project-specific component library, doing so can help
+    manage customizations and extensions specific to your project. This approach ensures that your project remains
+    aligned with the Solid Design System while accommodating unique requirements.
+  </span>
+</sd-accordion>
+
+<sd-accordion>
+  <h3 className="text-base sb-unstyled" slot="summary">
     Will the development of the Solid Design System be finished at some point?
   </h3>
   <span className="sb-unstyled">
     No, the Solid Design System is an ongoing endeavor, much like the ever-evolving nature of the web itself. We are
     committed to continually refining and expanding its features, ensuring it remains aligned with the latest standards
     and technologies.
+  </span>
+</sd-accordion>
+
+<sd-accordion>
+  <h3 className="text-base sb-unstyled" slot="summary">
+    Can I change the appearance of the components of the Solid Design system?
+  </h3>
+  <span className="sb-unstyled">
+    Yes, the Solid Design System supports skinning. You can customise the appearance of components through styles to
+    match your project’s branding and design requirements. This flexibility allows you to maintain visual consistency
+    while adapting the design system to your specific needs. For detailed instructions on customization, please refer to
+    our customization guide in the online storybook.
+  </span>
+</sd-accordion>
+
+<sd-accordion>
+  <h3 className="text-base sb-unstyled" slot="summary">
+    Why aren’t all features that I need for my project included in Solid Design System?
+  </h3>
+  <span className="sb-unstyled">
+    The Solid Design System is designed to provide a robust foundation for a wide range of projects. However, it may not
+    include every specific feature needed for individual projects to maintain its flexibility and general applicability.
+    We encourage teams to extend the system as needed to meet their unique requirements while adhering to the core
+    principles of usability, reusability, and maintainability.
   </span>
 </sd-accordion>
 
@@ -151,7 +218,7 @@ import 'https://solid-design-system.fe.union-investment.de/x.x.x/components/es/a
     Does the use of the Solid Design System guarantee my website's accessibility?
   </h3>
   <span className="sb-unstyled">
-    No, although our components, styles, samples, and patterns are meticulously crafted to meet WCAG 2.2 specifications
+    No. Although our components, styles, samples, and patterns are meticulously crafted to meet WCAG 2.2 specifications
     individually, they alone do not ensure comprehensive web accessibility. They constitute only a part of your website
     or application, and achieving full accessibility requires attention to your usage, content, and overall structure.
     While implementing Solid Components into your product is a crucial initial step toward accessibility, it doesn't
@@ -172,9 +239,31 @@ import 'https://solid-design-system.fe.union-investment.de/x.x.x/components/es/a
 </sd-accordion>
 
 <sd-accordion>
-  <h3 className="text-base sb-unstyled" slot="summary">How do I reach out to the Solid Design System team?</h3>
+  <h3 className="text-base sb-unstyled" slot="summary">
+    How do I reach out to the Solid Design System team?
+  </h3>
   <span className="sb-unstyled">
-    For any inquiries specific to the library, feel free to open an [issue](https://github.com/solid-design-system/solid/issues) or initiate a [discussion](https://github.com/solid-design-system/solid/discussions). If you need to directly contact the core team, you can also reach us at sds@union-investment.de.
+    For any inquiries specific to the library, feel free to open an
+    [issue](https://github.com/solid-design-system/solid/issues) or initiate a
+    [discussion](https://github.com/solid-design-system/solid/discussions). If you need to directly contact the core
+    team, you can also reach us at sds@union-investment.de.
+  </span>
+</sd-accordion>
+
+<sd-accordion>
+  <h3 className="text-base sb-unstyled" slot="summary">
+    How does Solid Design System work on different Figma Teams and Figma Workspaces?
+  </h3>
+  <span className="sb-unstyled">
+    Solid Design System can only be used correctly within the UIG Figma. Therefore, all external service providers
+    should only work in the UIG Figma and not in their own Figma space.
+  </span>
+</sd-accordion>
+
+<sd-accordion>
+  <h3 className="text-base sb-unstyled" slot="summary">Can I use the Solid Design System for my private projects?</h3>
+  <span className="sb-unstyled">
+    The Solid Design System is intended for use within the Union Investment universe. While it is an open-source project, its commercial use is restricted to Union Investment and its associated projects. However, it can be used if the components' form and color are altered to avoid resemblance to the original corporate design. This "whitelabeling" process ensures the system is adapted to fit your project's unique style.
   </span>
 </sd-accordion>
 </sd-accordion-group>
@@ -184,9 +273,30 @@ import 'https://solid-design-system.fe.union-investment.de/x.x.x/components/es/a
 <h1 className="sd-headline sd-headline--size-3xl bottom-4">Technical Questions</h1>
 <sd-accordion-group>
 <sd-accordion>
-  <h3 className="text-base sb-unstyled" slot="summary"> Why do we rely on basic HTML standards?</h3>
+  <h3 className="text-base sb-unstyled" slot="summary">Why do we rely on basic HTML standards?</h3>
   <span className="sb-unstyled">
     We rely on basic HTML standards because they provide a solid foundation for web development, ensuring compatibility across different browsers and devices. HTML standards define the structure and semantics of web content, which is crucial for accessibility and search engine optimization. By adhering to these standards, we promote consistency, reliability, and interoperability in web development, ultimately enhancing user experience and facilitating collaboration within the web community.
+  </span>
+</sd-accordion>
+
+<sd-accordion>
+  <h3 className="text-base sb-unstyled" slot="summary">
+    Which browsers are supported?
+  </h3>
+  <span className="sb-unstyled">
+    Currently we provide automatic VRT in Chrome and manually test our components with MS Edge, Safari and Firefox. A
+    more detailed browser matrix is in progress and will be added here soon.
+  </span>
+</sd-accordion>
+
+<sd-accordion>
+  <h3 className="text-base sb-unstyled" slot="summary">
+    Does the design system support TypeScript and work with React, Vue, and Angular?
+  </h3>
+  <span className="sb-unstyled">
+    The Solid Design System is designed to be framework-agnostic, meaning it can be integrated with various frameworks,
+    including React, Vue, and Angular. Additionally, TypeScript integration is supported, allowing you to leverage type
+    safety and other TypeScript features in your projects.
   </span>
 </sd-accordion>
 
