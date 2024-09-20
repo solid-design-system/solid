@@ -45,18 +45,3 @@ export const Default = {
       </sd-select>
     </div>`
 };
-
-export const SelectWithTooltip = {
-  render: () =>
-    html`<div class="w-[400px] h-[500px] flex gap-12 mt-12">
-      <sd-select size="lg" placement="bottom" label="Access Role" placeholder="Please Select" value="">
-        <div slot="label" class="flex items-center">
-          <label class="text-black font-bold mr-2">Access Role</label>
-          <sd-tooltip content="Lorem ipsum sic semper" placement="top" trigger="hover" size="sm"></sd-tooltip>
-        </div>
-        <sd-option value="option-1">Viewer</sd-option>
-        <sd-option value="option-2">Editor</sd-option>
-        <sd-option value="option-3">Owner</sd-option>
-      </sd-select>
-    </div>`
-};
