@@ -9,7 +9,7 @@ export default {
     {
       name: 'sd-copyright--orientation-...',
       options: ['vertical'],
-      description: 'The copyrights vertical orientation.'
+      description: 'The copyrights orientation.'
     }
   ]
 } satisfies Style;
