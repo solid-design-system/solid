@@ -11,7 +11,7 @@ const { overrideArgs } = storybookHelpers('sd-dropdown');
  * Used to display a list of actions or options in a panel when activated.
  *
  * **Related templates:**
- * - [Dropdown with Navigation Items](?path=/docs/templates-dropdown--docs#dropdown-with-navigation-items)
+ * - [Dropdown](?path=/docs/templates-dropdown--docs)
  */
 
 export default {

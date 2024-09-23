@@ -9,7 +9,7 @@ const { overrideArgs } = storybookHelpers('sd-drawer');
  * Used as a panel that slides out from the side of the screen which contains a set of information or actions.
  *
  * **Related templates:**
- * - [Drawer with Navigation](?path=/docs/templates-drawer--docs)
+ * - [Drawer](?path=/docs/templates-drawer--docs)
  */
 
 export default {

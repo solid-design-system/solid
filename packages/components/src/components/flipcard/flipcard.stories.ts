@@ -60,13 +60,13 @@ export const Default = {
 /**
  * Use the `variant` attribute to set the color variant for front or back:
  *
- * - empty (default)
- * - primary
- * - primary-100
- * - gradient-light-top
- * - gradient-light-bottom
- * - gradient-dark-top
- * - gradient-dark-bottom
+ * - `empty` (default)
+ * - `primary`
+ * - `primary-100`
+ * - `gradient-light-top`
+ * - `gradient-light-bottom`
+ * - `gradient-dark-top`
+ * - `gradient-dark-bottom`
  */
 export const Variants = {
   render: () =>
@@ -297,8 +297,8 @@ export const Activation = {
 
 /**
  * Use the `flip-direction` attribute to determine the direction of the flipcard:
- * - horizontal (default)
- * - vertical
+ * - `horizontal` (default)
+ * - `vertical`
  */
 
 export const flipDirection = {

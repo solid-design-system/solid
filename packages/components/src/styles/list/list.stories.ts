@@ -13,7 +13,7 @@ const { generateTemplate } = storybookTemplate('sd-list');
  *
  * **Related templates**:
  * - [List](?path=/docs/templates-list--docs)
- * - [Link list](?path=/docs/templates-link--docs&globals=backgrounds.value:transparent#link-list)
+ * - [Link list](?path=/docs/templates-link--docs#link-list)
  */
 
 export default {
@@ -55,8 +55,8 @@ export const Default = {
 /**
  * Use `sd-list` modifiers for alternative appearances:
  *
- * - `ul` standard html list element to create an unnumbered list
- * - `ol` standard html list element to create a numbered list
+ * - `ul` standard html list element to create an unordered list
+ * - `ol` standard html list element to create a ordered list
  * - `sd-list--icon` class to create an icon list
  */
 

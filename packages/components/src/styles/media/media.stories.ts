@@ -44,7 +44,7 @@ export const Default = {
 };
 
 /**
- * Use the `sd-media--inverted` class when displayed on primary background if description is added.
+ * Use the `sd-media--inverted` class when displayed on primary background.
  */
 
 export const Inverted = {

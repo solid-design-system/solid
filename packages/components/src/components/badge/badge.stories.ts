@@ -42,8 +42,11 @@ export const Default = {
 /**
  * Use the `variant` attribute to set the badge’s variant:
  *
- * - `default`: Utilized for standard emphasis
- * - `success` and `error`: Alternative color options like green or red are employed to highlight specific notifications, without implying any semantic meaning
+ * - `default`
+ * - `success`
+ * - `error`
+ *
+ * __Hint:__ Alternative color options like green or red are employed to highlight specific notifications, without implying any semantic meaning.
  */
 export const Variant = {
   name: 'Variant',
@@ -57,16 +60,21 @@ export const Variant = {
 };
 
 /**
- * Use the `size` attribute to set the badge’s size.
+ * Use the `size` attribute to set the badge’s size:
+ *
+ * - `lg` (default)
+ * - `md`
+ * - `sm`
+ *
  */
 
 export const Size = {
   name: 'Size',
   render: () => html`
     <div class="flex gap-12">
-      <sd-badge size="sm">8</sd-badge>
-      <sd-badge size="md">8</sd-badge>
       <sd-badge size="lg">8</sd-badge>
+      <sd-badge size="md">8</sd-badge>
+      <sd-badge size="sm">8</sd-badge>
     </div>
   `
 };

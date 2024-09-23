@@ -61,13 +61,13 @@ export const Default = {
 /**
  * Use the `variant` attribute to set the color variant:
  *
- * - `primary` (default): used on light backgrounds
+ * - `primary` (default): Used on light backgrounds
  * - `neutral-100`
- * - `border-primary`: used on light backgrounds
+ * - `border-primary`: Used on light backgrounds
  * <br>Change the fill color to match the background color
  * - `image`
- * - `white`: used on primary, primary-100 and neutral-100 backgrounds
- * - `border-white`: used on primary background
+ * - `white`: Used on primary, primary-100 and neutral-100 backgrounds
+ * - `border-white`: Used on primary background
  */
 
 export const Variant = {

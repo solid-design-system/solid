@@ -55,11 +55,11 @@ export const Default = {
 /**
  * Use the `variant` attribute to use the appropriate teaser for your context:
  *
- * - 'white' (default)
- * - 'white border-neutral-400'
- * - 'neutral-100'
- * - 'primary'
- * - 'primary-100'
+ * - `white` (default)
+ * - `white border-neutral-400`
+ * - `neutral-100`
+ * - `primary`
+ * - `primary-100`
  */
 
 export const Variant = {
@@ -100,7 +100,7 @@ export const Variant = {
 };
 
 /**
- * - The header and default slot are both obligatory.
+ * - The`header` and `default` slot are both required.
  * - Use the `header` slot to display titles, it should always contain a `<h*>` element.
  * - Use the `default` slot to display any content.
  */
@@ -120,7 +120,7 @@ export const DefaultAndHeadlineSlot = {
 };
 
 /**
- * Teasers accept a media slot to display images or videos.
+ * Teasers accept a `media` slot to display images or videos.
  */
 
 export const MediaSlot = {

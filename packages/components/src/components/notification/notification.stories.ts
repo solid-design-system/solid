@@ -157,9 +157,13 @@ export const DurationIndicator = {
 };
 
 /**
- * Display a toast notification at the top-right of the screen by using the `toast` method. Click on the **Show code** button to see the JavaScript code responsible for generating the toast notification. The default position is `top-right`.
+ * Use the `toastStack` attribute to change the position of the toast notifications:
+ * - `top-right` (default)
+ * - `bottom-center`
  *
- * __Hint:__ Click on one of the buttons below to see the corresponding toast notification.
+ * __Hints:__
+ * - It requires the use of the `toast` method to work. Click on the `Show code` button to see the JavaScript code responsible for generating the toast notification.
+ * - Click on one of the buttons below to see the corresponding toast notification.
  */
 export const ToastNotification = {
   name: 'Toast Notification',
@@ -223,11 +227,6 @@ export const ToastNotification = {
   }
 };
 
-/**
- * Display a toast notification positioned at the bottom-center of the screen by setting the `toastStack` attribute to `bottom-center`. Click on the **Show code** button to see the JavaScript code responsible for generating the toast notification.
- *
- * __Hint:__ Click on one of the buttons below to see the corresponding toast notification.
- */
 export const ToastBottomCenter = {
   name: ' ',
   render: (_args: Record<string, any>) => {
