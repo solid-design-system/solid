@@ -2,14 +2,9 @@ import '../solid-components';
 import { html } from 'lit-html';
 
 /**
- * Examples of the `sd-interactive` class:
- *
- * - Label only
- * - Icon only
- * - Left icon with label
- * - Label with right icon
+ * ```
+ * ```
  */
-
 export default {
   tags: ['!dev'],
   title: 'Templates/Interactive',
@@ -22,6 +17,14 @@ export default {
   }
 };
 
+/**
+ * Examples of the `sd-interactive` class:
+ *
+ * - Label only
+ * - Icon only
+ * - Left icon with label
+ * - Label with right icon
+ */
 export const Examples = {
   render: () => html`
     <div class="flex flex-col gap-12">

@@ -12,7 +12,7 @@ const { generateTemplate } = storybookTemplate('sd-badge');
  * Used to visual indicate a quantity related to a particular element. Often displayed next to an icon or label.
  *
  * **Related templates**:
- * - [Button with Badge](?path=/docs/templates-button-with-badge--docs)
+ * - [Badge](?path=/docs/templates-badge--docs)
  *
  */
 
@@ -32,10 +32,6 @@ export default {
   decorators: [withActions] as any
 };
 
-/**
- * This shows the badge in its default state.
- */
-
 export const Default = {
   name: 'Default',
   render: (args: any) => {
@@ -44,12 +40,14 @@ export const Default = {
 };
 
 /**
- * Use the `variant` attribute to set the badge’s variant.
+ * Use the `variant` attribute to set the badge’s variant:
  *
- * - `default`: Utilized for standard emphasis.
- * - `success` and `error`: Alternative color options like green or red are employed to highlight specific notifications, without implying any semantic meaning.
+ * - `default`
+ * - `success`
+ * - `error`
+ *
+ * __Hint:__ Alternative color options like green or red are employed to highlight specific notifications, without implying any semantic meaning.
  */
-
 export const Variant = {
   name: 'Variant',
   render: () => html`
@@ -62,16 +60,21 @@ export const Variant = {
 };
 
 /**
- * Use the `size` attribute to set the badge’s size.
+ * Use the `size` attribute to set the badge’s size:
+ *
+ * - `lg` (default)
+ * - `md`
+ * - `sm`
+ *
  */
 
 export const Size = {
   name: 'Size',
   render: () => html`
     <div class="flex gap-12">
-      <sd-badge size="sm">8</sd-badge>
-      <sd-badge size="md">8</sd-badge>
       <sd-badge size="lg">8</sd-badge>
+      <sd-badge size="md">8</sd-badge>
+      <sd-badge size="sm">8</sd-badge>
     </div>
   `
 };

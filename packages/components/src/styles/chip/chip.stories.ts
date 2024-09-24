@@ -37,16 +37,16 @@ export const Default = {
   }
 };
 /**
- * Use `sd-chip` modifiers for alternative appearances:
- * - `--primary-200` (default)
- * - `--primary-300`
- * - `--primary-500`
- * - `--white`
+ * Use the `sd-chip` classes for alternative appearances:
+ * - primary-200 is the default background color
+ * - `sd-chip--primary-300`
+ * - `sd-chip--primary-500`
+ * - `sd-chip--white`
  */
 export const Variants = {
   render: () =>
     html` <div class="flex gap-12 bg-neutral-100 p-8">
-      <div class="sd-chip sd-chip--primary-200">primary-200</div>
+      <div class="sd-chip">primary-200</div>
       <div class="sd-chip sd-chip--primary-300">primary-300</div>
       <div class="sd-chip sd-chip--primary-500">primary-500</div>
       <div class="sd-chip sd-chip--white">white</div>

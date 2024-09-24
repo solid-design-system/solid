@@ -9,7 +9,7 @@ const { generateTemplate } = storybookTemplate('sd-table-cell');
 /**
  * Used to organize and structure content, scanning, comparing, and analyzing the data.
  *
- * Offers basic styling for table cells. It is designed to be used in conjunction with the ”sd-table” component.
+ * It is designed to be used inside the ”sd-table” component.
  *
  * **Related Components**:
  * - [sd-table](?path=/docs/styles-sd-table--docs)
@@ -48,12 +48,12 @@ export const Default = {
 };
 
 /**
- * Use the `&--bg-*`class for alternative appearances.
+ * Use the `sd-table-cell` classes for alternative appearances:
  *
- * - `transparent` (default)
- * - `white`
- * - `primary-100`
- * - `neutral-100`
+ * - `sd-table-cell--bg-transparent` (default)
+ * - `sd-table-cell--bg-white`
+ * - `sd-table-cell--bg-primary-100`
+ * - `sd-table-cell--bg-neutral-100`
  */
 
 export const Variants = {
@@ -94,7 +94,7 @@ export const Variants = {
 };
 
 /**
- * Use the `&--divider` class to toggle vertical dividers.
+ * Use the `sd-table-cell--divider` class to toggle vertical dividers.
  */
 
 export const Divider = {
@@ -120,12 +120,12 @@ export const Divider = {
 };
 
 /**
- * Use &--shadow-* to add a shadow to columns or rows when the table is scrollable with sticky headers.
+ * Use the `sd-table-cell` classes to add a shadow to columns or rows when the table is scrollable with sticky headers:
  *
- * - `right`
- * - `left`
- * - `bottom`
- * - `top`
+ * - `sd-table-cell--shadow-right`
+ * - `sd-table-cell--shadow-left`
+ * - `sd-table-cell--shadow-bottom`
+ * - `sd-table-cell--shadow-top`
  */
 
 export const Shadow = {

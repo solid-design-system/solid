@@ -1,9 +1,13 @@
 import '../solid-components';
 import { html } from 'lit-html';
 
+/**
+ * ```
+ * ```
+ */
 export default {
   tags: ['!dev'],
-  title: 'Templates/Tags',
+  title: 'Templates/Tag',
   parameters: {
     chromatic: { disableSnapshot: true },
     design: {
@@ -18,7 +22,6 @@ export default {
  * - neutral-100
  * - primary-100
  */
-
 export const Default = {
   name: 'Background options',
   render: () =>

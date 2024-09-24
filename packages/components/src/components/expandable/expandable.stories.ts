@@ -7,10 +7,10 @@ const { overrideArgs } = storybookHelpers('sd-expandable');
 const { generateTemplate } = storybookTemplate('sd-expandable');
 
 /**
- * Helps to reduce visible content by concealing part of it, with an option for users to reveal more as needed.
+ * Used to display a brief summary that expands to reveal additional content.
  *
  *  **Related templates**:
- * - [Expandable with Different Text Styles](?path=/docs/templates-expandable-with-different-text-styles--docs)
+ * - [Expandable](?path=/docs/templates-expandable--docs)
  */
 export default {
   title: 'Components/sd-expandable',
