@@ -55,10 +55,35 @@ export const Default = {
 
 export const Variant = {
   render: () => html`
-    <div class="flex gap-12">
-      <sd-tab variant="default">Default</sd-tab>
-      <sd-tab variant="container">Container</sd-tab>
-    </div>
+    <sd-tab-group>
+      <sd-tab slot="nav" panel="tab-1" variant="default">Default 1</sd-tab>
+      <sd-tab-panel name="tab-1">
+        <div>Tab panel 1 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</div>
+      </sd-tab-panel>
+      <sd-tab slot="nav" panel="tab-2" variant="default">Default 2</sd-tab>
+      <sd-tab-panel name="tab-2">
+        <div>Tab panel 2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</div>
+      </sd-tab-panel>
+      <sd-tab slot="nav" panel="tab-3" variant="default">Default 3</sd-tab>
+      <sd-tab-panel name="tab-3">
+        <div>Tab panel 3 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</div>
+      </sd-tab-panel>
+    </sd-tab-group>
+
+    <sd-tab-group>
+      <sd-tab slot="nav" panel="tab-1" variant="container">Container 1</sd-tab>
+      <sd-tab-panel name="tab-1">
+        <div>Tab panel 1 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</div>
+      </sd-tab-panel>
+      <sd-tab slot="nav" panel="tab-2" variant="container">Container 2</sd-tab>
+      <sd-tab-panel name="tab-2">
+        <div>Tab panel 2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</div>
+      </sd-tab-panel>
+      <sd-tab slot="nav" panel="tab-3" variant="container">Container 3</sd-tab>
+      <sd-tab-panel name="tab-3">
+        <div>Tab panel 3 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</div>
+      </sd-tab-panel>
+    </sd-tab-group>
   `
 };
 
@@ -68,10 +93,35 @@ export const Variant = {
 
 export const Active = {
   render: () => html`
-    <div class="flex gap-12">
-      <sd-tab active>Default</sd-tab>
-      <sd-tab variant="container" active>Container</sd-tab>
-    </div>
+    <sd-tab-group>
+      <sd-tab slot="nav" panel="tab-1" variant="default" active>Default 1</sd-tab>
+      <sd-tab-panel name="tab-1">
+        <div>Tab panel 1 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</div>
+      </sd-tab-panel>
+      <sd-tab slot="nav" panel="tab-2" variant="default">Default 2</sd-tab>
+      <sd-tab-panel name="tab-2">
+        <div>Tab panel 2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</div>
+      </sd-tab-panel>
+      <sd-tab slot="nav" panel="tab-3" variant="default">Default 3</sd-tab>
+      <sd-tab-panel name="tab-3">
+        <div>Tab panel 3 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</div>
+      </sd-tab-panel>
+    </sd-tab-group>
+
+    <sd-tab-group>
+      <sd-tab slot="nav" panel="tab-1" variant="container" active>Container 1</sd-tab>
+      <sd-tab-panel name="tab-1">
+        <div>Tab panel 1 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</div>
+      </sd-tab-panel>
+      <sd-tab slot="nav" panel="tab-2" variant="container">Container 2</sd-tab>
+      <sd-tab-panel name="tab-2">
+        <div>Tab panel 2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</div>
+      </sd-tab-panel>
+      <sd-tab slot="nav" panel="tab-3" variant="container">Container 3</sd-tab>
+      <sd-tab-panel name="tab-3">
+        <div>Tab panel 3 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</div>
+      </sd-tab-panel>
+    </sd-tab-group>
   `
 };
 
@@ -80,7 +130,22 @@ export const Active = {
  */
 
 export const Disabled = {
-  render: () => html` <sd-tab disabled>Disabled</sd-tab> `
+  render: () => html`
+    <sd-tab-group>
+      <sd-tab slot="nav" panel="tab-1" variant="default">Label</sd-tab>
+      <sd-tab-panel name="tab-1">
+        <div>Tab panel 1 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</div>
+      </sd-tab-panel>
+      <sd-tab slot="nav" panel="tab-2" variant="default" disabled>Disabled</sd-tab>
+      <sd-tab-panel name="tab-2">
+        <div>Tab panel 2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</div>
+      </sd-tab-panel>
+      <sd-tab slot="nav" panel="tab-3" variant="default">Label</sd-tab>
+      <sd-tab-panel name="tab-3">
+        <div>Tab panel 3 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</div>
+      </sd-tab-panel>
+    </sd-tab-group>
+  `
 };
 
 /**
@@ -89,9 +154,28 @@ export const Disabled = {
 
 export const Icon = {
   render: () => html`
-    <sd-tab>
-      <sd-icon slot="left" name="system/picture" library="global-resources" class="pr-2"></sd-icon>
-      Default
-    </sd-tab>
+    <sd-tab-group>
+      <sd-tab slot="nav" panel="tab-1">
+        <sd-icon slot="left" name="system/picture" library="global-resources" class="pr-2"></sd-icon>
+        Label
+      </sd-tab>
+      <sd-tab-panel name="tab-1">
+        <div>Tab panel 1 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</div>
+      </sd-tab-panel>
+      <sd-tab slot="nav" panel="tab-2">
+        <sd-icon slot="left" name="system/picture" library="global-resources" class="pr-2"></sd-icon>
+        Label
+      </sd-tab>
+      <sd-tab-panel name="tab-2">
+        <div>Tab panel 2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</div>
+      </sd-tab-panel>
+      <sd-tab slot="nav" panel="tab-3">
+        <sd-icon slot="left" name="system/picture" library="global-resources" class="pr-2"></sd-icon>
+        Label
+      </sd-tab>
+      <sd-tab-panel name="tab-3">
+        <div>Tab panel 3 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</div>
+      </sd-tab-panel>
+    </sd-tab-group>
   `
 };
