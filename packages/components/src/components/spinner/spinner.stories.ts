@@ -31,7 +31,7 @@ export const Default = {
 };
 
 /**
- * Offers `color` variants for alternate experiences:
+ * Use the `color` attribute to set the spinner's color:
  * - `currentColor` (default): used to inherit the `text-color` from the parent element
  * - `primary`: used on light backgrounds
  * - `white`: used on primary backgrounds
@@ -53,9 +53,8 @@ export const Variants = {
 };
 
 /**
- * Use the `font-size` in CSS to scale the spinner proportionally.
+ * Use the CSS property `font-size` to scale the spinner proportionally.
  */
-
 export const Size = {
   render: () =>
     html`<div class="flex flex-row gap-12">

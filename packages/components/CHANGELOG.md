@@ -1,3 +1,47 @@
+# [@solid-design-system/components-v3.17.8](https://github.com/solid-design-system/solid/compare/components/3.17.7...components/3.17.8) (2024-09-20)
+
+
+### Bug Fixes
+
+* 🤔 update experimental status ([#1396](https://github.com/solid-design-system/solid/issues/1396)) ([d3201d4](https://github.com/solid-design-system/solid/commit/d3201d47939c33556d342e175e24b011132989fb))
+
+### 📈 Stats
+* Bundle size (uncompressed): 334 KB (unchanged)
+* Bundle size (gzipped): 79 KB (unchanged)
+
+# [@solid-design-system/components-v3.17.7](https://github.com/solid-design-system/solid/compare/components/3.17.6...components/3.17.7) (2024-09-20)
+
+
+### Bug Fixes
+
+* 🤔 sd-footnotes inverted variant color ([#1409](https://github.com/solid-design-system/solid/issues/1409)) ([c4d9813](https://github.com/solid-design-system/solid/commit/c4d9813cd7a8f7ed6311c6096ea334d55ed77f31))
+
+### 📈 Stats
+* Bundle size (uncompressed): 334 KB (unchanged)
+* Bundle size (gzipped): 79 KB (unchanged)
+
+# [@solid-design-system/components-v3.17.6](https://github.com/solid-design-system/solid/compare/components/3.17.5...components/3.17.6) (2024-09-17)
+
+
+### Bug Fixes
+
+* 🤔 reduce clickable area to label length in sd-switch, sd-radio and sd-checkbox  ([#1392](https://github.com/solid-design-system/solid/issues/1392)) ([ed9c816](https://github.com/solid-design-system/solid/commit/ed9c8166acf532efbda6bd602068c8c61fd95753))
+
+### 📈 Stats
+* Bundle size (uncompressed): 334 KB (unchanged)
+* Bundle size (gzipped): 79 KB (+1 KB / +1%)
+
+# [@solid-design-system/components-v3.17.5](https://github.com/solid-design-system/solid/compare/components/3.17.4...components/3.17.5) (2024-09-17)
+
+
+### Bug Fixes
+
+* 🤔 correct colors in form field validation  ([#1381](https://github.com/solid-design-system/solid/issues/1381)) ([c587094](https://github.com/solid-design-system/solid/commit/c587094d67b90e033189e0dc00406dd97df3afde))
+
+### 📈 Stats
+* Bundle size (uncompressed): 334 KB (-1 KB / 0%)
+* Bundle size (gzipped): 78 KB (-1 KB / -1%)
+
 # [@solid-design-system/components-v3.17.4](https://github.com/solid-design-system/solid/compare/components/3.17.3...components/3.17.4) (2024-09-02)
 
 

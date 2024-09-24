@@ -44,7 +44,7 @@ export const Default = {
 };
 
 /**
- * Set the component's size with width (horizontal) or height (vertical) via CSS or inline-styles
+ * Set the component's size with width (horizontal) or height (vertical) via CSS or inline-styles.
  */
 export const Size = {
   render: () => {
@@ -58,7 +58,10 @@ export const Size = {
 };
 
 /**
- * Use the `orientation` attribute to set the axis of a divider.
+ * Use the `orientation` attribute to set the axis of a divider:
+ *
+ * - `horizontal`(default)
+ * - `vertical`
  */
 export const Orientation = {
   render: () => html`

@@ -1,9 +1,13 @@
 import '../solid-components';
 import { html } from 'lit-html';
 
+/**
+ * ```
+ * ```
+ */
 export default {
   tags: ['!dev'],
-  title: 'Templates/Link List',
+  title: 'Templates/Link',
   parameters: {
     design: {
       type: 'figma',
@@ -13,10 +17,11 @@ export default {
 };
 
 /**
+ * ### Link List
+ *
  * This example shows a list of links inside a container.
  */
-
-export const Default = {
+export const LinkList = {
   render: () =>
     html`<div class="bg-primary-100 p-8">
       <h2 class="sd-headline sd-headline--size-lg mb-8">You might be interested in this:</h2>

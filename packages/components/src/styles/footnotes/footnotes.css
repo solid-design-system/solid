@@ -20,6 +20,6 @@
   }
 
   &--inverted {
-    @apply text-white;
+    @apply text-primary-400;
   }
 }
