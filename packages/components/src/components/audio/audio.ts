@@ -1,5 +1,6 @@
 import { css, html } from 'lit';
 import { customElement } from '../../../src/internal/register-custom-element';
+import { HasSlotController } from '../../internal/slot';
 import { LocalizeController } from '../../utilities/localize';
 import { property, query, state } from 'lit/decorators.js';
 import { Wave } from './wave';
@@ -16,9 +17,11 @@ import type SdDrawer from '../drawer/drawer';
  *
  * @event sd-playback-start - Emitted when the audio playback starts.
  * @event sd-playback-end - Emitted when the audio playback ends.
+ * @event sd-playback-pause - Emitted when the audio playback pauses.
  * @event sd-playback-mute - Emitted when the audio is muted.
+ * @event sd-playback-unmute - Emitted when the audio is unmuted.
  * @event sd-playback-speed - Emitted when the playback speed is changed.
- * @event sd-transcript-click - Emitted when the transcript icon is clicked.
+ * @event sd-transcript-click - Emitted when the transcript button is clicked.
  *
  * @slot - The default slot.
  * @slot play-icon - The play icon.
@@ -29,36 +32,29 @@ import type SdDrawer from '../drawer/drawer';
  * @csspart audio-controls - The audio controls.
  * @csspart playback-speed - The playback speed.
  * @csspart play-button - The play button.
- * @csspart volume - The volume controls.
- * @csspart seek-slider - The seek slider.
+ * @csspart volume - The volume button.
+ * @csspart progress-slider - The audio progress slider.
  * @csspart timestamps - The audio timestamps.
- *
- * @cssproperty --example - An example CSS custom property.
- * @cssproperty --bg-primary - The primary background color for the seek and volume sliders.
- * @cssproperty --bg-primary-400 - The primary background color for the seek and volume sliders background.
- * @cssproperty --bg-white - The white background color for the seek and volume sliders when inverted prop is true.
- * @cssproperty --bg-neutral-400 - The neutral background color for the seek and volume sliders when inverted prop is true.
  */
 @customElement('sd-audio')
 export default class SdAudio extends SolidElement {
   private readonly localize = new LocalizeController(this);
 
-  /** Reverts the order of the audio controls and timestamps */
-  @property({ type: Boolean, reflect: true }) reversedLayout = false;
+  private readonly hasSlotController = new HasSlotController(this, 'transcript');
+
+  /** Reverses the order of the audio controls and timestamps */
+  @property({ type: Boolean, reflect: true, attribute: 'reversed-layout' }) reversedLayout = false;
 
   /** Shows or hides the timestamps */
-  @property({ type: Boolean, reflect: true }) hideTimestamps = false;
+  @property({ type: Boolean, reflect: true, attribute: 'hide-timestamps' }) hideTimestamps = false;
 
-  /** Enables or disables the wave animation when the audio is playing */
+  /** Enables or disables the wave animation */
   @property({ type: Boolean, reflect: true }) animated = false;
 
-  //** Inverts the colors of the component elements and adds a bg-primary background to the container */
+  /** Inverts the colors of the component elements in darker backgrounds */
   @property({ type: Boolean, reflect: true }) inverted = false;
 
-  //** Background variants of the component container */
-  @property({ type: String, reflect: true }) variant: 'white' | 'neutral' | 'primary' = 'white';
-
-  //** Sets value of the audio element playback rate */
+  /** Sets value of the audio element playback rate */
   @property({ type: Number }) playbackSpeed = 1;
 
   @state() currentTime: string = this.formatTime(0);
@@ -71,15 +67,9 @@ export default class SdAudio extends SolidElement {
 
   @state() progress: number = 0;
 
-  @state() volume: number = 1;
+  @query('[part="progress-slider"]') progressSlider: HTMLInputElement;
 
-  @state() hasTranscript: boolean = false;
-
-  @query('.audio-player__seek-slider') seekSlider: HTMLInputElement;
-
-  @query('.audio-player__volume-slider') volumeSlider: HTMLInputElement;
-
-  @query('.audio-player') audioPlayerContainer: HTMLElement;
+  @query('[part="audio-player"]') audioPlayerContainer: HTMLElement;
 
   @query('sd-drawer') drawer: SdDrawer;
 
@@ -89,23 +79,17 @@ export default class SdAudio extends SolidElement {
 
   waveList: Wave[];
 
-  constructor() {
-    super();
-    this.updateCurrentTime = this.updateCurrentTime.bind(this);
-    this.handleAudioEnd = this.handleAudioEnd.bind(this);
-    this.handleSeekChange = this.handleSeekChange.bind(this);
-    this.handleSeekChangeKeydown = this.handleSeekChangeKeydown.bind(this);
-    this.handleVolumeChange = this.handleVolumeChange.bind(this);
-    this.handleVolumeChangeKeydown = this.handleVolumeChangeKeydown.bind(this);
-    this.updateTranscript = this.updateTranscript.bind(this);
-  }
-
   firstUpdated() {
     if (!this.audioElement) return;
 
     this.audioElement.addEventListener('timeupdate', this.updateCurrentTime);
     this.audioElement.addEventListener('ended', this.handleAudioEnd);
     this.audioElement.setAttribute('controlsList', 'nodownload');
+    this.audioElement.playbackRate = this.playbackSpeed;
+
+    if (this.animated) {
+      this.initAnimation();
+    }
   }
 
   private get audioElement(): HTMLAudioElement | null {
@@ -117,8 +101,8 @@ export default class SdAudio extends SolidElement {
     return null;
   }
 
-  private setSeekSlider = () => {
-    this.seekSlider.max = Math.floor(this.audioElement!.duration).toString();
+  private setAudioProgress = () => {
+    this.progressSlider.max = Math.floor(this.audioElement!.duration).toString();
   };
 
   private updateCurrentTime() {
@@ -128,71 +112,84 @@ export default class SdAudio extends SolidElement {
     this.currentTime = this.formatTime(currentTime);
     this.progress = Math.floor(currentTime);
 
-    if (this.seekSlider) {
-      this.seekSlider.value = this.progress.toString();
+    if (this.progressSlider) {
+      this.progressSlider.value = this.progress.toString();
     }
   }
 
-  private updateDuration() {
+  private updateAudioDuration() {
     if (!this.audioElement) return;
 
     // If the duration is NaN, wait for it to be available
     if (isNaN(this.audioElement.duration)) {
       setTimeout(() => {
-        this.updateDuration();
+        this.updateAudioDuration();
       }, 100);
       return;
     }
 
     this.duration = this.formatTime(this.audioElement.duration);
-    this.setSeekSlider();
+    this.setAudioProgress();
   }
 
-  private handleAudioEnd() {
+  playAudio() {
+    if (!this.audioElement) return;
+
+    this.isPlaying = true;
+    this.audioElement.play();
+    this.emit('sd-playback-start');
+  }
+
+  pauseAudio() {
+    if (!this.audioElement) return;
+
+    this.isPlaying = false;
+    this.audioElement.pause();
+    this.emit('sd-playback-pause');
+  }
+
+  handleAudioEnd() {
     this.emit('sd-playback-end');
     this.isPlaying = false;
     this.progress = 0;
-    this.seekSlider.value = '0';
+    this.progressSlider.value = '0';
     this.currentTime = this.formatTime(0);
-    if (this.animated) {
-      this.stopAnimation();
-    }
   }
 
-  private togglePlay() {
+  private toggleMute(): void {
     if (!this.audioElement) return;
 
-    this.emit('sd-playback-start');
-    this.isPlaying = !this.isPlaying;
-
-    if (this.animated && this.isPlaying) {
-      this.initAnimation();
-    }
-
-    if (this.animated && !this.isPlaying) {
-      this.stopAnimation();
-    }
-  }
-
-  private muteAudio(): void {
-    this.emit('sd-playback-mute');
     this.isMuted = !this.isMuted;
-  }
 
-  private muteAudioKeydown(event: KeyboardEvent): void {
-    if (event.key === 'Enter') {
+    if (this.isMuted) {
       this.emit('sd-playback-mute');
-      this.isMuted = !this.isMuted;
+      this.audioElement.muted = true;
+    } else {
+      this.emit('sd-playback-unmute');
+      this.audioElement.muted = false;
     }
   }
 
-  private togglePlaybackSpeed(): void {
+  private toggleMuteKeydown(event: KeyboardEvent): void {
+    console.log(event.key);
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      this.toggleMute();
+    }
+  }
+
+  togglePlaybackSpeed(): void {
+    if (!this.audioElement) return;
+
     this.emit('sd-playback-speed');
+    this.playbackSpeed = this.playbackSpeed === 1.5 ? 1 : this.playbackSpeed + 0.25;
+    this.audioElement.playbackRate = this.playbackSpeed;
   }
 
   private togglePlaybackSpeedKeydown(event: KeyboardEvent): void {
     if (event.key === 'Enter') {
-      this.emit('sd-playback-speed');
+      event.preventDefault();
+      this.togglePlaybackSpeed();
     }
   }
 
@@ -202,63 +199,26 @@ export default class SdAudio extends SolidElement {
     return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
   }
 
-  private handleSeekChange() {
+  private handleAudioProgress() {
     if (!this.audioElement) return;
 
-    const newTime = Number(this.seekSlider.value);
+    const newTime = Number(this.progressSlider.value);
     this.audioElement.currentTime = newTime;
     this.progress = newTime;
 
     this.currentTime = this.formatTime(newTime);
   }
 
-  private handleSeekChangeKeydown(event: KeyboardEvent): void {
+  private handleAudioProgressKeydown(event: KeyboardEvent): void {
     if (event.key === 'ArrowRight') {
-      this.seekSlider.value = (Number(this.seekSlider.value) + 1).toString();
-      this.handleSeekChange();
+      this.progressSlider.value = (Number(this.progressSlider.value) + 1).toString();
+      this.handleAudioProgress();
     }
 
     if (event.key === 'ArrowLeft') {
-      this.seekSlider.value = (Number(this.seekSlider.value) - 1).toString();
-      this.handleSeekChange();
+      this.progressSlider.value = (Number(this.progressSlider.value) - 1).toString();
+      this.handleAudioProgress();
     }
-  }
-
-  private handleVolumeChange() {
-    if (!this.audioElement) return;
-
-    this.volume = Number(this.volumeSlider.value) / 100;
-    this.audioElement.volume = this.volume;
-    this.updateVolumeSliderStyle();
-
-    if (this.volumeSlider.value === '0') {
-      this.isMuted = true;
-    } else {
-      this.isMuted = false;
-    }
-  }
-
-  private handleVolumeChangeKeydown(event: KeyboardEvent): void {
-    if (event.key === 'ArrowRight') {
-      this.volumeSlider.value = (Number(this.volumeSlider.value) + 1).toString();
-      this.handleVolumeChange();
-    }
-
-    if (event.key === 'ArrowLeft') {
-      this.volumeSlider.value = (Number(this.volumeSlider.value) - 1).toString();
-      this.handleVolumeChange();
-    }
-  }
-
-  private updateVolumeSliderStyle() {
-    const volumePercentage = this.volume * 100;
-    this.volumeSlider.style.background = `linear-gradient(to right,
-      ${this.inverted ? 'var(--bg-white)' : 'var(--bg-primary)'} ${volumePercentage}%,
-      ${this.inverted ? 'var(--bg-primary-400)' : 'var(--bg-neutral-400)'} ${volumePercentage}%)`;
-  }
-
-  private updateTranscript() {
-    this.hasTranscript = true;
   }
 
   private showTranscript() {
@@ -267,20 +227,44 @@ export default class SdAudio extends SolidElement {
   }
 
   private showTranscriptKeydown(event: KeyboardEvent): void {
-    if (event.key === 'Enter') {
+    if (event.key === 'Enter' || event.key === ' ') {
       this.showTranscript();
     }
   }
 
-  initAnimation() {
+  private rgbToHex(rgbString: string) {
+    // extracts the numbers from the rgb string
+    const result = rgbString.match(/\d+/g);
+
+    if (result && result.length === 3) {
+      const r = parseInt(result[0]);
+      const g = parseInt(result[1]);
+      const b = parseInt(result[2]);
+
+      // converts rgb value to hex string
+      const valueToHex = (value: number) => value.toString(16).padStart(2, '0');
+
+      // builds the hex string
+      const hex = `#${valueToHex(r)}${valueToHex(g)}${valueToHex(b)}`.toUpperCase();
+
+      return hex;
+    }
+
+    return null;
+  }
+
+  private initAnimation() {
     this.context = this.canvas.getContext('2d')!;
-    const computedStyle = window.getComputedStyle(this.audioPlayerContainer);
+
+    const playButton = this.audioPlayerContainer.querySelector('[part="play-button"]')!;
+    const computedStyles = window.getComputedStyle(playButton);
+    const backgroundColor = computedStyles.backgroundColor;
 
     let computedColor: string;
     if (this.inverted) {
-      computedColor = `${computedStyle.getPropertyValue('--bg-white')}1`;
+      computedColor = `#FFFFFF66`;
     } else {
-      computedColor = `${computedStyle.getPropertyValue('--bg-primary')}66`;
+      computedColor = this.rgbToHex(backgroundColor) + '66';
     }
 
     this.waveList = [
@@ -324,7 +308,7 @@ export default class SdAudio extends SolidElement {
     this.draw();
   }
 
-  clear() {
+  private clear() {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
   }
 
@@ -341,11 +325,6 @@ export default class SdAudio extends SolidElement {
     await this.draw();
   }
 
-  stopAnimation() {
-    this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    this.waveList = [];
-  }
-
   render() {
     const progressPercentage = this.audioElement ? (this.progress / this.audioElement.duration) * 100 : 0;
 
@@ -358,28 +337,29 @@ export default class SdAudio extends SolidElement {
       )}
       part="audio-controls"
     >
-      <div
+      <button
         class=${cx(
           'audio-player__playback-speed justify-self-start text-base font-bold hover:cursor-pointer hover:text-primary-500',
           this.inverted ? 'text-white focus-visible:focus-outline-inverted' : 'text-primary focus-visible:focus-outline'
         )}
+        aria-label="${this.localize.term('playbackSpeed')}"
         tabindex="0"
         @click=${this.togglePlaybackSpeed}
         @keydown=${this.togglePlaybackSpeedKeydown}
         part="playback-speed"
       >
         ${this.playbackSpeed}x
-      </div>
+      </button>
 
       <button
         class=${cx(
           'flex justify-center items-center p-4 rounded-full cursor-pointer hover:cursor-pointer hover:bg-primary-500',
           this.inverted ? 'bg-white focus-visible:focus-outline-inverted' : 'bg-primary focus-visible:focus-outline'
         )}
-        @click=${this.togglePlay}
+        part="play-button"
+        @click=${!this.isPlaying ? this.playAudio : this.pauseAudio}
         aria-label="${this.isPlaying ? this.localize.term('pauseAudio') : this.localize.term('playAudio')}"
         tabindex="0"
-        part="play-button"
       >
         ${this.isPlaying
           ? html`<slot name="pause-icon">
@@ -399,52 +379,42 @@ export default class SdAudio extends SolidElement {
       </button>
 
       <div class="flex items-center justify-self-end">
-        ${this.hasTranscript
-          ? html` <sd-icon
-              name="transcript"
-              library="system"
+        ${this.hasSlotController.test('transcript')
+          ? html`<button
               class=${cx(
                 'mr-6 w-6 h-6 hover:cursor-pointer hover:text-primary-500',
                 this.inverted
                   ? 'text-white focus-visible:focus-outline-inverted'
                   : 'text-primary focus-visible:focus-outline'
               )}
-              tabindex="0"
               @click=${this.showTranscript}
               @keydown=${this.showTranscriptKeydown}
-            ></sd-icon>`
+              tab-index="0"
+            >
+              <sd-icon
+                class="w-6 h-6"
+                name="transcript"
+                library="system"
+                label=${this.isMuted ? this.localize.term('unmute') : this.localize.term('mute')}
+              ></sd-icon>
+            </button>`
           : null}
 
-        <div class="audio-player__volume-container flex items-center" part="volume">
-          <sd-icon
-            class=${cx(
-              'audio-player__volume-icon w-6 h-6 hover:cursor-pointer focus:mr-2 hover:text-primary-500',
-              this.inverted
-                ? 'text-white focus-visible:focus-outline-inverted'
-                : 'text-primary focus-visible:focus-outline'
-            )}
-            name=${this.isMuted ? 'mute' : 'volume'}
-            library="system"
-            aria-label=${this.localize.term('mute')}
-            tabindex="-1"
-            @click=${this.muteAudio}
-            @keydown=${this.muteAudioKeydown}
-          ></sd-icon>
-          <!-- TODO: replace with sd-range once it's implemented -->
-          <input
-            class=${cx(
-              'audio-player__volume-slider appearance-none cursor-pointer outline-none h-1 w-0 overflow-hidden',
-              this.inverted ? 'bg-white' : 'bg-primary'
-            )}
-            type="range"
-            max="100"
-            value=${this.volume * 100}
-            tabindex="0"
-            label="Volume"
-            @click=${this.handleVolumeChange}
-            @keydown=${this.handleVolumeChangeKeydown}
-          />
-        </div>
+        <button
+          class=${cx(
+            'w-6 h-6 hover:cursor-pointer hover:text-primary-500',
+            this.inverted
+              ? 'text-white focus-visible:focus-outline-inverted'
+              : 'text-primary focus-visible:focus-outline'
+          )}
+          part="volume"
+          aria-label=${this.localize.term('mute')}
+          tabindex="0"
+          @click=${this.toggleMute}
+          @keydown=${this.toggleMuteKeydown}
+        >
+          <sd-icon class="w-6 h-6" name=${this.isMuted ? 'mute' : 'volume'} library="system"></sd-icon>
+        </button>
       </div>
     </div>`;
 
@@ -453,36 +423,25 @@ export default class SdAudio extends SolidElement {
         'w-full flex justify-between',
         this.reversedLayout ? 'mb-2' : 'mt-2',
         this.animated && this.reversedLayout && 'absolute bottom-0 left-0 mb-2',
-        this.animated && !this.reversedLayout && 'mt-2 oi'
+        this.animated && !this.reversedLayout && 'mt-2'
       )}
       part="timestamps"
     >
-      <div class=${cx('audio-player__current-time time', this.inverted ? 'text-primary-400' : 'text-neutral-700')}>
+      <div class=${cx('current-time text-sm', this.inverted ? 'text-primary-400' : 'text-neutral-700')}>
         ${this.currentTime}
       </div>
-      <div class=${cx('audio-player__current-time time', this.inverted ? 'text-primary-400' : 'text-neutral-700')}>
+      <div class=${cx('current-time text-sm', this.inverted ? 'text-primary-400' : 'text-neutral-700')}>
         ${this.duration}
       </div>
     </div>`;
 
     return html`
       <div
-        class=${cx(
-          'audio-player w-full flex p-12 relative',
-          this.reversedLayout ? 'flex-col-reverse' : 'flex-col',
-          this.inverted
-            ? 'bg-primary'
-            : {
-                /* variants */
-                white: 'bg-white',
-                neutral: 'bg-neutral-100',
-                primary: 'bg-primary-100'
-              }[this.variant]
-        )}
+        class=${cx('w-full flex p-12 relative', this.reversedLayout ? 'flex-col-reverse' : 'flex-col')}
         aria-label=${this.localize.term('audioPlayer')}
-        part="base"
+        part="audio-player"
       >
-        <slot name="default" @slotchange="${this.updateDuration}"></slot>
+        <slot name="default" @slotchange="${this.updateAudioDuration}"></slot>
 
         ${!this.animated || (this.animated && this.reversedLayout) ? renderAudioControls : null}
 
@@ -490,35 +449,35 @@ export default class SdAudio extends SolidElement {
           ${this.animated && !this.reversedLayout ? html`${renderAudioControls}` : null}
           ${this.animated ? html`<canvas class="w-full h-16"></canvas>` : null}
           ${!this.hideTimestamps && this.animated && this.reversedLayout ? renderTimestamps : null}
-          <!-- TODO: replace with sd-range once it's implemented -->
           <input
             class=${cx(
-              'audio-player__seek-slider bg-primary appearance-none w-full cursor-pointer outline-none h-1 flex items-center'
+              'progress-slider bg-primary appearance-none w-full cursor-pointer outline-none h-1 flex items-center'
             )}
             type="range"
             max="100"
             step="0.001"
             value=${this.progress}
             tabindex="0"
-            @input=${this.handleSeekChange}
-            @keydown=${this.handleSeekChangeKeydown}
-            part="seek-slider"
+            @input=${this.handleAudioProgress}
+            @keydown=${this.handleAudioProgressKeydown}
+            part="progress-slider"
             style="background: linear-gradient(to right,
-              ${this.inverted ? 'var(--bg-white)' : 'var(--bg-primary)'} ${progressPercentage}%,
+              ${this.inverted
+              ? 'rgb(var(--sd-color-white, 255 255 255) / 1)'
+              : 'rgb(var(--sd-color-primary, 0 53 142) / 1)'} ${progressPercentage}%,
               ${this.animated
               ? 'transparent'
               : this.inverted
-                ? 'var(--bg-primary-400)'
-                : 'var(--bg-neutral-400)'} ${progressPercentage}%)"
+                ? 'rgb(var(--sd-color-primary-400, 153 171 208) / 1)'
+                : 'rgb(var(--sd-color-grey-400, 195 195 195) / 1)'} ${progressPercentage}%)"
           />
         </div>
 
-        <slot name="transcript" @slotchange="${this.updateTranscript}">
-          <sd-drawer>
-            <slot></slot>
-          </sd-drawer>
-        </slot>
-
+        ${this.hasSlotController.test('transcript')
+          ? html`<sd-drawer>
+              <slot name="transcript"></slot>
+            </sd-drawer>`
+          : null}
         ${!this.hideTimestamps && (!this.animated || !this.reversedLayout) ? renderTimestamps : null}
       </div>
     `;
@@ -528,68 +487,25 @@ export default class SdAudio extends SolidElement {
   static styles = [
     SolidElement.styles,
     css`
-      :host {
-        --bg-primary: #00358e;
-        --bg-primary-400: #99abd0;
-        --bg-white: #fff;
-        --bg-neutral-400: #c3c3c3;
-      }
-
       :host([inverted]) {
-        .audio-player__seek-slider::-webkit-slider-thumb,
-        .audio-player__volume-slider::-webkit-slider-thumb {
+        [part='progress-slider']::-webkit-slider-thumb {
           @apply bg-white;
         }
 
-        .audio-player__volume-slider:focus-within::-webkit-slider-thumb {
-          @apply outline-white;
-        }
-
-        .audio-player__seek-slider:focus::-webkit-slider-thumb {
+        .progress-slider:focus::-webkit-slider-thumb {
           @apply outline-white;
         }
       }
 
-      .time {
-        font-size: 14px;
-      }
-
-      .audio-player__volume-container:hover .audio-player__volume-icon {
-        @apply mr-2;
-      }
-
-      .audio-player__seek-slider::-webkit-slider-thumb {
+      .progress-slider::-webkit-slider-thumb {
         @apply appearance-none bg-primary h-4 w-4 rounded-full border-none transition duration-200 ease-in-out;
       }
 
-      .audio-player__seek-slider:focus::-webkit-slider-thumb {
+      .progress-slider:focus::-webkit-slider-thumb {
         @apply outline outline-primary outline-offset-2;
       }
 
-      .audio-player__seek-slider::-moz-range-thumb {
-        @apply appearance-none bg-primary h-4 w-4 rounded-full border-none transition duration-200 ease-in-out;
-      }
-
-      .audio-player__volume-container:hover .audio-player__volume-slider,
-      .audio-player__volume-container:focus-within .audio-player__volume-slider {
-        @apply w-[100px] overflow-visible;
-      }
-
-      .audio-player__volume-slider {
-        transition-property: width;
-        transition-duration: 200ms;
-        transition-timing-function: cubic-bezier(0, 0, 0.5, 1);
-      }
-
-      .audio-player__volume-slider::-webkit-slider-thumb {
-        @apply appearance-none bg-primary h-4 w-4 rounded-full border-none transition duration-200 ease-in-out;
-      }
-
-      .audio-player__volume-slider:focus::-webkit-slider-thumb {
-        @apply outline outline-primary outline-offset-2;
-      }
-
-      .audio-player__volume-slider::-moz-range-thumb {
+      .progress-slider::-moz-range-thumb {
         @apply appearance-none bg-primary h-4 w-4 rounded-full border-none transition duration-200 ease-in-out;
       }
     `
