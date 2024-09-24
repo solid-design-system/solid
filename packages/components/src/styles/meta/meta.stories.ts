@@ -52,14 +52,14 @@ export const Variants = {
 /**
  * Use `sd-meta` classes for alternative appearances:
  *
- * - lg is the default size
+ * - Base is the default size
  * - `sd-meta--size-sm`
  */
 
 export const Size = {
   render: () =>
     html`<div class="flex flex-row gap-12">
-      <span class="sd-meta">Large</span>
+      <span class="sd-meta">Base</span>
       <span class="sd-meta sd-meta--size-sm">Small</span>
     </div>`
 };
