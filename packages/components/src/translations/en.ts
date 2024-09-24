@@ -34,8 +34,10 @@ const translation: Translation = {
   playAudio: 'Play Audio',
   pauseAudio: 'Pause Audio',
   mute: 'Mute',
+  unmute: 'Unmute',
   showMore: 'Show more',
-  showLess: 'Show less'
+  showLess: 'Show less',
+  playbackSpeed: 'Playback Speed'
 };
 
 registerTranslation(translation);
