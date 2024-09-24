@@ -55,35 +55,37 @@ export const Default = {
 
 export const Variant = {
   render: () => html`
-    <sd-tab-group>
-      <sd-tab slot="nav" panel="tab-1" variant="default">Default 1</sd-tab>
-      <sd-tab-panel name="tab-1">
-        <div>Tab panel 1 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</div>
-      </sd-tab-panel>
-      <sd-tab slot="nav" panel="tab-2" variant="default">Default 2</sd-tab>
-      <sd-tab-panel name="tab-2">
-        <div>Tab panel 2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</div>
-      </sd-tab-panel>
-      <sd-tab slot="nav" panel="tab-3" variant="default">Default 3</sd-tab>
-      <sd-tab-panel name="tab-3">
-        <div>Tab panel 3 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</div>
-      </sd-tab-panel>
-    </sd-tab-group>
+    <div class="grid grid-cols-2 gap-12">
+      <sd-tab-group activation="">
+        <sd-tab slot="nav" panel="tab-1" variant="default">Default 1</sd-tab>
+        <sd-tab-panel name="tab-1">
+          <div>Provident illo neque vel ex. Inventore perspiciatis delectus nisi doloremque soluta inventore.</div>
+        </sd-tab-panel>
+        <sd-tab slot="nav" panel="tab-2" variant="default">Default 2</sd-tab>
+        <sd-tab-panel name="tab-2">
+          <div>Provident illo neque vel ex.</div>
+        </sd-tab-panel>
+        <sd-tab slot="nav" panel="tab-3" variant="default">Default 3</sd-tab>
+        <sd-tab-panel name="tab-3">
+          <div>Provident illo neque vel ex. Inventore perspiciatis delectus nisi doloremque soluta inventore.</div>
+        </sd-tab-panel>
+      </sd-tab-group>
 
-    <sd-tab-group>
-      <sd-tab slot="nav" panel="tab-1" variant="container">Container 1</sd-tab>
-      <sd-tab-panel name="tab-1">
-        <div>Tab panel 1 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</div>
-      </sd-tab-panel>
-      <sd-tab slot="nav" panel="tab-2" variant="container">Container 2</sd-tab>
-      <sd-tab-panel name="tab-2">
-        <div>Tab panel 2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</div>
-      </sd-tab-panel>
-      <sd-tab slot="nav" panel="tab-3" variant="container">Container 3</sd-tab>
-      <sd-tab-panel name="tab-3">
-        <div>Tab panel 3 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</div>
-      </sd-tab-panel>
-    </sd-tab-group>
+      <sd-tab-group activation="">
+        <sd-tab slot="nav" panel="tab-1" variant="container">Container 1</sd-tab>
+        <sd-tab-panel name="tab-1">
+          <div>Provident inventore perspiciatis delectus nisi doloremque soluta inventore.</div>
+        </sd-tab-panel>
+        <sd-tab slot="nav" panel="tab-2" variant="container">Container 2</sd-tab>
+        <sd-tab-panel name="tab-2">
+          <div>Provident illo neque vel ex. Inventore perspiciatis delectus nisi doloremque soluta inventore.</div>
+        </sd-tab-panel>
+        <sd-tab slot="nav" panel="tab-3" variant="container">Container 3</sd-tab>
+        <sd-tab-panel name="tab-3">
+          <div>Inventore perspiciatis delectus nisi doloremque soluta inventore.</div>
+        </sd-tab-panel>
+      </sd-tab-group>
+    </div>
   `
 };
 
@@ -93,35 +95,37 @@ export const Variant = {
 
 export const Active = {
   render: () => html`
-    <sd-tab-group>
-      <sd-tab slot="nav" panel="tab-1" variant="default" active>Default 1</sd-tab>
-      <sd-tab-panel name="tab-1">
-        <div>Tab panel 1 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</div>
-      </sd-tab-panel>
-      <sd-tab slot="nav" panel="tab-2" variant="default">Default 2</sd-tab>
-      <sd-tab-panel name="tab-2">
-        <div>Tab panel 2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</div>
-      </sd-tab-panel>
-      <sd-tab slot="nav" panel="tab-3" variant="default">Default 3</sd-tab>
-      <sd-tab-panel name="tab-3">
-        <div>Tab panel 3 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</div>
-      </sd-tab-panel>
-    </sd-tab-group>
+    <div class="grid grid-cols-2 gap-12">
+      <sd-tab-group>
+        <sd-tab slot="nav" panel="tab-1" variant="default" active>Default 1</sd-tab>
+        <sd-tab-panel name="tab-1">
+          <div>Tab panel 1 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</div>
+        </sd-tab-panel>
+        <sd-tab slot="nav" panel="tab-2" variant="default">Default 2</sd-tab>
+        <sd-tab-panel name="tab-2">
+          <div>Tab panel 2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</div>
+        </sd-tab-panel>
+        <sd-tab slot="nav" panel="tab-3" variant="default">Default 3</sd-tab>
+        <sd-tab-panel name="tab-3">
+          <div>Tab panel 3 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</div>
+        </sd-tab-panel>
+      </sd-tab-group>
 
-    <sd-tab-group>
-      <sd-tab slot="nav" panel="tab-1" variant="container" active>Container 1</sd-tab>
-      <sd-tab-panel name="tab-1">
-        <div>Tab panel 1 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</div>
-      </sd-tab-panel>
-      <sd-tab slot="nav" panel="tab-2" variant="container">Container 2</sd-tab>
-      <sd-tab-panel name="tab-2">
-        <div>Tab panel 2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</div>
-      </sd-tab-panel>
-      <sd-tab slot="nav" panel="tab-3" variant="container">Container 3</sd-tab>
-      <sd-tab-panel name="tab-3">
-        <div>Tab panel 3 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</div>
-      </sd-tab-panel>
-    </sd-tab-group>
+      <sd-tab-group>
+        <sd-tab slot="nav" panel="tab-1" variant="container" active>Container 1</sd-tab>
+        <sd-tab-panel name="tab-1">
+          <div>Tab panel 1 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</div>
+        </sd-tab-panel>
+        <sd-tab slot="nav" panel="tab-2" variant="container">Container 2</sd-tab>
+        <sd-tab-panel name="tab-2">
+          <div>Tab panel 2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</div>
+        </sd-tab-panel>
+        <sd-tab slot="nav" panel="tab-3" variant="container">Container 3</sd-tab>
+        <sd-tab-panel name="tab-3">
+          <div>Tab panel 3 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</div>
+        </sd-tab-panel>
+      </sd-tab-group>
+    </div>
   `
 };
 
