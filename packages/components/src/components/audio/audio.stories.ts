@@ -48,7 +48,7 @@ export const Default = {
 };
 
 /**
- * Use the `animated` attribute to set the audio’s variant.
+ * Use the `animated` attribute to change the appearance.
  */
 export const Animated = {
   render: () => {
@@ -62,8 +62,10 @@ export const Animated = {
 
 /**
  * Use the `reversed-layout` attribute to set the audio’s variant up side down.
+ *
+ * For both variants the layout can be reversed for versatile positioning combinations.
  */
-export const reversedLayout = {
+export const Reverse = {
   render: () => {
     return html`
       <sd-audio reversed-layout>
@@ -102,12 +104,12 @@ export const Inverted = {
 };
 
 /**
- * Use the `playbackSpeed` attribute to set the audio’s playback rate.
+ * Use the `speed` attribute to change the playback rate of the audio player.
  */
-export const PlaybackSpeed = {
+export const Speed = {
   render: () => {
     return html`
-      <sd-audio playbackSpeed="2">
+      <sd-audio speed="1.5">
         <audio slot="default" src="./placeholders/audio/sds-song.mp3" preload="metadata"></audio>
       </sd-audio>
     `;
@@ -115,7 +117,11 @@ export const PlaybackSpeed = {
 };
 
 /**
- * Use the `transcript` slot to add a transcript to the audio.
+ * Use the `transcript` slot to display the text transcript.
+ *
+ * Clicking the transcript button opens “sd-drawer” displaying the text transcript.
+ *
+ * __Hint:__ If the slot does not exist the transcript button is not displayed
  */
 export const Transcript = {
   render: () => {
