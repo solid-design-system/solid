@@ -55,7 +55,7 @@ export default class SdAudio extends SolidElement {
   @property({ type: Boolean, reflect: true }) inverted = false;
 
   /** Sets value of the audio element playback rate */
-  @property({ type: Number }) playbackSpeed = 1;
+  @property({ type: Number }) speed = 1;
 
   @state() currentTime: string = this.formatTime(0);
 
@@ -79,13 +79,21 @@ export default class SdAudio extends SolidElement {
 
   waveList: Wave[];
 
+  constructor() {
+    super();
+    this.updateCurrentTime = this.updateCurrentTime.bind(this);
+    this.handleAudioEnd = this.handleAudioEnd.bind(this);
+    this.handleAudioProgress = this.handleAudioProgress.bind(this);
+    this.handleAudioProgressKeydown = this.handleAudioProgressKeydown.bind(this);
+  }
+
   firstUpdated() {
     if (!this.audioElement) return;
 
     this.audioElement.addEventListener('timeupdate', this.updateCurrentTime);
     this.audioElement.addEventListener('ended', this.handleAudioEnd);
     this.audioElement.setAttribute('controlsList', 'nodownload');
-    this.audioElement.playbackRate = this.playbackSpeed;
+    this.audioElement.playbackRate = this.speed;
 
     if (this.animated) {
       this.initAnimation();
@@ -182,8 +190,8 @@ export default class SdAudio extends SolidElement {
     if (!this.audioElement) return;
 
     this.emit('sd-playback-speed');
-    this.playbackSpeed = this.playbackSpeed === 1.5 ? 1 : this.playbackSpeed + 0.25;
-    this.audioElement.playbackRate = this.playbackSpeed;
+    this.speed = this.speed === 1.5 ? 1 : this.speed + 0.25;
+    this.audioElement.playbackRate = this.speed;
   }
 
   private togglePlaybackSpeedKeydown(event: KeyboardEvent): void {
@@ -348,7 +356,7 @@ export default class SdAudio extends SolidElement {
         @keydown=${this.togglePlaybackSpeedKeydown}
         part="playback-speed"
       >
-        ${this.playbackSpeed}x
+        ${this.speed}x
       </button>
 
       <button

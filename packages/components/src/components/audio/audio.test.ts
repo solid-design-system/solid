@@ -27,26 +27,6 @@ describe('<sd-audio>', () => {
     expect(spy.calledOnce).to.be.true;
   });
 
-  // it('should update the current time as audio plays', async () => {
-  //   const el = await fixture<SdAudio>(html`
-  //     <sd-audio>
-  //       <audio slot="default" src="test-audio.mp3"></audio>
-  //     </sd-audio>
-  //   `);
-
-  //   await el.updateComplete;
-
-  //   const audio = el.querySelector('audio')!;
-  //   audio.currentTime = 0;
-
-  //   const playButton = el.shadowRoot!.querySelector('[part="play-button"]')!;
-  //   (playButton as HTMLElement).click();
-
-  //   await waitUntil(() => audio.currentTime > 0);
-
-  //   expect(audio.currentTime).to.be.above(0);
-  // });
-
   it('should emit sd-playback-mute event when mute button is clicked', async () => {
     const el = await fixture<SdAudio>(html`
       <sd-audio>

@@ -34,7 +34,7 @@ export const Default = {
   name: 'Default',
   parameters: {
     controls: {
-      exclude: ['playbackSpeed']
+      exclude: ['speed']
     }
   },
   render: (args: any) => {
@@ -53,7 +53,7 @@ export const ReversedLayout = {
   name: 'Reversed Layout',
   parameters: {
     controls: {
-      exclude: ['playbackSpeed', 'reversedLayout']
+      exclude: ['speed', 'reversedLayout']
     }
   },
   render: () => {
@@ -234,20 +234,14 @@ export const Parts = {
         y: {
           type: 'template',
           name: 'sd-audio::part(...){outline: solid 2px red}',
-          values: [
-            'base',
-            'audio-controls',
-            'playback-speed',
-            'play-button',
-            'volume',
-            'progress-slider',
-            'timestamps'
-          ].map(part => {
-            return {
-              title: part,
-              value: `<style>#part-${part} sd-audio::part(${part}){outline: solid 2px red}</style><div id="part-${part}">%TEMPLATE%</div>`
-            };
-          })
+          values: ['base', 'audio-controls', 'speed', 'play-button', 'volume', 'progress-slider', 'timestamps'].map(
+            part => {
+              return {
+                title: part,
+                value: `<style>#part-${part} sd-audio::part(${part}){outline: solid 2px red}</style><div id="part-${part}">%TEMPLATE%</div>`
+              };
+            }
+          )
         }
       },
       args,
@@ -266,7 +260,7 @@ export const Mouseless = {
   name: 'Mouseless',
   parameters: {
     controls: {
-      exclude: ['playbackSpeed']
+      exclude: ['speed']
     }
   },
   render: (args: any) => {
