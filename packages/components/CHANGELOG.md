@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v3.17.9](https://github.com/solid-design-system/solid/compare/components/3.17.8...components/3.17.9) (2024-09-25)
+
+
+### Bug Fixes
+
+* 🤔 map-marker main -> white circle ([#1389](https://github.com/solid-design-system/solid/issues/1389)) ([52665da](https://github.com/solid-design-system/solid/commit/52665da06b703db56082a04e41a2b362ae58c01e))
+
+### 📈 Stats
+* Bundle size (uncompressed): 334 KB (unchanged)
+* Bundle size (gzipped): 79 KB (unchanged)
+
 # [@solid-design-system/components-v3.17.8](https://github.com/solid-design-system/solid/compare/components/3.17.7...components/3.17.8) (2024-09-20)
 
 
