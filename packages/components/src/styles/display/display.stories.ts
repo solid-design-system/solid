@@ -40,9 +40,9 @@ export const Default = {
 /**
  * Use the `&--size-*` classes for alternative appearances.
 
- * - `sd-display`: 4xl is the default display size
- * - `sd-display--size-3xl`: 3xl can be used as an alternative
- * - `sd-display--size-xl`: xl can be used as an alternative
+ * - `sd-display`  (default)
+ * - `sd-display--size-3xl`
+ * - `sd-display--size-xl`
  */
 
 export const Size = {
