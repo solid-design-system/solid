@@ -1,9 +1,13 @@
 import '../solid-components';
 import { html } from 'lit-html';
 
+/**
+ * ```
+ * ```
+ */
 export default {
   tags: ['!dev'],
-  title: 'Templates/Button with Badge',
+  title: 'Templates/Badge',
   parameters: {
     chromatic: { disableSnapshot: true },
     design: {
@@ -12,10 +16,13 @@ export default {
     }
   }
 };
+
 /**
+ * ### Button with Badge
+ *
  * Examples of sd-button working with sd-badge:
  */
-export const Default = {
+export const ButtonWithBadge = {
   render: () => html`
     <div class="flex flex-col">
       <section class="flex p-8 gap-10 items-center">

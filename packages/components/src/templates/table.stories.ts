@@ -7,7 +7,6 @@ import { ifDefined } from 'lit/directives/if-defined.js';
  * The examples are intended solely for illustrating how sd-table-cell can be used to style tables.
  * The data generation and table sorting logic should not be used in production environments.
  */
-
 export default {
   tags: ['!dev'],
   title: 'Templates/Table',
@@ -19,7 +18,6 @@ export default {
 /**
  * ### Simple table
  */
-
 export const simpleTables = {
   render: () => html`
     <table class="sd-table sample-table w-full">

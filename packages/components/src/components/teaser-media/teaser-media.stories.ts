@@ -10,10 +10,11 @@ const { generateTemplate } = storybookTemplate('sd-teaser-media');
  * Used as a flexible container that groups related items and links them to further content.
  *
  * **Related components**:
- * - [sd-teaser](?path=/docs/components-teaser--docs)
+ * - [sd-teaser](?path=/docs/components-sd-teaser--docs)
  *
  * **Related templates**:
- * - [Teaser Media](?path=/docs/templates-teaser-media--docs)
+ * - [Teaser with Icon](?path=/docs/templates-teaser-with-icon--docs)
+ * - [Teaser with Link](?path=/docs/templates-teaser-with-link--docs)
  * - [Teaser](?path=/docs/templates-teaser--docs)
  */
 export default {
@@ -184,7 +185,7 @@ export const MetaSlot = {
 /**
  * Use the `expandable` slot to add content that only shows up on hover.
  *
- * Note: Expandable slot content cannot contain any action since it is not shown on mobile devices due to hover interaction.
+ * **Accessibility Hint:** Expandable slot content cannot contain any action since it is not shown on mobile devices due to hover interaction.
  */
 
 export const ExpandableSlot = {
@@ -199,49 +200,5 @@ export const ExpandableSlot = {
       <h3 slot="headline">Headline Media Teaser</h3>
       <div slot="expandable" class="slot slot--border slot--text h-12">Expandable slot</div>
     </sd-teaser-media>
-  `
-};
-
-/**
- * `Copyright` can be shown at the bottom of the default slot.
- */
-
-export const Copyright = {
-  render: () => html`
-    <style>
-      .sd-copyright::after {
-        padding: 0;
-      }
-      .gradient-white.sd-copyright::after {
-        color: #000000;
-        text-shadow: none;
-      }
-    </style>
-    <div class="flex flex-col gap-12">
-      <sd-teaser-media variant="gradient-dark" class="max-w-[600px]">
-        <img
-          slot="media"
-          src="./placeholders/images/architecture.jpg"
-          class="aspect-video object-cover"
-          alt="Generic alt"
-        />
-        <h3 slot="headline">Headline Media Teaser</h3>
-        <div class="flex flex-col sd-copyright" style="--copyright: '© Union Investment 2024'">
-          <div slot="default" class="h-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-        </div>
-      </sd-teaser-media>
-      <sd-teaser-media variant="gradient-white" class="max-w-[600px]">
-        <img
-          slot="media"
-          src="./placeholders/images/architecture.jpg"
-          class="aspect-video object-cover"
-          alt="Generic alt"
-        />
-        <h3 slot="headline">Headline Media Teaser</h3>
-        <div class="flex flex-col sd-copyright gradient-white" style="--copyright: '© Union Investment 2024'">
-          <div slot="default" class="h-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-        </div>
-      </sd-teaser-media>
-    </div>
   `
 };

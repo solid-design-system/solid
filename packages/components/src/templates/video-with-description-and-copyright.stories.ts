@@ -1,9 +1,13 @@
 import '../solid-components';
 import { html } from 'lit-html';
 
+/**
+ * ```
+ * ```
+ */
 export default {
   tags: ['!dev'],
-  title: 'Templates/Video with Description and Copyright',
+  title: 'Templates/Video',
   parameters: {
     chromatic: { disableSnapshot: true },
     design: {
@@ -13,7 +17,7 @@ export default {
   }
 };
 
-export const VideoElementWithDescription = {
+export const VideoWithDescription = {
   render: () => html`
     <sd-video class="sd-media">
       <video controls class="aspect-video">
@@ -29,7 +33,7 @@ export const VideoElementWithDescription = {
   `
 };
 
-export const VideoElementWithCopyright = {
+export const VideoWithCopyright = {
   render: () => html`
     <style>
       .sd-copyright::after {

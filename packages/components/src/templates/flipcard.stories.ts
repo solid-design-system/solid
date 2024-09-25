@@ -3,11 +3,7 @@ import { html } from 'lit-html';
 
 /**
  * Example on how to use flipcard component.
- *
- * ```
- * ```
  */
-
 export default {
   tags: ['!dev'],
   title: 'Templates/Flipcard',
@@ -20,6 +16,10 @@ export default {
   }
 };
 
+/**
+ * ```
+ * ```
+ */
 export const Default = {
   render: () => html`
     <sd-flipcard

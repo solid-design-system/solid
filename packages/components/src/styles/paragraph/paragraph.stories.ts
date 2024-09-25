@@ -41,10 +41,10 @@ export const Default = {
 };
 
 /**
- * Use the `&--size-*`classes for alternative appearances.
+ * Use the `sd-paragraph` classes for alternative appearances:
  *
- * - lg is the default paragraph size
- * - `sd-paragraph--size-sm`: sm can be used as an alternative
+ * - lg is the default size
+ * - `sd-paragraph--size-sm`
  */
 
 export const Size = {
@@ -65,7 +65,7 @@ export const Size = {
 };
 
 /**
- * Use the `&--inverted` class when displayed on primary background.
+ * Use the `sd-paragraph--inverted` class when displayed on primary background.
  */
 
 export const Inverted = {

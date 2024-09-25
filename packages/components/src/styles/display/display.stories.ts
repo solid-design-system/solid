@@ -39,8 +39,7 @@ export const Default = {
 
 /**
  * Use the `&--size-*` classes for alternative appearances.
-
- * - `sd-display`  (default)
+ * - `sd-display` (default)
  * - `sd-display--size-3xl`
  * - `sd-display--size-xl`
  */
@@ -56,7 +55,7 @@ export const Size = {
 };
 
 /**
- * Use the `&--inverted` class when displayed on primary background.
+ * Use the `sd-display--inverted` class when displayed on primary background.
  */
 
 export const Inverted = {

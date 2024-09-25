@@ -18,7 +18,6 @@ const { generateTemplate } = storybookTemplate('sd-dialog');
  *
  *  **Related templates**:
  * - [Dialog](?path=/docs/templates-dialog--docs)
- *
  */
 
 export default {
@@ -57,10 +56,6 @@ export default {
   },
   decorators: [withActions] as any
 };
-
-/**
- * Default: This shows sd-dialog in its default state.
- */
 
 export const Default = {
   render: (args: any) => {
@@ -114,7 +109,7 @@ export const Headline = {
 /**
  * Use the `no-close-button` attribute to hide the close button in the dialog.
  *
- * You should always include an action button that allows users to close the dialog.
+ * __Hint:__ You should always include an action button that allows users to close the dialog.
  */
 
 export const NoCloseButton = {
