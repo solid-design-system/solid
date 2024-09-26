@@ -94,10 +94,6 @@ export default class SdAudio extends SolidElement {
     this.audioElement.addEventListener('ended', this.handleAudioEnd);
     this.audioElement.setAttribute('controlsList', 'nodownload');
     this.audioElement.playbackRate = this.speed;
-
-    if (this.animated) {
-      this.initAnimation();
-    }
   }
 
   private get audioElement(): HTMLAudioElement | null {
@@ -146,6 +142,10 @@ export default class SdAudio extends SolidElement {
     this.isPlaying = true;
     this.audioElement.play();
     this.emit('sd-playback-start');
+
+    if (this.animated) {
+      this.initAnimation();
+    }
   }
 
   pauseAudio() {
@@ -154,6 +154,10 @@ export default class SdAudio extends SolidElement {
     this.isPlaying = false;
     this.audioElement.pause();
     this.emit('sd-playback-pause');
+
+    if (this.animated) {
+      this.stopAnimation();
+    }
   }
 
   handleAudioEnd() {
@@ -162,6 +166,10 @@ export default class SdAudio extends SolidElement {
     this.progress = 0;
     this.progressSlider.value = '0';
     this.currentTime = this.formatTime(0);
+
+    if (this.animated) {
+      this.stopAnimation();
+    }
   }
 
   private toggleMute(): void {
@@ -179,7 +187,6 @@ export default class SdAudio extends SolidElement {
   }
 
   private toggleMuteKeydown(event: KeyboardEvent): void {
-    console.log(event.key);
     if (event.key === 'Enter') {
       event.preventDefault();
       this.toggleMute();
@@ -316,17 +323,22 @@ export default class SdAudio extends SolidElement {
     this.draw();
   }
 
+  private stopAnimation() {
+    this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.waveList = [];
+  }
+
   private clear() {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
   }
 
   async draw() {
-    this.clear();
+    if (!this.animated && !this.isPlaying) return;
 
+    this.clear();
     this.waveList.forEach(wave => {
       wave.redraw();
     });
-
     await new Promise(resolve => {
       setTimeout(resolve, 1000 / 30);
     });
