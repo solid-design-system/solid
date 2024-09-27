@@ -61,6 +61,21 @@ export const Animated = {
 };
 
 /**
+ * Use the `inverted` attribute to set the audio’s variant up side down.
+ */
+export const Inverted = {
+  render: () => {
+    return html`
+      <div class="bg-primary">
+        <sd-audio inverted>
+          <audio slot="default" src="./placeholders/audio/sds-song.mp3" preload="metadata"></audio>
+        </sd-audio>
+      </div>
+    `;
+  }
+};
+
+/**
  * Use the `reversed-layout` attribute to set the audio’s variant up side down.
  *
  * For both variants the layout can be reversed for versatile positioning combinations.
@@ -76,12 +91,16 @@ export const Reverse = {
 };
 
 /**
- * Use the `hide-timestamps` attribute to hide the timestamps.
+ * Use the `speed` attribute to change the playback rate of the audio player.
+ *
+ * - 1x (default)
+ * - 1.25x
+ * - 1.5x
  */
-export const HiddenTimestamps = {
+export const Speed = {
   render: () => {
     return html`
-      <sd-audio hide-timestamps>
+      <sd-audio speed="1.5">
         <audio slot="default" src="./placeholders/audio/sds-song.mp3" preload="metadata"></audio>
       </sd-audio>
     `;
@@ -89,27 +108,12 @@ export const HiddenTimestamps = {
 };
 
 /**
- * Use the `inverted` attribute when used in a primary background.
+ * Use the `hide-timestamps` attribute to hide the timestamps.
  */
-export const Inverted = {
+export const Timestamps = {
   render: () => {
     return html`
-      <div class="bg-primary">
-        <sd-audio inverted>
-          <audio slot="default" src="./placeholders/audio/sds-song.mp3" preload="metadata"></audio>
-        </sd-audio>
-      </div>
-    `;
-  }
-};
-
-/**
- * Use the `speed` attribute to change the playback rate of the audio player.
- */
-export const Speed = {
-  render: () => {
-    return html`
-      <sd-audio speed="1.5">
+      <sd-audio hide-timestamps>
         <audio slot="default" src="./placeholders/audio/sds-song.mp3" preload="metadata"></audio>
       </sd-audio>
     `;
