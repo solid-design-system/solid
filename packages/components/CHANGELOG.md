@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v3.17.11](https://github.com/solid-design-system/solid/compare/components/3.17.10...components/3.17.11) (2024-09-27)
+
+
+### Bug Fixes
+
+* make sd-step-group more accessible ([#1390](https://github.com/solid-design-system/solid/issues/1390)) ([c7fc385](https://github.com/solid-design-system/solid/commit/c7fc38537480d17e1662152a359a79a363d9313e))
+
+### 📈 Stats
+* Bundle size (uncompressed): 334 KB (unchanged)
+* Bundle size (gzipped): 78 KB (-1 KB / -1%)
+
 # [@solid-design-system/components-v3.17.10](https://github.com/solid-design-system/solid/compare/components/3.17.9...components/3.17.10) (2024-09-25)
 
 
