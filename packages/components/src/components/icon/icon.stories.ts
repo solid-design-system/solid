@@ -72,7 +72,7 @@ export const Label = {
 };
 
 /**
- * Use the `color` attribute to change an icon’s size
+ * Use the `color` attribute to change an icon’s color
  *
  * - `currentColor` (default): Inherits the current text color, which makes it easy to style icons via CSS.
  * - `primary`: Sets the color to the primary color.
