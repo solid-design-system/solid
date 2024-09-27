@@ -96,18 +96,18 @@ export const Variant = {
 export const Active = {
   render: () => html`
     <div class="grid grid-cols-2 gap-12">
-      <sd-tab-group>
-        <sd-tab slot="nav" panel="tab-1" variant="default" active>Default 1</sd-tab>
+      <sd-tab-group activation="auto" id="active">
+        <sd-tab slot="nav" panel="tab-1" variant="default">Tab 1</sd-tab>
         <sd-tab-panel name="tab-1">
-          <div>Tab panel 1 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</div>
+          Tab panel 1 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.
         </sd-tab-panel>
-        <sd-tab slot="nav" panel="tab-2" variant="default">Default 2</sd-tab>
+        <sd-tab slot="nav" panel="tab-2" variant="default">Tab 2</sd-tab>
         <sd-tab-panel name="tab-2">
-          <div>Tab panel 2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</div>
+          Tab panel 2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.
         </sd-tab-panel>
-        <sd-tab slot="nav" panel="tab-3" variant="default">Default 3</sd-tab>
+        <sd-tab slot="nav" panel="tab-3" variant="default">Tab 3</sd-tab>
         <sd-tab-panel name="tab-3">
-          <div>Tab panel 3 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</div>
+          Tab panel 3 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.
         </sd-tab-panel>
       </sd-tab-group>
 
@@ -126,6 +126,23 @@ export const Active = {
         </sd-tab-panel>
       </sd-tab-group>
     </div>
+    <script>
+      (async () => {
+        const tabGroup = document.querySelector('sd-tab-group#active');
+        const tabs = document.querySelectorAll('sd-tab-group#active > sd-tab');
+
+        // Wait for controls to be defined before attaching form listeners
+        await Promise.all([
+          customElements.whenDefined('sd-tab-group'),
+          customElements.whenDefined('sd-tab'),
+          customElements.whenDefined('sd-tab-panel')
+        ]).then(() => {
+          tabGroup.setActiveTab(tabs[2], { emitEvents: false });
+          tabGroup.show('tab-3'); // Show tab-2 instead of tab-3
+          console.log(tabGroup);
+        });
+      })();
+    </script>
   `
 };
 
