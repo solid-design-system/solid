@@ -45,13 +45,13 @@ export default class SdAudio extends SolidElement {
   /** Reverses the order of the audio controls and timestamps */
   @property({ type: Boolean, reflect: true, attribute: 'reversed-layout' }) reversedLayout = false;
 
-  /** Shows or hides the timestamps */
+  /** Hides the timestamps */
   @property({ type: Boolean, reflect: true, attribute: 'hide-timestamps' }) hideTimestamps = false;
 
-  /** Enables or disables the wave animation */
+  /** Enables the wave animation */
   @property({ type: Boolean, reflect: true }) animated = false;
 
-  /** Inverts the colors of the component elements in darker backgrounds */
+  /** Inverts the colors of the component */
   @property({ type: Boolean, reflect: true }) inverted = false;
 
   /** Sets value of the audio element playback rate */
@@ -97,7 +97,9 @@ export default class SdAudio extends SolidElement {
   }
 
   private get audioElement(): HTMLAudioElement | null {
-    const slot: HTMLSlotElement = this.shadowRoot!.querySelector('slot[name=default]')!;
+    const slot: HTMLSlotElement = this.shadowRoot!.querySelector('slot')!;
+
+    console.log(slot);
 
     if (slot?.assignedElements().length > 0) {
       return slot.assignedElements()[0] as HTMLAudioElement;
@@ -350,7 +352,7 @@ export default class SdAudio extends SolidElement {
 
     const renderAudioControls = html`<div
       class=${cx(
-        'audio-player__controls grid grid-cols-3 justify-items-center items-center',
+        'controls grid grid-cols-3 justify-items-center items-center',
         !this.animated && 'relative',
         this.animated && !this.reversedLayout && 'absolute top-0 left-0 w-full',
         this.reversedLayout ? 'mt-2' : 'mb-2'
@@ -359,7 +361,7 @@ export default class SdAudio extends SolidElement {
     >
       <button
         class=${cx(
-          'audio-player__playback-speed justify-self-start text-base font-bold hover:cursor-pointer hover:text-primary-500',
+          'playback-speed justify-self-start text-base font-bold hover:cursor-pointer hover:text-primary-500',
           this.inverted ? 'text-white focus-visible:focus-outline-inverted' : 'text-primary focus-visible:focus-outline'
         )}
         aria-label="${this.localize.term('playbackSpeed')}"
@@ -374,7 +376,9 @@ export default class SdAudio extends SolidElement {
       <button
         class=${cx(
           'flex justify-center items-center p-4 rounded-full cursor-pointer hover:cursor-pointer hover:bg-primary-500',
-          this.inverted ? 'bg-white focus-visible:focus-outline-inverted' : 'bg-primary focus-visible:focus-outline'
+          this.inverted
+            ? 'bg-white focus-visible:focus-outline-inverted text-primary'
+            : 'bg-primary focus-visible:focus-outline text-white'
         )}
         part="play-button"
         @click=${!this.isPlaying ? this.playAudio : this.pauseAudio}
@@ -383,18 +387,10 @@ export default class SdAudio extends SolidElement {
       >
         ${this.isPlaying
           ? html`<slot name="pause-icon">
-              <sd-icon
-                name="pause"
-                library="system"
-                class=${cx('w-6 h-6', this.inverted ? 'text-primary' : 'text-white')}
-              ></sd-icon>
+              <sd-icon name="pause" library="system" class=${cx('w-6 h-6')}></sd-icon>
             </slot>`
           : html`<slot name="play-icon">
-              <sd-icon
-                name="start"
-                library="system"
-                class=${cx('w-6 h-6', this.inverted ? 'text-primary' : 'text-white')}
-              ></sd-icon>
+              <sd-icon name="start" library="system" class=${cx('w-6 h-6')}></sd-icon>
             </slot>`}
       </button>
 
@@ -461,7 +457,7 @@ export default class SdAudio extends SolidElement {
         aria-label=${this.localize.term('audioPlayer')}
         part="audio-player"
       >
-        <slot name="default" @slotchange="${this.updateAudioDuration}"></slot>
+        <slot @slotchange="${this.updateAudioDuration}"></slot>
 
         ${!this.animated || (this.animated && this.reversedLayout) ? renderAudioControls : null}
 

@@ -24,7 +24,7 @@ export default {
 const audioConstant: ConstantDefinition = {
   type: 'slot',
   name: 'default',
-  value: '<audio slot="default" src="./placeholders/audio/sds-song.mp3" preload="metadata"></audio>'
+  value: '<audio src="./placeholders/audio/sds-song.mp3" preload="metadata"></audio>'
 };
 
 const transcriptConstant: ConstantDefinition = {
@@ -54,7 +54,7 @@ export const Animated = {
   render: () => {
     return html`
       <sd-audio animated>
-        <audio slot="default" src="./placeholders/audio/sds-song.mp3" preload="metadata"></audio>
+        <audio src="./placeholders/audio/sds-song.mp3" preload="metadata"></audio>
       </sd-audio>
     `;
   }
@@ -68,7 +68,7 @@ export const Inverted = {
     return html`
       <div class="bg-primary">
         <sd-audio inverted>
-          <audio slot="default" src="./placeholders/audio/sds-song.mp3" preload="metadata"></audio>
+          <audio src="./placeholders/audio/sds-song.mp3" preload="metadata"></audio>
         </sd-audio>
       </div>
     `;
@@ -84,7 +84,7 @@ export const Reverse = {
   render: () => {
     return html`
       <sd-audio reversed-layout>
-        <audio slot="default" src="./placeholders/audio/sds-song.mp3" preload="metadata"></audio>
+        <audio src="./placeholders/audio/sds-song.mp3" preload="metadata"></audio>
       </sd-audio>
     `;
   }
@@ -101,7 +101,7 @@ export const Speed = {
   render: () => {
     return html`
       <sd-audio speed="1.5">
-        <audio slot="default" src="./placeholders/audio/sds-song.mp3" preload="metadata"></audio>
+        <audio src="./placeholders/audio/sds-song.mp3" preload="metadata"></audio>
       </sd-audio>
     `;
   }
@@ -114,7 +114,7 @@ export const Timestamps = {
   render: () => {
     return html`
       <sd-audio hide-timestamps>
-        <audio slot="default" src="./placeholders/audio/sds-song.mp3" preload="metadata"></audio>
+        <audio src="./placeholders/audio/sds-song.mp3" preload="metadata"></audio>
       </sd-audio>
     `;
   }
@@ -131,7 +131,7 @@ export const Transcript = {
   render: () => {
     return html`
       <sd-audio>
-        <audio slot="default" src="./placeholders/audio/sds-song.mp3" preload="metadata"></audio>
+        <audio src="./placeholders/audio/sds-song.mp3" preload="metadata"></audio>
         <div slot="transcript">
           <p>1<br />00:00:00.000 --> 00:00:04.000<br />A bond unbroken, usability</p>
           <p>2<br />00:00:04.001 --> 00:00:08.000<br />We weave the fabric of digital reality</p>
