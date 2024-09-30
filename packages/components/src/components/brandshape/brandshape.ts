@@ -23,7 +23,7 @@ type Breakpoints = 0 | 414 | 640;
  * @csspart shape-middle - Middle shape.
  * @csspart shape-bottom - Bottom shape.
  *
- * @cssproperty --image-translate-Y - The Y translation of the image slot.
+ * @cssproperty --image-translate-Y - The Y translation of the image slot. Adjust this based on your media queries or breakpoints to achieve the desired effect.
  */
 
 @customElement('sd-brandshape')
@@ -261,7 +261,7 @@ export default class SdBrandshape extends SolidElement {
     css`
       :host {
         @apply block;
-        --image-translate-Y: translateY(-30%);
+        --image-translate-Y: -30%;
       }
 
       .container--outline-primary::before {
@@ -297,13 +297,13 @@ export default class SdBrandshape extends SolidElement {
 
       slot[name='image']::slotted(img) {
         @apply w-full h-full object-cover origin-top-left;
-        transform: var(--image-translate-Y) skewY(11deg);
+        transform: translateY(var(--image-translate-Y)) skewY(11deg);
       }
 
       /* Responsive border-radius */
       @media (min-width: 414px) {
         :host {
-          --image-translate-Y: translateY(-35%);
+          --image-translate-Y: -37%;
         }
 
         .container--stylized::before,
@@ -314,12 +314,18 @@ export default class SdBrandshape extends SolidElement {
 
       @media (min-width: 640px) {
         :host {
-          --image-translate-Y: translateY(-40%);
+          --image-translate-Y: -40%;
         }
 
         .container--stylized::before,
         .image-wrapper {
           border-radius: 0 84px;
+        }
+      }
+
+      @media (min-width: 1000px) {
+        :host {
+          --image-translate-Y: -45%;
         }
       }
     `
