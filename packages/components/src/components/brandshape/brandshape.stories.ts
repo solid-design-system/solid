@@ -125,4 +125,23 @@ export const Shapes = {
   `
 };
 
+/**
+ * Use the `--image-translate-Y` CSS custom property to adjust the position of the image.
+ */
+
+export const ImageTranslateY = {
+  name: 'Image Translate Y',
+  render: () => html`
+    <sd-brandshape variant="image">
+      <div class="slot slot--border slot--text h-8 w-full">Default slot</div>
+      <img
+        slot="image"
+        src="./placeholders/images/collaboration.jpg"
+        alt="Generic"
+        style="--image-translate-Y: -40%;"
+      />
+    </sd-brandshape>
+  `
+};
+
 // TODO: Add copyright story once it's implemented. (issue: https://github.com/solid-design-system/solid/issues/1319)
