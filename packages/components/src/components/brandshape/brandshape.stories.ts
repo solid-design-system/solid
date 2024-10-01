@@ -130,7 +130,7 @@ export const Shapes = {
  */
 
 export const ImageTranslateY = {
-  name: 'Image Translate Y',
+  name: 'Image Translation',
   render: () => html`
     <sd-brandshape variant="image">
       <div class="slot slot--border slot--text h-8 w-full">Default slot</div>
