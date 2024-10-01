@@ -723,5 +723,6 @@ export const Combination = generateScreenshotStory([
   SampleGroupingOptions,
   SampleForm,
   setCustomValidity,
+  BorderVisibility,
   SolidForm
 ]);
