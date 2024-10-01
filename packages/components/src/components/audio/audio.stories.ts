@@ -91,7 +91,7 @@ export const Reverse = {
 };
 
 /**
- * Use the `speed` attribute to change the playback rate of the audio player.
+ * Use the `speed` attribute to change the playback rate of the audio player:
  *
  * - 1x (default)
  * - 1.25x
@@ -110,7 +110,7 @@ export const Speed = {
 /**
  * Use the `hide-timestamps` attribute to hide the timestamps.
  */
-export const Timestamps = {
+export const NoTimestamps = {
   render: () => {
     return html`
       <sd-audio hide-timestamps>
