@@ -92,7 +92,7 @@ export const Variant = {
 /**
  * Use the `active` attribute to toggle the active state.
  *
- * __Hint:__ Due to an storybook limitation it is necessary if the active tab is the first tab, please refresh the page.
+ * __Hint:__ Due to a Storybook issue, the first tab may be displayed as active. In this case, please reload the page. 
  */
 
 export const Active = {
