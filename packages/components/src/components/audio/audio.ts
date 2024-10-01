@@ -94,12 +94,25 @@ export default class SdAudio extends SolidElement {
     this.audioElement.addEventListener('ended', this.handleAudioEnd);
     this.audioElement.setAttribute('controlsList', 'nodownload');
     this.audioElement.playbackRate = this.speed;
+
+    if (this.animated) {
+      this.initAnimation();
+    }
+  }
+
+  updated(changedProperties: Map<string | number | symbol, unknown>) {
+    if (changedProperties.has('animated')) {
+      const oldValue = changedProperties.get('animated');
+      if (!oldValue && this.animated) {
+        this.initAnimation();
+      } else if (oldValue && !this.animated) {
+        this.clear();
+      }
+    }
   }
 
   private get audioElement(): HTMLAudioElement | null {
     const slot: HTMLSlotElement = this.shadowRoot!.querySelector('slot')!;
-
-    console.log(slot);
 
     if (slot?.assignedElements().length > 0) {
       return slot.assignedElements()[0] as HTMLAudioElement;
@@ -146,7 +159,7 @@ export default class SdAudio extends SolidElement {
     this.emit('sd-playback-start');
 
     if (this.animated) {
-      this.initAnimation();
+      this.draw();
     }
   }
 
@@ -288,6 +301,15 @@ export default class SdAudio extends SolidElement {
       new Wave({
         canvas: this.canvas,
         color: computedColor,
+        phase: 300,
+        shift: 1.5,
+        amplitude: 180,
+        frequency: 0.014,
+        damping: 1
+      }),
+      new Wave({
+        canvas: this.canvas,
+        color: computedColor,
         phase: 180,
         shift: 2.5,
         amplitude: 250,
@@ -322,29 +344,43 @@ export default class SdAudio extends SolidElement {
         damping: 1
       })
     ];
-    this.draw();
+
+    if (this.animated) {
+      this.drawStillWaves();
+    }
+  }
+
+  private drawStillWaves() {
+    // renders still waves by drawing a single frame without looping
+    this.waveList.forEach(wave => {
+      wave.redraw();
+    });
   }
 
   private stopAnimation() {
-    this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    this.waveList = [];
+    this.isPlaying = false;
   }
 
   private clear() {
+    if (!this.context || !this.canvas) return;
+
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
   }
 
   async draw() {
-    if (!this.animated && !this.isPlaying) return;
+    if (!this.isPlaying || !this.animated) return;
 
     this.clear();
+
     this.waveList.forEach(wave => {
       wave.redraw();
     });
+
     await new Promise(resolve => {
       setTimeout(resolve, 1000 / 30);
     });
-    await this.draw();
+
+    await this.draw(); // recursively call draw() to create the animation loop
   }
 
   render() {
@@ -519,7 +555,7 @@ export default class SdAudio extends SolidElement {
         @apply appearance-none bg-primary h-4 w-4 rounded-full border-none transition duration-200 ease-in-out;
       }
 
-      .progress-slider:focus::-webkit-slider-thumb {
+      .progress-slider:focus-visible::-webkit-slider-thumb {
         @apply outline outline-primary outline-offset-2;
       }
 
