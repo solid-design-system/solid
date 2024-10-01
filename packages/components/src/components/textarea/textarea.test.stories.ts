@@ -346,7 +346,7 @@ export const ResponsiveHeight = {
     { type: 'attribute', name: 'help-text', value: 'help-text' }
   ]),
   render: (args: any) => {
-    return html`<div class="w-[250px] h-[500px]">${generateTemplate({ args })}</div> `;
+    return html`<div class="w-[250px] h-[300px]">${generateTemplate({ args })}</div> `;
   }
 };
 
