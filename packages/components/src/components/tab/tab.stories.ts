@@ -63,11 +63,11 @@ export const Variant = {
         </sd-tab-panel>
         <sd-tab slot="nav" panel="tab-2" variant="default">Default 2</sd-tab>
         <sd-tab-panel name="tab-2">
-          <div>Provident illo neque vel ex.</div>
+          <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
         </sd-tab-panel>
         <sd-tab slot="nav" panel="tab-3" variant="default">Default 3</sd-tab>
         <sd-tab-panel name="tab-3">
-          <div>Provident illo neque vel ex. Inventore perspiciatis delectus nisi doloremque soluta inventore.</div>
+          <div>Inventore perspiciatis delectus nisi doloremque soluta inventore.</div>
         </sd-tab-panel>
       </sd-tab-group>
 
@@ -78,7 +78,7 @@ export const Variant = {
         </sd-tab-panel>
         <sd-tab slot="nav" panel="tab-2" variant="container">Container 2</sd-tab>
         <sd-tab-panel name="tab-2">
-          <div>Provident illo neque vel ex. Inventore perspiciatis delectus nisi doloremque soluta inventore.</div>
+          <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
         </sd-tab-panel>
         <sd-tab slot="nav" panel="tab-3" variant="container">Container 3</sd-tab>
         <sd-tab-panel name="tab-3">
@@ -92,7 +92,7 @@ export const Variant = {
 /**
  * Use the `active` attribute to toggle the active state.
  *
- * __Hint:__ Due to a Storybook issue, the first tab may be displayed as active. In this case, please reload the page. 
+ * __Hint:__ Due to a Storybook issue, the first tab may be displayed as active. In this case, please reload the page.
  */
 
 export const Active = {
@@ -100,15 +100,13 @@ export const Active = {
     <sd-tab-group activation="auto" id="active">
       <sd-tab slot="nav" panel="tab-1" variant="default">Tab 1</sd-tab>
       <sd-tab-panel name="tab-1">
-        Tab panel 1 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.
+        Tab panel 1 - Provident illo neque vel ex. Inventore perspiciatis delectus nisi doloremque soluta inventore.
       </sd-tab-panel>
       <sd-tab slot="nav" panel="tab-2" variant="default">Tab 2</sd-tab>
-      <sd-tab-panel name="tab-2">
-        Tab panel 2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.
-      </sd-tab-panel>
+      <sd-tab-panel name="tab-2"> Tab panel 2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. </sd-tab-panel>
       <sd-tab slot="nav" panel="tab-3" variant="default">Tab 3</sd-tab>
       <sd-tab-panel name="tab-3">
-        Tab panel 3 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.
+        Tab panel 3 - Inventore perspiciatis delectus nisi doloremque soluta inventore.
       </sd-tab-panel>
     </sd-tab-group>
     <script>
@@ -137,15 +135,17 @@ export const Disabled = {
     <sd-tab-group>
       <sd-tab slot="nav" panel="tab-1" variant="default">Label</sd-tab>
       <sd-tab-panel name="tab-1">
-        <div>Tab panel 1 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</div>
+        <div>
+          Tab panel 1 - Provident illo neque vel ex. Inventore perspiciatis delectus nisi doloremque soluta inventore.
+        </div>
       </sd-tab-panel>
       <sd-tab slot="nav" panel="tab-2" variant="default" disabled>Disabled</sd-tab>
       <sd-tab-panel name="tab-2">
-        <div>Tab panel 2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</div>
+        <div>Tab panel 2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
       </sd-tab-panel>
       <sd-tab slot="nav" panel="tab-3" variant="default">Label</sd-tab>
       <sd-tab-panel name="tab-3">
-        <div>Tab panel 3 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</div>
+        <div>Tab panel 3 - Inventore perspiciatis delectus nisi doloremque soluta inventore.</div>
       </sd-tab-panel>
     </sd-tab-group>
   `
@@ -163,21 +163,23 @@ export const Icon = {
         Label
       </sd-tab>
       <sd-tab-panel name="tab-1">
-        <div>Tab panel 1 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</div>
+        <div>
+          Tab panel 1 - Provident illo neque vel ex. Inventore perspiciatis delectus nisi doloremque soluta inventore.
+        </div>
       </sd-tab-panel>
       <sd-tab slot="nav" panel="tab-2">
         <sd-icon slot="left" name="system/picture" library="global-resources" class="pr-2"></sd-icon>
         Label
       </sd-tab>
       <sd-tab-panel name="tab-2">
-        <div>Tab panel 2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</div>
+        <div>Tab panel 2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
       </sd-tab-panel>
       <sd-tab slot="nav" panel="tab-3">
         <sd-icon slot="left" name="system/picture" library="global-resources" class="pr-2"></sd-icon>
         Label
       </sd-tab>
       <sd-tab-panel name="tab-3">
-        <div>Tab panel 3 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</div>
+        <div>Tab panel 3 - Inventore perspiciatis delectus nisi doloremque soluta inventore.</div>
       </sd-tab-panel>
     </sd-tab-group>
   `
