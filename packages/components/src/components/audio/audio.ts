@@ -287,25 +287,25 @@ export default class SdAudio extends SolidElement {
   private initAnimation() {
     this.context = this.canvas.getContext('2d')!;
 
-    const playButton = this.audioPlayerContainer.querySelector('[part="play-button"]')!;
-    const computedStyles = window.getComputedStyle(playButton);
-    const backgroundColor = computedStyles.backgroundColor;
+    const button = this.audioPlayerContainer.querySelector('.playback-speed')!;
+    const computedStyles = window.getComputedStyle(button);
+    const color = computedStyles.color;
 
     let computedColor: string;
     if (this.inverted) {
-      computedColor = `#FFFFFF66`;
+      computedColor = `#FFFFFF50`;
     } else {
-      computedColor = this.rgbToHex(backgroundColor) + '66';
+      computedColor = this.rgbToHex(color) + '50';
     }
 
     this.waveList = [
       new Wave({
         canvas: this.canvas,
         color: computedColor,
-        phase: 300,
+        phase: 240,
         shift: 1.5,
-        amplitude: 180,
-        frequency: 0.014,
+        amplitude: 230,
+        frequency: 0.012,
         damping: 1
       }),
       new Wave({
@@ -330,9 +330,9 @@ export default class SdAudio extends SolidElement {
         canvas: this.canvas,
         color: computedColor,
         phase: 180,
-        shift: -1.5,
+        shift: -1,
         amplitude: 200,
-        frequency: 0.01,
+        frequency: 0.018,
         damping: 1
       }),
       new Wave({
