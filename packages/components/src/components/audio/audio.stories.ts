@@ -9,6 +9,9 @@ const { generateTemplate } = storybookTemplate('sd-audio');
 
 /**
  * Used to play audio files that are part of the page content.
+ *
+ * **Related templates**:
+ * - [Audio](?path=/docs/templates-audio--docs)
  */
 
 export default {
@@ -66,7 +69,7 @@ export const Animated = {
 export const Inverted = {
   render: () => {
     return html`
-      <div class="bg-primary">
+      <div class="bg-primary p-12">
         <sd-audio inverted>
           <audio src="./placeholders/audio/sds-song.mp3" preload="metadata"></audio>
         </sd-audio>
