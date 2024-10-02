@@ -293,9 +293,9 @@ export default class SdAudio extends SolidElement {
 
     let computedColor: string;
     if (this.inverted) {
-      computedColor = `#FFFFFF50`;
+      computedColor = `#FFFFFF33`;
     } else {
-      computedColor = this.rgbToHex(color) + '50';
+      computedColor = this.rgbToHex(color) + '33';
     }
 
     this.waveList = [
