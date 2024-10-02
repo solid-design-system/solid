@@ -391,7 +391,7 @@ export default class SdAudio extends SolidElement {
       class=${cx(
         'controls grid grid-cols-3 justify-items-center items-center',
         !this.animated && 'relative',
-        this.animated && !this.reversedLayout && 'absolute top-0 left-0 w-full',
+        this.animated && !this.reversedLayout && 'absolute -top-4 left-0 w-full',
         this.reversedLayout ? 'mt-2' : 'mb-2'
       )}
       part="audio-controls"
@@ -413,6 +413,7 @@ export default class SdAudio extends SolidElement {
       <sd-button
         ?inverted=${this.inverted ? true : false}
         part="play-button"
+        size="lg"
         @click=${!this.isPlaying ? this.playAudio : this.pauseAudio}
         aria-label="${this.isPlaying ? this.localize.term('pauseAudio') : this.localize.term('playAudio')}"
       >
@@ -473,7 +474,7 @@ export default class SdAudio extends SolidElement {
 
     return html`
       <div
-        class=${cx('w-full flex p-12 relative', this.reversedLayout ? 'flex-col-reverse' : 'flex-col')}
+        class=${cx('w-full flex relative', this.reversedLayout ? 'flex-col-reverse' : 'flex-col')}
         aria-label=${this.localize.term('audioPlayer')}
         part="audio-player"
       >
@@ -547,7 +548,11 @@ export default class SdAudio extends SolidElement {
       }
 
       sd-button::part(base) {
-        @apply rounded-full;
+        @apply rounded-full h-16 w-16 flex items-center justify-center;
+      }
+
+      sd-button::part(label) {
+        @apply flex-grow-0;
       }
     `
   ];
