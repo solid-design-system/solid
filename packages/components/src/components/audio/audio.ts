@@ -1,10 +1,11 @@
-import { css, html } from 'lit';
+import { css, html, unsafeCSS } from 'lit';
 import { customElement } from '../../../src/internal/register-custom-element';
 import { HasSlotController } from '../../internal/slot';
 import { LocalizeController } from '../../utilities/localize';
 import { property, query, state } from 'lit/decorators.js';
 import { Wave } from './wave';
 import cx from 'classix';
+import InteractiveStyles from '../../styles/interactive/interactive.css?inline';
 import SolidElement from '../../internal/solid-element';
 import type SdDrawer from '../drawer/drawer';
 
@@ -397,10 +398,8 @@ export default class SdAudio extends SolidElement {
     >
       <button
         class=${cx(
-          'playback-speed justify-self-start text-base font-bold hover:cursor-pointer',
-          this.inverted
-            ? 'text-white focus-visible:focus-outline-inverted hover:text-primary-200'
-            : 'text-primary focus-visible:focus-outline hover:text-primary-500'
+          'playback-speed justify-self-start text-base font-bold hover:cursor-pointer sd-interactive',
+          this.inverted && 'sd-interactive--inverted'
         )}
         aria-label="${this.localize.term('playbackSpeed')}"
         tabindex="0"
@@ -411,35 +410,23 @@ export default class SdAudio extends SolidElement {
         ${this.speed}x
       </button>
 
-      <button
-        class=${cx(
-          'flex justify-center items-center p-4 rounded-full cursor-pointer hover:cursor-pointer',
-          this.inverted
-            ? 'bg-white focus-visible:focus-outline-inverted text-primary hover:bg-primary-200'
-            : 'bg-primary focus-visible:focus-outline text-white hover:bg-primary-500'
-        )}
+      <sd-button
+        ?inverted=${this.inverted ? true : false}
         part="play-button"
         @click=${!this.isPlaying ? this.playAudio : this.pauseAudio}
         aria-label="${this.isPlaying ? this.localize.term('pauseAudio') : this.localize.term('playAudio')}"
-        tabindex="0"
       >
         ${this.isPlaying
-          ? html`<slot name="pause-icon">
-              <sd-icon name="pause" library="system" class=${cx('w-6 h-6')}></sd-icon>
-            </slot>`
-          : html`<slot name="play-icon">
-              <sd-icon name="start" library="system" class=${cx('w-6 h-6')}></sd-icon>
-            </slot>`}
-      </button>
+          ? html` <sd-icon name="pause" library="system"></sd-icon>`
+          : html` <sd-icon name="start" library="system"></sd-icon>`}
+      </sd-button>
 
       <div class="flex items-center justify-self-end">
         ${this.hasSlotController.test('transcript')
           ? html`<button
               class=${cx(
-                'mr-6 w-6 h-6 hover:cursor-pointer',
-                this.inverted
-                  ? 'text-white focus-visible:focus-outline-inverted hover:text-primary-200'
-                  : 'text-primary focus-visible:focus-outline hover:text-primary-500'
+                'mr-6 w-6 h-6 hover:cursor-pointer sd-interactive',
+                this.inverted && 'sd-interactive--inverted'
               )}
               @click=${this.showTranscript}
               @keydown=${this.showTranscriptKeydown}
@@ -455,12 +442,7 @@ export default class SdAudio extends SolidElement {
           : null}
 
         <button
-          class=${cx(
-            'w-6 h-6 hover:cursor-pointer',
-            this.inverted
-              ? 'text-white focus-visible:focus-outline-inverted hover:text-primary-200'
-              : 'text-primary focus-visible:focus-outline hover:text-primary-500'
-          )}
+          class=${cx('w-6 h-6 hover:cursor-pointer sd-interactive', this.inverted && 'sd-interactive--inverted')}
           part="volume"
           aria-label=${this.localize.term('mute')}
           tabindex="0"
@@ -540,6 +522,7 @@ export default class SdAudio extends SolidElement {
   /** Inherits Tailwindclasses and includes additional styling. */
   static styles = [
     SolidElement.styles,
+    unsafeCSS(InteractiveStyles),
     css`
       :host([inverted]) {
         [part='progress-slider']::-webkit-slider-thumb {
@@ -561,6 +544,10 @@ export default class SdAudio extends SolidElement {
 
       .progress-slider::-moz-range-thumb {
         @apply appearance-none bg-primary h-4 w-4 rounded-full border-none transition duration-200 ease-in-out;
+      }
+
+      sd-button::part(base) {
+        @apply rounded-full;
       }
     `
   ];
