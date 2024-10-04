@@ -35,3 +35,18 @@ export interface Style {
   since: string;
   attributes: StyleAttribute[];
 }
+
+/* eslint-disable */
+interface CloseWatcher extends EventTarget {
+  new (options?: CloseWatcherOptions): CloseWatcher;
+  requestClose(): void;
+  close(): void;
+  destroy(): void;
+
+  oncancel: (event: Event) => void | null;
+  onclose: (event: Event) => void | null;
+}
+
+interface CloseWatcherOptions {
+  signal: AbortSignal;
+}
