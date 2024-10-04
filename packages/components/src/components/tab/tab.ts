@@ -107,7 +107,6 @@ export default class SdTab extends SolidElement {
   }
 
   static styles = [
-    SolidElement.styles,
     componentStyles,
     css`
       :host {

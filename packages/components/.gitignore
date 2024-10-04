@@ -1,6 +1,7 @@
 .DS_Store
 .cache
 dist
+cdn
 examples
 node_modules
 src/react

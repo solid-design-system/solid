@@ -7,6 +7,7 @@ import { LocalizeController } from '../../utilities/localize';
 import { property, query } from 'lit/decorators.js';
 import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch';
+import componentStyles from 'src/styles/component.styles';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
@@ -193,7 +194,7 @@ export default class SdAccordion extends SolidElement {
   }
 
   static styles = [
-    SolidElement.styles,
+    componentStyles,
     css`
       :host {
         @apply block;

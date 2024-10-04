@@ -146,7 +146,6 @@ export default class SdRadioButton extends SolidElement {
     `;
   }
   static styles = [
-    SolidElement.styles,
     componentStyles,
     css`
       :host {

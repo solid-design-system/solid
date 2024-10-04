@@ -373,7 +373,6 @@ export default class SdButton extends SolidElement implements SolidFormControl {
    */
   static styles = [
     componentStyles,
-    SolidElement.styles,
 
     css`
       :host {

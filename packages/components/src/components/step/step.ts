@@ -6,7 +6,8 @@ import { property } from 'lit/decorators.js';
 import { watch } from '../../internal/watch';
 import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
-import ParagraphStyles from '../../styles/paragraph/paragraph.css?inline';
+// TODO
+// import ParagraphStyles from '../../styles/paragraph/paragraph.css?inline';
 import SolidElement from '../../internal/solid-element';
 /**
  * @summary Steps are used inside [step groups](/components/step-group) to guide users through the steps of a process or task..
@@ -137,7 +138,7 @@ export default class SdStep extends SolidElement {
                 : 'mt-3'
           )}
         >
-          
+
           <${tag}
             part="circle"
             ?disabled=${this.disabled}
@@ -216,7 +217,6 @@ export default class SdStep extends SolidElement {
   }
 
   static styles = [
-    SolidElement.styles,
     componentStyles,
     unsafeCSS(ParagraphStyles),
 

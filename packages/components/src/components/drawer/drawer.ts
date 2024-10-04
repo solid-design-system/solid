@@ -347,7 +347,6 @@ export default class SdDrawer extends SolidElement {
   }
 
   static styles = [
-    SolidElement.styles,
     componentStyles,
     css`
       :host {

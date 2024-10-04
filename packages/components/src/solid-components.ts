@@ -1,17 +1,40 @@
-// Import all components and register them
+// Components
+export { default as SdAccordion } from './components/accordion/accordion.js';
+export { default as SdAccordionGroup } from './components/accordion-group/accordion-group.js';
+export { default as SdBadge } from './components/badge/badge.js';
+export { default as SdBrandshape } from './components/brandshape/brandshape.js';
+export { default as SdButton } from './components/button/button.js';
+export { default as SdCarousel } from './components/carousel/carousel.js';
+export { default as SdCarouselItem } from './components/carousel-item/carousel-item.js';
+export { default as SdCheckbox } from './components/checkbox/checkbox.js';
+export { default as SdCheckboxGroup } from './components/checkbox-group/checkbox-group.js';
+export { default as SdDialog } from './components/dialog/dialog.js';
+export { default as SdDivider } from './components/divider/divider.js';
+export { default as SdDrawer } from './components/drawer/drawer.js';
+export { default as SdDropdown } from './components/dropdown/dropdown.js';
+export { default as SdExpandable } from './components/expandable/expandable.js';
+export { default as SdFlipcard } from './components/flipcard/flipcard.js';
+export { default as SdHeader } from './components/header/header.js';
+export { default as SdIcon } from './components/icon/icon.js';
+export { default as SdInclude } from './components/include/include.js';
+export { default as SdInput } from './components/input/input.js';
+export { default as SdLink } from './components/link/link.js';
+export { default as SdMapMarker } from './components/map-marker/map-marker.js';
+export { default as SdNavigationItem } from './components/navigation-item/navigation-item.js';
+export { default as SdNotification } from './components/notification/notification.js';
+export { default as SdOption } from './components/option/option.js';
+export { default as SdPopup } from './components/popup/popup.js';
+export { default as SdQuickfact } from './components/quickfact/quickfact.js';
+export { default as SdRadio } from './components/radio/radio.js';
+export { default as SdRadioButton } from './components/radio-button/radio-button.js';
+export { default as SdRadioGroup } from './components/radio-group/radio-group.js';
+export { default as SdScrollable } from './components/scrollable/scrollable.js';
+export { default as SdSelect } from './components/select/select.js';
+export { default as SdSpinner } from './components/spinner/spinner.js';
+export { default as SdStep } from './components/step/step.js';
+export { default as SdStepGroup } from './components/step-group/step-group.js';
 
-/* PACKAGES:START */
-const modules = import.meta.glob('./components/**/!(*.stories|*.spec|*.test|*.style).ts');
-
-Object.keys(modules).forEach(module => {
-  modules[module]();
-});
-/* PACKAGES:END */
-
-// Export selected utilities
-
+// Utilities
 export * from './utilities/icon-library';
 export * from './utilities/localize';
 export * from './utilities/autocomplete-config';
-// export * from './utilities/animation';
-// export * from './utilities/base-path';

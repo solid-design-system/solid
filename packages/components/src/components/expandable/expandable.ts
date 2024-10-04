@@ -6,7 +6,8 @@ import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch.js';
 import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
-import InteractiveStyles from '../../styles/interactive/interactive.css?inline';
+// TODO
+// import InteractiveStyles from '../../styles/interactive/interactive.css?inline';
 import SolidElement from '../../internal/solid-element';
 
 /**
@@ -156,8 +157,7 @@ export default class SdExpandable extends SolidElement {
   }
 
   static styles = [
-    SolidElement.styles,
-    unsafeCSS(InteractiveStyles),
+    // unsafeCSS(InteractiveStyles),
     componentStyles,
     css`
       :host {

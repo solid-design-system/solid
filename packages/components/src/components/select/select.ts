@@ -1039,7 +1039,6 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
    */
   static styles = [
     componentStyles,
-    SolidElement.styles,
     css`
       :host {
         @apply block relative w-full;

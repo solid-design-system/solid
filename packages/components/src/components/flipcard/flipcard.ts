@@ -272,7 +272,6 @@ export default class SdFlipcard extends SolidElement {
    */
   static styles = [
     componentStyles,
-    SolidElement.styles,
     css`
       :host {
         @apply block aspect-3/4;

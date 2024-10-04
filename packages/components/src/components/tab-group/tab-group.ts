@@ -5,7 +5,8 @@ import { property, query, state } from 'lit/decorators.js';
 import { scrollIntoView } from '../../internal/scroll';
 import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
-import InteractiveStyles from '../../styles/interactive/interactive.css?inline';
+// TODO
+// import InteractiveStyles from '../../styles/interactive/interactive.css?inline';
 import SolidElement from '../../internal/solid-element';
 import type SdTab from '../tab/tab';
 import type SdTabPanel from '../tab-panel/tab-panel';
@@ -374,8 +375,7 @@ export default class SdTabGroup extends SolidElement {
   }
 
   static styles = [
-    SolidElement.styles,
-    unsafeCSS(InteractiveStyles),
+    // unsafeCSS(InteractiveStyles),
     componentStyles,
     css`
       :host {

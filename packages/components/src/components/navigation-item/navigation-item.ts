@@ -6,7 +6,8 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { property } from 'lit/decorators.js';
 import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
-import InteractiveStyles from '../../styles/interactive/interactive.css?inline';
+// TODO
+// import InteractiveStyles from '../../styles/interactive/interactive.css?inline';
 import SolidElement from '../../internal/solid-element';
 
 /**
@@ -288,8 +289,7 @@ export default class SdNavigationItem extends SolidElement {
    */
   static styles = [
     componentStyles,
-    SolidElement.styles,
-    unsafeCSS(InteractiveStyles),
+    // unsafeCSS(InteractiveStyles),
     css`
       :host {
         @apply inline-block relative box-border;

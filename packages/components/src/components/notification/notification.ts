@@ -294,7 +294,6 @@ export default class SdNotification extends SolidElement {
    */
   static styles = [
     componentStyles,
-    SolidElement.styles,
     css`
       :host {
         @apply contents;

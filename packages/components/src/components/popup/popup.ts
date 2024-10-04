@@ -473,7 +473,6 @@ export default class SdPopup extends SolidElement {
   }
 
   static styles = [
-    SolidElement.styles,
     componentStyles,
     css`
       :host {

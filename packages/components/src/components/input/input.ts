@@ -666,7 +666,6 @@ export default class SdInput extends SolidElement implements SolidFormControl {
    */
   static styles = [
     componentStyles,
-    SolidElement.styles,
     css`
       :host {
         @apply box-border relative inline-block text-left w-full;

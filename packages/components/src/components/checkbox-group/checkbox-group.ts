@@ -127,7 +127,6 @@ export default class SdCheckboxGroup extends SolidElement {
    */
   static styles = [
     componentStyles,
-    SolidElement.styles,
     css`
       :host {
         @apply block;

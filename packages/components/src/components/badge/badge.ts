@@ -1,8 +1,8 @@
 import { css, html } from 'lit';
 import { customElement } from '../../../src/internal/register-custom-element';
 import { property } from 'lit/decorators.js';
+import componentStyles from 'src/styles/component.styles';
 import cx from 'classix';
-import SolidElement from '../../internal/solid-element';
 
 /**
  * @summary Badges are used to draw attention and display statuses or counts.
@@ -56,7 +56,7 @@ export default class SdBadge extends SolidElement {
   }
 
   static styles = [
-    SolidElement.styles,
+    componentStyles,
     css`
       :host {
         @apply inline-flex items-center justify-center;

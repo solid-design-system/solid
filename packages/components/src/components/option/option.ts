@@ -185,7 +185,6 @@ export default class SdOption extends SolidElement {
    */
   static styles = [
     componentStyles,
-    SolidElement.styles,
     css`
       :host {
         @apply block relative w-full !outline-none;

@@ -2,6 +2,7 @@ import { css, html } from 'lit';
 import { customElement } from '../../../src/internal/register-custom-element';
 import { HasSlotController } from '../../internal/slot';
 import { property, query } from 'lit/decorators.js';
+import componentStyles from 'src/styles/component.styles';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
@@ -153,7 +154,7 @@ export default class SdVideo extends SolidElement {
 
   /** Inherits Tailwindclasses and includes additional styling. */
   static styles = [
-    SolidElement.styles,
+    componentStyles,
     css`
       :host {
         @apply relative inline-block overflow-hidden;

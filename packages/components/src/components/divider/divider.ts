@@ -43,7 +43,6 @@ export default class SdDivider extends SolidElement {
    */
   static styles = [
     componentStyles,
-    SolidElement.styles,
     css`
       :host {
         @apply m-0;

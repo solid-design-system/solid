@@ -2,6 +2,7 @@ import { css, html } from 'lit';
 import { customElement } from '../../../src/internal/register-custom-element';
 import { LocalizeController } from '../../utilities/localize';
 import { property } from 'lit/decorators.js';
+import componentStyles from 'src/styles/component.styles';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
@@ -60,7 +61,7 @@ export default class SdSpinner extends SolidElement {
    * Inherits Tailwindclasses and includes additional styling.
    */
   static styles = [
-    SolidElement.styles,
+    componentStyles,
     css`
       :host {
         @apply inline-block;

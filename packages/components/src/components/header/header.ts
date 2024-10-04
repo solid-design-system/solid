@@ -109,7 +109,6 @@ export default class SdHeader extends SolidElement {
   }
 
   static styles = [
-    SolidElement.styles,
     componentStyles,
     css`
       :host {

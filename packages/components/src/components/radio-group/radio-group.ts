@@ -11,7 +11,7 @@ import { property, query, state } from 'lit/decorators.js';
 import { watch } from '../../internal/watch';
 import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
-import SdButtonGroup from '../../_components/button-group/button-group';
+import SdButtonGroup from '../button-group/button-group';
 import SdRadio from '../../components/radio/radio';
 import SolidElement from '../../internal/solid-element';
 import type { SolidFormControl } from '../../internal/solid-element';
@@ -430,7 +430,6 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
    */
   static styles = [
     componentStyles,
-    SolidElement.styles,
     css`
       :host {
         @apply block;

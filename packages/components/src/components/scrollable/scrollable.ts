@@ -3,7 +3,8 @@ import { customElement } from '../../../src/internal/register-custom-element';
 import { property, state } from 'lit/decorators.js';
 import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
-import InteractiveStyles from '../../styles/interactive/interactive.css?inline';
+// TODO
+// import InteractiveStyles from '../../styles/interactive/interactive.css?inline';
 import SolidElement from '../../internal/solid-element';
 
 /**
@@ -299,8 +300,7 @@ export default class SdScrollable extends SolidElement {
   }
 
   static styles = [
-    SolidElement.styles,
-    unsafeCSS(InteractiveStyles),
+    // unsafeCSS(InteractiveStyles),
     componentStyles,
     css`
       :host {

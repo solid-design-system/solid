@@ -129,7 +129,6 @@ export default class SdStepGroup extends SolidElement {
   }
 
   static styles = [
-    SolidElement.styles,
     componentStyles,
     css`
       :host {

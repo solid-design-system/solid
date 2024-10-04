@@ -30,7 +30,6 @@ export default class SdCarouselItem extends SolidElement {
   }
 
   static styles = [
-    SolidElement.styles,
     componentStyles,
     css`
       :host {

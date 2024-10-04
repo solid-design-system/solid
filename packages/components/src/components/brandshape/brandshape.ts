@@ -255,7 +255,6 @@ export default class SdBrandshape extends SolidElement {
    */
   static styles = [
     componentStyles,
-    SolidElement.styles,
     css`
       :host {
         @apply block;

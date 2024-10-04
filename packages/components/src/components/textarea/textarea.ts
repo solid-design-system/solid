@@ -447,7 +447,6 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
    */
   static styles = [
     componentStyles,
-    SolidElement.styles,
     css`
       :host {
         @apply block;
