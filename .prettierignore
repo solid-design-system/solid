@@ -12,5 +12,6 @@ packages/tokens/src/tokens.json
 **/pnpm-lock.yaml
 **/*hangelog.md*
 **/tokens.json
+packages/components/cdn
 
 packages/autocomplete/src

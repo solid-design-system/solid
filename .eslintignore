@@ -1,6 +1,7 @@
 **/.cache
 **/dist
 packages/components/examples
+packages/components/cdn
 **/node_modules
 packages/components/src/react
 packages/components/src/_components
