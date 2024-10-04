@@ -48,7 +48,7 @@ import { setupAutocomplete as solidAutocomplete } from '../solid-components';
  * <script>
  *   import '@tarekraafat/autocomplete.js';
  *
- *   const { setupAutocomplete } = window['Solid Components'];
+ *   const { setupAutocomplete } = window['SolidComponents'];
  *
  *  Promise.all([customElements.whenDefined('sd-input'), customElements.whenDefined('sd-popup')]).then(() => {
  *     const { config: simpleConfig } = setupAutocomplete('#simple-example');

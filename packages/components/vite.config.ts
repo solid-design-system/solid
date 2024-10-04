@@ -47,7 +47,7 @@ export default (({ command }: { command: string }) => {
       outDir: 'dist',
       lib: {
         entry: path.resolve(__dirname, 'src/solid-components.ts'),
-        name: 'Solid Components',
+        name: 'SolidComponents',
         fileName: (format: string) => `${format}/solid-components.js`
       },
       rollupOptions: {

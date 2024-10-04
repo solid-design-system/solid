@@ -35,9 +35,6 @@ async function buildTheSource() {
   const cdnConfig = {
     format: 'esm',
     target: 'es2017',
-    loader: {
-      '.css': 'text' // Use the text loader for CSS files
-    },
     entryPoints: [
       //
       // NOTE: Entry points must be mapped in package.json > exports, otherwise users won't be able to import them!
@@ -55,7 +52,7 @@ async function buildTheSource() {
       // TODO React wrappers
       // ...(await globby('./src/react/**/*.ts'))
     ],
-    keepNames: true,
+    minify: true,
     outdir: cdndir,
     chunkNames: 'chunks/[name].[hash]',
     define: {
@@ -87,7 +84,16 @@ async function buildTheSource() {
     outdir
   };
 
-  return await Promise.all([esbuild.build(cdnConfig), esbuild.build(npmConfig)]);
+  const iiefConfig = {
+    ...cdnConfig,
+    bundle: true,
+    format: 'iife',
+    splitting: false,
+    globalName: 'SolidComponents',
+    plugins: [...cdnConfig.plugins]
+  };
+
+  return await Promise.all([esbuild.build(cdnConfig), esbuild.build(npmConfig), esbuild.build(iiefConfig)]);
 }
 
 //

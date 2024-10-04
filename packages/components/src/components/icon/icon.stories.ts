@@ -45,7 +45,7 @@ const { generateTemplate } = storybookTemplate('sd-icon');
  * ```html
  * <script src="https://solid-design-system.fe.union-investment.de/x.x.x/components/umd/solid-components.js"></script>
  * <script>
- *  const { registerIconLibrary } = window['Solid Components'];
+ *  const { registerIconLibrary } = window['SolidComponents'];
  *
  *  registerIconLibrary('my-icons', {
  *    resolver: name => `/assets/icons/${name}.svg`,
@@ -54,7 +54,7 @@ const { generateTemplate } = storybookTemplate('sd-icon');
  * </script>
  * ```
  *
- * Please have in mind, that you have to make sure that `window['Solid Components']` is available before you call `registerIconLibrary()` e. g. via polling or similar.
+ * Please have in mind, that you have to make sure that `window['SolidComponents']` is available before you call `registerIconLibrary()` e. g. via polling or similar.
  *
  * To display an icon, set the library and name attributes of an <sd-icon> element.
  *

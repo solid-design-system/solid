@@ -218,7 +218,7 @@ export default class SdStep extends SolidElement {
 
   static styles = [
     componentStyles,
-    unsafeCSS(ParagraphStyles),
+    // unsafeCSS(ParagraphStyles),
 
     css`
       :host {

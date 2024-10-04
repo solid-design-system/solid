@@ -1,4 +1,3 @@
-import './quickfact';
 import { expect, fixture, html } from '@open-wc/testing';
 import type SdQuickfact from './quickfact';
 

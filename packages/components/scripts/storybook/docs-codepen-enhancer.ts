@@ -134,7 +134,7 @@ body {
 import "https://solid-design-system.fe.union-investment.de/${packageVersions['@solid-design-system/components']}/components/umd/solid-components.js";
 
 /* Example how to use modules from bundle */
-const { registerIconLibrary } = window['Solid Components'];`,
+const { registerIconLibrary } = window['SolidComponents'];`,
           js_external: '',
           js_module: true,
           js_pre_processor: 'none',

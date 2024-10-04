@@ -1,7 +1,7 @@
 import { aTimeout, expect, fixture, html, oneEvent } from '@open-wc/testing';
 import { clickOnElement } from '../../internal/test.js';
-import SdCarousel from './carousel';
 import sinon from 'sinon';
+import type SdCarousel from './carousel';
 
 describe('<sd-carousel>', () => {
   it('should render a carousel with default configuration', async () => {

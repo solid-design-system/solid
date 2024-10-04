@@ -104,8 +104,8 @@ describe('sd-input', () => {
 
       /* eslint-disable */
       let registerAutocompleteForTest;
-      if ((window as any)['Solid Components']) {
-        registerAutocompleteForTest = (window as any)['Solid Components']['setupAutocomplete']; // Bundle Mode
+      if ((window as any)['SolidComponents']) {
+        registerAutocompleteForTest = (window as any)['SolidComponents']['setupAutocomplete']; // Bundle Mode
       } else {
         registerAutocompleteForTest = setupAutocomplete; // ES Module Mode
       }
@@ -136,8 +136,8 @@ describe('sd-input', () => {
 
       /* eslint-disable */
       let registerAutocompleteForTest;
-      if ((window as any)['Solid Components']) {
-        registerAutocompleteForTest = (window as any)['Solid Components']['setupAutocomplete']; // Bundle Mode
+      if ((window as any)['SolidComponents']) {
+        registerAutocompleteForTest = (window as any)['SolidComponents']['setupAutocomplete']; // Bundle Mode
       } else {
         registerAutocompleteForTest = setupAutocomplete; // ES Module Mode
       }
