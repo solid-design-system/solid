@@ -12,14 +12,14 @@ import type { CSSResultGroup } from 'lit';
 import type SdOption from '../option/option';
 
 /**
- * @summary The <syn-optgroup> element creates a grouping for <syn-option>s within a <syn-select>.
- * @documentation https://synergy-design-system.github.io/?path=/docs/components-syn-optgroup--docs
- * @status stable
+ * @summary The <sd-optgroup> element creates a grouping for <sd-option>s within a <sd-select>.
+ * @documentation https://synergy-design-system.github.io/?path=/docs/components-sd-optgroup--docs
+ * @status development
  * @since 1.3.0
  *
- * @dependency syn-divider
+ * @dependency sd-divider
  *
- * @slot - The given options. Must be `<syn-option>` elements.
+ * @slot - The given options. Must be `<sd-option>` elements.
  * @slot prefix - A presentational prefix icon or similar element.
  * @slot label - The label for the optgroup
  * @slot suffix - A presentational suffix icon or similar element.
@@ -29,7 +29,7 @@ import type SdOption from '../option/option';
  * @csspart divider - The divider that is displayed above the content
  * @csspart prefix - The container that wraps the prefix.
  * @csspart suffix - The container that wraps the suffix.
- * @csspart options - The container that wraps the <syn-option> elements.
+ * @csspart options - The container that wraps the <sd-option> elements.
  *
  * @cssproperty --display-divider - Display property of the divider. Defaults to "block"
  */
@@ -39,7 +39,7 @@ export default class SdOptgroup extends SolidElement {
   static styles: CSSResultGroup = styles;
 
   static dependencies = {
-    'syn-divider': SdDivider
+    'sd-divider': SdDivider
   };
 
   private readonly hasSlotController = new HasSlotController(this, '[default]', 'prefix', 'suffix', 'label');
@@ -47,13 +47,13 @@ export default class SdOptgroup extends SolidElement {
   @query('slot:not([name])') defaultSlot: HTMLSlotElement;
 
   /**
-   * Syncs the disabled prop for all slotted syn-options when it is triggered
+   * Syncs the disabled prop for all slotted sd-options when it is triggered
    */
   private handleDisableOptions() {
     const { disabled } = this;
     this.defaultSlot
       .assignedElements()
-      .filter(opt => opt.tagName.toLowerCase() === 'syn-option')
+      .filter(opt => opt.tagName.toLowerCase() === 'sd-option')
       .forEach((opt: SdOption) => {
         // eslint-disable-next-line no-param-reassign
         opt.disabled = disabled;
@@ -91,7 +91,7 @@ export default class SdOptgroup extends SolidElement {
         role="${disabled ? 'presentation' : 'group'}"
         part="base"
       >
-        <syn-divider class="optgroup__divider" part="divider"></syn-divider>
+        <sd-divider class="optgroup__divider" part="divider"></sd-divider>
         <div class="optgroup__label-container" part="label-container">
           <slot name="prefix" part="prefix" class="optgroup__prefix"></slot>
           <slot name="label" part="label" class="optgroup__label">

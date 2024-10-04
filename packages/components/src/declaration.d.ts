@@ -37,7 +37,7 @@ export interface Style {
 }
 
 /* eslint-disable */
-interface CloseWatcher extends EventTarget {
+export interface CloseWatcher extends EventTarget {
   new (options?: CloseWatcherOptions): CloseWatcher;
   requestClose(): void;
   close(): void;

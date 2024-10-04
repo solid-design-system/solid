@@ -1,6 +1,5 @@
 import { animateTo, stopAnimations } from '../../internal/animate.js';
 import { classMap } from 'lit/directives/class-map.js';
-import { CloseWatcher } from '../../declaration';
 import { customElement } from '../../internal/register-custom-element';
 import { defaultOptionRenderer, type OptionRenderer } from './option-renderer.js';
 import { defaultValue } from '../../internal/default-value.js';
@@ -21,6 +20,7 @@ import SdIcon from '../icon/icon';
 import SdPopup from '../popup/popup';
 import SolidElement from '../../internal/solid-element';
 import styles from './combobox.styles.js';
+import type { CloseWatcher } from 'src/declaration.js';
 import type { CSSResultGroup } from 'lit';
 import type { SolidFormControl } from '../../internal/solid-element';
 import type SdOptgroup from '../optgroup/optgroup.js';
@@ -94,6 +94,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
 
   private readonly localize = new LocalizeController(this);
 
+  // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
   private closeWatcher: CloseWatcher | null;
 
   /** The last value of a sd-option, that was selected by click or via keyboard navigation */
@@ -266,10 +267,12 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     }
 
     if ('CloseWatcher' in window) {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
       this.closeWatcher?.destroy();
       // @ts-expect-error Check later
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-call
       this.closeWatcher = new CloseWatcher();
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       // @ts-expect-error Check later
       this.closeWatcher.onclose = () => {
         if (this.open) {
@@ -290,6 +293,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       this.getRootNode().removeEventListener('focusin', this.handleDocumentFocusIn);
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-call
     this.closeWatcher?.destroy();
   }
 
