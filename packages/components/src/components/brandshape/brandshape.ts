@@ -230,6 +230,7 @@ export default class SdBrandshape extends SolidElement {
   render() {
     const isBorderVariant = this.variant.startsWith('border-');
     const isImageVariant = this.variant === 'image';
+    this.parentElement!.style.containerType = 'inline-size';
 
     return html`
       <div
@@ -261,7 +262,7 @@ export default class SdBrandshape extends SolidElement {
     css`
       :host {
         @apply block;
-        --image-translate-Y: -30%;
+        --image-translate-Y: -37%;
       }
 
       .container--outline-primary::before {
@@ -301,9 +302,9 @@ export default class SdBrandshape extends SolidElement {
       }
 
       /* Responsive border-radius */
-      @media (min-width: 414px) {
+      @container (min-width: 415px) {
         :host {
-          --image-translate-Y: -37%;
+          --image-translate-Y: -33%;
         }
 
         .container--stylized::before,
@@ -312,7 +313,7 @@ export default class SdBrandshape extends SolidElement {
         }
       }
 
-      @media (min-width: 640px) {
+      @container (min-width: 640px) {
         :host {
           --image-translate-Y: -40%;
         }
@@ -323,9 +324,14 @@ export default class SdBrandshape extends SolidElement {
         }
       }
 
-      @media (min-width: 1000px) {
+      @container (min-width: 1024px) {
         :host {
           --image-translate-Y: -45%;
+        }
+
+        .container--stylized::before,
+        .image-wrapper {
+          border-radius: 0 96px;
         }
       }
     `
