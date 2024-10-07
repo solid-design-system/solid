@@ -105,16 +105,16 @@ export const tagGroupLinks = {
 export const backgroundOptions = {
   name: 'Tag Background options',
   render: () =>
-    html`<div class="flex gap-12">
-      <div class="bg-white px-12 py-4">
+    html`<div class="flex flex-row">
+      <div class="bg-white p-12 w-[268px]">
         <sd-tag>Tag</sd-tag>
       </div>
 
-      <div class="bg-neutral-100 px-12 py-4">
+      <div class="bg-neutral-100 p-12 w-[268px]">
         <sd-tag>Tag</sd-tag>
       </div>
 
-      <div class="bg-primary-100 px-12 py-4">
+      <div class="bg-primary-100 p-12 w-[268px]">
         <sd-tag>Tag</sd-tag>
       </div>
     </div>`
