@@ -1,5 +1,5 @@
 import '../solid-components';
-import { html } from 'lit-html';
+import { html, render } from 'lit-html';
 
 /**
  * ```
@@ -16,46 +16,76 @@ export default {
   }
 };
 
-/**
- * ### Link List
- *
- * This example shows a list of links inside a container.
- */
+export const Default = {
+  name: 'Link with icon',
+  render: () =>
+    html`<sd-link href="http://union-investment.com" standalone>
+        <sd-icon name="system/home" slot="icon-left"></sd-icon>
+        Union Investment
+      </sd-link>
+      <p class="mt-4">
+        While the list above shows standalone links, we now will link to the
+        <sd-link href="https://cd.union-investment.de">
+          CD Toolbox
+          <sd-icon name="system/external-link" slot="icon-right"></sd-icon>
+        </sd-link>
+        inside a paragraph.
+      </p>`
+};
+
 export const LinkList = {
   render: () =>
-    html`<div class="bg-primary-100 p-8">
-      <h2 class="sd-headline sd-headline--size-lg mb-8">You might be interested in this:</h2>
-      <ul class="link-list">
-        <li class="mb-5">
-          <sd-link
-            href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/?path=/docs/docs-general-introduction--docs"
-            size="lg"
-            standalone
-          >
-            Corporate bonds
-            <sd-icon library="system" name="chevron-up" class="rotate-90" slot="icon-left"></sd-icon>
-          </sd-link>
-        </li>
-        <li class="mb-5">
-          <sd-link
-            href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/?path=/docs/docs-general-introduction--docs"
-            size="lg"
-            standalone
-          >
-            Covered Bonds
-            <sd-icon library="system" name="chevron-up" class="rotate-90" slot="icon-left"></sd-icon>
-          </sd-link>
-        </li>
-        <li>
-          <sd-link
-            href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/?path=/docs/docs-general-introduction--docs"
-            size="lg"
-            standalone
-          >
-            Careful selection is crucial for success
-            <sd-icon library="system" name="chevron-up" class="rotate-90" slot="icon-left"></sd-icon>
-          </sd-link>
-        </li>
-      </ul>
-    </div>`
+    html` <ul class="link-list">
+      <li class="mb-5">
+        <sd-link
+          href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/?path=/docs/docs-general-introduction--docs"
+          size="lg"
+        >
+          About us
+        </sd-link>
+      </li>
+      <li class="mb-5">
+        <sd-link
+          href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/?path=/docs/docs-general-introduction--docs"
+          size="lg"
+        >
+          Our funds at a glance
+        </sd-link>
+      </li>
+      <li class="mb-5">
+        <sd-link
+          href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/?path=/docs/docs-general-introduction--docs"
+          size="lg"
+        >
+          Sustainable Investments
+        </sd-link>
+      </li>
+      <li>
+        <sd-link
+          href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/?path=/docs/docs-general-introduction--docs"
+          size="lg"
+        >
+          Latest expert views and analyses
+        </sd-link>
+      </li>
+    </ul>`
+};
+
+export const anchorLinkList = {
+  render: () => html`
+    <div class="flex flex-row gap-4">
+      <sd-link href="#" standalone>
+        <sd-icon name="system/anchor-link" slot="icon-left"></sd-icon>
+        Assets under management
+      </sd-link>
+      <sd-link href="#" standalone>
+        <sd-icon name="system/anchor-link" slot="icon-left"></sd-icon>
+        Protecting is out priority
+      </sd-link>
+      <sd-link href="#" standalone>
+        <sd-icon name="system/anchor-link" slot="icon-left"></sd-icon>
+        Sustainability
+      </sd-link>
+    </div>
+  `
 };
