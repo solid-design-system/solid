@@ -23,7 +23,7 @@ type Breakpoints = 0 | 414 | 640;
  * @csspart shape-middle - Middle shape.
  * @csspart shape-bottom - Bottom shape.
  *
- * @cssproperty --image-translate-Y - The Y translation of the image slot. Adjust this based on your media queries or breakpoints to achieve the desired effect.
+ * @cssproperty --image-translate-Y - The Y translation of the image slot. Adjust this based on your media queries or breakpoints to correct possible misplacement of the image.
  */
 
 @customElement('sd-brandshape')
