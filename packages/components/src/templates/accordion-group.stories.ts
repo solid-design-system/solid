@@ -26,25 +26,43 @@ export const Default = {
   render: () => html`
     <div class="bg-white p-8">
       <sd-accordion-group>
-        <sd-accordion summary="Shareholder Structure"
-          ><p>
+        <sd-accordion summary="Shareholder Structure">
+          <figure class="sd-media">
+            <img
+              class="w-full aspect-ratio"
+              src="./placeholders/images/graph.png"
+              alt="Donut chart showing the ownership structure of cooperative banks"
+            />
+          </figure>
+          <p class="sd-paragraph mt-4">
             Union Investment is the dedicated asset manager within the German cooperative financial network. All
             shareholders are also part of the network, which ensures a stable and long-term ownership structure. This
             allows us to maintain a sustainable business model and develop strong, long-term client relationships.
-          </p></sd-accordion
-        ><sd-accordion summary="Cooparative financial network"
-          ><p>Union Investment is the asset manager within the German cooperative financial Network.</p></sd-accordion
-        ><sd-accordion summary="Investment philosophy"
-          ><div class="sd-prose">
-            <p>
+          </p>
+        </sd-accordion>
+        <sd-accordion summary="Cooperative financial network">
+          <h3 class="sd-headline sd-headline--size-xl mb-4">
+            Union Investment is the asset manager within the German cooperative financial Network.
+          </h3>
+          <figure class="sd-media">
+            <img
+              class="w-full aspect-ratio"
+              src="./placeholders/images/financialNetwork.png"
+              alt="German cooperative financial Network"
+            />
+          </figure>
+        </sd-accordion>
+        <sd-accordion summary="Investment philosophy">
+          <div class="sd-prose">
+            <p class="sd-paragraph">
               Our investment philosophy is based on our belief that markets are inefficient. Long-term outperformance
               is, therefore, best achieved through a combination of fundamental research, actively managed security
               selection and robust risk management. This conviction lies at the heart of all our investment solutions.
               We offer a transparent investment process, which allows clients to keep track of our investment decisions.
             </p>
-            <p>
+            <p class="sd-paragraph">
               We take an integrated approach to portfolio management, with every portfolio manager also acting as a
-              senior research specialist. This structure enhances the team’s commitment to the process and helps to
+              senior research specialist. This structure enhances the team's commitment to the process and helps to
               ensure accountability for investment performance.
             </p>
           </div>
@@ -59,25 +77,43 @@ export const NeutralBackground = {
   render: () => html`
     <div class="bg-neutral-100 p-8">
       <sd-accordion-group>
-        <sd-accordion summary="Shareholder Structure"
-          ><p>
+        <sd-accordion summary="Shareholder Structure">
+          <figure class="sd-media">
+            <img
+              class="w-full aspect-ratio"
+              src="./placeholders/images/graph.png"
+              alt="Donut chart showing the ownership structure of cooperative banks"
+            />
+          </figure>
+          <p class="sd-paragraph mt-4">
             Union Investment is the dedicated asset manager within the German cooperative financial network. All
             shareholders are also part of the network, which ensures a stable and long-term ownership structure. This
             allows us to maintain a sustainable business model and develop strong, long-term client relationships.
-          </p></sd-accordion
-        ><sd-accordion summary="Cooparative financial network"
-          ><p>Union Investment is the asset manager within the German cooperative financial Network.</p></sd-accordion
-        ><sd-accordion summary="Investment philosophy"
-          ><div class="sd-prose">
-            <p>
+          </p>
+        </sd-accordion>
+        <sd-accordion summary="Cooperative financial network">
+          <h3 class="sd-headline sd-headline--size-xl mb-4">
+            Union Investment is the asset manager within the German cooperative financial Network.
+          </h3>
+          <figure class="sd-media">
+            <img
+              class="w-full aspect-ratio"
+              src="./placeholders/images/financialNetwork.png"
+              alt="German cooperative financial Network"
+            />
+          </figure>
+        </sd-accordion>
+        <sd-accordion summary="Investment philosophy">
+          <div class="sd-prose">
+            <p class="sd-paragraph">
               Our investment philosophy is based on our belief that markets are inefficient. Long-term outperformance
               is, therefore, best achieved through a combination of fundamental research, actively managed security
               selection and robust risk management. This conviction lies at the heart of all our investment solutions.
               We offer a transparent investment process, which allows clients to keep track of our investment decisions.
             </p>
-            <p>
+            <p class="sd-paragraph">
               We take an integrated approach to portfolio management, with every portfolio manager also acting as a
-              senior research specialist. This structure enhances the team’s commitment to the process and helps to
+              senior research specialist. This structure enhances the team's commitment to the process and helps to
               ensure accountability for investment performance.
             </p>
           </div>
@@ -92,25 +128,43 @@ export const PrimaryBackground = {
   render: () => html`
     <div class="bg-primary-100 p-8">
       <sd-accordion-group>
-        <sd-accordion summary="Shareholder Structure"
-          ><p>
+        <sd-accordion summary="Shareholder Structure">
+          <figure class="sd-media">
+            <img
+              class="w-full aspect-ratio"
+              src="./placeholders/images/graph.png"
+              alt="Donut chart showing the ownership structure of cooperative banks"
+            />
+          </figure>
+          <p class="sd-paragraph mt-4">
             Union Investment is the dedicated asset manager within the German cooperative financial network. All
             shareholders are also part of the network, which ensures a stable and long-term ownership structure. This
             allows us to maintain a sustainable business model and develop strong, long-term client relationships.
-          </p></sd-accordion
-        ><sd-accordion summary="Cooparative financial network"
-          ><p>Union Investment is the asset manager within the German cooperative financial Network.</p></sd-accordion
-        ><sd-accordion summary="Investment philosophy">
+          </p>
+        </sd-accordion>
+        <sd-accordion summary="Cooperative financial network">
+          <h3 class="sd-headline sd-headline--size-xl mb-4">
+            Union Investment is the asset manager within the German cooperative financial Network.
+          </h3>
+          <figure class="sd-media">
+            <img
+              class="w-full aspect-ratio"
+              src="./placeholders/images/financialNetwork.png"
+              alt="German cooperative financial Network"
+            />
+          </figure>
+        </sd-accordion>
+        <sd-accordion summary="Investment philosophy">
           <div class="sd-prose">
-            <p>
+            <p class="sd-paragraph">
               Our investment philosophy is based on our belief that markets are inefficient. Long-term outperformance
               is, therefore, best achieved through a combination of fundamental research, actively managed security
               selection and robust risk management. This conviction lies at the heart of all our investment solutions.
               We offer a transparent investment process, which allows clients to keep track of our investment decisions.
             </p>
-            <p>
+            <p class="sd-paragraph">
               We take an integrated approach to portfolio management, with every portfolio manager also acting as a
-              senior research specialist. This structure enhances the team’s commitment to the process and helps to
+              senior research specialist. This structure enhances the team's commitment to the process and helps to
               ensure accountability for investment performance.
             </p>
           </div>
