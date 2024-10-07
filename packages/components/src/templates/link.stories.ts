@@ -1,5 +1,5 @@
 import '../solid-components';
-import { html, render } from 'lit-html';
+import { html } from 'lit-html';
 
 /**
  * ```
