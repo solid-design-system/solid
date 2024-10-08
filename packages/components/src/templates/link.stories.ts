@@ -17,7 +17,7 @@ export default {
 };
 
 export const Default = {
-  name: 'Link with icon',
+  name: 'Link with Icon',
   render: () =>
     html`<sd-link href="http://union-investment.com" standalone>
         <sd-icon name="system/home" slot="icon-left"></sd-icon>
