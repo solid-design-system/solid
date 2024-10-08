@@ -251,9 +251,9 @@ export default class SdCarousel extends SolidElement {
   @watch('pausedAutoplay')
   handlePausedAutoplay() {
     if (this.pausedAutoplay) {
-      this.autoplayController.controlledPause();
+      this.autoplayController.stop();
     } else if (this.autoplay) {
-      this.autoplayController.controlledResume();
+      this.autoplayController.start(3000);
     }
   }
 
@@ -387,12 +387,14 @@ export default class SdCarousel extends SolidElement {
    */
   next(behavior: ScrollBehavior = 'smooth') {
     if (
-      this.currentPage + 1 > SdCarousel.getPageCount(this.getSlides().length, this.slidesPerPage, this.slidesPerMove) &&
-      this.loop
+      this.currentPage + 1 <=
+      SdCarousel.getPageCount(this.getSlides().length, this.slidesPerPage, this.slidesPerMove)
     ) {
-      this.nextTillFirst(behavior);
-    } else {
       this.goToSlide(this.activeSlide + this.slidesPerMove, behavior);
+    } else {
+      if (this.loop) {
+        this.nextTillFirst(behavior);
+      }
     }
   }
 
