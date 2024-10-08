@@ -53,16 +53,10 @@ export const ButtonGroupHorizontal = {
  */
 export const ButtonGroupVertical = {
   render: () => html`
-    <div class="flex flex-col gap-12" style="width: 208px">
-      <div class="flex flex-col gap-4">
-        <sd-button variant="primary">Primary Action</sd-button>
-        <sd-button variant="secondary">Secondary Action</sd-button>
-      </div>
-      <div class="flex flex-col gap-4">
-        <sd-button variant="primary">Primary Action</sd-button>
-        <sd-button variant="secondary">Secondary Action</sd-button>
-        <sd-button variant="tertiary">Tertiary Action</sd-button>
-      </div>
+    <div class="flex flex-col gap-4" style="width: 208px">
+      <sd-button variant="primary">Primary Action</sd-button>
+      <sd-button variant="secondary">Secondary Action</sd-button>
+      <sd-button variant="tertiary">Tertiary Action</sd-button>
     </div>
   `
 };
