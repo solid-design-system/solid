@@ -80,7 +80,7 @@ export const anchorLinkList = {
       </sd-link>
       <sd-link href="#" class="font-bold" standalone>
         <sd-icon name="system/anchor-link" slot="icon-left"></sd-icon>
-        Protecting is out priority
+        Protecting is our priority
       </sd-link>
       <sd-link href="#" class="font-bold" standalone>
         <sd-icon name="system/anchor-link" slot="icon-left"></sd-icon>
