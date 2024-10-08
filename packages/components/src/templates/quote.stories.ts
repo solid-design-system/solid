@@ -79,6 +79,7 @@ export const Size = {
 };
 
 export const Inverted = {
+  name: 'Quote Inverted',
   render: () =>
     html` <div class="flex items-end gap-5 p-5 bg-primary">
       <div class="text-left text-white">
