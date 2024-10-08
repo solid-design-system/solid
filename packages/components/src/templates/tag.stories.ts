@@ -26,7 +26,7 @@ export const filterTagGroup = {
 };
 
 export const filterTagGroupMorningstarRating = {
-  name: 'Morningstar Rating with Morningstar Rating',
+  name: 'Filter Tag Group with Morningstar Rating',
   render: () => html`
     <sd-tag selected>
       <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
@@ -57,6 +57,7 @@ export const filterTagGroupMorningstarRating = {
 };
 
 export const filterTagGroupRisk = {
+  name: 'Filter Tag Group with Risk',
   render: () =>
     html`<sd-tag selected>
         <div class="h-4 w-4 bg-risk-veryhigh border-primary-800 border-[1px]"></div>
@@ -90,6 +91,7 @@ export const removableFilterTagGroup = {
 };
 
 export const tagGroupLinks = {
+  name: 'Tag Group with Links',
   render: () => html`
     <sd-tag href="#" target="_blank">Topic 1</sd-tag>
     <sd-tag href="#" target="_blank">Topic 2</sd-tag>
@@ -103,7 +105,7 @@ export const tagGroupLinks = {
  * - primary-100
  */
 export const backgroundOptions = {
-  name: 'Tag Background options',
+  name: 'Tag Background Options',
   render: () =>
     html`<div class="flex flex-row">
       <div class="bg-white p-12 w-[268px]">
