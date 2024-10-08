@@ -30,7 +30,7 @@ export const Default = {
           <figure class="sd-media">
             <img
               class="w-full aspect-ratio"
-              src="./placeholders/images/graph.png"
+              src="./placeholders/images/graph.jpg"
               alt="Donut chart showing the ownership structure of cooperative banks"
             />
           </figure>
@@ -47,7 +47,7 @@ export const Default = {
           <figure class="sd-media">
             <img
               class="w-full aspect-ratio"
-              src="./placeholders/images/financialNetwork.png"
+              src="./placeholders/images/financialNetwork.jpg"
               alt="German cooperative financial Network"
             />
           </figure>
@@ -81,7 +81,7 @@ export const NeutralBackground = {
           <figure class="sd-media">
             <img
               class="w-full aspect-ratio"
-              src="./placeholders/images/graph.png"
+              src="./placeholders/images/graph.jpg"
               alt="Donut chart showing the ownership structure of cooperative banks"
             />
           </figure>
@@ -98,7 +98,7 @@ export const NeutralBackground = {
           <figure class="sd-media">
             <img
               class="w-full aspect-ratio"
-              src="./placeholders/images/financialNetwork.png"
+              src="./placeholders/images/financialNetwork.jpg"
               alt="German cooperative financial Network"
             />
           </figure>
@@ -132,7 +132,7 @@ export const PrimaryBackground = {
           <figure class="sd-media">
             <img
               class="w-full aspect-ratio"
-              src="./placeholders/images/graph.png"
+              src="./placeholders/images/graph.jpg"
               alt="Donut chart showing the ownership structure of cooperative banks"
             />
           </figure>
@@ -149,7 +149,7 @@ export const PrimaryBackground = {
           <figure class="sd-media">
             <img
               class="w-full aspect-ratio"
-              src="./placeholders/images/financialNetwork.png"
+              src="./placeholders/images/financialNetwork.jpg"
               alt="German cooperative financial Network"
             />
           </figure>
