@@ -74,15 +74,15 @@ export const LinkList = {
 export const anchorLinkList = {
   render: () => html`
     <div class="flex flex-row gap-4">
-      <sd-link href="#" standalone>
+      <sd-link href="#" class="font-bold" standalone>
         <sd-icon name="system/anchor-link" slot="icon-left"></sd-icon>
         Assets under management
       </sd-link>
-      <sd-link href="#" standalone>
+      <sd-link href="#" class="font-bold" standalone>
         <sd-icon name="system/anchor-link" slot="icon-left"></sd-icon>
         Protecting is out priority
       </sd-link>
-      <sd-link href="#" standalone>
+      <sd-link href="#" class="font-bold" standalone>
         <sd-icon name="system/anchor-link" slot="icon-left"></sd-icon>
         Sustainability
       </sd-link>
