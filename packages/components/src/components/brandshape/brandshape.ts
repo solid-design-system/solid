@@ -302,6 +302,21 @@ export default class SdBrandshape extends SolidElement {
       }
 
       /* Responsive border-radius */
+      @media (min-width: 415px) {
+        .container--stylized::before,
+        .image-wrapper {
+          border-radius: 0 72px;
+        }
+      }
+
+      @media (min-width: 640px) {
+        .container--stylized::before,
+        .image-wrapper {
+          border-radius: 0 84px;
+        }
+      }
+
+      /* Responsive image positioning */
       @container (min-width: 415px) {
         :host {
           --image-translate-Y: -33%;
@@ -327,11 +342,6 @@ export default class SdBrandshape extends SolidElement {
       @container (min-width: 1024px) {
         :host {
           --image-translate-Y: -45%;
-        }
-
-        .container--stylized::before,
-        .image-wrapper {
-          border-radius: 0 96px;
         }
       }
     `
