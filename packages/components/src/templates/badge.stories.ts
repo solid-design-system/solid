@@ -78,7 +78,7 @@ export const NavigationItemWithBadge = {
           height: 100px;
         }
       </style>
-      <sd-header class="w-[650px]" fixed>
+      <sd-header class="max-w-[650px]" fixed>
         <div class="flex justify-between items-center">
           <a class="flex flex-shrink" href="#">
             <img class="h-8" src="images/logo-unioninvestment-lg.svg" alt="Logo" />
