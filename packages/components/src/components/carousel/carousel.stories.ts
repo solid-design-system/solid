@@ -153,7 +153,7 @@ export const Loop = {
 /**
  * Use the `autoplay` attribute to toggle autoplay.
  *
- * Autoplay is paused when the user interacts with the carousel or when the pause button is clicked.
+ * Autoplay is automtically paused when the user interacts with the carousel or when the pause button is clicked.
  */
 
 export const Autoplay = {
