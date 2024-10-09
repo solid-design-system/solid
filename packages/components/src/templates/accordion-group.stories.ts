@@ -2,8 +2,7 @@ import '../solid-components';
 import { html } from 'lit-html';
 
 /**
- * ```
- * ```
+ * Examples of the sd-accordion-group component in different backgrounds.
  */
 
 export default {
@@ -18,11 +17,8 @@ export default {
   }
 };
 
-/**
- * Examples of the sd-accordion-group component in different backgrounds.
- */
 export const Default = {
-  name: 'White Background',
+  name: 'Accordion Group with White Background',
   render: () => html`
     <div class="bg-white p-8">
       <sd-accordion-group>
@@ -73,7 +69,7 @@ export const Default = {
 };
 
 export const NeutralBackground = {
-  name: 'Neutral Background',
+  name: 'Accordion Group with Neutral-100 Background',
   render: () => html`
     <div class="bg-neutral-100 p-8">
       <sd-accordion-group>
@@ -124,7 +120,7 @@ export const NeutralBackground = {
 };
 
 export const PrimaryBackground = {
-  name: 'Primary Background',
+  name: 'Accordion Group with Primary-100 Background',
   render: () => html`
     <div class="bg-primary-100 p-8">
       <sd-accordion-group>
