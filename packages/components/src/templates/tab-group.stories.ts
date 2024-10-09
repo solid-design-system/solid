@@ -7,7 +7,7 @@ import { html } from 'lit-html';
  */
 export default {
   tags: ['!dev'],
-  title: 'Templates/Tab',
+  title: 'Templates/Tab Group',
   parameters: {
     chromatic: { disableSnapshot: true },
     design: {
@@ -28,7 +28,7 @@ export default {
  * ```
  */
 export const TabCentered = {
-  name: 'Tab Center Aligned',
+  name: 'Tab Group Center Aligned',
   render: () =>
     html` <style>
         sd-tab-group#centered::part(tabs) {
@@ -79,7 +79,7 @@ export const TabCentered = {
 };
 
 export const TabWithBadge = {
-  name: 'Tab with Badge',
+  name: 'Tab Group with Badge',
   render: () =>
     html` <sd-tab-group activation>
       <sd-tab slot="nav" panel="tab-1">
@@ -106,7 +106,7 @@ export const TabWithBadge = {
 };
 
 export const TabWithIconBadge = {
-  name: 'Tab with Icon and Badge',
+  name: 'Tab Group with Icon and Badge',
   render: () => html`
     <sd-tab-group activation>
       <sd-tab slot="nav" panel="tab-1">

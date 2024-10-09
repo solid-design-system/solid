@@ -27,7 +27,7 @@ function generateTabsAndPanels(
  * - [sd-tab-panel](?path=/docs/components-sd-tab-panel--docs)
  *
  * **Related templates:**
- * - [Tab](?path=/docs/templates-tab--docs)
+ * - [Tab Group](?path=/docs/templates-tab-group--docs)
  */
 
 export default {
