@@ -135,7 +135,7 @@ _ You can always refer to the existing components and styles to familiarize your
 ### Security Updates
 
 In our security workflow, Renovate (GitHub App) automatically identifies and updates security issues in our project dependencies.
-Renovate also creates a “Dependency Dashboard” ticket to track all found updates. During each iteration, we plan and assign the dashboard ticket to a specific team member. The assigned team member has to update the described packages by runing `pnpm update all`, creating a corresponding PR, and finally closing the ticket. This process ensures efficient handling of security updates while maintaining clear accountability within the team.
+Renovate also creates a “Dependency Dashboard” ticket to track all found updates. During each iteration, we plan and assign the dashboard ticket to a specific team member. The assigned team member has to update the described packages by running `pnpm update all`, creating a corresponding PR, and finally closing the ticket. This process ensures efficient handling of security updates while maintaining clear accountability within the team.
 
 ## Repository Overview
 
@@ -145,7 +145,7 @@ Renovate also creates a “Dependency Dashboard” ticket to track all found upd
       - `_components`: components previously copied from Shoelace that have replace `sl` prefixes with `sd` prefixes
       - **`components`**: Primary folder containing our Web Components. Added as stories in the "COMPONENTS" section.
         - `accordion`: Lit JS web component that implements an accordion. The comments are automatically compiled into the Storybook docs and should be used for user clarification.
-        - `accoridion.tests.ts`: Suite of jest tests for the accordion component. Critical for deployment and maintenance.
+        - `accordion.tests.ts`: Suite of jest tests for the accordion component. Critical for deployment and maintenance.
         - `accordion.stories.ts`: Collection of Storybook stories that are primarily used for visual testing with Chromatic. Any **samples** are added as stories here.
       - `docs`: all ".mdx" doc files that appear in the "DOCS" section of our Storybook
         - `migration`: Individual component migration guides
