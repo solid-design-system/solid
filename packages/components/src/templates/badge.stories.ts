@@ -18,8 +18,6 @@ export default {
 };
 
 /**
- * ### Button with Badge
- *
  * Examples of sd-button working with sd-badge:
  */
 export const ButtonWithBadge = {
@@ -67,4 +65,33 @@ export const ButtonWithBadge = {
       </section>
     </div>
   `
+};
+
+/**
+ * Examples of sd-navigation-item working with sd-badge:
+ */
+export const NavigationItemWithBadge = {
+  name: 'Navigation Item with Badge',
+  render: () =>
+    html` <style>
+        #anchor--templates-badge--navigation-item-with-badge .innerZoomElementWrapper {
+          height: 100px;
+        }
+      </style>
+      <sd-header class="w-[650px]" fixed>
+        <div class="flex justify-between items-center">
+          <a class="flex flex-shrink" href="#">
+            <img class="h-8" src="images/logo-unioninvestment-lg.svg" alt="Logo" />
+          </a>
+          <div class="flex">
+            <sd-navigation-item class="relative">
+              <sd-icon name="system/bell" class="text-xl"></sd-icon>
+              <sd-badge class="absolute top-1 -right-5" size="md">+99</sd-badge>
+            </sd-navigation-item>
+            <sd-navigation-item>
+              <sd-icon name="system/menu" class="text-xl"></sd-icon>
+            </sd-navigation-item>
+          </div>
+        </div>
+      </sd-header>`
 };
