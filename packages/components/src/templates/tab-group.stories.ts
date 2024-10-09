@@ -53,6 +53,13 @@ export const TabCentered = {
         </sd-tab-panel>
         <sd-tab slot="nav" panel="tab-2">Age diversity</sd-tab>
         <sd-tab-panel name="tab-2">
+          <figure class="sd-media pb-4">
+            <img
+              src="./placeholders/images/generic.jpg"
+              alt="A generic placeholder jpg"
+              class="aspect-video object-cover"
+            />
+          </figure>
           <p class="sd-paragraph">
             Vivamus mattis mauris nec vulputate facilisis. Nulla facilisi. Pellentesque consectetur mi eget tristique
             vestibulum. Nunc porta urna sit amet magna congue feugiat. Quisque commodo arcu ex, eget mollis magna porta
@@ -61,6 +68,13 @@ export const TabCentered = {
         </sd-tab-panel>
         <sd-tab slot="nav" panel="tab-3">Education</sd-tab>
         <sd-tab-panel name="tab-3">
+          <figure class="sd-media pb-4">
+            <img
+              src="./placeholders/images/generic.jpg"
+              alt="A generic placeholder jpg"
+              class="aspect-video object-cover"
+            />
+          </figure>
           <p class="sd-paragraph">
             Sed dignissim ipsum vel ultricies interdum. Quisque posuere felis sit amet fringilla tristique. Donec velit
             ex, viverra id lorem hendrerit, congue gravida justo. Fusce ultricies tellus arcu, nec suscipit metus
@@ -69,6 +83,13 @@ export const TabCentered = {
         </sd-tab-panel>
         <sd-tab slot="nav" panel="tab-4">Background</sd-tab>
         <sd-tab-panel name="tab-4">
+          <figure class="sd-media pb-4">
+            <img
+              src="./placeholders/images/generic.jpg"
+              alt="A generic placeholder jpg"
+              class="aspect-video object-cover"
+            />
+          </figure>
           <p class="sd-paragraph">
             Maecenas aliquet nibh nec tempor ultrices. Donec mattis sapien sed elit tincidunt, quis feugiat risus
             facilisis. Cras rutrum venenatis dui, in sollicitudin nulla vestibulum nec. Maecenas sed imperdiet sapien,
@@ -96,7 +117,8 @@ export const TabWithBadge = {
       </sd-tab-panel>
       <sd-tab slot="nav" panel="tab-2">Reminders</sd-tab>
       <sd-tab-panel name="tab-2">
-        <p class="sd-paragraph">
+        <h3 class="sd-headline sd-headline--size-3xl">Lorem ipsum dolor sit amet</h3>
+        <p class="sd-paragraph mt-2">
           Maecenas aliquet nibh nec tempor ultrices. Donec mattis sapien sed elit tincidunt, quis feugiat risus
           facilisis. Cras rutrum venenatis dui, in sollicitudin nulla vestibulum nec. Maecenas sed imperdiet sapien, non
           lacinia ex. Etiam rhoncus ullamcorper sem, eu euismod ipsum volutpat non.
