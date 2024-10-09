@@ -7,7 +7,7 @@
   - [Get Started](#get-started)
   - [SOLID Library Concepts](#solid-library-concepts)
     - [Web **Components** \& CSS **Styles**](#web-components--css-styles)
-    - [Samples \& Patterns](#samples--patterns)
+    - [Templates](#templates)
   - [Shoelace](#shoelace)
   - [Storybook](#storybook)
     - [Storybook Docs](#storybook-docs)
@@ -42,12 +42,11 @@ We are creating a library that comprises a lean combination of reusable [Web Com
   - [parts](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/part) allow external manipulation of CSS.
   - [events](https://lit.dev/docs/components/events/) make critical information available outside of a component.
 
-### Samples & Patterns
+### Templates
 
-Alongside the documentation for Styles and Components, we also present Samples and Patterns. These differ in their scope:
+Alongside the documentation for Styles and Components, we also present templates, where the main idea is:
 
-- **Samples**: Tied to a specific component, these show its use in a particular context. They are added as "Sample" stories in the component's documentation.
-- **Patterns**: More advanced, they demonstrate how to combine several components to solve a specific problem. They are added as stories in the "Patterns" section.
+Templates are complete examples of how to use Styles and Components together. They are often more complex than Components and could feature multiple Components and Styles. They are meant to be copy-pasted and individualized by the users in order to match their project needs.
 
 ## Shoelace
 
