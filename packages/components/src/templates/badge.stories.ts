@@ -26,44 +26,42 @@ export const ButtonWithBadge = {
   render: () => html`
     <div class="flex flex-col">
       <section class="flex p-8 gap-10 items-center">
-        <sd-button>Label <sd-badge>8</sd-badge></sd-button>
-        <sd-button>Label <sd-badge variant="success">999+</sd-badge></sd-button>
-        <sd-button variant="secondary" size="md">
-          <sd-icon slot="icon-left" name="system/image"></sd-icon>
-          Label
-          <sd-badge>8</sd-badge>
+        <sd-button>Requests<sd-badge>10</sd-badge></sd-button>
+        <sd-button variant="secondary">
+          <sd-icon name="system/rss" slot="icon-left"></sd-icon>
+          News
+          <sd-badge>+99</sd-badge>
         </sd-button>
         <sd-button variant="secondary" size="md">
-          <sd-icon name="system/image"></sd-icon>
-          <sd-badge variant="success" size="md">8</sd-badge>
+          <sd-icon name="system/phone"></sd-icon>
+          <sd-badge variant="error" size="md">4</sd-badge>
         </sd-button>
         <sd-button variant="tertiary" size="md">
-          <sd-icon name="system/image"></sd-icon>
-          <sd-badge class="mt-2.5 mr-2.5" variant="error" size="md">8</sd-badge>
+          <sd-icon name="system/bell"></sd-icon>
+          <sd-badge class="mt-2.5 mr-2.5" variant="success" size="md">5</sd-badge>
         </sd-button>
         <sd-button variant="tertiary" size="md">
-          <sd-icon name="system/image"></sd-icon>
+          <sd-icon name="system/user"></sd-icon>
           <sd-badge class="mt-[0.75rem] mr-[0.75rem]" size="sm"></sd-badge>
         </sd-button>
       </section>
       <section class="flex p-8 gap-10 bg-primary items-center">
-        <sd-button inverted>Label <sd-badge inverted>8</sd-badge></sd-button>
-        <sd-button inverted>Label <sd-badge inverted variant="success">999+</sd-badge></sd-button>
+        <sd-button inverted>Requests<sd-badge inverted>10</sd-badge></sd-button>
         <sd-button inverted variant="secondary" size="md">
-          <sd-icon slot="icon-left" name="system/image"></sd-icon>
-          Label
-          <sd-badge inverted>8</sd-badge>
+          <sd-icon name="system/rss" slot="icon-left"></sd-icon>
+          News
+          <sd-badge inverted>+99</sd-badge>
         </sd-button>
         <sd-button inverted variant="secondary" size="md">
-          <sd-icon name="system/image"></sd-icon>
-          <sd-badge variant="success" size="md">8</sd-badge>
+          <sd-icon name="system/phone"></sd-icon>
+          <sd-badge variant="error" size="md">4</sd-badge>
         </sd-button>
         <sd-button inverted variant="tertiary" size="md">
-          <sd-icon name="system/image"></sd-icon>
-          <sd-badge inverted class="mt-2.5 mr-2.5" variant="error" size="md">8</sd-badge>
+          <sd-icon name="system/bell"></sd-icon>
+          <sd-badge inverted class="mt-2.5 mr-2.5" variant="success" size="md">5</sd-badge>
         </sd-button>
         <sd-button inverted variant="tertiary" size="md">
-          <sd-icon name="system/image"></sd-icon>
+          <sd-icon name="system/user"></sd-icon>
           <sd-badge inverted class="mt-[0.75rem] mr-[0.75rem]" size="sm"></sd-badge>
         </sd-button>
       </section>
