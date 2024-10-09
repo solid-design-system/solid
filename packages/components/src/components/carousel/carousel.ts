@@ -52,6 +52,8 @@ import SolidElement from '../../internal/solid-element.js';
  */
 @customElement('sd-carousel')
 export default class SdCarousel extends SolidElement {
+  @query('[part~="autoplay-controls"]') autoplayControls: HTMLElement;
+
   /** Determines the counting system for the carousel. */
   @property({ type: String, reflect: true }) variant: 'dot' | 'number' = 'number';
   /** Inverts the carousel */
@@ -255,6 +257,9 @@ export default class SdCarousel extends SolidElement {
     } else if (this.autoplay) {
       this.autoplayController.start(3000);
     }
+
+    // This is necessary to allow autoplay since focus is not removed when the button is clicked.
+    this.autoplayControls.blur();
   }
 
   @watch('loop', { waitUntilFirstUpdate: true })
