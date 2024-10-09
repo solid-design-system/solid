@@ -13,6 +13,7 @@ const { generateTemplate } = storybookTemplate('sd-button'); // Replace with you
  * Buttons perform various functions (e.g. download, link) or activate other functions (e.g. filter). All buttons can be displayed with or without an icon. On small devices, the buttons are streched to full width.
  *
  * **Related templates**:
+ * - [Button](?path=/docs/templates-button--docs)
  * - [Button with Badge](?path=/docs/templates-badge--docs#button-with-badge)
  */
 export default {
