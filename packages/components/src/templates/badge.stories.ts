@@ -52,7 +52,7 @@ export const ButtonWithBadge = {
         </sd-button>
         <sd-button inverted variant="secondary" size="md">
           <sd-icon name="system/phone"></sd-icon>
-          <sd-badge variant="error" size="md">4</sd-badge>
+          <sd-badge inverted variant="error" size="md">4</sd-badge>
         </sd-button>
         <sd-button inverted variant="tertiary" size="md">
           <sd-icon name="system/bell"></sd-icon>
