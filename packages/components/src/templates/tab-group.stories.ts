@@ -46,9 +46,9 @@ export const TabCentered = {
             />
           </figure>
           <p class="sd-paragraph">
-            <b>DD. Month Year -</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio
-            tempor molestie phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit
-            neque tristique. Facilisis commodo integer hendrerit tortor.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
+            phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique.
+            Facilisis commodo integer hendrerit tortor.
           </p>
         </sd-tab-panel>
         <sd-tab slot="nav" panel="tab-2">Age diversity</sd-tab>
