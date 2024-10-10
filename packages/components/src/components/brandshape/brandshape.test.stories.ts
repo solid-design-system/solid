@@ -28,7 +28,7 @@ export default {
     {
       type: 'slot',
       name: 'image',
-      value: `<img slot="image" style="transform:translateY(-30%);" src="./placeholders/images/generic.jpg" alt="Generic" />`
+      value: `<img slot="image" src="./placeholders/images/generic.jpg" alt="Generic" />`
     },
     { type: 'attribute', name: 'shapes', value: '["top", "middle", "bottom"]' }
   ]),

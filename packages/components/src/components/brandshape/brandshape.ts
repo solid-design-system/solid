@@ -22,6 +22,8 @@ type Breakpoints = 0 | 414 | 640;
  * @csspart shape-top - Top shape.
  * @csspart shape-middle - Middle shape.
  * @csspart shape-bottom - Bottom shape.
+ *
+ * @cssproperty --image-translate-Y - The Y translation of the image slot. Adjust this based on your media queries or breakpoints to correct possible misplacement of the image.
  */
 
 @customElement('sd-brandshape')
@@ -228,6 +230,7 @@ export default class SdBrandshape extends SolidElement {
   render() {
     const isBorderVariant = this.variant.startsWith('border-');
     const isImageVariant = this.variant === 'image';
+    this.parentElement!.style.containerType = 'inline-size';
 
     return html`
       <div
@@ -259,6 +262,7 @@ export default class SdBrandshape extends SolidElement {
     css`
       :host {
         @apply block;
+        --image-translate-Y: -37%;
       }
 
       .container--outline-primary::before {
@@ -294,11 +298,11 @@ export default class SdBrandshape extends SolidElement {
 
       slot[name='image']::slotted(img) {
         @apply w-full h-full object-cover origin-top-left;
-        transform: skewY(11deg);
+        transform: translateY(var(--image-translate-Y)) skewY(11deg);
       }
 
       /* Responsive border-radius */
-      @media (min-width: 414px) {
+      @media (min-width: 415px) {
         .container--stylized::before,
         .image-wrapper {
           border-radius: 0 72px;
@@ -309,6 +313,35 @@ export default class SdBrandshape extends SolidElement {
         .container--stylized::before,
         .image-wrapper {
           border-radius: 0 84px;
+        }
+      }
+
+      /* Responsive image positioning */
+      @container (min-width: 415px) {
+        :host {
+          --image-translate-Y: -33%;
+        }
+
+        .container--stylized::before,
+        .image-wrapper {
+          border-radius: 0 72px;
+        }
+      }
+
+      @container (min-width: 640px) {
+        :host {
+          --image-translate-Y: -40%;
+        }
+
+        .container--stylized::before,
+        .image-wrapper {
+          border-radius: 0 84px;
+        }
+      }
+
+      @container (min-width: 1024px) {
+        :host {
+          --image-translate-Y: -45%;
         }
       }
     `

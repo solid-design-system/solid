@@ -37,7 +37,7 @@ export default {
     {
       type: 'slot',
       name: 'image',
-      value: `<img slot="image" style="transform:translateY(-30%);" src="./placeholders/images/generic.jpg" alt="Generic" />`
+      value: `<img slot="image" src="./placeholders/images/generic.jpg" alt="Generic" />`
     },
     { type: 'attribute', name: 'shapes', value: '["top", "middle", "bottom"]' }
   ]),
@@ -88,7 +88,7 @@ export const Variant = {
 
       <sd-brandshape variant="image">
         <div class="slot slot--border slot--text h-8 w-full">Default slot</div>
-        <img slot="image" style="transform:translateY(-30%);" src="./placeholders/images/generic.jpg" alt="Generic" />
+        <img slot="image" src="./placeholders/images/generic.jpg" alt="Generic" />
       </sd-brandshape>
 
       <div class="bg-primary">
@@ -127,6 +127,25 @@ export const Shapes = {
         <div class="slot slot--border slot--text h-8 w-full">Default slot</div>
       </sd-brandshape>
     </div>
+  `
+};
+
+/**
+ * Use the `--image-translate-Y` CSS custom property to adjust the position of the image.
+ */
+
+export const ImageTranslateY = {
+  name: 'Image Translation',
+  render: () => html`
+    <sd-brandshape variant="image">
+      <div class="slot slot--border slot--text h-8 w-full">Default slot</div>
+      <img
+        slot="image"
+        src="./placeholders/images/collaboration.jpg"
+        alt="Generic"
+        style="--image-translate-Y: -40%;"
+      />
+    </sd-brandshape>
   `
 };
 
