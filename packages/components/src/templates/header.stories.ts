@@ -16,9 +16,6 @@ export default {
   title: 'Templates/Header'
 };
 
-/**
- * Sample of the sd-header
- */
 export const SampleA = {
   name: 'Header Sample A-01',
   render: () => html`
@@ -47,9 +44,10 @@ export const SampleA = {
       <div class="hidden lg:flex items-end pt-3 justify-between">
         <!-- bottom-left-area start !-->
         <div class="-ml-4">
-          <sd-navigation-item><b>Über Uns</b></sd-navigation-item
-          ><sd-navigation-item><b>Märkte</b></sd-navigation-item
-          ><sd-navigation-item><b>Presseservice</b></sd-navigation-item>
+          <sd-navigation-item class="font-bold">About Us</sd-navigation-item>
+          <sd-navigation-item class="font-bold">Markets</sd-navigation-item>
+          <sd-navigation-item class="font-bold">Sustainability</sd-navigation-item>
+          <sd-navigation-item class="font-bold">Career</sd-navigation-item>
         </div>
         <!-- bottom-left-area end !-->
         <!-- bottom-right-area start !-->
@@ -70,12 +68,12 @@ export const SampleA = {
           </sd-navigation-item>
           <sd-navigation-item>
             <div class="flex items-center gap-2">
-              <sd-icon name="system/user" class="text-xl"></sd-icon><span>Mein Depot</span>
+              <sd-icon name="system/user" class="text-xl"></sd-icon><span>Portfolio</span>
             </div>
           </sd-navigation-item>
           <sd-navigation-item>
             <div class="flex items-center gap-2">
-              <sd-icon name="system/lock-locked" class="text-xl"></sd-icon><span>Meine Bewerbung</span>
+              <sd-icon name="system/lock-locked" class="text-xl"></sd-icon><span>Application</span>
             </div>
           </sd-navigation-item>
           <!-- bottom-right-area end !-->
@@ -119,7 +117,7 @@ export const SampleA02 = {
           </sd-navigation-item>
           <sd-navigation-item>
             <div class="flex items-center gap-2">
-              <sd-icon name="system/user" class="text-xl"></sd-icon><span>Anmelden</span>
+              <sd-icon name="system/user" class="text-xl"></sd-icon><span>Login</span>
             </div>
           </sd-navigation-item>
         </div>
@@ -128,9 +126,12 @@ export const SampleA02 = {
       <div class="hidden lg:flex items-end pt-3 justify-between">
         <!-- bottom-left-area start !-->
         <div class="-ml-4">
-          <sd-navigation-item><b>Über Uns</b></sd-navigation-item
-          ><sd-navigation-item><b>Märkte</b></sd-navigation-item
-          ><sd-navigation-item><b>Presseservice</b></sd-navigation-item>
+          <sd-navigation-item class="font-bold">Competencies</sd-navigation-item>
+          <sd-navigation-item class="font-bold">Capital Market</sd-navigation-item>
+          <sd-navigation-item class="font-bold">Our products</sd-navigation-item>
+          <sd-navigation-item class="font-bold">Reporting</sd-navigation-item>
+          <sd-navigation-item class="font-bold">About us</sd-navigation-item>
+          <sd-navigation-item class="font-bold">Personal area</sd-navigation-item>
         </div>
         <!-- bottom-left-area end !-->
         <!-- bottom-right-area start !-->
@@ -173,11 +174,10 @@ export const SampleB = {
       <div class="hidden lg:flex items-end pt-3 justify-between">
         <!-- bottom-left-area start !-->
         <div class="-ml-4">
-          <sd-navigation-item><b>Über Uns</b></sd-navigation-item
-          ><sd-navigation-item><b>Märkte</b></sd-navigation-item
-          ><sd-navigation-item><b>Presseservice</b></sd-navigation-item
-          ><sd-navigation-item><b>Nachhaltigkeit</b></sd-navigation-item
-          ><sd-navigation-item><b>Karriere</b></sd-navigation-item>
+          <sd-navigation-item class="font-bold">Starting point</sd-navigation-item>
+          <sd-navigation-item class="font-bold">Point of view</sd-navigation-item>
+          <sd-navigation-item class="font-bold">To the point</sd-navigation-item>
+          <sd-navigation-item class="font-bold">Meeting point</sd-navigation-item>
         </div>
         <!-- bottom-left-area end !-->
         <!-- bottom-right-area start !-->
