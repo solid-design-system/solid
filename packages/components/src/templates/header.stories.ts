@@ -94,6 +94,11 @@ export const SampleA02 = {
         </a>
         <!-- top-left-area end !-->
         <!-- top-right-area start !-->
+        <div class="flex lg:hidden">
+          <sd-navigation-item>
+            <sd-icon name="system/menu" class="text-xl  -my-[1.5px] -mx-[4px]"></sd-icon>
+          </sd-navigation-item>
+        </div>
         <div class="-mr-4 lg:flex hidden items-center">
           <sd-navigation-item>
             <div class="w-4 h-4 flex items-center">
