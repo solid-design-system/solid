@@ -7,7 +7,7 @@
   - [Get Started](#get-started)
   - [SOLID Library Concepts](#solid-library-concepts)
     - [Web **Components** \& CSS **Styles**](#web-components--css-styles)
-    - [Samples \& Patterns](#samples--patterns)
+    - [Templates](#templates)
   - [Shoelace](#shoelace)
   - [Storybook](#storybook)
     - [Storybook Docs](#storybook-docs)
@@ -42,12 +42,11 @@ We are creating a library that comprises a lean combination of reusable [Web Com
   - [parts](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/part) allow external manipulation of CSS.
   - [events](https://lit.dev/docs/components/events/) make critical information available outside of a component.
 
-### Samples & Patterns
+### Templates
 
-Alongside the documentation for Styles and Components, we also present Samples and Patterns. These differ in their scope:
+Alongside the documentation for Styles and Components, we also present templates, where the main idea is:
 
-- **Samples**: Tied to a specific component, these show its use in a particular context. They are added as "Sample" stories in the component's documentation.
-- **Patterns**: More advanced, they demonstrate how to combine several components to solve a specific problem. They are added as stories in the "Patterns" section.
+Templates are complete examples of how to use Styles and Components together. They are often more complex than Components and could feature multiple Components and Styles. They are meant to be copy-pasted and individualized by the users in order to match their project needs.
 
 ## Shoelace
 
@@ -136,7 +135,7 @@ _ You can always refer to the existing components and styles to familiarize your
 ### Security Updates
 
 In our security workflow, Renovate (GitHub App) automatically identifies and updates security issues in our project dependencies.
-Renovate also creates a “Dependency Dashboard” ticket to track all found updates. During each iteration, we plan and assign the dashboard ticket to a specific team member. The assigned team member has to update the described packages by runing `pnpm update all`, creating a corresponding PR, and finally closing the ticket. This process ensures efficient handling of security updates while maintaining clear accountability within the team.
+Renovate also creates a “Dependency Dashboard” ticket to track all found updates. During each iteration, we plan and assign the dashboard ticket to a specific team member. The assigned team member has to update the described packages by running `pnpm update all`, creating a corresponding PR, and finally closing the ticket. This process ensures efficient handling of security updates while maintaining clear accountability within the team.
 
 ## Repository Overview
 
@@ -146,7 +145,7 @@ Renovate also creates a “Dependency Dashboard” ticket to track all found upd
       - `_components`: components previously copied from Shoelace that have replace `sl` prefixes with `sd` prefixes
       - **`components`**: Primary folder containing our Web Components. Added as stories in the "COMPONENTS" section.
         - `accordion`: Lit JS web component that implements an accordion. The comments are automatically compiled into the Storybook docs and should be used for user clarification.
-        - `accoridion.tests.ts`: Suite of jest tests for the accordion component. Critical for deployment and maintenance.
+        - `accordion.tests.ts`: Suite of jest tests for the accordion component. Critical for deployment and maintenance.
         - `accordion.stories.ts`: Collection of Storybook stories that are primarily used for visual testing with Chromatic. Any **samples** are added as stories here.
       - `docs`: all ".mdx" doc files that appear in the "DOCS" section of our Storybook
         - `migration`: Individual component migration guides
