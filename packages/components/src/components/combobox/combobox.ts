@@ -1,5 +1,6 @@
 import { animateTo, stopAnimations } from '../../internal/animate.js';
 import { classMap } from 'lit/directives/class-map.js';
+import { type CSSResultGroup, html, type TemplateResult } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { defaultOptionRenderer, type OptionRenderer } from './option-renderer.js';
 import { defaultValue } from '../../internal/default-value.js';
@@ -7,7 +8,6 @@ import { filterOnlyOptgroups, getAllOptions, getAssignedElementsForSlot, normali
 import { FormControlController } from '../../internal/form.js';
 import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry.js';
 import { HasSlotController } from '../../internal/slot.js';
-import { html } from 'lit';
 import { LocalizeController } from '../../utilities/localize.js';
 import { property, query, state } from 'lit/decorators.js';
 import { scrollIntoView } from '../../internal/scroll.js';
@@ -18,10 +18,10 @@ import componentStyles from '../../styles/component.styles.js';
 import customStyles from './combobox.custom.styles.js';
 import SdIcon from '../icon/icon';
 import SdPopup from '../popup/popup';
+import SdTag from '../tag/tag';
 import SolidElement from '../../internal/solid-element';
 import styles from './combobox.styles.js';
 import type { CloseWatcher } from 'src/declaration.js';
-import type { CSSResultGroup } from 'lit';
 import type { SolidFormControl } from '../../internal/solid-element';
 import type SdOptgroup from '../optgroup/optgroup.js';
 import type SdOption from '../option/option';
@@ -37,13 +37,13 @@ import type SdOption from '../option/option';
  * @slot - The listbox options. Must be `<sd-option>` elements.
  *    You can use `<sd-optgroup>`'s to group items visually.
  * @slot label - The combobox's label. Alternatively, you can use the `label` attribute.
+ * @slot help-text - Text that describes how to use the combobox.
+ *    Alternatively, you can use the `help-text` attribute.
  * @slot prefix - Used to prepend a presentational icon or similar element to the combobox.
  * @slot suffix - Used to append a presentational icon or similar element to the combobox.
  * @slot clear-icon - An icon to use in lieu of the default clear icon.
  * @slot expand-icon - The icon to show when the control is expanded and collapsed.
  *    Rotates on open and close.
- * @slot help-text - Text that describes how to use the combobox.
- *    Alternatively, you can use the `help-text` attribute.
  *
  * @event sd-change - Emitted when the control's value changes.
  * @event sd-clear - Emitted when the control's value is cleared.
@@ -62,7 +62,7 @@ import type SdOption from '../option/option';
  * @csspart form-control-label - The label's wrapper.
  * @csspart form-control-input - The combobox's wrapper.
  * @csspart form-control-help-text - The help text's wrapper.
- * @csspart combobox - The container the wraps the prefix, combobox, clear icon, and expand button.
+ * @csspart combobox - The container that wraps the prefix, combobox, clear icon, and expand button.
  * @csspart prefix - The container that wraps the prefix slot.
  * @csspart suffix - The container that wraps the suffix slot.
  * @csspart display-input - The element that displays the selected option's label,
@@ -72,18 +72,14 @@ import type SdOption from '../option/option';
  * @csspart filtered-listbox - The container that wraps the filtered options.
  * @csspart clear-button - The clear button.
  * @csspart expand-icon - The container that wraps the expand icon.
- *
- * @animation combobox.show - The animation to use when showing the combobox.
- * @animation combobox.hide - The animation to use when hiding the combobox.
  */
 
 @customElement('sd-combobox')
 export default class SdCombobox extends SolidElement implements SolidFormControl {
-  static styles: CSSResultGroup = [componentStyles, SolidElement.styles, styles, customStyles];
-
   static dependencies = {
     'sd-icon': SdIcon,
-    'sd-popup': SdPopup
+    'sd-popup': SdPopup,
+    'sd-tag': SdTag
   };
 
   private readonly formControlController = new FormControlController(this, {
@@ -134,10 +130,10 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   @defaultValue() defaultValue = '';
 
   /** The combobox's size. */
-  @property({ reflect: true }) size: 'small' | 'medium' | 'large' = 'medium';
+  @property({ reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
 
   /** Placeholder text to show as a hint when the combobox is empty. */
-  @property() placeholder = '';
+  @property() placeholder = this.localize.term('selectDefaultPlaceholder');
 
   /** Disables the combobox control. */
   @property({ reflect: true, type: Boolean }) disabled = false;
@@ -191,6 +187,18 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
    */
   @property() getOption: OptionRenderer = defaultOptionRenderer;
 
+  /** Allows more than one option to be selected. */
+  @property({ type: Boolean, reflect: true }) multiple = false;
+
+  /**
+   * The maximum number of selected options to show when `multiple` and `useTags` are `true`. After the maximum, "+n" will be shown to
+   * indicate the number of additional items that are selected. Set to 0 to remove the limit.
+   */
+  @property({ attribute: 'max-options-visible', type: Number }) maxOptionsVisible = 3;
+
+  /** Shows success styles if the validity of the input is valid. */
+  @property({ type: Boolean, reflect: true, attribute: 'style-on-valid' }) styleOnValid = false;
+
   /**
    * A function used to filter options in the combobox component.
    * The default filter method is a case- and diacritic-insensitive string comparison.
@@ -200,10 +208,34 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
    * @returns A boolean indicating whether the option should be included in the filtered results.
    */
   // eslint-disable-next-line class-methods-use-this
-  @property() filter: (option: SdOption, queryString: string) => boolean = (option, queryStr) => {
+  @property() filter: (option: SdOption, queryString: string) => boolean = (option, queryString) => {
     const normalizedOption = normalizeString(option.getTextLabel());
-    const normalizedQuery = normalizeString(queryStr);
+    const normalizedQuery = normalizeString(queryString);
     return normalizedOption.includes(normalizedQuery);
+  };
+
+  /**
+   * A function that customizes the tags to be rendered when multiple=true. The first argument is the option, the second
+   * is the current tag's index.  The function should return either a Lit TemplateResult or a string containing trusted HTML of the symbol to render at
+   * the specified value.
+   */
+  @property() getTag: (option: SdOption, index: number) => TemplateResult | string | HTMLElement = option => {
+    return html`
+      <sd-tag
+        ?disabled=${this.disabled}
+        part="tag"
+        exportparts="
+              base:tag__base,
+              content:tag__content,
+              removable-indicator:tag__removable-indicator,
+            "
+        size=${this.size === 'sm' ? 'sm' : 'lg'}
+        removable
+        @sd-remove=${(event: CustomEvent) => this.handleTagRemove(event, option)}
+      >
+        ${option.getTextLabel()}
+      </sd-tag>
+    `;
   };
 
   /** Gets the validity state object */
@@ -417,6 +449,20 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     this.displayInput.focus();
   }
 
+  private handleTagRemove(event: CustomEvent, option: SdOption) {
+    event.stopPropagation();
+
+    if (!this.disabled) {
+      this.toggleOptionSelection(option, false);
+
+      // Emit after updating
+      this.updateComplete.then(() => {
+        this.emit('sd-input');
+        this.emit('sd-change');
+      });
+    }
+  }
+
   private handleComboboxMouseDown() {
     // Ignore disabled controls
     if (this.disabled) {
@@ -580,6 +626,17 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     });
   }
 
+  // Toggles an option's selected state
+  private toggleOptionSelection(option: SdOption, force?: boolean) {
+    if (force === true || force === false) {
+      option.selected = force;
+    } else {
+      option.selected = !option.selected;
+    }
+
+    this.handleChange();
+  }
+
   private handleInvalid(event: Event) {
     this.formControlController.setValidity(false);
     this.formControlController.emitInvalidEvent(event);
@@ -589,6 +646,18 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   handleFilterChange() {
     this.createComboboxOptionsFromQuery(this.value);
   }
+
+  // @watch('useTags', { waitUntilFirstUpdate: true })
+  // handleUseTagsChange() {
+  //   const allOptions = this.getAllOptions();
+  //
+  //   // Mutate all sd-option checkbox attributes based on useTags state
+  //   if (customElements.get('sd-option')) {
+  //     allOptions.forEach(option => {
+  //       option.checkbox = this.multiple;
+  //     });
+  //   }
+  // }
 
   @watch('disabled', { waitUntilFirstUpdate: true })
   handleDisabledChange() {
@@ -650,6 +719,13 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
 
     this.emit('sd-after-hide');
   }
+
+  // @watch('size', { waitUntilFirstUpdate: true })
+  // applySizeToOptions() {
+  //   this._optionsInDefaultSlot.forEach(option => {
+  //     option.size = this.size;
+  //   });
+  // }
 
   /**
    * Shows the listbox. If it is not possible to open the listbox, because there are no
@@ -819,9 +895,9 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
           'form-control': true,
           'form-control--has-help-text': hasHelpText,
           'form-control--has-label': hasLabel,
-          'form-control--large': this.size === 'large',
-          'form-control--medium': this.size === 'medium',
-          'form-control--small': this.size === 'small'
+          'form-control--large': this.size === 'lg',
+          'form-control--medium': this.size === 'md',
+          'form-control--small': this.size === 'sm'
         })}
       >
         <label
@@ -841,11 +917,11 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
               'combobox--bottom': this.placement === 'bottom',
               'combobox--disabled': this.disabled,
               'combobox--focused': this.hasFocus,
-              'combobox--large': this.size === 'large',
-              'combobox--medium': this.size === 'medium',
+              'combobox--large': this.size === 'lg',
+              'combobox--medium': this.size === 'md',
               'combobox--open': this.open,
               'combobox--placeholder-visible': isPlaceholderVisible,
-              'combobox--small': this.size === 'small',
+              'combobox--small': this.size === 'sm',
               'combobox--standard': true,
               'combobox--top': this.placement === 'top'
             })}
@@ -957,6 +1033,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       </div>
     `;
   }
+  static styles: CSSResultGroup = [componentStyles, SolidElement.styles, styles, customStyles];
   /* eslint-enable @typescript-eslint/unbound-method */
 }
 
