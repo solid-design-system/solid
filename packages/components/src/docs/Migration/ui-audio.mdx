@@ -22,7 +22,7 @@ Slot for the transcript.
 
 #### [default]
 
-The default slot is now used to pass the audio element.
+The default slot is used to define the audio element.
 
 ## ⚙️ Attributes
 
@@ -34,23 +34,13 @@ Reverts the order of the audio controls and timestamps.
 
 #### [hideTimestamps]
 
-Shows or hides the timestamps.
-
-#### [variant]
-
-Sets the variant of the audio player. Possible values are **white** and **minimal**, **neutral** and **primary**. Default value is **white**.
+Hides the timestamps.
 
 ### 🔀 Updated Attributes
 
 #### [isPlaying]
 
 `started` as been replaced by `isPlaying` attribute. The default value is **false**.
-
-#### [currentTime]
-
-#### [duration]
-
-`durationDisplayed` has been replaced by `duration` attribute.
 
 ### ❌ Removed Attributes
 
@@ -66,24 +56,6 @@ The following attributes have been removed from the new [ui-audio-player] compon
 
 <hr />
 
-## ✍️ CSS Variables
-
-### ✨ New CSS Variables
-
-#### [--bg-primary]
-
-The primary background color for the seek and volume sliders.
-
-### 🔀 Updated CSS variables
-
-#### [--bg-primary-400]
-
-The primary background color for the seek and volume sliders background.
-
-#### [--bg-white]
-
-The white background color for the seek and volume sliders when inverted prop is true.
-
 ## 🥳 Events
 
 ### ✨ New Events
@@ -96,10 +68,22 @@ Emitted when the audio playback starts.
 
 Emitted when the audio playback ends.
 
+#### [sd-playback-pause]
+
+Emitted when the audio playback is paused.
+
 #### [sd-playback-mute]
 
-Emitted when the audio is muted. Now includes more detailed information about the mute state.
+Emitted when the audio is muted.
+
+#### [sd-playback-unmute]
+
+Emitted when the audio is unmuted
 
 #### [sd-playback-speed]
 
-Emitted when the playback speed is changed. Now includes the new speed value.
+Emitted when the playback speed is changed.
+
+#### [sd-transcript-click]
+
+Emitted when the transcript button is clicked.
