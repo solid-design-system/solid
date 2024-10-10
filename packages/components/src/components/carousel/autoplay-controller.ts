@@ -70,20 +70,4 @@ export class AutoplayController implements ReactiveController {
       this.host.requestUpdate();
     }
   };
-
-  /**
-   *  Used to manually pause autoplay without disrupting mouse/focus/touch events.
-   */
-  controlledPause = () => {
-    this.paused = true;
-    this.host.requestUpdate();
-  };
-
-  /**
-   *  Used to manually resume autoplay without disrupting mouse/focus/touch events.
-   */
-  controlledResume = () => {
-    this.paused = false;
-    this.host.requestUpdate();
-  };
 }
