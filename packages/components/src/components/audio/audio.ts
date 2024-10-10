@@ -488,7 +488,8 @@ export default class SdAudio extends SolidElement {
           ${!this.hideTimestamps && this.animated && this.reversedLayout ? renderTimestamps : null}
           <input
             class=${cx(
-              'progress-slider bg-primary appearance-none w-full cursor-pointer outline-none h-1 flex items-center'
+              'progress-slider bg-primary appearance-none w-full cursor-pointer outline-none h-1 flex items-center sd-interactive',
+              this.inverted && 'sd-interactive--inverted'
             )}
             type="range"
             max="100"
@@ -525,26 +526,33 @@ export default class SdAudio extends SolidElement {
     SolidElement.styles,
     unsafeCSS(InteractiveStyles),
     css`
-      :host([inverted]) {
-        [part='progress-slider']::-webkit-slider-thumb {
-          @apply bg-white;
-        }
-
-        .progress-slider:focus::-webkit-slider-thumb {
-          @apply outline-white;
-        }
+      .progress-slider:focus-visible {
+        @apply outline-none;
       }
 
       .progress-slider::-webkit-slider-thumb {
-        @apply appearance-none bg-primary h-4 w-4 rounded-full border-none transition duration-200 ease-in-out;
+        background-color: currentColor;
+      }
+
+      .progress-slider::-webkit-slider-thumb {
+        @apply appearance-none h-4 w-4 rounded-full border-none transition duration-200 ease-in-out;
       }
 
       .progress-slider:focus-visible::-webkit-slider-thumb {
-        @apply outline outline-primary outline-offset-2;
+        @apply outline outline-offset-2;
+      }
+
+      /** Firefox */
+      .progress-slider::-moz-range-thumb {
+        background-color: currentColor;
       }
 
       .progress-slider::-moz-range-thumb {
-        @apply appearance-none bg-primary h-4 w-4 rounded-full border-none transition duration-200 ease-in-out;
+        @apply appearance-none h-4 w-4 rounded-full border-none transition duration-200 ease-in-out;
+      }
+
+      .progress-slider:focus-visible::-moz-range-thumb {
+        @apply outline outline-offset-2;
       }
 
       sd-button::part(base) {
