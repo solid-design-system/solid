@@ -31,6 +31,10 @@ export default {
       to: '/placeholders/videos'
     },
     {
+      from: '../../placeholders/src/audio',
+      to: '/placeholders/audio'
+    },
+    {
       from: '../node_modules/countup.js/dist',
       to: '/countup'
     },
