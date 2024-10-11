@@ -29,7 +29,7 @@ export const Size = {
         <div class="gap-6 flex items-center">
           <img
             class="w-16 h-16 rounded-full overflow-hidden object-cover"
-            src="./placeholders/images/HansJoachimReinke.png"
+            src="./placeholders/images/family.jpg"
             alt="Hans Joachim Reinke"
           />
           <div>
@@ -48,7 +48,7 @@ export const Size = {
         <div class="gap-6 flex items-center">
           <img
             class="w-16 h-16 rounded-full overflow-hidden object-cover"
-            src="./placeholders/images/HansJoachimReinke.png"
+            src="./placeholders/images/family.jpg"
             alt="Hans Joachim Reinke"
           />
           <div>
@@ -67,7 +67,7 @@ export const Size = {
         <div class="gap-4 flex items-center">
           <img
             class="w-16 h-16 rounded-full overflow-hidden object-cover"
-            src="./placeholders/images/HansJoachimReinke.png"
+            src="./placeholders/images/family.jpg"
             alt="Hans Joachim Reinke"
           />
           <div>
@@ -91,7 +91,7 @@ export const Inverted = {
         <div class="gap-6 flex items-center">
           <img
             class="w-16 h-16 rounded-full overflow-hidden object-cover"
-            src="./placeholders/images/HansJoachimReinke.png"
+            src="./placeholders/images/family.jpg"
             alt="Hans Joachim Reinke"
           />
           <div>
