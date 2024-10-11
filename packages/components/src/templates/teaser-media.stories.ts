@@ -24,8 +24,8 @@ export const TeaserMediaWithLink = {
         <div slot="media" class="relative">
           <img
             class="w-full aspect-ratio "
-            src="./placeholders/images/skyscraper.jpg"
-            alt="A tall glass skyscraper viewed from below"
+            src="./placeholders/images/skyline.jpg"
+            alt="City skyline of Frankfurt by night in christmas time."
           />
         </div>
         <div slot="meta" class="meta-info">
@@ -43,12 +43,7 @@ export const TeaserMediaWithLink = {
         </div>
       </sd-teaser-media>
       <sd-teaser-media variant="primary">
-        <img
-          slot="media"
-          class="w-full"
-          src="./placeholders/images/meeting.jpg"
-          alt="Three people in a business meeting talking to each other"
-        />
+        <img slot="media" class="w-full" src="./placeholders/images/workspace.jpg" alt="" />
         <h3 slot="headline" class="sd-headline sd-headline--inverted">Your contact person</h3>
         <div class="flex flex-col gap-4">
           <p class="sd-paragraph sd-paragraph--inverted">
@@ -64,8 +59,8 @@ export const TeaserMediaWithLink = {
         <img
           slot="media"
           class="w-full aspect-ratio"
-          src="./placeholders/images/flags.jpg"
-          alt="The U.S. and EU flags placed together"
+          src="./placeholders/images/skyline.jpg"
+          alt="City skyline of Frankfurt by night in christmas time."
         />
         <h3 slot="headline" class="sd-headline sd-headline--size-base">USA or Europe? It depends on the mix</h3>
         <div class="flex flex-col gap-4">
@@ -101,8 +96,8 @@ export const TeaserMediaOverrides = {
         <div slot="media" class="relative">
           <img
             class="w-full aspect-ratio"
-            src="./placeholders/images/coffeebreak.jpg"
-            alt="Two people sitting at a table, having a coffee in an office"
+            src="./placeholders/images/coffeeshop.jpg"
+            alt="People sitting at a table, having a coffee in a coffeeshop."
           />
         </div>
         <h3 slot="headline" class="sd-headline sd-headline--inverted">Gender</h3>

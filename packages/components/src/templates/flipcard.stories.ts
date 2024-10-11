@@ -40,12 +40,7 @@ export const Default = {
           currently invested in office buildings in Mexico-City.
         </p>
       </div>
-      <img
-        slot="media-front"
-        class="object-cover h-full w-full"
-        src="./placeholders/images/londonHouse.jpg"
-        alt="Generic Alt"
-      />
+      <img slot="media-front" class="object-cover h-full w-full" src="./placeholders/images/architecture.jpg" alt="" />
     </sd-flipcard>
   `
 };
