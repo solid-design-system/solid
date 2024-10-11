@@ -41,6 +41,8 @@ const colors = [
 
 const createColorOption = (color: string) => `<sd-option value="${color.replaceAll(' ', '_')}">${color}</sd-option>`;
 
+const createColorOptionHtml = (color: string) => unsafeHTML(createColorOption(color));
+
 const createColorOptions = () => colors.map(createColorOption);
 
 const createColorOptionsHtml = () => unsafeHTML(createColorOptions().join('\n'));
@@ -304,6 +306,30 @@ export const HighlightQuery = {
 };
 
 /**
+ * Use to group `s visually.
+ */
+export const GroupingQuery = {
+  render: () => html`
+    <div class="h-[260px] w-[400px]">
+      <sd-combobox label="Group elements" value="g">
+        <sd-optgroup label="B">
+          ${createColorOptionHtml('Black')} ${createColorOptionHtml('Blue')} ${createColorOptionHtml('Brown')}
+        </sd-optgroup>
+        <sd-optgroup label="G"> ${createColorOptionHtml('Green')} ${createColorOptionHtml('Grey')} </sd-optgroup>
+        <sd-optgroup label="L"> ${createColorOptionHtml('Light Green')} </sd-optgroup>
+        <sd-optgroup label="M"> ${createColorOptionHtml('Magenta')} </sd-optgroup>
+        <sd-optgroup label="O"> ${createColorOptionHtml('Orange')} </sd-optgroup>
+        <sd-optgroup label="W"> ${createColorOptionHtml('White')} </sd-optgroup>
+        <sd-optgroup label="P"> ${createColorOptionHtml('Pink')} ${createColorOptionHtml('Purple')} </sd-optgroup>
+        <sd-optgroup label="R"> ${createColorOptionHtml('Red')} </sd-optgroup>
+        <sd-optgroup label="W"> ${createColorOptionHtml('White')} </sd-optgroup>
+        <sd-optgroup label="Y"> ${createColorOptionHtml('Yellow')} </sd-optgroup>
+      </sd-combobox>
+    </div>
+  `
+};
+
+/**
  * The height of the filtered options list can be customized by setting the max-height on the listbox part of the combobox.
  */
 export const SuggestionContainerHeight = {
@@ -344,7 +370,7 @@ export const Clearable = {
 export const Multiple = {
   render: () => html`
     <div class="w-[400px] h-[500px]">
-      <sd-combobox size="lg" label="Label" placement="bottom" multiple="" value="option-1 option-2">
+      <sd-combobox size="lg" label="Label" placement="bottom" multiple value="option-1 option-2">
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
         <sd-option value="option-3">Option 3</sd-option>
@@ -540,5 +566,60 @@ export const PrefixSuffixTextAndIcons = {
         <sd-icon name="union-investment/content/image" slot="suffix"></sd-icon>
       </sd-combobox>
     </div>
+  `
+};
+
+/**
+ * It is possible to add options dynamically to the combobox e.g. if the option values need to be fetched asynchronously from a remote server or API.
+ */
+export const AsyncOptions = {
+  render: () => html`
+    <div class="w-[400px] h-[500px]">
+      <sd-combobox label="Async options" class="async-combobox">
+        <sd-option class="option" value="option-1">Option 1</sd-option>
+        <sd-option class="option" value="option-2">Option 2</sd-option>
+        <sd-option class="option" value="option-3">Option 3</sd-option>
+      </sd-combobox>
+    </div>
+    <script type="module">
+      const comboboxes = document.querySelectorAll('.async-combobox');
+      comboboxes.forEach(combobox => {
+        // After api request the options are added async
+        let index = 4;
+        let timeout = setInterval(() => {
+          const option = document.createElement('sd-option');
+          const value = 'Option ' + index++;
+          option.textContent = value;
+          combobox.appendChild(option);
+          if (index > 10) {
+            clearInterval(timeout);
+          }
+        }, 4000);
+      });
+    </script>
+  `
+};
+
+/**
+ * A custom filter can be applied by passing a filter function to the filter property. This filter() function will be called for each option. The first argument is an element and the second argument is the query string.
+ */
+export const CustomFilter = {
+  render: () => html`
+    <div class="w-[400px] h-[500px]">
+      <sd-combobox label="Custom Filter" class="filter-combobox"> ${createColorOptionsHtml()} </sd-combobox>
+    </div>
+    <script type="module">
+      const comboboxes = document.querySelectorAll('.filter-combobox');
+      comboboxes.forEach(combobox => {
+        const oldFilter = combobox.filter;
+        combobox.filter = (option, queryString) => {
+          // only show options for more than 2 characters on text input
+          if (queryString && queryString.length > 2) {
+            return oldFilter(option, queryString);
+          }
+          return false;
+        };
+      });
+    </script>
   `
 };
