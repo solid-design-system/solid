@@ -38,7 +38,11 @@ export const NotClickableTeaserWithLink = {
         class="flex-1 flex flex-col max-w-[426.67px]"
       >
         <div slot="media" class="relative">
-          <img src="./placeholders/images/generic.jpg" alt="Generic Alt" class="aspect-video object-cover" />
+          <img
+            src="./placeholders/images/collaboration.jpg"
+            alt="Two men in business attire sitting on a sofa in a modern office, smiling and looking at a laptop screen."
+            class="aspect-video object-cover"
+          />
         </div>
         <h3 slot="headline" class="sd-headline sd-headline--size-3xl">Expert views</h3>
         <div class="flex flex-col gap-5 mt-4">
@@ -97,7 +101,11 @@ export const ClickableTeaserWithLink = {
       <a href="#" target="_blank" class="flex-1">
         <sd-teaser variant="primary-100" breakpoint="9999" inset class="interactive max-w-[426.67px]">
           <div slot="media" class="relative">
-            <img class="aspect-video object-cover" src="./placeholders/images/generic.jpg" alt="Generic Alt" />
+            <img
+              class="aspect-video object-cover"
+              src="./placeholders/images/family.jpg"
+              alt="A man with glasses and a beard holding two young children in his arms, smiling outdoors with trees in the background."
+            />
           </div>
           <h3 slot="headline" class="sd-headline sd-headline--size-lg">Invest sustainably</h3>
           <div class="flex flex-col gap-5 mt-4">
@@ -187,7 +195,11 @@ export const teaserWithChipAndFlag = {
       <div class="flex flex-col gap-8">
         <sd-teaser variant="primary" breakpoint="9999" inset class="flex-1 flex flex-col max-w-[320px]">
           <div slot="media" class="relative">
-            <img src="./placeholders/images/generic.jpg" alt="Generic Alt" class="aspect-video object-cover" />
+            <img
+              src="./placeholders/images/coffeeshop.jpg"
+              alt="A group of four friends sitting together at a table, smiling and chatting, with one person using a tablet."
+              class="aspect-video object-cover"
+            />
             <span class="absolute top-3 left-4 sd-chip sd-chip--primary-500">Remote Work</span>
             <span class="absolute top-2 right-0 sd-flag sd-flag--white">Research</span>
           </div>
@@ -235,7 +247,11 @@ export const teaserWithChipAndFlag = {
           style="--distribution-media: 50%; --distribution-content: 50%;"
         >
           <div slot="media" class="relative">
-            <img src="./placeholders/images/generic.jpg" alt="Generic Alt" class="aspect-video object-cover w-full" />
+            <img
+              src="./placeholders/images/coins.jpg"
+              alt="Close-up of hands stacking coins into small piles on a table, suggesting financial planning or saving."
+              class="aspect-video object-cover w-full"
+            />
             <span class="absolute top-3 left-4 sd-chip sd-chip--white">Real Estate</span>
             <span class="absolute top-2 right-0 sd-flag sd-flag--neutral-300">Analytics</span>
           </div>
@@ -266,8 +282,8 @@ export const teaserWithDivision = {
         <div slot="media" class="relative">
           <img
             class="w-full aspect-[3/4] object-cover"
-            src="./placeholders/images/generic.jpg"
-            alt="Generic Alt"/>
+            src="./placeholders/images/collaboration.jpg"
+            alt="Two men in business attire sitting on a sofa in a modern office, smiling and looking at a laptop screen."/>
         </div>
         <div slot="headline">
           <h3 class="sd-headline sd-headline--size-lg mb-8">“Our real estate funds are well positioned”</h3>
@@ -294,15 +310,19 @@ export const contactTeaser = {
     return html`
       <sd-teaser variant="primary-100" breakpoint="9999" inset class="interactive max-w-[375px]">
         <div slot="media" class="relative">
-          <img class="aspect-video object-cover" src="./placeholders/images/generic.jpg" alt="Generic Alt" />
+          <img
+            class="aspect-video object-cover"
+            src="./placeholders/images/workspace.jpg"
+            alt="Close-up of a pair of glasses, a pen, and an open notebook with notes written on it, on a desk next to a laptop."
+          />
         </div>
-        <h3 slot="headline" class="sd-headline sd-headline--size-lg">Nicolas Freyer</h3>
+        <h3 slot="headline" class="sd-headline sd-headline--size-lg">John Doe</h3>
         <div class="flex flex-col gap-5">
-          <p class="sd-paragraph">Managing Director</p>
+          <p class="sd-paragraph">Team Member of SDS</p>
           <div class="flex-none">
             <sd-link href="#" standalone>
               <sd-icon name="system/e-mail" slot="icon-left"></sd-icon>
-              nicolas.freyer@union-investment.com</sd-link
+              john.doe@mail.com</sd-link
             >
           </div>
         </div>
