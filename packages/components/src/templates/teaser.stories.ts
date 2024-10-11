@@ -31,11 +31,6 @@ export const NotClickableTeaserWithLink = {
   name: 'Not Clickable Teaser with Link',
   render: () => {
     return html`
-      <style>
-        #teaserWithContentPlaceholder::part(media) {
-          flex-grow: 1;
-        }
-      </style>
       <sd-teaser
         variant="white border-neutral-400"
         breakpoint="9999"
@@ -43,11 +38,7 @@ export const NotClickableTeaserWithLink = {
         class="flex-1 flex flex-col max-w-[426.67px]"
       >
         <div slot="media" class="relative">
-          <img
-            class=""
-            src="./placeholders/images/capitalMarketAnalyses.png"
-            alt="3D pie chart with buildings, water, forest, turbines, and city infrastructure"
-          />
+          <img src="./placeholders/images/generic.jpg" alt="Generic Alt" class="aspect-video object-cover" />
         </div>
         <h3 slot="headline" class="sd-headline sd-headline--size-3xl">Expert views</h3>
         <div class="flex flex-col gap-5 mt-4">
@@ -56,7 +47,7 @@ export const NotClickableTeaserWithLink = {
             white papers and studies can be found here.
           </p>
           <div class="flex-none">
-            <sd-button href="#" target="_blank" variant="primary">To expert views</sd-button>
+            <sd-button href="javascript:void(0)" variant="primary">To expert views</sd-button>
           </div>
         </div>
       </sd-teaser>
@@ -97,10 +88,6 @@ export const ClickableTeaserWithLink = {
   render: () => {
     return html`
       <style>
-        #teaserWithContentPlaceholder::part(media) {
-          flex-grow: 1;
-        }
-
         sd-teaser.interactive:hover {
           &::part(media) {
             opacity: 0.7;
@@ -110,17 +97,13 @@ export const ClickableTeaserWithLink = {
       <a href="#" target="_blank" class="flex-1">
         <sd-teaser variant="primary-100" breakpoint="9999" inset class="interactive max-w-[426.67px]">
           <div slot="media" class="relative">
-            <img
-              class="aspect-video object-cover"
-              src="./placeholders/images/sustainability.png"
-              alt="Aerial view of wind turbines scattered across agricultural fields, partially covered by clouds."
-            />
+            <img class="aspect-video object-cover" src="./placeholders/images/generic.jpg" alt="Generic Alt" />
           </div>
           <h3 slot="headline" class="sd-headline sd-headline--size-lg">Invest sustainably</h3>
           <div class="flex flex-col gap-5 mt-4">
             <p>How we are actively shaping the transformation of the economy in the interests of our investors.</p>
             <div class="flex-none">
-              <sd-link href="#">Find out more</sd-link>
+              <sd-link href="javascript:void(0)">Find out more</sd-link>
             </div>
           </div>
         </sd-teaser>
@@ -134,24 +117,24 @@ export const teaserWithIcon = {
   render: () => {
     return html`
       <div class="flex flex-col gap-8">
-        <sd-teaser variant="white" breakpoint="9999" inset="" id="teaserWithIcon" class="max-w-[338px]">
+        <sd-teaser variant="white" breakpoint="9999" inset class="max-w-[338px]">
           <div slot="media">
-            <sd-icon name="content/documents" library="global-resources" class="text-[96px]" color="primary"></sd-icon>
+            <sd-icon name="content/files" class="text-[96px]" color="primary"></sd-icon>
           </div>
           <h3 slot="headline" class="sd-headline sd-headline--size-xl">Annual Report 2023</h3>
           <div class="flex flex-col gap-5 mt-4">
             <p>PDF (1,6 MB)</p>
             <div class="flex-none">
-              <sd-button href="#" target="_blank" variant="primary">
+              <sd-button href="javascript:void(0)" variant="primary">
                 Download Annual Report
                 <sd-icon name="system/download" slot="icon-left"></sd-icon>
               </sd-button>
             </div>
           </div>
         </sd-teaser>
-        <sd-teaser variant="primary" breakpoint="9999" inset class="flex-1 max-w-[338px]" id="teaserWithIcon">
+        <sd-teaser variant="primary" breakpoint="9999" inset class="flex-1 max-w-[338px]">
           <div slot="media" class="flex flex-wrap h-[189px] content-center justify-center">
-            <sd-icon class="text-[96px]" name="content/letter" library="global-resources" inverted></sd-icon>
+            <sd-icon class="text-[96px]" name="content/letter" inverted></sd-icon>
           </div>
           <h3 slot="headline" class="sd-headline sd-headline--size-lg sd-headline--inverted">
             Subscribe to our newsletter!
@@ -163,7 +146,7 @@ export const teaserWithIcon = {
               to date!
             </p>
             <div class="flex-none">
-              <sd-button href="#" target="_blank" variant="cta">
+              <sd-button href="javascript:void(0)" variant="cta" inverted>
                 <sd-icon name="system/arrow-right" slot="icon-left"></sd-icon>
                 Click here to register
               </sd-button>
@@ -179,12 +162,7 @@ export const teaserWithIcon = {
           style="--distribution-media: 20%; --distribution-content: 80%;"
         >
           <div slot="media" class="flex flex-wrap justify-center">
-            <sd-icon
-              class="text-[96px]"
-              name="content/city-apartment"
-              library="global-resources"
-              color="primary"
-            ></sd-icon>
+            <sd-icon class="text-[96px]" name="content/city-apartment" color="primary"></sd-icon>
           </div>
           <h3 slot="headline" class="sd-headline sd-headline--size-lg">Responsibility</h3>
           <div class="flex flex-col gap-5">
@@ -193,7 +171,7 @@ export const teaserWithIcon = {
               well as towards our employees and society.
             </p>
             <div class="flex-none">
-              <sd-link href="#">Find out more</sd-link>
+              <sd-link href="javascript:void(0)">Find out more</sd-link>
             </div>
           </div>
         </sd-teaser>
@@ -206,19 +184,10 @@ export const teaserWithChipAndFlag = {
   name: 'Teaser with Chip and Flag',
   render: () => {
     return html`
-      <style>
-        #teaserWithContentPlaceholder::part(media) {
-          flex-grow: 1;
-        }
-      </style>
       <div class="flex flex-col gap-8">
         <sd-teaser variant="primary" breakpoint="9999" inset class="flex-1 flex flex-col max-w-[320px]">
           <div slot="media" class="relative">
-            <img
-              class=""
-              src="./placeholders/images/officeSpace.png"
-              alt="Modern open office with plants, seating, natural light, and a central staircase"
-            />
+            <img src="./placeholders/images/generic.jpg" alt="Generic Alt" class="aspect-video object-cover" />
             <span class="absolute top-3 left-4 sd-chip sd-chip--primary-500">Remote Work</span>
             <span class="absolute top-2 right-0 sd-flag sd-flag--white">Research</span>
           </div>
@@ -235,17 +204,11 @@ export const teaserWithChipAndFlag = {
               question whether demand for office space will be significantly lower in the future.
             </p>
             <div class="flex-none">
-              <sd-link href="#" inverted>Read more</sd-link>
+              <sd-link href="javascript:void(0)" inverted>Read more</sd-link>
             </div>
           </div>
         </sd-teaser>
-        <sd-teaser
-          variant="white border-neutral-400"
-          breakpoint="9999"
-          inset
-          class="relative max-w-[320px]"
-          id="teaserWithIcon"
-        >
+        <sd-teaser variant="white border-neutral-400" breakpoint="9999" inset class="relative max-w-[320px]">
           <span class="absolute top-3 left-4 sd-chip sd-chip--primary-200">Investment</span>
           <span class="absolute top-2 right-0 sd-flag sd-flag--neutral-200">Trends</span>
           <div slot="media" class="flex flex-wrap h-[189px] content-center justify-center">
@@ -260,24 +223,19 @@ export const teaserWithChipAndFlag = {
               in almost five years: by 0.25 points to 4.25 per cent.
             </p>
             <div class="flex-none">
-              <sd-button href="#" target="_blank" variant="primary"> View full post </sd-button>
+              <sd-button href="javascript:void(0)" variant="primary"> View full post </sd-button>
             </div>
           </div>
         </sd-teaser>
         <sd-teaser
           variant="neutral-100"
           breakpoint="0"
-          inset=""
+          inset
           class="flex-1 h-[238px]"
-          id="teaserWithIcon"
           style="--distribution-media: 50%; --distribution-content: 50%;"
         >
           <div slot="media" class="relative">
-            <img
-              class="w-full"
-              src="./placeholders/images/euroSymbolSculpture.png"
-              alt="Modern open office with plants, seating, natural light, and a central staircase"
-            />
+            <img src="./placeholders/images/generic.jpg" alt="Generic Alt" class="aspect-video object-cover w-full" />
             <span class="absolute top-3 left-4 sd-chip sd-chip--white">Real Estate</span>
             <span class="absolute top-2 right-0 sd-flag sd-flag--neutral-300">Analytics</span>
           </div>
@@ -295,22 +253,32 @@ export const teaserWithDivision = {
   name: 'Teaser with 50:50 Division',
   render: () => {
     return html`
-      <sd-teaser variant="neutral-100" breakpoint="0" class="flex-1 p-4" id="teaserWithIcon">
+    <style>
+      sd-teaser#teaserWithDivision::part(content) {
+        min-height: 100%;
+        padding: 24px 48px 24px 0;
+      }
+      sd-teaser#teaserWithDivision::part(main) {
+        height: 100%;
+      }
+    </style>
+      <sd-teaser variant="neutral-100" breakpoint="0" class="max-w-[656px] flex-1 p-4" id="teaserWithDivision">
         <div slot="media" class="relative">
           <img
-            class="w-full"
-            src="./placeholders/images/carstenThiel.png"
-            alt="Carsten Thiel, Head of Fund Management for Open Real Estate Mutual Funds at Union Investment"
-          />
+            class="w-full aspect-[3/4] object-cover"
+            src="./placeholders/images/generic.jpg"
+            alt="Generic Alt"/>
         </div>
-        <h3 slot="headline" class="sd-headline sd-headline--size-3xl">“Our real estate funds are well positioned”</h3>
-        <div class="w-full flex flex-col justify-between space-y-4">
-          <p class="sd-paragraph mt-4 mr-4 text-lg">
+        <div slot="headline">
+          <h3 class="sd-headline sd-headline--size-lg mb-8">“Our real estate funds are well positioned”</h3>
+        </div>
+        <div class="w-full flex flex-col h-full justify-between">
+          <p class="sd-paragraph">
             Carsten Thiel, Head of Fund Management for Open Real Estate Mutual Funds at Union Investment, about the
             opportunities for asset classes in challenging times.
           </p>
           <div>
-            <sd-link href="#" class="text-lg font-bold">To the article</sd-link>
+            <sd-link href="javascript:void(0)" class="font-bold">To the article</sd-link>
             <p class="mt-4">
               <span class="sd-meta sd-meta--pipe">15.09.2023</span>
               <span class="sd-meta">Opinions</span>
@@ -326,18 +294,14 @@ export const contactTeaser = {
     return html`
       <sd-teaser variant="primary-100" breakpoint="9999" inset class="interactive max-w-[375px]">
         <div slot="media" class="relative">
-          <img
-            class="aspect-video object-cover"
-            src="./placeholders/images/nicolasFreyer.png"
-            alt="Nicolas Freyer, Managing Director"
-          />
+          <img class="aspect-video object-cover" src="./placeholders/images/generic.jpg" alt="Generic Alt" />
         </div>
         <h3 slot="headline" class="sd-headline sd-headline--size-lg">Nicolas Freyer</h3>
         <div class="flex flex-col gap-5">
           <p class="sd-paragraph">Managing Director</p>
           <div class="flex-none">
             <sd-link href="#" standalone>
-              <sd-icon library="global-resources" name="system/e-mail" slot="icon-left"></sd-icon>
+              <sd-icon name="system/e-mail" slot="icon-left"></sd-icon>
               nicolas.freyer@union-investment.com</sd-link
             >
           </div>
