@@ -40,8 +40,8 @@ export const TabCentered = {
         <sd-tab-panel name="tab-1">
           <figure class="sd-media pb-4">
             <img
-              src="./placeholders/images/generic.jpg"
-              alt="A generic placeholder jpg"
+              src="./placeholders/images/collaboration.jpg"
+              alt="Two men in business attire sitting on a sofa in a modern office, smiling and looking at a laptop screen."
               class="aspect-video object-cover"
             />
           </figure>
