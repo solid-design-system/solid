@@ -243,8 +243,8 @@ export const teaserWithChipAndFlag = {
           variant="neutral-100"
           breakpoint="0"
           inset
-          class="flex-1 h-[238px]"
-          style="--distribution-media: 50%; --distribution-content: 50%;"
+          class="max-w-[720px] flex-1 h-[238px]"
+          style="--distribution-media: 60%; --distribution-content: 50%;"
         >
           <div slot="media" class="relative">
             <img
@@ -272,24 +272,27 @@ export const teaserWithDivision = {
     <style>
       sd-teaser#teaserWithDivision::part(content) {
         min-height: 100%;
-        padding: 24px 48px 24px 0;
+        padding: 24px 34px 24px 0;
       }
       sd-teaser#teaserWithDivision::part(main) {
         height: 100%;
       }
     </style>
-      <sd-teaser variant="neutral-100" breakpoint="0" class="max-w-[656px] flex-1 p-4" id="teaserWithDivision">
+      <sd-teaser
+      variant="neutral-100"
+      breakpoint="0"
+      class="max-w-[656px] flex-1 p-4"
+      id="teaserWithDivision"
+      style="--distribution-media: 50%; --distribution-content: 50%;">
         <div slot="media" class="relative">
           <img
             class="w-full aspect-[3/4] object-cover"
             src="./placeholders/images/collaboration.jpg"
             alt="Two men in business attire sitting on a sofa in a modern office, smiling and looking at a laptop screen."/>
         </div>
-        <div slot="headline">
-          <h3 class="sd-headline sd-headline--size-lg mb-8">“Our real estate funds are well positioned”</h3>
-        </div>
+        <h3 slot="headline" class="sd-headline sd-headline--size-3xl text-primary">“Our real estate funds are well positioned”</h3>
         <div class="w-full flex flex-col h-full justify-between">
-          <p class="sd-paragraph">
+          <p class="sd-paragraph mt-8">
             Carsten Thiel, Head of Fund Management for Open Real Estate Mutual Funds at Union Investment, about the
             opportunities for asset classes in challenging times.
           </p>
