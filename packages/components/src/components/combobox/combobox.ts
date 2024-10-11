@@ -1,6 +1,5 @@
 import { animateTo, stopAnimations } from '../../internal/animate.js';
-import { classMap } from 'lit/directives/class-map.js';
-import { type CSSResultGroup, html, type TemplateResult } from 'lit';
+import { css, type CSSResultGroup, html, type TemplateResult } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { defaultOptionRenderer, type OptionRenderer } from './option-renderer.js';
 import { defaultValue } from '../../internal/default-value.js';
@@ -15,7 +14,7 @@ import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { waitForEvent } from '../../internal/event.js';
 import { watch } from '../../internal/watch.js';
 import componentStyles from '../../styles/component.styles.js';
-import customStyles from './combobox.custom.styles.js';
+import cx from 'classix';
 import SdIcon from '../icon/icon';
 import SdPopup from '../popup/popup';
 import SdTag from '../tag/tag';
@@ -96,19 +95,22 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   /** The last value of a sd-option, that was selected by click or via keyboard navigation */
   private lastOptionValue = '';
 
-  @query('.combobox') popup: SdPopup;
+  @query('sd-popup') popup: SdPopup;
 
-  @query('.combobox__inputs') combobox: HTMLSlotElement;
+  @query('[part="combobox"]') combobox: HTMLSlotElement;
 
-  @query('.combobox__display-input') displayInput: HTMLInputElement;
+  @query('[part="display-input"]') displayInput: HTMLInputElement;
 
-  @query('.combobox__value-input') valueInput: HTMLInputElement;
+  @query('.value-input') valueInput: HTMLInputElement;
 
-  @query('.combobox__listbox') listbox: HTMLSlotElement;
+  @query('[part="listbox"]') listbox: HTMLSlotElement;
 
-  @query('.listbox__options') filteredWrapper: HTMLSlotElement;
+  @query('#listbox-options') filteredWrapper: HTMLSlotElement;
 
   @query('slot:not([name])') private defaultSlot: HTMLSlotElement;
+
+  /** @internal*/
+  @state() hasHover = false; // we need this because Safari doesn't honor :hover styles while dragging
 
   @state() private hasFocus = false;
 
@@ -117,6 +119,15 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   @state() selectedOption: SdOption | undefined;
 
   @state() filteredOptions: (SdOption | SdOptgroup | undefined)[] = [];
+
+  /**
+   * Indicates whether or not the user input is valid after the user has interacted with the component. These states are activated when the attribute "data-user-valid" or "data-user-invalid" are set on the component via the form controller. They are different than the native input validity state which is always either `true` or `false`.
+   * @internal
+   */
+  @state() showValidStyle = false;
+
+  /** @internal */
+  @state() showInvalidStyle = false;
 
   /** The name of the combobox, submitted as a name/value pair with form data. */
   @property() name = '';
@@ -177,6 +188,12 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
 
   /** The combobox's required attribute. */
   @property({ reflect: true, type: Boolean }) required = false;
+
+  /**
+   * The actual current placement of the select's menu sourced from `sd-popup`.
+   * @internal
+   */
+  @state() currentPlacement = this.placement;
 
   /**
    * A function that customizes the rendered option. The first argument is the option, the second
@@ -642,6 +659,15 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     this.formControlController.emitInvalidEvent(event);
   }
 
+  /** Receives incoming event detail from sd-popup and updates local state for conditional styling. */
+  private handleCurrentPlacement(e: CustomEvent<'top' | 'bottom'>) {
+    const incomingPlacement = e.detail;
+
+    if (incomingPlacement) {
+      this.currentPlacement = incomingPlacement;
+    }
+  }
+
   @watch('filter', { waitUntilFirstUpdate: true })
   handleFilterChange() {
     this.createComboboxOptionsFromQuery(this.value);
@@ -886,45 +912,81 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     const hasLabel = this.label ? true : !!hasLabelSlot;
     const hasHelpText = this.helpText ? true : !!hasHelpTextSlot;
     const hasClearIcon = this.clearable && !this.disabled && this.value.length > 0;
-    const isPlaceholderVisible = this.placeholder && this.value.length === 0;
+
+    // Hierarchy of input states:
+    const selectState = this.disabled
+      ? 'disabled'
+      : this.hasFocus && this.showInvalidStyle
+        ? 'activeInvalid'
+        : this.hasFocus && this.styleOnValid && this.showValidStyle
+          ? 'activeValid'
+          : this.hasFocus || this.open
+            ? 'active'
+            : this.showInvalidStyle
+              ? 'invalid'
+              : this.styleOnValid && this.showValidStyle
+                ? 'valid'
+                : 'default';
+
+    // Conditional Styles
+    const cursorStyles = this.disabled ? 'cursor-not-allowed' : 'cursor-pointer';
+
+    const iconMarginLeft = { sm: 'ml-1', md: 'ml-2', lg: 'ml-2' }[this.size];
+    const iconSize = {
+      sm: 'text-base',
+      md: 'text-lg',
+      lg: 'text-xl'
+    }[this.size];
 
     return html`
       <div
         part="form-control"
-        class=${classMap({
-          'form-control': true,
-          'form-control--has-help-text': hasHelpText,
-          'form-control--has-label': hasLabel,
-          'form-control--large': this.size === 'lg',
-          'form-control--medium': this.size === 'md',
-          'form-control--small': this.size === 'sm'
-        })}
+        class=${cx(
+          'relative text-left',
+          cursorStyles,
+          this.size === 'sm' ? 'text-sm' : 'text-base',
+
+          this.open && 'z-50'
+        )}
       >
         <label
           id="label"
           part="form-control-label"
-          class="form-control__label"
+          class=${hasLabel && 'inline-block mb-2'}
           aria-hidden=${hasLabel ? 'false' : 'true'}
           @click=${this.handleLabelClick}
         >
           <slot name="label">${this.label}</slot>
         </label>
 
-        <div part="form-control-input" class="form-control-input">
+        <div part="form-control-input" class=${cx('relative w-full bg-white', 'text-black')}>
+          <div
+            part="border"
+            class=${cx(
+              'absolute top-0 w-full h-full pointer-events-none border rounded-default',
+              this.hasHover && 'bg-neutral-200',
+              {
+                disabled: 'border-neutral-500',
+                readonly: 'border-neutral-800',
+                activeInvalid: 'border-error border-2',
+                activeValid: 'border-success border-2',
+                active: 'border-primary border-2',
+                invalid: 'border-error',
+                valid: 'border-success',
+                default: 'border-neutral-800'
+              }[selectState],
+              this.open &&
+                (this.currentPlacement === 'bottom'
+                  ? 'rounded-bl-none rounded-br-none'
+                  : 'rounded-tl-none rounded-tr-none')
+            )}
+          ></div>
           <sd-popup
-            class=${classMap({
-              combobox: true,
-              'combobox--bottom': this.placement === 'bottom',
-              'combobox--disabled': this.disabled,
-              'combobox--focused': this.hasFocus,
-              'combobox--large': this.size === 'lg',
-              'combobox--medium': this.size === 'md',
-              'combobox--open': this.open,
-              'combobox--placeholder-visible': isPlaceholderVisible,
-              'combobox--small': this.size === 'sm',
-              'combobox--standard': true,
-              'combobox--top': this.placement === 'top'
-            })}
+            @sd-current-placement=${this.handleCurrentPlacement}
+            class=${cx(
+              'inline-flex relative w-full',
+              this.currentPlacement === 'bottom' ? 'origin-top' : 'origin-bottom'
+            )}
             placement=${this.placement}
             strategy=${this.hoist ? 'fixed' : 'absolute'}
             flip
@@ -932,10 +994,21 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
             sync="width"
             auto-size="vertical"
             auto-size-padding="10"
+            exportparts="
+              popup:popup__content,
+            "
           >
             <div
               part="combobox"
-              class="combobox__inputs"
+              class=${cx(
+                'relative w-full px-4 flex flex-row items-center rounded-default',
+                this.open && 'shadow',
+                {
+                  sm: 'py-1 min-h-[32px]',
+                  md: 'py-1 min-h-[40px]',
+                  lg: 'py-2 min-h-[48px]'
+                }[this.size]
+              )}
               slot="anchor"
               @keydown=${this.handleComboboxKeyDown}
               @mousedown=${this.handleComboboxMouseDown}
@@ -943,8 +1016,14 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
               <slot part="prefix" name="prefix" class="combobox__prefix"></slot>
 
               <input
+                name=${this.name}
+                form=${this.form}
                 part="display-input"
-                class="combobox__display-input"
+                class=${cx(
+                  'appearance-none outline-none flex-grow bg-transparent w-full',
+                  cursorStyles,
+                  this.multiple && this.value.length > 0 ? 'hidden' : ''
+                )}
                 type="text"
                 placeholder=${this.placeholder}
                 .disabled=${this.disabled}
@@ -969,11 +1048,11 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
               />
 
               <input
-                class="combobox__value-input"
+                class=${cx('value-input absolute top-0 left-0 w-full h-full opacity-0 -z-10', cursorStyles)}
                 type="text"
                 ?disabled=${this.disabled}
                 ?required=${this.required}
-                .value=${this.value}
+                .value=${Array.isArray(this.value) ? this.value.join(', ') : this.value}
                 tabindex="-1"
                 aria-hidden="true"
                 @focus=${() => this.focus()}
@@ -984,7 +1063,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                 ? html`
                     <button
                       part="clear-button"
-                      class="combobox__clear"
+                      class=${cx('select__clear flex justify-center', iconMarginLeft)}
                       type="button"
                       aria-label=${this.localize.term('clearEntry')}
                       @mousedown=${this.preventLoosingFocus}
@@ -992,7 +1071,11 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                       tabindex="-1"
                     >
                       <slot name="clear-icon">
-                        <sd-icon name="x-circle-fill" library="system"></sd-icon>
+                        <sd-icon
+                          class=${cx('text-icon-fill-neutral-800', iconSize)}
+                          name="closing-round"
+                          library="system"
+                        ></sd-icon>
                       </slot>
                     </button>
                   `
@@ -1000,8 +1083,17 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
 
               <slot name="suffix" part="suffix" class="combobox__suffix"></slot>
 
-              <slot name="expand-icon" part="expand-icon" class="combobox__expand-icon">
-                <sd-icon library="system" name="chevron-down"></sd-icon>
+              <slot
+                name="expand-icon"
+                part="expand-icon"
+                class=${cx(
+                  'inline-flex ml-2 transition-all',
+                  this.open ? 'rotate-180' : 'rotate-0',
+                  this.disabled ? 'text-neutral-500' : 'text-primary',
+                  iconSize
+                )}
+              >
+                <sd-icon name="chevron-down" part="chevron" library="system" color="currentColor"></sd-icon>
               </slot>
             </div>
 
@@ -1009,15 +1101,22 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
               id="listbox"
               role="listbox"
               aria-expanded=${this.open ? 'true' : 'false'}
+              aria-multiselectable=${this.multiple ? 'true' : 'false'}
               aria-labelledby="label"
               part="listbox"
-              class="combobox__listbox"
+              class=${cx(
+                'bg-white px-2 py-3 relative border-primary overflow-y-auto',
+                this.open && 'shadow',
+                this.currentPlacement === 'bottom'
+                  ? 'border-r-2 border-b-2 border-l-2 rounded-br-default rounded-bl-default'
+                  : 'border-r-2 border-t-2 border-l-2 rounded-tr-default rounded-tl-default'
+              )}
               tabindex="-1"
               @mousedown=${this.preventLoosingFocus}
               @mouseup=${this.handleOptionClick}
             >
-              <div class="listbox__options" part="filtered-listbox">${this.options}</div>
-              <slot @slotchange=${this.handleDefaultSlotChange}></slot>
+              <div id="listbox-options" part="filtered-listbox">${this.options}</div>
+              <slot class="hidden" @slotchange=${this.handleDefaultSlotChange}></slot>
             </div>
           </sd-popup>
         </div>
@@ -1025,7 +1124,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
         <div
           part="form-control-help-text"
           id="help-text"
-          class="form-control__help-text"
+          class="text-sm text-neutral-700"
           aria-hidden=${hasHelpText ? 'false' : 'true'}
         >
           <slot name="help-text">${this.helpText}</slot>
@@ -1033,7 +1132,40 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       </div>
     `;
   }
-  static styles: CSSResultGroup = [componentStyles, SolidElement.styles, styles, customStyles];
+  static styles: CSSResultGroup = [
+    componentStyles,
+    SolidElement.styles,
+    styles,
+    css`
+      :host {
+        @apply block relative w-full;
+      }
+
+      :host([required]) #label::after {
+        content: ' *';
+      }
+
+      [part='listbox'] {
+        max-height: var(--auto-size-available-height, auto);
+      }
+
+      sd-popup::part(popup) {
+        @apply overflow-y-scroll z-dropdown;
+      }
+
+      sd-tag::part(base) {
+        @apply rounded-default px-1;
+      }
+
+      sd-tag[size='lg']::part(base) {
+        @apply px-2;
+      }
+
+      sd-tag[disabled='false']::part(base):hover {
+        @apply bg-primary-100;
+      }
+    `
+  ];
   /* eslint-enable @typescript-eslint/unbound-method */
 }
 

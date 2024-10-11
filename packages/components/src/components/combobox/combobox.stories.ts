@@ -528,19 +528,19 @@ export const Invalid = {
 export const PrefixSuffixTextAndIcons = {
   render: () => html`
     <div class="w-[400px] h-[800px]">
-      <sd-combobox placeholder="Small" size="small" clearable>
+      <sd-combobox placeholder="Small" size="sm" clearable>
         <span slot="prefix">prefix</span>
         <span slot="suffix">suffix</span>
         ${createColorOptionsHtml()}
       </sd-combobox>
       <br />
-      <sd-combobox placeholder="Medium" size="medium" clearable>
+      <sd-combobox placeholder="Medium" size="md" clearable>
         <span slot="prefix">prefix</span>
         <span slot="suffix">suffix</span>
         ${createColorOptionsHtml()}
       </sd-combobox>
       <br />
-      <sd-combobox placeholder="Large" size="large" clearable>
+      <sd-combobox placeholder="Large" size="lg" clearable>
         <span slot="prefix">prefix</span>
         <span slot="suffix">suffix</span>
         ${createColorOptionsHtml()}
@@ -548,19 +548,19 @@ export const PrefixSuffixTextAndIcons = {
 
       <br />
 
-      <sd-combobox placeholder="Small" size="small" clearable>
+      <sd-combobox placeholder="Small" size="sm" clearable>
         <sd-icon name="union-investment/content/image" slot="prefix"></sd-icon>
         ${createColorOptionsHtml()}
         <sd-icon name="union-investment/content/image" slot="suffix"></sd-icon>
       </sd-combobox>
       <br />
-      <sd-combobox placeholder="Medium" size="medium" clearable>
+      <sd-combobox placeholder="Medium" size="md" clearable>
         <sd-icon name="union-investment/content/image" slot="prefix"></sd-icon>
         ${createColorOptionsHtml()}
         <sd-icon name="union-investment/content/image" slot="suffix"></sd-icon>
       </sd-combobox>
       <br />
-      <sd-combobox placeholder="Large" size="large" clearable>
+      <sd-combobox placeholder="Large" size="lg" clearable>
         <sd-icon name="union-investment/content/image" slot="prefix"></sd-icon>
         ${createColorOptionsHtml()}
         <sd-icon name="union-investment/content/image" slot="suffix"></sd-icon>
