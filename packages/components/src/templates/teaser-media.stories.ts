@@ -23,9 +23,9 @@ export const TeaserMediaWithLink = {
       <sd-teaser-media variant="gradient-dark">
         <div slot="media" class="relative">
           <img
-            class="w-full aspect-ratio "
-            src="./placeholders/images/skyline.jpg"
-            alt="City skyline of Frankfurt by night in christmas time."
+            class="w-full aspect-ratio"
+            src="./placeholders/images/coins.jpg"
+            alt="Close-up of hands stacking coins into small piles on a table, suggesting financial planning or saving."
           />
         </div>
         <div slot="meta" class="meta-info">
@@ -43,7 +43,12 @@ export const TeaserMediaWithLink = {
         </div>
       </sd-teaser-media>
       <sd-teaser-media variant="primary">
-        <img slot="media" class="w-full" src="./placeholders/images/workspace.jpg" alt="" />
+        <img
+          slot="media"
+          class="w-full"
+          src="./placeholders/images/collaboration.jpg"
+          alt="Two men in business attire sitting on a sofa in a modern office, smiling and looking at a laptop screen."
+        />
         <h3 slot="headline" class="sd-headline sd-headline--inverted">Your contact person</h3>
         <div class="flex flex-col gap-4">
           <p class="sd-paragraph sd-paragraph--inverted">
