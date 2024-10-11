@@ -55,8 +55,8 @@ export const TabCentered = {
         <sd-tab-panel name="tab-2">
           <figure class="sd-media pb-4">
             <img
-              src="./placeholders/images/generic.jpg"
-              alt="A generic placeholder jpg"
+              src="./placeholders/images/family.jpg"
+              alt="A man with glasses and a beard holding two young children in his arms, smiling outdoors with trees in the background."
               class="aspect-video object-cover"
             />
           </figure>
@@ -70,8 +70,8 @@ export const TabCentered = {
         <sd-tab-panel name="tab-3">
           <figure class="sd-media pb-4">
             <img
-              src="./placeholders/images/generic.jpg"
-              alt="A generic placeholder jpg"
+              src="./placeholders/images/workspace.jpg"
+              alt="Close-up of a pair of glasses, a pen, and an open notebook with notes written on it, on a desk next to a laptop."
               class="aspect-video object-cover"
             />
           </figure>
@@ -85,8 +85,8 @@ export const TabCentered = {
         <sd-tab-panel name="tab-4">
           <figure class="sd-media pb-4">
             <img
-              src="./placeholders/images/generic.jpg"
-              alt="A generic placeholder jpg"
+              src="./placeholders/images/collaboration.jpg"
+              alt="Two men in business attire sitting on a sofa in a modern office, smiling and looking at a laptop screen."
               class="aspect-video object-cover"
             />
           </figure>
