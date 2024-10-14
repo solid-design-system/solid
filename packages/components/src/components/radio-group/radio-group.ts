@@ -65,7 +65,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
   @state() showInvalidStyle = false;
 
   /** The radio group's size. This size will be applied to the label, all child radios and radio buttons. */
-  @property({ reflect: true }) size: 'lg' | 'sm' = 'lg';
+  @property({ reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
 
   /** Ensures a child radio is checked before allowing the containing form to submit. */
   @property({ type: Boolean, reflect: true }) required = false;
@@ -369,6 +369,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
           {
             /* sizes, fonts */
             sm: 'text-sm',
+            md: 'text-base',
             lg: 'text-base'
           }[this.size]
         )}
