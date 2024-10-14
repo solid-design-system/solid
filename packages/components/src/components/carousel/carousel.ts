@@ -53,6 +53,8 @@ import SolidElement from '../../internal/solid-element.js';
 @customElement('sd-carousel')
 export default class SdCarousel extends SolidElement {
   @query('[part~="autoplay-controls"]') autoplayControls: HTMLElement;
+  @query('[part~="navigation-button--previous"]') previousButton: HTMLButtonElement;
+  @query('[part~="navigation-button--next"]') nextButton: HTMLButtonElement;
 
   /** Determines the counting system for the carousel. */
   @property({ type: String, reflect: true }) variant: 'dot' | 'number' = 'number';
@@ -352,8 +354,6 @@ export default class SdCarousel extends SolidElement {
         slide.style.setProperty('scroll-snap-align', 'none');
       }
     });
-
-    // this.handleScrollEnd();
   }
 
   @watch('autoplay')
@@ -383,6 +383,9 @@ export default class SdCarousel extends SolidElement {
     } else {
       this.goToSlide(previousIndex, behavior);
     }
+
+    // This keeps the carousel from pausing autoplay due to the lingering focus
+    this.previousButton?.blur();
   }
 
   /**
@@ -401,6 +404,9 @@ export default class SdCarousel extends SolidElement {
         this.nextTillFirst(behavior);
       }
     }
+
+    // This keeps the carousel from pausing autoplay due to the lingering focus
+    this.nextButton?.blur();
   }
 
   nextTillFirst(behavior: ScrollBehavior = 'smooth') {
