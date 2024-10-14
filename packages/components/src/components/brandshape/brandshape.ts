@@ -22,8 +22,8 @@ type Breakpoints = 0 | 414 | 640;
  * @csspart shape-top - Top shape.
  * @csspart shape-middle - Middle shape.
  * @csspart shape-bottom - Bottom shape.
- *
- * @cssproperty --image-translate-Y - The Y translation of the image slot. Adjust this based on your media queries or breakpoints to correct possible misplacement of the image.
+ * @csspart border-container - Container for the border variant.
+ * @csspart image-container - Container for the image variant.
  */
 
 @customElement('sd-brandshape')
@@ -196,13 +196,7 @@ export default class SdBrandshape extends SolidElement {
 
   private renderSkewedBorder(): TemplateResult {
     return html`
-      <div
-        class="${cx(
-          this.variant === 'border-primary' ? 'container--outline-primary' : '',
-          this.variant === 'border-white' ? 'container--outline-white' : '',
-          'container--stylized bg-transparent py-10 relative z-10 border-0;'
-        )}"
-      >
+      <div part="border-container" class="bg-transparent relative z-10">
         ${this.renderTopBrandshape()} ${this.renderMiddleBrandshape()} ${this.renderBottomBrandshape()}
       </div>
     `;
@@ -210,8 +204,8 @@ export default class SdBrandshape extends SolidElement {
 
   private renderSkewedImage(): TemplateResult {
     return html`
-      <div class="container--stylized bg-transparent py-10 relative z-10 border-0;">
-        <div class="image-wrapper">
+      <div class="bg-transparent relative z-10 border-0">
+        <div part="image-container" class="absolute w-full z-10 overflow-hidden">
           <slot name="image"></slot>
         </div>
         ${this.renderTopBrandshape()} ${this.renderMiddleBrandshape()} ${this.renderBottomBrandshape()}
@@ -262,87 +256,59 @@ export default class SdBrandshape extends SolidElement {
     css`
       :host {
         @apply block;
-        --image-translate-Y: -37%;
+        container-type: inline-size;
+        --angle: 11deg;
+        --adjacent: 100cqw;
+        --curve: 60px;
+        --opposite: calc(tan(var(--angle)) * var(--adjacent));
+        --opposite-minus-curve: calc(
+          var(--opposite) - (var(--curve) / 3)
+        ); /* Not sure, why the division by 3 works for every screen size – but it works, so do not touch it */
       }
 
-      .container--outline-primary::before {
-        --internal-border-color: rgb(var(--sd-color-primary, 0 53 142));
-        --internal-border-width: 2px;
-      }
-
-      .container--outline-white::before {
-        --internal-border-color: var(--sd-color-white, white);
-        --internal-border-width: 2px;
-      }
-
-      .container--stylized::before {
-        @apply absolute top-0 bottom-0 right-0 left-0 border-solid inset-0 z-[-1];
-        content: '';
-        color: var(--internal-color, black);
-        border-color: var(--internal-border-color, black);
-        border-width: var(--internal-border-width, 0);
-        border-radius: 0 60px;
-        margin-bottom: calc(21.256% / 2);
-        margin-top: calc(21.256% / 2);
-        transform: skewY(-11deg);
-      }
-
-      .image-wrapper {
-        @apply absolute top-0 left-0 w-full z-10 overflow-hidden;
-        height: -webkit-fill-available;
-        margin-bottom: calc(21.256% / 2);
-        margin-top: calc(21.256% / 2);
-        border-radius: 0 60px;
-        transform: skewY(-11deg);
-      }
-
-      slot[name='image']::slotted(img) {
-        @apply w-full h-full object-cover origin-top-left;
-        transform: translateY(var(--image-translate-Y)) skewY(11deg);
-      }
-
-      /* Responsive border-radius */
       @media (min-width: 415px) {
-        .container--stylized::before,
-        .image-wrapper {
-          border-radius: 0 72px;
+        :host {
+          --curve: 72px;
         }
       }
 
       @media (min-width: 640px) {
-        .container--stylized::before,
-        .image-wrapper {
-          border-radius: 0 84px;
+        :host {
+          --curve: 84px;
         }
       }
 
-      /* Responsive image positioning */
-      @container (min-width: 415px) {
-        :host {
-          --image-translate-Y: -33%;
-        }
-
-        .container--stylized::before,
-        .image-wrapper {
-          border-radius: 0 72px;
-        }
+      [part='image-container'],
+      [part='border-container']::before {
+        @apply absolute top-0 left-0;
+        transform: skewY(calc(var(--angle) * -1));
+        height: calc(100% - var(--opposite-minus-curve));
+        border-radius: 0 var(--curve);
+        margin-top: calc(var(--opposite-minus-curve) * 0.5);
       }
 
-      @container (min-width: 640px) {
-        :host {
-          --image-translate-Y: -40%;
-        }
-
-        .container--stylized::before,
-        .image-wrapper {
-          border-radius: 0 84px;
-        }
+      slot[name='image']::slotted(img),
+      slot[name='image']::slotted(video) {
+        @apply w-full object-cover;
+        transform: translateY(calc(var(--opposite-minus-curve) * -0.5)) skewY(var(--angle)) !important;
+        height: calc(100% + var(--opposite-minus-curve)) !important;
+        position: absolute !important;
       }
 
-      @container (min-width: 1024px) {
-        :host {
-          --image-translate-Y: -45%;
-        }
+      /* Stylized border */
+
+      :host([variant='border-primary']) {
+        --internal-border-color: rgb(var(--sd-color-primary, 0 53 142));
+      }
+
+      :host([variant='border-white']) {
+        --internal-border-color: var(--sd-color-white, white);
+      }
+
+      [part='border-container']::before {
+        @apply right-0 border-solid border-2;
+        content: '';
+        border-color: var(--internal-border-color, black);
       }
     `
   ];

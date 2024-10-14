@@ -126,7 +126,7 @@ export const Shapes = {
 };
 
 /**
- * Use the `--image-translate-Y` CSS custom property to adjust the position of the image.
+ * Use the `object-position` CSS property to adjust the focal point of the image.
  */
 
 export const ImageTranslateY = {
@@ -136,9 +136,9 @@ export const ImageTranslateY = {
       <div class="slot slot--border slot--text h-8 w-full">Default slot</div>
       <img
         slot="image"
-        src="./placeholders/images/collaboration.jpg"
-        alt="Generic"
-        style="--image-translate-Y: -40%;"
+        src="./placeholders/images/architecture.jpg"
+        style="object-position: top right"
+        alt="Modern, waved architecture with blue sky in background"
       />
     </sd-brandshape>
   `
