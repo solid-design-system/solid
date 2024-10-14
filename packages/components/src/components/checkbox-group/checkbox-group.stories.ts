@@ -47,6 +47,7 @@ export const Default = {
  * Use the `size` attribute to change the size:
  *
  * - `lg` (default)
+ * - `md`
  * - `sm`
  */
 export const Size = {
@@ -54,6 +55,12 @@ export const Size = {
   render: () => html`
     <div class="flex gap-12">
       <sd-checkbox-group size="lg">
+        <sd-checkbox value="1">Checkbox 1</sd-checkbox>
+        <sd-checkbox value="2">Checkbox 2</sd-checkbox>
+        <sd-checkbox value="3">Checkbox 3</sd-checkbox>
+      </sd-checkbox-group>
+
+      <sd-checkbox-group size="md">
         <sd-checkbox value="1">Checkbox 1</sd-checkbox>
         <sd-checkbox value="2">Checkbox 2</sd-checkbox>
         <sd-checkbox value="3">Checkbox 3</sd-checkbox>
