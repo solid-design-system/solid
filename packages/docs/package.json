@@ -1,7 +1,7 @@
 {
   "name": "@solid-design-system/docs",
   "description": "This package provides the documentation for the Solid Design System.",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "author": {
     "name": "Union Investment"
   },
