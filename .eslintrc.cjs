@@ -139,6 +139,93 @@ module.exports = {
         '@typescript-eslint/no-unsafe-call': 'off',
         '@typescript-eslint/no-unused-expressions': 'off'
       }
+    },
+    {
+      extends: [
+        'plugin:@typescript-eslint/eslint-recommended',
+        'plugin:@typescript-eslint/recommended',
+        'plugin:@typescript-eslint/recommended-requiring-type-checking'
+      ],
+      parser: '@typescript-eslint/parser',
+      parserOptions: {
+        sourceType: 'module',
+        tsconfigRootDir: __dirname,
+        project: ['./packages/docs/tsconfig.json']
+      },
+      files: ['packages/docs/**/*.ts'],
+      rules: {
+        'default-param-last': 'off',
+        '@typescript-eslint/default-param-last': 'error',
+        'no-empty-function': 'off',
+        '@typescript-eslint/no-empty-function': 'warn',
+        'no-implied-eval': 'off',
+        '@typescript-eslint/no-implied-eval': 'error',
+        'no-invalid-this': 'off',
+        '@typescript-eslint/no-invalid-this': 'error',
+        'no-shadow': 'off',
+        '@typescript-eslint/no-shadow': 'error',
+        'no-throw-literal': 'off',
+        '@typescript-eslint/no-throw-literal': 'error',
+        'no-unused-expressions': 'off',
+        '@typescript-eslint/prefer-regexp-exec': 'off',
+        '@typescript-eslint/no-unused-expressions': 'error',
+        '@typescript-eslint/unbound-method': 'off',
+        '@typescript-eslint/no-non-null-assertion': 'off',
+        '@typescript-eslint/no-floating-promises': 'off',
+        '@typescript-eslint/no-misused-promises': [
+          'error',
+          {
+            checksVoidReturn: false
+          }
+        ],
+        '@typescript-eslint/consistent-type-assertions': [
+          'warn',
+          {
+            assertionStyle: 'as',
+            objectLiteralTypeAssertions: 'never'
+          }
+        ],
+        '@typescript-eslint/consistent-type-imports': 'warn',
+        '@typescript-eslint/no-base-to-string': 'error',
+        '@typescript-eslint/no-confusing-non-null-assertion': 'error',
+        '@typescript-eslint/no-invalid-void-type': 'error',
+        '@typescript-eslint/no-require-imports': 'error',
+        '@typescript-eslint/no-unnecessary-boolean-literal-compare': 'warn',
+        '@typescript-eslint/no-unnecessary-condition': 'off',
+        '@typescript-eslint/no-unnecessary-qualifier': 'warn',
+        '@typescript-eslint/non-nullable-type-assertion-style': 'warn',
+        '@typescript-eslint/prefer-for-of': 'warn',
+        '@typescript-eslint/prefer-optional-chain': 'warn',
+        '@typescript-eslint/prefer-ts-expect-error': 'warn',
+        '@typescript-eslint/prefer-return-this-type': 'error',
+        '@typescript-eslint/prefer-string-starts-ends-with': 'warn',
+        '@typescript-eslint/require-array-sort-compare': 'error',
+        '@typescript-eslint/unified-signatures': 'warn',
+        '@typescript-eslint/array-type': 'warn',
+        '@typescript-eslint/consistent-type-definitions': ['warn', 'interface'],
+        '@typescript-eslint/member-delimiter-style': 'warn',
+        '@typescript-eslint/method-signature-style': 'warn',
+        '@typescript-eslint/no-extraneous-class': 'error',
+        '@typescript-eslint/strict-boolean-expressions': 'off',
+        'no-restricted-imports': [
+          'error',
+          {
+            paths: [
+              {
+                name: 'lit/decorators.js',
+                importNames: ['customElement'],
+                message: "Use import 'customElement' from '../../../src/internal/register-custom-element' instead."
+              },
+              {
+                name: 'lit/decorators/custom-element.js',
+                importNames: ['customElement'],
+                message: "Use import 'customElement' from '../../../src/internal/register-custom-element' instead."
+              }
+            ]
+          }
+        ],
+        'lit-a11y/no-aria-slot': 'off'
+      }
     }
   ],
   rules: {

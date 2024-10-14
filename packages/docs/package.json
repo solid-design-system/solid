@@ -1,0 +1,109 @@
+{
+  "name": "@solid-design-system/docs",
+  "description": "This package provides the documentation for the Solid Design System.",
+  "version": "0.0.1",
+  "author": {
+    "name": "Union Investment"
+  },
+  "license": "MIT",
+  "customElements": "dist/custom-elements.json",
+  "web-types": "dist/web-types.json",
+  "type": "module",
+  "exports": {
+    "./*": "./src/*"
+  },
+  "files": [
+    "src"
+  ],
+  "keywords": [
+    "documentation",
+    "web components",
+    "custom elements",
+    "components"
+  ],
+  "scripts": {
+    "dev": "pnpm storybook",
+    "storybook": "storybook dev -p 6006"
+  },
+  "dependencies": {
+    "classix": "^2.1.35",
+    "lit": "^3.2.0"
+  },
+  "devDependencies": {
+    "@geometricpanda/storybook-addon-badges": "^2.0.0",
+    "@mariohamann/wc-storybook-helpers": "^1.3.3",
+    "@rollup/pluginutils": "^5.1.0",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/exec": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@solid-design-system/theming": "workspace:*",
+    "@storybook/addon-essentials": "^8.1.10",
+    "@storybook/addon-interactions": "^8.1.10",
+    "@storybook/addon-links": "^8.1.10",
+    "@storybook/addon-mdx-gfm": "^8.1.10",
+    "@storybook/addons": "^7.5.3",
+    "@storybook/blocks": "^8.1.10",
+    "@storybook/theming": "^8.1.10",
+    "@storybook/web-components": "^8.1.10",
+    "@storybook/web-components-vite": "^8.1.10",
+    "@tarekraafat/autocomplete.js": "^10.2.7",
+    "autoprefixer": "^10.4.16",
+    "cem-plugin-vs-code-custom-data-generator": "^1.4.2",
+    "change-case": "^5.4.4",
+    "comment-parser": "^1.4.1",
+    "countup.js": "^2.8.0",
+    "cssnano": "^7.0.3",
+    "lit-html": "^3.1.4",
+    "normalize.css": "^8.0.1",
+    "plop": "^4.0.0",
+    "postcss": "^8.4.31",
+    "prettier": "^3.3.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "semantic-release": "^19.0.5",
+    "semantic-release-monorepo": "^7.0.5",
+    "storybook": "^8.1.10",
+    "tailwindcss": "^3.3.5",
+    "typescript": "5.4.5",
+    "vite": "^5.3.1",
+    "vite-plugin-cem": "^0.8.0",
+    "vite-tsconfig-paths": "^4.2.1"
+  },
+  "release": {
+    "branches": [
+      "main"
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      [
+        "@semantic-release/changelog",
+        {
+          "changelogFile": "CHANGELOG.md"
+        }
+      ],
+      [
+        "@semantic-release/npm",
+        {
+          "npmPublish": true
+        }
+      ],
+      [
+        "@semantic-release/git",
+        {
+          "message": "chore(release/tokens): ${nextRelease.version} [skip actions]\n\n${nextRelease.notes}",
+          "assets": [
+            "CHANGELOG.md",
+            "package.json"
+          ]
+        }
+      ],
+      [
+        "@semantic-release/github",
+        {
+          "successComment": false
+        }
+      ]
+    ]
+  }
+}

@@ -1,0 +1,69 @@
+# Migration Guide: From `ui-tab` to `sd-tab`
+
+The new `sd-tab` is designed to replace the `ui-tab`. Instead of mainly providing content via attributes, the `sd-tab` component uses slots to allow for more flexibility and customization.
+
+## 💾 Slots
+
+### ✨ New Slots
+
+#### [left]
+
+Optional element (eg. icon) positioned to the left of the label.
+
+<hr />
+
+## ⚙️ Attributes
+
+### ✨ New Attributes
+
+#### [panel]
+
+The name of the tab panel this tab is associated with. The panel must be located in the same tab group.
+
+#### [variant]
+
+When set to container, a border appears around the current tab and tab-panel.
+
+#### [disabled]
+
+Disables the tab and prevents selection.
+
+### ❌ Removed Attributes
+
+The following attributes have been removed from the new sd-tab component:
+
+1. [tab-id]
+2. [tab-titlee]
+
+<hr />
+
+## 🥳 Events
+
+### ❌ Removed Events:
+
+The following events have been removed from the new sd-tab component:
+
+1. [tabClicked]
+
+<hr />
+
+## 🧪 Methods
+
+### ✨ New Methods
+
+#### [focus]
+
+Sets focus to the tab.
+
+#### [blur]
+
+Removes focus from the tab.
+
+### ❌ Removed Methods:
+
+The following methods have been removed from the new sd-tab component:
+
+1. [activate]
+2. [deactivate]
+
+<hr />

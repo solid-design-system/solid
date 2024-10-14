@@ -1,0 +1,146 @@
+<script>
+  window.global = window;
+  document.documentElement.setAttribute('lang', 'en');
+</script>
+<style>
+  body {
+    font-family:
+      'Frutiger Neue',
+      ui-sans-serif,
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      'Segoe UI',
+      Roboto,
+      'Helvetica Neue',
+      Arial,
+      'Noto Sans',
+      sans-serif,
+      'Apple Color Emoji',
+      'Segoe UI Emoji',
+      'Segoe UI Symbol',
+      'Noto Color Emoji';
+  }
+
+  @font-face {
+    font-family: 'Frutiger Neue';
+    font-style: normal;
+    font-weight: 400;
+    src: url('./fonts/FrutigerNeuefuerUIWebW05-Bk.woff2') format('woff2');
+  }
+
+  @font-face {
+    font-family: 'Frutiger Neue';
+    font-style: italic;
+    font-weight: 400;
+    src: url('./fonts/FrutigerNeuefuerUIWebW05-BkIt.woff2') format('woff2');
+  }
+
+  @font-face {
+    font-family: 'Frutiger Neue';
+    font-style: normal;
+    font-weight: 600;
+    src: url('./fonts/FrutigerNeuefuerUIWebW05-Bd.woff2') format('woff2');
+  }
+
+  @font-face {
+    font-family: 'Frutiger Neue';
+    font-style: italic;
+    font-weight: 600;
+    src: url('./fonts/FrutigerNeuefuerUIWebW05-BdIt.woff2') format('woff2');
+  }
+
+  /**
+    * Render Neue Frutiger correctly.
+    * We won't provide this in the components as the font is set in the upper scope and the font should adapt to that.
+    */
+
+  :root {
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    line-height: 1.5;
+    font-size: 16px;
+  }
+
+  /**
+   * Hide custom elements until they are hydrated.
+   */
+
+  :not(:defined) {
+    visibility: hidden;
+  }
+
+  /**
+    * Mock for the slot element used in Figma.
+    */
+
+  .slot {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: stretch;
+    justify-content: center;
+    visibility: visible !important;
+    border-radius: 6px;
+  }
+
+  .slot--text {
+    color: #9747ff;
+    font-size: 14px;
+    font-family: 'Courier New', Courier, monospace;
+    flex-grow: 0;
+    font-weight: bold;
+    padding: 8px;
+  }
+
+  .slot--background {
+    background-color: #9747ff34;
+  }
+
+  .slot--border {
+    border: 2px dashed #9747ff;
+  }
+
+  .slot--overlay {
+    filter: sepia(100%) hue-rotate(216deg);
+  }
+
+  .mouseless,
+  .mouseless:hover {
+    cursor: none !important;
+    padding: 0.5rem;
+    /* makes focus ring completely visible in Chromatic screenshots */
+  }
+
+  .mouseless * {
+    pointer-events: none !important;
+  }
+
+  .sbdocs .sbdocs-content ol {
+    list-style-type: decimal !important;
+  }
+
+  body.sd-scroll-lock {
+    padding-right: unset !important;
+    overflow: unset !important;
+  }
+
+  /**
+    * Optimize autodocs for templates
+    */
+  .sbdocs-title + * + [id^='anchor--templates-'].sb-anchor,
+  h1.sbdocs-title + * + [id^='anchor--templates-'].sb-anchor + h2,
+  [id^='anchor--templates-'].sb-anchor > .sbdocs > .sb-bar,
+  h2#stories + [id^='anchor--components-'].sb-anchor,
+  h2#stories + [id^='anchor--styles-'].sb-anchor {
+    display: none;
+  }
+
+  [id^='anchor--templates-'].sb-anchor > .sbdocs {
+    padding: 0;
+  }
+</style>
