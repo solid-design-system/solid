@@ -23,7 +23,7 @@ export const SampleA = {
       #anchor--templates-header--sample-a .innerZoomElementWrapper,
       #anchor--templates-header--sample-a-02 .innerZoomElementWrapper,
       #anchor--templates-header--sample-b .innerZoomElementWrapper {
-        height: 300px;
+        height: 900px;
       }
     </style>
     <sd-header fixed>
@@ -35,7 +35,7 @@ export const SampleA = {
         <!-- top-left-area end !-->
         <!-- top-right-area start !-->
         <div class="flex lg:hidden">
-          <sd-navigation-item>
+          <sd-navigation-item onclick="openDrawer()">
             <sd-icon name="system/menu" class="text-xl  -my-[1.5px] -mx-[4px]"></sd-icon>
           </sd-navigation-item>
         </div>
@@ -80,6 +80,43 @@ export const SampleA = {
         </div>
       </div>
     </sd-header>
+    <sd-drawer id="sampleA" placement="end">
+      <nav>
+        <sd-navigation-item vertical current>
+          <b>Home page</b>
+        </sd-navigation-item>
+        <sd-navigation-item vertical chevron divider>About Us</sd-navigation-item>
+        <sd-navigation-item vertical chevron divider>Markets</sd-navigation-item>
+        <sd-navigation-item vertical chevron divider>Press service</sd-navigation-item>
+        <sd-navigation-item vertical chevron divider>Sustainability</sd-navigation-item>
+        <sd-navigation-item vertical chevron divider>Career</sd-navigation-item>
+      </nav>
+      <nav slot="footer" class="bg-neutral-100">
+        <sd-navigation-item vertical="" class="flex align-center">
+          <sd-icon name="system/user" class="h-6 w-6 mr-2"></sd-icon>
+          My depot
+        </sd-navigation-item>
+        <sd-navigation-item vertical="" divider="" class="flex align-center">
+          <sd-icon name="system/lock-locked" class="h-6 w-6 mr-2"></sd-icon>
+          My application
+        </sd-navigation-item>
+        <sd-navigation-item vertical="" divider="" class="flex align-center">
+          <sd-icon name="system/website" class="h-6 w-6 mr-2"></sd-icon>
+          Our further appearances
+        </sd-navigation-item>
+      </nav>
+    </sd-drawer>
+    <script>
+      async function openDrawer() {
+        try {
+          const drawer = document.querySelector('sd-drawer');
+          await drawer.show();
+          console.log('Drawer opened');
+        } catch (error) {
+          console.error('Error showing drawer:', error);
+        }
+      }
+    </script>
   `
 };
 
