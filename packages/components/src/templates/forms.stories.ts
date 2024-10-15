@@ -19,17 +19,32 @@ export default {
 
 export const loginForm = {
   render: () => html`
+    <style>
+      #loginForm__submitButton::part(icon-left) {
+        display: flex;
+      }
+      #loginForm__submitButton::part(base) {
+        display: flex;
+      }
+    </style>
     <section class="sd-container">
-      <form>
+      <form id="loginForm">
         <h3 class="sd-headline sd-headline--size-3xl mb-8">Login for UnionFondsOnline users</h3>
-        <sd-input type="text" label="Access number" spellcheck class="mb-4"></sd-input>
-        <sd-input type="password" label="Access number" password-toggle spellcheck class="mb-4"></sd-input>
+        <sd-input type="number" label="Access number" class="mb-4" autocomplete></sd-input>
+        <sd-input
+          type="password"
+          label="Password"
+          password-toggle
+          spellcheck
+          class="mb-4"
+          autocomplete="current-password"
+        ></sd-input>
         <sd-checkbox>Stay logged in on this computer</sd-checkbox>
         <div class="justify-between md:items-center md:flex-row mt-8 flex flex-col">
-          <sd-link href="#" class="mb-4 md:mb-0">Forgot password</sd-link>
-          <sd-button>
-            <sd-icon name="system/lock-locked" slot="icon-left"></sd-icon>
+          <sd-link href="javascript:void(0)" class="mb-4 md:mb-0">Forgot password</sd-link>
+          <sd-button id="loginForm__submitButton">
             Login
+            <sd-icon name="system/lock-locked" slot="icon-left"></sd-icon>
           </sd-button>
         </div>
       </form>
@@ -58,7 +73,9 @@ export const contactForm = {
         <sd-textarea label="News" rows="4" spellcheck></sd-textarea>
       </div>
       <sd-checkbox-group class="mb-8">
-        <sd-checkbox value="privacy_policy">I accept the <sd-link href="#">Privacy Policy</sd-link>.</sd-checkbox>
+        <sd-checkbox value="privacy_policy" required>
+          I accept the <sd-link href="#">Privacy Policy</sd-link>.
+        </sd-checkbox>
         <sd-checkbox value="marketing_emails">I would like to receive marketing emails.</sd-checkbox>
       </sd-checkbox-group>
       <div class="flex flex-col gap-4 md:flex-row md:justify-end">
