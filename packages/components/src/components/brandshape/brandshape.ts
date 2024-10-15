@@ -195,10 +195,7 @@ export default class SdBrandshape extends SolidElement {
   }
 
   private renderSkewedBorder(): TemplateResult {
-    return html`
-      <div part="border-container" class="w-full overflow-hidden"></div>
-      ${this.renderTopBrandshape()} ${this.renderMiddleBrandshape()} ${this.renderBottomBrandshape()}
-    `;
+    return html` <div part="border-container" class="w-full overflow-hidden"></div> `;
   }
 
   private renderSkewedImage(): TemplateResult {
@@ -206,7 +203,6 @@ export default class SdBrandshape extends SolidElement {
       <div part="image-container" class="w-full overflow-hidden">
         <slot name="image"></slot>
       </div>
-      ${this.renderTopBrandshape()} ${this.renderMiddleBrandshape()} ${this.renderBottomBrandshape()}
     `;
   }
 
@@ -221,7 +217,6 @@ export default class SdBrandshape extends SolidElement {
   render() {
     const isBorderVariant = this.variant.startsWith('border-');
     const isImageVariant = this.variant === 'image';
-    this.parentElement!.style.containerType = 'inline-size';
 
     return html`
       <div
@@ -239,7 +234,7 @@ export default class SdBrandshape extends SolidElement {
         part="base"
       >
         ${isBorderVariant ? this.renderSkewedBorder() : ''} ${isImageVariant ? this.renderSkewedImage() : ''}
-        ${!isBorderVariant && !isImageVariant ? this.renderShapes() : ''}
+        ${this.renderShapes()}
         <slot></slot>
       </div>
     `;
@@ -290,7 +285,7 @@ export default class SdBrandshape extends SolidElement {
       slot[name='image']::slotted(video) {
         @apply w-full object-cover;
         transform: translateY(calc(var(--curve) * -1)) skewY(var(--angle)) !important;
-        height: calc(100% + (var(--curve) * 2)) !important;
+        height: calc(100% + var(--curve) * 2) !important;
         position: absolute !important;
       }
 
