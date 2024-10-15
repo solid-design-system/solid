@@ -35,7 +35,7 @@ export const SampleA = {
         <!-- top-left-area end !-->
         <!-- top-right-area start !-->
         <div class="flex lg:hidden">
-          <sd-navigation-item onclick="openDrawer()">
+          <sd-navigation-item onclick="openDrawerSampleA()">
             <sd-icon name="system/menu" class="text-xl  -my-[1.5px] -mx-[4px]"></sd-icon>
           </sd-navigation-item>
         </div>
@@ -80,41 +80,38 @@ export const SampleA = {
         </div>
       </div>
     </sd-header>
-    <sd-drawer id="sampleA" placement="end">
+    <sd-drawer id="sampleA__drawer" placement="end">
       <nav>
         <sd-navigation-item vertical current>
-          <b>Home page</b>
+          <b>Home</b>
         </sd-navigation-item>
         <sd-navigation-item vertical chevron divider>About Us</sd-navigation-item>
         <sd-navigation-item vertical chevron divider>Markets</sd-navigation-item>
-        <sd-navigation-item vertical chevron divider>Press service</sd-navigation-item>
         <sd-navigation-item vertical chevron divider>Sustainability</sd-navigation-item>
         <sd-navigation-item vertical chevron divider>Career</sd-navigation-item>
       </nav>
       <nav slot="footer" class="bg-neutral-100">
-        <sd-navigation-item vertical="" class="flex align-center">
+        <sd-navigation-item vertical class="flex align-center">
           <sd-icon name="system/user" class="h-6 w-6 mr-2"></sd-icon>
-          My depot
+          Portfolio
         </sd-navigation-item>
-        <sd-navigation-item vertical="" divider="" class="flex align-center">
+        <sd-navigation-item vertical divider class="flex align-center">
           <sd-icon name="system/lock-locked" class="h-6 w-6 mr-2"></sd-icon>
-          My application
+          Application
         </sd-navigation-item>
-        <sd-navigation-item vertical="" divider="" class="flex align-center">
+        <sd-navigation-item vertical divider class="flex align-center">
           <sd-icon name="system/website" class="h-6 w-6 mr-2"></sd-icon>
           Our further appearances
         </sd-navigation-item>
       </nav>
     </sd-drawer>
     <script>
-      async function openDrawer() {
-        try {
-          const drawer = document.querySelector('sd-drawer');
-          await drawer.show();
-          console.log('Drawer opened');
-        } catch (error) {
-          console.error('Error showing drawer:', error);
-        }
+      // This line is using querySelectorAll due to hidden elements from Storybook configs.
+      // In a regular environment, use: var drawer = document.getElementById('sampleA') or similar
+      var drawerSampleA = document.querySelectorAll('#sampleA__drawer')[1];
+      console.log(document.querySelectorAll('#sampleA__drawer')[1]);
+      function openDrawerSampleA() {
+        drawerSampleA.show();
       }
     </script>
   `
@@ -132,7 +129,7 @@ export const SampleA02 = {
         <!-- top-left-area end !-->
         <!-- top-right-area start !-->
         <div class="flex lg:hidden">
-          <sd-navigation-item>
+          <sd-navigation-item onclick="openDrawerSampleA2()">
             <sd-icon name="system/menu" class="text-xl  -my-[1.5px] -mx-[4px]"></sd-icon>
           </sd-navigation-item>
         </div>
@@ -182,6 +179,39 @@ export const SampleA02 = {
         </div>
       </div>
     </sd-header>
+    <sd-drawer id="sampleA2__drawer" placement="end">
+      <nav>
+        <sd-navigation-item vertical current>
+          <b>Home</b>
+        </sd-navigation-item>
+        <sd-navigation-item vertical chevron divider>Competencies</sd-navigation-item>
+        <sd-navigation-item vertical chevron divider>Capital Markets</sd-navigation-item>
+        <sd-navigation-item vertical chevron divider>Our products</sd-navigation-item>
+        <sd-navigation-item vertical chevron divider>Reporting</sd-navigation-item>
+        <sd-navigation-item vertical chevron divider>About us</sd-navigation-item>
+        <sd-navigation-item vertical chevron divider>Personal area</sd-navigation-item>
+      </nav>
+      <nav slot="footer" class="bg-neutral-100">
+        <sd-navigation-item vertical class="flex align-center">
+          <sd-icon name="system/user" class="h-6 w-6 mr-2"></sd-icon>
+          Log in
+        </sd-navigation-item>
+        <sd-navigation-item vertical divider class="flex align-center">
+          <sd-icon name="system/globe" class="h-6 w-6 mr-2"></sd-icon>
+          Language
+        </sd-navigation-item>
+        <sd-navigation-item vertical divider class="flex align-center">
+          <sd-icon name="system/website" class="h-6 w-6 mr-2"></sd-icon>
+          Our further appearances
+        </sd-navigation-item>
+      </nav>
+    </sd-drawer>
+    <script>
+      var drawerSampleA2 = document.getElementById('sampleA2__drawer');
+      function openDrawerSampleA2() {
+        drawerSampleA2.show();
+      }
+    </script>
   `
 };
 
@@ -206,7 +236,7 @@ export const SampleB = {
             </div>
           </div>
           <div class="flex lg:hidden">
-            <sd-navigation-item>
+            <sd-navigation-item onclick="openDrawerSampleB()">
               <sd-icon name="system/menu" class="text-xl  -my-[1.5px] -mx-[4px]"></sd-icon>
             </sd-navigation-item>
           </div>
@@ -242,5 +272,32 @@ export const SampleB = {
         </div>
       </div>
     </sd-header>
+    <sd-drawer id="sampleB__drawer" placement="end">
+      <nav>
+        <sd-navigation-item vertical current>
+          <b>Home</b>
+        </sd-navigation-item>
+        <sd-navigation-item vertical chevron divider>Starting point</sd-navigation-item>
+        <sd-navigation-item vertical chevron divider>Point of view</sd-navigation-item>
+        <sd-navigation-item vertical chevron divider>To the point</sd-navigation-item>
+        <sd-navigation-item vertical chevron divider>Meeting point</sd-navigation-item>
+      </nav>
+      <nav slot="footer" class="bg-neutral-100">
+        <sd-navigation-item vertical class="flex align-center">
+          <sd-icon name="system/lock-locked" class="h-6 w-6 mr-2"></sd-icon>
+          My application
+        </sd-navigation-item>
+        <sd-navigation-item vertical divider class="flex align-center">
+          <sd-icon name="system/website" class="h-6 w-6 mr-2"></sd-icon>
+          Our further appearances
+        </sd-navigation-item>
+      </nav>
+    </sd-drawer>
+    <script>
+      var drawerSampleB = document.getElementById('sampleB__drawer');
+      function openDrawerSampleB() {
+        drawerSampleB.show();
+      }
+    </script>
   `
 };
