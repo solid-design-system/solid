@@ -196,20 +196,17 @@ export default class SdBrandshape extends SolidElement {
 
   private renderSkewedBorder(): TemplateResult {
     return html`
-      <div part="border-container" class="bg-transparent relative z-10">
-        ${this.renderTopBrandshape()} ${this.renderMiddleBrandshape()} ${this.renderBottomBrandshape()}
-      </div>
+      <div part="border-container" class="w-full overflow-hidden"></div>
+      ${this.renderTopBrandshape()} ${this.renderMiddleBrandshape()} ${this.renderBottomBrandshape()}
     `;
   }
 
   private renderSkewedImage(): TemplateResult {
     return html`
-      <div class="bg-transparent relative z-10 border-0">
-        <div part="image-container" class="absolute w-full z-10 overflow-hidden">
-          <slot name="image"></slot>
-        </div>
-        ${this.renderTopBrandshape()} ${this.renderMiddleBrandshape()} ${this.renderBottomBrandshape()}
+      <div part="image-container" class="w-full overflow-hidden">
+        <slot name="image"></slot>
       </div>
+      ${this.renderTopBrandshape()} ${this.renderMiddleBrandshape()} ${this.renderBottomBrandshape()}
     `;
   }
 
@@ -236,7 +233,8 @@ export default class SdBrandshape extends SolidElement {
             'border-white': 'fill-transparent',
             'border-primary': 'fill-transparent',
             image: 'fill-transparent'
-          }[this.variant]
+          }[this.variant],
+          'relative'
         )}"
         part="base"
       >
@@ -258,23 +256,24 @@ export default class SdBrandshape extends SolidElement {
         @apply block;
         container-type: inline-size;
         --angle: 11deg;
+        --radius: 60px;
+        --tan: tan(var(--angle));
         --adjacent: 100cqw;
-        --curve: 60px;
-        --opposite: calc(tan(var(--angle)) * var(--adjacent));
-        --opposite-minus-curve: calc(
-          var(--opposite) - (var(--curve) / 3)
+        --opposite: calc(var(--tan, 0.1943803091) * var(--adjacent));
+        --curve: calc(
+          (var(--opposite) - (var(--radius) / 3)) * 0.5
         ); /* Not sure, why the division by 3 works for every screen size – but it works, so do not touch it */
       }
 
       @media (min-width: 415px) {
         :host {
-          --curve: 72px;
+          --radius: 72px;
         }
       }
 
       @media (min-width: 640px) {
         :host {
-          --curve: 84px;
+          --radius: 84px;
         }
       }
 
@@ -282,16 +281,16 @@ export default class SdBrandshape extends SolidElement {
       [part='border-container']::before {
         @apply absolute top-0 left-0;
         transform: skewY(calc(var(--angle) * -1));
-        height: calc(100% - var(--opposite-minus-curve));
-        border-radius: 0 var(--curve);
-        margin-top: calc(var(--opposite-minus-curve) * 0.5);
+        height: calc(100% - var(--curve) * 2);
+        border-radius: 0 var(--radius);
+        margin-top: calc(var(--curve));
       }
 
       slot[name='image']::slotted(img),
       slot[name='image']::slotted(video) {
         @apply w-full object-cover;
-        transform: translateY(calc(var(--opposite-minus-curve) * -0.5)) skewY(var(--angle)) !important;
-        height: calc(100% + var(--opposite-minus-curve)) !important;
+        transform: translateY(calc(var(--curve) * -1)) skewY(var(--angle)) !important;
+        height: calc(100% + (var(--curve) * 2)) !important;
         position: absolute !important;
       }
 
