@@ -303,7 +303,7 @@ export default class SdBrandshape extends SolidElement {
         slot[name='image']::slotted(img),
         slot[name='image']::slotted(video) {
           transform: unset;
-          height: 100%;
+          height: 100% !important;
         }
       }
 
