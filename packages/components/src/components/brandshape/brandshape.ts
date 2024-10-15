@@ -247,12 +247,20 @@ export default class SdBrandshape extends SolidElement {
         --radius: 60px;
         --tan: tan(var(--angle));
         --adjacent: 100cqw;
-        --opposite: calc(var(--tan, 0.1943803091) * var(--adjacent));
+        --opposite: calc(var(--tan) * var(--adjacent));
         --curve: calc(
           (var(--opposite) - (var(--radius) / 3)) * 0.5
         ); /* Not sure, why the division by 3 works for every screen size – but it works, so do not touch it */
       }
 
+      /** Fallbacks for non-supported browsers */
+      @supports (transform: skewY(11deg)) {
+        :host {
+          --tan: 0.1943803091;
+        }
+      }
+
+      /* Responsiveness */
       @media (min-width: 415px) {
         :host {
           --radius: 72px;
@@ -265,6 +273,7 @@ export default class SdBrandshape extends SolidElement {
         }
       }
 
+      /* Skewing */
       :host([variant='image']) [part='stylized-container'],
       :host([variant^='border-']) [part='stylized-container']::before {
         @apply absolute top-0 left-0;
@@ -277,9 +286,25 @@ export default class SdBrandshape extends SolidElement {
       slot[name='image']::slotted(img),
       slot[name='image']::slotted(video) {
         @apply w-full object-cover;
-        transform: translateY(calc(var(--curve) * -1)) skewY(var(--angle)) !important;
+        transform: translateY(calc(var(--curve) * -1)) skewY(var(--angle));
         height: calc(100% + var(--curve) * 2) !important;
         position: absolute !important;
+      }
+
+      /* Fallback for browsers which do not support container queries */
+      @supports (height: 100cqw) {
+        :host([variant='image']) [part='stylized-container'],
+        :host([variant^='border-']) [part='stylized-container']::before {
+          transform: unset;
+          height: 100%;
+          margin-top: 0;
+        }
+
+        slot[name='image']::slotted(img),
+        slot[name='image']::slotted(video) {
+          transform: unset;
+          height: 100%;
+        }
       }
 
       /* Stylized border */
