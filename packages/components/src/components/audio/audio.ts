@@ -10,9 +10,9 @@ import SolidElement from '../../internal/solid-element';
 import type SdDrawer from '../drawer/drawer';
 
 /**
- * @summary Short summary of the component's intended use.
- * @status experimental
- * @since 1.0
+ * @summary Used to play audio files that are part of the page content.
+ * @status stable
+ * @since 3.19.0
  *
  * @dependency sd-icon
  *
