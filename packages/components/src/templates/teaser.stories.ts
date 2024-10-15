@@ -61,7 +61,7 @@ export const NotClickableTeaserWithLink = {
 
 /**
  * If the teaser itself should be clickable and there are no other links inside, then wrap the teaser with an anchor tag.
- * The button on the bottom of the teaser is **must not be a link**. According to the HTML spec, it is not allowed to
+ * The button on the bottom of the teaser **must not be a link**. According to the HTML spec, it is not allowed to
  * have an anchor tag inside another anchor.
  *
  * ```html
@@ -111,7 +111,10 @@ export const ClickableTeaserWithLink = {
           <div class="flex flex-col gap-5 mt-4">
             <p>How we are actively shaping the transformation of the economy in the interests of our investors.</p>
             <div class="flex-none">
-              <sd-link href="javascript:void(0)">Find out more</sd-link>
+              <sd-button href="javascript:void(0)" variant="secondary">
+                <sd-icon name="system/shopping-cart" slot="icon-left"></sd-icon>
+                Add to cart
+              </sd-button>
             </div>
           </div>
         </sd-teaser>
