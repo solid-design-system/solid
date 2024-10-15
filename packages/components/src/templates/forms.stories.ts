@@ -61,7 +61,7 @@ export const contactForm = {
       </sd-radio-group>
       <sd-input type="text" inputmode="text" id="regarding-input" class="hidden" spellcheck></sd-input>
       <div class="flex flex-col gap-6">
-        <sd-select label="Salutation" placeholder="Please Select">
+        <sd-select label="Salutation" placeholder="Please Select" required>
           <sd-option value="ms">Ms.</sd-option>
           <sd-option value="mrs">Mrs.</sd-option>
           <sd-option value="miss">Miss</sd-option>
