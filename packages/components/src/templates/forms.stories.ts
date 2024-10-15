@@ -53,7 +53,7 @@ export const loginForm = {
 
 export const contactForm = {
   render: () => html`
-    <form class="sd-prose">
+    <form class="sd-prose" id="contactForm">
       <h3 class="sd-headline sd-headline--size-4xl">Contact</h3>
       <sd-radio-group id="inquiry-radio-group" orientation="horizontal" name="radio-group" value="general-inquiry">
         <sd-radio name="inquiry-type" value="general-inquiry">General inquiry</sd-radio>
@@ -82,8 +82,8 @@ export const contactForm = {
         <span class="sd-meta sd-meta--size-sm">* Required fields</span>
       </div>
       <div class="flex flex-col gap-4 md:flex-row md:justify-end">
-        <sd-button class="md:order-2">Submit registration</sd-button>
-        <sd-button variant="secondary" class="md:order-1">Cancel</sd-button>
+        <sd-button class="md:order-2" type="submit">Submit registration</sd-button>
+        <sd-button variant="secondary" class="md:order-1" onclick="alert('Cancelled process')">Cancel</sd-button>
       </div>
     </form>
     <script>
@@ -96,6 +96,26 @@ export const contactForm = {
         } else {
           regardingInput.classList.add('hidden');
         }
+      });
+
+      await Promise.all([
+        customElements.whenDefined('sd-button'),
+        customElements.whenDefined('sd-checkbox'),
+        customElements.whenDefined('sd-textarea'),
+        customElements.whenDefined('sd-radio'),
+        customElements.whenDefined('sd-radio-group'),
+        customElements.whenDefined('sd-input'),
+        customElements.whenDefined('sd-select')
+      ]).then(() => {
+        const form = document.getElementById('contactForm');
+        // Listen for the form's submit event
+        form.addEventListener('submit', function(event) {
+          event.preventDefault(); // Prevent the default form submission
+          const formData = new FormData(form);
+          // Collect form values to display in the alert
+          let formValues = ['Results:'];
+          console.log(formValues);
+        });
       });
     </script>
   `
