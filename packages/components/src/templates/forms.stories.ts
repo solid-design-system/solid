@@ -54,34 +54,63 @@ export const loginForm = {
 
 export const contactForm = {
   render: () => html`
-    <form>
-      <h3 class="sd-headline sd-headline--size-4xl mb-8">Contact</h3>
-      <p class="sd-paragraph sd-paragraph--size-sm mb-8">Please fill out all fields marked *.</p>
-      <sd-radio-group value="1" orientation="horizontal" name="radio-group" class="mb-8">
-        <sd-radio value="general_inquiry">General inquiry</sd-radio>
-        <sd-radio value="regarding">Regarding</sd-radio>
+    <form class="sd-prose">
+      <h3 class="sd-headline sd-headline--size-4xl">Contact</h3>
+      <sd-radio-group
+        id="inquiry-radio-group"
+        orientation="horizontal"
+        name="radio-group"
+        value="general_inquiry"
+        class="my-8"
+      >
+        <sd-radio name="inquiry-type" value="general_inquiry" onclick="toggleRegardingInput()">
+          General inquiry
+        </sd-radio>
+        <sd-radio name="inquiry-type" value="regarding" onclick="toggleRegardingInput()">Regarding</sd-radio>
       </sd-radio-group>
-      <div class="flex flex-col gap-6 mb-8">
+      <div id="regarding-input" class="hidden">
+        <sd-input type="text" spellcheck></sd-input>
+      </div>
+      <div class="flex flex-col gap-6">
         <sd-select label="Salutation" placeholder="Please Select" max-options-visible="3">
-          <sd-option value="option-1">Option 1</sd-option>
-          <sd-option value="option-2">Option 2</sd-option>
-          <sd-option value="option-3">Option 3</sd-option>
+          <sd-option value="ms">Ms.</sd-option>
+          <sd-option value="mrs">Mrs.</sd-option>
+          <sd-option value="miss">Miss</sd-option>
+          <sd-option value="mx">Mx.</sd-option>
         </sd-select>
-        <sd-input type="text" label="First name" spellcheck></sd-input>
-        <sd-input type="text" label="Last name" spellcheck required></sd-input>
+        <div class="gap-6 flex flex-col md:flex-row">
+          <sd-input type="text" label="First name" spellcheck></sd-input>
+          <sd-input type="text" label="Last name" spellcheck required></sd-input>
+        </div>
         <sd-input type="email" label="Email" spellcheck required></sd-input>
         <sd-textarea label="News" rows="4" spellcheck></sd-textarea>
+        <sd-checkbox-group>
+          <sd-checkbox value="privacy_policy" required>
+            I accept the <sd-link href="#">Privacy Policy</sd-link>.
+          </sd-checkbox>
+          <sd-checkbox value="marketing_emails">I would like to receive marketing emails.</sd-checkbox>
+        </sd-checkbox-group>
+        <span class="sd-meta sd-meta--size-sm">* Required fields</span>
       </div>
-      <sd-checkbox-group class="mb-8">
-        <sd-checkbox value="privacy_policy" required>
-          I accept the <sd-link href="#">Privacy Policy</sd-link>.
-        </sd-checkbox>
-        <sd-checkbox value="marketing_emails">I would like to receive marketing emails.</sd-checkbox>
-      </sd-checkbox-group>
       <div class="flex flex-col gap-4 md:flex-row md:justify-end">
         <sd-button class="md:order-2">Submit registration</sd-button>
         <sd-button variant="secondary" class="md:order-1">Cancel</sd-button>
       </div>
     </form>
+    <script>
+      const radioGroup = document.getElementById('inquiry-radio-group');
+      const regardingInput = document.getElementById('regarding-input');
+      console.log(radioGroup, regardingInput);
+      function toggleRegardingInput() {
+        var selectedValue = radioGroup.getAttribute('value');
+        console.log(selectedValue);
+
+        if (selectedValue === 'regarding') {
+          setTimeout(() => regardingInput.classList.remove('hidden'), 1);
+        } else {
+          setTimeout(() => regardingInput.classList.add('hidden'), 1);
+        }
+      }
+    </script>
   `
 };
