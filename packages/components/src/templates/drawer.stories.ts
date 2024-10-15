@@ -57,7 +57,7 @@ export const Default = {
       <sd-button slot="header" variant="tertiary" class="hidden" id="returnButton" onclick="handleSecondLevel()">
         <sd-icon name="system/arrow-left" label="return"></sd-icon>
       </sd-button>
-      <div class="level-one">
+      <div class="level-one h-full flex flex-col justify-between">
         <nav>
           <sd-navigation-item vertical current><b>Home page</b></sd-navigation-item>
           <sd-navigation-item vertical chevron divider onclick="handleSecondLevel()">About Us</sd-navigation-item>
