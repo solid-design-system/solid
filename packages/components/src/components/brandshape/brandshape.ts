@@ -22,8 +22,7 @@ type Breakpoints = 0 | 414 | 640;
  * @csspart shape-top - Top shape.
  * @csspart shape-middle - Middle shape.
  * @csspart shape-bottom - Bottom shape.
- * @csspart border-container - Container for the border variant.
- * @csspart image-container - Container for the image variant.
+ * @csspart stylized-container - Container for border and image variant.
  */
 
 @customElement('sd-brandshape')
@@ -194,13 +193,9 @@ export default class SdBrandshape extends SolidElement {
     ></div>`;
   }
 
-  private renderSkewedBorder(): TemplateResult {
-    return html` <div part="border-container" class="w-full overflow-hidden"></div> `;
-  }
-
-  private renderSkewedImage(): TemplateResult {
+  private renderStylizedVariant(): TemplateResult {
     return html`
-      <div part="image-container" class="w-full overflow-hidden">
+      <div part="stylized-container" class="w-full overflow-hidden">
         <slot name="image"></slot>
       </div>
     `;
@@ -215,8 +210,7 @@ export default class SdBrandshape extends SolidElement {
   }
 
   render() {
-    const isBorderVariant = this.variant.startsWith('border-');
-    const isImageVariant = this.variant === 'image';
+    const isStylizedVariant = this.variant.startsWith('border-') || this.variant === 'image';
 
     return html`
       <div
@@ -233,8 +227,7 @@ export default class SdBrandshape extends SolidElement {
         )}"
         part="base"
       >
-        ${isBorderVariant ? this.renderSkewedBorder() : ''} ${isImageVariant ? this.renderSkewedImage() : ''}
-        ${this.renderShapes()}
+        ${isStylizedVariant ? this.renderStylizedVariant() : ''} ${this.renderShapes()}
         <slot></slot>
       </div>
     `;
@@ -272,8 +265,8 @@ export default class SdBrandshape extends SolidElement {
         }
       }
 
-      [part='image-container'],
-      [part='border-container']::before {
+      :host([variant='image']) [part='stylized-container'],
+      :host([variant^='border-']) [part='stylized-container']::before {
         @apply absolute top-0 left-0;
         transform: skewY(calc(var(--angle) * -1));
         height: calc(100% - var(--curve) * 2);
@@ -299,7 +292,7 @@ export default class SdBrandshape extends SolidElement {
         --internal-border-color: var(--sd-color-white, white);
       }
 
-      [part='border-container']::before {
+      :host([variant^='border-']) [part='stylized-container']::before {
         @apply right-0 border-solid border-2;
         content: '';
         border-color: var(--internal-border-color, black);
