@@ -254,7 +254,7 @@ export default class SdBrandshape extends SolidElement {
       }
 
       /** Fallbacks for non-supported browsers */
-      @supports (transform: skewY(11deg)) {
+      @supports not (transform: skewY(11deg)) {
         :host {
           --tan: 0.1943803091;
         }
@@ -292,7 +292,7 @@ export default class SdBrandshape extends SolidElement {
       }
 
       /* Fallback for browsers which do not support container queries */
-      @supports (height: 100cqw) {
+      @supports not (height: 100cqw) {
         :host([variant='image']) [part='stylized-container'],
         :host([variant^='border-']) [part='stylized-container']::before {
           transform: unset;
