@@ -26,8 +26,8 @@ export const Default = {
           <figure class="sd-media">
             <img
               class="w-full aspect-ratio"
-              src="./placeholders/images/graph.jpg"
-              alt="A circular pie chart showing the ownership structure of the Volksbanken Raiffeisenbanken cooperative financial network. DZ BANK AG holds 72.34%, VR GbR (cooperative holding) holds 24.35%, and German Local Cooperative Banks hold 3.41%. VR GbR's shareholders are DZ BANK (58.77%) and R+V Personen Holding GmbH (41.23%)."
+              src="./placeholders/images/collaboration.jpg"
+              alt="Two men in business attire sitting on a sofa in a modern office, smiling and looking at a laptop screen."
             />
           </figure>
           <p class="sd-paragraph mt-4">
@@ -43,8 +43,8 @@ export const Default = {
           <figure class="sd-media">
             <img
               class="w-full aspect-ratio"
-              src="./placeholders/images/financialNetwork.jpg"
-              alt="A grid of logos from various companies in the Volksbanken Raiffeisenbanken cooperative financial network. Logos include Schwäbisch Hall, Union Investment, R+V, easyCredit, DZ PRIVATBANK, Volksbanken Raiffeisenbanken, DZ BANK, VR Smart Finanz, DZ HYP, MünchenerHyp, and reisebank."
+              src="./placeholders/images/coins.jpg"
+              alt="Close-up of hands stacking coins into small piles on a table, suggesting financial planning or saving."
             />
           </figure>
         </sd-accordion>
@@ -77,8 +77,8 @@ export const NeutralBackground = {
           <figure class="sd-media">
             <img
               class="w-full aspect-ratio"
-              src="./placeholders/images/graph.jpg"
-              alt="A circular pie chart showing the ownership structure of the Volksbanken Raiffeisenbanken cooperative financial network. DZ BANK AG holds 72.34%, VR GbR (cooperative holding) holds 24.35%, and German Local Cooperative Banks hold 3.41%. VR GbR's shareholders are DZ BANK (58.77%) and R+V Personen Holding GmbH (41.23%)."
+              src="./placeholders/images/collaboration.jpg"
+              alt="Two men in business attire sitting on a sofa in a modern office, smiling and looking at a laptop screen."
             />
           </figure>
           <p class="sd-paragraph mt-4">
@@ -94,8 +94,8 @@ export const NeutralBackground = {
           <figure class="sd-media">
             <img
               class="w-full aspect-ratio"
-              src="./placeholders/images/financialNetwork.jpg"
-              alt="A grid of logos from various companies in the Volksbanken Raiffeisenbanken cooperative financial network. Logos include Schwäbisch Hall, Union Investment, R+V, easyCredit, DZ PRIVATBANK, Volksbanken Raiffeisenbanken, DZ BANK, VR Smart Finanz, DZ HYP, MünchenerHyp, and reisebank."
+              src="./placeholders/images/coins.jpg"
+              alt="Close-up of hands stacking coins into small piles on a table, suggesting financial planning or saving."
             />
           </figure>
         </sd-accordion>
@@ -128,8 +128,8 @@ export const PrimaryBackground = {
           <figure class="sd-media">
             <img
               class="w-full aspect-ratio"
-              src="./placeholders/images/graph.jpg"
-              alt="A circular pie chart showing the ownership structure of the Volksbanken Raiffeisenbanken cooperative financial network. DZ BANK AG holds 72.34%, VR GbR (cooperative holding) holds 24.35%, and German Local Cooperative Banks hold 3.41%. VR GbR's shareholders are DZ BANK (58.77%) and R+V Personen Holding GmbH (41.23%)."
+              src="./placeholders/images/collaboration.jpg"
+              alt="Two men in business attire sitting on a sofa in a modern office, smiling and looking at a laptop screen."
             />
           </figure>
           <p class="sd-paragraph mt-4">
@@ -145,8 +145,8 @@ export const PrimaryBackground = {
           <figure class="sd-media">
             <img
               class="w-full aspect-ratio"
-              src="./placeholders/images/financialNetwork.jpg"
-              alt="A grid of logos from various companies in the Volksbanken Raiffeisenbanken cooperative financial network. Logos include Schwäbisch Hall, Union Investment, R+V, easyCredit, DZ PRIVATBANK, Volksbanken Raiffeisenbanken, DZ BANK, VR Smart Finanz, DZ HYP, MünchenerHyp, and reisebank."
+              src="./placeholders/images/coins.jpg"
+              alt="Close-up of hands stacking coins into small piles on a table, suggesting financial planning or saving."
             />
           </figure>
         </sd-accordion>
