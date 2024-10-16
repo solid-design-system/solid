@@ -43,8 +43,8 @@ export const Default = {
       <img
         slot="media-front"
         class="object-cover h-full w-full"
-        src="./placeholders/images/londonHouse.jpg"
-        alt="Generic Alt"
+        src="./placeholders/images/skyline.jpg"
+        alt="City skyline of Frankfurt by night in christmas time."
       />
     </sd-flipcard>
   `

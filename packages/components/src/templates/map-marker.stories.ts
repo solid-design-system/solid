@@ -23,6 +23,6 @@ export default {
 export const MapMakerWithImages = {
   render: () =>
     html`<sd-map-marker state="default" variant="place">
-      <img src="./placeholders/images/bild.png" alt="The Bild logo" class="h-8 w-8 -mt-4" />
+      <img src="images/ui-brand-mark.png" alt="Brand mark of Union Investment" class="h-8 w-8 -mt-4" />
     </sd-map-marker>`
 };

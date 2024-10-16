@@ -130,4 +130,4 @@ export const Shapes = {
   `
 };
 
-// TODO: Add copyright story once it's implemented. (issue: https://github.com/solid-design-system/solid/issues/1319)
+// TODO: Add copyright story once it's implemented. (issue: https://github.com/solid-design-system/solid/issues/1553)
