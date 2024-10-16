@@ -37,7 +37,7 @@ export const Default = {
 };
 
 /**
- * Use the `size` attribute to change the size of the input checkbox:
+ * Use the `size` attribute to change the size of the input checkbox (`md` equals `lg` but added for consistency reason on input elements):
  * - `lg` (default)
  * - `md`
  * - `sm`
