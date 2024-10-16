@@ -2,7 +2,8 @@ import '../solid-components';
 import { html } from 'lit-html';
 
 /**
- * This example shows a drawer containing a navigation list.
+ * ```
+ * ```
  */
 export default {
   tags: ['!dev'],
@@ -52,7 +53,7 @@ export const Default = {
         padding: 0;
       }
     </style>
-
+    <sd-button onclick="openDrawer()">Open Drawer</sd-button>
     <sd-drawer open placement="end">
       <sd-button slot="header" variant="tertiary" class="hidden" id="returnButton" onclick="handleSecondLevel()">
         <sd-icon name="system/arrow-left" label="return"></sd-icon>
@@ -158,6 +159,9 @@ export const Default = {
         document.querySelector('.level-one').classList.toggle('hidden');
         document.querySelector('.levelTwo').classList.toggle('hidden');
         document.querySelector('#returnButton').classList.toggle('hidden');
+      }
+      function openDrawer() {
+        document.querySelector('sd-drawer').show();
       }
     </script>
   `
