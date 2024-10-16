@@ -1,3 +1,10 @@
+# [@solid-design-system/placeholders-v1.7.1](https://github.com/solid-design-system/solid/compare/placeholders/1.7.0...placeholders/1.7.1) (2024-10-16)
+
+
+### Bug Fixes
+
+* licensing and placeholder images ([#1547](https://github.com/solid-design-system/solid/issues/1547)) ([b204b77](https://github.com/solid-design-system/solid/commit/b204b77fd3b2ca38b6fd8b19d6563751051f424d))
+
 # [@solid-design-system/placeholders-v1.7.0](https://github.com/solid-design-system/solid/compare/placeholders/1.6.2...placeholders/1.7.0) (2024-10-16)
 
 
