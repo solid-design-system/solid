@@ -15,7 +15,8 @@ const defaultLuminanceMap = {
 };
 
 const extractRGB = str => {
-  const match = str.match(/^,([\t\s]+)(\d[\d\s]*)\s*\)/);
+  const cleanedStr = str.replace(/^[,\t\s]+/, '');
+  const match = cleanedStr.match(/(\d[\d\s]*)\s*\)/);
   return match ? match[1] : null;
 };
 
