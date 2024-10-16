@@ -44,15 +44,15 @@ export const SampleA = {
       <div class="hidden lg:flex items-end pt-3 justify-between">
         <!-- bottom-left-area start !-->
         <div class="-ml-4">
-          <sd-navigation-item class="font-bold">About Us</sd-navigation-item>
-          <sd-navigation-item class="font-bold">Markets</sd-navigation-item>
-          <sd-navigation-item class="font-bold">Sustainability</sd-navigation-item>
-          <sd-navigation-item class="font-bold">Career</sd-navigation-item>
+          <sd-navigation-item href="javascript:void(0)" class="font-bold">About Us</sd-navigation-item>
+          <sd-navigation-item href="javascript:void(0)" class="font-bold">Markets</sd-navigation-item>
+          <sd-navigation-item href="javascript:void(0)" class="font-bold">Sustainability</sd-navigation-item>
+          <sd-navigation-item href="javascript:void(0)" class="font-bold">Career</sd-navigation-item>
         </div>
         <!-- bottom-left-area end !-->
         <!-- bottom-right-area start !-->
         <div class="-mr-4 flex items-center">
-          <sd-navigation-item>
+          <sd-navigation-item href="javascript:void(0)">
             <div class="w-4 h-4 flex items-center">
               <sd-icon
                 title="Unsere weiteren Auftritte"
@@ -61,17 +61,17 @@ export const SampleA = {
               ></sd-icon>
             </div>
           </sd-navigation-item>
-          <sd-navigation-item>
+          <sd-navigation-item href="javascript:void(0)">
             <div class="w-4 h-4 flex items-center">
               <sd-icon title="Suche" name="system/magnifying-glass" class="text-xl absolute -ml-[4px]"></sd-icon>
             </div>
           </sd-navigation-item>
-          <sd-navigation-item>
+          <sd-navigation-item href="javascript:void(0)">
             <div class="flex items-center gap-2">
               <sd-icon name="system/user" class="text-xl"></sd-icon><span>Portfolio</span>
             </div>
           </sd-navigation-item>
-          <sd-navigation-item>
+          <sd-navigation-item href="javascript:void(0)">
             <div class="flex items-center gap-2">
               <sd-icon name="system/lock-locked" class="text-xl"></sd-icon><span>Application</span>
             </div>
@@ -80,37 +80,37 @@ export const SampleA = {
         </div>
       </div>
     </sd-header>
-    <sd-drawer id="sampleA__drawer" placement="end">
+    <sd-drawer id="sample-a-drawer" placement="end">
       <nav>
-        <sd-navigation-item vertical current>
+        <sd-navigation-item vertical current href="javascript:void(0)">
           <b>Home</b>
         </sd-navigation-item>
-        <sd-navigation-item vertical chevron divider>About Us</sd-navigation-item>
-        <sd-navigation-item vertical chevron divider>Markets</sd-navigation-item>
-        <sd-navigation-item vertical chevron divider>Sustainability</sd-navigation-item>
-        <sd-navigation-item vertical chevron divider>Career</sd-navigation-item>
+        <sd-navigation-item vertical chevron divider href="javascript:void(0)">About Us</sd-navigation-item>
+        <sd-navigation-item vertical chevron divider href="javascript:void(0)">Markets</sd-navigation-item>
+        <sd-navigation-item vertical chevron divider href="javascript:void(0)">Sustainability</sd-navigation-item>
+        <sd-navigation-item vertical chevron divider href="javascript:void(0)">Career</sd-navigation-item>
       </nav>
       <nav slot="footer" class="bg-neutral-100">
-        <sd-navigation-item vertical class="flex align-center">
+        <sd-navigation-item vertical class="flex align-center" href="javascript:void(0)">
           <sd-icon name="system/user" class="h-6 w-6 mr-2"></sd-icon>
           Portfolio
         </sd-navigation-item>
-        <sd-navigation-item vertical divider class="flex align-center">
+        <sd-navigation-item vertical divider class="flex align-center" href="javascript:void(0)">
           <sd-icon name="system/lock-locked" class="h-6 w-6 mr-2"></sd-icon>
           Application
         </sd-navigation-item>
-        <sd-navigation-item vertical divider class="flex align-center">
+        <sd-navigation-item vertical divider class="flex align-center" href="javascript:void(0)">
           <sd-icon name="system/website" class="h-6 w-6 mr-2"></sd-icon>
           Our further appearances
         </sd-navigation-item>
       </nav>
     </sd-drawer>
-    <script>
+    <script type="module">
       // This line is using querySelectorAll due to hidden elements from Storybook configs.
-      // In a regular environment, use: var drawer = document.getElementById('sampleA') or similar
-      var drawerSampleA = document.querySelectorAll('#sampleA__drawer')[1];
-      console.log(document.querySelectorAll('#sampleA__drawer')[1]);
+      // In a regular environment, use: var drawer = document.getElementById('#sample-a-drawer') or similar
+
       function openDrawerSampleA() {
+        const drawerSampleA = document.querySelectorAll('#sample-a-drawer')[1];
         drawerSampleA.show();
       }
     </script>
@@ -134,27 +134,27 @@ export const SampleA02 = {
           </sd-navigation-item>
         </div>
         <div class="-mr-4 lg:flex hidden items-center">
-          <sd-navigation-item>
+          <sd-navigation-item href="javascript:void(0)">
             <div class="w-4 h-4 flex items-center">
               <sd-icon name="system/filter-empty" class="text-xl absolute -ml-[4px]"></sd-icon>
             </div>
           </sd-navigation-item>
-          <sd-navigation-item>
+          <sd-navigation-item href="javascript:void(0)">
             <div class="w-4 h-4 flex items-center">
               <sd-icon name="system/globe" class="text-xl absolute -ml-[4px]"></sd-icon>
             </div>
           </sd-navigation-item>
-          <sd-navigation-item>
+          <sd-navigation-item href="javascript:void(0)">
             <div class="w-4 h-4 flex items-center">
               <sd-icon name="system/website" class="text-xl absolute -ml-[4px]"></sd-icon>
             </div>
           </sd-navigation-item>
-          <sd-navigation-item>
+          <sd-navigation-item href="javascript:void(0)">
             <div class="w-4 h-4 flex items-center">
               <sd-icon name="system/magnifying-glass" class="text-xl absolute -ml-[4px]"></sd-icon>
             </div>
           </sd-navigation-item>
-          <sd-navigation-item>
+          <sd-navigation-item href="javascript:void(0)">
             <div class="flex items-center gap-2">
               <sd-icon name="system/user" class="text-xl"></sd-icon><span>Login</span>
             </div>
@@ -165,12 +165,12 @@ export const SampleA02 = {
       <div class="hidden lg:flex items-end pt-3 justify-between">
         <!-- bottom-left-area start !-->
         <div class="-ml-4">
-          <sd-navigation-item class="font-bold">Competencies</sd-navigation-item>
-          <sd-navigation-item class="font-bold">Capital Market</sd-navigation-item>
-          <sd-navigation-item class="font-bold">Our products</sd-navigation-item>
-          <sd-navigation-item class="font-bold">Reporting</sd-navigation-item>
-          <sd-navigation-item class="font-bold">About us</sd-navigation-item>
-          <sd-navigation-item class="font-bold">Personal area</sd-navigation-item>
+          <sd-navigation-item href="javascript:void(0)" class="font-bold">Competencies</sd-navigation-item>
+          <sd-navigation-item href="javascript:void(0)" class="font-bold">Capital Market</sd-navigation-item>
+          <sd-navigation-item href="javascript:void(0)" class="font-bold">Our products</sd-navigation-item>
+          <sd-navigation-item href="javascript:void(0)" class="font-bold">Reporting</sd-navigation-item>
+          <sd-navigation-item href="javascript:void(0)" class="font-bold">About us</sd-navigation-item>
+          <sd-navigation-item href="javascript:void(0)" class="font-bold">Personal area</sd-navigation-item>
         </div>
         <!-- bottom-left-area end !-->
         <!-- bottom-right-area start !-->
@@ -179,35 +179,35 @@ export const SampleA02 = {
         </div>
       </div>
     </sd-header>
-    <sd-drawer id="sampleA2__drawer" placement="end">
+    <sd-drawer id="sample-a02-drawer" placement="end">
       <nav>
-        <sd-navigation-item vertical current>
+        <sd-navigation-item vertical current href="javascript:void(0)">
           <b>Home</b>
         </sd-navigation-item>
-        <sd-navigation-item vertical chevron divider>Competencies</sd-navigation-item>
-        <sd-navigation-item vertical chevron divider>Capital Markets</sd-navigation-item>
-        <sd-navigation-item vertical chevron divider>Our products</sd-navigation-item>
-        <sd-navigation-item vertical chevron divider>Reporting</sd-navigation-item>
-        <sd-navigation-item vertical chevron divider>About us</sd-navigation-item>
-        <sd-navigation-item vertical chevron divider>Personal area</sd-navigation-item>
+        <sd-navigation-item vertical chevron divider href="javascript:void(0)">Competencies</sd-navigation-item>
+        <sd-navigation-item vertical chevron divider href="javascript:void(0)">Capital Markets</sd-navigation-item>
+        <sd-navigation-item vertical chevron divider href="javascript:void(0)">Our products</sd-navigation-item>
+        <sd-navigation-item vertical chevron divider href="javascript:void(0)">Reporting</sd-navigation-item>
+        <sd-navigation-item vertical chevron divider href="javascript:void(0)">About us</sd-navigation-item>
+        <sd-navigation-item vertical chevron divider href="javascript:void(0)">Personal area</sd-navigation-item>
       </nav>
       <nav slot="footer" class="bg-neutral-100">
-        <sd-navigation-item vertical class="flex align-center">
+        <sd-navigation-item vertical class="flex align-center" href="javascript:void(0)">
           <sd-icon name="system/user" class="h-6 w-6 mr-2"></sd-icon>
           Log in
         </sd-navigation-item>
-        <sd-navigation-item vertical divider class="flex align-center">
+        <sd-navigation-item vertical divider class="flex align-center" href="javascript:void(0)">
           <sd-icon name="system/globe" class="h-6 w-6 mr-2"></sd-icon>
           Language
         </sd-navigation-item>
-        <sd-navigation-item vertical divider class="flex align-center">
+        <sd-navigation-item vertical divider class="flex align-center" href="javascript:void(0)">
           <sd-icon name="system/website" class="h-6 w-6 mr-2"></sd-icon>
           Our further appearances
         </sd-navigation-item>
       </nav>
     </sd-drawer>
-    <script>
-      var drawerSampleA2 = document.getElementById('sampleA2__drawer');
+    <script type="module">
+      var drawerSampleA2 = document.getElementById('sample-a02__drawer');
       function openDrawerSampleA2() {
         drawerSampleA2.show();
       }
@@ -246,15 +246,15 @@ export const SampleB = {
       <div class="hidden lg:flex items-end pt-3 justify-between">
         <!-- bottom-left-area start !-->
         <div class="-ml-4">
-          <sd-navigation-item class="font-bold">Starting point</sd-navigation-item>
-          <sd-navigation-item class="font-bold">Point of view</sd-navigation-item>
-          <sd-navigation-item class="font-bold">To the point</sd-navigation-item>
-          <sd-navigation-item class="font-bold">Meeting point</sd-navigation-item>
+          <sd-navigation-item class="font-bold" href="javascript:void(0)">Starting point</sd-navigation-item>
+          <sd-navigation-item class="font-bold" href="javascript:void(0)">Point of view</sd-navigation-item>
+          <sd-navigation-item class="font-bold" href="javascript:void(0)">To the point</sd-navigation-item>
+          <sd-navigation-item class="font-bold" href="javascript:void(0)">Meeting point</sd-navigation-item>
         </div>
         <!-- bottom-left-area end !-->
         <!-- bottom-right-area start !-->
         <div class="flex items-center">
-          <sd-navigation-item>
+          <sd-navigation-item href="javascript:void(0)">
             <div class="w-4 h-4 flex items-center">
               <sd-icon
                 title="Unsere weiteren Auftritte"
@@ -263,7 +263,7 @@ export const SampleB = {
               ></sd-icon>
             </div>
           </sd-navigation-item>
-          <sd-navigation-item>
+          <sd-navigation-item href="javascript:void(0)">
             <div class="w-4 h-4 flex items-center">
               <sd-icon title="Suche" name="system/magnifying-glass" class="text-xl absolute -ml-[4px]"></sd-icon>
             </div>
@@ -272,29 +272,29 @@ export const SampleB = {
         </div>
       </div>
     </sd-header>
-    <sd-drawer id="sampleB__drawer" placement="end">
+    <sd-drawer id="sample-b-drawer" placement="end">
       <nav>
-        <sd-navigation-item vertical current>
+        <sd-navigation-item vertical current href="javascript:void(0)">
           <b>Home</b>
         </sd-navigation-item>
-        <sd-navigation-item vertical chevron divider>Starting point</sd-navigation-item>
-        <sd-navigation-item vertical chevron divider>Point of view</sd-navigation-item>
-        <sd-navigation-item vertical chevron divider>To the point</sd-navigation-item>
-        <sd-navigation-item vertical chevron divider>Meeting point</sd-navigation-item>
+        <sd-navigation-item vertical chevron divider href="javascript:void(0)">Starting point</sd-navigation-item>
+        <sd-navigation-item vertical chevron divider href="javascript:void(0)">Point of view</sd-navigation-item>
+        <sd-navigation-item vertical chevron divider href="javascript:void(0)">To the point</sd-navigation-item>
+        <sd-navigation-item vertical chevron divider href="javascript:void(0)">Meeting point</sd-navigation-item>
       </nav>
       <nav slot="footer" class="bg-neutral-100">
-        <sd-navigation-item vertical class="flex align-center">
+        <sd-navigation-item vertical class="flex align-center" href="javascript:void(0)">
           <sd-icon name="system/lock-locked" class="h-6 w-6 mr-2"></sd-icon>
           My application
         </sd-navigation-item>
-        <sd-navigation-item vertical divider class="flex align-center">
+        <sd-navigation-item vertical divider class="flex align-center" href="javascript:void(0)">
           <sd-icon name="system/website" class="h-6 w-6 mr-2"></sd-icon>
           Our further appearances
         </sd-navigation-item>
       </nav>
     </sd-drawer>
-    <script>
-      var drawerSampleB = document.getElementById('sampleB__drawer');
+    <script type="module">
+      var drawerSampleB = document.getElementById('sample-b__drawer');
       function openDrawerSampleB() {
         drawerSampleB.show();
       }
