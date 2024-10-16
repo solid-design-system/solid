@@ -105,10 +105,9 @@ export const SampleA = {
         </sd-navigation-item>
       </nav>
     </sd-drawer>
-    <script type="module">
+    <script>
       // This line is using querySelectorAll due to hidden elements from Storybook configs.
-      // In a regular environment, use: var drawer = document.getElementById('#sample-a-drawer') or similar
-
+      // In a regular environment, use: const drawer = document.getElementById('#sample-a-drawer') or similar
       function openDrawerSampleA() {
         const drawerSampleA = document.querySelectorAll('#sample-a-drawer')[1];
         drawerSampleA.show();
@@ -206,9 +205,9 @@ export const SampleA02 = {
         </sd-navigation-item>
       </nav>
     </sd-drawer>
-    <script type="module">
-      var drawerSampleA2 = document.getElementById('sample-a02__drawer');
+    <script>
       function openDrawerSampleA2() {
+        const drawerSampleA2 = document.getElementById('sample-a02-drawer');
         drawerSampleA2.show();
       }
     </script>
@@ -293,10 +292,11 @@ export const SampleB = {
         </sd-navigation-item>
       </nav>
     </sd-drawer>
-    <script type="module">
-      var drawerSampleB = document.getElementById('sample-b__drawer');
+    <script>
       function openDrawerSampleB() {
+        const drawerSampleB = document.getElementById('sample-b-drawer');
         drawerSampleB.show();
+        0;
       }
     </script>
   `
