@@ -1,3 +1,10 @@
+# [@solid-design-system/placeholders-v1.7.0](https://github.com/solid-design-system/solid/compare/placeholders/1.6.2...placeholders/1.7.0) (2024-10-16)
+
+
+### Features
+
+* sd-audio ([#1194](https://github.com/solid-design-system/solid/issues/1194)) ([8757a14](https://github.com/solid-design-system/solid/commit/8757a14944c61e84e51b9667ff0a25f13d2ec9cb)), closes [#270](https://github.com/solid-design-system/solid/issues/270)
+
 # [@solid-design-system/placeholders-v1.6.2](https://github.com/solid-design-system/solid/compare/placeholders/1.6.1...placeholders/1.6.2) (2024-07-23)
 
 
