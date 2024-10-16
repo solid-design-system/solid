@@ -1,4 +1,4 @@
-import { css, html } from 'lit';
+import { css, html, nothing } from 'lit';
 import { customElement } from '../../../src/internal/register-custom-element';
 import { property } from 'lit/decorators.js';
 import cx from 'classix';
@@ -26,10 +26,21 @@ export default class SdBadge extends SolidElement {
   /** Inverts the badge. */
   @property({ type: Boolean, reflect: true }) inverted = false;
 
+  private getParentElement() {
+    const parent = this.parentElement;
+    const isInteractiveElement = parent?.matches(
+      'a, button, sd-button, input, textarea, select, details, [href], [tabindex], [role="button"], [role="link"]'
+    );
+
+    return isInteractiveElement ? parent : null;
+  }
+
   render() {
+    const parentIsInteractive = !!this.getParentElement();
+
     return html`
       <span
-        tabindex="0"
+        tabindex=${parentIsInteractive ? nothing : '0'}
         role="status"
         part="base"
         class=${cx(
