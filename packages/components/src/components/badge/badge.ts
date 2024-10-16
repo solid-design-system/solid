@@ -44,9 +44,9 @@ export default class SdBadge extends SolidElement {
           }[this.variant],
           {
             /* size and fonts*/
-            sm: 'h-2 min-w-[8px] text-[10px]',
-            md: 'h-4 px-[4px] min-w-[16px] text-[10px]',
-            lg: 'h-5 px-[5px] min-w-[20px] text-[12px]'
+            sm: 'h-2 min-w-2',
+            md: 'h-4 px-1 min-w-4',
+            lg: 'h-5 min-w-5'
           }[this.size]
         )}
       >
@@ -62,6 +62,19 @@ export default class SdBadge extends SolidElement {
     css`
       :host {
         @apply inline-flex items-center justify-center;
+      }
+
+      :host([size='md']) {
+        font-size: 0.625rem;
+      }
+
+      :host([size='lg']) {
+        font-size: 0.75rem;
+      }
+
+      :host([size='lg'])::part(base) {
+        padding-left: 0.313rem;
+        padding-right: 0.313rem;
       }
     `
   ];
