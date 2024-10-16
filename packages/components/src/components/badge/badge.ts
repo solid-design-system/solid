@@ -50,7 +50,7 @@ export default class SdBadge extends SolidElement {
           }[this.size]
         )}
       >
-        <span part="content" class=${cx(this.size === 'sm' && 'hidden')}>
+        <span part="content" class=${cx(this.size === 'sm' && 'sr-only')}>
           <slot></slot>
         </span>
       </span>
