@@ -19,7 +19,6 @@ export default {
 
 /**
  * The teaser itself is not clickable, but links can be placed inside.
- * There is no need for any extra steps, the teaser can be used as it is.
  *
  * ```html
  * <sd-teaser>
@@ -27,8 +26,7 @@ export default {
  * </<sd-teaser>
  * ```
  */
-export const NotClickableTeaserWithLink = {
-  name: 'Not Clickable Teaser with Link',
+export const UnclickableTeaserWithNestedLink = {
   render: () => {
     return html`
       <sd-teaser
@@ -87,8 +85,7 @@ export const NotClickableTeaserWithLink = {
  * ```
  */
 
-export const ClickableTeaserWithLink = {
-  name: 'Clickable Teaser with Link',
+export const ClickableTeaser = {
   render: () => {
     return html`
       <style>
@@ -107,13 +104,18 @@ export const ClickableTeaserWithLink = {
               alt="A man with glasses and a beard holding two young children in his arms, smiling outdoors with trees in the background."
             />
           </div>
-          <h3 slot="headline" class="sd-headline sd-headline--size-lg">Invest sustainably</h3>
+          <h3 slot="headline" class="sd-headline sd-headline--size-lg">Future is an Attitude</h3>
           <div class="flex flex-col gap-5 mt-4">
-            <p>How we are actively shaping the transformation of the economy in the interests of our investors.</p>
+            <p>
+              Together with our cooperative partners and in trust in our shared values, we once again achieved a good
+              result in the past financial year. From this strong position, we are investing in key areas for the future
+              in order to continue to grow profitably, strengthen our position as an active manager and secure the
+              long-term prosperity of our customers, even in a multi-layered and complex environment.
+            </p>
             <div class="flex-none">
-              <sd-button href="javascript:void(0)" variant="secondary">
-                <sd-icon name="system/shopping-cart" slot="icon-left"></sd-icon>
-                Add to cart
+              <sd-button variant="secondary">
+                <sd-icon name="system/download" slot="icon-left"></sd-icon>
+                Download Annual Report
               </sd-button>
             </div>
           </div>
@@ -127,6 +129,11 @@ export const teaserWithIcon = {
   name: 'Teaser with Icon',
   render: () => {
     return html`
+      <style>
+        #anchor--templates-teaser--teaser-with-icon .innerZoomElementWrapper {
+          height: 1300px;
+        }
+      </style>
       <div class="flex flex-col gap-8">
         <sd-teaser variant="white" breakpoint="9999" inset class="max-w-[338px]">
           <div slot="media">
@@ -166,13 +173,12 @@ export const teaserWithIcon = {
         </sd-teaser>
         <sd-teaser
           variant="primary-100"
-          breakpoint="0"
-          inset=""
-          class="flex-1 h-[238px]"
-          id="teaserWithIcon"
+          inset
+          class="h-[238px]"
+          id="horizontal-teaser-with-icon"
           style="--distribution-media: 20%; --distribution-content: 80%;"
         >
-          <div slot="media" class="flex flex-wrap justify-center">
+          <div slot="media" class="flex flex-wrap justify-center items-center h-[189px] md:h-auto">
             <sd-icon class="text-[96px]" name="content/city-apartment" color="primary"></sd-icon>
           </div>
           <h3 slot="headline" class="sd-headline sd-headline--size-lg">Responsibility</h3>
@@ -181,12 +187,20 @@ export const teaserWithIcon = {
               We take responsibility and act responsibly in the sense of our fiduciary mandate towards our investors as
               well as towards our employees and society.
             </p>
-            <div class="flex-none">
+            <div class="flex-none mb-5 md:mb-0">
               <sd-link href="javascript:void(0)">Find out more</sd-link>
             </div>
           </div>
         </sd-teaser>
       </div>
+      <script type="module">
+        window.addEventListener('resize', updateBreakpoint());
+        const horizontalTeaserWithIcon = getElementById('horizontal-teaser-with-icon');
+        updateBreakpoint() {
+          const breakpointValue = window.innerWidth < 768 ? 0 : 99999;
+          horizontalTeaserWithIcon.setAttribute('breakpoint', breakpointValue);
+        }
+      </script>
     `;
   }
 };
@@ -244,8 +258,8 @@ export const teaserWithChipAndFlag = {
         </sd-teaser>
         <sd-teaser
           variant="neutral-100"
-          breakpoint="0"
           inset
+          id="horizontal-teaser-with-chip-and-flag"
           class="max-w-[720px] flex-1 h-[238px]"
           style="--distribution-media: 60%; --distribution-content: 50%;"
         >
@@ -264,6 +278,14 @@ export const teaserWithChipAndFlag = {
           </h3>
         </sd-teaser>
       </div>
+      <script type="module">
+        window.addEventListener('resize', updateBreakpoint());
+        const horizontalTeaserWithChipAndFlag = getElementById('horizontal-teaser-with-chip-and-flag');
+        updateBreakpoint() {
+          const breakpointValue = window.innerWidth < 768 ? 0 : 99999;
+          horizontalTeaserWithChipAndFlag.setAttribute('breakpoint', breakpointValue);
+        }
+      </script>
     `;
   }
 };
@@ -272,28 +294,36 @@ export const teaserWithDivision = {
   name: 'Teaser with 50:50 Division',
   render: () => {
     return html`
-    <style>
-      sd-teaser#teaserWithDivision::part(content) {
-        min-height: 100%;
-        padding: 24px 34px 24px 0;
-      }
-      sd-teaser#teaserWithDivision::part(main) {
-        height: 100%;
-      }
-    </style>
+      <style>
+        sd-teaser#teaser-with-division::part(content) {
+          padding: 20px;
+        }
+        @media (min-width: 768px) {
+          sd-teaser#teaser-with-division::part(content) {
+            min-height: 100%;
+            padding: 24px 34px 24px 0;
+          }
+        }
+        sd-teaser#teaser-with-division::part(main) {
+          height: 100%;
+        }
+      </style>
       <sd-teaser
-      variant="neutral-100"
-      breakpoint="0"
-      class="max-w-[656px] flex-1 p-4"
-      id="teaserWithDivision"
-      style="--distribution-media: 50%; --distribution-content: 50%;">
+        variant="neutral-100"
+        class="max-w-[656px] flex-1 p-4"
+        id="teaser-with-division"
+        style="--distribution-media: 50%; --distribution-content: 50%;"
+      >
         <div slot="media" class="relative">
           <img
-            class="w-full aspect-[3/4] object-cover"
+            class="w-full aspect-[4/3] md:aspect-[3/4] object-cover"
             src="./placeholders/images/collaboration.jpg"
-            alt="Two men in business attire sitting on a sofa in a modern office, smiling and looking at a laptop screen."/>
+            alt="Two men in business attire sitting on a sofa in a modern office, smiling and looking at a laptop screen."
+          />
         </div>
-        <h3 slot="headline" class="sd-headline sd-headline--size-3xl text-primary">“Our real estate funds are well positioned”</h3>
+        <h3 slot="headline" class="sd-headline sd-headline--size-3xl text-primary ml-8">
+          “Our real estate funds are well positioned”
+        </h3>
         <div class="w-full flex flex-col h-full justify-between">
           <p class="sd-paragraph mt-8">
             Carsten Thiel, Head of Fund Management for Open Real Estate Mutual Funds at Union Investment, about the
@@ -305,8 +335,18 @@ export const teaserWithDivision = {
               <span class="sd-meta sd-meta--pipe">15.09.2023</span>
               <span class="sd-meta">Opinions</span>
             </p>
+          </div>
         </div>
       </sd-teaser>
+      <script type="module">
+        window.addEventListener('resize', updateBreakpoint());
+        const teaserWithDivision = getElementById('teaser-with-division');
+
+        updateBreakpoint() {
+          const breakpointValue = window.innerWidth < 768 ? 0 : 99999;
+          teaserWithDivision.setAttribute('breakpoint', breakpointValue);
+        }
+      </script>
     `;
   }
 };
