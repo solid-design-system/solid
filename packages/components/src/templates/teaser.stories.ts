@@ -125,7 +125,7 @@ export const ClickableTeaser = {
   }
 };
 
-export const teaserWithIcon = {
+export const TeaserWithIcon = {
   name: 'Teaser with Icon',
   render: () => {
     return html`
