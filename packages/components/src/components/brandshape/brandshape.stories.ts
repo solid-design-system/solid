@@ -51,9 +51,6 @@ export default {
   }
 };
 
-/**
- * Default: This shows sd-brandshape in its default state.
- */
 export const Default = {
   name: 'Default',
   render: (args: any) => {
@@ -62,7 +59,15 @@ export const Default = {
 };
 
 /**
- * Use the `variant` attribute to display the brandshape with different background colors.
+ * Use the `variant` attribute to set the color variant:
+ *
+ * - `primary` (default): Used on light backgrounds
+ * - `neutral-100`
+ * - `border-primary`: Used on light backgrounds
+ * <br>Change the fill color to match the background color
+ * - `image`
+ * - `white`: Used on primary, primary-100 and neutral-100 backgrounds
+ * - `border-white`: Used on primary background
  */
 
 export const Variant = {
@@ -143,5 +148,4 @@ export const ImageTranslateY = {
     </sd-brandshape>
   `
 };
-
-// TODO: Add copyright story once it's implemented. (issue: https://github.com/solid-design-system/solid/issues/1319)
+// TODO: Add copyright story once it's implemented. (issue: https://github.com/solid-design-system/solid/issues/1553)

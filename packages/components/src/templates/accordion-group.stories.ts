@@ -2,12 +2,13 @@ import '../solid-components';
 import { html } from 'lit-html';
 
 /**
- * Examples of the sd-accordion-group component in different backgrounds.
+ * ```
+ * ```
  */
 
 export default {
   tags: ['!dev'],
-  title: 'Templates/Accordion Group on Different Backgrounds',
+  title: 'Templates/Accordion Group',
   parameters: {
     chromatic: { disableSnapshot: true },
     design: {
@@ -17,6 +18,9 @@ export default {
   }
 };
 
+/**
+ * Examples of the sd-accordion-group component in different backgrounds.
+ */
 export const Default = {
   name: 'White Background',
   render: () => html`

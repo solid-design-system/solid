@@ -42,7 +42,7 @@ export const Default = {
 };
 
 /**
- * Use the `&--inverted` class when displayed on primary background.
+ * Use the `sd-interactive--inverted` class when displayed on primary background.
  */
 
 export const Inverted = {
@@ -54,7 +54,7 @@ export const Inverted = {
 };
 
 /**
- * Use the `&--disabled` class to disable an interactive element.
+ * Use the `sd-interactive--disabled` class to disable an interactive element.
  *
  * This works as well when setting an `disabled` attribute on the element.
  */
@@ -64,7 +64,7 @@ export const Disabled = {
 };
 
 /**
- * Use the `&--reset` class to reset the default browser styles of e. g. a button.
+ * Use the `sd-interactive--reset` class to reset the default browser styles of e. g. a button.
  */
 
 export const Reset = {

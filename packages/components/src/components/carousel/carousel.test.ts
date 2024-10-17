@@ -661,4 +661,125 @@ describe('<sd-carousel>', () => {
       expect(currentPage).to.equal(5);
     });
   });
+
+  describe('when the user interacts with the carousel', () => {
+    let clock: sinon.SinonFakeTimers;
+
+    beforeEach(() => {
+      clock = sinon.useFakeTimers({
+        now: new Date()
+      });
+    });
+
+    afterEach(() => {
+      clock.restore();
+    });
+
+    it('should pause the autoplay', async () => {
+      // Arrange
+      const el = await fixture<SdCarousel>(html`
+        <sd-carousel autoplay>
+          <sd-carousel-item>Node 1</sd-carousel-item>
+          <sd-carousel-item>Node 2</sd-carousel-item>
+          <sd-carousel-item>Node 3</sd-carousel-item>
+        </sd-carousel>
+      `);
+      sinon.stub(el, 'next');
+
+      await el.updateComplete;
+
+      // Act
+      el.dispatchEvent(new Event('mouseenter'));
+      await el.updateComplete;
+      clock.next();
+      clock.next();
+
+      // Assert
+      expect(el.next).not.to.have.been.called;
+    });
+
+    it('should not resume if the user is still interacting', async () => {
+      // Arrange
+      const el = await fixture<SdCarousel>(html`
+        <sd-carousel autoplay>
+          <sd-carousel-item>Node 1</sd-carousel-item>
+          <sd-carousel-item>Node 2</sd-carousel-item>
+          <sd-carousel-item>Node 3</sd-carousel-item>
+        </sd-carousel>
+      `);
+      sinon.stub(el, 'next');
+
+      await el.updateComplete;
+
+      // Act
+      el.dispatchEvent(new Event('mouseenter'));
+      el.dispatchEvent(new Event('focusin'));
+      await el.updateComplete;
+
+      el.dispatchEvent(new Event('mouseleave'));
+      await el.updateComplete;
+
+      clock.next();
+      clock.next();
+
+      // Assert
+      expect(el.next).not.to.have.been.called;
+    });
+
+    it('should not resume if the user clicks the pause button', async () => {
+      // Arrange
+      const el = await fixture<SdCarousel>(html`
+        <sd-carousel autoplay>
+          <sd-carousel-item>Node 1</sd-carousel-item>
+          <sd-carousel-item>Node 2</sd-carousel-item>
+          <sd-carousel-item>Node 3</sd-carousel-item>
+        </sd-carousel>
+      `);
+      sinon.stub(el, 'next');
+
+      await el.updateComplete;
+
+      // Act
+      el.autoplayControls.click();
+      await el.updateComplete;
+      clock.next();
+      clock.next();
+
+      // Assert
+      expect(el.next).not.to.have.been.called;
+    });
+
+    it('should resume if the user clicks the resume button', async () => {
+      // Arrange
+      const el = await fixture<SdCarousel>(html`
+        <sd-carousel autoplay>
+          <sd-carousel-item>Node 1</sd-carousel-item>
+          <sd-carousel-item>Node 2</sd-carousel-item>
+          <sd-carousel-item>Node 3</sd-carousel-item>
+        </sd-carousel>
+      `);
+      sinon.stub(el, 'next');
+
+      await el.updateComplete;
+
+      // Act
+      el.autoplayControls.click();
+      await el.updateComplete;
+      clock.next();
+      clock.next();
+
+      // Assert
+      expect(el.next).not.to.have.been.called;
+
+      // Act
+
+      el.autoplayControls.click();
+      await el.updateComplete;
+      clock.next();
+      clock.next();
+
+      // Assert
+      expect(el.next).to.have.been.called;
+    });
+  });
 });

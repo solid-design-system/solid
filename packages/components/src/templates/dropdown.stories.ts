@@ -1,9 +1,13 @@
 import '../solid-components';
 import { html } from 'lit-html';
 
+/**
+ * ```
+ * ```
+ */
 export default {
   tags: ['!dev'],
-  title: 'Templates/Dropdown with navigation items',
+  title: 'Templates/Dropdown',
   parameters: {
     design: {
       type: 'figma',
@@ -14,16 +18,14 @@ export default {
 };
 
 /**
+ * ### Dropdown with Navigation Items
  *
  * This is an example of a dropdown.
- *
- * ```
- * ```
  */
 export const Default = {
   render: () => html`
     <style>
-      #anchor--templates-dropdown-with-navigation-items--default .innerZoomElementWrapper {
+      #anchor--templates-dropdown--default .innerZoomElementWrapper {
         min-height: 500px;
       }
     </style>

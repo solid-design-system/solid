@@ -38,11 +38,11 @@ export const Default = {
 };
 
 /**
- * Use `sd-flag` modifiers for alternative appearances:
- * - `--neutral-200` (default)
- * - `--neutral-300`
- * - `--neutral-500`
- * - `--white`
+ * Use the `sd-flag` classes for alternative appearances:
+ * - `sd-flag--neutral-200` (default)
+ * - `sd-flag--neutral-300`
+ * - `sd-flag--neutral-500`
+ * - `sd-flag--white`
  */
 
 export const Variants = {

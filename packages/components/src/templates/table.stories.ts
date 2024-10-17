@@ -7,7 +7,6 @@ import { ifDefined } from 'lit/directives/if-defined.js';
  * The examples are intended solely for illustrating how sd-table-cell can be used to style tables.
  * The data generation and table sorting logic should not be used in production environments.
  */
-
 export default {
   tags: ['!dev'],
   title: 'Templates/Table',
@@ -19,7 +18,6 @@ export default {
 /**
  * ### Simple table
  */
-
 export const simpleTables = {
   render: () => html`
     <table class="sd-table sample-table w-full">
@@ -238,6 +236,7 @@ export const simpleTableAlternatingColors = {
 export const sortableTable = {
   render: () => {
     // Initalize table data
+    let numbersToSort = 7;
     const tableRowCount = 6;
     const tableColumnCount = 3;
     const headerData = Array.from({ length: tableColumnCount }, () => 'Header');
@@ -322,7 +321,7 @@ export const sortableTable = {
     };
 
     return html`
-      <table class="sd-table sample-table w-full" id="sortableTable" .sortData=${sortData} data-chromatic="ignore">
+      <table class="sd-table sample-table w-full" id="sortableTable" .sortData=${sortData}>
         <thead>
           ${(() => {
             return html`<tr>
@@ -347,11 +346,10 @@ export const sortableTable = {
         </thead>
         <tbody>
           ${tableData.map(rowData => {
+            numbersToSort -= 1;
             return html`<tr>
               ${rowData.map(cellData => {
-                return html`<td class="sd-table-cell sd-table-cell--bg-transparent">
-                  ${Math.floor(Math.random() * 10)}: ${cellData}
-                </td>`;
+                return html`<td class="sd-table-cell sd-table-cell--bg-transparent">${numbersToSort}: ${cellData}</td>`;
               })}
             </tr>`;
           })}

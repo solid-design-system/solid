@@ -36,12 +36,12 @@ export const Default = {
 };
 
 /**
- * Use the `&--variant-*` classes for alternative appearances:
- *- `neutral-100` (default): use the class `sd-container--variant-neutral-100`
- *- `primary-100`: use the class `sd-container--variant-primary-100`
- *- `primary`: use the class `sd-container--variant-primary`
- *- `border-neutral-400`: use the class `sd-container--border-neutral-400`
- *- `white`: use the class `sd-container--variant-white`
+ * Use the `sd-container` classes for alternative appearances:
+ * - `sd-container--variant-neutral-100` (default)
+ * - `sd-container--variant-primary-100`
+ * - `sd-container--variant-primary`
+ * - `sd-container--variant-border-neutral-400`
+ * - `sd-container--variant-white`
  */
 
 export const Variants = {
@@ -70,7 +70,7 @@ export const Variants = {
 };
 
 /**
- * Use the `&--padding-sm` class to adapt the container to smaller component widths.
+ * Use the `sd-container--padding-sm` class to adapt the container to smaller component widths.
  */
 
 export const Padding = {
@@ -92,11 +92,14 @@ export const CustomPadding = {
 };
 
 /**
- * You can add a triangle indentation to the container using the `&--triangle-*` appended with one of the following positions 'top', 'right', 'bottom', 'left' (e.g. sd-container--triangle-top).
+ * Use the `sd-container` classes to add a triangle indentation to the container:
  *
- * - A triangle can be shown to draw attention.
- * - Triangle position can be `top`, `bottom`, `left` or `right`.
- * - Default background option is white and can be overridden if desired.
+ * - `sd-container--triangle-top`
+ * - `sd-container--triangle-right`
+ * - `sd-container--triangle-bottom`
+ * - `sd-container--triangle-left`
+ *
+ * __Hint:__ Default background option is white and can be overridden if desired.
  */
 
 export const TrianglePosition = {
@@ -121,12 +124,12 @@ export const TrianglePosition = {
 };
 
 /**
- * For the `sd-container--variant-border-neutral-400`, use the `&--triangle-*-border` set of classes to create a triangle with a border:
+ * Use the `sd-container` classes to create a triangle with a border when using the variant `sd-container--variant-border-neutral-400`:
  *
- * - `triangle-top-border`
- * - `triangle-right-border`
- * - `triangle-bottom-border`
- * - `triangle-left-border`
+ * - `sd-container--triangle-top-border`
+ * - `sd-container--triangle-right-border`
+ * - `sd-container--triangle-bottom-border`
+ * - `sd-container--triangle-left-border`
  */
 
 export const TriangleBorder = {
@@ -151,7 +154,7 @@ export const TriangleBorder = {
 };
 
 /**
- * Use the CSS property `--triangle-background` to set the triangle cut-out color.
+ * Use the `--triangle-background` CSS property to set the triangle cut-out color.
  */
 
 export const TriangleColor = {

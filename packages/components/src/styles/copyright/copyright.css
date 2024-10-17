@@ -6,4 +6,15 @@
     content: var(--copyright);
     text-shadow: 0 1px 3px #515151bf;
   }
+
+  &--orientation {
+    &-vertical {
+      &::after {
+        @apply pt-2 pb-0 pr-1 pl-0 w-max;
+        writing-mode: vertical-rl;
+        text-orientation: sideways-right;
+        transform: rotate(180deg);
+      }
+    }
+  }
 }

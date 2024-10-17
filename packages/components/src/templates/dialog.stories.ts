@@ -1,6 +1,10 @@
 import '../solid-components';
 import { html } from 'lit-html';
 
+/**
+ * ```
+ * ```
+ */
 export default {
   tags: ['!dev'],
   title: 'Templates/Dialog',
@@ -27,7 +31,6 @@ export default {
 /**
  *
  */
-
 export const Default = {
   name: 'Dialog with Button Group',
   render: () => html`

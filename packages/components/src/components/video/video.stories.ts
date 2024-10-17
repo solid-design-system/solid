@@ -10,7 +10,7 @@ const { generateTemplate } = storybookTemplate('sd-video');
  * Used to embed and control videos.
  *
  * **Related templates**:
- * - [Video with Description and Copyright](?path=/docs/templates-video-with-description-and-copyright--docs)
+ * - [Video](?path=/docs/templates-video--docs)
  */
 
 export default {
@@ -42,9 +42,8 @@ export const Default = {
 };
 
 /**
- * Use in combination with a viewer component (e. g. from Moving Image) or a bare `<video>`-Tag.
- *
- * Use the `poster` slot to add a preview image.
+ * - Use in combination with a viewer component (e. g. from Moving Image) or a bare `<video>`-Tag.
+ * - Use the `poster` slot to add a preview image.
  */
 
 export const VideoElementWithPosterSlot = {
