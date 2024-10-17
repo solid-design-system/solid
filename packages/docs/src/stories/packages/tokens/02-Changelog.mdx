@@ -1,0 +1,9 @@
+import { Meta } from "@storybook/blocks";
+import Changelog from '../../../../../tokens/CHANGELOG.md?raw';
+import {ChangelogFormatter} from '../../../Changelog.jsx';
+
+<Meta title="Packages/tokens/Changelog" />
+
+<ChangelogFormatter>
+  {Changelog}
+</ChangelogFormatter>
