@@ -17,7 +17,7 @@ export default {
   }
 };
 
-export const loginForm = {
+export const LoginForm = {
   render: () => html`
     <style>
       #loginForm__submitButton::part(icon-left) {
