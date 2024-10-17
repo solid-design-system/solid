@@ -51,7 +51,7 @@ export const loginForm = {
   `
 };
 
-export const contactForm = {
+export const ContactForm = {
   render: () => html`
     <form class="sd-prose" id="contactForm">
       <h3 class="sd-headline sd-headline--size-4xl">Contact</h3>
