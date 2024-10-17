@@ -81,7 +81,7 @@ export default class SdMapMarker extends SolidElement {
     SolidElement.styles,
     css`
       :host {
-        display: inline-block;
+        display: block;
       }
 
       :host([variant='cluster']) [part='base'],
