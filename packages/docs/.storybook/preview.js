@@ -13,7 +13,7 @@ export const preview = {
     },
     docs: {
       story: { inline: true },
-      toc: false,
+      toc: true,
       source: {
         transform: (code, storyContent) => {
           let output = code;
