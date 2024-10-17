@@ -1,6 +1,6 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
-import type SdInput from '../components/input/input';
+import type SdInput from '../../../../components/src/components/input/input';
 
 /**
  * ```
