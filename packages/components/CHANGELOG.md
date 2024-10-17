@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v3.19.2](https://github.com/solid-design-system/solid/compare/components/3.19.1...components/3.19.2) (2024-10-17)
+
+
+### Bug Fixes
+
+* 🤔 pause not working in sd-carousel ([#1467](https://github.com/solid-design-system/solid/issues/1467)) ([e594b21](https://github.com/solid-design-system/solid/commit/e594b21bdc225728cff9bb6ffdf66f7f21342af0))
+
+### 📈 Stats
+* Bundle size (uncompressed): 350 KB (unchanged)
+* Bundle size (gzipped): 82 KB (unchanged)
+
 # [@solid-design-system/components-v3.19.1](https://github.com/solid-design-system/solid/compare/components/3.19.0...components/3.19.1) (2024-10-16)
 
 
