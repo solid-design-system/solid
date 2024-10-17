@@ -13,7 +13,7 @@ export const preview = {
     },
     docs: {
       story: { inline: true },
-      toc: true,
+      toc: false,
       source: {
         transform: (code, storyContent) => {
           let output = code;
@@ -194,7 +194,7 @@ export const parameters = {
   },
   options: {
     storySort: {
-      order: ['*', 'Legal']
+      order: ['*', 'legal']
     }
   }
 };
