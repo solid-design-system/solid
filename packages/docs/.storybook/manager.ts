@@ -6,6 +6,6 @@ import solidTheme from './solid-theme';
 addons.setConfig({
   theme: solidTheme,
   sidebar: {
-    showRoots: false
+    showRoots: true
   }
 });

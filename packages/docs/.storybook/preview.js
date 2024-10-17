@@ -55,12 +55,6 @@ export const preview = {
           value: 'rgb(var(--sd-color-neutral-200, 242 242 242))'
         }
       ]
-    },
-    options: {
-      storySort: {
-        method: 'alphabetical',
-        order: ['Docs', '*', 'Legal']
-      }
     }
   }
 };
@@ -191,11 +185,6 @@ export const parameters = {
         value: 'rgb(var(--sd-color-neutral-200, 242 242 242))'
       }
     ]
-  },
-  options: {
-    storySort: {
-      order: ['*', 'legal']
-    }
   }
 };
 

@@ -2,7 +2,14 @@ import storybookEnvPackageVersions from '../scripts/storybook/env-package-versio
 import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default {
-  stories: ['../src/stories/**/*.@(mdx|stories.*)'],
+  stories: [
+    '../src/stories/docs/**/*.@(mdx|stories.*)',
+    '../src/stories/packages/**/*.@(mdx|stories.*)',
+    '../src/stories/components/*.@(mdx|stories.*)',
+    '../src/stories/styles/*.@(mdx|stories.*)',
+    '../src/stories/templates/*.@(mdx|stories.*)',
+    '../src/stories/legal/*.@(mdx|stories.*)'
+  ],
   env: storybookEnvPackageVersions({
     packagePaths: ['../components', '../tokens', '../placeholders']
   }),
