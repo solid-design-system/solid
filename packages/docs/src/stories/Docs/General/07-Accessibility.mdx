@@ -1,0 +1,83 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Docs/General/Accessibility" />
+
+# Accessibility
+
+Union Investment strives to offer digital products and services that are accessible to all, regardless of their abilities/limitations or the technology used. This is an accessibility checklist used by the SDS team when designing and developing new features. It helps us improve the experience for everyone who uses our product and ensures our high standards are met.
+
+This is an ongoing process. We will continue to improve accessibility and meet at least the **WCAG 2.1 Level AA guidelines** - also with a view to the Barrier-Free Accessibility Strengthening Act that will come into force from 2025.
+
+## Developing a WCAG-compliant Basis
+
+We are committed to creating products that are conform to the WCAG 2.1 guidelines, a standard also embraced by the Union Investment brand department. This commitment includes a range of specific practices:
+
+### Semantic Structure & HTML Usage
+
+- **Native HTML over ARIA labels**: Always use native HTML instead of ARIA labels. This practice ensures that our content is as accessible as possible to a wide range of assistive technologies.
+
+- **Semantically Correct Structure**: Implement a semantically correct structure, for example, H1 followed by H2, and P used for text, etc. This helps assistive technologies understand the structure and meaning of our content.
+
+### Screen reader & keyboard controls
+
+- **Keyboard-Accessible Elements**: All elements should be focusable only with the keyboard, in a desired order and with a visual focus. This assures that our content is accessible to users who rely on keyboard navigation.
+
+- **Preserving ARIA Information**: Do not delete the ARIA information from the solid examples. They ensure correct interpretation by screen readers.
+
+### Multimedia:
+
+- **Alt text**: Provide alternative text for images, icons, and non-text content.
+
+- **Captions and transcripts**: Always include captions and transcripts for videos and audio content.
+
+- **Never auto-play** audio and video without providing pause/play functionalities.
+
+### Color:
+
+- **Color contrast**: [Verify that color contrast](https://color.a11y.com/) meets the WCAG AA standard.
+- **Color combinations**: Check color combinations for common forms of color blindness.
+
+## Motion:
+
+- **Include CSS prefers-reduced-motion** for all web content.
+
+## Responsiveness
+
+- **Flexible Layouts**: Design fluid layouts that adjust to different screen sizes.
+- **Readable Text**: Maintain text readability without horizontal scrolling on any screen size.
+- **Accessible Touch-Targets**: Ensure touch targets are large enough for easy interaction on touchscreens.
+- **Media Adaptation**: Scale images and other media appropriately for all screen sizes.
+
+## Additionally, we incorporate the following practices to ensure accessibility:
+
+- **Mouseless stories** to test and ensure all functionality is accessible without relying on mouse interactions.
+
+- **A11y test cases**.
+
+- **Focus visibility and order** for interactive elements.
+
+## Integration into Processes as Definition-of-Done (DOD)
+
+Accessibility is not an afterthought. It is integrated into our **Definition-of-Done**. This means that no work is considered complete until it meets our accessibility standards.
+
+## The Importance of Web Accessibility
+
+Web accessibility is essential as it ensures no one is excluded. It makes services user-friendly and accessible to all, a principle especially important for financial service providers who should provide their services to everyone, disability or not. By prioritizing accessibility, we reach a wider audience, adhere to regulations and ethical standards, and provide a better experience for all users.
+
+## What's New in the Solid Design System
+
+We have made several changes to our design system to improve accessibility, including the following:
+
+- **New approach to accentuation**: Omit using green text and use green only for graphical elements.
+
+- **New look and feel**: Active component states use primary as the main color and green for occasional highlight instead of only green previously.
+
+- **New functional colors** are used for success and error messages as well as positive and negative (performance) values, notifications and badges. Also for notifications a new yellow color has been introduced as a warning color and a lightblue color as an informative color.
+
+- **Usage limitations for colored text**: Green text and graphical elements can only be used on the following backgrounds: white, primary, primary-100, neutral-100. On these backgrounds green text has a minium font size of 18.67px in bold and 24px in book. When inverted on green background only text colors white and primary can be used. On green background white text has a minimum font size of 18.67px in bold and 24px in book.
+
+- **The CTA-Button** has a specific green background color that is only allowed for this variant.
+
+##
+
+For more information on this refer to development guidelines and best practices specific to accessibility to ensure compliance with WCAG 2.1 AA standards (https://www.w3.org/WAI/standards-guidelines/wcag/).

@@ -1,0 +1,49 @@
+# Migration Guide: From `ui-headline` to `sd-headline`
+
+The new `sd-headline` is designed to replace the `ui-headline`. Rather than offering a complex component structure, they primarily focus on providing CSS styles for heading elements. Make sure to provide correct semantics yourself, e. g. `<h2>`.
+
+## 💾 Slots
+
+### ❌ Removed Slots
+
+The following slots have been removed from the new sd-headline component:
+
+1. [default]
+
+<hr />
+
+## 🎨 CSS Classes
+
+### ✨ New CSS Classes
+
+#### [sd-headline]
+
+The `sd-headline` class is intended for use with heading elements (e.g., `h1`, `h2`, etc.) which are vital for displaying content hierarchy and to improve accessibility.
+
+#### [sd-headline--size-...]
+
+The `sd-headline--size-...` classes define the size of the headline. The options (excluding the default value) include `3xl`, `xl`, `lg` and `base`.
+
+#### [sd-headline--inverted]
+
+This class inverts the headline text.
+
+#### [sd-headline--inline]
+
+This class sets inline behavior. It should be used exclusively when an sd-icon or other component is present.
+
+<hr />
+
+## ⚙️ Attributes
+
+### ❌ Removed Attributes
+
+The following attributes have been removed from the new sd-headline component:
+
+1. [conversion]
+2. [icon]
+3. [icon-variant]
+4. [is-headline-centered]
+5. [level]
+
+<hr />

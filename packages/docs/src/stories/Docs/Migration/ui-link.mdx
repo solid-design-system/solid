@@ -1,0 +1,61 @@
+# Migration Guide: From `ui-link` to `sd-link`
+
+The new `sd-link` is designed to replace the `ui-link`. Instead of mainly providing content via attributes, the `sd-link` component uses slots to allow for more flexibility and customization.
+
+## ⚙️ Attributes
+
+### ✨ New Attributes
+
+#### [standalone]
+
+The `ui-link` posed two problems:
+
+- The component automatically wraps to a new line, forcing subsequent content to a new line. This breaks away from the default `<a>` behavior, causing problems particularly in CMS Rich Text Editors where true inline behavior isn't possible.
+- Icons within the component are always displayed inline, even if the text wraps across multiple lines. This often leads to misuse of the component and unexpected behavior.
+
+`sd-link` resolves these issues with the `standalone` attribute that controls the layout of the icon and text within the component:
+
+- `false` (Default): Icons are displayed inline with the text, mimicking the default `<a>` element behavior. Icons adjust their spacing according to the current font size.
+- `true`: The link moves to a new line, with the icon and text displayed side-by-side, each in its own column.
+
+#### [size]
+
+The `sd-link` component offers three different sizes:
+
+- The default size, `inherit`, adapts the font size from the parent element, especially useful for non-`standalone` links.
+- The `lg` and `sm` sizes set predefined font sizes, beneficial for `standalone` links.
+
+### ❌ Removed Attributes
+
+The following attributes have been removed from the new sd-link component:
+
+1. [button]
+2. [icon]
+   The `sd-button` and `sd-link` no longer contain an `icon` attribute. They instead offer new `icon-left` and `icon-right` slots.
+3. [icon-option]
+   The `sd-button` and `sd-link` no longer offer an `icon-option` attribute. You can place icons in the main slot, which automatically adjusts the padding.
+4. [delay]
+5. [conversion]
+
+<hr />
+
+## ✍️ CSS Variables
+
+### ❌ Removed CSS variables
+
+The following CSS variables have been removed from the new sd-link component:
+
+1. [--component-link-...]
+2. [--component-button-...]
+
+<hr />
+
+## 💪 Additional Changes
+
+### Links that look like _buttons_
+
+If you have links that should resemble buttons, use the new `sd-button`. By setting a `href` attribute, you can leverage all attributes of an original HTML anchor, thereby providing more options than before. Refer to the `sd-button` documentation for further details.
+
+### Links that look like _links_
+
+The new `sd-link` offers styles for links that may span more than one line and always display an underline.

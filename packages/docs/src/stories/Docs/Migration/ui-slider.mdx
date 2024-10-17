@@ -1,0 +1,149 @@
+# Migration Guide: From `ui-slider` to `sd-carousel`
+
+The new `sd-carousel` is designed to replace the `ui-slider`. Instead of mainly providing content via attributes, the `sd-carousel` component uses slots to allow for more flexibility and customization.
+
+## 💾 Slots
+
+### ✨ New Slots
+
+#### [next-icon]
+
+An optional next icon that can be used instead of the default. This works best with `<sd-icon>`.
+
+#### [previous-icon]
+
+An optional previous icon that can be used instead of the default. This works best with `<sd-icon>`.
+
+#### [autoplay-start]
+
+An optional icon slot to replace the start/play button that appears when `autoplay` is set to true. Works best with `<sd-icon>`.
+
+#### [autoplay-pause]
+
+An optional icon slot to replace the pause button that appears when `autoplay` is set to true. Works best with `<sd-icon>`.
+
+<hr />
+
+## ⚙️ Attributes
+
+### ✨ New Attributes
+
+#### [autoplay]
+
+When set, the slides will scroll automatically when the user is not interacting with them.
+
+#### [inverted]
+
+The `inverted` attribute allows users to invert the colors of the `sd-carousel`.
+
+### 🔀 Updated Attributes
+
+#### [paginationType]
+
+The attribute `paginationType` has been updated to `variant` with new options `dot` and `number` replacing `default` and `fraction`.
+
+#### [noLoop]
+
+The attribute `noLoop` has been updated to `loop` to streamline and clarify the control of looping behavior.
+
+#### [slidesPerPage]
+
+The `slidesPerPage` attribute now accepts any number instead of the previous 1-4 range.
+
+### ❌ Removed Attributes
+
+The following attributes have been removed from the new sd-carousel component:
+
+1. [moveMode]
+2. [slidesPerPageAbove1024]
+3. [breakpointsBase]
+4. [autoSlideInterval]
+5. [uniqueId]
+6. [conversion]
+7. [autoHeight]
+8. [autoInit]
+9. [animation]
+10. [navigationArrowsOnMobile]
+11. [navigationArrowType]
+12. [fractionPaginationThreshold]
+13. [teaseNextSlideOnMobile]
+
+<hr />
+
+## ✍️ CSS Variables
+
+### ✨ New CSS Variables
+
+#### [--slide-gap]
+
+Use the `--slide-gap` CSS property to set the gap between two slides in the carousel.
+
+#### [--scroll-hint]
+
+Use `--scroll-hint` to set the padding to apply to the scroll area, allowing adjacent slides to become partially visible as a scroll hint.
+
+<hr />
+
+## 🥳 Events
+
+### 🔄 Updated Events
+
+#### [uiSliderSlideChange]
+
+Renamed `uiSliderSlideChange` to `sd-slide-change`.
+
+### ❌ Removed Events:
+
+#### [uiSliderReady]
+
+`uiSliderReady` has been removed from the new `sd-carousel` component.
+
+<hr />
+
+## 🦻 Event Listeners
+
+### ❌ Removed Event Listeners:
+
+The following event listeners have been removed from the new `sd-carousel` component:
+
+1. [componentResized]
+2. [videoPlay]
+3. [videoPause]
+
+<hr />
+
+## 🧪 Methods
+
+### ✨ New Methods
+
+#### [getPageCount]
+
+New method to find the total number of pages.
+
+#### [getCurrentPage]
+
+New method to find the active page number.
+
+#### [goToSlide]
+
+New method to scroll the carousel to a specified index.
+
+#### [previous]
+
+New method to go to the previous slide.
+
+#### [next]
+
+New method to go to the next slide.
+
+### ❌ Removed Methods:
+
+The following methods have been removed from the new `sd-carousel` component:
+
+1. [jumpToSlide]
+2. [onAfterResize]
+3. [getSlideCountForBpSmall]
+4. [getSlideCountForBpMedium]
+5. [update]
+
+<hr />

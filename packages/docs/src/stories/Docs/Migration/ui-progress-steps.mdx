@@ -1,0 +1,46 @@
+# Migration Guide: From `[ui-progress-steps]` to `[sd-step-group]`
+
+The new `[sd-step-group]` is designed to replace the `[ui-progress-steps]`. Instead of mainly providing content via attributes, the `[sd-step-group]` component uses slots to allow for more flexibility and customization.
+
+## 💾 Slots
+
+### ✨ New Slots
+
+#### [default]
+
+Used for grouping steps in the step group. Must be `<sd-step>` elements.
+
+<hr />
+
+## ⚙️ Attributes
+
+### ✨ New Attributes
+
+#### [orientation]
+
+Determines the orientation of the step-group.
+
+#### [not-interactive]
+
+Sets the step-group to an non-interactive state. This enabled the step to be used as a visual indicator and not navigation.
+
+### ❌ Removed Attributes
+
+The following attributes have been removed from the new [sd-step-group] component:
+
+1. [cornered]
+2. [showFirstEllipsis]
+3. [showLastEllipsis]
+4. [variant]
+
+<hr />
+
+## 🧪 Methods
+
+### ✨ New Methods
+
+#### [setActiveStep]
+
+Sets the active step to the step with the given index.
+
+<hr />

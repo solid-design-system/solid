@@ -1,0 +1,58 @@
+import { Source, Markdown, Meta } from '@storybook/blocks';
+import playwrightVersion from 'playwright-version';
+import pkg from '../../../../package.json';
+
+<Meta title="Docs/General/Introduction" />
+
+# Introduction of Solid Components v{pkg.version}
+
+## Principles
+
+Solid Components are part of the Solid Design System, serving as a robust foundation for Union Investment's digital presence, built upon three core principles:
+
+1. 🌟 **Usable & consistent**
+2. 🧩 **Reusable & flexible**
+3. 🛠️ **Maintainable & reliable**
+
+### 🌟 Usable & consistent
+
+Our mission is to reflect the Union Investment brand in a consistent and accessible manner. Our strategies include:
+
+- **Design System**: As part of the Solid Design System, Solid Components align with our brand guidelines.
+- **Synced Design Tokens**: Ensuring uniform style and layout across components and fostering a common language between development and design.
+- **Accessibility Standards**: Commitment to accessibility standards for all users.
+- **Clear Guidelines**: Offering instructions for appropriate usage and arrangement of components.
+
+Recognizing that not all scenarios can be pre-designed, we focus on building a core of consistent and adaptable components.
+
+### 🧩 Reusable & flexible
+
+Solid Components are designed to be adaptable and reusable across different projects:
+
+- **Generalizability in view**: Components are crafted framework-agnostic with maximum generalizability and minimum required properties, enabling their usage across varied contexts.
+- **Equivalent cooperation**: Components are designed for easy integration into different projects, seamlessly functioning with other systems.
+
+Rather than catering to specific project needs, we aim to create versatile components applicable to a broad range of situations, enhancing their long-term value.
+
+### 🛠️ Maintainable & reliable
+
+Solid Components are designed to offer high reliability and easy maintainability:
+
+- **"Dumber", declarative components**: Components free of business logic for easier updates.
+- **Cautious feature implementation**: New features are carefully evaluated for their impact on reliability and maintainability.
+- **Responsibility delegation to the application**: Lightweight components allowing for customization and greater flexibility.
+- **Thorough testing**: High test coverage with E2E-Tests via Playwright (<a href={`https://github.com/microsoft/playwright/releases/tag/v${playwrightVersion}`} target="\_blank">tested Browser versions</a>) and Visual Regression Tests via Chromatic ([current Browser versions](https://www.chromatic.com/docs/infrastructure-release-notes)).
+
+Our emphasis is on creating a solid foundation of reliable, maintainable components that balance necessary features with ease of upkeep.
+
+## Structure
+
+- **Components**: These are Web Components. They are often more complex than Styles, and could feature reactivity, state, multiple slots, properties, and more.
+- **Styles**: These are standalone CSS files. They don't provide any logic and are often non-interactive.
+- **Templates**: These are complete examples of how to use Styles and Components together. They are often more complex than Components and could feature multiple Components and Styles. They are meant to be copy-pasted and individualized for your project.
+
+> In September 2024, we introduced a major update to our library's documentation. This overhaul significantly improves the developer and designer experience, making it easier to navigate, collaborate, and implement:
+>
+> - **Unified**: Our standards of "alignment between development and design" have now been extended to our documentation. We try to document every feature the same way to improve consistency and make handoffs even easier. This includes everything from text to visual examples.
+> - **Features**: Each component/style now has a single page that contains all the information needed to use it. Our documentation pages now focus on describing all the features a component has, and each feature is shown with a small example. Existing stories were moved to a combining screenshot story per component, which was actually their purpose before.
+> - **Templates**: Before our rewrite, we distinguished between "Samples" and "Patterns". This sometimes caused confusion. We decided to combine the two concepts into one and rename them to "Templates", hoping that this would better reflect the understanding of "copy-pastable". They are now listed at the same page level, and additionally at each component used in the template.

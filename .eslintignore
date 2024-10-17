@@ -6,5 +6,8 @@ packages/components/src/react
 packages/components/src/_components
 packages/components/scripts
 packages/components/custom-elements-manifest.config.ts
+packages/docs/src/stories
+packages/docs/scripts
+packages/docs/custom-elements-manifest.config.ts
 packages/theming/types/
 packages/placeholders/types/

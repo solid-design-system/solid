@@ -1,0 +1,25 @@
+import '../../../../../components/src/solid-components';
+import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
+import { withActions } from '@storybook/addon-actions/decorator';
+
+const { argTypes, args, parameters } = storybookDefaults('{{ tag }}');
+const { generateTemplate } = storybookTemplate('{{ tag }}');
+
+export default {
+  title: 'Components/{{ tag }}',
+  component: '{{ tag }}',
+  args,
+  argTypes,
+  parameters: { ...parameters },
+  decorators: [withActions] as any
+};
+
+/**
+ * Default: This shows {{ tag }} in its default state.
+ */
+
+export const Default = {
+  render: (args: any) => {
+    return generateTemplate({args});
+  }
+};

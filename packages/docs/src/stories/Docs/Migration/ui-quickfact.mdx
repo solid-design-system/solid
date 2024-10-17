@@ -1,0 +1,95 @@
+# Migration Guide: From `ui-quickfact` to `sd-quickfact`
+
+The new `sd-quickfact` is designed to replace the `ui-quickfact`. Instead of mainly providing content via attributes, the `sd-quickfact` component uses slots to allow for more flexibility and customization.
+
+## 💾 Slots
+
+### ✨ New Slots
+
+#### [default]
+
+The quickfacts main content.
+
+#### [icon]
+
+The quickfact's icon. Only content-icons should be used here.
+
+#### [summary]
+
+The quickfact's summary.
+
+#### [expand-icon]
+
+The icon that indicates the quickfact is closed.
+
+#### [collapse-icon]
+
+The icon that indicates the quickfact is open.
+
+<hr />
+
+## ⚙️ Attributes
+
+### ✨ New Attributes
+
+#### [not-interactive]
+
+When set, the quickfact is not interactive and will not expand or collapse.
+
+### ❌ Removed Attributes
+
+The following attributes have been removed from the new `sd-quickfact` component:
+
+1. [headline]
+   - The headline can now be provided via the `summary` slot.
+2. [iconLayout]
+   - The iconLayout property is removed in favor of a more flexible slot-based approach. Use the `icon` slot to provide a custom icon.
+3. [iconSize]
+   - Use the `icon` slot to provide a custom icon.
+4. [text]
+   - Use the `summary` slot to provide a custom icon.
+5. [content]
+   - Use the `default` slot to provide a custom icon.
+
+<hr />
+
+## 🥳 Events
+
+### ✨ New Events
+
+#### [sd-show]
+
+Emitted when the quickfact opens.
+
+#### [sd-after-show]
+
+Emitted after the quickfact opens and all animations are complete.
+
+#### [sd-hide]
+
+Emitted when the quickfact closes.
+
+#### [sd-after-hide]
+
+Emitted after the quickfact closes and all animations are complete.
+
+### ❌ Removed Events:
+
+The following events have been removed from the new sd-quickfact component:
+
+1. [quickfactClicked]
+2. [quickfactExpanded]
+
+<hr />
+
+## 🧪 Methods
+
+### ✨ New Methods
+
+#### [show()]
+
+Shows the quickfact.
+
+#### [hide()]
+
+Hides the quickfact.
