@@ -32,7 +32,7 @@ export default class SdRadio extends SolidElement {
   @state() protected hasFocus = false;
 
   /** The radio's size. */
-  @property({ reflect: true }) size: 'lg' | 'sm' = 'lg';
+  @property({ reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
 
   /** A Boolean attribute which, if present, disables the radio. */
   @property({ type: Boolean, reflect: true }) disabled = false;
@@ -111,6 +111,7 @@ export default class SdRadio extends SolidElement {
           {
             /* sizes, fonts */
             sm: 'small-size text-sm',
+            md: 'text-base',
             lg: 'text-base'
           }[this.size]
         )}
