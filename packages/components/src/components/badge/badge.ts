@@ -1,4 +1,4 @@
-import { css, html } from 'lit';
+import { css, html, nothing } from 'lit';
 import { customElement } from '../../../src/internal/register-custom-element';
 import { property } from 'lit/decorators.js';
 import cx from 'classix';
@@ -26,29 +26,42 @@ export default class SdBadge extends SolidElement {
   /** Inverts the badge. */
   @property({ type: Boolean, reflect: true }) inverted = false;
 
+  private getParentElement() {
+    const parent = this.parentElement;
+    const isInteractiveElement = parent?.matches(
+      'a, button, sd-button, input, textarea, select, details, [href], [tabindex], [role="button"], [role="link"]'
+    );
+
+    return isInteractiveElement ? parent : null;
+  }
+
   render() {
+    const parentIsInteractive = !!this.getParentElement();
+
     return html`
       <span
-        tabindex="0"
+        tabindex=${parentIsInteractive ? nothing : '0'}
         role="status"
         part="base"
         class=${cx(
           'inline-flex items-center justify-center gap-x-[1px] text-center leading-none whitespace-nowrap border rounded-full select-none cursor-[inherit]',
           {
             /* variants */
-            default: !this.inverted ? 'text-white bg-primary-500 border-white' : 'text-primary bg-white border-primary',
+            default: !this.inverted
+              ? 'text-white bg-primary-500 border-white'
+              : 'text-primary bg-primary-100 border-primary',
             success: !this.inverted ? 'text-white bg-success border-white' : 'text-white bg-success border-primary',
             error: !this.inverted ? 'text-white bg-error border-white' : 'text-white bg-error border-primary'
           }[this.variant],
           {
             /* size and fonts*/
-            sm: 'h-2 min-w-[8px] text-[10px]',
-            md: 'h-4 px-[4px] min-w-[16px] text-[10px]',
-            lg: 'h-5 px-[5px] min-w-[20px] text-[12px]'
+            sm: 'h-2 min-w-2',
+            md: 'h-4 px-1 min-w-4',
+            lg: 'h-5 min-w-5'
           }[this.size]
         )}
       >
-        <span part="content" class=${cx(this.size === 'sm' && 'hidden')}>
+        <span part="content" class=${cx(this.size === 'sm' && 'sr-only')}>
           <slot></slot>
         </span>
       </span>
@@ -60,6 +73,19 @@ export default class SdBadge extends SolidElement {
     css`
       :host {
         @apply inline-flex items-center justify-center;
+      }
+
+      :host([size='md']) {
+        font-size: 0.625rem;
+      }
+
+      :host([size='lg']) {
+        font-size: 0.75rem;
+      }
+
+      :host([size='lg'])::part(base) {
+        padding-left: 0.313rem;
+        padding-right: 0.313rem;
       }
     `
   ];

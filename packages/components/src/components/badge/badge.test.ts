@@ -44,4 +44,11 @@ describe('<sd-badge>', () => {
       });
     });
   });
+
+  it('should not have a tabindex when the parent element is interactive', async () => {
+    el = await fixture<SdBadge>(html` <button><sd-badge>Badge</sd-badge></button> `);
+    expect(el.querySelector('sd-badge').shadowRoot!.querySelector('[part~="base"]')!.getAttribute('tabindex')).to.eq(
+      null
+    );
+  });
 });

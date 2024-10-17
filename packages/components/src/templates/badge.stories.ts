@@ -32,15 +32,21 @@ export const ButtonWithBadge = {
         </sd-button>
         <sd-button variant="secondary" size="md">
           <sd-icon name="system/phone"></sd-icon>
-          <sd-badge variant="error" size="md">4</sd-badge>
+          <sd-badge variant="error" size="md">
+            <span class="sr-only">Calls</span>
+            4
+          </sd-badge>
         </sd-button>
         <sd-button variant="tertiary" size="md">
           <sd-icon name="system/bell"></sd-icon>
-          <sd-badge class="mt-2.5 mr-2.5" variant="success" size="md">5</sd-badge>
+          <sd-badge class="mt-2.5 mr-2.5" variant="success" size="md">
+            <span class="sr-only">Notifications</span>
+            5
+          </sd-badge>
         </sd-button>
         <sd-button variant="tertiary" size="md">
           <sd-icon name="system/user"></sd-icon>
-          <sd-badge class="mt-[0.75rem] mr-[0.75rem]" size="sm"></sd-badge>
+          <sd-badge class="mt-[0.75rem] mr-[0.75rem]" size="sm"> User Notifications Available </sd-badge>
         </sd-button>
       </section>
       <section class="flex p-8 gap-10 bg-primary items-center">
@@ -52,15 +58,21 @@ export const ButtonWithBadge = {
         </sd-button>
         <sd-button inverted variant="secondary" size="md">
           <sd-icon name="system/phone"></sd-icon>
-          <sd-badge inverted variant="error" size="md">4</sd-badge>
+          <sd-badge inverted variant="error" size="md">
+            <span class="sr-only">Calls</span>
+            4
+          </sd-badge>
         </sd-button>
         <sd-button inverted variant="tertiary" size="md">
           <sd-icon name="system/bell"></sd-icon>
-          <sd-badge inverted class="mt-2.5 mr-2.5" variant="success" size="md">5</sd-badge>
+          <sd-badge inverted class="mt-2.5 mr-2.5" variant="success" size="md">
+            <span class="sr-only">Notifications</span>
+            5
+          </sd-badge>
         </sd-button>
         <sd-button inverted variant="tertiary" size="md">
           <sd-icon name="system/user"></sd-icon>
-          <sd-badge inverted class="mt-[0.75rem] mr-[0.75rem]" size="sm"></sd-badge>
+          <sd-badge inverted class="mt-[0.75rem] mr-[0.75rem]" size="sm"> User Notifications Available </sd-badge>
         </sd-button>
       </section>
     </div>
@@ -84,9 +96,12 @@ export const NavigationItemWithBadge = {
             <img class="h-8" src="images/logo-unioninvestment-lg.svg" alt="Logo" />
           </a>
           <div class="flex">
-            <sd-navigation-item class="relative">
+            <sd-navigation-item class="relative" role="button">
               <sd-icon name="system/bell" class="text-xl"></sd-icon>
-              <sd-badge class="absolute top-1 -right-5" size="md">+99</sd-badge>
+              <sd-badge class="absolute top-1 -right-5" size="md">
+                <span class="sr-only">Notifications</span>
+                +99
+              </sd-badge>
             </sd-navigation-item>
             <sd-navigation-item>
               <sd-icon name="system/menu" class="text-xl"></sd-icon>
