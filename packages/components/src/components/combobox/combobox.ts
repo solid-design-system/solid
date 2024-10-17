@@ -19,7 +19,6 @@ import SdIcon from '../icon/icon';
 import SdPopup from '../popup/popup';
 import SdTag from '../tag/tag';
 import SolidElement from '../../internal/solid-element';
-import styles from './combobox.styles.js';
 import type { CloseWatcher } from 'src/declaration.js';
 import type { SolidFormControl } from '../../internal/solid-element';
 import type SdOptgroup from '../optgroup/optgroup.js';
@@ -644,7 +643,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       }
     } else {
       this.selectedOptions = [option];
-      this.value = option?.value ?? '';
+      this.value = option?.value ?? this.displayInput.value;
     }
 
     this.selectedOptions.forEach(selectedOption => (selectedOption.selected = true));
@@ -657,6 +656,8 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       } else {
         this.displayLabel = this.selectedOptions[0].getTextLabel() ?? this.displayInput.value;
       }
+      console.log('value !!!!!', this.value);
+      console.log('displayInput !!!!!', this.displayInput.value);
       // Set selected attribute on the selectedOptions
       this.formControlController.updateValidity();
     });
@@ -1058,8 +1059,8 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
               @mousedown=${this.handleComboboxMouseDown}
             >
               <slot part="prefix" name="prefix" class="combobox__prefix"></slot>
-
               <input
+                id="display-input"
                 name=${this.name}
                 form=${this.form}
                 part="display-input"
@@ -1175,7 +1176,6 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   static styles: CSSResultGroup = [
     componentStyles,
     SolidElement.styles,
-    styles,
     css`
       :host {
         @apply block relative w-full;

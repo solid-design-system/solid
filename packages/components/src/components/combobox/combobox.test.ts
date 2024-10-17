@@ -1,13 +1,10 @@
-/* eslint-disable import/no-duplicates */
-/* eslint-disable @typescript-eslint/no-floating-promises */
-import '../../../dist/solid.js';
 import { aTimeout, expect, fixture, html, oneEvent, waitUntil } from '@open-wc/testing';
 import { clickOnElement } from '../../internal/test.js';
 import { sendKeys } from '@web/test-runner-commands';
 import { serialize } from '../../utilities/form';
 import sinon from 'sinon';
 import type SdCombobox from './combobox.js';
-import type SynOption from '../option/option.js';
+import type SdOption from '../option/option.js';
 
 describe('<sd-combobox>', () => {
   describe('accessibility', () => {
@@ -49,8 +46,8 @@ describe('<sd-combobox>', () => {
     expect(el.name).to.equal('');
     expect(el.value).to.equal('');
     expect(el.defaultValue).to.equal('');
-    expect(el.size).to.equal('medium');
-    expect(el.placeholder).to.equal('');
+    expect(el.size).to.equal('lg');
+    expect(el.placeholder).to.equal('Please select');
     expect(el.disabled).to.be.false;
     expect(el.clearable).to.be.false;
     expect(el.open).to.be.false;
@@ -103,7 +100,7 @@ describe('<sd-combobox>', () => {
     await clickOnElement(disabledOption);
     await el.updateComplete;
 
-    expect(el.value).to.equal('Option');
+    await expect(el.value).to.equal('Option');
   });
 
   it('should focus the combobox when clicking on the label', async () => {
@@ -158,8 +155,8 @@ describe('<sd-combobox>', () => {
 
       await el.show();
 
-      const filteredListbox = el.shadowRoot!.querySelector('.listbox__options')!;
-      const secondOption = filteredListbox.querySelectorAll<SynOption>('sd-option')[1];
+      const filteredListbox = el.shadowRoot!.querySelector('#listbox-options')!;
+      const secondOption = filteredListbox.querySelectorAll<SdOption>('sd-option')[1];
       const changeHandler = sinon.spy();
       const inputHandler = sinon.spy();
 
@@ -173,7 +170,6 @@ describe('<sd-combobox>', () => {
       expect(inputHandler).to.have.been.calledOnce;
       expect(el.value).to.equal('option-2');
     });
-
     it('should emit sd-change and sd-input when the value is changed with the keyboard', async () => {
       const el = await fixture<SdCombobox>(html`
         <sd-combobox>
@@ -225,7 +221,6 @@ describe('<sd-combobox>', () => {
       await sendKeys({ press: 'Enter' }); // commit the selection
       await el.updateComplete;
     });
-
     it('should not emit sd-change or sd-input when the value is changed programmatically', async () => {
       const el = await fixture<SdCombobox>(html`
         <sd-combobox value="option-1">
@@ -261,8 +256,8 @@ describe('<sd-combobox>', () => {
 
       await clickOnElement(el);
       await aTimeout(500);
-      const filteredListbox = el.shadowRoot!.querySelector('.listbox__options')!;
-      const secondOption = filteredListbox.querySelectorAll<SynOption>('sd-option')[1];
+      const filteredListbox = el.shadowRoot!.querySelector('#listbox-options')!;
+      const secondOption = filteredListbox.querySelectorAll<SdOption>('sd-option')[1];
 
       await clickOnElement(secondOption);
       await el.updateComplete;
@@ -270,7 +265,6 @@ describe('<sd-combobox>', () => {
       expect(handler).to.be.calledTwice;
     });
   });
-
   describe('keyboard handling', () => {
     it('should open the listbox when the ArrowDown key is pressed and select the first option with sd-combobox is on focus', async () => {
       const el = await fixture<SdCombobox>(html`
@@ -280,15 +274,15 @@ describe('<sd-combobox>', () => {
           <sd-option value="option-3">Option 3</sd-option>
         </sd-combobox>
       `);
-      const displayInput = el.shadowRoot!.querySelector<HTMLInputElement>('.combobox__display-input')!;
+      const displayInput = el.shadowRoot!.querySelector<HTMLInputElement>('#display-input')!;
       el.focus();
       await el.updateComplete;
       await sendKeys({ press: 'ArrowDown' });
       await el.updateComplete;
       await aTimeout(500);
 
-      const filteredListbox = el.shadowRoot!.querySelector('.listbox__options')!;
-      const firstOption = filteredListbox.querySelectorAll<SynOption>('sd-option')[0];
+      const filteredListbox = el.shadowRoot!.querySelector('#listbox-options')!;
+      const firstOption = filteredListbox.querySelectorAll<SdOption>('sd-option')[0];
 
       expect(displayInput.getAttribute('aria-expanded')).to.equal('true');
       expect(firstOption.getAttribute('aria-selected')).to.equal('true');
@@ -303,15 +297,15 @@ describe('<sd-combobox>', () => {
           <sd-option value="option-3">Option 3</sd-option>
         </sd-combobox>
       `);
-      const displayInput = el.shadowRoot!.querySelector<HTMLInputElement>('.combobox__display-input')!;
+      const displayInput = el.shadowRoot!.querySelector<HTMLInputElement>('#display-input')!;
       el.focus();
       await el.updateComplete;
       await sendKeys({ press: 'ArrowUp' });
       await el.updateComplete;
       await aTimeout(500);
 
-      const filteredListbox = el.shadowRoot!.querySelector('.listbox__options')!;
-      const lastOption = filteredListbox.querySelectorAll<SynOption>('sd-option')[filteredListbox.children.length - 1];
+      const filteredListbox = el.shadowRoot!.querySelector('#listbox-options')!;
+      const lastOption = filteredListbox.querySelectorAll<SdOption>('sd-option')[filteredListbox.children.length - 1];
 
       expect(displayInput.getAttribute('aria-expanded')).to.equal('true');
       expect(lastOption.getAttribute('aria-selected')).to.equal('true');
@@ -326,14 +320,14 @@ describe('<sd-combobox>', () => {
           <sd-option value="option-3">Red</sd-option>
         </sd-combobox>
       `);
-      const displayInput = el.shadowRoot!.querySelector<HTMLInputElement>('.combobox__display-input')!;
+      const displayInput = el.shadowRoot!.querySelector<HTMLInputElement>('#display-input')!;
       el.focus();
       await el.updateComplete;
       await sendKeys({ press: 'e' });
       await el.updateComplete;
 
-      const filteredListbox = el.shadowRoot!.querySelector('.listbox__options')!;
-      const filteredOptions = filteredListbox.querySelectorAll<SynOption>('sd-option');
+      const filteredListbox = el.shadowRoot!.querySelector('#listbox-options')!;
+      const filteredOptions = filteredListbox.querySelectorAll<SdOption>('sd-option');
 
       expect(displayInput.getAttribute('aria-expanded')).to.equal('true');
       expect(filteredOptions.length).to.equal(2);
@@ -347,14 +341,14 @@ describe('<sd-combobox>', () => {
           <sd-option value="option-3">Red</sd-option>
         </sd-combobox>
       `);
-      const displayInput = el.shadowRoot!.querySelector<HTMLInputElement>('.combobox__display-input')!;
+      const displayInput = el.shadowRoot!.querySelector<HTMLInputElement>('#display-input')!;
       el.focus();
       await el.updateComplete;
       await sendKeys({ press: 'f' });
       await el.updateComplete;
 
-      const filteredListbox = el.shadowRoot!.querySelector('.listbox__options')!;
-      const filteredOptions = filteredListbox.querySelectorAll<SynOption>('sd-option');
+      const filteredListbox = el.shadowRoot!.querySelector('#listbox-options')!;
+      const filteredOptions = filteredListbox.querySelectorAll<SdOption>('sd-option');
 
       expect(displayInput.getAttribute('aria-expanded')).to.equal('false');
       expect(filteredOptions.length).to.equal(0);
@@ -368,7 +362,7 @@ describe('<sd-combobox>', () => {
           <sd-option value="option-3">Option 3</sd-option>
         </sd-combobox>
       `);
-      const displayInput = el.shadowRoot!.querySelector<HTMLInputElement>('.combobox__display-input')!;
+      const displayInput = el.shadowRoot!.querySelector<HTMLInputElement>('#display-input')!;
 
       el.focus();
       await sendKeys({ down: 'Control' });
@@ -386,7 +380,7 @@ describe('<sd-combobox>', () => {
           <sd-option value="option-3">Option 3</sd-option>
         </sd-combobox>
       `);
-      const displayInput = el.shadowRoot!.querySelector<HTMLInputElement>('.combobox__display-input')!;
+      const displayInput = el.shadowRoot!.querySelector<HTMLInputElement>('#display-input')!;
 
       el.focus();
       await sendKeys({ down: 'Control' });
@@ -404,7 +398,7 @@ describe('<sd-combobox>', () => {
           <sd-option value="option-3">Option 3</sd-option>
         </sd-combobox>
       `);
-      const displayInput = el.shadowRoot!.querySelector<HTMLInputElement>('.combobox__display-input')!;
+      const displayInput = el.shadowRoot!.querySelector<HTMLInputElement>('#display-input')!;
       el.focus();
       await el.updateComplete;
       await sendKeys({ press: 'Enter' });
@@ -421,7 +415,7 @@ describe('<sd-combobox>', () => {
           <sd-option value="option-3">Option 3</sd-option>
         </sd-combobox>
       `);
-      const displayInput = el.shadowRoot!.querySelector<HTMLInputElement>('.combobox__display-input')!;
+      const displayInput = el.shadowRoot!.querySelector<HTMLInputElement>('#display-input')!;
 
       el.focus();
       await el.updateComplete;
@@ -443,7 +437,7 @@ describe('<sd-combobox>', () => {
           <sd-option value="option-3">Option 3</sd-option>
         </sd-combobox>
       `);
-      const displayInput = el.shadowRoot!.querySelector<HTMLInputElement>('.combobox__display-input')!;
+      const displayInput = el.shadowRoot!.querySelector<HTMLInputElement>('#display-input')!;
 
       el.focus();
       await el.updateComplete;
@@ -469,7 +463,7 @@ describe('<sd-combobox>', () => {
           <sd-option value="option-3">Option 3</sd-option>
         </sd-combobox>
       `);
-      const displayInput = el.shadowRoot!.querySelector<HTMLInputElement>('.combobox__display-input')!;
+      const displayInput = el.shadowRoot!.querySelector<HTMLInputElement>('#display-input')!;
 
       el.focus();
       await el.updateComplete;
@@ -489,7 +483,7 @@ describe('<sd-combobox>', () => {
           <sd-option value="option-3">Option 3</sd-option>
         </sd-combobox>
       `);
-      const displayInput = el.shadowRoot!.querySelector<HTMLInputElement>('.combobox__display-input')!;
+      const displayInput = el.shadowRoot!.querySelector<HTMLInputElement>('#display-input')!;
 
       el.focus();
       await el.updateComplete;
@@ -512,7 +506,7 @@ describe('<sd-combobox>', () => {
           <sd-option value="option-3">Option 3</sd-option>
         </sd-combobox>
       `);
-      const displayInput = el.shadowRoot!.querySelector<HTMLInputElement>('.combobox__display-input')!;
+      const displayInput = el.shadowRoot!.querySelector<HTMLInputElement>('#display-input')!;
 
       el.focus();
       await el.updateComplete;
@@ -537,7 +531,7 @@ describe('<sd-combobox>', () => {
         </sd-combobox>
       `);
 
-      const displayInput = el.shadowRoot!.querySelector<HTMLInputElement>('.combobox__display-input')!;
+      const displayInput = el.shadowRoot!.querySelector<HTMLInputElement>('#display-input')!;
 
       el.focus();
       await el.updateComplete;
@@ -631,8 +625,8 @@ describe('<sd-combobox>', () => {
 
       await el.show();
 
-      const filteredListbox = el.shadowRoot!.querySelector('.listbox__options')!;
-      const secondOption = filteredListbox.querySelectorAll<SynOption>('sd-option')[1];
+      const filteredListbox = el.shadowRoot!.querySelector('#listbox-options')!;
+      const secondOption = filteredListbox.querySelectorAll<SdOption>('sd-option')[1];
 
       await clickOnElement(secondOption);
       await el.updateComplete;
@@ -661,8 +655,8 @@ describe('<sd-combobox>', () => {
       expect(el.hasAttribute('data-user-valid')).to.be.false;
 
       await el.show();
-      const filteredListbox = el.shadowRoot!.querySelector('.listbox__options')!;
-      const secondOption = filteredListbox.querySelectorAll<SynOption>('sd-option')[1];
+      const filteredListbox = el.shadowRoot!.querySelector('#listbox-options')!;
+      const secondOption = filteredListbox.querySelectorAll<SdOption>('sd-option')[1];
 
       await clickOnElement(secondOption);
       el.value = '';
@@ -1012,7 +1006,7 @@ describe('<sd-combobox>', () => {
     const secondSlottedOption = el.querySelectorAll('sd-option')[1];
 
     await el.show();
-    const filteredListbox = el.shadowRoot!.querySelector('.listbox__options')!;
+    const filteredListbox = el.shadowRoot!.querySelector('#listbox-options')!;
     const secondOption = filteredListbox.querySelectorAll('sd-option')[1];
 
     expect(secondOption.getTextLabel()).to.equal('Option 2');
@@ -1038,12 +1032,12 @@ describe('<sd-combobox>', () => {
     newOption.textContent = 'Option 4';
 
     await el.show();
-    const filteredListbox = el.shadowRoot!.querySelector('.listbox__options')!;
+    const filteredListbox = el.shadowRoot!.querySelector('#listbox-options')!;
 
     expect(filteredListbox.children.length).to.equal(3);
 
     el.appendChild(newOption);
-    const slotWrapper = el.shadowRoot!.querySelector('.combobox__listbox')!;
+    const slotWrapper = el.shadowRoot!.querySelector('#listbox')!;
     await oneEvent(slotWrapper, 'slotchange');
     await el.updateComplete;
 
@@ -1058,14 +1052,14 @@ describe('<sd-combobox>', () => {
         <sd-option value="option-3">Light green</sd-option>
       </sd-combobox>
     `);
-    const filterHandler = sinon.spy((option: SynOption) => option.getTextLabel().toLowerCase().includes('green'));
+    const filterHandler = sinon.spy((option: SdOption) => option.getTextLabel().toLowerCase().includes('green'));
 
     el.filter = filterHandler;
 
     await el.show();
     await el.updateComplete;
 
-    const filteredListbox = el.shadowRoot!.querySelector('.listbox__options')!;
+    const filteredListbox = el.shadowRoot!.querySelector('#listbox-options')!;
     const options = filteredListbox.querySelectorAll('sd-option');
 
     expect(filterHandler).to.have.been.calledThrice;
@@ -1081,7 +1075,7 @@ describe('<sd-combobox>', () => {
       </sd-combobox>
     `);
 
-    const getOptionHandler = sinon.spy((option: SynOption) => {
+    const getOptionHandler = sinon.spy((option: SdOption) => {
       const updatedText = option.getTextLabel().concat(' - custom');
       // eslint-disable-next-line no-param-reassign
       option.textContent = updatedText;
@@ -1093,7 +1087,7 @@ describe('<sd-combobox>', () => {
     await el.show();
     await el.updateComplete;
 
-    const filteredListbox = el.shadowRoot!.querySelector('.listbox__options')!;
+    const filteredListbox = el.shadowRoot!.querySelector('#listbox-options')!;
     const options = filteredListbox.querySelectorAll('sd-option');
 
     options.forEach((option, index) => {
@@ -1112,9 +1106,8 @@ describe('<sd-combobox>', () => {
     `);
     await el.show();
 
-    const filteredListbox = el.shadowRoot!.querySelector('.listbox__options')!;
-    const secondOption = filteredListbox.querySelectorAll<SynOption>('sd-option')[1];
-
+    const filteredListbox = el.shadowRoot!.querySelector('#listbox-options')!;
+    const secondOption = filteredListbox.querySelectorAll<SdOption>('sd-option')[1];
     await clickOnElement(secondOption);
     await el.updateComplete;
 
