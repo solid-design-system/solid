@@ -196,7 +196,7 @@ export default class SdBrandshape extends SolidElement {
   private renderStylizedVariant(): TemplateResult {
     return html`
       <div part="stylized-container" class="w-full overflow-hidden">
-        <slot name="image"></slot>
+        <slot class="${cx(this.variant !== 'image' && 'hidden')}" name="image"></slot>
       </div>
     `;
   }
