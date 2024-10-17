@@ -80,6 +80,10 @@ export default class SdMapMarker extends SolidElement {
     componentStyles,
     SolidElement.styles,
     css`
+      :host {
+        display: inline-block;
+      }
+
       :host([variant='cluster']) [part='base'],
       svg {
         width: calc(var(--sd-spacing-12, 3rem) * var(--map-marker-scaling, 1));
