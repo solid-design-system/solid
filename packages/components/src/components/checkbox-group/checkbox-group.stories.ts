@@ -44,7 +44,7 @@ export const Default = {
 };
 
 /**
- * Use the `size` attribute to change the size:
+ * Use the `size` attribute to change the size (`md` equals `lg` but added for consistency reason on input elements):
  *
  * - `lg` (default)
  * - `md`
