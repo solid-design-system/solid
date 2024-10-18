@@ -13,7 +13,8 @@ const { generateTemplate } = storybookTemplate('sd-badge');
  *
  * **Related templates**:
  * - [Badge](?path=/docs/templates-badge--docs)
- *
+ * - [Tab Group with Badge](?path=/docs/templates-tab-group--docs#tab%20group%20with%20badge)
+ * - [Tab Group with Icon and Badge](?path=/docs/templates-tab-group--docs#tab%20group%20with%20icon%20and%20badge)
  */
 
 export default {
