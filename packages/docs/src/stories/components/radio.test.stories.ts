@@ -4,7 +4,7 @@ import {
   storybookHelpers,
   storybookTemplate,
   storybookUtilities
-} from '../../../../components/scripts/storybook/helper';
+} from '../../../scripts/storybook/helper';
 
 const { argTypes, parameters } = storybookDefaults('sd-radio');
 const { generateTemplate } = storybookTemplate('sd-radio');

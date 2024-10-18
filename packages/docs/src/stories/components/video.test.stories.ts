@@ -1,14 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
-import {
-  storybookDefaults,
-  storybookTemplate,
-  storybookUtilities
-} from '../../../../components/scripts/storybook/helper';
+import { storybookDefaults, storybookTemplate, storybookUtilities } from '../../../scripts/storybook/helper';
 import { waitUntil } from '@open-wc/testing-helpers';
 import { withActions } from '@storybook/addon-actions/decorator';
-import type { ConstantDefinition } from '../../../../components/scripts/storybook/helper';
+import type { ConstantDefinition } from '../../../scripts/storybook/helper';
 
 const { argTypes, args, parameters } = storybookDefaults('sd-video');
 const { generateTemplate } = storybookTemplate('sd-video');

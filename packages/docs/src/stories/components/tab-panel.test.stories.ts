@@ -1,9 +1,5 @@
 import '../../../../components/src/solid-components';
-import {
-  storybookDefaults,
-  storybookHelpers,
-  storybookTemplate
-} from '../../../../components/scripts/storybook/helper';
+import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-tab-panel');

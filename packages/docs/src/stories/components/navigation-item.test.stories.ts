@@ -5,11 +5,11 @@ import {
   storybookHelpers,
   storybookTemplate,
   storybookUtilities
-} from '../../../../components/scripts/storybook/helper';
+} from '../../../scripts/storybook/helper';
 import { waitUntil } from '@open-wc/testing-helpers';
 import { withActions } from '@storybook/addon-actions/decorator';
 import cx from 'classix';
-import type { ConstantDefinition } from '../../../../components/scripts/storybook/helper';
+import type { ConstantDefinition } from '../../../scripts/storybook/helper';
 
 const { overrideArgs } = storybookHelpers('sd-navigation-item');
 const { argTypes, parameters } = storybookDefaults('sd-navigation-item');

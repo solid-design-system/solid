@@ -1,9 +1,5 @@
 import '../../../../components/src/solid-components';
-import {
-  storybookDefaults,
-  storybookHelpers,
-  storybookTemplate
-} from '../../../../components/scripts/storybook/helper';
+import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 const { argTypes, parameters } = storybookDefaults('sd-carousel-item');
 const { overrideArgs } = storybookHelpers('sd-carousel-item');
 const { generateTemplate } = storybookTemplate('sd-carousel-item');

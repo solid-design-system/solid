@@ -5,7 +5,7 @@ import {
   storybookHelpers,
   storybookTemplate,
   storybookUtilities
-} from '../../../../components/scripts/storybook/helper';
+} from '../../../scripts/storybook/helper';
 const { argTypes, parameters } = storybookDefaults('sd-tab-group');
 const { overrideArgs } = storybookHelpers('sd-tab-group');
 const { generateTemplate } = storybookTemplate('sd-tab-group');

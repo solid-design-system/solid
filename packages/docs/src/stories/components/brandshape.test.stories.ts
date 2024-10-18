@@ -6,8 +6,8 @@ import {
   storybookHelpers,
   storybookTemplate,
   storybookUtilities
-} from '../../../../components/scripts/storybook/helper';
-import type { ConstantDefinition } from '../../../../components/scripts/storybook/helper';
+} from '../../../scripts/storybook/helper';
+import type { ConstantDefinition } from '../../../scripts/storybook/helper';
 
 const { argTypes, parameters } = storybookDefaults('sd-brandshape');
 const { overrideArgs } = storybookHelpers('sd-brandshape');

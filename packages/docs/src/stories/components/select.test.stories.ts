@@ -6,10 +6,10 @@ import {
   storybookHelpers,
   storybookTemplate,
   storybookUtilities
-} from '../../../../components/scripts/storybook/helper';
+} from '../../../scripts/storybook/helper';
 import { userEvent } from '@storybook/test';
 import { waitUntil } from '@open-wc/testing-helpers';
-import type { ConstantDefinition } from '../../../../components/scripts/storybook/helper';
+import type { ConstantDefinition } from '../../../scripts/storybook/helper';
 
 const { argTypes, parameters } = storybookDefaults('sd-select');
 const { generateTemplate } = storybookTemplate('sd-select');

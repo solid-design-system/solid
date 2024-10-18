@@ -5,7 +5,7 @@ import {
   storybookHelpers,
   storybookTemplate,
   storybookUtilities
-} from '../../../../components/scripts/storybook/helper';
+} from '../../../scripts/storybook/helper';
 
 const { argTypes, parameters } = storybookDefaults('sd-table-cell');
 const { overrideArgs } = storybookHelpers('sd-table-cell');

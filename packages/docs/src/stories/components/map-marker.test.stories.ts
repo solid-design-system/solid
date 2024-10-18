@@ -1,10 +1,6 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
-import {
-  storybookDefaults,
-  storybookTemplate,
-  storybookUtilities
-} from '../../../../components/scripts/storybook/helper';
+import { storybookDefaults, storybookTemplate, storybookUtilities } from '../../../scripts/storybook/helper';
 import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-map-marker');

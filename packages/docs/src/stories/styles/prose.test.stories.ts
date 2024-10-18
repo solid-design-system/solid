@@ -1,9 +1,5 @@
 import '../../../../components/src/solid-components';
-import {
-  storybookDefaults,
-  storybookHelpers,
-  storybookTemplate
-} from '../../../../components/scripts/storybook/helper';
+import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
 const { argTypes, parameters } = storybookDefaults('sd-prose');
 const { overrideArgs } = storybookHelpers('sd-prose');
