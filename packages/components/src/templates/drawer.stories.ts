@@ -55,7 +55,7 @@ export const Default = {
     </style>
     <sd-button onclick="openDrawer()">Open Drawer</sd-button>
     <sd-drawer open placement="end">
-      <sd-button slot="header" variant="tertiary" class="hidden" id="returnButton" onclick="handleSecondLevel()">
+      <sd-button slot="header" variant="tertiary" class="hidden" id="return-button" onclick="handleSecondLevel()">
         <sd-icon name="system/arrow-left" label="return"></sd-icon>
       </sd-button>
       <div class="level-one h-full flex flex-col justify-between">
@@ -158,7 +158,7 @@ export const Default = {
       function handleSecondLevel() {
         document.querySelector('.level-one').classList.toggle('hidden');
         document.querySelector('.level-two').classList.toggle('hidden');
-        document.querySelector('#returnButton').classList.toggle('hidden');
+        document.querySelector('#return-button').classList.toggle('hidden');
         document.querySelector('#nav-title').current = true;
       }
       function openDrawer() {
