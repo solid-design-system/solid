@@ -26,7 +26,7 @@ export default {
  * </<sd-teaser>
  * ```
  */
-export const UnclickableTeaserWithNestedLink = {
+export const UnclickableTeaserWithButton = {
   render: () => {
     return html`
       <sd-teaser
@@ -175,7 +175,7 @@ export const TeaserWithIcon = {
           variant="primary-100"
           inset
           class="h-[238px]"
-          id="horizontal-teaser-with-icon"
+          breakpoint="448"
           style="--distribution-media: 20%; --distribution-content: 80%;"
         >
           <div slot="media" class="flex flex-wrap justify-center items-center h-[189px] md:h-auto">
@@ -193,14 +193,6 @@ export const TeaserWithIcon = {
           </div>
         </sd-teaser>
       </div>
-      <script type="module">
-        window.addEventListener('resize', updateBreakpoint());
-        const horizontalTeaserWithIcon = getElementById('horizontal-teaser-with-icon');
-        updateBreakpoint() {
-          const breakpointValue = window.innerWidth < 768 ? 0 : 99999;
-          horizontalTeaserWithIcon.setAttribute('breakpoint', breakpointValue);
-        }
-      </script>
     `;
   }
 };
@@ -259,7 +251,7 @@ export const teaserWithChipAndFlag = {
         <sd-teaser
           variant="neutral-100"
           inset
-          id="horizontal-teaser-with-chip-and-flag"
+          breakpoint="448"
           class="max-w-[720px] flex-1 h-[238px]"
           style="--distribution-media: 60%; --distribution-content: 50%;"
         >
@@ -278,14 +270,6 @@ export const teaserWithChipAndFlag = {
           </h3>
         </sd-teaser>
       </div>
-      <script type="module">
-        window.addEventListener('resize', updateBreakpoint());
-        const horizontalTeaserWithChipAndFlag = getElementById('horizontal-teaser-with-chip-and-flag');
-        updateBreakpoint() {
-          const breakpointValue = window.innerWidth < 768 ? 0 : 99999;
-          horizontalTeaserWithChipAndFlag.setAttribute('breakpoint', breakpointValue);
-        }
-      </script>
     `;
   }
 };
@@ -311,6 +295,7 @@ export const teaserWithDivision = {
       <sd-teaser
         variant="neutral-100"
         class="max-w-[656px] flex-1 p-4"
+        breakpoint="448"
         id="teaser-with-division"
         style="--distribution-media: 50%; --distribution-content: 50%;"
       >
@@ -338,15 +323,6 @@ export const teaserWithDivision = {
           </div>
         </div>
       </sd-teaser>
-      <script type="module">
-        window.addEventListener('resize', updateBreakpoint());
-        const teaserWithDivision = getElementById('teaser-with-division');
-
-        updateBreakpoint() {
-          const breakpointValue = window.innerWidth < 768 ? 0 : 99999;
-          teaserWithDivision.setAttribute('breakpoint', breakpointValue);
-        }
-      </script>
     `;
   }
 };
