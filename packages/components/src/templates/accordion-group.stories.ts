@@ -50,13 +50,13 @@ export const Default = {
         </sd-accordion>
         <sd-accordion summary="Investment philosophy">
           <div class="sd-prose">
-            <p class="sd-paragraph">
+            <p>
               Our investment philosophy is based on our belief that markets are inefficient. Long-term outperformance
               is, therefore, best achieved through a combination of fundamental research, actively managed security
               selection and robust risk management. This conviction lies at the heart of all our investment solutions.
               We offer a transparent investment process, which allows clients to keep track of our investment decisions.
             </p>
-            <p class="sd-paragraph">
+            <p>
               We take an integrated approach to portfolio management, with every portfolio manager also acting as a
               senior research specialist. This structure enhances the team's commitment to the process and helps to
               ensure accountability for investment performance.
@@ -101,13 +101,13 @@ export const NeutralBackground = {
         </sd-accordion>
         <sd-accordion summary="Investment philosophy">
           <div class="sd-prose">
-            <p class="sd-paragraph">
+            <p>
               Our investment philosophy is based on our belief that markets are inefficient. Long-term outperformance
               is, therefore, best achieved through a combination of fundamental research, actively managed security
               selection and robust risk management. This conviction lies at the heart of all our investment solutions.
               We offer a transparent investment process, which allows clients to keep track of our investment decisions.
             </p>
-            <p class="sd-paragraph">
+            <p>
               We take an integrated approach to portfolio management, with every portfolio manager also acting as a
               senior research specialist. This structure enhances the team's commitment to the process and helps to
               ensure accountability for investment performance.
@@ -152,13 +152,13 @@ export const PrimaryBackground = {
         </sd-accordion>
         <sd-accordion summary="Investment philosophy">
           <div class="sd-prose">
-            <p class="sd-paragraph">
+            <p>
               Our investment philosophy is based on our belief that markets are inefficient. Long-term outperformance
               is, therefore, best achieved through a combination of fundamental research, actively managed security
               selection and robust risk management. This conviction lies at the heart of all our investment solutions.
               We offer a transparent investment process, which allows clients to keep track of our investment decisions.
             </p>
-            <p class="sd-paragraph">
+            <p>
               We take an integrated approach to portfolio management, with every portfolio manager also acting as a
               senior research specialist. This structure enhances the team's commitment to the process and helps to
               ensure accountability for investment performance.
