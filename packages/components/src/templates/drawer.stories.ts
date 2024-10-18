@@ -82,15 +82,15 @@ export const Default = {
           </sd-navigation-item>
         </nav>
       </div>
-      <div class="levelTwo hidden">
-        <nav>
-          <sd-navigation-item vertical><b>About us</b></sd-navigation-item>
+      <div class="level-two hidden">
+        <nav id="level-two-nav">
+          <sd-navigation-item vertical current id="nav-title"><b>About Us</b></sd-navigation-item>
           <sd-navigation-item vertical divider>
             Union Investment for privat customers
             <p slot="description" class="sd-paragraph sd-paragraph--size-sm max-w-[238px]">
               Find out more about us and what we stand for
             </p>
-            <sd-navigation-item vertical indented slot="children" current>
+            <sd-navigation-item vertical indented slot="children">
               Investor protection
               <sd-navigation-item slot="children" indented class="pl-8">Investor Education Center</sd-navigation-item>
               <sd-navigation-item slot="children" indented class="pl-8">Risk Management Tools</sd-navigation-item>
@@ -111,7 +111,7 @@ export const Default = {
           </sd-navigation-item>
           <sd-navigation-item vertical
             >Sustainability at Union Investment
-            <sd-navigation-item vertical indented slot="children" current>
+            <sd-navigation-item vertical indented slot="children">
               Investor protection
               <sd-navigation-item slot="children" indented class="pl-8">Investor Education Center</sd-navigation-item>
               <sd-navigation-item slot="children" indented class="pl-8">Risk Management Tools</sd-navigation-item>
@@ -132,7 +132,7 @@ export const Default = {
           </sd-navigation-item>
           <sd-navigation-item vertical
             >Union Investment Group
-            <sd-navigation-item vertical indented slot="children" current>
+            <sd-navigation-item vertical indented slot="children">
               Investor protection
               <sd-navigation-item slot="children" indented class="pl-8">Investor Education Center</sd-navigation-item>
               <sd-navigation-item slot="children" indented class="pl-8">Risk Management Tools</sd-navigation-item>
@@ -157,12 +157,27 @@ export const Default = {
     <script>
       function handleSecondLevel() {
         document.querySelector('.level-one').classList.toggle('hidden');
-        document.querySelector('.levelTwo').classList.toggle('hidden');
+        document.querySelector('.level-two').classList.toggle('hidden');
         document.querySelector('#returnButton').classList.toggle('hidden');
+        document.querySelector('#nav-title').current = true;
       }
       function openDrawer() {
         document.querySelector('sd-drawer').show();
       }
+
+      document.querySelectorAll('sd-navigation-item').forEach(item =>
+        item.addEventListener('sd-show', showEvent => {
+          item.current = false;
+          showEvent.target.current = true;
+          document.querySelector('#nav-title').current = false;
+        })
+      );
+
+      document.querySelectorAll('sd-navigation-item').forEach(item =>
+        item.addEventListener('sd-hide', hideEvent => {
+          hideEvent.target.current = false;
+        })
+      );
     </script>
   `
 };
