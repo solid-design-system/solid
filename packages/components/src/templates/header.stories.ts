@@ -61,7 +61,7 @@ export const SampleA = {
               ></sd-icon>
             </div>
           </sd-navigation-item>
-          <sd-navigation-item href="javascript:void(0)">
+          <sd-navigation-item onclick="alert('This could open a search bar')">
             <div class="w-4 h-4 flex items-center">
               <sd-icon title="Suche" name="system/magnifying-glass" class="text-xl absolute -ml-[4px]"></sd-icon>
             </div>
@@ -109,7 +109,7 @@ export const SampleA = {
       // This line is using querySelectorAll due to hidden elements from Storybook configs.
       // In a regular environment, use: const drawer = document.getElementById('#sample-a-drawer') or similar
       function openDrawerSampleA() {
-        const drawerSampleA = document.querySelectorAll('#sample-a-drawer')[1];
+        const drawerSampleA = Array.from(document.querySelectorAll('#sample-a-drawer')).pop();
         drawerSampleA.show();
       }
     </script>
@@ -148,7 +148,7 @@ export const SampleA02 = {
               <sd-icon name="system/website" class="text-xl absolute -ml-[4px]"></sd-icon>
             </div>
           </sd-navigation-item>
-          <sd-navigation-item href="javascript:void(0)">
+          <sd-navigation-item onclick="alert('This could open a search bar')">
             <div class="w-4 h-4 flex items-center">
               <sd-icon name="system/magnifying-glass" class="text-xl absolute -ml-[4px]"></sd-icon>
             </div>
@@ -262,7 +262,7 @@ export const SampleB = {
               ></sd-icon>
             </div>
           </sd-navigation-item>
-          <sd-navigation-item href="javascript:void(0)">
+          <sd-navigation-item onclick="alert('This could open a search bar')">
             <div class="w-4 h-4 flex items-center">
               <sd-icon title="Suche" name="system/magnifying-glass" class="text-xl absolute -ml-[4px]"></sd-icon>
             </div>
@@ -296,7 +296,6 @@ export const SampleB = {
       function openDrawerSampleB() {
         const drawerSampleB = document.getElementById('sample-b-drawer');
         drawerSampleB.show();
-        0;
       }
     </script>
   `
