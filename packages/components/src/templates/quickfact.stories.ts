@@ -21,7 +21,7 @@ export const QuickfactWithSummary = {
   render: () =>
     html` <sd-quickfact class="max-w-[410px] mx-auto">
       <sd-icon name="content/people" color="primary" aria-hidden="true" library="default" slot="icon"></sd-icon>
-      <div slot="summary" class="flex flex-col sm:gap-4">
+      <div slot="summary">
         <div class="text-base font-normal leading-normal sm:text-xl">
           Over 4,000 employees in 9 international locations
         </div>
