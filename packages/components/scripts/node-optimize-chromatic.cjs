@@ -41,7 +41,7 @@ fs.readdir(directoryPath, (err, files) => {
           // If other animations are needed, please think about
           // e. g. adding "animation-duration: 0 !important" here
           '.animate-spin{animation:spin 1s linear infinite}',
-          '.animate-spin{animation: 1s linear 1s infinite spin}'
+          '.animate-spin{animation: 1s linear 5s infinite spin}'
         );
 
         fs.writeFile(filePath, result, 'utf8', err => {
