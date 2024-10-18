@@ -33,15 +33,15 @@ export const ButtonWithBadge = {
         <sd-button variant="secondary" size="md">
           <sd-icon name="system/phone"></sd-icon>
           <sd-badge variant="error" size="md">
-            <span class="sr-only">Calls</span>
             4
+            <span class="sr-only">Calls</span>
           </sd-badge>
         </sd-button>
         <sd-button variant="tertiary" size="md">
           <sd-icon name="system/bell"></sd-icon>
           <sd-badge class="mt-2.5 mr-2.5" variant="success" size="md">
-            <span class="sr-only">Notifications</span>
             5
+            <span class="sr-only">Notifications</span>
           </sd-badge>
         </sd-button>
         <sd-button variant="tertiary" size="md">
@@ -59,15 +59,15 @@ export const ButtonWithBadge = {
         <sd-button inverted variant="secondary" size="md">
           <sd-icon name="system/phone"></sd-icon>
           <sd-badge inverted variant="error" size="md">
-            <span class="sr-only">Calls</span>
             4
+            <span class="sr-only">Calls</span>
           </sd-badge>
         </sd-button>
         <sd-button inverted variant="tertiary" size="md">
           <sd-icon name="system/bell"></sd-icon>
           <sd-badge inverted class="mt-2.5 mr-2.5" variant="success" size="md">
-            <span class="sr-only">Notifications</span>
             5
+            <span class="sr-only">Notifications</span>
           </sd-badge>
         </sd-button>
         <sd-button inverted variant="tertiary" size="md">
