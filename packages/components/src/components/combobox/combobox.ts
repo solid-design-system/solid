@@ -115,7 +115,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
 
   @state() displayLabel = '';
 
-  @state() selectedOptions: SdOption[] = [];
+  @state() selectedOptions: (SdOption | undefined)[] = [];
 
   @state() filteredOptions: (SdOption | SdOptgroup | undefined)[] = [];
 
@@ -128,7 +128,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   /** @internal */
   @state() showInvalidStyle = false;
 
-  @state() displayInputValue = '';
+  @state() displayInputValueForMultipleSelection = '';
 
   /** The name of the combobox, submitted as a name/value pair with form data. */
   @property() name = '';
@@ -214,6 +214,9 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   /** Allows more than one option to be selected. */
   @property({ type: Boolean, reflect: true }) multiple = false;
 
+  /** Uses interactive `sd-tag` elements representing individual options in the display input when `multiple` is `true`. */
+  @property({ type: Boolean, reflect: true }) useTags = false;
+
   /**
    * The maximum number of selected options to show when `multiple` and `useTags` are `true`. After the maximum, "+n" will be shown to
    * indicate the number of additional items that are selected. Set to 0 to remove the limit.
@@ -233,9 +236,11 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
    */
   // eslint-disable-next-line class-methods-use-this
   @property() filter: (option: SdOption, queryString: string) => boolean = (option, queryString) => {
-    const normalizedOption = normalizeString(option.getTextLabel());
+    const normalizedOption = normalizeString(option.value);
+    const normalizedOptionLabel = normalizeString(option.getTextLabel());
     const normalizedQuery = normalizeString(queryString);
-    return normalizedOption.includes(normalizedQuery);
+    console.log('filter !!', normalizedOption, normalizedQuery);
+    return normalizedOption.includes(normalizedQuery) || normalizedOptionLabel.includes(normalizedQuery);
   };
 
   /**
@@ -274,7 +279,6 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
 
   connectedCallback() {
     super.connectedCallback();
-    console.log('first value', this.value);
 
     // Because this is a form control, it shouldn't be opened initially
     this.open = false;
@@ -521,7 +525,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       this.value = '';
       this.displayInput.value = '';
       this.lastOptionValue = [''];
-      this.setSelectedOptions(undefined);
+      this.selectionChanged();
       this.displayInput.focus({ preventScroll: true });
 
       // Emit after update
@@ -545,10 +549,14 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   private handleOptionClick(event: MouseEvent) {
     const target = event.target as HTMLElement;
     const option = target.closest('sd-option');
-    const oldValue = this.lastOptionValue;
-    if (option && !option.disabled) {
-      this.setSelectedOptions(option);
+    const oldValue = this.value;
 
+    if (option && !option.disabled) {
+      if (this.multiple) {
+        this.toggleOptionSelection(option);
+      } else {
+        this.setSelectedOptions(option);
+      }
       // Set focus after updating so the value is announced by screen readers
       this.updateComplete.then(() => this.displayInput.focus({ preventScroll: true }));
 
@@ -559,9 +567,10 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
           this.emit('sd-change');
         });
       }
-
-      this.hide();
-      this.displayInput.focus({ preventScroll: true });
+      if (!this.multiple) {
+        this.hide();
+        this.displayInput.focus({ preventScroll: true });
+      }
     }
   }
   /* eslint-enable @typescript-eslint/no-floating-promises */
@@ -630,40 +639,38 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   /**
    * Updates the selected options cache, the current value, and the display value
    */
-  private setSelectedOptions(option?: SdOption) {
-    if (!option) return;
-    const allOptions = this.getAllFilteredOptions();
-    allOptions.forEach(el => (el.selected = false));
-    let optionValue = [''];
+  private setSelectedOptions(option: SdOption | SdOption[]) {
+    const filteredOptions = this.getAllFilteredOptions();
+    const newSelectedOptions = Array.isArray(option) ? option : [option];
+    // Clear existing selection
+    filteredOptions.forEach(el => (el.selected = false));
 
-    if (this.multiple) {
-      if (!this.selectedOptions.find(selectedOption => selectedOption.value === option.value)) {
-        this.selectedOptions = this.selectedOptions[0] ? [...this.selectedOptions, ...[option]] : [option];
-      } else {
-        this.selectedOptions = this.selectedOptions.filter(selectedOption => selectedOption.value !== option.value);
-      }
-      optionValue = this.selectedOptions.map(selectedOption => selectedOption.value);
-
-      this.value = optionValue;
-      if (option) {
-        this.lastOptionValue = optionValue || '';
-      }
-    } else {
-      this.selectedOptions = [option];
-      this.value = option?.value ?? this.displayInput.value;
+    // Set the new selection
+    if (newSelectedOptions.length) {
+      newSelectedOptions.forEach(el => (el.selected = true));
     }
 
-    this.selectedOptions.forEach(selectedOption => (selectedOption.selected = true));
+    this.selectionChanged();
+  }
 
-    // Update validity and display label
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
+  private selectionChanged() {
+    console.log('selection changed');
+    console.log('filtered options', this.getAllFilteredOptions());
+
+    // Update selected options cache
+    this.selectedOptions = this.getAllFilteredOptions().filter(option => option.selected);
+
+    // Update the value and display label
+    if (this.multiple) {
+      this.value = this.selectedOptions.map(el => el!.value || el!.getTextLabel());
+      this.displayLabel = '';
+    } else {
+      this.value = this.selectedOptions[0]?.value || this.selectedOptions[0]?.getTextLabel() || '';
+      this.displayInput.value = this.selectedOptions[0]?.getTextLabel() || '';
+    }
+
+    // Update validity
     this.updateComplete.then(() => {
-      if (this.multiple) {
-        this.displayLabel = '';
-      } else {
-        this.displayLabel = this.selectedOptions[0].getTextLabel() ?? this.displayInput.value;
-      }
-      // Set selected attribute on the selectedOptions
       this.formControlController.updateValidity();
     });
   }
@@ -676,7 +683,25 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       option.selected = !option.selected;
     }
 
-    this.handleChange();
+    this.selectionChanged();
+  }
+
+  protected get tags() {
+    return this.selectedOptions.map((option, index) => {
+      if (index < this.maxOptionsVisible || this.maxOptionsVisible <= 0) {
+        const tag = this.getTag(option!, index);
+        // Wrap so we can handle the remove
+        return html`<div @sd-remove=${(e: CustomEvent) => this.handleTagRemove(e, option!)}>
+          ${typeof tag === 'string' ? unsafeHTML(tag) : tag}
+        </div>`;
+      } else if (index === this.maxOptionsVisible) {
+        // Hit tag limit
+        return html`<sd-tag size=${this.size === 'sm' ? 'sm' : 'lg'} ?disabled=${this.disabled}
+          >+${this.selectedOptions.length - index}</sd-tag
+        >`;
+      }
+      return html``;
+    });
   }
 
   private handleInvalid(event: Event) {
@@ -693,22 +718,31 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     }
   }
 
+  updated() {
+    console.log('updated value', this.value);
+    console.log('updated selected options', this.selectedOptions);
+    console.log('updated filtered options', this.filteredOptions);
+    console.log('updated display label', this.displayLabel);
+    console.log('updated display input value', this.displayInput.value);
+    // console.log('updated allFiltered Options', this.getAllFilteredOptions());
+  }
+
   @watch('filter', { waitUntilFirstUpdate: true })
   handleFilterChange() {
     this.createComboboxOptionsFromQuery(this.displayInput.value);
   }
 
-  // @watch('useTags', { waitUntilFirstUpdate: true })
-  // handleUseTagsChange() {
-  //   const allOptions = this.getAllOptions();
-  //
-  //   // Mutate all sd-option checkbox attributes based on useTags state
-  //   if (customElements.get('sd-option')) {
-  //     allOptions.forEach(option => {
-  //       option.checkbox = this.multiple;
-  //     });
-  //   }
-  // }
+  @watch('useTags', { waitUntilFirstUpdate: true })
+  handleUseTagsChange() {
+    const allOptions = this.getAllFilteredOptions();
+
+    // Mutate all sd-option checkbox attributes based on useTags state
+    if (customElements.get('sd-option')) {
+      allOptions.forEach(option => {
+        option.checkbox = this.multiple;
+      });
+    }
+  }
 
   @watch('disabled', { waitUntilFirstUpdate: true })
   handleDisabledChange() {
@@ -725,20 +759,18 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
 
   @watch('value', { waitUntilFirstUpdate: true })
   handleValueChange() {
-    console.log('!value', this.value);
     // set the display label here in case of the value was set via property only
     if (this.multiple) {
       this.createComboboxOptionsFromQuery(this.displayInput.value);
     } else {
-      this.displayLabel = Array.isArray(this.value) ? this.value.join(', ') : this.value;
+      console.log('value change not multiple', this.value);
       this.createComboboxOptionsFromQuery(Array.isArray(this.value) ? this.value.join(', ') : this.value);
     }
-    this.setCurrentOption(null);
   }
 
-  @watch('displayInputValue', { waitUntilFirstUpdate: true })
+  @watch('displayInputValueForMultipleSelection', { waitUntilFirstUpdate: true })
   handleDisplayLabelChange() {
-    console.log('displayInput', this.displayInput.value);
+    console.log('display input value', this.displayInput.value);
     this.createComboboxOptionsFromQuery(this.displayInput.value);
     if (this.multiple) {
       this.setCurrentOption(null);
@@ -853,26 +885,27 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
 
   private createComboboxOptionsFromQuery(queryString: string) {
     const optgroups: SdOptgroup[] = [];
-    console.log('createComboboxOptionsFromQuery', queryString);
+    console.log('createComboboxOptions', queryString);
     this.filteredOptions = this.getSlottedOptions()
-      .filter(option => this.filter(option, queryString) || queryString === '')
+      .filter(option => {
+        return this.filter(option, queryString) || queryString === '';
+      })
       .map(option => {
         const clonedOption = option.cloneNode(true) as SdOption;
-
         if (Array.isArray(this.value)) {
           // check if the option is selected
-          const selected = this.value.find(value => value === clonedOption.value);
+          const selected = this.value.find(
+            value => value === clonedOption.value || value === clonedOption.getTextLabel()
+          );
           clonedOption.selected = !!selected;
-
-          // If this.value and this.selectedOptions aren't synchronized, because this.value is set via property,
-          // we need to put the clonedOption.value to the selectedOptions
-          if (!this.selectedOptions.find(selectedOption => selectedOption.value === clonedOption.value)) {
-            this.selectedOptions = selected ? [...this.selectedOptions, clonedOption] : this.selectedOptions;
+          if (
+            selected &&
+            !this.selectedOptions.find(selectedOption => selectedOption?.getTextLabel() === clonedOption.getTextLabel())
+          ) {
+            this.selectedOptions = [...this.selectedOptions, ...[clonedOption]];
           }
         } else {
-          const selected = this.value === clonedOption.value;
-          clonedOption.selected = selected;
-          this.selectedOptions = selected ? [clonedOption] : this.selectedOptions;
+          clonedOption.selected = this.value === clonedOption.value || this.value === clonedOption.getTextLabel();
         }
 
         // Check if the option has a sd-optgroup as parent
@@ -901,15 +934,15 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   }
 
   private async handleInput() {
+    console.log('handleInput', this.displayInput.value);
     const inputValue = this.displayInput.value;
     if (!this.multiple) {
       this.value = inputValue;
     } else {
-      this.displayInputValue = inputValue;
+      this.displayInputValueForMultipleSelection = inputValue;
     }
     await this.updateComplete;
     this.open = this.filteredWrapper.children.length > 0;
-    this.setSelectedOptions(undefined);
 
     this.formControlController.updateValidity();
     this.emit('sd-input');
@@ -956,7 +989,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     });
 
     if (this.multiple) {
-      this.createComboboxOptionsFromQuery(this.displayInputValue);
+      this.createComboboxOptionsFromQuery(this.displayInputValueForMultipleSelection);
     } else {
       this.createComboboxOptionsFromQuery(Array.isArray(this.value) ? this.value.join(', ') : this.value);
     }
@@ -1077,6 +1110,9 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
               @mousedown=${this.handleComboboxMouseDown}
             >
               <slot part="prefix" name="prefix" class="combobox__prefix"></slot>
+              ${this.multiple && this.useTags
+                ? html`<div part="tags" class="flex-grow flex flex-wrap items-center gap-1">${this.tags}</div>`
+                : ''}
               <input
                 id="display-input"
                 name=${this.name}
