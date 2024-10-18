@@ -2,7 +2,7 @@ import React from 'react';
 import { Markdown } from '@storybook/blocks';
 
 export const ChangelogFormatter = ({ children }) => {
-  const formattedChildren = children.replace(/@solid-design-system\/components-v/g, '');
+  const formattedChildren = children.replace(/@solid-design-system\/[^/]+-v/g, '');
 
   return (
     <>
@@ -12,7 +12,7 @@ export const ChangelogFormatter = ({ children }) => {
         options={{
           overrides: {
             h1: {
-              component: 'h2',
+              component: 'h3',
               props: {
                 style: {
                   fontSize: '1rem',
