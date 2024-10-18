@@ -16,6 +16,19 @@ export default {
   title: 'Templates/Quickfact'
 };
 
+export const QuickfactWithSummary = {
+  name: 'Quickfact with Summary',
+  render: () =>
+    html` <sd-quickfact class="max-w-[410px] mx-auto">
+      <sd-icon name="content/people" color="primary" aria-hidden="true" library="default" slot="icon"></sd-icon>
+      <div slot="summary">
+        <div class="text-base font-normal leading-normal sm:text-xl">
+          Over 4,000 employees in 9 international locations
+        </div>
+      </div>
+    </sd-quickfact>`
+};
+
 export const QuickfactWithDescription = {
   name: 'Quickfact with Description',
   render: () => html`
