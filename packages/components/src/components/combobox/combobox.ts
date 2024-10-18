@@ -136,7 +136,13 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   /**
    * The current value of the combobox, submitted as a name/value pair with form data.
    */
-  @property() value: string | string[] = '';
+  @property({
+    converter: {
+      fromAttribute: (value: string) => value.split(' '),
+      toAttribute: (value: string[]) => value.join(' ')
+    }
+  })
+  value: string | string[] = '';
 
   /** The default value of the form control. Primarily used for resetting the form control. */
   @defaultValue() defaultValue = '';
@@ -268,6 +274,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
 
   connectedCallback() {
     super.connectedCallback();
+    console.log('first value', this.value);
 
     // Because this is a form control, it shouldn't be opened initially
     this.open = false;
@@ -656,8 +663,6 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       } else {
         this.displayLabel = this.selectedOptions[0].getTextLabel() ?? this.displayInput.value;
       }
-      console.log('value !!!!!', this.value);
-      console.log('displayInput !!!!!', this.displayInput.value);
       // Set selected attribute on the selectedOptions
       this.formControlController.updateValidity();
     });
@@ -720,7 +725,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
 
   @watch('value', { waitUntilFirstUpdate: true })
   handleValueChange() {
-    console.log('value', this.value);
+    console.log('!value', this.value);
     // set the display label here in case of the value was set via property only
     if (this.multiple) {
       this.createComboboxOptionsFromQuery(this.displayInput.value);
@@ -848,14 +853,27 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
 
   private createComboboxOptionsFromQuery(queryString: string) {
     const optgroups: SdOptgroup[] = [];
+    console.log('createComboboxOptionsFromQuery', queryString);
     this.filteredOptions = this.getSlottedOptions()
       .filter(option => this.filter(option, queryString) || queryString === '')
       .map(option => {
         const clonedOption = option.cloneNode(true) as SdOption;
 
-        // check if the option is selected
-        const selected = this.selectedOptions.find(selectedOption => selectedOption.value === clonedOption.value);
-        clonedOption.selected = !!selected;
+        if (Array.isArray(this.value)) {
+          // check if the option is selected
+          const selected = this.value.find(value => value === clonedOption.value);
+          clonedOption.selected = !!selected;
+
+          // If this.value and this.selectedOptions aren't synchronized, because this.value is set via property,
+          // we need to put the clonedOption.value to the selectedOptions
+          if (!this.selectedOptions.find(selectedOption => selectedOption.value === clonedOption.value)) {
+            this.selectedOptions = selected ? [...this.selectedOptions, clonedOption] : this.selectedOptions;
+          }
+        } else {
+          const selected = this.value === clonedOption.value;
+          clonedOption.selected = selected;
+          this.selectedOptions = selected ? [clonedOption] : this.selectedOptions;
+        }
 
         // Check if the option has a sd-optgroup as parent
         const hasOptgroup = option.parentElement?.tagName.toLowerCase() === 'sd-optgroup';

@@ -100,7 +100,7 @@ describe('<sd-combobox>', () => {
     await clickOnElement(disabledOption);
     await el.updateComplete;
 
-    await expect(el.value).to.equal('Option');
+    await expect(el.value).to.deep.equal(['Option']);
   });
 
   it('should focus the combobox when clicking on the label', async () => {
@@ -426,7 +426,7 @@ describe('<sd-combobox>', () => {
 
       expect(displayInput.getAttribute('aria-expanded')).to.equal('false');
       expect(displayInput.value).to.equal('option');
-      expect(el.value).to.equal('option');
+      expect(el.value).to.deep.equal(['option']);
     });
 
     it('should close the listbox when Enter key is pressed with sd-combobox is on focus', async () => {
@@ -544,7 +544,27 @@ describe('<sd-combobox>', () => {
       await el.updateComplete;
 
       expect(displayInput.getAttribute('aria-expanded')).to.equal('true');
-      expect(el.value).to.equal('option');
+      expect(el.value).to.deep.equal(['option']);
+    });
+  });
+  describe('when multiple is set', () => {
+    it('should allow multiple options to be selected', async () => {
+      const el = await fixture<SdCombobox>(html`
+        <sd-combobox value="option-1 option-3" multiple>
+          <sd-option value="option-1">Option 1</sd-option>
+          <sd-option value="option-2">Option 2</sd-option>
+          <sd-option value="option-3">Option 3</sd-option>
+        </sd-combobox>
+      `);
+
+      await el.show();
+
+      const filteredListbox = el.shadowRoot!.querySelector('#listbox-options')!;
+      const secondOption = filteredListbox.querySelectorAll<SdOption>('sd-option')[1];
+      await clickOnElement(secondOption);
+      await el.updateComplete;
+
+      await expect(el.value).to.deep.equal(['option-1', 'option-3', 'option-2']);
     });
   });
 
@@ -828,7 +848,7 @@ describe('<sd-combobox>', () => {
       setTimeout(() => resetButton.click());
       await oneEvent(form, 'reset');
       await combobox.updateComplete;
-      expect(combobox.value).to.equal('option-1');
+      expect(combobox.value).to.deep.equal(['option-1']);
     });
   });
 
