@@ -28,6 +28,7 @@ export default {
 };
 
 export const Default = {
+  parameters: { controls: { exclude: ['default'] } },
   render: (args: any) => {
     return generateTemplate({ args });
   }

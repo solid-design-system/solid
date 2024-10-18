@@ -30,14 +30,8 @@ const translation: Translation = {
   previousSlide: 'Previous slide',
   goToSlide: (slide, count) => `Go to slide ${slide} of ${count}`,
   slideNum: num => `Slide ${num}`,
-  audioPlayer: 'Audio Player',
-  playAudio: 'Play Audio',
-  pauseAudio: 'Pause Audio',
-  mute: 'Mute',
-  unmute: 'Unmute',
   showMore: 'Show more',
-  showLess: 'Show less',
-  playbackSpeed: 'Playback Speed'
+  showLess: 'Show less'
 };
 
 registerTranslation(translation);

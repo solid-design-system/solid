@@ -152,14 +152,12 @@ export const Loop = {
 
 /**
  * Use the `autoplay` attribute to toggle autoplay.
- *
- * __Hint:__ Autoplay is automatically paused when the user interacts with the carousel or when the pause button is clicked.
  */
 
 export const Autoplay = {
   render: () => html`
     <div>
-      <sd-carousel autoplay loop>
+      <sd-carousel autoplay>
         <sd-carousel-item>
           <div class="slot slot--border slot--text h-16">Default slot 1</div>
         </sd-carousel-item>

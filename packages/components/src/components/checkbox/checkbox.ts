@@ -54,7 +54,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
   @property() value: string;
 
   /** The checkbox's size. */
-  @property({ reflect: true }) size: 'sm' | 'md' | 'lg' = 'lg';
+  @property({ reflect: true }) size: 'sm' | 'lg' = 'lg';
 
   /** Disables the checkbox. */
   @property({ type: Boolean, reflect: true }) disabled = false;
@@ -199,7 +199,6 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
           {
             /* sizes, fonts */
             sm: 'text-sm',
-            md: 'text-base',
             lg: 'text-base'
           }[this.size]
         )}
@@ -233,7 +232,6 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
             peer-focus-visible:outline-primary`,
             {
               sm: 'mt-[2px]',
-              md: 'mt-[3px]',
               lg: 'mt-[3px]'
             }[this.size],
             {

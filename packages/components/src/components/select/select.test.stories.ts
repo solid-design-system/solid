@@ -625,7 +625,7 @@ export const setCustomValidity = {
           const setSuccessButton = document.getElementById('success-button');
 
           // Initial error
-          const errorMessage = \`This is an initial custom error.\`;
+          const errorMessage = \`This is an initial custom error (\${new Date().toLocaleTimeString()})\`;
           input.setCustomValidity(errorMessage);
           input.reportValidity();
 

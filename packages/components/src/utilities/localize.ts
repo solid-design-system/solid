@@ -95,12 +95,6 @@ export interface Translation extends DefaultTranslation {
   showPassword: string;
   slideNum: (slide: number) => string;
   toggleColorFormat: string;
-  audioPlayer: string;
-  playAudio: string;
-  pauseAudio: string;
-  mute: string;
-  unmute: string;
   showMore: string;
   showLess: string;
-  playbackSpeed: string;
 }
