@@ -96,7 +96,6 @@
     "@semantic-release/exec": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@solid-design-system/theming": "workspace:*",
-    "@storybook/test": "^8.1.10",
     "@tarekraafat/autocomplete.js": "^10.2.7",
     "@types/mocha": "^10.0.4",
     "@types/sinon": "^17.0.1",
