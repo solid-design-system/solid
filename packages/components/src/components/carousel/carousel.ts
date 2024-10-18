@@ -52,6 +52,10 @@ import SolidElement from '../../internal/solid-element.js';
  */
 @customElement('sd-carousel')
 export default class SdCarousel extends SolidElement {
+  @query('[part~="autoplay-controls"]') autoplayControls: HTMLElement;
+  @query('[part~="navigation-button--previous"]') previousButton: HTMLButtonElement;
+  @query('[part~="navigation-button--next"]') nextButton: HTMLButtonElement;
+
   /** Determines the counting system for the carousel. */
   @property({ type: String, reflect: true }) variant: 'dot' | 'number' = 'number';
   /** Inverts the carousel */
@@ -251,10 +255,13 @@ export default class SdCarousel extends SolidElement {
   @watch('pausedAutoplay')
   handlePausedAutoplay() {
     if (this.pausedAutoplay) {
-      this.autoplayController.controlledPause();
+      this.autoplayController.stop();
     } else if (this.autoplay) {
-      this.autoplayController.controlledResume();
+      this.autoplayController.start(3000);
     }
+
+    // This is necessary to allow autoplay since focus is not removed when the button is clicked.
+    this.autoplayControls?.blur();
   }
 
   @watch('loop', { waitUntilFirstUpdate: true })
@@ -347,8 +354,6 @@ export default class SdCarousel extends SolidElement {
         slide.style.setProperty('scroll-snap-align', 'none');
       }
     });
-
-    // this.handleScrollEnd();
   }
 
   @watch('autoplay')
@@ -378,6 +383,9 @@ export default class SdCarousel extends SolidElement {
     } else {
       this.goToSlide(previousIndex, behavior);
     }
+
+    // This keeps the carousel from pausing autoplay due to the lingering focus
+    this.previousButton?.blur();
   }
 
   /**
@@ -387,13 +395,18 @@ export default class SdCarousel extends SolidElement {
    */
   next(behavior: ScrollBehavior = 'smooth') {
     if (
-      this.currentPage + 1 > SdCarousel.getPageCount(this.getSlides().length, this.slidesPerPage, this.slidesPerMove) &&
-      this.loop
+      this.currentPage + 1 <=
+      SdCarousel.getPageCount(this.getSlides().length, this.slidesPerPage, this.slidesPerMove)
     ) {
-      this.nextTillFirst(behavior);
-    } else {
       this.goToSlide(this.activeSlide + this.slidesPerMove, behavior);
+    } else {
+      if (this.loop) {
+        this.nextTillFirst(behavior);
+      }
     }
+
+    // This keeps the carousel from pausing autoplay due to the lingering focus
+    this.nextButton?.blur();
   }
 
   nextTillFirst(behavior: ScrollBehavior = 'smooth') {
