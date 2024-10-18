@@ -25,7 +25,7 @@ export default class SdCheckboxGroup extends SolidElement {
   private readonly hasSlotController = new HasSlotController(this, 'label');
 
   /** The checkbox group's size. This size will be applied to the label, all child checkboxes. */
-  @property({ reflect: true }) size: 'lg' | 'sm' = 'lg';
+  @property({ reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
 
   /**
    * The orientation property determines the alignment of the component's content or elements. It accepts two possible
@@ -92,6 +92,7 @@ export default class SdCheckboxGroup extends SolidElement {
           {
             /* sizes, fonts */
             sm: 'text-sm',
+            md: 'text-base',
             lg: 'text-base'
           }[this.size]
         )}
