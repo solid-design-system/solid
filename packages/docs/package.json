@@ -45,8 +45,8 @@
     "@storybook/addons": "^7.5.3",
     "@storybook/blocks": "^8.1.10",
     "@storybook/theming": "^8.1.10",
-    "@storybook/web-components-vite": "^8.1.10",
     "@storybook/web-components": "^8.1.10",
+    "@storybook/web-components-vite": "^8.1.10",
     "@tarekraafat/autocomplete.js": "^10.2.7",
     "autoprefixer": "^10.4.16",
     "cem-plugin-vs-code-custom-data-generator": "^1.4.2",
@@ -59,16 +59,17 @@
     "plop": "^4.0.0",
     "postcss": "^8.4.31",
     "prettier": "^3.3.2",
-    "react-dom": "^18.3.1",
     "react": "^18.3.1",
-    "semantic-release-monorepo": "^7.0.5",
+    "react-dom": "^18.3.1",
     "semantic-release": "^19.0.5",
+    "semantic-release-monorepo": "^7.0.5",
     "storybook": "^8.1.10",
     "tailwindcss": "^3.3.5",
     "typescript": "5.4.5",
+    "vite": "^5.3.1",
     "vite-plugin-cem": "^0.8.0",
     "vite-tsconfig-paths": "^4.2.1",
-    "vite": "^5.3.1"
+    "wc-storybook-helpers": "1.5.3"
   },
   "release": {
     "branches": [
