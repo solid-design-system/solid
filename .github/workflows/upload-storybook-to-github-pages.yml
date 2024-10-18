@@ -11,8 +11,6 @@ permissions:
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
   group: "pages"
   cancel-in-progress: false
@@ -24,6 +22,10 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
+      - name: Set GitHub Safe Branch
+        id: set_safe_branch
+        run: echo "GITHUB_SAFE_BRANCH=$(echo ${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}} | tr '/' '_')" >> $GITHUB_ENV
+
       - name: Checkout
         uses: actions/checkout@v4
         with:
@@ -49,25 +51,22 @@ jobs:
 
       - name: Prepare deployment directory
         run: |
-          BRANCH_NAME=$(echo ${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}} | tr '/' '_')
           mkdir -p deployment/archives
-          mkdir -p deployment/${BRANCH_NAME}
-          cp -r packages/components/dist/storybook/* deployment/${BRANCH_NAME}/
+          mkdir -p deployment/${{ env.GITHUB_SAFE_BRANCH }}
+          cp -r packages/components/dist/storybook/* deployment/${{ env.GITHUB_SAFE_BRANCH }}/
 
       - name: Create archive
         run: |
-          BRANCH_NAME=$(echo ${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}} | tr '/' '_')
           mkdir -p deployment/archives
-          tar -czf deployment/archives/${BRANCH_NAME}.tar -C deployment/${BRANCH_NAME} .
+          tar -czf deployment/archives/${{ env.GITHUB_SAFE_BRANCH }}.tar -C deployment/${{ env.GITHUB_SAFE_BRANCH }} .
 
       - name: Download and unpack existing archives
         run: |
-          BRANCH_NAME=$(echo ${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}} | tr '/' '_')
           mkdir -p deployment/archives
           git fetch --all
           for branch in $(git branch -r | grep -v '\->' | sed 's/origin\///'); do
             safe_branch=$(echo ${branch} | tr '/' '_')
-            if [ "${safe_branch}" != "${BRANCH_NAME}" ]; then
+            if [ "${safe_branch}" != "${{ env.GITHUB_SAFE_BRANCH }}" ]; then
               echo "Checking for existing archive for branch: ${branch}"
               if curl --head --fail -s https://solid-design-system.github.io/solid/archives/${safe_branch}.tar; then
                 echo "Downloading archive for branch: ${branch}"
@@ -92,9 +91,26 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload the deployment directory
           path: 'deployment'
 
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Find existing comment
+        uses: peter-evans/find-comment@v3
+        id: fc
+        with:
+          issue-number: ${{ github.event.pull_request.number || github.run_id }}
+          comment-author: 'github-actions[bot]'
+          body-includes: 'Storybook has been deployed for'
+
+      - name: Create or update comment
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ github.event.pull_request.number || github.run_id }}
+          comment-id: ${{ steps.fc.outputs.comment-id }}
+          body: |
+            🚀 Storybook has been deployed for branch `${{ env.GITHUB_SAFE_BRANCH }}`
+            - [View Storybook](https://solid-design-system.github.io/solid/${{ env.GITHUB_SAFE_BRANCH }})
+          edit-mode: replace
