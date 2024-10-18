@@ -55,24 +55,44 @@ export const ContactForm = {
   render: () => html`
     <form class="sd-prose" id="contactForm">
       <h3 class="sd-headline sd-headline--size-4xl">Contact</h3>
-      <sd-radio-group id="inquiry-radio-group" orientation="horizontal" name="radio-group" value="general-inquiry">
+      <sd-radio-group id="inquiry-radio-group" orientation="horizontal" value="general-inquiry">
         <sd-radio name="inquiry-type" value="general-inquiry">General inquiry</sd-radio>
         <sd-radio name="inquiry-type" value="regarding">Regarding</sd-radio>
       </sd-radio-group>
-      <sd-input type="text" inputmode="text" id="regarding-input" class="hidden" spellcheck></sd-input>
+      <sd-input
+        type="text"
+        inputmode="text"
+        id="regarding-input"
+        class="hidden"
+        name="regarding-input"
+        spellcheck
+      ></sd-input>
       <div class="flex flex-col gap-6">
-        <sd-select label="Salutation" placeholder="Please Select" required>
+        <sd-select label="Salutation" placeholder="Please Select" name="salutation" required>
           <sd-option value="ms">Ms.</sd-option>
           <sd-option value="mrs">Mrs.</sd-option>
           <sd-option value="miss">Miss</sd-option>
           <sd-option value="mx">Mx.</sd-option>
         </sd-select>
         <div class="gap-6 flex flex-col md:flex-row">
-          <sd-input type="text" inputmode="text" label="First name" autocomplete="given-name"></sd-input>
-          <sd-input type="text" inputmode="text" label="Last name" required autocomplete="family-name"></sd-input>
+          <sd-input
+            name="firstName"
+            type="text"
+            inputmode="text"
+            label="First name"
+            autocomplete="given-name"
+          ></sd-input>
+          <sd-input
+            name="lastName"
+            type="text"
+            inputmode="text"
+            label="Last name"
+            required
+            autocomplete="family-name"
+          ></sd-input>
         </div>
-        <sd-input type="email" inputmode="email" label="Email" required autocomplete="email"></sd-input>
-        <sd-textarea label="News" rows="4" spellcheck></sd-textarea>
+        <sd-input name="email" type="email" inputmode="email" label="Email" required autocomplete="email"></sd-input>
+        <sd-textarea name="news" label="News" rows="4" spellcheck></sd-textarea>
         <sd-checkbox-group>
           <sd-checkbox value="privacy_policy" required>
             I accept the <sd-link href="javascript:void(0)">Privacy Policy</sd-link>.
@@ -86,18 +106,7 @@ export const ContactForm = {
         <sd-button variant="secondary" class="md:order-1" onclick="alert('Cancelled process')">Cancel</sd-button>
       </div>
     </form>
-    <script>
-      const radioGroup = document.getElementById('inquiry-radio-group');
-      const regardingInput = document.getElementById('regarding-input');
-      radioGroup.addEventListener('sd-change', event => {
-        const value = event.target.value;
-        if (value === 'regarding') {
-          regardingInput.classList.remove('hidden');
-        } else {
-          regardingInput.classList.add('hidden');
-        }
-      });
-
+    <script type="module">
       await Promise.all([
         customElements.whenDefined('sd-button'),
         customElements.whenDefined('sd-checkbox'),
@@ -107,15 +116,32 @@ export const ContactForm = {
         customElements.whenDefined('sd-input'),
         customElements.whenDefined('sd-select')
       ]).then(() => {
+
         const form = document.getElementById('contactForm');
         // Listen for the form's submit event
-        form.addEventListener('submit', function(event) {
+        form.addEventListener('submit', function (event) {
           event.preventDefault(); // Prevent the default form submission
           const formData = new FormData(form);
+
           // Collect form values to display in the alert
           let formValues = ['Results:'];
-          console.log(formValues);
+          for (let [key, value] of formData.entries()) {
+            formValues.push($key: $value);
+          }
+          alert(formValues.join(' '));
         });
+      });
+
+      const radioGroup = document.getElementById('inquiry-radio-group');
+      const regardingInput = document.getElementById('regarding-input');
+      radioGroup.addEventListener('sd-change', event => {
+        console.log(radioGroup, regardingInput);
+        const value = event.target.value;
+        if (value === 'regarding') {
+          regardingInput.classList.remove('hidden');
+        } else {
+          regardingInput.classList.add('hidden');
+        }
       });
     </script>
   `
