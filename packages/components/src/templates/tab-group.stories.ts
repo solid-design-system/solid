@@ -144,8 +144,8 @@ export const TabWithIconBadge = {
       </sd-tab-panel>
       <sd-tab slot="nav" panel="tab-2">
         <sd-icon slot="left" name="system/folder"></sd-icon>
-        <sd-badge size="sm" class="mb-3 mr-2" variant="error">You have notifications</sd-badge>
         Files
+        <sd-badge size="sm" class="mb-3 mr-2" variant="error">New Notification</sd-badge>
       </sd-tab>
       <sd-tab-panel name="tab-2">
         <p class="sd-paragraph">
