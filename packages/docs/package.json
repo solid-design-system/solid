@@ -23,7 +23,13 @@
   ],
   "scripts": {
     "dev": "pnpm storybook",
-    "storybook": "storybook dev -p 6006"
+    "storybook": "storybook dev -p 6006",
+    "verify": "pnpm ts.verify && pnpm build && echo '✅ Build verified' && node ./scripts/node-optimize-chromatic.cjs && echo '✅ Chromatic optimization verified' && pnpm test.verify && echo '✅ Test verified'",
+    "ts.verify": "tsc --noEmit --project ./tsconfig.json && echo '✅ TypeScript verified'",
+    "build.chromatic": "pnpm build/storybook && node ./scripts/node-optimize-chromatic.cjs",
+    "chromatic": "npx chromatic -b build.chromatic",
+    "build/storybook": "storybook build --output-dir dist/storybook && vite-node scripts/node-optimize-storybook.js",
+    "preview": "vite preview"
   },
   "dependencies": {
     "classix": "^2.1.35",
@@ -51,6 +57,7 @@
     "autoprefixer": "^10.4.16",
     "cem-plugin-vs-code-custom-data-generator": "^1.4.2",
     "change-case": "^5.4.4",
+    "chromatic": "^11.12.6",
     "comment-parser": "^1.4.1",
     "countup.js": "^2.8.0",
     "cssnano": "^7.0.3",
@@ -66,7 +73,9 @@
     "storybook": "^8.1.10",
     "tailwindcss": "^3.3.5",
     "typescript": "5.4.5",
+    "user-agent-data-types": "^0.4.2",
     "vite": "^5.3.1",
+    "vite-node": "^1.6.0",
     "vite-plugin-cem": "^0.8.0",
     "vite-tsconfig-paths": "^4.2.1",
     "wc-storybook-helpers": "1.5.3"
@@ -87,7 +96,7 @@
       [
         "@semantic-release/npm",
         {
-          "npmPublish": true
+          "npmPublish": false
         }
       ],
       [
