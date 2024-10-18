@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v3.20.0](https://github.com/solid-design-system/solid/compare/components/3.19.3...components/3.20.0) (2024-10-18)
+
+
+### Features
+
+* add 'md' size to sd-radio, sd-checkbox and sd-checkbox-group ([#1549](https://github.com/solid-design-system/solid/issues/1549)) ([3ffc319](https://github.com/solid-design-system/solid/commit/3ffc3197a931f3175083a90298ea5dc19b4f9274))
+
+### 📈 Stats
+* Bundle size (uncompressed): 350 KB (+1 KB / +0%)
+* Bundle size (gzipped): 82 KB (unchanged)
+
 # [@solid-design-system/components-v3.19.3](https://github.com/solid-design-system/solid/compare/components/3.19.2...components/3.19.3) (2024-10-17)
 
 
