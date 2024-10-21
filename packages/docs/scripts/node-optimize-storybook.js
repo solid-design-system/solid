@@ -44,48 +44,51 @@ enhanceCustomElementManifest();
 const searchDir = 'dist/storybook/sb-manager';
 const searchText = 'u22C5 Storybook';
 const replaceText = 'u22C5 Solid Design System by Union Investment (Storybook)';
-function replaceTextInFiles(directory) {
-  fs.readdir(directory, (err, files) => {
-    if (err) {
-      console.error('❌ Error reading directory:', err);
-      return;
-    }
-    files.forEach(file => {
+async function replaceTextInFiles(directory) {
+  console.log('Starting replaceTextInFiles');
+  try {
+    const files = await fsPromises.readdir(directory);
+    for (const file of files) {
       const filePath = path.join(directory, file);
-      fs.readFile(filePath, 'utf8', (err, content) => {
-        if (err) {
-          console.error('❌ Error reading file:', err);
-          return;
-        }
-        const updatedContent = content.replace(new RegExp(searchText, 'g'), replaceText);
-        if (updatedContent !== content) {
-          fs.writeFile(filePath, updatedContent, 'utf8', err => {
-            if (err) {
-              console.error('❌ Error writing file:', err);
-            } else {
-              console.log(`✅ Replaced text in ${file}`);
-            }
-          });
-        }
-      });
-    });
-  });
+      const content = await fsPromises.readFile(filePath, 'utf8');
+      const updatedContent = content.replace(new RegExp(searchText, 'g'), replaceText);
+      if (updatedContent !== content) {
+        await fsPromises.writeFile(filePath, updatedContent, 'utf8');
+        console.log(`✅ Replaced text in ${file}`);
+      }
+    }
+    console.log('Finished replaceTextInFiles');
+  } catch (err) {
+    console.error('❌ Error in replaceTextInFiles:', err);
+  }
 }
-replaceTextInFiles(searchDir);
 
-/**
- * Change the generated index.html document title to "Solid Design System by Union Investment" and remove generated favicon link to use custom tag from manager-header.html.
- */
-try {
-  const filePath = './dist/storybook/index.html';
-  const document = fs.readFileSync(filePath, 'utf8');
-  const output = document
-    .replace(/<title>@storybook\/cli - Storybook<\/title>/, `<title>Solid Design System by Union Investment</title>`)
-    .replace(/<link rel="icon" type="image\/svg\+xml" href=".*" \/>/, '');
-  fs.writeFileSync(filePath, output);
-  console.log('✅ index.html document rewrite complete.');
-} catch (error) {
-  console.log('❌ Document rewrite failed.');
-  console.error(error);
-  process.exit(1);
+async function updateIndexHtml() {
+  /**
+   * Change the generated index.html document title to "Solid Design System by Union Investment" and remove generated favicon link to use custom tag from manager-header.html.
+   */
+  try {
+    console.log('Starting index.html modification');
+    const filePath = './dist/storybook/index.html';
+    const document = await fsPromises.readFile(filePath, 'utf8');
+    const output = document
+      .replace(/<title>@storybook\/cli - Storybook<\/title>/, `<title>Solid Design System by Union Investment</title>`)
+      .replace(/<link rel="icon" type="image\/svg\+xml" href=".*" \/>/, '');
+    await fsPromises.writeFile(filePath, output);
+    console.log('✅ index.html document rewrite complete.');
+  } catch (error) {
+    console.log('❌ Document rewrite failed.');
+    console.error(error);
+    process.exit(1);
+  }
 }
+
+async function optimizeStorybook() {
+  await enhanceCustomElementManifest();
+  await replaceTextInFiles(searchDir);
+  await updateIndexHtml();
+
+  process.exit(0);
+}
+
+optimizeStorybook();
