@@ -67,7 +67,10 @@ export default class SdMapMarker extends SolidElement {
     return html`
       <${tag}
         part="base"
-        class=${cx('flex justify-center focus:outline-primary focus:outline-offset-2')}
+        class=${cx(
+          'flex justify-center',
+          !this.notInteractive && 'focus:outline focus:outline-2 focus:outline-primary focus:outline-offset-2'
+        )}
         href=${ifDefined(isLink ? this.href : undefined)}
         target=${ifDefined(isLink ? this.target : undefined)}
         aria-label=${this.label}
@@ -77,15 +80,20 @@ export default class SdMapMarker extends SolidElement {
             'inline-flex',
             this.animated && (this.variant === 'main' || this.variant === 'place') && 'animate-bounce-once',
             this.variant === 'cluster' && this.state === 'hover' && 'scale-110 fill-primary-500',
+            this.variant === 'cluster' &&
+              !this.notInteractive &&
+              'transition-all duration-200 ease-in-out hover:scale-110 hover:fill-primary-500',
             this.variant === 'main' && this.state === 'hover' && 'fill-accent-550',
             this.variant === 'main' && this.state === 'active' && 'fill-accent-700',
+            this.variant === 'main' && !this.notInteractive && 'hover:fill-accent-550 active:fill-accent-700',
             this.variant === 'place' && this.state === 'default' && 'fill-white',
             this.variant === 'place' && this.state === 'hover' && 'fill-primary-100',
             this.variant === 'place' && this.state === 'active' && 'fill-primary-200',
+            this.variant === 'place' && !this.notInteractive && 'hover:fill-primary-100',
             {
-              cluster: 'fill-primary transition-all duration-200 ease-in-out hover:scale-110 hover:fill-primary-500',
-              main: 'fill-accent *:drop-shadow-md hover:fill-accent-550 active:fill-accent-700',
-              place: 'hover:fill-primary-100 *:drop-shadow-md'
+              cluster: 'fill-primary',
+              main: 'fill-accent *:drop-shadow-md',
+              place: '*:drop-shadow-md'
             }[this.variant]
           )}
         >
