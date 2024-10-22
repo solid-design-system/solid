@@ -175,7 +175,7 @@ export const TeaserWithIcon = {
           variant="primary-100"
           inset
           class="h-[238px]"
-          breakpoint="448"
+          breakpoint="538"
           style="--distribution-media: 20%; --distribution-content: 80%;"
         >
           <div slot="media" class="flex flex-wrap justify-center items-center h-[189px] md:h-auto">
@@ -251,7 +251,7 @@ export const teaserWithChipAndFlag = {
         <sd-teaser
           variant="neutral-100"
           inset
-          breakpoint="448"
+          breakpoint="538"
           class="max-w-[720px] flex-1 h-[238px]"
           style="--distribution-media: 60%; --distribution-content: 50%;"
         >
@@ -282,7 +282,7 @@ export const teaserWithDivision = {
         sd-teaser#teaser-with-division::part(content) {
           padding: 20px;
         }
-        @media (min-width: 768px) {
+        @media (min-width: 655px) {
           sd-teaser#teaser-with-division::part(content) {
             min-height: 100%;
             padding: 24px 34px 24px 0;
@@ -295,7 +295,7 @@ export const teaserWithDivision = {
       <sd-teaser
         variant="neutral-100"
         class="max-w-[656px] flex-1 p-4"
-        breakpoint="448"
+        breakpoint="538"
         id="teaser-with-division"
         style="--distribution-media: 50%; --distribution-content: 50%;"
       >
@@ -310,9 +310,9 @@ export const teaserWithDivision = {
           “Our real estate funds are well positioned”
         </h3>
         <div class="w-full flex flex-col h-full justify-between">
-          <p class="sd-paragraph mt-8">
-            Carsten Thiel, Head of Fund Management for Open Real Estate Mutual Funds at Union Investment, about the
-            opportunities for asset classes in challenging times.
+          <p class="sd-paragraph mt-2 md:mt-8">
+            The opportunities for asset classes in challenging times are being explored, particularly within the context
+            of open real estate mutual funds.
           </p>
           <div>
             <sd-link href="javascript:void(0)" class="font-bold">To the article</sd-link>
