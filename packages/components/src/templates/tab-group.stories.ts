@@ -38,7 +38,7 @@ export const TabCentered = {
       <sd-tab-group activation id="centered">
         <sd-tab slot="nav" panel="tab-1">Gender</sd-tab>
         <sd-tab-panel name="tab-1">
-          <figure class="sd-media sd-copyright" style="--copyright: '© 2024 Solid Design System';">
+          <figure class="sd-media sd-copyright" style="--copyright: 'Photo by Austin Distel on Unsplash';">
             <img
               src="./placeholders/images/collaboration.jpg"
               alt="Two men in business attire sitting on a sofa in a modern office, smiling and looking at a laptop screen."
@@ -53,7 +53,7 @@ export const TabCentered = {
         </sd-tab-panel>
         <sd-tab slot="nav" panel="tab-2">Age diversity</sd-tab>
         <sd-tab-panel name="tab-2">
-          <figure class="sd-media sd-copyright" style="--copyright: '© 2024 Solid Design System';">
+          <figure class="sd-media sd-copyright" style="--copyright: 'Photo by Nathan Dumlao on Unsplash';">
             <img
               src="./placeholders/images/family.jpg"
               alt="A man with glasses and a beard holding two young children in his arms, smiling outdoors with trees in the background."
@@ -68,7 +68,7 @@ export const TabCentered = {
         </sd-tab-panel>
         <sd-tab slot="nav" panel="tab-3">Education</sd-tab>
         <sd-tab-panel name="tab-3">
-          <figure class="sd-media sd-copyright" style="--copyright: '© 2024 Solid Design System';">
+          <figure class="sd-media sd-copyright" style="--copyright: 'Photo by Dan Dimmock on Unsplash';">
             <img
               src="./placeholders/images/workspace.jpg"
               alt="Close-up of a pair of glasses, a pen, and an open notebook with notes written on it, on a desk next to a laptop."
@@ -83,7 +83,7 @@ export const TabCentered = {
         </sd-tab-panel>
         <sd-tab slot="nav" panel="tab-4">Background</sd-tab>
         <sd-tab-panel name="tab-4">
-          <figure class="sd-media sd-copyright" style="--copyright: '© 2024 Solid Design System';">
+          <figure class="sd-media sd-copyright" style="--copyright: 'Photo by Austin Distel on Unsplash';">
             <img
               src="./placeholders/images/collaboration.jpg"
               alt="Two men in business attire sitting on a sofa in a modern office, smiling and looking at a laptop screen."
