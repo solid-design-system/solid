@@ -113,3 +113,46 @@ export const Slot = {
     </sd-map-marker>
   `
 };
+
+/**
+ * Use the `not-interactive` attribute render a marker that is not interactive.
+ */
+export const NotInteractive = {
+  render: () => html`
+    <div class="flex items-center gap-12">
+      <sd-map-marker not-interactive></sd-map-marker>
+      <sd-map-marker variant="place" not-interactive>
+        <sd-icon name="content/image" color="primary"></sd-icon>
+      </sd-map-marker>
+      <sd-map-marker variant="cluster" not-interactive> 88 </sd-map-marker>
+    </div>
+  `
+};
+
+/**
+ * - Use the `href` attribute to enable the link.
+ * - Use the `target` attribute to specify where to open the link.
+ */
+export const AsLink = {
+  render: () => html`
+    <div class="flex items-center gap-12">
+      <sd-map-marker
+        href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/?path=/docs/docs-general-introduction--docs"
+        target="_blank"
+        label="example"
+      >
+      </sd-map-marker>
+    </div>
+  `
+};
+
+/**
+ * Use the `label` attribute to set the text of the aria-label attribute when rendered as button or link.
+ */
+export const Label = {
+  render: () => html`
+    <div class="flex items-center gap-12">
+      <sd-map-marker label="example"></sd-map-marker>
+    </div>
+  `
+};
