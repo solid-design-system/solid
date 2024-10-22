@@ -115,7 +115,7 @@ export const Slot = {
 };
 
 /**
- * Use the `not-interactive` attribute render a marker that is not interactive.
+ * Use the `not-interactive` attribute to render a marker that is not interactive.
  */
 export const NotInteractive = {
   render: () => html`
