@@ -43,11 +43,11 @@ export const Default = {
 export const Variant = {
   render: () => html`
     <div class="flex items-center gap-12">
-      <sd-map-marker></sd-map-marker>
-      <sd-map-marker variant="place">
+      <sd-map-marker label="example"></sd-map-marker>
+      <sd-map-marker variant="place" label="example">
         <sd-icon name="content/image" color="primary"></sd-icon>
       </sd-map-marker>
-      <sd-map-marker variant="cluster"> 88 </sd-map-marker>
+      <sd-map-marker variant="cluster" label="example"> 88 </sd-map-marker>
     </div>
   `
 };
@@ -63,26 +63,26 @@ export const State = {
   render: () => html`
     <div class="flex gap-12">
       <div class="flex flex-col space-y-5">
-        <sd-map-marker state="default"></sd-map-marker>
-        <sd-map-marker state="hover"></sd-map-marker>
-        <sd-map-marker state="active"></sd-map-marker>
+        <sd-map-marker state="default" label="example"></sd-map-marker>
+        <sd-map-marker state="hover" label="example"></sd-map-marker>
+        <sd-map-marker state="active" label="example"></sd-map-marker>
       </div>
 
       <div class="flex flex-col space-y-5">
-        <sd-map-marker state="default" variant="place">
+        <sd-map-marker state="default" variant="place" label="example">
           <sd-icon name="content/image" color="primary"></sd-icon>
         </sd-map-marker>
-        <sd-map-marker state="hover" variant="place">
+        <sd-map-marker state="hover" variant="place" label="example">
           <sd-icon name="content/image" color="primary"></sd-icon>
         </sd-map-marker>
-        <sd-map-marker state="active" variant="place">
+        <sd-map-marker state="active" variant="place" label="example">
           <sd-icon name="content/image" color="primary"></sd-icon>
         </sd-map-marker>
       </div>
 
       <div class="flex flex-col space-y-5">
-        <sd-map-marker state="default" variant="cluster"> 88 </sd-map-marker>
-        <sd-map-marker state="hover" variant="cluster"> 88 </sd-map-marker>
+        <sd-map-marker state="default" variant="cluster" label="example"> 88 </sd-map-marker>
+        <sd-map-marker state="hover" variant="cluster" label="example"> 88 </sd-map-marker>
       </div>
     </div>
   `
@@ -93,7 +93,7 @@ export const State = {
  */
 export const Animated = {
   render: () => html`
-    <sd-map-marker class="animated-example" variant="main" state="default" animated=""></sd-map-marker>
+    <sd-map-marker class="animated-example" variant="main" state="default" animated="" label="example"></sd-map-marker>
     <script>
       const marker = document.querySelector('.animated-example');
       setInterval(() => {
@@ -108,7 +108,7 @@ export const Animated = {
  */
 export const Slot = {
   render: () => html`
-    <sd-map-marker variant="place" class="slot-example">
+    <sd-map-marker variant="place" class="slot-example" label="example">
       <span class="slot slot--border h-8 w-8 -mt-4"></span>
     </sd-map-marker>
   `
