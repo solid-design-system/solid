@@ -1,5 +1,7 @@
-import { css, html, svg } from 'lit';
+import { css, svg } from 'lit';
 import { customElement } from '../../../src/internal/register-custom-element';
+import { html, literal } from 'lit/static-html.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { property } from 'lit/decorators.js';
 import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
@@ -28,6 +30,22 @@ export default class SdMapMarker extends SolidElement {
   /** The map-marker's is animated when displayed. */
   @property({ type: Boolean, reflect: true }) animated = false;
 
+  /** Determines if the map-marker is interactive. */
+  @property({ type: Boolean, reflect: true, attribute: 'not-interactive' }) notInteractive = false;
+
+  /** When set, the underlying button will be rendered as an `<a>` with this `href` instead of a `<button>`. */
+  @property() href = '';
+
+  /** Tells the browser where to open the link. Only used when `href` is present. */
+  @property() target: '_blank' | '_parent' | '_self' | '_top';
+
+  /** Sets the text of the aria-label attribute when rendered as button or link */
+  @property() label: string;
+
+  private isLink() {
+    return this.href ? true : false;
+  }
+
   /** @internal */
   readonly marker: { [key in 'cluster' | 'main' | 'place']: SVGTemplateResult } = {
     cluster: svg`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
@@ -41,8 +59,18 @@ export default class SdMapMarker extends SolidElement {
   };
 
   render() {
+    const isLink = this.isLink();
+    const tag = this.notInteractive ? literal`div` : isLink ? literal`a` : literal`button`;
+
+    /* eslint-disable lit/no-invalid-html */
+    /* eslint-disable lit/binding-positions */
     return html`
-      <div part="base" tabindex="0" class="flex justify-center  focus:outline-primary focus:outline-offset-2">
+      <${tag}
+        part="base"
+        class=${cx('flex justify-center focus:outline-primary focus:outline-offset-2')}
+        href=${ifDefined(isLink ? this.href : undefined)}
+        target=${ifDefined(isLink ? this.target : undefined)}
+        aria-label=${this.label}
         <div
           part="marker"
           class=${cx(
@@ -69,7 +97,7 @@ export default class SdMapMarker extends SolidElement {
         >
           <slot></slot>
         </div>
-      </div>
+      </${tag}>
     `;
   }
 
