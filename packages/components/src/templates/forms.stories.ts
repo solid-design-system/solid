@@ -41,7 +41,7 @@ export const LoginForm = {
         <sd-checkbox>Stay logged in on this computer</sd-checkbox>
         <div class="justify-between md:items-center md:flex-row mt-8 flex flex-col">
           <sd-link href="javascript:void(0)" class="mb-4 md:mb-0">Forgot password</sd-link>
-          <sd-button id="loginForm__submitButton" type="submit">
+          <sd-button type="submit">
             Login
             <sd-icon name="system/lock-locked" slot="icon-left"></sd-icon>
           </sd-button>
@@ -53,18 +53,18 @@ export const LoginForm = {
 
 export const ContactForm = {
   render: () => html`
-    <form class="sd-prose" id="contactForm">
+    <form class="sd-prose sd-prose--full-width" id="contactForm">
       <h3 class="sd-headline sd-headline--size-4xl">Contact</h3>
       <sd-radio-group id="inquiry-radio-group" orientation="horizontal" value="general-inquiry">
-        <sd-radio name="inquiry-type" value="general-inquiry">General inquiry</sd-radio>
-        <sd-radio name="inquiry-type" value="regarding">Regarding</sd-radio>
+        <sd-radio name="inquiryType" value="general-inquiry">General inquiry</sd-radio>
+        <sd-radio name="inquiryType" value="regarding">Regarding</sd-radio>
       </sd-radio-group>
       <sd-input
         type="text"
         inputmode="text"
         id="regarding-input"
         class="hidden"
-        name="regarding-input"
+        name="regardingInput"
         spellcheck
       ></sd-input>
       <div class="flex flex-col gap-6">
@@ -116,7 +116,6 @@ export const ContactForm = {
         customElements.whenDefined('sd-input'),
         customElements.whenDefined('sd-select')
       ]).then(() => {
-
         const form = document.getElementById('contactForm');
         // Listen for the form's submit event
         form.addEventListener('submit', function (event) {
@@ -126,9 +125,9 @@ export const ContactForm = {
           // Collect form values to display in the alert
           let formValues = ['Results:'];
           for (let [key, value] of formData.entries()) {
-            formValues.push($key: $value);
+            formValues.push(key + ': ' + value);
           }
-          alert(formValues.join(' '));
+          alert(formValues.join('\\n'));
         });
       });
 
