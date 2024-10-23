@@ -1,6 +1,7 @@
 import '../solid-components';
 import { html } from 'lit-html';
 
+// Hides duplicate story
 /**
  * ```
  * ```
