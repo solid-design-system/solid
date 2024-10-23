@@ -92,21 +92,27 @@ export const Default = {
             <p slot="description" class="sd-paragraph sd-paragraph--size-sm max-w-[238px]">
               Find out more about us and what we stand for
             </p>
-            <sd-navigation-item vertical indented slot="children" current> Investor protection </sd-navigation-item>
-            <sd-navigation-item vertical indented slot="children"> Distinction </sd-navigation-item>
-            <sd-navigation-item vertical indented slot="children"> Our Management </sd-navigation-item>
+            <div slot="children">
+              <sd-navigation-item vertical indented current> Investor protection </sd-navigation-item>
+              <sd-navigation-item vertical indented> Distinction </sd-navigation-item>
+              <sd-navigation-item vertical indented> Our Management </sd-navigation-item>
+            </div>
           </sd-navigation-item>
           <sd-navigation-item vertical>
             Sustainability at Union Investment
-            <sd-navigation-item vertical indented slot="children"> Investor protection </sd-navigation-item>
-            <sd-navigation-item vertical indented slot="children"> Distinction </sd-navigation-item>
-            <sd-navigation-item vertical indented slot="children"> Our Management </sd-navigation-item>
+            <div slot="children">
+              <sd-navigation-item vertical indented> Investor protection </sd-navigation-item>
+              <sd-navigation-item vertical indented> Distinction </sd-navigation-item>
+              <sd-navigation-item vertical indented> Our Management </sd-navigation-item>
+            </div>
           </sd-navigation-item>
           <sd-navigation-item vertical>
             Union Investment Group
-            <sd-navigation-item vertical indented slot="children"> Investor protection </sd-navigation-item>
-            <sd-navigation-item vertical indented slot="children"> Distinction </sd-navigation-item>
-            <sd-navigation-item vertical indented slot="children"> Our Management </sd-navigation-item>
+            <div slot="children">
+              <sd-navigation-item vertical indented> Investor protection </sd-navigation-item>
+              <sd-navigation-item vertical indented> Distinction </sd-navigation-item>
+              <sd-navigation-item vertical indented> Our Management </sd-navigation-item>
+            </div>
           </sd-navigation-item>
         </nav>
       </div>
