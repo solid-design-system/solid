@@ -55,6 +55,10 @@ You can find their respective videographer and source below:
 
 - [Gardening - Pavel Danilyuk](https://www.pexels.com/de-de/video/liebe-menschen-garten-zeitlupe-4625767/)
 
+## Audio
+
+The `src/audio` folder contains placeholder audio track and audio transcript for all projects at Union Investment.
+
 ## Usage
 
 ```bash
@@ -74,6 +78,10 @@ To integrate the images in this package into your Storybook you need to add the 
     {
       from: '../node_modules/@solid-design-system/placeholders/src/videos',
       to: '/placeholders/videos',
+    },
+    {
+      from: '../node_modules/@solid-design-system/placeholders/src/audio',
+      to: '/placeholders/audio',
     },
   ],
 ```
