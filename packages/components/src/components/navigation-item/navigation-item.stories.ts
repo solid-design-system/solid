@@ -14,6 +14,7 @@ const { generateTemplate } = storybookTemplate('sd-navigation-item');
  *
  * **Related templates**:
  * - [Dropdown with Navigation Items](?path=/docs/templates-dropdown--docs#dropdown-with-navigation-items)
+ * - [Navigation Item with Badge](?path=/docs/templates-badge--docs#navigation%20item%20with%20badge)
  */
 
 export default {
