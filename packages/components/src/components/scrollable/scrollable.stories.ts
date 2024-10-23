@@ -47,8 +47,9 @@ export default {
           sd-scrollable {
             width: 277px;
             height: 188px;
-          }</style
-        >${story()}`
+          }
+        </style>
+        ${story()}`
   ] as unknown
 };
 
@@ -60,9 +61,11 @@ export const Default = {
 };
 
 /**
- * Use the `orientation` attribute to set the scroll direction of the component.
+ * Use the `orientation` attribute to set the scroll direction of the component:
+ * - `horizontal` (default)
+ * - `vertical`
+ * - `auto`
  */
-
 export const Orientation = {
   name: 'Orientation',
   render: () => html`

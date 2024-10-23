@@ -1,6 +1,10 @@
 import '../solid-components';
 import { html } from 'lit-html';
 
+/**
+ * ```
+ * ```
+ */
 export default {
   tags: ['!dev'],
   title: 'Templates/Step Group',
@@ -12,11 +16,9 @@ export default {
     }
   }
 };
+
 /**
  * Example of how to set the active step in a step group.
- *
- * ```
- * ```
  */
 export const NonInteractiveStepGroup = {
   render: () => html`

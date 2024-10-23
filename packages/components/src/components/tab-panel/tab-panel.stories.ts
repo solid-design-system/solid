@@ -10,16 +10,14 @@ const { generateTemplate } = storybookTemplate('sd-tab-panel');
 /**
  * Used inside `sd-tab-group` to display tabbed content.
  *
- *
  * Use the `default` slot to add content.
  *
- * **Related templates:**
- * - [Tabs](?path=/docs/templates-tabs--docs)
- *
- *
- *  **Related components:**
- * - [sd-tab-group](?path=/docs/components-sd-tab-group--docs)
+ * **Related components:**
  * - [sd-tab](?path=/docs/components-sd-tab--docs)
+ * - [sd-tab-group](?path=/docs/components-sd-tab-group--docs)
+ *
+ * **Related templates:**
+ * - [Tab](?path=/docs/templates-tab--docs)
  */
 
 export default {
@@ -53,10 +51,6 @@ export default {
   },
   decorators: [withActions] as any
 };
-
-/**
- * Default: This shows sd-tab-panel in its default state.
- */
 
 export const Default = {
   render: (args: any) => {

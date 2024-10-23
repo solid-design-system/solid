@@ -8,12 +8,13 @@ const { overrideArgs } = storybookHelpers('sd-button');
 const { generateTemplate } = storybookTemplate('sd-button'); // Replace with your custom element tag
 
 /**
- * **Used to allow users to perform actions with a single click.
+ * Used to allow users to perform actions with a single click.
  *
  * Buttons perform various functions (e.g. download, link) or activate other functions (e.g. filter). All buttons can be displayed with or without an icon. On small devices, the buttons are streched to full width.
  *
  * **Related templates**:
- * - [Button with Badge](?path=/docs/templates-button-with-badge--docs)
+ * - [Button](?path=/docs/templates-button--docs)
+ * - [Button with Badge](?path=/docs/templates-badge--docs#button-with-badge)
  */
 export default {
   tags: ['!dev'],
@@ -38,12 +39,12 @@ export const Default = {
 };
 
 /**
- * Use the `variant` attribute to set the button’s variant. Be sure to select the right one for the action you want to make available.
+ * Use the `variant` attribute to set the button’s variant:
  *
- * - `primary` (default): Use the primary button for the most important actions in your interface, such as submitting a form, confirming a decision, or progressing to the next step in a process.
- * - `secondary`: Not all functions must have primary actions, sometimes the actions are subordinate to the content and all are equally important.
- * - `tertiary`: Use tertiary buttons for actions like accessing additional options, providing supplemental information, or performing less critical tasks.
- * - `cta` (Call to Action): The call-to-action button is only used once on a page (main conversion of the page).
+ * - `primary` (default): Use the primary button for the most important actions in your interface, such as submitting a form, confirming a decision, or progressing to the next step in a process
+ * - `secondary`: Not all functions must have primary actions, sometimes the actions are subordinate to the content and all are equally important
+ * - `tertiary`: Use tertiary buttons for actions like accessing additional options, providing supplemental information, or performing less critical tasks
+ * - `cta` (Call to Action): The call-to-action button is only used once on a page (main conversion of the page)
  */
 
 export const Variants = {
@@ -53,14 +54,18 @@ export const Variants = {
         <sd-button variant="primary">Primary</sd-button>
         <sd-button variant="secondary">Secondary</sd-button>
         <sd-button variant="tertiary">Tertiary</sd-button>
-        <sd-button variant="cta">CTA</sd-button>
+        <sd-button variant="cta">Call To Action</sd-button>
       </div>
     `;
   }
 };
 
 /**
- * Use the `size` attribute to change a button’s size. The default is `lg`. In tight spaces, consider using `md` or even `sm`.
+ * Use the `size` attribute to change a button’s size:
+ *
+ * - `lg` (default)
+ * - `md`
+ * - `sm`
  */
 export const Size = {
   render: () => {

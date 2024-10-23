@@ -51,10 +51,6 @@ export default {
   ]
 };
 
-/**
- * This shows sd-notification in its default state.
- */
-
 export const Default = {
   name: 'Default',
   render: (args: any) => {
@@ -65,12 +61,12 @@ export const Default = {
 };
 
 /**
- * Use the `variant` attribute to change the theme of the notification.
+ * Use the `variant` attribute to change the theme of the notification:
  *
- * - `info`: suitable for notifications, conveying neutral information about an action.
- * - `success`: imply a successful or positive outcome of an action.
- * - `error`: indicate a destructive and irreversible outcome of an action.
- * - `warning`: alert for possible issues or significant changes that must be considered.
+ * - `info` (default): suitable for notifications, conveying neutral information about an action
+ * - `success`: imply a successful or positive outcome of an action
+ * - `error`: indicate a destructive and irreversible outcome of an action
+ * - `warning`: alert for possible issues or significant changes that must be considered
  */
 
 export const Variants = {
@@ -161,7 +157,13 @@ export const DurationIndicator = {
 };
 
 /**
- * Display a toast notification at the top-right of the screen by using the `toast` method. Click on the **Show code** button to see the JavaScript code responsible for generating the toast notification. The default position is `top-right`.
+ * Use the `toastStack` attribute to change the position of the toast notifications:
+ * - `top-right` (default)
+ * - `bottom-center`
+ *
+ * __Hints:__
+ * - It requires the use of the `toast` method to work. Click on the `Show code` button to see the JavaScript code responsible for generating the toast notification.
+ * - Click on one of the buttons below to see the corresponding toast notification.
  */
 export const ToastNotification = {
   name: 'Toast Notification',
@@ -225,11 +227,8 @@ export const ToastNotification = {
   }
 };
 
-/**
- * Display a toast notification positioned at the bottom-center of the screen by setting the `toastStack` attribute to `bottom-center`. Click on the **Show code** button to see the JavaScript code responsible for generating the toast notification.
- */
 export const ToastBottomCenter = {
-  name: 'Toast Notification (Bottom Center)',
+  name: ' ',
   render: (_args: Record<string, any>) => {
     return html`
       <div class="flex gap-2">

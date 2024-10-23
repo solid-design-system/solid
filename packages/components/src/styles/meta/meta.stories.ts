@@ -35,51 +35,51 @@ export const Default = {
 };
 
 /**
- * Use `sd-meta` modifiers for alternative appearances.
+ * Use the `sd-meta` classes for alternative appearances:
  *
- * - Black is the default
- * - `sd-meta--light`: Neutral-700 can be used to deemphasize text content
+ * - Black is the default color
+ * - `sd-meta--light`: Neutral-700
  */
 
 export const Variants = {
   render: () =>
     html`<div class="flex flex-row gap-12">
-      <span class="sd-meta">Black</span>
-      <span class="sd-meta sd-meta--light">Neutral-700</span>
+      <span class="sd-meta">Default</span>
+      <span class="sd-meta sd-meta--light">Light</span>
     </div>`
 };
 
 /**
- * Use `&--size-*` class for alternative appearances.
+ * Use `sd-meta` classes for alternative appearances:
  *
- * - lg is the default size
- * - `sd-meta--size-sm`: sm can be used as an alternative in tight spaces
+ * - Base is the default size
+ * - `sd-meta--size-sm`
  */
 
 export const Size = {
   render: () =>
     html`<div class="flex flex-row gap-12">
-      <span class="sd-meta">Large</span>
+      <span class="sd-meta">Base</span>
       <span class="sd-meta sd-meta--size-sm">Small</span>
     </div>`
 };
 
 /**
- * Use the `&--inverted` class when displayed on primary background.
+ * Use the `sd-meta--inverted` class when displayed on primary background.
  *
  * - White is the default
- * - `sd-meta--light`: Primary-400 can be used to deemphasize text content
+ * - `sd-meta--light`: Primary-400
  */
 export const Inverted = {
   render: () =>
     html` <div class="p-4 bg-primary flex flex-row gap-12">
-      <span class="sd-meta sd-meta--inverted">White</span>
-      <span class="sd-meta sd-meta--inverted sd-meta--light">Primary-400</span>
+      <span class="sd-meta sd-meta--inverted">Default</span>
+      <span class="sd-meta sd-meta--inverted sd-meta--light">Light</span>
     </div>`
 };
 
 /**
- * Use the `&--pipe` class to separate meta information with a pipe.
+ * Use the `sd-meta--pipe` class to separate meta information with a pipe.
  */
 export const Pipe = {
   render: () =>

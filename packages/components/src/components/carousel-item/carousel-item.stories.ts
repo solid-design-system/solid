@@ -5,10 +5,13 @@ const { overrideArgs } = storybookHelpers('sd-carousel-item');
 const { generateTemplate } = storybookTemplate('sd-carousel-item');
 
 /**
- * Represents a slide within a carousel.
+ * Used to represent a slide within a carousel.
+ *
+ * **Related components**:
+ * - [sd-carousel](?path=/docs/components-sd-carousel--docs)
  *
  * **Related templates**:
- * - [Carousel with Images](?path=/docs/templates-carousel-with-images--docs)
+ * - [Carousel](?path=/docs/templates-carousel--docs)
  */
 
 export default {

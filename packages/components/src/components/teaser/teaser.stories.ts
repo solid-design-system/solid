@@ -7,11 +7,15 @@ const { overrideArgs } = storybookHelpers('sd-teaser');
 const { generateTemplate } = storybookTemplate('sd-teaser');
 
 /**
- * Used to group related subjects in a container.
+ * Used to group related subjects in a container, providing a preview of information and linking to further content.
+ *
+ * **Related components**:
+ * - [sd-teaser-media](?path=/docs/components-sd-teaser-media--docs)
  *
  * **Related templates**:
  * - [Teaser with Icon](?path=/docs/templates-teaser-with-icon--docs)
  * - [Teaser with Link](?path=/docs/templates-teaser-with-link--docs)
+ * - [Teaser Media](?path=/docs/templates-teaser-media--docs)
  */
 export default {
   tags: ['!dev'],
@@ -44,64 +48,90 @@ export default {
   }
 };
 
-/**
- * This shows sd-teaser in its default state.
- */
-
 export const Default = {
   render: (args: any) => generateTemplate({ args })
 };
 
 /**
- * Use the `variant` attribute to use the appropriate teaser for your context.
+ * Use the `variant` attribute to use the appropriate teaser for your context:
+ *
+ * - `white` (default)
+ * - `white border-neutral-400`
+ * - `neutral-100`
+ * - `primary`
+ * - `primary-100`
  */
 
 export const Variant = {
   render: () => html`
-    <sd-teaser variant="white border-neutral-400">
-      <h3 slot="headline">Teaser with border</h3>
-      <p>
-        Quis ut ex cupidatat proident cillum ullamco ea aute ad laborum aliqua incididunt sint ipsum. Elit enim
-        reprehenderit aliquip officia in minim. Eu ipsum pariatur dolor. Do ex in cupidatat anim aliqua sint voluptate
-        sunt nulla incididunt. Cupidatat officia reprehenderit est cupidatat et id officia ut. Exercitation id pariatur
-        elit occaecat ad Lorem nisi sunt pariatur do aute aliqua magna irure incididunt.
-      </p>
-    </sd-teaser>
+    <div class="grid grid-cols-2 gap-12">
+      <sd-teaser variant="white" inset>
+        <h3 slot="headline">Teaser with white background</h3>
+        <p class="sd-paragraph">
+          Lorem ipsum dolor sit amet, consetetur sadi pscing elitr, sed diam nonumy eirmod tempor.
+        </p>
+      </sd-teaser>
+      <sd-teaser variant="white border-neutral-400">
+        <h3 slot="headline">Teaser with white background and border neutral-400</h3>
+        <p class="sd-paragraph">
+          Lorem ipsum dolor sit amet, consetetur sadi pscing elitr, sed diam nonumy eirmod tempor.
+        </p>
+      </sd-teaser>
+      <sd-teaser variant="neutral-100" inset>
+        <h3 slot="headline">Teaser with neutral-100 background</h3>
+        <p class="sd-paragraph">
+          Lorem ipsum dolor sit amet, consetetur sadi pscing elitr, sed diam nonumy eirmod tempor.
+        </p>
+      </sd-teaser>
+      <sd-teaser variant="primary-100" inset>
+        <h3 slot="headline">Teaser with primary-100 background</h3>
+        <p class="sd-paragraph">
+          Lorem ipsum dolor sit amet, consetetur sadi pscing elitr, sed diam nonumy eirmod tempor.
+        </p>
+      </sd-teaser>
+      <sd-teaser variant="primary" inset>
+        <h3 slot="headline">Teaser with primary background</h3>
+        <p class="sd-paragraph sd-paragraph--inverted">
+          Lorem ipsum dolor sit amet, consetetur sadi pscing elitr, sed diam nonumy eirmod tempor.
+        </p>
+      </sd-teaser>
+    </div>
   `
 };
 
 /**
- * The header and main slot are both obligatory.
- * - Headers can be used to display titles and should always contain a `<h*>` element.
- * - The default slot can display any content.
+ * - The`header` and `default` slot are both required.
+ * - Use the `header` slot to display titles, it should always contain a `<h*>` element.
+ * - Use the `default` slot to display any content.
  */
 
-export const HeaderAndMainSlot = {
+export const DefaultAndHeadlineSlot = {
+  name: 'Default and Headline Slot',
   render: () => html`
     <sd-teaser>
-      <h3 slot="headline">Simple teaser</h3>
+      <h3 slot="headline">Lorem ipsum sic semper</h3>
       <p>
         Quis ut ex cupidatat proident cillum ullamco ea aute ad laborum aliqua incididunt sint ipsum. Elit enim
         reprehenderit aliquip officia in minim. Eu ipsum pariatur dolor. Do ex in cupidatat anim aliqua sint voluptate
-        sunt nulla incididunt. Cupidatat officia reprehenderit est cupidatat et id officia ut. Exercitation id pariatur
-        elit occaecat ad Lorem nisi sunt pariatur do aute aliqua magna irure incididunt.
+        sunt nulla incididunt.
       </p>
     </sd-teaser>
   `
 };
 
 /**
- * Use the `inset` attribute to create a teaser with an inset padding if the context needs it.
+ * Teasers accept a `media` slot to display images or videos.
  */
-export const Inset = {
+
+export const MediaSlot = {
   render: () => html`
-    <sd-teaser inset variant="primary-100">
-      <h3 slot="headline">Inset teaser</h3>
+    <sd-teaser>
+      <h3 slot="headline">Lorem ipsum sic semper</h3>
+      <img slot="media" src="./placeholders/images/architecture.jpg" alt="Test" style="width:100%; height: auto;" />
       <p>
         Quis ut ex cupidatat proident cillum ullamco ea aute ad laborum aliqua incididunt sint ipsum. Elit enim
         reprehenderit aliquip officia in minim. Eu ipsum pariatur dolor. Do ex in cupidatat anim aliqua sint voluptate
-        sunt nulla incididunt. Cupidatat officia reprehenderit est cupidatat et id officia ut. Exercitation id pariatur
-        elit occaecat ad Lorem nisi sunt pariatur do aute aliqua magna irure incididunt.
+        sunt nulla incididunt.
       </p>
     </sd-teaser>
   `
@@ -114,34 +144,66 @@ export const Inset = {
 export const MetaSlot = {
   render: () => html`
     <sd-teaser>
-      <h3 slot="headline">Teaser with Meta</h3>
-      <time slot="meta" class="sd-meta" datetime="2023-08-11">11. August 2023</time>
+      <h3 slot="headline">Lorem ipsum sic semper</h3>
+      <div slot="meta">
+        <time class="sd-meta sd-meta--pipe" datetime="2023-01-01">01.01.2023</time>
+        <span class="sd-meta">Author name</span>
+      </div>
       <p>
         Quis ut ex cupidatat proident cillum ullamco ea aute ad laborum aliqua incididunt sint ipsum. Elit enim
         reprehenderit aliquip officia in minim. Eu ipsum pariatur dolor. Do ex in cupidatat anim aliqua sint voluptate
-        sunt nulla incididunt. Cupidatat officia reprehenderit est cupidatat et id officia ut. Exercitation id pariatur
-        elit occaecat ad Lorem nisi sunt pariatur do aute aliqua magna irure incididunt.
+        sunt nulla incididunt.
       </p>
     </sd-teaser>
   `
 };
 
 /**
- * Teasers accept a media slot to display images or videos.
+ * Use the `inset` attribute to create a teaser with an inset padding if the context needs it.
  */
 
-export const MediaSlot = {
+export const Inset = {
   render: () => html`
-    <sd-teaser>
-      <h3 slot="headline">Eu ut ad exercitation magna</h3>
-      <img slot="media" src="./placeholders/images/collaboration.jpg" alt="Test" style="width:100%; height: auto;" />
+    <sd-teaser inset variant="primary-100">
+      <h3 slot="headline">Teaser with inset Padding</h3>
       <p>
         Quis ut ex cupidatat proident cillum ullamco ea aute ad laborum aliqua incididunt sint ipsum. Elit enim
         reprehenderit aliquip officia in minim. Eu ipsum pariatur dolor. Do ex in cupidatat anim aliqua sint voluptate
-        sunt nulla incididunt. Cupidatat officia reprehenderit est cupidatat et id officia ut. Exercitation id pariatur
-        elit occaecat ad Lorem nisi sunt pariatur do aute aliqua magna irure incididunt.
+        sunt nulla incididunt.
       </p>
     </sd-teaser>
+  `
+};
+
+/**
+ * Use the `breakpoint` attribute to change the teaser's layout at a specific breakpoint or enforce a specific layout:
+ * - `0` is always horizontal
+ * - `9999` is always vertical
+ */
+
+export const Breakpoint = {
+  render: () => html`
+    <div class="flex gap-8 flex-col">
+      <sd-teaser breakpoint="0">
+        <h3 slot="headline">Horizontal</h3>
+        <img slot="media" src="./placeholders/images/architecture.jpg" alt="Test" style="width:100%; height: auto;" />
+        <p>
+          Quis ut ex cupidatat proident cillum ullamco ea aute ad laborum aliqua incididunt sint ipsum. Elit enim
+          reprehenderit aliquip officia in minim. Eu ipsum pariatur dolor. Do ex in cupidatat anim aliqua sint voluptate
+          sunt nulla incididunt.
+        </p>
+      </sd-teaser>
+
+      <sd-teaser breakpoint="9999" class="w-[256px]">
+        <h3 slot="headline">Vertical</h3>
+        <img slot="media" src="./placeholders/images/architecture.jpg" alt="Test" style="width:100%; height: auto;" />
+        <p>
+          Quis ut ex cupidatat proident cillum ullamco ea aute ad laborum aliqua incididunt sint ipsum. Elit enim
+          reprehenderit aliquip officia in minim. Eu ipsum pariatur dolor. Do ex in cupidatat anim aliqua sint voluptate
+          sunt nulla incididunt.
+        </p>
+      </sd-teaser>
+    </div>
   `
 };
 
@@ -152,46 +214,13 @@ export const MediaSlot = {
 export const Distribution = {
   render: () => html`
     <sd-teaser style="--distribution-media: 30%; --distribution-content: 70%;">
-      <h3 slot="headline">Eu ut ad exercitation magna</h3>
-      <img slot="media" src="./placeholders/images/collaboration.jpg" alt="Test" style="width:100%; height: auto;" />
+      <h3 slot="headline">Lorem ipsum sic semper</h3>
+      <img slot="media" src="./placeholders/images/architecture.jpg" alt="Test" style="width:100%; height: auto;" />
       <p>
         Quis ut ex cupidatat proident cillum ullamco ea aute ad laborum aliqua incididunt sint ipsum. Elit enim
         reprehenderit aliquip officia in minim. Eu ipsum pariatur dolor. Do ex in cupidatat anim aliqua sint voluptate
-        sunt nulla incididunt. Cupidatat officia reprehenderit est cupidatat et id officia ut. Exercitation id pariatur
-        elit occaecat ad Lorem nisi sunt pariatur do aute aliqua magna irure incididunt.
+        sunt nulla incididunt.
       </p>
     </sd-teaser>
-  `
-};
-
-/**
- * Use the `breakpoint` attribute to change the teaser's layout at a specific breakpoint or enforce a specific layout.
- * `0` is always horizontal, `9999` is always vertical.
- */
-export const Breakpoint = {
-  render: () => html`
-    <div class="flex gap-8 flex-col">
-      <sd-teaser breakpoint="0">
-        <h3 slot="headline">Horizontal teaser</h3>
-        <img slot="media" src="./placeholders/images/collaboration.jpg" alt="Test" style="width:100%; height: auto;" />
-        <p>
-          Quis ut ex cupidatat proident cillum ullamco ea aute ad laborum aliqua incididunt sint ipsum. Elit enim
-          reprehenderit aliquip officia in minim. Eu ipsum pariatur dolor. Do ex in cupidatat anim aliqua sint voluptate
-          sunt nulla incididunt. Cupidatat officia reprehenderit est cupidatat et id officia ut. Exercitation id
-          pariatur elit occaecat ad Lorem nisi sunt pariatur do aute aliqua magna irure incididunt.
-        </p>
-      </sd-teaser>
-
-      <sd-teaser breakpoint="9999" class="w-[256px]">
-        <h3 slot="headline">Vertical teaser</h3>
-        <img slot="media" src="./placeholders/images/collaboration.jpg" alt="Test" style="width:100%; height: auto;" />
-        <p>
-          Quis ut ex cupidatat proident cillum ullamco ea aute ad laborum aliqua incididunt sint ipsum. Elit enim
-          reprehenderit aliquip officia in minim. Eu ipsum pariatur dolor. Do ex in cupidatat anim aliqua sint voluptate
-          sunt nulla incididunt. Cupidatat officia reprehenderit est cupidatat et id officia ut. Exercitation id
-          pariatur elit occaecat ad Lorem nisi sunt pariatur do aute aliqua magna irure incididunt.
-        </p>
-      </sd-teaser>
-    </div>
   `
 };

@@ -1,3 +1,81 @@
+# [@solid-design-system/components-v3.18.0](https://github.com/solid-design-system/solid/compare/components/3.17.12...components/3.18.0) (2024-10-08)
+
+
+### Features
+
+* ✨ add vertical variant to sd-copyright ([#1414](https://github.com/solid-design-system/solid/issues/1414)) ([461909d](https://github.com/solid-design-system/solid/commit/461909d762d464be9228bcc861794b5180016ca0))
+
+### 📈 Stats
+* Bundle size (uncompressed): 334 KB (unchanged)
+* Bundle size (gzipped): 78 KB (unchanged)
+
+# [@solid-design-system/components-v3.17.12](https://github.com/solid-design-system/solid/compare/components/3.17.11...components/3.17.12) (2024-10-02)
+
+
+### Bug Fixes
+
+* 🤔 missing border when sd-select has not enough space  ([#1408](https://github.com/solid-design-system/solid/issues/1408)) ([3639804](https://github.com/solid-design-system/solid/commit/36398045be397b8a700137a3dc747dd3d362cacd))
+* 🤔 sd-textarea doesn't accept full height of container ([#1410](https://github.com/solid-design-system/solid/issues/1410)) ([eda7432](https://github.com/solid-design-system/solid/commit/eda74326b5dd678818a3900f14868ed3b5722c97))
+
+### 📈 Stats
+* Bundle size (uncompressed): 334 KB (unchanged)
+* Bundle size (gzipped): 78 KB (unchanged)
+
+# [@solid-design-system/components-v3.17.11](https://github.com/solid-design-system/solid/compare/components/3.17.10...components/3.17.11) (2024-09-27)
+
+
+### Bug Fixes
+
+* make sd-step-group more accessible ([#1390](https://github.com/solid-design-system/solid/issues/1390)) ([c7fc385](https://github.com/solid-design-system/solid/commit/c7fc38537480d17e1662152a359a79a363d9313e))
+
+### 📈 Stats
+* Bundle size (uncompressed): 334 KB (unchanged)
+* Bundle size (gzipped): 78 KB (-1 KB / -1%)
+
+# [@solid-design-system/components-v3.17.10](https://github.com/solid-design-system/solid/compare/components/3.17.9...components/3.17.10) (2024-09-25)
+
+
+### Bug Fixes
+
+* 🤔 (unchecked) checkbox in sd-select does not keep size while resizing sd-popup ([#1397](https://github.com/solid-design-system/solid/issues/1397)) ([cffa05d](https://github.com/solid-design-system/solid/commit/cffa05da8e8d30716da2e9f86d8a8843a289c30f))
+
+### 📈 Stats
+* Bundle size (uncompressed): 334 KB (unchanged)
+* Bundle size (gzipped): 79 KB (unchanged)
+
+# [@solid-design-system/components-v3.17.9](https://github.com/solid-design-system/solid/compare/components/3.17.8...components/3.17.9) (2024-09-25)
+
+
+### Bug Fixes
+
+* 🤔 map-marker main -> white circle ([#1389](https://github.com/solid-design-system/solid/issues/1389)) ([52665da](https://github.com/solid-design-system/solid/commit/52665da06b703db56082a04e41a2b362ae58c01e))
+
+### 📈 Stats
+* Bundle size (uncompressed): 334 KB (unchanged)
+* Bundle size (gzipped): 79 KB (unchanged)
+
+# [@solid-design-system/components-v3.17.8](https://github.com/solid-design-system/solid/compare/components/3.17.7...components/3.17.8) (2024-09-20)
+
+
+### Bug Fixes
+
+* 🤔 update experimental status ([#1396](https://github.com/solid-design-system/solid/issues/1396)) ([d3201d4](https://github.com/solid-design-system/solid/commit/d3201d47939c33556d342e175e24b011132989fb))
+
+### 📈 Stats
+* Bundle size (uncompressed): 334 KB (unchanged)
+* Bundle size (gzipped): 79 KB (unchanged)
+
+# [@solid-design-system/components-v3.17.7](https://github.com/solid-design-system/solid/compare/components/3.17.6...components/3.17.7) (2024-09-20)
+
+
+### Bug Fixes
+
+* 🤔 sd-footnotes inverted variant color ([#1409](https://github.com/solid-design-system/solid/issues/1409)) ([c4d9813](https://github.com/solid-design-system/solid/commit/c4d9813cd7a8f7ed6311c6096ea334d55ed77f31))
+
+### 📈 Stats
+* Bundle size (uncompressed): 334 KB (unchanged)
+* Bundle size (gzipped): 79 KB (unchanged)
+
 # [@solid-design-system/components-v3.17.6](https://github.com/solid-design-system/solid/compare/components/3.17.5...components/3.17.6) (2024-09-17)
 
 

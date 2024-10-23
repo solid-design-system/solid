@@ -43,9 +43,9 @@ export const Default = {
 };
 
 /**
- * Use the `&--size-lg` class for alternative appearances:
+ * Use the `sd-leadtext` classes for alternative appearances:
  * -  xl is the default leadtext size
- * - `sd-leadtext--size-lg`: lg can be used as an alternative
+ * - `sd-leadtext--size-lg`
  */
 
 export const Size = {
@@ -66,7 +66,7 @@ export const Size = {
 };
 
 /**
- * Use the `&--inverted` class when displayed on primary background.
+ * Use the `sd-leadtext--inverted` class when displayed on primary background.
  */
 
 export const Inverted = {

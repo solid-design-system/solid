@@ -13,11 +13,8 @@ const { generateTemplate } = storybookTemplate('sd-radio-button');
  * Similar to `sd-radio`, it has to be slotted inside of an `sd-radio-group`. It does not have an invalid state and should always have a pre-selected option (default value).
  *
  * **Related components:**
- * - [sd-radio](?path=/docs/components-sd-radio--default--docs)
- * - [sd-radio-group](?path=/docs/components-sd-radio-group--default--docs)
- *
- * **Related templates:**
- * - [Radio Button Group](?path=/docs/templates-radio-button-group--docs)
+ * - [sd-radio](?path=/docs/components-sd-radio--docs)
+ * - [sd-radio-group](?path=/docs/components-sd-radio-group--docs)
  */
 
 export default {
@@ -28,7 +25,7 @@ export default {
     {
       type: 'slot',
       name: 'default',
-      value: 'Label'
+      value: 'Radio Button'
     }
   ]),
   argTypes,
@@ -42,10 +39,6 @@ export default {
   decorators: [withActions] as any
 };
 
-/**
- * Default: This shows sd-radio-button in its default state.
- */
-
 export const Default = {
   name: 'Default',
   render: (args: any) => {
@@ -54,9 +47,12 @@ export const Default = {
 };
 
 /**
- * Use the `size` attribute to change the size.
+ * Use the `size` attribute to change the size:
+ *
+ * - `lg` (default)
+ * - `md`
+ * - `sm`
  */
-
 export const Size = {
   name: 'Size',
   render: () => html`
@@ -64,45 +60,45 @@ export const Size = {
       <sd-radio-group value="1" size="lg">
         <sd-radio-button value="1">
           <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-          Option 1
+          Large
         </sd-radio-button>
         <sd-radio-button value="2">
           <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-          Option 2
+          Large
         </sd-radio-button>
         <sd-radio-button value="3">
           <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-          Option 3
+          Large
         </sd-radio-button>
       </sd-radio-group>
 
       <sd-radio-group value="1">
         <sd-radio-button value="1" size="md">
           <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-          Option 1
+          Medium
         </sd-radio-button>
         <sd-radio-button value="2" size="md">
           <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-          Option 2
+          Medium
         </sd-radio-button>
         <sd-radio-button value="3" size="md">
           <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-          Option 3
+          Medium
         </sd-radio-button>
       </sd-radio-group>
 
       <sd-radio-group value="1" size="sm">
         <sd-radio-button value="1">
           <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-          Option 1
+          Small
         </sd-radio-button>
         <sd-radio-button value="2">
           <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-          Option 2
+          Small
         </sd-radio-button>
         <sd-radio-button value="3">
           <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-          Option 3
+          Small
         </sd-radio-button>
       </sd-radio-group>
     </div>
@@ -120,15 +116,15 @@ export const Checked = {
       <sd-radio-group value="1">
         <sd-radio-button value="1">
           <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-          Option 1
+          Checked
         </sd-radio-button>
         <sd-radio-button value="2">
           <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-          Option 2
+          Checked
         </sd-radio-button>
         <sd-radio-button value="3">
           <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-          Option 3
+          Checked
         </sd-radio-button>
       </sd-radio-group>
     </div>
@@ -192,17 +188,17 @@ export const Disabled = {
   render: () => html`
     <div class="flex gap-12">
       <sd-radio-group value="1">
-        <sd-radio-button value="1" disabled>
+        <sd-radio-button value="1">
           <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-          Disabled
+          Label
         </sd-radio-button>
         <sd-radio-button value="2" disabled>
           <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
           Disabled
         </sd-radio-button>
-        <sd-radio-button value="3" disabled>
+        <sd-radio-button value="3">
           <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
-          Disabled
+          Label
         </sd-radio-button>
       </sd-radio-group>
     </div>

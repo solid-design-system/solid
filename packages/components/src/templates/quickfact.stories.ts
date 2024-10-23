@@ -1,6 +1,10 @@
 import '../solid-components';
 import { html } from 'lit-html';
 
+/**
+ * ```
+ * ```
+ */
 export default {
   tags: ['!dev'],
   parameters: {
@@ -12,7 +16,8 @@ export default {
   title: 'Templates/Quickfact'
 };
 
-export const Default = {
+export const QuickfactWithDescription = {
+  name: 'Quickfact with Description',
   render: () => html`
     <style>
       sd-quickfact::part(header) {

@@ -10,7 +10,7 @@ const { generateTemplate } = storybookTemplate('sd-map-marker');
  * Used to show a location or a cluster of locations on a map.
  *
  * **Related templates:**
- * - [Map Marker with Image](?path=/docs/templates-map-marker-with-image--docs)
+ * - [Map Marker](?path=/docs/templates-map-marker--docs)
  */
 export default {
   title: 'Components/sd-map-marker',
@@ -27,10 +27,6 @@ export default {
   decorators: [withActions] as any
 };
 
-/**
- * This shows the badge in its default state and variant.
- */
-
 export const Default = {
   parameters: { controls: { exclude: ['default'] } },
   render: (args: any) => {
@@ -39,11 +35,11 @@ export const Default = {
 };
 
 /**
- * Use the `variant` attribute to change the appearance of the marker.
+ * Use the `variant` attribute to change the appearance of the marker:
  *
- * - `main`: The default variant.
- * - `place`: A variant that is used to show a location on the map.
- * - `cluster`: A variant that is used to show multiple locations on the map.
+ * - `main` (default)
+ * - `place`: Used to show a location on the map
+ * - `cluster`: Used to show multiple locations on the map
  */
 export const Variant = {
   render: () => html`
@@ -58,11 +54,11 @@ export const Variant = {
 };
 
 /**
- * Use the `state` attribute to change the appearance of the marker.
+ * Use the `state` attribute to change the appearance of the marker:
  *
- * - `default`: The default state.
- * - `hover`: The state when the marker is hovered.
- * - `active`: The state when the marker is active.
+ * - `default`
+ * - `hover`: When the marker is hovered
+ * - `active`: When the marker is active
  */
 export const State = {
   render: () => html`

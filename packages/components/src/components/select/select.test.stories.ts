@@ -34,6 +34,15 @@ const fiveOptionsConstant: ConstantDefinition = {
   value:
     '<sd-option value="option-1">Option 1</sd-option><sd-option value="option-2">Option 2</sd-option><sd-option value="option-3">Option 3</sd-option><sd-option value="option-4">Option 4</sd-option><sd-option value="option-5">Option 5</sd-option>'
 };
+
+const twentyOptionsConstant: ConstantDefinition = {
+  type: 'slot',
+  name: 'default',
+  value: `
+    ${Array.from({ length: 20 }, (_, i) => `<sd-option value="option-${i + 1}">Option ${i + 1}</sd-option>`).join('')}
+  `
+};
+
 const clearableConstant: ConstantDefinition = { type: 'attribute', name: 'clearable', value: true };
 const multipleConstant: ConstantDefinition = { type: 'attribute', name: 'multiple', value: true };
 const helpTextConstant: ConstantDefinition = { type: 'attribute', name: 'help-text', value: 'help-text' };
@@ -217,6 +226,26 @@ export const ValidInvalid = {
     const el = canvasElement.querySelector('sd-button');
     await waitUntil(() => el?.shadowRoot?.querySelector('button'));
     await userEvent.type(el!.shadowRoot!.querySelector('button')!, '{return}', { pointerEventsCheck: 0 });
+  }
+};
+
+/**
+ * This shows sd-select has the borders visible even when there is limited vertical space.
+ */
+
+export const BorderVisibility = {
+  name: 'Border Visibility',
+  render: () => {
+    return html`<div class="h-[150px] w-[420px]">
+      ${generateTemplate({
+        args: overrideArgs([
+          twentyOptionsConstant,
+          labelConstant,
+          { type: 'attribute', name: 'placeholder', value: 'Please Select' },
+          { type: 'attribute', name: 'max-options-visible', value: 3 }
+        ])
+      })}
+    </div>`;
   }
 };
 
@@ -694,5 +723,6 @@ export const Combination = generateScreenshotStory([
   SampleGroupingOptions,
   SampleForm,
   setCustomValidity,
+  BorderVisibility,
   SolidForm
 ]);

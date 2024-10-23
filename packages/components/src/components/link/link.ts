@@ -9,8 +9,8 @@ import SolidElement from '../../internal/solid-element';
 /**
  * @summary A link component.
  * @documentation https://solid.union-investment.com/[storybook-link]/link
- * @status experimental
- * @since 1.2
+ * @status stable
+ * @since 1.0.0
  *
  * @event sd-blur - Emitted when the link loses focus.
  * @event sd-focus - Emitted when the link gains focus.

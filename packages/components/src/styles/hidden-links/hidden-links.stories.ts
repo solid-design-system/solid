@@ -13,7 +13,7 @@ const html = String.raw;
  * Used to show links only for keyboard users.
  *
  * **Related components**:
- * - [Dropdown with Navigation Items](?path=/docs/components-navigation-item--docs)
+ * - [Dropdown with Navigation Items](?path=/docs/templates-dropdown--docs#dropdown-with-navigation-items)
  */
 
 export default {
@@ -56,8 +56,7 @@ export const Default = {
 /**
  * Stack multiple `sd-hidden-links` by adding multiple of them to the same parent.
  *
- * **Hint:**
- * Recommended for 2 or more links.
+ * __Hint:__ Recommended for maximum of 3 hidden links.
  */
 export const StackLinks = {
   render: () =>
@@ -69,10 +68,9 @@ export const StackLinks = {
 };
 
 /**
- * Use the `&--multiple` class to show mutiple `sd-navigation-item` elements.
+ * Use the `sd-hidden-links--multiple` class to show multiple `sd-navigation-item` elements.
  *
- * **Hint:**
- * Recommended for 2 or more links.
+ * __Hint:__ Recommended for more than 3 links.
  */
 export const MultipleLinks = {
   render: () =>
@@ -87,7 +85,7 @@ export const MultipleLinks = {
 };
 
 /**
- * Use the `--sd-hidden-links-title` CSS variable to set a title for multiple links.
+ * Use the `--sd-hidden-links-title` CSS property to set a title for multiple links.
  *
  * German and English are set by default in regard of the document's or elements `lang` attribute.
  */
@@ -183,7 +181,7 @@ export const SurroundingContent = {
 };
 
 /**
- * Use the `&--debug` class to always show the links for debugging purposes.
+ * Use the `sd-hidden-links--debug` class to always show the links for debugging purposes.
  */
 export const Debug = {
   parameters: {
