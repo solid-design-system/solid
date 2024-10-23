@@ -257,9 +257,9 @@ export const teaserWithChipAndFlag = {
         >
           <div slot="media" class="relative">
             <img
-              src="./placeholders/images/coins.jpg"
+              src="./placeholders/images/skyline.jpg"
               alt="Close-up of hands stacking coins into small piles on a table, suggesting financial planning or saving."
-              class="aspect-video object-cover w-full"
+              class="aspect-video sm:aspect-[3/4] md:aspect-[16/9] object-cover w-full"
             />
             <span class="absolute top-3 left-4 sd-chip sd-chip--white">Real Estate</span>
             <span class="absolute top-2 right-0 sd-flag sd-flag--neutral-300">Analytics</span>
@@ -284,7 +284,7 @@ export const teaserWithDivision = {
         }
 
         sd-teaser#teaser-with-division::part(content) {
-          padding: 20px;
+          padding: 32px 16px;
         }
 
         @container (min-width: 538px) {
@@ -312,17 +312,17 @@ export const teaserWithDivision = {
             alt="Two men in business attire sitting on a sofa in a modern office, smiling and looking at a laptop screen."
           />
         </div>
-        <h3 slot="headline" class="sd-headline sd-headline--size-3xl text-primary ml-8">
+        <h3 slot="headline" class="sd-headline sd-headline--size-3xl text-primary">
           “Our real estate funds are well positioned”
         </h3>
-        <div class="w-full flex flex-col h-full justify-between">
-          <p class="sd-paragraph mt-2 md:mt-8">
+        <div class="w-full flex flex-col h-full justify-between pt-4 gap-2">
+          <p class="sd-paragraph">
             The opportunities for asset classes in challenging times are being explored, particularly within the context
             of open real estate mutual funds.
           </p>
-          <div>
+          <div class="flex flex-col gap-2">
             <sd-link href="javascript:void(0)" class="font-bold">To the article</sd-link>
-            <p class="mt-4">
+            <p>
               <span class="sd-meta sd-meta--pipe">15.09.2023</span>
               <span class="sd-meta">Opinions</span>
             </p>
@@ -344,7 +344,7 @@ export const contactTeaser = {
             alt="Close-up of a pair of glasses, a pen, and an open notebook with notes written on it, on a desk next to a laptop."
           />
         </div>
-        <h3 slot="headline" class="sd-headline sd-headline--size-lg">John Doe</h3>
+        <h3 slot="headline" class="sd-headline sd-headline--size-lg pb-5">John Doe</h3>
         <div class="flex flex-col gap-5">
           <p class="sd-paragraph">Team Member of SDS</p>
           <div class="flex-none">
