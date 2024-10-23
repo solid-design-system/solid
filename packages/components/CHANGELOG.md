@@ -1,3 +1,69 @@
+# [@solid-design-system/components-v3.20.1](https://github.com/solid-design-system/solid/compare/components/3.20.0...components/3.20.1) (2024-10-18)
+
+
+### Bug Fixes
+
+* make svgs in sd-map-marker visible on non-Chromium ([#1567](https://github.com/solid-design-system/solid/issues/1567)) ([1f08ca7](https://github.com/solid-design-system/solid/commit/1f08ca7cf1521bb3a087df7d7bc32f20a3b76fdb))
+
+### 📈 Stats
+* Bundle size (uncompressed): 349 KB (-1 KB / 0%)
+* Bundle size (gzipped): 82 KB (unchanged)
+
+# [@solid-design-system/components-v3.20.0](https://github.com/solid-design-system/solid/compare/components/3.19.3...components/3.20.0) (2024-10-18)
+
+
+### Features
+
+* add 'md' size to sd-radio, sd-checkbox and sd-checkbox-group ([#1549](https://github.com/solid-design-system/solid/issues/1549)) ([3ffc319](https://github.com/solid-design-system/solid/commit/3ffc3197a931f3175083a90298ea5dc19b4f9274))
+
+### 📈 Stats
+* Bundle size (uncompressed): 350 KB (+1 KB / +0%)
+* Bundle size (gzipped): 82 KB (unchanged)
+
+# [@solid-design-system/components-v3.19.3](https://github.com/solid-design-system/solid/compare/components/3.19.2...components/3.19.3) (2024-10-17)
+
+
+### Bug Fixes
+
+* 🤔 sd-brandshape – improve image positioning ([#1415](https://github.com/solid-design-system/solid/issues/1415)) ([c4902ed](https://github.com/solid-design-system/solid/commit/c4902ed840753ffb6e5986fcd975e90b9bb8b630))
+
+### 📈 Stats
+* Bundle size (uncompressed): 349 KB (-1 KB / 0%)
+* Bundle size (gzipped): 82 KB (unchanged)
+
+# [@solid-design-system/components-v3.19.2](https://github.com/solid-design-system/solid/compare/components/3.19.1...components/3.19.2) (2024-10-17)
+
+
+### Bug Fixes
+
+* 🤔 pause not working in sd-carousel ([#1467](https://github.com/solid-design-system/solid/issues/1467)) ([e594b21](https://github.com/solid-design-system/solid/commit/e594b21bdc225728cff9bb6ffdf66f7f21342af0))
+
+### 📈 Stats
+* Bundle size (uncompressed): 350 KB (unchanged)
+* Bundle size (gzipped): 82 KB (unchanged)
+
+# [@solid-design-system/components-v3.19.1](https://github.com/solid-design-system/solid/compare/components/3.19.0...components/3.19.1) (2024-10-16)
+
+
+### Bug Fixes
+
+* licensing and placeholder images ([#1547](https://github.com/solid-design-system/solid/issues/1547)) ([b204b77](https://github.com/solid-design-system/solid/commit/b204b77fd3b2ca38b6fd8b19d6563751051f424d))
+
+### 📈 Stats
+* Bundle size (uncompressed): 350 KB (unchanged)
+* Bundle size (gzipped): 82 KB (unchanged)
+
+# [@solid-design-system/components-v3.19.0](https://github.com/solid-design-system/solid/compare/components/3.18.0...components/3.19.0) (2024-10-16)
+
+
+### Features
+
+* sd-audio ([#1194](https://github.com/solid-design-system/solid/issues/1194)) ([8757a14](https://github.com/solid-design-system/solid/commit/8757a14944c61e84e51b9667ff0a25f13d2ec9cb)), closes [#270](https://github.com/solid-design-system/solid/issues/270)
+
+### 📈 Stats
+* Bundle size (uncompressed): 350 KB (+16 KB / +5%)
+* Bundle size (gzipped): 82 KB (+4 KB / +5%)
+
 # [@solid-design-system/components-v3.18.0](https://github.com/solid-design-system/solid/compare/components/3.17.12...components/3.18.0) (2024-10-08)
 
 

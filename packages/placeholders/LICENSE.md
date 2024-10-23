@@ -13,3 +13,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 All images are licensed under the [Unsplash License](https://unsplash.com/license).
 
 `generic.jpg` contains an icon by Union Investment and is therefore only to be used if usage is explicitly granted by Union Investment.
+
+# AUDIO FILES
+
+This project includes music generated on [Udio.com](https://www.udio.com/). All rights to the music are owned by Udio and are used under their licensing terms. Redistribution or modification of the music track outside the scope of this project may require additional permissions from Udio.

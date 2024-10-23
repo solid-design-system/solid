@@ -18,3 +18,5 @@ These assets are subject to their respective licenses and are included for demon
 If you intend to use any assets outside of this library, you must obtain the necessary permissions from the copyright holders or replace them with your own or license-free alternatives. Failure to comply with asset licensing requirements may result in legal consequences.
 
 Please consult the copyright holders or their licensing documents for further information on using these assets.
+
+> Explicit note on logos: All logos used in this repository are the property of their respective companies and are licensed accordingly. Unauthorized use, reproduction, or distribution of these logos is prohibited without explicit permission from the respective trademark holders.
