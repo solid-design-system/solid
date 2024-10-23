@@ -9,6 +9,8 @@ const { generateTemplate } = storybookTemplate('sd-media');
 /**
  * Used to display an image or a video preview.
  *
+ * __Hint:__ Use the html `figcaption` element to add a description.
+ *
  * **Related templates**:
  * - [Media](?path=/docs/templates-media--docs)
  */
@@ -23,7 +25,11 @@ export default {
       url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2784-16896&t=4wQWPA7fIC0v9u7i-4'
     }
   },
-  args: overrideArgs({ type: 'slot', name: 'default', value: '' }),
+  args: overrideArgs({
+    type: 'slot',
+    name: 'default',
+    value: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula'
+  }),
   argTypes
 };
 

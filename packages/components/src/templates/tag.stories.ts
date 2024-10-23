@@ -17,93 +17,107 @@ export default {
   }
 };
 
+export const filterTagGroup = {
+  render: () => html`
+    <sd-tag selected>All</sd-tag>
+    <sd-tag>Extended Reality</sd-tag>
+    <sd-tag>Internet of things</sd-tag>
+  `
+};
+
+export const filterTagGroupMorningstarRating = {
+  name: 'Filter Tag Group with Morningstar Rating',
+  render: () => html`
+    <sd-tag selected>
+      <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
+      <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
+      <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
+      <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
+      <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
+    </sd-tag>
+    <sd-tag>
+      <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
+      <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
+      <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
+      <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
+    </sd-tag>
+    <sd-tag>
+      <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
+      <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
+      <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
+    </sd-tag>
+    <sd-tag>
+      <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
+      <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
+    </sd-tag>
+    <sd-tag>
+      <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
+    </sd-tag>
+  `
+};
+
+export const filterTagGroupRisk = {
+  name: 'Filter Tag Group with Risk',
+  render: () =>
+    html`<sd-tag selected>
+        <div class="h-4 w-4 bg-risk-veryhigh border-primary-800 border-[1px]"></div>
+        Very High Risk
+      </sd-tag>
+      <sd-tag>
+        <div class="h-4 w-4 bg-risk-high border-primary-800 border-[1px]"></div>
+        High Risk
+      </sd-tag>
+      <sd-tag>
+        <div class="h-4 w-4 bg-risk-increased border-primary-800 border-[1px]"></div>
+        Increased Risk
+      </sd-tag>
+      <sd-tag>
+        <div class="h-4 w-4 bg-risk-moderate border-primary-800 border-[1px]"></div>
+        Moderated Risk
+      </sd-tag>
+      <sd-tag>
+        <div class="h-4 w-4 bg-risk-low border-primary-800 border-[1px]"></div>
+        Low Risk
+      </sd-tag>`
+};
+
+export const removableFilterTagGroup = {
+  render: () => html`
+    <sd-tag removable>Filter 1</sd-tag>
+    <sd-tag removable>Filter 2</sd-tag>
+    <sd-tag removable>Filter 3</sd-tag>
+    <sd-tag removable>Filter 4</sd-tag>
+  `
+};
+
+export const tagGroupLinks = {
+  name: 'Tag Group with Links',
+  render: () => html`
+    <sd-tag href="#" target="_blank">Topic 1</sd-tag>
+    <sd-tag href="#" target="_blank">Topic 2</sd-tag>
+    <sd-tag href="#" target="_blank">Topic 3</sd-tag>
+  `
+};
+
 /**
  * - white
  * - neutral-100
  * - primary-100
  */
-export const Default = {
-  name: 'Background options',
+export const backgroundOptions = {
+  name: 'Tag Background Options',
   render: () =>
-    html`<div class="flex gap-12">
-      <div class="bg-white px-12 py-4">
+    html`<div class="flex flex-row">
+      <div class="bg-white p-12 w-[268px]">
         <sd-tag>Tag</sd-tag>
       </div>
 
-      <div class="bg-neutral-100 px-12 py-4">
+      <div class="bg-neutral-100 p-12 w-[268px]">
         <sd-tag>Tag</sd-tag>
       </div>
 
-      <div class="bg-primary-100 px-12 py-4">
+      <div class="bg-primary-100 p-12 w-[268px]">
         <sd-tag>Tag</sd-tag>
       </div>
     </div>`
-};
-
-export const Slots = {
-  name: 'Slot samples',
-  render: () =>
-    html`<div class="flex gap-12">
-        <div class="bg-white px-8 py-4">
-          <sd-tag>
-            <div class="slot slot--text h-4">Replace this slot</div>
-          </sd-tag>
-        </div>
-
-        <div class="px-8 py-4">
-          <sd-tag>
-            <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
-            <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
-            <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
-            <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
-            <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
-          </sd-tag>
-        </div>
-
-        <div class="px-8 py-4">
-          <sd-tag size="lg">
-            <div class="h-4 w-4 bg-risk-veryhigh border-primary-800 border-[1px]"></div>
-            Tag
-          </sd-tag>
-        </div>
-
-        <div class="px-8 py-4">
-          <sd-tag size="sm">
-            <div class="h-3 w-3 bg-risk-veryhigh border-primary-800 border-[1px]"></div>
-            Tag
-          </sd-tag>
-        </div>
-      </div>
-
-      <div class="flex gap-12">
-        <div class="bg-white px-8 py-4">
-          <sd-tag selected>
-            <div class="slot slot--text h-4">Replace this slot</div>
-          </sd-tag>
-        </div>
-
-        <div class="px-8 py-4">
-          <sd-tag selected>
-            <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
-            <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
-            <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
-            <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
-            <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
-          </sd-tag>
-        </div>
-
-        <div class="px-8 py-4">
-          <sd-tag selected>
-            <div class="h-4 w-4 bg-risk-veryhigh border-white border-[1px]"></div>
-            Tag
-          </sd-tag>
-        </div>
-
-        <div class="px-8 py-4">
-          <sd-tag selected size="sm">
-            <div class="h-3 w-3 bg-risk-veryhigh border-white border-[1px]"></div>
-            Tag
-          </sd-tag>
-        </div>
-      </div> `
 };

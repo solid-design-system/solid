@@ -240,7 +240,7 @@ export default class SdTabGroup extends SolidElement {
   }
 
   /** Sets the active tab and panel. */
-  setActiveTab(tab: SdTab, options?: { emitEvents?: boolean; scrollBehavior?: 'auto' | 'smooth' }) {
+  private setActiveTab(tab: SdTab, options?: { emitEvents?: boolean; scrollBehavior?: 'auto' | 'smooth' }) {
     options = {
       emitEvents: true,
       scrollBehavior: 'auto',
