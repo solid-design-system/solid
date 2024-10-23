@@ -55,23 +55,74 @@ export const Default = {
 
 export const Variant = {
   render: () => html`
-    <div class="flex gap-12">
-      <sd-tab variant="default">Default</sd-tab>
-      <sd-tab variant="container">Container</sd-tab>
+    <div class="grid grid-cols-2 gap-12">
+      <sd-tab-group>
+        <sd-tab slot="nav" panel="tab-1" variant="default">Default 1</sd-tab>
+        <sd-tab-panel name="tab-1">
+          <div>Provident illo neque vel ex. Inventore perspiciatis delectus nisi doloremque soluta inventore.</div>
+        </sd-tab-panel>
+        <sd-tab slot="nav" panel="tab-2" variant="default">Default 2</sd-tab>
+        <sd-tab-panel name="tab-2">
+          <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+        </sd-tab-panel>
+        <sd-tab slot="nav" panel="tab-3" variant="default">Default 3</sd-tab>
+        <sd-tab-panel name="tab-3">
+          <div>Inventore perspiciatis delectus nisi doloremque soluta inventore.</div>
+        </sd-tab-panel>
+      </sd-tab-group>
+
+      <sd-tab-group>
+        <sd-tab slot="nav" panel="tab-1" variant="container">Container 1</sd-tab>
+        <sd-tab-panel name="tab-1">
+          <div>Provident inventore perspiciatis delectus nisi doloremque soluta inventore.</div>
+        </sd-tab-panel>
+        <sd-tab slot="nav" panel="tab-2" variant="container">Container 2</sd-tab>
+        <sd-tab-panel name="tab-2">
+          <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+        </sd-tab-panel>
+        <sd-tab slot="nav" panel="tab-3" variant="container">Container 3</sd-tab>
+        <sd-tab-panel name="tab-3">
+          <div>Inventore perspiciatis delectus nisi doloremque soluta inventore.</div>
+        </sd-tab-panel>
+      </sd-tab-group>
     </div>
   `
 };
 
 /**
  * Use the `active` attribute to toggle the active state.
+ *
+ * __Hint:__ Due to a Storybook issue, the first tab may be displayed as active. In this case, please reload the page.
  */
 
 export const Active = {
   render: () => html`
-    <div class="flex gap-12">
-      <sd-tab active>Default</sd-tab>
-      <sd-tab variant="container" active>Container</sd-tab>
-    </div>
+    <sd-tab-group activation="auto" id="active">
+      <sd-tab slot="nav" panel="tab-1" variant="default">Tab 1</sd-tab>
+      <sd-tab-panel name="tab-1">
+        Tab panel 1 - Provident illo neque vel ex. Inventore perspiciatis delectus nisi doloremque soluta inventore.
+      </sd-tab-panel>
+      <sd-tab slot="nav" panel="tab-2" variant="default">Tab 2</sd-tab>
+      <sd-tab-panel name="tab-2"> Tab panel 2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. </sd-tab-panel>
+      <sd-tab slot="nav" panel="tab-3" variant="default">Tab 3</sd-tab>
+      <sd-tab-panel name="tab-3">
+        Tab panel 3 - Inventore perspiciatis delectus nisi doloremque soluta inventore.
+      </sd-tab-panel>
+    </sd-tab-group>
+    <script>
+      const tabGroup = document.querySelector('sd-tab-group#active');
+      // Wait for controls to be defined before attaching form listeners
+      Promise.all([
+        customElements.whenDefined('sd-tab-group'),
+        customElements.whenDefined('sd-tab'),
+        customElements.whenDefined('sd-tab-panel')
+      ]).then(() => {
+        setTimeout(() => {
+          // To make this more robust and reduce race conditions use setTimeout
+          tabGroup.show('tab-2');
+        }, 1);
+      });
+    </script>
   `
 };
 
@@ -80,7 +131,24 @@ export const Active = {
  */
 
 export const Disabled = {
-  render: () => html` <sd-tab disabled>Disabled</sd-tab> `
+  render: () => html`
+    <sd-tab-group>
+      <sd-tab slot="nav" panel="tab-1" variant="default">Label</sd-tab>
+      <sd-tab-panel name="tab-1">
+        <div>
+          Tab panel 1 - Provident illo neque vel ex. Inventore perspiciatis delectus nisi doloremque soluta inventore.
+        </div>
+      </sd-tab-panel>
+      <sd-tab slot="nav" panel="tab-2" variant="default" disabled>Disabled</sd-tab>
+      <sd-tab-panel name="tab-2">
+        <div>Tab panel 2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+      </sd-tab-panel>
+      <sd-tab slot="nav" panel="tab-3" variant="default">Label</sd-tab>
+      <sd-tab-panel name="tab-3">
+        <div>Tab panel 3 - Inventore perspiciatis delectus nisi doloremque soluta inventore.</div>
+      </sd-tab-panel>
+    </sd-tab-group>
+  `
 };
 
 /**
@@ -89,9 +157,30 @@ export const Disabled = {
 
 export const Icon = {
   render: () => html`
-    <sd-tab>
-      <sd-icon slot="left" name="system/picture" library="global-resources" class="pr-2"></sd-icon>
-      Default
-    </sd-tab>
+    <sd-tab-group>
+      <sd-tab slot="nav" panel="tab-1">
+        <sd-icon slot="left" name="system/picture" library="global-resources" class="pr-2"></sd-icon>
+        Label
+      </sd-tab>
+      <sd-tab-panel name="tab-1">
+        <div>
+          Tab panel 1 - Provident illo neque vel ex. Inventore perspiciatis delectus nisi doloremque soluta inventore.
+        </div>
+      </sd-tab-panel>
+      <sd-tab slot="nav" panel="tab-2">
+        <sd-icon slot="left" name="system/picture" library="global-resources" class="pr-2"></sd-icon>
+        Label
+      </sd-tab>
+      <sd-tab-panel name="tab-2">
+        <div>Tab panel 2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+      </sd-tab-panel>
+      <sd-tab slot="nav" panel="tab-3">
+        <sd-icon slot="left" name="system/picture" library="global-resources" class="pr-2"></sd-icon>
+        Label
+      </sd-tab>
+      <sd-tab-panel name="tab-3">
+        <div>Tab panel 3 - Inventore perspiciatis delectus nisi doloremque soluta inventore.</div>
+      </sd-tab-panel>
+    </sd-tab-group>
   `
 };
