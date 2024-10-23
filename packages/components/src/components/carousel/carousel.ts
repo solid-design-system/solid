@@ -458,7 +458,6 @@ export default class SdCarousel extends SolidElement {
 
   render() {
     const { scrollController, slidesPerMove } = this;
-    console.log(this);
     const pagesCount = SdCarousel.getPageCount(this.getSlides().length, this.slidesPerPage, this.slidesPerMove);
     const currentPage = SdCarousel.getCurrentPage(
       this.getSlides().length,
