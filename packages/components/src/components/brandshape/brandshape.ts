@@ -22,6 +22,7 @@ type Breakpoints = 0 | 414 | 640;
  * @csspart shape-top - Top shape.
  * @csspart shape-middle - Middle shape.
  * @csspart shape-bottom - Bottom shape.
+ * @csspart stylized-container - Container for border and image variant.
  */
 
 @customElement('sd-brandshape')
@@ -192,27 +193,10 @@ export default class SdBrandshape extends SolidElement {
     ></div>`;
   }
 
-  private renderSkewedBorder(): TemplateResult {
+  private renderStylizedVariant(): TemplateResult {
     return html`
-      <div
-        class="${cx(
-          this.variant === 'border-primary' ? 'container--outline-primary' : '',
-          this.variant === 'border-white' ? 'container--outline-white' : '',
-          'container--stylized bg-transparent py-10 relative z-10 border-0;'
-        )}"
-      >
-        ${this.renderTopBrandshape()} ${this.renderMiddleBrandshape()} ${this.renderBottomBrandshape()}
-      </div>
-    `;
-  }
-
-  private renderSkewedImage(): TemplateResult {
-    return html`
-      <div class="container--stylized bg-transparent py-10 relative z-10 border-0;">
-        <div class="image-wrapper">
-          <slot name="image"></slot>
-        </div>
-        ${this.renderTopBrandshape()} ${this.renderMiddleBrandshape()} ${this.renderBottomBrandshape()}
+      <div part="stylized-container" class="w-full overflow-hidden">
+        <slot class="${cx(this.variant !== 'image' && 'hidden')}" name="image"></slot>
       </div>
     `;
   }
@@ -226,8 +210,7 @@ export default class SdBrandshape extends SolidElement {
   }
 
   render() {
-    const isBorderVariant = this.variant.startsWith('border-');
-    const isImageVariant = this.variant === 'image';
+    const isStylizedVariant = this.variant.startsWith('border-') || this.variant === 'image';
 
     return html`
       <div
@@ -239,12 +222,12 @@ export default class SdBrandshape extends SolidElement {
             'border-white': 'fill-transparent',
             'border-primary': 'fill-transparent',
             image: 'fill-transparent'
-          }[this.variant]
+          }[this.variant],
+          'relative'
         )}"
         part="base"
       >
-        ${isBorderVariant ? this.renderSkewedBorder() : ''} ${isImageVariant ? this.renderSkewedImage() : ''}
-        ${!isBorderVariant && !isImageVariant ? this.renderShapes() : ''}
+        ${isStylizedVariant ? this.renderStylizedVariant() : ''} ${this.renderShapes()}
         <slot></slot>
       </div>
     `;
@@ -259,57 +242,85 @@ export default class SdBrandshape extends SolidElement {
     css`
       :host {
         @apply block;
+        container-type: inline-size;
+        --angle: 11deg;
+        --radius: 60px;
+        --tan: tan(var(--angle));
+        --adjacent: 100cqw;
+        --opposite: calc(var(--tan) * var(--adjacent));
+        --curve: calc(
+          (var(--opposite) - (var(--radius) / 3)) * 0.5
+        ); /* Not sure, why the division by 3 works for every screen size – but it works, so do not touch it */
       }
 
-      .container--outline-primary::before {
-        --internal-border-color: rgb(var(--sd-color-primary, 0 53 142));
-        --internal-border-width: 2px;
+      /** Fallbacks for non-supported browsers */
+      @supports not (transform: skewY(11deg)) {
+        :host {
+          --tan: 0.1943803091;
+        }
       }
 
-      .container--outline-white::before {
-        --internal-border-color: var(--sd-color-white, white);
-        --internal-border-width: 2px;
-      }
-
-      .container--stylized::before {
-        @apply absolute top-0 bottom-0 right-0 left-0 border-solid inset-0 z-[-1];
-        content: '';
-        color: var(--internal-color, black);
-        border-color: var(--internal-border-color, black);
-        border-width: var(--internal-border-width, 0);
-        border-radius: 0 60px;
-        margin-bottom: calc(21.256% / 2);
-        margin-top: calc(21.256% / 2);
-        transform: skewY(-11deg);
-      }
-
-      .image-wrapper {
-        @apply absolute top-0 left-0 w-full z-10 overflow-hidden;
-        height: -webkit-fill-available;
-        margin-bottom: calc(21.256% / 2);
-        margin-top: calc(21.256% / 2);
-        border-radius: 0 60px;
-        transform: skewY(-11deg);
-      }
-
-      slot[name='image']::slotted(img) {
-        @apply w-full h-full object-cover origin-top-left;
-        transform: skewY(11deg);
-      }
-
-      /* Responsive border-radius */
-      @media (min-width: 414px) {
-        .container--stylized::before,
-        .image-wrapper {
-          border-radius: 0 72px;
+      /* Responsiveness */
+      @media (min-width: 415px) {
+        :host {
+          --radius: 72px;
         }
       }
 
       @media (min-width: 640px) {
-        .container--stylized::before,
-        .image-wrapper {
-          border-radius: 0 84px;
+        :host {
+          --radius: 84px;
         }
+      }
+
+      /* Skewing */
+      :host([variant='image']) [part='stylized-container'],
+      :host([variant^='border-']) [part='stylized-container']::before {
+        @apply absolute top-0 left-0;
+        transform: skewY(calc(var(--angle) * -1));
+        height: calc(100% - var(--curve) * 2);
+        border-radius: 0 var(--radius);
+        margin-top: calc(var(--curve));
+      }
+
+      slot[name='image']::slotted(img),
+      slot[name='image']::slotted(video) {
+        @apply w-full object-cover;
+        transform: translateY(calc(var(--curve) * -1)) skewY(var(--angle));
+        height: calc(100% + var(--curve) * 2) !important;
+        position: absolute !important;
+      }
+
+      /* Fallback for browsers which do not support container queries */
+      @supports not (height: 100cqw) {
+        :host([variant='image']) [part='stylized-container'],
+        :host([variant^='border-']) [part='stylized-container']::before {
+          transform: unset;
+          height: 100%;
+          margin-top: 0;
+        }
+
+        slot[name='image']::slotted(img),
+        slot[name='image']::slotted(video) {
+          transform: unset;
+          height: 100% !important;
+        }
+      }
+
+      /* Stylized border */
+
+      :host([variant='border-primary']) {
+        --internal-border-color: rgb(var(--sd-color-primary, 0 53 142));
+      }
+
+      :host([variant='border-white']) {
+        --internal-border-color: var(--sd-color-white, white);
+      }
+
+      :host([variant^='border-']) [part='stylized-container']::before {
+        @apply right-0 border-solid border-2;
+        content: '';
+        border-color: var(--internal-border-color, black);
       }
     `
   ];
