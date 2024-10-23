@@ -86,7 +86,7 @@ export const Default = {
       </div>
       <div class="level-two hidden">
         <nav id="level-two-nav">
-          <sd-navigation-item vertical id="nav-title"><b>About Us</b></sd-navigation-item>
+          <sd-navigation-item vertical id="nav-title" size="lg"><b>About Us</b></sd-navigation-item>
           <sd-navigation-item vertical divider>
             <b>Union Investment for privat customers</b>
             <p slot="description" class="sd-paragraph sd-paragraph--size-sm max-w-[238px]">
