@@ -258,7 +258,7 @@ export const teaserWithChipAndFlag = {
           <div slot="media" class="relative">
             <img
               src="./placeholders/images/skyline.jpg"
-              alt="Close-up of hands stacking coins into small piles on a table, suggesting financial planning or saving."
+              alt="City skyline of Frankfurt by night in christmas time."
               class="aspect-video sm:aspect-[3/4] md:aspect-[16/9] object-cover w-full"
             />
             <span class="absolute top-3 left-4 sd-chip sd-chip--white">Real Estate</span>
