@@ -48,6 +48,15 @@ export const LoginForm = {
         </div>
       </form>
     </section>
+    <script type="module">
+      const loginForm = Array.from(document.querySelectorAll('#loginForm')).pop();
+      console.log(loginForm);
+      // Listen for the form's submit event
+      loginForm.addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent the default form submission
+        alert('You are logged in!');
+      });
+    </script>
   `
 };
 
