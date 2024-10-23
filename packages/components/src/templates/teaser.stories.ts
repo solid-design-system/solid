@@ -279,29 +279,35 @@ export const teaserWithDivision = {
   render: () => {
     return html`
       <style>
+        sd-teaser#teaser-with-division {
+          container-type: inline-size;
+        }
+
         sd-teaser#teaser-with-division::part(content) {
           padding: 20px;
         }
-        @media (min-width: 655px) {
+
+        @container (min-width: 538px) {
           sd-teaser#teaser-with-division::part(content) {
             min-height: 100%;
             padding: 24px 34px 24px 0;
           }
         }
+
         sd-teaser#teaser-with-division::part(main) {
           height: 100%;
         }
       </style>
       <sd-teaser
         variant="neutral-100"
-        class="max-w-[656px] flex-1 p-4"
+        class="max-w-[656px] flex-1"
         breakpoint="538"
         id="teaser-with-division"
         style="--distribution-media: 50%; --distribution-content: 50%;"
       >
-        <div slot="media" class="relative">
+        <div slot="media" class="relative h-full">
           <img
-            class="w-full aspect-[4/3] md:aspect-[3/4] object-cover"
+            class="w-full aspect-[4/3] md:aspect-[3/4] object-cover min-h-full"
             src="./placeholders/images/collaboration.jpg"
             alt="Two men in business attire sitting on a sofa in a modern office, smiling and looking at a laptop screen."
           />
