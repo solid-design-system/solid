@@ -43,11 +43,11 @@ export const Default = {
 export const Variant = {
   render: () => html`
     <div class="flex items-center gap-12">
-      <sd-map-marker></sd-map-marker>
-      <sd-map-marker variant="place">
+      <sd-map-marker label="example"></sd-map-marker>
+      <sd-map-marker variant="place" label="example">
         <sd-icon name="content/image" color="primary"></sd-icon>
       </sd-map-marker>
-      <sd-map-marker variant="cluster"> 88 </sd-map-marker>
+      <sd-map-marker variant="cluster" label="example"> 88 </sd-map-marker>
     </div>
   `
 };
@@ -63,26 +63,26 @@ export const State = {
   render: () => html`
     <div class="flex gap-12">
       <div class="flex flex-col space-y-5">
-        <sd-map-marker state="default"></sd-map-marker>
-        <sd-map-marker state="hover"></sd-map-marker>
-        <sd-map-marker state="active"></sd-map-marker>
+        <sd-map-marker state="default" label="example"></sd-map-marker>
+        <sd-map-marker state="hover" label="example"></sd-map-marker>
+        <sd-map-marker state="active" label="example"></sd-map-marker>
       </div>
 
       <div class="flex flex-col space-y-5">
-        <sd-map-marker state="default" variant="place">
+        <sd-map-marker state="default" variant="place" label="example">
           <sd-icon name="content/image" color="primary"></sd-icon>
         </sd-map-marker>
-        <sd-map-marker state="hover" variant="place">
+        <sd-map-marker state="hover" variant="place" label="example">
           <sd-icon name="content/image" color="primary"></sd-icon>
         </sd-map-marker>
-        <sd-map-marker state="active" variant="place">
+        <sd-map-marker state="active" variant="place" label="example">
           <sd-icon name="content/image" color="primary"></sd-icon>
         </sd-map-marker>
       </div>
 
       <div class="flex flex-col space-y-5">
-        <sd-map-marker state="default" variant="cluster"> 88 </sd-map-marker>
-        <sd-map-marker state="hover" variant="cluster"> 88 </sd-map-marker>
+        <sd-map-marker state="default" variant="cluster" label="example"> 88 </sd-map-marker>
+        <sd-map-marker state="hover" variant="cluster" label="example"> 88 </sd-map-marker>
       </div>
     </div>
   `
@@ -93,7 +93,7 @@ export const State = {
  */
 export const Animated = {
   render: () => html`
-    <sd-map-marker class="animated-example" variant="main" state="default" animated=""></sd-map-marker>
+    <sd-map-marker class="animated-example" variant="main" state="default" animated="" label="example"></sd-map-marker>
     <script>
       const marker = document.querySelector('.animated-example');
       setInterval(() => {
@@ -108,8 +108,51 @@ export const Animated = {
  */
 export const Slot = {
   render: () => html`
-    <sd-map-marker variant="place" class="slot-example">
+    <sd-map-marker variant="place" class="slot-example" label="example">
       <span class="slot slot--border h-8 w-8 -mt-4"></span>
     </sd-map-marker>
+  `
+};
+
+/**
+ * Use the `not-interactive` attribute to render a marker that is not interactive.
+ */
+export const NotInteractive = {
+  render: () => html`
+    <div class="flex items-center gap-12">
+      <sd-map-marker not-interactive></sd-map-marker>
+      <sd-map-marker variant="place" not-interactive>
+        <sd-icon name="content/image" color="primary"></sd-icon>
+      </sd-map-marker>
+      <sd-map-marker variant="cluster" not-interactive> 88 </sd-map-marker>
+    </div>
+  `
+};
+
+/**
+ * - Use the `href` attribute to enable the link.
+ * - Use the `target` attribute to specify where to open the link.
+ */
+export const AsLink = {
+  render: () => html`
+    <div class="flex items-center gap-12">
+      <sd-map-marker
+        href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/?path=/docs/docs-general-introduction--docs"
+        target="_blank"
+        label="example"
+      >
+      </sd-map-marker>
+    </div>
+  `
+};
+
+/**
+ * Use the `label` attribute to set the text of the aria-label attribute when rendered as button or link.
+ */
+export const Label = {
+  render: () => html`
+    <div class="flex items-center gap-12">
+      <sd-map-marker label="example"></sd-map-marker>
+    </div>
   `
 };
