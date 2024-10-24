@@ -127,15 +127,7 @@ export default class SdBrandshape extends SolidElement {
   private renderTopBrandshape(): TemplateResult {
     return html`
       <div class="relative" part="shape-top">
-        ${this.shapes.length === 1
-          ? html` <div class="relative">
-              ${this.getSvg(this.componentBreakpoint, 'top')}
-              <div part="content" class="absolute bottom-0 right-0 flex items-end w-2/5 h-2/3 px-6 py-4">
-                <slot></slot>
-              </div>
-            </div>`
-          : this.getSvg(this.componentBreakpoint, 'top')}
-        ${this.renderWhitespaceFix('top')}
+        ${this.getSvg(this.componentBreakpoint, 'top')} ${this.renderWhitespaceFix('top')}
       </div>
     `;
   }
@@ -228,7 +220,7 @@ export default class SdBrandshape extends SolidElement {
         part="base"
       >
         ${isStylizedVariant ? this.renderStylizedVariant() : ''} ${this.renderShapes()}
-        <slot></slot>
+        ${this.shapes.includes('middle') ? html`<slot></slot>` : ''}
       </div>
     `;
   }
