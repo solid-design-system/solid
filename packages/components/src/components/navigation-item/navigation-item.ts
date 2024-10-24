@@ -222,7 +222,7 @@ export default class SdNavigationItem extends SolidElement {
               ? this.separated
                 ? html`<button
                     type="button"
-                    title="toggle-accordion"
+                    title="toggle-details"
                     class="sd-interactive sd-interactive--reset"
                     @click=${this.handleClickSummary}
                   >
