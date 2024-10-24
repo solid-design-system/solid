@@ -39,14 +39,34 @@ describe('<sd-navigation-item>', () => {
 
     // Accessibility
     it('passes accessibility test', async () => {
+      // Button Variant
       const el = await fixture<SdNavigationItem>(variants.button.default);
       await expect(el).to.be.accessible();
+
+      // Link Variant
+      const elLink = await fixture<SdNavigationItem>(variants.link.default);
+      await expect(elLink).to.be.accessible();
+
+      // Accordion Variant
+      const elAccordion = await fixture<SdNavigationItem>(variants.accordion.default);
+      await expect(elAccordion).to.be.accessible();
     });
 
     it('adds aria-current: "page" to <a> when current is true', async () => {
       const el = await fixture<SdNavigationItem>(variants.link.current);
       const link = el.shadowRoot!.querySelector('a');
       expect(link).attribute('aria-current', 'page');
+    });
+
+    it('aria-expanded: "true" when the accordion is set to open', async () => {
+      const el = await fixture<SdNavigationItem>(variants.accordion.default);
+      const details = el.shadowRoot!.querySelector('details');
+      expect(details).attribute('aria-expanded', 'false');
+
+      el.open = true;
+      await el.updateComplete;
+
+      expect(details).attribute('aria-expanded', 'true');
     });
 
     it('should not render href on element itself if no href provided', async () => {
