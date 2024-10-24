@@ -44,7 +44,11 @@ export default function docsCodepenEnhancer(code: string, storyContext: StoryCon
           el.style.display = 'block';
           el.style.borderRight = 'none';
         });
-        story.querySelector<HTMLElement>('.docblock-codepen-button:last-of-type')!.style.display = 'none';
+
+        const buttons = story.querySelectorAll<HTMLElement>('.docblock-codepen-button');
+        if (buttons.length > 1) {
+          buttons[buttons.length - 1].style.display = 'none';
+        }
       }
 
       // Finally add the event listener to the button

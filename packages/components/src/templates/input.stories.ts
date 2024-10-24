@@ -2,10 +2,6 @@ import '../solid-components';
 import { html } from 'lit-html';
 import type SdInput from '../components/input/input';
 
-/**
- * ```
- * ```
- */
 export default {
   tags: ['!dev'],
   title: 'Templates/Input',
