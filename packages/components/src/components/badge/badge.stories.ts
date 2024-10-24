@@ -46,7 +46,7 @@ export const Default = {
  * - `success`
  * - `error`
  *
- * __Hint:__ Alternative color options like green or red are employed to highlight specific notifications, without implying any semantic meaning.
+ * __Hint:__ Alternative color options like green or red are employed to highlight specific notifications and create a consistent visual language throughout applications. The actual colors are merely stylistic choices and are not bind to any particular semantic meaning.
  */
 export const Variant = {
   name: 'Variant',
