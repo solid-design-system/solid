@@ -154,12 +154,10 @@
     const storiesSection = [...document.querySelectorAll('h2')].find(header => header.textContent.trim() === 'Stories');
 
     if (storiesSection && document.title.includes('templates-')) {
-      // gets all the stories before the header
       const previousSiblings = [];
       let sibling = storiesSection.previousElementSibling;
 
       while (sibling) {
-        // collects stories before the header
         if (sibling.classList.contains('sb-anchor')) {
           previousSiblings.push(sibling);
         }
