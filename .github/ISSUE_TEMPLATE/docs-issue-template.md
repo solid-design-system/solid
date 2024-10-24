@@ -18,7 +18,6 @@ assignees: ''
 - [ ] Item dependencies have been identified
 
 ## DoD
-- [ ] Documentation has been created/updated (if applicable)
-- [ ] Migration Guide has been created/updated (if applicable)
 - [ ] Relevant stories (Features, A11y) are created/updated
+- [ ] Migration Guide has been created/updated (if applicable)
 - [ ] Implementation works successfully on `feature` branch
