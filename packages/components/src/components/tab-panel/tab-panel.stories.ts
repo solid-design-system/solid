@@ -17,7 +17,7 @@ const { generateTemplate } = storybookTemplate('sd-tab-panel');
  * - [sd-tab-group](?path=/docs/components-sd-tab-group--docs)
  *
  * **Related templates:**
- * - [Tab](?path=/docs/templates-tab--docs)
+ * - [Tab Group](?path=/docs/templates-tab-group--docs)
  */
 
 export default {
