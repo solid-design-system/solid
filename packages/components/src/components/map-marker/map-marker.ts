@@ -115,7 +115,7 @@ export default class SdMapMarker extends SolidElement {
         </div>
         <div
           part="content"
-          class=${cx('absolute self-center pointer-events-none', this.variant === 'cluster' && 'text-white')}
+          class=${cx('absolute self-center pointer-events-none', this.variant === 'cluster' && 'font-bold text-white')}
         >
           <slot></slot>
         </div>
