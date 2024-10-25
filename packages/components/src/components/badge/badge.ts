@@ -32,7 +32,7 @@ export default class SdBadge extends SolidElement {
         role="status"
         part="base"
         class=${cx(
-          'inline-flex items-center justify-center gap-x-[1px] text-center leading-none whitespace-nowrap border rounded-full select-none cursor-[inherit]',
+          'inline-flex items-center justify-center gap-x-[1px] text-center font-bold leading-none whitespace-nowrap border rounded-full select-none cursor-[inherit]',
           {
             /* variants */
             default: !this.inverted
