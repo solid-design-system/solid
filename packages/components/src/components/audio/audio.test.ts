@@ -12,7 +12,7 @@ describe('<sd-audio>', () => {
   it('should emit sd-playback-start event when play buttons is clicked', async () => {
     const el = await fixture<SdAudio>(html`
       <sd-audio>
-        <audio src="https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3"></audio>
+        <audio slot="default" src="test-audio.mp3"></audio>
       </sd-audio>
     `);
 
@@ -30,7 +30,7 @@ describe('<sd-audio>', () => {
   it('should emit sd-playback-mute event when mute button is clicked', async () => {
     const el = await fixture<SdAudio>(html`
       <sd-audio>
-        <audio src="https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3"></audio>
+        <audio slot="default" src="test-audio.mp3"></audio>
       </sd-audio>
     `);
 
@@ -48,7 +48,7 @@ describe('<sd-audio>', () => {
   it('should hide the timestamps when the attribute is set', async () => {
     const el = await fixture<SdAudio>(html`
       <sd-audio hide-timestamps>
-        <audio src="https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3"></audio>
+        <audio slot="default" src="test-audio.mp3"></audio>
       </sd-audio>
     `);
 
@@ -60,7 +60,7 @@ describe('<sd-audio>', () => {
   it('should render the canvas when the animated attribute is set', async () => {
     const el = await fixture<SdAudio>(html`
       <sd-audio animated>
-        <audio src="https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3"></audio>
+        <audio slot="default" src="test-audio.mp3"></audio>
       </sd-audio>
     `);
 
@@ -72,7 +72,7 @@ describe('<sd-audio>', () => {
   it('should emit sd-transcript-click event when transcript button is clicked', async () => {
     const el = await fixture<SdAudio>(html`
       <sd-audio>
-        <audio src="https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3"></audio>
+        <audio src="test-audio.mp3"></audio>
         <div slot="transcript">Transcript</div>
       </sd-audio>
     `);
