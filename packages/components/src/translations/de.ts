@@ -30,8 +30,14 @@ const translation: Translation = {
   showPassword: 'Passwort anzeigen',
   slideNum: slide => `Folie ${slide}`,
   toggleColorFormat: 'Farbformat umschalten',
+  audioPlayer: 'Audio-Player',
+  playAudio: 'Audio abspielen',
+  pauseAudio: 'Audio pausieren',
+  mute: 'Stummschalten',
+  unmute: 'Unmute',
   showMore: 'Mehr anzeigen',
-  showLess: 'Weniger anzeigen'
+  showLess: 'Weniger anzeigen',
+  playbackSpeed: 'Wiedergabe Geschwindigkeit'
 };
 
 registerTranslation(translation);
