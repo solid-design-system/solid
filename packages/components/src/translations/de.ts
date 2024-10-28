@@ -37,7 +37,8 @@ const translation: Translation = {
   unmute: 'Unmute',
   showMore: 'Mehr anzeigen',
   showLess: 'Weniger anzeigen',
-  playbackSpeed: 'Wiedergabe Geschwindigkeit'
+  playbackSpeed: 'Wiedergabe Geschwindigkeit',
+  autoplay: 'Autoplay'
 };
 
 registerTranslation(translation);

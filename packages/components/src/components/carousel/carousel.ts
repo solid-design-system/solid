@@ -256,12 +256,14 @@ export default class SdCarousel extends SolidElement {
   handlePausedAutoplay() {
     if (this.pausedAutoplay) {
       this.autoplayController.stop();
+      this.autoplayControls.setAttribute('aria-pressed', 'false');
     } else if (this.autoplay) {
       this.autoplayController.start(3000);
+      this.autoplayControls.setAttribute('aria-pressed', 'true');
     }
 
     // This is necessary to allow autoplay since focus is not removed when the button is clicked.
-    this.autoplayControls?.blur();
+    // this.autoplayControls?.blur();
   }
 
   @watch('loop', { waitUntilFirstUpdate: true })
@@ -383,9 +385,6 @@ export default class SdCarousel extends SolidElement {
     } else {
       this.goToSlide(previousIndex, behavior);
     }
-
-    // This keeps the carousel from pausing autoplay due to the lingering focus
-    this.previousButton?.blur();
   }
 
   /**
@@ -404,9 +403,6 @@ export default class SdCarousel extends SolidElement {
         this.nextTillFirst(behavior);
       }
     }
-
-    // This keeps the carousel from pausing autoplay due to the lingering focus
-    this.nextButton?.blur();
   }
 
   nextTillFirst(behavior: ScrollBehavior = 'smooth') {
@@ -454,6 +450,12 @@ export default class SdCarousel extends SolidElement {
       top: nextSlideRect.top - scrollContainerRect.top + scrollContainer.scrollTop,
       behavior: prefersReducedMotion() ? 'auto' : behavior
     });
+
+    if (this.activeSlide === slides.length - 1) {
+      this.previousButton.focus({ preventScroll: true });
+    } else if (this.activeSlide === 0) {
+      this.nextButton.focus({ preventScroll: true });
+    }
   }
 
   render() {
@@ -483,7 +485,7 @@ export default class SdCarousel extends SolidElement {
           )}"
           style="--slides-per-page: ${this.slidesPerPage};"
           aria-busy="${scrollController.scrolling ? 'true' : 'false'}"
-          aria-atomic="true"
+          role="status"
           tabindex="0"
           @keydown=${this.handleKeyDown}
           @scrollend=${this.handleScrollEnd}
@@ -612,6 +614,8 @@ export default class SdCarousel extends SolidElement {
               !this.autoplay && '!hidden'
             )}
             part="autoplay-controls"
+            aria-label="${this.localize.term('autoplay')}"
+            aria-pressed="true"
             @click=${() => (this.pausedAutoplay = !this.pausedAutoplay)}
           >
             <slot name="autoplay-start" class=${cx(!this.pausedAutoplay ? 'hidden' : '')}>

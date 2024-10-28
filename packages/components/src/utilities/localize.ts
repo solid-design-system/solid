@@ -103,4 +103,5 @@ export interface Translation extends DefaultTranslation {
   showMore: string;
   showLess: string;
   playbackSpeed: string;
+  autoplay: string;
 }
