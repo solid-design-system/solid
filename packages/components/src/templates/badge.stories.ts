@@ -24,11 +24,14 @@ export const ButtonWithBadge = {
   render: () => html`
     <div class="flex flex-col">
       <section class="flex p-8 gap-10 items-center">
-        <sd-button>Requests<sd-badge>10</sd-badge></sd-button>
+        <sd-button>
+          <sd-badge>10</sd-badge>
+          Requests
+        </sd-button>
         <sd-button variant="secondary">
           <sd-icon name="system/rss" slot="icon-left"></sd-icon>
-          News
           <sd-badge>+99</sd-badge>
+          News
         </sd-button>
         <sd-button variant="secondary" size="md">
           <sd-icon name="system/phone"></sd-icon>
@@ -50,11 +53,14 @@ export const ButtonWithBadge = {
         </sd-button>
       </section>
       <section class="flex p-8 gap-10 bg-primary items-center">
-        <sd-button inverted>Requests<sd-badge inverted>10</sd-badge></sd-button>
+        <sd-button inverted>
+          <sd-badge inverted>10</sd-badge>
+          Requests
+        </sd-button>
         <sd-button inverted variant="secondary" size="md">
           <sd-icon name="system/rss" slot="icon-left"></sd-icon>
-          News
           <sd-badge inverted>+99</sd-badge>
+          News
         </sd-button>
         <sd-button inverted variant="secondary" size="md">
           <sd-icon name="system/phone"></sd-icon>
@@ -99,8 +105,8 @@ export const NavigationItemWithBadge = {
             <sd-navigation-item class="relative" role="button">
               <sd-icon name="system/bell" class="text-xl"></sd-icon>
               <sd-badge class="absolute top-1 -right-5" size="md">
-                <span class="sr-only">Notifications</span>
                 +99
+                <span class="sr-only">Notifications</span>
               </sd-badge>
             </sd-navigation-item>
             <sd-navigation-item>

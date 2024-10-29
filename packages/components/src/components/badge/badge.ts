@@ -31,6 +31,7 @@ export default class SdBadge extends SolidElement {
       <span
         role="status"
         part="base"
+        aria-labelledby="content"
         class=${cx(
           'inline-flex items-center justify-center gap-x-[1px] text-center font-bold leading-none whitespace-nowrap border rounded-full select-none cursor-[inherit]',
           {
@@ -49,7 +50,7 @@ export default class SdBadge extends SolidElement {
           }[this.size]
         )}
       >
-        <span part="content" class=${cx(this.size === 'sm' && 'sr-only')}>
+        <span id="content" part="content" class=${cx(this.size === 'sm' && 'sr-only')}>
           <slot></slot>
         </span>
       </span>
