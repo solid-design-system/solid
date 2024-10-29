@@ -28,7 +28,7 @@
     "ts.verify": "tsc --noEmit --project ./tsconfig.json && echo '✅ TypeScript verified'",
     "build.chromatic": "pnpm build/storybook && node ./scripts/node-optimize-chromatic.cjs",
     "chromatic": "npx chromatic -b build.chromatic",
-    "build/storybook": "storybook build --output-dir dist/storybook && vite-node scripts/node-optimize-storybook.js",
+    "build": "storybook build --output-dir dist/storybook && vite-node scripts/node-optimize-storybook.js",
     "preview": "vite preview"
   },
   "dependencies": {
