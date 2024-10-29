@@ -12,7 +12,9 @@ describe('<sd-map-marker>', () => {
     });
 
     it('passes accessibility test when it renders a button', async () => {
-      const el = await fixture<SdMapMarker>(html` <sd-map-marker label="example"></sd-map-marker>`);
+      const el = await fixture<SdMapMarker>(
+        html` <sd-map-marker><div class="sr-only">Acessible Pin</div></sd-map-marker>`
+      );
       await expect(el).to.be.accessible();
     });
 
