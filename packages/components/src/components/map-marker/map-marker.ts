@@ -42,9 +42,6 @@ export default class SdMapMarker extends SolidElement {
   /** Tells the browser where to open the link. Only used when `href` is present. */
   @property() target: '_blank' | '_parent' | '_self' | '_top';
 
-  /** Sets the text of the aria-label attribute when rendered as button or link */
-  @property() label: string;
-
   private handleBlur() {
     this.emit('sd-blur');
   }
@@ -84,7 +81,6 @@ export default class SdMapMarker extends SolidElement {
         )}
         href=${ifDefined(isLink ? this.href : undefined)}
         target=${ifDefined(isLink ? this.target : undefined)}
-        aria-label=${this.label}
         @blur=${this.handleBlur}
         @focus=${this.handleFocus}
       >
