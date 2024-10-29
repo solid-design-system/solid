@@ -457,7 +457,7 @@ export default class SdCarousel extends SolidElement {
   }
 
   render() {
-    const { scrollController, slidesPerPage } = this;
+    const { scrollController, slidesPerMove } = this;
     const pagesCount = SdCarousel.getPageCount(this.getSlides().length, this.slidesPerPage, this.slidesPerMove);
     const currentPage = SdCarousel.getCurrentPage(
       this.getSlides().length,
@@ -539,7 +539,7 @@ export default class SdCarousel extends SolidElement {
                           tabindex="0"
                           aria-selected="${isActive ? 'true' : 'false'}"
                           aria-label="${this.localize.term('goToSlide', index + 1, pagesCount)}"
-                          @click=${() => this.goToSlide(index * slidesPerPage)}
+                          @click=${() => this.goToSlide(index * slidesPerMove)}
                           @keydown=${this.handleKeyDown}
                         >
                           <span
