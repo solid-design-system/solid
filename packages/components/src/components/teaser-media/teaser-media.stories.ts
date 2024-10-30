@@ -13,8 +13,7 @@ const { generateTemplate } = storybookTemplate('sd-teaser-media');
  * - [sd-teaser](?path=/docs/components-sd-teaser--docs)
  *
  * **Related templates**:
- * - [Teaser with Icon](?path=/docs/templates-teaser-with-icon--docs)
- * - [Teaser with Link](?path=/docs/templates-teaser-with-link--docs)
+ * - [Teaser Media](?path=/docs/templates-teaser-media--docs)
  * - [Teaser](?path=/docs/templates-teaser--docs)
  */
 export default {

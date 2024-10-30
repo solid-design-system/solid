@@ -782,4 +782,28 @@ describe('<sd-carousel>', () => {
       expect(el.next).to.have.been.called;
     });
   });
+
+  describe('dot controls navigation', () => {
+    it('should navigate to the correct slide when a dot is clicked, considering slidesPerMove', async () => {
+      // Arrange
+      const slidesPerMove = 2;
+      const el = await fixture<SdCarousel>(html`
+        <sd-carousel variant="dot" slides-per-move="${slidesPerMove}">
+          <sd-carousel-item>Node 1</sd-carousel-item>
+          <sd-carousel-item>Node 2</sd-carousel-item>
+          <sd-carousel-item>Node 3</sd-carousel-item>
+          <sd-carousel-item>Node 4</sd-carousel-item>
+        </sd-carousel>
+      `);
+      sinon.stub(el, 'goToSlide');
+
+      // Act
+      const secondDot = el.shadowRoot!.querySelectorAll('.carousel__pagination-item')[1] as HTMLElement;
+      secondDot.click();
+      await el.updateComplete;
+
+      // Assert
+      expect(el.goToSlide).to.have.been.calledWith(slidesPerMove);
+    });
+  });
 });
