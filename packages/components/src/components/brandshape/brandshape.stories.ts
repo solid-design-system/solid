@@ -37,7 +37,7 @@ export default {
     {
       type: 'slot',
       name: 'image',
-      value: `<img slot="image" style="transform:translateY(-30%);" src="./placeholders/images/generic.jpg" alt="Generic" />`
+      value: `<img slot="image" src="./placeholders/images/generic.jpg" alt="" />`
     },
     { type: 'attribute', name: 'shapes', value: '["top", "middle", "bottom"]' }
   ]),
@@ -88,7 +88,7 @@ export const Variant = {
 
       <sd-brandshape variant="image">
         <div class="slot slot--border slot--text h-8 w-full">Default slot</div>
-        <img slot="image" style="transform:translateY(-30%);" src="./placeholders/images/generic.jpg" alt="Generic" />
+        <img slot="image" src="./placeholders/images/generic.jpg" alt="" />
       </sd-brandshape>
 
       <div class="bg-primary">
@@ -106,6 +106,8 @@ export const Variant = {
 
 /**
  * Use the `shapes` attribute to only display specific parts of the brandshape.
+ *
+ * The `border-primary`, `border-white`, and `image` variants are **supported only in the default shape** where all three shapes (`top`, `middle`, and `bottom`) are shown simultaneously.
  */
 export const Shapes = {
   name: 'Shapes',
@@ -130,4 +132,22 @@ export const Shapes = {
   `
 };
 
-// TODO: Add copyright story once it's implemented. (issue: https://github.com/solid-design-system/solid/issues/1319)
+/**
+ * Use the `object-position` CSS property to adjust the focal point of the image.
+ */
+
+export const ImageTranslateY = {
+  name: 'Image Translation',
+  render: () => html`
+    <sd-brandshape variant="image">
+      <div class="slot slot--border slot--text h-8 w-full">Default slot</div>
+      <img
+        slot="image"
+        src="./placeholders/images/architecture.jpg"
+        style="object-position: top right"
+        alt="Modern, waved architecture with blue sky in background"
+      />
+    </sd-brandshape>
+  `
+};
+// TODO: Add copyright story once it's implemented. (issue: https://github.com/solid-design-system/solid/issues/1553)
