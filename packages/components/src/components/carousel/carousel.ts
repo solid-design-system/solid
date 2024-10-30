@@ -261,9 +261,6 @@ export default class SdCarousel extends SolidElement {
       this.autoplayController.start(3000);
       this.autoplayControls.setAttribute('aria-pressed', 'true');
     }
-
-    // This is necessary to allow autoplay since focus is not removed when the button is clicked.
-    // this.autoplayControls?.blur();
   }
 
   @watch('loop', { waitUntilFirstUpdate: true })
