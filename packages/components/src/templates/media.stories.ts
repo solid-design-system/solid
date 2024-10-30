@@ -1,10 +1,6 @@
 import '../solid-components';
 import { html } from 'lit-html';
 
-/**
- * ```
- * ```
- */
 export default {
   title: 'Templates/Media',
   tags: ['!dev'],
