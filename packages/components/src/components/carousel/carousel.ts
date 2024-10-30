@@ -451,9 +451,9 @@ export default class SdCarousel extends SolidElement {
       behavior: prefersReducedMotion() ? 'auto' : behavior
     });
 
-    if (this.activeSlide === slides.length - 1) {
+    if (this.activeSlide === slides.length - 1 && !this.loop) {
       this.previousButton.focus({ preventScroll: true });
-    } else if (this.activeSlide === 0) {
+    } else if (this.activeSlide === 0 && !this.loop) {
       this.nextButton.focus({ preventScroll: true });
     }
   }
