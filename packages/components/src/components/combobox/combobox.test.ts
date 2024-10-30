@@ -1096,9 +1096,7 @@ describe('<sd-combobox>', () => {
     `);
 
     const getOptionHandler = sinon.spy((option: SdOption) => {
-      const updatedText = option.getTextLabel().concat(' - custom');
-      // eslint-disable-next-line no-param-reassign
-      option.textContent = updatedText;
+      option.textContent = option.getTextLabel().concat(' - custom');
       return option;
     });
 
