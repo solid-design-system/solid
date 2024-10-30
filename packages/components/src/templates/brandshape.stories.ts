@@ -3,7 +3,7 @@ import { html } from 'lit-html';
 
 export default {
   tags: ['!dev'],
-  title: 'Templates/Brandshape Template',
+  title: 'Templates/Brandshape',
   parameters: {
     design: {
       type: 'figma',
@@ -15,11 +15,7 @@ export default {
 
 /**
  * Example of a brandshape with the variant `border-primary`.
- *
- * ```
- * ```
  */
-
 export const Default = {
   name: 'Brandshape',
   render: () =>

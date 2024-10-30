@@ -11,7 +11,7 @@ const { generateTemplate } = storybookTemplate('sd-tooltip');
  * Used as a floating and non-actionable text label that explains an element or function of the user interface.
  *
  *  **Related templates:**
- * - [Select with tooltip](?path=/docs/templates-select--docs#select%20with%20tooltip)
+ * - [Select with Tooltip](?path=/docs/templates-select--docs#select%20with%20tooltip)
  */
 export default {
   title: 'Components/sd-tooltip',
@@ -73,9 +73,6 @@ export default {
   ] as unknown
 };
 
-/**
- * Default: This shows sd-tooltip in its default state.
- */
 export const Default = {
   name: 'Default',
   render: (args: any) => {
@@ -88,11 +85,12 @@ export const Default = {
 };
 
 /**
- * Use the `size` attribute to change the tooltip trigger size.
+ * Use the `size` attribute to change the tooltip trigger size:
  *
- * - `lg` is the default tooltip trigger size.
- * - `sm` can be used as an alternative.
+ * - `lg` (default)
+ * - `sm`
  */
+
 export const Size = {
   render: () => html`
     <div class="flex items-center gap-12">
@@ -103,15 +101,16 @@ export const Size = {
 };
 
 /**
- * Use the `placement` attribute to set the placement.
+ * Use the `placement` attribute to set the placement:
  *
- * - `top-start`: displays tooltip above the trigger element and aligns arrow to the start of the tooltip container
- * - `top`: displays tooltip above the trigger element
- * - `top-end`: displays tooltip above the trigger element and aligns arrow to the end of the tooltip container
- * - `bottom-start`: displays tooltip below the trigger element and aligns arrow to the start of the tooltip container
- * - `bottom`: displays tooltip below the trigger element
- * - `bottom-end`: displays tooltip below the trigger element and aligns arrow to the end of the tooltip container
+ * - `top-start`: Displays tooltip above the trigger element and aligns arrow to the start of the tooltip container
+ * - `top`: Displays tooltip above the trigger element
+ * - `top-end`: Displays tooltip above the trigger element and aligns arrow to the end of the tooltip container
+ * - `bottom-start`: Displays tooltip below the trigger element and aligns arrow to the start of the tooltip container
+ * - `bottom`: Displays tooltip below the trigger element
+ * - `bottom-end`: Displays tooltip below the trigger element and aligns arrow to the end of the tooltip container
  */
+
 export const Placement = {
   render: () => html`
     <div class="grid md:grid-cols-3 gap-24">
@@ -158,18 +157,20 @@ export const Placement = {
 /**
  * Use the `disabled` attribute to disable the tooltip trigger.
  */
+
 export const Disabled = {
   render: () => html` <sd-tooltip content="Lorem ipsum" placement="top" size="lg" disabled></sd-tooltip> `
 };
 
 /**
- * Use the `trigger` attribute to control how the tooltip is triggered.
+ * Use the `trigger` attribute to control how the tooltip is triggered:
  *
- * - `click`: displays the tooltip when the trigger element is clicked
- * - `hover`: displays the tooltip when the trigger element is hovered
- * - `focus`: displays the tooltip when the trigger element is focused
- * - `manual`: displays the tooltip when the `open` attribute is set to `true`
+ * - `click`: Displays the tooltip when the trigger element is clicked
+ * - `hover`: Displays the tooltip when the trigger element is hovered
+ * - `focus`: Displays the tooltip when the trigger element is focused
+ * - `manual`: Displays the tooltip when the `open` attribute is set to `true`
  */
+
 export const Trigger = {
   render: () => html` <sd-tooltip content="Lorem ipsum" placement="top-start" size="lg" trigger="click"></sd-tooltip> `
 };
@@ -180,6 +181,6 @@ export const Trigger = {
 export const Hoist = {
   render: () =>
     html` <div class="flex items-end overflow-scroll h-[5em] w-16">
-      <sd-tooltip content="Lorem ipsum" placement="bottom-start" size="lg"></sd-tooltip>
+      <sd-tooltip content="Lorem ipsum" placement="bottom-start" size="lg" hoist></sd-tooltip>
     </div>`
 };

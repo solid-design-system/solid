@@ -18,8 +18,8 @@ const { generateTemplate } = storybookTemplate('sd-step');
  *
  * **Related templates:**
  * - [Step Group](?path=/docs/templates-sd-step-group--docs)
- *
  */
+
 export default {
   title: 'Components/sd-step',
   tags: ['!dev'],
@@ -57,10 +57,6 @@ export default {
   ] as unknown
 };
 
-/**
- * Default: This shows sd-step in its default state.
- */
-
 export const Default = {
   name: 'Default',
   render: (args: any) => {
@@ -69,7 +65,10 @@ export const Default = {
 };
 
 /**
- * Use the `size` attribute to set the size of a step.
+ * Use the `size` attribute to set the size of a step:
+ *
+ * - `lg`(default)
+ * - `sm`
  */
 
 export const Size = {
@@ -87,7 +86,10 @@ export const Size = {
 };
 
 /**
- * Use the `orientation` attribute to set the axis of a step.
+ * Use the `orientation` attribute to set the axis of a step:
+ *
+ * - `horizontal`(default)
+ * - `vertical`
  */
 
 export const Orientation = {
@@ -160,7 +162,7 @@ export const NoTail = {
   render: () => html`
     <div class="w-min">
       <sd-step no-tail>
-        <span slot="label">Step name</span>
+        <span slot="label">Completed</span>
       </sd-step>
     </div>
   `

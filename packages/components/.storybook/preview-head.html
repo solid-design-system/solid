@@ -132,14 +132,40 @@
   /**
     * Optimize autodocs for templates
     */
-  .sbdocs-title + [id^='anchor--templates-'].sb-anchor,
-  h1.sbdocs-title + [id^='anchor--templates-'].sb-anchor + h2,
-  [id^='anchor--templates-'].sb-anchor > .sbdocs > .sb-bar,
+  h2#stories,
   h2#stories + [id^='anchor--components-'].sb-anchor,
-  h2#stories + [id^='anchor--styles-'].sb-anchor {
+  h2#stories + [id^='anchor--styles-'].sb-anchor,
+  [id^='anchor--templates-'].sb-anchor > .sbdocs > .sb-bar {
     display: none;
   }
+
   [id^='anchor--templates-'].sb-anchor > .sbdocs {
     padding: 0;
   }
 </style>
+<script>
+  /**
+   * Dev note: this script is used to remove the first story generated in the templates. This story is automatically
+   * generated and contains the same id as the second story and this causes issues when adding interactivity to the stories.
+   */
+
+  document.addEventListener('DOMContentLoaded', function () {
+    // find the start of the stories section using the header
+    const storiesSection = [...document.querySelectorAll('h2')].find(header => header.textContent.trim() === 'Stories');
+
+    if (storiesSection && document.title.includes('templates-')) {
+      const previousSiblings = [];
+      let sibling = storiesSection.previousElementSibling;
+
+      while (sibling) {
+        if (sibling.classList.contains('sb-anchor')) {
+          previousSiblings.push(sibling);
+        }
+        sibling = sibling.previousElementSibling;
+      }
+
+      // removes all the previous stories
+      previousSiblings.forEach(story => story.remove());
+    }
+  });
+</script>

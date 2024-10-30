@@ -1,6 +1,7 @@
+import { css, html, svg } from 'lit';
 import { customElement } from '../../../src/internal/register-custom-element';
-import { html, svg } from 'lit';
 import { property } from 'lit/decorators.js';
+import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 import type { SVGTemplateResult } from 'lit';
@@ -13,6 +14,7 @@ import type { SVGTemplateResult } from 'lit';
  * @since 2.12
  *
  * @slot - The marker's content.
+ *
  * @cssproperty --map-marker-scaling - Scale the marker size.
  */
 @customElement('sd-map-marker')
@@ -32,13 +34,7 @@ export default class SdMapMarker extends SolidElement {
       <circle cx="25" cy="25" opacity="1" r="20" />
       <circle cx="25" cy="25" opacity=".3" r="25" />
     </svg>`,
-    main: svg`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 75">
-      <path
-        fill-rule="evenodd"
-        d="M51 49A29 29 0 0 0 30 0 29 29 0 0 0 9 49l21 22 21-22ZM40 28a10 10 0 1 1-20 0 10 10 0 0 1 20 0Z"
-        clip-rule="evenodd"
-      />
-    </svg>`,
+    main: svg`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 75"><path d="M51 49A29 29 0 0 0 30 0 29 29 0 0 0 9 49l21 22 21-22Z"/><circle cx="30" cy="28" r="10" fill="#fff"/></svg>`,
     place: svg`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 75">
       <path fill-rule="evenodd" d="M51 49A29 29 0 0 0 30 0 29 29 0 0 0 9 49l21 22 21-22Z" clip-rule="evenodd" />
     </svg>`
@@ -46,16 +42,9 @@ export default class SdMapMarker extends SolidElement {
 
   render() {
     return html`
-      <div
-        tabindex="0"
-        class=${cx(
-          'flex justify-center w-[calc(theme(width.12)*var(--map-marker-scaling,1))] focus:outline-primary focus:outline-offset-2',
-          this.variant === 'cluster'
-            ? 'h-[calc(theme(height.12)*var(--map-marker-scaling,1))]'
-            : 'h-[calc(theme(height.16)*var(--map-marker-scaling,1))]'
-        )}
-      >
+      <div part="base" tabindex="0" class="flex justify-center  focus:outline-primary focus:outline-offset-2">
         <div
+          part="marker"
           class=${cx(
             'inline-flex',
             this.animated && (this.variant === 'main' || this.variant === 'place') && 'animate-bounce-once',
@@ -75,20 +64,48 @@ export default class SdMapMarker extends SolidElement {
           ${this.marker[this.variant]}
         </div>
         <div
-          class=${cx(
-            'absolute self-center pointer-events-none',
-            {
-              cluster: 'text-white text-[calc(theme(fontSize.sm)*var(--map-marker-scaling,1))]',
-              main: '',
-              place: 'text-[calc(theme(fontSize.3xl)*var(--map-marker-scaling,1))]'
-            }[this.variant]
-          )}
+          part="content"
+          class=${cx('absolute self-center pointer-events-none', this.variant === 'cluster' && 'text-white')}
         >
           <slot></slot>
         </div>
       </div>
     `;
   }
+
+  /**
+   * Inherits Tailwindclasses and includes additional styling.
+   */
+  static styles = [
+    componentStyles,
+    SolidElement.styles,
+    css`
+      :host {
+        display: block;
+      }
+
+      :host([variant='cluster']) [part='base'],
+      svg {
+        width: calc(var(--sd-spacing-12, 3rem) * var(--map-marker-scaling, 1));
+      }
+
+      :host([variant='cluster']) [part='base'] {
+        height: calc(var(--sd-spacing-12, 3rem) * var(--map-marker-scaling, 1));
+      }
+
+      :host(:not([variant='cluster'])) [part='base'] {
+        height: calc(var(--sd-spacing-16, 4rem) * var(--map-marker-scaling, 1));
+      }
+
+      :host([variant='cluster']) [part='content'] {
+        font-size: calc(var(--sd-font-size-sm, 0.875rem) * var(--map-marker-scaling, 1));
+      }
+
+      :host([variant='place']) [part='content'] {
+        font-size: calc(var(--sd-font-size-3xl, 2rem) * var(--map-marker-scaling, 1));
+      }
+    `
+  ];
 }
 
 declare global {

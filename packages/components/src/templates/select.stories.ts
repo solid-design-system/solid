@@ -14,12 +14,10 @@ export default {
 };
 
 /**
- *
  * - Label: Additionally a label can be shown for each option group.
  * - Divider: Use `sd-divider` to group option items visually.
  * - Accessibility hint: group labels will be neglected by most assistive devices.
  */
-
 export const Default = {
   name: 'Grouping Options',
   render: () =>

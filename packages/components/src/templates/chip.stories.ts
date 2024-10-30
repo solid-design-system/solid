@@ -22,7 +22,6 @@ export default {
  * - `primary-500` on primary background
  * - `white` on image background
  */
-
 export const BackgroundOptions = {
   render: () =>
     html` <div class="grid grid-cols-2 grid-rows-2">

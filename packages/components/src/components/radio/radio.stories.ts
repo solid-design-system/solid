@@ -12,7 +12,6 @@ const { overrideArgs } = storybookHelpers('sd-radio');
  *  **Related components**:
  * - [sd-radio-group](?path=/docs/components-sd-radio-group--docs)
  * - [sd-radio-button](?path=/docs/components-sd-radio-button--docs)
- *
  */
 
 export default {
@@ -30,10 +29,6 @@ export default {
   }
 };
 
-/**
- * Default: This shows sd-radio in its default state.
- */
-
 export const Default = {
   name: 'Default',
   render: (args: any) => {
@@ -42,14 +37,24 @@ export const Default = {
 };
 
 /**
- * Use the `size` attribute to change the size of the input radio. This attribute affects the font-size within the element, while the element itself remains the same size.
+ * Use the `size` attribute to change the size of the input radio (`md` equals `lg` but added for consistency reason on input elements):
+ *
+ * - `lg` (default)
+ * - `md`
+ * - `sm`
+ *
+ * This attribute affects the font-size within the element, while the element itself remains the same size.
  */
-
 export const Size = {
   name: 'Size',
   render: () => html`
     <div class="flex gap-12">
       <sd-radio-group size="lg" value="1">
+        <sd-radio value="1">Radio 1</sd-radio>
+        <sd-radio value="2">Radio 2</sd-radio>
+        <sd-radio value="3">Radio 3</sd-radio>
+      </sd-radio-group>
+      <sd-radio-group size="md" value="1">
         <sd-radio value="1">Radio 1</sd-radio>
         <sd-radio value="2">Radio 2</sd-radio>
         <sd-radio value="3">Radio 3</sd-radio>
@@ -64,9 +69,8 @@ export const Size = {
 };
 
 /**
- * Use the `disabled` attribute to disable a input radio.
+ * Use the `disabled` attribute to disable an input radio.
  */
-
 export const Disabled = {
   name: 'Disabled',
   render: () => html`
@@ -79,11 +83,10 @@ export const Disabled = {
 };
 
 /**
- * The `invalid` attribute marks the radio as invalid.
+ * The component gets “invalid” state when the form is not valid.
  *
  * For an invalid radio-group (since radios always come in groups) an error-text underneath the group is mandatory.
  */
-
 export const Invalid = {
   name: 'Invalid',
   render: () => html`

@@ -11,11 +11,9 @@ export default {
   },
   title: 'Templates/Header'
 };
+
 /**
  * Sample of the sd-header
- *
- * ```
- * ```
  */
 export const SampleA = {
   render: () => html`

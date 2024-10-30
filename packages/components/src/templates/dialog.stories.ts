@@ -27,7 +27,6 @@ export default {
 /**
  *
  */
-
 export const Default = {
   name: 'Dialog with Button Group',
   render: () => html`

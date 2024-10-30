@@ -10,10 +10,9 @@ const { overrideArgs } = storybookHelpers('sd-input');
  * Used to allow users to enter text. It can be displayed in several ways, depending on the type.
  *
  * **Related templates**:
- * - [Autocomplete](?path=/docs/templates-autocomplete--docs)
  * - [Input](?path=/docs/templates-input--docs)
+ * - [Autocomplete](?path=/docs/templates-autocomplete--docs)
  */
-
 export default {
   tags: ['!dev'],
   title: 'Components/sd-input',
@@ -40,9 +39,12 @@ export const Default = {
 };
 
 /**
- * Use the `size` attribute to change the size.
+ * Use the `size` attribute to change the size:
+ *
+ * - `lg` (default)
+ * - `md`
+ * - `sm`
  */
-
 export const Size = {
   render: () => html`
     <div class="grid grid-cols-2 gap-12 content-end">
@@ -54,11 +56,10 @@ export const Size = {
 };
 
 /**
- * Use the `label` attribute to provide an accessible label for the input element.
+ * Use the `label` attribute to give the input an accessible label.
  *
  * For labels that contain HTML, use the `label` slot instead.
  */
-
 export const Label = {
   render: () => html`
     <div class="flex flex-row gap-12 items-baseline">
@@ -144,7 +145,8 @@ export const Clearable = {
 
 /**
  * Use the `password-toggle` attribute to add a toggle button that will show the password when activated.
- * - Note: Only works with `type=password`.
+ *
+ * __Hint:__ Only works with `type=password`.
  */
 
 export const TogglePassword = {

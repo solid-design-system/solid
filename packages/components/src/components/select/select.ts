@@ -1006,7 +1006,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
               aria-labelledby="label"
               part="listbox"
               class=${cx(
-                'bg-white px-2 py-3 relative border-primary',
+                'bg-white px-2 py-3 relative border-primary overflow-y-auto',
                 this.open && 'shadow',
                 this.currentPlacement === 'bottom'
                   ? 'border-r-2 border-b-2 border-l-2 rounded-br-default rounded-bl-default'
@@ -1047,6 +1047,10 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
 
       :host([required]) #label::after {
         content: ' *';
+      }
+
+      [part='listbox'] {
+        max-height: var(--auto-size-available-height, auto);
       }
 
       sd-popup::part(popup) {

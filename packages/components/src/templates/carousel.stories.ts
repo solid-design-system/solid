@@ -3,7 +3,7 @@ import { html } from 'lit-html';
 
 export default {
   tags: ['!dev'],
-  title: 'Templates/Carousel with Images',
+  title: 'Templates/Carousel',
   parameters: {
     chromatic: { disableSnapshot: true },
     design: {
@@ -13,8 +13,8 @@ export default {
   }
 };
 
-export const Default = {
-  name: 'Default',
+export const CarouselWithImages = {
+  name: 'Carousel with Images',
   render: () => html`
     <sd-carousel>
       <sd-carousel-item>
@@ -26,8 +26,7 @@ export const Default = {
       <sd-carousel-item>
         <img src="./placeholders/images/workspace.jpg" alt="workspace" class="aspect-video" />
       </sd-carousel-item>
-      <sd-carousel> </sd-carousel
-    ></sd-carousel>
+    </sd-carousel>
   `
 };
 
@@ -44,7 +43,6 @@ export const LoopAndAutoplay = {
       <sd-carousel-item>
         <img src="./placeholders/images/family.jpg" alt="family" class="aspect-video" />
       </sd-carousel-item>
-      <sd-carousel> </sd-carousel
-    ></sd-carousel>
+    </sd-carousel>
   `
 };

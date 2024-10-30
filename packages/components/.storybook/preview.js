@@ -67,7 +67,7 @@ export const preview = {
 export default preview;
 
 /**
- * This registers iconLibraries for the sd-icon component
+ * This registers iconLibraries for the documentation about how to register custom icon libraries for stacked-fractions
  */
 
 registerIconLibrary('global-resources', {
@@ -111,38 +111,6 @@ registerIconLibrary('global-resources', {
     });
     return svg;
   }
-});
-
-registerIconLibrary('global-resources-overriden', {
-  resolver: name => {
-    // split path and name
-    let path = name.split('/');
-    let iconName = path.pop();
-
-    // "system" and "system/colored" should both resolve to "system/colored", same for "content"
-    if (path.length === 1) {
-      path.push('colored');
-    }
-
-    // Override icon names which are baked into components
-    if (path[0] === 'system') {
-      iconName =
-        {
-          picture: 'dokumentimage'
-        }[iconName] || iconName;
-    } else if (path[0] === 'content') {
-      iconName =
-        {
-          picture: 'dokumentimage'
-        }[iconName] || iconName;
-    }
-
-    return `https://global-resources.fe.union-investment.de/latest/scripts/services/svg/attrax-icons/${path.join(
-      '/'
-    )}/${iconName}.svg`;
-  },
-  // We need currentColor as the main color for the icons
-  mutator: svg => svg.setAttribute('fill', 'currentColor')
 });
 
 export const parameters = {
@@ -249,10 +217,12 @@ const mocks = {
     '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 10.667c1.933 0 4-1.14 4-4.333s-2.067-4.333-4-4.333-4 1.14-4 4.333 2.067 4.333 4 4.333zM12 4c1.333 0 2 0.763 2 2.333s-0.667 2.333-2 2.333-2-0.763-2-2.333 0.667-2.333 2-2.333z"></path><path fill="currentColor" d="M17.127 11.417c-0.117-0.052-0.254-0.083-0.398-0.083-0.257 0-0.492 0.097-0.669 0.257l0.001-0.001-4.060 3.657-4.060-3.667c-0.176-0.159-0.412-0.257-0.669-0.257-0.145 0-0.283 0.031-0.407 0.086l0.006-0.003c-0.87 0.387-2.87 1.647-2.87 5.2v4.393c0 0.552 0.448 1 1 1v0h14c0.552 0 1-0.448 1-1v0-4.393c0-3.557-2-4.813-2.873-5.19zM18 20h-12v-3.393c0-1.713 0.59-2.593 1.147-3.040l3.58 3.223c0.335 0.305 0.782 0.492 1.273 0.492s0.938-0.187 1.275-0.494l-0.002 0.001 3.58-3.223c0.557 0.433 1.147 1.323 1.147 3.040z"></path></svg>',
   '/icons/system/colored/lock-locked.svg':
     '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M19 11h-1v-3.667c0-2.94-2.69-5.333-6-5.333s-6 2.393-6 5.333v3.667h-1c-0.552 0-1 0.448-1 1v0 9c0 0.552 0.448 1 1 1v0h14c0.552 0 1-0.448 1-1v0-9c0-0.552-0.448-1-1-1v0zM8 7.333c0-1.837 1.793-3.333 4-3.333s4 1.497 4 3.333v3.667h-8zM18 20h-12v-7h12z"></path><path fill="currentColor" d="M12 14.667c-0.552 0-1 0.448-1 1v0 1.667c0 0.552 0.448 1 1 1s1-0.448 1-1v0-1.667c0-0.552-0.448-1-1-1v0z"></path></svg>',
+
   /**
    * Content icons
    */
   '/icons/content/colored/picture.svg': `<svg id="picture_svg__Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72"> <path d="M52.13,4H12V58c0,5.61,3.46,10,7.87,10H60V14C60,8.39,56.54,4,52.13,4Zm0,4C54.23,8,56,10.75,56,14V48.17l-8-8-7,6.95-15-16L16,41.17V8ZM19.87,64C17.77,64,16,61.25,16,58V46.83l10-9.95,15,16,7-7.05,8,8V64Z" fill="#00358e"/> <circle cx="44" cy="20" r="6" fill="#43b02a"/> </svg> `,
+
   /**
    * New CDN
    */
@@ -260,6 +230,8 @@ const mocks = {
     '<svg id="picture_svg__Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72"> <path d="M52.13,4H12V58c0,5.61,3.46,10,7.87,10H60V14C60,8.39,56.54,4,52.13,4Zm0,4C54.23,8,56,10.75,56,14V48.17l-8-8-7,6.95-15-16L16,41.17V8ZM19.87,64C17.77,64,16,61.25,16,58V46.83l10-9.95,15,16,7-7.05,8,8V64Z" fill="#00358e"/> <circle cx="44" cy="20" r="6" fill="#43b02a"/> </svg>',
   '/union-investment/system/image.svg':
     '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="#00358e" d="M21 2h-18c-0.552 0-1 0.448-1 1v0 18c0 0.552 0.448 1 1 1v0h18c0.552 0 1-0.448 1-1v0-18c0-0.552-0.448-1-1-1v0zM20 4v9.253l-1.627-1.627c-0.181-0.181-0.431-0.292-0.707-0.292s-0.526 0.112-0.707 0.292v0l-2.96 2.96-4.96-4.96c-0.181-0.181-0.431-0.292-0.707-0.292s-0.526 0.112-0.707 0.292v0l-3.627 3.627v-9.253zM4 16.080l4.333-4.333 8.253 8.253h-12.587zM19.413 20l-4-4 2.253-2.253 2.333 2.333v3.92z"/><path fill="#00358e" d="M16 8c0 1.105-0.895 2-2 2s-2-0.895-2-2c0-1.105 0.895-2 2-2s2 0.895 2 2z"/></svg>',
+  '/union-investment/content/alarm.svg': `<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 72 72"><path fill="#2D9D00" d="M12.47 53.29c-11.29-13.47-11.29-33.11 0-46.58l3.06 2.58c-10.04 11.98-10.04 29.44 0 41.42l-3.06 2.58z"/><path fill="#2D9D00" d="M18.47 48.29A28.235 28.235 0 0 1 12 30c-.14-6.69 2.17-13.2 6.49-18.31l3 2.62A23.53 23.53 0 0 0 16 30a24.238 24.238 0 0 0 5.53 15.71l-3.06 2.58z"/><path fill="#00358E" d="M40 24c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 8c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/><path fill="#00358E" d="M63 25c-1.24 0-2.44.47-3.35 1.32-2.03-10.86-12.48-18.01-23.34-15.98S18.3 22.82 20.33 33.68s12.48 18.01 23.34 15.98a20.014 20.014 0 0 0 15.98-15.98A4.91 4.91 0 0 0 63 35c.16.01.32.01.48 0C61.12 46.08 51.33 54 40 54c-4.57.06-9.06-1.22-12.92-3.68l-3.08-2V68h32V53a27.913 27.913 0 0 0 12-23c0-2.76-2.24-5-5-5zM40 46c-8.84 0-16-7.16-16-16s7.16-16 16-16 16 7.16 16 16-7.16 16-16 16zm12 18H28v-8.61c3.76 1.74 7.86 2.63 12 2.61 4.15.01 8.25-.92 12-2.7V64z"/></svg>`,
+  '/union-investment/system/alarm.svg': `<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" id="Ebene_1" x="0" y="0" version="1.1" viewBox="0 0 72 72"><style>.st0,.st1{fill:none;stroke:#fff;stroke-width:6}.st1{stroke-linejoin:round}.st2{fill:none;stroke:#00358e;stroke-width:4;stroke-linecap:round}.st2,.st3,.st4{stroke-linejoin:round}.st3{fill:none;stroke:#43b02a;stroke-width:4}.st4{stroke:#00358e}.st4,.st5,.st6,.st7{fill:none;stroke-width:4}.st5{stroke:#fff;stroke-linejoin:round}.st6,.st7{stroke:#43b02a}.st7{stroke:#00358e}.st7,.st8{stroke-linecap:round}.st10,.st8,.st9{fill:none;stroke:#fff;stroke-width:4}.st10{stroke:#00358e}</style><circle cx="31" cy="27" r="20" fill="none" stroke="#00358E" stroke-width="6"/><circle cx="31" cy="27" r="6" fill="none" stroke="#00358E" stroke-width="6"/><path fill="none" stroke="#00358E" stroke-linejoin="round" stroke-width="6" d="M42 44v21H20V44"/><circle cx="63" cy="27" r="2" fill="none" stroke="#00358E" stroke-width="6"/><path fill="none" stroke="#00358E" stroke-width="6" d="M63 27c0 13.6-8.4 25.2-20.4 29.8"/></svg>`,
 
   /**
    * Attrax icons

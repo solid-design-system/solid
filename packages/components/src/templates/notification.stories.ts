@@ -15,6 +15,10 @@ export default {
   }
 };
 
+/**
+ * ```
+ * ```
+ */
 export const InfoNotification = {
   name: 'Info Notification',
   render: (_args: Record<string, any>) => {

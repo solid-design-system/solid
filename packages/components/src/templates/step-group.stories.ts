@@ -12,11 +12,9 @@ export default {
     }
   }
 };
+
 /**
  * Example of how to set the active step in a step group.
- *
- * ```
- * ```
  */
 export const NonInteractiveStepGroup = {
   render: () => html`

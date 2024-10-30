@@ -307,7 +307,7 @@ export const setCustomValidity = {
             const setSuccessButton = document.getElementById('success-button');
 
             // Initial error
-            const errorMessage = \`This is an initial custom error (\${new Date().toLocaleTimeString()})\`;
+            const errorMessage = \`This is an initial custom error.\`;
             input.setCustomValidity(errorMessage);
             input.reportValidity();
 
@@ -332,6 +332,21 @@ export const setCustomValidity = {
         );
       </script>
     `;
+  }
+};
+
+/**
+ * This shows sd-textarea takes the full height of the parent container.
+ */
+export const ResponsiveHeight = {
+  name: 'Responsive Height',
+  args: overrideArgs([
+    { type: 'attribute', name: 'label', value: 'Label' },
+    { type: 'attribute', name: 'value', value: 'value' },
+    { type: 'attribute', name: 'help-text', value: 'help-text' }
+  ]),
+  render: (args: any) => {
+    return html`<div class="w-[250px] h-[300px]">${generateTemplate({ args })}</div> `;
   }
 };
 
@@ -452,6 +467,7 @@ export const Combination = generateScreenshotStory([
   StyleOnValid,
   Validation,
   setCustomValidity,
+  ResponsiveHeight,
   Slots,
   Parts,
   Mouseless

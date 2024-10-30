@@ -56,7 +56,17 @@ export const Orientation = {
       },
       args
     });
-  }
+  },
+  decorators: [
+    (story: () => typeof html) => html`
+      <style>
+        td.template {
+          height: 150px;
+        }
+      </style>
+      ${story()}
+    `
+  ]
 };
 
 /**

@@ -5,5 +5,11 @@ export default {
   summary: 'Generates basic styles for copyright elements.',
   status: 'stable',
   since: '2.5.0',
-  attributes: []
+  attributes: [
+    {
+      name: 'sd-copyright--orientation-...',
+      options: ['vertical'],
+      description: 'The copyrights orientation.'
+    }
+  ]
 } satisfies Style;

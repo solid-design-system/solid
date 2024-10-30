@@ -1,0 +1,89 @@
+# Migration Guide: From `[ui-audio-player]` to `[sd-audio]`
+
+The new `[sd-audio]` is designed to replace the `[ui-audio-player]`. Instead of mainly providing content via attributes, the `[sd-audio]` component uses slots to allow for more flexibility and customization.
+
+## 💾 Slots
+
+### ✨ New Slots
+
+#### [play-icon]
+
+Slot for the play icon.
+
+#### [pause-icon]
+
+Slot for the pause icon.
+
+#### [transcript]
+
+Slot for the transcript.
+
+### 🔀 Updated Slots
+
+#### [default]
+
+The default slot is used to define the audio element.
+
+## ⚙️ Attributes
+
+### ✨ New Attributes
+
+#### [reversedLayout]
+
+Reverts the order of the audio controls and timestamps.
+
+#### [hideTimestamps]
+
+Hides the timestamps.
+
+### 🔀 Updated Attributes
+
+#### [isPlaying]
+
+`started` as been replaced by `isPlaying` attribute. The default value is **false**.
+
+### ❌ Removed Attributes
+
+The following attributes have been removed from the new [ui-audio-player] component:
+
+1. [preload]
+
+- The new component is designed as only a wrapper for the audio element, so the preload attribute is not needed.
+
+2. [src]
+
+- This attribute is no longer needed as the audio element is now passed as a slot.
+
+<hr />
+
+## 🥳 Events
+
+### ✨ New Events
+
+#### [sd-playback-start]
+
+Emitted when the audio playback starts.
+
+#### [sd-playback-end]
+
+Emitted when the audio playback ends.
+
+#### [sd-playback-pause]
+
+Emitted when the audio playback is paused.
+
+#### [sd-playback-mute]
+
+Emitted when the audio is muted.
+
+#### [sd-playback-unmute]
+
+Emitted when the audio is unmuted
+
+#### [sd-playback-speed]
+
+Emitted when the playback speed is changed.
+
+#### [sd-transcript-click]
+
+Emitted when the transcript button is clicked.

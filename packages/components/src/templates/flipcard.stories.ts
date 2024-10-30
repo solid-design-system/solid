@@ -3,11 +3,7 @@ import { html } from 'lit-html';
 
 /**
  * Example on how to use flipcard component.
- *
- * ```
- * ```
  */
-
 export default {
   tags: ['!dev'],
   title: 'Templates/Flipcard',
@@ -20,6 +16,10 @@ export default {
   }
 };
 
+/**
+ * ```
+ * ```
+ */
 export const Default = {
   render: () => html`
     <sd-flipcard
@@ -43,8 +43,8 @@ export const Default = {
       <img
         slot="media-front"
         class="object-cover h-full w-full"
-        src="./placeholders/images/londonHouse.jpg"
-        alt="Generic Alt"
+        src="./placeholders/images/skyline.jpg"
+        alt="City skyline of Frankfurt by night in christmas time."
       />
     </sd-flipcard>
   `

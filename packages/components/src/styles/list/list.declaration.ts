@@ -3,8 +3,8 @@ import type { Style } from '../../declaration';
 export default {
   styleName: 'sd-list',
   summary: 'Generates basic styles for list elements.',
-  status: 'experimental',
-  since: '1.33.1',
+  status: 'stable',
+  since: '1.39.0',
   attributes: [
     {
       name: 'sd-list--inverted',
