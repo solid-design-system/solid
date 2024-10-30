@@ -151,15 +151,16 @@ export const Loop = {
 };
 
 /**
- * Use the `autoplay` attribute to toggle autoplay.
+ * Use the `autoplay` attribute to toggle autoplay. Autoplay is automatically paused when the user interacts with the carousel or when the pause button is clicked.
  *
- * __Hint:__ Autoplay is automatically paused when the user interacts with the carousel or when the pause button is clicked.
+ * **Disclaimer**: Press the play button to start autoplay. It’s paused in Storybook to prevent screen reader confusion from multiple carousels on the page.
+ *
  */
 
 export const Autoplay = {
   render: () => html`
     <div>
-      <sd-carousel autoplay loop>
+      <sd-carousel class="autoplay" autoplay loop>
         <sd-carousel-item>
           <div class="slot slot--border slot--text h-16">Default slot 1</div>
         </sd-carousel-item>
@@ -171,6 +172,10 @@ export const Autoplay = {
         </sd-carousel-item>
       </sd-carousel>
     </div>
+    <script type="module">
+      const carousel = document.querySelector('.autoplay');
+      carousel?.pause();
+    </script>
   `
 };
 

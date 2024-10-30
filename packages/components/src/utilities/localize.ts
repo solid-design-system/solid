@@ -93,7 +93,7 @@ export interface Translation extends DefaultTranslation {
   selectAColorFromTheScreen: string;
   selectDefaultPlaceholder: string;
   showPassword: string;
-  slideNum: (slide: number) => string;
+  slideNum: (slide: number, count: number) => string;
   toggleColorFormat: string;
   audioPlayer: string;
   playAudio: string;

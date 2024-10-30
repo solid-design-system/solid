@@ -28,7 +28,7 @@ const translation: Translation = {
   selectAColorFromTheScreen: 'Farbe vom Bildschirm auswählen',
   selectDefaultPlaceholder: 'Bitte auswählen',
   showPassword: 'Passwort anzeigen',
-  slideNum: slide => `Folie ${slide}`,
+  slideNum: (slide, count) => `Folie ${slide} von ${count}`,
   toggleColorFormat: 'Farbformat umschalten',
   audioPlayer: 'Audio-Player',
   playAudio: 'Audio abspielen',

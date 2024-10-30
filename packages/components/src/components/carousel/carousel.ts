@@ -252,14 +252,28 @@ export default class SdCarousel extends SolidElement {
     this.requestUpdate();
   };
 
+  /**
+   * Pause the autoplay.
+   */
+  public pause() {
+    this.pausedAutoplay = true;
+  }
+
+  /**
+   * Resume the autoplay
+   */
+  public resume() {
+    this.pausedAutoplay = false;
+  }
+
   @watch('pausedAutoplay')
   handlePausedAutoplay() {
     if (this.pausedAutoplay) {
       this.autoplayController.stop();
-      this.autoplayControls.setAttribute('aria-pressed', 'false');
+      this.autoplayControls?.setAttribute('aria-pressed', 'false');
     } else if (this.autoplay) {
       this.autoplayController.start(3000);
-      this.autoplayControls.setAttribute('aria-pressed', 'true');
+      this.autoplayControls?.setAttribute('aria-pressed', 'true');
     }
   }
 
@@ -277,7 +291,7 @@ export default class SdCarousel extends SolidElement {
 
       slide.classList.remove('--in-view');
       slide.classList.remove('--is-active');
-      slide.setAttribute('aria-label', this.localize.term('slideNum', index + 1));
+      slide.setAttribute('aria-label', this.localize.term('slideNum', index + 1, slides.length));
 
       if (slide.hasAttribute('data-clone')) {
         slide.remove();
