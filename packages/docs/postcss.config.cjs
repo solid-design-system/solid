@@ -1,8 +1,5 @@
+const solidComponentsConfiguration = require('../components/postcss.config.cjs');
+
 module.exports = {
-  plugins: {
-    'tailwindcss/nesting': {},
-    tailwindcss: {},
-    autoprefixer: {},
-    ...(process.env.NODE_ENV === 'production' ? { cssnano: {} } : {})
-  }
+  ...solidComponentsConfiguration
 };
