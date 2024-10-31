@@ -3,30 +3,3 @@
 # Solid Docs
 
 The `docs` package serves as the central hub for all documentation related to the Solid Design System. It ensures that developers and users have access to comprehensive and up-to-date information about all elements provided by the design system (components, styles, utilities...).
-
-## Package Overview
-
-- **`docs`**
-  - `general`
-  - `migration`
-- **`packages`:**
-  - **`components`**
-    - `docs`
-    - `changelog`
-  - **`docs`**
-    - `docs`
-    - `changelog`
-  - **`placeholders`**
-    - `docs`
-    - `changelog`
-  - **`theming`**
-    - `docs`
-    - `changelog`
-  - **`tokens`**
-    - `docs`
-    - `changelog`
-- **`components`**
-- **`utilities`**
-- **`styles`**:
-- **`templates`**
-- **`legal`**
