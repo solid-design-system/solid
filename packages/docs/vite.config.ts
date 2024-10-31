@@ -3,8 +3,8 @@ import VitePluginCreateEmptyCemIfNotExisting from './scripts/vite-plugin-create-
 import VitePluginCustomElementsManifest from 'vite-plugin-cem';
 import VitePluginFetchIconsFromCdn from './scripts/vite-plugin-fetch-icons-from-cdn';
 import VitePluginGetPlaywrightVersion from './scripts/vite-plugin-get-playwright-version';
-import VitePluginGetTailwindTheme from './scripts/vite-plugin-get-tailwind-theme';
-import VitePluginLitTailwind from './scripts/vite-plugin-lit-tailwind';
+import VitePluginGetTailwindTheme from '../components/scripts/vite-plugin-get-tailwind-theme';
+import VitePluginLitTailwind from '../components/scripts/vite-plugin-lit-tailwind';
 import type { defineConfig } from 'vite';
 
 // https://vitejs.dev/config/
