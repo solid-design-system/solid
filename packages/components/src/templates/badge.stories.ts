@@ -86,7 +86,7 @@ export const ButtonWithBadge = {
 };
 
 /**
- * Examples of sd-navigation-item working with sd-badge:
+ * Example of sd-navigation-item working with sd-badge:
  */
 export const NavigationItemWithBadge = {
   name: 'Navigation Item with Badge',
