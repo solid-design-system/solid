@@ -1,0 +1,166 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Docs/General/Localization" />
+
+# Localization
+
+Components can be localized by importing the appropriate translation file and setting the desired [`lang` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang) and/or [`dir` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/dir) on the `<html>` element. Here's an example that renders Solid components in German.
+
+```html
+<html lang="de">
+  <head>
+    <script type="module" src="/path/to/solid/dist/translations/de.js"></script>
+  </head>
+
+  <body>
+    ...
+  </body>
+</html>
+```
+
+Through the magic of a mutation observer, changing the `lang` attribute will automatically update all localized components to use the new locale.
+
+Solid ships with German (`de`) and English (`en`) translations, which are both imported per default. The default is English (`en`), which also serves as the fallback locale.
+
+### Translation Resolution
+
+The locale set by `<html lang="...">` is the default locale for the document. If a country code is provided, e.g. `en-GB` for British English, the localization library will resolve it like this:
+
+1. Look for `en-GB`
+2. Look for `en`
+3. Fall back to `en`
+
+Solid uses English as a fallback to provide a better experience than rendering nothing or throwing an error.
+
+## Multiple Locales Per Page
+
+You can use a different locale for an individual component by setting its `lang` and/or `dir` attributes. Here's a contrived example to demonstrate.
+
+```html
+<html lang="de">
+  ...
+
+  <body>
+    <sd-button><!-- German --></sd-button>
+    <sd-button lang="en"><!-- English --></sd-button>
+  </body>
+</html>
+```
+
+For performance reasons, the `lang` and `dir` attributes must be on the component itself, not on an ancestor element.
+
+```html
+<html lang="de">
+  ...
+
+  <body>
+    <div lang="en">
+      <sd-button><!-- still in German --></sd-button>
+    </div>
+  </body>
+</html>
+```
+
+This limitation exists because there's no efficient way to determine the current locale of a given element in a DOM tree. This currently isn't possible in the proposer and [there are a couple properties proposed](https://github.com/whatwg/html/issues/7039) to make this possible.
+
+## Creating Your Own Translations
+
+You can provide your own translations if you have specific needs or if you don't want to wait for a translation to land upstream. The easiest way to do this is to copy `src/translations/en.ts` into your own project and translate the terms inside. When your translation is done, you can import it and use it just like a built-in translation.
+
+Let's create a Spanish translation as an example. The following assumes you're using TypeScript, but you can also create translations with regular JavaScript.
+
+```js
+import { registerTranslation } from '@solid-design-system/components/dist/package/utilities/localize';
+import type { Translation } from '@solid-design-system/components/dist/package/utilities/localize';
+
+const translation: Translation = {
+  $code: 'es',
+  $name: 'Español',
+  $dir: 'ltr',
+
+  term1: '...',
+  term2: '...',
+  ...
+};
+
+registerTranslation(translation);
+
+export default translation;
+```
+
+Once your translation has been compiled to JavaScript, import it and activate it like this.
+
+```html
+<html lang="es">
+  <head>
+    <script type="module" src="/path/to/es.js"></script>
+  </head>
+
+  <body>
+    ...
+  </body>
+</html>
+```
+
+> If your translation isn't working, make sure you're using the same localize module when importing `registerTranslation`. If you're using a different module, your translation won't be recognized.
+
+## Custom Localization
+
+Solid components support custom localization through data attributes or programmatically per component instance. Here’s how to apply custom localizations:
+
+### Data Attribute
+
+Use data-custom-localization with a JSON object for custom translations. Components automatically update when data-custom-localization changes.
+
+```html
+<sd-select lang="de" value="option-1" clearable data-custom-localization='{"clearEntry": "Reset!!"}'>
+  <sd-option value="option-1">Option 1</sd-option>
+</sd-select>
+```
+
+Components automatically update when data-custom-localization changes.
+
+```html
+<sd-select lang="de" value="option-1" clearable data-custom-localization='{"clearEntry": "Reset!"}'>
+  <sd-option value="option-1">Option 1</sd-option>
+</sd-select>
+
+<script>
+  const selectElement = document.querySelector('sd-select');
+  selectElement.setAttribute('data-custom-localization', '{"clearEntry": "Updated!"}');
+</script>
+```
+
+### Programmatic Localization
+
+Set custom translations using `setCustomLocalization`.
+
+```html
+<sd-select value="option-1" clearable>
+  <sd-option value="option-1">Option 1</sd-option>
+</sd-select>
+
+<script type="module">
+  const selectElement = document.querySelector('sd-select');
+  selectElement.localize.setCustomLocalization({ clearEntry: 'Reset me!' });
+</script>
+```
+
+This enables to use functions for dynamic translations.
+
+```html
+<sd-select name="a" value="option-2 option-3" multiple>
+  <sd-option value="option-1">Option 1</sd-option>
+  <sd-option value="option-2">Option 2</sd-option>
+  <sd-option value="option-3">Option 3</sd-option>
+</sd-select>
+
+<script type="module">
+  const selectElement = document.querySelector('sd-select');
+  selectElement.localize.setCustomLocalization({
+    numOptionsSelected: num => (num === 0 ? '' : `Funds selected (${num})`)
+  });
+
+  selectElement.value = 'option-1';
+</script>
+```
