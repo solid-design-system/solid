@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v3.20.5](https://github.com/solid-design-system/solid/compare/components/3.20.4...components/3.20.5) (2024-10-31)
+
+
+### Bug Fixes
+
+* sd badge a11y ([#1563](https://github.com/solid-design-system/solid/issues/1563)) ([762656f](https://github.com/solid-design-system/solid/commit/762656f162fa1dbdf4cf56dc8f5974cbd1dc9dbc))
+
+### 📈 Stats
+* Bundle size (uncompressed): 401 KB (unchanged)
+* Bundle size (gzipped): 123 KB (unchanged)
+
 # [@solid-design-system/components-v3.20.4](https://github.com/solid-design-system/solid/compare/components/3.20.3...components/3.20.4) (2024-10-30)
 
 
