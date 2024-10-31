@@ -10,7 +10,12 @@ assignees: ''
 ## Current behavior
 
 ## Steps to reproduce
+<!-- To help us address issues efficiently, please provide a minimal reproduction of the problem. This enables us to isolate the issue within our components.
 
+### Suggested Reproduction Tools
+
+- **HTML/CSS Issues**: Use [CodePen](https://codepen.io/) to create a simple example focusing on HTML/CSS.
+- **Framework-Specific Issues**: Use [Stackblitz](https://stackblitz.com/) or [CodeSandbox](https://codesandbox.io/) for framework-related issues or complex setups. -->
 ## Benefits
 
 ## Technical Information
@@ -22,8 +27,5 @@ assignees: ''
 - [ ] Item dependencies have been identified
 
 ## DoD
-- [ ] Documentation has been created/updated (if applicable)
-- [ ] Migration Guide has been created/updated (if applicable)
 - [ ] Relevant E2E tests (Features, A11y, Bug fixes) are created/updated
-- [ ] Relevant stories (Features, A11y) are created/updated
 - [ ] Implementation works successfully on `feature` branch
