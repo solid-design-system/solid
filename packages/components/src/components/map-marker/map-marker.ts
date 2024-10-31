@@ -83,6 +83,7 @@ export default class SdMapMarker extends SolidElement {
         target=${ifDefined(isLink ? this.target : undefined)}
         @blur=${this.handleBlur}
         @focus=${this.handleFocus}
+        aria-labelledby="content"
       >
         <div
           part="marker"
@@ -110,6 +111,7 @@ export default class SdMapMarker extends SolidElement {
           ${this.marker[this.variant]}
         </div>
         <div
+          id="content"
           part="content"
           class=${cx('absolute self-center pointer-events-none', this.variant === 'cluster' && 'font-bold text-white')}
         >
