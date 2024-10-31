@@ -198,11 +198,11 @@ export const Icon = {
     <sd-step-group size="lg" orientation="horizontal" active-step="0" not-interactive>
       <sd-step size="lg" orientation="horizontal" state="default" not-interactive>
         <sd-icon slot="circle-content" name="content/image" class="h-12 w-12"></sd-icon>
-        <div slot="label">Label</div>
+        <div slot="label">Labol</div>
       </sd-step>
 
       <sd-step size="lg" orientation="horizontal" state="default" not-interactive>
-        <sd-icon slot="circle-content" name="content/image" class="h-12 w-12"></sd-icon>
+        <sd-icon slot="circle-content" name="content/settings" class="h-12 w-12"></sd-icon>
         <div slot="label">Label</div>
       </sd-step>
 
