@@ -36,6 +36,6 @@
     }
   ]
   },
-  "include": ["src/**/*", "vite.config.*ts", "../../docs/src/**/*.ts"],
+  "include": ["src/**/*", "vite.config.*ts"],
   "exclude": ["src/_components/**", "custom-elements-manifest.config.ts"]
 }
