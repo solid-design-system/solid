@@ -98,7 +98,7 @@ export const NavigationItemWithBadge = {
             <img class="h-8" src="images/logo-unioninvestment-lg.svg" alt="Logo" />
           </a>
           <div class="flex">
-            <sd-navigation-item class="relative" role="button">
+            <sd-navigation-item class="relative">
               <sd-icon name="system/bell" class="text-xl"></sd-icon>
               <sd-badge class="absolute top-1 -right-5" size="md">
                 +99
