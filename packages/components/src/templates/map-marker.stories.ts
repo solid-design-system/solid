@@ -18,7 +18,7 @@ export default {
 };
 
 /**
- * ### Map Maker with Images
+ * ### Map Marker with Image
  */
 export const MapMakerWithImages = {
   render: () =>
