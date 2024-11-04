@@ -69,8 +69,8 @@ export const Default = {
 /**
  * Use the `variant` attribute to select the pagination format:
  *
- * - `Number` (default): can be used for all use cases
- * - `Dot`: can only be used for up to 5 items total
+ * - `number` (default): can be used for all use cases
+ * - `dot`: can only be used for up to 5 items total
  */
 
 export const Variant = {
