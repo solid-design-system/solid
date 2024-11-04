@@ -102,10 +102,8 @@ export const SampleA = {
       </nav>
     </sd-drawer>
     <script>
-      // This line is using querySelectorAll due to hidden elements from Storybook configs.
-      // In a regular environment, use: const drawer = document.getElementById('#sample-a-drawer') or similar
       function openDrawerSampleA() {
-        const drawerSampleA = Array.from(document.querySelectorAll('#sample-a-drawer')).pop();
+        const drawerSampleA = document.getElementById('sample-a-drawer');
         drawerSampleA.show();
       }
     </script>
