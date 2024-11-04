@@ -1,10 +1,6 @@
 import '../solid-components';
 import { html } from 'lit-html';
 
-/**
- * ```
- * ```
- */
 export default {
   tags: ['!dev'],
   title: 'Templates/Forms',
@@ -20,15 +16,13 @@ export default {
 export const LoginForm = {
   render: () => html`
     <style>
-      #loginForm__submitButton::part(icon-left) {
+      #login-form sd-button::part(icon-left) {
         display: flex;
-      }
-      #loginForm__submitButton::part(base) {
-        display: flex;
+        justify-content: flex-end;
       }
     </style>
     <section class="sd-container">
-      <form id="loginForm">
+      <form id="login-form">
         <h3 class="sd-headline sd-headline--size-3xl mb-8">Login for UnionFondsOnline users</h3>
         <sd-input type="number" inputmode="numeric" label="Access number" class="mb-4" required></sd-input>
         <sd-input
@@ -50,9 +44,12 @@ export const LoginForm = {
       </form>
     </section>
     <script type="module">
-      document.getElementById('loginForm').onsubmit = event => {
+      const loginForm = document.getElementById('login-form');
+      loginForm.onsubmit = event => {
         event.preventDefault();
-        alert('Login form submitted');
+        if (loginForm.checkValidity()) {
+          alert('Login form submitted');
+        }
       };
     </script>
   `
@@ -60,7 +57,7 @@ export const LoginForm = {
 
 export const ContactForm = {
   render: () => html`
-    <form class="sd-prose sd-prose--full-width" id="contactForm">
+    <form class="sd-prose sd-prose--full-width" id="contact-form">
       <h3 class="sd-headline sd-headline--size-4xl">Contact</h3>
       <sd-radio-group id="inquiry-radio-group" orientation="horizontal" value="general-inquiry">
         <sd-radio name="inquiryType" value="general-inquiry">General inquiry</sd-radio>
@@ -123,7 +120,7 @@ export const ContactForm = {
         customElements.whenDefined('sd-input'),
         customElements.whenDefined('sd-select')
       ]).then(() => {
-        const form = document.getElementById('contactForm');
+        const form = document.getElementById('contact-form');
         form.onsubmit = event => {
           event.preventDefault(); // Prevent the default form submission
           const formData = new FormData(form);
