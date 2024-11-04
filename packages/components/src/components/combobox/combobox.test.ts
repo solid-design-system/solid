@@ -564,7 +564,28 @@ describe('<sd-combobox>', () => {
       await clickOnElement(secondOption);
       await el.updateComplete;
 
-      await expect(el.value).to.deep.equal(['option-1', 'option-3', 'option-2']);
+      await expect(el.value).to.deep.equal(['option-1', 'option-2', 'option-3']);
+    });
+
+    it('should work with options that do not have a value', async () => {
+      const el = await fixture<SdCombobox>(html`
+        <sd-combobox multiple>
+          <sd-option>Option 1</sd-option>
+          <sd-option>Option 2</sd-option>
+          <sd-option>Option 3</sd-option>
+        </sd-combobox>
+      `);
+      await el.show();
+      await el.updateComplete;
+      const filteredListbox = el.shadowRoot!.querySelector('#listbox-options')!;
+      const secondOption = filteredListbox.querySelectorAll<SdOption>('sd-option')[1];
+      await clickOnElement(secondOption);
+      await el.updateComplete;
+      const thirdOption = filteredListbox.querySelectorAll<SdOption>('sd-option')[2];
+      await clickOnElement(thirdOption);
+      await el.updateComplete;
+
+      expect(el.value).to.deep.equal(['Option 2', 'Option 3']);
     });
   });
 
@@ -1014,7 +1035,6 @@ describe('<sd-combobox>', () => {
     expect(afterShowHandler).to.not.have.been.called;
     expect(errorHandler).to.have.been.calledOnce;
   });
-
   it('should update the filtered list when an option changes', async () => {
     const el = await fixture<SdCombobox>(html`
       <sd-combobox>
@@ -1026,19 +1046,19 @@ describe('<sd-combobox>', () => {
     const secondSlottedOption = el.querySelectorAll('sd-option')[1];
 
     await el.show();
+    const defaultOptionsSlot = el.shadowRoot!.querySelector('#defaultOptionsSlot')!;
     const filteredListbox = el.shadowRoot!.querySelector('#listbox-options')!;
     const secondOption = filteredListbox.querySelectorAll('sd-option')[1];
 
-    expect(secondOption.getTextLabel()).to.equal('Option 2');
+    await expect(secondOption.getTextLabel()).to.equal('Option 2');
 
     secondSlottedOption.textContent = 'updated';
-    await oneEvent(secondSlottedOption, 'slotchange');
+    await oneEvent(defaultOptionsSlot, 'slotchange');
     await el.updateComplete;
     const secondUpdatedOption = filteredListbox.querySelectorAll('sd-option')[1];
 
-    expect(secondUpdatedOption.getTextLabel()).to.equal('updated');
+    await expect(secondUpdatedOption.getTextLabel()).to.equal('updated');
   });
-
   it('should update the filtered list when an option is added dynamically', async () => {
     const el = await fixture<SdCombobox>(html`
       <sd-combobox>
@@ -1085,7 +1105,6 @@ describe('<sd-combobox>', () => {
     expect(filterHandler).to.have.been.calledThrice;
     expect(options.length).to.equal(2);
   });
-
   it('should use the custom getOption renderer if the getOption property is used', async () => {
     const el = await fixture<SdCombobox>(html`
       <sd-combobox>
@@ -1123,7 +1142,7 @@ describe('<sd-combobox>', () => {
       </sd-combobox>
     `);
     await el.show();
-
+    await el.updateComplete;
     const filteredListbox = el.shadowRoot!.querySelector('#listbox-options')!;
     const secondOption = filteredListbox.querySelectorAll<SdOption>('sd-option')[1];
     await clickOnElement(secondOption);
