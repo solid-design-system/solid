@@ -48,6 +48,32 @@ export const TextAreaWithTooltip = {
   `
 };
 
+export const RadioGroupWithTooltip = {
+  render: () => html`
+    <sd-radio-group class="w-[400px] py-6" boldLabel>
+      <div slot="label">Label Slot</div>
+      <sd-tooltip slot="tooltip" content="Lorem ipsum sic semper" size="sm"></sd-tooltip>
+
+      <sd-radio value="option-1">Option 1</sd-radio>
+      <sd-radio value="option-2">Option 2</sd-radio>
+      <sd-radio value="option-3">Option 3</sd-radio>
+    </sd-radio-group>
+  `
+};
+
+export const CheckboxGroupWithTooltip = {
+  render: () => html`
+    <sd-checkbox-group class="w-[400px] py-6">
+      <div slot="label">Label Slot</div>
+      <sd-tooltip slot="tooltip" content="Lorem ipsum sic semper" size="sm"></sd-tooltip>
+
+      <sd-checkbox value="option-1">Option 1</sd-checkbox>
+      <sd-checkbox value="option-2">Option 2</sd-checkbox>
+      <sd-checkbox value="option-3">Option 3</sd-checkbox>
+    </sd-checkbox-group>
+  `
+};
+
 export const TooltipWithBoldedText = {
   render: () => html`
     <div class="h-40 flex items-center pl-20">
