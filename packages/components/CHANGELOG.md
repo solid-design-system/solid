@@ -1,3 +1,58 @@
+# [@solid-design-system/components-v3.20.6](https://github.com/solid-design-system/solid/compare/components/3.20.5...components/3.20.6) (2024-10-31)
+
+
+### Bug Fixes
+
+* sd-map-marker a11y ([#1577](https://github.com/solid-design-system/solid/issues/1577)) ([d755c32](https://github.com/solid-design-system/solid/commit/d755c32fbce6c0134d4eec2faf36e7977a8e2caf))
+
+### 📈 Stats
+* Bundle size (uncompressed): 402 KB (+1 KB / +0%)
+* Bundle size (gzipped): 123 KB (unchanged)
+
+# [@solid-design-system/components-v3.20.5](https://github.com/solid-design-system/solid/compare/components/3.20.4...components/3.20.5) (2024-10-31)
+
+
+### Bug Fixes
+
+* sd badge a11y ([#1563](https://github.com/solid-design-system/solid/issues/1563)) ([762656f](https://github.com/solid-design-system/solid/commit/762656f162fa1dbdf4cf56dc8f5974cbd1dc9dbc))
+
+### 📈 Stats
+* Bundle size (uncompressed): 401 KB (unchanged)
+* Bundle size (gzipped): 123 KB (unchanged)
+
+# [@solid-design-system/components-v3.20.4](https://github.com/solid-design-system/solid/compare/components/3.20.3...components/3.20.4) (2024-10-30)
+
+
+### Bug Fixes
+
+* sd-navigation-item a11y ([#1578](https://github.com/solid-design-system/solid/issues/1578)) ([b416555](https://github.com/solid-design-system/solid/commit/b416555becc2a9fa649725d44d485a174fb379cd))
+
+### 📈 Stats
+* Bundle size (uncompressed): 401 KB (+52 KB / +15%)
+* Bundle size (gzipped): 123 KB (+41 KB / +50%)
+
+# [@solid-design-system/components-v3.20.3](https://github.com/solid-design-system/solid/compare/components/3.20.2...components/3.20.3) (2024-10-29)
+
+
+### Bug Fixes
+
+* dot controls in sd-carousel to behave like numbered controls ([#1584](https://github.com/solid-design-system/solid/issues/1584)) ([aadae6b](https://github.com/solid-design-system/solid/commit/aadae6b771cc669425e46027d80f7ff78b17167e)), closes [#1398](https://github.com/solid-design-system/solid/issues/1398)
+
+### 📈 Stats
+* Bundle size (uncompressed): 349 KB (unchanged)
+* Bundle size (gzipped): 82 KB (unchanged)
+
+# [@solid-design-system/components-v3.20.2](https://github.com/solid-design-system/solid/compare/components/3.20.1...components/3.20.2) (2024-10-24)
+
+
+### Bug Fixes
+
+* sd-brandshape a11y ([#1585](https://github.com/solid-design-system/solid/issues/1585)) ([3e491a7](https://github.com/solid-design-system/solid/commit/3e491a7e0648053b61c65d1aa03abaf070de2f72))
+
+### 📈 Stats
+* Bundle size (uncompressed): 349 KB (unchanged)
+* Bundle size (gzipped): 82 KB (unchanged)
+
 # [@solid-design-system/components-v3.20.1](https://github.com/solid-design-system/solid/compare/components/3.20.0...components/3.20.1) (2024-10-18)
 
 

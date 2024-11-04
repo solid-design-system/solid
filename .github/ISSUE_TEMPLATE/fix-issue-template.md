@@ -13,6 +13,13 @@ assignees: ''
 
 ## Steps to reproduce
 
+<!-- To help us address issues efficiently, please provide a minimal reproduction of the problem. This enables us to isolate the issue within our components.
+
+### Suggested Reproduction Tools
+
+- **HTML/CSS Issues**: Use [CodePen](https://codepen.io/) to create a simple example focusing on HTML/CSS.
+- **Framework-Specific Issues**: Use [Stackblitz](https://stackblitz.com/) or [CodeSandbox](https://codesandbox.io/) for framework-related issues or complex setups. -->
+
 ## Technical Information
 
 ## DoR
