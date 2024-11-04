@@ -30,8 +30,9 @@ export const LoginForm = {
     <section class="sd-container">
       <form id="loginForm">
         <h3 class="sd-headline sd-headline--size-3xl mb-8">Login for UnionFondsOnline users</h3>
-        <sd-input type="number" inputmode="numeric" label="Access number" class="mb-4"></sd-input>
+        <sd-input type="number" inputmode="numeric" label="Access number" class="mb-4" required></sd-input>
         <sd-input
+          required
           type="password"
           label="Password"
           class="mb-4"
@@ -49,13 +50,10 @@ export const LoginForm = {
       </form>
     </section>
     <script type="module">
-      const loginForm = Array.from(document.querySelectorAll('#loginForm')).pop();
-      console.log(loginForm);
-      // Listen for the form's submit event
-      loginForm.addEventListener('submit', function (event) {
-        event.preventDefault(); // Prevent the default form submission
-        alert('You are logged in!');
-      });
+      document.getElementById('loginForm').onsubmit = event => {
+        event.preventDefault();
+        alert('Login form submitted');
+      };
     </script>
   `
 };
@@ -126,8 +124,7 @@ export const ContactForm = {
         customElements.whenDefined('sd-select')
       ]).then(() => {
         const form = document.getElementById('contactForm');
-        // Listen for the form's submit event
-        form.addEventListener('submit', function (event) {
+        form.onsubmit = event => {
           event.preventDefault(); // Prevent the default form submission
           const formData = new FormData(form);
 
@@ -137,13 +134,12 @@ export const ContactForm = {
             formValues.push(key + ': ' + value);
           }
           alert(formValues.join('\\n'));
-        });
+        };
       });
 
       const radioGroup = document.getElementById('inquiry-radio-group');
       const regardingInput = document.getElementById('regarding-input');
       radioGroup.addEventListener('sd-change', event => {
-        console.log(radioGroup, regardingInput);
         const value = event.target.value;
         if (value === 'regarding') {
           regardingInput.classList.remove('hidden');
