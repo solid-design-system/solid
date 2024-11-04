@@ -83,7 +83,6 @@ export default {
 /**
  * This shows sd-combobox in its default state.
  */
-
 export const Default = {
   render: (args: any) => {
     return html`<div class="h-[260px] w-[400px]">${generateTemplate({ args })}</div>`;
