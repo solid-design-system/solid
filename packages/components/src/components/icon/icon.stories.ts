@@ -12,6 +12,9 @@ const { generateTemplate } = storybookTemplate('sd-icon');
  *
  * Icons can be used to indicate an action or to represent content.
  *
+ * **Related templates**:
+ * - [Tab Group with Icon and Badge](?path=/docs/templates-tab-group--docs#tab%20group%20with%20icon%20and%20badge)
+ *
  */
 
 export default {
