@@ -244,6 +244,7 @@ describe('<sd-input>', () => {
       expect(input.hasAttribute('data-valid')).to.be.false;
       expect(input.hasAttribute('data-user-invalid')).to.be.false;
       expect(input.hasAttribute('data-user-valid')).to.be.false;
+      expect(input.getAttribute('aria-invalid')).to.equal('true');
 
       input.focus();
       await sendKeys({ type: 'test' });
