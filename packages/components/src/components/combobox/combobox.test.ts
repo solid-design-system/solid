@@ -744,6 +744,21 @@ describe('<sd-combobox>', () => {
       expect(formData.get('a')).to.equal('option-1');
     });
 
+    it('should serialize its name and value in FormData when multiple options are selected', async () => {
+      const form = await fixture<HTMLFormElement>(html`
+        <form>
+          <sd-combobox name="a" value="option-2 option-3" multiple>
+            <sd-option value="option-1">Option 1</sd-option>
+            <sd-option value="option-2">Option 2</sd-option>
+            <sd-option value="option-3">Option 3</sd-option>
+          </sd-combobox>
+        </form>
+      `);
+      const formData = new FormData(form);
+      expect(formData.getAll('a')).to.include('option-2');
+      expect(formData.getAll('a')).to.include('option-3');
+    });
+
     it('should serialize its name and value in JSON', async () => {
       const form = await fixture<HTMLFormElement>(html`
         <form>
@@ -756,6 +771,20 @@ describe('<sd-combobox>', () => {
       `);
       const json = serialize(form);
       expect(json.a).to.equal('option-1');
+    });
+
+    it('should serialize its name and value in JSON when multiple options are selected', async () => {
+      const form = await fixture<HTMLFormElement>(html`
+        <form>
+          <sd-combobox name="a" value="option-2 option-3" multiple>
+            <sd-option value="option-1">Option 1</sd-option>
+            <sd-option value="option-2">Option 2</sd-option>
+            <sd-option value="option-3">Option 3</sd-option>
+          </sd-combobox>
+        </form>
+      `);
+      const json = serialize(form);
+      expect(JSON.stringify(json)).to.equal(JSON.stringify({ a: ['option-2', 'option-3'] }));
     });
 
     it('should be present in form data when using the form attribute and located outside of a <form>', async () => {
@@ -775,6 +804,80 @@ describe('<sd-combobox>', () => {
       const formData = new FormData(form);
 
       expect(formData.get('a')).to.equal('option-1');
+    });
+    it('should show invalid-message when calling reportCustomValidity with non-empty setCustomValidity() ', async () => {
+      const input = await fixture<SdCombobox>(html`
+        <sd-combobox name="a" value="option-1">
+          <sd-option value="option-1">Option 1</sd-option>
+          <sd-option value="option-2">Option 2</sd-option>
+          <sd-option value="option-3">Option 3</sd-option>
+        </sd-combobox>
+      `);
+      input.setCustomValidity('Invalid selection');
+      await input.updateComplete;
+
+      input.reportValidity();
+      await input.updateComplete;
+      await input.updateComplete; // Currently there are two updates in the component
+
+      expect(input.shadowRoot!.querySelector('#invalid-message')!.hasAttribute('hidden')).to.be.false;
+    });
+
+    it('should hide invalid-message when calling reportCustomValidity with empty setCustomValidity() ', async () => {
+      const input = await fixture<SdCombobox>(html`
+        <sd-combobox name="a" value="option-1">
+          <sd-option value="option-1">Option 1</sd-option>
+          <sd-option value="option-2">Option 2</sd-option>
+          <sd-option value="option-3">Option 3</sd-option>
+        </sd-combobox>
+      `);
+      input.setCustomValidity('Invalid selection');
+      await input.updateComplete;
+
+      input.reportValidity();
+      await input.updateComplete;
+      await input.updateComplete; // Currently there are two updates in the component
+
+      expect(input.shadowRoot!.querySelector('#invalid-message')!.hasAttribute('hidden')).to.be.false;
+
+      input.setCustomValidity('');
+      await input.updateComplete;
+
+      input.reportValidity();
+      await input.updateComplete;
+      await input.updateComplete; // Currently there are two updates in the component
+
+      expect(input.shadowRoot!.querySelector('#invalid-message')!.hasAttribute('hidden')).to.be.true;
+    });
+
+    it('should show correct icon when calling reportValidity() with style-on-valid attribute', async () => {
+      const input = await fixture<SdCombobox>(html`
+        <sd-combobox name="a" value="option-1" style-on-valid>
+          <sd-option value="option-1">Option 1</sd-option>
+          <sd-option value="option-2">Option 2</sd-option>
+          <sd-option value="option-3">Option 3</sd-option>
+        </sd-combobox>
+      `);
+
+      input.setCustomValidity('Invalid selection');
+      await input.updateComplete;
+
+      input.reportValidity();
+      await input.updateComplete;
+      await input.updateComplete; // Currently there are two updates in the component
+
+      expect(input.shadowRoot!.querySelector('[part~="invalid-icon"]')).to.exist;
+      expect(input.shadowRoot!.querySelector('[part~="valid-icon"]')).to.not.exist;
+
+      input.setCustomValidity('');
+      await input.updateComplete;
+
+      input.reportValidity();
+      await input.updateComplete;
+      await input.updateComplete; // Currently there are two updates in the component
+
+      expect(input.shadowRoot!.querySelector('[part~="invalid-icon"]')).to.not.exist;
+      expect(input.shadowRoot!.querySelector('[part~="valid-icon"]')).to.exist;
     });
 
     it('should submit the form when pressing enter in a form without a submit button', async () => {
@@ -965,6 +1068,30 @@ describe('<sd-combobox>', () => {
     expect(inputHandler).to.have.been.calledOnce;
     expect(changeHandler).to.have.been.calledOnce;
     expect(el.displayInput.value).to.equal('');
+  });
+
+  it('should emit sd-change and sd-input when a tag is removed', async () => {
+    const el = await fixture<SdCombobox>(html`
+      <sd-combobox value="option-1 option-2 option-3" multiple useTags>
+        <sd-option value="option-1">Option 1</sd-option>
+        <sd-option value="option-2">Option 2</sd-option>
+        <sd-option value="option-3">Option 3</sd-option>
+      </sd-combobox>
+    `);
+    const changeHandler = sinon.spy();
+    const inputHandler = sinon.spy();
+    const tag = el.shadowRoot!.querySelector('[part~="tag"]')!;
+
+    const removeButton: HTMLSlotElement = tag.shadowRoot!.querySelector('[part="removable-indicator"]')!;
+
+    el.addEventListener('sd-change', changeHandler);
+    el.addEventListener('sd-input', inputHandler);
+
+    removeButton.click();
+    await el.updateComplete;
+
+    expect(changeHandler).to.have.been.calledOnce;
+    expect(inputHandler).to.have.been.calledOnce;
   });
 
   it('should emit sd-show, sd-after-show, sd-hide, and sd-after-hide events when the listbox opens and closes', async () => {
