@@ -18,6 +18,12 @@ describe('<sd-map-marker>', () => {
       await expect(el).to.be.accessible();
     });
 
+    it('does not have the aria-labelledby attribute when renders a div', async () => {
+      const el = await fixture<SdMapMarker>(html` <sd-map-marker not-interactive></sd-map-marker>`);
+
+      expect(el.shadowRoot!.querySelector('div')?.getAttribute('aria-labelledby')).to.be.null;
+    });
+
     it('has a button role when it renders a button', async () => {
       const el = await fixture<SdMapMarker>(
         html` <sd-map-marker><div class="sr-only">Acessible Pin</div></sd-map-marker>`
