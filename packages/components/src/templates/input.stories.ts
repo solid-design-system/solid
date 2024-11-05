@@ -43,7 +43,7 @@ export const InputWithCurrencyStepper = {
             }}
             class="ml-4 scale-[1.714] inline-flex items-center sd-interactive"
           >
-            <sd-icon library="global-resources" name="system/minus-round"></sd-icon>
+            <sd-icon library="global-resources" name="system/minus-round" label="Decrease value"></sd-icon>
           </button>
           <button
             id="stepUpButton"
@@ -57,7 +57,7 @@ export const InputWithCurrencyStepper = {
             }}
             class="ml-4 scale-[1.714] inline-flex items-center sd-interactive"
           >
-            <sd-icon library="global-resources" name="system/plus-round"></sd-icon></button
+            <sd-icon library="global-resources" name="system/plus-round" label="Increase value"></sd-icon></button
         ></span>
       </sd-input>
     </div> `
