@@ -16,13 +16,11 @@ export default {
 
 /**
  * ### Input with Currency Stepper
- *
- * __Accessibility Hint:__ Use the `aria-live="polite"` attribute to announce value changes.
  */
 export const InputWithCurrencyStepper = {
   render: () =>
     html`<div class="w-[250px]">
-      <sd-input label="Currency Stepper" id="stepperSampleInput" type="number" min="0" aria-live="polite"
+      <sd-input label="Currency Stepper" id="stepperSampleInput" type="number" min="0"
         ><span slot="right" class="text-sm inline-flex items-center"
           ><span class="text-neutral-700">EUR</span>
           <button
