@@ -427,7 +427,14 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       // Update the value based on the current selection and close it
       if (currentOption) {
         const oldValue = this.lastOptionValue;
-        this.setSelectedOptions(currentOption);
+
+        if (this.multiple) {
+          this.toggleOptionSelection(currentOption).then(() => {
+            this.selectionChanged();
+          });
+        } else {
+          this.setSelectedOptions(currentOption);
+        }
 
         if (this.value !== oldValue) {
           // Emit after updating
@@ -748,8 +755,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       this.currentPlacement = incomingPlacement;
     }
   }
-
-  /*  updated() {
+  updated() {
     console.log('updated value', this.value);
     // console.log('updated slotted Options', this.getSlottedOptions());
     console.log('updated selected options', this.selectedOptions);
@@ -757,7 +763,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     // console.log('updated display label', this.displayLabel);
     // console.log('updated display input value', this.displayInput.value);
     // console.log('updated display input value for multiple selection', this.displayInputValueForMultipleSelection);
-  }*/
+  }
 
   @watch('filter', { waitUntilFirstUpdate: true })
   handleFilterChange() {
@@ -821,7 +827,16 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     if (this.multiple) {
       this.createComboboxOptionsFromQuery(this.displayInput.value);
     } else {
-      this.createComboboxOptionsFromQuery(Array.isArray(this.value) ? this.value.join(', ') : this.value);
+      if (this.value === '' || this.value.length === 0) {
+        const allOptions = this.getSlottedOptions();
+        allOptions.forEach(option => {
+          option.selected = false;
+        });
+        this.selectedOptions = [];
+        this.createComboboxOptionsFromQuery('');
+      } else {
+        this.createComboboxOptionsFromQuery(Array.isArray(this.value) ? this.value.join(', ') : this.value);
+      }
     }
   }
 
