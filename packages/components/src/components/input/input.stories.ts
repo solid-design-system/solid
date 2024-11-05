@@ -289,7 +289,7 @@ export const Invalid = {
 export const Pattern = {
   render: () => html`
     <div class="w-[250px]">
-      <sd-input label="Pattern" pattern="[A-Za-z]{3,}" help-text="[A-Za-z]{3,}" required></sd-input>
+      <sd-input label="Pattern" pattern="[A-Za-z]{3,}" help-text="Required pattern is [A-Za-z]{3,}" required></sd-input>
     </div>
   `
 };
@@ -300,7 +300,7 @@ export const Pattern = {
 export const MinLength = {
   render: () => html`
     <div class="w-[250px]">
-      <sd-input label="Minlength" minlength="5" help-text="minlength=5" required></sd-input>
+      <sd-input label="Minlength" minlength="5" help-text="5 is the minimum allowed characters" required></sd-input>
     </div>
   `
 };
@@ -311,7 +311,7 @@ export const MinLength = {
 export const MaxLength = {
   render: () => html`
     <div class="w-[250px]">
-      <sd-input label="Maxlength" maxlength="5" help-text="maxlength=5" required></sd-input>
+      <sd-input label="Maxlength" maxlength="5" help-text="5 is the maximum allowed characters" required></sd-input>
     </div>
   `
 };
@@ -322,7 +322,7 @@ export const MaxLength = {
 export const Min = {
   render: () => html`
     <div class="w-[250px]">
-      <sd-input label="Min" type="number" min="1000" help-text="min=1000" required></sd-input>
+      <sd-input label="Min" type="number" min="1000" help-text="Minimum value is 1000" required></sd-input>
     </div>
   `
 };
@@ -333,7 +333,7 @@ export const Min = {
 export const Max = {
   render: () => html`
     <div class="w-[250px]">
-      <sd-input label="Max" type="number" max="5000" help-text="max=5000" required></sd-input>
+      <sd-input label="Max" type="number" max="5000" help-text="Maximum value is 5000" required></sd-input>
     </div>
   `
 };
