@@ -26,7 +26,7 @@ export const Examples = {
     <div class="flex flex-col gap-12">
       <button class="sd-interactive sd-interactive--reset">Text</button>
       <button class="sd-interactive sd-interactive--reset">
-        <sd-icon library="global-resources" name="system/picture"></sd-icon>
+        <sd-icon library="global-resources" name="system/picture" label="Icon only button"></sd-icon>
       </button>
       <button class="sd-interactive sd-interactive--reset flex flex-row items-center gap-2">
         <sd-icon library="global-resources" name="system/picture"></sd-icon>
