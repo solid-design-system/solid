@@ -1039,6 +1039,12 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   /* eslint-disable @typescript-eslint/unbound-method */
   // eslint-disable-next-line complexity
   render() {
+    // Slots
+    const slots = {
+      left: this.hasSlotController.test('left'),
+      right: this.hasSlotController.test('right')
+    };
+
     const hasLabelSlot = this.hasSlotController.test('label');
     const hasHelpTextSlot = this.hasSlotController.test('help-text');
     const hasLabel = this.label ? true : !!hasLabelSlot;
@@ -1062,8 +1068,9 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
 
     // Conditional Styles
     const cursorStyles = this.disabled ? 'cursor-not-allowed' : 'cursor-pointer';
-
+    const iconColor = this.disabled ? 'text-neutral-500' : 'text-primary';
     const iconMarginLeft = { sm: 'ml-1', md: 'ml-2', lg: 'ml-2' }[this.size];
+    const iconMarginRight = { sm: 'mr-1', md: 'mr-2', lg: 'mr-2' }[this.size];
     const iconSize = {
       sm: 'text-base',
       md: 'text-lg',
@@ -1147,16 +1154,35 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
               @mouseenter=${this.handleMouseEnter}
               @mouseleave=${this.handleMouseLeave}
             >
-              <slot part="prefix" name="prefix" class="combobox__prefix"></slot>
+              ${slots['left']
+                ? html`<slot
+                    part="left"
+                    name="left"
+                    class="${cx('inline-flex', iconMarginRight, iconColor, iconSize)}"
+                  ></slot>`
+                : ''}
               ${this.multiple && this.useTags
-                ? html`<div part="tags" class="flex-grow flex flex-wrap items-center gap-1">${this.tags}</div>`
+                ? html`<div
+                    part="tags"
+                    class="${cx(
+                      'flex-grow-0',
+                      'flex-shrink',
+                      'flex',
+                      'flex-wrap',
+                      'items-center',
+                      'gap-1',
+                      iconMarginRight
+                    )}"
+                  >
+                    ${this.tags}
+                  </div>`
                 : ''}
               <input
                 id="display-input"
                 name=${this.name}
                 form=${this.form}
                 part="display-input"
-                class=${cx('appearance-none outline-none flex-grow bg-transparent w-full', cursorStyles)}
+                class=${cx('appearance-none outline-none flex-grow bg-transparent', cursorStyles)}
                 type="text"
                 placeholder=${this.placeholder}
                 .disabled=${this.disabled}
@@ -1213,8 +1239,13 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                     </button>
                   `
                 : ''}
-
-              <slot name="suffix" part="suffix" class="combobox__suffix"></slot>
+              ${slots['right']
+                ? html`<slot
+                    name="right"
+                    part="right"
+                    class="${cx('inline-flex', iconColor, iconMarginLeft, iconSize)}"
+                  ></slot>`
+                : ''}
               ${this.showInvalidStyle
                 ? html`
                     <sd-icon

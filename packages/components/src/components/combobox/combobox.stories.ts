@@ -387,8 +387,8 @@ export const Multiple = {
  */
 export const useTags = {
   render: () => html`
-    <div class="w-[400px] h-[500px]">
-      <sd-combobox clearable size="lg" label="Label" placement="bottom" multiple="" value="option-1 option-2" useTags>
+    <div class="w-[650px] h-[500px]">
+      <sd-combobox size="lg" label="Label" placement="bottom" multiple value="option-1 option-2" useTags>
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
         <sd-option value="option-3">Option 3</sd-option>
@@ -522,47 +522,63 @@ export const Invalid = {
 };
 
 /**
- * Use the prefix and suffix slots to add text and icons.
+ * Use the left and right slots to add text and icons.
  */
-export const PrefixSuffixTextAndIcons = {
+export const Icons = {
   render: () => html`
-    <div class="w-[400px] h-[800px]">
+    <div class="w-[400px] h-[400px]">
       <sd-combobox placeholder="Small" size="sm" clearable>
-        <span slot="prefix">prefix</span>
-        <span slot="suffix">suffix</span>
+        <sd-icon
+          slot="left"
+          library="global-resources"
+          name="system/picture"
+          aria-hidden="true"
+          color="currentColor"
+        ></sd-icon>
         ${createColorOptionsHtml()}
+        <sd-icon
+          slot="right"
+          library="global-resources"
+          name="system/picture"
+          aria-hidden="true"
+          color="currentColor"
+        ></sd-icon>
       </sd-combobox>
       <br />
       <sd-combobox placeholder="Medium" size="md" clearable>
-        <span slot="prefix">prefix</span>
-        <span slot="suffix">suffix</span>
+        <sd-icon
+          slot="left"
+          library="global-resources"
+          name="system/picture"
+          aria-hidden="true"
+          color="currentColor"
+        ></sd-icon>
         ${createColorOptionsHtml()}
+        <sd-icon
+          slot="right"
+          library="global-resources"
+          name="system/picture"
+          aria-hidden="true"
+          color="currentColor"
+        ></sd-icon>
       </sd-combobox>
       <br />
       <sd-combobox placeholder="Large" size="lg" clearable>
-        <span slot="prefix">prefix</span>
-        <span slot="suffix">suffix</span>
+        <sd-icon
+          slot="left"
+          library="global-resources"
+          name="system/picture"
+          aria-hidden="true"
+          color="currentColor"
+        ></sd-icon>
         ${createColorOptionsHtml()}
-      </sd-combobox>
-
-      <br />
-
-      <sd-combobox placeholder="Small" size="sm" clearable>
-        <sd-icon name="union-investment/content/image" slot="prefix"></sd-icon>
-        ${createColorOptionsHtml()}
-        <sd-icon name="union-investment/content/image" slot="suffix"></sd-icon>
-      </sd-combobox>
-      <br />
-      <sd-combobox placeholder="Medium" size="md" clearable>
-        <sd-icon name="union-investment/content/image" slot="prefix"></sd-icon>
-        ${createColorOptionsHtml()}
-        <sd-icon name="union-investment/content/image" slot="suffix"></sd-icon>
-      </sd-combobox>
-      <br />
-      <sd-combobox placeholder="Large" size="lg" clearable>
-        <sd-icon name="union-investment/content/image" slot="prefix"></sd-icon>
-        ${createColorOptionsHtml()}
-        <sd-icon name="union-investment/content/image" slot="suffix"></sd-icon>
+        <sd-icon
+          slot="right"
+          library="global-resources"
+          name="system/picture"
+          aria-hidden="true"
+          color="currentColor"
+        ></sd-icon>
       </sd-combobox>
     </div>
   `
