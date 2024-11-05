@@ -17,17 +17,21 @@ export const InputWithTooltip = {
   name: 'Input with Tooltip',
   render: () => html`
     <sd-input class="w-[400px] py-6">
+      <span slot="right" class="text-sm inline-flex items-center">
+        <span class="text-neutral-700">EUR</span>
+      </span>
+
       <label slot="label">Liquid Assets</label>
-      <sd-tooltip slot="tooltip" size="sm" content="Lorem ipsum"></sd-tooltip>
+      <sd-tooltip slot="tooltip" placement="top-start" size="sm" content="Available cash assets"></sd-tooltip>
     </sd-input>
   `
 };
 
 export const SelectWithTooltip = {
   render: () => html`
-    <sd-select class="w-[400px] py-6" size="lg" placement="top" placeholder="Please Select" value="">
-      <div slot="label">Label Slot</div>
-      <sd-tooltip slot="tooltip" content="Lorem ipsum sic semper" size="sm" hoist></sd-tooltip>
+    <sd-select class="w-[400px] h-[300px] py-6" size="lg" placement="top" placeholder="Please Select" value="">
+      <div slot="label">Access role</div>
+      <sd-tooltip slot="tooltip" content="Select the level of access for this user" size="sm" hoist></sd-tooltip>
 
       <sd-option value="option-1">Viewer</sd-option>
       <sd-option value="option-2">Editor</sd-option>
@@ -40,10 +44,10 @@ export const TextAreaWithTooltip = {
   render: () => html`
     <sd-textarea
       class="w-full py-4"
-      value="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod te."
+      value="A solid design system is more than a collection of components; it’s a living document that aligns teams, maintains consistency, and supports scalability. Here, you can capture the reasoning behind design choices, specific use cases, and any nuances that will aid other team members in understanding how to implement this component effectively."
     >
-      <div slot="label">Description</div>
-      <sd-tooltip slot="tooltip" content="Lorem ipsum sic semper" size="sm"></sd-tooltip>
+      <div slot="label">Project Description</div>
+      <sd-tooltip slot="tooltip" content="Explain your project in clear terms." size="sm"></sd-tooltip>
     </sd-textarea>
   `
 };
@@ -51,12 +55,12 @@ export const TextAreaWithTooltip = {
 export const RadioGroupWithTooltip = {
   render: () => html`
     <sd-radio-group class="w-[400px] py-6" boldLabel>
-      <div slot="label">Label Slot</div>
-      <sd-tooltip slot="tooltip" content="Lorem ipsum sic semper" size="sm"></sd-tooltip>
+      <div slot="label">Choose Your Subscription Plan</div>
+      <sd-tooltip slot="tooltip" content="Select the plan that best meets your needs." size="sm"></sd-tooltip>
 
-      <sd-radio value="option-1">Option 1</sd-radio>
-      <sd-radio value="option-2">Option 2</sd-radio>
-      <sd-radio value="option-3">Option 3</sd-radio>
+      <sd-radio value="basic">Basic Plan</sd-radio>
+      <sd-radio value="standard">Standard Plan</sd-radio>
+      <sd-radio value="premium">Premium Plan</sd-radio>
     </sd-radio-group>
   `
 };
@@ -64,12 +68,12 @@ export const RadioGroupWithTooltip = {
 export const CheckboxGroupWithTooltip = {
   render: () => html`
     <sd-checkbox-group class="w-[400px] py-6">
-      <div slot="label">Label Slot</div>
-      <sd-tooltip slot="tooltip" content="Lorem ipsum sic semper" size="sm"></sd-tooltip>
+      <div slot="label">Select Your Interests</div>
+      <sd-tooltip slot="tooltip" content="Choose all that apply to you." size="sm"></sd-tooltip>
 
-      <sd-checkbox value="option-1">Option 1</sd-checkbox>
-      <sd-checkbox value="option-2">Option 2</sd-checkbox>
-      <sd-checkbox value="option-3">Option 3</sd-checkbox>
+      <sd-checkbox value="newsletters">Subscribe to Newsletters</sd-checkbox>
+      <sd-checkbox value="promotions">Receive Promotions</sd-checkbox>
+      <sd-checkbox value="updates">Get Product Updates</sd-checkbox>
     </sd-checkbox-group>
   `
 };
@@ -79,8 +83,8 @@ export const TooltipWithBoldedText = {
     <div class="h-40 flex items-center pl-20">
       <sd-tooltip
         ><span slot="content" class="sd-prose sd-prose--inverted"
-          ><h5>Headline</h5>
-          Lorem ipsum sic semper</span
+          ><h5>Guidelines</h5>
+          Document design standards and usage</span
         ></sd-tooltip
       >
     </div>
