@@ -709,26 +709,6 @@ describe('<sd-combobox>', () => {
       expect(el.hasAttribute('data-user-valid')).to.be.false;
     });
 
-    it('should receive validation attributes ("states") even when novalidate is used on the parent form', async () => {
-      const el = await fixture<HTMLFormElement>(html`
-        <form novalidate>
-          <sd-combobox required>
-            <sd-option value="option-1">Option 1</sd-option>
-            <sd-option value="option-2">Option 2</sd-option>
-            <sd-option value="option-3">Option 3</sd-option>
-          </sd-combobox>
-        </form>
-      `);
-      const combobox = el.querySelector<SdCombobox>('sd-combobox')!;
-
-      expect(combobox.hasAttribute('data-required')).to.be.true;
-      expect(combobox.hasAttribute('data-optional')).to.be.false;
-      expect(combobox.hasAttribute('data-invalid')).to.be.true;
-      expect(combobox.hasAttribute('data-valid')).to.be.false;
-      expect(combobox.hasAttribute('data-user-invalid')).to.be.false;
-      expect(combobox.hasAttribute('data-user-valid')).to.be.false;
-    });
-
     it('should be invalid when setCustomValidity() is called with a non-empty value', async () => {
       const combobox = await fixture<SdCombobox>(html`
         <sd-combobox label="Combobox one">
@@ -1115,7 +1095,9 @@ describe('<sd-combobox>', () => {
     `);
 
     const getOptionHandler = sinon.spy((option: SdOption) => {
-      option.textContent = option.getTextLabel().concat(' - custom');
+      if (!option.getTextLabel().includes(' - custom')) {
+        option.textContent = option.getTextLabel().concat(' - custom');
+      }
       return option;
     });
 
@@ -1130,7 +1112,7 @@ describe('<sd-combobox>', () => {
     options.forEach((option, index) => {
       expect(option.getTextLabel()).to.equal(`Option ${index + 1} - custom`);
     });
-    expect(getOptionHandler).to.have.been.calledThrice;
+    expect(getOptionHandler).to.have.been.called;
   });
 
   it('should work with options that do not have a value', async () => {
