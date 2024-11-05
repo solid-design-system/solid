@@ -80,7 +80,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     'sd-tag': SdTag
   };
 
-  private readonly formControlController = new FormControlController(this, {
+  private readonly formControlController: FormControlController = new FormControlController(this, {
     assumeInteractionOn: ['sd-blur', 'sd-input']
   });
 
@@ -107,6 +107,8 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   @query('#listbox-options') filteredWrapper: HTMLSlotElement;
 
   @query('slot:not([name])') private defaultSlot: HTMLSlotElement;
+
+  @query('#invalid-message') invalidMessage: HTMLDivElement;
 
   /** @internal*/
   @state() hasHover = false; // we need this because Safari doesn't honor :hover styles while dragging
@@ -727,6 +729,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   private handleInvalid(event: Event) {
     this.formControlController.setValidity(false);
     this.formControlController.emitInvalidEvent(event);
+    this.invalidMessage.textContent = (event.target as HTMLInputElement).validationMessage;
   }
 
   private handleMouseEnter() {
@@ -910,6 +913,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
 
   /** Checks for validity and shows the browser's validation message if the control is invalid. */
   reportValidity() {
+    this.formControlController.fakeUserInteraction();
     return this.valueInput.reportValidity();
   }
 
@@ -1211,7 +1215,26 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                 : ''}
 
               <slot name="suffix" part="suffix" class="combobox__suffix"></slot>
-
+              ${this.showInvalidStyle
+                ? html`
+                    <sd-icon
+                      part="invalid-icon"
+                      class=${cx(iconMarginLeft, iconSize, 'text-error')}
+                      library="system"
+                      name="risk"
+                    ></sd-icon>
+                  `
+                : ''}
+              ${this.styleOnValid && this.showValidStyle
+                ? html`
+                    <sd-icon
+                      part="valid-icon"
+                      class=${cx('flex-shrink-0 text-success', iconMarginLeft, iconSize)}
+                      library="system"
+                      name="status-check"
+                    ></sd-icon>
+                  `
+                : ''}
               <slot
                 name="expand-icon"
                 part="expand-icon"
@@ -1259,6 +1282,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
           <slot name="help-text">${this.helpText}</slot>
         </div>
       </div>
+      ${this.formControlController.renderInvalidMessage()}
     `;
   }
   static styles: CSSResultGroup = [
