@@ -28,6 +28,7 @@ export const InputWithTooltip = {
 };
 
 export const SelectWithTooltip = {
+  name: 'Select with Tooltip',
   render: () => html`
     <sd-select class="w-[400px] h-[300px] py-6" size="lg" placement="top" placeholder="Please Select" value="">
       <div slot="label">Access role</div>
@@ -41,9 +42,10 @@ export const SelectWithTooltip = {
 };
 
 export const TextAreaWithTooltip = {
+  name: 'Textarea with Tooltip',
   render: () => html`
     <sd-textarea
-      class="w-full py-4"
+      class="w-[540px] py-4"
       value="A solid design system is more than a collection of components; it’s a living document that aligns teams, maintains consistency, and supports scalability. Here, you can capture the reasoning behind design choices, specific use cases, and any nuances that will aid other team members in understanding how to implement this component effectively."
     >
       <div slot="label">Project Description</div>
@@ -53,6 +55,7 @@ export const TextAreaWithTooltip = {
 };
 
 export const RadioGroupWithTooltip = {
+  name: 'Radio Group with Tooltip',
   render: () => html`
     <sd-radio-group class="w-[400px] py-6" boldLabel>
       <div slot="label">Choose Your Subscription Plan</div>
@@ -66,6 +69,7 @@ export const RadioGroupWithTooltip = {
 };
 
 export const CheckboxGroupWithTooltip = {
+  name: 'Checkbox Group with Tooltip',
   render: () => html`
     <sd-checkbox-group class="w-[400px] py-6">
       <div slot="label">Select Your Interests</div>
@@ -79,9 +83,10 @@ export const CheckboxGroupWithTooltip = {
 };
 
 export const TooltipWithBoldedText = {
+  name: 'Tooltip with Bolded Text',
   render: () => html`
     <div class="h-40 flex items-center pl-20">
-      <sd-tooltip
+      <sd-tooltip placement="top-start"
         ><span slot="content" class="sd-prose sd-prose--inverted"
           ><h5>Guidelines</h5>
           Document design standards and usage</span
