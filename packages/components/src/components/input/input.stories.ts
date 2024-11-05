@@ -88,7 +88,7 @@ export const Placeholder = {
 export const Value = {
   render: () =>
     html` <div class="w-[250px]">
-      <sd-input value="Value example"></sd-input>
+      <sd-input label="Label" value="Value example"> </sd-input>
     </div>`
 };
 
