@@ -49,7 +49,7 @@ export const TextAreaWithTooltip = {
       value="A solid design system is more than a collection of components; it’s a living document that aligns teams, maintains consistency, and supports scalability. Here, you can capture the reasoning behind design choices, specific use cases, and any nuances that will aid other team members in understanding how to implement this component effectively."
     >
       <div slot="label">Project Description</div>
-      <sd-tooltip slot="tooltip" content="Explain your project in clear terms." size="sm"></sd-tooltip>
+      <sd-tooltip slot="tooltip" content="Explain your project in clear terms" size="sm"></sd-tooltip>
     </sd-textarea>
   `
 };
@@ -59,7 +59,7 @@ export const RadioGroupWithTooltip = {
   render: () => html`
     <sd-radio-group class="w-[400px] py-6" boldLabel>
       <div slot="label">Choose Your Subscription Plan</div>
-      <sd-tooltip slot="tooltip" content="Select the plan that best meets your needs." size="sm"></sd-tooltip>
+      <sd-tooltip slot="tooltip" content="Select the plan that best meets your needs" size="sm"></sd-tooltip>
 
       <sd-radio value="basic">Basic Plan</sd-radio>
       <sd-radio value="standard">Standard Plan</sd-radio>
@@ -73,7 +73,7 @@ export const CheckboxGroupWithTooltip = {
   render: () => html`
     <sd-checkbox-group class="w-[400px] py-6">
       <div slot="label">Select Your Interests</div>
-      <sd-tooltip slot="tooltip" content="Choose all that apply to you." size="sm"></sd-tooltip>
+      <sd-tooltip slot="tooltip" content="Choose all that apply to you" size="sm"></sd-tooltip>
 
       <sd-checkbox value="newsletters">Subscribe to Newsletters</sd-checkbox>
       <sd-checkbox value="promotions">Receive Promotions</sd-checkbox>
