@@ -1,6 +1,5 @@
 import '../solid-components';
-import { html } from 'lit-html';
-import type SdInput from '../components/input/input';
+import { html } from 'lit';
 
 export default {
   tags: ['!dev'],
@@ -20,45 +19,17 @@ export default {
 export const InputWithCurrencyStepper = {
   render: () =>
     html`<div class="w-[250px]">
-      <sd-input label="Currency Stepper" id="stepperSampleInput" type="number" min="0"
-        ><span slot="right" class="text-sm inline-flex items-center"
-          ><span class="text-neutral-700">EUR</span>
-          <button
-            disabled
-            id="stepDownButton"
-            @click=${() => {
-              const inputEl: SdInput = document.querySelector('#stepperSampleInput')!;
-              const stepDownButton: HTMLButtonElement = document.querySelector('#stepDownButton')!;
-              const numericValue = parseInt(inputEl.value, 10);
-              const stepDownValue = numericValue - 1;
+        <sd-input label="Currency Stepper" id="stepperSampleInput" type="number" spin-buttons min="0" value="0.00">
+          <span slot="right" class="text-sm inline-flex items-center">
+            <span class="text-neutral-700">EUR</span>
+          </span>
+        </sd-input>
+      </div>
+      <script type="module">
+        const stepper = document.getElementById('stepperSampleInput');
 
-              if (stepDownValue <= 0) {
-                stepDownButton.disabled = true;
-                inputEl.value = '0.00';
-              } else {
-                inputEl.stepDown();
-                // Adjust input value to 2 decimals (currency)
-                inputEl.value = String(parseInt(inputEl.value, 10).toFixed(2));
-              }
-            }}
-            class="ml-4 scale-[1.714] inline-flex items-center sd-interactive"
-          >
-            <sd-icon library="global-resources" name="system/minus-round" label="Decrease value"></sd-icon>
-          </button>
-          <button
-            id="stepUpButton"
-            @click=${() => {
-              const inputEl: SdInput = document.querySelector('#stepperSampleInput')!;
-              const stepDownButton: HTMLButtonElement = document.querySelector('#stepDownButton')!;
-              stepDownButton.disabled = false;
-              inputEl.stepUp();
-              // Adjust input value to 2 decimals (currency)
-              inputEl.value = String(parseInt(inputEl.value, 10).toFixed(2));
-            }}
-            class="ml-4 scale-[1.714] inline-flex items-center sd-interactive"
-          >
-            <sd-icon library="global-resources" name="system/plus-round" label="Increase value"></sd-icon></button
-        ></span>
-      </sd-input>
-    </div> `
+        stepper.addEventListener('sd-change', event => {
+          stepper.value = String(parseInt(event.target.value, 10).toFixed(2));
+        });
+      </script> `
 };
