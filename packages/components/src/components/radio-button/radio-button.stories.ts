@@ -59,45 +59,45 @@ export const Size = {
     <div class="flex flex-col gap-12">
       <sd-radio-group value="1" size="lg">
         <sd-radio-button value="1">
-          <sd-icon label="landscape" library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
           Large
         </sd-radio-button>
         <sd-radio-button value="2">
-          <sd-icon label="landscape" library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
           Large
         </sd-radio-button>
         <sd-radio-button value="3">
-          <sd-icon label="landscape" library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
           Large
         </sd-radio-button>
       </sd-radio-group>
 
       <sd-radio-group value="1" size="md">
         <sd-radio-button value="1" size="md">
-          <sd-icon label="landscape" library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
           Medium
         </sd-radio-button>
         <sd-radio-button value="2" size="md">
-          <sd-icon label="landscape" library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
           Medium
         </sd-radio-button>
         <sd-radio-button value="3" size="md">
-          <sd-icon label="landscape" library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
           Medium
         </sd-radio-button>
       </sd-radio-group>
 
       <sd-radio-group value="1" size="sm">
         <sd-radio-button value="1">
-          <sd-icon label="landscape" library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
           Small
         </sd-radio-button>
         <sd-radio-button value="2">
-          <sd-icon label="landscape" library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
           Small
         </sd-radio-button>
         <sd-radio-button value="3">
-          <sd-icon label="landscape" library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
           Small
         </sd-radio-button>
       </sd-radio-group>
@@ -115,15 +115,15 @@ export const Checked = {
     <div class="flex gap-12">
       <sd-radio-group value="1">
         <sd-radio-button value="1">
-          <sd-icon label="landscape" library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
           Checked
         </sd-radio-button>
         <sd-radio-button value="2">
-          <sd-icon label="landscape" library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
           Checked
         </sd-radio-button>
         <sd-radio-button value="3">
-          <sd-icon label="landscape" library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
           Checked
         </sd-radio-button>
       </sd-radio-group>
@@ -189,15 +189,15 @@ export const Disabled = {
     <div class="flex gap-12">
       <sd-radio-group value="1">
         <sd-radio-button value="1">
-          <sd-icon label="landscape" library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
           Label
         </sd-radio-button>
         <sd-radio-button value="2" disabled>
-          <sd-icon label="landscape" library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
           Disabled
         </sd-radio-button>
         <sd-radio-button value="3">
-          <sd-icon label="landscape" library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
           Label
         </sd-radio-button>
       </sd-radio-group>
