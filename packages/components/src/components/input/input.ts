@@ -7,13 +7,13 @@ import { HasSlotController } from '../../internal/slot';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { live } from 'lit/directives/live.js';
 import { LocalizeController } from '../../utilities/localize';
+import { longPress } from '../../internal/longpress.js';
 import { property, query, state } from 'lit/decorators.js';
 import { watch } from '../../internal/watch';
 import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 import type { SolidFormControl } from '../../internal/solid-element';
-import { longPress } from '../../internal/longpress.js';
 
 //
 // It's currently impossible to hide Firefox's built-in clear icon when using <input type="date|time">, so we need this
