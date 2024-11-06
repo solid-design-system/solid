@@ -1023,6 +1023,9 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     const slottedOptions = this.getSlottedOptions();
     const slottedOptgroups = this.getSlottedOptGroups();
     slottedOptions.forEach((option, index) => {
+      if (this.multiple) {
+        option.checkbox = true;
+      }
       option.id = option.id || `sd-combobox-option-${index}`;
     });
 
