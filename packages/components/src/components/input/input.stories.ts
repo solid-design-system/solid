@@ -190,6 +190,7 @@ export const Type = {
         placeholder="^d{1,3}$"
         label="Number"
         help-text="value is restricted to numbers"
+        spin-buttons
         spellcheck
       ></sd-input>
 
@@ -334,6 +335,24 @@ export const Max = {
   render: () => html`
     <div class="w-[250px]">
       <sd-input label="Max" type="number" max="5000" help-text="Maximum value is 5000" required></sd-input>
+    </div>
+  `
+};
+
+/**
+ * Use the `spinButtons` attribute display custom spin buttons for number inputs.
+ */
+export const SpinButtons = {
+  render: () => html`
+    <div class="w-[250px]">
+      <sd-input
+        label="Spin Buttons"
+        type="number"
+        min="0"
+        max="10"
+        help-text="Min value is 0 and max is 10"
+        spin-buttons
+      ></sd-input>
     </div>
   `
 };
