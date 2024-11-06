@@ -72,7 +72,7 @@ export const Size = {
         </sd-radio-button>
       </sd-radio-group>
 
-      <sd-radio-group value="1">
+      <sd-radio-group value="1" size="md">
         <sd-radio-button value="1" size="md">
           <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
           Medium

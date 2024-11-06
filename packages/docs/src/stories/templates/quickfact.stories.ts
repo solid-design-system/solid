@@ -1,10 +1,6 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 
-/**
- * ```
- * ```
- */
 export default {
   tags: ['!dev'],
   parameters: {
@@ -14,6 +10,17 @@ export default {
     }
   },
   title: 'Templates/Quickfact'
+};
+
+export const QuickfactWithSummary = {
+  name: 'Quickfact with Summary',
+  render: () =>
+    html` <sd-quickfact class="max-w-[410px] mx-auto">
+      <sd-icon name="content/people" color="primary" aria-hidden="true" library="default" slot="icon"></sd-icon>
+      <div slot="summary">
+        <div>Over 4,000 employees in 9 international locations</div>
+      </div>
+    </sd-quickfact>`
 };
 
 export const QuickfactWithDescription = {
@@ -33,8 +40,8 @@ export const QuickfactWithDescription = {
     <sd-quickfact>
       <sd-icon name="content/handshake" color="primary" aria-hidden="true" library="default" slot="icon"></sd-icon>
       <div slot="summary" class="space-y-4">
-        <p class="text-base font-normal leading-normal sm:text-xl md:text-3xl sm:leading-tight">Partnership</p>
-        <p class="text-base font-normal leading-normal sm:text-lg md:text-xl">
+        <p>Partnership</p>
+        <p class="text-base font-normal leading-normal md:text-xl">
           Union Investment is part of the Volksbanken Raiffeisenbanken cooperative financial network. The cooperative
           model is based on a simple idea: when people join forces, they are much stronger together: "What one cannot do
           alone, many can".

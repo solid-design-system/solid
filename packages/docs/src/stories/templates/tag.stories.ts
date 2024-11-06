@@ -1,10 +1,6 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 
-/**
- * ```
- * ```
- */
 export default {
   tags: ['!dev'],
   title: 'Templates/Tag',
@@ -29,6 +25,7 @@ export const filterTagGroupMorningstarRating = {
   name: 'Filter Tag Group with Morningstar Rating',
   render: () => html`
     <sd-tag selected>
+      <label class="sr-only">5 stars</label>
       <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
       <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
       <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
@@ -36,21 +33,25 @@ export const filterTagGroupMorningstarRating = {
       <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
     </sd-tag>
     <sd-tag>
+      <label class="sr-only">4 stars</label>
       <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
       <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
       <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
       <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
     </sd-tag>
     <sd-tag>
+      <label class="sr-only">3 stars</label>
       <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
       <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
       <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
     </sd-tag>
     <sd-tag>
+      <label class="sr-only">2 stars</label>
       <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
       <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
     </sd-tag>
     <sd-tag>
+      <label class="sr-only">1 star</label>
       <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
     </sd-tag>
   `

@@ -222,7 +222,7 @@ export default class SdNavigationItem extends SolidElement {
               ? this.separated
                 ? html`<button
                     type="button"
-                    title="chevron-down-button"
+                    title="toggle-details"
                     class="sd-interactive sd-interactive--reset"
                     @click=${this.handleClickSummary}
                   >
@@ -270,7 +270,13 @@ export default class SdNavigationItem extends SolidElement {
     /* eslint-enable lit/binding-positions */
 
     if (isAccordion) {
-      return html`<details part="details" id="navigation-item-details" ?open=${this.open} class="relative flex">
+      return html`<details
+        aria-expanded=${this.open}
+        part="details"
+        id="navigation-item-details"
+        ?open=${this.open}
+        class="relative flex"
+      >
         ${root}<slot name="children"></slot>
       </details>`;
     }

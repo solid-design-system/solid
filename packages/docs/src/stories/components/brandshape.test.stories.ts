@@ -9,6 +9,8 @@ import {
 } from '../../../scripts/storybook/helper';
 import type { ConstantDefinition } from '../../../scripts/storybook/helper';
 
+import { html } from 'lit-html';
+
 const { argTypes, parameters } = storybookDefaults('sd-brandshape');
 const { overrideArgs } = storybookHelpers('sd-brandshape');
 const { generateTemplate } = storybookTemplate('sd-brandshape');
@@ -28,7 +30,7 @@ export default {
     {
       type: 'slot',
       name: 'image',
-      value: `<img slot="image" style="transform:translateY(-30%);" src="./placeholders/images/generic.jpg" alt="Generic" />`
+      value: `<img slot="image" src="./placeholders/images/generic.jpg" alt="Generic" />`
     },
     { type: 'attribute', name: 'shapes', value: '["top", "middle", "bottom"]' }
   ]),
@@ -191,7 +193,7 @@ export const Sample = {
         {
           type: 'slot',
           name: 'image',
-          value: `<img slot="image" style="transform:translateY(-50%) skewY(11deg)" src="./placeholders/images/coins.jpg" alt="collaboration" />`
+          value: `<img slot="image" src="./placeholders/images/coins.jpg" alt="collaboration" />`
         },
         { type: 'attribute', name: 'shapes', value: '["top", "middle", "bottom"]' }
       ])
@@ -199,4 +201,61 @@ export const Sample = {
   }
 };
 
-export const Combination = generateScreenshotStory([Default, Shapes, Variants, Breakpoints, Parts, Sample]);
+export const Image = {
+  name: 'Image',
+  render: () =>
+    html`<div class="grid grid-cols-3 gap-20">
+        <sd-brandshape variant="image">
+          <div class="slot slot--border slot--text h-8 w-full">Default slot</div>
+          <img slot="image" src="./images/brandshape-test-square.jpg" alt="Generic" />
+        </sd-brandshape>
+        <sd-brandshape variant="image">
+          <div class="slot slot--border slot--text h-[200px] w-full">Default slot</div>
+          <img slot="image" src="./images/brandshape-test-square.jpg" alt="Generic" />
+        </sd-brandshape>
+        <sd-brandshape variant="image">
+          <div class="slot slot--border slot--text h-[400px] w-full">Default slot</div>
+          <img slot="image" src="./images/brandshape-test-square.jpg" alt="Generic" />
+        </sd-brandshape>
+        <sd-brandshape variant="image">
+          <div class="slot slot--border slot--text h-8 w-full">Default slot</div>
+          <img slot="image" src="./images/brandshape-test-landscape.jpg" alt="Generic" />
+        </sd-brandshape>
+        <sd-brandshape variant="image">
+          <div class="slot slot--border slot--text h-[200px] w-full">Default slot</div>
+          <img slot="image" src="./images/brandshape-test-landscape.jpg" alt="Generic" />
+        </sd-brandshape>
+        <sd-brandshape variant="image">
+          <div class="slot slot--border slot--text h-[400px] w-full">Default slot</div>
+          <img slot="image" src="./images/brandshape-test-landscape.jpg" alt="Generic" />
+        </sd-brandshape>
+        <sd-brandshape variant="image">
+          <div class="slot slot--border slot--text h-8 w-full">Default slot</div>
+          <img slot="image" src="./images/brandshape-test-portrait.jpg" alt="Generic" />
+        </sd-brandshape>
+        <sd-brandshape variant="image">
+          <div class="slot slot--border slot--text h-[200px] w-full">Default slot</div>
+          <img slot="image" src="./images/brandshape-test-portrait.jpg" alt="Generic" />
+        </sd-brandshape>
+        <sd-brandshape variant="image">
+          <div class="slot slot--border slot--text h-[400px] w-full">Default slot</div>
+          <img slot="image" src="./images/brandshape-test-portrait.jpg" alt="Generic" />
+        </sd-brandshape>
+      </div>
+      <div>
+        <sd-brandshape variant="image" class="col-span-2">
+          <div class="slot slot--border slot--text h-[400px] w-full">Default slot</div>
+          <img slot="image" src="./images/brandshape-test-square.jpg" alt="Generic" />
+        </sd-brandshape>
+        <sd-brandshape variant="image" class="col-span-2">
+          <div class="slot slot--border slot--text h-[400px] w-full col-span-2">Default slot</div>
+          <img slot="image" src="./images/brandshape-test-landscape.jpg" alt="Generic" />
+        </sd-brandshape>
+        <sd-brandshape variant="image" class="col-span-2">
+          <div class="slot slot--border slot--text h-[400px] w-full col-span-2">Default slot</div>
+          <img slot="image" src="./images/brandshape-test-portrait.jpg" alt="Generic" />
+        </sd-brandshape>
+      </div>`
+};
+
+export const Combination = generateScreenshotStory([Default, Shapes, Variants, Breakpoints, Parts, Sample, Image]);
