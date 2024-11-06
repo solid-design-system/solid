@@ -24,6 +24,9 @@ export const highlightOptionRenderer: OptionRenderer = (option: SdOption, query:
   }
 
   const clonedOption = option.cloneNode(true) as SdOption;
+
+  clonedOption.selected = option.selected;
+
   const optionLabel = clonedOption.getTextLabel();
   const queryIndex = optionLabel.toLowerCase().indexOf(query.toLowerCase());
   const indexLabel = clonedOption.innerHTML.indexOf(optionLabel);

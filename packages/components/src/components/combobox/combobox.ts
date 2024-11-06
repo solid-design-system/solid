@@ -752,15 +752,6 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       this.currentPlacement = incomingPlacement;
     }
   }
-  updated() {
-    console.log('updated value', this.value);
-    // console.log('updated slotted Options', this.getSlottedOptions());
-    console.log('updated selected options', this.selectedOptions);
-    // console.log('updated filtered options', this.filteredOptions);
-    // console.log('updated display label', this.displayLabel);
-    // console.log('updated display input value', this.displayInput.value);
-    // console.log('updated display input value for multiple selection', this.displayInputValueForMultipleSelection);
-  }
 
   @watch('filter', { waitUntilFirstUpdate: true })
   handleFilterChange() {
@@ -836,7 +827,6 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     if (this.multiple) {
       this.createComboboxOptionsFromQuery(this.displayInput.value);
     } else {
-      // if (this.value === '' || this.value.length === 0) this.syncSelectedOptionsAndValue();
       this.syncSelectedOptionsAndValue();
       this.createComboboxOptionsFromQuery(Array.isArray(this.value) ? this.value.join(', ') : this.value);
     }
@@ -1239,7 +1229,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                 ? html`
                     <button
                       part="clear-button"
-                      class=${cx('select__clear flex justify-center', iconMarginLeft)}
+                      class=${cx('flex justify-center', iconMarginLeft)}
                       type="button"
                       aria-label=${this.localize.term('clearEntry')}
                       @mousedown=${this.preventLoosingFocus}
@@ -1367,6 +1357,12 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
 
       #listbox-options sd-optgroup:first-of-type {
         --display-divider: none;
+      }
+
+      mark {
+        font-weight: 700;
+        background-color: transparent;
+        color: inherit;
       }
     `
   ];
