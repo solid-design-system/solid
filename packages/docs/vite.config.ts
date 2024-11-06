@@ -22,6 +22,7 @@ export default (() => {
       VitePluginCreateEmptyCemIfNotExisting(),
       VitePluginCustomElementsManifest({
         ...customElementConfig,
+        files: ['../components/src/**/!(*.stories|*.spec|*.test|*.style).ts'],
         // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
         plugins: customElementConfig.plugins.filter(
           // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
