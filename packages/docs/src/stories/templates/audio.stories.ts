@@ -1,4 +1,4 @@
-import '../solid-components';
+import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 
 export default {

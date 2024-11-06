@@ -1,4 +1,4 @@
-import '../../solid-components';
+import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookTemplate, storybookUtilities } from '../../../scripts/storybook/helper';
 import { withActions } from '@storybook/addon-actions/decorator';
