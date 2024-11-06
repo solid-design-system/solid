@@ -541,16 +541,16 @@ export const storybookTemplate = (customElementTag: string) => {
                                     yValue.hasOwnProperty('value') ? yValue.value : yValue
                                 })
                             })}
-                         ${
-                           (yAxis.type === 'template' &&
-                             unsafeStatic((yValue.value || yValue).split('%TEMPLATE%')[1] || '')) ||
-                           ''
-                         }
-                         ${
-                           (xAxis.type === 'template' &&
-                             unsafeStatic((xValue.value || xValue).split('%TEMPLATE%')[1] || '')) ||
-                           ''
-                         }
+                          ${
+                            (yAxis.type === 'template' &&
+                              unsafeStatic((yValue.value || yValue).split('%TEMPLATE%')[1] || '')) ||
+                            ''
+                          }
+                          ${
+                            (xAxis.type === 'template' &&
+                              unsafeStatic((xValue.value || xValue).split('%TEMPLATE%')[1] || '')) ||
+                            ''
+                          }
                           ${
                             (constantsTemplate && unsafeStatic(constantsTemplate.split('%TEMPLATE%')[1] || '')) || ''
                           }</td></div>
