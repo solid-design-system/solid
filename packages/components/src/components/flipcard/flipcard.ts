@@ -57,7 +57,7 @@ export default class SdFlipcard extends SolidElement {
     | 'gradient-light-top'
     | 'gradient-light-bottom'
     | 'gradient-dark-top'
-    | 'gradient-dark-bottom' = 'empty';
+    | 'gradient-dark-bottom' = 'primary';
 
   /** Determines the variant of the back face of the flipcard. */
   @property({ type: String, reflect: true, attribute: 'back-variant' }) backVariant:
@@ -67,7 +67,7 @@ export default class SdFlipcard extends SolidElement {
     | 'gradient-light-top'
     | 'gradient-light-bottom'
     | 'gradient-dark-top'
-    | 'gradient-dark-bottom' = 'empty';
+    | 'gradient-dark-bottom' = 'primary';
 
   connectedCallback() {
     super.connectedCallback();
