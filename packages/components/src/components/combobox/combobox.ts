@@ -429,7 +429,8 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
         const oldValue = this.lastOptionValue;
 
         if (this.multiple) {
-          this.toggleOptionSelection(currentOption).then(() => {
+          this.toggleOptionSelection(currentOption);
+          this.updateComplete.then(() => {
             this.selectionChanged();
           });
         } else {
@@ -494,10 +495,11 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     event.stopPropagation();
 
     if (!this.disabled) {
-      this.toggleOptionSelection(option, false).then(() => this.selectionChanged());
+      this.toggleOptionSelection(option, false);
 
       // Emit after updating
       this.updateComplete.then(() => {
+        this.selectionChanged();
         this.emit('sd-input');
         this.emit('sd-change');
       });
@@ -570,7 +572,8 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
 
     if (option && !option.disabled) {
       if (this.multiple) {
-        this.toggleOptionSelection(option).then(() => {
+        this.toggleOptionSelection(option);
+        this.updateComplete.then(() => {
           this.selectionChanged();
         });
       } else {
@@ -656,7 +659,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   }
 
   // Toggles an option's selected state
-  private toggleOptionSelection(option: SdOption, force?: boolean): Promise<void> {
+  private toggleOptionSelection(option: SdOption, force?: boolean) {
     const allOptions = this.getSlottedOptions();
 
     const optionEl = allOptions.find(el =>
@@ -664,8 +667,6 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     );
 
     if (optionEl) optionEl.selected = force ?? !optionEl.selected;
-
-    return Promise.resolve();
   }
 
   /**
@@ -687,11 +688,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     this.selectedOptions = this.getSlottedOptions().filter(option => option.selected);
     const hasSelectedOptions = this.selectedOptions.some(option => {
       if (!option) return false;
-      if (Array.isArray(this.value)) {
-        return this.value.includes(option?.value || option.getTextLabel());
-      } else {
-        return this.value === (option?.value || option.getTextLabel());
-      }
+      return this.isOptionSelected(option);
     });
 
     // Update the value and display label
@@ -795,7 +792,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     }
   }
 
-  areSelectedOptionsAndValueInSync() {
+  selectedOptionsAndValueSynced() {
     if (!this.value && this.selectedOptions.length === 0) return true;
 
     return Array.isArray(this.value)
@@ -803,14 +800,26 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       : this.value === this.selectedOptions[0]?.value;
   }
 
+  isOptionSelected(option: SdOption) {
+    if (option.value) {
+      return this.value.includes(option.value);
+    } else {
+      return this.value.includes(option.getTextLabel());
+    }
+  }
+
   syncSelectedOptionsAndValue(): Promise<void> | undefined {
-    if (this.areSelectedOptionsAndValueInSync()) {
+    if (this.selectedOptionsAndValueSynced()) {
       return;
     }
+
+    const allOptions = this.getSlottedOptions();
+    allOptions.forEach(option => {
+      option.selected = false;
+    });
+
     this.selectedOptions = this.getSlottedOptions().filter(option => {
-      return Array.isArray(this.value)
-        ? this.value.includes(option.value) || this.value.includes(option.getTextLabel())
-        : this.value === option.value || this.value === option.getTextLabel();
+      return this.isOptionSelected(option);
     });
 
     this.selectedOptions.forEach(option => {
@@ -827,16 +836,9 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     if (this.multiple) {
       this.createComboboxOptionsFromQuery(this.displayInput.value);
     } else {
-      if (this.value === '' || this.value.length === 0) {
-        const allOptions = this.getSlottedOptions();
-        allOptions.forEach(option => {
-          option.selected = false;
-        });
-        this.selectedOptions = [];
-        this.createComboboxOptionsFromQuery('');
-      } else {
-        this.createComboboxOptionsFromQuery(Array.isArray(this.value) ? this.value.join(', ') : this.value);
-      }
+      // if (this.value === '' || this.value.length === 0) this.syncSelectedOptionsAndValue();
+      this.syncSelectedOptionsAndValue();
+      this.createComboboxOptionsFromQuery(Array.isArray(this.value) ? this.value.join(', ') : this.value);
     }
   }
 
