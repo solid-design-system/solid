@@ -58,7 +58,7 @@ export const RadioGroupWithTooltip = {
   name: 'Radio Group with Tooltip',
   render: () => html`
     <sd-radio-group class="w-[400px] py-6" boldLabel>
-      <div slot="label">Choose Your Subscription Plan</div>
+      <div slot="label">Choose your Subscription Plan</div>
       <sd-tooltip slot="tooltip" content="Select the plan that best meets your needs" size="sm"></sd-tooltip>
 
       <sd-radio value="basic">Basic Plan</sd-radio>
@@ -72,12 +72,12 @@ export const CheckboxGroupWithTooltip = {
   name: 'Checkbox Group with Tooltip',
   render: () => html`
     <sd-checkbox-group class="w-[400px] py-6">
-      <div slot="label">Select Your Interests</div>
+      <div slot="label">Select your Interests</div>
       <sd-tooltip slot="tooltip" content="Choose all that apply to you" size="sm"></sd-tooltip>
 
-      <sd-checkbox value="newsletters">Subscribe to Newsletters</sd-checkbox>
-      <sd-checkbox value="promotions">Receive Promotions</sd-checkbox>
-      <sd-checkbox value="updates">Get Product Updates</sd-checkbox>
+      <sd-checkbox value="newsletters">Subscribe to our Newsletters</sd-checkbox>
+      <sd-checkbox value="promotions">Receive our Promotions</sd-checkbox>
+      <sd-checkbox value="updates">Get our Product Updates</sd-checkbox>
     </sd-checkbox-group>
   `
 };
