@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-floating-promises */
-import '../../../dist/solid.js';
 import { defaultOptionRenderer, highlightOptionRenderer } from './option-renderer.js';
 import { expect, fixture, html } from '@open-wc/testing';
 import type SdOption from '../option/option.js';
@@ -54,52 +52,6 @@ describe('option-renderer', () => {
 
       const renderedOption = highlightOptionRenderer(option, query) as SdOption;
       const mark = renderedOption.children[0];
-      expect(mark.textContent).to.equal('Opt');
-    });
-
-    it('should work with options having prefix slot content', async () => {
-      const option = await fixture<SdOption>(html`
-        <sd-option>
-          <span slot="prefix">opt prefix</span>
-          Option 1
-        </sd-option>
-      `);
-
-      const query = 'opt';
-      const renderedOption = highlightOptionRenderer(option, query) as SdOption;
-      const prefix = renderedOption.querySelector('[slot="prefix"]')!;
-      const { children } = renderedOption;
-      const mark = children[1];
-
-      // Check that the slot was not changed with mark element
-      expect(prefix.children.length).to.equal(0);
-      expect(prefix.textContent).to.equal('opt prefix');
-
-      expect(children.length).to.equal(2);
-      expect(mark.tagName).to.equal('MARK');
-      expect(mark.textContent).to.equal('Opt');
-    });
-
-    it('should work with options having suffix slot content', async () => {
-      const option = await fixture<SdOption>(html`
-        <sd-option>
-          <span slot="suffix">opt suffix</span>
-          Option 1
-        </sd-option>
-      `);
-
-      const query = 'opt';
-      const renderedOption = highlightOptionRenderer(option, query) as SdOption;
-      const suffix = renderedOption.querySelector('[slot="suffix"]')!;
-      const { children } = renderedOption;
-      const mark = children[1];
-
-      // Check that the slot was not changed with mark element
-      expect(suffix.children.length).to.equal(0);
-      expect(suffix.textContent).to.equal('opt suffix');
-
-      expect(children.length).to.equal(2);
-      expect(mark.tagName).to.equal('MARK');
       expect(mark.textContent).to.equal('Opt');
     });
   });

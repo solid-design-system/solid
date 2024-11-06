@@ -447,6 +447,18 @@ export const Required = {
 };
 
 /**
+ * Use the `required` attribute to mark the element as required. This can be used for form validation purposes.
+ */
+
+export const NoOptions = {
+  render: () => html`
+    <div class="w-[400px] h-[400px]">
+      <sd-combobox size="lg" label="Required" placeholder="Please Select" placement="bottom" value=""> </sd-combobox>
+    </div>
+  `
+};
+
+/**
  * The component gets `valid` state when the input is valid.
  *
  * Use the `style-on-valid` attribute to automatically indicate and show a valid state.

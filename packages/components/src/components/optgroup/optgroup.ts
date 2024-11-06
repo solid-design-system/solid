@@ -1,19 +1,18 @@
 /* eslint-disable @typescript-eslint/unbound-method */
-import { classMap } from 'lit/directives/class-map.js';
+import { css } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
-import { HasSlotController } from '../../internal/slot.js';
 import { html } from 'lit/static-html.js';
 import { property, query } from 'lit/decorators.js';
 import { watch } from '../../internal/watch.js';
+import componentStyles from '../../styles/component.styles';
 import SdDivider from '../divider/divider';
 import SolidElement from '../../internal/solid-element';
-import styles from './optgroup.styles.js';
 import type { CSSResultGroup } from 'lit';
 import type SdOption from '../option/option';
 
 /**
- * @summary The <sd-optgroup> element creates a grouping for <sd-option>s within a <sd-select>.
- * @documentation https://synergy-design-system.github.io/?path=/docs/components-sd-optgroup--docs
+ * @summary The <sd-optgroup> element creates a grouping for <sd-option>s within a <sd-combobox>.
+ * @documentation @documentation https://solid.union-investment.com/[storybook-link]/components-sd-optgroup
  * @status development
  * @since 1.3.0
  *
@@ -36,13 +35,9 @@ import type SdOption from '../option/option';
 
 @customElement('sd-optgroup')
 export default class SdOptgroup extends SolidElement {
-  static styles: CSSResultGroup = styles;
-
   static dependencies = {
     'sd-divider': SdDivider
   };
-
-  private readonly hasSlotController = new HasSlotController(this, '[default]', 'prefix', 'suffix', 'label');
 
   @query('slot:not([name])') defaultSlot: HTMLSlotElement;
 
@@ -77,34 +72,33 @@ export default class SdOptgroup extends SolidElement {
 
   render() {
     const { disabled } = this;
-    const hasLabelSlot = this.hasSlotController.test('label');
-    const hasLabel = this.label ? true : !!hasLabelSlot;
     return html`
-      <div
-        class=${classMap({
-          optgroup: true,
-          'optgroup--has-label': hasLabel,
-          'optgroup--has-prefix': this.hasSlotController.test('prefix'),
-          'optgroup--has-suffix': this.hasSlotController.test('suffix'),
-          'optgroup--is-disabled': this.disabled
-        })}
-        role="${disabled ? 'presentation' : 'group'}"
-        part="base"
-      >
-        <sd-divider class="optgroup__divider" part="divider"></sd-divider>
-        <div class="optgroup__label-container" part="label-container">
-          <slot name="prefix" part="prefix" class="optgroup__prefix"></slot>
-          <slot name="label" part="label" class="optgroup__label">
-            <span class="optgroup__label-content"> ${this.label} </span>
+      <div role="${disabled ? 'presentation' : 'group'}" part="base">
+        <sd-divider id="divider" class="mb-2" part="divider"></sd-divider>
+        <div part="label-container">
+          <slot name="label" part="label">
+            <div class="text-black px-4 font-bold">${this.label}</div>
           </slot>
-          <slot name="suffix" part="suffix" class="optgroup__suffix"></slot>
         </div>
-        <div class="optgroup__options" role="group" part="options">
+        <div role="group" part="options">
           <slot @slotchange=${this.handleDisableOptions}></slot>
         </div>
       </div>
     `;
   }
+  static styles: CSSResultGroup = [
+    componentStyles,
+    SolidElement.styles,
+    css`
+      :host {
+        --display-divider: block;
+      }
+
+      #divider {
+        display: var(--display-divider);
+      }
+    `
+  ];
 }
 
 declare global {

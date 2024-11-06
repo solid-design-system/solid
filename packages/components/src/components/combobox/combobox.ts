@@ -1364,6 +1364,10 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       sd-tag[disabled='false']::part(base):hover {
         @apply bg-primary-100;
       }
+
+      #listbox-options sd-optgroup:first-of-type {
+        --display-divider: none;
+      }
     `
   ];
   /* eslint-enable @typescript-eslint/unbound-method */
