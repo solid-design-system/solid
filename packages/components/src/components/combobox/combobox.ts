@@ -37,8 +37,8 @@ import type SdOption from '../option/option';
  * @slot label - The combobox's label. Alternatively, you can use the `label` attribute.
  * @slot help-text - Text that describes how to use the combobox.
  *    Alternatively, you can use the `help-text` attribute.
- * @slot prefix - Used to prepend a presentational icon or similar element to the combobox.
- * @slot suffix - Used to append a presentational icon or similar element to the combobox.
+ * @slot left - Used to prepend a presentational icon or similar element to the combobox.
+ * @slot right - Used to append a presentational icon or similar element to the combobox.
  * @slot clear-icon - An icon to use in lieu of the default clear icon.
  * @slot expand-icon - The icon to show when the control is expanded and collapsed.
  *    Rotates on open and close.
@@ -61,8 +61,8 @@ import type SdOption from '../option/option';
  * @csspart form-control-input - The combobox's wrapper.
  * @csspart form-control-help-text - The help text's wrapper.
  * @csspart combobox - The container that wraps the prefix, combobox, clear icon, and expand button.
- * @csspart prefix - The container that wraps the prefix slot.
- * @csspart suffix - The container that wraps the suffix slot.
+ * @csspart left - The container that wraps the left icon slot.
+ * @csspart right - The container that wraps the right icon slot.
  * @csspart display-input - The element that displays the selected option's label,
  *     an `<input>` element.
  * @csspart listbox - The listbox container where the options are slotted

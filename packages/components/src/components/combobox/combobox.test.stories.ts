@@ -1,3 +1,5 @@
+/* eslint-disable lit/attribute-value-entities */
+
 import '../../solid-components';
 import {
   type ConstantDefinition,
@@ -77,7 +79,7 @@ export default {
   args: overrideArgs([
     threeOptionsConstant,
     labelConstant,
-    { type: 'attribute', name: 'placeholder', value: 'Please search and select' },
+    { type: 'attribute', name: 'placeholder', value: 'Please search and combobox' },
     { type: 'attribute', name: 'max-options-visible', value: 3 },
     { type: 'attribute', name: 'getOption', value: '' }
   ]),
@@ -264,7 +266,8 @@ export const BorderVisibility = {
           twentyOptionsConstant,
           labelConstant,
           { type: 'attribute', name: 'placeholder', value: 'Please Select' },
-          { type: 'attribute', name: 'max-options-visible', value: 3 }
+          { type: 'attribute', name: 'max-options-visible', value: 3 },
+          { type: 'attribute', name: 'getOption', value: '' }
         ])
       })}
     </div>`;
@@ -285,7 +288,7 @@ export const Slots = {
     delete args['open-attr'];
 
     return html`
-      ${['default', 'label', 'clear-icon', 'expand-icon', 'help-text'].map(slot =>
+      ${['default', 'label', 'clear-icon', 'expand-icon', 'left', 'right', 'help-text'].map(slot =>
         generateTemplate({
           axis: {
             x: {
@@ -296,7 +299,7 @@ export const Slots = {
                 {
                   value:
                     slot === 'default'
-                      ? `<div class="slot slot--border slot--background h-8 w-full"></div>`
+                      ? `<sd-option></sd-option>`
                       : `<div slot='${slot}' class="slot slot--border slot--background h-6 ${
                           slot === 'label' || slot === 'help-text' ? 'w-20' : 'w-6'
                         }"></div>`,
@@ -320,32 +323,106 @@ export const Slots = {
 };
 
 /**
- * Use the `help-text` attribute to provide additional context or instructions.
- *
- * For help texts that contain HTML, use the `help-text` slot instead.
+ * Use the `form-control`,
+ `form-control-label`,
+ `form-control-input`,
+ `form-control-help-text`,
+ `combobox`,
+ `display-input`,
+ `listbox`,
+ `tags`,
+ `tag`,
+ `tag__base`,
+ `tag__content`,
+ `tag__removable-indicator`,
+ `clear-button`, and
+ `expand-icon` part selectors to customize the combobox component.
  */
-export const HelpText = {
-  name: 'Help Text',
-  render: () => html`
-    <div class="flex gap-12 h-[500px]">
-      <sd-combobox size="lg" label="Label" placement="bottom" value="" help-text="Help text Attribute">
-        <sd-option value="option-1">Option 1</sd-option>
-        <sd-option value="option-2">Option 2</sd-option>
-        <sd-option value="option-3">Option 3</sd-option>
-        <sd-option value="option-4">Option 4</sd-option>
-        <sd-option value="option-5">Option 5</sd-option>
-      </sd-combobox>
 
-      <sd-combobox size="lg" label="Label" placement="bottom" value="">
-        <div slot="help-text" class="text-lg">Help text Slot</div>
-        <sd-option value="option-1">Option 1</sd-option>
-        <sd-option value="option-2">Option 2</sd-option>
-        <sd-option value="option-3">Option 3</sd-option>
-        <sd-option value="option-4">Option 4</sd-option>
-        <sd-option value="option-5">Option 5</sd-option>
-      </sd-combobox>
-    </div>
-  `
+const partsArr = [
+  'form-control',
+  'form-control-label',
+  'form-control-input',
+  'form-control-help-text',
+  'combobox',
+  'display-input',
+  'listbox',
+  'tags',
+  'tag',
+  'tag__base',
+  'tag__content',
+  'tag__removable-indicator',
+  'clear-button',
+  'expand-icon',
+  'left',
+  'right'
+];
+
+export const Parts = {
+  name: 'Parts',
+  parameters: {
+    controls: {
+      exclude: [
+        'open-attr',
+        'form-control',
+        'form-control-label',
+        'form-control-input',
+        'form-control-help-text',
+        'combobox',
+        'display-input',
+        'listbox',
+        'tags',
+        'tag',
+        'tag__base',
+        'tag__content',
+        'tag__removable-indicator',
+        'clear-button',
+        'expand-icon',
+        'left',
+        'right'
+      ]
+    }
+  },
+  render: (args: { 'open-attr'?: string }) => {
+    delete args['open-attr'];
+
+    return generateTemplate({
+      axis: {
+        x: { type: 'attribute', name: 'useTags' },
+        y: {
+          type: 'template',
+          name: 'sd-combobox::part(...){outline: solid 2px red}',
+          values: partsArr.map(part => {
+            return {
+              title: part,
+              value: `<style>#part-${part} sd-combobox::part(${part}){outline: solid 2px red; outline-offset: 2px} ::part(popup__content){overflow-y: visible} ::part(tag__removable-indicator){display: block} ::part(tag__content){display: block}</style><div id="part-${part}">%TEMPLATE%</div>`
+            };
+          })
+        }
+      },
+      constants: [
+        { type: 'attribute', name: 'useTags', value: true },
+        { type: 'attribute', name: 'value', value: 'option-1 option-2' },
+        {
+          type: 'slot',
+          name: 'left',
+          value:
+            '<sd-icon slot="left" library="global-resources" name="system/picture" aria-hidden="true" color="currentColor"></sd-icon>'
+        },
+        {
+          type: 'slot',
+          name: 'right',
+          value:
+            '<sd-icon slot="right" library="global-resources" name="system/picture" aria-hidden="true" color="currentColor"></sd-icon>'
+        },
+        clearableConstant,
+        helpTextConstant,
+        labelConstant,
+        multipleConstant
+      ],
+      args
+    });
+  }
 };
 
 /**
@@ -369,15 +446,76 @@ export const Focus = {
 };
 
 /**
+ * Per default the combobox will indicate an error state when the input is invalid. Use the `style-on-valid` attribute to indicate a valid state as well.
+ */
+
+export const StyleOnValid = {
+  name: 'Style on Valid',
+  parameters: {
+    controls: {
+      exclude: ['open-attr']
+    }
+  },
+  render: (args: { 'open-attr'?: string }) => {
+    delete args['open-attr'];
+
+    return html`<div class="h-[340px]">
+      ${generateTemplate({
+        options: {
+          classes: 'w-full'
+        },
+        axis: {
+          x: {
+            type: 'attribute',
+            name: 'style-on-valid'
+          }
+        },
+        constants: [fiveOptionsConstant, { type: 'attribute', name: 'value', value: '' }],
+        args
+      })}
+    </div>`;
+  },
+
+  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
+    await Promise.all([customElements.whenDefined('sd-combobox'), customElements.whenDefined('sd-option')]).then(
+      async () => {
+        const els = canvasElement.querySelectorAll('sd-combobox');
+
+        for (const el of els) {
+          await waitUntil(() => el?.shadowRoot?.querySelector('input'));
+          await userEvent.click(el.shadowRoot!.querySelector('input')!);
+          await userEvent.click(el.querySelector('sd-option')!);
+        }
+
+        // tab to next element to loose focus
+        await userEvent.tab();
+      }
+    );
+  }
+};
+
+/**
  * A simple suggestions list shows the user a filtered list.
  */
 export const SimpleSuggests = {
   name: 'Simple Suggests',
-  render: () => html`
-    <div class="h-[260px] w-[400px]">
-      <sd-combobox label="Preferred Color" value="g"> ${createColorOptionsHtml()} </sd-combobox>
-    </div>
-  `
+  render: (args: { 'open-attr'?: string }) => {
+    delete args['open-attr'];
+    return html`
+      <div class="h-[260px] w-[400px]">
+        <sd-combobox label="Preferred Color"> ${createColorOptionsHtml()} </sd-combobox>
+      </div>
+    `;
+  },
+  play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+    await Promise.all([customElements.whenDefined('sd-combobox'), customElements.whenDefined('sd-option')]).then(
+      async () => {
+        const elm = canvasElement.querySelector<SdCombobox>('sd-combobox');
+        await waitUntil(() => elm?.shadowRoot?.querySelector('input'));
+        await userEvent.type(elm!.shadowRoot!.querySelector('input')!, 'gre');
+      }
+    );
+  }
 };
 
 /**
@@ -391,9 +529,7 @@ export const HighlightQuery = {
     const optionRenderer = highlightOptionRenderer;
     return html`
       <div class="h-[260px] w-[400px]">
-        <sd-combobox label="Preferred color" class="highlight-combobox" value="g">
-          ${createColorOptionsHtml()}
-        </sd-combobox>
+        <sd-combobox label="Preferred color" class="highlight-combobox"> ${createColorOptionsHtml()} </sd-combobox>
       </div>
       <script type="module">
         // the highlight option renderer utility function can be imported via:
@@ -409,17 +545,69 @@ export const HighlightQuery = {
         });
       </script>
     `;
+  },
+  play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+    await Promise.all([customElements.whenDefined('sd-combobox'), customElements.whenDefined('sd-option')]).then(
+      async () => {
+        const elm = canvasElement.querySelector<SdCombobox>('sd-combobox');
+        await waitUntil(() => elm?.shadowRoot?.querySelector('input'));
+        await userEvent.type(elm!.shadowRoot!.querySelector('input')!, 'gre');
+      }
+    );
   }
 };
 
 /**
- * Use to group `s visually.
+ * `sd-combobox` is fully accessibile via keyboard.
  */
-export const GroupingQuery = {
-  name: 'Grouping Query',
+
+export const Mouseless = {
+  name: 'Mouseless',
+  parameters: {
+    controls: {
+      exclude: ['open-attr', 'value', 'default']
+    }
+  },
+  render: (args: { 'open-attr'?: string }) => {
+    delete args['open-attr'];
+
+    return html`<div class="mouseless h-[260px] w-full flex gap-4">
+      ${generateTemplate({
+        constants: [twoOptionsConstant, { type: 'attribute', name: 'label', value: 'Default' }],
+        args
+      })}
+      ${generateTemplate({
+        constants: [twoOptionsConstant, multipleConstant, { type: 'attribute', name: 'label', value: 'Multiple' }],
+        args
+      })}
+      ${generateTemplate({
+        constants: [
+          twoOptionsConstant,
+          multipleConstant,
+          { type: 'attribute', name: 'useTags', value: true },
+          { type: 'attribute', name: 'label', value: 'Multiple w/ Tags' }
+        ],
+        args
+      })}
+    </div>`;
+  },
+
+  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
+    const el = canvasElement.querySelector('.mouseless sd-combobox');
+    await waitUntil(() => el?.shadowRoot?.querySelector('input'));
+    el?.shadowRoot?.querySelector('input')!.focus();
+  }
+};
+
+/**
+ * Use `<sd-optgroup>` to group listbox items visually.
+ */
+
+export const SampleGroupingOptions = {
+  name: 'Sample: Grouping Options',
   render: () => html`
     <div class="h-[260px] w-[400px]">
-      <sd-combobox label="Group elements" value="g">
+      <sd-combobox label="Group elements">
         <sd-optgroup label="B">
           ${createColorOptionHtml('Black')} ${createColorOptionHtml('Blue')} ${createColorOptionHtml('Brown')}
         </sd-optgroup>
@@ -438,334 +626,213 @@ export const GroupingQuery = {
 };
 
 /**
- * The height of the filtered options list can be customized by setting the max-height on the listbox part of the combobox.
+ * Demonstrates the form behavior with validation styles when the `required` attribute is set to `true`.
  */
-export const SuggestionContainerHeight = {
-  name: 'Suggestion Container Height',
-  render: () => html`
-    <div class="h-[260px] w-[400px]">
-      <style>
-        #max-height::part(listbox) {
-          max-height: 100px;
+
+export const SampleForm = {
+  name: 'Sample: Form',
+  parameters: {
+    controls: {
+      exclude: ['open-attr', 'label', 'name', 'useTags', 'value', 'multiple', 'max-options-visible', 'default']
+    }
+  },
+  render: (args: { 'open-attr'?: string }) => {
+    delete args['open-attr'];
+
+    const sharedConstants: ConstantDefinition[] = [
+      { type: 'attribute', name: 'form', value: 'testForm' },
+      { type: 'attribute', name: 'clearable', value: true },
+      { type: 'attribute', name: 'required', value: true },
+      twoOptionsConstant
+    ];
+
+    return html`
+      <form action="" method="get" id="testForm" name="testForm" class="w-[370px]">
+        <div class="mb-6">
+          ${generateTemplate({
+            constants: [
+              ...sharedConstants,
+              { type: 'attribute', name: 'label', value: 'Required' },
+              { type: 'attribute', name: 'name', value: 'required field' }
+            ],
+            args
+          })}
+        </div>
+        <div class="mb-6">
+          ${generateTemplate({
+            constants: [
+              ...sharedConstants,
+              { type: 'attribute', name: 'label', value: 'Required Multiple' },
+              { type: 'attribute', name: 'name', value: 'required multiple field' },
+              multipleConstant
+            ],
+            args
+          })}
+        </div>
+        <div class="mb-8">
+          ${generateTemplate({
+            constants: [
+              ...sharedConstants,
+              { type: 'attribute', name: 'label', value: 'Required Multiple w/ Tags' },
+              { type: 'attribute', name: 'name', value: 'required multiple tags field' },
+              multipleConstant,
+              { type: 'attribute', name: 'useTags', value: true }
+            ],
+            args
+          })}
+        </div>
+        <sd-button type="submit">Submit</sd-button>
+      </form>
+      <script>
+        function handleSubmit(event) {
+          const form = document.querySelector('#testForm');
+          const sdComboboxes = Array.from(document.querySelectorAll('sd-combobox'));
+
+          const isValid = sdCombobox => sdCombobox.checkValidity();
+
+          if (sdComboboxes.every(isValid)) {
+            event.preventDefault(); // Prevent the default form submission behavior
+
+            const formData = new FormData(form);
+            const formValues = Object.fromEntries(formData);
+            formValues['required multiple field'] = formData.getAll('required multiple field');
+            formValues['required multiple tags field'] = formData.getAll('required multiple tags field');
+            m;
+
+            alert('Form submitted successfully with the following values: ' + JSON.stringify(formValues, null, 2));
+          }
         }
-      </style>
-      <sd-combobox label="Preferred Color" id="max-height" value="g"> ${createColorOptionsHtml()} </sd-combobox>
-    </div>
-  `
+
+        document.querySelector('#testForm').addEventListener('submit', handleSubmit);
+      </script>
+    `;
+  }
 };
 
 /**
- * Use the `clearable` attribute to add a clear button that removes the selected value.
+ * Demonstrates a form containing all existing Solid form elements.
  */
 
-export const Clearable = {
-  name: 'Clearable',
-  render: () => html`
-    <div class="w-[400px] h-[500px]">
-      <sd-combobox size="lg" label="Label" placement="bottom" clearable value="Green">
-        ${createColorOptionsHtml()}
-      </sd-combobox>
-    </div>
-  `
-};
+export const SolidForm = {
+  name: 'Sample: Solid Form',
+  parameters: {
+    controls: {
+      include: []
+    }
+  },
+  render: () => {
+    return html`
+      <form action="" method="get" id="testForm" name="testForm" class="">
+        <h1 class="text-lg text-white bg-primary p-4">Solid Form</h1>
+        <div class="[&>:nth-child(even)]:bg-neutral-100 [&>*]:p-4">
+          <sd-checkbox form="testForm" name="field 1" required>Field 1</sd-checkbox>
+          <sd-input form="testForm" name="field 2" label="Field 2" required></sd-input>
+          <sd-combobox form="testForm" multiple useTags name="field 3" label="Field 3" required
+            ><sd-option value="option-1">Option 1</sd-option><sd-option value="option-2">Option 2</sd-option>
+            <sd-option value="option-3">Option 3</sd-option><sd-option value="option-4">Option 4</sd-option
+            ><sd-option value="option-5">Option 5</sd-option><sd-option value="option-6">Option 6</sd-option
+            ><sd-option value="option-7">Option 7</sd-option></sd-combobox
+          >
+          <sd-radio-group form="testForm" name="field 4" label="Field 4" required
+            ><sd-radio value="option-1">Option 1</sd-radio><sd-radio value="option-2">Option 2</sd-radio>
+            <sd-radio value="option-3">Option 3</sd-radio></sd-radio-group
+          >
+          <sd-radio-group value="option-1" form="testForm" name="field 5" label="Field 5" required
+            ><sd-radio-button value="option-1">Option 1</sd-radio-button
+            ><sd-radio-button value="option-2">Option 2</sd-radio-button>
+            <sd-radio-button value="option-3">Option 3</sd-radio-button></sd-radio-group
+          >
+          <sd-switch form="testForm" name="field 6" required>Field 6</sd-switch>
+          <sd-textarea form="testForm" name="field 7" label="Field 7" required></sd-textarea>
+        </div>
+        <sd-button class="my-4" type="submit">Submit</sd-button>
+        <sd-button class="my-4" type="reset">Reset</sd-button>
+      </form>
 
-/**
- * Use the `multiple` attribute to allow multiple options to be selected.
- */
+      <script>
+        function handleSubmit(event) {
+          const form = document.querySelector('#testForm');
 
-export const Multiple = {
-  name: 'Multiple',
-  render: () => html`
-    <div class="w-[400px] h-[500px]">
-      <sd-combobox size="lg" label="Label" placement="bottom" multiple value="option-1 option-2">
-        <sd-option value="option-1" checkbox>Option 1</sd-option>
-        <sd-option value="option-2" checkbox>Option 2</sd-option>
-        <sd-option value="option-3" checkbox>Option 3</sd-option>
-        <sd-option value="option-4" checkbox>Option 4</sd-option>
-        <sd-option value="option-5" checkbox>Option 5</sd-option>
-      </sd-combobox>
-    </div>
-  `
-};
-
-/**
- * Use the `useTags` attribute to display selected options as tags using the `sd-tag` component.
- *
- * __Hint:__ It requires the `multiple` attribute to be set.
- */
-export const useTags = {
-  name: 'Use Tags',
-  render: () => html`
-    <div class="w-[650px] h-[500px]">
-      <sd-combobox size="lg" label="Label" placement="bottom" multiple value="option-1 option-2" useTags>
-        <sd-option value="option-1">Option 1</sd-option>
-        <sd-option value="option-2">Option 2</sd-option>
-        <sd-option value="option-3">Option 3</sd-option>
-        <sd-option value="option-4">Option 4</sd-option>
-        <sd-option value="option-5">Option 5</sd-option>
-      </sd-combobox>
-    </div>
-  `
-};
-
-/**
- * Use the `max-options-visible` attribute to define the maximum number of selected options that will be visible.
- *
- * __Hint:__ It requires the `multiple` and `useTags` attributes to be set.<br />
- * Once the maximum number of options is reached, the selection will display a message indicating how many additional options have been selected.<br />
- * To remove the limit, set the attribute to `0`.
- */
-export const MaxOptionsVisible = {
-  name: 'Max Options Visible',
-  render: () => html`
-    <div class="w-[400px] h-[500px]">
-      <sd-combobox
-        size="lg"
-        label="Label"
-        placement="bottom"
-        multiple=""
-        value="option-1 option-2 option-3"
-        useTags
-        max-options-visible="2"
-      >
-        <sd-option value="option-1">Option 1</sd-option>
-        <sd-option value="option-2">Option 2</sd-option>
-        <sd-option value="option-3">Option 3</sd-option>
-        <sd-option value="option-4">Option 4</sd-option>
-        <sd-option value="option-5">Option 5</sd-option>
-      </sd-combobox>
-    </div>
-  `
-};
-
-/**
- * Use the `required` attribute to mark the element as required. This can be used for form validation purposes.
- */
-
-export const Required = {
-  name: 'Required',
-  render: () => html`
-    <div class="w-[400px] h-[400px]">
-      <sd-combobox size="lg" label="Required" placeholder="Please Select" placement="bottom" value="" required="">
-        <sd-option value="option-1">Option 1</sd-option>
-        <sd-option value="option-2">Option 2</sd-option>
-        <sd-option value="option-3">Option 3</sd-option>
-        <sd-option value="option-4">Option 4</sd-option>
-        <sd-option value="option-5">Option 5</sd-option>
-      </sd-combobox>
-    </div>
-  `
-};
-
-/**
- * Use the `required` attribute to mark the element as required. This can be used for form validation purposes.
- */
-
-export const NoOptions = {
-  name: 'No Options',
-  render: () => html`
-    <div class="w-[400px] h-[400px]">
-      <sd-combobox size="lg" label="Required" placeholder="Please Select" placement="bottom" value=""> </sd-combobox>
-    </div>
-  `
-};
-
-/**
- * The component gets `valid` state when the input is valid.
- *
- * Use the `style-on-valid` attribute to automatically indicate and show a valid state.
- */
-
-export const Valid = {
-  name: 'Valid',
-  render: () => html`
-    <style>
-      sd-combobox.valid-example::part(display-input) {
-        color: #181818;
-      }
-    </style>
-    <div class="w-[400px] h-[400px]">
-      <sd-combobox
-        size="lg"
-        placement="bottom"
-        label="Label"
-        placeholder="Please Select"
-        style-on-valid=""
-        value="option-1"
-        class="valid-example"
-      >
-        <sd-option class="option" value="option-1">Option 1</sd-option>
-        <sd-option class="option" value="option-2">Option 2</sd-option>
-        <sd-option class="option" value="option-3">Option 12</sd-option>
-      </sd-combobox>
-    </div>
-
-    <script>
-      var validSelect = document.querySelector('.valid-example');
-      var options = validSelect.querySelectorAll('.option');
-      setTimeout(() => {
-        validSelect.checkValidity();
-        validSelect.reportValidity();
-      }, 500);
-    </script>
-  `
-};
-
-/**
- * The component gets `invalid` state when the form is not valid.
- */
-
-export const Invalid = {
-  name: 'Invalid',
-  render: () => html`
-    <div class="w-[400px] h-[300px]">
-      <sd-combobox
-        size="lg"
-        placement="bottom"
-        label="Label"
-        placeholder="Please Select"
-        style-on-valid=""
-        value=""
-        required=""
-        clearable=""
-        class="invalid-example"
-      >
-        <sd-option class="option" value="option-1">Option 1</sd-option>
-        <sd-option class="option" value="option-2">Option 2</sd-option>
-        <sd-option class="option" value="option-3">Option 3</sd-option>
-      </sd-combobox>
-    </div>
-
-    <script>
-      var invalidSelect = document.querySelector('.invalid-example');
-      setTimeout(() => {
-        invalidSelect.checkValidity();
-        invalidSelect.reportValidity();
-        invalidSelect.setCustomValidity('Error text');
-      }, 500);
-    </script>
-  `
-};
-
-/**
- * Use the left and right slots to add text and icons.
- */
-export const Icons = {
-  name: 'Icons',
-  render: () => html`
-    <div class="w-[400px] h-[400px]">
-      <sd-combobox placeholder="Small" size="sm" clearable>
-        <sd-icon
-          slot="left"
-          library="global-resources"
-          name="system/picture"
-          aria-hidden="true"
-          color="currentColor"
-        ></sd-icon>
-        ${createColorOptionsHtml()}
-        <sd-icon
-          slot="right"
-          library="global-resources"
-          name="system/picture"
-          aria-hidden="true"
-          color="currentColor"
-        ></sd-icon>
-      </sd-combobox>
-      <br />
-      <sd-combobox placeholder="Medium" size="md" clearable>
-        <sd-icon
-          slot="left"
-          library="global-resources"
-          name="system/picture"
-          aria-hidden="true"
-          color="currentColor"
-        ></sd-icon>
-        ${createColorOptionsHtml()}
-        <sd-icon
-          slot="right"
-          library="global-resources"
-          name="system/picture"
-          aria-hidden="true"
-          color="currentColor"
-        ></sd-icon>
-      </sd-combobox>
-      <br />
-      <sd-combobox placeholder="Large" size="lg" clearable>
-        <sd-icon
-          slot="left"
-          library="global-resources"
-          name="system/picture"
-          aria-hidden="true"
-          color="currentColor"
-        ></sd-icon>
-        ${createColorOptionsHtml()}
-        <sd-icon
-          slot="right"
-          library="global-resources"
-          name="system/picture"
-          aria-hidden="true"
-          color="currentColor"
-        ></sd-icon>
-      </sd-combobox>
-    </div>
-  `
-};
-
-/**
- * It is possible to add options dynamically to the combobox e.g. if the option values need to be fetched asynchronously from a remote server or API.
- */
-export const AsyncOptions = {
-  name: 'Async Options',
-  render: () => html`
-    <div class="w-[400px] h-[500px]">
-      <sd-combobox label="Async options" class="async-combobox">
-        <sd-option class="option" value="option-1">Option 1</sd-option>
-        <sd-option class="option" value="option-2">Option 2</sd-option>
-        <sd-option class="option" value="option-3">Option 3</sd-option>
-      </sd-combobox>
-    </div>
-    <script type="module">
-      const comboboxes = document.querySelectorAll('.async-combobox');
-      comboboxes.forEach(combobox => {
-        // After api request the options are added async
-        let index = 4;
-        let timeout = setInterval(() => {
-          const option = document.createElement('sd-option');
-          const value = 'Option ' + index++;
-          option.textContent = value;
-          combobox.appendChild(option);
-          if (index > 10) {
-            clearInterval(timeout);
+          const formData = new FormData(form);
+          const formValues = Object.fromEntries(formData);
+          formValues['field 3'] = formData.getAll('field 3');
+          if (form.reportValidity()) {
+            event.preventDefault(); // Prevent the default form submission behavior
+            alert('Form submitted with the following values: ' + JSON.stringify(formValues, null, 2));
           }
-        }, 4000);
-      });
-    </script>
-  `
+        }
+
+        document.querySelector('#testForm').addEventListener('submit', handleSubmit);
+      </script>
+    `;
+  }
 };
 
 /**
- * A custom filter can be applied by passing a filter function to the filter property. This filter() function will be called for each option. The first argument is an element and the second argument is the query string.
+ * 1. You can use the `setCustomValidity` method to set a custom validation message. This will override any native validation messages.
+ * 2. Set an empty string to clear the custom validity and make the input valid.
+ * 3. To show the validation message, call the `reportValidity` method. Originally this would show a native validation bubble, but we show the error messages inline.
  */
-export const CustomFilter = {
-  name: 'Custom Filter',
-  render: () => html`
-    <div class="w-[400px] h-[500px]">
-      <sd-combobox label="Custom Filter" class="filter-combobox"> ${createColorOptionsHtml()} </sd-combobox>
-    </div>
-    <script type="module">
-      const comboboxes = document.querySelectorAll('.filter-combobox');
-      comboboxes.forEach(combobox => {
-        const oldFilter = combobox.filter;
-        combobox.filter = (option, queryString) => {
-          // only show options for more than 2 characters on text input
-          if (queryString && queryString.length > 2) {
-            return oldFilter(option, queryString);
-          }
-          return false;
-        };
-      });
-    </script>
-  `
+
+export const setCustomValidity = {
+  name: 'Set Custom Validity',
+  parameters: {
+    chromatic: { disableSnapshot: true }
+  },
+  render: () => {
+    return html`
+      <!-- block submit and show alert instead -->
+      <form id="validationForm" class="flex flex-col gap-2">
+        <sd-combobox id="custom-input" style-on-valid>
+          <sd-option value="option-1">Option 1</sd-option>
+          <sd-option value="option-2">Option 2</sd-option>
+          <sd-option value="option-3">Option 3</sd-option>
+        </sd-combobox>
+        <div>
+          <sd-button type="submit">Submit</sd-button>
+          <sd-button id="error-button" variant="secondary">Set custom error</sd-button>
+          <sd-button id="success-button" variant="secondary">Set success</sd-button>
+          <sd-button type="reset" variant="secondary">Reset</sd-button>
+        </div>
+      </form>
+      <script type="module">
+        // Wait for custom elements to be defined
+        await Promise.all([
+          customElements.whenDefined('sd-combobox'),
+          customElements.whenDefined('sd-button'),
+          customElements.whenDefined('sd-option')
+        ]).then(() => {
+          const form = document.getElementById('validationForm');
+          const input = document.getElementById('custom-input');
+          const setErrorButton = document.getElementById('error-button');
+          const setSuccessButton = document.getElementById('success-button');
+
+          // Initial error
+          const errorMessage = \`This is an initial custom error.\`;
+          input.setCustomValidity(errorMessage);
+          input.reportValidity();
+
+          // Show error message
+          setErrorButton.addEventListener('click', () => {
+            const errorMessage = \`This is a new custom error (\${new Date().toLocaleTimeString()})\`;
+            input.setCustomValidity(errorMessage);
+            input.reportValidity();
+          });
+
+          // Show success message
+          setSuccessButton.addEventListener('click', () => {
+            input.setCustomValidity(''); // Clear custom validity
+            input.reportValidity();
+          });
+
+          form.addEventListener('submit', event => {
+            event.preventDefault();
+            alert('All fields are valid!');
+          });
+        });
+      </script>
+    `;
+  }
 };
 
 export const Combination = generateScreenshotStory([
@@ -774,22 +841,14 @@ export const Combination = generateScreenshotStory([
   DisabledMultiple,
   ValidInvalid,
   BorderVisibility,
-  Slots,
-  HelpText,
   Focus,
+  Slots,
+  Parts,
+  StyleOnValid,
   SimpleSuggests,
   HighlightQuery,
-  GroupingQuery,
-  SuggestionContainerHeight,
-  Clearable,
-  Multiple,
-  useTags,
-  MaxOptionsVisible,
-  Required,
-  NoOptions,
-  Valid,
-  Invalid,
-  Icons,
-  AsyncOptions,
-  CustomFilter
+  Mouseless,
+  SampleGroupingOptions,
+  SampleForm,
+  setCustomValidity
 ]);
