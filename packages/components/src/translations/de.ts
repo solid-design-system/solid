@@ -6,6 +6,7 @@ const translation: Translation = {
   $name: 'Deutsch',
   $dir: 'ltr',
 
+  audioPlayer: 'Audio-Player',
   carousel: 'Karussell',
   clearEntry: 'Eingabe löschen',
   close: 'Schließen',
@@ -14,30 +15,31 @@ const translation: Translation = {
     if (num === 0) return '';
     return `Optionen ausgewählt (${num})`;
   },
-  previousSlide: 'Vorherige Folie',
   currentValue: 'Aktueller Wert',
   goToSlide: (slide, count) => `Zu Folie ${slide} von ${count} gehen`,
   hidePassword: 'Passwort verbergen',
   loading: 'Wird geladen',
+  mute: 'Stummschalten',
   nextSlide: 'Nächste Folie',
+  pauseAudio: 'Audio pausieren',
+  playAudio: 'Audio abspielen',
+  playbackSpeed: 'Wiedergabe Geschwindigkeit',
+  previousSlide: 'Vorherige Folie',
   progress: 'Fortschritt',
   remove: 'Entfernen',
   resize: 'Größe ändern',
+  scrollDown: 'Nach unten scrollen',
   scrollToEnd: 'Zum Ende scrollen',
   scrollToStart: 'Zum Anfang scrollen',
+  scrollUp: 'Nach oben scrollen',
   selectAColorFromTheScreen: 'Farbe vom Bildschirm auswählen',
   selectDefaultPlaceholder: 'Bitte auswählen',
+  showLess: 'Weniger anzeigen',
+  showMore: 'Mehr anzeigen',
   showPassword: 'Passwort anzeigen',
   slideNum: slide => `Folie ${slide}`,
   toggleColorFormat: 'Farbformat umschalten',
-  audioPlayer: 'Audio-Player',
-  playAudio: 'Audio abspielen',
-  pauseAudio: 'Audio pausieren',
-  mute: 'Stummschalten',
-  unmute: 'Unmute',
-  showMore: 'Mehr anzeigen',
-  showLess: 'Weniger anzeigen',
-  playbackSpeed: 'Wiedergabe Geschwindigkeit'
+  unmute: 'Unmute'
 };
 
 registerTranslation(translation);

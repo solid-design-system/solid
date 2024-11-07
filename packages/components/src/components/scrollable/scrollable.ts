@@ -1,5 +1,6 @@
 import { css, html, unsafeCSS } from 'lit';
 import { customElement } from '../../../src/internal/register-custom-element';
+import { LocalizeController } from '../../utilities/localize';
 import { property, state } from 'lit/decorators.js';
 import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
@@ -41,6 +42,8 @@ import SolidElement from '../../internal/solid-element';
 
 @customElement('sd-scrollable')
 export default class SdScrollable extends SolidElement {
+  public localize = new LocalizeController(this);
+
   /** Defines the scroll orientation */
   @property({ type: String, reflect: true }) orientation: 'horizontal' | 'vertical' | 'auto' = 'horizontal';
 
@@ -195,7 +198,12 @@ export default class SdScrollable extends SolidElement {
                             @click=${() => this.handleScroll('left')}
                           >
                             <slot name="icon-start">
-                              <sd-icon library="system" name="chevron-up" class="rotate-[-90deg]"></sd-icon>
+                              <sd-icon
+                                library="system"
+                                name="chevron-up"
+                                class="rotate-[-90deg]"
+                                label=${this.localize.term('scrollUp')}
+                              ></sd-icon>
                             </slot>
                           </button>
                         </div>
@@ -213,7 +221,12 @@ export default class SdScrollable extends SolidElement {
                             @click=${() => this.handleScroll('right')}
                           >
                             <slot name="icon-end">
-                              <sd-icon library="system" name="chevron-down" class="rotate-[-90deg]"></sd-icon>
+                              <sd-icon
+                                library="system"
+                                name="chevron-down"
+                                class="rotate-[-90deg]"
+                                label=${this.localize.term('scrollDown')}
+                              ></sd-icon>
                             </slot>
                           </button>
                         </div>
@@ -235,7 +248,11 @@ export default class SdScrollable extends SolidElement {
                             @click=${() => this.handleScroll('up')}
                           >
                             <slot name="icon-start">
-                              <sd-icon library="system" name="chevron-up"></sd-icon>
+                              <sd-icon
+                                library="system"
+                                name="chevron-up"
+                                label=${this.localize.term('scrollUp')}
+                              ></sd-icon>
                             </slot>
                           </button>
                         </div>
@@ -253,7 +270,11 @@ export default class SdScrollable extends SolidElement {
                             @click=${() => this.handleScroll('down')}
                           >
                             <slot name="icon-end">
-                              <sd-icon library="system" name="chevron-down"></sd-icon>
+                              <sd-icon
+                                library="system"
+                                name="chevron-down"
+                                label=${this.localize.term('scrollDown')}
+                              ></sd-icon>
                             </slot>
                           </button>
                         </div>
