@@ -25,7 +25,7 @@ describe('<sd-input>', () => {
     expect(el.clearable).to.be.false;
     expect(el.passwordToggle).to.be.false;
     expect(el.passwordVisible).to.be.false;
-    expect(el.noSpinButtons).to.be.false;
+    expect(el.spinButtons).to.be.false;
     expect(el.placeholder).to.equal('');
     expect(el.disabled).to.be.false;
     expect(el.readonly).to.be.false;
@@ -525,6 +525,40 @@ describe('<sd-input>', () => {
       const input = el.shadowRoot!.querySelector<HTMLInputElement>('input')!;
       expect(input.getAttribute('spellcheck')).to.equal('false');
       expect(input.spellcheck).to.be.false;
+    });
+  });
+
+  describe('when using spin-buttons', () => {
+    it('should show spin buttons when spin-buttons is set', async () => {
+      const el = await fixture<SdInput>(html` <sd-input type="number" spin-buttons></sd-input> `);
+      const decrementButton = el.shadowRoot!.querySelector('button[part^="decrement-number-stepper"]')!;
+      const incrementButton = el.shadowRoot!.querySelector('button[part^="increment-number-stepper"]')!;
+
+      expect(decrementButton).to.exist;
+      expect(incrementButton).to.exist;
+    });
+
+    it('should decrement the value on long press of decrement button', async () => {
+      const el = await fixture<SdInput>(html`<sd-input type="number" spin-buttons></sd-input>`);
+      el.value = '10';
+      await el.updateComplete;
+
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const handleStepDownSpy = sinon.spy(el as any, 'handleStepDown');
+
+      const initialValue = parseFloat(el.value);
+
+      // manually invoke the handleStepDown multiple times to simulate a long press effect
+      for (let i = 0; i < 5; i++) {
+        el['handleStepDown']();
+      }
+
+      expect(handleStepDownSpy.callCount).to.equal(5);
+
+      const newValue = parseFloat(el.value);
+      expect(newValue).to.be.lessThan(initialValue);
+
+      handleStepDownSpy.restore();
     });
   });
 
