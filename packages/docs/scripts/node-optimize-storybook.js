@@ -36,8 +36,6 @@ async function enhanceCustomElementManifest() {
   }
 }
 
-enhanceCustomElementManifest();
-
 /**
  * Change the generated browser title to "Solid Design System by Union Investment".
  */
