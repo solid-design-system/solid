@@ -52,7 +52,7 @@ export const TeaserMediaWithLink = {
             below.
           </p>
           <div>
-            <sd-button href="#" target="_blank" variant="cta">Feel free to contact us</sd-button>
+            <sd-button href="#" target="_blank" variant="cta" inverted>Feel free to contact us</sd-button>
           </div>
         </div>
       </sd-teaser-media>
