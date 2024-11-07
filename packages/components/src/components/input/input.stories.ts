@@ -340,7 +340,7 @@ export const Max = {
 };
 
 /**
- * Use the `spinButtons` attribute display custom spin buttons for number inputs.
+ * Use the `spin-buttons` attribute display custom spin buttons for number inputs.
  */
 export const SpinButtons = {
   render: () => html`
@@ -349,7 +349,7 @@ export const SpinButtons = {
         label="Spin Buttons"
         type="number"
         min="0"
-        max="10"
+        max="100"
         help-text="Min value is 0 and max is 10"
         spin-buttons
       ></sd-input>
