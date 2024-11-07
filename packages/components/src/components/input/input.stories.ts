@@ -123,9 +123,9 @@ export const HelpText = {
   render: () => {
     return html`
       <div class="flex flex-rows gap-12">
-        <sd-input label="Label" help-text="Help text Attribute"></sd-input>
+        <sd-input label="Label" help-text="Help text attribute"></sd-input>
         <sd-input label="Label">
-          <div slot="help-text" class="text-lg">Help text Slot</div>
+          <div slot="help-text" class="text-lg">Help text slot</div>
         </sd-input>
       </div>
     `;
@@ -140,6 +140,23 @@ export const Clearable = {
   render: () =>
     html`<div class="w-[250px]">
       <sd-input label="Clearable" clearable spellcheck value="Input text"></sd-input>
+    </div>`
+};
+
+/**
+ * Use the `left` or `right` slot to add system icons.
+ */
+
+export const Icon = {
+  render: () =>
+    html`<div class="flex flex-rows gap-12">
+      <sd-input label="Label" spellcheck>
+        <sd-icon label="landscape" library="global-resources" name="system/picture" slot="left"></sd-icon>
+      </sd-input>
+
+      <sd-input label="Label" spellcheck>
+        <sd-icon label="landscape" library="global-resources" name="system/picture" slot="right"></sd-icon>
+      </sd-input>
     </div>`
 };
 
@@ -163,33 +180,51 @@ export const TogglePassword = {
 export const Type = {
   render: () =>
     html` <div class="grid grid-cols-2 gap-12 content-end">
-      <sd-input type="text" placeholder=".*" label="Text" help-text="default type" spellcheck></sd-input>
+      <sd-input
+        type="text"
+        placeholder="Lorem ipsum"
+        label="Text (Default)"
+        help-text="Default type"
+        spellcheck
+      ></sd-input>
 
-      <sd-input type="search" placeholder="^d{1,3}$" label="Search" help-text="use search format" spellcheck></sd-input>
+      <sd-input
+        type="search"
+        placeholder="Search term"
+        label="Search"
+        help-text="Use search format"
+        spellcheck
+      ></sd-input>
 
       <sd-input
         type="date"
-        placeholder="someone@example.com"
         label="Date"
-        help-text="value is restricted to date format"
+        value="2025-03-01"
+        help-text="Value is restricted to date format"
         spellcheck
       ></sd-input>
 
       <sd-input
         type="datetime-local"
-        placeholder="someone@example.com"
         label="Date Time"
-        help-text="value is restricted to datetime format"
+        value="2025-03-01T10:30"
+        help-text="Value is restricted to datetime format"
         spellcheck
       ></sd-input>
 
-      <sd-input type="time" label="Time" help-text="value is restricted to time format" spellcheck></sd-input>
+      <sd-input
+        type="time"
+        label="Time"
+        value="10:30"
+        help-text="Value is restricted to time format"
+        spellcheck
+      ></sd-input>
 
       <sd-input
         type="number"
-        placeholder="^d{1,3}$"
+        placeholder="123456"
         label="Number"
-        help-text="value is restricted to numbers"
+        help-text="Value is restricted to numbers"
         spin-buttons
         spellcheck
       ></sd-input>
@@ -198,7 +233,7 @@ export const Type = {
         type="email"
         placeholder="someone@example.com"
         label="Email"
-        help-text="validate with email address format"
+        help-text="Validate with email address format"
         spellcheck
       ></sd-input>
 
@@ -212,10 +247,20 @@ export const Type = {
 
       <sd-input
         type="password"
-        placeholder=".*"
         label="Password"
-        help-text="use password display format"
+        value="8SyW4jNDdrIDe2L"
+        help-text="Use password display format"
         password-toggle
+        spellcheck
+      ></sd-input>
+
+      <sd-input
+        type="password"
+        label="Password"
+        value="8SyW4jNDdrIDe2L"
+        help-text="Use password display format"
+        password-toggle
+        password-visible
         spellcheck
       ></sd-input>
 
@@ -223,7 +268,7 @@ export const Type = {
         type="url"
         placeholder="https://www.union-investment.de/"
         label="URL"
-        help-text="validate with url format"
+        help-text="Validate with url format"
         name="url field"
         spellcheck
       ></sd-input>
@@ -272,7 +317,7 @@ export const Invalid = {
           class="w-[250px]"
           label="Label"
           style-on-valid
-          placeholder="Placeholder"
+          placeholder="Placeholder text"
         ></sd-input>
       </form>
       <script type="module">
@@ -312,7 +357,7 @@ export const MinLength = {
 export const MaxLength = {
   render: () => html`
     <div class="w-[250px]">
-      <sd-input label="Maxlength" maxlength="5" help-text="5 is the maximum allowed characters" required></sd-input>
+      <sd-input label="Maxlength" maxlength="25" help-text="25 is the maximum allowed characters" required></sd-input>
     </div>
   `
 };
@@ -350,7 +395,7 @@ export const SpinButtons = {
         type="number"
         min="0"
         max="100"
-        help-text="Min value is 0 and max is 10"
+        help-text="Min value is 0 and Max value is 100"
         spin-buttons
       ></sd-input>
     </div>
