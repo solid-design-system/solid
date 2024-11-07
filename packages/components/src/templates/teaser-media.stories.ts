@@ -28,11 +28,7 @@ export const TeaserMediaWithLink = {
     html` <div class="flex flex-col gap-12">
       <sd-teaser-media variant="gradient-dark">
         <div slot="media" class="relative">
-          <img
-            class="w-full aspect-ratio"
-            src="./placeholders/images/coins.jpg"
-            alt="Close-up of hands stacking coins into small piles on a table, suggesting financial planning or saving."
-          />
+          <img class="w-full aspect-ratio" src="./placeholders/images/coins.jpg" alt="" />
         </div>
         <div slot="meta" class="meta-info">
           <span class="meta-info-item">August 2024 | Olaf Janßen</span>
@@ -49,12 +45,7 @@ export const TeaserMediaWithLink = {
         </div>
       </sd-teaser-media>
       <sd-teaser-media variant="primary">
-        <img
-          slot="media"
-          class="w-full"
-          src="./placeholders/images/collaboration.jpg"
-          alt="Two men in business attire sitting on a sofa in a modern office, smiling and looking at a laptop screen."
-        />
+        <img slot="media" class="w-full" src="./placeholders/images/collaboration.jpg" alt="" />
         <h3 slot="headline" class="sd-headline sd-headline--inverted">Your contact person</h3>
         <div class="flex flex-col gap-4">
           <p class="sd-paragraph sd-paragraph--inverted">
@@ -67,12 +58,7 @@ export const TeaserMediaWithLink = {
         </div>
       </sd-teaser-media>
       <sd-teaser-media variant="neutral-100">
-        <img
-          slot="media"
-          class="w-full aspect-ratio"
-          src="./placeholders/images/skyline.jpg"
-          alt="City skyline of Frankfurt by night in christmas time."
-        />
+        <img slot="media" class="w-full aspect-ratio" src="./placeholders/images/skyline.jpg" alt="" />
         <h3 slot="headline" class="sd-headline sd-headline--size-base">USA or Europe? It depends on the mix</h3>
         <div class="flex flex-col gap-4">
           <p class="sd-paragraph">
@@ -105,11 +91,7 @@ export const TeaserMediaOverrides = {
       </style>
       <sd-teaser-media variant="gradient-dark" class="media-overrides">
         <div slot="media" class="relative">
-          <img
-            class="w-full aspect-ratio"
-            src="./placeholders/images/coffeeshop.jpg"
-            alt="People sitting at a table, having a coffee in a coffeeshop."
-          />
+          <img class="w-full aspect-ratio" src="./placeholders/images/coffeeshop.jpg" alt="" />
         </div>
         <h3 slot="headline" class="sd-headline sd-headline--inverted">Gender</h3>
         <div slot="expandable" class="text-center">
@@ -132,24 +114,14 @@ export const TeaserMediaWithCopyright = {
     </style>
     <div class="flex flex-col gap-12">
       <sd-teaser-media variant="gradient-dark" class="max-w-[600px]">
-        <img
-          slot="media"
-          src="./placeholders/images/architecture.jpg"
-          class="aspect-video object-cover"
-          alt="Generic alt"
-        />
+        <img slot="media" src="./placeholders/images/architecture.jpg" class="aspect-video object-cover" alt="" />
         <h3 slot="headline">Headline Media Teaser</h3>
         <div class="flex flex-col sd-copyright" style="--copyright: '© Union Investment 2024'">
           <div slot="default" class="h-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
         </div>
       </sd-teaser-media>
       <sd-teaser-media variant="gradient-white" class="max-w-[600px]">
-        <img
-          slot="media"
-          src="./placeholders/images/architecture.jpg"
-          class="aspect-video object-cover"
-          alt="Generic alt"
-        />
+        <img slot="media" src="./placeholders/images/architecture.jpg" class="aspect-video object-cover" alt="" />
         <h3 slot="headline">Headline Media Teaser</h3>
         <div class="flex flex-col sd-copyright gradient-white" style="--copyright: '© Union Investment 2024'">
           <div slot="default" class="h-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
