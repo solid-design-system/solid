@@ -173,6 +173,7 @@ export default class SdScrollable extends SolidElement {
           this.inset ? 'p-4' : ''
         )}
         @scroll=${this.updateScrollIndicatorVisibility}
+        tabindex="0"
       >
         <div part="scroll-content" class="flex-1">
           <slot></slot>
