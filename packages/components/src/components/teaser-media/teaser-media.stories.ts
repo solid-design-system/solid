@@ -184,7 +184,7 @@ export const MetaSlot = {
 /**
  * Use the `expandable` slot to add content that only shows up on hover.
  *
- * **Accessibility Hint:** Expandable slot content cannot contain any action since it is not shown on mobile devices due to hover interaction.
+ * **Accessibility Hint:** Expandable slot content should not contain any important content and should not have any actions, since it is not shown on mobile devices and is only accessible for mouse users.
  */
 
 export const ExpandableSlot = {
