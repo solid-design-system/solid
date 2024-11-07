@@ -10,7 +10,17 @@ export default {
       type: 'figma',
       url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=3510-218627&t=lJxrBJPRziV74fnu-4'
     }
-  }
+  },
+  decorators: [
+    (story: any) => html`
+      <style>
+        #anchor--templates-teaser-media--teaser-media-overrides .innerZoomElementWrapper {
+          overflow: hidden;
+        }
+      </style>
+      ${story()}
+    `
+  ] as unknown
 };
 
 export const TeaserMediaWithLink = {
