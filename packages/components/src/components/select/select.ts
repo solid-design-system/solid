@@ -36,7 +36,7 @@ import type SdOption from '../option/option';
  * @slot help-text - Text that describes how to use the input. Alternatively, you can use the `help-text` attribute.
  * @slot clear-icon - An icon to use in lieu of the default clear icon.
  * @slot expand-icon - The icon to show when the control is expanded and collapsed. Rotates on open and close.
- * @slot tooltip - The an optional tooltip that helps describe the input. Use this slot with the `sd-tooltip` component.
+ * @slot tooltip - An optional tooltip that helps describe the input. Use this slot with the `sd-tooltip` component.
 
  *
  * @event sd-change - Emitted when the control's value changes.
