@@ -91,32 +91,34 @@ export const ClickableTeaser = {
           }
         }
       </style>
-      <a href="#" target="_blank" class="flex-1">
-        <sd-teaser variant="primary-100" breakpoint="9999" inset class="interactive max-w-[426.67px]">
-          <div slot="media" class="relative">
-            <img
-              class="aspect-video object-cover"
-              src="./placeholders/images/family.jpg"
-              alt="A man with glasses and a beard holding two young children in his arms, smiling outdoors with trees in the background."
-            />
-          </div>
-          <h3 slot="headline" class="sd-headline sd-headline--size-lg">Future is an Attitude</h3>
-          <div class="flex flex-col gap-5 mt-4">
-            <p>
-              Together with our cooperative partners and in trust in our shared values, we once again achieved a good
-              result in the past financial year. From this strong position, we are investing in key areas for the future
-              in order to continue to grow profitably, strengthen our position as an active manager and secure the
-              long-term prosperity of our customers, even in a multi-layered and complex environment.
-            </p>
-            <div class="flex-none">
-              <sd-button variant="secondary">
-                <sd-icon name="system/download" slot="icon-left"></sd-icon>
-                Download Annual Report
-              </sd-button>
+      <div class="max-w-[426.67px]">
+        <a href="#" target="_blank" class="flex-1">
+          <sd-teaser variant="primary-100" breakpoint="9999" inset class="interactive">
+            <div slot="media" class="relative">
+              <img
+                class="aspect-video object-cover"
+                src="./placeholders/images/family.jpg"
+                alt="A man with glasses and a beard holding two young children in his arms, smiling outdoors with trees in the background."
+              />
             </div>
-          </div>
-        </sd-teaser>
-      </a>
+            <h3 slot="headline" class="sd-headline sd-headline--size-lg">Future is an Attitude</h3>
+            <div class="flex flex-col gap-5 mt-4">
+              <p>
+                Together with our cooperative partners and in trust in our shared values, we once again achieved a good
+                result in the past financial year. From this strong position, we are investing in key areas for the
+                future in order to continue to grow profitably, strengthen our position as an active manager and secure
+                the long-term prosperity of our customers, even in a multi-layered and complex environment.
+              </p>
+              <div class="flex-none">
+                <sd-button variant="secondary">
+                  <sd-icon name="system/download" slot="icon-left"></sd-icon>
+                  Download Annual Report
+                </sd-button>
+              </div>
+            </div>
+          </sd-teaser>
+        </a>
+      </div>
     `;
   }
 };
