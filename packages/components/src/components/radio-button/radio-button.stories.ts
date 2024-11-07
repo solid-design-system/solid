@@ -42,7 +42,7 @@ export default {
 export const Default = {
   name: 'Default',
   render: (args: any) => {
-    return generateTemplate({ args });
+    return html`<div tabindex="0" class="w-min focus-visible:focus-outline">${generateTemplate({ args })}</div>`;
   }
 };
 
@@ -166,13 +166,13 @@ export const Icon = {
     <div class="flex gap-12">
       <sd-radio-group value="1">
         <sd-radio-button value="1">
-          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          <sd-icon label="landscape" library="global-resources" name="system/picture" slot="icon"></sd-icon>
         </sd-radio-button>
         <sd-radio-button value="2">
-          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          <sd-icon label="landscape" library="global-resources" name="system/picture" slot="icon"></sd-icon>
         </sd-radio-button>
         <sd-radio-button value="3">
-          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          <sd-icon label="landscape" library="global-resources" name="system/picture" slot="icon"></sd-icon>
         </sd-radio-button>
       </sd-radio-group>
     </div>
