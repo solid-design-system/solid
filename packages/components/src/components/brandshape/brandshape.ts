@@ -4,6 +4,7 @@ import { property, query, state } from 'lit/decorators.js';
 import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
+import type { TemplateResult } from 'lit';
 
 type Breakpoints = 0 | 414 | 640;
 
@@ -123,7 +124,7 @@ export default class SdBrandshape extends SolidElement {
     this.resizeObserver.unobserve(this.containerElem);
   }
 
-  private renderTopBrandshape(): HTMLOrSVGElement {
+  private renderTopBrandshape(): TemplateResult {
     return html`
       <div class="relative" part="shape-top">
         ${this.getSvg(this.componentBreakpoint, 'top')} ${this.renderWhitespaceFix('top')}
@@ -131,7 +132,7 @@ export default class SdBrandshape extends SolidElement {
     `;
   }
 
-  private renderMiddleBrandshape(): HTMLOrSVGElement {
+  private renderMiddleBrandshape(): TemplateResult {
     return html`
       <div
         class=${cx(
