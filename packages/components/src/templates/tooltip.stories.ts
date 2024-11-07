@@ -21,7 +21,7 @@ export const InputWithTooltip = {
         <span class="text-neutral-700">EUR</span>
       </span>
 
-      <label slot="label">Liquid Assets</label>
+      <label slot="label">Liquid assets</label>
       <sd-tooltip slot="tooltip" placement="top-start" size="sm" content="Available cash assets"></sd-tooltip>
     </sd-input>
   `
@@ -30,7 +30,7 @@ export const InputWithTooltip = {
 export const SelectWithTooltip = {
   name: 'Select with Tooltip',
   render: () => html`
-    <sd-select class="w-[400px] h-[300px] py-6" size="lg" placement="top" placeholder="Please Select" value="">
+    <sd-select class="w-[400px] h-[300px] py-6" size="lg" placement="top" placeholder="Please select" value="">
       <div slot="label">Access role</div>
       <sd-tooltip slot="tooltip" content="Select the level of access for this user" size="sm" hoist></sd-tooltip>
 
@@ -48,7 +48,7 @@ export const TextAreaWithTooltip = {
       class="w-[540px] py-4"
       value="A solid design system is more than a collection of components; it’s a living document that aligns teams, maintains consistency, and supports scalability. Here, you can capture the reasoning behind design choices, specific use cases, and any nuances that will aid other team members in understanding how to implement this component effectively."
     >
-      <div slot="label">Project Description</div>
+      <div slot="label">Project description</div>
       <sd-tooltip slot="tooltip" content="Explain your project in clear terms" size="sm"></sd-tooltip>
     </sd-textarea>
   `
