@@ -40,4 +40,4 @@ jobs:
           # We don't need tests in the main branch, but want to accept everything
           autoAcceptChanges: true
           # We need to manually build storybook with pnpm
-          storybookBuildDir: packages/components/dist/storybook
+          storybookBuildDir: packages/docs/dist/storybook

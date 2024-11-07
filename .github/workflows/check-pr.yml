@@ -69,7 +69,7 @@ jobs:
             # TurboSnap is an advanced Chromatic feature that speeds up builds for faster UI testing and review using Git and Webpack’s dependency graph
             onlyChanged: false
             # We need to manually build storybook with pnpm
-            storybookBuildDir: packages/components/dist/storybook
+            storybookBuildDir: packages/docs/dist/storybook
 
     quality-gate:
       name: Test components (do locally if failing)
