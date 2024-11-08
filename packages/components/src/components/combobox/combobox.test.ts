@@ -409,7 +409,7 @@ describe('<sd-combobox>', () => {
 
     it('should close the listbox when Escape key is pressed with sd-combobox is on focus', async () => {
       const el = await fixture<SdCombobox>(html`
-        <sd-combobox value="option">
+        <sd-combobox value="option-1">
           <sd-option value="option-1">Option 1</sd-option>
           <sd-option value="option-2">Option 2</sd-option>
           <sd-option value="option-3">Option 3</sd-option>
@@ -425,8 +425,8 @@ describe('<sd-combobox>', () => {
       await el.updateComplete;
 
       expect(displayInput.getAttribute('aria-expanded')).to.equal('false');
-      expect(displayInput.value).to.equal('option');
-      expect(el.value).to.deep.equal(['option']);
+      expect(displayInput.value).to.equal('Option 1');
+      expect(el.value).to.deep.equal(['option-1']);
     });
 
     it('should close the listbox when Enter key is pressed with sd-combobox is on focus', async () => {
@@ -452,7 +452,7 @@ describe('<sd-combobox>', () => {
 
       expect(displayInput.getAttribute('aria-expanded')).to.equal('false');
       expect(displayInput.value).to.equal('opt');
-      expect(el.value).to.equal('opt');
+      expect(el.value).to.equal('');
     });
 
     it('should clear the input when Escape key is pressed with sd-combobox is on focus and listbox is closed', async () => {
@@ -477,7 +477,7 @@ describe('<sd-combobox>', () => {
 
     it('should move the cursor to the start of the input when Home key is pressed with sd-combobox is on focus', async () => {
       const el = await fixture<SdCombobox>(html`
-        <sd-combobox value="option">
+        <sd-combobox value="option-1">
           <sd-option value="option-1">Option 1</sd-option>
           <sd-option value="option-2">Option 2</sd-option>
           <sd-option value="option-3">Option 3</sd-option>
@@ -488,8 +488,8 @@ describe('<sd-combobox>', () => {
       el.focus();
       await el.updateComplete;
 
-      expect(displayInput.selectionStart).to.equal(6);
-      expect(displayInput.selectionEnd).to.equal(6);
+      expect(displayInput.selectionStart).to.equal(8);
+      expect(displayInput.selectionEnd).to.equal(8);
 
       await sendKeys({ press: 'Home' });
       await el.updateComplete;
@@ -500,7 +500,7 @@ describe('<sd-combobox>', () => {
 
     it('should move the cursor to the end of the input when End key is pressed with sd-combobox is on focus', async () => {
       const el = await fixture<SdCombobox>(html`
-        <sd-combobox value="option">
+        <sd-combobox value="option-1">
           <sd-option value="option-1">Option 1</sd-option>
           <sd-option value="option-2">Option 2</sd-option>
           <sd-option value="option-3">Option 3</sd-option>
@@ -518,8 +518,8 @@ describe('<sd-combobox>', () => {
       await sendKeys({ press: 'End' });
       await el.updateComplete;
 
-      expect(displayInput.selectionStart).to.equal(6);
-      expect(displayInput.selectionEnd).to.equal(6);
+      expect(displayInput.selectionStart).to.equal(8);
+      expect(displayInput.selectionEnd).to.equal(8);
     });
 
     it('should not close the listbox when Enter key is pressed with a disabled option is selected', async () => {
@@ -1193,7 +1193,7 @@ describe('<sd-combobox>', () => {
 
   it('should use the custom filter if the filter property is used', async () => {
     const el = await fixture<SdCombobox>(html`
-      <sd-combobox value="test">
+      <sd-combobox value="option-2">
         <sd-option value="option-1">Green</sd-option>
         <sd-option value="option-2">Red</sd-option>
         <sd-option value="option-3">Light green</sd-option>
