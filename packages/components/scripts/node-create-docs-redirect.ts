@@ -96,8 +96,8 @@ const redirectContent = html`
     <body>
       <sd-notification variant="warning" open="">
         This page has moved. Please update your bookmarks to the new documentation URL: <br />
-        <a class="sd-link" href="https://solid-design-system.fe.union-investment.de/docs"
-          >https://solid-design-system.fe.union-investment.de/docs</a
+        <a class="sd-link" href="https://solid-design-system.fe.union-investment.de/docs/"
+          >https://solid-design-system.fe.union-investment.de/docs/</a
         >. <br />You will be redirected automatically in <span id="countdown">5</span> seconds.
       </sd-notification>
 
@@ -110,7 +110,7 @@ const redirectContent = html`
           countdownElement.textContent = countdown;
           if (countdown <= 0) {
             clearInterval(countdownInterval);
-            window.location.href = 'https://solid-design-system.fe.union-investment.de/docs';
+            window.location.href = 'https://solid-design-system.fe.union-investment.de/docs/';
           }
         }, 1000);
       </script>
