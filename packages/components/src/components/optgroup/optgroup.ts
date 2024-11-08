@@ -5,6 +5,7 @@ import { html } from 'lit/static-html.js';
 import { property, query } from 'lit/decorators.js';
 import { watch } from '../../internal/watch.js';
 import componentStyles from '../../styles/component.styles';
+import cx from 'classix';
 import SdDivider from '../divider/divider';
 import SolidElement from '../../internal/solid-element';
 import type { CSSResultGroup } from 'lit';
@@ -19,15 +20,11 @@ import type SdOption from '../option/option';
  * @dependency sd-divider
  *
  * @slot - The given options. Must be `<sd-option>` elements.
- * @slot prefix - A presentational prefix icon or similar element.
  * @slot label - The label for the optgroup
- * @slot suffix - A presentational suffix icon or similar element.
  *
  * @csspart base - The component's base wrapper.
  * @csspart label-container - The container that wraps prefix, label and base
  * @csspart divider - The divider that is displayed above the content
- * @csspart prefix - The container that wraps the prefix.
- * @csspart suffix - The container that wraps the suffix.
  * @csspart options - The container that wraps the <sd-option> elements.
  *
  * @cssproperty --display-divider - Display property of the divider. Defaults to "block"
@@ -73,12 +70,17 @@ export default class SdOptgroup extends SolidElement {
   render() {
     const { disabled } = this;
     return html`
-      <div role="${disabled ? 'presentation' : 'group'}" part="base">
+      <div
+        role="${disabled ? 'presentation' : 'group'}"
+        class="${cx(this.disabled ? 'text-neutral-500' : '')}"
+        part="base"
+      >
         <sd-divider id="divider" class="mb-2" part="divider"></sd-divider>
-        <div part="label-container">
-          <slot name="label" part="label">
-            <div class="text-black px-4 font-bold">${this.label}</div>
-          </slot>
+        <div
+          part="label-container"
+          class="${cx(this.disabled ? 'text-neutral-500' : 'text-black')} px-4 font-bold text-left"
+        >
+          <slot name="label"> ${this.label} </slot>
         </div>
         <div role="group" part="options">
           <slot @slotchange=${this.handleDisableOptions}></slot>
