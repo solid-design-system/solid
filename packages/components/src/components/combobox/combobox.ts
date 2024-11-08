@@ -268,29 +268,11 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     `;
   };
 
-  /** Gets the validity state object */
-  get validity() {
-    return this.valueInput.validity;
-  }
-
-  /** Gets the validation message */
-  get validationMessage() {
-    return this.valueInput.validationMessage;
-  }
-
   connectedCallback() {
     super.connectedCallback();
 
     // Because this is a form control, it shouldn't be opened initially
     this.open = false;
-  }
-
-  findOptionByValue(slottedOptions: SdOption[], value: string | string[]) {
-    if (Array.isArray(value)) {
-      return slottedOptions.find(option => value.includes(option.value));
-    }
-
-    return slottedOptions.find(option => option.value === value);
   }
 
   firstUpdated() {
@@ -300,6 +282,16 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       this.displayInputValue = option?.getTextLabel() || '';
     }
     this.formControlController.updateValidity();
+  }
+
+  /** Gets the validity state object */
+  get validity() {
+    return this.valueInput.validity;
+  }
+
+  /** Gets the validation message */
+  get validationMessage() {
+    return this.valueInput.validationMessage;
   }
 
   protected get options() {
@@ -322,6 +314,24 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
         return item;
       }
       return renderOption(item as SdOption);
+    });
+  }
+
+  protected get tags() {
+    return this.selectedOptions.map((option, index) => {
+      if (index < this.maxOptionsVisible || this.maxOptionsVisible <= 0) {
+        const tag = this.getTag(option!, index);
+        // Wrap so we can handle the remove
+        return html`<div @sd-remove=${(e: CustomEvent) => this.handleTagRemove(e, option!)}>
+          ${typeof tag === 'string' ? unsafeHTML(tag) : tag}
+        </div>`;
+      } else if (index === this.maxOptionsVisible) {
+        // Hit tag limit
+        return html`<sd-tag size=${this.size === 'sm' ? 'sm' : 'lg'} ?disabled=${this.disabled}
+          >+${this.selectedOptions.length - index}</sd-tag
+        >`;
+      }
+      return html``;
     });
   }
 
@@ -675,6 +685,52 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     if (optionEl) optionEl.selected = force ?? !optionEl.selected;
   }
 
+  private findOptionByValue(slottedOptions: SdOption[], value: string | string[]) {
+    if (Array.isArray(value)) {
+      return slottedOptions.find(option => value.includes(option.value));
+    }
+
+    return slottedOptions.find(option => option.value === value);
+  }
+
+  private selectedOptionsAndValueSynced() {
+    if (!this.value && this.selectedOptions.length === 0) return true;
+
+    return Array.isArray(this.value)
+      ? this.value.length === this.selectedOptions.length
+      : this.value === this.selectedOptions[0]?.value;
+  }
+
+  private isOptionSelected(option: SdOption) {
+    if (option.value) {
+      return this.value.includes(option.value);
+    } else {
+      return this.value.includes(option.getTextLabel());
+    }
+  }
+
+  private syncSelectedOptionsAndValue(): Promise<void> | undefined {
+    if (this.selectedOptionsAndValueSynced()) {
+      return;
+    }
+
+    const allOptions = this.getSlottedOptions();
+    allOptions.forEach(option => {
+      option.selected = false;
+    });
+
+    this.selectedOptions = this.getSlottedOptions().filter(option => {
+      return this.isOptionSelected(option);
+    });
+
+    this.selectedOptions.forEach(option => {
+      if (option) option.selected = true;
+    });
+
+    // eslint-disable-next-line consistent-return
+    return Promise.resolve();
+  }
+
   /**
    * Updates the selected options cache, the current value, and the display value
    */
@@ -718,22 +774,40 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     });
   }
 
-  protected get tags() {
-    return this.selectedOptions.map((option, index) => {
-      if (index < this.maxOptionsVisible || this.maxOptionsVisible <= 0) {
-        const tag = this.getTag(option!, index);
-        // Wrap so we can handle the remove
-        return html`<div @sd-remove=${(e: CustomEvent) => this.handleTagRemove(e, option!)}>
-          ${typeof tag === 'string' ? unsafeHTML(tag) : tag}
-        </div>`;
-      } else if (index === this.maxOptionsVisible) {
-        // Hit tag limit
-        return html`<sd-tag size=${this.size === 'sm' ? 'sm' : 'lg'} ?disabled=${this.disabled}
-          >+${this.selectedOptions.length - index}</sd-tag
-        >`;
-      }
-      return html``;
-    });
+  private createComboboxOptionsFromQuery(queryString: string) {
+    const optgroups: SdOptgroup[] = [];
+    this.filteredOptions = this.getSlottedOptions()
+      .filter(option => {
+        return this.filter(option, queryString) || queryString === '';
+      })
+      .map(option => {
+        const clonedOption = option.cloneNode(true) as SdOption;
+
+        clonedOption.selected = option.selected;
+
+        // Check if the option has a sd-optgroup as parent
+        const hasOptgroup = option.parentElement?.tagName.toLowerCase() === 'sd-optgroup';
+        if (!hasOptgroup) {
+          return clonedOption;
+        }
+
+        const optgroup = option.parentElement as SdOptgroup;
+        const filteredOptgroup = optgroups.find(el => el.id === optgroup.id);
+
+        // Check if the optgroup was already added to the filteredOptions.
+        // It should only be added once!
+        if (filteredOptgroup) {
+          filteredOptgroup?.appendChild(clonedOption);
+          return undefined;
+        }
+
+        const clonedOptgroup = optgroup.cloneNode() as SdOptgroup;
+        clonedOptgroup.appendChild(clonedOption);
+        optgroups.push(clonedOptgroup);
+        return clonedOptgroup;
+      })
+      // we need to remove the undefined values here
+      .filter(Boolean);
   }
 
   private handleInvalid(event: Event) {
@@ -787,44 +861,6 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
       this.handleOpenChange();
     }
-  }
-
-  selectedOptionsAndValueSynced() {
-    if (!this.value && this.selectedOptions.length === 0) return true;
-
-    return Array.isArray(this.value)
-      ? this.value.length === this.selectedOptions.length
-      : this.value === this.selectedOptions[0]?.value;
-  }
-
-  isOptionSelected(option: SdOption) {
-    if (option.value) {
-      return this.value.includes(option.value);
-    } else {
-      return this.value.includes(option.getTextLabel());
-    }
-  }
-
-  syncSelectedOptionsAndValue(): Promise<void> | undefined {
-    if (this.selectedOptionsAndValueSynced()) {
-      return;
-    }
-
-    const allOptions = this.getSlottedOptions();
-    allOptions.forEach(option => {
-      option.selected = false;
-    });
-
-    this.selectedOptions = this.getSlottedOptions().filter(option => {
-      return this.isOptionSelected(option);
-    });
-
-    this.selectedOptions.forEach(option => {
-      if (option) option.selected = true;
-    });
-
-    // eslint-disable-next-line consistent-return
-    return Promise.resolve();
   }
 
   @watch('value', { waitUntilFirstUpdate: true })
@@ -944,42 +980,6 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   /** Removes focus from the control. */
   blur() {
     this.displayInput.blur();
-  }
-
-  private createComboboxOptionsFromQuery(queryString: string) {
-    const optgroups: SdOptgroup[] = [];
-    this.filteredOptions = this.getSlottedOptions()
-      .filter(option => {
-        return this.filter(option, queryString) || queryString === '';
-      })
-      .map(option => {
-        const clonedOption = option.cloneNode(true) as SdOption;
-
-        clonedOption.selected = option.selected;
-
-        // Check if the option has a sd-optgroup as parent
-        const hasOptgroup = option.parentElement?.tagName.toLowerCase() === 'sd-optgroup';
-        if (!hasOptgroup) {
-          return clonedOption;
-        }
-
-        const optgroup = option.parentElement as SdOptgroup;
-        const filteredOptgroup = optgroups.find(el => el.id === optgroup.id);
-
-        // Check if the optgroup was already added to the filteredOptions.
-        // It should only be added once!
-        if (filteredOptgroup) {
-          filteredOptgroup?.appendChild(clonedOption);
-          return undefined;
-        }
-
-        const clonedOptgroup = optgroup.cloneNode() as SdOptgroup;
-        clonedOptgroup.appendChild(clonedOption);
-        optgroups.push(clonedOptgroup);
-        return clonedOptgroup;
-      })
-      // we need to remove the undefined values here
-      .filter(Boolean);
   }
 
   private async handleInput() {
