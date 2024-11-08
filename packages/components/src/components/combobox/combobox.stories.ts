@@ -435,7 +435,14 @@ export const MaxOptionsVisible = {
 export const Required = {
   render: () => html`
     <div class="w-[400px] h-[400px]">
-      <sd-combobox size="lg" label="Required" placeholder="Please Select" placement="bottom" value="" required="">
+      <sd-combobox
+        size="lg"
+        label="Required"
+        placeholder="Please search and select"
+        placement="bottom"
+        value=""
+        required=""
+      >
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
         <sd-option value="option-3">Option 3</sd-option>
@@ -453,7 +460,8 @@ export const Required = {
 export const NoOptions = {
   render: () => html`
     <div class="w-[400px] h-[400px]">
-      <sd-combobox size="lg" label="Required" placeholder="Please Select" placement="bottom" value=""> </sd-combobox>
+      <sd-combobox size="lg" label="Required" placeholder="Please search and select" placement="bottom" value="">
+      </sd-combobox>
     </div>
   `
 };
@@ -476,7 +484,7 @@ export const Valid = {
         size="lg"
         placement="bottom"
         label="Label"
-        placeholder="Please Select"
+        placeholder="Please search and select"
         style-on-valid=""
         value="option-1"
         class="valid-example"
@@ -509,7 +517,7 @@ export const Invalid = {
         size="lg"
         placement="bottom"
         label="Label"
-        placeholder="Please Select"
+        placeholder="Please search and select"
         style-on-valid=""
         value=""
         required=""

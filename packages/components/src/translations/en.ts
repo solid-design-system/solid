@@ -23,6 +23,7 @@ const translation: Translation = {
   scrollToStart: 'Scroll to start',
   selectAColorFromTheScreen: 'Select a color from the screen',
   selectDefaultPlaceholder: 'Please select',
+  comboboxDefaultPlaceholder: 'Please search and select',
   showPassword: 'Show password',
   toggleColorFormat: 'Toggle color format',
   carousel: 'Carousel',

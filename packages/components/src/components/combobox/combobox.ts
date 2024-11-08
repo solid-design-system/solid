@@ -153,7 +153,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   @property({ reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
 
   /** Placeholder text to show as a hint when the combobox is empty. */
-  @property() placeholder = this.localize.term('selectDefaultPlaceholder');
+  @property() placeholder = this.localize.term('comboboxDefaultPlaceholder');
 
   /** Disables the combobox control. */
   @property({ reflect: true, type: Boolean }) disabled = false;

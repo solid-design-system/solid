@@ -79,7 +79,7 @@ export default {
   args: overrideArgs([
     threeOptionsConstant,
     labelConstant,
-    { type: 'attribute', name: 'placeholder', value: 'Please search and combobox' },
+    { type: 'attribute', name: 'placeholder', value: 'Please search and select' },
     { type: 'attribute', name: 'max-options-visible', value: 3 },
     { type: 'attribute', name: 'getOption', value: '' }
   ]),
@@ -265,7 +265,7 @@ export const BorderVisibility = {
         args: overrideArgs([
           twentyOptionsConstant,
           labelConstant,
-          { type: 'attribute', name: 'placeholder', value: 'Please Select' },
+          { type: 'attribute', name: 'placeholder', value: 'Please search and select' },
           { type: 'attribute', name: 'max-options-visible', value: 3 },
           { type: 'attribute', name: 'getOption', value: '' }
         ])
