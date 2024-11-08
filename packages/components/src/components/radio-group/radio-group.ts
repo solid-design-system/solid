@@ -28,6 +28,7 @@ import type SdRadioButton from '../../components/radio-button/radio-button';
  * @slot - The default slot where `<sd-radio>` or `<sd-radio-button>` elements are placed.
  * @slot label - The radio group's label. Required for proper accessibility. Alternatively, you can use the `label`
  *  attribute.
+ * @slot tooltip - An optional tooltip that helps describe the radio-group. Use this slot with the `sd-tooltip` component.
  *
  * @event sd-change - Emitted when the radio group's selected value changes.
  * @event sd-input - Emitted when the radio group receives user input.
@@ -377,19 +378,19 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
         aria-labelledby="label"
         aria-errormessage="error-text"
       >
-        <label
-          part="form-control-label"
-          id="label"
-          class=${cx(
-            'mb-2 p-0 leading-normal text-black text-left',
-            !hasLabel && 'hidden',
-            this.boldLabel && 'font-bold'
-          )}
-          @click=${this.focus}
-          aria-hidden=${hasLabel ? 'false' : 'true'}
-        >
-          <slot name="label">${this.label}</slot>
-        </label>
+        <div class="flex items-center gap-1 mb-2">
+          <label
+            part="form-control-label"
+            id="label"
+            class=${cx('p-0 leading-normal text-black text-left', !hasLabel && 'hidden', this.boldLabel && 'font-bold')}
+            @click=${this.focus}
+            aria-hidden=${hasLabel ? 'false' : 'true'}
+          >
+            <slot name="label">${this.label}</slot>
+          </label>
+
+          <slot name="tooltip"></slot>
+        </div>
 
         <div
           part="form-control-input"
