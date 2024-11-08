@@ -828,6 +828,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
 
           this.open && 'z-50'
         )}
+        aria-describedby="invalid-message"
       >
         <label
           id="label"

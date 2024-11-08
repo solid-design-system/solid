@@ -203,6 +203,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
             lg: 'text-base'
           }[this.size]
         )}
+        aria-describedby="invalid-message"
       >
         <input
           class="peer absolute opacity-0 p-0 m-0 pointer-events-none"

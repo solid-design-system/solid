@@ -472,7 +472,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
 
     // Render
     return html`
-      <div part="form-control" class=${cx(this.disabled && 'pointer-events-none')}>
+      <div part="form-control" aria-describedby="invalid-message" class=${cx(this.disabled && 'pointer-events-none')}>
         <label
           part="form-control-label"
           id="label"

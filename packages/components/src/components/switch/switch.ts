@@ -168,6 +168,7 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
           'group flex items-center text-base leading-normal text-black cursor-pointer',
           this.disabled && 'hover:cursor-not-allowed'
         )}
+        aria-describedby="invalid-message"
       >
         <input
           id="input"

@@ -333,7 +333,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
     }[this.size];
 
     return html`
-      <div part="form-control" class="flex flex-col h-full text-left">
+      <div part="form-control" class="flex flex-col h-full text-left" aria-describedby="invalid-message">
         <label
           part="form-control-label"
           id="label"
