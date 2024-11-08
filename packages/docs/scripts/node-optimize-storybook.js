@@ -32,7 +32,7 @@ async function enhanceCustomElementManifest() {
     customElements.modules = [...customElements?.modules, ...styleComponents];
     await saveToStorybook(customElements);
   } catch (error) {
-    console.error('Error processing the file:', error);
+    console.error('❌ Error processing the file:', error);
   }
 }
 
@@ -55,7 +55,7 @@ async function replaceTextInFiles(directory) {
         console.log(`✅ Replaced text in ${file}`);
       }
     }
-    console.log('Finished replaceTextInFiles');
+    console.log('✅ Finished replaceTextInFiles');
   } catch (err) {
     console.error('❌ Error in replaceTextInFiles:', err);
   }
