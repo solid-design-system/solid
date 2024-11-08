@@ -30,7 +30,9 @@
     "build.chromatic": "pnpm build && node ./scripts/node-optimize-chromatic.cjs",
     "chromatic": "npx chromatic -b build.chromatic",
     "build": "storybook build --output-dir dist/storybook && vite-node scripts/node-optimize-storybook.js",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "release": "semantic-release  --tagFormat 'docs/${version}' -e semantic-release-monorepo",
+    "release.dry": "semantic-release -d --tagFormat 'docs/${version}' -e semantic-release-monorepo"
   },
   "dependencies": {
     "classix": "^2.1.35",
@@ -94,12 +96,6 @@
         }
       ],
       [
-        "@semantic-release/npm",
-        {
-          "npmPublish": false
-        }
-      ],
-      [
         "@semantic-release/git",
         {
           "message": "chore(release/tokens): ${nextRelease.version} [skip actions]\n\n${nextRelease.notes}",
@@ -107,12 +103,6 @@
             "CHANGELOG.md",
             "package.json"
           ]
-        }
-      ],
-      [
-        "@semantic-release/github",
-        {
-          "successComment": false
         }
       ]
     ]
