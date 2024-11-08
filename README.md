@@ -22,7 +22,7 @@ The tokens package contains all the design tokens used in the Solid Design Syste
 **4. Theming**
 The theming package provides a color calculation service for the Solid Design System.
 
-**4. Docs**
+**5. Docs**
 The docs package provides documentation for Solid Design System.
 
 ## Quick Start
