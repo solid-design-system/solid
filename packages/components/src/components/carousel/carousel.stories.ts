@@ -20,6 +20,8 @@ const { generateTemplate } = storybookTemplate('sd-carousel');
  *
  * **Related templates**:
  * - [Carousel](?path=/docs/templates-carousel--docs)
+ *
+ * **Disclaimer** : We're facing an issue with the variant controls in the carousel component. It should offer a choice between number and dot variants but is incorrectly shown as a number input. The issue originates from Storybook, not the component.
  */
 
 export default {
