@@ -14,6 +14,7 @@ const { overrideArgs } = storybookHelpers('sd-checkbox-group');
  *
  * **Related templates:**
  * - [Checkbox Group](?path=/docs/templates-checkbox-group--docs)
+ * - [Tooltip](?path=/docs/templates-tooltip--docs)
  */
 export default {
   title: 'Components/sd-checkbox-group',

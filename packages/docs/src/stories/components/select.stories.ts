@@ -24,6 +24,7 @@ const labelConstant: ConstantDefinition = { type: 'attribute', name: 'label', va
  *
  * **Related templates:**
  * - [Select](?path=/docs/templates-select--docs)
+ * - [Tooltip](?path=/docs/templates-tooltip--docs)
  */
 export default {
   title: 'Components/sd-select',

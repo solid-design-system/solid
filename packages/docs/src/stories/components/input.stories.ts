@@ -12,6 +12,8 @@ const { overrideArgs } = storybookHelpers('sd-input');
  * **Related templates**:
  * - [Input](?path=/docs/templates-input--docs)
  * - [Autocomplete](?path=/docs/templates-autocomplete--docs)
+ * - [Tooltip](?path=/docs/templates-tooltip--docs)
+ *
  */
 export default {
   tags: ['!dev'],
