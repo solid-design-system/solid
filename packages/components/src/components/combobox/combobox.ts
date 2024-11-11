@@ -1213,6 +1213,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                 aria-labelledby="label"
                 aria-disabled=${this.disabled ? 'true' : 'false'}
                 aria-describedby="help-text"
+                aria-invalid="${this.showInvalidStyle ? 'true' : 'false'}"
                 role="combobox"
                 tabindex="0"
                 @focus=${this.handleFocus}
