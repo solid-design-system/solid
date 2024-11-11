@@ -39,7 +39,7 @@ export const Default = {
   name: 'Default',
   render: (args: any) => {
     return generateTemplate({
-      options: { templateContent: '<mark class="%CLASSES%">%SLOT%</mark>' },
+      options: { templateContent: '<p class="sd-display"><mark class="%CLASSES%">%SLOT%</mark></p>' },
       args
     });
   }
