@@ -24,7 +24,7 @@
 
 ## Get Started
 
-- Familiarize yourself with the [Principles of Solid Design System](https://solid-design-system.fe.union-investment.de/x.x.x/storybook/), which serves as a reference for design guidelines, components, and patterns used in this project. Adhering to these principles will help maintain consistency and a cohesive user experience.
+- Familiarize yourself with the [Principles of Solid Design System](https://solid-design-system.fe.union-investment.de/docs/), which serves as a reference for design guidelines, components, and patterns used in this project. Adhering to these principles will help maintain consistency and a cohesive user experience.
 
 - Have a look at the [demo project](https://solid-design-system.github.io/solid-design-system-demo/) to get a better understanding of the design system and its components. You can even [install it locally and play around](https://github.com/solid-design-system/solid-design-system-demo) to explore its features and functionalities.
 
@@ -67,7 +67,7 @@ We present the library in a [Storybook](https://storybook.js.org/) running on th
 - **COMPONENTS**: Web Components built with Lit JS. Often more complex than Styles, and could feature reactivity, state, multiple slots, properties, and more.
 - **UTILITIES**: Web Components built with Lit JS, used as SDS-internal helper components. Technically necessary to build other components and generic enough to be used multiple times. Not officially part of the design system library and no respective component existing in Figma.
 - **STYLES**: These are standalone CSS files. They don't provide any logic and are often non-interactive.
-- **PATTERN**: Demonstrate how to combine several components to solve a specific problem.
+- **TEMPLATES**: Demonstrate how to combine several components to solve a specific problem.
 - **LEGAL**: Contains legal information.
 
 Each component / utility / style / pattern contains both [docs](https://storybook.js.org/addons/@storybook/addon-docs) and [stories](https://storybook.js.org/docs/writing-stories):
