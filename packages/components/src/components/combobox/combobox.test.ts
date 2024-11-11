@@ -1,10 +1,10 @@
 import { aTimeout, expect, fixture, html, oneEvent, waitUntil } from '@open-wc/testing';
-import { clickOnElement } from '../../internal/test.js';
+import { clickOnElement } from '../../internal/test';
 import { sendKeys } from '@web/test-runner-commands';
 import { serialize } from '../../utilities/form';
 import sinon from 'sinon';
-import type SdCombobox from './combobox.js';
-import type SdOption from '../option/option.js';
+import type SdCombobox from './combobox';
+import type SdOption from '../option/option';
 
 describe('<sd-combobox>', () => {
   describe('accessibility', () => {

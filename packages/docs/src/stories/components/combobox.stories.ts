@@ -1,19 +1,18 @@
-import '../../solid-components';
+import '../../../../components/src/solid-components';
 import {
   type ConstantDefinition,
   storybookDefaults,
   storybookHelpers,
   storybookTemplate
 } from '../../../scripts/storybook/helper';
-import { highlightOptionRenderer } from './option-renderer';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
-import type SdCombobox from './combobox';
+import SdCombobox from '../../../../components/src/components/combobox/combobox';
+import { highlightOptionRenderer } from '../../../../components/src/components/combobox/option-renderer';
 
 const { argTypes, parameters } = storybookDefaults('sd-combobox');
 const { generateTemplate } = storybookTemplate('sd-combobox');
 const { overrideArgs } = storybookHelpers('sd-combobox');
-
 const threeOptionsConstant: ConstantDefinition = {
   type: 'slot',
   name: 'default',

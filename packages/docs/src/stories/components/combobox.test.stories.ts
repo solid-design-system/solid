@@ -1,6 +1,6 @@
 /* eslint-disable lit/attribute-value-entities */
 
-import '../../solid-components';
+import '../../../../components/src/solid-components';
 import {
   type ConstantDefinition,
   storybookDefaults,
@@ -8,12 +8,12 @@ import {
   storybookTemplate,
   storybookUtilities
 } from '../../../scripts/storybook/helper';
-import { highlightOptionRenderer } from './option-renderer';
+import { highlightOptionRenderer } from '../../../../components/src/components/combobox/option-renderer';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { userEvent } from '@storybook/test';
 import { waitUntil } from '@open-wc/testing-helpers';
-import type SdCombobox from './combobox';
+import type SdCombobox from '../../../../components/src/components/combobox/combobox';
 const { argTypes, parameters } = storybookDefaults('sd-combobox');
 const { generateTemplate } = storybookTemplate('sd-combobox');
 const { overrideArgs } = storybookHelpers('sd-combobox');

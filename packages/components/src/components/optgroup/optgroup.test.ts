@@ -1,7 +1,7 @@
 import { aTimeout, expect, fixture, html } from '@open-wc/testing';
 
-import type SdOptgroup from './optgroup.js';
-import type SdOption from '../option/option.js';
+import type SdOptgroup from './optgroup';
+import type SdOption from '../option/option';
 
 const getSdOptions = (el: SdOptgroup) => Array.from(el.querySelectorAll('sd-option'));
 const getEnabledOptions = (el: SdOptgroup) => getSdOptions(el).filter((opt: SdOption) => !opt.disabled);
