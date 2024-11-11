@@ -58,9 +58,5 @@ export default {
   docs: {
     docs: true,
     autodocs: true
-  },
-  managerHead: head => `
-    ${head}
-    <link rel="shortcut icon" href="./favicon/favicon.ico" sizes="192x192">
-  `
+  }
 };
