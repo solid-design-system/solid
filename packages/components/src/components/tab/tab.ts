@@ -80,7 +80,7 @@ export default class SdTab extends SolidElement {
           this.variant === 'container' && this.active && 'tab--active-container-border bg-white',
           this.disabled ? 'opacity-50 !cursor-not-allowed' : 'hover:bg-neutral-200'
         )}
-        tabindex=${this.active ? '0' : '-1'}
+        tabindex=${this.disabled ? '-1' : this.active ? '0' : '-1'}
       >
         <slot name="left" class=${cx('pr-2', this.disabled ? 'text-neutral-500' : 'text-primary')}></slot>
         <slot class=${cx(this.disabled ? 'text-neutral-500' : 'text-primary')}></slot>
