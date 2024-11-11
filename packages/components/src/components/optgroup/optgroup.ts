@@ -14,8 +14,8 @@ import type SdOption from '../option/option';
 /**
  * @summary The <sd-optgroup> element creates a grouping for <sd-option>s within a <sd-combobox>.
  * @documentation @documentation https://solid.union-investment.com/[storybook-link]/components-sd-optgroup
- * @status development
- * @since 1.3.0
+ * @status experimental
+ * @since 3.23.0
  *
  * @dependency sd-divider
  *
@@ -74,13 +74,18 @@ export default class SdOptgroup extends SolidElement {
         role="${disabled ? 'presentation' : 'group'}"
         class="${cx(this.disabled ? 'text-neutral-500' : '')}"
         part="base"
+        aria-labelledby="group-label"
       >
         <sd-divider id="divider" class="mb-2" part="divider"></sd-divider>
         <div
           part="label-container"
           class="${cx(this.disabled ? 'text-neutral-500' : 'text-black')} px-4 font-bold text-left"
+          role="presentation"
+          id="group-label"
         >
-          <slot name="label"> ${this.label} </slot>
+          <slot name="label">
+            <span>${this.label}</span>
+          </slot>
         </div>
         <div role="group" part="options">
           <slot @slotchange=${this.handleDisableOptions}></slot>
