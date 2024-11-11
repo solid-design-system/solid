@@ -1,0 +1,59 @@
+import { Meta } from '@storybook/blocks';
+import theme from 'tailwind-theme';
+import cx from 'classix';
+
+<Meta title="Packages/Tokens/Fonts" />
+
+## Font Sizes
+
+<table>
+  <tbody>
+    {Object.entries(theme.fontSize).map((token, i) => {
+      return (
+        <tr>
+          <td>
+            <div class="font-bold">sd-font-size-{token[0]}</div>
+            <div>--sd-font-size-{token[1]}</div>
+          </td>
+          <td>
+            <div
+              class={cx(
+                {
+                  sm: '!text-sm',
+                  base: '!text-base',
+                  lg: '!text-lg',
+                  xl: '!text-xl',
+                  '2xl': '!text-2xl',
+                  '3xl': '!text-3xl',
+                  '4xl': '!text-4xl'
+                }[token[0]]
+              )}
+            >
+              Lorem ipsum dolor
+            </div>
+          </td>
+        </tr>
+      );
+    })}
+  </tbody>
+</table>
+
+## Font Weight
+
+<table>
+  <tbody>
+    {Object.entries(theme.fontWeight).map((token, i) => {
+      return (
+        <tr>
+          <td>
+            <div class="font-bold">sd-font-weight-{token[0]}</div>
+          </td>
+          <td>
+            <div class={`font-${token[0]}`}>Lorem ipsum dolor</div>
+          </td>
+        </tr>
+      );
+    })}
+
+  </tbody>
+</table>

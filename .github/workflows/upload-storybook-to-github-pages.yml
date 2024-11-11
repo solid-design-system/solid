@@ -50,13 +50,13 @@ jobs:
         run: pnpm i
 
       - name: Build storybook
-        run: cd packages/components && pnpm run build/storybook
+        run: cd packages/docs && pnpm run build
 
       - name: Prepare deployment directory
         run: |
           mkdir -p deployment/archives
           mkdir -p deployment/${{ env.GITHUB_SAFE_BRANCH }}
-          cp -r packages/components/dist/storybook/* deployment/${{ env.GITHUB_SAFE_BRANCH }}/
+          cp -r packages/docs/dist/storybook/* deployment/${{ env.GITHUB_SAFE_BRANCH }}/
 
       - name: Create archive
         run: |
