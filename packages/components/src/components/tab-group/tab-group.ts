@@ -284,6 +284,10 @@ export default class SdTabGroup extends SolidElement {
     this.tabs = this.getAllTabs({ includeDisabled: false });
     this.panels = this.getAllPanels();
 
+    this.panels.forEach(panel => {
+      panel.tabIndex = 0;
+    });
+
     // After updating, show or hide scroll controls as needed
     this.updateComplete.then(() => this.updateScrollControls());
 
@@ -330,6 +334,24 @@ export default class SdTabGroup extends SolidElement {
                   <sd-icon
                     library="system"
                     name=${isRtl ? 'chevron-up' : 'chevron-down'}
+                    label="previous"
+                    class=${cx('h-6 w-12 rotate-90 grid place-items-center')}
+                  ></sd-icon>
+                </button>
+
+                <button
+                  part="scroll-button--end"
+                  exportparts="base:scroll-button__base"
+                  class=${cx(
+                    'sd-interactive flex items-center order-3 justify-center absolute top-0 bottom-0 right-0 !outline-offset-0 border-b border-neutral-400 z-10',
+                    this.localize.dir() === 'rtl' && 'right-auto left-0'
+                  )}
+                  @click=${this.handleScrollToEnd}
+                >
+                  <sd-icon
+                    library="system"
+                    name=${isRtl ? 'chevron-down' : 'chevron-up'}
+                    label="next"
                     class=${cx('h-6 w-12 rotate-90 grid place-items-center')}
                   ></sd-icon>
                 </button>
@@ -342,26 +364,6 @@ export default class SdTabGroup extends SolidElement {
               <slot name="nav" @slotchange=${this.syncTabsAndPanels}></slot>
             </div>
           </div>
-
-          ${this.hasScrollControls
-            ? html`
-                <button
-                  part="scroll-button--end"
-                  exportparts="base:scroll-button__base"
-                  class=${cx(
-                    'sd-interactive flex items-center justify-center absolute top-0 bottom-0 right-0 !outline-offset-0 border-b border-neutral-400 z-10',
-                    this.localize.dir() === 'rtl' && 'right-auto left-0'
-                  )}
-                  @click=${this.handleScrollToEnd}
-                >
-                  <sd-icon
-                    library="system"
-                    name=${isRtl ? 'chevron-down' : 'chevron-up'}
-                    class=${cx('h-6 w-12 rotate-90 grid place-items-center')}
-                  ></sd-icon>
-                </button>
-              `
-            : ''}
         </div>
 
         <slot
