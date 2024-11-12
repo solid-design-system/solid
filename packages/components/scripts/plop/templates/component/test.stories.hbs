@@ -1,0 +1,37 @@
+import '../../../../components/src/solid-components';
+import { html } from 'lit-html';
+import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
+import { withActions } from '@storybook/addon-actions/decorator';
+
+const { argTypes, parameters } = storybookDefaults('{{ tag }}');
+const { overrideArgs } = storybookHelpers('{{ tag }}');
+const { generateTemplate } = storybookTemplate('{{ tag }}');
+
+/**
+ *
+ * Component description.
+ *
+ */
+
+export default {
+  title: 'Components/{{ tag }}',
+  component: '{{ tag }}',
+  tags: ['!dev'],
+  parameters: {
+    ...parameters,
+    design: {
+      type: 'figma',
+      url: ''
+    }
+  },
+  args: overrideArgs([{}]),
+  argTypes,
+  decorators: [withActions] as any
+};
+
+export const Default = {
+  name: 'Default',
+  render: (args: any) => {
+    return generateTemplate({ args });
+  }
+};

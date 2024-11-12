@@ -1,5 +1,4 @@
-import { expect, fixture, html } from '@open-wc/testing';
-import { waitFor } from '@storybook/test';
+import { expect, fixture, html, waitUntil } from '@open-wc/testing';
 import type SdSelect from 'src/components/select/select';
 
 describe('<sd-carousel>', () => {
@@ -41,11 +40,9 @@ describe('<sd-carousel>', () => {
 
     select.setAttribute('data-custom-localization', '{"clearEntry": "Updated!!"}');
 
-    await waitFor(() => {
-      expect(select.shadowRoot!.querySelector('button[part="clear-button"]')!.getAttribute('aria-label')).to.equal(
-        'Updated!!'
-      );
-    });
+    await waitUntil(
+      () => select.shadowRoot!.querySelector('button[part="clear-button"]')!.getAttribute('aria-label') === 'Updated!!'
+    );
   });
 
   it('should apply custom localization from setCustomLocalization', async () => {
@@ -53,11 +50,9 @@ describe('<sd-carousel>', () => {
       <sd-select value="option-1" clearable><sd-option value="option-1">Option 1</sd-option></sd-select>
     `);
     select.localize.setCustomLocalization({ clearEntry: 'Reset me!!' });
-    await waitFor(() => {
-      expect(select.shadowRoot!.querySelector('button[part="clear-button"]')!.getAttribute('aria-label')).to.equal(
-        'Reset me!!'
-      );
-    });
+    await waitUntil(
+      () => select.shadowRoot!.querySelector('button[part="clear-button"]')!.getAttribute('aria-label') === 'Reset me!!'
+    );
   });
 
   it('should use default localization when no custom localization is set', async () => {
@@ -79,6 +74,7 @@ describe('<sd-carousel>', () => {
         <sd-option value="option-3">Option 3</sd-option>
       </sd-select>
     `);
+
     select.localize.setCustomLocalization({
       numOptionsSelected: num => {
         if (num === 0) return '';
@@ -86,11 +82,17 @@ describe('<sd-carousel>', () => {
       }
     });
 
-    // There's currently a bug that causes to not reactively change translated strings
-    // For this reason, we need to change the value first in this test
+    // force component to update before changing the value
+    await select.updateComplete;
+
+    // change the value to trigger the localization update
     select.value = 'option-1';
-    await waitFor(() => {
-      expect(select.shadowRoot!.querySelector('input')!.value).to.equal('Funds selected (1)');
-    });
+
+    // await for the DOM to be updated and localization to apply
+    await waitUntil(() => {
+      return select.shadowRoot!.querySelector('input')!.value === 'Funds selected (1)';
+    }, 'Expected value to be "Funds selected (1)"');
+
+    expect(select.shadowRoot!.querySelector('input')!.value).to.equal('Funds selected (1)');
   });
 });
