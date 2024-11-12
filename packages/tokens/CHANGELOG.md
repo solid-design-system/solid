@@ -1,3 +1,10 @@
+# [@solid-design-system/tokens-v4.2.0](https://github.com/solid-design-system/solid/compare/tokens/4.1.0...tokens/4.2.0) (2024-11-12)
+
+
+### Features
+
+* add new shadow token for copyright text on images ([#1639](https://github.com/solid-design-system/solid/issues/1639)) ([12f0206](https://github.com/solid-design-system/solid/commit/12f0206d29260593d43be0cd6dba50d2034deaf8))
+
 # [@solid-design-system/tokens-v4.1.0](https://github.com/solid-design-system/solid/compare/tokens/4.0.0...tokens/4.1.0) (2024-11-08)
 
 
