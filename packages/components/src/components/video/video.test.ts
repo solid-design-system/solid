@@ -6,7 +6,7 @@ const defaultSlot = html`<video controls>
   <source src="http://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4" />
   Your browser does not support the video tag.
 </video>`;
-const posterSlot = html`<img slot="poster" alt="poster" src="" />`;
+const posterSlot = html`<img slot="poster" alt="A generic placeholder video" src="" />`;
 const playIconSlot = html`<sd-icon library="system" name="start" color="primary"></sd-icon>`;
 const variants = {
   default: html`<sd-video>${defaultSlot}</sd-video>`,
