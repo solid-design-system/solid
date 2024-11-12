@@ -1,0 +1,196 @@
+diff --git a/dist/cem-utilities.js b/dist/cem-utilities.js
+index 2cf57666c31e7b572cbd10a6bc10f334b0376429..e91216c808b27f0e41497e550df0c57b413f5d20 100644
+--- a/dist/cem-utilities.js
++++ b/dist/cem-utilities.js
+@@ -148,6 +148,8 @@ export function getCssParts(component, enabled = true) {
+         parts[`${part.name}-part`] = {
+             name: part.name,
+             description: getDescription(part.description, enabled ? `${part.name}-part` : ""),
++            defaultValue: `${component?.tagName}::part(${part.name}) {
++}`,
+             control: enabled ? "text" : false,
+             table: {
+                 category: "css shadow parts",
+@@ -167,8 +169,12 @@ export function getSlots(component, enabled = true) {
+         };
+         const slotName = slot.name || "default";
+         slots[`${slotName}-slot`] = {
++            control: "text",
+             name: slotName,
+-            description: getDescription(slot.description, enabled ? `${slotName}-slot` : ""),
++            description: getDescription(slot.description, `${slotName}-slot`),
++            defaultValue: slotName === "default"
++              ? ''
++              : `<span slot="${slotName}"></span>`,
+             control: enabled ? "text" : false,
+             table: {
+                 category: "slots",
+@@ -217,14 +223,18 @@ function getControl(type, isAttribute = false) {
+     if (hasType(options, "boolean")) {
+         return "boolean";
+     }
+-    if (hasType(options, "number") && !hasType(options, "string")) {
++    if (hasType(options, "number") && !hasType(options, "string") && options.every((x) => !x.includes("'"))) {
+         return "number";
+     }
+     if (hasType(options, "date")) {
+         return "date";
+     }
+     // if types is a list of string options
+-    return options.length > 1 ? "select" : "text";
++    if (options.length > 1 && options.every((x) => x.includes("'"))) {
++      return "select";
++    }
++
++    return "text";
+ }
+ function isObject(type) {
+     return (type.includes("array") ||
+diff --git a/dist/html-templates.js b/dist/html-templates.js
+index 31b37aeec6a863600bba6d29009bb429f8828a71..36fc8e252ecf403c08ff7630e5f5ed1a1cc06a6e 100644
+--- a/dist/html-templates.js
++++ b/dist/html-templates.js
+@@ -1,5 +1,5 @@
+ import { spread } from "./spread";
+-import { useArgs } from "@storybook/client-api";
++import { useArgs } from "@storybook/preview-api";
+ import { html, unsafeStatic } from "lit/static-html.js";
+ import { getAttributesAndProperties, getCssParts, getCssProperties, getSlots, } from "./cem-utilities.js";
+ let argObserver;
+@@ -24,8 +24,8 @@ export function getTemplate(component, args, slot, argTypes) {
+         argObserver = undefined;
+         lastTagName = component?.tagName;
+     }
+-    const { attrOperators, propOperators, additionalAttrs } = getTemplateOperators(component, args, argTypes);
+-    const operators = { ...attrOperators, ...propOperators, ...additionalAttrs };
++    const { attrOperators, additionalAttrs } = getTemplateOperators(component, args, argTypes);
++    const operators = { ...attrOperators, ...additionalAttrs };
+     const slotsTemplate = getSlotsTemplate(component, args);
+     const cssPropertiesTemplate = getCssPropTemplate(component, args);
+     syncControls(component);
+@@ -50,12 +50,10 @@ ${options.hideScriptTag
+  * @returns styles in a tagged template literal
+  */
+ export function getStyleTemplate(component, args) {
+-    const cssPartsTemplate = getCssPartsTemplate(component, args) || "";
+-    return `${cssPartsTemplate}`.replaceAll(/\s+/g, "") != ""
+-        ? html `<style>
+-        ${unsafeStatic(cssPartsTemplate)}
+-      </style> `
+-        : "";
++    const cssPartsTemplate = getCssPartsTemplate(component, args);
++    return `${cssPartsTemplate}`?.replaceAll(/\s+/g, "") != ''
++      ? html`<style>${cssPartsTemplate}</style>`
++      : '';
+ }
+ /**
+  * Gets a formatted object with the component's attributes and properties formatted to be used as operators in the template
+@@ -98,6 +96,7 @@ function getTemplateOperators(component, args, argTypes) {
+             additionalAttrs[key] = args[key];
+         }
+     });
++
+     return { attrOperators, propOperators, additionalAttrs };
+ }
+ /**
+@@ -127,24 +126,30 @@ function getCssPropTemplate(component, args) {
+  * @returns formatted string with CSS shadow parts and their styles
+  */
+ function getCssPartsTemplate(component, args) {
+-    if (!component?.cssParts?.length) {
+-        return;
+-    }
+-    const cssParts = getCssParts(component);
+-    return `${Object.keys(cssParts)
+-        .filter((key) => key.endsWith("-part"))
+-        .map((key) => {
+-        const cssPartName = cssParts[key].name;
+-        const cssPartValue = args[key] || "";
+-        return cssPartValue.replaceAll(/\s+/g, "") !== ""
+-            ? `${component?.tagName}::part(${cssPartName}) {
+-              ${cssPartValue || ""}
+-            }`
+-            : null;
++  const cssParts = getCssParts(component);
++
++  const hasCssParts = Object.keys(cssParts).some((key) => {
++  const cssValue = args[key];
++      return cssValue ? true : false;
++  });
++
++  if (!hasCssParts) {
++      return;
++  }
++
++  const parts = Object
++    .keys(cssParts)
++    .filter((key) => key.endsWith("-part"))
++    .map((key) => {
++    const cssPartName = cssParts[key].name;
++    const cssPartValue = args[key];
++    return cssPartValue?.replaceAll(/\s+/g, "") !== `${component?.tagName}::part(${cssPartName}){}` ? `\n${cssPartValue}` : null;
+     })
+-        .filter((value) => value !== null)
+-        .join("\n")}`;
++    .filter((value) => value !== null)
++    .join("\n");
++  return parts ? unsafeStatic( `${parts}\n`) : '';
+ }
++
+ /**
+  * Gets the template used to render the component's slots in Storybook
+  * @param component component object from the Custom Elements Manifest
+@@ -152,24 +157,25 @@ function getCssPartsTemplate(component, args) {
+  * @returns formatted string with slots and their values
+  */
+ function getSlotsTemplate(component, args) {
+-    if (!component?.slots?.length) {
+-        return;
+-    }
+-    const slots = getSlots(component);
+-    return unsafeStatic(`${Object.keys(slots)
+-        .filter((key) => key.endsWith("-slot"))
+-        .map((key) => {
++  const slots = getSlots(component);
++  const template = unsafeStatic(
++    `${Object.keys(slots)
++      .filter((key) => key.endsWith("-slot"))
++      .map((key) => {
+         const slotName = slots[key].name;
+         const slotValue = args[key];
+-        return slotValue
+-            ? slotName === "default"
+-                ? `${slotValue || ""}`
+-                : `<span slot="${slotName}">${slotValue || ""}</span>`
+-            : null;
+-    })
+-        .filter((value) => value !== null)
+-        .join("\n")}`);
++
++        return slotName === "default"
++          ? slotValue || null
++          : slotValue !== `<span slot="${slotName}"></span>` ? slotValue : null;
++      })
++      .filter((value) => value !== null)
++      .join("")}`
++  );
++  
++  return template;
+ }
++
+ /**
+  * Watches for changes to the component's attributes and properties and updates Storybook controls
+  * @param component component object from the Custom Elements Manifest
+diff --git a/package.json b/package.json
+index 889caf5944b206c443dfa104043d6a5ed83fd365..6a28f77ba8df1423736c8707020131425e1f4d2d 100644
+--- a/package.json
++++ b/package.json
+@@ -37,7 +37,7 @@
+     "storybook web components"
+   ],
+   "dependencies": {
+-    "@storybook/client-api": "^6.5.16"
++    "storybook/preview-api": "^7.6.17"
+   },
+   "devDependencies": {
+     "@types/jest": "^29.4.0",
