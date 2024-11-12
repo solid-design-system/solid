@@ -42,8 +42,13 @@ export default function (plop) {
       },
       {
         type: 'add',
-        path: '../../src/components/{{ tagWithoutPrefix tag }}/{{ tagWithoutPrefix tag }}.stories.ts',
+        path: '../../../docs/src/stories/{{ tagWithoutPrefix tag }}.stories.ts',
         templateFile: 'templates/component/stories.hbs'
+      },
+      {
+        type: 'add',
+        path: '../../../docs/src/stories/{{ tagWithoutPrefix tag }}.test.stories.ts',
+        templateFile: 'templates/component/test.stories.hbs'
       }
     ]
   });

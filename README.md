@@ -22,6 +22,9 @@ The tokens package contains all the design tokens used in the Solid Design Syste
 **4. Theming**
 The theming package provides a color calculation service for the Solid Design System.
 
+**5. Docs**
+The docs package provides documentation for Solid Design System.
+
 ## Quick Start
 
 To get started with the code steps, follow these instructions:
@@ -32,18 +35,18 @@ We use `pnpm` package manager, so make sure to have it installed globally before
 
 ```
 pnpm i
-cd packages/components
+cd packages/docs
 pnpm dev
 ```
 
-These steps will install the necessary dependencies, navigate to the "packages/components" directory, and start the development server. You can now take a look at our existing components or begin working on new ones.
+These steps will install the necessary dependencies, navigate to the "packages/docs" directory, and start the development server. You can now take a look at our existing components or begin working on new ones.
 
 ### Helpful Commands
 
 ```
 $ pnpm fix           // fix all formatting and linting in repo
 $ pnpm verify        // run tests and builds in repo
-$ cd packages/components
+$ cd packages/docs
   && pnpm dev        // start dev server
   && pnpm test       // run tests
   && pnpm test.watch // run tests in watch mode
