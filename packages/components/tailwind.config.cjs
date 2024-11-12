@@ -28,7 +28,7 @@ theme.extend = {
   }
 };
 
-// Check if the script triggered is a Storybook script, e. g. `pnpm build/storybook` or `pnpm storybook`
+// Check if the script triggered is a Storybook script, e. g. `pnpm build` or `pnpm storybook`
 const includeStorybookStories = process.env.npm_lifecycle_event?.includes('storybook');
 
 /** @type {import('tailwindcss').Config} */
