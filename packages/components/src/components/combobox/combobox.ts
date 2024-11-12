@@ -1,4 +1,5 @@
 import { animateTo, stopAnimations } from '../../internal/animate.js';
+import { CloseWatcher } from 'src/declaration.d.js';
 import { css, type CSSResultGroup, html, type TemplateResult } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { defaultOptionRenderer, type OptionRenderer } from './option-renderer.js';
@@ -19,7 +20,6 @@ import SdIcon from '../icon/icon';
 import SdPopup from '../popup/popup';
 import SdTag from '../tag/tag';
 import SolidElement from '../../internal/solid-element';
-import type { CloseWatcher } from 'src/declaration.js';
 import type { SolidFormControl } from '../../internal/solid-element';
 import type SdOptgroup from '../optgroup/optgroup.js';
 import type SdOption from '../option/option';
@@ -353,11 +353,9 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     if ('CloseWatcher' in window) {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
       this.closeWatcher?.destroy();
-      // @ts-expect-error Check later
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-call
       this.closeWatcher = new CloseWatcher();
       // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-      // @ts-expect-error Check later
       this.closeWatcher.onclose = () => {
         if (this.open) {
           // eslint-disable-next-line @typescript-eslint/no-floating-promises

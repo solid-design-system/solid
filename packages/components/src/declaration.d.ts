@@ -47,6 +47,8 @@ export interface CloseWatcher extends EventTarget {
   onclose: (event: Event) => void | null;
 }
 
+declare const CloseWatcher: CloseWatcher;
+
 interface CloseWatcherOptions {
   signal: AbortSignal;
 }
