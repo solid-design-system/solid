@@ -18,6 +18,7 @@ export default {
 };
 
 export const HeadlineWithMark = {
+  name: 'Headline with Mark',
   render: () =>
     html`<div class="flex flex-col gap-8">
       <h4 class="sd-headline">
@@ -38,5 +39,6 @@ export const HeadlineWithMark = {
 };
 
 export const DisplayWithMark = {
-  render: () => html` <p class="sd-display">Lorem <mark class="sd-mark">Ipsum</mark></p> `
+  name: 'Display with Mark',
+  render: () => html` <p class="sd-display">Lorem <mark class="sd-mark">ipsum</mark></p> `
 };

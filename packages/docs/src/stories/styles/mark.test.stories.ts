@@ -27,7 +27,7 @@ export default {
       url: ''
     }
   },
-  args: overrideArgs({ type: 'slot', name: 'default', value: 'Lorem Ipsum' }),
+  args: overrideArgs({ type: 'slot', name: 'default', value: 'Lorem ipsum' }),
   argTypes
 };
 
@@ -62,7 +62,7 @@ export const Examples = {
           })
         }
       },
-      options: { templateContent: 'Lorem <mark class="%CLASSES%">Ipsum</mark>' },
+      options: { templateContent: 'Lorem <mark class="%CLASSES%">ipsum</mark>' },
       args
     });
   }

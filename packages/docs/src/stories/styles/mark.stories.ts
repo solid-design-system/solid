@@ -21,7 +21,7 @@ export default {
   parameters: {
     parameters
   },
-  args: overrideArgs({ type: 'slot', name: 'default', value: 'Lorem Ipsum' }),
+  args: overrideArgs({ type: 'slot', name: 'default', value: 'Lorem ipsum' }),
   argTypes
 };
 
