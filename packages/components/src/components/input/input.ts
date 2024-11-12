@@ -322,7 +322,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
       return true;
     }
 
-    if (this.min === undefined || this.min === null || this.disabled) {
+    if (this.min === undefined || this.min === null) {
       return false;
     }
 
