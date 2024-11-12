@@ -35,7 +35,7 @@ describe('<sd-map-marker>', () => {
     it('does not have a role when it renders a link', async () => {
       const el = await fixture<SdMapMarker>(
         html` <sd-map-marker
-          href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/?path=/docs/docs-general-introduction--docs"
+          href="https://solid-design-system.fe.union-investment.de/docs/?path=/docs/docs-general-introduction--docs"
           ><div class="sr-only">Acessible Pin</div></sd-map-marker
         >`
       );
