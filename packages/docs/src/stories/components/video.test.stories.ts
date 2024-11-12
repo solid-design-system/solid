@@ -25,7 +25,7 @@ const posterConstant: ConstantDefinition = {
   type: 'slot',
   name: 'poster',
   value:
-    '<img slot="poster" alt="poster" class="w-[854px] aspect-video cover" src="./placeholders/images/architecture.jpg" />'
+    '<img slot="poster" alt="A generic placeholder video" class="w-[854px] aspect-video cover" src="./placeholders/images/architecture.jpg" />'
 };
 const iconConstant: ConstantDefinition = {
   type: 'slot',

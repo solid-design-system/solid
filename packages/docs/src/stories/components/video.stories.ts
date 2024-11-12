@@ -55,7 +55,7 @@ export const VideoElementWithPosterSlot = {
       </video>
       <img
         slot="poster"
-        alt="poster"
+        alt="A generic placeholder video"
         class="w-[854px] aspect-video cover"
         src="./placeholders/images/architecture.jpg"
       />

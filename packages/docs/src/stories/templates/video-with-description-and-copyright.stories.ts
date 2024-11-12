@@ -20,7 +20,12 @@ export const VideoWithDescription = {
         <source src="./placeholders/videos/ui-placeholder-video.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
-      <img slot="poster" alt="poster" class="aspect-video cover" src="./placeholders/images/architecture.jpg" />
+      <img
+        slot="poster"
+        alt="A generic placeholder video"
+        class="aspect-video cover"
+        src="./placeholders/images/architecture.jpg"
+      />
       <figcaption class="mt-4">
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
         dolore magna aliquyam erat, sed diam voluptua.
@@ -42,7 +47,12 @@ export const VideoWithCopyright = {
           <source src="./placeholders/videos/ui-placeholder-video.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        <img slot="poster" alt="poster" class="aspect-video cover" src="./placeholders/images/architecture.jpg" />
+        <img
+          slot="poster"
+          alt="A generic placeholder video"
+          class="aspect-video cover"
+          src="./placeholders/images/architecture.jpg"
+        />
       </sd-video>
     </div>
   `
