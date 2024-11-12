@@ -1,5 +1,4 @@
 import { animateTo, stopAnimations } from '../../internal/animate.js';
-import { CloseWatcher } from 'src/declaration.d.js';
 import { css, type CSSResultGroup, html, type TemplateResult } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { defaultOptionRenderer, type OptionRenderer } from './option-renderer.js';
@@ -88,9 +87,6 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   private readonly hasSlotController = new HasSlotController(this, 'help-text', 'label');
 
   private readonly localize = new LocalizeController(this);
-
-  // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
-  private closeWatcher: CloseWatcher | null;
 
   /** The last value of a sd-option, that was selected by click or via keyboard navigation */
   private lastOptionValue = [''];
@@ -349,21 +345,6 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     if (this.getRootNode() !== document) {
       this.getRootNode().addEventListener('focusin', this.handleDocumentFocusIn);
     }
-
-    if ('CloseWatcher' in window) {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
-      this.closeWatcher?.destroy();
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-call
-      this.closeWatcher = new CloseWatcher();
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-      this.closeWatcher.onclose = () => {
-        if (this.open) {
-          // eslint-disable-next-line @typescript-eslint/no-floating-promises
-          this.hide();
-          this.displayInput.focus({ preventScroll: true });
-        }
-      };
-    }
   }
 
   private removeOpenListeners() {
@@ -374,9 +355,6 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     if (this.getRootNode() !== document) {
       this.getRootNode().removeEventListener('focusin', this.handleDocumentFocusIn);
     }
-
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-call
-    this.closeWatcher?.destroy();
   }
 
   private handleFocus() {
@@ -410,7 +388,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
 
     // Close when pressing escape and open / clear input if not open
     if (event.key === 'Escape') {
-      if (this.open && !this.closeWatcher) {
+      if (this.open) {
         event.preventDefault();
         event.stopPropagation();
         this.hide();
