@@ -325,6 +325,7 @@ export default class SdTabGroup extends SolidElement {
                 <button
                   part="scroll-button--start"
                   exportparts="base:scroll-button__base"
+                  tabindex="-1"
                   class=${cx(
                     'sd-interactive flex items-center justify-center absolute top-0 bottom-0 left-0 !outline-offset-0 border-b border-neutral-400 z-10',
                     this.localize.dir() === 'rtl' && 'left-auto right-0'
@@ -338,12 +339,24 @@ export default class SdTabGroup extends SolidElement {
                     class=${cx('h-6 w-12 rotate-90 grid place-items-center')}
                   ></sd-icon>
                 </button>
+              `
+            : ''}
 
+          <div part="scroll-container" class="flex overflow-x-auto focus-visible:focus-outline !outline-offset-0">
+            <div part="tabs" class=${cx('flex flex-auto relative flex-row')} role="tablist">
+              <div part="separation" class="w-full h-0.25 bg-neutral-400 absolute bottom-0"></div>
+              <slot name="nav" @slotchange=${this.syncTabsAndPanels}></slot>
+            </div>
+          </div>
+
+          ${this.hasScrollControls
+            ? html`
                 <button
                   part="scroll-button--end"
                   exportparts="base:scroll-button__base"
+                  tabindex="-1"
                   class=${cx(
-                    'sd-interactive flex items-center order-3 justify-center absolute top-0 bottom-0 right-0 !outline-offset-0 border-b border-neutral-400 z-10',
+                    'sd-interactive flex items-center justify-center absolute top-0 bottom-0 right-0 !outline-offset-0 border-b border-neutral-400 z-10',
                     this.localize.dir() === 'rtl' && 'right-auto left-0'
                   )}
                   @click=${this.handleScrollToEnd}
@@ -357,13 +370,6 @@ export default class SdTabGroup extends SolidElement {
                 </button>
               `
             : ''}
-
-          <div part="scroll-container" class="flex overflow-x-auto focus-visible:focus-outline !outline-offset-0">
-            <div part="tabs" class=${cx('flex flex-auto relative flex-row')} role="tablist">
-              <div part="separation" class="w-full h-0.25 bg-neutral-400 absolute bottom-0"></div>
-              <slot name="nav" @slotchange=${this.syncTabsAndPanels}></slot>
-            </div>
-          </div>
         </div>
 
         <slot
@@ -395,6 +401,7 @@ export default class SdTabGroup extends SolidElement {
       }
 
       ::slotted(sd-tab-panel) {
+        @apply focus-within:focus-outline;
         --padding: 1rem 0;
       }
     `
