@@ -3,6 +3,15 @@ import sinon from 'sinon';
 import type SdScrollable from './scrollable';
 
 describe('<sd-scrollable>', () => {
+  it('passes accessibility test', async () => {
+    const el = await fixture<SdScrollable>(html`
+      <sd-scrollable>
+        <div style="width: 200px; height: 200px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+      </sd-scrollable>
+    `);
+    await expect(el).to.be.accessible();
+  });
+
   it('should render with default properties', async () => {
     const el = await fixture<SdScrollable>(html`
       <sd-scrollable>
@@ -135,5 +144,41 @@ describe('<sd-scrollable>', () => {
     const scrollContainer = el.shadowRoot!.querySelector<HTMLElement>('.scroll-container')!;
 
     expect(scrollContainer.classList.contains('p-4')).to.be.true;
+  });
+
+  it('should scroll 120px each time the end button is clicked', async () => {
+    const el = await fixture<SdScrollable>(html`
+      <sd-scrollable style="height: 183px; width: 277px;" buttons orientation="vertical" step="120">
+        <div style="width: 400px; height: 800px;">
+          <p>This is a long scrollable content.</p>
+          <p>It contains multiple paragraphs and lines.</p>
+          <p>The content is intentionally long to trigger scrolling.</p>
+        </div>
+      </sd-scrollable>
+    `);
+
+    const scrollContainer = el.shadowRoot!.querySelector<HTMLElement>('.scroll-container')!;
+    const endButton = el.shadowRoot!.querySelector<HTMLElement>('[part~="button-end"]')!;
+    const step = 120;
+
+    expect(endButton).to.exist;
+
+    // initial scroll position
+    let expectedScrollTop = scrollContainer.scrollTop;
+
+    endButton.click();
+    expectedScrollTop += step;
+    scrollContainer.scrollTop = expectedScrollTop;
+    await el.updateComplete;
+
+    expect(scrollContainer.scrollTop).to.equal(expectedScrollTop);
+
+    // scrolls another 120px
+    endButton.click();
+    expectedScrollTop += step;
+    scrollContainer.scrollTop = expectedScrollTop;
+    await el.updateComplete;
+
+    expect(scrollContainer.scrollTop).to.equal(expectedScrollTop);
   });
 });
