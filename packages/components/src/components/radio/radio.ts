@@ -88,6 +88,7 @@ export default class SdRadio extends SolidElement {
     this.setAttribute('role', 'radio');
     this.setAttribute('tabindex', '-1');
     this.setAttribute('aria-disabled', this.disabled ? 'true' : 'false');
+    this.setAttribute('aria-errormessage', 'invalid-message');
   }
 
   @watch('checked')

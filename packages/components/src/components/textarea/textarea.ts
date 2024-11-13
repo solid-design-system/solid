@@ -333,7 +333,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
     }[this.size];
 
     return html`
-      <div part="form-control" class="flex flex-col h-full text-left" aria-describedby="invalid-message">
+      <div part="form-control" class="flex flex-col h-full text-left">
         <label
           part="form-control-label"
           id="label"
@@ -399,7 +399,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
               spellcheck=${ifDefined(this.spellcheck)}
               enterkeyhint=${ifDefined(this.enterkeyhint)}
               inputmode=${ifDefined(this.inputmode)}
-              aria-describedby="help-text"
+              aria-describedby="help-text invalid-message"
               @change=${this.handleChange}
               @input=${this.handleInput}
               @invalid=${this.handleInvalid}

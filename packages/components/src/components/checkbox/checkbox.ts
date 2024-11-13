@@ -203,7 +203,6 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
             lg: 'text-base'
           }[this.size]
         )}
-        aria-describedby="invalid-message"
       >
         <input
           class="peer absolute opacity-0 p-0 m-0 pointer-events-none"
@@ -216,6 +215,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
           .disabled=${this.disabled}
           .required=${this.required}
           aria-checked=${this.checked ? 'true' : 'false'}
+          aria-describedby="invalid-message"
           @click=${this.handleClick}
           @input=${this.handleInput}
           @invalid=${this.handleInvalid}

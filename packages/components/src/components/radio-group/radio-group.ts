@@ -374,7 +374,6 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
           }[this.size]
         )}
         role="radiogroup"
-        aria-describedby="invalid-message"
       >
         <legend
           part="form-control-label"

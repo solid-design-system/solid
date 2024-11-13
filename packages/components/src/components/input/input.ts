@@ -472,7 +472,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
 
     // Render
     return html`
-      <div part="form-control" class=${cx(this.disabled && 'pointer-events-none')} aria-describedby="invalid-message">
+      <div part="form-control" class=${cx(this.disabled && 'pointer-events-none')}>
         <label
           part="form-control-label"
           id="label"
@@ -536,7 +536,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               pattern=${ifDefined(this.pattern)}
               enterkeyhint=${ifDefined(this.enterkeyhint)}
               inputmode=${ifDefined(this.inputmode)}
-              aria-describedby="help-text"
+              aria-describedby="help-text invalid-message"
               @change=${this.handleChange}
               @input=${this.handleInput}
               @invalid=${this.handleInvalid}
