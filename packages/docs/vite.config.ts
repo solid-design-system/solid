@@ -20,6 +20,7 @@ export default (() => {
       VitePluginGetPlaywrightVersion(),
       VitePluginGetTailwindTheme(),
       VitePluginCreateEmptyCemIfNotExisting(),
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-call
       VitePluginCustomElementsManifest({
         ...customElementConfig,
         files: ['../components/src/**/!(*.stories|*.spec|*.test|*.style).ts'],
