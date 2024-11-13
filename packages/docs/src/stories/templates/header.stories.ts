@@ -70,12 +70,12 @@ export const SampleA = {
           </sd-navigation-item>
           <sd-navigation-item href="javascript:void(0)">
             <div class="flex items-center gap-2">
-              <sd-icon name="system/user" class="text-xl" label="User"></sd-icon><span>Portfolio</span>
+              <sd-icon name="system/user" class="text-xl"></sd-icon><span>Portfolio</span>
             </div>
           </sd-navigation-item>
           <sd-navigation-item href="javascript:void(0)">
             <div class="flex items-center gap-2">
-              <sd-icon name="system/lock-locked" class="text-xl" label="Lock"></sd-icon><span>Application</span>
+              <sd-icon name="system/lock-locked" class="text-xl"></sd-icon><span>Application</span>
             </div>
           </sd-navigation-item>
           <!-- bottom-right-area end !-->
@@ -94,15 +94,15 @@ export const SampleA = {
       </nav>
       <nav slot="footer" class="bg-neutral-100">
         <sd-navigation-item vertical class="flex align-center" href="javascript:void(0)">
-          <sd-icon name="system/user" label="User" class="h-6 w-6 mr-2"></sd-icon>
+          <sd-icon name="system/user" class="h-6 w-6 mr-2"></sd-icon>
           Portfolio
         </sd-navigation-item>
         <sd-navigation-item vertical divider class="flex align-center" href="javascript:void(0)">
-          <sd-icon name="system/lock-locked" label="Lock" class="h-6 w-6 mr-2"></sd-icon>
+          <sd-icon name="system/lock-locked" class="h-6 w-6 mr-2"></sd-icon>
           Application
         </sd-navigation-item>
         <sd-navigation-item vertical divider class="flex align-center" href="javascript:void(0)">
-          <sd-icon name="system/website" label="Website" class="h-6 w-6 mr-2"></sd-icon>
+          <sd-icon name="system/website" class="h-6 w-6 mr-2"></sd-icon>
           Our further appearances
         </sd-navigation-item>
       </nav>
@@ -160,7 +160,7 @@ export const SampleA02 = {
           </sd-navigation-item>
           <sd-navigation-item href="javascript:void(0)">
             <div class="flex items-center gap-2">
-              <sd-icon name="system/user" label="User" class="text-xl"></sd-icon><span>Login</span>
+              <sd-icon name="system/user" class="text-xl"></sd-icon><span>Login</span>
             </div>
           </sd-navigation-item>
         </div>
@@ -197,15 +197,15 @@ export const SampleA02 = {
       </nav>
       <nav slot="footer" class="bg-neutral-100">
         <sd-navigation-item vertical class="flex align-center" href="javascript:void(0)">
-          <sd-icon name="system/user" label="User" class="h-6 w-6 mr-2"></sd-icon>
+          <sd-icon name="system/user" class="h-6 w-6 mr-2"></sd-icon>
           Log in
         </sd-navigation-item>
         <sd-navigation-item vertical divider class="flex align-center" href="javascript:void(0)">
-          <sd-icon name="system/globe" label="Globe" class="h-6 w-6 mr-2"></sd-icon>
+          <sd-icon name="system/globe" class="h-6 w-6 mr-2"></sd-icon>
           Language
         </sd-navigation-item>
         <sd-navigation-item vertical divider class="flex align-center" href="javascript:void(0)">
-          <sd-icon name="system/website" label="Website" class="h-6 w-6 mr-2"></sd-icon>
+          <sd-icon name="system/website" class="h-6 w-6 mr-2"></sd-icon>
           Our further appearances
         </sd-navigation-item>
       </nav>
@@ -291,11 +291,11 @@ export const SampleB = {
       </nav>
       <nav slot="footer" class="bg-neutral-100">
         <sd-navigation-item vertical class="flex align-center" href="javascript:void(0)">
-          <sd-icon name="system/lock-locked" label="Lock" class="h-6 w-6 mr-2"></sd-icon>
+          <sd-icon name="system/lock-locked" class="h-6 w-6 mr-2"></sd-icon>
           My application
         </sd-navigation-item>
         <sd-navigation-item vertical divider class="flex align-center" href="javascript:void(0)">
-          <sd-icon name="system/website" label="Website" class="h-6 w-6 mr-2"></sd-icon>
+          <sd-icon name="system/website" class="h-6 w-6 mr-2"></sd-icon>
           Our further appearances
         </sd-navigation-item>
       </nav>
