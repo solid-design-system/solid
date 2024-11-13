@@ -3,7 +3,6 @@
 
 import { generateCustomData } from 'cem-plugin-vs-code-custom-data-generator';
 import { parse } from 'comment-parser';
-// import { pascalCase } from 'pascal-case';
 
 import { author, description, homepage, license, name, version } from './package.json';
 
@@ -18,16 +17,6 @@ function replace(string: string, terms: { from: string; to: string }[]) {
 
   return string;
 }
-
-// function isQueryDecorator(decorator) {
-//   return decorator.name === 'query';
-// }
-
-// function markMemberAsPrivate(member) {
-//   if (member.decorators?.some(isQueryDecorator)) {
-//     member.privacy = 'private';
-//   }
-// }
 
 export default {
   files: ['./src/components/**/!(*.stories|*.spec|*.test|*.style).ts'],
@@ -181,5 +170,5 @@ export default {
       outdir: 'dist',
       cssFileName: null
     })
-  ]
+  ] as any[]
 };

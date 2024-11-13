@@ -1,3 +1,49 @@
+# [@solid-design-system/components-v3.22.1](https://github.com/solid-design-system/solid/compare/components/3.22.0...components/3.22.1) (2024-11-13)
+
+
+### Bug Fixes
+
+* sd-map-marker accessibility violation ([#1617](https://github.com/solid-design-system/solid/issues/1617)) ([59face8](https://github.com/solid-design-system/solid/commit/59face88ccc38b953e6abf63d42bb95aad401cdd))
+
+### 📈 Stats
+* Bundle size (uncompressed): 402 KB (unchanged)
+* Bundle size (gzipped): 123 KB (unchanged)
+
+# [@solid-design-system/components-v3.22.0](https://github.com/solid-design-system/solid/compare/components/3.21.0...components/3.22.0) (2024-11-08)
+
+
+### Features
+
+> **Note:** This feature is related to the new docs package and not directly to the components package. However, it is documented here for completeness.
+
+* create docs package for solid components ([#1550](https://github.com/solid-design-system/solid/issues/1550)) ([7555d18](https://github.com/solid-design-system/solid/commit/7555d182abfa34a23521c839180ae4b67604717e)), closes [#1131](https://github.com/solid-design-system/solid/issues/1131)
+
+### 📈 Stats
+* Bundle size (uncompressed): 402 KB (unchanged)
+* Bundle size (gzipped): 123 KB (unchanged)
+
+# [@solid-design-system/components-v3.21.0](https://github.com/solid-design-system/solid/compare/components/3.20.7...components/3.21.0) (2024-11-08)
+
+
+### Features
+
+* create tooltip slot for input elements ([#1579](https://github.com/solid-design-system/solid/issues/1579)) ([4fa2304](https://github.com/solid-design-system/solid/commit/4fa2304339ba411446c191f26bf971fba8255dfd))
+
+### 📈 Stats
+* Bundle size (uncompressed): 402 KB (unchanged)
+* Bundle size (gzipped): 123 KB (unchanged)
+
+# [@solid-design-system/components-v3.20.7](https://github.com/solid-design-system/solid/compare/components/3.20.6...components/3.20.7) (2024-11-07)
+
+
+### Bug Fixes
+
+* sd-interactive a11y template  ([#1614](https://github.com/solid-design-system/solid/issues/1614)) ([05ae4f1](https://github.com/solid-design-system/solid/commit/05ae4f157743fad4dea8f12db3aa6c86c9f68c50))
+
+### 📈 Stats
+* Bundle size (uncompressed): 402 KB (unchanged)
+* Bundle size (gzipped): 123 KB (unchanged)
+
 # [@solid-design-system/components-v3.20.6](https://github.com/solid-design-system/solid/compare/components/3.20.5...components/3.20.6) (2024-10-31)
 
 
