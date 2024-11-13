@@ -202,7 +202,7 @@ export default class SdScrollable extends SolidElement {
                                 library="system"
                                 name="chevron-up"
                                 class="rotate-[-90deg]"
-                                label=${this.localize.term('scrollUp')}
+                                label=${this.localize.term('scrollToStart')}
                               ></sd-icon>
                             </slot>
                           </button>
@@ -225,7 +225,7 @@ export default class SdScrollable extends SolidElement {
                                 library="system"
                                 name="chevron-down"
                                 class="rotate-[-90deg]"
-                                label=${this.localize.term('scrollDown')}
+                                label=${this.localize.term('scrollToEnd')}
                               ></sd-icon>
                             </slot>
                           </button>
@@ -251,7 +251,7 @@ export default class SdScrollable extends SolidElement {
                               <sd-icon
                                 library="system"
                                 name="chevron-up"
-                                label=${this.localize.term('scrollUp')}
+                                label=${this.localize.term('scrollToStart')}
                               ></sd-icon>
                             </slot>
                           </button>
@@ -273,7 +273,7 @@ export default class SdScrollable extends SolidElement {
                               <sd-icon
                                 library="system"
                                 name="chevron-down"
-                                label=${this.localize.term('scrollDown')}
+                                label=${this.localize.term('scrollToEnd')}
                               ></sd-icon>
                             </slot>
                           </button>

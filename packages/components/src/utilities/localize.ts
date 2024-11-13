@@ -93,10 +93,8 @@ export interface Translation extends DefaultTranslation {
   progress: string;
   remove: string;
   resize: string;
-  scrollDown: string;
   scrollToEnd: string;
   scrollToStart: string;
-  scrollUp: string;
   selectAColorFromTheScreen: string;
   selectDefaultPlaceholder: string;
   showLess: string;
