@@ -18,6 +18,7 @@ import type SdCheckbox from '../checkbox/checkbox';
  * @slot - The default slot where `<sd-checkbox>` elements are placed.
  * @slot label - The checkbox group's label. Required for proper accessibility. Alternatively, you can use the `label`
  * attribute.
+ * @slot tooltip - An optional tooltip that helps describe the checkbox-group. Use this slot with the `sd-tooltip` component.
  **/
 
 @customElement('sd-checkbox-group')
@@ -99,14 +100,18 @@ export default class SdCheckboxGroup extends SolidElement {
         role="group"
         aria-labelledby="label"
       >
-        <label
-          part="form-control-label"
-          id="label"
-          class=${cx('mb-2 p-0 font-bold leading-normal text-black', hasLabel ? 'flex' : 'hidden')}
-          aria-hidden=${hasLabel ? 'false' : 'true'}
-        >
-          <slot name="label">${this.label}</slot>
-        </label>
+        <div class="flex items-center gap-1 mb-2">
+          <label
+            part="form-control-label"
+            id="label"
+            class=${cx('p-0 font-bold leading-normal text-black', hasLabel ? 'flex' : 'hidden')}
+            aria-hidden=${hasLabel ? 'false' : 'true'}
+          >
+            <slot name="label">${this.label}</slot>
+          </label>
+
+          <slot name="tooltip"></slot>
+        </div>
 
         <div
           part="form-control-input"

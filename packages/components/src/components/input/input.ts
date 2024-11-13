@@ -41,6 +41,7 @@ const isFirefox = isChromium ? false : navigator.userAgent.includes('Firefox');
  * @slot show-password-icon - An icon to use in lieu of the default show password icon.
  * @slot hide-password-icon - An icon to use in lieu of the default hide password icon.
  * @slot help-text - Text that describes how to use the input. Alternatively, you can use the `help-text` attribute.
+ * @slot tooltip - An optional tooltip that helps describe the input. Use this slot with the `sd-tooltip` component.
  *
  * @event sd-blur - Emitted when the control loses focus.
  * @event sd-change - Emitted when an alteration to the control's value is committed by the user.
@@ -473,15 +474,19 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     // Render
     return html`
       <div part="form-control" class=${cx(this.disabled && 'pointer-events-none')}>
-        <label
-          part="form-control-label"
-          id="label"
-          class=${cx('mb-2', hasLabel ? 'inline-block' : 'hidden', textSize)}
-          for="input"
-          aria-hidden=${hasLabel ? 'false' : 'true'}
-        >
-          <slot name="label">${this.label}</slot>
-        </label>
+        <div class="flex items-center gap-1 mb-2">
+          <label
+            part="form-control-label"
+            id="label"
+            class=${cx(hasLabel ? 'inline-block' : 'hidden', textSize)}
+            for="input"
+            aria-hidden=${hasLabel ? 'false' : 'true'}
+          >
+            <slot name="label">${this.label}</slot>
+          </label>
+
+          <slot name="tooltip"></slot>
+        </div>
 
         <div part="form-control-input" class="relative w-full">
           <div
