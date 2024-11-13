@@ -51,12 +51,15 @@ export const Size = {
 
 /**
  * Use the `selected` attribute to enable the selected state.
+ *
+ * __Accessibility hint__: Use the attribute `toggleable` to reflect the `selected` state on the `aria-pressed` attribute.
  */
 
 export const Selected = {
   render: () => html`
     <div class="flex gap-12">
-      <sd-tag selected>Selected</sd-tag>
+      <sd-tag selected toggleable>Selected</sd-tag>
+      <sd-tag toggleable>Unselected</sd-tag>
     </div>
   `
 };
