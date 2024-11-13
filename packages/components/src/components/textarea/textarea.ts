@@ -307,6 +307,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
     // States
     const hasLabel = this.label ? true : !!slots['label'];
     const hasHelpText = this.helpText ? true : !!slots['helpText'];
+    const isInvalid = !this.checkValidity();
 
     // Hierarchy of textarea states:
     const textareaState = this.disabled
@@ -404,7 +405,8 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
               spellcheck=${ifDefined(this.spellcheck)}
               enterkeyhint=${ifDefined(this.enterkeyhint)}
               inputmode=${ifDefined(this.inputmode)}
-              aria-describedby="help-text"
+              aria-describedby="help-text invalid-message"
+              ?aria-invalid=${isInvalid}
               @change=${this.handleChange}
               @input=${this.handleInput}
               @invalid=${this.handleInvalid}
