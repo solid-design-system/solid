@@ -38,7 +38,7 @@ export default class SdBadge extends SolidElement {
             /* variants */
             default: !this.inverted
               ? 'text-white bg-primary-500 border-white'
-              : 'text-primary bg-primary-100 border-primary',
+              : 'text-primary bg-primary-100 border-accent',
             success: !this.inverted ? 'text-white bg-success border-white' : 'text-white bg-success border-primary',
             error: !this.inverted ? 'text-white bg-error border-white' : 'text-white bg-error border-primary'
           }[this.variant],
