@@ -75,7 +75,7 @@ jobs:
       name: Test components (do locally if failing)
       needs: [linting-and-formatting]
       runs-on: ubuntu-latest
-      if: github.event.pull_request.draft == true
+      if: github.event.pull_request.draft == false
       container:
           image: mcr.microsoft.com/playwright:v1.44.1-jammy
       steps:
