@@ -274,7 +274,6 @@ export default class SdTabGroup extends SolidElement {
       const panel = this.panels.find(el => el.name === tab.panel);
       if (panel) {
         tab.setAttribute('aria-controls', panel.getAttribute('id')!);
-        panel.setAttribute('aria-labelledby', tab.getAttribute('id')!);
       }
     });
   }
