@@ -33,6 +33,10 @@ export default {
       to: '/placeholders/videos'
     },
     {
+      from: '../../placeholders/src/captions',
+      to: '/placeholders/captions'
+    },
+    {
       from: '../../placeholders/src/audio',
       to: '/placeholders/audio'
     },
