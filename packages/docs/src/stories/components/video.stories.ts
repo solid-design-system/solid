@@ -62,7 +62,7 @@ export const VideoElementWithPosterSlot = {
       </video>
       <img
         slot="poster"
-        alt="A generic placeholder video"
+        alt="Video highlighting Union Investment's digital transformation through a design system named SOLID that enhances accessibility, sustainability, and efficiency."
         class="w-[854px] aspect-video cover"
         src="./placeholders/images/architecture.jpg"
       />

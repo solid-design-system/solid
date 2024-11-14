@@ -14,7 +14,7 @@ const videoConstant: ConstantDefinition = {
   type: 'slot',
   name: 'default',
   value:
-    '<video controls id="video-example" class="w-[854px] aspect-video"><source src="./placeholders/videos/ui-placeholder-video.mp4" type="video/mp4" />Your browser does not support the video tag.</video>'
+    '<video controls id="video-example" class="w-[854px] aspect-video"><source src="./placeholders/videos/ui-placeholder-video.webm" type="video/webm" />Your browser does not support the video tag.</video>'
 };
 const imageConstant: ConstantDefinition = {
   type: 'slot',
@@ -25,7 +25,7 @@ const posterConstant: ConstantDefinition = {
   type: 'slot',
   name: 'poster',
   value:
-    '<img slot="poster" alt="A generic placeholder video" class="w-[854px] aspect-video cover" src="./placeholders/images/architecture.jpg" />'
+    '<img slot="poster" alt="Video highlighting Union Investment\'s digital transformation through a design system named SOLID that enhances accessibility, sustainability, and efficiency." class="w-[854px] aspect-video cover" src="./placeholders/images/architecture.jpg" />'
 };
 const iconConstant: ConstantDefinition = {
   type: 'slot',
