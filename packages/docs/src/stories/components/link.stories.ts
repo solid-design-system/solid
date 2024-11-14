@@ -52,9 +52,9 @@ export const Size = {
   name: 'Size',
   render: () => html`
     <div class="flex gap-12">
-      <sd-link href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/">Inherit</sd-link>
-      <sd-link href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/" size="lg">Large</sd-link>
-      <sd-link href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/" size="sm">Small</sd-link>
+      <sd-link href="https://solid-design-system.fe.union-investment.de/docs/">Inherit</sd-link>
+      <sd-link href="https://solid-design-system.fe.union-investment.de/docs/" size="lg">Large</sd-link>
+      <sd-link href="https://solid-design-system.fe.union-investment.de/docs/" size="sm">Small</sd-link>
     </div>
   `
 };
@@ -70,7 +70,7 @@ export const AsLink = {
   render: () => html`
     <div class="flex gap-12">
       <sd-link
-        href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/?path=/docs/docs-general-introduction--docs"
+        href="https://solid-design-system.fe.union-investment.de/docs/?path=/docs/docs-general-introduction--docs"
         >Link</sd-link
       ><sd-link href="https://union-investment.com" target="_blank">New Window</sd-link
       ><sd-link href="./placeholders/src/images/collaboration.jpg" download>Download</sd-link>
@@ -86,11 +86,11 @@ export const Icon = {
   name: 'Icon',
   render: () => html`
     <div class="flex gap-12">
-      <sd-link href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/" standalone>
+      <sd-link href="https://solid-design-system.fe.union-investment.de/docs/" standalone>
         <sd-icon library="global-resources" name="system/picture" slot="icon-left"></sd-icon>
         Icon Left
       </sd-link>
-      <sd-link href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/" standalone>
+      <sd-link href="https://solid-design-system.fe.union-investment.de/docs/" standalone>
         Icon Right
         <sd-icon library="global-resources" name="system/picture" slot="icon-right"></sd-icon>
       </sd-link>
@@ -116,7 +116,7 @@ export const Standalone = {
             </sd-link>
           </li>
           <li>
-            <sd-link href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/" standalone>
+            <sd-link href="https://solid-design-system.fe.union-investment.de/docs/" standalone>
               <sd-icon library="global-resources" name="system/pen" slot="icon-left"></sd-icon>
               Solid Design System
             </sd-link>
@@ -151,7 +151,7 @@ export const Inverted = {
   name: 'Inverted',
   render: () => html`
     <div class="flex gap-12 bg-primary p-4">
-      <sd-link href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/" inverted>Inverted</sd-link>
+      <sd-link href="https://solid-design-system.fe.union-investment.de/docs/" inverted>Inverted</sd-link>
     </div>
   `
 };

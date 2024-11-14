@@ -17,7 +17,7 @@ export const Tool = () => {
           style={{
             color: '#00358e'
           }}
-          href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/index.html?path=/docs/docs-general-known-browser-issues--docs"
+          href="https://solid-design-system.fe.union-investment.de/docs/index.html?path=/docs/docs-general-known-browser-issues--docs"
         >
           Known Browser Issues
         </a>{' '}

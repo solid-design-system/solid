@@ -18,6 +18,31 @@ describe('<sd-map-marker>', () => {
       await expect(el).to.be.accessible();
     });
 
+    it('does not have the aria-labelledby attribute when renders a div', async () => {
+      const el = await fixture<SdMapMarker>(html` <sd-map-marker not-interactive></sd-map-marker>`);
+
+      expect(el.shadowRoot!.querySelector('div')?.getAttribute('aria-labelledby')).to.be.null;
+    });
+
+    it('has a button role when it renders a button', async () => {
+      const el = await fixture<SdMapMarker>(
+        html` <sd-map-marker><div class="sr-only">Acessible Pin</div></sd-map-marker>`
+      );
+
+      expect(el.shadowRoot!.querySelector('button')?.getAttribute('role')).to.equal('button');
+    });
+
+    it('does not have a role when it renders a link', async () => {
+      const el = await fixture<SdMapMarker>(
+        html` <sd-map-marker
+          href="https://solid-design-system.fe.union-investment.de/docs/?path=/docs/docs-general-introduction--docs"
+          ><div class="sr-only">Acessible Pin</div></sd-map-marker
+        >`
+      );
+
+      expect(el.shadowRoot!.querySelector('a')?.getAttribute('role')).to.be.null;
+    });
+
     it('primary values are set correctly', async () => {
       const el = await fixture<SdMapMarker>(html` <sd-map-marker></sd-map-marker> `);
 
