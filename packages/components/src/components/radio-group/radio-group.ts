@@ -375,11 +375,10 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
           }[this.size]
         )}
         role="radiogroup"
-        aria-labelledby="label"
-        aria-errormessage="error-text"
+        aria-describedby="invalid-message"
       >
         <div class="flex items-center gap-1 mb-2">
-          <label
+          <legend
             part="form-control-label"
             id="label"
             class=${cx('p-0 leading-normal text-black text-left', !hasLabel && 'hidden', this.boldLabel && 'font-bold')}
@@ -387,7 +386,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
             aria-hidden=${hasLabel ? 'false' : 'true'}
           >
             <slot name="label">${this.label}</slot>
-          </label>
+          </legend>
 
           <slot name="tooltip"></slot>
         </div>
