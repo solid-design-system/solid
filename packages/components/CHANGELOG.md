@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v3.22.3](https://github.com/solid-design-system/solid/compare/components/3.22.2...components/3.22.3) (2024-11-15)
+
+
+### Bug Fixes
+
+* 🐛 make validation more accessible in all form elements ([#1619](https://github.com/solid-design-system/solid/issues/1619)) ([7a2ca8d](https://github.com/solid-design-system/solid/commit/7a2ca8d5a3a2086461cc33db57697be0bb61b874))
+
+### 📈 Stats
+* Bundle size (uncompressed): 407 KB (unchanged)
+* Bundle size (gzipped): 125 KB (unchanged)
+
 # [@solid-design-system/components-v3.22.2](https://github.com/solid-design-system/solid/compare/components/3.22.1...components/3.22.2) (2024-11-14)
 
 
