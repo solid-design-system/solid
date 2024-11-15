@@ -57,10 +57,22 @@ export const Size = {
 
 export const Selected = {
   render: () => html`
-    <div class="flex gap-12">
+    <div id="tags-selected" class="flex gap-12">
       <sd-tag selected toggleable>Selected</sd-tag>
       <sd-tag toggleable>Unselected</sd-tag>
     </div>
+
+    <script>
+      const handleToggle = event => {
+        const tag = event.target;
+        tag.toggleAttribute('selected');
+        const isSelected = tag.hasAttribute('selected');
+        tag.innerText = isSelected ? 'Selected' : 'Unselected';
+      };
+
+      const tags = document.querySelectorAll('#tags-selected sd-tag');
+      tags.forEach(tag => tag.addEventListener('click', handleToggle));
+    </script>
   `
 };
 
