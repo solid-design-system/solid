@@ -14,6 +14,7 @@ export default {
 };
 
 export const VideoWithDescription = {
+  name: 'Video with Description',
   render: () => html`
     <sd-video class="sd-media">
       <video controls class="aspect-video">
@@ -42,6 +43,7 @@ export const VideoWithDescription = {
 };
 
 export const VideoWithCopyright = {
+  name: 'Video with Copyright',
   render: () => html`
     <style>
       .sd-copyright::after {

@@ -47,6 +47,7 @@ export const Default = {
  */
 
 export const VideoElementWithPosterSlot = {
+  name: 'Video Element with Poster Slot',
   render: () => html`
     <sd-video>
       <video controls="" id="video-example" class="w-[854px] aspect-video">
