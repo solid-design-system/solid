@@ -171,7 +171,7 @@ export const AsLink = {
   render: () => html`
     <div class="flex items-center gap-12">
       <sd-map-marker
-        href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/?path=/docs/docs-general-introduction--docs"
+        href="https://solid-design-system.fe.union-investment.de/docs/?path=/docs/docs-general-introduction--docs"
         target="_blank"
       >
         <span class="sr-only">Solid Design System by Union Investment</span>

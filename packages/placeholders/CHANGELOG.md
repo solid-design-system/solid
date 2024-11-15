@@ -3,6 +3,8 @@
 
 ### Features
 
+> **Note:** This feature is related to the new docs package and not directly to the placeholders package. However, it is documented here for completeness.
+
 * create docs package for solid components ([#1550](https://github.com/solid-design-system/solid/issues/1550)) ([7555d18](https://github.com/solid-design-system/solid/commit/7555d182abfa34a23521c839180ae4b67604717e)), closes [#1131](https://github.com/solid-design-system/solid/issues/1131)
 
 # [@solid-design-system/placeholders-v1.7.1](https://github.com/solid-design-system/solid/compare/placeholders/1.7.0...placeholders/1.7.1) (2024-10-16)

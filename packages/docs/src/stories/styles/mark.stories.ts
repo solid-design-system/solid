@@ -21,14 +21,14 @@ export default {
   parameters: {
     parameters
   },
-  args: overrideArgs({ type: 'slot', name: 'default', value: 'Lorem Ipsum' }),
+  args: overrideArgs({ type: 'slot', name: 'default', value: 'Lorem ipsum' }),
   argTypes
 };
 
 export const Default = {
   render: (args: any) => {
     return generateTemplate({
-      options: { templateContent: '<mark class="%CLASSES%">%SLOT%</mark>' },
+      options: { templateContent: '<p class="sd-display"><mark class="%CLASSES%">%SLOT%</mark></p>' },
       args
     });
   }
