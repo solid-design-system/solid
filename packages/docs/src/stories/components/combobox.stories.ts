@@ -304,7 +304,7 @@ export const HighlightQuery = {
 };
 
 /**
- * Use to group `s visually.
+ * Use <sd-optgroup> to group <sd-option>s visually.
  */
 export const GroupingQuery = {
   render: () => html`
@@ -317,7 +317,6 @@ export const GroupingQuery = {
         <sd-optgroup label="L"> ${createColorOptionHtml('Light Green')} </sd-optgroup>
         <sd-optgroup label="M"> ${createColorOptionHtml('Magenta')} </sd-optgroup>
         <sd-optgroup label="O"> ${createColorOptionHtml('Orange')} </sd-optgroup>
-        <sd-optgroup label="W"> ${createColorOptionHtml('White')} </sd-optgroup>
         <sd-optgroup label="P"> ${createColorOptionHtml('Pink')} ${createColorOptionHtml('Purple')} </sd-optgroup>
         <sd-optgroup label="R"> ${createColorOptionHtml('Red')} </sd-optgroup>
         <sd-optgroup label="W"> ${createColorOptionHtml('White')} </sd-optgroup>
@@ -447,19 +446,6 @@ export const Required = {
         <sd-option value="option-3">Option 3</sd-option>
         <sd-option value="option-4">Option 4</sd-option>
         <sd-option value="option-5">Option 5</sd-option>
-      </sd-combobox>
-    </div>
-  `
-};
-
-/**
- * Use the `required` attribute to mark the element as required. This can be used for form validation purposes.
- */
-
-export const NoOptions = {
-  render: () => html`
-    <div class="w-[400px] h-[400px]">
-      <sd-combobox size="lg" label="Required" placeholder="Please search and select" placement="bottom" value="">
       </sd-combobox>
     </div>
   `
