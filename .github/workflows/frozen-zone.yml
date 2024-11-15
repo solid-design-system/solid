@@ -14,7 +14,7 @@ jobs:
         run: |
           TARGET_BRANCH="${{ github.event.pull_request.base.ref }}"
           FREEZE_START="2024-12-16T00:00:00Z"
-          FREEZE_END="2025-12-10T23:59:59Z"
+          FREEZE_END="2025-01-10T23:59:59Z"
           CURRENT_TIME=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 
           echo "Target branch is $TARGET_BRANCH"
