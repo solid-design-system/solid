@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v3.22.2](https://github.com/solid-design-system/solid/compare/components/3.22.1...components/3.22.2) (2024-11-14)
+
+
+### Bug Fixes
+
+* sd-input a11y ([#1615](https://github.com/solid-design-system/solid/issues/1615)) ([cbaaf6e](https://github.com/solid-design-system/solid/commit/cbaaf6ecbba5da64874eda1f686fd1b6c4cd4b4c))
+
+### 📈 Stats
+* Bundle size (uncompressed): 407 KB (+5 KB / +1%)
+* Bundle size (gzipped): 125 KB (+2 KB / +2%)
+
 # [@solid-design-system/components-v3.22.1](https://github.com/solid-design-system/solid/compare/components/3.22.0...components/3.22.1) (2024-11-13)
 
 

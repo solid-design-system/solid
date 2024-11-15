@@ -7,6 +7,7 @@ import { HasSlotController } from '../../internal/slot';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { live } from 'lit/directives/live.js';
 import { LocalizeController } from '../../utilities/localize';
+import { longPress } from '../../internal/longpress.js';
 import { property, query, state } from 'lit/decorators.js';
 import { watch } from '../../internal/watch';
 import componentStyles from '../../styles/component.styles';
@@ -147,8 +148,8 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   /** Determines whether or not the password is currently visible. Only applies to password input types. */
   @property({ attribute: 'password-visible', type: Boolean }) passwordVisible = false;
 
-  /** Hides the browser's built-in increment/decrement spin buttons for number inputs. */
-  @property({ attribute: 'no-spin-buttons', type: Boolean }) noSpinButtons = false;
+  /** Hides the browser's built-in increment/decrement spin buttons for number inputs and displays custom buttons. */
+  @property({ attribute: 'spin-buttons', type: Boolean }) spinButtons = false;
 
   /** The minimum length of input that will be considered valid. */
   @property({ type: Number }) minlength: number;
@@ -315,6 +316,47 @@ export default class SdInput extends SolidElement implements SolidFormControl {
 
   private handlePasswordToggle() {
     this.passwordVisible = !this.passwordVisible;
+  }
+
+  private isDecrementDisabled() {
+    if (this.disabled || this.readonly) {
+      return true;
+    }
+
+    if (this.min === undefined || this.min === null) {
+      return false;
+    }
+
+    const min = typeof this.min === 'string' ? parseFloat(this.min) : this.min;
+    return this.valueAsNumber <= min;
+  }
+
+  private isIncrementDisabled() {
+    if (this.disabled || this.readonly) {
+      return true;
+    }
+
+    if (this.max === undefined || this.max === null) {
+      return false;
+    }
+
+    const max = typeof this.max === 'string' ? parseFloat(this.max) : this.max;
+    return this.valueAsNumber >= max;
+  }
+
+  private handleStep() {
+    this.handleInput();
+    this.input.focus();
+  }
+
+  private handleStepUp() {
+    this.stepUp();
+    this.handleStep();
+  }
+
+  private handleStepDown() {
+    this.stepDown();
+    this.handleStep();
   }
 
   @watch('disabled', { waitUntilFirstUpdate: true })
@@ -649,6 +691,49 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                   class=${cx('inline-flex', iconColor, iconMarginLeft, iconSize)}
                 ></slot>`
               : ''}
+            ${this.type === 'number' && this.spinButtons
+              ? html`
+                  <div part="stepper" class="flex items-center">
+                    <button
+                      part="decrement-number-stepper"
+                      class="stepper-button flex"
+                      type="button"
+                      ?disabled=${this.isDecrementDisabled()}
+                      aria-hidden="true"
+                      ${longPress({ start: () => this.handleStepDown(), end: () => this.handleChange() })}
+                      tabindex="-1"
+                    >
+                      <slot name="decrement-number-stepper">
+                        <sd-icon
+                          library="global-resources"
+                          name="system/minus-round"
+                          label="Decrease value"
+                          class=${cx(iconColor, iconMarginLeft, iconSize)}
+                        ></sd-icon>
+                      </slot>
+                    </button>
+
+                    <button
+                      part="increment-number-stepper"
+                      class="stepper-button flex"
+                      type="button"
+                      ?disabled=${this.isIncrementDisabled()}
+                      aria-hidden="true"
+                      ${longPress({ start: () => this.handleStepUp(), end: () => this.handleChange() })}
+                      tabindex="-1"
+                    >
+                      <slot name="increment-number-stepper">
+                        <sd-icon
+                          library="global-resources"
+                          name="system/plus-round"
+                          label="Decrease value"
+                          class=${cx(iconColor, iconMarginLeft, iconSize)}
+                        ></sd-icon>
+                      </slot>
+                    </button>
+                  </div>
+                `
+              : ''}
           </div>
         </div>
 
@@ -718,6 +803,10 @@ export default class SdInput extends SolidElement implements SolidFormControl {
       /* Hides calendar picker for datetime-local type. Does not work in Firefox! */
       input[type='datetime-local']::-webkit-calendar-picker-indicator {
         @apply hidden;
+      }
+
+      .stepper-button[disabled] sd-icon {
+        @apply text-neutral-500;
       }
     `
   ];
