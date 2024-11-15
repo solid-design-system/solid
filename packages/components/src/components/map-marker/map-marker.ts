@@ -83,7 +83,8 @@ export default class SdMapMarker extends SolidElement {
         target=${ifDefined(isLink ? this.target : undefined)}
         @blur=${this.handleBlur}
         @focus=${this.handleFocus}
-        aria-labelledby="content"
+        role=${ifDefined(this.notInteractive || isLink ? undefined : 'button')}
+        aria-labelledby=${ifDefined(!this.notInteractive ? 'content' : undefined)}
       >
         <div
           part="marker"

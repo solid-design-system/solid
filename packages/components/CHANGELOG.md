@@ -1,7 +1,31 @@
+# [@solid-design-system/components-v3.22.2](https://github.com/solid-design-system/solid/compare/components/3.22.1...components/3.22.2) (2024-11-14)
+
+
+### Bug Fixes
+
+* sd-input a11y ([#1615](https://github.com/solid-design-system/solid/issues/1615)) ([cbaaf6e](https://github.com/solid-design-system/solid/commit/cbaaf6ecbba5da64874eda1f686fd1b6c4cd4b4c))
+
+### 📈 Stats
+* Bundle size (uncompressed): 407 KB (+5 KB / +1%)
+* Bundle size (gzipped): 125 KB (+2 KB / +2%)
+
+# [@solid-design-system/components-v3.22.1](https://github.com/solid-design-system/solid/compare/components/3.22.0...components/3.22.1) (2024-11-13)
+
+
+### Bug Fixes
+
+* sd-map-marker accessibility violation ([#1617](https://github.com/solid-design-system/solid/issues/1617)) ([59face8](https://github.com/solid-design-system/solid/commit/59face88ccc38b953e6abf63d42bb95aad401cdd))
+
+### 📈 Stats
+* Bundle size (uncompressed): 402 KB (unchanged)
+* Bundle size (gzipped): 123 KB (unchanged)
+
 # [@solid-design-system/components-v3.22.0](https://github.com/solid-design-system/solid/compare/components/3.21.0...components/3.22.0) (2024-11-08)
 
 
 ### Features
+
+> **Note:** This feature is related to the new docs package and not directly to the components package. However, it is documented here for completeness.
 
 * create docs package for solid components ([#1550](https://github.com/solid-design-system/solid/issues/1550)) ([7555d18](https://github.com/solid-design-system/solid/commit/7555d182abfa34a23521c839180ae4b67604717e)), closes [#1131](https://github.com/solid-design-system/solid/issues/1131)
 

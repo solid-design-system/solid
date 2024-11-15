@@ -2,38 +2,104 @@
   "name": "App",
   "icons": [
     {
-      "src": "/android-icon-36x36.png",
-      "sizes": "36x36",
+      "src": "./android-icon-192x192.png",
+      "sizes": "192x192",
       "type": "image/png",
-      "density": "0.75"
+      "density": "4.0"
     },
     {
-      "src": "/android-icon-48x48.png",
-      "sizes": "48x48",
+      "src": "./apple-icon-57x57.png",
+      "sizes": "57x57",
       "type": "image/png",
-      "density": "1.0"
+      "density": "4.0"
     },
     {
-      "src": "/android-icon-72x72.png",
+      "src": "./apple-icon-60x60.png",
+      "sizes": "60x60",
+      "type": "image/png",
+      "density": "4.0"
+    },
+    {
+      "src": "./apple-icon-72x72.png",
       "sizes": "72x72",
       "type": "image/png",
-      "density": "1.5"
+      "density": "4.0"
     },
     {
-      "src": "/android-icon-96x96.png",
-      "sizes": "96x96",
+      "src": "./apple-icon-114x114.png",
+      "sizes": "114x114",
       "type": "image/png",
-      "density": "2.0"
+      "density": "4.0"
     },
     {
-      "src": "/android-icon-144x144.png",
+      "src": "./apple-icon-120x120.png",
+      "sizes": "120x120",
+      "type": "image/png",
+      "density": "4.0"
+    },
+    {
+      "src": "./apple-icon-144x144.png",
       "sizes": "144x144",
       "type": "image/png",
-      "density": "3.0"
+      "density": "4.0"
     },
     {
-      "src": "/android-icon-192x192.png",
-      "sizes": "192x192",
+      "src": "./apple-icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "density": "4.0"
+    },
+    {
+      "src": "./apple-icon-180x180.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "density": "4.0"
+    },
+    {
+      "src": "./ms-icon-70x70.png",
+      "sizes": "70x70",
+      "type": "image/png",
+      "density": "4.0"
+    },
+    {
+      "src": "./ms-icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "density": "4.0"
+    },
+    {
+      "src": "./ms-icon-150x150.png",
+      "sizes": "150x150",
+      "type": "image/png",
+      "density": "4.0"
+    },
+    {
+      "src": "./ms-icon-310x310.png",
+      "sizes": "310x310",
+      "type": "image/png",
+      "density": "4.0"
+    },
+    {
+      "src": "./favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png",
+      "density": "4.0"
+    },
+    {
+      "src": "./favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png",
+      "density": "4.0"
+    },
+    {
+      "src": "./favicon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "density": "4.0"
+    },
+    {
+      "src": "./favicon-256x256.png",
+      "sizes": "256x256",
       "type": "image/png",
       "density": "4.0"
     }

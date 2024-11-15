@@ -1,3 +1,10 @@
+# [@solid-design-system/docs-v1.0.2](https://github.com/solid-design-system/solid/compare/docs/1.0.1...docs/1.0.2) (2024-11-14)
+
+
+### Bug Fixes
+
+* sd-input a11y ([#1615](https://github.com/solid-design-system/solid/issues/1615)) ([cbaaf6e](https://github.com/solid-design-system/solid/commit/cbaaf6ecbba5da64874eda1f686fd1b6c4cd4b4c))
+
 # [@solid-design-system/docs-v1.0.1](https://github.com/solid-design-system/solid/compare/docs/1.0.0...docs/1.0.1) (2024-11-08)
 
 
