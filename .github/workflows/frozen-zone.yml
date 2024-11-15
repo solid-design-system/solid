@@ -1,0 +1,21 @@
+name: Prevent Merges During Frozen Zone Period
+
+on:
+  pull_request:
+    types: [opened, edited, reopened, synchronize]
+  pull_request_review:
+    types: [submitted]
+
+jobs:
+  freeze-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check for Frozen Zone
+        run: |
+          FREEZE_START="2024-12-16T00:00:00Z"
+          FREEZE_END="2025-12-10T23:59:59Z"
+          CURRENT_TIME=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          if [[ "$CURRENT_TIME" > "$FREEZE_START" && "$CURRENT_TIME" < "$FREEZE_END" ]]; then
+            echo "🚫 We are in a frozen zone period. No merges allowed!"
+            exit 1
+          fi
