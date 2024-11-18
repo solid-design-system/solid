@@ -253,7 +253,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   @property() getTag: (option: SdOption, index: number) => TemplateResult | string | HTMLElement = option => {
     let tagLabel = option.getTextLabel();
 
-    if (this.tagEllipsis && option.getTextLabel().length > 15) {
+    if (this.tagEllipsis && option.getTextLabel().length >= 15) {
       tagLabel = `${tagLabel.slice(0, 15)}...`;
     }
 
@@ -313,8 +313,6 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       if (item.tagName.toLowerCase() === 'sd-optgroup') {
         Array.from(item.children).forEach((option: HTMLElement) => {
           if (option.tagName.toLowerCase() === 'sd-option') {
-            // @todo: What was the intention of this?
-            // renderOption does nothing with the group itself
             renderOption(option as SdOption);
           }
         });
@@ -331,28 +329,30 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
         if (index < this.maxOptionsVisible || this.maxOptionsVisible <= 0) {
           const tag = this.getTag(option!, index);
           // Wrap so we can handle the remove
-          return html` <div @sd-remove=${(e: CustomEvent) => this.handleTagRemove(e, option!)}>
+          return html` <div @sd-remove=${(e: CustomEvent) => this.handleTagRemove(e, option)}>
             ${typeof tag === 'string' ? unsafeHTML(tag) : tag}
           </div>`;
         }
-        return html``;
+        return [html``];
       });
     } else {
-      return html`
-        <sd-tag
-          ?disabled=${this.disabled}
-          part="tag"
-          exportparts="
+      return [
+        html`
+          <sd-tag
+            ?disabled=${this.disabled}
+            part="tag"
+            exportparts="
               base:tag__base,
               content:tag__content,
               removable-indicator:tag__removable-indicator,
             "
-          size=${this.size === 'sm' ? 'sm' : 'lg'}
-          removable
-          @sd-remove=${(event: CustomEvent) => this.handleTagRemove(event)}
-          >${this.selectedOptions.length} Options selected</sd-tag
-        >
-      `;
+            size=${this.size === 'sm' ? 'sm' : 'lg'}
+            removable
+            @sd-remove=${(event: CustomEvent) => this.handleTagRemove(event)}
+            >${this.selectedOptions.length} ${this.localize.term('tagsSelected')}</sd-tag
+          >
+        `
+      ];
     }
   }
 
@@ -1189,28 +1189,17 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                     class="${cx('inline-flex', iconMarginRight, iconColor, iconSize)}"
                   ></slot>`
                 : ''}
-              ${this.multiple && this.useTags
-                ? html`<div
-                    part="tags"
-                    class="${cx(
-                      'flex-grow-0',
-                      'flex-shrink',
-                      'flex',
-                      'flex-wrap',
-                      'items-center',
-                      'gap-1',
-                      iconMarginRight
-                    )}"
-                  >
+              ${this.multiple && this.useTags && this.tags.length > 0
+                ? html`<div part="tags" class="${cx('flex', 'items-center', 'gap-1', iconMarginRight)}">
                     ${this.tags}
                   </div>`
-                : ''}
+                : null}
               <input
                 id="display-input"
                 name=${this.name}
                 form=${this.form}
                 part="display-input"
-                class=${cx('appearance-none outline-none flex-grow bg-transparent', cursorStyles)}
+                class=${cx('appearance-none outline-none bg-transparent flex-auto min-w-0', cursorStyles)}
                 type="text"
                 placeholder=${this.placeholder}
                 .disabled=${this.disabled}

@@ -92,6 +92,7 @@ export interface Translation extends DefaultTranslation {
   scrollToStart: string;
   selectAColorFromTheScreen: string;
   selectDefaultPlaceholder: string;
+  tagsSelected: string;
   comboboxDefaultPlaceholder: string;
   showPassword: string;
   slideNum: (slide: number) => string;

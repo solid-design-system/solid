@@ -362,6 +362,7 @@ export const Clearable = {
 
 /**
  * Use the `multiple` attribute to allow multiple options to be selected.
+ * __Hint:__ You should use the `useTags` attribute to inform your users about their selected options.
  */
 
 export const Multiple = {
@@ -398,7 +399,7 @@ export const useTags = {
 };
 
 /**
- * Use the `tag-ellipsis` attribute to show an ellipsis if the number of characters exceeds 15.
+ * Use the `tag-ellipsis` attribute to display an ellipsis in tags when the character count exceeds 15.
  */
 export const TagEllipsis = {
   render: () => html`
