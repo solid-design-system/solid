@@ -51,12 +51,12 @@ export const VideoElementWithPosterSlot = {
   render: () => html`
     <sd-video>
       <video controls="" id="video-example" class="w-[854px] aspect-video">
-        <source src="./placeholders/videos/ui-placeholder-video.webm" type="video/webm" />
+        <source src="./placeholders/videos/sds-placeholder-video/sds-placeholder-video.webm" type="video/webm" />
         <track
           label="English"
           kind="subtitles"
           srclang="en"
-          src="./placeholders/captions/ui-placeholder-video.vtt"
+          src="./placeholders/videos/sds-placeholder-video/sds-placeholder-video.vtt"
           default
         />
         Your browser does not support the video tag.

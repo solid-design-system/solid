@@ -18,12 +18,12 @@ export const VideoWithDescription = {
   render: () => html`
     <sd-video class="sd-media">
       <video controls class="aspect-video">
-        <source src="./placeholders/videos/ui-placeholder-video.webm" type="video/webm" />
+        <source src="./placeholders/videos/sds-placeholder-video/sds-placeholder-video.webm" type="video/webm" />
         <track
           label="English"
           kind="subtitles"
           srclang="en"
-          src="./placeholders/captions/ui-placeholder-video.vtt"
+          src="./placeholders/videos/sds-placeholder-video/sds-placeholder-video.vtt"
           default
         />
         Your browser does not support the video tag.
@@ -53,12 +53,12 @@ export const VideoWithCopyright = {
     <div class="sd-copyright" style="--copyright:'© Union Investment 2024'">
       <sd-video>
         <video controls class="aspect-video">
-          <source src="./placeholders/videos/ui-placeholder-video.webm" type="video/webm" />
+          <source src="./placeholders/videos/sds-placeholder-video/sds-placeholder-video.webm" type="video/webm" />
           <track
             label="English"
             kind="subtitles"
             srclang="en"
-            src="./placeholders/captions/ui-placeholder-video.vtt"
+            src="./placeholders/videos/sds-placeholder-video/sds-placeholder-video.vtt"
             default
           />
           Your browser does not support the video tag.
