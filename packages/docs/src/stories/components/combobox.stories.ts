@@ -398,6 +398,23 @@ export const useTags = {
 };
 
 /**
+ * Use the `tag-ellipsis` attribute to show an ellipsis if the number of characters exceeds 15.
+ */
+export const TagEllipsis = {
+  render: () => html`
+    <div class="w-[650px] h-[500px]">
+      <sd-combobox size="lg" label="Label" placement="bottom" multiple tag-ellipsis value="option-1 option-2" useTags>
+        <sd-option value="option-1">BBBank Dynamik Union</sd-option>
+        <sd-option value="option-2">Option 2</sd-option>
+        <sd-option value="option-3">Option 3</sd-option>
+        <sd-option value="option-4">Option 4</sd-option>
+        <sd-option value="option-5">Option 5</sd-option>
+      </sd-combobox>
+    </div>
+  `
+};
+
+/**
  * Use the `max-options-visible` attribute to define the maximum number of selected options that will be visible.
  *
  * __Hint:__ It requires the `multiple` and `useTags` attributes to be set.<br />

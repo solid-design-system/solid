@@ -221,6 +221,11 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
    */
   @property({ attribute: 'max-options-visible', type: Number }) maxOptionsVisible = 3;
 
+  /**
+   * Show an ellipsis on the tag when the number of characters exceeds 15.
+   */
+  @property({ attribute: 'tag-ellipsis', reflect: true, type: Boolean }) tagEllipsis = false;
+
   /** Shows success styles if the validity of the input is valid. */
   @property({ type: Boolean, reflect: true, attribute: 'style-on-valid' }) styleOnValid = false;
 
@@ -246,10 +251,17 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
    * the specified value.
    */
   @property() getTag: (option: SdOption, index: number) => TemplateResult | string | HTMLElement = option => {
+    let tagLabel = option.getTextLabel();
+
+    if (this.tagEllipsis && option.getTextLabel().length > 15) {
+      tagLabel = `${tagLabel.slice(0, 15)}...`;
+    }
+
     return html`
       <sd-tag
         ?disabled=${this.disabled}
         part="tag"
+        title=${this.tagEllipsis ? option.getTextLabel() : ''}
         exportparts="
               base:tag__base,
               content:tag__content,
@@ -259,7 +271,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
         removable
         @sd-remove=${(event: CustomEvent) => this.handleTagRemove(event, option)}
       >
-        ${option.getTextLabel()}
+        ${tagLabel}
       </sd-tag>
     `;
   };
@@ -314,21 +326,34 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   }
 
   protected get tags() {
-    return this.selectedOptions.map((option, index) => {
-      if (index < this.maxOptionsVisible || this.maxOptionsVisible <= 0) {
-        const tag = this.getTag(option!, index);
-        // Wrap so we can handle the remove
-        return html`<div @sd-remove=${(e: CustomEvent) => this.handleTagRemove(e, option!)}>
-          ${typeof tag === 'string' ? unsafeHTML(tag) : tag}
-        </div>`;
-      } else if (index === this.maxOptionsVisible) {
-        // Hit tag limit
-        return html`<sd-tag size=${this.size === 'sm' ? 'sm' : 'lg'} ?disabled=${this.disabled}
-          >+${this.selectedOptions.length - index}</sd-tag
-        >`;
-      }
-      return html``;
-    });
+    if (this.selectedOptions.length <= this.maxOptionsVisible) {
+      return this.selectedOptions.map((option, index) => {
+        if (index < this.maxOptionsVisible || this.maxOptionsVisible <= 0) {
+          const tag = this.getTag(option!, index);
+          // Wrap so we can handle the remove
+          return html` <div @sd-remove=${(e: CustomEvent) => this.handleTagRemove(e, option!)}>
+            ${typeof tag === 'string' ? unsafeHTML(tag) : tag}
+          </div>`;
+        }
+        return html``;
+      });
+    } else {
+      return html`
+        <sd-tag
+          ?disabled=${this.disabled}
+          part="tag"
+          exportparts="
+              base:tag__base,
+              content:tag__content,
+              removable-indicator:tag__removable-indicator,
+            "
+          size=${this.size === 'sm' ? 'sm' : 'lg'}
+          removable
+          @sd-remove=${(event: CustomEvent) => this.handleTagRemove(event)}
+          >${this.selectedOptions.length} Options selected</sd-tag
+        >
+      `;
+    }
   }
 
   private addOpenListeners() {
@@ -493,10 +518,13 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     this.displayInput.focus();
   }
 
-  private handleTagRemove(event: CustomEvent, option: SdOption) {
+  private handleTagRemove(event: CustomEvent, option?: SdOption) {
     event.stopPropagation();
+    if (!option) {
+      this.clearCombobox();
+    }
 
-    if (!this.disabled) {
+    if (option && !this.disabled) {
       this.toggleOptionSelection(option, false);
 
       // Emit after updating
