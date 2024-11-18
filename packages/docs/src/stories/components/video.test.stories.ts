@@ -14,7 +14,7 @@ const videoConstant: ConstantDefinition = {
   type: 'slot',
   name: 'default',
   value:
-    '<video controls id="video-example" class="w-[854px] aspect-video"><source src="./placeholders/videos/sds-placeholder-video/sds-placeholder-video.webm" type="video/webm" />Your browser does not support the video tag.</video>'
+    '<video controls id="video-example" class="w-[854px] aspect-video"><source src="./placeholders/videos/ui-placeholder-video.mp4" type="video/mp4" />Your browser does not support the video tag.</video>'
 };
 const imageConstant: ConstantDefinition = {
   type: 'slot',
