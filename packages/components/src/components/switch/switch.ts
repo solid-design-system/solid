@@ -173,6 +173,7 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
           id="input"
           class="peer absolute opacity-0 p-0 m-0 pointer-events-none"
           type="checkbox"
+          role="switch"
           title=${this.title /* An empty title prevents browser validation tooltips from appearing on hover */}
           name=${this.name}
           value=${ifDefined(this.value)}
@@ -180,6 +181,7 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
           .disabled=${this.disabled}
           .required=${this.required}
           aria-checked=${this.checked ? 'true' : 'false'}
+          aria-invalid=${this.showInvalidStyle}
           aria-describedby="invalid-message"
           @click=${this.handleClick}
           @input=${this.handleInput}
