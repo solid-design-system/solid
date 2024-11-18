@@ -19,13 +19,13 @@ const videoConstant: ConstantDefinition = {
 const imageConstant: ConstantDefinition = {
   type: 'slot',
   name: 'default',
-  value: '<img class="w-[400px] aspect-video object-cover" src="./placeholders/images/generic.jpg" />'
+  value: '<img class="w-[400px] aspect-video object-cover" src="./placeholders/images/union-investment.png" />'
 };
 const posterConstant: ConstantDefinition = {
   type: 'slot',
   name: 'poster',
   value:
-    '<img slot="poster" alt="Video highlighting Union Investment\'s digital transformation through a design system named SOLID that enhances accessibility, sustainability, and efficiency." class="w-[854px] aspect-video cover" src="./placeholders/images/architecture.jpg" />'
+    '<img slot="poster" alt="Video highlighting Union Investment\'s digital transformation through a design system named SOLID that enhances accessibility, sustainability, and efficiency." class="w-[854px] aspect-video cover" src="./placeholders/images/union-investment.png" />'
 };
 const iconConstant: ConstantDefinition = {
   type: 'slot',
@@ -54,7 +54,7 @@ export const Default = {
       constants: {
         type: 'slot',
         name: 'default',
-        value: '<img class="aspect-video object-cover" src="./placeholders/images/generic.jpg" />'
+        value: '<img class="aspect-video object-cover" src="./placeholders/images/union-investment.png" />'
       },
       args
     });

@@ -32,7 +32,7 @@ export const VideoWithDescription = {
         slot="poster"
         alt="Video highlighting Union Investment's digital transformation through a design system named SOLID that enhances accessibility, sustainability, and efficiency."
         class="aspect-video cover"
-        src="./placeholders/images/architecture.jpg"
+        src="./placeholders/images/union-investment.png"
       />
       <figcaption class="mt-4">
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
@@ -67,7 +67,7 @@ export const VideoWithCopyright = {
           slot="poster"
           alt="Video highlighting Union Investment's digital transformation through a design system named SOLID that enhances accessibility, sustainability, and efficiency."
           class="aspect-video cover"
-          src="./placeholders/images/architecture.jpg"
+          src="./placeholders/images/union-investment.png"
         />
       </sd-video>
     </div>
