@@ -1,0 +1,29 @@
+import { Meta } from '@storybook/blocks';
+import theme from 'tailwind-theme';
+import cx from 'classix';
+
+<Meta title="Packages/Tokens/Aspect Ratios" />
+
+## Aspect ratios
+
+<table>
+  <tbody>
+    {Object.entries(theme.aspectRatio).map((token, i) => {
+
+      return (
+        <tr>
+          <td>
+            <div class="flex flex-col">
+              <div class="font-bold">--sd-aspect-ratio-{token[0]}</div>
+              <div>--sd-aspect-ratio-{token[1]}</div>
+            </div>
+          </td>
+          <td>
+            <img slot="media" class={`bg-primary w-32 object-cover aspect-${token[0]}`} src="./placeholders/images/generic.jpg" alt="A placeholder image"/>
+          </td>
+        </tr>
+      );
+    })}
+
+  </tbody>
+</table>

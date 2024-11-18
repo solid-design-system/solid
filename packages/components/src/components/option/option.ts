@@ -157,7 +157,7 @@ export default class SdOption extends SolidElement {
               id="control"
               part="control ${this.selected ? ' control--checked' : 'control--unchecked'}"
               class=${cx(
-                'relative flex flex-initial items-center justify-center border rounded-sm h-4 w-4 mr-2',
+                'relative flex flex-shrink-0 items-center justify-center border rounded-sm h-4 w-4 mr-2',
                 this.disabled ? 'border-neutral-500' : this.selected ? 'bg-accent border-accent' : 'border-neutral-800'
               )}
             >

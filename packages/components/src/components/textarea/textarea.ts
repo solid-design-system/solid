@@ -20,6 +20,7 @@ import type { SolidFormControl } from '../../internal/solid-element';
  *
  * @slot label - The textarea's label. Alternatively, you can use the `label` attribute.
  * @slot help-text - Text that describes how to use the input. Alternatively, you can use the `help-text` attribute.
+ * @slot tooltip - An optional tooltip that helps describe the input. Use this slot with the `sd-tooltip` component.
  *
  * @event sd-blur - Emitted when the control loses focus.
  * @event sd-change - Emitted when an alteration to the control's value is committed by the user.
@@ -333,18 +334,22 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
     }[this.size];
 
     return html`
-      <div part="form-control" class="text-left">
-        <label
-          part="form-control-label"
-          id="label"
-          class=${cx('mb-2', hasLabel ? 'inline-block' : 'hidden', textSize)}
-          for="input"
-          aria-hidden=${hasLabel ? 'false' : 'true'}
-        >
-          <slot name="label">${this.label}</slot>
-        </label>
+      <div part="form-control" class="flex flex-col h-full text-left">
+        <div class="flex items-center gap-1 mb-2">
+          <label
+            part="form-control-label"
+            id="label"
+            class=${cx(hasLabel ? 'inline-block' : 'hidden', textSize)}
+            for="input"
+            aria-hidden=${hasLabel ? 'false' : 'true'}
+          >
+            <slot name="label">${this.label}</slot>
+          </label>
 
-        <div part="form-control-input" class=${cx('relative w-full', this.disabled && 'cursor-not-allowed')}>
+          <slot name="tooltip"></slot>
+        </div>
+
+        <div part="form-control-input" class=${cx('relative h-full w-full', this.disabled && 'cursor-not-allowed')}>
           <div
             part="border"
             class=${cx(
@@ -364,7 +369,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
           <div
             part="base"
             class=${cx(
-              'textarea px-4 flex items-top rounded-default group',
+              'textarea h-full px-4 flex items-top rounded-default group',
               {
                 sm: 'textarea-sm py-1',
                 md: 'textarea-md py-1',
@@ -399,7 +404,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
               spellcheck=${ifDefined(this.spellcheck)}
               enterkeyhint=${ifDefined(this.enterkeyhint)}
               inputmode=${ifDefined(this.inputmode)}
-              aria-describedby="help-text"
+              aria-describedby="help-text invalid-message"
               @change=${this.handleChange}
               @input=${this.handleInput}
               @invalid=${this.handleInvalid}
@@ -449,7 +454,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
     componentStyles,
     css`
       :host {
-        @apply block;
+        @apply block h-full;
       }
 
       :host([required]) #label::after {

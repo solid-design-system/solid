@@ -28,6 +28,7 @@ import type SdRadioButton from '../../components/radio-button/radio-button';
  * @slot - The default slot where `<sd-radio>` or `<sd-radio-button>` elements are placed.
  * @slot label - The radio group's label. Required for proper accessibility. Alternatively, you can use the `label`
  *  attribute.
+ * @slot tooltip - An optional tooltip that helps describe the radio-group. Use this slot with the `sd-tooltip` component.
  *
  * @event sd-change - Emitted when the radio group's selected value changes.
  * @event sd-input - Emitted when the radio group receives user input.
@@ -65,7 +66,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
   @state() showInvalidStyle = false;
 
   /** The radio group's size. This size will be applied to the label, all child radios and radio buttons. */
-  @property({ reflect: true }) size: 'lg' | 'sm' = 'lg';
+  @property({ reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
 
   /** Ensures a child radio is checked before allowing the containing form to submit. */
   @property({ type: Boolean, reflect: true }) required = false;
@@ -369,26 +370,26 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
           {
             /* sizes, fonts */
             sm: 'text-sm',
+            md: 'text-base',
             lg: 'text-base'
           }[this.size]
         )}
         role="radiogroup"
-        aria-labelledby="label"
-        aria-errormessage="error-text"
+        aria-describedby="invalid-message"
       >
-        <label
-          part="form-control-label"
-          id="label"
-          class=${cx(
-            'mb-2 p-0 leading-normal text-black text-left',
-            !hasLabel && 'hidden',
-            this.boldLabel && 'font-bold'
-          )}
-          @click=${this.focus}
-          aria-hidden=${hasLabel ? 'false' : 'true'}
-        >
-          <slot name="label">${this.label}</slot>
-        </label>
+        <div class="flex items-center gap-1 mb-2">
+          <legend
+            part="form-control-label"
+            id="label"
+            class=${cx('p-0 leading-normal text-black text-left', !hasLabel && 'hidden', this.boldLabel && 'font-bold')}
+            @click=${this.focus}
+            aria-hidden=${hasLabel ? 'false' : 'true'}
+          >
+            <slot name="label">${this.label}</slot>
+          </legend>
+
+          <slot name="tooltip"></slot>
+        </div>
 
         <div
           part="form-control-input"

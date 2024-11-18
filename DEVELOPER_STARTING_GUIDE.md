@@ -7,7 +7,7 @@
   - [Get Started](#get-started)
   - [SOLID Library Concepts](#solid-library-concepts)
     - [Web **Components** \& CSS **Styles**](#web-components--css-styles)
-    - [Samples \& Patterns](#samples--patterns)
+    - [Templates](#templates)
   - [Shoelace](#shoelace)
   - [Storybook](#storybook)
     - [Storybook Docs](#storybook-docs)
@@ -24,9 +24,7 @@
 
 ## Get Started
 
-- Familiarize yourself with the [Principles of Solid Design System](https://solid-design-system.fe.union-investment.de/x.x.x/storybook/), which serves as a reference for design guidelines, components, and patterns used in this project. Adhering to these principles will help maintain consistency and a cohesive user experience.
-
-- Have a look at the [demo project](https://solid-design-system.github.io/solid-design-system-demo/) to get a better understanding of the design system and its components. You can even [install it locally and play around](https://github.com/solid-design-system/solid-design-system-demo) to explore its features and functionalities.
+- Familiarize yourself with the [Principles of Solid Design System](https://solid-design-system.fe.union-investment.de/docs/), which serves as a reference for design guidelines, components, and patterns used in this project. Adhering to these principles will help maintain consistency and a cohesive user experience.
 
 - Solid Components follows a monorepo structure with packages (e. g. `components`) managed by `pnpm` (which is a replacement for `npm`). Linting and Formatting is centralized at root level. Packages have to be run individually (e.g. `cd packages/components && pnpm dev` to start development server). Run `pnpm verify` at the root directory periodically, particularly, before pushing changes when a pull request is already opened.
 
@@ -42,12 +40,11 @@ We are creating a library that comprises a lean combination of reusable [Web Com
   - [parts](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/part) allow external manipulation of CSS.
   - [events](https://lit.dev/docs/components/events/) make critical information available outside of a component.
 
-### Samples & Patterns
+### Templates
 
-Alongside the documentation for Styles and Components, we also present Samples and Patterns. These differ in their scope:
+Alongside the documentation for Styles and Components, we also present templates, where the main idea is:
 
-- **Samples**: Tied to a specific component, these show its use in a particular context. They are added as "Sample" stories in the component's documentation.
-- **Patterns**: More advanced, they demonstrate how to combine several components to solve a specific problem. They are added as stories in the "Patterns" section.
+Templates are complete examples of how to use Styles and Components together. They are often more complex than Components and could feature multiple Components and Styles. They are meant to be copy-pasted and individualized by the users in order to match their project needs.
 
 ## Shoelace
 
@@ -61,13 +58,15 @@ A good rule of thumb: **when in doubt, refer to Shoelace!**
 
 ## Storybook
 
-We present the library in a [Storybook](https://storybook.js.org/) with the following sections:
+We present the library in a [Storybook](https://storybook.js.org/) running on the **\*DOCS** package with the following sections:
 
 - **DOCS**: All .mdx documentation files.
+- **PACKAGES**: Information about each of the SDS packages.
 - **COMPONENTS**: Web Components built with Lit JS. Often more complex than Styles, and could feature reactivity, state, multiple slots, properties, and more.
 - **UTILITIES**: Web Components built with Lit JS, used as SDS-internal helper components. Technically necessary to build other components and generic enough to be used multiple times. Not officially part of the design system library and no respective component existing in Figma.
 - **STYLES**: These are standalone CSS files. They don't provide any logic and are often non-interactive.
-- **PATTERN**: Demonstrate how to combine several components to solve a specific problem.
+- **TEMPLATES**: Demonstrate how to combine several components to solve a specific problem.
+- **LEGAL**: Contains legal information.
 
 Each component / utility / style / pattern contains both [docs](https://storybook.js.org/addons/@storybook/addon-docs) and [stories](https://storybook.js.org/docs/writing-stories):
 
@@ -105,7 +104,7 @@ These will allow you to do things like present various properties along two axes
 
 If you are working on a component, follow the steps below:
 
-1. Move the component folder from `packages/components/src/_components` to `packages/components/src/components` or run `$pnpm plop` to generate a blank component template.
+1. Move the component folder from `packages/components/src/_components` to `packages/components/src/components` or run `$pnpm plop` to generate a blank component template. All `*.stories.ts` and `*.test.stories.ts` should be moved into `packages/docs/src/stories`.
 2. **Open the component's Storybook Docs or default Story.** Ensure this is working properly. You'll want to have a place to observe the component as you work.
 3. **Check the [Shoelace repo components folder](https://github.com/shoelace-style/shoelace/tree/next/src/components) for the latest published component code.** If you need to re-copy updated source code, ensure you _copy the whole component folder not just the component file_ (includes tests and styles) AND rename contained imports, variables, components etc... prefixed with `sl` to `sd` (e.g. `sl-component` becomes `sd-component` ) and likewise `Shoelace` to `Solid` (e.g. `ShoelaceFormControl` becomes `SolidFormControl`).
 4. **Remove any properties from the copied Shoelace code that are irrelevant to our design** (e.g. `pill` is a re-occurring prop in Shoelace that alters a component's border radius, our designs do not offer this). Refer to the [Figma design documentation](https://www.figma.com/files/1075429990769806468/project/67503549/Solid-DS-Documentation?fuid=883643809929820461) for the component you are working on.
@@ -136,7 +135,7 @@ _ You can always refer to the existing components and styles to familiarize your
 ### Security Updates
 
 In our security workflow, Renovate (GitHub App) automatically identifies and updates security issues in our project dependencies.
-Renovate also creates a “Dependency Dashboard” ticket to track all found updates. During each iteration, we plan and assign the dashboard ticket to a specific team member. The assigned team member has to update the described packages by runing `pnpm update all`, creating a corresponding PR, and finally closing the ticket. This process ensures efficient handling of security updates while maintaining clear accountability within the team.
+Renovate also creates a “Dependency Dashboard” ticket to track all found updates. During each iteration, we plan and assign the dashboard ticket to a specific team member. The assigned team member has to update the described packages by running `pnpm update all`, creating a corresponding PR, and finally closing the ticket. This process ensures efficient handling of security updates while maintaining clear accountability within the team.
 
 ## Repository Overview
 
@@ -146,12 +145,8 @@ Renovate also creates a “Dependency Dashboard” ticket to track all found upd
       - `_components`: components previously copied from Shoelace that have replace `sl` prefixes with `sd` prefixes
       - **`components`**: Primary folder containing our Web Components. Added as stories in the "COMPONENTS" section.
         - `accordion`: Lit JS web component that implements an accordion. The comments are automatically compiled into the Storybook docs and should be used for user clarification.
-        - `accoridion.tests.ts`: Suite of jest tests for the accordion component. Critical for deployment and maintenance.
-        - `accordion.stories.ts`: Collection of Storybook stories that are primarily used for visual testing with Chromatic. Any **samples** are added as stories here.
-      - `docs`: all ".mdx" doc files that appear in the "DOCS" section of our Storybook
-        - `migration`: Individual component migration guides
+        - `accordion.tests.ts`: Suite of jest tests for the accordion component. Critical for deployment and maintenance.
       - `internal`: A set of utilities that are reusable internally. Check here should you need something like a debounce, it may have already been implemented.
-      - **`patterns`**: Demonstrate how to combine several components to solve a specific problem. Added as stories in the "PATTERNS" section.
       - **`styles`**: These are standalone CSS files. They don't provide any logic and are often non-interactive. Added as stories in the "STYLES" section.
 
 ## Technologies
