@@ -62,7 +62,7 @@ export const Selected = {
       <sd-tag toggleable>Unselected</sd-tag>
     </div>
 
-    <script>
+    <script type="module">
       const handleToggle = event => {
         const tag = event.target;
         tag.toggleAttribute('selected');
@@ -86,7 +86,7 @@ export const Removable = {
       <sd-tag size="lg" removable>Removable</sd-tag>
     </div>
 
-    <script>
+    <script type="module">
       const tag = document.querySelector('#tags-removable');
 
       tag.addEventListener('sd-remove', event => {
