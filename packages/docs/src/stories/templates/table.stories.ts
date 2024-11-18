@@ -256,14 +256,26 @@ export const sortableTable = {
           nextSort: 'ascending' | 'descending' | 'none';
           iconName: string;
           ariaSort: string | undefined;
+          status: string;
         };
       } = {
-        none: { nextSort: 'ascending', iconName: 'system/sort-up', ariaSort: undefined },
-        ascending: { nextSort: 'descending', iconName: 'system/sort-up-filled', ariaSort: 'ascending' },
-        descending: { nextSort: 'none', iconName: 'system/sort-down-filled', ariaSort: 'descending' }
+        none: { nextSort: 'ascending', iconName: 'system/sort-up', ariaSort: undefined, status: 'No sorting applied' },
+        ascending: {
+          nextSort: 'descending',
+          iconName: 'system/sort-up-filled',
+          ariaSort: 'ascending',
+          status: 'Sorting ascending'
+        },
+        descending: {
+          nextSort: 'none',
+          iconName: 'system/sort-down-filled',
+          ariaSort: 'descending',
+          status: 'Sorting descending'
+        }
       };
       const icons = document.querySelectorAll('[id*="sortIcon"]');
       const headerCells = document.querySelectorAll('[id*="sortableHeader"]');
+      const statusSpans = document.querySelectorAll('[id*="sortableStatus"]');
 
       if (icons && headerCells) {
         headerCells.forEach((headerCell, index) => {
@@ -272,21 +284,23 @@ export const sortableTable = {
           sortTableByColumn(document.querySelector('[id*="sortableTable"]'), column, nextSort === 'descending');
 
           if (index === column) {
-            const { iconName, ariaSort } = sortingOptions[nextSort];
+            const { iconName, ariaSort, status } = sortingOptions[nextSort];
 
             sortData[index] = nextSort;
             icons[index].setAttribute('name', iconName);
             ariaSort !== undefined
               ? headerCell.setAttribute('aria-sort', ariaSort)
               : headerCell.removeAttribute('aria-sort');
+            statusSpans[index].innerHTML = status;
           }
           //Reset the sort icon and remove the aria-sort attribute for all other columns
           else {
-            const { iconName } = sortingOptions['none'];
+            const { iconName, status } = sortingOptions['none'];
 
             sortData[index] = 'none';
             icons[index].setAttribute('name', iconName);
             headerCell.removeAttribute('aria-sort');
+            statusSpans[index].innerHTML = status;
           }
         });
       }
@@ -320,6 +334,16 @@ export const sortableTable = {
       }
     };
 
+    const handleSortButtonFocus = (column: number) => {
+      const statusSpan = document.querySelector(`[id*="sortableStatus-${column}"]`);
+      statusSpan?.setAttribute('role', 'status');
+    };
+
+    const handleSortButtonBlur = (column: number) => {
+      const statusSpan = document.querySelector(`[id*="sortableStatus-${column}"]`);
+      statusSpan?.removeAttribute('role');
+    };
+
     return html`
       <table class="sd-table sample-table w-full" id="sortableTable" .sortData=${sortData}>
         <thead>
@@ -331,7 +355,15 @@ export const sortableTable = {
                   id="sortableHeader-${columnIndex}"
                   aria-sort=${ifDefined(sortData[columnIndex] === 'none' ? undefined : 'ascending')}
                 >
-                  <button class="sd-interactive flex items-center gap-1" @click="${() => sortTable(columnIndex)}">
+                  <span class="sr-only" id="sortableStatus-${columnIndex}"
+                    >${sortData[columnIndex] === 'none' ? '' : 'Sorting ascending'}</span
+                  >
+                  <button
+                    class="sd-interactive flex items-center gap-1"
+                    @focus="${() => handleSortButtonFocus(columnIndex)}"
+                    @blur="${() => handleSortButtonBlur(columnIndex)}"
+                    @click="${() => sortTable(columnIndex)}"
+                  >
                     ${cellData}<sd-icon
                       id="sortIcon-${columnIndex}"
                       library="global-resources"
