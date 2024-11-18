@@ -215,6 +215,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
           .disabled=${this.disabled}
           .required=${this.required}
           aria-checked=${this.checked ? 'true' : 'false'}
+          aria-describedby="invalid-message"
           @click=${this.handleClick}
           @input=${this.handleInput}
           @invalid=${this.handleInvalid}
