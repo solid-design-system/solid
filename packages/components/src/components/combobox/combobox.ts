@@ -98,6 +98,8 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
 
   @query('[part="listbox"]') listbox: HTMLSlotElement;
 
+  @query('[part="tags"]') tagWrapper: HTMLDivElement;
+
   @query('#listbox-options') filteredWrapper: HTMLSlotElement;
 
   @query('slot:not([name])') private defaultSlot: HTMLSlotElement;
@@ -422,6 +424,20 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       }
     }
 
+    if (event.key === 'Backspace' && this.multiple && this.displayInput.value === '') {
+      const tagWrapper = this.tagWrapper.querySelectorAll('sd-tag');
+      const lastTag = tagWrapper[tagWrapper.length - 1];
+
+      if (lastTag.matches(':focus')) {
+        this.handleTagRemove(new CustomEvent('sd-remove'), this.selectedOptions[this.selectedOptions.length - 1]);
+        this.updateComplete.then(() => this.displayInput.focus({ preventScroll: true }));
+        return;
+      } else {
+        lastTag.focus();
+        return;
+      }
+    }
+
     // Handle enter.
     if (event.key === 'Enter') {
       const currentOption = this.getCurrentOption();
@@ -526,7 +542,6 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
 
     if (option && !this.disabled) {
       this.toggleOptionSelection(option, false);
-
       // Emit after updating
       this.updateComplete.then(() => {
         this.selectionChanged();

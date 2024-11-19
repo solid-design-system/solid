@@ -381,7 +381,7 @@ export const Multiple = {
 
 /**
  * Use the `useTags` attribute to display selected options as tags using the `sd-tag` component.
- *
+ * Use Backspace to remove the last selected option.
  * __Hint:__ It requires the `multiple` attribute to be set.
  */
 export const useTags = {
