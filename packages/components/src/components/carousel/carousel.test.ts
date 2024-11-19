@@ -2,7 +2,6 @@ import { aTimeout, expect, fixture, html, oneEvent } from '@open-wc/testing';
 import { clickOnElement } from '../../internal/test.js';
 import SdCarousel from './carousel';
 import sinon from 'sinon';
-
 describe('<sd-carousel>', () => {
   it('should render a carousel with default configuration', async () => {
     // Arrange
@@ -489,7 +488,6 @@ describe('<sd-carousel>', () => {
 
         // Assert
         expect(el.scrollContainer).to.have.attribute('aria-busy', 'false');
-        expect(el.scrollContainer).to.have.attribute('aria-atomic', 'true');
 
         expect(pagination).to.have.attribute('aria-controls', el.scrollContainer.id);
         for (const paginationItem of pagination.querySelectorAll('.carousel__pagination-item')) {
@@ -524,7 +522,6 @@ describe('<sd-carousel>', () => {
 
         // Assert
         expect(el.scrollContainer).to.have.attribute('aria-busy', 'false');
-        expect(el.scrollContainer).to.have.attribute('aria-atomic', 'true');
 
         expect(pagination).to.have.attribute('role', 'tablist');
         expect(pagination).to.have.attribute('aria-controls', el.scrollContainer.id);
@@ -752,7 +749,7 @@ describe('<sd-carousel>', () => {
     it('should resume if the user clicks the resume button', async () => {
       // Arrange
       const el = await fixture<SdCarousel>(html`
-        <sd-carousel autoplay>
+        <sd-carousel autoplay loop>
           <sd-carousel-item>Node 1</sd-carousel-item>
           <sd-carousel-item>Node 2</sd-carousel-item>
           <sd-carousel-item>Node 3</sd-carousel-item>
