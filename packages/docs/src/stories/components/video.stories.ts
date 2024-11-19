@@ -34,7 +34,7 @@ export const Default = {
       constants: {
         type: 'slot',
         name: 'default',
-        value: '<img class="w-[400px] aspect-video object-cover" src="./placeholders/images/union-investment.png" />'
+        value: '<img class="w-[400px] aspect-video object-cover" src="./placeholders/images/generic.jpg" />'
       },
       args
     });
