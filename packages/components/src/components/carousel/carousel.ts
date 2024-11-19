@@ -326,18 +326,26 @@ export default class SdCarousel extends SolidElement {
   }
 
   @watch('activeSlide')
-  handelSlideChange() {
-    this.currentPage = SdCarousel.getCurrentPage(
-      this.getSlides().length,
+  handleSlideChange() {
+    const slides = this.getSlides();
+
+    // Update slides classes
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('--is-active', i === this.activeSlide);
+    });
+
+    // Calculate current page only once
+    const newCurrentPage = SdCarousel.getCurrentPage(
+      slides.length,
       this.activeSlide,
       this.slidesPerPage,
       this.slidesPerMove
     );
 
-    const slides = this.getSlides();
-    slides.forEach((slide, i) => {
-      slide.classList.toggle('--is-active', i === this.activeSlide);
-    });
+    // Batch updates together
+    if (this.currentPage !== newCurrentPage) {
+      this.currentPage = newCurrentPage;
+    }
 
     // Do not emit an event on first render
     if (this.hasUpdated) {
@@ -349,8 +357,13 @@ export default class SdCarousel extends SolidElement {
       });
     }
 
-    if (this.currentPage > SdCarousel.getPageCount(this.getSlides().length, this.slidesPerPage, this.slidesPerMove)) {
-      this.nextTillFirst();
+    // Check page count after all other updates
+    const pageCount = SdCarousel.getPageCount(slides.length, this.slidesPerPage, this.slidesPerMove);
+    if (this.currentPage > pageCount) {
+      // Use requestAnimationFrame to defer this update to the next frame
+      requestAnimationFrame(() => {
+        this.nextTillFirst();
+      });
     }
   }
 
@@ -518,7 +531,14 @@ export default class SdCarousel extends SolidElement {
               aria-label="${this.localize.term('previousSlide')}"
               aria-controls="scroll-container"
               aria-disabled="${prevEnabled ? 'false' : 'true'}"
-              @click=${prevEnabled ? () => this.previous() : null}
+              @click=${prevEnabled
+                ? (e: MouseEvent) => {
+                    this.previous();
+                    if (e.detail) {
+                      this.previousButton?.blur();
+                    }
+                  }
+                : null}
             >
               <slot name="previous-icon">
                 <sd-icon
@@ -603,8 +623,11 @@ export default class SdCarousel extends SolidElement {
               aria-controls="scroll-container"
               aria-disabled="${nextEnabled ? 'false' : 'true'}"
               @click=${nextEnabled
-                ? () => {
+                ? (e: MouseEvent) => {
                     this.next();
+                    if (e.detail) {
+                      this.nextButton.blur();
+                    }
                   }
                 : null}
             >
@@ -627,7 +650,12 @@ export default class SdCarousel extends SolidElement {
             part="autoplay-controls"
             aria-label="${this.localize.term('autoplay')}"
             aria-pressed="true"
-            @click=${() => (this.pausedAutoplay = !this.pausedAutoplay)}
+            @click=${(e: MouseEvent) => {
+              this.pausedAutoplay = !this.pausedAutoplay;
+              if (e.detail) {
+                this.autoplayControls.blur();
+              }
+            }}
           >
             <slot name="autoplay-start" class=${cx(!this.pausedAutoplay ? 'hidden' : '')}>
               <sd-icon class="h-6 w-6 grid place-items-center" library="system" name="start"></sd-icon>
