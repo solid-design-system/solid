@@ -137,7 +137,7 @@ export const MediaSlot = {
 };
 
 /**
- * The meta slot can be used to display additional information.
+ * Use the `meta` slot to add additional content to the teaser.
  */
 
 export const MetaSlot = {

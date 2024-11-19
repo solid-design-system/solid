@@ -163,7 +163,7 @@ export const DefaultMediaAndHeadlineSlot = {
 };
 
 /**
- * Use the `meta` slot to show content above the headline.
+ * Use the `meta` slot to add additional content to the teaser.
  */
 
 export const MetaSlot = {
