@@ -57,8 +57,8 @@ export const Default = {
  * - `white` (default)
  * - `white border-neutral-400`
  * - `neutral-100`
- * - `primary`
  * - `primary-100`
+ * - `primary`
  */
 
 export const Variant = {
