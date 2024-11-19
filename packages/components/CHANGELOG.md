@@ -1,3 +1,25 @@
+# [@solid-design-system/components-v3.22.4](https://github.com/solid-design-system/solid/compare/components/3.22.3...components/3.22.4) (2024-11-18)
+
+
+### Bug Fixes
+
+* improve sd-switch a11y ([#1646](https://github.com/solid-design-system/solid/issues/1646)) ([79b74dd](https://github.com/solid-design-system/solid/commit/79b74dd08a3914a6e1a3e5bb08f13d8b51a013a0)), closes [#1488](https://github.com/solid-design-system/solid/issues/1488)
+
+### 📈 Stats
+* Bundle size (uncompressed): 407 KB (unchanged)
+* Bundle size (gzipped): 125 KB (unchanged)
+
+# [@solid-design-system/components-v3.22.3](https://github.com/solid-design-system/solid/compare/components/3.22.2...components/3.22.3) (2024-11-15)
+
+
+### Bug Fixes
+
+* 🐛 make validation more accessible in all form elements ([#1619](https://github.com/solid-design-system/solid/issues/1619)) ([7a2ca8d](https://github.com/solid-design-system/solid/commit/7a2ca8d5a3a2086461cc33db57697be0bb61b874))
+
+### 📈 Stats
+* Bundle size (uncompressed): 407 KB (unchanged)
+* Bundle size (gzipped): 125 KB (unchanged)
+
 # [@solid-design-system/components-v3.22.2](https://github.com/solid-design-system/solid/compare/components/3.22.1...components/3.22.2) (2024-11-14)
 
 
