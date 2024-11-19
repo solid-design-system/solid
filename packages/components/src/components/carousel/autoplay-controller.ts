@@ -26,10 +26,10 @@ export class AutoplayController implements ReactiveController {
     this.host.addEventListener('focusin', this.pause);
     this.host.addEventListener('focusout', this.resume);
     this.host.addEventListener('touchstart', this.pause, { passive: true });
-    this.host.addEventListener('touchend', this.resume);
+    this.host.addEventListener('touchend', this.resume, { passive: true });
 
-    // Prevents autoplay from being stuck when the user clicks on a button or link inside the carousel.
-    this.host.addEventListener('click', this.resume);
+    // Prevents autoplay from being stuck after the user clicks on a button or link inside the carousel.
+    this.host.addEventListener('mouseup', this.resume);
   }
 
   hostDisconnected(): void {
@@ -41,7 +41,7 @@ export class AutoplayController implements ReactiveController {
     this.host.removeEventListener('focusout', this.resume);
     this.host.removeEventListener('touchstart', this.pause);
     this.host.removeEventListener('touchend', this.resume);
-    this.host.removeEventListener('click', this.resume);
+    this.host.removeEventListener('mouseup', this.resume);
   }
 
   start(interval: number) {
