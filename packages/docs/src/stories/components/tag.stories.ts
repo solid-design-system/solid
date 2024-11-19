@@ -59,7 +59,6 @@ export const Selected = {
   render: () => html`
     <div id="tags-selected" class="flex gap-12">
       <sd-tag selected toggleable>Selected</sd-tag>
-      <sd-tag toggleable>Unselected</sd-tag>
     </div>
 
     <script type="module">
