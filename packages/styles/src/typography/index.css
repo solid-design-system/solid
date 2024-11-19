@@ -1,0 +1,5 @@
+/**
+ * Core typographic styles
+ */
+@import url('./paragraph.css');
+@import url('./prose.css');

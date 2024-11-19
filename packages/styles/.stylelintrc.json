@@ -1,0 +1,4 @@
+{
+  "ignoreFiles": ["dist/**/*.css"],
+  "extends": "@synergy-design-system/stylelint-config-syn"
+}

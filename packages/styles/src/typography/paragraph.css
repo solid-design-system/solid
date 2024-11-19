@@ -1,0 +1,18 @@
+/**
+ * sd-paragraph
+ * @boolean { size-sm } sd-paragraph The paragraph's font size.
+ * @boolean { true } sd-paragraph--inverted Inverts the paragraph text.
+ */
+.sd-paragraph,
+.sd-prose p {
+  @apply text-base font-normal leading-normal text-black;
+
+  &--size-sm {
+    @apply text-sm font-normal leading-normal text-black;
+  }
+}
+
+.sd-paragraph--inverted,
+.sd-prose--inverted p {
+  @apply text-white;
+}

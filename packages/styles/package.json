@@ -1,0 +1,110 @@
+{
+  "author": {
+    "name": "Union Investment"
+  },
+  "description": "Solid Design System: Styles",
+  "exports": {
+    ".": "./dist/index.css",
+    "./package.json": "./package.json",
+    "./*.css": "./dist/*.css"
+  },
+  "files": [
+    "dist",
+    "CHANGELOG.md",
+    "README.md"
+  ],
+  "homepage": "https://solid-design-system.fe.union-investment.de/docs/",
+  "keywords": [
+    "Solid Design System",
+    "CSS Utility Classes"
+  ],
+  "license": "MIT",
+  "name": "@solid-design-system/styles",
+  "release": {
+    "branches": [
+      "main",
+      {
+        "name": "beta",
+        "prerelease": true
+      },
+      {
+        "name": "alpha",
+        "prerelease": true
+      }
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      [
+        "@semantic-release/changelog",
+        {
+          "changelogFile": "CHANGELOG.md"
+        }
+      ],
+      [
+        "@semantic-release/exec",
+        {
+          "prepareCmd": "pnpm build"
+        }
+      ],
+      [
+        "@semantic-release/npm",
+        {
+          "npmPublish": false
+        }
+      ],
+      [
+        "@semantic-release/git",
+        {
+          "message": "chore(release/styles): ${nextRelease.version} [skip actions]\n\n${nextRelease.notes}",
+          "assets": [
+            "CHANGELOG.md",
+            "package.json"
+          ]
+        }
+      ],
+      [
+        "@semantic-release/github",
+        {
+          "successComment": false
+        }
+      ]
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/solid-design-system/solid.git",
+    "directory": "packages/styles"
+  },
+  "scripts": {
+    "start": "pnpm build",
+    "build": "node build/index.js",
+    "lint:css": "stylelint \"src/**/*.css\"",
+    "lint:js": "eslint .",
+    "lint": "pnpm run /^lint:.*/",
+    "release": "semantic-release  --tagFormat 'styles/${version}' -e semantic-release-monorepo",
+    "release.dry": "semantic-release --dry-run --tagFormat 'styles/${version}' -e semantic-release-monorepo"
+  },
+  "type": "module",
+  "version": "1.4.0",
+  "devDependencies": {
+    "@mariohamann/tailwindcss-var": "^2.1.0",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/exec": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@tailwindcss/nesting": "0.0.0-insiders.565cd3e",
+    "autoprefixer": "^10.4.16",
+    "del": "^7.1.0",
+    "eslint": "^8.57.1",
+    "globby": "^14.0.2",
+    "ora": "^8.1.1",
+    "postcss": "^8.4.49",
+    "postcss-cli": "^11.0.0",
+    "postcss-import": "^16.1.0",
+    "prettier": "^3.3.3",
+    "semantic-release": "^19.0.5",
+    "semantic-release-monorepo": "^7.0.8",
+    "stylelint": "^16.10.0",
+    "tailwindcss": "^3.4.15"
+  }
+}
