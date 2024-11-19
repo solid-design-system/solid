@@ -81,10 +81,23 @@ async function updateIndexHtml() {
   }
 }
 
+async function removeDefaultFavicon() {
+  const defaultFavicon = './dist/storybook/favicon.svg';
+  try {
+    await fsPromises.unlink(defaultFavicon);
+    console.log('✅ Default Storybook favicon removed');
+  } catch (error) {
+    console.log('❌ Default Storybook favicon removal failed.');
+    console.error(error);
+    process.exit(1);
+  }
+}
+
 async function optimizeStorybook() {
   await enhanceCustomElementManifest();
   await replaceTextInFiles(searchDir);
   await updateIndexHtml();
+  await removeDefaultFavicon();
 
   process.exit(0);
 }
