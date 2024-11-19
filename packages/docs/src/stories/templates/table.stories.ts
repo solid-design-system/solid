@@ -6,6 +6,10 @@ import { ifDefined } from 'lit/directives/if-defined.js';
  * These examples demonstrate the usage of sd-table-cell in various contexts.
  * The examples are intended solely for illustrating how sd-table-cell can be used to style tables.
  * The data generation and table sorting logic should not be used in production environments.
+ *
+ * **Accessibility Hint:** Whenever the table doesn't contain interactive elements,
+ * wrap the table inside a scrollable region using `role="region"`, `tabindex="0"` and `aria-label`,
+ * to ensure it becomes accessible to keyboard only users.
  */
 export default {
   tags: ['!dev'],
@@ -20,7 +24,12 @@ export default {
  */
 export const simpleTables = {
   render: () => html`
-    <table class="sd-table sample-table w-full">
+    <table
+      class="sd-table sample-table w-full focus-visible:focus-outline"
+      role="region"
+      tabindex="0"
+      aria-label="Simple table"
+    >
       <thead>
         <tr>
           <th class="sd-table-cell sd-table-cell--bg-white">Header</th>
@@ -92,7 +101,12 @@ export const simpleTables = {
 export const simpleTableVerticalDividers = {
   name: 'Simple Table with Vertical Dividers',
   render: () => html`
-    <table class="sd-table sample-table w-full">
+    <table
+      class="sd-table sample-table w-full focus-visible:focus-outline"
+      role="region"
+      tabindex="0"
+      aria-label="Simple Table with Vertical Dividers"
+    >
       <thead>
         <tr>
           <th class="sd-table-cell sd-table-cell--bg-white sd-table-cell--divider">Header</th>
@@ -164,7 +178,12 @@ export const simpleTableVerticalDividers = {
 export const simpleTableAlternatingColors = {
   name: 'Simple Table with Alternating Colors',
   render: () => html`
-    <table class="sd-table sample-table w-full">
+    <table
+      class="sd-table sample-table w-full focus-visible:focus-outline"
+      role="region"
+      tabindex="0"
+      aria-label="Simple Table with Alternating Colors"
+    >
       <thead>
         <tr>
           <th class="sd-table-cell sd-table-cell--bg-primary-100">Header</th>
@@ -454,7 +473,13 @@ export const advancedTables = {
           });
         });
       </script>
-      <table id="vertical-scrollable-table" class="sd-table sample-table h-[200px] overflow-y-scroll block">
+      <table
+        id="vertical-scrollable-table"
+        class="sd-table sample-table h-[200px] overflow-y-scroll block focus-visible:focus-outline"
+        role="region"
+        tabindex="0"
+        aria-label="Table with Fixed Top Header Row and Shadow"
+      >
         <thead>
           <tr>
             <th class="sd-table-cell sd-table-cell--bg-white sticky top-0 sd-table-cell--shadow-bottom">Header</th>
@@ -519,7 +544,13 @@ export const TableFixedBottom = {
           });
         });
       </script>
-      <table id="vertical-scrollable-table-2" class="sd-table sample-table h-[200px] block overflow-y-scroll">
+      <table
+        id="vertical-scrollable-table-2"
+        class="sd-table sample-table h-[200px] block overflow-y-scroll focus-visible:focus-outline"
+        role="region"
+        tabindex="0"
+        aria-label="Table with Fixed Bottom Header Row and Shadow"
+      >
         <thead class="sr-only">
           <tr>
             <th>Header</th>
@@ -627,7 +658,13 @@ export const TableFixedLeft = {
           });
         });
       </script>
-      <div id="horizontal-scrollable-table-2" class="overflow-x-scroll overflow-y-visible w-[600px]">
+      <div
+        id="horizontal-scrollable-table-2"
+        class="overflow-x-scroll overflow-y-visible w-[600px] focus-visible:focus-outline"
+        role="region"
+        tabindex="0"
+        aria-label="Table with Fixed Left Header Column and Shadow"
+      >
         <table class="sd-table sample-table">
           <thead class="sr-only">
             <tr>
@@ -768,7 +805,13 @@ export const TableFixedRight = {
             });
           });
         </script>
-        <div id="horizontal-scrollable-table-2" class="overflow-x-scroll overflow-y-visible w-[600px]">
+        <div
+          id="horizontal-scrollable-table-2"
+          class="overflow-x-scroll overflow-y-visible w-[600px] focus-visible:focus-outline"
+          role="region"
+          tabindex="0"
+          aria-label="Table with Fixed Right Header Column and Shadow"
+        >
           <table class="sd-table sample-table">
             <thead class="sr-only">
               <th>Header</th>
