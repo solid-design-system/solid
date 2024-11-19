@@ -77,20 +77,20 @@ export const Variant = {
   render: () => html`
     <div class="flex gap-12">
       <div>
+        <div>
+          <sd-carousel variant="number">
+            <sd-carousel-item>
+              <div class="slot slot--border slot--text h-16">Default slot 1</div>
+            </sd-carousel-item>
+            <sd-carousel-item>
+              <div class="slot slot--border slot--text h-16">Default slot 2</div>
+            </sd-carousel-item>
+            <sd-carousel-item>
+              <div class="slot slot--border slot--text h-16">Default slot 3</div>
+            </sd-carousel-item>
+          </sd-carousel>
+        </div>
         <sd-carousel variant="dot">
-          <sd-carousel-item>
-            <div class="slot slot--border slot--text h-16">Default slot 1</div>
-          </sd-carousel-item>
-          <sd-carousel-item>
-            <div class="slot slot--border slot--text h-16">Default slot 2</div>
-          </sd-carousel-item>
-          <sd-carousel-item>
-            <div class="slot slot--border slot--text h-16">Default slot 3</div>
-          </sd-carousel-item>
-        </sd-carousel>
-      </div>
-      <div>
-        <sd-carousel variant="number">
           <sd-carousel-item>
             <div class="slot slot--border slot--text h-16">Default slot 1</div>
           </sd-carousel-item>
@@ -223,7 +223,7 @@ export const SlidesPerMove = {
   name: 'Slides per Move',
   render: () => html`
     <div>
-      <sd-carousel slides-per-page="2" slides-per-move="2">
+      <sd-carousel slides-per-page="3" slides-per-move="3">
         <sd-carousel-item>
           <div class="slot slot--border slot--text h-16">Default slot 1</div>
         </sd-carousel-item>
@@ -241,6 +241,24 @@ export const SlidesPerMove = {
         </sd-carousel-item>
         <sd-carousel-item>
           <div class="slot slot--border slot--text h-16">Default slot 6</div>
+        </sd-carousel-item>
+        <sd-carousel-item>
+          <div class="slot slot--border slot--text h-16">Default slot 7</div>
+        </sd-carousel-item>
+        <sd-carousel-item>
+          <div class="slot slot--border slot--text h-16">Default slot 8</div>
+        </sd-carousel-item>
+        <sd-carousel-item>
+          <div class="slot slot--border slot--text h-16">Default slot 9</div>
+        </sd-carousel-item>
+        <sd-carousel-item>
+          <div class="slot slot--border slot--text h-16">Default slot 10</div>
+        </sd-carousel-item>
+        <sd-carousel-item>
+          <div class="slot slot--border slot--text h-16">Default slot 11</div>
+        </sd-carousel-item>
+        <sd-carousel-item>
+          <div class="slot slot--border slot--text h-16">Default slot 12</div>
         </sd-carousel-item>
       </sd-carousel>
     </div>
