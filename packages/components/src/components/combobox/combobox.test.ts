@@ -559,8 +559,6 @@ describe('<sd-combobox>', () => {
       el.focus();
       await el.updateComplete;
       await sendKeys({ press: 'Backspace' });
-      await el.updateComplete;
-      await sendKeys({ press: 'Backspace' });
 
       expect(el.value).to.deep.equal(['option-1']);
     });
