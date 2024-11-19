@@ -47,7 +47,7 @@ describe('<sd-combobox>', () => {
     expect(el.value).to.equal('');
     expect(el.defaultValue).to.equal('');
     expect(el.size).to.equal('lg');
-    expect(el.placeholder).to.equal('Please search and select');
+    expect(el.placeholder).to.equal('Please search');
     expect(el.disabled).to.be.false;
     expect(el.clearable).to.be.false;
     expect(el.open).to.be.false;
@@ -545,6 +545,24 @@ describe('<sd-combobox>', () => {
 
       expect(displayInput.getAttribute('aria-expanded')).to.equal('true');
       expect(el.value).to.deep.equal(['option']);
+    });
+
+    it('should delete the last option when Backspace key is pressed with sd-combobox is on focus', async () => {
+      const el = await fixture<SdCombobox>(html`
+        <sd-combobox value="option-1 option-2" multiple useTags>
+          <sd-option value="option-1">Option 1</sd-option>
+          <sd-option value="option-2">Option 2</sd-option>
+          <sd-option value="option-3">Option 3</sd-option>
+        </sd-combobox>
+      `);
+
+      el.focus();
+      await el.updateComplete;
+      await sendKeys({ press: 'Backspace' });
+      await el.updateComplete;
+      await sendKeys({ press: 'Backspace' });
+
+      expect(el.value).to.deep.equal(['option-1']);
     });
   });
   describe('when multiple is set', () => {

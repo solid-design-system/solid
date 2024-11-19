@@ -656,7 +656,8 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     }
 
     const currentOption = this.getCurrentOption();
-    const currentIndex = currentOption ? filteredOptions.indexOf(currentOption) : 0;
+
+    const currentIndex = filteredOptions.indexOf(currentOption!);
     let newIndex = Math.max(0, currentIndex);
 
     if (isNext) {
