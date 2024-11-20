@@ -23,6 +23,7 @@ export default {
  * ```
  */
 export const UnclickableTeaserWithButton = {
+  name: 'Unclickable Teaser with Button',
   render: () => {
     return html`
       <sd-teaser

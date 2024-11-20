@@ -24,6 +24,7 @@ export default {
 };
 
 export const TeaserMediaWithLink = {
+  name: 'Teaser Media with Link',
   render: () =>
     html` <div class="flex flex-col gap-12">
       <sd-teaser-media variant="gradient-dark">
