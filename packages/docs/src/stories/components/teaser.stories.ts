@@ -22,9 +22,14 @@ export default {
   component: 'sd-teaser',
   args: overrideArgs([
     {
+      type: 'attribute',
+      name: 'breakpoint',
+      value: `9999`
+    },
+    {
       type: 'slot',
       name: 'default',
-      value: `<div class="slot slot--border slot--text h-12">Main slot</div>`
+      value: `<div class="slot slot--border slot--text h-12 mx-4">Main slot</div>`
     },
     {
       type: 'slot',
@@ -34,7 +39,7 @@ export default {
     {
       type: 'slot',
       name: 'meta',
-      value: `<div slot="meta" class="slot slot--border slot--text h-12">Meta slot</div>`
+      value: `<div slot="meta" class="slot slot--border slot--text h-12 mx-4">Meta slot</div>`
     }
   ]),
   argTypes,
@@ -44,7 +49,22 @@ export default {
       type: 'figma',
       url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2019-5109&node-type=section&t=5PpAC3TA3kYF7ufX-0'
     }
-  }
+  },
+  decorators: [
+    (story: () => typeof html) => html`
+      <style>
+        sd-teaser#default-teaser::part(headline) {
+          margin: 0 16px;
+        }
+      </style>
+      <!-- Dev note: this script is used only to specifically target the default story teaser -->
+      <script type="module">
+        const teasers = document.querySelectorAll('sd-teaser');
+        teasers[0].setAttribute('id', 'default-teaser');
+      </script>
+      ${story()}
+    `
+  ]
 };
 
 export const Default = {
