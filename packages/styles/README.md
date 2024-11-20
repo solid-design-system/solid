@@ -71,6 +71,8 @@ import '@solid-design-system/styles/typography.css';
 
 ## 3. Available modules
 
+> Note: Besides some own styles `prose` includes `figure/media.css`. `typography/display.css`, `typography/headline.css`, `typography/interactive.css`, `typography/leadtext.css`, `typography/list.css`, `typography/paragraph.css`. Ensure to include other modules only if you need them and to not include them twice.
+
 <!-- BEGIN INLINE COMMENT -->
 
 - figure.css
