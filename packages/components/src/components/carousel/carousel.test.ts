@@ -802,5 +802,27 @@ describe('<sd-carousel>', () => {
       // Assert
       expect(el.goToSlide).to.have.been.calledWith(slidesPerMove);
     });
+
+    it('should unblock autoplay when a dot is clicked', async () => {
+      // Arrange
+      const el = await fixture<SdCarousel>(html`
+        <sd-carousel autoplay variant="dot">
+          <sd-carousel-item>Node 1</sd-carousel-item>
+          <sd-carousel-item>Node 2</sd-carousel-item>
+          <sd-carousel-item>Node 3</sd-carousel-item>
+        </sd-carousel>
+      `);
+      sinon.stub(el, 'next');
+
+      await el.updateComplete;
+
+      // Act
+      const secondDot = el.shadowRoot!.querySelectorAll('.carousel__pagination-item')[1] as HTMLElement;
+      secondDot.click();
+      await el.updateComplete;
+
+      // Assert
+      expect(secondDot).to.not.have.focus;
+    });
   });
 });

@@ -6,7 +6,7 @@ import { customElement } from '../../../src/internal/register-custom-element';
 import { LocalizeController } from '../../utilities/localize.js';
 import { map } from 'lit/directives/map.js';
 import { prefersReducedMotion } from '../../internal/animate.js';
-import { property, query, state } from 'lit/decorators.js';
+import { property, query, queryAll, state } from 'lit/decorators.js';
 import { range } from 'lit/directives/range.js';
 import { ScrollController } from './scroll-controller.js';
 import { watch } from '../../internal/watch.js';
@@ -55,6 +55,7 @@ export default class SdCarousel extends SolidElement {
   @query('[part~="autoplay-controls"]') autoplayControls: HTMLElement;
   @query('[part~="navigation-button--previous"]') previousButton: HTMLButtonElement;
   @query('[part~="navigation-button--next"]') nextButton: HTMLButtonElement;
+  @queryAll('[part~="pagination-item"]') paginationItems: HTMLButtonElement[];
 
   /** Determines the counting system for the carousel. */
   @property({ type: String, reflect: true }) variant: 'dot' | 'number' = 'number';
@@ -250,6 +251,13 @@ export default class SdCarousel extends SolidElement {
       this.initializeSlides();
     }
     this.requestUpdate();
+  };
+
+  private unblockAutoplay = (e: MouseEvent, button: HTMLButtonElement) => {
+    // When the button is clicked with a mouse, blur the button to resume autoplay.
+    if (e.detail) {
+      button.blur();
+    }
   };
 
   /**
@@ -534,9 +542,7 @@ export default class SdCarousel extends SolidElement {
               @click=${prevEnabled
                 ? (e: MouseEvent) => {
                     this.previous();
-                    if (e.detail) {
-                      this.previousButton?.blur();
-                    }
+                    this.unblockAutoplay(e, this.previousButton);
                   }
                 : null}
             >
@@ -572,7 +578,10 @@ export default class SdCarousel extends SolidElement {
                           tabindex="0"
                           aria-selected="${isActive ? 'true' : 'false'}"
                           aria-label="${this.localize.term('goToSlide', index + 1, pagesCount)}"
-                          @click=${() => this.goToSlide(index * slidesPerMove)}
+                          @click="${(e: MouseEvent) => {
+                            this.goToSlide(index * slidesPerMove);
+                            this.unblockAutoplay(e, this.paginationItems[index]);
+                          }}"
                           @keydown=${this.handleKeyDown}
                         >
                           <span
@@ -625,9 +634,7 @@ export default class SdCarousel extends SolidElement {
               @click=${nextEnabled
                 ? (e: MouseEvent) => {
                     this.next();
-                    if (e.detail) {
-                      this.nextButton.blur();
-                    }
+                    this.unblockAutoplay(e, this.nextButton);
                   }
                 : null}
             >
