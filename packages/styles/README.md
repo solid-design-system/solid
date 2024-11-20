@@ -73,9 +73,29 @@ import '@solid-design-system/styles/typography.css';
 
 <!-- BEGIN INLINE COMMENT -->
 
+- figure.css
+  - copyright.css
+  - media.css
+- info.css
+  - chip.css
+  - flag.css
+- prose.css
 - typography.css
+  - display.css
+  - footnotes.css
+  - headline.css
+  - interactive.css
+  - leadtext.css
+  - list.css
+  - mark.css
+  - meta.css
   - paragraph.css
-  - prose.css
+- utilities.css
+  - container.css
+  - hidden-links.css
+- table.css
+  - table-cell.css
+  - table.css
 
 <!-- END INLINE COMMENT -->
 

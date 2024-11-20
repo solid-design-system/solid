@@ -1,0 +1,27 @@
+/**
+ * Generates basic styles for copyright elements.
+ * @status stable
+ * @since 2.5.0
+ * @variant { vertical } sd-copyright--orientation-... The copyright's orientation.
+ */
+
+.sd-copyright {
+  @apply relative;
+
+  &::after {
+    @apply block absolute pb-2 pl-4 bottom-0 left-0 text-white text-sm w-full;
+    content: var(--copyright);
+    text-shadow: 0 1px 3px #515151bf;
+  }
+
+  &--orientation {
+    &-vertical {
+      &::after {
+        @apply pt-2 pb-0 pr-1 pl-0 w-max;
+        writing-mode: vertical-rl;
+        text-orientation: sideways-right;
+        transform: rotate(180deg);
+      }
+    }
+  }
+}

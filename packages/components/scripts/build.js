@@ -13,10 +13,8 @@ import { readFileSync } from 'fs';
 import { replace } from 'esbuild-plugin-replace';
 import { litTailwindPlugin } from './esbuild-plugin-lit-tailwind.js';
 
-const { serve } = commandLineArgs([{ name: 'serve', type: Boolean }]);
 const outdir = 'dist';
 const cdndir = 'cdn';
-const sitedir = '_site';
 const spinner = ora({ hideCursor: false }).start();
 const execPromise = util.promisify(exec);
 let childProcess;
@@ -130,7 +128,7 @@ async function nextTask(label, action) {
 }
 
 await nextTask('Cleaning up the previous build', async () => {
-  await Promise.all([deleteAsync(sitedir), ...bundleDirectories.map(dir => deleteAsync(dir))]);
+  await Promise.all([...bundleDirectories.map(dir => deleteAsync(dir))]);
   await fs.mkdir(outdir, { recursive: true });
 });
 
@@ -167,17 +165,6 @@ await nextTask(`Themes, Icons, and TS Types to "${cdndir}"`, async () => {
 await nextTask('Building source files', async () => {
   buildResults = await buildTheSource();
 });
-
-// Copy the CDN build to the docs (prod only; we use a virtual directory in dev)
-if (!serve) {
-  await nextTask(`Copying the build to "${sitedir}"`, async () => {
-    await deleteAsync(sitedir);
-
-    // We copy the CDN build because that has everything bundled. Yes this looks weird.
-    // But if we do "/cdn" it requires changes all the docs to do /cdn instead of /dist.
-    await copy(cdndir, path.join(sitedir, 'dist'));
-  });
-}
 
 let result;
 

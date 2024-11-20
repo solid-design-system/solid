@@ -1,13 +1,13 @@
 import { classMap } from 'lit/directives/class-map.js';
 import { getWcStorybookHelpers } from '@mariohamann/wc-storybook-helpers';
 import { html, unsafeStatic } from 'lit/static-html.js';
-// @ts-ignore
+// @ts-expect-error
 import { sentenceCase } from 'change-case';
 import loadCustomElements from './fetch-cem';
-// @ts-ignore
+// @ts-expect-error
 import storyBookPreviewConfig from '../../.storybook/preview.js';
+import type { Parameters, StoryObj } from '@storybook/web-components';
 import type { TemplateResult } from 'lit';
-import { Parameters, StoryObj } from '@storybook/web-components';
 
 type ArgTypesDefinition = 'attribute' | 'property' | 'slot' | 'cssPart' | 'cssProperty';
 
@@ -15,7 +15,7 @@ type ArgTypesDefinition = 'attribute' | 'property' | 'slot' | 'cssPart' | 'cssPr
  * Parameters for the generateScreenshotStory function
  * It accepts either
  */
-type screenshotStoryOptions = {
+interface screenshotStoryOptions {
   /**
    * String or lit template that should be included directly after all stories
    */
@@ -35,7 +35,7 @@ type screenshotStoryOptions = {
    * The style of the drawn container
    */
   styleHeading?: Record<string, string>;
-};
+}
 
 interface AxisDefinition {
   type: ArgTypesDefinition | 'template';
@@ -51,7 +51,7 @@ export interface ConstantDefinition {
   title?: string;
 }
 
-await loadCustomElements();
+loadCustomElements();
 
 /**
  * Returns default arguments, events, and argument types for a given custom element tag.

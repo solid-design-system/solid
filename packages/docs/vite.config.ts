@@ -5,6 +5,7 @@ import VitePluginFetchIconsFromCdn from './scripts/vite-plugin-fetch-icons-from-
 import VitePluginGetPlaywrightVersion from './scripts/vite-plugin-get-playwright-version';
 import VitePluginGetTailwindTheme from './scripts/vite-plugin-get-tailwind-theme';
 import VitePluginLitTailwind from '../components/scripts/vite-plugin-lit-tailwind';
+import vitePluginSynergyStyles from './scripts/vite-plugin-synergy-styles/index.js';
 import type { defineConfig } from 'vite';
 
 // https://vitejs.dev/config/
@@ -16,6 +17,9 @@ export default (() => {
       VitePluginLitTailwind({
         include: [/src\/components\/.*\.ts$/, /src\/utilities\/autocomplete-config.ts/],
         exclude: [/node_modules/]
+      }),
+      vitePluginSynergyStyles({
+        srcDir: '../styles/src'
       }),
       VitePluginGetPlaywrightVersion(),
       VitePluginGetTailwindTheme(),
