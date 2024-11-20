@@ -15,7 +15,11 @@ export default (() => {
       VitePluginFetchIconsFromCdn(),
       // eslint-disable-next-line @typescript-eslint/no-unsafe-call
       VitePluginLitTailwind({
-        include: [/src\/components\/.*\.ts$/, /src\/utilities\/autocomplete-config.ts/],
+        include: [
+          /src\/styles\/component.styles.ts/,
+          /src\/components\/.*\.ts$/,
+          /src\/utilities\/autocomplete-config.ts/
+        ],
         exclude: [/node_modules/]
       }),
       vitePluginSynergyStyles({

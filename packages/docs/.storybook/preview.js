@@ -1,6 +1,6 @@
 import 'normalize.css';
-import '../../components/src/solid-styles.css';
-import '../../components/src/styles/tailwind.css';
+import '../../styles/src/index.css';
+import './preview.css';
 import { registerIconLibrary } from '../../components/src/utilities/icon-library';
 import { storybookUtilities } from '../scripts/storybook/helper';
 import docsCodepenEnhancer from '../scripts/storybook/docs-codepen-enhancer';

@@ -17,7 +17,7 @@ export default css`
   @import url('../styles/src/typography/paragraph.css'); /* sd-step */
 
   /* TailwindCSS directives have to come after @imports */
-  @tailwind base;
+  /* @tailwind base; */ /* TODO */
   @tailwind components;
   @tailwind utilities;
 

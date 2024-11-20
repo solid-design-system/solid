@@ -1,4 +1,5 @@
 import { createFilter } from '@rollup/pluginutils';
+import atImportPlugin from 'postcss-import';
 import autoprefixer from 'autoprefixer';
 import postcss from 'postcss';
 import tailwindcss from 'tailwindcss';
@@ -38,7 +39,14 @@ export default function litTailwindPlugin(options: LitTailwindPluginOptions = {}
 
         // Process the CSS with PostCSS
         try {
-          const result = await postcss([tailwindcssNesting, tailwindcss, autoprefixer])
+          const result = await postcss([
+            atImportPlugin({
+              allowDuplicates: false
+            }),
+            tailwindcssNesting,
+            tailwindcss,
+            autoprefixer
+          ])
             .process(cssContent, { from: undefined })
             .then(result => result.css);
 
