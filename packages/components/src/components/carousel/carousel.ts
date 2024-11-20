@@ -1,7 +1,7 @@
 import '../icon/icon.js';
 import { AutoplayController } from './autoplay-controller.js';
 import { clamp } from '../../internal/math.js';
-import { css, html, unsafeCSS } from 'lit';
+import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { LocalizeController } from '../../utilities/localize.js';
 import { map } from 'lit/directives/map.js';
@@ -12,8 +12,6 @@ import { ScrollController } from './scroll-controller.js';
 import { watch } from '../../internal/watch.js';
 import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
-// TODO
-// import InteractiveStyles from '../../styles/interactive/interactive.css?inline';
 import SdCarouselItem from '../carousel-item/carousel-item.js';
 import SolidElement from '../../internal/solid-element.js';
 
@@ -629,7 +627,6 @@ export default class SdCarousel extends SolidElement {
   }
 
   static styles = [
-    // unsafeCSS(InteractiveStyles),
     componentStyles,
     css`
       :host {

@@ -5,7 +5,6 @@ import { LocalizeController } from '../../utilities/localize';
 import { property, query, state } from 'lit/decorators.js';
 import { Wave } from './wave';
 import cx from 'classix';
-import InteractiveStyles from '../../styles/interactive/interactive.css?inline';
 import SolidElement from '../../internal/solid-element';
 import type SdDrawer from '../drawer/drawer';
 

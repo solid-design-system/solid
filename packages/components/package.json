@@ -121,6 +121,7 @@
     "playwright": "^1.44.1",
     "plop": "^4.0.0",
     "postcss": "^8.4.31",
+    "postcss-import": "^16.1.0",
     "prettier": "^3.3.2",
     "recursive-copy": "^2.0.14",
     "rollup-plugin-copy": "^3.5.0",

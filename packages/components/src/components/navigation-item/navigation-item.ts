@@ -1,4 +1,4 @@
-import { css, unsafeCSS } from 'lit';
+import { css } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { HasSlotController } from '../../internal/slot';
 import { html, literal } from 'lit/static-html.js';
@@ -6,8 +6,6 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { property } from 'lit/decorators.js';
 import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
-// TODO
-// import InteractiveStyles from '../../styles/interactive/interactive.css?inline';
 import SolidElement from '../../internal/solid-element';
 
 /**
@@ -295,7 +293,6 @@ export default class SdNavigationItem extends SolidElement {
    */
   static styles = [
     componentStyles,
-    // unsafeCSS(InteractiveStyles),
     css`
       :host {
         @apply inline-block relative box-border;

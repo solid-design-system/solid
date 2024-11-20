@@ -1,4 +1,4 @@
-import { css, unsafeCSS } from 'lit';
+import { css } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { html, literal } from 'lit/static-html.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
@@ -6,8 +6,6 @@ import { property } from 'lit/decorators.js';
 import { watch } from '../../internal/watch';
 import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
-// TODO
-// import ParagraphStyles from '../../styles/paragraph/paragraph.css?inline';
 import SolidElement from '../../internal/solid-element';
 /**
  * @summary Steps are used inside [step groups](/components/step-group) to guide users through the steps of a process or task..

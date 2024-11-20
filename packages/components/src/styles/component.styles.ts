@@ -11,6 +11,12 @@ import { css } from 'lit';
  */
 
 export default css`
+  /* Import CSS styles once to make them available in every component */
+  @import url('../styles/src/typography/interactive.css'); /* several components */
+  @import url('../styles/src/typography/headline.css'); /* sd-dialog */
+  @import url('../styles/src/typography/paragraph.css'); /* sd-step */
+
+  /* TailwindCSS directives have to come after @imports */
   @tailwind base;
   @tailwind components;
   @tailwind utilities;

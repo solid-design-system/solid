@@ -1,16 +1,14 @@
 import '../popup/popup';
 import { animateTo, parseDuration, stopAnimations } from '../../internal/animate';
-import { css, html, unsafeCSS } from 'lit';
+import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry';
 import { LocalizeController } from '../../utilities/localize';
 import { property, query } from 'lit/decorators.js';
 import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch';
-import cx from 'classix';
-// TODO
-// import InteractiveStyles from '../../styles/interactive/interactive.css?inline';
 import componentStyles from 'src/styles/component.styles';
+import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 import type SdPopup from '../popup/popup';
 
@@ -300,7 +298,6 @@ export default class SdTooltip extends SolidElement {
   }
   static styles = [
     componentStyles,
-    // unsafeCSS(InteractiveStyles),
     css`
       :host {
         --hide-delay: 0ms;

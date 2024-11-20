@@ -168,10 +168,10 @@ await nextTask('Building source files', async () => {
 
 let result;
 
-// Log deferred output
-if (result.output.length > 0) {
-  console.log('\n' + result.output.join('\n'));
-}
+// // Log deferred output
+// if (result.output.length > 0) {
+//   console.log('\n' + result.output.join('\n'));
+// }
 
 // Cleanup on exit
 process.on('SIGINT', handleCleanup);

@@ -1,3 +1,4 @@
+import atImportPlugin from 'postcss-import';
 import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
 import fs from 'fs/promises';
@@ -37,7 +38,15 @@ export function litTailwindPlugin(options = {}) {
 
           // Process the CSS with PostCSS
           try {
-            const result = await postcss([tailwindcssNesting, tailwindcss, autoprefixer, cssnano]).process(cssContent, {
+            const result = await postcss([
+              atImportPlugin({
+                allowDuplicates: false
+              }),
+              tailwindcssNesting,
+              tailwindcss,
+              autoprefixer,
+              cssnano
+            ]).process(cssContent, {
               from: undefined
             });
 

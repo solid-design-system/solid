@@ -1,21 +1,2 @@
-@import './styles/display/display.css';
-@import './styles/meta/meta.css';
-@import './styles/leadtext/leadtext.css';
-@import './styles/paragraph/paragraph.css';
-@import './styles/mark/mark.css';
-@import './styles/interactive/interactive.css';
-@import './styles/table-cell/table-cell.css';
-@import './styles/table/table.css';
-@import './styles/headline/headline.css';
-@import './styles/container/container.css';
-@import './styles/chip/chip.css';
-@import './styles/flag/flag.css';
-@import './styles/list/list.css';
-@import './styles/copyright/copyright.css';
-@import './styles/media/media.css';
-@import './styles/footnotes/footnotes.css';
-@import './styles/prose/prose.css';
-@import './styles/hidden-links/hidden-links.css';
-
 /* Utility classes that can't be contained in a component and must be applied to the light DOM */
 @import './styles/_utility.css';

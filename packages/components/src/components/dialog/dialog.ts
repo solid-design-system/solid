@@ -1,7 +1,7 @@
 import '../button/button';
 import '../icon/icon';
 import { animateTo, stopAnimations } from '../../internal/animate';
-import { css, html, unsafeCSS } from 'lit';
+import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry';
 import { HasSlotController } from '../../internal/slot';
@@ -12,8 +12,6 @@ import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch';
 import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
-// TODO
-// import HeadlineStyles from '../../styles/headline/headline.css?inline';
 import Modal from '../../internal/modal';
 import SolidElement from '../../internal/solid-element';
 

@@ -1,4 +1,4 @@
-import { css, html, unsafeCSS } from 'lit';
+import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { LocalizeController } from '../../utilities/localize.js';
 import { property, query } from 'lit/decorators.js';
@@ -6,8 +6,6 @@ import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch.js';
 import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
-// TODO
-// import InteractiveStyles from '../../styles/interactive/interactive.css?inline';
 import SolidElement from '../../internal/solid-element';
 
 /**
@@ -157,7 +155,6 @@ export default class SdExpandable extends SolidElement {
   }
 
   static styles = [
-    // unsafeCSS(InteractiveStyles),
     componentStyles,
     css`
       :host {
