@@ -63,7 +63,7 @@ export const VideoElementWithPosterSlot = {
       </video>
       <img
         slot="poster"
-        alt="Video highlighting Union Investment's digital transformation through a design system named SOLID that enhances accessibility, sustainability, and efficiency."
+        alt="Video highlighting Union Investment's digital transformation through a design system named Solid that enhances accessibility, sustainability, and efficiency."
         class="w-[854px] aspect-video cover"
         src="./placeholders/images/union-investment.png"
       />
@@ -78,7 +78,11 @@ export const VideoElementWithPosterSlot = {
 export const Playing = {
   render: () => html`
     <sd-video playing>
-      <img alt="Generic Alt" class="w-[854px] aspect-video cover" src="./placeholders/images/union-investment.png" />
+      <img
+        alt="Video highlighting Union Investment's digital transformation through a design system named Solid that enhances accessibility, sustainability, and efficiency."
+        class="w-[854px] aspect-video cover"
+        src="./placeholders/images/union-investment.png"
+      />
     </sd-video>
   `
 };
@@ -90,7 +94,11 @@ export const Playing = {
 export const Overlay = {
   render: () => html`
     <sd-video overlay>
-      <img alt="Generic Alt" class="w-[854px] aspect-video cover" src="./placeholders/images/union-investment.png" />
+      <img
+        alt="Video highlighting Union Investment's digital transformation through a design system named Solid that enhances accessibility, sustainability, and efficiency."
+        class="w-[854px] aspect-video cover"
+        src="./placeholders/images/union-investment.png"
+      />
     </sd-video>
   `
 };

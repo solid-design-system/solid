@@ -25,7 +25,7 @@ const posterConstant: ConstantDefinition = {
   type: 'slot',
   name: 'poster',
   value:
-    '<img slot="poster" alt="Video highlighting Union Investment\'s digital transformation through a design system named SOLID that enhances accessibility, sustainability, and efficiency." class="w-[854px] aspect-video cover" src="./placeholders/images/union-investment.png" />'
+    '<img slot="poster" alt="Video highlighting Union Investment\'s digital transformation through a design system named Solid that enhances accessibility, sustainability, and efficiency." class="w-[854px] aspect-video cover" src="./placeholders/images/union-investment.png" />'
 };
 const iconConstant: ConstantDefinition = {
   type: 'slot',

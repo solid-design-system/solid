@@ -30,7 +30,7 @@ export const VideoWithDescription = {
       </video>
       <img
         slot="poster"
-        alt="Video highlighting Union Investment's digital transformation through a design system named SOLID that enhances accessibility, sustainability, and efficiency."
+        alt="Video highlighting Union Investment's digital transformation through a design system named Solid that enhances accessibility, sustainability, and efficiency."
         class="aspect-video cover"
         src="./placeholders/images/union-investment.png"
       />
@@ -65,7 +65,7 @@ export const VideoWithCopyright = {
         </video>
         <img
           slot="poster"
-          alt="Video highlighting Union Investment's digital transformation through a design system named SOLID that enhances accessibility, sustainability, and efficiency."
+          alt="Video highlighting Union Investment's digital transformation through a design system named Solid that enhances accessibility, sustainability, and efficiency."
           class="aspect-video cover"
           src="./placeholders/images/union-investment.png"
         />
