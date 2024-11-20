@@ -1,3 +1,4 @@
+import cx from 'classix';
 import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 import { ifDefined } from 'lit/directives/if-defined.js';
@@ -32,66 +33,161 @@ export const simpleTables = {
     >
       <thead>
         <tr>
-          <th class="sd-table-cell sd-table-cell--bg-white">Header</th>
-          <th class="sd-table-cell sd-table-cell--bg-white">Header</th>
-          <th class="sd-table-cell sd-table-cell--bg-white">Header</th>
-          <th class="sd-table-cell sd-table-cell--bg-white">Header</th>
+          <th class="sd-table-cell sd-table-cell--bg-white">Job title</th>
+          <th class="sd-table-cell sd-table-cell--bg-white">Location</th>
+          <th class="sd-table-cell sd-table-cell--bg-white">Job category</th>
+          <th class="sd-table-cell sd-table-cell--bg-white">Employment type</th>
+          <th class="sd-table-cell sd-table-cell--bg-white">Actions</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
+            <sd-link href="#">Duales Studium mit Ausbildung Investmentfondskauffrau/-mann (m/w/d)</sd-link>
+          </td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Apprenticeship</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Duales Studium / Ausbildung</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">
+            <div class="flex gap-2 text-lg">
+              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            </div>
+          </td>
         </tr>
         <tr>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
+            <sd-link href="#">Duales Studium Wirtschaftsinformatik (m/w/d), Start 01.09.2025</sd-link>
+          </td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">IT</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Duales Studium / Ausbildung</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">
+            <div class="flex gap-2 text-lg">
+              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            </div>
+          </td>
         </tr>
         <tr>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
+            <sd-link href="#">Portfoliomanager*in Multi Asset Solutions (in Voll- oder Teilzeit)</sd-link>
+          </td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Portfolio Management</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">
+            <div class="flex gap-2 text-lg">
+              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            </div>
+          </td>
         </tr>
         <tr>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
+            <sd-link href="#"
+              >(Junior-) Mitarbeiter*in für unser gesetzliches Meldewesen im Bereich Fondsadministration</sd-link
+            >
+          </td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Fund Administration</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">
+            <div class="flex gap-2 text-lg">
+              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            </div>
+          </td>
         </tr>
         <tr>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
+            <sd-link href="#"
+              >Kaufleute (m/w/d) Kundenservice mit Schwerpunkt Partnerbanken und Privatkunden (in Voll- oder
+              Teilzeit)</sd-link
+            >
+          </td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Customer Service</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">
+            <div class="flex gap-2 text-lg">
+              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            </div>
+          </td>
         </tr>
         <tr>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
+            <sd-link href="#">Datenschutzreferent*in/ Auditor*in (in Voll- oder Teilzeit)</sd-link>
+          </td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Hamburg</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Compliance</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">
+            <div class="flex gap-2 text-lg">
+              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            </div>
+          </td>
         </tr>
         <tr>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
+            <sd-link href="#">(Junior) Business Analyst*in Risikomanagement (in Voll- oder Teilzeit)</sd-link>
+          </td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Private Clients</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">
+            <div class="flex gap-2 text-lg">
+              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            </div>
+          </td>
         </tr>
         <tr>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
+            <sd-link href="#"
+              >Leitung des KI Competence Centers als Gruppenleiter*in IT Data Analytics (in Voll- oder
+              Teilzeit)</sd-link
+            >
+          </td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">IT</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">
+            <div class="flex gap-2 text-lg">
+              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            </div>
+          </td>
         </tr>
         <tr>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
+            <sd-link href="#">Trainee (m/w/d) Produktmanagement & Vertrieb PLUS</sd-link>
+          </td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Private Clients</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">
+            <div class="flex gap-2 text-lg">
+              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
+            <sd-link href="#">Trainee (m/w/d) Digitalisierung PLUS</sd-link>
+          </td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Other</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">
+            <div class="flex gap-2 text-lg">
+              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            </div>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -109,66 +205,165 @@ export const simpleTableVerticalDividers = {
     >
       <thead>
         <tr>
-          <th class="sd-table-cell sd-table-cell--bg-white sd-table-cell--divider">Header</th>
-          <th class="sd-table-cell sd-table-cell--bg-white sd-table-cell--divider">Header</th>
-          <th class="sd-table-cell sd-table-cell--bg-white sd-table-cell--divider">Header</th>
-          <th class="sd-table-cell sd-table-cell--bg-white">Header</th>
+          <th class="sd-table-cell sd-table-cell--bg-white sd-table-cell--divider">Job title</th>
+          <th class="sd-table-cell sd-table-cell--bg-white sd-table-cell--divider">Location</th>
+          <th class="sd-table-cell sd-table-cell--bg-white sd-table-cell--divider">Job category</th>
+          <th class="sd-table-cell sd-table-cell--bg-white sd-table-cell--divider">Employment type</th>
+          <th class="sd-table-cell sd-table-cell--bg-white">Actions</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider w-1/3">
+            <sd-link href="#">Duales Studium mit Ausbildung Investmentfondskauffrau/-mann (m/w/d)</sd-link>
+          </td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Frankfurt am Main</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Apprenticeship</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">
+            Duales Studium / Ausbildung
+          </td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">
+            <div class="flex gap-2 text-lg">
+              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            </div>
+          </td>
         </tr>
         <tr>
-          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider w-1/3">
+            <sd-link href="#">Duales Studium Wirtschaftsinformatik (m/w/d), Start 01.09.2025</sd-link>
+          </td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Frankfurt am Main</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">IT</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">
+            Duales Studium / Ausbildung
+          </td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">
+            <div class="flex gap-2 text-lg">
+              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            </div>
+          </td>
         </tr>
         <tr>
-          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider w-1/3">
+            <sd-link href="#">Portfoliomanager*in Multi Asset Solutions (in Voll- oder Teilzeit)</sd-link>
+          </td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Frankfurt am Main</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Portfolio Management</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Fulltime<br />Parttime</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">
+            <div class="flex gap-2 text-lg">
+              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            </div>
+          </td>
         </tr>
         <tr>
-          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider w-1/3">
+            <sd-link href="#"
+              >(Junior-) Mitarbeiter*in für unser gesetzliches Meldewesen im Bereich Fondsadministration</sd-link
+            >
+          </td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Frankfurt am Main</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Fund Administration</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Fulltime<br />Parttime</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">
+            <div class="flex gap-2 text-lg">
+              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            </div>
+          </td>
         </tr>
         <tr>
-          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider w-1/3">
+            <sd-link href="#"
+              >Kaufleute (m/w/d) Kundenservice mit Schwerpunkt Partnerbanken und Privatkunden (in Voll- oder
+              Teilzeit)</sd-link
+            >
+          </td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Frankfurt am Main</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Customer Service</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Fulltime<br />Parttime</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">
+            <div class="flex gap-2 text-lg">
+              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            </div>
+          </td>
         </tr>
         <tr>
-          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider w-1/3">
+            <sd-link href="#">Datenschutzreferent*in/ Auditor*in (in Voll- oder Teilzeit)</sd-link>
+          </td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Hamburg</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Compliance</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Fulltime<br />Parttime</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">
+            <div class="flex gap-2 text-lg">
+              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            </div>
+          </td>
         </tr>
         <tr>
-          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider w-1/3">
+            <sd-link href="#">(Junior) Business Analyst*in Risikomanagement (in Voll- oder Teilzeit)</sd-link>
+          </td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Frankfurt am Main</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Private Clients</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Fulltime<br />Parttime</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">
+            <div class="flex gap-2 text-lg">
+              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            </div>
+          </td>
         </tr>
         <tr>
-          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider w-1/3">
+            <sd-link href="#"
+              >Leitung des KI Competence Centers als Gruppenleiter*in IT Data Analytics (in Voll- oder
+              Teilzeit)</sd-link
+            >
+          </td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Frankfurt am Main</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">IT</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Fulltime<br />Parttime</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">
+            <div class="flex gap-2 text-lg">
+              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            </div>
+          </td>
         </tr>
         <tr>
-          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider w-1/3">
+            <sd-link href="#">Trainee (m/w/d) Produktmanagement & Vertrieb PLUS</sd-link>
+          </td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Frankfurt am Main</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Private Clients</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Fulltime</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">
+            <div class="flex gap-2 text-lg">
+              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider w-1/3">
+            <sd-link href="#">Trainee (m/w/d) Digitalisierung PLUS</sd-link>
+          </td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Frankfurt am Main</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Other</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Fulltime</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">
+            <div class="flex gap-2 text-lg">
+              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            </div>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -186,66 +381,161 @@ export const simpleTableAlternatingColors = {
     >
       <thead>
         <tr>
-          <th class="sd-table-cell sd-table-cell--bg-primary-100">Header</th>
-          <th class="sd-table-cell sd-table-cell--bg-primary-100">Header</th>
-          <th class="sd-table-cell sd-table-cell--bg-primary-100">Header</th>
-          <th class="sd-table-cell sd-table-cell--bg-primary-100">Header</th>
+          <th class="sd-table-cell sd-table-cell--bg-primary-100">Job title</th>
+          <th class="sd-table-cell sd-table-cell--bg-primary-100">Location</th>
+          <th class="sd-table-cell sd-table-cell--bg-primary-100">Job category</th>
+          <th class="sd-table-cell sd-table-cell--bg-primary-100">Employment type</th>
+          <th class="sd-table-cell sd-table-cell--bg-primary-100">Actions</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td class="sd-table-cell sd-table-cell--bg-white">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-white">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-white">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-white">Cell content</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
+            <sd-link href="#">Duales Studium mit Ausbildung Investmentfondskauffrau/-mann (m/w/d)</sd-link>
+          </td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Apprenticeship</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Duales Studium / Ausbildung</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">
+            <div class="flex gap-2 text-lg">
+              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            </div>
+          </td>
         </tr>
         <tr>
-          <td class="sd-table-cell sd-table-cell--bg-primary-100">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-primary-100">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-primary-100">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-primary-100">Cell content</td>
+          <td class="sd-table-cell sd-table-cell--bg-primary-100 w-1/3">
+            <sd-link href="#">Duales Studium Wirtschaftsinformatik (m/w/d), Start 01.09.2025</sd-link>
+          </td>
+          <td class="sd-table-cell sd-table-cell--bg-primary-100">Frankfurt am Main</td>
+          <td class="sd-table-cell sd-table-cell--bg-primary-100">IT</td>
+          <td class="sd-table-cell sd-table-cell--bg-primary-100">Duales Studium / Ausbildung</td>
+          <td class="sd-table-cell sd-table-cell--bg-primary-100">
+            <div class="flex gap-2 text-lg">
+              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            </div>
+          </td>
         </tr>
         <tr>
-          <td class="sd-table-cell sd-table-cell--bg-white">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-white">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-white">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-white">Cell content</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
+            <sd-link href="#">Portfoliomanager*in Multi Asset Solutions (in Voll- oder Teilzeit)</sd-link>
+          </td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Portfolio Management</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">
+            <div class="flex gap-2 text-lg">
+              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            </div>
+          </td>
         </tr>
         <tr>
-          <td class="sd-table-cell sd-table-cell--bg-primary-100">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-primary-100">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-primary-100">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-primary-100">Cell content</td>
+          <td class="sd-table-cell sd-table-cell--bg-primary-100 w-1/3">
+            <sd-link href="#"
+              >(Junior-) Mitarbeiter*in für unser gesetzliches Meldewesen im Bereich Fondsadministration</sd-link
+            >
+          </td>
+          <td class="sd-table-cell sd-table-cell--bg-primary-100">Frankfurt am Main</td>
+          <td class="sd-table-cell sd-table-cell--bg-primary-100">Fund Administration</td>
+          <td class="sd-table-cell sd-table-cell--bg-primary-100">Fulltime<br />Parttime</td>
+          <td class="sd-table-cell sd-table-cell--bg-primary-100">
+            <div class="flex gap-2 text-lg">
+              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            </div>
+          </td>
         </tr>
         <tr>
-          <td class="sd-table-cell sd-table-cell--bg-white">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-white">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-white">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-white">Cell content</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
+            <sd-link href="#"
+              >Kaufleute (m/w/d) Kundenservice mit Schwerpunkt Partnerbanken und Privatkunden (in Voll- oder
+              Teilzeit)</sd-link
+            >
+          </td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Customer Service</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">
+            <div class="flex gap-2 text-lg">
+              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            </div>
+          </td>
         </tr>
         <tr>
-          <td class="sd-table-cell sd-table-cell--bg-primary-100">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-primary-100">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-primary-100">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-primary-100">Cell content</td>
+          <td class="sd-table-cell sd-table-cell--bg-primary-100 w-1/3">
+            <sd-link href="#">Datenschutzreferent*in/ Auditor*in (in Voll- oder Teilzeit)</sd-link>
+          </td>
+          <td class="sd-table-cell sd-table-cell--bg-primary-100">Hamburg</td>
+          <td class="sd-table-cell sd-table-cell--bg-primary-100">Compliance</td>
+          <td class="sd-table-cell sd-table-cell--bg-primary-100">Fulltime<br />Parttime</td>
+          <td class="sd-table-cell sd-table-cell--bg-primary-100">
+            <div class="flex gap-2 text-lg">
+              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            </div>
+          </td>
         </tr>
         <tr>
-          <td class="sd-table-cell sd-table-cell--bg-white">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-white">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-white">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-white">Cell content</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
+            <sd-link href="#">(Junior) Business Analyst*in Risikomanagement (in Voll- oder Teilzeit)</sd-link>
+          </td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Private Clients</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">
+            <div class="flex gap-2 text-lg">
+              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            </div>
+          </td>
         </tr>
         <tr>
-          <td class="sd-table-cell sd-table-cell--bg-primary-100">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-primary-100">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-primary-100">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-primary-100">Cell content</td>
+          <td class="sd-table-cell sd-table-cell--bg-primary-100 w-1/3">
+            <sd-link href="#"
+              >Leitung des KI Competence Centers als Gruppenleiter*in IT Data Analytics (in Voll- oder
+              Teilzeit)</sd-link
+            >
+          </td>
+          <td class="sd-table-cell sd-table-cell--bg-primary-100">Frankfurt am Main</td>
+          <td class="sd-table-cell sd-table-cell--bg-primary-100">IT</td>
+          <td class="sd-table-cell sd-table-cell--bg-primary-100">Fulltime<br />Parttime</td>
+          <td class="sd-table-cell sd-table-cell--bg-primary-100">
+            <div class="flex gap-2 text-lg">
+              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            </div>
+          </td>
         </tr>
         <tr>
-          <td class="sd-table-cell sd-table-cell--bg-white">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-white">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-white">Cell content</td>
-          <td class="sd-table-cell sd-table-cell--bg-white">Cell content</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
+            <sd-link href="#">Trainee (m/w/d) Produktmanagement & Vertrieb PLUS</sd-link>
+          </td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Private Clients</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">
+            <div class="flex gap-2 text-lg">
+              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="sd-table-cell sd-table-cell--bg-primary-100 w-1/3">
+            <sd-link href="#">Trainee (m/w/d) Digitalisierung PLUS</sd-link>
+          </td>
+          <td class="sd-table-cell sd-table-cell--bg-primary-100">Frankfurt am Main</td>
+          <td class="sd-table-cell sd-table-cell--bg-primary-100">Other</td>
+          <td class="sd-table-cell sd-table-cell--bg-primary-100">Fulltime</td>
+          <td class="sd-table-cell sd-table-cell--bg-primary-100">
+            <div class="flex gap-2 text-lg">
+              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            </div>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -254,15 +544,17 @@ export const simpleTableAlternatingColors = {
 
 export const sortableTable = {
   render: () => {
-    // Initalize table data
-    let numbersToSort = 7;
-    const tableRowCount = 6;
-    const tableColumnCount = 3;
-    const headerData = Array.from({ length: tableColumnCount }, () => 'Header');
-    const tableData = Array.from({ length: tableRowCount }, () =>
-      Array.from({ length: tableColumnCount }, () => {
-        return 'Cell content';
-      })
+    const tableColumnCount = 5;
+    const headerData = Array.from(
+      { length: tableColumnCount },
+      (_, index) =>
+        [
+          { label: 'Job title', sortable: true },
+          { label: 'Location', sortable: true },
+          { label: 'Job category', sortable: true },
+          { label: 'Employment type', sortable: true },
+          { label: 'Actions', sortable: false }
+        ][index]
     );
     const sortData: ('ascending' | 'descending' | 'none')[] = Array.from({ length: tableColumnCount }, (_v, i) =>
       i === 0 ? 'ascending' : 'none'
@@ -368,42 +660,184 @@ export const sortableTable = {
         <thead>
           ${(() => {
             return html`<tr>
-              ${headerData.map((cellData, columnIndex) => {
+              ${headerData.map((header, columnIndex) => {
                 return html`<th
-                  class="sd-table-cell sd-table-cell--bg-transparent sortable"
+                  class="${cx('sd-table-cell sd-table-cell--bg-transparent', header.sortable ? 'sortable' : '')}"
                   id="sortableHeader-${columnIndex}"
-                  aria-sort=${ifDefined(sortData[columnIndex] === 'none' ? undefined : 'ascending')}
+                  aria-sort=${ifDefined(sortData[columnIndex] === 'none' || !header.sortable ? undefined : 'ascending')}
                 >
-                  <span class="sr-only" id="sortableStatus-${columnIndex}"
-                    >${sortData[columnIndex] === 'none' ? '' : 'Sorting ascending'}</span
-                  >
-                  <button
-                    class="sd-interactive flex items-center gap-1"
-                    @focus="${() => handleSortButtonFocus(columnIndex)}"
-                    @blur="${() => handleSortButtonBlur(columnIndex)}"
-                    @click="${() => sortTable(columnIndex)}"
-                  >
-                    ${cellData}<sd-icon
-                      id="sortIcon-${columnIndex}"
-                      library="global-resources"
-                      name=${sortData[columnIndex] === 'none' ? 'system/sort-down' : 'system/sort-down-filled'}
-                      class="text-[12px]"
-                    ></sd-icon>
-                  </button>
+                  ${header.sortable
+                    ? html` <span class="sr-only" id="sortableStatus-${columnIndex}"
+                          >${sortData[columnIndex] === 'none' ? '' : 'Sorting ascending'}</span
+                        >
+                        <button
+                          class="sd-interactive flex items-center gap-1"
+                          @focus="${() => handleSortButtonFocus(columnIndex)}"
+                          @blur="${() => handleSortButtonBlur(columnIndex)}"
+                          @click="${() => sortTable(columnIndex)}"
+                        >
+                          ${header.label}<sd-icon
+                            id="sortIcon-${columnIndex}"
+                            library="global-resources"
+                            name=${sortData[columnIndex] === 'none' ? 'system/sort-down' : 'system/sort-down-filled'}
+                            class="text-[12px]"
+                          ></sd-icon>
+                        </button>`
+                    : header.label}
                 </th>`;
               })}
             </tr>`;
           })()}
         </thead>
         <tbody>
-          ${tableData.map(rowData => {
-            numbersToSort -= 1;
-            return html`<tr>
-              ${rowData.map(cellData => {
-                return html`<td class="sd-table-cell sd-table-cell--bg-transparent">${numbersToSort}: ${cellData}</td>`;
-              })}
-            </tr>`;
-          })}
+          <tr>
+            <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
+              <sd-link href="#">Duales Studium mit Ausbildung Investmentfondskauffrau/-mann (m/w/d)</sd-link>
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Apprenticeship</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Duales Studium / Ausbildung</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <div class="flex gap-2 text-lg">
+                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
+              <sd-link href="#">Duales Studium Wirtschaftsinformatik (m/w/d), Start 01.09.2025</sd-link>
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">IT</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Duales Studium / Ausbildung</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <div class="flex gap-2 text-lg">
+                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
+              <sd-link href="#">Portfoliomanager*in Multi Asset Solutions (in Voll- oder Teilzeit)</sd-link>
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Portfolio Management</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <div class="flex gap-2 text-lg">
+                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
+              <sd-link href="#"
+                >(Junior-) Mitarbeiter*in für unser gesetzliches Meldewesen im Bereich Fondsadministration</sd-link
+              >
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Fund Administration</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <div class="flex gap-2 text-lg">
+                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
+              <sd-link href="#"
+                >Kaufleute (m/w/d) Kundenservice mit Schwerpunkt Partnerbanken und Privatkunden (in Voll- oder
+                Teilzeit)</sd-link
+              >
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Customer Service</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <div class="flex gap-2 text-lg">
+                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
+              <sd-link href="#">Datenschutzreferent*in/ Auditor*in (in Voll- oder Teilzeit)</sd-link>
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Hamburg</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Compliance</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <div class="flex gap-2 text-lg">
+                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
+              <sd-link href="#">(Junior) Business Analyst*in Risikomanagement (in Voll- oder Teilzeit)</sd-link>
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Private Clients</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <div class="flex gap-2 text-lg">
+                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
+              <sd-link href="#"
+                >Leitung des KI Competence Centers als Gruppenleiter*in IT Data Analytics (in Voll- oder
+                Teilzeit)</sd-link
+              >
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">IT</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <div class="flex gap-2 text-lg">
+                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
+              <sd-link href="#">Trainee (m/w/d) Produktmanagement & Vertrieb PLUS</sd-link>
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Private Clients</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <div class="flex gap-2 text-lg">
+                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
+              <sd-link href="#">Trainee (m/w/d) Digitalisierung PLUS</sd-link>
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Other</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <div class="flex gap-2 text-lg">
+                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              </div>
+            </td>
+          </tr>
         </tbody>
       </table>
     `;
@@ -482,41 +916,165 @@ export const advancedTables = {
       >
         <thead>
           <tr>
-            <th class="sd-table-cell sd-table-cell--bg-white sticky top-0 sd-table-cell--shadow-bottom">Header</th>
-            <th class="sd-table-cell sd-table-cell--bg-white sticky top-0 sd-table-cell--shadow-bottom">Header</th>
-            <th class="sd-table-cell sd-table-cell--bg-white sticky top-0 sd-table-cell--shadow-bottom">Header</th>
-            <th class="sd-table-cell sd-table-cell--bg-white sticky top-0 sd-table-cell--shadow-bottom">Header</th>
-            <th class="sd-table-cell sd-table-cell--bg-white sticky top-0 sd-table-cell--shadow-bottom">Header</th>
+            <th class="sd-table-cell sd-table-cell--bg-white sticky top-0 sd-table-cell--shadow-bottom">Job title</th>
+            <th class="sd-table-cell sd-table-cell--bg-white sticky top-0 sd-table-cell--shadow-bottom">Location</th>
+            <th class="sd-table-cell sd-table-cell--bg-white sticky top-0 sd-table-cell--shadow-bottom">
+              Job category
+            </th>
+            <th class="sd-table-cell sd-table-cell--bg-white sticky top-0 sd-table-cell--shadow-bottom">
+              Employment type
+            </th>
+            <th class="sd-table-cell sd-table-cell--bg-white sticky top-0 sd-table-cell--shadow-bottom">Actions</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
+              <sd-link href="#">Duales Studium mit Ausbildung Investmentfondskauffrau/-mann (m/w/d)</sd-link>
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Apprenticeship</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Duales Studium / Ausbildung</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <div class="flex gap-2 text-lg">
+                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              </div>
+            </td>
           </tr>
           <tr>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
+              <sd-link href="#">Duales Studium Wirtschaftsinformatik (m/w/d), Start 01.09.2025</sd-link>
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">IT</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Duales Studium / Ausbildung</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <div class="flex gap-2 text-lg">
+                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              </div>
+            </td>
           </tr>
           <tr>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
+              <sd-link href="#">Portfoliomanager*in Multi Asset Solutions (in Voll- oder Teilzeit)</sd-link>
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Portfolio Management</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <div class="flex gap-2 text-lg">
+                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              </div>
+            </td>
           </tr>
           <tr>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
+              <sd-link href="#"
+                >(Junior-) Mitarbeiter*in für unser gesetzliches Meldewesen im Bereich Fondsadministration</sd-link
+              >
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Fund Administration</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <div class="flex gap-2 text-lg">
+                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
+              <sd-link href="#"
+                >Kaufleute (m/w/d) Kundenservice mit Schwerpunkt Partnerbanken und Privatkunden (in Voll- oder
+                Teilzeit)</sd-link
+              >
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Customer Service</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <div class="flex gap-2 text-lg">
+                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
+              <sd-link href="#">Datenschutzreferent*in/ Auditor*in (in Voll- oder Teilzeit)</sd-link>
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Hamburg</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Compliance</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <div class="flex gap-2 text-lg">
+                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
+              <sd-link href="#">(Junior) Business Analyst*in Risikomanagement (in Voll- oder Teilzeit)</sd-link>
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Private Clients</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <div class="flex gap-2 text-lg">
+                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
+              <sd-link href="#"
+                >Leitung des KI Competence Centers als Gruppenleiter*in IT Data Analytics (in Voll- oder
+                Teilzeit)</sd-link
+              >
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">IT</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <div class="flex gap-2 text-lg">
+                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
+              <sd-link href="#">Trainee (m/w/d) Produktmanagement & Vertrieb PLUS</sd-link>
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Private Clients</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <div class="flex gap-2 text-lg">
+                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
+              <sd-link href="#">Trainee (m/w/d) Digitalisierung PLUS</sd-link>
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Other</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <div class="flex gap-2 text-lg">
+                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              </div>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -553,55 +1111,161 @@ export const TableFixedBottom = {
       >
         <thead class="sr-only">
           <tr>
-            <th>Header</th>
-            <th>Header</th>
-            <th>Header</th>
-            <th>Header</th>
-            <th>Header</th>
+            <th>Job title</th>
+            <th>Location</th>
+            <th>Job category</th>
+            <th>Employment type</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
+              <sd-link href="#">Duales Studium mit Ausbildung Investmentfondskauffrau/-mann (m/w/d)</sd-link>
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Apprenticeship</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Duales Studium / Ausbildung</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <div class="flex gap-2 text-lg">
+                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              </div>
+            </td>
           </tr>
           <tr>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
+              <sd-link href="#">Duales Studium Wirtschaftsinformatik (m/w/d), Start 01.09.2025</sd-link>
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">IT</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Duales Studium / Ausbildung</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <div class="flex gap-2 text-lg">
+                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              </div>
+            </td>
           </tr>
           <tr>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
+              <sd-link href="#">Portfoliomanager*in Multi Asset Solutions (in Voll- oder Teilzeit)</sd-link>
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Portfolio Management</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <div class="flex gap-2 text-lg">
+                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              </div>
+            </td>
           </tr>
           <tr>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
+              <sd-link href="#"
+                >(Junior-) Mitarbeiter*in für unser gesetzliches Meldewesen im Bereich Fondsadministration</sd-link
+              >
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Fund Administration</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <div class="flex gap-2 text-lg">
+                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              </div>
+            </td>
           </tr>
           <tr>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
+              <sd-link href="#"
+                >Kaufleute (m/w/d) Kundenservice mit Schwerpunkt Partnerbanken und Privatkunden (in Voll- oder
+                Teilzeit)</sd-link
+              >
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Customer Service</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <div class="flex gap-2 text-lg">
+                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              </div>
+            </td>
           </tr>
           <tr>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Cell content</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
+              <sd-link href="#">Datenschutzreferent*in/ Auditor*in (in Voll- oder Teilzeit)</sd-link>
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Hamburg</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Compliance</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <div class="flex gap-2 text-lg">
+                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
+              <sd-link href="#">(Junior) Business Analyst*in Risikomanagement (in Voll- oder Teilzeit)</sd-link>
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Private Clients</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <div class="flex gap-2 text-lg">
+                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
+              <sd-link href="#"
+                >Leitung des KI Competence Centers als Gruppenleiter*in IT Data Analytics (in Voll- oder
+                Teilzeit)</sd-link
+              >
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">IT</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <div class="flex gap-2 text-lg">
+                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
+              <sd-link href="#">Trainee (m/w/d) Produktmanagement & Vertrieb PLUS</sd-link>
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Private Clients</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <div class="flex gap-2 text-lg">
+                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
+              <sd-link href="#">Trainee (m/w/d) Digitalisierung PLUS</sd-link>
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Other</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <div class="flex gap-2 text-lg">
+                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              </div>
+            </td>
           </tr>
         </tbody>
         <tfoot>
@@ -609,27 +1273,27 @@ export const TableFixedBottom = {
             <th
               class="sd-table-cell sd-table-cell--bg-white sticky bottom-0 sd-table-cell--shadow-top sd-table-cell--shadow-active"
             >
-              Header
+              Job title
             </th>
             <th
               class="sd-table-cell sd-table-cell--bg-white sticky bottom-0 sd-table-cell--shadow-top sd-table-cell--shadow-active"
             >
-              Header
+              Location
             </th>
             <th
               class="sd-table-cell sd-table-cell--bg-white sticky bottom-0 sd-table-cell--shadow-top sd-table-cell--shadow-active"
             >
-              Header
+              Job category
             </th>
             <th
               class="sd-table-cell sd-table-cell--bg-white sticky bottom-0 sd-table-cell--shadow-top sd-table-cell--shadow-active"
             >
-              Header
+              Employment type
             </th>
             <th
               class="sd-table-cell sd-table-cell--bg-white sticky bottom-0 sd-table-cell--shadow-top sd-table-cell--shadow-active"
             >
-              Header
+              Actions
             </th>
           </tr>
         </tfoot>
@@ -669,13 +1333,11 @@ export const TableFixedLeft = {
           <thead class="sr-only">
             <tr>
               <th></th>
-              <th>Header</th>
-              <th>Header</th>
-              <th>Header</th>
-              <th>Header</th>
-              <th>Header</th>
-              <th>Header</th>
-              <th>Header</th>
+              <th>Job title</th>
+              <th>Location</th>
+              <th>Job category</th>
+              <th>Employment type</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -683,99 +1345,169 @@ export const TableFixedLeft = {
               <th
                 class="sd-table-cell top-auto sticky left-0 z-[2] bg-clip-padding sd-table-cell--shadow-right sd-table-cell--shadow-active sd-table-cell--bg-white"
               >
-                Header
+                <div class="flex gap-2 text-lg">
+                  <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+                  <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+                </div>
               </th>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
+              <td class="sd-table-cell sd-table-cell--bg-transparent min-w-[400px]">
+                <sd-link href="#">Duales Studium mit Ausbildung Investmentfondskauffrau/-mann (m/w/d)</sd-link>
+              </td>
+              <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Frankfurt am Main</td>
+              <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Apprenticeship</td>
+              <td class="sd-table-cell sd-table-cell--bg-transparent">Duales Studium / Ausbildung</td>
             </tr>
             <tr>
               <th
-                class="sd-table-cell top-auto sticky left-0 z-[2] bg-clip-padding sd-table-cell--shadow-right sd-table-cell--shadow-active sd-table-cell--bg-primary-100"
+                class="sd-table-cell top-auto sticky left-0 z-[2] bg-clip-padding sd-table-cell--shadow-right sd-table-cell--shadow-active sd-table-cell--bg-neutral-100"
               >
-                Header
+                <div class="flex gap-2 text-lg">
+                  <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+                  <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+                </div>
               </th>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-primary-100">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-primary-100">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-primary-100">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-primary-100">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-primary-100">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-primary-100">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-primary-100">Cell content</td>
-            </tr>
-            <tr>
-              <th
-                class="sd-table-cell top-auto sticky left-0 z-[2] bg-clip-padding sd-table-cell--shadow-right sd-table-cell--shadow-active sd-table-cell--bg-white"
-              >
-                Header
-              </th>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-            </tr>
-            <tr>
-              <th
-                class="sd-table-cell top-auto sticky left-0 z-[2] bg-clip-padding sd-table-cell--shadow-right sd-table-cell--shadow-active sd-table-cell--bg-primary-100"
-              >
-                Header
-              </th>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-primary-100">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-primary-100">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-primary-100">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-primary-100">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-primary-100">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-primary-100">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-primary-100">Cell content</td>
+              <td class="sd-table-cell sd-table-cell--bg-neutral-100 min-w-[400px]">
+                <sd-link href="#">Duales Studium Wirtschaftsinformatik (m/w/d), Start 01.09.2025</sd-link>
+              </td>
+              <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Frankfurt am Main</td>
+              <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">IT</td>
+              <td class="sd-table-cell sd-table-cell--bg-neutral-100">Duales Studium / Ausbildung</td>
             </tr>
             <tr>
               <th
                 class="sd-table-cell top-auto sticky left-0 z-[2] bg-clip-padding sd-table-cell--shadow-right sd-table-cell--shadow-active sd-table-cell--bg-white"
               >
-                Header
+                <div class="flex gap-2 text-lg">
+                  <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+                  <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+                </div>
               </th>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
+              <td class="sd-table-cell sd-table-cell--bg-transparent min-w-[400px]">
+                <sd-link href="#">Portfoliomanager*in Multi Asset Solutions (in Voll- oder Teilzeit)</sd-link>
+              </td>
+              <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Frankfurt am Main</td>
+              <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Portfolio Management</td>
+              <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
             </tr>
             <tr>
               <th
-                class="sd-table-cell top-auto sticky left-0 z-[2] bg-clip-padding sd-table-cell--shadow-right sd-table-cell--shadow-active sd-table-cell--bg-primary-100"
+                class="sd-table-cell top-auto sticky left-0 z-[2] bg-clip-padding sd-table-cell--shadow-right sd-table-cell--shadow-active sd-table-cell--bg-neutral-100"
               >
-                Header
+                <div class="flex gap-2 text-lg">
+                  <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+                  <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+                </div>
               </th>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-primary-100">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-primary-100">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-primary-100">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-primary-100">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-primary-100">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-primary-100">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-primary-100">Cell content</td>
+              <td class="sd-table-cell sd-table-cell--bg-neutral-100 min-w-[400px]">
+                <sd-link href="#"
+                  >(Junior-) Mitarbeiter*in für unser gesetzliches Meldewesen im Bereich Fondsadministration</sd-link
+                >
+              </td>
+              <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Frankfurt am Main</td>
+              <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Fund Administration</td>
+              <td class="sd-table-cell sd-table-cell--bg-neutral-100">Fulltime<br />Parttime</td>
             </tr>
             <tr>
               <th
                 class="sd-table-cell top-auto sticky left-0 z-[2] bg-clip-padding sd-table-cell--shadow-right sd-table-cell--shadow-active sd-table-cell--bg-white"
               >
-                Header
+                <div class="flex gap-2 text-lg">
+                  <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+                  <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+                </div>
               </th>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-              <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
+              <td class="sd-table-cell sd-table-cell--bg-transparent min-w-[400px]">
+                <sd-link href="#"
+                  >Kaufleute (m/w/d) Kundenservice mit Schwerpunkt Partnerbanken und Privatkunden (in Voll- oder
+                  Teilzeit)</sd-link
+                >
+              </td>
+              <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Frankfurt am Main</td>
+              <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Customer Service</td>
+              <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+            </tr>
+            <tr>
+              <th
+                class="sd-table-cell top-auto sticky left-0 z-[2] bg-clip-padding sd-table-cell--shadow-right sd-table-cell--shadow-active sd-table-cell--bg-neutral-100"
+              >
+                <div class="flex gap-2 text-lg">
+                  <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+                  <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+                </div>
+              </th>
+              <td class="sd-table-cell sd-table-cell--bg-neutral-100 min-w-[400px]">
+                <sd-link href="#">Datenschutzreferent*in/ Auditor*in (in Voll- oder Teilzeit)</sd-link>
+              </td>
+              <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Hamburg</td>
+              <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Compliance</td>
+              <td class="sd-table-cell sd-table-cell--bg-neutral-100">Fulltime<br />Parttime</td>
+            </tr>
+            <tr>
+              <th
+                class="sd-table-cell top-auto sticky left-0 z-[2] bg-clip-padding sd-table-cell--shadow-right sd-table-cell--shadow-active sd-table-cell--bg-white"
+              >
+                <div class="flex gap-2 text-lg">
+                  <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+                  <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+                </div>
+              </th>
+              <td class="sd-table-cell sd-table-cell--bg-transparent min-w-[400px]">
+                <sd-link href="#">(Junior) Business Analyst*in Risikomanagement (in Voll- oder Teilzeit)</sd-link>
+              </td>
+              <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Frankfurt am Main</td>
+              <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Private Clients</td>
+              <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+            </tr>
+            <tr>
+              <th
+                class="sd-table-cell top-auto sticky left-0 z-[2] bg-clip-padding sd-table-cell--shadow-right sd-table-cell--shadow-active sd-table-cell--bg-neutral-100"
+              >
+                <div class="flex gap-2 text-lg">
+                  <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+                  <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+                </div>
+              </th>
+              <td class="sd-table-cell sd-table-cell--bg-neutral-100 min-w-[400px]">
+                <sd-link href="#"
+                  >Leitung des KI Competence Centers als Gruppenleiter*in IT Data Analytics (in Voll- oder
+                  Teilzeit)</sd-link
+                >
+              </td>
+              <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Frankfurt am Main</td>
+              <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">IT</td>
+              <td class="sd-table-cell sd-table-cell--bg-neutral-100">Fulltime<br />Parttime</td>
+            </tr>
+            <tr>
+              <th
+                class="sd-table-cell top-auto sticky left-0 z-[2] bg-clip-padding sd-table-cell--shadow-right sd-table-cell--shadow-active sd-table-cell--bg-white"
+              >
+                <div class="flex gap-2 text-lg">
+                  <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+                  <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+                </div>
+              </th>
+              <td class="sd-table-cell sd-table-cell--bg-transparent min-w-[400px]">
+                <sd-link href="#">Trainee (m/w/d) Produktmanagement & Vertrieb PLUS</sd-link>
+              </td>
+              <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Frankfurt am Main</td>
+              <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Private Clients</td>
+              <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime</td>
+            </tr>
+            <tr>
+              <th
+                class="sd-table-cell top-auto sticky left-0 z-[2] bg-clip-padding sd-table-cell--shadow-right sd-table-cell--shadow-active sd-table-cell--bg-neutral-100"
+              >
+                <div class="flex gap-2 text-lg">
+                  <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+                  <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+                </div>
+              </th>
+              <td class="sd-table-cell sd-table-cell--bg-neutral-100 min-w-[400px]">
+                <sd-link href="#">Trainee (m/w/d) Digitalisierung PLUS</sd-link>
+              </td>
+              <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Frankfurt am Main</td>
+              <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Other</td>
+              <td class="sd-table-cell sd-table-cell--bg-neutral-100">Fulltime</td>
             </tr>
           </tbody>
         </table>
@@ -814,98 +1546,180 @@ export const TableFixedRight = {
         >
           <table class="sd-table sample-table">
             <thead class="sr-only">
-              <th>Header</th>
-              <th>Header</th>
-              <th>Header</th>
-              <th>Header</th>
-              <th>Header</th>
-              <th>Header</th>
-              <th>Header</th>
+              <th>Job title</th>
+              <th>Location</th>
+              <th>Job category</th>
+              <th>Employment type</th>
+              <th>Actions</th>
               <th></th>
             </thead>
             <tbody>
               <tr>
-                <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-                <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-                <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-                <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-                <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-                <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-                <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-                <th class="sd-table-cell left-0 top-auto sticky right-0 z-[2] sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-white">
-                Header
-              </th>
-              </tr>
-              <tr>
-                <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-neutral-100">Cell content</td>
-                <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-neutral-100">Cell content</td>
-                <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-neutral-100">Cell content</td>
-                <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-neutral-100">Cell content</td>
-                <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-neutral-100">Cell content</td>
-                <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-neutral-100">Cell content</td>
-                <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-neutral-100">Cell content</td>
-                <th class="sd-table-cell left-0 top-auto sticky right-0 z-[2] sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-neutral-100">
-                  Header
+                <td class="sd-table-cell sd-table-cell--bg-transparent min-w-[400px]">
+                  <sd-link href="#">Duales Studium mit Ausbildung Investmentfondskauffrau/-mann (m/w/d)</sd-link>
+                </td>
+                <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Frankfurt am Main</td>
+                <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Apprenticeship</td>
+                <td class="sd-table-cell sd-table-cell--bg-transparent">Duales Studium / Ausbildung</td>
+                <th
+                  class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-white"
+                >
+                  <div class="flex gap-2 text-lg">
+                    <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+                    <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+                  </div>
                 </th>
               </tr>
               <tr>
-                <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-                <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-                <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-                <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-                <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-                <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-                <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-                <th class="sd-table-cell left-0 top-auto sticky right-0 z-[2] sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-white">
-                  Header
+                <td class="sd-table-cell sd-table-cell--bg-neutral-100 min-w-[400px]">
+                  <sd-link href="#">Duales Studium Wirtschaftsinformatik (m/w/d), Start 01.09.2025</sd-link>
+                </td>
+                <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Frankfurt am Main</td>
+                <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">IT</td>
+                <td class="sd-table-cell sd-table-cell--bg-neutral-100">Duales Studium / Ausbildung</td>
+                <th
+                  class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-white"
+                >
+                  <div class="flex gap-2 text-lg">
+                    <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+                    <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+                  </div>
                 </th>
               </tr>
               <tr>
-                <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-neutral-100">Cell content</td>
-                <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-neutral-100">Cell content</td>
-                <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-neutral-100">Cell content</td>
-                <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-neutral-100">Cell content</td>
-                <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-neutral-100">Cell content</td>
-                <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-neutral-100">Cell content</td>
-                <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-neutral-100">Cell content</td>
-                <th class="sd-table-cell left-0 top-auto sticky right-0 z-[2] sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-neutral-100">
-                  Header
+                <td class="sd-table-cell sd-table-cell--bg-transparent min-w-[400px]">
+                  <sd-link href="#">Portfoliomanager*in Multi Asset Solutions (in Voll- oder Teilzeit)</sd-link>
+                </td>
+                <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Frankfurt am Main</td>
+                <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Portfolio Management</td>
+                <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+                <th
+                  class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-white"
+                >
+                  <div class="flex gap-2 text-lg">
+                    <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+                    <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+                  </div>
                 </th>
               </tr>
               <tr>
-                <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-                <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-                <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-                <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-                <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-                <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-                <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-                <th class="sd-table-cell left-0 top-auto sticky right-0 z-[2] sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-white">
-                  Header
+                <td class="sd-table-cell sd-table-cell--bg-neutral-100 min-w-[400px]">
+                  <sd-link href="#"
+                    >(Junior-) Mitarbeiter*in für unser gesetzliches Meldewesen im Bereich Fondsadministration</sd-link
+                  >
+                </td>
+                <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Frankfurt am Main</td>
+                <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Fund Administration</td>
+                <td class="sd-table-cell sd-table-cell--bg-neutral-100">Fulltime<br />Parttime</td>
+                <th
+                  class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-white"
+                >
+                  <div class="flex gap-2 text-lg">
+                    <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+                    <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+                  </div>
                 </th>
               </tr>
               <tr>
-                <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-neutral-100">Cell content</td>
-                <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-neutral-100">Cell content</td>
-                <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-neutral-100">Cell content</td>
-                <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-neutral-100">Cell content</td>
-                <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-neutral-100">Cell content</td>
-                <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-neutral-100">Cell content</td>
-                <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-neutral-100">Cell content</td>
-                <th class="sd-table-cell left-0 top-auto sticky right-0 z-[2] sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-neutral-100">
-                  Header
+                <td class="sd-table-cell sd-table-cell--bg-transparent min-w-[400px]">
+                  <sd-link href="#"
+                    >Kaufleute (m/w/d) Kundenservice mit Schwerpunkt Partnerbanken und Privatkunden (in Voll- oder
+                    Teilzeit)</sd-link
+                  >
+                </td>
+                <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Frankfurt am Main</td>
+                <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Customer Service</td>
+                <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+                <th
+                  class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-white"
+                >
+                  <div class="flex gap-2 text-lg">
+                    <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+                    <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+                  </div>
                 </th>
               </tr>
               <tr>
-                <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-                <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-                <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-                <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-                <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-                <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-                <td class="sd-table-cell text-nowrap whitespace-nowrap sd-table-cell--bg-white">Cell content</td>
-                <th class="sd-table-cell left-0 top-auto sticky right-0 z-[2] sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-white">
-                  Header
+                <td class="sd-table-cell sd-table-cell--bg-neutral-100 min-w-[400px]">
+                  <sd-link href="#">Datenschutzreferent*in/ Auditor*in (in Voll- oder Teilzeit)</sd-link>
+                </td>
+                <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Hamburg</td>
+                <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Compliance</td>
+                <td class="sd-table-cell sd-table-cell--bg-neutral-100">Fulltime<br />Parttime</td>
+                <th
+                  class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-white"
+                >
+                  <div class="flex gap-2 text-lg">
+                    <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+                    <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+                  </div>
+                </th>
+              </tr>
+              <tr>
+                <td class="sd-table-cell sd-table-cell--bg-transparent min-w-[400px]">
+                  <sd-link href="#">(Junior) Business Analyst*in Risikomanagement (in Voll- oder Teilzeit)</sd-link>
+                </td>
+                <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Frankfurt am Main</td>
+                <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Private Clients</td>
+                <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+                <th
+                  class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-white"
+                >
+                  <div class="flex gap-2 text-lg">
+                    <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+                    <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+                  </div>
+                </th>
+              </tr>
+              <tr>
+                <td class="sd-table-cell sd-table-cell--bg-neutral-100 min-w-[400px]">
+                  <sd-link href="#"
+                    >Leitung des KI Competence Centers als Gruppenleiter*in IT Data Analytics (in Voll- oder
+                    Teilzeit)</sd-link
+                  >
+                </td>
+                <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Frankfurt am Main</td>
+                <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">IT</td>
+                <td class="sd-table-cell sd-table-cell--bg-neutral-100">Fulltime<br />Parttime</td>
+                <th
+                  class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-white"
+                >
+                  <div class="flex gap-2 text-lg">
+                    <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+                    <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+                  </div>
+                </th>
+              </tr>
+              <tr>
+                <td class="sd-table-cell sd-table-cell--bg-transparent min-w-[400px]">
+                  <sd-link href="#">Trainee (m/w/d) Produktmanagement & Vertrieb PLUS</sd-link>
+                </td>
+                <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Frankfurt am Main</td>
+                <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Private Clients</td>
+                <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime</td>
+                <th
+                  class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-white"
+                >
+                  <div class="flex gap-2 text-lg">
+                    <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+                    <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+                  </div>
+                </th>
+              </tr>
+              <tr>
+                <td class="sd-table-cell sd-table-cell--bg-neutral-100 min-w-[400px]">
+                  <sd-link href="#">Trainee (m/w/d) Digitalisierung PLUS</sd-link>
+                </td>
+                <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Frankfurt am Main</td>
+                <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Other</td>
+                <td class="sd-table-cell sd-table-cell--bg-neutral-100">Fulltime</td>
+                <th
+                  class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-white"
+                >
+                  <div class="flex gap-2 text-lg">
+                    <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
+                    <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+                  </div>
                 </th>
               </tr>
             </tbody>
