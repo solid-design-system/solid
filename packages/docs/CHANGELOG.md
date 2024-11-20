@@ -1,3 +1,11 @@
+# [@solid-design-system/docs-v1.0.3](https://github.com/solid-design-system/solid/compare/docs/1.0.2...docs/1.0.3) (2024-11-20)
+
+
+### Bug Fixes
+
+* improve sd-tag a11y ([#1640](https://github.com/solid-design-system/solid/issues/1640)) ([ea788ef](https://github.com/solid-design-system/solid/commit/ea788ef53db4c051be9ea08ec54218b086585254)), closes [#1490](https://github.com/solid-design-system/solid/issues/1490)
+* improve sd-textarea a11y [skip chromatic] ([#1642](https://github.com/solid-design-system/solid/issues/1642)) ([4560278](https://github.com/solid-design-system/solid/commit/4560278baa2eac2bb628ca555b1f724ef94acabe)), closes [#1492](https://github.com/solid-design-system/solid/issues/1492)
+
 # [@solid-design-system/docs-v1.0.2](https://github.com/solid-design-system/solid/compare/docs/1.0.1...docs/1.0.2) (2024-11-14)
 
 

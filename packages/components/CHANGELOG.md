@@ -1,3 +1,26 @@
+# [@solid-design-system/components-v3.22.6](https://github.com/solid-design-system/solid/compare/components/3.22.5...components/3.22.6) (2024-11-20)
+
+
+### Bug Fixes
+
+* set sd-select placeholder text-color to neutral-700 ([#1659](https://github.com/solid-design-system/solid/issues/1659)) ([863a09e](https://github.com/solid-design-system/solid/commit/863a09e88ec2439fe7e97670ba90fae0dd97de88))
+
+### 📈 Stats
+* Bundle size (uncompressed): 407 KB (unchanged)
+* Bundle size (gzipped): 125 KB (unchanged)
+
+# [@solid-design-system/components-v3.22.5](https://github.com/solid-design-system/solid/compare/components/3.22.4...components/3.22.5) (2024-11-20)
+
+
+### Bug Fixes
+
+* improve sd-tag a11y ([#1640](https://github.com/solid-design-system/solid/issues/1640)) ([ea788ef](https://github.com/solid-design-system/solid/commit/ea788ef53db4c051be9ea08ec54218b086585254)), closes [#1490](https://github.com/solid-design-system/solid/issues/1490)
+* improve sd-textarea a11y [skip chromatic] ([#1642](https://github.com/solid-design-system/solid/issues/1642)) ([4560278](https://github.com/solid-design-system/solid/commit/4560278baa2eac2bb628ca555b1f724ef94acabe)), closes [#1492](https://github.com/solid-design-system/solid/issues/1492)
+
+### 📈 Stats
+* Bundle size (uncompressed): 407 KB (unchanged)
+* Bundle size (gzipped): 125 KB (unchanged)
+
 # [@solid-design-system/components-v3.22.4](https://github.com/solid-design-system/solid/compare/components/3.22.3...components/3.22.4) (2024-11-18)
 
 
