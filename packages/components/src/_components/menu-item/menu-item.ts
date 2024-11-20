@@ -1,6 +1,6 @@
 import '../icon/icon';
 import { classMap } from 'lit/directives/class-map.js';
-import { customElement } from '../../../src/internal/register-custom-element';
+import { customElement } from '../../internal/register-custom-element';
 import {property, query } from 'lit/decorators.js';
 import { getTextContent } from '../../internal/slot';
 import { html } from 'lit';

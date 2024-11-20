@@ -1,5 +1,5 @@
 import { css } from 'lit';
-import { customElement } from '../../../src/internal/register-custom-element';
+import { customElement } from '../../internal/register-custom-element';
 import { html, literal } from 'lit/static-html.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { property, query } from 'lit/decorators.js';

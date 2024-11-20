@@ -1,5 +1,5 @@
 import { css, html } from 'lit';
-import { customElement } from '../../../src/internal/register-custom-element';
+import { customElement } from '../../internal/register-custom-element';
 import { property } from 'lit/decorators.js';
 import { requestInclude } from './request';
 import { watch } from '../../internal/watch';

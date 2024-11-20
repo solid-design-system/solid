@@ -1,5 +1,5 @@
 import { css, html } from 'lit';
-import { customElement } from '../../../src/internal/register-custom-element';
+import { customElement } from '../../internal/register-custom-element';
 import componentStyles from '../../styles/component.styles';
 import SolidElement from '../../internal/solid-element.js';
 

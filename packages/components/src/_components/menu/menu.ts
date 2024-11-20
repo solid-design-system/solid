@@ -1,4 +1,4 @@
-import { customElement } from '../../../src/internal/register-custom-element';
+import { customElement } from '../../internal/register-custom-element';
 import { html } from 'lit';
 import {query } from 'lit/decorators.js';
 import SolidElement from '../../internal/solid-element';

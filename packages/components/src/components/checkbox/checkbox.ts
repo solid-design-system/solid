@@ -1,6 +1,6 @@
 import '../icon/icon';
 import { css, html } from 'lit';
-import { customElement } from '../../../src/internal/register-custom-element';
+import { customElement } from '../../internal/register-custom-element';
 import { defaultValue } from '../../internal/default-value';
 import { FormControlController } from '../../internal/form';
 import { ifDefined } from 'lit/directives/if-defined.js';

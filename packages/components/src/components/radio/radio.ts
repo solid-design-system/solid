@@ -1,6 +1,6 @@
 import '../icon/icon';
 import { css, html } from 'lit';
-import { customElement } from '../../../src/internal/register-custom-element';
+import { customElement } from '../../internal/register-custom-element';
 import { property, state } from 'lit/decorators.js';
 import { watch } from '../../internal/watch';
 import componentStyles from 'src/styles/component.styles';

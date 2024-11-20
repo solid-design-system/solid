@@ -1,6 +1,6 @@
 import '../spinner/spinner';
 import { css } from 'lit';
-import { customElement } from '../../../src/internal/register-custom-element';
+import { customElement } from '../../internal/register-custom-element';
 import { FormControlController, validValidityState } from '../../internal/form';
 import { HasSlotController } from '../../internal/slot';
 import { html, literal } from 'lit/static-html.js';

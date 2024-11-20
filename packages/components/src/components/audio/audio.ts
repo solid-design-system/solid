@@ -1,5 +1,5 @@
 import { css, html, unsafeCSS } from 'lit';
-import { customElement } from '../../../src/internal/register-custom-element';
+import { customElement } from '../../internal/register-custom-element';
 import { HasSlotController } from '../../internal/slot';
 import { LocalizeController } from '../../utilities/localize';
 import { property, query, state } from 'lit/decorators.js';

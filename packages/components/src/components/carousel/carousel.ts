@@ -2,7 +2,7 @@ import '../icon/icon.js';
 import { AutoplayController } from './autoplay-controller.js';
 import { clamp } from '../../internal/math.js';
 import { css, html, unsafeCSS } from 'lit';
-import { customElement } from '../../../src/internal/register-custom-element';
+import { customElement } from '../../internal/register-custom-element';
 import { LocalizeController } from '../../utilities/localize.js';
 import { map } from 'lit/directives/map.js';
 import { prefersReducedMotion } from '../../internal/animate.js';

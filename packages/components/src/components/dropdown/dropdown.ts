@@ -1,7 +1,7 @@
 import '../popup/popup';
 import { animateTo, stopAnimations } from '../../internal/animate';
 import { css, html } from 'lit';
-import { customElement } from '../../../src/internal/register-custom-element';
+import { customElement } from '../../internal/register-custom-element';
 import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry';
 import { getTabbableBoundary } from '../../internal/tabbable';
 import { LocalizeController } from '../../utilities/localize';
