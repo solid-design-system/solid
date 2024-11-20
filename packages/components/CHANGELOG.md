@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v3.22.7](https://github.com/solid-design-system/solid/compare/components/3.22.6...components/3.22.7) (2024-11-20)
+
+
+### Bug Fixes
+
+* sd-carousel & sd-carousel-item a11y ([#1607](https://github.com/solid-design-system/solid/issues/1607)) ([b207992](https://github.com/solid-design-system/solid/commit/b207992b727f9f80176b05101cb4314cacaeea80))
+
+### 📈 Stats
+* Bundle size (uncompressed): 408 KB (+1 KB / +0%)
+* Bundle size (gzipped): 125 KB (unchanged)
+
 # [@solid-design-system/components-v3.22.6](https://github.com/solid-design-system/solid/compare/components/3.22.5...components/3.22.6) (2024-11-20)
 
 
