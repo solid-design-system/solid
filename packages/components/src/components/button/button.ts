@@ -372,13 +372,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
    * Inherits Tailwindclasses and includes additional styling.
    */
   static styles = [
-    unsafeCSS(
-      componentStyles.cssText.replaceAll(
-        '.leading-[calc(var(--tw-varspacing)-2px)]',
-        `.leading-\\[calc\\(var\\(--tw-varspacing\\)-2px\\)\\]`
-      )
-    ),
-
+    componentStyles,
     css`
       :host {
         @apply inline-block cursor-pointer w-auto relative;

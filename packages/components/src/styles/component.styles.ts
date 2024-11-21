@@ -13,17 +13,7 @@ const css = unsafeCSS;
  * (See: https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements#internal_vs._external_styles)
  */
 
-const styles = css`
-  /* TODO: This is our test case */
-
-  * {
-    outline: green solid 2px;
-  }
-
-  .leading-\[calc\(var\(--tw-varspacing\)-2px\)\] {
-    outline: red solid 2px;
-  }
-
+export default css`
   /* Import CSS styles once to make them available in every component */
   @import url('../styles/src/typography/interactive.css');
   @import url('../styles/src/typography/paragraph.css');
@@ -64,8 +54,3 @@ const styles = css`
     display: none !important;
   }
 `;
-
-export default unsafeCSS(styles);
-
-/* TODO: Debugging */
-console.log('component', styles.cssText);
