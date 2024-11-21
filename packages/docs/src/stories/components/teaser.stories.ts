@@ -135,6 +135,8 @@ export const DefaultAndHeadlineSlot = {
 
 /**
  * Teasers accept a `media` slot to display images or videos.
+ *
+ * **Accessibility Hint:** If the image doesn't contribute to the information delivered to the user, don't describe it in the alt attribute and leave it empty.
  */
 
 export const MediaSlot = {
