@@ -1215,7 +1215,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                 autocomplete="off"
                 spellcheck="false"
                 autocapitalize="off"
-                aria-controls="listbox"
+                aria-controls="control-value listbox"
                 aria-expanded=${this.open ? 'true' : 'false'}
                 aria-haspopup="listbox"
                 aria-labelledby="label"
@@ -1231,7 +1231,9 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                 @input=${this.handleInput}
                 @change=${this.handleChange}
               />
-
+              <div aria-live="polite" id="control-value" class="absolute top-0 left-0 opacity-0 -z-10">
+                ${this.selectedOptions.map(option => option?.getTextLabel()).join(', ')}
+              </div>
               <input
                 class=${cx('value-input absolute top-0 left-0 w-full h-full opacity-0 -z-10', cursorStyles)}
                 type="text"
