@@ -16,7 +16,7 @@ export default (() => {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-call
       VitePluginLitTailwind({
         include: [
-          /src\/styles\/component.styles.ts/,
+          /src\/internal\/solid-element.ts/,
           /src\/components\/.*\.ts$/,
           /src\/utilities\/autocomplete-config.ts/
         ],

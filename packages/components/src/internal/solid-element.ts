@@ -1,13 +1,56 @@
-import { LitElement } from 'lit';
+import { LitElement, unsafeCSS } from 'lit';
 import { property } from 'lit/decorators.js';
-import componentStyles from 'src/styles/component.styles';
+
+const css = unsafeCSS;
 
 export default class SolidElement extends LitElement {
   // Make localization attributes reactive
   @property() dir: string;
   @property() lang: string;
 
-  static styles = [componentStyles];
+  static styles = [
+    css`
+      /* Import CSS styles once to make them available in every component */
+      @import url('../styles/src/typography/interactive.css');
+      @import url('../styles/src/typography/paragraph.css');
+      @import url('../styles/src/typography/headline.css');
+
+      /* TailwindCSS directives have to come after imports */
+      @tailwind base;
+      @tailwind components;
+      @tailwind utilities;
+
+      @layer components {
+        /**
+          * This is a helper component to quickly add a focus outline to an element.
+          * Known issue: Safari renders always square outlines.
+          * We could fix this by using box-shadows, but we then would have to use ring-offset-color (https://tailwindcss.com/docs/ring-offset-color) to fake the offset.
+          * As we don't know the background color of the focused element, this is not possible. Therefore we're using outlines and wait until Safari gets it fixed.
+          */
+        .focus-outline {
+          @apply outline outline-2 outline-offset-2 outline-primary;
+        }
+
+        .focus-outline-inverted {
+          @apply outline outline-2 outline-offset-2 outline-white;
+        }
+      }
+
+      :host {
+        box-sizing: border-box;
+      }
+
+      :host *,
+      :host *::before,
+      :host *::after {
+        box-sizing: inherit;
+      }
+
+      [hidden] {
+        display: none !important;
+      }
+    `
+  ];
 
   /** Emits a custom event with more convenient defaults. */
   emit(name: string, options?: CustomEventInit) {

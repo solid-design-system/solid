@@ -170,7 +170,7 @@ await nextTask('Building source files', async () => {
   buildResults = await buildTheSource();
 });
 
-// let result;
+let result;
 
 // // Log deferred output
 // if (result.output.length > 0) {
