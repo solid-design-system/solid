@@ -30,7 +30,7 @@ const translation: Translation = {
   tagsSelected: 'Optionen ausgewählt',
   comboboxDefaultPlaceholder: 'Bitte suchen und auswählen',
   showPassword: 'Passwort anzeigen',
-  slideNum: slide => `Folie ${slide}`,
+  slideNum: (slide, count) => `Folie ${slide} von ${count}`,
   toggleColorFormat: 'Farbformat umschalten',
   audioPlayer: 'Audio-Player',
   playAudio: 'Audio abspielen',
@@ -39,7 +39,8 @@ const translation: Translation = {
   unmute: 'Unmute',
   showMore: 'Mehr anzeigen',
   showLess: 'Weniger anzeigen',
-  playbackSpeed: 'Wiedergabe Geschwindigkeit'
+  playbackSpeed: 'Wiedergabe Geschwindigkeit',
+  autoplay: 'Autoplay'
 };
 
 registerTranslation(translation);

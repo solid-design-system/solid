@@ -1,3 +1,48 @@
+# [@solid-design-system/components-v3.22.8](https://github.com/solid-design-system/solid/compare/components/3.22.7...components/3.22.8) (2024-11-21)
+
+
+### Bug Fixes
+
+* improve sd-button a11y ([#1641](https://github.com/solid-design-system/solid/issues/1641)) ([3a9a8bf](https://github.com/solid-design-system/solid/commit/3a9a8bfa4f7d38dca9f2e3de5a1f4f222edb69c8))
+
+### 📈 Stats
+* Bundle size (uncompressed): 408 KB (unchanged)
+* Bundle size (gzipped): 125 KB (unchanged)
+
+# [@solid-design-system/components-v3.22.7](https://github.com/solid-design-system/solid/compare/components/3.22.6...components/3.22.7) (2024-11-20)
+
+
+### Bug Fixes
+
+* sd-carousel & sd-carousel-item a11y ([#1607](https://github.com/solid-design-system/solid/issues/1607)) ([b207992](https://github.com/solid-design-system/solid/commit/b207992b727f9f80176b05101cb4314cacaeea80))
+
+### 📈 Stats
+* Bundle size (uncompressed): 408 KB (+1 KB / +0%)
+* Bundle size (gzipped): 125 KB (unchanged)
+
+# [@solid-design-system/components-v3.22.6](https://github.com/solid-design-system/solid/compare/components/3.22.5...components/3.22.6) (2024-11-20)
+
+
+### Bug Fixes
+
+* set sd-select placeholder text-color to neutral-700 ([#1659](https://github.com/solid-design-system/solid/issues/1659)) ([863a09e](https://github.com/solid-design-system/solid/commit/863a09e88ec2439fe7e97670ba90fae0dd97de88))
+
+### 📈 Stats
+* Bundle size (uncompressed): 407 KB (unchanged)
+* Bundle size (gzipped): 125 KB (unchanged)
+
+# [@solid-design-system/components-v3.22.5](https://github.com/solid-design-system/solid/compare/components/3.22.4...components/3.22.5) (2024-11-20)
+
+
+### Bug Fixes
+
+* improve sd-tag a11y ([#1640](https://github.com/solid-design-system/solid/issues/1640)) ([ea788ef](https://github.com/solid-design-system/solid/commit/ea788ef53db4c051be9ea08ec54218b086585254)), closes [#1490](https://github.com/solid-design-system/solid/issues/1490)
+* improve sd-textarea a11y [skip chromatic] ([#1642](https://github.com/solid-design-system/solid/issues/1642)) ([4560278](https://github.com/solid-design-system/solid/commit/4560278baa2eac2bb628ca555b1f724ef94acabe)), closes [#1492](https://github.com/solid-design-system/solid/issues/1492)
+
+### 📈 Stats
+* Bundle size (uncompressed): 407 KB (unchanged)
+* Bundle size (gzipped): 125 KB (unchanged)
+
 # [@solid-design-system/components-v3.22.4](https://github.com/solid-design-system/solid/compare/components/3.22.3...components/3.22.4) (2024-11-18)
 
 

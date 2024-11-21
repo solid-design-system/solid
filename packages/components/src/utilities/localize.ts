@@ -95,7 +95,7 @@ export interface Translation extends DefaultTranslation {
   tagsSelected: string;
   comboboxDefaultPlaceholder: string;
   showPassword: string;
-  slideNum: (slide: number) => string;
+  slideNum: (slide: number, count: number) => string;
   toggleColorFormat: string;
   audioPlayer: string;
   playAudio: string;
@@ -105,4 +105,5 @@ export interface Translation extends DefaultTranslation {
   showMore: string;
   showLess: string;
   playbackSpeed: string;
+  autoplay: string;
 }

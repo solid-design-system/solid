@@ -11,7 +11,7 @@ const { overrideArgs } = storybookHelpers('sd-textarea');
  * Used to allow users to input and edit multiple lines of text.
  *
  * **Related templates:**
- * - [Tooltip](?path=/docs/templates-tooltip--docs)
+ * - [Textarea with Tooltip](?path=/docs/templates-tooltip--docs)
  */
 export default {
   title: 'Components/sd-textarea',
@@ -222,7 +222,7 @@ export const Invalid = {
         () => {
           const input = document.getElementById('invalid-textarea');
 
-          input.setCustomValidity('Error message');
+          input.setCustomValidity('Error text');
           input.reportValidity();
         }
       );
