@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v3.22.8](https://github.com/solid-design-system/solid/compare/components/3.22.7...components/3.22.8) (2024-11-21)
+
+
+### Bug Fixes
+
+* improve sd-button a11y ([#1641](https://github.com/solid-design-system/solid/issues/1641)) ([3a9a8bf](https://github.com/solid-design-system/solid/commit/3a9a8bfa4f7d38dca9f2e3de5a1f4f222edb69c8))
+
+### 📈 Stats
+* Bundle size (uncompressed): 408 KB (unchanged)
+* Bundle size (gzipped): 125 KB (unchanged)
+
 # [@solid-design-system/components-v3.22.7](https://github.com/solid-design-system/solid/compare/components/3.22.6...components/3.22.7) (2024-11-20)
 
 
