@@ -216,8 +216,8 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   /** Allows more than one option to be selected. */
   @property({ type: Boolean, reflect: true }) multiple = false;
 
-  /** Uses interactive `sd-tag` elements representing individual options in the display input when `multiple` is `true`. */
-  @property({ type: Boolean, reflect: true }) useTags = false;
+  /** Uses interactive `sd-tag` elements representing individual options in the display input when `multiple` is `true`. It cannot be opted out. */
+  @property({ type: Boolean, reflect: true }) useTags = true;
 
   /**
    * The maximum number of selected options to show when `multiple` and `useTags` are `true`. After the maximum, "+n" will be shown to

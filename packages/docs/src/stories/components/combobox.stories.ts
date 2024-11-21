@@ -362,7 +362,10 @@ export const Clearable = {
 
 /**
  * Use the `multiple` attribute to allow multiple options to be selected.
- * __Hint:__ You should use the `useTags` attribute to inform your users about their selected options.
+ * To inform your users about their selected options tags are displayed.
+ * Use Backspace to remove the last selected option.
+ * Use `--tag-max-width` to set the maximum width of the tags and to show an ellipsis, e.g. `<sd-combobox style="--tag-max-width: 40px">`. The default value is `15ch`.
+ * __Hint:__ If you really don't want to show tags, you can hide them with CSS via `::part(tags)`.
  */
 
 export const Multiple = {
@@ -374,26 +377,6 @@ export const Multiple = {
         <sd-option value="option-3" checkbox>Option 3</sd-option>
         <sd-option value="option-4" checkbox>Option 4</sd-option>
         <sd-option value="option-5" checkbox>Option 5</sd-option>
-      </sd-combobox>
-    </div>
-  `
-};
-
-/**
- * Use the `useTags` attribute to display selected options as tags using the `sd-tag` component.
- * Use Backspace to remove the last selected option.
- * Use `--tag-max-width` to set the maximum width of the tags and to show an ellipsis, e.g. `<sd-combobox style="--tag-max-width: 40px">`. The default value is `15ch`.
- * __Hint:__ It requires the `multiple` attribute to be set.
- */
-export const useTags = {
-  render: () => html`
-    <div class="w-[650px] h-[500px]">
-      <sd-combobox size="lg" label="Label" placement="bottom" multiple value="option-1 option-2" useTags>
-        <sd-option value="option-1">Option 1 with long label</sd-option>
-        <sd-option value="option-2">Option 2</sd-option>
-        <sd-option value="option-3">Option 3</sd-option>
-        <sd-option value="option-4">Option 4</sd-option>
-        <sd-option value="option-5">Option 5</sd-option>
       </sd-combobox>
     </div>
   `
