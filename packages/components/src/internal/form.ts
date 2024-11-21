@@ -376,6 +376,7 @@ export class FormControlController implements ReactiveController {
       host.removeAttribute('data-valid');
       host.removeAttribute('data-user-invalid');
       host.removeAttribute('data-user-valid');
+      host.removeAttribute('aria-invalid');
     } else {
       // Form validation is enabled, set the attributes
       host.toggleAttribute('data-required', required);
@@ -384,6 +385,7 @@ export class FormControlController implements ReactiveController {
       host.toggleAttribute('data-valid', isValid);
       host.toggleAttribute('data-user-invalid', !isValid && hasInteracted);
       host.toggleAttribute('data-user-valid', isValid && hasInteracted);
+      host.setAttribute('aria-invalid', (!isValid).toString());
     }
   }
 

@@ -18,6 +18,7 @@ export default {
 };
 
 export const HeadlineWithMark = {
+  name: 'Headline with Mark',
   render: () =>
     html`<div class="flex flex-col gap-8">
       <h4 class="sd-headline">
@@ -38,15 +39,6 @@ export const HeadlineWithMark = {
 };
 
 export const DisplayWithMark = {
-  render: () => html` <p class="sd-display">Lorem <mark class="sd-mark">Ipsum</mark></p> `
-};
-
-export const LeadtextWithMark = {
-  render: () => html`
-    <p class="sd-leadtext sd-leadtext--size-lg">
-      We are an active German asset manager based in Frankfurt/Main, offering a comprehensive range of investment
-      solutions across various asset classes and regions.
-      <mark class="sd-mark">Union Investment was founded in 1956.</mark>
-    </p>
-  `
+  name: 'Display with Mark',
+  render: () => html` <p class="sd-display">Lorem <mark class="sd-mark">ipsum</mark></p> `
 };

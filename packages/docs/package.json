@@ -1,7 +1,7 @@
 {
   "name": "@solid-design-system/docs",
   "description": "This package provides the documentation for the Solid Design System.",
-  "homepage": "https://solid-design-system.fe.union-investment.de/x.x.x/storybook/",
+  "homepage": "https://solid-design-system.fe.union-investment.de/docs/",
   "version": "1.0.0",
   "author": {
     "name": "Union Investment"
@@ -98,7 +98,7 @@
       [
         "@semantic-release/git",
         {
-          "message": "chore(release/tokens): ${nextRelease.version} [skip actions]\n\n${nextRelease.notes}",
+          "message": "chore(release/docs): ${nextRelease.version} [skip actions]\n\n${nextRelease.notes}",
           "assets": [
             "CHANGELOG.md",
             "package.json"

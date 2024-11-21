@@ -31,6 +31,12 @@ describe('<sd-tag>', () => {
       el = await fixture<SdTag>(html`<sd-tag>Tag</sd-tag>`);
       expect(el.innerText).to.eq('Tag');
     });
+
+    it('should not have the aria-pressed attribute', async () => {
+      el = await fixture<SdTag>(html`<sd-tag>Tag</sd-tag>`);
+      const button = el.shadowRoot!.querySelector('button');
+      expect(button?.getAttribute('aria-pressed')).to.equal(null);
+    });
   });
 
   sizes.forEach(size => {
@@ -46,6 +52,20 @@ describe('<sd-tag>', () => {
     it('should pass accessibility tests', async () => {
       el = await fixture<SdTag>(html`<sd-tag selected>Tag</sd-tag>`);
       await expect(el).to.be.accessible();
+    });
+  });
+
+  describe('when toggleable', () => {
+    it('should have aria-pressed as true when selected', async () => {
+      el = await fixture<SdTag>(html`<sd-tag toggleable selected>Tag</sd-tag>`);
+      const button = el.shadowRoot!.querySelector('button');
+      expect(button?.getAttribute('aria-pressed')).to.equal('true');
+    });
+
+    it('should have aria-pressed as false when not selected', async () => {
+      el = await fixture<SdTag>(html`<sd-tag toggleable>Tag</sd-tag>`);
+      const button = el.shadowRoot!.querySelector('button');
+      expect(button?.getAttribute('aria-pressed')).to.equal('false');
     });
   });
 

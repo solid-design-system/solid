@@ -15,16 +15,16 @@ export default {
 
 export const filterTagGroup = {
   render: () => html`
-    <sd-tag selected>All</sd-tag>
-    <sd-tag>Extended Reality</sd-tag>
-    <sd-tag>Internet of things</sd-tag>
+    <sd-tag toggleable selected>All</sd-tag>
+    <sd-tag toggleable>Extended Reality</sd-tag>
+    <sd-tag toggleable>Internet of things</sd-tag>
   `
 };
 
 export const filterTagGroupMorningstarRating = {
   name: 'Filter Tag Group with Morningstar Rating',
   render: () => html`
-    <sd-tag selected>
+    <sd-tag toggleable selected>
       <label class="sr-only">5 stars</label>
       <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
       <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
@@ -32,25 +32,25 @@ export const filterTagGroupMorningstarRating = {
       <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
       <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
     </sd-tag>
-    <sd-tag>
+    <sd-tag toggleable>
       <label class="sr-only">4 stars</label>
       <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
       <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
       <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
       <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
     </sd-tag>
-    <sd-tag>
+    <sd-tag toggleable>
       <label class="sr-only">3 stars</label>
       <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
       <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
       <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
     </sd-tag>
-    <sd-tag>
+    <sd-tag toggleable>
       <label class="sr-only">2 stars</label>
       <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
       <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
     </sd-tag>
-    <sd-tag>
+    <sd-tag toggleable>
       <label class="sr-only">1 star</label>
       <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
     </sd-tag>
@@ -60,23 +60,23 @@ export const filterTagGroupMorningstarRating = {
 export const filterTagGroupRisk = {
   name: 'Filter Tag Group with Risk',
   render: () =>
-    html`<sd-tag selected>
+    html`<sd-tag toggleable selected>
         <div class="h-4 w-4 bg-risk-veryhigh border-primary-800 border-[1px]"></div>
         Very High Risk
       </sd-tag>
-      <sd-tag>
+      <sd-tag toggleable>
         <div class="h-4 w-4 bg-risk-high border-primary-800 border-[1px]"></div>
         High Risk
       </sd-tag>
-      <sd-tag>
+      <sd-tag toggleable>
         <div class="h-4 w-4 bg-risk-increased border-primary-800 border-[1px]"></div>
         Increased Risk
       </sd-tag>
-      <sd-tag>
+      <sd-tag toggleable>
         <div class="h-4 w-4 bg-risk-moderate border-primary-800 border-[1px]"></div>
         Moderated Risk
       </sd-tag>
-      <sd-tag>
+      <sd-tag toggleable>
         <div class="h-4 w-4 bg-risk-low border-primary-800 border-[1px]"></div>
         Low Risk
       </sd-tag>`
