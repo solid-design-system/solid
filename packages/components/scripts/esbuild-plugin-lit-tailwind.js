@@ -56,6 +56,8 @@ export function litTailwindPlugin(options = {}) {
             transformedCode = transformedCode.replace(
               fullMatch,
               `css\`${result
+                // Escape backslashes
+                .replaceAll('\\', '\\\\')
                 // Escape backticks in CSS
                 .replaceAll('`', '\\`')}\``
             );
