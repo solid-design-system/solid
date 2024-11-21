@@ -1,5 +1,5 @@
 import '../spinner/spinner';
-import { css, unsafeCSS } from 'lit';
+import { css } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { FormControlController, validValidityState } from '../../internal/form';
 import { HasSlotController } from '../../internal/slot';

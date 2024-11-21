@@ -82,16 +82,20 @@ async function buildTheSource() {
     outdir
   };
 
-  const iiefConfig = {
-    ...cdnConfig,
-    bundle: true,
-    format: 'iife',
-    splitting: false,
-    globalName: 'SolidComponents',
-    plugins: [...cdnConfig.plugins]
-  };
+  // const iiefConfig = {
+  //   ...cdnConfig,
+  //   bundle: true,
+  //   format: 'iife',
+  //   splitting: false,
+  //   globalName: 'SolidComponents',
+  //   plugins: [...cdnConfig.plugins]
+  // };
 
-  return await Promise.all([esbuild.build(cdnConfig), esbuild.build(npmConfig), esbuild.build(iiefConfig)]);
+  return await Promise.all([
+    esbuild.build(cdnConfig),
+    esbuild.build(npmConfig)
+    // esbuild.build(iiefConfig)
+  ]);
 }
 
 //
@@ -166,7 +170,7 @@ await nextTask('Building source files', async () => {
   buildResults = await buildTheSource();
 });
 
-let result;
+// let result;
 
 // // Log deferred output
 // if (result.output.length > 0) {
