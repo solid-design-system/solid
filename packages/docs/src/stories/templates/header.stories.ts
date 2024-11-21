@@ -31,18 +31,8 @@ export const SampleA = {
         <!-- top-left-area end !-->
         <!-- top-right-area start !-->
         <div class="flex lg:hidden">
-          <sd-navigation-item
-            onclick="openDrawerSampleA()"
-            aria-expanded="false"
-            aria-controls="sample-a-drawer"
-            aria-labelledby="open-menu-icon"
-          >
-            <sd-icon
-              name="system/menu"
-              label="Open menu"
-              id="open-menu-icon"
-              class="text-xl -my-[1.5px] -mx-1"
-            ></sd-icon>
+          <sd-navigation-item id="open-menu-sample-a">
+            <sd-icon name="system/menu" label="Open menu" class="text-xl -my-[1.5px] -mx-1"></sd-icon>
           </sd-navigation-item>
         </div>
         <!-- top-right-area end !-->
@@ -107,11 +97,25 @@ export const SampleA = {
         </sd-navigation-item>
       </nav>
     </sd-drawer>
-    <script>
-      function openDrawerSampleA() {
+    <script type="module">
+      await Promise.all([
+        customElements.whenDefined('sd-navigation-item'),
+        customElements.whenDefined('sd-drawer')
+      ]).then(() => {
         const drawerSampleA = document.getElementById('sample-a-drawer');
-        drawerSampleA.show();
-      }
+        const navigationItemSampleA = document.getElementById('open-menu-sample-a');
+        const buttonSampleA = navigationItemSampleA.shadowRoot.querySelector('button');
+
+        buttonSampleA.setAttribute('aria-controls', 'sample-a-drawer');
+        //Add the necessary ARIA attributes to prevent only being added after action
+        buttonSampleA.setAttribute('aria-expanded', 'false');
+        drawerSampleA.addEventListener('sd-hide', () => buttonSampleA.setAttribute('aria-expanded', 'false'));
+
+        navigationItemSampleA.addEventListener('click', () => {
+          drawerSampleA.show();
+          buttonSampleA.setAttribute('aria-expanded', 'true');
+        });
+      });
     </script>
   `
 };
@@ -128,12 +132,7 @@ export const SampleA02 = {
         <!-- top-left-area end !-->
         <!-- top-right-area start !-->
         <div class="flex lg:hidden">
-          <sd-navigation-item
-            onclick="openDrawerSampleA2()"
-            aria-expanded="false"
-            aria-controls="sample-a02-drawer"
-            aria-labelledby="open-menu-icon"
-          >
+          <sd-navigation-item id="open-menu-sample-a-02">
             <sd-icon name="system/menu" label="Open menu" class="text-xl  -my-[1.5px] -mx-1"></sd-icon>
           </sd-navigation-item>
         </div>
@@ -210,11 +209,25 @@ export const SampleA02 = {
         </sd-navigation-item>
       </nav>
     </sd-drawer>
-    <script>
-      function openDrawerSampleA2() {
-        const drawerSampleA2 = document.getElementById('sample-a02-drawer');
-        drawerSampleA2.show();
-      }
+    <script type="module">
+      await Promise.all([
+        customElements.whenDefined('sd-navigation-item'),
+        customElements.whenDefined('sd-drawer')
+      ]).then(() => {
+        const drawerSampleA02 = document.getElementById('sample-a02-drawer');
+        const navigationItemSampleA02 = document.getElementById('open-menu-sample-a-02');
+        const buttonSampleA02 = navigationItemSampleA02.shadowRoot.querySelector('button');
+
+        buttonSampleA02.setAttribute('aria-controls', 'sample-a02-drawer');
+        //Add the necessary ARIA attributes to prevent only being added after action
+        buttonSampleA02.setAttribute('aria-expanded', 'false');
+        drawerSampleA02.addEventListener('sd-hide', () => buttonSampleA02.setAttribute('aria-expanded', 'false'));
+
+        navigationItemSampleA02.addEventListener('click', () => {
+          drawerSampleA02.show();
+          buttonSampleA02.setAttribute('aria-expanded', 'true');
+        });
+      });
     </script>
   `
 };
@@ -242,12 +255,7 @@ export const SampleB = {
             </div>
           </div>
           <div class="flex lg:hidden">
-            <sd-navigation-item
-              onclick="openDrawerSampleB()"
-              aria-expanded="false"
-              aria-controls="sample-b-drawer"
-              aria-labelledby="open-menu-icon"
-            >
+            <sd-navigation-item id="open-menu-sample-b">
               <sd-icon name="system/menu" label="Open menu" class="text-xl  -my-[1.5px] -mx-1"></sd-icon>
             </sd-navigation-item>
           </div>
@@ -300,11 +308,25 @@ export const SampleB = {
         </sd-navigation-item>
       </nav>
     </sd-drawer>
-    <script>
-      function openDrawerSampleB() {
+    <script type="module">
+      await Promise.all([
+        customElements.whenDefined('sd-navigation-item'),
+        customElements.whenDefined('sd-drawer')
+      ]).then(() => {
         const drawerSampleB = document.getElementById('sample-b-drawer');
-        drawerSampleB.show();
-      }
+        const navigationItemSampleB = document.getElementById('open-menu-sample-b');
+        const buttonSampleB = navigationItemSampleB.shadowRoot.querySelector('button');
+
+        buttonSampleB.setAttribute('aria-controls', 'sample-b-drawer');
+        //Add the necessary ARIA attributes to prevent only being added after action
+        buttonSampleB.setAttribute('aria-expanded', 'false');
+        drawerSampleB.addEventListener('sd-hide', () => buttonSampleB.setAttribute('aria-expanded', 'false'));
+
+        navigationItemSampleB.addEventListener('click', () => {
+          drawerSampleB.show();
+          buttonSampleB.setAttribute('aria-expanded', 'true');
+        });
+      });
     </script>
   `
 };
