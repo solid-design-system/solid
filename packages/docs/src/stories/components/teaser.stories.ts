@@ -143,7 +143,7 @@ export const MediaSlot = {
   render: () => html`
     <sd-teaser>
       <h3 slot="headline">Lorem ipsum sic semper</h3>
-      <img slot="media" src="./placeholders/images/architecture.jpg" alt="Test" style="width:100%; height: auto;" />
+      <img slot="media" src="./placeholders/images/architecture.jpg" alt="" style="width:100%; height: auto;" />
       <p>
         Quis ut ex cupidatat proident cillum ullamco ea aute ad laborum aliqua incididunt sint ipsum. Elit enim
         reprehenderit aliquip officia in minim. Eu ipsum pariatur dolor. Do ex in cupidatat anim aliqua sint voluptate
@@ -202,7 +202,7 @@ export const Breakpoint = {
     <div class="flex gap-8 flex-col">
       <sd-teaser breakpoint="0">
         <h3 slot="headline">Horizontal</h3>
-        <img slot="media" src="./placeholders/images/architecture.jpg" alt="Test" style="width:100%; height: auto;" />
+        <img slot="media" src="./placeholders/images/architecture.jpg" alt="" style="width:100%; height: auto;" />
         <p>
           Quis ut ex cupidatat proident cillum ullamco ea aute ad laborum aliqua incididunt sint ipsum. Elit enim
           reprehenderit aliquip officia in minim. Eu ipsum pariatur dolor. Do ex in cupidatat anim aliqua sint voluptate
@@ -212,7 +212,7 @@ export const Breakpoint = {
 
       <sd-teaser breakpoint="9999" class="w-[256px]">
         <h3 slot="headline">Vertical</h3>
-        <img slot="media" src="./placeholders/images/architecture.jpg" alt="Test" style="width:100%; height: auto;" />
+        <img slot="media" src="./placeholders/images/architecture.jpg" alt="" style="width:100%; height: auto;" />
         <p>
           Quis ut ex cupidatat proident cillum ullamco ea aute ad laborum aliqua incididunt sint ipsum. Elit enim
           reprehenderit aliquip officia in minim. Eu ipsum pariatur dolor. Do ex in cupidatat anim aliqua sint voluptate
@@ -231,7 +231,7 @@ export const Distribution = {
   render: () => html`
     <sd-teaser style="--distribution-media: 30%; --distribution-content: 70%;">
       <h3 slot="headline">Lorem ipsum sic semper</h3>
-      <img slot="media" src="./placeholders/images/architecture.jpg" alt="Test" style="width:100%; height: auto;" />
+      <img slot="media" src="./placeholders/images/architecture.jpg" alt="" style="width:100%; height: auto;" />
       <p>
         Quis ut ex cupidatat proident cillum ullamco ea aute ad laborum aliqua incididunt sint ipsum. Elit enim
         reprehenderit aliquip officia in minim. Eu ipsum pariatur dolor. Do ex in cupidatat anim aliqua sint voluptate

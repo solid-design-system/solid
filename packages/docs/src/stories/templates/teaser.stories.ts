@@ -35,7 +35,7 @@ export const UnclickableTeaserWithButton = {
         <div slot="media" class="relative">
           <img
             src="./placeholders/images/collaboration.jpg"
-            alt="Two men in business attire sitting on a sofa in a modern office, smiling and looking at a laptop screen."
+            alt="Two professionals reviewing a document together, emphasizing collaboration and expertise."
             class="aspect-video object-cover"
           />
         </div>
@@ -99,7 +99,7 @@ export const ClickableTeaser = {
               <img
                 class="aspect-video object-cover"
                 src="./placeholders/images/family.jpg"
-                alt="A man with glasses and a beard holding two young children in his arms, smiling outdoors with trees in the background."
+                alt="A smiling father with two children outdoors, symbolizing shared values and future growth."
               />
             </div>
             <h3 slot="headline" class="sd-headline sd-headline--size-lg">Future is an Attitude</h3>
@@ -205,7 +205,7 @@ export const teaserWithChipAndFlag = {
           <div slot="media" class="relative">
             <img
               src="./placeholders/images/coffeeshop.jpg"
-              alt="A group of four friends sitting together at a table, smiling and chatting, with one person using a tablet."
+              alt="Colleagues in a casual office meeting, smiling and interacting, symbolizing collaboration and the value of office spaces."
               class="aspect-video object-cover"
             />
             <span class="absolute top-3 left-4 sd-chip sd-chip--primary-500">Remote Work</span>
@@ -257,7 +257,7 @@ export const teaserWithChipAndFlag = {
           <div slot="media" class="relative">
             <img
               src="./placeholders/images/skyline.jpg"
-              alt="City skyline of Frankfurt by night in christmas time."
+              alt="City skyline, highlighting growth in real estate transactions."
               class="aspect-video sm:aspect-[3/4] md:aspect-[16/9] object-cover w-full"
             />
             <span class="absolute top-3 left-4 sd-chip sd-chip--white">Real Estate</span>
@@ -308,7 +308,7 @@ export const teaserWithDivision = {
           <img
             class="w-full aspect-[4/3] md:aspect-[3/4] object-cover min-h-full"
             src="./placeholders/images/collaboration.jpg"
-            alt="Two men in business attire sitting on a sofa in a modern office, smiling and looking at a laptop screen."
+            alt="Two professionals in an office discussing documents, symbolizing expertise in real estate fund management."
           />
         </div>
         <h3 slot="headline" class="sd-headline sd-headline--size-3xl text-primary">

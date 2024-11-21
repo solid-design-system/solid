@@ -29,7 +29,11 @@ export const TeaserMediaWithLink = {
     html` <div class="flex flex-col gap-12">
       <sd-teaser-media variant="gradient-dark">
         <div slot="media" class="relative">
-          <img class="w-full aspect-ratio" src="./placeholders/images/coins.jpg" alt="" />
+          <img
+            class="w-full aspect-ratio"
+            src="./placeholders/images/coins.jpg"
+            alt="Close-up of hands stacking coins into small piles on a table, suggesting financial planning or saving."
+          />
         </div>
         <div slot="meta" class="meta-info">
           <span class="meta-info-item">August 2024 | Olaf Janßen</span>
@@ -46,7 +50,12 @@ export const TeaserMediaWithLink = {
         </div>
       </sd-teaser-media>
       <sd-teaser-media variant="primary">
-        <img slot="media" class="w-full" src="./placeholders/images/collaboration.jpg" alt="" />
+        <img
+          slot="media"
+          class="w-full"
+          src="./placeholders/images/collaboration.jpg"
+          alt="Two professionals representing accessible customer support."
+        />
         <h3 slot="headline" class="sd-headline sd-headline--inverted">Your contact person</h3>
         <div class="flex flex-col gap-4">
           <p class="sd-paragraph sd-paragraph--inverted">
@@ -59,7 +68,12 @@ export const TeaserMediaWithLink = {
         </div>
       </sd-teaser-media>
       <sd-teaser-media variant="neutral-100">
-        <img slot="media" class="w-full aspect-ratio" src="./placeholders/images/skyline.jpg" alt="" />
+        <img
+          slot="media"
+          class="w-full aspect-ratio"
+          src="./placeholders/images/skyline.jpg"
+          alt="A vibrant city skyline at dusk, symbolizing economic growth and investment opportunities in urban hubs."
+        />
         <h3 slot="headline" class="sd-headline sd-headline--size-base">USA or Europe? It depends on the mix</h3>
         <div class="flex flex-col gap-4">
           <p class="sd-paragraph">
@@ -92,7 +106,11 @@ export const TeaserMediaOverrides = {
       </style>
       <sd-teaser-media variant="gradient-dark" class="media-overrides">
         <div slot="media" class="relative">
-          <img class="w-full aspect-ratio" src="./placeholders/images/coffeeshop.jpg" alt="" />
+          <img
+            class="w-full aspect-ratio"
+            src="./placeholders/images/coffeeshop.jpg"
+            alt="Diverse group of individuals in a casual meeting setting, emphasizing gender equality and collaboration."
+          />
         </div>
         <h3 slot="headline" class="sd-headline sd-headline--inverted">Gender</h3>
         <div slot="expandable">
