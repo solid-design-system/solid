@@ -6,6 +6,7 @@ const translation: Translation = {
   $name: 'Deutsch',
   $dir: 'ltr',
 
+  autoplay: 'Autoplay',
   audioPlayer: 'Audio-Player',
   carousel: 'Karussell',
   clearEntry: 'Eingabe löschen',
@@ -35,7 +36,7 @@ const translation: Translation = {
   showLess: 'Weniger anzeigen',
   showMore: 'Mehr anzeigen',
   showPassword: 'Passwort anzeigen',
-  slideNum: slide => `Folie ${slide}`,
+  slideNum: (slide, count) => `Folie ${slide} von ${count}`,
   toggleColorFormat: 'Farbformat umschalten',
   unmute: 'Unmute'
 };

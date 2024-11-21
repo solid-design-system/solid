@@ -74,6 +74,7 @@ export interface Translation extends DefaultTranslation {
   $name: string; // e.g. English, Español
   $dir: 'ltr' | 'rtl';
 
+  autoplay: string;
   audioPlayer: string;
   carousel: string;
   clearEntry: string;
@@ -100,7 +101,7 @@ export interface Translation extends DefaultTranslation {
   showLess: string;
   showMore: string;
   showPassword: string;
-  slideNum: (slide: number) => string;
+  slideNum: (slide: number, count: number) => string;
   toggleColorFormat: string;
   unmute: string;
 }

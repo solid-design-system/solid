@@ -1,6 +1,6 @@
 {
   "name": "@solid-design-system/tokens",
-  "version": "4.0.0",
+  "version": "4.2.0",
   "description": "Solid Design System: Tokens",
   "main": "index.js",
   "scripts": {
@@ -18,7 +18,7 @@
     "./tailwind": "./dist/tokens.tailwind.json"
   },
   "keywords": [],
-  "homepage": "https://solid-design-system.fe.union-investment.de/x.x.x/storybook/",
+  "homepage": "https://solid-design-system.fe.union-investment.de/docs/",
   "author": {
     "name": "Union Investment"
   },

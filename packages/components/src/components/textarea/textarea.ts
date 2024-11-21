@@ -20,6 +20,7 @@ import type { SolidFormControl } from '../../internal/solid-element';
  *
  * @slot label - The textarea's label. Alternatively, you can use the `label` attribute.
  * @slot help-text - Text that describes how to use the input. Alternatively, you can use the `help-text` attribute.
+ * @slot tooltip - An optional tooltip that helps describe the input. Use this slot with the `sd-tooltip` component.
  *
  * @event sd-blur - Emitted when the control loses focus.
  * @event sd-change - Emitted when an alteration to the control's value is committed by the user.
@@ -334,15 +335,19 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
 
     return html`
       <div part="form-control" class="flex flex-col h-full text-left">
-        <label
-          part="form-control-label"
-          id="label"
-          class=${cx('mb-2', hasLabel ? 'inline-block' : 'hidden', textSize)}
-          for="input"
-          aria-hidden=${hasLabel ? 'false' : 'true'}
-        >
-          <slot name="label">${this.label}</slot>
-        </label>
+        <div class="flex items-center gap-1 mb-2">
+          <label
+            part="form-control-label"
+            id="label"
+            class=${cx(hasLabel ? 'inline-block' : 'hidden', textSize)}
+            for="input"
+            aria-hidden=${hasLabel ? 'false' : 'true'}
+          >
+            <slot name="label">${this.label}</slot>
+          </label>
+
+          <slot name="tooltip"></slot>
+        </div>
 
         <div part="form-control-input" class=${cx('relative h-full w-full', this.disabled && 'cursor-not-allowed')}>
           <div
@@ -399,7 +404,8 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
               spellcheck=${ifDefined(this.spellcheck)}
               enterkeyhint=${ifDefined(this.enterkeyhint)}
               inputmode=${ifDefined(this.inputmode)}
-              aria-describedby="help-text"
+              aria-describedby="help-text invalid-message"
+              aria-invalid=${this.showInvalidStyle}
               @change=${this.handleChange}
               @input=${this.handleInput}
               @invalid=${this.handleInvalid}

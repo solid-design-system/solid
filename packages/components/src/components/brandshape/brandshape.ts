@@ -4,7 +4,7 @@ import { property, query, state } from 'lit/decorators.js';
 import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
-import type { TemplateResult } from 'lit-html';
+import type { TemplateResult } from 'lit';
 
 type Breakpoints = 0 | 414 | 640;
 
@@ -46,7 +46,7 @@ export default class SdBrandshape extends SolidElement {
 
   private resizeObserver: ResizeObserver;
 
-  private getSvg(breakpoint: Breakpoints, shape: 'top' | 'bottom'): TemplateResult {
+  private getSvg(breakpoint: Breakpoints, shape: 'top' | 'bottom') {
     return {
       0: this.smallSvg(shape),
       414: this.mediumSvg(shape),
@@ -54,7 +54,7 @@ export default class SdBrandshape extends SolidElement {
     }[breakpoint];
   }
 
-  private largeSvg(shape: 'top' | 'bottom'): TemplateResult {
+  private largeSvg(shape: 'top' | 'bottom') {
     return shape === 'top'
       ? html`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 121">
           <path
@@ -68,7 +68,7 @@ export default class SdBrandshape extends SolidElement {
         </svg>`;
   }
 
-  private mediumSvg(shape: 'top' | 'bottom'): TemplateResult {
+  private mediumSvg(shape: 'top' | 'bottom') {
     return shape === 'top'
       ? html`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 119">
           <path
@@ -82,7 +82,7 @@ export default class SdBrandshape extends SolidElement {
         </svg>`;
   }
 
-  private smallSvg(shape: 'top' | 'bottom'): TemplateResult {
+  private smallSvg(shape: 'top' | 'bottom') {
     return shape === 'top'
       ? html`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 113">
           <path

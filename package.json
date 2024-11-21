@@ -1,7 +1,7 @@
 {
   "name": "@solid-design-system/root",
   "version": "1.0.0",
-  "homepage": "https://solid-design-system.fe.union-investment.de/x.x.x/storybook/",
+  "homepage": "https://solid-design-system.fe.union-investment.de/docs/",
   "author": {
     "name": "Union Investment"
   },
@@ -48,7 +48,8 @@
   },
   "pnpm": {
     "patchedDependencies": {
-      "tailwindcss@3.4.1": "patches/tailwindcss@3.4.1.patch"
+      "tailwindcss@3.4.1": "patches/tailwindcss@3.4.1.patch",
+      "wc-storybook-helpers@1.5.3": "patches/wc-storybook-helpers@1.5.3.patch"
     }
   }
 }

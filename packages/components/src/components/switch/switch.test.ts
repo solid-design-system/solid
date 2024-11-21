@@ -96,6 +96,34 @@ describe('<sd-switch>', () => {
     await el.updateComplete;
   });
 
+  describe('should contain aria-invalid', () => {
+    it('as false when required, checked and touched', async () => {
+      const sdSwitch = await fixture<HTMLFormElement>(html` <sd-switch required></sd-switch> `);
+      const input = sdSwitch.shadowRoot!.querySelector('input')!;
+
+      sdSwitch.click();
+      await sdSwitch.updateComplete;
+
+      expect(input.getAttribute('aria-invalid')).to.equal('false');
+    });
+
+    it('as false when required, unchecked and untouched', async () => {
+      const sdSwitch = await fixture<HTMLFormElement>(html` <sd-switch required></sd-switch> `);
+      const input = sdSwitch.shadowRoot!.querySelector('input')!;
+      expect(input.getAttribute('aria-invalid')).to.equal('false');
+    });
+
+    it('as true when required, unchecked and touched', async () => {
+      const sdSwitch = await fixture<SdSwitch>(html`<sd-switch required checked></sd-switch>`);
+      const input = sdSwitch.shadowRoot!.querySelector('input')!;
+
+      sdSwitch.click();
+      await waitUntil(() => input.getAttribute('aria-invalid') === 'true');
+
+      expect(input.getAttribute('aria-invalid')).to.equal('true');
+    });
+  });
+
   describe('when submitting a form', () => {
     it('should submit the correct value when a value is provided', async () => {
       const form = await fixture<HTMLFormElement>(html`
@@ -148,7 +176,6 @@ describe('<sd-switch>', () => {
       sdSwitch.setCustomValidity('Invalid selection');
       await sdSwitch.updateComplete;
 
-      expect(sdSwitch.checkValidity()).to.be.false;
       expect(sdSwitch.checkValidity()).to.be.false;
       expect(sdSwitch.hasAttribute('data-invalid')).to.be.true;
       expect(sdSwitch.hasAttribute('data-valid')).to.be.false;

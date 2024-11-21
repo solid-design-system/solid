@@ -6,6 +6,7 @@ const translation: Translation = {
   $name: 'English',
   $dir: 'ltr',
 
+  autoplay: 'Autoplay',
   audioPlayer: 'Audio Player',
   clearEntry: 'Clear entry',
   close: 'Close',
