@@ -79,15 +79,15 @@ export const TeaserMediaWithLink = {
 };
 
 /**
- * - Aligment: Teaser contents can be center aligned if desired.
+ * - Alignment: Teaser contents can be center aligned if desired.
  * - Paddings: Can be changed as desired.
- * - Headline size: Can be changed as desired.
  */
 export const TeaserMediaOverrides = {
   render: () =>
     html`<style>
-        .media-overrides .sd-headline {
-          justify-content: center;
+        .media-overrides::part(content) {
+          display: flex;
+          align-items: center;
         }
       </style>
       <sd-teaser-media variant="gradient-dark" class="media-overrides">
@@ -95,8 +95,8 @@ export const TeaserMediaOverrides = {
           <img class="w-full aspect-ratio" src="./placeholders/images/coffeeshop.jpg" alt="" />
         </div>
         <h3 slot="headline" class="sd-headline sd-headline--inverted">Gender</h3>
-        <div slot="expandable" class="text-center">
-          <p class="sd-paragraph sd-paragraph--inverted text-xl pb-24">We are actively promoting gender equality.</p>
+        <div slot="expandable">
+          <p class="sd-paragraph sd-paragraph--inverted pb-12">We are actively promoting gender equality.</p>
         </div>
       </sd-teaser-media> `
 };
