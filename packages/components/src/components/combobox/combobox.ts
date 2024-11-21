@@ -223,11 +223,6 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
    */
   @property({ attribute: 'max-options-visible', type: Number }) maxOptionsVisible = 3;
 
-  /**
-   * Show an ellipsis on the tag when the number of characters exceeds 15.
-   */
-  @property({ attribute: 'tag-ellipsis', reflect: true, type: Boolean }) tagEllipsis = false;
-
   /** Shows success styles if the validity of the input is valid. */
   @property({ type: Boolean, reflect: true, attribute: 'style-on-valid' }) styleOnValid = false;
 
@@ -253,17 +248,10 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
    * the specified value.
    */
   @property() getTag: (option: SdOption, index: number) => TemplateResult | string | HTMLElement = option => {
-    let tagLabel = option.getTextLabel();
-
-    if (this.tagEllipsis && option.getTextLabel().length >= 15) {
-      tagLabel = `${tagLabel.slice(0, 15)}...`;
-    }
-
     return html`
       <sd-tag
         ?disabled=${this.disabled}
         part="tag"
-        title=${this.tagEllipsis ? option.getTextLabel() : ''}
         exportparts="
               base:tag__base,
               content:tag__content,
@@ -273,7 +261,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
         removable
         @sd-remove=${(event: CustomEvent) => this.handleTagRemove(event, option)}
       >
-        ${tagLabel}
+        ${option.getTextLabel()}
       </sd-tag>
     `;
   };
@@ -1365,6 +1353,14 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
 
       sd-tag::part(base) {
         @apply rounded-default px-1;
+      }
+
+      sd-tag::part(content) {
+        max-width: var(--tag-max-width, 15ch);
+        overflow: hidden;
+        white-space: nowrap;
+        display: inline-block;
+        text-overflow: ellipsis;
       }
 
       sd-tag[size='lg']::part(base) {

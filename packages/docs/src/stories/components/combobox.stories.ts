@@ -382,30 +382,14 @@ export const Multiple = {
 /**
  * Use the `useTags` attribute to display selected options as tags using the `sd-tag` component.
  * Use Backspace to remove the last selected option.
+ * Use `--tag-max-width` to set the maximum width of the tags and to show an ellipsis, e.g. `<sd-combobox style="--tag-max-width: 40px">`. The default value is `15ch`.
  * __Hint:__ It requires the `multiple` attribute to be set.
  */
 export const useTags = {
   render: () => html`
     <div class="w-[650px] h-[500px]">
       <sd-combobox size="lg" label="Label" placement="bottom" multiple value="option-1 option-2" useTags>
-        <sd-option value="option-1">Option 1</sd-option>
-        <sd-option value="option-2">Option 2</sd-option>
-        <sd-option value="option-3">Option 3</sd-option>
-        <sd-option value="option-4">Option 4</sd-option>
-        <sd-option value="option-5">Option 5</sd-option>
-      </sd-combobox>
-    </div>
-  `
-};
-
-/**
- * Use the `tag-ellipsis` attribute to display an ellipsis in tags when the character count exceeds 15.
- */
-export const TagEllipsis = {
-  render: () => html`
-    <div class="w-[650px] h-[500px]">
-      <sd-combobox size="lg" label="Label" placement="bottom" multiple tag-ellipsis value="option-1 option-2" useTags>
-        <sd-option value="option-1">BBBank Dynamik Union</sd-option>
+        <sd-option value="option-1">Option 1 with long label</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
         <sd-option value="option-3">Option 3</sd-option>
         <sd-option value="option-4">Option 4</sd-option>
