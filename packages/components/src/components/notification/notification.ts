@@ -6,7 +6,6 @@ import { LocalizeController } from '../../utilities/localize.js';
 import { property, query } from 'lit/decorators.js';
 import { waitForEvent } from '../../internal/event.js';
 import { watch } from '../../internal/watch.js';
-import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element.js';
 
@@ -290,10 +289,10 @@ export default class SdNotification extends SolidElement {
   }
 
   /**
-   * Inherits Tailwindclasses and includes additional styling.
+   * Inherits global stylesheet including TailwindCSS
    */
   static styles = [
-    componentStyles,
+    ...SolidElement.styles,
     css`
       :host {
         @apply contents;

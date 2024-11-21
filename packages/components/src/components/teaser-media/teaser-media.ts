@@ -2,7 +2,6 @@ import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { HasSlotController } from '../../internal/slot';
 import { property, query } from 'lit/decorators.js';
-import componentStyles from 'src/styles/component.styles';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 /**
@@ -112,7 +111,7 @@ export default class SdTeaserMedia extends SolidElement {
   }
 
   static styles = [
-    componentStyles,
+    ...SolidElement.styles,
     css`
       :host {
         @apply block;

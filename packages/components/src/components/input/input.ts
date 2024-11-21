@@ -10,7 +10,6 @@ import { LocalizeController } from '../../utilities/localize';
 import { longPress } from '../../internal/longpress.js';
 import { property, query, state } from 'lit/decorators.js';
 import { watch } from '../../internal/watch';
-import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 import type { SolidFormControl } from '../../internal/solid-element';
@@ -752,10 +751,10 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   }
 
   /**
-   * Inherits Tailwindclasses and includes additional styling.
+   * Inherits global stylesheet including TailwindCSS
    */
   static styles = [
-    componentStyles,
+    ...SolidElement.styles,
     css`
       :host {
         @apply box-border relative inline-block text-left w-full;

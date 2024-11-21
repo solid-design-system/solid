@@ -5,7 +5,6 @@ import { property, state } from 'lit/decorators.js';
 import { requestIcon } from './request';
 import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
 import { watch } from '../../internal/watch';
-import componentStyles from '../../styles/component.styles';
 import SolidElement from '../../internal/solid-element';
 
 let parser: DOMParser;
@@ -132,7 +131,7 @@ export default class SdIcon extends SolidElement {
   }
 
   static styles = [
-    componentStyles,
+    ...SolidElement.styles,
     css`
       :host {
         width: 1em;

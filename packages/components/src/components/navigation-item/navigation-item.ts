@@ -4,7 +4,6 @@ import { HasSlotController } from '../../internal/slot';
 import { html, literal } from 'lit/static-html.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { property } from 'lit/decorators.js';
-import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
@@ -289,10 +288,10 @@ export default class SdNavigationItem extends SolidElement {
   }
 
   /**
-   * Inherits Tailwindclasses and includes additional styling.
+   * Inherits global stylesheet including TailwindCSS
    */
   static styles = [
-    componentStyles,
+    ...SolidElement.styles,
     css`
       :host {
         @apply inline-block relative box-border;

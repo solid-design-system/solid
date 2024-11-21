@@ -2,7 +2,6 @@ import '../accordion/accordion';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { property, queryAssignedElements } from 'lit/decorators.js';
-import componentStyles from '../../styles/component.styles';
 import SolidElement from '../../internal/solid-element';
 
 /**
@@ -59,7 +58,7 @@ export default class SdAccordionGroup extends SolidElement {
   }
 
   static styles = [
-    componentStyles,
+    ...SolidElement.styles,
     css`
       :host {
         @apply block;

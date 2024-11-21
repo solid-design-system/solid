@@ -4,7 +4,6 @@ import { LocalizeController } from '../../utilities/localize.js';
 import { property, query } from 'lit/decorators.js';
 import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch.js';
-import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
@@ -155,7 +154,7 @@ export default class SdExpandable extends SolidElement {
   }
 
   static styles = [
-    componentStyles,
+    ...SolidElement.styles,
     css`
       :host {
         --gradient-color-start: rgba(255, 255, 255, 0);

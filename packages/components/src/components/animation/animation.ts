@@ -219,7 +219,7 @@ export default class SdAnimation extends SolidElement {
   }
 
   static styles = [
-    componentStyles,
+    ...SolidElement.styles,
     css`
       :host {
         display: contents;

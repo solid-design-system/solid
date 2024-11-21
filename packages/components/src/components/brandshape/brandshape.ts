@@ -1,7 +1,6 @@
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { property, query, state } from 'lit/decorators.js';
-import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 import type { TemplateResult } from 'lit';
@@ -226,10 +225,10 @@ export default class SdBrandshape extends SolidElement {
   }
 
   /**
-   * Inherits Tailwindclasses and includes additional styling.
+   * Inherits global stylesheet including TailwindCSS
    */
   static styles = [
-    componentStyles,
+    ...SolidElement.styles,
     css`
       :host {
         @apply block;

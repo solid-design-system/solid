@@ -4,7 +4,6 @@ import { customElement } from '../../internal/register-custom-element';
 import { HasSlotController } from '../../internal/slot';
 import { property, query, state } from 'lit/decorators.js';
 import { watch } from '../../internal/watch';
-import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
@@ -181,10 +180,10 @@ export default class SdOption extends SolidElement {
   }
 
   /**
-   * Inherits Tailwindclasses and includes additional styling.
+   * Inherits global stylesheet including TailwindCSS
    */
   static styles = [
-    componentStyles,
+    ...SolidElement.styles,
     css`
       :host {
         @apply block relative w-full !outline-none;

@@ -4,7 +4,6 @@ import { html, literal } from 'lit/static-html.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { property } from 'lit/decorators.js';
 import { watch } from '../../internal/watch';
-import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 /**
@@ -209,9 +208,7 @@ export default class SdStep extends SolidElement {
   }
 
   static styles = [
-    componentStyles,
-    // unsafeCSS(ParagraphStyles),
-
+    ...SolidElement.styles,
     css`
       :host {
         @apply flex-1;

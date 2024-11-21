@@ -7,7 +7,6 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { live } from 'lit/directives/live.js';
 import { property, query, state } from 'lit/decorators.js';
 import { watch } from '../../internal/watch';
-import componentStyles from 'src/styles/component.styles';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 import type { SolidFormControl } from '../../internal/solid-element';
@@ -285,7 +284,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
    * Inherits Tailwind classes and includes additional styling.
    */
   static styles = [
-    componentStyles,
+    ...SolidElement.styles,
     css`
       :host {
         @apply block w-max;

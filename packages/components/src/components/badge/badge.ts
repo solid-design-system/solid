@@ -1,7 +1,6 @@
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { property } from 'lit/decorators.js';
-import componentStyles from 'src/styles/component.styles';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
@@ -59,7 +58,7 @@ export default class SdBadge extends SolidElement {
   }
 
   static styles = [
-    componentStyles,
+    ...SolidElement.styles,
     css`
       :host {
         @apply inline-flex items-center justify-center;

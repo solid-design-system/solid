@@ -3,7 +3,6 @@ import { customElement } from '../../internal/register-custom-element';
 import { LocalizeController } from '../../utilities/localize';
 import { property, query, state } from 'lit/decorators.js';
 import { scrollIntoView } from '../../internal/scroll';
-import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 import type SdTab from '../tab/tab';
@@ -373,7 +372,7 @@ export default class SdTabGroup extends SolidElement {
   }
 
   static styles = [
-    componentStyles,
+    ...SolidElement.styles,
     css`
       :host {
         @apply block box-border;

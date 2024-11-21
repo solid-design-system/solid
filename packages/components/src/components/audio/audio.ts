@@ -520,7 +520,6 @@ export default class SdAudio extends SolidElement {
     `;
   }
 
-  /** Inherits Tailwindclasses and includes additional styling. */
   static styles = [
     SolidElement.styles,
     css`

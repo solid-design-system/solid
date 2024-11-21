@@ -10,7 +10,6 @@ import { lockBodyScrolling, unlockBodyScrolling } from '../../internal/scroll';
 import { property, query } from 'lit/decorators.js';
 import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch';
-import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
 import Modal from '../../internal/modal';
 import SolidElement from '../../internal/solid-element';
@@ -317,7 +316,7 @@ export default class SdDialog extends SolidElement {
   }
 
   static styles = [
-    componentStyles,
+    ...SolidElement.styles,
     css`
       :host {
         --width: 662px;

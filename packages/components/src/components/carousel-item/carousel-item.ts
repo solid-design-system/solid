@@ -1,6 +1,5 @@
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
-import componentStyles from '../../styles/component.styles';
 import SolidElement from '../../internal/solid-element.js';
 
 /**
@@ -30,7 +29,7 @@ export default class SdCarouselItem extends SolidElement {
   }
 
   static styles = [
-    componentStyles,
+    ...SolidElement.styles,
     css`
       :host {
         aspect-ratio: var(--aspect-ratio);

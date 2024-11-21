@@ -1,7 +1,6 @@
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { property, query, state } from 'lit/decorators.js';
-import componentStyles from 'src/styles/component.styles';
 import SolidElement from '../../internal/solid-element';
 
 /**
@@ -81,7 +80,7 @@ export default class SdButtonGroup extends SolidElement {
   }
 
   static styles = [
-    componentStyles,
+    ...SolidElement.styles,
     css`
       :host {
         display: inline-block;

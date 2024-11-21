@@ -9,7 +9,6 @@ import {
 import { HasSlotController } from '../../internal/slot';
 import { property, query, state } from 'lit/decorators.js';
 import { watch } from '../../internal/watch';
-import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
 import SdButtonGroup from '../button-group/button-group';
 import SdRadio from '../../components/radio/radio';
@@ -430,7 +429,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
    * Inherits Tailwind classes and includes additional styling.
    */
   static styles = [
-    componentStyles,
+    ...SolidElement.styles,
     css`
       :host {
         @apply block;

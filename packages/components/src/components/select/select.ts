@@ -11,7 +11,6 @@ import { scrollIntoView } from '../../internal/scroll.js';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { waitForEvent } from '../../internal/event.js';
 import { watch } from '../../internal/watch.js';
-import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
 import SdIcon from '../icon/icon';
 import SdPopup from '../popup/popup';
@@ -1039,10 +1038,10 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   }
 
   /**
-   * Inherits Tailwindclasses and includes additional styling.
+   * Inherits global stylesheet including TailwindCSS
    */
   static styles = [
-    componentStyles,
+    ...SolidElement.styles,
     css`
       :host {
         @apply block relative w-full;

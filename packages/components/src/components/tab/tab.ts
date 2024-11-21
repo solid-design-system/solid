@@ -2,7 +2,6 @@ import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { property, query } from 'lit/decorators.js';
 import { watch } from '../../internal/watch';
-import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
@@ -107,7 +106,7 @@ export default class SdTab extends SolidElement {
   }
 
   static styles = [
-    componentStyles,
+    ...SolidElement.styles,
     css`
       :host {
         @apply box-border block;

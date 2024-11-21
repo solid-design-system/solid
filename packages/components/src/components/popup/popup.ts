@@ -2,7 +2,6 @@ import { arrow, autoUpdate, computePosition, flip, offset, shift, size } from '@
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { property, query } from 'lit/decorators.js';
-import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
@@ -473,7 +472,7 @@ export default class SdPopup extends SolidElement {
   }
 
   static styles = [
-    componentStyles,
+    ...SolidElement.styles,
     css`
       :host {
         --arrow-color: var(--sd-color-neutral-1000);

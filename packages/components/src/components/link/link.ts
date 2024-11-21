@@ -3,7 +3,6 @@ import { customElement } from '../../internal/register-custom-element';
 import { HasSlotController } from '../../internal/slot';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { property, query } from 'lit/decorators.js';
-import componentStyles from 'src/styles/component.styles';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
@@ -134,9 +133,8 @@ export default class SdLink extends SolidElement {
     ></a>`;
   }
 
-  /** Inherits Tailwindclasses and includes additional styling. */
   static styles = [
-    componentStyles,
+    ...SolidElement.styles,
     css`
       ::slotted(sd-icon) {
         font-size: 1.25em;

@@ -4,7 +4,6 @@ import { customElement } from '../../internal/register-custom-element';
 import { HasSlotController } from '../../internal/slot';
 import { property } from 'lit/decorators.js';
 import { watch } from '../../internal/watch';
-import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 import type SdCheckbox from '../checkbox/checkbox';
@@ -132,7 +131,7 @@ export default class SdCheckboxGroup extends SolidElement {
    * Inherits Tailwind classes and includes additional styling.
    */
   static styles = [
-    componentStyles,
+    ...SolidElement.styles,
     css`
       :host {
         @apply block;

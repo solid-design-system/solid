@@ -4,7 +4,6 @@ import { HasSlotController } from '../../internal/slot';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { property, query, state } from 'lit/decorators.js';
 import { watch } from '../../internal/watch';
-import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
@@ -146,7 +145,7 @@ export default class SdRadioButton extends SolidElement {
     `;
   }
   static styles = [
-    componentStyles,
+    ...SolidElement.styles,
     css`
       :host {
         @apply block w-min;

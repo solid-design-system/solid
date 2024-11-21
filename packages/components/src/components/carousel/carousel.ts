@@ -10,7 +10,6 @@ import { property, query, state } from 'lit/decorators.js';
 import { range } from 'lit/directives/range.js';
 import { ScrollController } from './scroll-controller.js';
 import { watch } from '../../internal/watch.js';
-import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
 import SdCarouselItem from '../carousel-item/carousel-item.js';
 import SolidElement from '../../internal/solid-element.js';
@@ -627,7 +626,7 @@ export default class SdCarousel extends SolidElement {
   }
 
   static styles = [
-    componentStyles,
+    ...SolidElement.styles,
     css`
       :host {
         --slide-gap: var(--sl-spacing-medium, 1rem);

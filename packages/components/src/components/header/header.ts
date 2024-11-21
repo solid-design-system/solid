@@ -2,7 +2,6 @@ import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { debounce } from '../../internal/debounce.js';
 import { property } from 'lit/decorators.js';
-import componentStyles from '../../styles/component.styles';
 import SolidElement from '../../internal/solid-element';
 import type { PropertyValues } from 'lit';
 
@@ -109,7 +108,7 @@ export default class SdHeader extends SolidElement {
   }
 
   static styles = [
-    componentStyles,
+    ...SolidElement.styles,
     css`
       :host {
         @apply block;

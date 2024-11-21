@@ -1,7 +1,6 @@
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { property, query } from 'lit/decorators.js';
-import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
@@ -268,10 +267,10 @@ export default class SdFlipcard extends SolidElement {
   }
 
   /**
-   * Inherits Tailwindclasses and includes additional styling.
+   * Inherits global stylesheet including TailwindCSS
    */
   static styles = [
-    componentStyles,
+    ...SolidElement.styles,
     css`
       :host {
         @apply block aspect-3/4;

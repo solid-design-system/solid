@@ -3,7 +3,6 @@ import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { property, state } from 'lit/decorators.js';
 import { watch } from '../../internal/watch';
-import componentStyles from 'src/styles/component.styles';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
@@ -165,7 +164,7 @@ export default class SdRadio extends SolidElement {
    * Inherits Tailwind classes and includes additional styling.
    */
   static styles = [
-    componentStyles,
+    ...SolidElement.styles,
     css`
       :host {
         @apply block w-max;
