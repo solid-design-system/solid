@@ -508,7 +508,6 @@ export const Invalid = {
         style-on-valid=""
         value=""
         required=""
-        clearable=""
         class="invalid-example"
       >
         <sd-option class="option" value="option-1">Option 1</sd-option>
