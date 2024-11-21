@@ -47,7 +47,7 @@ describe('<sd-combobox>', () => {
     expect(el.value).to.equal('');
     expect(el.defaultValue).to.equal('');
     expect(el.size).to.equal('lg');
-    expect(el.placeholder).to.equal('Please search');
+    expect(el.placeholder).to.equal('Please search and select');
     expect(el.disabled).to.be.false;
     expect(el.clearable).to.be.false;
     expect(el.open).to.be.false;

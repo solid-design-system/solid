@@ -28,7 +28,7 @@ const translation: Translation = {
   selectAColorFromTheScreen: 'Farbe vom Bildschirm auswählen',
   selectDefaultPlaceholder: 'Bitte auswählen',
   tagsSelected: 'Optionen ausgewählt',
-  comboboxDefaultPlaceholder: 'Bitte suchen',
+  comboboxDefaultPlaceholder: 'Bitte suchen und auswählen',
   showPassword: 'Passwort anzeigen',
   slideNum: slide => `Folie ${slide}`,
   toggleColorFormat: 'Farbformat umschalten',

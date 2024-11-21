@@ -24,7 +24,7 @@ const translation: Translation = {
   selectAColorFromTheScreen: 'Select a color from the screen',
   selectDefaultPlaceholder: 'Please select',
   tagsSelected: 'Options selected',
-  comboboxDefaultPlaceholder: 'Please search',
+  comboboxDefaultPlaceholder: 'Please search and select',
   showPassword: 'Show password',
   toggleColorFormat: 'Toggle color format',
   carousel: 'Carousel',
