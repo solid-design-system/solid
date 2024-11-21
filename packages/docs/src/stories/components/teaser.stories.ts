@@ -29,7 +29,7 @@ export default {
     {
       type: 'slot',
       name: 'default',
-      value: `<div class="slot slot--border slot--text h-12 mx-4">Main slot</div>`
+      value: `<div class="slot slot--border slot--text h-12">Main slot</div>`
     },
     {
       type: 'slot',
@@ -39,7 +39,7 @@ export default {
     {
       type: 'slot',
       name: 'meta',
-      value: `<div slot="meta" class="slot slot--border slot--text h-12 mx-4">Meta slot</div>`
+      value: `<div slot="meta" class="slot slot--border slot--text h-12">Meta slot</div>`
     }
   ]),
   argTypes,
@@ -53,7 +53,7 @@ export default {
   decorators: [
     (story: () => typeof html) => html`
       <style>
-        #default-teaser sd-teaser::part(headline) {
+        #default-teaser sd-teaser::part(content) {
           margin: 0 16px;
         }
       </style>
