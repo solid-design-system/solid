@@ -76,7 +76,7 @@ export default class SdOptgroup extends SolidElement {
         part="base"
         aria-labelledby="group-label"
       >
-        <sd-divider id="divider" class="mb-2" part="divider"></sd-divider>
+        <sd-divider id="divider" class="pt-2 pb-4" part="divider"></sd-divider>
         <div
           part="label-container"
           class="${cx(this.disabled ? 'text-neutral-500' : 'text-black')} px-4 font-bold text-left"
