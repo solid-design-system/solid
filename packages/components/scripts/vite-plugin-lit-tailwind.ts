@@ -51,7 +51,12 @@ export default function litTailwindPlugin(options: LitTailwindPluginOptions = {}
             .then(result => result.css);
 
           // Replace the original CSS in the code
-          transformedCode = transformedCode.replace(fullMatch, `css\`${result}\``);
+          transformedCode = transformedCode.replace(
+            fullMatch,
+            `css\`${result
+              // Escape backticks in CSS
+              .replaceAll('`', '\\`')}\``
+          );
         } catch (error: unknown) {
           console.error(`PostCSS error: ${error as string}`);
         }

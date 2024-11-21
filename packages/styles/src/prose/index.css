@@ -29,23 +29,23 @@
   /**
     * headings after a heading have a smaller margin-top
     */
-  > :is(h1, h2, h3, h4, h5):not(#\9) + :is(h1, h2, h3, h4, h5) {
-    /* :not(#\9) is a hack to raise specifity, see https://stackoverflow.com/a/61781795 */
+  > :is(h1, h2, h3, h4, h5):not(#_) + :is(h1, h2, h3, h4, h5) {
+    /* :not(#_) is a hack to raise specifity, see https://stackoverflow.com/a/61781795 */
     @apply mt-2;
   }
 
   /**
     * Headlines after other non-headlines have a larger margin-top
     */
-  > *:not(:is(h1, h2, h3, h4, h5)) + :is(h1, h2, h3, h4, h5):not(#\9) {
+  > *:not(:is(h1, h2, h3, h4, h5)) + :is(h1, h2, h3, h4, h5):not(#_) {
     @apply mt-8;
   }
 
   /**
     * Images and figures lead to a bigger margin-top for the next element
     */
-  > figure + *:not(#\9),
-  > img + *:not(#\9) {
+  > figure + *:not(#_),
+  > img + *:not(#_) {
     @apply mt-6;
   }
 
@@ -82,7 +82,7 @@
   /**
     * Fixes for other elements
     */
-  > :is(ul, ol):not(#\9) {
+  > :is(ul, ol):not(#_) {
     /* ul and ol have padding that has to be reset */
     @apply py-0;
   }

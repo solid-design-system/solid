@@ -46,12 +46,19 @@ export function litTailwindPlugin(options = {}) {
               tailwindcss,
               autoprefixer,
               cssnano
-            ]).process(cssContent, {
-              from: undefined
-            });
+            ])
+              .process(cssContent, {
+                from: undefined
+              })
+              .then(result => result.css);
 
             // Replace the original CSS in the code
-            transformedCode = transformedCode.replace(fullMatch, `css\`${result.css}\``);
+            transformedCode = transformedCode.replace(
+              fullMatch,
+              `css\`${result
+                // Escape backticks in CSS
+                .replaceAll('`', '\\`')}\``
+            );
           } catch (error) {
             console.error(`PostCSS error: ${error}`);
           }

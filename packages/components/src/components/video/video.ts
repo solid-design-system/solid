@@ -144,7 +144,7 @@ export default class SdVideo extends SolidElement {
           role="presentation"
           class=${cx(
             this.overlay && !this.playing ? 'opacity-100' : 'opacity-0',
-            'bg-[rgba(0,0,0,0.65)] w-full h-full absolute top-0 left-0 pointer-events-none z-20 play-pause-transition'
+            'bg-[black] bg-opacity-60 w-full h-full absolute top-0 left-0 pointer-events-none z-20 play-pause-transition'
           )}
         ></div>
         <slot></slot>

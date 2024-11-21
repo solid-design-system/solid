@@ -94,7 +94,7 @@ export default class SdTeaserMedia extends SolidElement {
                 class=${cx(
                   'hidden',
                   slots['teaser-has-expandable'] &&
-                    'h-[0px] invisible opacity-0 md:[transition:_height_0.2s_linear,opacity_0.1s_linear_0.1s] md:block md:group-hover:h-auto md:group-hover:my-4 md:group-hover:opacity-[100%] md:group-hover:visible'
+                    'h-[0px] invisible opacity-0 md:block md:group-hover:h-auto md:group-hover:my-4 md:group-hover:opacity-[100%] md:group-hover:visible'
                 )}
                 part="expandable"
               >
@@ -124,6 +124,14 @@ export default class SdTeaserMedia extends SolidElement {
 
       ::slotted([slot='headline']) {
         @apply font-bold !m-0 !text-lg;
+      }
+
+      @media (min-width: 768px) {
+        part[expandable] {
+          transition:
+            height 0.2s linear,
+            opacity 0.1s linear 0.1s;
+        }
       }
     `
   ];
