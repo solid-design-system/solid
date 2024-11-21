@@ -11,7 +11,7 @@ export default {
   },
   title: 'Templates/Header'
 };
-
+/** **Accessibility hint:** aria-expanded and aria-controls may be use for smaller screens to make header accessible */
 export const SampleA = {
   name: 'Header Sample A-01',
   render: () => html`
