@@ -318,7 +318,6 @@ export default class SdDialog extends SolidElement {
 
   static styles = [
     componentStyles,
-    // unsafeCSS(HeadlineStyles),
     css`
       :host {
         --width: 662px;

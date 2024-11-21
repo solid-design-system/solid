@@ -1,4 +1,4 @@
-import { css, html, unsafeCSS } from 'lit';
+import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { HasSlotController } from '../../internal/slot';
 import { LocalizeController } from '../../utilities/localize';
@@ -523,7 +523,6 @@ export default class SdAudio extends SolidElement {
   /** Inherits Tailwindclasses and includes additional styling. */
   static styles = [
     SolidElement.styles,
-    unsafeCSS(InteractiveStyles),
     css`
       .progress-slider:focus-visible {
         @apply outline-none;

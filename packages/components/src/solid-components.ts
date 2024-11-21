@@ -1,6 +1,8 @@
 // Components
 export { default as SdAccordion } from './components/accordion/accordion.js';
 export { default as SdAccordionGroup } from './components/accordion-group/accordion-group.js';
+export { default as SdAudio } from './components/audio/audio.js';
+export { default as SdAnimation } from './components/animation/animation.js';
 export { default as SdBadge } from './components/badge/badge.js';
 export { default as SdBrandshape } from './components/brandshape/brandshape.js';
 export { default as SdButton } from './components/button/button.js';
