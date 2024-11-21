@@ -20,7 +20,7 @@
     "directory": "packages/theming"
   },
   "keywords": [],
-  "homepage": "https://solid-design-system.fe.union-investment.de/x.x.x/storybook/",
+  "homepage": "https://solid-design-system.fe.union-investment.de/docs/",
   "files": [
     "src",
     "types"

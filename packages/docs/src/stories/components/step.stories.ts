@@ -145,7 +145,7 @@ export const AsLink = {
   render: () => html`
     <div class="w-min">
       <sd-step
-        href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/?path=/docs/docs-general-introduction--docs"
+        href="https://solid-design-system.fe.union-investment.de/docs/?path=/docs/docs-general-introduction--docs"
       >
         <span slot="label">Step name</span>
       </sd-step>
