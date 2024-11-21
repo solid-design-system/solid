@@ -53,16 +53,11 @@ export default {
   decorators: [
     (story: () => typeof html) => html`
       <style>
-        sd-teaser#default-teaser::part(headline) {
+        #default-teaser sd-teaser::part(headline) {
           margin: 0 16px;
         }
       </style>
-      <!-- Dev note: this script is used only to specifically target the default story teaser -->
-      <script type="module">
-        const teasers = document.querySelectorAll('sd-teaser');
-        teasers[0].setAttribute('id', 'default-teaser');
-      </script>
-      ${story()}
+      <div id="default-teaser">${story()}</div>
     `
   ]
 };
