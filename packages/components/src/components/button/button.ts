@@ -1,5 +1,5 @@
 import '../spinner/spinner';
-import { css } from 'lit';
+import { css, unsafeCSS } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { FormControlController, validValidityState } from '../../internal/form';
 import { HasSlotController } from '../../internal/slot';
@@ -372,7 +372,12 @@ export default class SdButton extends SolidElement implements SolidFormControl {
    * Inherits Tailwindclasses and includes additional styling.
    */
   static styles = [
-    componentStyles,
+    unsafeCSS(
+      componentStyles.cssText.replaceAll(
+        '.leading-[calc(var(--tw-varspacing)-2px)]',
+        `.leading-\\[calc\\(var\\(--tw-varspacing\\)-2px\\)\\]`
+      )
+    ),
 
     css`
       :host {

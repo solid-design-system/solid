@@ -1,4 +1,7 @@
-import { css } from 'lit';
+import { unsafeCSS } from 'lit';
+
+/* This is used to get syntax highlighting in VSCode */
+const css = unsafeCSS;
 
 /*
  * Make Tailwind-CSS globally accessible
@@ -10,7 +13,17 @@ import { css } from 'lit';
  * (See: https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements#internal_vs._external_styles)
  */
 
-export default css`
+const styles = css`
+  /* TODO: This is our test case */
+
+  * {
+    outline: green solid 2px;
+  }
+
+  .leading-\[calc\(var\(--tw-varspacing\)-2px\)\] {
+    outline: red solid 2px;
+  }
+
   /* Import CSS styles once to make them available in every component */
   @import url('../styles/src/typography/interactive.css');
   @import url('../styles/src/typography/paragraph.css');
@@ -51,3 +64,8 @@ export default css`
     display: none !important;
   }
 `;
+
+export default unsafeCSS(styles);
+
+/* TODO: Debugging */
+console.log('component', styles.cssText);

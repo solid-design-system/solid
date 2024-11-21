@@ -44,8 +44,8 @@ export function litTailwindPlugin(options = {}) {
               }),
               tailwindcssNesting,
               tailwindcss,
-              autoprefixer,
-              cssnano
+              autoprefixer
+              // cssnano
             ])
               .process(cssContent, {
                 from: undefined
