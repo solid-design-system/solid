@@ -1,16 +1,17 @@
-// eslint-disable-next-line
-// @ts-nocheck
-
-import { generateCustomData } from 'cem-plugin-vs-code-custom-data-generator';
+import { customElementJetBrainsPlugin } from 'custom-element-jet-brains-integration';
+import { customElementVsCodePlugin } from 'custom-element-vs-code-integration';
+import { customElementVuejsPlugin } from 'custom-element-vuejs-integration';
 import { parse } from 'comment-parser';
+import fs from 'fs';
 
-import { author, description, homepage, license, name, version } from './package.json';
+const packageData = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
+const { name, description, version, author, homepage, license } = packageData;
 
 function noDash(string) {
   return string.replace(/^\s?-/, '').trim();
 }
 
-function replace(string: string, terms: { from: string; to: string }[]) {
+function replace(string, terms) {
   terms.forEach(({ from, to }) => {
     string = string?.replace(from, to);
   });
@@ -19,7 +20,7 @@ function replace(string: string, terms: { from: string; to: string }[]) {
 }
 
 export default {
-  files: ['./src/components/**/!(*.stories|*.spec|*.test|*.style).ts'],
+  files: ['src/components/**/!(*.test).ts'],
   lit: true,
   output: '../custom-elements.json',
   plugins: [
@@ -112,26 +113,12 @@ export default {
         }
       }
     },
-    // {
-    // name: 'solid-react-event-names',
-    // analyzePhase({ ts, node, moduleDoc }) {
-    // switch (node.kind) {
-    // case ts.SyntaxKind.ClassDeclaration: {
-    // const className = node.name.getText();
-    // const classDoc = moduleDoc?.declarations?.find(declaration => declaration.name === className);
-
-    // if (classDoc?.events) {
-    // classDoc.events.forEach(event => {
-    // event.reactName = `on${pascalCase(event.name)}`;
-    // });
-    // }
-    // }
-    // }
-    // }
-    // },
     {
       name: 'solid-translate-module-paths',
       packageLinkPhase({ customElementsManifest }) {
+        customElementsManifest.modules = customElementsManifest.modules.filter(mod =>
+          mod.path.includes('src/components')
+        );
         customElementsManifest?.modules?.forEach(mod => {
           //
           // CEM paths look like this:
@@ -155,6 +142,12 @@ export default {
 
           for (const dec of mod.declarations ?? []) {
             if (dec.kind === 'class') {
+              // remove private and protected members
+              dec.members = dec.members.filter(
+                member => member.privacy !== 'private' && member.privacy !== 'protected'
+              );
+              // remove all methods that don't have a description
+              dec.members = dec.members.filter(member => member.kind !== 'method' || member.description);
               for (const member of dec.members ?? []) {
                 if (member.inheritedFrom) {
                   member.inheritedFrom.module = replace(member.inheritedFrom.module, terms);
@@ -166,9 +159,33 @@ export default {
       }
     },
     // Generate custom VS Code data
-    generateCustomData({
-      outdir: 'dist',
-      cssFileName: null
+    customElementVsCodePlugin({
+      outdir: './dist',
+      cssFileName: null,
+      referencesTemplate: (_, tag) => [
+        {
+          name: 'Documentation',
+          url: `https://solid-design-system.fe.union-investment.de/docs/?path=/docs/components-${tag}--docs`
+        }
+      ]
+    }),
+
+    customElementJetBrainsPlugin({
+      outdir: './dist',
+      excludeCss: true,
+      packageJson: false,
+      referencesTemplate: (_, tag) => {
+        return {
+          name: 'Documentation',
+          url: `https://solid-design-system.fe.union-investment.de/docs/?path=/docs/components-${tag}--docs`
+        };
+      }
+    }),
+
+    customElementVuejsPlugin({
+      outdir: './dist/types/vue',
+      fileName: 'index.d.ts',
+      componentTypePath: (_, tag) => `../../components/${tag.replace('sl-', '')}/${tag.replace('sl-', '')}.component.js`
     })
-  ] as any[]
+  ]
 };

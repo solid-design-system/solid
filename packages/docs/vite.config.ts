@@ -1,4 +1,4 @@
-import customElementConfig from '../components/custom-elements-manifest.config';
+import customElementConfig from '../components/custom-elements-manifest.config.js';
 import VitePluginCreateEmptyCemIfNotExisting from './scripts/vite-plugin-create-empty-cem-if-not-existing';
 import VitePluginCustomElementsManifest from 'vite-plugin-cem';
 import VitePluginFetchIconsFromCdn from './scripts/vite-plugin-fetch-icons-from-cdn';

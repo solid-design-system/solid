@@ -13,7 +13,6 @@ import type { SolidFormControl } from '../../internal/solid-element';
 
 /**
  * @summary Textareas collect data from the user and allow multiple lines of text.
- * @documentation https://shoelace.style/components/textarea
  * @status stable
  * @since 1.31.0
  *

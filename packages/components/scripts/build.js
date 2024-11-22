@@ -10,8 +10,7 @@ import ora from 'ora';
 import util from 'util';
 import * as path from 'path';
 import { readFileSync } from 'fs';
-import { replace } from 'esbuild-plugin-replace';
-import { litTailwindPlugin } from './esbuild-plugin-lit-tailwind.js';
+import { litTailwindAndMinifyPlugin } from './esbuild-plugin-lit-tailwind-and-minify.js';
 
 const outdir = 'dist';
 const cdndir = 'cdn';
@@ -22,7 +21,6 @@ let buildResults;
 
 const bundleDirectories = [cdndir, outdir];
 let packageData = JSON.parse(readFileSync(path.join(process.cwd(), 'package.json'), 'utf-8'));
-const shoelaceVersion = JSON.stringify(packageData.version.toString());
 
 //
 // Builds the source with esbuild.
@@ -66,12 +64,7 @@ async function buildTheSource() {
     //
     external: alwaysExternal,
     splitting: true,
-    plugins: [
-      litTailwindPlugin(),
-      replace({
-        __SHOELACE_VERSION__: shoelaceVersion
-      })
-    ]
+    plugins: [litTailwindAndMinifyPlugin()]
   };
 
   const npmConfig = {
@@ -82,20 +75,16 @@ async function buildTheSource() {
     outdir
   };
 
-  // const iiefConfig = {
-  //   ...cdnConfig,
-  //   bundle: true,
-  //   format: 'iife',
-  //   splitting: false,
-  //   globalName: 'SolidComponents',
-  //   plugins: [...cdnConfig.plugins]
-  // };
+  const bundleConfig = {
+    ...cdnConfig,
+    bundle: true,
+    splitting: false,
+    entryPoints: ['./src/solid-components.ts'],
+    globalName: 'SolidComponents',
+    entryNames: '[dir]/[name].bundle'
+  };
 
-  return await Promise.all([
-    esbuild.build(cdnConfig),
-    esbuild.build(npmConfig)
-    // esbuild.build(iiefConfig)
-  ]);
+  return await Promise.all([esbuild.build(cdnConfig), esbuild.build(npmConfig), esbuild.build(bundleConfig)]);
 }
 
 //

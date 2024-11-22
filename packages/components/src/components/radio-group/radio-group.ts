@@ -451,14 +451,14 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
         ::slotted(sd-radio:last-of-type) {
           @apply mr-0;
         }
-        /* sm */
-        &:host([size='sm']) {
-          ::slotted(sd-radio) {
-            @apply mr-4;
-          }
-          ::slotted(sd-radio:last-of-type) {
-            @apply mr-0;
-          }
+      }
+
+      :host([orientation='horizontal']):host([size='sm']) {
+        ::slotted(sd-radio) {
+          @apply mr-4;
+        }
+        ::slotted(sd-radio:last-of-type) {
+          @apply mr-0;
         }
       }
 

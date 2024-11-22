@@ -22,7 +22,6 @@ import type SdOption from '../option/option';
 
 /**
  * @summary Selects allow you to choose items from a menu of predefined options.
- * @documentation https://shoelace.style/components/select
  * @status stable
  * @since 1.30.0
  *
