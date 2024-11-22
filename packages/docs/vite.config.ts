@@ -4,7 +4,7 @@ import VitePluginCustomElementsManifest from 'vite-plugin-cem';
 import VitePluginFetchIconsFromCdn from './scripts/vite-plugin-fetch-icons-from-cdn';
 import VitePluginGetPlaywrightVersion from './scripts/vite-plugin-get-playwright-version';
 import VitePluginGetTailwindTheme from './scripts/vite-plugin-get-tailwind-theme';
-import VitePluginLitTailwind from '../components/scripts/vite-plugin-lit-tailwind';
+import VitePluginLitTailwind from './scripts/vite-plugin-lit-tailwind.js';
 import vitePluginSynergyStyles from './scripts/vite-plugin-synergy-styles/index.js';
 import type { defineConfig } from 'vite';
 

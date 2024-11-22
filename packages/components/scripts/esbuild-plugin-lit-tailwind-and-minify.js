@@ -7,6 +7,25 @@ import postcss from 'postcss';
 import tailwindcss from 'tailwindcss';
 import tailwindcssNesting from 'tailwindcss/nesting/index.js';
 
+/**
+ * Escapes tailwind special characters in a string and wraps it in a CSS template literal.
+ *
+ * @param source - The source string where the replacement occurs.
+ * @param match - The substring to replace in the source string.
+ * @param content - The string to be escaped and wrapped in a CSS template literal.
+ * @returns The updated source string with the replacement applied.
+ */
+export function replaceWithEscapedCssLiteral(source, match, content) {
+  return source.replace(
+    match,
+    `css\`${
+      content
+        .replaceAll('\\', '\\\\') // Escape backslashes
+        .replaceAll('`', '\\`') // Escape backticks
+    }\``
+  );
+}
+
 export function litTailwindAndMinifyPlugin(options = {}) {
   const defaultInclude = /\.(ts|js)$/; // Include .ts and .js files
   const defaultExclude = /node_modules/; // Exclude node_modules by default
@@ -46,12 +65,7 @@ export function litTailwindAndMinifyPlugin(options = {}) {
               .process(cssContent, { from: undefined })
               .then(result => result.css);
 
-            source = source.replace(
-              fullMatch,
-              `css\`${result
-                .replaceAll('\\', '\\\\') // Escape backslashes
-                .replaceAll('`', '\\`')}\`` // Escape backticks
-            );
+            source = replaceWithEscapedCssLiteral(source, fullMatch, result);
           } catch (error) {
             console.error(`PostCSS error: ${error}`);
           }

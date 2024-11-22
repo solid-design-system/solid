@@ -3,7 +3,7 @@ import customMinifyHTMLLiteralsPlugin from './scripts/rollup-plugin-minify-html-
 import path from 'path';
 import resolve from '@rollup/plugin-node-resolve';
 import summaryPlugin from 'rollup-plugin-summary';
-import VitePluginLitTailwind from './scripts/vite-plugin-lit-tailwind';
+import VitePluginLitTailwind from '../docs/scripts/vite-plugin-lit-tailwind';
 import type { defineConfig } from 'vite';
 
 // https://vitejs.dev/config/

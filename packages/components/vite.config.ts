@@ -5,7 +5,7 @@ import path from 'path';
 import resolve from '@rollup/plugin-node-resolve';
 import summaryPlugin from 'rollup-plugin-summary';
 import VitePluginCustomElementsManifest from 'vite-plugin-cem';
-import VitePluginLitTailwind from './scripts/vite-plugin-lit-tailwind';
+import VitePluginLitTailwind from '../docs/scripts/vite-plugin-lit-tailwind';
 import webTypesPlugin from './scripts/rollup-plugin-web-types';
 import type { defineConfig } from 'vite';
 

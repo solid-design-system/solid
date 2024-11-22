@@ -4,6 +4,7 @@ import autoprefixer from 'autoprefixer';
 import postcss from 'postcss';
 import tailwindcss from 'tailwindcss';
 import tailwindcssNesting from 'tailwindcss/nesting';
+import { replaceWithEscapedCssLiteral } from '../../components/scripts/esbuild-plugin-lit-tailwind-and-minify';
 
 interface LitTailwindPluginOptions {
   include?: RegExp[] | string[];
@@ -50,15 +51,7 @@ export default function litTailwindPlugin(options: LitTailwindPluginOptions = {}
             .process(cssContent, { from: undefined })
             .then(result => result.css);
 
-          // Replace the original CSS in the code
-          transformedCode = transformedCode.replace(
-            fullMatch,
-            `css\`${result
-              // Escape backslashes
-              .replaceAll('\\', '\\\\')
-              // Escape backticks in CSS
-              .replaceAll('`', '\\`')}\``
-          );
+          transformedCode = replaceWithEscapedCssLiteral(transformedCode, fullMatch, result);
         } catch (error: unknown) {
           console.error(`PostCSS error: ${error as string}`);
         }
