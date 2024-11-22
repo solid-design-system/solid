@@ -2,6 +2,8 @@
 .cache
 dist
 cdn
+dist-versioned
+cdn-versioned
 examples
 node_modules
 src/react

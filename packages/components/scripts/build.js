@@ -159,7 +159,11 @@ await nextTask('Building source files', async () => {
   buildResults = await buildTheSource();
 });
 
-let result;
+await nextTask('Versioning components and meta data', async () => {
+  await execPromise('node scripts/make-versioning.js', { stdio: 'inherit' });
+});
+
+// let result;
 
 // // Log deferred output
 // if (result.output.length > 0) {

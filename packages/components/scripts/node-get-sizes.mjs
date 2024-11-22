@@ -16,8 +16,8 @@ const getReadableSize = sizeInByte => Math.round(sizeInByte / 1024);
 const currentRealSize = packageJson.meta.bundleSizeInKb.uncompressed;
 const currentGzipSize = packageJson.meta.bundleSizeInKb.gzip;
 
-const newRealSize = getReadableSize(fs.statSync('./cdn/solid-components.iief.js').size);
-const newGzipSize = getReadableSize(gzipSync(fs.readFileSync('./cdn/solid-components.iief.js')).byteLength);
+const newRealSize = getReadableSize(fs.statSync('./cdn/solid-components.bundle.js').size);
+const newGzipSize = getReadableSize(gzipSync(fs.readFileSync('./cdn/solid-components.bundle.js')).byteLength);
 
 const getOutput = (newSize, currentSize) => {
   const sizeDiffKB = newSize - currentSize;
