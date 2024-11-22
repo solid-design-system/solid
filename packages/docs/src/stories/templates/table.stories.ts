@@ -21,7 +21,7 @@ export default {
 };
 
 /**
- * ### Simple table
+ * ### Simple Table
  */
 export const simpleTables = {
   render: () => html`
@@ -43,149 +43,196 @@ export const simpleTables = {
       <tbody>
         <tr>
           <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
-            <sd-link href="#">Duales Studium mit Ausbildung Investmentfondskauffrau/-mann (m/w/d)</sd-link>
+            <sd-link href="javascript:void(0)"
+              >Dual Study Program with Training Investment Fund Saleswoman/Man (m/f/d)</sd-link
+            >
           </td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">Apprenticeship</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Duales Studium / Ausbildung</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Dual Study Program / Training</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">
-            <div class="flex gap-2 text-lg">
-              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            <div class="flex">
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
+              </sd-button>
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+              </sd-button>
             </div>
           </td>
         </tr>
         <tr>
           <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
-            <sd-link href="#">Duales Studium Wirtschaftsinformatik (m/w/d), Start 01.09.2025</sd-link>
+            <sd-link href="javascript:void(0)"
+              >Dual Study Program in Business Informatics (m/f/d), Start 01.09.2025</sd-link
+            >
           </td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">IT</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Duales Studium / Ausbildung</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Dual Study Program / Training</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">
-            <div class="flex gap-2 text-lg">
-              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            <div class="flex">
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
+              </sd-button>
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+              </sd-button>
             </div>
           </td>
         </tr>
         <tr>
           <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
-            <sd-link href="#">Portfoliomanager*in Multi Asset Solutions (in Voll- oder Teilzeit)</sd-link>
+            <sd-link href="javascript:void(0)"
+              >Portfolio Manager Multi Asset Solutions (Full-time or Part-time)</sd-link
+            >
           </td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">Portfolio Management</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">
-            <div class="flex gap-2 text-lg">
-              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            <div class="flex">
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
+              </sd-button>
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+              </sd-button>
             </div>
           </td>
         </tr>
         <tr>
           <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
-            <sd-link href="#"
-              >(Junior-) Mitarbeiter*in für unser gesetzliches Meldewesen im Bereich Fondsadministration</sd-link
+            <sd-link href="javascript:void(0)"
+              >(Junior) Employee for our Legal Reporting in the Fund Administration Area</sd-link
             >
           </td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">Fund Administration</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">
-            <div class="flex gap-2 text-lg">
-              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            <div class="flex">
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
+              </sd-button>
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+              </sd-button>
             </div>
           </td>
         </tr>
         <tr>
           <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
-            <sd-link href="#"
-              >Kaufleute (m/w/d) Kundenservice mit Schwerpunkt Partnerbanken und Privatkunden (in Voll- oder
-              Teilzeit)</sd-link
+            <sd-link href="javascript:void(0)"
+              >Sales Staff (m/f/d) Customer Service with a Focus on Partner Banks and Private Clients (Full-time or
+              Part-time))</sd-link
             >
           </td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">Customer Service</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">
-            <div class="flex gap-2 text-lg">
-              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            <div class="flex">
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
+              </sd-button>
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+              </sd-button>
             </div>
           </td>
         </tr>
         <tr>
           <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
-            <sd-link href="#">Datenschutzreferent*in/ Auditor*in (in Voll- oder Teilzeit)</sd-link>
+            <sd-link href="javascript:void(0)">Data Protection Officer/Auditor (Full-time or Part-time)</sd-link>
           </td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">Hamburg</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">Compliance</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">
-            <div class="flex gap-2 text-lg">
-              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            <div class="flex">
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
+              </sd-button>
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+              </sd-button>
             </div>
           </td>
         </tr>
         <tr>
           <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
-            <sd-link href="#">(Junior) Business Analyst*in Risikomanagement (in Voll- oder Teilzeit)</sd-link>
-          </td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Private Clients</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">
-            <div class="flex gap-2 text-lg">
-              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
-            <sd-link href="#"
-              >Leitung des KI Competence Centers als Gruppenleiter*in IT Data Analytics (in Voll- oder
-              Teilzeit)</sd-link
+            <sd-link href="javascript:void(0)"
+              >(Junior) Business Analyst Risk Management (Full-time or Part-time)</sd-link
             >
           </td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">IT</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Private Clients</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">
-            <div class="flex gap-2 text-lg">
-              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            <div class="flex">
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
+              </sd-button>
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+              </sd-button>
             </div>
           </td>
         </tr>
         <tr>
           <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
-            <sd-link href="#">Trainee (m/w/d) Produktmanagement & Vertrieb PLUS</sd-link>
+            <sd-link href="javascript:void(0)">
+              Head of the AI Competence Center as Group Leader*in IT Data Analytics (Full-time or Part-time)
+            </sd-link>
+          </td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">IT</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">
+            <div class="flex">
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
+              </sd-button>
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+              </sd-button>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
+            <sd-link href="javascript:void(0)">Trainee (m/f/d) Product Management & Sales PLUS</sd-link>
           </td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">Private Clients</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">
-            <div class="flex gap-2 text-lg">
-              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            <div class="flex">
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
+              </sd-button>
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+              </sd-button>
             </div>
           </td>
         </tr>
         <tr>
           <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
-            <sd-link href="#">Trainee (m/w/d) Digitalisierung PLUS</sd-link>
+            <sd-link href="javascript:void(0)">Trainee (m/f/d) Digitalization PLUS</sd-link>
           </td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">Other</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">
-            <div class="flex gap-2 text-lg">
-              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            <div class="flex">
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
+              </sd-button>
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+              </sd-button>
             </div>
           </td>
         </tr>
@@ -215,153 +262,200 @@ export const simpleTableVerticalDividers = {
       <tbody>
         <tr>
           <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider w-1/3">
-            <sd-link href="#">Duales Studium mit Ausbildung Investmentfondskauffrau/-mann (m/w/d)</sd-link>
+            <sd-link href="javascript:void(0)"
+              >Dual Study Program with Training Investment Fund Saleswoman/Man (m/f/d)</sd-link
+            >
           </td>
           <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Frankfurt am Main</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Apprenticeship</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">
-            Duales Studium / Ausbildung
+            Dual Study Program / Training
           </td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">
-            <div class="flex gap-2 text-lg">
-              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            <div class="flex">
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
+              </sd-button>
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+              </sd-button>
             </div>
           </td>
         </tr>
         <tr>
           <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider w-1/3">
-            <sd-link href="#">Duales Studium Wirtschaftsinformatik (m/w/d), Start 01.09.2025</sd-link>
+            <sd-link href="javascript:void(0)"
+              >Dual Study Program in Business Informatics (m/f/d), Start 01.09.2025</sd-link
+            >
           </td>
           <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Frankfurt am Main</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">IT</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">
-            Duales Studium / Ausbildung
+            Dual Study Program / Training
           </td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">
-            <div class="flex gap-2 text-lg">
-              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            <div class="flex">
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
+              </sd-button>
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+              </sd-button>
             </div>
           </td>
         </tr>
         <tr>
           <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider w-1/3">
-            <sd-link href="#">Portfoliomanager*in Multi Asset Solutions (in Voll- oder Teilzeit)</sd-link>
+            <sd-link href="javascript:void(0)"
+              >Portfolio Manager Multi Asset Solutions (Full-time or Part-time)</sd-link
+            >
           </td>
           <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Frankfurt am Main</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Portfolio Management</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Fulltime<br />Parttime</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Full-time<br />Part-time</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">
-            <div class="flex gap-2 text-lg">
-              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            <div class="flex">
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
+              </sd-button>
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+              </sd-button>
             </div>
           </td>
         </tr>
         <tr>
           <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider w-1/3">
-            <sd-link href="#"
-              >(Junior-) Mitarbeiter*in für unser gesetzliches Meldewesen im Bereich Fondsadministration</sd-link
+            <sd-link href="javascript:void(0)"
+              >(Junior) Employee for our Legal Reporting in the Fund Administration Area</sd-link
             >
           </td>
           <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Frankfurt am Main</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Fund Administration</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Fulltime<br />Parttime</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Full-time<br />Part-time</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">
-            <div class="flex gap-2 text-lg">
-              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            <div class="flex">
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
+              </sd-button>
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+              </sd-button>
             </div>
           </td>
         </tr>
         <tr>
           <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider w-1/3">
-            <sd-link href="#"
-              >Kaufleute (m/w/d) Kundenservice mit Schwerpunkt Partnerbanken und Privatkunden (in Voll- oder
-              Teilzeit)</sd-link
-            >
+            <sd-link href="javascript:void(0)">
+              Sales Staff (m/f/d) Customer Service with a Focus on Partner Banks and Private Clients (Full-time or
+              Part-time))
+            </sd-link>
           </td>
           <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Frankfurt am Main</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Customer Service</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Fulltime<br />Parttime</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Full-time<br />Part-time</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">
-            <div class="flex gap-2 text-lg">
-              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            <div class="flex">
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
+              </sd-button>
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+              </sd-button>
             </div>
           </td>
         </tr>
         <tr>
           <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider w-1/3">
-            <sd-link href="#">Datenschutzreferent*in/ Auditor*in (in Voll- oder Teilzeit)</sd-link>
+            <sd-link href="javascript:void(0)">Data Protection Officer/Auditor (Full-time or Part-time)</sd-link>
           </td>
           <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Hamburg</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Compliance</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Fulltime<br />Parttime</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Full-time<br />Part-time</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">
-            <div class="flex gap-2 text-lg">
-              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            <div class="flex">
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
+              </sd-button>
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+              </sd-button>
             </div>
           </td>
         </tr>
         <tr>
           <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider w-1/3">
-            <sd-link href="#">(Junior) Business Analyst*in Risikomanagement (in Voll- oder Teilzeit)</sd-link>
-          </td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Frankfurt am Main</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Private Clients</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Fulltime<br />Parttime</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">
-            <div class="flex gap-2 text-lg">
-              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider w-1/3">
-            <sd-link href="#"
-              >Leitung des KI Competence Centers als Gruppenleiter*in IT Data Analytics (in Voll- oder
-              Teilzeit)</sd-link
+            <sd-link href="javascript:void(0)"
+              >(Junior) Business Analyst Risk Management (Full-time or Part-time)</sd-link
             >
           </td>
           <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Frankfurt am Main</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">IT</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Fulltime<br />Parttime</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Private Clients</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Full-time<br />Part-time</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">
-            <div class="flex gap-2 text-lg">
-              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            <div class="flex">
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
+              </sd-button>
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+              </sd-button>
             </div>
           </td>
         </tr>
         <tr>
           <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider w-1/3">
-            <sd-link href="#">Trainee (m/w/d) Produktmanagement & Vertrieb PLUS</sd-link>
+            <sd-link href="javascript:void(0)">
+              Head of the AI Competence Center as Group Leader*in IT Data Analytics (Full-time or Part-time)
+            </sd-link>
+          </td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Frankfurt am Main</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">IT</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Full-time<br />Part-time</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">
+            <div class="flex">
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
+              </sd-button>
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+              </sd-button>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider w-1/3">
+            <sd-link href="javascript:void(0)">Trainee (m/f/d) Product Management & Sales PLUS</sd-link>
           </td>
           <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Frankfurt am Main</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Private Clients</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Fulltime</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Full-time</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">
-            <div class="flex gap-2 text-lg">
-              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            <div class="flex">
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
+              </sd-button>
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+              </sd-button>
             </div>
           </td>
         </tr>
         <tr>
           <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider w-1/3">
-            <sd-link href="#">Trainee (m/w/d) Digitalisierung PLUS</sd-link>
+            <sd-link href="javascript:void(0)">Trainee (m/f/d) Digitalization PLUS</sd-link>
           </td>
           <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Frankfurt am Main</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Other</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Fulltime</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Full-time</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">
-            <div class="flex gap-2 text-lg">
-              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            <div class="flex">
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
+              </sd-button>
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+              </sd-button>
             </div>
           </td>
         </tr>
@@ -391,149 +485,196 @@ export const simpleTableAlternatingColors = {
       <tbody>
         <tr>
           <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
-            <sd-link href="#">Duales Studium mit Ausbildung Investmentfondskauffrau/-mann (m/w/d)</sd-link>
+            <sd-link href="javascript:void(0)"
+              >Dual Study Program with Training Investment Fund Saleswoman/Man (m/f/d)</sd-link
+            >
           </td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">Apprenticeship</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Duales Studium / Ausbildung</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Dual Study Program / Training</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">
-            <div class="flex gap-2 text-lg">
-              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            <div class="flex">
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
+              </sd-button>
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+              </sd-button>
             </div>
           </td>
         </tr>
         <tr>
           <td class="sd-table-cell sd-table-cell--bg-primary-100 w-1/3">
-            <sd-link href="#">Duales Studium Wirtschaftsinformatik (m/w/d), Start 01.09.2025</sd-link>
+            <sd-link href="javascript:void(0)"
+              >Dual Study Program in Business Informatics (m/f/d), Start 01.09.2025</sd-link
+            >
           </td>
           <td class="sd-table-cell sd-table-cell--bg-primary-100">Frankfurt am Main</td>
           <td class="sd-table-cell sd-table-cell--bg-primary-100">IT</td>
-          <td class="sd-table-cell sd-table-cell--bg-primary-100">Duales Studium / Ausbildung</td>
+          <td class="sd-table-cell sd-table-cell--bg-primary-100">Dual Study Program / Training</td>
           <td class="sd-table-cell sd-table-cell--bg-primary-100">
-            <div class="flex gap-2 text-lg">
-              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            <div class="flex">
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
+              </sd-button>
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+              </sd-button>
             </div>
           </td>
         </tr>
         <tr>
           <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
-            <sd-link href="#">Portfoliomanager*in Multi Asset Solutions (in Voll- oder Teilzeit)</sd-link>
+            <sd-link href="javascript:void(0)"
+              >Portfolio Manager Multi Asset Solutions (Full-time or Part-time)</sd-link
+            >
           </td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">Portfolio Management</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">
-            <div class="flex gap-2 text-lg">
-              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            <div class="flex">
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
+              </sd-button>
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+              </sd-button>
             </div>
           </td>
         </tr>
         <tr>
           <td class="sd-table-cell sd-table-cell--bg-primary-100 w-1/3">
-            <sd-link href="#"
-              >(Junior-) Mitarbeiter*in für unser gesetzliches Meldewesen im Bereich Fondsadministration</sd-link
+            <sd-link href="javascript:void(0)"
+              >(Junior) Employee for our Legal Reporting in the Fund Administration Area</sd-link
             >
           </td>
           <td class="sd-table-cell sd-table-cell--bg-primary-100">Frankfurt am Main</td>
           <td class="sd-table-cell sd-table-cell--bg-primary-100">Fund Administration</td>
-          <td class="sd-table-cell sd-table-cell--bg-primary-100">Fulltime<br />Parttime</td>
+          <td class="sd-table-cell sd-table-cell--bg-primary-100">Full-time<br />Part-time</td>
           <td class="sd-table-cell sd-table-cell--bg-primary-100">
-            <div class="flex gap-2 text-lg">
-              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            <div class="flex">
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
+              </sd-button>
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+              </sd-button>
             </div>
           </td>
         </tr>
         <tr>
           <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
-            <sd-link href="#"
-              >Kaufleute (m/w/d) Kundenservice mit Schwerpunkt Partnerbanken und Privatkunden (in Voll- oder
-              Teilzeit)</sd-link
+            <sd-link href="javascript:void(0)"
+              >Sales Staff (m/f/d) Customer Service with a Focus on Partner Banks and Private Clients (Full-time or
+              Part-time))</sd-link
             >
           </td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">Customer Service</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">
-            <div class="flex gap-2 text-lg">
-              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            <div class="flex">
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
+              </sd-button>
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+              </sd-button>
             </div>
           </td>
         </tr>
         <tr>
           <td class="sd-table-cell sd-table-cell--bg-primary-100 w-1/3">
-            <sd-link href="#">Datenschutzreferent*in/ Auditor*in (in Voll- oder Teilzeit)</sd-link>
+            <sd-link href="javascript:void(0)">Data Protection Officer/Auditor (Full-time or Part-time)</sd-link>
           </td>
           <td class="sd-table-cell sd-table-cell--bg-primary-100">Hamburg</td>
           <td class="sd-table-cell sd-table-cell--bg-primary-100">Compliance</td>
-          <td class="sd-table-cell sd-table-cell--bg-primary-100">Fulltime<br />Parttime</td>
+          <td class="sd-table-cell sd-table-cell--bg-primary-100">Full-time<br />Part-time</td>
           <td class="sd-table-cell sd-table-cell--bg-primary-100">
-            <div class="flex gap-2 text-lg">
-              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            <div class="flex">
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
+              </sd-button>
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+              </sd-button>
             </div>
           </td>
         </tr>
         <tr>
           <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
-            <sd-link href="#">(Junior) Business Analyst*in Risikomanagement (in Voll- oder Teilzeit)</sd-link>
+            <sd-link href="javascript:void(0)"
+              >(Junior) Business Analyst Risk Management (Full-time or Part-time)</sd-link
+            >
           </td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">Private Clients</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">
-            <div class="flex gap-2 text-lg">
-              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            <div class="flex">
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
+              </sd-button>
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+              </sd-button>
             </div>
           </td>
         </tr>
         <tr>
           <td class="sd-table-cell sd-table-cell--bg-primary-100 w-1/3">
-            <sd-link href="#"
-              >Leitung des KI Competence Centers als Gruppenleiter*in IT Data Analytics (in Voll- oder
-              Teilzeit)</sd-link
-            >
+            <sd-link href="javascript:void(0)">
+              Head of the AI Competence Center as Group Leader*in IT Data Analytics (Full-time or Part-time)
+            </sd-link>
           </td>
           <td class="sd-table-cell sd-table-cell--bg-primary-100">Frankfurt am Main</td>
           <td class="sd-table-cell sd-table-cell--bg-primary-100">IT</td>
-          <td class="sd-table-cell sd-table-cell--bg-primary-100">Fulltime<br />Parttime</td>
+          <td class="sd-table-cell sd-table-cell--bg-primary-100">Full-time<br />Part-time</td>
           <td class="sd-table-cell sd-table-cell--bg-primary-100">
-            <div class="flex gap-2 text-lg">
-              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            <div class="flex">
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
+              </sd-button>
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+              </sd-button>
             </div>
           </td>
         </tr>
         <tr>
           <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
-            <sd-link href="#">Trainee (m/w/d) Produktmanagement & Vertrieb PLUS</sd-link>
+            <sd-link href="javascript:void(0)">Trainee (m/f/d) Product Management & Sales PLUS</sd-link>
           </td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">Private Clients</td>
-          <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime</td>
+          <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">
-            <div class="flex gap-2 text-lg">
-              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            <div class="flex">
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
+              </sd-button>
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+              </sd-button>
             </div>
           </td>
         </tr>
         <tr>
           <td class="sd-table-cell sd-table-cell--bg-primary-100 w-1/3">
-            <sd-link href="#">Trainee (m/w/d) Digitalisierung PLUS</sd-link>
+            <sd-link href="javascript:void(0)">Trainee (m/f/d) Digitalization PLUS</sd-link>
           </td>
           <td class="sd-table-cell sd-table-cell--bg-primary-100">Frankfurt am Main</td>
           <td class="sd-table-cell sd-table-cell--bg-primary-100">Other</td>
-          <td class="sd-table-cell sd-table-cell--bg-primary-100">Fulltime</td>
+          <td class="sd-table-cell sd-table-cell--bg-primary-100">Full-time</td>
           <td class="sd-table-cell sd-table-cell--bg-primary-100">
-            <div class="flex gap-2 text-lg">
-              <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-              <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+            <div class="flex">
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
+              </sd-button>
+              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+              </sd-button>
             </div>
           </td>
         </tr>
@@ -692,149 +833,246 @@ export const sortableTable = {
         <tbody>
           <tr>
             <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
-              <sd-link href="#">Duales Studium mit Ausbildung Investmentfondskauffrau/-mann (m/w/d)</sd-link>
+              <sd-link href="javascript:void(0)"
+                >Dual Study Program with Training Investment Fund Saleswoman/Man (m/f/d)</sd-link
+              >
             </td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Apprenticeship</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Duales Studium / Ausbildung</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Dual Study Program / Training</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex gap-2 text-lg">
-                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              <div class="flex">
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon
+                    name="system/star-empty"
+                    library="default"
+                    color="primary"
+                    label="Add to favorites"
+                  ></sd-icon>
+                </sd-button>
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+                </sd-button>
               </div>
             </td>
           </tr>
           <tr>
             <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
-              <sd-link href="#">Duales Studium Wirtschaftsinformatik (m/w/d), Start 01.09.2025</sd-link>
+              <sd-link href="javascript:void(0)"
+                >Dual Study Program in Business Informatics (m/f/d), Start 01.09.2025</sd-link
+              >
             </td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">IT</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Duales Studium / Ausbildung</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Dual Study Program / Training</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex gap-2 text-lg">
-                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              <div class="flex">
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon
+                    name="system/star-empty"
+                    library="default"
+                    color="primary"
+                    label="Add to favorites"
+                  ></sd-icon>
+                </sd-button>
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+                </sd-button>
               </div>
             </td>
           </tr>
           <tr>
             <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
-              <sd-link href="#">Portfoliomanager*in Multi Asset Solutions (in Voll- oder Teilzeit)</sd-link>
+              <sd-link href="javascript:void(0)"
+                >Portfolio Manager Multi Asset Solutions (Full-time or Part-time)</sd-link
+              >
             </td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Portfolio Management</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex gap-2 text-lg">
-                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              <div class="flex">
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon
+                    name="system/star-empty"
+                    library="default"
+                    color="primary"
+                    label="Add to favorites"
+                  ></sd-icon>
+                </sd-button>
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+                </sd-button>
               </div>
             </td>
           </tr>
           <tr>
             <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
-              <sd-link href="#"
-                >(Junior-) Mitarbeiter*in für unser gesetzliches Meldewesen im Bereich Fondsadministration</sd-link
+              <sd-link href="javascript:void(0)"
+                >(Junior) Employee for our Legal Reporting in the Fund Administration Area</sd-link
               >
             </td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Fund Administration</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex gap-2 text-lg">
-                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              <div class="flex">
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon
+                    name="system/star-empty"
+                    library="default"
+                    color="primary"
+                    label="Add to favorites"
+                  ></sd-icon>
+                </sd-button>
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+                </sd-button>
               </div>
             </td>
           </tr>
           <tr>
             <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
-              <sd-link href="#"
-                >Kaufleute (m/w/d) Kundenservice mit Schwerpunkt Partnerbanken und Privatkunden (in Voll- oder
-                Teilzeit)</sd-link
-              >
+              <sd-link href="javascript:void(0)">
+                Sales Staff (m/f/d) Customer Service with a Focus on Partner Banks and Private Clients (Full-time or
+                Part-time)
+              </sd-link>
             </td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Customer Service</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex gap-2 text-lg">
-                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              <div class="flex">
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon
+                    name="system/star-empty"
+                    library="default"
+                    color="primary"
+                    label="Add to favorites"
+                  ></sd-icon>
+                </sd-button>
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+                </sd-button>
               </div>
             </td>
           </tr>
           <tr>
             <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
-              <sd-link href="#">Datenschutzreferent*in/ Auditor*in (in Voll- oder Teilzeit)</sd-link>
+              <sd-link href="javascript:void(0)">Data Protection Officer/Auditor (Full-time or Part-time)</sd-link>
             </td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Hamburg</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Compliance</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex gap-2 text-lg">
-                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              <div class="flex">
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon
+                    name="system/star-empty"
+                    library="default"
+                    color="primary"
+                    label="Add to favorites"
+                  ></sd-icon>
+                </sd-button>
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+                </sd-button>
               </div>
             </td>
           </tr>
           <tr>
             <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
-              <sd-link href="#">(Junior) Business Analyst*in Risikomanagement (in Voll- oder Teilzeit)</sd-link>
-            </td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Private Clients</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex gap-2 text-lg">
-                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
-              <sd-link href="#"
-                >Leitung des KI Competence Centers als Gruppenleiter*in IT Data Analytics (in Voll- oder
-                Teilzeit)</sd-link
+              <sd-link href="javascript:void(0)"
+                >(Junior) Business Analyst Risk Management (Full-time or Part-time)</sd-link
               >
             </td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">IT</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Private Clients</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex gap-2 text-lg">
-                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              <div class="flex">
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon
+                    name="system/star-empty"
+                    library="default"
+                    color="primary"
+                    label="Add to favorites"
+                  ></sd-icon>
+                </sd-button>
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+                </sd-button>
               </div>
             </td>
           </tr>
           <tr>
             <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
-              <sd-link href="#">Trainee (m/w/d) Produktmanagement & Vertrieb PLUS</sd-link>
+              <sd-link href="javascript:void(0)">
+                Head of the AI Competence Center as Group Leader*in IT Data Analytics (Full-time or Part-time)
+              </sd-link>
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">IT</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <div class="flex">
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon
+                    name="system/star-empty"
+                    library="default"
+                    color="primary"
+                    label="Add to favorites"
+                  ></sd-icon>
+                </sd-button>
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+                </sd-button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
+              <sd-link href="javascript:void(0)">Trainee (m/f/d) Product Management & Sales PLUS</sd-link>
             </td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Private Clients</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex gap-2 text-lg">
-                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              <div class="flex">
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon
+                    name="system/star-empty"
+                    library="default"
+                    color="primary"
+                    label="Add to favorites"
+                  ></sd-icon>
+                </sd-button>
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+                </sd-button>
               </div>
             </td>
           </tr>
           <tr>
             <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
-              <sd-link href="#">Trainee (m/w/d) Digitalisierung PLUS</sd-link>
+              <sd-link href="javascript:void(0)">Trainee (m/f/d) Digitalization PLUS</sd-link>
             </td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Other</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex gap-2 text-lg">
-                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              <div class="flex">
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon
+                    name="system/star-empty"
+                    library="default"
+                    color="primary"
+                    label="Add to favorites"
+                  ></sd-icon>
+                </sd-button>
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+                </sd-button>
               </div>
             </td>
           </tr>
@@ -930,149 +1168,246 @@ export const advancedTables = {
         <tbody>
           <tr>
             <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
-              <sd-link href="#">Duales Studium mit Ausbildung Investmentfondskauffrau/-mann (m/w/d)</sd-link>
+              <sd-link href="javascript:void(0)"
+                >Dual Study Program with Training Investment Fund Saleswoman/Man (m/f/d)</sd-link
+              >
             </td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Apprenticeship</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Duales Studium / Ausbildung</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Dual Study Program / Training</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex gap-2 text-lg">
-                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              <div class="flex">
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon
+                    name="system/star-empty"
+                    library="default"
+                    color="primary"
+                    label="Add to favorites"
+                  ></sd-icon>
+                </sd-button>
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+                </sd-button>
               </div>
             </td>
           </tr>
           <tr>
             <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
-              <sd-link href="#">Duales Studium Wirtschaftsinformatik (m/w/d), Start 01.09.2025</sd-link>
+              <sd-link href="javascript:void(0)"
+                >Dual Study Program in Business Informatics (m/f/d), Start 01.09.2025</sd-link
+              >
             </td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">IT</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Duales Studium / Ausbildung</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Dual Study Program / Training</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex gap-2 text-lg">
-                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              <div class="flex">
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon
+                    name="system/star-empty"
+                    library="default"
+                    color="primary"
+                    label="Add to favorites"
+                  ></sd-icon>
+                </sd-button>
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+                </sd-button>
               </div>
             </td>
           </tr>
           <tr>
             <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
-              <sd-link href="#">Portfoliomanager*in Multi Asset Solutions (in Voll- oder Teilzeit)</sd-link>
+              <sd-link href="javascript:void(0)"
+                >Portfolio Manager Multi Asset Solutions (Full-time or Part-time)</sd-link
+              >
             </td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Portfolio Management</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex gap-2 text-lg">
-                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              <div class="flex">
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon
+                    name="system/star-empty"
+                    library="default"
+                    color="primary"
+                    label="Add to favorites"
+                  ></sd-icon>
+                </sd-button>
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+                </sd-button>
               </div>
             </td>
           </tr>
           <tr>
             <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
-              <sd-link href="#"
-                >(Junior-) Mitarbeiter*in für unser gesetzliches Meldewesen im Bereich Fondsadministration</sd-link
+              <sd-link href="javascript:void(0)"
+                >(Junior) Employee for our Legal Reporting in the Fund Administration Area</sd-link
               >
             </td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Fund Administration</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex gap-2 text-lg">
-                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              <div class="flex">
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon
+                    name="system/star-empty"
+                    library="default"
+                    color="primary"
+                    label="Add to favorites"
+                  ></sd-icon>
+                </sd-button>
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+                </sd-button>
               </div>
             </td>
           </tr>
           <tr>
             <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
-              <sd-link href="#"
-                >Kaufleute (m/w/d) Kundenservice mit Schwerpunkt Partnerbanken und Privatkunden (in Voll- oder
-                Teilzeit)</sd-link
-              >
+              <sd-link href="javascript:void(0)">
+                Sales Staff (m/f/d) Customer Service with a Focus on Partner Banks and Private Clients (Full-time or
+                Part-time)
+              </sd-link>
             </td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Customer Service</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex gap-2 text-lg">
-                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              <div class="flex">
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon
+                    name="system/star-empty"
+                    library="default"
+                    color="primary"
+                    label="Add to favorites"
+                  ></sd-icon>
+                </sd-button>
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+                </sd-button>
               </div>
             </td>
           </tr>
           <tr>
             <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
-              <sd-link href="#">Datenschutzreferent*in/ Auditor*in (in Voll- oder Teilzeit)</sd-link>
+              <sd-link href="javascript:void(0)">Data Protection Officer/Auditor (Full-time or Part-time)</sd-link>
             </td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Hamburg</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Compliance</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex gap-2 text-lg">
-                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              <div class="flex">
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon
+                    name="system/star-empty"
+                    library="default"
+                    color="primary"
+                    label="Add to favorites"
+                  ></sd-icon>
+                </sd-button>
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+                </sd-button>
               </div>
             </td>
           </tr>
           <tr>
             <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
-              <sd-link href="#">(Junior) Business Analyst*in Risikomanagement (in Voll- oder Teilzeit)</sd-link>
-            </td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Private Clients</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex gap-2 text-lg">
-                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
-              <sd-link href="#"
-                >Leitung des KI Competence Centers als Gruppenleiter*in IT Data Analytics (in Voll- oder
-                Teilzeit)</sd-link
+              <sd-link href="javascript:void(0)"
+                >(Junior) Business Analyst Risk Management (Full-time or Part-time)</sd-link
               >
             </td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">IT</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Private Clients</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex gap-2 text-lg">
-                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              <div class="flex">
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon
+                    name="system/star-empty"
+                    library="default"
+                    color="primary"
+                    label="Add to favorites"
+                  ></sd-icon>
+                </sd-button>
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+                </sd-button>
               </div>
             </td>
           </tr>
           <tr>
             <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
-              <sd-link href="#">Trainee (m/w/d) Produktmanagement & Vertrieb PLUS</sd-link>
+              <sd-link href="javascript:void(0)">
+                Head of the AI Competence Center as Group Leader*in IT Data Analytics (Full-time or Part-time)
+              </sd-link>
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">IT</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <div class="flex">
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon
+                    name="system/star-empty"
+                    library="default"
+                    color="primary"
+                    label="Add to favorites"
+                  ></sd-icon>
+                </sd-button>
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+                </sd-button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
+              <sd-link href="javascript:void(0)">Trainee (m/f/d) Product Management & Sales PLUS</sd-link>
             </td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Private Clients</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex gap-2 text-lg">
-                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              <div class="flex">
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon
+                    name="system/star-empty"
+                    library="default"
+                    color="primary"
+                    label="Add to favorites"
+                  ></sd-icon>
+                </sd-button>
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+                </sd-button>
               </div>
             </td>
           </tr>
           <tr>
             <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
-              <sd-link href="#">Trainee (m/w/d) Digitalisierung PLUS</sd-link>
+              <sd-link href="javascript:void(0)">Trainee (m/f/d) Digitalization PLUS</sd-link>
             </td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Other</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex gap-2 text-lg">
-                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              <div class="flex">
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon
+                    name="system/star-empty"
+                    library="default"
+                    color="primary"
+                    label="Add to favorites"
+                  ></sd-icon>
+                </sd-button>
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+                </sd-button>
               </div>
             </td>
           </tr>
@@ -1121,149 +1456,246 @@ export const TableFixedBottom = {
         <tbody>
           <tr>
             <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
-              <sd-link href="#">Duales Studium mit Ausbildung Investmentfondskauffrau/-mann (m/w/d)</sd-link>
+              <sd-link href="javascript:void(0)"
+                >Dual Study Program with Training Investment Fund Saleswoman/Man (m/f/d)</sd-link
+              >
             </td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Apprenticeship</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Duales Studium / Ausbildung</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Dual Study Program / Training</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex gap-2 text-lg">
-                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              <div class="flex">
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon
+                    name="system/star-empty"
+                    library="default"
+                    color="primary"
+                    label="Add to favorites"
+                  ></sd-icon>
+                </sd-button>
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+                </sd-button>
               </div>
             </td>
           </tr>
           <tr>
             <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
-              <sd-link href="#">Duales Studium Wirtschaftsinformatik (m/w/d), Start 01.09.2025</sd-link>
+              <sd-link href="javascript:void(0)"
+                >Dual Study Program in Business Informatics (m/f/d), Start 01.09.2025</sd-link
+              >
             </td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">IT</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Duales Studium / Ausbildung</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Dual Study Program / Training</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex gap-2 text-lg">
-                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              <div class="flex">
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon
+                    name="system/star-empty"
+                    library="default"
+                    color="primary"
+                    label="Add to favorites"
+                  ></sd-icon>
+                </sd-button>
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+                </sd-button>
               </div>
             </td>
           </tr>
           <tr>
             <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
-              <sd-link href="#">Portfoliomanager*in Multi Asset Solutions (in Voll- oder Teilzeit)</sd-link>
+              <sd-link href="javascript:void(0)"
+                >Portfolio Manager Multi Asset Solutions (Full-time or Part-time)</sd-link
+              >
             </td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Portfolio Management</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex gap-2 text-lg">
-                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              <div class="flex">
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon
+                    name="system/star-empty"
+                    library="default"
+                    color="primary"
+                    label="Add to favorites"
+                  ></sd-icon>
+                </sd-button>
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+                </sd-button>
               </div>
             </td>
           </tr>
           <tr>
             <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
-              <sd-link href="#"
-                >(Junior-) Mitarbeiter*in für unser gesetzliches Meldewesen im Bereich Fondsadministration</sd-link
+              <sd-link href="javascript:void(0)"
+                >(Junior) Employee for our Legal Reporting in the Fund Administration Area</sd-link
               >
             </td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Fund Administration</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex gap-2 text-lg">
-                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              <div class="flex">
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon
+                    name="system/star-empty"
+                    library="default"
+                    color="primary"
+                    label="Add to favorites"
+                  ></sd-icon>
+                </sd-button>
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+                </sd-button>
               </div>
             </td>
           </tr>
           <tr>
             <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
-              <sd-link href="#"
-                >Kaufleute (m/w/d) Kundenservice mit Schwerpunkt Partnerbanken und Privatkunden (in Voll- oder
-                Teilzeit)</sd-link
-              >
+              <sd-link href="javascript:void(0)">
+                Sales Staff (m/f/d) Customer Service with a Focus on Partner Banks and Private Clients (Full-time or
+                Part-time)
+              </sd-link>
             </td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Customer Service</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex gap-2 text-lg">
-                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              <div class="flex">
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon
+                    name="system/star-empty"
+                    library="default"
+                    color="primary"
+                    label="Add to favorites"
+                  ></sd-icon>
+                </sd-button>
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+                </sd-button>
               </div>
             </td>
           </tr>
           <tr>
             <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
-              <sd-link href="#">Datenschutzreferent*in/ Auditor*in (in Voll- oder Teilzeit)</sd-link>
+              <sd-link href="javascript:void(0)">Data Protection Officer/Auditor (Full-time or Part-time)</sd-link>
             </td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Hamburg</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Compliance</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex gap-2 text-lg">
-                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              <div class="flex">
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon
+                    name="system/star-empty"
+                    library="default"
+                    color="primary"
+                    label="Add to favorites"
+                  ></sd-icon>
+                </sd-button>
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+                </sd-button>
               </div>
             </td>
           </tr>
           <tr>
             <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
-              <sd-link href="#">(Junior) Business Analyst*in Risikomanagement (in Voll- oder Teilzeit)</sd-link>
-            </td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Private Clients</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex gap-2 text-lg">
-                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
-              <sd-link href="#"
-                >Leitung des KI Competence Centers als Gruppenleiter*in IT Data Analytics (in Voll- oder
-                Teilzeit)</sd-link
+              <sd-link href="javascript:void(0)"
+                >(Junior) Business Analyst Risk Management (Full-time or Part-time)</sd-link
               >
             </td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">IT</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Private Clients</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex gap-2 text-lg">
-                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              <div class="flex">
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon
+                    name="system/star-empty"
+                    library="default"
+                    color="primary"
+                    label="Add to favorites"
+                  ></sd-icon>
+                </sd-button>
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+                </sd-button>
               </div>
             </td>
           </tr>
           <tr>
             <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
-              <sd-link href="#">Trainee (m/w/d) Produktmanagement & Vertrieb PLUS</sd-link>
+              <sd-link href="javascript:void(0)">
+                Head of the AI Competence Center as Group Leader*in IT Data Analytics (Full-time or Part-time)
+              </sd-link>
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">IT</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <div class="flex">
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon
+                    name="system/star-empty"
+                    library="default"
+                    color="primary"
+                    label="Add to favorites"
+                  ></sd-icon>
+                </sd-button>
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+                </sd-button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
+              <sd-link href="javascript:void(0)">Trainee (m/f/d) Product Management & Sales PLUS</sd-link>
             </td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Private Clients</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex gap-2 text-lg">
-                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              <div class="flex">
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon
+                    name="system/star-empty"
+                    library="default"
+                    color="primary"
+                    label="Add to favorites"
+                  ></sd-icon>
+                </sd-button>
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+                </sd-button>
               </div>
             </td>
           </tr>
           <tr>
             <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">
-              <sd-link href="#">Trainee (m/w/d) Digitalisierung PLUS</sd-link>
+              <sd-link href="javascript:void(0)">Trainee (m/f/d) Digitalization PLUS</sd-link>
             </td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Frankfurt am Main</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Other</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex gap-2 text-lg">
-                <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-                <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+              <div class="flex">
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon
+                    name="system/star-empty"
+                    library="default"
+                    color="primary"
+                    label="Add to favorites"
+                  ></sd-icon>
+                </sd-button>
+                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+                </sd-button>
               </div>
             </td>
           </tr>
@@ -1345,169 +1777,270 @@ export const TableFixedLeft = {
               <th
                 class="sd-table-cell top-auto sticky left-0 z-[2] bg-clip-padding sd-table-cell--shadow-right sd-table-cell--shadow-active sd-table-cell--bg-white"
               >
-                <div class="flex gap-2 text-lg">
-                  <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-                  <sd-icon name="system/share" library="default" color="primary"></sd-icon>
-                </div>
+                <sd-link href="javascript:void(0)"
+                  >Dual Study Program with Training Investment Fund Saleswoman/Man (m/f/d)</sd-link
+                >
               </th>
-              <td class="sd-table-cell sd-table-cell--bg-transparent min-w-[400px]">
-                <sd-link href="#">Duales Studium mit Ausbildung Investmentfondskauffrau/-mann (m/w/d)</sd-link>
-              </td>
               <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Frankfurt am Main</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Apprenticeship</td>
-              <td class="sd-table-cell sd-table-cell--bg-transparent">Duales Studium / Ausbildung</td>
+              <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">
+                Dual Study Program / Training
+              </td>
+              <td class="sd-table-cell sd-table-cell--bg-transparent">
+                <div class="flex">
+                  <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                    <sd-icon
+                      name="system/star-empty"
+                      library="default"
+                      color="primary"
+                      label="Add to favorites"
+                    ></sd-icon>
+                  </sd-button>
+                  <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                    <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+                  </sd-button>
+                </div>
+              </td>
             </tr>
             <tr>
               <th
                 class="sd-table-cell top-auto sticky left-0 z-[2] bg-clip-padding sd-table-cell--shadow-right sd-table-cell--shadow-active sd-table-cell--bg-neutral-100"
               >
-                <div class="flex gap-2 text-lg">
-                  <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-                  <sd-icon name="system/share" library="default" color="primary"></sd-icon>
-                </div>
+                <sd-link href="javascript:void(0)"
+                  >Dual Study Program in Business Informatics (m/f/d), Start 01.09.2025</sd-link
+                >
               </th>
-              <td class="sd-table-cell sd-table-cell--bg-neutral-100 min-w-[400px]">
-                <sd-link href="#">Duales Studium Wirtschaftsinformatik (m/w/d), Start 01.09.2025</sd-link>
-              </td>
               <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Frankfurt am Main</td>
               <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">IT</td>
-              <td class="sd-table-cell sd-table-cell--bg-neutral-100">Duales Studium / Ausbildung</td>
+              <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">
+                Dual Study Program / Training
+              </td>
+              <td class="sd-table-cell sd-table-cell--bg-neutral-100">
+                <div class="flex">
+                  <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                    <sd-icon
+                      name="system/star-empty"
+                      library="default"
+                      color="primary"
+                      label="Add to favorites"
+                    ></sd-icon>
+                  </sd-button>
+                  <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                    <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+                  </sd-button>
+                </div>
+              </td>
             </tr>
             <tr>
               <th
                 class="sd-table-cell top-auto sticky left-0 z-[2] bg-clip-padding sd-table-cell--shadow-right sd-table-cell--shadow-active sd-table-cell--bg-white"
               >
-                <div class="flex gap-2 text-lg">
-                  <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-                  <sd-icon name="system/share" library="default" color="primary"></sd-icon>
-                </div>
+                <sd-link href="javascript:void(0)"
+                  >Portfolio Manager Multi Asset Solutions (Full-time or Part-time)</sd-link
+                >
               </th>
-              <td class="sd-table-cell sd-table-cell--bg-transparent min-w-[400px]">
-                <sd-link href="#">Portfoliomanager*in Multi Asset Solutions (in Voll- oder Teilzeit)</sd-link>
-              </td>
               <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Frankfurt am Main</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Portfolio Management</td>
-              <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+              <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Full-time<br />Part-time</td>
+              <td class="sd-table-cell sd-table-cell--bg-transparent">
+                <div class="flex">
+                  <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                    <sd-icon
+                      name="system/star-empty"
+                      library="default"
+                      color="primary"
+                      label="Add to favorites"
+                    ></sd-icon>
+                  </sd-button>
+                  <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                    <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+                  </sd-button>
+                </div>
+              </td>
             </tr>
             <tr>
               <th
                 class="sd-table-cell top-auto sticky left-0 z-[2] bg-clip-padding sd-table-cell--shadow-right sd-table-cell--shadow-active sd-table-cell--bg-neutral-100"
               >
-                <div class="flex gap-2 text-lg">
-                  <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-                  <sd-icon name="system/share" library="default" color="primary"></sd-icon>
-                </div>
+                <sd-link href="javascript:void(0)">
+                  (Junior) Employee for our Legal Reporting in the Fund Administration Area
+                </sd-link>
               </th>
-              <td class="sd-table-cell sd-table-cell--bg-neutral-100 min-w-[400px]">
-                <sd-link href="#"
-                  >(Junior-) Mitarbeiter*in für unser gesetzliches Meldewesen im Bereich Fondsadministration</sd-link
-                >
-              </td>
               <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Frankfurt am Main</td>
               <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Fund Administration</td>
-              <td class="sd-table-cell sd-table-cell--bg-neutral-100">Fulltime<br />Parttime</td>
+              <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Full-time<br />Part-time</td>
+              <td class="sd-table-cell sd-table-cell--bg-neutral-100">
+                <div class="flex">
+                  <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                    <sd-icon
+                      name="system/star-empty"
+                      library="default"
+                      color="primary"
+                      label="Add to favorites"
+                    ></sd-icon>
+                  </sd-button>
+                  <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                    <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+                  </sd-button>
+                </div>
+              </td>
             </tr>
             <tr>
               <th
                 class="sd-table-cell top-auto sticky left-0 z-[2] bg-clip-padding sd-table-cell--shadow-right sd-table-cell--shadow-active sd-table-cell--bg-white"
               >
-                <div class="flex gap-2 text-lg">
-                  <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-                  <sd-icon name="system/share" library="default" color="primary"></sd-icon>
-                </div>
+                <sd-link href="javascript:void(0)">
+                  Sales Staff (m/f/d) Customer Service with a Focus on Partner Banks and Private Clients (Full-time or
+                  Part-time)
+                </sd-link>
               </th>
-              <td class="sd-table-cell sd-table-cell--bg-transparent min-w-[400px]">
-                <sd-link href="#"
-                  >Kaufleute (m/w/d) Kundenservice mit Schwerpunkt Partnerbanken und Privatkunden (in Voll- oder
-                  Teilzeit)</sd-link
-                >
-              </td>
               <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Frankfurt am Main</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Customer Service</td>
-              <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+              <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Full-time<br />Part-time</td>
+              <td class="sd-table-cell sd-table-cell--bg-transparent">
+                <div class="flex">
+                  <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                    <sd-icon
+                      name="system/star-empty"
+                      library="default"
+                      color="primary"
+                      label="Add to favorites"
+                    ></sd-icon>
+                  </sd-button>
+                  <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                    <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+                  </sd-button>
+                </div>
+              </td>
             </tr>
             <tr>
               <th
                 class="sd-table-cell top-auto sticky left-0 z-[2] bg-clip-padding sd-table-cell--shadow-right sd-table-cell--shadow-active sd-table-cell--bg-neutral-100"
               >
-                <div class="flex gap-2 text-lg">
-                  <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-                  <sd-icon name="system/share" library="default" color="primary"></sd-icon>
-                </div>
+                <sd-link href="javascript:void(0)">Data Protection Officer/Auditor (Full-time or Part-time)</sd-link>
               </th>
-              <td class="sd-table-cell sd-table-cell--bg-neutral-100 min-w-[400px]">
-                <sd-link href="#">Datenschutzreferent*in/ Auditor*in (in Voll- oder Teilzeit)</sd-link>
-              </td>
               <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Hamburg</td>
               <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Compliance</td>
-              <td class="sd-table-cell sd-table-cell--bg-neutral-100">Fulltime<br />Parttime</td>
+              <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Full-time<br />Part-time</td>
+              <td class="sd-table-cell sd-table-cell--bg-neutral-100">
+                <div class="flex">
+                  <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                    <sd-icon
+                      name="system/star-empty"
+                      library="default"
+                      color="primary"
+                      label="Add to favorites"
+                    ></sd-icon>
+                  </sd-button>
+                  <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                    <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+                  </sd-button>
+                </div>
+              </td>
             </tr>
             <tr>
               <th
                 class="sd-table-cell top-auto sticky left-0 z-[2] bg-clip-padding sd-table-cell--shadow-right sd-table-cell--shadow-active sd-table-cell--bg-white"
               >
-                <div class="flex gap-2 text-lg">
-                  <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-                  <sd-icon name="system/share" library="default" color="primary"></sd-icon>
-                </div>
+                <sd-link href="javascript:void(0)"
+                  >(Junior) Business Analyst Risk Management (Full-time or Part-time)</sd-link
+                >
               </th>
-              <td class="sd-table-cell sd-table-cell--bg-transparent min-w-[400px]">
-                <sd-link href="#">(Junior) Business Analyst*in Risikomanagement (in Voll- oder Teilzeit)</sd-link>
-              </td>
               <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Frankfurt am Main</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Private Clients</td>
-              <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+              <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Full-time<br />Part-time</td>
+              <td class="sd-table-cell sd-table-cell--bg-transparent">
+                <div class="flex">
+                  <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                    <sd-icon
+                      name="system/star-empty"
+                      library="default"
+                      color="primary"
+                      label="Add to favorites"
+                    ></sd-icon>
+                  </sd-button>
+                  <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                    <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+                  </sd-button>
+                </div>
+              </td>
             </tr>
             <tr>
               <th
                 class="sd-table-cell top-auto sticky left-0 z-[2] bg-clip-padding sd-table-cell--shadow-right sd-table-cell--shadow-active sd-table-cell--bg-neutral-100"
               >
-                <div class="flex gap-2 text-lg">
-                  <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-                  <sd-icon name="system/share" library="default" color="primary"></sd-icon>
-                </div>
+                <sd-link href="javascript:void(0)">
+                  Head of the AI Competence Center as Group Leader*in IT Data Analytics (Full-time or Part-time)
+                </sd-link>
               </th>
-              <td class="sd-table-cell sd-table-cell--bg-neutral-100 min-w-[400px]">
-                <sd-link href="#"
-                  >Leitung des KI Competence Centers als Gruppenleiter*in IT Data Analytics (in Voll- oder
-                  Teilzeit)</sd-link
-                >
-              </td>
               <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Frankfurt am Main</td>
               <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">IT</td>
-              <td class="sd-table-cell sd-table-cell--bg-neutral-100">Fulltime<br />Parttime</td>
+              <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Full-time<br />Part-time</td>
+              <td class="sd-table-cell sd-table-cell--bg-neutral-100">
+                <div class="flex">
+                  <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                    <sd-icon
+                      name="system/star-empty"
+                      library="default"
+                      color="primary"
+                      label="Add to favorites"
+                    ></sd-icon>
+                  </sd-button>
+                  <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                    <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+                  </sd-button>
+                </div>
+              </td>
             </tr>
             <tr>
               <th
                 class="sd-table-cell top-auto sticky left-0 z-[2] bg-clip-padding sd-table-cell--shadow-right sd-table-cell--shadow-active sd-table-cell--bg-white"
               >
-                <div class="flex gap-2 text-lg">
-                  <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-                  <sd-icon name="system/share" library="default" color="primary"></sd-icon>
-                </div>
+                <sd-link href="javascript:void(0)">Trainee (m/f/d) Product Management & Sales PLUS</sd-link>
               </th>
-              <td class="sd-table-cell sd-table-cell--bg-transparent min-w-[400px]">
-                <sd-link href="#">Trainee (m/w/d) Produktmanagement & Vertrieb PLUS</sd-link>
-              </td>
               <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Frankfurt am Main</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Private Clients</td>
-              <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime</td>
+              <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Full-time</td>
+              <td class="sd-table-cell sd-table-cell--bg-transparent">
+                <div class="flex">
+                  <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                    <sd-icon
+                      name="system/star-empty"
+                      library="default"
+                      color="primary"
+                      label="Add to favorites"
+                    ></sd-icon>
+                  </sd-button>
+                  <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                    <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+                  </sd-button>
+                </div>
+              </td>
             </tr>
             <tr>
               <th
                 class="sd-table-cell top-auto sticky left-0 z-[2] bg-clip-padding sd-table-cell--shadow-right sd-table-cell--shadow-active sd-table-cell--bg-neutral-100"
               >
-                <div class="flex gap-2 text-lg">
-                  <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-                  <sd-icon name="system/share" library="default" color="primary"></sd-icon>
-                </div>
+                <sd-link href="javascript:void(0)">Trainee (m/f/d) Digitalization PLUS</sd-link>
               </th>
-              <td class="sd-table-cell sd-table-cell--bg-neutral-100 min-w-[400px]">
-                <sd-link href="#">Trainee (m/w/d) Digitalisierung PLUS</sd-link>
-              </td>
               <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Frankfurt am Main</td>
               <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Other</td>
-              <td class="sd-table-cell sd-table-cell--bg-neutral-100">Fulltime</td>
+              <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Full-time</td>
+              <td class="sd-table-cell sd-table-cell--bg-neutral-100">
+                <div class="flex">
+                  <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                    <sd-icon
+                      name="system/star-empty"
+                      library="default"
+                      color="primary"
+                      label="Add to favorites"
+                    ></sd-icon>
+                  </sd-button>
+                  <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                    <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+                  </sd-button>
+                </div>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -1556,169 +2089,207 @@ export const TableFixedRight = {
             <tbody>
               <tr>
                 <td class="sd-table-cell sd-table-cell--bg-transparent min-w-[400px]">
-                  <sd-link href="#">Duales Studium mit Ausbildung Investmentfondskauffrau/-mann (m/w/d)</sd-link>
+                  <sd-link href="javascript:void(0)">Dual Study Program with Training Investment Fund Saleswoman/Man (m/f/d)</sd-link>
                 </td>
                 <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Frankfurt am Main</td>
                 <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Apprenticeship</td>
-                <td class="sd-table-cell sd-table-cell--bg-transparent">Duales Studium / Ausbildung</td>
+                <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Dual Study Program / Training</td>
                 <th
                   class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-white"
                 >
-                  <div class="flex gap-2 text-lg">
-                    <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-                    <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+                  <div class="flex">
+                    <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                      <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
+                    </sd-button>
+                    <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                      <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+                    </sd-button>
                   </div>
                 </th>
               </tr>
               <tr>
                 <td class="sd-table-cell sd-table-cell--bg-neutral-100 min-w-[400px]">
-                  <sd-link href="#">Duales Studium Wirtschaftsinformatik (m/w/d), Start 01.09.2025</sd-link>
+                  <sd-link href="javascript:void(0)">Dual Study Program in Business Informatics (m/f/d), Start 01.09.2025</sd-link>
                 </td>
                 <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Frankfurt am Main</td>
                 <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">IT</td>
-                <td class="sd-table-cell sd-table-cell--bg-neutral-100">Duales Studium / Ausbildung</td>
+                <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Dual Study Program / Training</td>
                 <th
                   class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-white"
                 >
-                  <div class="flex gap-2 text-lg">
-                    <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-                    <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+                  <div class="flex">
+                    <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                      <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
+                    </sd-button>
+                    <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                      <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+                    </sd-button>
                   </div>
                 </th>
               </tr>
               <tr>
                 <td class="sd-table-cell sd-table-cell--bg-transparent min-w-[400px]">
-                  <sd-link href="#">Portfoliomanager*in Multi Asset Solutions (in Voll- oder Teilzeit)</sd-link>
+                  <sd-link href="javascript:void(0)">Portfolio Manager Multi Asset Solutions (Full-time or Part-time)</sd-link>
                 </td>
                 <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Frankfurt am Main</td>
                 <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Portfolio Management</td>
-                <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+                <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Full-time<br />Part-time</td>
                 <th
                   class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-white"
                 >
-                  <div class="flex gap-2 text-lg">
-                    <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-                    <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+                  <div class="flex">
+                    <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                      <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
+                    </sd-button>
+                    <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                      <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+                    </sd-button>
                   </div>
                 </th>
               </tr>
               <tr>
                 <td class="sd-table-cell sd-table-cell--bg-neutral-100 min-w-[400px]">
-                  <sd-link href="#"
-                    >(Junior-) Mitarbeiter*in für unser gesetzliches Meldewesen im Bereich Fondsadministration</sd-link
+                  <sd-link href="javascript:void(0)"
+                    >(Junior) Employee for our Legal Reporting in the Fund Administration Area</sd-link
                   >
                 </td>
                 <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Frankfurt am Main</td>
                 <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Fund Administration</td>
-                <td class="sd-table-cell sd-table-cell--bg-neutral-100">Fulltime<br />Parttime</td>
+                <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Full-time<br />Part-time</td>
                 <th
                   class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-white"
                 >
-                  <div class="flex gap-2 text-lg">
-                    <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-                    <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+                  <div class="flex">
+                    <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                      <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
+                    </sd-button>
+                    <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                      <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+                    </sd-button>
                   </div>
                 </th>
               </tr>
               <tr>
                 <td class="sd-table-cell sd-table-cell--bg-transparent min-w-[400px]">
-                  <sd-link href="#"
-                    >Kaufleute (m/w/d) Kundenservice mit Schwerpunkt Partnerbanken und Privatkunden (in Voll- oder
-                    Teilzeit)</sd-link
-                  >
+                  <sd-link href="javascript:void(0)">
+                    Sales Staff (m/f/d) Customer Service with a Focus on Partner Banks and Private Clients (Full-time or Part-time)
+                  </sd-link>
                 </td>
                 <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Frankfurt am Main</td>
                 <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Customer Service</td>
-                <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+                <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Full-time<br />Part-time</td>
                 <th
                   class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-white"
                 >
-                  <div class="flex gap-2 text-lg">
-                    <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-                    <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+                  <div class="flex">
+                    <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                      <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
+                    </sd-button>
+                    <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                      <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+                    </sd-button>
                   </div>
                 </th>
               </tr>
               <tr>
                 <td class="sd-table-cell sd-table-cell--bg-neutral-100 min-w-[400px]">
-                  <sd-link href="#">Datenschutzreferent*in/ Auditor*in (in Voll- oder Teilzeit)</sd-link>
+                  <sd-link href="javascript:void(0)">Data Protection Officer/Auditor (Full-time or Part-time)</sd-link>
                 </td>
                 <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Hamburg</td>
                 <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Compliance</td>
-                <td class="sd-table-cell sd-table-cell--bg-neutral-100">Fulltime<br />Parttime</td>
+                <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Full-time<br />Part-time</td>
                 <th
                   class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-white"
                 >
-                  <div class="flex gap-2 text-lg">
-                    <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-                    <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+                  <div class="flex">
+                    <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                      <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
+                    </sd-button>
+                    <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                      <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+                    </sd-button>
                   </div>
                 </th>
               </tr>
               <tr>
                 <td class="sd-table-cell sd-table-cell--bg-transparent min-w-[400px]">
-                  <sd-link href="#">(Junior) Business Analyst*in Risikomanagement (in Voll- oder Teilzeit)</sd-link>
+                  <sd-link href="javascript:void(0)">(Junior) Business Analyst Risk Management (Full-time or Part-time)</sd-link>
                 </td>
                 <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Frankfurt am Main</td>
                 <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Private Clients</td>
-                <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime<br />Parttime</td>
+                <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Full-time<br />Part-time</td>
                 <th
                   class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-white"
                 >
-                  <div class="flex gap-2 text-lg">
-                    <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-                    <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+                  <div class="flex">
+                    <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                      <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
+                    </sd-button>
+                    <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                      <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+                    </sd-button>
                   </div>
                 </th>
               </tr>
               <tr>
                 <td class="sd-table-cell sd-table-cell--bg-neutral-100 min-w-[400px]">
-                  <sd-link href="#"
-                    >Leitung des KI Competence Centers als Gruppenleiter*in IT Data Analytics (in Voll- oder
-                    Teilzeit)</sd-link
-                  >
+                  <sd-link href="javascript:void(0)">
+                    Head of the AI Competence Center as Group Leader*in IT Data Analytics (Full-time or Part-time)
+                  </sd-link>
                 </td>
                 <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Frankfurt am Main</td>
                 <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">IT</td>
-                <td class="sd-table-cell sd-table-cell--bg-neutral-100">Fulltime<br />Parttime</td>
+                <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Full-time<br />Part-time</td>
                 <th
                   class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-white"
                 >
-                  <div class="flex gap-2 text-lg">
-                    <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-                    <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+                  <div class="flex">
+                    <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                      <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
+                    </sd-button>
+                    <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                      <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+                    </sd-button>
                   </div>
                 </th>
               </tr>
               <tr>
                 <td class="sd-table-cell sd-table-cell--bg-transparent min-w-[400px]">
-                  <sd-link href="#">Trainee (m/w/d) Produktmanagement & Vertrieb PLUS</sd-link>
+                  <sd-link href="javascript:void(0)">Trainee (m/f/d) Product Management & Sales PLUS</sd-link>
                 </td>
                 <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Frankfurt am Main</td>
                 <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Private Clients</td>
-                <td class="sd-table-cell sd-table-cell--bg-transparent">Fulltime</td>
+                <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Full-time</td>
                 <th
                   class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-white"
                 >
-                  <div class="flex gap-2 text-lg">
-                    <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-                    <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+                  <div class="flex">
+                    <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                      <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
+                    </sd-button>
+                    <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                      <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+                    </sd-button>
                   </div>
                 </th>
               </tr>
               <tr>
                 <td class="sd-table-cell sd-table-cell--bg-neutral-100 min-w-[400px]">
-                  <sd-link href="#">Trainee (m/w/d) Digitalisierung PLUS</sd-link>
+                  <sd-link href="javascript:void(0)">Trainee (m/f/d) Digitalization PLUS</sd-link>
                 </td>
                 <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Frankfurt am Main</td>
                 <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Other</td>
-                <td class="sd-table-cell sd-table-cell--bg-neutral-100">Fulltime</td>
+                <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Full-time</td>
                 <th
                   class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-white"
                 >
-                  <div class="flex gap-2 text-lg">
-                    <sd-icon name="system/star-empty" library="default" color="primary"></sd-icon>
-                    <sd-icon name="system/share" library="default" color="primary"></sd-icon>
+                  <div class="flex">
+                    <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                      <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
+                    </sd-button>
+                    <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                      <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
+                    </sd-button>
                   </div>
                 </th>
               </tr>
