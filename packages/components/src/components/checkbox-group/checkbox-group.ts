@@ -18,6 +18,7 @@ import type SdCheckbox from '../checkbox/checkbox';
  * @slot - The default slot where `<sd-checkbox>` elements are placed.
  * @slot label - The checkbox group's label. Required for proper accessibility. Alternatively, you can use the `label`
  * attribute.
+ * @slot tooltip - An optional tooltip that helps describe the checkbox-group. Use this slot with the `sd-tooltip` component.
  **/
 
 @customElement('sd-checkbox-group')
@@ -25,7 +26,7 @@ export default class SdCheckboxGroup extends SolidElement {
   private readonly hasSlotController = new HasSlotController(this, 'label');
 
   /** The checkbox group's size. This size will be applied to the label, all child checkboxes. */
-  @property({ reflect: true }) size: 'lg' | 'sm' = 'lg';
+  @property({ reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
 
   /**
    * The orientation property determines the alignment of the component's content or elements. It accepts two possible
@@ -92,20 +93,25 @@ export default class SdCheckboxGroup extends SolidElement {
           {
             /* sizes, fonts */
             sm: 'text-sm',
+            md: 'text-base',
             lg: 'text-base'
           }[this.size]
         )}
         role="group"
         aria-labelledby="label"
       >
-        <label
-          part="form-control-label"
-          id="label"
-          class=${cx('mb-2 p-0 font-bold leading-normal text-black', hasLabel ? 'flex' : 'hidden')}
-          aria-hidden=${hasLabel ? 'false' : 'true'}
-        >
-          <slot name="label">${this.label}</slot>
-        </label>
+        <div class="flex items-center gap-1 mb-2">
+          <label
+            part="form-control-label"
+            id="label"
+            class=${cx('p-0 font-bold leading-normal text-black', hasLabel ? 'flex' : 'hidden')}
+            aria-hidden=${hasLabel ? 'false' : 'true'}
+          >
+            <slot name="label">${this.label}</slot>
+          </label>
+
+          <slot name="tooltip"></slot>
+        </div>
 
         <div
           part="form-control-input"

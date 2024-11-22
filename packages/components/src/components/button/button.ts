@@ -278,13 +278,13 @@ export default class SdButton extends SolidElement implements SolidFormControl {
           /* variants */
           primary: !this.inverted
             ? `text-white bg-primary border-transparent
-           hover:text-primary-100 hover:bg-primary-500
-           active:text-primary-200 active:bg-primary-800
-           disabled:bg-neutral-500`
+          hover:text-primary-100 hover:bg-primary-500
+          active:text-primary-200 active:bg-primary-800
+          disabled:bg-neutral-500`
             : `text-primary bg-white border-transparent
-           hover:text-primary-500 hover:bg-primary-100
-           active:text-primary-800 active:bg-primary-200
-           disabled:bg-neutral-600 disabled:text-white`,
+          hover:text-primary-500 hover:bg-primary-100
+          active:text-primary-800 active:bg-primary-200
+          disabled:bg-neutral-600 disabled:text-white`,
           secondary: !this.inverted
             ? `text-primary border-primary
           hover:text-primary-500 hover:border-primary-500 hover:bg-primary-100
@@ -320,6 +320,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
         rel=${ifDefined(isLink && this.target ? 'noreferrer noopener' : undefined)}
         role=${ifDefined(isLink ? undefined : 'button')}
         aria-disabled=${this.disabled ? 'true' : 'false'}
+        aria-labelledby="content"
         tabindex=${this.disabled ? '-1' : '0'}
         @blur=${this.handleBlur}
         @focus=${this.handleFocus}
@@ -337,10 +338,12 @@ export default class SdButton extends SolidElement implements SolidFormControl {
               lg: 'mr-2'
             }[this.size]
         )}></slot>
-        <slot part="label" class=${cx(
+        <slot part="label" id="content" class=${cx(
           slots['icon-only'] ? 'flex flex-auto items-center pointer-events-none' : 'inline-block',
           this.loading && 'invisible'
-        )}></slot>
+        )}
+        >
+        </slot>
         <slot name="icon-right"
           part="icon-right"
           class=${cx(

@@ -14,6 +14,11 @@ describe('<sd-badge>', () => {
       await expect(el).to.be.accessible();
     });
 
+    it('should have the aria-labelledby attribute set correctly', async () => {
+      el = await fixture<SdBadge>(html` <sd-badge>Badge</sd-badge> `);
+      expect(el.shadowRoot!.querySelector('[part~="base"]')!.getAttribute('aria-labelledby')).to.eq('content');
+    });
+
     it('should have the primary values set correctly', async () => {
       el = await fixture<SdBadge>(html` <sd-badge>Badge</sd-badge> `);
       expect(el.variant).to.equal('default');

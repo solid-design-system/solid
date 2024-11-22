@@ -27,7 +27,7 @@ As a [PERSONA] of the Solid Design System, I would like to [REQUIRE], as well as
   - [ ] `slots` - shows the components slots
   - [ ] `parts` - shows the components parts
   - [ ] `name` - description
-#### Samples
+#### Templates
   - [ ] `name` - description
   - [ ] `name` - description
 

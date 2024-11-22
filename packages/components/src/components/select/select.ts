@@ -36,6 +36,7 @@ import type SdOption from '../option/option';
  * @slot help-text - Text that describes how to use the input. Alternatively, you can use the `help-text` attribute.
  * @slot clear-icon - An icon to use in lieu of the default clear icon.
  * @slot expand-icon - The icon to show when the control is expanded and collapsed. Rotates on open and close.
+ * @slot tooltip - An optional tooltip that helps describe the input. Use this slot with the `sd-tooltip` component.
 
  *
  * @event sd-change - Emitted when the control's value changes.
@@ -825,19 +826,22 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
           'relative text-left',
           cursorStyles,
           this.size === 'sm' ? 'text-sm' : 'text-base',
-
           this.open && 'z-50'
         )}
       >
-        <label
-          id="label"
-          part="form-control-label"
-          class=${hasLabel && 'inline-block mb-2'}
-          aria-hidden=${hasLabel ? 'false' : 'true'}
-          @click=${this.handleLabelClick}
-        >
-          <slot name="label">${this.label}</slot>
-        </label>
+        <div class="flex items-center gap-1 mb-2">
+          <label
+            id="label"
+            part="form-control-label"
+            class=${hasLabel && 'inline-block'}
+            aria-hidden=${hasLabel ? 'false' : 'true'}
+            @click=${this.handleLabelClick}
+          >
+            <slot name="label">${this.label}</slot>
+          </label>
+
+          <slot name="tooltip"></slot>
+        </div>
 
         <div
           part="form-control-input"
@@ -903,7 +907,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 form=${this.form}
                 part="display-input"
                 class=${cx(
-                  'appearance-none outline-none flex-grow bg-transparent w-full',
+                  'appearance-none outline-none flex-grow bg-transparent w-full placeholder-neutral-700',
                   cursorStyles,
                   this.multiple && this.useTags && this.value.length > 0 ? 'hidden' : ''
                 )}
@@ -920,7 +924,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 aria-haspopup="listbox"
                 aria-labelledby="label"
                 aria-disabled=${this.disabled ? 'true' : 'false'}
-                aria-describedby="help-text"
+                aria-describedby="help-text invalid-message"
                 role="combobox"
                 tabindex="0"
                 @focus=${this.handleFocus}

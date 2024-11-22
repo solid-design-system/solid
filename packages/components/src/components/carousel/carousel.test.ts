@@ -2,7 +2,6 @@ import { aTimeout, expect, fixture, html, oneEvent } from '@open-wc/testing';
 import { clickOnElement } from '../../internal/test.js';
 import SdCarousel from './carousel';
 import sinon from 'sinon';
-
 describe('<sd-carousel>', () => {
   it('should render a carousel with default configuration', async () => {
     // Arrange
@@ -489,7 +488,6 @@ describe('<sd-carousel>', () => {
 
         // Assert
         expect(el.scrollContainer).to.have.attribute('aria-busy', 'false');
-        expect(el.scrollContainer).to.have.attribute('aria-atomic', 'true');
 
         expect(pagination).to.have.attribute('aria-controls', el.scrollContainer.id);
         for (const paginationItem of pagination.querySelectorAll('.carousel__pagination-item')) {
@@ -524,7 +522,6 @@ describe('<sd-carousel>', () => {
 
         // Assert
         expect(el.scrollContainer).to.have.attribute('aria-busy', 'false');
-        expect(el.scrollContainer).to.have.attribute('aria-atomic', 'true');
 
         expect(pagination).to.have.attribute('role', 'tablist');
         expect(pagination).to.have.attribute('aria-controls', el.scrollContainer.id);
@@ -659,6 +656,173 @@ describe('<sd-carousel>', () => {
 
       // Assert
       expect(currentPage).to.equal(5);
+    });
+  });
+
+  describe('when the user interacts with the carousel', () => {
+    let clock: sinon.SinonFakeTimers;
+
+    beforeEach(() => {
+      clock = sinon.useFakeTimers({
+        now: new Date()
+      });
+    });
+
+    afterEach(() => {
+      clock.restore();
+    });
+
+    it('should pause the autoplay', async () => {
+      // Arrange
+      const el = await fixture<SdCarousel>(html`
+        <sd-carousel autoplay>
+          <sd-carousel-item>Node 1</sd-carousel-item>
+          <sd-carousel-item>Node 2</sd-carousel-item>
+          <sd-carousel-item>Node 3</sd-carousel-item>
+        </sd-carousel>
+      `);
+      sinon.stub(el, 'next');
+
+      await el.updateComplete;
+
+      // Act
+      el.dispatchEvent(new Event('mouseenter'));
+      await el.updateComplete;
+      clock.next();
+      clock.next();
+
+      // Assert
+      expect(el.next).not.to.have.been.called;
+    });
+
+    it('should not resume if the user is still interacting', async () => {
+      // Arrange
+      const el = await fixture<SdCarousel>(html`
+        <sd-carousel autoplay>
+          <sd-carousel-item>Node 1</sd-carousel-item>
+          <sd-carousel-item>Node 2</sd-carousel-item>
+          <sd-carousel-item>Node 3</sd-carousel-item>
+        </sd-carousel>
+      `);
+      sinon.stub(el, 'next');
+
+      await el.updateComplete;
+
+      // Act
+      el.dispatchEvent(new Event('mouseenter'));
+      el.dispatchEvent(new Event('focusin'));
+      await el.updateComplete;
+
+      el.dispatchEvent(new Event('mouseleave'));
+      await el.updateComplete;
+
+      clock.next();
+      clock.next();
+
+      // Assert
+      expect(el.next).not.to.have.been.called;
+    });
+
+    it('should not resume if the user clicks the pause button', async () => {
+      // Arrange
+      const el = await fixture<SdCarousel>(html`
+        <sd-carousel autoplay>
+          <sd-carousel-item>Node 1</sd-carousel-item>
+          <sd-carousel-item>Node 2</sd-carousel-item>
+          <sd-carousel-item>Node 3</sd-carousel-item>
+        </sd-carousel>
+      `);
+      sinon.stub(el, 'next');
+
+      await el.updateComplete;
+
+      // Act
+      el.autoplayControls.click();
+      await el.updateComplete;
+      clock.next();
+      clock.next();
+
+      // Assert
+      expect(el.next).not.to.have.been.called;
+    });
+
+    it('should resume if the user clicks the resume button', async () => {
+      // Arrange
+      const el = await fixture<SdCarousel>(html`
+        <sd-carousel autoplay loop>
+          <sd-carousel-item>Node 1</sd-carousel-item>
+          <sd-carousel-item>Node 2</sd-carousel-item>
+          <sd-carousel-item>Node 3</sd-carousel-item>
+        </sd-carousel>
+      `);
+      sinon.stub(el, 'next');
+
+      await el.updateComplete;
+
+      // Act
+      el.autoplayControls.click();
+      await el.updateComplete;
+      clock.next();
+      clock.next();
+
+      // Assert
+      expect(el.next).not.to.have.been.called;
+
+      // Act
+
+      el.autoplayControls.click();
+      await el.updateComplete;
+      clock.next();
+      clock.next();
+
+      // Assert
+      expect(el.next).to.have.been.called;
+    });
+  });
+
+  describe('dot controls navigation', () => {
+    it('should navigate to the correct slide when a dot is clicked, considering slidesPerMove', async () => {
+      // Arrange
+      const slidesPerMove = 2;
+      const el = await fixture<SdCarousel>(html`
+        <sd-carousel variant="dot" slides-per-move="${slidesPerMove}">
+          <sd-carousel-item>Node 1</sd-carousel-item>
+          <sd-carousel-item>Node 2</sd-carousel-item>
+          <sd-carousel-item>Node 3</sd-carousel-item>
+          <sd-carousel-item>Node 4</sd-carousel-item>
+        </sd-carousel>
+      `);
+      sinon.stub(el, 'goToSlide');
+
+      // Act
+      const secondDot = el.shadowRoot!.querySelectorAll('.carousel__pagination-item')[1] as HTMLElement;
+      secondDot.click();
+      await el.updateComplete;
+
+      // Assert
+      expect(el.goToSlide).to.have.been.calledWith(slidesPerMove);
+    });
+
+    it('should unblock autoplay when a dot is clicked', async () => {
+      // Arrange
+      const el = await fixture<SdCarousel>(html`
+        <sd-carousel autoplay variant="dot">
+          <sd-carousel-item>Node 1</sd-carousel-item>
+          <sd-carousel-item>Node 2</sd-carousel-item>
+          <sd-carousel-item>Node 3</sd-carousel-item>
+        </sd-carousel>
+      `);
+      sinon.stub(el, 'next');
+
+      await el.updateComplete;
+
+      // Act
+      const secondDot = el.shadowRoot!.querySelectorAll('.carousel__pagination-item')[1] as HTMLElement;
+      secondDot.click();
+      await el.updateComplete;
+
+      // Assert
+      expect(secondDot).to.not.have.focus;
     });
   });
 });
