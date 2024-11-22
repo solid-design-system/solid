@@ -83,31 +83,27 @@ import '@solid-design-system/styles/typography.css';
 > - `table/table.css`
 > - `table/table-cell.css`
 >
->   Ensure to include other modules only if you need them and to not include them twice.
+>   When using `sd-prose` only include other modules if you need them and they are not already included in `sd-prose`.
 
 <!-- BEGIN INLINE COMMENT -->
 
-- figure.css
-  - copyright.css
-  - media.css
-- info.css
-  - chip.css
-  - flag.css
 - prose.css
-- typography.css
+- modules.css
+  - chip.css
+  - container.css
+  - copyright.css
   - display.css
+  - flag.css
   - footnotes.css
   - headline.css
+  - hidden-links.css
   - interactive.css
   - leadtext.css
   - list.css
   - mark.css
+  - media.css
   - meta.css
   - paragraph.css
-- utilities.css
-  - container.css
-  - hidden-links.css
-- table.css
   - table-cell.css
   - table.css
 

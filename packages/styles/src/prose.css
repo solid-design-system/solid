@@ -108,10 +108,12 @@
   }
 }
 
-@import url('../typography/display.css');
-@import url('../typography/headline.css');
-@import url('../typography/interactive.css');
-@import url('../typography/leadtext.css');
-@import url('../typography/list.css');
-@import url('../typography/paragraph.css');
-@import url('../figure/media.css');
+@import url('../modules/display.css');
+@import url('../modules/headline.css');
+@import url('../modules/interactive.css');
+@import url('../modules/leadtext.css');
+@import url('../modules/list.css');
+@import url('../modules/paragraph.css');
+@import url('../modules/media.css');
+@import url('./modules/table-cell.css');
+@import url('./modules/table.css');
