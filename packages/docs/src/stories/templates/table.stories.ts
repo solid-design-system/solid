@@ -26,6 +26,7 @@ export default {
 export const simpleTables = {
   render: () => html`
     <table
+      id="simple"
       class="sd-table sample-table w-full focus-visible:focus-outline"
       role="region"
       tabindex="0"
@@ -52,10 +53,10 @@ export const simpleTables = {
           <td class="sd-table-cell sd-table-cell--bg-transparent">Dual Study Program / Training</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">
             <div class="flex">
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
               </sd-button>
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
               </sd-button>
             </div>
@@ -72,10 +73,10 @@ export const simpleTables = {
           <td class="sd-table-cell sd-table-cell--bg-transparent">Dual Study Program / Training</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">
             <div class="flex">
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
               </sd-button>
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
               </sd-button>
             </div>
@@ -92,10 +93,10 @@ export const simpleTables = {
           <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">
             <div class="flex">
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
               </sd-button>
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
               </sd-button>
             </div>
@@ -112,10 +113,10 @@ export const simpleTables = {
           <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">
             <div class="flex">
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
               </sd-button>
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
               </sd-button>
             </div>
@@ -133,10 +134,10 @@ export const simpleTables = {
           <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">
             <div class="flex">
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
               </sd-button>
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
               </sd-button>
             </div>
@@ -151,10 +152,10 @@ export const simpleTables = {
           <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">
             <div class="flex">
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
               </sd-button>
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
               </sd-button>
             </div>
@@ -171,10 +172,10 @@ export const simpleTables = {
           <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">
             <div class="flex">
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
               </sd-button>
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
               </sd-button>
             </div>
@@ -191,10 +192,10 @@ export const simpleTables = {
           <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">
             <div class="flex">
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
               </sd-button>
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
               </sd-button>
             </div>
@@ -209,10 +210,10 @@ export const simpleTables = {
           <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">
             <div class="flex">
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
               </sd-button>
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
               </sd-button>
             </div>
@@ -227,10 +228,10 @@ export const simpleTables = {
           <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">
             <div class="flex">
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
               </sd-button>
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
               </sd-button>
             </div>
@@ -238,6 +239,16 @@ export const simpleTables = {
         </tr>
       </tbody>
     </table>
+    <script type="module">
+      const table = document.getElementById('simple');
+      const actions = table.querySelectorAll('sd-button');
+
+      actions.forEach(action => {
+        action.onclick = () => {
+          alert('Action performed');
+        };
+      });
+    </script>
   `
 };
 
@@ -245,6 +256,7 @@ export const simpleTableVerticalDividers = {
   name: 'Simple Table with Vertical Dividers',
   render: () => html`
     <table
+      id="dividers"
       class="sd-table sample-table w-full focus-visible:focus-outline"
       role="region"
       tabindex="0"
@@ -273,10 +285,10 @@ export const simpleTableVerticalDividers = {
           </td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">
             <div class="flex">
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
               </sd-button>
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
               </sd-button>
             </div>
@@ -295,10 +307,10 @@ export const simpleTableVerticalDividers = {
           </td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">
             <div class="flex">
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
               </sd-button>
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
               </sd-button>
             </div>
@@ -315,10 +327,10 @@ export const simpleTableVerticalDividers = {
           <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Full-time<br />Part-time</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">
             <div class="flex">
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
               </sd-button>
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
               </sd-button>
             </div>
@@ -335,10 +347,10 @@ export const simpleTableVerticalDividers = {
           <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Full-time<br />Part-time</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">
             <div class="flex">
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
               </sd-button>
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
               </sd-button>
             </div>
@@ -356,10 +368,10 @@ export const simpleTableVerticalDividers = {
           <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Full-time<br />Part-time</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">
             <div class="flex">
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
               </sd-button>
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
               </sd-button>
             </div>
@@ -374,10 +386,10 @@ export const simpleTableVerticalDividers = {
           <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Full-time<br />Part-time</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">
             <div class="flex">
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
               </sd-button>
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
               </sd-button>
             </div>
@@ -394,10 +406,10 @@ export const simpleTableVerticalDividers = {
           <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Full-time<br />Part-time</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">
             <div class="flex">
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
               </sd-button>
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
               </sd-button>
             </div>
@@ -414,10 +426,10 @@ export const simpleTableVerticalDividers = {
           <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Full-time<br />Part-time</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">
             <div class="flex">
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
               </sd-button>
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
               </sd-button>
             </div>
@@ -432,10 +444,10 @@ export const simpleTableVerticalDividers = {
           <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Full-time</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">
             <div class="flex">
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
               </sd-button>
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
               </sd-button>
             </div>
@@ -450,10 +462,10 @@ export const simpleTableVerticalDividers = {
           <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Full-time</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">
             <div class="flex">
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
               </sd-button>
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
               </sd-button>
             </div>
@@ -461,6 +473,16 @@ export const simpleTableVerticalDividers = {
         </tr>
       </tbody>
     </table>
+    <script type="module">
+      const table = document.getElementById('dividers');
+      const actions = table.querySelectorAll('sd-button');
+
+      actions.forEach(action => {
+        action.onclick = () => {
+          alert('Action performed');
+        };
+      });
+    </script>
   `
 };
 
@@ -468,6 +490,7 @@ export const simpleTableAlternatingColors = {
   name: 'Simple Table with Alternating Colors',
   render: () => html`
     <table
+      id="alternating"
       class="sd-table sample-table w-full focus-visible:focus-outline"
       role="region"
       tabindex="0"
@@ -494,10 +517,10 @@ export const simpleTableAlternatingColors = {
           <td class="sd-table-cell sd-table-cell--bg-transparent">Dual Study Program / Training</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">
             <div class="flex">
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
               </sd-button>
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
               </sd-button>
             </div>
@@ -514,10 +537,10 @@ export const simpleTableAlternatingColors = {
           <td class="sd-table-cell sd-table-cell--bg-primary-100">Dual Study Program / Training</td>
           <td class="sd-table-cell sd-table-cell--bg-primary-100">
             <div class="flex">
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
               </sd-button>
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
               </sd-button>
             </div>
@@ -534,10 +557,10 @@ export const simpleTableAlternatingColors = {
           <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">
             <div class="flex">
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
               </sd-button>
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
               </sd-button>
             </div>
@@ -554,10 +577,10 @@ export const simpleTableAlternatingColors = {
           <td class="sd-table-cell sd-table-cell--bg-primary-100">Full-time<br />Part-time</td>
           <td class="sd-table-cell sd-table-cell--bg-primary-100">
             <div class="flex">
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
               </sd-button>
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
               </sd-button>
             </div>
@@ -575,10 +598,10 @@ export const simpleTableAlternatingColors = {
           <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">
             <div class="flex">
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
               </sd-button>
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
               </sd-button>
             </div>
@@ -593,10 +616,10 @@ export const simpleTableAlternatingColors = {
           <td class="sd-table-cell sd-table-cell--bg-primary-100">Full-time<br />Part-time</td>
           <td class="sd-table-cell sd-table-cell--bg-primary-100">
             <div class="flex">
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
               </sd-button>
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
               </sd-button>
             </div>
@@ -613,10 +636,10 @@ export const simpleTableAlternatingColors = {
           <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">
             <div class="flex">
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
               </sd-button>
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
               </sd-button>
             </div>
@@ -633,10 +656,10 @@ export const simpleTableAlternatingColors = {
           <td class="sd-table-cell sd-table-cell--bg-primary-100">Full-time<br />Part-time</td>
           <td class="sd-table-cell sd-table-cell--bg-primary-100">
             <div class="flex">
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
               </sd-button>
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
               </sd-button>
             </div>
@@ -651,10 +674,10 @@ export const simpleTableAlternatingColors = {
           <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time</td>
           <td class="sd-table-cell sd-table-cell--bg-transparent">
             <div class="flex">
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
               </sd-button>
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
               </sd-button>
             </div>
@@ -669,10 +692,10 @@ export const simpleTableAlternatingColors = {
           <td class="sd-table-cell sd-table-cell--bg-primary-100">Full-time</td>
           <td class="sd-table-cell sd-table-cell--bg-primary-100">
             <div class="flex">
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
               </sd-button>
-              <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+              <sd-button variant="tertiary" size="sm">
                 <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
               </sd-button>
             </div>
@@ -680,6 +703,16 @@ export const simpleTableAlternatingColors = {
         </tr>
       </tbody>
     </table>
+    <script type="module">
+      const table = document.getElementById('alternating');
+      const actions = table.querySelectorAll('sd-button');
+
+      actions.forEach(action => {
+        action.onclick = () => {
+          alert('Action performed');
+        };
+      });
+    </script>
   `
 };
 
@@ -797,7 +830,7 @@ export const sortableTable = {
     };
 
     return html`
-      <table class="sd-table sample-table w-full" id="sortableTable" .sortData=${sortData}>
+      <table id="sortable" class="sd-table sample-table w-full" id="sortableTable" .sortData=${sortData}>
         <thead>
           ${(() => {
             return html`<tr>
@@ -842,7 +875,7 @@ export const sortableTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Dual Study Program / Training</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon
                     name="system/star-empty"
                     library="default"
@@ -850,7 +883,7 @@ export const sortableTable = {
                     label="Add to favorites"
                   ></sd-icon>
                 </sd-button>
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
                 </sd-button>
               </div>
@@ -867,7 +900,7 @@ export const sortableTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Dual Study Program / Training</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon
                     name="system/star-empty"
                     library="default"
@@ -875,7 +908,7 @@ export const sortableTable = {
                     label="Add to favorites"
                   ></sd-icon>
                 </sd-button>
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
                 </sd-button>
               </div>
@@ -892,7 +925,7 @@ export const sortableTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon
                     name="system/star-empty"
                     library="default"
@@ -900,7 +933,7 @@ export const sortableTable = {
                     label="Add to favorites"
                   ></sd-icon>
                 </sd-button>
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
                 </sd-button>
               </div>
@@ -917,7 +950,7 @@ export const sortableTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon
                     name="system/star-empty"
                     library="default"
@@ -925,7 +958,7 @@ export const sortableTable = {
                     label="Add to favorites"
                   ></sd-icon>
                 </sd-button>
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
                 </sd-button>
               </div>
@@ -943,7 +976,7 @@ export const sortableTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon
                     name="system/star-empty"
                     library="default"
@@ -951,7 +984,7 @@ export const sortableTable = {
                     label="Add to favorites"
                   ></sd-icon>
                 </sd-button>
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
                 </sd-button>
               </div>
@@ -966,7 +999,7 @@ export const sortableTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon
                     name="system/star-empty"
                     library="default"
@@ -974,7 +1007,7 @@ export const sortableTable = {
                     label="Add to favorites"
                   ></sd-icon>
                 </sd-button>
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
                 </sd-button>
               </div>
@@ -991,7 +1024,7 @@ export const sortableTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon
                     name="system/star-empty"
                     library="default"
@@ -999,7 +1032,7 @@ export const sortableTable = {
                     label="Add to favorites"
                   ></sd-icon>
                 </sd-button>
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
                 </sd-button>
               </div>
@@ -1016,7 +1049,7 @@ export const sortableTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon
                     name="system/star-empty"
                     library="default"
@@ -1024,7 +1057,7 @@ export const sortableTable = {
                     label="Add to favorites"
                   ></sd-icon>
                 </sd-button>
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
                 </sd-button>
               </div>
@@ -1039,7 +1072,7 @@ export const sortableTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon
                     name="system/star-empty"
                     library="default"
@@ -1047,7 +1080,7 @@ export const sortableTable = {
                     label="Add to favorites"
                   ></sd-icon>
                 </sd-button>
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
                 </sd-button>
               </div>
@@ -1062,7 +1095,7 @@ export const sortableTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon
                     name="system/star-empty"
                     library="default"
@@ -1070,7 +1103,7 @@ export const sortableTable = {
                     label="Add to favorites"
                   ></sd-icon>
                 </sd-button>
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
                 </sd-button>
               </div>
@@ -1078,6 +1111,16 @@ export const sortableTable = {
           </tr>
         </tbody>
       </table>
+      <script type="module">
+        const table = document.getElementById('sortable');
+        const actions = table.querySelectorAll('sd-button');
+
+        actions.forEach(action => {
+          action.onclick = () => {
+            alert('Action performed');
+          };
+        });
+      </script>
     `;
   }
 };
@@ -1143,6 +1186,13 @@ export const advancedTables = {
               }
             });
           });
+
+          const actions = scrollableTable.querySelectorAll('sd-button');
+          actions.forEach(action => {
+            action.onclick = () => {
+              alert('Action performed');
+            };
+          });
         });
       </script>
       <table
@@ -1177,7 +1227,7 @@ export const advancedTables = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Dual Study Program / Training</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon
                     name="system/star-empty"
                     library="default"
@@ -1185,7 +1235,7 @@ export const advancedTables = {
                     label="Add to favorites"
                   ></sd-icon>
                 </sd-button>
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
                 </sd-button>
               </div>
@@ -1202,7 +1252,7 @@ export const advancedTables = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Dual Study Program / Training</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon
                     name="system/star-empty"
                     library="default"
@@ -1210,7 +1260,7 @@ export const advancedTables = {
                     label="Add to favorites"
                   ></sd-icon>
                 </sd-button>
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
                 </sd-button>
               </div>
@@ -1227,7 +1277,7 @@ export const advancedTables = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon
                     name="system/star-empty"
                     library="default"
@@ -1235,7 +1285,7 @@ export const advancedTables = {
                     label="Add to favorites"
                   ></sd-icon>
                 </sd-button>
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
                 </sd-button>
               </div>
@@ -1252,7 +1302,7 @@ export const advancedTables = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon
                     name="system/star-empty"
                     library="default"
@@ -1260,7 +1310,7 @@ export const advancedTables = {
                     label="Add to favorites"
                   ></sd-icon>
                 </sd-button>
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
                 </sd-button>
               </div>
@@ -1278,7 +1328,7 @@ export const advancedTables = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon
                     name="system/star-empty"
                     library="default"
@@ -1286,7 +1336,7 @@ export const advancedTables = {
                     label="Add to favorites"
                   ></sd-icon>
                 </sd-button>
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
                 </sd-button>
               </div>
@@ -1301,7 +1351,7 @@ export const advancedTables = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon
                     name="system/star-empty"
                     library="default"
@@ -1309,7 +1359,7 @@ export const advancedTables = {
                     label="Add to favorites"
                   ></sd-icon>
                 </sd-button>
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
                 </sd-button>
               </div>
@@ -1326,7 +1376,7 @@ export const advancedTables = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon
                     name="system/star-empty"
                     library="default"
@@ -1334,7 +1384,7 @@ export const advancedTables = {
                     label="Add to favorites"
                   ></sd-icon>
                 </sd-button>
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
                 </sd-button>
               </div>
@@ -1351,7 +1401,7 @@ export const advancedTables = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon
                     name="system/star-empty"
                     library="default"
@@ -1359,7 +1409,7 @@ export const advancedTables = {
                     label="Add to favorites"
                   ></sd-icon>
                 </sd-button>
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
                 </sd-button>
               </div>
@@ -1374,7 +1424,7 @@ export const advancedTables = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon
                     name="system/star-empty"
                     library="default"
@@ -1382,7 +1432,7 @@ export const advancedTables = {
                     label="Add to favorites"
                   ></sd-icon>
                 </sd-button>
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
                 </sd-button>
               </div>
@@ -1397,7 +1447,7 @@ export const advancedTables = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon
                     name="system/star-empty"
                     library="default"
@@ -1405,7 +1455,7 @@ export const advancedTables = {
                     label="Add to favorites"
                   ></sd-icon>
                 </sd-button>
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
                 </sd-button>
               </div>
@@ -1434,6 +1484,13 @@ export const TableFixedBottom = {
                 header.classList.add('sd-table-cell--shadow-active');
               }
             });
+          });
+
+          const actions = scrollableTable.querySelectorAll('sd-button');
+          actions.forEach(action => {
+            action.onclick = () => {
+              alert('Action performed');
+            };
           });
         });
       </script>
@@ -1465,7 +1522,7 @@ export const TableFixedBottom = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Dual Study Program / Training</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon
                     name="system/star-empty"
                     library="default"
@@ -1473,7 +1530,7 @@ export const TableFixedBottom = {
                     label="Add to favorites"
                   ></sd-icon>
                 </sd-button>
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
                 </sd-button>
               </div>
@@ -1490,7 +1547,7 @@ export const TableFixedBottom = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Dual Study Program / Training</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon
                     name="system/star-empty"
                     library="default"
@@ -1498,7 +1555,7 @@ export const TableFixedBottom = {
                     label="Add to favorites"
                   ></sd-icon>
                 </sd-button>
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
                 </sd-button>
               </div>
@@ -1515,7 +1572,7 @@ export const TableFixedBottom = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon
                     name="system/star-empty"
                     library="default"
@@ -1523,7 +1580,7 @@ export const TableFixedBottom = {
                     label="Add to favorites"
                   ></sd-icon>
                 </sd-button>
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
                 </sd-button>
               </div>
@@ -1540,7 +1597,7 @@ export const TableFixedBottom = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon
                     name="system/star-empty"
                     library="default"
@@ -1548,7 +1605,7 @@ export const TableFixedBottom = {
                     label="Add to favorites"
                   ></sd-icon>
                 </sd-button>
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
                 </sd-button>
               </div>
@@ -1566,7 +1623,7 @@ export const TableFixedBottom = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon
                     name="system/star-empty"
                     library="default"
@@ -1574,7 +1631,7 @@ export const TableFixedBottom = {
                     label="Add to favorites"
                   ></sd-icon>
                 </sd-button>
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
                 </sd-button>
               </div>
@@ -1589,7 +1646,7 @@ export const TableFixedBottom = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon
                     name="system/star-empty"
                     library="default"
@@ -1597,7 +1654,7 @@ export const TableFixedBottom = {
                     label="Add to favorites"
                   ></sd-icon>
                 </sd-button>
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
                 </sd-button>
               </div>
@@ -1614,7 +1671,7 @@ export const TableFixedBottom = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon
                     name="system/star-empty"
                     library="default"
@@ -1622,7 +1679,7 @@ export const TableFixedBottom = {
                     label="Add to favorites"
                   ></sd-icon>
                 </sd-button>
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
                 </sd-button>
               </div>
@@ -1639,7 +1696,7 @@ export const TableFixedBottom = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon
                     name="system/star-empty"
                     library="default"
@@ -1647,7 +1704,7 @@ export const TableFixedBottom = {
                     label="Add to favorites"
                   ></sd-icon>
                 </sd-button>
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
                 </sd-button>
               </div>
@@ -1662,7 +1719,7 @@ export const TableFixedBottom = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon
                     name="system/star-empty"
                     library="default"
@@ -1670,7 +1727,7 @@ export const TableFixedBottom = {
                     label="Add to favorites"
                   ></sd-icon>
                 </sd-button>
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
                 </sd-button>
               </div>
@@ -1685,7 +1742,7 @@ export const TableFixedBottom = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon
                     name="system/star-empty"
                     library="default"
@@ -1693,7 +1750,7 @@ export const TableFixedBottom = {
                     label="Add to favorites"
                   ></sd-icon>
                 </sd-button>
-                <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                <sd-button variant="tertiary" size="sm">
                   <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
                 </sd-button>
               </div>
@@ -1752,10 +1809,17 @@ export const TableFixedLeft = {
               }
             });
           });
+
+          const actions = scrollableTable.querySelectorAll('sd-button');
+          actions.forEach(action => {
+            action.onclick = () => {
+              alert('Action performed');
+            };
+          });
         });
       </script>
       <div
-        id="horizontal-scrollable-table-2"
+        id="horizontal-scrollable-table"
         class="overflow-x-scroll overflow-y-visible w-[600px] focus-visible:focus-outline"
         role="region"
         tabindex="0"
@@ -1788,7 +1852,7 @@ export const TableFixedLeft = {
               </td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
-                  <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-button variant="tertiary" size="sm">
                     <sd-icon
                       name="system/star-empty"
                       library="default"
@@ -1796,7 +1860,7 @@ export const TableFixedLeft = {
                       label="Add to favorites"
                     ></sd-icon>
                   </sd-button>
-                  <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-button variant="tertiary" size="sm">
                     <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
                   </sd-button>
                 </div>
@@ -1817,7 +1881,7 @@ export const TableFixedLeft = {
               </td>
               <td class="sd-table-cell sd-table-cell--bg-neutral-100">
                 <div class="flex">
-                  <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-button variant="tertiary" size="sm">
                     <sd-icon
                       name="system/star-empty"
                       library="default"
@@ -1825,7 +1889,7 @@ export const TableFixedLeft = {
                       label="Add to favorites"
                     ></sd-icon>
                   </sd-button>
-                  <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-button variant="tertiary" size="sm">
                     <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
                   </sd-button>
                 </div>
@@ -1844,7 +1908,7 @@ export const TableFixedLeft = {
               <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
-                  <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-button variant="tertiary" size="sm">
                     <sd-icon
                       name="system/star-empty"
                       library="default"
@@ -1852,7 +1916,7 @@ export const TableFixedLeft = {
                       label="Add to favorites"
                     ></sd-icon>
                   </sd-button>
-                  <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-button variant="tertiary" size="sm">
                     <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
                   </sd-button>
                 </div>
@@ -1871,7 +1935,7 @@ export const TableFixedLeft = {
               <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-neutral-100">
                 <div class="flex">
-                  <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-button variant="tertiary" size="sm">
                     <sd-icon
                       name="system/star-empty"
                       library="default"
@@ -1879,7 +1943,7 @@ export const TableFixedLeft = {
                       label="Add to favorites"
                     ></sd-icon>
                   </sd-button>
-                  <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-button variant="tertiary" size="sm">
                     <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
                   </sd-button>
                 </div>
@@ -1899,7 +1963,7 @@ export const TableFixedLeft = {
               <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
-                  <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-button variant="tertiary" size="sm">
                     <sd-icon
                       name="system/star-empty"
                       library="default"
@@ -1907,7 +1971,7 @@ export const TableFixedLeft = {
                       label="Add to favorites"
                     ></sd-icon>
                   </sd-button>
-                  <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-button variant="tertiary" size="sm">
                     <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
                   </sd-button>
                 </div>
@@ -1924,7 +1988,7 @@ export const TableFixedLeft = {
               <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-neutral-100">
                 <div class="flex">
-                  <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-button variant="tertiary" size="sm">
                     <sd-icon
                       name="system/star-empty"
                       library="default"
@@ -1932,7 +1996,7 @@ export const TableFixedLeft = {
                       label="Add to favorites"
                     ></sd-icon>
                   </sd-button>
-                  <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-button variant="tertiary" size="sm">
                     <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
                   </sd-button>
                 </div>
@@ -1951,7 +2015,7 @@ export const TableFixedLeft = {
               <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
-                  <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-button variant="tertiary" size="sm">
                     <sd-icon
                       name="system/star-empty"
                       library="default"
@@ -1959,7 +2023,7 @@ export const TableFixedLeft = {
                       label="Add to favorites"
                     ></sd-icon>
                   </sd-button>
-                  <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-button variant="tertiary" size="sm">
                     <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
                   </sd-button>
                 </div>
@@ -1978,7 +2042,7 @@ export const TableFixedLeft = {
               <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-neutral-100">
                 <div class="flex">
-                  <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-button variant="tertiary" size="sm">
                     <sd-icon
                       name="system/star-empty"
                       library="default"
@@ -1986,7 +2050,7 @@ export const TableFixedLeft = {
                       label="Add to favorites"
                     ></sd-icon>
                   </sd-button>
-                  <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-button variant="tertiary" size="sm">
                     <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
                   </sd-button>
                 </div>
@@ -2003,7 +2067,7 @@ export const TableFixedLeft = {
               <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Full-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
-                  <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-button variant="tertiary" size="sm">
                     <sd-icon
                       name="system/star-empty"
                       library="default"
@@ -2011,7 +2075,7 @@ export const TableFixedLeft = {
                       label="Add to favorites"
                     ></sd-icon>
                   </sd-button>
-                  <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-button variant="tertiary" size="sm">
                     <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
                   </sd-button>
                 </div>
@@ -2028,7 +2092,7 @@ export const TableFixedLeft = {
               <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Full-time</td>
               <td class="sd-table-cell sd-table-cell--bg-neutral-100">
                 <div class="flex">
-                  <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-button variant="tertiary" size="sm">
                     <sd-icon
                       name="system/star-empty"
                       library="default"
@@ -2036,7 +2100,7 @@ export const TableFixedLeft = {
                       label="Add to favorites"
                     ></sd-icon>
                   </sd-button>
-                  <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                  <sd-button variant="tertiary" size="sm">
                     <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
                   </sd-button>
                 </div>
@@ -2057,16 +2121,23 @@ export const TableFixedRight = {
           document.addEventListener('DOMContentLoaded', () => {
             const scrollableTable = document.getElementById('horizontal-scrollable-table-2');
             const tableHeaders = scrollableTable.querySelectorAll('th');
-            const maxScrollX = scrollableTable.scrollWidth - scrollableTable.clientWidth;
+
 
             scrollableTable.addEventListener('scroll', () => {
               tableHeaders.forEach(header => {
-                if (scrollableTable.scrollLeft === maxScrollX) {
+                if (scrollableTable.scrollLeft + scrollableTable.clientWidth >= scrollableTable.scrollWidth) {
                   header.classList.remove('sd-table-cell--shadow-active');
                 } else {
                   header.classList.add('sd-table-cell--shadow-active');
                 }
               });
+            });
+
+            const actions = scrollableTable.querySelectorAll('sd-button');
+            actions.forEach(action => {
+              action.onclick = () => {
+                alert('Action performed');
+              };
             });
           });
         </script>
@@ -2098,10 +2169,10 @@ export const TableFixedRight = {
                   class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-white"
                 >
                   <div class="flex">
-                    <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                    <sd-button variant="tertiary" size="sm">
                       <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
                     </sd-button>
-                    <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                    <sd-button variant="tertiary" size="sm">
                       <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
                     </sd-button>
                   </div>
@@ -2115,13 +2186,13 @@ export const TableFixedRight = {
                 <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">IT</td>
                 <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Dual Study Program / Training</td>
                 <th
-                  class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-white"
+                  class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-neutral-100"
                 >
                   <div class="flex">
-                    <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                    <sd-button variant="tertiary" size="sm">
                       <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
                     </sd-button>
-                    <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                    <sd-button variant="tertiary" size="sm">
                       <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
                     </sd-button>
                   </div>
@@ -2138,10 +2209,10 @@ export const TableFixedRight = {
                   class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-white"
                 >
                   <div class="flex">
-                    <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                    <sd-button variant="tertiary" size="sm">
                       <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
                     </sd-button>
-                    <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                    <sd-button variant="tertiary" size="sm">
                       <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
                     </sd-button>
                   </div>
@@ -2157,13 +2228,13 @@ export const TableFixedRight = {
                 <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Fund Administration</td>
                 <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Full-time<br />Part-time</td>
                 <th
-                  class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-white"
+                  class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-neutral-100"
                 >
                   <div class="flex">
-                    <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                    <sd-button variant="tertiary" size="sm">
                       <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
                     </sd-button>
-                    <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                    <sd-button variant="tertiary" size="sm">
                       <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
                     </sd-button>
                   </div>
@@ -2182,10 +2253,10 @@ export const TableFixedRight = {
                   class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-white"
                 >
                   <div class="flex">
-                    <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                    <sd-button variant="tertiary" size="sm">
                       <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
                     </sd-button>
-                    <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                    <sd-button variant="tertiary" size="sm">
                       <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
                     </sd-button>
                   </div>
@@ -2199,13 +2270,13 @@ export const TableFixedRight = {
                 <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Compliance</td>
                 <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Full-time<br />Part-time</td>
                 <th
-                  class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-white"
+                  class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-neutral-100"
                 >
                   <div class="flex">
-                    <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                    <sd-button variant="tertiary" size="sm">
                       <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
                     </sd-button>
-                    <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                    <sd-button variant="tertiary" size="sm">
                       <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
                     </sd-button>
                   </div>
@@ -2222,10 +2293,10 @@ export const TableFixedRight = {
                   class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-white"
                 >
                   <div class="flex">
-                    <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                    <sd-button variant="tertiary" size="sm">
                       <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
                     </sd-button>
-                    <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                    <sd-button variant="tertiary" size="sm">
                       <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
                     </sd-button>
                   </div>
@@ -2241,13 +2312,13 @@ export const TableFixedRight = {
                 <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">IT</td>
                 <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Full-time<br />Part-time</td>
                 <th
-                  class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-white"
+                  class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-neutral-100"
                 >
                   <div class="flex">
-                    <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                    <sd-button variant="tertiary" size="sm">
                       <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
                     </sd-button>
-                    <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                    <sd-button variant="tertiary" size="sm">
                       <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
                     </sd-button>
                   </div>
@@ -2264,10 +2335,10 @@ export const TableFixedRight = {
                   class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-white"
                 >
                   <div class="flex">
-                    <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                    <sd-button variant="tertiary" size="sm">
                       <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
                     </sd-button>
-                    <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                    <sd-button variant="tertiary" size="sm">
                       <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
                     </sd-button>
                   </div>
@@ -2281,13 +2352,13 @@ export const TableFixedRight = {
                 <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Other</td>
                 <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Full-time</td>
                 <th
-                  class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-white"
+                  class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-neutral-100"
                 >
                   <div class="flex">
-                    <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                    <sd-button variant="tertiary" size="sm">
                       <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
                     </sd-button>
-                    <sd-button variant="tertiary" size="sm" onclick="alert('Action performed')">
+                    <sd-button variant="tertiary" size="sm">
                       <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
                     </sd-button>
                   </div>
