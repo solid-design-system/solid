@@ -445,10 +445,12 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
         if (this.multiple) {
           this.toggleOptionSelection(currentOption);
           this.lastOption = currentOption;
+          this.setOrderedSelectedOptions(currentOption);
           this.updateComplete.then(() => {
             this.selectionChanged();
           });
         } else {
+          this.setOrderedSelectedOptions(currentOption);
           this.setSelectedOptions(currentOption);
         }
 
@@ -522,6 +524,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
 
     if (option && !this.disabled) {
       this.toggleOptionSelection(option, false);
+      this.setOrderedSelectedOptions(option);
       // Emit after updating
       this.updateComplete.then(() => {
         this.selectionChanged();
@@ -598,10 +601,12 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       if (this.multiple) {
         this.toggleOptionSelection(option);
         this.lastOption = option;
+        this.setOrderedSelectedOptions(option);
         this.updateComplete.then(() => {
           this.selectionChanged();
         });
       } else {
+        this.setOrderedSelectedOptions(option);
         this.setSelectedOptions(option);
       }
       // Set focus after updating so the value is announced by screen readers
@@ -695,6 +700,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   }
 
   private findOptionByValue(slottedOptions: SdOption[], value: string | string[]) {
+    if (!value) return undefined;
     if (Array.isArray(value)) {
       return slottedOptions.find(option => value.includes(option.value));
     }
@@ -740,6 +746,20 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     return Promise.resolve();
   }
 
+  private compareOptions(a: SdOption, b: SdOption, operator?: string) {
+    if (operator === '===') {
+      if (a.value && b.value) {
+        return a.value === b.value;
+      }
+      return a.getTextLabel() === b.getTextLabel();
+    } else {
+      if (a.value && b.value) {
+        return a.value !== b.value;
+      }
+      return a.getTextLabel() !== b.getTextLabel();
+    }
+  }
+
   /**
    * Updates the selected options cache, the current value, and the display value
    */
@@ -748,15 +768,25 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
 
     // Clear existing selection
     allOptions.forEach(el => {
-      el.selected = el.value && option.value ? el.value === option.value : el.getTextLabel() === option.getTextLabel();
+      el.selected = this.compareOptions(el, option, '===');
     });
 
     this.selectionChanged();
   }
 
+  private setOrderedSelectedOptions(option: SdOption) {
+    const selectedSlotteslottedOption = this.getSlottedOptions().find(el => this.compareOptions(el, option, '==='));
+    if (this.selectedOptions.find(el => this.compareOptions(el!, selectedSlotteslottedOption!, '==='))) {
+      this.selectedOptions = this.selectedOptions.filter(el => this.compareOptions(el!, selectedSlotteslottedOption!));
+      return;
+    }
+    this.selectedOptions = [
+      selectedSlotteslottedOption,
+      ...this.selectedOptions.filter(el => this.compareOptions(el!, selectedSlotteslottedOption!))
+    ];
+  }
+
   private selectionChanged() {
-    // Update selected options cache
-    this.selectedOptions = this.getSlottedOptions().filter(option => option.selected);
     const hasSelectedOptions = this.selectedOptions.some(option => {
       if (!option) return false;
       return this.isOptionSelected(option);
