@@ -110,7 +110,7 @@ export default class SdStep extends SolidElement {
     /* eslint-disable lit/no-invalid-html */
     /* eslint-disable lit/binding-positions */
     return html`
-      <div
+      <li
         part="base"
         class=${cx(
           'flex pt-1',
@@ -140,14 +140,14 @@ export default class SdStep extends SolidElement {
 
           <${tag}
             part="circle"
-            ?disabled=${this.disabled}
-            tabindex=${!this.disabled && !this.current ? '0' : '-1'}
+            tabindex=0
             href=${ifDefined(isLink ? this.href : undefined)}
+            aria-disabled=${ifDefined(this.disabled || undefined)}
             aria-current=${this.current ? 'step' : undefined}
             aria-label='Step ${this.index}'
+            aria-describedby="label description"
             class=${cx(
-              'border rounded-full aspect-square circle flex items-center justify-center shrink-0 font-bold select-none',
-              !this.disabled && !this.current ? 'focus-visible:focus-outline' : 'focus-visible:outline-none',
+              'border rounded-full aspect-square circle flex items-center justify-center shrink-0 font-bold select-none focus-visible:focus-outline',
               this.notInteractive ? (this.size === 'lg' ? 'w-[72px]' : 'w-12') : this.size === 'lg' ? 'w-12' : 'w-8',
               this.disabled && 'border-neutral-400 text-neutral-500',
               !this.disabled &&
@@ -198,14 +198,14 @@ export default class SdStep extends SolidElement {
         </div>
 
         <div part="text-container" class=${cx('mt-4 mr-4 break-words flex flex-col gap-2', this.orientation === 'horizontal' ? 'text-center w-40' : 'w-max text-left', this.disabled && '!text-neutral-500')}>
-          <div part="label" class=${cx('!font-bold sd-paragraph', this.disabled && '!text-neutral-500', !this.disabled && !this.current && !this.notInteractive ? '!text-primary group-hover:!text-primary-500 group-hover:cursor-pointer' : 'text-black')}>
+          <div part="label" id="label" class=${cx('!font-bold sd-paragraph', this.disabled && '!text-neutral-500', !this.disabled && !this.current && !this.notInteractive ? '!text-primary group-hover:!text-primary-500 group-hover:cursor-pointer' : 'text-black')}>
             <slot name="label">${this.label}</slot>
           </div>
-          <div part="description" class=${cx('sd-paragraph sd-paragraph--size-sm', this.disabled && '!text-neutral-500')}>
+          <div part="description" id="description" class=${cx('sd-paragraph sd-paragraph--size-sm', this.disabled && '!text-neutral-500')}>
           ${this.description || html`<slot></slot>`}
           </div>
         </div>
-      </div>
+      </li>
     `;
   }
 

@@ -20,7 +20,7 @@ export const NonInteractiveStepGroup = {
   render: () => html`
     <sd-step-group size="lg" orientation="horizontal" active-step="0" not-interactive>
       <sd-step size="lg" orientation="horizontal" state="default">
-        <div slot="label">Make an appointment</div>
+        <p slot="label">Make an appointment</p>
       </sd-step>
 
       <sd-step size="lg" orientation="horizontal" state="current">
