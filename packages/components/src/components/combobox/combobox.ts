@@ -353,7 +353,6 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     // Listen on the root node instead of the document in case the elements are inside a shadow root
     //
     document.addEventListener('focusin', this.handleDocumentFocusIn);
-    // document.addEventListener('keydown', this.handleDocumentKeyDown);
     document.addEventListener('mousedown', this.handleDocumentMouseDown);
 
     // If the component is rendered in a shadow root,
@@ -365,7 +364,6 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
 
   private removeOpenListeners() {
     document.removeEventListener('focusin', this.handleDocumentFocusIn);
-    // document.removeEventListener('keydown', this.handleDocumentKeyDown);
     document.removeEventListener('mousedown', this.handleDocumentMouseDown);
 
     if (this.getRootNode() !== document) {
@@ -1118,7 +1116,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
           id="label"
           part="form-control-label"
           class=${hasLabel && 'inline-block mb-2'}
-          aria-hidden=${hasLabel ? 'false' : 'true'}
+          aria-hidden=${!hasLabel}
           @click=${this.handleLabelClick}
         >
           <slot name="label">${this.label}</slot>
@@ -1206,12 +1204,12 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                 spellcheck="false"
                 autocapitalize="off"
                 aria-controls="control-value listbox"
-                aria-expanded=${this.open ? 'true' : 'false'}
+                aria-expanded=${this.open}
                 aria-haspopup="listbox"
                 aria-labelledby="label"
-                aria-disabled=${this.disabled ? 'true' : 'false'}
+                aria-disabled=${this.disabled}
                 aria-describedby="help-text"
-                aria-invalid="${this.showInvalidStyle ? 'true' : 'false'}"
+                aria-invalid="${this.showInvalidStyle}"
                 role="combobox"
                 tabindex="0"
                 @focus=${this.handleFocus}
@@ -1300,8 +1298,8 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
             <div
               id="listbox"
               role="listbox"
-              aria-expanded=${this.open ? 'true' : 'false'}
-              aria-multiselectable=${this.multiple ? 'true' : 'false'}
+              aria-expanded=${this.open}
+              aria-multiselectable=${this.multiple}
               aria-labelledby="label"
               part="listbox"
               class=${cx(
@@ -1321,12 +1319,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
           </sd-popup>
         </div>
 
-        <div
-          part="form-control-help-text"
-          id="help-text"
-          class="text-sm text-neutral-700"
-          aria-hidden=${hasHelpText ? 'false' : 'true'}
-        >
+        <div part="form-control-help-text" id="help-text" class="text-sm text-neutral-700" aria-hidden=${!hasHelpText}>
           <slot name="help-text">${this.helpText}</slot>
         </div>
       </div>
