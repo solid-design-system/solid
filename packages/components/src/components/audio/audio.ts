@@ -521,7 +521,7 @@ export default class SdAudio extends SolidElement {
   }
 
   static styles = [
-    SolidElement.styles,
+    ...SolidElement.styles,
     css`
       .progress-slider:focus-visible {
         @apply outline-none;

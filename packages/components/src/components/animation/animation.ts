@@ -76,7 +76,7 @@ export default class SdAnimation extends SolidElement {
 
   /** Gets and sets the current animation time. */
   get currentTime(): number {
-    return this.animation?.currentTime ?? 0;
+    return (this.animation?.currentTime as number) ?? 0;
   }
 
   set currentTime(time: number) {

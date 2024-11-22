@@ -145,9 +145,9 @@ await nextTask('Generating component metadata', () => {
 //   return execPromise(`node scripts/make-icons.js --outdir "${outdir}"`, { stdio: 'inherit' });
 // });
 
-// await nextTask('Running the TypeScript compiler', () => {
-//   return execPromise(`tsc --project ./tsconfig.prod.json --outdir "${outdir}"`, { stdio: 'inherit' });
-// });
+await nextTask('Running the TypeScript compiler', () => {
+  return execPromise(`tsc --project ./tsconfig.prod.json --outdir "${outdir}"`, { stdio: 'inherit' });
+});
 
 // Copy the above steps to the CDN directory directly so we don't need to twice the work for nothing.
 await nextTask(`Themes, Icons, and TS Types to "${cdndir}"`, async () => {

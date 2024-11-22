@@ -3,7 +3,6 @@ import { html } from 'lit';
 import {query } from 'lit/decorators.js';
 import SolidElement from '../../internal/solid-element';
 import styles from './menu.styles';
-import type { CSSResultGroup } from 'lit';
 import type SdMenuItem from '../menu-item/menu-item';
 export interface MenuSelectEventDetail {
   item: SdMenuItem;
@@ -21,7 +20,7 @@ export interface MenuSelectEventDetail {
  */
 @customElement('sd-menu')
 export default class SdMenu extends SolidElement {
-  static styles: CSSResultGroup = styles;
+  static styles = [...SolidElement.styles, styles];
 
   @query('slot') defaultSlot: HTMLSlotElement;
 
