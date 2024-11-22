@@ -1273,6 +1273,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                       aria-label=${this.localize.term('clearEntry')}
                       @mousedown=${this.preventLoosingFocus}
                       @click=${this.handleClearClick}
+                      tabindex="-1"
                     >
                       <slot name="clear-icon">
                         <sd-icon
