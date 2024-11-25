@@ -775,15 +775,19 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   }
 
   private setOrderedSelectedOptions(option: SdOption) {
-    const selectedSlotteslottedOption = this.getSlottedOptions().find(el => this.compareOptions(el, option, '==='));
-    if (this.selectedOptions.find(el => this.compareOptions(el!, selectedSlotteslottedOption!, '==='))) {
-      this.selectedOptions = this.selectedOptions.filter(el => this.compareOptions(el!, selectedSlotteslottedOption!));
-      return;
+    const selectedSlottedOption = this.getSlottedOptions().find(el => this.compareOptions(el, option, '==='));
+    if (this.multiple) {
+      if (this.selectedOptions.find(el => this.compareOptions(el!, selectedSlottedOption!, '==='))) {
+        this.selectedOptions = this.selectedOptions.filter(el => this.compareOptions(el!, selectedSlottedOption!));
+        return;
+      }
+      this.selectedOptions = [
+        selectedSlottedOption,
+        ...this.selectedOptions.filter(el => this.compareOptions(el!, selectedSlottedOption!))
+      ];
+    } else {
+      this.selectedOptions = [selectedSlottedOption];
     }
-    this.selectedOptions = [
-      selectedSlotteslottedOption,
-      ...this.selectedOptions.filter(el => this.compareOptions(el!, selectedSlotteslottedOption!))
-    ];
   }
 
   private selectionChanged() {
