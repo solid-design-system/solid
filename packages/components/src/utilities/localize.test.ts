@@ -1,4 +1,4 @@
-import '../../../dist/solid-components';
+import '../../dist/solid-components';
 import { expect, fixture, html, waitUntil } from '@open-wc/testing';
 import type SdSelect from 'src/components/select/select';
 

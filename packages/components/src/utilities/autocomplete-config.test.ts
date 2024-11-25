@@ -1,9 +1,9 @@
-import '../../../dist/solid-components';
+import '../../dist/solid-components';
 import { expect, fixture, html } from '@open-wc/testing';
-import { setupAutocomplete } from './autocomplete-config';
+import { setupAutocomplete } from '../../dist/utilities/autocomplete-config';
 // @ts-expect-error - Import works, TS doesn't know the type
-import autoComplete from '@tarekraafat/autocomplete.js';
-import type SdInput from 'src/components/input/input';
+import autoComplete from '@tarekraafat/autocomplete.js/src/autoComplete.js';
+import type SdInput from '../components/input/input';
 
 const mock = {
   src: [
@@ -98,11 +98,9 @@ describe('sd-input', () => {
         <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/autoComplete.min.js"></script>
         <sd-input id="autocomplete" type="search"></sd-input>
       `);
-
       // Tests run differently when served as ESM vs. bundled
       // Here we are checking for the existence of the Solid Components global
       // to determine which mode we are in.
-
       /* eslint-disable */
       let registerAutocompleteForTest;
       if ((window as any)['SolidComponents']) {
@@ -110,31 +108,25 @@ describe('sd-input', () => {
       } else {
         registerAutocompleteForTest = setupAutocomplete; // ES Module Mode
       }
-
       const { config: simpleConfig } = registerAutocompleteForTest();
-
       const autoCompleteJS = new autoComplete({
         ...simpleConfig,
         mock
       });
-
       expect(autoCompleteJS.resultsList.tag).to.equal('ul');
       expect(autoCompleteJS.resultsList.maxResults).to.equal(5);
       expect(autoCompleteJS.resultItem.tag).to.equal('li');
       /* eslint-enable */
     });
-
     it('custom properties', async () => {
       await fixture<SdInput>(html`
         <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/autoComplete.min.js"></script>
         <sd-input id="autocomplete" type="search"></sd-input>
       `);
-
       // Promise.all([customElements.whenDefined('sd-input'), customElements.whenDefined('sd-popup')]).then(() => {
       // Tests run differently when served as ESM vs. bundled
       // Here we are checking for the existence of the Solid Components global
       // to determine which mode we are in.
-
       /* eslint-disable */
       let registerAutocompleteForTest;
       if ((window as any)['SolidComponents']) {
@@ -142,9 +134,7 @@ describe('sd-input', () => {
       } else {
         registerAutocompleteForTest = setupAutocomplete; // ES Module Mode
       }
-
       const { config: simpleConfig } = registerAutocompleteForTest();
-
       const autoCompleteJS = new autoComplete({
         ...simpleConfig,
         placeHolder: 'Placeholder',
@@ -157,7 +147,6 @@ describe('sd-input', () => {
         },
         mock
       });
-
       expect(autoCompleteJS.resultsList.tag).to.equal('ul');
       expect(autoCompleteJS.resultsList.maxResults).to.equal(3);
       expect(autoCompleteJS.resultItem.tag).to.equal('sd-teaser');
