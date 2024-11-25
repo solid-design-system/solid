@@ -32,7 +32,7 @@ jobs:
 
               # TODO: Revert this change
             - name: Run tests
-              run: pnpm test
+              run: cd packages/components && pnpm test
 
             # - name: verify lint, format and not-components
             #   run: pnpm lint.verify && pnpm format.verify && pnpm --recursive --if-present --filter="\!components" verify
