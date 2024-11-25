@@ -38,6 +38,7 @@ export { default as SdStepGroup } from './components/step-group/step-group.js';
 export { default as SdSwitch } from './components/switch/switch.js';
 export { default as SdTab } from './components/tab/tab.js';
 export { default as SdTabGroup } from './components/tab-group/tab-group.js';
+export { default as SdTabPanel } from './components/tab-panel/tab-panel.js';
 export { default as SdTag } from './components/tag/tag.js';
 export { default as SdTeaser } from './components/teaser/teaser.js';
 export { default as SdTeaserMedia } from './components/teaser-media/teaser-media.js';

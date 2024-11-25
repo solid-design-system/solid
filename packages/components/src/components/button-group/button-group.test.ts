@@ -1,3 +1,4 @@
+import '../../../dist/solid-components';
 import { elementUpdated, expect, fixture, html } from '@open-wc/testing';
 import type SdButtonGroup from './button-group';
 

@@ -149,14 +149,14 @@ export default class SdCarousel extends SolidElement {
     this.mutationObserver.observe(this, { childList: true, subtree: false });
   }
 
-  static getPageCount(totalSlides: number, slidesPerPage: number, slidesPerMove: number) {
+  public getPageCount(totalSlides: number, slidesPerPage: number, slidesPerMove: number) {
     return Math.ceil((totalSlides - slidesPerPage) / slidesPerMove) + 1 > 0
       ? Math.ceil((totalSlides - slidesPerPage) / slidesPerMove) + 1
       : // Returns 1 if the total number of slides is less than the number of slides per page
         1;
   }
 
-  static getCurrentPage(
+  public getCurrentPage(
     totalSlides: number,
     activeSlide: number,
     slidesPerPage: number,
@@ -312,7 +312,7 @@ export default class SdCarousel extends SolidElement {
 
   @watch('activeSlide')
   handelSlideChange() {
-    this.currentPage = SdCarousel.getCurrentPage(
+    this.currentPage = this.getCurrentPage(
       this.getSlides().length,
       this.activeSlide,
       this.slidesPerPage,
@@ -334,7 +334,7 @@ export default class SdCarousel extends SolidElement {
       });
     }
 
-    if (this.currentPage > SdCarousel.getPageCount(this.getSlides().length, this.slidesPerPage, this.slidesPerMove)) {
+    if (this.currentPage > this.getPageCount(this.getSlides().length, this.slidesPerPage, this.slidesPerMove)) {
       this.nextTillFirst();
     }
   }
@@ -392,10 +392,7 @@ export default class SdCarousel extends SolidElement {
    * @param behavior - The behavior used for scrolling.
    */
   next(behavior: ScrollBehavior = 'smooth') {
-    if (
-      this.currentPage + 1 <=
-      SdCarousel.getPageCount(this.getSlides().length, this.slidesPerPage, this.slidesPerMove)
-    ) {
+    if (this.currentPage + 1 <= this.getPageCount(this.getSlides().length, this.slidesPerPage, this.slidesPerMove)) {
       this.goToSlide(this.activeSlide + this.slidesPerMove, behavior);
     } else {
       if (this.loop) {
@@ -412,7 +409,7 @@ export default class SdCarousel extends SolidElement {
       this.goToSlide(this.activeSlide + 1, behavior);
     }
 
-    this.currentPage = SdCarousel.getCurrentPage(
+    this.currentPage = this.getCurrentPage(
       this.getSlides().length,
       this.activeSlide,
       this.slidesPerPage,
@@ -456,8 +453,8 @@ export default class SdCarousel extends SolidElement {
 
   render() {
     const { scrollController, slidesPerMove } = this;
-    const pagesCount = SdCarousel.getPageCount(this.getSlides().length, this.slidesPerPage, this.slidesPerMove);
-    const currentPage = SdCarousel.getCurrentPage(
+    const pagesCount = this.getPageCount(this.getSlides().length, this.slidesPerPage, this.slidesPerMove);
+    const currentPage = this.getCurrentPage(
       this.getSlides().length,
       this.activeSlide,
       this.slidesPerPage,

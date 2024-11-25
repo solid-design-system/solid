@@ -4,7 +4,7 @@ import { playwrightLauncher } from '@web/test-runner-playwright';
 
 export default {
   rootDir: '.',
-  files: 'src/**/*.test.ts', // "default" group
+  files: ['src/**/*.test.ts', '!src/_components/**/*'], // "default" group
   concurrentBrowsers: 3,
   nodeResolve: {
     exportConditions: ['production', 'default']
@@ -18,6 +18,7 @@ export default {
   plugins: [
     esbuildPlugin({
       ts: true,
+      jsx: true,
       target: 'es2020'
     })
   ],
@@ -35,7 +36,6 @@ export default {
         <script>
           window.process = {env: { NODE_ENV: "production" }}
         </script>
-        <script type="module" src="cdn/solid-components.js"></script>
         <script type="module" src="${testFramework}"></script>
       </body>
     </html>
