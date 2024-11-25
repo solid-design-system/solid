@@ -14,8 +14,7 @@
     "lint.fix": "eslint packages --max-warnings 0 --fix",
     "lint.verify": "eslint packages --max-warnings 0 && echo '✅ Linting verified'",
     "format.verify": "prettier --check --log-level warn . && echo '✅ Formatting verified'",
-    "format.fix": "prettier --write --log-level warn .",
-    "release.dry": "pnpm --recursive --if-present release.dry --filter"
+    "format.fix": "prettier --write --log-level warn ."
   },
   "lib": "es2021",
   "keywords": [],
