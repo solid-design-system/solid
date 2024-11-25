@@ -1,8 +1,9 @@
 /**
  * Generates basic styles for list elements.
+ * @name sd-list
  * @status stable
  * @since 1.39.0
- * @boolean { true } sd-list--inverted Inverts the list text.
+ * @boolean { false } sd-list--inverted Inverts the list text.
  */
 
 .sd-list:not(.sd-list--icon),

@@ -1,10 +1,10 @@
+import { ALLOWED_TAGS } from './toCem.js';
 import { basename, dirname, sep } from 'path';
-import { readFile } from 'fs/promises';
 import { globby } from 'globby';
 import { parse } from 'comment-parser';
+import { readFile } from 'fs/promises';
 import type { Block, Spec } from 'comment-parser';
 import type { Structure, Tag } from './types.js';
-import { ALLOWED_TAGS } from './toCem.js';
 
 /**
  * Get the directory name of a given file path

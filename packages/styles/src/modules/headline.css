@@ -1,10 +1,11 @@
 /**
  * Headlines are vital for displaying content hierarchy and to improve accessibility. A headline can be additionally accompanied by an icon. The icon can be displayed on the left side or inline.
+ * @name sd-headline
  * @status stable
  * @since 1.16
- * @variant { 3xl | xl | lg | base } sd-headline--size-... The headline's size.
- * @boolean { true } sd-headline--inverted Inverts the headline text.
- * @boolean { true } sd-headline--inline Sets inline behavior. Used exclusively when an sd-icon or other component is present. See usage <a href="#inline">here.</a>
+ * @variant { 3xl | xl | lg | base } sd-headline--size- The headline's size.
+ * @boolean { false } sd-headline--inverted Inverts the headline text.
+ * @boolean { false } sd-headline--inline Sets inline behavior. Used exclusively when an sd-icon or other component is present. See usage <a href="#inline">here.</a>
  */
 
 .sd-headline,

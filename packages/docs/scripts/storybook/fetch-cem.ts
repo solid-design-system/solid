@@ -4,7 +4,7 @@ import { setCustomElementsManifest } from '@storybook/web-components';
 // @ts-expect-error
 import componentsManifest from 'virtual:vite-plugin-cem/custom-elements-manifest';
 // @ts-expect-error
-import stylesManifest from 'virtual:vite-plugin-synergy-styles/custom-elements-manifest';
+import stylesManifest from 'virtual:vite-plugin-solid-styles/custom-elements-manifest';
 
 export default function loadCustomElements() {
   // Remove all private members from the manifest

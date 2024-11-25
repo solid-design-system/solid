@@ -1,10 +1,21 @@
 /**
  * Prose
+ * @name sd-prose
  * @status stable
  * @since 3.6.0
- * @boolean { true } sd-prose--inverted Inverts the content, but not tables.
- * @boolean { true } sd-prose--full-width Overrides the 80ch max-width and makes the prose full width.
+ * @boolean { false } sd-prose--inverted Inverts the content, but not tables.
+ * @boolean { false } sd-prose--full-width Overrides the 80ch max-width and makes the prose full width.
  */
+
+@import url('./modules/display.css');
+@import url('./modules/headline.css');
+@import url('./modules/interactive.css');
+@import url('./modules/leadtext.css');
+@import url('./modules/list.css');
+@import url('./modules/paragraph.css');
+@import url('./modules/media.css');
+@import url('./modules/table-cell.css');
+@import url('./modules/table.css');
 
 .sd-prose {
   /**
@@ -107,13 +118,3 @@
     max-width: unset;
   }
 }
-
-@import url('../modules/display.css');
-@import url('../modules/headline.css');
-@import url('../modules/interactive.css');
-@import url('../modules/leadtext.css');
-@import url('../modules/list.css');
-@import url('../modules/paragraph.css');
-@import url('../modules/media.css');
-@import url('./modules/table-cell.css');
-@import url('./modules/table.css');

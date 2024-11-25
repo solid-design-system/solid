@@ -1,7 +1,7 @@
 {
   "name": "@solid-design-system/versioning",
   "version": "1.0.0",
-  "description": "This package provides a versioning script that can be used for components and styles.",
+  "description": "This package provides a versioning script that can be used to version components and styles.",
   "main": "./index.js",
   "private": true,
   "type": "module",

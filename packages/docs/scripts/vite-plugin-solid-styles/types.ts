@@ -3,7 +3,7 @@ import type { ClassMember, Declaration, Module } from 'custom-elements-manifest/
 /**
  * Plugin configuration options
  */
-export type Config = {
+export interface Config {
   /**
    * The endpoint to use for the middleware
    */
@@ -18,7 +18,7 @@ export type Config = {
    * The source directory to obtain data from
    */
   srcDir: string;
-};
+}
 
 /**
  * An enhanced version of the default cem class member
@@ -45,21 +45,21 @@ export type StyleModule = Module & {
 /**
  * The given tag in the structure
  */
-export type Tag = {
+export interface Tag {
   description: string;
   fileName: string;
   name: string;
   tag: string;
   type: string;
-};
+}
 
 /**
  * A structure as parsed with the getStructure function
  */
-export type Structure = {
+export interface Structure {
   comments: {
     description: string;
     tags: Tag[];
   }[];
   module: string;
-};
+}

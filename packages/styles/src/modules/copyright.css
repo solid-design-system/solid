@@ -1,8 +1,9 @@
 /**
  * Generates basic styles for copyright elements.
+ * @name sd-copyright
  * @status stable
  * @since 2.5.0
- * @variant { vertical } sd-copyright--orientation-... The copyright's orientation.
+ * @variant { NO_DEFAULT | vertical } sd-copyright--orientation- The copyright's orientation.
  */
 
 .sd-copyright {

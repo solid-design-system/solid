@@ -1,9 +1,10 @@
 /**
  * Hidden links can be used to show links only for keyboard users.
+ * @name sd-hidden-links
  * @status stable
  * @since 3.15.0
- * @boolean { true } sd-hidden-links--multiple Adapts styling for multiple skip links.
- * @boolean { true } sd-hidden-links--debug Always show the links for debugging purposes.
+ * @boolean { false } sd-hidden-links--multiple Adapts styling for multiple skip links.
+ * @boolean { false } sd-hidden-links--debug Always show the links for debugging purposes.
  */
 
 :lang(en) {

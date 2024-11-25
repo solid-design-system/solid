@@ -1,12 +1,12 @@
-import { mkdir, writeFile } from 'fs/promises';
-import { join } from 'path';
 import { execSync } from 'child_process';
-import type { Plugin } from 'vite';
-import type { Config } from './types.js';
 import { getStructure } from './structure.js';
+import { join } from 'path';
+import { mkdir, writeFile } from 'fs/promises';
 import { toCem } from './toCem.js';
+import type { Config } from './types.js';
+import type { Plugin } from 'vite';
 
-const runStylesBuild = () => execSync('pnpm --filter=@synergy-design-system/styles run build');
+const runStylesBuild = () => execSync('pnpm --filter=@solid-design-system/styles run build');
 
 const defaultOptions: Config = {
   endPoint: '/custom-elements-styles.json',
@@ -14,12 +14,12 @@ const defaultOptions: Config = {
   srcDir: 'src'
 };
 
-export default function vitePluginSynergyStyles(userConfig: Partial<Config> = defaultOptions): Plugin {
+export default function vitePluginSolidStyles(userConfig: Partial<Config> = defaultOptions): Plugin {
   const config = { ...defaultOptions, ...userConfig };
   const { endPoint, outputFileName, srcDir } = config;
 
   // Set up vite virtual module to make it possible to import the manifest
-  const virtualModuleId = 'virtual:vite-plugin-synergy-styles/custom-elements-manifest';
+  const virtualModuleId = 'virtual:vite-plugin-solid-styles/custom-elements-manifest';
   const resolvedVirtualModuleId = `\0${virtualModuleId}`;
 
   return {
@@ -72,9 +72,9 @@ export default function vitePluginSynergyStyles(userConfig: Partial<Config> = de
       runStylesBuild();
       const structure = await getStructure(srcDir);
       const manifest = toCem(structure);
-      return `export default ${JSON.stringify(manifest)}`;
+      return `export default ${JSON.stringify(manifest, null, 2)}`;
     },
-    name: 'vite-plugin-synergy-styles',
+    name: 'vite-plugin-solid-styles',
     resolveId(id) {
       if (id === virtualModuleId) {
         return resolvedVirtualModuleId;

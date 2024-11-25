@@ -1,9 +1,10 @@
 /**
  * A paragraph is used to display blocks of text. It uses the base font size and can contain bold and/or link styles.
+ * @name sd-paragraph
  * @status stable
  * @since 1.7
- * @boolean { size-sm } sd-paragraph The paragraph's font size.
- * @boolean { true } sd-paragraph--inverted Inverts the paragraph text.
+ * @variant { NO_DEFAULT | sm } sd-paragraph--size- The paragraph's font size.
+ * @boolean { false } sd-paragraph--inverted Inverts the paragraph text.
  */
 .sd-paragraph,
 .sd-prose p {

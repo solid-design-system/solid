@@ -1,8 +1,9 @@
 /**
  * Generates basic styles for media elements.
+ * @name sd-media
  * @status stable
  * @since 2.5.0
- * @boolean { true } sd-media--inverted Inverts the figcaption text.
+ * @boolean { false } sd-media--inverted Inverts the figcaption text.
  */
 
 .sd-prose figure,

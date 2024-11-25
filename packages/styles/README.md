@@ -148,7 +148,7 @@ When adding comments to your modules, please add a list of all variants of your 
  * @variant syn-boolean-false This value will also be available as a class.
  *
  * The "boolean" syn-boolean-true will display as a boolean value in storybook with 'true' as default value
- * @boolean { true } syn-boolean-true This value will also be available as a class.
+ * @boolean { false } syn-boolean-true This value will also be available as a class.
  * 
  */
 ```

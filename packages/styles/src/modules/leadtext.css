@@ -1,9 +1,10 @@
 /**
  * Leadtext is used for text that should be highlighted and a focal point of the page.
+ * @name sd-leadtext
  * @status stable
  * @since 1.7
- * @variant { lg } sd-leadtext--size-... The leadtext's size.
- * @boolean { true } sd-leadtext--inverted Inverts the leadtext text.
+ * @boolean { NO_DEFAULT | lg } sd-leadtext--size- The leadtext's size.
+ * @boolean { false } sd-leadtext--inverted Inverts the leadtext text.
  */
 
 .sd-prose > .sd-leadtext,

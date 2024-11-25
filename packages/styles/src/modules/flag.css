@@ -1,8 +1,9 @@
 /**
  * Generates basic styles for flag elements.
+ * @name sd-flag
  * @status stable
  * @since 1.34.0
- * @variant { neutral-300 | neutral-500 | white } sd-flag--...
+ * @variant { neutral-300 | neutral-500 | white } sd-flag
  */
 
 .sd-flag {

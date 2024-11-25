@@ -5,7 +5,7 @@ import VitePluginFetchIconsFromCdn from './scripts/vite-plugin-fetch-icons-from-
 import VitePluginGetPlaywrightVersion from './scripts/vite-plugin-get-playwright-version';
 import VitePluginGetTailwindTheme from './scripts/vite-plugin-get-tailwind-theme';
 import VitePluginLitTailwind from './scripts/vite-plugin-lit-tailwind.js';
-import vitePluginSynergyStyles from './scripts/vite-plugin-synergy-styles/index.js';
+import vitePluginSolidStyles from './scripts/vite-plugin-solid-styles/index.js';
 import type { defineConfig } from 'vite';
 
 // https://vitejs.dev/config/
@@ -22,7 +22,7 @@ export default (() => {
         ],
         exclude: [/node_modules/]
       }),
-      vitePluginSynergyStyles({
+      vitePluginSolidStyles({
         srcDir: '../styles/src'
       }),
       VitePluginGetPlaywrightVersion(),

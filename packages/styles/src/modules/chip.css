@@ -1,8 +1,9 @@
 /**
  * Generates basic styles for chip elements.
+ * @name sd-chip
  * @status stable
  * @since 1.30.0
- * @variant { primary-300 | primary-500 | white } sd-chip--... 
+ * @variant { primary-300 | primary-500 | white } sd-chip
  */
 
 .sd-chip {

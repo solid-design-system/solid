@@ -1,5 +1,5 @@
 import { classMap } from 'lit/directives/class-map.js';
-import { getWcStorybookHelpers } from '@mariohamann/wc-storybook-helpers';
+import { getWcStorybookHelpers, setWcStorybookHelpersConfig } from 'wc-storybook-helpers';
 import { html, unsafeStatic } from 'lit/static-html.js';
 // @ts-expect-error
 import { sentenceCase } from 'change-case';
@@ -8,6 +8,8 @@ import loadCustomElements from './fetch-cem';
 import storyBookPreviewConfig from '../../.storybook/preview.js';
 import type { Parameters, StoryObj } from '@storybook/web-components';
 import type { TemplateResult } from 'lit';
+
+setWcStorybookHelpersConfig({ hideArgRef: true, hideScriptTag: true });
 
 type ArgTypesDefinition = 'attribute' | 'property' | 'slot' | 'cssPart' | 'cssProperty';
 
