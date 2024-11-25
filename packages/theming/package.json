@@ -25,6 +25,10 @@
   ],
   "author": "Union Investment",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "readme": "README.md",
   "devDependencies": {
     "typescript": "5.4.5"

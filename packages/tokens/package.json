@@ -2,6 +2,10 @@
   "name": "@solid-design-system/tokens",
   "version": "4.2.0",
   "description": "Solid Design System: Tokens",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "main": "index.js",
   "scripts": {
     "build": "node scripts/build.mjs && echo '✅ Build verified'",

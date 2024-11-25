@@ -7,6 +7,10 @@
     "name": "Union Investment"
   },
   "license": "MIT",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "customElements": "dist/custom-elements.json",
   "web-types": "dist/web-types.json",
   "type": "module",
