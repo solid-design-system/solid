@@ -1,3 +1,4 @@
+import '../../../dist/solid-components';
 import { expect, fixture, html } from '@open-wc/testing';
 import base64Audio from './base64Audio';
 import sinon from 'sinon';

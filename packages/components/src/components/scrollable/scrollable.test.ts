@@ -1,3 +1,4 @@
+import '../../../dist/solid-components';
 import { expect, fixture, html } from '@open-wc/testing';
 import sinon from 'sinon';
 import type SdScrollable from './scrollable';

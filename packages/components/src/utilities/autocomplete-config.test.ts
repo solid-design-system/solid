@@ -1,3 +1,4 @@
+import '../../../dist/solid-components';
 import { expect, fixture, html } from '@open-wc/testing';
 import { setupAutocomplete } from './autocomplete-config';
 // @ts-expect-error - Import works, TS doesn't know the type
