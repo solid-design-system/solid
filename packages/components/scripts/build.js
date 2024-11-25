@@ -8,19 +8,17 @@ import esbuild from 'esbuild';
 import fs from 'fs/promises';
 import ora from 'ora';
 import util from 'util';
-import * as path from 'path';
-import { readFileSync } from 'fs';
 import { litTailwindAndMinifyPlugin } from './esbuild-plugin-lit-tailwind-and-minify.js';
 
 const outdir = 'dist';
 const cdndir = 'cdn';
+
 const spinner = ora({ hideCursor: false }).start();
 const execPromise = util.promisify(exec);
 let childProcess;
 let buildResults;
 
-const bundleDirectories = [cdndir, outdir];
-let packageData = JSON.parse(readFileSync(path.join(process.cwd(), 'package.json'), 'utf-8'));
+const bundleDirectories = [cdndir, outdir, `${outdir}-versioned`, `${cdndir}-versioned`];
 
 //
 // Builds the source with esbuild.

@@ -1,3 +1,5 @@
+import { globbySync } from 'globby';
+
 /**
  * This plugin automates the process of versioning components by appending
  * version numbers to component names and copying directories to new locations.
@@ -7,14 +9,10 @@
  */
 
 import { versionComponents } from '@solid-design-system/versioning';
-import fs from 'fs';
-import path from 'path';
 
-const componentsPath = './src/components';
-
-const components = fs.readdirSync(componentsPath).filter(file => {
-  return fs.statSync(path.join(componentsPath, file)).isDirectory();
-});
+const components = globbySync('./src/**/*.css')
+  .map(file => file.split('/').pop().replace('.css', ''))
+  .filter(file => file !== 'index');
 
 versionComponents({ source: './cdn', destination: './cdn-versioned', components });
 versionComponents({ source: './dist', destination: './dist-versioned', components });
