@@ -1,8 +1,8 @@
 import '../../../dist/solid-components';
 import { aTimeout, expect, fixture, html, oneEvent } from '@open-wc/testing';
 import { clickOnElement } from '../../internal/test.js';
-import SdCarousel from './carousel';
 import sinon from 'sinon';
+import type SdCarousel from './carousel';
 
 describe('<sd-carousel>', () => {
   it('should render a carousel with default configuration', async () => {
@@ -579,40 +579,62 @@ describe('<sd-carousel>', () => {
   });
 
   describe('getPageCount', () => {
-    it('should return the correct page count when totalSlides is divisible by slidesPerPage', () => {
+    it('should return the correct page count when totalSlides is divisible by slidesPerPage', async () => {
+      const el = await fixture<SdCarousel>(html`
+        <sd-carousel>
+          <sd-carousel-item>Node 1</sd-carousel-item>
+          <sd-carousel-item>Node 2</sd-carousel-item>
+          <sd-carousel-item>Node 3</sd-carousel-item>
+        </sd-carousel>
+      `);
+
       // Arrange
       const totalSlides = 10;
       const slidesPerPage = 2;
       const slidesPerMove = 1;
 
       // Act
-      const pageCount = SdCarousel.getPageCount(totalSlides, slidesPerPage, slidesPerMove);
+      const pageCount = el.getPageCount(totalSlides, slidesPerPage, slidesPerMove);
 
       // Assert
       expect(pageCount).to.equal(9);
     });
 
-    it('should return the correct page count when totalSlides is not divisible by slidesPerPage', () => {
+    it('should return the correct page count when totalSlides is not divisible by slidesPerPage', async () => {
+      const el = await fixture<SdCarousel>(html`
+        <sd-carousel>
+          <sd-carousel-item>Node 1</sd-carousel-item>
+          <sd-carousel-item>Node 2</sd-carousel-item>
+          <sd-carousel-item>Node 3</sd-carousel-item>
+        </sd-carousel>
+      `);
       // Arrange
       const totalSlides = 11;
       const slidesPerPage = 3;
       const slidesPerMove = 2;
 
       // Act
-      const pageCount = SdCarousel.getPageCount(totalSlides, slidesPerPage, slidesPerMove);
+      const pageCount = el.getPageCount(totalSlides, slidesPerPage, slidesPerMove);
 
       // Assert
       expect(pageCount).to.equal(5);
     });
 
-    it('should return 1 when totalSlides is less than or equal to slidesPerPage', () => {
+    it('should return 1 when totalSlides is less than or equal to slidesPerPage', async () => {
+      const el = await fixture<SdCarousel>(html`
+        <sd-carousel>
+          <sd-carousel-item>Node 1</sd-carousel-item>
+          <sd-carousel-item>Node 2</sd-carousel-item>
+          <sd-carousel-item>Node 3</sd-carousel-item>
+        </sd-carousel>
+      `);
       // Arrange
       const totalSlides = 3;
       const slidesPerPage = 5;
       const slidesPerMove = 1;
 
       // Act
-      const pageCount = SdCarousel.getPageCount(totalSlides, slidesPerPage, slidesPerMove);
+      const pageCount = el.getPageCount(totalSlides, slidesPerPage, slidesPerMove);
 
       // Assert
       expect(pageCount).to.equal(1);
@@ -620,7 +642,14 @@ describe('<sd-carousel>', () => {
   });
 
   describe('getCurrentPage', () => {
-    it('should return the correct current page when the active slide is the first slide', () => {
+    it('should return the correct current page when the active slide is the first slide', async () => {
+      const el = await fixture<SdCarousel>(html`
+        <sd-carousel>
+          <sd-carousel-item>Node 1</sd-carousel-item>
+          <sd-carousel-item>Node 2</sd-carousel-item>
+          <sd-carousel-item>Node 3</sd-carousel-item>
+        </sd-carousel>
+      `);
       // Arrange
       const totalSlides = 5;
       const activeSlide = 0;
@@ -628,13 +657,20 @@ describe('<sd-carousel>', () => {
       const slidesPerMove = 1;
 
       // Act
-      const currentPage = SdCarousel.getCurrentPage(totalSlides, activeSlide, slidesPerPage, slidesPerMove);
+      const currentPage = el.getCurrentPage(totalSlides, activeSlide, slidesPerPage, slidesPerMove);
 
       // Assert
       expect(currentPage).to.equal(1);
     });
 
-    it('should return the correct current page when the active slide is in the middle of the carousel', () => {
+    it('should return the correct current page when the active slide is in the middle of the carousel', async () => {
+      const el = await fixture<SdCarousel>(html`
+        <sd-carousel>
+          <sd-carousel-item>Node 1</sd-carousel-item>
+          <sd-carousel-item>Node 2</sd-carousel-item>
+          <sd-carousel-item>Node 3</sd-carousel-item>
+        </sd-carousel>
+      `);
       // Arrange
       const totalSlides = 5;
       const activeSlide = 2;
@@ -642,13 +678,20 @@ describe('<sd-carousel>', () => {
       const slidesPerMove = 1;
 
       // Act
-      const currentPage = SdCarousel.getCurrentPage(totalSlides, activeSlide, slidesPerPage, slidesPerMove);
+      const currentPage = el.getCurrentPage(totalSlides, activeSlide, slidesPerPage, slidesPerMove);
 
       // Assert
       expect(currentPage).to.equal(3);
     });
 
-    it('should return the correct current page when the active slide is the last slide', () => {
+    it('should return the correct current page when the active slide is the last slide', async () => {
+      const el = await fixture<SdCarousel>(html`
+        <sd-carousel>
+          <sd-carousel-item>Node 1</sd-carousel-item>
+          <sd-carousel-item>Node 2</sd-carousel-item>
+          <sd-carousel-item>Node 3</sd-carousel-item>
+        </sd-carousel>
+      `);
       // Arrange
       const totalSlides = 5;
       const activeSlide = 4;
@@ -656,7 +699,7 @@ describe('<sd-carousel>', () => {
       const slidesPerMove = 1;
 
       // Act
-      const currentPage = SdCarousel.getCurrentPage(totalSlides, activeSlide, slidesPerPage, slidesPerMove);
+      const currentPage = el.getCurrentPage(totalSlides, activeSlide, slidesPerPage, slidesPerMove);
 
       // Assert
       expect(currentPage).to.equal(5);
