@@ -10,7 +10,7 @@ permissions:
   contents: read # for checkout
 
 env:
-  GH_TOKEN: ${{ secrets.PAT_RELEASE_KARL }}
+  GITHUB_TOKEN: ${{ secrets.PAT_RELEASE_KARL }}
   NPM_TOKEN: ${{ secrets.NPM_RELEASE_TOKEN_MARIO_HAMANN }}
 
 jobs:
@@ -87,12 +87,12 @@ jobs:
           git add .
           git commit -m "$commit_message" || echo "No changes to commit"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT_RELEASE_KARL }}
 
       - name: Push Updated Files to Main
         run: git push origin main
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT_RELEASE_KARL }}
 
       - name: Publish to NPM
         if: env.should_skip != 'true'
@@ -100,7 +100,7 @@ jobs:
           pnpm config set '//registry.npmjs.org/:_authToken' "${NODE_AUTH_TOKEN}"
           pnpm changeset publish -r
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_RELEASE_TOKEN_MARIO_HAMANN }}
 
       - name: Install GitHub CLI
         if: env.should_skip != 'true'
@@ -113,7 +113,7 @@ jobs:
         run: |
           git push --tags
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT_RELEASE_KARL }}
 
       - name: Generate Release Notes Per Package
         if: env.should_skip != 'true'
@@ -193,4 +193,4 @@ jobs:
               --notes "$package_notes"
           done
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT_RELEASE_KARL }}
