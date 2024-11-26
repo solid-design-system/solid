@@ -30,7 +30,7 @@ export default function vitePluginSolidStyles(userConfig: Partial<Config> = defa
       // eslint-disable-next-line @typescript-eslint/no-misused-promises
       server.middlewares.use(endPoint, async (_, res) => {
         try {
-          runStylesBuild();
+          // runStylesBuild();
           const structure = await getStructure(srcDir);
           const manifest = toCem(structure);
           res.end(JSON.stringify(manifest, null, 2));
@@ -69,7 +69,7 @@ export default function vitePluginSolidStyles(userConfig: Partial<Config> = defa
         return undefined;
       }
 
-      runStylesBuild();
+      // runStylesBuild();
       const structure = await getStructure(srcDir);
       const manifest = toCem(structure);
       return `export default ${JSON.stringify(manifest, null, 2)}`;

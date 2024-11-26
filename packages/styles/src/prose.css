@@ -18,52 +18,37 @@
 @import url('./modules/table.css');
 
 .sd-prose {
-  /**
-   * Optimize for reading.
-   */
+  /* Optimize for reading. */
   @apply max-w-[80ch] text-left;
 
-  /**
-   * Add default spacings
-   */
+  /* Add default spacings */
   > *:not(:first-child) {
     @apply mt-4;
   }
 
-  /**
-    * First element has no margin-top
-    */
+  /* First element has no margin-top */
   > *:first-child {
     @apply mt-0;
   }
 
-  /**
-    * headings after a heading have a smaller margin-top
-    */
+  /* headings after a heading have a smaller margin-top */
   > :is(h1, h2, h3, h4, h5):not(#_) + :is(h1, h2, h3, h4, h5) {
     /* :not(#_) is a hack to raise specifity, see https://stackoverflow.com/a/61781795 */
     @apply mt-2;
   }
 
-  /**
-    * Headlines after other non-headlines have a larger margin-top
-    */
+  /* Headlines after other non-headlines have a larger margin-top */
   > *:not(:is(h1, h2, h3, h4, h5)) + :is(h1, h2, h3, h4, h5):not(#_) {
     @apply mt-8;
   }
 
-  /**
-    * Images and figures lead to a bigger margin-top for the next element
-    */
+  /* Images and figures lead to a bigger margin-top for the next element */
   > figure + *:not(#_),
   > img + *:not(#_) {
     @apply mt-6;
   }
 
-  /**
-   * Add styles for elements that are not based on existing CSS styles
-   */
-
+  /* Add styles for elements that are not based on existing CSS styles */
   hr {
     @apply border-neutral-500 border-t h-0;
   }
@@ -90,17 +75,13 @@
     }
   }
 
-  /**
-    * Fixes for other elements
-    */
+  /* Fixes for other elements */
   > :is(ul, ol):not(#_) {
     /* ul and ol have padding that has to be reset */
     @apply py-0;
   }
 
-  /**
-    * Inverted styles
-    */
+  /* Inverted styles */
   &--inverted {
     hr {
       @apply border-white;
@@ -111,9 +92,7 @@
     }
   }
 
-  /**
-    * Full width styles
-    */
+  /* Full width styles */
   &--full-width {
     max-width: unset;
   }

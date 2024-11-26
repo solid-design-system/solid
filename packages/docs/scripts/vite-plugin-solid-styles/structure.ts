@@ -1,4 +1,3 @@
-import { ALLOWED_TAGS } from './toCem.js';
 import { basename, dirname, sep } from 'path';
 import { globby } from 'globby';
 import { parse } from 'comment-parser';
@@ -23,7 +22,7 @@ const allowResult = (result: Partial<Block>) => {
   if (!description || !tags) {
     return false;
   }
-  return tags.some(tag => ALLOWED_TAGS.includes(tag.tag));
+  return tags;
 };
 
 /**

@@ -1,9 +1,6 @@
 import type { Attribute, ClassMember, Package } from 'custom-elements-manifest/schema.d.ts';
 import type { Structure, StyleClassMember, StyleModule, Tag } from './types.js';
 
-export const ALLOWED_TAGS = ['variant', 'boolean'];
-const NO_DEFAULT = 'NO_DEFAULT';
-
 /**
  * Get the supported types as an array
  * @param tag The tag to get the types for
@@ -15,7 +12,7 @@ const getTypesAsArray = (tag: Tag): string[] =>
     .map(t => t.trim())
     .map(t => {
       // If we don`t want a default value in a drop down, return an empty string
-      if (t === NO_DEFAULT) return '';
+      if (t === 'NO_DEFAULT') return '';
 
       // We use BEM for our style classes, therefore modifiers are added with a `--`.
       // In case of the tag `syn-body`, type (e.g. small) is the modifier and is therefore added
@@ -43,7 +40,7 @@ const getTypeForTag = (tag: Tag) => {
  * @param tag The tag to check
  * @returns True if the tag is allowed to be included
  */
-const tagIsAllowedToBeIncluded = (tag: Tag): boolean => ALLOWED_TAGS.includes(tag.tag);
+const tagIsAllowedToBeIncluded = (tag: Tag): boolean => ['variant', 'boolean'].includes(tag.tag);
 
 /**
  * Check if a tag is a boolean type
