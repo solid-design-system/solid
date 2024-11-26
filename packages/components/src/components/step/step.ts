@@ -105,12 +105,13 @@ export default class SdStep extends SolidElement {
 
   render() {
     const isLink = this.isLink();
-    const tag = this.notInteractive ? literal`div` : isLink ? literal`a` : literal`button`;
+    const tag = this.notInteractive || this.disabled ? literal`div` : isLink ? literal`a` : literal`button`;
 
     /* eslint-disable lit/no-invalid-html */
     /* eslint-disable lit/binding-positions */
     return html`
-      <li
+      <div
+        role="listitem"
         part="base"
         class=${cx(
           'flex pt-1',
@@ -140,21 +141,23 @@ export default class SdStep extends SolidElement {
 
           <${tag}
             part="circle"
-            tabindex=0
             href=${ifDefined(isLink ? this.href : undefined)}
             aria-disabled=${ifDefined(this.disabled || undefined)}
             aria-current=${this.current ? 'step' : undefined}
-            aria-label='Step ${this.index}'
-            aria-describedby="label description"
+            aria-labelledby=${ifDefined('label')}
+            aria-describedby=${ifDefined('description')}
             class=${cx(
-              'border rounded-full aspect-square circle flex items-center justify-center shrink-0 font-bold select-none focus-visible:focus-outline',
+              'border rounded-full aspect-square circle flex items-center justify-center shrink-0 font-bold select-none',
+              !this.disabled
+                ? 'focus-visible:focus-outline group-hover:cursor-pointer '
+                : 'focus-visible:outline-none cursor-not-allowed',
               this.notInteractive ? (this.size === 'lg' ? 'w-[72px]' : 'w-12') : this.size === 'lg' ? 'w-12' : 'w-8',
               this.disabled && 'border-neutral-400 text-neutral-500',
               !this.disabled &&
                 !this.current &&
                 !this.notInteractive &&
                 'border-primary group-hover:bg-primary-100 group-hover:border-primary-500',
-              this.notInteractive ? 'border-neutral-400' : 'group-hover:cursor-pointer',
+              this.notInteractive && 'border-neutral-400',
               this.current && 'bg-accent border-none text-white'
             )}
           >
@@ -177,7 +180,6 @@ export default class SdStep extends SolidElement {
                   }
                   </slot>
           </${tag}>
-
           ${
             this.noTail
               ? ''
@@ -205,7 +207,7 @@ export default class SdStep extends SolidElement {
           ${this.description || html`<slot></slot>`}
           </div>
         </div>
-      </li>
+      </div>
     `;
   }
 

@@ -17,7 +17,6 @@ import type SdStep from '../step/step';
  * @slot - Used for grouping steps in the step group. Must be `<sd-step>` elements.
  *
  * @csspart base - The component's base wrapper.
- * @csspart list - The component's ordered list wrapper.
  * @csspart body - The container that wraps the steps.
  */
 @customElement('sd-step-group')
@@ -118,15 +117,13 @@ export default class SdStepGroup extends SolidElement {
   }
 
   render() {
-    /* eslint-disable lit-a11y/list */
     return html`
-      <div part="base" role="${!this.notInteractive ? 'navigation' : 'group'}">
-        <ol part="list" class=${cx('flex', this.orientation === 'vertical' && 'flex-col h-full')}>
+      <div role="${!this.notInteractive ? 'navigation' : 'group'}" class="h-full">
+        <div role="list" part="base" class=${cx('flex', this.orientation === 'vertical' && 'flex-col h-full')}>
           <slot part="body"></slot>
-        </ol>
+        </div>
       </div>
     `;
-    /* eslint-enable lit-a11y/list */
   }
 
   static styles = [
