@@ -140,11 +140,11 @@ const getMembersForTags = (tags: Tag[]): ClassMember[] => tags.map(getMembersFor
  * @returns module The schema module
  */
 const tagsToSchemaModule = (tags: Tag[]): StyleModule => {
-  const [tag] = tags;
+  const [name, status, since] = tags;
   const attributes = getAttributesForTags(tags);
   const members = getMembersForTags(tags);
 
-  const tagNameWithoutPrefix = tag.name.includes('-') ? tag.name.split('-').slice(1).join('-') : tag.name;
+  const tagNameWithoutPrefix = name.name.includes('-') ? name.name.split('-').slice(1).join('-') : name.name;
 
   return {
     declarations: [
@@ -152,21 +152,23 @@ const tagsToSchemaModule = (tags: Tag[]): StyleModule => {
         attributes,
         customElement: true,
         kind: 'class',
+        status: status.name,
+        since: since.name,
         members,
-        name: tag.name,
+        name: name.name,
         slots: [
           {
-            description: `Main content of ${tag.name}`,
+            description: `Main content of ${name.name}`,
             name: ''
           }
         ],
-        tagName: tag.name,
+        tagName: name.name,
         tagNameWithoutPrefix
       }
     ],
-    description: tag.description,
+    description: name.description,
     kind: 'javascript-module',
-    path: tag.fileName
+    path: name.fileName
   };
 };
 

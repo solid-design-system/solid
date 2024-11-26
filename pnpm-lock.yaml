@@ -9,7 +9,7 @@ patchedDependencies:
     hash: wvll6shaj2gjxjxaqwbika4vli
     path: patches/tailwindcss@3.4.1.patch
   wc-storybook-helpers@1.5.3:
-    hash: huce3z6hyvu6mrth5npi53gmhu
+    hash: zchz324shmkzaasmnveg7ltlgm
     path: patches/wc-storybook-helpers@1.5.3.patch
 
 importers:
@@ -377,16 +377,16 @@ importers:
         version: 5.3.1
       vite-node:
         specifier: ^1.6.0
-        version: 1.6.0
+        version: 1.6.0(@types/node@20.14.5)(terser@5.31.1)
       vite-plugin-cem:
         specifier: ^0.8.0
-        version: 0.8.0
+        version: 0.8.0(@types/node@20.14.5)(terser@5.31.1)
       vite-tsconfig-paths:
         specifier: ^4.2.1
         version: 4.3.2(typescript@5.4.5)(vite@5.3.1)
       wc-storybook-helpers:
         specifier: 1.5.3
-        version: 1.5.3(patch_hash=huce3z6hyvu6mrth5npi53gmhu)(lit@3.2.1)(react-dom@18.3.1)(react@18.3.1)
+        version: 1.5.3(patch_hash=zchz324shmkzaasmnveg7ltlgm)(lit@3.2.1)(react-dom@18.3.1)(react@18.3.1)
 
   packages/placeholders:
     devDependencies:
@@ -16970,28 +16970,6 @@ packages:
       vfile-message: 4.0.2
     dev: true
 
-  /vite-node@1.6.0:
-    resolution: {integrity: sha512-de6HJgzC+TFzOu0NTC4RAIsyf/DY/ibWDYQUcuEA84EMHhcefTUGkjFHKKEJhQN4A+6I0u++kr3l36ZF2d7XRw==}
-    engines: {node: ^18.0.0 || >=20.0.0}
-    hasBin: true
-    dependencies:
-      cac: 6.7.14
-      debug: 4.3.5
-      pathe: 1.1.2
-      picocolors: 1.0.1
-      vite: 5.4.11
-    transitivePeerDependencies:
-      - '@types/node'
-      - less
-      - lightningcss
-      - sass
-      - sass-embedded
-      - stylus
-      - sugarss
-      - supports-color
-      - terser
-    dev: true
-
   /vite-node@1.6.0(@types/node@20.14.5)(terser@5.31.1):
     resolution: {integrity: sha512-de6HJgzC+TFzOu0NTC4RAIsyf/DY/ibWDYQUcuEA84EMHhcefTUGkjFHKKEJhQN4A+6I0u++kr3l36ZF2d7XRw==}
     engines: {node: ^18.0.0 || >=20.0.0}
@@ -17033,24 +17011,6 @@ packages:
       - stylus
       - sugarss
       - supports-color
-      - terser
-    dev: true
-
-  /vite-plugin-cem@0.8.0:
-    resolution: {integrity: sha512-mA5yx0kGoy+fnaGo+YmC8TduSX+mKo7W980AF7i12UGqkl80EaiF+ZpYgBvTnogp21/k3JwimVm17DYkdmgOyQ==}
-    dependencies:
-      '@custom-elements-manifest/analyzer': 0.9.4
-      glob: 8.1.0
-      typescript: 5.4.5
-      vite: 5.4.11
-    transitivePeerDependencies:
-      - '@types/node'
-      - less
-      - lightningcss
-      - sass
-      - sass-embedded
-      - stylus
-      - sugarss
       - terser
     dev: true
 
@@ -17137,44 +17097,6 @@ packages:
       esbuild: 0.21.5
       postcss: 8.4.38
       rollup: 4.18.0
-    optionalDependencies:
-      fsevents: 2.3.3
-    dev: true
-
-  /vite@5.4.11:
-    resolution: {integrity: sha512-c7jFQRklXua0mTzneGW9QVyxFjUgwcihC4bXEtujIo2ouWCe1Ajt/amn2PCxYnhYfd5k09JX3SB7OYWFKYqj8Q==}
-    engines: {node: ^18.0.0 || >=20.0.0}
-    hasBin: true
-    peerDependencies:
-      '@types/node': ^18.0.0 || >=20.0.0
-      less: '*'
-      lightningcss: ^1.21.0
-      sass: '*'
-      sass-embedded: '*'
-      stylus: '*'
-      sugarss: '*'
-      terser: ^5.4.0
-    peerDependenciesMeta:
-      '@types/node':
-        optional: true
-      less:
-        optional: true
-      lightningcss:
-        optional: true
-      sass:
-        optional: true
-      sass-embedded:
-        optional: true
-      stylus:
-        optional: true
-      sugarss:
-        optional: true
-      terser:
-        optional: true
-    dependencies:
-      esbuild: 0.21.5
-      postcss: 8.4.49
-      rollup: 4.27.2
     optionalDependencies:
       fsevents: 2.3.3
     dev: true
@@ -17286,7 +17208,7 @@ packages:
       graceful-fs: 4.2.11
     dev: true
 
-  /wc-storybook-helpers@1.5.3(patch_hash=huce3z6hyvu6mrth5npi53gmhu)(lit@3.2.1)(react-dom@18.3.1)(react@18.3.1):
+  /wc-storybook-helpers@1.5.3(patch_hash=zchz324shmkzaasmnveg7ltlgm)(lit@3.2.1)(react-dom@18.3.1)(react@18.3.1):
     resolution: {integrity: sha512-4YANeWHE7Q1UKF5JdrlB6T240kIaduOeJoaNi7M3ujRWYOJcpSYmeD1fbjzLKqd7PITE/iuY4Pl9H7pDNa7LwA==}
     peerDependencies:
       lit: ^2.0.0 || ^3.0.0

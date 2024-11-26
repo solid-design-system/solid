@@ -51,6 +51,8 @@ export interface Tag {
   name: string;
   tag: string;
   type: string;
+  since: string;
+  status: string;
 }
 
 /**
