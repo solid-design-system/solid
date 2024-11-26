@@ -425,7 +425,7 @@ describe('<sd-combobox>', () => {
       await el.updateComplete;
 
       expect(displayInput.getAttribute('aria-expanded')).to.equal('false');
-      expect(displayInput.value).to.equal('Option 1');
+      expect(displayInput.value).to.equal('');
       expect(el.value).to.deep.equal(['option-1']);
     });
 
@@ -486,6 +486,9 @@ describe('<sd-combobox>', () => {
       const displayInput = el.shadowRoot!.querySelector<HTMLInputElement>('#display-input')!;
 
       el.focus();
+
+      await sendKeys({ type: 'Option 1' });
+
       await el.updateComplete;
 
       expect(displayInput.selectionStart).to.equal(8);
@@ -509,6 +512,9 @@ describe('<sd-combobox>', () => {
       const displayInput = el.shadowRoot!.querySelector<HTMLInputElement>('#display-input')!;
 
       el.focus();
+
+      await sendKeys({ type: 'Option 1' });
+
       await el.updateComplete;
       displayInput.setSelectionRange(0, 0);
 
@@ -1139,12 +1145,16 @@ describe('<sd-combobox>', () => {
 
   it('should emit sd-error if show method was called and no appropriate options are available', async () => {
     const el = await fixture<SdCombobox>(html`
-      <sd-combobox value="test">
+      <sd-combobox>
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
         <sd-option value="option-3">Option 3</sd-option>
       </sd-combobox>
     `);
+
+    el.focus();
+    await sendKeys({ type: 'test' });
+
     const showHandler = sinon.spy();
     const afterShowHandler = sinon.spy();
     const errorHandler = sinon.spy();
@@ -1209,13 +1219,18 @@ describe('<sd-combobox>', () => {
 
   it('should use the custom filter if the filter property is used', async () => {
     const el = await fixture<SdCombobox>(html`
-      <sd-combobox value="option-2">
+      <sd-combobox>
         <sd-option value="option-1">Green</sd-option>
         <sd-option value="option-2">Red</sd-option>
         <sd-option value="option-3">Light green</sd-option>
       </sd-combobox>
     `);
     const filterHandler = sinon.spy((option: SdOption) => option.getTextLabel().toLowerCase().includes('green'));
+
+    el.focus();
+    await sendKeys({ type: 'green' });
+
+    await el.updateComplete;
 
     el.filter = filterHandler;
 

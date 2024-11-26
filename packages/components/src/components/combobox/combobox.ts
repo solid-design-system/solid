@@ -115,6 +115,8 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
 
   @state() displayInputValue = '';
 
+  @state() selectedTextLabel = '';
+
   @state() selectedOptions: (SdOption | undefined)[] = [];
 
   @state() filteredOptions: (SdOption | SdOptgroup | undefined)[] = [];
@@ -279,7 +281,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     if (!this.multiple) {
       const option = this.findOptionByValue(this.getSlottedOptions(), this.value);
       // initially set the displayLabel if the value was set via property
-      this.displayInputValue = option?.getTextLabel() || '';
+      this.selectedTextLabel = option?.getTextLabel() || '';
     }
     this.formControlController.updateValidity();
   }
@@ -567,6 +569,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     if (this.value !== '') {
       this.value = '';
       this.displayInputValue = '';
+      this.selectedTextLabel = '';
       this.lastOption = undefined;
       this.selectedOptions = [];
       this.getSlottedOptions().forEach(option => {
@@ -808,7 +811,8 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       this.displayInputValue = '';
     } else {
       this.value = this.selectedOptions[0]?.value || this.selectedOptions[0]?.getTextLabel() || '';
-      this.displayInputValue = this.selectedOptions[0]?.getTextLabel() || '';
+      this.selectedTextLabel = this.selectedOptions[0]?.getTextLabel() || '';
+      this.displayInputValue = '';
     }
 
     // Update validity
@@ -918,7 +922,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       this.createComboboxOptionsFromQuery(this.displayInput.value);
     } else {
       this.syncSelectedOptionsAndValue();
-      this.createComboboxOptionsFromQuery(Array.isArray(this.value) ? this.value.join(', ') : this.value);
+      this.createComboboxOptionsFromQuery('');
     }
   }
 
@@ -1042,7 +1046,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     // Only update the value and emit the event, if the change event occurred by
     // the user typing something in and removing focus of the combobox
     if (!this.selectedOptions || !this.multiple) {
-      this.displayInputValue = this.displayInput.value;
+      this.selectedTextLabel = this.displayInput.value;
       // Update validity
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
       this.updateComplete.then(() => {
@@ -1085,7 +1089,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     if (this.multiple) {
       this.createComboboxOptionsFromQuery(this.displayInputValue);
     } else {
-      this.createComboboxOptionsFromQuery(Array.isArray(this.value) ? this.value.join(', ') : this.value);
+      this.createComboboxOptionsFromQuery('');
     }
 
     if (this.hasFocus && this.value.length > 0 && !this.open) {
@@ -1229,15 +1233,19 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                 name=${this.name}
                 form=${this.form}
                 part="display-input"
-                class=${cx('appearance-none outline-none bg-transparent flex-auto min-w-0', cursorStyles)}
+                class=${cx(
+                  'appearance-none outline-none bg-transparent flex-auto min-w-0',
+                  cursorStyles,
+                  this.selectedTextLabel && !this.multiple ? 'placeholder-black' : ''
+                )}
                 type="text"
-                placeholder=${this.placeholder}
+                placeholder=${this.selectedTextLabel && !this.multiple ? this.selectedTextLabel : this.placeholder}
                 .disabled=${this.disabled}
                 .value=${this.displayInputValue}
                 autocomplete="off"
                 spellcheck="false"
                 autocapitalize="off"
-                aria-controls="control-value listbox"
+                aria-controls="listbox"
                 aria-expanded=${this.open}
                 aria-haspopup="listbox"
                 aria-labelledby="label"
@@ -1262,6 +1270,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                 ?disabled=${this.disabled}
                 ?required=${this.required}
                 .value=${Array.isArray(this.value) ? this.value.join(', ') : this.value}
+                aria-controls="control-value"
                 tabindex="-1"
                 aria-hidden="true"
                 @focus=${() => this.focus()}
