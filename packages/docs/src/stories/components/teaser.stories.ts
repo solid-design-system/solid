@@ -22,6 +22,11 @@ export default {
   component: 'sd-teaser',
   args: overrideArgs([
     {
+      type: 'attribute',
+      name: 'breakpoint',
+      value: `9999`
+    },
+    {
       type: 'slot',
       name: 'default',
       value: `<div class="slot slot--border slot--text h-12">Main slot</div>`
@@ -44,7 +49,17 @@ export default {
       type: 'figma',
       url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2019-5109&node-type=section&t=5PpAC3TA3kYF7ufX-0'
     }
-  }
+  },
+  decorators: [
+    (story: () => typeof html) => html`
+      <style>
+        #default-teaser sd-teaser::part(content) {
+          margin: 0 16px;
+        }
+      </style>
+      <div id="default-teaser">${story()}</div>
+    `
+  ]
 };
 
 export const Default = {
@@ -57,8 +72,8 @@ export const Default = {
  * - `white` (default)
  * - `white border-neutral-400`
  * - `neutral-100`
- * - `primary`
  * - `primary-100`
+ * - `primary`
  */
 
 export const Variant = {
@@ -120,13 +135,15 @@ export const DefaultAndHeadlineSlot = {
 
 /**
  * Teasers accept a `media` slot to display images or videos.
+ *
+ * **Accessibility Hint:** If the image doesn't contribute to the information delivered to the user, don't describe it in the alt attribute and leave it empty.
  */
 
 export const MediaSlot = {
   render: () => html`
     <sd-teaser>
       <h3 slot="headline">Lorem ipsum sic semper</h3>
-      <img slot="media" src="./placeholders/images/architecture.jpg" alt="Test" style="width:100%; height: auto;" />
+      <img slot="media" src="./placeholders/images/architecture.jpg" alt="" style="width:100%; height: auto;" />
       <p>
         Quis ut ex cupidatat proident cillum ullamco ea aute ad laborum aliqua incididunt sint ipsum. Elit enim
         reprehenderit aliquip officia in minim. Eu ipsum pariatur dolor. Do ex in cupidatat anim aliqua sint voluptate
@@ -137,7 +154,7 @@ export const MediaSlot = {
 };
 
 /**
- * The meta slot can be used to display additional information.
+ * Use the `meta` slot to add additional content to the teaser.
  */
 
 export const MetaSlot = {
@@ -185,7 +202,7 @@ export const Breakpoint = {
     <div class="flex gap-8 flex-col">
       <sd-teaser breakpoint="0">
         <h3 slot="headline">Horizontal</h3>
-        <img slot="media" src="./placeholders/images/architecture.jpg" alt="Test" style="width:100%; height: auto;" />
+        <img slot="media" src="./placeholders/images/architecture.jpg" alt="" style="width:100%; height: auto;" />
         <p>
           Quis ut ex cupidatat proident cillum ullamco ea aute ad laborum aliqua incididunt sint ipsum. Elit enim
           reprehenderit aliquip officia in minim. Eu ipsum pariatur dolor. Do ex in cupidatat anim aliqua sint voluptate
@@ -195,7 +212,7 @@ export const Breakpoint = {
 
       <sd-teaser breakpoint="9999" class="w-[256px]">
         <h3 slot="headline">Vertical</h3>
-        <img slot="media" src="./placeholders/images/architecture.jpg" alt="Test" style="width:100%; height: auto;" />
+        <img slot="media" src="./placeholders/images/architecture.jpg" alt="" style="width:100%; height: auto;" />
         <p>
           Quis ut ex cupidatat proident cillum ullamco ea aute ad laborum aliqua incididunt sint ipsum. Elit enim
           reprehenderit aliquip officia in minim. Eu ipsum pariatur dolor. Do ex in cupidatat anim aliqua sint voluptate
@@ -214,7 +231,7 @@ export const Distribution = {
   render: () => html`
     <sd-teaser style="--distribution-media: 30%; --distribution-content: 70%;">
       <h3 slot="headline">Lorem ipsum sic semper</h3>
-      <img slot="media" src="./placeholders/images/architecture.jpg" alt="Test" style="width:100%; height: auto;" />
+      <img slot="media" src="./placeholders/images/architecture.jpg" alt="" style="width:100%; height: auto;" />
       <p>
         Quis ut ex cupidatat proident cillum ullamco ea aute ad laborum aliqua incididunt sint ipsum. Elit enim
         reprehenderit aliquip officia in minim. Eu ipsum pariatur dolor. Do ex in cupidatat anim aliqua sint voluptate

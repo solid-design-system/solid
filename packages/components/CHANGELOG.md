@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v3.22.9](https://github.com/solid-design-system/solid/compare/components/3.22.8...components/3.22.9) (2024-11-25)
+
+
+### Bug Fixes
+
+* sd-teaser and sd-teaser-media a11y ([#1625](https://github.com/solid-design-system/solid/issues/1625)) ([68efac6](https://github.com/solid-design-system/solid/commit/68efac646eed449df0f16222732fa7d6cbb3f1f4))
+
+### 📈 Stats
+* Bundle size (uncompressed): 408 KB (unchanged)
+* Bundle size (gzipped): 125 KB (unchanged)
+
 # [@solid-design-system/components-v3.22.8](https://github.com/solid-design-system/solid/compare/components/3.22.7...components/3.22.8) (2024-11-21)
 
 
