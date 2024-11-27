@@ -133,12 +133,6 @@ export default class SdTooltip extends SolidElement {
 
   private handleClick() {
     if (this.hasTrigger('click')) {
-      if (this.isFocusTriggered) {
-        this.isFocusTriggered = false;
-        // Ignore click event if focus is triggered first
-        return;
-      }
-
       if (this.open) {
         this.hide();
       } else {
