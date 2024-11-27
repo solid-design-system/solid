@@ -1,3 +1,10 @@
+# [@solid-design-system/docs-v1.0.5](https://github.com/solid-design-system/solid/compare/docs/1.0.4...docs/1.0.5) (2024-11-25)
+
+
+### Bug Fixes
+
+* sd-teaser and sd-teaser-media a11y ([#1625](https://github.com/solid-design-system/solid/issues/1625)) ([68efac6](https://github.com/solid-design-system/solid/commit/68efac646eed449df0f16222732fa7d6cbb3f1f4))
+
 # [@solid-design-system/docs-v1.0.4](https://github.com/solid-design-system/solid/compare/docs/1.0.3...docs/1.0.4) (2024-11-20)
 
 
