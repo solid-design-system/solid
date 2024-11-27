@@ -1,3 +1,14 @@
+# [@solid-design-system/components-v3.22.10](https://github.com/solid-design-system/solid/compare/components/3.22.9...components/3.22.10) (2024-11-27)
+
+
+### Bug Fixes
+
+* sd-scrollable a11y ([#1643](https://github.com/solid-design-system/solid/issues/1643)) ([0178db6](https://github.com/solid-design-system/solid/commit/0178db64c4195c9345a9f63f8a35cdbd10c240b7))
+
+### 📈 Stats
+* Bundle size (uncompressed): 409 KB (+1 KB / +0%)
+* Bundle size (gzipped): 125 KB (unchanged)
+
 # [@solid-design-system/components-v3.22.9](https://github.com/solid-design-system/solid/compare/components/3.22.8...components/3.22.9) (2024-11-25)
 
 
