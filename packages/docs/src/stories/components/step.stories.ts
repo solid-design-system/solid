@@ -26,9 +26,9 @@ export default {
   component: 'sd-step',
   args: overrideArgs([
     {
-      type: 'slot',
+      type: 'attribute',
       name: 'label',
-      value: `<span slot="label">Step name</span>`
+      value: 'Step name'
     },
     {
       type: 'slot',
