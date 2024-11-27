@@ -1,3 +1,40 @@
+# [@solid-design-system/tokens-v5.0.0](https://github.com/solid-design-system/solid/compare/tokens/4.2.0...tokens/5.0.0) (2024-11-27)
+
+
+* chore!: remove unused color tokens and update descriptions (#1671) ([56354b6](https://github.com/solid-design-system/solid/commit/56354b69ed9a8f352d296b65b8c7bd6b6050e14b)), closes [#1671](https://github.com/solid-design-system/solid/issues/1671)
+
+
+### BREAKING CHANGES
+
+* remove unused color tokens:
+- icon-fill.neutral-500  border.neutral-200
+- background.neutral-400
+- gradient.vertical-transparent-primary-800|75
+- gradient.vertical-primary-800|75-transparent
+- gradient.vertical-transparent-white|75
+- gradient.vertical-white|75-transparent
+- gradient.vertical-transparent-primary
+
+Update color tokens descriptions
+
+<!-- ## Title: Please consider adding the [skip chromatic] flag to the
+PR title in case you dont need chromatic testing your changes. -->
+## Description:
+<!-- *PR notes: Please describe the changes in this PR.* -->
+
+## Definition of Reviewable:
+<!-- *PR notes: Irrelevant elements should be removed.* -->
+- [ ] Documentation is created/updated
+- [ ] Migration Guide is created/updated
+- [ ] E2E tests (features, a11y, bug fixes) are created/updated
+<!-- *If this PR includes a bug fix, an E2E test is necessary to verify
+the change. If the fix is purely visual, ensuring it is captured within
+our chromatic screenshot tests is sufficient.* -->
+- [ ] Stories (features, a11y) are created/updated
+- [ ] relevant tickets are linked
+
+Co-authored-by: Coralie Deutscher <41894356+coraliefeil@users.noreply.github.com>
+
 # [@solid-design-system/tokens-v4.2.0](https://github.com/solid-design-system/solid/compare/tokens/4.1.0...tokens/4.2.0) (2024-11-12)
 
 
