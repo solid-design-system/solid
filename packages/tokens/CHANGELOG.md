@@ -6,7 +6,8 @@
 
 ### BREAKING CHANGES
 
-* remove unused color tokens:
+Remove unused color tokens:
+
 - icon-fill.neutral-500  border.neutral-200
 - background.neutral-400
 - gradient.vertical-transparent-primary-800|75
@@ -16,24 +17,6 @@
 - gradient.vertical-transparent-primary
 
 Update color tokens descriptions
-
-<!-- ## Title: Please consider adding the [skip chromatic] flag to the
-PR title in case you dont need chromatic testing your changes. -->
-## Description:
-<!-- *PR notes: Please describe the changes in this PR.* -->
-
-## Definition of Reviewable:
-<!-- *PR notes: Irrelevant elements should be removed.* -->
-- [ ] Documentation is created/updated
-- [ ] Migration Guide is created/updated
-- [ ] E2E tests (features, a11y, bug fixes) are created/updated
-<!-- *If this PR includes a bug fix, an E2E test is necessary to verify
-the change. If the fix is purely visual, ensuring it is captured within
-our chromatic screenshot tests is sufficient.* -->
-- [ ] Stories (features, a11y) are created/updated
-- [ ] relevant tickets are linked
-
-Co-authored-by: Coralie Deutscher <41894356+coraliefeil@users.noreply.github.com>
 
 # [@solid-design-system/tokens-v4.2.0](https://github.com/solid-design-system/solid/compare/tokens/4.1.0...tokens/4.2.0) (2024-11-12)
 
