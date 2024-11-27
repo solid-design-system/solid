@@ -73,6 +73,6 @@
     ]
   },
   "dependencies": {
-    "chroma-js": "^2.6.0"
+    "chroma-js": "^3.1.2"
   }
 }
