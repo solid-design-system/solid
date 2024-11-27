@@ -1,6 +1,6 @@
-import fs from 'fs/promises';
-import { globby } from 'globby';
 import * as prettier from 'prettier';
+import { globby } from 'globby';
+import fs from 'fs/promises';
 
 (async () => {
   const files = await globby(['./dist/**/*.css', '!./dist/index.css']);

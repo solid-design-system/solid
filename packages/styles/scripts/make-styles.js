@@ -1,14 +1,14 @@
-import { promises as fs } from 'fs';
 import { dirname } from 'path';
-import postcss from 'postcss';
+import { promises as fs } from 'fs';
+import { globby } from 'globby';
 import atImportPlugin from 'postcss-import';
+import autoprefixer from 'autoprefixer';
+import commandLineArgs from 'command-line-args';
+import cssnano from 'cssnano';
+import postcss from 'postcss';
+import tailwindConfig from '../tailwind.config.cjs';
 import tailwindcss from 'tailwindcss';
 import tailwindCssNesting from '@tailwindcss/nesting';
-import autoprefixer from 'autoprefixer';
-import cssnano from 'cssnano';
-import { globby } from 'globby';
-import tailwindConfig from '../tailwind.config.cjs';
-import commandLineArgs from 'command-line-args';
 
 const { outdir } = commandLineArgs({ name: 'outdir', type: String });
 

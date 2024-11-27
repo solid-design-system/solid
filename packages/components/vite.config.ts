@@ -1,12 +1,9 @@
 import customElementConfig from './custom-elements-manifest.config';
-import customMinifyHTMLLiteralsPlugin from './scripts/rollup-plugin-minify-html-literals';
-import customMinifyPlugin from './scripts/rollup-plugin-custom-minify';
 import path from 'path';
 import resolve from '@rollup/plugin-node-resolve';
 import summaryPlugin from 'rollup-plugin-summary';
 import VitePluginCustomElementsManifest from 'vite-plugin-cem';
 import VitePluginLitTailwind from '../docs/scripts/vite-plugin-lit-tailwind';
-import webTypesPlugin from './scripts/rollup-plugin-web-types';
 import type { defineConfig } from 'vite';
 
 // https://vitejs.dev/config/
@@ -42,20 +39,8 @@ export default (() => {
         plugins: [
           // Resolve bare module specifiers to relative paths
           resolve(),
-          // Minify HTML template literals
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-          customMinifyHTMLLiteralsPlugin(),
-          // Minify ES and UMD bundles
-          customMinifyPlugin({
-            ecma: 2020,
-            module: true,
-            compress: { defaults: true, passes: 2 },
-            mangle: true
-          }),
           // Print bundle summary
-          summaryPlugin({ showGzippedSize: true }),
-          // Generate web types
-          webTypesPlugin()
+          summaryPlugin({ showGzippedSize: true })
         ]
       }
     }

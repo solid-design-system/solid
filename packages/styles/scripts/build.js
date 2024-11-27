@@ -42,18 +42,18 @@ await nextTask('Cleaning up the previous build', async () => {
 });
 
 // PostCSS task
-await nextTask('Running PostCSS...', async () => {
+await nextTask('Running PostCSS...', () => {
   bundleDirectories
     .filter(dir => !dir.includes('versioned'))
     .map(dir => execSync(`node scripts/make-styles.js --outdir ${dir}`, { stdio: 'inherit' }));
 });
 
 // Adjust README task
-await nextTask('Recreating README.md...', async () => {
+await nextTask('Recreating README.md...', () => {
   execSync('node scripts/make-readme.js', { stdio: 'inherit' });
 });
 
 // Version all styles task
-await nextTask('Versioning styles', async () => {
+await nextTask('Versioning styles', () => {
   execSync('node scripts/make-versioning.js', { stdio: 'inherit' });
 });
