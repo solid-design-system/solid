@@ -1,7 +1,6 @@
 import { classMap } from 'lit/directives/class-map.js';
 import { getWcStorybookHelpers, setWcStorybookHelpersConfig } from 'wc-storybook-helpers';
 import { html, unsafeStatic } from 'lit/static-html.js';
-// @ts-expect-error
 import { sentenceCase } from 'change-case';
 import loadCustomElements from './fetch-cem';
 // @ts-expect-error

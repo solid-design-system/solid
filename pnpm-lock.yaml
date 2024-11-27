@@ -247,8 +247,8 @@ importers:
         specifier: ^7.0.8
         version: 7.0.8(semantic-release@19.0.5)
       sinon:
-        specifier: ^19.0.2
-        version: 19.0.2
+        specifier: ^17.0.1
+        version: 17.0.2
       tailwindcss:
         specifier: ^3.4.15
         version: 3.4.15(patch_hash=wvll6shaj2gjxjxaqwbika4vli)
@@ -261,18 +261,6 @@ importers:
       user-agent-data-types:
         specifier: ^0.4.2
         version: 0.4.2
-      vite:
-        specifier: ^5.4.11
-        version: 5.4.11(@types/node@22.10.0)(terser@5.36.0)
-      vite-node:
-        specifier: ^1.6.0
-        version: 1.6.0(@types/node@22.10.0)(terser@5.36.0)
-      vite-plugin-cem:
-        specifier: ^0.8.1
-        version: 0.8.1(@types/node@22.10.0)(terser@5.36.0)
-      vite-tsconfig-paths:
-        specifier: ^4.3.2
-        version: 4.3.2(typescript@5.7.2)(vite@5.4.11)
 
   packages/docs:
     dependencies:
@@ -408,10 +396,10 @@ importers:
         version: 5.4.11(@types/node@22.10.0)(terser@5.36.0)
       vite-node:
         specifier: ^1.6.0
-        version: 1.6.0(@types/node@22.10.0)(terser@5.36.0)
+        version: 1.6.0
       vite-plugin-cem:
         specifier: ^0.8.1
-        version: 0.8.1(@types/node@22.10.0)(terser@5.36.0)
+        version: 0.8.1
       vite-tsconfig-paths:
         specifier: ^4.3.2
         version: 4.3.2(typescript@5.7.2)(vite@5.4.11)
@@ -1908,8 +1896,8 @@ packages:
       type-detect: 4.0.8
     dev: true
 
-  /@sinonjs/fake-timers@13.0.5:
-    resolution: {integrity: sha512-36/hTbH2uaWuGVERyC6da9YwGWnzUZXuPro/F2LfsdOsLnCojz/iSH8MxUt/FD2S5XBSVPhmArFUXcpCQ2Hkiw==}
+  /@sinonjs/fake-timers@11.3.1:
+    resolution: {integrity: sha512-EVJO7nW5M/F5Tur0Rf2z/QoMo+1Ia963RiMtapiQrEWvY0iBUvADo8Beegwjpnle5BHkyHuoxSTW3jF43H1XRA==}
     dependencies:
       '@sinonjs/commons': 3.0.1
     dev: true
@@ -5302,11 +5290,6 @@ packages:
     engines: {node: '>=0.3.1'}
     dev: true
 
-  /diff@7.0.0:
-    resolution: {integrity: sha512-PJWHUb1RFevKCwaFA9RlG5tCd+FO5iRh9A8HEtkmBH2Li03iJriB6m6JIN4rGz3K3JLawI7/veA1xzRKP6ISBw==}
-    engines: {node: '>=0.3.1'}
-    dev: true
-
   /dir-glob@3.0.1:
     resolution: {integrity: sha512-WkrWp9GR4KXfKGYzOLmTuGVi1UWFfws377n9cc55/tb6DuqyF6pcQ5AbiHEshaDpY9v6oaSr2XCDidGmMwdzIA==}
     engines: {node: '>=8'}
@@ -8590,14 +8573,14 @@ packages:
     engines: {node: '>= 0.4.0'}
     dev: true
 
-  /nise@6.1.1:
-    resolution: {integrity: sha512-aMSAzLVY7LyeM60gvBS423nBmIPP+Wy7St7hsb+8/fc1HmeoHJfLO8CKse4u3BtOZvQLJghYPI2i/1WZrEj5/g==}
+  /nise@5.1.9:
+    resolution: {integrity: sha512-qOnoujW4SV6e40dYxJOb3uvuoPHtmLzIk4TFo+j0jPJoC+5Z9xja5qH5JZobEPsa8+YYphMrOSwnrshEhG2qww==}
     dependencies:
       '@sinonjs/commons': 3.0.1
-      '@sinonjs/fake-timers': 13.0.5
+      '@sinonjs/fake-timers': 11.3.1
       '@sinonjs/text-encoding': 0.7.3
       just-extend: 6.2.0
-      path-to-regexp: 8.2.0
+      path-to-regexp: 6.3.0
     dev: true
 
   /no-case@2.3.2:
@@ -9282,11 +9265,6 @@ packages:
 
   /path-to-regexp@6.3.0:
     resolution: {integrity: sha512-Yhpw4T9C6hPpgPeA28us07OJeqZ5EzQTkbfwuhsUg0c237RomFoETJgmp2sa3F/41gfLE6G5cqcYwznmeEeOlQ==}
-    dev: true
-
-  /path-to-regexp@8.2.0:
-    resolution: {integrity: sha512-TdrF7fW9Rphjq4RjrW0Kp2AW0Ahwu9sRGTkS6bvDi0SCwZlEZYmcfDbEsTz8RVk0EHIS/Vd1bv3JhG+1xZuAyQ==}
-    engines: {node: '>=16'}
     dev: true
 
   /path-type@4.0.0:
@@ -10616,14 +10594,15 @@ packages:
       pkg-conf: 2.1.0
     dev: true
 
-  /sinon@19.0.2:
-    resolution: {integrity: sha512-euuToqM+PjO4UgXeLETsfQiuoyPXlqFezr6YZDFwHR3t4qaX0fZUe1MfPMznTL5f8BWrVS89KduLdMUsxFCO6g==}
+  /sinon@17.0.2:
+    resolution: {integrity: sha512-uihLiaB9FhzesElPDFZA7hDcNABzsVHwr3YfmM9sBllVwab3l0ltGlRV1XhpNfIacNDLGD1QRZNLs5nU5+hTuA==}
+    deprecated: There
     dependencies:
       '@sinonjs/commons': 3.0.1
-      '@sinonjs/fake-timers': 13.0.5
+      '@sinonjs/fake-timers': 11.3.1
       '@sinonjs/samsam': 8.0.2
-      diff: 7.0.0
-      nise: 6.1.1
+      diff: 5.2.0
+      nise: 5.1.9
       supports-color: 7.2.0
     dev: true
 
@@ -11734,7 +11713,7 @@ packages:
       vfile-message: 4.0.2
     dev: true
 
-  /vite-node@1.6.0(@types/node@22.10.0)(terser@5.36.0):
+  /vite-node@1.6.0:
     resolution: {integrity: sha512-de6HJgzC+TFzOu0NTC4RAIsyf/DY/ibWDYQUcuEA84EMHhcefTUGkjFHKKEJhQN4A+6I0u++kr3l36ZF2d7XRw==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -11781,7 +11760,7 @@ packages:
       - yaml
     dev: true
 
-  /vite-plugin-cem@0.8.1(@types/node@22.10.0)(terser@5.36.0):
+  /vite-plugin-cem@0.8.1:
     resolution: {integrity: sha512-H+tYiqyDg3J8L26gRCcQOv6fu1H8/vicZWInizZOQqFv7yUmCfKT3wGoGeeIUokkdEUn5R+nar0k5VVUSmESFQ==}
     dependencies:
       '@custom-elements-manifest/analyzer': 0.10.3

@@ -1,5 +1,5 @@
 import { createFilter } from '@rollup/pluginutils';
-// @ts-expect-error Loading a js file that is not declared as a module
+// @ts-expect-error Importing a js file that is not declared as a module
 import { processCssTags } from '../../components/scripts/esbuild-plugin-lit-tailwind-and-minify';
 
 interface LitTailwindPluginOptions {
