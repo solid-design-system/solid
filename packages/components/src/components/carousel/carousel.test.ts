@@ -374,14 +374,14 @@ describe('<sd-carousel>', () => {
           </sd-carousel>
         `);
         const previousButton: HTMLElement = el.shadowRoot!.querySelector('#carousel__navigation-button--previous')!;
-        sinon.stub(el, 'previous');
+        const previous = sinon.spy(el, 'previous');
         await el.updateComplete;
         // Act
         await clickOnElement(previousButton);
         await el.updateComplete;
         // Assert
         expect(previousButton).to.have.attribute('aria-disabled', 'true');
-        expect(el.previous).not.to.have.been.called;
+        expect(previous).not.to.have.been.called;
       });
       describe('and `loop` attribute is provided', () => {
         it('should scroll to the last slide', async () => {
