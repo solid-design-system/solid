@@ -1,10 +1,5 @@
 import { createFilter } from '@rollup/pluginutils';
-import atImportPlugin from 'postcss-import';
-import autoprefixer from 'autoprefixer';
-import postcss from 'postcss';
-import tailwindcss from 'tailwindcss';
-import tailwindcssNesting from 'tailwindcss/nesting';
-import { replaceWithEscapedCssLiteral } from '../../components/scripts/esbuild-plugin-lit-tailwind-and-minify';
+import { processCssTags } from '../../components/scripts/esbuild-plugin-lit-tailwind-and-minify';
 
 interface LitTailwindPluginOptions {
   include?: RegExp[] | string[];
@@ -30,36 +25,10 @@ export default function litTailwindPlugin(options: LitTailwindPluginOptions = {}
         return;
       }
 
-      // Look for Lit's `css` tagged template literals
-      const cssTagRegex = /css`([^`]*)`/g;
-      let match;
-      let transformedCode = code;
-
-      while ((match = cssTagRegex.exec(code)) !== null) {
-        const [fullMatch, cssContent] = match;
-
-        // Process the CSS with PostCSS
-        try {
-          const result = await postcss([
-            atImportPlugin({
-              allowDuplicates: false
-            }),
-            tailwindcssNesting,
-            tailwindcss,
-            autoprefixer
-          ])
-            .process(cssContent, { from: undefined })
-            .then(result => result.css);
-
-          transformedCode = replaceWithEscapedCssLiteral(transformedCode, fullMatch, result);
-        } catch (error: unknown) {
-          console.error(`PostCSS error: ${error as string}`);
-        }
-      }
-
       // eslint-disable-next-line consistent-return
       return {
-        code: transformedCode
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
+        code: await processCssTags(code)
       };
     }
   };

@@ -15,15 +15,36 @@ import tailwindcssNesting from 'tailwindcss/nesting/index.js';
  * @param content - The string to be escaped and wrapped in a CSS template literal.
  * @returns The updated source string with the replacement applied.
  */
-export function replaceWithEscapedCssLiteral(source, match, content) {
-  return source.replace(
-    match,
-    `css\`${
-      content
-        .replaceAll('\\', '\\\\') // Escape backslashes
-        .replaceAll('`', '\\`') // Escape backticks
-    }\``
-  );
+export async function processCssTags(source) {
+  const cssTagRegex = /css`([^`]*)`/g;
+  let match;
+
+  while ((match = cssTagRegex.exec(source)) !== null) {
+    const [fullMatch, cssContent] = match;
+
+    try {
+      const result = await postcss([
+        atImportPlugin({ allowDuplicates: false }),
+        tailwindcssNesting,
+        tailwindcss,
+        autoprefixer,
+        cssnano
+      ])
+        .process(cssContent, { from: undefined })
+        .then(result => result.css);
+
+      source = source.replace(
+        fullMatch,
+        `css\`${result
+          .replaceAll('\\', '\\\\') // Escape backslashes
+          .replaceAll('`', '\\`')}\``
+      );
+    } catch (error) {
+      console.error(`PostCSS error: ${error}`);
+    }
+  }
+
+  return source;
 }
 
 export function litTailwindAndMinifyPlugin(options = {}) {
@@ -48,28 +69,7 @@ export function litTailwindAndMinifyPlugin(options = {}) {
          * Step 1: Process CSS in Lit `css` tagged template literals
          */
 
-        const cssTagRegex = /css`([^`]*)`/g;
-        let match;
-
-        while ((match = cssTagRegex.exec(source)) !== null) {
-          const [fullMatch, cssContent] = match;
-
-          try {
-            const result = await postcss([
-              atImportPlugin({ allowDuplicates: false }),
-              tailwindcssNesting,
-              tailwindcss,
-              autoprefixer,
-              cssnano
-            ])
-              .process(cssContent, { from: undefined })
-              .then(result => result.css);
-
-            source = replaceWithEscapedCssLiteral(source, fullMatch, result);
-          } catch (error) {
-            console.error(`PostCSS error: ${error}`);
-          }
-        }
+        processCssTags(source);
 
         /**
          * Step 2: Minify HTML literals
