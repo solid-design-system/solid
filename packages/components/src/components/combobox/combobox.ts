@@ -1348,6 +1348,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
               part="listbox"
               class=${cx(
                 'bg-white px-2 py-3 relative border-primary overflow-y-auto',
+                this.open && 'shadow',
                 this.currentPlacement === 'bottom'
                   ? 'border-r-2 border-b-2 border-l-2 rounded-br-default rounded-bl-default'
                   : 'border-r-2 border-t-2 border-l-2 rounded-tr-default rounded-tl-default'
@@ -1356,7 +1357,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
               @mousedown=${this.preventLoosingFocus}
               @mouseup=${this.handleOptionClick}
             >
-              <div id="listbox-options" part="filtered-listbox">${this.options}</div>
+              <div id="listbox-options" part="filtered-listbox" class="overflow-y-scroll">${this.options}</div>
               <slot id="defaultOptionsSlot" class="hidden" @slotchange=${this.handleDefaultSlotChange}></slot>
             </div>
           </sd-popup>
@@ -1386,8 +1387,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       }
 
       sd-popup::part(popup) {
-        @apply overflow-y-scroll z-dropdown;
-        @apply shadow;
+        @apply z-dropdown;
       }
 
       sd-tag::part(base) {
