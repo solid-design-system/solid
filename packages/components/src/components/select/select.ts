@@ -1011,7 +1011,6 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
               part="listbox"
               class=${cx(
                 'bg-white px-2 py-3 relative border-primary overflow-y-auto',
-                this.open && 'shadow',
                 this.currentPlacement === 'bottom'
                   ? 'border-r-2 border-b-2 border-l-2 rounded-br-default rounded-bl-default'
                   : 'border-r-2 border-t-2 border-l-2 rounded-tr-default rounded-tl-default'
@@ -1059,6 +1058,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
 
       sd-popup::part(popup) {
         @apply overflow-y-scroll z-dropdown;
+        @apply shadow;
       }
 
       sd-tag::part(base) {
