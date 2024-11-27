@@ -304,23 +304,27 @@ export const HighlightQuery = {
 };
 
 /**
- * Use <sd-optgroup> to group <sd-option>s visually.
+ * Use <sd-option-group> to group <sd-option>s visually.
  */
 export const GroupingQuery = {
   render: () => html`
     <div class="h-[260px] w-[400px]">
       <sd-combobox label="Group elements" value="g">
-        <sd-optgroup label="B">
+        <sd-option-group label="B">
           ${createColorOptionHtml('Black')} ${createColorOptionHtml('Blue')} ${createColorOptionHtml('Brown')}
-        </sd-optgroup>
-        <sd-optgroup label="G"> ${createColorOptionHtml('Green')} ${createColorOptionHtml('Grey')} </sd-optgroup>
-        <sd-optgroup label="L"> ${createColorOptionHtml('Light Green')} </sd-optgroup>
-        <sd-optgroup label="M"> ${createColorOptionHtml('Magenta')} </sd-optgroup>
-        <sd-optgroup label="O"> ${createColorOptionHtml('Orange')} </sd-optgroup>
-        <sd-optgroup label="P"> ${createColorOptionHtml('Pink')} ${createColorOptionHtml('Purple')} </sd-optgroup>
-        <sd-optgroup label="R"> ${createColorOptionHtml('Red')} </sd-optgroup>
-        <sd-optgroup label="W"> ${createColorOptionHtml('White')} </sd-optgroup>
-        <sd-optgroup label="Y"> ${createColorOptionHtml('Yellow')} </sd-optgroup>
+        </sd-option-group>
+        <sd-option-group label="G">
+          ${createColorOptionHtml('Green')} ${createColorOptionHtml('Grey')}
+        </sd-option-group>
+        <sd-option-group label="L"> ${createColorOptionHtml('Light Green')} </sd-option-group>
+        <sd-option-group label="M"> ${createColorOptionHtml('Magenta')} </sd-option-group>
+        <sd-option-group label="O"> ${createColorOptionHtml('Orange')} </sd-option-group>
+        <sd-option-group label="P">
+          ${createColorOptionHtml('Pink')} ${createColorOptionHtml('Purple')}
+        </sd-option-group>
+        <sd-option-group label="R"> ${createColorOptionHtml('Red')} </sd-option-group>
+        <sd-option-group label="W"> ${createColorOptionHtml('White')} </sd-option-group>
+        <sd-option-group label="Y"> ${createColorOptionHtml('Yellow')} </sd-option-group>
       </sd-combobox>
     </div>
   `
