@@ -11,7 +11,7 @@ export default {
     '../src/stories/legal/*.@(mdx|stories.*)'
   ],
   env: storybookEnvPackageVersions({
-    packagePaths: ['../components', '../tokens', '../placeholders']
+    packagePaths: ['../components', '../tokens', '../placeholders', '../styles']
   }),
   addons: [
     '@storybook/addon-links',

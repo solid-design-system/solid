@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
-import packageJson from '../package.json' assert { type: 'json' };
+import componentsPackageJson from '../../components/package.json' assert { type: 'json' };
+import stylesPackageJson from '../../styles/package.json' assert { type: 'json' };
 
 const distDir = 'dist/storybook';
 
@@ -15,12 +16,16 @@ const redirectContent = html`
       <title>Notification Redirect</title>
       <link
         rel="stylesheet"
-        href="https://solid-design-system.fe.union-investment.de/${packageJson.version}/styles/solid-styles.css"
+        href="https://solid-design-system.fe.union-investment.de/components/${stylesPackageJson.version}/cdn/index.css"
       />
       <script
-        src="https://solid-design-system.fe.union-investment.de/${packageJson.version}/components/umd/solid-components.js"
+        src="https://solid-design-system.fe.union-investment.de/components/${componentsPackageJson.version}/cdn/solid-components.bundle.js"
         type="module"
       ></script>
+      <link
+        rel="stylesheet"
+        href="https://solid-design-system.fe.union-investment.de/components/${componentsPackageJson.version}/cdn/solid-components.css"
+      />
       <style>
         body {
           font-family:

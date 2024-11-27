@@ -41,7 +41,10 @@
     }
   },
   "files": [
-    "dist/**/*"
+    "dist/**/*",
+    "dist-versioned/**/*",
+    "cdn/**/*",
+    "cdn-versioned/**/*"
   ],
   "keywords": [
     "web components",

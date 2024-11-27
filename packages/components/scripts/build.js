@@ -2,7 +2,6 @@ import { deleteAsync } from 'del';
 import { exec, spawn } from 'child_process';
 import { globby } from 'globby';
 import chalk from 'chalk';
-import commandLineArgs from 'command-line-args';
 import copy from 'recursive-copy';
 import esbuild from 'esbuild';
 import fs from 'fs/promises';
@@ -30,21 +29,14 @@ async function buildTheSource() {
     format: 'esm',
     target: 'es2017',
     entryPoints: [
-      //
-      // NOTE: Entry points must be mapped in package.json > exports, otherwise users won't be able to import them!
-      //
       // The whole shebang
       './src/solid-components.ts',
-      // TODO The auto-loader
-      // './src/shoelace-autoloader.ts',
       // Components
       ...(await globby('./src/components/**/!(*.(stories|test)).ts')),
       // Translations
       ...(await globby('./src/translations/**/*.ts')),
       // Public utilities
       ...(await globby('./src/utilities/**/!(*.(style|test)).ts'))
-      // TODO React wrappers
-      // ...(await globby('./src/react/**/*.ts'))
     ],
     minify: true,
     outdir: cdndir,
@@ -131,17 +123,9 @@ await nextTask('Generating component metadata', () => {
   );
 });
 
-// await nextTask('Wrapping components for React', () => {
-//   return execPromise(`node scripts/make-react.js --outdir "${outdir}"`, { stdio: 'inherit' });
-// });
-
-// await nextTask('Generating themes', () => {
-//   return execPromise(`node scripts/make-themes.js --outdir "${outdir}"`, { stdio: 'inherit' });
-// });
-
-// await nextTask('Packaging up icons', () => {
-//   return execPromise(`node scripts/make-icons.js --outdir "${outdir}"`, { stdio: 'inherit' });
-// });
+await nextTask('Generating Utility CSS', () => {
+  return execPromise(`node scripts/make-css.js`, { stdio: 'inherit' });
+});
 
 await nextTask('Running the TypeScript compiler', () => {
   return execPromise(`tsc --project ./tsconfig.prod.json --outdir "${outdir}"`, { stdio: 'inherit' });

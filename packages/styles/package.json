@@ -6,10 +6,16 @@
   "exports": {
     ".": "./dist/index.css",
     "./package.json": "./package.json",
-    "./*.css": "./dist/*.css"
+    "./dist/*.css": "./dist/*.css",
+    "./dist-versioned/*.css": "./dist-versioned/*.css",
+    "./cdn/*.css": "./cdn/*.css",
+    "./cdn-versioned/*.css": "./cdn-versioned/*.css"
   },
   "files": [
     "dist",
+    "dist-versioned",
+    "cdn",
+    "cdn-versioned",
     "CHANGELOG.md",
     "README.md"
   ],
