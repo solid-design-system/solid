@@ -3,4 +3,4 @@ import Readme from '../../../../../components/README.md?raw';
 
 <Meta title="Packages/Components" />
 
-<Markdown>{Readme}</Markdown>
+<Markdown>{Readme.match(/# Solid[\s\S]*?(?=\n# )/)?.[0]}</Markdown>
