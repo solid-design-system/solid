@@ -185,7 +185,7 @@ export default {
     customElementVuejsPlugin({
       outdir: './dist/types/vue',
       fileName: 'index.d.ts',
-      componentTypePath: (_, tag) => `../../components/${tag.replace('sl-', '')}/${tag.replace('sl-', '')}.component.js`
+      componentTypePath: (_, tag) => `../../components/${tag.replace('sd-', '')}/${tag.replace('sd-', '')}.js`
     })
   ]
 };

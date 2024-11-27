@@ -6,39 +6,37 @@
   "author": "Union Investment",
   "license": "MIT",
   "customElements": "dist/custom-elements.json",
-  "web-types": "dist/web-types.json",
+  "web-types": "./dist/web-types.json",
   "type": "module",
+  "types": "dist/solid-components.d.ts",
+  "jsdelivr": "./cdn/solid-components.js",
   "exports": {
-    "./unversioned": {
-      "types": "./dist/package/solid-components.d.ts",
-      "import": "./dist/package/solid-components.js"
+    ".": {
+      "types": "./dist/solid-components.d.ts",
+      "import": "./dist/solid-components.js"
     },
-    "./unversioned/*": {
-      "import": "./dist/package/components/*",
-      "types": "./dist/package/solid-components.d.ts"
+    "./dist/custom-elements.json": "./dist/custom-elements.json",
+    "./dist/solid-components.js": "./dist/solid-components.js",
+    "./dist/solid-components.css": "./dist/solid-components.css",
+    "./dist/components": "./dist/components",
+    "./dist/components/*": "./dist/components/*",
+    "./dist/utilities": "./dist/utilities",
+    "./dist/utilities/*": "./dist/utilities/*",
+    "./dist/translations": "./dist/translations",
+    "./dist/translations/*": "./dist/translations/*",
+    "./dist-versioned": {
+      "types": "./dist-versioned/solid-components.d.ts",
+      "import": "./dist-versioned/solid-components.js"
     },
-    "./unversioned-utilities/*": {
-      "import": "./dist/package/utilities/*",
-      "types": "./dist/package/solid-components.d.ts"
-    },
-    "./versioned": {
-      "types": "./dist/versioned-package/solid-components.d.ts",
-      "import": "./dist/versioned-package/solid-components.js"
-    },
-    "./versioned/*": {
-      "import": "./dist/versioned-package/components/*",
-      "types": "./dist/versioned-package/solid-components.d.ts"
-    },
-    "./versioned-utilities/*": {
-      "import": "./dist/versioned-package/utilities/*",
-      "types": "./dist/versioned-package/solid-components.d.ts"
-    },
-    "./unversioned-styles": {
-      "import": "./dist/styles/solid-styles.css"
-    },
-    "./versioned-styles": {
-      "import": "./dist/versioned-styles/solid-styles.css"
-    }
+    "./dist-versioned/custom-elements.json": "./dist-versioned/custom-elements.json",
+    "./dist-versioned/solid-components.js": "./dist-versioned/solid-components.js",
+    "./dist-versioned/solid-components.css": "./dist-versioned/solid-components.css",
+    "./dist-versioned/components": "./dist-versioned/components",
+    "./dist-versioned/components/*": "./dist-versioned/components/*",
+    "./dist-versioned/utilities": "./dist-versioned/utilities",
+    "./dist-versioned/utilities/*": "./dist-versioned/utilities/*",
+    "./dist-versioned/translations": "./dist-versioned/translations",
+    "./dist-versioned/translations/*": "./dist-versioned/translations/*"
   },
   "files": [
     "dist/**/*",

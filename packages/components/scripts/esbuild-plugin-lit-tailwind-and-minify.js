@@ -69,7 +69,7 @@ export function litTailwindAndMinifyPlugin(options = {}) {
          * Step 1: Process CSS in Lit `css` tagged template literals
          */
 
-        processCssTags(source);
+        source = await processCssTags(source);
 
         /**
          * Step 2: Minify HTML literals
