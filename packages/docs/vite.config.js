@@ -6,10 +6,9 @@ import VitePluginGetPlaywrightVersion from './scripts/vite-plugin-get-playwright
 import VitePluginGetTailwindTheme from './scripts/vite-plugin-get-tailwind-theme';
 import VitePluginLitTailwind from './scripts/vite-plugin-lit-tailwind.js';
 import vitePluginSolidStyles from './scripts/vite-plugin-solid-styles/index.js';
-import type { defineConfig } from 'vite';
 
 // https://vitejs.dev/config/
-export default (() => {
+export default () => {
   return {
     plugins: [
       VitePluginFetchIconsFromCdn(),
@@ -36,8 +35,8 @@ export default (() => {
           // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
           plugin => ['solid-custom-tags', 'remove-html-members'].includes(plugin.name)
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        ) as any[]
+        )
       })
     ]
   };
-}) as unknown as typeof defineConfig;
+};
