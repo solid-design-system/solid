@@ -56,14 +56,6 @@
   },
   "scripts": {
     "build": "node scripts/build.js",
-    "build_legacy": "pnpm build/components && pnpm build/styles && pnpm build/package && node ./scripts/node-version-components.cjs",
-    "build.cdn": "pnpm build/components && pnpm build/styles && node ./scripts/node-version-components.cjs && npx vite-node ./scripts/node-create-docs-redirect.ts",
-    "build.npm": "pnpm build/components && pnpm build/styles && pnpm build/package && node ./scripts/node-version-components.cjs",
-    "build/components": "vite build  --config vite.config.js",
-    "build/styles": "vite build  --config vite.config.styles.js",
-    "build/package": "pnpm build/package/create-index && vite build --config vite.config.package.js && pnpm build/package/remove-index",
-    "build/package/create-index": "node scripts/node-generate-package-index.cjs && echo '✅ Index created'",
-    "build/package/remove-index": "node -e \"require('fs').unlinkSync('src/solid-components.package.ts')\" && echo '✅ Index removed'",
     "verify": "pnpm ts.verify && pnpm build && echo '✅ Build verified' && pnpm test.verify && echo '✅ Test verified'",
     "ts.verify": "tsc --noEmit --project ./tsconfig.json && echo '✅ TypeScript verified'",
     "plop": "plop --plopfile scripts/plop/plopfile.js",
@@ -71,7 +63,7 @@
     "test.verify": "web-test-runner --group default",
     "test.single": "web-test-runner -- --watch --group",
     "test.watch": "web-test-runner --watch --group default",
-    "postversion": "pnpm build.npm && node scripts/node-write-sizes.mjs",
+    "postversion": "node scripts/node-write-sizes.mjs",
     "release": "semantic-release  --tagFormat 'components/${version}' -e semantic-release-monorepo",
     "release.dry": "semantic-release -d --tagFormat 'components/${version}' -e semantic-release-monorepo"
   },
