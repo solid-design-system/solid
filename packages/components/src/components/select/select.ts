@@ -434,6 +434,10 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   private handleClearClick(event: MouseEvent) {
     event.stopPropagation();
 
+    this.clearSelect();
+  }
+
+  private clearSelect() {
     if (this.value !== '') {
       this.setSelectedOptions([]);
       this.displayInput.focus({ preventScroll: true });
@@ -505,10 +509,12 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     }
   }
 
-  private handleTagRemove(event: CustomEvent, option: SdOption) {
+  private handleTagRemove(event: CustomEvent, option?: SdOption) {
     event.stopPropagation();
-
-    if (!this.disabled) {
+    if (!option) {
+      this.clearSelect();
+    }
+    if (option && !this.disabled) {
       this.toggleOptionSelection(option, false);
 
       // Emit after updating
@@ -605,21 +611,36 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   }
 
   protected get tags() {
-    return this.selectedOptions.map((option, index) => {
-      if (index < this.maxOptionsVisible || this.maxOptionsVisible <= 0) {
-        const tag = this.getTag(option, index);
-        // Wrap so we can handle the remove
-        return html`<div @sd-remove=${(e: CustomEvent) => this.handleTagRemove(e, option)}>
-          ${typeof tag === 'string' ? unsafeHTML(tag) : tag}
-        </div>`;
-      } else if (index === this.maxOptionsVisible) {
-        // Hit tag limit
-        return html`<sd-tag size=${this.size === 'sm' ? 'sm' : 'lg'} ?disabled=${this.disabled}
-          >+${this.selectedOptions.length - index}</sd-tag
-        >`;
-      }
-      return html``;
-    });
+    if (this.selectedOptions.length <= this.maxOptionsVisible) {
+      return this.selectedOptions.map((option, index) => {
+        if (index < this.maxOptionsVisible || this.maxOptionsVisible <= 0) {
+          const tag = this.getTag(option, index);
+          // Wrap so we can handle the remove
+          return html` <div @sd-remove=${(e: CustomEvent) => this.handleTagRemove(e, option)}>
+            ${typeof tag === 'string' ? unsafeHTML(tag) : tag}
+          </div>`;
+        }
+        return [html``];
+      });
+    } else {
+      return [
+        html`
+          <sd-tag
+            ?disabled=${this.disabled}
+            part="tag"
+            exportparts="
+              base:tag__base,
+              content:tag__content,
+              removable-indicator:tag__removable-indicator,
+            "
+            size=${this.size === 'sm' ? 'sm' : 'lg'}
+            removable
+            @sd-remove=${(event: CustomEvent) => this.handleTagRemove(event)}
+            >${this.selectedOptions.length} ${this.localize.term('tagsSelected')}</sd-tag
+          >
+        `
+      ];
+    }
   }
 
   private handleInvalid(event: Event) {
