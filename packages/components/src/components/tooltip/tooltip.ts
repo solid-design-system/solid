@@ -149,9 +149,9 @@ export default class SdTooltip extends SolidElement {
 
   private handleFocus() {
     if (this.hasTrigger('focus')) {
+      // Change isFocusTriggered only if the focus action affects the tooltip.
       if (!this.open) {
         this.isFocusTriggered = true;
-
         this.show();
       }
     }
