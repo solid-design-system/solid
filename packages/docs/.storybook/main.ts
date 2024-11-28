@@ -3,11 +3,18 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default {
   stories: [
+    // General, Migration
     '../src/stories/docs/**/*.@(mdx|stories.*)',
-    '../src/stories/packages/**/*.@(mdx|stories.*)',
+    // Packages (custom order)
+    '../src/stories/packages/**/Index.@(mdx|stories.*)',
+    '../src/stories/packages/**/Installation.@(mdx|stories.*)',
+    '../src/stories/packages/**/!(Changelog)*.@(mdx|stories.*)',
+    '../src/stories/packages/**/Changelog.@(mdx|stories.*)',
+    // Components, Styles, Templates
     '../src/stories/components/*.@(mdx|stories.*)',
     '../src/stories/styles/*.@(mdx|stories.*)',
     '../src/stories/templates/*.@(mdx|stories.*)',
+    // Legal
     '../src/stories/legal/*.@(mdx|stories.*)'
   ],
   env: storybookEnvPackageVersions({

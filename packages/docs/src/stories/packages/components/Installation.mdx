@@ -13,12 +13,10 @@ You can load Solid via CDN or by installing it locally.
 When using web components from Solid Design System in microfrontends, versioned components are always recommended. Including version numbers in component names provides more control over updates and prevents collisions when different versions of the same component are used simultaneously.
 
 <sd-tab-group>
-  <sd-tab slot="nav" panel="unversioned">
-    Unversioned
-  </sd-tab>
-  <sd-tab slot="nav" panel="versioned">
-    Versioned
-  </sd-tab>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="unversioned"> Unversioned </sd-tab>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="versioned"> Versioned </sd-tab>
   <sd-tab-panel name="unversioned">
     ```html
     <sd-button></sd-button>
@@ -44,12 +42,10 @@ The bundle registers all Solid Components in a single file. If you're using many
 You can use the following script tag to load all components:
 
 <sd-tab-group>
-  <sd-tab slot="nav" panel="unversioned">
-    Unversioned
-  </sd-tab>
-  <sd-tab slot="nav" panel="versioned">
-    Versioned
-  </sd-tab>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="unversioned"> Unversioned </sd-tab>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="versioned"> Versioned </sd-tab>
   <sd-tab-panel name="unversioned">
     ```html
     <link
@@ -81,14 +77,10 @@ You can use the following script tag to load all components:
 The CDN loader registers all Solid elements up front. Note that, if you're only using a handful of components, it could be more efficient [cherry pick](#cherry-picking) components if you want to load specific ones up front.
 
 <sd-tab-group>
-  <sd-tab slot="nav" panel="unversioned">
-    {' '}
-    Unversioned{' '}
-  </sd-tab>
-  <sd-tab slot="nav" panel="versioned">
-    {' '}
-    Versioned{' '}
-  </sd-tab>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="unversioned">Unversioned</sd-tab>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="versioned">Versioned</sd-tab>
   <sd-tab-panel name="unversioned">
     ```html
     <link
@@ -128,12 +120,10 @@ It's up to you to make the source files available to your app. One way to do thi
 Once you've done that, add the following tags to your page. Make sure to update `href` and `src` so they point to the route you created.
 
 <sd-tab-group>
-  <sd-tab slot="nav" panel="unversioned">
-    Unversioned
-  </sd-tab>
-  <sd-tab slot="nav" panel="versioned">
-    Versioned
-  </sd-tab>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="unversioned">Unversioned</sd-tab>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="versioned">Versioned</sd-tab>
   <sd-tab-panel name="unversioned">
     ```html
     <link rel="stylesheet" href="/solid/dist/solid-components.css" />
@@ -157,7 +147,9 @@ Cherry picking can be done from [the CDN](#cdn-installation) or from [npm](#npm-
 Here's an example that loads only the button component. Again, if you're not using a module resolver, you'll need to adjust the path to point to the folder Solid is in.
 
 <sd-tab-group>
+  {/* prettier-ignore */}
   <sd-tab slot="nav" panel="unversioned">Unversioned</sd-tab>
+  {/* prettier-ignore */}
   <sd-tab slot="nav" panel="versioned">Versioned</sd-tab>
   <sd-tab-panel name="unversioned">
   ```html
@@ -207,7 +199,9 @@ Now it's time to configure your bundler. Configurations vary for each tool, but 
 Once your bundler is configured, you'll be able to import Solid components and utilities.
 
 <sd-tab-group>
+  {/* prettier-ignore */}
   <sd-tab slot="nav" panel="unversioned">Unversioned</sd-tab>
+  {/* prettier-ignore */}
   <sd-tab slot="nav" panel="versioned">Versioned</sd-tab>
   <sd-tab-panel name="unversioned">
   ```js
@@ -240,8 +234,10 @@ CDN links all start with `/cdn/<path>` and npm imports use `/dist/<path>`. The `
 TL;DR:
 
 <sd-tab-group>
-  <sd-tab slot="nav" panel="unversioned"> Unversioned </sd-tab>
-  <sd-tab slot="nav" panel="versioned"> Versioned </sd-tab>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="unversioned">Unversioned</sd-tab>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="versioned">Versioned</sd-tab>
   <sd-tab-panel name="unversioned">
     
     - `@solid-design-system/components/cdn` is for CDN users
