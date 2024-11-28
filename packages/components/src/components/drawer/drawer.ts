@@ -200,6 +200,11 @@ export default class SdDrawer extends SolidElement {
         animateTo(this.overlay, overlayAnimation.keyframes, overlayAnimation.options)
       ]);
 
+      //Add a11y attributes to close button
+      const closeButton = this.shadowRoot?.getElementById('close-button')?.shadowRoot?.querySelector('button');
+      closeButton?.setAttribute('aria-expanded', 'true');
+      closeButton?.setAttribute('aria-controls', 'drawer');
+
       this.emit('sd-after-show');
     } else {
       // Hide
@@ -241,6 +246,10 @@ export default class SdDrawer extends SolidElement {
         setTimeout(() => trigger.focus());
       }
 
+      //Add a11y attributes to close button
+      const closeButton = this.shadowRoot?.getElementById('close-button')?.shadowRoot?.querySelector('button');
+      closeButton?.setAttribute('aria-expanded', 'false');
+
       this.emit('sd-after-hide');
     }
   }
@@ -281,6 +290,7 @@ export default class SdDrawer extends SolidElement {
   render() {
     return html`
       <div
+        id="drawer"
         part="base"
         class=${cx(
           'top-0 start-0 w-full h-full pointer-events-none overflow-hidden',
@@ -308,7 +318,7 @@ export default class SdDrawer extends SolidElement {
           )}
           role="dialog"
           aria-modal="true"
-          aria-hidden=${this.open ? 'false' : 'true'}
+          aria-hidden=${!this.open}
           aria-label=${this.label}
           aria-labelledby=${ifDefined(!this.noHeader ? 'title' : undefined)}
           tabindex="0"
@@ -328,10 +338,11 @@ export default class SdDrawer extends SolidElement {
                       variant="tertiary"
                       size="lg"
                       part="close-button"
-                      aria-expanded=${this.open}
+                      id="close-button"
                       @click=${() => this.requestClose('close-button')}
-                      ><sd-icon label=${this.localize.term('close')} name="close" library="system"></sd-icon
-                    ></sd-button>
+                    >
+                      <sd-icon label=${this.localize.term('close')} name="close" library="system"></sd-icon>
+                    </sd-button>
                   </div>
                 </header>
               `
