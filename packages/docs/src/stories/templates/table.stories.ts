@@ -20,10 +20,7 @@ export default {
   }
 };
 
-/**
- * ### Simple Table
- */
-export const simpleTables = {
+export const simpleTable = {
   render: () => html`
     <table
       id="simple"
@@ -764,9 +761,11 @@ export const sortableTable = {
 
       if (icons && headerCells) {
         headerCells.forEach((headerCell, index) => {
+          if (!headerData[index].sortable) return;
+
           //Change the sort icon and aria-sort attribute for the clicked column
           const nextSort = sortingOptions[sortData[column]].nextSort;
-          sortTableByColumn(document.querySelector('[id*="sortableTable"]'), column, nextSort === 'descending');
+          sortTableByColumn(document.querySelector('[id="sortable"]'), column, nextSort === 'descending');
 
           if (index === column) {
             const { iconName, ariaSort, status } = sortingOptions[nextSort];
@@ -794,7 +793,9 @@ export const sortableTable = {
     const sortTableByColumn = (table: HTMLTableElement | null, column: number, descending: boolean) => {
       if (table) {
         const dirModifier = descending ? 1 : -1;
+        console.log(table);
         const tableBody = table.tBodies[0];
+        console.log(tableBody);
         const rows = Array.from(tableBody.querySelectorAll('tr'));
 
         // Sort each row
@@ -830,7 +831,7 @@ export const sortableTable = {
     };
 
     return html`
-      <table id="sortable" class="sd-table sample-table w-full" id="sortableTable" .sortData=${sortData}>
+      <table id="sortable" class="sd-table sample-table w-full" .sortData=${sortData}>
         <thead>
           ${(() => {
             return html`<tr>
@@ -1212,7 +1213,9 @@ export const advancedTables = {
             <th class="sd-table-cell sd-table-cell--bg-white sticky top-0 sd-table-cell--shadow-bottom">
               Employment type
             </th>
-            <th class="sd-table-cell sd-table-cell--bg-white sticky top-0 sd-table-cell--shadow-bottom">Actions</th>
+            <th class="sd-table-cell sd-table-cell--bg-white sticky top-0 sd-table-cell--shadow-bottom z-10">
+              Actions
+            </th>
           </tr>
         </thead>
         <tbody>
