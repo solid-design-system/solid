@@ -36,7 +36,9 @@ const getDataFromTags = (fileName: string, tag: Spec): Tag => ({
   fileName,
   name: tag.name,
   tag: tag.tag,
-  type: tag.type
+  type: tag.type,
+  since: '',
+  status: ''
 });
 
 /**
