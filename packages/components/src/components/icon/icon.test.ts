@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { elementUpdated, expect, fixture, html, oneEvent } from '@open-wc/testing';
 import { registerIconLibrary } from '../../../dist/solid-components';
 import type SdIcon from './icon';
@@ -25,7 +26,7 @@ describe('<sd-icon>', () => {
     let registerIconLibraryForTest;
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any
     if ((window as any)['SolidComponents']) {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any
       registerIconLibraryForTest = (window as any)['SolidComponents']['registerIconLibrary']; // Bundle Mode
     } else {
       registerIconLibraryForTest = registerIconLibrary; // ES Module Mode
