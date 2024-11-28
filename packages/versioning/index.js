@@ -1,5 +1,5 @@
 /**
- * This script automates the process of versioning components by appending
+ * This script automates the process of versioning components by injecting
  * version numbers to component names and copying directories to new locations.
  */
 

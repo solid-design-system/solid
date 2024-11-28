@@ -3,7 +3,7 @@
   ![NPM Version](https://img.shields.io/npm/v/%40solid-design-system%2Fplaceholders)
 </div>
 
-# Solid Placeholders
+# @solid-design-system/placeholders
 
 This package provides placeholder texts and images.
 

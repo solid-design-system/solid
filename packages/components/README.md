@@ -3,7 +3,7 @@
   ![NPM Version](https://img.shields.io/npm/v/%40solid-design-system%2Fcomponents)
 </div>
 
-# Solid
+# @solid-design-system/components
 
 Solid Components provide a robust foundation for Union Investment's digital interfaces. Built with three core principles:
 
