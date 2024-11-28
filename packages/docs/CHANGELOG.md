@@ -1,3 +1,32 @@
+# [@solid-design-system/docs-v1.0.6](https://github.com/solid-design-system/solid/compare/docs/1.0.5...docs/1.0.6) (2024-11-27)
+
+
+### Bug Fixes
+
+* improve sd-video a11y ([#1644](https://github.com/solid-design-system/solid/issues/1644)) ([6dec218](https://github.com/solid-design-system/solid/commit/6dec2189231b9d6538391b8e37b5228d4253d9ed)), closes [#1494](https://github.com/solid-design-system/solid/issues/1494) [#1529](https://github.com/solid-design-system/solid/issues/1529)
+
+# [@solid-design-system/docs-v1.0.5](https://github.com/solid-design-system/solid/compare/docs/1.0.4...docs/1.0.5) (2024-11-25)
+
+
+### Bug Fixes
+
+* sd-teaser and sd-teaser-media a11y ([#1625](https://github.com/solid-design-system/solid/issues/1625)) ([68efac6](https://github.com/solid-design-system/solid/commit/68efac646eed449df0f16222732fa7d6cbb3f1f4))
+
+# [@solid-design-system/docs-v1.0.4](https://github.com/solid-design-system/solid/compare/docs/1.0.3...docs/1.0.4) (2024-11-20)
+
+
+### Bug Fixes
+
+* sd-carousel & sd-carousel-item a11y ([#1607](https://github.com/solid-design-system/solid/issues/1607)) ([b207992](https://github.com/solid-design-system/solid/commit/b207992b727f9f80176b05101cb4314cacaeea80))
+
+# [@solid-design-system/docs-v1.0.3](https://github.com/solid-design-system/solid/compare/docs/1.0.2...docs/1.0.3) (2024-11-20)
+
+
+### Bug Fixes
+
+* improve sd-tag a11y ([#1640](https://github.com/solid-design-system/solid/issues/1640)) ([ea788ef](https://github.com/solid-design-system/solid/commit/ea788ef53db4c051be9ea08ec54218b086585254)), closes [#1490](https://github.com/solid-design-system/solid/issues/1490)
+* improve sd-textarea a11y [skip chromatic] ([#1642](https://github.com/solid-design-system/solid/issues/1642)) ([4560278](https://github.com/solid-design-system/solid/commit/4560278baa2eac2bb628ca555b1f724ef94acabe)), closes [#1492](https://github.com/solid-design-system/solid/issues/1492)
+
 # [@solid-design-system/docs-v1.0.2](https://github.com/solid-design-system/solid/compare/docs/1.0.1...docs/1.0.2) (2024-11-14)
 
 

@@ -6,7 +6,7 @@ import { customElement } from '../../internal/register-custom-element';
 import { LocalizeController } from '../../utilities/localize.js';
 import { map } from 'lit/directives/map.js';
 import { prefersReducedMotion } from '../../internal/animate.js';
-import { property, query, state } from 'lit/decorators.js';
+import { property, query, queryAll, state } from 'lit/decorators.js';
 import { range } from 'lit/directives/range.js';
 import { ScrollController } from './scroll-controller.js';
 import { watch } from '../../internal/watch.js';
@@ -53,6 +53,7 @@ export default class SdCarousel extends SolidElement {
   @query('[part~="autoplay-controls"]') autoplayControls: HTMLElement;
   @query('[part~="navigation-button--previous"]') previousButton: HTMLButtonElement;
   @query('[part~="navigation-button--next"]') nextButton: HTMLButtonElement;
+  @queryAll('[part~="pagination-item"]') paginationItems: HTMLButtonElement[];
 
   /** Determines the counting system for the carousel. */
   @property({ type: String, reflect: true }) variant: 'dot' | 'number' = 'number';
@@ -250,16 +251,36 @@ export default class SdCarousel extends SolidElement {
     this.requestUpdate();
   };
 
+  private unblockAutoplay = (e: MouseEvent, button: HTMLButtonElement) => {
+    // When the button is clicked with a mouse, blur the button to resume autoplay.
+    if (e.detail) {
+      button.blur();
+    }
+  };
+
+  /**
+   * Pause the autoplay.
+   */
+  public pause() {
+    this.pausedAutoplay = true;
+  }
+
+  /**
+   * Resume the autoplay
+   */
+  public resume() {
+    this.pausedAutoplay = false;
+  }
+
   @watch('pausedAutoplay')
   handlePausedAutoplay() {
     if (this.pausedAutoplay) {
       this.autoplayController.stop();
+      this.autoplayControls?.setAttribute('aria-pressed', 'false');
     } else if (this.autoplay) {
       this.autoplayController.start(3000);
+      this.autoplayControls?.setAttribute('aria-pressed', 'true');
     }
-
-    // This is necessary to allow autoplay since focus is not removed when the button is clicked.
-    this.autoplayControls?.blur();
   }
 
   @watch('loop', { waitUntilFirstUpdate: true })
@@ -276,7 +297,7 @@ export default class SdCarousel extends SolidElement {
 
       slide.classList.remove('--in-view');
       slide.classList.remove('--is-active');
-      slide.setAttribute('aria-label', this.localize.term('slideNum', index + 1));
+      slide.setAttribute('aria-label', this.localize.term('slideNum', index + 1, slides.length));
 
       if (slide.hasAttribute('data-clone')) {
         slide.remove();
@@ -311,18 +332,21 @@ export default class SdCarousel extends SolidElement {
   }
 
   @watch('activeSlide')
-  handelSlideChange() {
-    this.currentPage = this.getCurrentPage(
-      this.getSlides().length,
-      this.activeSlide,
-      this.slidesPerPage,
-      this.slidesPerMove
-    );
-
+  handleSlideChange() {
     const slides = this.getSlides();
+
+    // Update slides classes
     slides.forEach((slide, i) => {
       slide.classList.toggle('--is-active', i === this.activeSlide);
     });
+
+    // Calculate current page only once
+    const newCurrentPage = this.getCurrentPage(slides.length, this.activeSlide, this.slidesPerPage, this.slidesPerMove);
+
+    // Batch updates together
+    if (this.currentPage !== newCurrentPage) {
+      this.currentPage = newCurrentPage;
+    }
 
     // Do not emit an event on first render
     if (this.hasUpdated) {
@@ -334,8 +358,13 @@ export default class SdCarousel extends SolidElement {
       });
     }
 
-    if (this.currentPage > this.getPageCount(this.getSlides().length, this.slidesPerPage, this.slidesPerMove)) {
-      this.nextTillFirst();
+    // Check page count after all other updates
+    const pageCount = this.getPageCount(slides.length, this.slidesPerPage, this.slidesPerMove);
+    if (this.currentPage > pageCount) {
+      // Use requestAnimationFrame to defer this update to the next frame
+      requestAnimationFrame(() => {
+        this.nextTillFirst();
+      });
     }
   }
 
@@ -381,9 +410,6 @@ export default class SdCarousel extends SolidElement {
     } else {
       this.goToSlide(previousIndex, behavior);
     }
-
-    // This keeps the carousel from pausing autoplay due to the lingering focus
-    this.previousButton?.blur();
   }
 
   /**
@@ -399,9 +425,6 @@ export default class SdCarousel extends SolidElement {
         this.nextTillFirst(behavior);
       }
     }
-
-    // This keeps the carousel from pausing autoplay due to the lingering focus
-    this.nextButton?.blur();
   }
 
   nextTillFirst(behavior: ScrollBehavior = 'smooth') {
@@ -449,6 +472,12 @@ export default class SdCarousel extends SolidElement {
       top: nextSlideRect.top - scrollContainerRect.top + scrollContainer.scrollTop,
       behavior: prefersReducedMotion() ? 'auto' : behavior
     });
+
+    if (this.activeSlide === slides.length - 1 && !this.loop) {
+      this.previousButton.focus({ preventScroll: true });
+    } else if (this.activeSlide === 0 && !this.loop) {
+      this.nextButton.focus({ preventScroll: true });
+    }
   }
 
   render() {
@@ -478,7 +507,7 @@ export default class SdCarousel extends SolidElement {
           )}"
           style="--slides-per-page: ${this.slidesPerPage};"
           aria-busy="${scrollController.scrolling ? 'true' : 'false'}"
-          aria-atomic="true"
+          role="status"
           tabindex="0"
           @keydown=${this.handleKeyDown}
           @scrollend=${this.handleScrollEnd}
@@ -500,7 +529,12 @@ export default class SdCarousel extends SolidElement {
               aria-label="${this.localize.term('previousSlide')}"
               aria-controls="scroll-container"
               aria-disabled="${prevEnabled ? 'false' : 'true'}"
-              @click=${prevEnabled ? () => this.previous() : null}
+              @click=${prevEnabled
+                ? (e: MouseEvent) => {
+                    this.previous();
+                    this.unblockAutoplay(e, this.previousButton);
+                  }
+                : null}
             >
               <slot name="previous-icon">
                 <sd-icon
@@ -534,7 +568,10 @@ export default class SdCarousel extends SolidElement {
                           tabindex="0"
                           aria-selected="${isActive ? 'true' : 'false'}"
                           aria-label="${this.localize.term('goToSlide', index + 1, pagesCount)}"
-                          @click=${() => this.goToSlide(index * slidesPerMove)}
+                          @click="${(e: MouseEvent) => {
+                            this.goToSlide(index * slidesPerMove);
+                            this.unblockAutoplay(e, this.paginationItems[index]);
+                          }}"
                           @keydown=${this.handleKeyDown}
                         >
                           <span
@@ -585,8 +622,9 @@ export default class SdCarousel extends SolidElement {
               aria-controls="scroll-container"
               aria-disabled="${nextEnabled ? 'false' : 'true'}"
               @click=${nextEnabled
-                ? () => {
+                ? (e: MouseEvent) => {
                     this.next();
+                    this.unblockAutoplay(e, this.nextButton);
                   }
                 : null}
             >
@@ -607,7 +645,14 @@ export default class SdCarousel extends SolidElement {
               !this.autoplay && '!hidden'
             )}
             part="autoplay-controls"
-            @click=${() => (this.pausedAutoplay = !this.pausedAutoplay)}
+            aria-label="${this.localize.term('autoplay')}"
+            aria-pressed="true"
+            @click=${(e: MouseEvent) => {
+              this.pausedAutoplay = !this.pausedAutoplay;
+              if (e.detail) {
+                this.autoplayControls.blur();
+              }
+            }}
           >
             <slot name="autoplay-start" class=${cx(!this.pausedAutoplay ? 'hidden' : '')}>
               <sd-icon class="h-6 w-6 grid place-items-center" library="system" name="start"></sd-icon>

@@ -37,7 +37,7 @@
 
     /* fix that shows line on top of table-cell */
     &:before {
-      @apply bg-neutral-400 block content-[''] absolute w-full h-[1px] left-0;
+      @apply border-[0.5px] border-neutral-400 block content-[''] absolute w-full h-[1px] left-0;
     }
   }
 

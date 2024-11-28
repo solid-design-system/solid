@@ -319,6 +319,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
         rel=${ifDefined(isLink && this.target ? 'noreferrer noopener' : undefined)}
         role=${ifDefined(isLink ? undefined : 'button')}
         aria-disabled=${this.disabled ? 'true' : 'false'}
+        aria-labelledby="content"
         tabindex=${this.disabled ? '-1' : '0'}
         @blur=${this.handleBlur}
         @focus=${this.handleFocus}
@@ -336,10 +337,12 @@ export default class SdButton extends SolidElement implements SolidFormControl {
               lg: 'mr-2'
             }[this.size]
         )}></slot>
-        <slot part="label" class=${cx(
+        <slot part="label" id="content" class=${cx(
           slots['icon-only'] ? 'flex flex-auto items-center pointer-events-none' : 'inline-block',
           this.loading && 'invisible'
-        )}></slot>
+        )}
+        >
+        </slot>
         <slot name="icon-right"
           part="icon-right"
           class=${cx(

@@ -33,6 +33,9 @@ export default class SdTag extends SolidElement {
   /** Displays the tag in a selected state. */
   @property({ type: Boolean, reflect: true }) selected = false;
 
+  /** Defines the tag as toggleable, adding the `aria-pressed` attribute to indicate its selected state */
+  @property({ type: Boolean, reflect: true }) toggleable = false;
+
   /** Displays the tag with a removability indicator. */
   @property({ type: Boolean, reflect: true }) removable = false;
 
@@ -95,6 +98,7 @@ export default class SdTag extends SolidElement {
         download=${ifDefined(isLink ? this.download : undefined)}
         ?disabled=${ifDefined(isLink ? undefined : this.disabled)}
         aria-disabled=${this.disabled ? 'true' : 'false'}
+        aria-pressed=${ifDefined(this.toggleable ? this.selected : undefined)}
         tabindex=${this.disabled ? '-1' : '0'}
         @blur=${this.handleBlur}
         @focus=${this.handleFocus}

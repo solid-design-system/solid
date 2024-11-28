@@ -186,6 +186,7 @@ describe('<sd-textarea>', () => {
       await el.updateComplete;
 
       expect(el.checkValidity()).to.be.true;
+      expect(el.shadowRoot!.querySelector('textarea')!.getAttribute('aria-invalid')).to.equal('false');
       expect(el.hasAttribute('data-user-invalid')).to.be.false;
       expect(el.hasAttribute('data-user-valid')).to.be.true;
     });
@@ -207,6 +208,7 @@ describe('<sd-textarea>', () => {
       el.blur();
       await el.updateComplete;
 
+      expect(el.shadowRoot!.querySelector('textarea')!.getAttribute('aria-invalid')).to.equal('true');
       expect(el.hasAttribute('data-user-invalid')).to.be.true;
       expect(el.hasAttribute('data-user-valid')).to.be.false;
     });

@@ -1,5 +1,6 @@
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
+import { LocalizeController } from '../../utilities/localize';
 import { property, state } from 'lit/decorators.js';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
@@ -39,6 +40,8 @@ import SolidElement from '../../internal/solid-element';
 
 @customElement('sd-scrollable')
 export default class SdScrollable extends SolidElement {
+  public localize = new LocalizeController(this);
+
   /** Defines the scroll orientation */
   @property({ type: String, reflect: true }) orientation: 'horizontal' | 'vertical' | 'auto' = 'horizontal';
 
@@ -66,6 +69,7 @@ export default class SdScrollable extends SolidElement {
 
   @state() private isScrollHorizontalEnabled: boolean = false;
   @state() private isScrollVerticalEnabled: boolean = false;
+  @state() private isKeyboardNavigation: boolean = false;
 
   private resizeObserver: ResizeObserver;
   private scrollContainer: HTMLElement | null = null;
@@ -113,33 +117,59 @@ export default class SdScrollable extends SolidElement {
 
   updateScrollIndicatorVisibility() {
     const container = this.container;
-    if (container) {
-      const canScrollLeft = this.isScrollHorizontalEnabled && container.scrollLeft > 0;
-      const canScrollRight =
-        this.isScrollHorizontalEnabled && container.scrollLeft + container.clientWidth < container.scrollWidth - 1;
-      const canScrollUp = this.isScrollVerticalEnabled && container.scrollTop > 0;
-      const canScrollDown =
-        this.isScrollVerticalEnabled && container.scrollTop + container.clientHeight < container.scrollHeight - 1;
+    if (!container) {
+      return;
+    }
 
-      this.canScroll = {
-        left: canScrollLeft,
-        right: canScrollRight,
-        up: canScrollUp,
-        down: canScrollDown
-      };
+    const canScrollLeft = this.isScrollHorizontalEnabled && container.scrollLeft > 0;
+    const canScrollRight =
+      this.isScrollHorizontalEnabled && container.scrollLeft + container.clientWidth < container.scrollWidth - 1;
+    const canScrollUp = this.isScrollVerticalEnabled && container.scrollTop > 0;
+    const canScrollDown =
+      this.isScrollVerticalEnabled && container.scrollTop + container.clientHeight < container.scrollHeight - 1;
 
-      if (canScrollLeft || canScrollUp) {
-        this.dispatchEvent(new CustomEvent('start'));
+    const startButton = this.renderRoot.querySelector('[part="button-start"]');
+    const endButton = this.renderRoot.querySelector('[part="button-end"]');
+
+    this.canScroll = {
+      left: this.isKeyboardNavigation ? this.isScrollHorizontalEnabled : canScrollLeft,
+      right: this.isKeyboardNavigation ? this.isScrollHorizontalEnabled : canScrollRight,
+      up: this.isKeyboardNavigation ? this.isScrollVerticalEnabled : canScrollUp,
+      down: this.isKeyboardNavigation ? this.isScrollVerticalEnabled : canScrollDown
+    };
+
+    const startEventTriggered = canScrollLeft || canScrollUp;
+    const endEventTriggered = canScrollRight || canScrollDown;
+
+    if (startEventTriggered) {
+      this.dispatchEvent(new CustomEvent('start'));
+    }
+    if (endEventTriggered) {
+      this.dispatchEvent(new CustomEvent('end'));
+    }
+
+    if (this.isKeyboardNavigation) {
+      if (startButton) {
+        (startButton as HTMLElement).hidden = !startEventTriggered;
       }
-      if (canScrollRight || canScrollDown) {
-        this.dispatchEvent(new CustomEvent('end'));
+      if (startButton && startEventTriggered && !(canScrollDown || canScrollRight)) {
+        (startButton as HTMLElement).focus();
+      }
+
+      if (endButton) {
+        (endButton as HTMLElement).hidden = !endEventTriggered;
+      }
+      if (endButton && endEventTriggered && !(canScrollUp || canScrollLeft)) {
+        (endButton as HTMLElement).focus();
       }
     }
   }
 
-  handleScroll(direction: 'left' | 'right' | 'up' | 'down') {
+  handleScroll(direction: 'left' | 'right' | 'up' | 'down', event?: PointerEvent) {
     const scrollAmount = direction === 'left' || direction === 'up' ? -this.step : this.step;
     const scrollDirection = direction === 'left' || direction === 'right' ? 'left' : 'top';
+
+    this.isKeyboardNavigation = event?.pointerType !== 'mouse';
 
     const scrollOptions: ScrollToOptions = {
       behavior: 'smooth'
@@ -171,6 +201,7 @@ export default class SdScrollable extends SolidElement {
           this.inset ? 'p-4' : ''
         )}
         @scroll=${this.updateScrollIndicatorVisibility}
+        tabindex="0"
       >
         <div part="scroll-content" class="flex-1">
           <slot></slot>
@@ -189,10 +220,15 @@ export default class SdScrollable extends SolidElement {
                           <button
                             part="button-start"
                             class=${cx(scrollButtonClasses)}
-                            @click=${() => this.handleScroll('left')}
+                            @click=${(e: PointerEvent) => this.handleScroll('left', e)}
                           >
                             <slot name="icon-start">
-                              <sd-icon library="system" name="chevron-up" class="rotate-[-90deg]"></sd-icon>
+                              <sd-icon
+                                library="system"
+                                name="chevron-up"
+                                class="rotate-[-90deg]"
+                                label=${this.localize.term('scrollToStart')}
+                              ></sd-icon>
                             </slot>
                           </button>
                         </div>
@@ -207,10 +243,15 @@ export default class SdScrollable extends SolidElement {
                           <button
                             part="button-end"
                             class=${cx(scrollButtonClasses)}
-                            @click=${() => this.handleScroll('right')}
+                            @click=${(e: PointerEvent) => this.handleScroll('right', e)}
                           >
                             <slot name="icon-end">
-                              <sd-icon library="system" name="chevron-down" class="rotate-[-90deg]"></sd-icon>
+                              <sd-icon
+                                library="system"
+                                name="chevron-down"
+                                class="rotate-[-90deg]"
+                                label=${this.localize.term('scrollToEnd')}
+                              ></sd-icon>
                             </slot>
                           </button>
                         </div>
@@ -229,10 +270,14 @@ export default class SdScrollable extends SolidElement {
                           <button
                             part="button-start"
                             class=${cx(scrollButtonClasses)}
-                            @click=${() => this.handleScroll('up')}
+                            @click=${(e: PointerEvent) => this.handleScroll('up', e)}
                           >
                             <slot name="icon-start">
-                              <sd-icon library="system" name="chevron-up"></sd-icon>
+                              <sd-icon
+                                library="system"
+                                name="chevron-up"
+                                label=${this.localize.term('scrollToStart')}
+                              ></sd-icon>
                             </slot>
                           </button>
                         </div>
@@ -247,10 +292,14 @@ export default class SdScrollable extends SolidElement {
                           <button
                             part="button-end"
                             class=${cx(scrollButtonClasses)}
-                            @click=${() => this.handleScroll('down')}
+                            @click=${(e: PointerEvent) => this.handleScroll('down', e)}
                           >
                             <slot name="icon-end">
-                              <sd-icon library="system" name="chevron-down"></sd-icon>
+                              <sd-icon
+                                library="system"
+                                name="chevron-down"
+                                label=${this.localize.term('scrollToEnd')}
+                              ></sd-icon>
                             </slot>
                           </button>
                         </div>

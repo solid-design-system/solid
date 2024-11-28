@@ -96,6 +96,7 @@ export default class SdTeaserMedia extends SolidElement {
                     'h-[0px] invisible opacity-0 md:block md:group-hover:h-auto md:group-hover:my-4 md:group-hover:opacity-[100%] md:group-hover:visible'
                 )}
                 part="expandable"
+                aria-hidden="true"
               >
                 <slot name="expandable"></slot>
               </div>

@@ -69,39 +69,36 @@ export const Default = {
 /**
  * Use the `variant` attribute to select the pagination format:
  *
- * - `Number` (default): can be used for all use cases
- * - `Dot`: can only be used for up to 5 items total
+ * - `number` (default): can be used for all use cases
+ * - `dot`: can only be used for up to 5 items total
  */
 
 export const Variant = {
   render: () => html`
     <div class="flex gap-12">
-      <div>
-        <sd-carousel variant="dot">
-          <sd-carousel-item>
-            <div class="slot slot--border slot--text h-16">Default slot 1</div>
-          </sd-carousel-item>
-          <sd-carousel-item>
-            <div class="slot slot--border slot--text h-16">Default slot 2</div>
-          </sd-carousel-item>
-          <sd-carousel-item>
-            <div class="slot slot--border slot--text h-16">Default slot 3</div>
-          </sd-carousel-item>
-        </sd-carousel>
-      </div>
-      <div>
-        <sd-carousel variant="number">
-          <sd-carousel-item>
-            <div class="slot slot--border slot--text h-16">Default slot 1</div>
-          </sd-carousel-item>
-          <sd-carousel-item>
-            <div class="slot slot--border slot--text h-16">Default slot 2</div>
-          </sd-carousel-item>
-          <sd-carousel-item>
-            <div class="slot slot--border slot--text h-16">Default slot 3</div>
-          </sd-carousel-item>
-        </sd-carousel>
-      </div>
+      <sd-carousel variant="number">
+        <sd-carousel-item>
+          <div class="slot slot--border slot--text h-16">Default slot 1</div>
+        </sd-carousel-item>
+        <sd-carousel-item>
+          <div class="slot slot--border slot--text h-16">Default slot 2</div>
+        </sd-carousel-item>
+        <sd-carousel-item>
+          <div class="slot slot--border slot--text h-16">Default slot 3</div>
+        </sd-carousel-item>
+      </sd-carousel>
+
+      <sd-carousel variant="dot">
+        <sd-carousel-item>
+          <div class="slot slot--border slot--text h-16">Default slot 1</div>
+        </sd-carousel-item>
+        <sd-carousel-item>
+          <div class="slot slot--border slot--text h-16">Default slot 2</div>
+        </sd-carousel-item>
+        <sd-carousel-item>
+          <div class="slot slot--border slot--text h-16">Default slot 3</div>
+        </sd-carousel-item>
+      </sd-carousel>
     </div>
   `
 };
@@ -151,15 +148,16 @@ export const Loop = {
 };
 
 /**
- * Use the `autoplay` attribute to toggle autoplay.
+ * Use the `autoplay` attribute to toggle autoplay. Autoplay is automatically paused when the user interacts with the carousel or when the pause button is clicked.
  *
- * __Hint:__ Autoplay is automatically paused when the user interacts with the carousel or when the pause button is clicked.
+ * **Disclaimer**: Press the play button to start autoplay. It’s paused in Storybook to prevent screen reader confusion from multiple carousels on the page.
+ *
  */
 
 export const Autoplay = {
   render: () => html`
     <div>
-      <sd-carousel autoplay loop>
+      <sd-carousel class="autoplay" autoplay loop>
         <sd-carousel-item>
           <div class="slot slot--border slot--text h-16">Default slot 1</div>
         </sd-carousel-item>
@@ -171,6 +169,10 @@ export const Autoplay = {
         </sd-carousel-item>
       </sd-carousel>
     </div>
+    <script type="module">
+      const carousel = document.querySelector('.autoplay');
+      carousel?.pause();
+    </script>
   `
 };
 
@@ -218,7 +220,7 @@ export const SlidesPerMove = {
   name: 'Slides per Move',
   render: () => html`
     <div>
-      <sd-carousel slides-per-page="2" slides-per-move="2">
+      <sd-carousel slides-per-page="3" slides-per-move="3">
         <sd-carousel-item>
           <div class="slot slot--border slot--text h-16">Default slot 1</div>
         </sd-carousel-item>
@@ -236,6 +238,24 @@ export const SlidesPerMove = {
         </sd-carousel-item>
         <sd-carousel-item>
           <div class="slot slot--border slot--text h-16">Default slot 6</div>
+        </sd-carousel-item>
+        <sd-carousel-item>
+          <div class="slot slot--border slot--text h-16">Default slot 7</div>
+        </sd-carousel-item>
+        <sd-carousel-item>
+          <div class="slot slot--border slot--text h-16">Default slot 8</div>
+        </sd-carousel-item>
+        <sd-carousel-item>
+          <div class="slot slot--border slot--text h-16">Default slot 9</div>
+        </sd-carousel-item>
+        <sd-carousel-item>
+          <div class="slot slot--border slot--text h-16">Default slot 10</div>
+        </sd-carousel-item>
+        <sd-carousel-item>
+          <div class="slot slot--border slot--text h-16">Default slot 11</div>
+        </sd-carousel-item>
+        <sd-carousel-item>
+          <div class="slot slot--border slot--text h-16">Default slot 12</div>
         </sd-carousel-item>
       </sd-carousel>
     </div>

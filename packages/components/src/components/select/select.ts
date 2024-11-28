@@ -905,7 +905,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 form=${this.form}
                 part="display-input"
                 class=${cx(
-                  'appearance-none outline-none flex-grow bg-transparent w-full',
+                  'appearance-none outline-none flex-grow bg-transparent w-full placeholder-neutral-700',
                   cursorStyles,
                   this.multiple && this.useTags && this.value.length > 0 ? 'hidden' : ''
                 )}
