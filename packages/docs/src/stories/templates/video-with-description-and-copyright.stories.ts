@@ -14,13 +14,26 @@ export default {
 };
 
 export const VideoWithDescription = {
+  name: 'Video with Description',
   render: () => html`
     <sd-video class="sd-media">
       <video controls class="aspect-video">
-        <source src="./placeholders/videos/ui-placeholder-video.mp4" type="video/mp4" />
+        <source src="./placeholders/videos/sds-placeholder-video/sds-placeholder-video.webm" type="video/webm" />
+        <track
+          label="English"
+          kind="subtitles"
+          srclang="en"
+          src="./placeholders/videos/sds-placeholder-video/sds-placeholder-video.vtt"
+          default
+        />
         Your browser does not support the video tag.
       </video>
-      <img slot="poster" alt="poster" class="aspect-video cover" src="./placeholders/images/architecture.jpg" />
+      <img
+        slot="poster"
+        alt="Video highlighting Union Investment's digital transformation through a design system named Solid that enhances accessibility, sustainability, and efficiency."
+        class="aspect-video cover"
+        src="./placeholders/images/union-investment.png"
+      />
       <figcaption class="mt-4">
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
         dolore magna aliquyam erat, sed diam voluptua.
@@ -30,6 +43,7 @@ export const VideoWithDescription = {
 };
 
 export const VideoWithCopyright = {
+  name: 'Video with Copyright',
   render: () => html`
     <style>
       .sd-copyright::after {
@@ -39,10 +53,22 @@ export const VideoWithCopyright = {
     <div class="sd-copyright" style="--copyright:'© Union Investment 2024'">
       <sd-video>
         <video controls class="aspect-video">
-          <source src="./placeholders/videos/ui-placeholder-video.mp4" type="video/mp4" />
+          <source src="./placeholders/videos/sds-placeholder-video/sds-placeholder-video.webm" type="video/webm" />
+          <track
+            label="English"
+            kind="subtitles"
+            srclang="en"
+            src="./placeholders/videos/sds-placeholder-video/sds-placeholder-video.vtt"
+            default
+          />
           Your browser does not support the video tag.
         </video>
-        <img slot="poster" alt="poster" class="aspect-video cover" src="./placeholders/images/architecture.jpg" />
+        <img
+          slot="poster"
+          alt="Video highlighting Union Investment's digital transformation through a design system named Solid that enhances accessibility, sustainability, and efficiency."
+          class="aspect-video cover"
+          src="./placeholders/images/union-investment.png"
+        />
       </sd-video>
     </div>
   `

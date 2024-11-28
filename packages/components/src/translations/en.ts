@@ -6,6 +6,8 @@ const translation: Translation = {
   $name: 'English',
   $dir: 'ltr',
 
+  autoplay: 'Autoplay',
+  audioPlayer: 'Audio Player',
   clearEntry: 'Clear entry',
   close: 'Close',
   copy: 'Copy',
@@ -13,9 +15,17 @@ const translation: Translation = {
     if (num === 0) return '';
     return `Options Selected (${num})`;
   },
+  carousel: 'Carousel',
   currentValue: 'Current value',
+  goToSlide: (slide, count) => `Go to slide ${slide} of ${count}`,
   hidePassword: 'Hide password',
   loading: 'Loading',
+  mute: 'Mute',
+  nextSlide: 'Next slide',
+  pauseAudio: 'Pause Audio',
+  playAudio: 'Play Audio',
+  playbackSpeed: 'Playback Speed',
+  previousSlide: 'Previous slide',
   progress: 'Progress',
   remove: 'Remove',
   resize: 'Resize',
@@ -25,22 +35,12 @@ const translation: Translation = {
   selectDefaultPlaceholder: 'Please select',
   tagsSelected: 'Options selected',
   comboboxDefaultPlaceholder: 'Please search and select',
-  showPassword: 'Show password',
-  toggleColorFormat: 'Toggle color format',
-  carousel: 'Carousel',
-  nextSlide: 'Next slide',
-  previousSlide: 'Previous slide',
-  goToSlide: (slide, count) => `Go to slide ${slide} of ${count}`,
-  slideNum: (num, count) => `Slide ${num} of ${count}`,
-  audioPlayer: 'Audio Player',
-  playAudio: 'Play Audio',
-  pauseAudio: 'Pause Audio',
-  mute: 'Mute',
-  unmute: 'Unmute',
-  showMore: 'Show more',
   showLess: 'Show less',
-  playbackSpeed: 'Playback Speed',
-  autoplay: 'Autoplay'
+  showMore: 'Show more',
+  showPassword: 'Show password',
+  slideNum: num => `Slide ${num}`,
+  toggleColorFormat: 'Toggle color format',
+  unmute: 'Unmute'
 };
 
 registerTranslation(translation);
