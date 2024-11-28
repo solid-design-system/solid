@@ -145,13 +145,6 @@ await nextTask('Versioning components and meta data', async () => {
   await execPromise('node scripts/make-versioning.js', { stdio: 'inherit' });
 });
 
-// let result;
-
-// // Log deferred output
-// if (result.output.length > 0) {
-//   console.log('\n' + result.output.join('\n'));
-// }
-
 // Cleanup on exit
 process.on('SIGINT', handleCleanup);
 process.on('SIGTERM', handleCleanup);
