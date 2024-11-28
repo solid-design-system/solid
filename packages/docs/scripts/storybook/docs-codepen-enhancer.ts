@@ -62,7 +62,7 @@ export default function docsCodepenEnhancer(code: string, storyContext: StoryCon
         const data = {
           css: `/* See https://solid-design-system.fe.union-investment.de/${packageVersions['@solid-design-system/components']}/storybook/?path=/docs/docs-general-installation--docs */
 @import url("https://solid-design-system.fe.union-investment.de/${packageVersions['@solid-design-system/components']}/cdn/solid-components.css");
-@import url("https://solid-design-system.fe.union-investment.de/${packageVersions['@solid-design-system/styles']}/cdn/index.css");
+@import url("https://solid-design-system.fe.union-investment.de/${packageVersions['@solid-design-system/styles']}/cdn/solid-styles.css");
 
 /* See https://solid-design-system.fe.union-investment.de/${packageVersions['@solid-design-system/components']}/storybook/?path=/docs/docs-general-prerequisites--docs */
 body {

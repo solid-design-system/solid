@@ -7,15 +7,15 @@
  * @boolean { false } sd-prose--full-width Overrides the 80ch max-width and makes the prose full width.
  */
 
-@import url('./modules/display.css');
-@import url('./modules/headline.css');
-@import url('./modules/interactive.css');
-@import url('./modules/leadtext.css');
-@import url('./modules/list.css');
-@import url('./modules/paragraph.css');
-@import url('./modules/media.css');
-@import url('./modules/table-cell.css');
-@import url('./modules/table.css');
+@import url('./display.css');
+@import url('./headline.css');
+@import url('./interactive.css');
+@import url('./leadtext.css');
+@import url('./list.css');
+@import url('./paragraph.css');
+@import url('./media.css');
+@import url('./table-cell.css');
+@import url('./table.css');
 
 .sd-prose {
   /* Optimize for reading. */

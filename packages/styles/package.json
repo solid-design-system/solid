@@ -4,7 +4,7 @@
   },
   "description": "Solid Design System: Styles",
   "exports": {
-    ".": "./dist/index.css",
+    ".": "./dist/solid-styles.css",
     "./package.json": "./package.json",
     "./dist/*.css": "./dist/*.css",
     "./dist-versioned/*.css": "./dist-versioned/*.css",

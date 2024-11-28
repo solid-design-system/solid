@@ -16,8 +16,8 @@ This package makes use of `postcss` for creating a unified bundle for easier con
 ### Creating new modules
 
 1. Create a new folder `src/[MODULE_NAME]`.
-2. Create a new file `src/[MODULE_NAME]/index.css`.
-3. Add CSS statements to your liking. **Hint**: You may also split your code into multiple css files residing in the `src/[MODULE_NAME]` folder. Make sure to **import them into your `src/[MODULE_NAME]/index.css` file** to make them part of the build.
+2. Create a new file `src/[MODULE_NAME]/solid-styles.css`.
+3. Add CSS statements to your liking. **Hint**: You may also split your code into multiple css files residing in the `src/[MODULE_NAME]` folder. Make sure to **import them into your `src/[MODULE_NAME]/solid-styles.css` file** to make them part of the build.
 4. Add js doc comments to your code to create controls for storybook automatically. This can be done by creating comments, as seen below.
 5. Run `pnpm build`. You should now see the a new file `dist/[MODULE_NAME].css` that holds all your previous code, as well as your created submodules (if you have splitted your code into multiple files).
 

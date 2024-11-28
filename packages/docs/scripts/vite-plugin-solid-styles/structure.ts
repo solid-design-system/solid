@@ -46,7 +46,7 @@ const getDataFromTags = (fileName: string, tag: Spec): Tag => ({
  */
 export const getStructure = async (root: string): Promise<Structure[]> => {
   // Get all files, excluding the generated index.css file
-  const moduleFileNames = await globby([`${root}/**/*.css`, `!${root}/index.css`]);
+  const moduleFileNames = await globby([`${root}/**/*.css`, `!${root}/solid-styles.css`]);
 
   // The last part of the path to the root directory
   const rootDirBaseName = root.split(sep).at(-1);

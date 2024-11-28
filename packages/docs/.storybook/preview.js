@@ -1,5 +1,5 @@
 import 'normalize.css';
-import '../../styles/src/index.css';
+import '../../styles/src/solid-styles.css';
 import './preview.css';
 import { registerIconLibrary } from '../../components/src/utilities/icon-library';
 import { storybookUtilities } from '../scripts/storybook/helper';

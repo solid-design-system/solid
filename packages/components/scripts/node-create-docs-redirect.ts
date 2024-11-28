@@ -16,7 +16,7 @@ const redirectContent = html`
       <title>Notification Redirect</title>
       <link
         rel="stylesheet"
-        href="https://solid-design-system.fe.union-investment.de/components/${stylesPackageJson.version}/cdn/index.css"
+        href="https://solid-design-system.fe.union-investment.de/components/${stylesPackageJson.version}/cdn/solid-styles.css"
       />
       <script
         src="https://solid-design-system.fe.union-investment.de/components/${componentsPackageJson.version}/cdn/solid-components.bundle.js"
