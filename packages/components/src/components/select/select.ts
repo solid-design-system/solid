@@ -579,16 +579,43 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     } else {
       option.selected = !option.selected;
     }
-
+    this.setOrderedSelectedOptions(option);
     this.selectionChanged();
+  }
+
+  private compareOptions(a: SdOption, b: SdOption, operator?: string) {
+    if (operator === '===') {
+      if (a.value && b.value) {
+        return a.value === b.value;
+      }
+      return a.getTextLabel() === b.getTextLabel();
+    } else {
+      if (a.value && b.value) {
+        return a.value !== b.value;
+      }
+      return a.getTextLabel() !== b.getTextLabel();
+    }
+  }
+
+  private setOrderedSelectedOptions(option: SdOption) {
+    const selectedOption = this.getAllOptions().find(el => this.compareOptions(el, option, '==='));
+    if (this.multiple) {
+      if (this.selectedOptions.find(el => this.compareOptions(el, selectedOption!, '==='))) {
+        this.selectedOptions = this.selectedOptions.filter(el => this.compareOptions(el, selectedOption!));
+        return;
+      }
+      this.selectedOptions = [
+        selectedOption!,
+        ...this.selectedOptions.filter(el => this.compareOptions(el, selectedOption!))
+      ];
+    } else {
+      this.selectedOptions = [selectedOption!];
+    }
   }
 
   // This method must be called whenever the selection changes. It will update the selected options cache, the current
   // value, and the display value
   private selectionChanged() {
-    // Update selected options cache
-    this.selectedOptions = this.getAllOptions().filter(el => el.selected);
-
     // Update the value and display label
     if (this.multiple) {
       this.value = this.selectedOptions.map(el => el.value);
