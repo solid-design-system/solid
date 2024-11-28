@@ -14,18 +14,18 @@ const videoConstant: ConstantDefinition = {
   type: 'slot',
   name: 'default',
   value:
-    '<video controls id="video-example" class="w-[854px] aspect-video"><source src="./placeholders/videos/ui-placeholder-video.mp4" type="video/mp4" />Your browser does not support the video tag.</video>'
+    '<video controls id="video-example" class="w-[854px] aspect-video"><source src="./placeholders/videos/sds-placeholder-video/sds-placeholder-video.webm" type="video/webm" />Your browser does not support the video tag.</video>'
 };
 const imageConstant: ConstantDefinition = {
   type: 'slot',
   name: 'default',
-  value: '<img class="w-[400px] aspect-video object-cover" src="./placeholders/images/generic.jpg" />'
+  value: '<img class="w-[400px] aspect-video object-cover" src="./placeholders/images/union-investment.png" />'
 };
 const posterConstant: ConstantDefinition = {
   type: 'slot',
   name: 'poster',
   value:
-    '<img slot="poster" alt="poster" class="w-[854px] aspect-video cover" src="./placeholders/images/architecture.jpg" />'
+    '<img slot="poster" alt="Video highlighting Union Investment\'s digital transformation through a design system named Solid that enhances accessibility, sustainability, and efficiency." class="w-[854px] aspect-video cover" src="./placeholders/images/union-investment.png" />'
 };
 const iconConstant: ConstantDefinition = {
   type: 'slot',
@@ -54,7 +54,7 @@ export const Default = {
       constants: {
         type: 'slot',
         name: 'default',
-        value: '<img class="aspect-video object-cover" src="./placeholders/images/generic.jpg" />'
+        value: '<img class="aspect-video object-cover" src="./placeholders/images/union-investment.png" />'
       },
       args
     });

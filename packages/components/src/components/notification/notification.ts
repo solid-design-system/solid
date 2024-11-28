@@ -282,7 +282,10 @@ export default class SdNotification extends SolidElement {
                 style=${`animation-duration: ${this.duration}ms`}
                 class=${cx(`absolute w-0 h-[2px] bottom-0 bg-primary z-10 animate-grow`)}
               ></div>
-              <div part="duration-indicator__total" class="w-full h-[2px] bottom-0 absolute bg-neutral-400"></div>
+              <div
+                part="duration-indicator__total"
+                class="w-full h-[2px] bottom-0 absolute border border-neutral-400"
+              ></div>
             `
           : ''}
       </div>
