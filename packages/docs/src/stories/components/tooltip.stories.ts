@@ -184,3 +184,22 @@ export const Hoist = {
       <sd-tooltip content="Lorem ipsum" placement="bottom-start" size="lg" hoist></sd-tooltip>
     </div>`
 };
+
+// add a new "story" which shows tooltip being overwritten with the default button as a trigger and then showing how to connect button by aria-describedby="tooltip"
+
+/**
+ * Use the `anchor` slot to connect a button to the tooltip. Connect the button to the tooltip by setting the `aria-describedby` attribute to the tooltip's id.
+ */
+export const AnchorSlot = {
+  render: () =>
+    html`<sd-tooltip
+      class="template-position template-height"
+      content="Lorem ipsum"
+      placement="bottom-start"
+      size="lg"
+      trigger="click"
+      id="tooltip"
+    >
+      <sd-button variant="secondary" aria-describedby="tooltip">Click here</sd-button>
+    </sd-tooltip>`
+};

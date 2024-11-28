@@ -275,8 +275,8 @@ export default class SdTooltip extends SolidElement {
         auto-size="vertical"
         arrow-padding="0"
       >
-        <slot slot="anchor" aria-describedby="tooltip" class=${cx(this.size === 'lg' ? 'text-xl' : 'text-base')}>
-          <button class="flex sd-interactive rounded-full" ?disabled=${this.disabled}>
+        <slot slot="anchor" class=${cx(this.size === 'lg' ? 'text-xl' : 'text-base')}>
+          <button aria-describedby="tooltip" class="flex sd-interactive rounded-full" ?disabled=${this.disabled}>
             <sd-icon
               library="system"
               name="info-circle"
