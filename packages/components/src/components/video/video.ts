@@ -51,6 +51,10 @@ export default class SdVideo extends SolidElement {
     return null;
   }
 
+  private get video(): HTMLVideoElement | null {
+    return this.querySelector('video');
+  }
+
   /** Fade out poster after initial play. */
   private fadeoutPoster(): void {
     if (this.poster instanceof HTMLImageElement) {
@@ -65,11 +69,21 @@ export default class SdVideo extends SolidElement {
     }
   }
 
+  private setVideoInert(inert?: boolean): void {
+    if (inert) {
+      this.video?.setAttribute('inert', '');
+    } else {
+      this.video?.removeAttribute('inert');
+    }
+  }
+
   /** Utility function to group play behaviors. */
   private play() {
     this.emit('sd-play');
     this.playing = true;
+    this.video?.play();
     this.fadeoutPoster();
+    this.setVideoInert(false);
   }
 
   /** Restrict keydown control to enter and space bar to mimic the native video tag behavior. If a KeyboardEvent is used, refocus on the native video element to give the user seamless keyboard control. */
@@ -77,7 +91,7 @@ export default class SdVideo extends SolidElement {
     if (e instanceof KeyboardEvent && (e.key === 'Enter' || e.key === ' ')) {
       this.play();
       setTimeout(() => {
-        this.querySelector('video')?.focus();
+        this.video?.focus();
       });
     }
   }
@@ -95,6 +109,7 @@ export default class SdVideo extends SolidElement {
 
   connectedCallback(): void {
     super.connectedCallback();
+    this.setVideoInert(true);
     this.resizeObserver = new ResizeObserver(() => this.handleButtonResize());
 
     this.updateComplete.then(() => {
@@ -118,7 +133,7 @@ export default class SdVideo extends SolidElement {
           @keydown=${this.handleKeydown}
           class=${cx(
             this.playing && 'pointer-events-none',
-            'w-full h-full absolute top-0 left-0 z-30 text-primary hover:text-primary-500 sd-interactive sd-interactive--reset focus-visible:focus-outline'
+            'group w-full h-full absolute top-0 left-0 z-30 text-primary hover:text-primary-500 sd-interactive sd-interactive--reset focus-visible:focus-outline'
           )}
         >
           <div
@@ -126,7 +141,7 @@ export default class SdVideo extends SolidElement {
             class=${cx(
               this.playing ? 'opacity-0' : 'opacity-100',
               this.isBelowBreakpoint ? 'w-[48px] h-[48px]' : 'w-[96px] h-[96px]',
-              'absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 p-4 bg-white bg-opacity-75 rounded-full play-pause-transition'
+              'absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 p-4 bg-white bg-opacity-75 rounded-full play-pause-transition outline-2 outline-offset-2 group-focus-visible:outline'
             )}
           >
             <slot name="play-icon" part="play-icon" class=${cx(this.isBelowBreakpoint ? 'text-[2rem]' : 'text-[4rem]')}>

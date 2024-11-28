@@ -145,6 +145,12 @@ export const Variant = {
  * - Use the `default` slot to display main information and/or action elements below the headline.
  * - Use the `media` slot to add an image to the teaser.
  * - Use the `headline` slot to display titles. It should always contain a <h*> element.
+ *
+ * **Accessibility Hint:**
+ *
+ * - Please make sure to use semantically correct headline tags for the headline slot to provide accessible content.
+ * - The heading in a teaser should be the first item in the DOM. A heading introduces a new thematic region and separates the following content from the previous region.
+ * - If the image in a teaser doesn't contribute to the information delivered to the user, don't describe the image in the alt attribute and leave it empty.
  */
 export const DefaultMediaAndHeadlineSlot = {
   name: 'Default, Media and Headline Slot',
@@ -163,7 +169,7 @@ export const DefaultMediaAndHeadlineSlot = {
 };
 
 /**
- * Use the `meta` slot to show content above the headline.
+ * Use the `meta` slot to add additional content to the teaser.
  */
 
 export const MetaSlot = {
@@ -184,7 +190,7 @@ export const MetaSlot = {
 /**
  * Use the `expandable` slot to add content that only shows up on hover.
  *
- * **Accessibility Hint:** Expandable slot content cannot contain any action since it is not shown on mobile devices due to hover interaction.
+ * **Accessibility Hint:** Expandable teaser parts are only accessible to mouse users. The expandable content cannot be accessed via touch, keyboard, or screen readers. Therefore, please avoid adding important content or action elements in these areas.
  */
 
 export const ExpandableSlot = {

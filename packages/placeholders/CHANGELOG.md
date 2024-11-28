@@ -1,3 +1,10 @@
+# [@solid-design-system/placeholders-v2.0.1](https://github.com/solid-design-system/solid/compare/placeholders/2.0.0...placeholders/2.0.1) (2024-11-27)
+
+
+### Bug Fixes
+
+* improve sd-video a11y ([#1644](https://github.com/solid-design-system/solid/issues/1644)) ([6dec218](https://github.com/solid-design-system/solid/commit/6dec2189231b9d6538391b8e37b5228d4253d9ed)), closes [#1494](https://github.com/solid-design-system/solid/issues/1494) [#1529](https://github.com/solid-design-system/solid/issues/1529)
+
 # [@solid-design-system/placeholders-v2.0.0](https://github.com/solid-design-system/solid/compare/placeholders/1.8.0...placeholders/2.0.0) (2024-11-18)
 
 
