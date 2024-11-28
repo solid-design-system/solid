@@ -1,6 +1,6 @@
-import 'normalize.css';
 import '../../styles/src/solid-styles.css';
 import './preview.css';
+import 'normalize.css';
 import { registerIconLibrary } from '../../components/src/utilities/icon-library';
 import { storybookUtilities } from '../scripts/storybook/helper';
 import docsCodepenEnhancer from '../scripts/storybook/docs-codepen-enhancer';
@@ -68,8 +68,8 @@ export default preview;
 registerIconLibrary('global-resources', {
   resolver: name => {
     // split path and name
-    let path = name.split('/');
-    let iconName = path.pop();
+    const path = name.split('/');
+    const iconName = path.pop();
 
     // "system" and "system/colored" should both resolve to "system/colored", same for "content"
     if (path.length === 1) {
@@ -233,11 +233,11 @@ const mocks = {
 global.fetch = (input, init) => {
   const url = typeof input === 'string' ? input : input instanceof URL ? input.href : input.url;
 
-  return new Promise((resolve, reject) => {
+  return new Promise(resolve => {
     const mock = mocks[Object.keys(mocks).find(key => url.includes(key))];
     if (mock) {
       console.log(`ℹ️ Mocked fetch: ${url}`);
-      resolve(defaultResponse(mock));
+      return resolve(defaultResponse(mock));
     } else {
       // Fallback to original fetch method for all other requests
       return originalFetch(input, init).then(response => resolve(response));

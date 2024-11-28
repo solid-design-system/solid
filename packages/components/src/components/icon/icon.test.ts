@@ -22,7 +22,6 @@ describe('<sd-icon>', () => {
     // Here we are checking for the existence of the Solid Components global
     // to determine which mode we are in.
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     let registerIconLibraryForTest;
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any
     if ((window as any)['SolidComponents']) {

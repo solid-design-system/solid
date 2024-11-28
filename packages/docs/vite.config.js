@@ -15,7 +15,6 @@ export default () => {
   return {
     plugins: [
       VitePluginFetchIconsFromCdn(),
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-call
       VitePluginLitTailwind({
         include: [
           /src\/internal\/solid-element.ts/,
@@ -33,11 +32,9 @@ export default () => {
       VitePluginCustomElementsManifest({
         ...customElementConfig,
         files: ['../components/src/**/!(*.stories|*.spec|*.test|*.style).ts'],
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
-        plugins: customElementConfig.plugins.filter(
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
-          plugin => ['solid-custom-tags', 'remove-html-members'].includes(plugin.name)
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
+        plugins: customElementConfig.plugins.filter(plugin =>
+          ['solid-custom-tags', 'remove-html-members'].includes(plugin.name)
         )
       }),
       ViteReplaceCodePlugin({

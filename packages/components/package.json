@@ -124,8 +124,6 @@
     "postcss-import": "^16.1.0",
     "prettier": "^3.4.1",
     "recursive-copy": "^2.0.14",
-    "rollup-plugin-copy": "^3.5.0",
-    "rollup-plugin-summary": "^2.0.1",
     "semantic-release": "^19.0.5",
     "semantic-release-monorepo": "^7.0.8",
     "sinon": "^19.0.2",

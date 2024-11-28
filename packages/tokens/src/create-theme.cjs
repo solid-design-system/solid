@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return, no-shadow, no-prototype-builtins, no-unused-vars, no-bitwise */
 const tokens = require('./tokens.json');
 
 const hexToRgb = hex => {
@@ -336,7 +337,7 @@ const getAspectRatios = () => {
   return result;
 };
 
-let fillColors = getColors('icon-fill', 'fill-color');
+const fillColors = getColors('icon-fill', 'fill-color');
 fillColors['accent']['700'] =
   'rgb(var(--sd-color-accent-700, 33 87 37) / <alpha-value>) /* Used for pressed interaction */';
 
