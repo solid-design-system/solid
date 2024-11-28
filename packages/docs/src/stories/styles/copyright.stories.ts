@@ -1,5 +1,5 @@
 import '../../../../components/src/solid-components';
-import { html } from 'lit-html';
+import { html, render } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
 const { argTypes, parameters } = storybookDefaults('sd-copyright');
@@ -57,31 +57,54 @@ export const Default = {
 };
 
 /**
- * Use the `&--orientation-*` classes for alternative appearances:
- * - `horizontal` is the default copyright orientation
- * - `vertical`: use the class `sd-copyright--orientation-vertical`
+ * Use the `sd-copyright--color-black` for alternative appearances.
  */
-
 export const Variants = {
   render: () =>
-    html`<div class="grid grid-cols-2 gap-4">
-      <div class="sd-copyright max-w-xl" style="--copyright: '© 2024 Solid Design System';">
-        <img
-          src="./placeholders/images/generic.jpg"
-          alt="A generic placeholder jpg"
-          class="aspect-video object-cover"
-        />
-      </div>
+    html` <div
+      class="sd-copyright sd-copyright--color-black max-w-xl"
+      style="--copyright: '© 2024 Solid Design System';"
+    >
+      <img src="./placeholders/images/generic.jpg" alt="A generic placeholder jpg" class="aspect-video object-cover" />
+    </div>`
+};
 
-      <div
-        class="sd-copyright sd-copyright--orientation-vertical max-w-xl"
-        style="--copyright: '© 2024 Solid Design System';"
-      >
-        <img
-          src="./placeholders/images/generic.jpg"
-          alt="A generic placeholder jpg"
-          class="aspect-video object-cover"
-        />
-      </div>
+/**
+ * Use the `sd-copyright--color-shadow` class to add a shadow to the text.
+ *
+ * **Accessibility Hint:** Use when copyright is displayed on an image.
+ */
+export const Shadow = {
+  render: () =>
+    html` <div class="sd-copyright sd-copyright--shadow max-w-xl" style="--copyright: '© 2024 Solid Design System';">
+      <img src="./placeholders/images/generic.jpg" alt="A generic placeholder jpg" class="aspect-video object-cover" />
+    </div>`
+};
+
+/**
+ * Use the `sd-copyright--orientation-vertical` class to set the orientation to vertical.
+ */
+export const Orientation = {
+  render: () =>
+    html` <div
+      class="sd-copyright sd-copyright--orientation-vertical max-w-xl"
+      style="--copyright: '© 2024 Solid Design System';"
+    >
+      <img src="./placeholders/images/generic.jpg" alt="A generic placeholder jpg" class="aspect-video object-cover" />
+    </div>`
+};
+
+/**
+ * Use the `sd-copyright--position-top` class to set the copyright position.
+ *
+ * **Accessibility Hint:** Use when copyright is displayed in a video.
+ */
+export const Position = {
+  render: () =>
+    html` <div
+      class="sd-copyright sd-copyright--position-top max-w-xl"
+      style="--copyright: '© 2024 Solid Design System';"
+    >
+      <img src="./placeholders/images/generic.jpg" alt="A generic placeholder jpg" class="aspect-video object-cover" />
     </div>`
 };

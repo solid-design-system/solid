@@ -7,9 +7,23 @@ export default {
   since: '2.5.0',
   attributes: [
     {
+      name: 'sd-copyright--color-...',
+      options: ['black'],
+      description: 'The copyrights text color.'
+    },
+    {
+      name: 'sd-copyright--shadow',
+      description: 'Adds a shadow to the copyrights.'
+    },
+    {
       name: 'sd-copyright--orientation-...',
       options: ['vertical'],
       description: 'The copyrights orientation.'
+    },
+    {
+      name: 'sd-copyright--position-...',
+      options: ['top'],
+      description: 'The copyrights position.'
     }
   ]
 } satisfies Style;

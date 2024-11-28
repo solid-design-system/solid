@@ -4,7 +4,6 @@
   &::after {
     @apply block absolute pb-2 pl-4 bottom-0 left-0 text-white text-sm w-full;
     content: var(--copyright);
-    text-shadow: 0 1px 3px #515151bf;
   }
 
   &--orientation {
@@ -14,6 +13,29 @@
         writing-mode: vertical-rl;
         text-orientation: sideways-right;
         transform: rotate(180deg);
+      }
+    }
+  }
+
+  &--color {
+    &-black {
+      &::after {
+        @apply text-black;
+      }
+    }
+  }
+
+  &--shadow {
+    &::after {
+      @apply text-white;
+      text-shadow: 0.5px 0.5px 1.5px #515151;
+    }
+  }
+
+  &--position {
+    &-top {
+      &::after {
+        @apply block absolute pt-2 pr-4 top-0 right-0 w-full;
       }
     }
   }
