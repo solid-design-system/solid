@@ -983,6 +983,10 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 ? html`<div part="tags" class="flex-grow flex flex-wrap items-center gap-1">${this.tags}</div>`
                 : ''}
 
+              <div aria-live="polite" id="control-value" class="absolute top-0 left-0 opacity-0 -z-10">
+                ${this.selectedOptions.map(option => option?.getTextLabel()).join(', ')}
+              </div>
+
               <input
                 class=${cx('value-input absolute top-0 left-0 w-full h-full opacity-0 -z-10', cursorStyles)}
                 type="text"
@@ -990,6 +994,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 ?required=${this.required}
                 .value=${Array.isArray(this.value) ? this.value.join(', ') : this.value}
                 tabindex="-1"
+                aria-controls="control-value"
                 aria-hidden="true"
                 @focus=${() => this.focus()}
                 @invalid=${this.handleInvalid}

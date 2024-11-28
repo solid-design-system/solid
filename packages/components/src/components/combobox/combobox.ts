@@ -1270,8 +1270,8 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                 ?disabled=${this.disabled}
                 ?required=${this.required}
                 .value=${Array.isArray(this.value) ? this.value.join(', ') : this.value}
-                aria-controls="control-value"
                 tabindex="-1"
+                aria-controls="control-value"
                 aria-hidden="true"
                 @focus=${() => this.focus()}
                 @invalid=${this.handleInvalid}
