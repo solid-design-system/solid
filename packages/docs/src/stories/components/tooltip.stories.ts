@@ -192,8 +192,8 @@ export const Hoist = {
  */
 export const AnchorSlot = {
   render: () =>
-    html`<sd-tooltip
-      class="template-position template-height"
+    html`<div class="flex items-center h-[3em]"></div>
+    <sd-tooltip
       content="Lorem ipsum"
       placement="bottom-start"
       size="lg"
@@ -201,5 +201,6 @@ export const AnchorSlot = {
       id="tooltip"
     >
       <sd-button variant="secondary" aria-describedby="tooltip">Click here</sd-button>
-    </sd-tooltip>`
+      </sd-tooltip>
+    </div>`
 };
