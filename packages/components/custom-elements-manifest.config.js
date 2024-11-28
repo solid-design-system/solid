@@ -1,6 +1,5 @@
 import { customElementJetBrainsPlugin } from 'custom-element-jet-brains-integration';
 import { customElementVsCodePlugin } from 'custom-element-vs-code-integration';
-import { customElementVuejsPlugin } from 'custom-element-vuejs-integration';
 import { parse } from 'comment-parser';
 import fs from 'fs';
 
@@ -180,12 +179,6 @@ export default {
           url: `https://solid-design-system.fe.union-investment.de/docs/?path=/docs/components-${tag}--docs`
         };
       }
-    }),
-
-    customElementVuejsPlugin({
-      outdir: './dist/types/vue',
-      fileName: 'index.d.ts',
-      componentTypePath: (_, tag) => `../../components/${tag.replace('sd-', '')}/${tag.replace('sd-', '')}.js`
     })
   ]
 };
