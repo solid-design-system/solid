@@ -1,3 +1,4 @@
+import '../../../dist/solid-components';
 import { aTimeout, expect, fixture, html, oneEvent, waitUntil } from '@open-wc/testing';
 import { clickOnElement } from '../../internal/test';
 import { sendKeys } from '@web/test-runner-commands';

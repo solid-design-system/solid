@@ -1,5 +1,3 @@
-/* eslint-disable max-len */
-
 export class Wave {
   constructor(config: {
     phase: number;

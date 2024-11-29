@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import { StoryContext } from '@storybook/web-components';
+import type { StoryContext } from '@storybook/web-components';
 
 export default function docsCodepenEnhancer(code: string, storyContext: StoryContext) {
   // We hijack the formatter to keep track of every story's code change
@@ -61,8 +61,8 @@ export default function docsCodepenEnhancer(code: string, storyContext: StoryCon
         // Docs: https://blog.codepen.io/documentation/prefill/
         const data = {
           css: `/* See https://solid-design-system.fe.union-investment.de/${packageVersions['@solid-design-system/components']}/storybook/?path=/docs/docs-general-installation--docs */
-@import url("https://solid-design-system.fe.union-investment.de/${packageVersions['@solid-design-system/components']}/styles/solid-styles.css");
-
+@import url("https://solid-design-system.fe.union-investment.de/${packageVersions['@solid-design-system/components']}/cdn/solid-components.css");
+@import url("https://solid-design-system.fe.union-investment.de/${packageVersions['@solid-design-system/styles']}/cdn/solid-styles.css");
 
 /* See https://solid-design-system.fe.union-investment.de/${packageVersions['@solid-design-system/components']}/storybook/?path=/docs/docs-general-prerequisites--docs */
 body {
@@ -138,7 +138,7 @@ body {
 import "https://solid-design-system.fe.union-investment.de/${packageVersions['@solid-design-system/components']}/components/umd/solid-components.js";
 
 /* Example how to use modules from bundle */
-const { registerIconLibrary } = window['Solid Components'];`,
+const { registerIconLibrary } = window['SolidComponents'];`,
           js_external: '',
           js_module: true,
           js_pre_processor: 'none',

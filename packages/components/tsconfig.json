@@ -24,18 +24,18 @@
     "forceConsistentCasingInFileNames": true,
     "useUnknownInCatchVariables": true,
     "baseUrl": ".",
-    "types": ["mocha", "user-agent-data-types", "vite/client"],
+    "types": ["mocha", "user-agent-data-types"],
     "resolveJsonModule": true,
     "plugins": [
-    {
-      "name": "ts-lit-plugin",
-      "strict": true,
-      "rules": {
-        "no-invalid-css": "off"
+      {
+        "name": "ts-lit-plugin",
+        "strict": true,
+        "rules": {
+          "no-invalid-css": "off"
+        }
       }
-    }
-  ]
+    ]
   },
   "include": ["src/**/*", "vite.config.*ts"],
-  "exclude": ["src/_components/**", "custom-elements-manifest.config.ts"]
+  "exclude": ["src/_components/**", "custom-elements-manifest.config.js"]
 }

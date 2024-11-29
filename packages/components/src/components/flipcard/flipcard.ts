@@ -1,7 +1,6 @@
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { property, query } from 'lit/decorators.js';
-import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
@@ -57,7 +56,7 @@ export default class SdFlipcard extends SolidElement {
     | 'gradient-light-top'
     | 'gradient-light-bottom'
     | 'gradient-dark-top'
-    | 'gradient-dark-bottom' = 'empty';
+    | 'gradient-dark-bottom' = 'primary';
 
   /** Determines the variant of the back face of the flipcard. */
   @property({ type: String, reflect: true, attribute: 'back-variant' }) backVariant:
@@ -67,7 +66,7 @@ export default class SdFlipcard extends SolidElement {
     | 'gradient-light-top'
     | 'gradient-light-bottom'
     | 'gradient-dark-top'
-    | 'gradient-dark-bottom' = 'empty';
+    | 'gradient-dark-bottom' = 'primary';
 
   connectedCallback() {
     super.connectedCallback();
@@ -268,11 +267,10 @@ export default class SdFlipcard extends SolidElement {
   }
 
   /**
-   * Inherits Tailwindclasses and includes additional styling.
+   * Inherits global stylesheet including TailwindCSS
    */
   static styles = [
-    componentStyles,
-    SolidElement.styles,
+    ...SolidElement.styles,
     css`
       :host {
         @apply block aspect-3/4;

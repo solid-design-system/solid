@@ -8,7 +8,6 @@ packages/components/src/_components
 packages/tokens/src/tokens.json
 **/node_modules
 **/package-lock.json
-**/tsconfig.json
 **/pnpm-lock.yaml
 **/*hangelog.md*
 **/tokens.json

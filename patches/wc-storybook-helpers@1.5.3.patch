@@ -1,8 +1,28 @@
 diff --git a/dist/cem-utilities.js b/dist/cem-utilities.js
-index 2cf57666c31e7b572cbd10a6bc10f334b0376429..e91216c808b27f0e41497e550df0c57b413f5d20 100644
+index 2cf57666c31e7b572cbd10a6bc10f334b0376429..24c2df0feea5ca8a6a3a0cc9ddac3df435f1fdc0 100644
 --- a/dist/cem-utilities.js
 +++ b/dist/cem-utilities.js
-@@ -148,6 +148,8 @@ export function getCssParts(component, enabled = true) {
+@@ -13,7 +13,9 @@ export function getAttributesAndProperties(component, enabled = true) {
+             return;
+         }
+         const attribute = component.attributes?.find((x) => member.name === x.fieldName);
+-        const propName = member.name;
++      const propName = member.attribute
++        ? `${member.attribute}-attr`
++        : `${member.name}-prop`;
+         properties[propName] = {
+             name: propName,
+             table: {
+@@ -39,7 +41,7 @@ export function getAttributesAndProperties(component, enabled = true) {
+                 type: getControl(propType, attribute !== undefined),
+             } : false,
+             table: {
+-                category: attribute ? "attributes" : "properties",
++              category: attribute && member.attribute ? "attributes" : "properties",
+                 defaultValue: {
+                     summary: defaultValue,
+                 },
+@@ -148,6 +150,8 @@ export function getCssParts(component, enabled = true) {
          parts[`${part.name}-part`] = {
              name: part.name,
              description: getDescription(part.description, enabled ? `${part.name}-part` : ""),
@@ -11,7 +31,7 @@ index 2cf57666c31e7b572cbd10a6bc10f334b0376429..e91216c808b27f0e41497e550df0c57b
              control: enabled ? "text" : false,
              table: {
                  category: "css shadow parts",
-@@ -167,8 +169,12 @@ export function getSlots(component, enabled = true) {
+@@ -167,8 +171,12 @@ export function getSlots(component, enabled = true) {
          };
          const slotName = slot.name || "default";
          slots[`${slotName}-slot`] = {
@@ -25,7 +45,7 @@ index 2cf57666c31e7b572cbd10a6bc10f334b0376429..e91216c808b27f0e41497e550df0c57b
              control: enabled ? "text" : false,
              table: {
                  category: "slots",
-@@ -217,14 +223,18 @@ function getControl(type, isAttribute = false) {
+@@ -217,14 +225,18 @@ function getControl(type, isAttribute = false) {
      if (hasType(options, "boolean")) {
          return "boolean";
      }
@@ -181,6 +201,35 @@ index 31b37aeec6a863600bba6d29009bb429f8828a71..36fc8e252ecf403c08ff7630e5f5ed1a
  /**
   * Watches for changes to the component's attributes and properties and updates Storybook controls
   * @param component component object from the Custom Elements Manifest
+diff --git a/dist/storybook-utils.d.ts b/dist/storybook-utils.d.ts
+index 72884fe100fabb5d4b472ff8cd2ef47c998e9e4f..5729581b16e9b7a7c81acf2bf76a5237c30f8945 100644
+--- a/dist/storybook-utils.d.ts
++++ b/dist/storybook-utils.d.ts
+@@ -1,5 +1,6 @@
+ import { TemplateResult } from "lit";
+ import type { ArgTypes, Options } from "./storybook";
++import { CustomElementsManifest, Declaration } from "./cem-schema";
+ /**
+  * sets the global config for the Storybook helpers
+  * @param options
+@@ -18,4 +19,5 @@ export declare function getWcStorybookHelpers(tagName: string): {
+     events: string[];
+     styleTemplate: (args?: any) => "" | TemplateResult<1 | 2>;
+     template: (args?: any, slot?: TemplateResult) => TemplateResult<1 | 2>;
++    manifest: Declaration;
+ };
+diff --git a/dist/storybook-utils.js b/dist/storybook-utils.js
+index 3584527471f460215e1f9de9888df2fcf6be46cd..b43f67eb403ed6bf9c56e30a00f18dd90bc3db7a 100644
+--- a/dist/storybook-utils.js
++++ b/dist/storybook-utils.js
+@@ -35,6 +35,7 @@ export function getWcStorybookHelpers(tagName) {
+         events: eventNames,
+         styleTemplate: (args) => getStyleTemplate(component, args),
+         template: (args, slot) => getTemplate(component, args, slot, argTypes),
++        manifest: component,
+     };
+ }
+ /**
 diff --git a/package.json b/package.json
 index 889caf5944b206c443dfa104043d6a5ed83fd365..6a28f77ba8df1423736c8707020131425e1f4d2d 100644
 --- a/package.json

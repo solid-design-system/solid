@@ -1,4 +1,4 @@
-// eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment
+import '../../../dist/solid-components';
 import { expect, fixture, html, oneEvent, waitUntil } from '@open-wc/testing';
 import { getFormControls, serialize } from '../../utilities/form.js';
 import { sendKeys } from '@web/test-runner-commands'; // must come from the same module
@@ -610,10 +610,10 @@ describe('<sd-input>', () => {
         </div>
       `);
       const form = el.querySelector<HTMLFormElement>('form')!;
-      const formControls = getFormControls(form); // eslint-disable-line
+      const formControls = getFormControls(form);
 
-      expect(formControls.length).to.equal(10); // eslint-disable-line
-      expect(formControls.map((fc: HTMLInputElement) => fc.value).join('')).to.equal('12345678910'); // eslint-disable-line
+      expect(formControls.length).to.equal(10);
+      expect(formControls.map((fc: HTMLInputElement) => fc.value).join('')).to.equal('12345678910');
     });
   });
 });

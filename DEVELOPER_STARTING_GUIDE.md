@@ -128,7 +128,7 @@ If you are working on a style, follow the steps below:
 1. Create new styles in the `packages/components/src/styles` folder.
 2. Set up a Storybook story alongside the styles, using a default story. This allows you to preview and iterate on the styles as you work.
 3. **Each style should have an accompanying declaration file.** This is for documenting the style and its attributes. Follow the structure of our existing styles for guidance (eg: [sd-meta](https://github.com/solid-design-system/solid/blob/main/packages/components/src/styles/meta/meta.declaration.ts)).
-4. Import your styles into the `packages/components/src/solid-styles.css` file. This step is crucial for enabling other Solid components to access the new styles.
+4. Import your styles into the `packages/components/src/solid-components.css` file. This step is crucial for enabling other Solid components to access the new styles.
 
 _ You can always refer to the existing components and styles to familiarize yourself with the workflow!_
 
