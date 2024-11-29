@@ -793,9 +793,7 @@ export const sortableTable = {
     const sortTableByColumn = (table: HTMLTableElement | null, column: number, descending: boolean) => {
       if (table) {
         const dirModifier = descending ? 1 : -1;
-        console.log(table);
         const tableBody = table.tBodies[0];
-        console.log(tableBody);
         const rows = Array.from(tableBody.querySelectorAll('tr'));
 
         // Sort each row
