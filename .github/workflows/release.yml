@@ -39,12 +39,6 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_RELEASE_TOKEN_MARIO_HAMANN }}
         run: cd packages/placeholders && pnpm release
 
-      - name: (components) Run Semantic Release
-        env:
-          GH_TOKEN: ${{ secrets.PAT_RELEASE_KARL }}
-          NPM_TOKEN: ${{ secrets.NPM_RELEASE_TOKEN_MARIO_HAMANN }}
-        run: cd packages/components && pnpm release
-
       - name: (theming) Run Semantic Release
         env:
           GH_TOKEN: ${{ secrets.PAT_RELEASE_KARL }}
@@ -55,3 +49,10 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.PAT_RELEASE_KARL }}
         run: cd packages/docs && pnpm release
+
+      # Components release should always be at the end since the Azure pipeline is depending on it.
+      - name: (components) Run Semantic Release
+        env:
+          GH_TOKEN: ${{ secrets.PAT_RELEASE_KARL }}
+          NPM_TOKEN: ${{ secrets.NPM_RELEASE_TOKEN_MARIO_HAMANN }}
+        run: cd packages/components && pnpm release

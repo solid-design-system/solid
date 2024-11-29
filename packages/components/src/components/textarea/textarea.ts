@@ -404,7 +404,8 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
               spellcheck=${ifDefined(this.spellcheck)}
               enterkeyhint=${ifDefined(this.enterkeyhint)}
               inputmode=${ifDefined(this.inputmode)}
-              aria-describedby="help-text"
+              aria-describedby="help-text invalid-message"
+              aria-invalid=${this.showInvalidStyle}
               @change=${this.handleChange}
               @input=${this.handleInput}
               @invalid=${this.handleInvalid}

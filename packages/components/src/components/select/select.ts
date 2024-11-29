@@ -826,7 +826,6 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
           'relative text-left',
           cursorStyles,
           this.size === 'sm' ? 'text-sm' : 'text-base',
-
           this.open && 'z-50'
         )}
       >
@@ -908,7 +907,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 form=${this.form}
                 part="display-input"
                 class=${cx(
-                  'appearance-none outline-none flex-grow bg-transparent w-full',
+                  'appearance-none outline-none flex-grow bg-transparent w-full placeholder-neutral-700',
                   cursorStyles,
                   this.multiple && this.useTags && this.value.length > 0 ? 'hidden' : ''
                 )}
@@ -925,7 +924,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 aria-haspopup="listbox"
                 aria-labelledby="label"
                 aria-disabled=${this.disabled ? 'true' : 'false'}
-                aria-describedby="help-text"
+                aria-describedby="help-text invalid-message"
                 role="combobox"
                 tabindex="0"
                 @focus=${this.handleFocus}

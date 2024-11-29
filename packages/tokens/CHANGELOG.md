@@ -1,3 +1,23 @@
+# [@solid-design-system/tokens-v5.0.0](https://github.com/solid-design-system/solid/compare/tokens/4.2.0...tokens/5.0.0) (2024-11-27)
+
+
+* chore!: remove unused color tokens and update descriptions (#1671) ([56354b6](https://github.com/solid-design-system/solid/commit/56354b69ed9a8f352d296b65b8c7bd6b6050e14b)), closes [#1671](https://github.com/solid-design-system/solid/issues/1671)
+
+
+### BREAKING CHANGES
+
+Remove unused color tokens:
+
+- icon-fill.neutral-500  border.neutral-200
+- background.neutral-400
+- gradient.vertical-transparent-primary-800|75
+- gradient.vertical-primary-800|75-transparent
+- gradient.vertical-transparent-white|75
+- gradient.vertical-white|75-transparent
+- gradient.vertical-transparent-primary
+
+Update color tokens descriptions
+
 # [@solid-design-system/tokens-v4.2.0](https://github.com/solid-design-system/solid/compare/tokens/4.1.0...tokens/4.2.0) (2024-11-12)
 
 
