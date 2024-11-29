@@ -6,8 +6,6 @@ import path from 'path';
 const GH_TOKEN = process.env.GH_TOKEN;
 const NPM_TOKEN = process.env.NPM_TOKEN;
 
-console.log(JSON.stringify({ GH_TOKEN, NPM_TOKEN }, null, 2));
-
 const octokit = new Octokit({ auth: GH_TOKEN });
 
 async function main() {
@@ -27,7 +25,7 @@ async function main() {
     }
 
     console.log('Applying Changesets...');
-    execSync('pnpm changeset version', { stdio: 'inherit' });
+    execSync(`GITHUB_TOKEN=${GH_TOKEN} pnpm changeset version`, { stdio: 'inherit' });
 
     console.log('Extracting updated package names and versions...');
     const updatedPackages = [];
@@ -75,7 +73,7 @@ async function main() {
 
     console.log('Publishing to NPM...');
     execSync(`pnpm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"`, { stdio: 'inherit' });
-    execSync('pnpm changeset publish -r', { stdio: 'inherit' });
+    execSync(`NPM_TOKEN=${NPM_TOKEN} pnpm changeset publish -r`, { stdio: 'inherit' });
 
     console.log('Pushing tags...');
     execSync('git push --tags', { stdio: 'inherit' });
