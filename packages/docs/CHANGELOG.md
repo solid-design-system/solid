@@ -1,3 +1,10 @@
+# [@solid-design-system/docs-v1.0.7](https://github.com/solid-design-system/solid/compare/docs/1.0.6...docs/1.0.7) (2024-11-29)
+
+
+### Bug Fixes
+
+* improve table template a11y ([#1664](https://github.com/solid-design-system/solid/issues/1664)) ([83fa79b](https://github.com/solid-design-system/solid/commit/83fa79b2c31f670da37566dd6a27e7d9c6f9681a)), closes [#1534](https://github.com/solid-design-system/solid/issues/1534)
+
 # [@solid-design-system/docs-v1.0.6](https://github.com/solid-design-system/solid/compare/docs/1.0.5...docs/1.0.6) (2024-11-27)
 
 
