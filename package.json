@@ -16,7 +16,6 @@
     "format.verify": "prettier --check --log-level warn . && echo '✅ Formatting verified'",
     "format.fix": "prettier --write --log-level warn .",
     "changeset": "changeset",
-    "status": "changeset status --verbose",
     "release": "node ./scripts/release.mjs"
   },
   "lib": "es2021",
