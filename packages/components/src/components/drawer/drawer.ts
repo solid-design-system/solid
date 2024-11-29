@@ -70,6 +70,7 @@ export default class SdDrawer extends SolidElement {
   @query('[part=base]') drawer: HTMLElement;
   @query('[part=panel]') panel: HTMLElement;
   @query('[part=overlay]') overlay: HTMLElement;
+  @query('[part=close-button]') closeButton: HTMLElement;
 
   /**
    * Indicates whether or not the drawer is open. You can toggle this attribute to show and hide the drawer, or you can
@@ -200,10 +201,9 @@ export default class SdDrawer extends SolidElement {
         animateTo(this.overlay, overlayAnimation.keyframes, overlayAnimation.options)
       ]);
 
-      //Add a11y attributes to close button
-      const closeButton = this.shadowRoot?.getElementById('close-button')?.shadowRoot?.querySelector('button');
-      closeButton?.setAttribute('aria-expanded', 'true');
-      closeButton?.setAttribute('aria-controls', 'drawer');
+      //Update ARIA attributes to close button
+      this.closeButton.shadowRoot?.querySelector('[part="base"]')?.setAttribute('aria-controls', 'drawer');
+      this.closeButton.shadowRoot?.querySelector('[part="base"]')?.setAttribute('aria-expanded', 'true');
 
       this.emit('sd-after-show');
     } else {
@@ -247,8 +247,7 @@ export default class SdDrawer extends SolidElement {
       }
 
       //Add a11y attributes to close button
-      const closeButton = this.shadowRoot?.getElementById('close-button')?.shadowRoot?.querySelector('button');
-      closeButton?.setAttribute('aria-expanded', 'false');
+      this.closeButton.shadowRoot?.querySelector('[part="base"]')?.setAttribute('aria-expanded', 'false');
 
       this.emit('sd-after-hide');
     }
@@ -318,7 +317,7 @@ export default class SdDrawer extends SolidElement {
           )}
           role="dialog"
           aria-modal="true"
-          aria-hidden=${!this.open}
+          aria-hidden=${this.open ? 'false' : 'true'}
           aria-label=${this.label}
           aria-labelledby=${ifDefined(!this.noHeader ? 'title' : undefined)}
           tabindex="0"
