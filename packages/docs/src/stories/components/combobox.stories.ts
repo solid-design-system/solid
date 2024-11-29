@@ -315,13 +315,9 @@ export const Icons = {
           color="currentColor"
         ></sd-icon>
         ${createColorOptionsHtml()}
-        <sd-icon
-          slot="right"
-          library="global-resources"
-          name="system/picture"
-          aria-hidden="true"
-          color="currentColor"
-        ></sd-icon>
+        <button slot="right" aria-label="Search">
+          <sd-icon library="system" name="magnifying-glass" aria-hidden="true" color="currentColor"></sd-icon>
+        </button>
       </sd-combobox>
       <br />
       <sd-combobox placeholder="Medium" size="md" clearable>
@@ -333,13 +329,9 @@ export const Icons = {
           color="currentColor"
         ></sd-icon>
         ${createColorOptionsHtml()}
-        <sd-icon
-          slot="right"
-          library="global-resources"
-          name="system/picture"
-          aria-hidden="true"
-          color="currentColor"
-        ></sd-icon>
+        <button slot="right" aria-label="Search">
+          <sd-icon library="system" name="magnifying-glass" aria-hidden="true" color="currentColor"></sd-icon>
+        </button>
       </sd-combobox>
       <br />
       <sd-combobox placeholder="Large" size="lg" clearable>
@@ -351,13 +343,9 @@ export const Icons = {
           color="currentColor"
         ></sd-icon>
         ${createColorOptionsHtml()}
-        <sd-icon
-          slot="right"
-          library="global-resources"
-          name="system/picture"
-          aria-hidden="true"
-          color="currentColor"
-        ></sd-icon>
+        <button slot="right" aria-label="Search">
+          <sd-icon library="system" name="magnifying-glass" aria-hidden="true" color="currentColor"></sd-icon>
+        </button>
       </sd-combobox>
     </div>
   `

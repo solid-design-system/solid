@@ -1287,13 +1287,6 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                     </button>
                   `
                 : ''}
-              ${slots['right']
-                ? html`<slot
-                    name="right"
-                    part="right"
-                    class="${cx('inline-flex', iconColor, iconMarginLeft, iconSize)}"
-                  ></slot>`
-                : ''}
               ${this.showInvalidStyle
                 ? html`
                     <sd-icon
@@ -1315,16 +1308,21 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                   `
                 : ''}
               <slot
-                name="expand-icon"
-                part="expand-icon"
+                name="right"
+                part="right"
                 class=${cx(
-                  'inline-flex ml-2 transition-all',
-                  this.open ? 'rotate-180' : 'rotate-0',
+                  'inline-flex ml-2 leading-[0]',
                   this.disabled ? 'text-neutral-500' : 'text-primary',
                   iconSize
                 )}
               >
-                <sd-icon name="chevron-down" part="chevron" library="system" color="currentColor"></sd-icon>
+                <sd-icon
+                  class=${cx('transition-all', this.open ? 'rotate-180' : 'rotate-0')}
+                  name="chevron-down"
+                  part="chevron"
+                  library="system"
+                  color="currentColor"
+                ></sd-icon>
               </slot>
             </div>
 
