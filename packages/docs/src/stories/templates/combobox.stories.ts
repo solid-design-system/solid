@@ -71,17 +71,17 @@ export const HighlightQuery = {
 };
 
 /**
- * Use <sd-option-group> to group <sd-option>s visually.
+ * Use <sd-optgroup> to group <sd-option>s visually.
  */
 export const GroupingQuery = {
   render: () => html`
     <div class="h-[260px] w-[400px]">
       <sd-combobox label="Group elements" value="g">
-        <sd-option-group label="Funds"> ${createFondsOptionsHtml()} </sd-option-group>
-        <sd-option-group label="Search Suggestions">
+        <sd-optgroup label="Funds"> ${createFondsOptionsHtml()} </sd-optgroup>
+        <sd-optgroup label="Search Suggestions">
           <sd-option value="uniabsoluterertrag">UniAbsoluterErtrag</sd-option>
           <sd-option value="uniasia">UniAsia</sd-option>
-        </sd-option-group>
+        </sd-optgroup>
       </sd-combobox>
     </div>
   `

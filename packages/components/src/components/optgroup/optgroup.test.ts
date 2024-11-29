@@ -1,41 +1,41 @@
 import { aTimeout, expect, fixture, html } from '@open-wc/testing';
 
+import type SdOptgroup from './optgroup';
 import type SdOption from '../option/option';
-import type SdOptionGroup from './option-group';
 
-const getSdOptions = (el: SdOptionGroup) => Array.from(el.querySelectorAll('sd-option'));
-const getEnabledOptions = (el: SdOptionGroup) => getSdOptions(el).filter((opt: SdOption) => !opt.disabled);
+const getSdOptions = (el: SdOptgroup) => Array.from(el.querySelectorAll('sd-option'));
+const getEnabledOptions = (el: SdOptgroup) => getSdOptions(el).filter((opt: SdOption) => !opt.disabled);
 
-const getDisabledOptions = (el: SdOptionGroup) => getSdOptions(el).filter((opt: SdOption) => opt.disabled);
+const getDisabledOptions = (el: SdOptgroup) => getSdOptions(el).filter((opt: SdOption) => opt.disabled);
 
-describe('<sd-option-group>', () => {
+describe('<sd-optgroup>', () => {
   it('passes accessability test', async () => {
-    const el = await fixture<SdOptionGroup>(html`
+    const el = await fixture<SdOptgroup>(html`
       <sd-select label="Select one">
-        <sd-option-group label="Options">
+        <sd-optgroup label="Options">
           <sd-option value="1">Option 1</sd-option>
           <sd-option value="2">Option 2</sd-option>
           <sd-option value="3">Option 3</sd-option>
           <sd-option value="4" disabled>Disabled</sd-option>
-        </sd-option-group>
+        </sd-optgroup>
       </sd-select>
     `);
     await expect(el).to.be.accessible();
   });
 
   it('default properties', async () => {
-    const el = await fixture<SdOptionGroup>(html`<sd-option-group></sd-option-group>`);
+    const el = await fixture<SdOptgroup>(html`<sd-optgroup></sd-optgroup>`);
 
     expect(el.disabled).to.be.false;
   });
 
   describe('when using the disabled attribute', () => {
-    it('changes all <sd-option /> tags disabled attributes to false when sd-option-groups disabled attribute is false', async () => {
-      const el = await fixture<SdOptionGroup>(html`
-        <sd-option-group>
+    it('changes all <sd-option /> tags disabled attributes to false when sd-optgroups disabled attribute is false', async () => {
+      const el = await fixture<SdOptgroup>(html`
+        <sd-optgroup>
           <sd-option value="1">Value 1</sd-option>
           <sd-option value="2" disabled>Value 2</sd-option>
-        </sd-option-group>
+        </sd-optgroup>
       `);
 
       // Make sure we have the correct baseline of elements
@@ -44,12 +44,12 @@ describe('<sd-option-group>', () => {
       expect(getDisabledOptions(el)).to.have.length(0);
     });
 
-    it('changes all <sd-option /> tags disabled attributes to true when sd-option-groups disabled attribute is true', async () => {
-      const el = await fixture<SdOptionGroup>(html`
-        <sd-option-group disabled>
+    it('changes all <sd-option /> tags disabled attributes to true when sd-optgroups disabled attribute is true', async () => {
+      const el = await fixture<SdOptgroup>(html`
+        <sd-optgroup disabled>
           <sd-option value="1">Value 1</sd-option>
           <sd-option value="2" disabled>Value 2</sd-option>
-        </sd-option-group>
+        </sd-optgroup>
       `);
 
       // Make sure we have the correct baseline of elements
@@ -59,11 +59,11 @@ describe('<sd-option-group>', () => {
     });
 
     it('should set its childrens sd-option disabled property according to its own when the slot content changes', async () => {
-      const el = await fixture<SdOptionGroup>(html`
-        <sd-option-group>
+      const el = await fixture<SdOptgroup>(html`
+        <sd-optgroup>
           <sd-option value="1">Option 1</sd-option>
           <sd-option value="2" disabled>Option 2</sd-option>
-        </sd-option-group>
+        </sd-optgroup>
       `);
 
       // Make sure we have the correct baseline of elements

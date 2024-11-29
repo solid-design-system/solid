@@ -1,5 +1,5 @@
+import type SdOptGroup from '../optgroup/optgroup.js';
 import type SdOption from '../option/option.js';
-import type SdOptionGroup from '../option-group/option-group.js';
 
 /**
  * Get a list of all assigned elements for a given slot
@@ -21,12 +21,11 @@ export const getOptionOrNestedOptions = (item: HTMLElement): SdOption | SdOption
     : Array.from(item.querySelectorAll<SdOption>(':scope > sd-option'));
 
 /**
- * Check if an item is a sd-option-group
+ * Check if an item is a sd-optgroup
  * @param item The item to check for
- * @returns True if the item is a SdOptionGroup, false otherwise
+ * @returns True if the item is a SdOptgroup, false otherwise
  */
-export const isOptgroup = (item: HTMLElement): item is SdOptionGroup =>
-  item.tagName.toLocaleLowerCase() === 'sd-option-group';
+export const isOptgroup = (item: HTMLElement): item is SdOptGroup => item.tagName.toLocaleLowerCase() === 'sd-optgroup';
 
 /**
  * Get a list of only Option elements
@@ -38,7 +37,7 @@ export const getAllOptions = (items: HTMLElement[]) => items.map(getOptionOrNest
 /**
  * Get a list of only Optgroup elements
  * @param items List of items to check for
- * @returns New array of all found sd-option-group's
+ * @returns New array of all found sd-optgroup's
  */
 export const filterOnlyOptgroups = (items: HTMLElement[]) => items.filter(isOptgroup);
 

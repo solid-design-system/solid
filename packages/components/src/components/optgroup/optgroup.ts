@@ -12,8 +12,8 @@ import type { CSSResultGroup } from 'lit';
 import type SdOption from '../option/option';
 
 /**
- * @summary The <sd-option-group> element creates a grouping for <sd-option>s within a <sd-combobox>.
- * @documentation @documentation https://solid.union-investment.com/[storybook-link]/components-sd-option-group
+ * @summary The <sd-optgroup> element creates a grouping for <sd-option>s within a <sd-combobox>.
+ * @documentation @documentation https://solid.union-investment.com/[storybook-link]/components-sd-optgroup
  * @status experimental
  * @since 3.23.0
  *
@@ -30,8 +30,8 @@ import type SdOption from '../option/option';
  * @cssproperty --display-divider - Display property of the divider. Defaults to "block"
  */
 
-@customElement('sd-option-group')
-export default class SdOptionGroup extends SolidElement {
+@customElement('sd-optgroup')
+export default class SdOptgroup extends SolidElement {
   static dependencies = {
     'sd-divider': SdDivider
   };
@@ -110,6 +110,6 @@ export default class SdOptionGroup extends SolidElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'sd-option-group': SdOptionGroup;
+    'sd-optgroup': SdOptgroup;
   }
 }

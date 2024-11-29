@@ -7,15 +7,15 @@ import {
   storybookTemplate,
   storybookUtilities
 } from '../../../scripts/storybook/helper';
-const { argTypes, parameters } = storybookDefaults('sd-option-group');
-const { overrideArgs } = storybookHelpers('sd-option-group');
-const { generateTemplate } = storybookTemplate('sd-option-group');
+const { argTypes, parameters } = storybookDefaults('sd-optgroup');
+const { overrideArgs } = storybookHelpers('sd-optgroup');
+const { generateTemplate } = storybookTemplate('sd-optgroup');
 const { generateScreenshotStory } = storybookUtilities;
 
 export default {
-  title: 'Components/sd-option-group/Screenshots: sd-option-group',
+  title: 'Components/sd-optgroup/Screenshots: sd-optgroup',
   tags: ['!autodocs'],
-  component: 'sd-option-group',
+  component: 'sd-optgroup',
   args: overrideArgs([
     {
       name: 'default',
@@ -43,7 +43,7 @@ export default {
 };
 
 /**
- * Use <sd-option-group> to group listbox items visually.
+ * Use <sd-optgroup> to group listbox items visually.
  */
 
 export const Default = {
@@ -57,10 +57,10 @@ export const Default = {
     <div class="h-[260px] w-[400px]">
       <sd-combobox>
         ${generateTemplate({ args })}
-        <sd-option-group>
+        <sd-optgroup>
           <span slot="label">Section 2</span>
           <sd-option value="4">Option 4</sd-option>
-        </sd-option-group>
+        </sd-optgroup>
       </sd-combobox>
     </div>
   `
@@ -75,11 +75,11 @@ export const Disabled = {
   render: () => html`
     <div class="h-[260px] w-[400px]">
       <sd-combobox>
-        <sd-option-group label="Section 1" disabled>
+        <sd-optgroup label="Section 1" disabled>
           <sd-option value="1">Option</sd-option>
           <sd-option value="2">Option</sd-option>
           <sd-option value="3">Option</sd-option>
-        </sd-option-group>
+        </sd-optgroup>
       </sd-combobox>
     </div>
   `
@@ -160,11 +160,11 @@ export const Parts = {
       axis: {
         y: {
           type: 'template',
-          name: 'sd-option-group::part(...){outline: solid 2px red}',
+          name: 'sd-optgroup::part(...){outline: solid 2px red}',
           values: partsArr.map(part => {
             return {
               title: part,
-              value: `<style>#part-${part} sd-option-group::part(${part}){outline: solid 2px red; outline-offset: 2px} ::part(popup__content){overflow-y: visible} ::part(tag__removable-indicator){display: block} ::part(tag__content){display: block}</style><div id="part-${part}">%TEMPLATE%</div>`
+              value: `<style>#part-${part} sd-optgroup::part(${part}){outline: solid 2px red; outline-offset: 2px} ::part(popup__content){overflow-y: visible} ::part(tag__removable-indicator){display: block} ::part(tag__content){display: block}</style><div id="part-${part}">%TEMPLATE%</div>`
             };
           })
         }

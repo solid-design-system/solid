@@ -20,8 +20,8 @@ import SdPopup from '../popup/popup';
 import SdTag from '../tag/tag';
 import SolidElement from '../../internal/solid-element';
 import type { SolidFormControl } from '../../internal/solid-element';
+import type SdOptgroup from '../optgroup/optgroup.js';
 import type SdOption from '../option/option';
-import type SdOptionGroup from '../option-group/option-group.js';
 
 /**
  * @summary Comboboxes allow you to choose items from a menu of predefined options.
@@ -33,7 +33,7 @@ import type SdOptionGroup from '../option-group/option-group.js';
  * @dependency sd-popup
  *
  * @slot - The listbox options. Must be `<sd-option>` elements.
- *    You can use `<sd-option-group>`'s to group items visually.
+ *    You can use `<sd-optgroup>`'s to group items visually.
  * @slot label - The combobox's label. Alternatively, you can use the `label` attribute.
  * @slot help-text - Text that describes how to use the combobox.
  *    Alternatively, you can use the `help-text` attribute.
@@ -119,9 +119,9 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
 
   @state() selectedOptions: (SdOption | undefined)[] = [];
 
-  @state() filteredOptions: (SdOption | SdOptionGroup | undefined)[] = [];
+  @state() filteredOptions: (SdOption | SdOptgroup | undefined)[] = [];
 
-  @state() allOptions: (SdOption | SdOptionGroup | undefined)[] = [];
+  @state() allOptions: (SdOption | SdOptgroup | undefined)[] = [];
 
   @state() lastOption: SdOption | undefined;
 
@@ -303,8 +303,8 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       return html`${typeof optionHtml === 'string' ? unsafeHTML(optionHtml) : optionHtml}`;
     };
 
-    return this.filteredOptions.map((item: SdOption | SdOptionGroup) => {
-      if (item.tagName.toLowerCase() === 'sd-option-group') {
+    return this.filteredOptions.map((item: SdOption | SdOptgroup) => {
+      if (item.tagName.toLowerCase() === 'sd-optgroup') {
         Array.from(item.children).forEach((option: HTMLElement) => {
           if (option.tagName.toLowerCase() === 'sd-option') {
             renderOption(option as SdOption);
@@ -812,7 +812,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   }
 
   private createComboboxOptionsFromQuery(queryString: string) {
-    const optgroups: SdOptionGroup[] = [];
+    const optgroups: SdOptgroup[] = [];
     this.filteredOptions = this.getSlottedOptions()
       .filter(option => {
         return this.filter(option, queryString) || queryString === '';
@@ -823,13 +823,13 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
         clonedOption.current = clonedOption.value === this.lastOption?.value;
         clonedOption.selected = option.selected;
 
-        // Check if the option has a sd-option-group as parent
-        const hasOptgroup = option.parentElement?.tagName.toLowerCase() === 'sd-option-group';
+        // Check if the option has a sd-optgroup as parent
+        const hasOptgroup = option.parentElement?.tagName.toLowerCase() === 'sd-optgroup';
         if (!hasOptgroup) {
           return clonedOption;
         }
 
-        const optgroup = option.parentElement as SdOptionGroup;
+        const optgroup = option.parentElement as SdOptgroup;
         const optGroupLabel = optgroup.querySelector('[slot="label"]');
         const filteredOptgroup = optgroups.find(el => el.id === optgroup.id);
 
@@ -841,7 +841,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
           return undefined;
         }
 
-        const clonedOptgroup = optgroup.cloneNode() as SdOptionGroup;
+        const clonedOptgroup = optgroup.cloneNode() as SdOptgroup;
         clonedOptgroup.appendChild(clonedOption);
         if (optGroupLabel) clonedOptgroup.appendChild(optGroupLabel);
 
@@ -1049,7 +1049,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     return getAllOptions(getAssignedElementsForSlot(this.defaultSlot)).flat();
   }
 
-  private getSlottedOptGroups(): SdOptionGroup[] {
+  private getSlottedOptGroups(): SdOptgroup[] {
     return filterOnlyOptgroups(getAssignedElementsForSlot(this.defaultSlot));
   }
 
@@ -1399,7 +1399,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
         @apply bg-primary-100;
       }
 
-      #listbox-options sd-option-group:first-of-type {
+      #listbox-options sd-optgroup:first-of-type {
         --display-divider: none;
       }
 
