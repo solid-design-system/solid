@@ -54,6 +54,9 @@ async function main() {
 
     const packagesWithVersions = sortedPackages.map(pkg => `${pkg.name}: ${pkg.version}`).join(', ');
 
+    console.log('Build packages...');
+    execSync('pnpm run postversion -r --if-present');
+
     console.log('Committing changes...');
     execSync('git config user.name "github-actions[bot]"');
     execSync('git config user.email "github-actions[bot]@users.noreply.github.com"');
