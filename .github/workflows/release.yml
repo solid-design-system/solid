@@ -33,4 +33,4 @@ jobs:
         run: PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=true pnpm i
 
       - name: Release
-        run: pnpm release
+        run: GH_TOKEN=${{secrets.PAT_RELEASE_KARL}} NPM_TOKEN=${{secrets.NPM_RELEASE_TOKEN_MARIO_HAMANN}} pnpm release
