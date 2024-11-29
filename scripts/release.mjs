@@ -6,6 +6,8 @@ import path from 'path';
 const GH_TOKEN = process.env.GH_TOKEN;
 const NPM_TOKEN = process.env.NPM_TOKEN;
 
+console.log(JSON.stringify({ GH_TOKEN, NPM_TOKEN }, null, 2));
+
 const octokit = new Octokit({ auth: GH_TOKEN });
 
 async function main() {
