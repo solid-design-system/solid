@@ -586,7 +586,7 @@ describe('<sd-combobox>', () => {
       await clickOnElement(secondOption);
       await el.updateComplete;
 
-      await expect(el.value).to.deep.equal(['option-2', 'option-1', 'option-3']);
+      await expect(el.value).to.deep.equal(['option-1', 'option-3', 'option-2']);
     });
 
     it('should work with options that do not have a value', async () => {
@@ -607,7 +607,7 @@ describe('<sd-combobox>', () => {
       await clickOnElement(thirdOption);
       await el.updateComplete;
 
-      expect(el.value).to.deep.equal(['Option 3', 'Option 2']);
+      expect(el.value).to.deep.equal(['Option 2', 'Option 3']);
     });
   });
 
