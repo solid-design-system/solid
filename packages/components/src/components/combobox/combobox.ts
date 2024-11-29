@@ -907,8 +907,6 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
 
   @watch('value', { waitUntilFirstUpdate: true })
   handleValueChange() {
-    if (this.selectedOptions.length === (Array.isArray(this.value) ? this.value.length : 1)) return;
-    // set the display label here in case of the value was set via property only
     this.syncSelectedOptionsAndValue();
     if (this.multiple) {
       this.createComboboxOptionsFromQuery(this.displayInput.value);
