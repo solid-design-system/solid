@@ -754,6 +754,8 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
 
   @watch('value', { waitUntilFirstUpdate: true })
   handleValueChange() {
+    // run only if the value is updated from outside
+    if (this.selectedOptions.length === (Array.isArray(this.value) ? this.value.length : 1)) return;
     const allOptions = this.getAllOptions();
     const value = Array.isArray(this.value) ? this.value : [this.value];
 

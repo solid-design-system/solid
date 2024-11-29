@@ -495,7 +495,7 @@ describe('<sd-select>', () => {
       });
       await oneEvent(form, 'reset');
       await select.updateComplete;
-      expect(select.value).to.equal('option-1');
+      expect(select.value).to.deep.equal(['option-1']);
     });
   });
 
