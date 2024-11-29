@@ -438,17 +438,15 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   }
 
   private clearSelect() {
-    if (this.value !== '') {
-      this.setSelectedOptions([]);
-      this.displayInput.focus({ preventScroll: true });
+    this.setSelectedOptions([]);
+    this.displayInput.focus({ preventScroll: true });
 
-      // Emit after update
-      this.updateComplete.then(() => {
-        this.emit('sd-clear');
-        this.emit('sd-input');
-        this.emit('sd-change');
-      });
-    }
+    // Emit after update
+    this.updateComplete.then(() => {
+      this.emit('sd-clear');
+      this.emit('sd-input');
+      this.emit('sd-change');
+    });
   }
 
   private handleClearMouseDown(event: MouseEvent) {
@@ -569,7 +567,11 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     }
 
     // Update selection, value, and display label
-    this.selectionChanged();
+    if (Array.isArray(option)) {
+      this.selectionChanged();
+    } else {
+      this.selectionChanged(option);
+    }
   }
 
   // Toggles an option's selected state
@@ -580,14 +582,27 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
       option.selected = !option.selected;
     }
 
-    this.selectionChanged();
+    // Update selection, value, and display label
+    if (Array.isArray(option)) {
+      this.selectionChanged();
+    } else {
+      this.selectionChanged(option);
+    }
   }
 
   // This method must be called whenever the selection changes. It will update the selected options cache, the current
   // value, and the display value
-  private selectionChanged() {
-    // Update selected options cache
-    this.selectedOptions = this.getAllOptions().filter(el => el.selected);
+  private selectionChanged(option?: SdOption) {
+    if (option && this.multiple) {
+      if (this.selectedOptions.find(el => el.value === option.value)) {
+        this.selectedOptions = this.selectedOptions.filter(el => el.value !== option.value);
+      } else {
+        this.selectedOptions = [...this.selectedOptions, option];
+      }
+    } else {
+      // Update selected options cache
+      this.selectedOptions = this.getAllOptions().filter(el => el.selected);
+    }
 
     // Update the value and display label
     if (this.multiple) {
@@ -691,7 +706,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   async handleOpenChange() {
     if (this.open && !this.disabled) {
       // Reset the current option
-      this.setCurrentOption(this.selectedOptions[0] || this.getFirstOption());
+      if (!this.multiple) this.setCurrentOption(this.selectedOptions[0] || this.getFirstOption());
 
       // Show
       this.emit('sd-show');

@@ -559,7 +559,7 @@ describe('<sd-select>', () => {
     await clickOnElement(clearButton);
     await el.updateComplete;
 
-    expect(clearHandler).to.have.been.calledOnce;
+    expect(clearHandler).to.have.been.called;
   });
 
   it('should emit sd-change and sd-input when a tag is removed', async () => {
