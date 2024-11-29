@@ -9,6 +9,10 @@ on:
 permissions:
   contents: read # for checkout
 
+env:
+  GITHUB_TOKEN: ${{ secrets.PAT_RELEASE_KARL }}
+  NPM_TOKEN: ${{ secrets.NPM_RELEASE_TOKEN_MARIO_HAMANN }}
+
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -27,32 +31,5 @@ jobs:
       - name: Install dependencies
         run: PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=true pnpm i
 
-      - name: (tokens) Run Semantic Release
-        env:
-          GH_TOKEN: ${{ secrets.PAT_RELEASE_KARL }}
-          NPM_TOKEN: ${{ secrets.NPM_RELEASE_TOKEN_MARIO_HAMANN }}
-        run: cd packages/tokens && pnpm release
-
-      - name: (placeholders) Run Semantic Release
-        env:
-          GH_TOKEN: ${{ secrets.PAT_RELEASE_KARL }}
-          NPM_TOKEN: ${{ secrets.NPM_RELEASE_TOKEN_MARIO_HAMANN }}
-        run: cd packages/placeholders && pnpm release
-
-      - name: (theming) Run Semantic Release
-        env:
-          GH_TOKEN: ${{ secrets.PAT_RELEASE_KARL }}
-          NPM_TOKEN: ${{ secrets.NPM_RELEASE_TOKEN_MARIO_HAMANN }}
-        run: cd packages/theming && pnpm release
-
-      - name: (docs) Run Semantic Release
-        env:
-          GH_TOKEN: ${{ secrets.PAT_RELEASE_KARL }}
-        run: cd packages/docs && pnpm release
-
-      # Components release should always be at the end since the Azure pipeline is depending on it.
-      - name: (components) Run Semantic Release
-        env:
-          GH_TOKEN: ${{ secrets.PAT_RELEASE_KARL }}
-          NPM_TOKEN: ${{ secrets.NPM_RELEASE_TOKEN_MARIO_HAMANN }}
-        run: cd packages/components && pnpm release
+      - name: Release
+        run: pnpm release
