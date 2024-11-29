@@ -68,6 +68,9 @@ async function main() {
     execSync('git add .');
     execSync(`git commit -m "${commitMessage}" || echo "No changes to commit"`, { stdio: 'inherit' });
 
+    console.log('Set origin with PAT...');
+    execSync(`git remote set-url https://${GH_TOKEN}@github.com/solid-design-system/solid.git`);
+
     console.log('Pushing changes to main...');
     execSync('git push origin main', { stdio: 'inherit' });
 
