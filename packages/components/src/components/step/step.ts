@@ -148,9 +148,9 @@ export default class SdStep extends SolidElement {
             aria-describedby=${ifDefined('description')}
             class=${cx(
               'border rounded-full aspect-square circle flex items-center justify-center shrink-0 font-bold select-none',
-              !this.disabled
-                ? 'focus-visible:focus-outline group-hover:cursor-pointer '
-                : 'focus-visible:outline-none cursor-not-allowed',
+              this.disabled
+                ? 'focus-visible:outline-none cursor-not-allowed'
+                : 'focus-visible:focus-outline group-hover:cursor-pointer',
               this.notInteractive ? (this.size === 'lg' ? 'w-[72px]' : 'w-12') : this.size === 'lg' ? 'w-12' : 'w-8',
               this.disabled && 'border-neutral-400 text-neutral-500',
               !this.disabled &&
