@@ -8,7 +8,6 @@ import {
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import SdCombobox from '../../../../components/src/components/combobox/combobox';
-import { highlightOptionRenderer } from '../../../../components/src/components/combobox/option-renderer';
 
 const { argTypes, parameters } = storybookDefaults('sd-combobox');
 const { generateTemplate } = storybookTemplate('sd-combobox');
@@ -40,11 +39,14 @@ const colors = [
 
 const createColorOption = (color: string) => `<sd-option value="${color.replaceAll(' ', '_')}">${color}</sd-option>`;
 
-const createColorOptionHtml = (color: string) => unsafeHTML(createColorOption(color));
-
 const createColorOptions = () => colors.map(createColorOption);
 
 const createColorOptionsHtml = () => unsafeHTML(createColorOptions().join('\n'));
+
+/**
+ * **Related templates:**
+ * - [Combobox](?path=/docs/templates-combobox--docs)
+ */
 
 export default {
   title: 'Components/sd-combobox',
@@ -262,75 +264,6 @@ export const Focus = {
 };
 
 /**
- * A simple suggestions list shows the user a filtered list.
- */
-export const SimpleSuggests = {
-  render: () => html`
-    <div class="h-[260px] w-[400px]">
-      <sd-combobox label="Preferred Color" value="g"> ${createColorOptionsHtml()} </sd-combobox>
-    </div>
-  `
-};
-
-/**
- * The filtered options shown in the list can be customized by passing a function to the getOption property. Your function can return a string of HTML, a Lit Template, or an HTMLElement. The getOption() function will be called for each option. The first argument is an element and the second argument is the query string.
- * Remember that the options are rendered in a shadow root. To style them, you can use the style attribute in your template or you can add your own parts and target them with the ::part() selector.
- * Note: Be sure you trust the content you are outputting! Passing unsanitized user input to getOption() can result in XSS vulnerabilities.
- */
-export const HighlightQuery = {
-  render: () => {
-    const optionRenderer = highlightOptionRenderer;
-    return html`
-      <div class="h-[260px] w-[400px]">
-        <sd-combobox label="Preferred color" class="highlight-combobox" value="g">
-          ${createColorOptionsHtml()}
-        </sd-combobox>
-      </div>
-      <script type="module">
-        // the highlight option renderer utility function can be imported via:
-        // import { highlightOptionRenderer } from '@solid-design-system/components';
-
-        // preview-ignore:start
-        const highlightOptionRenderer = ${optionRenderer};
-        // preview-ignore:end
-
-        const comboboxes = document.querySelectorAll('.highlight-combobox');
-        comboboxes.forEach(combobox => {
-          combobox.getOption = highlightOptionRenderer;
-        });
-      </script>
-    `;
-  }
-};
-
-/**
- * Use <sd-option-group> to group <sd-option>s visually.
- */
-export const GroupingQuery = {
-  render: () => html`
-    <div class="h-[260px] w-[400px]">
-      <sd-combobox label="Group elements" value="g">
-        <sd-option-group label="B">
-          ${createColorOptionHtml('Black')} ${createColorOptionHtml('Blue')} ${createColorOptionHtml('Brown')}
-        </sd-option-group>
-        <sd-option-group label="G">
-          ${createColorOptionHtml('Green')} ${createColorOptionHtml('Grey')}
-        </sd-option-group>
-        <sd-option-group label="L"> ${createColorOptionHtml('Light Green')} </sd-option-group>
-        <sd-option-group label="M"> ${createColorOptionHtml('Magenta')} </sd-option-group>
-        <sd-option-group label="O"> ${createColorOptionHtml('Orange')} </sd-option-group>
-        <sd-option-group label="P">
-          ${createColorOptionHtml('Pink')} ${createColorOptionHtml('Purple')}
-        </sd-option-group>
-        <sd-option-group label="R"> ${createColorOptionHtml('Red')} </sd-option-group>
-        <sd-option-group label="W"> ${createColorOptionHtml('White')} </sd-option-group>
-        <sd-option-group label="Y"> ${createColorOptionHtml('Yellow')} </sd-option-group>
-      </sd-combobox>
-    </div>
-  `
-};
-
-/**
  * The height of the filtered options list can be customized by setting the max-height on the listbox part of the combobox.
  */
 export const SuggestionContainerHeight = {
@@ -365,6 +298,72 @@ export const Clearable = {
 };
 
 /**
+ *  Use the “left” and “right” slots to add system icons
+ *  Show search icon in left either left or right icon slot with the chevron icon (don’t show 2 icons on the right hand side)
+ *  Not showing the label here is only fine when showing search-icon.
+ *  __Accessibility hint__: Label can be omitted for search input fields if a button (e.g., aria-label="Search") with a search icon is present.
+ */
+export const Icons = {
+  render: () => html`
+    <div class="w-[400px] h-[400px]">
+      <sd-combobox placeholder="Small" size="sm" clearable>
+        <sd-icon
+          slot="left"
+          library="global-resources"
+          name="system/picture"
+          aria-hidden="true"
+          color="currentColor"
+        ></sd-icon>
+        ${createColorOptionsHtml()}
+        <sd-icon
+          slot="right"
+          library="global-resources"
+          name="system/picture"
+          aria-hidden="true"
+          color="currentColor"
+        ></sd-icon>
+      </sd-combobox>
+      <br />
+      <sd-combobox placeholder="Medium" size="md" clearable>
+        <sd-icon
+          slot="left"
+          library="global-resources"
+          name="system/picture"
+          aria-hidden="true"
+          color="currentColor"
+        ></sd-icon>
+        ${createColorOptionsHtml()}
+        <sd-icon
+          slot="right"
+          library="global-resources"
+          name="system/picture"
+          aria-hidden="true"
+          color="currentColor"
+        ></sd-icon>
+      </sd-combobox>
+      <br />
+      <sd-combobox placeholder="Large" size="lg" clearable>
+        <sd-icon
+          slot="left"
+          library="global-resources"
+          name="system/picture"
+          aria-hidden="true"
+          color="currentColor"
+        ></sd-icon>
+        ${createColorOptionsHtml()}
+        <sd-icon
+          slot="right"
+          library="global-resources"
+          name="system/picture"
+          aria-hidden="true"
+          color="currentColor"
+        ></sd-icon>
+      </sd-combobox>
+    </div>
+  `
+};
+
+/**
  * Use the `multiple` attribute to allow multiple options to be selected.
  * To inform your users about their selected options tags are displayed.
  * Use Backspace to remove the last selected option.
@@ -374,13 +373,19 @@ export const Clearable = {
 
 export const Multiple = {
   render: () => html`
-    <div class="w-[400px] h-[500px]">
-      <sd-combobox size="lg" label="Label" placement="bottom" multiple value="option-1 option-2">
-        <sd-option value="option-1" checkbox>Option 1</sd-option>
-        <sd-option value="option-2" checkbox>Option 2</sd-option>
-        <sd-option value="option-3" checkbox>Option 3</sd-option>
-        <sd-option value="option-4" checkbox>Option 4</sd-option>
-        <sd-option value="option-5" checkbox>Option 5</sd-option>
+    <div class="w-[700px] h-[500px]">
+      <sd-combobox
+        size="lg"
+        label="Funds name"
+        placement="bottom"
+        multiple
+        value="BBBank_Dynamik_Union BBBank_Kontinuität_Union"
+      >
+        <sd-option value="BBBank_Dynamik_Union" checkbox>BBBank Dynamik Union</sd-option>
+        <sd-option value="BBBank_Kontinuität_Union" checkbox>BBBank Kontinuität Union</sd-option>
+        <sd-option value="BBBank_Nachhaltigkeit_Union" checkbox>BBBank Nachhaltigkeit Union</sd-option>
+        <sd-option value="BBBank_Wachstum_Union" checkbox>BBBank Wachstum Union</sd-option>
+        <sd-option value="BBBank_Zukunft_Union" checkbox>BBBank Zukunft Union</sd-option>
       </sd-combobox>
     </div>
   `
@@ -395,21 +400,20 @@ export const Multiple = {
  */
 export const MaxOptionsVisible = {
   render: () => html`
-    <div class="w-[400px] h-[500px]">
+    <div class="w-[700px] h-[500px]">
       <sd-combobox
         size="lg"
-        label="Label"
+        label="Funds name"
         placement="bottom"
-        multiple=""
-        value="option-1 option-2 option-3"
-        useTags
+        multiple
+        value="BBBank_Dynamik_Union BBBank_Kontinuität_Union BBBank_Nachhaltigkeit_Union"
         max-options-visible="2"
       >
-        <sd-option value="option-1">Option 1</sd-option>
-        <sd-option value="option-2">Option 2</sd-option>
-        <sd-option value="option-3">Option 3</sd-option>
-        <sd-option value="option-4">Option 4</sd-option>
-        <sd-option value="option-5">Option 5</sd-option>
+        <sd-option value="BBBank_Dynamik_Union" checkbox>BBBank Dynamik Union</sd-option>
+        <sd-option value="BBBank_Kontinuität_Union" checkbox>BBBank Kontinuität Union</sd-option>
+        <sd-option value="BBBank_Nachhaltigkeit_Union" checkbox>BBBank Nachhaltigkeit Union</sd-option>
+        <sd-option value="BBBank_Wachstum_Union" checkbox>BBBank Wachstum Union</sd-option>
+        <sd-option value="BBBank_Zukunft_Union" checkbox>BBBank Zukunft Union</sd-option>
       </sd-combobox>
     </div>
   `
@@ -511,69 +515,6 @@ export const Invalid = {
         invalidSelect.setCustomValidity('Error text');
       }, 500);
     </script>
-  `
-};
-
-/**
- * Use the left and right slots to add text and icons.
- */
-export const Icons = {
-  render: () => html`
-    <div class="w-[400px] h-[400px]">
-      <sd-combobox placeholder="Small" size="sm" clearable>
-        <sd-icon
-          slot="left"
-          library="global-resources"
-          name="system/picture"
-          aria-hidden="true"
-          color="currentColor"
-        ></sd-icon>
-        ${createColorOptionsHtml()}
-        <sd-icon
-          slot="right"
-          library="global-resources"
-          name="system/picture"
-          aria-hidden="true"
-          color="currentColor"
-        ></sd-icon>
-      </sd-combobox>
-      <br />
-      <sd-combobox placeholder="Medium" size="md" clearable>
-        <sd-icon
-          slot="left"
-          library="global-resources"
-          name="system/picture"
-          aria-hidden="true"
-          color="currentColor"
-        ></sd-icon>
-        ${createColorOptionsHtml()}
-        <sd-icon
-          slot="right"
-          library="global-resources"
-          name="system/picture"
-          aria-hidden="true"
-          color="currentColor"
-        ></sd-icon>
-      </sd-combobox>
-      <br />
-      <sd-combobox placeholder="Large" size="lg" clearable>
-        <sd-icon
-          slot="left"
-          library="global-resources"
-          name="system/picture"
-          aria-hidden="true"
-          color="currentColor"
-        ></sd-icon>
-        ${createColorOptionsHtml()}
-        <sd-icon
-          slot="right"
-          library="global-resources"
-          name="system/picture"
-          aria-hidden="true"
-          color="currentColor"
-        ></sd-icon>
-      </sd-combobox>
-    </div>
   `
 };
 
