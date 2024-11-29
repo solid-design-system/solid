@@ -3,10 +3,10 @@ import { Octokit } from '@octokit/rest';
 import fs from 'fs';
 import path from 'path';
 
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
+const GH_TOKEN = process.env.GH_TOKEN;
 const NPM_TOKEN = process.env.NPM_TOKEN;
 
-const octokit = new Octokit({ auth: GITHUB_TOKEN });
+const octokit = new Octokit({ auth: GH_TOKEN });
 
 async function main() {
   try {
