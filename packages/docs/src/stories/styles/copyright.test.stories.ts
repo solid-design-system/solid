@@ -60,7 +60,7 @@ export const Variants = {
         x: { type: 'attribute', name: 'sd-copyright--color-...' }
       },
       options: {
-        templateContent: `<div class="%CLASSES% max-w-xl" style="--copyright: '${args['--copyright']}';">%SLOT%</div>`
+        templateContent: `<div class="%CLASSES% max-w-xl text-left" style="--copyright: '${args['--copyright']}';">%SLOT%</div>`
       },
       args
     });
@@ -76,7 +76,7 @@ export const Shadow = {
         x: { type: 'attribute', name: 'sd-copyright--shadow', values: [false, true] }
       },
       options: {
-        templateContent: `<div class="%CLASSES% max-w-xl" style="--copyright: '${args['--copyright']}';">%SLOT%</div>`
+        templateContent: `<div class="%CLASSES% max-w-xl text-left" style="--copyright: '${args['--copyright']}';">%SLOT%</div>`
       },
       args
     });
@@ -92,7 +92,7 @@ export const Orientation = {
         x: { type: 'attribute', name: 'sd-copyright--orientation-...' }
       },
       options: {
-        templateContent: `<div class="%CLASSES% max-w-xl" style="--copyright: '${args['--copyright']}';">%SLOT%</div>`
+        templateContent: `<div class="%CLASSES% max-w-xl text-left" style="--copyright: '${args['--copyright']}';">%SLOT%</div>`
       },
       args
     });
@@ -108,7 +108,7 @@ export const Position = {
         x: { type: 'attribute', name: 'sd-copyright--position-...' }
       },
       options: {
-        templateContent: `<div class="%CLASSES% max-w-xl" style="--copyright: '${args['--copyright']}';">%SLOT%</div>`
+        templateContent: `<div class="%CLASSES% max-w-xl text-left" style="--copyright: '${args['--copyright']}';">%SLOT%</div>`
       },
       args
     });
