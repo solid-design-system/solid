@@ -325,6 +325,7 @@ export default class SdTabGroup extends SolidElement {
                   part="scroll-button--start"
                   exportparts="base:scroll-button__base"
                   tabindex="-1"
+                  aria-hidden="true"
                   class=${cx(
                     'sd-interactive flex items-center justify-center absolute top-0 bottom-0 left-0 !outline-offset-0 border-b border-neutral-400 z-10',
                     this.localize.dir() === 'rtl' && 'left-auto right-0'
@@ -354,6 +355,7 @@ export default class SdTabGroup extends SolidElement {
                   part="scroll-button--end"
                   exportparts="base:scroll-button__base"
                   tabindex="-1"
+                  aria-hidden="true"
                   class=${cx(
                     'sd-interactive flex items-center justify-center absolute top-0 bottom-0 right-0 !outline-offset-0 border-b border-neutral-400 z-10',
                     this.localize.dir() === 'rtl' && 'right-auto left-0'
