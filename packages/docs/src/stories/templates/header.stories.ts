@@ -104,16 +104,18 @@ export const SampleA = {
       ]).then(() => {
         const drawerSampleA = document.getElementById('sample-a-drawer');
         const navigationItemSampleA = document.getElementById('open-menu-sample-a');
-        const buttonSampleA = navigationItemSampleA.shadowRoot.querySelector('button');
+        const buttonInNavigationItemSampleA = navigationItemSampleA.shadowRoot.querySelector('button');
 
-        buttonSampleA.setAttribute('aria-controls', 'sample-a-drawer');
+        buttonInNavigationItemSampleA.setAttribute('aria-controls', 'sample-a-drawer');
         //Add the necessary ARIA attributes to prevent only being added after action
-        buttonSampleA.setAttribute('aria-expanded', 'false');
-        drawerSampleA.addEventListener('sd-hide', () => buttonSampleA.setAttribute('aria-expanded', 'false'));
+        buttonInNavigationItemSampleA.setAttribute('aria-expanded', 'false');
+        drawerSampleA.addEventListener('sd-hide', () =>
+          buttonInNavigationItemSampleA.setAttribute('aria-expanded', 'false')
+        );
 
         navigationItemSampleA.addEventListener('click', () => {
           drawerSampleA.show();
-          buttonSampleA.setAttribute('aria-expanded', 'true');
+          buttonInNavigationItemSampleA.setAttribute('aria-expanded', 'true');
         });
       });
     </script>
@@ -216,16 +218,18 @@ export const SampleA02 = {
       ]).then(() => {
         const drawerSampleA02 = document.getElementById('sample-a02-drawer');
         const navigationItemSampleA02 = document.getElementById('open-menu-sample-a-02');
-        const buttonSampleA02 = navigationItemSampleA02.shadowRoot.querySelector('button');
+        const buttonInNavigationItemSampleA02 = navigationItemSampleA02.shadowRoot.querySelector('button');
 
-        buttonSampleA02.setAttribute('aria-controls', 'sample-a02-drawer');
+        buttonInNavigationItemSampleA02.setAttribute('aria-controls', 'sample-a02-drawer');
         //Add the necessary ARIA attributes to prevent only being added after action
-        buttonSampleA02.setAttribute('aria-expanded', 'false');
-        drawerSampleA02.addEventListener('sd-hide', () => buttonSampleA02.setAttribute('aria-expanded', 'false'));
+        buttonInNavigationItemSampleA02.setAttribute('aria-expanded', 'false');
+        drawerSampleA02.addEventListener('sd-hide', () =>
+          buttonInNavigationItemSampleA02.setAttribute('aria-expanded', 'false')
+        );
 
         navigationItemSampleA02.addEventListener('click', () => {
           drawerSampleA02.show();
-          buttonSampleA02.setAttribute('aria-expanded', 'true');
+          buttonInNavigationItemSampleA02.setAttribute('aria-expanded', 'true');
         });
       });
     </script>
@@ -315,16 +319,18 @@ export const SampleB = {
       ]).then(() => {
         const drawerSampleB = document.getElementById('sample-b-drawer');
         const navigationItemSampleB = document.getElementById('open-menu-sample-b');
-        const buttonSampleB = navigationItemSampleB.shadowRoot.querySelector('button');
+        const buttonInNavigationItemSampleB = navigationItemSampleB.shadowRoot.querySelector('button');
 
-        buttonSampleB.setAttribute('aria-controls', 'sample-b-drawer');
+        buttonInNavigationItemSampleB.setAttribute('aria-controls', 'sample-b-drawer');
         //Add the necessary ARIA attributes to prevent only being added after action
-        buttonSampleB.setAttribute('aria-expanded', 'false');
-        drawerSampleB.addEventListener('sd-hide', () => buttonSampleB.setAttribute('aria-expanded', 'false'));
+        buttonInNavigationItemSampleB.setAttribute('aria-expanded', 'false');
+        drawerSampleB.addEventListener('sd-hide', () =>
+          buttonInNavigationItemSampleB.setAttribute('aria-expanded', 'false')
+        );
 
         navigationItemSampleB.addEventListener('click', () => {
           drawerSampleB.show();
-          buttonSampleB.setAttribute('aria-expanded', 'true');
+          buttonInNavigationItemSampleB.setAttribute('aria-expanded', 'true');
         });
       });
     </script>
