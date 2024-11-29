@@ -282,8 +282,9 @@ export default class SdTooltip extends SolidElement {
               name="info-circle"
               label="Tooltip"
               class=${cx(this.disabled && 'sd-interactive--disabled')}
-            ></sd-icon></button
-        ></slot>
+            ></sd-icon>
+          </button>
+        </slot>
 
         <slot
           name="content"
