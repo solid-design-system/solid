@@ -1,7 +1,6 @@
 import { execSync } from 'child_process';
 import { Octokit } from '@octokit/rest';
 import fs from 'fs';
-import path from 'path';
 
 const GH_TOKEN = process.env.GH_TOKEN;
 const NPM_TOKEN = process.env.NPM_TOKEN;
@@ -9,11 +8,8 @@ const NPM_TOKEN = process.env.NPM_TOKEN;
 const octokit = new Octokit({ auth: GH_TOKEN });
 
 async function main() {
-  const maskedToken = GH_TOKEN ? `${GH_TOKEN.replace('github_pat_', '').slice(0, 3)}...` : 'GH_TOKEN not set';
-  console.log(`MASKED: ${maskedToken}`);
-
   try {
-    console.log('Generating Changeset status...');
+    console.log('Generating changeset-status.json...');
     execSync('pnpm changeset status --output changeset-status.json', { stdio: 'inherit' });
 
     if (!fs.existsSync('changeset-status.json')) {
@@ -22,40 +18,26 @@ async function main() {
     }
 
     const status = JSON.parse(fs.readFileSync('changeset-status.json', 'utf-8'));
-    if (status.releases.length === 0) {
+    if (status?.releases?.length === 0) {
       console.log('No packages to release. Skipping further steps.');
       return;
     }
 
-    console.log('Applying Changesets...');
-    execSync(`GITHUB_TOKEN=${GH_TOKEN} pnpm changeset version`, { stdio: 'inherit' });
-
-    console.log('Extracting updated package names and versions...');
-    const updatedPackages = [];
-    const updatedVersions = [];
-
-    const changedFiles = execSync('git diff --name-only', { encoding: 'utf-8' })
-      .split('\n')
-      .filter(file => file.includes('package.json'));
-
-    changedFiles.forEach(file => {
-      const packageJsonPath = path.resolve(file);
-      const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
-
-      if (packageJson.name) {
-        updatedPackages.push(packageJson.name);
-      }
-
-      if (packageJson.version) {
-        updatedVersions.push(packageJson.version);
-      }
-    });
-
-    const sortedPackages = updatedPackages
-      .map((name, index) => ({ name: name.split('/')[1], version: updatedVersions[index] }))
+    console.log('Extracting updated package names and versions from changeset-status.json...');
+    const sortedPackages = status.releases
+      .map(release => ({
+        name: release.name.split('/')[1], // Extract package name after the scope
+        version: release.newVersion
+      }))
       .sort((a, b) => a.name.localeCompare(b.name));
 
-    const packagesWithVersions = sortedPackages.map(pkg => `${pkg.name}: ${pkg.version}`).join(', ');
+    const packagesWithVersions = sortedPackages.map(pkg => `${pkg.name}@${pkg.version}`).join(', ');
+
+    console.log('Removing changeset-status.json...');
+    fs.unlinkSync('changeset-status.json');
+
+    console.log('Applying Changesets...');
+    execSync(`GITHUB_TOKEN=${GH_TOKEN} pnpm changeset version`, { stdio: 'inherit' });
 
     console.log('Build packages...');
     execSync('pnpm --recursive --if-present postversion');
@@ -64,9 +46,9 @@ async function main() {
     execSync('git config user.name "github-actions[bot]"');
     execSync('git config user.email "github-actions[bot]@users.noreply.github.com"');
 
-    const commitMessage = packagesWithVersions
-      ? `chore(release): ${packagesWithVersions} [skip ci]`
-      : 'chore(release): applied changesets [skip ci]';
+    // It is important to use [skip actions] instead of [skip ci] to avoid triggering another workflow run
+    // on GitHub but still allow Azure to run the workflow.
+    const commitMessage = `chore(release): ${packagesWithVersions} [skip actions]`;
 
     execSync('git add .');
     execSync(`git commit -m "${commitMessage}" || echo "No changes to commit"`, { stdio: 'inherit' });
@@ -85,23 +67,9 @@ async function main() {
     execSync('git push --tags', { stdio: 'inherit' });
 
     console.log('Generating Release Notes...');
-    const updatedChangelogs = execSync('git diff --name-only HEAD~1 HEAD | grep CHANGELOG.md || true', {
-      encoding: 'utf-8'
-    }).trim();
-
-    console.log('updatedChangelogs:', updatedChangelogs);
-
-    if (!updatedChangelogs) {
-      console.log('No updated changelogs found. Skipping release notes creation.');
-      return;
-    }
-
-    const releaseNotesByPackage = updatedChangelogs.split('\n').map(changelog => {
-      const packageName = changelog.split('/')[1];
-      const notes = `Please refer to [CHANGELOG](https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-${packageName}-changelog--docs) for details.`;
-
-      console.log('packageName:', packageName);
-      return { packageName, notes };
+    const releaseNotesByPackage = sortedPackages.map(pkg => {
+      const notes = `Please refer to [CHANGELOG](https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-${pkg.name}-changelog--docs) for details.`;
+      return { packageName: pkg.name, notes };
     });
 
     console.log('Creating GitHub Releases...');
