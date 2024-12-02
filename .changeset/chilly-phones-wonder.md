@@ -4,3 +4,6 @@
 ---
 
 Aligned sd-select and sd-combobox
+
+- changed tags feature
+- added aria live region
