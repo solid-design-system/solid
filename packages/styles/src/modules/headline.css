@@ -3,7 +3,7 @@
  * @name sd-headline
  * @status stable
  * @since 1.16
- * @variant { 3xl | xl | lg | base } sd-headline--size- The headline's size.
+ * @variant { 3xl | xl | lg | base } sd-headline--size-... The headline's size.
  * @boolean { false } sd-headline--inverted Inverts the headline text.
  * @boolean { false } sd-headline--inline Sets inline behavior. Used exclusively when an sd-icon or other component is present. See usage <a href="#inline">here.</a>
  */

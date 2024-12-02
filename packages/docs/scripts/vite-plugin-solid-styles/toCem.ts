@@ -14,13 +14,8 @@ const getTypesAsArray = (tag: Tag): string[] =>
       // If we don`t want a default value in a drop down, return an empty string
       if (t === 'NO_DEFAULT') return '';
 
-      // We use BEM for our style classes, therefore modifiers are added with a `--`.
-      // In case of the tag `syn-body`, type (e.g. small) is the modifier and is therefore added
-      // via `--` (-> `syn-body--small`).
-      // On other cases like the tag `syn-table-cell--shadow`, the type (e.g. top) needs to be added
-      // via `-` (e.g. `syn-table-cell--shadow-top`). The modifier is in this case `shadow-top`.
-      const separator = tag.name.includes('--') ? '-' : '--';
-      return `'${tag.name}${separator}${t}'`;
+      // Storybook variant properties always have to be enclosed in ''.
+      return `'${t}'`;
     });
 
 /**

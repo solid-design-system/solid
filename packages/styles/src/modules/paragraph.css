@@ -3,7 +3,7 @@
  * @name sd-paragraph
  * @status stable
  * @since 1.7
- * @variant { NO_DEFAULT | sm } sd-paragraph--size- The paragraph's font size.
+ * @variant { NO_DEFAULT | sm } sd-paragraph--size-... The paragraph's font size.
  * @boolean { false } sd-paragraph--inverted Inverts the paragraph text.
  */
 .sd-paragraph,

@@ -3,9 +3,9 @@
  * @name sd-container
  * @status stable
  * @since 1.30.0
- * @variant { primary-100 | primary | border-neutral-400 | white } sd-container--variant- Defines the background color and border of sd-container.
- * @variant { NO_DEFAULT | sm } sd-container--padding- Defines the padding of sd-container. This makes it adaptable to both small and large screens.
- * @variant { top | right | bottom | left } sd-container--triangle- Defines an optional triangle cut-out for sd-container. This allows for an indentation resembling an arrow on any side of the container. CSS Property `triangle-background` defines the background color of the cut-out.
+ * @variant { primary-100 | primary | border-neutral-400 | white } sd-container--variant-... Defines the background color and border of sd-container.
+ * @variant { NO_DEFAULT | sm } sd-container--padding-... Defines the padding of sd-container. This makes it adaptable to both small and large screens.
+ * @variant { top | right | bottom | left } sd-container--triangle-... Defines an optional triangle cut-out for sd-container. This allows for an indentation resembling an arrow on any side of the container. CSS Property `triangle-background` defines the background color of the cut-out.
  */
 
 .sd-container {

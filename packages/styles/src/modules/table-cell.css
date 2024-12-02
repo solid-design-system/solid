@@ -4,9 +4,9 @@
  * @status stable
  * @since 1.13
  * @boolean { false } sd-table-cell--divider Displays a divider to the right.
- * @variant { white | primary-100 | neutral-100 } sd-table-cell--bg- Applies the selected background-color to the table cell. If not selected, a transparent background-color is used per default.
+ * @variant { white | primary-100 | neutral-100 } sd-table-cell--bg-... Applies the selected background-color to the table cell. If not selected, a transparent background-color is used per default.
  * @boolean { false } sd-table-cell--shadow-active Displays the table shadow.
- * @variant { top | left | right | bottom } sd-table-cell--shadow- Applies the selected shadow to the table cell.
+ * @variant { top | left | right | bottom } sd-table-cell--shadow-... Applies the selected shadow to the table cell.
  */
 
 .sd-prose td,

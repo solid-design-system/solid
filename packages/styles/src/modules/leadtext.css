@@ -3,7 +3,7 @@
  * @name sd-leadtext
  * @status stable
  * @since 1.7
- * @boolean { NO_DEFAULT | lg } sd-leadtext--size- The leadtext's size.
+ * @variant { NO_DEFAULT | lg } sd-leadtext--size-... The leadtext's size.
  * @boolean { false } sd-leadtext--inverted Inverts the leadtext text.
  */
 
