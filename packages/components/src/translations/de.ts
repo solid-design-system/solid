@@ -38,7 +38,8 @@ const translation: Translation = {
   showPassword: 'Passwort anzeigen',
   slideNum: (slide, count) => `Folie ${slide} von ${count}`,
   toggleColorFormat: 'Farbformat umschalten',
-  unmute: 'Unmute'
+  unmute: 'Unmute',
+  removed: name => `${name} entfernt`
 };
 
 registerTranslation(translation);

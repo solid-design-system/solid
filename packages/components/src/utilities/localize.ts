@@ -104,4 +104,5 @@ export interface Translation extends DefaultTranslation {
   slideNum: (slide: number, count: number) => string;
   toggleColorFormat: string;
   unmute: string;
+  removed: (name: string) => string;
 }

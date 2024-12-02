@@ -97,6 +97,8 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
    */
   @state() private displayLabel = '';
   /** @internal */
+  @state() private liveLabel = '';
+  /** @internal */
   @state() hasFocus = false;
   /** @internal */
   @state() currentOption: SdOption;
@@ -216,6 +218,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
         @sd-remove=${(event: CustomEvent) => this.handleTagRemove(event, option)}
       >
         ${option.getTextLabel()}
+        <sd-icon library="system" name="close" slot="removable-indicator"></sd-icon>
       </sd-tag>
     `;
   };
@@ -510,6 +513,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
 
     if (!this.disabled) {
       this.toggleOptionSelection(option, false);
+      this.liveLabel = this.localize.term('removed', option.textContent);
 
       // Emit after updating
       this.updateComplete.then(() => {
@@ -829,6 +833,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
           this.open && 'z-50'
         )}
       >
+        <span class="sr-only" role="alert" aria-live="assertive">${this.liveLabel}</span>
         <div class="flex items-center gap-1 mb-2">
           <label
             id="label"
@@ -924,6 +929,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 aria-haspopup="listbox"
                 aria-labelledby="label"
                 aria-disabled=${this.disabled ? 'true' : 'false'}
+                aria-invalid=${this.showInvalidStyle ? 'true' : 'false'}
                 aria-describedby="help-text invalid-message"
                 role="combobox"
                 tabindex="0"
