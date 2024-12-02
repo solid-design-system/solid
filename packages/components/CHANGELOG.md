@@ -2,6 +2,17 @@
 * Bundle size (uncompressed): 409 KB (unchanged)
 * Bundle size (gzipped): 125 KB (unchanged)
 
+### 📈 Stats
+
+## 3.22.13
+
+### Patch Changes
+
+- [#1695](https://github.com/solid-design-system/solid/pull/1695) [`f472ee8`](https://github.com/solid-design-system/solid/commit/f472ee8177e3dff9ce9f494a21ff19ac3ecab334) Thanks [@mariohamann](https://github.com/mariohamann)! - Fix CDN deployment for `components`. Same functionality as `@solid-design-system/components@3.22.12`.
+
+* Bundle size (uncompressed): 409 KB (unchanged)
+* Bundle size (gzipped): 125 KB (unchanged)
+
 # [@solid-design-system/components-v3.22.11](https://github.com/solid-design-system/solid/compare/components/3.22.10...components/3.22.11) (2024-11-27)
 
 ## 3.22.12
