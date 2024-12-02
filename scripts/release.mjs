@@ -9,6 +9,9 @@ const NPM_TOKEN = process.env.NPM_TOKEN;
 const octokit = new Octokit({ auth: GH_TOKEN });
 
 async function main() {
+  const maskedToken = GH_TOKEN ? `${GH_TOKEN.replace('github_pat_', '').slice(0, 3)}...` : 'GH_TOKEN not set';
+  console.log(`MASKED: ${maskedToken}`);
+
   try {
     console.log('Generating Changeset status...');
     execSync('pnpm changeset status --output changeset-status.json', { stdio: 'inherit' });
