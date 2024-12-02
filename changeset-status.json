@@ -1,0 +1,25 @@
+{
+  "changesets": [
+    {
+      "releases": [
+        {
+          "name": "@solid-design-system/components",
+          "type": "patch"
+        }
+      ],
+      "summary": "Improved a11y for sd-tab-group.\n\n- Improve keyboard navigation.\n- Added labels to icons for the navigation buttons.\n- Added focus styles for tab panels.",
+      "id": "rare-planets-share"
+    }
+  ],
+  "releases": [
+    {
+      "name": "@solid-design-system/components",
+      "type": "patch",
+      "oldVersion": "3.22.11",
+      "changesets": [
+        "rare-planets-share"
+      ],
+      "newVersion": "3.22.12"
+    }
+  ]
+}
