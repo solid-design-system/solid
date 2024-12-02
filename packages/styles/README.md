@@ -31,8 +31,8 @@ When adding comments to your modules, please add a list of all variants of your 
  * @name sd-demo
  * @status stable
  * @since 1.0
- * @variant { NO_DEFAULT | left | right } sd-demo The position.
- * @variant { xl | 3xl } sd-demo--size- The size.
+ * @variant { NO_DEFAULT | left | right } sd-demo--... The position.
+ * @variant { xl | 3xl } sd-demo--size-... The size.
  * @boolean { false } sd-demo--inverted Inverts the demo.
  */
 ```
