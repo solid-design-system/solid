@@ -95,14 +95,14 @@ export const Orientation = {
 };
 
 /**
- * Use the `sd-copyright--position-top` class to set the copyright position.
+ * Use the `sd-copyright--placement-top` class to set the copyright placement.
  *
  * **Accessibility Hint:** Use when copyright is displayed in a video.
  */
-export const Position = {
+export const Placement = {
   render: () =>
     html` <div
-      class="sd-copyright sd-copyright--position-top max-w-xl"
+      class="sd-copyright sd-copyright--placement-top max-w-xl"
       style="--copyright: '© 2024 Solid Design System';"
     >
       <img src="./placeholders/images/generic.jpg" alt="A generic placeholder jpg" class="aspect-video object-cover" />

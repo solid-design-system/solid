@@ -21,9 +21,9 @@ export default {
       description: 'The copyrights orientation.'
     },
     {
-      name: 'sd-copyright--position-...',
+      name: 'sd-copyright--placement-...',
       options: ['top'],
-      description: 'The copyrights position.'
+      description: 'The copyrights placement.'
     }
   ]
 } satisfies Style;

@@ -99,13 +99,13 @@ export const Orientation = {
   }
 };
 
-export const Position = {
-  name: 'Position',
-  parameters: { controls: { exclude: ['sd-copyright--position-...'] } },
+export const Placement = {
+  name: 'Placement',
+  parameters: { controls: { exclude: ['sd-copyright--placement-...'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        x: { type: 'attribute', name: 'sd-copyright--position-...' }
+        x: { type: 'attribute', name: 'sd-copyright--placement-...' }
       },
       options: {
         templateContent: `<div class="%CLASSES% max-w-xl text-left" style="--copyright: '${args['--copyright']}';">%SLOT%</div>`
@@ -115,4 +115,4 @@ export const Position = {
   }
 };
 
-export const Combination = generateScreenshotStory([Default, Variants, Shadow, Orientation, Position]);
+export const Combination = generateScreenshotStory([Default, Variants, Shadow, Orientation, Placement]);
