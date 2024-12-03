@@ -184,3 +184,16 @@ export const Hoist = {
       <sd-tooltip content="Lorem ipsum" placement="bottom-start" size="lg" hoist></sd-tooltip>
     </div>`
 };
+
+/**
+ * Use the `default` slot to attach the tooltip to a custom button.
+ **Note:** As of now, this method is not recommended due to issues passing ID refs to the shadow DOM, which makes the tooltip text inaccessible to screen readers. We are exploring ways to address this limitation.
+ */
+export const CustomButtons = {
+  render: () =>
+    html` <div class="flex items-center h-[5em] w-16">
+      <sd-tooltip content="Lorem ipsum" placement="top" size="lg" trigger="click focus">
+        <sd-button>Click Me</sd-button>
+      </sd-tooltip>
+    </div>`
+};
