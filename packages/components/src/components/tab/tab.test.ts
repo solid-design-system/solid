@@ -19,7 +19,7 @@ describe('<sd-tab>', () => {
     expect(el.getAttribute('role')).to.equal('tab');
     expect(el.getAttribute('aria-disabled')).to.equal('false');
     expect(el.getAttribute('aria-selected')).to.equal('false');
-    expect(base.getAttribute('tabindex')).to.equal('0');
+    expect(base.getAttribute('tabindex')).to.equal('-1');
     expect(el.active).to.equal(false);
     expect(el.disabled).to.equal(false);
   });
