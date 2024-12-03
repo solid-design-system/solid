@@ -31,7 +31,7 @@ export default {
     {
       type: 'slot',
       name: 'default',
-      value: `<img src="./placeholders/images/generic.jpg" alt="A generic placeholder jpg" class="aspect-video object-cover"/>`
+      value: `<div class="sd-container sd-container--variant-white"/></div>`
     },
     {
       '--copyright': '© 2024 Solid Design System'
@@ -58,26 +58,34 @@ export const Default = {
 
 /**
  * Use the `sd-copyright--color-black` for alternative appearances.
+ *
+ * **Accessibility Hint:** Do not use it on media.
  */
 export const Variants = {
   render: () =>
-    html` <div
-      class="sd-copyright sd-copyright--color-black max-w-xl"
-      style="--copyright: '© 2024 Solid Design System';"
-    >
-      <img src="./placeholders/images/generic.jpg" alt="A generic placeholder jpg" class="aspect-video object-cover" />
+    html`<div class="flex flex-row">
+      <div class="sd-copyright max-w-xl w-1/2" style="--copyright: '© 2024 Solid Design System';">
+        <div class="sd-container sd-container--variant-primary"></div>
+      </div>
+      <div
+        class="sd-copyright sd-copyright--color-black max-w-xl w-1/2"
+        style="--copyright: '© 2024 Solid Design System';"
+      >
+        <div class="sd-container"></div>
+      </div>
     </div>`
 };
 
 /**
- * Use the `sd-copyright--color-shadow` class to add a shadow to the text.
- *
- * **Accessibility Hint:** Use when copyright is displayed on an image.
+ * Use the `sd-copyright--no-shadow` class to remove the shadow to the text.
  */
-export const Shadow = {
+export const NoShadow = {
   render: () =>
-    html` <div class="sd-copyright sd-copyright--shadow max-w-xl" style="--copyright: '© 2024 Solid Design System';">
-      <img src="./placeholders/images/generic.jpg" alt="A generic placeholder jpg" class="aspect-video object-cover" />
+    html` <div
+      class="sd-copyright sd-copyright--no-shadow max-w-xl"
+      style="--copyright: '© 2024 Solid Design System';"
+    >
+      <div class="sd-container sd-container--variant-primary"></div>
     </div>`
 };
 
@@ -86,11 +94,16 @@ export const Shadow = {
  */
 export const Orientation = {
   render: () =>
-    html` <div
-      class="sd-copyright sd-copyright--orientation-vertical max-w-xl"
-      style="--copyright: '© 2024 Solid Design System';"
-    >
-      <img src="./placeholders/images/generic.jpg" alt="A generic placeholder jpg" class="aspect-video object-cover" />
+    html`<div class="flex flex-col">
+      <div class="sd-copyright sd-copyright max-w-xl" style="--copyright: '© 2024 Solid Design System';">
+        <div class="sd-container sd-container--variant-white"></div>
+      </div>
+      <div
+        class="sd-copyright sd-copyright--orientation-vertical max-w-xl aspect-video"
+        style="--copyright: '© 2024 Solid Design System';"
+      >
+        <div class="sd-container sd-container--variant-white"></div>
+      </div>
     </div>`
 };
 
@@ -105,6 +118,6 @@ export const Placement = {
       class="sd-copyright sd-copyright--placement-top max-w-xl"
       style="--copyright: '© 2024 Solid Design System';"
     >
-      <img src="./placeholders/images/generic.jpg" alt="A generic placeholder jpg" class="aspect-video object-cover" />
+      <div class="sd-container sd-container--variant-primary"></div>
     </div>`
 };

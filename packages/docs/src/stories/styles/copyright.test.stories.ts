@@ -67,13 +67,13 @@ export const Variants = {
   }
 };
 
-export const Shadow = {
-  name: 'Shadow',
-  parameters: { controls: { exclude: ['sd-copyright--shadow'] } },
+export const NoShadow = {
+  name: 'No Shadow',
+  parameters: { controls: { exclude: ['sd-copyright--no-shadow'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        x: { type: 'attribute', name: 'sd-copyright--shadow', values: [false, true] }
+        x: { type: 'attribute', name: 'sd-copyright--no-shadow', values: [false, true] }
       },
       options: {
         templateContent: `<div class="%CLASSES% max-w-xl text-left" style="--copyright: '${args['--copyright']}';">%SLOT%</div>`
@@ -115,4 +115,4 @@ export const Placement = {
   }
 };
 
-export const Combination = generateScreenshotStory([Default, Variants, Shadow, Orientation, Placement]);
+export const Combination = generateScreenshotStory([Default, Variants, NoShadow, Orientation, Placement]);

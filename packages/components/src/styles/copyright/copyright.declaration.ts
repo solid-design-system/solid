@@ -12,8 +12,8 @@ export default {
       description: 'The copyrights text color.'
     },
     {
-      name: 'sd-copyright--shadow',
-      description: 'Adds a shadow to the copyrights.'
+      name: 'sd-copyright--no-shadow',
+      description: 'Removes the copyrights shadow.'
     },
     {
       name: 'sd-copyright--orientation-...',

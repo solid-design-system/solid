@@ -2,7 +2,7 @@
   @apply relative;
 
   &::after {
-    @apply block absolute pb-2 pl-4 bottom-0 left-0 text-white text-sm w-full;
+    @apply block absolute pb-2 pl-4 bottom-0 left-0 text-white text-sm w-full drop-shadow-sm;
     content: var(--copyright);
   }
 
@@ -21,13 +21,14 @@
     &-black {
       &::after {
         @apply text-black;
+        filter: drop-shadow(0 0 transparent);
       }
     }
   }
 
-  &--shadow {
+  &--no-shadow {
     &::after {
-      @apply text-white drop-shadow-sm;
+      filter: drop-shadow(0 0 transparent);
     }
   }
 
