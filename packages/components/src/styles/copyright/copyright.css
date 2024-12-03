@@ -27,8 +27,7 @@
 
   &--shadow {
     &::after {
-      @apply text-white;
-      text-shadow: 0.5px 0.5px 1.5px #515151;
+      @apply text-white drop-shadow-sm;
     }
   }
 
