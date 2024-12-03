@@ -252,50 +252,6 @@ export const AspectRatios = {
 };
 
 /**
- * Use the `activation` attribute to determine the activation type of the flipcard:
- * - `click hover` (default)
- * - `click`
- */
-
-export const Activation = {
-  render: () =>
-    html` <div class="grid grid-cols-2 gap-8">
-      <sd-flipcard activation="click hover" flip-direction="horizontal" front-variant="empty" back-variant="empty">
-        <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
-        <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
-        <img
-          slot="media-front"
-          class="object-cover h-full w-full"
-          src="./placeholders/images/generic.jpg"
-          alt="Generic Alt"
-        />
-        <img
-          slot="media-back"
-          class="object-cover h-full w-full"
-          src="./placeholders/images/generic.jpg"
-          alt="Generic Alt"
-        />
-      </sd-flipcard>
-      <sd-flipcard activation="click" flip-direction="horizontal" front-variant="empty" back-variant="empty">
-        <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
-        <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
-        <img
-          slot="media-front"
-          class="object-cover h-full w-full"
-          src="./placeholders/images/generic.jpg"
-          alt="Generic Alt"
-        />
-        <img
-          slot="media-back"
-          class="object-cover h-full w-full"
-          src="./placeholders/images/generic.jpg"
-          alt="Generic Alt"
-        />
-      </sd-flipcard>
-    </div>`
-};
-
-/**
  * Use the `flip-direction` attribute to determine the direction of the flipcard:
  * - `horizontal` (default)
  * - `vertical`

@@ -39,11 +39,6 @@ export default class SdFlipcard extends SolidElement {
   @query('[part="back"]') back: HTMLElement;
 
   /**
-   * Determines the activation type of the flipcard.
-   */
-  @property({ reflect: true }) activation: 'click' | 'click hover' = 'click hover';
-
-  /**
    * Allows the flipcard to flip vertically or horizontally.
    */
   @property({ reflect: true, attribute: 'flip-direction' }) flipDirection: 'horizontal' | 'vertical' = 'horizontal';
@@ -127,7 +122,6 @@ export default class SdFlipcard extends SolidElement {
             'flip-card__side flip-card__side--front overflow-hidden transition-transform duration-1000 ease-in-out',
             'flex focus-visible:focus-outline',
             'absolute top-0 left-0 w-full h-full justify-end text-left',
-            this.activation === 'click hover' && 'hover',
             this.frontVariant === 'primary' && 'bg-primary',
             this.frontVariant === 'primary-100' && 'bg-primary-100',
             this.frontVariant === 'gradient-dark-bottom' || this.frontVariant === 'gradient-light-bottom'
@@ -199,7 +193,6 @@ export default class SdFlipcard extends SolidElement {
             'flip-card__side flip-card__side--back overflow-hidden transition-transform duration-1000 ease-in-out',
             'flex focus-visible:focus-outline',
             'absolute top-0 left-0 w-full h-full justify-end text-left',
-            this.activation === 'click hover' && 'hover',
             this.backVariant === 'primary' && 'bg-primary',
             this.backVariant === 'primary-100' && 'bg-primary-100',
             this.backVariant === 'gradient-dark-bottom' || this.backVariant === 'gradient-light-bottom'
