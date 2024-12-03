@@ -208,21 +208,6 @@ Assigning reviewers follows a few rules:
 2. **Bug Fix or Docs PRs:** Minimum 1 developer from the SDS dev-core-team (@solid-design-system/core-development) needs to be assigned to the PR. Designers need to be added separately if visual changes are made.
 3. **CI/CD PRs:** Minimum 1 out of @yoezlem, @mariohamann or @karlbaumhauer needs to be assigned to the PR.
 
-#### Commit Messages
-
-We use Semantic Release to automate versioning and publishing based on commit messages, ensuring consistent release practices. Pull Request titles are especially important for semantic versioning, so follow these guidelines when writing them as well.
-
-Use the following semantic versioning in your commit messages (`feat`, `fix`, `perf`, `docs`, `chore`, `ci`).
-
-```
-Commits with a breaking change will be associated with a major release.
-Commits with type 'feat' will be associated with a minor release.
-Commits with type 'fix' will be associated with a patch release.
-Commits with type 'perf' will be associated with a patch release.
-```
-
-**Remark:** Always think from the perspective of the person using our packages/components – will the final distribution/bundle change? If so, then it's always `feat` `fix` or `perf` – if not, it's one of the others. Please reach out if you're unsure.
-
 #### Review Comments
 
 The primary objective of this "rule-set" is to eliminate comments that lack any code-related context, thereby minimizing the workload for the PR author during feedback implementation.
@@ -231,6 +216,26 @@ The primary objective of this "rule-set" is to eliminate comments that lack any 
 - Comments pertaining to the UI should be included as inline comments in the relevant file (for instance, "your story is not functioning", should be placed as an inline comment in the review section of the component.stories.ts file).
 - Designers should exclusively use Chromatic for providing feedback on alterations.
 - General comments in the PR should be avoided as much as possible. If they are unavoidable, they should only include process-related information that doesn't require a response (for example, "Completed my UI-review, please re-assign to me once changes have been made").
+
+#### Changesets
+
+We use [Changesets](https://changesets-docs.vercel.app/en) in our release process, so the pull request title has no influence in the versioning. Still, we recommend following these guidelines when writing them to keep consistency:
+
+Use the following semantic versioning in your commit messages (`feat`, `fix`, `perf`, `docs`, `chore`, `ci`).
+
+A changeset should always be included in the pull request to describe the goal of the changes performed. This will also define what type of release will be triggered: `major`, `minor` or `patch`.
+
+To create a changeset you should navigate to the root of the project and execute the command `pnpm changeset`. You will then select the package which contains changes, followed by the type of version bump it will trigger.
+
+- `major`: breaking change
+- `minor`: feature
+- `patch`: bugfix
+
+Once this is done, a temporary changeset file is created on the `.changeset` folder. You can edit this file to include more detailed information about the work done. Afterwards, this file should be committed together with the remaining changes. When the pull request is created, the changesets bot will analyse the files and inform if a changeset is included or not. If you forgot to include one, you can do it and the bot will pick it up.
+
+In case your changes are not meant to trigger a release or version bump, you can commit an empty changeset, created with the command `pnpm changeset --empty`.
+
+Please make sure to always provide detailed information in the changeset since this will be present in the package changelog.
 
 #### Special commands/suffixes
 
@@ -267,14 +272,14 @@ You can take a look at tests on Github. Users might be required to log in to [Ch
 
 ### Standard Release from Main Branch
 
-1. On push to the main branch, the release workflow is triggered. This workflow integrates with semantic release.
+1. On push to the main branch, the release workflow is triggered. This workflow integrates with Changeset versioning.
 2. Once the release workflow is completed, it triggers the 'sync-to-azure' workflow. This workflow ensures synchronization between the main branch on GitHub and the main branch in the Azure DevOps repository.
 3. On Azure, the 'deploy-to-cdn.yml' pipeline is automatically triggered. This pipeline deploys the code and Storybook to the SDS CDN.
 
 > Note: The pipeline checks the last commit and sets one of 3 possible deployment type. This step ensures that a new version is deployed only when there is a new release and only the docs are deployed if there are docs-only changes. Otherwise, it would overwrite the current version with new code. The 3 types are:
 >
-> - `code`: This type is set when the last commit message starts with `chore(release/components):` (coming from a semantic-release version bump) and it deploys everything to the CDN
-> - `docs`: This type is set when the last commit message starts with `docs:` and deploys only the Storybook to the CDN
+> - `code`: This type is set when the last commit message starts with `chore(release): components` (coming from a changeset version bump for the `components` package) and it deploys everything to the CDN
+> - `docs`: This type is set when the last commit message starts with `chore(release):` (coming from changesets that include the `docs` package) and deploys only the Storybook to the CDN
 > - `none`: This type is set when the last commit message starts with anything else and skips deployment to the CDN.
 
 4. For the main branch, the pipeline utilizes the 'push-to-storage-main.template.yml' template to deploy the code to the CDN. This template deploys the code into different folders to provide wildcard URLs:
@@ -303,4 +308,4 @@ Workflow:
 
 ### Docs Deployment
 
-To perform a documentation-only deployment, make a commit on main with `docs: ` prefix. See the `Note` under [Standard Release from Main Branch](#standard-release-from-main-branch) for more details.
+To perform a documentation-only deployment, add a changeset that includes the `docs` package. See the `Note` under [Standard Release from Main Branch](#standard-release-from-main-branch) for more details.
