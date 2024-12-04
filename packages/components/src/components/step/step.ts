@@ -105,7 +105,7 @@ export default class SdStep extends SolidElement {
 
   render() {
     const isLink = this.isLink();
-    const tag = this.notInteractive || this.disabled ? literal`div` : isLink ? literal`a` : literal`button`;
+    const tag = this.notInteractive ? literal`div` : isLink ? literal`a` : literal`button`;
 
     /* eslint-disable lit/no-invalid-html */
     /* eslint-disable lit/binding-positions */
