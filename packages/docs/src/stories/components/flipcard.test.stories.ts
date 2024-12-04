@@ -144,12 +144,12 @@ export const Slots = {
             {
               type: 'attribute',
               name: 'front-variant',
-              value: 'gradient-dark-top'
+              value: 'gradient-dark'
             },
             {
               type: 'attribute',
               name: 'back-variant',
-              value: 'gradient-dark-bottom'
+              value: 'gradient-dark'
             }
           ]
         });
@@ -159,7 +159,7 @@ export const Slots = {
 };
 
 /**
- * Use the `base`, `front`, `back`, `front-slot-container`, `back-slot-container`, `front-media`, `back-media`, `front-secondary-gradient` and `back-secondary-gradient` parts to style the flipcard.
+ * Use the `base`, `front`, `back`, `front-button`, `back-button`, `front-slot-container`, `back-slot-container`, `front-media`, `back-media`, `front-secondary-gradient` and `back-secondary-gradient` parts to style the flipcard.
  */
 export const Parts = {
   name: 'Parts',
@@ -169,6 +169,8 @@ export const Parts = {
         'base',
         'front',
         'back',
+        'front-button',
+        'back-button',
         'front-slot-container',
         'back-slot-container',
         'front-media',
@@ -188,6 +190,8 @@ export const Parts = {
             'base',
             'front',
             'back',
+            'front-button',
+            'back-button',
             'front-slot-container',
             'back-slot-container',
             'front-media',
