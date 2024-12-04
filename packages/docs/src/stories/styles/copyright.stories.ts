@@ -7,11 +7,13 @@ const { overrideArgs } = storybookHelpers('sd-copyright');
 const { generateTemplate } = storybookTemplate('sd-copyright');
 
 /**
- * Used to be displayed at the bottom of an image for example.
+ * Used to display copyright information for a media element.
  *
  * Use the `--copyright` CSS property and the class `sd-copyright` in the parent of any element to set a copyright text.
  *
- * ** Related template:**
+ * **Accessibility Hint:** Choose the white variant with shadow for image backgrounds, and black or white for simpler or high-contrast backgrounds, or images with gradient overlays to ensure readability.
+ *
+ * ** Related templates:**
  * - [Media with Copyright](?path=/docs/templates-media--docs#copyright)
  * - [Video with Copyright](?path=/docs/templates-video--docs#video%20element%20with%20copyright)
  * - [Teaser Media with Copyright](?path=/docs/templates-teaser-media--docs#teaser%20media%20with%20copyright)
@@ -31,10 +33,10 @@ export default {
     {
       type: 'slot',
       name: 'default',
-      value: `<div class="sd-container sd-container--variant-white"/></div>`
+      value: `<img src="./placeholders/images/generic.jpg" alt=" " class="aspect-video object-cover"/>`
     },
     {
-      '--copyright': '© 2024 Solid Design System'
+      '--copyright': '© Union Investment 2024'
     }
   ),
   argTypes
@@ -57,67 +59,81 @@ export const Default = {
 };
 
 /**
- * Use the `sd-copyright--color-black` for alternative appearances.
+ * Use the `sd-copyright` class for alternative appearances:
  *
- * **Accessibility Hint:** Do not use it on media.
+ * - white is the default color
+ * - `sd-copyright--color-black`
  */
 export const Variants = {
   render: () =>
-    html`<div class="flex flex-row">
-      <div class="sd-copyright max-w-xl w-1/2" style="--copyright: '© 2024 Solid Design System';">
-        <div class="sd-container sd-container--variant-primary"></div>
-      </div>
-      <div
-        class="sd-copyright sd-copyright--color-black max-w-xl w-1/2"
-        style="--copyright: '© 2024 Solid Design System';"
-      >
-        <div class="sd-container"></div>
-      </div>
+    html` <div class="sd-copyright sd-copyright--color-black max-w-xl" style="--copyright: '© Union Investment 2024';">
+      <div class="sd-container sd-container--variant-border-neutral-400 h-full"></div>
     </div>`
 };
 
 /**
- * Use the `sd-copyright--no-shadow` class to remove the shadow to the text.
+ * Use the `sd-copyright--no-shadow` class to remove the shadow.
  */
 export const NoShadow = {
   render: () =>
-    html` <div
-      class="sd-copyright sd-copyright--no-shadow max-w-xl"
-      style="--copyright: '© 2024 Solid Design System';"
-    >
+    html` <div class="sd-copyright sd-copyright--no-shadow max-w-xl" style="--copyright: '© Union Investment 2024';">
       <div class="sd-container sd-container--variant-primary"></div>
     </div>`
 };
 
 /**
- * Use the `sd-copyright--orientation-vertical` class to set the orientation to vertical.
+ * Use the `sd-copyright` classes to set  the axis of a copyright:
+ *
+ * - horizontal is the default orientation
+ * - `sd-copyright--orientation-vertical`
  */
 export const Orientation = {
   render: () =>
-    html`<div class="flex flex-col">
-      <div class="sd-copyright sd-copyright max-w-xl" style="--copyright: '© 2024 Solid Design System';">
-        <div class="sd-container sd-container--variant-white"></div>
+    html`<div class="grid grid-cols-2 gap-4">
+      <div class="sd-copyright max-w-xl" style="--copyright: '© Union Investment 2024';">
+        <img src="./placeholders/images/generic.jpg" alt=" " class="aspect-video object-cover" />
       </div>
+
       <div
-        class="sd-copyright sd-copyright--orientation-vertical max-w-xl aspect-video"
-        style="--copyright: '© 2024 Solid Design System';"
+        class="sd-copyright sd-copyright--orientation-vertical max-w-xl"
+        style="--copyright: '© Union Investment 2024';"
       >
-        <div class="sd-container sd-container--variant-white"></div>
+        <img src="./placeholders/images/generic.jpg" alt=" " class="aspect-video object-cover" />
       </div>
     </div>`
 };
 
 /**
- * Use the `sd-copyright--placement-top` class to set the copyright placement.
+ * Use the `sd-copyright` class to set the copyright placement:
+ *
+ * - bottom is the default placement
+ * - `sd-copyright--placement-top`
  *
  * **Accessibility Hint:** Use when copyright is displayed in a video.
  */
 export const Placement = {
   render: () =>
-    html` <div
-      class="sd-copyright sd-copyright--placement-top max-w-xl"
-      style="--copyright: '© 2024 Solid Design System';"
-    >
-      <div class="sd-container sd-container--variant-primary"></div>
-    </div>`
+    html` <style>
+        .sd-copyright::after {
+          z-index: 10;
+        }
+      </style>
+      <div class="grid grid-cols-2 gap-4">
+        <div class="sd-copyright sd-copyright--placement-top" style="--copyright:'© Union Investment 2024'">
+          <sd-video>
+            <video controls="" class="aspect-video">
+              <source src="./placeholders/videos/sds-placeholder-video/sds-placeholder-video.webm" type="video/webm" />
+              <track
+                label="English"
+                kind="subtitles"
+                srclang="en"
+                src="./placeholders/videos/sds-placeholder-video/sds-placeholder-video.vtt"
+                default=""
+              />
+              Your browser does not support the video tag.
+            </video>
+            <img slot="poster" alt=" " class="aspect-video object-cover" src="./placeholders/images/generic.jpg" />
+          </sd-video>
+        </div>
+      </div>`
 };
