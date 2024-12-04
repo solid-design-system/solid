@@ -155,7 +155,7 @@ describe('<sd-combobox>', () => {
 
       await el.show();
 
-      const filteredListbox = el.shadowRoot!.querySelector('#listbox-options')!;
+      const filteredListbox = el.shadowRoot!.querySelector('[part="filtered-listbox"]')!;
       const secondOption = filteredListbox.querySelectorAll<SdOption>('sd-option')[1];
       const changeHandler = sinon.spy();
       const inputHandler = sinon.spy();
@@ -256,7 +256,7 @@ describe('<sd-combobox>', () => {
 
       await clickOnElement(el);
       await aTimeout(500);
-      const filteredListbox = el.shadowRoot!.querySelector('#listbox-options')!;
+      const filteredListbox = el.shadowRoot!.querySelector('[part="filtered-listbox"]')!;
       const secondOption = filteredListbox.querySelectorAll<SdOption>('sd-option')[1];
 
       await clickOnElement(secondOption);
@@ -281,7 +281,7 @@ describe('<sd-combobox>', () => {
       await el.updateComplete;
       await aTimeout(500);
 
-      const filteredListbox = el.shadowRoot!.querySelector('#listbox-options')!;
+      const filteredListbox = el.shadowRoot!.querySelector('[part="filtered-listbox"]')!;
       const firstOption = filteredListbox.querySelectorAll<SdOption>('sd-option')[0];
 
       expect(displayInput.getAttribute('aria-expanded')).to.equal('true');
@@ -304,7 +304,7 @@ describe('<sd-combobox>', () => {
       await el.updateComplete;
       await aTimeout(500);
 
-      const filteredListbox = el.shadowRoot!.querySelector('#listbox-options')!;
+      const filteredListbox = el.shadowRoot!.querySelector('[part="filtered-listbox"]')!;
       const lastOption = filteredListbox.querySelectorAll<SdOption>('sd-option')[filteredListbox.children.length - 1];
 
       expect(displayInput.getAttribute('aria-expanded')).to.equal('true');
@@ -326,7 +326,7 @@ describe('<sd-combobox>', () => {
       await sendKeys({ press: 'e' });
       await el.updateComplete;
 
-      const filteredListbox = el.shadowRoot!.querySelector('#listbox-options')!;
+      const filteredListbox = el.shadowRoot!.querySelector('[part="filtered-listbox"]')!;
       const filteredOptions = filteredListbox.querySelectorAll<SdOption>('sd-option');
 
       expect(displayInput.getAttribute('aria-expanded')).to.equal('true');
@@ -347,7 +347,7 @@ describe('<sd-combobox>', () => {
       await sendKeys({ press: 'f' });
       await el.updateComplete;
 
-      const filteredListbox = el.shadowRoot!.querySelector('#listbox-options')!;
+      const filteredListbox = el.shadowRoot!.querySelector('[part="filtered-listbox"]')!;
       const filteredOptions = filteredListbox.querySelectorAll<SdOption>('sd-option');
 
       expect(displayInput.getAttribute('aria-expanded')).to.equal('false');
@@ -581,7 +581,7 @@ describe('<sd-combobox>', () => {
 
       await el.show();
 
-      const filteredListbox = el.shadowRoot!.querySelector('#listbox-options')!;
+      const filteredListbox = el.shadowRoot!.querySelector('[part="filtered-listbox"]')!;
       const secondOption = filteredListbox.querySelectorAll<SdOption>('sd-option')[1];
       await clickOnElement(secondOption);
       await el.updateComplete;
@@ -599,7 +599,7 @@ describe('<sd-combobox>', () => {
       `);
       await el.show();
       await el.updateComplete;
-      const filteredListbox = el.shadowRoot!.querySelector('#listbox-options')!;
+      const filteredListbox = el.shadowRoot!.querySelector('[part="filtered-listbox"]')!;
       const secondOption = filteredListbox.querySelectorAll<SdOption>('sd-option')[1];
       await clickOnElement(secondOption);
       await el.updateComplete;
@@ -688,7 +688,7 @@ describe('<sd-combobox>', () => {
 
       await el.show();
 
-      const filteredListbox = el.shadowRoot!.querySelector('#listbox-options')!;
+      const filteredListbox = el.shadowRoot!.querySelector('[part="filtered-listbox"]')!;
       const secondOption = filteredListbox.querySelectorAll<SdOption>('sd-option')[1];
 
       await clickOnElement(secondOption);
@@ -718,7 +718,7 @@ describe('<sd-combobox>', () => {
       expect(el.hasAttribute('data-user-valid')).to.be.false;
 
       await el.show();
-      const filteredListbox = el.shadowRoot!.querySelector('#listbox-options')!;
+      const filteredListbox = el.shadowRoot!.querySelector('[part="filtered-listbox"]')!;
       const secondOption = filteredListbox.querySelectorAll<SdOption>('sd-option')[1];
 
       await clickOnElement(secondOption);
@@ -1180,7 +1180,7 @@ describe('<sd-combobox>', () => {
 
     await el.show();
     const defaultOptionsSlot = el.shadowRoot!.querySelector('#defaultOptionsSlot')!;
-    const filteredListbox = el.shadowRoot!.querySelector('#listbox-options')!;
+    const filteredListbox = el.shadowRoot!.querySelector('[part="filtered-listbox"]')!;
     const secondOption = filteredListbox.querySelectorAll('sd-option')[1];
 
     await expect(secondOption.getTextLabel()).to.equal('Option 2');
@@ -1205,7 +1205,7 @@ describe('<sd-combobox>', () => {
     newOption.textContent = 'Option 4';
 
     await el.show();
-    const filteredListbox = el.shadowRoot!.querySelector('#listbox-options')!;
+    const filteredListbox = el.shadowRoot!.querySelector('[part="filtered-listbox"]')!;
 
     expect(filteredListbox.children.length).to.equal(3);
 
@@ -1237,7 +1237,7 @@ describe('<sd-combobox>', () => {
     await el.show();
     await el.updateComplete;
 
-    const filteredListbox = el.shadowRoot!.querySelector('#listbox-options')!;
+    const filteredListbox = el.shadowRoot!.querySelector('[part="filtered-listbox"]')!;
     const options = filteredListbox.querySelectorAll('sd-option');
 
     expect(filterHandler).to.have.been.calledThrice;
@@ -1264,7 +1264,7 @@ describe('<sd-combobox>', () => {
     await el.show();
     await el.updateComplete;
 
-    const filteredListbox = el.shadowRoot!.querySelector('#listbox-options')!;
+    const filteredListbox = el.shadowRoot!.querySelector('[part="filtered-listbox"]')!;
     const options = filteredListbox.querySelectorAll('sd-option');
 
     options.forEach((option, index) => {
@@ -1283,7 +1283,7 @@ describe('<sd-combobox>', () => {
     `);
     await el.show();
     await el.updateComplete;
-    const filteredListbox = el.shadowRoot!.querySelector('#listbox-options')!;
+    const filteredListbox = el.shadowRoot!.querySelector('[part="filtered-listbox"]')!;
     const secondOption = filteredListbox.querySelectorAll<SdOption>('sd-option')[1];
     await clickOnElement(secondOption);
     await el.updateComplete;

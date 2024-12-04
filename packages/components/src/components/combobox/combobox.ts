@@ -102,7 +102,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
 
   @query('[part="tags"]') tagWrapper: HTMLDivElement;
 
-  @query('#listbox-options') filteredWrapper: HTMLSlotElement;
+  @query('[part="filtered-listbox"]') filteredWrapper: HTMLSlotElement;
 
   @query('slot:not([name])') private defaultSlot: HTMLSlotElement;
 
@@ -1149,7 +1149,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
           <slot name="label">${this.label}</slot>
         </label>
 
-        <div part="form-control-input" class=${cx('relative w-full bg-white', 'text-black')}>
+        <div part="form-control-input" class="relative w-full bg-white text-black">
           <div
             part="border"
             class=${cx(
@@ -1213,9 +1213,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                   ></slot>`
                 : ''}
               ${this.multiple && this.useTags && this.tags.length > 0
-                ? html`<div part="tags" class="${cx('flex', 'items-center', 'gap-1', iconMarginRight)}">
-                    ${this.tags}
-                  </div>`
+                ? html`<div part="tags" class="${cx('flex items-center gap-1', iconMarginRight)}">${this.tags}</div>`
                 : null}
               <input
                 id="display-input"
@@ -1239,7 +1237,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                 aria-haspopup="listbox"
                 aria-labelledby="label"
                 aria-disabled=${this.disabled}
-                aria-describedby="help-text"
+                aria-describedby="help-text invalid-message"
                 aria-invalid="${this.showInvalidStyle}"
                 role="combobox"
                 tabindex="0"
@@ -1344,7 +1342,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
               @mousedown=${this.preventLoosingFocus}
               @mouseup=${this.handleOptionClick}
             >
-              <div id="listbox-options" part="filtered-listbox" class="overflow-y-scroll">${this.options}</div>
+              <div part="filtered-listbox" class="overflow-y-scroll">${this.options}</div>
               <slot id="defaultOptionsSlot" class="hidden" @slotchange=${this.handleDefaultSlotChange}></slot>
             </div>
           </sd-popup>
@@ -1397,14 +1395,12 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
         @apply bg-primary-100;
       }
 
-      #listbox-options sd-optgroup:first-of-type {
+      [part='filtered-listbox'] sd-optgroup:first-of-type {
         --display-divider: none;
       }
 
       mark {
-        font-weight: 700;
-        background-color: transparent;
-        color: inherit;
+        @apply bg-transparent text-inherit font-bold;
       }
     `
   ];
