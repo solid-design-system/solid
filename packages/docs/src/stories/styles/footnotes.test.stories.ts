@@ -22,6 +22,7 @@ export default {
   component: 'sd-footnotes',
   parameters: {
     ...parameters,
+    controls: { disable: true },
     design: {
       type: 'figma',
       url: 'https://www.figma.com/file/DeZ6iJggYfpSXHcEexNeYs/Footnote?type=design&node-id=0-1&mode=design&t=7vjD8Qq8iKSnKn6a-0'

@@ -22,6 +22,7 @@ export default {
   component: 'sd-container',
   parameters: {
     ...parameters,
+    controls: { disable: true },
     design: {
       type: 'figma',
       url: 'https://www.figma.com/file/ffdz9zO1CISlr8aHCZ7Bzp/Container?type=design&node-id=0-1&mode=design&t=pa9I1YKCYZQxj9Ob-0'

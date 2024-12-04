@@ -17,7 +17,7 @@ export default {
   component: 'sd-radio',
   args: overrideArgs([{ type: 'slot', name: 'default', value: 'Default Slot' }]),
   argTypes,
-  parameters: { ...parameters }
+  parameters: { ...parameters, controls: { disable: true } }
 };
 
 /**

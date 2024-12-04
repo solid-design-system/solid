@@ -25,6 +25,7 @@ export default {
   component: 'sd-meta',
   parameters: {
     ...parameters,
+    controls: { disable: true },
     design: {
       type: 'figma',
       url: 'https://www.figma.com/file/Um1B3fI5fvdFVJv6LO7kZG/Meta-Information?type=design&node-id=0-1&mode=design&t=I2fDQn7HjSc75K1V-0'

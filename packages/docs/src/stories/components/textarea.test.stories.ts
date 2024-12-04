@@ -25,6 +25,7 @@ export default {
   },
   parameters: {
     ...parameters,
+    controls: { disable: true },
     design: {
       type: 'figma',
       url: 'https://www.figma.com/file/07Bzd23A0QSrSWiXy6w2uM/Text-Area?node-id=1010%3A1736&mode=dev'

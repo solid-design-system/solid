@@ -20,7 +20,7 @@ export default {
   title: 'Components/sd-brandshape/Screenshots: sd-brandshape',
   component: 'sd-brandshape',
   tags: ['!autodocs'],
-  parameters: { ...parameters },
+  parameters: { ...parameters, controls: { disable: true } },
   args: overrideArgs([
     {
       type: 'slot',

@@ -18,7 +18,7 @@ export default {
   component: 'sd-divider',
   args: overrideArgs([{ type: 'slot', name: 'default', value: 'Default Slot' }]),
   argTypes,
-  parameters: { ...parameters },
+  parameters: { ...parameters, controls: { disable: true } },
   decorators: [
     (story: () => typeof html) => html`
       <style>

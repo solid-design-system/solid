@@ -13,7 +13,8 @@ export default {
   tags: ['!autodocs'],
   component: 'sd-copyright',
   parameters: {
-    ...parameters
+    ...parameters,
+    controls: { disable: true }
   },
   args: overrideArgs(
     {

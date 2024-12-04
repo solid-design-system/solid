@@ -21,7 +21,7 @@ export default {
   tags: ['!autodocs'],
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Tag' }),
   argTypes,
-  parameters: { ...parameters },
+  parameters: { ...parameters, controls: { disable: true } },
   decorators: [withActions] as any
 };
 

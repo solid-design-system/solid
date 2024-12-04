@@ -57,6 +57,9 @@ export default {
   },
   parameters: {
     ...parameters,
+    controls: {
+      disable: true
+    },
     design: {
       type: 'figma',
       url: 'https://www.figma.com/file/xSIeTnyfW2T21Uw5JgdZOg/Input?node-id=0%3A1&mode=dev'

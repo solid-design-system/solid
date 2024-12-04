@@ -37,7 +37,7 @@ export default {
     }
   ]),
   argTypes,
-  parameters: { ...parameters },
+  parameters: { ...parameters, controls: { disable: true } },
   decorators: [
     withActions,
     (story: any) =>

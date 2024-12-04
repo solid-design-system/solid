@@ -25,7 +25,7 @@ export default {
     { type: 'attribute', name: 'summary', value: 'Accordion' }
   ]),
   argTypes,
-  parameters: { ...parameters }
+  parameters: { ...parameters, controls: { disable: true } }
 };
 
 export const Default = {

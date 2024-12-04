@@ -23,7 +23,7 @@ export default {
     { type: 'slot', name: 'default', value: '<div class="slot slot--border slot--text h-16">Default slot</div>' }
   ]),
   argTypes,
-  parameters: { ...parameters }
+  parameters: { ...parameters, controls: { disable: true } }
 };
 
 /**

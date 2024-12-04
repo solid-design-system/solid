@@ -26,7 +26,8 @@ export default {
   tags: ['!autodocs'],
   argTypes,
   parameters: {
-    ...parameters
+    ...parameters,
+    controls: { disable: true }
   },
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Lorem Ipsum' })
 };

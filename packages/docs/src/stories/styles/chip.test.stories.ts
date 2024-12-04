@@ -29,6 +29,7 @@ export default {
   component: 'sd-chip',
   parameters: {
     ...parameters,
+    controls: { disable: true },
     backgrounds: {
       default: 'neutral-200'
     }

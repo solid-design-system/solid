@@ -18,6 +18,7 @@ export default {
   component: 'sd-flag',
   parameters: {
     ...parameters,
+    controls: { disable: true },
     backgrounds: {
       default: 'neutral-200'
     },

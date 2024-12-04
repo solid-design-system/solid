@@ -49,7 +49,7 @@ export default {
     }
   ]),
   argTypes,
-  parameters: { ...parameters }
+  parameters: { ...parameters, controls: { disable: true } }
 };
 
 export const Default = {

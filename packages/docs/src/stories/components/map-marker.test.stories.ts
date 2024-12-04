@@ -11,9 +11,7 @@ export default {
   title: 'Components/sd-map-marker/Screenshots: sd-map-marker',
   tags: ['!autodocs'],
   component: 'sd-map-marker',
-  parameters: {
-    ...parameters
-  },
+  parameters: { ...parameters, controls: { disable: true } },
   argTypes,
   decorators: [withActions] as any
 };

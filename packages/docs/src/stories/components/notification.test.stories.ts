@@ -33,7 +33,7 @@ export default {
     }
   ]),
   argTypes,
-  parameters: { ...parameters },
+  parameters: { ...parameters, controls: { disable: true } },
   decorators: [
     (story: () => typeof html) => html`
       <style>

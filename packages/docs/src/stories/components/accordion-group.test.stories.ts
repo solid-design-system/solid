@@ -19,7 +19,7 @@ export default {
       '<sd-accordion summary="Accordion 1"><div class="slot slot--border slot--text h-16">Default slot</div></sd-accordion><sd-accordion summary="Accordion 2"><div class="slot slot--border slot--text h-16">Default slot</div></sd-accordion><sd-accordion summary="Accordion 3"><div class="slot slot--border slot--text h-16">Default slot</div></sd-accordion>'
   },
   argTypes,
-  parameters: { ...parameters }
+  parameters: { ...parameters, controls: { disable: true } }
 };
 
 /**

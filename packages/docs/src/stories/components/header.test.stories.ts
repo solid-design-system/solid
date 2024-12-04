@@ -25,7 +25,7 @@ export default {
     }
   ]),
   argTypes,
-  parameters: { ...parameters, docs: { story: { inline: false, height: '200px' } } },
+  parameters: { ...parameters, controls: { disable: true }, docs: { story: { inline: false, height: '200px' } } },
   decorators: [
     withActions,
     (story: any) =>

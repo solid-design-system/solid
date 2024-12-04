@@ -36,7 +36,7 @@ export default {
   argTypes,
   parameters: {
     ...parameters,
-    controls: { exclude: ['contained'] }
+    controls: { disable: true }
   }
 };
 

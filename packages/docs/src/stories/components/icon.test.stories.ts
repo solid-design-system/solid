@@ -12,7 +12,7 @@ export default {
   component: 'sd-icon',
   args: overrideArgs([{ name: 'name', type: 'attribute', value: 'union-investment/content/image' }], args),
   argTypes,
-  parameters: { ...parameters },
+  parameters: { ...parameters, controls: { disable: true } },
   decorators: [withActions] as any
 };
 

@@ -18,6 +18,9 @@ export default {
   tags: ['!autodocs'],
   parameters: {
     ...parameters,
+    controls: {
+      disable: true
+    },
     design: {
       type: 'figma',
       url: 'https://www.figma.com/file/frKFVz9UBKAtsvErLKTeGj/Badge?type=design&node-id=0-1&mode=design&t=OeLPPGif39ASuNmf-0'

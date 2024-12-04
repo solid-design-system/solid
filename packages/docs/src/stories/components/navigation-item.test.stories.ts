@@ -43,7 +43,7 @@ export default {
   tags: ['!autodocs'],
   args: overrideArgs([{ type: 'slot', name: 'default', value: 'Navigation' }]),
   argTypes,
-  parameters: { ...parameters },
+  parameters: { ...parameters, controls: { disable: true } },
   decorators: [withActions] as any
 };
 
