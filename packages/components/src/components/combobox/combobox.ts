@@ -404,13 +404,14 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
 
     // Close when pressing escape and open / clear input if not open
     if (event.key === 'Escape') {
+      this.displayInput.value = '';
+      this.displayInputValue = '';
+
       if (this.open) {
         event.preventDefault();
         event.stopPropagation();
         this.hide();
         this.displayInput.focus({ preventScroll: true });
-      } else if (!this.open) {
-        this.clearCombobox();
       }
     }
 

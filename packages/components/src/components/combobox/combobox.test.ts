@@ -457,7 +457,7 @@ describe('<sd-combobox>', () => {
 
     it('should clear the input when Escape key is pressed with sd-combobox is on focus and listbox is closed', async () => {
       const el = await fixture<SdCombobox>(html`
-        <sd-combobox value="option">
+        <sd-combobox value="option-1">
           <sd-option value="option-1">Option 1</sd-option>
           <sd-option value="option-2">Option 2</sd-option>
           <sd-option value="option-3">Option 3</sd-option>
@@ -472,7 +472,7 @@ describe('<sd-combobox>', () => {
 
       expect(displayInput.getAttribute('aria-expanded')).to.equal('false');
       expect(displayInput.value).to.equal('');
-      expect(el.value).to.equal('');
+      expect(el.value).to.deep.equal(['option-1']);
     });
 
     it('should move the cursor to the start of the input when Home key is pressed with sd-combobox is on focus', async () => {
