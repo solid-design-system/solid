@@ -9,7 +9,7 @@ patchedDependencies:
     hash: wvll6shaj2gjxjxaqwbika4vli
     path: patches/tailwindcss@3.4.1.patch
   wc-storybook-helpers@1.5.3:
-    hash: 5rj42h3mel237axfuxrdjsoani
+    hash: 7dwrwg6yq4ihihresjps2u5obe
     path: patches/wc-storybook-helpers@1.5.3.patch
 
 importers:
@@ -377,7 +377,7 @@ importers:
         version: 5.1.3(typescript@5.7.2)(vite@5.4.11)
       wc-storybook-helpers:
         specifier: 1.5.3
-        version: 1.5.3(patch_hash=5rj42h3mel237axfuxrdjsoani)(lit@3.2.1)(react-dom@18.3.1)(react@18.3.1)
+        version: 1.5.3(patch_hash=7dwrwg6yq4ihihresjps2u5obe)(lit@3.2.1)(react-dom@18.3.1)(react@18.3.1)
 
   packages/placeholders:
     devDependencies:
@@ -11513,7 +11513,7 @@ packages:
       - terser
     dev: true
 
-  /wc-storybook-helpers@1.5.3(patch_hash=5rj42h3mel237axfuxrdjsoani)(lit@3.2.1)(react-dom@18.3.1)(react@18.3.1):
+  /wc-storybook-helpers@1.5.3(patch_hash=7dwrwg6yq4ihihresjps2u5obe)(lit@3.2.1)(react-dom@18.3.1)(react@18.3.1):
     resolution: {integrity: sha512-4YANeWHE7Q1UKF5JdrlB6T240kIaduOeJoaNi7M3ujRWYOJcpSYmeD1fbjzLKqd7PITE/iuY4Pl9H7pDNa7LwA==}
     peerDependencies:
       lit: ^2.0.0 || ^3.0.0

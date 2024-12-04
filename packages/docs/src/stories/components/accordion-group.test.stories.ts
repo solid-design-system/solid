@@ -46,7 +46,7 @@ export const CloseOthers = {
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        y: { type: 'attribute', name: 'close-others' }
+        y: { type: 'attribute', name: 'close-others', values: [false, true] }
       },
       args,
       constants: { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' }

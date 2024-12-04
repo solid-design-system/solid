@@ -67,7 +67,7 @@ index 2cf57666c31e7b572cbd10a6bc10f334b0376429..723967830c8a47797b61354b28f69929
  function isObject(type) {
      return (type.includes("array") ||
 diff --git a/dist/html-templates.js b/dist/html-templates.js
-index 31b37aeec6a863600bba6d29009bb429f8828a71..36fc8e252ecf403c08ff7630e5f5ed1a1cc06a6e 100644
+index 31b37aeec6a863600bba6d29009bb429f8828a71..cee3cdcb033f9112f86f909adc96306241d0d150 100644
 --- a/dist/html-templates.js
 +++ b/dist/html-templates.js
 @@ -1,5 +1,5 @@
@@ -105,15 +105,29 @@ index 31b37aeec6a863600bba6d29009bb429f8828a71..36fc8e252ecf403c08ff7630e5f5ed1a
  }
  /**
   * Gets a formatted object with the component's attributes and properties formatted to be used as operators in the template
-@@ -98,6 +96,7 @@ function getTemplateOperators(component, args, argTypes) {
-             additionalAttrs[key] = args[key];
-         }
+@@ -91,13 +89,15 @@ function getTemplateOperators(component, args, argTypes) {
+         propOperators[`.${key}`] = propValue;
      });
+     Object.keys(args)
+-        .filter((x) => !Object.keys(argTypes || {}).includes(x))
++        .filter((x) => !Object.keys(argTypes || {}).includes(x) || x.endsWith('-attr'))
+         .forEach((key) => {
+-        // exclude Storybook event listeners
+-        if (!key.startsWith("on") && typeof args[key] !== "function") {
+-            additionalAttrs[key] = args[key];
+-        }
+-    });
++            const k = key.replace('-attr', '')
++            // exclude Storybook event listeners
++            if (!key.startsWith("on") && typeof args[key] !== "function") {
++                additionalAttrs[k] = args[key];
++            }
++        });
 +
      return { attrOperators, propOperators, additionalAttrs };
  }
  /**
-@@ -127,24 +126,30 @@ function getCssPropTemplate(component, args) {
+@@ -127,24 +127,30 @@ function getCssPropTemplate(component, args) {
   * @returns formatted string with CSS shadow parts and their styles
   */
  function getCssPartsTemplate(component, args) {
@@ -160,7 +174,7 @@ index 31b37aeec6a863600bba6d29009bb429f8828a71..36fc8e252ecf403c08ff7630e5f5ed1a
  /**
   * Gets the template used to render the component's slots in Storybook
   * @param component component object from the Custom Elements Manifest
-@@ -152,24 +157,25 @@ function getCssPartsTemplate(component, args) {
+@@ -152,24 +158,25 @@ function getCssPartsTemplate(component, args) {
   * @returns formatted string with slots and their values
   */
  function getSlotsTemplate(component, args) {

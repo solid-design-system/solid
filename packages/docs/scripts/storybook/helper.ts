@@ -359,13 +359,15 @@ export const storybookTemplate = (customElementTag: string) => {
       return html`<div class=${classesAsString}>${unsafeStatic(slotContent)}</div>`;
     };
 
-    const constantDefinitions = (Array.isArray(constants) ? constants : [constants]).reduce(
-      (acc, curr) => ({
-        ...acc,
-        [`${curr.name}${storybookHelpers(customElementTag).getSuffixFromType(curr.type as any)}`]: curr.value
-      }),
-      {}
-    );
+    const constantDefinitions = (Array.isArray(constants) ? constants : [constants])
+      .filter(constant => constant.type !== 'template')
+      .reduce(
+        (acc, curr) => ({
+          ...acc,
+          [`${curr.name}${storybookHelpers(customElementTag).getSuffixFromType(curr.type as any)}`]: curr.value
+        }),
+        {}
+      );
 
     if (!axis?.x && !axis?.y && !options?.title) {
       return html`${template({
@@ -536,12 +538,14 @@ export const storybookTemplate = (customElementTag: string) => {
                               ...args,
                               ...constantDefinitions,
                               ...(xAxis &&
+                                Object.keys(xAxis).length > 0 &&
                                 xAxis.type !== 'template' && {
                                   [`${xAxis.name}${storybookHelpers(customElementTag).getSuffixFromType(xAxis.type)}`]:
                                     // As the value could be null or empty, we need to check if the property exists
                                     xValue.hasOwnProperty('value') ? xValue.value : xValue
                                 }),
                               ...(yAxis &&
+                                Object.keys(yAxis).length > 0 &&
                                 yAxis.type !== 'template' && {
                                   [`${yAxis.name}${storybookHelpers(customElementTag).getSuffixFromType(yAxis.type)}`]:
                                     // As the value could be null or empty, we need to check if the property exists
