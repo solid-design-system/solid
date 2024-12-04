@@ -1,3 +1,5 @@
+import '../button/button';
+import '../icon/icon';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { property, query } from 'lit/decorators.js';
@@ -10,6 +12,9 @@ import SolidElement from '../../internal/solid-element';
  * @documentation https://solid.union-investment.com/[storybook-link]/flipcard
  * @status stable
  * @since 3.8.0
+ *
+ * @dependency sd-button
+ * @dependency sd-icon
  *
  * @event sd-flip-front - Emmited when the front face of the flipcard is clicked.
  * @event sd-flip-back - Emmited when the back face of the flipcard is clicked.
@@ -129,9 +134,16 @@ export default class SdFlipcard extends SolidElement {
               : 'flex-col',
             this.flipDirection === 'vertical' && 'vertical'
           )}
-          @click=${this.handleFrontClick}
-          @keydown=${this.handleFrontKeydown}
         >
+          <sd-button
+            size="md"
+            class="absolute bottom-0 right-0 p-2 flex-shrink-0"
+            @click=${this.handleFrontClick}
+            @keydown=${this.handleFrontKeydown}
+          >
+            <sd-icon library="system" name="reload" label="Flip to Back"></sd-icon>
+          </sd-button>
+
           <div
             part="media-front"
             class=${cx(
@@ -200,9 +212,15 @@ export default class SdFlipcard extends SolidElement {
               : 'flex-col',
             this.flipDirection === 'vertical' && 'vertical'
           )}
-          @click=${this.handleBackClick}
-          @keydown=${this.handleBackKeydown}
         >
+          <sd-button
+            size="md"
+            class="absolute bottom-0 right-0 p-2 flex-shrink-0"
+            @click=${this.handleBackClick}
+            @keydown=${this.handleBackKeydown}
+          >
+            <sd-icon library="system" name="reload" label="Flip to Front"></sd-icon>
+          </sd-button>
           <div
             part="media-back"
             class=${cx(
