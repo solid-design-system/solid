@@ -32,7 +32,7 @@ export const SampleA = {
         <!-- top-right-area start !-->
         <div class="flex lg:hidden">
           <sd-navigation-item id="open-menu-sample-a">
-            <sd-icon name="system/menu" label="Open menu" class="text-xl -my-[1.5px] -mx-1"></sd-icon>
+            <sd-icon name="system/menu" label="Open navigation" class="text-xl -my-[1.5px] -mx-1"></sd-icon>
           </sd-navigation-item>
         </div>
         <!-- top-right-area end !-->
@@ -50,12 +50,12 @@ export const SampleA = {
         <div class="-mr-4 flex items-center">
           <sd-navigation-item href="javascript:void(0)">
             <div class="w-4 h-4 flex items-center">
-              <sd-icon name="system/website" label="Website" class="text-xl absolute -ml-1"></sd-icon>
+              <sd-icon name="system/website" label="News" class="text-xl absolute -ml-1"></sd-icon>
             </div>
           </sd-navigation-item>
           <sd-navigation-item onclick="alert('This could open a search bar')">
             <div class="w-4 h-4 flex items-center">
-              <sd-icon name="system/magnifying-glass" label="Magnifying glass" class="text-xl absolute -ml-1"></sd-icon>
+              <sd-icon name="system/magnifying-glass" label="Search" class="text-xl absolute -ml-1"></sd-icon>
             </div>
           </sd-navigation-item>
           <sd-navigation-item href="javascript:void(0)">
@@ -135,28 +135,28 @@ export const SampleA02 = {
         <!-- top-right-area start !-->
         <div class="flex lg:hidden">
           <sd-navigation-item id="open-menu-sample-a-02">
-            <sd-icon name="system/menu" label="Open menu" class="text-xl  -my-[1.5px] -mx-1"></sd-icon>
+            <sd-icon name="system/menu" label="Open navigation" class="text-xl  -my-[1.5px] -mx-1"></sd-icon>
           </sd-navigation-item>
         </div>
         <div class="-mr-4 lg:flex hidden items-center">
           <sd-navigation-item href="javascript:void(0)">
             <div class="w-4 h-4 flex items-center">
-              <sd-icon name="system/filter-empty" label="Filter empty" class="text-xl absolute -ml-1"></sd-icon>
+              <sd-icon name="system/filter-empty" label="Search filter" class="text-xl absolute -ml-1"></sd-icon>
             </div>
           </sd-navigation-item>
           <sd-navigation-item href="javascript:void(0)">
             <div class="w-4 h-4 flex items-center">
-              <sd-icon name="system/globe" label="Globe" class="text-xl absolute -ml-1"></sd-icon>
+              <sd-icon name="system/globe" label="Language" class="text-xl absolute -ml-1"></sd-icon>
             </div>
           </sd-navigation-item>
           <sd-navigation-item href="javascript:void(0)">
             <div class="w-4 h-4 flex items-center">
-              <sd-icon name="system/website" label="Website" class="text-xl absolute -ml-1"></sd-icon>
+              <sd-icon name="system/website" label="News" class="text-xl absolute -ml-1"></sd-icon>
             </div>
           </sd-navigation-item>
           <sd-navigation-item onclick="alert('This could open a search bar')">
             <div class="w-4 h-4 flex items-center">
-              <sd-icon name="system/magnifying-glass" label="Magnifying glass" class="text-xl absolute -ml-1"></sd-icon>
+              <sd-icon name="system/magnifying-glass" label="Search" class="text-xl absolute -ml-1"></sd-icon>
             </div>
           </sd-navigation-item>
           <sd-navigation-item href="javascript:void(0)">
@@ -260,7 +260,7 @@ export const SampleB = {
           </div>
           <div class="flex lg:hidden">
             <sd-navigation-item id="open-menu-sample-b">
-              <sd-icon name="system/menu" label="Open menu" class="text-xl  -my-[1.5px] -mx-1"></sd-icon>
+              <sd-icon name="system/menu" label="Open navigation" class="text-xl  -my-[1.5px] -mx-1"></sd-icon>
             </sd-navigation-item>
           </div>
         </div>
@@ -279,12 +279,12 @@ export const SampleB = {
         <div class="flex items-center">
           <sd-navigation-item href="javascript:void(0)">
             <div class="w-4 h-4 flex items-center">
-              <sd-icon name="system/website" label="Website" class="text-xl absolute -ml-1"></sd-icon>
+              <sd-icon name="system/website" label="News" class="text-xl absolute -ml-1"></sd-icon>
             </div>
           </sd-navigation-item>
           <sd-navigation-item onclick="alert('This could open a search bar')">
             <div class="w-4 h-4 flex items-center">
-              <sd-icon name="system/magnifying-glass" label="Magnifying glass" class="text-xl absolute -ml-1"></sd-icon>
+              <sd-icon name="system/magnifying-glass" label="Search" class="text-xl absolute -ml-1"></sd-icon>
             </div>
           </sd-navigation-item>
           <!-- bottom-right-area end !-->
