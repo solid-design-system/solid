@@ -830,7 +830,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
         }
 
         const optgroup = option.parentElement as SdOptgroup;
-        const optGroupLabel = optgroup.querySelector('[slot="label"]');
+        const optGroupLabel = optgroup.querySelector('[slot="label"]')?.cloneNode(true);
         const filteredOptgroup = optgroups.find(el => el.id === optgroup.id);
 
         // Check if the optgroup was already added to the filteredOptions.
