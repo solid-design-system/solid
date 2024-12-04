@@ -27,6 +27,8 @@ import SolidElement from '../../internal/solid-element';
  * @csspart base - The component's base wrapper.
  * @csspart front - The container that wraps the front-side of the flipcard.
  * @csspart back - The container that wraps the back-side of the flipcard.
+ * @csspart front-button - The button that flips the flipcard to the back.
+ * @csspart back-button - The button that flips the flipcard to the front.
  * @csspart front-slot-container - The container that wraps the front slot.
  * @csspart back-slot-container - The container that wraps the back slot.
  * @csspart media-front - The container that wraps the media-front slot.
@@ -126,6 +128,7 @@ export default class SdFlipcard extends SolidElement {
           )}
         >
           <sd-button
+            part="front-button"
             size="md"
             variant=${{
               primary: 'tertiary',
@@ -218,6 +221,7 @@ export default class SdFlipcard extends SolidElement {
         >
           <sd-button
             size="md"
+            part="back-button"
             variant=${{
               primary: 'tertiary',
               'primary-100': 'tertiary',
@@ -344,24 +348,6 @@ export default class SdFlipcard extends SolidElement {
 
       .flip-card__gradient {
         flex: 0.4 1 0;
-      }
-
-      @media (hover: hover) and (pointer: fine) {
-        .flip-card:hover .flip-card__side--front.hover {
-          transform: rotateY(-180deg);
-        }
-
-        .flip-card:hover .flip-card__side--back.hover {
-          transform: rotateY(0);
-        }
-
-        .flip-card:hover .flip-card__side--front.hover.vertical {
-          transform: rotateX(-180deg);
-        }
-
-        .flip-card:hover .flip-card__side--back.hover.vertical {
-          transform: rotateX(0);
-        }
       }
     `
   ];
