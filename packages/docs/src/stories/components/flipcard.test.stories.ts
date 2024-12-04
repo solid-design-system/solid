@@ -84,32 +84,6 @@ export const Variants = {
 };
 
 /**
- * Use the `activation` attribute to determine the activation type of the flipcard. There are two options: `click-only` and `hover-and-click`.
- */
-
-export const Activation = {
-  name: 'Activation',
-  parameters: { controls: { exclude: ['activation'] } },
-  render: (args: any) =>
-    generateTemplate({
-      axis: {
-        x: {
-          type: 'attribute',
-          name: 'activation'
-        }
-      },
-      args,
-      constants: [
-        {
-          type: 'template',
-          name: 'style',
-          value: '<div style="margin-bottom: 40px">%TEMPLATE%</div>'
-        }
-      ]
-    })
-};
-
-/**
  * Use the `flip-direction` attribute to determine the direction of the flipcard. There are two options: `horizontal` and `vertical`.
  */
 
@@ -238,12 +212,12 @@ export const Parts = {
         {
           type: 'attribute',
           name: 'front-variant',
-          value: 'gradient-dark-top'
+          value: 'gradient-dark'
         },
         {
           type: 'attribute',
           name: 'back-variant',
-          value: 'gradient-dark-bottom'
+          value: 'gradient-dark'
         }
       ]
     });
@@ -346,7 +320,6 @@ export const AspectRatio = {
 export const Combination = generateScreenshotStory([
   Default,
   Variants,
-  Activation,
   flipDirection,
   Slots,
   Parts,
