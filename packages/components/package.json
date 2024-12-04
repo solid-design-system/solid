@@ -1,12 +1,16 @@
 {
   "name": "@solid-design-system/components",
   "description": "Solid Design System: Components",
-  "version": "3.22.11",
+  "version": "3.22.13",
   "homepage": "https://solid-design-system.fe.union-investment.de/docs/",
   "author": {
     "name": "Union Investment"
   },
   "license": "MIT",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "customElements": "dist/custom-elements.json",
   "web-types": "dist/web-types.json",
   "type": "module",
@@ -71,9 +75,7 @@
     "test.verify": "web-test-runner --group default",
     "test.single": "web-test-runner -- --watch --group",
     "test.watch": "web-test-runner --watch --group default",
-    "postversion": "pnpm build.npm && node scripts/node-write-sizes.mjs",
-    "release": "semantic-release  --tagFormat 'components/${version}' -e semantic-release-monorepo",
-    "release.dry": "semantic-release -d --tagFormat 'components/${version}' -e semantic-release-monorepo"
+    "postversion": "pnpm build.npm && node scripts/node-write-sizes.mjs"
   },
   "dependencies": {
     "@floating-ui/dom": "^1.6.5",
@@ -91,9 +93,6 @@
     "@remcovaes/web-test-runner-vite-plugin": "^1.2.0",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/pluginutils": "^5.1.0",
-    "@semantic-release/changelog": "^6.0.3",
-    "@semantic-release/exec": "^6.0.3",
-    "@semantic-release/git": "^10.0.1",
     "@tarekraafat/autocomplete.js": "^10.2.7",
     "@types/mocha": "^10.0.4",
     "@types/sinon": "^17.0.1",
@@ -115,8 +114,6 @@
     "prettier": "^3.3.2",
     "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-summary": "^2.0.1",
-    "semantic-release": "^19.0.5",
-    "semantic-release-monorepo": "^7.0.5",
     "sinon": "^17.0.1",
     "tailwindcss": "^3.4.1",
     "terser": "^5.31.1",
@@ -126,43 +123,6 @@
     "vite-node": "^1.6.0",
     "vite-plugin-cem": "^0.8.0",
     "vite-tsconfig-paths": "^4.2.1"
-  },
-  "release": {
-    "branches": [
-      "main"
-    ],
-    "plugins": [
-      "@semantic-release/commit-analyzer",
-      "@semantic-release/release-notes-generator",
-      [
-        "@semantic-release/changelog",
-        {
-          "changelogFile": "CHANGELOG.md"
-        }
-      ],
-      [
-        "@semantic-release/npm",
-        {
-          "npmPublish": true
-        }
-      ],
-      [
-        "@semantic-release/git",
-        {
-          "message": "chore(release/components): ${nextRelease.version} [skip actions]\n\n${nextRelease.notes}",
-          "assets": [
-            "CHANGELOG.md",
-            "package.json"
-          ]
-        }
-      ],
-      [
-        "@semantic-release/github",
-        {
-          "successComment": false
-        }
-      ]
-    ]
   },
   "readme": "README.md",
   "meta": {
