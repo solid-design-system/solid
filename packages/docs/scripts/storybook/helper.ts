@@ -1,4 +1,3 @@
-import { classMap } from 'lit/directives/class-map.js';
 import { getWcStorybookHelpers, setWcStorybookHelpersConfig } from 'wc-storybook-helpers';
 import { html, unsafeStatic } from 'lit/static-html.js';
 import { sentenceCase } from 'change-case';
@@ -343,7 +342,9 @@ export const storybookTemplate = (customElementTag: string) => {
       // Convert classes object to a space-separated string of class names
       const classesAsString = Object.keys(classes)
         .filter(key => classes[key])
-        .join(' ');
+        .map(key => key.replace('-attr', ''))
+        .join(' ')
+        .trim();
 
       if (options?.templateContent) {
         // Replace placeholders in the provided template content
@@ -355,7 +356,7 @@ export const storybookTemplate = (customElementTag: string) => {
       }
 
       // Default rendering using lit-html
-      return html`<div class=${classMap(classes)}>${unsafeStatic(slotContent)}</div>`;
+      return html`<div class=${classesAsString}>${unsafeStatic(slotContent)}</div>`;
     };
 
     const constantDefinitions = (Array.isArray(constants) ? constants : [constants]).reduce(
