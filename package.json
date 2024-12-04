@@ -6,6 +6,10 @@
     "name": "Union Investment"
   },
   "description": "",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "node .husky/install.mjs",
@@ -15,7 +19,8 @@
     "lint.verify": "eslint packages --max-warnings 0 && echo '✅ Linting verified'",
     "format.verify": "prettier --check --log-level warn . && echo '✅ Formatting verified'",
     "format.fix": "prettier --write --log-level warn .",
-    "release.dry": "pnpm --recursive --if-present release.dry --filter"
+    "changeset": "changeset",
+    "release": "node ./scripts/release.mjs"
   },
   "lib": "es2021",
   "keywords": [],
@@ -30,6 +35,9 @@
     ]
   },
   "devDependencies": {
+    "@changesets/changelog-github": "^0.5.0",
+    "@changesets/cli": "^2.27.10",
+    "@octokit/rest": "^21.0.2",
     "@typescript-eslint/eslint-plugin": "^7.13.1",
     "@typescript-eslint/parser": "^7.13.1",
     "eslint": "^8.57.0",
