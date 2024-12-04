@@ -127,6 +127,18 @@ export default class SdFlipcard extends SolidElement {
         >
           <sd-button
             size="md"
+            variant=${{
+              primary: 'tertiary',
+              'primary-100': 'tertiary',
+              'gradient-light': 'primary',
+              'gradient-dark': 'primary'
+            }[this.frontVariant] as 'primary' | 'secondary' | 'tertiary' | 'cta'}
+            ?inverted=${{
+              primary: true,
+              'primary-100': false,
+              'gradient-light': true,
+              'gradient-dark': true
+            }[this.frontVariant]}
             class=${cx('absolute right-0 p-2 flex-shrink-0', this.placement === 'top' ? 'bottom-0' : 'top-0')}
             @click=${this.handleFrontClick}
             @keydown=${this.handleFrontKeydown}
@@ -206,6 +218,18 @@ export default class SdFlipcard extends SolidElement {
         >
           <sd-button
             size="md"
+            variant=${{
+              primary: 'tertiary',
+              'primary-100': 'tertiary',
+              'gradient-light': 'primary',
+              'gradient-dark': 'primary'
+            }[this.backVariant] as 'primary' | 'secondary' | 'tertiary' | 'cta'}
+            ?inverted=${{
+              primary: true,
+              'primary-100': false,
+              'gradient-light': true,
+              'gradient-dark': true
+            }[this.backVariant]}
             class=${cx('absolute right-0 p-2 flex-shrink-0', this.placement === 'top' ? 'bottom-0' : 'top-0')}
             @click=${this.handleBackClick}
             @keydown=${this.handleBackKeydown}
