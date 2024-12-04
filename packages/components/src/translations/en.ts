@@ -35,6 +35,7 @@ const translation: Translation = {
   selectDefaultPlaceholder: 'Please select',
   tagsSelected: 'Options selected',
   comboboxDefaultPlaceholder: 'Please search and select',
+  noResults: 'No results found',
   showLess: 'Show less',
   showMore: 'Show more',
   showPassword: 'Show password',

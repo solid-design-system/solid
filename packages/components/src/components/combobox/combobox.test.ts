@@ -333,7 +333,7 @@ describe('<sd-combobox>', () => {
       expect(filteredOptions.length).to.equal(2);
     });
 
-    it('should not open the listbox when a letter key is pressed with sd-combobox is on focus with no appropriate options', async () => {
+    it('should open the listbox and show a message when a letter key is pressed with sd-combobox is on focus with no appropriate options', async () => {
       const el = await fixture<SdCombobox>(html`
         <sd-combobox>
           <sd-option value="option-1">Black</sd-option>
@@ -348,10 +348,11 @@ describe('<sd-combobox>', () => {
       await el.updateComplete;
 
       const filteredListbox = el.shadowRoot!.querySelector('[part="filtered-listbox"]')!;
-      const filteredOptions = filteredListbox.querySelectorAll<SdOption>('sd-option');
+      const filteredOptions = filteredListbox.querySelectorAll('#noResults');
 
-      expect(displayInput.getAttribute('aria-expanded')).to.equal('false');
-      expect(filteredOptions.length).to.equal(0);
+      expect(displayInput.getAttribute('aria-expanded')).to.equal('true');
+      expect(filteredOptions.length).to.equal(1);
+      expect(filteredOptions[0].textContent).to.equal('No results found');
     });
 
     it('should not open the listbox when ctrl + R is pressed with sd-combobox is on focus', async () => {
@@ -451,7 +452,7 @@ describe('<sd-combobox>', () => {
       await el.updateComplete;
 
       expect(displayInput.getAttribute('aria-expanded')).to.equal('false');
-      expect(displayInput.value).to.equal('opt');
+      expect(displayInput.value).to.equal('');
       expect(el.value).to.equal('');
     });
 
@@ -1143,31 +1144,6 @@ describe('<sd-combobox>', () => {
     expect(afterHideHandler).to.have.been.calledOnce;
   });
 
-  it('should emit sd-error if show method was called and no appropriate options are available', async () => {
-    const el = await fixture<SdCombobox>(html`
-      <sd-combobox>
-        <sd-option value="option-1">Option 1</sd-option>
-        <sd-option value="option-2">Option 2</sd-option>
-        <sd-option value="option-3">Option 3</sd-option>
-      </sd-combobox>
-    `);
-
-    el.focus();
-    await sendKeys({ type: 'test' });
-
-    const showHandler = sinon.spy();
-    const afterShowHandler = sinon.spy();
-    const errorHandler = sinon.spy();
-
-    el.addEventListener('sd-error', errorHandler);
-    el.addEventListener('sd-show', showHandler);
-    el.addEventListener('sd-after-show', afterShowHandler);
-
-    await el.show();
-    expect(showHandler).to.not.have.been.called;
-    expect(afterShowHandler).to.not.have.been.called;
-    expect(errorHandler).to.have.been.calledOnce;
-  });
   it('should update the filtered list when an option changes', async () => {
     const el = await fixture<SdCombobox>(html`
       <sd-combobox>

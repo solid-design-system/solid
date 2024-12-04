@@ -402,16 +402,15 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       return;
     }
 
-    // Close when pressing escape and open / clear input if not open
+    // Close when pressing escape and clear input
     if (event.key === 'Escape') {
-      this.displayInput.value = '';
-      this.displayInputValue = '';
-
       if (this.open) {
         event.preventDefault();
         event.stopPropagation();
         this.hide();
         this.displayInput.focus({ preventScroll: true });
+      } else {
+        this.displayInputValue = '';
       }
     }
 
@@ -564,6 +563,11 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   private handleClearClick(event: MouseEvent) {
     event.stopPropagation();
     this.clearCombobox();
+  }
+
+  private handleNoResultsClick(event: MouseEvent) {
+    event.preventDefault();
+    this.hide();
   }
 
   private clearCombobox() {
@@ -774,8 +778,12 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   private setOrderedSelectedOptions(option: SdOption) {
     const selectedSlottedOption = this.getSlottedOptions().find(el => this.compareOptions(el, option));
     if (this.multiple) {
-      if (this.selectedOptions.find(el => this.compareOptions(el!, selectedSlottedOption!))) {
-        this.selectedOptions = this.selectedOptions.filter(el => !this.compareOptions(el!, selectedSlottedOption!));
+      if (
+        this.selectedOptions.length > 0 &&
+        selectedSlottedOption &&
+        this.selectedOptions.find(el => this.compareOptions(el!, selectedSlottedOption))
+      ) {
+        this.selectedOptions = this.selectedOptions.filter(el => !this.compareOptions(el!, selectedSlottedOption));
       } else {
         this.selectedOptions = [...this.selectedOptions, selectedSlottedOption];
       }
@@ -796,7 +804,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
         this.value = [...this.value, ...this.selectedOptions.map(el => el!.value || el!.getTextLabel())];
       } else {
         this.value = this.selectedOptions.map(el => {
-          return el!.value || el!.getTextLabel();
+          return el?.value || el?.getTextLabel() || '';
         });
       }
       this.displayInputValue = '';
@@ -924,13 +932,6 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   @watch('open', { waitUntilFirstUpdate: true })
   async handleOpenChange() {
     if (this.open && !this.disabled) {
-      if (this.filteredOptions.length === 0) {
-        // Don't open the listbox if there are no options
-        this.open = false;
-        this.emit('sd-error');
-        return;
-      }
-
       // Show
       this.emit('sd-show');
       this.addOpenListeners();
@@ -943,6 +944,12 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       await animateTo(this.popup.popup, keyframes, options);
 
       this.emit('sd-after-show');
+
+      if (this.filteredOptions.length === 0) {
+        // emit an error if there are no options found
+        this.emit('sd-error');
+      }
+
       return;
     }
 
@@ -961,10 +968,6 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     this.emit('sd-after-hide');
   }
 
-  /**
-   * Shows the listbox. If it is not possible to open the listbox, because there are no
-   * appropriate filtered options, a sd-error is emitted and the listbox stays closed.
-   */
   async show() {
     if (this.open || this.disabled) {
       this.open = false;
@@ -981,6 +984,8 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       this.open = false;
       return undefined;
     }
+
+    this.displayInputValue = '';
 
     this.open = false;
     return waitForEvent(this, 'sd-after-hide');
@@ -1343,7 +1348,17 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
               @mousedown=${this.preventLoosingFocus}
               @mouseup=${this.handleOptionClick}
             >
-              <div part="filtered-listbox" class="overflow-y-scroll">${this.options}</div>
+              <div part="filtered-listbox" class="overflow-y-scroll">
+                ${this.filteredOptions.length === 0
+                  ? html`<span
+                      id="noResults"
+                      class="px-4 flex items-center w-full transition-all text-left text-base relative text-black py-3"
+                      aria-hidden="true"
+                      @click="${this.handleNoResultsClick}"
+                      >${this.localize.term('noResults')}</span
+                    >`
+                  : this.options}
+              </div>
               <slot id="defaultOptionsSlot" class="hidden" @slotchange=${this.handleDefaultSlotChange}></slot>
             </div>
           </sd-popup>

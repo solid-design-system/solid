@@ -100,6 +100,7 @@ export interface Translation extends DefaultTranslation {
   selectDefaultPlaceholder: string;
   tagsSelected: string;
   comboboxDefaultPlaceholder: string;
+  noResults: string;
   showLess: string;
   showMore: string;
   showPassword: string;

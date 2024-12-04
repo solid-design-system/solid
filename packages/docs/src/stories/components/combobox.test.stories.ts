@@ -519,6 +519,30 @@ export const SimpleSuggests = {
 };
 
 /**
+ * A message is shown if no results are found.
+ */
+export const NotFoundMessage = {
+  name: 'Not found message',
+  render: (args: { 'open-attr'?: string }) => {
+    delete args['open-attr'];
+    return html`
+      <div class="h-[260px] w-[400px]">
+        <sd-combobox label="Preferred Color"> ${createColorOptionsHtml()} </sd-combobox>
+      </div>
+    `;
+  },
+  play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+    await Promise.all([customElements.whenDefined('sd-combobox'), customElements.whenDefined('sd-option')]).then(
+      async () => {
+        const elm = canvasElement.querySelector<SdCombobox>('sd-combobox');
+        await waitUntil(() => elm?.shadowRoot?.querySelector('input'));
+        await userEvent.type(elm!.shadowRoot!.querySelector('input')!, 'xyz');
+      }
+    );
+  }
+};
+
+/**
  * The filtered options shown in the list can be customized by passing a function to the getOption property. Your function can return a string of HTML, a Lit Template, or an HTMLElement. The getOption() function will be called for each option. The first argument is an element and the second argument is the query string.
  * Remember that the options are rendered in a shadow root. To style them, you can use the style attribute in your template or you can add your own parts and target them with the ::part() selector.
  * Note: Be sure you trust the content you are outputting! Passing unsanitized user input to getOption() can result in XSS vulnerabilities.
