@@ -1,5 +1,5 @@
 ---
-'@solid-design-system/components': major
+'@solid-design-system/components': patch
 ---
 
 Improved a11y for sd-header:
