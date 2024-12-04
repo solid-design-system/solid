@@ -25,8 +25,8 @@
     - [Pull Requests](#pull-requests)
       - [Feature-Check-In Meeting to Prepare Pull Requests](#feature-check-in-meeting-to-prepare-pull-requests)
       - [Assignees and Reviewers](#assignees-and-reviewers)
-      - [Commit Messages](#commit-messages)
       - [Review Comments](#review-comments)
+      - [Changesets](#changesets)
       - [Special commands/suffixes](#special-commandssuffixes)
       - [Squash and Merge Your Changes](#squash-and-merge-your-changes)
     - [Chromatic](#chromatic)
@@ -225,11 +225,13 @@ Use the following semantic versioning in your commit messages (`feat`, `fix`, `p
 
 A changeset should always be included in the pull request to describe the goal of the changes performed. This will also define what type of release will be triggered: `major`, `minor` or `patch`.
 
-To create a changeset you should navigate to the root of the project and execute the command `pnpm changeset`. You will then select the package which contains changes, followed by the type of version bump it will trigger.
+To create a changeset you should navigate to the root of the project and execute the command `pnpm changeset`. You will then select the package which contains changes, followed by the type of version bump it will trigger following [semantic versioning](https://semver.org/).
 
-- `major`: breaking change
-- `minor`: feature
-- `patch`: bugfix
+> Given a version number MAJOR.MINOR.PATCH, increment the:
+>
+> - MAJOR version when you make incompatible API changes
+> - MINOR version when you add functionality in a backward compatible manner
+> - PATCH version when you make backward compatible bug fixes
 
 Once this is done, a temporary changeset file is created on the `.changeset` folder. You can edit this file to include more detailed information about the work done. Afterwards, this file should be committed together with the remaining changes. When the pull request is created, the changesets bot will analyse the files and inform if a changeset is included or not. If you forgot to include one, you can do it and the bot will pick it up.
 
