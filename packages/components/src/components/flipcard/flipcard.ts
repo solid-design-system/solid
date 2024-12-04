@@ -48,26 +48,18 @@ export default class SdFlipcard extends SolidElement {
    */
   @property({ reflect: true, attribute: 'flip-direction' }) flipDirection: 'horizontal' | 'vertical' = 'horizontal';
 
+  /**
+   * Determines the placement of the contents of the flipcard.
+   */
+  @property({ reflect: true }) placement: 'top' | 'bottom' = 'top';
+
   /** Determines the variant of the front face of the flipcard. */
   @property({ type: String, reflect: true, attribute: 'front-variant' })
-  frontVariant:
-    | 'empty'
-    | 'primary'
-    | 'primary-100'
-    | 'gradient-light-top'
-    | 'gradient-light-bottom'
-    | 'gradient-dark-top'
-    | 'gradient-dark-bottom' = 'empty';
+  frontVariant: 'primary' | 'primary-100' | 'gradient-light' | 'gradient-dark' = 'primary';
 
   /** Determines the variant of the back face of the flipcard. */
-  @property({ type: String, reflect: true, attribute: 'back-variant' }) backVariant:
-    | 'empty'
-    | 'primary'
-    | 'primary-100'
-    | 'gradient-light-top'
-    | 'gradient-light-bottom'
-    | 'gradient-dark-top'
-    | 'gradient-dark-bottom' = 'empty';
+  @property({ type: String, reflect: true, attribute: 'back-variant' })
+  backVariant: 'primary' | 'primary-100' | 'gradient-light' | 'gradient-dark' = 'primary';
 
   connectedCallback() {
     super.connectedCallback();
@@ -129,15 +121,13 @@ export default class SdFlipcard extends SolidElement {
             'absolute top-0 left-0 w-full h-full justify-end text-left',
             this.frontVariant === 'primary' && 'bg-primary',
             this.frontVariant === 'primary-100' && 'bg-primary-100',
-            this.frontVariant === 'gradient-dark-bottom' || this.frontVariant === 'gradient-light-bottom'
-              ? 'flex-col-reverse'
-              : 'flex-col',
+            this.placement === 'top' ? 'flex-col' : 'flex-col-reverse',
             this.flipDirection === 'vertical' && 'vertical'
           )}
         >
           <sd-button
             size="md"
-            class="absolute bottom-0 right-0 p-2 flex-shrink-0"
+            class=${cx('absolute right-0 p-2 flex-shrink-0', this.placement === 'top' ? 'bottom-0' : 'top-0')}
             @click=${this.handleFrontClick}
             @keydown=${this.handleFrontKeydown}
           >
@@ -159,22 +149,22 @@ export default class SdFlipcard extends SolidElement {
             class=${cx(
               'flex',
               {
-                empty: 'text-black',
                 primary: 'text-white',
                 'primary-100': 'text-black',
-                'gradient-light-top': 'text-black',
-                'gradient-light-bottom': 'text-black',
-                'gradient-dark-top': 'text-white',
-                'gradient-dark-bottom': 'text-white'
+                'gradient-light': 'text-black',
+                'gradient-dark': 'text-white'
               }[this.frontVariant],
               {
-                empty: '',
                 primary: '',
                 'primary-100': '',
-                'gradient-light-top': 'bg-gradient-to-b from-white/75 to-white/60',
-                'gradient-light-bottom': 'bg-gradient-to-t from-white/75 to-white/60',
-                'gradient-dark-top': 'bg-gradient-to-b from-primary-800/75 to-primary-800/60',
-                'gradient-dark-bottom': 'bg-gradient-to-t from-primary-800/75 to-primary-800/60'
+                'gradient-light':
+                  this.placement === 'top'
+                    ? 'bg-gradient-to-b from-white/75 to-white/60'
+                    : 'bg-gradient-to-t  from-white/75 to-white/60',
+                'gradient-dark':
+                  this.placement === 'bottom'
+                    ? 'bg-gradient-to-b from-primary-800/75 to-primary-800/60'
+                    : 'bg-gradient-to-t  from-primary-800/75 to-primary-800/60'
               }[this.frontVariant]
             )}
           >
@@ -186,13 +176,16 @@ export default class SdFlipcard extends SolidElement {
             class=${cx(
               'flip-card__gradient',
               {
-                empty: 'mb-auto',
                 primary: 'mb-auto',
                 'primary-100': 'mb-auto',
-                'gradient-light-top': 'bg-gradient-to-b from-white/60 to-40% mb-auto',
-                'gradient-light-bottom': 'bg-gradient-to-t from-white/60 to-40% mt-auto',
-                'gradient-dark-top': 'bg-gradient-to-b from-primary-800/60 to-40% mb-auto',
-                'gradient-dark-bottom': 'bg-gradient-to-t  from-primary-800/60 to-40% mt-auto'
+                'gradient-light':
+                  this.placement === 'top'
+                    ? 'bg-gradient-to-b from-white/60 to-40% mb-auto'
+                    : 'bg-gradient-to-t from-white/60 to-40% mt-auto',
+                'gradient-dark':
+                  this.placement === 'bottom'
+                    ? 'bg-gradient-to-t from-primary-800/60 to-40% mt-auto'
+                    : 'bg-gradient-to-b from-primary-800/60 to-40% mb-auto'
               }[this.frontVariant]
             )}
           ></div>
@@ -207,15 +200,13 @@ export default class SdFlipcard extends SolidElement {
             'absolute top-0 left-0 w-full h-full justify-end text-left',
             this.backVariant === 'primary' && 'bg-primary',
             this.backVariant === 'primary-100' && 'bg-primary-100',
-            this.backVariant === 'gradient-dark-bottom' || this.backVariant === 'gradient-light-bottom'
-              ? 'flex-col-reverse'
-              : 'flex-col',
+            this.placement === 'top' ? 'flex-col' : 'flex-col-reverse',
             this.flipDirection === 'vertical' && 'vertical'
           )}
         >
           <sd-button
             size="md"
-            class="absolute bottom-0 right-0 p-2 flex-shrink-0"
+            class=${cx('absolute right-0 p-2 flex-shrink-0', this.placement === 'top' ? 'bottom-0' : 'top-0')}
             @click=${this.handleBackClick}
             @keydown=${this.handleBackKeydown}
           >
@@ -236,22 +227,22 @@ export default class SdFlipcard extends SolidElement {
             class=${cx(
               'flex',
               {
-                empty: 'text-black',
                 primary: 'text-white',
                 'primary-100': 'text-black',
-                'gradient-light-top': 'text-black',
-                'gradient-light-bottom': 'text-black',
-                'gradient-dark-top': 'text-white',
-                'gradient-dark-bottom': 'text-white'
+                'gradient-light': 'text-black',
+                'gradient-dark': 'text-white'
               }[this.backVariant],
               {
-                empty: '',
                 primary: '',
                 'primary-100': '',
-                'gradient-light-top': 'bg-gradient-to-b from-white/75 to-white/60',
-                'gradient-light-bottom': 'bg-gradient-to-t from-white/75 to-white/60',
-                'gradient-dark-top': 'bg-gradient-to-b from-primary-800/75 to-primary-800/60',
-                'gradient-dark-bottom': 'bg-gradient-to-t from-primary-800/75 to-primary-800/60'
+                'gradient-light':
+                  this.placement === 'top'
+                    ? 'bg-gradient-to-b from-white/75 to-white/60'
+                    : 'bg-gradient-to-t  from-white/75 to-white/60',
+                'gradient-dark':
+                  this.placement === 'bottom'
+                    ? 'bg-gradient-to-b from-primary-800/75 to-primary-800/60'
+                    : 'bg-gradient-to-t  from-primary-800/75 to-primary-800/60'
               }[this.backVariant]
             )}
           >
@@ -263,13 +254,16 @@ export default class SdFlipcard extends SolidElement {
             class=${cx(
               'flip-card__gradient',
               {
-                empty: 'mb-auto',
                 primary: 'mb-auto',
                 'primary-100': 'mb-auto',
-                'gradient-light-top': 'bg-gradient-to-b from-white/60 to-40% mb-auto',
-                'gradient-light-bottom': 'bg-gradient-to-t from-white/60 to-40% mt-auto',
-                'gradient-dark-top': 'bg-gradient-to-b from-primary-800/60 to-40% mb-auto',
-                'gradient-dark-bottom': 'bg-gradient-to-t  from-primary-800/60 to-40% mt-auto'
+                'gradient-light':
+                  this.placement === 'top'
+                    ? 'bg-gradient-to-b from-white/60 to-40% mb-auto'
+                    : 'bg-gradient-to-t from-white/60 to-40% mt-auto',
+                'gradient-dark':
+                  this.placement === 'bottom'
+                    ? 'bg-gradient-to-t from-primary-800/60 to-40% mt-auto'
+                    : 'bg-gradient-to-b from-primary-800/60 to-40% mb-auto'
               }[this.backVariant]
             )}
           ></div>
