@@ -35,7 +35,7 @@
   &--placement {
     &-top {
       &::after {
-        @apply block absolute pt-2 pr-4 top-0 right-0 w-full;
+        @apply block absolute pt-2 pr-4 top-0 right-0 max-h-fit;
       }
     }
   }

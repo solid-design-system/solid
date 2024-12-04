@@ -119,6 +119,22 @@ export const Placement = {
         }
       </style>
       <div class="grid grid-cols-2 gap-4">
+        <div class="sd-copyright" style="--copyright:'© Union Investment 2024'">
+          <sd-video>
+            <video controls="" class="aspect-video">
+              <source src="./placeholders/videos/sds-placeholder-video/sds-placeholder-video.webm" type="video/webm" />
+              <track
+                label="English"
+                kind="subtitles"
+                srclang="en"
+                src="./placeholders/videos/sds-placeholder-video/sds-placeholder-video.vtt"
+                default=""
+              />
+              Your browser does not support the video tag.
+            </video>
+            <img slot="poster" alt=" " class="aspect-video object-cover" src="./placeholders/images/generic.jpg" />
+          </sd-video>
+        </div>
         <div class="sd-copyright sd-copyright--placement-top" style="--copyright:'© Union Investment 2024'">
           <sd-video>
             <video controls="" class="aspect-video">
