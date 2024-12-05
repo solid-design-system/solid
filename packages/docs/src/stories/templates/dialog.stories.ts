@@ -41,9 +41,8 @@ export const Default = {
     </style>
 
     <sd-button id="drawer-trigger">Open Dialog</sd-button>
-
     <sd-dialog id="dialog" open>
-      <h4 slot="headline" class="sd-headline sd-headline--size-3xl">Cancel your subscription?</h4>
+      <span slot="headline" class="sd-headline sd-headline--size-3xl">Cancel your subscription?</span>
       <p class="sd-paragraph">Your subscription will be canceled immediately. You can resubscribe at any time.</p>
       <div slot="footer" class="flex flex-col-reverse sm:flex-row justify-end w-full gap-2">
         <sd-button class="w-full sm:w-auto" variant="secondary" size="lg" type="button"> Maybe later </sd-button>
@@ -80,7 +79,7 @@ export const Scrollable = {
     <sd-button id="scrollable-drawer-trigger">Open Dialog</sd-button>
 
     <sd-dialog id="scrollable-dialog" open no-close-button>
-      <h4 slot="headline" class="sd-headline sd-headline--size-3xl">Terms of use</h4>
+      <span slot="headline" class="sd-headline sd-headline--size-3xl">Terms of use</span>
       <sd-scrollable orientation="vertical" step="150" shadows>
         <div class="items-start justify-start h-[300px] lg:h-[454px] space-y-5">
           <h4 class="sd-headline sd-headline--size-lg">Important notices to our investors</h4>

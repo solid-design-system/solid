@@ -76,7 +76,7 @@ export const Open = {
   render: () => html`
     <div class="h-[40vh]">
       <sd-dialog open>
-        <h4 slot="headline" class="sd-headline sd-headline-3xl">Lorem ipsum</h4>
+        <span slot="headline" class="sd-headline sd-headline--size-3xl">Lorem ipsum</span>
         <p class="sd-paragraph">
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
           dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam.
