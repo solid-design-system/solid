@@ -29,8 +29,8 @@ import SolidElement from '../../internal/solid-element';
  * @csspart back - The container that wraps the back-side of the flipcard.
  * @csspart front-button - The button that flips the flipcard to the back.
  * @csspart back-button - The button that flips the flipcard to the front.
- * @csspart front-container - The container that wraps the front side.
- * @csspart back-container - The container that wraps the back side.
+ * @csspart front-interactive-container - The container that wraps the front side and the flip button.
+ * @csspart back-interactive-container - The container that wraps the back side and the flip button.
  * @csspart front-slot-container - The container that wraps the front slot.
  * @csspart back-slot-container - The container that wraps the back slot.
  * @csspart media-front - The container that wraps the media-front slot.
@@ -116,7 +116,7 @@ export default class SdFlipcard extends SolidElement {
   render() {
     return html`
       <div part="base" class=${cx('flip-card relative h-full w-full')}>
-        <div part="front-container">
+        <div part="front-interactive-container">
           <div
             part="front"
             tabindex="0"
@@ -209,7 +209,7 @@ export default class SdFlipcard extends SolidElement {
           </sd-button>
         </div>
 
-        <div part="back-container">
+        <div part="back-interactive-container">
           <div
             part="back"
             tabindex="0"

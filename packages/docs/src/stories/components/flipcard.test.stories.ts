@@ -159,7 +159,7 @@ export const Slots = {
 };
 
 /**
- * Use the `base`, `front`, `back`, `front-button`, `back-button`, `front-slot-container`, `back-slot-container`, `front-media`, `back-media`, `front-secondary-gradient` and `back-secondary-gradient` parts to style the flipcard.
+ * Use the `base`, `front`, `back`, `front-button`, `back-button`,  `front-interactive-container`, `back-interactive-container`, `front-slot-container`, `back-slot-container`, `front-media`, `back-media`, `front-secondary-gradient` and `back-secondary-gradient` parts to style the flipcard.
  */
 export const Parts = {
   name: 'Parts',
@@ -171,6 +171,8 @@ export const Parts = {
         'back',
         'front-button',
         'back-button',
+        'front-interactive-container',
+        'back-interactice-container',
         'front-slot-container',
         'back-slot-container',
         'front-media',
