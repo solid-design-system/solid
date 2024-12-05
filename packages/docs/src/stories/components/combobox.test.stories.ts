@@ -132,20 +132,15 @@ export const SizeMultiple = {
   render: (args: { 'open-attr'?: string }) => {
     delete args['open-attr'];
 
-    return html`<div class="h-[340px]">
+    return html`<div class="h-[340px] w-[700px]">
       ${generateTemplate({
         options: {
           classes: 'w-full'
         },
         axis: {
-          x: {
-            type: 'attribute',
-            name: 'size'
-          },
           y: {
             type: 'attribute',
-            name: 'useTags',
-            values: [false, true]
+            name: 'size'
           }
         },
         constants: [
@@ -178,11 +173,6 @@ export const DisabledMultiple = {
           classes: 'w-full [&>tbody>tr>td]:w-[50%]'
         },
         axis: {
-          y: {
-            type: 'attribute',
-            name: 'useTags',
-            values: [false, true]
-          },
           x: {
             type: 'attribute',
             name: 'disabled',
@@ -225,11 +215,6 @@ export const ValidInvalid = {
           classes: 'w-full [&>tbody>tr>td]:align-top'
         },
         axis: {
-          y: {
-            type: 'attribute',
-            name: 'useTags',
-            values: [false, true]
-          },
           x: {
             type: 'attribute',
             name: 'value',

@@ -365,7 +365,7 @@ export const Icons = {
 
 export const Multiple = {
   render: () => html`
-    <div class="w-[700px] h-[500px]">
+    <div class="w-[700px] h-[400px]">
       <sd-combobox
         size="lg"
         label="Funds name"
@@ -392,7 +392,7 @@ export const Multiple = {
  */
 export const MaxOptionsVisible = {
   render: () => html`
-    <div class="w-[700px] h-[500px]">
+    <div class="w-[700px] h-[400px]">
       <sd-combobox
         size="lg"
         label="Funds name"
