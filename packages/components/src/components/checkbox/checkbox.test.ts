@@ -161,13 +161,13 @@ describe('<sd-checkbox>', () => {
       expect(checkbox.hasAttribute('data-valid')).to.be.false;
       expect(checkbox.hasAttribute('data-user-invalid')).to.be.false;
       expect(checkbox.hasAttribute('data-user-valid')).to.be.false;
-      expect(checkbox.getAttribute('aria-invalid')).to.equal('true');
 
       checkbox.click();
       await checkbox.updateComplete;
 
       expect(checkbox.hasAttribute('data-user-invalid')).to.be.true;
       expect(checkbox.hasAttribute('data-user-valid')).to.be.false;
+      expect(checkbox.getAttribute('aria-invalid')).to.equal('true');
     });
 
     it('should show invalid-message when calling reportCustomValidity with non-empty setCustomValidity() ', async () => {
