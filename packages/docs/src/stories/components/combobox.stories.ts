@@ -44,6 +44,10 @@ const createColorOptions = () => colors.map(createColorOption);
 const createColorOptionsHtml = () => unsafeHTML(createColorOptions().join('\n'));
 
 /**
+ * **Related Components**:
+ * - [sd-option](?path=/docs/components-sd-option--docs)
+ * - [sd-optgroup](?path=/docs/components-sd-optgroup--docs)
+ *
  * **Related templates:**
  * - [Combobox](?path=/docs/templates-combobox--docs)
  */

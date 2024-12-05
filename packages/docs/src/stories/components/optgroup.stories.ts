@@ -8,6 +8,13 @@ const { generateTemplate } = storybookTemplate('sd-optgroup');
 
 /**
  * Used to group selectable items within various form controls such as select.
+ *
+ * **Related Components**:
+ * - [sd-combobox](?path=/docs/components-sd-combobox--docs)
+ * - [sd-select](?path=/docs/components-sd-select--docs)
+ *
+ * **Related templates**:
+ * - [Autocomplete](?path=/docs/templates-autocomplete--docs)
  */
 
 export default {
@@ -64,7 +71,7 @@ export const Default = {
 };
 
 /**
- * Use the disabled attribute in the <syn-optgroup> to disable the Section and prevent it from being selected.
+ * Use the disabled attribute in the <sd-optgroup> to disable the section and prevent it from being selected.
  */
 
 export const Disabled = {

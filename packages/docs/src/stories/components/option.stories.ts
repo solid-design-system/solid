@@ -11,6 +11,7 @@ const { overrideArgs } = storybookHelpers('sd-option');
  *
  * **Related Components**:
  * - [sd-select](?path=/docs/components-sd-select--docs)
+ * - [sd-combobox](?path=/docs/components-sd-combobox--docs)
  *
  * **Related templates**:
  * - [Autocomplete](?path=/docs/templates-autocomplete--docs)
