@@ -320,4 +320,22 @@ describe('<sd-checkbox>', () => {
       expect(indeterminateIcon).to.be.null;
     });
   });
+
+  describe('should contain aria-invalid', () => {
+    it('is false when required and unchecked', async () => {
+      const el = await fixture<HTMLFormElement>(html` <sd-checkbox required></sd-checkbox> `);
+      const input = el.shadowRoot!.querySelector('input')!;
+      expect(input.getAttribute('aria-invalid')).to.equal('false');
+    });
+
+    it('is true when required and checked', async () => {
+      const el = await fixture<HTMLFormElement>(html`<sd-checkbox required checked></sd-checkbox>`);
+      const input = el.shadowRoot!.querySelector('input')!;
+
+      el.click();
+      await waitUntil(() => input.getAttribute('aria-invalid'));
+
+      expect(input.getAttribute('aria-invalid')).to.equal('true');
+    });
+  });
 });
