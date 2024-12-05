@@ -280,7 +280,7 @@ export default class SdDialog extends SolidElement {
           <header part="header" class="flex flex-grow-0 flex-shrink-0 basis-auto px-6 sm:px-10">
             <h2 part="title" class="flex-auto m-0" id="title">
               ${this.headline.length > 0
-                ? html`<h4 class="sd-headline sd-headline--size-3xl leading-tight">${this.headline}</h4>`
+                ? html`<span class="sd-headline sd-headline--size-3xl leading-tight">${this.headline}</span>`
                 : html`<slot name="headline"> </slot>`}
             </h2>
 
