@@ -34,8 +34,10 @@ const getOutput = (newSize, currentSize) => {
 
 export const getOutputs = () => {
   return {
-    uncompressed: `Bundle size (uncompressed): ${getOutput(newRealSize, currentRealSize)}`,
-    gzip: `Bundle size (gzipped): ${getOutput(newGzipSize, currentGzipSize)}`
+    uncompressed: `Uncompressed: ${getOutput(newRealSize, currentRealSize)}`,
+    gzip: `Gzipped: ${getOutput(newGzipSize, currentGzipSize)}`,
+    currentRealSize: currentRealSize,
+    currentGzipSize: currentGzipSize
   };
 };
 
