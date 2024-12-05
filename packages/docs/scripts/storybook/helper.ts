@@ -105,8 +105,6 @@ export const storybookDefaults = (customElementTag: string): any => {
           ?.reduce((acc: any, property: string) => {
             // Remove the existing one
             acc[`${property}-prop`] = { table: { disable: true } };
-            // Add a new one which is not editable
-            acc[property] = { control: false };
             return acc;
           }, {});
       }
@@ -172,11 +170,7 @@ export const storybookHelpers = (customElementTag: string) => {
      * @returns {any} - The possible values for the attribute.
      */
     getValuesFromAttribute: (attribute: string): any => {
-      if (!attribute.endsWith('-attr')) {
-        attribute = `${attribute}-attr`;
-      }
       const { argTypes } = storybookDefaults(customElementTag);
-
       if (argTypes[attribute]?.control?.type === 'boolean') {
         return [true, false];
       } else {
@@ -191,15 +185,10 @@ export const storybookHelpers = (customElementTag: string) => {
      * @returns {any} - The possible values for the attributes.
      */
     getValuesFromAttributes: (attributes: string[]): any => {
-      return attributes?.map((attribute: string) => {
-        if (!attribute.endsWith('-attr')) {
-          attribute = `${attribute}-attr`;
-        }
-        return {
-          name: attribute,
-          values: storybookHelpers(customElementTag).getValuesFromAttribute(attribute)
-        };
-      });
+      return attributes?.map((attribute: string) => ({
+        name: attribute,
+        values: storybookHelpers(customElementTag).getValuesFromAttribute(attribute)
+      }));
     },
 
     /**
