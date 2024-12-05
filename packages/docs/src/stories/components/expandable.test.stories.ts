@@ -43,7 +43,6 @@ export const Default = {
  */
 export const Inverted = {
   name: 'Inverted',
-  parameters: { controls: { exclude: 'inverted' } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -62,9 +61,6 @@ export const Inverted = {
  */
 export const Slots = {
   name: 'Slots',
-  parameters: {
-    controls: { exclude: ['default', 'toggle-open', 'toggle-closed'] }
-  },
   render: (args: any) => {
     return html`
       ${['default', 'toggle-open', 'toggle-closed'].map(slot =>
@@ -97,11 +93,6 @@ export const Slots = {
  */
 export const Parts = {
   name: 'Parts',
-  parameters: {
-    controls: {
-      exclude: ['open', 'content', 'toggle', 'summary', 'details']
-    }
-  },
   render: (args: any) => {
     return generateTemplate({
       axis: {

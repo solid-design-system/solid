@@ -66,11 +66,6 @@ export const Default = {
 
 export const Variants = {
   name: 'Variants',
-  parameters: {
-    controls: {
-      exclude: ['sd-container--variant-...']
-    }
-  },
   render: (args: any) => {
     return html` ${generateTemplate({
       axis: {
@@ -105,11 +100,6 @@ export const Variants = {
 
 export const Padding = {
   name: 'Padding',
-  parameters: {
-    controls: {
-      exclude: ['sd-container--padding-...']
-    }
-  },
   render: (args: any) => {
     return html` ${generateTemplate({
       axis: {
@@ -132,12 +122,6 @@ export const Padding = {
 
 export const CustomPadding = {
   name: 'Custom Padding',
-  parameters: {
-    controls: {
-      exclude: ['sd-container--padding-...']
-    }
-  },
-
   render: (args: any) => {
     return generateTemplate({
       options: { templateContent: '<div class="%CLASSES%" style="padding:4rem;">%SLOT%</div>' },
@@ -152,11 +136,6 @@ export const CustomPadding = {
 
 export const TrianglePosition = {
   name: 'Sample: Triangle Position',
-  parameters: {
-    controls: {
-      exclude: ['sd-container--triangle-...', 'sd-container--variant-...']
-    }
-  },
   render: (args: any) => {
     return html` ${generateTemplate({
       constants: [{ type: 'attribute', name: 'sd-container--variant-...', value: 'primary' }],
@@ -185,11 +164,6 @@ export const TrianglePosition = {
 
 export const TriangleBorder = {
   name: 'Sample: Triangle Border',
-  parameters: {
-    controls: {
-      exclude: ['sd-container--variant-...', 'sd-container--triangle-...']
-    }
-  },
   render: (args: any) => {
     return html` ${generateTemplate({
       constants: [{ type: 'attribute', name: 'sd-container--variant-...', value: 'border-neutral-400' }],
@@ -221,11 +195,6 @@ export const TriangleBorder = {
 
 export const TriangleColor = {
   name: 'Sample: Triangle Color',
-  parameters: {
-    controls: {
-      exclude: ['sd-container--variant-...', 'sd-container--triangle-...']
-    }
-  },
   render: (args: any) => {
     const { 'sd-container--padding-...-attr': paddingAttr } = args;
 

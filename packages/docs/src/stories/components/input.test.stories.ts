@@ -160,11 +160,6 @@ export const Clearable = {
 
 export const TogglePassword = {
   name: 'Toggle Password',
-  parameters: {
-    controls: {
-      exclude: ['password-toggle']
-    }
-  },
   args: overrideArgs([{ type: 'attribute', name: 'type', value: 'password' }]),
   render: (args: any) => {
     return html`
@@ -187,11 +182,6 @@ export const TogglePassword = {
 
 export const Disabled = {
   name: 'Disabled',
-  parameters: {
-    controls: {
-      exclude: ['disabled']
-    }
-  },
   args: overrideArgs([
     { type: 'attribute', name: 'value', value: 'value' },
     { type: 'attribute', name: 'label', value: 'Label' },
@@ -215,11 +205,6 @@ export const Disabled = {
 
 export const Readonly = {
   name: 'Readonly',
-  parameters: {
-    controls: {
-      exclude: ['readonly']
-    }
-  },
   args: overrideArgs([
     { type: 'attribute', name: 'value', value: 'value' },
     { type: 'attribute', name: 'label', value: 'Label' },
@@ -243,11 +228,6 @@ export const Readonly = {
 
 export const Sizes = {
   name: 'Sizes',
-  parameters: {
-    controls: {
-      exclude: ['size']
-    }
-  },
   args: overrideArgs([
     { type: 'attribute', name: 'value', value: 'value' },
     { type: 'attribute', name: 'label', value: 'Label' },
@@ -275,11 +255,6 @@ export const Sizes = {
 
 export const StyleOnValid = {
   name: 'Style on Valid',
-  parameters: {
-    controls: {
-      exclude: ['style-on-valid']
-    }
-  },
   args: overrideArgs([
     { type: 'attribute', name: 'value', value: 'valu' },
     { type: 'attribute', name: 'label', value: 'Label' },
@@ -319,11 +294,6 @@ export const StyleOnValid = {
 
 export const Types = {
   name: 'Types',
-  parameters: {
-    controls: {
-      include: ['size', 'disabled', 'clearable', 'readonly']
-    }
-  },
   render: (args: any) => {
     return html`
       <div class="w-[370px]">
@@ -450,11 +420,6 @@ export const Types = {
 
 export const Validation = {
   name: 'Validation',
-  parameters: {
-    controls: {
-      include: ['clearable', 'disabled']
-    }
-  },
   render: (args: any) => {
     return html`
       <form action="" method="get" id="testForm" name="testForm" class="w-[370px]">
@@ -713,11 +678,6 @@ export const Validation = {
 
 export const Slots = {
   name: 'Slots',
-  parameters: {
-    controls: {
-      exclude: ['label', 'left', 'right', 'clear-icon', 'help-text', 'clearable', 'value']
-    }
-  },
   render: (args: any) => {
     return html`
       ${['label', 'left', 'right', 'clear-icon', 'help-text'].map(slot =>
@@ -767,11 +727,6 @@ export const Slots = {
 
 export const Parts = {
   name: 'Parts',
-  parameters: {
-    controls: {
-      exclude: ['label', 'left', 'right', 'clear-icon', 'help-text', 'clearable', 'value']
-    }
-  },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -902,11 +857,6 @@ export const Mouseless = {
 
 export const Samples = {
   name: 'Sample: Currency Stepper',
-  parameters: {
-    controls: {
-      include: []
-    }
-  },
   render: () => {
     return html`
       <div class="w-[250px]">

@@ -56,7 +56,6 @@ export const Default = {
 
 export const Orientation = {
   name: 'Orientation',
-  parameters: { controls: { exclude: ['orientation', 'size', 'default'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -74,7 +73,6 @@ export const Orientation = {
 
 export const Disabled = {
   name: 'Disabled x Size',
-  parameters: { controls: { exclude: ['size', 'default'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -109,9 +107,6 @@ export const Disabled = {
  */
 export const Parts = {
   name: 'Parts',
-  parameters: {
-    controls: { exclude: ['form-control', 'form-control-label', 'form-control-input'] }
-  },
   render: (args: any) => {
     return generateTemplate({
       axis: {

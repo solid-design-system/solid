@@ -65,7 +65,6 @@ export const Default = {
 
 export const Variants = {
   name: 'Variants',
-  parameters: { controls: { exclude: ['variant', 'open'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -83,7 +82,6 @@ export const Variants = {
 
 export const Closable = {
   name: 'Closable',
-  parameters: { controls: { exclude: ['closable', 'open'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -101,7 +99,6 @@ export const Closable = {
 
 export const Duration = {
   name: 'Duration',
-  parameters: { controls: { exclude: ['duration'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -119,7 +116,6 @@ export const Duration = {
 
 export const DurationIndicator = {
   name: 'Duration Indicator',
-  parameters: { controls: { exclude: ['duration', 'duration-indicator', 'open'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -138,11 +134,6 @@ export const DurationIndicator = {
  * Display a toast notification at the top-right of the screen by using the `toast` method. Click on the **Show code** button to see the JavaScript code responsible for generating the toast notification. The default position is `top-right`.
  */
 export const ToastNotification = {
-  parameters: {
-    controls: {
-      exclude: ['open', 'closable', 'variant', 'toast-stack', 'duration', 'duration-indicator', 'default-slot']
-    }
-  },
   name: 'Toast Notification (Default)',
   render: (_args: Record<string, any>) => {
     return html`
@@ -212,11 +203,6 @@ export const ToastNotification = {
  * Display a toast notification positioned at the bottom-center of the screen by setting the `toastStack` attribute to `bottom-center`. Click on the **Show code** button to see the JavaScript code responsible for generating the toast notification.
  */
 export const ToastBottomCenter = {
-  parameters: {
-    controls: {
-      exclude: ['open', 'closable', 'variant', 'toast-stack', 'duration', 'duration-indicator']
-    }
-  },
   name: 'Toast Notification (Bottom Center)',
   render: (_args: Record<string, any>) => {
     return html`
@@ -291,19 +277,6 @@ export const ToastBottomCenter = {
 
 export const Parts = {
   name: 'Parts',
-  parameters: {
-    controls: {
-      exclude: [
-        'base',
-        'icon',
-        'content',
-        'message',
-        'duration-indicator__elapsed',
-        'duration-indicator__total',
-        'close-button'
-      ]
-    }
-  },
   render: (args: any) => {
     return generateTemplate({
       axis: {

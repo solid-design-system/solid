@@ -64,9 +64,6 @@ export const Default = {
 
 export const Fixed = {
   name: 'Fixed',
-  parameters: {
-    controls: { exclude: ['fixed', '--sd-header-inner-width'] }
-  },
   render: (args: any) => {
     return html` ${generateTemplate({
         constants: [
@@ -87,11 +84,6 @@ export const Fixed = {
 /* Sample Header responsive – variant A - 01 */
 export const SampleA = {
   name: 'Sample A',
-  parameters: {
-    controls: {
-      exclude: ['default']
-    }
-  },
   render: (args: any) => {
     return html`<div style="height: 100px; --sd-header-inner-max-width: 1456px;">
       <style>
@@ -197,10 +189,7 @@ export const SampleAMd = {
   ...SampleA,
   name: '↳ Tablet',
   parameters: {
-    viewport: { defaultViewport: 'tablet' },
-    controls: {
-      exclude: ['default']
-    }
+    viewport: { defaultViewport: 'tablet' }
   }
 };
 
@@ -209,21 +198,13 @@ export const SampleASm = {
   ...SampleA,
   name: '↳ Small mobile',
   parameters: {
-    viewport: { defaultViewport: 'mobile1' },
-    controls: {
-      exclude: ['default']
-    }
+    viewport: { defaultViewport: 'mobile1' }
   }
 };
 
 /* Sample Header responsive – variant B */
 export const SampleB = {
   name: 'Sample B',
-  parameters: {
-    controls: {
-      exclude: ['default']
-    }
-  },
   render: (args: any) => {
     return html`<div style="height: 100px; --sd-header-inner-max-width: 1456px;">
       <style>
@@ -329,10 +310,7 @@ export const SampleBMd = {
   ...SampleB,
   name: '↳ Tablet',
   parameters: {
-    viewport: { defaultViewport: 'tablet' },
-    controls: {
-      exclude: ['default']
-    }
+    viewport: { defaultViewport: 'tablet' }
   }
 };
 
@@ -341,10 +319,7 @@ export const SmallViewportSample2 = {
   ...SampleB,
   name: '↳ Small mobile',
   parameters: {
-    viewport: { defaultViewport: 'mobile1' },
-    controls: {
-      exclude: ['default']
-    }
+    viewport: { defaultViewport: 'mobile1' }
   }
 };
 

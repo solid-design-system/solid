@@ -47,7 +47,6 @@ export const Default = {
 
 export const Disabled = {
   name: 'Disabled',
-  parameters: { controls: { exclude: ['disabled', 'default'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -69,7 +68,6 @@ export const Disabled = {
 
 export const Required = {
   name: 'Required',
-  parameters: { controls: { exclude: ['required'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -86,7 +84,6 @@ export const Required = {
 
 export const Checked = {
   name: 'Checked',
-  parameters: { controls: { exclude: ['checked'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -108,7 +105,6 @@ export const Checked = {
 
 export const Invalid = {
   name: 'Invalid',
-  parameters: { controls: { exclude: ['required'] } },
   render: (args: any) => {
     return html`
       <form>
@@ -133,27 +129,6 @@ export const Invalid = {
 
 export const Parts = {
   name: 'Parts',
-  parameters: {
-    controls: {
-      exclude: [
-        'base',
-        'control',
-        'control--unchecked',
-        'control--checked',
-        'label',
-        'title',
-        'name',
-        'value',
-        'size',
-        'disabled',
-        'checked',
-        'form',
-        'thumb',
-        'required',
-        'default'
-      ]
-    }
-  },
   render: (args: any) => {
     return generateTemplate({
       axis: {

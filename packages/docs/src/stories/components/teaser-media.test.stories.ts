@@ -54,7 +54,6 @@ export const Default = {
 
 export const Variant = {
   name: 'Variant',
-  parameters: { controls: { exclude: ['variant'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -83,9 +82,6 @@ export const Variant = {
  */
 export const Slots = {
   name: 'Slots',
-  parameters: {
-    controls: { exclude: ['default', 'media', 'meta', 'headline', 'expandable'] }
-  },
   render: (args: any) => {
     return html`
       ${['default', 'media', 'meta', 'headline', 'expandable'].map(slot => {
@@ -154,9 +150,6 @@ export const Slots = {
 
 export const Parts = {
   name: 'Parts',
-  parameters: {
-    controls: { exclude: ['base', 'media', 'content', 'meta', 'headline', 'main', 'expandable', 'variant'] }
-  },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -196,9 +189,6 @@ export const Parts = {
 export const Samples = {
   name: 'Samples: Teaser-Media',
   parameters: {
-    controls: {
-      disable: true
-    },
     backgrounds: {
       default: 'white'
     }

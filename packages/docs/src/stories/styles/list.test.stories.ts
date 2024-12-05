@@ -73,7 +73,6 @@ export const Default = {
 
 export const OrderedList = {
   name: 'Ordered List',
-  parameters: { controls: { exclude: ['default'] } },
   args: overrideArgs({
     type: 'slot',
     name: 'default',
@@ -131,7 +130,6 @@ export const OrderedList = {
 
 export const UnorderedList = {
   name: 'Unordered List',
-  parameters: { controls: { exclude: ['default'] } },
   args: overrideArgs({
     type: 'slot',
     name: 'default',
@@ -193,7 +191,6 @@ export const UnorderedList = {
  */
 export const IconList = {
   name: 'Icon List',
-  parameters: { controls: { exclude: ['default'] } },
   args: overrideArgs({
     type: 'slot',
     name: 'default',
@@ -240,7 +237,6 @@ export const IconList = {
  */
 export const HorizontalIconList = {
   name: 'Horizontal Icon List',
-  parameters: { controls: { exclude: ['default'] } },
   args: overrideArgs({
     type: 'slot',
     name: 'default',
@@ -272,7 +268,6 @@ export const HorizontalIconList = {
  */
 export const MixedLists = {
   name: 'Mixed Lists',
-  parameters: { controls: { exclude: ['default'] } },
   render: (args: any) => {
     const preset = (type: string) =>
       html`<preset-type class="sd-list">

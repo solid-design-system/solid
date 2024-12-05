@@ -185,11 +185,6 @@ const videoElementScript = html`<script>
 
 export const VideoElement = {
   name: 'Video Element',
-  parameters: {
-    controls: {
-      exclude: ['playing', 'default']
-    }
-  },
   render: (args: any) => {
     return html`
       <div id="sd-video-example" className="p-0">
@@ -209,11 +204,6 @@ export const VideoElement = {
 
 export const Mouseless = {
   name: 'Mouseless',
-  parameters: {
-    controls: {
-      exclude: ['playing', 'default']
-    }
-  },
   render: (args: any) => {
     return html`
       <div id="sd-video-example" class="mouseless p-0 hover:p-0">

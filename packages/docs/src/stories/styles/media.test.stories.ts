@@ -46,11 +46,6 @@ export const Default = {
 
 export const MediaSample = {
   name: 'Media Sample',
-  parameters: {
-    controls: {
-      disable: true
-    }
-  },
   render: (args: any) => {
     return generateTemplate({
       options: {

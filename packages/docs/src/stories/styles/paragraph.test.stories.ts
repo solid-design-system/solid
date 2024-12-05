@@ -55,7 +55,6 @@ export const Default = {
 
 export const Inverted = {
   name: 'Inverted',
-  parameters: { controls: { exclude: ['sd-paragraph--inverted'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {

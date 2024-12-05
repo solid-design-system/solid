@@ -30,11 +30,6 @@ export default {
 };
 
 export const Default = {
-  parameters: {
-    controls: {
-      disable: true
-    }
-  },
   render: (args: { [k: string]: any }) => {
     return generateTemplate({
       options: {

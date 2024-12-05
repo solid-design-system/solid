@@ -69,7 +69,6 @@ export const Default = {
 
 export const Inverted = {
   name: 'Inverted',
-  parameters: { controls: { exclude: ['sd-headline--inverted'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -91,7 +90,6 @@ export const Inverted = {
 
 export const Inline = {
   name: 'Inline',
-  parameters: { controls: { exclude: ['sd-headline--inline'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -117,17 +115,6 @@ export const Inline = {
 
 export const SizeXInverted = {
   name: 'Size x Inverted',
-  parameters: {
-    controls: {
-      exclude: [
-        'default',
-        'sd-headline--size-3xl',
-        'sd-headline--size-xl',
-        'sd-headline--size-lg',
-        'sd-headline--size-base'
-      ]
-    }
-  },
   render: (args: any) => {
     return html`${[
       {
@@ -179,11 +166,6 @@ export const SizeXInverted = {
 
 export const Samples = {
   name: 'Samples',
-  parameters: {
-    controls: {
-      exclude: ['sd-headline--size-3xl', 'sd-headline--size-xl', 'sd-headline--size-lg', 'sd-headline--size-base']
-    }
-  },
   render: (args: any) => {
     return html`
       <style>

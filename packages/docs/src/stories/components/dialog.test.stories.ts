@@ -64,9 +64,6 @@ export const Default = {
 
 export const Headline = {
   name: 'Headline',
-  parameters: {
-    controls: { exclude: ['headline'] }
-  },
   render: (args: any) => {
     return html` <div style="height: 40vh;">
       ${generateTemplate({
@@ -94,9 +91,6 @@ export const Headline = {
 
 export const NoCloseButton = {
   name: 'No Close Button',
-  parameters: {
-    controls: { exclude: ['no-close-button'] }
-  },
   render: (args: any) => {
     return html` <div style="height: 40vh;">
       ${generateTemplate({
@@ -166,11 +160,6 @@ export const Scrolling = {
 
 export const ExtendedFooter = {
   name: 'Sample: Extended Footer',
-  parameters: {
-    controls: {
-      disable: true
-    }
-  },
   render: () => {
     return html`
       <style>
@@ -202,11 +191,6 @@ export const ExtendedFooter = {
 
 export const SmallHeadline = {
   name: 'Sample: Small Headline',
-  parameters: {
-    controls: {
-      disable: true
-    }
-  },
   render: () => {
     return html`
       <div style="height: 40vh;">
@@ -232,11 +216,6 @@ export const SmallHeadline = {
 
 export const PreventClosing = {
   name: 'Sample: Preventing Closing',
-  parameters: {
-    controls: {
-      disable: true
-    }
-  },
   render: () => {
     return html`
       <div style="height: 40vh;">

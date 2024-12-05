@@ -50,7 +50,6 @@ export const Default = {
 
 export const Variants = {
   name: 'Variants',
-  parameters: { controls: { exclude: ['default', 'sd-chip--...'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {

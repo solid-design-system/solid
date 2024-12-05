@@ -22,7 +22,6 @@ export default {
 
 export const Default = {
   name: 'Default',
-  parameters: { controls: { exclude: ['default'] } },
   render: (args: any) => {
     return generateTemplate({ args });
   }
@@ -33,7 +32,6 @@ export const Default = {
  */
 export const VariantCluster = {
   name: 'Variant Cluster',
-  parameters: { controls: { exclude: ['state'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -61,7 +59,6 @@ export const VariantCluster = {
  */
 export const VariantMain = {
   name: 'Variant Main',
-  parameters: { controls: { exclude: ['default', 'state'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -89,7 +86,6 @@ export const VariantMain = {
  */
 export const VariantPlace = {
   name: 'Variant Place',
-  parameters: { controls: { exclude: ['default', 'state'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -117,9 +113,6 @@ export const VariantPlace = {
  */
 export const Slots = {
   name: 'Slots',
-  parameters: {
-    controls: { exclude: ['default', 'state'] }
-  },
   render: () => {
     return html`
       <div class="flex gap-4 items-center">
@@ -146,9 +139,6 @@ export const Slots = {
  */
 export const Scale = {
   name: 'Scale',
-  parameters: {
-    controls: { exclude: ['default', 'state'] }
-  },
   render: (args: any) => {
     return generateTemplate({
       axis: {

@@ -58,7 +58,6 @@ export const Default = {
 
 export const ButtonWithGradient = {
   name: 'Button With Gradient',
-  parameters: { controls: { exclude: ['buttons'] } },
   render: (args: any) => {
     return generateTemplate({
       args,
@@ -69,7 +68,6 @@ export const ButtonWithGradient = {
 
 export const Shadow = {
   name: 'Shadow',
-  parameters: { controls: { exclude: ['shadows'] } },
   render: (args: any) => {
     return generateTemplate({
       args,
@@ -80,7 +78,6 @@ export const Shadow = {
 
 export const Scrollbar = {
   name: 'Scrollbar',
-  parameters: { controls: { exclude: ['scrollbars'] } },
   render: (args: any) => {
     return generateTemplate({
       args,
@@ -91,11 +88,6 @@ export const Scrollbar = {
 
 export const CustomIcon = {
   name: 'Custom Icon',
-  parameters: {
-    controls: {
-      exclude: ['default', 'buttons', 'icon-start', 'icon-end']
-    }
-  },
   render: () => {
     return html`
       <sd-scrollable buttons>
@@ -124,24 +116,6 @@ export const CustomIcon = {
 
 export const Parts = {
   name: 'Parts',
-  parameters: {
-    controls: {
-      exclude: [
-        'base',
-        'scroll-content',
-        'button-start',
-        'button-end',
-        'button-right',
-        'button-left',
-        'button-top',
-        'button-bottom',
-        'shadow-right',
-        'shadow-left',
-        'shadow-top',
-        'shadow-bottom'
-      ]
-    }
-  },
   render: (args: any) => {
     const parts = [
       'base',

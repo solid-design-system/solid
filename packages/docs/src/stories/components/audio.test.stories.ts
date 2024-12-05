@@ -32,11 +32,6 @@ const transcriptConstant: ConstantDefinition = {
 
 export const Default = {
   name: 'Default',
-  parameters: {
-    controls: {
-      exclude: ['speed']
-    }
-  },
   render: (args: any) => {
     return html`
       <div className="p-0">
@@ -51,11 +46,6 @@ export const Default = {
 
 export const ReversedLayout = {
   name: 'Reversed Layout',
-  parameters: {
-    controls: {
-      exclude: ['speed', 'reversedLayout']
-    }
-  },
   render: () => {
     return html`
       <div class="p-0">
@@ -72,11 +62,6 @@ export const ReversedLayout = {
 
 export const Animated = {
   name: 'Animated',
-  parameters: {
-    controls: {
-      exclude: ['animated']
-    }
-  },
   render: () => {
     return html`
       <div class="p-0">
@@ -93,11 +78,6 @@ export const Animated = {
 
 export const AnimatedAndReversed = {
   name: 'Animated and Reversed Layout',
-  parameters: {
-    controls: {
-      exclude: ['animated, reversedLayout']
-    }
-  },
   render: () => {
     return html`
       <div class="p-0">
@@ -115,11 +95,6 @@ export const AnimatedAndReversed = {
 
 export const AnimatedAndInverted = {
   name: 'Animated and Inverted',
-  parameters: {
-    controls: {
-      exclude: ['animated, inverted']
-    }
-  },
   render: () => {
     return html`
       <div class="bg-primary p-0">
@@ -137,11 +112,6 @@ export const AnimatedAndInverted = {
 
 export const Inverted = {
   name: 'Inverted',
-  parameters: {
-    controls: {
-      exclude: ['inverted']
-    }
-  },
   render: () => {
     return html`
       <div class="bg-primary p-0">
@@ -158,11 +128,6 @@ export const Inverted = {
 
 export const HiddenTimestamps = {
   name: 'Hidden Timestamps',
-  parameters: {
-    controls: {
-      exclude: ['hide-timestamps']
-    }
-  },
   render: () => {
     return html`
       <div class="p-0">
@@ -179,9 +144,6 @@ export const HiddenTimestamps = {
 
 export const Slots = {
   name: 'Slots',
-  parameters: {
-    controls: { exclude: ['default', 'play-icon', 'pause-icon', 'transcript'] }
-  },
   render: (args: any) => {
     return html`
       ${['default', 'play-icon', 'pause-icon'].map(slot => {
@@ -227,7 +189,6 @@ export const Slots = {
 
 export const Parts = {
   name: 'Parts',
-  parameters: {},
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -258,11 +219,6 @@ export const Parts = {
 
 export const Mouseless = {
   name: 'Mouseless',
-  parameters: {
-    controls: {
-      exclude: ['speed']
-    }
-  },
   render: (args: any) => {
     return html`
       <div class="mouseless p-0 hover:p-0">
@@ -277,11 +233,6 @@ export const Mouseless = {
 
 export const SamplesTeaser = {
   name: 'Samples: sd-audio with sd-teaser',
-  parameters: {
-    controls: {
-      disable: true
-    }
-  },
   render: () => {
     return html`
       <style>
@@ -323,11 +274,6 @@ export const SamplesTeaser = {
 
 export const SamplesHeadline = {
   name: 'Samples: sd-audio with sd-headline',
-  parameters: {
-    controls: {
-      disable: true
-    }
-  },
   render: () => {
     return html`
       <style></style>

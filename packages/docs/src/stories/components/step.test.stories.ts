@@ -48,7 +48,6 @@ export const Default = {
 
 export const Orientation = {
   name: 'Orientation',
-  parameters: { controls: { exclude: 'orientation' } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -132,11 +131,6 @@ export const DescriptionAndLabelUsingAttributes = {
  */
 export const Parts = {
   name: 'Parts',
-  parameters: {
-    controls: {
-      exclude: ['base', 'circle-and-tail-container', 'circle', 'tail', 'label', 'description', 'text-container']
-    }
-  },
   render: () => {
     return generateTemplate({
       axis: {
@@ -185,9 +179,6 @@ export const Parts = {
 
 export const Slots = {
   name: 'Slots',
-  parameters: {
-    controls: { exclude: ['default', 'label', 'index', 'circle-content'] }
-  },
   render: () => {
     return html`
       ${['default', 'label', 'index', 'circle-content'].map(slot =>

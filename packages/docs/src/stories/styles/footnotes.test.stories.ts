@@ -69,7 +69,6 @@ export const Default = {
 
 export const UnorderedLists = {
   name: 'Unordered Lists',
-  parameters: { controls: { include: [] } },
   render: (args: any) => {
     return generateTemplate({
       options: {
@@ -85,7 +84,6 @@ export const UnorderedLists = {
  */
 
 export const Sample = {
-  parameters: { controls: { include: [] } },
   name: 'Sample: Set start',
   render: (args: any) => {
     return generateTemplate({

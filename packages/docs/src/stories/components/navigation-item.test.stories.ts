@@ -77,11 +77,6 @@ export const Bold = {
 
 export const Variants = {
   name: 'Variant × Size',
-  parameters: {
-    controls: {
-      exclude: ['href', 'target', 'download', 'size', 'vertical', 'indented', 'relaxed', 'open', 'children']
-    }
-  },
   render: (args: any) => {
     return html`
       ${generateTemplate({
@@ -132,9 +127,6 @@ export const Variants = {
 
 export const Disabled = {
   name: 'Disabled',
-  parameters: {
-    controls: { exclude: ['disabled', 'vertical', 'current'] }
-  },
   render: (args: any) => {
     return html`
       ${generateTemplate({
@@ -177,23 +169,6 @@ export const Disabled = {
 
 export const VerticalAndCurrent = {
   name: 'Vertical × Current',
-  parameters: {
-    controls: {
-      exclude: [
-        'vertical',
-        'chevron',
-        'indented',
-        'relaxed',
-        'divider',
-        'open',
-        'current',
-        'description',
-        'children',
-        'sd-show',
-        'sd-hide'
-      ]
-    }
-  },
   render: (args: any) => {
     return html`
       ${generateTemplate({
@@ -213,23 +188,6 @@ export const VerticalAndCurrent = {
 
 export const VerticalAndLink = {
   name: 'Vertical × Link',
-  parameters: {
-    controls: {
-      exclude: [
-        'vertical',
-        'href',
-        'indented',
-        'relaxed',
-        'divider',
-        'open',
-        'current',
-        'description',
-        'children',
-        'sd-show',
-        'sd-hide'
-      ]
-    }
-  },
   render: (args: any) => {
     return html`
       ${generateTemplate({
@@ -249,7 +207,6 @@ export const VerticalAndLink = {
 
 export const Chevron = {
   name: 'Chevron',
-  parameters: { controls: { exclude: [] } },
   render: (args: any) => {
     return html`${['Button', 'Link', 'Accordion'].map(title => {
       const constants: ConstantDefinition[] = [
@@ -286,11 +243,6 @@ export const Chevron = {
 
 export const IndentedRelaxed = {
   name: 'Indented × Relaxed',
-  parameters: {
-    controls: {
-      exclude: ['vertical', 'chevron', 'indented', 'sd-show', 'sd-hide']
-    }
-  },
   render: (args: any) => {
     return html`
       ${generateTemplate({
@@ -316,9 +268,6 @@ export const IndentedRelaxed = {
 
 export const Slots = {
   name: 'Slots',
-  parameters: {
-    controls: { exclude: [] }
-  },
   render: (args: any) => {
     return html`
       ${['default', 'description', 'children'].map(slot =>

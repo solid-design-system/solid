@@ -46,7 +46,6 @@ export const Default = {
 
 export const Active = {
   name: 'Active',
-  parameters: { controls: { exclude: ['active'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -63,7 +62,6 @@ export const Active = {
 
 export const Variant = {
   name: 'Variant',
-  parameters: { controls: { exclude: ['variant'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -95,11 +93,6 @@ export const Disabled = {
 
 export const Parts = {
   name: 'Parts',
-  parameters: {
-    controls: {
-      exclude: ['base', 'active-tab-indicator', 'bottom-border']
-    }
-  },
   render: (args: any) => {
     return html`
       ${['base', 'active-tab-indicator', 'hover-bottom-border'].map(part =>
@@ -141,7 +134,6 @@ export const Parts = {
 
 export const Sample = {
   name: 'Sample: Icon',
-  parameters: { controls: { exclude: ['active', 'variant'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {

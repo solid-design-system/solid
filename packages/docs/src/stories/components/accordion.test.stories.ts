@@ -42,7 +42,6 @@ export const Default = {
  */
 export const States = {
   name: 'States',
-  parameters: { controls: { exclude: 'open' } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -59,7 +58,6 @@ export const States = {
  */
 export const SummaryLength = {
   name: 'Summary Length',
-  parameters: { controls: { exclude: 'summary' } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -77,10 +75,7 @@ export const SummaryLength = {
         }
       },
       args,
-      constants: [
-        { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' },
-        { type: 'slot', name: 'summary', value: '<div slot="summary" class="slot slot--text">Test</div>`' }
-      ]
+      constants: [{ type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' }]
     });
   }
 };
@@ -98,9 +93,6 @@ export const SummaryLength = {
 
 export const Slots = {
   name: 'Slots',
-  parameters: {
-    controls: { exclude: ['expand-icon', 'collapse-icon', 'default', 'summary'] }
-  },
   render: (args: any) => {
     return html`
       ${['default', 'summary', 'expand-icon', 'collapse-icon'].map(slot =>
@@ -137,9 +129,6 @@ export const Slots = {
 
 export const Parts = {
   name: 'Parts',
-  parameters: {
-    controls: { exclude: ['base', 'header', 'summary', 'summary-icon', 'summary-border', 'content', 'content__slot'] }
-  },
   render: (args: any) => {
     return generateTemplate({
       axis: {

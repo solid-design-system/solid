@@ -62,7 +62,6 @@ export const Default = {
 
 export const Orientation = {
   name: 'Orientation',
-  parameters: { controls: { exclude: 'orientation' } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -79,7 +78,6 @@ export const Orientation = {
 
 export const Inverted = {
   name: 'Inverted',
-  parameters: { controls: { exclude: 'inverted' } },
   render: (args: any) => {
     return generateTemplate({
       axis: {

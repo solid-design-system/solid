@@ -67,7 +67,6 @@ export const Default = {
  */
 export const Shapes = {
   name: 'Shapes',
-  parameters: { controls: { exclude: ['shapes'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -88,7 +87,6 @@ export const Shapes = {
  */
 export const Variants = {
   name: 'Variants',
-  parameters: { controls: { exclude: ['variant'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -154,9 +152,6 @@ export const Breakpoints = {
  */
 export const Parts = {
   name: 'Parts',
-  parameters: {
-    controls: { exclude: ['base', 'content', 'shape-top', 'shape-middle', 'shape-bottom'] }
-  },
   render: (args: any) => {
     return generateTemplate({
       axis: {

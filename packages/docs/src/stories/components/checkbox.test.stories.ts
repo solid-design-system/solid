@@ -48,7 +48,6 @@ export const Default = {
 
 export const DisabledAndSize = {
   name: 'Disabled × Size',
-  parameters: { controls: { exclude: ['disabled', 'size', 'default'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -77,7 +76,6 @@ export const DisabledAndSize = {
 
 export const Size = {
   name: 'Size',
-  parameters: { controls: { exclude: ['size'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -94,7 +92,6 @@ export const Size = {
 
 export const MultipleLines = {
   name: 'Multiple Lines',
-  parameters: { controls: { exclude: ['size'] } },
   render: () => {
     return generateTemplate({
       axis: {
@@ -115,7 +112,6 @@ export const MultipleLines = {
 
 export const Required = {
   name: 'Required',
-  parameters: { controls: { exclude: ['required'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -129,7 +125,6 @@ export const Required = {
 
 export const Checked = {
   name: 'Checked',
-  parameters: { controls: { exclude: ['checked'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -154,7 +149,6 @@ export const Checked = {
 
 export const Indeterminate = {
   name: 'Indeterminate',
-  parameters: { controls: { exclude: ['indeterminate'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -183,7 +177,6 @@ export const Indeterminate = {
 
 export const Invalid = {
   name: 'Invalid',
-  parameters: { controls: { exclude: ['required'] } },
   render: (args: any) => {
     return html`
       <form>
@@ -204,7 +197,6 @@ export const Invalid = {
 
 export const IndeterminateInvalid = {
   name: 'Indeterminate × Invalid',
-  parameters: { controls: { exclude: ['required', 'indeterminate'] } },
   render: (args: any) => {
     return html`
       <form>
@@ -231,30 +223,6 @@ export const IndeterminateInvalid = {
  */
 export const Parts = {
   name: 'Parts',
-  parameters: {
-    controls: {
-      exclude: [
-        'base',
-        'control',
-        'control--unchecked',
-        'control--checked',
-        'checked-icon',
-        'control--indeterminate',
-        'indeterminate-icon',
-        'label',
-        'title',
-        'name',
-        'value',
-        'size',
-        'disabled',
-        'checked',
-        'indeterminate',
-        'form',
-        'required',
-        'default'
-      ]
-    }
-  },
   render: (args: any) => {
     return generateTemplate({
       axis: {

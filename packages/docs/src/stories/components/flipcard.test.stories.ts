@@ -63,7 +63,6 @@ export const Default = {
 
 export const Variants = {
   name: 'Variants',
-  parameters: { controls: { exclude: ['front-variant'] } },
   render: (args: any) =>
     generateTemplate({
       axis: {
@@ -89,7 +88,6 @@ export const Variants = {
 
 export const Activation = {
   name: 'Activation',
-  parameters: { controls: { exclude: ['activation'] } },
   render: (args: any) =>
     generateTemplate({
       axis: {
@@ -115,7 +113,6 @@ export const Activation = {
 
 export const flipDirection = {
   name: 'Flip Direction',
-  parameters: { controls: { exclude: ['flip-direction'] } },
   render: (args: any) =>
     generateTemplate({
       axis: {
@@ -140,9 +137,6 @@ export const flipDirection = {
  */
 export const Slots = {
   name: 'Slots',
-  parameters: {
-    controls: { exclude: ['front', 'back', 'front-media', 'back-media'] }
-  },
   render: (args: any) => {
     return html`
       ${['front', 'back', 'front-media', 'back-media'].map(slot => {
@@ -189,21 +183,6 @@ export const Slots = {
  */
 export const Parts = {
   name: 'Parts',
-  parameters: {
-    controls: {
-      exclude: [
-        'base',
-        'front',
-        'back',
-        'front-slot-container',
-        'back-slot-container',
-        'front-media',
-        'back-media',
-        'front-secondary-gradient',
-        'back-secondary-gradient'
-      ]
-    }
-  },
   render: (args: any) => {
     return generateTemplate({
       axis: {

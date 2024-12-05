@@ -63,7 +63,6 @@ export const Default = {
 
 export const Variant = {
   name: 'Variant',
-  parameters: { controls: { exclude: 'variant' } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -80,7 +79,6 @@ export const Variant = {
 
 export const Inverted = {
   name: 'Inverted',
-  parameters: { controls: { exclude: ['inverted', 'variant'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -102,7 +100,6 @@ export const Inverted = {
 
 export const Loop = {
   name: 'Loop',
-  parameters: { controls: { exclude: 'loop' } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -119,7 +116,6 @@ export const Loop = {
 
 export const Autoplay = {
   name: 'Autoplay',
-  parameters: { controls: { exclude: 'autoplay' } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -140,7 +136,6 @@ export const Autoplay = {
 
 export const SlidesPerPage = {
   name: 'Slides Per Page',
-  parameters: { controls: { exclude: 'slides-per-page' } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -161,7 +156,6 @@ export const SlidesPerPage = {
 
 export const SlidesPerMove = {
   name: 'Slides Per Move',
-  parameters: { controls: { exclude: 'slides-per-move' } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -189,26 +183,6 @@ export const SlidesPerMove = {
 
 export const Parts = {
   name: 'Parts',
-  parameters: {
-    controls: {
-      exclude: [
-        'base',
-        'scroll-container',
-        'controls',
-        'pagination-dot',
-        'pagination-number',
-        'pagination-item',
-        'pagination-item--active',
-        'navigation',
-        'navigation-button',
-        'navigation-button--previous',
-        'navigation-button--next',
-        'autoplay-controls',
-        'variant',
-        'autoplay'
-      ]
-    }
-  },
   render: (args: any) => {
     return generateTemplate({
       axis: {

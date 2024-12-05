@@ -29,10 +29,7 @@ export default {
 export const Default = {
   name: 'Default',
   render: (args: any) => {
-    return generateTemplate({
-      args,
-      constants: { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' }
-    });
+    return generateTemplate({ args });
   }
 };
 
@@ -42,11 +39,10 @@ export const Default = {
 
 export const CloseOthers = {
   name: 'One accordion open at a time',
-  parameters: { controls: { exclude: 'close-others' } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        y: { type: 'attribute', name: 'close-others', values: [false, true] }
+        y: { type: 'attribute', name: 'close-others' }
       },
       args,
       constants: { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' }
@@ -60,9 +56,6 @@ export const CloseOthers = {
 
 export const Parts = {
   name: 'Parts',
-  parameters: {
-    controls: { exclude: 'base' }
-  },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -90,16 +83,7 @@ export const Parts = {
 export const Mouseless = {
   name: 'Mouseless',
   render: (args: any) => {
-    return html`<div class="mouseless">
-      ${generateTemplate({
-        args,
-        constants: {
-          type: 'template',
-          name: 'width',
-          value: '<div style="width: 300px">%TEMPLATE%</div>'
-        }
-      })}
-    </div>`;
+    return html`<div class="mouseless">${generateTemplate({ args })}</div>`;
   },
   play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
     const el = canvasElement.querySelector('.mouseless sd-accordion');
