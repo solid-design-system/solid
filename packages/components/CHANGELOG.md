@@ -1,5 +1,16 @@
 ## 3.22.15
 
+## 3.22.16
+
+### Patch Changes
+
+- Removed references to deprecated `library="global-resources"` from: _[`#1701`](https://github.com/solid-design-system/solid/pull/1701) [`82c6b31`](https://github.com/solid-design-system/solid/commit/82c6b314fc89478cda192fcadad0daa2b73fe70d) [@smfonseca](https://github.com/smfonseca)_
+
+  - Spin buttons on the `sd-input`
+  - Templates for `sd-interactive` and `sd-table`
+  - Screenshot tests of several components and styles
+  - Removed icon mocks
+
 ### Patch Changes
 
 - Improved sd-flag a11y: _[`#1705`](https://github.com/solid-design-system/solid/pull/1705) [`b4c123e`](https://github.com/solid-design-system/solid/commit/b4c123ef67e6d7106358c3a4aaab8f377db10326) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
