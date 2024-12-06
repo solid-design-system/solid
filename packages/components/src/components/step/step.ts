@@ -152,7 +152,7 @@ export default class SdStep extends SolidElement {
                 ? 'focus-visible:outline-none cursor-not-allowed'
                 : 'focus-visible:focus-outline group-hover:cursor-pointer',
               this.notInteractive ? (this.size === 'lg' ? 'w-[72px]' : 'w-12') : this.size === 'lg' ? 'w-12' : 'w-8',
-              this.disabled && 'border-neutral-400 text-neutral-500',
+              this.disabled && 'border-neutral-400 text-neutral-700',
               !this.disabled &&
                 !this.current &&
                 !this.notInteractive &&
@@ -199,11 +199,11 @@ export default class SdStep extends SolidElement {
           }
         </div>
 
-        <div part="text-container" class=${cx('mt-4 break-words flex flex-col gap-2', this.orientation === 'horizontal' ? 'text-center w-40' : 'w-max text-left', this.disabled && '!text-neutral-500', this.notInteractive ? 'ml-3' : 'mr-4')}>
-          <div part="label" id="label" class=${cx('!font-bold sd-paragraph', this.disabled && '!text-neutral-500', !this.disabled && !this.current && !this.notInteractive ? '!text-primary group-hover:!text-primary-500 group-hover:cursor-pointer' : 'text-black')}>
+        <div part="text-container" class=${cx('mt-4 break-words flex flex-col gap-2', this.orientation === 'horizontal' ? 'text-center w-40' : 'w-max text-left', this.disabled && '!text-neutral-700', this.notInteractive ? 'ml-3' : 'mr-4')}>
+          <div part="label" id="label" class=${cx('!font-bold sd-paragraph', this.disabled && '!text-neutral-700', !this.disabled && !this.current && !this.notInteractive ? '!text-primary group-hover:!text-primary-500 group-hover:cursor-pointer' : 'text-black')}>
             <slot name="label">${this.label}</slot>
           </div>
-          <div part="description" id="description" class=${cx('sd-paragraph sd-paragraph--size-sm', this.disabled && '!text-neutral-500')}>
+          <div part="description" id="description" class=${cx('sd-paragraph sd-paragraph--size-sm', this.disabled && '!text-neutral-700')}>
           ${this.description || html`<slot></slot>`}
           </div>
         </div>
