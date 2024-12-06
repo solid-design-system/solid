@@ -851,7 +851,6 @@ export const sortableTable = {
                         >
                           ${header.label}<sd-icon
                             id="sortIcon-${columnIndex}"
-                            library="global-resources"
                             name=${sortData[columnIndex] === 'none' ? 'system/sort-down' : 'system/sort-down-filled'}
                             class="text-[12px]"
                           ></sd-icon>
