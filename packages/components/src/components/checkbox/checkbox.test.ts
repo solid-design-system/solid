@@ -97,6 +97,12 @@ describe('<sd-checkbox>', () => {
     await el.updateComplete;
   });
 
+  it('should contain aria-invalid', async () => {
+    const el = await fixture<HTMLFormElement>(html` <sd-checkbox required></sd-checkbox> `);
+    const input = el.shadowRoot!.querySelector('input')!;
+    expect(input.hasAttribute('aria-invalid')).to.be.true;
+  });
+
   describe('when submitting a form', () => {
     it('should submit the correct value when a value is provided', async () => {
       const form = await fixture<HTMLFormElement>(html`
@@ -161,6 +167,7 @@ describe('<sd-checkbox>', () => {
 
       expect(checkbox.hasAttribute('data-user-invalid')).to.be.true;
       expect(checkbox.hasAttribute('data-user-valid')).to.be.false;
+      expect(checkbox.getAttribute('aria-invalid')).to.equal('true');
     });
 
     it('should show invalid-message when calling reportCustomValidity with non-empty setCustomValidity() ', async () => {
@@ -237,6 +244,7 @@ describe('<sd-checkbox>', () => {
       checkbox.checked = false;
 
       await checkbox.updateComplete;
+      expect(checkbox.getAttribute('aria-invalid')).to.equal('false');
       setTimeout(() => button.click());
 
       await oneEvent(form, 'reset');

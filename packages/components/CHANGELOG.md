@@ -1,5 +1,22 @@
 ## 3.22.13
 
+## 3.22.15
+
+### Patch Changes
+
+- Improved sd-flag a11y: _[`#1705`](https://github.com/solid-design-system/solid/pull/1705) [`b4c123e`](https://github.com/solid-design-system/solid/commit/b4c123ef67e6d7106358c3a4aaab8f377db10326) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Change text color on bg neutral-500 from white to black to comply with WCAG 2.2
+
+## 3.22.14
+
+### Patch Changes
+
+- Improve accessibility for `sd-checkbox` validation _[`#1707`](https://github.com/solid-design-system/solid/pull/1707) [`c8a45dd`](https://github.com/solid-design-system/solid/commit/c8a45dd2f568bf86c33bc525e32a4eee42641399) [@smfonseca](https://github.com/smfonseca)_
+
+  - Add `aria-invalid` to identify checkboxes that have failed validation
+  - Add new set of tests for `aria-invalid`
+
 ### Patch Changes
 
 - [#1695](https://github.com/solid-design-system/solid/pull/1695) [`f472ee8`](https://github.com/solid-design-system/solid/commit/f472ee8177e3dff9ce9f494a21ff19ac3ecab334) Thanks [@mariohamann](https://github.com/mariohamann)! - Fix CDN deployment for `components`. Same functionality as `@solid-design-system/components@3.22.12`.
@@ -19,6 +36,7 @@
 ### Bug Fixes
 
 - improve sd-video a11y ([#1644](https://github.com/solid-design-system/solid/issues/1644)) ([6dec218](https://github.com/solid-design-system/solid/commit/6dec2189231b9d6538391b8e37b5228d4253d9ed)), closes [#1494](https://github.com/solid-design-system/solid/issues/1494) [#1529](https://github.com/solid-design-system/solid/issues/1529)
+
 # [@solid-design-system/components-v3.22.10](https://github.com/solid-design-system/solid/compare/components/3.22.9...components/3.22.10) (2024-11-27)
 
 ### Bug Fixes
