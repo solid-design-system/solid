@@ -414,12 +414,12 @@ export const Parts = {
         {
           type: 'slot',
           name: 'icon-right',
-          value: '<sd-icon library="global-resources" name="system/picture" slot="icon-right"></sd-icon>'
+          value: '<sd-icon name="system/image" slot="icon-right"></sd-icon>'
         },
         {
           type: 'slot',
           name: 'icon-left',
-          value: '<sd-icon library="global-resources" name="system/picture" slot="icon-left"></sd-icon>'
+          value: '<sd-icon name="system/image" slot="icon-left"></sd-icon>'
         },
         {
           type: 'slot',
