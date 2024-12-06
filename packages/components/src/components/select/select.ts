@@ -232,12 +232,13 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
 
   connectedCallback() {
     super.connectedCallback();
-
-    // Cascade select size to options once connected
-    this.applySizeToOptions();
-
     // Because this is a form control, it shouldn't be opened initially
     this.open = false;
+  }
+
+  firstUpdated() {
+    // Cascade select size to options once connected
+    this.applySizeToOptions();
   }
 
   private addOpenListeners() {
@@ -434,17 +435,19 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   private handleClearClick(event: MouseEvent) {
     event.stopPropagation();
 
-    if (this.value !== '') {
-      this.setSelectedOptions([]);
-      this.displayInput.focus({ preventScroll: true });
+    this.clearSelect();
+  }
 
-      // Emit after update
-      this.updateComplete.then(() => {
-        this.emit('sd-clear');
-        this.emit('sd-input');
-        this.emit('sd-change');
-      });
-    }
+  private clearSelect() {
+    this.setSelectedOptions([]);
+    this.displayInput.focus({ preventScroll: true });
+
+    // Emit after update
+    this.updateComplete.then(() => {
+      this.emit('sd-clear');
+      this.emit('sd-input');
+      this.emit('sd-change');
+    });
   }
 
   private handleClearMouseDown(event: MouseEvent) {
@@ -505,10 +508,12 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     }
   }
 
-  private handleTagRemove(event: CustomEvent, option: SdOption) {
+  private handleTagRemove(event: CustomEvent, option?: SdOption) {
     event.stopPropagation();
-
-    if (!this.disabled) {
+    if (!option) {
+      this.clearSelect();
+    }
+    if (option && !this.disabled) {
       this.toggleOptionSelection(option, false);
 
       // Emit after updating
@@ -563,7 +568,11 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     }
 
     // Update selection, value, and display label
-    this.selectionChanged();
+    if (Array.isArray(option)) {
+      this.selectionChanged();
+    } else {
+      this.selectionChanged(option);
+    }
   }
 
   // Toggles an option's selected state
@@ -574,14 +583,27 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
       option.selected = !option.selected;
     }
 
-    this.selectionChanged();
+    // Update selection, value, and display label
+    if (Array.isArray(option)) {
+      this.selectionChanged();
+    } else {
+      this.selectionChanged(option);
+    }
   }
 
   // This method must be called whenever the selection changes. It will update the selected options cache, the current
   // value, and the display value
-  private selectionChanged() {
-    // Update selected options cache
-    this.selectedOptions = this.getAllOptions().filter(el => el.selected);
+  private selectionChanged(option?: SdOption) {
+    if (option && this.multiple) {
+      if (this.selectedOptions.find(el => el.value === option.value)) {
+        this.selectedOptions = this.selectedOptions.filter(el => el.value !== option.value);
+      } else {
+        this.selectedOptions = [...this.selectedOptions, option];
+      }
+    } else {
+      // Update selected options cache
+      this.selectedOptions = this.getAllOptions().filter(el => el.selected);
+    }
 
     // Update the value and display label
     if (this.multiple) {
@@ -605,21 +627,36 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   }
 
   protected get tags() {
-    return this.selectedOptions.map((option, index) => {
-      if (index < this.maxOptionsVisible || this.maxOptionsVisible <= 0) {
-        const tag = this.getTag(option, index);
-        // Wrap so we can handle the remove
-        return html`<div @sd-remove=${(e: CustomEvent) => this.handleTagRemove(e, option)}>
-          ${typeof tag === 'string' ? unsafeHTML(tag) : tag}
-        </div>`;
-      } else if (index === this.maxOptionsVisible) {
-        // Hit tag limit
-        return html`<sd-tag size=${this.size === 'sm' ? 'sm' : 'lg'} ?disabled=${this.disabled}
-          >+${this.selectedOptions.length - index}</sd-tag
-        >`;
-      }
-      return html``;
-    });
+    if (this.selectedOptions.length <= this.maxOptionsVisible) {
+      return this.selectedOptions.map((option, index) => {
+        if (index < this.maxOptionsVisible || this.maxOptionsVisible <= 0) {
+          const tag = this.getTag(option, index);
+          // Wrap so we can handle the remove
+          return html` <div @sd-remove=${(e: CustomEvent) => this.handleTagRemove(e, option)}>
+            ${typeof tag === 'string' ? unsafeHTML(tag) : tag}
+          </div>`;
+        }
+        return [html``];
+      });
+    } else {
+      return [
+        html`
+          <sd-tag
+            ?disabled=${this.disabled}
+            part="tag"
+            exportparts="
+              base:tag__base,
+              content:tag__content,
+              removable-indicator:tag__removable-indicator,
+            "
+            size=${this.size === 'sm' ? 'sm' : 'lg'}
+            removable
+            @sd-remove=${(event: CustomEvent) => this.handleTagRemove(event)}
+            >${this.selectedOptions.length} ${this.localize.term('tagsSelected')}</sd-tag
+          >
+        `
+      ];
+    }
   }
 
   private handleInvalid(event: Event) {
@@ -670,7 +707,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   async handleOpenChange() {
     if (this.open && !this.disabled) {
       // Reset the current option
-      this.setCurrentOption(this.selectedOptions[0] || this.getFirstOption());
+      if (!this.multiple) this.setCurrentOption(this.selectedOptions[0] || this.getFirstOption());
 
       // Show
       this.emit('sd-show');
@@ -718,6 +755,8 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
 
   @watch('value', { waitUntilFirstUpdate: true })
   handleValueChange() {
+    // run only if the value is updated from outside
+    if (this.selectedOptions.length === (Array.isArray(this.value) ? this.value.length : 1)) return;
     const allOptions = this.getAllOptions();
     const value = Array.isArray(this.value) ? this.value : [this.value];
 
@@ -935,6 +974,10 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 ? html`<div part="tags" class="flex-grow flex flex-wrap items-center gap-1">${this.tags}</div>`
                 : ''}
 
+              <div aria-live="polite" id="control-value" class="absolute top-0 left-0 opacity-0 -z-10">
+                ${this.selectedOptions.map(option => option?.getTextLabel()).join(', ')}
+              </div>
+
               <input
                 class=${cx('value-input absolute top-0 left-0 w-full h-full opacity-0 -z-10', cursorStyles)}
                 type="text"
@@ -942,6 +985,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 ?required=${this.required}
                 .value=${Array.isArray(this.value) ? this.value.join(', ') : this.value}
                 tabindex="-1"
+                aria-controls="control-value"
                 aria-hidden="true"
                 @focus=${() => this.focus()}
                 @invalid=${this.handleInvalid}
@@ -1010,7 +1054,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
               aria-labelledby="label"
               part="listbox"
               class=${cx(
-                'bg-white px-2 py-3 relative border-primary overflow-y-auto',
+                'bg-white px-2 py-3 relative border-primary overflow-y-scroll',
                 this.open && 'shadow',
                 this.currentPlacement === 'bottom'
                   ? 'border-r-2 border-b-2 border-l-2 rounded-br-default rounded-bl-default'
@@ -1058,7 +1102,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
       }
 
       sd-popup::part(popup) {
-        @apply overflow-y-scroll z-dropdown;
+        @apply z-dropdown;
       }
 
       sd-tag::part(base) {

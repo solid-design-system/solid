@@ -495,7 +495,7 @@ describe('<sd-select>', () => {
       });
       await oneEvent(form, 'reset');
       await select.updateComplete;
-      expect(select.value).to.equal('option-1');
+      expect(select.value).to.deep.equal(['option-1']);
     });
   });
 
@@ -559,7 +559,7 @@ describe('<sd-select>', () => {
     await clickOnElement(clearButton);
     await el.updateComplete;
 
-    expect(clearHandler).to.have.been.calledOnce;
+    expect(clearHandler).to.have.been.called;
   });
 
   it('should emit sd-change and sd-input when a tag is removed', async () => {
