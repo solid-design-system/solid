@@ -92,6 +92,12 @@ describe('<sd-select>', () => {
     expect(submitHandler).to.have.been.calledOnce;
   });
 
+  it('should contain aria-invalid', async () => {
+    const el = await fixture<HTMLFormElement>(html` <sd-select></sd-select> `);
+    const input = el.shadowRoot!.querySelector('input')!;
+    expect(input.hasAttribute('aria-invalid')).to.be.true;
+  });
+
   describe('when the value changes', () => {
     it('should emit sd-change when the value is changed with the mouse', async () => {
       const el = await fixture<SdSelect>(html`
@@ -269,6 +275,7 @@ describe('<sd-select>', () => {
       await el.updateComplete;
 
       expect(el.checkValidity()).to.be.true;
+      expect(el.getAttribute('aria-invalid')).to.equal('false');
       expect(el.hasAttribute('data-user-invalid')).to.be.false;
       expect(el.hasAttribute('data-user-valid')).to.be.true;
     });
@@ -297,6 +304,7 @@ describe('<sd-select>', () => {
       el.blur();
       await el.updateComplete;
 
+      expect(el.getAttribute('aria-invalid')).to.equal('true');
       expect(el.hasAttribute('data-user-invalid')).to.be.true;
       expect(el.hasAttribute('data-user-valid')).to.be.false;
     });
