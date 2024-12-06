@@ -38,7 +38,8 @@ const translation: Translation = {
   showPassword: 'Show password',
   slideNum: num => `Slide ${num}`,
   toggleColorFormat: 'Toggle color format',
-  unmute: 'Unmute'
+  unmute: 'Unmute',
+  removed: name => `${name} removed`
 };
 
 registerTranslation(translation);
