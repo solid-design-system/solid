@@ -83,24 +83,6 @@ export default class SdFlipcard extends SolidElement {
     this.front.focus();
   }
 
-  private handleFrontClick(event: PointerEvent) {
-    const eventNode = event.target as HTMLElement;
-
-    // Prevent flipping when clicking on interactive elements
-    if (eventNode.getAttribute('onclick') === null && eventNode.getAttribute('href') === null) {
-      this.flipFront();
-    }
-  }
-
-  private handleBackClick(event: PointerEvent) {
-    const eventNode = event.target as HTMLElement;
-
-    // Prevent flipping when clicking on interactive elements
-    if (eventNode.getAttribute('onclick') === null && eventNode.getAttribute('href') === null) {
-      this.flipBack();
-    }
-  }
-
   private handleFrontKeydown(event: KeyboardEvent) {
     if (event.code === 'Enter' && this.front === event.target) {
       this.flipFront();
@@ -116,76 +98,74 @@ export default class SdFlipcard extends SolidElement {
   render() {
     return html`
       <div part="base" class=${cx('flip-card relative h-full w-full')}>
-        <div part="front-interactive-container">
+        <div
+          part="front"
+          tabindex="0"
+          class=${cx(
+            'flip-card__side flip-card__side--front overflow-hidden transition-transform duration-1000 ease-in-out',
+            'flex focus-visible:focus-outline',
+            'absolute top-0 left-0 w-full h-full justify-end text-left',
+            this.frontVariant === 'primary' && 'bg-primary',
+            this.frontVariant === 'primary-100' && 'bg-primary-100',
+            this.placement === 'top' ? 'flex-col' : 'flex-col-reverse',
+            this.flipDirection === 'vertical' && 'vertical'
+          )}
+        >
           <div
-            part="front"
-            tabindex="0"
+            part="media-front"
             class=${cx(
-              'flip-card__side flip-card__side--front overflow-hidden transition-transform duration-1000 ease-in-out',
-              'flex focus-visible:focus-outline',
-              'absolute top-0 left-0 w-full h-full justify-end text-left',
-              this.frontVariant === 'primary' && 'bg-primary',
-              this.frontVariant === 'primary-100' && 'bg-primary-100',
-              this.placement === 'top' ? 'flex-col' : 'flex-col-reverse',
-              this.flipDirection === 'vertical' && 'vertical'
+              'absolute h-full w-full -z-20',
+              (this.frontVariant === 'primary' || this.frontVariant === 'primary-100') && 'hidden'
             )}
           >
-            <div
-              part="media-front"
-              class=${cx(
-                'absolute h-full w-full -z-20',
-                (this.frontVariant === 'primary' || this.frontVariant === 'primary-100') && 'hidden'
-              )}
-            >
-              <slot name="media-front"></slot>
-            </div>
-
-            <div
-              part="front-slot-container"
-              class=${cx(
-                'flex',
-                {
-                  primary: 'text-white',
-                  'primary-100': 'text-black',
-                  'gradient-light': 'text-black',
-                  'gradient-dark': 'text-white'
-                }[this.frontVariant],
-                {
-                  primary: '',
-                  'primary-100': '',
-                  'gradient-light':
-                    this.placement === 'top'
-                      ? 'bg-gradient-to-b from-white/75 to-white/60'
-                      : 'bg-gradient-to-t  from-white/75 to-white/60',
-                  'gradient-dark':
-                    this.placement === 'bottom'
-                      ? 'bg-gradient-to-b from-primary-800/75 to-primary-800/60'
-                      : 'bg-gradient-to-t  from-primary-800/75 to-primary-800/60'
-                }[this.frontVariant]
-              )}
-            >
-              <slot name="front"></slot>
-            </div>
-
-            <div
-              part="front-secondary-gradient"
-              class=${cx(
-                'flip-card__gradient',
-                {
-                  primary: 'mb-auto',
-                  'primary-100': 'mb-auto',
-                  'gradient-light':
-                    this.placement === 'top'
-                      ? 'bg-gradient-to-b from-white/60 to-40% mb-auto'
-                      : 'bg-gradient-to-t from-white/60 to-40% mt-auto',
-                  'gradient-dark':
-                    this.placement === 'bottom'
-                      ? 'bg-gradient-to-t from-primary-800/60 to-40% mt-auto'
-                      : 'bg-gradient-to-b from-primary-800/60 to-40% mb-auto'
-                }[this.frontVariant]
-              )}
-            ></div>
+            <slot name="media-front"></slot>
           </div>
+
+          <div
+            part="front-slot-container"
+            class=${cx(
+              'flex',
+              {
+                primary: 'text-white',
+                'primary-100': 'text-black',
+                'gradient-light': 'text-black',
+                'gradient-dark': 'text-white'
+              }[this.frontVariant],
+              {
+                primary: '',
+                'primary-100': '',
+                'gradient-light':
+                  this.placement === 'top'
+                    ? 'bg-gradient-to-b from-white/75 to-white/60'
+                    : 'bg-gradient-to-t  from-white/75 to-white/60',
+                'gradient-dark':
+                  this.placement === 'bottom'
+                    ? 'bg-gradient-to-b from-primary-800/75 to-primary-800/60'
+                    : 'bg-gradient-to-t  from-primary-800/75 to-primary-800/60'
+              }[this.frontVariant]
+            )}
+          >
+            <slot name="front"></slot>
+          </div>
+
+          <div
+            part="front-secondary-gradient"
+            class=${cx(
+              'flip-card__gradient',
+              {
+                primary: 'mb-auto',
+                'primary-100': 'mb-auto',
+                'gradient-light':
+                  this.placement === 'top'
+                    ? 'bg-gradient-to-b from-white/60 to-40% mb-auto'
+                    : 'bg-gradient-to-t from-white/60 to-40% mt-auto',
+                'gradient-dark':
+                  this.placement === 'bottom'
+                    ? 'bg-gradient-to-t from-primary-800/60 to-40% mt-auto'
+                    : 'bg-gradient-to-b from-primary-800/60 to-40% mb-auto'
+              }[this.frontVariant]
+            )}
+          ></div>
           <sd-button
             part="front-button"
             size="md"
@@ -202,84 +182,81 @@ export default class SdFlipcard extends SolidElement {
               'gradient-dark': true
             }[this.frontVariant]}
             class=${cx('absolute right-0 p-2 flex-shrink-0', this.placement === 'top' ? 'bottom-0' : 'top-0')}
-            @click=${this.handleFrontClick}
+            @click=${this.flipFront}
             @keydown=${this.handleFrontKeydown}
           >
             <sd-icon library="system" name="reload" label="Flip to Back"></sd-icon>
           </sd-button>
         </div>
 
-        <div part="back-interactive-container">
+        <div
+          part="back"
+          tabindex="0"
+          class=${cx(
+            'flip-card__side flip-card__side--back overflow-hidden transition-transform duration-1000 ease-in-out',
+            'flex focus-visible:focus-outline',
+            'absolute top-0 left-0 w-full h-full justify-end text-left',
+            this.backVariant === 'primary' && 'bg-primary',
+            this.backVariant === 'primary-100' && 'bg-primary-100',
+            this.placement === 'top' ? 'flex-col' : 'flex-col-reverse',
+            this.flipDirection === 'vertical' && 'vertical'
+          )}
+        >
           <div
-            part="back"
-            tabindex="0"
+            part="media-back"
             class=${cx(
-              'flip-card__side flip-card__side--back overflow-hidden transition-transform duration-1000 ease-in-out',
-              'flex focus-visible:focus-outline',
-              'absolute top-0 left-0 w-full h-full justify-end text-left',
-              this.backVariant === 'primary' && 'bg-primary',
-              this.backVariant === 'primary-100' && 'bg-primary-100',
-              this.placement === 'top' ? 'flex-col' : 'flex-col-reverse',
-              this.flipDirection === 'vertical' && 'vertical'
+              'absolute h-full w-full -z-20',
+              (this.backVariant === 'primary' || this.backVariant === 'primary-100') && 'hidden'
             )}
           >
-            <div
-              part="media-back"
-              class=${cx(
-                'absolute h-full w-full -z-20',
-                (this.backVariant === 'primary' || this.backVariant === 'primary-100') && 'hidden'
-              )}
-            >
-              <slot name="media-back"></slot>
-            </div>
-
-            <div
-              part="back-slot-container"
-              class=${cx(
-                'flex',
-                {
-                  primary: 'text-white',
-                  'primary-100': 'text-black',
-                  'gradient-light': 'text-black',
-                  'gradient-dark': 'text-white'
-                }[this.backVariant],
-                {
-                  primary: '',
-                  'primary-100': '',
-                  'gradient-light':
-                    this.placement === 'top'
-                      ? 'bg-gradient-to-b from-white/75 to-white/60'
-                      : 'bg-gradient-to-t  from-white/75 to-white/60',
-                  'gradient-dark':
-                    this.placement === 'bottom'
-                      ? 'bg-gradient-to-b from-primary-800/75 to-primary-800/60'
-                      : 'bg-gradient-to-t  from-primary-800/75 to-primary-800/60'
-                }[this.backVariant]
-              )}
-            >
-              <slot name="back"></slot>
-            </div>
-
-            <div
-              part="back-secondary-gradient"
-              class=${cx(
-                'flip-card__gradient',
-                {
-                  primary: 'mb-auto',
-                  'primary-100': 'mb-auto',
-                  'gradient-light':
-                    this.placement === 'top'
-                      ? 'bg-gradient-to-b from-white/60 to-40% mb-auto'
-                      : 'bg-gradient-to-t from-white/60 to-40% mt-auto',
-                  'gradient-dark':
-                    this.placement === 'bottom'
-                      ? 'bg-gradient-to-t from-primary-800/60 to-40% mt-auto'
-                      : 'bg-gradient-to-b from-primary-800/60 to-40% mb-auto'
-                }[this.backVariant]
-              )}
-            ></div>
+            <slot name="media-back"></slot>
           </div>
 
+          <div
+            part="back-slot-container"
+            class=${cx(
+              'flex',
+              {
+                primary: 'text-white',
+                'primary-100': 'text-black',
+                'gradient-light': 'text-black',
+                'gradient-dark': 'text-white'
+              }[this.backVariant],
+              {
+                primary: '',
+                'primary-100': '',
+                'gradient-light':
+                  this.placement === 'top'
+                    ? 'bg-gradient-to-b from-white/75 to-white/60'
+                    : 'bg-gradient-to-t  from-white/75 to-white/60',
+                'gradient-dark':
+                  this.placement === 'bottom'
+                    ? 'bg-gradient-to-b from-primary-800/75 to-primary-800/60'
+                    : 'bg-gradient-to-t  from-primary-800/75 to-primary-800/60'
+              }[this.backVariant]
+            )}
+          >
+            <slot name="back"></slot>
+          </div>
+
+          <div
+            part="back-secondary-gradient"
+            class=${cx(
+              'flip-card__gradient',
+              {
+                primary: 'mb-auto',
+                'primary-100': 'mb-auto',
+                'gradient-light':
+                  this.placement === 'top'
+                    ? 'bg-gradient-to-b from-white/60 to-40% mb-auto'
+                    : 'bg-gradient-to-t from-white/60 to-40% mt-auto',
+                'gradient-dark':
+                  this.placement === 'bottom'
+                    ? 'bg-gradient-to-t from-primary-800/60 to-40% mt-auto'
+                    : 'bg-gradient-to-b from-primary-800/60 to-40% mb-auto'
+              }[this.backVariant]
+            )}
+          ></div>
           <sd-button
             size="md"
             part="back-button"
@@ -296,7 +273,7 @@ export default class SdFlipcard extends SolidElement {
               'gradient-dark': true
             }[this.backVariant]}
             class=${cx('absolute right-0 p-2 flex-shrink-0', this.placement === 'top' ? 'bottom-0' : 'top-0')}
-            @click=${this.handleBackClick}
+            @click=${this.flipBack}
             @keydown=${this.handleBackKeydown}
           >
             <sd-icon library="system" name="reload" label="Flip to Front"></sd-icon>
