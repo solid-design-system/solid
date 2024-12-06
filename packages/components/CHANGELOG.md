@@ -1,4 +1,4 @@
-## 3.22.15
+# @solid-design-system/components
 
 ## 3.22.16
 
@@ -10,6 +10,8 @@
   - Templates for `sd-interactive` and `sd-table`
   - Screenshot tests of several components and styles
   - Removed icon mocks
+
+## 3.22.15
 
 ### Patch Changes
 
