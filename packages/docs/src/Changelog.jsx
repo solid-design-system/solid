@@ -20,6 +20,15 @@ export const ChangelogFormatter = ({ children }) => {
                 }
               }
             },
+            h2: {
+              component: 'h3',
+              props: {
+                style: {
+                  fontSize: '1rem',
+                  margin: '2rem 0 0'
+                }
+              }
+            },
             h3: {
               component: 'h4',
               props: {
