@@ -11,7 +11,7 @@ export default {
   },
   title: 'Templates/Header'
 };
-
+/** **Accessibility hint:** aria-expanded and aria-controls must be set for accessibility purpose. */
 export const SampleA = {
   name: 'Header Sample A-01',
   render: () => html`
@@ -26,13 +26,13 @@ export const SampleA = {
       <div class="flex justify-between items-center">
         <!-- top-left-area start !-->
         <a class="flex flex-shrink" href="#">
-          <img class="h-8 md:h-12 lg:h-14" src="images/logo-unioninvestment-lg.svg" alt="Logo" />
+          <img class="h-8 md:h-12 lg:h-14" src="images/logo-unioninvestment-lg.svg" alt="Union Investment Homepage" />
         </a>
         <!-- top-left-area end !-->
         <!-- top-right-area start !-->
         <div class="flex lg:hidden">
-          <sd-navigation-item onclick="openDrawerSampleA()">
-            <sd-icon name="system/menu" class="text-xl  -my-[1.5px] -mx-1"></sd-icon>
+          <sd-navigation-item id="open-menu-sample-a">
+            <sd-icon name="system/menu" label="Open navigation" class="text-xl -my-[1.5px] -mx-1"></sd-icon>
           </sd-navigation-item>
         </div>
         <!-- top-right-area end !-->
@@ -50,12 +50,12 @@ export const SampleA = {
         <div class="-mr-4 flex items-center">
           <sd-navigation-item href="javascript:void(0)">
             <div class="w-4 h-4 flex items-center">
-              <sd-icon title="Unsere weiteren Auftritte" name="system/website" class="text-xl absolute -ml-1"></sd-icon>
+              <sd-icon name="system/website" label="News" class="text-xl absolute -ml-1"></sd-icon>
             </div>
           </sd-navigation-item>
           <sd-navigation-item onclick="alert('This could open a search bar')">
             <div class="w-4 h-4 flex items-center">
-              <sd-icon title="Suche" name="system/magnifying-glass" class="text-xl absolute -ml-1"></sd-icon>
+              <sd-icon name="system/magnifying-glass" label="Search" class="text-xl absolute -ml-1"></sd-icon>
             </div>
           </sd-navigation-item>
           <sd-navigation-item href="javascript:void(0)">
@@ -97,11 +97,27 @@ export const SampleA = {
         </sd-navigation-item>
       </nav>
     </sd-drawer>
-    <script>
-      function openDrawerSampleA() {
+    <script type="module">
+      await Promise.all([
+        customElements.whenDefined('sd-navigation-item'),
+        customElements.whenDefined('sd-drawer')
+      ]).then(() => {
         const drawerSampleA = document.getElementById('sample-a-drawer');
-        drawerSampleA.show();
-      }
+        const navigationItemSampleA = document.getElementById('open-menu-sample-a');
+        const buttonInNavigationItemSampleA = navigationItemSampleA.shadowRoot.querySelector('button');
+
+        buttonInNavigationItemSampleA.setAttribute('aria-controls', 'sample-a-drawer');
+        //Add the necessary ARIA attributes to prevent only being added after action
+        buttonInNavigationItemSampleA.setAttribute('aria-expanded', 'false');
+        drawerSampleA.addEventListener('sd-hide', () =>
+          buttonInNavigationItemSampleA.setAttribute('aria-expanded', 'false')
+        );
+
+        navigationItemSampleA.addEventListener('click', () => {
+          drawerSampleA.show();
+          buttonInNavigationItemSampleA.setAttribute('aria-expanded', 'true');
+        });
+      });
     </script>
   `
 };
@@ -113,34 +129,34 @@ export const SampleA02 = {
       <div class="flex justify-between items-center">
         <!-- top-left-area start !-->
         <a class="flex flex-shrink" href="#">
-          <img class="h-8 md:h-12 lg:h-14" src="images/logo-unioninvestment-lg.svg" alt="Logo" />
+          <img class="h-8 md:h-12 lg:h-14" src="images/logo-unioninvestment-lg.svg" alt="Union Investment Homepage" />
         </a>
         <!-- top-left-area end !-->
         <!-- top-right-area start !-->
         <div class="flex lg:hidden">
-          <sd-navigation-item onclick="openDrawerSampleA2()">
-            <sd-icon name="system/menu" class="text-xl  -my-[1.5px] -mx-1"></sd-icon>
+          <sd-navigation-item id="open-menu-sample-a-02">
+            <sd-icon name="system/menu" label="Open navigation" class="text-xl  -my-[1.5px] -mx-1"></sd-icon>
           </sd-navigation-item>
         </div>
         <div class="-mr-4 lg:flex hidden items-center">
           <sd-navigation-item href="javascript:void(0)">
             <div class="w-4 h-4 flex items-center">
-              <sd-icon name="system/filter-empty" class="text-xl absolute -ml-1"></sd-icon>
+              <sd-icon name="system/filter-empty" label="Search filter" class="text-xl absolute -ml-1"></sd-icon>
             </div>
           </sd-navigation-item>
           <sd-navigation-item href="javascript:void(0)">
             <div class="w-4 h-4 flex items-center">
-              <sd-icon name="system/globe" class="text-xl absolute -ml-1"></sd-icon>
+              <sd-icon name="system/globe" label="Language" class="text-xl absolute -ml-1"></sd-icon>
             </div>
           </sd-navigation-item>
           <sd-navigation-item href="javascript:void(0)">
             <div class="w-4 h-4 flex items-center">
-              <sd-icon name="system/website" class="text-xl absolute -ml-1"></sd-icon>
+              <sd-icon name="system/website" label="News" class="text-xl absolute -ml-1"></sd-icon>
             </div>
           </sd-navigation-item>
           <sd-navigation-item onclick="alert('This could open a search bar')">
             <div class="w-4 h-4 flex items-center">
-              <sd-icon name="system/magnifying-glass" class="text-xl absolute -ml-1"></sd-icon>
+              <sd-icon name="system/magnifying-glass" label="Search" class="text-xl absolute -ml-1"></sd-icon>
             </div>
           </sd-navigation-item>
           <sd-navigation-item href="javascript:void(0)">
@@ -195,11 +211,27 @@ export const SampleA02 = {
         </sd-navigation-item>
       </nav>
     </sd-drawer>
-    <script>
-      function openDrawerSampleA2() {
-        const drawerSampleA2 = document.getElementById('sample-a02-drawer');
-        drawerSampleA2.show();
-      }
+    <script type="module">
+      await Promise.all([
+        customElements.whenDefined('sd-navigation-item'),
+        customElements.whenDefined('sd-drawer')
+      ]).then(() => {
+        const drawerSampleA02 = document.getElementById('sample-a02-drawer');
+        const navigationItemSampleA02 = document.getElementById('open-menu-sample-a-02');
+        const buttonInNavigationItemSampleA02 = navigationItemSampleA02.shadowRoot.querySelector('button');
+
+        buttonInNavigationItemSampleA02.setAttribute('aria-controls', 'sample-a02-drawer');
+        //Add the necessary ARIA attributes to prevent only being added after action
+        buttonInNavigationItemSampleA02.setAttribute('aria-expanded', 'false');
+        drawerSampleA02.addEventListener('sd-hide', () =>
+          buttonInNavigationItemSampleA02.setAttribute('aria-expanded', 'false')
+        );
+
+        navigationItemSampleA02.addEventListener('click', () => {
+          drawerSampleA02.show();
+          buttonInNavigationItemSampleA02.setAttribute('aria-expanded', 'true');
+        });
+      });
     </script>
   `
 };
@@ -211,8 +243,12 @@ export const SampleB = {
       <div class="flex justify-between items-center">
         <!-- top-left-area start !-->
         <a class="flex flex-shrink" href="#">
-          <img class="sm:h-12 lg:h-14 hidden sm:flex" src="images/logo-unioninvestment-lg.svg" alt="Logo" />
-          <img class="h-8 sm:hidden" src="images/logo-unioninvestment-sm.svg" alt="Logo" />
+          <img
+            class="sm:h-12 lg:h-14 hidden sm:flex"
+            src="images/logo-unioninvestment-lg.svg"
+            alt="Union Investment Homepage"
+          />
+          <img class="h-8 sm:hidden" src="images/logo-unioninvestment-sm.svg" alt="Union Investment Homepage" />
         </a>
         <!-- top-left-area end !-->
         <!-- top-right-area start !-->
@@ -223,8 +259,8 @@ export const SampleB = {
             </div>
           </div>
           <div class="flex lg:hidden">
-            <sd-navigation-item onclick="openDrawerSampleB()">
-              <sd-icon name="system/menu" class="text-xl  -my-[1.5px] -mx-1"></sd-icon>
+            <sd-navigation-item id="open-menu-sample-b">
+              <sd-icon name="system/menu" label="Open navigation" class="text-xl  -my-[1.5px] -mx-1"></sd-icon>
             </sd-navigation-item>
           </div>
         </div>
@@ -243,12 +279,12 @@ export const SampleB = {
         <div class="flex items-center">
           <sd-navigation-item href="javascript:void(0)">
             <div class="w-4 h-4 flex items-center">
-              <sd-icon title="Unsere weiteren Auftritte" name="system/website" class="text-xl absolute -ml-1"></sd-icon>
+              <sd-icon name="system/website" label="News" class="text-xl absolute -ml-1"></sd-icon>
             </div>
           </sd-navigation-item>
           <sd-navigation-item onclick="alert('This could open a search bar')">
             <div class="w-4 h-4 flex items-center">
-              <sd-icon title="Suche" name="system/magnifying-glass" class="text-xl absolute -ml-1"></sd-icon>
+              <sd-icon name="system/magnifying-glass" label="Search" class="text-xl absolute -ml-1"></sd-icon>
             </div>
           </sd-navigation-item>
           <!-- bottom-right-area end !-->
@@ -276,11 +312,27 @@ export const SampleB = {
         </sd-navigation-item>
       </nav>
     </sd-drawer>
-    <script>
-      function openDrawerSampleB() {
+    <script type="module">
+      await Promise.all([
+        customElements.whenDefined('sd-navigation-item'),
+        customElements.whenDefined('sd-drawer')
+      ]).then(() => {
         const drawerSampleB = document.getElementById('sample-b-drawer');
-        drawerSampleB.show();
-      }
+        const navigationItemSampleB = document.getElementById('open-menu-sample-b');
+        const buttonInNavigationItemSampleB = navigationItemSampleB.shadowRoot.querySelector('button');
+
+        buttonInNavigationItemSampleB.setAttribute('aria-controls', 'sample-b-drawer');
+        //Add the necessary ARIA attributes to prevent only being added after action
+        buttonInNavigationItemSampleB.setAttribute('aria-expanded', 'false');
+        drawerSampleB.addEventListener('sd-hide', () =>
+          buttonInNavigationItemSampleB.setAttribute('aria-expanded', 'false')
+        );
+
+        navigationItemSampleB.addEventListener('click', () => {
+          drawerSampleB.show();
+          buttonInNavigationItemSampleB.setAttribute('aria-expanded', 'true');
+        });
+      });
     </script>
   `
 };
