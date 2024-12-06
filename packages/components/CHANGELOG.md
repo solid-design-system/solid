@@ -1,5 +1,3 @@
-## 3.22.13
-
 ## 3.22.15
 
 ### Patch Changes
@@ -16,6 +14,8 @@
 
   - Add `aria-invalid` to identify checkboxes that have failed validation
   - Add new set of tests for `aria-invalid`
+
+## 3.22.13
 
 ### Patch Changes
 

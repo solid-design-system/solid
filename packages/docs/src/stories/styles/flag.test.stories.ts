@@ -109,7 +109,7 @@ export const FlagSamples = {
 
         <sd-teaser id="teaserWithContentPlaceholder" variant="primary-100" breakpoint="9999" inset class="flex flex-1">
           <div slot="media" class="relative flex items-center place-content-center h-full">
-            <sd-icon name="content/picture" library="global-resources" color="primary" class="text-[5rem]"></sd-icon>
+            <sd-icon name="content/image" color="primary" class="text-[5rem]"></sd-icon>
             <span class="absolute top-3 left-4 sd-chip sd-chip--primary-300">chip name</span>
             <span class="absolute top-2 right-0 sd-flag sd-flag--neutral-500">flag name</span>
           </div>
