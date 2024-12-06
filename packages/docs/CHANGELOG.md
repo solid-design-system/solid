@@ -1,6 +1,6 @@
-# [@solid-design-system/docs-v1.0.7](https://github.com/solid-design-system/solid/compare/docs/1.0.6...docs/1.0.7) (2024-11-29)
+# @solid-design-system/docs
 
-## 1.0.1
+## 1.0.8
 
 ### Patch Changes
 
@@ -10,6 +10,8 @@
   - Templates for `sd-interactive` and `sd-table`
   - Screenshot tests of several components and styles
   - Removed icon mocks
+
+# [@solid-design-system/docs-v1.0.7](https://github.com/solid-design-system/solid/compare/docs/1.0.6...docs/1.0.7) (2024-11-29)
 
 ### Bug Fixes
 
