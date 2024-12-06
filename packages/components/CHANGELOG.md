@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 3.22.17
+
+### Patch Changes
+
+- Improve sd-checkbox-group keyboard navigation by removing `tabindex="0"` from first checkbox. _[`#1704`](https://github.com/solid-design-system/solid/pull/1704) [`fff6b1a`](https://github.com/solid-design-system/solid/commit/fff6b1a69e777ed109f0197bd0774f788bca8721) [@smfonseca](https://github.com/smfonseca)_
+
 ## 3.22.16
 
 ### Patch Changes
