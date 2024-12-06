@@ -1,6 +1,15 @@
-## 3.22.13
-
 ## 3.22.15
+
+## 3.22.16
+
+### Patch Changes
+
+- Removed references to deprecated `library="global-resources"` from: _[`#1701`](https://github.com/solid-design-system/solid/pull/1701) [`82c6b31`](https://github.com/solid-design-system/solid/commit/82c6b314fc89478cda192fcadad0daa2b73fe70d) [@smfonseca](https://github.com/smfonseca)_
+
+  - Spin buttons on the `sd-input`
+  - Templates for `sd-interactive` and `sd-table`
+  - Screenshot tests of several components and styles
+  - Removed icon mocks
 
 ### Patch Changes
 
@@ -16,6 +25,8 @@
 
   - Add `aria-invalid` to identify checkboxes that have failed validation
   - Add new set of tests for `aria-invalid`
+
+## 3.22.13
 
 ### Patch Changes
 

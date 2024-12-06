@@ -155,7 +155,7 @@ export const SampleA = {
             <!-- top-right-area start !-->
             <div class="flex lg:hidden">
               <sd-navigation-item>
-                <sd-icon name="system/menu" library="global-resources" class="text-xl  -my-[1.5px] -mx-[4px]"></sd-icon>
+                <sd-icon name="system/menu" class="text-xl  -my-[1.5px] -mx-[4px]"></sd-icon>
               </sd-navigation-item>
             </div>
             <!-- top-right-area end !-->
@@ -171,16 +171,16 @@ export const SampleA = {
             <!-- bottom-right-area start !-->
             <div class="-mr-4 flex items-center">
               <sd-navigation-item>
-                <div class="w-4 h-4 flex items-center"><sd-icon title="Unsere weiteren Auftritte" name="system/website" library="global-resources" class="text-xl absolute -ml-[4px]"></sd-icon></div>
+                <div class="w-4 h-4 flex items-center"><sd-icon title="Unsere weiteren Auftritte" name="system/website" class="text-xl absolute -ml-[4px]"></sd-icon></div>
               </sd-navigation-item>
               <sd-navigation-item>
-                <div class="w-4 h-4 flex items-center"><sd-icon title="Suche" name="system/magnifying-glass" library="global-resources" class="text-xl absolute -ml-[4px]"></sd-icon></div>
+                <div class="w-4 h-4 flex items-center"><sd-icon title="Suche" name="system/magnifying-glass" class="text-xl absolute -ml-[4px]"></sd-icon></div>
               </sd-navigation-item>
               <sd-navigation-item>
-                <div class="flex items-center gap-2"><sd-icon name="system/profile" library="global-resources" class="text-xl"></sd-icon><span>Mein Depot</span></div>
+                <div class="flex items-center gap-2"><sd-icon name="system/user" class="text-xl"></sd-icon><span>Mein Depot</span></div>
               </sd-navigation-item>
               <sd-navigation-item>
-                <div class="flex items-center gap-2"><sd-icon name="system/lock-locked" library="global-resources" class="text-xl"></sd-icon><span>Meine Bewerbung</span></div>
+                <div class="flex items-center gap-2"><sd-icon name="system/lock-locked" class="text-xl"></sd-icon><span>Meine Bewerbung</span></div>
               </sd-navigation-item>
             <!-- bottom-right-area end !-->
             </div>
@@ -292,7 +292,7 @@ export const SampleB = {
               </div>
               <div class="flex lg:hidden">
                 <sd-navigation-item>
-                  <sd-icon name="system/menu" library="global-resources" class="text-xl  -my-[1.5px] -mx-[4px]"></sd-icon>
+                  <sd-icon name="system/menu" class="text-xl  -my-[1.5px] -mx-[4px]"></sd-icon>
                 </sd-navigation-item>
               </div>
             </div>
@@ -309,10 +309,10 @@ export const SampleB = {
             <!-- bottom-right-area start !-->
             <div class="flex items-center">
               <sd-navigation-item>
-                <div class="w-4 h-4 flex items-center"><sd-icon title="Unsere weiteren Auftritte" name="system/website" library="global-resources" class="text-xl absolute -ml-[4px]"></sd-icon></div>
+                <div class="w-4 h-4 flex items-center"><sd-icon title="Unsere weiteren Auftritte" name="system/website" class="text-xl absolute -ml-[4px]"></sd-icon></div>
               </sd-navigation-item>
               <sd-navigation-item>
-                <div class="w-4 h-4 flex items-center"><sd-icon title="Suche" name="system/magnifying-glass" library="global-resources" class="text-xl absolute -ml-[4px]"></sd-icon></div>
+                <div class="w-4 h-4 flex items-center"><sd-icon title="Suche" name="system/magnifying-glass" class="text-xl absolute -ml-[4px]"></sd-icon></div>
               </sd-navigation-item>
             <!-- bottom-right-area end !-->
             </div>
