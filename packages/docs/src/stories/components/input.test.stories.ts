@@ -253,7 +253,7 @@ export const Sizes = {
     {
       type: 'slot',
       name: 'right',
-      value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
+      value: '<sd-icon slot="right" name="system/image"></sd-icon>'
     }
   ]),
   render: (args: any) => {
@@ -285,7 +285,7 @@ export const StyleOnValid = {
     {
       type: 'slot',
       name: 'right',
-      value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
+      value: '<sd-icon slot="right" name="system/image"></sd-icon>'
     }
   ]),
   render: (args: any) => {
@@ -467,7 +467,7 @@ export const Validation = {
               {
                 type: 'slot',
                 name: 'right',
-                value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
+                value: '<sd-icon slot="right" name="system/image"></sd-icon>'
               }
             ],
             args
@@ -485,7 +485,7 @@ export const Validation = {
               {
                 type: 'slot',
                 name: 'right',
-                value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
+                value: '<sd-icon slot="right" name="system/image"></sd-icon>'
               }
             ],
             args
@@ -504,7 +504,7 @@ export const Validation = {
               {
                 type: 'slot',
                 name: 'right',
-                value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
+                value: '<sd-icon slot="right" name="system/image"></sd-icon>'
               }
             ],
             args
@@ -523,7 +523,7 @@ export const Validation = {
               {
                 type: 'slot',
                 name: 'right',
-                value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
+                value: '<sd-icon slot="right" name="system/image"></sd-icon>'
               }
             ],
             args
@@ -542,7 +542,7 @@ export const Validation = {
               {
                 type: 'slot',
                 name: 'right',
-                value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
+                value: '<sd-icon slot="right" name="system/image"></sd-icon>'
               }
             ],
             args
@@ -562,7 +562,7 @@ export const Validation = {
               {
                 type: 'slot',
                 name: 'right',
-                value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
+                value: '<sd-icon slot="right" name="system/image"></sd-icon>'
               }
             ],
             args
@@ -582,7 +582,7 @@ export const Validation = {
               {
                 type: 'slot',
                 name: 'right',
-                value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
+                value: '<sd-icon slot="right" name="system/image"></sd-icon>'
               }
             ],
             args
@@ -601,7 +601,7 @@ export const Validation = {
               {
                 type: 'slot',
                 name: 'right',
-                value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
+                value: '<sd-icon slot="right" name="system/image"></sd-icon>'
               }
             ],
             args
@@ -620,7 +620,7 @@ export const Validation = {
               {
                 type: 'slot',
                 name: 'right',
-                value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
+                value: '<sd-icon slot="right" name="system/image"></sd-icon>'
               }
             ],
             args
@@ -639,7 +639,7 @@ export const Validation = {
               {
                 type: 'slot',
                 name: 'right',
-                value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
+                value: '<sd-icon slot="right" name="system/image"></sd-icon>'
               }
             ],
             args
@@ -658,7 +658,7 @@ export const Validation = {
               {
                 type: 'slot',
                 name: 'right',
-                value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
+                value: '<sd-icon slot="right" name="system/image"></sd-icon>'
               }
             ],
             args
@@ -677,7 +677,7 @@ export const Validation = {
               {
                 type: 'slot',
                 name: 'right',
-                value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
+                value: '<sd-icon slot="right" name="system/image"></sd-icon>'
               }
             ],
             args
@@ -743,12 +743,12 @@ export const Slots = {
             {
               type: 'slot',
               name: 'left',
-              value: '<sd-icon slot="left" library="global-resources" name="system/picture"></sd-icon>'
+              value: '<sd-icon slot="left" name="system/image"></sd-icon>'
             },
             {
               type: 'slot',
               name: 'right',
-              value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
+              value: '<sd-icon slot="right" name="system/image"></sd-icon>'
             }
           ],
           args
@@ -802,12 +802,12 @@ export const Parts = {
         {
           type: 'slot',
           name: 'left',
-          value: '<sd-icon slot="left" library="global-resources" name="system/picture"></sd-icon>'
+          value: '<sd-icon slot="left" name="system/image"></sd-icon>'
         },
         {
           type: 'slot',
           name: 'right',
-          value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
+          value: '<sd-icon slot="right" name="system/image"></sd-icon>'
         }
       ],
       args
@@ -930,7 +930,7 @@ export const Samples = {
               }}
               class="ml-4 scale-[1.714] inline-flex items-center sd-interactive"
             >
-              <sd-icon library="global-resources" name="system/minus-round"></sd-icon>
+              <sd-icon name="system/minus-circle"></sd-icon>
             </button>
             <button
               id="stepUpButton"
@@ -944,7 +944,7 @@ export const Samples = {
               }}
               class="ml-4 scale-[1.714] inline-flex items-center sd-interactive"
             >
-              <sd-icon library="global-resources" name="system/plus-round"></sd-icon></button
+              <sd-icon name="system/plus-circle"></sd-icon></button
           ></span>
         </sd-input>
       </div>
