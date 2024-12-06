@@ -1,5 +1,13 @@
 ## 3.22.13
 
+## 3.22.15
+
+### Patch Changes
+
+- Improved sd-flag a11y: _[`#1705`](https://github.com/solid-design-system/solid/pull/1705) [`b4c123e`](https://github.com/solid-design-system/solid/commit/b4c123ef67e6d7106358c3a4aaab8f377db10326) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Change text color on bg neutral-500 from white to black to comply with WCAG 2.2
+
 ## 3.22.14
 
 ### Patch Changes
