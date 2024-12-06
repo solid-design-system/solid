@@ -68,7 +68,6 @@ const colors = [
 ].sort();
 
 const createColorOption = (color: string) => `<sd-option value="${color.replaceAll(' ', '_')}">${color}</sd-option>`;
-const createColorOptionHtml = (color: string) => unsafeHTML(createColorOption(color));
 const createColorOptions = () => colors.map(createColorOption);
 const createColorOptionsHtml = () => unsafeHTML(createColorOptions().join('\n'));
 
@@ -143,11 +142,7 @@ export const SizeMultiple = {
             name: 'size'
           }
         },
-        constants: [
-          fiveOptionsConstant,
-          multipleConstant,
-          { type: 'attribute', name: 'value', value: 'option-1 option-2 option-3 option-4' }
-        ],
+        constants: [multipleConstant, { type: 'attribute', name: 'value', value: 'option-1 option-2' }],
         args
       })}
     </div>`;
@@ -613,25 +608,29 @@ export const Mouseless = {
  */
 
 export const SampleGroupingOptions = {
-  name: 'Sample: Grouping Options',
-  render: () => html`
-    <div class="h-[260px] w-[400px]">
-      <sd-combobox label="Group elements">
-        <sd-optgroup label="B">
-          ${createColorOptionHtml('Black')} ${createColorOptionHtml('Blue')} ${createColorOptionHtml('Brown')}
-        </sd-optgroup>
-        <sd-optgroup label="G"> ${createColorOptionHtml('Green')} ${createColorOptionHtml('Grey')} </sd-optgroup>
-        <sd-optgroup label="L"> ${createColorOptionHtml('Light Green')} </sd-optgroup>
-        <sd-optgroup label="M"> ${createColorOptionHtml('Magenta')} </sd-optgroup>
-        <sd-optgroup label="O"> ${createColorOptionHtml('Orange')} </sd-optgroup>
-        <sd-optgroup label="W"> ${createColorOptionHtml('White')} </sd-optgroup>
-        <sd-optgroup label="P"> ${createColorOptionHtml('Pink')} ${createColorOptionHtml('Purple')} </sd-optgroup>
-        <sd-optgroup label="R"> ${createColorOptionHtml('Red')} </sd-optgroup>
-        <sd-optgroup label="W"> ${createColorOptionHtml('White')} </sd-optgroup>
-        <sd-optgroup label="Y"> ${createColorOptionHtml('Yellow')} </sd-optgroup>
-      </sd-combobox>
-    </div>
-  `
+  name: 'Sample: Grouping Options and Sizes',
+  render: (args: any) => {
+    return generateTemplate({
+      options: {
+        classes: 'w-full'
+      },
+      axis: {
+        y: {
+          type: 'attribute',
+          name: 'size'
+        }
+      },
+      constants: [
+        {
+          type: 'slot',
+          name: 'default',
+          value:
+            '<sd-optgroup label="Funds"><sd-option value="UniDeutschland_XS">UniDeutschland XS</sd-option><sd-option value="UniEM_Global_A">UniEM Global A</sd-option> <sd-option value="UniEuroKapital_net">UniEuroKapital -net-</sd-option></sd-optgroup><sd-optgroup label="Search Suggestions"><sd-option value="uniabsoluterertrag">UniAbsoluterErtrag</sd-option><sd-option value="uniasia">UniAsia</sd-option></sd-optgroup>'
+        }
+      ],
+      args
+    });
+  }
 };
 
 /**

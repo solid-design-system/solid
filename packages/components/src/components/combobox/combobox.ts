@@ -284,6 +284,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       this.selectedTextLabel = option?.getTextLabel() || '';
     }
     this.formControlController.updateValidity();
+    this.applySizeToOptions();
   }
 
   /** Gets the validity state object */
@@ -899,6 +900,13 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
         option.checkbox = this.multiple;
       });
     }
+  }
+
+  @watch('size', { waitUntilFirstUpdate: true })
+  applySizeToOptions() {
+    this.getSlottedOptions().forEach(option => {
+      option.size = this.size;
+    });
   }
 
   @watch('disabled', { waitUntilFirstUpdate: true })

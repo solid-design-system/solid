@@ -232,12 +232,13 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
 
   connectedCallback() {
     super.connectedCallback();
-
-    // Cascade select size to options once connected
-    this.applySizeToOptions();
-
     // Because this is a form control, it shouldn't be opened initially
     this.open = false;
+  }
+
+  firstUpdated() {
+    // Cascade select size to options once connected
+    this.applySizeToOptions();
   }
 
   private addOpenListeners() {
