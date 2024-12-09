@@ -218,7 +218,6 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
         @sd-remove=${(event: CustomEvent) => this.handleTagRemove(event, option)}
       >
         ${option.getTextLabel()}
-        <sd-icon library="system" name="close" slot="removable-indicator"></sd-icon>
       </sd-tag>
     `;
   };
