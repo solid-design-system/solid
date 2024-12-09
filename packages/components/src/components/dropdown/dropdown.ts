@@ -15,6 +15,7 @@ import SolidElement from '../../internal/solid-element';
 import type SdButton from '../button/button';
 import type SdMenu from '../../_components/menu/menu'; // This import should be changed as soon as the menu is moved to the components folder
 import type SdMenuItem from '../../_components/menu-item/menu-item'; // This import should be changed as soon as the menu-item is moved to the components folder
+import type SdNavigationItem from '../navigation-item/navigation-item';
 import type SdPopup from '../popup/popup';
 
 /**
@@ -311,7 +312,7 @@ export default class SdDropdown extends SolidElement {
   updateAccessibleTrigger() {
     const assignedElements = this.trigger.assignedElements({ flatten: true }) as HTMLElement[];
     const accessibleTrigger = assignedElements.find(el => getTabbableBoundary(el).start);
-    let target: HTMLElement;
+    let target: HTMLElement | null;
 
     if (accessibleTrigger) {
       switch (accessibleTrigger.tagName.toLowerCase()) {
@@ -320,13 +321,15 @@ export default class SdDropdown extends SolidElement {
         case 'sd-icon-button':
           target = (accessibleTrigger as SdButton).button;
           break;
-
+        case 'sd-navigation-item':
+          target = (accessibleTrigger as SdNavigationItem).button;
+          break;
         default:
           target = accessibleTrigger;
       }
 
-      target.setAttribute('aria-haspopup', 'true');
-      target.setAttribute('aria-expanded', this.open ? 'true' : 'false');
+      target?.setAttribute('aria-haspopup', 'true');
+      target?.setAttribute('aria-expanded', this.open ? 'true' : 'false');
     }
   }
 
