@@ -93,11 +93,11 @@ export const SizeAndIconSlots = {
               values: [
                 { value: 'Link', title: '–' },
                 {
-                  value: 'Link<sd-icon library="global-resources" name="system/picture" slot="icon-left"></sd-icon>',
+                  value: 'Link<sd-icon name="system/image" slot="icon-left"></sd-icon>',
                   title: 'left'
                 },
                 {
-                  value: 'Link<sd-icon library="global-resources" name="system/picture" slot="icon-right"></sd-icon>',
+                  value: 'Link<sd-icon name="system/image" slot="icon-right"></sd-icon>',
                   title: 'right'
                 }
               ]
@@ -126,11 +126,11 @@ export const InvertedAndIconSlots = {
           values: [
             { value: 'Link', title: '–' },
             {
-              value: 'Link<sd-icon library="global-resources" name="system/picture" slot="icon-left"></sd-icon>',
+              value: 'Link<sd-icon name="system/image" slot="icon-left"></sd-icon>',
               title: 'left'
             },
             {
-              value: 'Link<sd-icon library="global-resources" name="system/picture" slot="icon-right"></sd-icon>',
+              value: 'Link<sd-icon name="system/image" slot="icon-right"></sd-icon>',
               title: 'right'
             }
           ]
@@ -163,13 +163,12 @@ export const StandaloneAndIconSlots = {
               values: [
                 { value: 'Magna ex ex elit cupidatat non esse.', title: '–' },
                 {
-                  value:
-                    '<sd-icon library="global-resources" name="system/picture" slot="icon-left"></sd-icon>Magna ex ex elit cupidatat non esse.',
+                  value: '<sd-icon name="system/image" slot="icon-left"></sd-icon>Magna ex ex elit cupidatat non esse.',
                   title: 'left'
                 },
                 {
                   value:
-                    'Magna ex ex elit cupidatat non esse.<sd-icon library="global-resources" name="system/picture" slot="icon-right"></sd-icon>',
+                    'Magna ex ex elit cupidatat non esse.<sd-icon name="system/image" slot="icon-right"></sd-icon>',
                   title: 'right'
                 }
               ]
@@ -224,7 +223,7 @@ export const IconAlignment = {
         {
           type: 'slot',
           name: 'icon-right',
-          value: '<sd-icon library="global-resources" name="system/arrow-right" slot="icon-right"></sd-icon>'
+          value: '<sd-icon name="system/arrow-right" slot="icon-right"></sd-icon>'
         },
         {
           type: 'slot',
@@ -262,12 +261,12 @@ export const Parts = {
         {
           type: 'slot',
           name: 'icon-right',
-          value: '<sd-icon library="global-resources" name="system/picture" slot="icon-right"></sd-icon>'
+          value: '<sd-icon name="system/image" slot="icon-right"></sd-icon>'
         },
         {
           type: 'slot',
           name: 'icon-left',
-          value: '<sd-icon library="global-resources" name="system/picture" slot="icon-left"></sd-icon>'
+          value: '<sd-icon name="system/image" slot="icon-left"></sd-icon>'
         }
       ],
       args

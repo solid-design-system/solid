@@ -56,10 +56,6 @@ export default class SdCheckboxGroup extends SolidElement {
         checkbox.size = this.size;
       })
     );
-
-    if (!checkboxes.some(checkbox => checkbox.checked)) {
-      checkboxes[0].tabIndex = 0;
-    }
   }
 
   private syncCheckboxes() {

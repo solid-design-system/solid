@@ -150,7 +150,7 @@ export const StyleOnValid = {
     {
       type: 'slot',
       name: 'right',
-      value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
+      value: '<sd-icon slot="right" name="system/image"></sd-icon>'
     }
   ]),
   render: (args: any) => {

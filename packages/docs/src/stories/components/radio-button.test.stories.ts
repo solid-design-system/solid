@@ -25,7 +25,7 @@ export default {
     {
       type: 'slot',
       name: 'icon',
-      value: '<sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>'
+      value: '<sd-icon name="system/image" slot="icon"></sd-icon>'
     }
   ]),
   argTypes,
@@ -119,19 +119,19 @@ export const DisabledAndChecked = {
     return html`
       <div class="flex flex-col gap-4 w-[260px] p-4">
         <sd-radio-button showLabel>
-          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          <sd-icon name="system/image" slot="icon"></sd-icon>
           <slot>Default</slot>
         </sd-radio-button>
         <sd-radio-button disabled showLabel>
-          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          <sd-icon name="system/image" slot="icon"></sd-icon>
           <slot>Disabled</slot>
         </sd-radio-button>
         <sd-radio-button checked showLabel>
-          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          <sd-icon name="system/image" slot="icon"></sd-icon>
           <slot>Checked</slot>
         </sd-radio-button>
         <sd-radio-button checked disabled showLabel>
-          <sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon>
+          <sd-icon name="system/image" slot="icon"></sd-icon>
           <slot class="whitespace-nowrap">Disabled and Checked</slot>
         </sd-radio-button>
       </div>

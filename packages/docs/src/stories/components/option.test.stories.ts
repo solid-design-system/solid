@@ -124,12 +124,12 @@ export const Slots = {
             {
               type: 'slot',
               name: 'left',
-              value: '<sd-icon slot="left" library="global-resources" name="system/picture"></sd-icon>'
+              value: '<sd-icon slot="left" name="system/image"></sd-icon>'
             },
             {
               type: 'slot',
               name: 'right',
-              value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
+              value: '<sd-icon slot="right" name="system/image"></sd-icon>'
             }
           ],
           args
@@ -163,7 +163,7 @@ export const Parts = {
         {
           type: 'slot',
           name: 'left',
-          value: '<sd-icon slot="left" library="global-resources" name="system/picture"></sd-icon>'
+          value: '<sd-icon slot="left" name="system/image"></sd-icon>'
         },
         {
           type: 'slot',
@@ -173,7 +173,7 @@ export const Parts = {
         {
           type: 'slot',
           name: 'right',
-          value: '<sd-icon slot="right" library="global-resources" name="system/picture"></sd-icon>'
+          value: '<sd-icon slot="right" name="system/image"></sd-icon>'
         }
       ],
       args

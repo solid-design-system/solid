@@ -259,7 +259,7 @@ export const Sample = {
       <sd-flipcard activation="click" front-variant="primary" back-variant="primary-100">
         <div class="py-4 px-6" slot="front">
           <h4 class="sd-headline sd-headline--inline sd-headline--size-lg sd-headline--inverted mb-2">
-            <sd-icon name="content/picture" library="global-resources"></sd-icon>
+            <sd-icon name="content/image"></sd-icon>
             Nisi eu excepteur anim esse
           </h4>
 
@@ -270,7 +270,7 @@ export const Sample = {
 
         <div class="py-4 px-6" slot="back">
           <h4 class="sd-headline sd-headline--inline sd-headline--size-lg mb-2">
-            <sd-icon name="content/picture" library="global-resources"></sd-icon>
+            <sd-icon name="content/image"></sd-icon>
             Nisi eu excepteur anim esse
           </h4>
 
@@ -296,7 +296,7 @@ export const AspectRatio = {
       <sd-flipcard style="aspect-ratio:16/9;" front-variant="primary" back-variant="primary-100">
         <div class="py-4 px-6" slot="front">
           <h4 class="sd-headline sd-headline--inline sd-headline--size-lg sd-headline--inverted mb-2">
-            <sd-icon name="content/picture" library="global-resources"></sd-icon>
+            <sd-icon name="content/image"></sd-icon>
             Nisi eu excepteur anim esse
           </h4>
 
@@ -307,7 +307,7 @@ export const AspectRatio = {
 
         <div class="py-4 px-6" slot="back">
           <h4 class="sd-headline sd-headline--inline sd-headline--size-lg mb-2">
-            <sd-icon name="content/picture" library="global-resources"></sd-icon>
+            <sd-icon name="content/image"></sd-icon>
             Nisi eu excepteur anim esse
           </h4>
 

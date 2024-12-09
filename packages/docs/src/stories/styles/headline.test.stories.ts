@@ -98,7 +98,7 @@ export const Inline = {
       constants: {
         type: 'slot',
         name: 'default',
-        value: `<sd-icon name="content/picture" library="global-resources"></sd-icon>
+        value: `<sd-icon name="content/image"></sd-icon>
                 <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.</span>`
       },
       options: {
@@ -123,8 +123,7 @@ export const SizeXInverted = {
       },
       {
         title: 'With an sd-icon',
-        constant: `<sd-icon name="content/picture" library="global-resources"></sd-icon>
-                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.`
+        constant: `<sd-icon name="content/image"></sd-icon>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.`
       }
     ].map(headline =>
       generateTemplate({
@@ -248,7 +247,7 @@ export const Samples = {
             {
               type: 'slot',
               name: 'default',
-              value: `<sd-icon name="content/picture" library="global-resources"></sd-icon>
+              value: `<sd-icon name="content/image"></sd-icon>
               Lorem ipsum <mark class="sd-mark">sic semper</mark>`
             },
             {

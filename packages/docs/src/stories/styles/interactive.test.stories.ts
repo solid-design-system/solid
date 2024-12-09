@@ -141,14 +141,10 @@ export const Examples = {
         y: {
           type: 'slot',
           name: 'default',
-          values: [
-            'Text',
-            '<span>Text</span>',
-            '<sd-icon library="global-resources" name="system/picture"></sd-icon>'
-          ].map(content => {
+          values: ['Text', '<span>Text</span>', '<sd-icon name="system/image"></sd-icon>'].map(content => {
             return {
               value: content,
-              title: content.replace('library="global-resources" name="system/picture"', '...')
+              title: content.replace('name="system/image"', '...')
             };
           }),
           title: 'content'

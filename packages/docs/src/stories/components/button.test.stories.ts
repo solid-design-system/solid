@@ -157,16 +157,15 @@ export const IconSlots = {
               values: [
                 { value: '', title: '–' },
                 {
-                  value: '<sd-icon library="global-resources" name="system/picture" slot="icon-right"></sd-icon>',
-                  title: 'system/picture'
+                  value: '<sd-icon name="system/image" slot="icon-right"></sd-icon>',
+                  title: 'system/image'
                 },
                 {
-                  value:
-                    '<sd-icon library="global-resources" name="system/multi-functions" slot="icon-right"></sd-icon>',
-                  title: 'system/multi-functions'
+                  value: '<sd-icon name="system/more-functions" slot="icon-right"></sd-icon>',
+                  title: 'system/more-functions'
                 },
                 {
-                  value: '<sd-icon library="global-resources" name="system/minus" slot="icon-right"></sd-icon>',
+                  value: '<sd-icon name="system/minus" slot="icon-right"></sd-icon>',
                   title: 'system/minus'
                 }
               ]
@@ -177,16 +176,15 @@ export const IconSlots = {
               values: [
                 { value: '', title: '–' },
                 {
-                  value: '<sd-icon library="global-resources" name="system/picture" slot="icon-left"></sd-icon>',
-                  title: 'system/picture'
+                  value: '<sd-icon name="system/image" slot="icon-left"></sd-icon>',
+                  title: 'system/image'
                 },
                 {
-                  value:
-                    '<sd-icon library="global-resources" name="system/multi-functions" slot="icon-left"></sd-icon>',
-                  title: 'system/multi-functions'
+                  value: '<sd-icon name="system/more-functions" slot="icon-left"></sd-icon>',
+                  title: 'system/more-functions'
                 },
                 {
-                  value: '<sd-icon library="global-resources" name="system/minus" slot="icon-left"></sd-icon>',
+                  value: '<sd-icon name="system/minus" slot="icon-left"></sd-icon>',
                   title: 'system/minus'
                 }
               ]
@@ -211,7 +209,7 @@ export const IconOnly = {
       constants: {
         type: 'slot',
         name: 'default',
-        value: '<sd-icon library="global-resources" name="system/picture"></sd-icon>'
+        value: '<sd-icon name="system/image"></sd-icon>'
       },
       args
     });
@@ -238,12 +236,12 @@ export const Parts = {
         {
           type: 'slot',
           name: 'icon-right',
-          value: '<sd-icon library="global-resources" name="system/picture" slot="icon-right"></sd-icon>'
+          value: '<sd-icon name="system/image" slot="icon-right"></sd-icon>'
         },
         {
           type: 'slot',
           name: 'icon-left',
-          value: '<sd-icon library="global-resources" name="system/picture" slot="icon-left"></sd-icon>'
+          value: '<sd-icon name="system/image" slot="icon-left"></sd-icon>'
         }
       ],
       args

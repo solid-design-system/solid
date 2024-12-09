@@ -195,22 +195,19 @@ export const IconList = {
     type: 'slot',
     name: 'default',
     value: html`<li>
-        <sd-icon name="content/picture" library="global-resources"></sd-icon>Lorem Ipsum
+        <sd-icon name="content/image"></sd-icon>Lorem Ipsum
         <ul>
           <li>
-            <sd-icon name="content/picture" library="global-resources"></sd-icon>Dolor sit
+            <sd-icon name="content/image"></sd-icon>Dolor sit
             <ul>
-              <li><sd-icon name="content/picture" library="global-resources"></sd-icon>Amet</li>
-              <li>
-                <sd-icon name="content/picture" library="global-resources"></sd-icon>Ut enim ad minim veniam, quis
-                nostrud exercitation
-              </li>
+              <li><sd-icon name="content/image"></sd-icon>Amet</li>
+              <li><sd-icon name="content/image"></sd-icon>Ut enim ad minim veniam, quis nostrud exercitation</li>
             </ul>
           </li>
         </ul>
       </li>
-      <li><sd-icon name="content/picture" library="global-resources"></sd-icon>Lorem Ipsum</li>
-      <li><sd-icon name="content/picture" library="global-resources"></sd-icon>Lorem Ipsum</li>`
+      <li><sd-icon name="content/image"></sd-icon>Lorem Ipsum</li>
+      <li><sd-icon name="content/image"></sd-icon>Lorem Ipsum</li>`
   }),
   render: (args: any) => {
     return generateTemplate({
@@ -240,9 +237,9 @@ export const HorizontalIconList = {
   args: overrideArgs({
     type: 'slot',
     name: 'default',
-    value: html`<li><sd-icon name="content/picture" library="global-resources"></sd-icon>Lorem</li>
-      <li><sd-icon name="content/picture" library="global-resources"></sd-icon>Lorem</li>
-      <li><sd-icon name="content/picture" library="global-resources"></sd-icon>Lorem</li>`
+    value: html`<li><sd-icon name="content/image"></sd-icon>Lorem</li>
+      <li><sd-icon name="content/image"></sd-icon>Lorem</li>
+      <li><sd-icon name="content/image"></sd-icon>Lorem</li>`
   }),
   render: (args: any) => {
     return generateTemplate({
