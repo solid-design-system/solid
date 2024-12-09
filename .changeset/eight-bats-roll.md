@@ -6,4 +6,4 @@
 Improved sd-dropdown a11y:
 
 - Correctly label icon-button dropdown triggers.
-- Fix focus on trigger after dropdown is hidden using keyboard.
+- Fix focus on the trigger after the dropdown is hidden using the keyboard.
