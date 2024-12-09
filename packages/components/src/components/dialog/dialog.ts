@@ -325,7 +325,6 @@ export default class SdDialog extends SolidElement {
 
       [part='panel'] {
         width: var(--width);
-        max-height: 80vh;
       }
 
       [part='body'] {
