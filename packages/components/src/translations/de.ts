@@ -28,6 +28,7 @@ const translation: Translation = {
   previousSlide: 'Vorherige Folie',
   progress: 'Fortschritt',
   remove: 'Entfernen',
+  removed: name => `${name} entfernt`,
   resize: 'Größe ändern',
   scrollToEnd: 'Zum Ende scrollen',
   scrollToStart: 'Zum Anfang scrollen',
@@ -38,8 +39,7 @@ const translation: Translation = {
   showPassword: 'Passwort anzeigen',
   slideNum: (slide, count) => `Folie ${slide} von ${count}`,
   toggleColorFormat: 'Farbformat umschalten',
-  unmute: 'Unmute',
-  removed: name => `${name} entfernt`
+  unmute: 'Unmute'
 };
 
 registerTranslation(translation);

@@ -28,6 +28,7 @@ const translation: Translation = {
   previousSlide: 'Previous slide',
   progress: 'Progress',
   remove: 'Remove',
+  removed: name => `${name} removed`,
   resize: 'Resize',
   scrollToEnd: 'Scroll to end',
   scrollToStart: 'Scroll to start',
@@ -38,8 +39,7 @@ const translation: Translation = {
   showPassword: 'Show password',
   slideNum: num => `Slide ${num}`,
   toggleColorFormat: 'Toggle color format',
-  unmute: 'Unmute',
-  removed: name => `${name} removed`
+  unmute: 'Unmute'
 };
 
 registerTranslation(translation);
