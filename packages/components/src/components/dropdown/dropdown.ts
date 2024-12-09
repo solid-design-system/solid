@@ -144,8 +144,50 @@ export default class SdDropdown extends SolidElement {
     this.hide();
   }
 
+  /**
+   * Slotted triggers can be arbitrary content. The accessible trigger is the tabbable element
+   * within the slotted trigger. This could be the slotted element itself, a child of the slotted element,
+   * or an element within the slotted elements shadow root.
+   *
+   * e.g. the accessible trigger of an <sd-button> is a <button> located inside its shadow root.
+   *
+   * To determine this, we assume the first tabbable element in the trigger slot is the "accessible trigger."
+   * */
+  getAccessibleTrigger(): HTMLElement | null {
+    const assignedElements = this.trigger.assignedElements({ flatten: true }) as HTMLElement[];
+    const accessibleTrigger = assignedElements.find(el => getTabbableBoundary(el).start);
+    let target: HTMLElement | null = null;
+
+    if (accessibleTrigger) {
+      switch (accessibleTrigger.tagName.toLowerCase()) {
+        // Solid buttons have to update the internal button so it's announced correctly by screen readers
+        case 'sd-button':
+        case 'sd-icon-button':
+          target = (accessibleTrigger as SdButton).button;
+          break;
+        case 'sd-navigation-item':
+          target = (accessibleTrigger as SdNavigationItem).button;
+          break;
+        default:
+          target = accessibleTrigger;
+      }
+    }
+
+    return target;
+  }
+
+  // Slotted triggers can be arbitrary content, but we need to connect them to the dropdown panel with `aria-haspopup` and
+  // `aria-expanded`. These must be applied to the `accessible trigger`.
+  updateAccessibleTrigger() {
+    const target = this.getAccessibleTrigger();
+    if (!target) return;
+
+    target.setAttribute('aria-haspopup', 'true');
+    target.setAttribute('aria-expanded', this.open ? 'true' : 'false');
+  }
+
   focusOnTrigger() {
-    const trigger = this.trigger.assignedElements({ flatten: true })[0] as HTMLElement | undefined;
+    const trigger = this.getAccessibleTrigger();
     if (typeof trigger?.focus === 'function') {
       trigger.focus();
     }
@@ -297,40 +339,6 @@ export default class SdDropdown extends SolidElement {
 
   handleTriggerSlotChange() {
     this.updateAccessibleTrigger();
-  }
-
-  //
-  // Slotted triggers can be arbitrary content, but we need to link them to the dropdown panel with `aria-haspopup` and
-  // `aria-expanded`. These must be applied to the "accessible trigger" (the tabbable portion of the trigger element
-  // that gets slotted in) so screen readers will understand them. The accessible trigger could be the slotted element,
-  // a child of the slotted element, or an element in the slotted element's shadow root.
-  //
-  // For example, the accessible trigger of an <sd-button> is a <button> located inside its shadow root.
-  //
-  // To determine this, we assume the first tabbable element in the trigger slot is the "accessible trigger."
-  //
-  updateAccessibleTrigger() {
-    const assignedElements = this.trigger.assignedElements({ flatten: true }) as HTMLElement[];
-    const accessibleTrigger = assignedElements.find(el => getTabbableBoundary(el).start);
-    let target: HTMLElement | null;
-
-    if (accessibleTrigger) {
-      switch (accessibleTrigger.tagName.toLowerCase()) {
-        // Solid buttons have to update the internal button so it's announced correctly by screen readers
-        case 'sd-button':
-        case 'sd-icon-button':
-          target = (accessibleTrigger as SdButton).button;
-          break;
-        case 'sd-navigation-item':
-          target = (accessibleTrigger as SdNavigationItem).button;
-          break;
-        default:
-          target = accessibleTrigger;
-      }
-
-      target?.setAttribute('aria-haspopup', 'true');
-      target?.setAttribute('aria-expanded', this.open ? 'true' : 'false');
-    }
   }
 
   /** Shows the dropdown panel. */
