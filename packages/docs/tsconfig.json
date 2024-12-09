@@ -24,8 +24,7 @@
     "baseUrl": ".",
     "types": ["user-agent-data-types", "vite/client"],
     "resolveJsonModule": true,
-    "jsx": "react",
+    "jsx": "react"
   },
-  "include": ["src/**/*", "vite.config.ts", "scripts/**/*.ts"],
-  "exclude": ["./custom-elements-manifest.config.ts"]
+  "include": ["src/**/*", "vite.config.ts", "scripts/**/*.ts"]
 }

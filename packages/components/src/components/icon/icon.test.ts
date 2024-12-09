@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { elementUpdated, expect, fixture, html, oneEvent } from '@open-wc/testing';
-import { registerIconLibrary } from './library';
+import { registerIconLibrary } from '../../../dist/solid-components';
 import type SdIcon from './icon';
 
 const testLibraryIcons = {
@@ -22,12 +23,11 @@ describe('<sd-icon>', () => {
     // Here we are checking for the existence of the Solid Components global
     // to determine which mode we are in.
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     let registerIconLibraryForTest;
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any
-    if ((window as any)['Solid Components']) {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any
-      registerIconLibraryForTest = (window as any)['Solid Components']['registerIconLibrary']; // Bundle Mode
+    if ((window as any)['SolidComponents']) {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any
+      registerIconLibraryForTest = (window as any)['SolidComponents']['registerIconLibrary']; // Bundle Mode
     } else {
       registerIconLibraryForTest = registerIconLibrary; // ES Module Mode
     }

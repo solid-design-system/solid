@@ -1,5 +1,5 @@
+import '../../../dist/solid-components';
 import { expect, fixture, html, waitUntil } from '@open-wc/testing';
-import { userEvent } from '@storybook/test';
 import sinon from 'sinon';
 import type SdFlipcard from './flipcard';
 
@@ -13,8 +13,8 @@ describe('<sd-flipcard>', () => {
     const el = await fixture<SdFlipcard>(html`<sd-flipcard></sd-flipcard>`);
 
     expect(el.activation).to.equal('click hover');
-    expect(el.frontVariant).to.equal('empty');
-    expect(el.backVariant).to.equal('empty');
+    expect(el.frontVariant).to.equal('primary');
+    expect(el.backVariant).to.equal('primary');
   });
 
   it('should allow custom activation', async () => {
@@ -44,14 +44,13 @@ describe('<sd-flipcard>', () => {
       el.addEventListener('sd-flip-front', flipFrontHandler);
       el.addEventListener('sd-flip-back', flipBackHandler);
 
-      await userEvent.type(el.shadowRoot!.querySelector('.flip-card__side--front')!, '{return}', {
-        pointerEventsCheck: 0
-      });
+      const front = el.shadowRoot!.querySelector('.flip-card__side--front')! as unknown as HTMLElement;
+      const back = el.shadowRoot!.querySelector('.flip-card__side--back')! as unknown as HTMLElement;
+
+      front.click();
       await waitUntil(() => flipFrontHandler.calledOnce);
 
-      await userEvent.type(el.shadowRoot!.querySelector('.flip-card__side--back')!, '{return}', {
-        pointerEventsCheck: 0
-      });
+      back.click();
       await waitUntil(() => flipBackHandler.calledOnce);
 
       expect(flipFrontHandler).to.have.been.calledOnce;

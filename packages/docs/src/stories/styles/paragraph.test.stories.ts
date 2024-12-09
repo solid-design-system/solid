@@ -25,6 +25,7 @@ export default {
   component: 'sd-paragraph',
   parameters: {
     ...parameters,
+    controls: { disable: true },
     design: {
       type: 'figma',
       url: 'https://www.figma.com/file/SkTc8tXPNPjZlxvXXJ6vTt/Paragraph?type=design&node-id=1701-741&mode=design&t=FsmhHop5U1y6FbYg-0'
@@ -54,7 +55,6 @@ export const Default = {
 
 export const Inverted = {
   name: 'Inverted',
-  parameters: { controls: { exclude: ['sd-paragraph--inverted'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {

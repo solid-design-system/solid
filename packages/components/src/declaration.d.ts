@@ -6,8 +6,8 @@ declare module '*.css' {
 declare namespace Chai {
   interface Assertion {
     // chai-a11y-axe returns a promise-like object and should be awaited but the types are incorrect
-    // eslint-disable-next-line @typescript-eslint/ban-types
-    accessible: (options?: Object) => PromiseLike<Assertion>;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    accessible: (options?: any) => PromiseLike<Assertion>;
   }
 }
 

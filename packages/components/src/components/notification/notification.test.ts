@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-expressions */
+import '../../../dist/solid-components';
 import { aTimeout, expect, fixture, html, oneEvent } from '@open-wc/testing';
 import { clickOnElement, moveMouseOnElement } from '../../internal/test.js';
 import { queryByTestId } from '../../internal/test/data-testid-helpers.js';

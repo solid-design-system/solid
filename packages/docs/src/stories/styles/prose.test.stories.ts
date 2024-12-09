@@ -18,6 +18,7 @@ export default {
   component: 'sd-prose',
   parameters: {
     ...parameters,
+    controls: { disable: true },
     docs: { story: { inline: false, height: 'calc(100vh - 400px)' } }
   },
   args: overrideArgs({ type: 'slot', name: 'default', value: '' }),

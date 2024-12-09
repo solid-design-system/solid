@@ -74,6 +74,7 @@ export default {
   },
   parameters: {
     ...parameters,
+    controls: { disable: true },
     design: {
       type: 'figma',
       url: 'https://www.figma.com/file/ZphyVFsUHL72voMrJagMeo/Select?node-id=1002%3A2284&mode=dev'
@@ -98,11 +99,6 @@ export const Default = {
 
 export const SizeMultiple = {
   name: 'Size x Multiple',
-  parameters: {
-    controls: {
-      exclude: ['open-attr']
-    }
-  },
   render: (args: { 'open-attr'?: string }) => {
     delete args['open-attr'];
 
@@ -139,11 +135,6 @@ export const SizeMultiple = {
 
 export const DisabledMultiple = {
   name: 'Disabled x Multiple',
-  parameters: {
-    controls: {
-      exclude: ['open']
-    }
-  },
   render: (args: { 'open-attr'?: string }) => {
     delete args['open-attr'];
 
@@ -186,11 +177,6 @@ export const DisabledMultiple = {
 
 export const ValidInvalid = {
   name: 'Valid x Invalid',
-  parameters: {
-    controls: {
-      exclude: ['label', 'open-attr', 'required', 'default', 'useTags', 'multiple', 'max-options-visible']
-    }
-  },
   render: (args: { 'open-attr'?: string }) => {
     delete args['open-attr'];
 
@@ -255,11 +241,6 @@ export const BorderVisibility = {
 
 export const Slots = {
   name: 'Slots',
-  parameters: {
-    controls: {
-      exclude: ['open-attr']
-    }
-  },
   render: (args: { 'open-attr'?: string }) => {
     delete args['open-attr'];
 
@@ -334,27 +315,6 @@ const partsArr = [
 
 export const Parts = {
   name: 'Parts',
-  parameters: {
-    controls: {
-      exclude: [
-        'open-attr',
-        'form-control',
-        'form-control-label',
-        'form-control-input',
-        'form-control-help-text',
-        'combobox',
-        'display-input',
-        'listbox',
-        'tags',
-        'tag',
-        'tag__base',
-        'tag__content',
-        'tag__removable-indicator',
-        'clear-button',
-        'expand-icon'
-      ]
-    }
-  },
   render: (args: { 'open-attr'?: string }) => {
     delete args['open-attr'];
 
@@ -391,11 +351,6 @@ export const Parts = {
 
 export const StyleOnValid = {
   name: 'Style on Valid',
-  parameters: {
-    controls: {
-      exclude: ['open-attr']
-    }
-  },
   render: (args: { 'open-attr'?: string }) => {
     delete args['open-attr'];
 
@@ -440,11 +395,6 @@ export const StyleOnValid = {
 
 export const Mouseless = {
   name: 'Mouseless',
-  parameters: {
-    controls: {
-      exclude: ['open-attr', 'value', 'default']
-    }
-  },
   render: (args: { 'open-attr'?: string }) => {
     delete args['open-attr'];
 
@@ -482,11 +432,6 @@ export const Mouseless = {
 
 export const SampleGroupingOptions = {
   name: 'Sample: Grouping Options',
-  parameters: {
-    controls: {
-      exclude: ['open-attr', 'default']
-    }
-  },
   render: (args: any) => {
     return html`<div class="h-[290px] w-[420px]">
       ${generateTemplate({
@@ -510,11 +455,6 @@ export const SampleGroupingOptions = {
 
 export const SampleForm = {
   name: 'Sample: Form',
-  parameters: {
-    controls: {
-      exclude: ['open-attr', 'label', 'name', 'useTags', 'value', 'multiple', 'max-options-visible', 'default']
-    }
-  },
   render: (args: { 'open-attr'?: string }) => {
     delete args['open-attr'];
 
@@ -658,11 +598,6 @@ export const setCustomValidity = {
 
 export const SolidForm = {
   name: 'Sample: Solid Form',
-  parameters: {
-    controls: {
-      include: []
-    }
-  },
   render: () => {
     return html`
       <form action="" method="get" id="testForm" name="testForm" class="">

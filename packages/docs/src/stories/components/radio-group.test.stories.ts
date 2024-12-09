@@ -20,6 +20,7 @@ export default {
   component: 'sd-radio-group',
   parameters: {
     ...parameters,
+    controls: { disable: true },
     design: {
       type: 'figma',
       url: 'https://www.figma.com/file/LP6fOKJjWupBBAL0rylL7H/Radio-%2F-Radio-Group?type=design&node-id=0-1&mode=design&t=ksZl4QS9N7UeLysz-0'
@@ -60,7 +61,6 @@ export const Default = {
 
 export const Orientation = {
   name: 'Orientation',
-  parameters: { controls: { exclude: ['orientation', 'size', 'default'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -78,7 +78,6 @@ export const Orientation = {
 
 export const Disabled = {
   name: 'Disabled x Size',
-  parameters: { controls: { exclude: ['size', 'default'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -114,7 +113,6 @@ export const Disabled = {
 
 export const Invalid = {
   name: 'Invalid',
-  parameters: { controls: { exclude: ['size', 'value', 'required', 'invalid'] } },
   render: (args: any) => {
     return html`<form>
       ${generateTemplate({
@@ -139,9 +137,6 @@ export const Invalid = {
  */
 export const Parts = {
   name: 'Parts',
-  parameters: {
-    controls: { exclude: ['form-control', 'form-control-label', 'form-control-input'] }
-  },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -190,7 +185,6 @@ export const Mouseless = {
 
 export const RadioButtons = {
   name: 'Radio Buttons',
-  parameters: { controls: { exclude: ['default', 'size', 'value', 'required', 'invalid', 'label', 'orientation'] } },
   render: (args: any) => {
     return generateTemplate({
       args,
@@ -217,7 +211,6 @@ export const RadioButtons = {
 
 export const MouselessWithRadioButtons = {
   name: 'Mouseless with Radio Buttons',
-  parameters: { controls: { exclude: ['default', 'size', 'value', 'required', 'invalid', 'label', 'orientation'] } },
   render: (args: any) => {
     return html`<div class="mouseless">
       ${generateTemplate({

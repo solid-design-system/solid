@@ -1,0 +1,45 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Packages/Components/Migration/from v2" />
+
+# Migration from v2
+
+## `sd-footnote` to `sd-footnotes`
+
+The `sd-footnote` component was not accessible and had a bad developer experience. Therefore the `sd-footnote` style has been deprecated and removed from the library and `sd-footnotes` was written, which leverages now HTML list features for numbering.
+
+**Before**:
+
+```html
+<p class="sd-footnote sd-footnote--number sd-footnote--reset">
+  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+  magna aliq erat, sed diam voluptua.
+</p>
+<p class="sd-footnote sd-footnote--number">
+  Maecenas vel maximus nisi. Morbi feugiat venenatis diam ac efficitur. Nulla vehicula posuere facilisis. Integer vel
+  dolor efficitur, auctor leo id, interdum ipsum. Etiam nec porta dolor.
+</p>
+<p class="sd-footnote sd-footnote--number">
+  Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed et massa non dolor
+  porta viverra a sed lorem.
+</p>
+```
+
+**After**
+
+```html
+<ul class="sd-footnotes">
+  <li>
+    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+    magna aliq erat, sed diam voluptua.
+  </li>
+  <li>
+    Maecenas vel maximus nisi. Morbi feugiat venenatis diam ac efficitur. Nulla vehicula posuere facilisis. Integer vel
+    dolor efficitur, auctor leo id, interdum ipsum. Etiam nec porta dolor.
+  </li>
+  <li>
+    Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed et massa non dolor
+    porta viverra a sed lorem.
+  </li>
+</ul>
+```

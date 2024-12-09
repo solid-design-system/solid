@@ -1,0 +1,32 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Packages/Components/Migration/from v1" />
+
+# Migration from v1
+
+## Opt-in for "Valid Styles"
+
+Before this change `sd-input`, `sd-select` and
+`sd-textarea` immediately showed "valid styles" (success color +
+checkmark) immediately when an form field was valid. In most cases this
+isn't relevant, e. g. in search fields, app interfaces etc.
+With this change you now have to explicitly set the attribute
+`style-on-valid` on the mentioned components to show "valid styles", as
+soon as the component is valid.
+
+**Before**:
+
+```html
+<sd-input></sd-input>
+<!-- Shows valid styles when valid -->
+```
+
+**After**:
+
+```html
+<sd-input></sd-input>
+<!-- Does not show valid styles when valid -->
+
+<sd-input style-on-valid></sd-input>
+<!-- Shows valid styles when valid -->
+```

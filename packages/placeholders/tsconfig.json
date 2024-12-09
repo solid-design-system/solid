@@ -6,12 +6,8 @@
     "outDir": "./types",
     "baseUrl": ".",
     "paths": {
-      "*": [
-        "./src/*"
-      ]
+      "*": ["./src/*"]
     }
   },
-  "include": [
-    "./src/**/*.js",
-  ]
+  "include": ["./src/**/*.js"]
 }

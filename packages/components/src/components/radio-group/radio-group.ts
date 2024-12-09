@@ -1,5 +1,5 @@
 import { css, html } from 'lit';
-import { customElement } from '../../../src/internal/register-custom-element';
+import { customElement } from '../../internal/register-custom-element';
 import {
   customErrorValidityState,
   FormControlController,
@@ -9,9 +9,8 @@ import {
 import { HasSlotController } from '../../internal/slot';
 import { property, query, state } from 'lit/decorators.js';
 import { watch } from '../../internal/watch';
-import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
-import SdButtonGroup from '../../_components/button-group/button-group';
+import SdButtonGroup from '../button-group/button-group';
 import SdRadio from '../../components/radio/radio';
 import SolidElement from '../../internal/solid-element';
 import type { SolidFormControl } from '../../internal/solid-element';
@@ -430,8 +429,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
    * Inherits Tailwind classes and includes additional styling.
    */
   static styles = [
-    componentStyles,
-    SolidElement.styles,
+    ...SolidElement.styles,
     css`
       :host {
         @apply block;
@@ -453,14 +451,14 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
         ::slotted(sd-radio:last-of-type) {
           @apply mr-0;
         }
-        /* sm */
-        &:host([size='sm']) {
-          ::slotted(sd-radio) {
-            @apply mr-4;
-          }
-          ::slotted(sd-radio:last-of-type) {
-            @apply mr-0;
-          }
+      }
+
+      :host([orientation='horizontal']):host([size='sm']) {
+        ::slotted(sd-radio) {
+          @apply mr-4;
+        }
+        ::slotted(sd-radio:last-of-type) {
+          @apply mr-0;
         }
       }
 

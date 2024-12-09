@@ -1,0 +1,23 @@
+/**
+ * Generates basic styles for flag elements.
+ * @name sd-flag
+ * @status stable
+ * @since 1.34.0
+ * @variant { neutral-300 | neutral-500 | white } sd-flag--...
+ */
+
+.sd-flag {
+  @apply h-8 bg-neutral-200 text-black text-sm inline-flex items-center px-3 whitespace-nowrap overflow-hidden;
+
+  &--neutral-500 {
+    @apply bg-neutral-500 text-black;
+  }
+
+  &--neutral-300 {
+    @apply bg-neutral-300;
+  }
+
+  &--white {
+    @apply bg-white;
+  }
+}

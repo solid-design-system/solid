@@ -1,0 +1,22 @@
+/**
+ * A table is organized structured content, used for scanning, comparing, and analyzing the data.
+ * @name sd-table
+ * @status stable
+ * @since 1.13
+ */
+
+/*
+* Remove inherited styles from table before applying our styles.
+*/
+.sd-table,
+.sd-prose table {
+  all: unset;
+  @apply table border-collapse border-spacing-0;
+
+  thead,
+  tfoot {
+    tr:first-of-type {
+      @apply relative;
+    }
+  }
+}

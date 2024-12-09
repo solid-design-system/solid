@@ -23,7 +23,7 @@ export default {
   argTypes,
   parameters: {
     ...parameters,
-    controls: { include: [] }
+    controls: { disable: true }
   },
   decorators: [withActions] as any
 };

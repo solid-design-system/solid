@@ -22,6 +22,7 @@ export default {
   component: 'sd-footnotes',
   parameters: {
     ...parameters,
+    controls: { disable: true },
     design: {
       type: 'figma',
       url: 'https://www.figma.com/file/DeZ6iJggYfpSXHcEexNeYs/Footnote?type=design&node-id=0-1&mode=design&t=7vjD8Qq8iKSnKn6a-0'
@@ -68,7 +69,6 @@ export const Default = {
 
 export const UnorderedLists = {
   name: 'Unordered Lists',
-  parameters: { controls: { include: [] } },
   render: (args: any) => {
     return generateTemplate({
       options: {
@@ -84,7 +84,6 @@ export const UnorderedLists = {
  */
 
 export const Sample = {
-  parameters: { controls: { include: [] } },
   name: 'Sample: Set start',
   render: (args: any) => {
     return generateTemplate({

@@ -21,7 +21,7 @@ export default {
   tags: ['!autodocs'],
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Tag' }),
   argTypes,
-  parameters: { ...parameters },
+  parameters: { ...parameters, controls: { disable: true } },
   decorators: [withActions] as any
 };
 
@@ -42,7 +42,6 @@ export const Default = {
 
 export const selectedAndSize = {
   name: 'Selected × Size',
-  parameters: { controls: { exclude: ['size', 'selected'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -60,7 +59,6 @@ export const selectedAndSize = {
 
 export const removableAndSize = {
   name: 'Removable × Size',
-  parameters: { controls: { exclude: ['size', 'removable'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -82,7 +80,6 @@ export const removableAndSize = {
 
 export const Disabled = {
   name: 'Disabled',
-  parameters: { controls: { exclude: ['selected', 'removable', 'disabled'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -110,9 +107,6 @@ export const Disabled = {
 
 export const Slots = {
   name: 'Slots',
-  parameters: {
-    controls: { exclude: ['size', 'selected', 'removable', 'disabled'] }
-  },
   render: (args: any) => {
     return html`
       ${['default', 'removable-indicator'].map(slot =>
@@ -150,9 +144,6 @@ export const Slots = {
 
 export const Parts = {
   name: 'Parts',
-  parameters: {
-    controls: { exclude: ['size', 'selected', 'removable', 'disabled'] }
-  },
   render: (args: any) => {
     return generateTemplate({
       axis: {
