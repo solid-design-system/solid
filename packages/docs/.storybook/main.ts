@@ -1,4 +1,3 @@
-import storybookEnvPackageVersions from '../scripts/storybook/env-package-versions';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default {
@@ -17,9 +16,6 @@ export default {
     // Legal
     '../src/stories/legal/*.@(mdx|stories.*)'
   ],
-  env: storybookEnvPackageVersions({
-    packagePaths: ['../components', '../tokens', '../placeholders', '../styles']
-  }),
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',

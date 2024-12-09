@@ -1,7 +1,9 @@
 import { replaceCodePlugin as ViteReplaceCodePlugin } from 'vite-plugin-replace';
 import componentsPackageJson from '../components/package.json';
 import customElementConfig from '../components/custom-elements-manifest.config.js';
+import placeholdersPackageJson from '../placeholders/package.json';
 import stylesPackageJson from '../styles/package.json';
+import tokensPackageJson from '../tokens/package.json';
 import VitePluginCreateEmptyCemIfNotExisting from './scripts/vite-plugin-create-empty-cem-if-not-existing';
 import VitePluginCustomElementsManifest from 'vite-plugin-cem';
 import VitePluginFetchIconsFromCdn from './scripts/vite-plugin-fetch-icons-from-cdn';
@@ -40,6 +42,14 @@ export default () => {
       ViteReplaceCodePlugin({
         // replace %COMPONENTS-VERSION% with version from ../components/package.json
         replacements: [
+          {
+            from: /%TOKENS-VERSION%/g,
+            to: tokensPackageJson.version
+          },
+          {
+            from: /%PLACEHOLDERS-VERSION%/g,
+            to: placeholdersPackageJson.version
+          },
           {
             from: /%COMPONENTS-VERSION%/g,
             to: componentsPackageJson.version

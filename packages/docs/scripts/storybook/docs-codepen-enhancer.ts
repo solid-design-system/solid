@@ -5,8 +5,6 @@ export default function docsCodepenEnhancer(code: string, storyContext: StoryCon
   // We hijack the formatter to keep track of every story's code change
   // and add a button to edit it on CodePen
   const storiesOnDocsPage = document.querySelectorAll(`#anchor--${storyContext.id}`);
-  const packageVersionString = import.meta.env.STORYBOOK_PACKAGE_VERSIONS as string;
-  const packageVersions = JSON.parse(packageVersionString) as Record<string, string>;
 
   // Unfortunately, the editable story in a docs page has the same ID as the first story.
   storiesOnDocsPage.forEach(story => {
@@ -60,11 +58,13 @@ export default function docsCodepenEnhancer(code: string, storyContext: StoryCon
 
         // Docs: https://blog.codepen.io/documentation/prefill/
         const data = {
-          css: `/* See https://solid-design-system.fe.union-investment.de/${packageVersions['@solid-design-system/components']}/storybook/?path=/docs/docs-general-installation--docs */
-@import url("https://solid-design-system.fe.union-investment.de/${packageVersions['@solid-design-system/components']}/cdn/solid-components.css");
-@import url("https://solid-design-system.fe.union-investment.de/${packageVersions['@solid-design-system/styles']}/cdn/solid-styles.css");
+          css: `/* See https://solid-design-system.fe.union-investment.de/?path=/docs/packages-components-installation--docs */
+@import url("https://solid-design-system.fe.union-investment.de/components/%COMPONENTS-VERSION%/cdn/solid-components.css");
 
-/* See https://solid-design-system.fe.union-investment.de/${packageVersions['@solid-design-system/components']}/storybook/?path=/docs/docs-general-prerequisites--docs */
+/* See https://solid-design-system.fe.union-investment.de/?path=/docs/packages-styles-installation--docs */
+@import url("https://solid-design-system.fe.union-investment.de/styles/%STYLES-VERSION%/cdn/solid-styles.css");
+
+/* See https://solid-design-system.fe.union-investment.de/docs/?path=/docs/docs-general-prerequisites--docs */
 body {
   font-family:
     'Frutiger Neue',
@@ -88,7 +88,7 @@ body {
   font-family: 'Frutiger Neue';
   font-style: normal;
   font-weight: 400;
-  src: url('https://solid-design-system.fe.union-investment.de/${packageVersions['@solid-design-system/components']}/storybook/fonts/FrutigerNeuefuerUIWebW05-Bk.woff2')
+  src: url('https://solid-design-system.fe.union-investment.de/docs/fonts/FrutigerNeuefuerUIWebW05-Bk.woff2')
     format('woff2');
 }
 
@@ -96,7 +96,7 @@ body {
   font-family: 'Frutiger Neue';
   font-style: italic;
   font-weight: 400;
-  src: url('https://solid-design-system.fe.union-investment.de/${packageVersions['@solid-design-system/components']}/storybook/fonts/FrutigerNeuefuerUIWebW05-BkIt.woff2')
+  src: url('https://solid-design-system.fe.union-investment.de/docs/fonts/FrutigerNeuefuerUIWebW05-BkIt.woff2')
     format('woff2');
 }
 
@@ -104,7 +104,7 @@ body {
   font-family: 'Frutiger Neue';
   font-style: normal;
   font-weight: 600;
-  src: url('https://solid-design-system.fe.union-investment.de/${packageVersions['@solid-design-system/components']}/storybook/fonts/FrutigerNeuefuerUIWebW05-Bd.woff2')
+  src: url('https://solid-design-system.fe.union-investment.de/docs/fonts/FrutigerNeuefuerUIWebW05-Bd.woff2')
     format('woff2');
 }
 
@@ -112,7 +112,7 @@ body {
   font-family: 'Frutiger Neue';
   font-style: italic;
   font-weight: 600;
-  src: url('https://solid-design-system.fe.union-investment.de/${packageVersions['@solid-design-system/components']}/storybook/fonts/FrutigerNeuefuerUIWebW05-BdIt.woff2')
+  src: url('https://solid-design-system.fe.union-investment.de/docs/fonts/FrutigerNeuefuerUIWebW05-BdIt.woff2')
     format('woff2');
 }
 
@@ -134,11 +134,8 @@ body {
           editors: 1110,
           head: '<meta name="viewport" content="width=device-width">',
           html: code.replace(/\n\s*\n/g, '\n'), // Regex removes empty lines
-          js: `/* See https://solid-design-system.fe.union-investment.de/${packageVersions['@solid-design-system/components']}/storybook/?path=/docs/docs-general-installation--docs */
-import "https://solid-design-system.fe.union-investment.de/${packageVersions['@solid-design-system/components']}/components/umd/solid-components.js";
-
-/* Example how to use modules from bundle */
-const { registerIconLibrary } = window['SolidComponents'];`,
+          js: `/* See https://solid-design-system.fe.union-investment.de/?path=/docs/packages-components-installation--docs */
+import { registerIconLibrary } "https://solid-design-system.fe.union-investment.de/components/%COMPONENTS-VERSION%/cdn/solid-components.js";`,
           js_external: '',
           js_module: true,
           js_pre_processor: 'none',
