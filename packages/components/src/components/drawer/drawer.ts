@@ -70,6 +70,7 @@ export default class SdDrawer extends SolidElement {
   @query('[part=base]') drawer: HTMLElement;
   @query('[part=panel]') panel: HTMLElement;
   @query('[part=overlay]') overlay: HTMLElement;
+  @query('[part=close-button]') closeButton: HTMLElement;
 
   /**
    * Indicates whether or not the drawer is open. You can toggle this attribute to show and hide the drawer, or you can
@@ -200,6 +201,10 @@ export default class SdDrawer extends SolidElement {
         animateTo(this.overlay, overlayAnimation.keyframes, overlayAnimation.options)
       ]);
 
+      //Update ARIA attributes to close button
+      this.closeButton.shadowRoot?.querySelector('[part="base"]')?.setAttribute('aria-controls', 'drawer');
+      this.closeButton.shadowRoot?.querySelector('[part="base"]')?.setAttribute('aria-expanded', 'true');
+
       this.emit('sd-after-show');
     } else {
       // Hide
@@ -241,6 +246,9 @@ export default class SdDrawer extends SolidElement {
         setTimeout(() => trigger.focus());
       }
 
+      //Add a11y attributes to close button
+      this.closeButton.shadowRoot?.querySelector('[part="base"]')?.setAttribute('aria-expanded', 'false');
+
       this.emit('sd-after-hide');
     }
   }
@@ -281,6 +289,7 @@ export default class SdDrawer extends SolidElement {
   render() {
     return html`
       <div
+        id="drawer"
         part="base"
         class=${cx(
           'top-0 start-0 w-full h-full pointer-events-none overflow-hidden',
@@ -328,9 +337,11 @@ export default class SdDrawer extends SolidElement {
                       variant="tertiary"
                       size="lg"
                       part="close-button"
+                      id="close-button"
                       @click=${() => this.requestClose('close-button')}
-                      ><sd-icon label=${this.localize.term('close')} name="close" library="system"></sd-icon
-                    ></sd-button>
+                    >
+                      <sd-icon label=${this.localize.term('close')} name="close" library="system"></sd-icon>
+                    </sd-button>
                   </div>
                 </header>
               `
