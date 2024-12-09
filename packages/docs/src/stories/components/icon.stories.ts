@@ -131,7 +131,7 @@ export const Size = {
  *
  * ```html
  * <script type="module">
- *   import { registerIconLibrary } from '@solid-design-system/components/unversioned/icon/library';
+ *   import { registerIconLibrary } from '@solid-design-system/components/dist/components/icon/library';
  *
  *   registerIconLibrary('my-icons', {
  *     resolver: name => `/assets/icons/${name}.svg`,
@@ -140,12 +140,12 @@ export const Size = {
  * </script>
  * ```
  *
- * If you use the UMD bundle, you have to access the `registerIconLibrary()` function from the `SolidComponents` global.
+ * If you use the IIEF bundle, you have to access the `registerIconLibrary()` function from the `SolidComponents` global.
  *
  * ```html
- * <script src="https://solid-design-system.fe.union-investment.de/x.x.x/components/umd/solid-components.js"></script>
+ * <script src="https://solid-design-system.fe.union-investment.de/components/%COMPONENTS-VERSION%/cdn/solid-components.iief.js"></script>
  * <script>
- *  const { registerIconLibrary } = window['Solid Components'];
+ *  const { registerIconLibrary } = window['SolidComponents'];
  *
  *  registerIconLibrary('my-icons', {
  *    resolver: name => `/assets/icons/${name}.svg`,
@@ -154,7 +154,7 @@ export const Size = {
  * </script>
  * ```
  *
- * Please have in mind, that you have to make sure that `window['Solid Components']` is available before you call `registerIconLibrary()` e. g. via polling or similar.
+ * Please have in mind, that you have to make sure that `window['SolidComponents']` is available before you call `registerIconLibrary()` e. g. via polling or similar.
  *
  * To display an icon, set the library and name attributes of an <sd-icon> element.
  *
@@ -191,7 +191,7 @@ export const IconLibraries = {
         // ESM:
         // import { registerIconLibrary } from '@solid-design-system/components/unversioned/icon/library';
 
-        // UMD:
+        // IIEF:
         // const { registerIconLibrary } = window['SolidComponents'];
 
         // preview-ignore:start

@@ -74,7 +74,22 @@ async function buildTheSource() {
     entryNames: '[dir]/[name].bundle'
   };
 
-  return await Promise.all([esbuild.build(cdnConfig), esbuild.build(npmConfig), esbuild.build(bundleConfig)]);
+  const iifeConfig = {
+    ...cdnConfig,
+    format: 'iife',
+    bundle: true,
+    splitting: false,
+    entryPoints: ['./src/solid-components.ts'],
+    globalName: 'SolidComponents',
+    entryNames: '[dir]/[name].iife'
+  };
+
+  return await Promise.all([
+    esbuild.build(cdnConfig),
+    esbuild.build(npmConfig),
+    esbuild.build(bundleConfig),
+    esbuild.build(iifeConfig)
+  ]);
 }
 
 //
