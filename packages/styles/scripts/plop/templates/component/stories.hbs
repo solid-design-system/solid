@@ -1,4 +1,3 @@
-import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
 import { withActions } from '@storybook/addon-actions/decorator';
@@ -7,14 +6,15 @@ const { argTypes, args, parameters } = storybookDefaults('{{ tag }}');
 const { generateTemplate } = storybookTemplate('{{ tag }}');
 
 /**
-  * Used to do something cool. (Describe usage of component here.)
+  * Used to do something cool. (Describe usage of style here.)
   *
   * **Related templates**:
   * - [Link to template](?path=docs/templates-your-template)
   */
+
 export default {
   tags: ['!dev'],
-  title: 'Components/{{ tag }}',
+  title: 'Styles/{{ tag }}',
   component: '{{ tag }}',
   args,
   argTypes,
@@ -30,7 +30,10 @@ export default {
 
 export const Default = {
   render: (args: any) => {
-    return generateTemplate({args});
+    return generateTemplate({
+      options: { templateContent: '<p class="%CLASSES%">%SLOT%</p>' },
+      args
+    });
   }
 };
 

@@ -438,6 +438,9 @@ importers:
       ora:
         specifier: ^8.1.1
         version: 8.1.1
+      plop:
+        specifier: ^4.0.1
+        version: 4.0.1
       postcss:
         specifier: ^8.4.49
         version: 8.4.49
