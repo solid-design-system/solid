@@ -7,7 +7,8 @@ export default {
     // Packages (custom order)
     '../src/stories/packages/**/Index.@(mdx|stories.*)',
     '../src/stories/packages/**/Installation.@(mdx|stories.*)',
-    '../src/stories/packages/**/!(Changelog)*.@(mdx|stories.*)',
+    '../src/stories/packages/**/!(Changelog|Contributing)*.@(mdx|stories.*)',
+    '../src/stories/packages/**/Contributing.@(mdx|stories.*)',
     '../src/stories/packages/**/Changelog.@(mdx|stories.*)',
     // Components, Styles, Templates
     '../src/stories/components/*.@(mdx|stories.*)',
