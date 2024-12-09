@@ -81,7 +81,6 @@
     "@mariohamann/tailwindcss-var": "github:mariohamann/tailwindcss-var",
     "@open-wc/testing": "^4.0.0",
     "@open-wc/testing-helpers": "^3.0.1",
-    "@remcovaes/web-test-runner-vite-plugin": "^1.2.1",
     "@solid-design-system/versioning": "workspace:^",
     "@tarekraafat/autocomplete.js": "^10.2.9",
     "@types/mocha": "^10.0.10",

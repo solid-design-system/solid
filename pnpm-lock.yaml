@@ -113,9 +113,6 @@ importers:
       '@open-wc/testing-helpers':
         specifier: ^3.0.1
         version: 3.0.1
-      '@remcovaes/web-test-runner-vite-plugin':
-        specifier: ^1.2.1
-        version: 1.2.1(vite@5.4.11(@types/node@22.10.1))
       '@solid-design-system/versioning':
         specifier: workspace:^
         version: link:../versioning
@@ -1141,11 +1138,6 @@ packages:
     resolution: {integrity: sha512-0kdAbmic3J09I6dT8e9vE2JOCSt13wHCW5x/ly8TSt2bDtuIWe2TgLZZDHdcziw9AVCzflMAXCrVyRIhIs44Ng==}
     engines: {node: '>=18'}
     hasBin: true
-
-  '@remcovaes/web-test-runner-vite-plugin@1.2.1':
-    resolution: {integrity: sha512-zXyTJa4D2Trym3qvBqf3AWEIkZQkm7iFuJbTmDkN/SlqalbP75C9jet+ckwfgtqpFek3SRzhEtapVelp0PU9UA==}
-    peerDependencies:
-      vite: ^3.0.0 || ^4.0.0 || ^5.0.0
 
   '@rollup/plugin-node-resolve@15.3.0':
     resolution: {integrity: sha512-9eO5McEICxMzJpDW9OnMYSv4Sta3hmt7VtBFz5zR9273suNOydOyq/FrGeGy+KsTRFm8w0SLVhzig2ILFT63Ag==}
@@ -7137,10 +7129,6 @@ snapshots:
       yargs: 17.7.2
     transitivePeerDependencies:
       - supports-color
-
-  '@remcovaes/web-test-runner-vite-plugin@1.2.1(vite@5.4.11(@types/node@22.10.1))':
-    dependencies:
-      vite: 5.4.11(@types/node@22.10.1)
 
   '@rollup/plugin-node-resolve@15.3.0(rollup@4.27.4)':
     dependencies:
