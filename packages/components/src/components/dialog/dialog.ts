@@ -266,7 +266,10 @@ export default class SdDialog extends SolidElement {
 
         <div
           part="panel"
-          class=${cx('flex flex-col z-20 bg-white py-4 sm:py-8 relative gap-6', this.open && 'flex opacity-100')}
+          class=${cx(
+            'flex flex-col z-20 bg-white py-4 sm:py-8 relative gap-6 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-primary',
+            this.open && 'flex opacity-100'
+          )}
           role="dialog"
           aria-modal="true"
           aria-hidden=${this.open ? 'false' : 'true'}
