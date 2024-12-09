@@ -28,6 +28,7 @@ const translation: Translation = {
   previousSlide: 'Vorherige Folie',
   progress: 'Fortschritt',
   remove: 'Entfernen',
+  removed: name => `${name} entfernt`,
   resize: 'Größe ändern',
   scrollToEnd: 'Zum Ende scrollen',
   scrollToStart: 'Zum Anfang scrollen',
