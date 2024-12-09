@@ -140,10 +140,10 @@ export const Size = {
  * </script>
  * ```
  *
- * If you use the IIEF bundle, you have to access the `registerIconLibrary()` function from the `SolidComponents` global.
+ * If you use the IIFE bundle, you have to access the `registerIconLibrary()` function from the `SolidComponents` global.
  *
  * ```html
- * <script src="https://solid-design-system.fe.union-investment.de/components/%COMPONENTS-VERSION%/cdn/solid-components.iief.js"></script>
+ * <script src="https://solid-design-system.fe.union-investment.de/components/%COMPONENTS-VERSION%/cdn/solid-components.iife.js"></script>
  * <script>
  *  const { registerIconLibrary } = window['SolidComponents'];
  *
@@ -191,7 +191,7 @@ export const IconLibraries = {
         // ESM:
         // import { registerIconLibrary } from '@solid-design-system/components/unversioned/icon/library';
 
-        // IIEF:
+        // IIFE:
         // const { registerIconLibrary } = window['SolidComponents'];
 
         // preview-ignore:start
