@@ -79,6 +79,7 @@ export interface Translation extends DefaultTranslation {
   carousel: string;
   clearEntry: string;
   close: string;
+  comboboxDefaultPlaceholder: string;
   copy: string;
   currentValue: string;
   goToSlide: (slide: number, count: number) => string;
@@ -86,6 +87,7 @@ export interface Translation extends DefaultTranslation {
   loading: string;
   mute: string;
   nextSlide: string;
+  noResults: string;
   numOptionsSelected: (num: number) => string;
   pauseAudio: string;
   playAudio: string;
@@ -99,13 +101,11 @@ export interface Translation extends DefaultTranslation {
   scrollToStart: string;
   selectAColorFromTheScreen: string;
   selectDefaultPlaceholder: string;
-  tagsSelected: string;
-  comboboxDefaultPlaceholder: string;
-  noResults: string;
   showLess: string;
   showMore: string;
   showPassword: string;
   slideNum: (slide: number, count: number) => string;
+  tagsSelected: string;
   toggleColorFormat: string;
   unmute: string;
 }
