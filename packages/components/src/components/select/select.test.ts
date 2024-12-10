@@ -98,6 +98,22 @@ describe('<sd-select>', () => {
     expect(input.hasAttribute('aria-invalid')).to.be.true;
   });
 
+  it('should remove tag and option when tag is focused and backspace is pressed', async () => {
+    const el = await fixture<SdSelect>(html`
+      <sd-select value="option-1 option-2" multiple useTags>
+        <sd-option value="option-1">Option 1</sd-option>
+        <sd-option value="option-2">Option 2</sd-option>
+        <sd-option value="option-3">Option 3</sd-option>
+      </sd-select>
+    `);
+    const tag = el.shadowRoot!.querySelector('sd-tag')!;
+    tag.focus();
+    await sendKeys({ press: 'Backspace' });
+    await el.updateComplete;
+
+    expect(el.value).to.deep.equal(['option-2']);
+  });
+
   describe('when the value changes', () => {
     it('should emit sd-change when the value is changed with the mouse', async () => {
       const el = await fixture<SdSelect>(html`
