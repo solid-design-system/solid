@@ -215,6 +215,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
             "
         size=${this.size === 'sm' ? 'sm' : 'lg'}
         removable
+        @keydown=${(event: KeyboardEvent) => this.handleTagKeyDown(event, option)}
         @sd-remove=${(event: CustomEvent) => this.handleTagRemove(event, option)}
       >
         ${option.getTextLabel()}
@@ -410,6 +411,24 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
       this.hide();
     }
   };
+
+  private handleTagKeyDown(event: KeyboardEvent, option: SdOption) {
+    event.stopPropagation();
+
+    if (event.key === 'Backspace' && this.multiple) {
+      this.handleTagRemove(new CustomEvent('sd-remove'), option);
+      this.updateComplete.then(() => this.displayInput.focus({ preventScroll: true }));
+    }
+  }
+
+  private handleTagMaxOptionsKeyDown(event: KeyboardEvent) {
+    event.stopPropagation();
+
+    if (event.key === 'Backspace' && this.multiple) {
+      this.handleTagRemove(new CustomEvent('sd-remove'), this.selectedOptions[this.selectedOptions.length - 1]);
+      this.updateComplete.then(() => this.displayInput.focus({ preventScroll: true }));
+    }
+  }
 
   private handleLabelClick() {
     this.displayInput.focus();
@@ -654,6 +673,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
             "
             size=${this.size === 'sm' ? 'sm' : 'lg'}
             removable
+            @keydown=${(event: KeyboardEvent) => this.handleTagMaxOptionsKeyDown(event)}
             @sd-remove=${(event: CustomEvent) => this.handleTagRemove(event)}
             >${this.selectedOptions.length} ${this.localize.term('tagsSelected')}</sd-tag
           >
