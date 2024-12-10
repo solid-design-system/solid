@@ -386,14 +386,12 @@ export const Parts = {
         {
           type: 'slot',
           name: 'left',
-          value:
-            '<sd-icon slot="left" library="global-resources" name="system/picture" aria-hidden="true" color="currentColor"></sd-icon>'
+          value: '<sd-icon slot="left" name="system/image" aria-hidden="true" color="currentColor"></sd-icon>'
         },
         {
           type: 'slot',
           name: 'right',
-          value:
-            '<sd-icon slot="right" library="global-resources" name="system/picture" aria-hidden="true" color="currentColor"></sd-icon>'
+          value: '<sd-icon slot="right" name="system/image" aria-hidden="true" color="currentColor"></sd-icon>'
         },
         clearableConstant,
         helpTextConstant,
