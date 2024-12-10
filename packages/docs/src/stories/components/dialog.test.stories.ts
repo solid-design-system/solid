@@ -30,7 +30,7 @@ export default {
     {
       type: 'slot',
       name: 'headline',
-      value: `<h4 slot="headline" class="sd-headline sd-headline--size-3xl leading-tight">Lorem Ipsum</h4>`
+      value: `<span slot="headline" class="sd-headline sd-headline--size-3xl leading-tight">Lorem Ipsum</span>`
     },
     {
       type: 'slot',
@@ -187,7 +187,7 @@ export const ExtendedFooter = {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
             phasellus dui vel id. Velit in sed.
           </p>
-          <h4 slot="headline" class="sd-headline sd-headline--size-3xl">Lorem Ipsum</h4>
+          <span slot="headline" class="sd-headline sd-headline--size-3xl">Lorem Ipsum</span>
           <sd-button variant="secondary" slot="footer" class="w-full">Label</sd-button>
           <sd-button slot="footer" class="w-full">Label</sd-button>
         </sd-dialog>
@@ -247,7 +247,7 @@ export const PreventClosing = {
 
         <sd-dialog id="default-dialog"
           ><p class="sd-paragraph">This dialog will not close when you click on the overlay.</p>
-          <h4 slot="headline" class="sd-headline sd-headline--size-3xl">Dialog</h4>
+          <span slot="headline" class="sd-headline sd-headline--size-3xl">Dialog</span>
           <sd-button slot="footer" class="w-full" id="close-button">Close</sd-button></sd-dialog
         >
 

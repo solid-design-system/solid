@@ -40,14 +40,30 @@ export const Default = {
       }
     </style>
 
+    <sd-button id="drawer-trigger">Open Dialog</sd-button>
     <sd-dialog id="dialog" open>
-      <h4 slot="headline" class="sd-headline sd-headline--size-3xl">Cancel your subscription?</h4>
+      <span slot="headline" class="sd-headline sd-headline--size-3xl">Cancel your subscription?</span>
       <p class="sd-paragraph">Your subscription will be canceled immediately. You can resubscribe at any time.</p>
       <div slot="footer" class="flex flex-col-reverse sm:flex-row justify-end w-full gap-2">
         <sd-button class="w-full sm:w-auto" variant="secondary" size="lg" type="button"> Maybe later </sd-button>
         <sd-button class="w-full sm:w-auto" variant="primary" size="lg" type="button"> Cancel </sd-button>
       </div>
     </sd-dialog>
+    <script type="module">
+      const dialog = document.getElementById('dialog');
+      const buttons = dialog.querySelectorAll('sd-button');
+      const trigger = document.getElementById('drawer-trigger');
+
+      trigger.addEventListener('click', () => {
+        dialog.show();
+      });
+
+      buttons.forEach(button => {
+        button.addEventListener('click', () => {
+          dialog.hide();
+        });
+      });
+    </script>
   `
 };
 
@@ -60,8 +76,10 @@ export const Scrollable = {
       }
     </style>
 
-    <sd-dialog id="dialog" open no-close-button>
-      <h4 slot="headline" class="sd-headline sd-headline--size-3xl">Terms of use</h4>
+    <sd-button id="scrollable-drawer-trigger">Open Dialog</sd-button>
+
+    <sd-dialog id="scrollable-dialog" open no-close-button>
+      <span slot="headline" class="sd-headline sd-headline--size-3xl">Terms of use</span>
       <sd-scrollable orientation="vertical" step="150" shadows>
         <div class="items-start justify-start h-[300px] lg:h-[454px] space-y-5">
           <h4 class="sd-headline sd-headline--size-lg">Important notices to our investors</h4>
@@ -148,16 +166,37 @@ export const Scrollable = {
         </div>
       </sd-scrollable>
       <div slot="footer" class="flex flex-col-reverse md:flex-row justify-end w-full gap-2">
-        <sd-button variant="secondary" size="lg" type="button" aria-label="Close">
+        <sd-button class="close-dialog" variant="secondary" size="lg" type="button" aria-label="Close">
           <sd-icon name="system/log-out" slot="icon-left"></sd-icon>
           Exit portal
         </sd-button>
-        <sd-button variant="secondary" size="lg" type="button">
+        <sd-button class="download" variant="secondary" size="lg" type="button">
           <sd-icon name="system/download" slot="icon-left"></sd-icon>
           Download PDF
         </sd-button>
-        <sd-button variant="primary" size="lg" type="button"> Accept terms of use </sd-button>
+        <sd-button class="close-dialog" variant="primary" size="lg" type="button"> Accept terms of use </sd-button>
       </div>
     </sd-dialog>
+
+    <script type="module">
+      const dialog = document.getElementById('scrollable-dialog');
+      const buttons = dialog.querySelectorAll('.close-dialog');
+      const download = dialog.querySelector('.download');
+      const trigger = document.getElementById('scrollable-drawer-trigger');
+
+      buttons.forEach(button => {
+        button.addEventListener('click', () => {
+          dialog.hide();
+        });
+      });
+
+      download.addEventListener('click', () => {
+        alert('Download PDF');
+      });
+
+      trigger.addEventListener('click', () => {
+        dialog.show();
+      });
+    </script>
   `
 };
