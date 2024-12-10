@@ -418,6 +418,10 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     if (event.key === 'Backspace' && this.multiple) {
       this.handleTagRemove(new CustomEvent('sd-remove'), option);
       this.updateComplete.then(() => this.displayInput.focus({ preventScroll: true }));
+    } else if ((event.code === 'Space' || event.code === 'Enter') && this.multiple) {
+      this.show();
+    } else if (event.code === 'Escape' && this.multiple) {
+      this.hide();
     }
   }
 
