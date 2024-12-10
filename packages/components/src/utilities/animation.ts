@@ -1,1 +1,1 @@
-export { getAnimationNames, getEasingNames } from '../_components/animation/animations';
+export { getAnimationNames, getEasingNames } from '../components/animation/animations';

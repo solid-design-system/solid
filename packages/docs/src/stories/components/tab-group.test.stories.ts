@@ -37,6 +37,7 @@ export default {
     value: generateTabsAndPanels(1, 5)
   }),
   argTypes,
+  parameters: { controls: { disable: true } },
   decorators: [
     (story: () => typeof html) => html`
       <style>

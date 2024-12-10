@@ -23,7 +23,7 @@ export default {
   component: 'sd-option',
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Option' }),
   argTypes,
-  parameters: { ...parameters },
+  parameters: { ...parameters, controls: { disable: true } },
   decorators: [withActions] as any
 };
 
@@ -98,11 +98,6 @@ export const SizeCheckbox = {
 
 export const Slots = {
   name: 'Slots',
-  parameters: {
-    controls: {
-      exclude: ['default', 'left', 'right']
-    }
-  },
   render: (args: any) => {
     return html`
       ${['default', 'left', 'right'].map(slot =>
@@ -150,11 +145,6 @@ export const Slots = {
 
 export const Parts = {
   name: 'Parts',
-  parameters: {
-    controls: {
-      exclude: ['base', 'label', 'left', 'right']
-    }
-  },
   render: (args: any) => {
     return generateTemplate({
       axis: {

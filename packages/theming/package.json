@@ -31,9 +31,9 @@
   },
   "readme": "README.md",
   "devDependencies": {
-    "typescript": "5.4.5"
+    "typescript": "5.7.2"
   },
   "dependencies": {
-    "chroma-js": "^2.4.2"
+    "chroma-js": "^3.1.2"
   }
 }

@@ -1,5 +1,5 @@
 import { css, html } from 'lit';
-import { customElement } from '../../../src/internal/register-custom-element';
+import { customElement } from '../../internal/register-custom-element';
 import { HasSlotController } from '../../internal/slot';
 import { property, query } from 'lit/decorators.js';
 import cx from 'classix';
@@ -158,7 +158,7 @@ export default class SdVideo extends SolidElement {
           role="presentation"
           class=${cx(
             this.overlay && !this.playing ? 'opacity-100' : 'opacity-0',
-            'bg-[rgba(0,0,0,0.65)] w-full h-full absolute top-0 left-0 pointer-events-none z-20 play-pause-transition'
+            'bg-[black] bg-opacity-60 w-full h-full absolute top-0 left-0 pointer-events-none z-20 play-pause-transition'
           )}
         ></div>
         <slot></slot>
@@ -166,9 +166,8 @@ export default class SdVideo extends SolidElement {
     `;
   }
 
-  /** Inherits Tailwindclasses and includes additional styling. */
   static styles = [
-    SolidElement.styles,
+    ...SolidElement.styles,
     css`
       :host {
         @apply relative inline-block overflow-hidden;

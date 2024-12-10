@@ -26,6 +26,7 @@ export default {
   component: 'sd-leadtext',
   parameters: {
     ...parameters,
+    controls: { disable: true },
     design: {
       type: 'figma',
       url: 'https://www.figma.com/file/G2kppjBPXzyQt6dFfGSPu2/Leadtext?type=design&node-id=755-5226&mode=design&t=8SvX76woqAGDbqn3-0'
@@ -55,7 +56,6 @@ export const Default = {
 
 export const Inverted = {
   name: 'Inverted',
-  parameters: { controls: { exclude: ['sd-leadtext--inverted'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {

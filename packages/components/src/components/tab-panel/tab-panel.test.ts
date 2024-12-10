@@ -1,3 +1,4 @@
+import '../../../dist/solid-components';
 import { aTimeout, expect, fixture, html } from '@open-wc/testing';
 import type SdTabPanel from './tab-panel';
 

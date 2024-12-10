@@ -37,7 +37,7 @@ export default {
     }
   ]),
   argTypes,
-  parameters: { ...parameters },
+  parameters: { ...parameters, controls: { disable: true } },
   decorators: [
     withActions,
     (story: any) =>
@@ -114,7 +114,6 @@ export const Default = {
 
 export const Rounded = {
   name: 'Rounded',
-  parameters: { controls: { exclude: ['rounded', 'default'] } },
   render: (args: any) =>
     generateTemplate({
       axis: {
@@ -139,7 +138,6 @@ export const Rounded = {
 
 export const NoAutoSize = {
   name: 'No Auto Size',
-  parameters: { controls: { exclude: ['default', 'no-flip', 'no-auto-size'] } },
   render: (args: any) =>
     generateTemplate({
       axis: {
@@ -171,7 +169,6 @@ export const NoAutoSize = {
 
 export const NoFlip = {
   name: 'No Flip',
-  parameters: { controls: { exclude: ['no-flip', 'default'] } },
   render: (args: any) =>
     generateTemplate({
       axis: {
@@ -196,7 +193,6 @@ export const NoFlip = {
 
 export const Placement = {
   name: 'Placement',
-  parameters: { controls: { exclude: ['placement'] } },
   render: (args: any) => {
     return html`<div class="placement-story">
       ${['top', 'bottom', 'left', 'right'].map(value =>
@@ -234,7 +230,6 @@ export const Placement = {
 
 export const Distance = {
   name: 'Distance',
-  parameters: { controls: { exclude: ['rounded', 'distance', 'open', 'placement'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -271,7 +266,6 @@ export const Distance = {
 
 export const Skidding = {
   name: 'Skidding',
-  parameters: { controls: { exclude: ['placement'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -297,9 +291,6 @@ export const Skidding = {
  */
 export const Slots = {
   name: 'Slots',
-  parameters: {
-    controls: { exclude: ['size'] }
-  },
   decorators: [
     (story: any) =>
       html`<style>
@@ -339,11 +330,6 @@ export const Slots = {
 
 export const Mouseless = {
   name: 'Mouseless',
-  parameters: {
-    controls: {
-      exclude: ['rounded', 'open']
-    }
-  },
   render: (args: any) => {
     return html`<div class="mouseless">
       ${generateTemplate({

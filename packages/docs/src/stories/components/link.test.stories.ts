@@ -11,7 +11,7 @@ import { userEvent } from '@storybook/test';
 import { waitUntil } from '@open-wc/testing-helpers';
 import { withActions } from '@storybook/addon-actions/decorator';
 
-const { argTypes } = storybookDefaults('sd-link');
+const { argTypes, parameters } = storybookDefaults('sd-link');
 const { generateTemplate } = storybookTemplate('sd-link');
 const { overrideArgs } = storybookHelpers('sd-link');
 const { generateScreenshotStory } = storybookUtilities;
@@ -25,6 +25,7 @@ export default {
     { type: 'attribute', name: 'href', value: '#' }
   ]),
   argTypes,
+  parameters: { controls: { disable: true } },
   decorators: [withActions] as any
 };
 
@@ -37,7 +38,6 @@ export const Default = {
 
 export const InvertedAndDisabled = {
   name: 'Disabled × Inverted',
-  parameters: { controls: { exclude: ['size', 'default', 'href', 'inverted'] } },
   render: (args: any) =>
     generateTemplate({
       axis: {
@@ -61,7 +61,6 @@ export const InvertedAndDisabled = {
 
 export const BoldInMainSlot = {
   name: 'Bold',
-  parameters: { controls: { exclude: ['default'] } },
   render: (args: any) =>
     generateTemplate({
       axis: {
@@ -81,7 +80,6 @@ export const BoldInMainSlot = {
 
 export const SizeAndIconSlots = {
   name: 'Size × Icon Slots',
-  parameters: { controls: { exclude: ['default', 'icon-left', 'size', 'icon-right', 'standalone'] } },
   render: (args: any) => {
     return html`
       ${[false, true].map(standalone =>
@@ -117,7 +115,6 @@ export const SizeAndIconSlots = {
 
 export const InvertedAndIconSlots = {
   name: 'Inverted × Icon Slots',
-  parameters: { controls: { exclude: ['inverted', 'default', 'icon-left', 'icon-right'] } },
   render: (args: any) =>
     generateTemplate({
       axis: {
@@ -153,7 +150,6 @@ export const InvertedAndIconSlots = {
 
 export const StandaloneAndIconSlots = {
   name: 'Standalone × Icon Slots',
-  parameters: { controls: { exclude: ['icon-right', 'icon-left', 'main', 'standalone', 'default'] } },
   render: (args: any) => {
     return html`
       ${[false, true].map(surroundingContent =>
@@ -204,9 +200,6 @@ export const StandaloneAndIconSlots = {
 
 export const IconAlignment = {
   name: 'Icon Alignment',
-  parameters: {
-    controls: { exclude: ['icon-right', 'default', 'standalone', 'base'] }
-  },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -250,9 +243,6 @@ export const IconAlignment = {
 
 export const Parts = {
   name: 'Parts',
-  parameters: {
-    controls: { exclude: ['base', 'label', 'icon-left', 'icon-right'] }
-  },
   render: (args: any) => {
     return generateTemplate({
       axis: {

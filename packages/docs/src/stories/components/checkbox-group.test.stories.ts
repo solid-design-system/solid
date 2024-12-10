@@ -29,6 +29,9 @@ export default {
   argTypes,
   parameters: {
     ...parameters,
+    controls: {
+      disable: true
+    },
     design: {
       type: 'figma',
       url: 'https://www.figma.com/file/Q7E9GTBET7Gs2HyH1kbpu5/Checkbox-%2F-Checkbox-Group?type=design&node-id=0-1&mode=design&t=DV2yJRUqqYBrskyb-0'
@@ -53,7 +56,6 @@ export const Default = {
 
 export const Orientation = {
   name: 'Orientation',
-  parameters: { controls: { exclude: ['orientation', 'size', 'default'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -71,7 +73,6 @@ export const Orientation = {
 
 export const Disabled = {
   name: 'Disabled x Size',
-  parameters: { controls: { exclude: ['size', 'default'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -106,9 +107,6 @@ export const Disabled = {
  */
 export const Parts = {
   name: 'Parts',
-  parameters: {
-    controls: { exclude: ['form-control', 'form-control-label', 'form-control-input'] }
-  },
   render: (args: any) => {
     return generateTemplate({
       axis: {

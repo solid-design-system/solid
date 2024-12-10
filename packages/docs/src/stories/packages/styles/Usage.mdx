@@ -1,0 +1,15 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Packages/Styles/Usage" />
+
+# Usage
+
+We provide a set of CSS classes that can be used to style your application. They follow the [BEM](http://getbem.com/) methodology and are mainly used when building a full-fledged component would be way too much or could harm a11y.
+
+You can use them as any other CSS class:
+
+```html
+<span class="sd-meta sd-meta--pipe sd-meta--size-sm">Lorem Ipsum</span>
+```
+
+Have in mind that we're using BEM methodology – therefore modifiers (like `sd-meta--pipe` and `sd-meta--size-sm`) always need the base class (like `sd-meta`).

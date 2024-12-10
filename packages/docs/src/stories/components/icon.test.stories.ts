@@ -12,7 +12,7 @@ export default {
   component: 'sd-icon',
   args: overrideArgs([{ name: 'name', type: 'attribute', value: 'union-investment/content/image' }], args),
   argTypes,
-  parameters: { ...parameters },
+  parameters: { ...parameters, controls: { disable: true } },
   decorators: [withActions] as any
 };
 
@@ -25,7 +25,6 @@ export const Default = {
 export const LibraryDefault = {
   name: 'Library: default',
   parameters: {
-    controls: { exclude: ['name', 'library'] },
     chromatic: { disableSnapshot: true }
   },
   render: (args: any) =>
@@ -51,7 +50,6 @@ export const LibraryDefault = {
 
 export const LibrarySystem = {
   name: 'Library: system',
-  parameters: { controls: { exclude: ['name', 'library'] } },
   render: (args: any) =>
     generateTemplate({
       axis: {

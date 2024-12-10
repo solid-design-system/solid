@@ -1,11 +1,10 @@
-import { css, html, unsafeCSS } from 'lit';
-import { customElement } from '../../../src/internal/register-custom-element';
+import { css, html } from 'lit';
+import { customElement } from '../../internal/register-custom-element';
 import { HasSlotController } from '../../internal/slot';
 import { LocalizeController } from '../../utilities/localize';
 import { property, query, state } from 'lit/decorators.js';
 import { Wave } from './wave';
 import cx from 'classix';
-import InteractiveStyles from '../../styles/interactive/interactive.css?inline';
 import SolidElement from '../../internal/solid-element';
 import type SdDrawer from '../drawer/drawer';
 
@@ -521,10 +520,8 @@ export default class SdAudio extends SolidElement {
     `;
   }
 
-  /** Inherits Tailwindclasses and includes additional styling. */
   static styles = [
-    SolidElement.styles,
-    unsafeCSS(InteractiveStyles),
+    ...SolidElement.styles,
     css`
       .progress-slider:focus-visible {
         @apply outline-none;

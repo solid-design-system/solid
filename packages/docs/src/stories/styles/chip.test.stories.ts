@@ -29,6 +29,7 @@ export default {
   component: 'sd-chip',
   parameters: {
     ...parameters,
+    controls: { disable: true },
     backgrounds: {
       default: 'neutral-200'
     }
@@ -49,7 +50,6 @@ export const Default = {
 
 export const Variants = {
   name: 'Variants',
-  parameters: { controls: { exclude: ['default', 'sd-chip--...'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {

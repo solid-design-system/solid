@@ -244,7 +244,7 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
    * Inherits Tailwind classes and includes additional styling.
    */
   static styles = [
-    SolidElement.styles,
+    ...SolidElement.styles,
     css`
       :host {
         @apply block w-max;

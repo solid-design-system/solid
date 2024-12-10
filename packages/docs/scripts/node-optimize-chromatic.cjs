@@ -11,10 +11,7 @@ fs.readdir(directoryPath, (err, files) => {
   }
 
   files.forEach(file => {
-    if (
-      (file.startsWith('solid-element-') && file.endsWith('.js')) ||
-      (file.startsWith('solid-components-') && file.endsWith('.js'))
-    ) {
+    if (file.endsWith('.js')) {
       if (
         fs
           .readFileSync(path.join(directoryPath, file), 'utf8')

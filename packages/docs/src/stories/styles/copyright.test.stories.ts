@@ -13,7 +13,8 @@ export default {
   tags: ['!autodocs'],
   component: 'sd-copyright',
   parameters: {
-    ...parameters
+    ...parameters,
+    controls: { disable: true }
   },
   args: overrideArgs(
     {
@@ -29,11 +30,6 @@ export default {
 };
 
 export const Default = {
-  parameters: {
-    controls: {
-      disable: true
-    }
-  },
   render: (args: { [k: string]: any }) => {
     return generateTemplate({
       options: {

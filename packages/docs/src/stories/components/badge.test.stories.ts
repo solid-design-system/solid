@@ -18,6 +18,9 @@ export default {
   tags: ['!autodocs'],
   parameters: {
     ...parameters,
+    controls: {
+      disable: true
+    },
     design: {
       type: 'figma',
       url: 'https://www.figma.com/file/frKFVz9UBKAtsvErLKTeGj/Badge?type=design&node-id=0-1&mode=design&t=OeLPPGif39ASuNmf-0'
@@ -45,7 +48,6 @@ export const Default = {
 
 export const VariantAndSize = {
   name: 'Variant × Size',
-  parameters: { controls: { exclude: ['variant', 'size'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -63,7 +65,6 @@ export const VariantAndSize = {
 
 export const VariantAndInverted = {
   name: 'Variant × Inverted',
-  parameters: { controls: { exclude: ['variant', 'inverted'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -88,9 +89,6 @@ export const VariantAndInverted = {
  */
 export const Slots = {
   name: 'Slots',
-  parameters: {
-    controls: { exclude: ['size'] }
-  },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -118,9 +116,6 @@ export const Slots = {
 
 export const Parts = {
   name: 'Parts',
-  parameters: {
-    controls: { exclude: ['base', 'content', 'size'] }
-  },
   render: (args: any) => {
     return generateTemplate({
       axis: {

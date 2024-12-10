@@ -22,6 +22,7 @@ export default {
   component: 'sd-mark',
   parameters: {
     ...parameters,
+    controls: { disable: true },
     design: {
       type: 'figma',
       url: ''

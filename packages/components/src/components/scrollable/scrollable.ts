@@ -1,10 +1,8 @@
-import { css, html, unsafeCSS } from 'lit';
-import { customElement } from '../../../src/internal/register-custom-element';
+import { css, html } from 'lit';
+import { customElement } from '../../internal/register-custom-element';
 import { LocalizeController } from '../../utilities/localize';
 import { property, state } from 'lit/decorators.js';
-import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
-import InteractiveStyles from '../../styles/interactive/interactive.css?inline';
 import SolidElement from '../../internal/solid-element';
 
 /**
@@ -348,9 +346,7 @@ export default class SdScrollable extends SolidElement {
   }
 
   static styles = [
-    SolidElement.styles,
-    unsafeCSS(InteractiveStyles),
-    componentStyles,
+    ...SolidElement.styles,
     css`
       :host {
         --gradient-color: rgba(255, 255, 255, 0);

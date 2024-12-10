@@ -24,8 +24,7 @@ interface ClassElement {
   kind: 'field' | 'method';
   key: PropertyKey;
   placement: 'static' | 'prototype' | 'own';
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  initializer?: Function;
+  initializer?: () => void;
   extras?: ClassElement[];
   finisher?: <T>(clazz: Constructor<T>) => undefined | Constructor<T>;
   descriptor?: PropertyDescriptor;

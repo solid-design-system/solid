@@ -4,22 +4,22 @@
 
 - [Contributing to Solid Components](#contributing-to-solid-components)
   - [Table of Contents](#table-of-contents)
+  - [Get Started](#get-started)
   - [What We Do for Our Users](#what-we-do-for-our-users)
     - [We Provide Flexibility](#we-provide-flexibility)
     - [We Avoid Breaking Changes](#we-avoid-breaking-changes)
     - [We Document Extensively and Consistently](#we-document-extensively-and-consistently)
     - [We Make Migration Easy](#we-make-migration-easy)
-    - [We Ensure Icon Availability](#we-ensure-icon-availability)
     - [We Emphasize Testing](#we-emphasize-testing)
     - [We Monitor Performance](#we-monitor-performance)
     - [We Ensure Accessibility](#we-ensure-accessibility)
   - [What We Do for Ourselves](#what-we-do-for-ourselves)
     - [We Focus on Maintainability](#we-focus-on-maintainability)
-    - [We Only Use TailwindCSS or "Solid Styles"](#we-only-use-tailwindcss-or-solid-styles)
     - [We Enforce Security](#we-enforce-security)
     - [We Track TODOs](#we-track-todos)
     - [We Prepare Tickets for the Refinement](#we-prepare-tickets-for-the-refinement)
     - [We track our velocity and productivity](#we-track-our-velocity-and-productivity)
+  - [Figma Library](#figma-library)
   - [Git + GitHub](#git--github)
     - [Referencing People](#referencing-people)
     - [Pull Requests](#pull-requests)
@@ -30,10 +30,24 @@
       - [Special commands/suffixes](#special-commandssuffixes)
       - [Squash and Merge Your Changes](#squash-and-merge-your-changes)
     - [Chromatic](#chromatic)
+    - [Security Updates](#security-updates)
   - [Release Process](#release-process)
     - [Standard Release from Main Branch](#standard-release-from-main-branch)
     - [Feature Branch Deployment](#feature-branch-deployment)
     - [Docs Deployment](#docs-deployment)
+  - [SOLID Design Principles in Software Development](#solid-design-principles-in-software-development)
+
+## Get Started
+
+- Familiarize yourself with the [Principles of Solid Design System](https://solid-design-system.fe.union-investment.de/docs/), which serves as a reference for design guidelines, components, and patterns used in this project. Adhering to these principles will help maintain consistency and a cohesive user experience.
+
+- Solid Components follows a monorepo structure with packages (e. g. `components`) managed by `pnpm` (which is a replacement for `npm`). Linting and Formatting is centralized at root level. Packages have to be run individually (e.g. `cd packages/docs && pnpm dev` to start development server). Run `pnpm verify` at the root directory periodically, particularly, before pushing changes when a pull request is already opened.
+
+- While the following guidelines give you a deeper understanding of the Solid Design system as a whole, each package has its own `CONTRIBUTING.md` file, which provides detailed information on how to contribute to the respective package. Ensure to follow the guidelines outlined in these files when contributing to a specific package.
+  - [Components](./?path=/docs/packages-components-contributing--docs)
+  - [Styles](./?path=/docs/packages-styles-contributing--docs)
+  - [Placeholders](./?path=/docs/packages-placeholders-contributing--docs)
+  - [Docs](./?path=/docs/packages-docs-contributing--docs)
 
 ## What We Do for Our Users
 
@@ -42,6 +56,7 @@
 - **User Story**: As a developer using the Solid Design System, I want to build diverse apps for B2B and B2C customers without always asking the Solid team for help.
 - **Actions**:
   - Provide flexibility to reduce dependencies on the Solid team.
+  - We do not consider in detail on which device our components will be used as we want to be as generic as possible. However, we still build our components following the Mobile First approach (eg. using mobile tokens as default).
   - Use [slots](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/slot) to allow for easy element nesting ([Lit: Working with Shadow DOM](https://lit.dev/docs/components/shadow-dom/))
   - Use [parts](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/part) to allow external manipulation of CSS.
   - Use [events](https://lit.dev/docs/components/events/) to make critical information available outside of a component.
@@ -65,16 +80,7 @@
 
 - **User Story**: As a developer, I want to be able to migrate from the Component Library to the Solid Design System without having to ask for help.
 - **Actions**:
-  - Provide migration guides for each new component in the Solid Design System, representing an old component from the Component Library. See [Components](./DEVELOPER_STARTING_GUIDE.md#components) chapter (13.) for more details.
-
-### We Ensure Icon Availability
-
-- **User Story**: As a developer, I want to be sure that icons, like the 'chevron-up' in `sd-accordion`, always show up.
-- **Actions**:
-  - Include any icons necessary for development in `components/icon/library.system.ts`.
-  - Before doing so, [compress them and remove fills](https://jakearchibald.github.io/svgomg/) for consistency and ease of styling.
-  - Minimize the attributes in the SVG tag. Usually only `xmlns`and `viewbox`are necessary.
-  - You can then use `sd-icon` by specifying `library=“system”` and setting `name=“your-key”`.
+  - Provide migration guides for each new component in the Solid Design System, representing an old component from the Component Library.
 
 ### We Emphasize Testing
 
@@ -84,9 +90,8 @@
   - Create visual stories in Storybook to detect and fix any visual issues.
 - **Tips**:
   - Motto: “Test the behavior, not the implementation.” Write tests that verify your components meet the expected requirements and specifications, ensuring they function correctly from the user's perspective. Don’t get too tied up trying to test all the technical details.
-  - Shoelace tests are included in the earmarked `/_components` folders, start with them and adapt as needed.
   - Write tests for any newly added functions and ask yourself if the Jest semantics represent a thorough analysis of the code.
-  - Look at the stories provided in the Shoelace docs as a guideline and adapt them to use the custom helpers in our repository: `packages/components/scripts/storybook/helper.ts` (e.g. we sometimes present multiple attributes side by side in a grid format using the `axis` key). See [Storybook Stories](./DEVELOPER_STARTING_GUIDE.md#storybook-stories) for more details.
+  - Look at the stories provided in the Shoelace docs as a guideline and adapt them to use the custom helpers in our repository: `packages/components/scripts/storybook/helper.ts` (e.g. we sometimes present multiple attributes side by side in a grid format using the `axis` key).
   - Use the existing stories for inspiration, the final result should read top to bottom and bring a complete outsider to your level of understanding.
 
 ### We Monitor Performance
@@ -115,15 +120,6 @@
 - **Actions**:
   - Focus on enabling users to easily build features themselves.
   - Provide powerful customization options like slots, events, and parts.
-
-### We Only Use TailwindCSS or "Solid Styles"
-
-- **User Story**: As a maintainer of the Solid Design System, I want to have a common style for writing CSS and stay in sync with design.
-- **Actions**:
-  - Use TailwindCSS (which are connected to design tokens) for all Solid components.
-  - Convert BEM-style CSS to TailwindCSS utility classes where possible.
-  - Utilize IDs or part selectors for any custom CSS needs.
-  - Use `@apply` inside `css` tagged template literals to generate CSS, but do not use arbitrary values like `mt-[var(--spacing-xxl)]` there (!), as this increases the bundle size of the main TailwindCSS file. Add those custom values as plain CSS outside the `@apply` directive
 
 ### We Enforce Security
 
@@ -167,6 +163,12 @@
     - We cap each iteration at a maximum of 70 SP.
     - When a team member adds a new ticket, an equivalent amount of story points must be removed, ensuring the team's focus remains intact and providing clear expectations for external stakeholders regarding our iterations.
     - Stories exceeding 13 story points must be broken down into smaller, more manageable pieces.
+
+## Figma Library
+
+In addition to Storybook, a [Figma library](https://www.figma.com/files/1075429990769806468/team/1144655844020560172) that serves as a reference for design guidelines, components and patterns used in this project, covers the design part of the SDS.
+
+In the onboarding for designers, we also provide an [overview](https://www.figma.com/file/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?type=design&node-id=7826-29847&mode=dev) on the figma file structure to better understand the design system and its components.
 
 ## Git + GitHub
 
@@ -266,6 +268,11 @@ Always perform a Squash and Merge when merging. This keeps the Git history clean
 
 You can take a look at tests on Github. Users might be required to log in to [Chromatic](https://www.chromatic.com/). Make sure to login using your GitHub account to avoid any errors and access the checks related to the Pull Request.
 
+### Security Updates
+
+In our security workflow, Renovate (GitHub App) automatically identifies and updates security issues in our project dependencies.
+Renovate also creates a “Dependency Dashboard” ticket to track all found updates. During each iteration, we plan and assign the dashboard ticket to a specific team member. The assigned team member has to update the described packages by running `pnpm update all`, creating a corresponding PR, and finally closing the ticket. This process ensures efficient handling of security updates while maintaining clear accountability within the team.
+
 ## Release Process
 
 > Note: To avoid cluttering the commit history and losing track of the GitHub and Azure DevOps context, we have relocated Azure pipelines to the [Azure DevOps Pipeline Repository](https://dev.azure.com/Union-Investment/SolidDesignSystem/_git/SolidDesignSystem-Pipelines?path=/&version=GBmain). The release and deployment process remains unchanged as outlined below.
@@ -309,3 +316,9 @@ Workflow:
 ### Docs Deployment
 
 To perform a documentation-only deployment, add a changeset that includes the `docs` package. See the `Note` under [Standard Release from Main Branch](#standard-release-from-main-branch) for more details.
+
+## SOLID Design Principles in Software Development
+
+After defining our own principles and decided for the name Solid Design System, we realized the close connection to [SOLID Design Principles](https://www.freecodecamp.org/news/solid-design-principles-in-software-development/), a set of five design principles that aid in designing robust, testable, extensible, and maintainable object-oriented software systems. Each principle addresses specific challenges in software development.
+
+These principles are not developed by us and the connection is more 'unintentional'. Nevertheless, the strong and deep connection between our principles and the ones mentioned above is definitely worth sharing here and we highly recommend to get familiar with them as well.
