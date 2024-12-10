@@ -1,7 +1,6 @@
 /**
  * This script is used to generate the final Utility CSS file for the Solid Components library.
  * It uses PostCSS to process the CSS, including Tailwind CSS, and then writes the final
- *
  * CSS to the `dist` directory and a minified version to the `cdn` directory.
  */
 
