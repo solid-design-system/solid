@@ -1,4 +1,17 @@
+### 📈 Stats
+* Uncompressed: 410 KB (+1 KB / +0%)
+* Gzipped: 125 KB (unchanged)
+
 # @solid-design-system/components
+
+## 3.22.18
+
+### Patch Changes
+
+- Improved sd-select a11y: _[`#1710`](https://github.com/solid-design-system/solid/pull/1710) [`ab76208`](https://github.com/solid-design-system/solid/commit/ab76208754415a3c146795b7e8329df3006ea74c) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  - Implemented `aria-invalid` attribute to semantically indicate component validity.
+  - Implemented live announcement to screen readers when a tag is removed.
 
 ## 3.22.17
 

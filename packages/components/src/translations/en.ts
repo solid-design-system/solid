@@ -28,6 +28,7 @@ const translation: Translation = {
   previousSlide: 'Previous slide',
   progress: 'Progress',
   remove: 'Remove',
+  removed: name => `${name} removed`,
   resize: 'Resize',
   scrollToEnd: 'Scroll to end',
   scrollToStart: 'Scroll to start',

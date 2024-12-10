@@ -93,6 +93,7 @@ export interface Translation extends DefaultTranslation {
   previousSlide: string;
   progress: string;
   remove: string;
+  removed: (name: string) => string;
   resize: string;
   scrollToEnd: string;
   scrollToStart: string;
