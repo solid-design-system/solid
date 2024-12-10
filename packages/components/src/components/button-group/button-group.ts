@@ -67,7 +67,6 @@ export default class SdButtonGroup extends SolidElement {
     return html`
       <slot
         part="base"
-        class="button-group"
         role="${this.disableRole ? 'presentation' : 'group'}"
         aria-label=${this.label}
         @focusout=${this.handleBlur}
@@ -86,9 +85,8 @@ export default class SdButtonGroup extends SolidElement {
         display: inline-block;
       }
 
-      .button-group {
-        display: flex;
-        flex-wrap: nowrap;
+      [part='base'] {
+        @apply flex flex-nowrap;
       }
     `
   ];
