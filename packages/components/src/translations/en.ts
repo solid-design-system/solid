@@ -10,11 +10,8 @@ const translation: Translation = {
   audioPlayer: 'Audio Player',
   clearEntry: 'Clear entry',
   close: 'Close',
+  comboboxDefaultPlaceholder: 'Please search and select',
   copy: 'Copy',
-  numOptionsSelected: num => {
-    if (num === 0) return '';
-    return `Options Selected (${num})`;
-  },
   carousel: 'Carousel',
   currentValue: 'Current value',
   goToSlide: (slide, count) => `Go to slide ${slide} of ${count}`,
@@ -22,6 +19,11 @@ const translation: Translation = {
   loading: 'Loading',
   mute: 'Mute',
   nextSlide: 'Next slide',
+  noResults: 'No results found',
+  numOptionsSelected: num => {
+    if (num === 0) return '';
+    return `Options Selected (${num})`;
+  },
   pauseAudio: 'Pause Audio',
   playAudio: 'Play Audio',
   playbackSpeed: 'Playback Speed',
@@ -38,6 +40,7 @@ const translation: Translation = {
   showMore: 'Show more',
   showPassword: 'Show password',
   slideNum: num => `Slide ${num}`,
+  tagsSelected: 'Options selected',
   toggleColorFormat: 'Toggle color format',
   unmute: 'Unmute'
 };
