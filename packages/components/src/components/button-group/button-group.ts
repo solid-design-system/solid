@@ -82,7 +82,7 @@ export default class SdButtonGroup extends SolidElement {
     ...SolidElement.styles,
     css`
       :host {
-        display: inline-block;
+        @apply inline-block;
       }
 
       [part='base'] {
