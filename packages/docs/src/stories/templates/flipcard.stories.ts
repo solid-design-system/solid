@@ -25,7 +25,8 @@ export const Default = {
     <sd-flipcard
       activation="click hover"
       flip-direction="horizontal"
-      front-variant="gradient-dark-bottom"
+      front-variant="gradient-dark"
+      placement="bottom"
       back-variant="primary"
     >
       <h5 slot="front" class="sd-headline sd-headline--inverted sd-headline--size-lg p-5">
