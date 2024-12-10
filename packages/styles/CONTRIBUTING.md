@@ -10,6 +10,8 @@ If you are working on a style, follow the steps below:
    - A new test story: `./packages/docs/src/stories/styles/*.test.stories.ts`
    - An update to either `./packages/styles/src/index.css` or `./packages/styles/src/modules/prose.css` to include the new style.
 2. Add JSDocs-like comments to your code to create controls for storybook automatically. This can be done by creating comments, as described below.
+3. Run `cd packages/docs && pnpm dev` to start the development server.
+4. Run `pnpm verify` from root before PRs to ensure everything works.
 
 ## Code Guidelines
 
