@@ -221,7 +221,7 @@ export const Samples = {
             </div>
           </div>
         </sd-teaser-media>
-        <sd-teaser-media variant="gradient-white" class="min-w-[435px] max-w-4xl">
+        <sd-teaser-media variant="gradient-light" class="min-w-[435px] max-w-4xl">
           <div slot="media" class="relative">
             <img
               class="aspect-video object-cover"

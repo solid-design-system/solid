@@ -29,7 +29,7 @@ import SolidElement from '../../internal/solid-element';
 @customElement('sd-teaser-media')
 export default class SdTeaserMedia extends SolidElement {
   @property({ reflect: true })
-  variant: 'white' | 'neutral-100' | 'primary' | 'primary-100' | 'gradient-white' | 'gradient-dark' = 'white';
+  variant: 'white' | 'neutral-100' | 'primary' | 'primary-100' | 'gradient-light' | 'gradient-dark' = 'white';
 
   @query('[part="base"]') teaserMedia: HTMLElement;
 
@@ -62,7 +62,7 @@ export default class SdTeaserMedia extends SolidElement {
           <div
             class=${cx(
               'flex-1',
-              this.variant === 'gradient-white' && 'bg-gradient-to-t from-white/[.8] to-60%',
+              this.variant === 'gradient-light' && 'bg-gradient-to-t from-white/[.8] to-60%',
               this.variant === 'gradient-dark' && 'bg-gradient-to-t from-primary-800/[.6] to-60%'
             )}
           ></div>
@@ -73,7 +73,7 @@ export default class SdTeaserMedia extends SolidElement {
                 'neutral-100': 'bg-neutral-100/[.8] group-hover:bg-neutral-100/90',
                 primary: 'bg-primary/[.8] text-white group-hover:bg-primary/90',
                 'primary-100': 'bg-primary-100/[.8] group-hover:bg-primary-100/90',
-                'gradient-white': 'bg-gradient-to-t from-white/90 to-white/[.8]',
+                'gradient-light': 'bg-gradient-to-t from-white/90 to-white/[.8]',
                 'gradient-dark': 'bg-gradient-to-t from-primary-800/75 to-primary-800/[.6]  text-white'
               }[this.variant]
             )}
