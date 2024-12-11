@@ -25,7 +25,7 @@
   ],
   "scripts": {
     "dev": "pnpm storybook",
-    "storybook": "storybook dev -p 6006",
+    "storybook": "storybook dev -p 6999",
     "verify": "pnpm ts.verify && pnpm build && echo '✅ Build verified' && vite-node ./scripts/node-optimize-chromatic.cjs && echo '✅ Chromatic optimization verified'",
     "ts.verify": "tsc --noEmit --project ./tsconfig.json && echo '✅ TypeScript verified'",
     "build.chromatic": "pnpm build && node ./scripts/node-optimize-chromatic.cjs",

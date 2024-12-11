@@ -4,8 +4,10 @@ import { property } from 'lit/decorators.js';
 const css = unsafeCSS;
 
 export default class SolidElement extends LitElement {
-  // Make localization attributes reactive
-  @property() dir: string;
+  /** The element's directionality. */
+  @property() dir: 'ltr' | 'rtl' | 'auto';
+
+  /** The element's language. */
   @property() lang: string;
 
   static styles = [

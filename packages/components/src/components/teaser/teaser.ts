@@ -30,8 +30,13 @@ import type { PropertyValues } from 'lit';
 
 @customElement('sd-teaser')
 export default class SdTeaser extends SolidElement {
-  @property({ reflect: true })
-  variant: 'white' | 'white border-neutral-400' | 'neutral-100' | 'primary' | 'primary-100' = 'white';
+  /** Variant of the teaser */
+  @property({ reflect: true }) variant:
+    | 'white'
+    | 'white border-neutral-400'
+    | 'neutral-100'
+    | 'primary'
+    | 'primary-100' = 'white';
 
   /** Breakpoint where the teaser switches from `vertical` to `horizontal`. `0` is always `horizontal`, `9999` is always `vertical`. */
   @property({ reflect: true, type: Number }) breakpoint = 448;

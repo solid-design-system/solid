@@ -28,8 +28,14 @@ import SolidElement from '../../internal/solid-element';
 
 @customElement('sd-teaser-media')
 export default class SdTeaserMedia extends SolidElement {
-  @property({ reflect: true })
-  variant: 'white' | 'neutral-100' | 'primary' | 'primary-100' | 'gradient-light' | 'gradient-dark' = 'white';
+  /** Variant of the teaser */
+  @property({ reflect: true }) variant:
+    | 'white'
+    | 'neutral-100'
+    | 'primary'
+    | 'primary-100'
+    | 'gradient-light'
+    | 'gradient-dark' = 'white';
 
   @query('[part="base"]') teaserMedia: HTMLElement;
 
