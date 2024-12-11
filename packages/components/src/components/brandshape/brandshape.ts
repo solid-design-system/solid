@@ -153,7 +153,7 @@ export default class SdBrandshape extends SolidElement {
             'w-full block absolute h-full top-0 left-0 z-0'
           )}
         ></div>
-        <div class="z-10 relative" part="content"><slot></slot></div>
+        <div class="z-10 relative" part="content">${this.variant !== 'image' ? html`<slot></slot>` : ''}</div>
       </div>
     `;
   }
@@ -219,7 +219,6 @@ export default class SdBrandshape extends SolidElement {
         part="base"
       >
         ${isStylizedVariant ? this.renderStylizedVariant() : ''} ${this.renderShapes()}
-        ${this.shapes.includes('middle') ? html`<slot></slot>` : ''}
       </div>
     `;
   }

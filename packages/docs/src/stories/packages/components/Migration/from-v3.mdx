@@ -313,3 +313,27 @@ As this was the default value, there most likely won't be any changes needed.
   <!-- Your content -->
 </sd-navigation-item>
 ```
+
+### `sd-brandshape`
+
+Default slot for `variant=picture` was removed from `sd-brandshape`. This comes from the fact that this combination should not be used from brand and design perspective.
+Either remove the slot or use a different variant instead.
+
+**Before:**
+
+```html
+<sd-brandshape variant="picture">
+  <p>Some content</p>
+  <img src="img.jpg" slot="picture" />
+</sd-brandshape>
+```
+
+**After:**
+
+```html
+<sd-brandshape> <p>Some content</p> </sd-brandshape>
+
+<!-- or -->
+
+<sd-brandshape variant="picture"> <img src="img.jpg" slot="picture" /></sd-brandshape>
+```
