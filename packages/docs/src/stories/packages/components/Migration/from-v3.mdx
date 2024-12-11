@@ -273,7 +273,7 @@ The v4 release introduces major changes to improve performance, flexibility and 
 
 ## Component updates
 
-### `sd-media-teaser`
+### `<sd-media-teaser>`
 
 The `variant` `gradient-white` of `sd-teaser-media` was changed to `gradient-light` to be in sync with design.
 
@@ -293,7 +293,7 @@ The `variant` `gradient-white` of `sd-teaser-media` was changed to `gradient-lig
 </sd-media-teaser>
 ```
 
-### `sd-navigation-item`
+### `<sd-navigation-item>`
 
 The default `size` `base` in `sd-navigation-item` was changed to `md` to be consistent with other components.
 As this was the default value, there most likely won't be any changes needed.
@@ -314,7 +314,7 @@ As this was the default value, there most likely won't be any changes needed.
 </sd-navigation-item>
 ```
 
-### `sd-brandshape`
+### `<sd-brandshape>`
 
 Default slot for `variant=picture` was removed from `sd-brandshape`. This comes from the fact that this combination should not be used from brand and design perspective.
 Either remove the slot or use a different variant instead.
@@ -336,4 +336,23 @@ Either remove the slot or use a different variant instead.
 <!-- or -->
 
 <sd-brandshape variant="picture"> <img src="img.jpg" slot="picture" /></sd-brandshape>
+```
+
+### `.sd-display`
+
+Default `size` of style `sd-display` is now `4xl` instead of `xl`. This change was made to be consistent with design.
+The modifier `.sd-display--size-xl` was added to keep the old size available.
+
+**Before:**
+
+```html
+<p class="sd-display">Some smaller content</p>
+<p class="sd-display sd-display--size-4xl">Some larger content</p>
+```
+
+**After:**
+
+```html
+<p class="sd-display sd-display--size-xl">Some smaller content</p>
+<p class="sd-display">Some larger content</p>
 ```
