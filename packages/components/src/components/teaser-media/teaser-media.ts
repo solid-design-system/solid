@@ -29,7 +29,7 @@ import SolidElement from '../../internal/solid-element';
 @customElement('sd-teaser-media')
 export default class SdTeaserMedia extends SolidElement {
   @property({ reflect: true })
-  variant: 'white' | 'neutral-100' | 'primary' | 'primary-100' | 'gradient-light' | 'gradient-dark' = 'white';
+  variant: 'white' | 'neutral-100' | 'primary' | 'primary-100' | 'gradient-white' | 'gradient-dark' = 'white';
 
   @query('[part="base"]') teaserMedia: HTMLElement;
 
@@ -62,7 +62,7 @@ export default class SdTeaserMedia extends SolidElement {
           <div
             class=${cx(
               'flex-1',
-              this.variant === 'gradient-light' && 'bg-gradient-to-t from-white/[.8] to-60%',
+              this.variant === 'gradient-white' && 'bg-gradient-to-t from-white/[.8] to-60%',
               this.variant === 'gradient-dark' && 'bg-gradient-to-t from-primary-800/[.6] to-60%'
             )}
           ></div>
@@ -73,7 +73,7 @@ export default class SdTeaserMedia extends SolidElement {
                 'neutral-100': 'bg-neutral-100/[.8] group-hover:bg-neutral-100/90',
                 primary: 'bg-primary/[.8] text-white group-hover:bg-primary/90',
                 'primary-100': 'bg-primary-100/[.8] group-hover:bg-primary-100/90',
-                'gradient-light': 'bg-gradient-to-t from-white/90 to-white/[.8]',
+                'gradient-white': 'bg-gradient-to-t from-white/90 to-white/[.8]',
                 'gradient-dark': 'bg-gradient-to-t from-primary-800/75 to-primary-800/[.6]  text-white'
               }[this.variant]
             )}
@@ -93,7 +93,7 @@ export default class SdTeaserMedia extends SolidElement {
                 class=${cx(
                   'hidden',
                   slots['teaser-has-expandable'] &&
-                    'h-[0px] invisible opacity-0 md:block md:group-hover:h-auto md:group-hover:my-4 md:group-hover:opacity-[100%] md:group-hover:visible'
+                    'h-[0px] invisible opacity-0 md:[transition:_height_0.2s_linear,opacity_0.1s_linear_0.1s] md:block md:group-hover:h-auto md:group-hover:my-4 md:group-hover:opacity-[100%] md:group-hover:visible'
                 )}
                 part="expandable"
                 aria-hidden="true"
@@ -124,14 +124,6 @@ export default class SdTeaserMedia extends SolidElement {
 
       ::slotted([slot='headline']) {
         @apply font-bold !m-0 !text-lg;
-      }
-
-      @media (min-width: 768px) {
-        part[expandable] {
-          transition:
-            height 0.2s linear,
-            opacity 0.1s linear 0.1s;
-        }
       }
     `
   ];
