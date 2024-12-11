@@ -11,7 +11,7 @@ import { userEvent } from '@storybook/test';
 import { waitUntil } from '@open-wc/testing-helpers';
 import { withActions } from '@storybook/addon-actions/decorator';
 
-const { argTypes, parameters } = storybookDefaults('sd-link');
+const { argTypes } = storybookDefaults('sd-link');
 const { generateTemplate } = storybookTemplate('sd-link');
 const { overrideArgs } = storybookHelpers('sd-link');
 const { generateScreenshotStory } = storybookUtilities;

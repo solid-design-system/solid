@@ -27,8 +27,10 @@ describe('<sd-flipcard>', () => {
       el.addEventListener('sd-flip-front', flipFrontHandler);
       el.addEventListener('sd-flip-back', flipBackHandler);
 
-      const front = el.shadowRoot!.querySelector("[part='front-button']")!;
-      const back = el.shadowRoot!.querySelector("[part='back-button']")!;
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
+      const front = el.shadowRoot!.querySelector("[part='front-button']")! as HTMLButtonElement;
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
+      const back = el.shadowRoot!.querySelector("[part='back-button']")! as HTMLButtonElement;
 
       front.click();
       await waitUntil(() => flipFrontHandler.calledOnce);

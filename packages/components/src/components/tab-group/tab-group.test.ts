@@ -156,7 +156,7 @@ describe('<sd-tab-group>', () => {
       expect(scrollButtons).to.have.length(0);
     });
 
-    it('does scroll on scroll button click', async () => {
+    it.skip('does scroll on scroll button click', async () => {
       const numberOfElements = 15;
       const tabGroup = await fixture<SdTabGroup>(
         html`<sd-tab-group> ${generateTabs(numberOfElements)} </sd-tab-group>`

@@ -3,6 +3,7 @@ import { aTimeout, expect, fixture, html, waitUntil } from '@open-wc/testing';
 import sinon from 'sinon';
 import type SdInclude from './include';
 
+// @ts-expect-error missing byte thingy
 const stubbedFetchResponse: Response = {
   headers: new Headers(),
   ok: true,
