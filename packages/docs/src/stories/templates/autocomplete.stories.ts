@@ -2,6 +2,8 @@ import { html } from 'lit-html';
 import { setupAutocomplete as solidAutocomplete } from '../../../../components/src/solid-components';
 
 /**
+ * >__The support of autocomplete.js is deprecated and will be removed completely in one of the next two major versions of Solid.__
+ *
  * ## [autoComplete.js](https://tarekraafat.github.io/autoComplete.js/#/) Functionality:
  *
  * autoComplete.js is a lightweight and customizable JavaScript library for creating autocomplete functionality in web applications. Its primary functionality includes:
