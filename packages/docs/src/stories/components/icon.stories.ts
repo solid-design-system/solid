@@ -185,7 +185,7 @@ export const Size = {
 export const IconLibraries = {
   render: () => {
     return html`
-      <sd-icon library="global-resources" name="system/picture"> </sd-icon>
+      <sd-icon name="system/image"> </sd-icon>
 
       <script type="module">
         // ESM:
