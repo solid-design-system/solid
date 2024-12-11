@@ -1,5 +1,24 @@
 # @solid-design-system/docs
 
+## 1.2.0
+
+### Minor Changes
+
+- Restructure FAQ _[`#1608`](https://github.com/solid-design-system/solid/pull/1608) [`ee7287c`](https://github.com/solid-design-system/solid/commit/ee7287c88537c66c0c3a8ff487b91846037a28b3) [@karlbaumhauer](https://github.com/karlbaumhauer)_
+
+  - Cluster FAQ items into sections
+  - Rephrase some existing FAQ items
+  - Add new FAQ item
+
+## 1.1.1
+
+### Patch Changes
+
+- Improved sd-dropdown a11y: _[`#1715`](https://github.com/solid-design-system/solid/pull/1715) [`1ecd19f`](https://github.com/solid-design-system/solid/commit/1ecd19fa9c4bef060092361a71d0e7ae784ec50d) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  - Correctly label icon-button dropdown triggers.
+  - Fix focus on the trigger after the dropdown is hidden using the keyboard.
+
 ## 1.1.0
 
 ### Minor Changes
