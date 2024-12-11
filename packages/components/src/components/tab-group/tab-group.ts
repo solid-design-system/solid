@@ -274,7 +274,6 @@ export default class SdTabGroup extends SolidElement {
       const panel = this.panels.find(el => el.name === tab.panel);
       if (panel) {
         tab.setAttribute('aria-controls', panel.getAttribute('id')!);
-        panel.setAttribute('aria-labelledby', tab.getAttribute('id')!);
       }
     });
   }
@@ -283,6 +282,10 @@ export default class SdTabGroup extends SolidElement {
   private syncTabsAndPanels() {
     this.tabs = this.getAllTabs({ includeDisabled: false });
     this.panels = this.getAllPanels();
+
+    this.panels.forEach(panel => {
+      panel.tabIndex = 0;
+    });
 
     // After updating, show or hide scroll controls as needed
     this.updateComplete.then(() => this.updateScrollControls());
@@ -321,6 +324,8 @@ export default class SdTabGroup extends SolidElement {
                 <button
                   part="scroll-button--start"
                   exportparts="base:scroll-button__base"
+                  tabindex="-1"
+                  aria-hidden="true"
                   class=${cx(
                     'sd-interactive flex items-center justify-center absolute top-0 bottom-0 left-0 !outline-offset-0 border-b border-neutral-400 z-10',
                     this.localize.dir() === 'rtl' && 'left-auto right-0'
@@ -330,6 +335,7 @@ export default class SdTabGroup extends SolidElement {
                   <sd-icon
                     library="system"
                     name=${isRtl ? 'chevron-up' : 'chevron-down'}
+                    label="previous"
                     class=${cx('h-6 w-12 rotate-90 grid place-items-center')}
                   ></sd-icon>
                 </button>
@@ -338,7 +344,7 @@ export default class SdTabGroup extends SolidElement {
 
           <div part="scroll-container" class="flex overflow-x-auto focus-visible:focus-outline !outline-offset-0">
             <div part="tabs" class=${cx('flex flex-auto relative flex-row')} role="tablist">
-              <div part="separation" class="w-full h-0.25 bg-neutral-400 absolute bottom-0"></div>
+              <div part="separation" class="w-full border-[0.25px] border-neutral-400 absolute bottom-0"></div>
               <slot name="nav" @slotchange=${this.syncTabsAndPanels}></slot>
             </div>
           </div>
@@ -348,6 +354,8 @@ export default class SdTabGroup extends SolidElement {
                 <button
                   part="scroll-button--end"
                   exportparts="base:scroll-button__base"
+                  tabindex="-1"
+                  aria-hidden="true"
                   class=${cx(
                     'sd-interactive flex items-center justify-center absolute top-0 bottom-0 right-0 !outline-offset-0 border-b border-neutral-400 z-10',
                     this.localize.dir() === 'rtl' && 'right-auto left-0'
@@ -357,6 +365,7 @@ export default class SdTabGroup extends SolidElement {
                   <sd-icon
                     library="system"
                     name=${isRtl ? 'chevron-down' : 'chevron-up'}
+                    label="next"
                     class=${cx('h-6 w-12 rotate-90 grid place-items-center')}
                   ></sd-icon>
                 </button>
@@ -393,6 +402,7 @@ export default class SdTabGroup extends SolidElement {
       }
 
       ::slotted(sd-tab-panel) {
+        @apply focus-within:focus-outline;
         --padding: 1rem 0;
       }
     `

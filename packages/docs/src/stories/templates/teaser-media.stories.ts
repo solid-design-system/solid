@@ -10,10 +10,21 @@ export default {
       type: 'figma',
       url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=3510-218627&t=lJxrBJPRziV74fnu-4'
     }
-  }
+  },
+  decorators: [
+    (story: any) => html`
+      <style>
+        #anchor--templates-teaser-media--teaser-media-overrides .innerZoomElementWrapper {
+          overflow: hidden;
+        }
+      </style>
+      ${story()}
+    `
+  ] as unknown
 };
 
 export const TeaserMediaWithLink = {
+  name: 'Teaser Media with Link',
   render: () =>
     html` <div class="flex flex-col gap-12">
       <sd-teaser-media variant="gradient-dark">
@@ -43,7 +54,7 @@ export const TeaserMediaWithLink = {
           slot="media"
           class="w-full"
           src="./placeholders/images/collaboration.jpg"
-          alt="Two men in business attire sitting on a sofa in a modern office, smiling and looking at a laptop screen."
+          alt="Two professionals representing accessible customer support."
         />
         <h3 slot="headline" class="sd-headline sd-headline--inverted">Your contact person</h3>
         <div class="flex flex-col gap-4">
@@ -52,7 +63,7 @@ export const TeaserMediaWithLink = {
             below.
           </p>
           <div>
-            <sd-button href="#" target="_blank" variant="cta">Feel free to contact us</sd-button>
+            <sd-button href="#" target="_blank" variant="cta" inverted>Feel free to contact us</sd-button>
           </div>
         </div>
       </sd-teaser-media>
@@ -61,7 +72,7 @@ export const TeaserMediaWithLink = {
           slot="media"
           class="w-full aspect-ratio"
           src="./placeholders/images/skyline.jpg"
-          alt="City skyline of Frankfurt by night in christmas time."
+          alt="A vibrant city skyline at dusk, symbolizing economic growth and investment opportunities in urban hubs."
         />
         <h3 slot="headline" class="sd-headline sd-headline--size-base">USA or Europe? It depends on the mix</h3>
         <div class="flex flex-col gap-4">
@@ -82,15 +93,15 @@ export const TeaserMediaWithLink = {
 };
 
 /**
- * - Aligment: Teaser contents can be center aligned if desired.
+ * - Alignment: Teaser contents can be center aligned if desired.
  * - Paddings: Can be changed as desired.
- * - Headline size: Can be changed as desired.
  */
 export const TeaserMediaOverrides = {
   render: () =>
     html`<style>
-        .media-overrides .sd-headline {
-          justify-content: center;
+        .media-overrides::part(content) {
+          display: flex;
+          align-items: center;
         }
       </style>
       <sd-teaser-media variant="gradient-dark" class="media-overrides">
@@ -98,12 +109,12 @@ export const TeaserMediaOverrides = {
           <img
             class="w-full aspect-ratio"
             src="./placeholders/images/coffeeshop.jpg"
-            alt="People sitting at a table, having a coffee in a coffeeshop."
+            alt="Diverse group of individuals in a casual meeting setting, emphasizing gender equality and collaboration."
           />
         </div>
         <h3 slot="headline" class="sd-headline sd-headline--inverted">Gender</h3>
-        <div slot="expandable" class="text-center">
-          <p class="sd-paragraph sd-paragraph--inverted text-xl pb-24">We are actively promoting gender equality.</p>
+        <div slot="expandable">
+          <p class="sd-paragraph sd-paragraph--inverted pb-12">We are actively promoting gender equality.</p>
         </div>
       </sd-teaser-media> `
 };
@@ -122,24 +133,14 @@ export const TeaserMediaWithCopyright = {
     </style>
     <div class="flex flex-col gap-12">
       <sd-teaser-media variant="gradient-dark" class="max-w-[600px]">
-        <img
-          slot="media"
-          src="./placeholders/images/architecture.jpg"
-          class="aspect-video object-cover"
-          alt="Generic alt"
-        />
+        <img slot="media" src="./placeholders/images/architecture.jpg" class="aspect-video object-cover" alt="" />
         <h3 slot="headline">Headline Media Teaser</h3>
         <div class="flex flex-col sd-copyright" style="--copyright: '© Union Investment 2024'">
           <div slot="default" class="h-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
         </div>
       </sd-teaser-media>
       <sd-teaser-media variant="gradient-white" class="max-w-[600px]">
-        <img
-          slot="media"
-          src="./placeholders/images/architecture.jpg"
-          class="aspect-video object-cover"
-          alt="Generic alt"
-        />
+        <img slot="media" src="./placeholders/images/architecture.jpg" class="aspect-video object-cover" alt="" />
         <h3 slot="headline">Headline Media Teaser</h3>
         <div class="flex flex-col sd-copyright gradient-white" style="--copyright: '© Union Investment 2024'">
           <div slot="default" class="h-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>

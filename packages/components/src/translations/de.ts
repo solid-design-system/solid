@@ -6,38 +6,43 @@ const translation: Translation = {
   $name: 'Deutsch',
   $dir: 'ltr',
 
+  autoplay: 'Autoplay',
+  audioPlayer: 'Audio-Player',
   carousel: 'Karussell',
   clearEntry: 'Eingabe löschen',
   close: 'Schließen',
+  comboboxDefaultPlaceholder: 'Bitte suchen und auswählen',
   copy: 'Kopieren',
-  numOptionsSelected: num => {
-    if (num === 0) return '';
-    return `Optionen ausgewählt (${num})`;
-  },
-  previousSlide: 'Vorherige Folie',
   currentValue: 'Aktueller Wert',
   goToSlide: (slide, count) => `Zu Folie ${slide} von ${count} gehen`,
   hidePassword: 'Passwort verbergen',
   loading: 'Wird geladen',
+  mute: 'Stummschalten',
   nextSlide: 'Nächste Folie',
+  noResults: 'Keine Ergebnisse gefunden',
+  numOptionsSelected: num => {
+    if (num === 0) return '';
+    return `Optionen ausgewählt (${num})`;
+  },
+  pauseAudio: 'Audio pausieren',
+  playAudio: 'Audio abspielen',
+  playbackSpeed: 'Wiedergabe Geschwindigkeit',
+  previousSlide: 'Vorherige Folie',
   progress: 'Fortschritt',
   remove: 'Entfernen',
+  removed: name => `${name} entfernt`,
   resize: 'Größe ändern',
   scrollToEnd: 'Zum Ende scrollen',
   scrollToStart: 'Zum Anfang scrollen',
   selectAColorFromTheScreen: 'Farbe vom Bildschirm auswählen',
   selectDefaultPlaceholder: 'Bitte auswählen',
-  showPassword: 'Passwort anzeigen',
-  slideNum: slide => `Folie ${slide}`,
-  toggleColorFormat: 'Farbformat umschalten',
-  audioPlayer: 'Audio-Player',
-  playAudio: 'Audio abspielen',
-  pauseAudio: 'Audio pausieren',
-  mute: 'Stummschalten',
-  unmute: 'Unmute',
-  showMore: 'Mehr anzeigen',
   showLess: 'Weniger anzeigen',
-  playbackSpeed: 'Wiedergabe Geschwindigkeit'
+  showMore: 'Mehr anzeigen',
+  showPassword: 'Passwort anzeigen',
+  slideNum: (slide, count) => `Folie ${slide} von ${count}`,
+  tagsSelected: 'Optionen ausgewählt',
+  toggleColorFormat: 'Farbformat umschalten',
+  unmute: 'Unmute'
 };
 
 registerTranslation(translation);

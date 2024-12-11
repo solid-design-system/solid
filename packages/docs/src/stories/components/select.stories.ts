@@ -21,6 +21,7 @@ const labelConstant: ConstantDefinition = { type: 'attribute', name: 'label', va
  *
  * **Related components:**
  * - [sd-option](?path=/docs/components-sd-option--docs)
+ * - [sd-optgroup](?path=/docs/components-sd-optgroup--docs)
  *
  * **Related templates:**
  * - [Select](?path=/docs/templates-select--docs)

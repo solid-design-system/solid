@@ -34,7 +34,7 @@ export const LinkList = {
     html` <ul class="link-list">
       <li class="mb-5">
         <sd-link
-          href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/?path=/docs/docs-general-introduction--docs"
+          href="https://solid-design-system.fe.union-investment.de/docs/?path=/docs/docs-general-introduction--docs"
           size="lg"
         >
           About us
@@ -42,7 +42,7 @@ export const LinkList = {
       </li>
       <li class="mb-5">
         <sd-link
-          href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/?path=/docs/docs-general-introduction--docs"
+          href="https://solid-design-system.fe.union-investment.de/docs/?path=/docs/docs-general-introduction--docs"
           size="lg"
         >
           Our funds at a glance
@@ -50,7 +50,7 @@ export const LinkList = {
       </li>
       <li class="mb-5">
         <sd-link
-          href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/?path=/docs/docs-general-introduction--docs"
+          href="https://solid-design-system.fe.union-investment.de/docs/?path=/docs/docs-general-introduction--docs"
           size="lg"
         >
           Sustainable Investments
@@ -58,7 +58,7 @@ export const LinkList = {
       </li>
       <li>
         <sd-link
-          href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/?path=/docs/docs-general-introduction--docs"
+          href="https://solid-design-system.fe.union-investment.de/docs/?path=/docs/docs-general-introduction--docs"
           size="lg"
         >
           Latest expert views and analyses

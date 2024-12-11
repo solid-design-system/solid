@@ -32,19 +32,19 @@ export const Default = {
       </sd-navigation-item>
       <div class="flex flex-col p-2">
         <h4 class="sd-headline sd-headline--size-base p-4">Please select a country</h4>
-        <sd-navigation-item class="font-bold" href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/"
+        <sd-navigation-item class="font-bold" href="https://solid-design-system.fe.union-investment.de/docs/"
           >Austria</sd-navigation-item
         >
-        <sd-navigation-item class="font-bold" href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/"
+        <sd-navigation-item class="font-bold" href="https://solid-design-system.fe.union-investment.de/docs/"
           >Denmark</sd-navigation-item
         >
-        <sd-navigation-item class="font-bold" href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/"
+        <sd-navigation-item class="font-bold" href="https://solid-design-system.fe.union-investment.de/docs/"
           >Finland</sd-navigation-item
         >
-        <sd-navigation-item class="font-bold" href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/"
+        <sd-navigation-item class="font-bold" href="https://solid-design-system.fe.union-investment.de/docs/"
           >France</sd-navigation-item
         >
-        <sd-navigation-item class="font-bold" href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/"
+        <sd-navigation-item class="font-bold" href="https://solid-design-system.fe.union-investment.de/docs/"
           >Germany</sd-navigation-item
         >
       </div>

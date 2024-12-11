@@ -1,0 +1,264 @@
+import { Meta } from '@storybook/blocks';
+import '../../styles/headline/headline.css';
+import 'https://solid-design-system.fe.union-investment.de/x.x.x/components/es/accordion.js';
+import 'https://solid-design-system.fe.union-investment.de/x.x.x/components/es/accordion-group.js';
+
+<Meta title="Docs/General/FAQ" />
+<span class="sb-unstyled">
+  <h1 class="sd-headline mb-4">Frequently Asked Questions about the Solid Design System</h1>
+  <h3 class="sd-headline sd-headline--size-3xl pt-6 pb-2 mb-4">Overview and Principles</h3>
+    <sd-accordion-group class="mb-4">
+      <sd-accordion open>
+        <h4 class="text-base" slot="summary">What is the Solid Design System?</h4>
+          <span class="sd-prose">
+          <p>The Solid Design System by Union Investment establishes a robust framework for their digital presence, offering a comprehensive array of design elements and guidelines. Including navigation items, buttons, and more, it serves as an invaluable tool for designers and developers working on Union Investment's digital offerings.</p>
+          <p>Providing atomic-level components, it forms the foundational elements for ensuring uniform and seamless user interfaces across their digital products. Unlike full designs, these components enable the creation of customized interfaces while upholding visual consistency and usability standards.</p>
+          </span>
+      </sd-accordion>
+      <sd-accordion>
+        <h4 class="text-base" slot="summary">
+          What benefits does the Solid Design System provide?
+        </h4>
+        <span class="sd-prose">
+          - **Atomic Design Approach:** We offer atoms and molecules to build organisms, templates, and eventually, pages.
+          - **Accessibility & Lightweight Focus:** All elements in the Solid Design System adhere to WCAG 2.2 standards, prioritizing accessibility while focusing on maintaining a lightweight nature for all components.
+          - **Consistent Brand Design:** Each component undergoes a corporate design review and follows motion principles to strengthen the brand's consistent look and feel.
+          - **Sustainability & Performance:** HTML-based components promote sustainability by reducing resource consumption and improving performance, while they also ensure compatibility and maintain accessibility.
+          - **Efficiency & Environmental Impact:** Simplifying development and maintenance processes helps minimise environmental impact while maximising efficiency throughout the software lifecycle.
+        </span>
+      </sd-accordion>
+      <sd-accordion>
+        <h4 class="text-base" slot="summary">What are the 3 core principles of the Solid Design System?</h4>
+        <span class="sd-prose">
+          Solid Components, as part of the Solid Design System, serving as a robust foundation for a digital presence, built upon three core principles:
+
+            - **Usable & consistent**
+            - **Reusable & flexible**
+            - **Maintainable & reliable**
+
+          Visit our <a href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/index.html?path=/docs/docs-general-introduction--docs#principles">introduction page</a> for more details.
+        </span>
+      </sd-accordion>
+      <sd-accordion>
+        <h4 class="text-base" slot="summary">What do we offer, and what falls outside our scope</h4>
+        <span class="sd-prose">
+          **We do:**
+
+          - Provide guidance and support with components, styles, and templates
+          - Create, update and maintain our components, styles, and templates
+          - Write documentation about the system's elements' behaviours and interactions
+          - Gain stakeholder and consumer feedback and requests to base our work on insights and needs
+          - Foster contribution and engagement from product teams
+          - Service and support: office hours, trainings, consulting, design system community
+          - Advocate for adopting the Solid Design System
+          - Onboard new product teams
+
+          **We don't:**
+
+          - Provide complete screen designs
+          - Prototype flows
+          - Specify your product's rules
+          - Set-up and maintain project libraries
+
+        </span>
+      </sd-accordion>
+    </sd-accordion-group>
+
+  <h3 class="sd-headline sd-headline--size-3xl pt-6 pb-2 mb-4">Usage and Implementation</h3>
+    <sd-accordion-group class="mb-4">
+      <sd-accordion>
+        <h4 class="text-base" slot="summary">
+          How should I be using the Solid Design System and why?
+        </h4>
+          Considering the query above, our components, styles, and templates are designed to be applicable across various web contexts, ensuring the creation of fully accessible, design standards-compliant, and lightweight websites or applications.
+      </sd-accordion>
+      <sd-accordion>
+        <h4 class="text-base" slot="summary">What are the differences between components, styles and templates in our library?</h4>
+        <span class="sd-prose">
+          We offer different types of elements in our library:
+
+          - **Components:** These are lightweight <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_components" target="_blank">web components</a> constructed with <a href="https://lit.dev/" target="_blank">lit-element</a>.
+          - **Styles:** These are even lighter CSS classes that can be applied to any HTML element.
+          - **Templates:** These are predefined layouts or structures that combine components and styles, offering a reusable foundation for building consistent, fully-formed pages or sections of a product.
+
+          Visit our <a href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/index.html?path=/docs/docs-general-introduction--docs#structure">introduction page </a> for more details.
+        </span>
+      </sd-accordion>
+      <sd-accordion>
+        <h4 class="text-base" slot="summary">
+          Are there any design tutorials or guides available for beginners?
+        </h4>
+        <span class="sd-prose">
+          Yes, we offer comprehensive tutorials and guides for beginners to help them get started with the design system. These resources cover from basic usage to advanced techniques, providing a smooth onboarding experience for new users. Visit our <a href="https://www.figma.com/files/1075429990769806468/project/96753329" target="_blank">Trainings section</a> in Figma to access these tutorials. Like the design system, this is a space in continuous growth and we will keep adding new trainings and updating the existing ones to sharpen any edges of the overall interaction with Solid DS.
+        </span>
+      </sd-accordion>
+      <sd-accordion>
+        <h4 class="text-base" slot="summary">
+          Where can I find mobile components?
+        </h4>
+        <span class="sd-prose">
+          <p>The Solid Design System does not provide dedicated mobile-specific components, as our library is designed to be responsive and adaptable to various viewports. Our components are built on principles of reusability and flexibility, ensuring they work seamlessly across different devices and contexts without the need for custom mobile solutions. This approach aligns with our commitment to creating consistent, accessible, and maintainable components that reflect the Union Investment brand across all digital platforms.</p>
+          <p>For more insights, you can explore how components behave across different viewports directly in their respective Storybook article, where you can test and preview their responsiveness in real time.</p>
+        </span>
+      </sd-accordion>
+      <sd-accordion>
+        <h4 class="text-base" slot="summary">
+          Does the use of the Solid Design System guarantee my website's accessibility?
+        </h4>
+        <span class="sd-prose">
+          <p>No, although our components, styles, and templates are meticulously crafted to meet WCAG 2.2 specifications individually, they alone do not ensure comprehensive web accessibility. They constitute only a part of your website or application, and achieving full accessibility requires attention to your usage, content, and overall structure. </p>
+          <p>While implementing Solid Components into your product is a crucial initial step toward accessibility, it doesn't guarantee compliance. Each use of a component on a page necessitates consideration of context and content order, ensuring correct and meaningful semantics. Product teams must assume responsibility for maintaining compliance with these standards in their digital products based on Solid DS.</p>
+        </span>
+      </sd-accordion>
+      <sd-accordion>
+        <h4 class="text-base" slot="summary">Can I use the Solid Design System for my private projects?</h4>
+        <span class="sd-prose">
+          The Solid Design System is intended for use within the Union Investment universe. While it is an open-source project, its commercial use is restricted to Union Investment and its associated projects. However, it can be used if the components' form and color are altered to avoid resemblance to the original corporate design. This "whitelabeling" process ensures the system is adapted to fit your project's unique style.
+        </span>
+      </sd-accordion>
+      <sd-accordion>
+        <h4 class="text-base" slot="summary">
+          How does Solid Design System work on different Figma Teams and Figma Workspaces?
+        </h4>
+        <span class="sd-prose">
+          Solid Design System can only be used correctly within the UIG Figma. Therefore, all external service providers should only work in the UIG Figma and not in their own Figma space.
+        </span>
+      </sd-accordion>
+      <sd-accordion>
+        <h4 class="text-base" slot="summary">Why do we rely on basic HTML standards?</h4>
+        <span class="sd-prose">
+          We rely on basic HTML standards because they provide a solid foundation for web development, ensuring compatibility across different browsers and devices. HTML standards define the structure and semantics of web content, which is crucial for accessibility and search engine optimization. By adhering to these standards, we promote consistency, reliability, and interoperability in web development, ultimately enhancing user experience and facilitating collaboration within the web community.
+        </span>
+      </sd-accordion>
+      <sd-accordion>
+        <h4 class="text-base" slot="summary">
+          Which browsers are supported?
+        </h4>
+        <span class="sd-prose">
+          Currently the we provide auomatic VRT in Chrome and manually test our components with MS Edge, Safari and Firefox. A more detailed browser matrix is in progress and will be added here soon.
+        </span>
+      </sd-accordion>
+      <sd-accordion>
+        <h4 class="text-base" slot="summary">
+          Does the design system support TypeScript and work with React, Vue, and Angular?
+        </h4>
+        <span class="sd-prose">
+          The Solid Design System is designed to be framework-agnostic, meaning it can be integrated with various frameworks, including React, Vue, Angular and many more through the use of <a target="_blank" href="https://custom-elements-everywhere.com/">custom elements</a>. Additionally, TypeScript integration is supported, allowing you to leverage type safety and other TypeScript features in your projects.
+        </span>
+      </sd-accordion>
+      <sd-accordion>
+        <h4 class="text-base" slot="summary">
+          Can I copy / download assets or code snippets directly from the documentation?
+        </h4>
+        <span class="sd-prose">
+          You can access and download design assets directly from our Figma documentation. This includes UI components, icons, and other design elements that you can use in your projects. For code snippets, you can visit our Storybook. It provides interactive examples of our components along with the corresponding code snippets, which you can easily copy and integrate into your codebase.
+        </span>
+      </sd-accordion>
+    </sd-accordion-group>
+
+  <h3 class="sd-headline sd-headline--size-3xl pt-6 pb-2 mb-4">Support and Contribution</h3>
+    <sd-accordion-group class="mb-4">
+      <sd-accordion>
+        <h4 class="text-base" slot="summary">
+          How can I contact the Solid Design System team?
+        </h4>
+        <span class="sd-prose">
+          For any inquiries specific to the library, feel free to open an <a target="_blank" href="https://github.com/solid-design-system/solid/issues">issue</a> or initiate a
+          <a target="_blank" href="https://github.com/solid-design-system/solid/discussions">discussion</a>. If you need to directly contact the core
+          team, you can also reach us at <a href="mailto:sds@union-investment.de">sds@union-investment.de</a>.
+        </span>
+      </sd-accordion>
+
+      <sd-accordion>
+        <h4 class="text-base" slot="summary">
+          How can I contribute to the Solid Design System?
+        </h4>
+        <span class="sd-prose">
+          We welcome contributions from the community as the Solid Design System is an open-source project. To get started, please review our <a href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/index.html?path=/docs/docs-general-contributing--docs#contributing-to-solid-components">Contributing Guide</a> carefully. Additionally, make sure to familiarize yourself with our <a target="_blank" href="https://github.com/solid-design-system/solid?tab=coc-ov-file">Code of Conduct</a> and our <a target="_blank" href="https://github.com/solid-design-system/solid/blob/main/DEVELOPER_STARTING_GUIDE.md">Developer Starting Guide</a>. These resources will provide you with the necessary information and guidelines for contributing effectively to our project.
+        </span>
+      </sd-accordion>
+      <sd-accordion>
+        <h4 class="text-base" slot="summary">
+          Is there a roadmap for upcoming features?
+        </h4>
+        <span class="sd-prose">
+          Sure. You can explore our project board for a detailed overview of our <a target="_blank" href="https://github.com/orgs/solid-design-system/projects/1/views/48">roadmap</a>.
+        </span>
+      </sd-accordion>
+      <sd-accordion>
+        <h4 class="text-base" slot="summary">
+          How can I submit a feature request or report a bug?
+        </h4>
+        <span class="sd-prose">
+          To do so, navigate to the issue section on GitHub and utilize our provided issue templates. Whether you're suggesting a new feature or reporting a bug, these templates offer placeholders and designated content sections where you can input the necessary information. Please ensure to include as many detailed specifics as possible when submitting your request or bug report.
+        </span>
+      </sd-accordion>
+      <sd-accordion>
+        <h4 class="text-base" slot="summary">
+          Who is working on the Solid Design System?
+        </h4>
+        <span class="sd-prose">
+          The Solid Design System team is an interdisciplinary team consisting of Product Owner, Brand Designer, UX/UI Designers, Developers and Architects. For more details on the team members, pleas contact us via Email.
+        </span>
+      </sd-accordion>
+      <sd-accordion>
+        <h4 class="text-base" slot="summary">
+          Will the development of the Solid Design System ever be complete?
+        </h4>
+        <span class="sd-prose">
+          No, the Solid Design System is an ongoing endeavor, much like the ever-evolving nature of the web itself. We are committed to continually refining and expanding its features, ensuring it remains aligned with the latest standards and technologies.
+        </span>
+      </sd-accordion>
+    </sd-accordion-group>
+
+<h3 class="sd-headline sd-headline--size-3xl pt-6 pb-2 mb-4">Advanced Topics and Customization</h3>
+<sd-accordion-group class="mb-4">
+  <sd-accordion>
+    <h4 class="text-base" slot="summary">
+      What is the story behind the "Design Tokens"?
+    </h4>
+    <span class="sd-prose">
+      <p>Design tokens are like labels or tags that designers use to define things like colors, fonts, and sizes. Imagine a design token as a name given to a color, such as “Primary Blue,” so that whenever the design needs that blue, you just refer to the token instead of the specific color code.</p>
+      <p>By using tokens, if the designer decides to change “Primary Blue” to a different shade, they only need to update it in one place, and the change will happen everywhere it's used. This makes it much easier to keep designs consistent without having to manually change the color in every spot.</p>
+    </span>
+  </sd-accordion>
+  <sd-accordion>
+    <h4 class="text-base" slot="summary">
+      Why aren't all features that I need for my project included in Solid Design System?
+    </h4>
+    <span class="sd-prose">
+      The Solid Design System is designed to provide a robust foundation for a wide range of projects. However, it may not include every specific feature needed for individual projects to maintain its flexibility and general applicability. We encourage teams to extend the system as needed to meet their unique requirements while adhering to the core principles of usability, reusability, and maintainability.
+    </span>
+  </sd-accordion>
+  <sd-accordion>
+    <h4 class="text-base" slot="summary">
+      Can I customize the appearance of the components of the Solid Design system?
+    </h4>
+    <span class="sd-prose">
+      Yes, the Solid Design System supports skinning. You can customize the appearance of components through styles and themes to match your project’s branding and design requirements. This flexibility allows you to maintain visual consistency while adapting the design system to your specific needs. For detailed instructions on customization, please refer to our <a href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/index.html?path=/docs/docs-general-customization--docs">customization guide</a> in Storybook.
+    </span>
+  </sd-accordion>
+  <sd-accordion>
+    <h4 class="text-base" slot="summary">
+      Do I need to create a project-specific component library?
+    </h4>
+    <span class="sd-prose">
+      Your project structure should leverage the Solid Design System's components, styles, and templates as foundational elements. While it’s not mandatory to create a project-specific component library, doing so can help manage customizations and extensions specific to your project. This approach ensures that your project remains aligned with the Solid Design System while accommodating unique requirements.
+    </span>
+  </sd-accordion>
+  <sd-accordion>
+    <h4 class="text-base" slot="summary">
+      What is the suggested workflow between Design and Dev in the project-specific teams?
+    </h4>
+    <span class="sd-prose">
+      The Solid Design System Team does not impose strict rules on how design and development teams should operate. Instead, we offer guidance and best practices that promote collaboration, agility, and efficiency in integrating the design system into your workflow. The collaboration advice for consumers generally includes:
+
+      - **Shared Language and Terminology:** Ensuring that both designers and developers refer to components, colors, or tokens using a unified language helps avoid confusion and miscommunication during implementation.
+      - **Use of Agile Practices:** Consumers are encouraged to adopt agile workflows, such as frequent design and development sprints. This allows for continuous feedback and adjustments to ensure that both the design and development stay aligned​.
+      - **Design Systems as a Source of Truth:** The design system should serve as the central repository for all reusable components, ensuring consistency across teams and reducing the need for repetitive design work​.
+    </span>
+
+  </sd-accordion>
+</sd-accordion-group>
+
+</span>

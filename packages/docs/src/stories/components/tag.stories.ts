@@ -51,13 +51,27 @@ export const Size = {
 
 /**
  * Use the `selected` attribute to enable the selected state.
+ *
+ * __Accessibility hint__: Use the attribute `toggleable` to reflect the `selected` state on the `aria-pressed` attribute.
  */
 
 export const Selected = {
   render: () => html`
-    <div class="flex gap-12">
-      <sd-tag selected>Selected</sd-tag>
+    <div id="tags-selected" class="flex gap-12">
+      <sd-tag selected toggleable>Selected</sd-tag>
     </div>
+
+    <script type="module">
+      const handleToggle = event => {
+        const tag = event.target;
+        tag.toggleAttribute('selected');
+        const isSelected = tag.hasAttribute('selected');
+        tag.innerText = isSelected ? 'Selected' : 'Unselected';
+      };
+
+      const tags = document.querySelectorAll('#tags-selected sd-tag');
+      tags.forEach(tag => tag.addEventListener('click', handleToggle));
+    </script>
   `
 };
 
@@ -71,7 +85,7 @@ export const Removable = {
       <sd-tag size="lg" removable>Removable</sd-tag>
     </div>
 
-    <script>
+    <script type="module">
       const tag = document.querySelector('#tags-removable');
 
       tag.addEventListener('sd-remove', event => {
@@ -93,8 +107,7 @@ export const AsLink = {
   name: 'As link',
   render: () => html`
     <div class="flex gap-12">
-      <sd-tag
-        href="https://solid-design-system.fe.union-investment.de/x.x.x/storybook/?path=/docs/docs-general-introduction--docs"
+      <sd-tag href="https://solid-design-system.fe.union-investment.de/docs/?path=/docs/docs-general-introduction--docs"
         >Link</sd-tag
       ><sd-tag href="https://union-investment.com" target="_blank">New Window</sd-tag
       ><sd-tag href="./placeholders/images/coffeeshop.jpg" download="">Download</sd-tag>

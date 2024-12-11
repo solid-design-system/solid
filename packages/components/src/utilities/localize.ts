@@ -74,33 +74,38 @@ export interface Translation extends DefaultTranslation {
   $name: string; // e.g. English, Español
   $dir: 'ltr' | 'rtl';
 
+  autoplay: string;
+  audioPlayer: string;
   carousel: string;
   clearEntry: string;
   close: string;
+  comboboxDefaultPlaceholder: string;
   copy: string;
   currentValue: string;
   goToSlide: (slide: number, count: number) => string;
   hidePassword: string;
   loading: string;
+  mute: string;
   nextSlide: string;
+  noResults: string;
   numOptionsSelected: (num: number) => string;
+  pauseAudio: string;
+  playAudio: string;
+  playbackSpeed: string;
   previousSlide: string;
   progress: string;
   remove: string;
+  removed: (name: string) => string;
   resize: string;
   scrollToEnd: string;
   scrollToStart: string;
   selectAColorFromTheScreen: string;
   selectDefaultPlaceholder: string;
-  showPassword: string;
-  slideNum: (slide: number) => string;
-  toggleColorFormat: string;
-  audioPlayer: string;
-  playAudio: string;
-  pauseAudio: string;
-  mute: string;
-  unmute: string;
-  showMore: string;
   showLess: string;
-  playbackSpeed: string;
+  showMore: string;
+  showPassword: string;
+  slideNum: (slide: number, count: number) => string;
+  tagsSelected: string;
+  toggleColorFormat: string;
+  unmute: string;
 }

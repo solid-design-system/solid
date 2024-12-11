@@ -7,7 +7,11 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read # for checkout
+  contents: read
+
+env:
+  GH_TOKEN: ${{ secrets.PAT_RELEASE_KARL }}
+  NPM_TOKEN: ${{ secrets.NPM_RELEASE_TOKEN_MARIO_HAMANN }}
 
 jobs:
   release:
@@ -27,31 +31,5 @@ jobs:
       - name: Install dependencies
         run: PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=true pnpm i
 
-      - name: (tokens) Run Semantic Release
-        env:
-          GH_TOKEN: ${{ secrets.PAT_RELEASE_KARL }}
-          NPM_TOKEN: ${{ secrets.NPM_RELEASE_TOKEN_MARIO_HAMANN }}
-        run: cd packages/tokens && pnpm release
-
-      - name: (placeholders) Run Semantic Release
-        env:
-          GH_TOKEN: ${{ secrets.PAT_RELEASE_KARL }}
-          NPM_TOKEN: ${{ secrets.NPM_RELEASE_TOKEN_MARIO_HAMANN }}
-        run: cd packages/placeholders && pnpm release
-
-      - name: (components) Run Semantic Release
-        env:
-          GH_TOKEN: ${{ secrets.PAT_RELEASE_KARL }}
-          NPM_TOKEN: ${{ secrets.NPM_RELEASE_TOKEN_MARIO_HAMANN }}
-        run: cd packages/components && pnpm release
-
-      - name: (theming) Run Semantic Release
-        env:
-          GH_TOKEN: ${{ secrets.PAT_RELEASE_KARL }}
-          NPM_TOKEN: ${{ secrets.NPM_RELEASE_TOKEN_MARIO_HAMANN }}
-        run: cd packages/theming && pnpm release
-
-      - name: (docs) Run Semantic Release
-        env:
-          GH_TOKEN: ${{ secrets.PAT_RELEASE_KARL }}
-        run: cd packages/docs && pnpm release
+      - name: Release
+        run: GH_TOKEN=${{secrets.PAT_RELEASE_KARL}} NPM_TOKEN=${{secrets.NPM_RELEASE_TOKEN_MARIO_HAMANN}} pnpm release
