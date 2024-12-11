@@ -83,31 +83,6 @@ export const Variants = {
 };
 
 /**
- * Use the `activation` attribute to determine the activation type of the flipcard. There are two options: `click-only` and `hover-and-click`.
- */
-
-export const Activation = {
-  name: 'Activation',
-  render: (args: any) =>
-    generateTemplate({
-      axis: {
-        x: {
-          type: 'attribute',
-          name: 'activation'
-        }
-      },
-      args,
-      constants: [
-        {
-          type: 'template',
-          name: 'style',
-          value: '<div style="margin-bottom: 40px">%TEMPLATE%</div>'
-        }
-      ]
-    })
-};
-
-/**
  * Use the `flip-direction` attribute to determine the direction of the flipcard. There are two options: `horizontal` and `vertical`.
  */
 
@@ -164,12 +139,12 @@ export const Slots = {
             {
               type: 'attribute',
               name: 'front-variant',
-              value: 'gradient-dark-top'
+              value: 'gradient-dark'
             },
             {
               type: 'attribute',
               name: 'back-variant',
-              value: 'gradient-dark-bottom'
+              value: 'gradient-dark'
             }
           ]
         });
@@ -179,10 +154,29 @@ export const Slots = {
 };
 
 /**
- * Use the `base`, `front`, `back`, `front-slot-container`, `back-slot-container`, `front-media`, `back-media`, `front-secondary-gradient` and `back-secondary-gradient` parts to style the flipcard.
+ * Use the `base`, `front`, `back`, `front-button`, `back-button`,  `front-interactive-container`, `back-interactive-container`, `front-slot-container`, `back-slot-container`, `front-media`, `back-media`, `front-secondary-gradient` and `back-secondary-gradient` parts to style the flipcard.
  */
 export const Parts = {
   name: 'Parts',
+  parameters: {
+    controls: {
+      exclude: [
+        'base',
+        'front',
+        'back',
+        'front-button',
+        'back-button',
+        'front-interactive-container',
+        'back-interactice-container',
+        'front-slot-container',
+        'back-slot-container',
+        'front-media',
+        'back-media',
+        'front-secondary-gradient',
+        'back-secondary-gradient'
+      ]
+    }
+  },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -193,6 +187,8 @@ export const Parts = {
             'base',
             'front',
             'back',
+            'front-button',
+            'back-button',
             'front-slot-container',
             'back-slot-container',
             'front-media',
@@ -217,12 +213,12 @@ export const Parts = {
         {
           type: 'attribute',
           name: 'front-variant',
-          value: 'gradient-dark-top'
+          value: 'gradient-dark'
         },
         {
           type: 'attribute',
           name: 'back-variant',
-          value: 'gradient-dark-bottom'
+          value: 'gradient-dark'
         }
       ]
     });
@@ -325,7 +321,6 @@ export const AspectRatio = {
 export const Combination = generateScreenshotStory([
   Default,
   Variants,
-  Activation,
   flipDirection,
   Slots,
   Parts,

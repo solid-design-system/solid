@@ -12,27 +12,10 @@ describe('<sd-flipcard>', () => {
   it('should generate proper defaults', async () => {
     const el = await fixture<SdFlipcard>(html`<sd-flipcard></sd-flipcard>`);
 
-    expect(el.activation).to.equal('click hover');
     expect(el.frontVariant).to.equal('primary');
     expect(el.backVariant).to.equal('primary');
-  });
-
-  it('should allow custom activation', async () => {
-    const el = await fixture<SdFlipcard>(html`<sd-flipcard activation="click"></sd-flipcard>`);
-
-    expect(el.activation).to.equal('click');
-  });
-
-  it('should flip on hover', async () => {
-    const el = await fixture<SdFlipcard>(html`<sd-flipcard></sd-flipcard>`);
-
-    expect(el.shadowRoot!.querySelector('.flip-card__side--front')).to.have.class('hover');
-  });
-
-  it('should not flip on hover', async () => {
-    const el = await fixture<SdFlipcard>(html`<sd-flipcard activation="click"></sd-flipcard>`);
-
-    expect(el.shadowRoot!.querySelector('.flip-card__side--front')).to.not.have.class('hover');
+    expect(el.flipDirection).to.equal('horizontal');
+    expect(el.placement).to.equal('top');
   });
 
   describe('when a flip is triggered', () => {
@@ -44,8 +27,8 @@ describe('<sd-flipcard>', () => {
       el.addEventListener('sd-flip-front', flipFrontHandler);
       el.addEventListener('sd-flip-back', flipBackHandler);
 
-      const front = el.shadowRoot!.querySelector('.flip-card__side--front')! as unknown as HTMLElement;
-      const back = el.shadowRoot!.querySelector('.flip-card__side--back')! as unknown as HTMLElement;
+      const front = el.shadowRoot!.querySelector("[part='front-button']") as HTMLButtonElement;
+      const back = el.shadowRoot!.querySelector("[part='back-button']") as HTMLButtonElement;
 
       front.click();
       await waitUntil(() => flipFrontHandler.calledOnce);
