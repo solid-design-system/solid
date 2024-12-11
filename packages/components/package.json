@@ -60,7 +60,7 @@
   },
   "scripts": {
     "build": "node scripts/build.js",
-    "verify": "pnpm ts.verify && pnpm build && echo '✅ Build verified' && pnpm test.verify && echo '✅ Test verified'",
+    "verify": "pnpm build && echo '✅ Build verified' && pnpm ts.verify && pnpm test.verify && echo '✅ Test verified'",
     "ts.verify": "tsc --noEmit --project ./tsconfig.json && echo '✅ TypeScript verified'",
     "plop": "plop --plopfile scripts/plop/plopfile.js",
     "test": "pnpm build && web-test-runner --group default",
