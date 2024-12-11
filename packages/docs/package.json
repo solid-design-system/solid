@@ -2,7 +2,7 @@
   "name": "@solid-design-system/docs",
   "description": "This package provides the documentation for the Solid Design System.",
   "homepage": "https://solid-design-system.fe.union-investment.de/docs/",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": {
     "name": "Union Investment"
   },

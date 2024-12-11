@@ -1,4 +1,18 @@
 ### 📈 Stats
+* Uncompressed: 440 KB (+1 KB / +0%)
+* Gzipped: 132 KB (unchanged)
+
+### 📈 Stats
+
+## 3.23.1
+
+### Patch Changes
+
+- Improved sd-dropdown a11y: _[`#1715`](https://github.com/solid-design-system/solid/pull/1715) [`1ecd19f`](https://github.com/solid-design-system/solid/commit/1ecd19fa9c4bef060092361a71d0e7ae784ec50d) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  - Correctly label icon-button dropdown triggers.
+  - Fix focus on the trigger after the dropdown is hidden using the keyboard.
+
 * Uncompressed: 439 KB (+29 KB / +7%)
 * Gzipped: 132 KB (+7 KB / +6%)
 
