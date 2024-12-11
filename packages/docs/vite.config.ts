@@ -20,6 +20,7 @@ export default (() => {
       VitePluginGetPlaywrightVersion(),
       VitePluginGetTailwindTheme(),
       VitePluginCreateEmptyCemIfNotExisting(),
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-call
       VitePluginCustomElementsManifest({
         ...customElementConfig,
         files: ['../components/src/**/!(*.stories|*.spec|*.test|*.style).ts'],
@@ -27,7 +28,7 @@ export default (() => {
         plugins: customElementConfig.plugins.filter(
           // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
           plugin => ['solid-custom-tags', 'remove-html-members'].includes(plugin.name)
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-call
         ) as any[]
       })
     ]
