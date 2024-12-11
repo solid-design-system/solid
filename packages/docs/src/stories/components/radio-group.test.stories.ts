@@ -199,7 +199,7 @@ export const RadioButtons = {
           type: 'slot',
           name: 'default',
           value:
-            '<sd-radio-button value="1" showLabel><sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon><div>Label</div></sd-radio-button><sd-radio-button value="2" showLabel><sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon><div>Label</div></sd-radio-button><sd-radio-button value="3" showLabel><sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon><div>Label</div></sd-radio-button>'
+            '<sd-radio-button value="1" showLabel><sd-icon name="system/image" slot="icon"></sd-icon><div>Label</div></sd-radio-button><sd-radio-button value="2" showLabel><sd-icon name="system/image" slot="icon"></sd-icon><div>Label</div></sd-radio-button><sd-radio-button value="3" showLabel><sd-icon name="system/image" slot="icon"></sd-icon><div>Label</div></sd-radio-button>'
         },
         {
           type: 'slot',
@@ -227,7 +227,7 @@ export const MouselessWithRadioButtons = {
             type: 'slot',
             name: 'default',
             value:
-              '<sd-radio-button value="1"><sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon></sd-radio-button><sd-radio-button value="2"><sd-icon library="global-resources" name="system/picture" slot="icon"></sd-icon></sd-radio-button><sd-radio-button value="3"><sd-icon library="global-resources" name="system/picture" slot="icon"></sd-radio-button>'
+              '<sd-radio-button value="1"><sd-icon name="system/image" slot="icon"></sd-icon></sd-radio-button><sd-radio-button value="2"><sd-icon name="system/image" slot="icon"></sd-icon></sd-radio-button><sd-radio-button value="3"><sd-icon name="system/image" slot="icon"></sd-radio-button>'
           },
           {
             type: 'attribute',
