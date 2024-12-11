@@ -37,7 +37,7 @@ export default class SdNavigationItem extends SolidElement {
   @property({ type: Boolean, reflect: true }) vertical = false;
 
   /** The navigation item's font size. */
-  @property({ reflect: true }) size: 'base' | 'lg' | 'sm' = 'base';
+  @property({ reflect: true }) size: 'md' | 'lg' | 'sm' = 'md';
 
   /** The navigation item's href target. If provided, the navigation item will use an anchor tag otherwise it will use a button tag. The 'children' slot and accordion behavior will be ignored if an 'href' is provided. */
   @property({ reflect: true }) href: string;
@@ -155,7 +155,7 @@ export default class SdNavigationItem extends SolidElement {
         part="base"
         class=${cx(
           'cursor-pointer relative focus-visible:focus-outline',
-          { base: 'text-base', lg: 'text-lg', sm: 'text-[14px]' }[this.size],
+          { md: 'text-base', lg: 'text-lg', sm: 'text-[14px]' }[this.size],
           this.disabled ? 'text-neutral-500 pointer-events-none' : 'text-primary',
           isAccordion ? 'flex flex-col' : 'inline-block w-full',
           this.divider && this.vertical && 'mt-0.25',

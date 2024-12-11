@@ -273,9 +273,9 @@ The v4 release introduces major changes to improve performance, flexibility and 
 
 ## Component updates
 
-### sd-media-teaser
+### `sd-media-teaser`
 
-The `variant` `gradient-white` of `sd-teaser-media` was renamed to `gradient-light` to be in sync with design.
+The `variant` `gradient-white` of `sd-teaser-media` was changed to `gradient-light` to be in sync with design.
 
 **Before:**
 
@@ -291,4 +291,25 @@ The `variant` `gradient-white` of `sd-teaser-media` was renamed to `gradient-lig
 <sd-media-teaser variant="gradient-light">
   <!-- Your content -->
 </sd-media-teaser>
+```
+
+### `sd-navigation-item`
+
+The default `size` `base` in `sd-navigation-item` was changed to `md` to be consistent with other components.
+As this was the default value, there most likely won't be any changes needed.
+
+**Before:**
+
+```html
+<sd-navigation-item size="base">
+  <!-- Your content -->
+</sd-navigation-item>
+```
+
+**After:**
+
+```html
+<sd-navigation-item size="md">
+  <!-- Your content -->
+</sd-navigation-item>
 ```
