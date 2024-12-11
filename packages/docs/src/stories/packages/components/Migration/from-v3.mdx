@@ -421,10 +421,10 @@ The `sd-flipcard` component has been updated to improve a11y, flexibility and al
 `placement` feature was added to set the position of the default slots for both the front and back cards at the same time to ensure consistency and usability.
 `variant` logic was simplified to remove any positioning logic (e.g. from `gradient-light-top` to `gradient-light`). This applies to the following options:
 
-- `gradient-light-top`
-- `gradient-light-bottom`
-- `gradient-dark-top`
-- `gradient-dark-bottom`
+- `variant="gradient-light-top"` -> `variant="gradient-light" placement="top"`
+- `variant="gradient-light-bottom"` -> `variant="gradient-light" placement="bottom"`
+- `variant="gradient-dark-top"` -> `variant="gradient-dark" placement="top"`
+- `variant="gradient-dark-bottom"` -> `variant="gradient-dark" placement="bottom"`
 
 **Before:**
 
