@@ -1,5 +1,20 @@
 # @solid-design-system/docs
 
+## 1.1.0
+
+### Minor Changes
+
+- Add sd-combobox and improve sd-select. _[`#1633`](https://github.com/solid-design-system/solid/pull/1633) [`8a16da8`](https://github.com/solid-design-system/solid/commit/8a16da830e7fdd135d9dcbbc540c48ef567dbe02) [@DanielHargesheimer](https://github.com/DanielHargesheimer)_
+
+  - add configurable `sd-combobox` component
+  - add keyboard navigation and accessibility features
+  - add multi-select and tag support
+  - use backspace key to remove latest selected option on `sd-combobox`
+  - use backspace key to remove focused tag and related option
+  - improve tags presentation
+  - show tags in selected order
+  - add sd-optgroup component for better grouping of options
+
 ## 1.0.8
 
 ### Patch Changes
