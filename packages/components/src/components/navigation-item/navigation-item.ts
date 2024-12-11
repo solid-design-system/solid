@@ -3,7 +3,7 @@ import { customElement } from '../../internal/register-custom-element';
 import { HasSlotController } from '../../internal/slot';
 import { html, literal } from 'lit/static-html.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import { property } from 'lit/decorators.js';
+import { property, query } from 'lit/decorators.js';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
@@ -32,6 +32,8 @@ import SolidElement from '../../internal/solid-element';
 @customElement('sd-navigation-item')
 export default class SdNavigationItem extends SolidElement {
   private readonly hasSlotController = new HasSlotController(this, '[default]', 'description', 'children');
+
+  @query('a[part="base"], button[part="base"]') button: HTMLButtonElement | HTMLLinkElement | null;
 
   /** The navigation item's orientation. If false, properties below this point are not used. */
   @property({ type: Boolean, reflect: true }) vertical = false;
