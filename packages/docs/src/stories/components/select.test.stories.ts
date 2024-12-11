@@ -605,7 +605,7 @@ export const SolidForm = {
         <div class="[&>:nth-child(even)]:bg-neutral-100 [&>*]:p-4">
           <sd-checkbox form="testForm" name="field 1" required>Field 1</sd-checkbox>
           <sd-input form="testForm" name="field 2" label="Field 2" required></sd-input>
-          <sd-select form="testForm" name="field 3" label="Field 3" required
+          <sd-select form="testForm" multiple useTags name="field 3" label="Field 3" required
             ><sd-option value="option-1">Option 1</sd-option><sd-option value="option-2">Option 2</sd-option>
             <sd-option value="option-3">Option 3</sd-option><sd-option value="option-4">Option 4</sd-option
             ><sd-option value="option-5">Option 5</sd-option><sd-option value="option-6">Option 6</sd-option
