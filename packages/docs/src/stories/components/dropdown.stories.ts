@@ -141,7 +141,7 @@ export const Rounded = {
     <sd-dropdown open rounded distance="4">
       <div class="slot slot--border slot--text p-4 w-[300px]">Default slot</div>
       <sd-button slot="trigger" variant="secondary">
-        <sd-icon name="system/more-functions" class="h-6 w-6" label="Trigger rounded dropdown"></sd-icon>
+        <sd-icon name="system/more-functions" class="h-6 w-6" label="Rounded dropdown"></sd-icon>
       </sd-button>
     </sd-dropdown>
   `
