@@ -2,7 +2,7 @@
 '@solid-design-system/components': major
 ---
 
-!Breaking Change
+The `sd-flipcard` component has been updated to improve a11y, flexibility and alignment with design. Checkout the migration guide for more details.
 
 implement new sd-flipcard:
 

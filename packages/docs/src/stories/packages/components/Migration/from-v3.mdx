@@ -356,3 +356,88 @@ The modifier `.sd-display--size-xl` was added to keep the old size available.
 <p class="sd-display sd-display--size-xl">Some smaller content</p>
 <p class="sd-display">Some larger content</p>
 ```
+
+### `<sd-flipcard>`
+
+The `sd-flipcard` component has been updated to improve a11y, flexibility and alignment with design.
+
+`activation` attribute including its options was removed, as a dedicated button is now used to trigger the flip.
+
+**Before:**
+
+```html
+<sd-flipcard activation>
+  <!-- content -->
+</sd-flipcard>
+```
+
+**After:**
+
+```html
+<sd-flipcard variant="gradient-light">
+  <!-- content -->
+</sd-flipcard>
+```
+
+`variant` `empty` (default) was removed. Use `gradient-light` without any element in `media-front` slot instead.
+
+**Before:**
+
+```html
+<!--  -->
+<sd-flipcard>
+  <!-- content -->
+</sd-flipcard>
+
+<!-- or -->
+
+<sd-flipcard variant="empty">
+  <!-- content -->
+</sd-flipcard>
+```
+
+**After:**
+
+```html
+<sd-flipcard variant="gradient-light">
+  <!-- content -->
+</sd-flipcard>
+```
+
+`primary` is now the default variant instead of `empty`.
+
+**Before:**
+
+```html
+<sd-flipcard variant="primary">
+  <!-- content -->
+</sd-flipcard>
+
+<sd-flipcard>
+  <!-- content -->
+</sd-flipcard>
+```
+
+`placement` feature was added to set the position of the default slots for both the front and back cards at the same time to ensure consistency and usability.
+`variant` logic was simplified to remove any positioning logic (e.g. from `gradient-light-top` to `gradient-light`). This applies to the following options:
+
+- `gradient-light-top`
+- `gradient-light-bottom`
+- `gradient-dark-top`
+- `gradient-dark-bottom`
+
+**Before:**
+
+```html
+<sd-flipcard variant="gradient-light-top">
+  <!-- content -->
+</sd-flipcard>
+```
+
+**After:**
+
+```html
+<sd-flipcard variant="gradient-light" placement="top">
+  <!-- content -->
+</sd-flipcard>
+```

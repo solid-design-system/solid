@@ -27,8 +27,8 @@ describe('<sd-flipcard>', () => {
       el.addEventListener('sd-flip-front', flipFrontHandler);
       el.addEventListener('sd-flip-back', flipBackHandler);
 
-      const front = el.shadowRoot!.querySelector("[part='front-button']") as HTMLButtonElement;
-      const back = el.shadowRoot!.querySelector("[part='back-button']") as HTMLButtonElement;
+      const front = el.shadowRoot!.querySelector("[part='front-button']")!;
+      const back = el.shadowRoot!.querySelector("[part='back-button']")!;
 
       front.click();
       await waitUntil(() => flipFrontHandler.calledOnce);
