@@ -415,8 +415,20 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   private handleTagKeyDown(event: KeyboardEvent, option: SdOption) {
     if (event.key === 'Backspace' && this.multiple) {
       event.stopPropagation();
+      const tagParent = (event.currentTarget as HTMLElement)?.parentElement;
+      const previousTag = tagParent?.previousElementSibling?.querySelector('sd-tag');
+      const nextTag = tagParent?.nextElementSibling?.querySelector('sd-tag');
+
       this.handleTagRemove(new CustomEvent('sd-remove'), option);
-      this.updateComplete.then(() => this.displayInput.focus({ preventScroll: true }));
+      this.updateComplete.then(() => {
+        if (nextTag) {
+          nextTag.focus();
+        } else if (previousTag) {
+          previousTag.focus();
+        } else {
+          this.focus({ preventScroll: true });
+        }
+      });
     }
   }
 
@@ -424,7 +436,14 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     if (event.key === 'Backspace' && this.multiple) {
       event.stopPropagation();
       this.handleTagRemove(new CustomEvent('sd-remove'), this.selectedOptions[this.selectedOptions.length - 1]);
-      this.updateComplete.then(() => this.displayInput.focus({ preventScroll: true }));
+      this.updateComplete.then(() => {
+        const tags = this.shadowRoot?.querySelectorAll('sd-tag');
+        if (tags && tags.length > 0) {
+          tags?.[tags?.length - 1].focus();
+        } else {
+          this.focus({ preventScroll: true });
+        }
+      });
     }
   }
 
