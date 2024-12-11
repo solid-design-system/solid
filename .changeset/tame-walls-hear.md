@@ -10,3 +10,4 @@ Improved a11y for sd-step and sd-step-group:
 - Fix tests
 - Remove tabindex to avoid a mismatch between information the users get depending on the chosen navigation type
 - Add ARIA attributes to components
+- Fix text colors in disabled state
