@@ -159,7 +159,7 @@ export const Icon = {
   render: () => html`
     <sd-tab-group>
       <sd-tab slot="nav" panel="tab-1">
-        <sd-icon slot="left" name="system/picture" library="global-resources" class="pr-2"></sd-icon>
+        <sd-icon slot="left" name="system/image" class="pr-2"></sd-icon>
         Label
       </sd-tab>
       <sd-tab-panel name="tab-1">
@@ -168,14 +168,14 @@ export const Icon = {
         </div>
       </sd-tab-panel>
       <sd-tab slot="nav" panel="tab-2">
-        <sd-icon slot="left" name="system/picture" library="global-resources" class="pr-2"></sd-icon>
+        <sd-icon slot="left" name="system/image" class="pr-2"></sd-icon>
         Label
       </sd-tab>
       <sd-tab-panel name="tab-2">
         <div>Tab panel 2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
       </sd-tab-panel>
       <sd-tab slot="nav" panel="tab-3">
-        <sd-icon slot="left" name="system/picture" library="global-resources" class="pr-2"></sd-icon>
+        <sd-icon slot="left" name="system/image" class="pr-2"></sd-icon>
         Label
       </sd-tab>
       <sd-tab-panel name="tab-3">

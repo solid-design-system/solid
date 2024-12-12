@@ -21,6 +21,14 @@ import fs from 'fs';
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf-8'));
 const newVersion = pkg.version;
 
+const previousSize = getOutputs().currentRealSize;
+const previousGzipSize = getOutputs().currentGzipSize;
+
+if (getOutputs().uncompressed.includes(previousSize) && getOutputs().gzip.includes(previousGzipSize)) {
+  console.log('🚫 No changes in bundle sizes. Skipping update.');
+  process.exit(0);
+}
+
 const additionalContent = `### 📈 Stats\n* ${getOutputs().uncompressed}\n* ${getOutputs().gzip}\n\n`;
 
 fs.readFile('./CHANGELOG.md', 'utf8', (err, data) => {
@@ -29,8 +37,8 @@ fs.readFile('./CHANGELOG.md', 'utf8', (err, data) => {
   }
 
   // Check if the new version header exists
-  const newVersionHeader = `# [@solid-design-system/components-v${newVersion}]`;
-  const nextVersionHeaderRegex = /# \[@solid-design-system\/components-v\d+\.\d+\.\d+/g;
+  const newVersionHeader = `## ${newVersion}`;
+  const nextVersionHeaderRegex = /^## .+/gm;
 
   let result;
 
