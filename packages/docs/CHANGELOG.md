@@ -1,5 +1,29 @@
 # @solid-design-system/docs
 
+## 1.2.3
+
+### Patch Changes
+
+- Test release for next branch _[`#1728`](https://github.com/solid-design-system/solid/pull/1728) [`2531b2a`](https://github.com/solid-design-system/solid/commit/2531b2a26a219cf05385c997dfbaa813dc134f67) [@mariohamann](https://github.com/mariohamann)_
+
+## 1.2.3-next.0
+
+### Patch Changes
+
+- Test release for next branch _[`f6eb232`](https://github.com/solid-design-system/solid/commit/f6eb2321d35d4ec0c1d114812d08294dad432901) [@mariohamann](https://github.com/mariohamann)_
+
+## 1.2.2
+
+### Patch Changes
+
+- Test pre-release _[`#1727`](https://github.com/solid-design-system/solid/pull/1727) [`edaa92d`](https://github.com/solid-design-system/solid/commit/edaa92d98729357ae51723a9f594fb7503a70438) [@mariohamann](https://github.com/mariohamann)_
+
+## 1.2.2-next.0
+
+### Patch Changes
+
+- Test pre-release _[`#1727`](https://github.com/solid-design-system/solid/pull/1727) [`a7d22a1`](https://github.com/solid-design-system/solid/commit/a7d22a191070773bb481a7935733a444091e9ee0) [@mariohamann](https://github.com/mariohamann)_
+
 ## 1.2.1
 
 ### Patch Changes
