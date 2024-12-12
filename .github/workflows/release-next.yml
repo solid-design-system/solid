@@ -3,7 +3,7 @@ name: Release new next version
 on:
   push:
     branches:
-      - 'main'
+      - 'next'
   workflow_dispatch:
 
 permissions:
