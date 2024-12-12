@@ -20,6 +20,11 @@ async function main() {
       execSync('pnpm changeset pre enter next', { stdio: 'inherit' });
     }
 
+    console.log(
+      'Generate empty changeset to make changeset happy if version changed in comparison to main but no changeset available...'
+    );
+    execSync('pnpm changeset add --empty', { stdio: 'inherit' });
+
     console.log('Generating changeset-status.json...');
     execSync('pnpm changeset status --output changeset-status.json', { stdio: 'inherit' });
 
