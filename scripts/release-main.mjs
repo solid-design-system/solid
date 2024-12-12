@@ -1,6 +1,7 @@
 import { execSync } from 'child_process';
 import { Octokit } from '@octokit/rest';
 import fs from 'fs';
+import { globbySync } from 'globby';
 
 const GH_TOKEN = process.env.GH_TOKEN;
 const NPM_TOKEN = process.env.NPM_TOKEN;
@@ -9,6 +10,14 @@ const octokit = new Octokit({ auth: GH_TOKEN });
 
 async function main() {
   try {
+    if (
+      fs.existsSync('./changeset/pre.json') &&
+      JSON.parse(fs.readFileSync('./changeset/pre.json', 'utf-8')).mode !== 'exit'
+    ) {
+      console.log('In pre-mode. Exiting...');
+      execSync('pnpm changeset pre exit', { stdio: 'inherit' });
+    }
+
     console.log('Generating changeset-status.json...');
     execSync('pnpm changeset status --output changeset-status.json', { stdio: 'inherit' });
 
@@ -95,6 +104,37 @@ async function main() {
         name: tag,
         body: releaseNotes
       });
+    }
+
+    // In this step we update the package.json files in the next branch with the new versions
+    // This is needed to ensure that the next branch publishes the correct versions
+    // and when the next branch is merged into main.
+    if (execSync('git ls-remote origin next').toString().trim()) {
+      execSync('git checkout next', { stdio: 'inherit' });
+      const packageJsonFiles = globbySync('packages/*/package.json');
+      let updatedPackages = [];
+      status.releases.forEach(release => {
+        updatedPackages[release.name] = release.newVersion;
+      });
+
+      packageJsonFiles.forEach(file => {
+        const packageJson = JSON.parse(fs.readFileSync(file, 'utf-8'));
+        const packageName = packageJson.name;
+        if (updatedPackages[packageName]) {
+          packageJson.version = updatedPackages[packageName];
+          fs.writeFileSync(file, JSON.stringify(packageJson, null, 2));
+        }
+      });
+
+      execSync('git add .');
+      execSync(
+        `git commit -m "chore(release-from-main): ${packagesWithVersions} [skip actions]" || echo "No changes to commit"`,
+        {
+          stdio: 'inherit'
+        }
+      );
+    } else {
+      console.log('Branch origin/next does not exist. No updates needed.');
     }
 
     console.log('All done!');
