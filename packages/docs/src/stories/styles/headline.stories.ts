@@ -7,7 +7,10 @@ const { overrideArgs } = storybookHelpers('sd-headline');
 const { generateTemplate } = storybookTemplate('sd-headline');
 
 /**
- * Used as a crucial element for displaying content hierarchy and to enhance accessibility.
+ * Used to display content hierarchy, visually emphasize text, and promote accessibility.
+ * It is semantically agnostic to ensure flexibility between visual and content hierarchy, however,
+ * it is recommended to pair it with appropriate semantic elements (e.g., &lt;h1&gt; through &lt;h6&gt;)
+ * to ensure a robust content structure.
  *
  * **Related templates**:
  * - [Headline with Mark](?path=/docs/templates-mark--docs)
@@ -41,7 +44,7 @@ export default {
 export const Default = {
   render: (args: any) => {
     return generateTemplate({
-      options: { templateContent: '<h4 class="%CLASSES%">%SLOT%</h4>' },
+      options: { templateContent: '<h2 class="%CLASSES%">%SLOT%</h2>' },
       args
     });
   }
