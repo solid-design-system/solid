@@ -1,4 +1,8 @@
-# @solid-design-system/components
+### 📈 Stats
+* Uncompressed: 440 KB (+1 KB / +0%)
+* Gzipped: 132 KB (unchanged)
+
+### 📈 Stats
 
 ## 3.23.1
 
@@ -9,9 +13,10 @@
   - Correctly label icon-button dropdown triggers.
   - Fix focus on the trigger after the dropdown is hidden using the keyboard.
 
+* Uncompressed: 439 KB (+29 KB / +7%)
+* Gzipped: 132 KB (+7 KB / +6%)
+
 ### 📈 Stats
-* Uncompressed: 440 KB (+1 KB / +0%)
-* Gzipped: 132 KB (unchanged)
 
 ## 3.23.0
 
@@ -28,9 +33,10 @@
   - show tags in selected order
   - add sd-optgroup component for better grouping of options
 
-### 📈 Stats
-* Uncompressed: 439 KB (+29 KB / +7%)
-* Gzipped: 132 KB (+7 KB / +6%)
+* Uncompressed: 410 KB (+1 KB / +0%)
+* Gzipped: 125 KB (unchanged)
+
+# @solid-design-system/components
 
 ## 3.22.18
 
@@ -40,10 +46,6 @@
 
   - Implemented `aria-invalid` attribute to semantically indicate component validity.
   - Implemented live announcement to screen readers when a tag is removed.
-
-### 📈 Stats
-* Uncompressed: 410 KB (+1 KB / +0%)
-* Gzipped: 125 KB (unchanged)
 
 ## 3.22.17
 
