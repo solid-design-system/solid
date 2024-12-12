@@ -1,5 +1,12 @@
 # @solid-design-system/docs
 
+## 1.2.6
+
+### Patch Changes
+
+- Very very last release for pre-releases _[`#1734`](https://github.com/solid-design-system/solid/pull/1734) [`ff36c84`](https://github.com/solid-design-system/solid/commit/ff36c84c046fb2659225ea68d613a8b32cb4b4d8) [@smfonseca](https://github.com/smfonseca)_
+- Test pre release _[`#1734`](https://github.com/solid-design-system/solid/pull/1734) [`ff36c84`](https://github.com/solid-design-system/solid/commit/ff36c84c046fb2659225ea68d613a8b32cb4b4d8) [@smfonseca](https://github.com/smfonseca)_
+
 ## 1.2.6-next.0
 
 ### Patch Changes
