@@ -147,6 +147,8 @@ export default class SdDrawer extends SolidElement {
 
   @watch('open', { waitUntilFirstUpdate: true })
   async handleOpenChange() {
+    const closeButtonBase = this.closeButton.shadowRoot?.querySelector('[part="base"]');
+
     if (this.open) {
       // Show
       this.emit('sd-show');
@@ -202,8 +204,8 @@ export default class SdDrawer extends SolidElement {
       ]);
 
       //Update ARIA attributes to close button
-      this.closeButton.shadowRoot?.querySelector('[part="base"]')?.setAttribute('aria-controls', 'drawer');
-      this.closeButton.shadowRoot?.querySelector('[part="base"]')?.setAttribute('aria-expanded', 'true');
+      closeButtonBase?.setAttribute('aria-controls', 'drawer');
+      closeButtonBase?.setAttribute('aria-expanded', 'true');
 
       this.emit('sd-after-show');
     } else {
@@ -247,7 +249,7 @@ export default class SdDrawer extends SolidElement {
       }
 
       //Add a11y attributes to close button
-      this.closeButton.shadowRoot?.querySelector('[part="base"]')?.setAttribute('aria-expanded', 'false');
+      closeButtonBase?.setAttribute('aria-expanded', 'false');
 
       this.emit('sd-after-hide');
     }
@@ -337,7 +339,6 @@ export default class SdDrawer extends SolidElement {
                       variant="tertiary"
                       size="lg"
                       part="close-button"
-                      id="close-button"
                       @click=${() => this.requestClose('close-button')}
                     >
                       <sd-icon label=${this.localize.term('close')} name="close" library="system"></sd-icon>
