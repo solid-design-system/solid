@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.2.4
+
+### Patch Changes
+
+- Very final release for pre-releases _[`#1731`](https://github.com/solid-design-system/solid/pull/1731) [`9c11ee0`](https://github.com/solid-design-system/solid/commit/9c11ee0907059fe6477781a4f4d4395ab20c3e43) [@mariohamann](https://github.com/mariohamann)_
+
 ## 1.2.4-next.0
 
 ### Patch Changes
