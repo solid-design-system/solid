@@ -52,6 +52,12 @@ export default class SdIcon extends SolidElement {
   connectedCallback() {
     super.connectedCallback();
     watchIcon(this);
+
+    if (!this.label) {
+      console.error(
+        '[solid-design-system]: The `label` prop is required for the `sd-icon` component to ensure accessibility. Please provide a descriptive label.'
+      );
+    }
   }
 
   firstUpdated() {
