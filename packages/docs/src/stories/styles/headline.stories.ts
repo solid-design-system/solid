@@ -85,11 +85,11 @@ export const Inline = {
   render: () => html`
     <div class="flex flex-col gap-12">
       <h4 class="sd-headline">
-        <sd-icon name="content/picture" library="global-resources"></sd-icon>
+        <sd-icon name="content/image"></sd-icon>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.
       </h4>
       <h4 class="sd-headline sd-headline--inline">
-        <sd-icon name="content/picture" library="global-resources"></sd-icon>
+        <sd-icon name="content/image"></sd-icon>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do magna aliqua.
       </h4>
     </div>
