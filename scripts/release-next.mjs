@@ -10,8 +10,8 @@ const octokit = new Octokit({ auth: GH_TOKEN });
 async function main() {
   try {
     if (
-      !fs.existsSync('./changeset/pre.json') ||
-      JSON.parse(fs.readFileSync('./changeset/pre.json', 'utf-8')).mode !== 'pre'
+      !fs.existsSync('./.changeset/pre.json') ||
+      JSON.parse(fs.readFileSync('./.changeset/pre.json', 'utf-8')).mode !== 'pre'
     ) {
       console.log('Not in pre-mode. Will be entered now.');
       execSync('pnpm changeset pre enter next', { stdio: 'inherit' });

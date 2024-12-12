@@ -1,7 +1,7 @@
 import { execSync } from 'child_process';
+import { globbySync } from 'globby';
 import { Octokit } from '@octokit/rest';
 import fs from 'fs';
-import { globbySync } from 'globby';
 
 const GH_TOKEN = process.env.GH_TOKEN;
 const NPM_TOKEN = process.env.NPM_TOKEN;
@@ -11,8 +11,8 @@ const octokit = new Octokit({ auth: GH_TOKEN });
 async function main() {
   try {
     if (
-      fs.existsSync('./changeset/pre.json') &&
-      JSON.parse(fs.readFileSync('./changeset/pre.json', 'utf-8')).mode !== 'exit'
+      fs.existsSync('./.changeset/pre.json') &&
+      JSON.parse(fs.readFileSync('./.changeset/pre.json', 'utf-8')).mode !== 'exit'
     ) {
       console.log('In pre-mode. Exiting...');
       execSync('pnpm changeset pre exit', { stdio: 'inherit' });
@@ -112,7 +112,7 @@ async function main() {
     if (execSync('git ls-remote origin next').toString().trim()) {
       execSync('git checkout next', { stdio: 'inherit' });
       const packageJsonFiles = globbySync('packages/*/package.json');
-      let updatedPackages = [];
+      const updatedPackages = [];
       status.releases.forEach(release => {
         updatedPackages[release.name] = release.newVersion;
       });
