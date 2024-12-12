@@ -9,6 +9,9 @@ const octokit = new Octokit({ auth: GH_TOKEN });
 
 async function main() {
   try {
+    execSync('git checkout main', { stdio: 'inherit' });
+    execSync('git checkout next', { stdio: 'inherit' });
+
     if (
       !fs.existsSync('./.changeset/pre.json') ||
       JSON.parse(fs.readFileSync('./.changeset/pre.json', 'utf-8')).mode !== 'pre'
