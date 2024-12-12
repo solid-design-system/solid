@@ -35,7 +35,7 @@ export default {
           <ul>
             <li>Unordered list level 2
               <ul>
-               <li>Unordered list level 3</li>
+                <li>Unordered list level 3</li>
               </ul>
             </li>
           </ul>
@@ -75,15 +75,15 @@ export const Variants = {
       </ol>
       <ul class="sd-list--icon sd-list">
         <li>
-          <sd-icon name="content/picture" library="global-resources"></sd-icon>
+          <sd-icon name="content/image"></sd-icon>
           Icon list
         </li>
         <li>
-          <sd-icon name="content/picture" library="global-resources"></sd-icon>
+          <sd-icon name="content/image"></sd-icon>
           Icon list
         </li>
         <li>
-          <sd-icon name="content/picture" library="global-resources"></sd-icon>
+          <sd-icon name="content/image"></sd-icon>
           Icon list
         </li>
       </ul>
@@ -128,15 +128,15 @@ export const Levels = {
       </ol>
       <ul class="sd-list--icon sd-list">
         <li>
-          <sd-icon name="content/picture" library="global-resources"></sd-icon>
+          <sd-icon name="content/image"></sd-icon>
           Unordered list level 1
           <ul class="sd-list--icon sd-list">
             <li>
-              <sd-icon name="content/picture" library="global-resources"></sd-icon>
+              <sd-icon name="content/image"></sd-icon>
               Unordered list level 2
               <ul class="sd-list--icon sd-list">
                 <li>
-                  <sd-icon name="content/picture" library="global-resources"></sd-icon>
+                  <sd-icon name="content/image"></sd-icon>
                   Unordered list level 3
                 </li>
               </ul>
@@ -144,11 +144,11 @@ export const Levels = {
           </ul>
         </li>
         <li>
-          <sd-icon name="content/picture" library="global-resources"></sd-icon>
+          <sd-icon name="content/image"></sd-icon>
           Unordered list level 1
         </li>
         <li>
-          <sd-icon name="content/picture" library="global-resources"></sd-icon>
+          <sd-icon name="content/image"></sd-icon>
           Unordered list level 1
         </li>
       </ul>
@@ -163,29 +163,29 @@ export const Orientation = {
     html`<div class="flex flex-row justify-around items-center">
       <ul class="sd-list--icon sd-list">
         <li>
-          <sd-icon name="content/picture" library="global-resources"></sd-icon>
+          <sd-icon name="content/image"></sd-icon>
           Vertical list
         </li>
         <li>
-          <sd-icon name="content/picture" library="global-resources"></sd-icon>
+          <sd-icon name="content/image"></sd-icon>
           Vertical list
         </li>
         <li>
-          <sd-icon name="content/picture" library="global-resources"></sd-icon>
+          <sd-icon name="content/image"></sd-icon>
           Vertical list
         </li>
       </ul>
       <ul class="sd-list--icon sd-list--horizontal sd-list">
         <li>
-          <sd-icon name="content/picture" library="global-resources"></sd-icon>
+          <sd-icon name="content/image"></sd-icon>
           Horizontal list
         </li>
         <li>
-          <sd-icon name="content/picture" library="global-resources"></sd-icon>
+          <sd-icon name="content/image"></sd-icon>
           Horizontal list
         </li>
         <li>
-          <sd-icon name="content/picture" library="global-resources"></sd-icon>
+          <sd-icon name="content/image"></sd-icon>
           Horizontal list
         </li>
       </ul>
@@ -200,15 +200,15 @@ export const Inverted = {
     html`<div class="bg-primary p-4">
       <ul class="sd-list--icon sd-list sd-list--inverted">
         <li>
-          <sd-icon name="content/picture" library="global-resources"></sd-icon>
+          <sd-icon name="content/image"></sd-icon>
           Icon list inverted
         </li>
         <li>
-          <sd-icon name="content/picture" library="global-resources"></sd-icon>
+          <sd-icon name="content/image"></sd-icon>
           Icon list inverted
         </li>
         <li>
-          <sd-icon name="content/picture" library="global-resources"></sd-icon>
+          <sd-icon name="content/image"></sd-icon>
           Icon list inverted
         </li>
       </ul>

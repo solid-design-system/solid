@@ -12,7 +12,7 @@ on:
 jobs:
   chromatic-deployment-main:
     runs-on: ubuntu-latest
-    if: ${{ !contains(github.event.head_commit.message, '[skip chromatic]') }}
+    if: ${{ vars.CHROMATIC_BASELINE_BRANCH == 'main' && !contains(github.event.head_commit.message, '[skip chromatic]') }}
     steps:
         # 👇 Version 2 of the action
       - name: Checkout repository
