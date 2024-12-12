@@ -1,5 +1,5 @@
 ---
-"@fake-scope/fake-pkg": patch
+'@fake-scope/fake-pkg': patch
 ---
 
 fix: make sd-tooltip more accessible:
