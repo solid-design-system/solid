@@ -42,13 +42,19 @@ fs.readFile('./CHANGELOG.md', 'utf8', (err, data) => {
 
   let result;
 
-  if (data.startsWith(newVersionHeader)) {
-    // If the new version header exists, find the next version header and insert the content before it
+  if (data.includes(newVersionHeader)) {
+    // If the new version header exists, find the next version header and insert content before it
     let replaced = false;
-    result = data.replace(nextVersionHeaderRegex, (match, offset) => {
-      if (offset === 0 || replaced) return match; // Ignore the first match (new version header) and any matches after the first replacement
-      replaced = true;
-      return additionalContent + match;
+    result = data.replace(nextVersionHeaderRegex, (match, offset, string) => {
+      // Replace only after the new version header
+      const isAfterNewVersion = string.indexOf(newVersionHeader) < offset && !replaced;
+
+      if (isAfterNewVersion) {
+        replaced = true;
+        return additionalContent + match;
+      }
+
+      return match;
     });
   } else {
     // If the new version header doesn't exist, insert the content at the start of the file
