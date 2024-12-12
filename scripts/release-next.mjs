@@ -9,6 +9,17 @@ const octokit = new Octokit({ auth: GH_TOKEN });
 
 async function main() {
   try {
+    execSync('git checkout main', { stdio: 'inherit' });
+    execSync('git checkout next', { stdio: 'inherit' });
+
+    if (
+      !fs.existsSync('./.changeset/pre.json') ||
+      JSON.parse(fs.readFileSync('./.changeset/pre.json', 'utf-8')).mode !== 'pre'
+    ) {
+      console.log('Not in pre-mode. Will be entered now.');
+      execSync('pnpm changeset pre enter next', { stdio: 'inherit' });
+    }
+
     console.log('Generating changeset-status.json...');
     execSync('pnpm changeset status --output changeset-status.json', { stdio: 'inherit' });
 
@@ -46,9 +57,8 @@ async function main() {
     execSync('git config user.name "github-actions[bot]"');
     execSync('git config user.email "github-actions[bot]@users.noreply.github.com"');
 
-    // It is important to use [skip actions] instead of [skip ci] to avoid triggering another workflow run
-    // on GitHub but still allow Azure to run the workflow.
-    const commitMessage = `chore(release): ${packagesWithVersions} [skip actions]`;
+    // It is important to remove [skip actions] here, as otherwise we can't merge on main.
+    const commitMessage = `chore(release-next): ${packagesWithVersions}`;
 
     execSync('git add .');
     execSync(`git commit -m "${commitMessage}" || echo "No changes to commit"`, { stdio: 'inherit' });
@@ -56,8 +66,8 @@ async function main() {
     console.log('Set origin with PAT...');
     execSync(`git remote set-url origin https://${GH_TOKEN}@github.com/solid-design-system/solid.git`);
 
-    console.log('Pushing changes to main...');
-    execSync('git push origin main', { stdio: 'inherit' });
+    console.log('Pushing changes to next...');
+    execSync('git push origin next', { stdio: 'inherit' });
 
     console.log('Publishing to NPM...');
     execSync(`pnpm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"`, { stdio: 'inherit' });
