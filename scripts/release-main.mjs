@@ -130,7 +130,7 @@ async function main() {
       execSync(`git commit -m "chore(release-from-main): ${packagesWithVersions}" || echo "No changes to commit"`, {
         stdio: 'inherit'
       });
-      execSync('git push origin next', { stdio: 'inherit' });
+      execSync('git push', { stdio: 'inherit' });
     } else {
       console.log('Branch origin/next does not exist. No updates needed.');
     }
