@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.2.3
+
+### Patch Changes
+
+- Test release for next branch _[`#1728`](https://github.com/solid-design-system/solid/pull/1728) [`2531b2a`](https://github.com/solid-design-system/solid/commit/2531b2a26a219cf05385c997dfbaa813dc134f67) [@mariohamann](https://github.com/mariohamann)_
+
 ## 1.2.3-next.0
 
 ### Patch Changes
