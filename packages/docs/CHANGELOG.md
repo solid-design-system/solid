@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.2.1
+
+### Patch Changes
+
+- Improve carousel template alt descriptions _[`#1725`](https://github.com/solid-design-system/solid/pull/1725) [`203a8d8`](https://github.com/solid-design-system/solid/commit/203a8d83a69cba68df64ae5880a06c7927d4dcd9) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.2.0
 
 ### Minor Changes
