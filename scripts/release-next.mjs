@@ -57,9 +57,8 @@ async function main() {
     execSync('git config user.name "github-actions[bot]"');
     execSync('git config user.email "github-actions[bot]@users.noreply.github.com"');
 
-    // It is important to use [skip actions] instead of [skip ci] to avoid triggering another workflow run
-    // on GitHub but still allow Azure to run the workflow.
-    const commitMessage = `chore(release-next): ${packagesWithVersions} [skip actions]`;
+    // It is important to remove [skip actions] here, as otherwise we can't merge on main.
+    const commitMessage = `chore(release-next): ${packagesWithVersions}`;
 
     execSync('git add .');
     execSync(`git commit -m "${commitMessage}" || echo "No changes to commit"`, { stdio: 'inherit' });
