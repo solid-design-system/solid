@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.2.6-next.0
+
+### Patch Changes
+
+- Test pre release _[`6ef5d5b`](https://github.com/solid-design-system/solid/commit/6ef5d5bbd10db442649e85970b8a88babde9236b) [@smfonseca](https://github.com/smfonseca)_
+
 ## 1.2.5
 
 ### Patch Changes
