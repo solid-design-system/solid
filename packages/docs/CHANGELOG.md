@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.2.11
+
+### Patch Changes
+
+- Fix typos in docs and configure spelling extension. _[`#1723`](https://github.com/solid-design-system/solid/pull/1723) [`1bf55d3`](https://github.com/solid-design-system/solid/commit/1bf55d37ffeaec412589b9bb0acccfe2d1d69978) [@karlbaumhauer](https://github.com/karlbaumhauer)_
+
 ## 1.2.10
 
 ### Patch Changes
