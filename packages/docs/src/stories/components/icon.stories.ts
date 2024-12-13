@@ -120,7 +120,7 @@ export const Size = {
 /**
  * You can register additional icons to use with the `<sd-icon>` component through icon libraries. Icon files can exist locally or on a CORS-enabled endpoint (e.g. a CDN). There is no limit to how many icon libraries you can register and there is no cost associated with registering them, as individual icons are only requested when they're used.
  * Solid ships with two built-in icon libraries, `default` and `system`:
- * - `default`: The `default` icon library refers to the official CDN by Union Investment which is fed by Celum. It is provided by the brand departement, therefore requests towards the icons itself need to be addressed accordingly.
+ * - `default`: The `default` icon library refers to the official CDN by Union Investment which is fed by Celum. It is provided by the brand department, therefore requests towards the icons itself need to be addressed accordingly.
  * - `system`: They icons are an integrated library of the Solid Components to ensure they're always available. They are a subset of Union Investment's official icons. As names and visuals may change over time, system icons should NOT be used directly.
  *
  * To register an additional icon library, use the `registerIconLibrary()` function that's exported from `utilities/icon-library.js`. At a minimum, you must provide a name and a resolver function. The resolver function translates an icon name to a URL where the corresponding SVG file exists. Refer to the examples below to better understand how it works.
