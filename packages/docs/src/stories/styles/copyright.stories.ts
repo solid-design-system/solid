@@ -109,7 +109,7 @@ export const Orientation = {
  * - bottom is the default placement
  * - `sd-copyright--placement-top`
  *
- * **Accessibility Hint:** Used when copyright is displayed in a video.
+ * **Accessibility Hint:** To ensure accessibility use the top placement when display in a video.
  */
 export const Placement = {
   render: () =>
