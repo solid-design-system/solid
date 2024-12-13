@@ -23,7 +23,9 @@ function isTabbable(el: HTMLElement) {
   }
 
   // Elements that are hidden have no offsetParent and are not tabbable
-  if (el.offsetParent === null) {
+  // Elements when have the shadow root as a parent node, also have offsetParent as null,
+  // therefore, we need to check if elements parent is the shadow root.
+  if (el.offsetParent === null && !(el.getRootNode() instanceof ShadowRoot)) {
     return false;
   }
 
