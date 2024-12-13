@@ -1,5 +1,14 @@
 # @solid-design-system/docs
 
+## 1.2.9
+
+### Patch Changes
+
+- Improve sd-dialog examples and templates: _[`#1721`](https://github.com/solid-design-system/solid/pull/1721) [`d81bd6d`](https://github.com/solid-design-system/solid/commit/d81bd6d60f42f9ac675f3d15744952f9dfca3bed) [@smfonseca](https://github.com/smfonseca)_
+
+  - Added buttons to reopen dialog in both stories and templates
+  - Added example actions to the templates buttons
+
 ## 1.2.8
 
 ### Patch Changes

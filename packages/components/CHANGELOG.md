@@ -1,5 +1,16 @@
 # @solid-design-system/components
 
+## 3.23.4
+
+### Patch Changes
+
+- Improved sd-dialog accessibility: _[`#1721`](https://github.com/solid-design-system/solid/pull/1721) [`d81bd6d`](https://github.com/solid-design-system/solid/commit/d81bd6d60f42f9ac675f3d15744952f9dfca3bed) [@smfonseca](https://github.com/smfonseca)_
+
+  - Added focus styles on dialog panel
+  - Fixed content overflowing when zoom level is above 250%
+  - Fixed invalid nested header in the `headline` slot
+  - Updated documentation for `headline` slot
+
 ## 3.23.3
 
 ### Patch Changes
