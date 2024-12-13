@@ -110,7 +110,13 @@ async function main() {
     // This is needed to ensure that the next branch publishes the correct versions
     // and when the next branch is merged into main.
     if (execSync('git ls-remote origin next').toString().trim()) {
-      execSync('git checkout origin/next', { stdio: 'inherit' });
+      try {
+        execSync('git checkout next', { stdio: 'inherit' });
+      } catch {
+        console.log('Creating local branch tracking origin/next...');
+        execSync('git checkout -b next origin/next', { stdio: 'inherit' });
+      }
+
       const packageJsonFiles = globbySync('packages/*/package.json');
       const updatedPackages = [];
       status.releases.forEach(release => {
@@ -130,7 +136,7 @@ async function main() {
       execSync(`git commit -m "chore(release-from-main): ${packagesWithVersions}" || echo "No changes to commit"`, {
         stdio: 'inherit'
       });
-      execSync('git push origin next', { stdio: 'inherit' });
+      execSync('git push', { stdio: 'inherit' });
     } else {
       console.log('Branch origin/next does not exist. No updates needed.');
     }
