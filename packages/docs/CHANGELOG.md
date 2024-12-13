@@ -1,5 +1,17 @@
 # @solid-design-system/docs
 
+## 1.2.10
+
+### Patch Changes
+
+- Improve copyright: _[`#1691`](https://github.com/solid-design-system/solid/pull/1691) [`0ea037c`](https://github.com/solid-design-system/solid/commit/0ea037cf5b283ea52936fc84e5eaea112ead257e) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Add class to black color variant
+  - Add class to remove shadow
+  - Add class to top placement
+  - Improve docs
+  - Add tests for new variants
+
 ## 1.2.9
 
 ### Patch Changes
