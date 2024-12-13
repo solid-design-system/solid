@@ -1,5 +1,18 @@
 # @solid-design-system/docs
 
+## 1.2.7
+
+### Patch Changes
+
+- Improved a11y for sd-step and sd-step-group: _[`#1688`](https://github.com/solid-design-system/solid/pull/1688) [`56daf24`](https://github.com/solid-design-system/solid/commit/56daf244989a624e2c54a22b94927d5aeb2fe44c) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Add list role to sd-step-group
+  - Add list-item role to sd-step
+  - Fix tests
+  - Remove tabindex to avoid a mismatch between information the users get depending on the chosen navigation type
+  - Add ARIA attributes to components
+  - Fix text colors in disabled state
+
 ## 1.2.6
 
 ### Patch Changes
