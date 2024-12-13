@@ -1,5 +1,18 @@
 # @solid-design-system/components
 
+## 3.23.2
+
+### Patch Changes
+
+- Improved a11y for sd-step and sd-step-group: _[`#1688`](https://github.com/solid-design-system/solid/pull/1688) [`56daf24`](https://github.com/solid-design-system/solid/commit/56daf244989a624e2c54a22b94927d5aeb2fe44c) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Add list role to sd-step-group
+  - Add list-item role to sd-step
+  - Fix tests
+  - Remove tabindex to avoid a mismatch between information the users get depending on the chosen navigation type
+  - Add ARIA attributes to components
+  - Fix text colors in disabled state
+
 ## 3.23.1
 
 ### Patch Changes
@@ -10,8 +23,9 @@
   - Fix focus on the trigger after the dropdown is hidden using the keyboard.
 
 ### 📈 Stats
-* Uncompressed: 440 KB (+1 KB / +0%)
-* Gzipped: 132 KB (unchanged)
+
+- Uncompressed: 440 KB (+1 KB / +0%)
+- Gzipped: 132 KB (unchanged)
 
 ## 3.23.0
 
@@ -29,8 +43,9 @@
   - add sd-optgroup component for better grouping of options
 
 ### 📈 Stats
-* Uncompressed: 439 KB (+29 KB / +7%)
-* Gzipped: 132 KB (+7 KB / +6%)
+
+- Uncompressed: 439 KB (+29 KB / +7%)
+- Gzipped: 132 KB (+7 KB / +6%)
 
 ## 3.22.18
 
@@ -42,8 +57,9 @@
   - Implemented live announcement to screen readers when a tag is removed.
 
 ### 📈 Stats
-* Uncompressed: 410 KB (+1 KB / +0%)
-* Gzipped: 125 KB (unchanged)
+
+- Uncompressed: 410 KB (+1 KB / +0%)
+- Gzipped: 125 KB (unchanged)
 
 ## 3.22.17
 
