@@ -1,5 +1,5 @@
 import '../../../../components/src/solid-components';
-import { html, render } from 'lit-html';
+import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
 const { argTypes, parameters } = storybookDefaults('sd-copyright');
