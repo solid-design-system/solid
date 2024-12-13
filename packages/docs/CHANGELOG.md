@@ -1,5 +1,17 @@
 # @solid-design-system/docs
 
+## 1.2.8
+
+### Patch Changes
+
+- Improved a11y for sd-header: _[`#1668`](https://github.com/solid-design-system/solid/pull/1668) [`c2fb231`](https://github.com/solid-design-system/solid/commit/c2fb2318e910be9fd591ca50292a886a898d1c00) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Add ARIA attributes sd-drawer close button
+  - Improve logo link alt text
+  - Improve open drawer button name
+  - Add ARIA attributes to open drawer button
+  - Improve icon buttons names
+
 ## 1.2.7
 
 ### Patch Changes
