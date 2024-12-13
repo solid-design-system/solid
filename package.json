@@ -19,8 +19,7 @@
     "lint.verify": "eslint packages --max-warnings 0 && echo '✅ Linting verified'",
     "format.verify": "prettier --check --log-level warn . && echo '✅ Formatting verified'",
     "format.fix": "prettier --write --log-level warn .",
-    "changeset": "changeset",
-    "release": "node ./scripts/release.mjs"
+    "changeset": "changeset"
   },
   "lib": "es2021",
   "keywords": [],
@@ -35,11 +34,11 @@
     ]
   },
   "devDependencies": {
-    "@changesets/changelog-github": "^0.5.0",
     "@changesets/cli": "^2.27.10",
     "@octokit/rest": "^21.0.2",
     "@typescript-eslint/eslint-plugin": "^7.13.1",
     "@typescript-eslint/parser": "^7.13.1",
+    "changesets-changelog-clean": "^1.3.0",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-chai-expect": "^3.1.0",
@@ -50,6 +49,7 @@
     "eslint-plugin-sort-imports-es6-autofix": "^0.6.0",
     "eslint-plugin-storybook": "^0.8.0",
     "eslint-plugin-wc": "^2.1.0",
+    "globby": "^14.0.1",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.7",
     "prettier": "^3.3.2"

@@ -21,6 +21,14 @@ import fs from 'fs';
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf-8'));
 const newVersion = pkg.version;
 
+const previousSize = getOutputs().currentRealSize;
+const previousGzipSize = getOutputs().currentGzipSize;
+
+if (getOutputs().uncompressed.includes(previousSize) && getOutputs().gzip.includes(previousGzipSize)) {
+  console.log('🚫 No changes in bundle sizes. Skipping update.');
+  process.exit(0);
+}
+
 const additionalContent = `### 📈 Stats\n* ${getOutputs().uncompressed}\n* ${getOutputs().gzip}\n\n`;
 
 fs.readFile('./CHANGELOG.md', 'utf8', (err, data) => {
@@ -29,18 +37,24 @@ fs.readFile('./CHANGELOG.md', 'utf8', (err, data) => {
   }
 
   // Check if the new version header exists
-  const newVersionHeader = `# [@solid-design-system/components-v${newVersion}]`;
-  const nextVersionHeaderRegex = /# \[@solid-design-system\/components-v\d+\.\d+\.\d+/g;
+  const newVersionHeader = `## ${newVersion}`;
+  const nextVersionHeaderRegex = /^## .+/gm;
 
   let result;
 
-  if (data.startsWith(newVersionHeader)) {
-    // If the new version header exists, find the next version header and insert the content before it
+  if (data.includes(newVersionHeader)) {
+    // If the new version header exists, find the next version header and insert content before it
     let replaced = false;
-    result = data.replace(nextVersionHeaderRegex, (match, offset) => {
-      if (offset === 0 || replaced) return match; // Ignore the first match (new version header) and any matches after the first replacement
-      replaced = true;
-      return additionalContent + match;
+    result = data.replace(nextVersionHeaderRegex, (match, offset, string) => {
+      // Replace only after the new version header
+      const isAfterNewVersion = string.indexOf(newVersionHeader) < offset && !replaced;
+
+      if (isAfterNewVersion) {
+        replaced = true;
+        return additionalContent + match;
+      }
+
+      return match;
     });
   } else {
     // If the new version header doesn't exist, insert the content at the start of the file

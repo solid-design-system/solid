@@ -112,10 +112,10 @@ export const CustomIcon = {
           <p>Customize the content and attributes as needed.</p>
         </div>
         <div slot="icon-start">
-          <sd-icon library="global-resources" name="system/picture"></sd-icon>
+          <sd-icon name="system/image"></sd-icon>
         </div>
         <div slot="icon-end">
-          <sd-icon library="global-resources" name="system/picture"></sd-icon>
+          <sd-icon name="system/image"></sd-icon>
         </div>
       </sd-scrollable>
     `;
