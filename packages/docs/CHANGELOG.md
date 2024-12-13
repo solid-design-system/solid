@@ -1,5 +1,26 @@
 # @solid-design-system/docs
 
+## 1.2.9
+
+### Patch Changes
+
+- Improve sd-dialog examples and templates: _[`#1721`](https://github.com/solid-design-system/solid/pull/1721) [`d81bd6d`](https://github.com/solid-design-system/solid/commit/d81bd6d60f42f9ac675f3d15744952f9dfca3bed) [@smfonseca](https://github.com/smfonseca)_
+
+  - Added buttons to reopen dialog in both stories and templates
+  - Added example actions to the templates buttons
+
+## 1.2.8
+
+### Patch Changes
+
+- Improved a11y for sd-header: _[`#1668`](https://github.com/solid-design-system/solid/pull/1668) [`c2fb231`](https://github.com/solid-design-system/solid/commit/c2fb2318e910be9fd591ca50292a886a898d1c00) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Add ARIA attributes sd-drawer close button
+  - Improve logo link alt text
+  - Improve open drawer button name
+  - Add ARIA attributes to open drawer button
+  - Improve icon buttons names
+
 ## 1.2.7
 
 ### Patch Changes
