@@ -1,5 +1,72 @@
 # @solid-design-system/docs
 
+## 1.2.6
+
+### Patch Changes
+
+- Very very last release for pre-releases _[`#1734`](https://github.com/solid-design-system/solid/pull/1734) [`ff36c84`](https://github.com/solid-design-system/solid/commit/ff36c84c046fb2659225ea68d613a8b32cb4b4d8) [@smfonseca](https://github.com/smfonseca)_
+- Test pre release _[`#1734`](https://github.com/solid-design-system/solid/pull/1734) [`ff36c84`](https://github.com/solid-design-system/solid/commit/ff36c84c046fb2659225ea68d613a8b32cb4b4d8) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.2.6-next.0
+
+### Patch Changes
+
+- Test pre release _[`6ef5d5b`](https://github.com/solid-design-system/solid/commit/6ef5d5bbd10db442649e85970b8a88babde9236b) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.2.5
+
+### Patch Changes
+
+- Very very last release for pre-releases _[`#1732`](https://github.com/solid-design-system/solid/pull/1732) [`05f8b7d`](https://github.com/solid-design-system/solid/commit/05f8b7d3d12ca5c8a39b70e2397cfb58b880c54c) [@mariohamann](https://github.com/mariohamann)_
+
+## 1.2.5-next.0
+
+### Patch Changes
+
+- Very very last release for pre-releases _[`12d82fd`](https://github.com/solid-design-system/solid/commit/12d82fdb533a77519e6b356c96a0e616d461e4a9) [@mariohamann](https://github.com/mariohamann)_
+
+## 1.2.4
+
+### Patch Changes
+
+- Very final release for pre-releases _[`#1731`](https://github.com/solid-design-system/solid/pull/1731) [`9c11ee0`](https://github.com/solid-design-system/solid/commit/9c11ee0907059fe6477781a4f4d4395ab20c3e43) [@mariohamann](https://github.com/mariohamann)_
+
+## 1.2.4-next.0
+
+### Patch Changes
+
+- Very final release for pre-releases _[`#1731`](https://github.com/solid-design-system/solid/pull/1731) [`e60ee05`](https://github.com/solid-design-system/solid/commit/e60ee05c4a5a8f8b2218694496c928543d3ba0ba) [@mariohamann](https://github.com/mariohamann)_
+
+## 1.2.3
+
+### Patch Changes
+
+- Test release for next branch _[`#1728`](https://github.com/solid-design-system/solid/pull/1728) [`2531b2a`](https://github.com/solid-design-system/solid/commit/2531b2a26a219cf05385c997dfbaa813dc134f67) [@mariohamann](https://github.com/mariohamann)_
+
+## 1.2.3-next.0
+
+### Patch Changes
+
+- Test release for next branch _[`f6eb232`](https://github.com/solid-design-system/solid/commit/f6eb2321d35d4ec0c1d114812d08294dad432901) [@mariohamann](https://github.com/mariohamann)_
+
+## 1.2.2
+
+### Patch Changes
+
+- Test pre-release _[`#1727`](https://github.com/solid-design-system/solid/pull/1727) [`edaa92d`](https://github.com/solid-design-system/solid/commit/edaa92d98729357ae51723a9f594fb7503a70438) [@mariohamann](https://github.com/mariohamann)_
+
+## 1.2.2-next.0
+
+### Patch Changes
+
+- Test pre-release _[`#1727`](https://github.com/solid-design-system/solid/pull/1727) [`a7d22a1`](https://github.com/solid-design-system/solid/commit/a7d22a191070773bb481a7935733a444091e9ee0) [@mariohamann](https://github.com/mariohamann)_
+
+## 1.2.1
+
+### Patch Changes
+
+- Improve carousel template alt descriptions _[`#1725`](https://github.com/solid-design-system/solid/pull/1725) [`203a8d8`](https://github.com/solid-design-system/solid/commit/203a8d83a69cba68df64ae5880a06c7927d4dcd9) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.2.0
 
 ### Minor Changes
