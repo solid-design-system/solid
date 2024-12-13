@@ -137,9 +137,9 @@ export const Placement = {
             </video>
             <img
               slot="poster"
-              alt=" "
+              alt="Video highlighting Union Investment's digital transformation through a design system named Solid that enhances accessibility, sustainability, and efficiency."
               class="aspect-video object-cover h-full"
-              src="./placeholders/images/generic.jpg"
+              src="./placeholders/images/union-investment.png"
             />
           </sd-video>
         </div>
