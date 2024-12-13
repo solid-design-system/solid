@@ -7,7 +7,7 @@ const { overrideArgs } = storybookHelpers('sd-headline');
 const { generateTemplate } = storybookTemplate('sd-headline');
 
 /**
- * Used to display content hierarchy, visually emphasize text, and promote accessibility.
+ * Used to display content hierarchy and visually emphasize text.
  * It is semantically agnostic to ensure flexibility between visual and content hierarchy, however,
  * it is recommended to pair it with appropriate semantic elements (e.g., &lt;h1&gt; through &lt;h6&gt;)
  * to ensure a robust content structure.
