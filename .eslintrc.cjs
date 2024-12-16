@@ -226,6 +226,15 @@ module.exports = {
         ],
         'lit-a11y/no-aria-slot': 'off'
       }
+    },
+    {
+      files: ['packages/eslint/**/*.ts'],
+      parser: '@typescript-eslint/parser',
+      parserOptions: {
+        sourceType: 'module',
+        tsconfigRootDir: __dirname,
+        project: ['./packages/eslint/tsconfig.json']
+      }
     }
   ],
   rules: {

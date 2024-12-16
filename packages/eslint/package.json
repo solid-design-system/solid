@@ -1,0 +1,27 @@
+{
+  "name": "@solid-design-system/eslint",
+  "description": "Solid Design System: Eslint Custom Rules",
+  "version": "1.0.0",
+  "author": {
+    "name": "Union Investment"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": [],
+  "license": "MIT",
+  "devDependencies": {
+    "@types/eslint": "^9.6.1",
+    "@typescript-eslint/utils": "^8.18.0",
+    "eslint": "^8.57.0",
+    "typescript": "5.4.5"
+  },
+  "peerDependencies": {
+    "eslint": "^8.57.0"
+  }
+}
