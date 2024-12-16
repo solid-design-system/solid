@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
     "skipLibCheck": true,
     "declaration": true,
+    "esModuleInterop": true,
     "allowJs": true,
     "outDir": "dist",
     "baseUrl": ".",

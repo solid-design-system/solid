@@ -124,6 +124,9 @@
     "vite-plugin-cem": "^0.8.0",
     "vite-tsconfig-paths": "^4.2.1"
   },
+  "peerDependencies": {
+    "@solid-design-system/eslint": "workspace:*"
+  },
   "readme": "README.md",
   "meta": {
     "bundleSizeInKb": {
