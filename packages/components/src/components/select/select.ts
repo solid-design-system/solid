@@ -1151,6 +1151,14 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
         @apply rounded-default px-1;
       }
 
+      sd-tag::part(content) {
+        max-width: var(--tag-max-width, 15ch);
+        overflow: hidden;
+        white-space: nowrap;
+        display: inline-block;
+        text-overflow: ellipsis;
+      }
+
       sd-tag[size='lg']::part(base) {
         @apply px-2;
       }
