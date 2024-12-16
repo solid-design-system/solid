@@ -285,7 +285,6 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       this.selectedTextLabel = option?.getTextLabel() || '';
     }
     this.formControlController.updateValidity();
-    this.applySizeToOptions();
   }
 
   /** Gets the validity state object */
@@ -459,16 +458,16 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
           this.setSelectedOptions(currentOption);
         }
 
-        // Set focus after updating so the value is announced by screen readers
-        this.updateComplete.then(() => this.displayInput.focus({ preventScroll: true }));
+        this.updateComplete.then(() => {
+          // Set focus after updating so the value is announced by screen readers
+          this.displayInput.focus({ preventScroll: true });
 
-        if (this.value !== oldValue) {
           // Emit after updating
-          this.updateComplete.then(() => {
+          if (this.value !== oldValue) {
             this.emit('sd-input');
             this.emit('sd-change');
-          });
-        }
+          }
+        });
       }
 
       this.displayInput.focus({ preventScroll: true });
@@ -636,16 +635,16 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
         this.setOrderedSelectedOptions(option);
         this.setSelectedOptions(option);
       }
-      // Set focus after updating so the value is announced by screen readers
-      this.updateComplete.then(() => this.displayInput.focus({ preventScroll: true }));
 
-      if (this.value !== oldValue) {
+      this.updateComplete.then(() => {
+        // Set focus after updating so the value is announced by screen readers
+        this.displayInput.focus({ preventScroll: true });
         // Emit after updating
-        this.updateComplete.then(() => {
+        if (this.value !== oldValue) {
           this.emit('sd-input');
           this.emit('sd-change');
-        });
-      }
+        }
+      });
       if (!this.multiple) {
         this.hide();
         this.displayInput.focus({ preventScroll: true });
@@ -850,6 +849,8 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
 
         clonedOption.current = clonedOption.value === this.lastOption?.value;
         clonedOption.selected = option.selected;
+        clonedOption.checkbox = option.checkbox;
+        clonedOption.size = option.size;
 
         // Check if the option has a sd-optgroup as parent
         const hasOptgroup = option.parentElement?.tagName.toLowerCase() === 'sd-optgroup';
@@ -1094,6 +1095,8 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
 
     const slottedOptions = this.getSlottedOptions();
     const slottedOptgroups = this.getSlottedOptGroups();
+    this.applySizeToOptions();
+
     slottedOptions.forEach((option, index) => {
       if (this.multiple) {
         option.checkbox = true;
