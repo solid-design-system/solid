@@ -51,7 +51,7 @@ export const ReversedLayout = {
       <div class="p-0">
         ${generateTemplate({
           args: {
-            reversedLayout: true
+            'reversed-layout': true
           },
           constants: [audioConstant, transcriptConstant]
         })}
@@ -84,7 +84,7 @@ export const AnimatedAndReversed = {
         ${generateTemplate({
           args: {
             animated: true,
-            reversedLayout: true
+            'reversed-layout': true
           },
           constants: [audioConstant, transcriptConstant]
         })}
@@ -133,7 +133,7 @@ export const HiddenTimestamps = {
       <div class="p-0">
         ${generateTemplate({
           args: {
-            hideTimestamps: true
+            'hide-timestamps': true
           },
           constants: [audioConstant, transcriptConstant]
         })}
@@ -147,16 +147,14 @@ export const Slots = {
   render: (args: any) => {
     return html`
       ${['default', 'play-icon', 'pause-icon'].map(slot => {
-        let value = `<div slot='${slot}' class="slot slot--border slot--background h-16"></div>`;
+        let value = '';
 
         if (slot === 'default') {
-          value = `<div class="slot slot--border slot--background h-full w-full absolute top-0 left-0" slot=${slot}></div>`;
+          value = `<div class="slot slot--border slot--background h-full w-full absolute top-0 left-0"></div>`;
         } else if (slot === 'play-icon') {
-          value = `<sd-icon class="slot slot--border slot--background h-8 text-white w-8" slot=${slot} library="system" name="start"></sd-icon>`;
+          value = `<sd-icon class="slot slot--border slot--background text-white text-3xl" slot="play-icon" library="system" name="start"></sd-icon>`;
         } else if (slot === 'pause-icon') {
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-          args.isPlaying = true;
-          value = `<sd-icon class="slot slot--border slot--background h-8 text-white w-8" slot=${slot} library="system" name="pause"></sd-icon>`;
+          value = `<sd-icon class="slot slot--border slot--background text-white text-3xl" slot="pause-icon" library="system" name="pause"></sd-icon>`;
         }
 
         return generateTemplate({
@@ -242,7 +240,7 @@ export const SamplesTeaser = {
       </style>
       <div>
         <div class="px-12 pt-12">
-          <sd-teaser variant="default">
+          <sd-teaser>
             <div slot="media" class="relative">
               <img
                 class="aspect-square object-cover"

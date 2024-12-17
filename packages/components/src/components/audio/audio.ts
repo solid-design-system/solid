@@ -415,10 +415,11 @@ export default class SdAudio extends SolidElement {
         size="lg"
         @click=${!this.isPlaying ? this.playAudio : this.pauseAudio}
         aria-label="${this.isPlaying ? this.localize.term('pauseAudio') : this.localize.term('playAudio')}"
+        class="text-3xl"
       >
         ${this.isPlaying
-          ? html` <sd-icon name="pause" library="system"></sd-icon>`
-          : html` <sd-icon name="start" library="system"></sd-icon>`}
+          ? html` <slot name="pause-icon"><sd-icon class="text-3xl" name="pause" library="system"></sd-icon></slot>`
+          : html` <slot name="play-icon"><sd-icon class="text-3xl" name="start" library="system"></sd-icon></slot>`}
       </sd-button>
 
       <div class="flex items-center justify-self-end">
@@ -557,7 +558,7 @@ export default class SdAudio extends SolidElement {
       }
 
       sd-button::part(label) {
-        @apply flex-grow-0;
+        @apply flex flex-grow-0 items-center;
       }
     `
   ];
