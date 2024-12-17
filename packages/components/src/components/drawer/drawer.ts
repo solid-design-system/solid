@@ -5,7 +5,6 @@ import { css, html } from 'lit';
 import { customElement } from '../../../src/internal/register-custom-element';
 import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry';
 import { HasSlotController } from '../../internal/slot';
-import { ifDefined } from 'lit/directives/if-defined.js';
 import { LocalizeController } from '../../utilities/localize';
 import { lockBodyScrolling, unlockBodyScrolling } from '../../internal/scroll';
 import { property, query } from 'lit/decorators.js';
@@ -171,6 +170,8 @@ export default class SdDrawer extends SolidElement {
 
       await Promise.all([stopAnimations(this.drawer), stopAnimations(this.overlay)]);
       this.drawer.hidden = false;
+      this.drawer.removeAttribute('inert');
+      this.panel.focus();
 
       // Set initial focus
       requestAnimationFrame(() => {
@@ -230,6 +231,7 @@ export default class SdDrawer extends SolidElement {
       ]);
 
       this.drawer.hidden = true;
+      this.drawer.setAttribute('inert', '');
 
       // Now that the dialog is hidden, restore the overlay and panel for next time
       this.overlay.hidden = false;
@@ -308,9 +310,7 @@ export default class SdDrawer extends SolidElement {
           )}
           role="dialog"
           aria-modal="true"
-          aria-hidden=${this.open ? 'false' : 'true'}
           aria-label=${this.label}
-          aria-labelledby=${ifDefined(!this.noHeader ? 'title' : undefined)}
           tabindex="0"
         >
           ${!this.noHeader
@@ -334,8 +334,15 @@ export default class SdDrawer extends SolidElement {
                   </div>
                 </header>
               `
-            : ''}
-          <div part="body" class="flex-auto block px-4">
+            : html` <sd-button
+                variant="tertiary"
+                size="lg"
+                part="close-button"
+                @click=${() => this.requestClose('close-button')}
+                class="absolute top-2 right-2"
+                ><sd-icon label=${this.localize.term('close')} name="close" library="system"></sd-icon
+              ></sd-button>`}
+          <div part="body" class="flex-auto block px-4 py-4">
             <slot></slot>
           </div>
           <footer part="footer" class=${cx(this.hasSlotController.test('footer') ? 'text-left p-4' : 'hidden')}>
