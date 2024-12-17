@@ -1,4 +1,125 @@
-## 3.22.13
+# @solid-design-system/components
+
+## 3.24.0
+
+### Minor Changes
+
+- Improve copyright: _[`#1691`](https://github.com/solid-design-system/solid/pull/1691) [`0ea037c`](https://github.com/solid-design-system/solid/commit/0ea037cf5b283ea52936fc84e5eaea112ead257e) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Add class to black color variant
+  - Add class to remove shadow
+  - Add class to top placement
+  - Improve docs
+  - Add tests for new variants
+
+## 3.23.4
+
+### Patch Changes
+
+- Improved sd-dialog accessibility: _[`#1721`](https://github.com/solid-design-system/solid/pull/1721) [`d81bd6d`](https://github.com/solid-design-system/solid/commit/d81bd6d60f42f9ac675f3d15744952f9dfca3bed) [@smfonseca](https://github.com/smfonseca)_
+
+  - Added focus styles on dialog panel
+  - Fixed content overflowing when zoom level is above 250%
+  - Fixed invalid nested header in the `headline` slot
+  - Updated documentation for `headline` slot
+
+## 3.23.3
+
+### Patch Changes
+
+- Improved a11y for sd-header: _[`#1668`](https://github.com/solid-design-system/solid/pull/1668) [`c2fb231`](https://github.com/solid-design-system/solid/commit/c2fb2318e910be9fd591ca50292a886a898d1c00) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Add ARIA attributes sd-drawer close button
+  - Improve logo link alt text
+  - Improve open drawer button name
+  - Add ARIA attributes to open drawer button
+  - Improve icon buttons names
+
+## 3.23.2
+
+### Patch Changes
+
+- Improved a11y for sd-step and sd-step-group: _[`#1688`](https://github.com/solid-design-system/solid/pull/1688) [`56daf24`](https://github.com/solid-design-system/solid/commit/56daf244989a624e2c54a22b94927d5aeb2fe44c) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Add list role to sd-step-group
+  - Add list-item role to sd-step
+  - Fix tests
+  - Remove tabindex to avoid a mismatch between information the users get depending on the chosen navigation type
+  - Add ARIA attributes to components
+  - Fix text colors in disabled state
+
+## 3.23.1
+
+### Patch Changes
+
+- Improved sd-dropdown a11y: _[`#1715`](https://github.com/solid-design-system/solid/pull/1715) [`1ecd19f`](https://github.com/solid-design-system/solid/commit/1ecd19fa9c4bef060092361a71d0e7ae784ec50d) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  - Correctly label icon-button dropdown triggers.
+  - Fix focus on the trigger after the dropdown is hidden using the keyboard.
+
+### 📈 Stats
+
+- Uncompressed: 440 KB (+1 KB / +0%)
+- Gzipped: 132 KB (unchanged)
+
+## 3.23.0
+
+### Minor Changes
+
+- Add sd-combobox and improve sd-select. _[`#1633`](https://github.com/solid-design-system/solid/pull/1633) [`8a16da8`](https://github.com/solid-design-system/solid/commit/8a16da830e7fdd135d9dcbbc540c48ef567dbe02) [@DanielHargesheimer](https://github.com/DanielHargesheimer)_
+
+  - add configurable `sd-combobox` component
+  - add keyboard navigation and accessibility features
+  - add multi-select and tag support
+  - use backspace key to remove latest selected option on `sd-combobox`
+  - use backspace key to remove focused tag and related option
+  - improve tags presentation
+  - show tags in selected order
+  - add sd-optgroup component for better grouping of options
+
+### 📈 Stats
+
+- Uncompressed: 439 KB (+29 KB / +7%)
+- Gzipped: 132 KB (+7 KB / +6%)
+
+## 3.22.18
+
+### Patch Changes
+
+- Improved sd-select a11y: _[`#1710`](https://github.com/solid-design-system/solid/pull/1710) [`ab76208`](https://github.com/solid-design-system/solid/commit/ab76208754415a3c146795b7e8329df3006ea74c) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  - Implemented `aria-invalid` attribute to semantically indicate component validity.
+  - Implemented live announcement to screen readers when a tag is removed.
+
+### 📈 Stats
+
+- Uncompressed: 410 KB (+1 KB / +0%)
+- Gzipped: 125 KB (unchanged)
+
+## 3.22.17
+
+### Patch Changes
+
+- Improve sd-checkbox-group keyboard navigation by removing `tabindex="0"` from first checkbox. _[`#1704`](https://github.com/solid-design-system/solid/pull/1704) [`fff6b1a`](https://github.com/solid-design-system/solid/commit/fff6b1a69e777ed109f0197bd0774f788bca8721) [@smfonseca](https://github.com/smfonseca)_
+
+## 3.22.16
+
+### Patch Changes
+
+- Removed references to deprecated `library="global-resources"` from: _[`#1701`](https://github.com/solid-design-system/solid/pull/1701) [`82c6b31`](https://github.com/solid-design-system/solid/commit/82c6b314fc89478cda192fcadad0daa2b73fe70d) [@smfonseca](https://github.com/smfonseca)_
+
+  - Spin buttons on the `sd-input`
+  - Templates for `sd-interactive` and `sd-table`
+  - Screenshot tests of several components and styles
+  - Removed icon mocks
+
+## 3.22.15
+
+### Patch Changes
+
+- Improved sd-flag a11y: _[`#1705`](https://github.com/solid-design-system/solid/pull/1705) [`b4c123e`](https://github.com/solid-design-system/solid/commit/b4c123ef67e6d7106358c3a4aaab8f377db10326) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Change text color on bg neutral-500 from white to black to comply with WCAG 2.2
 
 ## 3.22.14
 
@@ -8,6 +129,8 @@
 
   - Add `aria-invalid` to identify checkboxes that have failed validation
   - Add new set of tests for `aria-invalid`
+
+## 3.22.13
 
 ### Patch Changes
 

@@ -111,6 +111,7 @@ export default class SdStep extends SolidElement {
     /* eslint-disable lit/binding-positions */
     return html`
       <div
+        role="listitem"
         part="base"
         class=${cx(
           'flex pt-1',
@@ -140,21 +141,23 @@ export default class SdStep extends SolidElement {
 
           <${tag}
             part="circle"
-            ?disabled=${this.disabled}
-            tabindex=${!this.disabled && !this.current ? '0' : '-1'}
             href=${ifDefined(isLink ? this.href : undefined)}
+            aria-disabled=${ifDefined(this.disabled || undefined)}
             aria-current=${this.current ? 'step' : undefined}
-            aria-label='Step ${this.index}'
+            aria-labelledby=${ifDefined('label')}
+            aria-describedby=${ifDefined('description')}
             class=${cx(
               'border rounded-full aspect-square circle flex items-center justify-center shrink-0 font-bold select-none',
-              !this.disabled && !this.current ? 'focus-visible:focus-outline' : 'focus-visible:outline-none',
+              this.disabled
+                ? 'focus-visible:outline-none cursor-not-allowed'
+                : 'focus-visible:focus-outline group-hover:cursor-pointer',
               this.notInteractive ? (this.size === 'lg' ? 'w-[72px]' : 'w-12') : this.size === 'lg' ? 'w-12' : 'w-8',
-              this.disabled && 'border-neutral-400 text-neutral-500',
+              this.disabled && 'border-neutral-400 text-neutral-700',
               !this.disabled &&
                 !this.current &&
                 !this.notInteractive &&
                 'border-primary group-hover:bg-primary-100 group-hover:border-primary-500',
-              this.notInteractive ? 'border-neutral-400' : 'group-hover:cursor-pointer',
+              this.notInteractive && 'border-neutral-400',
               this.current && 'bg-accent border-none text-white'
             )}
           >
@@ -177,7 +180,6 @@ export default class SdStep extends SolidElement {
                   }
                   </slot>
           </${tag}>
-
           ${
             this.noTail
               ? ''
@@ -197,11 +199,11 @@ export default class SdStep extends SolidElement {
           }
         </div>
 
-        <div part="text-container" class=${cx('mt-4 mr-4 break-words flex flex-col gap-2', this.orientation === 'horizontal' ? 'text-center w-40' : 'w-max text-left', this.disabled && '!text-neutral-500')}>
-          <div part="label" class=${cx('!font-bold sd-paragraph', this.disabled && '!text-neutral-500', !this.disabled && !this.current && !this.notInteractive ? '!text-primary group-hover:!text-primary-500 group-hover:cursor-pointer' : 'text-black')}>
+        <div part="text-container" class=${cx('mt-4 break-words flex flex-col gap-2', this.orientation === 'horizontal' ? 'text-center w-40' : 'w-max text-left', this.disabled && '!text-neutral-700', this.notInteractive ? 'ml-3' : 'mr-4')}>
+          <div part="label" id="label" class=${cx('!font-bold sd-paragraph', this.disabled && '!text-neutral-700', !this.disabled && !this.current && !this.notInteractive ? '!text-primary group-hover:!text-primary-500 group-hover:cursor-pointer' : 'text-black')}>
             <slot name="label">${this.label}</slot>
           </div>
-          <div part="description" class=${cx('sd-paragraph sd-paragraph--size-sm', this.disabled && '!text-neutral-500')}>
+          <div part="description" id="description" class=${cx('sd-paragraph sd-paragraph--size-sm', this.disabled && '!text-neutral-700')}>
           ${this.description || html`<slot></slot>`}
           </div>
         </div>
