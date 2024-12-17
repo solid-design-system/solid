@@ -64,6 +64,8 @@ import type SdOption from '../option/option';
  * @csspart tag__removable-indicator - The tag's remove button.
  * @csspart clear-button - The clear button.
  * @csspart expand-icon - The container that wraps the expand icon.
+ *
+ * @cssproperty --tag-max-width - Set the maximum width of the tags and to show an ellipsis. Defaults to "15ch"
  */
 @customElement('sd-select')
 export default class SdSelect extends SolidElement implements SolidFormControl {
