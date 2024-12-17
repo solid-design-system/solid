@@ -153,7 +153,9 @@ export default class SdBrandshape extends SolidElement {
             'w-full block absolute h-full top-0 left-0 z-0'
           )}
         ></div>
-        <div class="z-10 relative" part="content">${this.variant !== 'image' ? html`<slot></slot>` : ''}</div>
+        <div class=${cx('z-10 relative', this.variant === 'image' && 'invisible opacity-0')} part="content">
+          <slot> ${this.variant === 'image' ? '' : html`<div class="h-8"></div>`} </slot>
+        </div>
       </div>
     `;
   }

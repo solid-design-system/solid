@@ -2,4 +2,4 @@
 '@solid-design-system/components': major
 ---
 
-Default slot for `variant=picture` was removed from component `sd-brandshape`
+Default slot is now hidden in `variant=picture` of component `sd-brandshape`
