@@ -45,7 +45,7 @@ export const selectedAndSize = {
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        x: { type: 'attribute', name: 'selected', values: ['false', 'true'] },
+        x: { type: 'attribute', name: 'selected' },
         y: { type: 'attribute', name: 'size' }
       },
       args
@@ -62,7 +62,7 @@ export const removableAndSize = {
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        x: { type: 'attribute', name: 'removable', values: ['false', 'true'] },
+        x: { type: 'attribute', name: 'removable' },
         y: { type: 'attribute', name: 'size' }
       },
       args
@@ -83,8 +83,8 @@ export const Disabled = {
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        x: { type: 'attribute', name: 'selected', values: ['false', 'true'] },
-        y: { type: 'attribute', name: 'removable', values: ['false', 'true'] }
+        x: { type: 'attribute', name: 'selected' },
+        y: { type: 'attribute', name: 'removable' }
       },
       constants: [
         {

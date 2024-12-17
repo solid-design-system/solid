@@ -9,6 +9,10 @@
     "verify": "pnpm build",
     "plop": "plop --plopfile scripts/plop/plopfile.js"
   },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "description": "Solid Design System: Styles",
   "exports": {
     ".": "./dist/solid-styles.css",

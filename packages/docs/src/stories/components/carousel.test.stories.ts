@@ -86,7 +86,6 @@ export const Inverted = {
         y: { type: 'attribute', name: 'inverted' }
       },
       args,
-      constants: [{ type: 'attribute', name: 'autoplay', value: true }],
       options: {
         templateBackgrounds: { alternate: 'y', colors: ['rgb(var(--sd-color-primary, 0 53 142))', 'white'] }
       }
@@ -211,10 +210,7 @@ export const Parts = {
           })
         }
       },
-      constants: [
-        { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' },
-        { type: 'attribute', name: 'autoplay', value: true }
-      ],
+      constants: [{ type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' }],
       args
     });
   }

@@ -9,7 +9,7 @@ patchedDependencies:
     hash: wvll6shaj2gjxjxaqwbika4vli
     path: patches/tailwindcss@3.4.1.patch
   wc-storybook-helpers:
-    hash: 5rjfwauoprpsxita45uxma3gwu
+    hash: nhx4vpjmjavso2wty7iy66lsmi
     path: patches/wc-storybook-helpers.patch
 
 importers:
@@ -344,7 +344,7 @@ importers:
         version: 5.1.3(typescript@5.7.2)(vite@5.4.11(@types/node@22.10.1))
       wc-storybook-helpers:
         specifier: 1.5.3
-        version: 1.5.3(patch_hash=5rjfwauoprpsxita45uxma3gwu)(lit@3.2.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 1.5.3(patch_hash=nhx4vpjmjavso2wty7iy66lsmi)(lit@3.2.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
 
   packages/placeholders:
     devDependencies:
@@ -12970,7 +12970,7 @@ snapshots:
       '@types/node': 22.10.1
       fsevents: 2.3.3
 
-  wc-storybook-helpers@1.5.3(patch_hash=5rjfwauoprpsxita45uxma3gwu)(lit@3.2.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  wc-storybook-helpers@1.5.3(patch_hash=nhx4vpjmjavso2wty7iy66lsmi)(lit@3.2.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@storybook/client-api': 6.5.16(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       lit: 3.2.1

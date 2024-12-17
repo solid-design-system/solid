@@ -91,13 +91,13 @@ export const SizeAndIconSlots = {
               name: 'default',
               title: 'slot="icon-..."',
               values: [
-                { value: 'Link', title: '–' },
+                { value: '<span>Link</span>', title: '–' },
                 {
-                  value: 'Link<sd-icon name="system/image" slot="icon-left"></sd-icon>',
+                  value: '<sd-icon name="system/image" slot="icon-left"></sd-icon><span>Link</span>',
                   title: 'left'
                 },
                 {
-                  value: 'Link<sd-icon name="system/image" slot="icon-right"></sd-icon>',
+                  value: '<span>Link</span><sd-icon name="system/image" slot="icon-right"></sd-icon>',
                   title: 'right'
                 }
               ]

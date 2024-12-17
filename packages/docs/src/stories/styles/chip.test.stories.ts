@@ -56,8 +56,8 @@ export const Variants = {
         y: [
           {
             type: 'attribute',
-            name: 'sd-chip',
-            values: ['sd-chip--primary-500', 'sd-chip--primary-300', 'sd-chip--primary-200', 'sd-chip--white']
+            name: 'sd-chip--variant',
+            values: ['', 'sd-chip--primary-300', 'sd-chip--primary-500', 'sd-chip--white']
           }
         ]
       },

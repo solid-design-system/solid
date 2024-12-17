@@ -3,7 +3,7 @@
  * @name sd-display
  * @status stable
  * @since 1.7
- * @variant { xl | 3xl } sd-display--size-... The display's size.
+ * @variant { NO_DEFAULT | xl | 3xl } sd-display--size-... The display's size.
  * @boolean { false } sd-display--inverted Inverts the display text.
  */
 
