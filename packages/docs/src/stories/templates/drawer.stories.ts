@@ -16,7 +16,7 @@ export default {
       html` <style>
           #anchor--templates-drawer--default .innerZoomElementWrapper {
             background-color: #ecf0f9;
-            min-height: 750px;
+            min-height: 1000px;
           }
         </style>
         ${story()}`
@@ -43,11 +43,6 @@ export const Default = {
       sd-drawer::part(overlay) {
         background-color: #051530;
       }
-
-      sd-drawer::part(body),
-      sd-drawer::part(footer) {
-        padding: 0;
-      }
     </style>
     <sd-button onclick="openDrawer()">Open Drawer</sd-button>
     <sd-drawer open placement="end">
@@ -55,7 +50,7 @@ export const Default = {
         <sd-icon name="system/arrow-left" label="return"></sd-icon>
       </sd-button>
       <div class="level-one h-full flex flex-col justify-between">
-        <nav>
+        <nav aria-label="level-one">
           <sd-navigation-item vertical><b>Home page</b></sd-navigation-item>
           <sd-navigation-item vertical chevron divider onclick="handleSecondLevel()">
             <b>About Us</b>
@@ -65,7 +60,7 @@ export const Default = {
           <sd-navigation-item vertical chevron divider>Sustainability</sd-navigation-item>
           <sd-navigation-item vertical chevron divider>Career</sd-navigation-item>
         </nav>
-        <nav slot="footer" class="bg-neutral-100">
+        <div slot="footer" class="bg-neutral-100">
           <sd-navigation-item vertical class="flex align-center">
             <sd-icon name="system/user" class="h-6 w-6 mr-2"></sd-icon>
             My depot
@@ -78,10 +73,10 @@ export const Default = {
             <sd-icon name="system/website" class="h-6 w-6 mr-2"></sd-icon>
             Our further appearances
           </sd-navigation-item>
-        </nav>
+        </div>
       </div>
       <div class="level-two hidden">
-        <nav id="level-two-nav">
+        <nav id="level-two-nav" aria-label="level-two">
           <sd-navigation-item vertical id="nav-title" size="lg"><b>About Us</b></sd-navigation-item>
           <sd-navigation-item vertical divider>
             <b>Union Investment for privat customers</b>
