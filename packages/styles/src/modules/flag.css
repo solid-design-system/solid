@@ -3,7 +3,7 @@
  * @name sd-flag
  * @status stable
  * @since 1.34.0
- * @variant { NO_DEFAULT | neutral-300 | neutral-500 | white } sd-flag--...
+ * @variant { neutral-300 | neutral-500 | white } sd-flag--...
  */
 
 .sd-flag {

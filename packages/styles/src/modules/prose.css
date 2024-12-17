@@ -3,8 +3,8 @@
  * @name sd-prose
  * @status stable
  * @since 3.6.0
- * @boolean { false } sd-prose--inverted Inverts the content, but not tables.
- * @boolean { false } sd-prose--full-width Overrides the 80ch max-width and makes the prose full width.
+ * @boolean sd-prose--inverted Inverts the content, but not tables.
+ * @boolean sd-prose--full-width Overrides the 80ch max-width and makes the prose full width.
  */
 
 @import url('./display.css');

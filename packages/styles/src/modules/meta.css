@@ -3,10 +3,10 @@
  * @name sd-meta
  * @status stable
  * @since 1.7
- * @variant { NO_DEFAULT | sm } sd-meta--size-... The size. Small can be used as an alternative in tight spaces.
- * @boolean { false } sd-meta--inverted Inverts the meta element.
- * @boolean { false } sd-meta--pipe Adds a pipe right from the meta element.
- * @boolean { false } sd-meta--light Makes sd-meta light.
+ * @variant { sm } sd-meta--size-... The size. Small can be used as an alternative in tight spaces.
+ * @boolean sd-meta--inverted Inverts the meta element.
+ * @boolean sd-meta--pipe Adds a pipe right from the meta element.
+ * @boolean sd-meta--light Makes sd-meta light.
  */
 
 .sd-meta {

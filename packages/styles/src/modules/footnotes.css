@@ -3,7 +3,7 @@
  * @name sd-footnotes
  * @status stable
  * @since 3.0.0
- * @boolean { false } sd-footnotes--inverted Inverts the footnote text.
+ * @boolean sd-footnotes--inverted Inverts the footnote text.
  */
 
 .sd-footnotes {

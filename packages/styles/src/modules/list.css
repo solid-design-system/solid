@@ -3,7 +3,7 @@
  * @name sd-list
  * @status stable
  * @since 1.39.0
- * @boolean { false } sd-list--inverted Inverts the list text.
+ * @boolean sd-list--inverted Inverts the list text.
  */
 
 .sd-list:not(.sd-list--icon),

@@ -7,7 +7,7 @@ import type { Structure, StyleClassMember, StyleModule, Tag } from './types.js';
  * @returns Array of types for the tag
  */
 const getTypesAsArray = (tag: Tag): string[] =>
-  tag.type
+  `NO_DEFAULT | ${tag.type}`
     .split('|')
     .map(t => t.trim())
     .map(t => {

@@ -3,8 +3,8 @@
  * @name sd-leadtext
  * @status stable
  * @since 1.7
- * @variant { NO_DEFAULT | lg } sd-leadtext--size-... The leadtext's size.
- * @boolean { false } sd-leadtext--inverted Inverts the leadtext text.
+ * @variant { lg } sd-leadtext--size-... The leadtext's size.
+ * @boolean sd-leadtext--inverted Inverts the leadtext text.
  */
 
 .sd-prose > .sd-leadtext,

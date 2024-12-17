@@ -3,7 +3,7 @@
  * @name sd-chip
  * @status stable
  * @since 1.30.0
- * @variant { NO_DEFAULT | primary-300 | primary-500 | white } sd-chip--variant-...
+ * @variant { primary-300 | primary-500 | white } sd-chip--...
  */
 
 .sd-chip {
