@@ -1,5 +1,5 @@
-import ButtonIconLabel from './rules/sd-button-icon-label';
+import SdButtonIconLabelRequired from './rules/sd-button-icon-label-required';
 
 export const rules = {
-  'sds-sd-button-icon-label': ButtonIconLabel
+  'sd-button-icon-label-required': SdButtonIconLabelRequired
 };
