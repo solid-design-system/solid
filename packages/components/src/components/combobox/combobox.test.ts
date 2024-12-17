@@ -573,7 +573,7 @@ describe('<sd-combobox>', () => {
 
     it('should remove tag and option when tag is focused and backspace is pressed', async () => {
       const el = await fixture<SdSelect>(html`
-        <sd-combobox value="option-1 option-2" multiple useTags>
+        <sd-combobox value="option-1 option-2" multiple>
           <sd-option value="option-1">Option 1</sd-option>
           <sd-option value="option-2">Option 2</sd-option>
           <sd-option value="option-3">Option 3</sd-option>

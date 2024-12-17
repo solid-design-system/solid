@@ -521,6 +521,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
 
   private handleTagKeyDown(event: KeyboardEvent, option: SdOption) {
     if (event.key === 'Backspace' && this.multiple) {
+      event.preventDefault();
       event.stopPropagation();
       this.handleTagRemove(new CustomEvent('sd-remove'), option);
       this.updateComplete.then(() => this.displayInput.focus({ preventScroll: true }));
@@ -529,6 +530,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
 
   private handleTagMaxOptionsKeyDown(event: KeyboardEvent) {
     if (event.key === 'Backspace' && this.multiple) {
+      event.preventDefault();
       event.stopPropagation();
       this.handleTagRemove(new CustomEvent('sd-remove'), this.selectedOptions[this.selectedOptions.length - 1]);
       this.updateComplete.then(() => this.displayInput.focus({ preventScroll: true }));
