@@ -150,6 +150,16 @@ export default class SdCheckboxGroup extends SolidElement {
         ::slotted(sd-checkbox:last-of-type) {
           @apply mr-0;
         }
+
+        /* sm */
+        &:host([size='sm']) {
+          ::slotted(sd-checkbox) {
+            @apply mr-4;
+          }
+          ::slotted(sd-checkbox:last-of-type) {
+            @apply mr-0;
+          }
+        }
       }
     `
   ];
