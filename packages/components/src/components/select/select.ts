@@ -877,7 +877,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
 
     const hasLabel = this.label ? true : !!slots['label'];
     const hasHelpText = this.helpText ? true : !!slots['helpText'];
-    const hasClearIcon = this.clearable && !this.disabled && this.value.length > 0;
+    const hasClearIcon = this.clearable && !this.disabled;
 
     // Hierarchy of input states:
     const selectState = this.disabled
@@ -1043,7 +1043,11 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 ? html`
                     <button
                       part="clear-button"
-                      class=${cx('select__clear flex justify-center', iconMarginLeft)}
+                      class=${cx(
+                        'select__clear flex justify-center',
+                        iconMarginLeft,
+                        this.value.length > 0 ? 'visible' : 'invisible'
+                      )}
                       type="button"
                       aria-label=${this.localize.term('clearEntry')}
                       @mousedown=${this.handleClearMouseDown}
@@ -1159,11 +1163,8 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
       }
 
       sd-tag::part(content) {
+        @apply overflow-hidden whitespace-nowrap inline-block text-ellipsis;
         max-width: var(--tag-max-width, 15ch);
-        overflow: hidden;
-        white-space: nowrap;
-        display: inline-block;
-        text-overflow: ellipsis;
       }
 
       sd-tag[size='lg']::part(base) {
