@@ -125,7 +125,7 @@
     "vite-tsconfig-paths": "^4.2.1"
   },
   "peerDependencies": {
-    "@solid-design-system/eslint": "workspace:*"
+    "@solid-design-system/eslint-plugin": "workspace:*"
   },
   "readme": "README.md",
   "meta": {
