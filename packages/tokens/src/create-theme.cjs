@@ -248,7 +248,7 @@ const getColors = scope => {
   };
 };
 
-const getShadows = () => {
+const getShadows = (isDropShadow = false) => {
   const result = {};
   const obj = tokens['UI Semantic'];
   const keys = Object.keys(obj);
@@ -262,7 +262,11 @@ const getShadows = () => {
       const rgbaParts = [...color.matchAll(regex)].map(match => match[1]);
       const colorValue = hexToRgb(resolveValue(rgbaParts[0])).join(' ');
       const opacityValue = resolveValue(rgbaParts[1]);
-      const shadow = `${x}px ${y}px ${blur}px ${spread}px rgb(${sanitizeValue(colorValue)} / ${opacityValue})`;
+
+      const shadow = isDropShadow
+        ? `${x}px ${y}px ${blur}px rgb(${sanitizeValue(colorValue)})`
+        : `${x}px ${y}px ${blur}px ${spread}px rgb(${sanitizeValue(colorValue)} / ${opacityValue})`;
+
       const optimizedKey = key.replace('shadow-', '').replace('shadow', 'DEFAULT');
       result[optimizedKey] = `var(--sd-${sanitizeKey(key)}, ${shadow})`;
     });
@@ -371,6 +375,7 @@ const config = {
     textColor: { ...getColors('text', 'text-color') },
     textDecorationColor: { ...getColors('text', 'text-color') },
     boxShadow: { ...getShadows() },
+    dropShadow: { ...getShadows(true) },
     zIndex: { ...getZIndices() },
     risk: { ...getRisks() },
     aspectRatio: { ...getAspectRatios() }

@@ -4,15 +4,17 @@
  * @status stable
  * @since 2.5.0
  * @variant { vertical } sd-copyright--orientation-... The copyright's orientation.
+ * @variant { black } sd-copyright--color-... The copyright's text color.
+ * @boolean sd-copyright--... Removes the shadow.
+ * @variant { top } sd-copyright--placement-... The copyright's placement.
  */
 
 .sd-copyright {
   @apply relative;
 
   &::after {
-    @apply block absolute pb-2 pl-4 bottom-0 left-0 text-white text-sm w-full;
+    @apply block absolute pb-2 pl-4 bottom-0 left-0 text-white text-sm w-full drop-shadow-sm;
     content: var(--copyright);
-    text-shadow: 0 1px 3px #515151bf;
   }
 
   &--orientation {
@@ -22,6 +24,29 @@
         writing-mode: vertical-rl;
         text-orientation: sideways-right;
         transform: rotate(180deg);
+      }
+    }
+  }
+
+  &--color {
+    &-black {
+      &::after {
+        @apply text-black;
+        filter: drop-shadow(0 0 transparent);
+      }
+    }
+  }
+
+  &--no-shadow {
+    &::after {
+      filter: drop-shadow(0 0 transparent);
+    }
+  }
+
+  &--placement {
+    &-top {
+      &::after {
+        @apply block absolute pt-2 pr-4 top-0 right-0 max-h-fit;
       }
     }
   }

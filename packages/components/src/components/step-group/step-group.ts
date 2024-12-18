@@ -117,12 +117,10 @@ export default class SdStepGroup extends SolidElement {
 
   render() {
     return html`
-      <div
-        part="base"
-        role="${!this.notInteractive ? 'navigation' : 'group'}"
-        class=${cx('flex', this.orientation === 'vertical' && 'flex-col h-full')}
-      >
-        <slot part="body"></slot>
+      <div role="${!this.notInteractive ? 'navigation' : 'group'}" class="h-full">
+        <div role="list" part="base" class=${cx('flex', this.orientation === 'vertical' && 'flex-col h-full')}>
+          <slot part="body"></slot>
+        </div>
       </div>
     `;
   }

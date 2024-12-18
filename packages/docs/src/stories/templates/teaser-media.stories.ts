@@ -126,10 +126,6 @@ export const TeaserMediaWithCopyright = {
       .sd-copyright::after {
         padding: 0;
       }
-      .gradient-light.sd-copyright::after {
-        color: #000000;
-        text-shadow: none;
-      }
     </style>
     <div class="flex flex-col gap-12">
       <sd-teaser-media variant="gradient-dark" class="max-w-[600px]">
@@ -142,7 +138,10 @@ export const TeaserMediaWithCopyright = {
       <sd-teaser-media variant="gradient-light" class="max-w-[600px]">
         <img slot="media" src="./placeholders/images/architecture.jpg" class="aspect-video object-cover" alt="" />
         <h3 slot="headline">Headline Media Teaser</h3>
-        <div class="flex flex-col sd-copyright gradient-light" style="--copyright: '© Union Investment 2024'">
+        <div
+          class="flex flex-col sd-copyright sd-copyright--color-black gradient-white"
+          style="--copyright: '© Union Investment 2024'"
+        >
           <div slot="default" class="h-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
         </div>
       </sd-teaser-media>
