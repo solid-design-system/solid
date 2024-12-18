@@ -19,3 +19,5 @@ packages/tokens/src/tokens.json
 **/*.d.ts
 
 packages/autocomplete/src
+.changeset/*.md
+.changeset/pre.json
