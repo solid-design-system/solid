@@ -110,26 +110,6 @@ export const Loop = {
 };
 
 /**
- * Use the `autoplay` attribute to toggle autoplay.
- */
-
-export const Autoplay = {
-  name: 'Autoplay',
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: { type: 'attribute', name: 'autoplay' }
-      },
-      constants: [
-        { type: 'attribute', name: 'variant', value: 'dot' },
-        { type: 'attribute', name: 'loop', value: 'true' }
-      ],
-      args
-    });
-  }
-};
-
-/**
  * Use the `slides-per-page` attribute to set the number of slides that would be shown at a given time.
  */
 
@@ -231,6 +211,26 @@ export const Mouseless = {
     await waitUntil(() => el?.shadowRoot?.querySelector('#scroll-container'));
 
     el?.shadowRoot?.querySelector<HTMLElement>('#scroll-container')!.focus();
+  }
+};
+
+/**
+ * Use the `autoplay` attribute to toggle autoplay.
+ */
+
+export const Autoplay = {
+  name: 'Autoplay',
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        y: { type: 'attribute', name: 'autoplay' }
+      },
+      constants: [
+        { type: 'attribute', name: 'variant', value: 'dot' },
+        { type: 'attribute', name: 'loop', value: 'true' }
+      ],
+      args
+    });
   }
 };
 
