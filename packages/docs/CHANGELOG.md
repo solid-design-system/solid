@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.2.7-next.0
+
+### Patch Changes
+
+- Extend sd-interactive and icon-only buttons documentation regarding accessibility best practices. _[`#1740`](https://github.com/solid-design-system/solid/pull/1740) [`311d2f6`](https://github.com/solid-design-system/solid/commit/311d2f6715cddc760c6860bd6a0017a4123379da) [@smfonseca](https://github.com/smfonseca)_
+
 ## 1.2.6
 
 ### Patch Changes
