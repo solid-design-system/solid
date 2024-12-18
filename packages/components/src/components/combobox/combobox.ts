@@ -1102,6 +1102,10 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     const slottedOptgroups = this.getSlottedOptGroups();
     this.applySizeToOptions();
 
+    // initially set the displayLabel if the value was set via property
+    const selectedOption = this.findOptionByValue(slottedOptions, this.value);
+    this.selectedTextLabel = selectedOption?.getTextLabel() || '';
+
     slottedOptions.forEach((option, index) => {
       if (this.multiple) {
         option.checkbox = true;
