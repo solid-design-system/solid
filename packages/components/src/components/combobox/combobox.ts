@@ -1119,10 +1119,6 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     } else {
       this.createComboboxOptionsFromQuery('');
     }
-
-    if (this.hasFocus && this.value.length > 0 && !this.open) {
-      await this.show();
-    }
   }
   /* eslint-enable no-param-reassign, @typescript-eslint/no-floating-promises */
 
@@ -1139,7 +1135,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     const hasHelpTextSlot = this.hasSlotController.test('help-text');
     const hasLabel = this.label ? true : !!hasLabelSlot;
     const hasHelpText = this.helpText ? true : !!hasHelpTextSlot;
-    const hasClearIcon = this.clearable && !this.disabled && this.value.length > 0;
+    const hasClearIcon = this.clearable && !this.disabled;
 
     // Hierarchy of input states:
     const selectState = this.disabled
@@ -1307,7 +1303,11 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                 ? html`
                     <button
                       part="clear-button"
-                      class=${cx('flex justify-center', iconMarginLeft)}
+                      class=${cx(
+                        'flex justify-center',
+                        iconMarginLeft,
+                        this.value.length > 0 ? 'visible' : 'invisible'
+                      )}
                       type="button"
                       aria-label=${this.localize.term('clearEntry')}
                       @mousedown=${this.preventLoosingFocus}
@@ -1429,11 +1429,8 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       }
 
       sd-tag::part(content) {
+        @apply overflow-hidden whitespace-nowrap inline-block text-ellipsis;
         max-width: var(--tag-max-width, 15ch);
-        overflow: hidden;
-        white-space: nowrap;
-        display: inline-block;
-        text-overflow: ellipsis;
       }
 
       sd-tag[size='lg']::part(base) {
