@@ -228,12 +228,12 @@ module.exports = {
       }
     },
     {
-      files: ['packages/eslint/**/*.ts'],
+      files: ['packages/eslint-plugin/**/*.ts'],
       parser: '@typescript-eslint/parser',
       parserOptions: {
         sourceType: 'module',
         tsconfigRootDir: __dirname,
-        project: ['./packages/eslint/tsconfig.json']
+        project: ['./packages/eslint-plugin/tsconfig.json']
       }
     }
   ],

@@ -1,7 +1,8 @@
 {
-  "name": "@solid-design-system/eslint",
+  "name": "@solid-design-system/eslint-plugin",
   "description": "Solid Design System: Eslint Custom Rules",
   "version": "1.0.0",
+  "type": "module",
   "author": {
     "name": "Union Investment"
   },
@@ -14,7 +15,12 @@
     "build": "tsc",
     "test": "jest"
   },
-  "keywords": [],
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "eslint-plugin",
+    "solid-design-system"
+  ],
   "license": "MIT",
   "devDependencies": {
     "@types/eslint": "^9.6.1",
