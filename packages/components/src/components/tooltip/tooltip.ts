@@ -20,6 +20,7 @@ import type SdPopup from '../popup/popup';
  * @dependency sd-popup
  *
  * @slot - The tooltip's target element. Avoid slotting in more than one element, as subsequent ones will be ignored.
+ * @slot anchor - Slot to change the default trigger icon. The default icon is an info circle.
  * @slot content - The content to render in the tooltip. Alternatively, you can use the `content` attribute.
  *
  * @event sd-show - Emitted when the tooltip begins to show.
@@ -280,7 +281,6 @@ export default class SdTooltip extends SolidElement {
             ></sd-icon>
           </button>
         </slot>
-
         <slot
           name="content"
           part="body"

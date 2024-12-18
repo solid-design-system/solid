@@ -1,5 +1,6 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { storybookDefaults, storybookTemplate, storybookUtilities } from '../../../scripts/storybook/helper';
 import { withActions } from '@storybook/addon-actions/decorator';
 import type { ConstantDefinition } from '../../../scripts/storybook/helper';
@@ -49,12 +50,9 @@ export const ReversedLayout = {
   render: () => {
     return html`
       <div class="p-0">
-        ${generateTemplate({
-          args: {
-            'reversed-layout': true
-          },
-          constants: [audioConstant, transcriptConstant]
-        })}
+        <sd-audio reversed-layout>
+          ${unsafeHTML(audioConstant.value)} ${unsafeHTML(transcriptConstant.value)}
+        </sd-audio>
       </div>
     `;
   }
@@ -81,13 +79,9 @@ export const AnimatedAndReversed = {
   render: () => {
     return html`
       <div class="p-0">
-        ${generateTemplate({
-          args: {
-            animated: true,
-            'reversed-layout': true
-          },
-          constants: [audioConstant, transcriptConstant]
-        })}
+        <sd-audio reversed-layout animated>
+          ${unsafeHTML(audioConstant.value)} ${unsafeHTML(transcriptConstant.value)}
+        </sd-audio>
       </div>
     `;
   }
@@ -97,7 +91,7 @@ export const AnimatedAndInverted = {
   name: 'Animated and Inverted',
   render: () => {
     return html`
-      <div class="bg-primary p-0">
+      <div class="bg-primary p-10">
         ${generateTemplate({
           args: {
             inverted: true,
@@ -114,7 +108,7 @@ export const Inverted = {
   name: 'Inverted',
   render: () => {
     return html`
-      <div class="bg-primary p-0">
+      <div class="bg-primary p-10">
         ${generateTemplate({
           args: {
             inverted: true
