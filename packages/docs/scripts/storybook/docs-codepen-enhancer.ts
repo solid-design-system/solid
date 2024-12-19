@@ -6,6 +6,35 @@ export default function docsCodepenEnhancer(code: string, storyContext: StoryCon
   // and add a button to edit it on CodePen
   const storiesOnDocsPage = document.querySelectorAll(`#anchor--${storyContext.id}`);
 
+  const urls = () => {
+    if (window.location.href.startsWith('https://solid-design-system.github.io/solid')) {
+      const url = window.location.href;
+      const urlParts = url.split('/');
+      const version = urlParts[urlParts.length - 2];
+      if (version === 'next') {
+        return {
+          components: `https://cdn.jsdelivr.net/npm/@solid-design-system/components/%COMPONENTS-VERSION%/cdn`,
+          styles: `https://cdn.jsdelivr.net/npm/@solid-design-system/styles/%STYLES-VERSION%/cdn`
+        };
+      } else if (version === 'main') {
+        return {
+          components: 'https://solid-design-system.fe.union-investment.de/styles/%COMPONENTS-VERSION%',
+          styles: 'https://solid-design-system.fe.union-investment.de/styles/%STYLES-VERSION%'
+        };
+      } else {
+        return {
+          components: `https://solid-design-system.github.io/solid/${version}/components/cdn`,
+          styles: `https://solid-design-system.github.io/solid/${version}/styles/cdn`
+        };
+      }
+    } else {
+      return {
+        components: 'https://solid-design-system.fe.union-investment.de/styles/%COMPONENTS-VERSION%',
+        styles: 'https://solid-design-system.fe.union-investment.de/styles/%STYLES-VERSION%'
+      };
+    }
+  };
+
   // Unfortunately, the editable story in a docs page has the same ID as the first story.
   storiesOnDocsPage.forEach(story => {
     const showCodeButton = story.querySelector('.docblock-code-toggle');
@@ -59,10 +88,10 @@ export default function docsCodepenEnhancer(code: string, storyContext: StoryCon
         // Docs: https://blog.codepen.io/documentation/prefill/
         const data = {
           css: `/* See https://solid-design-system.fe.union-investment.de/?path=/docs/packages-components-installation--docs */
-@import url("https://solid-design-system.fe.union-investment.de/components/%COMPONENTS-VERSION%/cdn/solid-components.css");
+@import url("${urls().components}/solid-components.css");
 
 /* See https://solid-design-system.fe.union-investment.de/?path=/docs/packages-styles-installation--docs */
-@import url("https://solid-design-system.fe.union-investment.de/styles/%STYLES-VERSION%/cdn/solid-styles.css");
+@import url("${urls().components}/solid-styles.css");
 
 /* See https://solid-design-system.fe.union-investment.de/docs/?path=/docs/docs-general-prerequisites--docs */
 body {
@@ -135,7 +164,7 @@ body {
           head: '<meta name="viewport" content="width=device-width">',
           html: code.replace(/\n\s*\n/g, '\n'), // Regex removes empty lines
           js: `/* See https://solid-design-system.fe.union-investment.de/?path=/docs/packages-components-installation--docs */
-import { registerIconLibrary } "https://solid-design-system.fe.union-investment.de/components/%COMPONENTS-VERSION%/cdn/solid-components.js";`,
+import { registerIconLibrary } from "${urls().components}/solid-components.js";`,
           js_external: '',
           js_module: true,
           js_pre_processor: 'none',
