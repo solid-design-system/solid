@@ -1,0 +1,443 @@
+import { Meta } from '@storybook/blocks';
+import '../../../../../../components/src/components/tab-group/tab-group';
+import '../../../../../../components/src/components/tab/tab';
+import '../../../../../../components/src/components/tab-panel/tab-panel';
+
+<Meta title="Packages/Components/Migration/from v3" />
+
+# Migration from v3
+
+The v4 release introduces major changes to improve performance, flexibility and scalability. Below are the key updates and steps for migration.
+
+## Updated Styles Imports
+
+- Styles are now in `@solid-design-system/styles`, enabling independent versioning and builds.
+- Required CSS for components is included in `@solid-design-system/components` and separated into own file.
+- Cherry-picking styles is supported for modularity.
+
+<sd-tab-group>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="npm" variant="container"> NPM </sd-tab>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="cdn" variant="container"> CDN </sd-tab>
+  <sd-tab-panel name="npm">
+    <sd-tab-group>
+      {/* prettier-ignore */}
+      <sd-tab slot="nav" panel="unversioned"> Unversioned </sd-tab>
+      {/* prettier-ignore */}
+      <sd-tab slot="nav" panel="versioned"> Versioned </sd-tab>
+      <sd-tab-panel name="unversioned">
+
+        **Before:**
+
+        ```javascript
+        import '@solid-design-system/components/styles';
+        // <sd-alert> is usable, .sd-mark is available
+        ```
+
+        **After:**
+
+        ```javascript
+        import '@solid-design-system/components/dist/solid-components.css';
+        // <sd-alert> is usable
+
+        import '@solid-design-system/styles/dist/solid-styles.css';
+        // .sd-mark is available
+        ```
+
+      </sd-tab-panel>
+      <sd-tab-panel name="versioned">
+        **Before:**
+
+        ```javascript
+        import '@solid-design-system/components/versioned-styles';
+        // <sd-%DASHED-COMPONENTS-VERSION%-alert> is usable, .sd-%DASHED-STYLES-VERSION%-mark is available
+        ```
+
+        **After:**
+
+        ```javascript
+        import '@solid-design-system/components/dist-versioned/solid-components.css';
+        // <sd-%DASHED-COMPONENTS-VERSION%-alert> is usable
+
+        import '@solid-design-system/styles/dist-versioned/solid-styles.css';
+        // .sd-%DASHED-STYLES-VERSION%-mark is available
+        ```
+
+      </sd-tab-panel>
+    </sd-tab-group>
+
+  </sd-tab-panel>
+  <sd-tab-panel name="cdn">
+    <sd-tab-group>
+      {/* prettier-ignore */}
+      <sd-tab slot="nav" panel="unversioned"> Unversioned </sd-tab>
+      {/* prettier-ignore */}
+      <sd-tab slot="nav" panel="versioned"> Versioned </sd-tab>
+      <sd-tab-panel name="unversioned">
+
+        **Before:**
+
+        ```html
+        <link rel="stylesheet" href="https://solid-design-system.fe.union-investment.de/%COMPONENTS-VERSION%/styles/solid-styles.css" />
+        <!-- <sd-alert> is usable, .sd-mark is available -->
+        ```
+
+        **After:**
+
+        ```html
+        <link rel="stylesheet" href="https://solid-design-system.fe.union-investment.de/components/%COMPONENTS-VERSION%/cdn/solid-components.css" />
+        <!-- <sd-alert> is usable -->
+
+        <link rel="stylesheet" href="https://solid-design-system.fe.union-investment.de/styles/%STYLES-VERSION%/cdn/solid-styles.css" />
+        <!-- .sd-mark is available -->
+        ```
+
+      </sd-tab-panel>
+      <sd-tab-panel name="versioned">
+        **Before:**
+
+        ```html
+        <link rel="stylesheet" href="https://solid-design-system.fe.union-investment.de/%COMPONENTS-VERSION%/versioned-styles/solid-styles.css" />
+        <!-- <sd-%DASHED-COMPONENTS-VERSION%-alert> is usable, .sd-%DASHED-STYLES-VERSION%-mark is available -->
+        ```
+
+        **After:**
+
+        ```html
+        <link rel="stylesheet" href="https://solid-design-system.fe.union-investment.de/components/%COMPONENTS-VERSION%/versioned-cdn/solid-components.css" />
+        <!-- <sd-%DASHED-COMPONENTS-VERSION%-alert> is usable -->
+
+        <link rel="stylesheet" href="https://solid-design-system.fe.union-investment.de/styles/%STYLES-VERSION%/versioned-cdn/solid-styles.css" />
+        <!-- .sd-%DASHED-STYLES-VERSION%-mark is available -->
+        ```
+
+      </sd-tab-panel>
+    </sd-tab-group>
+
+  </sd-tab-panel>
+</sd-tab-group>
+
+## Update Components Imports
+
+- **esbuild** replaces the previous build system for faster, predictable builds.
+- Cherry-picking components is now supported, reducing bundle sizes.
+- Import paths have been updated for both versioned and unversioned components.
+
+<sd-tab-group>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="npm" variant="container"> NPM </sd-tab>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="cdn" variant="container"> CDN </sd-tab>
+  <sd-tab-panel name="npm">
+    <sd-tab-group>
+      {/* prettier-ignore */}
+      <sd-tab slot="nav" panel="unversioned"> Unversioned </sd-tab>
+      {/* prettier-ignore */}
+      <sd-tab slot="nav" panel="versioned"> Versioned </sd-tab>
+      <sd-tab-panel name="unversioned">
+        **Before:**
+
+        ```javascript
+        import '@solid-design-system/components/unversioned';
+        ```
+
+        **After:**
+
+        ```javascript
+        import '@solid-design-system/components/dist/components/solid-components.js';
+        ```
+
+      </sd-tab-panel>
+      <sd-tab-panel name="versioned">
+        **Before:**
+
+        ```javascript
+        import '@solid-design-system/components/versioned';
+        ```
+
+        **After:**
+
+        ```javascript
+        import '@solid-design-system/components/dist-versioned/components/solid-components.js';
+        ```
+
+      </sd-tab-panel>
+    </sd-tab-group>
+
+  </sd-tab-panel>
+  <sd-tab-panel name="cdn">
+    <sd-tab-group>
+      {/* prettier-ignore */}
+      <sd-tab slot="nav" panel="unversioned"> Unversioned </sd-tab>
+      {/* prettier-ignore */}
+      <sd-tab slot="nav" panel="versioned"> Versioned </sd-tab>
+      <sd-tab-panel name="unversioned">
+        **Before:**
+
+        ```javascript
+        <script type="module" src="https://solid-design-system.fe.union-investment.de/%COMPONENTS-VERSION%/components/es/solid-components.js"></script>
+        ```
+
+        **After:**
+
+        ```javascript
+        <script type="module" src="https://solid-design-system.fe.union-investment.de/components/%COMPONENTS-VERSION%/cdn/solid-components.js"></script>
+        ```
+
+      </sd-tab-panel>
+      <sd-tab-panel name="versioned">
+        **Before:**
+
+        ```javascript
+        <script type="module" src="https://solid-design-system.fe.union-investment.de/%COMPONENTS-VERSION%/versioned-components/es/solid-components.js"></script>
+        ```
+
+        **After:**
+
+        ```javascript
+        <script type="module" src="https://solid-design-system.fe.union-investment.de/components/%COMPONENTS-VERSION%/versioned-cdn/solid-components.js"></script>
+        ```
+
+      </sd-tab-panel>
+    </sd-tab-group>
+
+  </sd-tab-panel>
+</sd-tab-group>
+
+## UMD/IIFE Bundle
+
+- The UMD bundle has been replaced with an **IIFE bundle**, which uses `SolidComponents` as the global variable instead of `Solid Components`.
+
+**Before:**
+
+```html
+<script src="https://solid-design-system.fe.union-investment.de/%COMPONENTS-VERSION%/components/umd/solid-components.js"></script>
+
+<script>
+  // Space in the global variable name
+  if (window['Solid Components']) {
+    console.log('Solid Components are available');
+  }
+</script>
+```
+
+**After:**
+
+```html
+<script src="https://solid-design-system.fe.union-investment.de/components/%COMPONENTS-VERSION%/cdn/solid-components.iife.js"></script>
+
+<script>
+  // No space in the global variable name
+  if (window['SolidComponents']) {
+    console.log('Solid Components are available');
+  }
+</script>
+```
+
+## Removal of CDN Wildcards
+
+- Wildcard URLs are no longer supported. Explicit versions are now required.
+
+**Before:**
+
+```html
+<!-- Major Wildcard -->
+<script
+  type="module"
+  src="https://solid-design-system.fe.union-investment.de/x.x.x/components/es/solid-components.js"
+></script>
+
+<!-- Minor Wildcard -->
+<link
+  rel="stylesheet"
+  href="https://solid-design-system.fe.union-investment.de/3.x.x/components/styles/solid-styles.css"
+/>
+
+<!-- Patch Wildcard -->
+<link
+  rel="stylesheet"
+  href="https://solid-design-system.fe.union-investment.de/3.0.x/components/styles/solid-styles.css"
+/>
+```
+
+**After:**
+
+```html
+<!-- Specific version -->
+<script
+  type="module"
+  src="https://solid-design-system.fe.union-investment.de/%COMPONENTS-VERSION%/components/es/solid-components.js"
+></script>
+```
+
+## Component updates
+
+### `<sd-media-teaser>`
+
+The `variant` `gradient-white` of `sd-teaser-media` was changed to `gradient-light` to be in sync with design.
+
+**Before:**
+
+```html
+<sd-media-teaser variant="gradient-white">
+  <!-- Your content -->
+</sd-media-teaser>
+```
+
+**After:**
+
+```html
+<sd-media-teaser variant="gradient-light">
+  <!-- Your content -->
+</sd-media-teaser>
+```
+
+### `<sd-navigation-item>`
+
+The default `size` `base` in `sd-navigation-item` was changed to `md` to be consistent with other components.
+As this was the default value, there most likely won't be any changes needed.
+
+**Before:**
+
+```html
+<sd-navigation-item size="base">
+  <!-- Your content -->
+</sd-navigation-item>
+```
+
+**After:**
+
+```html
+<sd-navigation-item size="md">
+  <!-- Your content -->
+</sd-navigation-item>
+```
+
+### `<sd-brandshape>`
+
+Default slot for `variant=picture` was removed from `sd-brandshape`. This comes from the fact that this combination should not be used from brand and design perspective.
+Either remove the slot or use a different variant instead.
+
+**Before:**
+
+```html
+<sd-brandshape variant="picture">
+  <p>Some content</p>
+  <img src="img.jpg" slot="picture" />
+</sd-brandshape>
+```
+
+**After:**
+
+```html
+<sd-brandshape> <p>Some content</p> </sd-brandshape>
+
+<!-- or -->
+
+<sd-brandshape variant="picture"> <img src="img.jpg" slot="picture" /></sd-brandshape>
+```
+
+### `.sd-display`
+
+Default `size` of style `sd-display` is now `4xl` instead of `xl`. This change was made to be consistent with design.
+The modifier `.sd-display--size-xl` was added to keep the old size available.
+
+**Before:**
+
+```html
+<p class="sd-display">Some smaller content</p>
+<p class="sd-display sd-display--size-4xl">Some larger content</p>
+```
+
+**After:**
+
+```html
+<p class="sd-display sd-display--size-xl">Some smaller content</p>
+<p class="sd-display">Some larger content</p>
+```
+
+### `<sd-flipcard>`
+
+The `sd-flipcard` component has been updated to improve a11y, flexibility and alignment with design.
+
+`activation` attribute including its options was removed, as a dedicated button is now used to trigger the flip.
+
+**Before:**
+
+```html
+<sd-flipcard activation>
+  <!-- content -->
+</sd-flipcard>
+```
+
+**After:**
+
+```html
+<sd-flipcard variant="gradient-light">
+  <!-- content -->
+</sd-flipcard>
+```
+
+`variant` `empty` (default) was removed. Use `gradient-light` without any element in `media-front` slot instead.
+
+**Before:**
+
+```html
+<!--  -->
+<sd-flipcard>
+  <!-- content -->
+</sd-flipcard>
+
+<!-- or -->
+
+<sd-flipcard variant="empty">
+  <!-- content -->
+</sd-flipcard>
+```
+
+**After:**
+
+```html
+<sd-flipcard variant="gradient-light">
+  <!-- content -->
+</sd-flipcard>
+```
+
+`primary` is now the default variant instead of `empty`.
+
+**Before:**
+
+```html
+<sd-flipcard variant="primary">
+  <!-- content -->
+</sd-flipcard>
+
+<sd-flipcard>
+  <!-- content -->
+</sd-flipcard>
+```
+
+`placement` feature was added to set the position of the default slots for both the front and back cards at the same time to ensure consistency and usability.
+`variant` logic was simplified to remove any positioning logic (e.g. from `gradient-light-top` to `gradient-light`). This applies to the following options:
+
+- `variant="gradient-light-top"` -> `variant="gradient-light" placement="top"`
+- `variant="gradient-light-bottom"` -> `variant="gradient-light" placement="bottom"`
+- `variant="gradient-dark-top"` -> `variant="gradient-dark" placement="top"`
+- `variant="gradient-dark-bottom"` -> `variant="gradient-dark" placement="bottom"`
+
+**Before:**
+
+```html
+<sd-flipcard variant="gradient-light-top">
+  <!-- content -->
+</sd-flipcard>
+```
+
+**After:**
+
+```html
+<sd-flipcard variant="gradient-light" placement="top">
+  <!-- content -->
+</sd-flipcard>
+```

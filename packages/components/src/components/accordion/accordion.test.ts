@@ -1,4 +1,5 @@
 // cspell:dictionaries lorem-ipsum
+import '../../../dist/solid-components';
 import { expect, fixture, html, waitUntil } from '@open-wc/testing';
 import sinon from 'sinon';
 import type SdAccordion from './accordion';

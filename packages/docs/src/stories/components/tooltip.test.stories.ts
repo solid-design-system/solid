@@ -32,7 +32,7 @@ export default {
     }
   ]),
   argTypes,
-  parameters: { ...parameters },
+  parameters: { ...parameters, controls: { disable: true } },
   decorators: [
     withActions,
     (story: any) =>
@@ -75,7 +75,6 @@ export const Default = {
 
 export const Placement = {
   name: 'Placement',
-  parameters: { controls: { exclude: 'placement' } },
   render: (args: any) => {
     return html`<div class="placement-story">
       ${['top', 'bottom'].map(value =>
@@ -103,7 +102,6 @@ export const Placement = {
 
 export const Size = {
   name: 'Size',
-  parameters: { controls: { exclude: 'size' } },
   render: (args: any) =>
     generateTemplate({
       axis: {
@@ -126,7 +124,6 @@ export const Size = {
 
 export const Disabled = {
   name: 'Disabled',
-  parameters: { controls: { exclude: 'disabled' } },
   render: (args: any) =>
     generateTemplate({
       axis: {
@@ -153,9 +150,6 @@ export const Disabled = {
  */
 export const LongContent = {
   name: 'Long Content',
-  parameters: {
-    controls: { exclude: 'content' }
-  },
   render: () => {
     return html` <div>
       <style>
@@ -217,9 +211,6 @@ export const LongContent = {
 
 export const Slots = {
   name: 'Slots',
-  parameters: {
-    controls: { exclude: ['default', 'content'] }
-  },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -258,11 +249,6 @@ export const Slots = {
 
 export const Mouseless = {
   name: 'Mouseless',
-  parameters: {
-    controls: {
-      exclude: ['open']
-    }
-  },
   render: (args: any) => {
     return html`<div class="mouseless template-position template-height">${generateTemplate({ args })}</div>`;
   },

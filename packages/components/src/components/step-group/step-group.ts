@@ -2,7 +2,6 @@ import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { property, query } from 'lit/decorators.js';
 import { watch } from '../../internal/watch.js';
-import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 import type SdStep from '../step/step';
@@ -118,19 +117,16 @@ export default class SdStepGroup extends SolidElement {
 
   render() {
     return html`
-      <div
-        part="base"
-        role="${!this.notInteractive ? 'navigation' : 'group'}"
-        class=${cx('flex', this.orientation === 'vertical' && 'flex-col h-full')}
-      >
-        <slot part="body"></slot>
+      <div role="${!this.notInteractive ? 'navigation' : 'group'}" class="h-full">
+        <div role="list" part="base" class=${cx('flex', this.orientation === 'vertical' && 'flex-col h-full')}>
+          <slot part="body"></slot>
+        </div>
       </div>
     `;
   }
 
   static styles = [
-    SolidElement.styles,
-    componentStyles,
+    ...SolidElement.styles,
     css`
       :host {
         @apply w-max;

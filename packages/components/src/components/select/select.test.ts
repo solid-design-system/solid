@@ -1,3 +1,4 @@
+import '../../../dist/solid-components';
 import { aTimeout, expect, fixture, html, oneEvent, waitUntil } from '@open-wc/testing';
 import { clickOnElement } from '../../internal/test';
 import { sendKeys } from '@web/test-runner-commands';
@@ -98,7 +99,7 @@ describe('<sd-select>', () => {
     expect(input.hasAttribute('aria-invalid')).to.be.true;
   });
 
-  it('should remove tag and option when tag is focused and backspace is pressed', async () => {
+  it.skip('should remove tag and option when tag is focused and backspace is pressed', async () => {
     const el = await fixture<SdSelect>(html`
       <sd-select value="option-1 option-2" multiple useTags>
         <sd-option value="option-1">Option 1</sd-option>

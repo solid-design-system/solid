@@ -1,3 +1,4 @@
+import '../../../dist/solid-components';
 import { expect, fixture, html } from '@open-wc/testing';
 import type SdStep from './step';
 
@@ -17,7 +18,11 @@ describe('<sd-step>', () => {
     describe('`disabled` is true', () => {
       it('should pass accessibility tests', async () => {
         // Arrange
-        const el = await fixture<SdStep>(html` <sd-step disabled> </sd-step> `);
+        const el = await fixture<SdStep>(html`
+          <sd-step-group>
+            <sd-step disabled></sd-step>
+          </sd-step-group>
+        `);
 
         // Assert
         await expect(el).to.be.accessible();
@@ -27,17 +32,25 @@ describe('<sd-step>', () => {
     describe('`current` is true', () => {
       it('should pass accessibility tests', async () => {
         // Arrange
-        const el = await fixture<SdStep>(html` <sd-step current> </sd-step> `);
+        const el = await fixture<SdStep>(html`
+          <sd-step-group>
+            <sd-step current> </sd-step>
+          </sd-step-group>
+        `);
 
         // Assert
         await expect(el).to.be.accessible();
       });
     });
 
-    describe('the `default` state is', () => {
+    describe('the `default` state', () => {
       it('should pass accessibility tests', async () => {
         // Arrange
-        const el = await fixture<SdStep>(html` <sd-step> </sd-step> `);
+        const el = await fixture<SdStep>(
+          html` <sd-step-group>
+            <sd-step> </sd-step>
+          </sd-step-group>`
+        );
 
         // Assert
         await expect(el).to.be.accessible();

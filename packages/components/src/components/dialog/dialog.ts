@@ -1,8 +1,8 @@
 import '../button/button';
 import '../icon/icon';
 import { animateTo, stopAnimations } from '../../internal/animate';
-import { css, html, unsafeCSS } from 'lit';
-import { customElement } from '../../../src/internal/register-custom-element';
+import { css, html } from 'lit';
+import { customElement } from '../../internal/register-custom-element';
 import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry';
 import { HasSlotController } from '../../internal/slot';
 import { LocalizeController } from '../../utilities/localize';
@@ -10,9 +10,7 @@ import { lockBodyScrolling, unlockBodyScrolling } from '../../internal/scroll';
 import { property, query } from 'lit/decorators.js';
 import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch';
-import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
-import HeadlineStyles from '../../styles/headline/headline.css?inline';
 import Modal from '../../internal/modal';
 import SolidElement from '../../internal/solid-element';
 
@@ -267,7 +265,7 @@ export default class SdDialog extends SolidElement {
         <div
           part="panel"
           class=${cx(
-            'flex flex-col z-20 bg-white focus:outline-none py-4 sm:py-8 relative gap-6',
+            'flex flex-col z-20 bg-white py-4 sm:py-8 relative gap-6 focus-visible:focus-outline-inverted',
             this.open && 'flex opacity-100'
           )}
           role="dialog"
@@ -280,7 +278,7 @@ export default class SdDialog extends SolidElement {
           <header part="header" class="flex flex-grow-0 flex-shrink-0 basis-auto px-6 sm:px-10">
             <h2 part="title" class="flex-auto m-0" id="title">
               ${this.headline.length > 0
-                ? html`<h4 class="sd-headline sd-headline--size-3xl leading-tight">${this.headline}</h4>`
+                ? html`<span class="sd-headline sd-headline--size-3xl leading-tight">${this.headline}</span>`
                 : html`<slot name="headline"> </slot>`}
             </h2>
 
@@ -318,9 +316,7 @@ export default class SdDialog extends SolidElement {
   }
 
   static styles = [
-    componentStyles,
-    unsafeCSS(HeadlineStyles),
-    SolidElement.styles,
+    ...SolidElement.styles,
     css`
       :host {
         --width: 662px;
@@ -328,7 +324,6 @@ export default class SdDialog extends SolidElement {
 
       [part='panel'] {
         width: var(--width);
-        max-height: 80vh;
       }
 
       [part='body'] {
