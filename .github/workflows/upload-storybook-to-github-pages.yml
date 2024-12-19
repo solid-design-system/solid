@@ -107,6 +107,7 @@ jobs:
           issue-number: ${{ github.event.pull_request.number || github.run_id }}
           comment-author: 'github-actions[bot]'
           body-includes: 'Storybook has been deployed for'
+        if: github.event_name == 'pull_request'
 
       - name: Create or update comment
         uses: peter-evans/create-or-update-comment@v4
