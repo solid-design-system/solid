@@ -7,7 +7,7 @@ export default function docsCodepenEnhancer(code: string, storyContext: StoryCon
   const storiesOnDocsPage = document.querySelectorAll(`#anchor--${storyContext.id}`);
 
   const urls = () => {
-    if (window.location.href.includes('https://solid-design-system.github.io/solid')) {
+    if (window.location.href.startsWith('https://solid-design-system.github.io/solid')) {
       const url = window.location.href;
       const urlParts = url.split('/');
       const version = urlParts[urlParts.length - 2];
