@@ -164,7 +164,7 @@ body {
           head: '<meta name="viewport" content="width=device-width">',
           html: code.replace(/\n\s*\n/g, '\n'), // Regex removes empty lines
           js: `/* See https://solid-design-system.fe.union-investment.de/?path=/docs/packages-components-installation--docs */
-import { registerIconLibrary } "${urls().components}/solid-components.js";`,
+import { registerIconLibrary } from "${urls().components}/solid-components.js";`,
           js_external: '',
           js_module: true,
           js_pre_processor: 'none',
