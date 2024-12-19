@@ -1,6 +1,6 @@
 import '../icon/icon';
 import { css, html } from 'lit';
-import { customElement } from '../../../src/internal/register-custom-element';
+import { customElement } from '../../internal/register-custom-element';
 import { defaultValue } from '../../internal/default-value';
 import { FormControlController } from '../../internal/form';
 import { ifDefined } from 'lit/directives/if-defined.js';
@@ -285,7 +285,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
    * Inherits Tailwind classes and includes additional styling.
    */
   static styles = [
-    SolidElement.styles,
+    ...SolidElement.styles,
     css`
       :host {
         @apply block w-max;

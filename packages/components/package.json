@@ -1,53 +1,52 @@
 {
   "name": "@solid-design-system/components",
   "description": "Solid Design System: Components",
-  "version": "3.24.0",
+  "version": "4.0.0-next.0",
   "homepage": "https://solid-design-system.fe.union-investment.de/docs/",
-  "author": {
-    "name": "Union Investment"
-  },
+  "author": "Union Investment",
   "license": "MIT",
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
   "customElements": "dist/custom-elements.json",
-  "web-types": "dist/web-types.json",
+  "web-types": "./dist/web-types.json",
   "type": "module",
+  "types": "dist/solid-components.d.ts",
+  "jsdelivr": "./cdn/solid-components.js",
   "exports": {
-    "./unversioned": {
-      "types": "./dist/package/solid-components.d.ts",
-      "import": "./dist/package/solid-components.js"
+    ".": {
+      "types": "./dist/solid-components.d.ts",
+      "import": "./dist/solid-components.js"
     },
-    "./unversioned/*": {
-      "import": "./dist/package/components/*",
-      "types": "./dist/package/solid-components.d.ts"
+    "./dist/custom-elements.json": "./dist/custom-elements.json",
+    "./dist/solid-components.js": "./dist/solid-components.js",
+    "./dist/solid-components.css": "./dist/solid-components.css",
+    "./dist/components": "./dist/components",
+    "./dist/components/*": "./dist/components/*",
+    "./dist/utilities": "./dist/utilities",
+    "./dist/utilities/*": "./dist/utilities/*",
+    "./dist/translations": "./dist/translations",
+    "./dist/translations/*": "./dist/translations/*",
+    "./dist-versioned": {
+      "types": "./dist-versioned/solid-components.d.ts",
+      "import": "./dist-versioned/solid-components.js"
     },
-    "./unversioned-utilities/*": {
-      "import": "./dist/package/utilities/*",
-      "types": "./dist/package/solid-components.d.ts"
-    },
-    "./versioned": {
-      "types": "./dist/versioned-package/solid-components.d.ts",
-      "import": "./dist/versioned-package/solid-components.js"
-    },
-    "./versioned/*": {
-      "import": "./dist/versioned-package/components/*",
-      "types": "./dist/versioned-package/solid-components.d.ts"
-    },
-    "./versioned-utilities/*": {
-      "import": "./dist/versioned-package/utilities/*",
-      "types": "./dist/versioned-package/solid-components.d.ts"
-    },
-    "./unversioned-styles": {
-      "import": "./dist/styles/solid-styles.css"
-    },
-    "./versioned-styles": {
-      "import": "./dist/versioned-styles/solid-styles.css"
-    }
+    "./dist-versioned/custom-elements.json": "./dist-versioned/custom-elements.json",
+    "./dist-versioned/solid-components.js": "./dist-versioned/solid-components.js",
+    "./dist-versioned/solid-components.css": "./dist-versioned/solid-components.css",
+    "./dist-versioned/components": "./dist-versioned/components",
+    "./dist-versioned/components/*": "./dist-versioned/components/*",
+    "./dist-versioned/utilities": "./dist-versioned/utilities",
+    "./dist-versioned/utilities/*": "./dist-versioned/utilities/*",
+    "./dist-versioned/translations": "./dist-versioned/translations",
+    "./dist-versioned/translations/*": "./dist-versioned/translations/*"
   },
   "files": [
-    "dist/**/*"
+    "dist/**/*",
+    "dist-versioned/**/*",
+    "cdn/**/*",
+    "cdn-versioned/**/*"
   ],
   "keywords": [
     "web components",
@@ -60,75 +59,68 @@
     "directory": "packages/components"
   },
   "scripts": {
-    "build": "pnpm build/components && pnpm build/styles && pnpm build/package && node ./scripts/node-version-components.cjs",
-    "build.cdn": "pnpm build/components && pnpm build/styles && node ./scripts/node-version-components.cjs && npx vite-node ./scripts/node-create-docs-redirect.ts",
-    "build.npm": "pnpm build/components && pnpm build/styles && pnpm build/package && node ./scripts/node-version-components.cjs",
-    "build/components": "vite build  --config vite.config.js",
-    "build/styles": "vite build  --config vite.config.styles.js",
-    "build/package": "pnpm build/package/create-index && vite build --config vite.config.package.js && pnpm build/package/remove-index",
-    "build/package/create-index": "node scripts/node-generate-package-index.cjs && echo '✅ Index created'",
-    "build/package/remove-index": "node -e \"require('fs').unlinkSync('src/solid-components.package.ts')\" && echo '✅ Index removed'",
-    "verify": "pnpm ts.verify && pnpm build && echo '✅ Build verified' && pnpm test.verify && echo '✅ Test verified'",
+    "build": "node scripts/build.js",
+    "verify": "pnpm build && echo '✅ Build verified' && pnpm ts.verify && pnpm test.verify && echo '✅ Test verified'",
     "ts.verify": "tsc --noEmit --project ./tsconfig.json && echo '✅ TypeScript verified'",
     "plop": "plop --plopfile scripts/plop/plopfile.js",
-    "test": "pnpm build/components && web-test-runner --group default",
+    "test": "pnpm build && web-test-runner --group default",
     "test.verify": "web-test-runner --group default",
     "test.single": "web-test-runner -- --watch --group",
     "test.watch": "web-test-runner --watch --group default",
-    "postversion": "pnpm build.npm && node scripts/node-write-sizes.mjs"
+    "postversion": "pnpm build && node scripts/node-write-sizes.mjs"
   },
   "dependencies": {
-    "@floating-ui/dom": "^1.6.5",
-    "@shoelace-style/animations": "^1.1.0",
-    "@shoelace-style/localize": "^3.1.2",
-    "classix": "^2.1.35",
-    "lit": "^3.1.4"
+    "@floating-ui/dom": "^1.6.12",
+    "@shoelace-style/animations": "^1.2.0",
+    "@shoelace-style/localize": "^3.2.1",
+    "classix": "^2.2.0",
+    "lit": "^3.2.1"
   },
   "devDependencies": {
-    "@custom-elements-manifest/analyzer": "^0.9.0",
+    "@custom-elements-manifest/analyzer": "^0.10.3",
     "@mariohamann/tailwindcss-var": "github:mariohamann/tailwindcss-var",
-    "@mariohamann/wc-storybook-helpers": "^1.3.3",
     "@open-wc/testing": "^4.0.0",
     "@open-wc/testing-helpers": "^3.0.1",
-    "@remcovaes/web-test-runner-vite-plugin": "^1.2.0",
-    "@rollup/plugin-node-resolve": "^15.2.3",
-    "@rollup/pluginutils": "^5.1.0",
-    "@tarekraafat/autocomplete.js": "^10.2.7",
-    "@types/mocha": "^10.0.4",
-    "@types/sinon": "^17.0.1",
-    "@web/test-runner": "^0.18.2",
+    "@solid-design-system/versioning": "workspace:^",
+    "@tarekraafat/autocomplete.js": "^10.2.9",
+    "@types/mocha": "^10.0.10",
+    "@types/sinon": "^17.0.3",
+    "@web/dev-server-esbuild": "^1.0.3",
+    "@web/test-runner": "^0.19.0",
     "@web/test-runner-commands": "^0.9.0",
     "@web/test-runner-playwright": "^0.11.0",
-    "autoprefixer": "^10.4.16",
-    "cem-plugin-vs-code-custom-data-generator": "^1.4.2",
+    "autoprefixer": "^10.4.20",
+    "chalk": "^5.3.0",
     "change-case": "^5.4.4",
+    "command-line-args": "^6.0.1",
     "comment-parser": "^1.4.1",
-    "cssnano": "^7.0.3",
-    "globby": "^14.0.0",
+    "cssnano": "^7.0.6",
+    "custom-element-jet-brains-integration": "^1.6.2",
+    "custom-element-vs-code-integration": "^1.4.1",
+    "del": "^8.0.0",
+    "esbuild": "^0.24.0",
+    "esbuild-plugin-replace": "^1.4.0",
+    "globby": "^14.0.2",
     "gzip-size": "^7.0.0",
     "jsonata": "^2.0.5",
     "minify-html-literals": "^1.3.5",
-    "playwright": "^1.44.1",
-    "plop": "^4.0.0",
-    "postcss": "^8.4.31",
-    "prettier": "^3.3.2",
-    "rollup-plugin-copy": "^3.5.0",
-    "rollup-plugin-summary": "^2.0.1",
-    "sinon": "^17.0.1",
-    "tailwindcss": "^3.4.1",
-    "terser": "^5.31.1",
-    "typescript": "5.4.5",
-    "user-agent-data-types": "^0.4.2",
-    "vite": "^5.3.1",
-    "vite-node": "^1.6.0",
-    "vite-plugin-cem": "^0.8.0",
-    "vite-tsconfig-paths": "^4.2.1"
+    "ora": "^8.1.1",
+    "playwright": "^1.49.0",
+    "plop": "^4.0.1",
+    "postcss": "^8.4.49",
+    "postcss-import": "^16.1.0",
+    "prettier": "^3.4.1",
+    "recursive-copy": "^2.0.14",
+    "sinon": "^19.0.2",
+    "tailwindcss": "^3.4.15",
+    "typescript": "5.7.2",
+    "user-agent-data-types": "^0.4.2"
   },
   "readme": "README.md",
   "meta": {
     "bundleSizeInKb": {
-      "uncompressed": 440,
-      "gzip": 132
+      "uncompressed": 397,
+      "gzip": 94
     }
   }
 }

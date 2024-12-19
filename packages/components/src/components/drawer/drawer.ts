@@ -2,7 +2,7 @@ import '../button/button';
 import '../icon/icon';
 import { animateTo, stopAnimations } from '../../internal/animate';
 import { css, html } from 'lit';
-import { customElement } from '../../../src/internal/register-custom-element';
+import { customElement } from '../../internal/register-custom-element';
 import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry';
 import { HasSlotController } from '../../internal/slot';
 import { LocalizeController } from '../../utilities/localize';
@@ -11,7 +11,6 @@ import { property, query } from 'lit/decorators.js';
 import { uppercaseFirstLetter } from '../../internal/string';
 import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch';
-import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
 import Modal from '../../internal/modal';
 import SolidElement from '../../internal/solid-element';
@@ -366,8 +365,7 @@ export default class SdDrawer extends SolidElement {
   }
 
   static styles = [
-    SolidElement.styles,
-    componentStyles,
+    ...SolidElement.styles,
     css`
       :host {
         --width: 25rem;

@@ -1,5 +1,5 @@
 import { css, html } from 'lit';
-import { customElement } from '../../../src/internal/register-custom-element';
+import { customElement } from '../../internal/register-custom-element';
 import { HasSlotController } from '../../internal/slot';
 import { property, query, state } from 'lit/decorators.js';
 import cx from 'classix';
@@ -30,8 +30,13 @@ import type { PropertyValues } from 'lit';
 
 @customElement('sd-teaser')
 export default class SdTeaser extends SolidElement {
-  @property({ reflect: true })
-  variant: 'white' | 'white border-neutral-400' | 'neutral-100' | 'primary' | 'primary-100' = 'white';
+  /** Variant of the teaser */
+  @property({ reflect: true }) variant:
+    | 'white'
+    | 'white border-neutral-400'
+    | 'neutral-100'
+    | 'primary'
+    | 'primary-100' = 'white';
 
   /** Breakpoint where the teaser switches from `vertical` to `horizontal`. `0` is always `horizontal`, `9999` is always `vertical`. */
   @property({ reflect: true, type: Number }) breakpoint = 448;
@@ -150,7 +155,7 @@ export default class SdTeaser extends SolidElement {
   }
 
   static styles = [
-    SolidElement.styles,
+    ...SolidElement.styles,
     css`
       :host {
         @apply block;

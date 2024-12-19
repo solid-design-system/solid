@@ -1,0 +1,26 @@
+/**
+ * Display provides larger text sizes that are not used as headlines. The different sizes allow for a more versatile styling of text elements. Display text should not be used as substitute for headlines.
+ * @name sd-display
+ * @status stable
+ * @since 1.7
+ * @variant { xl | 3xl } sd-display--size-... The display's size.
+ * @boolean sd-display--inverted Inverts the display text.
+ */
+
+.sd-display {
+  @apply text-3xl lg:text-4xl font-normal leading-tight text-black;
+
+  &--size {
+    &-xl {
+      @apply text-xl font-normal leading-tight text-black;
+    }
+
+    &-3xl {
+      @apply text-2xl lg:text-3xl font-normal leading-tight text-black;
+    }
+  }
+
+  &--inverted {
+    @apply text-white;
+  }
+}
