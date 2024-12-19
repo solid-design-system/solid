@@ -7,7 +7,8 @@
     "start": "pnpm build",
     "build": "node scripts/build.js",
     "verify": "pnpm build",
-    "plop": "plop --plopfile scripts/plop/plopfile.js"
+    "plop": "plop --plopfile scripts/plop/plopfile.js",
+    "postversion": "build"
   },
   "publishConfig": {
     "access": "public",
@@ -42,7 +43,7 @@
     "directory": "packages/styles"
   },
   "type": "module",
-  "version": "1.4.0",
+  "version": "0.0.1",
   "devDependencies": {
     "@mariohamann/tailwindcss-var": "^2.1.0",
     "@semantic-release/changelog": "^6.0.3",
