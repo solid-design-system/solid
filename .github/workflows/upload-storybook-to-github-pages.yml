@@ -118,3 +118,4 @@ jobs:
             🚀 Storybook has been deployed for branch `${{ env.GITHUB_SAFE_BRANCH }}`
             - [View Storybook](https://solid-design-system.github.io/solid/${{ env.GITHUB_SAFE_BRANCH }})
           edit-mode: replace
+        if: github.event_name == 'pull_request'
