@@ -13,8 +13,8 @@ export default function docsCodepenEnhancer(code: string, storyContext: StoryCon
       const version = urlParts[urlParts.length - 2];
       if (version === 'next') {
         return {
-          components: `https://cdn.jsdelivr.net/npm/@solid-design-system/components/%COMPONENTS-VERSION%/cdn`,
-          styles: `https://cdn.jsdelivr.net/npm/@solid-design-system/styles/%STYLES-VERSION%/cdn`
+          components: `https://cdn.jsdelivr.net/npm/@solid-design-system/components@%COMPONENTS-VERSION%/cdn`,
+          styles: `https://cdn.jsdelivr.net/npm/@solid-design-system/styles@%STYLES-VERSION%/cdn`
         };
       } else if (version === 'main') {
         return {
@@ -91,7 +91,7 @@ export default function docsCodepenEnhancer(code: string, storyContext: StoryCon
 @import url("${urls().components}/solid-components.css");
 
 /* See https://solid-design-system.fe.union-investment.de/?path=/docs/packages-styles-installation--docs */
-@import url("${urls().components}/solid-styles.css");
+@import url("${urls().styles}/solid-styles.css");
 
 /* See https://solid-design-system.fe.union-investment.de/docs/?path=/docs/docs-general-prerequisites--docs */
 body {
@@ -164,7 +164,7 @@ body {
           head: '<meta name="viewport" content="width=device-width">',
           html: code.replace(/\n\s*\n/g, '\n'), // Regex removes empty lines
           js: `/* See https://solid-design-system.fe.union-investment.de/?path=/docs/packages-components-installation--docs */
-import { registerIconLibrary } from "${urls().components}/solid-components.js";`,
+import { registerIconLibrary } from "${urls().components}/solid-components.bundle.js";`,
           js_external: '',
           js_module: true,
           js_pre_processor: 'none',
