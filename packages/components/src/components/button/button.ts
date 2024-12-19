@@ -1,13 +1,12 @@
 import '../spinner/spinner';
 import { css } from 'lit';
-import { customElement } from '../../../src/internal/register-custom-element';
+import { customElement } from '../../internal/register-custom-element';
 import { FormControlController, validValidityState } from '../../internal/form';
 import { HasSlotController } from '../../internal/slot';
 import { html, literal } from 'lit/static-html.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { property, query, queryAssignedElements, state } from 'lit/decorators.js';
 import { watch } from '../../internal/watch';
-import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 import type { SolidFormControl } from '../../internal/solid-element';
@@ -372,12 +371,10 @@ export default class SdButton extends SolidElement implements SolidFormControl {
   }
 
   /**
-   * Inherits Tailwindclasses and includes additional styling.
+   * Inherits global stylesheet including TailwindCSS
    */
   static styles = [
-    componentStyles,
-    SolidElement.styles,
-
+    ...SolidElement.styles,
     css`
       :host {
         @apply inline-block cursor-pointer w-auto relative;

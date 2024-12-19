@@ -1,13 +1,12 @@
 import '../icon/icon';
 import { classMap } from 'lit/directives/class-map.js';
-import { customElement } from '../../../src/internal/register-custom-element';
-import {property, query } from 'lit/decorators.js';
+import { customElement } from '../../internal/register-custom-element';
 import { getTextContent } from '../../internal/slot';
 import { html } from 'lit';
+import {property, query } from 'lit/decorators.js';
 import { watch } from '../../internal/watch';
 import SolidElement from '../../internal/solid-element';
 import styles from './menu-item.styles';
-import type { CSSResultGroup } from 'lit';
 
 /**
  * @summary Menu items provide options for the user to pick from in a menu.
@@ -29,7 +28,7 @@ import type { CSSResultGroup } from 'lit';
  */
 @customElement('sd-menu-item')
 export default class SdMenuItem extends SolidElement {
-  static styles: CSSResultGroup = styles;
+  static styles = [...SolidElement.styles, styles];
 
   private cachedTextLabel: string;
 

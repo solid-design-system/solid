@@ -1,5 +1,72 @@
 # @solid-design-system/components
 
+## 4.0.0-next.0
+
+### Major Changes
+
+- Default slot is now hidden in `variant=picture` of component `sd-brandshape` _[`#1689`](https://github.com/solid-design-system/solid/pull/1689) [`4c065bd`](https://github.com/solid-design-system/solid/commit/4c065bd71df67bc13d2cf6cd27c3284cc4ce99b3) [@mariohamann](https://github.com/mariohamann)_
+- The `variant` `gradient-white` of component `sd-teaser-media` was changed to `gradient-light` to be in sync with design. _[`#1689`](https://github.com/solid-design-system/solid/pull/1689) [`4c065bd`](https://github.com/solid-design-system/solid/commit/4c065bd71df67bc13d2cf6cd27c3284cc4ce99b3) [@mariohamann](https://github.com/mariohamann)_
+- Default `size` of style `sd-display` is now `4xl` instead of `xl`. _[`#1689`](https://github.com/solid-design-system/solid/pull/1689) [`4c065bd`](https://github.com/solid-design-system/solid/commit/4c065bd71df67bc13d2cf6cd27c3284cc4ce99b3) [@mariohamann](https://github.com/mariohamann)_
+- The `sd-flipcard` component has been updated to improve a11y, flexibility and alignment with design. Checkout the migration guide for more details. _[`#1689`](https://github.com/solid-design-system/solid/pull/1689) [`4c065bd`](https://github.com/solid-design-system/solid/commit/4c065bd71df67bc13d2cf6cd27c3284cc4ce99b3) [@mariohamann](https://github.com/mariohamann)_
+- The default `size` `base` in component `sd-navigation-item` was changed to `md` to be consistent with other components. _[`#1689`](https://github.com/solid-design-system/solid/pull/1689) [`4c065bd`](https://github.com/solid-design-system/solid/commit/4c065bd71df67bc13d2cf6cd27c3284cc4ce99b3) [@mariohamann](https://github.com/mariohamann)_
+
+### Patch Changes
+
+- List anchor slot of sd-tooltip in types _[`#1689`](https://github.com/solid-design-system/solid/pull/1689) [`4c065bd`](https://github.com/solid-design-system/solid/commit/4c065bd71df67bc13d2cf6cd27c3284cc4ce99b3) [@mariohamann](https://github.com/mariohamann)_
+- Fix icon slots in `sd-audio` _[`#1689`](https://github.com/solid-design-system/solid/pull/1689) [`4c065bd`](https://github.com/solid-design-system/solid/commit/4c065bd71df67bc13d2cf6cd27c3284cc4ce99b3) [@mariohamann](https://github.com/mariohamann)_
+
+### 📈 Stats
+* Uncompressed: 397 KB (-43 KB / -10%)
+* Gzipped: 94 KB (-38 KB / -29%)
+
+## 3.24.0
+
+### Minor Changes
+
+- Improve copyright: _[`#1691`](https://github.com/solid-design-system/solid/pull/1691) [`0ea037c`](https://github.com/solid-design-system/solid/commit/0ea037cf5b283ea52936fc84e5eaea112ead257e) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Add class to black color variant
+  - Add class to remove shadow
+  - Add class to top placement
+  - Improve docs
+  - Add tests for new variants
+
+## 3.23.4
+
+### Patch Changes
+
+- Improved sd-dialog accessibility: _[`#1721`](https://github.com/solid-design-system/solid/pull/1721) [`d81bd6d`](https://github.com/solid-design-system/solid/commit/d81bd6d60f42f9ac675f3d15744952f9dfca3bed) [@smfonseca](https://github.com/smfonseca)_
+
+  - Added focus styles on dialog panel
+  - Fixed content overflowing when zoom level is above 250%
+  - Fixed invalid nested header in the `headline` slot
+  - Updated documentation for `headline` slot
+
+## 3.23.3
+
+### Patch Changes
+
+- Improved a11y for sd-header: _[`#1668`](https://github.com/solid-design-system/solid/pull/1668) [`c2fb231`](https://github.com/solid-design-system/solid/commit/c2fb2318e910be9fd591ca50292a886a898d1c00) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Add ARIA attributes sd-drawer close button
+  - Improve logo link alt text
+  - Improve open drawer button name
+  - Add ARIA attributes to open drawer button
+  - Improve icon buttons names
+
+## 3.23.2
+
+### Patch Changes
+
+- Improved a11y for sd-step and sd-step-group: _[`#1688`](https://github.com/solid-design-system/solid/pull/1688) [`56daf24`](https://github.com/solid-design-system/solid/commit/56daf244989a624e2c54a22b94927d5aeb2fe44c) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Add list role to sd-step-group
+  - Add list-item role to sd-step
+  - Fix tests
+  - Remove tabindex to avoid a mismatch between information the users get depending on the chosen navigation type
+  - Add ARIA attributes to components
+  - Fix text colors in disabled state
+
 ## 3.23.1
 
 ### Patch Changes
@@ -10,8 +77,9 @@
   - Fix focus on the trigger after the dropdown is hidden using the keyboard.
 
 ### 📈 Stats
-* Uncompressed: 440 KB (+1 KB / +0%)
-* Gzipped: 132 KB (unchanged)
+
+- Uncompressed: 440 KB (+1 KB / +0%)
+- Gzipped: 132 KB (unchanged)
 
 ## 3.23.0
 
@@ -29,8 +97,9 @@
   - add sd-optgroup component for better grouping of options
 
 ### 📈 Stats
-* Uncompressed: 439 KB (+29 KB / +7%)
-* Gzipped: 132 KB (+7 KB / +6%)
+
+- Uncompressed: 439 KB (+29 KB / +7%)
+- Gzipped: 132 KB (+7 KB / +6%)
 
 ## 3.22.18
 
@@ -42,8 +111,9 @@
   - Implemented live announcement to screen readers when a tag is removed.
 
 ### 📈 Stats
-* Uncompressed: 410 KB (+1 KB / +0%)
-* Gzipped: 125 KB (unchanged)
+
+- Uncompressed: 410 KB (+1 KB / +0%)
+- Gzipped: 125 KB (unchanged)
 
 ## 3.22.17
 

@@ -80,7 +80,7 @@ export default class SdQuickfact extends SdAccordion {
   }
 
   static styles = [
-    SdAccordion.styles,
+    ...SdAccordion.styles,
     css`
       :host {
         @apply block;

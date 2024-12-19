@@ -26,7 +26,8 @@ export default {
   tags: ['!autodocs'],
   argTypes,
   parameters: {
-    ...parameters
+    ...parameters,
+    controls: { disable: true }
   },
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Lorem Ipsum' })
 };
@@ -130,8 +131,8 @@ export const StackLinks = {
     return generateTemplate({
       options: {
         templateContent: html`<div class="relative bg-white w-full h-[256px] p-8">
-          <div class="sd-hidden-links"><sd-button href="#">Skip to content</sd-button></div>
-          <div class="sd-hidden-links"><sd-button href="#">Skip to content</sd-button></div>
+          <div class="sd-hidden-links"><sd-button href="#">Skip to content 1</sd-button></div>
+          <div class="sd-hidden-links"><sd-button href="#">Skip to content 2</sd-button></div>
           <p>Tab into this area to show a single button.</p>
         </div>`
       },

@@ -1,5 +1,5 @@
 import { css, html } from 'lit';
-import { customElement } from '../../../src/internal/register-custom-element';
+import { customElement } from '../../internal/register-custom-element';
 import { LocalizeController } from '../../utilities/localize';
 import { property } from 'lit/decorators.js';
 import cx from 'classix';
@@ -57,10 +57,10 @@ export default class SdSpinner extends SolidElement {
   }
 
   /**
-   * Inherits Tailwindclasses and includes additional styling.
+   * Inherits global stylesheet including TailwindCSS
    */
   static styles = [
-    SolidElement.styles,
+    ...SolidElement.styles,
     css`
       :host {
         @apply inline-block;

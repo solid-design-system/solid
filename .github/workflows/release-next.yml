@@ -1,0 +1,39 @@
+name: Release new next version
+
+on:
+  push:
+    branches:
+      - 'next'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  GH_TOKEN: ${{ secrets.PAT_RELEASE_KARL }}
+  NPM_TOKEN: ${{ secrets.NPM_RELEASE_TOKEN_MARIO_HAMANN }}
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+            node-version: 20
+
+      - uses: pnpm/action-setup@v2
+        with:
+            version: 9.15.0
+
+      - name: Install dependencies
+        run: PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=true pnpm i
+
+      - name: Release
+        run: GH_TOKEN=${{secrets.PAT_RELEASE_KARL}} NPM_TOKEN=${{secrets.NPM_RELEASE_TOKEN_MARIO_HAMANN}} node ./scripts/release-next.mjs
