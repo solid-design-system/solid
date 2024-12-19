@@ -1,5 +1,5 @@
 import { animateTo, stopAnimations } from '../../internal/animate.js';
-import { css, type CSSResultGroup, html, type TemplateResult } from 'lit';
+import { css, html, type TemplateResult } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { defaultOptionRenderer, type OptionRenderer } from './option-renderer.js';
 import { defaultValue } from '../../internal/default-value.js';
@@ -13,7 +13,6 @@ import { scrollIntoView } from '../../internal/scroll.js';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { waitForEvent } from '../../internal/event.js';
 import { watch } from '../../internal/watch.js';
-import componentStyles from '../../styles/component.styles.js';
 import cx from 'classix';
 import SdIcon from '../icon/icon';
 import SdPopup from '../popup/popup';
@@ -241,7 +240,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
    * @param queryString - The query string used for filtering.
    * @returns A boolean indicating whether the option should be included in the filtered results.
    */
-  // eslint-disable-next-line class-methods-use-this
+
   @property() filter: (option: SdOption, queryString: string) => boolean = (option, queryString) => {
     const normalizedOption = normalizeString(option.value);
     const normalizedOptionLabel = normalizeString(option.getTextLabel());
@@ -392,13 +391,10 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     // Close when focusing out of the combobox
     const path = event.composedPath();
     if (this && !path.includes(this)) {
-      // eslint-disable-next-line @typescript-eslint/no-floating-promises
       this.hide();
     }
   };
 
-  /* eslint-disable @typescript-eslint/no-floating-promises */
-  // eslint-disable-next-line complexity
   private handleDocumentKeyDown = (event: KeyboardEvent) => {
     const target = event.target as HTMLElement;
     const isClearButton = target.closest('.combobox__clear') !== null;
@@ -508,13 +504,11 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       }
     }
   };
-  /* eslint-enable @typescript-eslint/no-floating-promises */
 
   private handleDocumentMouseDown = (event: MouseEvent) => {
     // Close when clicking outside of the combobox
     const path = event.composedPath();
     if (this && !path.includes(this)) {
-      // eslint-disable-next-line @typescript-eslint/no-floating-promises
       this.hide();
     }
   };
@@ -569,7 +563,6 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     }
     const toggleListboxOpen = () => (this.open ? this.hide() : this.show());
 
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     toggleListboxOpen().then(() => {
       setTimeout(() => this.displayInput.focus({ preventScroll: true }));
     });
@@ -606,7 +599,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       this.displayInput.focus({ preventScroll: true });
 
       // Emit after update
-      // eslint-disable-next-line @typescript-eslint/no-floating-promises
+
       this.updateComplete.then(() => {
         this.emit('sd-clear');
         this.emit('sd-input');
@@ -615,14 +608,12 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     }
   }
 
-  // eslint-disable-next-line class-methods-use-this
   private preventLoosingFocus(event: MouseEvent) {
     // Don't lose focus of the input or propagate events
     event.stopPropagation();
     event.preventDefault();
   }
 
-  /* eslint-disable @typescript-eslint/no-floating-promises */
   private handleOptionClick(event: MouseEvent) {
     const target = event.target as HTMLElement;
     const option = target.closest('sd-option');
@@ -656,7 +647,6 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       }
     }
   }
-  /* eslint-enable @typescript-eslint/no-floating-promises */
 
   /**
    * Selects the following or previous option.
@@ -705,14 +695,12 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     this.displayInput.removeAttribute('aria-activedescendant');
 
     allFilteredOptions.forEach(el => {
-      // eslint-disable-next-line no-param-reassign
       el.current = false;
       el.setAttribute('aria-selected', 'false');
     });
 
     // Select the target option
     if (option) {
-      // eslint-disable-next-line no-param-reassign
       option.current = true;
       option.setAttribute('aria-selected', 'true');
       this.displayInput.setAttribute('aria-activedescendant', option.id);
@@ -941,7 +929,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     // Close the listbox when the control is disabled
     if (this.disabled) {
       this.open = false;
-      // eslint-disable-next-line @typescript-eslint/no-floating-promises
+
       this.handleOpenChange();
     }
   }
@@ -1074,7 +1062,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     if (!this.selectedOptions || !this.multiple) {
       this.selectedTextLabel = this.displayInput.value;
       // Update validity
-      // eslint-disable-next-line @typescript-eslint/no-floating-promises
+
       this.updateComplete.then(() => {
         this.formControlController.updateValidity();
       });
@@ -1090,7 +1078,6 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     return filterOnlyOptgroups(getAssignedElementsForSlot(this.defaultSlot));
   }
 
-  /* eslint-disable no-param-reassign, @typescript-eslint/no-floating-promises */
   private async handleDefaultSlotChange() {
     // Rerun this handler when <sd-option> is registered
     if (!customElements.get('sd-option')) {
@@ -1124,10 +1111,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       this.createComboboxOptionsFromQuery('');
     }
   }
-  /* eslint-enable no-param-reassign, @typescript-eslint/no-floating-promises */
 
-  /* eslint-disable @typescript-eslint/unbound-method */
-  // eslint-disable-next-line complexity
   render() {
     // Slots
     const slots = {
@@ -1408,9 +1392,8 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       ${this.formControlController.renderInvalidMessage()}
     `;
   }
-  static styles: CSSResultGroup = [
-    componentStyles,
-    SolidElement.styles,
+  static styles = [
+    ...SolidElement.styles,
     css`
       :host {
         @apply block relative w-full;
@@ -1454,7 +1437,6 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       }
     `
   ];
-  /* eslint-enable @typescript-eslint/unbound-method */
 }
 
 setDefaultAnimation('combobox.show', {

@@ -3,6 +3,6 @@
   ![NPM Version](https://img.shields.io/npm/v/%40solid-design-system%2Ftheming)
 </div>
 
-# Theming
+# @solid-design-system/theming
 
 The Solid Design System Theming package provides a color calculation service.

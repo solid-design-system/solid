@@ -23,7 +23,8 @@ export default {
   tags: ['!autodocs'],
   component: 'sd-interactive',
   parameters: {
-    ...parameters
+    ...parameters,
+    controls: { disable: true }
   },
   args: overrideArgs([
     { type: 'slot', name: 'default', value: 'Lorem Ipsum' },
@@ -77,7 +78,6 @@ export const Default = {
 
 export const Disabled = {
   name: 'Disabled',
-  parameters: { controls: { exclude: ['sd-interactive--disabled', 'sd-interactive--reset'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -96,7 +96,6 @@ export const Disabled = {
 
 export const Inverted = {
   name: 'Inverted',
-  parameters: { controls: { exclude: ['sd-interactive--inverted', 'sd-interactive--reset'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -118,7 +117,6 @@ export const Inverted = {
 
 export const Reset = {
   name: 'Reset',
-  parameters: { controls: { exclude: ['sd-interactive--reset'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {

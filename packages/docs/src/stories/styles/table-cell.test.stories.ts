@@ -22,7 +22,8 @@ export default {
   tags: ['!autodocs'],
   component: 'sd-table-cell',
   parameters: {
-    ...parameters
+    ...parameters,
+    controls: { disable: true }
   },
   args: overrideArgs([
     { type: 'slot', name: 'default', value: 'Lorem ipsum dolor sit amet.' },

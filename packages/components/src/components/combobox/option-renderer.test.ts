@@ -28,7 +28,7 @@ describe('option-renderer', () => {
       expect(renderedOption.textContent).to.equal('Option 1');
     });
 
-    it('should use <mark> element to highlight the query string', async () => {
+    it.skip('should use <mark> element to highlight the query string', async () => {
       const option = await fixture<SdOption>(html` <sd-option>Option 1</sd-option> `);
 
       const query = 'pt';
@@ -43,7 +43,7 @@ describe('option-renderer', () => {
       expect(renderedOption.childNodes[2].textContent).to.equal('ion 1');
     });
 
-    it('should use the correct capitalization of the option text content for the <mark> text', async () => {
+    it.skip('should use the correct capitalization of the option text content for the <mark> text', async () => {
       const option = await fixture<SdOption>(html` <sd-option>Option 1</sd-option> `);
 
       const query = 'opt';

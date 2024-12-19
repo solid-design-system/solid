@@ -18,6 +18,7 @@ export default {
   component: 'sd-flag',
   parameters: {
     ...parameters,
+    controls: { disable: true },
     backgrounds: {
       default: 'neutral-200'
     },
@@ -42,7 +43,6 @@ export const Default = {
 
 export const Variants = {
   name: 'Variants',
-  parameters: { controls: { exclude: ['default', 'sd-flag--...'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -62,9 +62,6 @@ export const Variants = {
 export const FlagSamples = {
   name: 'Samples',
   parameters: {
-    controls: {
-      disable: true
-    },
     backgrounds: {
       default: 'white'
     }

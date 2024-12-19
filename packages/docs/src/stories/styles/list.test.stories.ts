@@ -31,6 +31,7 @@ export default {
   component: 'sd-list',
   parameters: {
     ...parameters,
+    controls: { disable: true },
     design: {
       type: 'figma',
       url: 'https://www.figma.com/file/DDSyYvf2q99RhiyDjy03s5/List?type=design&node-id=971-4578&mode=design&t=2UZo6NW6ErMA2G5X-0'
@@ -72,7 +73,6 @@ export const Default = {
 
 export const OrderedList = {
   name: 'Ordered List',
-  parameters: { controls: { exclude: ['default'] } },
   args: overrideArgs({
     type: 'slot',
     name: 'default',
@@ -130,7 +130,6 @@ export const OrderedList = {
 
 export const UnorderedList = {
   name: 'Unordered List',
-  parameters: { controls: { exclude: ['default'] } },
   args: overrideArgs({
     type: 'slot',
     name: 'default',
@@ -192,7 +191,6 @@ export const UnorderedList = {
  */
 export const IconList = {
   name: 'Icon List',
-  parameters: { controls: { exclude: ['default'] } },
   args: overrideArgs({
     type: 'slot',
     name: 'default',
@@ -236,7 +234,6 @@ export const IconList = {
  */
 export const HorizontalIconList = {
   name: 'Horizontal Icon List',
-  parameters: { controls: { exclude: ['default'] } },
   args: overrideArgs({
     type: 'slot',
     name: 'default',
@@ -268,7 +265,6 @@ export const HorizontalIconList = {
  */
 export const MixedLists = {
   name: 'Mixed Lists',
-  parameters: { controls: { exclude: ['default'] } },
   render: (args: any) => {
     const preset = (type: string) =>
       html`<preset-type class="sd-list">
