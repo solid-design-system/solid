@@ -8,6 +8,9 @@ const { overrideArgs } = storybookHelpers('sd-checkbox');
 /**
  * Used to toggle an option on or off.
  *
+ * **Accessibility Information:**
+ * -
+ *
  * **Related components:**
  * - [sd-checkbox-group](?path=/docs/components-sd-checkbox-group--docs)
  *

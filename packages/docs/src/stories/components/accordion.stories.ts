@@ -11,6 +11,9 @@ const { generateTemplate } = storybookTemplate('sd-accordion');
  *
  * Used to show a brief summary and expands to display additional content.
  *
+ * **Accessibility Information**:
+ * - Hiding content can become a potential barrier, making content more challenging to discover. Use this pattern only for non-critical information.
+ *
  * **Related components**:
  * - [sd-accordion-group](?path=/docs/components-sd-accordion-group--docs)
  *

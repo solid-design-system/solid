@@ -10,6 +10,9 @@ const { generateTemplate } = storybookTemplate('sd-accordion-group');
  *
  * Used to group multiple accordions together.
  *
+ * **Accessibility Information**:
+ * - Hiding content can become a potential barrier, making content more challenging to discover. Use this pattern only for non-critical information.
+ *
  * **Related components**:
  * - [sd-accordion](?path=/docs/components-sd-accordion--docs)
  *
