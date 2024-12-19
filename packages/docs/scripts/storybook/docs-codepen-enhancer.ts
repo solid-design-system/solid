@@ -18,7 +18,7 @@ export default function docsCodepenEnhancer(code: string, storyContext: StoryCon
         };
       } else if (version === 'main') {
         return {
-          components: 'https://solid-design-system.fe.union-investment.de/styles/%COMPONENTS-VERSION%',
+          components: 'https://solid-design-system.fe.union-investment.de/components/%COMPONENTS-VERSION%',
           styles: 'https://solid-design-system.fe.union-investment.de/styles/%STYLES-VERSION%'
         };
       } else {
@@ -29,7 +29,7 @@ export default function docsCodepenEnhancer(code: string, storyContext: StoryCon
       }
     } else {
       return {
-        components: 'https://solid-design-system.fe.union-investment.de/styles/%COMPONENTS-VERSION%',
+        components: 'https://solid-design-system.fe.union-investment.de/components/%COMPONENTS-VERSION%',
         styles: 'https://solid-design-system.fe.union-investment.de/styles/%STYLES-VERSION%'
       };
     }
