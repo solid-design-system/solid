@@ -50,7 +50,7 @@ export const VideoWithCopyright = {
         z-index: 10;
       }
     </style>
-    <div class="sd-copyright" style="--copyright:'© Union Investment 2024'">
+    <div class="sd-copyright sd-copyright--placement-top" style="--copyright:'© Union Investment 2024'">
       <sd-video>
         <video controls class="aspect-video">
           <source src="./placeholders/videos/sds-placeholder-video/sds-placeholder-video.webm" type="video/webm" />

@@ -11,7 +11,7 @@ const { generateTemplate } = storybookTemplate('sd-dialog');
  *
  * Used over other content. It requires an interaction from the user before they can return to whatever is underneath.
  *
- * - Use the `headline` slot to add a headline.
+ * - Use the `headline` slot to add a headline. <br /> Since the wrapper of the slot is an `h2` by default, the slot should be a generic element (`span`, `div`).
  * - Use the `default` slot to add main content. <br /> Default slot is always scrollable.
  * - Use the `footer` slot to add action elements. <br /> Footer slot is always fixed.
  *
@@ -75,8 +75,9 @@ export const Open = {
   name: 'Open',
   render: () => html`
     <div class="h-[40vh]">
-      <sd-dialog open>
-        <h4 slot="headline" class="sd-headline sd-headline-3xl">Lorem ipsum</h4>
+      <sd-button id="drawer-trigger">Open Dialog</sd-button>
+      <sd-dialog id="dialog" open>
+        <span slot="headline" class="sd-headline sd-headline--size-3xl">Lorem ipsum</span>
         <p class="sd-paragraph">
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
           dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam.
@@ -84,6 +85,14 @@ export const Open = {
         <sd-button slot="footer">Button</sd-button>
       </sd-dialog>
     </div>
+    <script type="module">
+      const dialog = document.getElementById('dialog');
+      const trigger = document.getElementById('drawer-trigger');
+
+      trigger.addEventListener('click', () => {
+        dialog.show();
+      });
+    </script>
   `
 };
 
@@ -95,7 +104,8 @@ export const Headline = {
   name: 'Headline',
   render: () => html`
     <div class="h-[40vh]">
-      <sd-dialog open headline="Headline">
+      <sd-button id="headline-drawer-trigger">Open Dialog</sd-button>
+      <sd-dialog id="headline-dialog" open headline="Headline">
         <p class="sd-paragraph">
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
           dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam.
@@ -103,6 +113,14 @@ export const Headline = {
         <sd-button slot="footer">Button</sd-button>
       </sd-dialog>
     </div>
+    <script type="module">
+      const dialog = document.getElementById('headline-dialog');
+      const trigger = document.getElementById('headline-drawer-trigger');
+
+      trigger.addEventListener('click', () => {
+        dialog.show();
+      });
+    </script>
   `
 };
 
@@ -116,7 +134,8 @@ export const NoCloseButton = {
   name: 'No Close Button',
   render: () => html`
     <div class="h-[40vh]">
-      <sd-dialog id="dialog" headline="Headline" open no-close-button>
+      <sd-button id="no-close-drawer-trigger">Open Dialog</sd-button>
+      <sd-dialog id="no-close-dialog" headline="Headline" open no-close-button>
         <p class="sd-paragraph">
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
           dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam.
@@ -125,15 +144,20 @@ export const NoCloseButton = {
       </sd-dialog>
     </div>
 
-    <script>
-      var dialog = document.getElementById('dialog');
-      var button = dialog.querySelector('.close-button');
+    <script type="module">
+      const dialog = document.getElementById('no-close-dialog');
+      const button = dialog.querySelector('.close-button');
+      const trigger = document.getElementById('no-close-drawer-trigger');
 
       button.addEventListener('click', () => {
         dialog.hide();
         setTimeout(() => {
           dialog.show();
         }, 2000);
+      });
+
+      trigger.addEventListener('click', () => {
+        dialog.show();
       });
     </script>
   `
