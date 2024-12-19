@@ -9,7 +9,11 @@ const { generateTemplate } = storybookTemplate('sd-expandable');
 /**
  * Used to display a brief summary that expands to reveal additional content.
  *
- *  **Related templates**:
+ * **Accessibility Hints:**
+ * - The expandable component should only hide non-critical content, to ensure users can access essential information without unnecessary interaction.
+ * - Generic summaries like "show more" should be avoided.
+ *
+ * **Related templates**:
  * - [Expandable](?path=/docs/templates-expandable--docs)
  */
 export default {
