@@ -7,14 +7,12 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { live } from 'lit/directives/live.js';
 import { property, query, state } from 'lit/decorators.js';
 import { watch } from '../../internal/watch.js';
-import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 import type { SolidFormControl } from '../../internal/solid-element';
 
 /**
  * @summary Textareas collect data from the user and allow multiple lines of text.
- * @documentation https://shoelace.style/components/textarea
  * @status stable
  * @since 1.31.0
  *
@@ -449,11 +447,10 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
   }
 
   /**
-   * Inherits Tailwindclasses and includes additional styling.
+   * Inherits global stylesheet including TailwindCSS
    */
   static styles = [
-    componentStyles,
-    SolidElement.styles,
+    ...SolidElement.styles,
     css`
       :host {
         @apply block h-full;

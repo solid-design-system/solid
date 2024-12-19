@@ -29,6 +29,7 @@ export default {
   component: 'sd-chip',
   parameters: {
     ...parameters,
+    controls: { disable: true },
     backgrounds: {
       default: 'neutral-200'
     }
@@ -49,15 +50,14 @@ export const Default = {
 
 export const Variants = {
   name: 'Variants',
-  parameters: { controls: { exclude: ['default', 'sd-chip--...'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
         y: [
           {
             type: 'attribute',
-            name: 'sd-chip',
-            values: ['sd-chip--primary-500', 'sd-chip--primary-300', 'sd-chip--primary-200', 'sd-chip--white']
+            name: 'sd-chip--variant',
+            values: ['', 'sd-chip--primary-300', 'sd-chip--primary-500', 'sd-chip--white']
           }
         ]
       },

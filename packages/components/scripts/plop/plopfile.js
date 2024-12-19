@@ -42,13 +42,19 @@ export default function (plop) {
       },
       {
         type: 'add',
-        path: '../../../docs/src/stories/{{ tagWithoutPrefix tag }}.stories.ts',
+        path: '../../../docs/src/stories/components/{{ tagWithoutPrefix tag }}.stories.ts',
         templateFile: 'templates/component/stories.hbs'
       },
       {
         type: 'add',
-        path: '../../../docs/src/stories/{{ tagWithoutPrefix tag }}.test.stories.ts',
+        path: '../../../docs/src/stories/components/{{ tagWithoutPrefix tag }}.test.stories.ts',
         templateFile: 'templates/component/test.stories.hbs'
+      },
+      {
+        type: 'modify',
+        path: '../../src/solid-components.ts',
+        pattern: /\/\* plop:component \*\//,
+        template: `export { default as {{ properCase tag }} } from './components/{{ tagWithoutPrefix tag }}/{{ tagWithoutPrefix tag }}.js';\n/* plop:component */`
       }
     ]
   });

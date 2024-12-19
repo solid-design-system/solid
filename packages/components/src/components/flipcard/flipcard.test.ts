@@ -1,5 +1,5 @@
+import '../../../dist/solid-components';
 import { expect, fixture, html, waitUntil } from '@open-wc/testing';
-import { userEvent } from '@storybook/test';
 import sinon from 'sinon';
 import type SdFlipcard from './flipcard';
 
@@ -12,27 +12,10 @@ describe('<sd-flipcard>', () => {
   it('should generate proper defaults', async () => {
     const el = await fixture<SdFlipcard>(html`<sd-flipcard></sd-flipcard>`);
 
-    expect(el.activation).to.equal('click hover');
-    expect(el.frontVariant).to.equal('empty');
-    expect(el.backVariant).to.equal('empty');
-  });
-
-  it('should allow custom activation', async () => {
-    const el = await fixture<SdFlipcard>(html`<sd-flipcard activation="click"></sd-flipcard>`);
-
-    expect(el.activation).to.equal('click');
-  });
-
-  it('should flip on hover', async () => {
-    const el = await fixture<SdFlipcard>(html`<sd-flipcard></sd-flipcard>`);
-
-    expect(el.shadowRoot!.querySelector('.flip-card__side--front')).to.have.class('hover');
-  });
-
-  it('should not flip on hover', async () => {
-    const el = await fixture<SdFlipcard>(html`<sd-flipcard activation="click"></sd-flipcard>`);
-
-    expect(el.shadowRoot!.querySelector('.flip-card__side--front')).to.not.have.class('hover');
+    expect(el.frontVariant).to.equal('primary');
+    expect(el.backVariant).to.equal('primary');
+    expect(el.flipDirection).to.equal('horizontal');
+    expect(el.placement).to.equal('top');
   });
 
   describe('when a flip is triggered', () => {
@@ -44,14 +27,15 @@ describe('<sd-flipcard>', () => {
       el.addEventListener('sd-flip-front', flipFrontHandler);
       el.addEventListener('sd-flip-back', flipBackHandler);
 
-      await userEvent.type(el.shadowRoot!.querySelector('.flip-card__side--front')!, '{return}', {
-        pointerEventsCheck: 0
-      });
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
+      const front = el.shadowRoot!.querySelector("[part='front-button']")! as HTMLButtonElement;
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
+      const back = el.shadowRoot!.querySelector("[part='back-button']")! as HTMLButtonElement;
+
+      front.click();
       await waitUntil(() => flipFrontHandler.calledOnce);
 
-      await userEvent.type(el.shadowRoot!.querySelector('.flip-card__side--back')!, '{return}', {
-        pointerEventsCheck: 0
-      });
+      back.click();
       await waitUntil(() => flipBackHandler.calledOnce);
 
       expect(flipFrontHandler).to.have.been.calledOnce;

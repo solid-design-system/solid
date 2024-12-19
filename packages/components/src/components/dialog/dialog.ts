@@ -1,8 +1,8 @@
 import '../button/button';
 import '../icon/icon';
 import { animateTo, stopAnimations } from '../../internal/animate';
-import { css, html, unsafeCSS } from 'lit';
-import { customElement } from '../../../src/internal/register-custom-element';
+import { css, html } from 'lit';
+import { customElement } from '../../internal/register-custom-element';
 import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry';
 import { HasSlotController } from '../../internal/slot';
 import { LocalizeController } from '../../utilities/localize';
@@ -10,9 +10,7 @@ import { lockBodyScrolling, unlockBodyScrolling } from '../../internal/scroll';
 import { property, query } from 'lit/decorators.js';
 import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch';
-import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
-import HeadlineStyles from '../../styles/headline/headline.css?inline';
 import Modal from '../../internal/modal';
 import SolidElement from '../../internal/solid-element';
 
@@ -318,9 +316,7 @@ export default class SdDialog extends SolidElement {
   }
 
   static styles = [
-    componentStyles,
-    unsafeCSS(HeadlineStyles),
-    SolidElement.styles,
+    ...SolidElement.styles,
     css`
       :host {
         --width: 662px;

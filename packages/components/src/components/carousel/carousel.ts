@@ -1,8 +1,8 @@
 import '../icon/icon.js';
 import { AutoplayController } from './autoplay-controller.js';
 import { clamp } from '../../internal/math.js';
-import { css, html, unsafeCSS } from 'lit';
-import { customElement } from '../../../src/internal/register-custom-element';
+import { css, html } from 'lit';
+import { customElement } from '../../internal/register-custom-element';
 import { LocalizeController } from '../../utilities/localize.js';
 import { map } from 'lit/directives/map.js';
 import { prefersReducedMotion } from '../../internal/animate.js';
@@ -10,9 +10,7 @@ import { property, query, queryAll, state } from 'lit/decorators.js';
 import { range } from 'lit/directives/range.js';
 import { ScrollController } from './scroll-controller.js';
 import { watch } from '../../internal/watch.js';
-import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
-import InteractiveStyles from '../../styles/interactive/interactive.css?inline';
 import SdCarouselItem from '../carousel-item/carousel-item.js';
 import SolidElement from '../../internal/solid-element.js';
 
@@ -152,14 +150,14 @@ export default class SdCarousel extends SolidElement {
     this.mutationObserver.observe(this, { childList: true, subtree: false });
   }
 
-  static getPageCount(totalSlides: number, slidesPerPage: number, slidesPerMove: number) {
+  public getPageCount(totalSlides: number, slidesPerPage: number, slidesPerMove: number) {
     return Math.ceil((totalSlides - slidesPerPage) / slidesPerMove) + 1 > 0
       ? Math.ceil((totalSlides - slidesPerPage) / slidesPerMove) + 1
       : // Returns 1 if the total number of slides is less than the number of slides per page
         1;
   }
 
-  static getCurrentPage(
+  public getCurrentPage(
     totalSlides: number,
     activeSlide: number,
     slidesPerPage: number,
@@ -343,12 +341,7 @@ export default class SdCarousel extends SolidElement {
     });
 
     // Calculate current page only once
-    const newCurrentPage = SdCarousel.getCurrentPage(
-      slides.length,
-      this.activeSlide,
-      this.slidesPerPage,
-      this.slidesPerMove
-    );
+    const newCurrentPage = this.getCurrentPage(slides.length, this.activeSlide, this.slidesPerPage, this.slidesPerMove);
 
     // Batch updates together
     if (this.currentPage !== newCurrentPage) {
@@ -366,7 +359,7 @@ export default class SdCarousel extends SolidElement {
     }
 
     // Check page count after all other updates
-    const pageCount = SdCarousel.getPageCount(slides.length, this.slidesPerPage, this.slidesPerMove);
+    const pageCount = this.getPageCount(slides.length, this.slidesPerPage, this.slidesPerMove);
     if (this.currentPage > pageCount) {
       // Use requestAnimationFrame to defer this update to the next frame
       requestAnimationFrame(() => {
@@ -425,10 +418,7 @@ export default class SdCarousel extends SolidElement {
    * @param behavior - The behavior used for scrolling.
    */
   next(behavior: ScrollBehavior = 'smooth') {
-    if (
-      this.currentPage + 1 <=
-      SdCarousel.getPageCount(this.getSlides().length, this.slidesPerPage, this.slidesPerMove)
-    ) {
+    if (this.currentPage + 1 <= this.getPageCount(this.getSlides().length, this.slidesPerPage, this.slidesPerMove)) {
       this.goToSlide(this.activeSlide + this.slidesPerMove, behavior);
     } else {
       if (this.loop) {
@@ -442,7 +432,7 @@ export default class SdCarousel extends SolidElement {
       this.goToSlide(this.activeSlide + 1, behavior);
     }
 
-    this.currentPage = SdCarousel.getCurrentPage(
+    this.currentPage = this.getCurrentPage(
       this.getSlides().length,
       this.activeSlide,
       this.slidesPerPage,
@@ -492,8 +482,8 @@ export default class SdCarousel extends SolidElement {
 
   render() {
     const { scrollController, slidesPerMove } = this;
-    const pagesCount = SdCarousel.getPageCount(this.getSlides().length, this.slidesPerPage, this.slidesPerMove);
-    const currentPage = SdCarousel.getCurrentPage(
+    const pagesCount = this.getPageCount(this.getSlides().length, this.slidesPerPage, this.slidesPerMove);
+    const currentPage = this.getCurrentPage(
       this.getSlides().length,
       this.activeSlide,
       this.slidesPerPage,
@@ -678,9 +668,7 @@ export default class SdCarousel extends SolidElement {
   }
 
   static styles = [
-    SolidElement.styles,
-    unsafeCSS(InteractiveStyles),
-    componentStyles,
+    ...SolidElement.styles,
     css`
       :host {
         --slide-gap: var(--sl-spacing-medium, 1rem);
