@@ -9,6 +9,9 @@ const { generateTemplate } = storybookTemplate('sd-optgroup');
 /**
  * Used to group selectable items within various form controls such as select.
  *
+ * **Accessibility Information**:
+ * - Use radio buttons instead of selects for a few options. Visible choices are better than hidden ones.
+ *
  * **Related Components**:
  * - [sd-combobox](?path=/docs/components-sd-combobox--docs)
  * - [sd-select](?path=/docs/components-sd-select--docs)

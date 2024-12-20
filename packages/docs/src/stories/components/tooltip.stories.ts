@@ -10,6 +10,10 @@ const { generateTemplate } = storybookTemplate('sd-tooltip');
 /**
  * Used as a floating and non-actionable text label that explains an element or function of the user interface.
  *
+ * **Accessibility Information:**
+ * - Don’t use tooltips for critical or unique information.
+ * - Avoid long text in tooltips.
+ *
  *  **Related templates:**
  * - [Tooltip](?path=/docs/templates-tooltip--docs)
  */

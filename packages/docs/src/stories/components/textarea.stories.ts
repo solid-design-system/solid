@@ -10,6 +10,10 @@ const { overrideArgs } = storybookHelpers('sd-textarea');
 /**
  * Used to allow users to input and edit multiple lines of text.
  *
+ * **Accessibility Information:**
+ * - Note that maxlength does not indicate the maximum number of characters to screen readers. Without help text, this may cause confusion.
+ * - The placeholder is not a replacement for the label, but rather an additional element.
+ *
  * **Related templates:**
  * - [Textarea with Tooltip](?path=/docs/templates-tooltip--docs)
  */

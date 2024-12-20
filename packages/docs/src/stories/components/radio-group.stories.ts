@@ -9,6 +9,9 @@ const { overrideArgs } = storybookHelpers('sd-radio-group');
 /**
  * Used to group multiple input radio or radio buttons so they function as a single form control.
  *
+ * **Accessibility Information**:
+ * - Keep the label short but descriptive.
+ *
  *  **Related components**:
  * - [sd-radio](?path=/docs/components-sd-radio--docs)
  * - [sd-radio-button](?path=/docs/components-sd-radio-button--docs)

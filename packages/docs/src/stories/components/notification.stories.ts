@@ -11,10 +11,9 @@ const { overrideArgs } = storybookHelpers('sd-notification');
 /**
  * Used to communicate important information or status to the user. Notifications can be displayed inline or as a toast / toast stack.
  *
- * > **Warning:** Our accessibility audit in 10/2024 found several problems with the `toast()` method. These are mostly related to the
- * > general concept of toasts, rather than how it is implemented. We will investigate how to improve this in the future. For now,
- * > we strongly recommend using inline notifications instead of toasts. For further information, please refer to our
- * > [GitHub issue](https://github.com/solid-design-system/solid/issues/1482).
+ * **Accessibility Information**:
+ * - Our accessibility audit in 10/2024 found several problems with the `toast()` method. These are mostly related to the general concept of toasts, rather than how it is implemented. We will investigate how to improve this in the future. For now, we strongly recommend using inline notifications instead of toasts.
+ * - Notification shouldn’t close earlier than 5 seconds.
  *
  *  **Related templates**:
  * - [Notification](?path=/docs/templates-notification--docs)

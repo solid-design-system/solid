@@ -9,6 +9,9 @@ const { generateTemplate } = storybookTemplate('sd-navigation-item');
 /**
  * Used to facilitate seamless page transitions and helps users orient themselves within the application.
  *
+ * **Accessibility Information**:
+ * - Button and link labels should be descriptive yet concise. Descriptive items can result in overly long labels.
+ *
  * **Related components**:
  * - [sd-header](?path=/docs/components-sd-header--docs)
  *

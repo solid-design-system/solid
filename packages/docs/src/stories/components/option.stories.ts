@@ -9,6 +9,9 @@ const { overrideArgs } = storybookHelpers('sd-option');
 /**
  * Used to define selectable items within various form controls such as select.
  *
+ * **Accessibility Information**:
+ * - Use radio buttons instead of selects for a few options. Visible choices are better than hidden ones.
+ *
  * **Related Components**:
  * - [sd-select](?path=/docs/components-sd-select--docs)
  * - [sd-combobox](?path=/docs/components-sd-combobox--docs)

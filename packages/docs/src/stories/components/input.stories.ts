@@ -9,6 +9,10 @@ const { overrideArgs } = storybookHelpers('sd-input');
 /**
  * Used to allow users to enter text. It can be displayed in several ways, depending on the type.
  *
+ * **Accessibility Information**:
+ * - The placeholder is an addition, not a replacement for the label. Always provide a visible label.
+ * - Do not rely on placeholders alone, except in rare cases like a search widget.
+ *
  * **Related templates**:
  * - [Input](?path=/docs/templates-input--docs)
  * - [Autocomplete](?path=/docs/templates-autocomplete--docs)

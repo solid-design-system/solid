@@ -12,6 +12,9 @@ const { generateTemplate } = storybookTemplate('sd-radio-button');
  *
  * Similar to `sd-radio`, it has to be slotted inside of an `sd-radio-group`. It does not have an invalid state and should always have a pre-selected option (default value).
  *
+ * **Accessibility Information:**
+ * - Use `sd-radio` instead of `sd-radio-button` whenever possible to avoid confusion with regular buttons. If something looks like a button, you expect that you can use it like a button.
+ *
  * **Related components:**
  * - [sd-radio](?path=/docs/components-sd-radio--docs)
  * - [sd-radio-group](?path=/docs/components-sd-radio-group--docs)
