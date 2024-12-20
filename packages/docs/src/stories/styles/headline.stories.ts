@@ -7,7 +7,7 @@ const { overrideArgs } = storybookHelpers('sd-headline');
 const { generateTemplate } = storybookTemplate('sd-headline');
 
 /**
- * Used as a crucial element for displaying content hierarchy and to enhance accessibility.
+ * Used to display primary or section titles, highlighting key messages to create clear visual hierarchy.
  *
  * **Related templates**:
  * - [Headline with Mark](?path=/docs/templates-mark--docs)
@@ -41,7 +41,7 @@ export default {
 export const Default = {
   render: (args: any) => {
     return generateTemplate({
-      options: { templateContent: '<h4 class="%CLASSES%">%SLOT%</h4>' },
+      options: { templateContent: '<h2 class="%CLASSES%">%SLOT%</h2>' },
       args
     });
   }
@@ -55,6 +55,10 @@ export const Default = {
  * - `sd-headline--size-xl`
  * - `sd-headline--size-lg`
  * - `sd-headline--size-base`
+ *
+ * Separating semantics from styles allows developers to use appropriate tags (e.g, h1 to h6 or p) for structure,
+ * ensuring consistent design, accessibility, and flexibility across use cases.
+ * H-tags are applied in the CMS following semantic headline order.
  */
 export const Sizes = {
   render: () => html`
