@@ -38,18 +38,18 @@ export const Default = {
 };
 
 /**
- * Use the `sd-display` classes for alternative appearances:
- * - `sd-display--size-4xl`
+ * Use the `&--size-*` classes for alternative appearances.
+ * - `sd-display` (default)
  * - `sd-display--size-3xl`
- * - xl is the default size
+ * - `sd-display--size-xl`
  */
 
 export const Size = {
   render: () => html`
     <div class="flex flex-col gap-6">
-      <div class="sd-display sd-display--size-4xl">Lorem ipsum</div>
-      <div class="sd-display sd-display--size-3xl">Lorem ipsum</div>
       <div class="sd-display">Lorem ipsum</div>
+      <div class="sd-display sd-display--size-3xl">Lorem ipsum</div>
+      <div class="sd-display sd-display--size-xl">Lorem ipsum</div>
     </div>
   `
 };

@@ -29,7 +29,7 @@ export default {
     }
   ]),
   argTypes,
-  parameters: { ...parameters },
+  parameters: { ...parameters, controls: { disable: true } },
   decorators: [withActions] as any
 };
 
@@ -50,7 +50,6 @@ export const Default = {
 
 export const Size = {
   name: 'Size',
-  parameters: { controls: { exclude: ['size'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -67,7 +66,6 @@ export const Size = {
 
 export const LabelAndSize = {
   name: 'Label × Size',
-  parameters: { controls: { exclude: ['icon', 'default', 'size'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -89,7 +87,6 @@ export const LabelAndSize = {
 
 export const LabelOnly = {
   name: 'Label only',
-  parameters: { controls: { exclude: ['icon', 'default'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -118,7 +115,6 @@ export const LabelOnly = {
 
 export const DisabledAndChecked = {
   name: 'Disabled × Checked',
-  parameters: { controls: { exclude: ['disabled', 'checked', 'default'] } },
   render: () => {
     return html`
       <div class="flex flex-col gap-4 w-[260px] p-4">
@@ -148,9 +144,6 @@ export const DisabledAndChecked = {
  */
 export const Parts = {
   name: 'Parts',
-  parameters: {
-    controls: { exclude: ['base', 'button', 'button--checked', 'default', 'icon', 'label'] }
-  },
   render: (args: any) => {
     return generateTemplate({
       axis: {

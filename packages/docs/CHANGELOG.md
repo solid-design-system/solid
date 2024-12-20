@@ -1,12 +1,30 @@
 # @solid-design-system/docs
 
-## 1.2.11
+## 1.3.0-next.2
+
+### Minor Changes
+
+- Codepens now link to correct styles and components in PRs, on next, main and on prod _[`#1749`](https://github.com/solid-design-system/solid/pull/1749) [`dee4112`](https://github.com/solid-design-system/solid/commit/dee41127ec4502537d1ddcb62acb63e386386bea) [@mariohamann](https://github.com/mariohamann)_
+
+## 1.2.7-next.1
+
+### Patch Changes
+
+- The `variant` `gradient-white` of component `sd-teaser-media` was changed to `gradient-light` to be in sync with design. _[`#1689`](https://github.com/solid-design-system/solid/pull/1689) [`4c065bd`](https://github.com/solid-design-system/solid/commit/4c065bd71df67bc13d2cf6cd27c3284cc4ce99b3) [@mariohamann](https://github.com/mariohamann)_
+
+## 1.2.7-next.0
+
+### Patch Changes
+
+- Extend sd-interactive and icon-only buttons documentation regarding accessibility best practices. _[`#1740`](https://github.com/solid-design-system/solid/pull/1740) [`311d2f6`](https://github.com/solid-design-system/solid/commit/311d2f6715cddc760c6860bd6a0017a4123379da) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.2.6
 
 ### Patch Changes
 
 - Fix typos in docs and configure spelling extension. _[`#1723`](https://github.com/solid-design-system/solid/pull/1723) [`1bf55d3`](https://github.com/solid-design-system/solid/commit/1bf55d37ffeaec412589b9bb0acccfe2d1d69978) [@karlbaumhauer](https://github.com/karlbaumhauer)_
 
-## 1.2.10
+## 1.2.5
 
 ### Patch Changes
 
@@ -18,7 +36,7 @@
   - Improve docs
   - Add tests for new variants
 
-## 1.2.9
+## 1.2.4
 
 ### Patch Changes
 
@@ -27,7 +45,7 @@
   - Added buttons to reopen dialog in both stories and templates
   - Added example actions to the templates buttons
 
-## 1.2.8
+## 1.2.3
 
 ### Patch Changes
 
@@ -39,7 +57,7 @@
   - Add ARIA attributes to open drawer button
   - Improve icon buttons names
 
-## 1.2.7
+## 1.2.2
 
 ### Patch Changes
 
@@ -51,67 +69,6 @@
   - Remove tabindex to avoid a mismatch between information the users get depending on the chosen navigation type
   - Add ARIA attributes to components
   - Fix text colors in disabled state
-
-## 1.2.6
-
-### Patch Changes
-
-- Very very last release for pre-releases _[`#1734`](https://github.com/solid-design-system/solid/pull/1734) [`ff36c84`](https://github.com/solid-design-system/solid/commit/ff36c84c046fb2659225ea68d613a8b32cb4b4d8) [@smfonseca](https://github.com/smfonseca)_
-- Test pre release _[`#1734`](https://github.com/solid-design-system/solid/pull/1734) [`ff36c84`](https://github.com/solid-design-system/solid/commit/ff36c84c046fb2659225ea68d613a8b32cb4b4d8) [@smfonseca](https://github.com/smfonseca)_
-
-## 1.2.6-next.0
-
-### Patch Changes
-
-- Test pre release _[`6ef5d5b`](https://github.com/solid-design-system/solid/commit/6ef5d5bbd10db442649e85970b8a88babde9236b) [@smfonseca](https://github.com/smfonseca)_
-
-## 1.2.5
-
-### Patch Changes
-
-- Very very last release for pre-releases _[`#1732`](https://github.com/solid-design-system/solid/pull/1732) [`05f8b7d`](https://github.com/solid-design-system/solid/commit/05f8b7d3d12ca5c8a39b70e2397cfb58b880c54c) [@mariohamann](https://github.com/mariohamann)_
-
-## 1.2.5-next.0
-
-### Patch Changes
-
-- Very very last release for pre-releases _[`12d82fd`](https://github.com/solid-design-system/solid/commit/12d82fdb533a77519e6b356c96a0e616d461e4a9) [@mariohamann](https://github.com/mariohamann)_
-
-## 1.2.4
-
-### Patch Changes
-
-- Very final release for pre-releases _[`#1731`](https://github.com/solid-design-system/solid/pull/1731) [`9c11ee0`](https://github.com/solid-design-system/solid/commit/9c11ee0907059fe6477781a4f4d4395ab20c3e43) [@mariohamann](https://github.com/mariohamann)_
-
-## 1.2.4-next.0
-
-### Patch Changes
-
-- Very final release for pre-releases _[`#1731`](https://github.com/solid-design-system/solid/pull/1731) [`e60ee05`](https://github.com/solid-design-system/solid/commit/e60ee05c4a5a8f8b2218694496c928543d3ba0ba) [@mariohamann](https://github.com/mariohamann)_
-
-## 1.2.3
-
-### Patch Changes
-
-- Test release for next branch _[`#1728`](https://github.com/solid-design-system/solid/pull/1728) [`2531b2a`](https://github.com/solid-design-system/solid/commit/2531b2a26a219cf05385c997dfbaa813dc134f67) [@mariohamann](https://github.com/mariohamann)_
-
-## 1.2.3-next.0
-
-### Patch Changes
-
-- Test release for next branch _[`f6eb232`](https://github.com/solid-design-system/solid/commit/f6eb2321d35d4ec0c1d114812d08294dad432901) [@mariohamann](https://github.com/mariohamann)_
-
-## 1.2.2
-
-### Patch Changes
-
-- Test pre-release _[`#1727`](https://github.com/solid-design-system/solid/pull/1727) [`edaa92d`](https://github.com/solid-design-system/solid/commit/edaa92d98729357ae51723a9f594fb7503a70438) [@mariohamann](https://github.com/mariohamann)_
-
-## 1.2.2-next.0
-
-### Patch Changes
-
-- Test pre-release _[`#1727`](https://github.com/solid-design-system/solid/pull/1727) [`a7d22a1`](https://github.com/solid-design-system/solid/commit/a7d22a191070773bb481a7935733a444091e9ee0) [@mariohamann](https://github.com/mariohamann)_
 
 ## 1.2.1
 

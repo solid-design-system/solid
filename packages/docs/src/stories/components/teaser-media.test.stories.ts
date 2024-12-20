@@ -34,7 +34,7 @@ export default {
     }
   ]),
   argTypes,
-  parameters
+  parameters: { ...parameters, controls: { disable: true } }
 };
 
 /**
@@ -54,7 +54,6 @@ export const Default = {
 
 export const Variant = {
   name: 'Variant',
-  parameters: { controls: { exclude: ['variant'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -83,9 +82,6 @@ export const Variant = {
  */
 export const Slots = {
   name: 'Slots',
-  parameters: {
-    controls: { exclude: ['default', 'media', 'meta', 'headline', 'expandable'] }
-  },
   render: (args: any) => {
     return html`
       ${['default', 'media', 'meta', 'headline', 'expandable'].map(slot => {
@@ -154,9 +150,6 @@ export const Slots = {
 
 export const Parts = {
   name: 'Parts',
-  parameters: {
-    controls: { exclude: ['base', 'media', 'content', 'meta', 'headline', 'main', 'expandable', 'variant'] }
-  },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -196,9 +189,6 @@ export const Parts = {
 export const Samples = {
   name: 'Samples: Teaser-Media',
   parameters: {
-    controls: {
-      disable: true
-    },
     backgrounds: {
       default: 'white'
     }
@@ -231,7 +221,7 @@ export const Samples = {
             </div>
           </div>
         </sd-teaser-media>
-        <sd-teaser-media variant="gradient-white" class="min-w-[435px] max-w-4xl">
+        <sd-teaser-media variant="gradient-light" class="min-w-[435px] max-w-4xl">
           <div slot="media" class="relative">
             <img
               class="aspect-video object-cover"

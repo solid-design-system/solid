@@ -1,0 +1,30 @@
+{
+  "mode": "pre",
+  "tag": "next",
+  "initialVersions": {
+    "@solid-design-system/components": "3.24.0",
+    "@solid-design-system/docs": "1.2.6",
+    "@solid-design-system/placeholders": "2.0.1",
+    "@solid-design-system/theming": "1.1.0",
+    "@solid-design-system/tokens": "5.1.0",
+    "@solid-design-system/styles": "1.4.0",
+    "@solid-design-system/versioning": "1.0.0"
+  },
+  "changesets": [
+    "brave-pumas-drop",
+    "breezy-ties-sort",
+    "brown-singers-breathe",
+    "chilled-otters-cheat",
+    "cuddly-spies-crash",
+    "curvy-worms-sin",
+    "fair-laws-heal",
+    "fifty-trainers-jump",
+    "lovely-tables-divide",
+    "pink-peas-visit",
+    "quick-yaks-grow",
+    "stale-windows-pretend",
+    "strange-items-clap",
+    "warm-news-scream",
+    "wild-snails-sort"
+  ]
+}

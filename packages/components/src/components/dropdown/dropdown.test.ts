@@ -1,3 +1,4 @@
+import '../../../dist/solid-components';
 import { expect, fixture, html, waitUntil } from '@open-wc/testing';
 import { sendKeys, sendMouse } from '@web/test-runner-commands';
 import sinon from 'sinon';
