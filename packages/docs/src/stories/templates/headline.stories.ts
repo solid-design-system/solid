@@ -108,7 +108,7 @@ export const SemanticHeadlineStructureExampleB = {
         </p>
       </section>
 
-      <section class="sd-prose max-w-full mb-12">
+      <section class="sd-prose sd-prose--full-width mb-12">
         <h2 class="sd-headline">In the spotlight</h2>
         <div class="flex flex-col gap-8 md:flex-row">
           <sd-teaser variant="white" breakpoint="9999" inset class="flex-1 flex flex-col">
@@ -149,7 +149,7 @@ export const SemanticHeadlineStructureExampleB = {
         </div>
       </section>
 
-      <section class="sd-prose max-w-full">
+      <section class="sd-prose sd-prose--full-width">
         <h2 class="sd-headline">Our expertise</h2>
         <p class="sd-paragraph">
           We started to apply sustainability criteria long before sustainable investing became a widespread trend and we
