@@ -14,7 +14,7 @@ export default {
   tags: ['!autodocs'],
   args,
   argTypes,
-  parameters: { ...parameters },
+  parameters: { ...parameters, controls: { disable: true } },
   decorators: [withActions] as any
 };
 
@@ -35,7 +35,6 @@ export const Default = {
 
 export const Variants = {
   name: 'Variants',
-  parameters: { controls: { exclude: 'color' } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -58,7 +57,6 @@ export const Variants = {
 
 export const Size = {
   name: 'Size',
-  parameters: { controls: { exclude: ['color'] } },
   render: (args: any) => {
     return html`
       ${generateTemplate({

@@ -1,3 +1,4 @@
+import '../../../dist/solid-components';
 import { expect, fixture, html } from '@open-wc/testing';
 import type SdRadio from './radio';
 import type SdRadioGroup from '../radio-group/radio-group';

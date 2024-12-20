@@ -17,7 +17,7 @@ const { generateTemplate } = storybookTemplate('sd-step');
  * - [sd-step-group](?path=/docs/components-sd-step-group--docs)
  *
  * **Related templates:**
- * - [Step Group](?path=/docs/templates-sd-step-group--docs)
+ * - [Step Group](?path=/docs/templates-step-group--docs)
  */
 
 export default {
@@ -26,9 +26,9 @@ export default {
   component: 'sd-step',
   args: overrideArgs([
     {
-      type: 'slot',
+      type: 'attribute',
       name: 'label',
-      value: `<span slot="label">Step name</span>`
+      value: 'Step name'
     },
     {
       type: 'slot',

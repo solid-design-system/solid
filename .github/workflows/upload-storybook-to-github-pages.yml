@@ -2,7 +2,7 @@ name: Deploy Storybook to GitHub Pages
 
 on:
   push:
-    branches: ["main"]
+    branches: ["main", "next"]
   pull_request:
   workflow_dispatch:
 
@@ -37,13 +37,13 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
 
       - uses: pnpm/action-setup@v2
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 8.6.2
+          version: 9.15.0
           run_install: false
 
       - name: Install dependencies
@@ -107,6 +107,7 @@ jobs:
           issue-number: ${{ github.event.pull_request.number || github.run_id }}
           comment-author: 'github-actions[bot]'
           body-includes: 'Storybook has been deployed for'
+        if: github.event_name == 'pull_request'
 
       - name: Create or update comment
         uses: peter-evans/create-or-update-comment@v4
@@ -117,3 +118,4 @@ jobs:
             🚀 Storybook has been deployed for branch `${{ env.GITHUB_SAFE_BRANCH }}`
             - [View Storybook](https://solid-design-system.github.io/solid/${{ env.GITHUB_SAFE_BRANCH }})
           edit-mode: replace
+        if: github.event_name == 'pull_request'

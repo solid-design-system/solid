@@ -1,5 +1,17 @@
 # @solid-design-system/tokens
 
+## 5.1.0
+
+### Minor Changes
+
+- Improve copyright: _[`#1691`](https://github.com/solid-design-system/solid/pull/1691) [`0ea037c`](https://github.com/solid-design-system/solid/commit/0ea037cf5b283ea52936fc84e5eaea112ead257e) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Add class to black color variant
+  - Add class to remove shadow
+  - Add class to top placement
+  - Improve docs
+  - Add tests for new variants
+
 # [@solid-design-system/tokens-v5.0.0](https://github.com/solid-design-system/solid/compare/tokens/4.2.0...tokens/5.0.0) (2024-11-27)
 
 - chore!: remove unused color tokens and update descriptions (#1671) ([56354b6](https://github.com/solid-design-system/solid/commit/56354b69ed9a8f352d296b65b8c7bd6b6050e14b)), closes [#1671](https://github.com/solid-design-system/solid/issues/1671)

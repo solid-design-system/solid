@@ -2,7 +2,7 @@ import '../button/button';
 import '../icon/icon';
 import { animateTo, stopAnimations } from '../../internal/animate';
 import { css, html } from 'lit';
-import { customElement } from '../../../src/internal/register-custom-element';
+import { customElement } from '../../internal/register-custom-element';
 import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry';
 import { HasSlotController } from '../../internal/slot';
 import { ifDefined } from 'lit/directives/if-defined.js';
@@ -12,7 +12,6 @@ import { property, query } from 'lit/decorators.js';
 import { uppercaseFirstLetter } from '../../internal/string';
 import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch';
-import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
 import Modal from '../../internal/modal';
 import SolidElement from '../../internal/solid-element';
@@ -70,6 +69,7 @@ export default class SdDrawer extends SolidElement {
   @query('[part=base]') drawer: HTMLElement;
   @query('[part=panel]') panel: HTMLElement;
   @query('[part=overlay]') overlay: HTMLElement;
+  @query('[part=close-button]') closeButton: HTMLElement;
 
   /**
    * Indicates whether or not the drawer is open. You can toggle this attribute to show and hide the drawer, or you can
@@ -146,6 +146,8 @@ export default class SdDrawer extends SolidElement {
 
   @watch('open', { waitUntilFirstUpdate: true })
   async handleOpenChange() {
+    const closeButtonBase = this.closeButton.shadowRoot?.querySelector('[part="base"]');
+
     if (this.open) {
       // Show
       this.emit('sd-show');
@@ -200,6 +202,10 @@ export default class SdDrawer extends SolidElement {
         animateTo(this.overlay, overlayAnimation.keyframes, overlayAnimation.options)
       ]);
 
+      //Update ARIA attributes to close button
+      closeButtonBase?.setAttribute('aria-controls', 'drawer');
+      closeButtonBase?.setAttribute('aria-expanded', 'true');
+
       this.emit('sd-after-show');
     } else {
       // Hide
@@ -241,6 +247,9 @@ export default class SdDrawer extends SolidElement {
         setTimeout(() => trigger.focus());
       }
 
+      //Add a11y attributes to close button
+      closeButtonBase?.setAttribute('aria-expanded', 'false');
+
       this.emit('sd-after-hide');
     }
   }
@@ -281,6 +290,7 @@ export default class SdDrawer extends SolidElement {
   render() {
     return html`
       <div
+        id="drawer"
         part="base"
         class=${cx(
           'top-0 start-0 w-full h-full pointer-events-none overflow-hidden',
@@ -329,8 +339,9 @@ export default class SdDrawer extends SolidElement {
                       size="lg"
                       part="close-button"
                       @click=${() => this.requestClose('close-button')}
-                      ><sd-icon label=${this.localize.term('close')} name="close" library="system"></sd-icon
-                    ></sd-button>
+                    >
+                      <sd-icon label=${this.localize.term('close')} name="close" library="system"></sd-icon>
+                    </sd-button>
                   </div>
                 </header>
               `
@@ -347,8 +358,7 @@ export default class SdDrawer extends SolidElement {
   }
 
   static styles = [
-    SolidElement.styles,
-    componentStyles,
+    ...SolidElement.styles,
     css`
       :host {
         --width: 25rem;

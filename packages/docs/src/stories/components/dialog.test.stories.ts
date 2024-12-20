@@ -30,7 +30,7 @@ export default {
     {
       type: 'slot',
       name: 'headline',
-      value: `<h4 slot="headline" class="sd-headline sd-headline--size-3xl leading-tight">Lorem Ipsum</h4>`
+      value: `<span slot="headline" class="sd-headline sd-headline--size-3xl leading-tight">Lorem Ipsum</span>`
     },
     {
       type: 'slot',
@@ -39,7 +39,7 @@ export default {
     }
   ]),
   argTypes,
-  parameters: { ...parameters },
+  parameters: { ...parameters, controls: { disable: true } },
   decorators: [withActions] as any
 };
 
@@ -64,9 +64,6 @@ export const Default = {
 
 export const Headline = {
   name: 'Headline',
-  parameters: {
-    controls: { exclude: ['headline'] }
-  },
   render: (args: any) => {
     return html` <div style="height: 40vh;">
       ${generateTemplate({
@@ -94,9 +91,6 @@ export const Headline = {
 
 export const NoCloseButton = {
   name: 'No Close Button',
-  parameters: {
-    controls: { exclude: ['no-close-button'] }
-  },
   render: (args: any) => {
     return html` <div style="height: 40vh;">
       ${generateTemplate({
@@ -166,11 +160,6 @@ export const Scrolling = {
 
 export const ExtendedFooter = {
   name: 'Sample: Extended Footer',
-  parameters: {
-    controls: {
-      disable: true
-    }
-  },
   render: () => {
     return html`
       <style>
@@ -187,7 +176,7 @@ export const ExtendedFooter = {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
             phasellus dui vel id. Velit in sed.
           </p>
-          <h4 slot="headline" class="sd-headline sd-headline--size-3xl">Lorem Ipsum</h4>
+          <span slot="headline" class="sd-headline sd-headline--size-3xl">Lorem Ipsum</span>
           <sd-button variant="secondary" slot="footer" class="w-full">Label</sd-button>
           <sd-button slot="footer" class="w-full">Label</sd-button>
         </sd-dialog>
@@ -202,11 +191,6 @@ export const ExtendedFooter = {
 
 export const SmallHeadline = {
   name: 'Sample: Small Headline',
-  parameters: {
-    controls: {
-      disable: true
-    }
-  },
   render: () => {
     return html`
       <div style="height: 40vh;">
@@ -232,11 +216,6 @@ export const SmallHeadline = {
 
 export const PreventClosing = {
   name: 'Sample: Preventing Closing',
-  parameters: {
-    controls: {
-      disable: true
-    }
-  },
   render: () => {
     return html`
       <div style="height: 40vh;">
@@ -247,7 +226,7 @@ export const PreventClosing = {
 
         <sd-dialog id="default-dialog"
           ><p class="sd-paragraph">This dialog will not close when you click on the overlay.</p>
-          <h4 slot="headline" class="sd-headline sd-headline--size-3xl">Dialog</h4>
+          <span slot="headline" class="sd-headline sd-headline--size-3xl">Dialog</span>
           <sd-button slot="footer" class="w-full" id="close-button">Close</sd-button></sd-dialog
         >
 

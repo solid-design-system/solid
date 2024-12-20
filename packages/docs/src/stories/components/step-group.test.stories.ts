@@ -42,7 +42,7 @@ export default {
     }
   ]),
   argTypes,
-  parameters: { ...parameters },
+  parameters: { ...parameters, controls: { disable: true } },
   decorators: [withActions] as any
 };
 
@@ -63,7 +63,6 @@ export const Default = {
 
 export const Orientation = {
   name: 'Orientation',
-  parameters: { controls: { exclude: 'orientation' } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -91,7 +90,6 @@ export const Orientation = {
 
 export const notInteractive = {
   name: 'Not Interactive X Size',
-  parameters: { controls: { exclude: 'not-interactive' } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -118,11 +116,6 @@ export const notInteractive = {
  */
 export const Parts = {
   name: 'Parts',
-  parameters: {
-    controls: {
-      exclude: ['base', 'body']
-    }
-  },
   render: () => {
     return generateTemplate({
       axis: {
@@ -195,7 +188,6 @@ export const Mouseless = {
  */
 
 export const SetActiveStep = {
-  parameters: { controls: { include: [] } },
   name: 'Sample: Set Active Step',
   render: () => {
     return html`
@@ -240,7 +232,6 @@ export const SetActiveStep = {
  */
 
 export const SampleNotInteractive = {
-  parameters: { controls: { include: [] } },
   name: 'Sample: Not Interactive',
   render: () => {
     return html`

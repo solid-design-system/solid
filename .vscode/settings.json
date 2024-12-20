@@ -13,5 +13,14 @@
   },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "cSpell.words": ["microfrontends"],
+  "cSpell.ignorePaths": ["**/package.json", "**/extensions.json", ".vscode/settings.json", "**/pnpm-lock.yaml"],
+  "cSpell.languageSettings": [
+    {
+      "languageId": "json",
+      "ignoreRegExpList": ["/package\\.json$/", "/extensions\\.json$/", "/settings\\.json$/"]
+    },
+    { "languageId": "yaml", "ignoreRegExpList": ["/pnpm-lock\\.yaml$/"] }
+  ]
 }
