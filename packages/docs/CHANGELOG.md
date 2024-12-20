@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.3.0-next.2
+
+### Minor Changes
+
+- Codepens now link to correct styles and components in PRs, on next, main and on prod _[`#1749`](https://github.com/solid-design-system/solid/pull/1749) [`dee4112`](https://github.com/solid-design-system/solid/commit/dee41127ec4502537d1ddcb62acb63e386386bea) [@mariohamann](https://github.com/mariohamann)_
+
 ## 1.2.7-next.1
 
 ### Patch Changes
