@@ -1,3 +1,4 @@
+import '../../../dist/solid-components';
 import { aTimeout, expect, fixture, html, oneEvent, waitUntil } from '@open-wc/testing';
 import { clickOnElement } from '../../internal/test';
 import { sendKeys } from '@web/test-runner-commands';
@@ -7,7 +8,7 @@ import type SdCombobox from './combobox';
 import type SdOption from '../option/option';
 import type SdSelect from '../select/select';
 
-describe.skip('<sd-combobox>', () => {
+describe('<sd-combobox>', () => {
   describe('accessibility', () => {
     it('should pass accessibility tests when closed', async () => {
       const combobox = await fixture<SdCombobox>(html`
