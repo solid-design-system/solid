@@ -111,13 +111,15 @@ export default class SdTeaser extends SolidElement {
         part="base"
       >
         <div
+          part="media"
+          id="media"
+          aria-hidden="true"
           style=${this._orientation === 'horizontal' ? `width: var(--distribution-media, 100%);` : ''}
           class=${cx(
             !inset && this._orientation === 'vertical' && 'mb-4',
             !slots['teaser-has-media'] && 'hidden',
             this.variant === 'white border-neutral-400' && this._orientation === 'vertical' && 'mx-[-1px] mt-[-1px]'
           )}
-          part="media"
         >
           <slot name="media"></slot>
         </div>
@@ -135,18 +137,22 @@ export default class SdTeaser extends SolidElement {
           )}
           part="content"
         >
-          <div part="meta" class=${cx('gap-2 mb-4', !slots['teaser-has-meta'] && 'hidden')}>
-            <slot name="meta"></slot>
+          <div class="flex flex-col-reverse">
+            <div
+              part="headline"
+              class=${cx('text-lg font-bold m-0', this.variant === 'primary' ? 'text-white' : 'text-black')}
+            >
+              <slot name="headline"
+                >Always insert one semantically correct heading element here (e. g. &lt;h2&gt;)</slot
+              >
+            </div>
+
+            <div part="meta" class=${cx('gap-2 mb-4', !slots['teaser-has-meta'] && 'hidden')}>
+              <slot name="meta"></slot>
+            </div>
           </div>
 
-          <div
-            part="headline"
-            class=${cx('text-lg font-bold m-0', this.variant === 'primary' ? 'text-white' : 'text-black')}
-          >
-            <slot name="headline">Always insert one semantically correct heading element here (e. g. &lt;h2&gt;)</slot>
-          </div>
-
-          <div part="main" class=${cx(!slots['teaser-has-default'] && 'hidden')}>
+          <div part="main" class=${cx(!slots['teaser-has-default'] && 'hidden')} aria-labelledby="media">
             <slot></slot>
           </div>
         </div>
