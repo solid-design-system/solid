@@ -13,6 +13,7 @@ describe('<sd-divider>', () => {
       const el = await fixture<SdDivider>(html` <sd-divider></sd-divider> `);
 
       expect(el.getAttribute('orientation')).to.equal('horizontal');
+      expect(el.shadowRoot?.querySelector('hr')?.getAttribute('aria-orientation')).to.equal('horizontal');
     });
 
     it('inverted defaults to false', async () => {
@@ -30,6 +31,7 @@ describe('<sd-divider>', () => {
       await elementUpdated(el);
 
       expect(el.getAttribute('orientation')).to.equal('vertical');
+      expect(el.shadowRoot?.querySelector('hr')?.getAttribute('aria-orientation')).to.equal('vertical');
     });
 
     it('inverted is updated', async () => {
