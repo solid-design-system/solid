@@ -48,10 +48,6 @@ export const Default = {
 };
 
 /**
- * Separating semantics from styles allows developers to use appropriate tags (e.g, h1 to h6 or p) for structure,
- * ensuring consistent design, accessibility, and flexibility across use cases.
- * H-tags are applied in the CMS following semantic headline order.
- *
  * Use the `sd-headline` classes for alternative appearances:
  *
  * - 4xl is the default size
@@ -59,6 +55,10 @@ export const Default = {
  * - `sd-headline--size-xl`
  * - `sd-headline--size-lg`
  * - `sd-headline--size-base`
+ *
+ * Separating semantics from styles allows developers to use appropriate tags (e.g, h1 to h6 or p) for structure,
+ * ensuring consistent design, accessibility, and flexibility across use cases.
+ * H-tags are applied in the CMS following semantic headline order.
  */
 export const Sizes = {
   render: () => html`
