@@ -48,7 +48,20 @@ export default {
       from: '../node_modules/@tarekraafat/autocomplete.js/dist',
       to: '/autocomplete'
     }
-  ],
+  ].concat(
+    process.env.NODE_ENV === 'production'
+      ? [
+          {
+            from: '../../components/cdn',
+            to: '/components/cdn'
+          },
+          {
+            from: '../../styles/cdn',
+            to: '/styles/cdn'
+          }
+        ]
+      : []
+  ),
   framework: {
     name: '@storybook/web-components-vite',
     options: {}
