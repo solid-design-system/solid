@@ -6,6 +6,6 @@
 Improve sd-expandable spacings according to design.
 Improve sd-expandable a11y:
 
-- Reorder of sd-expandable dom order. (button first so it is targetable by keyboard first)
-- Improvement of the sd-expandable template labels
-- Added accessibility hints to sd-expandable
+- Reorder elements in the DOM (button first so it is targetable by keyboard on first tab)
+- Improved template labels
+- Added accessibility hints
