@@ -45,7 +45,7 @@ export const Default = {
         slot="media-front"
         class="object-cover h-full w-full"
         src="./placeholders/images/skyline.jpg"
-        alt="City skyline of Frankfurt by night in christmas time."
+        alt="A vibrant city skyline at dusk, symbolizing economic growth and investment opportunities in urban hubs."
       />
     </sd-flipcard>
   `
