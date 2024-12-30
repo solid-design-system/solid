@@ -45,9 +45,11 @@ export default class SdAccordion extends SolidElement {
 
   public localize = new LocalizeController(this);
 
-  @query('[part="base"]') accordion: HTMLElement;
+  @query('[part="base"]') accordion: HTMLDetailsElement;
   @query('[part="header"]') header: HTMLElement;
   @query('[part="content"]') body: HTMLElement;
+
+  accordionObserver: MutationObserver;
 
   /**
    * Indicates whether or not the accordion is open. You can toggle this attribute to show and hide the accordion, or you
@@ -61,9 +63,28 @@ export default class SdAccordion extends SolidElement {
   firstUpdated() {
     this.body.hidden = !this.open;
     this.body.style.height = this.open ? 'auto' : '0';
+
+    if (this.open) {
+      this.accordion.open = true;
+    }
+
+    this.accordionObserver = new MutationObserver(changes => {
+      for (const change of changes) {
+        if (change.type === 'attributes' && change.attributeName === 'open') {
+          if (this.accordion.open) {
+            this.show();
+          } else {
+            this.hide();
+          }
+        }
+      }
+    });
+    this.accordionObserver.observe(this.accordion, { attributes: true });
   }
 
-  protected handleSummaryClick() {
+  protected handleSummaryClick(event: MouseEvent) {
+    event.preventDefault();
+
     if (this.open) {
       this.hide();
     } else {
@@ -96,10 +117,12 @@ export default class SdAccordion extends SolidElement {
   @watch('open', { waitUntilFirstUpdate: true })
   async handleOpenChange() {
     if (this.open) {
+      this.accordion.open = true;
       // Show
       const slShow = this.emit('sd-show', { cancelable: true });
       if (slShow.defaultPrevented) {
         this.open = false;
+        this.accordion.open = false;
         return;
       }
 
@@ -115,6 +138,7 @@ export default class SdAccordion extends SolidElement {
       // Hide
       const slHide = this.emit('sd-hide', { cancelable: true });
       if (slHide.defaultPrevented) {
+        this.accordion.open = true;
         this.open = true;
         return;
       }
@@ -126,6 +150,7 @@ export default class SdAccordion extends SolidElement {
       this.body.hidden = true;
       this.body.style.height = 'auto';
 
+      this.accordion.open = false;
       this.emit('sd-after-hide');
     }
   }
@@ -150,8 +175,8 @@ export default class SdAccordion extends SolidElement {
 
   render() {
     return html`
-      <div part="base" class="border-y border-neutral-400">
-        <header
+      <details part="base" class="border-y border-neutral-400">
+        <summary
           part="header"
           id="header"
           class=${cx(
@@ -184,11 +209,11 @@ export default class SdAccordion extends SolidElement {
             <slot name="collapse-icon" class=${cx(!this.open && 'hidden')}>
               <sd-icon library="system" name="chevron-down"></sd-icon> </slot
           ></span>
-        </header>
+        </summary>
         <div part="content" id="content" class="overflow-hidden">
           <slot part="content__slot" class="block px-4 py-6" role="region" aria-labelledby="header"></slot>
         </div>
-      </div>
+      </details>
     `;
   }
 
