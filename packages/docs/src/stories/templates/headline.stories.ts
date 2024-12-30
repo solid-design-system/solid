@@ -17,23 +17,25 @@ export const SemanticHeadlineStructureExampleA = {
   name: 'Semantic Headline Structure – Example A',
   render: () =>
     html`<div>
-      <h1 class="sd-headline">A prerequisite for functioning capital markets: fundamentally active asset management</h1>
-      <p class="sd-paragraph">
+      <h1 class="sd-headline mt-0 mb-8">
+        A prerequisite for functioning capital markets: fundamentally active asset management
+      </h1>
+      <p class="sd-leadtext mb-24">
         Active and passive management approaches have a valuable but different function in the investment of investment
         funds. Fundamentally active management approaches have the function of efficiently pricing all investments by
         evaluating opportunities and risks.
       </p>
 
-      <div class="sd-prose my-16">
-        <h2 class="sd-headline sd-headline--size-3xl">Additional income through active asset management</h2>
-        <p class="sd-paragraph">
+      <div class="sd-prose mb-8">
+        <h2 class="sd-headline sd-headline--size-3xl mb-8">Additional income through active asset management</h2>
+        <p class="sd-paragraph pb-6 mt-0 mb-8">
           <strong>
             Additional returns, risk management and responsible investing can only be realised through active asset
             management. That is why we are a fundamentally active asset manager.
           </strong>
         </p>
 
-        <h3 class="sd-headline sd-headline--size-2xl">We are a fundamentally active asset manager</h3>
+        <h3 class="sd-headline sd-headline--size-xl mb-8 !mt-0">We are a fundamentally active asset manager</h3>
         <p class="sd-paragraph">
           We are convinced that the capital markets do not adequately reflect the current information situation in many
           areas. Behavioural psychological influences in particular distort a fundamentally appropriate price. Strictly
@@ -98,7 +100,7 @@ export const SemanticHeadlineStructureExampleB = {
   name: 'Semantic Headline Structure – Example B',
   render: () =>
     html`<div>
-      <section class="grid grid-cols-8 gap-8 mb-16">
+      <section class="grid grid-cols-8 gap-8 pb-8 mb-16">
         <h1 class="sd-headline sd-headline--size-lg m-0 col-span-2">Sustainable Investments</h1>
 
         <p class="sd-paragraph col-span-6">
@@ -108,10 +110,10 @@ export const SemanticHeadlineStructureExampleB = {
         </p>
       </section>
 
-      <section class="sd-prose sd-prose--full-width mb-12">
-        <h2 class="sd-headline">In the spotlight</h2>
-        <div class="flex flex-col gap-8 md:flex-row">
-          <sd-teaser variant="white" breakpoint="9999" inset class="flex-1 flex flex-col">
+      <section class="mb-12">
+        <h2 class="sd-headline mb-8">In the spotlight</h2>
+        <div class="flex flex-col gap-8 md:flex-row pb-8">
+          <sd-teaser variant="white" breakpoint="9999" class="flex-1 flex flex-col">
             <div slot="media" class="relative">
               <img src="./placeholders/images/architecture.jpg" alt="" class="aspect-4/3 object-cover" />
             </div>
@@ -129,7 +131,7 @@ export const SemanticHeadlineStructureExampleB = {
               </div>
             </div>
           </sd-teaser>
-          <sd-teaser variant="white" breakpoint="9999" inset class="flex-1 flex flex-col">
+          <sd-teaser variant="white" breakpoint="9999" class="flex-1 flex flex-col">
             <div slot="media" class="relative">
               <img src="./placeholders/images/family.jpg" alt="" class="aspect-4/3 object-cover" />
             </div>
@@ -149,16 +151,16 @@ export const SemanticHeadlineStructureExampleB = {
         </div>
       </section>
 
-      <section class="sd-prose sd-prose--full-width">
-        <h2 class="sd-headline">Our expertise</h2>
-        <p class="sd-paragraph">
+      <section>
+        <h2 class="sd-headline mb-8">Our expertise</h2>
+        <p class="sd-paragraph mb-8">
           We started to apply sustainability criteria long before sustainable investing became a widespread trend and we
           have been systematically developing our expertise ever since. In addition, we are promoting the transformation
           towards a more sustainable economy through our engagement activities, our membership in organisations and our
           participation in initiatives.
         </p>
         <div class="flex flex-col gap-8 md:flex-row">
-          <sd-teaser variant="white" breakpoint="9999" inset class="flex-1 flex flex-col">
+          <sd-teaser variant="white" breakpoint="9999" class="flex-1 flex flex-col">
             <div slot="media" class="relative">
               <img src="./placeholders/images/skyline.jpg" alt="" class="aspect-4/3 object-cover" />
             </div>
@@ -174,7 +176,7 @@ export const SemanticHeadlineStructureExampleB = {
               </div>
             </div>
           </sd-teaser>
-          <sd-teaser variant="white" breakpoint="9999" inset class="flex-1 flex flex-col">
+          <sd-teaser variant="white" breakpoint="9999" class="flex-1 flex flex-col">
             <div slot="media" class="relative">
               <img src="./placeholders/images/collaboration.jpg" alt="" class="aspect-4/3 object-cover" />
             </div>
