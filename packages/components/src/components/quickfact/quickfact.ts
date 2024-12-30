@@ -29,7 +29,7 @@ export default class SdQuickfact extends SdAccordion {
   render() {
     return html`
       <div part="base" class="sm:p-6">
-        <header
+        <div
           part="header"
           id="header"
           class=${cx(
@@ -71,7 +71,7 @@ export default class SdQuickfact extends SdAccordion {
             <slot name="collapse-icon" class=${cx(!this.open && 'hidden')}>
               <sd-icon library="system" name="chevron-down"></sd-icon> </slot
           ></span>
-        </header>
+        </div>
         <div part="content" id="content" class=${cx('overflow-hidden', !this.expandable && 'hidden')}>
           <slot part="content__slot" class="block" role="region" aria-labelledby="header"></slot>
         </div>
