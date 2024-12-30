@@ -30,10 +30,10 @@ export const Size = {
           <img
             class="w-16 h-16 rounded-full overflow-hidden object-cover"
             src="./placeholders/images/collaboration.jpg"
-            alt="Two men in business attire sitting on a sofa in a modern office, smiling and looking at a laptop screen."
+            alt=""
           />
           <div>
-            <p class="sd-paragraph font-bold mb-1">John Doe</p>
+            <p class="sd-paragraph font-bold mb-1">Jane Doe</p>
             <p class="sd-paragraph sd-paragraph--size-sm">Team Member of SDS</p>
           </div>
         </div>
@@ -49,10 +49,10 @@ export const Size = {
           <img
             class="w-16 h-16 rounded-full overflow-hidden object-cover"
             src="./placeholders/images/collaboration.jpg"
-            alt="Two men in business attire sitting on a sofa in a modern office, smiling and looking at a laptop screen."
+            alt=""
           />
           <div>
-            <p class="sd-paragraph font-bold mb-1">John Doe</p>
+            <p class="sd-paragraph font-bold mb-1">Jane Doe</p>
             <p class="sd-paragraph sd-paragraph--size-sm">Team Member of SDS</p>
           </div>
         </div>
@@ -68,10 +68,10 @@ export const Size = {
           <img
             class="w-16 h-16 rounded-full overflow-hidden object-cover"
             src="./placeholders/images/collaboration.jpg"
-            alt="Two men in business attire sitting on a sofa in a modern office, smiling and looking at a laptop screen."
+            alt=""
           />
           <div>
-            <p class="sd-paragraph font-bold mb-1">John Doe</p>
+            <p class="sd-paragraph font-bold mb-1">Jane Doe</p>
             <p class="sd-paragraph sd-paragraph--size-sm">Team Member of SDS</p>
           </div>
         </div>
@@ -92,10 +92,10 @@ export const Inverted = {
           <img
             class="w-16 h-16 rounded-full overflow-hidden object-cover"
             src="./placeholders/images/collaboration.jpg"
-            alt="Two men in business attire sitting on a sofa in a modern office, smiling and looking at a laptop screen."
+            alt=""
           />
           <div>
-            <p class="sd-paragraph sd-paragraph--inverted font-bold mb-1">John Doe</p>
+            <p class="sd-paragraph sd-paragraph--inverted font-bold mb-1">Jane Doe</p>
             <p class="sd-paragraph sd-paragraph--inverted sd-paragraph--size-sm">Team Member of SDS</p>
           </div>
         </div>
@@ -113,7 +113,7 @@ export const QuoteWithoutProfileImage = {
         ensuring seamless integration across platforms.
       </blockquote>
       <div>
-        <p class="sd-paragraph font-bold mb-1">John Doe</p>
+        <p class="sd-paragraph font-bold mb-1">Jane Doe</p>
         <p class="sd-paragraph sd-paragraph--size-sm">Team Member of SDS</p>
       </div>
     </div>`
