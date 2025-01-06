@@ -89,6 +89,9 @@ export default class SdQuickfact extends SdAccordion {
                 ${this.summary}
               </slot>
             </div>
+            <div part="content" id="content" class="overflow-hidden">
+              <slot part="content__slot" class="block" role="region" aria-labelledby="header"></slot>
+            </div>
           </div>
         `;
   }
