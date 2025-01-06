@@ -139,8 +139,8 @@ export default class SdFlipcard extends SolidElement {
                     : 'bg-gradient-to-t  from-white/75 to-white/60',
                 'gradient-dark':
                   this.placement === 'bottom'
-                    ? 'bg-gradient-to-b from-primary-800/75 to-primary-800/60'
-                    : 'bg-gradient-to-t  from-primary-800/75 to-primary-800/60'
+                    ? 'bg-gradient-to-t from-primary-800/75 to-primary-800/60'
+                    : 'bg-gradient-to-b  from-primary-800/75 to-primary-800/60'
               }[this.frontVariant]
             )}
           >
@@ -156,12 +156,12 @@ export default class SdFlipcard extends SolidElement {
                 'primary-100': 'mb-auto',
                 'gradient-light':
                   this.placement === 'top'
-                    ? 'bg-gradient-to-b from-white/60 to-40% mb-auto'
-                    : 'bg-gradient-to-t from-white/60 to-40% mt-auto',
+                    ? 'bg-gradient-to-b from-white/60 to-white/0 mb-auto'
+                    : 'bg-gradient-to-t from-white/60 to-white/0 mt-auto',
                 'gradient-dark':
                   this.placement === 'bottom'
-                    ? 'bg-gradient-to-t from-primary-800/60 to-40% mt-auto'
-                    : 'bg-gradient-to-b from-primary-800/60 to-40% mb-auto'
+                    ? 'bg-gradient-to-t from-primary-800/60 to-primary-800/0 mt-auto'
+                    : 'bg-gradient-to-b from-primary-800/60 to-primary-800/0 mb-auto'
               }[this.frontVariant]
             )}
           ></div>
@@ -230,8 +230,8 @@ export default class SdFlipcard extends SolidElement {
                     : 'bg-gradient-to-t  from-white/75 to-white/60',
                 'gradient-dark':
                   this.placement === 'bottom'
-                    ? 'bg-gradient-to-b from-primary-800/75 to-primary-800/60'
-                    : 'bg-gradient-to-t  from-primary-800/75 to-primary-800/60'
+                    ? 'bg-gradient-to-t from-primary-800/75 to-primary-800/60'
+                    : 'bg-gradient-to-b  from-primary-800/75 to-primary-800/60'
               }[this.backVariant]
             )}
           >
@@ -247,12 +247,12 @@ export default class SdFlipcard extends SolidElement {
                 'primary-100': 'mb-auto',
                 'gradient-light':
                   this.placement === 'top'
-                    ? 'bg-gradient-to-b from-white/60 to-40% mb-auto'
-                    : 'bg-gradient-to-t from-white/60 to-40% mt-auto',
+                    ? 'bg-gradient-to-b from-white/60 to-white/0 mb-auto'
+                    : 'bg-gradient-to-t from-white/60 to-white/0 mt-auto',
                 'gradient-dark':
                   this.placement === 'bottom'
-                    ? 'bg-gradient-to-t from-primary-800/60 to-40% mt-auto'
-                    : 'bg-gradient-to-b from-primary-800/60 to-40% mb-auto'
+                    ? 'bg-gradient-to-t from-primary-800/60 to-primary-800/0 mt-auto'
+                    : 'bg-gradient-to-b from-primary-800/60 to-primary-800/0 mb-auto'
               }[this.backVariant]
             )}
           ></div>

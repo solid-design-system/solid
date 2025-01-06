@@ -2,4 +2,5 @@
 '@solid-design-system/docs': patch
 ---
 
-Improved image alt text on flipcard template
+Fixed gradient issue on flipcard.
+Implemented an improved flipcard template version.
