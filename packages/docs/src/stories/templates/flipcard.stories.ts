@@ -23,7 +23,6 @@ export default {
 export const Default = {
   render: () => html`
     <sd-flipcard
-      activation="click hover"
       flip-direction="horizontal"
       front-variant="gradient-dark"
       back-variant="gradient-dark"
@@ -55,13 +54,7 @@ export const Default = {
         alt="A vibrant city skyline at dusk, symbolizing economic growth and investment opportunities in urban hubs."
       />
     </sd-flipcard>
-    <sd-flipcard
-      activation="click hover"
-      flip-direction="horizontal"
-      front-variant="primary-100"
-      back-variant="primary"
-      placement="bottom"
-    >
+    <sd-flipcard flip-direction="horizontal" front-variant="primary-100" back-variant="primary" placement="bottom">
       <h2 slot="front" class="sd-headline sd-headline--size-3xl p-5">We promote diversity</h2>
       <div slot="back" class="w-full p-5">
         <h3 class="sd-headline sd-headline--size-lg sd-headline--inverted">
