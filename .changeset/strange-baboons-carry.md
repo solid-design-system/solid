@@ -1,5 +1,7 @@
 ---
+'@solid-design-system/components': patch
 '@solid-design-system/docs': patch
 ---
 
-Adjusted spacing between icon and text on sd-tab screenshot tests
+Fixed broken padding on tab left slot.
+Removed unecessary padding classes from tab stories.
