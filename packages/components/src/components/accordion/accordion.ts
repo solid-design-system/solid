@@ -1,8 +1,9 @@
 import '../icon/icon';
 import { animateTo, shimKeyframesHeightAuto, stopAnimations } from '../../internal/animate';
-import { css, html } from 'lit';
+import { css } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry';
+import { html } from 'lit/static-html.js';
 import { LocalizeController } from '../../utilities/localize';
 import { property, query } from 'lit/decorators.js';
 import { waitForEvent } from '../../internal/event';
