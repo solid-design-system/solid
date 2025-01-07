@@ -126,7 +126,7 @@ async function nextTask(label, action) {
 }
 
 await nextTask('Cleaning up the previous build', async () => {
-  await Promise.all([...bundleDirectories.map(dir => deleteAsync(dir, { force: true }))]);
+  await Promise.all([...bundleDirectories.map(dir => deleteAsync(dir))]);
   await fs.mkdir(outdir, { recursive: true });
 });
 
