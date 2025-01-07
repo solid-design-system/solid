@@ -83,6 +83,11 @@ export default class SdAccordion extends SolidElement {
     this.accordionObserver.observe(this.accordion, { attributes: true });
   }
 
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.accordionObserver?.disconnect();
+  }
+
   protected handleSummaryClick(event: MouseEvent) {
     event.preventDefault();
 
