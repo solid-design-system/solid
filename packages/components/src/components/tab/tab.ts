@@ -1,5 +1,6 @@
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
+import { HasSlotController } from 'src/internal/slot';
 import { property, query } from 'lit/decorators.js';
 import { watch } from '../../internal/watch';
 import cx from 'classix';
@@ -26,6 +27,7 @@ let id = 0;
 export default class SdTab extends SolidElement {
   private readonly attrId = ++id;
   private readonly componentId = `sd-tab-${this.attrId}`;
+  private readonly hasSlotController = new HasSlotController(this, 'left');
 
   @query('[part=base]') tab: HTMLElement;
 
@@ -70,6 +72,10 @@ export default class SdTab extends SolidElement {
     // If the user didn't provide an ID, we'll set one so we can link tabs and tab panels with aria labels
     this.id = this.id.length > 0 ? this.id : this.componentId;
 
+    const slots = {
+      left: this.hasSlotController.test('left')
+    };
+
     return html`
       <div
         part="base"
@@ -81,7 +87,10 @@ export default class SdTab extends SolidElement {
         )}
         tabindex=${this.disabled ? '-1' : this.active ? '0' : '-1'}
       >
-        <slot name="left" class=${cx('block pr-2', this.disabled ? 'text-neutral-500' : 'text-primary')}></slot>
+        <slot
+          name="left"
+          class=${cx(slots.left && 'block pr-2', this.disabled ? 'text-neutral-500' : 'text-primary')}
+        ></slot>
         <slot class=${cx(this.disabled ? 'text-neutral-500' : 'text-primary')}></slot>
 
         <div
