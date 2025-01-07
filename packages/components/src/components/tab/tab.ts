@@ -1,6 +1,6 @@
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
-import { HasSlotController } from 'src/internal/slot';
+import { HasSlotController } from '../../internal/slot';
 import { property, query } from 'lit/decorators.js';
 import { watch } from '../../internal/watch';
 import cx from 'classix';
