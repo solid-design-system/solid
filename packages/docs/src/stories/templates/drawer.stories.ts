@@ -50,7 +50,7 @@ export const Default = {
         <sd-icon name="system/arrow-left" label="return"></sd-icon>
       </sd-button>
       <div class="level-one h-full flex flex-col justify-between">
-        <nav aria-label="level-one">
+        <nav aria-label="nav-level-one">
           <sd-navigation-item vertical><b>Home page</b></sd-navigation-item>
           <sd-navigation-item vertical chevron divider onclick="handleSecondLevel()">
             <b>About Us</b>
@@ -60,7 +60,7 @@ export const Default = {
           <sd-navigation-item vertical chevron divider>Sustainability</sd-navigation-item>
           <sd-navigation-item vertical chevron divider>Career</sd-navigation-item>
         </nav>
-        <div slot="footer" class="bg-neutral-100">
+        <nav aria-label="footer" slot="footer" class="bg-neutral-100">
           <sd-navigation-item vertical class="flex align-center">
             <sd-icon name="system/user" class="h-6 w-6 mr-2"></sd-icon>
             My depot
@@ -73,10 +73,10 @@ export const Default = {
             <sd-icon name="system/website" class="h-6 w-6 mr-2"></sd-icon>
             Our further appearances
           </sd-navigation-item>
-        </div>
+        </nav>
       </div>
       <div class="level-two hidden">
-        <nav id="level-two-nav" aria-label="level-two">
+        <nav id="level-two-nav" aria-label="nav-level-two">
           <sd-navigation-item vertical id="nav-title" size="lg"><b>About Us</b></sd-navigation-item>
           <sd-navigation-item vertical divider>
             <b>Union Investment for privat customers</b>
