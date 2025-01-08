@@ -74,8 +74,9 @@ export const Default = {
 export const Open = {
   name: 'Open',
   render: () => html`
+    <sd-button id="openDrawer">Open Drawer</sd-button>
     <div style="width: auto; height: 40vh; position: relative;">
-      <sd-drawer open label="example" placement="start">
+      <sd-drawer open label="example" placement="start" id="drawerOpen">
         <sd-button slot="header" variant="tertiary">
           <sd-icon slot="icon-left" name="system/arrow-left"></sd-icon>
           Back
@@ -87,6 +88,11 @@ export const Open = {
         </div>
       </sd-drawer>
     </div>
+    <script>
+      document.querySelector('#openDrawer').addEventListener('click', () => {
+        document.querySelector('#drawerOpen').show();
+      });
+    </script>
   `
 };
 
@@ -99,8 +105,9 @@ export const Open = {
 export const Placement = {
   name: 'Placement',
   render: () => html`
+    <sd-button id="openDrawerPlacement">Open Drawer</sd-button>
     <div style="width: auto; height: 40vh; position: relative;">
-      <sd-drawer open placement="start">
+      <sd-drawer open placement="start" id="drawerPlacement">
         <sd-input slot="header" type="search" size="lg" placeholder="Search"></sd-input>
         <div class="slot slot--border slot--text h-full">Default slot</div>
         <div slot="footer" class="flex flex-col w-full gap-4">
@@ -109,6 +116,11 @@ export const Placement = {
         </div>
       </sd-drawer>
     </div>
+    <script>
+      document.querySelector('#openDrawerPlacement').addEventListener('click', () => {
+        document.querySelector('#drawerPlacement').show();
+      });
+    </script>
   `
 };
 
@@ -118,11 +130,17 @@ export const Placement = {
 export const NoHeader = {
   name: 'No Header',
   render: () => html`
+    <sd-button id="openDrawerNoHeader">Open Drawer</sd-button>
     <div style="width: auto; height: 40vh; position: relative;">
-      <sd-drawer open no-header placement="start">
+      <sd-drawer open no-header placement="start" id="drawerNoHeader">
         <div class="slot slot--border slot--text h-full">Default slot</div>
         <div slot="footer" class="slot slot--border slot--text h-full">Footer slot</div>
       </sd-drawer>
     </div>
+    <script>
+      document.querySelector('#openDrawerNoHeader').addEventListener('click', () => {
+        document.querySelector('#drawerNoHeader').show();
+      });
+    </script>
   `
 };
