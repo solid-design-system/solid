@@ -60,13 +60,14 @@
   },
   "scripts": {
     "build": "node scripts/build.js",
+    "build.lite": "pnpm build --lite",
     "verify": "pnpm build && echo '✅ Build verified' && pnpm ts.verify && pnpm test.verify && echo '✅ Test verified'",
     "ts.verify": "tsc --noEmit --project ./tsconfig.json && echo '✅ TypeScript verified'",
     "plop": "plop --plopfile scripts/plop/plopfile.js",
-    "test": "pnpm build && web-test-runner --group default",
-    "test.verify": "web-test-runner --group default",
-    "test.single": "web-test-runner -- --watch --group",
-    "test.watch": "web-test-runner --watch --group default",
+    "test": "pnpm build.lite && web-test-runner --group default",
+    "test.verify": "pnpm build.lite && web-test-runner --group default",
+    "test.single": "pnpm build.lite && web-test-runner -- --watch --group",
+    "test.watch": "pnpm build.lite && web-test-runner --watch --group default",
     "postversion": "pnpm build && node scripts/node-write-sizes.mjs"
   },
   "dependencies": {

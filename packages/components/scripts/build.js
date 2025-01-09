@@ -12,12 +12,14 @@ import { litTailwindAndMinifyPlugin } from './esbuild-plugin-lit-tailwind-and-mi
 const outdir = 'dist';
 const cdndir = 'cdn';
 
+const lite = process.argv.includes('--lite');
+
 const spinner = ora({ hideCursor: false }).start();
 const execPromise = util.promisify(exec);
 let childProcess;
 let buildResults;
 
-const bundleDirectories = [cdndir, outdir, `${outdir}-versioned`, `${cdndir}-versioned`];
+const bundleDirectories = lite ? [outdir] : [cdndir, outdir, `${outdir}-versioned`, `${cdndir}-versioned`];
 
 //
 // Builds the source with esbuild.
@@ -84,12 +86,11 @@ async function buildTheSource() {
     entryNames: '[dir]/[name].iife'
   };
 
-  return await Promise.all([
-    esbuild.build(cdnConfig),
-    esbuild.build(npmConfig),
-    esbuild.build(bundleConfig),
-    esbuild.build(iifeConfig)
-  ]);
+  return await Promise.all(
+    lite
+      ? [esbuild.build(npmConfig)]
+      : [esbuild.build(cdnConfig), esbuild.build(npmConfig), esbuild.build(bundleConfig), esbuild.build(iifeConfig)]
+  );
 }
 
 //
@@ -127,38 +128,45 @@ async function nextTask(label, action) {
 
 await nextTask('Cleaning up the previous build', async () => {
   await Promise.all([...bundleDirectories.map(dir => deleteAsync(dir))]);
-  await fs.mkdir(outdir, { recursive: true });
+  await Promise.all([...bundleDirectories.map(dir => fs.mkdir(dir, { recursive: true }))]);
 });
 
-await nextTask('Generating component metadata', () => {
-  return Promise.all(
-    bundleDirectories.map(dir => {
-      return execPromise(`node scripts/make-metadata.js --outdir "${dir}"`, { stdio: 'inherit' });
-    })
-  );
-});
+if (!lite) {
+  await nextTask('Generating component metadata', () => {
+    return Promise.all(
+      bundleDirectories.map(dir => {
+        return execPromise(`node scripts/make-metadata.js --outdir "${dir}"`, { stdio: 'inherit' });
+      })
+    );
+  });
+}
 
 await nextTask('Generating Utility CSS', () => {
-  return execPromise(`node scripts/make-css.js`, { stdio: 'inherit' });
+  const args = lite ? '--lite' : '';
+  return execPromise(`node scripts/make-css.js ${args}`, { stdio: 'inherit' });
 });
 
-await nextTask('Running the TypeScript compiler', () => {
-  return execPromise(`tsc --project ./tsconfig.prod.json --outdir "${outdir}"`, { stdio: 'inherit' });
-});
+if (!lite) {
+  await nextTask('Running the TypeScript compiler', () => {
+    return execPromise(`tsc --project ./tsconfig.prod.json --outdir "${outdir}"`, { stdio: 'inherit' });
+  });
 
-// Copy the above steps to the CDN directory directly so we don't need to twice the work for nothing.
-await nextTask(`Themes, Icons, and TS Types to "${cdndir}"`, async () => {
-  await deleteAsync(cdndir);
-  await copy(outdir, cdndir);
-});
+  // Copy the above steps to the CDN directory directly so we don't need to twice the work for nothing.
+  await nextTask(`Themes, Icons, and TS Types to "${cdndir}"`, async () => {
+    await deleteAsync(cdndir);
+    await copy(outdir, cdndir);
+  });
+}
 
 await nextTask('Building source files', async () => {
   buildResults = await buildTheSource();
 });
 
-await nextTask('Versioning components and meta data', async () => {
-  await execPromise('node scripts/make-versioning.js', { stdio: 'inherit' });
-});
+if (!lite) {
+  await nextTask('Versioning components and meta data', async () => {
+    await execPromise('node scripts/make-versioning.js', { stdio: 'inherit' });
+  });
+}
 
 // Cleanup on exit
 process.on('SIGINT', handleCleanup);
