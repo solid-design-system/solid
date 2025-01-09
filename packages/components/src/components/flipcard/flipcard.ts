@@ -2,7 +2,8 @@ import '../button/button';
 import '../icon/icon';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
-import { property, query } from 'lit/decorators.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
+import { property, query, state } from 'lit/decorators.js';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
@@ -64,22 +65,40 @@ export default class SdFlipcard extends SolidElement {
   @property({ type: String, reflect: true, attribute: 'back-variant' })
   backVariant: 'primary' | 'primary-100' | 'gradient-light' | 'gradient-dark' = 'primary';
 
+  @state() activeFace: 'front' | 'back' = 'front';
+
   connectedCallback() {
     super.connectedCallback();
   }
 
   private flipFront() {
+    this.activeFace = 'back';
     this.front.classList.add('clicked--front');
     this.back.classList.add('clicked--back');
     this.emit('sd-flip-front');
-    this.back.focus();
+
+    /**
+     * DEV Note: A timeout is needed to move the focus to the end of the callstack,
+     * to enable the browser to have time to remove the `inert` attribute fron the flipcard side.
+     */
+    setTimeout(() => {
+      this.back.focus();
+    });
   }
 
   private flipBack() {
+    this.activeFace = 'front';
     this.front.classList.remove('clicked--front');
     this.back.classList.remove('clicked--back');
     this.emit('sd-flip-back');
-    this.front.focus();
+
+    /**
+     * DEV Note: A timeout is needed to move the focus to the end of the callstack,
+     * to enable the browser to have time to remove the `inert` attribute fron the flipcard side.
+     */
+    setTimeout(() => {
+      this.front.focus();
+    });
   }
 
   private handleFrontKeydown(event: KeyboardEvent) {
@@ -100,6 +119,8 @@ export default class SdFlipcard extends SolidElement {
         <div
           part="front"
           tabindex="0"
+          aria-hidden=${this.activeFace === 'back'}
+          inert=${ifDefined(this.activeFace === 'back' || undefined)}
           class=${cx(
             'flip-card__side flip-card__side--front overflow-hidden transition-transform duration-1000 ease-in-out',
             'flex focus-visible:focus-outline',
@@ -191,6 +212,8 @@ export default class SdFlipcard extends SolidElement {
         <div
           part="back"
           tabindex="0"
+          aria-hidden=${this.activeFace === 'front'}
+          inert=${ifDefined(this.activeFace === 'front' || undefined)}
           class=${cx(
             'flip-card__side flip-card__side--back overflow-hidden transition-transform duration-1000 ease-in-out',
             'flex focus-visible:focus-outline',
