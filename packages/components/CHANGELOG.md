@@ -1,5 +1,21 @@
 # @solid-design-system/components
 
+## 4.0.0-next.2
+
+### Patch Changes
+
+- Improved sd-divider a11y: _[`#1751`](https://github.com/solid-design-system/solid/pull/1751) [`f0fd5cb`](https://github.com/solid-design-system/solid/commit/f0fd5cb9a61b07cb487455b1da2a374d89ef93ca) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  - Implemented aria-orientation attribute
+
+## 4.0.0-next.1
+
+### Patch Changes
+
+- Improve sd-teaser a11y: _[`#1748`](https://github.com/solid-design-system/solid/pull/1748) [`5a8c80f`](https://github.com/solid-design-system/solid/commit/5a8c80f22b39bc722614974b797164d78d6de29e) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  - Reordered DOM elements in order for headline to be read first by screen readers
+
 ## 4.0.0-next.0
 
 ### Major Changes
@@ -16,8 +32,9 @@
 - Fix icon slots in `sd-audio` _[`#1689`](https://github.com/solid-design-system/solid/pull/1689) [`4c065bd`](https://github.com/solid-design-system/solid/commit/4c065bd71df67bc13d2cf6cd27c3284cc4ce99b3) [@mariohamann](https://github.com/mariohamann)_
 
 ### 📈 Stats
-* Uncompressed: 397 KB (-43 KB / -10%)
-* Gzipped: 94 KB (-38 KB / -29%)
+
+- Uncompressed: 397 KB (-43 KB / -10%)
+- Gzipped: 94 KB (-38 KB / -29%)
 
 ## 3.24.0
 
