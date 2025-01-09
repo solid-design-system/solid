@@ -1,5 +1,13 @@
 # @solid-design-system/components
 
+## 4.0.0-next.2
+
+### Patch Changes
+
+- Improved sd-divider a11y: _[`#1751`](https://github.com/solid-design-system/solid/pull/1751) [`f0fd5cb`](https://github.com/solid-design-system/solid/commit/f0fd5cb9a61b07cb487455b1da2a374d89ef93ca) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  - Implemented aria-orientation attribute
+
 ## 4.0.0-next.1
 
 ### Patch Changes
