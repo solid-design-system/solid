@@ -65,14 +65,14 @@ export default class SdFlipcard extends SolidElement {
   @property({ type: String, reflect: true, attribute: 'back-variant' })
   backVariant: 'primary' | 'primary-100' | 'gradient-light' | 'gradient-dark' = 'primary';
 
-  @state() activeFace: 'front' | 'back' = 'front';
+  @state() activeSide: 'front' | 'back' = 'front';
 
   connectedCallback() {
     super.connectedCallback();
   }
 
   private flipFront() {
-    this.activeFace = 'back';
+    this.activeSide = 'back';
     this.front.classList.add('clicked--front');
     this.back.classList.add('clicked--back');
     this.emit('sd-flip-front');
@@ -87,7 +87,7 @@ export default class SdFlipcard extends SolidElement {
   }
 
   private flipBack() {
-    this.activeFace = 'front';
+    this.activeSide = 'front';
     this.front.classList.remove('clicked--front');
     this.back.classList.remove('clicked--back');
     this.emit('sd-flip-back');
@@ -119,8 +119,8 @@ export default class SdFlipcard extends SolidElement {
         <div
           part="front"
           tabindex="0"
-          aria-hidden=${this.activeFace === 'back'}
-          inert=${ifDefined(this.activeFace === 'back' || undefined)}
+          aria-hidden=${this.activeSide === 'back'}
+          inert=${ifDefined(this.activeSide === 'back' || undefined)}
           class=${cx(
             'flip-card__side flip-card__side--front overflow-hidden transition-transform duration-1000 ease-in-out',
             'flex focus-visible:focus-outline',
@@ -212,8 +212,8 @@ export default class SdFlipcard extends SolidElement {
         <div
           part="back"
           tabindex="0"
-          aria-hidden=${this.activeFace === 'front'}
-          inert=${ifDefined(this.activeFace === 'front' || undefined)}
+          aria-hidden=${this.activeSide === 'front'}
+          inert=${ifDefined(this.activeSide === 'front' || undefined)}
           class=${cx(
             'flip-card__side flip-card__side--back overflow-hidden transition-transform duration-1000 ease-in-out',
             'flex focus-visible:focus-outline',
