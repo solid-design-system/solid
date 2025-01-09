@@ -1283,4 +1283,20 @@ describe.skip('<sd-combobox>', () => {
 
     expect(el.value).to.equal('Option 2');
   });
+
+  it('should display translated placeholder if lang attribute is set', async () => {
+    const el = await fixture<SdSelect>(html`
+      <sd-combobox lang="de">
+        <sd-option value="option-1">Option 1</sd-option>
+        <sd-option value="option-2">Option 2</sd-option>
+        <sd-option value="option-3">Option 3</sd-option>
+      </sd-combobox>
+    `);
+
+    const placeholder = el.shadowRoot!.querySelector('[part~="display-input"]')!;
+
+    await el.updateComplete;
+
+    expect(placeholder.getAttribute('placeholder')).to.equal('Bitte suchen und auswählen');
+  });
 });
