@@ -132,7 +132,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   @property() label = '';
 
   /** Placeholder text to show as a hint when the select is empty. */
-  @property() placeholder = this.localize.term('selectDefaultPlaceholder');
+  @property() placeholder = '';
 
   /** Disables the select control. */
   @property({ type: Boolean, reflect: true }) disabled = false;
@@ -990,8 +990,8 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                   this.multiple && this.useTags && this.value.length > 0 ? 'hidden' : ''
                 )}
                 type="text"
-                placeholder=${this.placeholder}
                 .disabled=${this.disabled}
+                placeholder=${this.placeholder || this.localize.term('selectDefaultPlaceholder')}
                 .value=${this.displayLabel}
                 autocomplete="off"
                 spellcheck="false"
