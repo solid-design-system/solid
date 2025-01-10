@@ -11,7 +11,6 @@ import { litTailwindAndMinifyPlugin } from './esbuild-plugin-lit-tailwind-and-mi
 
 const outdir = 'dist';
 const cdndir = 'cdn';
-
 const lite = process.argv.includes('--lite');
 
 const spinner = ora({ hideCursor: false }).start();
