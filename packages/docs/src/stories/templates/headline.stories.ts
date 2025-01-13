@@ -20,22 +20,24 @@ export const SemanticHeadlineStructureExampleA = {
       <h1 class="sd-headline mt-0 mb-8">
         A prerequisite for functioning capital markets: fundamentally active asset management
       </h1>
-      <p class="sd-leadtext mb-24">
+      <p class="sd-leadtext mb-16">
         Active and passive management approaches have a valuable but different function in the investment of investment
         funds. Fundamentally active management approaches have the function of efficiently pricing all investments by
         evaluating opportunities and risks.
       </p>
 
-      <div class="sd-prose mb-8">
+      <div class="sd-prose mb-16">
         <h2 class="sd-headline sd-headline--size-3xl mb-8">Additional income through active asset management</h2>
-        <p class="sd-paragraph pb-6 mt-0 mb-8">
+        <p class="sd-paragraph pb-8 mt-0 mb-8">
           <strong>
             Additional returns, risk management and responsible investing can only be realised through active asset
             management. That is why we are a fundamentally active asset manager.
           </strong>
         </p>
 
-        <h3 class="sd-headline sd-headline--size-xl mb-8 !mt-0">We are a fundamentally active asset manager</h3>
+        <h3 class="sd-headline sd-headline--size-xl !text-primary mb-8 !mt-0">
+          We are a fundamentally active asset manager
+        </h3>
         <p class="sd-paragraph">
           We are convinced that the capital markets do not adequately reflect the current information situation in many
           areas. Behavioural psychological influences in particular distort a fundamentally appropriate price. Strictly
@@ -51,6 +53,8 @@ export const SemanticHeadlineStructureExampleA = {
           from a single location.
         </p>
       </div>
+
+      <h3 class="sd-headline sd-headline--size-xl !text-primary mb-8">Empowering Sustainable Growth</h3>
 
       <sd-teaser inset="" breakpoint="538" style="--distribution-media: 20%; --distribution-content: 80%;">
         <div slot="media" class="flex flex-wrap justify-center items-center h-[189px] md:h-full">
