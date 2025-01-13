@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 4.0.0-next.5
+
+### Patch Changes
+
+- Fix a rare bug in the disconnecedCallback of sd-tab-group when being dynamically created and removed _[`#1768`](https://github.com/solid-design-system/solid/pull/1768) [`fbf375e`](https://github.com/solid-design-system/solid/commit/fbf375e19e760fe3765f965c06929ae846fb44f1) [@mariohamann](https://github.com/mariohamann)_
+
 ## 4.0.0-next.4
 
 ### Patch Changes
