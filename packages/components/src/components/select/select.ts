@@ -1094,7 +1094,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
               aria-labelledby="label"
               part="listbox"
               class=${cx(
-                'bg-white px-2 py-3 relative border-primary overflow-y-scroll',
+                'bg-white px-2 py-3 relative border-primary overflow-y-auto',
                 this.open && 'shadow',
                 this.currentPlacement === 'bottom'
                   ? 'border-r-2 border-b-2 border-l-2 rounded-br-default rounded-bl-default'
