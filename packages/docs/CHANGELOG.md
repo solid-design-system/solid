@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.3.0-next.3
+
+### Patch Changes
+
+- Removed unecessary padding classes from tab stories. _[`#1755`](https://github.com/solid-design-system/solid/pull/1755) [`9954447`](https://github.com/solid-design-system/solid/commit/9954447efacc72908971c123b94bfd549dc69454) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.3.0-next.2
 
 ### Minor Changes
