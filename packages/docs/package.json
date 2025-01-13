@@ -28,14 +28,17 @@
     "storybook": "storybook dev -p 6999",
     "verify": "pnpm ts.verify && pnpm build && echo '✅ Build verified' && vite-node ./scripts/node-optimize-chromatic.cjs && echo '✅ Chromatic optimization verified'",
     "ts.verify": "tsc --noEmit --project ./tsconfig.json && echo '✅ TypeScript verified'",
+    "test": "test-storybook --url http://localhost:6999",
+    "test.watch": "test-storybook --url http://localhost:6999",
     "build.chromatic": "pnpm build && node ./scripts/node-optimize-chromatic.cjs",
     "chromatic": "npx chromatic -b build.chromatic",
     "build": "pnpm build/components && pnpm build/styles && storybook build --output-dir dist/storybook && vite-node scripts/node-optimize-storybook.js",
     "build/components": "cd ../components && pnpm build",
     "build/styles": "cd ../styles && pnpm build",
-    "preview": "vite preview"
+    "preview": "vite preview --port \"6999\" --outDir \"dist/storybook\""
   },
   "dependencies": {
+    "@storybook/addon-a11y": "^8.4.7",
     "classix": "^2.2.0",
     "custom-elements-manifest": "^2.1.0",
     "lit": "^3.2.1",
@@ -52,11 +55,13 @@
     "@storybook/addon-mdx-gfm": "^8.4.5",
     "@storybook/addons": "^7.6.17",
     "@storybook/blocks": "^8.4.5",
+    "@storybook/test-runner": "^0.21.0",
     "@storybook/theming": "^8.4.5",
     "@storybook/web-components": "^8.4.5",
     "@storybook/web-components-vite": "^8.4.5",
     "@tarekraafat/autocomplete.js": "^10.2.9",
     "autoprefixer": "^10.4.20",
+    "axe-playwright": "^2.0.3",
     "cem-plugin-vs-code-custom-data-generator": "^1.4.2",
     "change-case": "^5.4.4",
     "chromatic": "^11.19.0",
@@ -64,6 +69,7 @@
     "countup.js": "^2.8.0",
     "cssnano": "^7.0.6",
     "globby": "^14.0.2",
+    "http-server": "^14.1.1",
     "lit-html": "^3.2.1",
     "normalize.css": "^8.0.1",
     "postcss": "^8.4.49",
@@ -79,6 +85,7 @@
     "vite-node": "^2.1.6",
     "vite-plugin-cem": "^0.8.1",
     "vite-tsconfig-paths": "^5.1.3",
+    "wait-on": "^8.0.1",
     "wc-storybook-helpers": "1.5.3"
   }
 }

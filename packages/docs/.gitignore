@@ -25,3 +25,5 @@ public
 *.sw?
 
 *storybook.log
+
+axe-reports

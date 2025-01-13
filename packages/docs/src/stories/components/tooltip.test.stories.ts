@@ -250,7 +250,9 @@ export const Slots = {
 export const Mouseless = {
   name: 'Mouseless',
   render: (args: any) => {
-    return html`<div class="mouseless template-position template-height">${generateTemplate({ args })}</div>`;
+    return html`<div class="mouseless template-position template-height">
+      <sd-tooltip content="Lorem ipsum"></sd-tooltip>
+    </div>`;
   },
   play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
     const el = canvasElement.querySelector('.mouseless sd-tooltip');
