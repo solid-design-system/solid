@@ -111,9 +111,7 @@ export default class SdExpandable extends SolidElement {
           @click=${this.onToggleClick}
           aria-expanded=${this.open}
         >
-          <div
-            class=${cx('h-full justify-center w-full text-base flex items-center underline underline-offset-2 toggle')}
-          >
+          <div class=${cx('h-full justify-center w-full text-base flex items-center toggle')}>
             ${this.open
               ? html`
                   <slot name="toggle-open">
