@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.3.0-next.4
+
+### Patch Changes
+
+- Added the debug class to sd-hidden-links to display hidden links for screenshot tests. _[`#1753`](https://github.com/solid-design-system/solid/pull/1753) [`5dbc65f`](https://github.com/solid-design-system/solid/commit/5dbc65f27496303c7f02cb0dfa90c18d232af33c) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.3.0-next.3
 
 ### Patch Changes
