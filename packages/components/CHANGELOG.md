@@ -1,5 +1,14 @@
 # @solid-design-system/components
 
+## 4.0.0-next.6
+
+### Patch Changes
+
+- Improved sd-flipcard hidden side a11y: _[`#1760`](https://github.com/solid-design-system/solid/pull/1760) [`a64a5ba`](https://github.com/solid-design-system/solid/commit/a64a5bad336ba72b62b1a1f63685a6f58bd895c5) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  - Interactive elements are no longer reachable.
+  - Content is no longer read by screenreader.
+
 ## 4.0.0-next.5
 
 ### Patch Changes
