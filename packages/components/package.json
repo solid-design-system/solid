@@ -60,14 +60,14 @@
   },
   "scripts": {
     "build": "node scripts/build.js",
-    "build.lite": "pnpm build --lite",
+    "watch": "pnpm build --watch",
     "verify": "pnpm build && echo '✅ Build verified' && pnpm ts.verify && pnpm test.verify && echo '✅ Test verified'",
     "ts.verify": "tsc --noEmit --project ./tsconfig.json && echo '✅ TypeScript verified'",
     "plop": "plop --plopfile scripts/plop/plopfile.js",
-    "test": "pnpm build.lite && web-test-runner --group default",
-    "test.verify": "pnpm build.lite && web-test-runner --group default",
-    "test.single": "pnpm build.lite && web-test-runner -- --watch --group",
-    "test.watch": "node scripts/test-watch.js",
+    "test": "pnpm build --lite && web-test-runner --group default",
+    "test.verify": "pnpm build --lite && web-test-runner --group default",
+    "test.single": "concurrently -P --raw \"pnpm watch --lite\" \"web-test-runner --watch --group {1}\" --",
+    "test.watch": "pnpm test.single default",
     "postversion": "pnpm build && node scripts/node-write-sizes.mjs"
   },
   "dependencies": {
@@ -96,6 +96,7 @@
     "chokidar": "^4.0.3",
     "command-line-args": "^6.0.1",
     "comment-parser": "^1.4.1",
+    "concurrently": "^9.1.2",
     "cssnano": "^7.0.6",
     "custom-element-jet-brains-integration": "^1.6.2",
     "custom-element-vs-code-integration": "^1.4.1",
