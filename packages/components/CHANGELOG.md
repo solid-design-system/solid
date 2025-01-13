@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 4.0.0-next.4
+
+### Patch Changes
+
+- Fixed broken padding on tab left slot. _[`#1755`](https://github.com/solid-design-system/solid/pull/1755) [`9954447`](https://github.com/solid-design-system/solid/commit/9954447efacc72908971c123b94bfd549dc69454) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 4.0.0-next.3
 
 ### Minor Changes
@@ -7,8 +13,9 @@
 - Adapt `sd-accordion` and expandable `sd-quickfact` HTML to use `<details />` and `<summary />` elements. _[`#1757`](https://github.com/solid-design-system/solid/pull/1757) [`b83d804`](https://github.com/solid-design-system/solid/commit/b83d8049db1abaa8744f806412c35609109ef04d) [@paulovareiro29](https://github.com/paulovareiro29)_
 
 ### 📈 Stats
-* Uncompressed: 398 KB (+1 KB / +0%)
-* Gzipped: 94 KB (unchanged)
+
+- Uncompressed: 398 KB (+1 KB / +0%)
+- Gzipped: 94 KB (unchanged)
 
 ## 4.0.0-next.2
 
