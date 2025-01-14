@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.3.0-next.7
+
+### Minor Changes
+
+- Removed `sd-video` overlay feature. _[`#1776`](https://github.com/solid-design-system/solid/pull/1776) [`d12e330`](https://github.com/solid-design-system/solid/commit/d12e3305ca95bc63188017b1ea3113e41019e27c) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.3.0-next.6
 
 ### Patch Changes

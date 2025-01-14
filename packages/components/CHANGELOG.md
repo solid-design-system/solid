@@ -1,5 +1,15 @@
 # @solid-design-system/components
 
+## 4.0.0-next.10
+
+### Major Changes
+
+- Removed `sd-video` overlay feature. _[`#1776`](https://github.com/solid-design-system/solid/pull/1776) [`d12e330`](https://github.com/solid-design-system/solid/commit/d12e3305ca95bc63188017b1ea3113e41019e27c) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+### 📈 Stats
+* Uncompressed: 398 KB (-1 KB / 0%)
+* Gzipped: 94 KB (unchanged)
+
 ## 4.0.0-next.9
 
 ### Major Changes
