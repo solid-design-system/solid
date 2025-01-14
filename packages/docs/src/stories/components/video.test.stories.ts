@@ -62,26 +62,6 @@ export const Default = {
 };
 
 /**
- * `sd-video` with all possible property configurations.
- */
-
-export const PlayingOverlay = {
-  name: 'Playing × Overlay',
-  render: (args: any) => {
-    return html`
-      ${generateTemplate({
-        axis: {
-          x: { type: 'attribute', name: 'playing' },
-          y: { type: 'attribute', name: 'overlay' }
-        },
-        constants: imageConstant,
-        args
-      })}
-    `;
-  }
-};
-
-/**
  * Utility script used in next 2 stories. You can use similar logic to wire up video elements in your project.
  */
 
@@ -225,4 +205,4 @@ export const Mouseless = {
   }
 };
 
-export const Combination = generateScreenshotStory([Default, PlayingOverlay, VideoElement, Mouseless]);
+export const Combination = generateScreenshotStory([Default, VideoElement, Mouseless]);
