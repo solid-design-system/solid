@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 4.0.0-next.8
+
+### Patch Changes
+
+- Make sd-select and sd-combobox placeholders translatable. _[`#1761`](https://github.com/solid-design-system/solid/pull/1761) [`6b544f5`](https://github.com/solid-design-system/solid/commit/6b544f5b50f0a5b4c33e04a44c46bd35dbd1d8d3) [@smfonseca](https://github.com/smfonseca)_
+
 ## 4.0.0-next.7
 
 ### Patch Changes
@@ -12,8 +18,9 @@
   - sd-select: add --tag-max-width and ellipsis
 
 ### 📈 Stats
-* Uncompressed: 399 KB (+1 KB / +0%)
-* Gzipped: 94 KB (unchanged)
+
+- Uncompressed: 399 KB (+1 KB / +0%)
+- Gzipped: 94 KB (unchanged)
 
 ## 4.0.0-next.6
 
