@@ -637,4 +637,22 @@ describe('<sd-select>', () => {
     expect(hideHandler).to.have.been.calledOnce;
     expect(afterHideHandler).to.have.been.calledOnce;
   });
+
+  it('should display translated placeholder and clear entry texts if lang attribute is set', async () => {
+    const el = await fixture<SdSelect>(html`
+      <sd-select lang="de" value="option-1" clearable>
+        <sd-option value="option-1">Option 1</sd-option>
+        <sd-option value="option-2">Option 2</sd-option>
+        <sd-option value="option-3">Option 3</sd-option>
+      </sd-select>
+    `);
+
+    const clearButton: HTMLButtonElement = el.shadowRoot!.querySelector('[part~="clear-button"]')!;
+    const placeholder = el.shadowRoot!.querySelector('[part~="display-input"]')!;
+
+    await el.updateComplete;
+
+    expect(placeholder.getAttribute('placeholder')).to.equal('Bitte auswählen');
+    expect(clearButton.getAttribute('aria-label')).to.equal('Eingabe löschen');
+  });
 });

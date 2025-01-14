@@ -154,7 +154,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   @property({ reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
 
   /** Placeholder text to show as a hint when the combobox is empty. */
-  @property() placeholder = this.localize.term('comboboxDefaultPlaceholder');
+  @property() placeholder = '';
 
   /** Label text shown on tag if max-options-visible is reached. */
   @property({ attribute: 'max-options-tag-label' }) maxOptionsTagLabel = this.localize.term('tagsSelected');
@@ -1249,7 +1249,9 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                   this.selectedTextLabel && !this.multiple ? 'placeholder-black' : 'placeholder-neutral-700'
                 )}
                 type="text"
-                placeholder=${this.selectedTextLabel && !this.multiple ? this.selectedTextLabel : this.placeholder}
+                placeholder=${this.selectedTextLabel && !this.multiple
+                  ? this.selectedTextLabel
+                  : this.placeholder || this.localize.term('comboboxDefaultPlaceholder')}
                 .disabled=${this.disabled}
                 .value=${this.displayInputValue}
                 autocomplete="off"

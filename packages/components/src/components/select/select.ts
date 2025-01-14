@@ -134,7 +134,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   @property() label = '';
 
   /** Placeholder text to show as a hint when the select is empty. */
-  @property() placeholder = this.localize.term('selectDefaultPlaceholder');
+  @property() placeholder = '';
 
   /** Label text shown on tag if max-options-visible is reached. */
   @property({ attribute: 'max-options-tag-label' }) maxOptionsTagLabel = this.localize.term('tagsSelected');
@@ -997,8 +997,8 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                   this.multiple && this.useTags && this.value.length > 0 ? 'hidden' : ''
                 )}
                 type="text"
-                placeholder=${this.placeholder}
                 .disabled=${this.disabled}
+                placeholder=${this.placeholder || this.localize.term('selectDefaultPlaceholder')}
                 .value=${this.displayLabel}
                 autocomplete="off"
                 spellcheck="false"
