@@ -99,7 +99,7 @@ describe('<sd-select>', () => {
     expect(input.hasAttribute('aria-invalid')).to.be.true;
   });
 
-  it.skip('should remove tag and option when tag is focused and backspace is pressed', async () => {
+  it('should remove tag and option when tag is focused and backspace is pressed', async () => {
     const el = await fixture<SdSelect>(html`
       <sd-select value="option-1 option-2" multiple useTags>
         <sd-option value="option-1">Option 1</sd-option>
