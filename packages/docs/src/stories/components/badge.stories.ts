@@ -89,8 +89,8 @@ export const Inverted = {
   render: () => html`
     <div class="flex gap-12 bg-primary p-4">
       <sd-badge inverted>8</sd-badge>
-      <sd-badge variant="success" inverted>8</sd-badge>
-      <sd-badge variant="error" inverted>8</sd-badge>
+      <sd-badge variant="green" inverted>8</sd-badge>
+      <sd-badge variant="red" inverted>8</sd-badge>
     </div>
   `
 };
