@@ -1,3 +1,5 @@
+import '../../../dist/solid-components';
+
 import { aTimeout, expect, fixture, html } from '@open-wc/testing';
 
 import type SdOptgroup from './optgroup';
@@ -23,7 +25,7 @@ describe('<sd-optgroup>', () => {
     await expect(el).to.be.accessible();
   });
 
-  it.skip('default properties', async () => {
+  it('default properties', async () => {
     const el = await fixture<SdOptgroup>(html`<sd-optgroup></sd-optgroup>`);
 
     expect(el.disabled).to.be.false;
@@ -44,7 +46,7 @@ describe('<sd-optgroup>', () => {
       expect(getDisabledOptions(el)).to.have.length(0);
     });
 
-    it.skip('changes all <sd-option /> tags disabled attributes to true when sd-optgroups disabled attribute is true', async () => {
+    it('changes all <sd-option /> tags disabled attributes to true when sd-optgroups disabled attribute is true', async () => {
       const el = await fixture<SdOptgroup>(html`
         <sd-optgroup disabled>
           <sd-option value="1">Value 1</sd-option>
@@ -58,7 +60,7 @@ describe('<sd-optgroup>', () => {
       expect(getDisabledOptions(el)).to.have.length(2);
     });
 
-    it.skip('should set its childrens sd-option disabled property according to its own when the slot content changes', async () => {
+    it('should set its childrens sd-option disabled property according to its own when the slot content changes', async () => {
       const el = await fixture<SdOptgroup>(html`
         <sd-optgroup>
           <sd-option value="1">Option 1</sd-option>

@@ -29,6 +29,7 @@ export default class SdDivider extends SolidElement {
     return html`
       <hr
         part="main"
+        aria-orientation=${this.orientation}
         class=${cx(
           this.inverted ? 'border-primary-400' : 'border-neutral-400',
           this.orientation === 'horizontal' ? 'border-t w-full' : ' border-l h-full'
