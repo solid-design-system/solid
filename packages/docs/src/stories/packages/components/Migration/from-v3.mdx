@@ -442,6 +442,32 @@ The `sd-flipcard` component has been updated to improve a11y, flexibility and al
 </sd-flipcard>
 ```
 
+### `<sd-badge>`
+
+The `sd-badge` component has been updated to improve a11y.
+
+`variant` attribute options have been renamed to clearly remove any semantic meaning. The variants should only communicate a state visually.
+
+- `variant="default"` -> `variant="blue"`
+- `variant="success"` -> `variant="green"`
+- `variant="error"` -> `variant="red"`
+
+**Before:**
+
+```html
+<sd-badge variant="success">
+  <!-- content -->
+</sd-badge>
+```
+
+**After:**
+
+```html
+<sd-badge variant="green">
+  <!-- content -->
+</sd-badge>
+```
+
 ### `<sd-video>`
 
 Attribute `overlay` was removed.

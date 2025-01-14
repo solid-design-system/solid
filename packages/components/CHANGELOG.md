@@ -1,5 +1,15 @@
 # @solid-design-system/components
 
+## 4.0.0-next.9
+
+### Major Changes
+
+- Rename sd-badge `variant` attribute options for accessibility purposes. _[`#1774`](https://github.com/solid-design-system/solid/pull/1774) [`8b96338`](https://github.com/solid-design-system/solid/commit/8b963385855a6440b3a888ac73bec1ae71697a67) [@smfonseca](https://github.com/smfonseca)_
+
+  - `variant="default"` -> `variant="blue"`
+  - `variant="sucess"` -> `variant="green"`
+  - `variant="error"` -> `variant="red"`
+
 ## 4.0.0-next.8
 
 ### Patch Changes

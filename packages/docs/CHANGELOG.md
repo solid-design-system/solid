@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.3.0-next.6
+
+### Patch Changes
+
+- Update `variant` attribute options name in stories where sd-badge is used. _[`#1774`](https://github.com/solid-design-system/solid/pull/1774) [`8b96338`](https://github.com/solid-design-system/solid/commit/8b963385855a6440b3a888ac73bec1ae71697a67) [@smfonseca](https://github.com/smfonseca)_
+
 ## 1.3.0-next.5
 
 ### Patch Changes
