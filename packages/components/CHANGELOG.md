@@ -1,5 +1,20 @@
 # @solid-design-system/components
 
+## 4.0.0-next.7
+
+### Patch Changes
+
+- Bugfixes and minor non-breaking changes to the sd-select and sd-combobox components _[`#1742`](https://github.com/solid-design-system/solid/pull/1742) [`125d5f1`](https://github.com/solid-design-system/solid/commit/125d5f1db6c0eaf19500cc333ac33ab39646d842) [@DanielHargesheimer](https://github.com/DanielHargesheimer)_
+
+  - sd-combobox: emit events correctly
+  - sd-combobox: set options' initial attributes
+  - sd-select and sd-combobox: add max-options-tag-label attribute
+  - sd-select: add --tag-max-width and ellipsis
+
+### 📈 Stats
+* Uncompressed: 399 KB (+1 KB / +0%)
+* Gzipped: 94 KB (unchanged)
+
 ## 4.0.0-next.6
 
 ### Patch Changes
