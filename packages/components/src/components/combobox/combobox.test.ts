@@ -45,11 +45,13 @@ describe('<sd-combobox>', () => {
       </sd-combobox>
     `);
 
+    const input = el.shadowRoot!.querySelector<HTMLInputElement>('[part~="display-input"]')!;
+
     expect(el.name).to.equal('');
     expect(el.value).to.equal('');
     expect(el.defaultValue).to.equal('');
     expect(el.size).to.equal('lg');
-    expect(el.placeholder).to.equal('Please search and select');
+    expect(input.placeholder).to.equal('Please search and select');
     expect(el.disabled).to.be.false;
     expect(el.clearable).to.be.false;
     expect(el.open).to.be.false;
