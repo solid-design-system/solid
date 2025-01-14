@@ -1,5 +1,17 @@
 # @solid-design-system/components
 
+## 4.0.0-next.11
+
+### Patch Changes
+
+- Fixed gradient issue on flipcard. _[`#1752`](https://github.com/solid-design-system/solid/pull/1752) [`1f05b67`](https://github.com/solid-design-system/solid/commit/1f05b677f64c6fca93e5764cfd283ddd17dcc145) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  Implemented an improved flipcard template version.
+
+### 📈 Stats
+* Uncompressed: 399 KB (+1 KB / +0%)
+* Gzipped: 94 KB (unchanged)
+
 ## 4.0.0-next.10
 
 ### Major Changes
@@ -7,8 +19,9 @@
 - Removed `sd-video` overlay feature. _[`#1776`](https://github.com/solid-design-system/solid/pull/1776) [`d12e330`](https://github.com/solid-design-system/solid/commit/d12e3305ca95bc63188017b1ea3113e41019e27c) [@paulovareiro29](https://github.com/paulovareiro29)_
 
 ### 📈 Stats
-* Uncompressed: 398 KB (-1 KB / 0%)
-* Gzipped: 94 KB (unchanged)
+
+- Uncompressed: 398 KB (-1 KB / 0%)
+- Gzipped: 94 KB (unchanged)
 
 ## 4.0.0-next.9
 
