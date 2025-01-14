@@ -10,6 +10,7 @@ const { generateTemplate } = storybookTemplate('sd-headline');
  * Used to display primary or section titles, highlighting key messages to create clear visual hierarchy.
  *
  * **Related templates**:
+ * - [Headline](?path=/docs/templates-headline--docs)
  * - [Headline with Mark](?path=/docs/templates-mark--docs)
  */
 
