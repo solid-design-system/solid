@@ -16,11 +16,6 @@ const videoConstant: ConstantDefinition = {
   value:
     '<video controls id="video-example" class="w-[854px] aspect-video"><source src="./placeholders/videos/sds-placeholder-video/sds-placeholder-video.webm" type="video/webm" />Your browser does not support the video tag.</video>'
 };
-const imageConstant: ConstantDefinition = {
-  type: 'slot',
-  name: 'default',
-  value: '<img class="w-[400px] aspect-video object-cover" src="./placeholders/images/union-investment.png" />'
-};
 const posterConstant: ConstantDefinition = {
   type: 'slot',
   name: 'poster',
