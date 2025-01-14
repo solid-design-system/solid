@@ -21,7 +21,7 @@ export default class SdBadge extends SolidElement {
   @property({ reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
 
   /** The badge's variant. */
-  @property({ reflect: true }) variant: 'default' | 'success' | 'error' = 'default';
+  @property({ reflect: true }) variant: 'blue' | 'green' | 'red' = 'blue';
 
   /** Inverts the badge. */
   @property({ type: Boolean, reflect: true }) inverted = false;
@@ -36,11 +36,11 @@ export default class SdBadge extends SolidElement {
           'inline-flex items-center justify-center gap-x-[1px] text-center font-bold whitespace-nowrap border rounded-full select-none cursor-[inherit]',
           {
             /* variants */
-            default: !this.inverted
+            blue: !this.inverted
               ? 'text-white bg-primary-500 border-white'
               : 'text-primary bg-primary-100 border-primary',
-            success: !this.inverted ? 'text-white bg-success border-white' : 'text-white bg-success border-primary',
-            error: !this.inverted ? 'text-white bg-error border-white' : 'text-white bg-error border-primary'
+            green: !this.inverted ? 'text-white bg-success border-white' : 'text-white bg-success border-primary',
+            red: !this.inverted ? 'text-white bg-error border-white' : 'text-white bg-error border-primary'
           }[this.variant],
           {
             /* size and fonts*/

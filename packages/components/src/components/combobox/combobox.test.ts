@@ -1,3 +1,4 @@
+import '../../../dist/solid-components';
 import { aTimeout, expect, fixture, html, oneEvent, waitUntil } from '@open-wc/testing';
 import { clickOnElement } from '../../internal/test';
 import { sendKeys } from '@web/test-runner-commands';
@@ -7,7 +8,7 @@ import type SdCombobox from './combobox';
 import type SdOption from '../option/option';
 import type SdSelect from '../select/select';
 
-describe.skip('<sd-combobox>', () => {
+describe('<sd-combobox>', () => {
   describe('accessibility', () => {
     it('should pass accessibility tests when closed', async () => {
       const combobox = await fixture<SdCombobox>(html`
@@ -44,11 +45,13 @@ describe.skip('<sd-combobox>', () => {
       </sd-combobox>
     `);
 
+    const input = el.shadowRoot!.querySelector<HTMLInputElement>('[part~="display-input"]')!;
+
     expect(el.name).to.equal('');
     expect(el.value).to.equal('');
     expect(el.defaultValue).to.equal('');
     expect(el.size).to.equal('lg');
-    expect(el.placeholder).to.equal('Please search and select');
+    expect(input.placeholder).to.equal('Please search and select');
     expect(el.disabled).to.be.false;
     expect(el.clearable).to.be.false;
     expect(el.open).to.be.false;
@@ -573,7 +576,7 @@ describe.skip('<sd-combobox>', () => {
 
     it('should remove tag and option when tag is focused and backspace is pressed', async () => {
       const el = await fixture<SdSelect>(html`
-        <sd-combobox value="option-1 option-2" multiple useTags>
+        <sd-combobox value="option-1 option-2" multiple>
           <sd-option value="option-1">Option 1</sd-option>
           <sd-option value="option-2">Option 2</sd-option>
           <sd-option value="option-3">Option 3</sd-option>
@@ -626,6 +629,33 @@ describe.skip('<sd-combobox>', () => {
       await el.updateComplete;
 
       expect(el.value).to.deep.equal(['Option 2', 'Option 3']);
+    });
+
+    it('should emit sd-change and sd-input when the value changes', async () => {
+      const el = await fixture<SdCombobox>(html`
+        <sd-combobox value="option-1" multiple>
+          <sd-option value="option-1">Option 1</sd-option>
+          <sd-option value="option-2">Option 2</sd-option>
+          <sd-option value="option-3">Option 3</sd-option>
+        </sd-combobox>
+      `);
+      const inputHandler = sinon.spy();
+      const changeHandler = sinon.spy();
+
+      el.addEventListener('sd-input', inputHandler);
+      el.addEventListener('sd-change', changeHandler);
+      await el.show();
+      await el.updateComplete;
+      const filteredListbox = el.shadowRoot!.querySelector('[part="filtered-listbox"]')!;
+      const secondOption = filteredListbox.querySelectorAll<SdOption>('sd-option')[1];
+      await clickOnElement(secondOption);
+      await el.updateComplete;
+      const thirdOption = filteredListbox.querySelectorAll<SdOption>('sd-option')[2];
+      await clickOnElement(thirdOption);
+      await el.updateComplete;
+
+      expect(inputHandler).to.have.been.calledTwice;
+      expect(changeHandler).to.have.been.calledTwice;
     });
   });
 
@@ -1282,5 +1312,21 @@ describe.skip('<sd-combobox>', () => {
     await el.updateComplete;
 
     expect(el.value).to.equal('Option 2');
+  });
+
+  it('should display translated placeholder if lang attribute is set', async () => {
+    const el = await fixture<SdSelect>(html`
+      <sd-combobox lang="de">
+        <sd-option value="option-1">Option 1</sd-option>
+        <sd-option value="option-2">Option 2</sd-option>
+        <sd-option value="option-3">Option 3</sd-option>
+      </sd-combobox>
+    `);
+
+    const placeholder = el.shadowRoot!.querySelector('[part~="display-input"]')!;
+
+    await el.updateComplete;
+
+    expect(placeholder.getAttribute('placeholder')).to.equal('Bitte suchen und auswählen');
   });
 });
