@@ -1,5 +1,13 @@
 # @solid-design-system/docs
 
+## 1.3.0-next.12
+
+### Minor Changes
+
+- Improve sd-headline stories description and a11y. _[`#1729`](https://github.com/solid-design-system/solid/pull/1729) [`776ed57`](https://github.com/solid-design-system/solid/commit/776ed57e61dfa94786534b51a8a788a25f19e8bc) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  Implement sd-headline template.
+
 ## 1.3.0-next.11
 
 ### Patch Changes
