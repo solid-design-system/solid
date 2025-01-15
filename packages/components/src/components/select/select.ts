@@ -62,6 +62,8 @@ import type SdOption from '../option/option';
  * @csspart tag__removable-indicator - The tag's remove button.
  * @csspart clear-button - The clear button.
  * @csspart expand-icon - The container that wraps the expand icon.
+ *
+ * @cssproperty --tag-max-width - Set the maximum width of the tags and to show an ellipsis. Defaults to "15ch"
  */
 @customElement('sd-select')
 export default class SdSelect extends SolidElement implements SolidFormControl {
@@ -132,7 +134,10 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   @property() label = '';
 
   /** Placeholder text to show as a hint when the select is empty. */
-  @property() placeholder = this.localize.term('selectDefaultPlaceholder');
+  @property() placeholder = '';
+
+  /** Label text shown on tag if max-options-visible is reached. */
+  @property({ attribute: 'max-options-tag-label' }) maxOptionsTagLabel = this.localize.term('tagsSelected');
 
   /** Disables the select control. */
   @property({ type: Boolean, reflect: true }) disabled = false;
@@ -412,6 +417,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
 
   private handleTagKeyDown(event: KeyboardEvent, option: SdOption) {
     if (event.key === 'Backspace' && this.multiple) {
+      event.preventDefault();
       event.stopPropagation();
       const tagParent = (event.currentTarget as HTMLElement)?.parentElement;
       const previousTag = tagParent?.previousElementSibling?.querySelector('sd-tag');
@@ -432,6 +438,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
 
   private handleTagMaxOptionsKeyDown(event: KeyboardEvent) {
     if (event.key === 'Backspace' && this.multiple) {
+      event.preventDefault();
       event.stopPropagation();
       this.handleTagRemove(new CustomEvent('sd-remove'), this.selectedOptions[this.selectedOptions.length - 1]);
       this.updateComplete.then(() => {
@@ -690,7 +697,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
             removable
             @keydown=${(event: KeyboardEvent) => this.handleTagMaxOptionsKeyDown(event)}
             @sd-remove=${(event: CustomEvent) => this.handleTagRemove(event)}
-            >${this.selectedOptions.length} ${this.localize.term('tagsSelected')}</sd-tag
+            >${this.selectedOptions.length} ${this.maxOptionsTagLabel}</sd-tag
           >
         `
       ];
@@ -868,7 +875,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
 
     const hasLabel = this.label ? true : !!slots['label'];
     const hasHelpText = this.helpText ? true : !!slots['helpText'];
-    const hasClearIcon = this.clearable && !this.disabled && this.value.length > 0;
+    const hasClearIcon = this.clearable && !this.disabled;
 
     // Hierarchy of input states:
     const selectState = this.disabled
@@ -990,8 +997,8 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                   this.multiple && this.useTags && this.value.length > 0 ? 'hidden' : ''
                 )}
                 type="text"
-                placeholder=${this.placeholder}
                 .disabled=${this.disabled}
+                placeholder=${this.placeholder || this.localize.term('selectDefaultPlaceholder')}
                 .value=${this.displayLabel}
                 autocomplete="off"
                 spellcheck="false"
@@ -1034,7 +1041,11 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 ? html`
                     <button
                       part="clear-button"
-                      class=${cx('select__clear flex justify-center', iconMarginLeft)}
+                      class=${cx(
+                        'select__clear flex justify-center',
+                        iconMarginLeft,
+                        this.value.length > 0 ? 'visible' : 'invisible'
+                      )}
                       type="button"
                       aria-label=${this.localize.term('clearEntry')}
                       @mousedown=${this.handleClearMouseDown}
@@ -1146,6 +1157,11 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
 
       sd-tag::part(base) {
         @apply rounded-default px-1;
+      }
+
+      sd-tag::part(content) {
+        @apply overflow-hidden whitespace-nowrap inline-block text-ellipsis;
+        max-width: var(--tag-max-width, 15ch);
       }
 
       sd-tag[size='lg']::part(base) {
