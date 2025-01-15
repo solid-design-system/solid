@@ -1,5 +1,22 @@
 # @solid-design-system/components
 
+## 4.0.0-next.12
+
+### Patch Changes
+
+- Improved sd-expandable visual: _[`#1724`](https://github.com/solid-design-system/solid/pull/1724) [`c7bab9d`](https://github.com/solid-design-system/solid/commit/c7bab9db426203a61b42a19740c409c50b25da4c) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  - Removed underline to match design.
+  - Improved spacings according to design.
+
+  Improved sd-expandable a11y:
+
+  - Reorder elements in the DOM (button first so it is targetable by keyboard on first tab)
+
+### 📈 Stats
+* Uncompressed: 398 KB (-1 KB / 0%)
+* Gzipped: 94 KB (unchanged)
+
 ## 4.0.0-next.11
 
 ### Patch Changes
@@ -9,8 +26,9 @@
   Implemented an improved flipcard template version.
 
 ### 📈 Stats
-* Uncompressed: 399 KB (+1 KB / +0%)
-* Gzipped: 94 KB (unchanged)
+
+- Uncompressed: 399 KB (+1 KB / +0%)
+- Gzipped: 94 KB (unchanged)
 
 ## 4.0.0-next.10
 

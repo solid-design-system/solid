@@ -1,5 +1,14 @@
 # @solid-design-system/docs
 
+## 1.3.0-next.10
+
+### Patch Changes
+
+- Improved sd-expandable a11y: _[`#1724`](https://github.com/solid-design-system/solid/pull/1724) [`c7bab9d`](https://github.com/solid-design-system/solid/commit/c7bab9db426203a61b42a19740c409c50b25da4c) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  - Improved template labels
+  - Added accessibility hints
+
 ## 1.3.0-next.9
 
 ### Patch Changes
