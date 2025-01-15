@@ -27,10 +27,8 @@ describe('<sd-flipcard>', () => {
       el.addEventListener('sd-flip-front', flipFrontHandler);
       el.addEventListener('sd-flip-back', flipBackHandler);
 
-      // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
-      const front = el.shadowRoot!.querySelector("[part='front-button']")! as HTMLButtonElement;
-      // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
-      const back = el.shadowRoot!.querySelector("[part='back-button']")! as HTMLButtonElement;
+      const front: HTMLButtonElement = el.shadowRoot!.querySelector("[part='front-button']")!;
+      const back: HTMLButtonElement = el.shadowRoot!.querySelector("[part='back-button']")!;
 
       front.click();
       await waitUntil(() => flipFrontHandler.calledOnce);
@@ -40,6 +38,29 @@ describe('<sd-flipcard>', () => {
 
       expect(flipFrontHandler).to.have.been.calledOnce;
       expect(flipBackHandler).to.have.been.calledOnce;
+    });
+
+    it('should contain accessibility attributes', async () => {
+      const el = await fixture<SdFlipcard>(html`<sd-flipcard></sd-flipcard>`);
+      const front = el.shadowRoot!.querySelector("[part='front']")!;
+      const back = el.shadowRoot!.querySelector("[part='back']")!;
+
+      expect(front.getAttribute('aria-hidden')).eq('false');
+      expect(front.hasAttribute('inert')).to.be.false;
+      expect(back.getAttribute('aria-hidden')).eq('true');
+      expect(back.hasAttribute('inert')).to.be.true;
+
+      const flipFrontHandler = sinon.spy();
+      const frontButton: HTMLButtonElement = el.shadowRoot!.querySelector("[part='front-button']")!;
+      el.addEventListener('sd-flip-front', flipFrontHandler);
+
+      frontButton.click();
+      await waitUntil(() => flipFrontHandler.calledOnce);
+
+      expect(front.getAttribute('aria-hidden')).eq('true');
+      expect(front.hasAttribute('inert')).to.be.true;
+      expect(back.getAttribute('aria-hidden')).eq('false');
+      expect(back.hasAttribute('inert')).to.be.false;
     });
   });
 });

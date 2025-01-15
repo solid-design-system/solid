@@ -1,8 +1,9 @@
 import '../icon/icon';
 import { animateTo, shimKeyframesHeightAuto, stopAnimations } from '../../internal/animate';
-import { css, html } from 'lit';
+import { css } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry';
+import { html } from 'lit/static-html.js';
 import { LocalizeController } from '../../utilities/localize';
 import { property, query } from 'lit/decorators.js';
 import { waitForEvent } from '../../internal/event';
@@ -45,9 +46,11 @@ export default class SdAccordion extends SolidElement {
 
   public localize = new LocalizeController(this);
 
-  @query('[part="base"]') accordion: HTMLElement;
+  @query('[part="base"]') accordion: HTMLDetailsElement;
   @query('[part="header"]') header: HTMLElement;
   @query('[part="content"]') body: HTMLElement;
+
+  accordionObserver: MutationObserver;
 
   /**
    * Indicates whether or not the accordion is open. You can toggle this attribute to show and hide the accordion, or you
@@ -61,9 +64,33 @@ export default class SdAccordion extends SolidElement {
   firstUpdated() {
     this.body.hidden = !this.open;
     this.body.style.height = this.open ? 'auto' : '0';
+
+    if (this.open) {
+      this.accordion.open = true;
+    }
+
+    this.accordionObserver = new MutationObserver(changes => {
+      for (const change of changes) {
+        if (change.type === 'attributes' && change.attributeName === 'open') {
+          if (this.accordion.open) {
+            this.show();
+          } else {
+            this.hide();
+          }
+        }
+      }
+    });
+    this.accordionObserver.observe(this.accordion, { attributes: true });
   }
 
-  protected handleSummaryClick() {
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.accordionObserver?.disconnect();
+  }
+
+  protected handleSummaryClick(event: MouseEvent) {
+    event.preventDefault();
+
     if (this.open) {
       this.hide();
     } else {
@@ -96,10 +123,12 @@ export default class SdAccordion extends SolidElement {
   @watch('open', { waitUntilFirstUpdate: true })
   async handleOpenChange() {
     if (this.open) {
+      this.accordion.open = true;
       // Show
       const slShow = this.emit('sd-show', { cancelable: true });
       if (slShow.defaultPrevented) {
         this.open = false;
+        this.accordion.open = false;
         return;
       }
 
@@ -115,6 +144,7 @@ export default class SdAccordion extends SolidElement {
       // Hide
       const slHide = this.emit('sd-hide', { cancelable: true });
       if (slHide.defaultPrevented) {
+        this.accordion.open = true;
         this.open = true;
         return;
       }
@@ -126,6 +156,7 @@ export default class SdAccordion extends SolidElement {
       this.body.hidden = true;
       this.body.style.height = 'auto';
 
+      this.accordion.open = false;
       this.emit('sd-after-hide');
     }
   }
@@ -150,14 +181,13 @@ export default class SdAccordion extends SolidElement {
 
   render() {
     return html`
-      <div part="base" class="border-y border-neutral-400">
-        <header
+      <details part="base" class="border-y border-neutral-400">
+        <summary
           part="header"
           id="header"
           class=${cx(
             'flex text-base gap-4 font-bold items-center cursor-pointer select-none px-4 py-3 focus-visible:focus-outline text-primary hover:bg-neutral-200 relative group'
           )}
-          role="button"
           aria-expanded=${this.open ? 'true' : 'false'}
           aria-controls="content"
           tabindex="0"
@@ -184,11 +214,11 @@ export default class SdAccordion extends SolidElement {
             <slot name="collapse-icon" class=${cx(!this.open && 'hidden')}>
               <sd-icon library="system" name="chevron-down"></sd-icon> </slot
           ></span>
-        </header>
+        </summary>
         <div part="content" id="content" class="overflow-hidden">
           <slot part="content__slot" class="block px-4 py-6" role="region" aria-labelledby="header"></slot>
         </div>
-      </div>
+      </details>
     `;
   }
 

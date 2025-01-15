@@ -1,5 +1,48 @@
 # @solid-design-system/docs
 
+## 1.3.0-next.8
+
+### Patch Changes
+
+- Fixed gradient issue on flipcard. _[`#1752`](https://github.com/solid-design-system/solid/pull/1752) [`1f05b67`](https://github.com/solid-design-system/solid/commit/1f05b677f64c6fca93e5764cfd283ddd17dcc145) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  Implemented an improved flipcard template version.
+
+## 1.3.0-next.7
+
+### Minor Changes
+
+- Removed `sd-video` overlay feature. _[`#1776`](https://github.com/solid-design-system/solid/pull/1776) [`d12e330`](https://github.com/solid-design-system/solid/commit/d12e3305ca95bc63188017b1ea3113e41019e27c) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.3.0-next.6
+
+### Patch Changes
+
+- Update `variant` attribute options name in stories where sd-badge is used. _[`#1774`](https://github.com/solid-design-system/solid/pull/1774) [`8b96338`](https://github.com/solid-design-system/solid/commit/8b963385855a6440b3a888ac73bec1ae71697a67) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.3.0-next.5
+
+### Patch Changes
+
+- Bugfixes and minor non-breaking changes to the sd-select and sd-combobox components _[`#1742`](https://github.com/solid-design-system/solid/pull/1742) [`125d5f1`](https://github.com/solid-design-system/solid/commit/125d5f1db6c0eaf19500cc333ac33ab39646d842) [@DanielHargesheimer](https://github.com/DanielHargesheimer)_
+
+  - sd-combobox: emit events correctly
+  - sd-combobox: set options' initial attributes
+  - sd-select and sd-combobox: add max-options-tag-label attribute
+  - sd-select: add --tag-max-width and ellipsis
+
+## 1.3.0-next.4
+
+### Patch Changes
+
+- Added the debug class to sd-hidden-links to display hidden links for screenshot tests. _[`#1753`](https://github.com/solid-design-system/solid/pull/1753) [`5dbc65f`](https://github.com/solid-design-system/solid/commit/5dbc65f27496303c7f02cb0dfa90c18d232af33c) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.3.0-next.3
+
+### Patch Changes
+
+- Removed unecessary padding classes from tab stories. _[`#1755`](https://github.com/solid-design-system/solid/pull/1755) [`9954447`](https://github.com/solid-design-system/solid/commit/9954447efacc72908971c123b94bfd549dc69454) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.3.0-next.2
 
 ### Minor Changes
