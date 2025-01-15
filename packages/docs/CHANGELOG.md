@@ -1,5 +1,13 @@
 # @solid-design-system/docs
 
+## 1.3.0-next.8
+
+### Patch Changes
+
+- Fixed gradient issue on flipcard. _[`#1752`](https://github.com/solid-design-system/solid/pull/1752) [`1f05b67`](https://github.com/solid-design-system/solid/commit/1f05b677f64c6fca93e5764cfd283ddd17dcc145) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  Implemented an improved flipcard template version.
+
 ## 1.3.0-next.7
 
 ### Minor Changes
