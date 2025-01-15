@@ -1,5 +1,15 @@
 # @solid-design-system/docs
 
+## 1.3.0-next.11
+
+### Patch Changes
+
+- Improved quote template a11y: _[`#1756`](https://github.com/solid-design-system/solid/pull/1756) [`70a17a0`](https://github.com/solid-design-system/solid/commit/70a17a0391db0d95e440ab885c674f01758bb6d8) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  - Added accessibility information
+  - Replaced `q` html elements by `blockquote`
+  - Renamed `John Doe` to `Jane Doe`
+
 ## 1.3.0-next.10
 
 ### Patch Changes
