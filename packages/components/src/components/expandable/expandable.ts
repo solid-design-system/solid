@@ -24,6 +24,7 @@ import SolidElement from '../../internal/solid-element';
  * @event sd-hide - Emitted when the expandable closes.
  * @event sd-after-hide - Emitted after the expandable closes and all animations are complete.
  *
+ * @csspart base - The component's base wrapper.
  * @csspart content - The content of the expandable.
  * @csspart toggle - The toggle button of the expandable.
  * @csspart summary - The summary of the expandable.
@@ -99,37 +100,42 @@ export default class SdExpandable extends SolidElement {
 
   render() {
     return html`
-      <details part="details">
-        <summary part="summary" aria-hidden="true" class="cursor-pointer overflow-hidden list-none">
-          <slot name="clone"></slot>
-        </summary>
-        <div part="content" class="content content-preview overflow-hidden relative">
-          <slot></slot>
-        </div>
-      </details>
-      <button
-        part="toggle"
-        class=${cx(
-          'sd-interactive sd-interactive--reset !h-full !justify-center !w-full !text-base !flex !items-center !underline !underline-offset-2 !toggle',
-          this.inverted && 'sd-interactive--inverted',
-          !this.inverted ? '!focus-visible:focus-outline' : '!focus-visible:focus-outline-inverted'
-        )}
-        @click=${this.onToggleClick}
-      >
-        ${this.open
-          ? html`
-              <slot name="toggle-open">
-                <sd-icon class="mr-2 text-xl" library="system" name="chevron-up"></sd-icon>
-                ${this.localize.term('showLess')}
-              </slot>
-            `
-          : html`
-              <slot name="toggle-closed">
-                <sd-icon class="mr-2 text-xl" library="system" name="chevron-down"></sd-icon>
-                ${this.localize.term('showMore')}
-              </slot>
-            `}
-      </button>
+      <div part="base" class="flex flex-col-reverse gap-4">
+        <button
+          part="toggle"
+          class=${cx(
+            'sd-interactive sd-interactive--reset',
+            this.inverted && 'sd-interactive--inverted',
+            !this.inverted ? '!focus-visible:focus-outline' : '!focus-visible:focus-outline-inverted'
+          )}
+          @click=${this.onToggleClick}
+          aria-expanded=${this.open}
+        >
+          <div class=${cx('h-full justify-center w-full text-base flex items-center toggle')}>
+            ${this.open
+              ? html`
+                  <slot name="toggle-open">
+                    <sd-icon class="mr-2 text-xl" library="system" name="chevron-up"></sd-icon>
+                    ${this.localize.term('showLess')}
+                  </slot>
+                `
+              : html`
+                  <slot name="toggle-closed">
+                    <sd-icon class="mr-2 text-xl" library="system" name="chevron-down"></sd-icon>
+                    ${this.localize.term('showMore')}
+                  </slot>
+                `}
+          </div>
+        </button>
+        <details part="details" aria-hidden=${!this.open}>
+          <summary part="summary" aria-hidden="true" class="cursor-pointer overflow-hidden list-none">
+            <slot name="clone"></slot>
+          </summary>
+          <div part="content" class="content content-preview overflow-hidden relative">
+            <slot></slot>
+          </div>
+        </details>
+      </div>
     `;
   }
 

@@ -7,9 +7,10 @@ const { overrideArgs } = storybookHelpers('sd-headline');
 const { generateTemplate } = storybookTemplate('sd-headline');
 
 /**
- * Used as a crucial element for displaying content hierarchy and to enhance accessibility.
+ * Used to display primary or section titles, highlighting key messages to create clear visual hierarchy.
  *
  * **Related templates**:
+ * - [Headline](?path=/docs/templates-headline--docs)
  * - [Headline with Mark](?path=/docs/templates-mark--docs)
  */
 
@@ -24,7 +25,7 @@ export default {
       url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=3162-7669&t=ohgrgpEVGgKzqMzU-4'
     }
   },
-  args: overrideArgs({ type: 'slot', name: 'default', value: 'Nisi eu excepteur anim esse' }),
+  args: overrideArgs({ type: 'slot', name: 'default', value: 'Lorem ipsum sic semper' }),
   argTypes,
   decorators: [
     (story: () => typeof html) => html`
@@ -41,7 +42,7 @@ export default {
 export const Default = {
   render: (args: any) => {
     return generateTemplate({
-      options: { templateContent: '<h4 class="%CLASSES%">%SLOT%</h4>' },
+      options: { templateContent: '<h2 class="%CLASSES%">%SLOT%</h2>' },
       args
     });
   }
@@ -55,6 +56,11 @@ export const Default = {
  * - `sd-headline--size-xl`
  * - `sd-headline--size-lg`
  * - `sd-headline--size-base`
+ *
+ * **Accessibility Information:**
+ * Separating semantics from styles allows developers to use appropriate tags (e.g, h1 to h6 or p) for structure,
+ * ensuring consistent design, accessibility, and flexibility across use cases.
+ * H-tags are applied in the CMS following semantic headline order.
  */
 export const Sizes = {
   render: () => html`
@@ -74,7 +80,7 @@ export const Sizes = {
 export const Inverted = {
   render: () =>
     html` <div class="bg-primary p-4">
-      <h4 class="sd-headline sd-headline--inverted">Nisi eu excepteur anim esse</h4>
+      <h4 class="sd-headline sd-headline--inverted">Lorem ipsum sic semper</h4>
     </div>`
 };
 

@@ -1,5 +1,110 @@
 # @solid-design-system/components
 
+## 4.0.0-next.12
+
+### Patch Changes
+
+- Improved sd-expandable visual: _[`#1724`](https://github.com/solid-design-system/solid/pull/1724) [`c7bab9d`](https://github.com/solid-design-system/solid/commit/c7bab9db426203a61b42a19740c409c50b25da4c) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  - Removed underline to match design.
+  - Improved spacings according to design.
+
+  Improved sd-expandable a11y:
+
+  - Reorder elements in the DOM (button first so it is targetable by keyboard on first tab)
+
+### 📈 Stats
+* Uncompressed: 398 KB (-1 KB / 0%)
+* Gzipped: 94 KB (unchanged)
+
+## 4.0.0-next.11
+
+### Patch Changes
+
+- Fixed gradient issue on flipcard. _[`#1752`](https://github.com/solid-design-system/solid/pull/1752) [`1f05b67`](https://github.com/solid-design-system/solid/commit/1f05b677f64c6fca93e5764cfd283ddd17dcc145) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  Implemented an improved flipcard template version.
+
+### 📈 Stats
+
+- Uncompressed: 399 KB (+1 KB / +0%)
+- Gzipped: 94 KB (unchanged)
+
+## 4.0.0-next.10
+
+### Major Changes
+
+- Removed `sd-video` overlay feature. _[`#1776`](https://github.com/solid-design-system/solid/pull/1776) [`d12e330`](https://github.com/solid-design-system/solid/commit/d12e3305ca95bc63188017b1ea3113e41019e27c) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+### 📈 Stats
+
+- Uncompressed: 398 KB (-1 KB / 0%)
+- Gzipped: 94 KB (unchanged)
+
+## 4.0.0-next.9
+
+### Major Changes
+
+- Rename sd-badge `variant` attribute options for accessibility purposes. _[`#1774`](https://github.com/solid-design-system/solid/pull/1774) [`8b96338`](https://github.com/solid-design-system/solid/commit/8b963385855a6440b3a888ac73bec1ae71697a67) [@smfonseca](https://github.com/smfonseca)_
+
+  - `variant="default"` -> `variant="blue"`
+  - `variant="sucess"` -> `variant="green"`
+  - `variant="error"` -> `variant="red"`
+
+## 4.0.0-next.8
+
+### Patch Changes
+
+- Make sd-select and sd-combobox placeholders translatable. _[`#1761`](https://github.com/solid-design-system/solid/pull/1761) [`6b544f5`](https://github.com/solid-design-system/solid/commit/6b544f5b50f0a5b4c33e04a44c46bd35dbd1d8d3) [@smfonseca](https://github.com/smfonseca)_
+
+## 4.0.0-next.7
+
+### Patch Changes
+
+- Bugfixes and minor non-breaking changes to the sd-select and sd-combobox components _[`#1742`](https://github.com/solid-design-system/solid/pull/1742) [`125d5f1`](https://github.com/solid-design-system/solid/commit/125d5f1db6c0eaf19500cc333ac33ab39646d842) [@DanielHargesheimer](https://github.com/DanielHargesheimer)_
+
+  - sd-combobox: emit events correctly
+  - sd-combobox: set options' initial attributes
+  - sd-select and sd-combobox: add max-options-tag-label attribute
+  - sd-select: add --tag-max-width and ellipsis
+
+### 📈 Stats
+
+- Uncompressed: 399 KB (+1 KB / +0%)
+- Gzipped: 94 KB (unchanged)
+
+## 4.0.0-next.6
+
+### Patch Changes
+
+- Improved sd-flipcard hidden side a11y: _[`#1760`](https://github.com/solid-design-system/solid/pull/1760) [`a64a5ba`](https://github.com/solid-design-system/solid/commit/a64a5bad336ba72b62b1a1f63685a6f58bd895c5) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  - Interactive elements are no longer reachable.
+  - Content is no longer read by screenreader.
+
+## 4.0.0-next.5
+
+### Patch Changes
+
+- Fix a rare bug in the disconnecedCallback of sd-tab-group when being dynamically created and removed _[`#1768`](https://github.com/solid-design-system/solid/pull/1768) [`fbf375e`](https://github.com/solid-design-system/solid/commit/fbf375e19e760fe3765f965c06929ae846fb44f1) [@mariohamann](https://github.com/mariohamann)_
+
+## 4.0.0-next.4
+
+### Patch Changes
+
+- Fixed broken padding on tab left slot. _[`#1755`](https://github.com/solid-design-system/solid/pull/1755) [`9954447`](https://github.com/solid-design-system/solid/commit/9954447efacc72908971c123b94bfd549dc69454) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 4.0.0-next.3
+
+### Minor Changes
+
+- Adapt `sd-accordion` and expandable `sd-quickfact` HTML to use `<details />` and `<summary />` elements. _[`#1757`](https://github.com/solid-design-system/solid/pull/1757) [`b83d804`](https://github.com/solid-design-system/solid/commit/b83d8049db1abaa8744f806412c35609109ef04d) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+### 📈 Stats
+
+- Uncompressed: 398 KB (+1 KB / +0%)
+- Gzipped: 94 KB (unchanged)
+
 ## 4.0.0-next.2
 
 ### Patch Changes
