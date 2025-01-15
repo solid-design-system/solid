@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.3.0-next.9
+
+### Patch Changes
+
+- Fix `sd-select` displaying the scrollbar by default, even when unecessary. _[`#1769`](https://github.com/solid-design-system/solid/pull/1769) [`49615f2`](https://github.com/solid-design-system/solid/commit/49615f2326110ec1bd40bc2e5b81f7006202a9a7) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.3.0-next.8
 
 ### Patch Changes
