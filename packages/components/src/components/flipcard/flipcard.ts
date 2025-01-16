@@ -1,7 +1,9 @@
+import '../button/button';
+import '../icon/icon';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
-import { property, query } from 'lit/decorators.js';
-import componentStyles from '../../styles/component.styles';
+import { ifDefined } from 'lit/directives/if-defined.js';
+import { property, query, state } from 'lit/decorators.js';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
@@ -10,6 +12,9 @@ import SolidElement from '../../internal/solid-element';
  * @documentation https://solid.union-investment.com/[storybook-link]/flipcard
  * @status stable
  * @since 3.8.0
+ *
+ * @dependency sd-button
+ * @dependency sd-icon
  *
  * @event sd-flip-front - Emmited when the front face of the flipcard is clicked.
  * @event sd-flip-back - Emmited when the back face of the flipcard is clicked.
@@ -22,6 +27,10 @@ import SolidElement from '../../internal/solid-element';
  * @csspart base - The component's base wrapper.
  * @csspart front - The container that wraps the front-side of the flipcard.
  * @csspart back - The container that wraps the back-side of the flipcard.
+ * @csspart front-button - The button that flips the flipcard to the back.
+ * @csspart back-button - The button that flips the flipcard to the front.
+ * @csspart front-interactive-container - The container that wraps the front side and the flip button.
+ * @csspart back-interactive-container - The container that wraps the back side and the flip button.
  * @csspart front-slot-container - The container that wraps the front slot.
  * @csspart back-slot-container - The container that wraps the back slot.
  * @csspart media-front - The container that wraps the media-front slot.
@@ -39,70 +48,57 @@ export default class SdFlipcard extends SolidElement {
   @query('[part="back"]') back: HTMLElement;
 
   /**
-   * Determines the activation type of the flipcard.
-   */
-  @property({ reflect: true }) activation: 'click' | 'click hover' = 'click hover';
-
-  /**
    * Allows the flipcard to flip vertically or horizontally.
    */
   @property({ reflect: true, attribute: 'flip-direction' }) flipDirection: 'horizontal' | 'vertical' = 'horizontal';
 
+  /**
+   * Determines the placement of the contents of the flipcard.
+   */
+  @property({ reflect: true }) placement: 'top' | 'bottom' = 'top';
+
   /** Determines the variant of the front face of the flipcard. */
   @property({ type: String, reflect: true, attribute: 'front-variant' })
-  frontVariant:
-    | 'empty'
-    | 'primary'
-    | 'primary-100'
-    | 'gradient-light-top'
-    | 'gradient-light-bottom'
-    | 'gradient-dark-top'
-    | 'gradient-dark-bottom' = 'empty';
+  frontVariant: 'primary' | 'primary-100' | 'gradient-light' | 'gradient-dark' = 'primary';
 
   /** Determines the variant of the back face of the flipcard. */
-  @property({ type: String, reflect: true, attribute: 'back-variant' }) backVariant:
-    | 'empty'
-    | 'primary'
-    | 'primary-100'
-    | 'gradient-light-top'
-    | 'gradient-light-bottom'
-    | 'gradient-dark-top'
-    | 'gradient-dark-bottom' = 'empty';
+  @property({ type: String, reflect: true, attribute: 'back-variant' })
+  backVariant: 'primary' | 'primary-100' | 'gradient-light' | 'gradient-dark' = 'primary';
+
+  @state() activeSide: 'front' | 'back' = 'front';
 
   connectedCallback() {
     super.connectedCallback();
   }
 
   private flipFront() {
+    this.activeSide = 'back';
     this.front.classList.add('clicked--front');
     this.back.classList.add('clicked--back');
     this.emit('sd-flip-front');
-    this.back.focus();
+
+    /**
+     * DEV Note: A timeout is needed to move the focus to the end of the callstack,
+     * to enable the browser to have time to remove the `inert` attribute fron the flipcard side.
+     */
+    setTimeout(() => {
+      this.back.focus();
+    });
   }
 
   private flipBack() {
+    this.activeSide = 'front';
     this.front.classList.remove('clicked--front');
     this.back.classList.remove('clicked--back');
     this.emit('sd-flip-back');
-    this.front.focus();
-  }
 
-  private handleFrontClick(event: PointerEvent) {
-    const eventNode = event.target as HTMLElement;
-
-    // Prevent flipping when clicking on interactive elements
-    if (eventNode.getAttribute('onclick') === null && eventNode.getAttribute('href') === null) {
-      this.flipFront();
-    }
-  }
-
-  private handleBackClick(event: PointerEvent) {
-    const eventNode = event.target as HTMLElement;
-
-    // Prevent flipping when clicking on interactive elements
-    if (eventNode.getAttribute('onclick') === null && eventNode.getAttribute('href') === null) {
-      this.flipBack();
-    }
+    /**
+     * DEV Note: A timeout is needed to move the focus to the end of the callstack,
+     * to enable the browser to have time to remove the `inert` attribute fron the flipcard side.
+     */
+    setTimeout(() => {
+      this.front.focus();
+    });
   }
 
   private handleFrontKeydown(event: KeyboardEvent) {
@@ -123,20 +119,17 @@ export default class SdFlipcard extends SolidElement {
         <div
           part="front"
           tabindex="0"
+          aria-hidden=${this.activeSide === 'back'}
+          inert=${ifDefined(this.activeSide === 'back' || undefined)}
           class=${cx(
             'flip-card__side flip-card__side--front overflow-hidden transition-transform duration-1000 ease-in-out',
             'flex focus-visible:focus-outline',
             'absolute top-0 left-0 w-full h-full justify-end text-left',
-            this.activation === 'click hover' && 'hover',
             this.frontVariant === 'primary' && 'bg-primary',
             this.frontVariant === 'primary-100' && 'bg-primary-100',
-            this.frontVariant === 'gradient-dark-bottom' || this.frontVariant === 'gradient-light-bottom'
-              ? 'flex-col-reverse'
-              : 'flex-col',
+            this.placement === 'top' ? 'flex-col' : 'flex-col-reverse',
             this.flipDirection === 'vertical' && 'vertical'
           )}
-          @click=${this.handleFrontClick}
-          @keydown=${this.handleFrontKeydown}
         >
           <div
             part="media-front"
@@ -153,22 +146,22 @@ export default class SdFlipcard extends SolidElement {
             class=${cx(
               'flex',
               {
-                empty: 'text-black',
                 primary: 'text-white',
                 'primary-100': 'text-black',
-                'gradient-light-top': 'text-black',
-                'gradient-light-bottom': 'text-black',
-                'gradient-dark-top': 'text-white',
-                'gradient-dark-bottom': 'text-white'
+                'gradient-light': 'text-black',
+                'gradient-dark': 'text-white'
               }[this.frontVariant],
               {
-                empty: '',
                 primary: '',
                 'primary-100': '',
-                'gradient-light-top': 'bg-gradient-to-b from-white/75 to-white/60',
-                'gradient-light-bottom': 'bg-gradient-to-t from-white/75 to-white/60',
-                'gradient-dark-top': 'bg-gradient-to-b from-primary-800/75 to-primary-800/60',
-                'gradient-dark-bottom': 'bg-gradient-to-t from-primary-800/75 to-primary-800/60'
+                'gradient-light':
+                  this.placement === 'top'
+                    ? 'bg-gradient-to-b from-white/75 to-white/60'
+                    : 'bg-gradient-to-t  from-white/75 to-white/60',
+                'gradient-dark':
+                  this.placement === 'bottom'
+                    ? 'bg-gradient-to-t from-primary-800/75 to-primary-800/60'
+                    : 'bg-gradient-to-b  from-primary-800/75 to-primary-800/60'
               }[this.frontVariant]
             )}
           >
@@ -180,35 +173,56 @@ export default class SdFlipcard extends SolidElement {
             class=${cx(
               'flip-card__gradient',
               {
-                empty: 'mb-auto',
                 primary: 'mb-auto',
                 'primary-100': 'mb-auto',
-                'gradient-light-top': 'bg-gradient-to-b from-white/60 to-40% mb-auto',
-                'gradient-light-bottom': 'bg-gradient-to-t from-white/60 to-40% mt-auto',
-                'gradient-dark-top': 'bg-gradient-to-b from-primary-800/60 to-40% mb-auto',
-                'gradient-dark-bottom': 'bg-gradient-to-t  from-primary-800/60 to-40% mt-auto'
+                'gradient-light':
+                  this.placement === 'top'
+                    ? 'bg-gradient-to-b from-white/60 to-white/0 mb-auto'
+                    : 'bg-gradient-to-t from-white/60 to-white/0 mt-auto',
+                'gradient-dark':
+                  this.placement === 'bottom'
+                    ? 'bg-gradient-to-t from-primary-800/60 to-primary-800/0 mt-auto'
+                    : 'bg-gradient-to-b from-primary-800/60 to-primary-800/0 mb-auto'
               }[this.frontVariant]
             )}
           ></div>
+          <sd-button
+            part="front-button"
+            size="md"
+            variant=${{
+              primary: 'tertiary',
+              'primary-100': 'tertiary',
+              'gradient-light': 'primary',
+              'gradient-dark': 'primary'
+            }[this.frontVariant] as 'primary' | 'secondary' | 'tertiary' | 'cta'}
+            ?inverted=${{
+              primary: true,
+              'primary-100': false,
+              'gradient-light': true,
+              'gradient-dark': true
+            }[this.frontVariant]}
+            class=${cx('absolute right-0 p-2 flex-shrink-0', this.placement === 'top' ? 'bottom-0' : 'top-0')}
+            @click=${this.flipFront}
+            @keydown=${this.handleFrontKeydown}
+          >
+            <sd-icon library="system" name="reload" label="Flip to Back"></sd-icon>
+          </sd-button>
         </div>
 
         <div
           part="back"
           tabindex="0"
+          aria-hidden=${this.activeSide === 'front'}
+          inert=${ifDefined(this.activeSide === 'front' || undefined)}
           class=${cx(
             'flip-card__side flip-card__side--back overflow-hidden transition-transform duration-1000 ease-in-out',
             'flex focus-visible:focus-outline',
             'absolute top-0 left-0 w-full h-full justify-end text-left',
-            this.activation === 'click hover' && 'hover',
             this.backVariant === 'primary' && 'bg-primary',
             this.backVariant === 'primary-100' && 'bg-primary-100',
-            this.backVariant === 'gradient-dark-bottom' || this.backVariant === 'gradient-light-bottom'
-              ? 'flex-col-reverse'
-              : 'flex-col',
+            this.placement === 'top' ? 'flex-col' : 'flex-col-reverse',
             this.flipDirection === 'vertical' && 'vertical'
           )}
-          @click=${this.handleBackClick}
-          @keydown=${this.handleBackKeydown}
         >
           <div
             part="media-back"
@@ -225,22 +239,22 @@ export default class SdFlipcard extends SolidElement {
             class=${cx(
               'flex',
               {
-                empty: 'text-black',
                 primary: 'text-white',
                 'primary-100': 'text-black',
-                'gradient-light-top': 'text-black',
-                'gradient-light-bottom': 'text-black',
-                'gradient-dark-top': 'text-white',
-                'gradient-dark-bottom': 'text-white'
+                'gradient-light': 'text-black',
+                'gradient-dark': 'text-white'
               }[this.backVariant],
               {
-                empty: '',
                 primary: '',
                 'primary-100': '',
-                'gradient-light-top': 'bg-gradient-to-b from-white/75 to-white/60',
-                'gradient-light-bottom': 'bg-gradient-to-t from-white/75 to-white/60',
-                'gradient-dark-top': 'bg-gradient-to-b from-primary-800/75 to-primary-800/60',
-                'gradient-dark-bottom': 'bg-gradient-to-t from-primary-800/75 to-primary-800/60'
+                'gradient-light':
+                  this.placement === 'top'
+                    ? 'bg-gradient-to-b from-white/75 to-white/60'
+                    : 'bg-gradient-to-t  from-white/75 to-white/60',
+                'gradient-dark':
+                  this.placement === 'bottom'
+                    ? 'bg-gradient-to-t from-primary-800/75 to-primary-800/60'
+                    : 'bg-gradient-to-b  from-primary-800/75 to-primary-800/60'
               }[this.backVariant]
             )}
           >
@@ -252,27 +266,50 @@ export default class SdFlipcard extends SolidElement {
             class=${cx(
               'flip-card__gradient',
               {
-                empty: 'mb-auto',
                 primary: 'mb-auto',
                 'primary-100': 'mb-auto',
-                'gradient-light-top': 'bg-gradient-to-b from-white/60 to-40% mb-auto',
-                'gradient-light-bottom': 'bg-gradient-to-t from-white/60 to-40% mt-auto',
-                'gradient-dark-top': 'bg-gradient-to-b from-primary-800/60 to-40% mb-auto',
-                'gradient-dark-bottom': 'bg-gradient-to-t  from-primary-800/60 to-40% mt-auto'
+                'gradient-light':
+                  this.placement === 'top'
+                    ? 'bg-gradient-to-b from-white/60 to-white/0 mb-auto'
+                    : 'bg-gradient-to-t from-white/60 to-white/0 mt-auto',
+                'gradient-dark':
+                  this.placement === 'bottom'
+                    ? 'bg-gradient-to-t from-primary-800/60 to-primary-800/0 mt-auto'
+                    : 'bg-gradient-to-b from-primary-800/60 to-primary-800/0 mb-auto'
               }[this.backVariant]
             )}
           ></div>
+          <sd-button
+            size="md"
+            part="back-button"
+            variant=${{
+              primary: 'tertiary',
+              'primary-100': 'tertiary',
+              'gradient-light': 'primary',
+              'gradient-dark': 'primary'
+            }[this.backVariant] as 'primary' | 'secondary' | 'tertiary' | 'cta'}
+            ?inverted=${{
+              primary: true,
+              'primary-100': false,
+              'gradient-light': true,
+              'gradient-dark': true
+            }[this.backVariant]}
+            class=${cx('absolute right-0 p-2 flex-shrink-0', this.placement === 'top' ? 'bottom-0' : 'top-0')}
+            @click=${this.flipBack}
+            @keydown=${this.handleBackKeydown}
+          >
+            <sd-icon library="system" name="reload" label="Flip to Front"></sd-icon>
+          </sd-button>
         </div>
       </div>
     `;
   }
 
   /**
-   * Inherits Tailwindclasses and includes additional styling.
+   * Inherits global stylesheet including TailwindCSS
    */
   static styles = [
-    componentStyles,
-    SolidElement.styles,
+    ...SolidElement.styles,
     css`
       :host {
         @apply block aspect-3/4;
@@ -315,24 +352,6 @@ export default class SdFlipcard extends SolidElement {
 
       .flip-card__gradient {
         flex: 0.4 1 0;
-      }
-
-      @media (hover: hover) and (pointer: fine) {
-        .flip-card:hover .flip-card__side--front.hover {
-          transform: rotateY(-180deg);
-        }
-
-        .flip-card:hover .flip-card__side--back.hover {
-          transform: rotateY(0);
-        }
-
-        .flip-card:hover .flip-card__side--front.hover.vertical {
-          transform: rotateX(-180deg);
-        }
-
-        .flip-card:hover .flip-card__side--back.hover.vertical {
-          transform: rotateX(0);
-        }
       }
     `
   ];

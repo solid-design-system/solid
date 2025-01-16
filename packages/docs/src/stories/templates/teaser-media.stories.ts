@@ -135,7 +135,7 @@ export const TeaserMediaWithCopyright = {
           <div slot="default" class="h-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
         </div>
       </sd-teaser-media>
-      <sd-teaser-media variant="gradient-white" class="max-w-[600px]">
+      <sd-teaser-media variant="gradient-light" class="max-w-[600px]">
         <img slot="media" src="./placeholders/images/architecture.jpg" class="aspect-video object-cover" alt="" />
         <h3 slot="headline">Headline Media Teaser</h3>
         <div

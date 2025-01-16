@@ -36,7 +36,7 @@ export default {
   argTypes,
   parameters: {
     ...parameters,
-    controls: { exclude: ['contained'] }
+    controls: { disable: true }
   }
 };
 
@@ -59,9 +59,6 @@ export const Default = {
  */
 export const ButtonInHeader = {
   name: 'Button in Header',
-  parameters: {
-    controls: { exclude: ['header', 'contained'] }
-  },
   render: (args: any) => {
     return html` <div class="header-with-btn" style="width: auto; height: 95vh; position: relative;">
       <style>
@@ -88,9 +85,6 @@ export const ButtonInHeader = {
  */
 export const NoHeader = {
   name: 'No Header',
-  parameters: {
-    controls: { exclude: ['no-header', 'header', 'contained'] }
-  },
   render: (args: any) => {
     return html` <div style="width: auto; height: 95vh; position: relative;">
       ${generateTemplate({
@@ -112,9 +106,6 @@ export const NoHeader = {
  */
 export const NoFooter = {
   name: 'No Footer',
-  parameters: {
-    controls: { exclude: ['footer', 'contained'] }
-  },
   render: (args: any) => {
     return html` <div style="width: auto; height: 95vh; position: relative;">
       ${generateTemplate({
@@ -136,11 +127,6 @@ export const NoFooter = {
  */
 export const Padding = {
   name: 'Padding',
-  parameters: {
-    controls: {
-      exclude: ['default', 'header', 'footer', 'contained']
-    }
-  },
   render: (args: any) => {
     return html`
       ${['header', 'body', 'footer'].map(part =>
@@ -184,11 +170,6 @@ export const Padding = {
  */
 export const Placement = {
   name: 'Placement',
-  parameters: {
-    controls: {
-      exclude: ['placement', 'contained']
-    }
-  },
   render: (args: any) => {
     return html`
       ${generateTemplate({
@@ -220,7 +201,6 @@ export const Placement = {
  */
 export const Autofocus = {
   name: 'Autofocus',
-  parameters: { controls: { exclude: ['contained', 'default', 'header', 'footer'] } },
   render: (args: any) => {
     return html` <div style="width: auto; height: 95vh; position: relative;">
       ${generateTemplate({
@@ -249,7 +229,6 @@ export const Autofocus = {
 
 export const Scrolling = {
   name: 'Scrolling',
-  parameters: { controls: { exclude: ['default', 'contained'] } },
   render: (args: any) => {
     return html` <div style="width: auto; height: 95vh; position: relative;">
       ${generateTemplate({
@@ -268,9 +247,6 @@ export const Scrolling = {
 
 export const Slots = {
   name: 'Slots',
-  parameters: {
-    controls: { exclude: ['default', 'header', 'footer', 'contained'] }
-  },
   render: (args: any) => {
     return html`
       ${['default', 'header', 'footer'].map(slot =>
@@ -313,23 +289,6 @@ export const Slots = {
 
 export const Parts = {
   name: 'Parts',
-  parameters: {
-    controls: {
-      exclude: [
-        'base',
-        'overlay',
-        'panel',
-        'header',
-        'header-content',
-        'title',
-        'close-button',
-        'body',
-        'footer',
-        '--width',
-        'contained'
-      ]
-    }
-  },
   render: (args: any) => {
     return html`
       ${['base', 'overlay', 'panel', 'header', 'title', 'close-button', 'body', 'footer'].map(part =>
@@ -367,7 +326,6 @@ export const Parts = {
 
 export const Mouseless = {
   name: 'Mouseless',
-  parameters: { controls: { exclude: ['default', 'header', 'footer', 'contained', 'no-header'] } },
   render: (args: any) => {
     return html`<div class="mouseless" style="width: auto; height: 95vh; position: relative;">
       ${generateTemplate({

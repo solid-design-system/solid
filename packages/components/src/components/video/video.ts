@@ -1,5 +1,5 @@
 import { css, html } from 'lit';
-import { customElement } from '../../../src/internal/register-custom-element';
+import { customElement } from '../../internal/register-custom-element';
 import { HasSlotController } from '../../internal/slot';
 import { property, query } from 'lit/decorators.js';
 import cx from 'classix';
@@ -21,18 +21,14 @@ import SolidElement from '../../internal/solid-element';
  * @csspart base - The component's base wrapper.
  * @csspart play-button - The `<button>` element wrapper around the play-icon slot (full screen to field all click events).
  * @csspart play-button-bg - The `<div>` element wrapper around the play-button that defines the circular background.
- * @csspart overlay - The `<div>` element styled as an absolutely positioned transparent overlay.
  */
 
 @customElement('sd-video')
 export default class SdVideo extends SolidElement {
   @query('[part=base]') hostEl: HTMLElement;
 
-  /** Set to `true` to hide the play icon and the overlay. */
+  /** Set to `true` to hide the play icon. */
   @property({ type: Boolean, reflect: true }) playing = false;
-
-  /** Set to `true` to show a dark overlay. Only used when `playing` is `false`. */
-  @property({ type: Boolean, reflect: true }) overlay = false;
 
   /** Reactive property to trigger breakpoint re-renders. */
   @property({ type: Boolean }) isBelowBreakpoint = false;
@@ -152,23 +148,13 @@ export default class SdVideo extends SolidElement {
         ${this.hasSlotController.test('poster')
           ? html`<slot name="poster" role="presentation" @transitionend=${this.hidePoster}></slot>`
           : null}
-        <div
-          part="overlay"
-          id="overlay"
-          role="presentation"
-          class=${cx(
-            this.overlay && !this.playing ? 'opacity-100' : 'opacity-0',
-            'bg-[rgba(0,0,0,0.65)] w-full h-full absolute top-0 left-0 pointer-events-none z-20 play-pause-transition'
-          )}
-        ></div>
         <slot></slot>
       </div>
     `;
   }
 
-  /** Inherits Tailwindclasses and includes additional styling. */
   static styles = [
-    SolidElement.styles,
+    ...SolidElement.styles,
     css`
       :host {
         @apply relative inline-block overflow-hidden;

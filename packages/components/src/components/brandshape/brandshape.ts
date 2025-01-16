@@ -1,7 +1,6 @@
 import { css, html } from 'lit';
-import { customElement } from '../../../src/internal/register-custom-element';
+import { customElement } from '../../internal/register-custom-element';
 import { property, query, state } from 'lit/decorators.js';
-import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 import type { TemplateResult } from 'lit';
@@ -154,7 +153,9 @@ export default class SdBrandshape extends SolidElement {
             'w-full block absolute h-full top-0 left-0 z-0'
           )}
         ></div>
-        <div class="z-10 relative" part="content"><slot></slot></div>
+        <div class=${cx('z-10 relative', this.variant === 'image' && 'invisible opacity-0')} part="content">
+          <slot> ${this.variant === 'image' ? '' : html`<div class="h-8"></div>`} </slot>
+        </div>
       </div>
     `;
   }
@@ -220,17 +221,15 @@ export default class SdBrandshape extends SolidElement {
         part="base"
       >
         ${isStylizedVariant ? this.renderStylizedVariant() : ''} ${this.renderShapes()}
-        ${this.shapes.includes('middle') ? html`<slot></slot>` : ''}
       </div>
     `;
   }
 
   /**
-   * Inherits Tailwindclasses and includes additional styling.
+   * Inherits global stylesheet including TailwindCSS
    */
   static styles = [
-    componentStyles,
-    SolidElement.styles,
+    ...SolidElement.styles,
     css`
       :host {
         @apply block;

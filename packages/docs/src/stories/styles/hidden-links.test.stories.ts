@@ -26,9 +26,13 @@ export default {
   tags: ['!autodocs'],
   argTypes,
   parameters: {
-    ...parameters
+    ...parameters,
+    controls: { disable: true }
   },
-  args: overrideArgs({ type: 'slot', name: 'default', value: 'Lorem Ipsum' })
+  args: overrideArgs(
+    { type: 'slot', name: 'default', value: html`<sd-button href="#">Skip to content</sd-button>` },
+    { type: 'attribute', name: 'sd-hidden-links--debug', value: true }
+  )
 };
 
 /**
@@ -36,11 +40,6 @@ export default {
  */
 export const Default = {
   name: 'Default',
-  args: overrideArgs({
-    type: 'slot',
-    name: 'default',
-    value: html`<sd-button href="#">Skip to content</sd-button>`
-  }),
   render: (args: any) => {
     return generateTemplate({
       options: {
@@ -105,7 +104,9 @@ export const SurroundingContent = {
               }
             }
           </style>
-          <div class="%CLASSES%">%SLOT%</div>
+          <div class="relative z-20">
+            <div class="%CLASSES%">%SLOT%</div>
+          </div>
           <sd-header class="z-10" fixed>
             <div class="flex justify-between items-center">
               <!-- top-left-area start !-->
@@ -130,8 +131,8 @@ export const StackLinks = {
     return generateTemplate({
       options: {
         templateContent: html`<div class="relative bg-white w-full h-[256px] p-8">
-          <div class="sd-hidden-links"><sd-button href="#">Skip to content</sd-button></div>
-          <div class="sd-hidden-links"><sd-button href="#">Skip to content</sd-button></div>
+          <div class="sd-hidden-links sd-hidden-links--debug"><sd-button href="#">Skip to content 1</sd-button></div>
+          <div class="sd-hidden-links sd-hidden-links--debug"><sd-button href="#">Skip to content 2</sd-button></div>
           <p>Tab into this area to show a single button.</p>
         </div>`
       },
@@ -149,7 +150,7 @@ export const MultipleLinks = {
     return generateTemplate({
       options: {
         templateContent: html`<div class="relative bg-white w-full h-[256px] p-8">
-      <div class="sd-hidden-links sd-hidden-links--multiple">
+      <div class="sd-hidden-links sd-hidden-links--multiple sd-hidden-links--debug">
         <sd-navigation-item href="#">Search</sd-navigation-item>
         <sd-navigation-item href="#">Content</sd-navigation-item>
         <sd-navigation-item href="#">Footer</sd-navigation-item>
@@ -172,7 +173,7 @@ export const TitleForMultipleLinks = {
     return generateTemplate({
       options: {
         templateContent: html`<div class="relative bg-white w-full h-[256px] p-8" lang="de">
-            <div class="sd-hidden-links sd-hidden-links--multiple">
+            <div class="sd-hidden-links sd-hidden-links--multiple sd-hidden-links--debug">
               <sd-navigation-item href="#">Suche</sd-navigation-item>
               <sd-navigation-item href="#">Inhalt</sd-navigation-item>
               <sd-navigation-item href="#">Fußbereich</sd-navigation-item>
@@ -180,7 +181,7 @@ export const TitleForMultipleLinks = {
             <p>Hier wird eine deutsche Überschrift erscheinen.</p>
           </div>
           <div class="relative bg-white w-full h-[256px] p-8">
-            <div class="sd-hidden-links sd-hidden-links--multiple" lang="en">
+            <div class="sd-hidden-links sd-hidden-links--multiple sd-hidden-links--debug" lang="en">
               <sd-navigation-item href="#">Search</sd-navigation-item>
               <sd-navigation-item href="#">Content</sd-navigation-item>
               <sd-navigation-item href="#">Footer</sd-navigation-item>
@@ -193,7 +194,10 @@ export const TitleForMultipleLinks = {
                 --sd-hidden-links-title: 'Jump very fast to';
               }
             </style>
-            <div id="hidden-link-with-custom-title" class="sd-hidden-links sd-hidden-links--multiple">
+            <div
+              id="hidden-link-with-custom-title"
+              class="sd-hidden-links sd-hidden-links--multiple sd-hidden-links--debug"
+            >
               <sd-navigation-item href="#">Search</sd-navigation-item>
               <sd-navigation-item href="#">Content</sd-navigation-item>
               <sd-navigation-item href="#">Footer</sd-navigation-item>

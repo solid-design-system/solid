@@ -1,7 +1,8 @@
+import '../../../dist/solid-components';
 import { expect, fixture, html } from '@open-wc/testing';
 import type SdBadge from './badge';
 
-const variants = ['default', 'success', 'error'];
+const variants = ['blue', 'green', 'red'];
 const sizes = ['lg', 'md', 'sm'];
 
 describe('<sd-badge>', () => {
@@ -21,7 +22,7 @@ describe('<sd-badge>', () => {
 
     it('should have the primary values set correctly', async () => {
       el = await fixture<SdBadge>(html` <sd-badge>Badge</sd-badge> `);
-      expect(el.variant).to.equal('default');
+      expect(el.variant).to.equal('blue');
       expect(el.size).to.equal('lg');
       expect(el.inverted).to.equal(false);
     });

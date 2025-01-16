@@ -25,6 +25,7 @@ export default {
   component: 'sd-meta',
   parameters: {
     ...parameters,
+    controls: { disable: true },
     design: {
       type: 'figma',
       url: 'https://www.figma.com/file/Um1B3fI5fvdFVJv6LO7kZG/Meta-Information?type=design&node-id=0-1&mode=design&t=I2fDQn7HjSc75K1V-0'
@@ -54,7 +55,6 @@ export const Default = {
 
 export const LightAndSize = {
   name: 'Light × Size',
-  parameters: { controls: { exclude: ['sd-meta--light', 'sd-meta--size-...'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -72,7 +72,6 @@ export const LightAndSize = {
 
 export const LightAndInverted = {
   name: 'Light × Inverted',
-  parameters: { controls: { exclude: ['sd-meta--light', 'sd-meta--inverted'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -93,7 +92,6 @@ export const LightAndInverted = {
 
 export const Pipe = {
   name: 'Pipe',
-  parameters: { controls: { exclude: ['sd-meta--pipe', 'sd-meta--light', 'sd-meta--inverted'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {

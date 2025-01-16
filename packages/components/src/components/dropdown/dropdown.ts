@@ -1,7 +1,7 @@
 import '../popup/popup';
 import { animateTo, stopAnimations } from '../../internal/animate';
 import { css, html } from 'lit';
-import { customElement } from '../../../src/internal/register-custom-element';
+import { customElement } from '../../internal/register-custom-element';
 import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry';
 import { getTabbableBoundary } from '../../internal/tabbable';
 import { LocalizeController } from '../../utilities/localize';
@@ -9,7 +9,6 @@ import { property, query } from 'lit/decorators.js';
 import { scrollIntoView } from '../../internal/scroll';
 import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch';
-import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 import type SdButton from '../button/button';
@@ -464,8 +463,7 @@ export default class SdDropdown extends SolidElement {
   }
 
   static styles = [
-    SolidElement.styles,
-    componentStyles,
+    ...SolidElement.styles,
     css`
       :host {
         @apply inline-block;

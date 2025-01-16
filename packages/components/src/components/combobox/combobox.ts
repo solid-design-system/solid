@@ -1,5 +1,5 @@
 import { animateTo, stopAnimations } from '../../internal/animate.js';
-import { css, type CSSResultGroup, html, type TemplateResult } from 'lit';
+import { css, html, type TemplateResult } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { defaultOptionRenderer, type OptionRenderer } from './option-renderer.js';
 import { defaultValue } from '../../internal/default-value.js';
@@ -13,7 +13,6 @@ import { scrollIntoView } from '../../internal/scroll.js';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { waitForEvent } from '../../internal/event.js';
 import { watch } from '../../internal/watch.js';
-import componentStyles from '../../styles/component.styles.js';
 import cx from 'classix';
 import SdIcon from '../icon/icon';
 import SdPopup from '../popup/popup';
@@ -155,7 +154,10 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   @property({ reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
 
   /** Placeholder text to show as a hint when the combobox is empty. */
-  @property() placeholder = this.localize.term('comboboxDefaultPlaceholder');
+  @property() placeholder = '';
+
+  /** Label text shown on tag if max-options-visible is reached. */
+  @property({ attribute: 'max-options-tag-label' }) maxOptionsTagLabel = this.localize.term('tagsSelected');
 
   /** Disables the combobox control. */
   @property({ reflect: true, type: Boolean }) disabled = false;
@@ -238,7 +240,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
    * @param queryString - The query string used for filtering.
    * @returns A boolean indicating whether the option should be included in the filtered results.
    */
-  // eslint-disable-next-line class-methods-use-this
+
   @property() filter: (option: SdOption, queryString: string) => boolean = (option, queryString) => {
     const normalizedOption = normalizeString(option.value);
     const normalizedOptionLabel = normalizeString(option.getTextLabel());
@@ -285,7 +287,6 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       this.selectedTextLabel = option?.getTextLabel() || '';
     }
     this.formControlController.updateValidity();
-    this.applySizeToOptions();
   }
 
   /** Gets the validity state object */
@@ -346,7 +347,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
             removable
             @keydown=${(event: KeyboardEvent) => this.handleTagMaxOptionsKeyDown(event)}
             @sd-remove=${(event: CustomEvent) => this.handleTagRemove(event)}
-            >${this.selectedOptions.length} ${this.localize.term('tagsSelected')}</sd-tag
+            >${this.selectedOptions.length} ${this.maxOptionsTagLabel}</sd-tag
           >
         `
       ];
@@ -390,13 +391,10 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     // Close when focusing out of the combobox
     const path = event.composedPath();
     if (this && !path.includes(this)) {
-      // eslint-disable-next-line @typescript-eslint/no-floating-promises
       this.hide();
     }
   };
 
-  /* eslint-disable @typescript-eslint/no-floating-promises */
-  // eslint-disable-next-line complexity
   private handleDocumentKeyDown = (event: KeyboardEvent) => {
     const target = event.target as HTMLElement;
     const isClearButton = target.closest('.combobox__clear') !== null;
@@ -459,16 +457,16 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
           this.setSelectedOptions(currentOption);
         }
 
-        // Set focus after updating so the value is announced by screen readers
-        this.updateComplete.then(() => this.displayInput.focus({ preventScroll: true }));
+        this.updateComplete.then(() => {
+          // Set focus after updating so the value is announced by screen readers
+          this.displayInput.focus({ preventScroll: true });
 
-        if (this.value !== oldValue) {
           // Emit after updating
-          this.updateComplete.then(() => {
+          if (this.value !== oldValue) {
             this.emit('sd-input');
             this.emit('sd-change');
-          });
-        }
+          }
+        });
       }
 
       this.displayInput.focus({ preventScroll: true });
@@ -506,19 +504,18 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       }
     }
   };
-  /* eslint-enable @typescript-eslint/no-floating-promises */
 
   private handleDocumentMouseDown = (event: MouseEvent) => {
     // Close when clicking outside of the combobox
     const path = event.composedPath();
     if (this && !path.includes(this)) {
-      // eslint-disable-next-line @typescript-eslint/no-floating-promises
       this.hide();
     }
   };
 
   private handleTagKeyDown(event: KeyboardEvent, option: SdOption) {
     if (event.key === 'Backspace' && this.multiple) {
+      event.preventDefault();
       event.stopPropagation();
       this.handleTagRemove(new CustomEvent('sd-remove'), option);
       this.updateComplete.then(() => this.displayInput.focus({ preventScroll: true }));
@@ -527,6 +524,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
 
   private handleTagMaxOptionsKeyDown(event: KeyboardEvent) {
     if (event.key === 'Backspace' && this.multiple) {
+      event.preventDefault();
       event.stopPropagation();
       this.handleTagRemove(new CustomEvent('sd-remove'), this.selectedOptions[this.selectedOptions.length - 1]);
       this.updateComplete.then(() => this.displayInput.focus({ preventScroll: true }));
@@ -565,7 +563,6 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     }
     const toggleListboxOpen = () => (this.open ? this.hide() : this.show());
 
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     toggleListboxOpen().then(() => {
       setTimeout(() => this.displayInput.focus({ preventScroll: true }));
     });
@@ -602,7 +599,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       this.displayInput.focus({ preventScroll: true });
 
       // Emit after update
-      // eslint-disable-next-line @typescript-eslint/no-floating-promises
+
       this.updateComplete.then(() => {
         this.emit('sd-clear');
         this.emit('sd-input');
@@ -611,14 +608,12 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     }
   }
 
-  // eslint-disable-next-line class-methods-use-this
   private preventLoosingFocus(event: MouseEvent) {
     // Don't lose focus of the input or propagate events
     event.stopPropagation();
     event.preventDefault();
   }
 
-  /* eslint-disable @typescript-eslint/no-floating-promises */
   private handleOptionClick(event: MouseEvent) {
     const target = event.target as HTMLElement;
     const option = target.closest('sd-option');
@@ -636,23 +631,22 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
         this.setOrderedSelectedOptions(option);
         this.setSelectedOptions(option);
       }
-      // Set focus after updating so the value is announced by screen readers
-      this.updateComplete.then(() => this.displayInput.focus({ preventScroll: true }));
 
-      if (this.value !== oldValue) {
+      this.updateComplete.then(() => {
+        // Set focus after updating so the value is announced by screen readers
+        this.displayInput.focus({ preventScroll: true });
         // Emit after updating
-        this.updateComplete.then(() => {
+        if (this.value !== oldValue) {
           this.emit('sd-input');
           this.emit('sd-change');
-        });
-      }
+        }
+      });
       if (!this.multiple) {
         this.hide();
         this.displayInput.focus({ preventScroll: true });
       }
     }
   }
-  /* eslint-enable @typescript-eslint/no-floating-promises */
 
   /**
    * Selects the following or previous option.
@@ -701,14 +695,12 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     this.displayInput.removeAttribute('aria-activedescendant');
 
     allFilteredOptions.forEach(el => {
-      // eslint-disable-next-line no-param-reassign
       el.current = false;
       el.setAttribute('aria-selected', 'false');
     });
 
     // Select the target option
     if (option) {
-      // eslint-disable-next-line no-param-reassign
       option.current = true;
       option.setAttribute('aria-selected', 'true');
       this.displayInput.setAttribute('aria-activedescendant', option.id);
@@ -850,6 +842,8 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
 
         clonedOption.current = clonedOption.value === this.lastOption?.value;
         clonedOption.selected = option.selected;
+        clonedOption.checkbox = option.checkbox;
+        clonedOption.size = option.size;
 
         // Check if the option has a sd-optgroup as parent
         const hasOptgroup = option.parentElement?.tagName.toLowerCase() === 'sd-optgroup';
@@ -935,7 +929,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     // Close the listbox when the control is disabled
     if (this.disabled) {
       this.open = false;
-      // eslint-disable-next-line @typescript-eslint/no-floating-promises
+
       this.handleOpenChange();
     }
   }
@@ -1068,7 +1062,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     if (!this.selectedOptions || !this.multiple) {
       this.selectedTextLabel = this.displayInput.value;
       // Update validity
-      // eslint-disable-next-line @typescript-eslint/no-floating-promises
+
       this.updateComplete.then(() => {
         this.formControlController.updateValidity();
       });
@@ -1084,7 +1078,6 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     return filterOnlyOptgroups(getAssignedElementsForSlot(this.defaultSlot));
   }
 
-  /* eslint-disable no-param-reassign, @typescript-eslint/no-floating-promises */
   private async handleDefaultSlotChange() {
     // Rerun this handler when <sd-option> is registered
     if (!customElements.get('sd-option')) {
@@ -1094,6 +1087,12 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
 
     const slottedOptions = this.getSlottedOptions();
     const slottedOptgroups = this.getSlottedOptGroups();
+    this.applySizeToOptions();
+
+    // initially set the displayLabel if the value was set via property
+    const selectedOption = this.findOptionByValue(slottedOptions, this.value);
+    this.selectedTextLabel = selectedOption?.getTextLabel() || '';
+
     slottedOptions.forEach((option, index) => {
       if (this.multiple) {
         option.checkbox = true;
@@ -1111,15 +1110,8 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     } else {
       this.createComboboxOptionsFromQuery('');
     }
-
-    if (this.hasFocus && this.value.length > 0 && !this.open) {
-      await this.show();
-    }
   }
-  /* eslint-enable no-param-reassign, @typescript-eslint/no-floating-promises */
 
-  /* eslint-disable @typescript-eslint/unbound-method */
-  // eslint-disable-next-line complexity
   render() {
     // Slots
     const slots = {
@@ -1131,7 +1123,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     const hasHelpTextSlot = this.hasSlotController.test('help-text');
     const hasLabel = this.label ? true : !!hasLabelSlot;
     const hasHelpText = this.helpText ? true : !!hasHelpTextSlot;
-    const hasClearIcon = this.clearable && !this.disabled && this.value.length > 0;
+    const hasClearIcon = this.clearable && !this.disabled;
 
     // Hierarchy of input states:
     const selectState = this.disabled
@@ -1257,7 +1249,9 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                   this.selectedTextLabel && !this.multiple ? 'placeholder-black' : 'placeholder-neutral-700'
                 )}
                 type="text"
-                placeholder=${this.selectedTextLabel && !this.multiple ? this.selectedTextLabel : this.placeholder}
+                placeholder=${this.selectedTextLabel && !this.multiple
+                  ? this.selectedTextLabel
+                  : this.placeholder || this.localize.term('comboboxDefaultPlaceholder')}
                 .disabled=${this.disabled}
                 .value=${this.displayInputValue}
                 autocomplete="off"
@@ -1299,7 +1293,11 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                 ? html`
                     <button
                       part="clear-button"
-                      class=${cx('flex justify-center', iconMarginLeft)}
+                      class=${cx(
+                        'flex justify-center',
+                        iconMarginLeft,
+                        this.value.length > 0 ? 'visible' : 'invisible'
+                      )}
                       type="button"
                       aria-label=${this.localize.term('clearEntry')}
                       @mousedown=${this.preventLoosingFocus}
@@ -1396,9 +1394,8 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       ${this.formControlController.renderInvalidMessage()}
     `;
   }
-  static styles: CSSResultGroup = [
-    componentStyles,
-    SolidElement.styles,
+  static styles = [
+    ...SolidElement.styles,
     css`
       :host {
         @apply block relative w-full;
@@ -1421,11 +1418,8 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       }
 
       sd-tag::part(content) {
+        @apply overflow-hidden whitespace-nowrap inline-block text-ellipsis;
         max-width: var(--tag-max-width, 15ch);
-        overflow: hidden;
-        white-space: nowrap;
-        display: inline-block;
-        text-overflow: ellipsis;
       }
 
       sd-tag[size='lg']::part(base) {
@@ -1445,7 +1439,6 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       }
     `
   ];
-  /* eslint-enable @typescript-eslint/unbound-method */
 }
 
 setDefaultAnimation('combobox.show', {
