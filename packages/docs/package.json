@@ -76,7 +76,7 @@
     "typescript": "5.7.3",
     "user-agent-data-types": "^0.4.2",
     "vite": "^6",
-    "vite-node": "^2.1.8",
+    "vite-node": "^3.0.0",
     "vite-plugin-cem": "^0.8.2",
     "vite-tsconfig-paths": "^5.1.4",
     "wc-storybook-helpers": "1.5.3"
