@@ -234,12 +234,4 @@ export const Autoplay = {
   }
 };
 
-export const Combination = generateScreenshotStory([
-  Variant,
-  Inverted,
-  Loop,
-  SlidesPerPage,
-  SlidesPerMove,
-  Parts,
-  Mouseless
-]);
+export const Combination = generateScreenshotStory([Variant, Inverted, Loop, Parts, Mouseless]);
