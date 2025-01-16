@@ -238,8 +238,6 @@ export const Combination = generateScreenshotStory([
   Variant,
   Inverted,
   Loop,
-  SlidesPerPage,
-  SlidesPerMove,
   Parts,
   Mouseless
 ]);
