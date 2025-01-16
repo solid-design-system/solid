@@ -1,5 +1,17 @@
 # @solid-design-system/placeholders
 
+## 2.1.0
+
+### Minor Changes
+
+- Added profile placeholder image. _[`#1756`](https://github.com/solid-design-system/solid/pull/1756) [`70a17a0`](https://github.com/solid-design-system/solid/commit/70a17a0391db0d95e440ab885c674f01758bb6d8) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 2.1.0-next.0
+
+### Minor Changes
+
+- Added profile placeholder image. _[`#1756`](https://github.com/solid-design-system/solid/pull/1756) [`70a17a0`](https://github.com/solid-design-system/solid/commit/70a17a0391db0d95e440ab885c674f01758bb6d8) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 # [@solid-design-system/placeholders-v2.0.1](https://github.com/solid-design-system/solid/compare/placeholders/2.0.0...placeholders/2.0.1) (2024-11-27)
 
 ### Bug Fixes
