@@ -13,7 +13,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "node .husky/install.mjs",
-    "verify": "pnpm format.verify && pnpm lint.verify && pnpm --recursive --if-present verify",
+    "verify": "pnpm format.verify && pnpm lint.verify && pnpm --recursive --if-present --workspace-concurrency=1 verify",
     "fix": "pnpm lint.fix && pnpm format.fix",
     "lint.fix": "eslint packages --max-warnings 0 --fix",
     "lint.verify": "eslint packages --max-warnings 0 && echo '✅ Linting verified'",
