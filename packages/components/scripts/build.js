@@ -177,7 +177,8 @@ runBuild();
 
 if (watch) {
   const watcher = chokidar.watch('src', {
-    persistent: true
+    persistent: true,
+    ignored: path => path.includes('.test.ts')
   });
 
   watcher.on('change', runBuild);
