@@ -1,5 +1,11 @@
 # @solid-design-system/styles
 
+## 1.0.1
+
+### Patch Changes
+
+- Update dependencies _[`#1787`](https://github.com/solid-design-system/solid/pull/1787) [`c70915b`](https://github.com/solid-design-system/solid/commit/c70915be2135d93f17e9150ea6fcef95f90dd081) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.0.0
 
 ### Major Changes
