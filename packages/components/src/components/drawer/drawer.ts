@@ -312,7 +312,7 @@ export default class SdDrawer extends SolidElement {
         <div
           part="panel"
           class=${cx(
-            'absolute flex flex-col z-10 max-w-full max-h-full bg-white shadow-lg overflow-auto pointer-events-auto focus:outline-none',
+            'absolute flex flex-col gap-4 z-10 max-w-full max-h-full bg-white shadow-lg overflow-auto pointer-events-auto focus:outline-none',
             {
               end: 'top-0 end-0 bottom-auto start-auto w-[--width] h-full',
               start: 'top-0 end-auto bottom-auto start-0 w-[--width] h-full'
@@ -353,7 +353,7 @@ export default class SdDrawer extends SolidElement {
                 class="absolute top-2 right-2"
                 ><sd-icon label=${this.localize.term('close')} name="close" library="system"></sd-icon
               ></sd-button>`}
-          <div part="body" class="flex-auto block px-4 py-4" role="region" tabindex="0">
+          <div part="body" class="flex-auto block px-4" role="region" tabindex="0">
             <slot></slot>
           </div>
           <footer part="footer" class=${cx(this.hasSlotController.test('footer') ? 'text-left p-4' : 'hidden')}>
