@@ -150,7 +150,7 @@ export const Sample = {
             {
               title: 'sd-icon + sd-badge',
               value: `
-              <div class="relative">
+              <div class="relative pl-2">
                 <sd-icon slot="left" name="system/image"></sd-icon>
                 <sd-badge class="absolute -top-0.5 -right-0.5" tabindex="-1" size="sm"></sd-badge>
               </div>`

@@ -61,8 +61,8 @@ export const Default = {
 export const StackLinks = {
   render: () =>
     html`<div class="relative bg-white w-full h-[256px] p-8 flex">
-      <div class="sd-hidden-links"><sd-button href="#">Skip to Search</sd-button></div>
-      <div class="sd-hidden-links"><sd-button href="#">Skip to Content</sd-button></div>
+      <div class="sd-hidden-links"><sd-button href="#">Skip to search</sd-button></div>
+      <div class="sd-hidden-links"><sd-button href="#">Skip to content</sd-button></div>
       <p class="self-center">Tab through this area to see buttons one after another.</p>
     </div>`
 };
