@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.3.3
+
+### Patch Changes
+
+- Fix wrong URLs in migration guide. _[`#1792`](https://github.com/solid-design-system/solid/pull/1792) [`a140cc8`](https://github.com/solid-design-system/solid/commit/a140cc85adb49a408fe19a6c1295dc0b9fcd3bf2) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.3.2
 
 ### Patch Changes
