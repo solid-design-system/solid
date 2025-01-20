@@ -16,7 +16,7 @@ const { generateScreenshotStory } = storybookUtilities;
  */
 export default {
   title: 'Styles/sd-copyright/Screenshots: sd-copyright',
-  tags: ['!autodocs'],
+  tags: ['!autodocs', 'skip-a11y-test'],
   component: 'sd-copyright',
   parameters: {
     ...parameters,

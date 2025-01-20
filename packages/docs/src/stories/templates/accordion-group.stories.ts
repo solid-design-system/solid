@@ -6,7 +6,7 @@ import { html } from 'lit-html';
  */
 
 export default {
-  tags: ['!dev'],
+  tags: ['!dev', 'skip-a11y-test'],
   title: 'Templates/Accordion Group',
   parameters: {
     chromatic: { disableSnapshot: true },

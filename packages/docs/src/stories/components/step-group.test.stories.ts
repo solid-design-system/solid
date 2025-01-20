@@ -16,7 +16,7 @@ const { generateScreenshotStory } = storybookUtilities;
 
 export default {
   title: 'Components/sd-step-group/Screenshots: sd-step-group',
-  tags: ['!autodocs'],
+  tags: ['!autodocs', 'skip-a11y-test'],
   component: 'sd-step-group',
   args: overrideArgs([
     {

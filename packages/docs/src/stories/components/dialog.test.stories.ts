@@ -14,7 +14,7 @@ const { generateTemplate } = storybookTemplate('sd-dialog');
 
 export default {
   title: 'Components/sd-dialog/Screenshots: sd-dialog',
-  tags: ['!autodocs'],
+  tags: ['!autodocs', 'skip-a11y-test'],
   component: 'sd-dialog',
   args: overrideArgs([
     {

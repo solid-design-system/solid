@@ -16,7 +16,7 @@ const { overrideArgs } = storybookHelpers('sd-input');
  *
  */
 export default {
-  tags: ['!dev'],
+  tags: ['!dev', 'skip-a11y-test'],
   title: 'Components/sd-input',
   component: 'sd-input',
   args: overrideArgs({

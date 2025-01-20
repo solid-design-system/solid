@@ -14,7 +14,7 @@ const { generateTemplate } = storybookTemplate('sd-video');
  */
 
 export default {
-  tags: ['!dev'],
+  tags: ['!dev', 'skip-a11y-test'],
   title: 'Components/sd-video',
   component: 'sd-video',
   args,

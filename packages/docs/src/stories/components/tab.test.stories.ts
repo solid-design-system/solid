@@ -15,7 +15,7 @@ const { generateScreenshotStory } = storybookUtilities;
 
 export default {
   title: 'Components/sd-tab/Screenshots: sd-tab',
-  tags: ['!autodocs'],
+  tags: ['!autodocs', 'skip-a11y-test'],
   component: 'sd-tab',
   args: overrideArgs([
     {

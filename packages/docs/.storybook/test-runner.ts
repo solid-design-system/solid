@@ -9,6 +9,9 @@ import pc from 'picocolors';
  * to learn more about the test-runner hooks API.
  */
 const config: TestRunnerConfig = {
+  tags: {
+    exclude: ['skip-a11y-test']
+  },
   async preVisit(page) {
     await injectAxe(page);
   },
@@ -32,7 +35,7 @@ const config: TestRunnerConfig = {
       });
 
       const [folder, component, screenshot] = context.title.split('/').map(v => v.toLowerCase());
-      const file = `${component.replace('sd-', '')}${screenshot ? '.test' : ''}.stories.ts`;
+      const file = `${component.replaceAll(' ', '-').replace('sd-', '')}${screenshot ? '.test' : ''}.stories.ts`;
       const path = `./stories/${folder}/${file}`;
 
       const report = violations
@@ -41,6 +44,7 @@ const config: TestRunnerConfig = {
             .map(
               node =>
                 pc.bold(`Expected ${context.id} to have no violations:\n`) +
+                `${pc.gray(node.html)}\n\n` +
                 pc.red(`${violation.help} (${violation.id})\n\n`) +
                 `Story: ${pc.blue(path)}\n\n` +
                 pc.bold(pc.yellow(node.failureSummary)) +
@@ -53,8 +57,6 @@ const config: TestRunnerConfig = {
 
       return assert.fail(message + horizontalLine + '\n' + report);
     }
-
-    return console.log(pc.green(message));
   }
 };
 

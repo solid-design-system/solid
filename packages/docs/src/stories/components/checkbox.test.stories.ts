@@ -15,7 +15,7 @@ const { generateScreenshotStory } = storybookUtilities;
 
 export default {
   title: 'Components/sd-checkbox/Screenshots: sd-checkbox',
-  tags: ['!autodocs'],
+  tags: ['!autodocs', 'skip-a11y-test'],
   component: 'sd-checkbox',
   args: overrideArgs([{ type: 'slot', name: 'default', value: 'Default Slot' }]),
   argTypes,

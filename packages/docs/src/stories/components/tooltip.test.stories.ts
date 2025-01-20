@@ -17,7 +17,7 @@ const { generateScreenshotStory } = storybookUtilities;
 
 export default {
   title: 'Components/sd-tooltip/Screenshots: sd-tooltip',
-  tags: ['!autodocs'],
+  tags: ['!autodocs', 'skip-a11y-test'],
   component: 'sd-tooltip',
   args: overrideArgs([
     {

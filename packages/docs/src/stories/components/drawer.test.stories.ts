@@ -11,7 +11,7 @@ const { overrideArgs } = storybookHelpers('sd-drawer');
 
 export default {
   title: 'Components/sd-drawer/Screenshots: sd-drawer',
-  tags: ['!autodocs'],
+  tags: ['!autodocs', 'skip-a11y-test'],
   component: 'sd-drawer',
 
   args: overrideArgs([

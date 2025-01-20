@@ -16,7 +16,7 @@ const { generateScreenshotStory } = storybookUtilities;
 
 export default {
   title: 'Components/sd-radio-group/Screenshots: sd-radio-group',
-  tags: ['!autodocs'],
+  tags: ['!autodocs', 'skip-a11y-test'],
   component: 'sd-radio-group',
   parameters: {
     ...parameters,

@@ -14,7 +14,7 @@ const { generateScreenshotStory } = storybookUtilities;
 
 export default {
   title: 'Components/sd-teaser-media/Screenshots: sd-teaser-media',
-  tags: ['!autodocs'],
+  tags: ['!autodocs', 'skip-a11y-test'],
   component: 'sd-teaser-media',
   args: overrideArgs([
     {

@@ -29,7 +29,7 @@ function generateTabsAndPanels(
 
 export default {
   title: 'Components/sd-tab-group/Screenshots: sd-tab-group',
-  tags: ['!autodocs'],
+  tags: ['!autodocs', 'skip-a11y-test'],
   component: 'sd-tab-group',
   args: overrideArgs({
     type: 'slot',

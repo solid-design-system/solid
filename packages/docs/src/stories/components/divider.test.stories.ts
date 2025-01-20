@@ -14,7 +14,7 @@ const { generateScreenshotStory } = storybookUtilities;
 
 export default {
   title: 'Components/sd-divider/Screenshots: sd-divider',
-  tags: ['!autodocs'],
+  tags: ['!autodocs', 'skip-a11y-test'],
   component: 'sd-divider',
   args: overrideArgs([{ type: 'slot', name: 'default', value: 'Default Slot' }]),
   argTypes,

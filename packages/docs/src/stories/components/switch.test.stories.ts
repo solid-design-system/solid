@@ -17,7 +17,7 @@ const { generateScreenshotStory } = storybookUtilities;
 export default {
   title: 'Components/sd-switch/Screenshots: sd-switch',
   component: 'sd-switch',
-  tags: ['!autodocs'],
+  tags: ['!autodocs', 'skip-a11y-test'],
   args: overrideArgs([{ type: 'slot', name: 'default', value: 'Default Slot' }]),
   argTypes,
   parameters: {

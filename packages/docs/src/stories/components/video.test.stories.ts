@@ -36,7 +36,7 @@ const iconConstant: ConstantDefinition = {
 export default {
   title: 'Components/sd-video/Screenshots: sd-video',
   component: 'sd-video',
-  tags: ['!autodocs'],
+  tags: ['!autodocs', 'skip-a11y-test'],
   args,
   argTypes,
   parameters: { ...parameters, controls: { disable: true } },

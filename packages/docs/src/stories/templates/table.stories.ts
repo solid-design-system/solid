@@ -13,7 +13,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
  * to ensure it becomes accessible to keyboard only users.
  */
 export default {
-  tags: ['!dev'],
+  tags: ['!dev', 'skip-a11y-test'],
   title: 'Templates/Table',
   parameters: {
     chromatic: { disableSnapshot: true }

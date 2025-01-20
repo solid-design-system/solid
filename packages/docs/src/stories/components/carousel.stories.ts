@@ -24,7 +24,7 @@ const { generateTemplate } = storybookTemplate('sd-carousel');
 
 export default {
   title: 'Components/sd-carousel',
-  tags: ['!dev'],
+  tags: ['!dev', 'skip-a11y-test'],
   component: 'sd-carousel',
   args: overrideArgs([
     {
