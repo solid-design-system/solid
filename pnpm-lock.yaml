@@ -285,6 +285,9 @@ importers:
       autoprefixer:
         specifier: ^10.4.20
         version: 10.4.20(postcss@8.4.49)
+      axe-html-reporter:
+        specifier: ^2.2.11
+        version: 2.2.11(axe-core@4.10.2)
       axe-playwright:
         specifier: ^2.0.3
         version: 2.0.3(playwright@1.49.0)
@@ -318,6 +321,9 @@ importers:
       normalize.css:
         specifier: ^8.0.1
         version: 8.0.1
+      picocolors:
+        specifier: ^1.1.1
+        version: 1.1.1
       postcss:
         specifier: ^8.4.49
         version: 8.4.49
