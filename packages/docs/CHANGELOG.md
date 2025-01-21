@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.3.4
+
+### Patch Changes
+
+- Align storybook font family with brand. _[`#1796`](https://github.com/solid-design-system/solid/pull/1796) [`53bc72f`](https://github.com/solid-design-system/solid/commit/53bc72f3f1b6126f658e63335805f9aefa84b033) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.3.3
 
 ### Patch Changes
