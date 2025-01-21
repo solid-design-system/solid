@@ -43,6 +43,9 @@ export const Default = {
       sd-drawer::part(overlay) {
         background-color: #051530;
       }
+      sd-drawer::part(body) {
+        padding: 4px 0;
+      }
     </style>
     <sd-button onclick="openDrawer()">Open Drawer</sd-button>
     <sd-drawer open placement="end">
@@ -51,7 +54,7 @@ export const Default = {
       </sd-button>
       <div class="level-one h-full flex flex-col justify-between">
         <nav aria-label="nav-level-one">
-          <sd-navigation-item vertical><b>Home page</b></sd-navigation-item>
+          <sd-navigation-item vertical><b>Home</b></sd-navigation-item>
           <sd-navigation-item vertical chevron divider onclick="handleSecondLevel()">
             <b>About Us</b>
           </sd-navigation-item>

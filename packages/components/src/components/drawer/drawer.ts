@@ -173,7 +173,6 @@ export default class SdDrawer extends SolidElement {
       await Promise.all([stopAnimations(this.drawer), stopAnimations(this.overlay)]);
       this.drawer.hidden = false;
       this.drawer.removeAttribute('inert');
-      this.panel.focus();
 
       // Set initial focus
       requestAnimationFrame(() => {
@@ -191,6 +190,8 @@ export default class SdDrawer extends SolidElement {
         // Restore the autofocus attribute
         if (autoFocusTarget) {
           autoFocusTarget.setAttribute('autofocus', '');
+        } else {
+          this.closeButton.focus();
         }
       });
 

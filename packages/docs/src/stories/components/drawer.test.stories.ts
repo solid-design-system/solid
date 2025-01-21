@@ -349,7 +349,9 @@ export const Mouseless = {
           {
             type: 'slot',
             name: 'default',
-            value: `<input autofocus placeholder="Placeholder" class="mt-3 block w-full rounded-md border-0 py-1.5 px-3 text-neutral-900 shadow-sm ring-1 ring-inset ring-neutral-300 placeholder:text-gray-400 focus-visible:focus-outline sm:text-sm sm:leading-6"> </div>`
+            value: `<sd-input
+                        label="Mouseless input example"
+                        > </sd-input>`
           },
           {
             type: 'slot',
