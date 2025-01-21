@@ -1,0 +1,37 @@
+name: A11y tests
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+jobs:
+    test-ci-a11y:
+        name: A11y ci tests
+        runs-on: ubuntu-latest
+        if: github.event.pull_request.draft == true
+        container:
+            image: mcr.microsoft.com/playwright:v1.49.1-noble
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Install Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20
+
+            - uses: pnpm/action-setup@v2
+              name: Install pnpm
+              id: pnpm-install
+              with:
+                  version: 9.15.0
+                  run_install: false
+
+            - name: Install dependencies
+              run: pnpm i
+            
+            - name: Build
+              run: pnpm packages/docs && pnpm build
+
+            - name: Verify everything
+              run: pnpm test
