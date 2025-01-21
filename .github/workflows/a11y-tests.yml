@@ -31,7 +31,7 @@ jobs:
               run: pnpm i
             
             - name: Build
-              run: pnpm packages/docs && pnpm build
+              run: cd packages/docs && pnpm build
 
             - name: Verify everything
               run: pnpm test
