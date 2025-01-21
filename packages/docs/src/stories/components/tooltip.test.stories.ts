@@ -249,7 +249,7 @@ export const Slots = {
 
 export const Mouseless = {
   name: 'Mouseless',
-  render: (args: any) => {
+  render: () => {
     return html`<div class="mouseless template-position template-height">
       <sd-tooltip content="Lorem ipsum"></sd-tooltip>
     </div>`;
