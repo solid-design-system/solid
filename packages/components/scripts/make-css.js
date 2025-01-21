@@ -13,6 +13,7 @@ import tailwindcss from 'tailwindcss';
 import tailwindcssNesting from 'tailwindcss/nesting/index.js';
 
 (async () => {
+  const lite = process.argv.includes('--lite');
   const css = await fs.readFile('./src/solid-components.css', 'utf8');
 
   const result = await postcss([
@@ -25,6 +26,8 @@ import tailwindcssNesting from 'tailwindcss/nesting/index.js';
     .then(result => result.css);
 
   await fs.writeFile('./dist/solid-components.css', result);
+
+  if (lite) return;
 
   const minifiedResult = await postcss([
     atImportPlugin({ allowDuplicates: false }),

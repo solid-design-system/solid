@@ -14,8 +14,7 @@ const variants = {
   default: html`<sd-video>${defaultSlot}</sd-video>`,
   playIcon: html`<sd-video>${defaultSlot}${playIconSlot}</sd-video>`,
   poster: html`<sd-video>${defaultSlot}${posterSlot}</sd-video>`,
-  overlay: html`<sd-video overlay>${defaultSlot}</sd-video>`,
-  all: html`<sd-video overlay>${defaultSlot}${playIconSlot}${posterSlot}</sd-video>`
+  all: html`<sd-video>${defaultSlot}${playIconSlot}${posterSlot}</sd-video>`
 };
 
 describe('<sd-video>', () => {
@@ -41,7 +40,6 @@ describe('<sd-video>', () => {
     const el: SdVideo = await fixture(variants.default);
 
     expect(el.playing).to.be.false;
-    expect(el.overlay).to.be.false;
   });
 
   it('renders slot elements correctly', async () => {
@@ -75,16 +73,6 @@ describe('<sd-video>', () => {
       el.shadowRoot?.querySelector('button')?.click();
       expect(el.playing).to.be.true;
     });
-
-    it('updates overlay class', async () => {
-      const el: SdVideo = await fixture(variants.overlay);
-      await el.updateComplete;
-      expect(el.shadowRoot!.querySelector('#overlay.opacity-100')).to.exist;
-
-      el.shadowRoot?.querySelector('button')?.click();
-      await el.updateComplete;
-      expect(el.shadowRoot!.querySelector('#overlay.opacity-0')).to.exist;
-    });
   });
 
   describe('when interacted with via Keyboard', () => {
@@ -101,16 +89,6 @@ describe('<sd-video>', () => {
         const el: SdVideo = await fixture(variants.default);
         el.shadowRoot?.querySelector('button')?.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
         expect(el.playing).to.be.true;
-      });
-
-      it('updates overlay class', async () => {
-        const el: SdVideo = await fixture(variants.overlay);
-        await el.updateComplete;
-        expect(el.shadowRoot!.querySelector('#overlay.opacity-100')).to.exist;
-
-        el.shadowRoot?.querySelector('button')?.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
-        await el.updateComplete;
-        expect(el.shadowRoot!.querySelector('#overlay.opacity-0')).to.exist;
       });
     });
 
@@ -158,19 +136,5 @@ describe('<sd-video>', () => {
 
     // Assert that the poster element is hidden
     expect(getComputedStyle(imgElement).display).to.equal('none');
-  });
-
-  it('updates CSS classes based on overlay and playing properties', async () => {
-    const el: SdVideo = await fixture(variants.default);
-
-    const overlayDiv = el.shadowRoot!.querySelector('#overlay');
-
-    el.overlay = true;
-    await el.updateComplete;
-    expect(overlayDiv!.classList.contains('opacity-100')).to.be.true;
-
-    el.playing = true;
-    await el.updateComplete;
-    expect(overlayDiv!.classList.contains('opacity-0')).to.be.true;
   });
 });

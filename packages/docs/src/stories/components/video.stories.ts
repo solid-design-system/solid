@@ -86,19 +86,3 @@ export const Playing = {
     </sd-video>
   `
 };
-
-/**
- * Use the `overlay` attribute to show a dark overlay. Only used when `playing` is `false`.
- */
-
-export const Overlay = {
-  render: () => html`
-    <sd-video overlay>
-      <img
-        alt="Video highlighting Union Investment's digital transformation through a design system named Solid that enhances accessibility, sustainability, and efficiency."
-        class="w-[854px] aspect-video cover"
-        src="./placeholders/images/union-investment.png"
-      />
-    </sd-video>
-  `
-};

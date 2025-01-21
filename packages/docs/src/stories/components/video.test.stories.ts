@@ -16,11 +16,6 @@ const videoConstant: ConstantDefinition = {
   value:
     '<video controls id="video-example" class="w-[854px] aspect-video"><source src="./placeholders/videos/sds-placeholder-video/sds-placeholder-video.webm" type="video/webm" />Your browser does not support the video tag.</video>'
 };
-const imageConstant: ConstantDefinition = {
-  type: 'slot',
-  name: 'default',
-  value: '<img class="w-[400px] aspect-video object-cover" src="./placeholders/images/union-investment.png" />'
-};
 const posterConstant: ConstantDefinition = {
   type: 'slot',
   name: 'poster',
@@ -58,26 +53,6 @@ export const Default = {
       },
       args
     });
-  }
-};
-
-/**
- * `sd-video` with all possible property configurations.
- */
-
-export const PlayingOverlay = {
-  name: 'Playing × Overlay',
-  render: (args: any) => {
-    return html`
-      ${generateTemplate({
-        axis: {
-          x: { type: 'attribute', name: 'playing' },
-          y: { type: 'attribute', name: 'overlay' }
-        },
-        constants: imageConstant,
-        args
-      })}
-    `;
   }
 };
 
@@ -225,4 +200,4 @@ export const Mouseless = {
   }
 };
 
-export const Combination = generateScreenshotStory([Default, PlayingOverlay, VideoElement, Mouseless]);
+export const Combination = generateScreenshotStory([Default, VideoElement, Mouseless]);

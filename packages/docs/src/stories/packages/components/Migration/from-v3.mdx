@@ -79,7 +79,7 @@ The v4 release introduces major changes to improve performance, flexibility and 
         **Before:**
 
         ```html
-        <link rel="stylesheet" href="https://solid-design-system.fe.union-investment.de/%COMPONENTS-VERSION%/styles/solid-styles.css" />
+        <link rel="stylesheet" href="https://solid-design-system.fe.union-investment.de/3.24.0/styles/solid-styles.css" />
         <!-- <sd-alert> is usable, .sd-mark is available -->
         ```
 
@@ -98,17 +98,17 @@ The v4 release introduces major changes to improve performance, flexibility and 
         **Before:**
 
         ```html
-        <link rel="stylesheet" href="https://solid-design-system.fe.union-investment.de/%COMPONENTS-VERSION%/versioned-styles/solid-styles.css" />
-        <!-- <sd-%DASHED-COMPONENTS-VERSION%-alert> is usable, .sd-%DASHED-STYLES-VERSION%-mark is available -->
+        <link rel="stylesheet" href="https://solid-design-system.fe.union-investment.de/3.24.0/versioned-styles/solid-styles.css" />
+        <!-- <sd-3-24-0-alert> is usable, .sd-3-24-0-mark is available -->
         ```
 
         **After:**
 
         ```html
-        <link rel="stylesheet" href="https://solid-design-system.fe.union-investment.de/components/%COMPONENTS-VERSION%/versioned-cdn/solid-components.css" />
+        <link rel="stylesheet" href="https://solid-design-system.fe.union-investment.de/components/%COMPONENTS-VERSION%/cdn-versioned/solid-components.css" />
         <!-- <sd-%DASHED-COMPONENTS-VERSION%-alert> is usable -->
 
-        <link rel="stylesheet" href="https://solid-design-system.fe.union-investment.de/styles/%STYLES-VERSION%/versioned-cdn/solid-styles.css" />
+        <link rel="stylesheet" href="https://solid-design-system.fe.union-investment.de/styles/%STYLES-VERSION%/cdn-versioned/solid-styles.css" />
         <!-- .sd-%DASHED-STYLES-VERSION%-mark is available -->
         ```
 
@@ -145,7 +145,7 @@ The v4 release introduces major changes to improve performance, flexibility and 
         **After:**
 
         ```javascript
-        import '@solid-design-system/components/dist/components/solid-components.js';
+        import '@solid-design-system/components/dist/solid-components.js';
         ```
 
       </sd-tab-panel>
@@ -159,7 +159,7 @@ The v4 release introduces major changes to improve performance, flexibility and 
         **After:**
 
         ```javascript
-        import '@solid-design-system/components/dist-versioned/components/solid-components.js';
+        import '@solid-design-system/components/dist-versioned/solid-components.js';
         ```
 
       </sd-tab-panel>
@@ -176,7 +176,7 @@ The v4 release introduces major changes to improve performance, flexibility and 
         **Before:**
 
         ```javascript
-        <script type="module" src="https://solid-design-system.fe.union-investment.de/%COMPONENTS-VERSION%/components/es/solid-components.js"></script>
+        <script type="module" src="https://solid-design-system.fe.union-investment.de/3.24.0/components/es/solid-components.js"></script>
         ```
 
         **After:**
@@ -190,13 +190,13 @@ The v4 release introduces major changes to improve performance, flexibility and 
         **Before:**
 
         ```javascript
-        <script type="module" src="https://solid-design-system.fe.union-investment.de/%COMPONENTS-VERSION%/versioned-components/es/solid-components.js"></script>
+        <script type="module" src="https://solid-design-system.fe.union-investment.de/3.24.0/versioned-components/es/solid-components.js"></script>
         ```
 
         **After:**
 
         ```javascript
-        <script type="module" src="https://solid-design-system.fe.union-investment.de/components/%COMPONENTS-VERSION%/versioned-cdn/solid-components.js"></script>
+        <script type="module" src="https://solid-design-system.fe.union-investment.de/components/%COMPONENTS-VERSION%/cdn-versioned/solid-components.js"></script>
         ```
 
       </sd-tab-panel>
@@ -212,7 +212,7 @@ The v4 release introduces major changes to improve performance, flexibility and 
 **Before:**
 
 ```html
-<script src="https://solid-design-system.fe.union-investment.de/%COMPONENTS-VERSION%/components/umd/solid-components.js"></script>
+<script src="https://solid-design-system.fe.union-investment.de/3.24.0/components/umd/solid-components.js"></script>
 
 <script>
   // Space in the global variable name
@@ -251,13 +251,13 @@ The v4 release introduces major changes to improve performance, flexibility and 
 <!-- Minor Wildcard -->
 <link
   rel="stylesheet"
-  href="https://solid-design-system.fe.union-investment.de/3.x.x/components/styles/solid-styles.css"
+  href="https://solid-design-system.fe.union-investment.de/3.x.x/components/es/solid-components.js"
 />
 
 <!-- Patch Wildcard -->
 <link
   rel="stylesheet"
-  href="https://solid-design-system.fe.union-investment.de/3.0.x/components/styles/solid-styles.css"
+  href="https://solid-design-system.fe.union-investment.de/3.0.x/components/es/solid-components.js"
 />
 ```
 
@@ -267,7 +267,7 @@ The v4 release introduces major changes to improve performance, flexibility and 
 <!-- Specific version -->
 <script
   type="module"
-  src="https://solid-design-system.fe.union-investment.de/%COMPONENTS-VERSION%/components/es/solid-components.js"
+  src="https://solid-design-system.fe.union-investment.de/components/%COMPONENTS-VERSION%/cdn/solid-components.js"
 ></script>
 ```
 
@@ -440,4 +440,48 @@ The `sd-flipcard` component has been updated to improve a11y, flexibility and al
 <sd-flipcard variant="gradient-light" placement="top">
   <!-- content -->
 </sd-flipcard>
+```
+
+### `<sd-badge>`
+
+The `sd-badge` component has been updated to improve a11y.
+
+`variant` attribute options have been renamed to clearly remove any semantic meaning. The variants should only communicate a state visually.
+
+- `variant="default"` -> `variant="blue"`
+- `variant="success"` -> `variant="green"`
+- `variant="error"` -> `variant="red"`
+
+**Before:**
+
+```html
+<sd-badge variant="success">
+  <!-- content -->
+</sd-badge>
+```
+
+**After:**
+
+```html
+<sd-badge variant="green">
+  <!-- content -->
+</sd-badge>
+```
+
+### `<sd-video>`
+
+Attribute `overlay` was removed.
+
+```html
+<sd-video overlay>
+  <!-- content -->
+</sd-video>
+```
+
+**After:**
+
+```html
+<sd-video>
+  <!-- content -->
+</sd-video>
 ```
