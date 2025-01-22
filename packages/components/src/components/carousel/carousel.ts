@@ -107,11 +107,13 @@ export default class SdCarousel extends SolidElement {
   private readonly intersectionObserverEntries = new Map<Element, IntersectionObserverEntry>();
   public localize = new LocalizeController(this);
   private mutationObserver: MutationObserver;
+  private userInteracted = false;
 
   connectedCallback(): void {
     super.connectedCallback();
     this.setAttribute('role', 'region');
     this.setAttribute('aria-label', this.localize.term('carousel'));
+    this.addEventListener('keydown', this.handleUserInteraction);
 
     const intersectionObserver = new IntersectionObserver(
       (entries: IntersectionObserverEntry[]) => {
@@ -142,6 +144,7 @@ export default class SdCarousel extends SolidElement {
     super.disconnectedCallback();
     this.intersectionObserver.disconnect();
     this.mutationObserver.disconnect();
+    this.removeEventListener('keydown', this.handleUserInteraction);
   }
 
   protected firstUpdated(): void {
@@ -169,6 +172,10 @@ export default class SdCarousel extends SolidElement {
       1
     );
   }
+
+  private handleUserInteraction = () => {
+    this.userInteracted = true;
+  };
 
   private getSlides({ excludeClones = true }: { excludeClones?: boolean } = {}) {
     return [...this.slides].filter(slide => !excludeClones || !slide.hasAttribute('data-clone'));
@@ -473,10 +480,16 @@ export default class SdCarousel extends SolidElement {
       behavior: prefersReducedMotion() ? 'auto' : behavior
     });
 
-    if (this.activeSlide === slides.length - 1 && !this.loop) {
-      this.previousButton.focus({ preventScroll: true });
-    } else if (this.activeSlide === 0 && !this.loop) {
-      this.nextButton.focus({ preventScroll: true });
+    if (this.userInteracted && !this.loop) {
+      const isLastSlide =
+        this.activeSlide === slides.length - 1 || this.activeSlide === this.slides.length - this.slidesPerPage;
+      const isFirstSlide = this.activeSlide === 0;
+
+      if (isLastSlide) {
+        this.previousButton.focus({ preventScroll: true });
+      } else if (isFirstSlide) {
+        this.nextButton.focus({ preventScroll: true });
+      }
     }
   }
 
