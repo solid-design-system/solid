@@ -655,4 +655,22 @@ describe('<sd-select>', () => {
     expect(placeholder.getAttribute('placeholder')).to.equal('Bitte auswählen');
     expect(clearButton.getAttribute('aria-label')).to.equal('Eingabe löschen');
   });
+
+  it('should display translated amount of selected tags', async () => {
+    const el = await fixture<SdSelect>(html`
+      <sd-select lang="de" value="option-1 option-2 option-3 option-4" useTags multiple="">
+        <sd-option value="option-1">Option 1</sd-option>
+        <sd-option value="option-2">Option 2</sd-option>
+        <sd-option value="option-3">Option 3</sd-option>
+        <sd-option value="option-4">Option 4</sd-option>
+        <sd-option value="option-5">Option 5</sd-option>
+      </sd-select>
+    `);
+
+    const tags = el.shadowRoot!.querySelector('[part~="tag"]')!;
+
+    await el.updateComplete;
+
+    expect(tags.textContent).to.equal('4 Optionen ausgewählt');
+  });
 });
