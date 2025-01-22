@@ -7,32 +7,38 @@ export default function docsCodepenEnhancer(code: string, storyContext: StoryCon
   const storiesOnDocsPage = document.querySelectorAll(`#anchor--${storyContext.id}`);
 
   const urls = () => {
-    if (window.location.href.startsWith('https://solid-design-system.github.io/solid')) {
-      const url = window.location.href;
-      const urlParts = url.split('/');
+    const baseUrl = 'https://solid-design-system.fe.union-investment.de';
+    const githubBaseUrl = 'https://solid-design-system.github.io/solid';
+    const cdnBaseUrl = 'https://cdn.jsdelivr.net/npm/@solid-design-system';
+
+    if (window.location.href.startsWith(githubBaseUrl)) {
+      const urlParts = window.location.href.split('/');
       const version = urlParts[urlParts.length - 2];
+
       if (version === 'next') {
         return {
-          components: `https://cdn.jsdelivr.net/npm/@solid-design-system/components@%COMPONENTS-VERSION%/cdn`,
-          styles: `https://cdn.jsdelivr.net/npm/@solid-design-system/styles@%STYLES-VERSION%/cdn`
-        };
-      } else if (version === 'main') {
-        return {
-          components: 'https://solid-design-system.fe.union-investment.de/components/%COMPONENTS-VERSION%',
-          styles: 'https://solid-design-system.fe.union-investment.de/styles/%STYLES-VERSION%'
-        };
-      } else {
-        return {
-          components: `https://solid-design-system.github.io/solid/${version}/components/cdn`,
-          styles: `https://solid-design-system.github.io/solid/${version}/styles/cdn`
+          components: `${cdnBaseUrl}/components@%COMPONENTS-VERSION%/cdn`,
+          styles: `${cdnBaseUrl}/styles@%STYLES-VERSION%/cdn`
         };
       }
-    } else {
+
+      if (version === 'main') {
+        return {
+          components: `${baseUrl}/components/%COMPONENTS-VERSION%/cdn`,
+          styles: `${baseUrl}/styles/%STYLES-VERSION%/cdn`
+        };
+      }
+
       return {
-        components: 'https://solid-design-system.fe.union-investment.de/components/%COMPONENTS-VERSION%',
-        styles: 'https://solid-design-system.fe.union-investment.de/styles/%STYLES-VERSION%'
+        components: `${githubBaseUrl}/${version}/components/cdn`,
+        styles: `${githubBaseUrl}/${version}/styles/cdn`
       };
     }
+
+    return {
+      components: `${baseUrl}/components/%COMPONENTS-VERSION%/cdn`,
+      styles: `${baseUrl}/styles/%STYLES-VERSION%/cdn`
+    };
   };
 
   // Unfortunately, the editable story in a docs page has the same ID as the first story.
