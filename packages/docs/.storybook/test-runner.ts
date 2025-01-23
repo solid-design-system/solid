@@ -16,7 +16,7 @@ const config: TestRunnerConfig = {
     let violations;
 
     try {
-      const axe = await new AxeBuilder({ page }).include('#storybook-root').analyze();
+      const axe = await new AxeBuilder({ page }).setLegacyMode(true).include('#storybook-root').analyze();
       violations = axe.violations;
     } catch (error) {
       return assert.fail('Im being thrown' + error);
