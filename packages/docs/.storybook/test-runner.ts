@@ -1,5 +1,5 @@
 import type { TestRunnerConfig } from '@storybook/test-runner';
-import { injectAxe, getViolations } from 'axe-playwright';
+import { AxeBuilder } from '@axe-core/playwright';
 import { createHtmlReport } from 'axe-html-reporter';
 import assert from 'assert';
 import pc from 'picocolors';
@@ -12,11 +12,8 @@ const config: TestRunnerConfig = {
   tags: {
     exclude: ['skip-a11y-test']
   },
-  async preVisit(page) {
-    await injectAxe(page);
-  },
   async postVisit(page, context) {
-    const violations = await getViolations(page, '#storybook-root');
+    const { violations } = await new AxeBuilder({ page }).include('#storybook-root').analyze();
 
     const message =
       violations.length === 0

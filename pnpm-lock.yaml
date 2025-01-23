@@ -243,6 +243,9 @@ importers:
         specifier: ^0.1.1
         version: 0.1.1(vite@5.4.14(@types/node@22.10.7))
     devDependencies:
+      '@axe-core/playwright':
+        specifier: ^4.10.1
+        version: 4.10.1(playwright-core@1.49.1)
       '@geometricpanda/storybook-addon-badges':
         specifier: ^2.0.5
         version: 2.0.5(@storybook/blocks@8.5.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(storybook@8.5.0(prettier@3.4.2)))(@storybook/components@8.5.0(storybook@8.5.0(prettier@3.4.2)))(@storybook/core-events@7.6.17)(@storybook/manager-api@8.5.0(storybook@8.5.0(prettier@3.4.2)))(@storybook/preview-api@8.5.0(storybook@8.5.0(prettier@3.4.2)))(@storybook/theming@8.5.0(storybook@8.5.0(prettier@3.4.2)))(@storybook/types@7.6.17)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -294,9 +297,6 @@ importers:
       axe-html-reporter:
         specifier: ^2.2.11
         version: 2.2.11(axe-core@4.10.2)
-      axe-playwright:
-        specifier: ^2.0.3
-        version: 2.0.3(playwright@1.49.1)
       cem-plugin-vs-code-custom-data-generator:
         specifier: ^1.4.2
         version: 1.4.2
@@ -475,6 +475,11 @@ packages:
   '@ampproject/remapping@2.3.0':
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
     engines: {node: '>=6.0.0'}
+
+  '@axe-core/playwright@4.10.1':
+    resolution: {integrity: sha512-EV5t39VV68kuAfMKqb/RL+YjYKhfuGim9rgIaQ6Vntb2HgaCaau0h98Y3WEUqW1+PbdzxDtDNjFAipbtZuBmEA==}
+    peerDependencies:
+      playwright-core: '>= 1.0.0'
 
   '@babel/code-frame@7.26.2':
     resolution: {integrity: sha512-RJlIHRueQgwWitWgF8OdFYGZX328Ax5BCemNGlqHfplnRT9ESi8JkFlvaVYbS+UubVY6dpv87Fs2u5M29iNFVQ==}
@@ -2066,9 +2071,6 @@ packages:
   '@types/json5@0.0.29':
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
 
-  '@types/junit-report-builder@3.0.2':
-    resolution: {integrity: sha512-R5M+SYhMbwBeQcNXYWNCZkl09vkVfAtcPIaCGdzIkkbeaTrVbGQ7HVgi4s+EmM/M1K4ZuWQH0jGcvMvNePfxYA==}
-
   '@types/keygrip@1.0.6':
     resolution: {integrity: sha512-lZuNAY9xeJt7Bx4t4dx0rYCDqGPW8RXhQZK1td7d4H6E9zYbLoOtjBvfwdTKpsyxQI/2jv+armjX/RW+ZNpXOQ==}
 
@@ -2553,11 +2555,6 @@ packages:
     engines: {node: '>=8.9.0'}
     peerDependencies:
       axe-core: '>=3'
-
-  axe-playwright@2.0.3:
-    resolution: {integrity: sha512-s7iI2okyHHsD3XZK4RMJtTy2UASkNWLQtnzLuaHiK3AWkERf+cqZJqkxb7O4b56fnbib9YnZVRByTl92ME3o6g==}
-    peerDependencies:
-      playwright: '>1.0.0'
 
   axios@1.7.9:
     resolution: {integrity: sha512-LhLcE7Hbiryz8oMDdDptSrWowmB4Bl6RCt6sIJKpRB4XtVf0iEgewX3au/pJqm+Py1kCASkb/FFKjxQaLtxJvw==}
@@ -4860,10 +4857,6 @@ packages:
 
   jsonfile@6.1.0:
     resolution: {integrity: sha512-5dgndWOriYSm5cnYaJNhalLNDKOqFwyDB/rr1E9ZsGciGvKPs8R2xYGCacuf3z6K1YKDz182fd+fY3cn3pMqXQ==}
-
-  junit-report-builder@5.1.1:
-    resolution: {integrity: sha512-ZNOIIGMzqCGcHQEA2Q4rIQQ3Df6gSIfne+X9Rly9Bc2y55KxAZu8iGv+n2pP0bLf0XAOctJZgeloC54hWzCahQ==}
-    engines: {node: '>=16'}
 
   junk@1.0.3:
     resolution: {integrity: sha512-3KF80UaaSSxo8jVnRYtMKNGFOoVPBdkkVPsw+Ad0y4oxKXPduS6G6iHkrf69yJVff/VAaYXkV42rtZ7daJxU3w==}
@@ -7470,10 +7463,6 @@ packages:
   xml@1.0.1:
     resolution: {integrity: sha512-huCv9IH9Tcf95zuYCsQraZtWnJvBtLVE0QHMOs8bWyZAFZNDcYjsPq1nEx8jKA9y+Beo9v+7OBPRisQTjinQMw==}
 
-  xmlbuilder@15.1.1:
-    resolution: {integrity: sha512-yMqGBqtXyeN1e3TGYvgNgDVZ3j84W4cwkOXQswghol6APgZWaff9lnbvN7MHYJOiXsvGPXtjTYJEiC9J2wv9Eg==}
-    engines: {node: '>=8.0'}
-
   xtend@4.0.2:
     resolution: {integrity: sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==}
     engines: {node: '>=0.4'}
@@ -7557,6 +7546,11 @@ snapshots:
     dependencies:
       '@jridgewell/gen-mapping': 0.3.8
       '@jridgewell/trace-mapping': 0.3.25
+
+  '@axe-core/playwright@4.10.1(playwright-core@1.49.1)':
+    dependencies:
+      axe-core: 4.10.2
+      playwright-core: 1.49.1
 
   '@babel/code-frame@7.26.2':
     dependencies:
@@ -9533,8 +9527,6 @@ snapshots:
 
   '@types/json5@0.0.29': {}
 
-  '@types/junit-report-builder@3.0.2': {}
-
   '@types/keygrip@1.0.6': {}
 
   '@types/koa-compose@3.2.8':
@@ -10205,15 +10197,6 @@ snapshots:
     dependencies:
       axe-core: 4.10.2
       mustache: 4.2.0
-
-  axe-playwright@2.0.3(playwright@1.49.1):
-    dependencies:
-      '@types/junit-report-builder': 3.0.2
-      axe-core: 4.10.2
-      axe-html-reporter: 2.2.11(axe-core@4.10.2)
-      junit-report-builder: 5.1.1
-      picocolors: 1.1.1
-      playwright: 1.49.1
 
   axios@1.7.9:
     dependencies:
@@ -13000,12 +12983,6 @@ snapshots:
       universalify: 2.0.1
     optionalDependencies:
       graceful-fs: 4.2.11
-
-  junit-report-builder@5.1.1:
-    dependencies:
-      lodash: 4.17.21
-      make-dir: 3.1.0
-      xmlbuilder: 15.1.1
 
   junk@1.0.3: {}
 
@@ -15927,8 +15904,6 @@ snapshots:
   ws@8.18.0: {}
 
   xml@1.0.1: {}
-
-  xmlbuilder@15.1.1: {}
 
   xtend@4.0.2: {}
 

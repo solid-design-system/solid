@@ -28,7 +28,7 @@
     "storybook": "storybook dev -p 6999",
     "verify": "pnpm ts.verify && pnpm build && echo '✅ Build verified' && pnpm test && echo '✅ Tests verified' && vite-node ./scripts/node-optimize-chromatic.cjs && echo '✅ Chromatic optimization verified'",
     "ts.verify": "tsc --noEmit --project ./tsconfig.json && echo '✅ TypeScript verified'",
-    "test": "concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"pnpm preview\" \"wait-on -v -t 5s tcp:127.0.0.1:6999 && test-storybook --maxWorkers 2 --shard=1/2 --url http://127.0.0.1:6999\"",
+    "test": "concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"pnpm preview\" \"wait-on -v -t 5s tcp:127.0.0.1:6999 && test-storybook --url http://127.0.0.1:6999\"",
     "test.watch": "echo '🛠️ TO BE IMPLEMENTED'",
     "build.chromatic": "pnpm build && node ./scripts/node-optimize-chromatic.cjs",
     "chromatic": "npx chromatic -b build.chromatic",
@@ -45,6 +45,7 @@
     "vite-plugin-replace": "^0.1.1"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.10.1",
     "@geometricpanda/storybook-addon-badges": "^2.0.5",
     "@open-wc/testing-helpers": "^3.0.1",
     "@rollup/pluginutils": "^5.1.4",
@@ -62,7 +63,6 @@
     "@tarekraafat/autocomplete.js": "^10.2.9",
     "autoprefixer": "^10.4.20",
     "axe-html-reporter": "^2.2.11",
-    "axe-playwright": "^2.0.3",
     "cem-plugin-vs-code-custom-data-generator": "^1.4.2",
     "change-case": "^5.4.4",
     "chromatic": "^11.24.0",
