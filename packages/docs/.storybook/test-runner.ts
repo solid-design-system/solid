@@ -13,7 +13,14 @@ const config: TestRunnerConfig = {
     exclude: ['skip-a11y-test']
   },
   async postVisit(page, context) {
-    const { violations } = await new AxeBuilder({ page }).include('#storybook-root').analyze();
+    let violations;
+
+    try {
+      const axe = await new AxeBuilder({ page }).include('#storybook-root').analyze();
+      violations = axe.violations;
+    } catch (error) {
+      return assert.fail('Im being thrown' + error);
+    }
 
     const message =
       violations.length === 0
