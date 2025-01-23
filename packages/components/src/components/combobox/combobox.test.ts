@@ -1329,4 +1329,22 @@ describe('<sd-combobox>', () => {
 
     expect(placeholder.getAttribute('placeholder')).to.equal('Bitte suchen und auswählen');
   });
+
+  it('should display translated amount of selected tags', async () => {
+    const el = await fixture<SdSelect>(html`
+      <sd-combobox lang="de" multiple="" useTags value="option-1 option-2 option-3 option-4">
+        <sd-option value="option-1">Option 1</sd-option>
+        <sd-option value="option-2">Option 2</sd-option>
+        <sd-option value="option-3">Option 3</sd-option>
+        <sd-option value="option-4">Option 4</sd-option>
+        <sd-option value="option-5">Option 5</sd-option>
+      </sd-combobox>
+    `);
+
+    const tags = el.shadowRoot!.querySelector('[part~="tag"]')!;
+
+    await el.updateComplete;
+
+    expect(tags.textContent).to.equal('4 Optionen ausgewählt');
+  });
 });
