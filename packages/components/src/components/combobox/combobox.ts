@@ -157,7 +157,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   @property() placeholder = '';
 
   /** Label text shown on tag if max-options-visible is reached. */
-  @property({ attribute: 'max-options-tag-label' }) maxOptionsTagLabel = this.localize.term('tagsSelected');
+  @property({ attribute: 'max-options-tag-label' }) maxOptionsTagLabel = '';
 
   /** Disables the combobox control. */
   @property({ reflect: true, type: Boolean }) disabled = false;
@@ -347,7 +347,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
             removable
             @keydown=${(event: KeyboardEvent) => this.handleTagMaxOptionsKeyDown(event)}
             @sd-remove=${(event: CustomEvent) => this.handleTagRemove(event)}
-            >${this.selectedOptions.length} ${this.maxOptionsTagLabel}</sd-tag
+            >${this.selectedOptions.length} ${this.localize.term('tagsSelected')}</sd-tag
           >
         `
       ];

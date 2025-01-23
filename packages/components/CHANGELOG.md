@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 4.0.2
+
+### Patch Changes
+
+- Make the attribute `maxOptionsTagLabel` of the `sd-select` and `sd-combobox` components reactive to translations. _[`#1801`](https://github.com/solid-design-system/solid/pull/1801) [`3a9da02`](https://github.com/solid-design-system/solid/commit/3a9da021a7ecf201a7f239ec7797061204ad6d75) [@smfonseca](https://github.com/smfonseca)_
+
 ## 4.0.1
 
 ### Patch Changes
