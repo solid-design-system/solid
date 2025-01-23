@@ -18,7 +18,7 @@ const { generateScreenshotStory } = storybookUtilities;
 
 export default {
   title: 'Styles/sd-container/Screenshots: sd-container',
-  tags: ['!autodocs', 'skip-a11y-test'],
+  tags: ['!autodocs', 'skip-a11y'],
   component: 'sd-container',
   parameters: {
     ...parameters,

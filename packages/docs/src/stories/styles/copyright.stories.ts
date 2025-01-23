@@ -20,7 +20,7 @@ const { generateTemplate } = storybookTemplate('sd-copyright');
  */
 export default {
   title: 'Styles/sd-copyright',
-  tags: ['!dev', 'skip-a11y-test'],
+  tags: ['!dev', 'skip-a11y'],
   component: 'sd-copyright',
   parameters: {
     ...parameters,

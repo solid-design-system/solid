@@ -21,7 +21,7 @@ const { generateTemplate } = storybookTemplate('sd-quickfact');
 export default {
   title: 'Components/sd-quickfact',
   component: 'sd-quickfact',
-  tags: ['!dev', 'skip-a11y-test'],
+  tags: ['!dev', 'skip-a11y'],
   args: overrideArgs([
     {
       type: 'slot',

@@ -14,7 +14,7 @@ const html = String.raw;
 
 export default {
   title: 'Styles/sd-prose/Screenshots: sd-prose',
-  tags: ['!autodocs', 'skip-a11y-test'],
+  tags: ['!autodocs', 'skip-a11y'],
   component: 'sd-prose',
   parameters: {
     ...parameters,

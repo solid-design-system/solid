@@ -19,7 +19,7 @@ const { generateScreenshotStory } = storybookUtilities;
 export default {
   title: 'Components/sd-brandshape/Screenshots: sd-brandshape',
   component: 'sd-brandshape',
-  tags: ['!autodocs', 'skip-a11y-test'],
+  tags: ['!autodocs', 'skip-a11y'],
   parameters: { ...parameters, controls: { disable: true } },
   args: overrideArgs([
     {

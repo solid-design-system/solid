@@ -12,7 +12,7 @@ const { generateScreenshotStory } = storybookUtilities;
 export default {
   title: 'Components/sd-accordion-group/Screenshots: sd-accordion-group',
   component: 'sd-accordion-group',
-  tags: ['!autodocs', 'skip-a11y-test'],
+  tags: ['!autodocs', 'skip-a11y'],
   args: {
     ...args,
     'default-slot':

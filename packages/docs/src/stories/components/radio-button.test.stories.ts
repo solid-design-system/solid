@@ -19,7 +19,7 @@ const { generateScreenshotStory } = storybookUtilities;
 
 export default {
   title: 'Components/sd-radio-button/Screenshots: sd-radio-button',
-  tags: ['!autodocs', 'skip-a11y-test'],
+  tags: ['!autodocs', 'skip-a11y'],
   component: 'sd-radio-button',
   args: overrideArgs([
     {

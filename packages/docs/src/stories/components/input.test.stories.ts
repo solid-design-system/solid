@@ -19,7 +19,7 @@ const { generateScreenshotStory } = storybookUtilities;
 export default {
   title: 'Components/sd-input/Screenshots: sd-input',
   component: 'sd-input',
-  tags: ['!autodocs', 'skip-a11y-test'],
+  tags: ['!autodocs', 'skip-a11y'],
   args,
   argTypes: {
     ...argTypes,

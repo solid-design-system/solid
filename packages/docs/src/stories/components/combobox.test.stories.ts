@@ -73,7 +73,7 @@ const createColorOptionsHtml = () => unsafeHTML(createColorOptions().join('\n'))
 
 export default {
   title: 'Components/sd-combobox/Screenshots: sd-combobox',
-  tags: ['!autodocs', 'skip-a11y-test'],
+  tags: ['!autodocs', 'skip-a11y'],
   component: 'sd-combobox',
   args: overrideArgs([
     threeOptionsConstant,

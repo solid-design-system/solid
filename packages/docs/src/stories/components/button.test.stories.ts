@@ -18,7 +18,7 @@ const { generateScreenshotStory } = storybookUtilities;
 export default {
   title: 'Components/sd-button/Screenshots: sd-button',
   component: 'sd-button',
-  tags: ['!autodocs', 'skip-a11y-test'],
+  tags: ['!autodocs', 'skip-a11y'],
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Default' }),
   argTypes,
   parameters: {

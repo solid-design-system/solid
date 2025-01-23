@@ -26,7 +26,7 @@ const { generateScreenshotStory } = storybookUtilities;
  */
 export default {
   title: 'Components/sd-quickfact/Screenshots: sd-quickfact',
-  tags: ['!autodocs', 'skip-a11y-test'],
+  tags: ['!autodocs', 'skip-a11y'],
   component: 'sd-quickfact',
   args: overrideArgs([
     { type: 'slot', name: 'default', value: '<div class="slot slot--border slot--text h-16">Default slot</div>' },

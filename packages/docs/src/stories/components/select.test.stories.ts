@@ -51,7 +51,7 @@ const labelConstant: ConstantDefinition = { type: 'attribute', name: 'label', va
 // Stories
 export default {
   title: 'Components/sd-select/Screenshots: sd-select',
-  tags: ['!autodocs', 'skip-a11y-test'],
+  tags: ['!autodocs', 'skip-a11y'],
   component: 'sd-select',
   args: overrideArgs([
     threeOptionsConstant,

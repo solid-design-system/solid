@@ -20,7 +20,7 @@ const { overrideArgs } = storybookHelpers('sd-radio-group');
 export default {
   title: 'Components/sd-radio-group',
   component: 'sd-radio-group',
-  tags: ['!dev', 'skip-a11y-test'],
+  tags: ['!dev', 'skip-a11y'],
   parameters: {
     ...parameters,
     design: {

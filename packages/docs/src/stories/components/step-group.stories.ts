@@ -18,7 +18,7 @@ const { generateTemplate } = storybookTemplate('sd-step-group');
  */
 export default {
   title: 'Components/sd-step-group',
-  tags: ['!dev', 'skip-a11y-test'],
+  tags: ['!dev', 'skip-a11y'],
   component: 'sd-step-group',
   args: overrideArgs([
     {

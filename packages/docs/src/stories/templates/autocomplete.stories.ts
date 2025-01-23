@@ -77,7 +77,7 @@ import { setupAutocomplete as solidAutocomplete } from '../../../../components/s
  */
 
 export default {
-  tags: ['!dev', 'skip-a11y-test'],
+  tags: ['!dev', 'skip-a11y'],
   title: 'Templates/Autocomplete',
   parameters: {
     docs: { story: { inline: false, height: '400px' } },

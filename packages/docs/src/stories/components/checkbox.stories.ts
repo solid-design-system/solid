@@ -18,7 +18,7 @@ const { overrideArgs } = storybookHelpers('sd-checkbox');
 export default {
   title: 'Components/sd-checkbox',
   component: 'sd-checkbox',
-  tags: ['!dev', 'skip-a11y-test'],
+  tags: ['!dev', 'skip-a11y'],
   args: overrideArgs([{ type: 'slot', name: 'default', value: 'Checkbox' }]),
   argTypes,
   parameters: {

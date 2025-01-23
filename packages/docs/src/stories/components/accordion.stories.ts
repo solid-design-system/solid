@@ -21,7 +21,7 @@ const { generateTemplate } = storybookTemplate('sd-accordion');
 export default {
   title: 'Components/sd-accordion',
   component: 'sd-accordion',
-  tags: ['!dev', 'skip-a11y-test'],
+  tags: ['!dev', 'skip-a11y'],
   args: overrideArgs([
     { type: 'slot', name: 'default', value: '<div class="slot slot--border slot--text h-16">Default slot</div>' },
     { type: 'attribute', name: 'summary', value: 'Accordion' }
