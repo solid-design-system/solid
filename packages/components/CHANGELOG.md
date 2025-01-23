@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 4.0.3
+
+### Patch Changes
+
+- Fixed issue with cherry picking the `sd-select` and `sd-combobox` components which required an empty chunk file. _[`#1805`](https://github.com/solid-design-system/solid/pull/1805) [`74d07fd`](https://github.com/solid-design-system/solid/commit/74d07fd7f7db082e6059469f415ff0cb61e400ef) [@smfonseca](https://github.com/smfonseca)_
+
 ## 4.0.2
 
 ### Patch Changes
