@@ -284,6 +284,22 @@ describe('<sd-carousel>', () => {
         expect(el.next).to.have.been.calledOnce;
       });
 
+      it('should not have any button focused when first loaded', async () => {
+        const el = await fixture<SdCarousel>(html`
+          <sd-carousel>
+            <sd-carousel-item>Node 1</sd-carousel-item>
+            <sd-carousel-item>Node 2</sd-carousel-item>
+            <sd-carousel-item>Node 3</sd-carousel-item>
+          </sd-carousel>
+        `);
+
+        const nextButton: HTMLElement = el.shadowRoot!.querySelector('#carousel__navigation-button--next')!;
+        const previousButton: HTMLElement = el.shadowRoot!.querySelector('#carousel__navigation-button--previous')!;
+
+        expect(el.shadowRoot!.activeElement).to.not.be.equal(nextButton);
+        expect(el.shadowRoot!.activeElement).to.not.be.equal(previousButton);
+      });
+
       it('should focus the previous button when the active slide is the last and loop attribute is not set', async () => {
         const el = await fixture<SdCarousel>(html`
           <sd-carousel>
