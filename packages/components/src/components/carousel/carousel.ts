@@ -113,7 +113,7 @@ export default class SdCarousel extends SolidElement {
     super.connectedCallback();
     this.setAttribute('role', 'region');
     this.setAttribute('aria-label', this.localize.term('carousel'));
-    this.addEventListener('keydown', this.handleUserInteraction);
+    ['click', 'keydown'].forEach(event => this.addEventListener(event, this.handleUserInteraction));
 
     const intersectionObserver = new IntersectionObserver(
       (entries: IntersectionObserverEntry[]) => {
@@ -144,7 +144,7 @@ export default class SdCarousel extends SolidElement {
     super.disconnectedCallback();
     this.intersectionObserver.disconnect();
     this.mutationObserver.disconnect();
-    this.removeEventListener('keydown', this.handleUserInteraction);
+    ['click', 'keydown'].forEach(event => this.removeEventListener(event, this.handleUserInteraction));
   }
 
   protected firstUpdated(): void {
