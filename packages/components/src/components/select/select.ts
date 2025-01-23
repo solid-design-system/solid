@@ -8,7 +8,7 @@ import { HasSlotController } from '../../internal/slot.js';
 import { LocalizeController } from '../../utilities/localize.js';
 import { property, query, queryAssignedElements, state } from 'lit/decorators.js';
 import { scrollIntoView } from '../../internal/scroll.js';
-import { unsafeHTML } from 'lit/directives/unsafe-html.js';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
 import { waitForEvent } from '../../internal/event.js';
 import { watch } from '../../internal/watch.js';
 import cx from 'classix';
