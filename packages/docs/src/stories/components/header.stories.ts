@@ -10,9 +10,13 @@ const { overrideArgs } = storybookHelpers('sd-header');
 /**
  * Used as a container for the main navigation of a website.<br />Appears at the top of all pages of a website or application containing logo and main navigation and if applicable sub-brand logo and meta navigation.
  *
+ * **Accessibility Information:**
+ * - Refrain from injecting non-navigation or unrelated content (like dynamic elements) into the header container to avoid distracting or confusing assistive technology.
+ * - Provide a unique ID on the header container for skip links, ensuring keyboard users can quickly bypass navigation if desired.
+ * - When placing a logo in the header, describe its target (e.g., “Union Investment Homepage”), not the image (e.g., "Union Investment Logo").
+ *
  *  **Related components**
  * - [sd-navigation-item](?path=/docs/components-sd-navigation-item--docs)
- *
  *
  *  **Related templates**
  * - [Header](?path=/docs/templates-header--docs)

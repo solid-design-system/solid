@@ -9,6 +9,9 @@ const { generateTemplate } = storybookTemplate('sd-footnotes');
 /**
  * Used to add additional information/sources related to the content.
  *
+ * **Accessibility Information:**
+ * - Set links to jump between footnote marker and footnote.
+ *
  * **Related templates**:
  * - [Footnotes](?path=/docs/templates-footnotes--docs)
  */

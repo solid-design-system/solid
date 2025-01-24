@@ -9,9 +9,12 @@ const { overrideArgs } = storybookHelpers('sd-input');
 /**
  * Used to allow users to enter text. It can be displayed in several ways, depending on the type.
  *
- * **Accessibility Information**:
+ * **Accessibility Information:**
  * - The placeholder is an addition, not a replacement for the label. Always provide a visible label.
  * - Do not rely on placeholders alone, except in rare cases like a search widget.
+ * - Ensure that focus moves logically between input fields and other form elements. When an input field is focused, it should be clearly indicated.
+ * - If an input field contains an error, ensure that it is announced by screen readers. Use aria-invalid="true" and aria-describedby to link the input field to the error message.
+ * - Ensure input fields are usable on all screen sizes. On smaller screens, consider using larger touch targets for input fields.
  *
  * **Related templates**:
  * - [Input](?path=/docs/templates-input--docs)

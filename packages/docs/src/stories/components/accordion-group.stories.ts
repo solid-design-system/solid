@@ -10,8 +10,11 @@ const { generateTemplate } = storybookTemplate('sd-accordion-group');
  *
  * Used to group multiple accordions together.
  *
- * **Accessibility Information**:
- * - Hiding content can become a potential barrier, making content more challenging to discover. Use this pattern only for non-critical information.
+ * **Accessibility Information:**
+ * - Use only for non-critical information. Hiding content can become a potential barrier, making it more challenging for users to access information.
+ * - Ensure that users can navigate through the accordion headers using the keyboard (e.g., Tab and Enter keys).
+ * - Use appropriate ARIA roles, such as ”aria-expanded” to indicate the state of the accordion sections or ”aria-live” regions to announce dynamic changes in the accordion content to screen reader users.
+ * - Use “close-others” attribute to keep only one item from the group open at a time, reducing the amount of information displayed at once and therefore reducing the cognitive load on the user.
  *
  * **Related components**:
  * - [sd-accordion](?path=/docs/components-sd-accordion--docs)

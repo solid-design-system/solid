@@ -9,7 +9,7 @@ const { overrideArgs } = storybookHelpers('sd-radio');
 /**
  * Used to allow the user to select a single option from a group.
  *
- * **Accessibility Information**:
+ * **Accessibility Information:**
  * - Avoid nesting interactive elements, like links, inside labels.
  *
  *  **Related components**:

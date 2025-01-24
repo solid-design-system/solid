@@ -9,8 +9,12 @@ const { generateTemplate } = storybookTemplate('sd-link');
 const { overrideArgs } = storybookHelpers('sd-link');
 
 /**
- *
  * Used to allow users to navigate to another location or perform actions like e.g. downloading files.
+ *
+ * **Accessibility Information:**
+ * - Use descriptive link text that clearly conveys its purpose to screen reader users out of context.
+ * - Use ARIA labels if the link text alone is not descriptive enough to convey its purpose.
+ * - Avoid having multiple links that point to the same URL within the same context, as this can be confusing for users.
  *
  * **Related templates**:
  * - [Link](?path=/docs/templates-link--docs)

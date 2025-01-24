@@ -22,7 +22,7 @@ const defaultSlotContent = `
 /**
  * Used as a container to create scrollable sections within the user interface.
  *
- * **Accessibility Information**:
+ * **Accessibility Information:**
  * - We are facing an issue where screen readers currently announce only "scroll to top" or "scroll to end" when arrows are clicked, instead of "scrolling up" or "scrolling down."
  */
 

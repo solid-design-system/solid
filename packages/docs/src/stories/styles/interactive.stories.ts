@@ -64,7 +64,7 @@ export const Disabled = {
 };
 
 /**
- * Use the `sd-interactive--reset` class to reset the default browser styles of e. g. a button.
+ * Use the `sd-interactive--reset` class to reset the default browser styles of e.g. a button.
  */
 
 export const Reset = {

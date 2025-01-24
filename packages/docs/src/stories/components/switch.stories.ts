@@ -9,7 +9,7 @@ const { generateTemplate } = storybookTemplate('sd-switch');
 /**
  * Used to give control over a feature or option that can be turned on or off.
  *
- * **Accessibility Information**:
+ * **Accessibility Information:**
  * - Consider avoiding switches where possible, as some users may find them difficult to understand.
  */
 

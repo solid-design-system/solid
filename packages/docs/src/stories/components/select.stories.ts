@@ -19,6 +19,10 @@ const labelConstant: ConstantDefinition = { type: 'attribute', name: 'label', va
 /**
  * Used to choose items from a menu of predefined options.
  *
+ * **Accessibility Information:**
+ * - To ensure screenreader compatibility, consider including a statement such as "Fields marked with an asterisk (*) are required" at the start of the form.
+ * - Be aware that group labels in select components will be neglected by most assistive devices.
+ *
  * **Related components:**
  * - [sd-option](?path=/docs/components-sd-option--docs)
  * - [sd-optgroup](?path=/docs/components-sd-optgroup--docs)

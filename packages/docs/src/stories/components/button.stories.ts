@@ -12,6 +12,13 @@ const { generateTemplate } = storybookTemplate('sd-button'); // Replace with you
  *
  * Buttons perform various functions (e.g. download, link) or activate other functions (e.g. filter). All buttons can be displayed with or without an icon. On small devices, the buttons are streched to full width.
  *
+ * **Accessibility Information:**
+ * - Ensure the button title is contextual. Screen readers will read it aloud, helping users understand the action associated with the button.
+ * - Keep button text short. Longer copy is harder to scan and increases cognitive load. Remember that translations may double the length of the text.
+ * - Provide always an ARIA label for icon-only buttons.
+ * - Avoid disabled buttons. If needed, ensure that they remain in the regular tab order but cannot be activated, allowing screen readers to announce their state and purpose. Use the native disabled attribute or appropriate ARIA attributes (e.g., aria-disabled="true").
+ * - Be aware that button’s height may change based on the user’s preferred font size set system-wide.
+ *
  * **Related templates**:
  * - [Button](?path=/docs/templates-button--docs)
  * - [Button with Badge](?path=/docs/templates-badge--docs#button-with-badge)

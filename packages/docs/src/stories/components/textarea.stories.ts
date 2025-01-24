@@ -13,6 +13,7 @@ const { overrideArgs } = storybookHelpers('sd-textarea');
  * **Accessibility Information:**
  * - Note that maxlength does not indicate the maximum number of characters to screen readers. Without help text, this may cause confusion.
  * - The placeholder is not a replacement for the label, but rather an additional element.
+ * - To ensure screenreader compatibility, consider including a statement such as "Fields marked with an asterisk (*) are required" at the start of the form.
  *
  * **Related templates:**
  * - [Textarea with Tooltip](?path=/docs/templates-tooltip--docs)

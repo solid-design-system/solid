@@ -10,6 +10,9 @@ const { generateTemplate } = storybookTemplate('sd-step-group');
 /**
  * Used as navigation bar that guides users through the steps of a process or task.
  *
+ * **Accessibility Information:**
+ * - Be aware that choosing a horizontal step group layout may cause layout issues, such as overflow, on small viewports or when the page is zoomed in; consider this when deciding between horizontal and vertical layouts.
+ *
  * **Related components:**
  * - [sd-step](?path=/docs/components-sd-step--docs)
  *
@@ -107,8 +110,6 @@ export const Size = {
  *
  * - `horizontal`(default)
  * - `vertical`
- *
- * **Accessibility hint:** Be aware that choosing a horizontal step group layout may cause layout issues, such as overflow, on small viewports or when the page is zoomed in; consider this when deciding between horizontal and vertical layouts.
  */
 export const Orientation = {
   name: 'Orientation',

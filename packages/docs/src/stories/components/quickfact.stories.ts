@@ -10,12 +10,11 @@ const { generateTemplate } = storybookTemplate('sd-quickfact');
 /**
  * Used to present information in an expandable and more dynamic way.
  *
- * **Accessibility Information**:
+ * **Accessibility Information:**
  * - Keep summaries in expandable quickfacts short, as they serve as the button label.
  *
  * **Related templates:**
  * - [Quickfact](?path=/docs/templates-quickfact--docs)
- *
  *
  * **Disclaimer:** Due to a bug with Storybook Controls, the `expandable` attribute controls might not behave as expected. Please refresh the page if you wish to reset the controls.
  *

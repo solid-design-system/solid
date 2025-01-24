@@ -12,7 +12,7 @@ const { generateTemplate } = storybookTemplate('sd-icon');
  *
  * Icons can be used to indicate an action or to represent content.
  *
- * **Accessibility Information**:
+ * **Accessibility Information:**
  * - Always label icons if they are inside a link or button and no text is provided.
  *
  * **Related templates**:

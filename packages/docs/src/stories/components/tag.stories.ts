@@ -9,6 +9,9 @@ const { overrideArgs } = storybookHelpers('sd-tag');
 /**
  * Used to categorize or label content. Can also be used to filter or search for content.
  *
+ * **Accessibility Information:**
+ * - Use the attribute `toggleable` to reflect the `selected` state on the `aria-pressed` attribute.
+ *
  * **Related templates**:
  * - [Tag](?path=/docs/templates-tag--docs)
  */
@@ -51,8 +54,6 @@ export const Size = {
 
 /**
  * Use the `selected` attribute to enable the selected state.
- *
- * __Accessibility hint__: Use the attribute `toggleable` to reflect the `selected` state on the `aria-pressed` attribute.
  */
 
 export const Selected = {

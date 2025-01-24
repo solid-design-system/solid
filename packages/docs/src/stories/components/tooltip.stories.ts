@@ -13,6 +13,10 @@ const { generateTemplate } = storybookTemplate('sd-tooltip');
  * **Accessibility Information:**
  * - Don’t use tooltips for critical or unique information.
  * - Avoid long text in tooltips.
+ * - Tooltips must not contain interactive elements.
+ * - Desktop: Tooltips open by default on hover over the trigger element. Alternatively, they can also open on click. Closing works by clicking on the trigger element.
+ * - Touch Devices: On touch devices, tooltips open by default on tap on the trigger element. Closing works by tapping on the trigger element or outside of it.
+ * - Keyboard Navigation: By keyboard, tooltips open by default on tab. Closing works by tapping or pressing ESC on the focused trigger element.
  *
  *  **Related templates:**
  * - [Tooltip](?path=/docs/templates-tooltip--docs)

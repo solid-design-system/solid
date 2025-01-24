@@ -9,6 +9,9 @@ const { generateTemplate } = storybookTemplate('sd-expandable');
 /**
  * Used to display a brief summary that expands to reveal additional content.
  *
+ * **Accessibility Information:**
+ * - Expandables are intended to be used for text blocks, so no interactive elements would appear when expanding, thus the focus remains on the expandable trigger whether open or closed, adjusting the labelling for each state.
+ *
  *  **Related templates**:
  * - [Expandable](?path=/docs/templates-expandable--docs)
  */

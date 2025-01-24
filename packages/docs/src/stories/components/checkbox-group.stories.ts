@@ -9,6 +9,11 @@ const { overrideArgs } = storybookHelpers('sd-checkbox-group');
 /**
  * Used to select multiple options from a list of options.
  *
+ * **Accessibility Information:**
+ * - An error-text should be placed underneath an invalid checkbox or, if used in a group, underneath the checkbox group. Error messages should always provide hints for solutions.
+ * - When clicking on a checkbox label, prevent the text from being selected to avoid confusion
+ * - Make sure checkboxes can be toggled using the spacebar when focused.
+ *
  * **Related components:**
  * - [sd-checkbox](?path=/docs/components-sd-checkbox--docs)
  *

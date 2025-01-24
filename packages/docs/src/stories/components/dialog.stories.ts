@@ -15,6 +15,10 @@ const { generateTemplate } = storybookTemplate('sd-dialog');
  * - Use the `default` slot to add main content. <br /> Default slot is always scrollable.
  * - Use the `footer` slot to add action elements. <br /> Footer slot is always fixed.
  *
+ * **Accessibility Information:**
+ * - Always include a visible and easily accessible close button within the modal but also enable closing using the Escape key.
+ * - Clicking outside the modal to close it might be convenient for some users, but can’t be the only method provided since it’s not accessible for screen reader users.
+ * - Move the keyboard focus to the first interactive element within the modal (usually the close button) when the modal opens. Keep the keyboard focus within the modal while it is open, and return focus to the element that triggered the modal when it is closed.
  *
  *  **Related templates**:
  * - [Dialog](?path=/docs/templates-dialog--docs)
@@ -126,8 +130,6 @@ export const Headline = {
 
 /**
  * Use the `no-close-button` attribute to hide the close button in the dialog.
- *
- * __Hint:__ You should always include an action button that allows users to close the dialog.
  */
 
 export const NoCloseButton = {

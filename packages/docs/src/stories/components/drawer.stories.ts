@@ -8,8 +8,10 @@ const { overrideArgs } = storybookHelpers('sd-drawer');
 /**
  * Used as a panel that slides out from the side of the screen which contains a set of information or actions.
  *
- * **Accessibility Information**:
+ * **Accessibility Information:**
  * - Screen readers will likely miss content that appears before an autofocused input field.
+ * - Check that the drawer content is fully visible and readable, even at larger font sizes.
+ * - Provide appropriate ARIA roles and properties to indicate the drawer’s state (open or closed) to screen readers.
  *
  * **Related templates:**
  * - [Drawer](?path=/docs/templates-drawer--docs)

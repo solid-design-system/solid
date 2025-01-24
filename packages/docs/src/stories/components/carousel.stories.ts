@@ -12,10 +12,9 @@ const { generateTemplate } = storybookTemplate('sd-carousel');
  *
  * On touch devices, the slides can be moved by swiping.
  *
- * **Accessibility Information**:
+ * **Accessibility Information:**
  * - Chevron buttons are still displayed on touch devices to enable alternative interaction that complies with accessibility requirements.
  * - Some macOS browsers (e.g., Chrome and Firefox) may not support screen reader announcements for carousel slides. This issue will be addressed in future releases.
- *
  *
  * **Related Components**:
  * - [sd-carousel-item](?path=/docs/components-sd-carousel-item--docs)

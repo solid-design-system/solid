@@ -44,6 +44,11 @@ const createColorOptions = () => colors.map(createColorOption);
 const createColorOptionsHtml = () => unsafeHTML(createColorOptions().join('\n'));
 
 /**
+ * **Accessibility Information:**
+ * - To ensure screenreader compatibility, consider including a statement such as "Fields marked with an asterisk (*) are required" at the start of the form.
+ * - Group labels will be neglected by most assistive devices.
+ * - Label can be omitted for search input fields if a button (e.g., aria-label="Search") with a search icon is present.
+ *
  * **Related Components**:
  * - [sd-option](?path=/docs/components-sd-option--docs)
  * - [sd-optgroup](?path=/docs/components-sd-optgroup--docs)
@@ -305,7 +310,6 @@ export const Clearable = {
  *  Use the “left” and “right” slots to add system icons
  *  Show search icon in left either left or right icon slot with the chevron icon (don’t show 2 icons on the right hand side)
  *  Not showing the label here is only fine when showing search-icon.
- *  __Accessibility hint__: Label can be omitted for search input fields if a button (e.g., aria-label="Search") with a search icon is present.
  */
 export const Icons = {
   render: () => html`

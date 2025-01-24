@@ -7,6 +7,13 @@ const { generateTemplate } = storybookTemplate('sd-carousel-item');
 /**
  * Used to represent a slide within a carousel.
  *
+ * **Accessibility Information:**
+ * - Ensure that users can navigate through the carousel using the keyboard (e.g., Tab and Arrow keys).
+ * - Navigation arrows are still displayed on touch devices to enable alternative interaction that complies with accessibility requirements.
+ * - Use appropriate ARIA roles, such as `aria-roledescription="carousel"` and ”aria-live” to indicate the state of the carousel and announce dynamic changes to screen reader users, and navigation controls and slides using ”aria-label” or ”aria-labelledby”.
+ * - Show the pause/play control at all times.
+ * - Ensure sufficient contrast between each slide’s content and its background.
+ *
  * **Related components**:
  * - [sd-carousel](?path=/docs/components-sd-carousel--docs)
  *

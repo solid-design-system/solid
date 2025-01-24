@@ -9,8 +9,12 @@ const { overrideArgs } = storybookHelpers('sd-option');
 /**
  * Used to define selectable items within various form controls such as select.
  *
- * **Accessibility Information**:
+ * **Accessibility Information:**
  * - Use radio buttons instead of selects for a few options. Visible choices are better than hidden ones.
+ * - Long option names can be difficult to understand and perceive, so it’s best to keep them concise.
+ * - Ensure that the beginning of each option is unique to avoid confusion, especially for screen reader users.
+ * - Avoid including headings or interactive elements like links, buttons, or checkboxes within dropdown options.
+ * - Sufficient Touch Target: Ensure options are easily tappable on touch devices.
  *
  * **Related Components**:
  * - [sd-select](?path=/docs/components-sd-select--docs)

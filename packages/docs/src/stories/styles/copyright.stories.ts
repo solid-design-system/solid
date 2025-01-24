@@ -11,7 +11,9 @@ const { generateTemplate } = storybookTemplate('sd-copyright');
  *
  * Use the `--copyright` CSS property and the class `sd-copyright` in the parent of any element to set a copyright text.
  *
- * **Accessibility Hint:** Choose the white variant with shadow for image backgrounds, and black or white for simpler or high-contrast backgrounds, or images with gradient overlays to ensure readability.
+ * **Accessibility Information:**
+ * - Choose the white variant with shadow for image backgrounds, and black or white for simpler or high-contrast backgrounds, or images with gradient overlays to ensure readability.
+ * - To ensure accessibility use the top placement when display in a video.
  *
  * ** Related templates:**
  * - [Media with Copyright](?path=/docs/templates-media--docs#copyright)
@@ -108,8 +110,6 @@ export const Orientation = {
  *
  * - bottom is the default placement
  * - `sd-copyright--placement-top`
- *
- * **Accessibility Hint:** To ensure accessibility use the top placement when display in a video.
  */
 export const Placement = {
   render: () =>

@@ -9,8 +9,11 @@ const { overrideArgs } = storybookHelpers('sd-flipcard');
 /**
  * Used to display content on one side and reveal additional information when flipped.
  *
- * **Accessibility Hint**:
- * Front flipcards should not contain any action items. If an action is necessary, consider placing it on the back of the card (once flipped) or in a separate area.
+ * **Accessibility Information:**
+ * - Keep the flip button to make sure the flipping can be activated over keyboard navigation over the Enter or Space keys.
+ * - Keep the flip button to make sure the flipping can be activated by tabbing.
+ * - Use ARIA roles such as aria-hidden to manage the visibility of the front and back sides. Ensure each side has a clear and descriptive label.
+ * - Flipcards should avoid including interactive elements, and the focus would always stay on the flip-trigger after activating it. If the back side contains an interactive element, ensure focus moves to it after triggering the flip. When flipped back, focus should return to the flip trigger.
  *
  * **Related templates**:
  * - [Flipcard](?path=/docs/templates-flipcard--docs)
