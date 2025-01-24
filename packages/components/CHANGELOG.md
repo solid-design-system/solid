@@ -1,5 +1,24 @@
 # @solid-design-system/components
 
+## 4.0.4
+
+### Patch Changes
+
+- Fix `sd-carousel` focus management: _[`#1802`](https://github.com/solid-design-system/solid/pull/1802) [`77ed0c1`](https://github.com/solid-design-system/solid/commit/77ed0c14422914de6793259ed489eff363254d9e) [@smfonseca](https://github.com/smfonseca)_
+
+  - next button is focused only when user interacts with component.
+  - previous button receives focus when the last slide is reached.
+
+### 📈 Stats
+* Uncompressed: 399 KB (+1 KB / +0%)
+* Gzipped: 94 KB (unchanged)
+
+## 4.0.3
+
+### Patch Changes
+
+- Fixed issue with cherry picking the `sd-select` and `sd-combobox` components which required an empty chunk file. _[`#1805`](https://github.com/solid-design-system/solid/pull/1805) [`74d07fd`](https://github.com/solid-design-system/solid/commit/74d07fd7f7db082e6059469f415ff0cb61e400ef) [@smfonseca](https://github.com/smfonseca)_
+
 ## 4.0.2
 
 ### Patch Changes
