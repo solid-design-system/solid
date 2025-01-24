@@ -184,3 +184,33 @@ export const Hoist = {
       <sd-tooltip content="Lorem ipsum" placement="bottom-start" size="lg" hoist></sd-tooltip>
     </div>`
 };
+
+/**
+ * It is possible to change the tooltip trigger element by defining the new trigger in the default slot.
+ * However, be aware that this affects the accessibility of the component due to the loss of the aria reference to the trigger element which will be located in the shadow DOM.
+ * In this example we provide a solution to this problem by using a live region to announce the tooltip content when the trigger element is clicked.
+ */
+export const CustomTrigger = {
+  render: () => html`
+    <sd-tooltip size="lg" content="This tooltip is accessible" placement="top" trigger="click" class="custom-tooltip">
+      <sd-button class="custom-button">Custom Trigger</sd-button>
+    </sd-tooltip>
+    <div aria-live="polite" class="sr-only live-region"></div>
+    <script>
+      const button = document.querySelector('.custom-button');
+      const liveRegion = document.querySelector('.live-region');
+      const tooltipContent = document.querySelector('.custom-tooltip').getAttribute('content');
+      const tooltipLabel = tooltipContent;
+
+      button.addEventListener('click', () => {
+        liveRegion.textContent = tooltipLabel;
+
+        // we need to remove the label and add it again after a delay so that screen readers can detect the change
+        liveRegion.textContent = '';
+        setTimeout(() => {
+          liveRegion.textContent = tooltipLabel;
+        }, 125);
+      });
+    </script>
+  `
+};
