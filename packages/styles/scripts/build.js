@@ -1,8 +1,8 @@
 import { deleteAsync } from 'del';
 import { execSync } from 'child_process';
-import chalk from 'chalk';
 import fs from 'fs/promises';
 import ora from 'ora';
+import pc from 'picocolors';
 
 const spinner = ora({ hideCursor: false }).start();
 
@@ -23,11 +23,11 @@ async function nextTask(label, action) {
   try {
     await action();
     spinner.stop();
-    console.log(`${chalk.green('✔')} ${label}`);
+    console.log(`${pc.green('✔')} ${label}`);
   } catch (err) {
     spinner.stop();
-    console.error(`${chalk.red('✘')} ${label}`);
-    console.error(chalk.red(err.message || err));
+    console.error(`${pc.red('✘')} ${label}`);
+    console.error(pc.red(err.message || err));
     process.exit(1);
   }
 }
