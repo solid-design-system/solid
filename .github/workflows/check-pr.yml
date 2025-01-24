@@ -8,7 +8,7 @@ jobs:
     quality-gate:
         name: Verify monorepo
         runs-on: ubuntu-latest
-        if: github.event.pull_request.draft == true
+        if: github.event.pull_request.draft == false
         container:
             image: mcr.microsoft.com/playwright:v1.49.1-noble
         strategy:
